@@ -1,0 +1,491 @@
+import { patchTheme, patchThemeTag } from '@public-ui/core';
+import { Injector } from '@leanup/lib';
+import { querySelectorAll } from 'query-selector-all-shadow-root';
+import { querySelector } from 'query-selector-shadow-root';
+import rgba from 'rgba-convert';
+import { hex, score } from 'wcag-contrast';
+import { Generic } from '@public-ui/core';
+
+import { devHint } from './a11y.tipps';
+import { getDocument, getWindow, Log } from './dev.utils';
+import { Stringified } from '../types/common';
+
+// https://regex101.com/r/lSYLO9/1
+/**
+ * Bei Stencil kann es vorkommen, dass bei der Übergabe eines komplexer Objekte
+ * der String "[object Object]" an die Web Component übergeben wird. Um den Neben-
+ * effekt abzufangen, wird dieser Fall abgefangen und nicht ausgeführt.
+ */
+const OBJECT_OBJECT = /\[object Object\]/;
+export const objectObjectHandler = (value: unknown, cb: () => void): void => {
+	if (typeof value === 'string' && OBJECT_OBJECT.test(value)) {
+		return;
+	}
+	cb();
+};
+
+/**
+ * Bei Stencil kann es vorkommen, dass bei der Übergabe eines leeren Array's
+ * ein leerer String an die Web Component übergeben wird. Um den Nebeneffekt
+ * abzufangen, wird dieser Fall abgefangen und nicht ausgeführt.
+ */
+export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void => {
+	if (typeof value === 'string' && value === '') {
+		return;
+	}
+	cb();
+};
+
+/**
+ * Bei interaktiven HTML-Elementen kommt es vor, dass der Event an einem nicht
+ * interaktiven HTML-Element "lostriggert" und dann den DOM-Baum hoch propagiert.
+ * Zu unterschiedlichen Zeitpunkten sind an dem einen Event somit immer unterschiedliche
+ * HTML-Elemente.
+ * Damit wir das "richtige" interaktive HTML-Element an das Event binden, setzen
+ * wir das Target explizit und stoppen die Propagation.
+ */
+export const setEventTargetAndStopPropagation = (event: Event, target?: HTMLElement): void => {
+	Object.defineProperty(event, 'target', {
+		value: target,
+		writable: false,
+	});
+	event?.stopPropagation();
+};
+
+const patchState = (component: Generic.Element.Component): void => {
+	component.nextHooks?.forEach((hooks, key) => {
+		const beforePatch = hooks.get('beforePatch') as Generic.Element.NextStateHooksCallback;
+		if (typeof beforePatch === 'function') {
+			beforePatch(component.nextState?.get(key), component.nextState as Map<string, unknown>, component, key);
+		}
+	});
+	/**
+	 * Wenn in beforePatch Methoden die Änderung verworfen wird,
+	 * muss auch nicht der State aktualisiert und neu gerendert
+	 * werden.
+	 */
+	if ((component.nextState as Map<string, unknown>)?.size > 0) {
+		component.state = {
+			...component.state,
+			...Object.fromEntries(component.nextState as Map<string, unknown>),
+		};
+		delete component.nextState;
+
+		component.nextHooks?.forEach((hooks, key) => {
+			const afterPatch = hooks.get('afterPatch') as Generic.Element.StateHooksCallback;
+			if (typeof afterPatch === 'function') {
+				afterPatch(component.state[key], component.state, component, key);
+			}
+		});
+	}
+	delete component.nextHooks;
+};
+
+type SetStateHooks = {
+	afterPatch?: Generic.Element.StateHooksCallback;
+	beforePatch?: Generic.Element.NextStateHooksCallback;
+};
+
+export const setState = <T>(component: Generic.Element.Component, propName: string, value?: T, hooks: SetStateHooks = {}): void => {
+	if (component.nextHooks === undefined) {
+		component.nextHooks = new Map();
+	}
+	if (component.nextState === undefined) {
+		component.nextState = new Map();
+	}
+	if (component.nextState.get(propName) !== value) {
+		const nextHooks = component.nextHooks.get(propName);
+		if (nextHooks instanceof Map === false) {
+			component.nextHooks.set(propName, new Map());
+		}
+		if (typeof hooks.afterPatch === 'function') {
+			component.nextHooks.get(propName)?.set('afterPatch', hooks.afterPatch);
+		}
+		if (typeof hooks.beforePatch === 'function') {
+			component.nextHooks.get(propName)?.set('beforePatch', hooks.beforePatch);
+		}
+		component.nextState.set(propName, value);
+		/**
+		 * Muss erstmal in sync bleiben, da sonst der
+		 * Tooltip nicht korrekt ausgerichtet wird.
+		 */
+		// if (component.hydrated === true || process.env.NODE_ENV !== 'test') {
+		// clearTimeout(component.timeout as NodeJS.Timeout);
+		// component.timeout = setTimeout(() => {
+		// 	clearTimeout(component.timeout as NodeJS.Timeout);
+		// 	patchState(component);
+		// }, 50);
+		// } else {
+		patchState(component);
+		// }
+	}
+};
+
+const logWarn = (component: Generic.Element.Component, propName: string, value: unknown, requiredGeneric: Set<string | null | undefined>): void => {
+	devHint(
+		`[${component.constructor.name}] Der Property-Wert (${value as string}) für '${propName}' ist nicht valide. Folgende Werte sind erlaubt: ${Array.from(
+			requiredGeneric
+		).join(', ')}`
+	);
+};
+
+type WatchOptions = {
+	allowNull?: boolean;
+	defaultValue?: unknown;
+	hooks?: SetStateHooks;
+	required?: boolean;
+};
+
+type WatchBooleanOptions = WatchOptions & {
+	defaultValue?: boolean | null;
+};
+
+type WatchStringOptions = WatchOptions & {
+	defaultValue?: string | null;
+	minLength?: number;
+};
+
+type WatchNumberOptions = WatchOptions & {
+	defaultValue?: number | null;
+	min?: number;
+	max?: number;
+};
+
+export const watchValidator = <T extends unknown>(
+	component: Generic.Element.Component,
+	propName: string,
+	validationFunction: (value?: T) => boolean,
+	requiredGeneric: Set<string | null | undefined>,
+	value?: T,
+	options: WatchOptions = {}
+): void => {
+	if (validationFunction(value) && (options?.allowNull === undefined || options?.allowNull === false || value === null)) {
+		setState(component, propName, value, options?.hooks);
+	} else if (options?.defaultValue !== undefined || options?.required === undefined || options?.required === false) {
+		setState(component, propName, options?.defaultValue, options?.hooks);
+	} else {
+		if (options.allowNull === true) {
+			requiredGeneric.add(null);
+		}
+		if (options.required !== true) {
+			requiredGeneric.add(undefined);
+		}
+		logWarn(component, propName, value, requiredGeneric);
+	}
+};
+
+export const watchBoolean = (component: Generic.Element.Component, propName: string, value?: boolean, options?: WatchBooleanOptions): void => {
+	watchValidator(component, propName, (value): boolean => typeof value === 'boolean', new Set(['Boolean {true, false}']), value, options);
+};
+
+export const watchString = (component: Generic.Element.Component, propName: string, value?: string, options?: WatchStringOptions): void => {
+	watchValidator(
+		component,
+		propName,
+		(value): boolean => typeof value === 'string' && value.length >= (typeof options?.minLength === 'number' ? options?.minLength : 1),
+		new Set(['String (nicht leer)']),
+		value,
+		options
+	);
+};
+
+export const watchNumber = (component: Generic.Element.Component, propName: string, value?: number, options?: WatchNumberOptions): void => {
+	watchValidator(
+		component,
+		propName,
+		(value): boolean =>
+			typeof value === 'number' &&
+			(typeof options?.min === 'undefined' || (typeof options?.min === 'number' && value >= options.min)) &&
+			(typeof options?.max === 'undefined' || (typeof options?.max === 'number' && value <= options.max)),
+		new Set(['Number']),
+		value,
+		options
+	);
+};
+
+export const watchJsonArrayString = <T>(
+	component: Generic.Element.Component,
+	propName: string,
+	itemValidation: (item: T) => boolean,
+	value?: Stringified<T[]>,
+	arrayValidation: (items: T[]) => boolean = (items: T[]) => items === items, // nochmal hirnen
+	options: WatchOptions = {}
+): void => {
+	emptyStringByArrayHandler(value, () => {
+		objectObjectHandler(value, () => {
+			if (typeof value === 'undefined') {
+				value = [];
+			}
+			try {
+				if (typeof value === 'string') {
+					value = parseJson<T[]>(value);
+				}
+				if (Array.isArray(value)) {
+					const invalid = value.find((item: T) => !itemValidation(item));
+					if (invalid === undefined && arrayValidation(value)) {
+						setState(component, propName, value, options.hooks);
+					} else {
+						objectObjectHandler(invalid, () => {
+							console.log(invalid);
+							throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
+						});
+					}
+				} else {
+					objectObjectHandler(value, () => {
+						// console.log(value);
+						throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
+					});
+				}
+			} catch (error) {
+				/**
+				 * TODO: Wir haben einen Known-Bug beim Propergieren von Zeichenkettenliste (string[]).
+				 */
+				// console.warn(error);
+				devHint(`Known bug: Zeichenkettenliste (string[])`);
+			}
+		});
+	});
+};
+
+export const stringifyJson = (value: unknown): string => {
+	try {
+		return JSON.stringify(value).replace(/"/g, "'");
+	} catch (error) {
+		// console.log(value);
+		throw new Error(`↑ Das JSON konnte nicht in einen String umgewandelt werden. Es wird ein stringifizierbares JSON erwartet.`);
+	}
+};
+
+export const parseJson = <T>(value: string): T => {
+	try {
+		return JSON.parse(value);
+	} catch (error) {
+		try {
+			return JSON.parse(value.replace(/'/g, '"'));
+		} catch (error) {
+			// console.log(value);
+			throw new Error(`↑ Der JSON-String konnte nicht geparsed werden. Achten Sie darauf, dass einfache Anführungszeichen im Text maskiert werden (&#8216;).`);
+		}
+	}
+};
+
+export const mapBoolean2String = (value?: boolean): string | undefined => {
+	return typeof value === 'boolean' ? (value === true ? 'true' : 'false') : undefined;
+};
+
+export const mapStringOrBoolean2String = (value?: string | boolean): string | undefined => {
+	return typeof value === 'string' ? value : mapBoolean2String(value);
+};
+
+export const koliBriQuerySelector = <T extends Element>(selector: string, node?: Document | HTMLElement | ShadowRoot): T | null =>
+	querySelector<T>(selector, node || getDocument());
+
+export const koliBriQuerySelectorAll = <T extends Element>(selector: string, node?: Document | HTMLElement | ShadowRoot): T[] =>
+	querySelectorAll<T>(selector, node || getDocument());
+
+interface A11yColorContrast {
+	backgroundColor: string;
+	color: string;
+	domNode: HTMLElement | HTMLSlotElement;
+	level: string;
+	score: number;
+}
+
+let DEFAULT_COLOR_CONTRAST: A11yColorContrast | null = null;
+const getDefaultColorContrast = (): A11yColorContrast => {
+	DEFAULT_COLOR_CONTRAST = DEFAULT_COLOR_CONTRAST || {
+		backgroundColor: '#00000000',
+		color: '#00000000',
+		domNode: getDocument().body,
+		level: 'Fail',
+		score: 1,
+	};
+	return DEFAULT_COLOR_CONTRAST;
+};
+
+const TRANSPARENT_REGEXP = /(\d+, ){3}0\)/;
+export const koliBriA11yColorContrast = (domNode: HTMLElement, a11yColorContrast: A11yColorContrast = getDefaultColorContrast()): A11yColorContrast => {
+	const computedStyle = getComputedStyle(domNode);
+	const hexBG: string = TRANSPARENT_REGEXP.test(computedStyle.backgroundColor) ? a11yColorContrast.backgroundColor : rgba.hex(computedStyle.backgroundColor);
+	const hexC: string = TRANSPARENT_REGEXP.test(computedStyle.color) ? a11yColorContrast.color : rgba.hex(computedStyle.color);
+	const diff = hex(hexBG, hexC);
+	const contrast = {
+		backgroundColor: hexBG,
+		color: hexC,
+		domNode: domNode,
+		level: score(diff),
+		score: diff,
+	};
+	if (diff < 4.5) {
+		Log.error([
+			'Color-Contrast-Error',
+			{
+				backgroundColor: contrast.backgroundColor,
+				color: contrast.color,
+				level: contrast.level,
+				score: contrast.score,
+			},
+			contrast.domNode,
+		]);
+	}
+	return contrast;
+};
+
+export const koliBriQuerySelectorColors = (selector: string, a11yColorContrast: A11yColorContrast = getDefaultColorContrast()): A11yColorContrast => {
+	if (a11yColorContrast.domNode instanceof HTMLElement) {
+		a11yColorContrast = koliBriA11yColorContrast(a11yColorContrast.domNode, a11yColorContrast);
+	}
+	const selectedNode: HTMLElement | null = a11yColorContrast.domNode.querySelector<HTMLElement>(selector);
+	if (selectedNode === null) {
+		const nodeList: NodeListOf<HTMLElement> = a11yColorContrast.domNode.querySelectorAll<HTMLElement>('[class="hydrated"]');
+		for (let i = 0; i < nodeList.length; i++) {
+			// const shadowRoot: ShadowRoot = nodeList[i].shadowRoot as ShadowRoot;
+			// if (typeof shadowRoot === 'object' && shadowRoot !== null) {
+			//   a11yColorContrast.domNode = shadowRoot;
+			//   a11yColorContrast = koliBriQuerySelectorColors(selector, a11yColorContrast);
+			// } else {
+			a11yColorContrast.domNode = nodeList[i];
+			a11yColorContrast = koliBriQuerySelectorColors(selector, a11yColorContrast);
+			// }
+			if (a11yColorContrast.domNode !== null) {
+				break;
+			}
+		}
+		return a11yColorContrast;
+	} else {
+		return koliBriA11yColorContrast(selectedNode, a11yColorContrast);
+	}
+};
+
+const scrollByHTMLElement = (element: HTMLElement, parentElement: Window | HTMLElement = window): void => {
+	if (element instanceof HTMLElement) {
+		parentElement.scrollTo({
+			behavior: 'smooth',
+			top: element.getBoundingClientRect().top + getWindow().pageYOffset - 50,
+		});
+		element.focus();
+	} else {
+		devHint(`Das HTMLElement ist nicht valide, zu dem gescrollt werden soll.`);
+	}
+};
+export const scrollBySelector = (selector: string, document?: Document | HTMLElement | ShadowRoot): void => {
+	if (
+		((selector as unknown) instanceof Document || (selector as unknown) instanceof HTMLElement || (selector as unknown) instanceof ShadowRoot) &&
+		typeof document === 'string'
+	) {
+		devHint(
+			`Bei der Methode querySelectorAll wurden die Parameter document, selector in selector, document getauscht, da der Parameter selector nicht, allerdings der Parameter document optional sein kann.`
+		);
+		const temp = `${document as unknown as string}`;
+		document = selector as unknown as Document;
+		selector = temp;
+	}
+	if (typeof selector === 'string') {
+		const element: HTMLElement | null = koliBriQuerySelector<HTMLElement>(selector, document);
+		if (element instanceof HTMLElement) {
+			scrollByHTMLElement(element);
+		} else {
+			devHint(`Es konnte kein HTMLElement mit dem Selector (${selector}) gefunden werden, zu dem gescrollt werden soll.`);
+		}
+	} else {
+		devHint(`Der Selector ist nicht valide, zu dem gescrollt werden soll.`);
+	}
+};
+
+export class KoliBriUtils {
+	private static executionLock = false;
+	private static cache = new Map<Element, A11yColorContrast>();
+	public static queryHtmlElementColors(targetNode: HTMLElement, a11yColorContrast: A11yColorContrast, recursion = false, log = true): A11yColorContrast | null {
+		let returnValue = null;
+		if (recursion === true || KoliBriUtils.executionLock === false) {
+			if (recursion === false) {
+				KoliBriUtils.cache.clear();
+				KoliBriUtils.cache.set(a11yColorContrast.domNode, a11yColorContrast);
+				KoliBriUtils.executionLock = true;
+				if (log === true) {
+					Log.debug(`[KoliBriUtils] Color contrast analysis started...`);
+				}
+			}
+			// console.log(a11yColorContrast.domNode);
+			if (targetNode === a11yColorContrast.domNode) {
+				returnValue = a11yColorContrast;
+			} else {
+				const children: Set<Element> = new Set<Element>();
+				if (a11yColorContrast.domNode.shadowRoot) {
+					const shadowChildren = a11yColorContrast.domNode.shadowRoot.children;
+					for (let i = 0; i < shadowChildren.length; i++) {
+						children.add(shadowChildren[i]);
+					}
+				}
+				const slotElement: HTMLSlotElement = a11yColorContrast.domNode as HTMLSlotElement;
+				if (typeof slotElement.assignedNodes === 'function') {
+					const slotChildren = slotElement.assignedNodes();
+					for (let i = 0; i < slotChildren.length; i++) {
+						if (slotChildren[i] instanceof HTMLElement) {
+							children.add(slotChildren[i] as HTMLElement);
+						}
+					}
+				}
+				const domChildren = a11yColorContrast.domNode.children;
+				for (let i = 0; i < domChildren.length; i++) {
+					children.add(domChildren[i]);
+				}
+				const arrayChildren = Array.from(children);
+				for (let i = 0; i < arrayChildren.length; i++) {
+					let colorContrast: A11yColorContrast | undefined = KoliBriUtils.cache.get(arrayChildren[i]);
+					if (colorContrast === undefined) {
+						colorContrast = koliBriA11yColorContrast(arrayChildren[i] as HTMLElement, a11yColorContrast);
+					}
+					KoliBriUtils.cache.set(arrayChildren[i], colorContrast);
+					const colors: A11yColorContrast | null = KoliBriUtils.queryHtmlElementColors(targetNode, colorContrast, true, false);
+					if (colors !== null) {
+						returnValue = colors;
+						break;
+					}
+				}
+			}
+		} else {
+			Log.debug(`[KoliBriUtils] Call aborted because a color contrast analysis is currently being executed.`);
+		}
+		if (recursion === false) {
+			if (log === true) {
+				Log.debug(`[KoliBriUtils] Color contrast analysis finished (${KoliBriUtils.cache.size} DOM elements are analysed).`);
+			}
+			KoliBriUtils.executionLock = false;
+			KoliBriUtils.cache.clear();
+		}
+		return returnValue;
+	}
+}
+
+// function setBlack(selector: string): void {
+//   const elem = koliBriQuerySelector<HTMLElement>(getDocument().body, selector);
+//   if (elem) {
+//     elem.style.backgroundColor = 'black';
+//   }
+// }
+
+class KoliBriKeyValueStore extends Injector {
+	private readonly store: Map<string, unknown> = new Map<string, unknown>();
+	register(key: string, value: unknown): KoliBriKeyValueStore {
+		this.store.set(key, value);
+		return this;
+	}
+	get<T>(key: string): T {
+		if (this.store.has(key)) {
+			return this.store.get(key) as T;
+		}
+		throw new Error(`No value for key '${key}' in KoliBri-Store found.`);
+	}
+}
+
+export class KoliBriDevHelper {
+	public static readonly keyStore = new KoliBriKeyValueStore();
+	public static readonly patchTheme = patchTheme;
+	public static readonly patchThemeTag = patchThemeTag;
+	public static readonly querySelector = koliBriQuerySelector;
+	public static readonly querySelectorAll = koliBriQuerySelectorAll;
+	public static readonly scrollByHTMLElement = scrollByHTMLElement;
+	public static readonly scrollBySelector = scrollBySelector;
+	public static readonly stringifyJson = stringifyJson;
+}

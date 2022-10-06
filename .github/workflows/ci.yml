@@ -1,0 +1,52 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+env:
+  github-registry: https://npm.pkg.github.com
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
+  npmjs-token: ${{ secrets.NPMJS_TOKEN }}
+
+on:
+  # release:
+  #   types:
+  #     - released
+  workflow_dispatch:
+
+jobs:
+  pr-quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          cache: pnpm
+          node-version: 16
+          registry-url: '${{env.npm-registry}}'
+          scope: '@public-ui'
+      - name: Install
+        env:
+          NODE_AUTH_TOKEN: ${{env.npm-token}}
+        run: |
+          npx lerna exec --stream -- pnpm i --frozen-lockfile=false
+          pnpm i
+      - name: Unused
+        run: npx lerna exec --stream -- ts-prune src -e
+      - name: Format
+        if: always()
+        run: |
+          npx lerna run format
+      - name: Lint
+        run: |
+          npx lerna run lint
+      - name: Test
+        run: |
+          npx lerna run test
+        working-directory: packages/library
+      # - name: 'Pack'
+      #   run: |
+      #     npx lerna exec --stream -- pnpm pack

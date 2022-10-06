@@ -1,0 +1,76 @@
+import { watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
+import { InputPasswordController } from '../input-password/controller';
+import { Props as InputTextProps, Watches as InputTextWatches } from './types';
+
+import { Generic } from '@public-ui/core';
+import { InputTextType } from '../../types/input/control/text';
+import { Stringified } from '../../types/common';
+
+/**
+ * API
+ */
+type RequiredProps = {
+	id: string;
+};
+type OptionalProps = {
+	list: Stringified<string[]>;
+};
+type InputTextEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+type InputTextEmailWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+
+export class InputTextEmailController extends InputPasswordController implements InputTextEmailWatches {
+	protected readonly component: Generic.Element.Component & InputTextEmailProps;
+
+	public constructor(component: Generic.Element.Component & InputTextEmailProps, name: string) {
+		super(component, name);
+		this.component = component;
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	public validateList(value?: Stringified<string[]>): void {
+		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
+	public componentWillLoad(): void {
+		super.componentWillLoad();
+		this.validateList(this.component._list);
+	}
+}
+
+export class InputTextController extends InputTextEmailController implements InputTextWatches {
+	protected readonly component: Generic.Element.Component & InputTextProps;
+
+	public hasError = false;
+	public hasList = false;
+
+	public constructor(component: Generic.Element.Component & InputTextProps, name: string) {
+		super(component, name);
+		this.component = component;
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	public validateType(value?: InputTextType): void {
+		watchValidator(
+			this.component,
+			'_type',
+			(value): boolean => typeof value === 'string' && (value === 'text' || value === 'search' || value === 'url' || value === 'tel'),
+			new Set(['String {text, search, url, tel}']),
+			value
+		);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
+	public componentWillLoad(): void {
+		super.componentWillLoad();
+		this.validateType(this.component._type);
+	}
+}

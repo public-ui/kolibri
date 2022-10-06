@@ -1,0 +1,8 @@
+/.husky
+/.reports
+/dist
+/hint-report
+/node_modules
+*.log
+.DS_Store
+pnpm-lock.yaml

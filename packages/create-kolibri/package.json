@@ -1,0 +1,51 @@
+{
+	"name": "create-kolibri",
+	"version": "1.1.7",
+	"description": "Mit Hilfe der CLI können unterschiedliche Projekte mit KoliBri-Oberflächenkomponenten generiert werden.",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"contributors": [
+		{
+			"name": "Martin Oppitz",
+			"email": "martin.oppitz@itzbund.de"
+		}
+	],
+	"scripts": {
+		"build": "rimraf dist && tsup src/cli.ts --minify",
+		"clean": "git clean -f -d -X",
+		"dev": "tsup src/cli.ts --watch",
+		"prepack": "npm run build",
+		"update": "ncu -t minor -u && ncu",
+		"try": "npm run prepack && rimraf try-demo && node dist/cli.js try-demo",
+		":install": "pnpm i && pnpm update",
+		":postinstall": "npm i puppeteer --no-save || true",
+		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
+		":republish": "npm run :unpublish && npm run :publish",
+		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+	},
+	"bin": "dist/cli.js",
+	"files": [
+		"dist",
+		"templates/**/*"
+	],
+	"dependencies": {
+		"create-create-app": "7.3.0",
+		"kleur": "4.1.5"
+	},
+	"devDependencies": {
+		"@types/node": "18.8.2",
+		"npm-check-updates": "16.3.8",
+		"rimraf": "3.0.2",
+		"tsup": "6.2.3",
+		"typescript": "4.8.4"
+	}
+}

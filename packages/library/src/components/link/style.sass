@@ -1,0 +1,42 @@
+/* windicss-touch: 1639842700188 */
+@import ../style
+
+:host
+
+  &>*
+    width: inherit
+    word-spacing: inherit
+
+  a
+    display: inherit
+    overflow: inherit
+    text-overflow: inherit
+
+    &:active
+      text-decoration: none
+
+    &:focus,
+    &:hover
+      text-decoration-thickness: 3px
+
+    &.kol-visited
+      &:visited
+        color: var(--kolibri-color-visited)
+
+    .screen-reader-only
+      position: absolute
+      width: 1px
+      clip: rect(0 0 0 0)
+      overflow: hidden
+
+    &.skip
+      left: -99999px
+      overflow: hidden
+      position: absolute
+      z-index: 9999999
+
+      &:focus
+        background: white
+        box-shadow: 0 0 .5rem .5rem white
+        left: unset
+        position: unset

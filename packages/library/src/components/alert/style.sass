@@ -1,0 +1,54 @@
+/* windicss-touch: 1648382011141 */
+@import ../style
+
+:host
+
+	*
+		box-sizing: border-box
+
+	> div
+		background-color: white
+		border-color: white
+		border-width: 1px
+		border-radius: .5rem
+		border-style: solid
+		display: flex
+		width: 100%
+		overflow: hidden
+
+		&.error
+			border-color: var(--kolibri-color-error)
+			.icon
+				background-color: var(--kolibri-color-error)
+		&.info
+			border-color: var(--kolibri-color-info)
+			.icon
+				background-color: var(--kolibri-color-info)
+		&.success
+			border-color: var(--kolibri-color-success)
+			.icon
+				background-color: var(--kolibri-color-success)
+		&.warning
+			border-color: var(--kolibri-color-warning)
+			.icon
+				background-color: var(--kolibri-color-warning)
+
+		.icon
+			color: white
+			display: inline-block
+			padding: 0 0.25rem
+
+		> div
+			display: grid
+
+			.heading
+				padding: 0 0.25rem
+				display: inline-block
+
+				.icon
+					margin-left: -0.25rem
+					margin-right: 0.25rem
+					border-radius: 0 0 0.25rem 0
+
+			> div:last-child
+				padding: .25rem

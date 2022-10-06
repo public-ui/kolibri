@@ -1,0 +1,27 @@
+import { KoliBri } from '@public-ui/schema';
+
+export const DE = KoliBri.createTranslation('de', {
+	'kol-alert-error-label': 'Fehler',
+	'kol-alert-info-label': 'Information',
+	'kol-alert-warning-label': 'Warnung',
+	'kol-alert-success-label': 'Erfolg',
+	'kol-form-required-advise': 'Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.',
+	'kol-link-target-advise': 'Der Link wird in einem neuen Tab geöffnet',
+	'kol-logo-label': 'Bildwortmarke',
+	'kol-nav-label-close': 'Navigation maximieren',
+	'kol-nav-label-open': 'Navigation minimieren',
+	'kol-pagination-label-first': 'Direkt zur ersten Seite',
+	'kol-pagination-label-last': 'Direkt zur letzten Seite',
+	'kol-pagination-label-next': 'Eine Seite weiter',
+	'kol-pagination-label-previous': 'Eine Seite zurück',
+	'kol-pagination-label-current': 'Seite {$1} ist ausgewählt',
+	'kol-spin-label-busy': 'Aktion wird ausgeführt',
+	'kol-spin-label-finished': 'Aktion ist abgeschlossen',
+	'kol-table-button-sort-label': 'Sortierung von {$1} ändern',
+	'kol-table-pagination-label': '{$1} Einträge pro Seite',
+	'kol-table-pagination-sites-no': 'Es sind keine Einträge vorhanden',
+	'kol-table-pagination-sites-yes': 'Einträge {$1} bis {$2} angezeigt',
+	'kol-tabs-button-add-label': 'Neu',
+	'kol-tabs-button-close-label': 'Registerkarte schließen',
+	'kol-toast-button-close-label': 'Schließen',
+});

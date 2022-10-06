@@ -1,0 +1,94 @@
+/* windicss-touch: 1643428811225 */
+@import ../input
+@import ../input-line
+
+label
+  cursor: pointer
+  display: flex
+  flex-direction: row
+  @apply gap-2 relative
+
+  span
+    @apply mt-0.5
+
+  &.kol-required
+    span
+      &::after
+        content: '*'
+
+  input[type="checkbox"]
+    appearance: none
+    background-color: white
+    cursor: pointer
+    transition: .5s
+
+    &.kol-disabled
+      &:before
+        @apply cursor-not-allowed
+
+    &:before
+      content: ""
+      cursor: pointer
+
+    &:checked
+      @apply bg-primary
+
+    &.checkbox
+      border-radius: var(--kolibri-border-radius)
+      @apply min-w-6 w-6 h-6
+
+      &:before
+        border-radius: var(--kolibri-border-radius)
+        @apply block relative bg-transparent w-6 h-6
+
+      &:checked
+        &:before
+          left: calc(1.5 * var(--kolibri-spacing) - 1px)
+          top: calc(2.85 * var(--kolibri-spacing) - 1px)
+          transform: rotate(40deg) translate(-50%,-50%)
+          border-radius: none
+          @apply w-2 h-4 border-r-3 border-b-3 border-white bg-primary
+
+      &:indeterminate
+        @apply bg-light-500
+
+        &:before
+          @apply bg-primary w-4 h-1.5 top-2.25 left-0.8
+
+    &.switch
+      min-width: 3.2em
+      width: 3.2em
+      height: 1.7em
+      border-radius: var(--kolibri-border-radius)
+      @apply inline-block relative
+
+      &:before
+        -webkit-transition: .5s
+        -webkit-transition: .5s
+        -moz-transition: .5s
+        -ms-transition: .5s
+        transition: .5
+        width: 1.2em
+        height: 1.2em
+        left: calc(0.25em - 1px)
+        top: calc(0.25em - 1px)
+        box-shadow: 0 0 0.1rem var(--kolibri-shadow-color)
+        border-radius: var(--kolibri-border-radius)
+        @apply absolute bg-primary
+
+      &:checked
+        &:before
+          -webkit-transform: translateX(1.5em)
+          -moz-transform: translateX(1.5em)
+          -ms-transform: translateX(1.5em)
+          transform: translateX(1.5em)
+          @apply bg-light-100
+
+      &:indeterminate
+        @apply bg-light-500
+
+        &:before
+          -webkit-transform: translateX(.75em)
+          -moz-transform: translateX(.75em)
+          -ms-transform: translateX(.75em)
+          transform: translateX(.75em)

@@ -1,0 +1,131 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Publish
+
+env:
+  access: public
+  github-registry: https://npm.pkg.github.com
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
+  npmjs-token: ${{ secrets.NPMJS_TOKEN }}
+  npmjs-tag: next
+
+on:
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+  #   branches:
+  #     - main
+  # release:
+  #   types:
+  #     - released
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # - uses: pnpm/action-setup@v2.2.2
+      #   with:
+      #     version: 7
+      - uses: actions/setup-node@v3
+        with:
+          # cache: pnpm
+          node-version: 16
+          registry-url: '${{env.npmjs-registry}}'
+          scope: '@public-ui'
+      - name: Build and publish core
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/core
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish schema
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/schema
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish library
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/library
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish themes
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/themes
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter angular
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/angular
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      # - name: Build and publish adapter preact
+      #   run: |
+      #     npm i
+      #     npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+      #   working-directory: packages/adapters/preact
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter react
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/react
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter solid
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/solid
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      # - name: Build and publish adapter svelte
+      #   run: |
+      #     npm i
+      #     npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+      #   working-directory: packages/adapters/svelte
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter vue
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/vue
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish create-kolibri
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/create-kolibri
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build storybook
+        run: |
+          npm i --legacy-peer-deps
+          npm run build
+        working-directory: packages/storybook
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@public-ui'
+      - name: Publish storybook
+        run: npm publish --access restricted
+        working-directory: packages/storybook
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

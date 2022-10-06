@@ -1,0 +1,99 @@
+import { rgbaConvert } from './rgba-convert';
+import { hex } from 'wcag-contrast';
+import { colorRgba } from './color-rgba';
+import { RGB } from 'color-convert/conversions';
+
+type RGBA = [number, number, number, number];
+
+// const calcColor = (color: RGBA, diff: number): RGBA => [
+//   Math.max(Math.min(Math.round(color[0] + (color[0] / 100 + 1) * diff), 255), 0),
+//   Math.max(Math.min(Math.round(color[1] + (color[1] / 100 + 1) * diff), 255), 0),
+//   Math.max(Math.min(Math.round(color[2] + (color[2] / 100 + 1) * diff), 255), 0),
+//   color[3],
+// ];
+
+// const relativeLuminanceFormel = (c: number): number => {
+//   if (c <= 0.03928) {
+//     return c / 12.92;
+//   } else {
+//     return ((c + 0.055) / 1.055) ** 2.4;
+//   }
+// };
+// // https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+// const relativeLuminance = (r: number, g: number, b: number): number => {
+//   return (
+//     0.2126 * relativeLuminanceFormel(r) + 0.7152 * relativeLuminanceFormel(g) + 0.0722 * relativeLuminanceFormel(b)
+//   );
+// };
+
+// https://css-tricks.com/snippets/javascript/random-hex-color/
+// const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
+
+// https://24ways.org/2010/calculating-color-contrast/
+// ts-prune-ignore-next
+export const getContrastYIQ = (r: number, g: number, b: number): number => {
+	const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+	return yiq >= 128 ? -1 : 1;
+};
+
+// ts-prune-ignore-next
+export const calcContrastColor = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): RGB => {
+	const color: RGB = [
+		Math.max(Math.min(Math.round(contrastColor[0] + dir * Math.max(1, contrastColor[0] / 100)), 255), 0),
+		Math.max(Math.min(Math.round(contrastColor[1] + dir * Math.max(1, contrastColor[1] / 100)), 255), 0),
+		Math.max(Math.min(Math.round(contrastColor[2] + dir * Math.max(1, contrastColor[2] / 100)), 255), 0),
+	];
+	const contrast = hex(rgbaConvert.hex(`rgba(${baseColor.join(',')},1)`), rgbaConvert.hex(`rgba(${color.join(',')},1)`));
+	const summe = color[0] + color[1] + color[2];
+	if (summe === 0 || summe === 765 || contrast > ratio) {
+		return color;
+	} else {
+		return calcContrastColor(baseColor, color, ratio, dir);
+	}
+};
+
+// ts-prune-ignore-next
+export const getContrastColor = (baseColor: RGB, contrastcolor: RGB, ratio: number, dir = 1): RGB => {
+	if (cache.has(baseColor)) {
+		return cache.get(baseColor) as RGB;
+	}
+	const color = calcContrastColor(baseColor, contrastcolor, ratio, dir);
+	cache.set(baseColor, color);
+	return color;
+};
+
+const cache: Map<unknown, RGB> = new Map();
+
+export type KoliBriContrastColor = {
+	baseColor: string;
+	contrastColor: string;
+};
+
+export const createContrastColorPair = (color: string | KoliBriContrastColor, contrastRatio = 7): KoliBriContrastColor => {
+	let baseColor: RGBA = [0, 0, 0, 1];
+	let contrastColor: RGBA = [255, 255, 255, 1];
+	if (typeof color === 'string') {
+		baseColor = colorRgba(color);
+		contrastColor = baseColor;
+	} else if (typeof color === 'object' && color !== null && typeof color.baseColor === 'string') {
+		baseColor = colorRgba(color.baseColor);
+		if (typeof color.contrastColor === 'string') {
+			contrastColor = colorRgba(color.contrastColor);
+		} else {
+			contrastColor = baseColor;
+		}
+	}
+	const yiq = getContrastYIQ(baseColor[0], baseColor[1], baseColor[2]);
+	const contrastColorRGB = getContrastColor(
+		[baseColor[0], baseColor[1], baseColor[2]],
+		[contrastColor[0], contrastColor[1], contrastColor[2]],
+		contrastRatio,
+		yiq
+	);
+	contrastColor = [...contrastColorRGB, 1];
+
+	return {
+		baseColor: rgbaConvert.hex(`rgba(${baseColor.join(',')})`),
+		contrastColor: rgbaConvert.hex(`rgba(${contrastColor.join(',')})`),
+	};
+};

@@ -1,0 +1,69 @@
+/* windicss-touch: 1648427233774 */
+@import ../style
+
+:host
+  display: inline-flex
+
+  &>*
+    color: inherit
+    width: inherit
+    word-spacing: inherit
+
+  button
+    display: grid
+    font-family: var(--kolibri-font-family)
+    letter-spacing: inherit
+    width: inherit
+    word-spacing: inherit
+    border-radius: var(--kolibri-border-radius)
+    align-items: center !important
+    justify-content: center !important
+    @apply border-1 p-2
+
+    kol-icon,
+    .kol-icon
+      width: 1.5em
+      height: 1.5em
+      display: inline-block
+
+    &.primary
+      @apply bg-primary border-transparent text-white
+
+      &:hover,
+      &:focus
+        @apply border-primary text-primary
+
+    &.secondary
+      @apply bg-secondary border-transparent text-white
+
+      &:hover,
+      &:focus
+        @apply border-secondary text-secondary
+
+    &.normal
+      @apply bg-normal border-transparent text-white
+
+      &:hover,
+      &:focus
+        @apply border-normal text-normal
+
+    &.danger
+      @apply bg-danger border-transparent text-white
+
+      &:hover,
+      &:focus
+        @apply border-danger text-danger
+
+    &.ghost
+      @apply bg-white border-ghost text-ghost
+
+      &:hover,
+      &:focus
+        @apply bg-ghost border-transparent text-white
+
+    &:disabled
+      @apply bg-gray-300 border-transparent  cursor-not-allowed text-gray-700
+
+      &:hover,
+      &:focus
+        @apply bg-gray-700 text-gray-300

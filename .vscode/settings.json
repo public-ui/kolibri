@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "all",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}

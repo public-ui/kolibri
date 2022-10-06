@@ -1,0 +1,111 @@
+{
+	"name": "@public-ui/storybook",
+	"version": "1.1.7",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"contributors": [
+		{
+			"name": "Martin Oppitz",
+			"email": "martin.oppitz@itzbund.de"
+		}
+	],
+	"browser": true,
+	"sideEffects": false,
+	"scripts": {
+		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
+		"autogen": "node scripts/autogen.md2mdx.js && node scripts/autogen.stories.js",
+		"build": "npm run clear && npm run autogen && build-storybook -o dist/",
+		"clear": "rimraf dist",
+		"serve": "serve dist",
+		"zip:prepare": "rimraf kolibri/demo && git clone //anonymisiert kolibri/demo",
+		"zip": "sh scripts/public-pack.sh",
+		"start": "npm run autogen && start-storybook -p 6006",
+		"remove:lock": "rimraf package-lock.json node_modules",
+		"remove": "npm run remove:lock && git clean -f -d -X",
+		"npm:install": "cross-env CYPRESS_INSTALL_BINARY=0 npm i",
+		"reinstall": "npm run remove && npm i",
+		"reinstall:kolibri": "npm cache clear -f && rimraf node_modules/@a11y-ui node_modules/@public-ui package-lock.json && npm update @a11y-ui/* @public-ui/*",
+		":sync": "rimraf node_modules/@public-ui && npm update @public-ui/*",
+		"changelog": "auto-changelog && auto-changelog --output ../../CHANGELOG.json --template json",
+		":install": "pnpm i && pnpm update",
+		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
+		":republish": "npm run :unpublish && npm run :publish",
+		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+	},
+	"auto-changelog": {
+		"commitLimit": false,
+		"output": "src/999-changelog.mdx",
+		"sortCommits": "sort",
+		"template": "scripts/changelog-template.hbs",
+		"unreleased": true
+	},
+	"devDependencies": {
+		"@babel/core": "7.19.3",
+		"@etchteam/storybook-addon-status": "4.2.1",
+		"@geometricpanda/storybook-addon-badges": "0.2.2",
+		"@public-ui/components": "1.1.7",
+		"@public-ui/core": "1.1.7",
+		"@public-ui/react": "1.1.7",
+		"@public-ui/themes": "1.1.7",
+		"@leanup/form": "1.3.36",
+		"@leanup/lib": "1.3.36",
+		"@leanup/kolibri-components": "1.0.2",
+		"@leanup/kolibri-react": "1.0.2",
+		"@storybook/addon-a11y": "6.5.12",
+		"@storybook/addon-actions": "6.5.12",
+		"@storybook/addon-backgrounds": "6.5.12",
+		"@storybook/addon-controls": "6.5.12",
+		"@storybook/addon-docs": "6.5.12",
+		"@storybook/addon-essentials": "6.5.12",
+		"@storybook/addon-jest": "6.5.12",
+		"@storybook/addon-links": "6.5.12",
+		"@storybook/addon-toolbars": "6.5.12",
+		"@storybook/addon-viewport": "6.5.12",
+		"@storybook/addons": "6.5.12",
+		"@storybook/api": "6.5.12",
+		"@storybook/builder-vite": "0.2.3",
+		"@storybook/components": "6.5.12",
+		"@storybook/core-common": "6.5.12",
+		"@storybook/node-logger": "6.5.12",
+		"@storybook/react": "6.5.12",
+		"@storybook/theming": "6.5.12",
+		"@types/mermaid": "9.1.0",
+		"@typescript-eslint/eslint-plugin": "5.39.0",
+		"@typescript-eslint/parser": "5.39.0",
+		"auto-changelog": "2.4.0",
+		"babel-loader": "8.2.5",
+		"cross-env": "7.0.3",
+		"eslint": "8.24.0",
+		"eslint-plugin-json": "3.1.0",
+		"esm": "3.2.25",
+		"lit-html": "2.4.0",
+		"mermaid": "9.1.7",
+		"postcss": "8.4.17",
+		"prettier": "2.7.1",
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"require-from-string": "2.0.2",
+		"rimraf": "3.0.2",
+		"serve": "14.0.1",
+		"storybook-addon-themes": "6.1.0",
+		"typescript": "4.8.4",
+		"vite": "3.1.5",
+		"webpack": "^4.46.0",
+		"workbox-build": "6.5.4"
+	},
+	"files": [
+		"dist/"
+	],
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	}
+}

@@ -1,0 +1,94 @@
+import { Component, h, Prop, State, Watch } from '@stencil/core';
+
+import { KoliBriComponent } from '../../interfaces/component';
+import { KoliBriFormProps, KoliBriFormState } from '../../interfaces/components/form';
+import { watchBoolean } from '../../utils/prop.validators';
+
+type MutationRecordCallback = (record: MutationRecord) => void;
+type MutationNodeCallback = (node: Node) => void;
+
+class MutationObserverFactory {
+  public static createMutationObserver(callback: MutationCallback): MutationObserver {
+    return new MutationObserver(callback);
+  }
+  public static createMutationObserverForRecords(callback: MutationRecordCallback): MutationObserver {
+    return MutationObserverFactory.createMutationObserver((records: MutationRecord[]) => {
+      records.forEach(callback);
+    });
+  }
+  public static createMutationObserverForAddedNodes(callback: MutationNodeCallback): MutationObserver {
+    return MutationObserverFactory.createMutationObserverForRecords((record: MutationRecord) => {
+      record.addedNodes.forEach(callback);
+    });
+  }
+}
+
+// .observe(document.body, {
+//   attributes: true,
+//   childList: true,
+//   subtree: true,
+// });
+
+@Component({
+  tag: 'kol-form',
+  styleUrl: '../style.sass',
+  shadow: true,
+})
+export class KolForm implements KoliBriComponent, KoliBriFormProps {
+  /**
+   * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+   */
+  @Prop() public _hasRequired?: boolean;
+
+  /**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
+	 /**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
+	 @State() public state: KoliBriFormState = {
+    _hasRequired: true,
+  };
+
+  /**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+@Watch('_hasRequired')
+  public watchHasRequired(value?: boolean): void {
+    watchBoolean(this, '_hasRequired', value);
+  }
+
+  /**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
+	 public componentWillLoad(): void {
+    this.watchHasRequired(this._hasRequired);
+  }
+
+  private mutationObserver: MutationObserver = MutationObserverFactory.createMutationObserverForAddedNodes(
+    (node: Node) => {
+      const nodes: NodeListOf<HTMLElement> | undefined = node.parentElement?.querySelectorAll('fieldset');
+    }
+  );
+
+  private observeRef(el: HTMLElement): void {
+    this.mutationObserver.observe(el, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  public disconnectedCallback(): void {
+    this.mutationObserver.disconnect();
+  }
+
+  public render(): JSX.Element {
+    return (
+      <form method="post" autoComplete="off" ref={(el) => this.observeRef(el as HTMLFormElement)} noValidate>
+        {this.state._hasRequired && <kol-badge _text="* Pflichtangabe" _color="#ddd"></kol-badge>}
+        <slot />
+      </form>
+    );
+  }
+}
