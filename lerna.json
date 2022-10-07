@@ -3,6 +3,8 @@
 		"packages/adapters/angular",
 		"packages/adapters/react",
 		"packages/adapters/solid",
+		"packages/adapters/preact",
+		"packages/adapters/svelte",
 		"packages/adapters/vue",
 		"packages/core",
 		"packages/create-kolibri",
@@ -11,5 +13,5 @@
 		"packages/storybook",
 		"packages/themes"
 	],
-	"version": "1.1.7"
+	"version": "1.1.8"
 }

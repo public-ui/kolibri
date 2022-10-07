@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { KolAlert, KolIcon, KolLink } from '@public-ui/react';
-
-import { HeaderComponent } from './header/component';
+import { KolAlert, KolIcon, KolKolibri, KolLink } from '@public-ui/react';
 
 /**
  * @Component = View / Rollen!#

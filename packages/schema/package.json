@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/schema",
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -43,10 +43,10 @@
 		"import": "./esm/index.js"
 	},
 	"dependencies": {
-		"@public-ui/core": "1.1.7"
+		"@public-ui/core": "1.1.8"
 	},
 	"devDependencies": {
-		"@types/node": "18.8.2",
+		"@types/node": "18.8.3",
 		"rimraf": "3.0.2",
 		"typescript": "4.8.4"
 	},

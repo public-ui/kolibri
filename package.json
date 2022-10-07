@@ -8,13 +8,13 @@
 		"ncu:major": "ncu && lerna exec --stream -- ncu",
 		"ncu:minor": "ncu -t minor -u && lerna exec --stream -- ncu -t minor -u",
 		"pack": "lerna exec --stream -- npm pack",
-		"postinstall": "lerna exec --stream -- pnpm :install",
+		"postinstall": "lerna exec --stream -- pnpm i --no-frozen-lockfile",
 		"prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npx lerna run lint\" && husky add .husky/pre-commit \"npx lerna run format\" && husky add .husky/pre-commit \"pnpm ts-prune\"",
 		"publish": "lerna exec --stream -- pnpm publish",
 		"ts-prune": "lerna exec --stream -- ts-prune src",
 		"depcheck": "lerna exec --stream -- depcheck --ignore-bin-package --skip-missing",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
-		"update": "pnpm ncu:minor && pnpm i && pnpm ncu:major",
+		"update": "pnpm ncu:minor && pnpm ncu:major",
 		":publish": "lerna exec --stream -- pnpm :publish",
 		":republish": "lerna exec --stream -- pnpm :republish",
 		":unpublish": "lerna exec --stream -- pnpm :unpublish"
@@ -22,7 +22,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "17.1.2",
 		"@commitlint/config-conventional": "17.1.0",
-		"@types/node": "18.8.2",
+		"@types/node": "18.8.3",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.3",
 		"husky": "8.0.1",
@@ -40,6 +40,6 @@
 		"pnpm": ">=3"
 	},
 	"dependencies": {
-		"@public-ui/themes": "1.1.7"
+		"@public-ui/themes": "1.1.8"
 	}
 }
