@@ -47,7 +47,7 @@
 		"@public-ui/components": "1.1.9-rc.4",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "18.8.3",
+		"@types/node": "18.8.4",
 		"@types/normalize-package-data": "2.4.1",
 		"rimraf": "3.0.2",
 		"solid-js": "1.5.7",
