@@ -26,7 +26,7 @@
 		"postinstall:angular": "cpy \"defaults/**/*\" \"!defaults/unocss.config.ts\" templates/angular/ --dot",
 		"postinstall:react": "cpy \"defaults/**/*\" templates/react/ --dot",
 		"postinstall:solid": "cpy \"defaults/**/*\" templates/solid/ --dot",
-		"postinstall:static": "cpy \"defaults/{public/**/*,**/.npmrc}\" \"!defaults/public/index.html\" templates/static --dot",
+		"postinstall:static": "cpy \"defaults/{public/**/*,**/.npmrc,**/gitignore}\" \"!defaults/public/index.html\" templates/static --dot",
 		"dev": "tsup src/cli.ts --watch",
 		"prepack": "git clean -f -d -X templates/ && npm run build",
 		"update": "ncu -t minor -u && ncu",
