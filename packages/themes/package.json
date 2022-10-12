@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "1.1.9-rc.4",
+	"version": "1.1.9-rc.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -19,6 +19,7 @@
 		}
 	],
 	"sideEffects": false,
+	"type": "module",
 	"description": "Das Themes-Modul beinhaltet zahlreiche Themes (Styleguides) zur Komponenten-Bibliothek.",
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
@@ -42,18 +43,18 @@
 		"import": "./esm/index.js"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.9-rc.4"
+		"@public-ui/schema": "1.1.9-rc.5"
 	},
 	"devDependencies": {
-		"@a11y-ui/core": "1.0.0-rc.15",
-		"@public-ui/components": "1.1.9-rc.4",
-		"@public-ui/core": "1.1.9-rc.4",
+		"@a11y-ui/core": "1.0.0-rc.21",
+		"@public-ui/components": "1.1.9-rc.5",
+		"@public-ui/core": "1.1.9-rc.5",
 		"@types/node": "18.8.4",
 		"rimraf": "3.0.2",
 		"typescript": "4.8.4"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.9-rc.4"
+		"@public-ui/components": "1.1.9-rc.5"
 	},
 	"files": [
 		"assets",
