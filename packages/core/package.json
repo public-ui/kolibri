@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.1.7",
+	"version": "1.1.9-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -18,9 +18,8 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"browser": true,
-	"description": "Das Core-Modul beinhaltet generischen Typen und allgemeine Funktionalität für eine beliebige Komponenten-Bibliothek.",
 	"sideEffects": false,
+	"description": "Das Core-Modul beinhaltet generischen Typen und allgemeine Funktionalität für eine beliebige Komponenten-Bibliothek.",
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"build:cjs": "tsc -m commonjs --outDir cjs",
@@ -48,7 +47,7 @@
 		"rxjs": "7.5.7"
 	},
 	"devDependencies": {
-		"@types/node": "18.8.2",
+		"@types/node": "18.8.3",
 		"rimraf": "3.0.2",
 		"typescript": "4.8.4"
 	},

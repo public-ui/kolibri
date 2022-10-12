@@ -1,0 +1,6 @@
+/.husky
+/.reports
+/dist
+/node_modules
+*.log
+.DS_Store

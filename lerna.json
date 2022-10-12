@@ -5,11 +5,12 @@
 		"packages/adapters/solid",
 		"packages/adapters/vue",
 		"packages/core",
+		"packages/designer",
 		"packages/create-kolibri",
 		"packages/library",
 		"packages/schema",
 		"packages/storybook",
 		"packages/themes"
 	],
-	"version": "1.1.7"
+	"version": "1.1.9-rc.4"
 }

@@ -1,5 +1,4 @@
 import { patchTheme, patchThemeTag } from '@public-ui/core';
-import { Injector } from '@leanup/lib';
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
@@ -458,29 +457,7 @@ export class KoliBriUtils {
 	}
 }
 
-// function setBlack(selector: string): void {
-//   const elem = koliBriQuerySelector<HTMLElement>(getDocument().body, selector);
-//   if (elem) {
-//     elem.style.backgroundColor = 'black';
-//   }
-// }
-
-class KoliBriKeyValueStore extends Injector {
-	private readonly store: Map<string, unknown> = new Map<string, unknown>();
-	register(key: string, value: unknown): KoliBriKeyValueStore {
-		this.store.set(key, value);
-		return this;
-	}
-	get<T>(key: string): T {
-		if (this.store.has(key)) {
-			return this.store.get(key) as T;
-		}
-		throw new Error(`No value for key '${key}' in KoliBri-Store found.`);
-	}
-}
-
 export class KoliBriDevHelper {
-	public static readonly keyStore = new KoliBriKeyValueStore();
 	public static readonly patchTheme = patchTheme;
 	public static readonly patchThemeTag = patchThemeTag;
 	public static readonly querySelector = koliBriQuerySelector;

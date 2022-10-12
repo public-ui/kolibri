@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "pretty": true,
+    "target": "esnext",
+    "module": "esnext",
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "types": ["mocha", "node"],
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "removeComments": true,
+    "strict": true
+  },
+  "include": ["src/**/*", "tests/**/*", "node_modules/@leanup/**/*"],
+  "exclude": ["node_modules/@leanup/**/template/**/*"]
+}

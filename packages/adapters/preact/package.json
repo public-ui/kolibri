@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "1.1.7",
+	"version": "1.1.9-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -18,9 +18,8 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"browser": true,
-	"description": "Das Preact-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
 	"sideEffects": false,
+	"description": "Das Preact-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"build:cjs": "tsc -m commonjs --outDir cjs",
@@ -44,19 +43,18 @@
 		"import": "./esm/index.js"
 	},
 	"devDependencies": {
-		"@a11y-ui/core": "1.0.0-rc.13",
-		"@public-ui/core": "1.1.7",
-		"@public-ui/components": "1.1.7",
-		"@leanup/lib": "1.3.23",
-		"@types/minimatch": "5.1.0",
+		"@a11y-ui/core": "1.0.0-rc.15",
+		"@public-ui/core": "1.1.9-rc.4",
+		"@public-ui/components": "1.1.9-rc.4",
+		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "18.0.4",
+		"@types/node": "18.8.3",
 		"@types/normalize-package-data": "2.4.1",
-		"preact": "10.10.0",
-		"typescript": "4.8.3"
+		"preact": "10.11.1",
+		"typescript": "4.8.4"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.7",
+		"@public-ui/components": "1.1.9-rc.4",
 		"preact": ">=10.5.15"
 	},
 	"files": [

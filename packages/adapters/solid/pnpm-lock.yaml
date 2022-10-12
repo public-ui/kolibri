@@ -1,41 +1,30 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@leanup/lib': 1.3.36
-  '@public-ui/components': 1.1.7
-  '@public-ui/core': 1.1.7
+  '@public-ui/components': 1.1.9-rc.4
+  '@public-ui/core': 1.1.9-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.8.2
+  '@types/node': 18.8.3
   '@types/normalize-package-data': 2.4.1
   rimraf: 3.0.2
   solid-js: 1.5.7
   typescript: 4.8.4
 
 devDependencies:
-  '@leanup/lib': 1.3.36
-  '@public-ui/components': 1.1.7
-  '@public-ui/core': 1.1.7
+  '@public-ui/components': 1.1.9-rc.4
+  '@public-ui/core': 1.1.9-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.8.2
+  '@types/node': 18.8.3
   '@types/normalize-package-data': 2.4.1
   rimraf: 3.0.2
   solid-js: 1.5.7
   typescript: 4.8.4
 
 packages:
-  /@a11y-ui/core/1.0.0-rc.15:
-    resolution: { integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw== }
-    dependencies:
-      '@leanup/lib': 1.3.20
-    dev: true
-
-  /@leanup/lib/1.3.20:
-    resolution: { integrity: sha512-xAHNLTMaXuV8ENPoMU+4J1WTzoXciRgkP0U9205DcPcZUf90M7jTCgRBz2z0mrbqNzUjJOaS9eBvznmYsIj+zg== }
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.0
+  /@a11y-ui/core/1.0.0-rc.22:
+    resolution: { integrity: sha512-SwAd68ul7/P34EcOJuBrR+o7cSToZRR+CwxoisGkamj0vLzYnpqJsoToTpl4lCmEVTKcvk9xGDe+sIVAdit2Aw== }
     dev: true
 
   /@leanup/lib/1.3.36:
@@ -45,25 +34,24 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /@public-ui/components/1.1.7:
-    resolution: { integrity: sha512-ArfWinQRIPgTayb2gEhVmhyU4z7o0C2gl0s7GnUJoA5l5GSzkD6ulJCo2kE8hC4lqIDwaTBhIWBEtK3mdgeRzg== }
+  /@public-ui/components/1.1.9-rc.4:
+    resolution: { integrity: sha512-PmmrUdHZWuT7ooDQHL3gytKo5ngzwwXjXSZa7tw2eOKhhiIbALZt5HUvfKM94ND3MDW7CW9/b/kQ3vToGsmXyQ== }
     dependencies:
-      '@leanup/lib': 1.3.36
-      '@public-ui/schema': 1.1.7
+      '@public-ui/schema': 1.1.9-rc.4
     dev: true
 
-  /@public-ui/core/1.1.7:
-    resolution: { integrity: sha512-MxwQnlDSaFqfE8Idm7K8dHaVDIsN5shSe/i4acs/O8+heCbESPiyvJvYbnDsv3DStQOCQA3RWnFOWNWk7R7DpA== }
+  /@public-ui/core/1.1.9-rc.4:
+    resolution: { integrity: sha512-wbE86yoAz/aXRbflvNT50rE++nlgZpJAISrPCqqTfqqzs9iuCozJd8TodtyivNv+0aPW/wSY8U8uLYoLL+mOSA== }
     dependencies:
-      '@a11y-ui/core': 1.0.0-rc.15
+      '@a11y-ui/core': 1.0.0-rc.22
       '@leanup/lib': 1.3.36
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.7:
-    resolution: { integrity: sha512-4eYtOteYkpUGmIG5r5CV3urT7u2k/eTHzlxxKhRJQ+k9eJO5yEWiZVKoNSDicVZGvf6L1kvWGEnL165VcNm1fg== }
+  /@public-ui/schema/1.1.9-rc.4:
+    resolution: { integrity: sha512-RLbPhblJZ769Kl/F5JwArrlyRKI+SNy4d8h+3lsylzz6gxodFjL7K6WM6UWEDeEPoauJd6D9nQbqCo5O6SyVTQ== }
     dependencies:
-      '@public-ui/core': 1.1.7
+      '@public-ui/core': 1.1.9-rc.4
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -74,8 +62,8 @@ packages:
     resolution: { integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ== }
     dev: true
 
-  /@types/node/18.8.2:
-    resolution: { integrity: sha512-cRMwIgdDN43GO4xMWAfJAecYn8wV4JbsOGHNfNUIDiuYkUYAR5ec4Rj7IO2SAhFPEfpPtLtUTbbny/TCT7aDwA== }
+  /@types/node/18.8.3:
+    resolution: { integrity: sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w== }
     dev: true
 
   /@types/normalize-package-data/2.4.1:

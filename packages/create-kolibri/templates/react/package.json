@@ -1,19 +1,18 @@
 {
-  "name": "{{kebab name}}",
-  "version": "0.0.0",
-  "description": "{{description}}",
+	"name": "{{kebab name}}",
+	"version": "0.0.0",
+	"description": "{{description}}",
 	"author": {
 		"name": "{{author}}",
 		"email": "{{email}}"
 	},
-	"contributors":  [
+	"contributors": [
 		{
 			"name": "{{author}}",
 			"email": "{{email}}"
 		}
 	],
-  "license": "UNLICENSED",
-	"browser": true,
+	"license": "UNLICENSED",
 	"private": true,
 	"scripts": {
 		"clean": "git clean -f -d -X",
@@ -32,10 +31,10 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.1.7",
-		"@public-ui/core": "1.1.7",
-		"@public-ui/react": "1.1.7",
-		"@public-ui/themes": "1.1.7",
+		"@public-ui/components": "1.1.9-rc.4",
+		"@public-ui/core": "1.1.9-rc.4",
+		"@public-ui/react": "1.1.9-rc.4",
+		"@public-ui/themes": "1.1.9-rc.4",
 		"ajv": "8.11.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",

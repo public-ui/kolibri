@@ -1,5 +1,3 @@
-import { DI, Injector } from '@leanup/lib';
-
 import { ModalService } from '../components/modal/service';
 import { ToasterService } from '../components/toast/toaster';
 
@@ -119,21 +117,16 @@ export const getKoliBri = (): Record<string, unknown> => KoliBri || {};
 export const initKoliBri = (): void => {
 	if (KoliBri === null) {
 		KoliBri = getWindow().KoliBri || {};
-		DI.register('Modal', new ModalService());
-		DI.register('Toaster', new ToasterService(getDocument()));
-		Object.defineProperty(KoliBri, 'DI', {
-			get: function (): Injector {
-				return DI;
-			},
-		});
+		const Modal = new ModalService();
+		const Toaster = new ToasterService(getDocument());
 		Object.defineProperty(KoliBri, 'Modal', {
 			get: function (): ModalService {
-				return DI.get<ModalService>('Modal');
+				return Modal;
 			},
 		});
 		Object.defineProperty(KoliBri, 'Toaster', {
 			get: function (): ToasterService {
-				return DI.get<ToasterService>('Toaster');
+				return Toaster;
 			},
 		});
 		initMeta();

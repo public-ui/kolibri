@@ -1,0 +1,44 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Auto dependency updater
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Update dependencies
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          cache: pnpm
+          node-version: 16
+      - name: Create new branch
+        run: git checkout -b chore/auto-update-deps
+      - name: Install tools
+        run: npm i lerna npm-check-updates --no-save
+      - name: Update dependencies
+        run: npm run update
+      - name: Reinstall dependencies
+        run: npm run reinstall
+      - name: Commit changed files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add **/package.json **/pnpm-lock.yaml
+          git status
+          git commit -m "chore: auto dependency update"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'chore/auto-update-deps'
+          force: true

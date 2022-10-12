@@ -1,0 +1,50 @@
+body
+  margin: .5%
+
+h1
+  @apply text-2xl mt-2 mb-1.5
+
+h2
+  @apply text-xl mt-2 mb-1.5
+
+h3
+  @apply text-lg mt-2 mb-1.5
+
+button
+  @apply bg-gray-700 hover:bg-gray-500 text-white py-2 px-3 rounded-md my-1 mr-1
+
+    &.primary
+      @apply bg-green-700 hover:bg-green-500
+
+    &.secondary
+      @apply bg-blue-700 hover:bg-blue-500
+
+    &.danger
+      @apply bg-red-700 hover:bg-red-500
+
+label,
+input
+  @apply m-1
+
+label
+  @apply font-semibold w-24 w-full
+
+input
+  @apply border border-blue-50 p-2 rounded-md
+
+div
+  &.my-app
+    @apply font-sans p-5 border border-indigo-300 m-2 bg-gray-50 rounded-md
+
+table
+  @apply table-auto w-full rounded-md my-2 rounded-md
+
+    th,
+    td
+      @apply text-center border border-gray-300 p-1
+
+.nav-item
+  @apply border inline-block border-indigo-100 text-indigo-900 py-2 px-4
+
+    &:hover
+      @apply bg-indigo-900 underline text-white border-indigo-600

@@ -1,0 +1,23 @@
+name: Sync to OpenCoDE
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '* 6-22/4 * * 1-5'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: sync
+    steps:
+      - name: Checkout specific branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: 'main'
+      - name: git-sync
+        run: |
+          git remote add opencode https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git
+          git pull opencode main
+          git push opencode

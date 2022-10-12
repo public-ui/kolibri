@@ -113,10 +113,18 @@ jobs:
         working-directory: packages/create-kolibri
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build designer
+        run: |
+          npm i --legacy-peer-deps
+          npm run build
+        working-directory: packages/designer
       - name: Build storybook
         run: |
           npm i --legacy-peer-deps
           npm run build
+        working-directory: packages/storybook
+      - name: Copy designer to storybook
+        run: cp -r ../designer/dist dist/designer
         working-directory: packages/storybook
       - uses: actions/setup-node@v3
         with:

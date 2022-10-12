@@ -18,6 +18,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					label: 'Package',
 					key: 'name',
 					render: (el, cell, tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
+					width: '15em',
 				},
 				{
 					label: 'Version',
@@ -48,7 +49,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 </kol-link>`,
 				},
 				{
-					label: 'Vulnerabilities',
+					label: 'Vulnerabilities*',
 					key: 'name',
 					render: (el, cell, tupel) => `<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(tupel.scope, tupel.name, '%2F')}" _target="snyk">
 	<img alt="" src="https://snyk.io/test/npm/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
@@ -95,3 +96,6 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 		},
 	]}
 ></KolTable>
+<kol-indented-text>
+	<sub>*</sub> Die Anzahl von Vulnerabilities gibt keinen Aufschluss über die Schwere der Betroffenheit des Pakets. Bei der Prüfung werden auch Abhängigkeiten berücksichtigt, die Abhängigkeiten berücksichtigt, die zum Entwickeln des Pakets erforderlich sind (devDependencies).
+</kol-indented-text>

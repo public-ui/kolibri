@@ -1,0 +1,34 @@
+{
+	"name": "{{kebab name}}",
+	"version": "0.0.0",
+	"description": "{{description}}",
+	"author": {
+		"name": "{{author}}",
+		"email": "{{email}}"
+	},
+	"contributors": [
+		{
+			"name": "{{author}}",
+			"email": "{{email}}"
+		}
+	],
+	"license": "UNLICENSED",
+	"private": true,
+	"scripts": {
+		"start": "serve",
+		"update": "ncu -t minor -u && ncu"
+	},
+	"dependencies": {
+		"@public-ui/components": "1.1.9-rc.4",
+		"@public-ui/core": "1.1.9-rc.4",
+		"@public-ui/react": "1.1.9-rc.4",
+		"@public-ui/themes": "1.1.9-rc.4"
+	},
+	"devDependencies": {
+		"npm-check-updates": "16.3.9",
+		"serve": "14.0.1"
+	},
+	"files": [
+		"dist/"
+	]
+}

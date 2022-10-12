@@ -4,7 +4,7 @@ import 'uno.css'; // https://github.com/antfu/unocss
 import './style.scss';
 
 // PWA
-import './shares/constant';
+import './shares/pwa';
 
 // App
 import './react.main';

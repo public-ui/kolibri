@@ -131,6 +131,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 ### Used by
 
 - [kol-breadcrumb](../breadcrumb)
+- [kol-input-adapter-leanup](../input-adapter-leanup)
 - [kol-link-group](../link-group)
 - [kol-skip-nav](../skip-nav)
 
@@ -149,6 +150,7 @@ graph TD;
   kol-badge --> kol-icon-icofont
   kol-icon-icofont --> kol-icon
   kol-breadcrumb --> kol-link
+  kol-input-adapter-leanup --> kol-link
   kol-link-group --> kol-link
   kol-skip-nav --> kol-link
   style kol-link fill:#f9f,stroke:#333,stroke-width:4px
