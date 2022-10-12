@@ -18,27 +18,15 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"sideEffects": false,
-	"type": "module",
 	"description": "Das Vue-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
 	"scripts": {
-		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
-		"build:cjs": "tsc -m commonjs --outDir cjs",
-		"build:clean": "rimraf cjs esm types umd",
-		"build:esm": "tsc -m esnext --outDir esm",
-		"build:tsc": "tsc -p .",
-		"build:types": "tsc -d --outDir types && rimraf types/*.js types/*.map types/**/*.js types/**/*.map",
-		"build:umd": "tsc -m umd --outDir umd",
-		"build": "npm run build:clean && npm run build:cjs && npm run build:esm && npm run build:types && npm run build:umd",
-		"prepack": "npm run build",
+		"build": "unbuild",
+		"prepack": "unbuild",
 		":install": "pnpm i && pnpm update",
 		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
 		":republish": "npm run :unpublish && npm run :publish",
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
 	"devDependencies": {
 		"@babel/types": "7.19.4",
 		"@public-ui/core": "1.1.9-rc.5",
@@ -47,18 +35,26 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.8.4",
 		"@types/normalize-package-data": "2.4.1",
-		"rimraf": "3.0.2",
 		"vue": "3.2.40",
-		"typescript": "4.8.4"
+		"typescript": "4.8.4",
+		"unbuild": "0.8.11"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.1.9-rc.5",
 		"vue": ">=3"
 	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
 	"files": [
-		"cjs",
-		"esm",
-		"types",
-		"umd"
+		"dist"
 	]
 }

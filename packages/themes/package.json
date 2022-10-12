@@ -18,29 +18,14 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"sideEffects": false,
-	"type": "module",
 	"description": "Das Themes-Modul beinhaltet zahlreiche Themes (Styleguides) zur Komponenten-Bibliothek.",
 	"scripts": {
-		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
-		"build:cjs": "tsc -m commonjs --outDir cjs",
-		"build:clean": "rimraf cjs esm types umd",
-		"build:esm": "tsc -m esnext --outDir esm",
-		"build:types": "tsc -d --outDir types && rimraf types/*.js types/*.map types/**/*.js types/**/*.map",
-		"build:umd": "tsc -m umd --outDir umd",
-		"build": "npm run build:cjs && npm run build:esm && npm run build:types && npm run build:umd",
-		"prepack": "npm run build:clean && npm run build",
+		"build": "unbuild",
+		"prepack": "unbuild",
 		":install": "pnpm i && pnpm update",
 		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
 		":republish": "npm run :unpublish && npm run :publish",
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
-	},
-	"main": "cjs/index.js",
-	"module": "esm/index.js",
-	"types": "types/index.d.ts",
-	"exports": {
-		"require": "./cjs/index.js",
-		"import": "./esm/index.js"
 	},
 	"dependencies": {
 		"@public-ui/schema": "1.1.9-rc.5"
@@ -50,18 +35,26 @@
 		"@public-ui/components": "1.1.9-rc.5",
 		"@public-ui/core": "1.1.9-rc.5",
 		"@types/node": "18.8.4",
-		"rimraf": "3.0.2",
-		"typescript": "4.8.4"
+		"typescript": "4.8.4",
+		"unbuild": "0.8.11"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.1.9-rc.5"
 	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
 	"files": [
 		"assets",
-		"cjs",
-		"esm",
 		"reports",
-		"types",
-		"umd"
+		"dist"
 	]
 }
