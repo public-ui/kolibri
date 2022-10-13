@@ -1,8 +1,22 @@
 import { Meta } from '@storybook/addon-docs';
+import {
+	KolAbbr,
+	KolAlert,
+	KolCard,
+	KolHeading,
+	KolIconIcofont,
+	KolIndentedText,
+	KolIcon,
+	KolKolibri,
+	KolDetails,
+	KolLink,
+	KolLogo,
+	KolTable,
+} from '@public-ui/react';
 
 <Meta title="Designer" />
 
-<kol-heading _level="1">KoliBri Designer</kol-heading>
+<kol-heading _level="1">KoliBri-Designer</kol-heading>
 
 Mit Hilfe des KoliBri Designer können Benutzer:innen für die KoliBri-Bibliothek schnell einen eigenen
 Style entwickeln. Die Wirkungen der eigenen CSS-Anweisungen werden direkt an der Komponente
@@ -108,3 +122,16 @@ Die in diesem Beispiel verwendete LinkGroup besteht aus den weiteren KoliBri-Kom
    innerhalb eines Shadow-Doms befindet.
 5. Beachten Sie, dass Änderungen im KoliBri Designer nur solche KoliBri-Komponenten möglich sind, die beim Rendern einen Shadow-Dom besitzen. Das ist z.B. bei
    der Komponente <b>kol-icon-icofont</b> oder <b>kol-icon-fontawesome</b> nicht der Fall.
+
+<kol-heading _level="2">KoliBri-Designer</kol-heading>
+
+<div className="col-12 col-sm-6 my-2">
+	<KolCard _headline="Eigenes Theme erstellen" _level={2}>
+		<KolLink slot="content" _useCase="nav" _href="/designer" _target="designer">
+			<div className="d-flex gap-4 py-2">
+				<KolIcon className="homepage" _icon="fas fa-paint-brush" />
+				<span>Kilcken Sie hier, um den Designer in einem neuen Browser-Fenster zu öffnen.</span>
+			</div>
+		</KolLink>
+	</KolCard>
+</div>
