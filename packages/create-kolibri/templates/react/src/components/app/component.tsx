@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import IMG_FRAMEWORK from '../../assets/logo.react.png';
+
 import { KolAlert, KolIcon, KolKolibri, KolLink } from '@public-ui/react';
 
 /**
@@ -16,7 +18,14 @@ export const AppComponent = (): JSX.Element => {
 	return (
 		<div className="bmf container mx-auto my-10 max-w-800px">
 			<header className="text-center">
-				<KolKolibri className="block m-auto w-40" _labeled={false}></KolKolibri>
+				<div className="grid grid-cols-2 items-center">
+					<div>
+						<KolKolibri className="block m-auto w-40" _labeled={false}></KolKolibri>
+					</div>
+					<div>
+						<img className="block m-auto h-25" src={IMG_FRAMEWORK as string} alt="Logo vom React Framework" />
+					</div>
+				</div>
 				<strong className="text-2xl">Willkommen zu KoliBri</strong>
 			</header>
 			<main className="grid md:grid-cols-2 gap-6 p-12">
