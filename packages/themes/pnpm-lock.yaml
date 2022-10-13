@@ -2,20 +2,20 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.0-rc.21
-  '@public-ui/components': 1.1.9-rc.8
-  '@public-ui/core': 1.1.9-rc.8
-  '@public-ui/schema': 1.1.9-rc.8
+  '@public-ui/components': 1.1.9
+  '@public-ui/core': 1.1.9
+  '@public-ui/schema': 1.1.9
   '@types/node': 18.8.5
   typescript: 4.8.4
   unbuild: 0.8.11
 
 dependencies:
-  '@public-ui/schema': 1.1.9-rc.8
+  '@public-ui/schema': 1.1.9
 
 devDependencies:
   '@a11y-ui/core': 1.0.0-rc.21
-  '@public-ui/components': 1.1.9-rc.8
-  '@public-ui/core': 1.1.9-rc.8
+  '@public-ui/components': 1.1.9
+  '@public-ui/core': 1.1.9
   '@types/node': 18.8.5
   typescript: 4.8.4
   unbuild: 0.8.11
@@ -324,23 +324,23 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.9-rc.8:
+  /@public-ui/components/1.1.9:
     resolution: {integrity: sha512-A9fRpUzgtTQrB3uOi5MSneVM0ylGrmNH3Wp6dQN0yWyYVzbOKAt6TFbUURKZHt5Wja74GLswisOTiFz9kX1jog==}
     dependencies:
-      '@public-ui/schema': 1.1.9-rc.8
+      '@public-ui/schema': 1.1.9
     dev: true
 
-  /@public-ui/core/1.1.9-rc.8:
+  /@public-ui/core/1.1.9:
     resolution: {integrity: sha512-vhGl6I6RmeKm06bVlVPw0Uvqbh/j8dyIq+MYFb/PMMc00oBMLpdg/TGHRAsPB08KXzWDA9FQSDgFAHL0Zktv2w==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.36
       rxjs: 7.5.7
 
-  /@public-ui/schema/1.1.9-rc.8:
+  /@public-ui/schema/1.1.9:
     resolution: {integrity: sha512-u7t/BF9T7AEs70DJkijiCZMJyoo5vVzUf2wC/Hfq6v7kHyny3HNJiExOWFVjrQYhLu/SD3eEMo1u3Qlnt87KmA==}
     dependencies:
-      '@public-ui/core': 1.1.9-rc.8
+      '@public-ui/core': 1.1.9
 
   /@rollup/plugin-alias/3.1.9_rollup@2.79.1:
     resolution: {integrity: sha512-QI5fsEvm9bDzt32k39wpOwZhVzRcL5ydcffUHMyLVaVaLeC70I8TJZ17F1z1eMoLu4E/UOcH9BWVkKpIKdrfiw==}
