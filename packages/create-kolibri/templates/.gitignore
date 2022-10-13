@@ -1,6 +1,8 @@
 /*/.vscode
 /*/public
+/*/src/assets
 /*/src/shares/pwa.ts
+/*/src/declare.d.ts
 /*/src/style.scss
 /*/tests
 /static/assets

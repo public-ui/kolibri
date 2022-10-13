@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import IMG_FRAMEWORK from '../../assets/logo.angular.png';
-import IMG_LEANUP from '../../assets/logo.leanupjs.png';
 
 @Component({
 	selector: 'app',
@@ -9,5 +8,4 @@ import IMG_LEANUP from '../../assets/logo.leanupjs.png';
 })
 export class AppComponent {
 	public readonly framework = IMG_FRAMEWORK;
-	public readonly leanup = IMG_LEANUP;
 }
