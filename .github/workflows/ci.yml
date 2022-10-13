@@ -1,22 +1,15 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
-
-env:
-  github-registry: https://npm.pkg.github.com
-  github-token: ${{ secrets.GITHUB_TOKEN }}
-  npmjs-registry: https://registry.npmjs.org
-  npmjs-token: ${{ secrets.NPMJS_TOKEN }}
+name: CI-Pipeline
 
 on:
-  # release:
-  #   types:
-  #     - released
+  push:
   workflow_dispatch:
 
 jobs:
-  pr-quality-gate:
+  build:
     runs-on: ubuntu-latest
+    name: Check quality gates
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2.2.2
@@ -26,14 +19,18 @@ jobs:
         with:
           cache: pnpm
           node-version: 16
-          registry-url: '${{env.npm-registry}}'
-          scope: '@public-ui'
-      - name: Install
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
         env:
-          NODE_AUTH_TOKEN: ${{env.npm-token}}
-        run: |
-          npx lerna exec --stream -- pnpm i --frozen-lockfile=false
-          pnpm i
+          cache-name: cache-pnpm-modules
+        with:
+          # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+          restore-keys: |
+            {{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+      - name: Install
+        run: pnpm i
       - name: Unused
         run: npx lerna exec --stream -- ts-prune src -e
       - name: Format

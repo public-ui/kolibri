@@ -30,11 +30,11 @@
 		"dev": "tsup src/cli.ts --watch",
 		"prepack": "git clean -f -d -X templates/ && npm run build",
 		"update": "ncu -t minor -u && ncu",
-		"test": "pnpm i && npm run build && rimraf try-demo && node dist/cli.js try-demo",
 		":install": "pnpm i && pnpm update",
 		":postinstall": "npm i puppeteer --no-save || true",
 		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
 		":republish": "npm run :unpublish && npm run :publish",
+		":test": "pnpm i && npm run build && rimraf try-demo && node dist/cli.js my-app",
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"bin": "dist/cli.js",
