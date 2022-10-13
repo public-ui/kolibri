@@ -5,7 +5,7 @@ specifiers:
   '@public-ui/components': 1.1.9-rc.8
   '@public-ui/core': 1.1.9-rc.8
   '@public-ui/schema': 1.1.9-rc.8
-  '@types/node': 18.8.4
+  '@types/node': 18.8.5
   typescript: 4.8.4
   unbuild: 0.8.11
 
@@ -16,7 +16,7 @@ devDependencies:
   '@a11y-ui/core': 1.0.0-rc.21
   '@public-ui/components': 1.1.9-rc.8
   '@public-ui/core': 1.1.9-rc.8
-  '@types/node': 18.8.4
+  '@types/node': 18.8.5
   typescript: 4.8.4
   unbuild: 0.8.11
 
@@ -24,6 +24,7 @@ packages:
 
   /@a11y-ui/core/1.0.0-rc.21:
     resolution: {integrity: sha512-BkjZ1plTWHQq+uWtuA5Uql82n4CcMAbIrT0zgsQK7Xp5vVRhmNXayW+tnVyzxDabZoeAcKKWgtPw3/jPXVpHzg==}
+    deprecated: Please use v1.0.0-rc.15
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -429,14 +430,14 @@ packages:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
-  /@types/node/18.8.4:
-    resolution: {integrity: sha512-WdlVphvfR/GJCLEMbNA8lJ0lhFNBj4SW3O+O5/cEGw9oYrv0al9zTwuQsq+myDUXgNx2jgBynoVgZ2MMJ6pbow==}
+  /@types/node/18.8.5:
+    resolution: {integrity: sha512-Bq7G3AErwe5A/Zki5fdD3O6+0zDChhg671NfPjtIcbtzDNZTv4NPKMRFr7gtYPG7y+B8uTiNK4Ngd9T0FTar6Q==}
     dev: true
 
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.8.4
+      '@types/node': 18.8.5
     dev: true
 
   /acorn/8.8.0:
@@ -524,7 +525,7 @@ packages:
     dev: true
 
   /concat-map/0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
   /consola/2.15.3:
