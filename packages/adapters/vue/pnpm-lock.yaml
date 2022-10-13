@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.19.4
-  '@public-ui/components': 1.1.9-rc.7
-  '@public-ui/core': 1.1.9-rc.7
+  '@public-ui/components': 1.1.9-rc.8
+  '@public-ui/core': 1.1.9-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.8.4
@@ -14,8 +14,8 @@ specifiers:
 
 devDependencies:
   '@babel/types': 7.19.4
-  '@public-ui/components': 1.1.9-rc.7
-  '@public-ui/core': 1.1.9-rc.7
+  '@public-ui/components': 1.1.9-rc.8
+  '@public-ui/core': 1.1.9-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.8.4
@@ -328,13 +328,13 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.9-rc.7:
+  /@public-ui/components/1.1.9-rc.8:
     resolution: { integrity: sha512-y92KRLufXTuyCWF7bXYjnaSuawsZG3cHTAYWNxyx+u+bNzo6jAec7PQCYQddI5cFSpT3FmpD9aw3p95gu6dVXA== }
     dependencies:
-      '@public-ui/schema': 1.1.9-rc.7
+      '@public-ui/schema': 1.1.9-rc.8
     dev: true
 
-  /@public-ui/core/1.1.9-rc.7:
+  /@public-ui/core/1.1.9-rc.8:
     resolution: { integrity: sha512-OsA4czCEccsjj3MZKcwk9xs4LrfhZGDD7h8/C2L808Izn8eRHa/0S7b8FjY9CN/TQws3SLb3yJfj71s7oNGnUg== }
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
@@ -342,10 +342,10 @@ packages:
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.9-rc.7:
+  /@public-ui/schema/1.1.9-rc.8:
     resolution: { integrity: sha512-rilZ3EOB5K6eewFtJ+PYiTrJv/aRf0edS0oKmnhzHChNcv2Rc+2kedxWNr/Rcu4ysx4eP40wZy/7iitPVMPDyg== }
     dependencies:
-      '@public-ui/core': 1.1.9-rc.7
+      '@public-ui/core': 1.1.9-rc.8
     dev: true
 
   /@rollup/plugin-alias/3.1.9_rollup@2.79.1:
