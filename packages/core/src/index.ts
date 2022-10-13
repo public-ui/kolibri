@@ -1,7 +1,5 @@
-import type { Generic } from '@a11y-ui/core';
-
+import type { Generic, LoaderCallback, RegisterOptions } from '@a11y-ui/core';
 import { register as coreRegister } from '@a11y-ui/core';
-import type { LoaderCallback, RegisterOptions } from '@a11y-ui/core/types/theme';
 
 import { TranslationService } from './i18n';
 

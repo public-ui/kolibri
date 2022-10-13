@@ -38,8 +38,5 @@
 	"engines": {
 		"npm": ">=8",
 		"pnpm": ">=3"
-	},
-	"dependencies": {
-		"@public-ui/themes": "1.1.9-rc.4"
 	}
 }

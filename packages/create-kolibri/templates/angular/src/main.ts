@@ -1,5 +1,5 @@
 // Static CSS
-import './main.css';
+import './style.css';
 
 // App style
 import './style.scss';

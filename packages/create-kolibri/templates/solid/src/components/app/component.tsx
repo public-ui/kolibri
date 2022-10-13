@@ -1,11 +1,20 @@
 import { KolAlert, KolIcon, KolKolibri, KolLink } from '@public-ui/solid';
 import { Component } from 'solid-js';
 
+import IMG_FRAMEWORK from '../../assets/logo.solid.png';
+
 export const AppComponent: Component = () => {
 	return (
 		<div class="bmf container mx-auto my-10 max-w-800px">
 			<header class="text-center">
-				<KolKolibri class="block m-auto w-40" _labeled={false}></KolKolibri>
+				<div class="grid grid-cols-2 items-center">
+					<div>
+						<KolKolibri class="block m-auto w-40" _labeled={false}></KolKolibri>
+					</div>
+					<div>
+						<img class="block m-auto h-20" src={IMG_FRAMEWORK as string} alt="Logo vom Solid Framework" />
+					</div>
+				</div>
 				<strong class="text-2xl">Willkommen zu KoliBri</strong>
 			</header>
 			<main class="grid md:grid-cols-2 gap-6 p-12">

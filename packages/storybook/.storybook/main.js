@@ -16,9 +16,10 @@ module.exports = {
 		'@storybook/addon-viewport',
 		'storybook-addon-themes',
 	],
-	// core: {
-	// 	builder: '@storybook/builder-vite',
-	// },
+	core: {
+		// 	builder: '@storybook/builder-vite',
+		builder: 'webpack5',
+	},
 	staticDirs: ['../node_modules/@public-ui/themes/assets', '../src/assets'],
 	stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
 

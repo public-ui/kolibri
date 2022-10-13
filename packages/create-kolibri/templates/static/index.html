@@ -32,9 +32,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.9-rc.4';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.9-rc.4/dist/loader';
-			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.9-rc.4';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.9-rc.8';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.9-rc.8/dist/loader';
+			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.9-rc.8';
 			register([BMF], defineCustomElements)
 				.then(() => {})
 				.catch(console.warn);
@@ -43,7 +43,14 @@
 	<body class="bmf" data-theme="bmf">
 		<div class="bmf container mx-auto my-10 max-w-800px">
 			<header class="text-center">
-				<kol-kolibri class="block m-auto w-40" _labeled="false"></kol-kolibri>
+				<div class="grid grid-cols-2 items-center">
+					<div>
+						<kol-kolibri class="block m-auto w-40" _labeled="false"></kol-kolibri>
+					</div>
+					<div>
+						<img class="block m-auto h-25" src="logo.vanilla.png" alt="Logo vom Webcomponents" />
+					</div>
+				</div>
 				<strong class="text-2xl">Willkommen zu KoliBri</strong>
 			</header>
 			<main class="grid md:grid-cols-2 gap-6 p-12">

@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 14.2.5
   '@angular/compiler-cli': 14.2.5
   '@angular/core': 14.2.5
-  '@public-ui/components': 1.1.9-rc.4
-  '@public-ui/core': 1.1.9-rc.4
+  '@public-ui/components': 1.1.9-rc.8
+  '@public-ui/core': 1.1.9-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.8.4
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 14.2.5_@angular+core@14.2.5
   '@angular/compiler-cli': 14.2.5_bgykobdioj4uqrgbu7r6ud4jgm
   '@angular/core': 14.2.5_rxjs@7.5.7+zone.js@0.11.8
-  '@public-ui/components': 1.1.9-rc.4
-  '@public-ui/core': 1.1.9-rc.4
+  '@public-ui/components': 1.1.9-rc.8
+  '@public-ui/core': 1.1.9-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.8.4
@@ -36,10 +36,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.0-rc.15:
-    resolution: {integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw==}
-    dependencies:
-      '@leanup/lib': 1.3.20
+  /@a11y-ui/core/1.0.0-rc.21:
+    resolution: {integrity: sha512-BkjZ1plTWHQq+uWtuA5Uql82n4CcMAbIrT0zgsQK7Xp5vVRhmNXayW+tnVyzxDabZoeAcKKWgtPw3/jPXVpHzg==}
     dev: true
 
   /@ampproject/remapping/2.2.0:
@@ -330,13 +328,6 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@leanup/lib/1.3.20:
-    resolution: {integrity: sha512-xAHNLTMaXuV8ENPoMU+4J1WTzoXciRgkP0U9205DcPcZUf90M7jTCgRBz2z0mrbqNzUjJOaS9eBvznmYsIj+zg==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.0
-    dev: true
-
   /@leanup/lib/1.3.36:
     resolution: {integrity: sha512-DnPkC0G63jjxX/AU2MuYnmUswQzdeoGWmoS7ouURXpO2E/iMu2dZHmRNy3pj52phdpNSdjbNlK0oIPkmUBAEag==}
     dependencies:
@@ -344,24 +335,24 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /@public-ui/components/1.1.9-rc.4:
-    resolution: {integrity: sha512-vfNMPF93WR5WMoTFB3SIm0Wj91/H8kEugium/1tADddezWchTcojwP/m+dnAbbPL7scxodx0IpMbyAbrHDNMSA==}
+  /@public-ui/components/1.1.9-rc.8:
+    resolution: {integrity: sha512-A9fRpUzgtTQrB3uOi5MSneVM0ylGrmNH3Wp6dQN0yWyYVzbOKAt6TFbUURKZHt5Wja74GLswisOTiFz9kX1jog==}
     dependencies:
-      '@public-ui/schema': 1.1.9-rc.4
+      '@public-ui/schema': 1.1.9-rc.8
     dev: true
 
-  /@public-ui/core/1.1.9-rc.4:
-    resolution: {integrity: sha512-n8XNraNGIGXGCbwVWur/unULQe0MlYXR+oYFiALGpUdbE7Eik6UOhwRE+i7egYC7HSmlyruHyhVScBOFLOro7A==}
+  /@public-ui/core/1.1.9-rc.8:
+    resolution: {integrity: sha512-vhGl6I6RmeKm06bVlVPw0Uvqbh/j8dyIq+MYFb/PMMc00oBMLpdg/TGHRAsPB08KXzWDA9FQSDgFAHL0Zktv2w==}
     dependencies:
-      '@a11y-ui/core': 1.0.0-rc.15
+      '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.36
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.9-rc.4:
-    resolution: {integrity: sha512-hiAIrqc0Ej/y7OquASCjtNoea0O6cO1RBFMe3yg4Cg5wSBqAx2RyFBSsqAHJa2p0DLJQdyL3II73ksMOXWw8Kw==}
+  /@public-ui/schema/1.1.9-rc.8:
+    resolution: {integrity: sha512-u7t/BF9T7AEs70DJkijiCZMJyoo5vVzUf2wC/Hfq6v7kHyny3HNJiExOWFVjrQYhLu/SD3eEMo1u3Qlnt87KmA==}
     dependencies:
-      '@public-ui/core': 1.1.9-rc.4
+      '@public-ui/core': 1.1.9-rc.8
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -435,14 +426,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001418
-      electron-to-chromium: 1.4.279
+      caniuse-lite: 1.0.30001419
+      electron-to-chromium: 1.4.281
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
-  /caniuse-lite/1.0.30001418:
-    resolution: {integrity: sha512-oIs7+JL3K9JRQ3jPZjlH6qyYDp+nBTCais7hjh0s+fuBwufc7uZ7hPYMXrDOJhV360KGMTcczMRObk0/iMqZRg==}
+  /caniuse-lite/1.0.30001419:
+    resolution: {integrity: sha512-aFO1r+g6R7TW+PNQxKzjITwLOyDhVRLjW0LcwS/HCZGUUKTGNp9+IwLC4xyDSZBygVL/mxaFR3HIV6wEKQuSzw==}
     dev: true
 
   /chalk/2.4.2:
@@ -500,7 +491,7 @@ packages:
     dev: true
 
   /concat-map/0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
     dev: true
 
   /convert-source-map/1.9.0:
@@ -524,8 +515,8 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /electron-to-chromium/1.4.279:
-    resolution: {integrity: sha512-xs7vEuSZ84+JsHSTFqqG0TE3i8EAivHomRQZhhcRvsmnjsh5C2KdhwNKf4ZRYtzq75wojpFyqb62m32Oam57wA==}
+  /electron-to-chromium/1.4.281:
+    resolution: {integrity: sha512-yer0w5wCYdFoZytfmbNhwiGI/3cW06+RV7E23ln4490DVMxs7PvYpbsrSmAiBn/V6gode8wvJlST2YfWgvzWIg==}
     dev: true
 
   /emoji-regex/8.0.0:
