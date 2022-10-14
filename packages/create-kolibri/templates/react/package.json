@@ -46,7 +46,7 @@
 		"@leanup/cli-pwa": "1.3.35",
 		"@leanup/stack": "1.3.37",
 		"@leanup/stack-react": "1.3.35",
-		"@leanup/stack-webpack": "1.3.35",
+		"@leanup/stack-webpack": "1.3.37",
 		"@playwright/test": "1.27.1",
 		"@types/react": "18.0.21",
 		"@types/react-dom": "18.0.6",
