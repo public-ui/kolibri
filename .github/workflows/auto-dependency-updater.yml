@@ -1,12 +1,9 @@
-# This workflow will build a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
 name: Auto dependency updater
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: '0 2 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,6 +18,16 @@ jobs:
         with:
           cache: pnpm
           node-version: 16
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+          restore-keys: |
+            {{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
       - name: Create new branch
         run: git checkout -b chore/auto-update-deps
       - name: Install tools

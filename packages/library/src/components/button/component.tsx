@@ -104,61 +104,63 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					}}
 					type={this.state._type}
 				>
-					{this.state._icon.top && (
-						<kol-icon
-							class={{
-								'icon top': true,
-							}}
-							style={this.state._icon.top.style}
-							_ariaLabel=""
-							_icon={this.state._icon.top.icon}
-						/>
-					)}
-					<span class="flex items-center">
-						{this.state._icon.left && (
+					<span>
+						{this.state._icon.top && (
 							<kol-icon
 								class={{
-									'icon left': true,
-									'mr-2': this.state._iconOnly === false,
+									'icon top': true,
 								}}
-								style={this.state._icon.left.style}
+								style={this.state._icon.top.style}
 								_ariaLabel=""
-								_icon={this.state._icon.left.icon}
+								_icon={this.state._icon.top.icon}
 							/>
 						)}
-						{this.state._iconOnly === false && (
-							<span>
-								{typeof this.state._label === 'string' && this.state._label}
-								{/*
+						<span class="flex items-center">
+							{this.state._icon.left && (
+								<kol-icon
+									class={{
+										'icon left': true,
+										'mr-2': this.state._iconOnly === false,
+									}}
+									style={this.state._icon.left.style}
+									_ariaLabel=""
+									_icon={this.state._icon.left.icon}
+								/>
+							)}
+							{this.state._iconOnly === false && (
+								<span>
+									{typeof this.state._label === 'string' && this.state._label}
+									{/*
                   Es ist keine gute Idee hier einen Slot einzufügen,
                   da dadurch die komplette Unterstützung der Komponente
                   umgangen werden kann.
                   <slot />
                 */}
-							</span>
-						)}
-						{this.state._icon.right && (
+								</span>
+							)}
+							{this.state._icon.right && (
+								<kol-icon
+									class={{
+										'icon right': true,
+										'ml-2': this.state._iconOnly === false,
+									}}
+									style={this.state._icon.right.style}
+									_ariaLabel=""
+									_icon={this.state._icon.right.icon}
+								/>
+							)}
+						</span>
+						{this.state._icon.bottom && (
 							<kol-icon
 								class={{
-									'icon right': true,
-									'ml-2': this.state._iconOnly === false,
+									'icon bottom': true,
 								}}
-								style={this.state._icon.right.style}
+								style={this.state._icon.bottom.style}
 								_ariaLabel=""
-								_icon={this.state._icon.right.icon}
+								_icon={this.state._icon.bottom.icon}
 							/>
 						)}
 					</span>
-					{this.state._icon.bottom && (
-						<kol-icon
-							class={{
-								'icon bottom': true,
-							}}
-							style={this.state._icon.bottom.style}
-							_ariaLabel=""
-							_icon={this.state._icon.bottom.icon}
-						/>
-					)}
 				</button>
 				{this.state._iconOnly === true && (
 					<kol-tooltip

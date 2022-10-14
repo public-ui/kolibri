@@ -59,12 +59,17 @@ _headers="{'horizontal':[[{'label':'Symbol','key':'symbol','textAlign':'center',
 _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrierefreiheit'},{'symbol':'👩‍🎨','desc':'Styleguide/Themes'},{'symbol':'🧬','desc':'Test'},{'symbol':'🔧','desc':'Verbesserung/Fehlerbehebung'},{'symbol':'📚','desc':'Dokumentation'},{'symbol':'🚀','desc':'Performance'},{'symbol':'❗','desc':'Refactoring'},{'symbol':'🔥','desc':'Breaking Change'},{'symbol':'🔝','desc':'Pflege des Technologie-Stacks'}]">
 </kol-table>
 
-<kol-heading _level={3}>1.1.10-rc.0 - 31.10.2022 (geplant)</kol-heading>
+<kol-heading _level={3}>1.1.11-rc.0 - 15.11.2022 (geplant)</kol-heading>
 
 <kol-details _summary="Änderungen">
 	<ul></ul>
 	<hr />
 	<ul>
+		<li>🔧 Table: Sort-Funktion auch die Sortierrichtung übergeben</li>
+		<li>👩‍🎨 Input*, Textarea: onInput prüfen</li>
+		<li>🌟 Image: Neue Image Komponente einfügen (_alt)</li>
+		<li>🔧 Table: Vorlesen des Tabellen-Header optimieren</li>
+		<li>🔧 Table: Sortierrichtung ändern mittels aria-live optimieren</li>
 		<li>
 			🔥 Bund-Komponenten: Aus DDD-Gründen werden alle Bund-spezifischen Komponenten mittelfristig in ein separates Paket ausgelagert werden (s.
 			@public-ui/bund-components)
@@ -72,16 +77,36 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Storybook: Transformation React-TSX zu WC-TSX Stories (Properties: Camel-Case -> Kebab-Case, ArgTypes)</li>
 		<li>🔧 Table: Checkbox innerhalb der Table</li>
 		<li>🔧 Pagination: Aria-Label bei Zahlen-Schalter optimieren (Schalter "1", Schalter "Seite 1")</li>
-		<li>🔧 Button & Link: Button als Link oder Link als Button wird noch nicht angezeigt</li>
 		<li>🔧 Badge: Fehlersuche im Color-Handling (RangeError)</li>
 		<li>🔧 Table: Aufspaltung in self- und manuell-managed Table</li>
 		<li>🔧 Button: Kontext-Menü (Overlay)</li>
 		<li>🔧 Table: Header mit Sort-Button und ohne - Grid korrekt behandeln</li>
-		<li>🔧 Typo: Mehr Interfaces exportieren</li>
 	</ul>
 </kol-details>
 
-<kol-heading _level={3}>1.1.9 - 15.10.2022 (geplant)</kol-heading>
+<kol-heading _level={3}>1.1.10-rc.0 - 31.10.2022 (geplant)</kol-heading>
+
+<kol-details _summary="Änderungen">
+	<ul>
+		<li>
+			🌟 Button: Zusätzlichen SPAN-Tag hinzugefügt, um den sichbaren Button kleiner darstellen zu können, obwohl die Klickfläche weiterhin mindestens 44x44px
+			groß bleibt.
+		</li>
+		<li>🌟 CLI: Next.js-Template für die Framework-Integration hinzugefügt</li>
+		<li>🔧 Aktualisierung der Abhängigkeiten aller Paket</li>
+	</ul>
+	<hr />
+	<ul>
+		<li>🌟 Textarea: Textarea verlängert sich nach unten automatisch, je nach Textlänge</li>
+		<li>🔧 Tooltip: Positionierung in Scoll-Zonen optimieren</li>
+		<li>🔧 I18n: Translationservice fertigstellen</li>
+		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
+		<li>🔥 Icon: Alle Icofont and Font-Awesome spezifischen Inhalte entfernen (Icon-Slot)</li>
+		<li>🔧 Button & Link: Button als Link oder Link als Button wird noch nicht angezeigt</li>
+	</ul>
+</kol-details>
+
+<kol-heading _level={3}>1.1.9 - 13.10.2022</kol-heading>
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
@@ -104,19 +129,6 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🌟 Designer-Projekt ins Mono-Repository aufgenommen</li>
 		<li>🔧 DevOps: Auto-Dependency-Pipeline hinzugefügt</li>
 		<li>🔧 DevOps: Auto-Sync to OpenCoDE</li>
-	</ul>
-	<hr />
-	<ul>
-		<li>🔧 Table: Sort-Funktion auch die Sortierrichtung übergeben</li>
-		<li>🌟 Textarea: Textarea verlängert sich nach unten automatisch, je nach Textlänge</li>
-		<li>👩‍🎨 Input*, Textarea: onInput prüfen</li>
-		<li>🔧 Tooltip: Positionierung in Scoll-Zonen optimieren</li>
-		<li>🔧 I18n: Translationservice fertigstellen</li>
-		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
-		<li>🌟 Image: Neue Image Komponente einfügen (_alt)</li>
-		<li>🔥 Icon: Alle Icofont and Font-Awesome spezifischen Inhalte entfernen (Icon-Slot)</li>
-		<li>🔧 Table: Vorlesen des Tabellen-Header optimieren</li>
-		<li>🔧 Table: Sortierrichtung ändern mittels aria-live optimieren</li>
 	</ul>
 </kol-details>
 
