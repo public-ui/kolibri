@@ -26,7 +26,7 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
-      '@jridgewell/trace-mapping': 0.3.16
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@babel/code-frame/7.18.6:
@@ -268,7 +268,7 @@ packages:
     dependencies:
       '@jridgewell/set-array': 1.1.2
       '@jridgewell/sourcemap-codec': 1.4.14
-      '@jridgewell/trace-mapping': 0.3.16
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@jridgewell/resolve-uri/3.1.0:
@@ -285,15 +285,15 @@ packages:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
     dev: true
 
-  /@jridgewell/trace-mapping/0.3.16:
-    resolution: {integrity: sha512-LCQ+NeThyJ4k1W2d+vIKdxuSt9R3pQSZ4P92m7EakaYuXcVWbHuT5bjNcqLd4Rdgi6xYWYDvBJZJLZSLanjDcA==}
+  /@jridgewell/trace-mapping/0.3.17:
+    resolution: {integrity: sha512-MCNzAp77qzKca9+W/+I0+sEpaUnZoeasnghNeVc41VZCEKaCH73Vq3BZZ/SzWIgrqE4H4ceI+p+b6C0mHf9T4g==}
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@leanup/lib/1.3.36:
-    resolution: {integrity: sha512-DnPkC0G63jjxX/AU2MuYnmUswQzdeoGWmoS7ouURXpO2E/iMu2dZHmRNy3pj52phdpNSdjbNlK0oIPkmUBAEag==}
+  /@leanup/lib/1.3.37:
+    resolution: {integrity: sha512-Ie7DePeir8F5OuNQobpU/TCLM175F0g5cNKDHsNW57VH7dSWSKelz/N/CkMoPWmNUVSCMfW/ZXOVGig52kS7IQ==}
     dependencies:
       loglevel: 1.8.0
       tslib: 2.4.0
@@ -321,10 +321,10 @@ packages:
     dev: true
 
   /@public-ui/core/1.1.9:
-    resolution: {integrity: sha512-vhGl6I6RmeKm06bVlVPw0Uvqbh/j8dyIq+MYFb/PMMc00oBMLpdg/TGHRAsPB08KXzWDA9FQSDgFAHL0Zktv2w==}
+    resolution: {integrity: sha512-giLt0iql/NBGFxGGjkMLuLG3L9gBK4Y2DkdXkM+8v0FQh4sA8BIeQ4/AO+bG8s2vwlLb3YmpdQCRZUfN8tVf8Q==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
-      '@leanup/lib': 1.3.36
+      '@leanup/lib': 1.3.37
       rxjs: 7.5.7
     dev: false
 
@@ -468,7 +468,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001419
-      electron-to-chromium: 1.4.281
+      electron-to-chromium: 1.4.282
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
@@ -511,7 +511,7 @@ packages:
     dev: true
 
   /concat-map/0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
     dev: true
 
   /consola/2.15.3:
@@ -550,8 +550,8 @@ packages:
       path-type: 4.0.0
     dev: true
 
-  /electron-to-chromium/1.4.281:
-    resolution: {integrity: sha512-yer0w5wCYdFoZytfmbNhwiGI/3cW06+RV7E23ln4490DVMxs7PvYpbsrSmAiBn/V6gode8wvJlST2YfWgvzWIg==}
+  /electron-to-chromium/1.4.282:
+    resolution: {integrity: sha512-Dki0WhHNh/br/Xi1vAkueU5mtIc9XLHcMKB6tNfQKk+kPG0TEUjRh5QEMAUbRp30/rYNMFD1zKKvbVzwq/4wmg==}
     dev: true
 
   /es-module-lexer/0.9.3:
@@ -1111,8 +1111,8 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /hookable/5.3.0:
-    resolution: {integrity: sha512-4gTA2q08HT8G32uIW7Jpro3rSXgT2ZTM8R6+r7H7joq90eZlqFPPTvHD6w8WZUohIrbXbDperL96ilb6dkNxNw==}
+  /hookable/5.4.0:
+    resolution: {integrity: sha512-kMikhpdc0PRI2/d1p36RdA2iWiDHN8UQfb1m1hjsR2edAHxaC5qfF16Vg653zu+XEl5TyWn2AVJOVEjbeQxEOQ==}
     dev: true
 
   /ignore/5.2.0:
@@ -1496,7 +1496,7 @@ packages:
       defu: 6.1.0
       esbuild: 0.15.10
       globby: 13.1.2
-      hookable: 5.3.0
+      hookable: 5.4.0
       jiti: 1.16.0
       magic-string: 0.26.7
       mkdirp: 1.0.4
