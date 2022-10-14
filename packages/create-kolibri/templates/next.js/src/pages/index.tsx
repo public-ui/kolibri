@@ -16,24 +16,8 @@ const Index = () => {
 				<link rel="stylesheet" href="assets/roboto/roboto.css" />
 				<link rel="stylesheet" href="assets/fontawesome-free/v6/css/all.min.css" />
 				<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
-				<link rel="stylesheet" href="main.css" />
 				<meta name="robots" content="noindex" />
 				<meta name="kolibri" content="dev-mode=true" />
-				<link rel="manifest" href="manifest.json" />
-				<meta name="mobile-web-app-capable" content="yes" />
-				<meta name="apple-mobile-web-app-capable" content="yes" />
-				<meta name="application-name" content="PoC" />
-				<meta name="apple-mobile-web-app-title" content="PoC" />
-				<meta name="theme-color" content="#fff" />
-				<meta name="background_color" content="#fff" />
-				<meta name="msapplication-navbutton-color" content="#fff" />
-				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-				<meta name="msapplication-starturl" content="/kolibri/" />
-				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-				<link rel="icon" sizes="128x128" href="assets/logo.kolibri.png" />
-				<link rel="apple-touch-icon" sizes="128x128" href="assets/logo.kolibri.png" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" type="image/x-icon" href="favicon.ico" />
 			</Head>
 			<div className="bmf container mx-auto my-10 max-w-800px">
 				<header className="text-center">
@@ -42,7 +26,7 @@ const Index = () => {
 							<KolKolibri className="block m-auto w-40" _labeled={false}></KolKolibri>
 						</div>
 						<div>
-							<img className="block m-auto h-25" src="assets/logo.nextjs.png" alt="Logo vom React Framework" />
+							<img className="block m-auto h-25" src="assets/logo.nextjs.png" alt="Logo vom Next.js Framework" />
 						</div>
 					</div>
 					<strong className="text-2xl">Willkommen zu KoliBri</strong>
