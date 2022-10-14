@@ -1,20 +1,8 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-
+import { KolAlert, KolIcon, KolKolibri, KolLink } from '@public-ui/react';
+import React from 'react';
 import IMG_FRAMEWORK from '../../assets/logo.react.png';
 
-import { KolAlert, KolIcon, KolKolibri, KolLink } from '@public-ui/react';
-
-/**
- * @Component = View / Rollen!#
- */
 export const AppComponent = (): JSX.Element => {
-	const location = useLocation();
-
-	useEffect(() => {
-		console.log(location);
-	}, [location]);
-
 	return (
 		<div className="bmf container mx-auto my-10 max-w-800px">
 			<header className="text-center">
