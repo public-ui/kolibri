@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.9
+  '@public-ui/core': 1.1.10-rc.0
   '@types/node': 18.8.5
   typescript: 4.8.4
   unbuild: 0.8.11
 
 dependencies:
-  '@public-ui/core': 1.1.9
+  '@public-ui/core': 1.1.10-rc.0
 
 devDependencies:
   '@types/node': 18.8.5
@@ -18,7 +18,6 @@ packages:
 
   /@a11y-ui/core/1.0.0-rc.21:
     resolution: {integrity: sha512-BkjZ1plTWHQq+uWtuA5Uql82n4CcMAbIrT0zgsQK7Xp5vVRhmNXayW+tnVyzxDabZoeAcKKWgtPw3/jPXVpHzg==}
-    deprecated: Please use v1.0.0-rc.15
     dev: false
 
   /@ampproject/remapping/2.2.0:
@@ -320,8 +319,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/core/1.1.9:
-    resolution: {integrity: sha512-giLt0iql/NBGFxGGjkMLuLG3L9gBK4Y2DkdXkM+8v0FQh4sA8BIeQ4/AO+bG8s2vwlLb3YmpdQCRZUfN8tVf8Q==}
+  /@public-ui/core/1.1.10-rc.0:
+    resolution: {integrity: sha512-wjySQ7yWs7AIZsPjZYPzVlMB5qgUGsnEJc9JKDrF8spdJMHE8XYrYWzF6OkUKrlCX6h9HwMbt+ZWitjb/2pUcw==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.37
