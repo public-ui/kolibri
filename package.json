@@ -27,7 +27,7 @@
 		"depcheck": "1.4.3",
 		"husky": "8.0.1",
 		"lerna": "5.6.1",
-		"license-report": "6.1.0",
+		"license-report": "6.2.0",
 		"npm-check-updates": "16.3.8",
 		"prettier": "2.7.1",
 		"rimraf": "3.0.2",
