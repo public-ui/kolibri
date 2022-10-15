@@ -1,6 +1,8 @@
-# Willkommen bei KoliBri
+# Willkommen bei **KoliBri**
 
 **KoliBri** steht für **Ko**mponenten-Bib**li**othek für die **B**ar**ri**erefreiheit
+
+> Weiter [zur **Dokumentation**](https://public-ui.github.io)…
 
 ## Vision
 
@@ -8,7 +10,7 @@ Wir stellen gemeinsam wiederverwendbare Webkomponenten zur Verfügung, die die B
 
 ## Mission
 
-KoliBri baut direkt auf den [Webstandards](https://www.w3.org/standards/webdesign/) auf (Framework-agnostisch), ist dabei eine generische Referenzimplementierung des [WCAG-Standards](https://www.w3.org/WAI/standards-guidelines/wcag/) (Barrierefreiheit) und gezielt als eine Multi-Theming-fähige Präsentationsschicht umsetzt. Es gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist KoliBri für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher Corporate Designs gleichermaßen wiederverwendbar und für Open Source sehr interessant.
+**KoliBri** baut direkt auf den [Webstandards](https://www.w3.org/standards/webdesign/) des [W3C](https://www.w3.org/standards/webdesign/) auf (Framework-agnostisch), ist dabei eine generische Referenzimplementierung des [WCAG-Standards](https://www.w3.org/WAI/standards-guidelines/wcag/) und der [BITV](https://www.bitvtest.de/bitv_test.html) für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist **KoliBri** für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
 
 ## Lizenz
 
@@ -19,6 +21,14 @@ KoliBri baut direkt auf den [Webstandards](https://www.w3.org/standards/webdesig
 - **Zugänglichmachung:** Die Artefakte und der Quellcode können von jedem frei und kostenlos wiederverwendet werden. Hierdurch leistet der ITZBund einen Beitrag im Sinne von ["Public Money - Public Code"](https://publiccode.eu/).
 - **Gewährleistungs- und Haftungsausschluss:** Mit der Wiederverwendung gehen keinerlei Gewährleistung und Haftungsansprüche einher.
 - **„Copyleft“-Klausel:** Copyleft besagt, dass jede Kopie von KoliBri (Fork) wieder unter der selben oder einer kompatiblen Open Source-Lizenz veröffentlicht werden muss.
+
+## Anwendung erstellen
+
+Im folgenden Video sehen Sie, wie Sie ganz einfach eine Webanwendung auf **KoliBri**-Basis erstellen können.
+
+![Zeigt wie man mit create-kolibri eine neue App anlegen kann.](https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif)
+
+Aktuell können Sie eine `statische Webseite` oder Webanwendungen für die Frameworks `Angular`, `React`, `Solid` und `Next.js` generieren.
 
 ## Abgrenzung
 
