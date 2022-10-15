@@ -44,7 +44,7 @@
 		"import": "./esm/index.js"
 	},
 	"devDependencies": {
-		"@a11y-ui/core": "1.0.0-rc.15",
+		"@a11y-ui/core": "1.0.0-rc.21",
 		"@public-ui/core": "1.1.10-rc.0",
 		"@public-ui/components": "1.1.10-rc.0",
 		"@types/minimatch": "5.1.2",
