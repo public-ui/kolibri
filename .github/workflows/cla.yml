@@ -22,7 +22,7 @@ jobs:
           path-to-signatures: '.cla/signatures-v1.0.json'
           path-to-document: 'https://github.com/public-ui/kolibri/blob/main/docs/CLA.md' # e.g. a CLA or a DCO document
           # branch should not be protected
-          branch: 'cla'
+          branch: 'main'
           allowlist: actions-user,bot*
 
           #below are the optional inputs - If the optional inputs are not given, then default values will be taken
