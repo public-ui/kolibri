@@ -10,6 +10,7 @@ import AssetHtml from './assets/html.png';
 import AssetEmber from './assets/ember.png';
 import AssetNextjs from './assets/nextjs.png';
 import AssetSvelte from './assets/svelte.png';
+import AssetAstro from './assets/astro.png';
 
 <Meta title="Framework Integrationen" />
 
@@ -73,6 +74,10 @@ Alle Pakete/Artefakte von KoliBri werden in der öffentlichen <kol-link _href="h
 			desc: 'Adapter für das Framework Angular.',
 		},
 		{
+			name: '@public-ui/preact',
+			desc: 'Adapter für das Framework Preact.',
+		},
+		{
 			name: '@public-ui/vue',
 			desc: 'Adapter für das Framework Vue.',
 		},
@@ -83,34 +88,34 @@ Alle Pakete/Artefakte von KoliBri werden in der öffentlichen <kol-link _href="h
 
 <b>KoliBri</b> wird aktuell in folgenden Varianten angeboten:
 
+<kol-heading _level="3">Client-Side-Frameworks</kol-heading>
+
 | Statischen Webseiten                                                                                                   | Dynamische Webanwendungen                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Technische sind Web Components, wie sie in KoliBri enthalten sind, wie auch Standard HTML universell wiederverwendbar. | Für Umsetzung von dynamischen Webanwendungen gibt es eine Reihe von Frameworks für die KoliBri wiederverwendet werden kann. Abhängig vom Framework ist die Bereitstellung von KoliBri unterschiedlich. Besonders gut geeignet sind dabei JSX/TSX basierte Frameworks, wie React oder Solid, da hier die maximalen Möglichkeiten der Typ-Unterstützung und Autovervollständung möglich sind. Hingegen bei Frameworks mit eigener Template-Sprachen, wie Angular, Vue oder Svelte, ist die Entwicklungsunterstützung unterschiedlich gut umsetzbar. |
 
-<kol-heading _level="3">Frameworks</kol-heading>
+| Framework                                                                |                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src={AssetWebComponent} width="150" alt="Logo von Web Component" /> | <b>Web Components</b><br/>Alle Komponenten von <b>KoliBri</b> sind gemäß dem Web Components Standard umgesetzt. Somit können die Komponenten in der Regel in allen modernen Projekten wiederverwendet werden. <kol-alert _type="info">KoliBri lässt sich einbinden wie JQuery und ist somit auch für Server-Side-Rendering, wie bspw. PHP, JSF usw., interessant.</kol-alert> |
+| <img src={AssetReact} width="150" alt="Logo von React" />                | <b>React-Components</b> (<kol-icon _aira-label="" _icon="icofont-star"/> empfohlen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **React** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                        |
+| <img src={AssetSolid} width="150" alt="Logo von Solid" />                | <b>Solid-Components</b><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Solid** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                                    |
+| <img src={AssetAngular} width="150" alt="Logo von Angular" />            | <b>Angular-Components</b><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Angular** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                                |
+| <img src={AssetPreact} width="150" alt="Logo von Preact" />              | <b>Preact-Components</b> (experimentell)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Preact** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                  |
+| <img src={AssetVue} width="150" alt="Logo von Vue" />                    | <b>Vue-Components</b> (experimentell)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Vue** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                        |
+| <img src={AssetSvelte} width="150" alt="Logo von Svelte" />              | <b>Svelte-Components</b> (offen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Svelte** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                          |
+| <img src={AssetEmber} width="150" alt="Logo von Ember" />                | <b>Ember-Components</b> (offen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Ember** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                            |
 
-| Empfohlen                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src={AssetWebComponent} width="150" alt="Logo von Web Component" /> | <b>Web Components</b> (<kol-icon _aira-label="" _icon="icofont-star"/> empfohlen)<br/>Alle Komponenten von <b>KoliBri</b> sind gemäß dem Web Components Standard umgesetzt. Somit können die Komponenten in der Regel in allen modernen Projekten wiederverwendet werden. <kol-alert _type="info">KoliBri lässt sich einbinden wie JQuery und ist somit auch für Server-Side-Rendering, wie bspw. PHP, JSF usw., interessant.</kol-alert> |
-| <img src={AssetReact} width="150" alt="Logo von React" />                | <b>React Components</b> (<kol-icon _aira-label="" _icon="icofont-star"/> empfohlen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **React** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                                    |
+<kol-heading _level="3">Server-Side-Frameworks</kol-heading>
 
-| Alternativen                                                  |                                                                                                                                                                                                                                                        |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src={AssetSolid} width="150" alt="Logo von Solid" />     | <b>Solid Components</b><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Solid** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.             |
-| <img src={AssetAngular} width="150" alt="Logo von Angular" /> | <b>Angular Components</b><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Angular** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.         |
-| <img src={AssetVue} width="150" alt="Logo von Vue" />         | <b>Vue Components</b> (experimentell)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Vue** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert. |
-
-| Möglich                                                      |                                                                                                                                                                                                                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src={AssetSvelte} width="150" alt="Logo von Svelte" />  | <b>Svelte Components</b> (offen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Svelte** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.   |
-| <img src={AssetPreact} width="150" alt="Logo von Preact" />  | <b>Preact Components</b> (offen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Preact** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.   |
-| <img src={AssetEmber} width="150" alt="Logo von Ember" />    | <b>Ember Components</b> (offen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Ember** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.     |
-| <img src={AssetNextjs} width="150" alt="Logo von Next.js" /> | <b>Next.js Components</b> (offen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Next.js** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert. |
+| Framework                                                    |                                                                                                                                                                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src={AssetAstro} width="150" alt="Logo von Astro" />    | Die Integration erfolgt mittels der <b>React- und Preact-Components</b>. Hierbei werden die Framework-Componentens Server-seitig und die Webcomponents client-seitig gerendert.             |
+| <img src={AssetNextjs} width="150" alt="Logo von Next.js" /> | Die Integration erfolgt mittels der <b>React-Components</b> (CSR der Webcomponents). Hierbei werden die Framework-Componentens Server-seitig und die Webcomponents client-seitig gerendert. |
 
 <kol-heading _level="2">Aktuelle Trends</kol-heading>
 
 <iframe
-	src="https://npmtrends.com/@angular/core-vs-next-vs-preact-vs-react-vs-vue-vs-svelte"
+	src="https://npmtrends.com/@angular/core-vs-next-vs-preact-vs-react-vs-vue-vs-svelte-vs-astro"
 	style={{
 		width: '100%',
 		border: '0',

@@ -1,5 +1,5 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { render } from 'preact';
+import React from 'react'
 
 import { AppComponent } from './components/app/component';
 
@@ -11,8 +11,7 @@ register(BMF, defineCustomElements)
 	.then(() => {
 		const htmlElement: HTMLElement | null = document.querySelector<HTMLDivElement>('div#app');
 		if (htmlElement instanceof HTMLElement) {
-			const root = createRoot(htmlElement);
-			root.render(<AppComponent />);
+			render(<AppComponent />, htmlElement);
 		}
 	})
 	.catch(console.warn);
