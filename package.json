@@ -6,7 +6,7 @@
 		"clean:pnpm": "lerna exec --stream -- rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "lerna exec --stream -- prettier --check src/**/* -w",
 		"ncu:major": "ncu && lerna exec --stream -- ncu",
-		"ncu:minor": "ncu -t minor -u && lerna exec --stream -- ncu -t minor -u -x unbuild",
+		"ncu:minor": "ncu -t minor -u && lerna exec --stream -- ncu -t minor -u",
 		"pack": "lerna exec --stream -- npm pack",
 		"postinstall": "lerna exec --stream -- pnpm i --no-frozen-lockfile",
 		"prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npx lerna run lint\" && husky add .husky/pre-commit \"npx lerna run format\" && husky add .husky/pre-commit \"pnpm ts-prune\"",
