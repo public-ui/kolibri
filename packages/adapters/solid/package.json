@@ -34,7 +34,7 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.0",
 		"@types/normalize-package-data": "2.4.1",
-		"solid-js": "1.5.7",
+		"solid-js": "1.5.9",
 		"typescript": "4.8.4",
 		"unbuild": "0.8.11"
 	},
