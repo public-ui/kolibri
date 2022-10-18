@@ -1,0 +1,53 @@
+publiccodeYmlVersion: "0.2"
+
+name: KoliBri
+applicationSuite: Informationstechnik Zentrum Bund
+url: "https://github.com/public-ui/kolibri.git"
+landingURL: "https://github.com/public-ui"
+documentationURL: "https://public-ui.github.io/"
+releaseDate: "2022-10-13"
+platforms:
+  - web
+  - windows
+  - android
+  - ios
+  - mac
+  - linux
+
+categories:
+  - webcomponents
+
+developmentStatus: stable
+
+softwareType: "standalone/web"
+
+description:
+  en:
+    shortDescription: >
+          Themeable Accessible Webcomponents
+
+    longDescription: >
+          KoliBri builds directly on the web standards on (framework-agnostic), is a generic reference
+          implementation of the WCAG standards  (Accessibility) and specifically implemented as a multi-theming
+          capable presentation layer. There is no technical reference and no data transfer functionalities.
+          THUS KoliBri is similarly reusable for the realization of static websites as well as dynamic web
+          applications of different corporate designs and very interesting for open source.
+
+    features:
+       - Themeable Accessible Webcomponents
+
+legal:
+  license: EUPL-1.2
+
+maintenance:
+  type: "community"
+
+  contacts:
+    - name: KoliBri
+      email: kolibri@itzbund.de
+      affiliation: Informationstechnik Zentrum Bund
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - de
