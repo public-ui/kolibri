@@ -1,6 +1,8 @@
 name: CI-Pipeline
 
 on:
+  pull_request_target:
+    types: [opened, closed, synchronize]
   push:
   workflow_dispatch:
 
