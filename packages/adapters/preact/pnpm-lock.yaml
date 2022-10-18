@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.10-rc.1
-  '@public-ui/react': 1.1.10-rc.1
+  '@public-ui/components': 1.1.10-rc.2
+  '@public-ui/react': 1.1.10-rc.2
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 4.8.4
@@ -12,7 +12,7 @@ dependencies:
   '@public-ui/react': 1.1.10-rc.0_fv4po4tqhe6ywkyipaiwr24zlu
 
 devDependencies:
-  '@public-ui/components': 1.1.10-rc.1
+  '@public-ui/components': 1.1.10-rc.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.8.4
@@ -321,12 +321,12 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.10-rc.1:
+  /@public-ui/components/1.1.10-rc.2:
     resolution: {integrity: sha512-xqUxCEbIzsN8pJ+V7P6gJohCQfyAeQu2TI3gfJ/SP/LQM7NjgXEW+Da5oK2UMFQfKV2aoEnXriPD9tafuqMwcQ==}
     dependencies:
-      '@public-ui/schema': 1.1.10-rc.1
+      '@public-ui/schema': 1.1.10-rc.2
 
-  /@public-ui/core/1.1.10-rc.1:
+  /@public-ui/core/1.1.10-rc.2:
     resolution: {integrity: sha512-wjySQ7yWs7AIZsPjZYPzVlMB5qgUGsnEJc9JKDrF8spdJMHE8XYrYWzF6OkUKrlCX6h9HwMbt+ZWitjb/2pUcw==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
@@ -336,19 +336,19 @@ packages:
   /@public-ui/react/1.1.10-rc.0_fv4po4tqhe6ywkyipaiwr24zlu:
     resolution: {integrity: sha512-UrumwoWkdqHXAWps9C/DpxKIx8mCue87dm4gjTaZYJkNvcF1QPybFWM3kaUmNphUhApHnJXN4NdU1UJiJQoWlw==}
     peerDependencies:
-      '@public-ui/components': 1.1.10-rc.1
+      '@public-ui/components': 1.1.10-rc.2
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.10-rc.1
+      '@public-ui/components': 1.1.10-rc.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.1.10-rc.1:
+  /@public-ui/schema/1.1.10-rc.2:
     resolution: {integrity: sha512-66SnxV+Oods0vHuHsmdatGg10VsYTdq1Lx82PAONbkZYT9rMTTs/JxjgWPZVillLCnrtwvAhjd95Y3f4vvKVVA==}
     dependencies:
-      '@public-ui/core': 1.1.10-rc.1
+      '@public-ui/core': 1.1.10-rc.2
 
   /@rollup/plugin-alias/3.1.9_rollup@2.79.1:
     resolution: {integrity: sha512-QI5fsEvm9bDzt32k39wpOwZhVzRcL5ydcffUHMyLVaVaLeC70I8TJZ17F1z1eMoLu4E/UOcH9BWVkKpIKdrfiw==}
