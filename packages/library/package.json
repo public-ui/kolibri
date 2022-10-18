@@ -38,7 +38,7 @@
 		"republish:self": "npm run reinstall:kolibri && npm run build:light && npm run :publish",
 		"republish:all": "npm run republish && npm run republish:themes && npm run republish:adapters && d ../storybook && npm run reinstall:kolibri",
 		"republish": "cd ../core && npm run republish && cd ../schema && npm run republish && cd ../library && npm run republish:self",
-		"clear": "rimraf dist loader www ../adapters/angular/src ../adapters/preact/src ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vue/src",
+		"clear": "rimraf dist loader www ../adapters/angular/src ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vue/src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"generate": "stencil generate",
 		"lint": "eslint src/**/*{.ts,.tsx}",
