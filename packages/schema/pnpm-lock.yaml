@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.10-rc.0
+  '@public-ui/core': 1.1.10-rc.2
   '@types/node': 18.11.0
   typescript: 4.8.4
   unbuild: 0.8.11
 
 dependencies:
-  '@public-ui/core': 1.1.10-rc.0
+  '@public-ui/core': 1.1.10-rc.2
 
 devDependencies:
   '@types/node': 18.11.0
@@ -319,7 +319,7 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/core/1.1.10-rc.0:
+  /@public-ui/core/1.1.10-rc.2:
     resolution: {integrity: sha512-wjySQ7yWs7AIZsPjZYPzVlMB5qgUGsnEJc9JKDrF8spdJMHE8XYrYWzF6OkUKrlCX6h9HwMbt+ZWitjb/2pUcw==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21

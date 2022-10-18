@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 14.2.6
   '@angular/compiler-cli': 14.2.6
   '@angular/core': 14.2.6
-  '@public-ui/components': 1.1.10-rc.0
-  '@public-ui/core': 1.1.10-rc.0
+  '@public-ui/components': 1.1.10-rc.2
+  '@public-ui/core': 1.1.10-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.0
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 14.2.6_@angular+core@14.2.6
   '@angular/compiler-cli': 14.2.6_berdmfrv6b33c2wuoyy6wmwhva
   '@angular/core': 14.2.6_rxjs@7.5.7+zone.js@0.11.8
-  '@public-ui/components': 1.1.10-rc.0
-  '@public-ui/core': 1.1.10-rc.0
+  '@public-ui/components': 1.1.10-rc.2
+  '@public-ui/core': 1.1.10-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.0
@@ -335,13 +335,13 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /@public-ui/components/1.1.10-rc.0:
+  /@public-ui/components/1.1.10-rc.2:
     resolution: {integrity: sha512-xqUxCEbIzsN8pJ+V7P6gJohCQfyAeQu2TI3gfJ/SP/LQM7NjgXEW+Da5oK2UMFQfKV2aoEnXriPD9tafuqMwcQ==}
     dependencies:
-      '@public-ui/schema': 1.1.10-rc.0
+      '@public-ui/schema': 1.1.10-rc.2
     dev: true
 
-  /@public-ui/core/1.1.10-rc.0:
+  /@public-ui/core/1.1.10-rc.2:
     resolution: {integrity: sha512-wjySQ7yWs7AIZsPjZYPzVlMB5qgUGsnEJc9JKDrF8spdJMHE8XYrYWzF6OkUKrlCX6h9HwMbt+ZWitjb/2pUcw==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
@@ -349,10 +349,10 @@ packages:
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.10-rc.0:
+  /@public-ui/schema/1.1.10-rc.2:
     resolution: {integrity: sha512-66SnxV+Oods0vHuHsmdatGg10VsYTdq1Lx82PAONbkZYT9rMTTs/JxjgWPZVillLCnrtwvAhjd95Y3f4vvKVVA==}
     dependencies:
-      '@public-ui/core': 1.1.10-rc.0
+      '@public-ui/core': 1.1.10-rc.2
     dev: true
 
   /@types/minimatch/5.1.2:
