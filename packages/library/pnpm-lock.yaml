@@ -27,7 +27,7 @@ specifiers:
   eslint: 7.32.0
   eslint-config-prettier: 8.5.0
   eslint-plugin-html: 7.1.0
-  eslint-plugin-jsdoc: 39.3.6
+  eslint-plugin-jsdoc: 39.3.13
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.6.1
   eslint-plugin-react: 7.31.10
@@ -79,7 +79,7 @@ devDependencies:
   eslint: 7.32.0
   eslint-config-prettier: 8.5.0_eslint@7.32.0
   eslint-plugin-html: 7.1.0
-  eslint-plugin-jsdoc: 39.3.6_eslint@7.32.0
+  eslint-plugin-jsdoc: 39.3.13_eslint@7.32.0
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.6.1_eslint@7.32.0
   eslint-plugin-react: 7.31.10_eslint@7.32.0
@@ -460,8 +460,8 @@ packages:
       minimist: 1.2.7
     dev: true
 
-  /@es-joy/jsdoccomment/0.31.0:
-    resolution: {integrity: sha512-tc1/iuQcnaiSIUVad72PBierDFpsxdUHtEF/OrfqvM1CBAsIoMP51j52jTMb3dXriwhieTo289InzZj72jL3EQ==}
+  /@es-joy/jsdoccomment/0.32.0:
+    resolution: {integrity: sha512-sbA+4b9VZSf9DJqGrTRS6jxclyA5WpWiKXWxVqEN5HP4LOECJGfZlTS82l9w/byp4pXGPYsf5WQrW2iDG7+cKw==}
     engines: {node: ^14 || ^16 || ^17 || ^18}
     dependencies:
       comment-parser: 1.3.1
@@ -1415,7 +1415,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001419
+      caniuse-lite: 1.0.30001421
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1599,8 +1599,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001419
-      electron-to-chromium: 1.4.283
+      caniuse-lite: 1.0.30001421
+      electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
@@ -1673,8 +1673,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /caniuse-lite/1.0.30001419:
-    resolution: {integrity: sha512-aFO1r+g6R7TW+PNQxKzjITwLOyDhVRLjW0LcwS/HCZGUUKTGNp9+IwLC4xyDSZBygVL/mxaFR3HIV6wEKQuSzw==}
+  /caniuse-lite/1.0.30001421:
+    resolution: {integrity: sha512-Sw4eLbgUJAEhjLs1Fa+mk45sidp1wRn5y6GtDpHGBaNJ9OCDJaVh2tIaWWUnGfuXfKf1JCBaIarak3FkVAvEeA==}
     dev: true
 
   /capture-exit/2.0.0:
@@ -2203,8 +2203,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium/1.4.283:
-    resolution: {integrity: sha512-g6RQ9zCOV+U5QVHW9OpFR7rdk/V7xfopNXnyAamdpFgCHgZ1sjI8VuR1+zG2YG/TZk+tQ8mpNkug4P8FU0fuOA==}
+  /electron-to-chromium/1.4.284:
+    resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
     dev: true
 
   /emittery/0.7.2:
@@ -2341,13 +2341,13 @@ packages:
       htmlparser2: 8.0.1
     dev: true
 
-  /eslint-plugin-jsdoc/39.3.6_eslint@7.32.0:
-    resolution: {integrity: sha512-R6dZ4t83qPdMhIOGr7g2QII2pwCjYyKP+z0tPOfO1bbAbQyKC20Y2Rd6z1te86Lq3T7uM8bNo+VD9YFpE8HU/g==}
+  /eslint-plugin-jsdoc/39.3.13_eslint@7.32.0:
+    resolution: {integrity: sha512-yF16kYmoz8pcEZXxX2kdaBwWFvXrUpxuF+ZgG/0PKLKcT9lGKFi4Mn0Mk/KqJeMgUprFDCzNTjnzYGf8tdNrAA==}
     engines: {node: ^14 || ^16 || ^17 || ^18}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
     dependencies:
-      '@es-joy/jsdoccomment': 0.31.0
+      '@es-joy/jsdoccomment': 0.32.0
       comment-parser: 1.3.1
       debug: 4.3.4
       escape-string-regexp: 4.0.0
@@ -5957,6 +5957,7 @@ packages:
 
   /w3c-hr-time/1.0.2:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
+    deprecated: Use your platform's native performance.now() and performance.timeOrigin.
     dependencies:
       browser-process-hrtime: 1.0.0
     dev: true
