@@ -69,13 +69,6 @@ jobs:
         working-directory: packages/adapters/angular
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build and publish adapter preact
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/adapters/preact
-        env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish adapter react
         run: |
           npm i
@@ -102,6 +95,13 @@ jobs:
           npm i
           npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
         working-directory: packages/adapters/vue
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter preact
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/preact
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish create-kolibri
