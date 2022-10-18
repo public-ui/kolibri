@@ -24,6 +24,8 @@ jobs:
           # branch should not be protected
           branch: 'main'
           allowlist: actions-user,bot*
+          create-file-commit-message: 'chore(docs): Creating file for storing CLA Signatures'
+          signed-commit-message: 'chore: $contributorName has signed the CLA in #$pullRequestNo'
 
           #below are the optional inputs - If the optional inputs are not given, then default values will be taken
           #remote-organization-name: enter the remote organization name where the signatures should be stored (Default is storing the signatures in the same repository)
