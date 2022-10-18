@@ -36,7 +36,6 @@
 		"@public-ui/solid": "1.1.10-rc.0",
 		"@public-ui/themes": "1.1.10-rc.0",
 		"ajv": "8.11.0",
-		"register-service-worker": "1.7.2",
 		"solid-js": "1.5.2"
 	},
 	"devDependencies": {

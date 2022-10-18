@@ -6,7 +6,7 @@ import kleur from 'kleur';
 
 const templateRoot = resolve(__dirname, '..', 'templates');
 
-const caveat = (props) => {
+const caveat = (props: any) => {
 	console.log(``);
 	console.log(`🌟 ${kleur.underline().green('Your new app has been created successfully!')}`);
 	console.log(``);
@@ -31,12 +31,12 @@ create('create-leanup', {
 	promptForLicense: false,
 	promptForPackageManager: true,
 	promptForTemplate: true,
-	after: async (props) => {
+	after: async (props: any) => {
 		await props.run('cd', {
 			argv0: props.name,
 		});
-		await props.run('git branch -m master main');
-		// await props.run('git add .');
+		await props.run('git branch -m main');
+		await props.run('git add .');
 		// await props.run('git commit -m "chore: initial commit"');
 	},
 	caveat,
