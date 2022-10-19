@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Update dependencies
     steps:
-      - name: Checkout specific branch
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'main'
+          # ref: 'main'
       - uses: pnpm/action-setup@v2.2.3
         with:
           version: 7
@@ -23,8 +22,7 @@ jobs:
         with:
           cache: pnpm
           node-version: 16
-      - name: Cache pnpm modules
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         env:
           cache-name: cache-pnpm-modules
         with:
@@ -48,9 +46,8 @@ jobs:
           git add **/package.json **/pnpm-lock.yaml
           git status
           git commit -m "chore: auto dependency update"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'main'
+          # branch: 'main'
           force: true
