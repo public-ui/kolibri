@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           # ref: 'main'
-      - uses: pnpm/action-setup@v2.2.3
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
       - uses: actions/setup-node@v3
