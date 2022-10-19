@@ -28,7 +28,7 @@ Im folgenden Video sehen Sie, wie Sie ganz einfach eine Webanwendung auf **KoliB
 
 ![Zeigt wie man mit create-kolibri eine neue App anlegen kann.](https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif)
 
-Aktuell können Sie eine `statische Webseite` oder Webanwendungen für die Frameworks `Angular`, `Astro`, `Preact`, `React`, `Solid` und `Next.js` generieren.
+Aktuell können Sie eine `statische Webseite` oder Webanwendungen für die Frameworks `React`, `Preact`, `Solid`, `Next.js`, `Astro` und `Angular` generieren.
 
 ## Abgrenzung
 
