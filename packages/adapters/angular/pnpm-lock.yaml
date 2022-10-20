@@ -1,14 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@angular/compiler': 14.2.6
-  '@angular/compiler-cli': 14.2.6
-  '@angular/core': 14.2.6
+  '@angular/compiler': 14.2.7
+  '@angular/compiler-cli': 14.2.7
+  '@angular/core': 14.2.7
   '@public-ui/components': 1.1.10-rc.2
   '@public-ui/core': 1.1.10-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.0
+  '@types/node': 18.11.2
   '@types/normalize-package-data': 2.4.1
   prettier: 2.7.1
   rimraf: 3.0.2
@@ -18,14 +18,14 @@ specifiers:
   zone.js: 0.11.8
 
 devDependencies:
-  '@angular/compiler': 14.2.6_@angular+core@14.2.6
-  '@angular/compiler-cli': 14.2.6_berdmfrv6b33c2wuoyy6wmwhva
-  '@angular/core': 14.2.6_rxjs@7.5.7+zone.js@0.11.8
+  '@angular/compiler': 14.2.7_@angular+core@14.2.7
+  '@angular/compiler-cli': 14.2.7_2drcwksc5ljle4ujljyylhgl6q
+  '@angular/core': 14.2.7_rxjs@7.5.7+zone.js@0.11.8
   '@public-ui/components': 1.1.10-rc.2
   '@public-ui/core': 1.1.10-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.0
+  '@types/node': 18.11.2
   '@types/normalize-package-data': 2.4.1
   prettier: 2.7.1
   rimraf: 3.0.2
@@ -48,15 +48,15 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
-  /@angular/compiler-cli/14.2.6_berdmfrv6b33c2wuoyy6wmwhva:
-    resolution: {integrity: sha512-zKnpZ5WDbM31dwr5GDAbCblMIEUzWSglUyqCxJfbCg21dE0EuLfd/WzsROgM2TucOtCT5xNipqz4bc+wdEOIgQ==}
+  /@angular/compiler-cli/14.2.7_2drcwksc5ljle4ujljyylhgl6q:
+    resolution: {integrity: sha512-q6AQo91jc+Pd1PnWWxJq07IXr1yipq0MW3Uok5akEctbTsw4AT5y9wfPj6g/o/CkAz0kbL55QrmtyIWN5LMGdg==}
     engines: {node: ^14.15.0 || >=16.10.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 14.2.6
+      '@angular/compiler': 14.2.7
       typescript: '>=4.6.2 <4.9'
     dependencies:
-      '@angular/compiler': 14.2.6_@angular+core@14.2.6
+      '@angular/compiler': 14.2.7_@angular+core@14.2.7
       '@babel/core': 7.19.3
       chokidar: 3.5.3
       convert-source-map: 1.9.0
@@ -72,21 +72,21 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler/14.2.6_@angular+core@14.2.6:
-    resolution: {integrity: sha512-XtmJRNQQ/bUcRjB6jG67km3EPug8frnHH50sLqxye+cljCzWQpzFN/Qr1z0abuzEX8OC4alqxCDCFgTFyyVkaQ==}
+  /@angular/compiler/14.2.7_@angular+core@14.2.7:
+    resolution: {integrity: sha512-2I8hZVM/tfUi06B6VuWgf5hWu0tgNlMCEZ1Ed4NEDkqJj+gs2l6kNVUf+FxI6hHMZTFkJPXOPx3pI5Hea5CxEQ==}
     engines: {node: ^14.15.0 || >=16.10.0}
     peerDependencies:
-      '@angular/core': 14.2.6
+      '@angular/core': 14.2.7
     peerDependenciesMeta:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 14.2.6_rxjs@7.5.7+zone.js@0.11.8
+      '@angular/core': 14.2.7_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.4.0
     dev: true
 
-  /@angular/core/14.2.6_rxjs@7.5.7+zone.js@0.11.8:
-    resolution: {integrity: sha512-fEIz7E488X03tLIqmWQRpahxRRU2SMjb9i/rMUjMQJkbppJC3cykl31bCYzeixNO+zpE55GPGuQX2qI/yDenZA==}
+  /@angular/core/14.2.7_rxjs@7.5.7+zone.js@0.11.8:
+    resolution: {integrity: sha512-9u2eeKS90YPh2b0pK5LKFSxKfLIzHnzkIKQFh6bEPGj43Fl2v8CwiVJu1CAKo1Or4qBY8zspSowM6S1kgGwfeg==}
     engines: {node: ^14.15.0 || >=16.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -336,13 +336,13 @@ packages:
     dev: true
 
   /@public-ui/components/1.1.10-rc.2:
-    resolution: {integrity: sha512-xqUxCEbIzsN8pJ+V7P6gJohCQfyAeQu2TI3gfJ/SP/LQM7NjgXEW+Da5oK2UMFQfKV2aoEnXriPD9tafuqMwcQ==}
+    resolution: {integrity: sha512-oVD6l84B3nRdwZct4GPS34lif6crFKeBXcahXojcvEAFw5MANXUVSYlf0QUc797NAQPABB/cqP2QSu7OH5Et8g==}
     dependencies:
       '@public-ui/schema': 1.1.10-rc.2
     dev: true
 
   /@public-ui/core/1.1.10-rc.2:
-    resolution: {integrity: sha512-wjySQ7yWs7AIZsPjZYPzVlMB5qgUGsnEJc9JKDrF8spdJMHE8XYrYWzF6OkUKrlCX6h9HwMbt+ZWitjb/2pUcw==}
+    resolution: {integrity: sha512-lVZHR/ZRAOvwVvlcJznegd3jSM80nKRda4mMUcqaVqD8jf4bJRlTnwgMi3xoY1FNo/+3q5lgzPZktVEk3nls0A==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.37
@@ -350,7 +350,7 @@ packages:
     dev: true
 
   /@public-ui/schema/1.1.10-rc.2:
-    resolution: {integrity: sha512-66SnxV+Oods0vHuHsmdatGg10VsYTdq1Lx82PAONbkZYT9rMTTs/JxjgWPZVillLCnrtwvAhjd95Y3f4vvKVVA==}
+    resolution: {integrity: sha512-qMFymKn2hiQ4bYs/YgtRBEvSjhEe5azut5iy6srKTAlSQB1JAF8TgVuPFZUpLSjvM3rxXjRYXE+hC09kKwRx1g==}
     dependencies:
       '@public-ui/core': 1.1.10-rc.2
     dev: true
@@ -363,8 +363,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.0:
-    resolution: {integrity: sha512-IOXCvVRToe7e0ny7HpT/X9Rb2RYtElG1a+VshjwT00HxrM2dWBApHQoqsI6WiY7Q03vdf2bCrIGzVrkF/5t10w==}
+  /@types/node/18.11.2:
+    resolution: {integrity: sha512-BWN3M23gLO2jVG8g/XHIRFWiiV4/GckeFIqbU/C4V3xpoBBWSMk4OZomouN0wCkfQFPqgZikyLr7DOYDysIkkw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -426,14 +426,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001419
-      electron-to-chromium: 1.4.283
+      caniuse-lite: 1.0.30001422
+      electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
-  /caniuse-lite/1.0.30001419:
-    resolution: {integrity: sha512-aFO1r+g6R7TW+PNQxKzjITwLOyDhVRLjW0LcwS/HCZGUUKTGNp9+IwLC4xyDSZBygVL/mxaFR3HIV6wEKQuSzw==}
+  /caniuse-lite/1.0.30001422:
+    resolution: {integrity: sha512-hSesn02u1QacQHhaxl/kNMZwqVG35Sz/8DgvmgedxSH8z9UUpcDYSPYgsj3x5dQNRcNp6BwpSfQfVzYUTm+fog==}
     dev: true
 
   /chalk/2.4.2:
@@ -515,8 +515,8 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /electron-to-chromium/1.4.283:
-    resolution: {integrity: sha512-g6RQ9zCOV+U5QVHW9OpFR7rdk/V7xfopNXnyAamdpFgCHgZ1sjI8VuR1+zG2YG/TZk+tQ8mpNkug4P8FU0fuOA==}
+  /electron-to-chromium/1.4.284:
+    resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
     dev: true
 
   /emoji-regex/8.0.0:
