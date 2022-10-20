@@ -19,8 +19,10 @@ jobs:
           # the below token should have repo scope and must be manually added by you in the repository's secret
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
-          path-to-signatures: '.cla/signatures-v1.0.json'
+          path-to-signatures: 'cla/kolibri/signatures-v1.0.json'
           path-to-document: 'https://github.com/public-ui/kolibri/blob/main/docs/CLA.md' # e.g. a CLA or a DCO document
+          remote-organization-name: 'public-ui'
+          remote-repository-name:  '.github-private'
           # branch should not be protected
           branch: 'main'
           allowlist: actions-user,bot*
