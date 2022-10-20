@@ -26,6 +26,8 @@ Wir stellen gemeinsam wiederverwendbare Webkomponenten zur Verfügung, die die B
 
 Im folgenden Video sehen Sie, wie Sie ganz einfach eine Webanwendung auf **KoliBri**-Basis erstellen können.
 
+**Befehl:** `npm init kolibri@latest my-app`
+
 ![Zeigt wie man mit create-kolibri eine neue App anlegen kann.](https://raw.githubusercontent.com/public-ui/.github/main/profile/create-kolibri.gif)
 
 Aktuell können Sie eine `statische Webseite` oder Webanwendungen für die Frameworks `React`, `Preact`, `Solid`, `Next.js`, `Astro` und `Angular` generieren.
