@@ -11,15 +11,18 @@ jobs:
     name: Update dependencies
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          # ref: 'main'
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
       - uses: actions/setup-node@v3
         with:
           cache: pnpm
           node-version: 16
-      - name: Cache pnpm modules
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         env:
           cache-name: cache-pnpm-modules
         with:
@@ -28,8 +31,8 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
           restore-keys: |
             {{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
-      - name: Create new branch
-        run: git checkout -b chore/auto-update-deps
+      # - name: Create new branch
+      #   run: git checkout -b chore/auto-update-deps
       - name: Install tools
         run: npm i lerna npm-check-updates --no-save
       - name: Update dependencies
@@ -43,9 +46,8 @@ jobs:
           git add **/package.json **/pnpm-lock.yaml
           git status
           git commit -m "chore: auto dependency update"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'chore/auto-update-deps'
+          # branch: 'main'
           force: true
