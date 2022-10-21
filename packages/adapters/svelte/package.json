@@ -40,7 +40,7 @@
 	"types": "./dist/index.d.ts",
 	"devDependencies": {
 		"@babel/types": "7.19.4",
-		"@a11y-ui/core": "1.0.0-rc.15",
+		"@a11y-ui/core": "1.0.0-rc.21",
 		"@public-ui/core": "1.1.10-rc.2",
 		"@public-ui/components": "1.1.10-rc.2",
 		"@types/minimatch": "5.1.2",
