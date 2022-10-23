@@ -31,8 +31,8 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
           restore-keys: |
             {{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
-      # - name: Create new branch
-      #   run: git checkout -b chore/auto-update-deps
+      - name: Create new branch
+        run: git checkout -b chore/auto-update-deps
       - name: Install tools
         run: npm i lerna npm-check-updates --no-save
       - name: Update dependencies
