@@ -58,7 +58,7 @@
 		"@unocss/preset-mini": "0.45.30",
 		"@unocss/webpack": "0.45.30",
 		"depcheck": "1.4.3",
-		"npm-check-updates": "16.3.14",
+		"npm-check-updates": "16.3.15",
 		"prettier": "2.7.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
