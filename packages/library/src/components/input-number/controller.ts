@@ -38,15 +38,15 @@ export class InputNumberController extends InputController implements Watches {
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateMax(value?: number): void {
-		watchNumber(this.component, '_max', value);
+	public validateMax(value?: string): void {
+		watchString(this.component, '_max', value);
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateMin(value?: number): void {
-		watchNumber(this.component, '_min', value);
+	public validateMin(value?: string): void {
+		watchString(this.component, '_min', value);
 	}
 
 	/**

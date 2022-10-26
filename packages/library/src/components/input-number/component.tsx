@@ -147,12 +147,12 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Gibt den größtmöglichen Zahlenwert an.
 	 */
-	@Prop() public _max?: number;
+	@Prop() public _max?: string;
 
 	/**
 	 * Gibt den kleinstmöglichen Zahlenwert an.
 	 */
-	@Prop() public _min?: number;
+	@Prop() public _min?: string;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -308,7 +308,7 @@ export class KolInputNumber implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_max')
-	public validateMax(value?: number): void {
+	public validateMax(value?: string): void {
 		this.controller.validateMax(value);
 	}
 
@@ -316,7 +316,7 @@ export class KolInputNumber implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_min')
-	public validateMin(value?: number): void {
+	public validateMin(value?: string): void {
 		this.controller.validateMin(value);
 	}
 

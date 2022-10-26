@@ -19,8 +19,8 @@ type OptionalProps = {
 	hint: string;
 	icon: Stringified<KoliBriInputIcon>;
 	list: Stringified<string[]>;
-	max: number;
-	min: number;
+	max: string;
+	min: string;
 	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
