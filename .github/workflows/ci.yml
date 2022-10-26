@@ -28,7 +28,7 @@ jobs:
       #    path: ~/.pnpm-store
       #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
       #    restore-keys: |
-      #      {{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+      #      {{ runner.os }}-pnpm
       - name: Install
         run: pnpm i
       - name: Unused
