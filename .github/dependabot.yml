@@ -15,89 +15,93 @@ updates:
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/core/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/create-kolibri/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/angular/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/astro/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/next.js/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/preact/'
+    schedule:
+      interval: daily
+    target-branch: main
   - package-ecosystem: npm
     directory: '/packages/create-kolibri/templates/react/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/solid/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/static/'
+    schedule:
+      interval: daily
+    target-branch: main
   - package-ecosystem: npm
     directory: '/packages/library/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/schema/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/themes/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/adapters/angular/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/adapters/preact/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/adapters/react/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/adapters/solid/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/adapters/svelte/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
   - package-ecosystem: npm
     directory: '/packages/adapters/vue/'
     schedule:
       interval: daily
     target-branch: main
-    ignore:
-      - dependency-name: '@kolibri*'
