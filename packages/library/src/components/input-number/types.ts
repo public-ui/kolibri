@@ -19,8 +19,8 @@ type OptionalProps = {
 	hint: string;
 	icon: Stringified<KoliBriInputIcon>;
 	list: Stringified<string[]>;
-	max: string;
-	min: string;
+	max: number | Date | string;
+	min: number | Date | string;
 	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
@@ -50,8 +50,8 @@ type OptionalStates = {
 	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriInputIcon;
-	max: number;
-	min: number;
+	max: string;
+	min: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	readOnly: boolean;

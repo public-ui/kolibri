@@ -777,11 +777,11 @@ export namespace Components {
         /**
           * Gibt den größtmöglichen Zahlenwert an.
          */
-        "_max"?: string;
+        "_max"?: number | Date | string;
         /**
           * Gibt den kleinstmöglichen Zahlenwert an.
          */
-        "_min"?: string;
+        "_min"?: number | Date | string;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -2911,11 +2911,11 @@ declare namespace LocalJSX {
         /**
           * Gibt den größtmöglichen Zahlenwert an.
          */
-        "_max"?: string;
+        "_max"?: number | Date | string;
         /**
           * Gibt den kleinstmöglichen Zahlenwert an.
          */
-        "_min"?: string;
+        "_min"?: number | Date | string;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */

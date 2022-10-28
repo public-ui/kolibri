@@ -8,6 +8,12 @@ import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
 
 export class InputNumberController extends InputController implements Watches {
+	/**
+	 * Regex to check whether a string is a number or a date in ISO-8601 format.
+	 * Test the regex here: https://regex101.com/r/nFDzrD/1
+	 */
+	private readonly numberOrIsoDateRegex = /^\d+$|(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?([+-][0-2]\d:[0-5]\d|Z)?)?$)/;
+
 	protected readonly component: Generic.Element.Component & Props;
 
 	public constructor(component: Generic.Element.Component & Props, name: string) {
@@ -35,18 +41,43 @@ export class InputNumberController extends InputController implements Watches {
 		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
 	}
 
+	private parseMaxima = (value?: number | Date | string) => {
+		if (typeof value === 'string') {
+			return value;
+		}
+		if (typeof value === 'number') {
+			return `${value}`;
+		}
+		if (typeof value === 'object' && value instanceof Date) {
+			return value.toISOString();
+		}
+		return '';
+	};
+
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateMax(value?: string): void {
-		watchString(this.component, '_max', value);
+	public validateMax(value?: number | Date | string): void {
+		watchValidator(
+			this.component,
+			'_max',
+			(value): boolean => value !== undefined && this.numberOrIsoDateRegex.test(value),
+			new Set(['number', 'Date', 'string{ISO-8601}']),
+			this.parseMaxima(value)
+		);
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateMin(value?: string): void {
-		watchString(this.component, '_min', value);
+	public validateMin(value?: number | Date | string): void {
+		watchValidator(
+			this.component,
+			'_min',
+			(value): boolean => value !== undefined && this.numberOrIsoDateRegex.test(value),
+			new Set(['number', 'Date', 'string{ISO-8601}']),
+			this.parseMaxima(value)
+		);
 	}
 
 	/**
