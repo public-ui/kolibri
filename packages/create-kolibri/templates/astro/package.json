@@ -48,7 +48,7 @@
 		"nightwatch-axe-verbose": "2.0.3",
 		"npm-check-updates": "16.3.11",
 		"playwright": "1.26.1",
-    "preact": "10.7.3",
+    "preact": "10.11.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",
 		"rimraf": "3.0.2",
