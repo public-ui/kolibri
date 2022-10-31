@@ -26,3 +26,5 @@ pwa-manifest.config.js
 README.md
 unocss.config.ts
 workbox-config.js
+
+!theme/README.md
