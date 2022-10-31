@@ -18,9 +18,9 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "next build",
-		"format": "prettier --check {src}/**",
+		"format": "prettier --check src/**",
 		"run": "next start",
-		"start": "next",
+		"start": "next dev",
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
@@ -30,7 +30,7 @@
 		"@public-ui/react": "1.1.10-rc.2",
 		"@public-ui/themes": "1.1.10-rc.2",
 		"@stencil/core": "2.19.2",
-		"next": "12.3.1",
+		"next": "13.0.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-is": "18.2.0"
