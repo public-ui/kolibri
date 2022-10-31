@@ -114,7 +114,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 				<a
 					{...tagAttrs}
 					aria-controls={this.state._ariaControls}
-					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
+					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-labelledby={this.state._useCase === 'image' || this.state._iconOnly === true ? this.nonce : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
@@ -327,7 +327,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	public validateAriaCurrent(value?: AriaCurrent): void {
 		watchValidator(
 			this,
-			'_ariaControls',
+			'_ariaCurrent',
 			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
 			new Set(['boolean', 'String {data, location, page, step, time}']),
 			value

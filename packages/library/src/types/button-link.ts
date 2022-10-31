@@ -5,6 +5,9 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback } from './callbacks';
 import { Alignment, KoliBriCustomIcon, KoliBriIconProp } from './icon';
 
+/**
+ * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
+ */
 export type AriaCurrent = boolean | 'page' | 'step' | 'location' | 'date' | 'time';
 
 /**
