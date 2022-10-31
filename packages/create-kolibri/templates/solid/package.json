@@ -49,7 +49,7 @@
 		"chromedriver": "106.0.1",
 		"nightwatch-axe-verbose": "2.0.3",
 		"npm-check-updates": "16.0.6",
-		"playwright": "1.26.1",
+		"playwright": "1.27.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
 		"typescript": "4.8.3"
