@@ -1458,6 +1458,10 @@ export namespace Components {
     }
     interface KolNav {
         /**
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+         */
+        "_ariaCurrentValue": AriaCurrent;
+        /**
           * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
          */
         "_ariaLabel": string;
@@ -3591,6 +3595,10 @@ declare namespace LocalJSX {
         "_width"?: string;
     }
     interface KolNav {
+        /**
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+         */
+        "_ariaCurrentValue"?: AriaCurrent;
         /**
           * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
          */
