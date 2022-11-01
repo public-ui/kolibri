@@ -15,7 +15,7 @@
 		"ts-prune": "lerna exec --stream -- ts-prune src",
 		"depcheck": "lerna exec --stream -- depcheck --ignore-bin-package --skip-missing",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
-		"update": "pnpm ncu:minor && pnpm ncu:major && ncu:patch",
+		"update": "pnpm ncu:minor && pnpm ncu:major && pnpm ncu:patch",
 		":publish": "lerna exec --stream -- pnpm :publish",
 		":republish": "lerna exec --stream -- pnpm :republish",
 		":unpublish": "lerna exec --stream -- pnpm :unpublish"
