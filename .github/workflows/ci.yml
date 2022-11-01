@@ -3,7 +3,6 @@ name: CI-Pipeline
 on:
   pull_request_target:
     types: [opened, closed, synchronize]
-  push:
   workflow_dispatch:
 
 jobs:
@@ -24,7 +23,7 @@ jobs:
       #  env:
       #    cache-name: cache-pnpm-modules
       #  with:
-          # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
+      # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
       #    path: ~/.pnpm-store
       #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
       #    restore-keys: |
@@ -44,6 +43,6 @@ jobs:
         run: |
           npx lerna run test
         working-directory: packages/library
-      # - name: 'Pack'
-      #   run: |
-      #     npx lerna exec --stream -- pnpm pack
+      - name: 'Pack'
+        run: |
+          npx lerna exec --stream -- npm pack
