@@ -10,7 +10,7 @@ Wir stellen gemeinsam wiederverwendbare Webkomponenten zur Verfügung, die die B
 
 ## Mission
 
-**KoliBri** baut direkt auf den [Webstandards](https://www.w3.org/standards/webdesign/) des [W3C](https://www.w3.org/standards/webdesign/) auf (Framework-agnostisch), ist dabei eine generische Referenzimplementierung des [WCAG-Standards](https://www.w3.org/WAI/standards-guidelines/wcag/) und der [BITV](https://www.bitvtest.de/bitv_test.html) für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist **KoliBri** für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
+**KoliBri** baut direkt auf den [Webstandards](https://www.w3.org/standards/webdesign/) des [W3C](https://www.w3.org) auf (Framework-agnostisch), ist dabei eine generische Referenzimplementierung des [WCAG-Standards](https://www.w3.org/WAI/standards-guidelines/wcag/) und der [BITV](https://www.bitvtest.de/bitv_test.html) für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist **KoliBri** für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
 
 ## Lizenz
 

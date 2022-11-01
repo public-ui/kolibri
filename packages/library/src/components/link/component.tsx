@@ -18,7 +18,7 @@ import {
 import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, mapStringOrBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { TooltipAlignment } from '../tooltip/component';
 
 type RequiredNavLinkProps = RequiredLinkProps & unknown;
