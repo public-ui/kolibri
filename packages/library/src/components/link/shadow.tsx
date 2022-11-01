@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@public-ui/core';
-import { AriaCurrent, KoliBriButtonLinkShowAs, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
+import { AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { TooltipAlignment } from '../tooltip/component';
 
 /**
@@ -34,7 +34,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 				_on={this._on}
 				_part={this._part}
 				_selector={this._selector}
-				_showAs={this._showAs}
 				_stealth={this._stealth}
 				_target={this._target}
 				_targetDescription={this._targetDescription}
@@ -118,11 +117,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
 	 */
 	@Prop() public _selector?: string;
-
-	/**
-	 * Gibt an, ob der Link als Link oder Button dargestellt werden soll.
-	 */
-	@Prop() public _showAs?: KoliBriButtonLinkShowAs = 'link';
 
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.

@@ -78,10 +78,12 @@ Referenz: <https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden>
 
 - [kol-accordion](../accordion)
 - [kol-alert](../alert)
+- [kol-button-link](../button)
 - kol-button-wc
 - [kol-icon-font-awesome](../icon-font-awesome)
 - [kol-icon-icofont](../icon-icofont)
 - kol-input
+- kol-link-button
 - kol-link-wc
 
 ### Graph
@@ -90,10 +92,12 @@ Referenz: <https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden>
 graph TD;
   kol-accordion --> kol-icon
   kol-alert --> kol-icon
+  kol-button-link --> kol-icon
   kol-button-wc --> kol-icon
   kol-icon-font-awesome --> kol-icon
   kol-icon-icofont --> kol-icon
   kol-input --> kol-icon
+  kol-link-button --> kol-icon
   kol-link-wc --> kol-icon
   style kol-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

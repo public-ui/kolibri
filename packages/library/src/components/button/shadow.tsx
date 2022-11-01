@@ -4,7 +4,6 @@ import { Generic } from '@public-ui/core';
 import {
 	AriaCurrent,
 	KoliBriButtonCallbacks,
-	KoliBriButtonLinkShowAs,
 	KoliBriButtonType,
 	KoliBriButtonVariant,
 	OptionalButtonProps,
@@ -59,7 +58,6 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				_id={this._id}
 				_label={this._label}
 				_on={this._on}
-				_showAs={this._showAs}
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
 				_variant={this._variant}
@@ -67,7 +65,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				style={{
 					width: 'inherit',
 				}}
-			></kol-button-wc>
+			>
+				<slot />
+			</kol-button-wc>
 		);
 	}
 
@@ -137,11 +137,6 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
-
-	/**
-	 * Gibt an, ob der Button als Button oder Link dargestellt werden soll.
-	 */
-	@Prop() public _showAs?: KoliBriButtonLinkShowAs = 'button';
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.

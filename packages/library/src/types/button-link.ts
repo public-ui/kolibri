@@ -12,12 +12,11 @@ export type AriaCurrent = boolean | 'page' | 'step' | 'location' | 'date' | 'tim
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
+ * https://mui.com/material-ui/react-link/#accessibility
+ * https://mui.com/material-ui/react-button/#text-button
  */
-
-export type KoliBriButtonLinkShowAs = 'button' | 'link';
-
-type RequiredButtonLinkProps = unknown;
-type OptionalButtonLinkProps = {
+type RequiredButtonAndLinkProps = unknown;
+type OptionalButtonAndLinkProps = {
 	ariaControls: string;
 	ariaCurrent: AriaCurrent;
 	ariaExpanded: boolean;
@@ -29,11 +28,10 @@ type OptionalButtonLinkProps = {
 	 */
 	iconAlign: Alignment;
 	iconOnly: boolean;
-	showAs: KoliBriButtonLinkShowAs;
 	tooltipAlign: TooltipAlignment;
 };
 
-type RequiredButtonLinkStates = {
+type RequiredButtonAndLinkStates = {
 	ariaLabel: string;
 	icon: {
 		top?: KoliBriCustomIcon;
@@ -45,9 +43,8 @@ type RequiredButtonLinkStates = {
 	 * @deprecated
 	 */
 	iconAlign: Alignment;
-	showAs: KoliBriButtonLinkShowAs;
 };
-type OptionalButtonLinkStates = {
+type OptionalButtonAndLinkStates = {
 	ariaControls: string;
 	ariaCurrent: AriaCurrent;
 	ariaExpanded: boolean;
@@ -71,28 +68,27 @@ export type KoliBriButtonVariantCustomClass = {
 };
 
 /**
- * API
+ * API ButtonLink
  */
-export type RequiredButtonProps = RequiredButtonLinkProps & {
+export type RequiredButtonLinkProps = RequiredButtonAndLinkProps & {
 	label: string;
 };
-export type OptionalButtonProps = OptionalButtonLinkProps &
-	KoliBriButtonVariantCustomClass & {
-		/**
-		 * @deprecated Zweck?!
-		 */
-		accessKey: string;
-		id: string;
-		on: KoliBriButtonCallbacks;
-		type: KoliBriButtonType;
-	};
-export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
+export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
+	/**
+	 * @deprecated Zweck?!
+	 */
+	accessKey: string;
+	id: string;
+	on: KoliBriButtonCallbacks;
+	type: KoliBriButtonType;
+};
+export type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-export type RequiredButtonStates = RequiredButtonLinkStates & {
+export type RequiredButtonLinkStates = RequiredButtonAndLinkStates & {
 	label: string;
 	type: KoliBriButtonType;
 };
-export type OptionalButtonStates = OptionalButtonLinkStates &
+export type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 	KoliBriButtonVariantCustomClass & {
 		/**
 		 * @deprecated Zweck?!
@@ -101,6 +97,17 @@ export type OptionalButtonStates = OptionalButtonLinkStates &
 		id: string;
 		on: KoliBriButtonCallbacks;
 	};
+export type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
+
+/**
+ * API Button
+ */
+export type RequiredButtonProps = RequiredButtonLinkProps;
+export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantCustomClass;
+export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
+
+export type RequiredButtonStates = RequiredButtonLinkStates;
+export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonVariantCustomClass;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /* LINK */
@@ -115,10 +122,10 @@ export type LinkTarget = '_blank' | '_parent' | '_self' | '_top' | string;
 export type LinkUseCase = 'text' | 'image' | 'nav';
 
 /**
- * API
+ * API Link
  */
-export type RequiredLinkProps = RequiredButtonLinkProps & unknown;
-export type OptionalLinkProps = OptionalButtonLinkProps & {
+export type RequiredLinkProps = RequiredButtonAndLinkProps & unknown;
+export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	ariaSelected: boolean;
 	fill: boolean;
 	href: string;
@@ -136,8 +143,8 @@ export type OptionalLinkProps = OptionalButtonLinkProps & {
 };
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
-export type RequiredLinkStates = RequiredButtonLinkStates & unknown;
-export type OptionalLinkStates = OptionalButtonLinkStates & {
+export type RequiredLinkStates = RequiredButtonAndLinkStates & unknown;
+export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
 	fill: boolean;
 	href: string;
@@ -155,9 +162,16 @@ export type OptionalLinkStates = OptionalButtonLinkStates & {
 };
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 
-export const watchShowAs = (component: Generic.Element.Component, value?: KoliBriButtonLinkShowAs): void => {
-	watchValidator(component, '_showAs', (value) => value === 'button' || value === 'link', new Set(['String {button, link}']), value);
-};
+/**
+ * API LinkButton
+ */
+export type RequiredLinkButtonProps = RequiredLinkProps;
+export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantCustomClass;
+export type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
+
+export type RequiredLinkButtonStates = RequiredLinkStates;
+export type OptionalLinkButtonStates = OptionalLinkStates & KoliBriButtonVariantCustomClass;
+export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
 export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: TooltipAlignment): void => {
 	watchValidator(

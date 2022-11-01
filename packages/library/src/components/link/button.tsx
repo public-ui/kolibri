@@ -3,14 +3,17 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@public-ui/core';
 import {
 	AriaCurrent,
+	KoliBriButtonVariant,
+	LinkButtonStates,
 	LinkOnCallbacks,
-	LinkStates,
 	LinkTarget,
 	LinkUseCase,
+	OptionalLinkButtonProps,
+	OptionalLinkButtonStates,
 	OptionalLinkProps,
-	OptionalLinkStates,
+	RequiredLinkButtonProps,
+	RequiredLinkButtonStates,
 	RequiredLinkProps,
-	RequiredLinkStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
 import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
@@ -18,6 +21,7 @@ import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { TooltipAlignment } from '../tooltip/component';
+import { watchButtonVariant } from '../button/controller';
 
 type RequiredNavLinkProps = RequiredLinkProps & unknown;
 type OptionalNavLinkProps = OptionalLinkProps & {
@@ -33,10 +37,15 @@ export type NavLinkProps = Generic.Element.Members<RequiredNavLinkProps, Optiona
  * @internal
  */
 @Component({
-	tag: 'kol-link-wc',
-	shadow: false,
+	tag: 'kol-link-button',
+	styleUrls: {
+		default: './style.sass',
+	},
+	shadow: true,
 })
-export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates> {
+export class KolLinkButton
+	implements Generic.Element.ComponentApi<RequiredLinkButtonProps, OptionalLinkButtonProps, RequiredLinkButtonStates, OptionalLinkButtonStates>
+{
 	private readonly nonce = nonce();
 
 	private readonly getRenderValues = () => {
@@ -123,6 +132,9 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						'flex flex-wrap items-center': this.state._iconOnly === false,
 						'grid text-center': this.state._iconOnly === true,
 						'skip ': this.state._stealth !== false,
+						[this.state._variant as string]: true,
+						'icon-only': this.state._iconOnly === true,
+						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					}}
 					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
@@ -220,6 +232,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
+	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 */
+	@Prop() public _customClass?: string;
+
+	/**
 	 * Gibt an, ob der Link deaktiviert ist.
 	 */
 	@Prop() public _disabled?: boolean = false;
@@ -297,9 +314,14 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _useCase?: LinkUseCase = 'text';
 
 	/**
+	 * Gibt an, welche Ausprägung der Button hat.
+	 */
+	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+
+	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
-	@State() public state: LinkStates = {
+	@State() public state: LinkButtonStates = {
 		_ariaLabel: '',
 		_icon: {},
 		/**
@@ -352,6 +374,16 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Watch('_ariaSelected')
 	public validateAriaSelected(value?: boolean): void {
 		watchBoolean(this, '_ariaSelected', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_customClass')
+	public validateCustomClass(value?: string): void {
+		watchString(this, '_customClass', value, {
+			defaultValue: undefined,
+		});
 	}
 
 	/**
@@ -499,6 +531,14 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	}
 
 	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_variant')
+	public validateVariant(value?: KoliBriButtonVariant): void {
+		watchButtonVariant(this, '_variant', value);
+	}
+
+	/**
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
@@ -507,6 +547,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
+		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateFill(this._fill);
 		this.validateHref(this._href);
@@ -522,5 +563,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateUnderline(this._underline);
 		this.validateUseCase(this._useCase);
+		this.validateVariant(this._variant);
 	}
 }
