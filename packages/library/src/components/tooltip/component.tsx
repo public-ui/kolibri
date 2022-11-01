@@ -31,7 +31,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: false,
 })
 export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public hydrated = false;
 
 	private hostElement?: HTMLElement | null = null;
