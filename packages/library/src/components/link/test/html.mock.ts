@@ -29,7 +29,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
   <kol-link-wc>
     <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
 		props._iconOnly === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
-	} class="link ${props._stealth === true ? ' skip' : ''}${props._useCase === 'nav' ? '' : ' kol-visited'}${
+	} class="${props._stealth === true ? ' skip' : ''}${props._useCase === 'nav' ? '' : ' kol-visited'}${
 		props._iconOnly === true ? ' grid text-center' : ' flex flex-wrap items-center'
 	}" href="${typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'}" part="link ${
 		typeof props._part === 'string' ? props._part : ''
