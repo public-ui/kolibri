@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.10-rc.2
+  '@public-ui/core': 1.1.10-rc.3
   '@types/node': 18.11.8
   typescript: 4.8.4
   unbuild: 0.9.4
 
 dependencies:
-  '@public-ui/core': 1.1.10-rc.2
+  '@public-ui/core': 1.1.10-rc.3
 
 devDependencies:
   '@types/node': 18.11.8
@@ -291,8 +291,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@leanup/lib/1.3.37:
-    resolution: {integrity: sha512-Ie7DePeir8F5OuNQobpU/TCLM175F0g5cNKDHsNW57VH7dSWSKelz/N/CkMoPWmNUVSCMfW/ZXOVGig52kS7IQ==}
+  /@leanup/lib/1.3.38:
+    resolution: {integrity: sha512-pShxkO0I1Qc865MJEPVeqLmKwkZUn7kdffIsHj6+XsBG310YIbH8JFCOOBcH6oTc7dTRBYnC2YQzzE9/mV8iMg==}
     dependencies:
       loglevel: 1.8.0
       tslib: 2.4.0
@@ -319,11 +319,11 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/core/1.1.10-rc.2:
-    resolution: {integrity: sha512-lVZHR/ZRAOvwVvlcJznegd3jSM80nKRda4mMUcqaVqD8jf4bJRlTnwgMi3xoY1FNo/+3q5lgzPZktVEk3nls0A==}
+  /@public-ui/core/1.1.10-rc.3:
+    resolution: {integrity: sha512-FCMzVFFKsSZiuO5tPDfsPDgM3rWFbid0dwYBJh9ZXzLll/MMyA+1SU3XojsAzAmYplAS+7glQ8L3hCZK39P1BQ==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
-      '@leanup/lib': 1.3.37
+      '@leanup/lib': 1.3.38
       rxjs: 7.5.7
     dev: false
 
