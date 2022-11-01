@@ -25,9 +25,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * - https://github.com/ionic-team/stencil/issues/1660#issuecomment-503225460
 	 * - https://stenciljs.com/docs/templating-jsx
 	 */
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public forwardedRef?: HTMLKolButtonWcElement;
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public ref?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {

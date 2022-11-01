@@ -45,9 +45,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * - https://github.com/ionic-team/stencil/issues/1660#issuecomment-503225460
 	 * - https://stenciljs.com/docs/templating-jsx
 	 */
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public forwardedRef?: HTMLButtonElement;
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public ref?: HTMLButtonElement;
 
 	private readonly catchHost = (host?: HTMLElement | null) => {
@@ -209,7 +209,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 	 */
-	// eslint-disable-next-line @stencil/strict-mutable
+	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _ariaLabel?: string = '';
 
 	/**
@@ -247,7 +247,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt den Label für die Beschriftung der Schaltfläche an.
 	 */
-	// eslint-disable-next-line @stencil/strict-mutable
+	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _label!: string;
 
 	/**

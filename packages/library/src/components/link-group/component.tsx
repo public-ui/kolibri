@@ -14,20 +14,22 @@ const ListItem = (props: { links: NavLinkProps[]; orientation: Orientation; list
 	const list: JSX.Element[] = [];
 	props.links.map((link, index: number) => {
 		list.push(
-			<li
-				key={index}
-				class={{
-					'list-none': index === 0 && props.orientation === 'horizontal',
-					'ml-6': index > 0 || props.orientation === 'vertical',
-				}}
-				style={{
-					listStyleType: props.listStyleType,
-				}}
-			>
-				<kol-link exportparts="link" {...link} _ariaLabel={link._label}>
-					{link._label}
-				</kol-link>
-			</li>
+			(
+				<li
+					key={index}
+					class={{
+						'list-none': index === 0 && props.orientation === 'horizontal',
+						'ml-6': index > 0 || props.orientation === 'vertical',
+					}}
+					style={{
+						listStyleType: props.listStyleType,
+					}}
+				>
+					<kol-link exportparts="link" {...link} _ariaLabel={link._label}>
+						{link._label}
+					</kol-link>
+				</li>
+			) as JSX.Element
 		);
 	});
 	return list;
