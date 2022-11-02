@@ -29,7 +29,7 @@
 	},
 	"devDependencies": {
 		"@babel/types": "7.20.0",
-		"@public-ui/core": "1.1.10-rc.4",
+		"@public-ui/core": "1.1.10-rc.5",
 		"@public-ui/components": "1.1.10-rc.4",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
