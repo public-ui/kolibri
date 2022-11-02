@@ -98,7 +98,7 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop() public _alert?: boolean = false;
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.

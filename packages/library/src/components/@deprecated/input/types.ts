@@ -10,6 +10,7 @@ import { KoliBriInputIcon } from '../../input-text/types';
 type RequiredProps = unknown;
 type OptionalProps = {
 	accessKey: string;
+	adjustHeight: boolean;
 	disabled: boolean;
 	error: string;
 	hideLabel: boolean;

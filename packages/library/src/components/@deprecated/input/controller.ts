@@ -44,6 +44,13 @@ export class InputController extends ControlledInputController implements Watche
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	public validateAdjustHeight(value?: boolean): void {
+		watchBoolean(this.component, '_adjustHeight', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateDisabled(value?: boolean): void {
 		watchBoolean(this.component, '_disabled', value);
 		if (value === true) {
@@ -165,6 +172,7 @@ export class InputController extends ControlledInputController implements Watche
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAccessKey(this.component._accessKey);
+		this.validateAdjustHeight(this.component._adjustHeight);
 		this.validateError(this.component._error);
 		this.validateDisabled(this.component._disabled);
 		this.validateHideLabel(this.component._hideLabel);

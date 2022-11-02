@@ -10,6 +10,7 @@ export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;
+	adjustHeight: boolean;
 	alert: boolean;
 	disabled: boolean;
 	error: string;
@@ -31,6 +32,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
+	adjustHeight: boolean;
 	currentLength: number;
 	id: string;
 	name: string;
