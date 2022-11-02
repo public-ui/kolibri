@@ -150,7 +150,7 @@ type WatchNumberOptions = WatchOptions & {
 	max?: number;
 };
 
-export const watchValidator = <T extends unknown>(
+export const watchValidator = <T>(
 	component: Generic.Element.Component,
 	propName: string,
 	validationFunction: (value?: T) => boolean,

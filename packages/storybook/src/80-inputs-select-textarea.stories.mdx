@@ -5,7 +5,7 @@ import { Meta } from '@storybook/addon-docs';
 <kol-heading>Inputs, Select und Textarea</kol-heading>
 
 Im Rahmen des Refactoring zur Verbesserung der Developer Experience haben wir die Input-Komponenten neu strukturiert
-und sie gemäß der <kol-link _href="https://www.w3.org/TR/2010/WD-html5-20101019/the-input-element.html" _target="w3c">W3C-Aufteilung</kol-link> in separierte Komponenten umgesetzt.
+und sie gemäß der <kol-link _href="https://html.spec.whatwg.org/multipage/input.html" _target="w3c">W3C-Aufteilung</kol-link> in separierte Komponenten umgesetzt.
 Auf diese Weise stellen die jeweiligen Komponenten nur noch die Eigenschaften zur Verfügung, die beim jeweiligen Typ auch eine Funktion haben. Eigenschaften die zuvor
 "mitgeschleppt" wurden, aber keinerlei Funktion haben, wurden aus der Programmierung entfernt.
 
@@ -32,11 +32,13 @@ Auf diese Weise stellen die jeweiligen Komponenten nur noch die Eigenschaften zu
 <ul>
 	<li>KolInputCheckbox</li>
 	<li>KolInputColor</li>
+	<li>KolInputDate (ab v1.1.10)</li>
 	<li>KolInputEmail</li>
 	<li>KolInputFile</li>
+	<li>KolInputLocalDateTime (offen, in KolInputDate enthalten)</li>
 	<li>KolInputNumber</li>
 	<li>KolInputPassword</li>
-	<li>KolInputRadioGroup (KolInputRadio)</li>
+	<li>KolInputRadio (KolInputRadioGroup wird abgelöst)</li>
 	<li>KolInputRange</li>
 	<li>KolInputText</li>
 	<li>KolSelect</li>

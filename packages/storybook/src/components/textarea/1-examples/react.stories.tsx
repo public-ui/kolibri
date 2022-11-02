@@ -215,6 +215,30 @@ ResizeBoth.storyName = 'Beidseitige Größenänderung';
  *
  * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
  */
+export const AdjustHeight = () => (
+	<div>
+		<KolTextarea
+			_adjustHeight={true}
+			_value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+      magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+      gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+      elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
+      et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+      sit amet."
+		></KolTextarea>
+	</div>
+);
+AdjustHeight.args = {
+	...DefaultArgs,
+};
+
+AdjustHeight.storyName = 'Automatische Höhenanpassung';
+
+/**
+ * Die Component stellt eine konkrete Story im Storybook dar.
+ *
+ * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
+ */
 export const Readonly = (args: any) => (
 	<div>
 		<KolTextarea

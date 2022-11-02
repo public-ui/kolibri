@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.1.10-rc.4",
+	"version": "1.1.10-rc.6",
 	"description": "Das Components-Modul beinhaltet alle zur Komponenten-Bibliothek gehörenden Webcomponents.",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -61,13 +61,12 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.10-rc.4"
+		"@public-ui/schema": "1.1.10-rc.6"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.10-rc.4",
+		"@public-ui/core": "1.1.10-rc.6",
 		"@stencil/angular-output-target": "0.4.0",
 		"@stencil/core": "2.19.2",
-		"@stencil/eslint-plugin": "0.4.0",
 		"@stencil/postcss": "2.1.0",
 		"@stencil/react-output-target": "0.3.1",
 		"@stencil/sass": "2.0.0",
@@ -79,14 +78,14 @@
 		"@types/node": "18.11.9",
 		"@types/puppeteer": "5.4.7",
 		"@types/wcag-contrast": "3.0.0",
-		"@typescript-eslint/eslint-plugin": "4.33.0",
-		"@typescript-eslint/parser": "4.33.0",
+		"@typescript-eslint/eslint-plugin": "5.42.0",
+		"@typescript-eslint/parser": "5.42.0",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
 		"construct-style-sheets-polyfill": "3.1.0",
 		"contrast-color": "1.0.1",
 		"cross-env": "7.0.3",
-		"eslint": "7.32.0",
+		"eslint": "8.26.0",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-html": "7.1.0",
 		"eslint-plugin-jsdoc": "39.4.0",

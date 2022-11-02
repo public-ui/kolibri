@@ -4,7 +4,6 @@ import { Generic } from '@public-ui/core';
 import {
 	AriaCurrent,
 	KoliBriButtonCallbacks,
-	KoliBriButtonLinkShowAs,
 	KoliBriButtonType,
 	KoliBriButtonVariant,
 	OptionalButtonProps,
@@ -25,9 +24,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * - https://github.com/ionic-team/stencil/issues/1660#issuecomment-503225460
 	 * - https://stenciljs.com/docs/templating-jsx
 	 */
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public forwardedRef?: HTMLKolButtonWcElement;
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public ref?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
@@ -59,7 +58,6 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				_id={this._id}
 				_label={this._label}
 				_on={this._on}
-				_showAs={this._showAs}
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
 				_variant={this._variant}
@@ -67,7 +65,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				style={{
 					width: 'inherit',
 				}}
-			></kol-button-wc>
+			>
+				<slot />
+			</kol-button-wc>
 		);
 	}
 
@@ -137,11 +137,6 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
-
-	/**
-	 * Gibt an, ob der Button als Button oder Link dargestellt werden soll.
-	 */
-	@Prop() public _showAs?: KoliBriButtonLinkShowAs = 'button';
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
