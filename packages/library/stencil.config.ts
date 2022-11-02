@@ -28,6 +28,7 @@ const TAGS = [
 	'kol-input-adapter-leanup',
 	'kol-input-checkbox',
 	'kol-input-color',
+	'kol-input-date',
 	'kol-input-file',
 	'kol-input-email',
 	'kol-input-number',

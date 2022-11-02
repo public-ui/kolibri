@@ -1,6 +1,7 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { InputDateType } from '../../types/input/control/number';
 import { IsoDate } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { watchValidator } from '../../utils/prop.validators';
@@ -33,14 +34,13 @@ export class KolInputDate implements ComponentApi {
 				_min={this.state._min}
 				_name={this._name}
 				_on={this._on}
-				_placeholder={this._placeholder}
 				_readOnly={this._readOnly}
 				_required={this._required}
 				_smartButton={this._smartButton}
 				_step={this._step}
 				_tabIndex={this._tabIndex}
 				_touched={this._touched}
-				_type="date"
+				_type={this._type}
 				_value={this.state._value}
 			/>
 		);
@@ -99,12 +99,12 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt den größtmöglichen Datumswert an.
 	 */
-	@Prop() public _max?: IsoDate;
+	@Prop() public _max?: IsoDate | Date;
 
 	/**
 	 * Gibt den kleinstmöglichen Datumswert an.
 	 */
-	@Prop() public _min?: IsoDate;
+	@Prop() public _min?: IsoDate | Date;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -115,11 +115,6 @@ export class KolInputDate implements ComponentApi {
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
 	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
-	 */
-	@Prop() public _placeholder?: string;
 
 	/**
 	 * Gibt an, ob das Eingabefeld nur lesend ist.
@@ -152,39 +147,56 @@ export class KolInputDate implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
+	 * Gibt den Typ des Eingabefeldes an.
+	 */
+	@Prop() public _type: InputDateType = 'date';
+
+	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: IsoDate;
+	@Prop() public _value?: IsoDate | Date;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {};
 
-	private readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?([+-][0-2]\d:[0-5]\d|Z)?)?$/;
+	// test: https://regex101.com/r/NTVh4L/1
+	private readonly isoDateRegex =
+		/(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?([+-][0-2]\d:[0-5]\d|Z)?)?$)|(^[0-2]\d:[0-5]\d(:[0-5]\d)?$)|(^\d{4}-W(?:[0-4]\d|5[0-3])$)|(^\d{4}-([0]\d|1[0-2])$)/;
+
+	private valueAsIsoDate(value?: IsoDate | Date): IsoDate | undefined {
+		if (typeof value === 'string') {
+			return value;
+		}
+		if (typeof value === 'object' && value instanceof Date) {
+			return value.toISOString() as IsoDate;
+		}
+		return undefined;
+	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_max')
-	public validateMax(value?: IsoDate): void {
-		watchValidator(this, '_max', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), value);
+	public validateMax(value?: IsoDate | Date): void {
+		watchValidator(this, '_max', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), this.valueAsIsoDate(value));
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_min')
-	public validateMin(value?: IsoDate): void {
-		watchValidator(this, '_min', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), value);
+	public validateMin(value?: IsoDate | Date): void {
+		watchValidator(this, '_min', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), this.valueAsIsoDate(value));
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_value')
-	public validateValue(value?: IsoDate): void {
-		watchValidator(this, '_value', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), value);
+	public validateValue(value?: IsoDate | Date): void {
+		watchValidator(this, '_value', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), this.valueAsIsoDate(value));
 	}
 
 	/**

@@ -21,7 +21,7 @@ import { KoliBriInputIcon } from "./components/input-text/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { InputCheckboxType } from "./components/input-checkbox/types";
 import { Iso8601, IsoDate } from "./types/input/iso8601";
-import { InputNumberType } from "./types/input/control/number";
+import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/component";
@@ -614,11 +614,11 @@ export namespace Components {
         /**
           * Gibt den größtmöglichen Datumswert an.
          */
-        "_max"?: IsoDate;
+        "_max"?: IsoDate | Date;
         /**
           * Gibt den kleinstmöglichen Datumswert an.
          */
-        "_min"?: IsoDate;
+        "_min"?: IsoDate | Date;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -627,10 +627,6 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
-        /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
-         */
-        "_placeholder"?: string;
         /**
           * Gibt an, ob das Eingabefeld nur lesend ist.
          */
@@ -656,9 +652,13 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
+          * Gibt den Typ des Eingabefeldes an.
+         */
+        "_type": InputDateType;
+        /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: IsoDate;
+        "_value"?: IsoDate | Date;
     }
     interface KolInputEmail {
         /**
@@ -2845,11 +2845,11 @@ declare namespace LocalJSX {
         /**
           * Gibt den größtmöglichen Datumswert an.
          */
-        "_max"?: IsoDate;
+        "_max"?: IsoDate | Date;
         /**
           * Gibt den kleinstmöglichen Datumswert an.
          */
-        "_min"?: IsoDate;
+        "_min"?: IsoDate | Date;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -2858,10 +2858,6 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
-        /**
-          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
-         */
-        "_placeholder"?: string;
         /**
           * Gibt an, ob das Eingabefeld nur lesend ist.
          */
@@ -2887,9 +2883,13 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
+          * Gibt den Typ des Eingabefeldes an.
+         */
+        "_type"?: InputDateType;
+        /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: IsoDate;
+        "_value"?: IsoDate | Date;
     }
     interface KolInputEmail {
         /**

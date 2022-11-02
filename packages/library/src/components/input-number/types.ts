@@ -1,6 +1,6 @@
 import { Generic } from '@public-ui/core';
 import { ButtonProps } from '../../types/button-link';
-import { InputNumberType, OptionalInputNumberProps } from '../../types/input/control/number';
+import { InputNumberType, OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
@@ -9,7 +9,7 @@ import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
  * API
  */
 type RequiredProps = InputRequiredProps;
-type OptionalProps = OptionalInputNumberProps<number | Iso8601> & { type: InputNumberType };
+type OptionalProps = OptionalInputProps<number | Iso8601> & { placeholder: string; type: InputNumberType };
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
