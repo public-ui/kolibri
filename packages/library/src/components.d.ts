@@ -1834,6 +1834,10 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
+          * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+         */
+        "_adjustHeight"?: boolean;
+        /**
           * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
          */
         "_alert"?: boolean;
@@ -4119,6 +4123,10 @@ declare namespace LocalJSX {
           * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
+        /**
+          * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+         */
+        "_adjustHeight"?: boolean;
         /**
           * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
          */
