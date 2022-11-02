@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/designer",
-	"version": "1.1.10-rc.5",
+	"version": "1.1.10-rc.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -41,10 +41,10 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/core": "1.1.10-rc.5",
-		"@public-ui/components": "1.1.10-rc.5",
-		"@public-ui/solid": "1.1.10-rc.5",
-		"@public-ui/themes": "1.1.10-rc.5",
+		"@public-ui/core": "1.1.10-rc.6",
+		"@public-ui/components": "1.1.10-rc.6",
+		"@public-ui/solid": "1.1.10-rc.6",
+		"@public-ui/themes": "1.1.10-rc.6",
 		"monaco-editor": "0.34.1",
 		"monaco-editor-webpack-plugin": "7.0.1",
 		"solid-js": "1.6.1",
