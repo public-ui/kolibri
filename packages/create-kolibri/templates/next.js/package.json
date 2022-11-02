@@ -38,7 +38,7 @@
 	"devDependencies": {
 		"@types/node": "18.11.7",
 		"@types/react": "18.0.21",
-		"@typescript-eslint/eslint-plugin": "5.40.0",
+		"@typescript-eslint/eslint-plugin": "5.42.0",
 		"@typescript-eslint/parser": "5.40.0",
 		"babel-eslint": "10.1.0",
 		"eslint": "8.26.0",
