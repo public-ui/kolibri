@@ -6,6 +6,7 @@ import { KolBreadcrumb } from './breadcrumb/component';
 import { KolButtonGroup } from './button-group/component';
 import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
+import { KolButtonLink } from './button/link';
 import { KolCard } from './card/component';
 import { KolDetails } from './details/component';
 import { KolForm } from './form/component';
@@ -31,6 +32,7 @@ import { KolKolibri } from './kolibri/component';
 import { KolLinkGroup } from './link-group/component';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
+import { KolLinkButton } from './link/button';
 import { KolLogo } from './logo/component';
 import { KolModal } from './modal/component';
 import { KolNav } from './nav/component';
@@ -56,6 +58,7 @@ export const COMPONENTS = [
 	KolButton,
 	KolButtonWc,
 	KolButtonGroup,
+	KolButtonLink,
 	KolCard,
 	KolInputAdapterLeanup,
 	KolDetails,
@@ -79,6 +82,7 @@ export const COMPONENTS = [
 	KolInputText,
 	KolKolibri,
 	KolLink,
+	KolLinkButton,
 	KolLinkWc,
 	KolLinkGroup,
 	KolLogo,

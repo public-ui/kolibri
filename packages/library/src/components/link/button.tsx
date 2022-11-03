@@ -10,10 +10,8 @@ import {
 	LinkUseCase,
 	OptionalLinkButtonProps,
 	OptionalLinkButtonStates,
-	OptionalLinkProps,
 	RequiredLinkButtonProps,
 	RequiredLinkButtonStates,
-	RequiredLinkProps,
 	watchTooltipAlignment,
 } from '../../types/button-link';
 import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
@@ -22,16 +20,6 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { TooltipAlignment } from '../tooltip/component';
 import { watchButtonVariant } from '../button/controller';
-
-type RequiredNavLinkProps = RequiredLinkProps & unknown;
-type OptionalNavLinkProps = OptionalLinkProps & {
-	active: boolean;
-	/**
-	 * @deprecated Verwende stattdessen das Property _ariaLabel.
-	 */
-	label?: string;
-};
-export type NavLinkProps = Generic.Element.Members<RequiredNavLinkProps, OptionalNavLinkProps>;
 
 /**
  * @internal
