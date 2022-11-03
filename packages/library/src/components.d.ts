@@ -14,7 +14,7 @@ import { Icofont } from "./types/icofont";
 import { Alignment, KoliBriIconProp } from "./types/icon";
 import { Stringified } from "./types/common";
 import { NavLinkProps } from "./components/link/component";
-import { AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonLinkShowAs, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
+import { AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { KoliBriInputIcon } from "./components/input-text/types";
@@ -182,10 +182,6 @@ export namespace Components {
          */
         "_on"?: KoliBriButtonCallbacks;
         /**
-          * Gibt an, ob der Button als Button oder Link dargestellt werden soll.
-         */
-        "_showAs"?: KoliBriButtonLinkShowAs;
-        /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
         "_tooltipAlign"?: TooltipAlignment;
@@ -203,6 +199,65 @@ export namespace Components {
         "getInteractiveElementRef": () => Promise<HTMLButtonElement | undefined>;
     }
     interface KolButtonGroup {
+    }
+    interface KolButtonLink {
+        /**
+          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+         */
+        "_accessKey"?: string;
+        /**
+          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+         */
+        "_ariaControls"?: string;
+        /**
+          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+         */
+        "_ariaCurrent"?: AriaCurrent;
+        /**
+          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+         */
+        "_ariaExpanded"?: boolean;
+        /**
+          * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+         */
+        "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob der Button deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+          * @deprecated
+         */
+        "_iconAlign"?: Alignment;
+        /**
+          * Gibt an, ob nur das Icon angezeigt wird.
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+         */
+        "_id"?: string;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label": string;
+        /**
+          * Gibt die EventCallback-Funktionen für die Button-Events an.
+         */
+        "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, welche Typ der Button hat.
+         */
+        "_type"?: KoliBriButtonType;
     }
     interface KolButtonWc {
         /**
@@ -258,10 +313,6 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
-        /**
-          * Gibt an, ob der Button als Button oder Link dargestellt werden soll.
-         */
-        "_showAs"?: KoliBriButtonLinkShowAs;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -1369,9 +1420,92 @@ export namespace Components {
          */
         "_selector"?: string;
         /**
-          * Gibt an, ob der Link als Link oder Button dargestellt werden soll.
+          * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
-        "_showAs"?: KoliBriButtonLinkShowAs;
+        "_stealth"?: boolean;
+        /**
+          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+         */
+        "_target"?: LinkTarget;
+        /**
+          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+         */
+        "_targetDescription"?: string;
+        /**
+          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, ob die Links unterstrichen dargestellt werden.
+         */
+        "_underline"?: boolean;
+        /**
+          * Gibt den Verwendungsfall des Links an.
+         */
+        "_useCase"?: LinkUseCase;
+    }
+    interface KolLinkButton {
+        /**
+          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+         */
+        "_ariaControls"?: string;
+        /**
+          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+         */
+        "_ariaCurrent"?: AriaCurrent;
+        /**
+          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+         */
+        "_ariaExpanded"?: boolean;
+        /**
+          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+         */
+        "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
+          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+         */
+        "_customClass"?: string;
+        /**
+          * Gibt an, ob der Link deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+         */
+        "_fill"?: boolean;
+        /**
+          * Gibt die Ziel-Url des Links an.
+         */
+        "_href"?: string;
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * @deprecated
+         */
+        "_iconAlign"?: Alignment;
+        /**
+          * Gibt an, ob nur das Icon angezeigt wird.
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Gibt die EventCallback-Funktionen für den Link an.
+         */
+        "_on"?: LinkOnCallbacks;
+        /**
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+         */
+        "_part"?: string;
+        /**
+          * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+         */
+        "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
@@ -1396,6 +1530,10 @@ export namespace Components {
           * Gibt den Verwendungsfall des Links an.
          */
         "_useCase"?: LinkUseCase;
+        /**
+          * Gibt an, welche Ausprägung der Button hat.
+         */
+        "_variant"?: KoliBriButtonVariant;
     }
     interface KolLinkGroup {
         /**
@@ -1486,10 +1624,6 @@ export namespace Components {
          */
         "_selector"?: string;
         /**
-          * Gibt an, ob der Link als Link oder Button dargestellt werden soll.
-         */
-        "_showAs"?: KoliBriButtonLinkShowAs;
-        /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
@@ -1548,6 +1682,10 @@ export namespace Components {
         "_width"?: string;
     }
     interface KolNav {
+        /**
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+         */
+        "_ariaCurrentValue": AriaCurrent;
         /**
           * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
          */
@@ -1787,6 +1925,10 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
+          * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+         */
+        "_adjustHeight"?: boolean;
+        /**
           * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
          */
         "_alert"?: boolean;
@@ -1957,6 +2099,12 @@ declare global {
         prototype: HTMLKolButtonGroupElement;
         new (): HTMLKolButtonGroupElement;
     };
+    interface HTMLKolButtonLinkElement extends Components.KolButtonLink, HTMLStencilElement {
+    }
+    var HTMLKolButtonLinkElement: {
+        prototype: HTMLKolButtonLinkElement;
+        new (): HTMLKolButtonLinkElement;
+    };
     interface HTMLKolButtonWcElement extends Components.KolButtonWc, HTMLStencilElement {
     }
     var HTMLKolButtonWcElement: {
@@ -2119,6 +2267,12 @@ declare global {
         prototype: HTMLKolLinkElement;
         new (): HTMLKolLinkElement;
     };
+    interface HTMLKolLinkButtonElement extends Components.KolLinkButton, HTMLStencilElement {
+    }
+    var HTMLKolLinkButtonElement: {
+        prototype: HTMLKolLinkButtonElement;
+        new (): HTMLKolLinkButtonElement;
+    };
     interface HTMLKolLinkGroupElement extends Components.KolLinkGroup, HTMLStencilElement {
     }
     var HTMLKolLinkGroupElement: {
@@ -2229,6 +2383,7 @@ declare global {
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
         "kol-button-group": HTMLKolButtonGroupElement;
+        "kol-button-link": HTMLKolButtonLinkElement;
         "kol-button-wc": HTMLKolButtonWcElement;
         "kol-card": HTMLKolCardElement;
         "kol-color": HTMLKolColorElement;
@@ -2256,6 +2411,7 @@ declare global {
         "kol-input-text": HTMLKolInputTextElement;
         "kol-kolibri": HTMLKolKolibriElement;
         "kol-link": HTMLKolLinkElement;
+        "kol-link-button": HTMLKolLinkButtonElement;
         "kol-link-group": HTMLKolLinkGroupElement;
         "kol-link-wc": HTMLKolLinkWcElement;
         "kol-logo": HTMLKolLogoElement;
@@ -2421,10 +2577,6 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriButtonCallbacks;
         /**
-          * Gibt an, ob der Button als Button oder Link dargestellt werden soll.
-         */
-        "_showAs"?: KoliBriButtonLinkShowAs;
-        /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
         "_tooltipAlign"?: TooltipAlignment;
@@ -2438,6 +2590,65 @@ declare namespace LocalJSX {
         "_variant"?: KoliBriButtonVariant;
     }
     interface KolButtonGroup {
+    }
+    interface KolButtonLink {
+        /**
+          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+         */
+        "_accessKey"?: string;
+        /**
+          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+         */
+        "_ariaControls"?: string;
+        /**
+          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+         */
+        "_ariaCurrent"?: AriaCurrent;
+        /**
+          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+         */
+        "_ariaExpanded"?: boolean;
+        /**
+          * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+         */
+        "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob der Button deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+          * @deprecated
+         */
+        "_iconAlign"?: Alignment;
+        /**
+          * Gibt an, ob nur das Icon angezeigt wird.
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+         */
+        "_id"?: string;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label": string;
+        /**
+          * Gibt die EventCallback-Funktionen für die Button-Events an.
+         */
+        "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, welche Typ der Button hat.
+         */
+        "_type"?: KoliBriButtonType;
     }
     interface KolButtonWc {
         /**
@@ -2493,10 +2704,6 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
-        /**
-          * Gibt an, ob der Button als Button oder Link dargestellt werden soll.
-         */
-        "_showAs"?: KoliBriButtonLinkShowAs;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -3600,9 +3807,92 @@ declare namespace LocalJSX {
          */
         "_selector"?: string;
         /**
-          * Gibt an, ob der Link als Link oder Button dargestellt werden soll.
+          * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
-        "_showAs"?: KoliBriButtonLinkShowAs;
+        "_stealth"?: boolean;
+        /**
+          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+         */
+        "_target"?: LinkTarget;
+        /**
+          * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+         */
+        "_targetDescription"?: string;
+        /**
+          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, ob die Links unterstrichen dargestellt werden.
+         */
+        "_underline"?: boolean;
+        /**
+          * Gibt den Verwendungsfall des Links an.
+         */
+        "_useCase"?: LinkUseCase;
+    }
+    interface KolLinkButton {
+        /**
+          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+         */
+        "_ariaControls"?: string;
+        /**
+          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+         */
+        "_ariaCurrent"?: AriaCurrent;
+        /**
+          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+         */
+        "_ariaExpanded"?: boolean;
+        /**
+          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+         */
+        "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
+          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+         */
+        "_customClass"?: string;
+        /**
+          * Gibt an, ob der Link deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+         */
+        "_fill"?: boolean;
+        /**
+          * Gibt die Ziel-Url des Links an.
+         */
+        "_href"?: string;
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * @deprecated
+         */
+        "_iconAlign"?: Alignment;
+        /**
+          * Gibt an, ob nur das Icon angezeigt wird.
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Gibt die EventCallback-Funktionen für den Link an.
+         */
+        "_on"?: LinkOnCallbacks;
+        /**
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+         */
+        "_part"?: string;
+        /**
+          * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+         */
+        "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
@@ -3627,6 +3917,10 @@ declare namespace LocalJSX {
           * Gibt den Verwendungsfall des Links an.
          */
         "_useCase"?: LinkUseCase;
+        /**
+          * Gibt an, welche Ausprägung der Button hat.
+         */
+        "_variant"?: KoliBriButtonVariant;
     }
     interface KolLinkGroup {
         /**
@@ -3717,10 +4011,6 @@ declare namespace LocalJSX {
          */
         "_selector"?: string;
         /**
-          * Gibt an, ob der Link als Link oder Button dargestellt werden soll.
-         */
-        "_showAs"?: KoliBriButtonLinkShowAs;
-        /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
@@ -3779,6 +4069,10 @@ declare namespace LocalJSX {
         "_width"?: string;
     }
     interface KolNav {
+        /**
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+         */
+        "_ariaCurrentValue"?: AriaCurrent;
         /**
           * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
          */
@@ -4018,6 +4312,10 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
+          * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+         */
+        "_adjustHeight"?: boolean;
+        /**
           * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
          */
         "_alert"?: boolean;
@@ -4152,6 +4450,7 @@ declare namespace LocalJSX {
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
         "kol-button-group": KolButtonGroup;
+        "kol-button-link": KolButtonLink;
         "kol-button-wc": KolButtonWc;
         "kol-card": KolCard;
         "kol-color": KolColor;
@@ -4179,6 +4478,7 @@ declare namespace LocalJSX {
         "kol-input-text": KolInputText;
         "kol-kolibri": KolKolibri;
         "kol-link": KolLink;
+        "kol-link-button": KolLinkButton;
         "kol-link-group": KolLinkGroup;
         "kol-link-wc": KolLinkWc;
         "kol-logo": KolLogo;
@@ -4209,6 +4509,7 @@ declare module "@stencil/core" {
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;
             "kol-button-group": LocalJSX.KolButtonGroup & JSXBase.HTMLAttributes<HTMLKolButtonGroupElement>;
+            "kol-button-link": LocalJSX.KolButtonLink & JSXBase.HTMLAttributes<HTMLKolButtonLinkElement>;
             "kol-button-wc": LocalJSX.KolButtonWc & JSXBase.HTMLAttributes<HTMLKolButtonWcElement>;
             "kol-card": LocalJSX.KolCard & JSXBase.HTMLAttributes<HTMLKolCardElement>;
             "kol-color": LocalJSX.KolColor & JSXBase.HTMLAttributes<HTMLKolColorElement>;
@@ -4236,6 +4537,7 @@ declare module "@stencil/core" {
             "kol-input-text": LocalJSX.KolInputText & JSXBase.HTMLAttributes<HTMLKolInputTextElement>;
             "kol-kolibri": LocalJSX.KolKolibri & JSXBase.HTMLAttributes<HTMLKolKolibriElement>;
             "kol-link": LocalJSX.KolLink & JSXBase.HTMLAttributes<HTMLKolLinkElement>;
+            "kol-link-button": LocalJSX.KolLinkButton & JSXBase.HTMLAttributes<HTMLKolLinkButtonElement>;
             "kol-link-group": LocalJSX.KolLinkGroup & JSXBase.HTMLAttributes<HTMLKolLinkGroupElement>;
             "kol-link-wc": LocalJSX.KolLinkWc & JSXBase.HTMLAttributes<HTMLKolLinkWcElement>;
             "kol-logo": LocalJSX.KolLogo & JSXBase.HTMLAttributes<HTMLKolLogoElement>;

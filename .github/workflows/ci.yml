@@ -12,23 +12,23 @@ jobs:
     name: Check quality gates
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.3
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
       - uses: actions/setup-node@v3
         with:
           cache: pnpm
           node-version: 16
-      - name: Cache pnpm modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-pnpm-modules
-        with:
-          # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
-          restore-keys: |
-            {{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+      #- name: Cache pnpm modules
+      #  uses: actions/cache@v3
+      #  env:
+      #    cache-name: cache-pnpm-modules
+      #  with:
+      # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
+      #    path: ~/.pnpm-store
+      #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+      #    restore-keys: |
+      #      {{ runner.os }}-pnpm
       - name: Install
         run: pnpm i
       - name: Unused
@@ -44,6 +44,6 @@ jobs:
         run: |
           npx lerna run test
         working-directory: packages/library
-      # - name: 'Pack'
-      #   run: |
-      #     npx lerna exec --stream -- pnpm pack
+      - name: 'Pack'
+        run: |
+          npx lerna exec --stream -- npm pack

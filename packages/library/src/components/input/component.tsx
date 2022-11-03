@@ -74,7 +74,6 @@ export class KolInput implements Props {
 							_id={this._smartButton._id}
 							_label={this._smartButton._label}
 							_on={this._smartButton._on}
-							_showAs={this._smartButton._showAs}
 							_tooltipAlign={this._smartButton._tooltipAlign}
 							_variant={this._smartButton._variant}
 						></kol-button-wc>
@@ -99,7 +98,7 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop() public _alert?: boolean = false;
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.

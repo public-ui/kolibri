@@ -6,6 +6,7 @@ import { watchBoolean, watchString, watchValidator } from '../../utils/prop.vali
 import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from './validation';
 import { Stringified } from '../../types/common';
+import { AriaCurrent } from '../../types/button-link';
 
 export type NavLinkWithChildrenProps = NavLinkProps & {
 	_children?: NavLinkWithChildrenProps[];
@@ -46,6 +47,7 @@ type RequiredProps = {
 	links: Stringified<NavLinkWithChildrenProps[]>;
 };
 type OptionalProps = {
+	ariaCurrentValue: AriaCurrent;
 	collapsible: boolean;
 	compact: boolean;
 	hasCompactButton: boolean;
@@ -55,6 +57,7 @@ type OptionalProps = {
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
+	ariaCurrentValue: AriaCurrent;
 	ariaLabel: string;
 	collapsible: boolean;
 	hasCompactButton: boolean;
@@ -120,6 +123,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											class="block w-full h-full"
 											exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
 											_useCase="nav"
+											_ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
 											_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
 											_ariaExpanded={link._active === true}
 											_disabled={link._disabled}
@@ -160,6 +164,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											active: link._active === true,
 										}}
 										exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
+										// HERE NOT! _ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
 										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
 										_href={link._href}
 										_icon={typeof link._icon === 'string' ? link._icon : 'broken'}
@@ -231,6 +236,11 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	}
 
 	/**
+	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 */
+	@Prop() public _ariaCurrentValue: AriaCurrent = false;
+
+	/**
 	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
 	 */
 	@Prop() public _ariaLabel!: string;
@@ -269,6 +279,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
+		_ariaCurrentValue: false,
 		_ariaLabel: '…', // '⚠'
 		_collapsible: true,
 		_hasCompactButton: false,
@@ -276,6 +287,20 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		_orientation: 'vertical',
 		_variant: 'primary',
 	};
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_ariaCurrentValue')
+	public validateAriaCurrentValue(value?: AriaCurrent): void {
+		watchValidator(
+			this,
+			'_ariaCurrentValue',
+			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
+			new Set(['boolean', 'String {data, location, page, step, time}']),
+			value
+		);
+	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)

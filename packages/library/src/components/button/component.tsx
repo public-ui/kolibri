@@ -1,18 +1,16 @@
-import { Component, Host, JSX, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
 	AriaCurrent,
 	ButtonStates,
 	KoliBriButtonCallbacks,
-	KoliBriButtonLinkShowAs,
 	KoliBriButtonType,
 	KoliBriButtonVariant,
 	OptionalButtonProps,
 	OptionalButtonStates,
 	RequiredButtonProps,
 	RequiredButtonStates,
-	watchShowAs,
 	watchTooltipAlignment,
 } from '../../types/button-link';
 import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
@@ -45,9 +43,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * - https://github.com/ionic-team/stencil/issues/1660#issuecomment-503225460
 	 * - https://stenciljs.com/docs/templating-jsx
 	 */
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public forwardedRef?: HTMLButtonElement;
-	// eslint-disable-next-line @stencil/own-props-must-be-private
+	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public ref?: HTMLButtonElement;
 
 	private readonly catchHost = (host?: HTMLElement | null) => {
@@ -90,7 +88,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-label={this.state._iconOnly === false ? this.state._ariaLabel || this.state._label : undefined}
 					aria-labelledby={this.state._iconOnly === true ? this.nonce : undefined}
 					class={{
-						[this.state._showAs as string]: true,
 						[this.state._variant as string]: true,
 						'icon-only': this.state._iconOnly === true,
 						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
@@ -131,11 +128,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 								<span>
 									{typeof this.state._label === 'string' && this.state._label}
 									{/*
-                  Es ist keine gute Idee hier einen Slot einzufügen,
-                  da dadurch die komplette Unterstützung der Komponente
-                  umgangen werden kann.
-                  <slot />
-                */}
+										Es ist keine gute Idee hier einen Slot einzufügen,
+										da dadurch die komplette Unterstützung der Komponente
+										 umgangen werden kann.
+									*/}
+									<slot />
 								</span>
 							)}
 							{this.state._icon.right && (
@@ -209,7 +206,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 	 */
-	// eslint-disable-next-line @stencil/strict-mutable
+	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _ariaLabel?: string = '';
 
 	/**
@@ -247,18 +244,13 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt den Label für die Beschriftung der Schaltfläche an.
 	 */
-	// eslint-disable-next-line @stencil/strict-mutable
+	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: true }) public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
-
-	/**
-	 * Gibt an, ob der Button als Button oder Link dargestellt werden soll.
-	 */
-	@Prop() public _showAs?: KoliBriButtonLinkShowAs = 'button';
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
@@ -284,7 +276,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		_iconAlign: 'left',
 		_label: '',
 		_on: {},
-		_showAs: 'button',
 		_type: 'button',
 	};
 
@@ -437,14 +428,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	@Watch('_showAs')
-	public validateShowAs(value?: KoliBriButtonLinkShowAs): void {
-		watchShowAs(this, value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
@@ -477,13 +460,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
-		this.validateIconAlign(this._iconAlign);
 		this.validateIcon(this._icon);
+		this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
-		this.validateShowAs(this._showAs);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateVariant(this._variant);

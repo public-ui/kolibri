@@ -11,23 +11,26 @@ jobs:
     name: Update dependencies
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: 'main'
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
       - uses: actions/setup-node@v3
         with:
           cache: pnpm
           node-version: 16
-      - name: Cache pnpm modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-pnpm-modules
-        with:
+      #- uses: actions/cache@v3
+      #  env:
+      #    cache-name: cache-pnpm-modules
+      #  with:
           # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
-          restore-keys: |
-            {{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+      #    path: ~/.pnpm-store
+      #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
+      #    restore-keys: |
+      #      {{ runner.os }}-pnpm
       - name: Create new branch
         run: git checkout -b chore/auto-update-deps
       - name: Install tools
@@ -43,8 +46,7 @@ jobs:
           git add **/package.json **/pnpm-lock.yaml
           git status
           git commit -m "chore: auto dependency update"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: 'chore/auto-update-deps'

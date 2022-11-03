@@ -6,9 +6,9 @@
 /*/src/declare.d.ts
 /*/src/style.scss
 /*/tests
-/static/assets
-/static/.htaccess
-/static/robots.txt
+/static-page/assets
+/static-page/.htaccess
+/static-page/robots.txt
 .editorconfig
 .eslintignore
 .mocharc.js
@@ -26,3 +26,12 @@ pwa-manifest.config.js
 README.md
 unocss.config.ts
 workbox-config.js
+
+!kolibri-library/**/.ts-prunerc.js
+!kolibri-library/**/.eslintignore
+!kolibri-library/**/.prettierignore
+!kolibri-library/**/.npmrc
+!kolibri-library/**/gitignore
+!kolibri-library/**/prettier.config.js
+!kolibri-library/**/stencil-solid-output-target-*.tgz
+!kolibri-*/**/README.md

@@ -54,7 +54,9 @@ export const propergateSubmitEventToForm = (
 			submitter: options.ref,
 		});
 		setEventTargetAndStopPropagation(event, options.ref);
+		// switch
 		if (options.form.tagName === 'FORM') {
+			console.log(options.form);
 			options.form.dispatchEvent(event);
 		} else if (options.form.tagName === 'KOL-FORM') {
 			const kolForm = options.form as HTMLKolFormElement;

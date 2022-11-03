@@ -89,7 +89,7 @@ export const THEME = {
 		inputBorderRadius: 5,
 
 		brandTitle: 'KoliBri - Komponentenbibliothek für die Barrierefreiheit',
-		brandUrl: '',
+		brandUrl: 'https://itzbund.de',
 		brandImage: 'itzbund.logo.svg',
 	}),
 };

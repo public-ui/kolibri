@@ -7,7 +7,7 @@ import { setState } from '../../utils/prop.validators';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function enumToArray(enumeration: any, enumAsMap: Map<string, string> = new Map()): Map<string, string> {
-	Object.keys(enumeration).map((key) => {
+	Object.keys(enumeration as Record<string, unknown>).map((key) => {
 		// eslint-disable-next-line
 		enumAsMap.set(enumeration[key], key);
 	});

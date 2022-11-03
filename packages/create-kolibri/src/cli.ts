@@ -27,10 +27,13 @@ create('create-leanup', {
 	templateRoot,
 	defaultLicense: 'UNLICENSED',
 	defaultPackageManager: 'pnpm',
-	defaultTemplate: 'react',
+	defaultTemplate: 'kolibri-library',
+	promptForAuthor: false,
+	promptForDescription: false,
+	promptForEmail: false,
 	promptForLicense: false,
-	promptForPackageManager: true,
-	promptForTemplate: true,
+	promptForPackageManager: false,
+	promptForTemplate: false,
 	after: async (props: any) => {
 		await props.run('cd', {
 			argv0: props.name,

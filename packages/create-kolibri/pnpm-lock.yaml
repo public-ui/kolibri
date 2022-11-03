@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@types/node': 18.11.2
+  '@types/node': 18.11.9
   cpy-cli: 4.2.0
   create-create-app: 7.3.0
   kleur: 4.1.5
-  npm-check-updates: 16.3.14
+  npm-check-updates: 16.3.16
   npm-run-all: 4.1.5
   rimraf: 3.0.2
   tsup: 6.3.0
@@ -18,8 +18,8 @@ dependencies:
   npm-run-all: 4.1.5
 
 devDependencies:
-  '@types/node': 18.11.2
-  npm-check-updates: 16.3.14
+  '@types/node': 18.11.9
+  npm-check-updates: 16.3.16
   rimraf: 3.0.2
   tsup: 6.3.0_typescript@4.8.4
   typescript: 4.8.4
@@ -47,8 +47,8 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /@babel/runtime/7.19.4:
-    resolution: {integrity: sha512-EXpLCrk55f+cYqmHsSR+yD/0gAIMxxA9QK9lnQWzhMCvt+YmoBN7Zx94s++Kv0+unHk39vxNO8t+CMA2WSS3wA==}
+  /@babel/runtime/7.20.1:
+    resolution: {integrity: sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.10
@@ -217,8 +217,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: false
 
-  /@types/node/18.11.2:
-    resolution: {integrity: sha512-BWN3M23gLO2jVG8g/XHIRFWiiV4/GckeFIqbU/C4V3xpoBBWSMk4OZomouN0wCkfQFPqgZikyLr7DOYDysIkkw==}
+  /@types/node/18.11.9:
+    resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -862,8 +862,8 @@ packages:
       ms: 2.1.2
     dev: true
 
-  /decamelize-keys/1.1.0:
-    resolution: {integrity: sha512-ocLWuYzRPoS9bfiSdDd3cxvrzovVMZnRDVEzAs+hWIVXGDbHxWMECij2OBuyB/An0FFW/nLuq6Kv1i/YC5Qfzg==}
+  /decamelize-keys/1.1.1:
+    resolution: {integrity: sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       decamelize: 1.2.0
@@ -1583,7 +1583,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.3
+      uglify-js: 3.17.4
     dev: false
 
   /hard-rejection/2.1.0:
@@ -1656,8 +1656,8 @@ packages:
       lru-cache: 6.0.0
     dev: false
 
-  /hosted-git-info/5.1.0:
-    resolution: {integrity: sha512-Ek+QmMEqZF8XrbFdwoDjSbm7rT23pCgEMOJmz6GPk/s4yH//RQfNPArhIxbguNxROq/+5lNBwCDHMhA903Kx1Q==}
+  /hosted-git-info/5.2.1:
+    resolution: {integrity: sha512-xIcQYMnhcx2Nr4JTjsFmwwnr9vldugPy9uVm0o87bjqqWMv9GaqsTeT+i99wTl0mk1uLxJtHxLb8kymqTENQsw==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       lru-cache: 7.14.0
@@ -1786,6 +1786,11 @@ packages:
   /ini/2.0.0:
     resolution: {integrity: sha512-7PnF4oN3CvZF23ADhA5wRaYEQpJ8qygSkbtTXWBeXWXmEVRXK+1ITciHWwHhsjv1TmW0MgacIv6hEi5pX5NQdA==}
     engines: {node: '>=10'}
+    dev: true
+
+  /ini/3.0.1:
+    resolution: {integrity: sha512-it4HyVAUTKBc6m8e1iXWvXSTdndF7HbdN713+kvLrymxTaU4AUBWrJ4vEooP+V7fexnVD3LKcBshjGGPefSMUQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dev: true
 
   /inquirer/7.3.3:
@@ -2222,7 +2227,7 @@ packages:
       '@types/minimist': 1.2.2
       camelcase-keys: 7.0.2
       decamelize: 5.0.1
-      decamelize-keys: 1.1.0
+      decamelize-keys: 1.1.1
       hard-rejection: 2.1.0
       minimist-options: 4.1.0
       normalize-package-data: 3.0.3
@@ -2461,7 +2466,7 @@ packages:
     resolution: {integrity: sha512-EBk5QKKuocMJhB3BILuKhmaPjI8vNRSpIfO9woLC6NyHVkKKdVEdAO1mrT0ZfxNR1lKwCcTkuZfmGIFdizZ8Pg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
-      hosted-git-info: 5.1.0
+      hosted-git-info: 5.2.1
       is-core-module: 2.11.0
       semver: 7.3.8
       validate-npm-package-license: 3.0.4
@@ -2483,8 +2488,8 @@ packages:
       npm-normalize-package-bin: 1.0.1
     dev: true
 
-  /npm-check-updates/16.3.14:
-    resolution: {integrity: sha512-6sJg4rILKJiXGYPZei0lgFIe+5/nxuwh7PP3SDeZH0Oh2fJfnnzXtO8CQTG2JugYcB5p5nkksyN+NE1YE8XRYg==}
+  /npm-check-updates/16.3.16:
+    resolution: {integrity: sha512-OJRfwc2+p0ZnDvZQ4FOou9ev4kI6c0Lmu+uEJjijCNUSXnf5AEpyB6+kX31HsmkDzQ10ApA4CvM1TE+rXP+R8g==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -2496,7 +2501,8 @@ packages:
       fp-and-or: 0.1.3
       get-stdin: 8.0.0
       globby: 11.1.0
-      hosted-git-info: 5.1.0
+      hosted-git-info: 5.2.1
+      ini: 3.0.1
       json-parse-helpfulerror: 1.0.3
       jsonlines: 0.1.1
       lodash: 4.17.21
@@ -2506,13 +2512,13 @@ packages:
       parse-github-url: 1.0.2
       progress: 2.0.3
       prompts-ncu: 2.5.1
-      rc-config-loader: 4.1.0
+      rc-config-loader: 4.1.1
       remote-git-tags: 3.0.0
       rimraf: 3.0.2
       semver: 7.3.8
       semver-utils: 1.1.4
       source-map-support: 0.5.21
-      spawn-please: 1.0.0
+      spawn-please: 2.0.1
       untildify: 4.0.0
       update-notifier: 6.0.2
       yaml: 2.1.3
@@ -2546,14 +2552,14 @@ packages:
     resolution: {integrity: sha512-pzd9rLEx4TfNJkovvlBSLGhq31gGu2QDexFPWT19yCDh0JgnRhlBLNo5759N0AJmBk+kQ9Y/hXoLnlgFD+ukmg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
-      hosted-git-info: 5.1.0
+      hosted-git-info: 5.2.1
       proc-log: 2.0.1
       semver: 7.3.8
       validate-npm-package-name: 4.0.0
     dev: true
 
-  /npm-packlist/7.0.1:
-    resolution: {integrity: sha512-XddbYutimy7hdmP7S1tHMjFwghn64lvgdnhYG0KLGFBWjEvMt1/jg95OR3vPNNCjkakHS+k4a//3XOO8JOGI2A==}
+  /npm-packlist/7.0.2:
+    resolution: {integrity: sha512-d2+7RMySjVXssww23rV5NuIq1NzGvM04OlI5kwnvtYKfFTAPVs6Zxmxns2HRtJEA1oNj7D/BbFXeVAOLmW3N3Q==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       ignore-walk: 6.0.0
@@ -2645,7 +2651,7 @@ packages:
     resolution: {integrity: sha512-C4fjNlHhUQbHiiFpgzvZse3/WUHq356Da3P8NZazg9JpPHFiQP2Y9lmYvpLU06midap0YpNz/MuA8GGSL8G0YQ==}
     engines: {node: '>=8', npm: '>=5'}
     dependencies:
-      '@babel/runtime': 7.19.4
+      '@babel/runtime': 7.20.1
       abind: 1.0.5
       extend: 3.0.2
     dev: false
@@ -2766,7 +2772,7 @@ packages:
       fs-minipass: 2.1.0
       minipass: 3.3.4
       npm-package-arg: 9.1.2
-      npm-packlist: 7.0.1
+      npm-packlist: 7.0.2
       npm-pick-manifest: 7.0.2
       npm-registry-fetch: 13.3.1
       proc-log: 2.0.1
@@ -2943,8 +2949,8 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
 
-  /rc-config-loader/4.1.0:
-    resolution: {integrity: sha512-aW+kX4qy0CiM9L4fG4Us3oEOpIrOrXzWykAn+xldD07Y9PXWjTH744oHbv0Kc9ZwWaylw3jMjxaf14RgStrNrA==}
+  /rc-config-loader/4.1.1:
+    resolution: {integrity: sha512-S10o85x/szboh7FOxUyU+KuED+gr9V7SEnUBOzSn+vd1K8J2MtkP1RCPWg8Sw5kkuZKr7976bFzacCM6QtAApQ==}
     dependencies:
       debug: 4.3.4
       js-yaml: 4.1.0
@@ -3304,9 +3310,11 @@ packages:
       whatwg-url: 7.1.0
     dev: true
 
-  /spawn-please/1.0.0:
-    resolution: {integrity: sha512-Kz33ip6NRNKuyTRo3aDWyWxeGeM0ORDO552Fs6E1nj4pLWPkl37SrRtTnq+MEopVaqgmaO6bAvVS+v64BJ5M/A==}
-    engines: {node: '>=10'}
+  /spawn-please/2.0.1:
+    resolution: {integrity: sha512-W+cFbZR2q2mMTfjz5ZGvhBAiX+e/zczFCNlbS9mxiSdYswBXwUuBUT+a0urH+xZZa8f/bs0mXHyZsZHR9hKogA==}
+    engines: {node: '>=14'}
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /spdx-correct/3.1.1:
@@ -3623,8 +3631,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uglify-js/3.17.3:
-    resolution: {integrity: sha512-JmMFDME3iufZnBpyKL+uS78LRiC+mK55zWfM5f/pWBJfpOttXAqYfdDGRukYhJuyRinvPVAtUhvy7rlDybNtFg==}
+  /uglify-js/3.17.4:
+    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true

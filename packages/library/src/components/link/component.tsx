@@ -3,7 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@public-ui/core';
 import {
 	AriaCurrent,
-	KoliBriButtonLinkShowAs,
 	LinkOnCallbacks,
 	LinkStates,
 	LinkTarget,
@@ -12,13 +11,12 @@ import {
 	OptionalLinkStates,
 	RequiredLinkProps,
 	RequiredLinkStates,
-	watchShowAs,
 	watchTooltipAlignment,
 } from '../../types/button-link';
 import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, mapStringOrBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { TooltipAlignment } from '../tooltip/component';
 
 type RequiredNavLinkProps = RequiredLinkProps & unknown;
@@ -114,12 +112,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 				<a
 					{...tagAttrs}
 					aria-controls={this.state._ariaControls}
-					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
+					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-labelledby={this.state._useCase === 'image' || this.state._iconOnly === true ? this.nonce : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
-						[this.state._showAs as string]: true,
 						'disabled ': this.state._disabled === true,
 						// 'bg-white text-normal hover:text-primary': this.state._useCase !== 'nav',
 						'kol-visited': this.state._useCase !== 'nav',
@@ -154,6 +151,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						}}
 						part={`span${this.state._iconOnly === true ? ' hidden' : ''}`}
 					>
+						{/*
+							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch
+							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente
+							umgangen werden kann.
+						*/}
 						<slot />
 					</span>
 					{this.state._icon.right && (
@@ -265,11 +267,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _selector?: string;
 
 	/**
-	 * Gibt an, ob der Link als Link oder Button dargestellt werden soll.
-	 */
-	@Prop() public _showAs?: KoliBriButtonLinkShowAs = 'link';
-
-	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 */
 	@Prop() public _stealth?: boolean = false;
@@ -309,7 +306,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		 * @deprecated
 		 */
 		_iconAlign: 'left',
-		_showAs: 'link',
 	};
 
 	/**
@@ -327,7 +323,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	public validateAriaCurrent(value?: AriaCurrent): void {
 		watchValidator(
 			this,
-			'_ariaControls',
+			'_ariaCurrent',
 			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
 			new Set(['boolean', 'String {data, location, page, step, time}']),
 			value
@@ -418,14 +414,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Watch('_selector')
 	public validateSelector(value?: string): void {
 		watchString(this, '_selector', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_showAs')
-	public validateShowAs(value?: KoliBriButtonLinkShowAs): void {
-		watchShowAs(this, value);
 	}
 
 	/**
@@ -528,7 +516,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateOn(this._on);
 		this.validatePart(this._part);
 		this.validateSelector(this._selector);
-		this.validateShowAs(this._showAs);
 		this.validateStealth(this._stealth);
 		this.validateTarget(this._target);
 		this.validateTargetDescription(this._targetDescription);
