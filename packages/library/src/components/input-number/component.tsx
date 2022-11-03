@@ -2,6 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
+import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { propergateSubmitEventToForm } from '../form/controller';
 import { KoliBriInputIcon } from '../input-text/types';
@@ -73,7 +74,7 @@ export class KolInputNumber implements ComponentApi {
 						disabled={this.state._disabled}
 						id={this.state._id}
 						list={hasList ? `${this.state._id}-list` : undefined}
-						max={this.state._max}
+						max={this.state._max ?? this.state._type != 'number' ? '9999-12-31 23:59:59.999' : undefined}
 						min={this.state._min}
 						name={this.state._name}
 						readOnly={this.state._readOnly}
@@ -147,12 +148,12 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Gibt den größtmöglichen Zahlenwert an.
 	 */
-	@Prop() public _max?: number;
+	@Prop() public _max?: number | Iso8601;
 
 	/**
 	 * Gibt den kleinstmöglichen Zahlenwert an.
 	 */
-	@Prop() public _min?: number;
+	@Prop() public _min?: number | Iso8601;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -207,7 +208,7 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: string;
+	@Prop() public _value?: number | Iso8601;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -308,7 +309,7 @@ export class KolInputNumber implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_max')
-	public validateMax(value?: number): void {
+	public validateMax(value?: number | Iso8601): void {
 		this.controller.validateMax(value);
 	}
 
@@ -316,7 +317,7 @@ export class KolInputNumber implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_min')
-	public validateMin(value?: number): void {
+	public validateMin(value?: number | Iso8601): void {
 		this.controller.validateMin(value);
 	}
 
@@ -404,7 +405,7 @@ export class KolInputNumber implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_value')
-	public validateValue(value?: string): void {
+	public validateValue(value?: number | Iso8601): void {
 		this.controller.validateValue(value);
 	}
 

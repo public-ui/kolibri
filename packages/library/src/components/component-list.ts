@@ -48,6 +48,7 @@ import { KolTextarea } from './textarea/component';
 import { KolToast } from './toast/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
+import { KolInputDate } from './input-date/component';
 
 export const COMPONENTS = [
 	KolAbbr,
@@ -73,6 +74,7 @@ export const COMPONENTS = [
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputEmail,
+	KolInputDate,
 	KolInputFile,
 	KolInputNumber,
 	KolInputPassword,

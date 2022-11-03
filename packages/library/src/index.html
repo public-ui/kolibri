@@ -732,15 +732,18 @@
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
 								</kol-input-adapter-leanup>
+								<kol-heading _level="3">InputDate</kol-heading>
 								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-date">
-									<kol-input-number _type="date">Datum</kol-input-number>
+									<kol-input-date _type="date">Datum</kol-input-date>
 								</kol-input-adapter-leanup>
-								<kol-input-number _type="datetime-local">Local-Datetime (Standard)</kol-input-number>
-								<kol-input-number _type="datetime-local" _step="1">Local-Datetime (mit Sekunden)</kol-input-number>
-								<kol-input-number _type="month">Monat</kol-input-number>
-								<kol-input-number _type="week">Woche</kol-input-number>
-								<kol-input-number _type="time">Zeit (Standard)</kol-input-number>
-								<kol-input-number _type="time" _step="1">Zeit (mit Sekunden)</kol-input-number>
+								<kol-input-date _type="date" _min="2022-10-28">Datum (min)</kol-input-date>
+								<kol-input-date _type="date" _max="2022-10-28">Datum (max)</kol-input-date>
+								<kol-input-date _type="datetime-local">Local-Datetime (Standard)</kol-input-date>
+								<kol-input-date _type="datetime-local" _step="1">Local-Datetime (mit Sekunden)</kol-input-date>
+								<kol-input-date _type="month">Monat</kol-input-date>
+								<kol-input-date _type="week">Woche</kol-input-date>
+								<kol-input-date _type="time">Zeit (Standard)</kol-input-date>
+								<kol-input-date _type="time" _step="1">Zeit (mit Sekunden)</kol-input-date>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputPassword</kol-heading>
