@@ -88,8 +88,8 @@ export const THEME = {
 		// inputTextColor: 'black',
 		inputBorderRadius: 5,
 
-		brandTitle: 'KoliBri - Komponentenbibliothek für die Barrierefreiheit',
-		brandUrl: '',
-		brandImage: 'itzbund.logo.svg',
+		// brandTitle: 'KoliBri - Komponentenbibliothek für die Barrierefreiheit',
+		// brandUrl: '/',
+		// brandImage: 'itzbund.logo.svg',
 	}),
 };
