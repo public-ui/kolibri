@@ -22,15 +22,25 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class Example implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class MyExample implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
-		return <span>{this.state._label}</span>;
+		return (
+			<div class="grid gap-2">
+				<kol-kolibri
+					style=\{{
+						display: 'inline-block',
+						width: '100px',
+					}}
+				></kol-kolibri>
+				<span>{this.state._label}</span>
+			</div>
+		);
 	}
 
 	/**
 	 * Gibt den Text des Span an.
 	 */
-	@Prop({ mutate: true, reflect: true }) public _label!: string;
+	@Prop({ reflect: true }) public _label!: string;
 
 	@State() public state: States = {
 		_label: '',
