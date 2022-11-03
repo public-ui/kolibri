@@ -17,7 +17,7 @@ type OptionalStates = {
 	value: string;
 };
 
-export type Props = Generic.Element.Members<RequiredProps, OptionalInputProps<IsoDate>>;
+// export type Props = Generic.Element.Members<RequiredProps, OptionalInputProps<IsoDate>>;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
