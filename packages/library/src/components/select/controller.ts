@@ -54,9 +54,9 @@ export class SelectController extends InputController implements Watches {
 		const list = nextState.has('_list') ? nextState.get('_list') : this.component.state._list;
 		if (Array.isArray(list) && list.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, list);
+			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<unknown>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
-			const selected = this.filterValuesInOptions(Array.isArray(value) && value.length > 0 ? value : [], list as SelectOption<unknown>[]);
+			const selected = this.filterValuesInOptions(Array.isArray(value) && value.length > 0 ? (value as string[]) : [], list as SelectOption<unknown>[]);
 			if (selected.length === 0) {
 				nextState.set('_value', [
 					(
