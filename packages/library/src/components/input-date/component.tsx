@@ -2,7 +2,7 @@ import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputDateType } from '../../types/input/control/number';
-import { IsoDate } from '../../types/input/iso8601';
+import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { watchValidator } from '../../utils/prop.validators';
 import { KolInputNumber } from '../input-number/component';
@@ -99,12 +99,12 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt den größtmöglichen Datumswert an.
 	 */
-	@Prop() public _max?: IsoDate | Date;
+	@Prop() public _max?: Iso8601 | Date;
 
 	/**
 	 * Gibt den kleinstmöglichen Datumswert an.
 	 */
-	@Prop() public _min?: IsoDate | Date;
+	@Prop() public _min?: Iso8601 | Date;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -154,7 +154,7 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: IsoDate | Date;
+	@Prop() public _value?: Iso8601 | Date;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -165,12 +165,12 @@ export class KolInputDate implements ComponentApi {
 	private readonly isoDateRegex =
 		/(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?([+-][0-2]\d:[0-5]\d|Z)?)?$)|(^[0-2]\d:[0-5]\d(:[0-5]\d)?$)|(^\d{4}-W(?:[0-4]\d|5[0-3])$)|(^\d{4}-([0]\d|1[0-2])$)/;
 
-	private valueAsIsoDate(value?: IsoDate | Date): IsoDate | undefined {
+	private valueAsIsoDate(value?: Iso8601 | Date): Iso8601 | undefined {
 		if (typeof value === 'string') {
 			return value;
 		}
 		if (typeof value === 'object' && value instanceof Date) {
-			return value.toISOString() as IsoDate;
+			return value.toISOString() as Iso8601;
 		}
 		return undefined;
 	}
@@ -179,24 +179,24 @@ export class KolInputDate implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_max')
-	public validateMax(value?: IsoDate | Date): void {
-		watchValidator(this, '_max', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), this.valueAsIsoDate(value));
+	public validateMax(value?: Iso8601 | Date): void {
+		watchValidator(this, '_max', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['Iso8601']), this.valueAsIsoDate(value));
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_min')
-	public validateMin(value?: IsoDate | Date): void {
-		watchValidator(this, '_min', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), this.valueAsIsoDate(value));
+	public validateMin(value?: Iso8601 | Date): void {
+		watchValidator(this, '_min', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['Iso8601']), this.valueAsIsoDate(value));
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_value')
-	public validateValue(value?: IsoDate | Date): void {
-		watchValidator(this, '_value', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['IsoDate']), this.valueAsIsoDate(value));
+	public validateValue(value?: Iso8601 | Date): void {
+		watchValidator(this, '_value', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['Iso8601']), this.valueAsIsoDate(value));
 	}
 
 	/**
