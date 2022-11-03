@@ -26,18 +26,18 @@ type Day = `0${D9}` | `${D2}${D09}` | `3${D01}`;
 type CalendarWeek = `0${D9}` | `${D4}${D09}` | `5${D03}`;
 
 // spec: https://www.w3.org/TR/2012/WD-html-markup-20121025/datatypes.html#form.data.date-def
-export type IsoDate = `${Year}-${Month}-${Day}`;
+type IsoDate = `${Year}-${Month}-${Day}`;
 
 // spec: https://www.w3.org/TR/2012/WD-html-markup-20121025/datatypes.html#form.data.time-def
-export type IsoTime = `${Hour}:${number}:${number}` | `${Hour}:${number}:${number}.${number}`;
+type IsoTime = `${Hour}:${number}:${number}` | `${Hour}:${number}:${number}.${number}`;
 
 // spec: https://www.w3.org/TR/2012/WD-html-markup-20121025/datatypes.html#form.data.datetime-local-def
-export type IsoLocalDateTime = `${IsoDate}T${IsoTime}`;
+type IsoLocalDateTime = `${IsoDate}T${IsoTime}`;
 
 // spec: https://www.w3.org/TR/2012/WD-html-markup-20121025/datatypes.html#form.data.month-def
-export type IsoMonth = `${Year}-${Month}`;
+type IsoMonth = `${Year}-${Month}`;
 
 // spec: https://www.w3.org/TR/2012/WD-html-markup-20121025/datatypes.html#form.data.week
-export type IsoWeek = `${Year}-W${CalendarWeek}`;
+type IsoWeek = `${Year}-W${CalendarWeek}`;
 
 export type Iso8601 = IsoDate | IsoTime | IsoLocalDateTime | IsoMonth | IsoWeek;
