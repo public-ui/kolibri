@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { MyExample as MyComponent } from '@{{kebab name}}/react';
+import { KolBadge as MyComponent } from '@public-ui/react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { AbbrConfiguration } from './autogen.configuration';
+import { ExampleConfiguration } from './autogen.configuration';
 
 export default {
-	...AbbrConfiguration,
+	...ExampleConfiguration,
 	title: 'React/Example/Beispiele',
 	component: MyComponent,
 } as ComponentMeta<typeof MyComponent>;
