@@ -105,4 +105,4 @@ function filterMdFiles(dir) {
 	return files;
 }
 
-filterMdFiles('../library/src/components');
+filterMdFiles('../components/src/components');
