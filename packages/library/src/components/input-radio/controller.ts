@@ -74,7 +74,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		const list = nextState.has('_list') ? nextState.get('_list') : this.component.state._list;
 		if (Array.isArray(list) && list.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, list);
+			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<unknown>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 			if (this.isValueInOptions(value as string, list as Option<unknown>[]) === false) {
 				const newValue = (
