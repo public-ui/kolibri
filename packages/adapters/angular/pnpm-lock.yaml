@@ -67,7 +67,7 @@ packages:
       sourcemap-codec: 1.4.8
       tslib: 2.4.1
       typescript: 4.8.4
-      yargs: 17.6.0
+      yargs: 17.6.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -843,8 +843,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /yargs/17.6.0:
-    resolution: {integrity: sha512-8H/wTDqlSwoSnScvV2N/JHfLWOKuh5MVla9hqLjK3nsfyy6Y4kDSYSvkU5YCUEPOSnRXfIyx3Sq+B/IWudTo4g==}
+  /yargs/17.6.1:
+    resolution: {integrity: sha512-leBuCGrL4dAd6ispNOGsJlhd0uZ6Qehkbu/B9KCR+Pxa/NVdNwi+i31lo0buCm6XxhJQFshXCD0/evfV4xfoUg==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1
