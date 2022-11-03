@@ -33,9 +33,9 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 ### Used by
 
 - [kol-abbr](../abbr)
-- [kol-button-link](../button)
+- [kol-button-link](../button-link)
 - kol-button-wc
-- kol-link-button
+- [kol-link-button](../link-button)
 - kol-link-wc
 
 ### Depends on

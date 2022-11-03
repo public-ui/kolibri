@@ -23,14 +23,14 @@ import {
 	watchValidator,
 } from '../../utils/prop.validators';
 import { TooltipAlignment } from '../tooltip/component';
-import { syncAriaLabelBeforePatch, watchButtonType } from './controller';
+import { syncAriaLabelBeforePatch, watchButtonType } from '../button/controller';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-button-link',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

@@ -1,13 +1,13 @@
 import { Generic } from '@public-ui/core';
 import { InputDateType, OptionalInputProps } from '../../types/input/control/number';
-import { IsoDate } from '../../types/input/iso8601';
+import { Iso8601 } from '../../types/input/iso8601';
 import { InputRequiredProps } from '../input-text/types';
 
 /**
  * API
  */
 type RequiredProps = InputRequiredProps;
-type OptionalProps = OptionalInputProps<IsoDate | Date> & { type: InputDateType };
+type OptionalProps = OptionalInputProps<Iso8601 | Date> & { type: InputDateType };
 
 type RequiredStates = unknown;
 

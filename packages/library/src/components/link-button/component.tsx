@@ -21,13 +21,10 @@ import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchVa
 import { TooltipAlignment } from '../tooltip/component';
 import { watchButtonVariant } from '../button/controller';
 
-/**
- * @internal
- */
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

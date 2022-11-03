@@ -78,12 +78,12 @@ Referenz: <https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden>
 
 - [kol-accordion](../accordion)
 - [kol-alert](../alert)
-- [kol-button-link](../button)
+- [kol-button-link](../button-link)
 - kol-button-wc
 - [kol-icon-font-awesome](../icon-font-awesome)
 - [kol-icon-icofont](../icon-icofont)
 - kol-input
-- kol-link-button
+- [kol-link-button](../link-button)
 - kol-link-wc
 
 ### Graph

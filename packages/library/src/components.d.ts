@@ -20,7 +20,7 @@ import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { KoliBriInputIcon } from "./components/input-text/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { InputCheckboxType } from "./components/input-checkbox/types";
-import { Iso8601, IsoDate } from "./types/input/iso8601";
+import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
@@ -665,11 +665,11 @@ export namespace Components {
         /**
           * Gibt den größtmöglichen Datumswert an.
          */
-        "_max"?: IsoDate | Date;
+        "_max"?: Iso8601 | Date;
         /**
           * Gibt den kleinstmöglichen Datumswert an.
          */
-        "_min"?: IsoDate | Date;
+        "_min"?: Iso8601 | Date;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -709,7 +709,7 @@ export namespace Components {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: IsoDate | Date;
+        "_value"?: Iso8601 | Date;
     }
     interface KolInputEmail {
         /**
@@ -3052,11 +3052,11 @@ declare namespace LocalJSX {
         /**
           * Gibt den größtmöglichen Datumswert an.
          */
-        "_max"?: IsoDate | Date;
+        "_max"?: Iso8601 | Date;
         /**
           * Gibt den kleinstmöglichen Datumswert an.
          */
-        "_min"?: IsoDate | Date;
+        "_min"?: Iso8601 | Date;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3096,7 +3096,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: IsoDate | Date;
+        "_value"?: Iso8601 | Date;
     }
     interface KolInputEmail {
         /**
