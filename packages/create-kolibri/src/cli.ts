@@ -27,7 +27,7 @@ create('create-leanup', {
 	templateRoot,
 	defaultLicense: 'UNLICENSED',
 	defaultPackageManager: 'pnpm',
-	defaultTemplate: 'react',
+	defaultTemplate: 'react-app',
 	promptForLicense: false,
 	promptForPackageManager: true,
 	promptForTemplate: true,

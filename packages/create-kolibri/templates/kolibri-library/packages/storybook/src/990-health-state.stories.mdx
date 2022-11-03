@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs';
+import { KolHeading, KolTable } from '@public-ui/react';
+import { getPackageName } from './constants/utils';
+
+<Meta title="Gesundheitszustand" />
+
+<KolHeading className="col-12">Gesundheitszustand</KolHeading>
+
+In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen angezeigt, um einen Überblick über deren Gesundheitszustand zu erhalten.
+
+<KolTable
+	className="col-12"
+	_caption="Liste von Statuswerte zu den Paketen"
+	_headers={{
+		horizontal: [
+			[
+				{
+					label: 'Package',
+					key: 'name',
+					render: (el, cell, tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
+					width: '15em',
+				},
+				{
+					label: 'Version',
+					key: 'name',
+					render: (el, cell, tupel) => `<kol-link _href="https://www.npmjs.com/package/${getPackageName(tupel.scope, tupel.name)}" _target="npmjs">
+	<img alt="" src="https://img.shields.io/npm/v/${getPackageName(tupel.scope, tupel.name)}" />
+</kol-link>`,
+				},
+				{
+					label: 'Downloads',
+					key: 'name',
+					render: (el, cell, tupel) => `<kol-link _href="https://npmcharts.com/compare/${getPackageName(tupel.scope, tupel.name)}" _target="npmcharts">
+	<img alt="" src="https://img.shields.io/npm/dt/${getPackageName(tupel.scope, tupel.name)}.svg" />
+</kol-link>`,
+				},
+				{
+					label: 'Install size',
+					key: 'name',
+					render: (el, cell, tupel) => `<kol-link _href="https://packagephobia.com/result?p=${getPackageName(tupel.scope, tupel.name)}" _target="packagephobia">
+	<img alt="" src="https://packagephobia.now.sh/badge?p=${getPackageName(tupel.scope, tupel.name)}" />
+</kol-link>`,
+				},
+				{
+					label: 'Dependencies',
+					key: 'name',
+					render: (el, cell, tupel) => `<kol-link _href="https://libraries.io/npm/${getPackageName(tupel.scope, tupel.name, '%2F')}" _target="libraries">
+	<img alt="" src="https://img.shields.io/librariesio/release/npm/${getPackageName(tupel.scope, tupel.name)}" />
+</kol-link>`,
+				},
+				{
+					label: 'Vulnerabilities*',
+					key: 'name',
+					render: (el, cell, tupel) => `<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(tupel.scope, tupel.name, '%2F')}" _target="snyk">
+	<img alt="" src="https://snyk.io/test/npm/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
+</kol-link>`,
+				},
+			],
+		],
+	}}
+	_data={[
+		{
+			scope: '@public-ui',
+			name: 'components',
+		},
+		{
+			scope: '@public-ui',
+			name: 'core',
+		},
+		{
+			scope: '@public-ui',
+			name: 'schema',
+		},
+		{
+			scope: '@public-ui',
+			name: 'themes',
+		},
+		{
+			scope: '@public-ui',
+			name: 'angular',
+		},
+		{
+			scope: '@public-ui',
+			name: 'react',
+		},
+		{
+			scope: '@public-ui',
+			name: 'solid',
+		},
+		{
+			scope: '@public-ui',
+			name: 'vue',
+		},
+		{
+			name: 'create-kolibri',
+		},
+	]}
+></KolTable>
+<kol-indented-text>
+	<sub>*</sub> Die Anzahl von Vulnerabilities gibt keinen Aufschluss über die Schwere der Betroffenheit des Pakets. Bei der Prüfung werden auch Abhängigkeiten berücksichtigt, die Abhängigkeiten berücksichtigt, die zum Entwickeln des Pakets erforderlich sind (devDependencies).
+</kol-indented-text>

@@ -1,0 +1,56 @@
+{
+	"name": "{{kebab name}}",
+	"version": "0.0.0",
+	"description": "{{description}}",
+	"author": {
+		"name": "{{author}}",
+		"email": "{{email}}"
+	},
+	"contributors": [
+		{
+			"name": "{{author}}",
+			"email": "{{email}}"
+		}
+	],
+	"license": "EUPL-1.2",
+	"private": true,
+	"scripts": {
+		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
+		"clean:pnpm": "lerna exec --stream -- rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
+		"format": "lerna exec --stream -- prettier --check src/**/* -w",
+		"ncu:major": "ncu && lerna exec --stream -- ncu",
+		"ncu:minor": "ncu -t minor -u && lerna exec --stream -- ncu -t minor -u -x unbuild",
+		"ncu:patch": "ncu -t patch -u && lerna exec --stream -- ncu -t patch -u -x unbuild",
+		"pack": "lerna exec --stream -- npm pack",
+		"postinstall": "lerna exec --stream -- pnpm i --no-frozen-lockfile",
+		"prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npx lerna run lint\" && husky add .husky/pre-commit \"npx lerna run format\" && husky add .husky/pre-commit \"pnpm ts-prune\"",
+		"publish": "lerna exec --stream -- pnpm publish",
+		"ts-prune": "lerna exec --stream -- ts-prune src",
+		"depcheck": "lerna exec --stream -- depcheck --ignore-bin-package --skip-missing",
+		"reinstall": "pnpm clean:pnpm && pnpm i",
+		"update": "pnpm ncu:minor && pnpm ncu:major && pnpm ncu:patch",
+		":publish": "lerna exec --stream -- pnpm :publish",
+		":republish": "lerna exec --stream -- pnpm :republish",
+		":unpublish": "lerna exec --stream -- pnpm :unpublish"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "17.1.2",
+		"@commitlint/config-conventional": "17.1.0",
+		"@types/node": "18.11.0",
+		"cross-env": "7.0.3",
+		"depcheck": "1.4.3",
+		"husky": "8.0.1",
+		"lerna": "5.6.2",
+		"license-report": "6.2.0",
+		"npm-check-updates": "16.3.11",
+		"prettier": "2.7.1",
+		"rimraf": "3.0.2",
+		"ts-node": "10.9.1",
+		"ts-prune": "0.10.3",
+		"typescript": "4.8.4"
+	},
+	"engines": {
+		"npm": ">=8",
+		"pnpm": ">=3"
+	}
+}
