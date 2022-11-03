@@ -1,4 +1,4 @@
 {
-	"packages": ["packages/storybook"],
+	"packages": ["packages/components", "packages/schema", "packages/storybook"],
 	"version": "0.0.0"
 }

@@ -82,7 +82,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	on: KoliBriButtonCallbacks;
 	type: KoliBriButtonType;
 };
-export type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
+// type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonLinkStates = RequiredButtonAndLinkStates & {
 	label: string;
@@ -97,7 +97,7 @@ export type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 		id: string;
 		on: KoliBriButtonCallbacks;
 	};
-export type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
+// type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /**
  * API Button
@@ -167,7 +167,7 @@ export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLin
  */
 export type RequiredLinkButtonProps = RequiredLinkProps;
 export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantCustomClass;
-export type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
+// type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
 
 export type RequiredLinkButtonStates = RequiredLinkStates;
 export type OptionalLinkButtonStates = OptionalLinkStates & KoliBriButtonVariantCustomClass;
