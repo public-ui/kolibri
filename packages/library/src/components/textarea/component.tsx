@@ -11,7 +11,6 @@ import { ComponentApi, CSSResize, States } from './types';
  */
 const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	el.style.overflow = 'hidden'; // verhindert, dass ein Scrollbalken kurz angezeigt wird
-	el.style.resize = 'none'; // verhindert, dass ein Scrollbalken kurz angezeigt wird
 	const currentRows = el.rows;
 	const rowHeight = el.clientHeight / currentRows;
 	el.rows = 1;
