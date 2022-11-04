@@ -99,24 +99,7 @@ Date.args = {
 	...DefaultArgs,
 };
 Date.storyName = 'Datum';
-
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
-export const DateMin = (args: any) => (
-	<div>
-		<KolInputNumber _type="date" _id="mein_datum" _name="mein_datum" _min={new Date().toISOString()}>
-			Fälligkeitsdatum
-		</KolInputNumber>
-	</div>
-);
-Date.args = {
-	...DefaultArgs,
-};
-Date.storyName = 'Datum';
-
+s;
 /**
  * Die Component stellt eine konkrete Story im Storybook dar.
  *
