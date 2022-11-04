@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.10-rc.6
-  '@public-ui/react': 1.1.10-rc.6
+  '@public-ui/components': 1.1.10-rc.8
+  '@public-ui/react': 1.1.10-rc.8
   preact: '>=10.5.15'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 0.9.4
 
 dependencies:
-  '@public-ui/react': 1.1.10-rc.6_xnq2pdshrpbxrvtahogt54jfju
+  '@public-ui/react': 1.1.10-rc.8_2pw4fsr4pghcpjzdgl24azmvae
   preact: 10.11.2
 
 devDependencies:
-  '@public-ui/components': 1.1.10-rc.6
+  '@public-ui/components': 1.1.10-rc.8
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.8.4
@@ -296,11 +296,11 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@leanup/lib/1.3.38:
-    resolution: {integrity: sha512-pShxkO0I1Qc865MJEPVeqLmKwkZUn7kdffIsHj6+XsBG310YIbH8JFCOOBcH6oTc7dTRBYnC2YQzzE9/mV8iMg==}
+  /@leanup/lib/1.3.39:
+    resolution: {integrity: sha512-7ic6B4iN7cOXnVC3Q3cIXM9FbmmD4yhTwc2Em51h0cZNAv7Lu4EkzIFP3u261771I8ugCq26689XvtiuKa0fqw==}
     dependencies:
       loglevel: 1.8.0
-      tslib: 2.4.0
+      tslib: 2.4.1
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -323,34 +323,34 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.10-rc.6:
-    resolution: {integrity: sha512-umYlbbFuSQjSRZsj8slLM7hQnAo453BhV8uhiaN+WcWbxr2Qodr7l6B6khfl5ze/r/EiO5/S/10I4W2EaHB71w==}
+  /@public-ui/components/1.1.10-rc.8:
+    resolution: {integrity: sha512-A5gcQiCCom/q1cjvXmUYKQm9cFcA/zaGlGP2qp6SWtFSk3iyfR32pyF64HdJ3cGuMQTEY6o+OTxSgB0JasRH5w==}
     dependencies:
-      '@public-ui/schema': 1.1.10-rc.6
+      '@public-ui/schema': 1.1.10-rc.8
 
-  /@public-ui/core/1.1.10-rc.6:
-    resolution: {integrity: sha512-UGqwtADzvHI8x7X4nK/uZt5s2IgpVmSEUDZNynDYdqKEfGO8dUAn7AC3uT4qwv5XcL9EpjUt4TU2+qmAvYPlnw==}
+  /@public-ui/core/1.1.10-rc.8:
+    resolution: {integrity: sha512-8DAz8ZgfBgDeIIC/g26KuM+O0K6FCAn+w8g1aBCZ+s5SqoYzTxgYWddKLQEqBJQI8SyhF1ryGJ1U9T+ZU0agpA==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
-      '@leanup/lib': 1.3.38
+      '@leanup/lib': 1.3.39
       rxjs: 7.5.7
 
-  /@public-ui/react/1.1.10-rc.6_xnq2pdshrpbxrvtahogt54jfju:
-    resolution: {integrity: sha512-Eb7JrObO1n23W//i1Aa8/Gx4kXTTTVPWDC/4pijqjtgjn8MJC7OwogLyOYSOF3vETomlvS1gJNjVUzmZMNKiZA==}
+  /@public-ui/react/1.1.10-rc.8_2pw4fsr4pghcpjzdgl24azmvae:
+    resolution: {integrity: sha512-rFX8UaeLHYDommyLLrV81Tqjvu05q3F+GXarXaDqRyQKKG8DZrKaDegYh4iK7CVJ6DJSTD2p5iphgA97Mb41QQ==}
     peerDependencies:
-      '@public-ui/components': 1.1.10-rc.6
+      '@public-ui/components': 1.1.10-rc.8
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.10-rc.6
+      '@public-ui/components': 1.1.10-rc.8
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.1.10-rc.6:
-    resolution: {integrity: sha512-pkFUtzejgdvpO1GS/S0SujyQPDErtFF6AVi4deJ/IwQP/uxDuAKRUup1xRQ9IjxmTCjmrAIN4E8p05J8cMuPuQ==}
+  /@public-ui/schema/1.1.10-rc.8:
+    resolution: {integrity: sha512-VPH83hZja3hhuUdqLbxZXZ8MZ6yg903DQBXZ3LL9YaXvqUI3ex+LgHjAEMUm0XF/M47AH9375eg5E6oALavRlQ==}
     dependencies:
-      '@public-ui/core': 1.1.10-rc.6
+      '@public-ui/core': 1.1.10-rc.8
 
   /@rollup/plugin-alias/4.0.2_rollup@3.2.5:
     resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
@@ -1505,9 +1505,6 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
-
-  /tslib/2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}

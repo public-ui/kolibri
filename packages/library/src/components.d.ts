@@ -1863,6 +1863,24 @@ export namespace Components {
          */
         "_links": Stringified<NavLinkProps[]>;
     }
+    interface KolSpan {
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label"?: string;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipId"?: string;
+    }
     interface KolSpin {
         /**
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
@@ -2327,6 +2345,12 @@ declare global {
         prototype: HTMLKolSkipNavElement;
         new (): HTMLKolSkipNavElement;
     };
+    interface HTMLKolSpanElement extends Components.KolSpan, HTMLStencilElement {
+    }
+    var HTMLKolSpanElement: {
+        prototype: HTMLKolSpanElement;
+        new (): HTMLKolSpanElement;
+    };
     interface HTMLKolSpinElement extends Components.KolSpin, HTMLStencilElement {
     }
     var HTMLKolSpinElement: {
@@ -2421,6 +2445,7 @@ declare global {
         "kol-progress": HTMLKolProgressElement;
         "kol-select": HTMLKolSelectElement;
         "kol-skip-nav": HTMLKolSkipNavElement;
+        "kol-span": HTMLKolSpanElement;
         "kol-spin": HTMLKolSpinElement;
         "kol-symbol": HTMLKolSymbolElement;
         "kol-table": HTMLKolTableElement;
@@ -4250,6 +4275,24 @@ declare namespace LocalJSX {
          */
         "_links": Stringified<NavLinkProps[]>;
     }
+    interface KolSpan {
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label"?: string;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipId"?: string;
+    }
     interface KolSpin {
         /**
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
@@ -4488,6 +4531,7 @@ declare namespace LocalJSX {
         "kol-progress": KolProgress;
         "kol-select": KolSelect;
         "kol-skip-nav": KolSkipNav;
+        "kol-span": KolSpan;
         "kol-spin": KolSpin;
         "kol-symbol": KolSymbol;
         "kol-table": KolTable;
@@ -4547,6 +4591,7 @@ declare module "@stencil/core" {
             "kol-progress": LocalJSX.KolProgress & JSXBase.HTMLAttributes<HTMLKolProgressElement>;
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;
             "kol-skip-nav": LocalJSX.KolSkipNav & JSXBase.HTMLAttributes<HTMLKolSkipNavElement>;
+            "kol-span": LocalJSX.KolSpan & JSXBase.HTMLAttributes<HTMLKolSpanElement>;
             "kol-spin": LocalJSX.KolSpin & JSXBase.HTMLAttributes<HTMLKolSpinElement>;
             "kol-symbol": LocalJSX.KolSymbol & JSXBase.HTMLAttributes<HTMLKolSymbolElement>;
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;

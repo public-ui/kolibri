@@ -56,7 +56,17 @@ const TAGS = [
 	'kol-tooltip',
 	'kol-version',
 ];
-const EXCLUDE_TAGS = ['kol-all', 'kol-button-wc', 'kol-color', 'kol-counter', 'heading-wc', 'kol-input', 'kol-input-radio-group', 'kol-link-wc'];
+const EXCLUDE_TAGS = [
+	'kol-all',
+	'kol-button-wc',
+	'kol-color',
+	'kol-counter',
+	'kol-heading-wc',
+	'kol-input',
+	'kol-input-radio-group',
+	'kol-link-wc',
+	'kol-span',
+];
 const BUNDLES: {
 	components: string[];
 }[] = [];

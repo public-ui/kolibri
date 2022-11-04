@@ -33,15 +33,15 @@
 
 ### Depends on
 
-- [kol-icon](../icon)
-- [kol-tooltip](../tooltip)
+- kol-span
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-link-button --> kol-icon
-  kol-link-button --> kol-tooltip
+  kol-link-button --> kol-span
+  kol-span --> kol-icon
+  kol-span --> kol-tooltip
   kol-tooltip --> kol-badge
   kol-badge --> kol-icon-icofont
   kol-icon-icofont --> kol-icon

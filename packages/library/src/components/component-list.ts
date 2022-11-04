@@ -40,6 +40,7 @@ import { KolPagination } from './pagination/component';
 import { KolProcess } from './progress/component';
 import { KolSelect } from './select/component';
 import { KolSkipNav } from './skip-nav/component';
+import { KolSpan } from './span/component';
 import { KolSpin } from './spin/component';
 import { KolSymbol } from './symbol/component';
 import { KolTable } from './table/component';
@@ -94,6 +95,7 @@ export const COMPONENTS = [
 	KolProcess,
 	KolSelect,
 	KolSkipNav,
+	KolSpan,
 	KolSpin,
 	KolSymbol,
 	KolTable,

@@ -11,11 +11,13 @@ export const TAG_NAMES: string[] = [
 	'kol-version',
 	'kol-abbr',
 	'kol-button',
+	'kol-link-button',
 	'kol-button-group',
 	'kol-pagination',
 	'kol-indented-text',
 	'kol-input-checkbox',
 	'kol-input-color',
+	// 'kol-input-date', // not customizable
 	'kol-input-file',
 	'kol-input-email',
 	'kol-input-number',
@@ -31,6 +33,7 @@ export const TAG_NAMES: string[] = [
 	'kol-form',
 	// 'kol-input-adapter-leanup', // not customizable
 	// 'kol-kolibri', // not customizable
+	'kol-button-link',
 	'kol-link-group',
 	// 'kol-logo', // not customizable
 	'kol-modal',

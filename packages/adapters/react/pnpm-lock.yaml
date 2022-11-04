@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.10-rc.6
-  '@public-ui/core': 1.1.10-rc.6
+  '@public-ui/components': 1.1.10-rc.8
+  '@public-ui/core': 1.1.10-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -15,8 +15,8 @@ specifiers:
   unbuild: 0.9.1
 
 devDependencies:
-  '@public-ui/components': 1.1.10-rc.6
-  '@public-ui/core': 1.1.10-rc.6
+  '@public-ui/components': 1.1.10-rc.8
+  '@public-ui/core': 1.1.10-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -305,11 +305,11 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@leanup/lib/1.3.38:
-    resolution: {integrity: sha512-pShxkO0I1Qc865MJEPVeqLmKwkZUn7kdffIsHj6+XsBG310YIbH8JFCOOBcH6oTc7dTRBYnC2YQzzE9/mV8iMg==}
+  /@leanup/lib/1.3.39:
+    resolution: {integrity: sha512-7ic6B4iN7cOXnVC3Q3cIXM9FbmmD4yhTwc2Em51h0cZNAv7Lu4EkzIFP3u261771I8ugCq26689XvtiuKa0fqw==}
     dependencies:
       loglevel: 1.8.0
-      tslib: 2.4.0
+      tslib: 2.4.1
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -333,24 +333,24 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.10-rc.6:
-    resolution: {integrity: sha512-umYlbbFuSQjSRZsj8slLM7hQnAo453BhV8uhiaN+WcWbxr2Qodr7l6B6khfl5ze/r/EiO5/S/10I4W2EaHB71w==}
+  /@public-ui/components/1.1.10-rc.8:
+    resolution: {integrity: sha512-A5gcQiCCom/q1cjvXmUYKQm9cFcA/zaGlGP2qp6SWtFSk3iyfR32pyF64HdJ3cGuMQTEY6o+OTxSgB0JasRH5w==}
     dependencies:
-      '@public-ui/schema': 1.1.10-rc.6
+      '@public-ui/schema': 1.1.10-rc.8
     dev: true
 
-  /@public-ui/core/1.1.10-rc.6:
-    resolution: {integrity: sha512-UGqwtADzvHI8x7X4nK/uZt5s2IgpVmSEUDZNynDYdqKEfGO8dUAn7AC3uT4qwv5XcL9EpjUt4TU2+qmAvYPlnw==}
+  /@public-ui/core/1.1.10-rc.8:
+    resolution: {integrity: sha512-8DAz8ZgfBgDeIIC/g26KuM+O0K6FCAn+w8g1aBCZ+s5SqoYzTxgYWddKLQEqBJQI8SyhF1ryGJ1U9T+ZU0agpA==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
-      '@leanup/lib': 1.3.38
+      '@leanup/lib': 1.3.39
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.10-rc.6:
-    resolution: {integrity: sha512-pkFUtzejgdvpO1GS/S0SujyQPDErtFF6AVi4deJ/IwQP/uxDuAKRUup1xRQ9IjxmTCjmrAIN4E8p05J8cMuPuQ==}
+  /@public-ui/schema/1.1.10-rc.8:
+    resolution: {integrity: sha512-VPH83hZja3hhuUdqLbxZXZ8MZ6yg903DQBXZ3LL9YaXvqUI3ex+LgHjAEMUm0XF/M47AH9375eg5E6oALavRlQ==}
     dependencies:
-      '@public-ui/core': 1.1.10-rc.6
+      '@public-ui/core': 1.1.10-rc.8
     dev: true
 
   /@rollup/plugin-alias/4.0.2_rollup@3.2.5:
@@ -1585,10 +1585,6 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
-    dev: true
-
-  /tslib/2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: true
 
   /tslib/2.4.1:
