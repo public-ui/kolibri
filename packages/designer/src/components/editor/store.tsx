@@ -38,6 +38,7 @@ import {
 	KolTextarea,
 	KolToast,
 	KolVersion,
+	KolLinkButton,
 } from '@public-ui/solid';
 import { Component } from 'solid-js';
 import countries from 'world_countries_lists/data/countries/de/countries.json';
@@ -406,108 +407,95 @@ export const components: Record<string, Component> = {
 	'KOL-LINK-BUTTON': () => (
 		<div class="grid grid-cols-3 items-center justify-items-center gap-6">
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolButtonLink _label="Primary" _variant="primary">
-					Primary
-				</KolButtonLink>
-				<KolButtonLink _label="Secondary" _variant="secondary">
-					Secondary
-				</KolButtonLink>
-				<KolButtonLink _label="Normal" _variant="normal">
-					Normal
-				</KolButtonLink>
-				<KolButtonLink _label="Danger" _variant="danger">
-					Danger
-				</KolButtonLink>
-				<KolButtonLink _label="Ghost" _variant="ghost">
-					Ghost
-				</KolButtonLink>
-				<KolButtonLink _label="Loading" _customClass="loading">
-					Loading
-				</KolButtonLink>
+				<KolLinkButton _variant="primary">Primary</KolLinkButton>
+				<KolLinkButton _variant="secondary">Secondary</KolLinkButton>
+				<KolLinkButton _variant="normal">Normal</KolLinkButton>
+				<KolLinkButton _variant="danger">Danger</KolLinkButton>
+				<KolLinkButton _variant="ghost">Ghost</KolLinkButton>
+				<KolLinkButton _customClass="loading">Loading</KolLinkButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolButtonLink _label="Primary" _icon="home" _variant="primary">
+				<KolLinkButton _icon="home" _variant="primary">
 					Primary
-				</KolButtonLink>
-				<KolButtonLink _label="Secondary" _icon="home" _variant="secondary">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _variant="secondary">
 					Secondary
-				</KolButtonLink>
-				<KolButtonLink _label="Normal" _icon="home" _variant="normal">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _variant="normal">
 					Normal
-				</KolButtonLink>
-				<KolButtonLink _label="Danger" _icon="home" _variant="danger">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _variant="danger">
 					Danger
-				</KolButtonLink>
-				<KolButtonLink _label="Ghost" _icon="home" _variant="ghost">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _variant="ghost">
 					Ghost
-				</KolButtonLink>
-				<KolButtonLink _label="Loading" _icon="home" _customClass="loading">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _customClass="loading">
 					Loading
-				</KolButtonLink>
+				</KolLinkButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolButtonLink _label="Primary" _icon="home" _iconAlign="right" _variant="primary" style="width: 120px">
+				<KolLinkButton _icon="home" _iconAlign="right" _variant="primary" style="width: 120px">
 					Primary
-				</KolButtonLink>
-				<KolButtonLink _label="Secondary" _icon="home" _iconAlign="right" _variant="secondary" style="width: 120px">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconAlign="right" _variant="secondary" style="width: 120px">
 					Secondary
-				</KolButtonLink>
-				<KolButtonLink _label="Normal" _icon="home" _iconAlign="right" _variant="normal" style="width: 120px">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconAlign="right" _variant="normal" style="width: 120px">
 					Normal
-				</KolButtonLink>
-				<KolButtonLink _label="Danger" _icon="home" _iconAlign="right" _variant="danger" style="width: 120px">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconAlign="right" _variant="danger" style="width: 120px">
 					Danger
-				</KolButtonLink>
-				<KolButtonLink _label="Ghost" _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px">
 					Ghost
-				</KolButtonLink>
-				<KolButtonLink _label="Loading" _icon="home" _iconAlign="right" _customClass="loading" style="width: 120px">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconAlign="right" _customClass="loading" style="width: 120px">
 					Loading
-				</KolButtonLink>
+				</KolLinkButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolButtonLink _label="Primary" _icon="home" _iconOnly _variant="primary">
+				<KolLinkButton _icon="home" _iconOnly _variant="primary">
 					Primary
-				</KolButtonLink>
-				<KolButtonLink _label="Secondary" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right">
 					Secondary
-				</KolButtonLink>
-				<KolButtonLink _label="Normal" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom">
 					Normal
-				</KolButtonLink>
-				<KolButtonLink _label="Danger" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconOnly _variant="danger" _tooltipAlign="left">
 					Danger
-				</KolButtonLink>
-				<KolButtonLink _label="Ghost" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top">
 					Ghost
-				</KolButtonLink>
-				<KolButtonLink _label="Loading" _icon="home" _iconOnly _customClass="loading" _tooltipAlign="top">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _iconOnly _customClass="loading" _tooltipAlign="top">
 					Loading
-				</KolButtonLink>
+				</KolLinkButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolButtonLink _label="Primary" _icon="home" _disabled _variant="primary">
+				<KolLinkButton _icon="home" _disabled _variant="primary">
 					Primary
-				</KolButtonLink>
-				<KolButtonLink _label="Secondary" _icon="home" _disabled _variant="secondary">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _disabled _variant="secondary">
 					Secondary
-				</KolButtonLink>
-				<KolButtonLink _label="Normal" _icon="home" _disabled _variant="normal">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _disabled _variant="normal">
 					Normal
-				</KolButtonLink>
-				<KolButtonLink _label="Danger" _icon="home" _disabled _variant="danger">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _disabled _variant="danger">
 					Danger
-				</KolButtonLink>
-				<KolButtonLink _label="Ghost" _icon="home" _disabled _variant="ghost">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _disabled _variant="ghost">
 					Ghost
-				</KolButtonLink>
-				<KolButtonLink _label="Loading" _icon="home" _disabled _customClass="loading">
+				</KolLinkButton>
+				<KolLinkButton _icon="home" _disabled _customClass="loading">
 					Loading
-				</KolButtonLink>
+				</KolLinkButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolButtonLink
-					_label="Primary"
+				<KolLinkButton
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -517,9 +505,8 @@ export const components: Record<string, Component> = {
 					_variant="primary"
 				>
 					Primary
-				</KolButtonLink>
-				<KolButtonLink
-					_label="Secondary"
+				</KolLinkButton>
+				<KolLinkButton
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -529,9 +516,8 @@ export const components: Record<string, Component> = {
 					_variant="secondary"
 				>
 					Secondary
-				</KolButtonLink>
-				<KolButtonLink
-					_label="Normal"
+				</KolLinkButton>
+				<KolLinkButton
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -541,9 +527,8 @@ export const components: Record<string, Component> = {
 					_variant="normal"
 				>
 					Normal
-				</KolButtonLink>
-				<KolButtonLink
-					_label="Danger"
+				</KolLinkButton>
+				<KolLinkButton
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -553,9 +538,8 @@ export const components: Record<string, Component> = {
 					_variant="danger"
 				>
 					Danger
-				</KolButtonLink>
-				<KolButtonLink
-					_label="Ghost"
+				</KolLinkButton>
+				<KolLinkButton
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -565,9 +549,8 @@ export const components: Record<string, Component> = {
 					_variant="ghost"
 				>
 					Ghost
-				</KolButtonLink>
-				<KolButtonLink
-					_label="Loading"
+				</KolLinkButton>
+				<KolLinkButton
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -577,7 +560,7 @@ export const components: Record<string, Component> = {
 					_customClass="loading"
 				>
 					Loading
-				</KolButtonLink>
+				</KolLinkButton>
 			</div>
 		</div>
 	),

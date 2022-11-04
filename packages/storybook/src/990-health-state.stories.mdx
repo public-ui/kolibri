@@ -11,6 +11,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 <KolTable
 	className="col-12"
 	_caption="Liste von Statuswerte zu den Paketen"
+	_minWidth="70em"
 	_headers={{
 		horizontal: [
 			[
@@ -18,7 +19,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					label: 'Package',
 					key: 'name',
 					render: (el, cell, tupel) => `${getPackageName(tupel.scope, tupel.name)}`,
-					width: '15em',
+					width: '20em',
 				},
 				{
 					label: 'Version',
@@ -78,6 +79,10 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 		{
 			scope: '@public-ui',
 			name: 'angular',
+		},
+		{
+			scope: '@public-ui',
+			name: 'preact',
 		},
 		{
 			scope: '@public-ui',
