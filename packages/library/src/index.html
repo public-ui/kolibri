@@ -693,49 +693,49 @@
 									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 									<kol-input-checkbox _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								</kol-controlled-input-next>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-checkbox-leanup">
+								<lean-input-adapter class="d-grid gap-2" id="new-input-checkbox-leanup">
 									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 									<kol-input-checkbox _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
-								</kol-input-adapter-leanup>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="change-checkbox">
+								</lean-input-adapter>
+								<lean-input-adapter class="d-grid gap-2" id="change-checkbox">
 									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputColor</kol-heading>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-color">
+								<lean-input-adapter class="d-grid gap-2" id="new-input-color">
 									<kol-input-color></kol-input-color>
 									<kol-input-color _list="['#000000','#ff0000','#0000ff','#00ff00']"></kol-input-color>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputEmail</kol-heading>
 								<kol-input-email _error="Test einer Fehlermeldung">E-Mail-Adresse</kol-input-email>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-email">
+								<lean-input-adapter class="d-grid gap-2" id="new-input-email">
 									<kol-input-email></kol-input-email>
 									<kol-input-email _list="['test1@test.de','test2@test.de','test3@test.de']">E-Mail-Adresse (Auto-Vervollständigung)</kol-input-email>
 									<kol-input-email _list="['test1@test.de','test2@test.de','test3@test.de']" _multiple
 										>E-Mail-Adresse(n) (Auto-Vervollständigung, Mehrfachauswahl)</kol-input-email
 									>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputFile</kol-heading>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-file">
+								<lean-input-adapter class="d-grid gap-2" id="new-input-file">
 									<kol-input-file>Datei hochladen</kol-input-file>
 									<kol-input-file _multiple>Datei(en) hochladen (Mehrfachauswahl)</kol-input-file>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputNumber</kol-heading>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-number">
+								<lean-input-adapter class="d-grid gap-2" id="new-input-number">
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 								<kol-heading _level="3">InputDate</kol-heading>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-date">
+								<lean-input-adapter class="d-grid gap-2" id="new-input-date">
 									<kol-input-date _type="date">Datum</kol-input-date>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 								<kol-input-date _type="date" _min="2022-10-28">Datum (min)</kol-input-date>
 								<kol-input-date _type="date" _max="2022-10-28">Datum (max)</kol-input-date>
 								<kol-input-date _type="datetime-local">Local-Datetime (Standard)</kol-input-date>
@@ -752,15 +752,15 @@
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputRadioGroup</kol-heading>
 								<div slot="content">
-									<kol-input-adapter-leanup class="d-grid gap-2" id="anrede-adapter">
+									<lean-input-adapter class="d-grid gap-2" id="anrede-adapter">
 										<kol-input-radio>Anrede</kol-input-radio>
-									</kol-input-adapter-leanup>
+									</lean-input-adapter>
 									<kol-input-radio id="anrede-input">Anrede es wird automatisch die 1. Option ausgewählt</kol-input-radio>
 								</div>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputRange</kol-heading>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-input-range">
+								<lean-input-adapter class="d-grid gap-2" id="new-input-range">
 									<kol-input-range _min="0" _max="50">Schieberegler</kol-input-range>
 									<kol-input-range _min="0" _max="50" _step="10">Schieberegler (mit Raster)</kol-input-range>
 									<kol-input-range
@@ -770,16 +770,16 @@
 										_step="10"
 										>Schieberegler (mit Rasterlinien)</kol-input-range
 									>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputText</kol-heading>
 								<kol-input-text class="vorname" _hint="Ich bin ein Hinweis." _id="input-text-vorname" _type="text"
 									>Vorname (Auto-Vervollständigung)
 								</kol-input-text>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="kol-input-text">
+								<lean-input-adapter class="d-grid gap-2" id="kol-input-text">
 									<kol-input-text class="vorname" _id="input-text-vorname" _type="text"></kol-input-text>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 								<kol-input-text _type="search">Suchbegriff</kol-input-text>
 								<br />
 								<kol-indented-text>Hier ein Suchfeld ohne sichtbares Label, aber dafür mit Icon und Placeholder.</kol-indented-text>
@@ -793,22 +793,22 @@
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">Select</kol-heading>
 								<kol-select class="list4value">Stimmung (nicht vorbelegt)</kol-select>
-								<kol-input-adapter-leanup class="d-grid gap-2" class="select-adapter">
+								<lean-input-adapter class="d-grid gap-2" class="select-adapter">
 									<kol-select class="list4value">Stimmung (vorbelegt)</kol-select>
 									<kol-select class="list4value" _multiple>Stimmung (Mehrfachauswahl, vorbelegt)</kol-select>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 								<kol-select class="value4list">Stimmung (nicht vorbelegt)</kol-select>
-								<kol-input-adapter-leanup class="d-grid gap-2" class="select-adapter">
+								<lean-input-adapter class="d-grid gap-2" class="select-adapter">
 									<kol-select class="value4list">Stimmung (vorbelegt)</kol-select>
 									<kol-select class="value4list" _multiple>Stimmung (Mehrfachauswahl, vorbelegt)</kol-select>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 								<kol-select id="fix-select-multi" _multiple>Mehrfachauswahl</kol-select>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">Textarea</kol-heading>
-								<kol-input-adapter-leanup class="d-grid gap-2" id="new-textarea">
+								<lean-input-adapter class="d-grid gap-2" id="new-textarea">
 									<kol-textarea>Label</kol-textarea>
-								</kol-input-adapter-leanup>
+								</lean-input-adapter>
 								<kol-indented-text>Hier ein Suchfeld ohne sichtbares Label, aber dafür mit Placeholder.</kol-indented-text>
 								<kol-textarea _has-counter _hide-label _placeholder="Ausgeblendetes Label">Ausgeblendetes Label</kol-textarea>
 								<kol-textarea _has-counter _max-length="50" _value="Textfeld mit Zähler und maximaler Länge">

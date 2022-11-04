@@ -1400,7 +1400,7 @@ export namespace Components {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -1409,6 +1409,7 @@ export namespace Components {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1604,7 +1605,7 @@ export namespace Components {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -1613,6 +1614,7 @@ export namespace Components {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -3812,7 +3814,7 @@ declare namespace LocalJSX {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -3821,6 +3823,7 @@ declare namespace LocalJSX {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4016,7 +4019,7 @@ declare namespace LocalJSX {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -4025,6 +4028,7 @@ declare namespace LocalJSX {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
