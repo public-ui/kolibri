@@ -25,7 +25,7 @@ export default (): void => {
 
 	// register([BMF], () => {
 	// 	return new Promise((resolve) => resolve());
-	// }).catch(() => console.warn);
+	// }).catch(console.warn);
 
 	import('./devtools')
 		.then((devTools) => {

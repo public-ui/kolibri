@@ -5,7 +5,6 @@ import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { watchValidator } from '../../utils/prop.validators';
-import { KolInputNumber } from '../input-number/component';
 import { KoliBriInputIcon } from '../input-text/types';
 import { ComponentApi, States } from './types';
 
@@ -19,7 +18,7 @@ import { ComponentApi, States } from './types';
 export class KolInputDate implements ComponentApi {
 	public render(): JSX.Element {
 		return (
-			<KolInputNumber
+			<kol-input-number
 				_accessKey={this._accessKey}
 				_alert={this._alert}
 				_autoComplete={this._autoComplete}

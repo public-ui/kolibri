@@ -12,9 +12,9 @@ type OptionalProps = OptionalInputProps<Iso8601 | Date> & { type: InputDateType 
 type RequiredStates = unknown;
 
 type OptionalStates = {
-	max: string;
-	min: string;
-	value: string;
+	max: Iso8601;
+	min: Iso8601;
+	value: Iso8601;
 };
 
 // export type Props = Generic.Element.Members<RequiredProps, OptionalInputProps<IsoDate>>;

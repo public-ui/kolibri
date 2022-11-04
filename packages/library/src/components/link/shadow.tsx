@@ -94,7 +94,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
 	 *
-	 * @deprecated
+	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
 	@Prop() public _iconAlign?: Alignment = 'left';
 
@@ -105,6 +105,8 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
+	 *
+	 * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
