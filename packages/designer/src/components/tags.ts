@@ -26,6 +26,7 @@ export const TAG_NAMES: string[] = [
 	'kol-input-range',
 	'kol-input-text',
 	'kol-link',
+	'kol-button-link',
 	'kol-select',
 	'kol-textarea',
 	'kol-breadcrumb',
@@ -33,7 +34,6 @@ export const TAG_NAMES: string[] = [
 	'kol-form',
 	// 'kol-input-adapter-leanup', // not customizable
 	// 'kol-kolibri', // not customizable
-	'kol-button-link',
 	'kol-link-group',
 	// 'kol-logo', // not customizable
 	'kol-modal',

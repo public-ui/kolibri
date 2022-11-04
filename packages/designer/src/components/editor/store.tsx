@@ -14,6 +14,7 @@ import {
 	KolIndentedText,
 	KolInputCheckbox,
 	KolInputColor,
+	KolInputDate,
 	KolInputEmail,
 	KolInputFile,
 	KolInputNumber,
@@ -22,7 +23,7 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolLink,
-	KolLinkButton,
+	KolButtonLink,
 	KolLinkGroup,
 	KolLogo,
 	KolModal,
@@ -405,107 +406,107 @@ export const components: Record<string, Component> = {
 	'KOL-LINK-BUTTON': () => (
 		<div class="grid grid-cols-3 items-center justify-items-center gap-6">
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolLinkButton _label="Primary" _variant="primary">
+				<KolButtonLink _label="Primary" _variant="primary">
 					Primary
-				</KolLinkButton>
-				<KolLinkButton _label="Secondary" _variant="secondary">
+				</KolButtonLink>
+				<KolButtonLink _label="Secondary" _variant="secondary">
 					Secondary
-				</KolLinkButton>
-				<KolLinkButton _label="Normal" _variant="normal">
+				</KolButtonLink>
+				<KolButtonLink _label="Normal" _variant="normal">
 					Normal
-				</KolLinkButton>
-				<KolLinkButton _label="Danger" _variant="danger">
+				</KolButtonLink>
+				<KolButtonLink _label="Danger" _variant="danger">
 					Danger
-				</KolLinkButton>
-				<KolLinkButton _label="Ghost" _variant="ghost">
+				</KolButtonLink>
+				<KolButtonLink _label="Ghost" _variant="ghost">
 					Ghost
-				</KolLinkButton>
-				<KolLinkButton _label="Loading" _customClass="loading">
+				</KolButtonLink>
+				<KolButtonLink _label="Loading" _customClass="loading">
 					Loading
-				</KolLinkButton>
+				</KolButtonLink>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolLinkButton _label="Primary" _icon="home" _variant="primary">
+				<KolButtonLink _label="Primary" _icon="home" _variant="primary">
 					Primary
-				</KolLinkButton>
-				<KolLinkButton _label="Secondary" _icon="home" _variant="secondary">
+				</KolButtonLink>
+				<KolButtonLink _label="Secondary" _icon="home" _variant="secondary">
 					Secondary
-				</KolLinkButton>
-				<KolLinkButton _label="Normal" _icon="home" _variant="normal">
+				</KolButtonLink>
+				<KolButtonLink _label="Normal" _icon="home" _variant="normal">
 					Normal
-				</KolLinkButton>
-				<KolLinkButton _label="Danger" _icon="home" _variant="danger">
+				</KolButtonLink>
+				<KolButtonLink _label="Danger" _icon="home" _variant="danger">
 					Danger
-				</KolLinkButton>
-				<KolLinkButton _label="Ghost" _icon="home" _variant="ghost">
+				</KolButtonLink>
+				<KolButtonLink _label="Ghost" _icon="home" _variant="ghost">
 					Ghost
-				</KolLinkButton>
-				<KolLinkButton _label="Loading" _icon="home" _customClass="loading">
+				</KolButtonLink>
+				<KolButtonLink _label="Loading" _icon="home" _customClass="loading">
 					Loading
-				</KolLinkButton>
+				</KolButtonLink>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolLinkButton _label="Primary" _icon="home" _iconAlign="right" _variant="primary" style="width: 120px">
+				<KolButtonLink _label="Primary" _icon="home" _iconAlign="right" _variant="primary" style="width: 120px">
 					Primary
-				</KolLinkButton>
-				<KolLinkButton _label="Secondary" _icon="home" _iconAlign="right" _variant="secondary" style="width: 120px">
+				</KolButtonLink>
+				<KolButtonLink _label="Secondary" _icon="home" _iconAlign="right" _variant="secondary" style="width: 120px">
 					Secondary
-				</KolLinkButton>
-				<KolLinkButton _label="Normal" _icon="home" _iconAlign="right" _variant="normal" style="width: 120px">
+				</KolButtonLink>
+				<KolButtonLink _label="Normal" _icon="home" _iconAlign="right" _variant="normal" style="width: 120px">
 					Normal
-				</KolLinkButton>
-				<KolLinkButton _label="Danger" _icon="home" _iconAlign="right" _variant="danger" style="width: 120px">
+				</KolButtonLink>
+				<KolButtonLink _label="Danger" _icon="home" _iconAlign="right" _variant="danger" style="width: 120px">
 					Danger
-				</KolLinkButton>
-				<KolLinkButton _label="Ghost" _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px">
+				</KolButtonLink>
+				<KolButtonLink _label="Ghost" _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px">
 					Ghost
-				</KolLinkButton>
-				<KolLinkButton _label="Loading" _icon="home" _iconAlign="right" _customClass="loading" style="width: 120px">
+				</KolButtonLink>
+				<KolButtonLink _label="Loading" _icon="home" _iconAlign="right" _customClass="loading" style="width: 120px">
 					Loading
-				</KolLinkButton>
+				</KolButtonLink>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolLinkButton _label="Primary" _icon="home" _iconOnly _variant="primary">
+				<KolButtonLink _label="Primary" _icon="home" _iconOnly _variant="primary">
 					Primary
-				</KolLinkButton>
-				<KolLinkButton _label="Secondary" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right">
+				</KolButtonLink>
+				<KolButtonLink _label="Secondary" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right">
 					Secondary
-				</KolLinkButton>
-				<KolLinkButton _label="Normal" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom">
+				</KolButtonLink>
+				<KolButtonLink _label="Normal" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom">
 					Normal
-				</KolLinkButton>
-				<KolLinkButton _label="Danger" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left">
+				</KolButtonLink>
+				<KolButtonLink _label="Danger" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left">
 					Danger
-				</KolLinkButton>
-				<KolLinkButton _label="Ghost" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top">
+				</KolButtonLink>
+				<KolButtonLink _label="Ghost" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top">
 					Ghost
-				</KolLinkButton>
-				<KolLinkButton _label="Loading" _icon="home" _iconOnly _customClass="loading" _tooltipAlign="top">
+				</KolButtonLink>
+				<KolButtonLink _label="Loading" _icon="home" _iconOnly _customClass="loading" _tooltipAlign="top">
 					Loading
-				</KolLinkButton>
+				</KolButtonLink>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolLinkButton _label="Primary" _icon="home" _disabled _variant="primary">
+				<KolButtonLink _label="Primary" _icon="home" _disabled _variant="primary">
 					Primary
-				</KolLinkButton>
-				<KolLinkButton _label="Secondary" _icon="home" _disabled _variant="secondary">
+				</KolButtonLink>
+				<KolButtonLink _label="Secondary" _icon="home" _disabled _variant="secondary">
 					Secondary
-				</KolLinkButton>
-				<KolLinkButton _label="Normal" _icon="home" _disabled _variant="normal">
+				</KolButtonLink>
+				<KolButtonLink _label="Normal" _icon="home" _disabled _variant="normal">
 					Normal
-				</KolLinkButton>
-				<KolLinkButton _label="Danger" _icon="home" _disabled _variant="danger">
+				</KolButtonLink>
+				<KolButtonLink _label="Danger" _icon="home" _disabled _variant="danger">
 					Danger
-				</KolLinkButton>
-				<KolLinkButton _label="Ghost" _icon="home" _disabled _variant="ghost">
+				</KolButtonLink>
+				<KolButtonLink _label="Ghost" _icon="home" _disabled _variant="ghost">
 					Ghost
-				</KolLinkButton>
-				<KolLinkButton _label="Loading" _icon="home" _disabled _customClass="loading">
+				</KolButtonLink>
+				<KolButtonLink _label="Loading" _icon="home" _disabled _customClass="loading">
 					Loading
-				</KolLinkButton>
+				</KolButtonLink>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolLinkButton
+				<KolButtonLink
 					_label="Primary"
 					_icon={{
 						left: 'icofont-arrow-left',
@@ -516,8 +517,8 @@ export const components: Record<string, Component> = {
 					_variant="primary"
 				>
 					Primary
-				</KolLinkButton>
-				<KolLinkButton
+				</KolButtonLink>
+				<KolButtonLink
 					_label="Secondary"
 					_icon={{
 						left: 'icofont-arrow-left',
@@ -528,8 +529,8 @@ export const components: Record<string, Component> = {
 					_variant="secondary"
 				>
 					Secondary
-				</KolLinkButton>
-				<KolLinkButton
+				</KolButtonLink>
+				<KolButtonLink
 					_label="Normal"
 					_icon={{
 						left: 'icofont-arrow-left',
@@ -540,8 +541,8 @@ export const components: Record<string, Component> = {
 					_variant="normal"
 				>
 					Normal
-				</KolLinkButton>
-				<KolLinkButton
+				</KolButtonLink>
+				<KolButtonLink
 					_label="Danger"
 					_icon={{
 						left: 'icofont-arrow-left',
@@ -552,8 +553,8 @@ export const components: Record<string, Component> = {
 					_variant="danger"
 				>
 					Danger
-				</KolLinkButton>
-				<KolLinkButton
+				</KolButtonLink>
+				<KolButtonLink
 					_label="Ghost"
 					_icon={{
 						left: 'icofont-arrow-left',
@@ -564,8 +565,8 @@ export const components: Record<string, Component> = {
 					_variant="ghost"
 				>
 					Ghost
-				</KolLinkButton>
-				<KolLinkButton
+				</KolButtonLink>
+				<KolButtonLink
 					_label="Loading"
 					_icon={{
 						left: 'icofont-arrow-left',
@@ -576,7 +577,7 @@ export const components: Record<string, Component> = {
 					_customClass="loading"
 				>
 					Loading
-				</KolLinkButton>
+				</KolButtonLink>
 			</div>
 		</div>
 	),
@@ -740,6 +741,37 @@ export const components: Record<string, Component> = {
 			<KolInputColor _disabled _id="farbe" _name="farbe" _value="#ff0000">
 				Farbe (Disabled)
 			</KolInputColor>
+		</div>
+	),
+	'KOL-INPUT-DATE': () => (
+		<div class="grid justify-center gap-6">
+			<KolInputDate _id="date" _name="date" _type="date">
+				Datumseingabe
+			</KolInputDate>
+			<KolInputDate _id="time" _name="time" _type="datetime-local">
+				Local-Datetime (Standard)
+			</KolInputDate>
+			<KolInputDate _id="time" _name="time" _step={1} _type="datetime-local" _error={ERROR_MSG}>
+				Local-Datetime (mit Sekunden)
+			</KolInputDate>
+			<KolInputDate _id="month" _name="month" _type="month">
+				Monat
+			</KolInputDate>
+			<KolInputDate _id="week" _name="week" _type="week">
+				Woche
+			</KolInputDate>
+			<KolInputDate _id="time" _name="time" _type="time">
+				Zeit (Standard)
+			</KolInputDate>
+			<KolInputDate _id="time" _name="time" _step={1} _type="time">
+				Zeit (mit Sekunden)
+			</KolInputDate>
+			<KolInputDate _id="date" _name="date" _read-only>
+				Zahleneingabe (Readonly)
+			</KolInputDate>
+			<KolInputDate _disabled _id="date" _name="date">
+				Zahleneingabe (Disabled)
+			</KolInputDate>
 		</div>
 	),
 	'KOL-INPUT-EMAIL': () => (
@@ -1086,6 +1118,44 @@ export const components: Record<string, Component> = {
 			<KolLink _href="#/" _useCase="image" _ariaLabel="Zurück zur Startseite">
 				<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']}></KolLogo>
 			</KolLink>
+			<KolIndentedText>
+				<p>
+					<b>Links sind unsichtbar geschalten</b>
+					<br />
+					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+				</p>
+			</KolIndentedText>
+			<KolSkipNav
+				_ariaLabel="Skip-Nav"
+				_links={[
+					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
+					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
+					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
+					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+				]}
+			></KolSkipNav>
+		</div>
+	),
+	'KOL-BUTTON-LINK': () => (
+		<div class="grid justify-items-center gap-6">
+			<KolButtonLink _href="https://www.w3.org" _icon="home" _iconOnly _ariaLabel="Home"></KolButtonLink>
+			<KolButtonLink _href="https://www.w3.org">Normaler Link</KolButtonLink>
+			<KolButtonLink _href="https://www.w3.org" _icon="home" _iconAlign="left">
+				Normaler Link mit Icon links
+			</KolButtonLink>
+			<KolButtonLink _href="https://www.w3.org" _icon="home" _iconAlign="right">
+				Normaler Link mit Icon rechts
+			</KolButtonLink>
+			<KolButtonLink _href="https://www.w3.org" _icon="home" _iconOnly>
+				Nur Icon-Link
+			</KolButtonLink>
+			<KolButtonLink _href="https://www.w3.org" _target="w3c">
+				Externer Link
+			</KolButtonLink>
+			<KolButtonLink _href="/">Besuchter Link</KolButtonLink>
+			<KolButtonLink _href="#/" _useCase="image" _ariaLabel="Zurück zur Startseite">
+				<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']}></KolLogo>
+			</KolButtonLink>
 			<KolIndentedText>
 				<p>
 					<b>Links sind unsichtbar geschalten</b>
