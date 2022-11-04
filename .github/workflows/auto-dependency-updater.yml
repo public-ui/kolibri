@@ -23,14 +23,14 @@ jobs:
           cache: pnpm
           node-version: 16
       - uses: actions/cache@v3
-       env:
-         cache-name: cache-pnpm-modules
-       with:
-          pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
-         path: ~/.pnpm-store
-         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}
-         restore-keys: |
-           {{ runner.os }}-pnpm
+        env:
+          cache-name: cache-pnpm-modules
+        with:
+          # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm
+          restore-keys: |
+            ${{ runner.os }}-pnpm
       - name: Create new branch
         run: git checkout -b chore/auto-update-deps
       - name: Install tools
