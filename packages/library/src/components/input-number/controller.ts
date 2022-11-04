@@ -1,6 +1,7 @@
 import { Generic } from '@public-ui/core';
 import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
+import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnOff } from '../../types/input/types';
 import { devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
@@ -8,6 +9,12 @@ import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
 
 export class InputNumberController extends InputController implements Watches {
+	/**
+	 * Regex to check whether a string is a number or a date in ISO-8601 format.
+	 * Test the regex here: https://regex101.com/r/nFDzrD/1
+	 */
+	private readonly numberOrIsoDateRegex = /^\d+$|(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?([+-][0-2]\d:[0-5]\d|Z)?)?$)/;
+
 	protected readonly component: Generic.Element.Component & Props;
 
 	public constructor(component: Generic.Element.Component & Props, name: string) {
@@ -35,18 +42,43 @@ export class InputNumberController extends InputController implements Watches {
 		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
 	}
 
+	private parseToString = (value?: number | Date | string) => {
+		if (typeof value === 'string') {
+			return value;
+		}
+		if (typeof value === 'number') {
+			return `${value}`;
+		}
+		if (typeof value === 'object' && value instanceof Date) {
+			return value.toISOString();
+		}
+		return '';
+	};
+
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateMax(value?: number): void {
-		watchNumber(this.component, '_max', value);
+	public validateMax(value?: number | Date | string): void {
+		watchValidator(
+			this.component,
+			'_max',
+			(value): boolean => value === undefined || this.numberOrIsoDateRegex.test(value),
+			new Set(['number', 'Date', 'string{ISO-8601}']),
+			this.parseToString(value)
+		);
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateMin(value?: number): void {
-		watchNumber(this.component, '_min', value);
+	public validateMin(value?: number | Date | string): void {
+		watchValidator(
+			this.component,
+			'_min',
+			(value): boolean => value === undefined || this.numberOrIsoDateRegex.test(value),
+			new Set(['number', 'Date', 'string{ISO-8601}']),
+			this.parseToString(value)
+		);
 	}
 
 	/**
@@ -96,13 +128,17 @@ export class InputNumberController extends InputController implements Watches {
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateValue(value?: string | null): void {
+	public validateValue(value?: number | Iso8601 | null): void {
 		if (value === null) {
 			this.component.state._value = null;
 		} else {
-			watchString(this.component, '_value', value, {
-				minLength: 0,
-			});
+			watchValidator(
+				this.component,
+				'_value',
+				(value): boolean => value === undefined || this.numberOrIsoDateRegex.test(value),
+				new Set(['number', 'Date', 'string{ISO-8601}']),
+				this.parseToString(value)
+			);
 		}
 	}
 

@@ -20,7 +20,8 @@ import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { KoliBriInputIcon } from "./components/input-text/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { InputCheckboxType } from "./components/input-checkbox/types";
-import { InputNumberType } from "./types/input/control/number";
+import { Iso8601 } from "./types/input/iso8601";
+import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/component";
@@ -620,6 +621,96 @@ export namespace Components {
          */
         "_value"?: string;
     }
+    interface KolInputDate {
+        /**
+          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+         */
+        "_accessKey"?: string;
+        /**
+          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+         */
+        "_alert"?: boolean;
+        /**
+          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+         */
+        "_autoComplete"?: InputTypeOnOff;
+        /**
+          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Gibt den Text für eine Fehlermeldung an.
+         */
+        "_error"?: string;
+        /**
+          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+         */
+        "_hideLabel"?: boolean;
+        /**
+          * Gibt den Text für eine Hinweistext an.
+         */
+        "_hint"?: string;
+        /**
+          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+         */
+        "_icon"?: Stringified<KoliBriInputIcon>;
+        /**
+          * Gibt die technische ID des Eingabefeldes an.
+         */
+        "_id": string;
+        /**
+          * Gibt die Liste der Vorschlagszahlen an.
+         */
+        "_list"?: Stringified<string[]>;
+        /**
+          * Gibt den größtmöglichen Datumswert an.
+         */
+        "_max"?: Iso8601 | Date;
+        /**
+          * Gibt den kleinstmöglichen Datumswert an.
+         */
+        "_min"?: Iso8601 | Date;
+        /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
+          * Gibt die EventCallback-Funktionen für das Input-Event an.
+         */
+        "_on"?: InputTypeOnDefault;
+        /**
+          * Gibt an, ob das Eingabefeld nur lesend ist.
+         */
+        "_readOnly"?: boolean;
+        /**
+          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+         */
+        "_required"?: boolean;
+        /**
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+         */
+        "_smartButton"?: ButtonProps;
+        /**
+          * Gibt die Schrittweite der Wertveränderung an
+         */
+        "_step"?: number;
+        /**
+          * Gibt an, welchen Tab-Index dieses Input hat.
+         */
+        "_tabIndex"?: number;
+        /**
+          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+         */
+        "_touched"?: boolean;
+        /**
+          * Gibt den Typ des Eingabefeldes an.
+         */
+        "_type": InputDateType;
+        /**
+          * Gibt den Wert des Eingabefeldes an.
+         */
+        "_value"?: Iso8601 | Date;
+    }
     interface KolInputEmail {
         /**
           * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
@@ -828,11 +919,11 @@ export namespace Components {
         /**
           * Gibt den größtmöglichen Zahlenwert an.
          */
-        "_max"?: number;
+        "_max"?: number | Iso8601;
         /**
           * Gibt den kleinstmöglichen Zahlenwert an.
          */
-        "_min"?: number;
+        "_min"?: number | Iso8601;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -876,7 +967,7 @@ export namespace Components {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: string;
+        "_value"?: number | Iso8601;
     }
     interface KolInputPassword {
         /**
@@ -1309,7 +1400,7 @@ export namespace Components {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -1318,6 +1409,7 @@ export namespace Components {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1513,7 +1605,7 @@ export namespace Components {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -1522,6 +1614,7 @@ export namespace Components {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1771,6 +1864,24 @@ export namespace Components {
           * Ist die Liste der unsichtbaren Links.
          */
         "_links": Stringified<NavLinkProps[]>;
+    }
+    interface KolSpan {
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label"?: string;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipId"?: string;
     }
     interface KolSpin {
         /**
@@ -2110,6 +2221,12 @@ declare global {
         prototype: HTMLKolInputColorElement;
         new (): HTMLKolInputColorElement;
     };
+    interface HTMLKolInputDateElement extends Components.KolInputDate, HTMLStencilElement {
+    }
+    var HTMLKolInputDateElement: {
+        prototype: HTMLKolInputDateElement;
+        new (): HTMLKolInputDateElement;
+    };
     interface HTMLKolInputEmailElement extends Components.KolInputEmail, HTMLStencilElement {
     }
     var HTMLKolInputEmailElement: {
@@ -2230,6 +2347,12 @@ declare global {
         prototype: HTMLKolSkipNavElement;
         new (): HTMLKolSkipNavElement;
     };
+    interface HTMLKolSpanElement extends Components.KolSpan, HTMLStencilElement {
+    }
+    var HTMLKolSpanElement: {
+        prototype: HTMLKolSpanElement;
+        new (): HTMLKolSpanElement;
+    };
     interface HTMLKolSpinElement extends Components.KolSpin, HTMLStencilElement {
     }
     var HTMLKolSpinElement: {
@@ -2303,6 +2426,7 @@ declare global {
         "kol-input-adapter-leanup": HTMLKolInputAdapterLeanupElement;
         "kol-input-checkbox": HTMLKolInputCheckboxElement;
         "kol-input-color": HTMLKolInputColorElement;
+        "kol-input-date": HTMLKolInputDateElement;
         "kol-input-email": HTMLKolInputEmailElement;
         "kol-input-file": HTMLKolInputFileElement;
         "kol-input-number": HTMLKolInputNumberElement;
@@ -2323,6 +2447,7 @@ declare global {
         "kol-progress": HTMLKolProgressElement;
         "kol-select": HTMLKolSelectElement;
         "kol-skip-nav": HTMLKolSkipNavElement;
+        "kol-span": HTMLKolSpanElement;
         "kol-spin": HTMLKolSpinElement;
         "kol-symbol": HTMLKolSymbolElement;
         "kol-table": HTMLKolTableElement;
@@ -2910,6 +3035,96 @@ declare namespace LocalJSX {
          */
         "_value"?: string;
     }
+    interface KolInputDate {
+        /**
+          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+         */
+        "_accessKey"?: string;
+        /**
+          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+         */
+        "_alert"?: boolean;
+        /**
+          * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
+         */
+        "_autoComplete"?: InputTypeOnOff;
+        /**
+          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Gibt den Text für eine Fehlermeldung an.
+         */
+        "_error"?: string;
+        /**
+          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+         */
+        "_hideLabel"?: boolean;
+        /**
+          * Gibt den Text für eine Hinweistext an.
+         */
+        "_hint"?: string;
+        /**
+          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+         */
+        "_icon"?: Stringified<KoliBriInputIcon>;
+        /**
+          * Gibt die technische ID des Eingabefeldes an.
+         */
+        "_id": string;
+        /**
+          * Gibt die Liste der Vorschlagszahlen an.
+         */
+        "_list"?: Stringified<string[]>;
+        /**
+          * Gibt den größtmöglichen Datumswert an.
+         */
+        "_max"?: Iso8601 | Date;
+        /**
+          * Gibt den kleinstmöglichen Datumswert an.
+         */
+        "_min"?: Iso8601 | Date;
+        /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
+          * Gibt die EventCallback-Funktionen für das Input-Event an.
+         */
+        "_on"?: InputTypeOnDefault;
+        /**
+          * Gibt an, ob das Eingabefeld nur lesend ist.
+         */
+        "_readOnly"?: boolean;
+        /**
+          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+         */
+        "_required"?: boolean;
+        /**
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+         */
+        "_smartButton"?: ButtonProps;
+        /**
+          * Gibt die Schrittweite der Wertveränderung an
+         */
+        "_step"?: number;
+        /**
+          * Gibt an, welchen Tab-Index dieses Input hat.
+         */
+        "_tabIndex"?: number;
+        /**
+          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+         */
+        "_touched"?: boolean;
+        /**
+          * Gibt den Typ des Eingabefeldes an.
+         */
+        "_type"?: InputDateType;
+        /**
+          * Gibt den Wert des Eingabefeldes an.
+         */
+        "_value"?: Iso8601 | Date;
+    }
     interface KolInputEmail {
         /**
           * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
@@ -3118,11 +3333,11 @@ declare namespace LocalJSX {
         /**
           * Gibt den größtmöglichen Zahlenwert an.
          */
-        "_max"?: number;
+        "_max"?: number | Iso8601;
         /**
           * Gibt den kleinstmöglichen Zahlenwert an.
          */
-        "_min"?: number;
+        "_min"?: number | Iso8601;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3166,7 +3381,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: string;
+        "_value"?: number | Iso8601;
     }
     interface KolInputPassword {
         /**
@@ -3599,7 +3814,7 @@ declare namespace LocalJSX {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -3608,6 +3823,7 @@ declare namespace LocalJSX {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -3803,7 +4019,7 @@ declare namespace LocalJSX {
         "_icon"?: KoliBriIconProp;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
+          * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: Alignment;
         /**
@@ -3812,6 +4028,7 @@ declare namespace LocalJSX {
         "_iconOnly"?: boolean;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4062,6 +4279,24 @@ declare namespace LocalJSX {
          */
         "_links": Stringified<NavLinkProps[]>;
     }
+    interface KolSpan {
+        /**
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+         */
+        "_icon"?: KoliBriIconProp;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label"?: string;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: TooltipAlignment;
+        /**
+          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipId"?: string;
+    }
     interface KolSpin {
         /**
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
@@ -4279,6 +4514,7 @@ declare namespace LocalJSX {
         "kol-input-adapter-leanup": KolInputAdapterLeanup;
         "kol-input-checkbox": KolInputCheckbox;
         "kol-input-color": KolInputColor;
+        "kol-input-date": KolInputDate;
         "kol-input-email": KolInputEmail;
         "kol-input-file": KolInputFile;
         "kol-input-number": KolInputNumber;
@@ -4299,6 +4535,7 @@ declare namespace LocalJSX {
         "kol-progress": KolProgress;
         "kol-select": KolSelect;
         "kol-skip-nav": KolSkipNav;
+        "kol-span": KolSpan;
         "kol-spin": KolSpin;
         "kol-symbol": KolSymbol;
         "kol-table": KolTable;
@@ -4337,6 +4574,7 @@ declare module "@stencil/core" {
             "kol-input-adapter-leanup": LocalJSX.KolInputAdapterLeanup & JSXBase.HTMLAttributes<HTMLKolInputAdapterLeanupElement>;
             "kol-input-checkbox": LocalJSX.KolInputCheckbox & JSXBase.HTMLAttributes<HTMLKolInputCheckboxElement>;
             "kol-input-color": LocalJSX.KolInputColor & JSXBase.HTMLAttributes<HTMLKolInputColorElement>;
+            "kol-input-date": LocalJSX.KolInputDate & JSXBase.HTMLAttributes<HTMLKolInputDateElement>;
             "kol-input-email": LocalJSX.KolInputEmail & JSXBase.HTMLAttributes<HTMLKolInputEmailElement>;
             "kol-input-file": LocalJSX.KolInputFile & JSXBase.HTMLAttributes<HTMLKolInputFileElement>;
             "kol-input-number": LocalJSX.KolInputNumber & JSXBase.HTMLAttributes<HTMLKolInputNumberElement>;
@@ -4357,6 +4595,7 @@ declare module "@stencil/core" {
             "kol-progress": LocalJSX.KolProgress & JSXBase.HTMLAttributes<HTMLKolProgressElement>;
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;
             "kol-skip-nav": LocalJSX.KolSkipNav & JSXBase.HTMLAttributes<HTMLKolSkipNavElement>;
+            "kol-span": LocalJSX.KolSpan & JSXBase.HTMLAttributes<HTMLKolSpanElement>;
             "kol-spin": LocalJSX.KolSpin & JSXBase.HTMLAttributes<HTMLKolSpinElement>;
             "kol-symbol": LocalJSX.KolSymbol & JSXBase.HTMLAttributes<HTMLKolSymbolElement>;
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;

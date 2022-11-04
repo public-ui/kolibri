@@ -6,7 +6,7 @@ import { KolBreadcrumb } from './breadcrumb/component';
 import { KolButtonGroup } from './button-group/component';
 import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
-import { KolButtonLink } from './button/link';
+import { KolButtonLink } from './button-link/component';
 import { KolCard } from './card/component';
 import { KolDetails } from './details/component';
 import { KolForm } from './form/component';
@@ -32,7 +32,7 @@ import { KolKolibri } from './kolibri/component';
 import { KolLinkGroup } from './link-group/component';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
-import { KolLinkButton } from './link/button';
+import { KolLinkButton } from './link-button/component';
 import { KolLogo } from './logo/component';
 import { KolModal } from './modal/component';
 import { KolNav } from './nav/component';
@@ -40,6 +40,7 @@ import { KolPagination } from './pagination/component';
 import { KolProcess } from './progress/component';
 import { KolSelect } from './select/component';
 import { KolSkipNav } from './skip-nav/component';
+import { KolSpan } from './span/component';
 import { KolSpin } from './spin/component';
 import { KolSymbol } from './symbol/component';
 import { KolTable } from './table/component';
@@ -48,6 +49,7 @@ import { KolTextarea } from './textarea/component';
 import { KolToast } from './toast/component';
 import { KolTooltip } from './tooltip/component';
 import { KolVersion } from './version/component';
+import { KolInputDate } from './input-date/component';
 
 export const COMPONENTS = [
 	KolAbbr,
@@ -73,6 +75,7 @@ export const COMPONENTS = [
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputEmail,
+	KolInputDate,
 	KolInputFile,
 	KolInputNumber,
 	KolInputPassword,
@@ -92,6 +95,7 @@ export const COMPONENTS = [
 	KolProcess,
 	KolSelect,
 	KolSkipNav,
+	KolSpan,
 	KolSpin,
 	KolSymbol,
 	KolTable,

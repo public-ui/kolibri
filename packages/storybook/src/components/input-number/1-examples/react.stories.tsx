@@ -88,7 +88,7 @@ NumberStep.storyName = 'Zahlen mit Min- und Max-Wert und Schrittweite';
  *
  * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
  */
-export const Date = (args: any) => (
+export const DateDefault = (args: any) => (
 	<div>
 		<KolInputNumber _type="date" _id="mein_datum" _name="mein_datum">
 			Erstellungsdatum
@@ -99,7 +99,7 @@ Date.args = {
 	...DefaultArgs,
 };
 Date.storyName = 'Datum';
-
+s;
 /**
  * Die Component stellt eine konkrete Story im Storybook dar.
  *

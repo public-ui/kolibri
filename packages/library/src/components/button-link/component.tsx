@@ -23,14 +23,14 @@ import {
 	watchValidator,
 } from '../../utils/prop.validators';
 import { TooltipAlignment } from '../tooltip/component';
-import { syncAriaLabelBeforePatch, watchButtonType } from './controller';
+import { syncAriaLabelBeforePatch, watchButtonType } from '../button/controller';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-button-link',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })
@@ -101,76 +101,15 @@ export class KolButtonLink
 					}}
 					type={this.state._type}
 				>
-					<span>
-						{this.state._icon.top && (
-							<kol-icon
-								class={{
-									'icon top': true,
-								}}
-								style={this.state._icon.top.style}
-								_ariaLabel=""
-								_icon={this.state._icon.top.icon}
-							/>
-						)}
-						<span class="flex items-center">
-							{this.state._icon.left && (
-								<kol-icon
-									class={{
-										'icon left': true,
-										'mr-2': this.state._iconOnly === false,
-									}}
-									style={this.state._icon.left.style}
-									_ariaLabel=""
-									_icon={this.state._icon.left.icon}
-								/>
-							)}
-							{this.state._iconOnly === false && (
-								<span>
-									{typeof this.state._label === 'string' && this.state._label}
-									{/*
-										Es ist keine gute Idee hier einen Slot einzufügen,
-										da dadurch die komplette Unterstützung der Komponente
-										 umgangen werden kann.
-									*/}
-									<slot />
-								</span>
-							)}
-							{this.state._icon.right && (
-								<kol-icon
-									class={{
-										'icon right': true,
-										'ml-2': this.state._iconOnly === false,
-									}}
-									style={this.state._icon.right.style}
-									_ariaLabel=""
-									_icon={this.state._icon.right.icon}
-								/>
-							)}
-						</span>
-						{this.state._icon.bottom && (
-							<kol-icon
-								class={{
-									'icon bottom': true,
-								}}
-								style={this.state._icon.bottom.style}
-								_ariaLabel=""
-								_icon={this.state._icon.bottom.icon}
-							/>
-						)}
-					</span>
+					<kol-span
+						_icon={this._icon}
+						_label={this._label}
+						_tooltipAlign={this._tooltipAlign}
+						_tooltipId={this.state._iconOnly === true ? this.nonce : undefined}
+					>
+						<slot />
+					</kol-span>
 				</button>
-				{this.state._iconOnly === true && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						// aria-hidden="true"
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
-					></kol-tooltip>
-				)}
 			</Host>
 		);
 	}

@@ -242,7 +242,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
 	 *
-	 * @deprecated
+	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
 	@Prop() public _iconAlign?: Alignment = 'left';
 
@@ -253,6 +253,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
+	 *
+	 * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
@@ -390,10 +392,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	}
 
 	/**
-	 * @deprecated
-	 */
-	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_iconAlign')
 	public validateIconAlign(value?: Alignment): void {
@@ -481,6 +481,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_on')
 	public validateOn(value?: LinkOnCallbacks): void {

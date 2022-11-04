@@ -21,13 +21,10 @@ import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchVa
 import { TooltipAlignment } from '../tooltip/component';
 import { watchButtonVariant } from '../button/controller';
 
-/**
- * @internal
- */
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })
@@ -134,62 +131,15 @@ export class KolLinkButton
 						width: fill === true ? '100%' : undefined,
 					}}
 				>
-					{this.state._icon.left && (
-						<kol-icon
-							class={{
-								'mr-2': this.state._iconOnly === false,
-							}}
-							style={this.state._icon.left.style}
-							_ariaLabel=""
-							_icon={this.state._icon.left.icon}
-						/>
-					)}
-					<span
-						class={{
-							'float-left': this.state._useCase === 'image',
-							'hidden ': this.state._iconOnly === true,
-						}}
-						part={`span${this.state._iconOnly === true ? ' hidden' : ''}`}
+					<kol-span
+						_icon={this._icon}
+						// _label={this._label}
+						_tooltipAlign={this._tooltipAlign}
+						_tooltipId={this.state._iconOnly === true ? this.nonce : undefined}
 					>
-						{/*
-							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch
-							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente
-							umgangen werden kann.
-						*/}
 						<slot />
-					</span>
-					{this.state._icon.right && (
-						<kol-icon
-							class={{
-								'ml-2': this.state._iconOnly === false,
-							}}
-							style={this.state._icon.right.style}
-							_ariaLabel=""
-							_icon={this.state._icon.right.icon}
-						/>
-					)}
-					{typeof this.state._target === 'string' && this.state._target !== '_self' && (
-						<sup
-							class={{
-								'no-underline': true,
-								'inline-block ml-1': this.state._useCase === 'text',
-								'relative ': this.state._useCase !== 'text',
-							}}
-						>
-							<kol-icon _ariaLabel={this.state._targetDescription as string} _icon={'icofont-external-link'} />
-						</sup>
-					)}
+					</kol-span>
 				</a>
-				<kol-tooltip
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					// aria-hidden="true"
-					_align={this.state._tooltipAlign}
-					_id={this.state._useCase === 'image' || this.state._iconOnly === true ? this.nonce : undefined}
-					_label={this.state._useCase === 'image' || this.state._iconOnly === true ? this.state._ariaLabel : ''}
-				></kol-tooltip>
 			</Host>
 		);
 	}

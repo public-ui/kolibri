@@ -17,6 +17,7 @@ const TAGS = [
 	'kol-breadcrumb',
 	'kol-button',
 	'kol-button-group',
+	'kol-button-link',
 	'kol-card',
 	'kol-details',
 	'kol-form',
@@ -28,6 +29,7 @@ const TAGS = [
 	'kol-input-adapter-leanup',
 	'kol-input-checkbox',
 	'kol-input-color',
+	'kol-input-date',
 	'kol-input-file',
 	'kol-input-email',
 	'kol-input-number',
@@ -36,6 +38,7 @@ const TAGS = [
 	'kol-input-text',
 	'kol-kolibri',
 	'kol-link',
+	'kol-link-button',
 	'kol-link-group',
 	'kol-logo',
 	'kol-modal',
@@ -53,7 +56,17 @@ const TAGS = [
 	'kol-tooltip',
 	'kol-version',
 ];
-const EXCLUDE_TAGS = ['kol-all', 'kol-button-wc', 'kol-color', 'kol-counter', 'heading-wc', 'kol-input', 'kol-input-radio-group', 'kol-link-wc'];
+const EXCLUDE_TAGS = [
+	'kol-all',
+	'kol-button-wc',
+	'kol-color',
+	'kol-counter',
+	'kol-heading-wc',
+	'kol-input',
+	'kol-input-radio-group',
+	'kol-link-wc',
+	'kol-span',
+];
 const BUNDLES: {
 	components: string[];
 }[] = [];
