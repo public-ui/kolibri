@@ -18,7 +18,7 @@
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
 		"lib": ["dom", "es2017"],
-		"module": "es2015",
+		"module": "ESNext",
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"noImplicitReturns": true,

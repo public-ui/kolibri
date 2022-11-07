@@ -3,7 +3,7 @@ name: CI-Pipeline
 on:
   pull_request_target:
     types: [opened, closed, synchronize]
-  push:
+  # push:
   workflow_dispatch:
 
 jobs:

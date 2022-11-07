@@ -65,6 +65,9 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	<ul></ul>
 	<hr />
 	<ul>
+		<li>🔧 Tooltip: Positionierung in Scoll-Zonen optimieren</li>
+		<li>🔧 I18n: Translationservice fertigstellen</li>
+		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
 		<li>🔧 Table: Sort-Funktion auch die Sortierrichtung übergeben</li>
 		<li>👩‍🎨 Input*, Textarea: onInput prüfen</li>
 		<li>🌟 Image: Neue Image Komponente einfügen (_alt)</li>
@@ -86,14 +89,17 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	</ul>
 </kol-details>
 
-<kol-heading _level={3}>1.1.10 - 04.11.2022 (geplant)</kol-heading>
+<kol-heading _level={3}>1.1.10 - 07.11.2022 (geplant)</kol-heading>
 
 <kol-details _summary="Änderungen">
 	<ul>
+		<li>🔥 Badge, Link, Nav, Tabs: Alle Icofont and Font-Awesome spezifischen Typen entfernen (KoliBriIconProp)</li>
+		<li>🔧 Font Awesome: Wechseln von Icofont auf Font Awesome bei allen Default-internen Icons</li>
 		<li>
 			🌟 Button: Zusätzlichen SPAN-Tag hinzugefügt, um den sichbaren Button kleiner darstellen zu können, obwohl die Klickfläche weiterhin mindestens 44x44px
 			groß bleibt.
 		</li>
+		<li>🔧 Button, LinkButton: Custom-Variante optimiert (entweder-oder)</li>
 		<li>
 			🌟 CLI: Weitere Framework-Integrationen als Templates hinzugefügt
 			<ul>
@@ -103,18 +109,18 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 				<li>Theme (zum Erstellen eigener Theme-Pakete)</li>
 			</ul>
 		</li>
-		<li>🔧 Aktualisierung der Abhängigkeiten aller Teilmodule</li>
 		<li>🌟 Nav + Link: Einführung der Aria-Current-Auszeichnung</li>
 		<li>🌟 ButtonLink & LinkButton: Neue Komponenten - Button als Link oder Link als Button</li>
 		<li>🌟 Textarea: Textarea verlängert sich nach unten automatisch, je nach Textlänge</li>
 		<li>🌟 InputDate: Neue Komponente für Datum, Zeit, Wochen, Monat und lokales Datum</li>
-	</ul>
-	<hr />
-	<ul>
-		<li>🔧 Tooltip: Positionierung in Scoll-Zonen optimieren</li>
-		<li>🔧 I18n: Translationservice fertigstellen</li>
-		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
-		<li>🔥 Icon: Alle Icofont and Font-Awesome spezifischen Inhalte entfernen (Icon-Slot)</li>
+		<li>🌟 Tab-Index: Neues Property für Button, ButtonLink, Link und LinkButton</li>
+		<li>
+			🔥 InputNumber: Gemäß neuer{' '}
+			<kol-link _href="https://html.spec.whatwg.org/multipage/input.html" _target="w3c">
+				W3C-Spec
+			</kol-link>{' '}
+			beinhaltet InputNumber nicht mehr die Datumstypen (ℹ️ wird erst mit Major-Release entfernt).
+		</li>
 	</ul>
 </kol-details>
 
@@ -129,7 +135,6 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			</kol-link>
 			)
 		</li>
-		<li>🔧 Aktualisierung der Abhängigkeiten aller Teilmodule</li>
 		<li>
 			🌟 CLI: Templates für weitere Framework-Integrationen
 			<ul>
@@ -140,7 +145,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		</li>
 		<li>🌟 Designer-Projekt ins Mono-Repository aufgenommen</li>
 		<li>🔧 DevOps: Auto-Dependency-Pipeline hinzugefügt</li>
-		<li>🔧 DevOps: Auto-Sync to OpenCoDE</li>
+		<li>🔧 DevOps: Auto-Sync zu Open CoDE</li>
 	</ul>
 </kol-details>
 
@@ -299,7 +304,6 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔥 Open Source: Es sind die Hinweise zur Open Source-Freigabe zu beachten (s.o.)!</li>
 		<li>🌟 KolModal: Schließen mit ESC</li>
 		<li>🔥 CSR: Der ToasterService ist nur client-seitig relevant und muss mit dem `Document` instanziiert werden.</li>
-		<li>🔧 Aktualisierung der Abhängigkeiten aller Teilmodule</li>
 		<li>🌟 SSR: Entkopplung vom Window und Document für Server-Side-Rendering</li>
 		<li>🌟 Designer ist jetzt im Care-Package enthalten</li>
 		<li>🔧 InputText: Search-Event-Handling optimiert</li>
@@ -314,7 +318,6 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <kol-details _summary="Änderungen">
 	<ul>
-		<li>🔧 Aktualisierung der Abhängigkeiten aller Teilmodule</li>
 		<li>📚 Dokumentation: Theme-Schalter erweitert und optimiert</li>
 		<li>👩‍🎨 InputText: Search Reset leer Werte</li>
 		<li>👩‍🎨 Desy-Theme (GZD): Initiale Umsetzung</li>
