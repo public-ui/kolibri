@@ -137,5 +137,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   sync:
     uses: public-ui/public-ui.github.io/.github/workflows/update.yml@main
-    needs: publish
+    # needs: publish
+    secrets: inherit
 
