@@ -78,4 +78,30 @@ Die Icons in der Komponente sind per Tab-Taste nicht erreichbar. Die Auswahlhilf
 | `_type`            | `_type`          | Gibt den Typ des Eingabefeldes an.                                                                       | `"date" \| "datetime-local" \| "month" \| "time" \| "week"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `'date'`    |
 | `_value`           | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `Date \| Iso8601 \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 
+## Dependencies
+
+### Depends on
+
+- [kol-input-number](../input-number)
+
+### Graph
+
+```mermaid
+graph TD;
+  kol-input-date --> kol-input-number
+  kol-input-number --> kol-input
+  kol-input --> kol-icon
+  kol-input --> kol-button-wc
+  kol-input --> kol-alert
+  kol-button-wc --> kol-icon
+  kol-button-wc --> kol-tooltip
+  kol-tooltip --> kol-badge
+  kol-badge --> kol-icon-icofont
+  kol-icon-icofont --> kol-icon
+  kol-alert --> kol-heading-wc
+  kol-alert --> kol-button-wc
+  kol-alert --> kol-icon
+  style kol-input-date fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ---

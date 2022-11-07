@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "1.1.10-rc.11",
+	"version": "1.1.10-rc.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -28,18 +28,18 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.10-rc.11"
+		"@public-ui/schema": "1.1.10-rc.12"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.0-rc.21",
-		"@public-ui/components": "1.1.10-rc.11",
-		"@public-ui/core": "1.1.10-rc.11",
+		"@public-ui/components": "1.1.10-rc.12",
+		"@public-ui/core": "1.1.10-rc.12",
 		"@types/node": "18.11.9",
 		"typescript": "4.8.4",
 		"unbuild": "0.9.4"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.10-rc.11"
+		"@public-ui/components": "1.1.10-rc.12"
 	},
 	"sideEffects": false,
 	"type": "module",

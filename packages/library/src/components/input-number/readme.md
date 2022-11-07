@@ -90,6 +90,10 @@ Die Icons in der Komponente sind per Tab-Taste nicht erreichbar. Die Auswahlhilf
 
 ## Dependencies
 
+### Used by
+
+- [kol-input-date](../input-date)
+
 ### Depends on
 
 - kol-input
@@ -110,6 +114,7 @@ graph TD;
   kol-alert --> kol-heading-wc
   kol-alert --> kol-button-wc
   kol-alert --> kol-icon
+  kol-input-date --> kol-input-number
   style kol-input-number fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
