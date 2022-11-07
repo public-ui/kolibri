@@ -131,12 +131,8 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@public-ui'
       - name: Publish storybook
-        run: npm publish --access restricted
+        run: npm publish --access restricted || true
         working-directory: packages/storybook
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  sync:
-    uses: public-ui/public-ui.github.io/.github/workflows/update.yml@main
-    # needs: publish
-    secrets: inherit
 
