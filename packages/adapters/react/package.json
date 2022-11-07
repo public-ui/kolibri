@@ -34,7 +34,7 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.9",
 		"@types/normalize-package-data": "2.4.1",
-		"@types/react": "18.0.24",
+		"@types/react": "18.0.25",
 		"@types/react-dom": "18.0.8",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
