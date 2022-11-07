@@ -18,5 +18,8 @@ executeTests<Props>(
 	{
 		_label: ['Hello world!'],
 	},
-	getExampleHtml
+	getExampleHtml,
+	{
+		execMode: 'default',
+	}
 );

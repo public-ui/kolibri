@@ -2,8 +2,8 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "pretty": true,
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
     "preserveConstEnums": true,
     "sourceMap": true,
     "moduleResolution": "node",
