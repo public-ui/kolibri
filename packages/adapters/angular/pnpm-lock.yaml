@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@angular/compiler': 14.2.8
-  '@angular/compiler-cli': 14.2.8
-  '@angular/core': 14.2.8
+  '@angular/compiler': 14.2.9
+  '@angular/compiler-cli': 14.2.9
+  '@angular/core': 14.2.9
   '@public-ui/components': 1.1.10-rc.11
   '@public-ui/core': 1.1.10-rc.11
   '@types/minimatch': 5.1.2
@@ -18,9 +18,9 @@ specifiers:
   zone.js: 0.11.8
 
 devDependencies:
-  '@angular/compiler': 14.2.8_@angular+core@14.2.8
-  '@angular/compiler-cli': 14.2.8_eflixkgxcif3klme6jo7r42lxy
-  '@angular/core': 14.2.8_rxjs@7.5.7+zone.js@0.11.8
+  '@angular/compiler': 14.2.9_@angular+core@14.2.9
+  '@angular/compiler-cli': 14.2.9_4z4ecinz56vjxdp4jl2575ilpe
+  '@angular/core': 14.2.9_rxjs@7.5.7+zone.js@0.11.8
   '@public-ui/components': 1.1.10-rc.11
   '@public-ui/core': 1.1.10-rc.11
   '@types/minimatch': 5.1.2
@@ -48,15 +48,15 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
-  /@angular/compiler-cli/14.2.8_eflixkgxcif3klme6jo7r42lxy:
-    resolution: {integrity: sha512-QTftNrAyXOWzKFGY6/i9jh0LB2cOxmykepG4c53wH9LblGvWFztlVOhcoU8tpQSSH8t3EYvGs2r8oUuxcYm5Cw==}
+  /@angular/compiler-cli/14.2.9_4z4ecinz56vjxdp4jl2575ilpe:
+    resolution: {integrity: sha512-c3+LyW4WkZya4JnefUUOoCplwM9OgOnR2LqC6Qwro9Z40VXBqBeA5PJ6EJ28c4q6ZVoy5v00PwUVSwgcGP7qNA==}
     engines: {node: ^14.15.0 || >=16.10.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 14.2.8
+      '@angular/compiler': 14.2.9
       typescript: '>=4.6.2 <4.9'
     dependencies:
-      '@angular/compiler': 14.2.8_@angular+core@14.2.8
+      '@angular/compiler': 14.2.9_@angular+core@14.2.9
       '@babel/core': 7.20.2
       chokidar: 3.5.3
       convert-source-map: 1.9.0
@@ -72,21 +72,21 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler/14.2.8_@angular+core@14.2.8:
-    resolution: {integrity: sha512-lKwp3B4ZKNLgk/25Iyur8bjAwRL20auRoB4EuHrBf+928ftsjYUXTgi+0++DUjPENbpi59k6GcvMCNa6qccvIw==}
+  /@angular/compiler/14.2.9_@angular+core@14.2.9:
+    resolution: {integrity: sha512-M0uYFMSAejYJ+fm/Lz1/l7nr1adVrYfC7lKBpbiyya5moGenRid81Fl7i2YY6RehFpGHw3GdPlMz+DRIMXgyuQ==}
     engines: {node: ^14.15.0 || >=16.10.0}
     peerDependencies:
-      '@angular/core': 14.2.8
+      '@angular/core': 14.2.9
     peerDependenciesMeta:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 14.2.8_rxjs@7.5.7+zone.js@0.11.8
+      '@angular/core': 14.2.9_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.4.1
     dev: true
 
-  /@angular/core/14.2.8_rxjs@7.5.7+zone.js@0.11.8:
-    resolution: {integrity: sha512-cgnII9vJGJDLsfr7KsBfU2l+QQUmQIRIP3ImKhBxicw2IHKCSb2mYwoeLV46jaLyHyUMTLRHKUYUR4XtSPnb8A==}
+  /@angular/core/14.2.9_rxjs@7.5.7+zone.js@0.11.8:
+    resolution: {integrity: sha512-6bExQgGmN9qmBbVMl7WaZ1KFSfTgFK+MmLbvoh4a29b47h7wvEuUWO7ulczzoUJQfMGfXU/4ypEW1a8ZhX+Xrg==}
     engines: {node: ^14.15.0 || >=16.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -426,14 +426,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001430
+      caniuse-lite: 1.0.30001431
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
-  /caniuse-lite/1.0.30001430:
-    resolution: {integrity: sha512-IB1BXTZKPDVPM7cnV4iaKaHxckvdr/3xtctB3f7Hmenx3qYBhGtTZ//7EllK66aKXW98Lx0+7Yr0kxBtIt3tzg==}
+  /caniuse-lite/1.0.30001431:
+    resolution: {integrity: sha512-zBUoFU0ZcxpvSt9IU66dXVT/3ctO1cy4y9cscs1szkPlcWb6pasYM144GqrUygUbT+k7cmUCW61cvskjcv0enQ==}
     dev: true
 
   /chalk/2.4.2:
