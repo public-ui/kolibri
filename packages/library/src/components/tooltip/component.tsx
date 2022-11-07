@@ -32,7 +32,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public hydrated = false;
+	public hydrated = false; // TODO: Why?!
 
 	private hostElement?: HTMLElement | null = null;
 	private readonly childElements: HTMLElement[] = [];
@@ -141,9 +141,6 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 							color: '#ddd',
 						}}
 						_label={this.state._label}
-						style={{
-							position: 'absolute',
-						}}
 					></kol-badge>
 				)}
 			</Host>
@@ -153,17 +150,17 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _align?: TooltipAlignment = 'top';
+	@Prop({ reflect: true }) public _align?: TooltipAlignment = 'top';
 
 	/**
 	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
 	 */
-	@Prop() public _id?: string;
+	@Prop({ reflect: true }) public _id?: string;
 
 	/**
 	 * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
 	 */
-	@Prop() public _label!: string;
+	@Prop({ reflect: true }) public _label!: string;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

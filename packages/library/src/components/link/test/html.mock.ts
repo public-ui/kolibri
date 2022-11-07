@@ -70,7 +70,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					? `<sup class="no-underline ${props._useCase === 'text' ? 'inline-block ml-1' : 'relative'}">
         ${getIconHtml({
 					_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
-					_icon: 'icofont-external-link',
+					_icon: 'fa-solid fa-arrow-up-right-from-square',
 				})}
       </sup>`
 					: ''

@@ -3,7 +3,6 @@ import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnOff } from '../../types/input/types';
-import { devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
@@ -86,7 +85,6 @@ export class InputNumberController extends InputController implements Watches {
 	 */
 	public validatePlaceholder(value?: string): void {
 		watchString(this.component, '_placeholder', value);
-		devHint(`[KolInputNumber] Für Zahlenwert-bezogene Eingabefelder ist laut W3C-Standard "eigentlich" kein Placeholder-Attribute vorgesehen.`);
 	}
 
 	/**
@@ -112,6 +110,7 @@ export class InputNumberController extends InputController implements Watches {
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	public validateType(value?: InputNumberType): void {
 		watchValidator(

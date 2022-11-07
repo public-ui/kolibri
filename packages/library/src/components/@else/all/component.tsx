@@ -44,7 +44,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-details _summary=""></kol-details>
 				<kol-form _on={{}}></kol-form>
 				<kol-heading></kol-heading>
-				<kol-icon _ariaLabel="" _icon="icofont-home"></kol-icon>
+				<kol-icon _ariaLabel="" _icon="fa-solid house"></kol-icon>
 				<kol-icon-font-awesome _ariaLabel="" _icon="500px" _prefix="fab"></kol-icon-font-awesome>
 				<kol-icon-icofont _ariaLabel="" _icon="home"></kol-icon-icofont>
 				<kol-indented-text></kol-indented-text>

@@ -18,5 +18,8 @@ executeTests<Props>(
 	{
 		_level: [1, 2, 3, 4, 5, 6],
 	},
-	getHeadingHtml
+	getHeadingHtml,
+	{
+		execMode: 'skip',
+	}
 );

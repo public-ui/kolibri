@@ -18,9 +18,11 @@ executeTests<Props>(
 	{
 		_color: ['#000000'],
 		_icon: ['home'],
-		_iconAlign: ['left', 'right'],
 		_iconOnly: [false, true],
 		_label: ['Text'],
 	},
-	getBadgeHtml
+	getBadgeHtml,
+	{
+		execMode: 'default',
+	}
 );

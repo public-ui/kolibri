@@ -52,7 +52,7 @@ Für die eindeutige Beschriftung des Buttons nutzen Sie das Attribut **`_label`*
 
 ```tsx
 _icon =
-	"{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}";
+	"{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}";
 ```
 
 Es ist möglich, ein Icon an jeder Position des Button anzuzeigen, sowie die Ausgabe mehrerer Icons im Button. Jedes Icon erhält in der JSON-Struktur einen eigenen Abschnitt, in dem seine Properties festgelegt werden.<br>
@@ -73,13 +73,13 @@ Als weitere Properties zur Konfiguration des Icon stehen zur Verfügung:
 - icon: legt das anzuzeigende Icon aus der Icofont-Bibliothek fest.
 
 ```tsx
-"{'top': {'icon':'icofont-arrow-up'}";
+"{'top': {'icon':'fa-solid fa-arrow-up'}";
 ```
 
 - style: übergibt ggfls. eigene CSS-Stylinganweisungen an das Icon, wie z.B. font-size, transform oder color.
 
 ```tsx
-"{'top': {'style': {'font-size':'200%','color':'#040404','transform':'rotate(45deg)'},'icon':'icofont-arrow-up'}";
+"{'top': {'style': {'font-size':'200%','color':'#040404','transform':'rotate(45deg)'},'icon':'fa-solid fa-arrow-up'}";
 ```
 
 Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie [hier](https://icofont.com/icons)

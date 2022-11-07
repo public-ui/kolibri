@@ -21,6 +21,7 @@ type OptionalButtonAndLinkProps = {
 	ariaCurrent: AriaCurrent;
 	ariaExpanded: boolean;
 	ariaLabel: string;
+	// ariaSelected: boolean; DON'T DO - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected
 	disabled: boolean;
 	icon: KoliBriIconProp;
 	/**
@@ -28,6 +29,7 @@ type OptionalButtonAndLinkProps = {
 	 */
 	iconAlign: Alignment;
 	iconOnly: boolean;
+	tabIndex: number;
 	tooltipAlign: TooltipAlignment;
 };
 
@@ -50,16 +52,18 @@ type OptionalButtonAndLinkStates = {
 	ariaExpanded: boolean;
 	disabled: boolean;
 	iconOnly: boolean;
+	tabIndex: number;
 	tooltipAlign: TooltipAlignment;
 };
 
 /* Button */
 
 export type KoliBriButtonType = 'button' | 'reset' | 'submit';
-export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost';
+export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost' | 'custom';
 
 export type KoliBriButtonCallbacks = {
 	[Events.onClick]?: EventCallback<PointerEvent>;
+	[Events.onMouseDown]?: EventCallback<MouseEvent>;
 };
 
 export type KoliBriButtonVariantCustomClass = {
@@ -124,7 +128,7 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 /**
  * API Link
  */
-export type RequiredLinkProps = RequiredButtonAndLinkProps & unknown;
+export type RequiredLinkProps = RequiredButtonAndLinkProps;
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	ariaSelected: boolean;
 	fill: boolean;
@@ -143,7 +147,7 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 };
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
-export type RequiredLinkStates = RequiredButtonAndLinkStates & unknown;
+export type RequiredLinkStates = RequiredButtonAndLinkStates;
 export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
 	fill: boolean;
@@ -165,11 +169,15 @@ export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLin
 /**
  * API LinkButton
  */
-export type RequiredLinkButtonProps = RequiredLinkProps;
+export type RequiredLinkButtonProps = RequiredLinkProps & {
+	label: string;
+};
 export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantCustomClass;
 // type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
 
-export type RequiredLinkButtonStates = RequiredLinkStates;
+export type RequiredLinkButtonStates = RequiredLinkStates & {
+	label: string;
+};
 export type OptionalLinkButtonStates = OptionalLinkStates & KoliBriButtonVariantCustomClass;
 export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 

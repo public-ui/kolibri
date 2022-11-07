@@ -1,6 +1,6 @@
-import { Nationalfarben } from '../../../enums/color';
-import { getIconIcofontHtml } from '../../icon-icofont/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
+import { Nationalfarben } from '../../../enums/color';
+import { getSpanWcHtml } from '../../span/test/html.mock';
 import { Props } from '../component';
 import { createContrastColorPair, KoliBriContrastColor } from '../contrast';
 
@@ -9,7 +9,6 @@ export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
 		{
 			_color: Nationalfarben.Schwarz,
 			_label: '',
-			_iconAlign: 'left',
 		},
 		props
 	);
@@ -24,34 +23,11 @@ export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
 		});
 	}
 
-	return `<kol-badge${additionalAttrs}>
+	return `<kol-badge${additionalAttrs} style="background-color: ${contrastColorPair.baseColor}; color: ${contrastColorPair.contrastColor};">
   <mock:shadow-root>
-    <span style="background-color: ${contrastColorPair.baseColor}; color: ${contrastColorPair.contrastColor};">
-      ${
-				props._iconAlign === 'left' && typeof props._icon === 'string'
-					? getIconIcofontHtml(
-							{
-								_ariaLabel: props._iconOnly === true ? props._label : '',
-								_icon: props._icon,
-							},
-							`${props._iconOnly === true ? '' : ' class="mr-1"'} style="color: ${contrastColorPair.contrastColor};"`
-					  )
-					: ''
-			}
-      ${props._iconOnly === true ? '' : props._label}
-      ${
-				props._iconAlign === 'right' && typeof props._icon === 'string'
-					? getIconIcofontHtml(
-							{
-								_ariaLabel: props._iconOnly === true ? props._label : '',
-								_icon: props._icon,
-							},
-							`${props._iconOnly === true ? '' : ' class="ml-1"'} style="color: ${contrastColorPair.contrastColor};"`
-					  )
-					: ''
-			}
-
-    </span>
+		${getSpanWcHtml({
+			_label: props._label,
+		})}
   </mock:shadow-root>
 </kol-badge>`;
 };

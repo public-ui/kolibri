@@ -34,15 +34,15 @@ const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
 const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 	switch (props.type) {
 		case 'error':
-			return <Icon ariaLabel={'Fehler'} icon="icofont-error" heading={props.heading} />;
+			return <Icon ariaLabel={'Fehler'} icon="fa-solid fa-circle-xmark" heading={props.heading} />;
 		case 'info':
-			return <Icon ariaLabel={'Hinweis'} icon="icofont-info-circle" heading={props.heading} />;
+			return <Icon ariaLabel={'Hinweis'} icon="fa-solid fa-circle-info" heading={props.heading} />;
 		case 'warning':
-			return <Icon ariaLabel={'Warnung'} icon="icofont-warning" heading={props.heading} />;
+			return <Icon ariaLabel={'Warnung'} icon="fa-solid fa-triangle-exclamation" heading={props.heading} />;
 		case 'success':
-			return <Icon ariaLabel={'Erfolg'} icon="icofont-check-circled" heading={props.heading} />;
+			return <Icon ariaLabel={'Erfolg'} icon="fa-solid fa-circle-check" heading={props.heading} />;
 		default:
-			return <Icon ariaLabel={'Nachricht'} icon="icofont-comment" heading={props.heading} />;
+			return <Icon ariaLabel={'Nachricht'} icon="fa-regular fa-comment" heading={props.heading} />;
 	}
 };
 
@@ -106,7 +106,7 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 								class="close"
 								_icon={{
 									left: {
-										icon: 'icofont-close',
+										icon: 'fa-solid fa-circle-xmark',
 									},
 								}}
 								_iconOnly

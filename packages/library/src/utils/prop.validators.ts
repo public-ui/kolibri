@@ -144,7 +144,7 @@ type WatchStringOptions = WatchOptions & {
 	minLength?: number;
 };
 
-type WatchNumberOptions = WatchOptions & {
+export type WatchNumberOptions = WatchOptions & {
 	defaultValue?: number | null;
 	min?: number;
 	max?: number;

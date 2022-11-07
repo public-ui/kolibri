@@ -20,5 +20,8 @@ executeTests<Props>(
 		_level: [1, 2, 3, 4, 5, 6],
 		_open: [true, false],
 	},
-	getAccordionHtml
+	getAccordionHtml,
+	{
+		execMode: 'skip',
+	}
 );

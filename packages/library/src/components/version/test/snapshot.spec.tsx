@@ -18,5 +18,8 @@ executeTests<Props>(
 	{
 		_version: ['1.0.0'],
 	},
-	getVersionHtml
+	getVersionHtml,
+	{
+		execMode: 'skip',
+	}
 );

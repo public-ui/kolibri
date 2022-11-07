@@ -12,8 +12,9 @@ import {
 	RequiredButtonLinkStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
-import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
+import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
@@ -22,10 +23,11 @@ import {
 	watchString,
 	watchValidator,
 } from '../../utils/prop.validators';
-import { TooltipAlignment } from '../tooltip/component';
+import { validateTabIndex } from '../../utils/validators/tab-index';
 import { syncAriaLabelBeforePatch, watchButtonType } from '../button/controller';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
-import { nonce } from '../../utils/dev.utils';
+import { TooltipAlignment } from '../tooltip/component';
+import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
 
 @Component({
 	tag: 'kol-button-link',
@@ -99,17 +101,23 @@ export class KolButtonLink
 					style={{
 						width: 'inherit',
 					}}
+					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span
-						_icon={this._icon}
-						_label={this._label}
-						_tooltipAlign={this._tooltipAlign}
-						_tooltipId={this.state._iconOnly === true ? this.nonce : undefined}
-					>
-						<slot />
-					</kol-span>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}></kol-span-wc>
 				</button>
+				{this.state._iconOnly === true && (
+					<kol-tooltip
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						// aria-hidden="true"
+						_align={this.state._tooltipAlign}
+						_id={this.nonce}
+						_label={this.state._ariaLabel || this.state._label}
+					></kol-tooltip>
+				)}
 			</Host>
 		);
 	}
@@ -135,9 +143,13 @@ export class KolButtonLink
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
+	 * Sprachsteuerung von interaktiven Elementen funktioniert, muss der
+	 * Aria-Label-Text mit dem Label-Text des Buttons beginnen.
+	 *
+	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop({ mutable: true, reflect: true }) public _ariaLabel?: string = '';
+	@Prop({ reflect: true }) public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob der Button deaktiviert ist.
@@ -167,14 +179,19 @@ export class KolButtonLink
 	@Prop({ reflect: true }) public _id?: string;
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _label!: string;
+	@Prop({ reflect: true }) public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop({ reflect: true }) public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
@@ -268,10 +285,8 @@ export class KolButtonLink
 	}
 
 	/**
-	 * @deprecated
-	 */
-	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_iconAlign')
 	public validateIconAlign(value?: Alignment): void {
@@ -305,6 +320,7 @@ export class KolButtonLink
 			hooks: {
 				beforePatch: syncAriaLabelBeforePatch,
 			},
+			minLength: 0,
 			required: true,
 		});
 	}
@@ -320,6 +336,14 @@ export class KolButtonLink
 				_on: value,
 			};
 		}
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		validateTabIndex(this, value);
 	}
 
 	/**
@@ -354,6 +378,7 @@ export class KolButtonLink
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
+		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 	}

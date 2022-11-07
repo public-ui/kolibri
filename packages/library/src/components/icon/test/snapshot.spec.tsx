@@ -17,8 +17,11 @@ executeTests<Props>(
 	},
 	{
 		_ariaLabel: ['Aria-Label'],
-		_icon: ['icofont-home'],
+		_icon: ['fa-solid house'],
 		_part: ['part-key'],
 	},
-	getIconHtml
+	getIconHtml,
+	{
+		execMode: 'skip',
+	}
 );

@@ -14,12 +14,14 @@ import {
 	RequiredLinkButtonStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
-import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
+import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { validateTabIndex } from '../../utils/validators/tab-index';
+import { syncAriaLabelBeforePatch, watchButtonVariant } from '../button/controller';
 import { TooltipAlignment } from '../tooltip/component';
-import { watchButtonVariant } from '../button/controller';
+import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
 
 @Component({
 	tag: 'kol-link-button',
@@ -117,9 +119,10 @@ export class KolLinkButton
 						'flex flex-wrap items-center': this.state._iconOnly === false,
 						'grid text-center': this.state._iconOnly === true,
 						'skip ': this.state._stealth !== false,
-						[this.state._variant as string]: true,
+						[this.state._variant as string]: this.state._variant !== 'custom',
+						[this.state._customClass as string]:
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 						'icon-only': this.state._iconOnly === true,
-						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					}}
 					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
@@ -130,16 +133,22 @@ export class KolLinkButton
 						textDecorationLine: underline === true ? 'underline' : 'none',
 						width: fill === true ? '100%' : undefined,
 					}}
+					tabIndex={this.state._tabIndex}
 				>
-					<kol-span
-						_icon={this._icon}
-						// _label={this._label}
-						_tooltipAlign={this._tooltipAlign}
-						_tooltipId={this.state._iconOnly === true ? this.nonce : undefined}
-					>
-						<slot />
-					</kol-span>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}></kol-span-wc>
 				</a>
+				{this.state._iconOnly === true && (
+					<kol-tooltip
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						// aria-hidden="true"
+						_align={this.state._tooltipAlign}
+						_id={this.nonce}
+						_label={this.state._ariaLabel || this.state._label}
+					></kol-tooltip>
+				)}
 			</Host>
 		);
 	}
@@ -160,9 +169,13 @@ export class KolLinkButton
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
+	 * Sprachsteuerung von interaktiven Elementen funktioniert, muss der
+	 * Aria-Label-Text mit dem Label-Text des Buttons beginnen.
+	 *
+	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop() public _ariaLabel?: string = '';
+	@Prop({ reflect: true }) public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -207,7 +220,14 @@ export class KolLinkButton
 	@Prop() public _iconOnly?: boolean = false;
 
 	/**
+	 * Gibt einen beschreibenden Text für das Text-Element an.
+	 */
+	@Prop({ reflect: true }) public _label!: string;
+
+	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
+	 *
+	 * @deprecated
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
@@ -225,6 +245,11 @@ export class KolLinkButton
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 */
 	@Prop() public _stealth?: boolean = false;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop({ reflect: true }) public _tabIndex?: number;
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
@@ -266,6 +291,7 @@ export class KolLinkButton
 		 * @deprecated
 		 */
 		_iconAlign: 'left',
+		_label: '',
 	};
 
 	/**
@@ -303,7 +329,11 @@ export class KolLinkButton
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value);
+		watchString(this, '_ariaLabel', value, {
+			hooks: {
+				beforePatch: syncAriaLabelBeforePatch,
+			},
+		});
 	}
 
 	/**
@@ -360,10 +390,8 @@ export class KolLinkButton
 	}
 
 	/**
-	 * @deprecated
-	 */
-	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_iconAlign')
 	public validateIconAlign(value?: Alignment): void {
@@ -381,6 +409,20 @@ export class KolLinkButton
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		watchString(this, '_label', value, {
+			hooks: {
+				beforePatch: syncAriaLabelBeforePatch,
+			},
+			minLength: 0,
+			required: true,
+		});
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_selector')
 	public validateSelector(value?: string): void {
 		watchString(this, '_selector', value);
@@ -392,6 +434,14 @@ export class KolLinkButton
 	@Watch('_stealth')
 	public validateStealth(value?: boolean): void {
 		watchBoolean(this, '_stealth', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		validateTabIndex(this, value);
 	}
 
 	/**
@@ -451,6 +501,8 @@ export class KolLinkButton
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 *
+	 * @deprecated
 	 */
 	@Watch('_on')
 	public validateOn(value?: LinkOnCallbacks): void {
@@ -492,10 +544,12 @@ export class KolLinkButton
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validatePart(this._part);
 		this.validateSelector(this._selector);
 		this.validateStealth(this._stealth);
+		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);

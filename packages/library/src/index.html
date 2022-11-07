@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="de">
 	<head>
+		<script type="module">
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.10-rc.11';
+			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.10-rc.11';
+			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.1.10-rc.11';
+			register([BMF], [])
+				.then(() => {
+					KoliBriDevHelper.patchTheme('bmf', {
+						'KOL-LINK-BUTTON':
+							':host {display: inline-block;}/*-----------*/a {min-width: 44px;min-height: 44px;display: grid;gap: 0.25em;line-height: 1.5rem;font-family: var(--font-family);font-weight: 700;cursor: pointer;border-radius: 1.5em;border-style: solid;border-width: 2px;font-size: 1rem;align-items: center;padding: 8px 14px;justify-content: center;text-decoration: none !important;font-style: normal;text-align: center;text-transform: uppercase;width: inherit;transition-duration: 0.5s;transition-property: background-color, color, border-color;}a > kol-span > span > span {display: flex;gap: 0.25em;align-items: center;justify-content: center;}a:disabled {cursor: not-allowed;opacity: 0.5;}a.primary,a.primary:disabled:hover {background-color: var(--color-midnight);border-color: var(--color-midnight);color: var(--color-white);}a.secondary,a.secondary:disabled:hover,a.normal,a.normal:disabled:hover {background-color: var(--color-white);border-color: var(--color-midnight);color: var(--color-midnight);}a.danger,a.danger:disabled:hover {background-color: var(--color-red);border-color: var(--color-red);color: var(--color-white);}a.ghost,a.ghost:disabled:hover {border-color: var(--color-white);background-color: var(--color-white);box-shadow: none;color: var(--color-midnight);}/*-----------*/a.primary:active,a.primary:hover,a.secondary:active,a.secondary:hover,a.normal:active,a.normal:hover,a.danger:active,a.danger:hover,a.ghost:active,a.ghost:hover {background-color: var(--color-ocean);border-color: var(--color-ocean);box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);color: var(--color-white);}a.danger:active,a.danger:hover {background-color: var(--color-crimson);border-color: var(--color-crimson);}a:disabled:hover,a:focus:hover {box-shadow: none;}a.primary:active,a.secondary:active,a.normal:active,a.danger:active,a.ghost:active {border-color: var(--color-white);box-shadow: none;outline: none;}a > span {display: flex;gap: 0.5em;margin: auto;align-items: center;justify-content: center;letter-spacing: 0.75px;}a.icon-only {padding: 8px;}a.icon-only kol-icon {display: inline-block;width: 1.5em;height: 1.5em;}a.loading kol-icon {animation: spin 5s infinite linear;}',
+					});
+				})
+				.catch(console.warn);
+		</script>
 		<meta charset="utf-8" />
 		<title>BIK BITV-Test | KoliBri</title>
 		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
@@ -335,7 +348,6 @@
 							</div>
 							<kol-heading _level="2">Button</kol-heading>
 						</div>
-
 						<div class="gap-2 py-2 col-12 d-grid">
 							<kol-indented-text>Der folgende Schalter hat ein abweichendes Aria-Label:</kol-indented-text>
 							<kol-button class="not-used" _aria-label="Ich bin ein abweichendes Label" style="width: 15em" _variant="primary" _label="Primary-Schaltfläche">
@@ -386,6 +398,75 @@
 								<kol-button class="not-used" _label="Bearbeiten" _disabled></kol-button>
 								<kol-button class="not-used" _label="Abbrechen"></kol-button>
 								<kol-button class="not-used" _label="Löschen"></kol-button>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row">
+						<div class="col-12">
+							<div class="gap-2 d-flex">
+								<!-- <kol-badge _icon="check" _color="#030" _label="BIK BITV-Test v12"></kol-badge> -->
+								<!-- <kol-badge _icon="search-document" _color="#033" _label="Snapshot-Tests"></kol-badge> -->
+							</div>
+							<kol-heading _level="2">Link-Button</kol-heading>
+						</div>
+						<div class="gap-2 py-2 col-12 d-grid">
+							<kol-indented-text>Der folgende Schalter hat ein abweichendes Aria-Label:</kol-indented-text>
+							<kol-link-button
+								class="not-used"
+								_aria-label="Ich bin ein abweichendes Label"
+								style="width: 15em"
+								_variant="primary"
+								_label="Primary-Schaltfläche"
+							>
+							</kol-link-button>
+							<kol-link-button
+								class="not-used"
+								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
+								_label="Icon's in alle Richtungen"
+								_variant="primary"
+							>
+							</kol-link-button>
+							<kol-link-button
+								class="not-used"
+								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}"
+								_label="Icon's in alle Richtungen"
+								_variant="primary"
+							>
+							</kol-link-button>
+							<kol-link-button class="not-used" _icon="ui-play" _label="Martin"></kol-link-button>
+							<kol-link-button class="not-used" _icon="home" _variant="primary" _label="Primary-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" _icon="home" _icon-only _variant="primary" _label="Primary-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" style="width: 15em" _variant="secondary" _label="Secondary-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" style="width: 15em" _variant="normal" _label="Normal-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" style="width: 15em" _variant="danger" _label="Danger-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" style="width: 15em" _variant="ghost" _label="Ghost-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" _disabled="true" _label="Disabled-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" _label="Hinzufügen"></kol-link-button>
+							<kol-link-button class="not-used font-80" _icon="ui-add" _label="Hinzufügen"></kol-link-button>
+							<kol-link-button class="not-used font-60" _icon="ui-add" _icon-align="right" _label="Hinzufügen"></kol-link-button>
+							<kol-link-button class="not-used" _icon="ui-add" _icon-align="right" _icon-only="true" _label="Hinzufügen (nur Icon)"></kol-link-button>
+							<kol-link-button class="not-used" _label="ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen"></kol-link-button>
+						</div>
+						<div class="gap-2 py-2 col-12 d-grid">
+							<div>
+								<kol-link-button class="not-used" _label="Speichern" _variant="primary"></kol-link-button>
+								<kol-link-button class="not-used" _label="Bearbeiten" _disabled></kol-link-button>
+								<kol-link-button class="not-used" _label="Abbrechen"></kol-link-button>
+								<kol-link-button class="not-used" _label="Löschen"></kol-link-button>
+							</div>
+							<div class="font-80">
+								<kol-link-button class="not-used" _label="Speichern" _variant="primary"></kol-link-button>
+								<kol-link-button class="not-used" _label="Bearbeiten" _disabled></kol-link-button>
+								<kol-link-button class="not-used" _label="Abbrechen"></kol-link-button>
+								<kol-link-button class="not-used" _label="Löschen"></kol-link-button>
+							</div>
+							<div class="font-60">
+								<kol-link-button class="not-used" _label="Speichern" _variant="primary"></kol-link-button>
+								<kol-link-button class="not-used" _label="Bearbeiten" _disabled></kol-link-button>
+								<kol-link-button class="not-used" _label="Abbrechen"></kol-link-button>
+								<kol-link-button class="not-used" _label="Löschen"></kol-link-button>
 							</div>
 						</div>
 					</div>
@@ -835,15 +916,33 @@
 						</div>
 						<div class="gap-2 col-12">
 							<kol-link _href="https://de.wikipedia.org" _target="wikipedia">Wikipedia</kol-link>
-							<kol-link _icon="paper-plane" _href="https://wikipedia.de">Wikipedia</kol-link>
+							<kol-link _href="https://wikipedia.de" _icon="paper-plane">Wikipedia</kol-link>
 							<p>
 								E-Mail:
 								<kol-link _href="mailto:info@wikipedia.org" _target="mail-client" _target-description="Link wird im E-Mail-Programm geöffnet."
 									>info@wikipedia.org
 								</kol-link>
 							</p>
-							<kol-link _use-case="image" _icon="paper-plane" _icon-only _aria-label="Icon als Link" _href="https://de.wikipedia.org" _target="wikipedia">
-							</kol-link>
+							<kol-link _aria-label="Icon als Link" _href="https://de.wikipedia.org" _icon="paper-plane" _icon-only _target="wikipedia"></kol-link>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row">
+						<div class="col-12">
+							<div class="gap-2 d-flex">
+								<!-- <kol-badge _icon="check" _color="#030" _label="BIK BITV-Test v12"></kol-badge> -->
+							</div>
+							<kol-heading _level="2">Button-Link</kol-heading>
+						</div>
+						<div class="gap-2 col-12">
+							<kol-button-link _label="Wikipedia"></kol-button-link>
+							<kol-button-link _icon="paper-plane" _label="Wikipedia"></kol-button-link>
+							<p>
+								E-Mail:
+								<kol-button-link _label="info@wikipedia.org"></kol-button-link>
+							</p>
+							<kol-button-link _aria-label="Icon als Link" _icon="paper-plane" _icon-only></kol-button-link>
 						</div>
 					</div>
 				</li>

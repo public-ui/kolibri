@@ -58,6 +58,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				_id={this._id}
 				_label={this._label}
 				_on={this._on}
+				_tabIndex={this._tabIndex}
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
 				_variant={this._variant}
@@ -137,6 +138,11 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop({ reflect: true }) public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.

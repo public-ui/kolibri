@@ -30,7 +30,10 @@ executeTests<LinkProps>(
 		// _underline: [false, true],
 		// _useCase: ['text', 'image', 'nav'],
 	},
-	getLinkHtml
+	getLinkHtml,
+	{
+		execMode: 'skip',
+	}
 );
 
 executeTests<LinkProps>(
@@ -57,5 +60,8 @@ executeTests<LinkProps>(
 		_underline: [false, true],
 		_useCase: ['text', 'image', 'nav'],
 	},
-	getLinkHtml
+	getLinkHtml,
+	{
+		execMode: 'skip',
+	}
 );

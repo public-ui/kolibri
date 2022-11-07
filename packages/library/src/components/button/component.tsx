@@ -13,7 +13,7 @@ import {
 	RequiredButtonStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
-import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
+import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import {
@@ -24,9 +24,11 @@ import {
 	watchString,
 	watchValidator,
 } from '../../utils/prop.validators';
+import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { TooltipAlignment } from '../tooltip/component';
 import { syncAriaLabelBeforePatch, watchButtonType, watchButtonVariant } from './controller';
+import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
 
 /**
  * @internal
@@ -88,9 +90,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-label={this.state._iconOnly === false ? this.state._ariaLabel || this.state._label : undefined}
 					aria-labelledby={this.state._iconOnly === true ? this.nonce : undefined}
 					class={{
-						[this.state._variant as string]: true,
+						[this.state._variant as string]: this.state._variant !== 'custom',
+						[this.state._customClass as string]:
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 						'icon-only': this.state._iconOnly === true,
-						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					}}
 					disabled={this.state._disabled}
 					id={this.state._id}
@@ -99,65 +102,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					style={{
 						width: 'inherit',
 					}}
+					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<span>
-						{this.state._icon.top && (
-							<kol-icon
-								class={{
-									'icon top': true,
-								}}
-								style={this.state._icon.top.style}
-								_ariaLabel=""
-								_icon={this.state._icon.top.icon}
-							/>
-						)}
-						<span class="flex items-center">
-							{this.state._icon.left && (
-								<kol-icon
-									class={{
-										'icon left': true,
-										'mr-2': this.state._iconOnly === false,
-									}}
-									style={this.state._icon.left.style}
-									_ariaLabel=""
-									_icon={this.state._icon.left.icon}
-								/>
-							)}
-							{this.state._iconOnly === false && (
-								<span>
-									{typeof this.state._label === 'string' && this.state._label}
-									{/*
-										Es ist keine gute Idee hier einen Slot einzufügen,
-										da dadurch die komplette Unterstützung der Komponente
-										 umgangen werden kann.
-									*/}
-									<slot />
-								</span>
-							)}
-							{this.state._icon.right && (
-								<kol-icon
-									class={{
-										'icon right': true,
-										'ml-2': this.state._iconOnly === false,
-									}}
-									style={this.state._icon.right.style}
-									_ariaLabel=""
-									_icon={this.state._icon.right.icon}
-								/>
-							)}
-						</span>
-						{this.state._icon.bottom && (
-							<kol-icon
-								class={{
-									'icon bottom': true,
-								}}
-								style={this.state._icon.bottom.style}
-								_ariaLabel=""
-								_icon={this.state._icon.bottom.icon}
-							/>
-						)}
-					</span>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}></kol-span-wc>
 				</button>
 				{this.state._iconOnly === true && (
 					<kol-tooltip
@@ -251,6 +199,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop({ reflect: true }) public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
@@ -428,6 +381,14 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		validateTabIndex(this, value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
@@ -466,6 +427,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
+		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateVariant(this._variant);

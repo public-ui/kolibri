@@ -1,117 +1,108 @@
 import { Generic } from '@public-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { watchTooltipAlignment } from '../../types/button-link';
 
-import { KoliBriCustomIcon, KoliBriIconProp, watchIcon } from '../../types/icon';
-import { watchString } from '../../utils/prop.validators';
-import { TooltipAlignment } from '../tooltip/component';
+import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
+import { watchBoolean, watchString } from '../../utils/prop.validators';
+import { watchIcon } from '../../utils/validators/icon';
+import { syncAriaLabelBeforePatch } from '../button/controller';
 
 /**
  * API
  */
-type RequiredProps = unknown;
+type RequiredProps = {
+	label: string;
+};
 type OptionalProps = {
 	icon: KoliBriIconProp;
-	label: string;
-	tooltipAlign: TooltipAlignment;
-	tooltipId: string;
+	iconOnly: boolean;
 };
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps & {
+type RequiredStates = {
 	icon: {
 		top?: KoliBriCustomIcon;
 		right?: KoliBriCustomIcon;
 		bottom?: KoliBriCustomIcon;
 		left?: KoliBriCustomIcon;
 	};
+	iconOnly: boolean;
 	label: string;
 };
-type OptionalStates = {
-	tooltipAlign: TooltipAlignment;
-	tooltipId: string;
-};
+type OptionalStates = unknown;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+
+const removeNode = (el?: Node) => {
+	if (el instanceof Node) {
+		setTimeout(() => {
+			el.parentElement?.removeChild(el);
+			el.parentNode?.removeChild(el);
+		});
+	}
+};
 
 /**
  * @internal
  */
 @Component({
-	tag: 'kol-span',
+	tag: 'kol-span-wc',
 	shadow: false,
 })
-export class KolSpan implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<span>
-					{this.state._icon.top && (
+				{this.state._icon.top && (
+					<kol-icon
+						class={{
+							'icon top': true,
+						}}
+						style={this.state._icon.top.style}
+						_ariaLabel=""
+						_icon={this.state._icon.top.icon}
+					/>
+				)}
+				<span class="flex items-center">
+					{this.state._icon.left && (
 						<kol-icon
 							class={{
-								'icon top': true,
+								'icon left': true,
+								'mr-2': this.state._iconOnly === true,
 							}}
-							style={this.state._icon.top.style}
+							style={this.state._icon.left.style}
 							_ariaLabel=""
-							_icon={this.state._icon.top.icon}
+							_icon={this.state._icon.left.icon}
 						/>
 					)}
-					<span class="flex items-center">
-						{this.state._icon.left && (
-							<kol-icon
-								class={{
-									'icon left': true,
-									'mr-2': typeof this.state._tooltipId === 'string',
-								}}
-								style={this.state._icon.left.style}
-								_ariaLabel=""
-								_icon={this.state._icon.left.icon}
-							/>
-						)}
-						{typeof this.state._tooltipId !== 'string' && (
-							<span>
-								{typeof this.state._label === 'string' && this.state._label}
-								{/*
-								Es ist keine gute Idee hier einen Slot einzufügen,
-								da dadurch die komplette Unterstützung der Komponente
-								 umgangen werden kann.
-							*/}
-								<slot />
-							</span>
-						)}
-						{this.state._icon.right && (
-							<kol-icon
-								class={{
-									'icon right': true,
-									'ml-2': typeof this.state._tooltipId === 'string',
-								}}
-								style={this.state._icon.right.style}
-								_ariaLabel=""
-								_icon={this.state._icon.right.icon}
-							/>
-						)}
+					<span>{this.state._iconOnly !== true && this.state._label.length > 0 ? this.state._label : ''}</span>
+					{/*
+							Es ist keine gute Idee hier einen Slot einzufügen,
+							da dadurch die komplette Unterstützung der Komponente
+							umgangen werden kann.
+						*/}
+					<span ref={this.state._label.length > 0 ? removeNode : undefined}>
+						<slot />
 					</span>
-					{this.state._icon.bottom && (
+					{this.state._icon.right && (
 						<kol-icon
 							class={{
-								'icon bottom': true,
+								'icon right': true,
+								'ml-2': this.state._iconOnly === true,
 							}}
-							style={this.state._icon.bottom.style}
+							style={this.state._icon.right.style}
 							_ariaLabel=""
-							_icon={this.state._icon.bottom.icon}
+							_icon={this.state._icon.right.icon}
 						/>
 					)}
 				</span>
-				{typeof this.state._tooltipId === 'string' && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						// aria-hidden="true"
-						_align={this.state._tooltipAlign}
-						_id={this.state._tooltipId}
-						_label={this.state._label}
-					></kol-tooltip>
+				{this.state._icon.bottom && (
+					<kol-icon
+						class={{
+							'icon bottom': true,
+						}}
+						style={this.state._icon.bottom.style}
+						_ariaLabel=""
+						_icon={this.state._icon.bottom.icon}
+					/>
 				)}
 			</Host>
 		);
@@ -123,31 +114,21 @@ export class KolSpan implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _icon?: KoliBriIconProp;
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop({ reflect: true }) public _label?: string = '';
+	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ reflect: true }) public _tooltipAlign?: TooltipAlignment = 'top';
+	@Prop({ reflect: true }) public _label!: string;
 
-	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
-	 */
-	@Prop({ reflect: true }) public _tooltipId?: string = '';
-
-	/**
-	 * Die State-Parameter repräsentieren den inneren State
-	 * einer Komponente.
-	 *
-	 * @see: https://stenciljs.com/docs/state
-	 */
 	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
 		_icon: {},
+		_iconOnly: false,
 		_label: '',
 	};
 
@@ -162,25 +143,23 @@ export class KolSpan implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_iconOnly')
+	public validateIconOnly(value?: boolean): void {
+		watchBoolean(this, '_iconOnly', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignment): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_tooltipId')
-	public validateTooltipId(value?: string): void {
-		watchString(this, '_tooltipId', value);
+		watchString(this, '_label', value, {
+			hooks: {
+				beforePatch: syncAriaLabelBeforePatch,
+			},
+			minLength: 0,
+			required: true,
+		});
 	}
 
 	/**
@@ -188,8 +167,7 @@ export class KolSpan implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	public componentWillLoad(): void {
 		this.validateIcon(this._icon);
+		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
-		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateTooltipId(this._tooltipId);
 	}
 }

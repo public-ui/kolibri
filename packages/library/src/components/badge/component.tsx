@@ -1,13 +1,11 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
-import { devHint, featureHint } from '../../utils/a11y.tipps';
-import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
-import { watchIcofont } from '../icon-icofont/validation';
-import { Alignment } from '../../types/icon';
-import { createContrastColorPair, KoliBriContrastColor } from './contrast';
 import { Nationalfarben } from '../../enums/color';
-import { Icofont } from '../../types/icofont';
+import { Alignment, KoliBriIconProp } from '../../types/icon';
+import { devHint, featureHint } from '../../utils/a11y.tipps';
+import { watchValidator } from '../../utils/prop.validators';
+import { createContrastColorPair, KoliBriContrastColor } from './contrast';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -26,21 +24,15 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	color: string | KoliBriColor;
-	icon: Icofont;
-	iconAlign: Alignment;
+	icon: KoliBriIconProp;
 	iconOnly: boolean;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	color: string | KoliBriColor;
-	label: string;
 };
-type OptionalStates = {
-	icon: Icofont;
-	iconAlign: Alignment;
-	iconOnly: boolean;
-};
+type OptionalStates = unknown;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
@@ -50,44 +42,20 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolBadge implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolBadge implements Props {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 
 	public render(): JSX.Element {
 		return (
-			<span
+			<Host
 				style={{
 					backgroundColor: this.bgColorStr,
 					color: this.colorStr,
 				}}
 			>
-				{typeof this.state._icon === 'string' && this.state._iconAlign === 'left' && (
-					<kol-icon-icofont
-						class={{
-							'mr-1': this.state._iconOnly === false,
-						}}
-						style={{
-							color: this.colorStr,
-						}}
-						_ariaLabel={this.state._iconOnly === true ? this.state._label : ''}
-						_icon={this.state._icon}
-					/>
-				)}
-				{this.state._iconOnly !== true && this.state._label}
-				{typeof this.state._icon === 'string' && this.state._iconAlign === 'right' && (
-					<kol-icon-icofont
-						class={{
-							'ml-1': this.state._iconOnly === false,
-						}}
-						style={{
-							color: this.colorStr,
-						}}
-						_ariaLabel={this.state._iconOnly === true ? this.state._label : ''}
-						_icon={this.state._icon}
-					/>
-				)}
-			</span>
+				<kol-span-wc _label={this._label} _icon={this._icon} _iconOnly={this._iconOnly}></kol-span-wc>
+			</Host>
 		);
 	}
 
@@ -99,10 +67,11 @@ export class KolBadge implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
 	 */
-	@Prop() public _icon?: Icofont;
+	@Prop() public _icon?: KoliBriIconProp;
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 * @deprecated
 	 */
 	@Prop() public _iconAlign?: Alignment = 'left';
 
@@ -121,7 +90,6 @@ export class KolBadge implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@State() public state: States = {
 		_color: Nationalfarben.Schwarz,
-		_label: '',
 	};
 
 	private handleColorChange = (value: unknown) => {
@@ -167,53 +135,9 @@ export class KolBadge implements Generic.Element.ComponentApi<RequiredProps, Opt
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_icon')
-	public validateIcon(value?: Icofont): void {
-		watchIcofont(this, value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_iconAlign')
-	public validateIconAlign(value?: Alignment): void {
-		// Werte prüfen
-		if (typeof value === 'string') {
-			this.state = {
-				...this.state,
-				_iconAlign: value,
-			};
-		}
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		watchBoolean(this, '_iconOnly', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_label')
-	public validateLabel(value?: string): void {
-		watchString(this, '_label', value, {
-			required: true,
-		});
-	}
-
-	/**
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
-		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
-		this.validateIconOnly(this._iconOnly);
-		this.validateLabel(this._label);
 	}
 }

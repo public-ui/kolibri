@@ -28,7 +28,7 @@ export const getAccordionHtml = (
 					default: `<button>
 							${getIconHtml({
 								_ariaLabel: '',
-								_icon: props._open ? 'icofont-minus' : 'icofont-plus',
+								_icon: props._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus',
 								_part: props._open ? 'close' : 'open',
 							})}
 							<span>

@@ -1,3 +1,5 @@
+export const isObject = (value: unknown): boolean => typeof value === 'object' && value !== null;
+
 export const isString = (value: unknown, minLength = 0): boolean => typeof value === 'string' && value.length >= minLength;
 
 export const isStyle = (style?: Record<string, string>): boolean => {

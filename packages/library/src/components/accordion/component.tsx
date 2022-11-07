@@ -76,7 +76,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 				<div part={`accordion ${this.state._open ? 'open' : 'close'}`}>
 					<kol-heading-wc _level={this.state._level}>
 						<button ref={this.catchAriaExpanded} onClick={this.onClick}>
-							<kol-icon _ariaLabel="" _icon={this.state._open ? 'icofont-minus' : 'icofont-plus'} _part={this.state._open ? 'close' : 'open'} />
+							<kol-icon _ariaLabel="" _icon={this.state._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus'} _part={this.state._open ? 'close' : 'open'} />
 							<span>{this.state._heading}</span>
 						</button>
 					</kol-heading-wc>

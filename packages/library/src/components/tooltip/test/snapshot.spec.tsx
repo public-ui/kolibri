@@ -19,5 +19,8 @@ executeTests<Props>(
 		_align: ['top', 'right', 'bottom', 'left'],
 		_label: ['Text'],
 	},
-	getTooltipHtml
+	getTooltipHtml,
+	{
+		execMode: 'only',
+	}
 );

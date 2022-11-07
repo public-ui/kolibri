@@ -202,6 +202,8 @@ export class KolInputNumber implements ComponentApi {
 
 	/**
 	 * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+	 *
+	 * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
 	 */
 	@Prop() public _type?: InputNumberType = 'number';
 
@@ -395,6 +397,7 @@ export class KolInputNumber implements ComponentApi {
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_type')
 	public validateType(value?: InputNumberType): void {

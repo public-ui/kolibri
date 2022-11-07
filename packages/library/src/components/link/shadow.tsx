@@ -35,6 +35,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 				_part={this._part}
 				_selector={this._selector}
 				_stealth={this._stealth}
+				_tabIndex={this._tabIndex}
 				_target={this._target}
 				_targetDescription={this._targetDescription}
 				_tooltipAlign={this._tooltipAlign}
@@ -124,6 +125,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 */
 	@Prop() public _stealth?: boolean = false;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop({ reflect: true }) public _tabIndex?: number;
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.

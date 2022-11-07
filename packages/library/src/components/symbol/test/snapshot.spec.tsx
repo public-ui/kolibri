@@ -19,5 +19,8 @@ executeTests<Props>(
 		_ariaLabel: ['Slash', 'Backslash'],
 		_symbol: ['/', '\\'],
 	},
-	getSymbolHtml
+	getSymbolHtml,
+	{
+		execMode: 'skip',
+	}
 );
