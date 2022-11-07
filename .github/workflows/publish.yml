@@ -135,4 +135,4 @@ jobs:
         working-directory: packages/storybook
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: public-ui/kolibri/blob/main/.github/workflows/sync-to-opencode.yml@main
+      - uses: public-ui/public-ui.github.io/blob/main/.github/workflows/update.yml@main
