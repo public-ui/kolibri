@@ -18,6 +18,6 @@ executeTests<Props>(
 	{},
 	getIndentedTextHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

@@ -20,6 +20,6 @@ executeTests<Props>(
 	},
 	getSpinHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

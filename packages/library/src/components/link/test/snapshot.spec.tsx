@@ -20,7 +20,7 @@ executeTests<LinkProps>(
 		_ariaLabel: ['Aria-Label'],
 		_fill: [false, true],
 		_href: ['https://google.de'],
-		_icon: ['home'],
+		_icon: ['fa-solid fa-house'],
 		_iconAlign: ['left', 'right'],
 		_iconOnly: [false, true],
 		// _stealth: [false, true],
@@ -32,7 +32,7 @@ executeTests<LinkProps>(
 	},
 	getLinkHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );
 
@@ -62,6 +62,6 @@ executeTests<LinkProps>(
 	},
 	getLinkHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

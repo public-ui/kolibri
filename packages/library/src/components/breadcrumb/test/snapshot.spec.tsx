@@ -21,6 +21,6 @@ executeTests<Props>(
 	},
 	getBreadcrumbHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

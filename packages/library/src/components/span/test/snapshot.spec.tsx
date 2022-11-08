@@ -4,7 +4,7 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
 import { Props } from '../component';
-import { getSpanWcHtml } from './html.mock';
+import { getSpanHtml, getSpanWcHtml } from './html.mock';
 
 executeTests<Props>(
 	'SpanWc',
@@ -16,13 +16,13 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_label: ['Text'],
-		_icon: [],
+		_icon: ['fa-solid fa-house'],
 		_iconOnly: [true, false],
+		_label: ['Text'],
 	},
 	getSpanWcHtml,
 	{
-		execMode: 'default',
+		execMode: 'default', // ready
 	}
 );
 
@@ -36,12 +36,12 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_label: ['Text'],
-		_icon: [],
+		_icon: ['fa-solid fa-house'],
 		_iconOnly: [true, false],
+		_label: ['Text'],
 	},
-	getSpanWcHtml,
+	getSpanHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

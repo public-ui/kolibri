@@ -20,6 +20,6 @@ executeTests<Props>(
 	},
 	getVersionHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

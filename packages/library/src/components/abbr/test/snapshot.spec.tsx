@@ -21,6 +21,6 @@ executeTests<Props>(
 	},
 	getAbbrHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

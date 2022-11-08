@@ -20,6 +20,6 @@ executeTests<Props>(
 	},
 	getHeadingHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

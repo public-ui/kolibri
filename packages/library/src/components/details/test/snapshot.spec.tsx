@@ -21,6 +21,6 @@ executeTests<Props>(
 	},
 	getDetailsHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

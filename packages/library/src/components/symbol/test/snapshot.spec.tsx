@@ -21,6 +21,6 @@ executeTests<Props>(
 	},
 	getSymbolHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );

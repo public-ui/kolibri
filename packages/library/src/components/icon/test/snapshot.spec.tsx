@@ -17,11 +17,11 @@ executeTests<Props>(
 	},
 	{
 		_ariaLabel: ['Aria-Label'],
-		_icon: ['fa-solid house'],
+		_icon: ['fa-solid fa-house'],
 		_part: ['part-key'],
 	},
 	getIconHtml,
 	{
-		execMode: 'skip',
+		execMode: 'default', // ready
 	}
 );
