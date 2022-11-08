@@ -29,7 +29,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm
       - name: Install
-        run: pnpm i --lockfile-only
+        run: pnpm i
       - name: Unused
         run: npx lerna exec --stream -- ts-prune src -e
       - name: Format
