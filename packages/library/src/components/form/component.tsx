@@ -98,9 +98,7 @@ export class KolForm implements Generic.Element.ComponentApi<RequiredProps, Opti
 		if (typeof value === 'boolean') {
 			watchBoolean(this, '_requiredText', value);
 		} else {
-			watchString(this, '_requiredText', value, {
-				minLength: 0,
-			});
+			watchString(this, '_requiredText', value);
 		}
 	}
 

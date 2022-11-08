@@ -40,9 +40,7 @@ export class InputColorController extends InputController implements Watches {
 		if (value === null) {
 			this.component.state._value = null;
 		} else {
-			watchString(this.component, '_value', value, {
-				minLength: 0,
-			});
+			watchString(this.component, '_value', value);
 		}
 	}
 

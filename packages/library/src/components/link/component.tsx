@@ -19,7 +19,7 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { TooltipAlignment } from '../tooltip/component';
-import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
+import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { Stringified } from '../../types/common';
 
 type RequiredNavLinkProps = RequiredLinkProps & unknown;
@@ -397,7 +397,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
-		watchIcon(this, value);
+		validateIcon(this, value);
 	}
 
 	/**

@@ -129,7 +129,6 @@ const logWarn = (component: Generic.Element.Component, propName: string, value: 
 };
 
 type WatchOptions = {
-	allowNull?: boolean;
 	defaultValue?: unknown;
 	hooks?: SetStateHooks;
 	required?: boolean;
@@ -158,16 +157,25 @@ export const watchValidator = <T>(
 	value?: T,
 	options: WatchOptions = {}
 ): void => {
-	if (validationFunction(value) && (options?.allowNull === undefined || options?.allowNull === false || value === null)) {
+	if (validationFunction(value)) {
+		/**
+		 * Triff zu, wenn der Wert entweder VALIDE ist.
+		 */
 		setState(component, propName, value, options?.hooks);
-	} else if (options?.defaultValue !== undefined || options?.required === undefined || options?.required === false) {
+	} else if (value === undefined || (value === null && (options?.required === undefined || options?.required === false))) {
+		/**
+		 * Triff zu, wenn der Wert entweder ...
+		 * - UNDEFINED oder
+		 * - NULL und NICHT REQUIRED
+		 * ... ist.
+		 */
 		setState(component, propName, options?.defaultValue, options?.hooks);
 	} else {
-		if (options.allowNull === true) {
+		/**
+		 * Triff zu, wenn der Wert NICHT valide ist.
+		 */
+		if (options?.required === undefined || options?.required === false) {
 			requiredGeneric.add(null);
-		}
-		if (options.required !== true) {
-			requiredGeneric.add(undefined);
 		}
 		logWarn(component, propName, value, requiredGeneric);
 	}
@@ -177,12 +185,13 @@ export const watchBoolean = (component: Generic.Element.Component, propName: str
 	watchValidator(component, propName, (value): boolean => typeof value === 'boolean', new Set(['Boolean {true, false}']), value, options);
 };
 
-export const watchString = (component: Generic.Element.Component, propName: string, value?: string, options?: WatchStringOptions): void => {
+export const watchString = (component: Generic.Element.Component, propName: string, value?: string, options: WatchStringOptions = {}): void => {
+	const minLength = typeof options.minLength === 'number' ? options?.minLength : 0;
 	watchValidator(
 		component,
 		propName,
-		(value): boolean => typeof value === 'string' && value.length >= (typeof options?.minLength === 'number' ? options?.minLength : 1),
-		new Set(['String (nicht leer)']),
+		(value): boolean => typeof value === 'string' && value.length >= minLength,
+		new Set([`String (Mindestlänge ${minLength})`]),
 		value,
 		options
 	);

@@ -72,9 +72,7 @@ export class TextareaController extends InputController implements Watches {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateValue(value?: string): void {
-		watchString(this.component, '_value', value, {
-			minLength: 0,
-		});
+		watchString(this.component, '_value', value);
 	}
 
 	/**

@@ -63,7 +63,7 @@ export class InputController extends ControlledInputController implements Watche
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateError(value?: string): void {
-		watchString(this.component, '_error', value, { minLength: 0 });
+		watchString(this.component, '_error', value);
 	}
 
 	/**

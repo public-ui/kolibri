@@ -49,13 +49,16 @@ export class KolBadge implements Props {
 
 	public render(): JSX.Element {
 		return (
-			<Host
-				style={{
-					backgroundColor: this.bgColorStr,
-					color: this.colorStr,
-				}}
-			>
-				<kol-span-wc _label={this._label} _icon={this._icon} _iconOnly={this._iconOnly}></kol-span-wc>
+			<Host>
+				<kol-span-wc
+					_label={this._label}
+					_icon={this._icon}
+					_iconOnly={this._iconOnly}
+					style={{
+						backgroundColor: this.bgColorStr,
+						color: this.colorStr,
+					}}
+				></kol-span-wc>
 			</Host>
 		);
 	}

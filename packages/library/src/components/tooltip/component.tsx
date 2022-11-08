@@ -192,9 +192,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value, {
-			minLength: 0,
-		});
+		watchString(this, '_label', value);
 	}
 
 	/**

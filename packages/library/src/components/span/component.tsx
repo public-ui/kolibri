@@ -3,9 +3,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
-import { watchBoolean, watchString } from '../../utils/prop.validators';
-import { watchIcon } from '../../utils/validators/icon';
-import { syncAriaLabelBeforePatch } from '../button/controller';
+import { watchBoolean } from '../../utils/prop.validators';
+import { validateIcon } from '../../utils/validators/icon';
+import { validateLabel } from '../../utils/validators/label';
 
 /**
  * API
@@ -138,7 +138,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
-		watchIcon(this, value);
+		validateIcon(this, value);
 	}
 
 	/**
@@ -154,13 +154,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value, {
-			hooks: {
-				beforePatch: syncAriaLabelBeforePatch,
-			},
-			minLength: 0,
-			required: true,
-		});
+		validateLabel(this, value);
 	}
 
 	/**

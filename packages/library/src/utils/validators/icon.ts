@@ -61,7 +61,7 @@ export const isIcon = (value?: unknown): boolean =>
 	(typeof (value as KoliBriCustomIcon).style === 'undefined' || isStyle((value as KoliBriCustomIcon).style)) &&
 	isString((value as KoliBriCustomIcon).icon, 1);
 
-export const watchIcon = (component: Generic.Element.Component, value?: KoliBriIconProp): void => {
+export const validateIcon = (component: Generic.Element.Component, value?: KoliBriIconProp): void => {
 	objectObjectHandler(value, () => {
 		try {
 			value = parseJson<KoliBriIconProp>(value as string);

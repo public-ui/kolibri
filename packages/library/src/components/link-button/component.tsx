@@ -14,15 +14,16 @@ import {
 	RequiredLinkButtonStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
+import { Stringified } from '../../types/common';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
+import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { syncAriaLabelBeforePatch, watchButtonVariant } from '../button/controller';
+import { watchButtonVariant } from '../button/controller';
 import { TooltipAlignment } from '../tooltip/component';
-import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
-import { Stringified } from '../../types/common';
 
 @Component({
 	tag: 'kol-link-button',
@@ -330,11 +331,7 @@ export class KolLinkButton
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			hooks: {
-				beforePatch: syncAriaLabelBeforePatch,
-			},
-		});
+		validateAriaLabel(this, value);
 	}
 
 	/**
@@ -387,7 +384,7 @@ export class KolLinkButton
 	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
-		watchIcon(this, value);
+		validateIcon(this, value);
 	}
 
 	/**
@@ -412,13 +409,7 @@ export class KolLinkButton
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value, {
-			hooks: {
-				beforePatch: syncAriaLabelBeforePatch,
-			},
-			minLength: 0,
-			required: true,
-		});
+		validateLabel(this, value);
 	}
 
 	/**
