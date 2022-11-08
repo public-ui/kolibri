@@ -140,10 +140,10 @@ graph TD;
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
+  kol-span-wc --> kol-icon
   kol-button --> kol-button-wc
-  kol-button-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```

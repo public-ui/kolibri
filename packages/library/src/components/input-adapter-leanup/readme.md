@@ -127,11 +127,11 @@ graph TD;
   kol-alert --> kol-heading-wc
   kol-alert --> kol-button-wc
   kol-alert --> kol-icon
-  kol-button-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
   kol-link --> kol-link-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip

@@ -63,8 +63,8 @@ Die Abbr-Komponente wurde von KoliBri umgesetzt, weil der Standard-Tooltip nicht
 graph TD;
   kol-abbr --> kol-tooltip
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
+  kol-span-wc --> kol-icon
   style kol-abbr fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

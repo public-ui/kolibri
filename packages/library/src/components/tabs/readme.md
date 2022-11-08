@@ -113,19 +113,18 @@ W3C-Samples:
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                         | Type                                                                                                                                                                                    | Default     |
-| ------------------------- | ------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.        | `string`                                                                                                                                                                                | `undefined` |
-| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen. | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueCallback<Event, number> \| undefined; }` | `undefined` |
-| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                          | `number \| undefined`                                                                                                                                                                   | `0`         |
-| `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                          | `TabButtonProps[] \| string`                                                                                                                                                            | `undefined` |
+| Property                  | Attribute     | Description                                                                         | Type                                                                                                                                                                                                                                | Default     |
+| ------------------------- | ------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.        | `string`                                                                                                                                                                                                                            | `undefined` |
+| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen. | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueCallback<KeyboardEvent \| PointerEvent \| CustomEvent<any>, number> \| undefined; }` | `undefined` |
+| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                          | `number \| undefined`                                                                                                                                                                                                               | `0`         |
+| `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                          | `TabButtonProps[] \| string`                                                                                                                                                                                                        | `undefined` |
 
 ## Dependencies
 
 ### Depends on
 
 - [kol-button-group](../button-group)
-- [kol-icon-icofont](../icon-icofont)
 - kol-button-wc
 
 ### Graph
@@ -133,13 +132,12 @@ W3C-Samples:
 ```mermaid
 graph TD;
   kol-tabs --> kol-button-group
-  kol-tabs --> kol-icon-icofont
   kol-tabs --> kol-button-wc
-  kol-icon-icofont --> kol-icon
-  kol-button-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
+  kol-badge --> kol-span-wc
   style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

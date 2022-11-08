@@ -129,8 +129,8 @@ graph TD;
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
+  kol-span-wc --> kol-icon
   style kol-link-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
