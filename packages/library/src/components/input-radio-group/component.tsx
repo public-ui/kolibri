@@ -47,7 +47,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ reflect: true }) public _alert?: boolean = false;
+	@Prop({ reflect: false }) public _alert?: boolean = false;
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
@@ -107,7 +107,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ reflect: true }) public _touched?: boolean = false;
+	@Prop({ reflect: false }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert der Radio an.

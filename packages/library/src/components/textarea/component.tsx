@@ -99,57 +99,57 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
 	 */
-	@Prop({ reflect: true }) public _accessKey?: string;
+	@Prop({ reflect: false }) public _accessKey?: string;
 
 	/**
 	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
 	 */
-	@Prop({ reflect: true }) public _adjustHeight?: boolean = false;
+	@Prop({ reflect: false }) public _adjustHeight?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
 	 */
-	@Prop({ reflect: true }) public _hasCounter?: boolean;
+	@Prop({ reflect: false }) public _hasCounter?: boolean;
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop({ reflect: false }) public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
 	 */
-	@Prop({ reflect: true }) public _error?: string;
+	@Prop({ reflect: false }) public _error?: string;
 
 	/**
 	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop({ reflect: false }) public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Text für eine Hinweistext an.
 	 */
-	@Prop({ reflect: true }) public _hint?: string = '';
+	@Prop({ reflect: false }) public _hint?: string = '';
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop({ reflect: true }) public _id!: string;
+	@Prop({ reflect: false }) public _id!: string;
 
 	/**
 	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
 	 */
-	@Prop({ reflect: true }) public _maxLength?: number;
+	@Prop({ reflect: false }) public _maxLength?: number;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
-	@Prop({ reflect: true }) public _name?: string;
+	@Prop({ reflect: false }) public _name?: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -159,42 +159,42 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
 	 */
-	@Prop({ reflect: true }) public _placeholder?: string;
+	@Prop({ reflect: false }) public _placeholder?: string;
 
 	/**
 	 * Gibt an, ob das Eingabefeld nur lesend ist.
 	 */
-	@Prop({ reflect: true }) public _readOnly?: boolean;
+	@Prop({ reflect: false }) public _readOnly?: boolean;
 
 	/**
 	 * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 */
-	@Prop({ reflect: true }) public _resize?: CSSResize = 'vertical';
+	@Prop({ reflect: false }) public _resize?: CSSResize = 'vertical';
 
 	/**
 	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop({ reflect: false }) public _required?: boolean;
 
 	/**
 	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _rows?: number;
+	@Prop({ mutable: true, reflect: false }) public _rows?: number;
 
 	/**
 	 * Gibt an, welchen Tab-Index dieses Input hat.
 	 */
-	@Prop({ reflect: true }) public _tabIndex?: number;
+	@Prop({ reflect: false }) public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ reflect: true }) public _value?: string;
+	@Prop({ reflect: false }) public _value?: string;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

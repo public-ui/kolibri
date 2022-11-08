@@ -107,7 +107,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}></kol-span-wc>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
+						<slot name="expert" slot="expert"></slot>
+					</kol-span-wc>
 				</button>
 				{this.state._iconOnly === true && (
 					<kol-tooltip
@@ -157,7 +159,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _ariaLabel?: string = '';
+	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string = '';
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
@@ -195,7 +197,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * Gibt den Label für die Beschriftung der Schaltfläche an.
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
-	@Prop({ mutable: true, reflect: true }) public _label!: string;
+	@Prop({ mutable: true, reflect: false }) public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
@@ -205,7 +207,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop({ reflect: true }) public _tabIndex?: number;
+	@Prop({ reflect: false }) public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.

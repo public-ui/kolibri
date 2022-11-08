@@ -137,7 +137,9 @@ export class KolLinkButton
 					}}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}></kol-span-wc>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
+						<slot name="expert" slot="expert"></slot>
+					</kol-span-wc>
 				</a>
 				{this.state._iconOnly === true && (
 					<kol-tooltip
@@ -177,7 +179,7 @@ export class KolLinkButton
 	 *
 	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop({ reflect: true }) public _ariaLabel?: string;
+	@Prop({ reflect: false }) public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -224,7 +226,7 @@ export class KolLinkButton
 	/**
 	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ reflect: true }) public _label!: string;
+	@Prop({ reflect: false }) public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -251,7 +253,7 @@ export class KolLinkButton
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop({ reflect: true }) public _tabIndex?: number;
+	@Prop({ reflect: false }) public _tabIndex?: number;
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
@@ -409,6 +411,7 @@ export class KolLinkButton
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
+		console.log('link-button', '_label', value);
 		validateLabel(this, value);
 	}
 

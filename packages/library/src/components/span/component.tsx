@@ -81,7 +81,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 							umgangen werden kann.
 						*/}
 					<span ref={this.state._label.length > 0 ? removeNode : undefined}>
-						<slot />
+						<slot name="expert" />
 					</span>
 					{this.state._icon.right && (
 						<kol-icon
@@ -117,12 +117,12 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: false }) public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ reflect: true }) public _label!: string;
+	@Prop({ reflect: false }) public _label!: string;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

@@ -1,6 +1,5 @@
 import { Generic } from '@public-ui/core';
 import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
-import { a11yHint } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
 
 export const watchButtonType = (component: Generic.Element.Component, propName: string, value?: KoliBriButtonType): void => {

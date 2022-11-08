@@ -118,7 +118,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = false;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
@@ -213,7 +213,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.

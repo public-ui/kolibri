@@ -280,7 +280,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop({ reflect: true }) public _tabIndex?: number;
+	@Prop({ reflect: false }) public _tabIndex?: number;
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.

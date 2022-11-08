@@ -130,7 +130,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = false;
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
@@ -205,12 +205,12 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<unknown[]>;
+	@Prop({ mutable: true, reflect: false }) public _value?: Stringified<unknown[]>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

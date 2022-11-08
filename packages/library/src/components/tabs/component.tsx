@@ -262,7 +262,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
+	@Prop({ mutable: true, reflect: false }) public _selected?: number = 0;
 
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
