@@ -10,7 +10,7 @@ export const kebabize = (str: string) => {
 		.join('');
 };
 
-export const reflectAttrs = (props: Record<string, unknown>, defaults: Record<string, unknown> = {}, filter: string[] = []): string => '';
+export const reflectAttrs = (_props: Record<string, unknown>, _defaults: Record<string, unknown> = {}, _filter: string[] = []): string => '';
 // export const reflectAttrs = (props: Record<string, unknown>, defaults: Record<string, unknown> = {}, filter: string[] = []): string => {
 // 	props = mixMembers(defaults, props);
 // 	const KEYS = Object.getOwnPropertyNames(props);
