@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@public-ui/components': 1.1.10-rc.12
   '@public-ui/react': 1.1.10-rc.12
-  preact: ^10.11.2
+  preact: '>=10.5.15'
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 4.8.4
