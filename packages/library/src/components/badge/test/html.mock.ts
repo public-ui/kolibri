@@ -23,9 +23,9 @@ export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
 		});
 	}
 
-	return `<kol-badge${additionalAttrs} style="background-color: ${contrastColorPair.baseColor}; color: ${contrastColorPair.contrastColor};">
+	return `<kol-badge${additionalAttrs}>
   <mock:shadow-root>
-		${getSpanWcHtml(props)}
+		${getSpanWcHtml(props, {}, ` style = 'background-color: ${contrastColorPair.baseColor}; color: ${contrastColorPair.contrastColor};'`)}
   </mock:shadow-root>
 </kol-badge>`;
 };

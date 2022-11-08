@@ -1,5 +1,3 @@
-import { mixMembers } from 'stencil-awesome-test';
-
 /**
  * https://stackoverflow.com/questions/63116039/camelcase-to-kebab-case
  */
@@ -12,17 +10,18 @@ export const kebabize = (str: string) => {
 		.join('');
 };
 
-export const reflectAttrs = (props: Record<string, unknown>, defaults: Record<string, unknown> = {}, filter: string[] = []): string => {
-	props = mixMembers(defaults, props);
-	const KEYS = Object.getOwnPropertyNames(props);
-	let str = '';
-	KEYS.forEach((key) => {
-		if (filter.length === 0 || filter.includes(key)) {
-			const value = props[key];
-			if (typeof value == 'string' || typeof value === 'number' || value === true) {
-				str += ` ${kebabize(key)}="${value === true ? '' : (props[key] as string)}"`;
-			}
-		}
-	});
-	return str;
-};
+export const reflectAttrs = (props: Record<string, unknown>, defaults: Record<string, unknown> = {}, filter: string[] = []): string => '';
+// export const reflectAttrs = (props: Record<string, unknown>, defaults: Record<string, unknown> = {}, filter: string[] = []): string => {
+// 	props = mixMembers(defaults, props);
+// 	const KEYS = Object.getOwnPropertyNames(props);
+// 	let str = '';
+// 	KEYS.forEach((key) => {
+// 		if (filter.length === 0 || filter.includes(key)) {
+// 			const value = props[key];
+// 			if (typeof value == 'string' || typeof value === 'number' || value === true) {
+// 				str += ` ${kebabize(key)}="${value === true ? '' : (props[key] as string)}"`;
+// 			}
+// 		}
+// 	});
+// 	return str;
+// };

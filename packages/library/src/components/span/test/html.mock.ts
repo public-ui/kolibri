@@ -6,14 +6,17 @@ import { getIconHtml } from '../../icon/test/html.mock';
 import { Props } from '../component';
 
 type Slots = {
-	default: undefined | string;
+	''?: string;
+	expert?: string;
 } & Record<string, undefined | string>;
 
 export const getSpanWcHtml = (
 	props: Props,
 	slots: Slots = {
-		default: undefined,
-	}
+		expert: undefined,
+	},
+	additionalAttrs = '',
+	hiddenSlot = false
 ): string => {
 	const state = mixMembers(
 		{
@@ -23,7 +26,7 @@ export const getSpanWcHtml = (
 	);
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${reflectAttrs(props, {}, ['_iconOnly', '_label'])}>
+<kol-span-wc${reflectAttrs(props, {}, ['_iconOnly', '_label'])}${additionalAttrs}>
 	${
 		icon.top
 			? getIconHtml({
@@ -32,6 +35,7 @@ export const getSpanWcHtml = (
 			  })
 			: ''
 	}
+	${hiddenSlot === true ? `<slot hidden=""></slot>` : ``}
 	<span class="flex items-center">
 		${
 			icon.left
@@ -73,9 +77,7 @@ export const getSpanHtml = (props: Props): string => {
 	return `
 <kol-span${reflectAttrs(props, {}, ['_iconOnly', '_label'])}>
 	<mock:shadow-root>
-		${getSpanWcHtml(props, {
-			default: '',
-		})}
+		${getSpanWcHtml(props, {}, ``, true)}
 	</mock:shadow-root>
 </kol-span>`;
 };

@@ -17,7 +17,7 @@ export const getAccordionHtml = (
 		},
 		props
 	);
-	return `<kol-accordion${props._open ? ' _open' : ''}>
+	return `<kol-accordion>
   <mock:shadow-root>
     <div part="accordion ${props._open ? 'open' : 'close'}">
       ${getHeadingWcHtml(
