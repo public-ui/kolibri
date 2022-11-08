@@ -11,6 +11,7 @@ import {
 } from '../../types/button-link';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { TooltipAlignment } from '../tooltip/component';
+import { Stringified } from '../../types/common';
 
 @Component({
 	tag: 'kol-button',
@@ -110,7 +111,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.

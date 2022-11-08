@@ -4,6 +4,7 @@ import { Generic } from '@public-ui/core';
 import { watchValidator } from '../utils/prop.validators';
 import { EventCallback } from './callbacks';
 import { Alignment, KoliBriCustomIcon, KoliBriIconProp } from './icon';
+import { Stringified } from './common';
 
 /**
  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
@@ -23,7 +24,7 @@ type OptionalButtonAndLinkProps = {
 	ariaLabel: string;
 	// ariaSelected: boolean; DON'T DO - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected
 	disabled: boolean;
-	icon: KoliBriIconProp;
+	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
 	 */

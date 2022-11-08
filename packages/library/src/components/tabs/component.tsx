@@ -31,7 +31,7 @@ type RequiredTabButtonProps = {
 };
 type OptionalTabButtonProps = {
 	disabled: boolean;
-	icon: KoliBriIconProp;
+	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 	on: KoliBriTabsCallbacks;
 };
@@ -422,7 +422,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 // console.log(
 //   stringifyJson([
-//     { _label: 'Tab 1', _href: '#tab-1', _icon: 'fa-solid house' },
+//     { _label: 'Tab 1', _href: '#tab-1', _icon: 'fa-solid fa-house' },
 //     { _label: 'Tab 2', _id: '#tab-2' },
 //     { _label: 'Tab 3', _id: '#tab-3' },
 //     { _label: 'Tab 4', _id: '#tab-4' },

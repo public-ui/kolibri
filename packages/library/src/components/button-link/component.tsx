@@ -28,6 +28,7 @@ import { syncAriaLabelBeforePatch, watchButtonType } from '../button/controller'
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { TooltipAlignment } from '../tooltip/component';
 import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
+import { Stringified } from '../../types/common';
 
 @Component({
 	tag: 'kol-button-link',
@@ -159,7 +160,7 @@ export class KolButtonLink
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.

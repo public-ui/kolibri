@@ -22,6 +22,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { syncAriaLabelBeforePatch, watchButtonVariant } from '../button/controller';
 import { TooltipAlignment } from '../tooltip/component';
 import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
+import { Stringified } from '../../types/common';
 
 @Component({
 	tag: 'kol-link-button',
@@ -205,7 +206,7 @@ export class KolLinkButton
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.

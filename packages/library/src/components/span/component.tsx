@@ -1,5 +1,6 @@
 import { Generic } from '@public-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Stringified } from '../../types/common';
 
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
@@ -13,7 +14,7 @@ type RequiredProps = {
 	label: string;
 };
 type OptionalProps = {
-	icon: KoliBriIconProp;
+	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -111,7 +112,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.

@@ -1,4 +1,5 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
+import { Stringified } from '../../types/common';
 
 import { KoliBriIconProp } from '../../types/icon';
 import { Props } from './component';
@@ -22,7 +23,7 @@ export class KolSpan implements Props {
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.

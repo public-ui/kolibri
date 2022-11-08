@@ -29,6 +29,7 @@ import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form
 import { TooltipAlignment } from '../tooltip/component';
 import { syncAriaLabelBeforePatch, watchButtonType, watchButtonVariant } from './controller';
 import { watchIcon, watchIconAlign } from '../../utils/validators/icon';
+import { Stringified } from '../../types/common';
 
 /**
  * @internal
@@ -170,7 +171,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.

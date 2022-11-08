@@ -3,6 +3,7 @@ import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@public-ui/core';
 import { AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { TooltipAlignment } from '../tooltip/component';
+import { Stringified } from '../../types/common';
 
 /**
  * @part link - Ermöglicht das Stylen des Links.
@@ -90,7 +91,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.

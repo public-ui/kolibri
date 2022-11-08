@@ -6,6 +6,7 @@ import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { devHint, featureHint } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
 import { createContrastColorPair, KoliBriContrastColor } from './contrast';
+import { Stringified } from '../../types/common';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -24,7 +25,7 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	color: string | KoliBriColor;
-	icon: KoliBriIconProp;
+	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -67,7 +68,7 @@ export class KolBadge implements Props {
 	/**
 	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
