@@ -1,7 +1,6 @@
-import { LinkProps } from '../../../types/button-link';
-import { Icofont } from '../../../types/icofont';
-import { getIconHtml } from '../../icon/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
+import { LinkProps } from '../../../types/button-link';
+import { getIconHtml } from '../../icon/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
@@ -43,7 +42,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					? getIconHtml(
 							{
 								_ariaLabel: '',
-								_icon: `icofont-${props._icon as Icofont}`,
+								_icon: props._icon,
 							},
 							props._iconOnly === true ? '' : ' class="mr-2"'
 					  )
@@ -59,7 +58,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					? getIconHtml(
 							{
 								_ariaLabel: '',
-								_icon: `icofont-${props._icon as Icofont}`,
+								_icon: props._icon,
 							},
 							props._iconOnly === true ? '' : ' class="ml-2"'
 					  )
@@ -77,7 +76,8 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			}
     </a>
     ${getTooltipHtml({
-			_align: 'right',
+			_align: props._tooltipAlign,
+			_id: props._iconOnly === true || props._useCase === 'image' ? 'nonce' : undefined,
 			_label: props._iconOnly === true && typeof props._ariaLabel === 'string' ? props._ariaLabel : '',
 		})}
     </kol-link-wc>

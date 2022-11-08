@@ -14,20 +14,20 @@ const mapCustomIcon = (state: KoliBriIconState, icon?: AnyIconFontClass | KoliBr
 	}
 };
 
-export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign: Alignment): KoliBriIconState => {
+export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: Alignment): KoliBriIconState => {
 	let state: KoliBriIconState = {};
 	if (isString(icon, 1)) {
 		switch (iconAlign) {
-			case 'left':
+			case 'right':
 				state = {
-					left: {
+					right: {
 						icon: icon as AnyIconFontClass,
 					},
 				};
 				break;
 			default:
 				state = {
-					right: {
+					left: {
 						icon: icon as AnyIconFontClass,
 					},
 				};

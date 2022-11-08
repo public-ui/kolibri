@@ -5,7 +5,7 @@ import { Props } from '../component';
 import { createContrastColorPair, KoliBriContrastColor } from '../contrast';
 
 export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
-	props = mixMembers(
+	const state = mixMembers(
 		{
 			_color: Nationalfarben.Schwarz,
 			_label: '',
@@ -14,20 +14,18 @@ export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
 	);
 
 	let contrastColorPair: KoliBriContrastColor;
-	if (typeof props._color === 'string') {
-		contrastColorPair = createContrastColorPair(props._color);
+	if (typeof state._color === 'string') {
+		contrastColorPair = createContrastColorPair(state._color);
 	} else {
 		contrastColorPair = createContrastColorPair({
-			baseColor: props._color?.backgroundColor as string,
-			contrastColor: props._color?.color as string,
+			baseColor: state._color?.backgroundColor as string,
+			contrastColor: state._color?.color as string,
 		});
 	}
 
 	return `<kol-badge${additionalAttrs} style="background-color: ${contrastColorPair.baseColor}; color: ${contrastColorPair.contrastColor};">
   <mock:shadow-root>
-		${getSpanWcHtml({
-			_label: props._label,
-		})}
+		${getSpanWcHtml(props)}
   </mock:shadow-root>
 </kol-badge>`;
 };

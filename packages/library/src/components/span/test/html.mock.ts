@@ -1,53 +1,81 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { KoliBriAllIcon, KoliBriCustomIcon } from '../../../types/icon';
+import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { reflectAttrs } from '../../../utils/testing';
+import { mapIconProp2State } from '../../../utils/validators/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { Props } from '../component';
 
-export const getSpanWcHtml = (props: Props): string => {
-	props = mixMembers(
+type Slots = {
+	default: undefined | string;
+} & Record<string, undefined | string>;
+
+export const getSpanWcHtml = (
+	props: Props,
+	slots: Slots = {
+		default: undefined,
+	}
+): string => {
+	const state = mixMembers(
 		{
 			_label: '',
 		},
 		props
 	);
+	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${reflectAttrs(props)}>
+<kol-span-wc${reflectAttrs(props, {}, ['_iconOnly', '_label'])}>
 	${
-		(props._icon as KoliBriAllIcon).top
+		icon.top
 			? getIconHtml({
 					_ariaLabel: '',
-					_icon: ((props._icon as KoliBriAllIcon).top as KoliBriCustomIcon).icon,
+					_icon: (icon.top as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}
 	<span class="flex items-center">
 		${
-			(props._icon as KoliBriAllIcon).left
-				? getIconHtml({
-						_ariaLabel: '',
-						_icon: ((props._icon as KoliBriAllIcon).left as KoliBriCustomIcon).icon,
-				  })
+			icon.left
+				? getIconHtml(
+						{
+							_ariaLabel: '',
+							_icon: (icon.left as KoliBriCustomIcon).icon,
+						},
+						` class="icon left${state._iconOnly === true ? ` mr-2` : ``}"`
+				  )
 				: ''
 		}
-		<span>${props._iconOnly !== true && props._label.length > 0 ? props._label : ``}</span>
-		<span></span>
+		<span>${state._iconOnly !== true && state._label.length > 0 ? state._label : ``}</span>
+		<span>${typeof slots.default === 'string' ? `<slot>${slots.default}</slot>` : ``}</span>
 		${
-			(props._icon as KoliBriAllIcon).right
-				? getIconHtml({
-						_ariaLabel: '',
-						_icon: ((props._icon as KoliBriAllIcon).right as KoliBriCustomIcon).icon,
-				  })
+			icon.right
+				? getIconHtml(
+						{
+							_ariaLabel: '',
+							_icon: (icon.right as KoliBriCustomIcon).icon,
+						},
+						` class="icon right${state._iconOnly === true ? ` ml-2` : ``}"`
+				  )
 				: ''
 		}
 	</span>
 	${
-		(props._icon as KoliBriAllIcon).bottom
+		icon.bottom
 			? getIconHtml({
 					_ariaLabel: '',
-					_icon: ((props._icon as KoliBriAllIcon).bottom as KoliBriCustomIcon).icon,
+					_icon: (icon.bottom as KoliBriCustomIcon).icon,
 			  })
 			: ''
 	}
 </kol-span-wc>`;
+};
+
+export const getSpanHtml = (props: Props): string => {
+	return `
+<kol-span${reflectAttrs(props, {}, ['_iconOnly', '_label'])}>
+	<mock:shadow-root>
+		${getSpanWcHtml(props, {
+			default: '',
+		})}
+	</mock:shadow-root>
+</kol-span>`;
 };

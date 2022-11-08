@@ -10,8 +10,8 @@ import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/component";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
 import { KoliBriColor } from "./components/badge/component";
-import { Alignment, KoliBriIconProp } from "./types/icon";
 import { Stringified } from "./types/common";
+import { Alignment, KoliBriIconProp } from "./types/icon";
 import { NavLinkProps } from "./components/link/component";
 import { AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
@@ -103,7 +103,7 @@ export namespace Components {
         /**
           * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated
@@ -160,7 +160,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -233,7 +233,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -300,7 +300,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -1411,7 +1411,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -1503,7 +1503,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated
@@ -1629,7 +1629,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -1900,7 +1900,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1914,7 +1914,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -2573,7 +2573,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated
@@ -2630,7 +2630,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -2699,7 +2699,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -2766,7 +2766,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -3873,7 +3873,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -3965,7 +3965,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated
@@ -4091,7 +4091,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -4362,7 +4362,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4376,7 +4376,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
