@@ -544,8 +544,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
 																			? 'sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'caret-up'
-																			: 'caret-down'
+																			? 'fa-solid fa-angle-up'
+																			: 'fa-solid fa-angle-down'
 																	}
 																	_iconOnly
 																	_label={'Sortierung von ' + col.label + ' ändern'}
@@ -624,8 +624,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
 																			? 'sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'caret-up'
-																			: 'caret-down'
+																			? 'fa-solid fa-angle-up'
+																			: 'fa-solid fa-angle-down'
 																	}
 																	_iconOnly
 																	_label={'Sortierung von ' + col.label + ' ändern'}

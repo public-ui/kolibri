@@ -1,14 +1,15 @@
 import { Generic } from '@public-ui/core';
 import { ButtonStates } from '../../types/button-link';
 import { Alignment, AnyIconFontClass, KoliBriAllIcon, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
+import { deprecatedHint } from '../a11y.tipps';
 import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
 import { isObject, isString, isStyle } from '../validator';
 
-const mapCustomIcon = (state: KoliBriIconState, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
+const mapCustomIcon = (state: KoliBriIconState, alignment: Alignment | 'top' | 'bottom', icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
-		state.left = icon as KoliBriCustomIcon;
+		state[alignment] = icon as KoliBriCustomIcon;
 	} else if (isString(icon, 1)) {
-		state.left = {
+		state[alignment] = {
 			icon: icon as AnyIconFontClass,
 		};
 	}
@@ -33,10 +34,10 @@ export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: Alignment):
 				};
 		}
 	} else if (typeof icon === 'object' && icon !== null) {
-		mapCustomIcon(state, icon.top);
-		mapCustomIcon(state, icon.right);
-		mapCustomIcon(state, icon.bottom);
-		mapCustomIcon(state, icon.left);
+		mapCustomIcon(state, 'top', icon.top);
+		mapCustomIcon(state, 'right', icon.right);
+		mapCustomIcon(state, 'bottom', icon.bottom);
+		mapCustomIcon(state, 'left', icon.left);
 	}
 	return state;
 };
@@ -105,6 +106,9 @@ export const validateIcon = (component: Generic.Element.Component, value?: KoliB
 };
 
 export const watchIconAlign = (component: Generic.Element.Component, value?: Alignment): void => {
+	deprecatedHint(
+		`Das Property _icon-align bzw. _iconAlign ist veraltet. Die Ausrichtung der Icon's kann jetzt direkt über das _icon-Property vorgenommen werden. (v1.1.10: https://public-ui.github.io/?path=/story/backlog-und-changelog--page)`
+	);
 	watchValidator(component, '_iconAlign', (value) => value === 'left' || value === 'right', new Set(['Alignment {left, right, top, bottom}']), value, {
 		hooks: {
 			beforePatch: () => {

@@ -1,4 +1,4 @@
-import { Bundesanstalt, SelectOption } from '@public-ui/components';
+import { Bundesanstalt, Bundesministerium, SelectOption } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -261,14 +261,16 @@ export const components: Record<string, Component> = {
 				</>
 			))}
 			<div style="max-width: 100px">
-				<KolBadge
-					_label="Ein Badge mit sehr viel Text sieht z.B. so aus!"
-					_color={{
-						backgroundColor: `#CCDEDA`,
-						color: `#005C45`,
-					}}
-				></KolBadge>
-				<KolBadge _label="Ein Badge mit sehr viel Text sieht z.B. so aus!" _color={`#CCDEDA`}></KolBadge>
+				<div class="grid gap-4">
+					<KolBadge
+						_label="Ein Badge mit sehr viel Text sieht z.B. so aus!"
+						_color={{
+							backgroundColor: `#CCDEDA`,
+							color: `#005C45`,
+						}}
+					></KolBadge>
+					<KolBadge _label="Ein Badge mit sehr viel Text sieht z.B. so aus!" _color={`#CCDEDA`}></KolBadge>
+				</div>
 			</div>
 		</div>
 	),
@@ -285,7 +287,7 @@ export const components: Record<string, Component> = {
 			<KolBreadcrumb
 				_ariaLabel="Breadcrumb aus Text-Links"
 				_links={[
-					{ _label: 'Startseite', _icon: 'home', _href: '#/' },
+					{ _label: 'Startseite', _icon: 'icofont-home', _href: '#/' },
 					{ _label: 'Unterseite der Startseite mit sehr langem Link-Test', _href: '#/unterseite' },
 					{ _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
 				]}
@@ -293,14 +295,14 @@ export const components: Record<string, Component> = {
 			<KolBreadcrumb
 				_ariaLabel="Breadcrumb aus Text-Links"
 				_links={[
-					{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'home', _iconOnly: true, _href: '#/' },
+					{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'icofont-home', _iconOnly: true, _href: '#/' },
 					{ _label: 'Unterseite der Startseite mit sehr langem Link-Test', _href: '#/unterseite' },
 					{ _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
 				]}
 			></KolBreadcrumb>
 			<KolBreadcrumb
 				_ariaLabel="Breadcrumb aus Text-Links"
-				_links={[{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'home', _iconOnly: true, _href: '#/' }]}
+				_links={[{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'icofont-home', _iconOnly: true, _href: '#/' }]}
 			></KolBreadcrumb>
 		</div>
 	),
@@ -312,7 +314,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Normal" _variant="normal"></KolButton>
 				<KolButton _label="Danger" _variant="danger"></KolButton>
 				<KolButton _label="Ghost" _variant="ghost"></KolButton>
-				<KolButton _label="Loading" _customClass="loading"></KolButton>
+				<KolButton _label="Loading" _customClass="loading" _variant="custom"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
 				<KolButton _label="Primary" _icon="icofont-home" _variant="primary"></KolButton>
@@ -320,7 +322,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Normal" _icon="icofont-home" _variant="normal"></KolButton>
 				<KolButton _label="Danger" _icon="icofont-home" _variant="danger"></KolButton>
 				<KolButton _label="Ghost" _icon="icofont-home" _variant="ghost"></KolButton>
-				<KolButton _label="Loading" _icon="icofont-home" _customClass="loading"></KolButton>
+				<KolButton _label="Loading" _icon="icofont-home" _customClass="loading" _variant="custom"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
 				<KolButton _label="Primary" _icon="icofont-home" _iconAlign="right" _variant="primary" style="width: 120px"></KolButton>
@@ -328,7 +330,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Normal" _icon="icofont-home" _iconAlign="right" _variant="normal" style="width: 120px"></KolButton>
 				<KolButton _label="Danger" _icon="icofont-home" _iconAlign="right" _variant="danger" style="width: 120px"></KolButton>
 				<KolButton _label="Ghost" _icon="icofont-home" _iconAlign="right" _variant="ghost" style="width: 120px"></KolButton>
-				<KolButton _label="Loading" _icon="icofont-home" _iconAlign="right" _customClass="loading" style="width: 120px"></KolButton>
+				<KolButton _label="Loading" _icon="icofont-home" _iconAlign="right" _customClass="loading" _variant="custom" style="width: 120px"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
 				<KolButton _label="Primary" _icon="icofont-home" _iconOnly _variant="primary"></KolButton>
@@ -336,7 +338,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Normal" _icon="icofont-home" _iconOnly _variant="normal" _tooltipAlign="bottom"></KolButton>
 				<KolButton _label="Danger" _icon="icofont-home" _iconOnly _variant="danger" _tooltipAlign="left"></KolButton>
 				<KolButton _label="Ghost" _icon="icofont-home" _iconOnly _variant="ghost" _tooltipAlign="top"></KolButton>
-				<KolButton _label="Loading" _icon="icofont-home" _iconOnly _customClass="loading" _tooltipAlign="top"></KolButton>
+				<KolButton _label="Loading" _icon="icofont-home" _iconOnly _customClass="loading" _variant="custom" _tooltipAlign="top"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
 				<KolButton _label="Primary" _icon="icofont-home" _disabled _variant="primary"></KolButton>
@@ -344,7 +346,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Normal" _icon="icofont-home" _disabled _variant="normal"></KolButton>
 				<KolButton _label="Danger" _icon="icofont-home" _disabled _variant="danger"></KolButton>
 				<KolButton _label="Ghost" _icon="icofont-home" _disabled _variant="ghost"></KolButton>
-				<KolButton _label="Loading" _icon="icofont-home" _disabled _customClass="loading"></KolButton>
+				<KolButton _label="Loading" _icon="icofont-home" _disabled _customClass="loading" _variant="custom"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center items-center justify-items-center">
 				<KolButton
@@ -406,6 +408,7 @@ export const components: Record<string, Component> = {
 						bottom: 'icofont-arrow-down',
 					}}
 					_customClass="loading"
+					_variant="custom"
 				></KolButton>
 			</div>
 		</div>
@@ -428,7 +431,7 @@ export const components: Record<string, Component> = {
 				<KolLinkButton _label="Ghost" _variant="ghost">
 					Ghost
 				</KolLinkButton>
-				<KolLinkButton _label="Loading" _customClass="loading">
+				<KolLinkButton _label="Loading" _customClass="loading" _variant="custom">
 					Loading
 				</KolLinkButton>
 			</div>
@@ -448,7 +451,7 @@ export const components: Record<string, Component> = {
 				<KolLinkButton _icon="icofont-home" _label="Ghost" _variant="ghost">
 					Ghost
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _label="Loading" _customClass="loading">
+				<KolLinkButton _icon="icofont-home" _label="Loading" _customClass="loading" _variant="custom">
 					Loading
 				</KolLinkButton>
 			</div>
@@ -468,7 +471,7 @@ export const components: Record<string, Component> = {
 				<KolLinkButton _icon="icofont-home" _iconAlign="right" _label="Ghost" _variant="ghost" style="width: 120px">
 					Ghost
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _iconAlign="right" _label="Loading" _customClass="loading" style="width: 120px">
+				<KolLinkButton _icon="icofont-home" _iconAlign="right" _label="Loading" _customClass="loading" _variant="custom" style="width: 120px">
 					Loading
 				</KolLinkButton>
 			</div>
@@ -488,27 +491,32 @@ export const components: Record<string, Component> = {
 				<KolLinkButton _icon="icofont-home" _iconOnly _label="Ghost" _variant="ghost" _tooltipAlign="top">
 					Ghost
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _iconOnly _label="Loading" _customClass="loading" _tooltipAlign="top">
+				<KolLinkButton _icon="icofont-home" _iconOnly _label="Loading" _customClass="loading" _variant="custom" _tooltipAlign="top">
 					Loading
 				</KolLinkButton>
 			</div>
-			<div class="grid gap-6 text-center items-center justify-items-center">
-				<KolLinkButton _icon="icofont-home" _disabled _label="Primary" _variant="primary">
+			<div class="grid gap-6 text-center items-center justify-items-center border border-red p-2">
+				<div class="w-full text-left">
+					<KolDetails _summary="Hinweis">
+						Einen Link kann man nicht deaktivieren und daher ist das Property `_disabled` bei einem LinkButton nicht vorgesehen.
+					</KolDetails>
+				</div>
+				<KolLinkButton class="opacity-25" _icon="icofont-home" _disabled _label="Primary" _variant="primary">
 					Primary
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _disabled _label="Secondary" _variant="secondary">
+				<KolLinkButton class="opacity-25" _icon="icofont-home" _disabled _label="Secondary" _variant="secondary">
 					Secondary
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _disabled _label="Normal" _variant="normal">
+				<KolLinkButton class="opacity-25" _icon="icofont-home" _disabled _label="Normal" _variant="normal">
 					Normal
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _disabled _label="Danger" _variant="danger">
+				<KolLinkButton class="opacity-25" _icon="icofont-home" _disabled _label="Danger" _variant="danger">
 					Danger
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _disabled _label="Ghost" _variant="ghost">
+				<KolLinkButton class="opacity-25" _icon="icofont-home" _disabled _label="Ghost" _variant="ghost">
 					Ghost
 				</KolLinkButton>
-				<KolLinkButton _icon="icofont-home" _disabled _label="Loading" _customClass="loading">
+				<KolLinkButton class="opacity-25" _icon="icofont-home" _disabled _label="Loading" _customClass="loading" _variant="custom">
 					Loading
 				</KolLinkButton>
 			</div>
@@ -582,6 +590,7 @@ export const components: Record<string, Component> = {
 					}}
 					_label="Loading"
 					_customClass="loading"
+					_variant="custom"
 				>
 					Loading
 				</KolLinkButton>
@@ -610,17 +619,17 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-CARD': () => (
 		<div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-6">
-			<KolCard _hasFooter _headline="H1-Überschrift der Card" _level={1}>
+			<KolCard _hasFooter _heading="H1-Überschrift der Card" _level={1}>
 				<div slot="content">
 					Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
 					Fehler näher beschrieben. Hier wird der Fehler näher beschrieben.
 				</div>
 				<div slot="footer">Fußbereich der Card</div>
 			</KolCard>
-			<KolCard _headline="H2-Überschrift der Card" _level={2}>
+			<KolCard _heading="H2-Überschrift der Card" _level={2}>
 				<div slot="content">Inhalt der Card</div>
 			</KolCard>
-			<KolCard _headline="Bild in der Card" _hasFooter _level={2}>
+			<KolCard _heading="Bild in der Card" _hasFooter _level={2}>
 				<div slot="content">
 					<img alt="Einleitungsbild der Stadtverwaltung" class="w-full" src="http://placeimg.com/400/200/arch" />
 				</div>
@@ -631,22 +640,22 @@ export const components: Record<string, Component> = {
 					</KolButtonGroup>
 				</div>
 			</KolCard>
-			<KolCard _headline="H3-Überschrift der Card" _level={3}>
+			<KolCard _heading="H3-Überschrift der Card" _level={3}>
 				<div slot="header">Fußbereich der Card</div>
 				<div slot="content">
 					Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
 					Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben.
 				</div>
 			</KolCard>
-			<KolCard _hasFooter _headline="H4-Überschrift der Card" _level={4}>
+			<KolCard _hasFooter _heading="H4-Überschrift der Card" _level={4}>
 				<div slot="content">Inhalt der Card</div>
 				<div slot="footer">Fußbereich der Card</div>
 			</KolCard>
-			<KolCard _hasFooter _headline="H5-Überschrift der Card" _level={5}>
+			<KolCard _hasFooter _heading="H5-Überschrift der Card" _level={5}>
 				<div slot="content">Inhalt der Card</div>
 				<div slot="footer">Fußbereich der Card</div>
 			</KolCard>
-			<KolCard _hasFooter _headline="H6-Überschrift der Card" _level={6}>
+			<KolCard _hasFooter _heading="H6-Überschrift der Card" _level={6}>
 				<div slot="content">Inhalt der Card</div>
 				<div slot="footer">
 					<KolButtonGroup>
@@ -849,58 +858,6 @@ export const components: Record<string, Component> = {
 			<KolInputFile _disabled _id="file" _name="file">
 				Datei hochladen (Disabled)
 			</KolInputFile>
-		</div>
-	),
-	'KOL-INPUT-DATE': () => (
-		<div class="grid justify-center gap-6">
-			<KolInputNumber
-				_id="date"
-				_name="date"
-				_required
-				_type="date"
-				_error={ERROR_MSG}
-				_icon={{
-					left: {
-						icon: 'icofont-home',
-					},
-					right: {
-						icon: 'icofont-home',
-					},
-				}}
-				_touched
-			>
-				Zahleneingabe
-			</KolInputNumber>
-			<KolInputNumber _id="date" _max={10} _min={-10} _name="date" _step={2} _type="date">
-				Zahleneingabe (-10 bis 10 in 2er Schritten)
-			</KolInputNumber>
-			<KolInputNumber _id="date" _name="date" _type="date">
-				Datumseingabe
-			</KolInputNumber>
-			<KolInputNumber _id="time" _name="time" _type="datetime-local">
-				Local-Datetime (Standard)
-			</KolInputNumber>
-			<KolInputNumber _id="time" _name="time" _step={1} _type="datetime-local" _error={ERROR_MSG}>
-				Local-Datetime (mit Sekunden)
-			</KolInputNumber>
-			<KolInputNumber _id="month" _name="month" _type="month">
-				Monat
-			</KolInputNumber>
-			<KolInputNumber _id="week" _name="week" _type="week">
-				Woche
-			</KolInputNumber>
-			<KolInputNumber _id="time" _name="time" _type="time">
-				Zeit (Standard)
-			</KolInputNumber>
-			<KolInputNumber _id="time" _name="time" _step={1} _type="time">
-				Zeit (mit Sekunden)
-			</KolInputNumber>
-			<KolInputNumber _id="date" _name="date" _read-only _type="date">
-				Zahleneingabe (Readonly)
-			</KolInputNumber>
-			<KolInputNumber _disabled _id="date" _name="date" _type="date">
-				Zahleneingabe (Disabled)
-			</KolInputNumber>
 		</div>
 	),
 	'KOL-INPUT-NUMBER': () => (
@@ -1151,9 +1108,9 @@ export const components: Record<string, Component> = {
 				_heading="Überschrift für diese Linkgroup"
 				_links={[
 					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
 				]}
 				_orientation="vertical"
 			></KolLinkGroup>
@@ -1161,9 +1118,9 @@ export const components: Record<string, Component> = {
 				_heading="Horizontale Linkgroup"
 				_links={[
 					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
 				]}
 				_orientation="horizontal"
 			></KolLinkGroup>
@@ -1200,9 +1157,9 @@ export const components: Record<string, Component> = {
 				_ariaLabel="Skip-Nav"
 				_links={[
 					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
 				]}
 			></KolSkipNav>
 		</div>
@@ -1231,23 +1188,24 @@ export const components: Record<string, Component> = {
 				_ariaLabel="Skip-Nav"
 				_links={[
 					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
 				]}
 			></KolSkipNav>
 		</div>
 	),
 	'KOL-LOGO': () => (
 		<div class="grid justify-center gap-6">
-			<KolLogo _abbr="BReg"></KolLogo>
-			<KolLogo _abbr="BMF"></KolLogo>
-			<KolLogo _abbr="BMG"></KolLogo>
+			<KolLogo _org={Bundesministerium['Die Bundesregierung']}></KolLogo>
+			<KolLogo _org={Bundesministerium['Bundesministerium der Finanzen']}></KolLogo>
+			<KolLogo _org={Bundesministerium['Bundesministerium für Gesundheit']}></KolLogo>
 		</div>
 	),
 	'KOL-MODAL': () => (
 		<div class="grid justify-center gap-6">
 			<KolModal
+				_ariaLabel=""
 				_width="80%"
 				ref={(element) => {
 					modalElement = element;
@@ -1534,12 +1492,12 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-PAGINATION': () => (
 		<div class="grid justify-center gap-6">
-			<KolPagination _total={15} _page={6} _sibling-count={0} _variant="primary"></KolPagination>
-			<KolPagination _total={15} _page={6} _variant="secondary"></KolPagination>
-			<KolPagination _total={15} _page={6} _sibling-count={0} _boundary-count={2} _variant="normal"></KolPagination>
-			<KolPagination _total={15} _page={6} _boundary-count={2} _variant="danger"></KolPagination>
-			<KolPagination _total={15} _page={6} _boundary-count={2} _tooltipAlign="bottom" _variant="ghost"></KolPagination>
-			<KolPagination _total={15} _pageSizeOptions={[1, 3, 6]} _page={6} _boundary-count={2} _tooltipAlign="bottom" _variant="ghost"></KolPagination>
+			<KolPagination _on={{}} _total={15} _page={6} _sibling-count={0} _variant="primary"></KolPagination>
+			<KolPagination _on={{}} _total={15} _page={6} _variant="secondary"></KolPagination>
+			<KolPagination _on={{}} _total={15} _page={6} _sibling-count={0} _boundary-count={2} _variant="normal"></KolPagination>
+			<KolPagination _on={{}} _total={15} _page={6} _boundary-count={2} _variant="danger"></KolPagination>
+			<KolPagination _on={{}} _total={15} _page={6} _boundary-count={2} _tooltipAlign="bottom" _variant="ghost"></KolPagination>
+			<KolPagination _on={{}} _total={15} _pageSizeOptions={[1, 3, 6]} _page={6} _boundary-count={2} _tooltipAlign="bottom" _variant="ghost"></KolPagination>
 		</div>
 	),
 	'KOL-PROGRESS': () => (
@@ -1693,7 +1651,6 @@ export const components: Record<string, Component> = {
 						_label: 'Ausgewählt',
 						_on: {
 							onCreate: () => {},
-							onClose: true,
 						},
 					},
 					{ _label: 'Nicht ausgewählt' },
@@ -1737,9 +1694,9 @@ export const components: Record<string, Component> = {
 				_ariaLabel="Skip-Nav"
 				_links={[
 					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'icofont-home' },
+					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
 				]}
 			></KolSkipNav>
 		</div>
@@ -1777,6 +1734,9 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-TOOLTIP': () => (
 		<div class="grid justify-center gap-6">
+			<KolDetails _summary="Hinweis">
+				Damit der Tooltip korrekt ausgerichtet wird, muss für das vorrangehende Referenz-Element `inline-block` gesetzt werden.
+			</KolDetails>
 			<KolButton _icon="icofont-simple-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary"></KolButton>
 			<KolButton _icon="icofont-simple-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary"></KolButton>
 			<KolButton _icon="icofont-simple-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal"></KolButton>

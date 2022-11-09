@@ -28,10 +28,10 @@ export class KolSpan implements Props {
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop({ reflect: false }) public _iconOnly?: boolean = false;
+	@Prop() public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ reflect: false }) public _label!: string;
+	@Prop() public _label!: string;
 }

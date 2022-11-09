@@ -1,12 +1,6 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBriDevHelper } from '@public-ui/components';
 
-/**
- * TODO:
- * - logo block as image
- */
-
-// Design System der GZD (Desy)
-export const DESY = KoliBri.createTheme('desy', {
+KoliBriDevHelper.patchTheme('desy', {
 	GLOBAL:
 		':host {--color-primary: #326cae;--color-primary-10: #1e538f;--color-primary-20: #08335e;--color-yellow-neutral: #ef9e48;--color-dark-yellow-neutral: #a8672c;--color-warning: #a94442;--color-success: #5cb85c;--color-background: #edf4f7;--color-black: #000000;--color-gray-10: #333333;--color-gray-20: #666666;--color-gray-30: #737373;--color-gray-40: #999999;--color-gray-50: #b3b3b3;--color-gray-60: #dddddd;--color-gray-70: #f2f2f2;--color-white: #ffffff;--font-family: BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif;--font-size: 14px;--spacing: 0.25em;}:host {color: var(--color-black);}:host * {box-sizing: border-box;font-family: var(--font-family);}:host h1,:host h2,:host h3,:host h4,:host h5,:host h6 {margin: 0;font-family: var(--font-family);}a,button,input,option,select,summary,textarea {-ms-hyphens: auto;-webkit-hyphens: auto;hyphens: auto;letter-spacing: inherit;word-break: break-word;}a:focus,button:focus,input:focus,select:focus,summary:focus,textarea:focus {cursor: pointer;outline-color: var(--color-ocean);outline-offset: 2px;outline-style: solid;outline-width: 0;transition: outline-offset 0.2s linear;}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}',
 	'KOL-BUTTON':

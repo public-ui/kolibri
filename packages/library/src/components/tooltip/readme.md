@@ -6,6 +6,8 @@ Die **Tooltip**-Komponente implementiert das Gegenstück zum `Aria-Label`. Es is
 
 Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. überlagerte Seiteninformationen wieder sichtbar zu machen.
 
+**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, muss für das vorrangehende Referenz-Element `inline-block` gesetzt werden.
+
 ## Barrierefreiheit
 
 Die Tooltip-Komponente wird bei Focus oder Hover angezeigt und dient ausschließlich dem/der sehenden Nutzer:in ohne Screenreader die Beschriftung (Aria-Label) lesen zu können. Der Text des Tooltips ist selbst nicht mit der Tastatur erreichbar und zudem mittels Aria-Hidden für die Screenreader versteckt.

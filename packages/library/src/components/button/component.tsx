@@ -207,7 +207,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop({ reflect: false }) public _tabIndex?: number;
+	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
@@ -417,7 +417,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
+		// this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
