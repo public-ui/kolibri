@@ -3,7 +3,7 @@ name: CI-Pipeline
 on:
   pull_request_target:
     types: [opened, closed, synchronize]
-  # push:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -19,15 +19,15 @@ jobs:
         with:
           cache: pnpm
           node-version: 16
-      - uses: actions/cache@v3
-        env:
-          cache-name: cache-pnpm-modules
-        with:
-          # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm
-          restore-keys: |
-            ${{ runner.os }}-pnpm
+#       - uses: actions/cache@v3
+#         env:
+#           cache-name: cache-pnpm-modules
+#         with:
+#           # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
+#           path: ~/.pnpm-store
+#           key: ${{ runner.os }}-pnpm
+#           restore-keys: |
+#             ${{ runner.os }}-pnpm
       - name: Install
         run: pnpm i
       - name: Unused
