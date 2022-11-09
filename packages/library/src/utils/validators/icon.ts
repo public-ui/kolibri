@@ -5,11 +5,11 @@ import { deprecatedHint } from '../a11y.tipps';
 import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
 import { isObject, isString, isStyle } from '../validator';
 
-const mapCustomIcon = (state: KoliBriIconState, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
+const mapCustomIcon = (state: KoliBriIconState, alignment: Alignment | 'top' | 'bottom', icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
-		state.left = icon as KoliBriCustomIcon;
+		state[alignment] = icon as KoliBriCustomIcon;
 	} else if (isString(icon, 1)) {
-		state.left = {
+		state[alignment] = {
 			icon: icon as AnyIconFontClass,
 		};
 	}
@@ -34,10 +34,10 @@ export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: Alignment):
 				};
 		}
 	} else if (typeof icon === 'object' && icon !== null) {
-		mapCustomIcon(state, icon.top);
-		mapCustomIcon(state, icon.right);
-		mapCustomIcon(state, icon.bottom);
-		mapCustomIcon(state, icon.left);
+		mapCustomIcon(state, 'top', icon.top);
+		mapCustomIcon(state, 'right', icon.right);
+		mapCustomIcon(state, 'bottom', icon.bottom);
+		mapCustomIcon(state, 'left', icon.left);
 	}
 	return state;
 };
@@ -47,6 +47,7 @@ const beforePatchIcon = (component: Generic.Element.Component): void => {
 		const icon = component.nextState?.get('_icon') as KoliBriIconProp;
 		const iconAlign = (component.nextState?.get('_iconAlign') as Alignment) || (component.state as ButtonStates)._iconAlign;
 		component.nextState?.set('_icon', mapIconProp2State(icon, iconAlign));
+		console.log('beforePatchIcon', icon, iconAlign, mapIconProp2State(icon, iconAlign));
 	} else if (component.nextState?.has('_iconAlign')) {
 		const lastIconAlign = (component.state as ButtonStates)._iconAlign;
 		component.nextState?.set('_icon', {
