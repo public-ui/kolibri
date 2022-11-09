@@ -106,12 +106,6 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 | `_ordered`                | `_ordered`         | <span style="color:red">**[DEPRECATED]**</span> Wird mittels der Property \_list-style-type automatisch gesteuert. Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.<br/><br/> | `boolean \| undefined`                                                                                                                                                                                                | `undefined`  |
 | `_orientation`            | `_orientation`     | Gibt die Ausrichtung der LinkList an.                                                                                                                                                                  | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
 
-## Shadow Parts
-
-| Part     | Description                      |
-| -------- | -------------------------------- |
-| `"link"` | Ermöglicht das Stylen der Links. |
-
 ## Dependencies
 
 ### Depends on
