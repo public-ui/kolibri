@@ -5,7 +5,7 @@ specifiers:
   cpy-cli: 4.2.0
   create-create-app: 7.3.0
   kleur: 4.1.5
-  npm-check-updates: 16.3.16
+  npm-check-updates: 16.3.18
   npm-run-all: 4.1.5
   rimraf: 3.0.2
   tsup: 6.4.0
@@ -19,7 +19,7 @@ dependencies:
 
 devDependencies:
   '@types/node': 18.11.9
-  npm-check-updates: 16.3.16
+  npm-check-updates: 16.3.18
   rimraf: 3.0.2
   tsup: 6.4.0_typescript@4.8.4
   typescript: 4.8.4
@@ -2480,8 +2480,8 @@ packages:
       npm-normalize-package-bin: 1.0.1
     dev: true
 
-  /npm-check-updates/16.3.16:
-    resolution: {integrity: sha512-OJRfwc2+p0ZnDvZQ4FOou9ev4kI6c0Lmu+uEJjijCNUSXnf5AEpyB6+kX31HsmkDzQ10ApA4CvM1TE+rXP+R8g==}
+  /npm-check-updates/16.3.18:
+    resolution: {integrity: sha512-J4qOkWti3D3mDNbo1D7oBEWtSct+HxwU1rRXJyMEPOrkyEXssc1KS7pgvtsXFO8QMtSg7dLyxyi8stLC7ym4+g==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
