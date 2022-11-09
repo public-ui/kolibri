@@ -47,7 +47,6 @@ const beforePatchIcon = (component: Generic.Element.Component): void => {
 		const icon = component.nextState?.get('_icon') as KoliBriIconProp;
 		const iconAlign = (component.nextState?.get('_iconAlign') as Alignment) || (component.state as ButtonStates)._iconAlign;
 		component.nextState?.set('_icon', mapIconProp2State(icon, iconAlign));
-		console.log('beforePatchIcon', icon, iconAlign, mapIconProp2State(icon, iconAlign));
 	} else if (component.nextState?.has('_iconAlign')) {
 		const lastIconAlign = (component.state as ButtonStates)._iconAlign;
 		component.nextState?.set('_icon', {
