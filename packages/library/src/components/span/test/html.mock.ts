@@ -26,7 +26,7 @@ export const getSpanWcHtml = (
 	);
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${reflectAttrs(props, {}, ['_iconOnly', '_label'])}${additionalAttrs}>
+<kol-span-wc${reflectAttrs(props, {}, ['_iconOnly', '_label'])}${state._iconOnly === true ? ` class="icon-only"` : ``}${additionalAttrs}>
 	${
 		icon.top
 			? getIconHtml({
