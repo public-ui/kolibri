@@ -1,16 +1,17 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Events } from '../../enums/events';
-import { Alignment } from '../../types/icon';
+import { KoliBriIconProp } from '../../types/icon';
 
 import { Generic } from '@public-ui/core';
 import { EventCallback, EventValueCallback } from '../../types/callbacks';
+import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
-import { Icofont } from '../../types/icofont';
-import { Stringified } from '../../types/common';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
+
+const PrerenderEvent = new CustomEvent('prerender');
 
 export type KoliBriTabsCallbacks = /* {
 	onClose?: true | EventValueCallback<Event, number>;
@@ -22,7 +23,7 @@ export type KoliBriTabsCallbacks = /* {
 				callback: EventCallback<Event>;
 		  };
 } & {
-	[Events.onSelect]?: EventValueCallback<Event, number>;
+	[Events.onSelect]?: EventValueCallback<CustomEvent | KeyboardEvent | PointerEvent, number>;
 };
 
 type RequiredTabButtonProps = {
@@ -30,8 +31,7 @@ type RequiredTabButtonProps = {
 };
 type OptionalTabButtonProps = {
 	disabled: boolean;
-	icon: Icofont;
-	iconAlign: Alignment;
+	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 	on: KoliBriTabsCallbacks;
 };
@@ -106,13 +106,13 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 					break;
 			}
 			if (selectedIndex !== null) {
-				this.onSelect(selectedIndex, true);
+				this.onSelect(event, selectedIndex, true);
 			}
 		}, 250);
 	};
 
-	private readonly onClickSelect = (index: number): void => {
-		this.onSelect(index, true);
+	private readonly onClickSelect = (event: PointerEvent, index: number): void => {
+		this.onSelect(event, index, true);
 	};
 
 	// private readonly onClickClose = (event: Event, button: TabButtonProps, index: number) => {
@@ -127,7 +127,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	private readonly preRender = (): void => {
 		if (this.state._selected > 0 && this.state._selected > this.state._tabs.length - 1) {
 			if (this.state._tabs.length > 0) {
-				this.onSelect(this.state._tabs.length - 1);
+				this.onSelect(PrerenderEvent, this.state._tabs.length - 1);
 			}
 			return <Host></Host>;
 		} else if (this.state._tabs.length > 0 && this.state._selected < this.state._tabs.length) {
@@ -142,7 +142,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 				if (this._selected === index) {
 					devHint(`[KolTabs] Alle Tabs sind deaktiviert und somit kann kein Tab angezeigt werden.`);
 				}
-				this.onSelect(index);
+				this.onSelect(PrerenderEvent, index);
 			}
 		}
 	};
@@ -151,68 +151,36 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		return (
 			<kol-button-group role="tablist" aria-label={this.state._ariaLabel} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => {
-					let showIcon = false;
-					if (typeof button._icon === 'string') {
-						showIcon = true;
-					}
-					let attr = {};
-					if (button._iconOnly === true) {
-						attr = {
-							'aria-label': button._label,
-							// role: 'button',
-						};
-					}
 					return (
 						/**
 						 * Ohne Shadow-DOM könnte auch die kol-button-wc genutzt werden.
 						 */
 						<div class="inline-flex">
-							<button
-								{...attr}
-								class={{
-									'h-full': true,
-									'primary ': this.state._selected === index,
-									'normal ': this.state._selected !== index,
+							<kol-button-wc
+								class="h-full"
+								_ariaControls={`tabpanel-${index}`}
+								_id={`tab-${index}`}
+								_disabled={button._disabled}
+								_icon={button._icon}
+								_iconOnly={button._iconOnly}
+								_label={button._label && button._label}
+								_on={{
+									onClick: (event) => this.onClickSelect(event, index),
+									onMouseDown: this.onMouseDown,
 								}}
-								disabled={button._disabled}
-								aria-controls={`tabpanel-${index}`}
+								_tabIndex={this.state._selected === index ? 0 : -1}
+								_variant={this.state._selected === index ? 'custom' : undefined}
+								_customClass={this.state._selected === index ? 'selected' : undefined}
 								aria-selected={this.state._selected === index ? 'true' : 'false'}
-								id={`tab-${index}`}
-								part={`button${button._disabled === true ? '-disabled' : ''}${this.state._selected === index ? ' primary' : ' normal'}${
-									button._disabled === true ? '-disabled' : ''
-								}`}
 								role="tab"
-								tabindex={this.state._selected === index ? '0' : '-1'}
-								onMouseDown={this.onMouseDown}
-								onClick={() => this.onClickSelect(index)}
-							>
-								{showIcon && button._iconAlign !== 'right' && (
-									<kol-icon-icofont
-										class={{
-											'mr-2': button._iconOnly === false || button._iconOnly === undefined,
-										}}
-										_ariaLabel=""
-										_icon={button._icon as Icofont}
-									/>
-								)}
-								{button._iconOnly !== true && button._label}
-								{showIcon && button._iconAlign === 'right' && (
-									<kol-icon-icofont
-										class={{
-											'ml-2': button._iconOnly === false || button._iconOnly === undefined,
-										}}
-										_ariaLabel=""
-										_icon={button._icon as Icofont}
-									/>
-								)}
-							</button>
+							></kol-button-wc>
 							{/* {typeof button._on?.onClose === 'function' ||
                         (button._on?.onClose === true && (
                             <kol-button-wc
                                 class="close-button"
                                 _icon={{
                                     left: {
-                                        icon: 'icofont-close',
+                                        icon: 'fa-solid fa-xmark',
                                         style: {
                                             'font-size': '200%',
                                         },
@@ -294,7 +262,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
+	@Prop({ mutable: true, reflect: false }) public _selected?: number = 0;
 
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
@@ -410,25 +378,25 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	}
 
-	private onSelect(index: number, focus = false): void {
-		this.selectedTimeout = setTimeout(() => {
-			clearTimeout(this.selectedTimeout);
-			this._selected = index;
-			if (typeof this._on?.onSelect === 'function') {
-				this._on?.onSelect(null as unknown as Event, index);
-			}
-			if (focus === true) {
-				// TODO: prüfen, ob hier noch was offen ist
-				// devHint('[KolTabs] Tab-Fokus-verschieben geht im Moment nicht.');
-				this.selectedTimeout = setTimeout(() => {
-					clearTimeout(this.selectedTimeout);
-					if (this.tabsElement instanceof HTMLElement) {
-						const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabsElement);
-						button?.focus();
-					}
-				}, 100);
-			}
-		}, 0);
+	private onSelect(event: CustomEvent | KeyboardEvent | PointerEvent, index: number, focus = false): void {
+		// this.selectedTimeout = setTimeout(() => {
+		// 	clearTimeout(this.selectedTimeout);
+		this._selected = index;
+		if (typeof this._on?.onSelect === 'function') {
+			this._on?.onSelect(event, index);
+		}
+		if (focus === true) {
+			// TODO: prüfen, ob hier noch was offen ist
+			// devHint('[KolTabs] Tab-Fokus-verschieben geht im Moment nicht.');
+			this.selectedTimeout = setTimeout(() => {
+				clearTimeout(this.selectedTimeout);
+				if (this.tabsElement instanceof HTMLElement) {
+					const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabsElement);
+					button?.focus();
+				}
+			}, 100);
+		}
+		// }, 0);
 	}
 
 	// private onClose(button: TabButtonProps, event: Event, index: number) {
@@ -454,7 +422,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 // console.log(
 //   stringifyJson([
-//     { _label: 'Tab 1', _href: '#tab-1', _icon: 'icofont-home' },
+//     { _label: 'Tab 1', _href: '#tab-1', _icon: 'fa-solid fa-house' },
 //     { _label: 'Tab 2', _id: '#tab-2' },
 //     { _label: 'Tab 3', _id: '#tab-3' },
 //     { _label: 'Tab 4', _id: '#tab-4' },

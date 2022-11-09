@@ -19,5 +19,8 @@ executeTests<Props>(
 		_ariaLabel: ['Aria-Label'],
 		_links: [[], [{ _label: 'Label' }]],
 	},
-	getBreadcrumbHtml
+	getBreadcrumbHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

@@ -13,11 +13,14 @@ import {
 	RequiredLinkStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
-import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
+import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { validateTabIndex } from '../../utils/validators/tab-index';
 import { TooltipAlignment } from '../tooltip/component';
+import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
+import { Stringified } from '../../types/common';
 
 type RequiredNavLinkProps = RequiredLinkProps & unknown;
 type OptionalNavLinkProps = OptionalLinkProps & {
@@ -133,6 +136,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						textDecorationLine: underline === true ? 'underline' : 'none',
 						width: fill === true ? '100%' : undefined,
 					}}
+					tabIndex={this.state._tabIndex}
 				>
 					{this.state._icon.left && (
 						<kol-icon
@@ -176,7 +180,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 								'relative ': this.state._useCase !== 'text',
 							}}
 						>
-							<kol-icon _ariaLabel={this.state._targetDescription as string} _icon={'icofont-external-link'} />
+							<kol-icon _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
 						</sup>
 					)}
 				</a>
@@ -237,7 +241,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
@@ -272,6 +276,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 */
 	@Prop() public _stealth?: boolean = false;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
@@ -388,7 +397,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
-		watchIcon(this, value);
+		validateIcon(this, value);
 	}
 
 	/**
@@ -422,6 +431,14 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Watch('_stealth')
 	public validateStealth(value?: boolean): void {
 		watchBoolean(this, '_stealth', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		validateTabIndex(this, value);
 	}
 
 	/**
@@ -512,12 +529,13 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateFill(this._fill);
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
+		// this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateOn(this._on);
 		this.validatePart(this._part);
 		this.validateSelector(this._selector);
 		this.validateStealth(this._stealth);
+		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);

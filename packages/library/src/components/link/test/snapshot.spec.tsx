@@ -18,19 +18,21 @@ executeTests<LinkProps>(
 	{
 		_ariaExpanded: [false, true],
 		_ariaLabel: ['Aria-Label'],
-		_fill: [false, true],
+		// _fill: [false, true],
 		_href: ['https://google.de'],
-		_icon: ['home'],
-		_iconAlign: ['left', 'right'],
+		_icon: ['fa-solid fa-house'],
 		_iconOnly: [false, true],
-		// _stealth: [false, true],
+		_stealth: [false, true],
 		// _target: ['_self', '_blank', 'egal'],
 		// _targetDescription: ['Der Link wird in einem neuen Tab geöffnet.'],
 		// _tooltipAlign: ['top', 'right', 'bottom', 'left'],
 		// _underline: [false, true],
 		// _useCase: ['text', 'image', 'nav'],
 	},
-	getLinkHtml
+	getLinkHtml,
+	{
+		execMode: 'default', // ready
+	}
 );
 
 executeTests<LinkProps>(
@@ -50,12 +52,15 @@ executeTests<LinkProps>(
 		// _icon: ['home'],
 		// _iconAlign: ['left', 'right'],
 		// _iconOnly: [false, true],
-		_stealth: [false, true],
+		// _stealth: [false, true],
 		_target: ['_self', '_blank', 'egal'],
 		_targetDescription: ['Der Link wird in einem neuen Tab geöffnet.'],
 		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
 		_underline: [false, true],
 		_useCase: ['text', 'image', 'nav'],
 	},
-	getLinkHtml
+	getLinkHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

@@ -128,7 +128,13 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											_ariaExpanded={link._active === true}
 											_disabled={link._disabled}
 											_icon={
-												this.state._collapsible === true ? (link._active === true ? 'minus' : 'plus') : typeof link._icon === 'string' ? link._icon : 'broken'
+												this.state._collapsible === true
+													? link._active === true
+														? 'fa-solid fa-minus'
+														: 'fa-solid fa-plus'
+													: typeof link._icon === 'string'
+													? link._icon
+													: 'broken'
 											}
 											_iconOnly={this.state._compact === true || link._iconOnly === true}
 											_part={link._active === true ? 'selected' : undefined}
@@ -167,7 +173,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										// HERE NOT! _ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
 										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
 										_href={link._href}
-										_icon={typeof link._icon === 'string' ? link._icon : 'broken'}
+										_icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'}
 										_icon-only={this.state._compact === true || link._iconOnly === true}
 										_on={link._on}
 										_part={link._active === true ? 'selected' : undefined}
@@ -214,7 +220,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 								_ariaControls="nav"
 								_ariaExpanded={this.state._compact === true}
 								_ariaLabel={this.state._compact ? 'Navigation maximieren' : 'Navigation minimieren'}
-								_icon={this.state._compact ? 'rounded-double-right' : 'rounded-double-left'}
+								_icon={this.state._compact ? 'fa-solid fa-angles-right' : 'fa-solid fa-angles-left'}
 								_iconOnly
 								_label={this.state._compact ? 'Navigation maximieren' : 'Navigation minimieren'}
 								_on={{
@@ -404,16 +410,16 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 // console.log(
 //   stringifyJson([
-//     { _label: '1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
-//     { _label: '2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
+//     { _label: '1 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed', _target: 'asdasd' },
+//     { _label: '2 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed' },
 //     {
 //       _active: true,
 //       _label: '3 Navigationspunkt',
 //       _href: '#abc',
-//       _icon: 'icofont-woodpecker',
+//       _icon: 'fa-solid fa-folder-closed',
 //       _children: [
-//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
-//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
+//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed' },
+//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed', _target: 'asdasd' },
 //         {
 //           _active: true,
 //           _label: '3.3 Navigationspunkt',

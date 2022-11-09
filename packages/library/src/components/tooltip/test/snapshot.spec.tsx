@@ -16,8 +16,11 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_align: ['top', 'right', 'bottom', 'left'],
-		_label: ['Text'],
+		_align: ['top'],
+		_label: [''],
 	},
-	getTooltipHtml
+	getTooltipHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

@@ -19,5 +19,8 @@ executeTests<Props>(
 		_title: ['Text'],
 		_tooltipAlign: ['left', 'bottom', 'right', 'top'],
 	},
-	getAbbrHtml
+	getAbbrHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

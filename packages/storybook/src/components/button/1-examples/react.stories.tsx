@@ -53,6 +53,23 @@ WithIcon.storyName = 'Button mit Icon und Text';
  *
  * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
  */
+export const WithAllIcon = (args: any) => (
+	<div>
+		<KolButton {...args}></KolButton>
+	</div>
+);
+WithAllIcon.args = {
+	...DefaultArgs,
+	_icon:
+		'{"top":{"icon":"icofont-arrow-up"},"right":{"icon":"icofont-arrow-right"},"bottom":{"icon":"icofont-arrow-down"},"left":{"icon":"icofont-arrow-left"}}',
+};
+WithAllIcon.storyName = 'Button mit allen Icon und Text';
+
+/**
+ * Die Component stellt eine konkrete Story im Storybook dar.
+ *
+ * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
+ */
 export const WithIcons = (args: any) => (
 	<div>
 		<KolButton {...args}></KolButton>

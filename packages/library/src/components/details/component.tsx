@@ -52,7 +52,7 @@ export class KolDetails implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _open?: boolean = false;
 
 	/**
 	 * Gibt die Zusammenfassung der Detailbeschreibung an.

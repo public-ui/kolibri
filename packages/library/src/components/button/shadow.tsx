@@ -11,6 +11,7 @@ import {
 } from '../../types/button-link';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { TooltipAlignment } from '../tooltip/component';
+import { Stringified } from '../../types/common';
 
 @Component({
 	tag: 'kol-button',
@@ -58,6 +59,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				_id={this._id}
 				_label={this._label}
 				_on={this._on}
+				_tabIndex={this._tabIndex}
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
 				_variant={this._variant}
@@ -66,7 +68,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 					width: 'inherit',
 				}}
 			>
-				<slot />
+				<slot name="expert" slot="expert"></slot>
 			</kol-button-wc>
 		);
 	}
@@ -94,7 +96,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 	 */
-	@Prop({ reflect: true }) public _ariaLabel?: string = '';
+	@Prop() public _ariaLabel?: string = '';
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
@@ -109,7 +111,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
@@ -131,12 +133,17 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt den Label für die Beschriftung der Schaltfläche an.
 	 */
-	@Prop({ reflect: true }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.

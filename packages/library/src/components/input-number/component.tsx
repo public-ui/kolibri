@@ -103,7 +103,7 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = false;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
@@ -198,10 +198,12 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+	 *
+	 * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
 	 */
 	@Prop() public _type?: InputNumberType = 'number';
 
@@ -395,6 +397,7 @@ export class KolInputNumber implements ComponentApi {
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_type')
 	public validateType(value?: InputNumberType): void {

@@ -1,15 +1,16 @@
 import { Generic } from '@public-ui/core';
 import { ButtonProps } from '../../../types/button-link';
-import { isIcon } from '../../../types/icon';
+import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
-import { objectObjectHandler, parseJson, setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../../utils/prop.validators';
+import { objectObjectHandler, parseJson, setState, watchBoolean, watchString, watchValidator } from '../../../utils/prop.validators';
 import { isString } from '../../../utils/validator';
+import { isIcon } from '../../../utils/validators/icon';
+import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
+import { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import { KoliBriInputIcon } from '../../input-text/types';
 import { Props, Watches } from './types';
-import { Props as AdapterProps } from '../../input-adapter-leanup/types';
-import { Stringified } from '../../../types/common';
 
 const beforePatchIcon = (value: unknown, nextState: Map<string, unknown>): void => {
 	const icon = value as KoliBriInputIcon;
@@ -62,7 +63,7 @@ export class InputController extends ControlledInputController implements Watche
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateError(value?: string): void {
-		watchString(this.component, '_error', value, { minLength: 0 });
+		watchString(this.component, '_error', value);
 	}
 
 	/**
@@ -163,7 +164,7 @@ export class InputController extends ControlledInputController implements Watche
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateTabIndex(value?: number): void {
-		watchNumber(this.component, '_tabIndex', value);
+		validateTabIndex(this.component, value);
 	}
 
 	/**

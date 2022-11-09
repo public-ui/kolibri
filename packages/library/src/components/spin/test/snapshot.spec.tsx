@@ -18,5 +18,8 @@ executeTests<Props>(
 	{
 		_show: [false, true],
 	},
-	getSpinHtml
+	getSpinHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

@@ -86,12 +86,62 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Table: Header mit Sort-Button und ohne - Grid korrekt behandeln</li>
 		<li>🔧 Input: Zeichenzähler für alle Texteingabefelder</li>
 		<li>🔧 Checkbox: Checkbox und mit beliebigen Icon statt "Border-Häkchen"</li>
+		<li>🔧 Slot-Konzept: Weitere Komponenten umstellen (Input-Labels)</li>
+		<li>🌟 ButtonLink unterstützt das `target`-Property</li>
+		<li>🌟 DX: Vollständig einheitliche Properties und deren Verwendung über alle Komponenten</li>
 	</ul>
 </kol-details>
 
-<kol-heading _level={3}>1.1.10 - 07.11.2022 (geplant)</kol-heading>
+<br />
 
-<kol-details _summary="Änderungen">
+<kol-alert _variant="card" _level={4} _type="info" _heading="Icon-Refactoring">
+	<p>
+		Mit der Version <strong>1.1.10</strong> wurde die harte Kopplung an die Icofonts aufgelöst und vollständig auf das flexible Icon-Font-Konzept umgestellt.
+	</p>
+	<kol-heading _level={5}>Änderungen</kol-heading>
+	<ul>
+		<li>Alle internen Icons wurden von Icofont auf Font-Awesome (free) umgestellt</li>
+		<li>Alle Komponent-Properties mit dem Typ `Icofont` wurden auf den Typ `KoliBriIconProp` umgestellt</li>
+		<li>Angaben für `_icon` in den Apps müssen den Prefix `icofont-` erhalten, wenn alles so bleiben soll.</li>
+		<li>
+			Das Property <code>_icon-align</code> bzw. <code>_iconAlign</code> wurde als <code>deprecated</code> markiert und wird mit dem nächsten Major-Release
+			entfernt.
+		</li>
+	</ul>
+	<br />
+	<kol-heading _level={5}>Komplexer Icon-Typ</kol-heading>
+	<p>
+		Der neue Icon-Typ für alle Komponenten ermöglicht eine höhere Flexiblität. Es ist u.a. möglich gleichzeitig Icons in allen Hauptrichtungen einzufügen und
+		hierbei auch deren Styling zu beeinflussen. Mehr zur konkreten Typ-Definitionen ist im{' '}
+		<kol-link _href="https://github.com/public-ui/kolibri/blob/main/packages/library/src/types/icon.ts" _target="github">
+			Quellcode
+		</kol-link>{' '}
+		zu finden.
+	</p>
+	<kol-heading _level={5}>Migrationsanleitung</kol-heading>
+	<p>Die Migration gestaltet sich sehr einfach, da nur folgende zwei Stellen anzupassen werden müssen.</p>
+	<ul>
+		<li>
+			Es müssen alle Icofont-Identifier beim `_icon`-Property einfach um den Prefix `icofont-` ergänzt werden.
+			<ul>
+				<li>
+					Regex: <code>_icon="([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
+				</li>
+				<li>
+					Replacement: <code>_icon="icofont-$1"</code>
+				</li>
+			</ul>
+		</li>
+		<li>
+			An den Stellen wo das veraltete Property <code>_icon-align</code> bzw. <code>_iconAlign</code> verwendet wurde muss auf den neuen Icon-Typ umgestellt
+			werden. Die Änderung erfolgt einfach durch die Verwendung des neuen <code>_icon</code>-Properties.
+		</li>
+	</ul>
+</kol-alert>
+
+<kol-heading _level={3}>1.1.10 - 11.11.2022 (geplant)</kol-heading>
+
+<kol-details _summary="Änderungen" _open>
 	<ul>
 		<li>🔥 Badge, Link, Nav, Tabs: Alle Icofont and Font-Awesome spezifischen Typen entfernen (KoliBriIconProp)</li>
 		<li>🔧 Font Awesome: Wechseln von Icofont auf Font Awesome bei allen Default-internen Icons</li>
@@ -121,12 +171,22 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			</kol-link>{' '}
 			beinhaltet InputNumber nicht mehr die Datumstypen (ℹ️ wird erst mit Major-Release entfernt).
 		</li>
+		<li>🔥 Nicht required Properties erlauben null und damit das Zurücksetzen auf den Detault-Value.</li>
+		<li>🌟 "Expert"-Slot eingefügt, um mehr Flexibilität mit Eigenverantwortung zu</li>
+		<li>
+			📚 Dokumentation:{' '}
+			<KolLink _href="iframe.html?id=slot-konzept--page" _target="_self">
+				Slot-Konzept
+			</KolLink>{' '}
+			eingefügt
+		</li>
+		<li>👩‍🎨 Theming: BMF-, DESY- und MAPZ-Theme an Änderungen angepasst</li>
 	</ul>
 </kol-details>
 
 <kol-heading _level={3}>1.1.9 - 13.10.2022</kol-heading>
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _summary="Änderungen">
 	<ul>
 		<li>
 			🔥 ESM: Build-Optimierung aller Pakete für SSG und SSR (ℹ️{' '}
@@ -151,7 +211,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <kol-heading _level={3}>1.1.8 - 07.10.2022</kol-heading>
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _summary="Änderungen">
 	<ul>
 		<li>🔧 Fix: Fehlender Import im React-Template behoben (create-kolibri)</li>
 	</ul>

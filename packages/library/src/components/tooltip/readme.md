@@ -6,6 +6,8 @@ Die **Tooltip**-Komponente implementiert das Gegenstück zum `Aria-Label`. Es is
 
 Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. überlagerte Seiteninformationen wieder sichtbar zu machen.
 
+**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, muss für das vorrangehende Referenz-Element `inline-block` gesetzt werden.
+
 ## Barrierefreiheit
 
 Die Tooltip-Komponente wird bei Focus oder Hover angezeigt und dient ausschließlich dem/der sehenden Nutzer:in ohne Screenreader die Beschriftung (Aria-Label) lesen zu können. Der Text des Tooltips ist selbst nicht mit der Tastatur erreichbar und zudem mittels Aria-Hidden für die Screenreader versteckt.
@@ -33,9 +35,10 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 ### Used by
 
 - [kol-abbr](../abbr)
+- [kol-button-link](../button-link)
 - kol-button-wc
+- [kol-link-button](../link-button)
 - kol-link-wc
-- kol-span
 
 ### Depends on
 
@@ -46,12 +49,13 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 ```mermaid
 graph TD;
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
+  kol-span-wc --> kol-icon
   kol-abbr --> kol-tooltip
+  kol-button-link --> kol-tooltip
   kol-button-wc --> kol-tooltip
+  kol-link-button --> kol-tooltip
   kol-link-wc --> kol-tooltip
-  kol-span --> kol-tooltip
   style kol-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

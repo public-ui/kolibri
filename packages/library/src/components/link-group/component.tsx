@@ -18,14 +18,14 @@ const ListItem = (props: { links: NavLinkProps[]; orientation: Orientation; list
 				<li
 					key={index}
 					class={{
+						ident: index > 0 && props.orientation === 'vertical',
 						'list-none': index === 0 && props.orientation === 'horizontal',
-						'ml-6': index > 0 || props.orientation === 'vertical',
 					}}
 					style={{
 						listStyleType: props.listStyleType,
 					}}
 				>
-					<kol-link exportparts="link" {...link} _ariaLabel={link._label}>
+					<kol-link {...link} _ariaLabel={link._label}>
 						{link._label}
 					</kol-link>
 				</li>
@@ -78,9 +78,7 @@ type OptionalStates = {
 	ordered: boolean;
 };
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-/**
- * @part link - Ermöglicht das Stylen der Links.
- */
+
 @Component({
 	tag: 'kol-link-group',
 	styleUrls: {
@@ -94,8 +92,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 			<nav
 				aria-label={this.state._ariaLabel}
 				class={{
-					'bg-white': true,
-					rounded: true,
 					vertical: this.state._orientation === 'vertical',
 					horizontal: this.state._orientation === 'horizontal',
 				}}
@@ -105,20 +101,11 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 				)}
 
 				{this.isUl === false ? (
-					<ol
-						class={{
-							//'pl-8': this.state._orientation === 'vertical',
-							flex: this.state._orientation === 'horizontal',
-						}}
-					>
+					<ol>
 						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
 					</ol>
 				) : (
-					<ul
-						class={{
-							flex: this.state._orientation === 'horizontal',
-						}}
-					>
+					<ul>
 						<ListItem links={this.state._links} orientation={this.state._orientation} listStyleType={this.state._listStyleType} />
 					</ul>
 				)}

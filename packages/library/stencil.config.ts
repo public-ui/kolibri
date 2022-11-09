@@ -66,6 +66,7 @@ const EXCLUDE_TAGS = [
 	'kol-input-radio-group',
 	'kol-link-wc',
 	'kol-span',
+	'kol-span-wc',
 ];
 const BUNDLES: {
 	components: string[];

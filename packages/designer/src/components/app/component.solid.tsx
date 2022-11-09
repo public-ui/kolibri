@@ -193,7 +193,7 @@ export const AppComponent: Component = () => {
 					<div class="flex gap-2 items-end">
 						<KolButton
 							_label="Zurück"
-							_icon="arrow-left"
+							_icon="icofont-arrow-left"
 							_iconOnly
 							_on={{
 								onClick: (event) => {
@@ -223,7 +223,7 @@ export const AppComponent: Component = () => {
 						</KolSelect>
 						<KolButton
 							_label="Weiter"
-							_icon="arrow-right"
+							_icon="icofont-arrow-right"
 							_iconOnly
 							_on={{
 								onClick: (event) => {

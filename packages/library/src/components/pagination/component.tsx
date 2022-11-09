@@ -212,7 +212,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	/**
 	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _pageSize = 1;
+	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
 
 	/**
 	 * Gibt an, welche Optionen für die Seitenlänge angeboten werden.

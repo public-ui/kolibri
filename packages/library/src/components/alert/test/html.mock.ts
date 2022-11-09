@@ -29,14 +29,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 										: 'Nachricht',
 								_icon:
 									props._type === 'success'
-										? 'icofont-check-circled'
+										? 'fa-solid fa-circle-check'
 										: props._type === 'error'
-										? 'icofont-error'
+										? 'fa-solid fa-circle-xmark'
 										: props._type === 'warning'
-										? 'icofont-warning'
+										? 'fa-solid fa-triangle-exclamation'
 										: props._type === 'info'
-										? 'icofont-info-circle'
-										: 'icofont-comment',
+										? 'fa-solid fa-circle-info'
+										: 'fa-regular fa-comment',
 							},
 							` class="icon"`
 					  )
@@ -68,14 +68,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 																: 'Nachricht',
 														_icon:
 															props._type === 'success'
-																? 'icofont-check-circled'
+																? 'fa-solid fa-circle-check'
 																: props._type === 'error'
-																? 'icofont-error'
+																? 'fa-solid fa-circle-xmark'
 																: props._type === 'warning'
-																? 'icofont-warning'
+																? 'fa-solid fa-triangle-exclamation'
 																: props._type === 'info'
-																? 'icofont-info-circle'
-																: 'icofont-comment',
+																? 'fa-solid fa-circle-info'
+																: 'fa-regular fa-comment',
 													},
 													` class="icon"`
 											  )

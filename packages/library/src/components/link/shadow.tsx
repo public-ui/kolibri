@@ -3,6 +3,7 @@ import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@public-ui/core';
 import { AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { TooltipAlignment } from '../tooltip/component';
+import { Stringified } from '../../types/common';
 
 /**
  * @part link - Ermöglicht das Stylen des Links.
@@ -35,6 +36,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 				_part={this._part}
 				_selector={this._selector}
 				_stealth={this._stealth}
+				_tabIndex={this._tabIndex}
 				_target={this._target}
 				_targetDescription={this._targetDescription}
 				_tooltipAlign={this._tooltipAlign}
@@ -89,7 +91,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
@@ -124,6 +126,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 */
 	@Prop() public _stealth?: boolean = false;
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.

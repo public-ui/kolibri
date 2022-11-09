@@ -10,13 +10,13 @@ import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/component";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
 import { KoliBriColor } from "./components/badge/component";
-import { Icofont } from "./types/icofont";
-import { Alignment, KoliBriIconProp } from "./types/icon";
 import { Stringified } from "./types/common";
+import { Alignment, KoliBriIconProp } from "./types/icon";
 import { NavLinkProps } from "./components/link/component";
 import { AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
+import { Icofont } from "./types/icofont";
 import { KoliBriInputIcon } from "./components/input-text/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { InputCheckboxType } from "./components/input-checkbox/types";
@@ -103,9 +103,10 @@ export namespace Components {
         /**
           * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
          */
-        "_icon"?: Icofont;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * @deprecated
          */
         "_iconAlign"?: Alignment;
         /**
@@ -159,7 +160,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -181,6 +182,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -218,7 +223,7 @@ export namespace Components {
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
          */
         "_ariaLabel"?: string;
         /**
@@ -228,7 +233,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -243,13 +248,17 @@ export namespace Components {
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Gibt einen beschreibenden Text für das Text-Element an.
          */
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -291,7 +300,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -313,6 +322,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -962,6 +975,7 @@ export namespace Components {
         "_touched"?: boolean;
         /**
           * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+          * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
          */
         "_type"?: InputNumberType;
         /**
@@ -1397,7 +1411,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -1424,6 +1438,10 @@ export namespace Components {
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
          */
@@ -1459,7 +1477,7 @@ export namespace Components {
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
          */
         "_ariaLabel"?: string;
         /**
@@ -1485,7 +1503,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated
@@ -1496,7 +1514,12 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
+          * Gibt einen beschreibenden Text für das Text-Element an.
+         */
+        "_label": string;
+        /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1511,6 +1534,10 @@ export namespace Components {
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
          */
@@ -1602,7 +1629,7 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -1629,6 +1656,10 @@ export namespace Components {
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
          */
@@ -1869,19 +1900,29 @@ export namespace Components {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Gibt an, ob nur das Icon angezeigt wird.
          */
-        "_label"?: string;
+        "_iconOnly"?: boolean;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt einen beschreibenden Text für das Text-Element an.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_label": string;
+    }
+    interface KolSpanWc {
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_tooltipId"?: string;
+        "_icon"?: Stringified<KoliBriIconProp>;
+        /**
+          * Gibt an, ob nur das Icon angezeigt wird.
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Gibt einen beschreibenden Text für das Text-Element an.
+         */
+        "_label": string;
     }
     interface KolSpin {
         /**
@@ -2353,6 +2394,12 @@ declare global {
         prototype: HTMLKolSpanElement;
         new (): HTMLKolSpanElement;
     };
+    interface HTMLKolSpanWcElement extends Components.KolSpanWc, HTMLStencilElement {
+    }
+    var HTMLKolSpanWcElement: {
+        prototype: HTMLKolSpanWcElement;
+        new (): HTMLKolSpanWcElement;
+    };
     interface HTMLKolSpinElement extends Components.KolSpin, HTMLStencilElement {
     }
     var HTMLKolSpinElement: {
@@ -2448,6 +2495,7 @@ declare global {
         "kol-select": HTMLKolSelectElement;
         "kol-skip-nav": HTMLKolSkipNavElement;
         "kol-span": HTMLKolSpanElement;
+        "kol-span-wc": HTMLKolSpanWcElement;
         "kol-spin": HTMLKolSpinElement;
         "kol-symbol": HTMLKolSymbolElement;
         "kol-table": HTMLKolTableElement;
@@ -2525,9 +2573,10 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
          */
-        "_icon"?: Icofont;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * @deprecated
          */
         "_iconAlign"?: Alignment;
         /**
@@ -2581,7 +2630,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -2603,6 +2652,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -2636,7 +2689,7 @@ declare namespace LocalJSX {
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
          */
         "_ariaLabel"?: string;
         /**
@@ -2646,7 +2699,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -2661,13 +2714,17 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Gibt einen beschreibenden Text für das Text-Element an.
          */
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -2709,7 +2766,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
@@ -2731,6 +2788,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -3376,6 +3437,7 @@ declare namespace LocalJSX {
         "_touched"?: boolean;
         /**
           * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+          * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
          */
         "_type"?: InputNumberType;
         /**
@@ -3811,7 +3873,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -3838,6 +3900,10 @@ declare namespace LocalJSX {
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
          */
@@ -3873,7 +3939,7 @@ declare namespace LocalJSX {
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
          */
         "_ariaLabel"?: string;
         /**
@@ -3899,7 +3965,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated
@@ -3910,7 +3976,12 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
+          * Gibt einen beschreibenden Text für das Text-Element an.
+         */
+        "_label": string;
+        /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -3925,6 +3996,10 @@ declare namespace LocalJSX {
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
          */
@@ -4016,7 +4091,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
@@ -4043,6 +4118,10 @@ declare namespace LocalJSX {
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
          */
         "_stealth"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
         /**
           * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
          */
@@ -4283,19 +4362,29 @@ declare namespace LocalJSX {
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_icon"?: KoliBriIconProp;
+        "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Gibt an, ob nur das Icon angezeigt wird.
          */
-        "_label"?: string;
+        "_iconOnly"?: boolean;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt einen beschreibenden Text für das Text-Element an.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_label": string;
+    }
+    interface KolSpanWc {
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
-        "_tooltipId"?: string;
+        "_icon"?: Stringified<KoliBriIconProp>;
+        /**
+          * Gibt an, ob nur das Icon angezeigt wird.
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Gibt einen beschreibenden Text für das Text-Element an.
+         */
+        "_label": string;
     }
     interface KolSpin {
         /**
@@ -4536,6 +4625,7 @@ declare namespace LocalJSX {
         "kol-select": KolSelect;
         "kol-skip-nav": KolSkipNav;
         "kol-span": KolSpan;
+        "kol-span-wc": KolSpanWc;
         "kol-spin": KolSpin;
         "kol-symbol": KolSymbol;
         "kol-table": KolTable;
@@ -4596,6 +4686,7 @@ declare module "@stencil/core" {
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;
             "kol-skip-nav": LocalJSX.KolSkipNav & JSXBase.HTMLAttributes<HTMLKolSkipNavElement>;
             "kol-span": LocalJSX.KolSpan & JSXBase.HTMLAttributes<HTMLKolSpanElement>;
+            "kol-span-wc": LocalJSX.KolSpanWc & JSXBase.HTMLAttributes<HTMLKolSpanWcElement>;
             "kol-spin": LocalJSX.KolSpin & JSXBase.HTMLAttributes<HTMLKolSpinElement>;
             "kol-symbol": LocalJSX.KolSymbol & JSXBase.HTMLAttributes<HTMLKolSymbolElement>;
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;

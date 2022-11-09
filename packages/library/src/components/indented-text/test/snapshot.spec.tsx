@@ -16,5 +16,8 @@ executeTests<Props>(
 		return page;
 	},
 	{},
-	getIndentedTextHtml
+	getIndentedTextHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

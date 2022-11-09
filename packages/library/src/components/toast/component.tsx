@@ -64,7 +64,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Gibt an, ob der Toast eingeblendet wird.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
+	@Prop({ mutable: true, reflect: false }) public _show?: boolean = true;
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.

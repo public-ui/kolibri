@@ -52,8 +52,8 @@ Bitte beachten Sie, dass innerhalb der Komponente dem Text aus dem Attribut **\_
 ```mermaid
 graph TD;
   kol-version --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
+  kol-span-wc --> kol-icon
   style kol-version fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

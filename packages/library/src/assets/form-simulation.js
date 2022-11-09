@@ -329,11 +329,9 @@ function domReady() {
 		];
 		fixSelect._on = {
 			// onClick: (...args) => {
-			//   console.clear();
 			//   console.log('onClick', args);
 			// },
 			onChange: (...args) => {
-				console.clear();
 				console.log('onChange', args);
 				setTimeout(() => {
 					fixSelect._list = [{ label: 'Baum', value: Date.now() }].concat(fixSelect._list);

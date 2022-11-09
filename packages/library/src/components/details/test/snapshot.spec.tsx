@@ -19,5 +19,8 @@ executeTests<Props>(
 		_summary: ['Zusammenfassung'],
 		_open: [false, true],
 	},
-	getDetailsHtml
+	getDetailsHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

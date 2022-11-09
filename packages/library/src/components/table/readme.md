@@ -195,11 +195,11 @@ graph TD;
   kol-table --> kol-button
   kol-table --> kol-pagination
   kol-button --> kol-button-wc
-  kol-button-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
   kol-pagination --> kol-button
   kol-pagination --> kol-select
   kol-pagination --> kol-button-wc

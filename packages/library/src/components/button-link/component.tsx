@@ -12,8 +12,10 @@ import {
 	RequiredButtonLinkStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
-import { Alignment, KoliBriIconProp, watchIcon, watchIconAlign } from '../../types/icon';
+import { Stringified } from '../../types/common';
+import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
@@ -22,10 +24,12 @@ import {
 	watchString,
 	watchValidator,
 } from '../../utils/prop.validators';
-import { TooltipAlignment } from '../tooltip/component';
-import { syncAriaLabelBeforePatch, watchButtonType } from '../button/controller';
+import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
+import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
+import { validateTabIndex } from '../../utils/validators/tab-index';
+import { watchButtonType } from '../button/controller';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
-import { nonce } from '../../utils/dev.utils';
+import { TooltipAlignment } from '../tooltip/component';
 
 @Component({
 	tag: 'kol-button-link',
@@ -99,17 +103,25 @@ export class KolButtonLink
 					style={{
 						width: 'inherit',
 					}}
+					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span
-						_icon={this._icon}
-						_label={this._label}
-						_tooltipAlign={this._tooltipAlign}
-						_tooltipId={this.state._iconOnly === true ? this.nonce : undefined}
-					>
-						<slot />
-					</kol-span>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
+						<slot name="expert" slot="expert"></slot>
+					</kol-span-wc>
 				</button>
+				{this.state._iconOnly === true && (
+					<kol-tooltip
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						// aria-hidden="true"
+						_align={this.state._tooltipAlign}
+						_id={this.nonce}
+						_label={this.state._ariaLabel || this.state._label}
+					></kol-tooltip>
+				)}
 			</Host>
 		);
 	}
@@ -117,37 +129,41 @@ export class KolButtonLink
 	/**
 	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
 	 */
-	@Prop({ reflect: true }) public _accessKey?: string;
+	@Prop() public _accessKey?: string;
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop({ reflect: true }) public _ariaControls?: string;
+	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
-	@Prop({ reflect: true }) public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
 	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
+	 * Sprachsteuerung von interaktiven Elementen funktioniert, muss der
+	 * Aria-Label-Text mit dem Label-Text des Buttons beginnen.
+	 *
+	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop({ mutable: true, reflect: true }) public _ariaLabel?: string = '';
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob der Button deaktiviert ist.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
 	 */
-	@Prop() public _icon?: KoliBriIconProp;
+	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
@@ -159,17 +175,17 @@ export class KolButtonLink
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop() public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
 	 */
-	@Prop({ reflect: true }) public _id?: string;
+	@Prop() public _id?: string;
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
@@ -177,14 +193,19 @@ export class KolButtonLink
 	@Prop() public _on?: KoliBriButtonCallbacks;
 
 	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 */
+	@Prop() public _tabIndex?: number;
+
+	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop({ reflect: true }) public _tooltipAlign?: TooltipAlignment = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.
 	 */
-	@Prop({ reflect: true }) public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: KoliBriButtonType = 'button';
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -241,11 +262,7 @@ export class KolButtonLink
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			hooks: {
-				beforePatch: syncAriaLabelBeforePatch,
-			},
-		});
+		validateAriaLabel(this, value);
 	}
 
 	/**
@@ -264,14 +281,12 @@ export class KolButtonLink
 	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
-		watchIcon(this, value);
+		validateIcon(this, value);
 	}
 
 	/**
-	 * @deprecated
-	 */
-	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_iconAlign')
 	public validateIconAlign(value?: Alignment): void {
@@ -301,12 +316,7 @@ export class KolButtonLink
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value, {
-			hooks: {
-				beforePatch: syncAriaLabelBeforePatch,
-			},
-			required: true,
-		});
+		validateLabel(this, value);
 	}
 
 	/**
@@ -320,6 +330,14 @@ export class KolButtonLink
 				_on: value,
 			};
 		}
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		validateTabIndex(this, value);
 	}
 
 	/**
@@ -349,11 +367,12 @@ export class KolButtonLink
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateDisabled(this._disabled);
 		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
+		// this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
+		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 	}

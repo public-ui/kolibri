@@ -67,7 +67,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@State() public state: States = {
 		_ariaLabel: '',
-		_icon: 'icofont-home',
+		_icon: 'fa-solid fa-house',
 	};
 
 	/**
@@ -76,7 +76,6 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
-			minLength: 0,
 			required: true,
 		});
 	}

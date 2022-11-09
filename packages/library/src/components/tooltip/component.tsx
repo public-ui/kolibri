@@ -32,7 +32,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public hydrated = false;
+	public hydrated = false; // TODO: Why?!
 
 	private hostElement?: HTMLElement | null = null;
 	private readonly childElements: HTMLElement[] = [];
@@ -141,9 +141,6 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 							color: '#ddd',
 						}}
 						_label={this.state._label}
-						style={{
-							position: 'absolute',
-						}}
 					></kol-badge>
 				)}
 			</Host>
@@ -195,9 +192,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value, {
-			minLength: 0,
-		});
+		watchString(this, '_label', value);
 	}
 
 	/**

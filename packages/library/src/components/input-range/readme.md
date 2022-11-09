@@ -77,11 +77,11 @@ graph TD;
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert
-  kol-button-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
   kol-alert --> kol-heading-wc
   kol-alert --> kol-button-wc
   kol-alert --> kol-icon

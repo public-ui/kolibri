@@ -17,10 +17,12 @@ executeTests<Props>(
 	},
 	{
 		_color: ['#000000'],
-		_icon: ['home'],
-		_iconAlign: ['left', 'right'],
+		_icon: ['fa-solid fa-house'],
 		_iconOnly: [false, true],
 		_label: ['Text'],
 	},
-	getBadgeHtml
+	getBadgeHtml,
+	{
+		execMode: 'default', // ready
+	}
 );

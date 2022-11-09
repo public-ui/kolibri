@@ -66,7 +66,7 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 | `_siblingCount`       | `_sibling-count`     | Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.               | `number \| undefined`                                                                                                                                                                             | `1`         |
 | `_tooltipAlign`       | `_tooltip-align`     | Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.                       | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                             | `'top'`     |
 | `_total` _(required)_ | `_total`             | Gibt an, wie viele Einträge mit der Pagination gehandelt werden.                               | `number`                                                                                                                                                                                          | `undefined` |
-| `_variant`            | `_variant`           | Gibt an, welche Button-Variante verwendet werden soll.                                         | `"danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                                                                                        | `'normal'`  |
+| `_variant`            | `_variant`           | Gibt an, welche Button-Variante verwendet werden soll.                                         | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                                                                            | `'normal'`  |
 
 ## Dependencies
 
@@ -88,11 +88,11 @@ graph TD;
   kol-pagination --> kol-select
   kol-pagination --> kol-button-wc
   kol-button --> kol-button-wc
-  kol-button-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
+  kol-badge --> kol-span-wc
   kol-select --> kol-input
   kol-input --> kol-icon
   kol-input --> kol-button-wc
