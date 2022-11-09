@@ -1,6 +1,7 @@
 import { Generic } from '@public-ui/core';
 import { ButtonStates } from '../../types/button-link';
 import { Alignment, AnyIconFontClass, KoliBriAllIcon, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
+import { deprecatedHint } from '../a11y.tipps';
 import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
 import { isObject, isString, isStyle } from '../validator';
 
@@ -105,6 +106,9 @@ export const validateIcon = (component: Generic.Element.Component, value?: KoliB
 };
 
 export const watchIconAlign = (component: Generic.Element.Component, value?: Alignment): void => {
+	deprecatedHint(
+		`Das Property _icon-align bzw. _iconAlign ist veraltet. Die Ausrichtung der Icon's kann jetzt direkt über das _icon-Property vorgenommen werden. (v1.1.10: https://public-ui.github.io/?path=/story/backlog-und-changelog--page)`
+	);
 	watchValidator(component, '_iconAlign', (value) => value === 'left' || value === 'right', new Set(['Alignment {left, right, top, bottom}']), value, {
 		hooks: {
 			beforePatch: () => {

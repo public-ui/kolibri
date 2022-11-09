@@ -367,7 +367,7 @@ export class KolButtonLink
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateDisabled(this._disabled);
 		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
+		// this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateId(this._id);
 		this.validateLabel(this._label);

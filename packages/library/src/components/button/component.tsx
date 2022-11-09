@@ -417,7 +417,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
+		// this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateId(this._id);
 		this.validateLabel(this._label);

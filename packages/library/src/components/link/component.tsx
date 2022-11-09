@@ -529,7 +529,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateFill(this._fill);
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
-		this.validateIconAlign(this._iconAlign);
+		// this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateOn(this._on);
 		this.validatePart(this._part);
