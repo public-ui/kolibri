@@ -179,7 +179,7 @@ export class KolLinkButton
 	 *
 	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop({ reflect: false }) public _ariaLabel?: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -226,7 +226,7 @@ export class KolLinkButton
 	/**
 	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ reflect: false }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -253,7 +253,7 @@ export class KolLinkButton
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop({ reflect: false }) public _tabIndex?: number;
+	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.

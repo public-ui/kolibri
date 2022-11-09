@@ -51,7 +51,11 @@ const removeNode = (el?: Node) => {
 export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host
+				class={{
+					'icon-only': this.state._iconOnly,
+				}}
+			>
 				{this.state._icon.top && (
 					<kol-icon
 						class={{
@@ -67,7 +71,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 						<kol-icon
 							class={{
 								'icon left': true,
-								'mr-2': this.state._iconOnly === true,
+								'mr-2': this.state._iconOnly,
 							}}
 							style={this.state._icon.left.style}
 							_ariaLabel=""
@@ -87,7 +91,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 						<kol-icon
 							class={{
 								'icon right': true,
-								'ml-2': this.state._iconOnly === true,
+								'ml-2': this.state._iconOnly,
 							}}
 							style={this.state._icon.right.style}
 							_ariaLabel=""
@@ -117,12 +121,12 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop({ reflect: false }) public _iconOnly?: boolean = false;
+	@Prop() public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ reflect: false }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

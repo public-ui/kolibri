@@ -7,7 +7,6 @@ export const TAG_NAMES: string[] = [
 	'kol-accordion',
 	'kol-alert',
 	'kol-card',
-	'kol-symbol',
 	'kol-version',
 	'kol-abbr',
 	'kol-button',

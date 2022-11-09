@@ -1,4 +1,28 @@
-# kol-button-link
+# ButtonLink
+
+Der ButtonLink ist semantisch ein Button und hat das Design eines Links. Hierzu werden alle relevanten Properties der Button-Komponente übernommen und um die Design-bestimmenden Properties des Links erweitert.
+
+Einen Button kann man deaktivieren und daher gibt es bei einem ButtonLink das Property `_disabled`. Wie das optisch ausgestaltet wird, entscheidet die UX-Designer:in.
+
+Statt, wie bei einem Link, `_href` zu verwenden, wird bei einem ButtonLink das Property über den `Click-Callback` gesteuert. Hierzu wird das `_on`-Property verwendet.
+
+Bei einem Link gibt es das Property `target`, welches ggf. den Link in einem neuen Fenster/Tab öffnet. Das Verhalten ist aktuell noch nicht umgesetzt.
+
+Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `secondary` usw.) angeboten wird, stehen die Properties `_customClass` und `_variant` nicht zur Verfügung.
+
+## Konstruktion
+
+### Code
+
+```tsx
+<kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
+```
+
+### Beispiel
+
+<div style="display: flex; gap: 0.25em;">
+  <kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
+</div>
 
 <!-- Auto Generated Below -->
 

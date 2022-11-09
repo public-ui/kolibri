@@ -150,17 +150,17 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop({ reflect: false }) public _align?: TooltipAlignment = 'top';
+	@Prop() public _align?: TooltipAlignment = 'top';
 
 	/**
 	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
 	 */
-	@Prop({ reflect: false }) public _id?: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
 	 */
-	@Prop({ reflect: false }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

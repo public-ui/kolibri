@@ -22,8 +22,7 @@ type OptionalButtonAndLinkProps = {
 	ariaCurrent: AriaCurrent;
 	ariaExpanded: boolean;
 	ariaLabel: string;
-	// ariaSelected: boolean; DON'T DO - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected
-	disabled: boolean;
+	disabled: boolean; // TODO: Link disabled?!
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated

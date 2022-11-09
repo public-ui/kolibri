@@ -129,22 +129,22 @@ export class KolButtonLink
 	/**
 	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
 	 */
-	@Prop({ reflect: false }) public _accessKey?: string;
+	@Prop() public _accessKey?: string;
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop({ reflect: false }) public _ariaControls?: string;
+	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
-	@Prop({ reflect: false }) public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
 	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop({ reflect: false }) public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
@@ -153,12 +153,12 @@ export class KolButtonLink
 	 *
 	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop({ reflect: false }) public _ariaLabel?: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob der Button deaktiviert ist.
 	 */
-	@Prop({ reflect: false }) public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
@@ -175,17 +175,17 @@ export class KolButtonLink
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop({ reflect: false }) public _iconOnly?: boolean = false;
+	@Prop() public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
 	 */
-	@Prop({ reflect: false }) public _id?: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
-	@Prop({ reflect: false }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
@@ -195,17 +195,17 @@ export class KolButtonLink
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop({ reflect: false }) public _tabIndex?: number;
+	@Prop() public _tabIndex?: number;
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop({ reflect: false }) public _tooltipAlign?: TooltipAlignment = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.
 	 */
-	@Prop({ reflect: false }) public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: KoliBriButtonType = 'button';
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

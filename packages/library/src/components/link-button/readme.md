@@ -1,4 +1,34 @@
-# kol-link-button
+# LinkButton
+
+Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
+
+Einen Link kann man nicht deaktivieren und daher gibt es bei einem LinkButton nicht das Property `_disabled`.
+
+Da es die Komponente ButtonLink gibt, die semantisch ein Button und optisch ein Link ist. Ist es nicht mehr notwendig den Click-Callback zu unterstützen. Das Property `_on` wird somit als `deprecated` markiert und wird mit dem nächsten Major-Release entfernt.
+
+Ein Button hat aus UX-Sicht mehrere Varianten (`primary` oder `secondary` usw.). Damit der LinkButton das optisch gleich aussehen kann, wurden die Properties `_customClass` und `_variant` von der Button-Komponente übernommen.
+
+## Konstruktion
+
+### Code
+
+```tsx
+<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
+<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
+<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
+<kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
+<kol-link-button _href="#"_label="Ghost" _variant="ghost"></kol-link-button>
+```
+
+### Beispiel
+
+<div style="display: flex; gap: 0.25em;">
+  <kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
+  <kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
+  <kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
+  <kol-link-button _href="#" _label="Danger" _variant="danger"></kol-link-button>
+  <kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
+</div>
 
 <!-- Auto Generated Below -->
 
