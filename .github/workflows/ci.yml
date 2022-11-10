@@ -9,9 +9,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Check quality gates
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: 'main'
 
       # - uses: pnpm/action-setup@v2.2.4
       #   with:
