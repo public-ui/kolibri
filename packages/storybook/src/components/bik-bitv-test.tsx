@@ -157,7 +157,7 @@ export class BikBitvTest extends Component<Props, State> {
 							fontSize: '95%',
 						}}
 						_label="Hilfe"
-						_icon="info"
+						_icon="icofont-info"
 						_iconOnly
 						_on={{
 							onClick: (event) => {

@@ -146,7 +146,7 @@ WithCta.storyName = 'Styles';
  */
 export const WithSizes = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25rem' }}>
-		<KolButton _label="Button ohne Mindestbreite" _icon="home" _iconAlign="left"></KolButton>
+		<KolButton _label="Button ohne Mindestbreite" _icon="icofont-home" _iconAlign="left"></KolButton>
 		<br />
 		<KolButton _label="Button mit 100 Pixel Mindestbreite" _icon={'home'} _iconAlign="left" style={{ width: '100px' }}></KolButton>
 		<br />
@@ -173,8 +173,8 @@ export const Context = (args: any) => (
 			<KolInputText _type="text" _id="vorname" _name="vorname" _placeholder="Vorname"></KolInputText>
 			<KolInputText _type="text" _id="nachname" _name="nachname" _placeholder="Nachname"></KolInputText>
 			<div style={{ display: 'flex', gap: '0.25rem' }}>
-				<KolButton _label="Abbrechen" _icon="home" _variant="danger" _iconAlign="left"></KolButton>
-				<KolButton _label="Speichern" _icon="save" _variant="primary" _iconAlign="left"></KolButton>{' '}
+				<KolButton _label="Abbrechen" _icon="icofont-home" _variant="danger" _iconAlign="left"></KolButton>
+				<KolButton _label="Speichern" _icon="icofont-save" _variant="primary" _iconAlign="left"></KolButton>{' '}
 			</div>
 		</div>
 	</div>
@@ -199,9 +199,9 @@ export const Output = (args: any) => (
 
 		<KolButton class="not-used" _disabled _label="Disabled-Schaltfläche"></KolButton>
 		<KolButton class="not-used" _variant="primary" _label="Hinzufügen"></KolButton>
-		<KolButton className="font-80" style={{ fontSize: '80%' }} _variant="primary" _label="Hinzufügen" _icon="ui-add"></KolButton>
-		<KolButton className="font-60" style={{ fontSize: '60%' }} _variant="primary" _label="Hinzufügen" _icon="ui-add" _icon-align="right"></KolButton>
-		<KolButton class="not-used" _variant="primary" _label="Hinzufügen (nur Icon)" _icon="ui-add" _icon-only="true"></KolButton>
+		<KolButton className="font-80" style={{ fontSize: '80%' }} _variant="primary" _label="Hinzufügen" _icon="icofont-ui-add"></KolButton>
+		<KolButton className="font-60" style={{ fontSize: '60%' }} _variant="primary" _label="Hinzufügen" _icon="icofont-ui-add" _icon-align="right"></KolButton>
+		<KolButton class="not-used" _variant="primary" _label="Hinzufügen (nur Icon)" _icon="icofont-ui-add" _icon-only="true"></KolButton>
 		<KolButton _variant="primary" _label="ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen"></KolButton>
 
 		<div className="d-flex" style={{ maxWidth: '420px', justifyContent: 'space-between' }}>

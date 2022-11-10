@@ -25,7 +25,7 @@ const DefaultArgs = {
 export const Standard = (args: any) => (
 	<div>
 		<KolButtonGroup {...args}>
-			<KolButton _label="Button 1" _icon="home"></KolButton>
+			<KolButton _label="Button 1" _icon="icofont-home"></KolButton>
 			<KolButton _label="Button 2"></KolButton>
 			<KolButton _label="Button 3"></KolButton>
 		</KolButtonGroup>
@@ -44,8 +44,8 @@ export const WithIcon = (args: any) => (
 	<div>
 		<KolButtonGroup>
 			<KolButton _label="Nur Text"></KolButton>
-			<KolButton _label="Nur Icon" _icon="home" _iconOnly></KolButton>
-			<KolButton _label="Text und Icon" _icon="home" _iconAlign="right"></KolButton>
+			<KolButton _label="Nur Icon" _icon="icofont-home" _iconOnly></KolButton>
+			<KolButton _label="Text und Icon" _icon="icofont-home" _iconAlign="right"></KolButton>
 		</KolButtonGroup>
 	</div>
 );

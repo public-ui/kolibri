@@ -16,6 +16,51 @@ import { THEME } from './theme';
 //   },
 // });
 
+import { register } from '@public-ui/core';
+import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
+import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
+import { BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL } from '@public-ui/themes';
+
+const AVAILABLE_THEMES = [
+	// { name: 'BAMF-Styleguide', class: 'bamf', color: '', disabled: true },
+	{ name: 'BMF-Styleguide', class: 'bmf', color: '#004b76' },
+	// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
+	{ name: 'BZSt-Styleguide (WIP)', class: 'bzst', color: '#23614e' },
+	{ name: 'DESY-Styleguide', class: 'desy', color: '#326cae' },
+	{ name: 'Hamburg-Styleguide (WIP)', class: 'hh', color: '#e10019' },
+	{ name: 'ITZBund-Styleguide (Demo)', class: 'itzbund', color: '#007a89' },
+	{ name: 'MAPZoll-Styleguide', class: 'mapz', color: '#1e538f' },
+	{ name: 'Next-Styleguide (WIP)', class: 'nxt', color: '#003064' },
+	// { name: 'ZOLL-Styleguide (WIP)', class: 'zoll', color: '#326cae' },
+];
+const CACHED_SELECTED_THEME = localStorage.getItem('kolibri-storybook-theme');
+
+const getThemeDetails = (className) =>
+	AVAILABLE_THEMES.find((theme) => {
+		return theme.class === className;
+	}) || null;
+
+const getThemeName = (className) => getThemeDetails(className).name || null;
+
+const switchTheme = (className) => {
+	const themeDetails = getThemeDetails(className);
+	if (themeDetails) {
+		document.body.dataset.theme = themeDetails.class;
+	} else {
+		document.body.dataset.theme = 'bmf';
+	}
+};
+
+register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL], [kolibri, leanup], {
+	theme: {
+		detect: 'auto',
+	},
+})
+	.then(() => {
+		switchTheme(CACHED_SELECTED_THEME);
+	})
+	.catch(console.warn);
+
 export const parameters = {
 	a11y: {
 		element: '#root',
@@ -154,22 +199,15 @@ export const parameters = {
 	},
 	themes: {
 		clearable: false,
-		default: 'BMF-Styleguide',
+		default: getThemeName(CACHED_SELECTED_THEME),
 		onChange: (theme) => {
+			localStorage.setItem('kolibri-storybook-theme', theme.class);
 			document.body.dataset.theme = theme.class;
+			document.querySelectorAll('iframe').forEach((iframe) => {
+				iframe.contentWindow.location.reload();
+			});
 		},
-		list: [
-			// { name: 'BAMF-Styleguide', class: 'bamf', color: '', disabled: true },
-			{ name: 'BMF-Styleguide', class: 'bmf', color: '#004b76' },
-			// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
-			{ name: 'BZSt-Styleguide (WIP)', class: 'bzst', color: '#23614e' },
-			{ name: 'DESY-Styleguide', class: 'desy', color: '#326cae' },
-			{ name: 'Hamburg-Styleguide (WIP)', class: 'hh', color: '#e10019' },
-			{ name: 'ITZBund-Styleguide (Demo)', class: 'itzbund', color: '#007a89' },
-			{ name: 'MAPZoll-Styleguide', class: 'mapz', color: '#1e538f' },
-			{ name: 'Next-Styleguide (WIP)', class: 'nxt', color: '#003064' },
-			// { name: 'ZOLL-Styleguide (WIP)', class: 'zoll', color: '#326cae' },
-		],
+		list: AVAILABLE_THEMES,
 	},
 	viewMode: 'docs',
 };

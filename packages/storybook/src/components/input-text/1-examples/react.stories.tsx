@@ -39,7 +39,7 @@ export const Search = () => (
 			_id="mein_text"
 			_name="mein_text"
 			_hideLabel
-			_icon="{'left': {'icon':'icofont-arrow-up'}}"
+			_icon="icofont-{'left': {'icon':'icofont-arrow-up'}}"
 			_type="search"
 			_placeholder="Geben Sie einen Suchbegriff ein"
 		>
@@ -88,15 +88,15 @@ Error.storyName = 'Fehlermeldung';
 
 export const IconLeftRight = () => (
 	<div>
-		<KolInputText _id="meine_range" _name="meine_range" _icon="{'left':{'icon':'icofont-arrow-left'}}">
+		<KolInputText _id="meine_range" _name="meine_range" _icon="icofont-{'left':{'icon':'icofont-arrow-left'}}">
 			Icon links
 		</KolInputText>
 		<div className="mt-2"></div>
-		<KolInputText _id="meine_range" _name="meine_range" _icon="{'right':{'icon':'icofont-arrow-right'}}">
+		<KolInputText _id="meine_range" _name="meine_range" _icon="icofont-{'right':{'icon':'icofont-arrow-right'}}">
 			Icon rechts
 		</KolInputText>
 		<div className="mt-2"></div>
-		<KolInputText _id="meine_range" _name="meine_range" _hideLabel _icon="{'right':{'icon':'icofont-arrow-right'}}">
+		<KolInputText _id="meine_range" _name="meine_range" _hideLabel _icon="icofont-{'right':{'icon':'icofont-arrow-right'}}">
 			Icon rechts, label ausgeblendet
 		</KolInputText>
 	</div>

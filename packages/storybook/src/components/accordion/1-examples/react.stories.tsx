@@ -212,7 +212,7 @@ export const Alert = (args: any) => {
 				<div className="p-1" slot="header">
 					In den Accordion-Header kann auch nach was komplexeres eingefügt werden.
 					<KolButton
-						_icon="ui-add"
+						_icon="icofont-ui-add"
 						_label="Hinzufügen"
 						_on={{
 							onClick: () => {

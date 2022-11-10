@@ -123,7 +123,7 @@ export const Form = () => (
 					<KolInputCheckbox _value="" _name="newsletter" _id="newsletter" _as-switch _type="checkbox">
 						Ich möchte den Newsletter abonnieren
 					</KolInputCheckbox>
-					<KolButton _label="Absenden" _icon="envelope" />
+					<KolButton _label="Absenden" _icon="icofont-envelope" />
 				</div>
 			</KolAccordion>
 		</div>

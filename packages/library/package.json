@@ -113,7 +113,6 @@
 	},
 	"files": [
 		"dist/",
-		"www/",
 		"custom-elements.json",
 		"jest-test-results.json",
 		"vscode-custom-data.json"
