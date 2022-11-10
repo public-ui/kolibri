@@ -2,9 +2,9 @@
 <html dir="ltr" lang="de">
 	<head>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.10-rc.15';
-			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.10-rc.15';
-			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.1.10-rc.15';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.10-rc.16';
+			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.10-rc.16';
+			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.1.10-rc.16';
 			register([BMF], [])
 				.then(() => {
 					KoliBriDevHelper.patchTheme('bmf', {
@@ -22,23 +22,20 @@
 		<script type="module" src="build/kolibri.esm.js"></script>
 		<script nomodule src="build/kolibri.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
-		<link rel="stylesheet" href="assets/fontawesome-free/v5/css/all.css" />
-		<link rel="stylesheet" href="assets/fontawesome-free/v6/css/all.css" />
-		<link rel="stylesheet" href="assets/icofont/icofont.css" />
 		<link rel="stylesheet" href="assets/bund/bund.css" />
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<!-- <link rel="stylesheet" href="assets/fontawesome-free/v5/css/all.min.css" /> -->
+		<link rel="stylesheet" href="assets/fontawesome-free/v6/css/all.min.css" />
+		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
 		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/style.css" />
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
 			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="assets/themes/bamf.css" />
-		<link rel="stylesheet" href="assets/themes/bmf.css" />
-		<link rel="stylesheet" href="assets/themes/bzst.css" />
-		<link rel="stylesheet" href="assets/themes/itzbund.css" />
-		<link rel="stylesheet" href="assets/themes/mapz.css" />
-		<link rel="stylesheet" href="assets/style.css" />
 		<meta name="robots" content="noindex" />
 		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false" />
 	</head>
@@ -54,7 +51,7 @@
 					<kol-heading>BIK BITV-Test</kol-heading>
 				</div>
 				<div class="gap-2 col-12 d-flex">
-					<kol-version _version="1.1.10-rc.15"></kol-version>
+					<kol-version _version="1.1.10-rc.16"></kol-version>
 					<kol-badge _icon="check" _color="#030" _label="BIK BITV-Test"></kol-badge>
 					<kol-badge _color="#f0f" _label="Test"></kol-badge>
 					<kol-badge _color="#0bf" _label="Test"></kol-badge>
@@ -643,8 +640,12 @@
 										<input id="submit3-test" type="text" />
 										<kol-button _type="submit" _label="Absenden"></kol-button>
 									</kol-form>
+									<form>
+										<kol-input-text>Test (Form)</kol-input-text>
+										<kol-button _type="submit" _label="Absenden"></kol-button>
+									</form>
 									<kol-form>
-										<kol-input-text>Test</kol-input-text>
+										<kol-input-text>Test (KolForm)</kol-input-text>
 										<kol-button _type="submit" _label="Absenden"></kol-button>
 									</kol-form>
 								</div>
@@ -1680,6 +1681,7 @@
 		<script src="assets/accordion-simulation.js"></script>
 		<script src="assets/button-simulation.js"></script>
 		<script src="assets/form-simulation.js"></script>
+		<script src="assets/form-simulation.test-submit.js"></script>
 		<script src="assets/form-simulation.textarea.js"></script>
 		<script src="assets/form-simulation.weitere-cases.js"></script>
 		<script src="assets/smart-button-simulation.js"></script>

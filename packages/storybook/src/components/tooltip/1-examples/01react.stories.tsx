@@ -27,17 +27,17 @@ export const Anwendung = () => {
 					auch in gleicher Weise vom Screenreader vorgelesen wird.
 				</KolAlert>
 			</KolDetails>
-			<KolButton _label="Oben" _icon="simple-up" _icon-only="" _tooltip-align="top" _variant="primary"></KolButton>
-			<KolButton _label="Unten" _icon="simple-down" _icon-only="" _tooltip-align="bottom" _variant="secondary"></KolButton>
-			<KolButton _label="Links" _icon="simple-left" _icon-only="" _tooltip-align="left" _variant="normal"></KolButton>
-			<KolButton _label="Rechts" _icon="simple-right" _icon-only="" _tooltip-align="right" _variant="danger"></KolButton>
+			<KolButton _label="Oben" _icon="icofont-simple-up" _icon-only="" _tooltip-align="top" _variant="primary"></KolButton>
+			<KolButton _label="Unten" _icon="icofont-simple-down" _icon-only="" _tooltip-align="bottom" _variant="secondary"></KolButton>
+			<KolButton _label="Links" _icon="icofont-simple-left" _icon-only="" _tooltip-align="left" _variant="normal"></KolButton>
+			<KolButton _label="Rechts" _icon="icofont-simple-right" _icon-only="" _tooltip-align="right" _variant="danger"></KolButton>
 			<KolButton
 				_label="Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip."
-				_icon="home"
+				_icon="icofont-home"
 				_icon-only=""
 				_variant="ghost"
 			></KolButton>{' '}
-			<KolButton _label="Disabled" _icon="bin" _icon-only="" _disabled></KolButton>
+			<KolButton _label="Disabled" _icon="icofont-bin" _icon-only="" _disabled></KolButton>
 		</BikBitvTest>
 	);
 };

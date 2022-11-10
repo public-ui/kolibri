@@ -125,7 +125,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			Es müssen alle Icofont-Identifier beim `_icon`-Property einfach um den Prefix `icofont-` ergänzt werden.
 			<ul>
 				<li>
-					Regex: <code>_icon="([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
+					Regex: <code>_icon="icofont-([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
 				</li>
 				<li>
 					Replacement: <code>_icon="icofont-$1"</code>
@@ -149,6 +149,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			🌟 Button: Zusätzlichen SPAN-Tag hinzugefügt, um den sichbaren Button kleiner darstellen zu können, obwohl die Klickfläche weiterhin mindestens 44x44px
 			groß bleibt.
 		</li>
+		<li>🔧 Fix Form-Submit und -Reset-Propagation (KolButton, KolButtonLink)</li>
 		<li>🔧 Button, LinkButton: Custom-Variante optimiert (entweder-oder)</li>
 		<li>
 			🌟 CLI: Weitere Framework-Integrationen als Templates hinzugefügt
@@ -180,6 +181,9 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			</KolLink>{' '}
 			eingefügt
 		</li>
+		<li>🔧 Storybook: Das Umschalten des Themes funktioniert jetzt ohne manuelles Neuladen</li>
+		<li>🔥 Packaging: Veraltete Theme-CSS-Dateien entfernt (aus Release 1.0)</li>
+		<li>🔥 Packaging: Aufbauseite (www/) ist für die Wiederverwendung nicht relevant und wird nicht mehr mitverpackt</li>
 		<li>👩‍🎨 Theming: BMF-, DESY- und MAPZ-Theme an Änderungen angepasst</li>
 	</ul>
 </kol-details>

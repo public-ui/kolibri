@@ -3,8 +3,6 @@ name: CI-Pipeline
 on:
   pull_request:
     branches: [main]
-  # pull_request_target:
-  #   types: [opened, closed, synchronize]
   push:
   workflow_dispatch:
 
@@ -14,22 +12,40 @@ jobs:
     name: Check quality gates
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.4
+
+      # - uses: pnpm/action-setup@v2.2.4
+      #   with:
+      #     run_install: false
+      #     version: 7
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     cache: pnpm
+      #     node-version: 16
+
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
         with:
           version: 7
-      - uses: actions/setup-node@v3
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
         with:
-          cache: pnpm
-          node-version: 16
-#       - uses: actions/cache@v3
-#         env:
-#           cache-name: cache-pnpm-modules
-#         with:
-#           # pnpm cache files are stored in `~/.pnpm-store` on Linux/macOS
-#           path: ~/.pnpm-store
-#           key: ${{ runner.os }}-pnpm
-#           restore-keys: |
-#             ${{ runner.os }}-pnpm
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store # -${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+
       - name: Install
         run: pnpm i
       - name: Unused
@@ -44,7 +60,5 @@ jobs:
       - name: Test
         run: |
           npx lerna run test
-        working-directory: packages/library
       - name: 'Pack'
-        run: |
-          npx lerna exec --stream -- npm pack
+        run: npx lerna exec --stream -- npm pack

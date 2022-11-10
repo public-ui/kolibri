@@ -43,7 +43,7 @@ specifiers:
   eslint-plugin-json: 3.1.0
   esm: 3.2.25
   lit-html: 2.4.0
-  mermaid: 9.2.1
+  mermaid: 9.2.2
   postcss: 8.4.18
   prettier: 2.7.1
   react: 17.0.2
@@ -100,7 +100,7 @@ devDependencies:
   eslint-plugin-json: 3.1.0
   esm: 3.2.25
   lit-html: 2.4.0
-  mermaid: 9.2.1
+  mermaid: 9.2.2
   postcss: 8.4.18
   prettier: 2.7.1
   react: 17.0.2
@@ -9557,8 +9557,8 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /mermaid/9.2.1:
-    resolution: {integrity: sha512-uvlr85RZx+bofBiweljoh2SZvfedSIAd41kew5e8GJFn4E4aFkdGS2oWsv3XIIaxR3JVa0CmNoUpEn6XaCmk+Q==}
+  /mermaid/9.2.2:
+    resolution: {integrity: sha512-6s7eKMqFJGS+0MYjmx8f6ZigqKBJVoSx5ql2gw6a4Aa+WJ49QiEJg7gPwywaBg3DZMs79UP7trESp4+jmaQccw==}
     dependencies:
       '@braintree/sanitize-url': 6.0.1
       d3: 7.6.1

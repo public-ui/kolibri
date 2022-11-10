@@ -111,7 +111,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
     _data={[
       {
         komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"<i>&lt;KolControlledInputNext _control=…&gt;…&lt;/KolControlledInputNext&gt;</i>
-        <br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont>
+        <br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont>
         <br/><i>&lt;LeanInputAdapter _control=…&gt;…&lt;/LeanInputAdapter&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
@@ -136,7 +136,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
           und daher wird die Adapter-Komponente <b>LeanInputAdapter</b> benannt.`,
       },
       {
-        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolIcofont &gt;…&lt;/KolIcofont&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i>&lt;KolIconIcofont &gt;…&lt;/KolIconIcofont&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolIcofont &gt;…&lt;/KolIcofont&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i>&lt;KolIconIcofont &gt;…&lt;/KolIconIcofont&gt;</i></p></kol-alert>`,
          sample: `<code
               style={{
                 display: 'block',
@@ -158,7 +158,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
         motivation: `Die Icon-Komponente wurde generischer umgesetzt, um in Zukunft beliebige technisch kompatible Icon-Fonts in KoliBri einsetzen zu können. Um hier auch die semantische Benamung sicherzustellen, musste die Komponente umgenannt werden.`,
       },
       {
-        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolInputSelect &gt;…&lt;/KolInputSelect&gt;</i><br/><kol-icon-icofont _icon="arrow-down"><br/></kol-icon-icofont> <br/><i> &lt;KolSelect _list=..&gt;…&lt;/KolSelect&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolInputSelect &gt;…&lt;/KolInputSelect&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"><br/></kol-icon-icofont> <br/><i> &lt;KolSelect _list=..&gt;…&lt;/KolSelect&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -180,7 +180,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
          motivation: `Die Komponente wurde im Zuge der W3C-konformen Umstetzung der Inputs umgestaltet. Die Klassifizierung der Inputs soll die Developer Experience verbessern.`,
       },
       {
-        komponente: `<kol-alert _type="info"  _heading="Replacement" _level="5"><p style="text-align: center;"><i> &lt;KolInputSlider &gt;…&lt;/KolInputSlider&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i>&lt;KolInputRange &gt;…&lt;/KolInputRange&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info"  _heading="Replacement" _level="5"><p style="text-align: center;"><i> &lt;KolInputSlider &gt;…&lt;/KolInputSlider&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i>&lt;KolInputRange &gt;…&lt;/KolInputRange&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -202,7 +202,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
         motivation:  `Die Komponente wurde im Zuge der W3C-konformen Umstetzung der Inputs umgestaltet. Die Klassifizierung der Inputs soll die Developer Experience verbessern.`,
       },
       {
-        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i> &lt;KolInputTextarea &gt;…&lt;/KolInputTextarea&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i>&lt;KolTextarea &gt;…&lt;/KolTextarea&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i> &lt;KolInputTextarea &gt;…&lt;/KolInputTextarea&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i>&lt;KolTextarea &gt;…&lt;/KolTextarea&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -224,7 +224,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
         motivation:  `Die Komponente wurde im Zuge der W3C-konformen Umsetzung der Inputs umgestaltet. Die Klassifizierung der Inputs soll die Developer Experience verbessern.`,
       },
       {
-        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolLinkList &gt;…&lt;/KolLinkList&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i>&lt;KolLinkGroup &gt;…&lt;/KolLinkGroup&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolLinkList &gt;…&lt;/KolLinkList&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i>&lt;KolLinkGroup &gt;…&lt;/KolLinkGroup&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -246,7 +246,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
         motivation:  `Alle Gruppen- und Navigationsstrukturen wurden vereinheitlicht. Dazu wurden alle gruppierenden Komponenten mit dem Postfix "Group" versehen.`,
       },
       {
-        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolMessage &gt;…&lt;/KolMessage&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i> &lt;KolAlert &gt;…&lt;/KolAlert&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolMessage &gt;…&lt;/KolMessage&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i> &lt;KolAlert &gt;…&lt;/KolAlert&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -268,7 +268,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
         motivation:   `Diese Komponente wurde in Anlehnung an andere Komponenten-Bibliotheken umbenannt. Die Umbenennung soll die Developer Experience verbessern.`,
       },
       {
-        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i> &lt;KolTag &gt;…&lt;/KolTag&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i> &lt;KolBadge &gt;…&lt;/KolBadge&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info" _heading="Replacement" _level="5"><p style="text-align: center;"><i> &lt;KolTag &gt;…&lt;/KolTag&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i> &lt;KolBadge &gt;…&lt;/KolBadge&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -290,7 +290,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
         motivation:   `Diese Komponente wurde in Anlehnung an andere Komponenten-Bibliotheken umbenannt. Die Umbenennung soll die Developer Experience verbessern.`,
       },
       {
-        komponente: `<kol-alert _type="info"  _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolToastMessage &gt;…&lt;/KolToastMessage&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i>&lt;KolToast &gt;…&lt;/KolToast&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info"  _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolToastMessage &gt;…&lt;/KolToastMessage&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i>&lt;KolToast &gt;…&lt;/KolToast&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -312,7 +312,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
         motivation:   `Diese Komponente wurde in Anlehnung an andere Komponenten-Bibliotheken umbenannt. Die Umbenennung soll die Developer Experience verbessern.`,
       },
       {
-        komponente: `<kol-alert _type="info"  _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolInputRadioGroup &gt;…&lt;/KolInputRadioGroup&gt;</i><br/><kol-icon-icofont _icon="arrow-down"></kol-icon-icofont><br/><i>&lt;KolInputRadio &gt;…&lt;/KolInputRadio&gt;</i></p></kol-alert>`,
+        komponente: `<kol-alert _type="info"  _heading="Replacement" _level="5"><p style="text-align: center;"><i>&lt;KolInputRadioGroup &gt;…&lt;/KolInputRadioGroup&gt;</i><br/><kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont><br/><i>&lt;KolInputRadio &gt;…&lt;/KolInputRadio&gt;</i></p></kol-alert>`,
         sample: `<code
               style={{
                 display: 'block',
@@ -343,7 +343,7 @@ import { KolAbbr, KolAlert, KolCard, KolHeading, KolIconIcofont, KolIconFontAwes
     <KolAlert _type="info" _heading="Replacement" _level="3">
       <p style={{textAlign: 'center'}}>
         <code>Icofont\[([^\]]+)\]</code>, <code>Aa</code>, <code>.*</code> aktivieren (Suchmuster)<br/>
-        <kol-icon-icofont _icon="arrow-down"></kol-icon-icofont>
+        <kol-icon-icofont _icon="icofont-arrow-down"></kol-icon-icofont>
         <br/>
         <code>$1</code> (Ersetzung)
       </p>

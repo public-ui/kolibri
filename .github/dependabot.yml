@@ -16,66 +16,6 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
-    directory: '/packages/core/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/templates/angular/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/templates/astro/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/templates/next.js/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/templates/preact/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/templates/react/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/templates/solid/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/templates/static/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/library/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/schema/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/themes/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
     directory: '/packages/adapters/angular/'
     schedule:
       interval: daily
@@ -102,6 +42,86 @@ updates:
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/vue/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/core/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/angular-app/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/astro-app/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/next.js-app/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/kolibri-library/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/kolibri-theme/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/preact-app/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/react-app/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/solid-app/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/templates/static-page/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/designer/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/library/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/schema/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/storybook/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/themes/'
     schedule:
       interval: daily
     target-branch: main

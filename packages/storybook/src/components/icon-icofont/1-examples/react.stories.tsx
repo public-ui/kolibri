@@ -178,7 +178,7 @@ export const Output = (args: any) => (
 			<br />
 			<KolLink _href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA24.html">https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA24.html</KolLink>
 		</KolDetails>
-		<KolIconIcofont _icon="home" _ariaLabel="Haus" style={{ fontSize: '400%', color: '#5f5f5f' }}></KolIconIcofont>
+		<KolIconIcofont _icon="icofont-home" _ariaLabel="Haus" style={{ fontSize: '400%', color: '#5f5f5f' }}></KolIconIcofont>
 		<KolIndentedText>Mit Aria-Label</KolIndentedText>
 		<KolIcon
 			_icon="icofont-home"

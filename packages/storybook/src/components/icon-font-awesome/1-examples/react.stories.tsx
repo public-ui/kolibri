@@ -42,7 +42,7 @@ export const Text = (args: any) => (
 		<KolIconFontAwesome
 			_ariaLabel=""
 			_prefix="fas"
-			_icon="home"
+			_icon="icofont-home"
 			style={{
 				display: 'inline-block',
 				marginRight: '0.5rem',
@@ -81,7 +81,7 @@ export const Sizes = (args: any) => (
 		<KolIconFontAwesome
 			_prefix="fas"
 			_ariaLabel=""
-			_icon="home"
+			_icon="icofont-home"
 			style={{
 				color: '#708090',
 				fontSize: '100%',
@@ -91,7 +91,7 @@ export const Sizes = (args: any) => (
 		<KolIconFontAwesome
 			_prefix="fas"
 			_ariaLabel=""
-			_icon="home"
+			_icon="icofont-home"
 			style={{
 				color: '#708090',
 				fontSize: '200%',
@@ -101,7 +101,7 @@ export const Sizes = (args: any) => (
 		<KolIconFontAwesome
 			_prefix="fas"
 			_ariaLabel=""
-			_icon="home"
+			_icon="icofont-home"
 			style={{
 				color: '#708090',
 				fontSize: '400%',
@@ -124,7 +124,7 @@ export const Colors = (args: any) => (
 		<KolIconFontAwesome
 			_prefix="fas"
 			_ariaLabel=""
-			_icon="home"
+			_icon="icofont-home"
 			style={{
 				color: '#DC143C',
 				fontSize: '400%',
@@ -135,7 +135,7 @@ export const Colors = (args: any) => (
 		<KolIconFontAwesome
 			_prefix="fas"
 			_ariaLabel=""
-			_icon="home"
+			_icon="icofont-home"
 			style={{
 				color: 'rgb(220, 20,60 )',
 				fontSize: '400%',
@@ -146,7 +146,7 @@ export const Colors = (args: any) => (
 		<KolIconFontAwesome
 			_prefix="fas"
 			_ariaLabel=""
-			_icon="home"
+			_icon="icofont-home"
 			style={{
 				color: 'rgba(220, 20,60 ,0.5)',
 				fontSize: '400%',
@@ -186,7 +186,7 @@ export const Output = (args: any) => (
 			<br />
 			<KolLink _href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA24.html">https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA24.html</KolLink>
 		</KolDetails>
-		<KolIconFontAwesome _prefix="fas" _icon="home" _ariaLabel="Haus" style={{ fontSize: '400%', color: '#5f5f5f' }}></KolIconFontAwesome>
+		<KolIconFontAwesome _prefix="fas" _icon="icofont-home" _ariaLabel="Haus" style={{ fontSize: '400%', color: '#5f5f5f' }}></KolIconFontAwesome>
 		<KolIndentedText>Mit Aria-Label</KolIndentedText>
 		<KolIcon
 			_icon="fas fa-home"

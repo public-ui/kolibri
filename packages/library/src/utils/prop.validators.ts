@@ -48,7 +48,6 @@ export const setEventTargetAndStopPropagation = (event: Event, target?: HTMLElem
 		value: target,
 		writable: false,
 	});
-	event?.stopPropagation();
 };
 
 const patchState = (component: Generic.Element.Component): void => {
