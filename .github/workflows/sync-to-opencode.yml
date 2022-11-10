@@ -6,9 +6,9 @@ on:
     - cron: '* 4-20/4 * * *' # von 6 bis 22 Uhr
 
 jobs:
-  build:
+  sync:
+    if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
-    name: sync
     steps:
       - name: Checkout specific branch
         uses: actions/checkout@v3
