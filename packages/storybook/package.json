@@ -78,7 +78,7 @@
 		"@storybook/react": "6.5.13",
 		"@storybook/theming": "6.5.13",
 		"@types/mermaid": "9.1.0",
-		"@types/react": "17.0.52",
+		"@types/react": "18.0.25",
 		"@typescript-eslint/eslint-plugin": "5.42.1",
 		"@typescript-eslint/parser": "5.42.1",
 		"auto-changelog": "2.4.0",
