@@ -20,7 +20,7 @@
 	},
 	"devDependencies": {
 		"npm-check-updates": "16.3.18",
-		"serve": "14.0.1"
+		"serve": "14.1.1"
 	},
 	"files": [
 		"dist/"
