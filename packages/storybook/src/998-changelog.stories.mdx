@@ -119,13 +119,13 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		zu finden.
 	</p>
 	<kol-heading _level={5}>Migrationsanleitung</kol-heading>
-	<p>Die Migration gestaltet sich sehr einfach, da nur folgende zwei Stellen anzupassen werden müssen.</p>
+	<p>Die Migration gestaltet sich sehr einfach, da nur folgende zwei Stellen ggf. angepassen werden müssen.</p>
 	<ul>
 		<li>
 			Es müssen alle Icofont-Identifier beim `_icon`-Property einfach um den Prefix `icofont-` ergänzt werden.
 			<ul>
 				<li>
-					Regex: <code>_icon="icofont-([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
+					Regex: <code>_icon="([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
 				</li>
 				<li>
 					Replacement: <code>_icon="icofont-$1"</code>
