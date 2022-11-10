@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync:
-    if: github.repository == 'pudblic-ui/kolibri'
+    if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout specific branch
