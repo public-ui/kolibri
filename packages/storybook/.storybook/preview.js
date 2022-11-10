@@ -40,7 +40,7 @@ const getThemeDetails = (className) =>
 		return theme.class === className;
 	}) || null;
 
-const getThemeName = (className) => getThemeDetails(className).name || null;
+const getThemeName = (className) => getThemeDetails(className)?.name || null;
 
 const switchTheme = (className) => {
 	const themeDetails = getThemeDetails(className);
