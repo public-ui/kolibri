@@ -3,8 +3,6 @@ name: CI-Pipeline
 on:
   pull_request:
     branches: [main]
-  # pull_request_target:
-  #   types: [opened, closed, synchronize]
   push:
   workflow_dispatch:
 
@@ -50,17 +48,17 @@ jobs:
 
       - name: Install
         run: pnpm i
-      # - name: Unused
-      #   run: npx lerna exec --stream -- ts-prune src -e
-      # - name: Format
-      #   if: always()
-      #   run: |
-      #     npx lerna run format
-      # - name: Lint
-      #   run: |
-      #     npx lerna run lint
-      # - name: Test
-      #   run: |
-      #     npx lerna run test
-      # - name: 'Pack'
-      #   run: npx lerna exec --stream -- npm pack
+      - name: Unused
+        run: npx lerna exec --stream -- ts-prune src -e
+      - name: Format
+        if: always()
+        run: |
+          npx lerna run format
+      - name: Lint
+        run: |
+          npx lerna run lint
+      - name: Test
+        run: |
+          npx lerna run test
+      - name: 'Pack'
+        run: npx lerna exec --stream -- npm pack
