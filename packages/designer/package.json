@@ -42,7 +42,7 @@
 	},
 	"dependencies": {
 		"@leanup/kolibri-themes": "0.0.3",
-		"@public-ui/core": "1.1.10-rc.16",
+		"@public-ui/core": "1.1.10-rc.17",
 		"@public-ui/components": "1.1.10-rc.16",
 		"@public-ui/solid": "1.1.10-rc.16",
 		"@public-ui/themes": "1.1.10-rc.16",
