@@ -7,7 +7,7 @@ import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { Stringified } from '../../types/common';
 
 export type KoliBriFormCallbacks = {
-	[Events.onSubmit]?: EventCallback<SubmitEvent>;
+	[Events.onSubmit]?: EventCallback<Event>;
 	[Events.onReset]?: EventCallback<Event>;
 };
 

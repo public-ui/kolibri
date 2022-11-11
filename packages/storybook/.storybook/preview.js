@@ -40,7 +40,7 @@ const getThemeDetails = (className) =>
 		return theme.class === className;
 	}) || null;
 
-const getThemeName = (className) => getThemeDetails(className).name || null;
+const getThemeName = (className) => getThemeDetails(className)?.name || null;
 
 const switchTheme = (className) => {
 	const themeDetails = getThemeDetails(className);
@@ -185,7 +185,7 @@ export const parameters = {
 	// layout: 'centered',
 	options: {
 		storySort: {
-			order: ['Startseite', 'Get Started', 'React', 'Web Components'],
+			order: ['Startseite', 'Get Started', 'Konzepte', 'React', 'Web Components'],
 		},
 	},
 	status: {

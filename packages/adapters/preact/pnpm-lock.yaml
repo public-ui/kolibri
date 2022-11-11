@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.10-rc.15
-  '@public-ui/react': 1.1.10-rc.15
+  '@public-ui/components': 1.1.10
+  '@public-ui/react': 1.1.10
   preact: '>=10.5.15'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 0.9.4
 
 dependencies:
-  '@public-ui/react': 1.1.10-rc.15_n5xl4xej7yygggewk6ggex66di
+  '@public-ui/react': 1.1.10_ye735ici2eaiatphxwb3cyqvwa
   preact: 10.11.2
 
 devDependencies:
-  '@public-ui/components': 1.1.10-rc.15
+  '@public-ui/components': 1.1.10
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.8.4
@@ -51,7 +51,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.3
+      '@babel/generator': 7.20.4
       '@babel/helper-compilation-targets': 7.20.0_@babel+core@7.20.2
       '@babel/helper-module-transforms': 7.20.2
       '@babel/helpers': 7.20.1
@@ -68,8 +68,8 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/generator/7.20.3:
-    resolution: {integrity: sha512-Wl5ilw2UD1+ZYprHVprxHZJCFeBWlzZYOovE4SDYLZnqCOD11j+0QzNeEWKLLTWM7nixrZEh7vNIyb76MyJg3A==}
+  /@babel/generator/7.20.4:
+    resolution: {integrity: sha512-luCf7yk/cm7yab6CAW1aiFnmEfBJplb/JojV56MYEK7ziWfGmFlTfmL9Ehwfy4gFhbjBfWO1wj7/TuSbVNEEtA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.20.2
@@ -190,8 +190,8 @@ packages:
       '@babel/types': 7.20.2
     dev: true
 
-  /@babel/standalone/7.20.3:
-    resolution: {integrity: sha512-u6VIhdacVpqVhBhSo21TRb1zcCdnPPyBsIC2LLnLnbmuJxlLsmGMAlLh+Xcsaqko4aGZrAtXIvTaMIQtUBkE8A==}
+  /@babel/standalone/7.20.4:
+    resolution: {integrity: sha512-27bv4h47jbaFZ7+e7gT1VEo9PNL1ynxqUX6/BERLz1qxm/5gzpbcHX+47VnSeYHyEyGZkRznpSOd8zPBhiz6tw==}
     engines: {node: '>=6.9.0'}
     dev: true
 
@@ -209,7 +209,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.3
+      '@babel/generator': 7.20.4
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.19.0
       '@babel/helper-hoist-variables': 7.18.6
@@ -323,34 +323,34 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.10-rc.15:
-    resolution: {integrity: sha512-F63rMZviEWxm6jbrQ/zSN2s/hGnAn84P2oZ0wprnsumP498Q+oKWJ5Ka6YBBsvmmKcx/rVfH8qTsDlfUkh1DoA==}
+  /@public-ui/components/1.1.10:
+    resolution: {integrity: sha512-lhD5Kyric6eGcogUuJiHHQDd84en7VV4cj+HmS1WdMr2K0y/Hb49dFuxL8z/1EZ4aEeT5JnCzuIQzy0EFGc+zQ==}
     dependencies:
-      '@public-ui/schema': 1.1.10-rc.15
+      '@public-ui/schema': 1.1.10
 
-  /@public-ui/core/1.1.10-rc.15:
-    resolution: {integrity: sha512-XWAGqGPkkiNUL1Ydubrbc+/AvpKPN1afn4GFSnOMTQwh7kKwYl3KOpcLns+spPhuZIkKR29vJUWalXZzSUayrA==}
+  /@public-ui/core/1.1.10:
+    resolution: {integrity: sha512-/nJSMpTR9FLq2Ns4A3362Sn97KXPwiwNUpfmgFDmtwcvGBo932kWBhVQaXuRhqtgAD9kgmdCj/FpZ8N35cZVXg==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.39
       rxjs: 7.5.7
 
-  /@public-ui/react/1.1.10-rc.15_n5xl4xej7yygggewk6ggex66di:
-    resolution: {integrity: sha512-bKub6iZ8AopHhkS7KjsSHzfgySToWPgsTW5ngUAbooYCq0Igv0pFEkCt99/jv/cz+YPVd0/4ThoxTdo+VCZ8EQ==}
+  /@public-ui/react/1.1.10_ye735ici2eaiatphxwb3cyqvwa:
+    resolution: {integrity: sha512-pJYIqGUqs9M8o+WNo7V8p4jd8Gagv0xutx5+V/UjnSvhSM5DsJTToaWdJNO8Zjk7tEDTB3xbZmXp8RXcCIVgtA==}
     peerDependencies:
-      '@public-ui/components': 1.1.10-rc.15
+      '@public-ui/components': 1.1.10
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.10-rc.15
+      '@public-ui/components': 1.1.10
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.1.10-rc.15:
-    resolution: {integrity: sha512-yazo5RQ+v4x5JdNkeNGQ81LpHtgqtskI4tsFZH8mDp7DeydowE8KdwOHdmvTDJRbcGBGoR+iiFE9cyHHYGtCGQ==}
+  /@public-ui/schema/1.1.10:
+    resolution: {integrity: sha512-9QIDMBdNA1cTw/D2OSXt1NI2NYlKPDQOi6Ms3500Y4oljn43xm74K4hjYRG12FgTOjgIpCWiHnqQzcxCvyWWzg==}
     dependencies:
-      '@public-ui/core': 1.1.10-rc.15
+      '@public-ui/core': 1.1.10
 
   /@rollup/plugin-alias/4.0.2_rollup@3.2.5:
     resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
@@ -1563,7 +1563,7 @@ packages:
     resolution: {integrity: sha512-2Sre5A1a7G61bjaAKZnSFaVgbJMwwbbYQpJFH69hAYcDfN7kIaktlSphS02XJilz4+/jR1tsJ5MHo1oMoCezxg==}
     dependencies:
       '@babel/core': 7.20.2
-      '@babel/standalone': 7.20.3
+      '@babel/standalone': 7.20.4
       '@babel/types': 7.20.2
       scule: 0.3.2
     transitivePeerDependencies:

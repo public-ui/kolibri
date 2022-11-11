@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs';
 import { KolLink, KolTable } from '@public-ui/react';
 
-<Meta title="Backlog und Changelog" />
+<Meta title="Backlog und Changelog" id="changelog" />
 
 <kol-heading _level={1}>Backlog und Changelog</kol-heading>
 
@@ -119,13 +119,13 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		zu finden.
 	</p>
 	<kol-heading _level={5}>Migrationsanleitung</kol-heading>
-	<p>Die Migration gestaltet sich sehr einfach, da nur folgende zwei Stellen anzupassen werden müssen.</p>
+	<p>Die Migration gestaltet sich sehr einfach, da nur folgende zwei Stellen ggf. angepassen werden müssen.</p>
 	<ul>
 		<li>
 			Es müssen alle Icofont-Identifier beim `_icon`-Property einfach um den Prefix `icofont-` ergänzt werden.
 			<ul>
 				<li>
-					Regex: <code>_icon="icofont-([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
+					Regex: <code>_icon="([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
 				</li>
 				<li>
 					Replacement: <code>_icon="icofont-$1"</code>
@@ -173,11 +173,18 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			beinhaltet InputNumber nicht mehr die Datumstypen (ℹ️ wird erst mit Major-Release entfernt).
 		</li>
 		<li>🔥 Nicht required Properties erlauben null und damit das Zurücksetzen auf den Detault-Value.</li>
-		<li>🌟 "Expert"-Slot eingefügt, um mehr Flexibilität mit Eigenverantwortung zu</li>
+		<li>🌟 "Expert"-Slot eingefügt, um mehr Flexibilität mit Eigenverantwortung zu erhalten</li>
 		<li>
 			📚 Dokumentation:{' '}
-			<KolLink _href="iframe.html?id=slot-konzept--page" _target="_self">
+			<KolLink _href="iframe.html?id=slots--page" _target="_self">
 				Slot-Konzept
+			</KolLink>{' '}
+			eingefügt
+		</li>
+		<li>
+			📚 Dokumentation:{' '}
+			<KolLink _href="iframe.html?id=theming--page" _target="_self">
+				Theming-Konzept
 			</KolLink>{' '}
 			eingefügt
 		</li>

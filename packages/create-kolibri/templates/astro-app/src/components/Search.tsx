@@ -43,7 +43,7 @@ export default function Search() {
             _target="_blank"
           >
             <KolIcon _ariaLabel="" _icon={"fa-solid fa-palette"} />{" "}
-            Theme-Designer öffnen
+            KoliBri-Designer öffnen
           </KolLink>
         </KolAlert>
         <KolAlert

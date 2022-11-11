@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.10-rc.15
-  '@public-ui/core': 1.1.10-rc.15
+  '@public-ui/components': 1.1.10
+  '@public-ui/core': 1.1.10
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -15,8 +15,8 @@ specifiers:
   unbuild: 0.9.1
 
 devDependencies:
-  '@public-ui/components': 1.1.10-rc.15
-  '@public-ui/core': 1.1.10-rc.15
+  '@public-ui/components': 1.1.10
+  '@public-ui/core': 1.1.10
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -60,7 +60,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.3
+      '@babel/generator': 7.20.4
       '@babel/helper-compilation-targets': 7.20.0_@babel+core@7.20.2
       '@babel/helper-module-transforms': 7.20.2
       '@babel/helpers': 7.20.1
@@ -77,8 +77,8 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/generator/7.20.3:
-    resolution: {integrity: sha512-Wl5ilw2UD1+ZYprHVprxHZJCFeBWlzZYOovE4SDYLZnqCOD11j+0QzNeEWKLLTWM7nixrZEh7vNIyb76MyJg3A==}
+  /@babel/generator/7.20.4:
+    resolution: {integrity: sha512-luCf7yk/cm7yab6CAW1aiFnmEfBJplb/JojV56MYEK7ziWfGmFlTfmL9Ehwfy4gFhbjBfWO1wj7/TuSbVNEEtA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.20.2
@@ -199,8 +199,8 @@ packages:
       '@babel/types': 7.20.2
     dev: true
 
-  /@babel/standalone/7.20.3:
-    resolution: {integrity: sha512-u6VIhdacVpqVhBhSo21TRb1zcCdnPPyBsIC2LLnLnbmuJxlLsmGMAlLh+Xcsaqko4aGZrAtXIvTaMIQtUBkE8A==}
+  /@babel/standalone/7.20.4:
+    resolution: {integrity: sha512-27bv4h47jbaFZ7+e7gT1VEo9PNL1ynxqUX6/BERLz1qxm/5gzpbcHX+47VnSeYHyEyGZkRznpSOd8zPBhiz6tw==}
     engines: {node: '>=6.9.0'}
     dev: true
 
@@ -218,7 +218,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.3
+      '@babel/generator': 7.20.4
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.19.0
       '@babel/helper-hoist-variables': 7.18.6
@@ -333,24 +333,24 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.10-rc.15:
-    resolution: {integrity: sha512-F63rMZviEWxm6jbrQ/zSN2s/hGnAn84P2oZ0wprnsumP498Q+oKWJ5Ka6YBBsvmmKcx/rVfH8qTsDlfUkh1DoA==}
+  /@public-ui/components/1.1.10:
+    resolution: {integrity: sha512-lhD5Kyric6eGcogUuJiHHQDd84en7VV4cj+HmS1WdMr2K0y/Hb49dFuxL8z/1EZ4aEeT5JnCzuIQzy0EFGc+zQ==}
     dependencies:
-      '@public-ui/schema': 1.1.10-rc.15
+      '@public-ui/schema': 1.1.10
     dev: true
 
-  /@public-ui/core/1.1.10-rc.15:
-    resolution: {integrity: sha512-XWAGqGPkkiNUL1Ydubrbc+/AvpKPN1afn4GFSnOMTQwh7kKwYl3KOpcLns+spPhuZIkKR29vJUWalXZzSUayrA==}
+  /@public-ui/core/1.1.10:
+    resolution: {integrity: sha512-/nJSMpTR9FLq2Ns4A3362Sn97KXPwiwNUpfmgFDmtwcvGBo932kWBhVQaXuRhqtgAD9kgmdCj/FpZ8N35cZVXg==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.39
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.10-rc.15:
-    resolution: {integrity: sha512-yazo5RQ+v4x5JdNkeNGQ81LpHtgqtskI4tsFZH8mDp7DeydowE8KdwOHdmvTDJRbcGBGoR+iiFE9cyHHYGtCGQ==}
+  /@public-ui/schema/1.1.10:
+    resolution: {integrity: sha512-9QIDMBdNA1cTw/D2OSXt1NI2NYlKPDQOi6Ms3500Y4oljn43xm74K4hjYRG12FgTOjgIpCWiHnqQzcxCvyWWzg==}
     dependencies:
-      '@public-ui/core': 1.1.10-rc.15
+      '@public-ui/core': 1.1.10
     dev: true
 
   /@rollup/plugin-alias/4.0.2_rollup@3.2.5:
@@ -427,6 +427,14 @@ packages:
       '@rollup/pluginutils': 5.0.2_rollup@3.2.5
       magic-string: 0.26.7
       rollup: 3.2.5
+    dev: true
+
+  /@rollup/pluginutils/4.2.1:
+    resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
     dev: true
 
   /@rollup/pluginutils/5.0.2_rollup@3.2.5:
@@ -628,8 +636,8 @@ packages:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
     dev: true
 
-  /es-module-lexer/1.1.0:
-    resolution: {integrity: sha512-fJg+1tiyEeS8figV+fPcPpm8WqJEflG3yPU0NOm5xMvrNkuiy7HzX/Ljng4Y0hAoiw4/3hQTCFYw+ub8+a2pRA==}
+  /es-module-lexer/0.9.3:
+    resolution: {integrity: sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==}
     dev: true
 
   /esbuild-android-64/0.14.54:
@@ -1488,16 +1496,16 @@ packages:
       '@babel/code-frame': 7.18.6
     dev: true
 
-  /rollup-plugin-esbuild/4.10.2_b76bwh2xfplsy4n4t42ms6ttgm:
-    resolution: {integrity: sha512-OPrBgdN1ZC2zQvq/rm5Zvzpb0Rez7zbbVJ+1b5Az//kLlfhwR1mqOP3wAhkg9sn5nF7p+97p55TORE0RNXzNcw==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+  /rollup-plugin-esbuild/4.10.3_b76bwh2xfplsy4n4t42ms6ttgm:
+    resolution: {integrity: sha512-RILwUCgnCL5vo8vyZ/ZpwcqRuE5KmLizEv6BujBQfgXFZ6ggcS0FiYvQN+gsTJfWCMaU37l0Fosh4eEufyO97Q==}
+    engines: {node: '>=12'}
     peerDependencies:
       esbuild: '>=0.10.1'
-      rollup: ^1.20.0 || ^2.0.0 || ^3.0.0
+      rollup: ^1.20.0 || ^2.0.0
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.2.5
+      '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
-      es-module-lexer: 1.1.0
+      es-module-lexer: 0.9.3
       esbuild: 0.15.13
       joycon: 3.1.1
       jsonc-parser: 3.2.0
@@ -1621,7 +1629,7 @@ packages:
       rimraf: 3.0.2
       rollup: 3.2.5
       rollup-plugin-dts: 4.2.3_oa2candk7eitu7usnsurwiyuuu
-      rollup-plugin-esbuild: 4.10.2_b76bwh2xfplsy4n4t42ms6ttgm
+      rollup-plugin-esbuild: 4.10.3_b76bwh2xfplsy4n4t42ms6ttgm
       scule: 0.3.2
       typescript: 4.8.4
       untyped: 0.5.0
@@ -1638,7 +1646,7 @@ packages:
     resolution: {integrity: sha512-2Sre5A1a7G61bjaAKZnSFaVgbJMwwbbYQpJFH69hAYcDfN7kIaktlSphS02XJilz4+/jR1tsJ5MHo1oMoCezxg==}
     dependencies:
       '@babel/core': 7.20.2
-      '@babel/standalone': 7.20.3
+      '@babel/standalone': 7.20.4
       '@babel/types': 7.20.2
       scule: 0.3.2
     transitivePeerDependencies:

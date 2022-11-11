@@ -22,9 +22,14 @@ on:
 
 jobs:
   publish:
+    if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          # ref: 'main'
       # - uses: pnpm/action-setup@v2.2.2
       #   with:
       #     version: 7
@@ -135,4 +140,3 @@ jobs:
         working-directory: packages/storybook
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
