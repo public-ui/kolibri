@@ -32,14 +32,14 @@
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.0-rc.21",
-		"@public-ui/components": "1.1.10-rc.16",
+		"@public-ui/components": "1.1.10-rc.17",
 		"@public-ui/core": "1.1.10-rc.16",
 		"@types/node": "18.11.9",
 		"typescript": "4.8.4",
 		"unbuild": "0.9.4"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.10-rc.16"
+		"@public-ui/components": "1.1.10-rc.17"
 	},
 	"sideEffects": false,
 	"type": "module",
