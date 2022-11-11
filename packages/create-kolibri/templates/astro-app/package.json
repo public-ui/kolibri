@@ -40,7 +40,7 @@
     "@public-ui/core": "1.1.9",
     "@public-ui/react": "1.1.9",
     "@public-ui/themes": "1.1.9",
-    "@types/react": "17.0.45",
+    "@types/react": "18.0.25",
     "@types/node": "18.11.9",
     "@types/react-dom": "18.0.8",
     "astro": "1.6.5",
@@ -50,7 +50,7 @@
 		"playwright": "1.27.1",
     "preact": "10.11.2",
     "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react-dom": "18.2.0",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3"
   }
