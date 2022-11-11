@@ -42,7 +42,7 @@
 		"@babel/types": "7.20.2",
 		"@a11y-ui/core": "1.0.0-rc.21",
 		"@public-ui/core": "1.1.10-rc.16",
-		"@public-ui/components": "1.1.10-rc.16",
+		"@public-ui/components": "1.1.10-rc.17",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.9",
@@ -52,7 +52,7 @@
 		"typescript": "4.8.4"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.10-rc.16",
+		"@public-ui/components": "1.1.10-rc.17",
 		"svelte": ">=3"
 	},
 	"files": [
