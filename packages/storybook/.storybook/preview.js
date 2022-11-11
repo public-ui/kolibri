@@ -185,7 +185,7 @@ export const parameters = {
 	// layout: 'centered',
 	options: {
 		storySort: {
-			order: ['Startseite', 'Get Started', 'React', 'Web Components'],
+			order: ['Startseite', 'Get Started', 'Konzepte', 'React', 'Web Components'],
 		},
 	},
 	status: {

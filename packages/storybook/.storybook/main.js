@@ -13,7 +13,9 @@ module.exports = {
 		'@storybook/addon-jest',
 		// '@storybook/addon-links',
 		'@storybook/addon-toolbars',
+		'storybook-addon-turbo-build',
 		'@storybook/addon-viewport',
+		,
 		'storybook-addon-themes',
 	],
 	core: {

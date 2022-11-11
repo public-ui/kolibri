@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/addon-docs';
+import { KolButton } from '@public-ui/react';
 
-<Meta title="Slot-Konzept" />
+<Meta title="Konzepte/Slots" id="slots" />
 
 <kol-heading>Slot-Konzept</kol-heading>
 
@@ -61,11 +62,17 @@ import { Meta } from '@storybook/addon-docs';
 
 <p>Ein Button wird regulär wie folgt verwendet:</p>
 
+<KolButton _label="Ich bin ein Schalter"></KolButton>
+
 ```tsx
 <KolButton _label="Ich bin ein Schalter"></KolButton>
 ```
 
 <p>Mit dem Expert-Slot kann der Button jetzt auch so verwendet werden:</p>
+
+<KolButton _label="">
+	<span slot="expert">Ich bin mehr als nur ein Schalter</span>
+</KolButton>
 
 ```tsx
 <KolButton _label="">
@@ -76,7 +83,7 @@ import { Meta } from '@storybook/addon-docs';
 <p>
 	<kol-alert _type="info">
 		<strong>
-			Über das Property <code>slot="expert"</code> wird ein nachvollziehbarer Übergabepunkt definiert und der Kontext-Wechsel klar definiert.
+			Über das Property <code>slot="expert"</code> wird ein nachvollziehbarer Übergabepunkt ermöglicht und der Kontext-Wechsel klar definiert.
 		</strong>
 	</kol-alert>
 </p>

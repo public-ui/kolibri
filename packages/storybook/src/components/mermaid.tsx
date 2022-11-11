@@ -3,6 +3,7 @@ import mermaid from 'mermaid';
 import mermaidAPI from 'mermaid/mermaidAPI';
 
 type MermaidProps = {
+	code: string;
 	config?: mermaidAPI.Config;
 };
 
@@ -19,9 +20,13 @@ export const mermaidLoadContent = (config?: mermaidAPI.Config) => {
 	}, 500);
 };
 
-export const Mermaid: FunctionComponent<MermaidProps> = ({ config, children }) => {
+export const Mermaid: FunctionComponent<MermaidProps> = ({ code, config, children }) => {
 	useEffect(() => {
 		mermaidLoadContent(config);
 	}, []);
-	return <div className="mermaid">{children}</div>;
+	return (
+		<div>
+			<div className="mermaid">{code}</div>
+		</div>
+	);
 };

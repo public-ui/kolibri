@@ -25,7 +25,7 @@ export const AppComponent: Component = () => {
 				</KolAlert>
 				<KolAlert _type="info" _heading="Theming" _variant="card">
 					<KolLink _href="https://public-ui.github.io/?path=/docs/designer--page" _fill _target="_blank">
-						<KolIcon _ariaLabel="" _icon="fa-solid fa-palette" /> Theme-Designer öffnen
+						<KolIcon _ariaLabel="" _icon="fa-solid fa-palette" /> KoliBri-Designer öffnen
 					</KolLink>
 				</KolAlert>
 				<KolAlert _type="warning" _heading="Mitwirken" _variant="card">
