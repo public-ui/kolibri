@@ -14,7 +14,7 @@ import {
 	KolTable,
 } from '@public-ui/react';
 
-<Meta title="Startseite" />
+<Meta title="Startseite" id="homepage" />
 
 <div className="row">
 	<div className="cols-12 d-flex gap-8">
@@ -34,6 +34,11 @@ import {
 			}}
 		/>
 	</div>
+	<KolAlert _type="info">
+		<KolLink _href="iframe.html?id=theming--page" _target="_self">
+			<strong> Erfahren Sie hier, wieso KoliBri so etwas besonders ist.</strong>
+		</KolLink>
+	</KolAlert>
 	<KolHeading className="col-12">Willkommen bei KoliBri</KolHeading>
 	<p className="col-12">
 		<kol-abbr _title="Komponenten-Bibliothek für die Barrierefreiheit">KoliBri</kol-abbr> steht für{' '}
@@ -362,7 +367,7 @@ import {
 	</KolHeading>
 	<div className="col-12 col-sm-6 my-2">
 		<KolCard _headline="Erste Schritte" _level={2}>
-			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=erste-schritte--page" _target="_self">
+			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=get-started--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fas fa-paper-plane" />
 					<span>Auf der verlinkten Seite wird beschrieben, wie Sie KoliBri in Ihr Projekt integrieren können.</span>
@@ -372,7 +377,7 @@ import {
 	</div>
 	<div className="col-12 col-sm-6 my-2">
 		<KolCard _headline="Frameworks" _level={2}>
-			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=framework-integrationen--page" _target="_self">
+			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=frameworks--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fa-solid fa-toolbox" />
 					<span>Es gibt unterschiedliche Frameworks mit denen Sie KoliBri einsetzen können.</span>
@@ -414,7 +419,7 @@ import {
 	</div> */}
 	<div className="col-12 col-sm-6 my-2">
 		<KolCard _headline="Changelog" _level={2}>
-			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=backlog-und-changelog--page" _target="_self">
+			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=changelog--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fas fa-history" />
 					<span>Auf der verlinkten Seite werden alle Änderungen in den Versionen von KoliBri aufgelistet.</span>
@@ -424,7 +429,7 @@ import {
 	</div>
 	<div className="col-12 col-sm-6 my-2">
 		<KolCard _headline="Open Source" _level={2}>
-			<KolLink slot="content" _useCase="nav" _href="https://github.com/public-ui" _target="github">
+			<KolLink slot="content" _useCase="nav" _href="https://github.com/public-ui/kolibri" _target="github">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fa-brands fa-github" />
 					<span>KoliBri ist jetzt Open Source und soll durch Feedback verbessert und erweitert werden.</span>
@@ -433,11 +438,11 @@ import {
 		</KolCard>
 	</div>
 	<KolHeading className="col-12" _level={2}>
-		Konzept
+		Konzepte
 	</KolHeading>
 	<div className="col-12 col-sm-6 my-2">
 		<KolCard _headline="Barrierefreiheit" _level={2}>
-			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=barrierefreiheit--page" _target="_self">
+			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=accessibility--page" _target="_self">
 				<div className="d-flex gap-4">
 					<KolIcon className="homepage" _icon="fas fa-universal-access" />
 					<span>Auf der verlinkten Seite erfahren Sie mehr zum Thema Barrierefreiheit und dem BIK BITV-Test in KoliBri.</span>
@@ -456,8 +461,8 @@ import {
     	</KolCard>
     </div> */}
 	<div className="col-12 col-sm-6 my-2">
-		<KolCard _headline="Designer" _level={2}>
-			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=designer--page" _target="_self">
+		<KolCard _headline="Theming" _level={2}>
+			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=theming--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fas fa-paint-brush" />
 					<span>Mittels des KoliBri-Designers ist es möglich die barrierefreien Komponenten an einen Styleguide anzupassen.</span>
@@ -475,5 +480,25 @@ import {
 			</KolLink>
 		</KolCard>
 	</div> */}
+	<div className="col-12 col-sm-6 my-2">
+		<KolCard _headline="Formularfelder" _level={2}>
+			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=inputs-select-textarea--page" _target="_self">
+				<div className="d-flex gap-4 py-2">
+					<KolIcon className="homepage" _icon="fa-solid fa-square-check" />
+					<span>Die Komponenten für die Formularfelder sind streng nach W3C umgesetzt. Warum?</span>
+				</div>
+			</KolLink>
+		</KolCard>
+	</div>
+	<div className="col-12 col-sm-6 my-2">
+		<KolCard _headline="Expert-Mode" _level={2}>
+			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=slots--page" _target="_self">
+				<div className="d-flex gap-4 py-2">
+					<KolIcon className="homepage" _icon="fa-solid fa-user-doctor" />
+					<span>Für noch mehr Flexiblität stellen wir einen Experten-Modus bereit.</span>
+				</div>
+			</KolLink>
+		</KolCard>
+	</div>
 	<p />
 </div>
