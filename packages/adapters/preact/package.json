@@ -28,7 +28,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/react": "1.1.10-rc.16"
+		"@public-ui/react": "1.1.10-rc.17"
 	},
 	"devDependencies": {
 		"@public-ui/components": "1.1.10-rc.16",
