@@ -48,7 +48,7 @@
 		"@angular/compiler": "14.2.10",
 		"@angular/core": "14.2.10",
 		"@public-ui/core": "1.1.10-rc.16",
-		"@public-ui/components": "1.1.10-rc.16",
+		"@public-ui/components": "1.1.10-rc.17",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.9",
@@ -62,7 +62,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": ">=14",
-		"@public-ui/components": "1.1.10-rc.16"
+		"@public-ui/components": "1.1.10-rc.17"
 	},
 	"files": [
 		"dist/"
