@@ -42,7 +42,7 @@
 		"husky": "8.0.1",
 		"lerna": "5.6.2",
 		"license-report": "6.3.0",
-		"npm-check-updates": "16.3.11",
+		"npm-check-updates": "16.3.25",
 		"prettier": "2.7.1",
 		"rimraf": "3.0.2",
 		"ts-node": "10.9.1",
