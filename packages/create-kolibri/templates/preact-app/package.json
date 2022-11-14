@@ -35,7 +35,7 @@
 		"@public-ui/core": "1.1.10",
 		"@public-ui/react": "1.1.10",
 		"@public-ui/themes": "1.1.10",
-		"ajv": "8.11.0",
+		"ajv": "8.11.2",
 		"preact": "10.11.2"
 	},
 	"devDependencies": {
