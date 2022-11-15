@@ -52,7 +52,7 @@
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-react": "7.31.10",
 		"nightwatch-axe-verbose": "2.0.3",
-		"npm-check-updates": "16.3.25",
+		"npm-check-updates": "16.4.1",
 		"playwright": "1.27.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
