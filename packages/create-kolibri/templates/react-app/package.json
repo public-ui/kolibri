@@ -47,7 +47,7 @@
 		"@types/react": "18.0.25",
 		"@types/react-dom": "18.0.8",
 		"@unocss/preset-mini": "0.46.5",
-		"@unocss/webpack": "0.45.30",
+		"@unocss/webpack": "0.46.5",
 		"chromedriver": "107.0.3",
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-react": "7.31.10",
