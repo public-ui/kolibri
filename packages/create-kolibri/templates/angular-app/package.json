@@ -59,7 +59,7 @@
 		"rimraf": "3.0.2",
 		"selenium-server": "3.141.59",
 		"ts-prune": "0.10.3",
-		"typescript": "4.8.3"
+		"typescript": "4.8.4"
 	},
 	"files": [
 		"dist/"
