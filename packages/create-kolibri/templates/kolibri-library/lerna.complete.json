@@ -9,5 +9,6 @@
 		"packages/schema",
 		"packages/storybook"
 	],
+	"useNx": true,
 	"version": "0.0.0"
 }

@@ -1,6 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
-import { reflectAttrs } from '../../../utils/testing';
 import { mapIconProp2State } from '../../../utils/validators/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { Props } from '../component';
@@ -26,7 +25,7 @@ export const getSpanWcHtml = (
 	);
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${reflectAttrs(props, {}, ['_iconOnly', '_label'])}${state._iconOnly === true ? ` class="icon-only"` : ``}${additionalAttrs}>
+<kol-span-wc${state._iconOnly === true ? ` class="icon-only"` : ``}${additionalAttrs}>
 	${
 		icon.top
 			? getIconHtml({
@@ -75,7 +74,7 @@ export const getSpanWcHtml = (
 
 export const getSpanHtml = (props: Props): string => {
 	return `
-<kol-span${reflectAttrs(props, {}, ['_iconOnly', '_label'])}>
+<kol-span>
 	<mock:shadow-root>
 		${getSpanWcHtml(props, {}, ``, true)}
 	</mock:shadow-root>

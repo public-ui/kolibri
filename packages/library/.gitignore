@@ -2,9 +2,12 @@
 /loader/
 /screenshot/
 /www/
+cheat-sheet.html
 custom-elements.json
 jest-test-results.json
 lighthouse.report.html
+open-ui.json
+open-ui.json5
 package-lock.json
 stencil-stats.json
 vscode-custom-data.json
