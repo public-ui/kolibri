@@ -1,14 +1,15 @@
 const fs = require('fs');
-const ELEMENTS = require('./custom-elements.json');
+const ELEMENTS = require('../custom-elements.json');
 const TODAY = new Date();
 const OPEN_UI = {
 	$schema: '../schemas/design-system.schema.json5',
 	lastUpdated: TODAY.getFullYear() + '-' + (TODAY.getMonth() + 1) + '-' + TODAY.getDate(),
-	name: 'A11y-UI',
-	description: '',
-	url: 'https://',
+	name: 'KoliBri',
+	description:
+		'KoliBri builds directly on the web standards of the W3C (framework-agnostic), is a generic reference implementation of the WCAG standard and the BITV for accessibility and implemented as a multi-theming capable presentation layer. There is no technical reference and no data transmission functionalities. This means that KoliBri can be reused for the realization of static websites as well as dynamic web applications with different corporate designs and style guides and is therefore very interesting for open source.',
+	url: 'https://public-ui.github.io/',
 	version: ELEMENTS.version,
-	by: 'Martin Oppitz',
+	by: 'Informationstechnik Zentrum Bund',
 	components: [],
 };
 const BLACKLIST = [
@@ -23,6 +24,8 @@ const BLACKLIST = [
 	'kol-kolibri',
 	'kol-logo',
 	'kol-link-group',
+	'kol-span',
+	'kol-span-wc',
 	'kol-version',
 ];
 ELEMENTS.tags.forEach((tag) => {

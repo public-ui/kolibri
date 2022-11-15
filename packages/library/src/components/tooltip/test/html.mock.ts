@@ -1,7 +1,6 @@
 import { getBadgeHtml } from '../../badge/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
 import { Props } from '../component';
-import { reflectAttrs } from '../../../utils/testing';
 
 export const getTooltipHtml = (props: Props): string => {
 	const state = mixMembers(
@@ -12,9 +11,7 @@ export const getTooltipHtml = (props: Props): string => {
 		props
 	);
 	return `
-<kol-tooltip${reflectAttrs(props, {
-		_align: 'top',
-	})} style="max-width: 300px;">
+<kol-tooltip style="max-width: 300px;">
   ${
 		state._label === ''
 			? ''
