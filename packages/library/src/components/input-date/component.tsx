@@ -16,6 +16,15 @@ import { ComponentApi, States } from './types';
 	shadow: false,
 })
 export class KolInputDate implements ComponentApi {
+	private static readonly DEFAULT_MAX_DATE = new Date(9999, 11, 31, 23, 59, 59);
+
+	// test: https://regex101.com/r/NTVh4L/1
+	private static readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
+	private static readonly isoLocalDateTimeRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])[T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
+	private static readonly isoMonthRegex = /^\d{4}-([0]\d|1[0-2])/;
+	private static readonly isoTimeRegex = /^[0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
+	private static readonly isoWeekRegex = /^\d{4}-W(?:[0-4]\d|5[0-3])$/;
+
 	public render(): JSX.Element {
 		return (
 			<kol-input-number
@@ -160,18 +169,41 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@State() public state: States = {};
 
-	// test: https://regex101.com/r/NTVh4L/1
-	private readonly isoDateRegex =
-		/(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?([+-][0-2]\d:[0-5]\d|Z)?)?$)|(^[0-2]\d:[0-5]\d(:[0-5]\d)?$)|(^\d{4}-W(?:[0-4]\d|5[0-3])$)|(^\d{4}-([0]\d|1[0-2])$)/;
-
-	private valueAsIsoDate(value?: Iso8601 | Date): Iso8601 | undefined {
-		if (typeof value === 'string') {
-			return value;
+	private valueAsIsoDate(value?: Iso8601 | Date, defaultValue?: Date): Iso8601 | undefined {
+		const v: Iso8601 | Date | undefined = value ?? defaultValue;
+		if (typeof v === 'string') {
+			return v;
 		}
-		if (typeof value === 'object' && value instanceof Date) {
-			return value.toISOString() as Iso8601;
+		if (typeof v === 'object' && v instanceof Date) {
+			switch (this._type) {
+				case 'date':
+					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}`;
+				case 'datetime-local':
+					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}T${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+				case 'month':
+					return `${v.getFullYear()}-${v.getMonth() + 1}`;
+				case 'time':
+					return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+				case 'week':
+					throw new Error('Auto convert to week is not supported!');
+			}
 		}
 		return undefined;
+	}
+
+	private validateDateString(value: Iso8601): boolean {
+		switch (this._type) {
+			case 'date':
+				return KolInputDate.isoDateRegex.test(value);
+			case 'datetime-local':
+				return KolInputDate.isoLocalDateTimeRegex.test(value);
+			case 'month':
+				return KolInputDate.isoMonthRegex.test(value);
+			case 'time':
+				return KolInputDate.isoTimeRegex.test(value);
+			case 'week':
+				return KolInputDate.isoWeekRegex.test(value);
+		}
 	}
 
 	/**
@@ -179,7 +211,13 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@Watch('_max')
 	public validateMax(value?: Iso8601 | Date): void {
-		watchValidator(this, '_max', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['Iso8601']), this.valueAsIsoDate(value));
+		watchValidator(
+			this,
+			'_max',
+			(value): boolean => value === undefined || this.validateDateString(value),
+			new Set(['Iso8601', 'Date']),
+			this.valueAsIsoDate(value, this._type === 'date' || this._type === 'month' || this._type === 'datetime-local' ? KolInputDate.DEFAULT_MAX_DATE : undefined)
+		);
 	}
 
 	/**
@@ -187,7 +225,13 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@Watch('_min')
 	public validateMin(value?: Iso8601 | Date): void {
-		watchValidator(this, '_min', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['Iso8601']), this.valueAsIsoDate(value));
+		watchValidator(
+			this,
+			'_min',
+			(value): boolean => value === undefined || this.validateDateString(value),
+			new Set(['Iso8601', 'Date']),
+			this.valueAsIsoDate(value)
+		);
 	}
 
 	/**
@@ -195,7 +239,13 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date): void {
-		watchValidator(this, '_value', (value): boolean => value === undefined || this.isoDateRegex.test(value), new Set(['Iso8601']), this.valueAsIsoDate(value));
+		watchValidator(
+			this,
+			'_value',
+			(value): boolean => value === undefined || this.validateDateString(value),
+			new Set(['Iso8601', 'Date']),
+			this.valueAsIsoDate(value)
+		);
 	}
 
 	/**
