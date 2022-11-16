@@ -74,7 +74,7 @@ export class KolInputNumber implements ComponentApi {
 						disabled={this.state._disabled}
 						id={this.state._id}
 						list={hasList ? `${this.state._id}-list` : undefined}
-						max={this.state._max ?? this.state._type != 'number' ? '9999-12-31 23:59:59.999' : undefined}
+						max={this.state._max}
 						min={this.state._min}
 						name={this.state._name}
 						readOnly={this.state._readOnly}
