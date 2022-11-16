@@ -45,7 +45,7 @@
 	"bin": "dist/cli.js",
 	"dependencies": {
 		"cpy-cli": "4.2.0",
-		"create-create-app": "7.3.0",
+		"create-create-cli": "7.3.2",
 		"kleur": "4.1.5",
 		"npm-run-all": "4.1.5"
 	},
