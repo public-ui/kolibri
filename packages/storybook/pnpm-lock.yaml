@@ -33,7 +33,7 @@ specifiers:
   '@storybook/theming': 6.5.13
   '@types/mermaid': 9.1.0
   '@types/react': 17.0.52
-  '@types/react-dom': 17.0.18
+  '@types/react-dom': 18.0.9
   '@typescript-eslint/eslint-plugin': 5.43.0
   '@typescript-eslint/parser': 5.43.0
   auto-changelog: 2.4.0
@@ -92,7 +92,7 @@ devDependencies:
   '@storybook/theming': 6.5.13_sfoxds7t5ydpegc3knd667wn6m
   '@types/mermaid': 9.1.0
   '@types/react': 17.0.52
-  '@types/react-dom': 17.0.18
+  '@types/react-dom': 18.0.9
   '@typescript-eslint/eslint-plugin': 5.43.0_yy4vf4gcvxiubmg7fqa55dqe2i
   '@typescript-eslint/parser': 5.43.0_rmayb2veg2btbq6mbmnyivgasy
   auto-changelog: 2.4.0
@@ -3772,8 +3772,8 @@ packages:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: true
 
-  /@types/react-dom/17.0.18:
-    resolution: {integrity: sha512-rLVtIfbwyur2iFKykP2w0pl/1unw26b5td16d5xMgp7/yjTHomkyxPYChFoCr/FtEX1lN9wY6lFj1qvKdS5kDw==}
+  /@types/react-dom/18.0.9:
+    resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
     dependencies:
       '@types/react': 17.0.52
     dev: true
