@@ -13,7 +13,7 @@ import { ComponentApi, States } from './types';
 	styleUrls: {
 		default: '../input-line.sass',
 	},
-	shadow: false,
+	shadow: true,
 })
 export class KolInputDate implements ComponentApi {
 	public render(): JSX.Element {
@@ -41,7 +41,9 @@ export class KolInputDate implements ComponentApi {
 				_touched={this._touched}
 				_type={this._type}
 				_value={this.state._value}
-			/>
+			>
+				<slot />
+			</kol-input-number>
 		);
 	}
 
