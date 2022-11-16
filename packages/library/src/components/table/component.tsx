@@ -471,7 +471,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 				<div>
 					<table
 						// role="grid"
-						aria-readonly="true"
+						// aria-readonly="true"
 						style={{
 							minWidth: this.state._minWidth,
 						}}
