@@ -17,6 +17,7 @@ jobs:
           ref: 'main'
       - name: git-sync
         run: |
+          git config pull.rebase true
           git remote add opencode https://OC000005112572:${{ secrets.GITLAB_PERSONAL_ACCESS_TOKEN }}@gitlab.opencode.de/OC000005112572/kolibri.git
           git pull opencode main
           git push opencode
