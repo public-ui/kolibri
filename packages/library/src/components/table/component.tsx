@@ -542,10 +542,10 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
 																	_icon={
 																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
-																			? 'sort'
+																			? 'fas fa-sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'fa-solid fa-angle-up'
-																			: 'fa-solid fa-angle-down'
+																			? 'fas sort-up'
+																			: 'fas sort-down'
 																	}
 																	_iconOnly
 																	_label={'Sortierung von ' + col.label + ' ändern'}
@@ -622,10 +622,10 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
 																	_icon={
 																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
-																			? 'sort'
+																			? 'fas fa-sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'fa-solid fa-angle-up'
-																			: 'fa-solid fa-angle-down'
+																			? 'fas fa-sort-up'
+																			: 'fas fa-sort-down'
 																	}
 																	_iconOnly
 																	_label={'Sortierung von ' + col.label + ' ändern'}
