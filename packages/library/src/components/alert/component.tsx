@@ -112,6 +112,7 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 								_iconOnly
 								_label="Schließen"
 								_on={this.on}
+								_tooltipAlign="left"
 							></kol-button-wc>
 						)}
 					</div>

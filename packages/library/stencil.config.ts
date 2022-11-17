@@ -47,6 +47,7 @@ const TAGS = [
 	'kol-progress',
 	'kol-select',
 	'kol-skip-nav',
+	'kol-span',
 	'kol-spin',
 	'kol-symbol',
 	'kol-table',
@@ -65,7 +66,6 @@ const EXCLUDE_TAGS = [
 	'kol-input',
 	'kol-input-radio-group',
 	'kol-link-wc',
-	'kol-span',
 	'kol-span-wc',
 ];
 const BUNDLES: {

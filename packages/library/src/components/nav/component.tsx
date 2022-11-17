@@ -134,7 +134,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 														: 'fa-solid fa-plus'
 													: typeof link._icon === 'string'
 													? link._icon
-													: 'broken'
+													: 'fa-solid fa-link-slash'
 											}
 											_iconOnly={this.state._compact === true || link._iconOnly === true}
 											_part={link._active === true ? 'selected' : undefined}

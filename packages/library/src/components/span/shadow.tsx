@@ -4,9 +4,6 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Props } from './component';
 
-/**
- * @internal
- */
 @Component({
 	tag: 'kol-span',
 	styleUrls: {
