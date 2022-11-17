@@ -36,7 +36,7 @@
 		"@angular/compiler-cli": "14.2.10",
 		"@angular/core": "14.2.0",
 		"@angular/forms": "14.2.10",
-		"@angular/platform-browser": "14.2.10",
+		"@angular/platform-browser": "15.0.0",
 		"@angular/platform-browser-dynamic": "14.2.10",
 		"@public-ui/angular": "1.1.10",
 		"@public-ui/components": "1.1.10",
