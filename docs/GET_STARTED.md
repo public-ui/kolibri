@@ -50,13 +50,13 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 ### 3. Registrieren des KoliBri-Loaders
 
 Nachdem die Vorbereitungen abgeschlossen sind, muss nur noch der KoliBri-Loader registriert werden.
-Er sorgt dafür, dass die Webcomponents asynchron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
+Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
 
 | Methode              | Erläuterung                                             |
 | -------------------- | ------------------------------------------------------- |
 | register             | Setzt ein Theme und registriert anschließend den Loader |
 | BMF                  | Registriert den Loader für z.B. das BMF-Theme           |
-| defineCustomElements | Registriert den Loader für die Webcomponents            |
+| defineCustomElements | Registriert den Loader für die Web Components           |
 
 #### Integration
 

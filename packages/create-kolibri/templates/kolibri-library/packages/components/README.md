@@ -1,6 +1,6 @@
 # Components
 
-Das **Components**-Modul beinhaltet **alle** zur Komponenten-Bibliothek gehörenden **Webcomponents**.
+Das **Components**-Modul beinhaltet **alle** zur Komponenten-Bibliothek gehörenden **Web Components**.
 
 Mehr zur **Modularisierung** kann im [Architekturkonzept](https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md) nachgelesen werden.
 

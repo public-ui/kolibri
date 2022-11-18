@@ -1,7 +1,6 @@
 import { Generic } from '@public-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
-import { devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
@@ -57,7 +56,7 @@ export class SelectController extends InputController implements Watches {
 			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<unknown>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
 			const selected = this.filterValuesInOptions(Array.isArray(value) && value.length > 0 ? (value as string[]) : [], list as SelectOption<unknown>[]);
-			if (selected.length === 0) {
+			if (this.component._multiple !== true && selected.length === 0) {
 				nextState.set('_value', [
 					(
 						list[0] as {
@@ -95,13 +94,17 @@ export class SelectController extends InputController implements Watches {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateMultiple(value?: boolean): void {
-		watchBoolean(this.component, '_multiple', value);
-		if (value === true) {
-			devHint(
-				'[KolSelect] Aktuell wird die Mehrfachauswahl noch nicht unterstützt. Wir sind dran die Mehrfachauswahl funktionsfähig zu implementieren, da der Browser-Standard hier ein paar Lücken hat.'
-			);
-			devHint('[KolSelect] Bei der Mehrfachauswahl sollte zusätzlich auch die Listenlänge (size) gesetzt werden.');
-		}
+		watchBoolean(this.component, '_multiple', value, {
+			hooks: {
+				beforePatch: this.beforePatchListValue,
+			},
+		});
+		// if (value === true) {
+		// 	devHint(
+		// 		'[KolSelect] Aktuell wird die Mehrfachauswahl noch nicht unterstützt. Wir sind dran die Mehrfachauswahl funktionsfähig zu implementieren, da der Browser-Standard hier ein paar Lücken hat.'
+		// 	);
+		// 	devHint('[KolSelect] Bei der Mehrfachauswahl sollte zusätzlich auch die Listenlänge (size) gesetzt werden.');
+		// }
 	}
 
 	/**

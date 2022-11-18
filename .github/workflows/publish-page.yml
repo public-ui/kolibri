@@ -1,0 +1,66 @@
+name: Publish Page
+
+env:
+  access: public
+  github-registry: https://npm.pkg.github.com
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
+  npmjs-token: ${{ secrets.NPMJS_TOKEN }}
+  npmjs-tag: next
+
+on:
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+  #   branches:
+  #     - main
+  # release:
+  #   types:
+  #     - released
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    if: github.repository == 'public-ui/kolibri'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          # ref: 'main'
+      # - uses: pnpm/action-setup@v2.2.2
+      #   with:
+      #     version: 7
+      - uses: actions/setup-node@v3
+        with:
+          # cache: pnpm
+          node-version: 16
+          registry-url: '${{env.npmjs-registry}}'
+          scope: '@public-ui'
+      - name: Build designer
+        run: |
+          npm i --legacy-peer-deps
+          npm run build
+        working-directory: packages/designer
+      - name: Build storybook
+        run: |
+          npm i --legacy-peer-deps
+          npm run build
+        working-directory: packages/storybook
+      - name: Copy designer to storybook
+        run: cp -r ../designer/dist dist/designer
+        working-directory: packages/storybook
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@public-ui'
+      - name: Publish storybook
+        run: npm publish --access restricted || true
+        working-directory: packages/storybook
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
