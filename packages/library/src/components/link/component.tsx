@@ -173,15 +173,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						/>
 					)}
 					{typeof this.state._target === 'string' && this.state._target !== '_self' && (
-						<sup
-							class={{
-								'no-underline': true,
-								'inline-block ml-1': this.state._useCase === 'text',
-								'relative ': this.state._useCase !== 'text',
-							}}
-						>
-							<kol-icon _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
-						</sup>
+						<kol-icon _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
 					)}
 				</a>
 				<kol-tooltip

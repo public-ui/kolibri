@@ -1,7 +1,7 @@
 {
 	"name": "@{{kebab name}}/components",
 	"version": "0.0.0",
-	"description": "Das Components-Modul beinhaltet alle zur Komponenten-Bibliothek gehörenden Webcomponents.",
+	"description": "Das Components-Modul beinhaltet alle zur Komponenten-Bibliothek gehörenden Web Components.",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -60,11 +60,11 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.1.10"
+		"@public-ui/components": "1.1.11-rc.0"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.10",
-		"@public-ui/themes": "1.1.10",
+		"@public-ui/core": "1.1.11-rc.0",
+		"@public-ui/themes": "1.1.11-rc.0",
 		"@stencil/angular-output-target": "0.4.0",
 		"@stencil/core": "2.19.2",
 		"@stencil/postcss": "2.1.0",
