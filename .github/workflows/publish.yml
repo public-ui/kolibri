@@ -116,27 +116,6 @@ jobs:
         working-directory: packages/create-kolibri
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build designer
-        run: |
-          npm i --legacy-peer-deps
-          npm run build
-        working-directory: packages/designer
-      - name: Build storybook
-        run: |
-          npm i --legacy-peer-deps
-          npm run build
-        working-directory: packages/storybook
-      - name: Copy designer to storybook
-        run: cp -r ../designer/dist dist/designer
-        working-directory: packages/storybook
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-          registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
-          scope: '@public-ui'
-      - name: Publish storybook
-        run: npm publish --access restricted || true
-        working-directory: packages/storybook
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  publish-page:
+    needs: publish
+    uses: public-ui/kolibri/.github/workflows/publish-page.yml@release/1.1.11

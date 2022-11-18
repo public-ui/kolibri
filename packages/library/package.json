@@ -1,7 +1,7 @@
 {
 	"name": "@public-ui/components",
 	"version": "1.1.11-rc.0",
-	"description": "Das Components-Modul beinhaltet alle zur Komponenten-Bibliothek gehörenden Webcomponents.",
+	"description": "Das Components-Modul beinhaltet alle zur Komponenten-Bibliothek gehörenden Web Components.",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",

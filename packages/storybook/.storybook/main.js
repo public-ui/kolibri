@@ -21,6 +21,9 @@ module.exports = {
 	core: {
 		// 	builder: '@storybook/builder-vite',
 		builder: 'webpack5',
+		// https://storybook.js.org/docs/react/configure/telemetry
+		disableTelemetry: true, // 👈 Disables telemetry
+		enableCrashReports: false, // 👈 Disables crash reports
 	},
 	staticDirs: ['../node_modules/@public-ui/themes/assets', '../src/assets'],
 	stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],

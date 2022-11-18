@@ -33,9 +33,9 @@ Die Module `library` und `storybook` können insbesondere mittels `npm start` an
 
 `pnpm clean`
 
-### Webcomponent-Modul (library)
+### Web Component-Modul (library)
 
-Im Paket-Verzeichnis (`packages/library`) befindet sich das Webcomponent-Modul. Nach der generellem Installation kann mittels `npm start` die Übersichtsseite aller Komponenten gestartet werden. Diese wird auch verwendet, um Komponenten aufzubauen oder zu modifizieren.
+Im Paket-Verzeichnis (`packages/library`) befindet sich das Web Component-Modul. Nach der generellem Installation kann mittels `npm start` die Übersichtsseite aller Komponenten gestartet werden. Diese wird auch verwendet, um Komponenten aufzubauen oder zu modifizieren.
 
 `npm start`
 
@@ -49,7 +49,7 @@ Im Paket-Verzeichnis (`packages/storybook`) befindet sich das Dokumentations-Mod
 
 Ziel der Modularisierung ist es den technischen Scope pro Modul auf dessen Kernaufgabe zu beschränken und damit auch die Pflege und Weiterentwicklung zu vereinfachen.
 
-Im Core befinden sich Funktionalitäten die sich mit der Zeit für hilfreich bei der Umsetzung von Komponenten erwiesen haben und prinzipiell in jeder Webcomponenten-Lib potenziell zu Einsatz kommen könnten.
+Im Core befinden sich Funktionalitäten die sich mit der Zeit für hilfreich bei der Umsetzung von Komponenten erwiesen haben und prinzipiell in jeder Web Componenten-Lib potenziell zu Einsatz kommen könnten.
 
 Das Schema, Components (noch "Library"), Themes repräsentieren eine konkrete Komponentenbibliothek. Davon könnte es mehrere geben, die zwiebelartig von Innen (KoliBri) nach Außen aufeinander Aufbauen (s.u.).
 
@@ -75,10 +75,10 @@ In der folgenden Darstellung wird der Grundaufbau einer Komponentenbibliothek (U
 
 | Module     | Erläuterung                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Core       | Das _Core_-Modul beinhaltet die Gesamtarchitektur (Generic Types) und nützliche Funktionalitäten (Utils) für Webcomponents.                                                                                                                                                                                                                                                                                                                                        |
+| Core       | Das _Core_-Modul beinhaltet die Gesamtarchitektur (Generic Types) und nützliche Funktionalitäten (Utils) für Web Components.                                                                                                                                                                                                                                                                                                                                       |
 | UI-Lib     | Das Komponentenbibliotheks-Modul beinhaltet sein Schema und die zum Schema gehörigen Komponenten und Theme(s).                                                                                                                                                                                                                                                                                                                                                     |
 | Schema     | Das _Schema_-Modul dient der typisierten Sicherstellung, dass unabhängig erstellte Themes stets kompatibel mit den Schema-spezifischen Komponenten sind. <br> **Hinweis:** Es scheint nahezuliegen der einfachheithalber die Module _Schema_ und _Components_ zusammenzuführen. Da jedoch die _Themes_ (dann abhängig vom _Components_-Modul) bei der Umsetzung der Komponenten hilfreich sind, würde das zu einem technischen Abhängigkeitsproblem führen (Loop). |
-| Components | Das _Components_-Modul beinhaltet die Implementierung der Webcomponents.                                                                                                                                                                                                                                                                                                                                                                                           |
+| Components | Das _Components_-Modul beinhaltet die Implementierung der Web Components.                                                                                                                                                                                                                                                                                                                                                                                          |
 | App        | Das App-Modul repräsentiert eine konkrete Anwendungsimplementierung auf Basis der Komponentenbibliothek (UI-Lib).                                                                                                                                                                                                                                                                                                                                                  |
 | Storybook  | Das Storybook-Modul dient als Dokumentation und Beispiel-Präsentation für alle Stakeholder.                                                                                                                                                                                                                                                                                                                                                                        |
 
