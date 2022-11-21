@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/designer",
-	"version": "1.1.11-rc.1",
+	"version": "1.1.11-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -34,6 +34,7 @@
 		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing",
+		"prepack": "npm run build",
 		":install": "pnpm i && pnpm update",
 		":postinstall": "npm i puppeteer --no-save || true",
 		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
@@ -42,10 +43,10 @@
 	},
 	"dependencies": {
 		"@leanup/kolibri-themes": "0.0.3",
-		"@public-ui/core": "1.1.11-rc.1",
-		"@public-ui/components": "1.1.11-rc.1",
-		"@public-ui/solid": "1.1.11-rc.1",
-		"@public-ui/themes": "1.1.11-rc.1",
+		"@public-ui/core": "1.1.11-rc.3",
+		"@public-ui/components": "1.1.11-rc.3",
+		"@public-ui/solid": "1.1.11-rc.3",
+		"@public-ui/themes": "1.1.11-rc.3",
 		"monaco-editor": "0.34.1",
 		"monaco-editor-webpack-plugin": "7.0.1",
 		"solid-js": "1.6.2",
@@ -63,7 +64,7 @@
 		"prettier": "2.7.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
-		"typescript": "4.8.4"
+		"typescript": "4.9.3"
 	},
 	"files": [
 		"dist/"

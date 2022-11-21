@@ -1,7 +1,7 @@
 import { Generic } from '@public-ui/core';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { InputCheckboxRadioController } from '../input-radio/controller';
-import { InputCheckboxType, Props, Watches } from './types';
+import { InputCheckboxVariant, Props, Watches } from './types';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -24,14 +24,21 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	public validateIndeterminate(value?: boolean): void {
 		watchBoolean(this.component, '_indeterminate', value);
 	}
+	/**
+	 * @deprecated
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	public validateType(value?: InputCheckboxVariant): void {
+		this.validateVariant(value);
+	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateType(value?: InputCheckboxType): void {
+	public validateVariant(value?: InputCheckboxVariant): void {
 		watchValidator(
 			this.component,
-			'_type',
+			'_variant',
 			(value): boolean => typeof value === 'string' && (value === 'checkbox' || value === 'switch'),
 			new Set(['String {checkbox, switch}']),
 			value
@@ -52,7 +59,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		super.componentWillLoad();
 		this.validateChecked(this.component._checked);
 		this.validateIndeterminate(this.component._indeterminate);
-		this.validateType(this.component._type);
+		this.validateVariant(this.component._variant || this.component._type);
 		this.validateValue(this.component._value);
 	}
 }

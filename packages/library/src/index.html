@@ -2,9 +2,9 @@
 <html dir="ltr" lang="de">
 	<head>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.11-rc.1';
-			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.11-rc.1';
-			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.1.11-rc.1';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.11-rc.3';
+			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.11-rc.3';
+			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.1.11-rc.3';
 			register([BMF], [])
 				.then(() => {
 					KoliBriDevHelper.patchTheme('bmf', {
@@ -51,7 +51,7 @@
 					<kol-heading>BIK BITV-Test</kol-heading>
 				</div>
 				<div class="gap-2 col-12 d-flex">
-					<kol-version _version="1.1.11-rc.1"></kol-version>
+					<kol-version _version="1.1.11-rc.3"></kol-version>
 					<kol-badge _icon="check" _color="#030" _label="BIK BITV-Test"></kol-badge>
 					<kol-badge _color="#f0f" _label="Test"></kol-badge>
 					<kol-badge _color="#0bf" _label="Test"></kol-badge>
@@ -812,6 +812,7 @@
 								<kol-heading _level="3">InputNumber</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-number">
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
+									<kol-input-number _type="number" _min="2.2" _max="5,8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
 								</lean-input-adapter>
 								<kol-heading _level="3">InputDate</kol-heading>

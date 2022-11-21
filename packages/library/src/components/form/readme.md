@@ -20,10 +20,10 @@
 
 ## Properties
 
-| Property        | Attribute        | Description                                                   | Type                                                                                                                | Default     |
-| --------------- | ---------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_on`           | --               | Gibt die EventCallback-Funktionen für die Form-Events an.     | `undefined \| { onSubmit?: EventCallback<SubmitEvent> \| undefined; onReset?: EventCallback<Event> \| undefined; }` | `undefined` |
-| `_requiredText` | `_required-text` | Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. | `boolean \| string \| undefined`                                                                                    | `true`      |
+| Property        | Attribute        | Description                                                   | Type                                                                                                          | Default     |
+| --------------- | ---------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_on`           | --               | Gibt die EventCallback-Funktionen für die Form-Events an.     | `undefined \| { onSubmit?: EventCallback<Event> \| undefined; onReset?: EventCallback<Event> \| undefined; }` | `undefined` |
+| `_requiredText` | `_required-text` | Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. | `boolean \| string \| undefined`                                                                              | `true`      |
 
 ## Dependencies
 

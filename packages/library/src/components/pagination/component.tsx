@@ -125,7 +125,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					{this.state._hasButtons.first && (
 						<kol-button
 							_customClass={this.state._customClass}
-							_disabled={this.state._page <= 2}
+							_disabled={this.state._page <= 1}
 							_icon={leftDoubleArrowIcon}
 							_iconOnly
 							_label="Direkt zur ersten Seite"
@@ -162,7 +162,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					{this.state._hasButtons.last && (
 						<kol-button
 							_customClass={this.state._customClass}
-							_disabled={count - 1 <= this.state._page}
+							_disabled={count <= this.state._page}
 							_icon={rightDoubleArrowIcon}
 							_iconOnly
 							_label="Direkt zur letzten Seite"

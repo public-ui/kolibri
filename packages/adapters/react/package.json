@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react",
-	"version": "1.1.11-rc.1",
+	"version": "1.1.11-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -28,8 +28,8 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.11-rc.1",
-		"@public-ui/components": "1.1.11-rc.1",
+		"@public-ui/core": "1.1.11-rc.3",
+		"@public-ui/components": "1.1.11-rc.3",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.9",
@@ -38,11 +38,11 @@
 		"@types/react-dom": "18.0.9",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"typescript": "4.8.4",
+		"typescript": "4.9.3",
 		"unbuild": "0.8.11"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.11-rc.1",
+		"@public-ui/components": "1.1.11-rc.3",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},

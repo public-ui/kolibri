@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
-import { ComponentApi, InputCheckboxType, States } from './types';
+import { ComponentApi, InputCheckboxVariant, States } from './types';
 
 @Component({
 	tag: 'kol-input-checkbox',
@@ -19,7 +19,7 @@ export class KolInputCheckbox implements ComponentApi {
 			<Host>
 				<kol-input
 					class={{
-						[this.state._type]: true,
+						[this.state._variant]: true,
 					}}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
@@ -66,7 +66,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
@@ -130,13 +130,20 @@ export class KolInputCheckbox implements ComponentApi {
 
 	/**
 	 * Gibt an, welchen Type das Input haben soll.
+	 *
+	 * @deprecated Verwende stattdessen das Attribute _variant.
 	 */
-	@Prop() public _type?: InputCheckboxType = 'checkbox';
+	@Prop() public _type?: InputCheckboxVariant = 'checkbox';
 
 	/**
 	 * Gibt den Wert der Checkbox an.
 	 */
 	@Prop() public _value?: string;
+
+	/**
+	 * Gibt an, welchen Type das Input haben soll.
+	 */
+	@Prop() public _variant?: InputCheckboxVariant; // = 'checkbox'
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -145,7 +152,7 @@ export class KolInputCheckbox implements ComponentApi {
 		_checked: false,
 		_id: '⚠',
 		_name: '⚠',
-		_type: 'checkbox',
+		_variant: 'checkbox',
 	};
 
 	public constructor() {
@@ -268,7 +275,7 @@ export class KolInputCheckbox implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_type')
-	public validateType(value?: InputCheckboxType): void {
+	public validateType(value?: InputCheckboxVariant): void {
 		this.controller.validateType(value);
 	}
 
@@ -278,6 +285,14 @@ export class KolInputCheckbox implements ComponentApi {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_variant')
+	public validateVariant(value?: InputCheckboxVariant): void {
+		this.controller.validateVariant(value);
 	}
 
 	/**

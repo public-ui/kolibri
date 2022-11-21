@@ -43,7 +43,6 @@
 		"generate": "stencil generate",
 		"lint": "eslint src/**/*{.ts,.tsx}",
 		"format": "prettier --check src/**/*",
-		"serve": "serve www",
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
@@ -60,11 +59,11 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.1.11-rc.1"
+		"@public-ui/components": "1.1.11-rc.3"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.11-rc.1",
-		"@public-ui/themes": "1.1.11-rc.1",
+		"@public-ui/core": "1.1.11-rc.3",
+		"@public-ui/themes": "1.1.11-rc.3",
 		"@stencil/angular-output-target": "0.4.0",
 		"@stencil/core": "2.19.2",
 		"@stencil/postcss": "2.1.0",
@@ -104,7 +103,6 @@
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
 		"rimraf": "3.0.2",
-		"serve": "14.1.1",
 		"stencil-awesome-test": "1.0.3",
 		"terser": "5.15.1",
 		"tslib": "2.4.1",

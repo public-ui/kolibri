@@ -62,12 +62,8 @@ export class InputRangeController extends InputController implements Watches {
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateValue(value?: number | null): void {
-		if (value === null) {
-			this.component.state._value = null;
-		} else {
-			watchNumber(this.component, '_value', value);
-		}
+	public validateValue(value?: number): void {
+		watchNumber(this.component, '_value', value);
 	}
 
 	/**

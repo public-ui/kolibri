@@ -6,7 +6,7 @@
 		"clean:pnpm": "lerna exec --stream -- rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"format": "lerna exec --stream -- prettier --check src/**/* -w",
 		"ncu:major": "ncu && lerna exec --stream -- ncu",
-		"ncu:minor": "ncu -t minor -u && lerna exec --stream -- ncu -t minor -u -x unbuild,zone.js",
+		"ncu:minor": "ncu -t minor -u && lerna exec --stream -- ncu -t minor -u -x typescript,unbuild",
 		"ncu:patch": "ncu -t patch -u && lerna exec --stream -- ncu -t patch -u -x unbuild",
 		"pack": "lerna exec --stream -- npm pack",
 		"postinstall": "lerna exec --stream -- pnpm i --no-frozen-lockfile",
@@ -29,15 +29,11 @@
 		"husky": "8.0.2",
 		"lerna": "6.0.3",
 		"license-report": "6.3.0",
-		"npm-check-updates": "16.3.18",
+		"npm-check-updates": "16.4.1",
 		"prettier": "2.7.1",
 		"rimraf": "3.0.2",
 		"ts-node": "10.9.1",
 		"ts-prune": "0.10.3",
-		"typescript": "4.8.4"
-	},
-	"engines": {
-		"npm": ">=8",
-		"pnpm": ">=3"
+		"typescript": "4.9.3"
 	}
 }
