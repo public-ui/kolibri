@@ -39,7 +39,7 @@
 		"@types/node": "18.11.0",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.3",
-		"husky": "8.0.1",
+		"husky": "8.0.2",
 		"lerna": "6.0.3",
 		"license-report": "6.3.0",
 		"npm-check-updates": "16.3.25",
