@@ -61,7 +61,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, ob die Card einen Footer-Bereich hat.
 	 */
-	@Prop() public _hasFooter?: boolean = false;
+	@Prop({ reflect: true }) public _hasFooter?: boolean = false;
 
 	/**
 	 * Gibt die Überschrift der Card an.

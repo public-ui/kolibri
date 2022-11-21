@@ -118,7 +118,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
@@ -128,7 +128,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop({ reflect: true }) public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -138,7 +138,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Text für eine Hinweistext an.
@@ -188,12 +188,12 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob die Eingabefeld nur lesend ist.
 	 */
-	@Prop() public _readOnly?: boolean;
+	@Prop({ reflect: true }) public _readOnly?: boolean;
 
 	/**
 	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop({ reflect: true }) public _required?: boolean;
 
 	/**
 	 * Gibt an, wie viele Zeichen man eingeben kann.
@@ -213,7 +213,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.

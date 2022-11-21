@@ -44,7 +44,7 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
 	 */
-	@Prop() public _show?: boolean = false;
+	@Prop({ reflect: true }) public _show?: boolean = false;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

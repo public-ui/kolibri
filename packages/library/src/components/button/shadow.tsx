@@ -91,7 +91,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: boolean;
+	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
 	 * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
@@ -106,7 +106,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt an, ob der Button deaktiviert ist.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
@@ -123,7 +123,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop() public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
