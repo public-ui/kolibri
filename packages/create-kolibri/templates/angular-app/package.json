@@ -40,7 +40,7 @@
 		"@angular/platform-browser-dynamic": "15.0.0",
 		"@public-ui/angular": "1.1.11-rc.1",
 		"@public-ui/components": "1.1.11-rc.1",
-		"@public-ui/core": "1.1.11-rc.1",
+		"@public-ui/core": "1.1.11-rc.2",
 		"@public-ui/themes": "1.1.11-rc.1",
 		"ajv": "8.11.2"
 	},
