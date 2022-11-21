@@ -75,7 +75,7 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, ob das Bild-Logo farblich animiert werden soll.
 	 */
-	@Prop() public _animate?: boolean;
+	@Prop({ reflect: true }) public _animate?: boolean;
 
 	/**
 	 * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
@@ -85,7 +85,7 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
 	 */
-	@Prop() public _labeled?: boolean;
+	@Prop({ reflect: true }) public _labeled?: boolean;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

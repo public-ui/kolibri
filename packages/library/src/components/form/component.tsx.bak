@@ -38,7 +38,7 @@ export class KolForm implements KoliBriComponent, KoliBriFormProps {
   /**
    * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
    */
-  @Prop() public _hasRequired?: boolean;
+  @Prop({reflect: true}) public _hasRequired?: boolean;
 
   /**
 	 * @see: components/abbr/component.tsx (@State)

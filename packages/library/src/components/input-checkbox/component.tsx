@@ -66,17 +66,17 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _checked?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop({ reflect: true }) public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -86,7 +86,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Text für eine Hinweistext an.
@@ -101,7 +101,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
 	 */
-	@Prop() public _indeterminate?: boolean;
+	@Prop({ reflect: true }) public _indeterminate?: boolean;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -116,7 +116,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, ob die Checkbox ein Pflichtfeld ist.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop({ reflect: true }) public _required?: boolean;
 
 	/**
 	 * Gibt an, welchen Tab-Index dieses Input hat.
@@ -126,7 +126,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt an, welchen Type das Input haben soll.
