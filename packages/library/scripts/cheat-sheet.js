@@ -12,9 +12,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-				import { register } from 'https://esm.sh/@public-ui/core@1.1.11-rc.4';
-				import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.11-rc.4/dist/loader';
-				import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.11-rc.4';
+				import { register } from 'https://esm.sh/@public-ui/core@1.1.11';
+				import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.11/dist/loader';
+				import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.11';
 				register([MAPZ], defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
