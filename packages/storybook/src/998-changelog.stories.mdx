@@ -59,7 +59,7 @@ _headers="{'horizontal':[[{'label':'Symbol','key':'symbol','textAlign':'center',
 _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrierefreiheit'},{'symbol':'👩‍🎨','desc':'Styleguide/Themes'},{'symbol':'🧬','desc':'Test'},{'symbol':'🔧','desc':'Verbesserung/Fehlerbehebung'},{'symbol':'📚','desc':'Dokumentation'},{'symbol':'🚀','desc':'Performance'},{'symbol':'❗','desc':'Refactoring'},{'symbol':'🔥','desc':'Breaking Change'},{'symbol':'🔝','desc':'Pflege des Technologie-Stacks'}]">
 </kol-table>
 
-<kol-heading _level={3}>1.1.12 - 25.11.2022 (geplant)</kol-heading>
+<kol-heading _level={3}>1.1.13 - 19.12.2022 (geplant)</kol-heading>
 
 <kol-details _summary="Änderungen">
 	<ul></ul>
@@ -89,13 +89,49 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Slot-Konzept: Weitere Komponenten umstellen (Input-Labels)</li>
 		<li>🌟 ButtonLink unterstützt das `target`-Property</li>
 		<li>🌟 DX: Vollständig einheitliche Properties und deren Verwendung über alle Komponenten</li>
+		<li>👩‍🎨 Theming: Designer um CDN-Feature erweitern</li>
+		<li>👩‍🎨 Theming: Designer CSS-Properties und "Globales CSS" trennen</li>
+		<li>👩‍🎨 Theming: Designer Speicher-Modell ändern (Meta & Data)</li>
 	</ul>
 </kol-details>
 
-<kol-heading _level={3}>1.1.11 - 18.11.2022 (geplant)</kol-heading>
+<kol-heading _level={3}>1.1.12 - 05.12.2022 (geplant)</kol-heading>
+
+<kol-details _summary="Änderungen">
+	<ul></ul>
+	<hr />
+	<ul>
+		<li>🔧 Tooltip: Positionierung in Scoll-Zonen optimieren</li>
+		<li>🔧 I18n: Translationservice fertigstellen</li>
+		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
+		<li>🌟 Image: Neue Image Komponente einfügen (_alt)</li>
+		<li>🔧 Storybook: Transformation React-TSX zu WC-TSX Stories (Properties: Camel-Case -> Kebab-Case, ArgTypes)</li>
+		<li>🔧 Input: Zeichenzähler für alle Texteingabefelder</li>
+		<li>🔧 Checkbox: Checkbox und mit beliebigen Icon statt "Border-Häkchen"</li>
+		<li>🔧 Slot-Konzept: Weitere Komponenten umstellen (Input-Labels)</li>
+		<li>🌟 ButtonLink unterstützt das `target`-Property</li>
+		<li>🌟 DX: Vollständig einheitliche Properties und deren Verwendung über alle Komponenten</li>
+		<li>👩‍🎨 Theming: Designer um CDN-Feature erweitern</li>
+		<li>👩‍🎨 Theming: Designer CSS-Properties und "Globales CSS" trennen</li>
+		<li>👩‍🎨 Theming: Designer Speicher-Modell ändern (Meta & Data)</li>
+	</ul>
+</kol-details>
+
+<kol-heading _level={3}>1.1.11 - 21.11.2022</kol-heading>
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
+		<li>👩‍🎨 Theming: Theme-Method optimiert (Handling für "übergreifendes CSS")</li>
+		<li>🔧 Inputs, Select, Textarea: Alert der Fehlermeldungen standardmäßig aktiv</li>
+		<li>❗ InputCheckbox: Umbenennung der Property _type (@deprecated) in _variant (Semantik)</li>
+		<li>🔧 Pagination: Äußere Sprung-Buttons zur ersten oder letzten Seite immer aktiv, außer aktive Seite ist entweder am Anfang oder Ende</li>
+		<li>
+			🌟 Themes
+			<ul>
+				<li>🔧 DESY-Theme optimiert (noch nicht BITV-getestet)</li>
+				<li>🌟 Styleguide des Freistaates Thüringen (noch nicht BITV-getestet)</li>
+			</ul>
+		</li>
 		<li>
 			🌟 Select: Multi-Select erlaubt keine Auswahl (
 			<kol-link _href="https://html.spec.whatwg.org/#attr-select-multiple" _target="w3c">
@@ -110,10 +146,9 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			</kol-link>
 			)
 		</li>
-		<li>🔧 InputDate: Mapping von _min, _max und _value optimiert</li>
+		<li>🔧 InputDate, InputNumber: Validierung und Mapping von _max, _min, und _value optimiert (ISO, Float-Values)</li>
 		<li>🔧 Table: Überflüssige Aria-Auszeichnung (aria-readonly) entfernt</li>
 		<li>🔧 Nav, Table: Icon-Identifier ergänzt</li>
-		<li>🔧 Erste und letzte Seite Buttons in der Pagination sind immer aktiv, wenn man nicht bereits auf der entsprechenden Seite ist</li>
 		<li>📚 Cheat Sheet: Generator-Script zum Erzeugen und Synchronisieren eines Cheat-Sheet für die Entwicklung</li>
 	</ul>
 </kol-details>

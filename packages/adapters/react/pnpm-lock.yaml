@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.11-rc.1
-  '@public-ui/core': 1.1.11-rc.1
+  '@public-ui/components': 1.1.11-rc.2
+  '@public-ui/core': 1.1.11-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -11,12 +11,12 @@ specifiers:
   '@types/react-dom': 18.0.9
   react: 18.2.0
   react-dom: 18.2.0
-  typescript: 4.8.4
+  typescript: 4.9.3
   unbuild: 0.8.11
 
 devDependencies:
-  '@public-ui/components': 1.1.11-rc.1
-  '@public-ui/core': 1.1.11-rc.1
+  '@public-ui/components': 1.1.11-rc.2
+  '@public-ui/core': 1.1.11-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -25,7 +25,7 @@ devDependencies:
   '@types/react-dom': 18.0.9
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  typescript: 4.8.4
+  typescript: 4.9.3
   unbuild: 0.8.11
 
 packages:
@@ -333,24 +333,24 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.11-rc.1:
-    resolution: {integrity: sha512-awuOyLNB4t6KWUN3oNV2xeCuLjOYZ5Lf+hXY043L9iDavWk8lt+TNJixJo2VTq9KZWeqm8VggmRehVZ45Bf4VQ==}
+  /@public-ui/components/1.1.11-rc.2:
+    resolution: {integrity: sha512-HPUzXvJtIhCjTAofV9e5QGHiyg8CnaP8lCE5a4sjybpUT18173aZRCGVFpAFhANS79AgyUK2TlTwCLnFX+eEKw==}
     dependencies:
-      '@public-ui/schema': 1.1.11-rc.1
+      '@public-ui/schema': 1.1.11-rc.2
     dev: true
 
-  /@public-ui/core/1.1.11-rc.1:
-    resolution: {integrity: sha512-4TbRnTzFrwm3bLZoSSI9h47Jgrn84xw+YtlEWMxq8SEwB8JTkJOOvyBa4gvoXX8q0bbZZLwjR450Ja9CBYUGEw==}
+  /@public-ui/core/1.1.11-rc.2:
+    resolution: {integrity: sha512-JMN3IN2CvWSxkX7nOIJZRhXYDGFK6Fw8LmJ3xvn3GVGexicaHWwPZqDrR/bAY3erogYwf3jZh0a7wVsQ1JbpQQ==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.39
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.11-rc.1:
-    resolution: {integrity: sha512-reUsaLaNI/2GmJpMMIauiFmdDpf5Tyheg1qngUisj+NQMGzzlka81567FsWvKAJcwb4eXLv0EW4PULYbyHs6Ng==}
+  /@public-ui/schema/1.1.11-rc.2:
+    resolution: {integrity: sha512-9dAD9r2t3Kc9MIg2gmmHwDLkawAtQcUKNb9g0fzhztAFCcSojuirD79DPAULGugFOEi8OH2LVblzYWMjki8tAg==}
     dependencies:
-      '@public-ui/core': 1.1.11-rc.1
+      '@public-ui/core': 1.1.11-rc.2
     dev: true
 
   /@rollup/plugin-alias/3.1.9_rollup@2.79.1:
@@ -1322,7 +1322,7 @@ packages:
     hasBin: true
     dev: true
 
-  /mkdist/0.3.13_typescript@4.8.4:
+  /mkdist/0.3.13_typescript@4.9.3:
     resolution: {integrity: sha512-+eCPpkr8l2X630y5PIlkts2tzYEsb+aGIgXdrQv9ZGtWE2bLlD6kVIFfI6FJwFpjjw4dPPyorxQc6Uhm/oXlvg==}
     hasBin: true
     peerDependencies:
@@ -1338,7 +1338,7 @@ packages:
       jiti: 1.16.0
       mri: 1.2.0
       pathe: 0.2.0
-      typescript: 4.8.4
+      typescript: 4.9.3
     dev: true
 
   /mlly/0.5.17:
@@ -1476,7 +1476,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-dts/4.2.3_gypgyaqhine6mwjfvh7icfhviq:
+  /rollup-plugin-dts/4.2.3_k35zwyycrckt5xfsejji7kbwn4:
     resolution: {integrity: sha512-jlcpItqM2efqfIiKzDB/IKOS9E9fDvbkJSGw5GtK/PqPGS9eC3R3JKyw2VvpTktZA+TNgJRMu1NTv244aTUzzQ==}
     engines: {node: '>=v12.22.12'}
     peerDependencies:
@@ -1485,7 +1485,7 @@ packages:
     dependencies:
       magic-string: 0.26.7
       rollup: 2.79.1
-      typescript: 4.8.4
+      typescript: 4.9.3
     optionalDependencies:
       '@babel/code-frame': 7.18.6
     dev: true
@@ -1585,8 +1585,8 @@ packages:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
     dev: true
 
-  /typescript/4.8.4:
-    resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
+  /typescript/4.9.3:
+    resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
@@ -1614,7 +1614,7 @@ packages:
       jiti: 1.16.0
       magic-string: 0.26.7
       mkdirp: 1.0.4
-      mkdist: 0.3.13_typescript@4.8.4
+      mkdist: 0.3.13_typescript@4.9.3
       mlly: 0.5.17
       mri: 1.2.0
       pathe: 0.3.9
@@ -1622,10 +1622,10 @@ packages:
       pretty-bytes: 6.0.0
       rimraf: 3.0.2
       rollup: 2.79.1
-      rollup-plugin-dts: 4.2.3_gypgyaqhine6mwjfvh7icfhviq
+      rollup-plugin-dts: 4.2.3_k35zwyycrckt5xfsejji7kbwn4
       rollup-plugin-esbuild: 4.10.3_yts237swdxpz77lqnmbrq5lcbi
       scule: 0.3.2
-      typescript: 4.8.4
+      typescript: 4.9.3
       untyped: 0.5.0
     transitivePeerDependencies:
       - supports-color

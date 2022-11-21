@@ -118,7 +118,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = false;
+	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.

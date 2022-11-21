@@ -19,7 +19,7 @@ import { THEME } from './theme';
 import { register } from '@public-ui/core';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
-import { BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL } from '@public-ui/themes';
+import { BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, TH, ZOLL } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
 	// { name: 'BAMF-Styleguide', class: 'bamf', color: '', disabled: true },
@@ -31,6 +31,7 @@ const AVAILABLE_THEMES = [
 	{ name: 'ITZBund-Styleguide (Demo)', class: 'itzbund', color: '#007a89' },
 	{ name: 'MAPZoll-Styleguide', class: 'mapz', color: '#1e538f' },
 	{ name: 'Next-Styleguide (WIP)', class: 'nxt', color: '#003064' },
+	{ name: 'Styleguide des Freistaates Thüringen (WIP)', class: 'th', color: '#0089C1' },
 	// { name: 'ZOLL-Styleguide (WIP)', class: 'zoll', color: '#326cae' },
 ];
 const CACHED_SELECTED_THEME = localStorage.getItem('kolibri-storybook-theme');
@@ -51,7 +52,7 @@ const switchTheme = (className) => {
 	}
 };
 
-register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL], [kolibri, leanup], {
+register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, TH, ZOLL], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
 	},

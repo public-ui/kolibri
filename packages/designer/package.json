@@ -34,6 +34,7 @@
 		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing",
+		"prepack": "npm run build",
 		":install": "pnpm i && pnpm update",
 		":postinstall": "npm i puppeteer --no-save || true",
 		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
@@ -63,7 +64,7 @@
 		"prettier": "2.7.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
-		"typescript": "4.8.4"
+		"typescript": "4.9.3"
 	},
 	"files": [
 		"dist/"

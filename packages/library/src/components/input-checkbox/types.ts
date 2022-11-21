@@ -2,7 +2,7 @@ import { Generic } from '@public-ui/core';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 
-export type InputCheckboxType = 'checkbox' | 'switch';
+export type InputCheckboxVariant = 'checkbox' | 'switch';
 
 /**
  * API
@@ -22,8 +22,12 @@ type OptionalProps = {
 	required: boolean;
 	touched: boolean;
 	tabIndex: number;
-	type: InputCheckboxType;
+	/**
+	 * @deprecated
+	 */
+	type: InputCheckboxVariant;
 	value: string;
+	variant: InputCheckboxVariant;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -31,7 +35,7 @@ type RequiredStates = {
 	checked: boolean;
 	id: string;
 	name: string;
-	type: InputCheckboxType;
+	variant: InputCheckboxVariant;
 };
 type OptionalStates = {
 	alert: boolean;

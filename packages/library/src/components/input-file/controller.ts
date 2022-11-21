@@ -35,12 +35,8 @@ export class InputFileController extends InputController implements Watches {
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateValue(value?: string | null): void {
-		if (value === null) {
-			this.component.state._value = null;
-		} else {
-			watchString(this.component, '_value', value);
-		}
+	public validateValue(value?: string): void {
+		watchString(this.component, '_value', value);
 	}
 
 	/**

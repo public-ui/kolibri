@@ -2,25 +2,25 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.20.2
-  '@public-ui/components': 1.1.11-rc.1
-  '@public-ui/core': 1.1.11-rc.1
+  '@public-ui/components': 1.1.11-rc.2
+  '@public-ui/core': 1.1.11-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
   '@types/normalize-package-data': 2.4.1
-  typescript: 4.8.4
+  typescript: 4.9.3
   unbuild: 1.0.1
   vue: 3.2.45
 
 devDependencies:
   '@babel/types': 7.20.2
-  '@public-ui/components': 1.1.11-rc.1
-  '@public-ui/core': 1.1.11-rc.1
+  '@public-ui/components': 1.1.11-rc.2
+  '@public-ui/core': 1.1.11-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
   '@types/normalize-package-data': 2.4.1
-  typescript: 4.8.4
+  typescript: 4.9.3
   unbuild: 1.0.1
   vue: 3.2.45
 
@@ -320,24 +320,24 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.11-rc.1:
-    resolution: {integrity: sha512-awuOyLNB4t6KWUN3oNV2xeCuLjOYZ5Lf+hXY043L9iDavWk8lt+TNJixJo2VTq9KZWeqm8VggmRehVZ45Bf4VQ==}
+  /@public-ui/components/1.1.11-rc.2:
+    resolution: {integrity: sha512-HPUzXvJtIhCjTAofV9e5QGHiyg8CnaP8lCE5a4sjybpUT18173aZRCGVFpAFhANS79AgyUK2TlTwCLnFX+eEKw==}
     dependencies:
-      '@public-ui/schema': 1.1.11-rc.1
+      '@public-ui/schema': 1.1.11-rc.2
     dev: true
 
-  /@public-ui/core/1.1.11-rc.1:
-    resolution: {integrity: sha512-4TbRnTzFrwm3bLZoSSI9h47Jgrn84xw+YtlEWMxq8SEwB8JTkJOOvyBa4gvoXX8q0bbZZLwjR450Ja9CBYUGEw==}
+  /@public-ui/core/1.1.11-rc.2:
+    resolution: {integrity: sha512-JMN3IN2CvWSxkX7nOIJZRhXYDGFK6Fw8LmJ3xvn3GVGexicaHWwPZqDrR/bAY3erogYwf3jZh0a7wVsQ1JbpQQ==}
     dependencies:
       '@a11y-ui/core': 1.0.0-rc.21
       '@leanup/lib': 1.3.39
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.11-rc.1:
-    resolution: {integrity: sha512-reUsaLaNI/2GmJpMMIauiFmdDpf5Tyheg1qngUisj+NQMGzzlka81567FsWvKAJcwb4eXLv0EW4PULYbyHs6Ng==}
+  /@public-ui/schema/1.1.11-rc.2:
+    resolution: {integrity: sha512-9dAD9r2t3Kc9MIg2gmmHwDLkawAtQcUKNb9g0fzhztAFCcSojuirD79DPAULGugFOEi8OH2LVblzYWMjki8tAg==}
     dependencies:
-      '@public-ui/core': 1.1.11-rc.1
+      '@public-ui/core': 1.1.11-rc.2
     dev: true
 
   /@rollup/plugin-alias/4.0.2_rollup@3.3.0:
@@ -1371,12 +1371,6 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
-    dev: true
-
-  /typescript/4.8.4:
-    resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: true
 
   /typescript/4.9.3:

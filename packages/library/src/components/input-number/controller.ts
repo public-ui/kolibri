@@ -41,7 +41,7 @@ export class InputNumberController extends InputController implements Watches {
 		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
 	}
 
-	private parseToString = (value?: number | Date | string) => {
+	private readonly parseToString = (value?: number | Date | string) => {
 		if (typeof value === 'string') {
 			return value;
 		}
@@ -54,30 +54,30 @@ export class InputNumberController extends InputController implements Watches {
 		return '';
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	public validateMax(value?: number | Date | string): void {
-		watchValidator(
+	private readonly validateIso8601 = (propName: string, value?: number | Iso8601) => {
+		const parsedValue = parseFloat(value as string);
+		const valueMatched = parsedValue == value;
+		return watchValidator(
 			this.component,
-			'_max',
-			(value): boolean => value === undefined || this.numberOrIsoDateRegex.test(value),
+			propName,
+			(value): boolean => value === undefined || (valueMatched && typeof parsedValue === 'number') || this.numberOrIsoDateRegex.test(value),
 			new Set(['number', 'Date', 'string{ISO-8601}']),
 			this.parseToString(value)
 		);
+	};
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	public validateMax(value?: number | Iso8601): void {
+		this.validateIso8601('_max', value);
 	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateMin(value?: number | Date | string): void {
-		watchValidator(
-			this.component,
-			'_min',
-			(value): boolean => value === undefined || this.numberOrIsoDateRegex.test(value),
-			new Set(['number', 'Date', 'string{ISO-8601}']),
-			this.parseToString(value)
-		);
+	public validateMin(value?: number | Iso8601): void {
+		this.validateIso8601('_min', value);
 	}
 
 	/**
@@ -127,18 +127,8 @@ export class InputNumberController extends InputController implements Watches {
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateValue(value?: number | Iso8601 | null): void {
-		if (value === null) {
-			this.component.state._value = null;
-		} else {
-			watchValidator(
-				this.component,
-				'_value',
-				(value): boolean => value === undefined || this.numberOrIsoDateRegex.test(value),
-				new Set(['number', 'Date', 'string{ISO-8601}']),
-				this.parseToString(value)
-			);
-		}
+	public validateValue(value?: number | Iso8601): void {
+		this.validateIso8601('_value', value);
 	}
 
 	/**

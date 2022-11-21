@@ -19,7 +19,7 @@ import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { KoliBriInputIcon } from "./components/input-text/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
-import { InputCheckboxType } from "./components/input-checkbox/types";
+import { InputCheckboxVariant } from "./components/input-checkbox/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { Orientation } from "./types/orientation";
@@ -561,12 +561,17 @@ export namespace Components {
         "_touched"?: boolean;
         /**
           * Gibt an, welchen Type das Input haben soll.
+          * @deprecated Verwende stattdessen das Attribute _variant.
          */
-        "_type"?: InputCheckboxType;
+        "_type"?: InputCheckboxVariant;
         /**
           * Gibt den Wert der Checkbox an.
          */
         "_value"?: string;
+        /**
+          * Gibt an, welchen Type das Input haben soll.
+         */
+        "_variant"?: InputCheckboxVariant;
     }
     interface KolInputColor {
         /**
@@ -3023,12 +3028,17 @@ declare namespace LocalJSX {
         "_touched"?: boolean;
         /**
           * Gibt an, welchen Type das Input haben soll.
+          * @deprecated Verwende stattdessen das Attribute _variant.
          */
-        "_type"?: InputCheckboxType;
+        "_type"?: InputCheckboxVariant;
         /**
           * Gibt den Wert der Checkbox an.
          */
         "_value"?: string;
+        /**
+          * Gibt an, welchen Type das Input haben soll.
+         */
+        "_variant"?: InputCheckboxVariant;
     }
     interface KolInputColor {
         /**

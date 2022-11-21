@@ -1,7 +1,27 @@
 const fs = require('fs');
 const ELEMENTS = require('../custom-elements.json');
 const TODAY = new Date();
-let SHEET_CHEAT = `<h1>KoliBri - Cheat Sheet</h1>`;
+let SHEET_CHEAT = `<!DOCTYPE html>
+<html lang="de" dir="ltr">
+	<head>
+		<title>Cheat-Sheet | KoliBri</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="..." />
+		<base href="/" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
+		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
+		<script type="module">
+				import { register } from 'https://esm.sh/@public-ui/core@1.1.11-rc.2';
+				import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.11-rc.2/dist/loader';
+				import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.11-rc.2';
+				register([MAPZ], defineCustomElements)
+						.then(() => {})
+						.catch(console.warn);
+		</script>
+	</head>
+	<body>
+		<kol-heading>KoliBri - Cheat Sheet</kol-heading>`;
 const BLACKLIST = [
 	'kol-button-group',
 	'kol-color',
@@ -81,9 +101,9 @@ PROP_NAMES.forEach((name) => {
 	});
 });
 
-console.log(COMPONENTS);
+// console.log(COMPONENTS);
 
-SHEET_CHEAT += `<h2>Components</h2>
+SHEET_CHEAT += `<kol-heading _level="2">Components</kol-heading>
 <table border="1">
   <caption>Available components</caption>
 	<thead>
@@ -102,10 +122,11 @@ COMPONENTS.forEach((component, name) => {
 });
 SHEET_CHEAT += `
 		</tbody>
-	</table>`;
+	</table>
+	<kol-table _caption="Available components"></kol-table>`;
 
 SHEET_CHEAT += `
-<h2>Properties</h2>
+<kol-heading _level="2">Properties</kol-heading>
 <table border="1">
   <caption>Available properties</caption>
 	<thead>
@@ -138,8 +159,11 @@ GROUPED_PROPS.forEach((group) => {
 	});
 });
 SHEET_CHEAT += `
-	</tbody>
-</table>`;
+			</tbody>
+		</table>
+		<kol-table _caption="Available properties"></kol-table>
+	</body>
+</html>`;
 
 console.log();
 

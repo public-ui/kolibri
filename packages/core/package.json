@@ -21,6 +21,7 @@
 	"description": "Das Core-Modul beinhaltet generischen Typen und allgemeine Funktionalität für eine beliebige Komponenten-Bibliothek.",
 	"scripts": {
 		"build": "unbuild",
+		"lint": "eslint src",
 		"prepack": "unbuild",
 		":install": "pnpm i && pnpm update",
 		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
@@ -28,13 +29,17 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@a11y-ui/core": "1.0.0-rc.21",
+		"@a11y-ui/core": "1.0.1-rc.1",
 		"@leanup/lib": "1.3.39",
 		"rxjs": "7.5.7"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.9",
-		"typescript": "4.8.4",
+		"@typescript-eslint/eslint-plugin": "5.43.0",
+		"@typescript-eslint/parser": "5.43.0",
+		"eslint": "8.28.0",
+		"prettier": "2.7.1",
+		"typescript": "4.9.3",
 		"unbuild": "1.0.1"
 	},
 	"sideEffects": false,
