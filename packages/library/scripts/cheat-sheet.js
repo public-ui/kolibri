@@ -12,9 +12,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-				import { register } from 'https://esm.sh/@public-ui/core@1.1.11-rc.2';
-				import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.11-rc.2/dist/loader';
-				import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.11-rc.2';
+				import { register } from 'https://esm.sh/@public-ui/core@1.1.11-rc.3';
+				import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.11-rc.3/dist/loader';
+				import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.11-rc.3';
 				register([MAPZ], defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -123,7 +123,7 @@ COMPONENTS.forEach((component, name) => {
 SHEET_CHEAT += `
 		</tbody>
 	</table>
-	<kol-table _caption="Available components"></kol-table>`;
+	<kol-table id="components" _caption="Available components"></kol-table>`;
 
 SHEET_CHEAT += `
 <kol-heading _level="2">Properties</kol-heading>
@@ -161,10 +161,56 @@ GROUPED_PROPS.forEach((group) => {
 SHEET_CHEAT += `
 			</tbody>
 		</table>
-		<kol-table _caption="Available properties"></kol-table>
+		<kol-table id="properties" _caption="Available properties"></kol-table>
+		<script>
+			const componentTable = document.querySelector('kol-table#components');
+			componentTable._headers = {
+				horizontal: [[
+					{
+						label: 'Component',
+						key: 'name'
+					},
+					{
+						label: 'Description',
+						key: 'desc'
+					},
+					{
+						label: 'Related properties',
+						key: 'props'
+					}
+				]]
+			};
+			componentTable._headers = [`;
+COMPONENTS.forEach((component, name) => {
+	const PROPS = Array.from(component.props.values()).sort();
+	SHEET_CHEAT += `{
+	name: \`${name}\`,
+	desc: \`${component.desc.replace(/`/g, "'")}\`,
+	props: \`${PROPS.join(', ')}\`
+},`;
+});
+SHEET_CHEAT += `
+			];
+			console.log(componentTable._headers);
+			const propertyTable = document.querySelector('kol-table#properties');
+			propertyTable._headers = {
+				horizontal: [[
+					{
+						label: 'Property'
+					},
+					{
+						label: 'Description'
+					},
+					{
+						label: 'Type(s)'
+					},
+					{
+						label: 'Related component(s)'
+					}
+				]]
+			};
+		</script>
 	</body>
 </html>`;
-
-console.log();
 
 fs.writeFileSync('cheat-sheet.html', SHEET_CHEAT);
