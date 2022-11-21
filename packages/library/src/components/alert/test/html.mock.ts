@@ -8,7 +8,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
 	props._variant = props._variant || 'msg';
-	return `<kol-alert${additionalHTML}>
+	return `<kol-alert${props._alert ? ' _alert' : ''}${additionalHTML}>
   <mock:shadow-root>
     <div class="${type} ${props._variant}"${props._alert === true ? ' role="alert"' : ''}>
       ${

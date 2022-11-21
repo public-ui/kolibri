@@ -19,13 +19,18 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		},
 		props
 	);
+	let underline = props._underline;
 	if (props._useCase === 'image') {
-		props._underline = false;
+		underline = false;
 	}
 	return `
-<kol-link>
+<kol-link${props._ariaExpanded ? ' _aria-expanded' : ''}${props._iconOnly ? ' _icon-only' : ''}${props._stealth ? ' _stealth' : ''}${
+		props._underline ? ' _underline' : ''
+	}>
   <mock:shadow-root>
-  <kol-link-wc>
+  <kol-link-wc${props._ariaExpanded ? ' _aria-expanded' : ''}${props._iconOnly ? ' _icon-only' : ''}${props._stealth ? ' _stealth' : ''}${
+		props._underline ? ' _underline' : ''
+	}>
     <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
 		props._iconOnly === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
 	} class="${props._stealth === true ? ' skip' : ''}${props._useCase === 'nav' ? '' : ' kol-visited'}${
@@ -34,7 +39,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		typeof props._part === 'string' ? props._part : ''
 	}"${typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
 		typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''
-	} style="cursor:pointer;${props._useCase === 'image' ? 'display: block;' : ''}text-decoration-line:${props._underline === true ? 'underline' : 'none'};${
+	} style="cursor:pointer;${props._useCase === 'image' ? 'display: block;' : ''}text-decoration-line:${underline === true ? 'underline' : 'none'};${
 		props._fill === true ? 'width:100%;' : ''
 	}">
       ${
