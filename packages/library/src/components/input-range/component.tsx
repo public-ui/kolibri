@@ -80,7 +80,7 @@ export class KolInputRange implements ComponentApi {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
@@ -90,7 +90,7 @@ export class KolInputRange implements ComponentApi {
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop({ reflect: true }) public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -100,7 +100,7 @@ export class KolInputRange implements ComponentApi {
 	/**
 	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Text für eine Hinweistext an.
@@ -155,7 +155,7 @@ export class KolInputRange implements ComponentApi {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.

@@ -89,7 +89,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
 	 */
-	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
+	@Prop({ reflect: true }) public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

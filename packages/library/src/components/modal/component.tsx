@@ -124,7 +124,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Gibt an, ob das Modal angezeigt wird.
 	 */
-	@Prop() public _show?: boolean = false;
+	@Prop({ reflect: true }) public _show?: boolean = false;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

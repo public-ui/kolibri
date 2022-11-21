@@ -25,7 +25,7 @@ export const getSpanWcHtml = (
 	);
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${state._iconOnly === true ? ` class="icon-only"` : ``}${additionalAttrs}>
+<kol-span-wc${props._iconOnly ? ' _icon-only' : ''}${state._iconOnly === true ? ` class="icon-only"` : ``}${additionalAttrs}>
 	${
 		icon.top
 			? getIconHtml({
@@ -74,7 +74,7 @@ export const getSpanWcHtml = (
 
 export const getSpanHtml = (props: Props): string => {
 	return `
-<kol-span>
+<kol-span${props._iconOnly ? ' _icon-only' : ''}>
 	<mock:shadow-root>
 		${getSpanWcHtml(props, {}, ``, true)}
 	</mock:shadow-root>

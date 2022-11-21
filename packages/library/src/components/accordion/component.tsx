@@ -135,7 +135,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 	/**
 	 * Gibt an, ob das Accordion geöffnet ist.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _open?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

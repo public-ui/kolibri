@@ -39,12 +39,12 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
 	 */
-	@Prop() public _alert?: boolean = true;
+	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob der Toast ein Schließen-Icon hat.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt den Titel der Meldung an.
@@ -64,7 +64,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Gibt an, ob der Toast eingeblendet wird.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _show?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.

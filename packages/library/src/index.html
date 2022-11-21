@@ -2,16 +2,11 @@
 <html dir="ltr" lang="de">
 	<head>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.11-rc.3';
-			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.11-rc.3';
-			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.1.11-rc.3';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.11';
+			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.11';
+			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.1.11';
 			register([BMF], [])
-				.then(() => {
-					KoliBriDevHelper.patchTheme('bmf', {
-						'KOL-LINK-BUTTON':
-							':host {display: inline-block;}/*-----------*/a {min-width: 44px;min-height: 44px;display: grid;gap: 0.25em;line-height: 1.5rem;font-family: var(--font-family);font-weight: 700;cursor: pointer;border-radius: 1.5em;border-style: solid;border-width: 2px;font-size: 1rem;align-items: center;padding: 8px 14px;justify-content: center;text-decoration: none !important;font-style: normal;text-align: center;text-transform: uppercase;width: inherit;transition-duration: 0.5s;transition-property: background-color, color, border-color;}a > kol-span > span > span {display: flex;gap: 0.25em;align-items: center;justify-content: center;}a:disabled {cursor: not-allowed;opacity: 0.5;}a.primary,a.primary:disabled:hover {background-color: var(--color-midnight);border-color: var(--color-midnight);color: var(--color-white);}a.secondary,a.secondary:disabled:hover,a.normal,a.normal:disabled:hover {background-color: var(--color-white);border-color: var(--color-midnight);color: var(--color-midnight);}a.danger,a.danger:disabled:hover {background-color: var(--color-red);border-color: var(--color-red);color: var(--color-white);}a.ghost,a.ghost:disabled:hover {border-color: var(--color-white);background-color: var(--color-white);box-shadow: none;color: var(--color-midnight);}/*-----------*/a.primary:active,a.primary:hover,a.secondary:active,a.secondary:hover,a.normal:active,a.normal:hover,a.danger:active,a.danger:hover,a.ghost:active,a.ghost:hover {background-color: var(--color-ocean);border-color: var(--color-ocean);box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);color: var(--color-white);}a.danger:active,a.danger:hover {background-color: var(--color-crimson);border-color: var(--color-crimson);}a:disabled:hover,a:focus:hover {box-shadow: none;}a.primary:active,a.secondary:active,a.normal:active,a.danger:active,a.ghost:active {border-color: var(--color-white);box-shadow: none;outline: none;}a > span {display: flex;gap: 0.5em;margin: auto;align-items: center;justify-content: center;letter-spacing: 0.75px;}a.icon-only {padding: 8px;}a.icon-only kol-icon {display: inline-block;width: 1.5em;height: 1.5em;}a.loading kol-icon {animation: spin 5s infinite linear;}',
-					});
-				})
+				.then(() => {})
 				.catch(console.warn);
 		</script>
 		<meta charset="utf-8" />
@@ -40,7 +35,7 @@
 		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false" />
 	</head>
 
-	<body data-theme="mapz" data-theme-cache="true" data-theme-reset="true">
+	<body class="bmf" data-theme="bmf">
 		<header class="container">
 			<!-- <kol-all></kol-all> -->
 			<div class="row">
@@ -51,7 +46,7 @@
 					<kol-heading>BIK BITV-Test</kol-heading>
 				</div>
 				<div class="gap-2 col-12 d-flex">
-					<kol-version _version="1.1.11-rc.3"></kol-version>
+					<kol-version _version="1.1.11"></kol-version>
 					<kol-badge _icon="check" _color="#030" _label="BIK BITV-Test"></kol-badge>
 					<kol-badge _color="#f0f" _label="Test"></kol-badge>
 					<kol-badge _color="#0bf" _label="Test"></kol-badge>

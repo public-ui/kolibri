@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "1.1.11-rc.3",
+	"version": "1.1.11",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -28,10 +28,10 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/react": "1.1.11-rc.3"
+		"@public-ui/react": "1.1.11"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.1.11-rc.3",
+		"@public-ui/components": "1.1.11",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"typescript": "4.9.3",

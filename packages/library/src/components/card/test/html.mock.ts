@@ -9,7 +9,7 @@ export const getCardHtml = (props: Props): string => {
 		},
 		props
 	);
-	return `<kol-card>
+	return `<kol-card${props._hasFooter ? ' _has-footer' : ''}>
 	<mock:shadow-root>
 		<div>
 			<div class="header">

@@ -98,12 +98,12 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 */
-	@Prop() public _alert?: boolean = true;
+	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -113,7 +113,7 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
 
 	/**
 	 * Gibt den Text für eine Hinweistext an.
@@ -138,17 +138,17 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob die Eingabefeld nur lesend ist.
 	 */
-	@Prop() public _readOnly?: boolean = false;
+	@Prop({ reflect: true }) public _readOnly?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Komponente kein Label rendern soll.
 	 */
-	@Prop() public _renderNoLabel?: boolean = false;
+	@Prop({ reflect: true }) public _renderNoLabel?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Checkbox ein Pflichtfeld ist.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop({ reflect: true }) public _required?: boolean = false;
 
 	/**
 	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
@@ -158,5 +158,5 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop() public _touched?: boolean = false;
+	@Prop({ reflect: true }) public _touched?: boolean = false;
 }

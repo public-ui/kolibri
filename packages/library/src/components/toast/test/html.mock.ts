@@ -11,7 +11,7 @@ export const getToastHtml = (props: Props): string => {
 		props
 	);
 	return `
-<kol-toast>
+<kol-toast${props._alert ? ' _alert' : ''}${props._show ? ' _show' : ''}>
   <mock:shadow-root>
     ${
 			props._show === true

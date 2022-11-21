@@ -144,7 +144,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
 	 * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
 	 */
-	@Prop() public _ordered?: boolean;
+	@Prop({ reflect: true }) public _ordered?: boolean;
 
 	/**
 	 * Gibt die Ausrichtung der LinkList an.

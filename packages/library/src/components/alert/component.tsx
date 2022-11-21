@@ -124,12 +124,12 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
 	 */
-	@Prop() public _alert?: boolean = false;
+	@Prop({ reflect: true }) public _alert?: boolean = false;
 
 	/**
 	 * Gibt an, ob der Alert ein Schließen-Icon hat.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt den Titel der Meldung an.

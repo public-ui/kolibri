@@ -203,7 +203,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: boolean;
+	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
 	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
@@ -213,17 +213,17 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop() public _ariaSelected?: boolean;
+	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
 	/**
 	 * Gibt an, ob der Link deaktiviert ist.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
 	 * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
 	 */
-	@Prop() public _fill?: boolean = false;
+	@Prop({ reflect: true }) public _fill?: boolean = false;
 
 	/**
 	 * Gibt die Ziel-Url des Links an.
@@ -245,7 +245,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop() public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -267,7 +267,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 */
-	@Prop() public _stealth?: boolean = false;
+	@Prop({ reflect: true }) public _stealth?: boolean = false;
 
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -292,7 +292,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob die Links unterstrichen dargestellt werden.
 	 */
-	@Prop() public _underline?: boolean = true;
+	@Prop({ reflect: true }) public _underline?: boolean = true;
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

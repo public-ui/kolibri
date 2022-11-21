@@ -254,17 +254,17 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	/**
 	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
 	 */
-	@Prop() public _collapsible?: boolean = false;
+	@Prop({ reflect: true }) public _collapsible?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
 	 */
-	@Prop() public _compact?: boolean = false;
+	@Prop({ reflect: true }) public _compact?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
 	 */
-	@Prop() public _hasCompactButton?: boolean = false;
+	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
 	/**
 	 * Gibt die Ausrichtung der Navigation an.

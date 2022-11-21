@@ -82,7 +82,7 @@ export class KolBadge implements Props {
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
-	@Prop() public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
 	 * Gibt den Label-Text des Badges an.
