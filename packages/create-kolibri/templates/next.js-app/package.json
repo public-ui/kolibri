@@ -30,7 +30,7 @@
 		"@public-ui/react": "1.1.12-rc.0",
 		"@public-ui/themes": "1.1.12-rc.0",
 		"@stencil/core": "2.19.3",
-		"next": "13.0.3",
+		"next": "13.0.4",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-is": "18.2.0"
