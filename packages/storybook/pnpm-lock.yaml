@@ -7,10 +7,10 @@ specifiers:
   '@leanup/form': 1.3.39
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
-  '@public-ui/components': 1.1.11
-  '@public-ui/core': 1.1.11
-  '@public-ui/react': 1.1.11
-  '@public-ui/themes': 1.1.11
+  '@public-ui/components': 1.1.12-rc.0
+  '@public-ui/core': 1.1.12-rc.0
+  '@public-ui/react': 1.1.12-rc.0
+  '@public-ui/themes': 1.1.12-rc.0
   '@storybook/addon-a11y': 6.5.13
   '@storybook/addon-actions': 6.5.13
   '@storybook/addon-backgrounds': 6.5.13
@@ -64,12 +64,12 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 0.2.2
   '@leanup/form': 1.3.39
-  '@leanup/kolibri-components': 1.0.5_ynqf7emrxrab4ve7chs7kv2lfa
+  '@leanup/kolibri-components': 1.0.5_6yzv24jz3erauxgysqxkuusfdu
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-ui/components': 1.1.11
-  '@public-ui/core': 1.1.11
-  '@public-ui/react': 1.1.11_4ufim26svvjtd6zqfrf66zntkq
-  '@public-ui/themes': 1.1.11_hpril45lxsj3d4g2ulwbcymmce
+  '@public-ui/components': 1.1.12-rc.0
+  '@public-ui/core': 1.1.12-rc.0
+  '@public-ui/react': 1.1.12-rc.0_fsduaaxkqi3wbdw43mauawmuuq
+  '@public-ui/themes': 1.1.12-rc.0_yqnvegnuzgwmbjvttlaz57vr7e
   '@storybook/addon-a11y': 6.5.13_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.13_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.13_sfoxds7t5ydpegc3knd667wn6m
@@ -120,10 +120,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.1:
-    resolution: {integrity: sha512-oE4n3RZTAHKEu8s13axJQfnAuTfKH6n4PpFlBm5I7Bfb2yptWl+++O5/dXfi6p9ee4U0PfZIkIRUHpRIwGJyeg==}
+  /@a11y-ui/core/1.0.1-rc.2:
+    resolution: {integrity: sha512-yMCtcQwWcTt+axXPLBbZSri5QvUFaVEss3y35jZfufRF6tIxdCLASm9FsbhxvQUnsZtJ/ml1ev+fjA4IoN6FEQ==}
     dependencies:
-      '@leanup/lib': 1.3.39
+      loglevel: 1.8.1
     dev: true
 
   /@ampproject/remapping/2.2.0:
@@ -1878,14 +1878,14 @@ packages:
       '@leanup/lib': 1.3.39
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_ynqf7emrxrab4ve7chs7kv2lfa:
+  /@leanup/kolibri-components/1.0.5_6yzv24jz3erauxgysqxkuusfdu:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.39
-      '@public-ui/components': 1.1.11
+      '@public-ui/components': 1.1.12-rc.0
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -1895,7 +1895,7 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_ynqf7emrxrab4ve7chs7kv2lfa
+      '@leanup/kolibri-components': 1.0.5_6yzv24jz3erauxgysqxkuusfdu
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2034,45 +2034,44 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-ui/components/1.1.11:
-    resolution: {integrity: sha512-N+l4pnsItGkIVFf3RqnXG6Jq3jp83coG1EKhWU43xt/dO8eIjynPaOOrawhutw+3H/uLOuqXLit8tbxf3k75NQ==}
+  /@public-ui/components/1.1.12-rc.0:
+    resolution: {integrity: sha512-G01cfa+YN1DaUKOWlshNCFavqFkoxGLyLKxL8QnnEhp14TjKfmQb7U7S0U+QNHJJXeyFFVt/tw1H4pMcl202gA==}
     dependencies:
-      '@public-ui/schema': 1.1.11
+      '@public-ui/schema': 1.1.12-rc.0
     dev: true
 
-  /@public-ui/core/1.1.11:
-    resolution: {integrity: sha512-ke9v2NmOg8XIQecXRrAwQei0zUF0NM18CJGt/3Fji/7/f+m+y7zw0saSikL2O4bn81yoGd6h93Y+/L5TdUFQbA==}
+  /@public-ui/core/1.1.12-rc.0:
+    resolution: {integrity: sha512-ovFarobZCcEO7mTjXjvV159tBYBZ/xLR4GhMqDru+keYv6JCDkqAjXtXSnjLjwEfiq8l4StCUGsSphBX0ZascQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.1
-      '@leanup/lib': 1.3.39
+      '@a11y-ui/core': 1.0.1-rc.2
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/react/1.1.11_4ufim26svvjtd6zqfrf66zntkq:
-    resolution: {integrity: sha512-Qg4RJ+nT1v2xSxx+812XIsMUtSFC/cqNz5j1Z/oJy7ipyLXjrTdFmNnUF2h9YMEMk30kOPowEJdpwcAIKwBAQQ==}
+  /@public-ui/react/1.1.12-rc.0_fsduaaxkqi3wbdw43mauawmuuq:
+    resolution: {integrity: sha512-sUic5C3agujAcfuYhMMaLpfY01DkqPS2wX67Cs10mEno++ZfZ95AlQTjol8+w2WXeaMflTXxrwxdASgWOprdxw==}
     peerDependencies:
-      '@public-ui/components': 1.1.11
+      '@public-ui/components': 1.1.12-rc.0
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.11
+      '@public-ui/components': 1.1.12-rc.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
 
-  /@public-ui/schema/1.1.11:
-    resolution: {integrity: sha512-Ercvv2/BuZyCPgW4vXYwtCi1m79h7htL+OgvzL1x/RZ/6Ffx5unP7zOqsIlm1OoPVc0bdIWW7EGnxi3gaxWAMw==}
+  /@public-ui/schema/1.1.12-rc.0:
+    resolution: {integrity: sha512-5Mn6P8VKZxD1cCssdxQl2wPS71pS4yWMoh3+geN4hd3WuZPGibdYahYum5rtmGhdKmkFQmM6b4DLIFYifsImuA==}
     dependencies:
-      '@public-ui/core': 1.1.11
+      '@public-ui/core': 1.1.12-rc.0
     dev: true
 
-  /@public-ui/themes/1.1.11_hpril45lxsj3d4g2ulwbcymmce:
-    resolution: {integrity: sha512-u5TA4L9J0+pz6YdvHbyLQV/V+UnGbgOx/VtlNTe8YIDLF4ciTXEce5j9BTwgHqms0gu4PopUdCHu01Hbmk7bBA==}
+  /@public-ui/themes/1.1.12-rc.0_yqnvegnuzgwmbjvttlaz57vr7e:
+    resolution: {integrity: sha512-6F2lajPTQYGELZAQGY3fmDaoWBV2iOgx3igqqFe/Tsm6OXf+tP/ppr4ENeVNgdHQD/yH+fbgQfZyQK6IbtboPw==}
     peerDependencies:
-      '@public-ui/components': 1.1.11
+      '@public-ui/components': 1.1.12-rc.0
     dependencies:
-      '@public-ui/components': 1.1.11
-      '@public-ui/schema': 1.1.11
+      '@public-ui/components': 1.1.12-rc.0
+      '@public-ui/schema': 1.1.12-rc.0
     dev: true
 
   /@rollup/plugin-babel/5.3.1_rw3hudt2pmn5afxog7l3b6qtze:
@@ -9394,6 +9393,11 @@ packages:
 
   /loglevel/1.8.0:
     resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
+    engines: {node: '>= 0.6.0'}
+    dev: true
+
+  /loglevel/1.8.1:
+    resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
     dev: true
 
