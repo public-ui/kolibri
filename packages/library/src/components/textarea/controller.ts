@@ -11,11 +11,21 @@ export class TextareaController extends InputController implements Watches {
 		this.component = component;
 	}
 
+	private afterSyncCharCounter = () => {
+		if (typeof this.component._value === 'string' && this.component._value.length > 0) {
+			this.component.state._currentLength = this.component._value.length;
+		}
+	};
+
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateHasCounter(value?: boolean): void {
-		watchBoolean(this.component, '_hasCounter', value);
+		watchBoolean(this.component, '_hasCounter', value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
+		});
 	}
 
 	/**
@@ -23,6 +33,9 @@ export class TextareaController extends InputController implements Watches {
 	 */
 	public validateMaxLength(value?: number): void {
 		watchNumber(this.component, '_maxLength', value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
 			min: 0,
 		});
 	}
@@ -72,7 +85,11 @@ export class TextareaController extends InputController implements Watches {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateValue(value?: string): void {
-		watchString(this.component, '_value', value);
+		watchString(this.component, '_value', value, {
+			hooks: {
+				afterPatch: this.afterSyncCharCounter,
+			},
+		});
 	}
 
 	/**

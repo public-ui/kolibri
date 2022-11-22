@@ -377,9 +377,6 @@ export class KolTextarea implements ComponentApi {
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
-		if (typeof this._value === 'string' && this._value.length > 0) {
-			this.state._currentLength = this._value.length;
-		}
 		this.controller.componentWillLoad();
 		this.validateAdjustHeight(this._adjustHeight);
 	}
