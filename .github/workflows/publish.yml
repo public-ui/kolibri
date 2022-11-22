@@ -118,4 +118,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
   publish-page:
     needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@release/1.1.11
+    uses: public-ui/kolibri/.github/workflows/publish-page.yml@main
