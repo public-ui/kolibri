@@ -155,11 +155,7 @@ export class KolLogo implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	public render(): JSX.Element {
 		return (
-			<svg
-				aria-label={`Bildwortmarke ${getAriaLabel(this.state._org)}. Bundesadler mit stilisierter Fahne und Schriftzug ${getAriaLabel(this.state._org)}`}
-				role="img"
-				viewBox="0 0 225 100"
-			>
+			<svg aria-label={`Logo ${this.state._org}. Bundesadler mit Flaggenstab und Schriftzug ${getAriaLabel(this.state._org)}`} role="img" viewBox="0 0 225 100">
 				<rect width="100%" height="100%" fill="white"></rect>
 				<svg x="0" y="4" height="75">
 					<Adler />
