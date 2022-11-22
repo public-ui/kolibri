@@ -59,10 +59,10 @@ Einfaerben.storyName = 'Einfärben';
 export const MitIcon = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25em' }}>
 		<KolBadge {...args} _label="Standard ohne Icon"></KolBadge>
-		<KolBadge {...args} _label="Icon Home" _icon={'home'}></KolBadge>
-		<KolBadge {...args} _label="Icon question-circle" _icon={'question-circle'}></KolBadge>
-		<KolBadge {...args} _label="Icon exclamation-circle" _icon={'exclamation-circle'}></KolBadge>
-		<KolBadge {...args} _label="Icon calendar" _icon={'calendar'}></KolBadge>
+		<KolBadge {...args} _label="Icon Home" _icon="icofont-home"></KolBadge>
+		<KolBadge {...args} _label="Icon question-circle" _icon="icofont-question-circle"></KolBadge>
+		<KolBadge {...args} _label="Icon exclamation-circle" _icon="icofont-exclamation-circle"></KolBadge>
+		<KolBadge {...args} _label="Icon calendar" _icon="icofont-calendar"></KolBadge>
 	</div>
 );
 

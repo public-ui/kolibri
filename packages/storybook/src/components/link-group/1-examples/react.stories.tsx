@@ -40,7 +40,7 @@ export const Icons = (args: any) => (
 		<KolLinkGroup
 			_ariaLabel="Überschrift LinkGroup"
 			_heading="Eine Überschrift"
-			_links="[{'_label':'Link nur Text','_href':'https://www.w3.org'},{'_label':'Link mit Icon','_href':'https://www.w3.org','_icon':'home'},{'_label':'Link nur Icon','_href':'https://www.w3.org','_icon':'home','_iconOnly':'true'},{'_label':'Link ohne Unterstrich','_href':'https://www.w3.org','_underline':'false'}]"
+			_links="[{'_label':'Link nur Text','_href':'https://www.w3.org'},{'_label':'Link mit Icon','_href':'https://www.w3.org','_icon':'icofont-home'},{'_label':'Link nur Icon','_href':'https://www.w3.org','_icon':'icofont-home','_iconOnly':'true'},{'_label':'Link ohne Unterstrich','_href':'https://www.w3.org','_underline':'false'}]"
 		></KolLinkGroup>
 	</div>
 );

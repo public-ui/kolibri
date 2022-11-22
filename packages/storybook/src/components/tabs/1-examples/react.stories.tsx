@@ -56,7 +56,11 @@ Simple.storyName = 'Einfache Tabs';
  */
 export const Icon = (args: any) => (
 	<div>
-		<KolTabs _ariaLabel="Tabs" _selected={0} _tabs="[{'_label':'Nicht ausgewählt','_icon':'home'},{'_label':'Ausgewählt'},{'_label':'Nicht ausgewählt'}]">
+		<KolTabs
+			_ariaLabel="Tabs"
+			_selected={0}
+			_tabs="[{'_label':'Nicht ausgewählt','_icon':'icofont-home'},{'_label':'Ausgewählt'},{'_label':'Nicht ausgewählt'}]"
+		>
 			<div slot="tab-0">Inhalt von Tab 1</div>
 			<div slot="tab-1">Inhalt von Tab 2</div>
 			<div slot="tab-2">Inhalt von Tab 3</div>

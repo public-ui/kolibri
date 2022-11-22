@@ -41,7 +41,7 @@ export const Text = (args: any) => (
 	<div>
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'home'}
+			_icon="icofont-home"
 			style={{
 				display: 'inline-block',
 				marginRight: '0.5rem',
@@ -53,7 +53,7 @@ export const Text = (args: any) => (
 		At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum. Es folgt ein Icon im Fließtext:
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'arrow-right'}
+			_icon="icofont-arrow-right"
 			style={{
 				display: 'inline-block',
 				margin: '0 0.5rem',
@@ -78,7 +78,7 @@ export const Sizes = (args: any) => (
 	<div>
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'home'}
+			_icon="icofont-home"
 			style={{
 				color: '#708090',
 				fontSize: '100%',
@@ -87,7 +87,7 @@ export const Sizes = (args: any) => (
 		<br />
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'home'}
+			_icon="icofont-home"
 			style={{
 				color: '#708090',
 				fontSize: '200%',
@@ -96,7 +96,7 @@ export const Sizes = (args: any) => (
 		<br />
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'home'}
+			_icon="icofont-home"
 			style={{
 				color: '#708090',
 				fontSize: '400%',
@@ -118,7 +118,7 @@ export const Colors = (args: any) => (
 	<div>
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'home'}
+			_icon="icofont-home"
 			style={{
 				color: '#DC143C',
 				fontSize: '400%',
@@ -128,7 +128,7 @@ export const Colors = (args: any) => (
 		<br />
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'home'}
+			_icon="icofont-home"
 			style={{
 				color: 'rgb(220, 20,60 )',
 				fontSize: '400%',
@@ -138,7 +138,7 @@ export const Colors = (args: any) => (
 		<br />
 		<KolIconIcofont
 			_ariaLabel=""
-			_icon={'home'}
+			_icon="icofont-home"
 			style={{
 				color: 'rgba(220, 20,60 ,0.5)',
 				fontSize: '400%',
