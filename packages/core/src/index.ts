@@ -5,13 +5,6 @@ import { TranslationService } from './i18n';
 
 export * from '@a11y-ui/core';
 
-/**
- *
- * @param themes
- * @param loaders
- * @param options
- * @returns
- */
 export const register = (
 	themes:
 		| Generic.Theming.RegisterPatch<string, string, string>
@@ -21,7 +14,6 @@ export const register = (
 	options?: RegisterOptions
 ): Promise<void[]> => {
 	try {
-		const service = new TranslationService(options?.translations || [], options?.translation?.name);
 		if (window.A11yUi === undefined) {
 			Object.defineProperty(window, 'A11yUi', {
 				value: {},
@@ -29,7 +21,7 @@ export const register = (
 			});
 		}
 		Object.defineProperty(window.A11yUi, 'TranslationService', {
-			value: service,
+			value: new TranslationService(options?.translations || [], options?.translation?.name),
 			writable: false,
 		});
 	} catch (e) {

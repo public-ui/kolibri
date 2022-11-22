@@ -89,19 +89,19 @@ Display.storyName = 'Positionierung';
 export const WithIcon = (args: any) => (
 	<div>
 		<p>
-			<KolLink _icon={'home'}>Ich bin ein Link mit Icon links</KolLink>
+			<KolLink _icon="icofont-home">Ich bin ein Link mit Icon links</KolLink>
 			<br />
-			<KolLink _icon={'home'} _iconAlign="right">
+			<KolLink _icon="icofont-home" _iconAlign="right">
 				Ich bin ein Link mit Icon rechts
 			</KolLink>
 			<br />
 			Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi facilis, amet
 			ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-			<KolLink _icon={'home'} style={{ paddingLeft: '5px' }}>
+			<KolLink _icon="icofont-home" style={{ paddingLeft: '5px' }}>
 				Ich bin ein Link mit Icon links
 			</KolLink>
 			. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi{' '}
-			<KolLink _icon={'home'} _iconAlign="right" style={{ paddingRight: '5px' }}>
+			<KolLink _icon="icofont-home" _iconAlign="right" style={{ paddingRight: '5px' }}>
 				Ich bin ein Link mit Icon rechts
 			</KolLink>
 			facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
@@ -121,9 +121,9 @@ WithIcon.storyName = 'Mit Icon';
 export const Underline = (args: any) => (
 	<div>
 		<p>
-			<KolLink _icon={'home'}>Ich bin ein Link in Standardausgabe mit Unterstrich</KolLink>
+			<KolLink _icon="icofont-home">Ich bin ein Link in Standardausgabe mit Unterstrich</KolLink>
 			<br />
-			<KolLink _icon={'home'} _underline={false}>
+			<KolLink _icon="icofont-home" _underline={false}>
 				Ich bin ein Link in Standardausgabe ohne Unterstrich
 			</KolLink>
 		</p>
@@ -142,11 +142,11 @@ Underline.storyName = 'Unterstrichen';
 export const Open = (args: any) => (
 	<div>
 		<p>
-			<KolLink _icon={'home'} _target="_self" _href="https://www.w3.org">
+			<KolLink _icon="icofont-home" _target="_self" _href="https://www.w3.org">
 				Ich öffne meinen Link im gleichen Browsertab
 			</KolLink>
 			<br />
-			<KolLink _icon={'home'} _target="blank" _href="https://www.w3.org">
+			<KolLink _icon="icofont-home" _target="blank" _href="https://www.w3.org">
 				Ich öffne meinen Link in einem neuen Browsertab
 			</KolLink>
 		</p>
@@ -165,11 +165,11 @@ Open.storyName = 'Öffnungsverhalten';
 export const Stealth = (args: any) => (
 	<div>
 		<p>
-			<KolLink _icon={'home'} _href="https://www.w3.org">
+			<KolLink _icon="icofont-home" _href="https://www.w3.org">
 				Ich bin ein veröffentlichter und damit sichtbarer Link
 			</KolLink>
 			<br />
-			<KolLink _icon={'home'} _stealth _href="https://www.w3.org">
+			<KolLink _icon="icofont-home" _stealth _href="https://www.w3.org">
 				Ich bin ein versteckter Link, werde aber vom Screenreader trotzdem gelesen
 			</KolLink>
 		</p>
@@ -188,11 +188,11 @@ Stealth.storyName = 'Versteckt';
 export const Image = (args: any) => (
 	<div>
 		<p>
-			<KolLink _icon={'home'} _href="https://www.w3.org" _useCase="text">
+			<KolLink _icon="icofont-home" _href="https://www.w3.org" _useCase="text">
 				Ich bin ein Link, der als Text gerendert wird
 			</KolLink>
 			<br />
-			<KolLink _icon={'home'} _href="https://www.w3.org" _useCase="image">
+			<KolLink _icon="icofont-home" _href="https://www.w3.org" _useCase="image">
 				Ich bin ein Link, der als Image gerendert wird.
 			</KolLink>
 		</p>

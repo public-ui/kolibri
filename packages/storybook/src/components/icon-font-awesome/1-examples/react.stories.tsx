@@ -55,7 +55,7 @@ export const Text = (args: any) => (
 		<KolIconFontAwesome
 			_prefix="fas"
 			_ariaLabel=""
-			_icon={'arrow-right'}
+			_icon="icofont-home"
 			style={{
 				display: 'inline-block',
 				margin: '0 0.5rem',

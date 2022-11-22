@@ -43,6 +43,7 @@ export class TranslationService<Prefix extends string, Key extends string> {
 	public setLocale(locale: Generic.I18n.Locale.ISO_639_1) {
 		this.currentLocale = locale;
 		if (this.language.has(locale)) {
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			this.subject.next({ ...this.language.get(locale)! });
 		} else {
 			throw new Error('');

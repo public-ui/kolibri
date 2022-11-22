@@ -57,7 +57,7 @@ export const WithIcon = (args: any) => (
 WithIcon.args = {
 	...DefaultArgs,
 	_links:
-		"[{'_label':'Startseite','_href':'#/'},{'_label':'1. Unterseite','_href':'#/unterseite','_icon':'home'},{'_label':'1. Unterseite der Unterseite','_href':'#/unterseite/unterseite','_icon':'arrow-right'}]",
+		"[{'_label':'Startseite','_href':'#/'},{'_label':'1. Unterseite','_href':'#/unterseite','_icon':'icofont-home'},{'_label':'1. Unterseite der Unterseite','_href':'#/unterseite/unterseite','_icon':'icofont-arrow-right'}]",
 };
 WithIcon.storyName = 'Breadcrumb mit Icons und Text';
 
@@ -74,7 +74,7 @@ export const OnlyIcon = (args: any) => (
 OnlyIcon.args = {
 	...DefaultArgs,
 	_links:
-		"[{'_label':'Startseite','_href':'#/','_icon':'home','_iconOnly':'true'},{'_label':'1. Unterseite','_href':'#/unterseite','_icon':'arrow-right','_iconOnly':'true'},{'_label':'1. Unterseite der Unterseite','_href':'#/unterseite/unterseite','_icon':'phon','_iconOnly':'true'}]",
+		"[{'_label':'Startseite','_href':'#/','_icon':'icofont-home','_iconOnly':'true'},{'_label':'1. Unterseite','_href':'#/unterseite','_icon':'icofont-arrow-right','_iconOnly':'true'},{'_label':'1. Unterseite der Unterseite','_href':'#/unterseite/unterseite','_icon':'icofont-phone','_iconOnly':'true'}]",
 };
 OnlyIcon.storyName = 'Breadcrumb nur Icons';
 

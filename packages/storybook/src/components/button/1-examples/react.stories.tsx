@@ -148,13 +148,13 @@ export const WithSizes = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25rem' }}>
 		<KolButton _label="Button ohne Mindestbreite" _icon="icofont-home" _iconAlign="left"></KolButton>
 		<br />
-		<KolButton _label="Button mit 100 Pixel Mindestbreite" _icon={'home'} _iconAlign="left" style={{ width: '100px' }}></KolButton>
+		<KolButton _label="Button mit 100 Pixel Mindestbreite" _icon="icofont-home" _iconAlign="left" style={{ width: '100px' }}></KolButton>
 		<br />
-		<KolButton _label="Button mit 200 Pixel Mindestbreite" _icon={'home'} _iconAlign="left" style={{ width: '200px' }}></KolButton>
+		<KolButton _label="Button mit 200 Pixel Mindestbreite" _icon="icofont-home" _iconAlign="left" style={{ width: '200px' }}></KolButton>
 		<br />
-		<KolButton _label="Button mit 300 Pixel Mindestbreite" _icon={'home'} _iconAlign="left" style={{ width: '300px' }}></KolButton>
+		<KolButton _label="Button mit 300 Pixel Mindestbreite" _icon="icofont-home" _iconAlign="left" style={{ width: '300px' }}></KolButton>
 		<br />
-		<KolButton _label="Button mit 400 Pixel Mindestbreite" _icon={'home'} _iconAlign="left" style={{ width: '400px' }}></KolButton>
+		<KolButton _label="Button mit 400 Pixel Mindestbreite" _icon="icofont-home" _iconAlign="left" style={{ width: '400px' }}></KolButton>
 	</div>
 );
 WithSizes.args = {

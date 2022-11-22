@@ -39,8 +39,7 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
@@ -55,13 +54,12 @@ jobs:
         run: npx lerna exec --stream -- ts-prune src -e
       - name: Format
         if: always()
-        run: |
-          npx lerna run format
+        run: npx lerna run format
       - name: Lint
-        run: |
-          npx lerna run lint
+        run: npx lerna run lint
       - name: Test
-        run: |
-          npx lerna run test
+        run: npx lerna run test
       - name: 'Pack'
-        run: npx lerna exec --stream -- npm pack
+        run: |
+          npx lerna exec --ignore @public-ui/storybook --stream -- npm pack
+          npx lerna exec --scope @public-ui/storybook --stream -- npm pack
