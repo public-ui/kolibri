@@ -1,11 +1,11 @@
-sh ./dist-tag.sh @public-ui/core $1
-sh ./dist-tag.sh @public-ui/schema $1
-sh ./dist-tag.sh @public-ui/components $1
-sh ./dist-tag.sh @public-ui/themes $1
-sh ./dist-tag.sh @public-ui/angular $1
-sh ./dist-tag.sh @public-ui/preact $1
-sh ./dist-tag.sh @public-ui/react $1
-sh ./dist-tag.sh @public-ui/solid $1
-sh ./dist-tag.sh @public-ui/vue $1
+npm dist-tag $1 @public-ui/core@$2 $3
+npm dist-tag $1 @public-ui/schema@$2 $3
+npm dist-tag $1 @public-ui/components@$2 $3
+npm dist-tag $1 @public-ui/themes@$2 $3
+npm dist-tag $1 @public-ui/angular@$2 $3
+npm dist-tag $1 @public-ui/preact@$2 $3
+npm dist-tag $1 @public-ui/react@$2 $3
+npm dist-tag $1 @public-ui/solid@$2 $3
+npm dist-tag $1 @public-ui/vue@$2 $3
 
-sh ./dist-tag.sh create-kolibri $1
+npm dist-tag $1 create-kolibri@$2 $3

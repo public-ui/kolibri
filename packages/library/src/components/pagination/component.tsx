@@ -202,7 +202,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	/**
 	 * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
 	 */
-	@Prop({ reflect: true }) public _hasButtons?: boolean | Stringified<PaginationHasButton>;
+	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton>;
 
 	/**
 	 * Gibt an, welche Seite aktuell ausgewählt ist.

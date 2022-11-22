@@ -1,15 +1,15 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.11
-  '@public-ui/schema': 1.1.11
+  '@public-ui/components': 1.1.12-rc.0
+  '@public-ui/schema': 1.1.12-rc.0
   '@types/node': 18.11.9
   typescript: 4.9.3
   unbuild: 1.0.1
 
 dependencies:
-  '@public-ui/components': 1.1.11
-  '@public-ui/schema': 1.1.11
+  '@public-ui/components': 1.1.12-rc.0
+  '@public-ui/schema': 1.1.12-rc.0
 
 devDependencies:
   '@types/node': 18.11.9
@@ -18,10 +18,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.1:
-    resolution: {integrity: sha512-oE4n3RZTAHKEu8s13axJQfnAuTfKH6n4PpFlBm5I7Bfb2yptWl+++O5/dXfi6p9ee4U0PfZIkIRUHpRIwGJyeg==}
+  /@a11y-ui/core/1.0.1-rc.2:
+    resolution: {integrity: sha512-yMCtcQwWcTt+axXPLBbZSri5QvUFaVEss3y35jZfufRF6tIxdCLASm9FsbhxvQUnsZtJ/ml1ev+fjA4IoN6FEQ==}
     dependencies:
-      '@leanup/lib': 1.3.39
+      loglevel: 1.8.1
     dev: false
 
   /@ampproject/remapping/2.2.0:
@@ -286,13 +286,6 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@leanup/lib/1.3.39:
-    resolution: {integrity: sha512-7ic6B4iN7cOXnVC3Q3cIXM9FbmmD4yhTwc2Em51h0cZNAv7Lu4EkzIFP3u261771I8ugCq26689XvtiuKa0fqw==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.1
-    dev: false
-
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -314,24 +307,23 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.11:
-    resolution: {integrity: sha512-N+l4pnsItGkIVFf3RqnXG6Jq3jp83coG1EKhWU43xt/dO8eIjynPaOOrawhutw+3H/uLOuqXLit8tbxf3k75NQ==}
+  /@public-ui/components/1.1.12-rc.0:
+    resolution: {integrity: sha512-G01cfa+YN1DaUKOWlshNCFavqFkoxGLyLKxL8QnnEhp14TjKfmQb7U7S0U+QNHJJXeyFFVt/tw1H4pMcl202gA==}
     dependencies:
-      '@public-ui/schema': 1.1.11
+      '@public-ui/schema': 1.1.12-rc.0
     dev: false
 
-  /@public-ui/core/1.1.11:
-    resolution: {integrity: sha512-ke9v2NmOg8XIQecXRrAwQei0zUF0NM18CJGt/3Fji/7/f+m+y7zw0saSikL2O4bn81yoGd6h93Y+/L5TdUFQbA==}
+  /@public-ui/core/1.1.12-rc.0:
+    resolution: {integrity: sha512-ovFarobZCcEO7mTjXjvV159tBYBZ/xLR4GhMqDru+keYv6JCDkqAjXtXSnjLjwEfiq8l4StCUGsSphBX0ZascQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.1
-      '@leanup/lib': 1.3.39
+      '@a11y-ui/core': 1.0.1-rc.2
       rxjs: 7.5.7
     dev: false
 
-  /@public-ui/schema/1.1.11:
-    resolution: {integrity: sha512-Ercvv2/BuZyCPgW4vXYwtCi1m79h7htL+OgvzL1x/RZ/6Ffx5unP7zOqsIlm1OoPVc0bdIWW7EGnxi3gaxWAMw==}
+  /@public-ui/schema/1.1.12-rc.0:
+    resolution: {integrity: sha512-5Mn6P8VKZxD1cCssdxQl2wPS71pS4yWMoh3+geN4hd3WuZPGibdYahYum5rtmGhdKmkFQmM6b4DLIFYifsImuA==}
     dependencies:
-      '@public-ui/core': 1.1.11
+      '@public-ui/core': 1.1.12-rc.0
     dev: false
 
   /@rollup/plugin-alias/4.0.2_rollup@3.3.0:
@@ -998,8 +990,8 @@ packages:
       graceful-fs: 4.2.10
     dev: true
 
-  /loglevel/1.8.0:
-    resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
+  /loglevel/1.8.1:
+    resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
     dev: false
 

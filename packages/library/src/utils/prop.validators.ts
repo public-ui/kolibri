@@ -258,7 +258,7 @@ export const stringifyJson = (value: unknown): string => {
 	try {
 		return JSON.stringify(value).replace(/"/g, "'");
 	} catch (error) {
-		// console.log(value);
+		Log.warn(value);
 		throw new Error(`↑ Das JSON konnte nicht in einen String umgewandelt werden. Es wird ein stringifizierbares JSON erwartet.`);
 	}
 };
@@ -270,7 +270,7 @@ export const parseJson = <T>(value: string): T => {
 		try {
 			return JSON.parse(value.replace(/'/g, '"'));
 		} catch (error) {
-			// console.log(value);
+			Log.warn(value);
 			throw new Error(`↑ Der JSON-String konnte nicht geparsed werden. Achten Sie darauf, dass einfache Anführungszeichen im Text maskiert werden (&#8216;).`);
 		}
 	}
