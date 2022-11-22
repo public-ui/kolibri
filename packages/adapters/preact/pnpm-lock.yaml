@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.11-rc.3
-  '@public-ui/react': 1.1.11-rc.3
+  '@public-ui/components': 1.1.11
+  '@public-ui/react': 1.1.11
   preact: '>=10.5.15'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.0.1
 
 dependencies:
-  '@public-ui/react': 1.1.11-rc.3_dyzzgxxiisu43wnfz5wrljueua
+  '@public-ui/react': 1.1.11_eqzs6d6hcleq5zwne47bwhqvam
   preact: 10.11.3
 
 devDependencies:
-  '@public-ui/components': 1.1.11-rc.3
+  '@public-ui/components': 1.1.11
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.3
@@ -316,34 +316,34 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.11-rc.3:
-    resolution: {integrity: sha512-09KLBDkQ+LvXQIa8QJeAtE6maMre6KKZTmzg7zRC3DYd5YRxiJdHQplNKJw/NaXFYeMxg0dayn4FQfzVgu7ABA==}
+  /@public-ui/components/1.1.11:
+    resolution: {integrity: sha512-N+l4pnsItGkIVFf3RqnXG6Jq3jp83coG1EKhWU43xt/dO8eIjynPaOOrawhutw+3H/uLOuqXLit8tbxf3k75NQ==}
     dependencies:
-      '@public-ui/schema': 1.1.11-rc.3
+      '@public-ui/schema': 1.1.11
 
-  /@public-ui/core/1.1.11-rc.3:
-    resolution: {integrity: sha512-QEt1qIum2+Mj8PPIu5qOYz3qVsIvYq1o7BAK4mA93dJRFcV7EYXLB7RQ4su+oS9hY0k1Emn52LX+9i+sKc1aQw==}
+  /@public-ui/core/1.1.11:
+    resolution: {integrity: sha512-ke9v2NmOg8XIQecXRrAwQei0zUF0NM18CJGt/3Fji/7/f+m+y7zw0saSikL2O4bn81yoGd6h93Y+/L5TdUFQbA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.1
       '@leanup/lib': 1.3.39
       rxjs: 7.5.7
 
-  /@public-ui/react/1.1.11-rc.3_dyzzgxxiisu43wnfz5wrljueua:
-    resolution: {integrity: sha512-qQCaUTwJnEaLcksyt0/5yqttXUwDYkHJ6NdK/dPJ9SzMWtoNlhcsJwh5TyQGQhxxkEruPdbSdb2LsmLaIiIRzQ==}
+  /@public-ui/react/1.1.11_eqzs6d6hcleq5zwne47bwhqvam:
+    resolution: {integrity: sha512-Qg4RJ+nT1v2xSxx+812XIsMUtSFC/cqNz5j1Z/oJy7ipyLXjrTdFmNnUF2h9YMEMk30kOPowEJdpwcAIKwBAQQ==}
     peerDependencies:
-      '@public-ui/components': 1.1.11-rc.3
+      '@public-ui/components': 1.1.11
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.11-rc.3
+      '@public-ui/components': 1.1.11
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.1.11-rc.3:
-    resolution: {integrity: sha512-D8JEYJfrj345McIaI2AHlqLdUZP253jukYiW9RRtYBml5f4dC2SPFdBqcvChTshEs3aBZYPNwvJJasXG2hMNIA==}
+  /@public-ui/schema/1.1.11:
+    resolution: {integrity: sha512-Ercvv2/BuZyCPgW4vXYwtCi1m79h7htL+OgvzL1x/RZ/6Ffx5unP7zOqsIlm1OoPVc0bdIWW7EGnxi3gaxWAMw==}
     dependencies:
-      '@public-ui/core': 1.1.11-rc.3
+      '@public-ui/core': 1.1.11
 
   /@rollup/plugin-alias/4.0.2_rollup@3.3.0:
     resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}

@@ -2,7 +2,6 @@
 
 import { getThemeDetails, setThemeStyle } from '@public-ui/core';
 import { setMode } from '@stencil/core';
-// import { BMF } from '@public-ui/themes';
 import { Log } from '../utils/dev.utils';
 
 // ts-prune-ignore-next
@@ -22,10 +21,6 @@ export default (): void => {
 		}
 		return 'default';
 	});
-
-	// register([BMF], () => {
-	// 	return new Promise((resolve) => resolve());
-	// }).catch(console.warn);
 
 	import('./devtools')
 		.then((devTools) => {
