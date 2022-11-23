@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.1.12",
+	"version": "1.1.13-rc.0",
 	"description": "Das Components-Modul beinhaltet alle zur Komponenten-Bibliothek gehörenden Web Components.",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -60,10 +60,10 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.12"
+		"@public-ui/schema": "1.1.13-rc.0"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.12",
+		"@public-ui/core": "1.1.13-rc.0",
 		"@stencil/angular-output-target": "0.4.0",
 		"@stencil/core": "2.19.3",
 		"@stencil/postcss": "2.1.0",
