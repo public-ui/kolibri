@@ -7,7 +7,8 @@ import { EventCallback, EventValueCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
-import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
+import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { TooltipAlignment } from '../tooltip/component';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -34,8 +35,11 @@ type OptionalTabButtonProps = {
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 	on: KoliBriTabsCallbacks;
+	tooltipAlign: TooltipAlignment;
 };
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
+
+export type TabOrientation = 'horizontal' | 'vertical'; // right, left
 
 /**
  * API
@@ -46,12 +50,14 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
+	orientation: TabOrientation;
 	selected: number;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
+	orientation: TabOrientation;
 	selected: number;
 	tabs: TabButtonProps[];
 };
@@ -149,6 +155,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	private renderButtonGroup() {
 		return (
+			// <!-- style="order:2" -->
 			<kol-button-group role="tablist" aria-label={this.state._ariaLabel} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => {
 					return (
@@ -163,12 +170,13 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_disabled={button._disabled}
 								_icon={button._icon}
 								_iconOnly={button._iconOnly}
-								_label={button._label && button._label}
+								_label={button._label && button._label} // TODO: ariaLabel-Konzept prüfen
 								_on={{
 									onClick: (event) => this.onClickSelect(event, index),
 									onMouseDown: this.onMouseDown,
 								}}
 								_tabIndex={this.state._selected === index ? 0 : -1}
+								_tooltipAlign={button._tooltipAlign}
 								_variant={this.state._selected === index ? 'custom' : undefined}
 								_customClass={this.state._selected === index ? 'selected' : undefined}
 								aria-selected={this.state._selected === index ? 'true' : 'false'}
@@ -218,32 +226,39 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 					this.hostElement = el as HTMLElement;
 				}}
 			>
+				{/* style="display: grid, gridTemplateColumns: 1fr 1fr" */}
 				<div
 					ref={(el) => {
 						this.tabsElement = el as HTMLElement;
 					}}
-					class="grid"
+					class={{
+						grid: true,
+						[this.state._orientation]: true,
+					}}
 				>
-					{this.renderButtonGroup()}
-					{this.state._tabs.map((_tab: TabButtonProps, index: number) => {
-						return (
-							<div
-								role="tabpanel"
-								id={`tabpanel-${index}`}
-								aria-labelledby={`tab-${index}`}
-								style={
-									this.state._selected !== index || _tab._disabled === true
-										? {
-												display: 'none',
-												visibility: 'hidden',
-										  }
-										: undefined
-								}
-							>
-								<slot name={`tab-${index}`} />
-							</div>
-						);
-					})}
+					{this.state._orientation === 'horizontal' && this.renderButtonGroup()}
+					{/* style="display: grid" */}
+					<div>
+						{this.state._tabs.map((_tab: TabButtonProps, index: number) => {
+							return (
+								<div
+									role="tabpanel"
+									id={`tabpanel-${index}`}
+									aria-labelledby={`tab-${index}`}
+									style={
+										this.state._selected !== index || _tab._disabled === true
+											? {
+													display: 'none',
+													visibility: 'hidden',
+											  }
+											: undefined
+									}
+								>
+									<slot name={`tab-${index}`} />
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</Host>
 		);
@@ -260,6 +275,11 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _on?: KoliBriTabsCallbacks;
 
 	/**
+	 * Gibt an, ob die Tab-Buttons horizontal oder vertikal angeordnet sind.
+	 */
+	@Prop() public _orientation?: TabOrientation = 'horizontal';
+
+	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _selected?: number = 0;
@@ -274,6 +294,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@State() public state: States = {
 		_ariaLabel: '…',
+		_orientation: 'horizontal',
 		_selected: 0,
 		_tabs: [],
 	};
@@ -338,6 +359,20 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_orientation')
+	public validateOrientation(value?: TabOrientation): void {
+		watchValidator<TabOrientation>(
+			this,
+			'_orientation',
+			(value) => value === 'horizontal' || value === 'vertical',
+			new Set(['String (TabOrientation)']),
+			value
+		);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_selected')
 	public validateSelected(value?: number): void {
 		watchNumber(this, '_selected', value);
@@ -363,6 +398,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateOn(this._on);
+		this.validateOrientation(this._orientation);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
 	}

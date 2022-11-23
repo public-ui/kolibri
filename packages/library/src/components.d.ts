@@ -32,7 +32,7 @@ import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 import { KoliBriProgressType } from "./types/progress";
 import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
-import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
+import { KoliBriTabsCallbacks, TabButtonProps, TabOrientation } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 import { TooltipAlignment as TooltipAlignment1 } from "./components/tooltip/component";
@@ -1976,6 +1976,10 @@ export namespace Components {
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
         "_on"?: KoliBriTabsCallbacks;
+        /**
+          * Gibt an, ob die Tab-Buttons horizontal oder vertikal angeordnet sind.
+         */
+        "_orientation"?: TabOrientation;
         /**
           * Gibt an, welches Tab selektiert sein soll.
          */
@@ -4443,6 +4447,10 @@ declare namespace LocalJSX {
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
         "_on"?: KoliBriTabsCallbacks;
+        /**
+          * Gibt an, ob die Tab-Buttons horizontal oder vertikal angeordnet sind.
+         */
+        "_orientation"?: TabOrientation;
         /**
           * Gibt an, welches Tab selektiert sein soll.
          */
