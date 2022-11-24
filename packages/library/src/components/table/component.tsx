@@ -467,8 +467,11 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 					- https://ux.stackexchange.com/questions/119952/when-is-it-wrong-to-put-tabindex-0-on-non-interactive-content
 
 					Nicht <div tabindex="0">
+
+					DOCH!!!
+					https://dequeuniversity.com/rules/axe/4.4/scrollable-region-focusable?application=AxeChrome
 				*/}
-				<div>
+				<div tabindex="0">
 					<table
 						// role="grid"
 						// aria-readonly="true"
