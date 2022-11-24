@@ -1,10 +1,10 @@
 import 'uno.css'; // https://github.com/antfu/unocss
 
 // App style
-import './style.scss';
+import './style.sass';
 
 // PWA
-import './shared/pwa';
+import './shares/pwa';
 
 // Theme
 
