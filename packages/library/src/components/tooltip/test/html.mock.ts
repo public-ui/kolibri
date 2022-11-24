@@ -25,7 +25,7 @@ export const getTooltipHtml = (props: Props): string => {
 					},
 					` class="arrow-${
 						state._align === 'bottom' ? 'top' : state._align === 'left' ? 'right' : state._align === 'top' ? 'bottom' : 'left'
-					} kol-tooltip" id="nonce"`
+					} kol-tooltip" id="nonce" style="position:fixed"`
 			  )
 	}
 </kol-tooltip>`;
