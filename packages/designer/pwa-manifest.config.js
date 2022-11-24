@@ -1,11 +1,11 @@
 const path = require('path');
 module.exports = {
-	publicPath: '/',
+	publicPath: '/designer/',
 	name: 'Designer | KoliBri',
 	short_name: 'Designer',
 	description: '...',
 	lang: 'de-DE',
-	start_url: '/',
+	start_url: '/designer/',
 	display: 'fullscreen',
 	orientation: 'any',
 	theme_color: '#fff',
