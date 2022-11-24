@@ -40,30 +40,32 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 
 	private alignTooltip = (): void => {
 		const target = this.childElements[0];
+		const clientRect = target.getBoundingClientRect();
+
 		if (this.tooltipElement instanceof HTMLElement) {
 			switch (this.state._align) {
 				case 'top':
 				case 'bottom':
-					this.tooltipElement.style.marginLeft = `${target.offsetWidth / 2 - this.tooltipElement.offsetWidth / 2}px`;
+					this.tooltipElement.style.left = `${clientRect.left + target.offsetWidth / 2 - this.tooltipElement.offsetWidth / 2}px`;
 					break;
 				case 'left':
 				case 'right':
 				default:
-					this.tooltipElement.style.marginTop = `-${target.offsetHeight / 2 + this.tooltipElement.offsetHeight / 2}px`;
+					this.tooltipElement.style.top = `${clientRect.top + clientRect.height / 2 - this.tooltipElement.offsetHeight / 2}px`;
 			}
 			switch (this.state._align) {
 				case 'left':
-					this.tooltipElement.style.marginLeft = `calc(-${this.tooltipElement.offsetWidth}px - 0.5em)`;
+					this.tooltipElement.style.left = `calc(${clientRect.left - this.tooltipElement.offsetWidth}px - 0.5em)`;
 					break;
 				case 'right':
-					this.tooltipElement.style.marginLeft = `calc(${target.offsetWidth}px + 0.5em)`;
+					this.tooltipElement.style.left = `calc(${clientRect.right}px + 0.5em)`;
 					break;
 				case 'bottom':
-					this.tooltipElement.style.marginTop = `0.5em`;
+					this.tooltipElement.style.top = `calc(${clientRect.bottom}px + 0.5em)`;
 					break;
 				case 'top':
 				default:
-					this.tooltipElement.style.marginTop = `calc(-${target.offsetHeight + this.tooltipElement.offsetHeight}px - 0.5em)`;
+					this.tooltipElement.style.top = `calc(${clientRect.top - this.tooltipElement.offsetHeight}px - 0.5em)`;
 			}
 		}
 	};
@@ -127,6 +129,9 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 			>
 				{this.state._label !== '' && (
 					<kol-badge
+						style={{
+							position: 'fixed',
+						}}
 						class={{
 							'kol-tooltip': true,
 							'arrow-bottom': this.state._align === 'top',
