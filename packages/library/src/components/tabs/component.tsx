@@ -5,10 +5,11 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@public-ui/core';
 import { EventCallback, EventValueCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
+import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
-import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
-import { TooltipAlignment } from '../tooltip/component';
+import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
+import { validateAlignment } from '../../utils/validators/alignment';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -35,11 +36,9 @@ type OptionalTabButtonProps = {
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 	on: KoliBriTabsCallbacks;
-	tooltipAlign: TooltipAlignment;
+	tooltipAlign: Alignment;
 };
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
-
-export type TabOrientation = 'horizontal' | 'vertical'; // right, left
 
 /**
  * API
@@ -50,14 +49,14 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
-	orientation: TabOrientation;
+	tabsAlign: Alignment;
 	selected: number;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
-	orientation: TabOrientation;
+	tabsAlign: Alignment;
 	selected: number;
 	tabs: TabButtonProps[];
 };
@@ -232,11 +231,10 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 						this.tabsElement = el as HTMLElement;
 					}}
 					class={{
-						grid: true,
-						[this.state._orientation]: true,
+						[`tab-align-${this.state._tabsAlign}`]: true,
 					}}
 				>
-					{this.state._orientation === 'horizontal' && this.renderButtonGroup()}
+					{this.renderButtonGroup()}
 					{/* style="display: grid" */}
 					<div>
 						{this.state._tabs.map((_tab: TabButtonProps, index: number) => {
@@ -275,11 +273,6 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _on?: KoliBriTabsCallbacks;
 
 	/**
-	 * Gibt an, ob die Tab-Buttons horizontal oder vertikal angeordnet sind.
-	 */
-	@Prop() public _orientation?: TabOrientation = 'horizontal';
-
-	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _selected?: number = 0;
@@ -290,11 +283,16 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 
 	/**
+	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+	 */
+	@Prop() public _tabsAlign?: Alignment = 'top';
+
+	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
 		_ariaLabel: '…',
-		_orientation: 'horizontal',
+		_tabsAlign: 'top',
 		_selected: 0,
 		_tabs: [],
 	};
@@ -359,20 +357,6 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	@Watch('_orientation')
-	public validateOrientation(value?: TabOrientation): void {
-		watchValidator<TabOrientation>(
-			this,
-			'_orientation',
-			(value) => value === 'horizontal' || value === 'vertical',
-			new Set(['String (TabOrientation)']),
-			value
-		);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_selected')
 	public validateSelected(value?: number): void {
 		watchNumber(this, '_selected', value);
@@ -393,14 +377,22 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_tabsAlign')
+	public validateTabsAlign(value?: Alignment): void {
+		validateAlignment(this, '_tabsAlign', value);
+	}
+
+	/**
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateOn(this._on);
-		this.validateOrientation(this._orientation);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
+		this.validateTabsAlign(this._tabsAlign);
 	}
 
 	public componentDidRender(): void {

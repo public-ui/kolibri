@@ -6,6 +6,7 @@
 		"module": "ESNext",
 		"preserveConstEnums": true,
 		"sourceMap": true,
+		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"lib": ["es2017", "dom"],
 		"types": ["mocha", "node"],
@@ -25,6 +26,6 @@
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js"
 	},
-	"include": ["src/**/*"],
-	"exclude": [""]
+	"include": ["src/**/*", "tests/**/*"],
+	"exclude": ["node_modules/**/*"]
 }

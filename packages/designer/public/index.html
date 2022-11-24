@@ -2,7 +2,12 @@
 <html lang="de" dir="ltr">
 	<head>
 		<title>Designer | KoliBri</title>
+
 		<meta charset="UTF-8" />
+		<meta name="description" content="" />
+		<meta name="robots" content="index, follow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
 		<link rel="stylesheet" href="assets/bund/bund.css" />
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
@@ -11,25 +16,30 @@
 		<link rel="stylesheet" href="assets/fontawesome-free/v6/css/all.min.css" />
 		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
 		<link rel="stylesheet" href="main.css" />
-		<meta name="robots" content="noindex" />
 
-		<!-- add the PWA manifest -->
-		<!-- <link rel="manifest" href="manifest.json" /> -->
+		<link rel="manifest" href="manifest.json" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="application-name" content="PoC" />
+		<meta name="apple-mobile-web-app-title" content="PoC" />
+		<meta name="theme-color" content="#fff" />
+		<meta name="background_color" content="#fff" />
+		<meta name="msapplication-navbutton-color" content="#fff" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="msapplication-starturl" content="/" />
+		<link rel="icon" sizes="128x128" href="assets/logo.kolibri.png" />
+		<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="128x128" href="assets/logo.kolibri.png" />
 
-		<!-- <meta name="mobile-web-app-capable" content="yes" /> -->
+		<meta name="kolibri" content="dev-mode=false" />
 
-		<!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
-		<!-- <meta name="application-name" content="PoC" /> -->
-		<!-- <meta name="apple-mobile-web-app-title" content="PoC" /> -->
-		<!-- <meta name="theme-color" content="#ddd" /> -->
-		<!-- <meta name="msapplication-navbutton-color" content="#ddd" /> -->
-		<!-- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> -->
-		<!-- <meta name="msapplication-starturl" content="https://github.modevel.de/poc/" /> -->
-
-		<!-- <link rel="icon" sizes="144x144" href="assets/pwa.icon.png" /> -->
+		<style>
+			@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+		</style>
 	</head>
 	<body>
 		<div id="app"></div>
 		<script type="module" async src="main.js"></script>
+		<noscript>Diese Webseite erfordert, dass Sie JavaScript aktivieren.</noscript>
 	</body>
 </html>

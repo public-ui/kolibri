@@ -1,4 +1,5 @@
 import { Bundesanstalt, Bundesministerium, SelectOption } from '@public-ui/components';
+import { TabButtonProps } from '@public-ui/components/dist/types/components/tabs/component';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -73,6 +74,30 @@ const HINT_MSG = 'Ich bin ein Hinweis.';
 const ERROR_MSG = 'Ich bin eine Fehlermeldung!';
 
 const LONG_TEXT = `Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu erstellen. Es hat nicht nur 5 Jahrhunderte überlebt, sondern auch in Spruch in die elektronische Schriftbearbeitung geschafft (bemerke, nahezu unverändert). Bekannt wurde es 1960, mit dem erscheinen von "Letraset", welches Passagen von Lorem Ipsum enhielt, so wie Desktop Software wie "Aldus PageMaker" - ebenfalls mit Lorem Ipsum.`;
+
+const DEFAULT_TABS: TabButtonProps[] = [
+	{
+		_icon: 'fa-solid fa-chart-simple',
+		_label: 'Nicht ausgewählt',
+	},
+	{
+		_icon: 'fa-solid fa-plate-wheat',
+		_label: 'Ausgewählt',
+		_on: {
+			onCreate: () => {},
+		},
+	},
+	{
+		_icon: 'fa-solid fa-people-group',
+		_label: 'Nicht ausgewählt',
+	},
+];
+const TABS_ICON_ONLY = DEFAULT_TABS.map((tab) => {
+	return {
+		...tab,
+		_iconOnly: true,
+	};
+});
 
 export const components: Record<string, Component> = {
 	'KOL-ABBR': () => (
@@ -1028,6 +1053,7 @@ export const components: Record<string, Component> = {
 	'KOL-INPUT-TEXT': () => (
 		<div class="grid justify-center gap-6 bg-red-100">
 			<KolInputText
+				_id=""
 				_hint={HINT_MSG}
 				_error={ERROR_MSG}
 				_placeholder="Mit Icons"
@@ -1060,6 +1086,7 @@ export const components: Record<string, Component> = {
 				Suche
 			</KolInputText>
 			<KolInputText
+				_id=""
 				_error={ERROR_MSG}
 				_placeholder="Mit Icons"
 				_icon={{
@@ -1076,28 +1103,28 @@ export const components: Record<string, Component> = {
 			>
 				Suche
 			</KolInputText>
-			<KolInputText _placeholder="Placeholder" _required _type="text">
+			<KolInputText _id="" _placeholder="Placeholder" _required _type="text">
 				Vorname (text)
 			</KolInputText>
-			<KolInputText _placeholder="Placeholder" _type="search">
+			<KolInputText _id="" _placeholder="Placeholder" _type="search">
 				Suche (search)
 			</KolInputText>
 			<KolInputText _id="vorname" _name="vorname" _placeholder="Placeholder" _error={ERROR_MSG} _touched _type="url">
 				URL (url)
 			</KolInputText>
-			<KolInputText _placeholder="Placeholder" _type="tel">
+			<KolInputText _id="" _placeholder="Placeholder" _type="tel">
 				Telefon (tel)
 			</KolInputText>
-			<KolInputText _placeholder="Placeholder" _read-only _type="text">
+			<KolInputText _id="" _placeholder="Placeholder" _read-only _type="text">
 				Vorname (text, readonly)
 			</KolInputText>
-			<KolInputText _value="Value" _read-only _type="text">
+			<KolInputText _id="" _value="Value" _read-only _type="text">
 				Vorname (text, readonly)
 			</KolInputText>
-			<KolInputText _placeholder="Placeholder" _disabled _type="text">
+			<KolInputText _id="" _placeholder="Placeholder" _disabled _type="text">
 				Vorname (text, disabled)
 			</KolInputText>
-			<KolInputText _value="Value" _disabled _type="text">
+			<KolInputText _id="" _value="Value" _disabled _type="text">
 				Vorname (text, disabled)
 			</KolInputText>
 		</div>
@@ -1105,6 +1132,7 @@ export const components: Record<string, Component> = {
 	'KOL-LINK-GROUP': () => (
 		<div class="grid justify-center gap-6">
 			<KolLinkGroup
+				_ariaLabel=""
 				_heading="Überschrift für diese Linkgroup"
 				_links={[
 					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
@@ -1115,6 +1143,7 @@ export const components: Record<string, Component> = {
 				_orientation="vertical"
 			></KolLinkGroup>
 			<KolLinkGroup
+				_ariaLabel=""
 				_heading="Horizontale Linkgroup"
 				_links={[
 					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
@@ -1509,6 +1538,7 @@ export const components: Record<string, Component> = {
 	'KOL-SELECT': () => (
 		<div class="grid justify-center gap-6">
 			<KolSelect
+				_id=""
 				_list={STATUS_OPTIONS}
 				_error={ERROR_MSG}
 				_touched
@@ -1523,7 +1553,7 @@ export const components: Record<string, Component> = {
 			>
 				Anrede
 			</KolSelect>
-			<KolSelect _list={STATUS_OPTIONS} _multiple _required _error={ERROR_MSG}>
+			<KolSelect _id="" _list={STATUS_OPTIONS} _multiple _required _error={ERROR_MSG}>
 				Anrede
 			</KolSelect>
 		</div>
@@ -1643,19 +1673,42 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-TABS': () => (
 		<div class="grid gap-6">
-			<KolTabs
-				_selected={1}
-				_tabs={[
-					{ _label: 'Nicht ausgewählt' },
-					{
-						_label: 'Ausgewählt',
-						_on: {
-							onCreate: () => {},
-						},
-					},
-					{ _label: 'Nicht ausgewählt' },
-				]}
-			>
+			<KolTabs _ariaLabel="" _selected={0} _tabs={DEFAULT_TABS} _tabsAlign="top">
+				<div slot="tab-0">Inhalte von Tab 1</div>
+				<div slot="tab-1">Inhalte von Tab 2</div>
+				<div slot="tab-2">Inhalte von Tab 3</div>
+			</KolTabs>
+			<KolTabs _ariaLabel="" _selected={0} _tabs={TABS_ICON_ONLY} _tabsAlign="top">
+				<div slot="tab-0">Inhalte von Tab 1</div>
+				<div slot="tab-1">Inhalte von Tab 2</div>
+				<div slot="tab-2">Inhalte von Tab 3</div>
+			</KolTabs>
+			<KolTabs _ariaLabel="" _selected={1} _tabs={DEFAULT_TABS} _tabsAlign="right">
+				<div slot="tab-0">Inhalte von Tab 1</div>
+				<div slot="tab-1">Inhalte von Tab 2</div>
+				<div slot="tab-2">Inhalte von Tab 3</div>
+			</KolTabs>
+			<KolTabs _ariaLabel="" _selected={1} _tabs={TABS_ICON_ONLY} _tabsAlign="right">
+				<div slot="tab-0">Inhalte von Tab 1</div>
+				<div slot="tab-1">Inhalte von Tab 2</div>
+				<div slot="tab-2">Inhalte von Tab 3</div>
+			</KolTabs>
+			<KolTabs _ariaLabel="" _selected={0} _tabs={DEFAULT_TABS} _tabsAlign="bottom">
+				<div slot="tab-0">Inhalte von Tab 1</div>
+				<div slot="tab-1">Inhalte von Tab 2</div>
+				<div slot="tab-2">Inhalte von Tab 3</div>
+			</KolTabs>
+			<KolTabs _ariaLabel="" _selected={0} _tabs={TABS_ICON_ONLY} _tabsAlign="bottom">
+				<div slot="tab-0">Inhalte von Tab 1</div>
+				<div slot="tab-1">Inhalte von Tab 2</div>
+				<div slot="tab-2">Inhalte von Tab 3</div>
+			</KolTabs>
+			<KolTabs _ariaLabel="" _selected={1} _tabs={DEFAULT_TABS} _tabsAlign="left">
+				<div slot="tab-0">Inhalte von Tab 1</div>
+				<div slot="tab-1">Inhalte von Tab 2</div>
+				<div slot="tab-2">Inhalte von Tab 3</div>
+			</KolTabs>
+			<KolTabs _ariaLabel="" _selected={1} _tabs={TABS_ICON_ONLY} _tabsAlign="left">
 				<div slot="tab-0">Inhalte von Tab 1</div>
 				<div slot="tab-1">Inhalte von Tab 2</div>
 				<div slot="tab-2">Inhalte von Tab 3</div>

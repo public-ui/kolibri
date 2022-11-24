@@ -89,6 +89,8 @@ Ausgewählte Tabs werden beim Anspringen mit der **Tab-Taste** mit einem deutlic
 
 Nach Anspringen eines Tabs kann mit Hilfe der **Tab-Taste** vom Header in den Inhaltsbereich der Registerkarte gewechselt werden.
 
+Unabhängig davon ob die Tab-Schalter oben, rechts, unten oder links angeordnet sind, bleibt die Tastatursteuerung gleich. Hintergrund ist, dass das Layout bei der Nutzung eines Screenreaders keine Rolle spielt. Eine unterschiedliche Pfeil-Tastensteuerung aufgrund der Layout-Anordnung würde daher nicht dem üblichen Bedienkonzept des W3C entsprechen.
+
 ### Tastatursteuerung
 
 Bei der Umsetzung der Tastatursteuerung wurde sich an den Beispielen des W3C's orientiert.
@@ -113,12 +115,13 @@ W3C-Samples:
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                         | Type                                                                                                                                                                                                                                | Default     |
-| ------------------------- | ------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.        | `string`                                                                                                                                                                                                                            | `undefined` |
-| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen. | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueCallback<KeyboardEvent \| PointerEvent \| CustomEvent<any>, number> \| undefined; }` | `undefined` |
-| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                          | `number \| undefined`                                                                                                                                                                                                               | `0`         |
-| `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                          | `TabButtonProps[] \| string`                                                                                                                                                                                                        | `undefined` |
+| Property                  | Attribute     | Description                                                                           | Type                                                                                                                                                                                                                                | Default     |
+| ------------------------- | ------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.          | `string`                                                                                                                                                                                                                            | `undefined` |
+| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.   | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueCallback<KeyboardEvent \| PointerEvent \| CustomEvent<any>, number> \| undefined; }` | `undefined` |
+| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                            | `number \| undefined`                                                                                                                                                                                                               | `0`         |
+| `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                            | `TabButtonProps[] \| string`                                                                                                                                                                                                        | `undefined` |
+| `_tabsAlign`              | `_tabs-align` | Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                               | `'top'`     |
 
 ## Dependencies
 
