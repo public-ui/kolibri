@@ -84,9 +84,9 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.1.12';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.12/dist/loader';
-		import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.12';
+		import { register } from 'https://esm.sh/@public-ui/core@1.1.13-rc.1';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.13-rc.1/dist/loader';
+		import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.13-rc.1';
 		register([BMF], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);

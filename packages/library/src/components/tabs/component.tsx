@@ -5,9 +5,11 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@public-ui/core';
 import { EventCallback, EventValueCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
+import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
+import { validateAlignment } from '../../utils/validators/alignment';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -34,6 +36,7 @@ type OptionalTabButtonProps = {
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 	on: KoliBriTabsCallbacks;
+	tooltipAlign: Alignment;
 };
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
@@ -46,12 +49,14 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
+	tabsAlign: Alignment;
 	selected: number;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
+	tabsAlign: Alignment;
 	selected: number;
 	tabs: TabButtonProps[];
 };
@@ -149,6 +154,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	private renderButtonGroup() {
 		return (
+			// <!-- style="order:2" -->
 			<kol-button-group role="tablist" aria-label={this.state._ariaLabel} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => {
 					return (
@@ -163,12 +169,13 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_disabled={button._disabled}
 								_icon={button._icon}
 								_iconOnly={button._iconOnly}
-								_label={button._label && button._label}
+								_label={button._label && button._label} // TODO: ariaLabel-Konzept prüfen
 								_on={{
 									onClick: (event) => this.onClickSelect(event, index),
 									onMouseDown: this.onMouseDown,
 								}}
 								_tabIndex={this.state._selected === index ? 0 : -1}
+								_tooltipAlign={button._tooltipAlign}
 								_variant={this.state._selected === index ? 'custom' : undefined}
 								_customClass={this.state._selected === index ? 'selected' : undefined}
 								aria-selected={this.state._selected === index ? 'true' : 'false'}
@@ -218,32 +225,38 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 					this.hostElement = el as HTMLElement;
 				}}
 			>
+				{/* style="display: grid, gridTemplateColumns: 1fr 1fr" */}
 				<div
 					ref={(el) => {
 						this.tabsElement = el as HTMLElement;
 					}}
-					class="grid"
+					class={{
+						[`tab-align-${this.state._tabsAlign}`]: true,
+					}}
 				>
 					{this.renderButtonGroup()}
-					{this.state._tabs.map((_tab: TabButtonProps, index: number) => {
-						return (
-							<div
-								role="tabpanel"
-								id={`tabpanel-${index}`}
-								aria-labelledby={`tab-${index}`}
-								style={
-									this.state._selected !== index || _tab._disabled === true
-										? {
-												display: 'none',
-												visibility: 'hidden',
-										  }
-										: undefined
-								}
-							>
-								<slot name={`tab-${index}`} />
-							</div>
-						);
-					})}
+					{/* style="display: grid" */}
+					<div>
+						{this.state._tabs.map((_tab: TabButtonProps, index: number) => {
+							return (
+								<div
+									role="tabpanel"
+									id={`tabpanel-${index}`}
+									aria-labelledby={`tab-${index}`}
+									style={
+										this.state._selected !== index || _tab._disabled === true
+											? {
+													display: 'none',
+													visibility: 'hidden',
+											  }
+											: undefined
+									}
+								>
+									<slot name={`tab-${index}`} />
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</Host>
 		);
@@ -270,10 +283,16 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 
 	/**
+	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+	 */
+	@Prop() public _tabsAlign?: Alignment = 'top';
+
+	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
 		_ariaLabel: '…',
+		_tabsAlign: 'top',
 		_selected: 0,
 		_tabs: [],
 	};
@@ -358,6 +377,14 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_tabsAlign')
+	public validateTabsAlign(value?: Alignment): void {
+		validateAlignment(this, '_tabsAlign', value);
+	}
+
+	/**
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
@@ -365,6 +392,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		this.validateOn(this._on);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
+		this.validateTabsAlign(this._tabsAlign);
 	}
 
 	public componentDidRender(): void {
