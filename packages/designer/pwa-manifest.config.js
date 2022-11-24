@@ -15,7 +15,6 @@ module.exports = {
 		{
 			src: path.resolve('public/assets/logo.kolibri.png'),
 			sizes: [96, 128, 192, 256, 384, 512],
-			purpose: 'any maskable',
 		},
 	],
 	crossorigin: null,
