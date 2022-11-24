@@ -7,10 +7,10 @@ specifiers:
   '@leanup/form': 1.3.39
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
-  '@public-ui/components': 1.1.12
-  '@public-ui/core': 1.1.12
-  '@public-ui/react': 1.1.12
-  '@public-ui/themes': 1.1.12
+  '@public-ui/components': 1.1.13-rc.1
+  '@public-ui/core': 1.1.13-rc.1
+  '@public-ui/react': 1.1.13-rc.1
+  '@public-ui/themes': 1.1.13-rc.1
   '@storybook/addon-a11y': 6.5.13
   '@storybook/addon-actions': 6.5.13
   '@storybook/addon-backgrounds': 6.5.13
@@ -46,7 +46,7 @@ specifiers:
   lit-html: 2.4.0
   mermaid: 9.2.2
   postcss: 8.4.19
-  prettier: 2.7.1
+  prettier: 2.8.0
   react: 17.0.2
   react-dom: 17.0.2
   require-from-string: 2.0.2
@@ -64,12 +64,12 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 0.2.2
   '@leanup/form': 1.3.39
-  '@leanup/kolibri-components': 1.0.5_iylncatpxzbz2yswvvmom3epim
+  '@leanup/kolibri-components': 1.0.5_d3h3zxlhgo2bqdpjvfjjdt365q
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-ui/components': 1.1.12
-  '@public-ui/core': 1.1.12
-  '@public-ui/react': 1.1.12_uaskqdxxo6q5ln3na3cmqx6bui
-  '@public-ui/themes': 1.1.12_mxmvto2u6qsmiiaxrsowko5zte
+  '@public-ui/components': 1.1.13-rc.1
+  '@public-ui/core': 1.1.13-rc.1
+  '@public-ui/react': 1.1.13-rc.1_aass7bwm4tzokfy3qkpepepjpm
+  '@public-ui/themes': 1.1.13-rc.1_df27eguodkrllyzorphyrzf5uq
   '@storybook/addon-a11y': 6.5.13_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.13_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.13_sfoxds7t5ydpegc3knd667wn6m
@@ -105,7 +105,7 @@ devDependencies:
   lit-html: 2.4.0
   mermaid: 9.2.2
   postcss: 8.4.19
-  prettier: 2.7.1
+  prettier: 2.8.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   require-from-string: 2.0.2
@@ -119,6 +119,12 @@ devDependencies:
   workbox-build: 6.5.4
 
 packages:
+
+  /@a11y-ui/core/1.0.0-rc.15:
+    resolution: {integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw==}
+    dependencies:
+      '@leanup/lib': 1.3.20
+    dev: true
 
   /@a11y-ui/core/1.0.1-rc.2:
     resolution: {integrity: sha512-yMCtcQwWcTt+axXPLBbZSri5QvUFaVEss3y35jZfufRF6tIxdCLASm9FsbhxvQUnsZtJ/ml1ev+fjA4IoN6FEQ==}
@@ -1878,14 +1884,16 @@ packages:
       '@leanup/lib': 1.3.39
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_iylncatpxzbz2yswvvmom3epim:
+  /@leanup/kolibri-components/1.0.5_d3h3zxlhgo2bqdpjvfjjdt365q:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.39
-      '@public-ui/components': 1.1.12
+      '@leanup/kolibri-schema': 1.0.5
+      '@leanup/lib': 1.3.39
+      '@public-ui/components': 1.1.13-rc.1
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -1895,9 +1903,22 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_iylncatpxzbz2yswvvmom3epim
+      '@leanup/kolibri-components': 1.0.5_d3h3zxlhgo2bqdpjvfjjdt365q
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@leanup/kolibri-schema/1.0.5:
+    resolution: {integrity: sha512-Z02G4XaQTx1igEaXtaNhafTBUHYMpI3PECfSwai3GzB/YxduUXXg8Xb+BwILwcNwaRjYLb6cja7lgMx69JG7zA==}
+    dependencies:
+      '@a11y-ui/core': 1.0.0-rc.15
+    dev: true
+
+  /@leanup/lib/1.3.20:
+    resolution: {integrity: sha512-xAHNLTMaXuV8ENPoMU+4J1WTzoXciRgkP0U9205DcPcZUf90M7jTCgRBz2z0mrbqNzUjJOaS9eBvznmYsIj+zg==}
+    dependencies:
+      loglevel: 1.8.0
+      tslib: 2.4.0
     dev: true
 
   /@leanup/lib/1.3.39:
@@ -2034,44 +2055,44 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-ui/components/1.1.12:
-    resolution: {integrity: sha512-KqEjqM17orF3l3doZGi3bRXsCSxnm6v+vtnLpJe7FprP5bxuKtrdqKbjlTK3Yi37ysXUapAGyWYUgqK6QodCRQ==}
+  /@public-ui/components/1.1.13-rc.1:
+    resolution: {integrity: sha512-T3chNQUJs21Ldu4WG4mMtJ11K292uIZUfz5I9vWxfZOmG2ikFgz1+KpyRqp+KQ4eGFxV1GG4tCOnpX+oQrumlA==}
     dependencies:
-      '@public-ui/schema': 1.1.12
+      '@public-ui/schema': 1.1.13-rc.1
     dev: true
 
-  /@public-ui/core/1.1.12:
-    resolution: {integrity: sha512-lI8IUk+BCHcO2UeGGjbOZrMUa9kWMHRgXapcdSMAom8HJiodYnVnR7WzMAZZIG3VKIFOo8Dqb2jlmBDg0blNLQ==}
+  /@public-ui/core/1.1.13-rc.1:
+    resolution: {integrity: sha512-cbXBogrjE3+2RTFmL4LFD3+spAmym089MmBADozRPVtbyDeyr03X35NCcDAlsYpyNO7ax4OTxF7tDfxtOi5Uyw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.2
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/react/1.1.12_uaskqdxxo6q5ln3na3cmqx6bui:
-    resolution: {integrity: sha512-J7Ux2am5UpmbleIJ0143A+AuOcR1j1HWg26BvCO/bBZnq8NKiKVqz8zXUi6bMgmnhtWKHBh5KAS5TXGHDe3VuQ==}
+  /@public-ui/react/1.1.13-rc.1_aass7bwm4tzokfy3qkpepepjpm:
+    resolution: {integrity: sha512-9FmbpJydZ8fICf3WDs4FsJG4FAY+b5Zu5bccpawAf+ovv+ksPuTAmQJYtyuoHi0uWs4HYmh1/M1M8ZyI8J3ZVA==}
     peerDependencies:
-      '@public-ui/components': 1.1.12
+      '@public-ui/components': 1.1.13-rc.1
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.12
+      '@public-ui/components': 1.1.13-rc.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
 
-  /@public-ui/schema/1.1.12:
-    resolution: {integrity: sha512-++aag/wuoBawIqeir8khBJ34uFkEqrWWpFBuVH0cgZLu27LQN1/D114ZeSIZlqYGOGG8bgKX4IyPZjT0VTGK0Q==}
+  /@public-ui/schema/1.1.13-rc.1:
+    resolution: {integrity: sha512-6KeETujSV5I9U0j7fl2niTEXkI+yFTeybM6yULhvMV2wnT4VUuXbzGolwJdWeqm0mGOIQQM7ZhbnLYdHn+MzlA==}
     dependencies:
-      '@public-ui/core': 1.1.12
+      '@public-ui/core': 1.1.13-rc.1
     dev: true
 
-  /@public-ui/themes/1.1.12_mxmvto2u6qsmiiaxrsowko5zte:
-    resolution: {integrity: sha512-OTduB44tMVmYQDMNPUp4WPL/HfFGuQ19cLwOBPs9+m2v5WJwAQWxtJH21LH1JwCPnuVTSKI3nsyqXudLObAcyA==}
+  /@public-ui/themes/1.1.13-rc.1_df27eguodkrllyzorphyrzf5uq:
+    resolution: {integrity: sha512-Jew0Yo2/NsErTt8S+TkOvE0xgTeIpYFvAfnfdrqKc1InKEYfzED3OFNNK5nI9g2/AvzcFDd7GgNa0JN0Q6gn7A==}
     peerDependencies:
-      '@public-ui/components': 1.1.12
+      '@public-ui/components': 1.1.13-rc.1
     dependencies:
-      '@public-ui/components': 1.1.12
-      '@public-ui/schema': 1.1.12
+      '@public-ui/components': 1.1.13-rc.1
+      '@public-ui/schema': 1.1.13-rc.1
     dev: true
 
   /@rollup/plugin-babel/5.3.1_rw3hudt2pmn5afxog7l3b6qtze:
@@ -3304,7 +3325,7 @@ packages:
       '@babel/preset-env': 7.20.2_@babel+core@7.20.2
       '@babel/types': 7.20.2
       '@mdx-js/mdx': 1.6.22
-      '@types/lodash': 4.14.189
+      '@types/lodash': 4.14.190
       js-string-escape: 1.0.1
       loader-utils: 2.0.4
       lodash: 4.17.21
@@ -3324,7 +3345,7 @@ packages:
       '@babel/types': 7.20.2
       '@mdx-js/mdx': 1.6.22
       '@mdx-js/react': 1.6.22_react@17.0.2
-      '@types/lodash': 4.14.189
+      '@types/lodash': 4.14.190
       js-string-escape: 1.0.1
       loader-utils: 2.0.4
       lodash: 4.17.21
@@ -3712,8 +3733,8 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
-  /@types/lodash/4.14.189:
-    resolution: {integrity: sha512-kb9/98N6X8gyME9Cf7YaqIMvYGnBSWqEci6tiettE6iJWH1XdJz/PO8LB0GtLCG7x8dU3KWhZT+lA1a35127tA==}
+  /@types/lodash/4.14.190:
+    resolution: {integrity: sha512-5iJ3FBJBvQHQ8sFhEhJfjUP+G+LalhavTkYyrAYqz5MEJG+erSv0k9KJLb6q7++17Lafk1scaTIFXcMJlwK8Mw==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -3842,7 +3863,7 @@ packages:
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.17.1
       '@types/webpack-sources': 3.2.0
-      anymatch: 3.1.2
+      anymatch: 3.1.3
       source-map: 0.6.1
     dev: true
 
@@ -4346,10 +4367,8 @@ packages:
       ajv: 6.12.6
     dev: true
 
-  /ajv-formats/2.1.1_ajv@8.11.2:
+  /ajv-formats/2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
-    peerDependencies:
-      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -4474,8 +4493,8 @@ packages:
       - supports-color
     dev: true
 
-  /anymatch/3.1.2:
-    resolution: {integrity: sha512-P43ePfOAIupkguHUycrc4qJ9kz8ZiuOUijaETwX7THt0Y/GNK7v0aa8rY816xWjZ7rJdA5XdMcpVFTKMq+RvWg==}
+  /anymatch/3.1.3:
+    resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
     dependencies:
       normalize-path: 3.0.0
@@ -4696,7 +4715,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001431
+      caniuse-lite: 1.0.30001434
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -5115,7 +5134,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001431
+      caniuse-lite: 1.0.30001434
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -5304,8 +5323,8 @@ packages:
     resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
     dev: true
 
-  /caniuse-lite/1.0.30001431:
-    resolution: {integrity: sha512-zBUoFU0ZcxpvSt9IU66dXVT/3ctO1cy4y9cscs1szkPlcWb6pasYM144GqrUygUbT+k7cmUCW61cvskjcv0enQ==}
+  /caniuse-lite/1.0.30001434:
+    resolution: {integrity: sha512-aOBHrLmTQw//WFa2rcF1If9fa3ypkC1wzqqiKHgfdrXTWcU8C4gKVZT77eQAPWN1APys3+uQ0Df07rKauXGEYA==}
     dev: true
 
   /capture-exit/2.0.0:
@@ -5391,7 +5410,7 @@ packages:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
-      anymatch: 3.1.2
+      anymatch: 3.1.3
       braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
@@ -6771,8 +6790,8 @@ packages:
       tapable: 1.1.3
     dev: true
 
-  /enhanced-resolve/5.10.0:
-    resolution: {integrity: sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==}
+  /enhanced-resolve/5.12.0:
+    resolution: {integrity: sha512-QHTXI/sZQmko1cbDoNAa3mJ5qhWUUNAq3vR0/YiD379fWQrcfuoX1+HW2S0MTt7XmoPLapdaDKUtelUSPic7hQ==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -9067,7 +9086,7 @@ packages:
       '@jest/types': 26.6.2
       '@types/graceful-fs': 4.1.5
       '@types/node': 18.11.9
-      anymatch: 3.1.2
+      anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.10
       jest-regex-util: 26.0.0
@@ -10723,8 +10742,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+  /prettier/2.8.0:
+    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -11576,7 +11595,7 @@ packages:
     dependencies:
       '@types/json-schema': 7.0.11
       ajv: 8.11.2
-      ajv-formats: 2.1.1_ajv@8.11.2
+      ajv-formats: 2.1.1
       ajv-keywords: 5.1.0_ajv@8.11.2
     dev: true
 
@@ -12545,6 +12564,10 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+    dev: true
+
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
     dev: true
@@ -13204,7 +13227,7 @@ packages:
       acorn-import-assertions: 1.8.0_acorn@8.8.1
       browserslist: 4.21.4
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.10.0
+      enhanced-resolve: 5.12.0
       es-module-lexer: 0.9.3
       eslint-scope: 5.1.1
       events: 3.3.0

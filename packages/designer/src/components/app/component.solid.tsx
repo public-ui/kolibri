@@ -264,7 +264,7 @@ export const AppComponent: Component = () => {
 				<Match when={getShow() === 'overview'}>
 					<div class="grid gap-2 mapz">
 						<div class="w-full overflow-scroll">
-							<img src={AllComp as unknown as string}></img>
+							<img alt="Abhängigkeitsgraph der Komponenten" src={AllComp as unknown as string}></img>
 						</div>
 						<KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
 					</div>

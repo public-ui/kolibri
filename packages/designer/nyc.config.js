@@ -1,1 +1,4 @@
-module.exports = require('@leanup/stack/nyc.config');
+module.exports = {
+	...require('@leanup/stack/nyc.config'),
+	sourceMap: true,
+};

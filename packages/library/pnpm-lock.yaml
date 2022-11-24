@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.12
-  '@public-ui/schema': 1.1.12
+  '@public-ui/core': 1.1.13-rc.1
+  '@public-ui/schema': 1.1.13-rc.1
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.19.3
   '@stencil/postcss': 2.1.0
@@ -36,8 +36,8 @@ specifiers:
   mathjs: 11.4.0
   postcss: 8.4.19
   postcss-windicss: 1.0.0
-  prettier: 2.7.1
-  puppeteer: 19.2.2
+  prettier: 2.8.0
+  puppeteer: 19.3.0
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
@@ -49,10 +49,10 @@ specifiers:
   wcag-contrast: 3.0.0
 
 dependencies:
-  '@public-ui/schema': 1.1.12
+  '@public-ui/schema': 1.1.13-rc.1
 
 devDependencies:
-  '@public-ui/core': 1.1.12
+  '@public-ui/core': 1.1.13-rc.1
   '@stencil/angular-output-target': 0.4.0_@stencil+core@2.19.3
   '@stencil/core': 2.19.3
   '@stencil/postcss': 2.1.0_@stencil+core@2.19.3
@@ -86,8 +86,8 @@ devDependencies:
   mathjs: 11.4.0
   postcss: 8.4.19
   postcss-windicss: 1.0.0_postcss@8.4.19
-  prettier: 2.7.1
-  puppeteer: 19.2.2
+  prettier: 2.8.0
+  puppeteer: 19.3.0
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
@@ -767,16 +767,16 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/core/1.1.12:
-    resolution: {integrity: sha512-lI8IUk+BCHcO2UeGGjbOZrMUa9kWMHRgXapcdSMAom8HJiodYnVnR7WzMAZZIG3VKIFOo8Dqb2jlmBDg0blNLQ==}
+  /@public-ui/core/1.1.13-rc.1:
+    resolution: {integrity: sha512-cbXBogrjE3+2RTFmL4LFD3+spAmym089MmBADozRPVtbyDeyr03X35NCcDAlsYpyNO7ax4OTxF7tDfxtOi5Uyw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.2
       rxjs: 7.5.7
 
-  /@public-ui/schema/1.1.12:
-    resolution: {integrity: sha512-++aag/wuoBawIqeir8khBJ34uFkEqrWWpFBuVH0cgZLu27LQN1/D114ZeSIZlqYGOGG8bgKX4IyPZjT0VTGK0Q==}
+  /@public-ui/schema/1.1.13-rc.1:
+    resolution: {integrity: sha512-6KeETujSV5I9U0j7fl2niTEXkI+yFTeybM6yULhvMV2wnT4VUuXbzGolwJdWeqm0mGOIQQM7ZhbnLYdHn+MzlA==}
     dependencies:
-      '@public-ui/core': 1.1.12
+      '@public-ui/core': 1.1.13-rc.1
     dev: false
 
   /@sentry/core/6.19.7:
@@ -1003,7 +1003,7 @@ packages:
     resolution: {integrity: sha512-ja78vquZc8y+GM2al07GZqWDKQskQXygCDiu0e3uO0DMRKqE0MjrFBFmTulfPYzLB6WnL7Kl2tFPy0WXSpPomg==}
     deprecated: This is a stub types definition. puppeteer provides its own type definitions, so you do not need this installed.
     dependencies:
-      puppeteer: 19.2.2
+      puppeteer: 19.3.0
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -1278,8 +1278,8 @@ packages:
       - supports-color
     dev: true
 
-  /anymatch/3.1.2:
-    resolution: {integrity: sha512-P43ePfOAIupkguHUycrc4qJ9kz8ZiuOUijaETwX7THt0Y/GNK7v0aa8rY816xWjZ7rJdA5XdMcpVFTKMq+RvWg==}
+  /anymatch/3.1.3:
+    resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
     dependencies:
       normalize-path: 3.0.0
@@ -1387,7 +1387,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001431
+      caniuse-lite: 1.0.30001434
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1557,7 +1557,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001431
+      caniuse-lite: 1.0.30001434
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -1621,8 +1621,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001431:
-    resolution: {integrity: sha512-zBUoFU0ZcxpvSt9IU66dXVT/3ctO1cy4y9cscs1szkPlcWb6pasYM144GqrUygUbT+k7cmUCW61cvskjcv0enQ==}
+  /caniuse-lite/1.0.30001434:
+    resolution: {integrity: sha512-aOBHrLmTQw//WFa2rcF1If9fa3ypkC1wzqqiKHgfdrXTWcU8C4gKVZT77eQAPWN1APys3+uQ0Df07rKauXGEYA==}
     dev: true
 
   /capture-exit/2.0.0:
@@ -1658,7 +1658,7 @@ packages:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
-      anymatch: 3.1.2
+      anymatch: 3.1.3
       braces: 3.0.2
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
@@ -3484,7 +3484,7 @@ packages:
       '@jest/types': 26.6.2
       '@types/graceful-fs': 4.1.5
       '@types/node': 18.11.9
-      anymatch: 3.1.2
+      anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.10
       jest-regex-util: 26.0.0
@@ -4623,8 +4623,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+  /prettier/2.8.0:
+    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -4708,8 +4708,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer-core/19.2.2:
-    resolution: {integrity: sha512-faojf+1pZ/tHXSr4x1q+9MVd9FrL3rpdbC0w7qN7MNClMoLuCvMbpR4vzcjoiJYgclt1n+SOPUOmHQViTw6frw==}
+  /puppeteer-core/19.3.0:
+    resolution: {integrity: sha512-P8VAAOBnBJo/7DKJnj1b0K9kZBF2D8lkdL94CjJ+DZKCp182LQqYemPI9omUSZkh4bgykzXjZhaVR1qtddTTQg==}
     engines: {node: '>=14.1.0'}
     dependencies:
       cross-fetch: 3.1.5
@@ -4729,8 +4729,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer/19.2.2:
-    resolution: {integrity: sha512-m1T5Mog5qu5+dMBptWYTn6pXRdnFbydbVUCthqwbfd8/kOiMlzZBR9ywjX79LpvI1Sj+/z8+FKeIsjnMul8ZYA==}
+  /puppeteer/19.3.0:
+    resolution: {integrity: sha512-WJbi/ULaeuFOz7cfMgJlJCBAZiyqIFeQ6os4h5ex3PVTt2qosXgwI9eruFZqFAwJRv8x5pOuMhWR0aSRgyDqEg==}
     engines: {node: '>=14.1.0'}
     requiresBuild: true
     dependencies:
@@ -4739,7 +4739,7 @@ packages:
       https-proxy-agent: 5.0.1
       progress: 2.0.3
       proxy-from-env: 1.1.0
-      puppeteer-core: 19.2.2
+      puppeteer-core: 19.3.0
     transitivePeerDependencies:
       - bufferutil
       - encoding

@@ -1,6 +1,6 @@
 {
 	"name": "create-kolibri",
-	"version": "1.1.12",
+	"version": "1.1.13-rc.1",
 	"description": "Mit Hilfe der CLI können unterschiedliche Projekte mit KoliBri-Oberflächenkomponenten generiert werden.",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "18.11.9",
-		"npm-check-updates": "16.4.1",
+		"npm-check-updates": "16.4.3",
 		"rimraf": "3.0.2",
 		"tsup": "6.5.0",
 		"typescript": "4.9.3"

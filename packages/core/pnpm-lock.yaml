@@ -6,7 +6,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.44.0
   '@typescript-eslint/parser': 5.44.0
   eslint: 8.28.0
-  prettier: 2.7.1
+  prettier: 2.8.0
   rxjs: 7.5.7
   typescript: 4.9.3
   unbuild: 1.0.1
@@ -20,7 +20,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.44.0_fnsv2sbzcckq65bwfk7a5xwslu
   '@typescript-eslint/parser': 5.44.0_hsf322ms6xhhd4b5ne6lb74y4a
   eslint: 8.28.0
-  prettier: 2.7.1
+  prettier: 2.8.0
   typescript: 4.9.3
   unbuild: 1.0.1
 
@@ -352,7 +352,7 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@rollup/plugin-alias/4.0.2_rollup@3.3.0:
+  /@rollup/plugin-alias/4.0.2_rollup@3.4.0:
     resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -361,11 +361,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      rollup: 3.3.0
+      rollup: 3.4.0
       slash: 4.0.0
     dev: true
 
-  /@rollup/plugin-commonjs/23.0.2_rollup@3.3.0:
+  /@rollup/plugin-commonjs/23.0.2_rollup@3.4.0:
     resolution: {integrity: sha512-e9ThuiRf93YlVxc4qNIurvv+Hp9dnD+4PjOqQs5vAYfcZ3+AXSrcdzXnVjWxcGQOa6KGJFcRZyUI3ktWLavFjg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -374,16 +374,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.3.0
+      '@rollup/pluginutils': 5.0.2_rollup@3.4.0
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.0.3
       is-reference: 1.2.1
       magic-string: 0.26.7
-      rollup: 3.3.0
+      rollup: 3.4.0
     dev: true
 
-  /@rollup/plugin-json/5.0.1_rollup@3.3.0:
+  /@rollup/plugin-json/5.0.1_rollup@3.4.0:
     resolution: {integrity: sha512-QCwhZZLvM8nRcTHyR1vOgyTMiAnjiNj1ebD/BMRvbO1oc/z14lZH6PfxXeegee2B6mky/u9fia4fxRM4TqrUaw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -392,11 +392,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.3.0
-      rollup: 3.3.0
+      '@rollup/pluginutils': 5.0.2_rollup@3.4.0
+      rollup: 3.4.0
     dev: true
 
-  /@rollup/plugin-node-resolve/15.0.1_rollup@3.3.0:
+  /@rollup/plugin-node-resolve/15.0.1_rollup@3.4.0:
     resolution: {integrity: sha512-ReY88T7JhJjeRVbfCyNj+NXAG3IIsVMsX9b5/9jC98dRP8/yxlZdz7mHZbHk5zHr24wZZICS5AcXsFZAXYUQEg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -405,16 +405,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.3.0
+      '@rollup/pluginutils': 5.0.2_rollup@3.4.0
       '@types/resolve': 1.20.2
       deepmerge: 4.2.2
       is-builtin-module: 3.2.0
       is-module: 1.0.0
       resolve: 1.22.1
-      rollup: 3.3.0
+      rollup: 3.4.0
     dev: true
 
-  /@rollup/plugin-replace/5.0.1_rollup@3.3.0:
+  /@rollup/plugin-replace/5.0.1_rollup@3.4.0:
     resolution: {integrity: sha512-Z3MfsJ4CK17BfGrZgvrcp/l6WXoKb0kokULO+zt/7bmcyayokDaQ2K3eDJcRLCTAlp5FPI4/gz9MHAsosz4Rag==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -423,12 +423,12 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.3.0
+      '@rollup/pluginutils': 5.0.2_rollup@3.4.0
       magic-string: 0.26.7
-      rollup: 3.3.0
+      rollup: 3.4.0
     dev: true
 
-  /@rollup/pluginutils/5.0.2_rollup@3.3.0:
+  /@rollup/pluginutils/5.0.2_rollup@3.4.0:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -440,7 +440,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.3.0
+      rollup: 3.4.0
     dev: true
 
   /@types/estree/1.0.0:
@@ -672,7 +672,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001431
+      caniuse-lite: 1.0.30001434
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -688,8 +688,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001431:
-    resolution: {integrity: sha512-zBUoFU0ZcxpvSt9IU66dXVT/3ctO1cy4y9cscs1szkPlcWb6pasYM144GqrUygUbT+k7cmUCW61cvskjcv0enQ==}
+  /caniuse-lite/1.0.30001434:
+    resolution: {integrity: sha512-aOBHrLmTQw//WFa2rcF1If9fa3ypkC1wzqqiKHgfdrXTWcU8C4gKVZT77eQAPWN1APys3+uQ0Df07rKauXGEYA==}
     dev: true
 
   /chalk/2.4.2:
@@ -1688,8 +1688,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+  /prettier/2.8.0:
+    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -1739,7 +1739,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-dts/5.0.0_6annma2bj33shm6er7hwi5u4z4:
+  /rollup-plugin-dts/5.0.0_iyyukaj3pdiwftuon3ena43c4i:
     resolution: {integrity: sha512-OO8ayCvuJCKaQSShyVTARxGurVVk4ulzbuvz+0zFd1f93vlnWFU5pBMT7HFeS6uj7MvvZLx4kUAarGATSU1+Ng==}
     engines: {node: '>=v14'}
     peerDependencies:
@@ -1747,14 +1747,14 @@ packages:
       typescript: ^4.1
     dependencies:
       magic-string: 0.26.7
-      rollup: 3.3.0
+      rollup: 3.4.0
       typescript: 4.9.3
     optionalDependencies:
       '@babel/code-frame': 7.18.6
     dev: true
 
-  /rollup/3.3.0:
-    resolution: {integrity: sha512-wqOV/vUJCYEbWsXvwCkgGWvgaEnsbn4jxBQWKpN816CqsmCimDmCNJI83c6if7QVD4v/zlyRzxN7U2yDT5rfoA==}
+  /rollup/3.4.0:
+    resolution: {integrity: sha512-4g8ZrEFK7UbDvy3JF+d5bLiC8UKkS3n/27/cnVeESwB1LVPl6MoPL32/6+SCQ1vHTp6Mvp2veIHtwELhi+uXEw==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -1907,12 +1907,12 @@ packages:
     resolution: {integrity: sha512-i2mkbLNFZDJJdpsbg4JflHldKeF3J0K+mLGUdh8jrHBSTHZBw8qFWI7t/AUrGjHxa/O/vkIod65LXu9ktPiUHw==}
     hasBin: true
     dependencies:
-      '@rollup/plugin-alias': 4.0.2_rollup@3.3.0
-      '@rollup/plugin-commonjs': 23.0.2_rollup@3.3.0
-      '@rollup/plugin-json': 5.0.1_rollup@3.3.0
-      '@rollup/plugin-node-resolve': 15.0.1_rollup@3.3.0
-      '@rollup/plugin-replace': 5.0.1_rollup@3.3.0
-      '@rollup/pluginutils': 5.0.2_rollup@3.3.0
+      '@rollup/plugin-alias': 4.0.2_rollup@3.4.0
+      '@rollup/plugin-commonjs': 23.0.2_rollup@3.4.0
+      '@rollup/plugin-json': 5.0.1_rollup@3.4.0
+      '@rollup/plugin-node-resolve': 15.0.1_rollup@3.4.0
+      '@rollup/plugin-replace': 5.0.1_rollup@3.4.0
+      '@rollup/pluginutils': 5.0.2_rollup@3.4.0
       chalk: 5.1.2
       consola: 2.15.3
       defu: 6.1.1
@@ -1929,8 +1929,8 @@ packages:
       pkg-types: 1.0.1
       pretty-bytes: 6.0.0
       rimraf: 3.0.2
-      rollup: 3.3.0
-      rollup-plugin-dts: 5.0.0_6annma2bj33shm6er7hwi5u4z4
+      rollup: 3.4.0
+      rollup-plugin-dts: 5.0.0_iyyukaj3pdiwftuon3ena43c4i
       scule: 1.0.0
       typescript: 4.9.3
       untyped: 1.0.0
