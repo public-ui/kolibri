@@ -32,7 +32,8 @@ import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 import { KoliBriProgressType } from "./types/progress";
 import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
-import { KoliBriTabsCallbacks, TabButtonProps, TabOrientation } from "./components/tabs/component";
+import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
+import { Alignment as Alignment1 } from "./types/props/alignment";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 import { TooltipAlignment as TooltipAlignment1 } from "./components/tooltip/component";
@@ -1977,10 +1978,6 @@ export namespace Components {
          */
         "_on"?: KoliBriTabsCallbacks;
         /**
-          * Gibt an, ob die Tab-Buttons horizontal oder vertikal angeordnet sind.
-         */
-        "_orientation"?: TabOrientation;
-        /**
           * Gibt an, welches Tab selektiert sein soll.
          */
         "_selected"?: number;
@@ -1988,6 +1985,10 @@ export namespace Components {
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
         "_tabs": Stringified<TabButtonProps[]>;
+        /**
+          * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+         */
+        "_tabsAlign"?: Alignment1;
     }
     interface KolTextarea {
         /**
@@ -4448,10 +4449,6 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriTabsCallbacks;
         /**
-          * Gibt an, ob die Tab-Buttons horizontal oder vertikal angeordnet sind.
-         */
-        "_orientation"?: TabOrientation;
-        /**
           * Gibt an, welches Tab selektiert sein soll.
          */
         "_selected"?: number;
@@ -4459,6 +4456,10 @@ declare namespace LocalJSX {
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
         "_tabs": Stringified<TabButtonProps[]>;
+        /**
+          * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+         */
+        "_tabsAlign"?: Alignment1;
     }
     interface KolTextarea {
         /**

@@ -12,7 +12,7 @@
 		<title>BIK BITV-Test | KoliBri</title>
 		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.jsdelivr.net 'sha512-4UAPJWYJObZkO67nh6hBOYbxPQT+/5DTbmksfinlcQdN7iHb9lKu5OLaCpdbUH8wMdy2XNVTZ6OS3O1xHpb2wg=='" /> -->
+		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.jsdelivr.net 'sha512-Asnh7VWduSvfAt0MF4+qiZa3jH9CIRPvKez/fd6VxpbuVwUTLUkEEcYo+iPnt+BuR5or/u7o7ip9HlbDKwiUmw=='" /> -->
 		<script type="module" src="build/kolibri.esm.js"></script>
 		<script nomodule src="build/kolibri.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -1578,9 +1578,38 @@
 								<div>Tab 3</div>
 							</kol-tabs>
 							<kol-tabs
-								_aria-label="Tab-Navigation (vertikal)"
-								_orientation="vertical"
+								_aria-label="Tab-Navigation (right)"
 								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'fa-solid fa-house', '_iconOnly': true},{'_label':'Tab 2', '_icon': 'fa-solid fa-house','_variant': 'primary', '_iconOnly': true},{'_label':'Tab 3', '_icon': 'fa-solid fa-house','_iconOnly': true,'_disabled': true}]"
+								_tabs-align="right"
+							>
+								<div>
+									Tab 1
+									<div>Tab 1.1</div>
+								</div>
+								<div>Tab 2</div>
+								<div>Tab 3</div>
+							</kol-tabs>
+							<kol-tabs
+								_aria-label="Tab-Navigation (bottom)"
+								_tabs="[{'_label':'Tab 1', '_icon': 'icofont-home'},{'_label':'Tab 2', '_variant': 'primary'},{'_label':'Tab 3','_disabled': true},{'_label':'Tab 4'},{'_label':'Tab 5'},{'_label':'Tab 6'},{'_label':'Tab 7'},{'_label':'Tab 8'}]"
+								_tabs-align="bottom"
+							>
+								<div>
+									Tab 1
+									<div>Tab 1.1</div>
+								</div>
+								<div>Tab 2</div>
+								<div>Tab 3</div>
+								<div>Tab 4</div>
+								<div>Tab 5</div>
+								<div>Tab 6</div>
+								<div>Tab 7</div>
+								<div>Tab 8</div>
+							</kol-tabs>
+							<kol-tabs
+								_aria-label="Tab-Navigation (left)"
+								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'fa-solid fa-house', '_iconOnly': true},{'_label':'Tab 2', '_icon': 'fa-solid fa-house','_variant': 'primary', '_iconOnly': true},{'_label':'Tab 3', '_icon': 'fa-solid fa-house','_iconOnly': true,'_disabled': true}]"
+								_tabs-align="right"
 							>
 								<div>
 									Tab 1
