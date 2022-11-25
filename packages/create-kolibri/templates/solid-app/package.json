@@ -48,7 +48,7 @@
 		"@unocss/webpack": "0.46.5",
 		"chromedriver": "107.0.3",
 		"nightwatch-axe-verbose": "2.0.3",
-		"npm-check-updates": "16.4.1",
+		"npm-check-updates": "16.4.3",
 		"playwright": "1.28.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
