@@ -1,18 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.13-rc.2
-  '@public-ui/react': 1.1.13-rc.2
+  '@public-ui/components': 1.1.13-rc.3
+  '@public-ui/react': 1.1.13-rc.3
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 4.9.3
   unbuild: 1.0.1
 
 dependencies:
-  '@public-ui/react': 1.1.13-rc.2_rmquehnp7npely33zvt5z4l234
+  '@public-ui/react': 1.1.13-rc.3_jnyuakbcinkijgxtcmf6atre4m
 
 devDependencies:
-  '@public-ui/components': 1.1.13-rc.2
+  '@public-ui/components': 1.1.13-rc.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.3
@@ -20,8 +20,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.2:
-    resolution: {integrity: sha512-yMCtcQwWcTt+axXPLBbZSri5QvUFaVEss3y35jZfufRF6tIxdCLASm9FsbhxvQUnsZtJ/ml1ev+fjA4IoN6FEQ==}
+  /@a11y-ui/core/1.0.1-rc.3:
+    resolution: {integrity: sha512-mjxucHEuMaJNHQD0qyImCCJ7zs0DKt4Yqw8p7hDjykW7L6FxV+xkngLloYWplCw0U/0D/v8SoGpLfv0ATjADKg==}
     dependencies:
       loglevel: 1.8.1
 
@@ -308,33 +308,33 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.13-rc.2:
-    resolution: {integrity: sha512-+brUaf1vCCvbHcM6yaiUa8w5KFIebnsJTuUtEaG1TYUOwsJ/10oK1zpFmpOIchWhmtdGwPC9H8MXPg+uhIc+6A==}
+  /@public-ui/components/1.1.13-rc.3:
+    resolution: {integrity: sha512-Hd3wLXtFfOG1XB5WAKXWm2SIF+/OLFrxFQpRCN1JNUXQWJxZiYXMHGtzJZUSWv+fZirllCXA9mZWWxP16Q0mKQ==}
     dependencies:
-      '@public-ui/schema': 1.1.13-rc.2
+      '@public-ui/schema': 1.1.13-rc.3
 
-  /@public-ui/core/1.1.13-rc.2:
-    resolution: {integrity: sha512-H3mQh3T7RUpyJFMwrelI1nuNcLr7+2ReoFOwUU9o8UA59UFsH1Fs/5YheU/4+IdgmpdT1Hj+sEdSO/EC3m2PJg==}
+  /@public-ui/core/1.1.13-rc.3:
+    resolution: {integrity: sha512-hkFDXnXRkwNPWjtOtFZPzjUc8/1xX8zz9jMcvYdN0/D1a6gYPVO316vkOK3SL4yBhcMUyq5zOef+02Rxf/wBZg==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.2
+      '@a11y-ui/core': 1.0.1-rc.3
       rxjs: 7.5.7
 
-  /@public-ui/react/1.1.13-rc.2_rmquehnp7npely33zvt5z4l234:
-    resolution: {integrity: sha512-LaJtDf+8wG8mYeIzBomZHK/qV5fjSaxDG7xQy8AfRTq07O0YJya4cxfF4oWl60Z4xLnbPve+Ldhe56KbJb/MsA==}
+  /@public-ui/react/1.1.13-rc.3_jnyuakbcinkijgxtcmf6atre4m:
+    resolution: {integrity: sha512-Z6GQUmz6bi2GS74OTPeOJcS7AFQT/1XOSi9dXjIgdo2qD5Th39YPtmw0TfJwvG/W+gBJbSmOrvwgXOhgblIYcw==}
     peerDependencies:
-      '@public-ui/components': 1.1.13-rc.2
+      '@public-ui/components': 1.1.13-rc.3
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.13-rc.2
+      '@public-ui/components': 1.1.13-rc.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.1.13-rc.2:
-    resolution: {integrity: sha512-zD3xNrdD83Ifg2HRzVGrRVd1jBMQlTd/2q7E0bUdZ4bTtv6s1MhZWZl/vfPyJNJisn5hO8B7IO5CI+Yb+poPJg==}
+  /@public-ui/schema/1.1.13-rc.3:
+    resolution: {integrity: sha512-D/G6urGr//CE4GL3CV7LI6+TFaDFLqOQV/TrEE+oq73VlZ2zPRc4ThqE6WXqFokfiqaJP2NdAUVpm0rkZ10HUQ==}
     dependencies:
-      '@public-ui/core': 1.1.13-rc.2
+      '@public-ui/core': 1.1.13-rc.3
 
   /@rollup/plugin-alias/4.0.2_rollup@3.4.0:
     resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
