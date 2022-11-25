@@ -84,7 +84,7 @@
 		"construct-style-sheets-polyfill": "3.1.0",
 		"contrast-color": "1.0.1",
 		"cross-env": "7.0.3",
-		"eslint": "8.26.0",
+		"eslint": "8.28.0",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-html": "7.1.0",
 		"eslint-plugin-jsdoc": "39.6.2",
