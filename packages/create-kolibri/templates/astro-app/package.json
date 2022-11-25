@@ -47,7 +47,7 @@
 		"chromedriver": "107.0.3",
 		"nightwatch-axe-verbose": "2.0.3",
 		"npm-check-updates": "16.4.1",
-		"playwright": "1.28.0",
+		"playwright": "1.28.1",
 		"preact": "10.11.3",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
