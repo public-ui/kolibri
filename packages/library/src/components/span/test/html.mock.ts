@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { mapIconProp2State } from '../../../utils/validators/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { Props } from '../component';
+import { Props, States } from '../component';
 
 type Slots = {
 	''?: string;
@@ -17,8 +17,10 @@ export const getSpanWcHtml = (
 	additionalAttrs = '',
 	hiddenSlot = false
 ): string => {
-	const state = mixMembers(
+	const state = mixMembers<Props, States>(
 		{
+			_icon: {},
+			_iconOnly: false,
 			_label: '',
 		},
 		props

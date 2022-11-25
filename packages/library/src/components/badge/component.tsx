@@ -34,7 +34,7 @@ type RequiredStates = {
 	color: string | KoliBriColor;
 };
 type OptionalStates = unknown;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-badge',
