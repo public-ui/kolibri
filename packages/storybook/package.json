@@ -78,7 +78,7 @@
 		"@storybook/node-logger": "6.5.13",
 		"@storybook/react": "6.5.13",
 		"@storybook/theming": "6.5.13",
-		"@types/mermaid": "9.1.0",
+		"@types/mermaid": "9.2.0",
 		"@types/react": "17.0.52",
 		"@types/react-dom": "17.0.18",
 		"@typescript-eslint/eslint-plugin": "5.44.0",
