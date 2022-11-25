@@ -20,7 +20,7 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.13-rc.1"
+		"@public-ui/schema": "1.1.13-rc.2"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.0-rc.21",
