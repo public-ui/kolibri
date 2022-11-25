@@ -9,8 +9,8 @@ specifiers:
   husky: 8.0.2
   lerna: 6.0.3
   license-report: 6.3.0
-  npm-check-updates: 16.4.1
-  prettier: 2.7.1
+  npm-check-updates: 16.4.3
+  prettier: 2.8.0
   rimraf: 3.0.2
   ts-node: 10.9.1
   ts-prune: 0.10.3
@@ -25,8 +25,8 @@ devDependencies:
   husky: 8.0.2
   lerna: 6.0.3
   license-report: 6.3.0
-  npm-check-updates: 16.4.1
-  prettier: 2.7.1
+  npm-check-updates: 16.4.3
+  prettier: 2.8.0
   rimraf: 3.0.2
   ts-node: 10.9.1_wup25etrarvlqkprac7h35hj7u
   ts-prune: 0.10.3
@@ -4337,8 +4337,8 @@ packages:
       npm-normalize-package-bin: 3.0.0
     dev: true
 
-  /npm-check-updates/16.4.1:
-    resolution: {integrity: sha512-g0Uf1kCw0p5boutvu5E4htsjYEDuFT9LxYHYFLldAzWs5012jVikEH1Wdae68xedu4twF4EVbKcs83+G2nGnQg==}
+  /npm-check-updates/16.4.3:
+    resolution: {integrity: sha512-kuTErUSd9DkJKU5Kf5nitkN4Yf8k41OJL/hudtRR+Rf9YaKJasLHHnQboQdEtbf6DFrqMzwxrPSX8p1engLLbQ==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -4931,8 +4931,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+  /prettier/2.8.0:
+    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true

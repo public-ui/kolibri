@@ -1,11 +1,13 @@
 import { getBadgeHtml } from '../../badge/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
-import { Props } from '../component';
+import { Props, States } from '../component';
+import { nonce } from '../../../utils/dev.utils';
 
 export const getTooltipHtml = (props: Props): string => {
-	const state = mixMembers(
+	const state: States = mixMembers(
 		{
 			_align: 'top',
+			_id: nonce(),
 			_label: '',
 		},
 		props
@@ -23,9 +25,9 @@ export const getTooltipHtml = (props: Props): string => {
 							color: '#ddd',
 						},
 					},
-					` class="arrow-${
-						state._align === 'bottom' ? 'top' : state._align === 'left' ? 'right' : state._align === 'top' ? 'bottom' : 'left'
-					} kol-tooltip" id="nonce" style="position:fixed"`
+					` class="arrow-${state._align === 'bottom' ? 'top' : state._align === 'left' ? 'right' : state._align === 'top' ? 'bottom' : 'left'}" id="${
+						state._id
+					}"`
 			  )
 	}
 </kol-tooltip>`;

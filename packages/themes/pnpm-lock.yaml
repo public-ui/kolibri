@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/schema': 1.1.13-rc.1
+  '@public-ui/schema': 1.1.13-rc.2
   '@types/node': 18.11.9
   typescript: 4.9.3
   unbuild: 1.0.1
 
 dependencies:
-  '@public-ui/schema': 1.1.13-rc.1
+  '@public-ui/schema': 1.1.13-rc.2
 
 devDependencies:
   '@types/node': 18.11.9
@@ -305,17 +305,17 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/core/1.1.13-rc.1:
-    resolution: {integrity: sha512-cbXBogrjE3+2RTFmL4LFD3+spAmym089MmBADozRPVtbyDeyr03X35NCcDAlsYpyNO7ax4OTxF7tDfxtOi5Uyw==}
+  /@public-ui/core/1.1.13-rc.2:
+    resolution: {integrity: sha512-H3mQh3T7RUpyJFMwrelI1nuNcLr7+2ReoFOwUU9o8UA59UFsH1Fs/5YheU/4+IdgmpdT1Hj+sEdSO/EC3m2PJg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.2
       rxjs: 7.5.7
     dev: false
 
-  /@public-ui/schema/1.1.13-rc.1:
-    resolution: {integrity: sha512-6KeETujSV5I9U0j7fl2niTEXkI+yFTeybM6yULhvMV2wnT4VUuXbzGolwJdWeqm0mGOIQQM7ZhbnLYdHn+MzlA==}
+  /@public-ui/schema/1.1.13-rc.2:
+    resolution: {integrity: sha512-zD3xNrdD83Ifg2HRzVGrRVd1jBMQlTd/2q7E0bUdZ4bTtv6s1MhZWZl/vfPyJNJisn5hO8B7IO5CI+Yb+poPJg==}
     dependencies:
-      '@public-ui/core': 1.1.13-rc.1
+      '@public-ui/core': 1.1.13-rc.2
     dev: false
 
   /@rollup/plugin-alias/4.0.2_rollup@3.4.0:
