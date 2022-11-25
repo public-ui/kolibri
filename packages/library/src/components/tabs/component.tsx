@@ -225,17 +225,15 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 					this.hostElement = el as HTMLElement;
 				}}
 			>
-				{/* style="display: grid, gridTemplateColumns: 1fr 1fr" */}
 				<div
 					ref={(el) => {
 						this.tabsElement = el as HTMLElement;
 					}}
 					class={{
-						[`tab-align-${this.state._tabsAlign}`]: true,
+						[`tabs-align-${this.state._tabsAlign}`]: true,
 					}}
 				>
 					{this.renderButtonGroup()}
-					{/* style="display: grid" */}
 					<div>
 						{this.state._tabs.map((_tab: TabButtonProps, index: number) => {
 							return (

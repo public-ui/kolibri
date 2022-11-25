@@ -30,7 +30,7 @@ type RequiredStates = {
 	label: string;
 };
 type OptionalStates = unknown;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const removeNode = (el?: Node) => {
 	if (el instanceof Node) {

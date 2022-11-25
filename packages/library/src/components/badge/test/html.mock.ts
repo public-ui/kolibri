@@ -1,14 +1,13 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { Nationalfarben } from '../../../enums/color';
 import { getSpanWcHtml } from '../../span/test/html.mock';
-import { Props } from '../component';
+import { Props, States } from '../component';
 import { createContrastColorPair, KoliBriContrastColor } from '../contrast';
 
 export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
-	const state = mixMembers(
+	const state = mixMembers<Props, States>(
 		{
 			_color: Nationalfarben.Schwarz,
-			_label: '',
 		},
 		props
 	);
@@ -18,8 +17,8 @@ export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
 		contrastColorPair = createContrastColorPair(state._color);
 	} else {
 		contrastColorPair = createContrastColorPair({
-			baseColor: state._color?.backgroundColor as string,
-			contrastColor: state._color?.color as string,
+			baseColor: state._color?.backgroundColor,
+			contrastColor: state._color?.color,
 		});
 	}
 

@@ -1,65 +1,66 @@
 /* windicss-touch: 1637820161169 */
 // @import ../style
 
-.kol-tooltip
-  font-size: 1rem
-  position: absolute
-    // position: relative
-  animation-name: fadeInOpacity
-  animation-iteration-count: 1
-  animation-timing-function: ease-in
-  animation-duration: .5s
-  display: none
-  z-index: 1000
-  max-width: 300px
-  box-shadow: 0 0 0.15rem rgba(255,255,255,0.8)
+:host >kol-badge
+	font-size: 1rem
+	position: fixed
+	// position: absolute
+	// position: relative
+	animation-name: fadeInOpacity
+	animation-iteration-count: 1
+	animation-timing-function: ease-in
+	animation-duration: .5s
+	display: none
+	z-index: 1000
+	max-width: 300px
+	box-shadow: 0 0 0.15rem rgba(255,255,255,0.8)
 
-  &::after
-    content: " "
-    position: absolute
-    border-style: solid
-    border-width: 5px
+	&::after
+		content: " "
+		position: absolute
+		border-style: solid
+		border-width: 5px
 
-  &.arrow-left
-    &::after
-      margin-top: -5px
-      top: 50%
-      right: 100%
-      border-color: transparent black transparent transparent
+	&.arrow-left
+		&::after
+			margin-top: -5px
+			top: 50%
+			right: 100%
+			border-color: transparent black transparent transparent
 
-  &.arrow-right
-    &::after
-      margin-top: -5px
-      top: 50%
-      left: 100%
-      border-color: transparent transparent transparent black
+	&.arrow-right
+		&::after
+			margin-top: -5px
+			top: 50%
+			left: 100%
+			border-color: transparent transparent transparent black
 
-  &.arrow-top
-    &::after
-      margin-left: -5px
-      left: 50%
-      bottom: 100%
-      border-color: transparent transparent black transparent
+	&.arrow-top
+		&::after
+			margin-left: -5px
+			left: 50%
+			bottom: 100%
+			border-color: transparent transparent black transparent
 
-  &.arrow-bottom
-    &::after
-      margin-left: -5px
-      left: 50%
-      top: 100%
-      border-color: black transparent transparent transparent
+	&.arrow-bottom
+		&::after
+			margin-left: -5px
+			left: 50%
+			top: 100%
+			border-color: black transparent transparent transparent
 
-  // &::before
-  //   content: ''
-  //   display: inline-block
-  //   vertical-align: middle
-  //   -webkit-transform: rotate(360deg)
-  //   border-style: solid
-  //   border-width: .5rem .5rem .5rem 0
-  //   border-color: transparent black transparent transparent
+	// &::before
+	//   content: ''
+	//   display: inline-block
+	//   vertical-align: middle
+	//   -webkit-transform: rotate(360deg)
+	//   border-style: solid
+	//   border-width: .5rem .5rem .5rem 0
+	//   border-color: transparent black transparent transparent
 
 @keyframes fadeInOpacity
-  0%
-    opacity: 0
+	0%
+		opacity: 0
 
-  100%
-    opacity: 1
+	100%
+		opacity: 1
