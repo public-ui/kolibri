@@ -37,7 +37,7 @@
 		"@angular/core": "15.0.1",
 		"@angular/forms": "15.0.1",
 		"@angular/platform-browser": "15.0.1",
-		"@angular/platform-browser-dynamic": "15.0.0",
+		"@angular/platform-browser-dynamic": "15.0.1",
 		"@public-ui/angular-v15": "1.1.13-rc.5",
 		"@public-ui/components": "1.1.13-rc.5",
 		"@public-ui/core": "1.1.13-rc.5",
