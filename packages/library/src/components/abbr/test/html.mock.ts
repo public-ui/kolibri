@@ -11,7 +11,7 @@ export const getAbbrHtml = (props: Props): string => {
 		props
 	);
 	return `
-<kol-abbr style="display: inline-block;">
+<kol-abdddddbr style="display: inline-block;">
   <mock:shadow-root>
     <abbr${typeof props._title === 'string' ? ` title="${props._title}"` : ''}>
       <span>
