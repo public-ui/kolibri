@@ -31,7 +31,7 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@angular/common": "15.0.0",
+		"@angular/common": "15.0.1",
 		"@angular/compiler": "15.0.1",
 		"@angular/compiler-cli": "15.0.1",
 		"@angular/core": "15.0.1",
