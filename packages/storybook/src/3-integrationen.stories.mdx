@@ -70,8 +70,24 @@ Alle Pakete/Artefakte von KoliBri werden in der öffentlichen <kol-link _href="h
 			desc: 'Adapter für das Framework Solid.',
 		},
 		{
-			name: '@public-ui/angular',
-			desc: 'Adapter für das Framework Angular.',
+			name: '@public-ui/angular-v15',
+			desc: 'Adapter für das Framework Angular v15.',
+		},
+		{
+			name: '@public-ui/angular-v14',
+			desc: 'Adapter für das Framework Angular v14.',
+		},
+		{
+			name: '@public-ui/angular-v13',
+			desc: 'Adapter für das Framework Angular v13.',
+		},
+		{
+			name: '@public-ui/angular-v12',
+			desc: 'Adapter für das Framework Angular v12.',
+		},
+		{
+			name: '@public-ui/angular-v11',
+			desc: 'Adapter für das Framework Angular v11.',
 		},
 		{
 			name: '@public-ui/preact',
@@ -80,6 +96,10 @@ Alle Pakete/Artefakte von KoliBri werden in der öffentlichen <kol-link _href="h
 		{
 			name: '@public-ui/vue',
 			desc: 'Adapter für das Framework Vue.',
+		},
+		{
+			name: '<s>@public-ui/angular</s>',
+			desc: 'Dieses Paket ist veraltet, weil Angular versionsspezifische Adapter benötigt.',
 		},
 	]}
 ></KolTable>
@@ -99,7 +119,7 @@ Alle Pakete/Artefakte von KoliBri werden in der öffentlichen <kol-link _href="h
 | <img src={AssetWebComponent} width="150" alt="Logo von Web Component" /> | <b>Web Components</b><br/>Alle Komponenten von <b>KoliBri</b> sind gemäß dem Web Components Standard umgesetzt. Somit können die Komponenten in der Regel in allen modernen Projekten wiederverwendet werden. <kol-alert _type="info">KoliBri lässt sich einbinden wie JQuery und ist somit auch für Server-Side-Rendering, wie bspw. PHP, JSF usw., interessant.</kol-alert> |
 | <img src={AssetReact} width="150" alt="Logo von React" />                | <b>React-Components</b> (<kol-icon _aira-label="" _icon="icofont-star"/> empfohlen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **React** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                        |
 | <img src={AssetSolid} width="150" alt="Logo von Solid" />                | <b>Solid-Components</b><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Solid** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                                    |
-| <img src={AssetAngular} width="150" alt="Logo von Angular" />            | <b>Angular-Components</b><br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Angular** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                                |
+| <img src={AssetAngular} width="150" alt="Logo von Angular" />            | <b>Angular-Components</b> (>= 11)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Angular** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                        |
 | <img src={AssetPreact} width="150" alt="Logo von Preact" />              | <b>Preact-Components</b> (experimentell)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Preact** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                  |
 | <img src={AssetVue} width="150" alt="Logo von Vue" />                    | <b>Vue-Components</b> (experimentell)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Vue** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                        |
 | <img src={AssetSvelte} width="150" alt="Logo von Svelte" />              | <b>Svelte-Components</b> (offen)<br/>Alternativ zu den reinen Web Componenten bieten wir einen Adapter für **Svelte** an. Es wird so sichergestellt, dass sich die Web Component möglichst nahtlos und voll typisiert in die Entwicklung integriert.                                                                                                                          |
@@ -115,7 +135,7 @@ Alle Pakete/Artefakte von KoliBri werden in der öffentlichen <kol-link _href="h
 <kol-heading _level="2">Aktuelle Trends</kol-heading>
 
 <iframe
-	src="https://npmtrends.com/@angular/core-vs-next-vs-preact-vs-react-vs-vue-vs-svelte-vs-astro"
+	src="https://npmtrends.com/@angular/core-vs-next-vs-preact-vs-react-vs-vue-vs-astro"
 	style={{
 		width: '100%',
 		border: '0',

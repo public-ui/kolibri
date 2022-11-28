@@ -1,5 +1,5 @@
 {
-	"name": "@public-ui/angular",
+	"name": "@public-ui/angular-v8",
 	"version": "1.1.13-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -19,7 +19,21 @@
 		}
 	],
 	"sideEffects": false,
-	"description": "Das Angular-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
+	"description": "Angular (v8) framework adapter for the accessible web component library KoliBri (@public-ui).",
+	"keywords": [
+		"accessibility",
+		"accessible components",
+		"angular",
+		"bitv",
+		"components",
+		"component framework",
+		"component library",
+		"design system",
+		"style guide",
+		"ui framework",
+		"ui library",
+		"web components"
+	],
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"build:cjs": "tsc -m commonjs --outDir cjs",
@@ -44,9 +58,9 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler-cli": "15.0.1",
-		"@angular/compiler": "15.0.1",
-		"@angular/core": "15.0.1",
+		"@angular/compiler-cli": "^8",
+		"@angular/compiler": "^8",
+		"@angular/core": "^8",
 		"@public-ui/core": "1.1.13-rc.4",
 		"@public-ui/components": "1.1.13-rc.4",
 		"@types/minimatch": "5.1.2",
@@ -55,13 +69,13 @@
 		"@types/normalize-package-data": "2.4.1",
 		"prettier": "2.8.0",
 		"rimraf": "3.0.2",
-		"rxjs": "7.5.7",
+		"rxjs": "6.4.0",
 		"tslib": "2.4.1",
 		"typescript": "4.8.4",
-		"zone.js": "0.12.0"
+		"zone.js": "0.9.1"
 	},
 	"peerDependencies": {
-		"@angular/core": ">=12",
+		"@angular/core": "^12",
 		"@public-ui/components": "1.1.13-rc.4"
 	},
 	"files": [

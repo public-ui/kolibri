@@ -18,7 +18,21 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"description": "Das Vue-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
+	"description": "Vue framework adapter for the KoliBri accessible web component library (@public-ui).",
+	"keywords": [
+		"accessibility",
+		"accessible components",
+		"bitv",
+		"components",
+		"component framework",
+		"component library",
+		"design system",
+		"style guide",
+		"ui framework",
+		"ui library",
+		"vue",
+		"web components"
+	],
 	"scripts": {
 		"build": "unbuild",
 		"prepack": "unbuild",

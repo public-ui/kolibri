@@ -16,7 +16,27 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
-    directory: '/packages/adapters/angular/'
+    directory: '/packages/adapters/angular/v11/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/adapters/angular/v12/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/adapters/angular/v13/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/adapters/angular/v14/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/adapters/angular/v15/'
     schedule:
       interval: daily
     target-branch: main

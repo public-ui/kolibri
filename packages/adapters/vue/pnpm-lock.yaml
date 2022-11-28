@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.20.2
-  '@public-ui/components': 1.1.13-rc.3
-  '@public-ui/core': 1.1.13-rc.3
+  '@public-ui/components': 1.1.13-rc.4
+  '@public-ui/core': 1.1.13-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -14,8 +14,8 @@ specifiers:
 
 devDependencies:
   '@babel/types': 7.20.2
-  '@public-ui/components': 1.1.13-rc.3
-  '@public-ui/core': 1.1.13-rc.3
+  '@public-ui/components': 1.1.13-rc.4
+  '@public-ui/core': 1.1.13-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -26,8 +26,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.3:
-    resolution: {integrity: sha512-mjxucHEuMaJNHQD0qyImCCJ7zs0DKt4Yqw8p7hDjykW7L6FxV+xkngLloYWplCw0U/0D/v8SoGpLfv0ATjADKg==}
+  /@a11y-ui/core/1.0.1-rc.4:
+    resolution: {integrity: sha512-svewhjgaPsmExs0nT7vxUzBxIyh+Bier2zxiUT3KNDE6AZnHIU5IbHhs/Zy0rwJVyguo7BeFaQx72pgsJjfuDw==}
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -315,23 +315,23 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/components/1.1.13-rc.3:
-    resolution: {integrity: sha512-Hd3wLXtFfOG1XB5WAKXWm2SIF+/OLFrxFQpRCN1JNUXQWJxZiYXMHGtzJZUSWv+fZirllCXA9mZWWxP16Q0mKQ==}
+  /@public-ui/components/1.1.13-rc.4:
+    resolution: {integrity: sha512-doMuJ3E7qcR+925fyfVe9BPAbyTKVQ1EiGMnqRq2luRLNJZHwBixPEvLV9EwnUF3HjO0h9nS2dNAclZZ3GXxlg==}
     dependencies:
-      '@public-ui/schema': 1.1.13-rc.3
+      '@public-ui/schema': 1.1.13-rc.4
     dev: true
 
-  /@public-ui/core/1.1.13-rc.3:
-    resolution: {integrity: sha512-hkFDXnXRkwNPWjtOtFZPzjUc8/1xX8zz9jMcvYdN0/D1a6gYPVO316vkOK3SL4yBhcMUyq5zOef+02Rxf/wBZg==}
+  /@public-ui/core/1.1.13-rc.4:
+    resolution: {integrity: sha512-f9vEmCiMgRspgZVsfo3+nSLkmuoPZm9mj+GhFWRVOIuDeEXHfULn5pbmS33Ynx6xZ16TXsDQZow1RtGM3zIy2A==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.3
+      '@a11y-ui/core': 1.0.1-rc.4
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.13-rc.3:
-    resolution: {integrity: sha512-D/G6urGr//CE4GL3CV7LI6+TFaDFLqOQV/TrEE+oq73VlZ2zPRc4ThqE6WXqFokfiqaJP2NdAUVpm0rkZ10HUQ==}
+  /@public-ui/schema/1.1.13-rc.4:
+    resolution: {integrity: sha512-nHEibAAmGvmH0nFljvgOzuDl5zAJmlsz3/r8RFFc47qnHlFENiK/o0uumSWN9KRkuQCSiBakQ2mMrlxUHNdJtQ==}
     dependencies:
-      '@public-ui/core': 1.1.13-rc.3
+      '@public-ui/core': 1.1.13-rc.4
     dev: true
 
   /@rollup/plugin-alias/4.0.2_rollup@3.4.0:

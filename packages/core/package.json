@@ -18,7 +18,20 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"description": "Das Core-Modul beinhaltet generischen Typen und allgemeine Funktionalität für eine beliebige Komponenten-Bibliothek.",
+	"description": "The generic types and core logic for the KoliBri (@public-ui) accessible web component library.",
+	"keywords": [
+		"accessibility",
+		"accessible components",
+		"bitv",
+		"components",
+		"component framework",
+		"component library",
+		"design system",
+		"style guide",
+		"ui framework",
+		"ui library",
+		"web components"
+	],
 	"scripts": {
 		"build": "unbuild",
 		"lint": "eslint src",
