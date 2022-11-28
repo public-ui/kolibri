@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/solid",
-	"version": "1.1.13-rc.4",
+	"version": "1.1.13-rc.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -18,7 +18,22 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"description": "Das Solid-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
+	"description": "Solid framework adapter for the accessible web component library KoliBri (@public-ui).",
+	"keywords": [
+		"accessibility",
+		"accessible components",
+		"bitv",
+		"components",
+		"component framework",
+		"component library",
+		"design system",
+		"solid js",
+		"style guide",
+		"tsx",
+		"ui framework",
+		"ui library",
+		"web components"
+	],
 	"scripts": {
 		"build": "unbuild",
 		"prepack": "unbuild",
@@ -28,8 +43,8 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.13-rc.4",
-		"@public-ui/components": "1.1.13-rc.4",
+		"@public-ui/core": "1.1.13-rc.5",
+		"@public-ui/components": "1.1.13-rc.5",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.9",
@@ -39,7 +54,7 @@
 		"unbuild": "1.0.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.13-rc.4",
+		"@public-ui/components": "1.1.13-rc.5",
 		"solid-js": ">=1.2.0"
 	},
 	"sideEffects": false,

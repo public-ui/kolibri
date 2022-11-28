@@ -1,5 +1,7 @@
 // https://storybook.js.org/docs/react/configure/theming
 
+import './pwa';
+
 import { create } from '@storybook/theming';
 
 export const THEME = {

@@ -67,11 +67,39 @@ jobs:
         working-directory: packages/themes
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build and publish adapter angular
+      - name: Build and publish adapter angular v11
         run: |
           npm i
           npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/adapters/angular
+        working-directory: packages/adapters/angular/v11
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter angular v12
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/angular/v12
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter angular v13
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/angular/v13
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter angular v14
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/angular/v14
+        env:
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter angular v15
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/angular/v15
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish adapter react
