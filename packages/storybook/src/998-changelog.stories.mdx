@@ -1,53 +1,11 @@
 import { Meta } from '@storybook/addon-docs';
 import { KolLink, KolTable } from '@public-ui/react';
 
-<Meta title="Backlog und Changelog" id="changelog" />
+<Meta title="Changelog und Backlog" id="changelog" />
 
-<kol-heading _level={1}>Backlog und Changelog</kol-heading>
+<kol-heading _level={1}>Changelog und Backlog</kol-heading>
 
 Auf dieser Seite finden Sie die geplanten und erfolgten Änderungen an KoliBri.
-
-<kol-heading _level={2}>Backlog</kol-heading>
-
-<ul>
-	<li>
-		Komponenten
-		<ul>
-			<li>Accordion-Gruppe (im Fokus, v1.2)</li>
-			<li>Avatar</li>
-			<li>Carousel</li>
-			<li>Cookie-Banner</li>
-			<li>Dialog (im Fokus, v1.2)</li>
-			<li>Dropdown (im Fokus, v1.2)</li>
-			<li>Drag & Drop / Upload-Area</li>
-			<li>Image (im Fokus, v1.2)</li>
-			<li>Listbox (im Fokus, v1.2)</li>
-			<li>Timeline</li>
-			<li>Tree (im Fokus, v1.2)</li>
-		</ul>
-	</li>
-	<li>
-		Funktionalitäten
-		<ul>
-			<li>
-				Table
-				<ul>
-					<li>Kopf-Zeilen und Spalten fixieren (sticky)</li>
-					<li>Checkboxen</li>
-				</ul>
-			</li>
-			<li>Dark-Mode (Themes)</li>
-		</ul>
-	</li>
-</ul>
-
-<kol-heading _level={2}>Bekannte Fehler</kol-heading>
-
-Im Folgenden werden bekannte Fehler aufgelistet, welche mit erhöhter Priorität verfolgt werden.
-
-<ul>
-	<li>🐛 Tooltip: Ausrichtung stimmt innerhalb von Tabellen und scollbaren Elementen nicht</li>
-</ul>
 
 <kol-heading _level={2}>Changelog</kol-heading>
 
@@ -102,15 +60,31 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Register: Fehler bei der impliziten Theme-Erkennung ohne data-Attribute behoben</li>
 		<li>🔧 Table: TabIndex für das seitliche Scrollen hinzugefügt (AXE)</li>
 		<li>🔧 Tooltips: Positionierung des Tooltips optimiert (in Scroll-Zones)</li>
-		<li>🔧 Angular: peerDep auf >= 12</li>
-		<li>🔧 A11y-UI: Remove NodeJS.Timeout Typ - ES2015 / Angular 12</li>
+		<li>
+			🌟 Angular: Versionsspezifische Adapter notwendig (wir unterstützen v11, v12, v13, v14 und v15)
+			<ul>
+				<li>@public-ui/angular-v11</li>
+				<li>@public-ui/angular-v12</li>
+				<li>@public-ui/angular-v13</li>
+				<li>@public-ui/angular-v14</li>
+				<li>@public-ui/angular-v15</li>
+				<li>@public-ui/angular (@deprecated)</li>
+				<li>
+					<kol-link _href="https://www.npmjs.com/package/@angular/core?activeTab=versions" _target="npmjs">
+						Nutzungsstatistik
+					</kol-link>
+				</li>
+			</ul>
+		</li>
 		<li>🌟 Designer: Der Designer kann jetzt auch als PWA lokal installiert werden.</li>
+		<li>🌟 Storybook: Das Storybook kann jetzt auch als PWA lokal installiert werden.</li>
 	</ul>
 	<hr />
 	<ul>
 		<li>🌟 Tabs: Anordnung der Tabs auch seitlich möglich (_tabsAlign)</li>
 		<li>📚 Cheat Sheet: Einbindung des Cheat Sheet ins Storybook</li>
 		<li>🔧 Radio: Untersuchung des zu großen Spacing</li>
+		<li>🔧 Tabs: Tab-Inhalt nach Seitenwechseln weg</li>
 	</ul>
 </kol-details>
 
@@ -877,3 +851,37 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🌟 Dieses Release stellt das initiale Release von KoliBri dar.</li>
 	</ul>
 </kol-details>
+
+<kol-heading _level={2}>Backlog</kol-heading>
+
+<ul>
+	<li>
+		Komponenten
+		<ul>
+			<li>Accordion-Gruppe (im Fokus, v1.2)</li>
+			<li>Avatar</li>
+			<li>Carousel</li>
+			<li>Cookie-Banner</li>
+			<li>Dialog (im Fokus, v1.2)</li>
+			<li>Dropdown (im Fokus, v1.2)</li>
+			<li>Drag & Drop / Upload-Area</li>
+			<li>Image (im Fokus, v1.2)</li>
+			<li>Listbox (im Fokus, v1.2)</li>
+			<li>Timeline</li>
+			<li>Tree (im Fokus, v1.2)</li>
+		</ul>
+	</li>
+	<li>
+		Funktionalitäten
+		<ul>
+			<li>
+				Table
+				<ul>
+					<li>Kopf-Zeilen und Spalten fixieren (sticky)</li>
+					<li>Checkboxen</li>
+				</ul>
+			</li>
+			<li>Dark-Mode (Themes)</li>
+		</ul>
+	</li>
+</ul>

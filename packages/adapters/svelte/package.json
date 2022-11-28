@@ -19,7 +19,22 @@
 		}
 	],
 	"sideEffects": false,
-	"description": "Das Svelte-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
+	"description": "Svelte framework adapter for the accessible web component library KoliBri (@public-ui).",
+	"keywords": [
+		"accessibility",
+		"accessible components",
+		"bitv",
+		"components",
+		"component framework",
+		"component library",
+		"design system",
+		"style guide",
+		"svelte",
+		"svelte",
+		"ui framework",
+		"ui library",
+		"web components"
+	],
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"build:cjs": "tsc -m commonjs --outDir cjs",

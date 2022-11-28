@@ -80,6 +80,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 			getDocument().body.addEventListener('keyup', this.hideTooltipByEscape);
 			this.alignTooltip();
 			this.tooltipElement.style.setProperty('visibility', 'visible');
+			document.addEventListener('scroll', this.alignTooltip);
 		}
 	};
 
@@ -87,6 +88,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		if (this.tooltipElement instanceof HTMLElement) {
 			this.tooltipElement.style.setProperty('display', 'none');
 			this.tooltipElement.style.setProperty('visibility', 'hidden');
+			document.removeEventListener('scroll', this.alignTooltip);
 		}
 	};
 

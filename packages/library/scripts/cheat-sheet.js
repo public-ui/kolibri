@@ -12,16 +12,39 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-				import { register } from 'https://esm.sh/@public-ui/core@1.1.11';
-				import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.11/dist/loader';
-				import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.11';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.13-rc.4';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.13-rc.4/dist/loader';
+			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.13-rc.4';
 				register([MAPZ], defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
 		</script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
 	</head>
 	<body>
-		<kol-heading>KoliBri - Cheat Sheet</kol-heading>`;
+		<kol-heading>KoliBri - Cheat Sheet</kol-heading>
+		<kol-heading _level="2">Integration</kol-heading>
+		<p></p>
+		<pre>
+			<code>${`<script type="module">
+	import { register } from 'https://esm.sh/@public-ui/core@1.1.13-rc.4';
+	import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.13-rc.4/dist/loader';
+	import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.13-rc.4';
+	register([MAPZ], defineCustomElements)
+		.then(() => {})
+		.catch(console.warn);
+</script>`
+				.replace(/</g, '&#60;')
+				.replace(/>/g, '&#62;')}</code>
+		</pre>
+		<kol-heading _level="2">Usage</kol-heading>
+		<p></p>
+		<pre>
+			<code>${`<kol-input-text _id="surname" _required _value="Mustermann">Surname</kol-input-text>
+<kol-spin _show></kol-spin>`
+				.replace(/</g, '&#60;')
+				.replace(/>/g, '&#62;')}</code>
+	</pre>`;
 const BLACKLIST = [
 	'kol-button-group',
 	'kol-color',
@@ -103,40 +126,72 @@ PROP_NAMES.forEach((name) => {
 
 // console.log(COMPONENTS);
 
-SHEET_CHEAT += `<kol-heading _level="2">Components</kol-heading>
-<table border="1">
-  <caption>Available components</caption>
-	<thead>
-		<th width="10%">Component</th>
-		<th width="70%">Description</th>
-		<th width="20%">Related properties</th>
-	</thead>
-	<tbody>`;
+SHEET_CHEAT += `
+		<kol-heading _level="2">Components</kol-heading>
+		<kol-table id="components" _caption="Available components"></kol-table>
+		<script>
+			const componentTable = document.querySelector('kol-table#components');
+			console.log(componentTable);
+			componentTable._headers = {
+				horizontal: [[
+					{
+						label: 'Component',
+						key: 'name',
+						width: '10%'
+					},
+					{
+						label: 'Description',
+						key: 'desc',
+						width: '60%'
+					},
+					{
+						label: 'Related properties',
+						key: 'props',
+						width: '30%'
+					}
+				]]
+			};
+			componentTable._data = [`;
 COMPONENTS.forEach((component, name) => {
 	const PROPS = Array.from(component.props.values()).sort();
-	SHEET_CHEAT += `<tr>
-		<td>${name}</td>
-	<td>${component.desc}</td>
-	<td>${PROPS.join(', ')}</td>
-</tr>`;
+	SHEET_CHEAT += `{
+	name: \`${name}\`,
+	desc: \`${component.desc.replace(/`/g, "'")}\`,
+	props: \`${PROPS.join(', ')}\`
+},`;
 });
 SHEET_CHEAT += `
-		</tbody>
-	</table>
-	<kol-table id="components" _caption="Available components"></kol-table>`;
-
-SHEET_CHEAT += `
-<kol-heading _level="2">Properties</kol-heading>
-<table border="1">
-  <caption>Available properties</caption>
-	<thead>
-		<th width="10%">Property</th>
-		<th width="40%">Description</th>
-		<th width="20%">Type(s)</th>
-		<th width="30%">Related component(s)</th>
-	</thead>
-	<tbody>`;
-// PROP_NAMES.forEach((name) => {
+			];
+		</script>
+		<kol-heading _level="2">Properties</kol-heading>
+		<kol-table id="properties" _caption="Available properties"></kol-table>
+		<script>
+			const propertyTable = document.querySelector('kol-table#properties');
+			propertyTable._headers = {
+				horizontal: [[
+					{
+						label: 'Property',
+						key: 'name',
+						width: '10%'
+					},
+					{
+						label: 'Description',
+						key: 'desc',
+						width: '30%'
+					},
+					{
+						label: 'Type(s)',
+						key: 'types',
+						width: '30%'
+					},
+					{
+						label: 'Related component(s)',
+						key: 'comps',
+						width: '30%'
+					}
+				]]
+			};
+			propertyTable._data = [`;
 GROUPED_PROPS.forEach((group) => {
 	const SPAN = group.length;
 	group.forEach((name, index) => {
@@ -150,65 +205,22 @@ GROUPED_PROPS.forEach((group) => {
 			console.log(name, ':', PROP_DESCS);
 			// throw new Error('Property-Beschreibung ist nicht gesetzt oder einheitlich.');
 		}
-		SHEET_CHEAT += `<tr>
-		<td>${name}</td>
-	<td>${PROP_DESCS[0]}</td>
-	<td>${PROP_TYPES.join(', ')}</td>
-	${index === 0 ? `<td rowspan="${SPAN}">${PROP_COMPS.join(', ')}</td>` : ''}
-</tr>`;
+		SHEET_CHEAT += `{
+	name: \`${name}\`,
+	desc: \`${PROP_DESCS[0]}\`,
+	types: \`${PROP_TYPES.join(', ').replace(/`/g, '&#96;').replace(/\$/g, '&#36;')}\`,
+	comps: \`${PROP_COMPS.join(', ')}\`
+},`;
 	});
 });
 SHEET_CHEAT += `
-			</tbody>
-		</table>
-		<kol-table id="properties" _caption="Available properties"></kol-table>
-		<script>
-			const componentTable = document.querySelector('kol-table#components');
-			componentTable._headers = {
-				horizontal: [[
-					{
-						label: 'Component',
-						key: 'name'
-					},
-					{
-						label: 'Description',
-						key: 'desc'
-					},
-					{
-						label: 'Related properties',
-						key: 'props'
-					}
-				]]
-			};
-			componentTable._headers = [`;
-COMPONENTS.forEach((component, name) => {
-	const PROPS = Array.from(component.props.values()).sort();
-	SHEET_CHEAT += `{
-	name: \`${name}\`,
-	desc: \`${component.desc.replace(/`/g, "'")}\`,
-	props: \`${PROPS.join(', ')}\`
-},`;
-});
-SHEET_CHEAT += `
 			];
-			console.log(componentTable._headers);
-			const propertyTable = document.querySelector('kol-table#properties');
-			propertyTable._headers = {
-				horizontal: [[
-					{
-						label: 'Property'
-					},
-					{
-						label: 'Description'
-					},
-					{
-						label: 'Type(s)'
-					},
-					{
-						label: 'Related component(s)'
-					}
-				]]
-			};
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+		<script>
+			document.querySelectorAll('pre > code').forEach(el => {
+				hljs.highlightElement(el);
+			});
 		</script>
 	</body>
 </html>`;

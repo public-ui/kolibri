@@ -1,7 +1,6 @@
 {
 	"name": "@public-ui/components",
 	"version": "1.1.13-rc.4",
-	"description": "Das Components-Modul beinhaltet alle zur Komponenten-Bibliothek gehörenden Web Components.",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -29,6 +28,20 @@
 	"collection:main": "dist/collection/index.js",
 	"collection": "dist/collection/collection-manifest.json",
 	"sideEffects": false,
+	"description": "Contains all web components that belong to the accessible web component library KoliBri (@public-ui).",
+	"keywords": [
+		"accessibility",
+		"accessible components",
+		"bitv",
+		"components",
+		"component framework",
+		"component library",
+		"design system",
+		"style guide",
+		"ui framework",
+		"ui library",
+		"web components"
+	],
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"build": "npm run test && npm run build:light",

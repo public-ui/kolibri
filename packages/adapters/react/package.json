@@ -18,7 +18,22 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"description": "Das React-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
+	"description": "React framework adapter for the accessible web component library KoliBri (@public-ui).",
+	"keywords": [
+		"accessibility",
+		"accessible components",
+		"bitv",
+		"components",
+		"component framework",
+		"component library",
+		"design system",
+		"react",
+		"style guide",
+		"tsx",
+		"ui framework",
+		"ui library",
+		"web components"
+	],
 	"scripts": {
 		"build": "unbuild",
 		"prepack": "unbuild",
