@@ -7,20 +7,17 @@ import { Generic } from '@public-ui/core';
  */
 type RequiredProps = unknown;
 type OptionalProps = unknown;
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
-	tag: 'kol-button-group',
-	styleUrls: {
-		default: './style.sass',
-	},
-	shadow: true,
+	tag: 'kol-button-group-wc',
+	shadow: false,
 })
-export class KolButtonGroup implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolButtonGroupWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
 		return (
 			<Host>

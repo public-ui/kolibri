@@ -206,6 +206,8 @@ export namespace Components {
     }
     interface KolButtonGroup {
     }
+    interface KolButtonGroupWc {
+    }
     interface KolButtonLink {
         /**
           * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
@@ -2170,6 +2172,12 @@ declare global {
         prototype: HTMLKolButtonGroupElement;
         new (): HTMLKolButtonGroupElement;
     };
+    interface HTMLKolButtonGroupWcElement extends Components.KolButtonGroupWc, HTMLStencilElement {
+    }
+    var HTMLKolButtonGroupWcElement: {
+        prototype: HTMLKolButtonGroupWcElement;
+        new (): HTMLKolButtonGroupWcElement;
+    };
     interface HTMLKolButtonLinkElement extends Components.KolButtonLink, HTMLStencilElement {
     }
     var HTMLKolButtonLinkElement: {
@@ -2466,6 +2474,7 @@ declare global {
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
         "kol-button-group": HTMLKolButtonGroupElement;
+        "kol-button-group-wc": HTMLKolButtonGroupWcElement;
         "kol-button-link": HTMLKolButtonLinkElement;
         "kol-button-wc": HTMLKolButtonWcElement;
         "kol-card": HTMLKolCardElement;
@@ -2680,6 +2689,8 @@ declare namespace LocalJSX {
         "_variant"?: KoliBriButtonVariant;
     }
     interface KolButtonGroup {
+    }
+    interface KolButtonGroupWc {
     }
     interface KolButtonLink {
         /**
@@ -4605,6 +4616,7 @@ declare namespace LocalJSX {
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
         "kol-button-group": KolButtonGroup;
+        "kol-button-group-wc": KolButtonGroupWc;
         "kol-button-link": KolButtonLink;
         "kol-button-wc": KolButtonWc;
         "kol-card": KolCard;
@@ -4666,6 +4678,7 @@ declare module "@stencil/core" {
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;
             "kol-button-group": LocalJSX.KolButtonGroup & JSXBase.HTMLAttributes<HTMLKolButtonGroupElement>;
+            "kol-button-group-wc": LocalJSX.KolButtonGroupWc & JSXBase.HTMLAttributes<HTMLKolButtonGroupWcElement>;
             "kol-button-link": LocalJSX.KolButtonLink & JSXBase.HTMLAttributes<HTMLKolButtonLinkElement>;
             "kol-button-wc": LocalJSX.KolButtonWc & JSXBase.HTMLAttributes<HTMLKolButtonWcElement>;
             "kol-card": LocalJSX.KolCard & JSXBase.HTMLAttributes<HTMLKolCardElement>;
