@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
-import { KolLink } from '@public-ui/react';
+import { KolCard, KolIcon, KolLink } from '@public-ui/react';
 import AssetReact from './assets/react.png';
 import AssetPreact from './assets/preact.png';
 import AssetSolid from './assets/solid.png';
@@ -9,6 +9,17 @@ import AssetWebComponent from './assets/webcomponent.png';
 import AssetHtml from './assets/html.png';
 
 <Meta title="Get Started/Erste Schritte" id="get-started" />
+
+<div className="col-12 col-sm-6 my-2">
+	<KolCard _headline="Cheat Sheet herunterladen" _level={2}>
+		<KolLink slot="content" _useCase="nav" _href="/kolibri-accessible-web-components.cheat-sheet.html" _target="cheat-sheet">
+			<div className="d-flex gap-4 py-2">
+				<KolIcon className="homepage" _icon="fa-regular fa-file-lines" />
+				<span>Klicken Sie hier, um sich das Cheat-Sheet zum Entwickeln anzuschauen und herunterzuladen.</span>
+			</div>
+		</KolLink>
+	</KolCard>
+</div>
 
 <kol-heading _level="1">Erste Schritte</kol-heading>
 
@@ -84,9 +95,9 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.1.13-rc.5';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.13-rc.5/dist/loader';
-		import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.13-rc.5';
+		import { register } from 'https://esm.sh/@public-ui/core';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader';
+		import { BMF } from 'https://esm.sh/@public-ui/themes';
 		register([BMF], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);

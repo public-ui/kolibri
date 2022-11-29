@@ -3,7 +3,8 @@ import { KolAccordion } from './accordion/component';
 import { KolAlert } from './alert/component';
 import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/component';
-import { KolButtonGroup } from './button-group/component';
+import { KolButtonGroupWc } from './button-group/component';
+import { KolButtonGroup } from './button-group/shadow';
 import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
 import { KolButtonLink } from './button-link/component';
@@ -60,6 +61,7 @@ export const COMPONENTS = [
 	KolBreadcrumb,
 	KolButton,
 	KolButtonWc,
+	KolButtonGroupWc,
 	KolButtonGroup,
 	KolButtonLink,
 	KolCard,

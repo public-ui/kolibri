@@ -90,14 +90,16 @@ Bei Verwendung der **ButtonGroup**-Komponente sind keine besonderen Maßnahmen i
 
 ### Used by
 
+- [kol-button-group](.)
 - [kol-tabs](../tabs)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-tabs --> kol-button-group
-  style kol-button-group fill:#f9f,stroke:#333,stroke-width:4px
+  kol-button-group --> kol-button-group-wc
+  kol-tabs --> kol-button-group-wc
+  style kol-button-group-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---

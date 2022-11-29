@@ -155,7 +155,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	private renderButtonGroup() {
 		return (
 			// <!-- style="order:2" -->
-			<kol-button-group role="tablist" aria-label={this.state._ariaLabel} onKeyDown={this.onKeyDown}>
+			<kol-button-group-wc role="tablist" aria-label={this.state._ariaLabel} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => {
 					return (
 						/**
@@ -213,7 +213,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 						}}
 					></kol-button-wc>
 				)}
-			</kol-button-group>
+			</kol-button-group-wc>
 		);
 	}
 

@@ -127,14 +127,14 @@ W3C-Samples:
 
 ### Depends on
 
-- [kol-button-group](../button-group)
+- [kol-button-group-wc](../button-group)
 - kol-button-wc
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-tabs --> kol-button-group
+  kol-tabs --> kol-button-group-wc
   kol-tabs --> kol-button-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
