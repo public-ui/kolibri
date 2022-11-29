@@ -23,7 +23,7 @@
 		"autogen": "node scripts/autogen.md2mdx.js && node scripts/autogen.stories.js",
 		"build": "npm run clear && npm run autogen && build-storybook -o dist/",
 		"clear": "rimraf dist",
-		"prepack": "npm run build && cp -r ../designer/dist dist/designer && cp ../library/cheat-sheet.html dist/kolibri-accessible-web-components.cheat-sheet.html",
+		"prepack": "npm run build && cp -r ../designer/dist dist/designer && cp node_modules/@public-ui/components/cheat-sheet.html dist/kolibri-accessible-web-components.cheat-sheet.html",
 		"serve": "serve dist",
 		"zip:prepare": "rimraf kolibri/demo && git clone //anonymisiert kolibri/demo",
 		"zip": "sh scripts/public-pack.sh",
