@@ -59,7 +59,7 @@
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
-		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
+		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js && node scripts/cheat-sheet.js",
 		"postpack": "mv package.bak.json package.json",
 		"remove:lock": "rimraf package-lock.json",
 		"remove": "npm run remove:lock && git clean -f -d -X",
@@ -124,6 +124,7 @@
 	},
 	"files": [
 		"dist/",
+		"cheat-sheet.html",
 		"custom-elements.json",
 		"jest-test-results.json",
 		"vscode-custom-data.json"
