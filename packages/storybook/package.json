@@ -48,7 +48,7 @@
 		"unreleased": true
 	},
 	"devDependencies": {
-		"@babel/core": "7.20.2",
+		"@babel/core": "7.20.5",
 		"@etchteam/storybook-addon-status": "4.2.2",
 		"@geometricpanda/storybook-addon-badges": "0.2.2",
 		"@public-ui/components": "1.1.13-rc.6",
