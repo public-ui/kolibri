@@ -411,7 +411,6 @@ export class KolLinkButton
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		console.log('link-button', '_label', value);
 		validateLabel(this, value);
 	}
 
