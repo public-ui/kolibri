@@ -1,4 +1,4 @@
-import { setEventTargetAndStopPropagation } from '../../utils/prop.validators';
+import { KoliBriDevHelper, setEventTargetAndStopPropagation } from '../../utils/prop.validators';
 
 export const propergateResetEventToForm = (
 	options: {
@@ -20,10 +20,11 @@ export const propergateResetEventToForm = (
 			bubbles: true,
 			cancelable: true,
 		});
-		setEventTargetAndStopPropagation(event, options.ref);
 		if (options.form.tagName === 'FORM') {
+			setEventTargetAndStopPropagation(event, options.form);
 			options.form.dispatchEvent(event);
 		} else if (options.form.tagName === 'KOL-FORM') {
+			setEventTargetAndStopPropagation(event, KoliBriDevHelper.querySelector('form', options.form) as HTMLFormElement);
 			const kolForm = options.form as HTMLKolFormElement;
 			if (typeof kolForm._on === 'object' && typeof kolForm._on !== null && typeof kolForm._on.onReset === 'function') {
 				kolForm._on.onReset(event);
@@ -51,13 +52,23 @@ export const propergateSubmitEventToForm = (
 		const event = new SubmitEvent('submit', {
 			bubbles: true,
 			cancelable: true,
-			submitter: options.ref,
+			submitter: options.form,
 		});
-		setEventTargetAndStopPropagation(event, options.ref);
-		// switch
+		/**
+		 * TODO: Wenn Formular-Action (nicht Ajax oder JS) verwendet wird,
+		 *       dann müssen wir das Event an das HTMLFormElement innerhalb
+		 *       der HTMLKolFormElements propagieren, wenn kein onSubmit
+		 *       gesetzt wurde.
+		 *
+		 * TODO: Form-associated custom elements:
+		 *       - https://web.dev/more-capable-form-controls/
+		 *       - https://github.com/public-ui/kolibri/issues/946
+		 */
 		if (options.form.tagName === 'FORM') {
+			setEventTargetAndStopPropagation(event, options.form);
 			options.form.dispatchEvent(event);
 		} else if (options.form.tagName === 'KOL-FORM') {
+			setEventTargetAndStopPropagation(event, KoliBriDevHelper.querySelector('form', options.form) as HTMLFormElement);
 			const kolForm = options.form as HTMLKolFormElement;
 			if (typeof kolForm._on === 'object' && typeof kolForm._on !== null && typeof kolForm._on.onSubmit === 'function') {
 				kolForm._on.onSubmit(event);

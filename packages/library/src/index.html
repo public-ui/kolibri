@@ -345,14 +345,14 @@
 							</kol-button>
 							<kol-button
 								class="not-used"
-								_icon="icofont-{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
+								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
 								_label="Icon's in alle Richtungen"
 								_variant="primary"
 							>
 							</kol-button>
 							<kol-button
 								class="not-used"
-								_icon="icofont-{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}"
+								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}"
 								_label="Icon's in alle Richtungen"
 								_variant="primary"
 							>
@@ -414,14 +414,14 @@
 							</kol-link-button>
 							<kol-link-button
 								class="not-used"
-								_icon="icofont-{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
+								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
 								_label="Icon's in alle Richtungen"
 								_variant="primary"
 							>
 							</kol-link-button>
 							<kol-link-button
 								class="not-used"
-								_icon="icofont-{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}"
+								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}"
 								_label="Icon's in alle Richtungen"
 								_variant="primary"
 							>
@@ -642,6 +642,32 @@
 										<kol-input-text>Test (KolForm)</kol-input-text>
 										<kol-button _type="submit" _label="Absenden"></kol-button>
 									</kol-form>
+									<form id="test-form-submit" method="GET" action="index.html">
+										<kol-input-text _id="kolibri" _name="kolibri">Test</kol-input-text>
+										<input id="vanilla" name="vanilla" type="text" />
+										<kol-button _label="Absenden" _type="submit"></kol-button>
+										<kol-spin _show></kol-spin>
+										<button>Absenden</button>
+									</form>
+									<script>
+										(function () {
+											const form = document.querySelector('form#test-form-submit');
+											if (form instanceof HTMLFormElement) {
+												form.addEventListener('submit', (event) => {
+													console.clear();
+													console.log('form', event.target);
+													event.preventDefault();
+													const form = event.target;
+													if (form instanceof HTMLFormElement) {
+														console.log('form elements', form.elements);
+													}
+												});
+												form.addEventListener('formdata', (event) => {
+													console.log(event);
+												});
+											}
+										})();
+									</script>
 								</div>
 							</kol-details>
 							<kol-heading _level="3">Leeres Formular mit individuellem Hinweis zu Pflichtangaben</kol-heading>
@@ -860,8 +886,8 @@
 								<kol-input-text _type="search">Suchbegriff</kol-input-text>
 								<br />
 								<kol-indented-text>Hier ein Suchfeld ohne sichtbares Label, aber dafür mit Icon und Placeholder.</kol-indented-text>
-								<kol-input-text _hide-label _icon="icofont-{'left': 'fa-solid fa-magnifying-glass'}" _placeholder="Suche" _type="search"> Suche</kol-input-text>
-								<kol-input-text _hide-label _required _icon="icofont-{'left': 'fa-solid fa-magnifying-glass'}" _placeholder="Suche" _type="search"
+								<kol-input-text _hide-label _icon="{'left': 'fa-solid fa-magnifying-glass'}" _placeholder="Suche" _type="search"> Suche</kol-input-text>
+								<kol-input-text _hide-label _required _icon="{'left': 'fa-solid fa-magnifying-glass'}" _placeholder="Suche" _type="search"
 									>Suche</kol-input-text
 								>
 								<kol-input-text _type="url">Url</kol-input-text>
