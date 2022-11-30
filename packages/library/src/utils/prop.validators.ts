@@ -224,8 +224,11 @@ export const watchJsonArrayString = <T>(
 				value = [];
 			}
 			try {
-				if (typeof value === 'string') {
+				try {
 					value = parseJson<T[]>(value);
+					// eslint-disable-next-line no-empty
+				} catch (e) {
+					// value behält den ursprünglichen Wert
 				}
 				if (Array.isArray(value)) {
 					const invalid = value.find((item: T) => !itemValidation(item));
@@ -258,22 +261,27 @@ export const stringifyJson = (value: unknown): string => {
 	try {
 		return JSON.stringify(value).replace(/"/g, "'");
 	} catch (error) {
-		Log.warn(value);
-		throw new Error(`↑ Das JSON konnte nicht in einen String umgewandelt werden. Es wird ein stringifizierbares JSON erwartet.`);
+		Log.warn(['stringifyJson', value]);
+		Log.error(`↑ Das JSON konnte nicht in einen String umgewandelt werden. Es wird ein stringifizierbares JSON erwartet.`);
+		throw new Error();
 	}
 };
 
-export const parseJson = <T>(value: string): T => {
-	try {
-		return JSON.parse(value);
-	} catch (error) {
+const JSON_CHARS = /[\\[\\{]/;
+export const parseJson = <T>(value: unknown): T => {
+	if (typeof value === 'string' && JSON_CHARS.test(value)) {
 		try {
-			return JSON.parse(value.replace(/'/g, '"'));
+			return JSON.parse(value);
 		} catch (error) {
-			Log.warn(value);
-			throw new Error(`↑ Der JSON-String konnte nicht geparsed werden. Achten Sie darauf, dass einfache Anführungszeichen im Text maskiert werden (&#8216;).`);
+			try {
+				return JSON.parse(value.replace(/'/g, '"'));
+			} catch (error) {
+				Log.warn(['parseJson', value]);
+				Log.error(`↑ Der JSON-String konnte nicht geparsed werden. Achten Sie darauf, dass einfache Anführungszeichen im Text maskiert werden (&#8216;).`);
+			}
 		}
 	}
+	throw new Error();
 };
 
 export const mapBoolean2String = (value?: boolean): string | undefined => {

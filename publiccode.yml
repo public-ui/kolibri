@@ -1,25 +1,35 @@
 publiccodeYmlVersion: '0.2'
 
-name: KoliBri
+name: 'KoliBri - The accessible web component library'
+url: 'https://public-ui.github.io'
 applicationSuite: Informationstechnik Zentrum Bund
-url: 'https://github.com/public-ui/kolibri.git'
 landingURL: 'https://github.com/public-ui'
 documentationURL: 'https://public-ui.github.io/'
-releaseDate: '2022-10-13'
+releaseDate: '2022-11-22'
+version: '1.1.12'
 platforms:
-  - web
-  - windows
   - android
   - ios
-  - mac
   - linux
+  - mac
+  - web
+  - windows
 
 categories:
-  - webcomponents
+  - agile-project-management
+	- application-development
+	- collaboration
+	- content-management
+	- it-development
+	- online-community
+	- project-collaboration
+	- seo
+	- web-collaboration
+	- website-builder
 
 developmentStatus: stable
 
-softwareType: 'standalone/web'
+softwareType: 'library'
 
 description:
   en:
@@ -48,6 +58,7 @@ maintenance:
       affiliation: Informationstechnik Zentrum Bund
 
 localisation:
-  localisationReady: true
+  localisationReady: yes
   availableLanguages:
     - de
+    - en

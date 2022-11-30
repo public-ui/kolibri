@@ -73,6 +73,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: true,
 })
 export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+	private clearConsole = false;
 	private hostElement?: HTMLElement;
 	private tabsElement?: HTMLElement;
 	private htmlDivElements?: HTMLCollection;
@@ -217,8 +218,20 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		);
 	}
 
+	private readonly setClearConsole = (clear: boolean) => {
+		this.clearConsole = clear;
+	};
+
 	public render(): JSX.Element {
 		this.preRender();
+		if (this.clearConsole) {
+			console.clear();
+		}
+		console.log(`Tab-Trace`);
+		console.log('Tab.preRender', this.preRender);
+		console.log('Tab.setClearConsole', this.setClearConsole);
+		console.log('Tab.props', this);
+		console.log('Tab.state', this.state);
 		return (
 			<Host
 				ref={(el) => {

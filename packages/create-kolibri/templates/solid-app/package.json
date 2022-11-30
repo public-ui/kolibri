@@ -31,10 +31,10 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.1.13-rc.6",
-		"@public-ui/core": "1.1.13-rc.6",
-		"@public-ui/solid": "1.1.13-rc.6",
-		"@public-ui/themes": "1.1.13-rc.6",
+		"@public-ui/components": "1.1.13-rc.7",
+		"@public-ui/core": "1.1.13-rc.7",
+		"@public-ui/solid": "1.1.13-rc.7",
+		"@public-ui/themes": "1.1.13-rc.7",
 		"ajv": "8.11.2",
 		"solid-js": "1.6.2"
 	},

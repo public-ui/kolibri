@@ -129,8 +129,11 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 				if (typeof value === 'undefined') {
 					value = [];
 				}
-				if (typeof value === 'string') {
+				try {
 					value = parseJson<KoliBriDataType[]>(value);
+					// eslint-disable-next-line no-empty
+				} catch (e) {
+					// value behält den ursprünglichen Wert
 				}
 				if (Array.isArray(value) && value.find((dataTupel: KoliBriDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
 					setState(this, '_data', value, {
@@ -164,8 +167,11 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		 */
 		emptyStringByArrayHandler(value, () => {
 			objectObjectHandler(value, () => {
-				if (typeof value === 'string') {
+				try {
 					value = parseJson<KoliBriTableHeaders>(value);
+					// eslint-disable-next-line no-empty
+				} catch (e) {
+					// value behält den ursprünglichen Wert
 				}
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
@@ -237,8 +243,11 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
-		if (typeof value === 'string') {
+		try {
 			value = parseJson<KoliBriTablePaginationProps>(value);
+			// eslint-disable-next-line no-empty
+		} catch (e) {
+			// value behält den ursprünglichen Wert
 		}
 		watchValidator(this, '_pagination', () => true, new Set(['boolean', 'KoliBriTablePagination']), value, {
 			hooks: {
