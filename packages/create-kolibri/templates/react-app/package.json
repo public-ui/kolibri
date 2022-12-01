@@ -46,7 +46,7 @@
 		"@playwright/test": "1.28.1",
 		"@types/react": "18.0.25",
 		"@types/react-dom": "18.0.9",
-		"@unocss/preset-mini": "0.47.3",
+		"@unocss/preset-mini": "0.47.4",
 		"@unocss/webpack": "0.47.3",
 		"chromedriver": "107.0.3",
 		"eslint-plugin-jsx-a11y": "6.6.1",
