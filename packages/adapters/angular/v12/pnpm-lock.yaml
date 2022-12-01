@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@angular/compiler': ^12
-  '@angular/compiler-cli': ^12
-  '@angular/core': ^12
-  '@public-ui/components': 1.1.13-rc.6
-  '@public-ui/core': 1.1.13-rc.6
+  '@angular/compiler': 12.2.17
+  '@angular/compiler-cli': 12.2.17
+  '@angular/core': 12.2.17
+  '@public-ui/components': 1.1.13-rc.7
+  '@public-ui/core': 1.1.13-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 12.2.17
   '@angular/compiler-cli': 12.2.17_r7idsygkgzla4r2ofe56dih4bq
   '@angular/core': 12.2.17_rxjs@7.5.7+zone.js@0.11.8
-  '@public-ui/components': 1.1.13-rc.6
-  '@public-ui/core': 1.1.13-rc.6
+  '@public-ui/components': 1.1.13-rc.7
+  '@public-ui/core': 1.1.13-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -328,23 +328,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.1.13-rc.6:
-    resolution: {integrity: sha512-a0O0SuTryhklFJb0FzlgRzNDya1Hp26mmNnCyx2zI1QxUbQQ2AAP/ZwT5PHh4BSm4bKGGdJTkp2K2xTamG0RzQ==}
+  /@public-ui/components/1.1.13-rc.7:
+    resolution: {integrity: sha512-6sNjqQSuLsWLlWRg8tuWqifrRlcOttB/IJmkSROmsSmSJR7YnAEJQ0j961sjv/4XjahANWvVvk5nXyQJyJyq3Q==}
     dependencies:
-      '@public-ui/schema': 1.1.13-rc.6
+      '@public-ui/schema': 1.1.13-rc.7
     dev: true
 
-  /@public-ui/core/1.1.13-rc.6:
-    resolution: {integrity: sha512-KPhZmkggB4X/Ff++pkgKVNWfO1oXWYHXw0gJfSy5tyemA0IrIWbOjb7zJM7AaL8DPyylfgSmdrX7vsKsjfXBmg==}
+  /@public-ui/core/1.1.13-rc.7:
+    resolution: {integrity: sha512-XsOfuIX/RGVskuvJr87xU6WIVv0nY6SRQHEJWqvXdJECpT4IPHWlEk2lc4/hUL7552Zn7+CuDEkfdMLWaJ+KdQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.4
       rxjs: 7.5.7
     dev: true
 
-  /@public-ui/schema/1.1.13-rc.6:
-    resolution: {integrity: sha512-I4f6uExPlI89HwZ9Hmzdh8+wj/a2l1mpvE1K95AAGi+NhKLzEgNvOwjLCzVoO0YPOIMMMBgHCdIogF+Nc1hhdQ==}
+  /@public-ui/schema/1.1.13-rc.7:
+    resolution: {integrity: sha512-lbgTSNolFE5d4qSBox8qSH8yTM7/EZxwEhhLGW0uamvni8zONrK6XXaaEJH0eR5c7wfZ49ZX0XkUHH6kDgJQEg==}
     dependencies:
-      '@public-ui/core': 1.1.13-rc.6
+      '@public-ui/core': 1.1.13-rc.7
     dev: true
 
   /@types/minimatch/5.1.2:

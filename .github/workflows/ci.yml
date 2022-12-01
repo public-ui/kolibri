@@ -49,7 +49,7 @@ jobs:
             ${{ runner.os }}-pnpm-store
 
       - name: Install
-        run: pnpm i
+        run: pnpm install --no-frozen-lockfile
       - name: Unused
         run: npx lerna exec --stream -- ts-prune src -e
       - name: Format
