@@ -44,7 +44,7 @@
 	],
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
-		"build": "npm run test && npm run build:light",
+		"build": "npm run test && node scripts/cheat-sheet.js && npm run build:light",
 		"build:light": "npm run clear && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && npm run format -- -w",
 		"republish:adapters": "cd ../adapters/angular && npm run republish && cd ../react && npm run republish && cd ../solid && npm run republish && cd ../vue && npm run republish && cd ..",
 		"republish:themes": "cd ../themes && npm run republish && cd ..",
@@ -59,7 +59,7 @@
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
-		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js && node scripts/cheat-sheet.js",
+		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
 		"postpack": "mv package.bak.json package.json",
 		"remove:lock": "rimraf package-lock.json",
 		"remove": "npm run remove:lock && git clean -f -d -X",
