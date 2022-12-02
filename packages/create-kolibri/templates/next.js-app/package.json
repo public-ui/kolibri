@@ -30,15 +30,15 @@
 		"@public-ui/react": "1.1.13-rc.8",
 		"@public-ui/themes": "1.1.13-rc.8",
 		"@stencil/core": "2.19.3",
-		"next": "13.0.5",
+		"next": "13.0.6",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-is": "18.2.0"
 	},
 	"devDependencies": {
-		"@types/node": "18.11.9",
+		"@types/node": "18.11.10",
 		"@types/react": "18.0.25",
-		"@typescript-eslint/eslint-plugin": "5.44.0",
+		"@typescript-eslint/eslint-plugin": "5.45.0",
 		"@typescript-eslint/parser": "5.45.0",
 		"babel-eslint": "10.1.0",
 		"eslint": "8.28.0",
