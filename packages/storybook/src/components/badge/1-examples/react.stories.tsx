@@ -79,7 +79,7 @@ export const IconPosition = (args: any) => (
 );
 IconPosition.args = {
 	...DefaultArgs,
-	_icon: 'home',
+	_icon: 'icofont-home',
 };
 
 /**
@@ -117,7 +117,7 @@ export const AlsLabel = (args: any) => (
 );
 AlsLabel.args = {
 	_label: '23.08.2021',
-	_icon: 'calendar',
+	_icon: 'icofont-calendar',
 	_color: '#4682B4',
 };
 

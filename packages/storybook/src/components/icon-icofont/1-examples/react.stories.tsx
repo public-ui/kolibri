@@ -15,7 +15,7 @@ const KolIconIcofont: ComponentStory<typeof MyComponent> = (args: any) => {
 };
 
 const DefaultArgs = {
-	_icon: 'home',
+	_icon: 'icofont-home',
 };
 
 /**

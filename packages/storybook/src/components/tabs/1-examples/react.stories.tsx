@@ -186,7 +186,7 @@ export const Erweitert = () => {
 				}}
 				_selected={0}
 				_tabs={[
-					{ _label: 'Tab 1', _icon: 'home' },
+					{ _label: 'Tab 1', _icon: 'icofont-home' },
 					{ _label: 'Tab 2' },
 					{ _label: 'Tab 3', _disabled: true },
 					{
@@ -225,7 +225,7 @@ export const Erweitert = () => {
 				}}
 				_selected={1}
 				_tabs={[
-					{ _label: 'Tab 1', _icon: 'home', _disabled: true },
+					{ _label: 'Tab 1', _icon: 'icofont-home', _disabled: true },
 					{ _label: 'Tab 2' },
 					{ _label: 'Tab 3', _disabled: true },
 					{ _label: 'Tab 4' },
@@ -249,7 +249,7 @@ export const Erweitert = () => {
 				_ariaLabel="Tab-Navigation"
 				_selected={6}
 				_tabs={[
-					{ _label: 'Tab 1', _icon: 'home' },
+					{ _label: 'Tab 1', _icon: 'icofont-home' },
 					{ _label: 'Tab 2' },
 					{ _label: 'Tab 3', _disabled: true },
 					{ _label: 'Tab 4' },

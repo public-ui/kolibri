@@ -94,7 +94,7 @@ export const OnlyIcon = (args: any) => (
 );
 OnlyIcon.args = {
 	...DefaultArgs,
-	_icon: 'home',
+	_icon: 'icofont-home',
 	_iconOnly: true,
 };
 OnlyIcon.storyName = 'Button nur mit Icon';
@@ -111,7 +111,7 @@ export const Tooltip = (args: any) => (
 );
 Tooltip.args = {
 	...DefaultArgs,
-	_icon: 'home',
+	_icon: 'icofont-home',
 	_iconOnly: true,
 	_label: 'Benamung des Button',
 	_tooltipAlign: 'right',
@@ -135,7 +135,7 @@ export const WithCta = (args: any) => (
 );
 WithCta.args = {
 	...DefaultArgs,
-	_icon: 'home',
+	_icon: 'icofont-home',
 };
 WithCta.storyName = 'Styles';
 
