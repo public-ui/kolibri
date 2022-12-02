@@ -71,7 +71,7 @@
 		"@storybook/addons": "6.5.13",
 		"@storybook/api": "6.5.13",
 		"@storybook/builder-vite": "0.2.5",
-		"@storybook/builder-webpack5": "6.5.13",
+		"@storybook/builder-webpack5": "6.5.14",
 		"@storybook/components": "6.5.13",
 		"@storybook/core-common": "6.5.13",
 		"@storybook/manager-webpack5": "6.5.13",
