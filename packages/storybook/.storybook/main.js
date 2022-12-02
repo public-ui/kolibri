@@ -25,6 +25,10 @@ module.exports = {
 		disableTelemetry: true, // 👈 Disables telemetry
 		enableCrashReports: false, // 👈 Disables crash reports
 	},
+	features: {
+		// https://storybook.js.org/docs/react/writing-docs/mdx#mdx-2
+		previewMdx2: true, // 👈 MDX 2 enabled here
+	},
 	// https://storybook.js.org/docs/react/builders/webpack
 	webpackFinal: async (config, { configType }) => {
 		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
