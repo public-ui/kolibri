@@ -44,7 +44,7 @@
 	],
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
-		"build": "npm run test && node scripts/cheat-sheet.js && npm run build:light",
+		"build": "npm run test && npm run build:light && node scripts/cheat-sheet.js",
 		"build:light": "npm run clear && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && npm run format -- -w",
 		"republish:adapters": "cd ../adapters/angular && npm run republish && cd ../react && npm run republish && cd ../solid && npm run republish && cd ../vue && npm run republish && cd ..",
 		"republish:themes": "cd ../themes && npm run republish && cd ..",
