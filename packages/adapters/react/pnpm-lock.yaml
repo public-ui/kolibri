@@ -5,7 +5,7 @@ specifiers:
   '@public-ui/core': 1.1.13-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.9
+  '@types/node': 18.11.10
   '@types/normalize-package-data': 2.4.1
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.9
@@ -19,7 +19,7 @@ devDependencies:
   '@public-ui/core': 1.1.13-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.9
+  '@types/node': 18.11.10
   '@types/normalize-package-data': 2.4.1
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.9
@@ -443,8 +443,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.9:
-    resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+  /@types/node/18.11.10:
+    resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -472,7 +472,7 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
     dev: true
 
   /@types/scheduler/0.16.2:

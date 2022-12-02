@@ -23,5 +23,7 @@
 		"strict": true
 	},
 	"compileOnSave": false,
-	"buildOnSave": false
+	"buildOnSave": false,
+	"include": ["src/**/*"],
+	"exclude": ["node_modules/**/*"]
 }

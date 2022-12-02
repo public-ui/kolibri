@@ -13,6 +13,7 @@ config.overrides.push({
 
 config.plugins = config.plugins || [];
 config.plugins.push('jsx-a11y');
+config.plugins.push('no-loops');
 
 config.overrides[0].rules['@typescript-eslint/no-unsafe-member-access'] = ['warn'];
 

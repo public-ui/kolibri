@@ -5,7 +5,7 @@ module.exports = {
 		sourceType: 'module',
 		tsconfigRootDir: __dirname,
 	},
-	plugins: ['@typescript-eslint'],
+	plugins: ['@typescript-eslint', 'no-loops'],
 	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking'],
 	rules: {
 		'@typescript-eslint/no-namespace': 'off',
