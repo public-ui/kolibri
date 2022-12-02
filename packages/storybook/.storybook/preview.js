@@ -19,7 +19,7 @@ import { THEME } from './theme';
 import { register } from '@public-ui/core';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
-import { BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, TH, ZOLL } from '@public-ui/themes';
+import { BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
 	// { name: 'BAMF-Styleguide', class: 'bamf', color: '', disabled: true },
@@ -52,7 +52,7 @@ const switchTheme = (className) => {
 	}
 };
 
-register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, TH, ZOLL], [kolibri, leanup], {
+register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
 	},
