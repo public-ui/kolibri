@@ -11,15 +11,9 @@ const config = {
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 	],
 	rules: {
-		// '@stencil/dependency-suggestions': 'warn',
-		// '@stencil/required-jsdoc': 'warn',
-		// '@stencil/strict-boolean-conditions': 'warn',
-		'@typescript-eslint/no-empty-interface': 'warn',
-		'@typescript-eslint/no-namespace': 'warn',
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
-		// 'react/jsx-no-bind': 'warn',
-		'no-mixed-spaces-and-tabs': 'warn',
+		'no-mixed-spaces-and-tabs': 'off',
 	},
 	settings: {
 		react: {
@@ -49,6 +43,7 @@ config.overrides.push({
 config.plugins = config.plugins || [];
 // config.plugins.push('react');
 config.plugins.push('jsx-a11y');
+config.plugins.push('no-loops');
 
 config.settings = {
 	react: {
