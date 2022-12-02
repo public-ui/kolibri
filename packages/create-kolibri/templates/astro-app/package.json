@@ -41,7 +41,7 @@
 		"@public-ui/react": "1.1.13-rc.8",
 		"@public-ui/themes": "1.1.13-rc.8",
 		"@types/react": "18.0.25",
-		"@types/node": "18.11.9",
+		"@types/node": "18.11.10",
 		"@types/react-dom": "18.0.9",
 		"astro": "1.6.11",
 		"chromedriver": "107.0.3",
