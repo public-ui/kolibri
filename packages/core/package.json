@@ -44,7 +44,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@a11y-ui/core": "1.0.1-rc.5",
+		"@a11y-ui/core": "1.0.1-rc.6",
 		"rxjs": "7.5.7"
 	},
 	"devDependencies": {

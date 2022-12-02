@@ -114,6 +114,44 @@ Deactive.args = {
 };
 Deactive.storyName = 'Tab deaktivieren';
 
+/**
+ * Die Component stellt eine konkrete Story im Storybook dar.
+ *
+ * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
+ */
+export const TabsRight = () => (
+	<div>
+		<KolTabs _ariaLabel="Tabs" _selected={0} _tabsAlign="right" _tabs="[{'_label':'Tab 1'},{'_label':'Tab 2'},{'_label':'Tab 3'}]">
+			<div slot="tab-0">Inhalt von Tab 1</div>
+			<div slot="tab-1">Inhalt von Tab 2</div>
+			<div slot="tab-2">Inhalt von Tab 3</div>
+		</KolTabs>
+	</div>
+);
+TabsRight.args = {
+	...DefaultArgs,
+};
+TabsRight.storyName = 'Tabs rechts';
+
+/**
+ * Die Component stellt eine konkrete Story im Storybook dar.
+ *
+ * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
+ */
+export const TabsLeft = () => (
+	<div>
+		<KolTabs _ariaLabel="Tabs" _selected={0} _tabsAlign="left" _tabs="[{'_label':'Tab 1'},{'_label':'Tab 2'},{'_label':'Tab 3'}]">
+			<div slot="tab-0">Inhalt von Tab 1</div>
+			<div slot="tab-1">Inhalt von Tab 2</div>
+			<div slot="tab-2">Inhalt von Tab 3</div>
+		</KolTabs>
+	</div>
+);
+TabsLeft.args = {
+	...DefaultArgs,
+};
+TabsLeft.storyName = 'Tabs links';
+
 export const Erweitert = () => {
 	const callback = (name: string) => {
 		return (value: string) => {
