@@ -43,7 +43,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/react": "1.1.13-rc.8"
+		"@public-ui/react": "1.1.13-rc.9"
 	},
 	"devDependencies": {
 		"@public-ui/components": "1.1.13-rc.8",
