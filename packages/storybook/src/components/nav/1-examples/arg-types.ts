@@ -9,12 +9,12 @@ export const argTypes = {
 			{
 				_label: 'Startseite',
 				_href: 'startseite',
-				_icon: 'home',
+				_icon: 'icofont-home',
 			},
 			{
 				_label: 'Über uns',
 				_href: 'ueber-uns',
-				_icon: 'compass',
+				_icon: 'icofont-compass',
 			},
 			{
 				_label: 'Bereiche',
@@ -23,7 +23,7 @@ export const argTypes = {
 					{
 						_label: 'KFZ-Angelegenheiten',
 						_href: 'bereiche/kfz-angelegenheiten',
-						_icon: 'woodpecker',
+						_icon: 'icofont-woodpecker',
 						_children: [
 							{
 								_label: 'Neuanmeldung',
@@ -42,14 +42,14 @@ export const argTypes = {
 					{
 						_label: 'Meldewesen',
 						_href: 'meldewesen',
-						_icon: 'woodpecker',
+						_icon: 'icofont-woodpecker',
 					},
 				],
 			},
 			{
 				_label: 'Kontakt',
 				_href: 'kontakt',
-				_icon: 'at',
+				_icon: 'icofont-at',
 			},
 		]),
 	},

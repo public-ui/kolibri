@@ -556,8 +556,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
 																			? 'fas fa-sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'fas sort-up'
-																			: 'fas sort-down'
+																			? 'fas fa-sort-up'
+																			: 'fas fa-sort-down'
 																	}
 																	_iconOnly
 																	_label={'Sortierung von ' + col.label + ' ändern'}

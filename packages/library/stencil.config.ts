@@ -169,24 +169,6 @@ if (process.env.NODE_ENV === 'production') {
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v8/src/components.ts',
-			includeImportCustomElements: false,
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v9/src/components.ts',
-			includeImportCustomElements: false,
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v10/src/components.ts',
-			includeImportCustomElements: false,
-		}),
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v11/src/components.ts',
 			includeImportCustomElements: false,
 		}),
@@ -296,7 +278,7 @@ export const config: Config = {
 	globalScript: 'src/global/script.ts',
 	// globalStyle: 'src/global/style.css',
 	namespace: 'kolibri',
-	preamble: 'KoliBri - the accessible web component library',
+	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
 	plugins: [
 		sass(),

@@ -38,27 +38,25 @@ jobs:
         with:
           # cache: pnpm
           node-version: 16
-          registry-url: '${{env.npmjs-registry}}'
-          scope: '@public-ui'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@public-oss,@public-ui'
       - name: Build designer
         run: |
           npm i --legacy-peer-deps
           npm run build
         working-directory: packages/designer
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Build storybook
         run: |
           npm i --legacy-peer-deps
           npm run build
         working-directory: packages/storybook
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Copy designer to storybook
         run: cp -r ../designer/dist dist/designer
         working-directory: packages/storybook
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-          registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
-          scope: '@public-ui'
       - name: Publish storybook
         run: npm publish --access restricted || true
         working-directory: packages/storybook

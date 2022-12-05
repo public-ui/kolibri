@@ -1,8 +1,8 @@
 import { render } from 'solid-js/web';
 
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { BAMF, BMF, BPA, BZST, DESY, HH, ITZBund, MAPZ, NXT, TH, ZOLL } from '@public-ui/themes';
-import { BAHN, SPK, UKV, VKB } from '@leanup/kolibri-themes';
+import { BAHN, SPK, UKV, VKB, TH } from '@public-oss/kolibri-themes';
+import { BAMF, BMF, BPA, BZST, DESY, HH, ITZBund, MAPZ, NXT, ZOLL } from '@public-ui/themes';
 import { AppComponent } from './components/app/component.solid';
 import { register } from '@public-ui/core';
 

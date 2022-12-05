@@ -8,13 +8,18 @@ document.querySelectorAll('#change-checkbox').forEach((checkbox) => {
 	};
 });
 
-function onNativeSubmit(event) {
+function outlineLogs(event) {
 	event.preventDefault();
+	const data = new FormData(event.target);
+	console.log([...data.entries()]);
+}
+function onNativeSubmit(event) {
 	console.log('native form', event);
+	outlineLogs(event);
 }
 function onKoliBriSubmit(event) {
-	event.preventDefault();
 	console.log('kolibri form', event);
+	outlineLogs(event);
 }
 
 document.querySelectorAll('form').forEach((form) => {

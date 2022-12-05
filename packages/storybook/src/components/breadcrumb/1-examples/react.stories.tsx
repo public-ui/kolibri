@@ -119,7 +119,7 @@ export const Output = (args: any) => (
 		<KolBreadcrumb
 			_ariaLabel="Breadcrumb aus Icons- oder Text-Links"
 			_links={[
-				{ _label: 'Startseite', _icon: 'home', _iconOnly: true, _href: '#/' },
+				{ _label: 'Startseite', _icon: 'icofont-home', _iconOnly: true, _href: '#/' },
 				{ _label: 'Unterseite der Startseite mit sehr langem Link-Test', _href: '#/unterseite' },
 				{ _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
 			]}
@@ -127,7 +127,7 @@ export const Output = (args: any) => (
 		<KolBreadcrumb
 			_ariaLabel="Breadcrumb aus Icons- und Text-Links"
 			_links={[
-				{ _label: 'Startseite', _icon: 'home', _href: '#/' },
+				{ _label: 'Startseite', _icon: 'icofont-home', _href: '#/' },
 				{
 					_label: 'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 					_href: '#/unterseite',

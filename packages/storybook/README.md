@@ -4,5 +4,5 @@
 |  .   '  | .-. | |  | ,--. |  .-.  \ |  .--' ,--.
 |  |\   \ ' '-' ' |  | |  | |  '--' / |  |    |  |
 `--' '--'  `---'  `--' `--' `------'  `--'    `--'
-     - the accessible web component library -
+     - The accessible HTML-Standard -
 ```

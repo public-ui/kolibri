@@ -16,22 +16,22 @@ const Nav1 = () => (
 			{
 				_label: '1 Navigationspunkt mit sehr langem Link-Test',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_target: 'asdasd',
 			},
 			{
 				_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 			},
 			{
 				_active: true,
 				_label: '3 Navigationspunkt',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_children: [
-					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
+					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
 					{
 						_active: true,
 						_label: '3.3 Navigationspunkt',
@@ -64,25 +64,25 @@ const Nav2 = () => (
 			{
 				_label: '1 Navigationspunkt mit sehr langem Link-Test',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_iconOnly: true,
 				_target: 'asdasd',
 			},
 			{
 				_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_iconOnly: true,
 			},
 			{
 				_active: true,
 				_label: '3 Navigationspunkt',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_iconOnly: true,
 				_children: [
-					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
+					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
 					{
 						_active: true,
 						_label: '3.3 Navigationspunkt',
@@ -117,22 +117,22 @@ const Nav3 = () => (
 			{
 				_label: '1 Navigationspunkt mit sehr langem Link-Test',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_target: 'asdasd',
 			},
 			{
 				_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 			},
 			{
 				_active: true,
 				_label: '3 Navigationspunkt',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_children: [
-					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
+					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
 					{
 						_active: true,
 						_label: '3.3 Navigationspunkt',
@@ -166,22 +166,22 @@ const Nav4 = () => (
 			{
 				_label: '1 Navigationspunkt mit sehr langem Link-Test',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_target: 'asdasd',
 			},
 			{
 				_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 			},
 			{
 				_active: true,
 				_label: '3 Navigationspunkt',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_children: [
-					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
+					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
 					{
 						_active: true,
 						_label: '3.3 Navigationspunkt',
@@ -215,22 +215,22 @@ const Nav5 = () => (
 			{
 				_label: '1 Navigationspunkt mit sehr langem Link-Test',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_target: 'asdasd',
 			},
 			{
 				_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 			},
 			{
 				_active: true,
 				_label: '3 Navigationspunkt',
 				_href: '#abc',
-				_icon: 'woodpecker',
+				_icon: 'icofont-woodpecker',
 				_children: [
-					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
+					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
 					{
 						_active: true,
 						_label: '3.3 Navigationspunkt',

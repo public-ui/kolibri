@@ -71,7 +71,7 @@ export const WithCta = (args: any) => (
 );
 WithCta.args = {
 	...DefaultArgs,
-	_icon: 'home',
+	_icon: 'icofont-home',
 	_iconOnly: true,
 };
 WithCta.storyName = 'Button-Group mit Styles';

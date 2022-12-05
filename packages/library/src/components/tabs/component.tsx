@@ -13,8 +13,6 @@ import { validateAlignment } from '../../utils/validators/alignment';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
-const PrerenderEvent = new CustomEvent('prerender');
-
 export type KoliBriTabsCallbacks = /* {
 	onClose?: true | EventValueCallback<Event, number>;
 } & */ {
@@ -73,13 +71,12 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: true,
 })
 export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	private clearConsole = false;
-	private hostElement?: HTMLElement;
+	private hostElement: HTMLElement | null = null;
 	private tabsElement?: HTMLElement;
-	private htmlDivElements?: HTMLCollection;
+	private htmlElements?: HTMLCollection;
 	private onCreateLabel = 'Neu …';
 	private showCreateTab = false;
-	private selectedTimeout: NodeJS.Timeout = setTimeout(() => undefined);
+	private selectedTimeout?: ReturnType<typeof setTimeout>;
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step: number): number => {
 		if (step > 0) {
@@ -101,7 +98,8 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	};
 
 	private onKeyDown = (event: KeyboardEvent) => {
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
+			clearTimeout(timeout);
 			let selectedIndex: number | null = null;
 			switch (event.key) {
 				case 'ArrowRight':
@@ -114,7 +112,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 			if (selectedIndex !== null) {
 				this.onSelect(event, selectedIndex, true);
 			}
-		}, 250);
+		});
 	};
 
 	private readonly onClickSelect = (event: PointerEvent, index: number): void => {
@@ -128,29 +126,6 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	private readonly onMouseDown = (event: Event): void => {
 		event.stopPropagation();
-	};
-
-	private readonly preRender = (): void => {
-		if (this.state._selected > 0 && this.state._selected > this.state._tabs.length - 1) {
-			if (this.state._tabs.length > 0) {
-				this.onSelect(PrerenderEvent, this.state._tabs.length - 1);
-			}
-			return <Host></Host>;
-		} else if (this.state._tabs.length > 0 && this.state._selected < this.state._tabs.length) {
-			/**
-			 * TODO: Hier gibt es noch ein Problem mit _disabled is undefined
-			 */
-			if (this.state._tabs[this.state._selected]?._disabled) {
-				let index = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, 1);
-				if (this.state._selected === index) {
-					index = this.nextPossibleTabIndex(this.state._tabs, this.state._selected, -1);
-				}
-				if (this._selected === index) {
-					devHint(`[KolTabs] Alle Tabs sind deaktiviert und somit kann kein Tab angezeigt werden.`);
-				}
-				this.onSelect(PrerenderEvent, index);
-			}
-		}
 	};
 
 	private renderButtonGroup() {
@@ -218,26 +193,13 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		);
 	}
 
-	private readonly setClearConsole = (clear: boolean) => {
-		this.clearConsole = clear;
+	private readonly catchHostElement = (el: HTMLElement | null) => {
+		this.hostElement = el;
 	};
 
 	public render(): JSX.Element {
-		this.preRender();
-		if (this.clearConsole) {
-			console.clear();
-		}
-		console.log(`Tab-Trace`);
-		console.log('Tab.preRender', this.preRender);
-		console.log('Tab.setClearConsole', this.setClearConsole);
-		console.log('Tab.props', this);
-		console.log('Tab.state', this.state);
 		return (
-			<Host
-				ref={(el) => {
-					this.hostElement = el as HTMLElement;
-				}}
-			>
+			<Host ref={this.catchHostElement}>
 				<div
 					ref={(el) => {
 						this.tabsElement = el as HTMLElement;
@@ -248,25 +210,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 				>
 					{this.renderButtonGroup()}
 					<div>
-						{this.state._tabs.map((_tab: TabButtonProps, index: number) => {
-							return (
-								<div
-									role="tabpanel"
-									id={`tabpanel-${index}`}
-									aria-labelledby={`tab-${index}`}
-									style={
-										this.state._selected !== index || _tab._disabled === true
-											? {
-													display: 'none',
-													visibility: 'hidden',
-											  }
-											: undefined
-									}
-								>
-									<slot name={`tab-${index}`} />
-								</div>
-							);
-						})}
+						<slot />
 					</div>
 				</div>
 			</Host>
@@ -286,7 +230,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _selected?: number = 0;
+	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
 
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
@@ -303,9 +247,56 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@State() public state: States = {
 		_ariaLabel: '…',
-		_tabsAlign: 'top',
 		_selected: 0,
 		_tabs: [],
+		_tabsAlign: 'top',
+	};
+
+	private selectNextNotDisabledTab = (selected: number, tabs: TabButtonProps[], upOrDown = true, initialSelected?: number): number => {
+		if (selected > tabs.length - 1) {
+			selected = tabs.length - 1;
+		}
+		if (selected < 0) {
+			selected = 0;
+		}
+		if (Array.isArray(tabs) && tabs[selected]) {
+			if (tabs[selected]._disabled) {
+				if (upOrDown === true) {
+					if (selected < tabs.length - 1) {
+						return this.selectNextNotDisabledTab(selected + 1, tabs, true, initialSelected || selected);
+					} else {
+						selected = initialSelected || selected;
+						upOrDown = false;
+					}
+				}
+				if (upOrDown === false) {
+					if (selected > 0) {
+						return this.selectNextNotDisabledTab(selected - 1, tabs, false, initialSelected || selected);
+					} else {
+						devHint(`[KolTabs] Alle Tabs sind deaktiviert und somit kann kein Tab angezeigt werden.`);
+					}
+				}
+			}
+		}
+		return selected;
+	};
+
+	private syncSelectedAndTabs = (nextValue: unknown, nextState: Map<string, unknown>, _component: Generic.Element.Component, key: string) => {
+		let selected: number;
+		if (key === '_selected') {
+			selected = nextValue as number;
+		} else {
+			selected = this.state._selected;
+		}
+		let tabs: TabButtonProps[];
+		if (key === '_tabs') {
+			tabs = nextValue as TabButtonProps[];
+		} else {
+			tabs = this.state._tabs;
+		}
+		if (tabs.length > 0) {
+			nextState.set('_selected', this.selectNextNotDisabledTab(selected, tabs));
+		}
 	};
 
 	/**
@@ -370,7 +361,11 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Watch('_selected')
 	public validateSelected(value?: number): void {
-		watchNumber(this, '_selected', value);
+		watchNumber(this, '_selected', value, {
+			hooks: {
+				beforePatch: this.syncSelectedAndTabs,
+			},
+		});
 	}
 
 	/**
@@ -382,7 +377,13 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 			this,
 			'_tabs',
 			(item: TabButtonProps) => typeof item === 'object' && item !== null && typeof item._label === 'string' && item._label.length > 0,
-			value
+			value,
+			undefined,
+			{
+				hooks: {
+					beforePatch: this.syncSelectedAndTabs,
+				},
+			}
 		);
 		uiUxHintMillerscheZahl('KolTabs', this.state._tabs.length);
 	}
@@ -408,10 +409,15 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	public componentDidRender(): void {
 		if (this.hostElement instanceof HTMLElement) {
-			this.htmlDivElements = this.hostElement?.children;
-			for (let i = 0; i < this.htmlDivElements.length; i++) {
-				if (this.htmlDivElements[i] instanceof HTMLElement) {
-					this.htmlDivElements[i].setAttribute('slot', `tab-${i}`);
+			this.htmlElements = this.hostElement?.children;
+			for (let i = 0; i < this.htmlElements.length; i++) {
+				this.htmlElements[i].setAttribute('aria-labelledby', `tab-${i}`);
+				this.htmlElements[i].setAttribute('id', `tabpanel-${i}`);
+				this.htmlElements[i].setAttribute('role', 'tabpanel');
+				if (i !== this.state._selected) {
+					this.htmlElements[i].setAttribute('hidden', '');
+				} else {
+					this.htmlElements[i].removeAttribute('hidden');
 				}
 			}
 		}
@@ -433,9 +439,9 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 					const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabsElement);
 					button?.focus();
 				}
-			}, 100);
+			});
 		}
-		// }, 0);
+		// });
 	}
 
 	// private onClose(button: TabButtonProps, event: Event, index: number) {
