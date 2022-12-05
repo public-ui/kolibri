@@ -29,7 +29,10 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
+          # cache: pnpm
           node-version: 16
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@public-oss,@public-ui'
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
@@ -50,6 +53,8 @@ jobs:
 
       - name: Install
         run: pnpm install --no-frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Unused
         run: npx lerna exec --stream -- ts-prune src -e
       - name: Format
