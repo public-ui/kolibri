@@ -45,11 +45,15 @@ jobs:
           npm i --legacy-peer-deps
           npm run build
         working-directory: packages/designer
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Build storybook
         run: |
           npm i --legacy-peer-deps
           npm run build
         working-directory: packages/storybook
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Copy designer to storybook
         run: cp -r ../designer/dist dist/designer
         working-directory: packages/storybook
