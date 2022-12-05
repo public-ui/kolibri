@@ -48,7 +48,7 @@
 		"@types/react-dom": "18.0.9",
 		"@unocss/preset-mini": "0.47.5",
 		"@unocss/webpack": "0.47.5",
-		"chromedriver": "107.0.3",
+		"chromedriver": "108.0.0",
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-react": "7.31.11",
 		"nightwatch-axe-verbose": "2.0.3",
