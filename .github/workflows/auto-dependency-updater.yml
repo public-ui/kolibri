@@ -59,6 +59,8 @@ jobs:
         run: npm run update
       - name: Reinstall dependencies
         run: npm run reinstall
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Commit changed files
         run: |
           git config --local user.email "action@github.com"
