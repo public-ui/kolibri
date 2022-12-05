@@ -8,13 +8,13 @@ specifiers:
   eslint: 8.29.0
   eslint-plugin-no-loops: 0.3.0
   prettier: 2.8.0
-  rxjs: 7.5.7
+  rxjs: 7.6.0
   typescript: 4.9.3
   unbuild: 1.0.1
 
 dependencies:
   '@a11y-ui/core': 1.0.1-rc.6
-  rxjs: 7.5.7
+  rxjs: 7.6.0
 
 devDependencies:
   '@types/node': 18.11.10
@@ -1777,8 +1777,8 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
-  /rxjs/7.5.7:
-    resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
+  /rxjs/7.6.0:
+    resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
     dependencies:
       tslib: 2.4.1
     dev: false

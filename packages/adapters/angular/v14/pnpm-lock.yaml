@@ -12,7 +12,7 @@ specifiers:
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.0
   rimraf: 3.0.2
-  rxjs: 7.5.7
+  rxjs: 7.6.0
   tslib: 2.4.1
   typescript: 4.8.4
   zone.js: 0.12.0
@@ -20,7 +20,7 @@ specifiers:
 devDependencies:
   '@angular/compiler': 14.2.12_@angular+core@14.2.12
   '@angular/compiler-cli': 14.2.12_xny3jupsupef4qvbeynwkkewkm
-  '@angular/core': 14.2.12_rxjs@7.5.7+zone.js@0.12.0
+  '@angular/core': 14.2.12_rxjs@7.6.0+zone.js@0.12.0
   '@public-ui/components': 1.1.13-rc.10
   '@public-ui/core': 1.1.13-rc.10
   '@types/minimatch': 5.1.2
@@ -29,7 +29,7 @@ devDependencies:
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.0
   rimraf: 3.0.2
-  rxjs: 7.5.7
+  rxjs: 7.6.0
   tslib: 2.4.1
   typescript: 4.8.4
   zone.js: 0.12.0
@@ -83,18 +83,18 @@ packages:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 14.2.12_rxjs@7.5.7+zone.js@0.12.0
+      '@angular/core': 14.2.12_rxjs@7.6.0+zone.js@0.12.0
       tslib: 2.4.1
     dev: true
 
-  /@angular/core/14.2.12_rxjs@7.5.7+zone.js@0.12.0:
+  /@angular/core/14.2.12_rxjs@7.6.0+zone.js@0.12.0:
     resolution: {integrity: sha512-sGQxU5u4uawwvJa6jOTmGoisJiQ5HIN/RoBw99CmoqZIVyUSg9IRJJC1KVdH8gbpWBNLkElZv21lwJTL/msWyg==}
     engines: {node: ^14.15.0 || >=16.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
       zone.js: ~0.11.4 || ~0.12.0
     dependencies:
-      rxjs: 7.5.7
+      rxjs: 7.6.0
       tslib: 2.4.1
       zone.js: 0.12.0
     dev: true
@@ -729,6 +729,12 @@ packages:
 
   /rxjs/7.5.7:
     resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
+    dependencies:
+      tslib: 2.4.1
+    dev: true
+
+  /rxjs/7.6.0:
+    resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
     dependencies:
       tslib: 2.4.1
     dev: true
