@@ -39,7 +39,7 @@ jobs:
           # cache: pnpm
           node-version: 16
           registry-url: '${{env.npmjs-registry}}'
-          scope: '@public-ui'
+          scope: '@public-oss,@public-ui'
       - name: Build designer
         run: |
           npm i --legacy-peer-deps
