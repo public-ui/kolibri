@@ -38,7 +38,7 @@
 		"@playwright/test": "1.28.1",
 		"@public-ui/components": "1.1.13-rc.8",
 		"@public-ui/core": "1.1.13-rc.8",
-		"@public-ui/react": "1.1.13-rc.8",
+		"@public-ui/react": "1.1.13-rc.9",
 		"@public-ui/themes": "1.1.13-rc.8",
 		"@types/react": "18.0.25",
 		"@types/node": "18.11.10",
