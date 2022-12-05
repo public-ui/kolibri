@@ -57,6 +57,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Update dependencies
         run: npm run update
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Reinstall dependencies
         run: npm run reinstall
         env:
