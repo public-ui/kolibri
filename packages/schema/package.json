@@ -18,7 +18,7 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"description": "The schema module includes the concrete specification of the accessible web component library KoliBri (@public-ui).",
+	"description": "The schema module includes the concrete specification of KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible components",

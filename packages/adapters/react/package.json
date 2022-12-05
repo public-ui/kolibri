@@ -18,7 +18,7 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"description": "React framework adapter for the accessible web component library KoliBri (@public-ui).",
+	"description": "React framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible components",

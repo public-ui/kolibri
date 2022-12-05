@@ -59,12 +59,6 @@ export const initialize = (): void => {
 
 		getDocument().body.appendChild(div);
 
-		Log.debug(
-			`Wer weiß, wie Intelligence im VS Code auch bei peerDependencies funktioniert?
-
-Autovervollständigung funktioniert bei uns nur mit Paketen, die auch in der package.json eingetragen sind unabhängig davon das sie in den node_modules liegen.`
-		);
-
 		if (getColorContrastAnalysis()) {
 			Log.debug('Color-Contrast-Analysis activated');
 			const timeout = setTimeout(() => {

@@ -19,7 +19,8 @@ import { THEME } from './theme';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/core';
-import { BAMF, BMF, BPA, BZST, DESY, ITVSH, ITZBund, MAPZ, NXT, TH, ZOLL } from '@public-ui/themes';
+import { TH } from '@public-oss/kolibri-themes';
+import { BAMF, BMF, BPA, BZST, DESY, ITVSH, ITZBund, MAPZ, NXT, ZOLL } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
 	// { name: 'BAMF-Styleguide', class: 'bamf', color: '', disabled: true },

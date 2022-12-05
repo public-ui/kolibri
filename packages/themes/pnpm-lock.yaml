@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/schema': 1.1.13-rc.8
+  '@public-ui/schema': 1.1.13-rc.9
   '@types/node': 18.11.10
   typescript: 4.9.3
   unbuild: 1.0.1
 
 dependencies:
-  '@public-ui/schema': 1.1.13-rc.8
+  '@public-ui/schema': 1.1.13-rc.9
 
 devDependencies:
   '@types/node': 18.11.10
@@ -16,8 +16,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.5:
-    resolution: {integrity: sha512-IrRfydVBjrbosroAzzvotwqBywwxEj/fQzNbeXQMvRbMOAiyLQGDPJ2XpXAyEsG6ibw/ct3HvPKMmDkq+xVWgg==}
+  /@a11y-ui/core/1.0.1-rc.6:
+    resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
     dependencies:
       loglevel: 1.8.1
     dev: false
@@ -305,17 +305,17 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@public-ui/core/1.1.13-rc.8:
-    resolution: {integrity: sha512-NlxaluWD/24nWJ35AVFvQIs2DGEkwueBOFSc3bQf4/xOCCFabxqrbOd8Haq6iO+2yjdB0T866r9fetdDg1F2xA==}
+  /@public-ui/core/1.1.13-rc.9:
+    resolution: {integrity: sha512-cDx/Md7W57dpU1iJCIsQF4MJPNfrslefB9lVLk4HsEnOkSuMY8e1tbk9qkIZiifLQWVZfdaRHARXNswydGDjow==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.5
+      '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.5.7
     dev: false
 
-  /@public-ui/schema/1.1.13-rc.8:
-    resolution: {integrity: sha512-A41al7HY7pycq9YlSo1c2oXqqync1qGuxYtm0z4j4ikE5dGsBTu2UB5qXxpaJZ6GkSuvsoa1Fbx08H8L8VHHhw==}
+  /@public-ui/schema/1.1.13-rc.9:
+    resolution: {integrity: sha512-c1KC0/3xJv9CKgAaEMdK/neO4JnMAwujgT2KWHvRKckm/4FOLKjaCsFmc8za+jaopqT+m8ewrs+Ffz2/ys7kMA==}
     dependencies:
-      '@public-ui/core': 1.1.13-rc.8
+      '@public-ui/core': 1.1.13-rc.9
     dev: false
 
   /@rollup/plugin-alias/4.0.2_rollup@3.5.1:

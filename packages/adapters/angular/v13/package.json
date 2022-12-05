@@ -19,7 +19,7 @@
 		}
 	],
 	"sideEffects": false,
-	"description": "Angular (v13) framework adapter for the accessible web component library KoliBri (@public-ui).",
+	"description": "Angular (v13) framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible components",

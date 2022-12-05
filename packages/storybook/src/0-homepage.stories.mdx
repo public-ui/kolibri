@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
+import { KoliBri } from './snippets/kolibri';
 import {
 	KolAbbr,
 	KolAlert,
@@ -36,12 +37,20 @@ import {
 	</div>
 	<KolAlert _type="info">
 		<KolLink _href="iframe.html?id=theming--page" _target="_self">
-			<strong> Erfahren Sie hier, wieso KoliBri so hilfreich ist.</strong>
+			<strong>
+				{' '}
+				Erfahren Sie hier, wieso <KoliBri /> so hilfreich ist.
+			</strong>
 		</KolLink>
 	</KolAlert>
-	<KolHeading className="col-12">Willkommen bei KoliBri</KolHeading>
+	<KolHeading className="col-12">
+		Willkommen bei <KoliBri />
+	</KolHeading>
 	<p className="col-12">
-		<kol-abbr _title="Komponenten-Bibliothek für die Barrierefreiheit">KoliBri</kol-abbr> steht für{' '}
+		<strong>
+			<KoliBri />
+		</strong>{' '}
+		steht für{' '}
 		<b>
 			<u>Ko</u>
 		</b>
@@ -62,13 +71,19 @@ import {
 		Vision
 	</KolHeading>
 	<p className="col-12">
-		Wir werden <b>wiederverwendbare barrierefreie Web Components</b> haben, die die Usability verbessern.
+		Wir machen <strong>HTML</strong> mittels <strong>wiederverwendbaren Web Components barrierefrei</strong>, um die <strong>Usability</strong> und{' '}
+		<strong>Zugänglichkeit</strong> zu verbessern.
 	</p>
 	<KolHeading className="col-12" _level={2}>
 		Mission
 	</KolHeading>
 	<p className="col-12">
-		KoliBri baut direkt auf den{' '}
+		Der{' '}
+		<kol-link _href="https://www.w3.org/html" _target="w3c">
+			HTML-Webstandard
+		</kol-link>{' '}
+		ist an sich sehr "offen" spezifiziert, um möglichst langlebig und robust zu sein. Es kommt daher häufig vor, das HTML-Kompositionen nicht ohne Weiteres
+		barrierefrei, semantisch und valide sind. <KoliBri /> baut direkt auf den{' '}
 		<kol-link _href="https://www.w3.org/standards/webdesign/" _target="w3c">
 			Webstandards
 		</kol-link>{' '}
@@ -85,15 +100,30 @@ import {
 			BITV
 		</kol-link>{' '}
 		für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei fachlichen Bezug und keine
-		Datenübertragungsfunktionalitäten. Damit ist KoliBri für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher
+		Datenübertragungsfunktionalitäten. Damit ist <KoliBri /> für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher
 		Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
+	</p>
+	<KolHeading className="col-12" _level="2">
+		Kollaboration und Kooperation
+	</KolHeading>
+	<p>
+		Der <strong>Fokus</strong> von <KoliBri /> liegt auf <strong>kleinen</strong> (atomaren), sehr <strong>flexiblen</strong> und gut{' '}
+		<strong>wiederverwendbaren</strong> HTML-Kompositionen (z.B. Button). Wir bieten eine barrierefreie, semantische und valide Standard-Implementierung solcher
+		Komponenten an, die für jede höherwertige HTML-Struktur oder Komponente (Molekül, Organismus oder Template) wiederverwendet werden können.
+	</p>
+	<p>
+		Bei diesen atomaren Komponenten sollten wir <strong>kollaborieren</strong> und <strong>kooperieren</strong>, um unsere Fähigkeiten und unser Wissen zu
+		bündeln. Durch die Synergieeffekte an den Basis-Komponenten kann der eigene Fokus mehr auf fachspezifische Inhalte gelegt werden.
+	</p>
+	<p>
+		Lasst <strong>uns</strong> dazu <strong>gemeinsam</strong> <KoliBri /> <strong>besser</strong> und <strong>bunter</strong> machen!
 	</p>
 	<KolHeading className="col-12" _level="2">
 		Lizenz
 	</KolHeading>
 	<p className="col-12">
-		<strong>KoliBri</strong> wird unter der <strong>EUROPEAN UNION PUBLIC LICENCE v1.2</strong> Open Source freigegeben. Folgende Aspekte sind insbesondere
-		dadurch berücksichtigt:
+		<KoliBri /> wird unter der <strong>EUROPEAN UNION PUBLIC LICENCE v1.2</strong> Open Source freigegeben. Folgende Aspekte sind insbesondere dadurch
+		berücksichtigt:
 		<br />
 		<ul>
 			<li>
@@ -108,7 +138,7 @@ import {
 				<strong>Gewährleistungs- und Haftungsausschluss:</strong> Mit der Wiederverwendung gehen keinerlei Gewährleistung und Haftungsansprüche einher.
 			</li>
 			<li>
-				<strong>„Copyleft“-Klausel:</strong> Copyleft besagt, dass jede Kopie von KoliBri (Fork) wieder unter der selben oder einer kompatiblen Open
+				<strong>„Copyleft“-Klausel:</strong> Copyleft besagt, dass jede Kopie von <KoliBri /> (Fork) wieder unter der selben oder einer kompatiblen Open
 				Source-Lizenz veröffentlicht werden muss.
 			</li>
 		</ul>
@@ -117,26 +147,27 @@ import {
 		Abgrenzung
 	</KolHeading>
 	<p className="col-12">
-		Um <strong>KoliBri</strong> richtig einzusetzen, ist es wichtig zu wissen, wo es seine Potenziale entfaltet. <strong>KoliBri</strong> ist vielseitig
-		wiederverwendbar, weil das Styling vollkommen entkoppelt wurde und das Rendering client- aber auch server-seitig möglich ist.
+		Um <KoliBri /> richtig einzusetzen, ist es wichtig zu wissen, wo es seine Potenziale entfaltet. <KoliBri /> ist vielseitig wiederverwendbar, weil das
+		Styling vollkommen entkoppelt wurde und das Rendering client- aber auch server-seitig möglich ist.
 	</p>
 	<KolHeading className="col-12" _level={3}>
 		Styling
 	</KolHeading>
 	<p className="col-12">
-		<strong>KoliBri</strong> ist kein CSS-Framework und auch kein Design System, sondern eine Bibliothek aus häufig verwendeten Komponenten, die Anforderungen
-		an die Barrierefreiheit und Usability haben. Um diese Anforderungen nicht immer wieder neu betrachten zu müssen, schafft <strong>KoliBri</strong> mittels
-		Web Components hier einen übergreifenden einheitlichen Standard für alle Styleguides.
+		<KoliBri /> ist kein CSS-Framework und auch kein Design System, sondern eine Bibliothek aus häufig verwendeten Komponenten, die Anforderungen an die
+		Barrierefreiheit und Usability haben. Um diese Anforderungen nicht immer wieder neu betrachten zu müssen, schafft <KoliBri /> mittels Web Components hier
+		einen übergreifenden einheitlichen Standard für alle Styleguides.
 	</p>
 	<p className="col-12">
-		Je mehr relevante Komponenten gefunden und umsetzten werden, desto wertschöpfender wird der Nutzen für alle webbasierten Projekte. <strong>KoliBri</strong>{' '}
-		zielt jedoch nicht darauf ab, Komponenten ohne Anforderungen an Barrierefreiheit und Usability umzusetzen. Dazu kann Standard HTML und CSS oder alternative
+		Je mehr relevante Komponenten gefunden und umsetzten werden, desto wertschöpfender wird der Nutzen für alle webbasierten Projekte. <KoliBri /> zielt jedoch
+		nicht darauf ab, Komponenten ohne Anforderungen an Barrierefreiheit und Usability umzusetzen. Dazu kann Standard HTML und CSS oder alternative
 		CSS-Frameworks verwendet werden.
 	</p>
 	<p className="col-12">
 		<KolAlert _type="success">
-			<strong>KoliBri</strong>-Komponenten lassen sich nahtlos in vorhandene Webseiten oder Webanwendungen integrieren und bringen ihren Style(guide) selbst mit
-			und kapseln diesen nahezu vollständig von Außen ab.
+			<KoliBri />
+			-Komponenten lassen sich nahtlos in vorhandene Webseiten oder Webanwendungen integrieren und bringen ihren Style(guide) selbst mit und kapseln diesen nahezu
+			vollständig von Außen ab.
 		</KolAlert>
 	</p>
 	<KolHeading className="col-12" _level={3}>
@@ -179,7 +210,7 @@ import {
 		Versionierung
 	</KolHeading>
 	<p className="col-12">
-		<strong>KoliBri</strong> folgt den Prinzipien des semantischen Versionierens.
+		<KoliBri /> folgt den Prinzipien des semantischen Versionierens.
 	</p>
 	<p className="col-12">
 		Aufbau einer Version:
@@ -231,7 +262,7 @@ import {
 		Qualitätsziele
 	</KolHeading>
 	<p className="col-12">
-		In der folgenden Tabelle werden die priorisierten Qualitäten von <strong>KoliBri</strong> aufgelistet:
+		In der folgenden Tabelle werden die priorisierten Qualitäten von <KoliBri /> aufgelistet:
 	</p>
 	<KolTable
 		className="col-12"
@@ -301,11 +332,11 @@ import {
 		Geräte-, Betriebssystem-, Browser- und Screenreader-Anforderungen
 	</KolHeading>
 	<p className="col-12">
-		<strong>KoliBri</strong> ist für die Umsetzung beliebiger webbasierter Benutzeroberflächen vorgesehen und soll auf allen modernen Geräten (PC, Tablet,
-		Mobil), Betriebssystemen (Windows, Linux, MaxOS, Android, iOS) und standardkonformen Browsern eingesetzt werden können.
+		<KoliBri /> ist für die Umsetzung beliebiger webbasierter Benutzeroberflächen vorgesehen und soll auf allen modernen Geräten (PC, Tablet, Mobil),
+		Betriebssystemen (Windows, Linux, MaxOS, Android, iOS) und standardkonformen Browsern eingesetzt werden können.
 		<br />
-		Der Microsoft Internet Explorer wird explizit nicht unterstützt, um das Projekt und die Entwicklung nicht durch Altlasten zu schwächen.{' '}
-		<strong>KoliBri</strong> investiert stattdessen konziquent in die Zukunft.
+		Der Microsoft Internet Explorer wird explizit nicht unterstützt, um das Projekt und die Entwicklung nicht durch Altlasten zu schwächen. <KoliBri />{' '}
+		investiert stattdessen konziquent in die Zukunft.
 	</p>
 	<KolTable
 		className="col-12"
@@ -370,7 +401,9 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=get-started--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fas fa-paper-plane" />
-					<span>Auf der verlinkten Seite wird beschrieben, wie Sie KoliBri in Ihr Projekt integrieren können.</span>
+					<span>
+						Auf der verlinkten Seite wird beschrieben, wie Sie <KoliBri /> in Ihr Projekt integrieren können.
+					</span>
 				</div>
 			</KolLink>
 		</KolCard>
@@ -380,7 +413,9 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=frameworks--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fa-solid fa-toolbox" />
-					<span>Es gibt unterschiedliche Frameworks mit denen Sie KoliBri einsetzen können.</span>
+					<span>
+						Es gibt unterschiedliche Frameworks mit denen Sie <KoliBri /> einsetzen können.
+					</span>
 				</div>
 			</KolLink>
 		</KolCard>
@@ -391,7 +426,7 @@ import {
     			<div className="d-flex gap-4 py-2">
     				<KolIconIcofont className="homepage" _icon="icofont-tools-bag" />
     				<span>
-    					KoliBri ist nicht nur eine Komponenten-Bibliothek, sondern hat auch zahlreiche Features unter der Haube, die die Barrierefreiheit unterstützen.
+    					<KoliBri /> ist nicht nur eine Komponenten-Bibliothek, sondern hat auch zahlreiche Features unter der Haube, die die Barrierefreiheit unterstützen.
     				</span>
     			</div>
     		</KolLink>
@@ -402,7 +437,7 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=hilfe-faq--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fas fa-question-circle" />
-					<span>Die KoliBri-Komponenten sind sehr flexibel einsetzbar. Erfahren Sie, was u.a. in der realen Anwendungsentwicklung alles möglich ist.</span>
+					<span>Die <KoliBri />-Komponenten sind sehr flexibel einsetzbar. Erfahren Sie, was u.a. in der realen Anwendungsentwicklung alles möglich ist.</span>
 				</div>
 			</KolLink>
 		</KolCard>
@@ -412,7 +447,7 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=demo-anwendung--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIconIcofont className="homepage" _icon="icofont-dashboard-web" />
-					<span>Wir entwickeln parallel eine repräsentative Demo-Anwendung auf Basis von KoliBri.</span>
+					<span>Wir entwickeln parallel eine repräsentative Demo-Anwendung auf Basis von <KoliBri />.</span>
 				</div>
 			</KolLink>
 		</KolCard>
@@ -422,7 +457,9 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=changelog--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fas fa-history" />
-					<span>Auf der verlinkten Seite werden alle Änderungen in den Versionen von KoliBri aufgelistet.</span>
+					<span>
+						Auf der verlinkten Seite werden alle Änderungen in den Versionen von <KoliBri /> aufgelistet.
+					</span>
 				</div>
 			</KolLink>
 		</KolCard>
@@ -432,7 +469,9 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="https://github.com/public-ui/kolibri" _target="github">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fa-brands fa-github" />
-					<span>KoliBri ist jetzt Open Source und soll durch Feedback verbessert und erweitert werden.</span>
+					<span>
+						<KoliBri /> ist jetzt Open Source und soll durch Feedback verbessert und erweitert werden.
+					</span>
 				</div>
 			</KolLink>
 		</KolCard>
@@ -445,7 +484,9 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=accessibility--page" _target="_self">
 				<div className="d-flex gap-4">
 					<KolIcon className="homepage" _icon="fas fa-universal-access" />
-					<span>Auf der verlinkten Seite erfahren Sie mehr zum Thema Barrierefreiheit und dem BIK BITV-Test in KoliBri.</span>
+					<span>
+						Auf der verlinkten Seite erfahren Sie mehr zum Thema Barrierefreiheit und dem BIK BITV-Test in <KoliBri />.
+					</span>
 				</div>
 			</KolLink>
 		</KolCard>
@@ -455,7 +496,7 @@ import {
     		<KolLink slot="content" _useCase="nav" _href="iframe.html?id=test--page" _target="_self">
     			<div className="d-flex gap-4">
     				<KolIcon className="homepage" _icon="fas fa-stethoscope" />
-    				<span>Auf der verlinkten Seite erfahren Sie mehr zum gesamten Thema Testen in KoliBri.</span>
+    				<span>Auf der verlinkten Seite erfahren Sie mehr zum gesamten Thema Testen in <KoliBri />.</span>
     			</div>
     		</KolLink>
     	</KolCard>
@@ -465,7 +506,10 @@ import {
 			<KolLink slot="content" _useCase="nav" _href="iframe.html?id=theming--page" _target="_self">
 				<div className="d-flex gap-4 py-2">
 					<KolIcon className="homepage" _icon="fas fa-paint-brush" />
-					<span>Mittels des KoliBri-Designers ist es möglich die barrierefreien Komponenten an einen Styleguide anzupassen.</span>
+					<span>
+						Mittels des <KoliBri />
+						-Designers ist es möglich die barrierefreien Komponenten an einen Styleguide anzupassen.
+					</span>
 				</div>
 			</KolLink>
 		</KolCard>

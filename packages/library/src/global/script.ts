@@ -6,14 +6,19 @@ import { Log } from '../utils/dev.utils';
 
 // ts-prune-ignore-next
 export default (): void => {
-	Log.info(`
+	Log.info(
+		`
 ,--. ,--.         ,--. ,--. ,-----.           ,--.
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-     - the accessible web component library -
-`);
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
+`,
+		{
+			forceLog: true,
+		}
+	);
 
 	setMode((elm) => {
 		if (elm.shadowRoot instanceof ShadowRoot) {

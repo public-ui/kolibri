@@ -9,5 +9,4 @@ export * from './itvsh';
 export * from './itzbund';
 export * from './mapz';
 export * from './nxt';
-export * from './th';
 export * from './zoll';
