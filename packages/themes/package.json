@@ -42,7 +42,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.13-rc.8"
+		"@public-ui/schema": "1.1.13-rc.9"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.10",
