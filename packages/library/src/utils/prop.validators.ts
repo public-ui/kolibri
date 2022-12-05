@@ -267,12 +267,12 @@ export const stringifyJson = (value: unknown): string => {
 	}
 };
 
-const JSON_CHARS = /[\\[\\{]/;
+const JSON_CHARS = /[\[\{]/;
 export const parseJson = <T>(value: unknown): T => {
-	if (typeof value === 'string' && JSON_CHARS.test(value)) {
-		try {
-			return JSON.parse(value);
-		} catch (error) {
+	try {
+		return JSON.parse(value);
+	} catch (error) {
+	  if (typeof value === 'string' && JSON_CHARS.test(value)) {	
 			try {
 				return JSON.parse(value.replace(/'/g, '"'));
 			} catch (error) {
