@@ -53,6 +53,8 @@ jobs:
         run: git checkout -b chore/auto-update-deps
       - name: Install tools
         run: npm i lerna npm-check-updates --no-save
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Update dependencies
         run: npm run update
       - name: Reinstall dependencies
