@@ -120,7 +120,7 @@
 		"rgba-convert": "0.3.0",
 		"rimraf": "3.0.2",
 		"stencil-awesome-test": "1.0.4",
-		"terser": "5.16.0",
+		"terser": "5.16.1",
 		"tslib": "2.4.1",
 		"typescript": "4.9.3",
 		"wcag-contrast": "3.0.0"
