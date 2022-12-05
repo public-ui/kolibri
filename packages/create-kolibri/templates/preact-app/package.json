@@ -31,10 +31,10 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.1.13",
-		"@public-ui/core": "1.1.13",
-		"@public-ui/react": "1.1.13",
-		"@public-ui/themes": "1.1.13",
+		"@public-ui/components": "1.1.14-rc.0",
+		"@public-ui/core": "1.1.14-rc.0",
+		"@public-ui/react": "1.1.14-rc.0",
+		"@public-ui/themes": "1.1.14-rc.0",
 		"ajv": "8.11.2",
 		"preact": "10.11.3"
 	},
