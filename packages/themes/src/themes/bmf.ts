@@ -69,4 +69,5 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-BUTTON-LINK':
 		'button {/*min-width: 44px;min-height: 44px;*/color: var(--color-midnight);font-style: normal;font-weight: 400;display: inline-flex;line-height: 1.5em;text-decoration-line: underline;background: none;cursor: pointer;border: 0;border-radius: 0.25rem;}button:hover {text-decoration-thickness: 0.25em;}button:visited {color: var(--visited);}kol-icon {padding: 0 0.25em;display: inline-block;}.hidden {display: none;visibility: hidden;}:host button.skip {left: -99999px;overflow: hidden;position: absolute;z-index: 9999999;line-height: 1em;}:host button.skip:focus {background: white;left: unset;position: unset;}',
 	'KOL-ICON': KOL_ICON,
+	'KOL-ABBR': 'abbr {text-decoration: none;border-bottom: dotted var(--color-metal) 1px;}',
 });

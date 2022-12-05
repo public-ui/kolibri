@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@a11y-ui/core': 1.0.1-rc.5
+  '@a11y-ui/core': 1.0.1-rc.6
   '@types/node': 18.11.10
   '@typescript-eslint/eslint-plugin': 5.45.0
   '@typescript-eslint/parser': 5.45.0
@@ -13,7 +13,7 @@ specifiers:
   unbuild: 1.0.1
 
 dependencies:
-  '@a11y-ui/core': 1.0.1-rc.5
+  '@a11y-ui/core': 1.0.1-rc.6
   rxjs: 7.5.7
 
 devDependencies:
@@ -28,8 +28,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.5:
-    resolution: {integrity: sha512-IrRfydVBjrbosroAzzvotwqBywwxEj/fQzNbeXQMvRbMOAiyLQGDPJ2XpXAyEsG6ibw/ct3HvPKMmDkq+xVWgg==}
+  /@a11y-ui/core/1.0.1-rc.6:
+    resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
     dependencies:
       loglevel: 1.8.1
     dev: false
