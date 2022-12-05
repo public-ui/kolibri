@@ -43,7 +43,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.13-rc.8",
+		"@public-ui/core": "1.1.13-rc.9",
 		"@public-ui/components": "1.1.13-rc.8",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
