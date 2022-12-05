@@ -45,7 +45,7 @@
 		"@playwright/test": "1.28.1",
 		"@unocss/preset-mini": "0.47.5",
 		"@unocss/webpack": "0.47.5",
-		"chromedriver": "107.0.3",
+		"chromedriver": "108.0.0",
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"nightwatch-axe-verbose": "2.0.3",
 		"npm-check-updates": "16.4.3",
