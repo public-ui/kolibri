@@ -26,7 +26,7 @@
 		"@a11y-ui/core": "1.0.0-rc.21",
 		"@public-ui/components": "1.1.14-rc.0",
 		"@public-ui/core": "1.1.14-rc.0",
-		"@types/node": "18.11.10",
+		"@types/node": "18.11.11",
 		"eslint": "8.28.0",
 		"npm-check-updates": "16.4.3",
 		"prettier": "2.8.0",
