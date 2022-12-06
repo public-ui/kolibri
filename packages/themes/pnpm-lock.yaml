@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@public-ui/schema': 1.1.14-rc.0
-  '@types/node': 18.11.10
+  '@types/node': 18.11.11
   typescript: 4.9.3
   unbuild: 1.0.1
 
@@ -10,7 +10,7 @@ dependencies:
   '@public-ui/schema': 1.1.14-rc.0
 
 devDependencies:
-  '@types/node': 18.11.10
+  '@types/node': 18.11.11
   typescript: 4.9.3
   unbuild: 1.0.1
 
@@ -413,8 +413,8 @@ packages:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
-  /@types/node/18.11.10:
-    resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
+  /@types/node/18.11.11:
+    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
     dev: true
 
   /@types/resolve/1.20.2:
