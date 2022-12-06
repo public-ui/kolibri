@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "1.1.13",
+	"version": "1.1.14-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -21,17 +21,26 @@
 	"description": "Contains the style guides and themes of various corporate designs for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
-		"accessible components",
+		"accessible",
 		"bitv",
-		"components",
-		"component framework",
-		"component library",
-		"corporate designs",
-		"design system",
-		"style guide",
-		"ui framework",
-		"ui library",
-		"web components"
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag"
 	],
 	"scripts": {
 		"build": "unbuild",
@@ -42,7 +51,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.13"
+		"@public-ui/schema": "1.1.14-rc.0"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.10",
@@ -50,7 +59,7 @@
 		"unbuild": "1.0.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.13"
+		"@public-ui/components": "1.1.14-rc.0"
 	},
 	"sideEffects": false,
 	"type": "module",

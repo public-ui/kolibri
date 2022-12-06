@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v13",
-	"version": "1.1.13",
+	"version": "1.1.14-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -22,17 +22,27 @@
 	"description": "Angular (v13) framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
-		"accessible components",
-		"angular",
+		"accessible",
 		"bitv",
-		"components",
-		"component framework",
-		"component library",
-		"design system",
-		"style guide",
-		"ui framework",
-		"ui library",
-		"web components"
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag",
+		"angular"
 	],
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
@@ -61,8 +71,8 @@
 		"@angular/compiler-cli": "13.3.12",
 		"@angular/compiler": "13.3.12",
 		"@angular/core": "13.3.12",
-		"@public-ui/core": "1.1.13",
-		"@public-ui/components": "1.1.13",
+		"@public-ui/core": "1.1.14-rc.0",
+		"@public-ui/components": "1.1.14-rc.0",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.10",
@@ -76,7 +86,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "^13",
-		"@public-ui/components": "1.1.13"
+		"@public-ui/components": "1.1.14-rc.0"
 	},
 	"files": [
 		"dist/"

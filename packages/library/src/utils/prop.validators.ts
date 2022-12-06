@@ -267,9 +267,8 @@ export const stringifyJson = (value: unknown): string => {
 	}
 };
 
-const JSON_CHARS = /[\\[\\{]/;
 export const parseJson = <T>(value: unknown): T => {
-	if (typeof value === 'string' && JSON_CHARS.test(value)) {
+	if (typeof value === 'string') {
 		try {
 			return JSON.parse(value);
 		} catch (error) {

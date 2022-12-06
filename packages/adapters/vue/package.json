@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/vue",
-	"version": "1.1.13",
+	"version": "1.1.14-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -21,17 +21,27 @@
 	"description": "Vue framework adapter for the KoliBri accessible web component library (@public-ui).",
 	"keywords": [
 		"accessibility",
-		"accessible components",
+		"accessible",
 		"bitv",
-		"components",
-		"component framework",
-		"component library",
-		"design system",
-		"style guide",
-		"ui framework",
-		"ui library",
-		"vue",
-		"web components"
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag",
+		"vue"
 	],
 	"scripts": {
 		"build": "unbuild",
@@ -43,8 +53,8 @@
 	},
 	"devDependencies": {
 		"@babel/types": "7.20.5",
-		"@public-ui/core": "1.1.13",
-		"@public-ui/components": "1.1.13",
+		"@public-ui/core": "1.1.14-rc.0",
+		"@public-ui/components": "1.1.14-rc.0",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.10",
@@ -54,7 +64,7 @@
 		"unbuild": "1.0.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.13",
+		"@public-ui/components": "1.1.14-rc.0",
 		"vue": ">=3"
 	},
 	"sideEffects": false,

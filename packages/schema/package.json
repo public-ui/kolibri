@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/schema",
-	"version": "1.1.13",
+	"version": "1.1.14-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -21,18 +21,26 @@
 	"description": "The schema module includes the concrete specification of KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
-		"accessible components",
+		"accessible",
 		"bitv",
-		"components",
-		"component framework",
-		"component library",
-		"design system",
-		"schema",
-		"schematic",
-		"style guide",
-		"ui framework",
-		"ui library",
-		"web components"
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag"
 	],
 	"scripts": {
 		"build": "unbuild",
@@ -43,7 +51,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/core": "1.1.13"
+		"@public-ui/core": "1.1.14-rc.0"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.10",

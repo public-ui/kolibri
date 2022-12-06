@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.13-rc.10
+  '@public-ui/core': 1.1.14-rc.0
   '@types/node': 18.11.10
   typescript: 4.9.3
   unbuild: 1.0.1
 
 dependencies:
-  '@public-ui/core': 1.1.13-rc.10
+  '@public-ui/core': 1.1.14-rc.0
 
 devDependencies:
   '@types/node': 18.11.10
@@ -305,11 +305,11 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/core/1.1.13-rc.10:
-    resolution: {integrity: sha512-0paiERWiNSF4ubDgmNA0xvdw+5jHbcMueJJOOpDv3+deGBdesTqVPkqWGPpNfqPkxM6KkpQQ94RQEUY4lTLJpA==}
+  /@public-ui/core/1.1.14-rc.0:
+    resolution: {integrity: sha512-EF/HmAblF9JrAayWwX5fSQHc2y+0tSCGJB8NwR1eLMeuupRC2zTGa3jOCycUmuK/pXAwbmF60rnHRemNEsOgVw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
-      rxjs: 7.5.7
+      rxjs: 7.6.0
     dev: false
 
   /@rollup/plugin-alias/4.0.2_rollup@3.5.1:
@@ -1163,8 +1163,8 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
-  /rxjs/7.5.7:
-    resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
+  /rxjs/7.6.0:
+    resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
     dependencies:
       tslib: 2.4.1
     dev: false
