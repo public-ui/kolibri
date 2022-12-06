@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/svelte",
-	"version": "1.1.14-rc.0",
+	"version": "1.1.14",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -65,8 +65,8 @@
 	"devDependencies": {
 		"@babel/types": "7.20.5",
 		"@a11y-ui/core": "1.0.0-rc.21",
-		"@public-ui/core": "1.1.14-rc.0",
-		"@public-ui/components": "1.1.14-rc.0",
+		"@public-ui/core": "1.1.14",
+		"@public-ui/components": "1.1.14",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.11",
@@ -76,7 +76,7 @@
 		"typescript": "4.9.3"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.14-rc.0",
+		"@public-ui/components": "1.1.14",
 		"svelte": ">=3"
 	},
 	"files": [
