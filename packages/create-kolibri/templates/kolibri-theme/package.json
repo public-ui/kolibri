@@ -27,7 +27,7 @@
 		"@public-ui/components": "1.1.14-rc.0",
 		"@public-ui/core": "1.1.14-rc.0",
 		"@types/node": "18.11.11",
-		"eslint": "8.28.0",
+		"eslint": "8.29.0",
 		"npm-check-updates": "16.4.3",
 		"prettier": "2.8.0",
 		"ts-prune": "0.10.3",
