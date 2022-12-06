@@ -2,6 +2,9 @@ name: Publish
 
 env:
   access: public
+  github-registry: https://npm.pkg.github.com
+  github-token: ${{ secrets.GITHUB_TOKEN }}
+  npmjs-registry: https://registry.npmjs.org
   npmjs-token: ${{ secrets.NPMJS_TOKEN }}
   npmjs-tag: next
 
@@ -34,6 +37,8 @@ jobs:
         with:
           # cache: pnpm
           node-version: 16
+          registry-url: '${{env.npmjs-registry}}'
+          scope: '@public-ui'
       - name: Build and publish core
         run: |
           npm i
