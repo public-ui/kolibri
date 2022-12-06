@@ -38,4 +38,3 @@ Thumbs.db
 /node_modules
 *.log
 .DS_Store
-pnpm-lock.yaml
