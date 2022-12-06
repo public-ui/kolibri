@@ -32,7 +32,7 @@ jobs:
           # cache: pnpm
           node-version: 16
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@public-oss,@public-ui'
+          scope: '@public-ui'
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
@@ -53,8 +53,6 @@ jobs:
 
       - name: Install
         run: pnpm install --no-frozen-lockfile
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Unused
         run: npx lerna exec --stream -- ts-prune src -e
       - name: Format

@@ -32,7 +32,7 @@ jobs:
           # cache: pnpm
           node-version: 16
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@public-oss,@public-ui'
+          scope: '@public-ui'
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
@@ -56,16 +56,10 @@ jobs:
         run: git checkout -b chore/auto-update-deps
       - name: Install tools
         run: npm i lerna npm-check-updates --no-save
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Update dependencies
         run: npm run update
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Reinstall dependencies
         run: npm run reinstall
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Commit changed files
         run: |
           git config --local user.email "action@github.com"
