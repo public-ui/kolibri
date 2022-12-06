@@ -66,7 +66,12 @@ jobs:
           npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
         working-directory: packages/themes
         env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}        working-directory: packages/adapters/angular/v11
+          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
+      - name: Build and publish adapter angular v11
+        run: |
+          npm i
+          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
+        working-directory: packages/adapters/angular/v11
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish adapter angular v12
