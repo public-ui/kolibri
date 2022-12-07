@@ -38,7 +38,7 @@ export class KolDetails implements Generic.Element.ComponentApi<RequiredProps, O
 					open={this.state._open}
 				>
 					<summary onClick={this.onClick}>
-						{this.state._open ? <kol-icon-icofont _ariaLabel="" _icon={'rounded-down'} /> : <kol-icon-icofont _ariaLabel="" _icon={'rounded-right'} />}
+						{this.state._open ? <kol-icon-icofont _ariaLabel="" _icon={'fa-solid fa-angle-down'} /> : <kol-icon-icofont _ariaLabel="" _icon={'fa-solid fa-angle-right'} />}
 						<span>{this.state._summary}</span>
 					</summary>
 					<kol-indented-text>
