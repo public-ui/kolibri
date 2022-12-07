@@ -229,10 +229,10 @@ if (process.env.NODE_ENV === 'production') {
 		{
 			type: 'dist-custom-elements',
 		},
-		{
-			type: 'dist-custom-elements-bundle',
-			externalRuntime: false,
-		},
+		// {
+		// 	type: 'dist-custom-elements-bundle',
+		// 	externalRuntime: false,
+		// },
 		// {
 		// 	// https://stenciljs.com/docs/hydrate-app
 		// 	type: 'dist-hydrate-script',

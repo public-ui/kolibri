@@ -6,10 +6,8 @@ import { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
-import { solidOutputTarget } from '@stencil/solid-output-target';
-import { vueOutputTarget } from '@stencil/vue-output-target';
 
-const TAGS = ['my-example'];
+const TAGS = ['my-example', 'my-example-wc'];
 const EXCLUDE_TAGS = [];
 const BUNDLES: {
 	components: string[];
@@ -19,18 +17,6 @@ TAGS.forEach((tag) => {
 		components: [tag],
 	});
 });
-// console.log(TAGS, TAGS.length);
-
-// const util = require('util');
-// async function generateCSPHashes(config: Config, compilerCtx: any, buildCtx: any, docs: any): Promise<void> {
-//   // console.log('config', config.bundles);
-//   // console.log('compilerCtx', util.inspect(compilerCtx.moduleMap, { depth: 1 }));
-//   console.log('buildCtx', util.inspect(buildCtx.components, { depth: 1 }));
-//   return new Promise((resolve: Function) => {
-//     // require('./hashing')();
-//     resolve();
-//   });
-// }
 
 async function generateCustomElementsJson(docsData: JsonDocs) {
 	const jsonData = {
@@ -115,43 +101,20 @@ if (process.env.NODE_ENV === 'production') {
 			directivesProxyFile: '../adapters/angular/src/components.ts',
 			includeImportCustomElements: false,
 		}),
-		// preactOutputTarget({
-		//   componentCorePackage: '@public-ui/components',
-		//   excludeComponents: EXCLUDE_TAGS,
-		//   proxiesFile: '../adapters/preact/src/index.ts',
-		//   includeDefineCustomElements: false,
-		// }),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
 			proxiesFile: '../adapters/react/src/index.ts',
 			includeDefineCustomElements: false,
 		}),
-		solidOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/solid/src/index.ts',
-			includeDefineCustomElements: false,
-		}),
-		// svelteOutputTarget({
-		// 	componentCorePackage: '@public-ui/components',
-		// 	excludeComponents: EXCLUDE_TAGS,
-		// 	proxiesFile: '../adapters/svelte/src/index.ts',
-		// 	includeDefineCustomElements: false,
-		// }),
-		vueOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/vue/src/index.ts',
-			includeDefineCustomElements: false,
-		}),
 		{
 			type: 'dist-custom-elements',
+			generateTypeDeclarations: true,
 		},
-		{
-			type: 'dist-custom-elements-bundle',
-			externalRuntime: false,
-		},
+		// {
+		// 	type: 'dist-custom-elements-bundle',
+		// 	externalRuntime: false,
+		// },
 		// {
 		// 	// https://stenciljs.com/docs/hydrate-app
 		// 	type: 'dist-hydrate-script',
@@ -195,24 +158,15 @@ export const config: Config = {
 	hashFileNames: false,
 	bundles: BUNDLES,
 	globalScript: 'src/global/script.ts',
-	// globalStyle: 'src/global/style.css',
-	namespace: '{{kebab name}}',
+	globalStyle: 'src/global/style.css',
+	namespace: 'stencil-ssr',
 	preamble: 'Web component library based on KoliBri.',
 	outputTargets: outputTargets,
-	plugins: [
-		sass(),
-		postcss({
-			plugins: [
-				// require('postcss-windicss'),
-				require('./node_martin/postcss-windicss')({
-					touchMode: 'insert-comment',
-				}),
-			],
-		}),
-	],
+	plugins: [sass(), postcss()],
 	rollupPlugins: {
 		before: [],
 		after: [],
 	},
+	sourceMap: true,
 	taskQueue: 'immediate',
 };

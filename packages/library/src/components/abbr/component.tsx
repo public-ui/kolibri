@@ -2,6 +2,7 @@ import { Generic } from '@public-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
+import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { TooltipAlignment } from '../tooltip/component';
 
@@ -28,6 +29,8 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: true,
 })
 export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+	private readonly nonce = nonce();
+
 	public render(): JSX.Element {
 		return (
 			<Host
@@ -35,12 +38,12 @@ export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, Opti
 					display: 'inline-block',
 				}}
 			>
-				<abbr title={this.state._title}>
+				<abbr aria-labelledby={this.nonce} role="definition" title={this.state._title}>
 					<span title="">
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip _align={this.state._tooltipAlign} _label={this.state._title}></kol-tooltip>
+				<kol-tooltip _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._title}></kol-tooltip>
 			</Host>
 		);
 	}

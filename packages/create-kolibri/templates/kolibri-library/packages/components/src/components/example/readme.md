@@ -2,26 +2,27 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property              | Attribute | Description                          | Type     | Default     |
-| --------------------- | --------- | ------------------------------------ | -------- | ----------- |
-| `_label` _(required)_ | `_label`  | Gibt die Examplesnummer als Text an. | `string` | `undefined` |
+| Property              | Attribute | Description                | Type     | Default     |
+| --------------------- | --------- | -------------------------- | -------- | ----------- |
+| `_label` _(required)_ | `_label`  | Gibt den Text des Span an. | `string` | `undefined` |
+
 
 ## Dependencies
 
-### Depends on
+### Used by
 
-- [kol-badge](../badge)
+ - [my-example](.)
 
 ### Graph
-
 ```mermaid
 graph TD;
-  my-example --> kol-badge
-  kol-badge --> kol-icon-icofont
-  kol-icon-icofont --> kol-icon
-  style my-example fill:#f9f,stroke:#333,stroke-width:4px
+  my-example --> my-example-wc
+  style my-example-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+
