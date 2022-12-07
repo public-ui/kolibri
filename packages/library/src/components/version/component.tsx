@@ -26,7 +26,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolVersion implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
-		return <kol-badge _color={Farbspektrum.Hellgrau} _icon={'infinite'} _label={`v${this.state._version}`} />;
+		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="fa-solid fa-infinite" _label={`v${this.state._version}`} />;
 	}
 
 	/**
