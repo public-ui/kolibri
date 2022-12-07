@@ -34,7 +34,6 @@
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
 		"start": "npm run serve -- --open",
 		"-test": "cross-env NODE_ENV=test mocha",
-		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing",
 		"prepack": "npm run build",
@@ -54,7 +53,7 @@
 		"monaco-editor": "0.34.1",
 		"monaco-editor-webpack-plugin": "7.0.1",
 		"register-service-worker": "1.7.2",
-		"solid-js": "1.6.2",
+		"solid-js": "1.6.3",
 		"world_countries_lists": "2.6.0"
 	},
 	"devDependencies": {
@@ -70,7 +69,6 @@
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-no-loops": "0.3.0",
 		"nightwatch-axe-verbose": "2.0.3",
-		"npm-check-updates": "16.4.3",
 		"playwright": "1.28.1",
 		"prettier": "2.8.0",
 		"rimraf": "3.0.2",

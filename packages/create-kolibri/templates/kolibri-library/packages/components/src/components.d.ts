@@ -12,6 +12,12 @@ export namespace Components {
          */
         "_label": string;
     }
+    interface MyExampleWc {
+        /**
+          * Gibt den Text des Span an.
+         */
+        "_label": string;
+    }
 }
 declare global {
     interface HTMLMyExampleElement extends Components.MyExample, HTMLStencilElement {
@@ -20,8 +26,15 @@ declare global {
         prototype: HTMLMyExampleElement;
         new (): HTMLMyExampleElement;
     };
+    interface HTMLMyExampleWcElement extends Components.MyExampleWc, HTMLStencilElement {
+    }
+    var HTMLMyExampleWcElement: {
+        prototype: HTMLMyExampleWcElement;
+        new (): HTMLMyExampleWcElement;
+    };
     interface HTMLElementTagNameMap {
         "my-example": HTMLMyExampleElement;
+        "my-example-wc": HTMLMyExampleWcElement;
     }
 }
 declare namespace LocalJSX {
@@ -31,8 +44,15 @@ declare namespace LocalJSX {
          */
         "_label": string;
     }
+    interface MyExampleWc {
+        /**
+          * Gibt den Text des Span an.
+         */
+        "_label": string;
+    }
     interface IntrinsicElements {
         "my-example": MyExample;
+        "my-example-wc": MyExampleWc;
     }
 }
 export { LocalJSX as JSX };
@@ -40,6 +60,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-example": LocalJSX.MyExample & JSXBase.HTMLAttributes<HTMLMyExampleElement>;
+            "my-example-wc": LocalJSX.MyExampleWc & JSXBase.HTMLAttributes<HTMLMyExampleWcElement>;
         }
     }
 }

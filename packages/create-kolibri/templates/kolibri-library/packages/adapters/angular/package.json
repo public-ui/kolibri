@@ -1,5 +1,5 @@
 {
-	"name": "@{{kebab name}}/angular",
+	"name": "@stencil-ssr/angular",
 	"version": "0.0.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -9,13 +9,13 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"author": {
-		"name": "{{author}}",
-		"email": "{{email}}"
+		"name": "Martin Oppitz",
+		"email": "github@martinoppitz.com"
 	},
 	"contributors": [
 		{
-			"name": "{{author}}",
-			"email": "{{email}}"
+			"name": "Martin Oppitz",
+			"email": "github@martinoppitz.com"
 		}
 	],
 	"sideEffects": false,

@@ -1,46 +1,24 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
+import { OptionalProps, OptionalStates, RequiredProps, RequiredStates, States } from './schema';
 
 /**
- * API
+ * @internal
  */
-type RequiredProps = {
-	label: string;
-};
-type OptionalProps = unknown;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
 @Component({
-	tag: 'my-example',
-	styleUrls: {
-		default: '../style.sass',
-	},
-	shadow: true,
+	tag: 'my-example-wc',
+	shadow: false,
 })
-export class MyExample implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class MyExampleWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
-		return (
-			<div class="grid gap-2">
-				<kol-kolibri
-					style=\{{
-						display: 'inline-block',
-						width: '100px',
-					}}
-				></kol-kolibri>
-				<span>{this.state._label}</span>
-			</div>
-		);
+		return <span>{this.state._label}</span>;
 	}
 
 	/**
 	 * Gibt den Text des Span an.
 	 */
-	@Prop({ reflect: true }) public _label!: string;
+	@Prop() public _label!: string;
 
 	@State() public state: States = {
 		_label: '',

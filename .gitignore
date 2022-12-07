@@ -1,5 +1,5 @@
 /.husky/
-/license-reports/
+/license-reports/*.html
 cjs/
 dist/
 esm/
