@@ -123,7 +123,7 @@
 		"mathjs": "11.5.0",
 		"postcss": "8.4.19",
 		"postcss-windicss": "1.0.0",
-		"prettier": "2.8.0",
+		"prettier": "2.8.1",
 		"puppeteer": "19.3.0",
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
