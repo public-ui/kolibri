@@ -267,16 +267,20 @@ export const stringifyJson = (value: unknown): string => {
 	}
 };
 
+const JSON_CHARS = /^[{[]/; // string starts with { or [
 export const parseJson = <T>(value: unknown): T => {
 	if (typeof value === 'string') {
 		try {
+			// "null", "true", "false", "0" works too
 			return JSON.parse(value);
 		} catch (error) {
-			try {
-				return JSON.parse(value.replace(/'/g, '"'));
-			} catch (error) {
-				Log.warn(['parseJson', value]);
-				Log.error(`↑ Der JSON-String konnte nicht geparsed werden. Achten Sie darauf, dass einfache Anführungszeichen im Text maskiert werden (&#8216;).`);
+			if (JSON_CHARS.test(value)) {
+				try {
+					return JSON.parse(value.replace(/'/g, '"'));
+				} catch (error) {
+					Log.warn(['parseJson', value]);
+					Log.error(`↑ Der JSON-String konnte nicht geparsed werden. Achten Sie darauf, dass einfache Anführungszeichen im Text maskiert werden (&#8216;).`);
+				}
 			}
 		}
 	}

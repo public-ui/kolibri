@@ -75,7 +75,6 @@ Setzen Sie das Attribut `aria-label` um eine optimale Barrierefreiheit zu erziel
 ### Used by
 
 - [kol-breadcrumb](../breadcrumb)
-- [kol-details](../details)
 
 ### Depends on
 
@@ -87,7 +86,6 @@ Setzen Sie das Attribut `aria-label` um eine optimale Barrierefreiheit zu erziel
 graph TD;
   kol-icon-icofont --> kol-icon
   kol-breadcrumb --> kol-icon-icofont
-  kol-details --> kol-icon-icofont
   style kol-icon-icofont fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

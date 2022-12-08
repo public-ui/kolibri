@@ -98,16 +98,15 @@ Verwenden Sie das Attribut `_summary`, um den Text zu definieren, der als Übers
 
 ### Depends on
 
-- [kol-icon-icofont](../icon-icofont)
+- [kol-icon](../icon)
 - [kol-indented-text](../indented-text)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-details --> kol-icon-icofont
+  kol-details --> kol-icon
   kol-details --> kol-indented-text
-  kol-icon-icofont --> kol-icon
   style kol-details fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -2,7 +2,6 @@ import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/
 
 import { Generic } from '@public-ui/core';
 import { Stringified } from '../../types/common';
-import { Icofont } from '../../types/icofont';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
 import { NavLinkProps } from '../link/component';
@@ -45,17 +44,17 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
-								<kol-icon-icofont _ariaLabel="" _icon="home" />…
+								<kol-icon _ariaLabel="" _icon="fa-solid fa-house" />…
 							</li>
 						)}
 						{this.state._links.map((link, index: number) => {
 							return (
 								<li key={index}>
-									{index !== 0 && <kol-icon-icofont _ariaLabel="" _icon="rounded-right" _part="separator" exportparts="separator" />}
+									{index !== 0 && <kol-icon _ariaLabel="" _icon="fa-solid fa-angle-right" _part="separator" exportparts="separator" />}
 									{index === lastIndex ? (
 										<span>
 											{link._iconOnly ? (
-												<kol-icon-icofont _ariaLabel={link._label as string} _icon={link._icon as Icofont} />
+												<kol-icon _ariaLabel={link._label as string} _icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'} />
 											) : (
 												<Fragment>{link._label}</Fragment>
 											)}
