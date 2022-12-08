@@ -103,7 +103,7 @@
 		"serve": "14.1.2",
 		"storybook-addon-themes": "6.1.0",
 		"storybook-addon-turbo-build": "1.1.0",
-		"typescript": "4.9.3",
+		"typescript": "4.9.4",
 		"vite": "3.2.5",
 		"webpack": "5.75.0",
 		"webpack-pwa-manifest": "4.3.0",
