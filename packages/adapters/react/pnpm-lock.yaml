@@ -11,7 +11,7 @@ specifiers:
   '@types/react-dom': 18.0.9
   react: 18.2.0
   react-dom: 18.2.0
-  typescript: 4.9.3
+  typescript: 4.9.4
   unbuild: 0.8.11
 
 devDependencies:
@@ -25,7 +25,7 @@ devDependencies:
   '@types/react-dom': 18.0.9
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  typescript: 4.9.3
+  typescript: 4.9.4
   unbuild: 0.8.11
 
 packages:
@@ -1316,7 +1316,7 @@ packages:
     hasBin: true
     dev: true
 
-  /mkdist/0.3.13_typescript@4.9.3:
+  /mkdist/0.3.13_typescript@4.9.4:
     resolution: {integrity: sha512-+eCPpkr8l2X630y5PIlkts2tzYEsb+aGIgXdrQv9ZGtWE2bLlD6kVIFfI6FJwFpjjw4dPPyorxQc6Uhm/oXlvg==}
     hasBin: true
     peerDependencies:
@@ -1332,7 +1332,7 @@ packages:
       jiti: 1.16.0
       mri: 1.2.0
       pathe: 0.2.0
-      typescript: 4.9.3
+      typescript: 4.9.4
     dev: true
 
   /mlly/0.5.17:
@@ -1470,7 +1470,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-dts/4.2.3_k35zwyycrckt5xfsejji7kbwn4:
+  /rollup-plugin-dts/4.2.3_ntuob3xud5wukob6phfmz2mbyy:
     resolution: {integrity: sha512-jlcpItqM2efqfIiKzDB/IKOS9E9fDvbkJSGw5GtK/PqPGS9eC3R3JKyw2VvpTktZA+TNgJRMu1NTv244aTUzzQ==}
     engines: {node: '>=v12.22.12'}
     peerDependencies:
@@ -1479,7 +1479,7 @@ packages:
     dependencies:
       magic-string: 0.26.7
       rollup: 2.79.1
-      typescript: 4.9.3
+      typescript: 4.9.4
     optionalDependencies:
       '@babel/code-frame': 7.18.6
     dev: true
@@ -1580,8 +1580,8 @@ packages:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
     dev: true
 
-  /typescript/4.9.3:
-    resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
+  /typescript/4.9.4:
+    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
@@ -1609,7 +1609,7 @@ packages:
       jiti: 1.16.0
       magic-string: 0.26.7
       mkdirp: 1.0.4
-      mkdist: 0.3.13_typescript@4.9.3
+      mkdist: 0.3.13_typescript@4.9.4
       mlly: 0.5.17
       mri: 1.2.0
       pathe: 0.3.9
@@ -1617,10 +1617,10 @@ packages:
       pretty-bytes: 6.0.0
       rimraf: 3.0.2
       rollup: 2.79.1
-      rollup-plugin-dts: 4.2.3_k35zwyycrckt5xfsejji7kbwn4
+      rollup-plugin-dts: 4.2.3_ntuob3xud5wukob6phfmz2mbyy
       rollup-plugin-esbuild: 4.10.3_osll3rp5qcgz3xpbsuvgt47rre
       scule: 0.3.2
-      typescript: 4.9.3
+      typescript: 4.9.4
       untyped: 0.5.0
     transitivePeerDependencies:
       - supports-color

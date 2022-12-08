@@ -70,10 +70,10 @@
 		"eslint-plugin-no-loops": "0.3.0",
 		"nightwatch-axe-verbose": "2.0.3",
 		"playwright": "1.28.1",
-		"prettier": "2.8.0",
+		"prettier": "2.8.1",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
-		"typescript": "4.9.3",
+		"typescript": "4.9.4",
 		"webpack-pwa-manifest": "4.3.0",
 		"workbox-webpack-plugin": "6.5.4"
 	},
