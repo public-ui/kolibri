@@ -115,16 +115,15 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 ### Depends on
 
-- [kol-icon-icofont](../icon-icofont)
+- [kol-icon](../icon)
 - [kol-link](../link)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-breadcrumb --> kol-icon-icofont
+  kol-breadcrumb --> kol-icon
   kol-breadcrumb --> kol-link
-  kol-icon-icofont --> kol-icon
   kol-link --> kol-link-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip

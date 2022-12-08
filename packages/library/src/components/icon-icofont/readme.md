@@ -72,11 +72,6 @@ Setzen Sie das Attribut `aria-label` um eine optimale Barrierefreiheit zu erziel
 
 ## Dependencies
 
-### Used by
-
-- [kol-breadcrumb](../breadcrumb)
-- [kol-details](../details)
-
 ### Depends on
 
 - [kol-icon](../icon)
@@ -86,8 +81,6 @@ Setzen Sie das Attribut `aria-label` um eine optimale Barrierefreiheit zu erziel
 ```mermaid
 graph TD;
   kol-icon-icofont --> kol-icon
-  kol-breadcrumb --> kol-icon-icofont
-  kol-details --> kol-icon-icofont
   style kol-icon-icofont fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
