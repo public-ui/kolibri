@@ -78,6 +78,7 @@ Referenz: <https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden>
 
 - [kol-accordion](../accordion)
 - [kol-alert](../alert)
+- [kol-breadcrumb](../breadcrumb)
 - [kol-details](../details)
 - [kol-icon-font-awesome](../icon-font-awesome)
 - [kol-icon-icofont](../icon-icofont)
@@ -91,6 +92,7 @@ Referenz: <https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden>
 graph TD;
   kol-accordion --> kol-icon
   kol-alert --> kol-icon
+  kol-breadcrumb --> kol-icon
   kol-details --> kol-icon
   kol-icon-font-awesome --> kol-icon
   kol-icon-icofont --> kol-icon
