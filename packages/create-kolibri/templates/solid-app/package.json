@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@public-ui/components": "1.1.15-rc.0",
 		"@public-ui/core": "1.1.15-rc.0",
-		"@public-ui/solid": "1.1.15-rc.0",
+		"@public-ui/solid": "1.1.15-rc.1",
 		"@public-ui/themes": "1.1.15-rc.0",
 		"ajv": "8.11.2",
 		"solid-js": "1.6.3"
