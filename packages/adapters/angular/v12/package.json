@@ -71,11 +71,11 @@
 		"@angular/compiler-cli": "12.2.17",
 		"@angular/compiler": "12.2.17",
 		"@angular/core": "12.2.17",
-		"@public-ui/core": "1.1.15-rc.0",
-		"@public-ui/components": "1.1.15-rc.0",
+		"@public-ui/core": "1.1.15-rc.1",
+		"@public-ui/components": "1.1.15-rc.1",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "18.11.11",
+		"@types/node": "18.11.12",
 		"@types/normalize-package-data": "2.4.1",
 		"prettier": "2.8.1",
 		"rimraf": "3.0.2",
@@ -86,7 +86,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "^12",
-		"@public-ui/components": "1.1.15-rc.0"
+		"@public-ui/components": "1.1.15-rc.1"
 	},
 	"files": [
 		"dist/"
