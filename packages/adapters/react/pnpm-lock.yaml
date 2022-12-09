@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.15-rc.0
-  '@public-ui/core': 1.1.15-rc.0
+  '@public-ui/components': 1.1.15-rc.1
+  '@public-ui/core': 1.1.15-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.11
+  '@types/node': 18.11.12
   '@types/normalize-package-data': 2.4.1
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
@@ -15,11 +15,11 @@ specifiers:
   unbuild: 0.8.11
 
 devDependencies:
-  '@public-ui/components': 1.1.15-rc.0
-  '@public-ui/core': 1.1.15-rc.0
+  '@public-ui/components': 1.1.15-rc.1
+  '@public-ui/core': 1.1.15-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.11
+  '@types/node': 18.11.12
   '@types/normalize-package-data': 2.4.1
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
@@ -328,23 +328,23 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/components/1.1.15-rc.0:
-    resolution: {integrity: sha512-mQfnmctnw1SzGbx9ixW9vpTAtWZacawAqtnAdFOurSEau+WOVSqDDwjZ58OHf7dxHua2jvI9A4FoVy72uca2Ng==}
+  /@public-ui/components/1.1.15-rc.1:
+    resolution: {integrity: sha512-UYr6N3a9uM5vKUzB7sDqebiS6LEg8W2Zw3/aY49XAujrCOLQhspcxIXecVcsIFWoybWx/yr/Wj83N8AuTSM+9Q==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.0
+      '@public-ui/schema': 1.1.15-rc.1
     dev: true
 
-  /@public-ui/core/1.1.15-rc.0:
-    resolution: {integrity: sha512-xLHfSp6rFESkN5tXZzxmuOqUk257gwOBgeyqjGO7zWMDCZSM9gmc9iCMyROFAR0Y+YJcRTTV7epbzSAAK3Ndig==}
+  /@public-ui/core/1.1.15-rc.1:
+    resolution: {integrity: sha512-80xUdz297Ll9UcLYtMfIB7teY7+CS+YRVid6Zs3DF8GYtOu+804IaMzcNHArPF9pMyVrqLQR5kJKWUlWjqQE5w==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
     dev: true
 
-  /@public-ui/schema/1.1.15-rc.0:
-    resolution: {integrity: sha512-yIdJ24uI9OmCws7XZrdEC5LKaHVRcqE1Y3R+w955kPy309yr2W56XGwfXYsmHHJl64aObzqx3XEf/NFDmkId2A==}
+  /@public-ui/schema/1.1.15-rc.1:
+    resolution: {integrity: sha512-C2YjOimcoV0zXoKt48Mc8Nm7GDlBwm68Xn/88wnAKQJyL5Ea8jgh/BsjppH1I9QAhBEsTWvI4PsqyJqg4TKr0Q==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.0
+      '@public-ui/core': 1.1.15-rc.1
     dev: true
 
   /@rollup/plugin-alias/3.1.9_rollup@2.79.1:
@@ -443,8 +443,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.11:
-    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
+  /@types/node/18.11.12:
+    resolution: {integrity: sha512-FgD3NtTAKvyMmD44T07zz2fEf+OKwutgBCEVM8GcvMGVGaDktiLNTDvPwC/LUe3PinMW+X6CuLOF2Ui1mAlSXg==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -472,7 +472,7 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.12
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -544,8 +544,8 @@ packages:
       supports-color: 5.5.0
     dev: true
 
-  /chalk/5.1.2:
-    resolution: {integrity: sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==}
+  /chalk/5.2.0:
+    resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: true
 
@@ -1600,7 +1600,7 @@ packages:
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
       '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
       '@rollup/pluginutils': 4.2.1
-      chalk: 5.1.2
+      chalk: 5.2.0
       consola: 2.15.3
       defu: 6.1.1
       esbuild: 0.15.18
