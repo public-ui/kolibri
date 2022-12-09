@@ -406,6 +406,31 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			}
 			dataField.push(dataRow);
 		}
+		if (data.length === 0) {
+			let colspan = 0;
+			let rowspan = 0;
+			if (Array.isArray(headers.horizontal) && headers.horizontal.length > 0) {
+				headers.horizontal[0].forEach((col) => {
+					colspan += col.colSpan || 1;
+				});
+			}
+			if (Array.isArray(headers.vertical) && headers.vertical.length > 0) {
+				colspan -= headers.vertical.length;
+				headers.vertical[0].forEach((row) => {
+					rowspan += row.rowSpan || 1;
+				});
+			}
+			const emptyCell = {
+				label: 'Es sind keine Einträge vorhanden.',
+				colSpan: colspan,
+				rowSpan: Math.max(rowspan, 1),
+			};
+			if (dataField.length === 0) {
+				dataField.push([emptyCell]);
+			} else {
+				dataField[0].push(emptyCell);
+			}
+		}
 		return dataField;
 	}
 
@@ -467,6 +492,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			this.state._pagination._page || 1
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
+
+		console.log('dataField', dataField);
 
 		return (
 			<Host>
@@ -697,15 +724,11 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 					</table>
 				</div>
 				{this.showPagination && (
-					<div class="pagination">
-						{Array.isArray(this.state._data) && this.state._data.length > 0 ? (
-							<span>
-								Einträge {this.pageStartSlice + 1} bis {this.pageEndSlice} von{' '}
-								{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
-							</span>
-						) : (
-							<span>Es sind keine Einträge vorhanden.</span>
-						)}
+					<div>
+						<span>
+							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
+							{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
+						</span>
 						<div>
 							<kol-pagination
 								_boundaryCount={this.state._pagination._boundaryCount}
