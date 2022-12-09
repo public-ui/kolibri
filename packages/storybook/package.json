@@ -91,7 +91,7 @@
 		"eslint": "8.29.0",
 		"eslint-plugin-json": "3.1.0",
 		"esm": "3.2.25",
-		"lit-html": "2.4.0",
+		"lit-html": "2.5.0",
 		"mermaid": "9.2.2",
 		"postcss": "8.4.19",
 		"prettier": "2.8.1",
