@@ -8,7 +8,7 @@
 		"ncu:major": "ncu && lerna exec --stream -- ncu",
 		"ncu:minor": "ncu -t minor -u && lerna exec --stream -- ncu -t minor -u -x rxjs,typescript,unbuild,zone.js",
 		"ncu:patch": "ncu -t patch -u && lerna exec --stream -- ncu -t patch -u -x unbuild",
-		"pack": "lerna exec --stream -- npm pack",
+		"pack": "npx lerna exec --ignore @public-ui/storybook --stream -- npm pack && npx lerna exec --scope @public-ui/storybook --stream -- npm pack",
 		"postinstall": "lerna exec --stream -- pnpm i --no-frozen-lockfile",
 		"prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npx lerna run lint\" && husky add .husky/pre-commit \"npx lerna run format\" && husky add .husky/pre-commit \"pnpm ts-prune\"",
 		"publish": "lerna exec --stream -- pnpm publish",
