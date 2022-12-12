@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@types/node': 18.11.11
+  '@types/node': 18.11.13
   cpy-cli: 4.2.0
   create-create-cli: 7.3.2
   kleur: 4.1.5
@@ -17,7 +17,7 @@ dependencies:
   npm-run-all: 4.1.5
 
 devDependencies:
-  '@types/node': 18.11.11
+  '@types/node': 18.11.13
   rimraf: 3.0.2
   tsup: 6.5.0_typescript@4.9.4
   typescript: 4.9.4
@@ -92,8 +92,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: false
 
-  /@types/node/18.11.11:
-    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
+  /@types/node/18.11.13:
+    resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:

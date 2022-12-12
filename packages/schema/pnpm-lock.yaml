@@ -1,16 +1,16 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.15-rc.0
-  '@types/node': 18.11.11
+  '@public-ui/core': 1.1.15-rc.1
+  '@types/node': 18.11.13
   typescript: 4.9.4
   unbuild: 1.0.2
 
 dependencies:
-  '@public-ui/core': 1.1.15-rc.0
+  '@public-ui/core': 1.1.15-rc.1
 
 devDependencies:
-  '@types/node': 18.11.11
+  '@types/node': 18.11.13
   typescript: 4.9.4
   unbuild: 1.0.2
 
@@ -305,8 +305,8 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/core/1.1.15-rc.0:
-    resolution: {integrity: sha512-xLHfSp6rFESkN5tXZzxmuOqUk257gwOBgeyqjGO7zWMDCZSM9gmc9iCMyROFAR0Y+YJcRTTV7epbzSAAK3Ndig==}
+  /@public-ui/core/1.1.15-rc.1:
+    resolution: {integrity: sha512-80xUdz297Ll9UcLYtMfIB7teY7+CS+YRVid6Zs3DF8GYtOu+804IaMzcNHArPF9pMyVrqLQR5kJKWUlWjqQE5w==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
@@ -407,8 +407,8 @@ packages:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
-  /@types/node/18.11.11:
-    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
+  /@types/node/18.11.13:
+    resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
     dev: true
 
   /@types/resolve/1.20.2:

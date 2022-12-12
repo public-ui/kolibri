@@ -242,7 +242,7 @@ export const watchJsonArrayString = <T>(
 					}
 				} else {
 					objectObjectHandler(value, () => {
-						// console.log(value);
+						console.log(value);
 						throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
 					});
 				}
@@ -255,6 +255,29 @@ export const watchJsonArrayString = <T>(
 			}
 		});
 	});
+};
+
+const BOOLEAN = /^(true|false)$/;
+const INTEGER = /^-?\d+$/;
+const FLOAT = /^-?\d+(.\d+)$/;
+export const mapString2Unknown = (value: unknown) => {
+	if (typeof value === 'string') {
+		if (BOOLEAN.test(value)) {
+			value = value === 'true';
+		} else if (INTEGER.test(value)) {
+			value = parseInt(value);
+		} else if (FLOAT.test(value)) {
+			value = parseFloat(value);
+		} else {
+			try {
+				value = parseJson<unknown>(value);
+				// eslint-disable-next-line no-empty
+			} catch (e) {
+				// value behält den ursprünglichen Wert
+			}
+		}
+	}
+	return value;
 };
 
 export const stringifyJson = (value: unknown): string => {

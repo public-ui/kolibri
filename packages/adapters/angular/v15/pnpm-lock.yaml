@@ -4,11 +4,11 @@ specifiers:
   '@angular/compiler': 15.0.3
   '@angular/compiler-cli': 15.0.3
   '@angular/core': 15.0.3
-  '@public-ui/components': 1.1.15-rc.0
-  '@public-ui/core': 1.1.15-rc.0
+  '@public-ui/components': 1.1.15-rc.1
+  '@public-ui/core': 1.1.15-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.11
+  '@types/node': 18.11.13
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.1
   rimraf: 3.0.2
@@ -21,11 +21,11 @@ devDependencies:
   '@angular/compiler': 15.0.3_@angular+core@15.0.3
   '@angular/compiler-cli': 15.0.3_7alg5wbopreirhy2b5clk22gia
   '@angular/core': 15.0.3_rxjs@7.6.0+zone.js@0.12.0
-  '@public-ui/components': 1.1.15-rc.0
-  '@public-ui/core': 1.1.15-rc.0
+  '@public-ui/components': 1.1.15-rc.1
+  '@public-ui/core': 1.1.15-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.11
+  '@types/node': 18.11.13
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.1
   rimraf: 3.0.2
@@ -330,23 +330,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.1.15-rc.0:
-    resolution: {integrity: sha512-mQfnmctnw1SzGbx9ixW9vpTAtWZacawAqtnAdFOurSEau+WOVSqDDwjZ58OHf7dxHua2jvI9A4FoVy72uca2Ng==}
+  /@public-ui/components/1.1.15-rc.1:
+    resolution: {integrity: sha512-UYr6N3a9uM5vKUzB7sDqebiS6LEg8W2Zw3/aY49XAujrCOLQhspcxIXecVcsIFWoybWx/yr/Wj83N8AuTSM+9Q==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.0
+      '@public-ui/schema': 1.1.15-rc.1
     dev: true
 
-  /@public-ui/core/1.1.15-rc.0:
-    resolution: {integrity: sha512-xLHfSp6rFESkN5tXZzxmuOqUk257gwOBgeyqjGO7zWMDCZSM9gmc9iCMyROFAR0Y+YJcRTTV7epbzSAAK3Ndig==}
+  /@public-ui/core/1.1.15-rc.1:
+    resolution: {integrity: sha512-80xUdz297Ll9UcLYtMfIB7teY7+CS+YRVid6Zs3DF8GYtOu+804IaMzcNHArPF9pMyVrqLQR5kJKWUlWjqQE5w==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
     dev: true
 
-  /@public-ui/schema/1.1.15-rc.0:
-    resolution: {integrity: sha512-yIdJ24uI9OmCws7XZrdEC5LKaHVRcqE1Y3R+w955kPy309yr2W56XGwfXYsmHHJl64aObzqx3XEf/NFDmkId2A==}
+  /@public-ui/schema/1.1.15-rc.1:
+    resolution: {integrity: sha512-C2YjOimcoV0zXoKt48Mc8Nm7GDlBwm68Xn/88wnAKQJyL5Ea8jgh/BsjppH1I9QAhBEsTWvI4PsqyJqg4TKr0Q==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.0
+      '@public-ui/core': 1.1.15-rc.1
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -357,8 +357,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.11:
-    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
+  /@types/node/18.11.13:
+    resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:

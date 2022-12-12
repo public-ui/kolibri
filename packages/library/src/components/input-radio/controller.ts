@@ -2,7 +2,7 @@ import { Generic } from '@public-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
-import { setState, watchBoolean, watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
+import { mapString2Unknown, setState, watchBoolean, watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
@@ -66,8 +66,8 @@ export class InputRadioController extends InputCheckboxRadioController implement
 
 	public readonly getOptionByKey = (key: string): Option<unknown> | undefined => this.keyOptionMap.get(key);
 
-	private readonly isValueInOptions = (value: string, options: Option<unknown>[]): boolean => {
-		return options.find((option) => typeof option.value === 'string' && option.value === value) !== undefined;
+	private readonly isValueInOptions = (value: unknown, options: Option<unknown>[]): boolean => {
+		return options.find((option) => option.value === value) !== undefined;
 	};
 
 	protected readonly beforePatchListValue = (_value: unknown, nextState: Map<string, unknown>): void => {
@@ -76,7 +76,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 			this.keyOptionMap.clear();
 			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<unknown>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
-			if (this.isValueInOptions(value as string, list as Option<unknown>[]) === false) {
+			if (this.isValueInOptions(value, list as Option<unknown>[]) === false) {
 				const newValue = (
 					list[0] as {
 						value: string;
@@ -125,7 +125,9 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateValue(value?: string): void {
+	public validateValue(value?: Stringified<unknown>): void {
+		value = mapString2Unknown(value);
+		value = Array.isArray(value) ? value[0] : value;
 		setState(this.component, '_value', value, {
 			beforePatch: this.beforePatchListValue,
 		});
