@@ -69,7 +69,7 @@
 		"@public-ui/components": "1.1.15-rc.1",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "18.11.11",
+		"@types/node": "18.11.13",
 		"@types/normalize-package-data": "2.4.1",
 		"rimraf": "3.0.2",
 		"svelte": "3.54.0",
