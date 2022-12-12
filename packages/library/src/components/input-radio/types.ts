@@ -23,7 +23,7 @@ type OptionalProps = {
 	required: boolean;
 	tabIndex: number;
 	touched: boolean;
-	value: string;
+	value: Stringified<unknown>;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -44,7 +44,7 @@ type OptionalStates = {
 	required: boolean;
 	tabIndex: number;
 	touched: boolean;
-	value: string;
+	value: Stringified<unknown>;
 };
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;

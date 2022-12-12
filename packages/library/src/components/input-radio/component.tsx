@@ -51,7 +51,13 @@ export class KolInputRadio implements ComponentApi {
 								_required={this.state._required}
 								_touched={this.state._touched}
 							>
-								<div slot="input">
+								<div
+									slot="input"
+									style={{
+										border: '1px solid',
+									}}
+								>
+									{this.state._value} === {JSON.stringify(option)}
 									<input
 										aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
@@ -170,9 +176,9 @@ export class KolInputRadio implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt den Wert der Radio an.
+	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
 	 */
-	@Prop() public _value?: string;
+	@Prop() public _value?: Stringified<number | boolean | unknown[] | object>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -304,7 +310,7 @@ export class KolInputRadio implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_value')
-	public validateValue(value?: string): void {
+	public validateValue(value?: Stringified<unknown>): void {
 		this.controller.validateValue(value);
 	}
 

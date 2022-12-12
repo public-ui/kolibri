@@ -1135,9 +1135,9 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert der Radio an.
+          * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
          */
-        "_value"?: string;
+        "_value"?: Stringified<number | boolean | unknown[] | object>;
     }
     interface KolInputRadioGroup {
         /**
@@ -3615,9 +3615,9 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Wert der Radio an.
+          * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
          */
-        "_value"?: string;
+        "_value"?: Stringified<number | boolean | unknown[] | object>;
     }
     interface KolInputRadioGroup {
         /**

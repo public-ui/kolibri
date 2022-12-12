@@ -196,6 +196,13 @@ export class InputController extends ControlledInputController implements Watche
 
 	protected onChange(event: Event): void {
 		if (typeof this.component._on?.onChange === 'function') {
+			/**
+			 * TODO
+			 * Value-Handling muss für InputDate und InputNumber optimiert werden
+			 * - value
+			 * - valueAsNumber
+			 * - valueAsDate
+			 */
 			this.component._on.onChange(event, (event.target as HTMLInputElement).value);
 		}
 	}
