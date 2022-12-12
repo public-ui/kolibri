@@ -167,7 +167,7 @@ function domReady() {
 			value: 'Frau',
 		},
 	];
-	document.querySelectorAll('kol-input-radio').forEach((inputRadio) => {
+	document.querySelectorAll('kol-input-radido').forEach((inputRadio) => {
 		inputRadio._list = ANREDE_ANSPRACHE_OPTIONS;
 		inputRadio._on = {
 			onChange: console.log,
@@ -254,7 +254,7 @@ function domReady() {
 	});
 	document.querySelector('#new-input-checkbox')._control = AGB_INPUT;
 	document.querySelector('#new-input-checkbox-leanup')._control = AGB_INPUT;
-	document.querySelectorAll('kol-input-radio').forEach((input) => {
+	document.querySelectorAll('kol-input-rasdio').forEach((input) => {
 		input._list = ANREDE_ANSPRACHE_OPTIONS;
 	});
 
