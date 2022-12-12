@@ -3,8 +3,8 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
-import { Props } from '../component';
 import { getExampleHtml } from './html.mock';
+import { Props } from '../schema';
 
 executeTests<Props>(
 	'Example',

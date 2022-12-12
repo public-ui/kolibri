@@ -1,12 +1,18 @@
+# This repository adheres to the publiccode.yml standard by including this
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
 publiccodeYmlVersion: '0.2'
 
 name: 'KoliBri - The accessible HTML-Standard'
 url: 'https://public-ui.github.io'
-applicationSuite: Informationstechnik Zentrum Bund
+applicationSuite: Informationstechnikzentrum Bund
 landingURL: 'https://github.com/public-ui'
-documentationURL: 'https://public-ui.github.io/'
-releaseDate: '2022-11-22'
-version: '1.1.12'
+documentationURL: 'https://public-ui.github.io'
+releaseDate: '2022-12-06'
+version: '1.1.14'
+logo: https://avatars.githubusercontent.com/u/109126739
+
 platforms:
   - android
   - ios
@@ -17,37 +23,51 @@ platforms:
 
 categories:
   - agile-project-management
-	- application-development
-	- collaboration
-	- content-management
-	- it-development
-	- online-community
-	- project-collaboration
-	- seo
-	- web-collaboration
-	- website-builder
+  - application-development
+  - collaboration
+  - content-management
+  - it-development
+  - online-community
+  - project-collaboration
+  - seo
+  - web-collaboration
+  - website-builder
 
 developmentStatus: stable
 
 softwareType: 'library'
 
 description:
-  en:
-    shortDescription: >
-      Themeable Accessible Web Components
+  de:
+    shortDescription: KoliBri - Der barrierefreie HTML-Standard
 
     longDescription: >
-      KoliBri builds directly on the web standards on (framework-agnostic), is a generic reference
-      implementation of the WCAG standards  (Accessibility) and specifically implemented as a multi-theming
-      capable presentation layer. There is no technical reference and no data transfer functionalities.
-      THUS KoliBri is similarly reusable for the realization of static websites as well as dynamic web
-      applications of different corporate designs and very interesting for open source.
+      Der HTML-Webstandard ist an sich sehr "offen" spezifiziert, um möglichst langlebig und robust
+      zu sein. Es kommt daher häufig vor, das HTML-Kompositionen nicht ohne Weiteres barrierefrei,
+      semantisch und valide sind. KoliBri baut direkt auf den Webstandards des W3C auf (Framework-
+      agnostisch), ist dabei eine generische Referenzimplementierung des WCAG-Standards und der BITV
+      für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es
+      gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist KoliBri
+      für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher
+      Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr
+      interessant.
 
-    features:
-      - Themeable Accessible Web Components
+  en:
+    shortDescription: KoliBri - The accessible HTML-Standard
+
+    longDescription: >
+      The HTML web standard is in itself very "open" specified to be as durable and robust as possible.
+      Therefore, it often happens that HTML compositions are not easily accessible, semantic and valid.
+      KoliBri builds directly on the web standards of the W3C (framework- agnostic), is thereby a generic
+      reference implementation of the WCAG standard and the BITV for accessibility and implemented as a
+      multi-theme capable presentation layer. There no technical reference and no data transfer functionalities.
+      Thus KoliBri is for the realization of static websites as well as dynamic web applications of different
+      corporate designs and style guides and therefore very interesting for open source. interesting.
 
 legal:
   license: EUPL-1.2
+  mainCopyrightOwner: Informationstechnikzentrum Bund
+  repoOwner: Informationstechnikzentrum Bund
 
 maintenance:
   type: 'community'
@@ -55,10 +75,10 @@ maintenance:
   contacts:
     - name: KoliBri
       email: kolibri@itzbund.de
-      affiliation: Informationstechnik Zentrum Bund
+      affiliation: Informationstechnikzentrum Bund
 
 localisation:
-  localisationReady: yes
+  localisationReady: true
   availableLanguages:
     - de
     - en

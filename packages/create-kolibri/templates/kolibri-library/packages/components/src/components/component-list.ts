@@ -1,3 +1,4 @@
-import { MyExample } from './example/component';
+import { MyExampleWc } from './example/component';
+import { MyExample } from './example/shadow';
 
-export const COMPONENTS = [MyExample];
+export const COMPONENTS = [MyExampleWc, MyExample];

@@ -1,5 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { getIconIcofontHtml } from '../../icon-icofont/test/html.mock';
+import { getIconHtml } from '../../icon/test/html.mock';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
 import { Props } from '../component';
 
@@ -19,9 +19,9 @@ export const getDetailsHtml = (
 	<mock:shadow-root>
 		<details${props._open ? ' open' : ''}>
 			<summary>
-				${getIconIcofontHtml({
+				${getIconHtml({
 					_ariaLabel: '',
-					_icon: props._open ? 'rounded-down' : 'rounded-right',
+					_icon: props._open ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right',
 				})}
 				<span>
 					${props._summary}

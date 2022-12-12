@@ -20,19 +20,19 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.13-rc.9"
+		"@public-ui/schema": "1.1.15-rc.0"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.0-rc.21",
-		"@public-ui/components": "1.1.13-rc.9",
-		"@public-ui/core": "1.1.13-rc.9",
-		"@types/node": "18.11.10",
-		"eslint": "8.28.0",
-		"npm-check-updates": "16.4.3",
-		"prettier": "2.8.0",
+		"@public-ui/components": "1.1.15-rc.0",
+		"@public-ui/core": "1.1.15-rc.0",
+		"@types/node": "18.11.11",
+		"eslint": "8.29.0",
+		"npm-check-updates": "16.5.1",
+		"prettier": "2.8.1",
 		"ts-prune": "0.10.3",
-		"typescript": "4.9.3",
-		"unbuild": "1.0.1"
+		"typescript": "4.9.4",
+		"unbuild": "1.0.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "*"

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.1.13-rc.9",
+	"version": "1.1.15-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -21,16 +21,26 @@
 	"description": "The generic types and core logic for the KoliBri (@public-ui) accessible web component library.",
 	"keywords": [
 		"accessibility",
-		"accessible components",
+		"accessible",
 		"bitv",
-		"components",
-		"component framework",
-		"component library",
-		"design system",
-		"style guide",
-		"ui framework",
-		"ui library",
-		"web components"
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag"
 	],
 	"scripts": {
 		"build": "unbuild",
@@ -45,17 +55,17 @@
 	},
 	"dependencies": {
 		"@a11y-ui/core": "1.0.1-rc.6",
-		"rxjs": "7.5.7"
+		"rxjs": "7.6.0"
 	},
 	"devDependencies": {
-		"@types/node": "18.11.10",
-		"@typescript-eslint/eslint-plugin": "5.45.0",
-		"@typescript-eslint/parser": "5.45.0",
-		"eslint": "8.28.0",
+		"@types/node": "18.11.13",
+		"@typescript-eslint/eslint-plugin": "5.46.1",
+		"@typescript-eslint/parser": "5.46.1",
+		"eslint": "8.29.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"prettier": "2.8.0",
-		"typescript": "4.9.3",
-		"unbuild": "1.0.1"
+		"prettier": "2.8.1",
+		"typescript": "4.9.4",
+		"unbuild": "1.0.2"
 	},
 	"sideEffects": false,
 	"type": "module",

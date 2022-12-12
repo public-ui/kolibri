@@ -4,15 +4,15 @@ specifiers:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12
   '@angular/core': 13.3.12
-  '@public-ui/components': 1.1.13-rc.9
-  '@public-ui/core': 1.1.13-rc.9
+  '@public-ui/components': 1.1.15-rc.1
+  '@public-ui/core': 1.1.15-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.10
+  '@types/node': 18.11.13
   '@types/normalize-package-data': 2.4.1
-  prettier: 2.8.0
+  prettier: 2.8.1
   rimraf: 3.0.2
-  rxjs: 7.5.7
+  rxjs: 7.6.0
   tslib: 2.4.1
   typescript: '4.6'
   zone.js: 0.11.8
@@ -20,16 +20,16 @@ specifiers:
 devDependencies:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12_ykntn3hhgp6n6n66y2ne2wuksi
-  '@angular/core': 13.3.12_rxjs@7.5.7+zone.js@0.11.8
-  '@public-ui/components': 1.1.13-rc.9
-  '@public-ui/core': 1.1.13-rc.9
+  '@angular/core': 13.3.12_rxjs@7.6.0+zone.js@0.11.8
+  '@public-ui/components': 1.1.15-rc.1
+  '@public-ui/core': 1.1.15-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.10
+  '@types/node': 18.11.13
   '@types/normalize-package-data': 2.4.1
-  prettier: 2.8.0
+  prettier: 2.8.1
   rimraf: 3.0.2
-  rxjs: 7.5.7
+  rxjs: 7.6.0
   tslib: 2.4.1
   typescript: 4.6.4
   zone.js: 0.11.8
@@ -81,14 +81,14 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /@angular/core/13.3.12_rxjs@7.5.7+zone.js@0.11.8:
+  /@angular/core/13.3.12_rxjs@7.6.0+zone.js@0.11.8:
     resolution: {integrity: sha512-jx0YC+NbPMbxGr5bXECkCEQv2RdVxR8AJNnabkPk8ZjwCpDzROrbELwwS1kunrZUhffcD15IhWGBvf1EGHAYDw==}
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
       zone.js: ~0.11.4
     dependencies:
-      rxjs: 7.5.7
+      rxjs: 7.6.0
       tslib: 2.4.1
       zone.js: 0.11.8
     dev: true
@@ -324,23 +324,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.1.13-rc.9:
-    resolution: {integrity: sha512-GWvHaNI54/8knNCmlUdJQYVsoyUuXnIB9qoPgdxUb6KzGxz0RzpAxsXAnotD4sFSL2Nyh2/fnysWc3WGLhRy2w==}
+  /@public-ui/components/1.1.15-rc.1:
+    resolution: {integrity: sha512-UYr6N3a9uM5vKUzB7sDqebiS6LEg8W2Zw3/aY49XAujrCOLQhspcxIXecVcsIFWoybWx/yr/Wj83N8AuTSM+9Q==}
     dependencies:
-      '@public-ui/schema': 1.1.13-rc.9
+      '@public-ui/schema': 1.1.15-rc.1
     dev: true
 
-  /@public-ui/core/1.1.13-rc.9:
-    resolution: {integrity: sha512-cDx/Md7W57dpU1iJCIsQF4MJPNfrslefB9lVLk4HsEnOkSuMY8e1tbk9qkIZiifLQWVZfdaRHARXNswydGDjow==}
+  /@public-ui/core/1.1.15-rc.1:
+    resolution: {integrity: sha512-80xUdz297Ll9UcLYtMfIB7teY7+CS+YRVid6Zs3DF8GYtOu+804IaMzcNHArPF9pMyVrqLQR5kJKWUlWjqQE5w==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
-      rxjs: 7.5.7
+      rxjs: 7.6.0
     dev: true
 
-  /@public-ui/schema/1.1.13-rc.9:
-    resolution: {integrity: sha512-c1KC0/3xJv9CKgAaEMdK/neO4JnMAwujgT2KWHvRKckm/4FOLKjaCsFmc8za+jaopqT+m8ewrs+Ffz2/ys7kMA==}
+  /@public-ui/schema/1.1.15-rc.1:
+    resolution: {integrity: sha512-C2YjOimcoV0zXoKt48Mc8Nm7GDlBwm68Xn/88wnAKQJyL5Ea8jgh/BsjppH1I9QAhBEsTWvI4PsqyJqg4TKr0Q==}
     dependencies:
-      '@public-ui/core': 1.1.13-rc.9
+      '@public-ui/core': 1.1.15-rc.1
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -351,8 +351,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.10:
-    resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
+  /@types/node/18.11.13:
+    resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -414,14 +414,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001435
+      caniuse-lite: 1.0.30001439
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
-  /caniuse-lite/1.0.30001435:
-    resolution: {integrity: sha512-kdCkUTjR+v4YAJelyiDTqiu82BDr4W4CP5sgTA0ZBmqn30XfS2ZghPLMowik9TPhS+psWJiUNxsqLyurDbmutA==}
+  /caniuse-lite/1.0.30001439:
+    resolution: {integrity: sha512-1MgUzEkoMO6gKfXflStpYgZDlFM7M/ck/bgfVCACO5vnAf0fXoNVHdWtqGU+MYca+4bL9Z5bpOVmR33cWW9G2A==}
     dev: true
 
   /chalk/2.4.2:
@@ -692,8 +692,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /prettier/2.8.0:
-    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
+  /prettier/2.8.1:
+    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -721,8 +721,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rxjs/7.5.7:
-    resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
+  /rxjs/7.6.0:
+    resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
     dependencies:
       tslib: 2.4.1
     dev: true
@@ -742,6 +742,7 @@ packages:
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: true
 
   /string-width/4.2.3:

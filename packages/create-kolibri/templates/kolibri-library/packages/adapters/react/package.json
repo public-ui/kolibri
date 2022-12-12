@@ -1,5 +1,5 @@
 {
-	"name": "@{{kebab name}}/react",
+	"name": "@stencil-ssr/react",
 	"version": "0.0.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -9,13 +9,13 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"author": {
-		"name": "{{author}}",
-		"email": "{{email}}"
+		"name": "Martin Oppitz",
+		"email": "github@martinoppitz.com"
 	},
 	"contributors": [
 		{
-			"name": "{{author}}",
-			"email": "{{email}}"
+			"name": "Martin Oppitz",
+			"email": "github@martinoppitz.com"
 		}
 	],
 	"description": "Das React-Modul ist der Framework-Adapter für die Komponenten-Bibliothek.",
@@ -28,8 +28,8 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.13-rc.9",
-		"@public-ui/components": "1.1.13-rc.9",
+		"@public-ui/core": "1.1.15-rc.0",
+		"@public-ui/components": "1.1.15-rc.0",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.9",
@@ -42,7 +42,7 @@
 		"unbuild": "0.8.11"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.13-rc.9",
+		"@public-ui/components": "1.1.15-rc.0",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},

@@ -1,12 +1,10 @@
 # Willkommen bei KoliBri
 
-KoliBri steht für **Ko**mponenten-Bib**li**othek für die **B**ar**ri**erefreiheit
-
-> Weiter [zur **Dokumentation**](https://public-ui.github.io)…
+**KoliBri** steht für **Ko**mponenten-Bib**li**othek für die **B**ar**ri**erefreiheit
 
 ## Vision
 
-Wir machen **HTML** mittels **wiederverwendbaren Web Components barrierefrei**, um die **Usability** und **Zugänglichkeit** zu verbessern.
+Wir machen **HTML** mittels **wiederverwendbaren Web Components barrierefrei**, um die **Usability** und **Zugänglichkeit** sicherzustellen.
 
 ## Mission
 
@@ -20,6 +18,8 @@ Der **Fokus** von KoliBri liegt auf **kleinen** (atomaren), sehr **flexiblen** u
 Bei diesen atomaren Komponenten sollten wir **kollaborieren** und **kooperieren**, um unsere Fähigkeiten und unser Wissen zu bündeln. Durch die Synergieeffekte an den Basis-Komponenten kann der eigene Fokus mehr auf fachspezifische Inhalte gelegt werden.
 
 Lasst **uns** dazu **gemeinsam** KoliBri **besser** und **bunter** machen!
+
+> Weiter [zur **Dokumentation**](https://public-ui.github.io)…
 
 ## Lizenz
 

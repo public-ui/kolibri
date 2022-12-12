@@ -17,13 +17,12 @@ _headers="{'horizontal':[[{'label':'Symbol','key':'symbol','textAlign':'center',
 _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrierefreiheit'},{'symbol':'👩‍🎨','desc':'Styleguide/Themes'},{'symbol':'🧬','desc':'Test'},{'symbol':'🔧','desc':'Verbesserung/Fehlerbehebung'},{'symbol':'📚','desc':'Dokumentation'},{'symbol':'🚀','desc':'Performance'},{'symbol':'❗','desc':'Refactoring'},{'symbol':'🔥','desc':'Breaking Change'},{'symbol':'🔝','desc':'Pflege des Technologie-Stacks'}]">
 </kol-table>
 
-<kol-heading _level={3}>1.1.14 - 19.12.2022 (geplant)</kol-heading>
+<kol-heading _level={3}>1.1.16 - 02.01.2023 (geplant)</kol-heading>
 
 <kol-details _summary="Änderungen">
 	<ul></ul>
 	<hr />
 	<ul>
-		<li>🔧 Tooltip: Positionierung in Scoll-Zonen optimieren</li>
 		<li>🔧 I18n: Translationservice fertigstellen</li>
 		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
 		<li>🔧 Table: Sort-Funktion auch die Sortierrichtung übergeben</li>
@@ -50,10 +49,39 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>👩‍🎨 Theming: Designer um CDN-Feature erweitern</li>
 		<li>👩‍🎨 Theming: Designer CSS-Properties und "Globales CSS" trennen</li>
 		<li>👩‍🎨 Theming: Designer Speicher-Modell ändern (Meta & Data)</li>
+		<li>🔧 Radio: Untersuchung des zu großen Spacing</li>
 	</ul>
 </kol-details>
 
-<kol-heading _level={3}>1.1.13 - 05.12.2022 (geplant)</kol-heading>
+<kol-heading _level={3}>1.1.15 - 19.12.2022 (geplant)</kol-heading>
+
+<kol-details _summary="Änderungen" _open>
+	<ul>
+		<li>🔧 Dev-Tools: Verbesserung der Consolen-Hinweise bei Validierungsfehlern</li>
+		<li>🔧 Breadcrumb & Details: Identifier für Font-Awesome korrigiert</li>
+		<li>🚹 Abbr: Verbesserung der Screenreader-Unterstützung</li>
+		<li>🔧 CLI: KoiBri-Library-Template optimiert</li>
+	</ul>
+</kol-details>
+
+<kol-heading _level={3}>1.1.14 - 06.12.2022</kol-heading>
+
+<kol-details _summary="Änderungen" _open>
+	<ul>
+		<li>
+			❗ Themes: Theme der Hansestadt Hamburg "umgezogen" (
+			<kol-link _href="https://www.npmjs.com/package/@public-oss/kolibri-themes" _target="public-oss">
+				@public-oss/kolibri-themes
+			</kol-link>
+			)
+		</li>
+		<li>🔧 Table: Fix Validierung von JSON</li>
+		<li>🚹 Cheat Sheet: Optimierung der Barrierefreiheit</li>
+		<li>📚 Publiccode: Überarbeitung der publiccode.yml</li>
+	</ul>
+</kol-details>
+
+<kol-heading _level={3}>1.1.13 - 05.12.2022</kol-heading>
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
@@ -71,11 +99,6 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 				<li>@public-ui/angular-v14</li>
 				<li>@public-ui/angular-v15</li>
 				<li>@public-ui/angular (@deprecated)</li>
-				<li>
-					<kol-link _href="https://www.npmjs.com/package/@angular/core?activeTab=versions" _target="npmjs">
-						Nutzungsstatistik
-					</kol-link>
-				</li>
 			</ul>
 		</li>
 		<li>🌟 Designer: Der Designer kann jetzt auch als PWA lokal installiert werden.</li>
@@ -85,15 +108,11 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>📚 Cheat Sheet: Einbindung des Cheat Sheet ins Storybook</li>
 		<li>❗ Tabs: Tab-Inhalt war nach Seitenwechseln weg</li>
 	</ul>
-	<hr />
-	<ul>
-		<li>🔧 Radio: Untersuchung des zu großen Spacing</li>
-	</ul>
 </kol-details>
 
 <kol-heading _level={3}>1.1.12 - 22.11.2022</kol-heading>
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _summary="Änderungen">
 	<ul>
 		<li>🔧 Table & Pagination: Fix Property-Reflection für _pagination</li>
 		<li>🔧 Template: Fehler in Angular-Template behoben</li>
