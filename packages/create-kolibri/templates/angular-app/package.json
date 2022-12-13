@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@angular/common": "15.0.3",
 		"@angular/compiler": "15.0.2",
-		"@angular/compiler-cli": "15.0.2",
+		"@angular/compiler-cli": "15.0.3",
 		"@angular/core": "15.0.3",
 		"@angular/forms": "15.0.3",
 		"@angular/platform-browser": "15.0.3",
@@ -54,7 +54,7 @@
 		"@playwright/test": "1.28.1",
 		"chromedriver": "108.0.0",
 		"nightwatch-axe-verbose": "2.0.3",
-		"npm-check-updates": "16.5.1",
+		"npm-check-updates": "16.5.6",
 		"playwright": "1.28.1",
 		"postcss-windicss": "1.0.0",
 		"rimraf": "3.0.2",
