@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.15-rc.2
-  '@public-ui/schema': 1.1.15-rc.2
+  '@public-ui/core': 1.1.15-rc.3
+  '@public-ui/schema': 1.1.15-rc.3
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.20.0
   '@stencil/postcss': 2.1.0
@@ -51,10 +51,10 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.1.15-rc.2
+  '@public-ui/schema': 1.1.15-rc.3
 
 devDependencies:
-  '@public-ui/core': 1.1.15-rc.2
+  '@public-ui/core': 1.1.15-rc.3
   '@stencil/angular-output-target': 0.4.0_@stencil+core@2.20.0
   '@stencil/core': 2.20.0
   '@stencil/postcss': 2.1.0_@stencil+core@2.20.0
@@ -1624,16 +1624,16 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/core/1.1.15-rc.2:
-    resolution: {integrity: sha512-rmys92H5q3R/apJP6kyw00kBglFSj5pA4jlDLRtBjKuJLHWZyBGjmolW6EVxjh3tp0DExfsOnoFm9+hXZ4pvcQ==}
+  /@public-ui/core/1.1.15-rc.3:
+    resolution: {integrity: sha512-wocALKXrGcHaajwF8V7U2iFpnI6/wUO0gULBXcZvTiSHZiWYER0DjNrMzezHgfVr6+NiMXlDajMdnICEhgJvdw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
 
-  /@public-ui/schema/1.1.15-rc.2:
-    resolution: {integrity: sha512-+tzSV34CgWKderahYetkhRUDHpkMpEl4lehCE3vIX1UNfYYZ2vD4v9g1yAA4+aJAKvbEtnkmiYzPo8KUaohqAQ==}
+  /@public-ui/schema/1.1.15-rc.3:
+    resolution: {integrity: sha512-vzWBNYDIV4Mn9aZxgC1oybL39dyO6p9NjdmX1GPrLIc2DGxZx4jFaKvOMC6oGoPpvpfvrei0+R3NMma8Ki32QA==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.2
+      '@public-ui/core': 1.1.15-rc.3
     dev: false
 
   /@rollup/plugin-babel/5.3.1_opjstonlpkhafnz76jsxdwq25a:
