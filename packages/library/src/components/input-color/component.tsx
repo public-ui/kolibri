@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
@@ -16,6 +16,8 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputColor implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
+
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
@@ -147,11 +149,10 @@ export class KolInputColor implements ComponentApi {
 		_autoComplete: 'off',
 		_id: '⚠',
 		_list: [],
-		_name: '⚠',
 	};
 
 	public constructor() {
-		this.controller = new InputColorController(this, 'color');
+		this.controller = new InputColorController(this, 'color', this.host);
 	}
 
 	/**

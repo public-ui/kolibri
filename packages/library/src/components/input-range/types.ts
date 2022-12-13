@@ -32,7 +32,6 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
 	list: Option<number>[];
-	name: string;
 };
 type OptionalStates = {
 	accessKey: string;
@@ -44,6 +43,7 @@ type OptionalStates = {
 	icon: KoliBriInputIcon;
 	max: number;
 	min: number;
+	name: string;
 	on: InputTypeOnDefault;
 	step: number;
 	tabIndex: number;

@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
@@ -17,12 +17,8 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputEmail implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
 	private inputEl!: HTMLInputElement;
-	private host?: HTMLElement | null;
-
-	private readonly catchHost = (host?: HTMLElement | null) => {
-		this.host = host;
-	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
@@ -43,7 +39,7 @@ export class KolInputEmail implements ComponentApi {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
-			<Host ref={this.catchHost}>
+			<Host>
 				<kol-input
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
@@ -218,11 +214,10 @@ export class KolInputEmail implements ComponentApi {
 		_autoComplete: 'off',
 		_id: '⚠',
 		_list: [],
-		_name: '⚠',
 	};
 
 	public constructor() {
-		this.controller = new InputEmailController(this, 'email');
+		this.controller = new InputEmailController(this, 'email', this.host);
 	}
 
 	/**

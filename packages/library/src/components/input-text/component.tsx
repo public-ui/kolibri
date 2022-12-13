@@ -20,7 +20,7 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 	shadow: true,
 })
 export class KolInputText implements ComponentApi {
-	@Element() private host?: HTMLElement;
+	@Element() private readonly host?: HTMLElement;
 	private inputEl!: HTMLInputElement;
 	private oldValue?: string;
 
@@ -53,8 +53,6 @@ export class KolInputText implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
-		this.formAssociated.setAttribute('id', this._id);
-		this.formAssociated.setAttribute('name', this._name || ''); // TODO: name must be required
 		return (
 			<Host>
 				<kol-input
@@ -233,19 +231,8 @@ export class KolInputText implements ComponentApi {
 		_type: 'text',
 	};
 
-	private readonly formAssociated: FormAssociated & { rel: KolInputText };
-
 	public constructor() {
-		this.controller = new InputTextController(this, 'text');
-		this.formAssociated = document.createElement('kol-form-associated') as FormAssociated & { rel: KolInputText };
-		this.formAssociated.rel = this;
-		const children = this.host?.children || [];
-		for (let i = 0; i < children.length; i++) {
-			if (this.host?.children[i].tagName === 'KOL-FORM-ASSOCIATED') {
-				this.host?.removeChild(this.host?.children[i]);
-			}
-		}
-		this.host?.appendChild(this.formAssociated);
+		this.controller = new InputTextController(this, 'text', this.host);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Option } from '../../types/input/types';
@@ -15,6 +15,8 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputRadio implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
+
 	public render(): JSX.Element {
 		const { ariaDiscribedBy, hasError } = getRenderStates(this.state);
 		return (
@@ -186,12 +188,12 @@ export class KolInputRadio implements ComponentApi {
 	@State() public state: States = {
 		_id: '⚠',
 		_list: [],
-		_name: '⚠',
+
 		_orientation: 'vertical',
 	};
 
 	public constructor() {
-		this.controller = new InputRadioController(this, 'radio-group');
+		this.controller = new InputRadioController(this, 'radio', this.host);
 	}
 
 	/**

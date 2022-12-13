@@ -35,7 +35,6 @@ type RequiredStates = {
 	adjustHeight: boolean;
 	currentLength: number;
 	id: string;
-	name: string;
 	resize: CSSResize;
 };
 type OptionalStates = {
@@ -47,6 +46,7 @@ type OptionalStates = {
 	hideLabel: boolean;
 	hint: string;
 	maxLength: number;
+	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	readOnly: boolean;

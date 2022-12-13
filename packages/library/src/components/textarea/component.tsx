@@ -1,4 +1,4 @@
-import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { setState } from '../../utils/prop.validators';
@@ -27,6 +27,8 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	shadow: true,
 })
 export class KolTextarea implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
+
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		return (
@@ -203,12 +205,12 @@ export class KolTextarea implements ComponentApi {
 		_adjustHeight: false,
 		_currentLength: 0,
 		_id: '⚠',
-		_name: '⚠',
+
 		_resize: 'vertical',
 	};
 
 	public constructor() {
-		this.controller = new TextareaController(this, 'textarea');
+		this.controller = new TextareaController(this, 'textarea', this.host);
 	}
 
 	/**

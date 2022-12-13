@@ -15,7 +15,6 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
 	list: string[];
-	name: string;
 	type: InputNumberType;
 };
 
@@ -29,6 +28,7 @@ type OptionalStates = {
 	icon: KoliBriInputIcon;
 	max: string;
 	min: string;
+	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
 	readOnly: boolean;

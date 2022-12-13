@@ -34,7 +34,6 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	checked: boolean;
 	id: string;
-	name: string;
 	variant: InputCheckboxVariant;
 };
 type OptionalStates = {
@@ -45,6 +44,7 @@ type OptionalStates = {
 	hideLabel: boolean;
 	hint: string;
 	indeterminate: boolean;
+	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
 	touched: boolean;
