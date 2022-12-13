@@ -254,7 +254,7 @@ function domReady() {
 	});
 	document.querySelector('#new-input-checkbox')._control = AGB_INPUT;
 	document.querySelector('#new-input-checkbox-leanup')._control = AGB_INPUT;
-	document.querySelectorAll('kol-input-rasdio').forEach((input) => {
+	document.querySelectorAll('kol-input-radio').forEach((input) => {
 		input._list = ANREDE_ANSPRACHE_OPTIONS;
 	});
 
