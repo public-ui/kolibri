@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v13",
-	"version": "1.1.15-rc.1",
+	"version": "1.1.15-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -30,6 +30,10 @@
 		"design",
 		"system",
 		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
 		"custom elements",
 		"styleguide",
 		"style",
@@ -71,8 +75,8 @@
 		"@angular/compiler-cli": "13.3.12",
 		"@angular/compiler": "13.3.12",
 		"@angular/core": "13.3.12",
-		"@public-ui/core": "1.1.15-rc.1",
-		"@public-ui/components": "1.1.15-rc.1",
+		"@public-ui/core": "1.1.15-rc.2",
+		"@public-ui/components": "1.1.15-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.13",
@@ -86,7 +90,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "^13",
-		"@public-ui/components": "1.1.15-rc.1"
+		"@public-ui/components": "1.1.15-rc.2"
 	},
 	"files": [
 		"dist/"
