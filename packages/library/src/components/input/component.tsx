@@ -6,7 +6,6 @@ import { KoliBriCustomIcon } from '../../types/icon';
 
 import { KoliBriInputIcon } from '../input-text/types';
 import { Props } from './types';
-import './form-assosiated-custom-element';
 
 /**
  * @internal
