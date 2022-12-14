@@ -103,7 +103,7 @@
 		"@stencil/vue-output-target": "0.6.2",
 		"@types/color-convert": "2.0.0",
 		"@types/jest": "26.0.24",
-		"@types/node": "18.11.14",
+		"@types/node": "18.11.15",
 		"@types/puppeteer": "7.0.4",
 		"@types/wcag-contrast": "3.0.0",
 		"@typescript-eslint/eslint-plugin": "5.46.1",

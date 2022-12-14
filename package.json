@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "17.3.0",
 		"@commitlint/config-conventional": "17.3.0",
-		"@types/node": "18.11.13",
+		"@types/node": "18.11.15",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.3",
 		"husky": "8.0.2",
