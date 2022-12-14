@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
@@ -18,12 +18,8 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputNumber implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
 	private inputEl!: HTMLInputElement;
-	private host?: HTMLElement | null;
-
-	private readonly catchHost = (host?: HTMLElement | null) => {
-		this.host = host;
-	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
@@ -44,7 +40,7 @@ export class KolInputNumber implements ComponentApi {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
-			<Host ref={this.catchHost}>
+			<Host>
 				<kol-input
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -219,12 +215,12 @@ export class KolInputNumber implements ComponentApi {
 		_autoComplete: 'off',
 		_id: '⚠',
 		_list: [],
-		_name: '⚠',
+
 		_type: 'number',
 	};
 
 	public constructor() {
-		this.controller = new InputNumberController(this, 'number');
+		this.controller = new InputNumberController(this, 'number', this.host);
 	}
 
 	/**

@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.15-rc.2
-  '@public-ui/schema': 1.1.15-rc.2
+  '@public-ui/core': 1.1.15-rc.3
+  '@public-ui/schema': 1.1.15-rc.3
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.20.0
   '@stencil/postcss': 2.1.0
@@ -13,7 +13,7 @@ specifiers:
   '@stencil/vue-output-target': 0.6.2
   '@types/color-convert': 2.0.0
   '@types/jest': 26.0.24
-  '@types/node': 18.11.14
+  '@types/node': 18.11.15
   '@types/puppeteer': 7.0.4
   '@types/wcag-contrast': 3.0.0
   '@typescript-eslint/eslint-plugin': 5.46.1
@@ -51,10 +51,10 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.1.15-rc.2
+  '@public-ui/schema': 1.1.15-rc.3
 
 devDependencies:
-  '@public-ui/core': 1.1.15-rc.2
+  '@public-ui/core': 1.1.15-rc.3
   '@stencil/angular-output-target': 0.4.0_@stencil+core@2.20.0
   '@stencil/core': 2.20.0
   '@stencil/postcss': 2.1.0_@stencil+core@2.20.0
@@ -65,7 +65,7 @@ devDependencies:
   '@stencil/vue-output-target': 0.6.2_@stencil+core@2.20.0
   '@types/color-convert': 2.0.0
   '@types/jest': 26.0.24
-  '@types/node': 18.11.14
+  '@types/node': 18.11.15
   '@types/puppeteer': 7.0.4
   '@types/wcag-contrast': 3.0.0
   '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
@@ -1376,7 +1376,7 @@ packages:
     engines: {node: '>= 10.14.2'}
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       chalk: 4.1.2
       jest-message-util: 26.6.2
       jest-util: 26.6.2
@@ -1392,7 +1392,7 @@ packages:
       '@jest/test-result': 26.6.2
       '@jest/transform': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       exit: 0.1.2
@@ -1429,7 +1429,7 @@ packages:
     dependencies:
       '@jest/fake-timers': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       jest-mock: 26.6.2
     dev: true
 
@@ -1439,7 +1439,7 @@ packages:
     dependencies:
       '@jest/types': 26.6.2
       '@sinonjs/fake-timers': 6.0.1
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       jest-message-util: 26.6.2
       jest-mock: 26.6.2
       jest-util: 26.6.2
@@ -1553,7 +1553,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       '@types/yargs': 15.0.14
       chalk: 4.1.2
     dev: true
@@ -1624,16 +1624,16 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/core/1.1.15-rc.2:
-    resolution: {integrity: sha512-rmys92H5q3R/apJP6kyw00kBglFSj5pA4jlDLRtBjKuJLHWZyBGjmolW6EVxjh3tp0DExfsOnoFm9+hXZ4pvcQ==}
+  /@public-ui/core/1.1.15-rc.3:
+    resolution: {integrity: sha512-wocALKXrGcHaajwF8V7U2iFpnI6/wUO0gULBXcZvTiSHZiWYER0DjNrMzezHgfVr6+NiMXlDajMdnICEhgJvdw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
 
-  /@public-ui/schema/1.1.15-rc.2:
-    resolution: {integrity: sha512-+tzSV34CgWKderahYetkhRUDHpkMpEl4lehCE3vIX1UNfYYZ2vD4v9g1yAA4+aJAKvbEtnkmiYzPo8KUaohqAQ==}
+  /@public-ui/schema/1.1.15-rc.3:
+    resolution: {integrity: sha512-vzWBNYDIV4Mn9aZxgC1oybL39dyO6p9NjdmX1GPrLIc2DGxZx4jFaKvOMC6oGoPpvpfvrei0+R3NMma8Ki32QA==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.2
+      '@public-ui/core': 1.1.15-rc.3
     dev: false
 
   /@rollup/plugin-babel/5.3.1_opjstonlpkhafnz76jsxdwq25a:
@@ -1877,7 +1877,7 @@ packages:
   /@types/graceful-fs/4.1.5:
     resolution: {integrity: sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==}
     dependencies:
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:
@@ -1907,8 +1907,8 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
-  /@types/node/18.11.14:
-    resolution: {integrity: sha512-0KXV57tENYmmJMl+FekeW9V3O/rlcqGQQJ/hNh9r8pKIj304pskWuEd8fCyNT86g/TpO0gcOTiLzsHLEURFMIQ==}
+  /@types/node/18.11.15:
+    resolution: {integrity: sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1934,7 +1934,7 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
     dev: true
 
   /@types/semver/7.3.13:
@@ -1967,7 +1967,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
     dev: true
     optional: true
 
@@ -2673,7 +2673,7 @@ packages:
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.3.0
@@ -4530,7 +4530,7 @@ packages:
       '@jest/environment': 26.6.2
       '@jest/fake-timers': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       jest-mock: 26.6.2
       jest-util: 26.6.2
       jsdom: 16.7.0
@@ -4548,7 +4548,7 @@ packages:
       '@jest/environment': 26.6.2
       '@jest/fake-timers': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       jest-mock: 26.6.2
       jest-util: 26.6.2
     dev: true
@@ -4564,7 +4564,7 @@ packages:
     dependencies:
       '@jest/types': 26.6.2
       '@types/graceful-fs': 4.1.5
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.10
@@ -4590,7 +4590,7 @@ packages:
       '@jest/source-map': 26.6.2
       '@jest/test-result': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       chalk: 4.1.2
       co: 4.6.0
       expect: 26.6.2
@@ -4649,7 +4649,7 @@ packages:
     engines: {node: '>= 10.14.2'}
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
     dev: true
 
   /jest-pnp-resolver/1.2.3_jest-resolve@26.6.2:
@@ -4702,7 +4702,7 @@ packages:
       '@jest/environment': 26.6.2
       '@jest/test-result': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       chalk: 4.1.2
       emittery: 0.7.2
       exit: 0.1.2
@@ -4770,7 +4770,7 @@ packages:
     resolution: {integrity: sha512-S5wqyz0DXnNJPd/xfIzZ5Xnp1HrJWBczg8mMfMpN78OJ5eDxXyf+Ygld9wX1DnUWbIbhM1YDY95NjR4CBXkb2g==}
     engines: {node: '>= 10.14.2'}
     dependencies:
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       graceful-fs: 4.2.10
     dev: true
 
@@ -4803,7 +4803,7 @@ packages:
     engines: {node: '>= 10.14.2'}
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       chalk: 4.1.2
       graceful-fs: 4.2.10
       is-ci: 2.0.0
@@ -4828,7 +4828,7 @@ packages:
     dependencies:
       '@jest/test-result': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       jest-util: 26.6.2
@@ -4839,7 +4839,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
@@ -6404,7 +6404,7 @@ packages:
     resolution: {integrity: sha512-DI7/OuAUD+GMpR6dmu8lliO2Wg5zfeh+/xsdyJZCzd8o5JgFUjCeLsBDuZjIQJdwXS3J0L/uZYrELKYqx+PXog==}
     engines: {node: '>=8.0'}
     dependencies:
-      '@types/node': 18.11.14
+      '@types/node': 18.11.15
       image-ssim: 0.2.0
       jpeg-js: 0.4.4
     dev: true

@@ -1,18 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.15-rc.2
-  '@public-ui/react': 1.1.15-rc.2
+  '@public-ui/components': 1.1.15-rc.3
+  '@public-ui/react': 1.1.15-rc.3
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 4.9.4
   unbuild: 1.0.2
 
 dependencies:
-  '@public-ui/react': 1.1.15-rc.2_s4q7zzrwjz5uxvyz3y4u3jyot4
+  '@public-ui/react': 1.1.15-rc.3_y5g23m4nxof3qgoomiodivyluq
 
 devDependencies:
-  '@public-ui/components': 1.1.15-rc.2
+  '@public-ui/components': 1.1.15-rc.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.4
@@ -308,35 +308,35 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/components/1.1.15-rc.2:
-    resolution: {integrity: sha512-2xOgjNh7zJtTquAJxycTCh6fiCqp0a5P82Ds9SFh+jgXxYOVt881POlb/n1U9x14gIqsL4NNyQWhN6Jg8Df6Ew==}
+  /@public-ui/components/1.1.15-rc.3:
+    resolution: {integrity: sha512-snLDPt0+igDM28+Yzmfs6C15FnBdNrsRVNm4FABCRfOpjXIkwpuRnU592IfQEU0LKVu/iw0TNNiGlYeGjjqz1Q==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.2
+      '@public-ui/schema': 1.1.15-rc.3
 
-  /@public-ui/core/1.1.15-rc.2:
-    resolution: {integrity: sha512-rmys92H5q3R/apJP6kyw00kBglFSj5pA4jlDLRtBjKuJLHWZyBGjmolW6EVxjh3tp0DExfsOnoFm9+hXZ4pvcQ==}
+  /@public-ui/core/1.1.15-rc.3:
+    resolution: {integrity: sha512-wocALKXrGcHaajwF8V7U2iFpnI6/wUO0gULBXcZvTiSHZiWYER0DjNrMzezHgfVr6+NiMXlDajMdnICEhgJvdw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
 
-  /@public-ui/react/1.1.15-rc.2_s4q7zzrwjz5uxvyz3y4u3jyot4:
-    resolution: {integrity: sha512-QsOslmfBDRR3riC1gdzKpml6rEa3MEbo11jtH9u86zCj1vFR9T5qI+b4ulqfszey75ce1fY7hOsnf3t0m92iYA==}
+  /@public-ui/react/1.1.15-rc.3_y5g23m4nxof3qgoomiodivyluq:
+    resolution: {integrity: sha512-ARP0LiQbR/xa3yARkUCK8LEN0QdMLukhS5pDAMznqGo5IRG8vsXB6pRJyEYIVDVOQ/D4JIOhCq7twoA3DaCr6A==}
     peerDependencies:
-      '@public-ui/components': 1.1.15-rc.2
+      '@public-ui/components': 1.1.15-rc.3
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.2
+      '@public-ui/components': 1.1.15-rc.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.1.15-rc.2:
-    resolution: {integrity: sha512-+tzSV34CgWKderahYetkhRUDHpkMpEl4lehCE3vIX1UNfYYZ2vD4v9g1yAA4+aJAKvbEtnkmiYzPo8KUaohqAQ==}
+  /@public-ui/schema/1.1.15-rc.3:
+    resolution: {integrity: sha512-vzWBNYDIV4Mn9aZxgC1oybL39dyO6p9NjdmX1GPrLIc2DGxZx4jFaKvOMC6oGoPpvpfvrei0+R3NMma8Ki32QA==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.2
+      '@public-ui/core': 1.1.15-rc.3
 
-  /@rollup/plugin-alias/4.0.2_rollup@3.7.4:
+  /@rollup/plugin-alias/4.0.2_rollup@3.7.3:
     resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -345,11 +345,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      rollup: 3.7.4
+      rollup: 3.7.3
       slash: 4.0.0
     dev: true
 
-  /@rollup/plugin-commonjs/23.0.4_rollup@3.7.4:
+  /@rollup/plugin-commonjs/23.0.4_rollup@3.7.3:
     resolution: {integrity: sha512-bOPJeTZg56D2MCm+TT4psP8e8Jmf1Jsi7pFUMl8BN5kOADNzofNHe47+84WVCt7D095xPghC235/YKuNDEhczg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -358,16 +358,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.7.4
+      '@rollup/pluginutils': 5.0.2_rollup@3.7.3
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.0.3
       is-reference: 1.2.1
       magic-string: 0.26.7
-      rollup: 3.7.4
+      rollup: 3.7.3
     dev: true
 
-  /@rollup/plugin-json/5.0.2_rollup@3.7.4:
+  /@rollup/plugin-json/5.0.2_rollup@3.7.3:
     resolution: {integrity: sha512-D1CoOT2wPvadWLhVcmpkDnesTzjhNIQRWLsc3fA49IFOP2Y84cFOOJ+nKGYedvXHKUsPeq07HR4hXpBBr+CHlA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -376,11 +376,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.7.4
-      rollup: 3.7.4
+      '@rollup/pluginutils': 5.0.2_rollup@3.7.3
+      rollup: 3.7.3
     dev: true
 
-  /@rollup/plugin-node-resolve/15.0.1_rollup@3.7.4:
+  /@rollup/plugin-node-resolve/15.0.1_rollup@3.7.3:
     resolution: {integrity: sha512-ReY88T7JhJjeRVbfCyNj+NXAG3IIsVMsX9b5/9jC98dRP8/yxlZdz7mHZbHk5zHr24wZZICS5AcXsFZAXYUQEg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -389,16 +389,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.7.4
+      '@rollup/pluginutils': 5.0.2_rollup@3.7.3
       '@types/resolve': 1.20.2
       deepmerge: 4.2.2
       is-builtin-module: 3.2.0
       is-module: 1.0.0
       resolve: 1.22.1
-      rollup: 3.7.4
+      rollup: 3.7.3
     dev: true
 
-  /@rollup/plugin-replace/5.0.1_rollup@3.7.4:
+  /@rollup/plugin-replace/5.0.1_rollup@3.7.3:
     resolution: {integrity: sha512-Z3MfsJ4CK17BfGrZgvrcp/l6WXoKb0kokULO+zt/7bmcyayokDaQ2K3eDJcRLCTAlp5FPI4/gz9MHAsosz4Rag==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -407,12 +407,12 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2_rollup@3.7.4
+      '@rollup/pluginutils': 5.0.2_rollup@3.7.3
       magic-string: 0.26.7
-      rollup: 3.7.4
+      rollup: 3.7.3
     dev: true
 
-  /@rollup/pluginutils/5.0.2_rollup@3.7.4:
+  /@rollup/pluginutils/5.0.2_rollup@3.7.3:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -424,7 +424,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.7.4
+      rollup: 3.7.3
     dev: true
 
   /@types/estree/1.0.0:
@@ -1181,7 +1181,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-dts/5.0.0_fhibmf72xnv5tve6nwed265eae:
+  /rollup-plugin-dts/5.0.0_6hu75beimlyhzhs4jaytlzqtvy:
     resolution: {integrity: sha512-OO8ayCvuJCKaQSShyVTARxGurVVk4ulzbuvz+0zFd1f93vlnWFU5pBMT7HFeS6uj7MvvZLx4kUAarGATSU1+Ng==}
     engines: {node: '>=v14'}
     peerDependencies:
@@ -1189,14 +1189,14 @@ packages:
       typescript: ^4.1
     dependencies:
       magic-string: 0.26.7
-      rollup: 3.7.4
+      rollup: 3.7.3
       typescript: 4.9.4
     optionalDependencies:
       '@babel/code-frame': 7.18.6
     dev: true
 
-  /rollup/3.7.4:
-    resolution: {integrity: sha512-jN9rx3k5pfg9H9al0r0y1EYKSeiRANZRYX32SuNXAnKzh6cVyf4LZVto1KAuDnbHT03E1CpsgqDKaqQ8FZtgxw==}
+  /rollup/3.7.3:
+    resolution: {integrity: sha512-7e68MQbAWCX6mI4/0lG1WHd+NdNAlVamg0Zkd+8LZ/oXojligdGnCNyHlzXqXCZObyjs5FRc3AH0b17iJESGIQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -1279,12 +1279,12 @@ packages:
     resolution: {integrity: sha512-nQ2rxQ9aqIPzVhOEs6T/YcDGb6PWf6BAtQ0as+YWoaWCfezAdeL3KlNWSh279D6euOeCt94t0b/vAGr3GKu9Gw==}
     hasBin: true
     dependencies:
-      '@rollup/plugin-alias': 4.0.2_rollup@3.7.4
-      '@rollup/plugin-commonjs': 23.0.4_rollup@3.7.4
-      '@rollup/plugin-json': 5.0.2_rollup@3.7.4
-      '@rollup/plugin-node-resolve': 15.0.1_rollup@3.7.4
-      '@rollup/plugin-replace': 5.0.1_rollup@3.7.4
-      '@rollup/pluginutils': 5.0.2_rollup@3.7.4
+      '@rollup/plugin-alias': 4.0.2_rollup@3.7.3
+      '@rollup/plugin-commonjs': 23.0.4_rollup@3.7.3
+      '@rollup/plugin-json': 5.0.2_rollup@3.7.3
+      '@rollup/plugin-node-resolve': 15.0.1_rollup@3.7.3
+      '@rollup/plugin-replace': 5.0.1_rollup@3.7.3
+      '@rollup/pluginutils': 5.0.2_rollup@3.7.3
       chalk: 5.2.0
       consola: 2.15.3
       defu: 6.1.1
@@ -1301,8 +1301,8 @@ packages:
       pkg-types: 1.0.1
       pretty-bytes: 6.0.0
       rimraf: 3.0.2
-      rollup: 3.7.4
-      rollup-plugin-dts: 5.0.0_fhibmf72xnv5tve6nwed265eae
+      rollup: 3.7.3
+      rollup-plugin-dts: 5.0.0_6hu75beimlyhzhs4jaytlzqtvy
       scule: 1.0.0
       typescript: 4.9.4
       untyped: 1.0.0

@@ -6,8 +6,8 @@ import { InputCheckboxVariant, Props, Watches } from './types';
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 
-	public constructor(component: Generic.Element.Component & Props, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 
@@ -16,6 +16,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	 */
 	public validateChecked(value?: boolean): void {
 		watchBoolean(this.component, '_checked', value);
+		this.setFormAssociatedValue(this.component.state._checked as string);
 	}
 
 	/**

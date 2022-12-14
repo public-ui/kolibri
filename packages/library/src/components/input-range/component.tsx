@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
@@ -15,6 +15,8 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputRange implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
+
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
@@ -169,11 +171,10 @@ export class KolInputRange implements ComponentApi {
 		_autoComplete: 'off',
 		_id: '⚠',
 		_list: [],
-		_name: '⚠',
 	};
 
 	public constructor() {
-		this.controller = new InputRangeController(this, 'range');
+		this.controller = new InputRangeController(this, 'range', this.host);
 	}
 
 	/**

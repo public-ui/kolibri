@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
@@ -41,7 +41,7 @@ import { TooltipAlignment } from '../tooltip/component';
 export class KolButtonLink
 	implements Generic.Element.ComponentApi<RequiredButtonLinkProps, OptionalButtonLinkProps, RequiredButtonLinkStates, OptionalButtonLinkStates>
 {
-	private host?: HTMLElement | null;
+	@Element() private readonly host?: HTMLElement;
 	private readonly nonce = nonce();
 
 	/**
@@ -52,10 +52,6 @@ export class KolButtonLink
 	public forwardedRef?: HTMLButtonElement;
 	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public ref?: HTMLButtonElement;
-
-	private readonly catchHost = (host?: HTMLElement | null) => {
-		this.host = host;
-	};
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
 		this.forwardedRef = ref;
@@ -82,7 +78,7 @@ export class KolButtonLink
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchHost}>
+			<Host>
 				<button
 					ref={this.catchRef}
 					accessKey={this.state._accessKey}

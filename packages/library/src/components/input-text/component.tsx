@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
@@ -20,13 +20,9 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 	shadow: true,
 })
 export class KolInputText implements ComponentApi {
-	private host?: HTMLElement | null;
+	@Element() private readonly host?: HTMLElement;
 	private inputEl!: HTMLInputElement;
 	private oldValue?: string;
-
-	private readonly catchHost = (host?: HTMLElement | null) => {
-		this.host = host;
-	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
@@ -58,7 +54,7 @@ export class KolInputText implements ComponentApi {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
-			<Host ref={this.catchHost}>
+			<Host>
 				<kol-input
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -236,7 +232,7 @@ export class KolInputText implements ComponentApi {
 	};
 
 	public constructor() {
-		this.controller = new InputTextController(this, 'text');
+		this.controller = new InputTextController(this, 'text', this.host);
 	}
 
 	/**

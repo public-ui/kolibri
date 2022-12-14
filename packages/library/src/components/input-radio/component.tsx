@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Option } from '../../types/input/types';
@@ -15,6 +15,8 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputRadio implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
+
 	public render(): JSX.Element {
 		const { ariaDiscribedBy, hasError } = getRenderStates(this.state);
 		return (
@@ -51,13 +53,7 @@ export class KolInputRadio implements ComponentApi {
 								_required={this.state._required}
 								_touched={this.state._touched}
 							>
-								<div
-									slot="input"
-									style={{
-										border: '1px solid',
-									}}
-								>
-									{this.state._value} === {JSON.stringify(option)}
+								<div slot="input">
 									<input
 										aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
@@ -67,7 +63,7 @@ export class KolInputRadio implements ComponentApi {
 										id={customId}
 										accessKey={this.state._accessKey}
 										checked={this.state._value === option.value}
-										name={this.state._name}
+										name={this.state._name || this.state._id}
 										disabled={this.state._disabled || option.disabled}
 										required={this.state._required}
 										tabIndex={this.state._tabIndex}
@@ -186,12 +182,12 @@ export class KolInputRadio implements ComponentApi {
 	@State() public state: States = {
 		_id: '⚠',
 		_list: [],
-		_name: '⚠',
+
 		_orientation: 'vertical',
 	};
 
 	public constructor() {
-		this.controller = new InputRadioController(this, 'radio-group');
+		this.controller = new InputRadioController(this, 'radio', this.host);
 	}
 
 	/**

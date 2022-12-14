@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
@@ -22,6 +22,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	shadow: true,
 })
 export class KolSelect implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
 	private htmlSelect?: HTMLSelectElement;
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
@@ -219,12 +220,12 @@ export class KolSelect implements ComponentApi {
 		_height: '',
 		_id: '⚠',
 		_list: [],
-		_name: '⚠',
+
 		_value: [],
 	};
 
 	public constructor() {
-		this.controller = new SelectController(this, 'textarea');
+		this.controller = new SelectController(this, 'textarea', this.host);
 	}
 
 	/**
@@ -387,6 +388,7 @@ export class KolSelect implements ComponentApi {
 		this._value = Array.from(this.htmlSelect?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+		this.controller.setFormAssociatedValue(this._value as unknown as string);
 		if (typeof this.state._on?.onChange === 'function') {
 			this.state._on.onChange(event, this._value);
 		}

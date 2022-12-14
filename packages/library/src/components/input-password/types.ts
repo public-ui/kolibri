@@ -35,7 +35,6 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
-	name: string;
 };
 type OptionalStates = {
 	accessKey: string;
@@ -46,6 +45,7 @@ type OptionalStates = {
 	hint: string;
 	icon: KoliBriInputIcon;
 	maxLength: number;
+	name: string;
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;

@@ -30,7 +30,6 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	id: string;
-	name: string;
 };
 type OptionalStates = {
 	accept: string;
@@ -42,6 +41,7 @@ type OptionalStates = {
 	hint: string;
 	icon: KoliBriInputIcon;
 	multiple: boolean;
+	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
 	smartButton: ButtonProps;

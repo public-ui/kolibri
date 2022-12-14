@@ -26,8 +26,8 @@ export class SelectController extends InputController implements Watches {
 	private onStateChange!: () => void;
 	private readonly keyOptionMap = new Map<string, Option<unknown>>();
 
-	public constructor(component: Generic.Element.Component & Props, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 
@@ -132,6 +132,7 @@ export class SelectController extends InputController implements Watches {
 				beforePatch: this.beforePatchListValue,
 			},
 		});
+		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	/**

@@ -30,8 +30,8 @@ export class InputController extends ControlledInputController implements Watche
 
 	public hideLabel = false;
 
-	public constructor(component: Generic.Element.Component & Props, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 
@@ -120,7 +120,11 @@ export class InputController extends ControlledInputController implements Watche
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateId(value?: string): void {
-		watchString(this.component, '_id', value);
+		watchString(this.component, '_id', value, {
+			hooks: {
+				afterPatch: this.syncFormAssociatedName,
+			},
+		});
 		if (typeof value === 'undefined') {
 			devHint(`Eine eindeutige ID an den Eingabefeldern ist nicht zwingend erforderlich, könnte aber für die E2E-Tests relevant sein.`);
 		}
@@ -130,9 +134,13 @@ export class InputController extends ControlledInputController implements Watche
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	public validateName(value?: string): void {
-		watchString(this.component, '_name', value);
+		watchString(this.component, '_name', value, {
+			hooks: {
+				afterPatch: this.syncFormAssociatedName,
+			},
+		});
 		if (typeof value === 'undefined') {
-			devHint(`Ein Name an den Eingabefeldern ist nicht zwingend erforderlich, könnte aber für die Autocomplete-Funktion des Eingabefeldes relevant sein.`);
+			devHint(`Ein Name an den Eingabefeldern ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion des Eingabefeldes relevant sein.`);
 		}
 	}
 
@@ -184,6 +192,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
+		this.syncFormAssociatedName();
 	}
 
 	protected onBlur(event: Event): void {
@@ -195,6 +204,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onChange(event: Event): void {
+		this.setFormAssociatedValue((event.target as HTMLInputElement).value);
 		if (typeof this.component._on?.onChange === 'function') {
 			/**
 			 * TODO
@@ -221,6 +231,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public setValue(event: Event, value: string | number | boolean): void {
+		this.setFormAssociatedValue(value as string);
 		if (typeof this.component._on?.onChange === 'function') {
 			this.component._on.onChange(event, value);
 		}

@@ -32,7 +32,6 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	id: string;
 	list: SelectOption<unknown>[];
-	name: string;
 	value: unknown[];
 };
 type OptionalStates = {
