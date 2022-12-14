@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
@@ -40,7 +40,7 @@ import { watchButtonType, watchButtonVariant } from './controller';
 	shadow: false,
 })
 export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates> {
-	private host?: HTMLElement | null;
+	@Element() private readonly host?: HTMLElement;
 	private readonly nonce = nonce();
 
 	/**
@@ -51,10 +51,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	public forwardedRef?: HTMLButtonElement;
 	// - eslint-disable-next-line @stencil/own-props-must-be-private
 	public ref?: HTMLButtonElement;
-
-	private readonly catchHost = (host?: HTMLElement | null) => {
-		this.host = host;
-	};
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
 		this.forwardedRef = ref;
@@ -82,7 +78,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchHost}>
+			<Host>
 				<button
 					ref={this.catchRef}
 					accessKey={this.state._accessKey}

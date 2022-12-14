@@ -33,8 +33,8 @@ type InputCheckboxRadioWatches = Generic.Element.Watchers<RequiredProps, Optiona
 export class InputCheckboxRadioController extends InputController implements InputCheckboxRadioWatches {
 	protected readonly component: Generic.Element.Component & InputCheckboxRadioProps;
 
-	public constructor(component: Generic.Element.Component & InputCheckboxRadioProps, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & InputCheckboxRadioProps, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 
@@ -59,8 +59,8 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	private onStateChange!: () => void;
 	private readonly keyOptionMap = new Map<string, Option<unknown>>();
 
-	public constructor(component: Generic.Element.Component & Props, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 
@@ -131,6 +131,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		setState(this.component, '_value', value, {
 			beforePatch: this.beforePatchListValue,
 		});
+		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	/**

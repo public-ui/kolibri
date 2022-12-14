@@ -16,8 +16,8 @@ export class InputNumberController extends InputController implements Watches {
 
 	protected readonly component: Generic.Element.Component & Props;
 
-	public constructor(component: Generic.Element.Component & Props, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 

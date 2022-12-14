@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { getRenderStates } from '../input/controller';
@@ -13,6 +13,8 @@ import { ComponentApi, InputCheckboxVariant, States } from './types';
 	shadow: true,
 })
 export class KolInputCheckbox implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
+
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		return (
@@ -151,12 +153,12 @@ export class KolInputCheckbox implements ComponentApi {
 	@State() public state: States = {
 		_checked: false,
 		_id: '⚠',
-		_name: '⚠',
+
 		_variant: 'checkbox',
 	};
 
 	public constructor() {
-		this.controller = new InputCheckboxController(this, 'checkbox');
+		this.controller = new InputCheckboxController(this, 'checkbox', this.host);
 	}
 
 	/**
