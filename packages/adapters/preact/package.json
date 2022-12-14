@@ -56,7 +56,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/react": "1.1.15-rc.2"
+		"@public-ui/react": "1.1.15-rc.3"
 	},
 	"devDependencies": {
 		"@public-ui/components": "1.1.15-rc.2",
