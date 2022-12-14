@@ -57,7 +57,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/core": "1.1.15-rc.2",
-		"@public-ui/components": "1.1.15-rc.2",
+		"@public-ui/components": "1.1.15-rc.3",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.14",
@@ -70,7 +70,7 @@
 		"unbuild": "0.8.11"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.15-rc.2",
+		"@public-ui/components": "1.1.15-rc.3",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},
