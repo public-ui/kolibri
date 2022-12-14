@@ -8,7 +8,7 @@ specifiers:
   '@public-ui/core': 1.1.15-rc.3
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.14
+  '@types/node': 18.11.15
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.1
   rimraf: 3.0.2
@@ -25,7 +25,7 @@ devDependencies:
   '@public-ui/core': 1.1.15-rc.3
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.14
+  '@types/node': 18.11.15
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.1
   rimraf: 3.0.2
@@ -354,8 +354,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.14:
-    resolution: {integrity: sha512-0KXV57tENYmmJMl+FekeW9V3O/rlcqGQQJ/hNh9r8pKIj304pskWuEd8fCyNT86g/TpO0gcOTiLzsHLEURFMIQ==}
+  /@types/node/18.11.15:
+    resolution: {integrity: sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
