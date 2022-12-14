@@ -53,13 +53,7 @@ export class KolInputRadio implements ComponentApi {
 								_required={this.state._required}
 								_touched={this.state._touched}
 							>
-								<div
-									slot="input"
-									style={{
-										border: '1px solid',
-									}}
-								>
-									{this.state._value} === {JSON.stringify(option)}
+								<div slot="input">
 									<input
 										aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}

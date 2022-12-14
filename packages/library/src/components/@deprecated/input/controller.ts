@@ -122,7 +122,7 @@ export class InputController extends ControlledInputController implements Watche
 	public validateId(value?: string): void {
 		watchString(this.component, '_id', value, {
 			hooks: {
-				afterPatch: this.syncFormAssociated,
+				afterPatch: this.syncFormAssociatedName,
 			},
 		});
 		if (typeof value === 'undefined') {
@@ -136,7 +136,7 @@ export class InputController extends ControlledInputController implements Watche
 	public validateName(value?: string): void {
 		watchString(this.component, '_name', value, {
 			hooks: {
-				afterPatch: this.syncFormAssociated,
+				afterPatch: this.syncFormAssociatedName,
 			},
 		});
 		if (typeof value === 'undefined') {
@@ -192,7 +192,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
-		this.syncFormAssociated();
+		this.syncFormAssociatedName();
 	}
 
 	protected onBlur(event: Event): void {
@@ -204,8 +204,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onChange(event: Event): void {
-		this.formAssociated.setAttribute('value', (event.target as HTMLInputElement).value);
-		this.formAssociated.value = (event.target as HTMLInputElement).value;
+		this.setFormAssociatedValue((event.target as HTMLInputElement).value);
 		if (typeof this.component._on?.onChange === 'function') {
 			/**
 			 * TODO
@@ -232,6 +231,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public setValue(event: Event, value: string | number | boolean): void {
+		this.setFormAssociatedValue(value as string);
 		if (typeof this.component._on?.onChange === 'function') {
 			this.component._on.onChange(event, value);
 		}

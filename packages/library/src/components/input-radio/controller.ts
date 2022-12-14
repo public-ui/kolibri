@@ -131,6 +131,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		setState(this.component, '_value', value, {
 			beforePatch: this.beforePatchListValue,
 		});
+		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	/**

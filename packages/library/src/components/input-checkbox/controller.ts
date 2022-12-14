@@ -16,6 +16,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	 */
 	public validateChecked(value?: boolean): void {
 		watchBoolean(this.component, '_checked', value);
+		this.setFormAssociatedValue(this.component.state._checked as string);
 	}
 
 	/**

@@ -56,14 +56,16 @@
 			<kol-input-date _id="input-date-week" _type="week">Woche</kol-input-date>
 			<kol-input-date _id="input-date-time" _type="time">Zeit (Standard)</kol-input-date>
 			<kol-input-password _id="input-password">Passwort</kol-input-password>
-			<kol-input-radio _id="input-radio">Anrede</kol-input-radio>
+			<kol-input-radio _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">Anrede</kol-input-radio>
 			<kol-input-range _id="input-range" _min="0" _max="50">Schieberegler</kol-input-range>
-			<kol-input-text _id="input-text" class="vorname" _hint="Ich bin ein Hinweis." _type="text">Vorname (Auto-Vervollständigung) </kol-input-text>
+			<kol-input-text _id="input-text" _hint="Ich bin ein Hinweis." _type="text">Vorname (Auto-Vervollständigung) </kol-input-text>
 			<kol-input-text _id="input-text-search" _type="search">Suchbegriff</kol-input-text>
 			<kol-input-text _id="input-text-url" _type="url">Url</kol-input-text>
 			<kol-input-text _id="input-text-tel" _type="tel">Telefonnummer</kol-input-text>
-			<kol-select _id="select" class="list4value">Stimmung (nicht vorbelegt)</kol-select>
-			<kol-select _id="select-multiple" class="value4list" _multiple>Stimmung (Mehrfachauswahl, vorbelegt)</kol-select>
+			<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung (nicht vorbelegt)</kol-select>
+			<kol-select _id="select-multiple" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _multiple
+				>Stimmung (Mehrfachauswahl, vorbelegt)</kol-select
+			>
 			<kol-textarea _id="textarea">Textarea</kol-textarea>
 			<button>Absenden</button>
 		</form>

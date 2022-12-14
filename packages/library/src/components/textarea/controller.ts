@@ -90,6 +90,7 @@ export class TextareaController extends InputController implements Watches {
 				afterPatch: this.afterSyncCharCounter,
 			},
 		});
+		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	/**

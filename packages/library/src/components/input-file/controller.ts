@@ -37,6 +37,7 @@ export class InputFileController extends InputController implements Watches {
 	 */
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
+		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	/**

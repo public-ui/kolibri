@@ -388,6 +388,7 @@ export class KolSelect implements ComponentApi {
 		this._value = Array.from(this.htmlSelect?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+		this.controller.setFormAssociatedValue(this._value as unknown as string);
 		if (typeof this.state._on?.onChange === 'function') {
 			this.state._on.onChange(event, this._value);
 		}

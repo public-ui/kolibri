@@ -24,8 +24,12 @@ export class ControlledInputController implements Watches {
 		this.host?.appendChild(this.formAssociated);
 	}
 
-	protected readonly syncFormAssociated = () => {
+	protected readonly syncFormAssociatedName = () => {
 		this.formAssociated.setAttribute('name', (this.component.state._name as string) || (this.component.state._id as string));
+	};
+
+	public readonly setFormAssociatedValue = (value: string | null = null) => {
+		this.formAssociated.setAttribute('value', value as string);
 	};
 
 	/**

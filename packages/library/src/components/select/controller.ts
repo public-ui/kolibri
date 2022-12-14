@@ -132,6 +132,7 @@ export class SelectController extends InputController implements Watches {
 				beforePatch: this.beforePatchListValue,
 			},
 		});
+		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	/**
