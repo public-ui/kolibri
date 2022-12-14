@@ -63,7 +63,7 @@ export class KolInputRadio implements ComponentApi {
 										id={customId}
 										accessKey={this.state._accessKey}
 										checked={this.state._value === option.value}
-										name={this.state._name}
+										name={this.state._name || this.state._id}
 										disabled={this.state._disabled || option.disabled}
 										required={this.state._required}
 										tabIndex={this.state._tabIndex}
