@@ -21,8 +21,8 @@ type InputTextEmailWatches = Generic.Element.Watchers<RequiredProps, OptionalPro
 export class InputTextEmailController extends InputPasswordController implements InputTextEmailWatches {
 	protected readonly component: Generic.Element.Component & InputTextEmailProps;
 
-	public constructor(component: Generic.Element.Component & InputTextEmailProps, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & InputTextEmailProps, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 
@@ -48,8 +48,8 @@ export class InputTextController extends InputTextEmailController implements Inp
 	public hasError = false;
 	public hasList = false;
 
-	public constructor(component: Generic.Element.Component & InputTextProps, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & InputTextProps, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 

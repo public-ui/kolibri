@@ -31,7 +31,6 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
 	list: string[];
-	name: string;
 };
 type OptionalStates = {
 	accessKey: string;
@@ -41,6 +40,7 @@ type OptionalStates = {
 	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriInputIcon;
+	name: string;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
 	touched: boolean;

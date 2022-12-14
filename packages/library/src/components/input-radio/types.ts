@@ -30,7 +30,6 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	id: string;
 	list: Option<unknown>[];
-	name: string;
 	orientation: Orientation;
 };
 type OptionalStates = {
@@ -40,6 +39,7 @@ type OptionalStates = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
+	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
 	tabIndex: number;

@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
@@ -16,6 +16,7 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputFile implements ComponentApi {
+	@Element() private readonly host?: HTMLElement;
 	private inputEl!: HTMLInputElement;
 
 	private catchEl = (el: HTMLInputElement) => {
@@ -158,11 +159,10 @@ export class KolInputFile implements ComponentApi {
 	 */
 	@State() public state: States = {
 		_id: '⚠',
-		_name: '⚠',
 	};
 
 	public constructor() {
-		this.controller = new InputFileController(this, 'file');
+		this.controller = new InputFileController(this, 'file', this.host);
 	}
 
 	/**

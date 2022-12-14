@@ -6,8 +6,8 @@ import { Props, Watches } from './types';
 export class InputFileController extends InputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 
-	public constructor(component: Generic.Element.Component & Props, name: string) {
-		super(component, name);
+	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+		super(component, name, host);
 		this.component = component;
 	}
 
@@ -37,6 +37,7 @@ export class InputFileController extends InputController implements Watches {
 	 */
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
+		this.setFormAssociatedValue(this.component._value as string);
 	}
 
 	/**
