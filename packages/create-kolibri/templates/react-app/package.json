@@ -31,7 +31,7 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.1.15-rc.2",
+		"@public-ui/components": "1.1.15-rc.3",
 		"@public-ui/core": "1.1.15-rc.2",
 		"@public-ui/react": "1.1.15-rc.2",
 		"@public-ui/themes": "1.1.15-rc.2",
