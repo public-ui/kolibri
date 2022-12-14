@@ -47,7 +47,7 @@
 		"@leanup/kolibri-themes": "0.0.6",
 		"@public-oss/kolibri-themes": "0.0.1",
 		"@public-ui/core": "1.1.15-rc.2",
-		"@public-ui/components": "1.1.15-rc.2",
+		"@public-ui/components": "1.1.15-rc.3",
 		"@public-ui/solid": "1.1.15-rc.2",
 		"@public-ui/themes": "1.1.15-rc.2",
 		"monaco-editor": "0.34.1",
