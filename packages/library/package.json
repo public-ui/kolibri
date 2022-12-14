@@ -92,7 +92,7 @@
 		"@public-ui/schema": "1.1.15-rc.2"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.15-rc.2",
+		"@public-ui/core": "1.1.15-rc.3",
 		"@stencil/angular-output-target": "0.4.0",
 		"@stencil/core": "2.20.0",
 		"@stencil/postcss": "2.1.0",
