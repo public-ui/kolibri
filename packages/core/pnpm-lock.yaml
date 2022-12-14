@@ -676,7 +676,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001439
       electron-to-chromium: 1.4.284
-      node-releases: 2.0.6
+      node-releases: 2.0.7
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
@@ -1612,8 +1612,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /node-releases/2.0.6:
-    resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
+  /node-releases/2.0.7:
+    resolution: {integrity: sha512-EJ3rzxL9pTWPjk5arA0s0dgXpnyiAbJDE6wHT62g7VsgrgQgmmZ+Ru++M1BFofncWja+Pnn3rEr3fieRySAdKQ==}
     dev: true
 
   /once/1.4.0:
@@ -1951,7 +1951,7 @@ packages:
       rollup-plugin-dts: 5.0.0_fhibmf72xnv5tve6nwed265eae
       scule: 1.0.0
       typescript: 4.9.4
-      untyped: 1.0.0
+      untyped: 1.1.0
     transitivePeerDependencies:
       - sass
       - supports-color
@@ -1962,8 +1962,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /untyped/1.0.0:
-    resolution: {integrity: sha512-aBeR3Z51038d7zVzsNShYEdO7u/VCp5R17fxpPXlD2QvG9g6uVJ+JM+zMJ7KFPIt1BNf3I6bU6PhAlsAFkIfdA==}
+  /untyped/1.1.0:
+    resolution: {integrity: sha512-v4H7juRA2cWFr+V4L2HExXwlRCwZv2A6o2M33+9aN/DPUyzqtFFMCTpiKF7sdOV8EaLxm+LTpDb0BoeGv2NswQ==}
     dependencies:
       '@babel/core': 7.20.5
       '@babel/standalone': 7.20.6
