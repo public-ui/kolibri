@@ -75,7 +75,7 @@
 		"@angular/compiler-cli": "15.0.3",
 		"@angular/compiler": "15.0.3",
 		"@angular/core": "15.0.3",
-		"@public-ui/core": "1.1.15-rc.2",
+		"@public-ui/core": "1.1.15-rc.3",
 		"@public-ui/components": "1.1.15-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
