@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.15-rc.3
+  '@public-ui/core': 1.1.15-rc.4
   '@types/node': 18.11.15
   typescript: 4.9.4
   unbuild: 1.0.2
 
 dependencies:
-  '@public-ui/core': 1.1.15-rc.3
+  '@public-ui/core': 1.1.15-rc.4
 
 devDependencies:
   '@types/node': 18.11.15
@@ -305,8 +305,8 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/core/1.1.15-rc.3:
-    resolution: {integrity: sha512-wocALKXrGcHaajwF8V7U2iFpnI6/wUO0gULBXcZvTiSHZiWYER0DjNrMzezHgfVr6+NiMXlDajMdnICEhgJvdw==}
+  /@public-ui/core/1.1.15-rc.4:
+    resolution: {integrity: sha512-eiT+4wRf21S0e5UBw5iVdTR0rUy6dC6K1qN4IeJFLnOs6hrZi0sjLY5A81tADbKqEO/+yajEy+LyvJud0ukVcw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
@@ -1263,7 +1263,7 @@ packages:
       rollup-plugin-dts: 5.0.0_fhibmf72xnv5tve6nwed265eae
       scule: 1.0.0
       typescript: 4.9.4
-      untyped: 1.1.0
+      untyped: 1.2.0
     transitivePeerDependencies:
       - sass
       - supports-color
@@ -1274,8 +1274,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /untyped/1.1.0:
-    resolution: {integrity: sha512-v4H7juRA2cWFr+V4L2HExXwlRCwZv2A6o2M33+9aN/DPUyzqtFFMCTpiKF7sdOV8EaLxm+LTpDb0BoeGv2NswQ==}
+  /untyped/1.2.0:
+    resolution: {integrity: sha512-nG0A55YEhUU5UCEM+nhIhCVkA8a4L1spIVtzO0937WDjEA6jrKpu184O2K9iv5UuJNHnwhu+Q3TXiSJh/JrjlQ==}
     dependencies:
       '@babel/core': 7.20.5
       '@babel/standalone': 7.20.6
