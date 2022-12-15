@@ -275,8 +275,8 @@ packages:
       - supports-color
     dev: true
 
-  /@humanwhocodes/config-array/0.11.7:
-    resolution: {integrity: sha512-kBbPWzN8oVMLb0hOUYXhmxggL/1cJE6ydvjDIGi9EnAGUyA7cLVKQg+d/Dsm+KZwx2czGHrCmMVLiyg8s5JPKw==}
+  /@humanwhocodes/config-array/0.11.8:
+    resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
     engines: {node: '>=10.10.0'}
     dependencies:
       '@humanwhocodes/object-schema': 1.2.1
@@ -1080,7 +1080,7 @@ packages:
     hasBin: true
     dependencies:
       '@eslint/eslintrc': 1.3.3
-      '@humanwhocodes/config-array': 0.11.7
+      '@humanwhocodes/config-array': 0.11.8
       '@humanwhocodes/module-importer': 1.0.1
       '@nodelib/fs.walk': 1.2.8
       ajv: 6.12.6
@@ -1951,7 +1951,7 @@ packages:
       rollup-plugin-dts: 5.0.0_fhibmf72xnv5tve6nwed265eae
       scule: 1.0.0
       typescript: 4.9.4
-      untyped: 1.1.0
+      untyped: 1.2.0
     transitivePeerDependencies:
       - sass
       - supports-color
@@ -1962,8 +1962,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /untyped/1.1.0:
-    resolution: {integrity: sha512-v4H7juRA2cWFr+V4L2HExXwlRCwZv2A6o2M33+9aN/DPUyzqtFFMCTpiKF7sdOV8EaLxm+LTpDb0BoeGv2NswQ==}
+  /untyped/1.2.0:
+    resolution: {integrity: sha512-nG0A55YEhUU5UCEM+nhIhCVkA8a4L1spIVtzO0937WDjEA6jrKpu184O2K9iv5UuJNHnwhu+Q3TXiSJh/JrjlQ==}
     dependencies:
       '@babel/core': 7.20.5
       '@babel/standalone': 7.20.6
