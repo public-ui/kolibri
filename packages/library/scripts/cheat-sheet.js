@@ -62,7 +62,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 	<body>
 		<main class="mapz" data-theme="mapz">
 			<kol-link _href="https://public-ui.github.io" _target="github">
-				<kol-kolibri _labelled="false"></kol-kolibri>
+				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
 			<kol-heading>Cheat Sheet</kol-heading>
 			<p><strong><kol-abbr _title="Komponenten-Bibliothek für die Barrierefreiheit" _tooltip-align="right">KoliBri</kol-abbr></strong> ist eine <strong>barrierefreie Komponenten-Bibliothek</strong> die sich durch separate Themes an unterschiedliche <strong>Styleguides</strong> und <strong>Design Systeme</strong> anpassen lässt.</p>
@@ -75,9 +75,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 				.replace(/>/g, '&#62;')}</code> der HTML-Seite eingebunden werden.</p>
 			<pre>
 				<code class="language-html">${`<head>
-		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
-		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
-	</head>`
+	<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
+	<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
+</head>`
 					.replace(/</g, '&#60;')
 					.replace(/>/g, '&#62;')}</code>
 			</pre>
@@ -85,15 +85,15 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<p>Mit <strong>KoliBri</strong> ist es möglich unterschiedliche Themes mit den Komponenten zu kombinieren. Die Verknüpfung erfolgt über die <strong>Register</strong>-Methode. Ihr können eine oder mehrere Loader für die Custom-Elements und Themes übergeben werden.</p>
 			<pre>
 				<code class="language-html">${`<head>
-		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.4';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.4/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.4';
-			register([MAPZ], [defineCustomElements])
-				.then(() => {})
-				.catch(console.warn);
-		</script>
-	</head>`
+	<script type="module">
+		import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.4';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.4/dist/loader';
+		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.4';
+		register([MAPZ], [defineCustomElements])
+			.then(() => {})
+			.catch(console.warn);
+	</script>
+</head>`
 					.replace(/</g, '&#60;')
 					.replace(/>/g, '&#62;')}</code>
 			</pre>
@@ -108,8 +108,8 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 	.replace(/>/g, '&#62;')}</code> gesetzt werden.</p>
 			<pre>
 				<code class="language-html">${`<body class="mapz" data-theme="mapz">
-		...
-	</body>`
+	...
+</body>`
 					.replace(/</g, '&#60;')
 					.replace(/>/g, '&#62;')}</code>
 		</pre>
@@ -129,10 +129,31 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<pre>
 			<code class="language-html">${`<head>
 	<meta name="kolibri" content="dev-mode=true" />
+	<!-- <meta name="kolibri" content="dev-mode=true,experimental-mode=true" /> -->
 </head>`
 				.replace(/</g, '&#60;')
 				.replace(/>/g, '&#62;')}</code>
 		</pre>
+		<kol-details _summary="Experimental mode">
+			<pre>
+				<code class="language-html">${`<head>
+	<meta name="kolibri" content="experimental-mode=true" />
+</head>`
+					.replace(/</g, '&#60;')
+					.replace(/>/g, '&#62;')}</code>
+			</pre>
+		</kol-details>
+		<br>
+		<kol-details _summary="Color contrast analysis">
+			<pre>
+				<code class="language-html">${`<head>
+	<meta name="kolibri" content="color-contrast-analysis=true" />
+</head>`
+					.replace(/</g, '&#60;')
+					.replace(/>/g, '&#62;')}</code>
+			</pre>
+		</kol-details>
+		<br>
 		<kol-heading _level="2">Usage</kol-heading>
 		<p>KoliBri-Komponenten sind wie eigenen HTML-Tags und werden einfach als solche im "umrahmenden" HTML (Responsiveness, Grid usw.) wiederverwendet und deren Ausprägung mittels der Komponenten-Eigenschaften bestimmt.</p>
 		<pre>

@@ -6,7 +6,7 @@ import { hex, score } from 'wcag-contrast';
 import { Generic } from '@public-ui/core';
 
 import { devHint } from './a11y.tipps';
-import { getDocument, getWindow, Log } from './dev.utils';
+import { getDocument, getExperimalMode, getWindow, Log } from './dev.utils';
 import { Stringified } from '../types/common';
 
 // https://regex101.com/r/lSYLO9/1
@@ -44,6 +44,10 @@ export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void 
  * wir das Target explizit und stoppen die Propagation.
  */
 export const setEventTargetAndStopPropagation = (event: Event, target?: HTMLElement): void => {
+	if (getExperimalMode()) {
+		console.log(event, target);
+		devHint(`↑ We propagate the (submit) event to this target.`);
+	}
 	Object.defineProperty(event, 'target', {
 		value: target,
 		writable: false,

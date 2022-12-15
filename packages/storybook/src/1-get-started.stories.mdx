@@ -164,6 +164,21 @@ Mittels der folgenden Konfiguration in der HTML-Datei können die Developer-Tool
 <html>
 	<head>
 		<meta name="kolibri" content="dev-mode=true" />
+		<!-- <meta name="kolibri" content="dev-mode=true,experimental-mode=true" /> -->
+	</head>
+	…
+</html>
+```
+
+<kol-heading _level="2">Experimental Mode / Labor</kol-heading>
+
+Mittels der folgenden Konfiguration in der HTML-Datei kann der experimentelle Modus aktiviert werden.
+
+```html
+…
+<html>
+	<head>
+		<meta name="kolibri" content="experimental-mode=true" />
 	</head>
 	…
 </html>
@@ -177,7 +192,7 @@ Die Color-Contrast-Analyse ermöglicht es Farb-Kontrast-Fehler innerhalb des DOM
 …
 <html>
 	<head>
-		<meta name="kolibri" content="dev-mode=true;color-constrast-analysis=true" />
+		<meta name="kolibri" content="color-constrast-analysis=true" />
 	</head>
 	…
 </html>

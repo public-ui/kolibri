@@ -69,30 +69,30 @@
 			<p><strong>Fonts</strong> und <strong>Icon-Fonts</strong> müssen im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite eingebunden werden.</p>
 			<pre>
 				<code class="language-html">&#60;head&#62;
-		&#60;link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" /&#62;
-		&#60;link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet"&#62;
-	&#60;/head&#62;</code>
+	&#60;link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" /&#62;
+	&#60;link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet"&#62;
+&#60;/head&#62;</code>
 			</pre>
 			<kol-heading _level="3">Loader</kol-heading>
 			<p>Mit <strong>KoliBri</strong> ist es möglich unterschiedliche Themes mit den Komponenten zu kombinieren. Die Verknüpfung erfolgt über die <strong>Register</strong>-Methode. Ihr können eine oder mehrere Loader für die Custom-Elements und Themes übergeben werden.</p>
 			<pre>
 				<code class="language-html">&#60;head&#62;
-		&#60;script type="module"&#62;
-			import { register } from 'https://esm.sh@1.1.15-rc.4/@public-ui/core';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.4/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/theme@1.1.15-rc.4';
-			register([MAPZ], [defineCustomElements])
-				.then(() =&#62; {})
-				.catch(console.warn);
-		&#60;/script&#62;
-	&#60;/head&#62;</code>
+	&#60;script type="module"&#62;
+		import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.4';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.4/dist/loader';
+		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.4';
+		register([MAPZ], [defineCustomElements])
+			.then(() =&#62; {})
+			.catch(console.warn);
+	&#60;/script&#62;
+&#60;/head&#62;</code>
 			</pre>
 			<kol-heading _level="3">Config</kol-heading>
 			<p>Wenn ein Theme registriert wird, werden alle darin enthaltenen <strong>CSS-Properties</strong> unter dem Theme-Namen als CSS-Klasse im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite hinzugefügt. So wird es ermöglicht, dass diese CSS-Properties in eigenem CSS für das "umrahmende" HTML wiederverwendet werden können. Damit das funktioniert, muss die CSS-Klasse mit dem Theme-Namen z.B. am <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;body&#62;</code> gesetzt werden.</p>
 			<pre>
 				<code class="language-html">&#60;body class="mapz" data-theme="mapz"&#62;
-		...
-	&#60;/body&#62;</code>
+	...
+&#60;/body&#62;</code>
 		</pre>
 		<kol-heading _level="3">VSCode</kol-heading>
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
@@ -106,8 +106,25 @@
 		<pre>
 			<code class="language-html">&#60;head&#62;
 	&#60;meta name="kolibri" content="dev-mode=true" /&#62;
+	&#60;!-- &#60;meta name="kolibri" content="dev-mode=true,experimental-mode=true" /&#62; --&#62;
 &#60;/head&#62;</code>
 		</pre>
+		<kol-details _summary="Experimental mode">
+			<pre>
+				<code class="language-html">&#60;head&#62;
+	&#60;meta name="kolibri" content="experimental-mode=true" /&#62;
+&#60;/head&#62;</code>
+			</pre>
+		</kol-details>
+		<br>
+		<kol-details _summary="Color contrast analysis">
+			<pre>
+				<code class="language-html">&#60;head&#62;
+	&#60;meta name="kolibri" content="color-contrast-analysis=true" /&#62;
+&#60;/head&#62;</code>
+			</pre>
+		</kol-details>
+		<br>
 		<kol-heading _level="2">Usage</kol-heading>
 		<p>KoliBri-Komponenten sind wie eigenen HTML-Tags und werden einfach als solche im "umrahmenden" HTML (Responsiveness, Grid usw.) wiederverwendet und deren Ausprägung mittels der Komponenten-Eigenschaften bestimmt.</p>
 		<pre>
