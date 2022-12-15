@@ -29,8 +29,8 @@ import ThemeSwitch from './assets/theme-switch.png';
 <kol-heading _level="1">Theming</kol-heading>
 
 <p>
-	Das Einzigartige an <KoliBri /> ist die <strong>Referenzimplementierung</strong> von Komponenten, die in sich von Grund auf{' '}
-	<strong>semantisch W3C- und WCAG-konform</strong> sind und damit <strong>vollständig barrierefrei</strong> bezüglich der assistiven Unterstützung sind. Alle
+	Das Einzigartige an <KoliBri /> ist die <strong>Referenzimplementierung</strong> von Komponenten, die von Grund auf{' '}
+	<strong>semantisch W3C- und WCAG-konform</strong> und damit <strong>vollständig barrierefrei</strong> bezüglich der assistiven Unterstützung sind. Alle
 	Komponenten werden dabei als{' '}
 	<KolLink _href="https://developer.mozilla.org/en-US/docs/Web/Web_Components?retiredLocale=de" _target="mozilla">
 		Web Components
@@ -84,7 +84,8 @@ import ThemeSwitch from './assets/theme-switch.png';
 <p>
 	<KolIndentedText>
 		<strong>
-			3. KoliBri ermöglicht die Wiederverwendung getesteter, barrierefreier und robuster Komponenten(-konstruktionen) bei nahezu individuellem Design.
+			3. KoliBri ermöglicht die Wiederverwendung getesteter, barrierefreier und robuster Komponenten(-konstruktionen) bei nahezu individuellem Design und stellt
+			damit einen im Rahmen der Barrierefreiheit frei gestaltbaren HTML-Standard dar.
 		</strong>
 	</KolIndentedText>
 </p>
@@ -136,7 +137,7 @@ stateDiagram-v2
 	</KolLink>{' '}
 	auf die Basis-Komponenten "übertragen". Ist im eigenen Design System eine Individualisierbarkeit gewüscht, dann können im Designer dafür CSS-Properties oder
 	Design-Tokens definiert werden. Damit das eigene Theme über Projekte hinweg geteilt werden kann, wird das Theme in ein NPM-Paket paketiert und kann über eine
-	beliebige Registery bereitgestellt werden.
+	beliebige Registry bereitgestellt werden.
 </p>
 <p>
 	<KolDetails _summary="Design-Tokens">
@@ -147,13 +148,13 @@ stateDiagram-v2
 </p>
 <p>
 	<KolDetails _summary="Dark-Mode">
-		Optional kann auch das Thema "Dark-Mode" umgesetzt werden. Hierzu können das erforderliche CSS in den Globals des KoliBri-Themes hinterlegt werden.
+		Optional kann auch ein "Dark-Mode"-Theme umgesetzt werden. Hierzu kann das erforderliche CSS in den Globals des KoliBri-Themes hinterlegt werden.
 	</KolDetails>
 </p>
 
 <KolAlert _heading="KoliBri-Factory" _type="info" _variant="card">
 	<p>
-		Eigene spezifische Komponenten die nicht von KoliBri bereitgestellt werden und die leider nicht zur KoliBri-Komponenten-Vielfalt passen, können in eigenen
+		Eigene spezifische Komponenten die nicht von KoliBri bereitgestellt wird und die leider nicht zur KoliBri-Komponenten-Vielfalt passen, können in eigenen
 		Komponenten-Bibliotheken aufgebaut und unabhängig gepflegt werden. Hierfür bieten wir die sogenannte <strong>KoliBri-Factory</strong> (Stack) an (siehe{' '}
 		<KolLink _href="https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md#erweitert" _target="github">
 			Modularisierung

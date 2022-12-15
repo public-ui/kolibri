@@ -25,6 +25,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	public validateIndeterminate(value?: boolean): void {
 		watchBoolean(this.component, '_indeterminate', value);
 	}
+
 	/**
 	 * @deprecated
 	 * @see: components/abbr/component.tsx (@Watch)

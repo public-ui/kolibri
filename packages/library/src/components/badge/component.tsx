@@ -4,9 +4,10 @@ import { Generic } from '@public-ui/core';
 import { Nationalfarben } from '../../enums/color';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { devHint, featureHint } from '../../utils/a11y.tipps';
-import { watchValidator } from '../../utils/prop.validators';
+import { objectObjectHandler, parseJson, setState, watchValidator } from '../../utils/prop.validators';
 import { createContrastColorPair, KoliBriContrastColor } from './contrast';
 import { Stringified } from '../../types/common';
+import { ButtonProps } from '../../types/button-link';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -24,16 +25,19 @@ type RequiredProps = {
 	label: string;
 };
 type OptionalProps = {
-	color: string | KoliBriColor;
+	color: Stringified<KoliBriColor>;
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
+	smartButton: ButtonProps;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	color: string | KoliBriColor;
+	color: Stringified<KoliBriColor>;
 };
-type OptionalStates = unknown;
+type OptionalStates = {
+	smartButton: ButtonProps;
+};
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
@@ -51,6 +55,9 @@ export class KolBadge implements Props {
 		return (
 			<Host>
 				<kol-span-wc
+					class={{
+						'smart-button': typeof this._smartButton === 'object' && this._smartButton !== null,
+					}}
 					_label={this._label}
 					_icon={this._icon}
 					_iconOnly={this._iconOnly}
@@ -59,6 +66,20 @@ export class KolBadge implements Props {
 						color: this.colorStr,
 					}}
 				></kol-span-wc>
+				{typeof this._smartButton === 'object' && this._smartButton !== null && (
+					<kol-button-wc
+						_ariaLabel={this._smartButton._ariaLabel}
+						_customClass={this._smartButton._customClass}
+						_disabled={this._smartButton._disabled}
+						_icon={this._smartButton._icon}
+						_iconOnly={true}
+						_id={this._smartButton._id}
+						_label={this._smartButton._label}
+						_on={this._smartButton._on}
+						_tooltipAlign={this._smartButton._tooltipAlign}
+						_variant={this._smartButton._variant}
+					></kol-button-wc>
+				)}
 			</Host>
 		);
 	}
@@ -88,6 +109,11 @@ export class KolBadge implements Props {
 	 * Gibt den Label-Text des Badges an.
 	 */
 	@Prop() public _label!: string;
+
+	/**
+	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 */
+	@Prop() public _smartButton?: ButtonProps;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -139,9 +165,26 @@ export class KolBadge implements Props {
 	}
 
 	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_smartButton')
+	public validateSmartButton(value?: ButtonProps | string): void {
+		objectObjectHandler(value, () => {
+			try {
+				value = parseJson<ButtonProps>(value as string);
+				// eslint-disable-next-line no-empty
+			} catch (e) {
+				// value behält den ursprünglichen Wert
+			}
+			setState(this, '_smartButton', value);
+		});
+	}
+
+	/**
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
+		this.validateSmartButton(this._smartButton);
 	}
 }
