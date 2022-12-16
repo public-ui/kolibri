@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.20.5
-  '@public-ui/components': 1.1.15-rc.4
-  '@public-ui/core': 1.1.15-rc.4
+  '@public-ui/components': 1.1.15-rc.5
+  '@public-ui/core': 1.1.15-rc.5
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.15
@@ -14,8 +14,8 @@ specifiers:
 
 devDependencies:
   '@babel/types': 7.20.5
-  '@public-ui/components': 1.1.15-rc.4
-  '@public-ui/core': 1.1.15-rc.4
+  '@public-ui/components': 1.1.15-rc.5
+  '@public-ui/core': 1.1.15-rc.5
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.15
@@ -315,23 +315,23 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/components/1.1.15-rc.4:
-    resolution: {integrity: sha512-qG8YchXmW+3vkJNrUxUW6ETHuHPiyqJt3BWFKUKCQV2KIqq5sPJXNKi+l/Kbcfanx8Qd3kA7cf+LLTHP1BvaDg==}
+  /@public-ui/components/1.1.15-rc.5:
+    resolution: {integrity: sha512-OIzpUTeJnKXJT1geQdWnnECxL4NHgXIPLcXV4Hsb3RnPbrpTK8fxwydLT20cWKqBdT/Rpd6I+aLuVG3yUTIDug==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.4
+      '@public-ui/schema': 1.1.15-rc.5
     dev: true
 
-  /@public-ui/core/1.1.15-rc.4:
-    resolution: {integrity: sha512-eiT+4wRf21S0e5UBw5iVdTR0rUy6dC6K1qN4IeJFLnOs6hrZi0sjLY5A81tADbKqEO/+yajEy+LyvJud0ukVcw==}
+  /@public-ui/core/1.1.15-rc.5:
+    resolution: {integrity: sha512-4O8gL5uV+f7hq9RDq8KnL+9TfSye/JNc2bhjMX2k3JsdGgmcAJbxxRw03BEzwbPD1AJOdL3Voz+5N6l+GQYtiw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
     dev: true
 
-  /@public-ui/schema/1.1.15-rc.4:
-    resolution: {integrity: sha512-qTfYwHvEbI1uisrAKQtwqEl9NLPUSzpaqZ0ulLo3oo/xezNV13EnF4PwujTYvZHlr2VdxhItBMmGHvFaH2OHyQ==}
+  /@public-ui/schema/1.1.15-rc.5:
+    resolution: {integrity: sha512-B3wvLWS4xxw0NoMKmUu3GfQphjV3q2FiKrWIDO7DfllpG8ejpGEM87ODSdG+t7105+4TzrxJjeabG92zSWIxCA==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.4
+      '@public-ui/core': 1.1.15-rc.5
     dev: true
 
   /@rollup/plugin-alias/4.0.2_rollup@3.7.4:
