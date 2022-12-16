@@ -39,7 +39,7 @@
 		"@public-ui/components": "1.1.15-rc.3",
 		"@public-ui/core": "1.1.15-rc.3",
 		"@public-ui/react": "1.1.15-rc.3",
-		"@public-ui/themes": "1.1.15-rc.3",
+		"@public-ui/themes": "1.1.15-rc.5",
 		"@types/react": "18.0.26",
 		"@types/node": "18.11.15",
 		"@types/react-dom": "18.0.9",
