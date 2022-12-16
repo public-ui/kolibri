@@ -111,6 +111,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
+  kol-badge --> kol-button-wc
   kol-alert --> kol-heading-wc
   kol-alert --> kol-button-wc
   kol-alert --> kol-icon

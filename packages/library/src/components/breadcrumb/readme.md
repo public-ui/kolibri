@@ -129,7 +129,10 @@ graph TD;
   kol-link-wc --> kol-tooltip
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
+  kol-badge --> kol-button-wc
   kol-span-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip
   style kol-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

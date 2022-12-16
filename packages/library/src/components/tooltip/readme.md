@@ -50,10 +50,11 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 graph TD;
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
+  kol-badge --> kol-button-wc
   kol-span-wc --> kol-icon
+  kol-button-wc --> kol-tooltip
   kol-abbr --> kol-tooltip
   kol-button-link --> kol-tooltip
-  kol-button-wc --> kol-tooltip
   kol-link-button --> kol-tooltip
   kol-link-wc --> kol-tooltip
   style kol-tooltip fill:#f9f,stroke:#333,stroke-width:4px
