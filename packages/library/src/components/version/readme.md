@@ -53,7 +53,11 @@ Bitte beachten Sie, dass innerhalb der Komponente dem Text aus dem Attribut **\_
 graph TD;
   kol-version --> kol-badge
   kol-badge --> kol-span-wc
+  kol-badge --> kol-button-wc
   kol-span-wc --> kol-icon
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip
+  kol-tooltip --> kol-badge
   style kol-version fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

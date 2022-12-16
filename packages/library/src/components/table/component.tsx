@@ -493,8 +493,6 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		);
 		const dataField = this.createDataField(displayedData, this.state._headers);
 
-		console.log('dataField', dataField);
-
 		return (
 			<Host>
 				{/*
@@ -723,7 +721,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 						</tbody>
 					</table>
 				</div>
-				{this.showPagination && (
+				{this.pageEndSlice > 0 && this.showPagination && (
 					<div>
 						<span>
 							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}

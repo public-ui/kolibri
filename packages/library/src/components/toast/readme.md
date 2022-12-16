@@ -85,6 +85,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
+  kol-badge --> kol-button-wc
   style kol-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.15-rc.5
-  '@public-ui/schema': 1.1.15-rc.5
+  '@public-ui/core': 1.1.15-rc.6
+  '@public-ui/schema': 1.1.15-rc.6
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.20.0
   '@stencil/postcss': 2.1.0
@@ -51,10 +51,10 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.1.15-rc.5
+  '@public-ui/schema': 1.1.15-rc.6
 
 devDependencies:
-  '@public-ui/core': 1.1.15-rc.5
+  '@public-ui/core': 1.1.15-rc.6
   '@stencil/angular-output-target': 0.4.0_@stencil+core@2.20.0
   '@stencil/core': 2.20.0
   '@stencil/postcss': 2.1.0_@stencil+core@2.20.0
@@ -1624,16 +1624,16 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/core/1.1.15-rc.5:
-    resolution: {integrity: sha512-4O8gL5uV+f7hq9RDq8KnL+9TfSye/JNc2bhjMX2k3JsdGgmcAJbxxRw03BEzwbPD1AJOdL3Voz+5N6l+GQYtiw==}
+  /@public-ui/core/1.1.15-rc.6:
+    resolution: {integrity: sha512-T5uFuOMgil9zcsZFvRKq+8OcFsh142SmpDMgJ/NT4dLW7o5HLCYB/e50bAWfEKW/2r67syV+fix5B5M9N0sIvw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
 
-  /@public-ui/schema/1.1.15-rc.5:
-    resolution: {integrity: sha512-B3wvLWS4xxw0NoMKmUu3GfQphjV3q2FiKrWIDO7DfllpG8ejpGEM87ODSdG+t7105+4TzrxJjeabG92zSWIxCA==}
+  /@public-ui/schema/1.1.15-rc.6:
+    resolution: {integrity: sha512-GJNVdzfCgtxZGom/Bv9ZLESZxOe2u6IJ9GY1Au4bY57FJ6fRwE6oC6Ry/rjBNYuoiGHwoik0eIzpLhY62UjIdg==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.5
+      '@public-ui/core': 1.1.15-rc.6
     dev: false
 
   /@rollup/plugin-babel/5.3.1_opjstonlpkhafnz76jsxdwq25a:
@@ -3295,7 +3295,7 @@ packages:
       eslint: 8.29.0
       has: 1.0.3
       jsx-ast-utils: 3.3.3
-      language-tags: 1.0.7
+      language-tags: 1.0.6
       minimatch: 3.1.2
       semver: 6.3.0
     dev: true
@@ -5039,8 +5039,8 @@ packages:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
     dev: true
 
-  /language-tags/1.0.7:
-    resolution: {integrity: sha512-bSytju1/657hFjgUzPAPqszxH62ouE8nQFoFaVlIQfne4wO/wXC9A4+m8jYve7YBBvi59eq0SUpcshvG8h5Usw==}
+  /language-tags/1.0.6:
+    resolution: {integrity: sha512-HNkaCgM8wZgE/BZACeotAAgpL9FUjEnhgF0FVQMIgH//zqTPreLYMb3rWYkYAqPoF75Jwuycp1da7uz66cfFQg==}
     dependencies:
       language-subtag-registry: 0.3.22
     dev: true

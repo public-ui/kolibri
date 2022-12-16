@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/schema",
-	"version": "1.1.15-rc.3",
+	"version": "1.1.15-rc.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -55,7 +55,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/core": "1.1.15-rc.5"
+		"@public-ui/core": "1.1.15-rc.6"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.15",

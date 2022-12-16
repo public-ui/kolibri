@@ -93,6 +93,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
+  kol-badge --> kol-button-wc
   kol-select --> kol-input
   kol-input --> kol-icon
   kol-input --> kol-button-wc

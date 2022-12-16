@@ -12,8 +12,8 @@ import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/ale
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
 import { Alignment, KoliBriIconProp } from "./types/icon";
-import { NavLinkProps } from "./components/link/component";
 import { AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
+import { NavLinkProps } from "./components/link/component";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -118,6 +118,10 @@ export namespace Components {
           * Gibt den Label-Text des Badges an.
          */
         "_label": string;
+        /**
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+         */
+        "_smartButton"?: Stringified<ButtonProps>;
     }
     interface KolBreadcrumb {
         /**
@@ -2606,6 +2610,10 @@ declare namespace LocalJSX {
           * Gibt den Label-Text des Badges an.
          */
         "_label": string;
+        /**
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+         */
+        "_smartButton"?: Stringified<ButtonProps>;
     }
     interface KolBreadcrumb {
         /**

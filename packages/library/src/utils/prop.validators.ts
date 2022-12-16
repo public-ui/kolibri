@@ -6,7 +6,7 @@ import { hex, score } from 'wcag-contrast';
 import { Generic } from '@public-ui/core';
 
 import { devHint } from './a11y.tipps';
-import { getDocument, getWindow, Log } from './dev.utils';
+import { getDocument, getExperimalMode, getWindow, Log } from './dev.utils';
 import { Stringified } from '../types/common';
 
 // https://regex101.com/r/lSYLO9/1
@@ -44,6 +44,10 @@ export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void 
  * wir das Target explizit und stoppen die Propagation.
  */
 export const setEventTargetAndStopPropagation = (event: Event, target?: HTMLElement): void => {
+	if (getExperimalMode()) {
+		console.log(event, target);
+		devHint(`↑ We propagate the (submit) event to this target.`);
+	}
 	Object.defineProperty(event, 'target', {
 		value: target,
 		writable: false,
@@ -258,9 +262,11 @@ export const watchJsonArrayString = <T>(
 };
 
 const BOOLEAN = /^(true|false)$/;
-const INTEGER = /^-?\d+$/;
-const FLOAT = /^-?\d+(.\d+)$/;
+const INTEGER = /^-?(0|[1-9]\d*)$/;
+const FLOAT = /^-?(0.|[1-9]\d*.)\d*[1-9]$/;
 export const mapString2Unknown = (value: unknown) => {
+	const typeStr = typeof value;
+	const oldValue = `${value as string}`;
 	if (typeof value === 'string') {
 		if (BOOLEAN.test(value)) {
 			value = value === 'true';
@@ -268,7 +274,7 @@ export const mapString2Unknown = (value: unknown) => {
 			value = parseInt(value);
 		} else if (FLOAT.test(value)) {
 			value = parseFloat(value);
-		} else {
+		} else if (JSON_CHARS.test(value)) {
 			try {
 				value = parseJson<unknown>(value);
 				// eslint-disable-next-line no-empty
@@ -276,6 +282,9 @@ export const mapString2Unknown = (value: unknown) => {
 				// value behält den ursprünglichen Wert
 			}
 		}
+	}
+	if (typeStr !== typeof value) {
+		devHint(`You have used a stringified property value (${oldValue} to ${JSON.stringify(value)}) which type switched from ${typeStr} to ${typeof value}!`);
 	}
 	return value;
 };

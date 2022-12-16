@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.3';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.3/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.3';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.6';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.6/dist/loader';
+			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.6';
 				register(MAPZ, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -58,7 +58,7 @@
 	<body>
 		<main class="mapz" data-theme="mapz">
 			<kol-link _href="https://public-ui.github.io" _target="github">
-				<kol-kolibri _labelled="false"></kol-kolibri>
+				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
 			<kol-heading>Cheat Sheet</kol-heading>
 			<p><strong><kol-abbr _title="Komponenten-Bibliothek für die Barrierefreiheit" _tooltip-align="right">KoliBri</kol-abbr></strong> ist eine <strong>barrierefreie Komponenten-Bibliothek</strong> die sich durch separate Themes an unterschiedliche <strong>Styleguides</strong> und <strong>Design Systeme</strong> anpassen lässt.</p>
@@ -69,30 +69,30 @@
 			<p><strong>Fonts</strong> und <strong>Icon-Fonts</strong> müssen im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite eingebunden werden.</p>
 			<pre>
 				<code class="language-html">&#60;head&#62;
-		&#60;link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" /&#62;
-		&#60;link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet"&#62;
-	&#60;/head&#62;</code>
+	&#60;link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" /&#62;
+	&#60;link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet"&#62;
+&#60;/head&#62;</code>
 			</pre>
 			<kol-heading _level="3">Loader</kol-heading>
 			<p>Mit <strong>KoliBri</strong> ist es möglich unterschiedliche Themes mit den Komponenten zu kombinieren. Die Verknüpfung erfolgt über die <strong>Register</strong>-Methode. Ihr können eine oder mehrere Loader für die Custom-Elements und Themes übergeben werden.</p>
 			<pre>
 				<code class="language-html">&#60;head&#62;
-		&#60;script type="module"&#62;
-			import { register } from 'https://esm.sh@1.1.15-rc.3/@public-ui/core';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.3/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/theme@1.1.15-rc.3';
-			register([MAPZ], [defineCustomElements])
-				.then(() =&#62; {})
-				.catch(console.warn);
-		&#60;/script&#62;
-	&#60;/head&#62;</code>
+	&#60;script type="module"&#62;
+		import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.6';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.6/dist/loader';
+		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.6';
+		register([MAPZ], [defineCustomElements])
+			.then(() =&#62; {})
+			.catch(console.warn);
+	&#60;/script&#62;
+&#60;/head&#62;</code>
 			</pre>
 			<kol-heading _level="3">Config</kol-heading>
 			<p>Wenn ein Theme registriert wird, werden alle darin enthaltenen <strong>CSS-Properties</strong> unter dem Theme-Namen als CSS-Klasse im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite hinzugefügt. So wird es ermöglicht, dass diese CSS-Properties in eigenem CSS für das "umrahmende" HTML wiederverwendet werden können. Damit das funktioniert, muss die CSS-Klasse mit dem Theme-Namen z.B. am <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;body&#62;</code> gesetzt werden.</p>
 			<pre>
 				<code class="language-html">&#60;body class="mapz" data-theme="mapz"&#62;
-		...
-	&#60;/body&#62;</code>
+	...
+&#60;/body&#62;</code>
 		</pre>
 		<kol-heading _level="3">VSCode</kol-heading>
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
@@ -106,8 +106,25 @@
 		<pre>
 			<code class="language-html">&#60;head&#62;
 	&#60;meta name="kolibri" content="dev-mode=true" /&#62;
+	&#60;!-- &#60;meta name="kolibri" content="dev-mode=true,experimental-mode=true" /&#62; --&#62;
 &#60;/head&#62;</code>
 		</pre>
+		<kol-details _summary="Experimental mode">
+			<pre>
+				<code class="language-html">&#60;head&#62;
+	&#60;meta name="kolibri" content="experimental-mode=true" /&#62;
+&#60;/head&#62;</code>
+			</pre>
+		</kol-details>
+		<br>
+		<kol-details _summary="Color contrast analysis">
+			<pre>
+				<code class="language-html">&#60;head&#62;
+	&#60;meta name="kolibri" content="color-contrast-analysis=true" /&#62;
+&#60;/head&#62;</code>
+			</pre>
+		</kol-details>
+		<br>
 		<kol-heading _level="2">Usage</kol-heading>
 		<p>KoliBri-Komponenten sind wie eigenen HTML-Tags und werden einfach als solche im "umrahmenden" HTML (Responsiveness, Grid usw.) wiederverwendet und deren Ausprägung mittels der Komponenten-Eigenschaften bestimmt.</p>
 		<pre>
@@ -157,7 +174,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 	name: `badge`,
 	desc: `Mit **Badges** können Sie bestimmte Informationen auf Ihrer Webseite optisch hervorheben.
 KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnung der Textfarbe auch die Möglichkeit, einem Badge ein Icon und/oder einen anderen Schriftschnitt mitzugeben.`,
-	props: `_color, _icon, _icon-align, _icon-only, _label`
+	props: `_color, _icon, _icon-align, _icon-only, _label, _smart-button`
 },{
 	name: `breadcrumb`,
 	desc: `Mit Hilfe der **Breadcrumb**-Komponente kann der Pfad zur aktuellen Position einer Webseite in einer hierarchischen Struktur dargestellt werden.`,
@@ -738,6 +755,16 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `details`
 },{
+	name: `_smart-button`,
+	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
+	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _tabIndex?: number | undefined; _tooltipAlign?: TooltipAlignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks | undefined; _type?: KoliBriButtonType | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; }`,
+	comps: `badge`
+},{
+	name: `_color`,
+	desc: `Gibt die Farbe des Hintergrundes bzw. der Schrift an.`,
+	types: `string | { backgroundColor: string; color: string; }`,
+	comps: `badge`
+},{
 	name: `_show-duration`,
 	desc: `Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.`,
 	types: `number`,
@@ -837,11 +864,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
-},{
-	name: `_color`,
-	desc: `Gibt die Farbe des Hintergrundes bzw. der Schrift an.`,
-	types: `string | { backgroundColor: string; color: string; }`,
-	comps: `badge`
 },{
 	name: `_align`,
 	desc: `Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.`,

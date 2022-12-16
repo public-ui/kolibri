@@ -59,11 +59,11 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.1.15-rc.3"
+		"@public-ui/components": "1.1.15-rc.6"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.15-rc.3",
-		"@public-ui/themes": "1.1.15-rc.3",
+		"@public-ui/core": "1.1.15-rc.6",
+		"@public-ui/themes": "1.1.15-rc.6",
 		"@stencil/angular-output-target": "0.4.0",
 		"@stencil/core": "2.20.0",
 		"@stencil/postcss": "2.1.0",

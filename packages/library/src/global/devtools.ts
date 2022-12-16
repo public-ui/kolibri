@@ -1,4 +1,4 @@
-import { getColorContrastAnalysis, getDevMode, getDocument, initKoliBri, KoliBri, Log, renderDevAdvice } from '../utils/dev.utils';
+import { getColorContrastAnalysis, getDevMode, getDocument, getExperimalMode, initKoliBri, KoliBri, Log, renderDevAdvice } from '../utils/dev.utils';
 import {
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,
@@ -20,6 +20,8 @@ function prototypeKoliBri<T>(name: string, cb: T) {
 		Log.debug(`KoliBri property ${name} is already bind.`);
 	}
 }
+
+const metaModeLog = (name: string, active: boolean) => Log.debug(`${name} ${active ? '' : 'not '}activated`);
 
 export const initialize = (): void => {
 	initKoliBri();
@@ -59,16 +61,17 @@ export const initialize = (): void => {
 
 		getDocument().body.appendChild(div);
 
+		metaModeLog('Development mode', getDevMode());
+		metaModeLog('Experimental mode', getExperimalMode());
+		metaModeLog('Color contrast analysis', getColorContrastAnalysis());
+
 		if (getColorContrastAnalysis()) {
-			Log.debug('Color-Contrast-Analysis activated');
 			const timeout = setTimeout(() => {
 				clearTimeout(timeout);
 				setInterval(() => {
 					KoliBriUtils.queryHtmlElementColors(getDocument().createElement('div'), koliBriA11yColorContrast(body), false, false);
 				}, 10000);
 			}, 2500);
-		} else {
-			Log.debug('Color-Contrast-Analysis not activated');
 		}
 
 		// setTimeout(() => {
