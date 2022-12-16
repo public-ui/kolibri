@@ -28,7 +28,7 @@ type OptionalProps = {
 	color: Stringified<KoliBriColor>;
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
-	smartButton: ButtonProps;
+	smarButton: Stringified<ButtonProps>;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -52,11 +52,12 @@ export class KolBadge implements Props {
 	private colorStr = '#fff';
 
 	public render(): JSX.Element {
+		console.log(this.state._smartButton);
 		return (
 			<Host>
 				<kol-span-wc
 					class={{
-						'smart-button': typeof this._smartButton === 'object' && this._smartButton !== null,
+						'smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
 					}}
 					_label={this._label}
 					_icon={this._icon}
@@ -66,18 +67,18 @@ export class KolBadge implements Props {
 						color: this.colorStr,
 					}}
 				></kol-span-wc>
-				{typeof this._smartButton === 'object' && this._smartButton !== null && (
+				{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 					<kol-button-wc
-						_ariaLabel={this._smartButton._ariaLabel}
-						_customClass={this._smartButton._customClass}
-						_disabled={this._smartButton._disabled}
-						_icon={this._smartButton._icon}
+						_ariaLabel={this.state._smartButton._ariaLabel}
+						_customClass={this.state._smartButton._customClass}
+						_disabled={this.state._smartButton._disabled}
+						_icon={this.state._smartButton._icon}
 						_iconOnly={true}
-						_id={this._smartButton._id}
-						_label={this._smartButton._label}
-						_on={this._smartButton._on}
-						_tooltipAlign={this._smartButton._tooltipAlign}
-						_variant={this._smartButton._variant}
+						_id={this.state._smartButton._id}
+						_label={this.state._smartButton._label}
+						_on={this.state._smartButton._on}
+						_tooltipAlign={this.state._smartButton._tooltipAlign}
+						_variant={this.state._smartButton._variant}
 					></kol-button-wc>
 				)}
 			</Host>
@@ -113,7 +114,7 @@ export class KolBadge implements Props {
 	/**
 	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

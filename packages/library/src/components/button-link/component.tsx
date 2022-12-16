@@ -72,7 +72,7 @@ export class KolButtonLink
 			setEventTargetAndStopPropagation(event, this.ref);
 			this.state._on?.onClick(event as PointerEvent);
 		} else {
-			devHint(`It is no button click callback configured!`);
+			devHint(`It was no button click callback configured!`);
 		}
 	};
 

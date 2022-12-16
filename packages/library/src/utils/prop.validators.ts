@@ -262,9 +262,11 @@ export const watchJsonArrayString = <T>(
 };
 
 const BOOLEAN = /^(true|false)$/;
-const INTEGER = /^-?\d+$/;
-const FLOAT = /^-?\d+(.\d+)$/;
+const INTEGER = /^-?(0|[1-9]\d*)$/;
+const FLOAT = /^-?(0.|[1-9]\d*.)\d*[1-9]$/;
 export const mapString2Unknown = (value: unknown) => {
+	const typeStr = typeof value;
+	const oldValue = `${value as string}`;
 	if (typeof value === 'string') {
 		if (BOOLEAN.test(value)) {
 			value = value === 'true';
@@ -272,7 +274,7 @@ export const mapString2Unknown = (value: unknown) => {
 			value = parseInt(value);
 		} else if (FLOAT.test(value)) {
 			value = parseFloat(value);
-		} else {
+		} else if (JSON_CHARS.test(value)) {
 			try {
 				value = parseJson<unknown>(value);
 				// eslint-disable-next-line no-empty
@@ -280,6 +282,9 @@ export const mapString2Unknown = (value: unknown) => {
 				// value behält den ursprünglichen Wert
 			}
 		}
+	}
+	if (typeStr !== typeof value) {
+		devHint(`You have used a stringified property value (${oldValue} to ${JSON.stringify(value)}) which type switched from ${typeStr} to ${typeof value}!`);
 	}
 	return value;
 };
