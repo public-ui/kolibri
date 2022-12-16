@@ -28,7 +28,7 @@
 		"@public-ui/components": "1.1.15-rc.3",
 		"@public-ui/core": "1.1.15-rc.3",
 		"@public-ui/react": "1.1.15-rc.3",
-		"@public-ui/themes": "1.1.15-rc.3",
+		"@public-ui/themes": "1.1.15-rc.5",
 		"@stencil/core": "2.20.0",
 		"next": "13.0.6",
 		"react": "18.2.0",
