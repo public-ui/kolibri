@@ -34,7 +34,7 @@
 		"@public-ui/components": "1.1.15-rc.3",
 		"@public-ui/core": "1.1.15-rc.3",
 		"@public-ui/react": "1.1.15-rc.3",
-		"@public-ui/themes": "1.1.15-rc.3",
+		"@public-ui/themes": "1.1.15-rc.5",
 		"ajv": "8.11.2",
 		"preact": "10.11.3"
 	},
