@@ -52,7 +52,6 @@ export class KolBadge implements Props {
 	private colorStr = '#fff';
 
 	public render(): JSX.Element {
-		console.log(this.state._smartButton);
 		return (
 			<Host>
 				<kol-span-wc
