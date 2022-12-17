@@ -73,7 +73,7 @@ export class KolLinkButton
 		}
 
 		const tagAttrs = {
-			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
+			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : '',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: typeof this.state._target === 'string' && this.state._target !== '_self' ? 'noopener' : undefined,
 		};
