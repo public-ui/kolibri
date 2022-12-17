@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@public-ui/core';
-import { AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
+import { AlternativButtonLinkRole, AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { TooltipAlignment } from '../tooltip/component';
 import { Stringified } from '../../types/common';
 
@@ -34,6 +34,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 				_iconOnly={this._iconOnly}
 				_on={this._on}
 				_part={this._part}
+				_role={this._role}
 				_selector={this._selector}
 				_stealth={this._stealth}
 				_tabIndex={this._tabIndex}
@@ -116,6 +117,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
 	 */
 	@Prop() public _part?: string;
+
+	/**
+	 * Gibt an, welche Role der Schalter hat.
+	 */
+	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.

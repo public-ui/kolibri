@@ -2,6 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { Generic } from '@public-ui/core';
 import {
+	AlternativButtonLinkRole,
 	AriaCurrent,
 	ButtonStates,
 	KoliBriButtonCallbacks,
@@ -87,6 +88,7 @@ export class KolButtonLink
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-label={this.state._iconOnly === false ? this.state._ariaLabel || this.state._label : undefined}
 					aria-labelledby={this.state._iconOnly === true ? this.nonce : undefined}
+					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
 						[this.state._variant as string]: true,
 						'icon-only': this.state._iconOnly === true,
@@ -96,6 +98,7 @@ export class KolButtonLink
 					id={this.state._id}
 					{...this.state._on}
 					onClick={this.onClick}
+					role={this.state._role}
 					style={{
 						width: 'inherit',
 					}}
@@ -149,7 +152,12 @@ export class KolButtonLink
 	 *
 	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop() public _ariaLabel?: string;
+	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string = '';
+
+	/**
+	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 */
+	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
 	/**
 	 * Gibt an, ob der Button deaktiviert ist.
@@ -187,6 +195,11 @@ export class KolButtonLink
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
+
+	/**
+	 * Gibt an, welche Role der Schalter hat.
+	 */
+	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -264,6 +277,14 @@ export class KolButtonLink
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_ariaSelected')
+	public validateAriaSelected(value?: boolean): void {
+		watchBoolean(this, '_ariaSelected', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		watchBoolean(this, '_disabled', value);
@@ -331,6 +352,14 @@ export class KolButtonLink
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_role')
+	public validateRole(value?: AlternativButtonLinkRole): void {
+		watchString(this, '_role', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_tabIndex')
 	public validateTabIndex(value?: number): void {
 		validateTabIndex(this, value);
@@ -361,6 +390,7 @@ export class KolButtonLink
 		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaLabel(this._ariaLabel);
+		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
 		this.validateIcon(this._icon);
 		// this.validateIconAlign(this._iconAlign);
@@ -368,6 +398,7 @@ export class KolButtonLink
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
+		this.validateRole(this._role);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);

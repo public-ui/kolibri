@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch, Element } from '@stencil/core';
 import { Events } from '../../enums/events';
 import { KoliBriIconProp } from '../../types/icon';
 
@@ -7,7 +7,7 @@ import { EventCallback, EventValueCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { Log } from '../../utils/dev.utils';
+import { Log, nonce } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 
@@ -71,12 +71,12 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: true,
 })
 export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	private hostElement: HTMLElement | null = null;
-	private tabsElement?: HTMLElement;
-	private htmlElements?: HTMLCollection;
+	@Element() private readonly host?: HTMLElement;
+	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = 'Neu …';
 	private showCreateTab = false;
 	private selectedTimeout?: ReturnType<typeof setTimeout>;
+	private readonly nonce = nonce();
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step: number): number => {
 		if (step > 0) {
@@ -112,7 +112,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 			if (selectedIndex !== null) {
 				this.onSelect(event, selectedIndex, true);
 			}
-		});
+		}, 250);
 	};
 
 	private readonly onClickSelect = (event: PointerEvent, index: number): void => {
@@ -140,8 +140,6 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 						<div class="inline-flex">
 							<kol-button-wc
 								class="h-full"
-								_ariaControls={`tabpanel-${index}`}
-								_id={`tab-${index}`}
 								_disabled={button._disabled}
 								_icon={button._icon}
 								_iconOnly={button._iconOnly}
@@ -154,8 +152,10 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_tooltipAlign={button._tooltipAlign}
 								_variant={this.state._selected === index ? 'custom' : undefined}
 								_customClass={this.state._selected === index ? 'selected' : undefined}
-								aria-selected={this.state._selected === index ? 'true' : 'false'}
-								role="tab"
+								_ariaControls={`${this.nonce}-tabpanel-${index}`}
+								// _ariaSelected={this.state._selected === index ? 'true' : 'false'}
+								_id={`tab-${index}`}
+								_role="tab"
 							></kol-button-wc>
 							{/* {typeof button._on?.onClose === 'function' ||
                         (button._on?.onClose === true && (
@@ -193,25 +193,25 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		);
 	}
 
-	private readonly catchHostElement = (el: HTMLElement | null) => {
-		this.hostElement = el;
+	private tabPanelHost?: HTMLDivElement;
+
+	private readonly catchTabPanelHost = (el?: HTMLDivElement) => {
+		this.tabPanelHost = el;
 	};
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchHostElement}>
+			<Host>
 				<div
 					ref={(el) => {
-						this.tabsElement = el as HTMLElement;
+						this.tabPanelsElement = el as HTMLElement;
 					}}
 					class={{
 						[`tabs-align-${this.state._tabsAlign}`]: true,
 					}}
 				>
 					{this.renderButtonGroup()}
-					<div>
-						<slot />
-					</div>
+					<div ref={this.catchTabPanelHost}>{/* <slot /> */}</div>
 				</div>
 			</Host>
 		);
@@ -407,25 +407,36 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		this.validateTabsAlign(this._tabsAlign);
 	}
 
+	private readonly handleTabPanels = () => {
+		if (this.tabPanelHost instanceof HTMLDivElement) {
+			for (let i = this.tabPanelHost.children.length; i < this.state._tabs.length; i++) {
+				const div = document.createElement('div');
+				div.setAttribute('aria-labelledby', `tab-${i}`);
+				div.setAttribute('id', `${this.nonce}-tabpanel-${i}`);
+				div.setAttribute('role', 'tabpanel');
+				div.setAttribute('hidden', '');
+				if (this.host?.children instanceof HTMLCollection && this.host?.children?.length > 0) {
+					div.appendChild(this.host?.children[0]);
+				}
+				this.tabPanelHost.appendChild(div);
+			}
+		}
+	};
+
 	public componentDidRender(): void {
-		if (this.hostElement instanceof HTMLElement) {
-			this.htmlElements = this.hostElement?.children;
-			for (let i = 0; i < this.htmlElements.length; i++) {
-				this.htmlElements[i].setAttribute('aria-labelledby', `tab-${i}`);
-				this.htmlElements[i].setAttribute('id', `tabpanel-${i}`);
-				this.htmlElements[i].setAttribute('role', 'tabpanel');
+		this.handleTabPanels();
+		if (this.tabPanelHost instanceof HTMLDivElement) {
+			for (let i = 0; i < this.tabPanelHost.children.length; i++) {
 				if (i !== this.state._selected) {
-					this.htmlElements[i].setAttribute('hidden', '');
+					this.tabPanelHost.children[i].setAttribute('hidden', '');
 				} else {
-					this.htmlElements[i].removeAttribute('hidden');
+					this.tabPanelHost.children[i].removeAttribute('hidden');
 				}
 			}
 		}
 	}
 
 	private onSelect(event: CustomEvent | KeyboardEvent | PointerEvent, index: number, focus = false): void {
-		// this.selectedTimeout = setTimeout(() => {
-		// 	clearTimeout(this.selectedTimeout);
 		this._selected = index;
 		if (typeof this._on?.onSelect === 'function') {
 			this._on?.onSelect(event, index);
@@ -435,27 +446,13 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 			// devHint('[KolTabs] Tab-Fokus-verschieben geht im Moment nicht.');
 			this.selectedTimeout = setTimeout(() => {
 				clearTimeout(this.selectedTimeout);
-				if (this.tabsElement instanceof HTMLElement) {
-					const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabsElement);
+				if (this.tabPanelsElement instanceof HTMLElement) {
+					const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabPanelsElement);
 					button?.focus();
 				}
-			});
+			}, 250);
 		}
-		// });
 	}
-
-	// private onClose(button: TabButtonProps, event: Event, index: number) {
-	// 	if (typeof button._on?.onClose === 'function') {
-	// 		button._on?.onClose(event, index);
-	// 	} else if (button._on?.onClose === true) {
-	// 		if (this.htmlDivElements && this.htmlDivElements[index] instanceof HTMLElement) {
-	// 			this.state._tabs.splice(index, 1);
-	// 			this.hostElement?.removeChild(this.htmlDivElements[index]);
-	// 			this.validateTabs(this.state._tabs);
-	// 			this.onSelect(this.state._selected, true);
-	// 		}
-	// 	}
-	// }
 
 	private onCreate = (event: Event) => {
 		event.stopPropagation();
@@ -464,16 +461,3 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	};
 }
-
-// console.log(
-//   stringifyJson([
-//     { _label: 'Tab 1', _href: '#tab-1', _icon: 'fa-solid fa-house' },
-//     { _label: 'Tab 2', _id: '#tab-2' },
-//     { _label: 'Tab 3', _id: '#tab-3' },
-//     { _label: 'Tab 4', _id: '#tab-4' },
-//     { _label: 'Tab 5', _id: '#tab-5' },
-//     { _label: 'Tab 6', _id: '#tab-6' },
-//     { _label: 'Tab 7', _id: '#tab-7' },
-//     { _label: 'Tab 8', _id: '#tab-8' },
-//   ])
-// );

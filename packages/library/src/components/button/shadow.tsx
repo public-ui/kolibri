@@ -2,6 +2,7 @@ import { Component, h, JSX, Method, Prop } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
+	AlternativButtonLinkRole,
 	AriaCurrent,
 	KoliBriButtonCallbacks,
 	KoliBriButtonType,
@@ -51,6 +52,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				_ariaCurrent={this._ariaCurrent}
 				_ariaExpanded={this._ariaExpanded}
 				_ariaLabel={this._ariaLabel}
+				_ariaSelected={this._ariaSelected}
 				_customClass={this._customClass}
 				_disabled={this._disabled}
 				_icon={this._icon}
@@ -59,6 +61,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 				_id={this._id}
 				_label={this._label}
 				_on={this._on}
+				_role={this._role}
 				_tabIndex={this._tabIndex}
 				_tooltipAlign={this._tooltipAlign}
 				_type={this._type}
@@ -97,6 +100,11 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 	 */
 	@Prop() public _ariaLabel?: string = '';
+
+	/**
+	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 */
+	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
@@ -139,6 +147,11 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks;
+
+	/**
+	 * Gibt an, welche Role der Schalter hat.
+	 */
+	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
