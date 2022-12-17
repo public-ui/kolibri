@@ -12,7 +12,7 @@ import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/ale
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
 import { Alignment, KoliBriIconProp } from "./types/icon";
-import { AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
+import { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
 import { NavLinkProps } from "./components/link/component";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -155,6 +155,10 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
           * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
          */
         "_customClass"?: string;
@@ -187,6 +191,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -234,6 +242,10 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
           * Gibt an, ob der Button deaktiviert ist.
          */
         "_disabled"?: boolean;
@@ -262,6 +274,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -293,9 +309,13 @@ export namespace Components {
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
          */
         "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
         /**
           * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
          */
@@ -329,6 +349,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1443,6 +1467,10 @@ export namespace Components {
          */
         "_part"?: string;
         /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
+        /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
          */
         "_selector"?: string;
@@ -1493,7 +1521,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -1538,6 +1566,10 @@ export namespace Components {
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
          */
         "_part"?: string;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
          */
@@ -1623,7 +1655,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -1660,6 +1692,10 @@ export namespace Components {
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
          */
         "_part"?: string;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
          */
@@ -2647,6 +2683,10 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
           * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
          */
         "_customClass"?: string;
@@ -2679,6 +2719,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2722,6 +2766,10 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
           * Gibt an, ob der Button deaktiviert ist.
          */
         "_disabled"?: boolean;
@@ -2750,6 +2798,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2781,9 +2833,13 @@ declare namespace LocalJSX {
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen Text des Buttons für den Screenreader an. Für die Sprachsteuerung muss der Aria-Text mit dem Label-Text des Buttons beginnen. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
          */
         "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
         /**
           * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
          */
@@ -2817,6 +2873,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3927,6 +3987,10 @@ declare namespace LocalJSX {
          */
         "_part"?: string;
         /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
+        /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
          */
         "_selector"?: string;
@@ -3977,7 +4041,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -4022,6 +4086,10 @@ declare namespace LocalJSX {
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
          */
         "_part"?: string;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
          */
@@ -4107,7 +4175,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -4144,6 +4212,10 @@ declare namespace LocalJSX {
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
          */
         "_part"?: string;
+        /**
+          * Gibt an, welche Role der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
          */

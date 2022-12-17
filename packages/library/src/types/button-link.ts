@@ -10,6 +10,7 @@ import { Stringified } from './common';
  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
  */
 export type AriaCurrent = boolean | 'page' | 'step' | 'location' | 'date' | 'time';
+export type AlternativButtonLinkRole = 'tab';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -22,6 +23,7 @@ type OptionalButtonAndLinkProps = {
 	ariaCurrent: AriaCurrent;
 	ariaExpanded: boolean;
 	ariaLabel: string;
+	ariaSelected: boolean;
 	disabled: boolean; // TODO: Link disabled?!
 	icon: Stringified<KoliBriIconProp>;
 	/**
@@ -29,6 +31,7 @@ type OptionalButtonAndLinkProps = {
 	 */
 	iconAlign: Alignment;
 	iconOnly: boolean;
+	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: TooltipAlignment;
 };
@@ -50,8 +53,10 @@ type OptionalButtonAndLinkStates = {
 	ariaControls: string;
 	ariaCurrent: AriaCurrent;
 	ariaExpanded: boolean;
+	ariaSelected: boolean;
 	disabled: boolean;
 	iconOnly: boolean;
+	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: TooltipAlignment;
 };
@@ -130,7 +135,6 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
  */
 export type RequiredLinkProps = RequiredButtonAndLinkProps;
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
-	ariaSelected: boolean;
 	fill: boolean;
 	href: string;
 	/**

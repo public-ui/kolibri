@@ -2,6 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
+	AlternativButtonLinkRole,
 	AriaCurrent,
 	LinkOnCallbacks,
 	LinkStates,
@@ -77,7 +78,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		}
 
 		const tagAttrs = {
-			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
+			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : '',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: typeof this.state._target === 'string' && this.state._target !== '_self' ? 'noopener' : undefined,
 		};
@@ -130,6 +131,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
 					{...goToProps}
+					role={this.state._role}
 					style={{
 						cursor: 'pointer',
 						display: this.state._useCase === 'image' ? 'block' : undefined,
@@ -211,7 +213,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _ariaLabel?: string = '';
 
 	/**
-	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
@@ -258,6 +260,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
 	 */
 	@Prop() public _part?: string;
+
+	/**
+	 * Gibt an, welche Role der Schalter hat.
+	 */
+	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
@@ -411,6 +418,44 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
+	 */
+	@Watch('_on')
+	public validateOn(value?: LinkOnCallbacks): void {
+		if (
+			typeof value === 'object' &&
+			value !== null &&
+			// https://eslint.org/docs/rules/no-prototype-builtins
+			Object.prototype.hasOwnProperty.call(value, 'onClick') &&
+			typeof value.onClick === 'function'
+		) {
+			this.state = {
+				...this.state,
+				_on: value,
+			};
+		}
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_part')
+	public validatePart(value?: string): void {
+		watchString(this, '_part', value, {
+			defaultValue: '',
+		});
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_role')
+	public validateRole(value?: AlternativButtonLinkRole): void {
+		watchString(this, '_role', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_selector')
 	public validateSelector(value?: string): void {
@@ -452,6 +497,14 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_tooltipAlign')
+	public validateTooltipAlign(value?: TooltipAlignment): void {
+		watchTooltipAlignment(this, '_tooltipAlign', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_underline')
 	public validateUnderline(value?: boolean): void {
 		watchBoolean(this, '_underline', value);
@@ -466,44 +519,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 			this.state = {
 				...this.state,
 				_useCase: value,
-			};
-		}
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_part')
-	public validatePart(value?: string): void {
-		watchString(this, '_part', value, {
-			defaultValue: '',
-		});
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignment): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 * @deprecated
-	 */
-	@Watch('_on')
-	public validateOn(value?: LinkOnCallbacks): void {
-		if (
-			typeof value === 'object' &&
-			value !== null &&
-			// https://eslint.org/docs/rules/no-prototype-builtins
-			Object.prototype.hasOwnProperty.call(value, 'onClick') &&
-			typeof value.onClick === 'function'
-		) {
-			this.state = {
-				...this.state,
-				_on: value,
 			};
 		}
 	}
@@ -525,6 +540,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateIconOnly(this._iconOnly);
 		this.validateOn(this._on);
 		this.validatePart(this._part);
+		this.validateRole(this._role);
 		this.validateSelector(this._selector);
 		this.validateStealth(this._stealth);
 		this.validateTabIndex(this._tabIndex);
