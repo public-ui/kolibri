@@ -4,11 +4,11 @@ specifiers:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14
   '@angular/core': 11.2.14
-  '@public-ui/components': 1.1.15-rc.6
-  '@public-ui/core': 1.1.15-rc.6
+  '@public-ui/components': 1.1.15-rc.7
+  '@public-ui/core': 1.1.15-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.15
+  '@types/node': 18.11.16
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.1
   rimraf: 3.0.2
@@ -21,11 +21,11 @@ devDependencies:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14_5xxvadz4tf2tlq4hiwi2uyyjke
   '@angular/core': 11.2.14_rxjs@6.5.5+zone.js@0.11.8
-  '@public-ui/components': 1.1.15-rc.6
-  '@public-ui/core': 1.1.15-rc.6
+  '@public-ui/components': 1.1.15-rc.7
+  '@public-ui/core': 1.1.15-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.15
+  '@types/node': 18.11.16
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.1
   rimraf: 3.0.2
@@ -125,7 +125,7 @@ packages:
       convert-source-map: 1.9.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
-      json5: 2.2.1
+      json5: 2.2.2
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -327,23 +327,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.1.15-rc.6:
-    resolution: {integrity: sha512-G3gHILyUMyCjJ0A2CJaEnEn9vKiEPV6ige98dK3NWmRnP5rugnSZPHV1S0y6WAx9B89PZqoaW4nFIZgIXb2qIg==}
+  /@public-ui/components/1.1.15-rc.7:
+    resolution: {integrity: sha512-RX2kJ0Dkizz8rVQFviiNp0xvN32UX7sfEiV3epdW0jf3JwTd/gEnEqEpQ9isOdiyz10V08Mk/SZ5m639X6sT+g==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.6
+      '@public-ui/schema': 1.1.15-rc.7
     dev: true
 
-  /@public-ui/core/1.1.15-rc.6:
-    resolution: {integrity: sha512-T5uFuOMgil9zcsZFvRKq+8OcFsh142SmpDMgJ/NT4dLW7o5HLCYB/e50bAWfEKW/2r67syV+fix5B5M9N0sIvw==}
+  /@public-ui/core/1.1.15-rc.7:
+    resolution: {integrity: sha512-kBaReoVazhrB+f2W1DNn3hnHL7Olkeu4ent2fLzPiaXjxQmzkU/UOA9bN6pYZPUnR9lclTrGtooSCojbfaxpgw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
     dev: true
 
-  /@public-ui/schema/1.1.15-rc.6:
-    resolution: {integrity: sha512-GJNVdzfCgtxZGom/Bv9ZLESZxOe2u6IJ9GY1Au4bY57FJ6fRwE6oC6Ry/rjBNYuoiGHwoik0eIzpLhY62UjIdg==}
+  /@public-ui/schema/1.1.15-rc.7:
+    resolution: {integrity: sha512-01EfamXv7E/vBoXJUYEjikkdd5aj6LscLoT6GbJ/cKKnLnGPO8eZZ8Yuewm6SgTp0X2XmKNEJ0RGpkcz7NFxBg==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.6
+      '@public-ui/core': 1.1.15-rc.7
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -354,8 +354,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.15:
-    resolution: {integrity: sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==}
+  /@types/node/18.11.16:
+    resolution: {integrity: sha512-6T7P5bDkRhqRxrQtwj7vru+bWTpelgtcETAZEUSdq0YISKz8WKdoBukQLYQQ6DFHvU9JRsbFq0JH5C51X2ZdnA==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -419,7 +419,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001439
       electron-to-chromium: 1.4.284
-      node-releases: 2.0.7
+      node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
@@ -646,8 +646,8 @@ packages:
     hasBin: true
     dev: true
 
-  /json5/2.2.1:
-    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
+  /json5/2.2.2:
+    resolution: {integrity: sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==}
     engines: {node: '>=6'}
     hasBin: true
     dev: true
@@ -683,8 +683,8 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /node-releases/2.0.7:
-    resolution: {integrity: sha512-EJ3rzxL9pTWPjk5arA0s0dgXpnyiAbJDE6wHT62g7VsgrgQgmmZ+Ru++M1BFofncWja+Pnn3rEr3fieRySAdKQ==}
+  /node-releases/2.0.8:
+    resolution: {integrity: sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A==}
     dev: true
 
   /normalize-path/3.0.0:

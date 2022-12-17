@@ -1,18 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.15-rc.6
-  '@public-ui/react': 1.1.15-rc.6
+  '@public-ui/components': 1.1.15-rc.7
+  '@public-ui/react': 1.1.15-rc.7
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 4.9.4
   unbuild: 1.0.2
 
 dependencies:
-  '@public-ui/react': 1.1.15-rc.6_kga3z7ybi2metlwqfrj6mc5sgy
+  '@public-ui/react': 1.1.15-rc.7_472n3nvxkcw4xjolfc2fgcahou
 
 devDependencies:
-  '@public-ui/components': 1.1.15-rc.6
+  '@public-ui/components': 1.1.15-rc.7
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.4
@@ -62,7 +62,7 @@ packages:
       convert-source-map: 1.9.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
-      json5: 2.2.1
+      json5: 2.2.2
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -308,33 +308,33 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@public-ui/components/1.1.15-rc.6:
-    resolution: {integrity: sha512-G3gHILyUMyCjJ0A2CJaEnEn9vKiEPV6ige98dK3NWmRnP5rugnSZPHV1S0y6WAx9B89PZqoaW4nFIZgIXb2qIg==}
+  /@public-ui/components/1.1.15-rc.7:
+    resolution: {integrity: sha512-RX2kJ0Dkizz8rVQFviiNp0xvN32UX7sfEiV3epdW0jf3JwTd/gEnEqEpQ9isOdiyz10V08Mk/SZ5m639X6sT+g==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.6
+      '@public-ui/schema': 1.1.15-rc.7
 
-  /@public-ui/core/1.1.15-rc.6:
-    resolution: {integrity: sha512-T5uFuOMgil9zcsZFvRKq+8OcFsh142SmpDMgJ/NT4dLW7o5HLCYB/e50bAWfEKW/2r67syV+fix5B5M9N0sIvw==}
+  /@public-ui/core/1.1.15-rc.7:
+    resolution: {integrity: sha512-kBaReoVazhrB+f2W1DNn3hnHL7Olkeu4ent2fLzPiaXjxQmzkU/UOA9bN6pYZPUnR9lclTrGtooSCojbfaxpgw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
 
-  /@public-ui/react/1.1.15-rc.6_kga3z7ybi2metlwqfrj6mc5sgy:
-    resolution: {integrity: sha512-8wRC4x7Ik3YRUMPUADaZVqsXZt30WaZLLETqIUPC/WH7n1cg9Z4UDYCE8BGohRNsr5fCtXncJe2kTO7MGl5NDw==}
+  /@public-ui/react/1.1.15-rc.7_472n3nvxkcw4xjolfc2fgcahou:
+    resolution: {integrity: sha512-j2Y8hHNl3JmH/m7JtPXn10O//VLmPkkWuy/uuTCW7TCXv7tyuZcu0HrqDp9x9I+l5u9+V6QX2TWgHjYnG6+rmw==}
     peerDependencies:
-      '@public-ui/components': 1.1.15-rc.6
+      '@public-ui/components': 1.1.15-rc.7
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.6
+      '@public-ui/components': 1.1.15-rc.7
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.1.15-rc.6:
-    resolution: {integrity: sha512-GJNVdzfCgtxZGom/Bv9ZLESZxOe2u6IJ9GY1Au4bY57FJ6fRwE6oC6Ry/rjBNYuoiGHwoik0eIzpLhY62UjIdg==}
+  /@public-ui/schema/1.1.15-rc.7:
+    resolution: {integrity: sha512-01EfamXv7E/vBoXJUYEjikkdd5aj6LscLoT6GbJ/cKKnLnGPO8eZZ8Yuewm6SgTp0X2XmKNEJ0RGpkcz7NFxBg==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.6
+      '@public-ui/core': 1.1.15-rc.7
 
   /@rollup/plugin-alias/4.0.2_rollup@3.7.4:
     resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
@@ -349,8 +349,8 @@ packages:
       slash: 4.0.0
     dev: true
 
-  /@rollup/plugin-commonjs/23.0.4_rollup@3.7.4:
-    resolution: {integrity: sha512-bOPJeTZg56D2MCm+TT4psP8e8Jmf1Jsi7pFUMl8BN5kOADNzofNHe47+84WVCt7D095xPghC235/YKuNDEhczg==}
+  /@rollup/plugin-commonjs/23.0.5_rollup@3.7.4:
+    resolution: {integrity: sha512-IwI51j5kCmLMYsErEvZAID/pg7Z1qgyVJ+QIPDDIg1AOPbIGbdTCjuHDWIBCtoF1dvMkXfQv7B2eTadjnLRbmA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
@@ -479,7 +479,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001439
       electron-to-chromium: 1.4.284
-      node-releases: 2.0.7
+      node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: true
 
@@ -977,8 +977,8 @@ packages:
     hasBin: true
     dev: true
 
-  /json5/2.2.1:
-    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
+  /json5/2.2.2:
+    resolution: {integrity: sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==}
     engines: {node: '>=6'}
     hasBin: true
     dev: true
@@ -1091,8 +1091,8 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /node-releases/2.0.7:
-    resolution: {integrity: sha512-EJ3rzxL9pTWPjk5arA0s0dgXpnyiAbJDE6wHT62g7VsgrgQgmmZ+Ru++M1BFofncWja+Pnn3rEr3fieRySAdKQ==}
+  /node-releases/2.0.8:
+    resolution: {integrity: sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A==}
     dev: true
 
   /once/1.4.0:
@@ -1280,7 +1280,7 @@ packages:
     hasBin: true
     dependencies:
       '@rollup/plugin-alias': 4.0.2_rollup@3.7.4
-      '@rollup/plugin-commonjs': 23.0.4_rollup@3.7.4
+      '@rollup/plugin-commonjs': 23.0.5_rollup@3.7.4
       '@rollup/plugin-json': 5.0.2_rollup@3.7.4
       '@rollup/plugin-node-resolve': 15.0.1_rollup@3.7.4
       '@rollup/plugin-replace': 5.0.1_rollup@3.7.4
