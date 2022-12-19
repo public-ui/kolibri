@@ -176,7 +176,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
 	 */
-	@Prop({ reflect: true }) public _multiple?: boolean;
+	@Prop({ reflect: true }) public _multiple?: boolean = false;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -220,7 +220,7 @@ export class KolSelect implements ComponentApi {
 		_height: '',
 		_id: '⚠',
 		_list: [],
-
+		_multiple: false,
 		_value: [],
 	};
 
