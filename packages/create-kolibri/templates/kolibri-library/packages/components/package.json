@@ -74,7 +74,7 @@
 		"@types/node": "18.11.9",
 		"@types/puppeteer": "7.0.4",
 		"@types/wcag-contrast": "3.0.0",
-		"@typescript-eslint/eslint-plugin": "5.45.1",
+		"@typescript-eslint/eslint-plugin": "5.46.1",
 		"@typescript-eslint/parser": "5.44.0",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
