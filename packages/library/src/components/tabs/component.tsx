@@ -7,7 +7,7 @@ import { EventCallback, EventValueCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { Log, nonce } from '../../utils/dev.utils';
+import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 
@@ -76,7 +76,6 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	private onCreateLabel = 'Neu …';
 	private showCreateTab = false;
 	private selectedTimeout?: ReturnType<typeof setTimeout>;
-	private readonly nonce = nonce();
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step: number): number => {
 		if (step > 0) {
@@ -152,7 +151,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_tooltipAlign={button._tooltipAlign}
 								_variant={this.state._selected === index ? 'custom' : undefined}
 								_customClass={this.state._selected === index ? 'selected' : undefined}
-								_ariaControls={`${this.nonce}-tabpanel-${index}`}
+								_ariaControls={`tabpanel-${index}`}
 								// _ariaSelected={this.state._selected === index ? 'true' : 'false'}
 								_id={`tab-${index}`}
 								_role="tab"
@@ -412,13 +411,17 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 			for (let i = this.tabPanelHost.children.length; i < this.state._tabs.length; i++) {
 				const div = document.createElement('div');
 				div.setAttribute('aria-labelledby', `tab-${i}`);
-				div.setAttribute('id', `${this.nonce}-tabpanel-${i}`);
+				div.setAttribute('id', `tabpanel-${i}`);
 				div.setAttribute('role', 'tabpanel');
 				div.setAttribute('hidden', '');
-				if (this.host?.children instanceof HTMLCollection && this.host?.children?.length > 0) {
-					div.appendChild(this.host?.children[0]);
-				}
+				const slot = document.createElement('slot');
+				slot.setAttribute('name', `tabpanel-slot-${i}`);
+				div.appendChild(slot);
 				this.tabPanelHost.appendChild(div);
+				if (this.host?.children instanceof HTMLCollection && this.host?.children[i] instanceof HTMLElement) {
+					// div.appendChild(this.host?.children[0]);
+					this.host?.children[i].setAttribute('slot', `tabpanel-slot-${i}`);
+				}
 			}
 		}
 	};
