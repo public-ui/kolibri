@@ -59,7 +59,7 @@
 	},
 	"dependencies": {
 		"@a11y-ui/core": "1.0.1-rc.6",
-		"rxjs": "7.6.0"
+		"rxjs": "7.8.0"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.17",
