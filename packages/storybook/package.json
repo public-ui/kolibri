@@ -52,7 +52,7 @@
 		"@etchteam/storybook-addon-status": "4.2.2",
 		"@geometricpanda/storybook-addon-badges": "0.2.2",
 		"@public-oss/kolibri-themes": "0.0.1",
-		"@public-ui/components": "1.1.15-rc.7",
+		"@public-ui/components": "1.1.15-rc.9",
 		"@public-ui/core": "1.1.15-rc.7",
 		"@public-ui/react": "1.1.15-rc.7",
 		"@public-ui/themes": "1.1.15-rc.7",
