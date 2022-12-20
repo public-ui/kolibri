@@ -423,7 +423,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			const emptyCell = {
 				colSpan: colspan,
 				label: 'Es sind keine Einträge vorhanden.',
-				render: () => 'Es sind keine Einträge vorhanden.',
+				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
 			if (dataField.length === 0) {
