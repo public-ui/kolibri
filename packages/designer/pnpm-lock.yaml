@@ -11,7 +11,7 @@ specifiers:
   '@public-ui/core': 1.1.15-rc.9
   '@public-ui/solid': 1.1.15-rc.9
   '@public-ui/themes': 1.1.15-rc.9
-  '@types/prettier': 2.7.1
+  '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.47.6
   '@unocss/webpack': 0.47.6
   chromedriver: 108.0.0
@@ -50,7 +50,7 @@ devDependencies:
   '@leanup/stack-solid': 1.3.39_solid-js@1.6.5
   '@leanup/stack-webpack': 1.3.39_@leanup+stack@1.3.39
   '@playwright/test': 1.29.0
-  '@types/prettier': 2.7.1
+  '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.47.6
   '@unocss/webpack': 0.47.6
   chromedriver: 108.0.0
@@ -3473,8 +3473,8 @@ packages:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: true
 
-  /@types/prettier/2.7.1:
-    resolution: {integrity: sha512-ri0UmynRRvZiiUJdiz38MmIblKK+oH30MztdBVR95dv/Ubw6neWSb8u1XpRb72L4qsZOhz+L+z9JD40SJmfWow==}
+  /@types/prettier/2.7.2:
+    resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
     dev: true
 
   /@types/qs/6.9.7:

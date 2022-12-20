@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': 17.3.0
   '@commitlint/config-conventional': 17.3.0
-  '@types/node': 18.11.15
+  '@types/node': 18.11.17
   cross-env: 7.0.3
   depcheck: 1.4.3
   husky: 8.0.2
@@ -20,7 +20,7 @@ specifiers:
 devDependencies:
   '@commitlint/cli': 17.3.0
   '@commitlint/config-conventional': 17.3.0
-  '@types/node': 18.11.15
+  '@types/node': 18.11.17
   cross-env: 7.0.3
   depcheck: 1.4.3
   husky: 8.0.2
@@ -30,7 +30,7 @@ devDependencies:
   npm-check-updates: 16.6.0
   prettier: 2.8.1
   rimraf: 3.0.2
-  ts-node: 10.9.1_ewfw2lwfc3dwdvz7r6yz2ssqyi
+  ts-node: 10.9.1_moeqx3xmzxqxagf2sz6mqkbb7m
   ts-prune: 0.10.3
   typescript: 4.9.4
 
@@ -1577,8 +1577,8 @@ packages:
     resolution: {integrity: sha512-Y6S38pFr04yb13qqHf8uk1nHE3lXgQ30WZbv1mLliV9pt0NjvqdWttLcrOYLnXbOafknVYRHZGoMSpR9UwfYow==}
     dev: true
 
-  /@types/node/18.11.15:
-    resolution: {integrity: sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==}
+  /@types/node/18.11.17:
+    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -5997,7 +5997,7 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node/10.9.1_ewfw2lwfc3dwdvz7r6yz2ssqyi:
+  /ts-node/10.9.1_moeqx3xmzxqxagf2sz6mqkbb7m:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -6016,7 +6016,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.11.15
+      '@types/node': 18.11.17
       acorn: 8.8.0
       acorn-walk: 8.2.0
       arg: 4.1.3
