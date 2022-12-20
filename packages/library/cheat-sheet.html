@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.7';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.7/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.7';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.15';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15/dist/loader';
+			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15';
 				register(MAPZ, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.7';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.7/dist/loader';
-		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.7';
+		import { register } from 'https://esm.sh/@public-ui/core@1.1.15';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15/dist/loader';
+		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15';
 		register([MAPZ], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -182,7 +182,7 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
 },{
 	name: `button`,
 	desc: `**Buttons** dienen dazu, Benutzer:innen Auswahlmöglichkeiten für Aktionen anzuzeigen und diese in einer klaren Hierarchie anzuordnen. Sie helfen Nutzer:innen, die wichtigsten Aktionen einer Seite oder innerhalb eines Viewports zu finden und ermöglichen es ihm, diese Aktionen auszuführen. Die Beschriftung des Buttons wird verwendet, um Nutzer:innen klar anzuzeigen, welche Aktion ausgelöst wird. Buttons ermöglichen es Nutzer:innen, eine Änderung zu bestätigen, Schritte in einer Aufgabe abzuschließen oder Entscheidungen zu treffen.`,
-	props: `_access-key, _aria-controls, _aria-current, _aria-expanded, _aria-label, _custom-class, _disabled, _icon, _icon-align, _icon-only, _id, _label, _tab-index, _tooltip-align, _type, _variant`
+	props: `_access-key, _aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _icon, _icon-align, _icon-only, _id, _label, _role, _tab-index, _tooltip-align, _type, _variant`
 },{
 	name: `button-group-wc`,
 	desc: `**Buttons** dienen dazu, Nutzer:innen Auswahlmöglichkeiten für Aktionen anzuzeigen und diese in einer klaren Hierarchie anzuordnen. Sie helfen den Nutzer:innen, die wichtigsten Aktionen einer Seite oder innerhalb eines Applikation zu finden und ermöglichen es ihm, diese Aktionen auszuführen.
@@ -200,7 +200,7 @@ Statt, wie bei einem Link, '_href' zu verwenden, wird bei einem ButtonLink das P
 Bei einem Link gibt es das Property 'target', welches ggf. den Link in einem neuen Fenster/Tab öffnet. Das Verhalten ist aktuell noch nicht umgesetzt.
 
 Da der Link, nicht wie der Button, in mehrere Varianten ('primary' oder 'secondary' usw.) angeboten wird, stehen die Properties '_customClass' und '_variant' nicht zur Verfügung.`,
-	props: `_access-key, _aria-controls, _aria-current, _aria-expanded, _aria-label, _disabled, _icon, _icon-align, _icon-only, _id, _label, _tab-index, _tooltip-align, _type`
+	props: `_access-key, _aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _icon, _icon-align, _icon-only, _id, _label, _role, _tab-index, _tooltip-align, _type`
 },{
 	name: `card`,
 	desc: `Um einzelne Bereiche Ihrer Webseite optisch hervorzuheben, bietet sich die **Card**-Komponente an. Mit ihrer Hilfe können Sie Ihre Inhalte sehr einfach strukturieren.
@@ -292,7 +292,7 @@ Der Link wird standardmäßig in klassischer Form mit Unterstrich ausgegeben, de
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _fill, _href, _icon, _icon-align, _icon-only, _part, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _underline, _use-case`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _fill, _href, _icon, _icon-align, _icon-only, _part, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _underline, _use-case`
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
@@ -302,7 +302,7 @@ Einen Link kann man nicht deaktivieren und daher gibt es bei einem LinkButton ni
 Da es die Komponente ButtonLink gibt, die semantisch ein Button und optisch ein Link ist. Ist es nicht mehr notwendig den Click-Callback zu unterstützen. Das Property '_on' wird somit als 'deprecated' markiert und wird mit dem nächsten Major-Release entfernt.
 
 Ein Button hat aus UX-Sicht mehrere Varianten ('primary' oder 'secondary' usw.). Damit der LinkButton das optisch gleich aussehen kann, wurden die Properties '_customClass' und '_variant' von der Button-Komponente übernommen.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _fill, _href, _icon, _icon-align, _icon-only, _label, _part, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _underline, _use-case, _variant`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _fill, _href, _icon, _icon-align, _icon-only, _label, _part, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _underline, _use-case, _variant`
 },{
 	name: `modal`,
 	desc: `Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem
@@ -550,20 +550,15 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `number`,
 	comps: `input-email, input-password, input-text, select`
 },{
-	name: `_max-length`,
-	desc: `Gibt an, wie viele Zeichen man maximal eingeben kann.`,
-	types: `number`,
-	comps: `input-email, input-password, input-text, textarea`
+	name: `_role`,
+	desc: `Gibt an, welche Role der Schalter hat.`,
+	types: `"tab"`,
+	comps: `button, button-link, link, link-button`
 },{
-	name: `_max`,
-	desc: `Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.`,
-	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | number, number`,
-	comps: `input-date, input-number, input-range, progress`
-},{
-	name: `_heading`,
-	desc: `Gibt den Titel der Meldung an.`,
-	types: `string`,
-	comps: `accordion, alert, card, toast`
+	name: `_aria-selected`,
+	desc: `Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
+	types: `boolean`,
+	comps: `button, button-link, link, link-button`
 },{
 	name: `_aria-expanded`,
 	desc: `Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
@@ -579,6 +574,21 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
 	comps: `button, button-link, link, link-button`
+},{
+	name: `_max-length`,
+	desc: `Gibt an, wie viele Zeichen man maximal eingeben kann.`,
+	types: `number`,
+	comps: `input-email, input-password, input-text, textarea`
+},{
+	name: `_max`,
+	desc: `Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.`,
+	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | number, number`,
+	comps: `input-date, input-number, input-range, progress`
+},{
+	name: `_heading`,
+	desc: `Gibt den Titel der Meldung an.`,
+	types: `string`,
+	comps: `accordion, alert, card, toast`
 },{
 	name: `_step`,
 	desc: `Gibt die Schrittweite der Wertveränderung an`,
@@ -657,11 +667,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_fill`,
 	desc: `Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.`,
-	types: `boolean`,
-	comps: `link, link-button`
-},{
-	name: `_aria-selected`,
-	desc: `Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
 	types: `boolean`,
 	comps: `link, link-button`
 },{
@@ -757,7 +762,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _tabIndex?: number | undefined; _tooltipAlign?: TooltipAlignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks | undefined; _type?: KoliBriButtonType | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: "tab" | undefined; _tabIndex?: number | undefined; _tooltipAlign?: TooltipAlignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks | undefined; _type?: KoliBriButtonType | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; }`,
 	comps: `badge`
 },{
 	name: `_color`,

@@ -32,6 +32,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	id: string;
 	list: SelectOption<unknown>[];
+	multiple: boolean;
 	value: unknown[];
 };
 type OptionalStates = {
@@ -44,7 +45,6 @@ type OptionalStates = {
 	hint: string;
 	icon: KoliBriInputIcon;
 	id: string;
-	multiple: boolean;
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;

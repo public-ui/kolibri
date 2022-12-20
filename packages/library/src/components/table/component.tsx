@@ -2,6 +2,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
+import { Stringified } from '../../types/common';
 import {
 	KoliBriDataType,
 	KoliBriSortDirection,
@@ -13,7 +14,6 @@ import {
 	KoliBriTablePaginationStates,
 } from '../../types/table';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
-import { Stringified } from '../../types/common';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 
 type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
@@ -421,8 +421,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 				});
 			}
 			const emptyCell = {
-				label: 'Es sind keine Einträge vorhanden.',
 				colSpan: colspan,
+				label: 'Es sind keine Einträge vorhanden.',
+				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
 			if (dataField.length === 0) {
