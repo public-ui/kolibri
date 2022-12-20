@@ -48,7 +48,7 @@
 		"@public-oss/kolibri-themes": "0.0.1",
 		"@public-ui/core": "1.1.15-rc.7",
 		"@public-ui/components": "1.1.15-rc.7",
-		"@public-ui/solid": "1.1.15-rc.7",
+		"@public-ui/solid": "1.1.15-rc.9",
 		"@public-ui/themes": "1.1.15-rc.7",
 		"monaco-editor": "0.34.1",
 		"monaco-editor-webpack-plugin": "7.0.1",
