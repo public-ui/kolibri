@@ -31,13 +31,13 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@angular/common": "15.0.3",
+		"@angular/common": "15.0.4",
 		"@angular/compiler": "15.0.3",
 		"@angular/compiler-cli": "15.0.3",
 		"@angular/core": "15.0.3",
-		"@angular/forms": "15.0.3",
-		"@angular/platform-browser": "15.0.3",
-		"@angular/platform-browser-dynamic": "15.0.3",
+		"@angular/forms": "15.0.4",
+		"@angular/platform-browser": "15.0.4",
+		"@angular/platform-browser-dynamic": "15.0.4",
 		"@public-ui/angular-v15": "1.1.15-rc.9",
 		"@public-ui/components": "1.1.15-rc.9",
 		"@public-ui/core": "1.1.15-rc.9",

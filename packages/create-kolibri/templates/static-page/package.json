@@ -19,7 +19,7 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"devDependencies": {
-		"npm-check-updates": "16.5.6",
+		"npm-check-updates": "16.6.0",
 		"serve": "14.1.2"
 	},
 	"files": [

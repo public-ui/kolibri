@@ -59,12 +59,12 @@
 	},
 	"dependencies": {
 		"@a11y-ui/core": "1.0.1-rc.6",
-		"rxjs": "7.6.0"
+		"rxjs": "7.8.0"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.17",
-		"@typescript-eslint/eslint-plugin": "5.46.1",
-		"@typescript-eslint/parser": "5.46.1",
+		"@typescript-eslint/eslint-plugin": "5.47.0",
+		"@typescript-eslint/parser": "5.47.0",
 		"eslint": "8.30.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"prettier": "2.8.1",
