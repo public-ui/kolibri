@@ -7,10 +7,10 @@ specifiers:
   '@leanup/stack-webpack': 1.3.39
   '@playwright/test': 1.29.0
   '@public-oss/kolibri-themes': 0.0.1
-  '@public-ui/components': 1.1.15-rc.7
-  '@public-ui/core': 1.1.15-rc.7
-  '@public-ui/solid': 1.1.15-rc.7
-  '@public-ui/themes': 1.1.15-rc.7
+  '@public-ui/components': 1.1.15-rc.9
+  '@public-ui/core': 1.1.15-rc.9
+  '@public-ui/solid': 1.1.15-rc.9
+  '@public-ui/themes': 1.1.15-rc.9
   '@types/prettier': 2.7.1
   '@unocss/preset-mini': 0.47.6
   '@unocss/webpack': 0.47.6
@@ -33,12 +33,12 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@leanup/kolibri-themes': 0.0.6_zk2vlmj4s2ndk7axhrn6lhvidu
-  '@public-oss/kolibri-themes': 0.0.1_zk2vlmj4s2ndk7axhrn6lhvidu
-  '@public-ui/components': 1.1.15-rc.7
-  '@public-ui/core': 1.1.15-rc.7
-  '@public-ui/solid': 1.1.15-rc.7_kvin6lphoqqbo4m4e4a6sx6jka
-  '@public-ui/themes': 1.1.15-rc.7_zk2vlmj4s2ndk7axhrn6lhvidu
+  '@leanup/kolibri-themes': 0.0.6_fgedmjixrzdm5td7mwclxvfqru
+  '@public-oss/kolibri-themes': 0.0.1_fgedmjixrzdm5td7mwclxvfqru
+  '@public-ui/components': 1.1.15-rc.9
+  '@public-ui/core': 1.1.15-rc.9
+  '@public-ui/solid': 1.1.15-rc.9_pkthhdylg6eqy4py3qd6x2lfey
+  '@public-ui/themes': 1.1.15-rc.9_fgedmjixrzdm5td7mwclxvfqru
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1_monaco-editor@0.34.1
   register-service-worker: 1.7.2
@@ -2341,7 +2341,7 @@ packages:
       debug: 4.3.4
       espree: 9.4.1
       globals: 13.19.0
-      ignore: 5.2.1
+      ignore: 5.2.4
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -2821,12 +2821,12 @@ packages:
       - webpack
     dev: true
 
-  /@leanup/kolibri-themes/0.0.6_zk2vlmj4s2ndk7axhrn6lhvidu:
+  /@leanup/kolibri-themes/0.0.6_fgedmjixrzdm5td7mwclxvfqru:
     resolution: {integrity: sha512-iJ3yPeeUClaF7/eDBacDHq4TFXpfOMe0XGl0VmWLVu0h1+94IITJDmxmAa7VtcdoLvyI9f9RkynXhE2XwEEU4Q==}
     peerDependencies:
       '@public-ui/components': '*'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.7
+      '@public-ui/components': 1.1.15-rc.9
       '@public-ui/schema': 1.1.11
     dev: false
 
@@ -2984,19 +2984,19 @@ packages:
       playwright-core: 1.29.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.1_zk2vlmj4s2ndk7axhrn6lhvidu:
+  /@public-oss/kolibri-themes/0.0.1_fgedmjixrzdm5td7mwclxvfqru:
     resolution: {integrity: sha512-wKZQ8alYuOfj7PVP+Ew6g9XgsL4NzLJvJlEtLC6bikL4J3qyXua8MgIZPO3dkoUpqwxpeH0U6QMYj0larSTEsg==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.7
+      '@public-ui/components': 1.1.15-rc.9
       '@public-ui/schema': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/components/1.1.15-rc.7:
-    resolution: {integrity: sha512-RX2kJ0Dkizz8rVQFviiNp0xvN32UX7sfEiV3epdW0jf3JwTd/gEnEqEpQ9isOdiyz10V08Mk/SZ5m639X6sT+g==}
+  /@public-ui/components/1.1.15-rc.9:
+    resolution: {integrity: sha512-OYA7YDCfvHGs+HptoMwOlHLhleg0euB+I2vqZoCofCM2hCkhsNwdawfFTqgW8VwaF+KGQk/yaMkrT2OQbM0FyQ==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.7
+      '@public-ui/schema': 1.1.15-rc.9
     dev: false
 
   /@public-ui/core/1.1.11:
@@ -3015,8 +3015,8 @@ packages:
       rxjs: 7.5.7
     dev: false
 
-  /@public-ui/core/1.1.15-rc.7:
-    resolution: {integrity: sha512-kBaReoVazhrB+f2W1DNn3hnHL7Olkeu4ent2fLzPiaXjxQmzkU/UOA9bN6pYZPUnR9lclTrGtooSCojbfaxpgw==}
+  /@public-ui/core/1.1.15-rc.9:
+    resolution: {integrity: sha512-bXTINx3q/Ve1AkLaQrw6YwO/53ipTQZp5p4UifqBpPcDUQEoU3DNq5xlH2a5WXnrX17mtR1+0h5TLAQYNrsPKg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.6.0
@@ -3035,29 +3035,29 @@ packages:
       '@public-ui/core': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/schema/1.1.15-rc.7:
-    resolution: {integrity: sha512-01EfamXv7E/vBoXJUYEjikkdd5aj6LscLoT6GbJ/cKKnLnGPO8eZZ8Yuewm6SgTp0X2XmKNEJ0RGpkcz7NFxBg==}
+  /@public-ui/schema/1.1.15-rc.9:
+    resolution: {integrity: sha512-g7A3EuJBe+MghKTX0mMEgy6ZGsfmdGxgIsyIhiSddwqOSm6q3zsBuM6JT1Gu/BVofCOui+T3ZrmKCRJuryWkPg==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.7
+      '@public-ui/core': 1.1.15-rc.9
     dev: false
 
-  /@public-ui/solid/1.1.15-rc.7_kvin6lphoqqbo4m4e4a6sx6jka:
-    resolution: {integrity: sha512-YSUtEF1OROlXXnagWQLQHq+xYZfG0j4O0H4OCQrJbLO+sd8L+lZFHFtcIbOqUmOLqyLZ2Fuvju7zv0CGKv4AJA==}
+  /@public-ui/solid/1.1.15-rc.9_pkthhdylg6eqy4py3qd6x2lfey:
+    resolution: {integrity: sha512-vUsFGQrN3SDQ+JXmHmW6xhI9kQX17SNNjJL6mMnqkK9Yqv0SEo0VI+ihtREMUbsQ7KxodxUbbz52JPZl2RGtyA==}
     peerDependencies:
-      '@public-ui/components': 1.1.15-rc.7
+      '@public-ui/components': 1.1.15-rc.9
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.7
+      '@public-ui/components': 1.1.15-rc.9
       solid-js: 1.6.5
     dev: false
 
-  /@public-ui/themes/1.1.15-rc.7_zk2vlmj4s2ndk7axhrn6lhvidu:
-    resolution: {integrity: sha512-cS7CyFLfu97OY8Dd1GBY3mcqx/tbEFS9VyWRpLQZM+BhRbRlkSgT8zaFrXl7n3ysoWU9DkFxgqAxllrw8Mrh0w==}
+  /@public-ui/themes/1.1.15-rc.9_fgedmjixrzdm5td7mwclxvfqru:
+    resolution: {integrity: sha512-VYgJ9anvhvJ+a8FitzCatg2JtZIlMfxTCSWdEcVXqt4i8KQ9I6/KrWPvDUPyGguFmqAz4W9uHT71hRUds/zvUA==}
     peerDependencies:
-      '@public-ui/components': 1.1.15-rc.7
+      '@public-ui/components': 1.1.15-rc.9
     dependencies:
-      '@public-ui/components': 1.1.15-rc.7
-      '@public-ui/schema': 1.1.15-rc.7
+      '@public-ui/components': 1.1.15-rc.9
+      '@public-ui/schema': 1.1.15-rc.9
     dev: false
 
   /@rollup/plugin-babel/5.3.1_opjstonlpkhafnz76jsxdwq25a:
@@ -3140,10 +3140,10 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@sinonjs/fake-timers/7.1.2:
-    resolution: {integrity: sha512-iQADsW4LBMISqZ6Ci1dupJL9pprqwcVFTcOsEmQOEhW+KLCVn/Y4Jrvg2k19fIHCp+iFprriYPTdRcQR8NbUPg==}
+  /@sinonjs/fake-timers/10.0.2:
+    resolution: {integrity: sha512-SwUDyjWnah1AaNl7kxsa7cfLhlTYoiyhDAIgyh+El30YvXs/o7OLXpYH88Zdhyx9JExKrmHDJ+10bwIcY80Jmw==}
     dependencies:
-      '@sinonjs/commons': 1.8.6
+      '@sinonjs/commons': 2.0.0
     dev: true
 
   /@sinonjs/fake-timers/9.1.2:
@@ -3563,7 +3563,7 @@ packages:
       '@typescript-eslint/utils': 5.42.0_v5bglvupnukcksncywgdzapdrq
       debug: 4.3.4
       eslint: 8.26.0
-      ignore: 5.2.1
+      ignore: 5.2.4
       natural-compare-lite: 1.4.0
       regexpp: 3.2.0
       semver: 7.3.8
@@ -5051,7 +5051,7 @@ packages:
       cosmiconfig: 7.1.0
       debug: 4.3.4
       deps-regex: 0.1.4
-      ignore: 5.2.1
+      ignore: 5.2.4
       is-core-module: 2.11.0
       js-yaml: 3.14.1
       json5: 2.2.2
@@ -5063,7 +5063,7 @@ packages:
       readdirp: 3.6.0
       require-package-name: 2.0.1
       resolve: 1.22.1
-      sass: 1.57.0
+      sass: 1.57.1
       scss-parser: 1.0.6
       semver: 7.3.8
       yargs: 16.2.0
@@ -5879,7 +5879,7 @@ packages:
       glob-parent: 6.0.2
       globals: 13.19.0
       grapheme-splitter: 1.0.4
-      ignore: 5.2.1
+      ignore: 5.2.4
       import-fresh: 3.3.0
       imurmurhash: 0.1.4
       is-glob: 4.0.3
@@ -6405,7 +6405,7 @@ packages:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.2.12
-      ignore: 5.2.1
+      ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
     dev: true
@@ -6417,7 +6417,7 @@ packages:
       array-union: 3.0.1
       dir-glob: 3.0.1
       fast-glob: 3.2.12
-      ignore: 5.2.1
+      ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
     dev: true
@@ -6650,8 +6650,8 @@ packages:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
     dev: true
 
-  /ignore/5.2.1:
-    resolution: {integrity: sha512-d2qQLzTJ9WxQftPAuEQpSPmKqzxePjzVbpAVv62AQ64NTL+wR4JkrVqR/LqFsFEUsHDAiId52mJteHDFuDkElA==}
+  /ignore/5.2.4:
+    resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
     dev: true
 
@@ -7875,11 +7875,11 @@ packages:
       - utf-8-validate
     dev: true
 
-  /nise/5.1.3:
-    resolution: {integrity: sha512-U597iWTTBBYIV72986jyU382/MMZ70ApWcRmkoF1AZ75bpqOtI3Gugv/6+0jLgoDOabmcSwYBkSSAWIp1eA5cg==}
+  /nise/5.1.4:
+    resolution: {integrity: sha512-8+Ib8rRJ4L0o3kfmyVCL7gzrohyDe0cMFTBa2d364yIrEGMEoetznKJx899YxjybU6bL9SQkYPSBBs1gyYs8Xg==}
     dependencies:
       '@sinonjs/commons': 2.0.0
-      '@sinonjs/fake-timers': 7.1.2
+      '@sinonjs/fake-timers': 10.0.2
       '@sinonjs/text-encoding': 0.7.2
       just-extend: 4.2.1
       path-to-regexp: 1.8.0
@@ -8743,8 +8743,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /sass/1.57.0:
-    resolution: {integrity: sha512-IZNEJDTK1cF5B1cGA593TPAV/1S0ysUDxq9XHjX/+SMy0QfUny+nfUsq5ZP7wWSl4eEf7wDJcEZ8ABYFmh3m/w==}
+  /sass/1.57.1:
+    resolution: {integrity: sha512-O2+LwLS79op7GI0xZ8fqzF7X2m/m8WFfI02dHOdsK5R2ECeS5F62zrwg/relM1rjSLy7Vd/DiMNIvPrQGsA0jw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -8968,7 +8968,7 @@ packages:
       '@sinonjs/fake-timers': 9.1.2
       '@sinonjs/samsam': 6.1.3
       diff: 5.1.0
-      nise: 5.1.3
+      nise: 5.1.4
       supports-color: 7.2.0
     dev: true
 
