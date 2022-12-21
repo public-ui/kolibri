@@ -77,7 +77,7 @@
 		"@storybook/core-common": "6.5.14",
 		"@storybook/manager-webpack5": "6.5.14",
 		"@storybook/node-logger": "6.5.14",
-		"@storybook/react": "6.5.14",
+		"@storybook/react": "6.5.15",
 		"@storybook/theming": "6.5.14",
 		"@types/mermaid": "9.2.0",
 		"@types/react": "17.0.52",
