@@ -13,10 +13,15 @@ module.exports = {
 		'@storybook/addon-jest',
 		// '@storybook/addon-links',
 		'@storybook/addon-toolbars',
-		'storybook-addon-turbo-build',
 		'@storybook/addon-viewport',
-		,
+
 		'storybook-addon-themes',
+		{
+			name: 'storybook-addon-turbo-build',
+			options: {
+				optimizationLevel: 3,
+			},
+		},
 	],
 	core: {
 		// 	builder: '@storybook/builder-vite',
@@ -58,4 +63,11 @@ module.exports = {
 	//     propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
 	//   },
 	// },
+	docs: {
+		docsPage: 'automatic',
+	},
+	features: {
+		// https://storybook.js.org/docs/react/configure/overview#on-demand-story-loading
+		storyStoreV7: true,
+	},
 };
