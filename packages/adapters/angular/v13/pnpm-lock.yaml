@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12
   '@angular/core': 13.3.12
-  '@public-ui/components': 1.1.15-rc.9
-  '@public-ui/core': 1.1.15-rc.9
+  '@public-ui/components': 1.1.15
+  '@public-ui/core': 1.1.15
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.17
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12_ykntn3hhgp6n6n66y2ne2wuksi
   '@angular/core': 13.3.12_rxjs@7.6.0+zone.js@0.11.8
-  '@public-ui/components': 1.1.15-rc.9
-  '@public-ui/core': 1.1.15-rc.9
+  '@public-ui/components': 1.1.15
+  '@public-ui/core': 1.1.15
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.17
@@ -324,23 +324,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.1.15-rc.9:
-    resolution: {integrity: sha512-OYA7YDCfvHGs+HptoMwOlHLhleg0euB+I2vqZoCofCM2hCkhsNwdawfFTqgW8VwaF+KGQk/yaMkrT2OQbM0FyQ==}
+  /@public-ui/components/1.1.15:
+    resolution: {integrity: sha512-Vkr6RKksTtwBUUNU5jHlCyRNjqfxpCX5xQn7ytwss9d20OCicprztLQu5NPQkyK7cAQly1BncILy2vVJehmaJA==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.9
+      '@public-ui/schema': 1.1.15
     dev: true
 
-  /@public-ui/core/1.1.15-rc.9:
-    resolution: {integrity: sha512-bXTINx3q/Ve1AkLaQrw6YwO/53ipTQZp5p4UifqBpPcDUQEoU3DNq5xlH2a5WXnrX17mtR1+0h5TLAQYNrsPKg==}
+  /@public-ui/core/1.1.15:
+    resolution: {integrity: sha512-la537grID2UqyP/Wsaf/Rp80TrbRzAy1KDKn8wpeEnIakZSBJLwMU/O8lDNZ0LJ7vcvxcQsJFNQMpVeyvpKZjg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
-      rxjs: 7.6.0
+      rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.1.15-rc.9:
-    resolution: {integrity: sha512-g7A3EuJBe+MghKTX0mMEgy6ZGsfmdGxgIsyIhiSddwqOSm6q3zsBuM6JT1Gu/BVofCOui+T3ZrmKCRJuryWkPg==}
+  /@public-ui/schema/1.1.15:
+    resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.9
+      '@public-ui/core': 1.1.15
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -723,6 +723,12 @@ packages:
 
   /rxjs/7.6.0:
     resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
+    dependencies:
+      tslib: 2.4.1
+    dev: true
+
+  /rxjs/7.8.0:
+    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
     dependencies:
       tslib: 2.4.1
     dev: true
