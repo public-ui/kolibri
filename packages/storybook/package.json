@@ -68,7 +68,7 @@
 		"@storybook/addon-jest": "6.5.14",
 		"@storybook/addon-links": "6.5.14",
 		"@storybook/addon-toolbars": "6.5.14",
-		"@storybook/addon-viewport": "6.5.14",
+		"@storybook/addon-viewport": "6.5.15",
 		"@storybook/addons": "6.5.14",
 		"@storybook/api": "6.5.14",
 		"@storybook/builder-vite": "0.2.6",
