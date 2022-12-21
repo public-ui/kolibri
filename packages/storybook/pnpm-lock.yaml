@@ -56,6 +56,7 @@ specifiers:
   serve: 14.1.2
   storybook: 6.5.15
   storybook-addon-themes: 6.1.0
+  storybook-addon-turbo-build: 1.1.0
   typescript: 4.9.4
   webpack: 5.75.0
   webpack-pwa-manifest: 4.3.0
@@ -118,6 +119,7 @@ devDependencies:
   serve: 14.1.2
   storybook: 6.5.15_mebdfyld42kuclmk74vagplsc4
   storybook-addon-themes: 6.1.0_sfoxds7t5ydpegc3knd667wn6m
+  storybook-addon-turbo-build: 1.1.0_webpack@5.75.0
   typescript: 4.9.4
   webpack: 5.75.0
   webpack-pwa-manifest: 4.3.0
@@ -12552,6 +12554,14 @@ packages:
       react: 17.0.2
     transitivePeerDependencies:
       - react-dom
+    dev: true
+
+  /storybook-addon-turbo-build/1.1.0_webpack@5.75.0:
+    resolution: {integrity: sha512-5Zj74c5vQYAVE7m8DOKv3OuOHMn29ljWj34UUYXpIoYQ786ORXu9MAj4WnqLstQvMy6cDqchUm4pROKVgef5ZA==}
+    dependencies:
+      esbuild-loader: 2.20.0_webpack@5.75.0
+    transitivePeerDependencies:
+      - webpack
     dev: true
 
   /storybook/6.5.15_mebdfyld42kuclmk74vagplsc4:

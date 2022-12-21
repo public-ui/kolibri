@@ -16,6 +16,12 @@ module.exports = {
 		'@storybook/addon-viewport',
 
 		'storybook-addon-themes',
+		{
+			name: 'storybook-addon-turbo-build',
+			options: {
+				optimizationLevel: 3,
+			},
+		},
 	],
 	core: {
 		// 	builder: '@storybook/builder-vite',
