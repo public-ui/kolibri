@@ -7,10 +7,10 @@ specifiers:
   '@leanup/stack-webpack': 1.3.39
   '@playwright/test': 1.29.0
   '@public-oss/kolibri-themes': 0.0.1
-  '@public-ui/components': 1.1.15-rc.9
-  '@public-ui/core': 1.1.15-rc.9
-  '@public-ui/solid': 1.1.15-rc.9
-  '@public-ui/themes': 1.1.15-rc.9
+  '@public-ui/components': 1.1.15
+  '@public-ui/core': 1.1.15
+  '@public-ui/solid': 1.1.15
+  '@public-ui/themes': 1.1.15
   '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.47.6
   '@unocss/webpack': 0.47.6
@@ -33,12 +33,12 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@leanup/kolibri-themes': 0.0.6_fgedmjixrzdm5td7mwclxvfqru
-  '@public-oss/kolibri-themes': 0.0.1_fgedmjixrzdm5td7mwclxvfqru
-  '@public-ui/components': 1.1.15-rc.9
-  '@public-ui/core': 1.1.15-rc.9
-  '@public-ui/solid': 1.1.15-rc.9_pkthhdylg6eqy4py3qd6x2lfey
-  '@public-ui/themes': 1.1.15-rc.9_fgedmjixrzdm5td7mwclxvfqru
+  '@leanup/kolibri-themes': 0.0.6_4hhirvxkpx4mq54gdpqayzamfq
+  '@public-oss/kolibri-themes': 0.0.1_4hhirvxkpx4mq54gdpqayzamfq
+  '@public-ui/components': 1.1.15
+  '@public-ui/core': 1.1.15
+  '@public-ui/solid': 1.1.15_4gugrn6ackpwj3itxas7hhk65q
+  '@public-ui/themes': 1.1.15_4hhirvxkpx4mq54gdpqayzamfq
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1_monaco-editor@0.34.1
   register-service-worker: 1.7.2
@@ -2821,12 +2821,12 @@ packages:
       - webpack
     dev: true
 
-  /@leanup/kolibri-themes/0.0.6_fgedmjixrzdm5td7mwclxvfqru:
+  /@leanup/kolibri-themes/0.0.6_4hhirvxkpx4mq54gdpqayzamfq:
     resolution: {integrity: sha512-iJ3yPeeUClaF7/eDBacDHq4TFXpfOMe0XGl0VmWLVu0h1+94IITJDmxmAa7VtcdoLvyI9f9RkynXhE2XwEEU4Q==}
     peerDependencies:
       '@public-ui/components': '*'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.9
+      '@public-ui/components': 1.1.15
       '@public-ui/schema': 1.1.11
     dev: false
 
@@ -2984,19 +2984,19 @@ packages:
       playwright-core: 1.29.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.1_fgedmjixrzdm5td7mwclxvfqru:
+  /@public-oss/kolibri-themes/0.0.1_4hhirvxkpx4mq54gdpqayzamfq:
     resolution: {integrity: sha512-wKZQ8alYuOfj7PVP+Ew6g9XgsL4NzLJvJlEtLC6bikL4J3qyXua8MgIZPO3dkoUpqwxpeH0U6QMYj0larSTEsg==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.9
+      '@public-ui/components': 1.1.15
       '@public-ui/schema': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/components/1.1.15-rc.9:
-    resolution: {integrity: sha512-OYA7YDCfvHGs+HptoMwOlHLhleg0euB+I2vqZoCofCM2hCkhsNwdawfFTqgW8VwaF+KGQk/yaMkrT2OQbM0FyQ==}
+  /@public-ui/components/1.1.15:
+    resolution: {integrity: sha512-Vkr6RKksTtwBUUNU5jHlCyRNjqfxpCX5xQn7ytwss9d20OCicprztLQu5NPQkyK7cAQly1BncILy2vVJehmaJA==}
     dependencies:
-      '@public-ui/schema': 1.1.15-rc.9
+      '@public-ui/schema': 1.1.15
     dev: false
 
   /@public-ui/core/1.1.11:
@@ -3015,11 +3015,11 @@ packages:
       rxjs: 7.5.7
     dev: false
 
-  /@public-ui/core/1.1.15-rc.9:
-    resolution: {integrity: sha512-bXTINx3q/Ve1AkLaQrw6YwO/53ipTQZp5p4UifqBpPcDUQEoU3DNq5xlH2a5WXnrX17mtR1+0h5TLAQYNrsPKg==}
+  /@public-ui/core/1.1.15:
+    resolution: {integrity: sha512-la537grID2UqyP/Wsaf/Rp80TrbRzAy1KDKn8wpeEnIakZSBJLwMU/O8lDNZ0LJ7vcvxcQsJFNQMpVeyvpKZjg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
-      rxjs: 7.6.0
+      rxjs: 7.8.0
     dev: false
 
   /@public-ui/schema/1.1.11:
@@ -3035,29 +3035,29 @@ packages:
       '@public-ui/core': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/schema/1.1.15-rc.9:
-    resolution: {integrity: sha512-g7A3EuJBe+MghKTX0mMEgy6ZGsfmdGxgIsyIhiSddwqOSm6q3zsBuM6JT1Gu/BVofCOui+T3ZrmKCRJuryWkPg==}
+  /@public-ui/schema/1.1.15:
+    resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
     dependencies:
-      '@public-ui/core': 1.1.15-rc.9
+      '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/solid/1.1.15-rc.9_pkthhdylg6eqy4py3qd6x2lfey:
-    resolution: {integrity: sha512-vUsFGQrN3SDQ+JXmHmW6xhI9kQX17SNNjJL6mMnqkK9Yqv0SEo0VI+ihtREMUbsQ7KxodxUbbz52JPZl2RGtyA==}
+  /@public-ui/solid/1.1.15_4gugrn6ackpwj3itxas7hhk65q:
+    resolution: {integrity: sha512-02ntE9GDxhU3upIMaC4MlQGagbfbQhWEK2d8N6nqUNVTlulrVOXGiseOLACukRaLOC4lkQ1+9yOt/d2wf/8ERA==}
     peerDependencies:
-      '@public-ui/components': 1.1.15-rc.9
+      '@public-ui/components': 1.1.15
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.1.15-rc.9
+      '@public-ui/components': 1.1.15
       solid-js: 1.6.5
     dev: false
 
-  /@public-ui/themes/1.1.15-rc.9_fgedmjixrzdm5td7mwclxvfqru:
-    resolution: {integrity: sha512-VYgJ9anvhvJ+a8FitzCatg2JtZIlMfxTCSWdEcVXqt4i8KQ9I6/KrWPvDUPyGguFmqAz4W9uHT71hRUds/zvUA==}
+  /@public-ui/themes/1.1.15_4hhirvxkpx4mq54gdpqayzamfq:
+    resolution: {integrity: sha512-R7D7uceMKE2PewKrNqBmfvoreLIF3s1qpqmCBPVtA/lftfGqkujAGXVLUTWQ39z/jcRZlQ0vrpEsWueLb9Wc9Q==}
     peerDependencies:
-      '@public-ui/components': 1.1.15-rc.9
+      '@public-ui/components': 1.1.15
     dependencies:
-      '@public-ui/components': 1.1.15-rc.9
-      '@public-ui/schema': 1.1.15-rc.9
+      '@public-ui/components': 1.1.15
+      '@public-ui/schema': 1.1.15
     dev: false
 
   /@rollup/plugin-babel/5.3.1_opjstonlpkhafnz76jsxdwq25a:
@@ -8683,8 +8683,8 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /rxjs/7.6.0:
-    resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
+  /rxjs/7.8.0:
+    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
     dependencies:
       tslib: 2.4.1
     dev: false
