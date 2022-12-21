@@ -128,6 +128,12 @@ devDependencies:
 
 packages:
 
+  /@a11y-ui/core/1.0.0-rc.15:
+    resolution: {integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw==}
+    dependencies:
+      '@leanup/lib': 1.3.20
+    dev: true
+
   /@a11y-ui/core/1.0.1-rc.6:
     resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
     dependencies:
@@ -653,7 +659,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.20.2
+      '@babel/helper-plugin-utils': 7.10.4
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.12.9
       '@babel/plugin-transform-parameters': 7.20.5_@babel+core@7.12.9
     dev: true
@@ -1689,9 +1695,9 @@ packages:
     dependencies:
       '@storybook/addons': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
       '@storybook/api': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
-      '@storybook/client-logger': 6.5.14
+      '@storybook/client-logger': 6.5.15
       '@storybook/components': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
-      '@storybook/core-events': 6.5.14
+      '@storybook/core-events': 6.5.15
       '@storybook/theming': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
       core-js: 3.26.1
       lodash: 4.17.21
@@ -2222,6 +2228,8 @@ packages:
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.39
+      '@leanup/kolibri-schema': 1.0.5
+      '@leanup/lib': 1.3.39
       '@public-ui/components': 1.1.15
     dev: true
 
@@ -2235,6 +2243,19 @@ packages:
       '@leanup/kolibri-components': 1.0.5_2iuafciavomgnp55ejvcjap2oi
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+    dev: true
+
+  /@leanup/kolibri-schema/1.0.5:
+    resolution: {integrity: sha512-Z02G4XaQTx1igEaXtaNhafTBUHYMpI3PECfSwai3GzB/YxduUXXg8Xb+BwILwcNwaRjYLb6cja7lgMx69JG7zA==}
+    dependencies:
+      '@a11y-ui/core': 1.0.0-rc.15
+    dev: true
+
+  /@leanup/lib/1.3.20:
+    resolution: {integrity: sha512-xAHNLTMaXuV8ENPoMU+4J1WTzoXciRgkP0U9205DcPcZUf90M7jTCgRBz2z0mrbqNzUjJOaS9eBvznmYsIj+zg==}
+    dependencies:
+      loglevel: 1.8.0
+      tslib: 2.4.0
     dev: true
 
   /@leanup/lib/1.3.39:
@@ -3198,13 +3219,6 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /@storybook/client-logger/6.5.14:
-    resolution: {integrity: sha512-r1pY69DGKzX9/GngkudthaaPxPlka16zjG7Y58psunwcoUuH3riAP1cjqhXt5+S8FKCNI/MGb82PLlCPX2Liuw==}
-    dependencies:
-      core-js: 3.26.1
-      global: 4.4.0
-    dev: true
-
   /@storybook/client-logger/6.5.15:
     resolution: {integrity: sha512-0uyxKvodq+FycGv6aUwC1wUR6suXf2+7ywMFAOlYolI4UvNj8NyU/5AfgKT5XnxYAgPmoCiAjOE700TrfHrosw==}
     dependencies:
@@ -3395,12 +3409,6 @@ packages:
       - vue-template-compiler
       - webpack-cli
       - webpack-command
-    dev: true
-
-  /@storybook/core-events/6.5.14:
-    resolution: {integrity: sha512-PLu0M8Mqt9ruN5RupgcFKHEybiSm3CdWQyylWO5FRGg+WZV3BCm0aI8ujvO1GAm+YEi57Lull+M9d6NUycTpRg==}
-    dependencies:
-      core-js: 3.26.1
     dev: true
 
   /@storybook/core-events/6.5.15:
@@ -4043,14 +4051,14 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.11.17
+      '@types/node': 16.18.10
     dev: true
 
   /@types/glob/8.0.0:
     resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.11.17
+      '@types/node': 16.18.10
     dev: true
 
   /@types/graceful-fs/4.1.5:
@@ -4131,7 +4139,7 @@ packages:
   /@types/node-fetch/2.6.2:
     resolution: {integrity: sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==}
     dependencies:
-      '@types/node': 18.11.17
+      '@types/node': 16.18.10
       form-data: 3.0.1
     dev: true
 
@@ -4238,7 +4246,7 @@ packages:
   /@types/webpack-sources/3.2.0:
     resolution: {integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==}
     dependencies:
-      '@types/node': 18.11.17
+      '@types/node': 16.18.10
       '@types/source-list-map': 0.1.2
       source-map: 0.7.4
     dev: true
@@ -4246,7 +4254,7 @@ packages:
   /@types/webpack/4.41.33:
     resolution: {integrity: sha512-PPajH64Ft2vWevkerISMtnZ8rTs4YmRbs+23c402J0INmxDKCrhZNvwZYtzx96gY2wAtXdrK1BS2fiC8MlLr3g==}
     dependencies:
-      '@types/node': 18.11.17
+      '@types/node': 16.18.10
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.17.1
       '@types/webpack-sources': 3.2.0
@@ -5341,6 +5349,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -6487,8 +6496,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /d3-geo/3.0.1:
-    resolution: {integrity: sha512-Wt23xBych5tSy9IYAM1FR2rWIBFWa52B/oF/GYe5zbdHrg08FU8+BuI6X4PvTwPDdqdAdq04fuWJpELtsaEjeA==}
+  /d3-geo/3.1.0:
+    resolution: {integrity: sha512-JEo5HxXDdDYXCaWdwLRt79y7giK8SbhZJbFWXqbRTolCHFI5jRqteLzCsq51NKbUoX0PjBVSohxrx+NoOUujYA==}
     engines: {node: '>=12'}
     dependencies:
       d3-array: 3.2.1
@@ -6550,8 +6559,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /d3-shape/3.1.0:
-    resolution: {integrity: sha512-tGDh1Muf8kWjEDT/LswZJ8WF85yDZLvVJpYU9Nq+8+yW1Z5enxrmXOhTArlkaElU+CTn0OTVNli+/i+HP45QEQ==}
+  /d3-shape/3.2.0:
+    resolution: {integrity: sha512-SaLBuwGm3MOViRq2ABk3eLoxwZELpH6zhl3FbAoJ7Vm1gofKx6El1Ib5z23NUEhF9AsGl7y+dzLe5Cw2AArGTA==}
     engines: {node: '>=12'}
     dependencies:
       d3-path: 3.1.0
@@ -6601,8 +6610,8 @@ packages:
       d3-transition: 3.0.1_d3-selection@3.0.0
     dev: true
 
-  /d3/7.7.0:
-    resolution: {integrity: sha512-VEwHCMgMjD2WBsxeRGUE18RmzxT9Bn7ghDpzvTEvkLSBAKgTMydJjouZTjspgQfRHpPt/PB3EHWBa6SSyFQq4g==}
+  /d3/7.8.0:
+    resolution: {integrity: sha512-a5rNemRadWkEfqnY5NsD4RdCP9vn8EIJ4I5Rl14U0uKH1SXqcNmk/h9aGaAF1O98lz6L9M0IeUcuPa9GUYbI5A==}
     engines: {node: '>=12'}
     dependencies:
       d3-array: 3.2.1
@@ -6619,7 +6628,7 @@ packages:
       d3-fetch: 3.0.1
       d3-force: 3.0.0
       d3-format: 3.1.0
-      d3-geo: 3.0.1
+      d3-geo: 3.1.0
       d3-hierarchy: 3.1.2
       d3-interpolate: 3.0.1
       d3-path: 3.1.0
@@ -6629,7 +6638,7 @@ packages:
       d3-scale: 4.0.2
       d3-scale-chromatic: 3.0.0
       d3-selection: 3.0.0
-      d3-shape: 3.1.0
+      d3-shape: 3.2.0
       d3-time: 3.1.0
       d3-time-format: 4.1.0
       d3-timer: 3.0.1
@@ -6640,7 +6649,7 @@ packages:
   /dagre-d3-es/7.0.6:
     resolution: {integrity: sha512-CaaE/nZh205ix+Up4xsnlGmpog5GGm81Upi2+/SBHxwNwrccBb3K51LzjZ1U6hgvOlAEUsVWf1xSTzCyKpJ6+Q==}
     dependencies:
-      d3: 7.7.0
+      d3: 7.8.0
       lodash-es: 4.17.21
     dev: true
 
@@ -7836,13 +7845,14 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
   /filelist/1.0.4:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==}
     dependencies:
-      minimatch: 5.1.1
+      minimatch: 5.1.2
     dev: true
 
   /fill-range/4.0.0:
@@ -7939,8 +7949,8 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /flow-parser/0.196.1:
-    resolution: {integrity: sha512-V3yaKHyBWhl+LF6sxgbfqxMlwoFKs8UKh2DYTrGj1AHi9ST7Zyp+9ToF4l9eoL6l/DxdFwCNF3MAJ1vCVrgJmw==}
+  /flow-parser/0.196.2:
+    resolution: {integrity: sha512-IuLWqI8aCdYH5t3W3PKSFrf/IngJt4WMpuP+5WTLhTPoexTage5evcGouXQ8kAQurOYkuD2YoVPAj+H3foW2Rw==}
     engines: {node: '>=0.4.0'}
     dev: true
 
@@ -9505,7 +9515,7 @@ packages:
       '@babel/register': 7.18.9_@babel+core@7.20.5
       babel-core: 7.0.0-bridge.0_@babel+core@7.20.5
       chalk: 4.1.2
-      flow-parser: 0.196.1
+      flow-parser: 0.196.2
       graceful-fs: 4.2.10
       micromatch: 3.1.10
       neo-async: 2.6.2
@@ -10014,7 +10024,7 @@ packages:
     resolution: {integrity: sha512-mGl0BM19TD/HbU/LmlaZbjBi//tojelg8P/mxD6pPZTAYaI+VawcyBdqRsoUHSc7j71PrMdJ3HBadoQNdvP5cg==}
     dependencies:
       '@braintree/sanitize-url': 6.0.2
-      d3: 7.7.0
+      d3: 7.8.0
       dagre-d3-es: 7.0.6
       dompurify: 2.4.1
       khroma: 2.0.0
@@ -10107,6 +10117,12 @@ packages:
     hasBin: true
     dev: true
 
+  /mime/2.6.0:
+    resolution: {integrity: sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==}
+    engines: {node: '>=4.0.0'}
+    hasBin: true
+    dev: true
+
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
@@ -10147,8 +10163,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimatch/5.1.1:
-    resolution: {integrity: sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==}
+  /minimatch/5.1.2:
+    resolution: {integrity: sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -10271,6 +10287,7 @@ packages:
 
   /nan/2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -11383,7 +11400,7 @@ packages:
       debug: 4.3.4
       extract-zip: 1.7.0
       https-proxy-agent: 4.0.0
-      mime: 2.4.6
+      mime: 2.6.0
       mime-types: 2.1.35
       progress: 2.0.3
       proxy-from-env: 1.1.0
@@ -12546,7 +12563,7 @@ packages:
       '@storybook/addons': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
       '@storybook/api': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
       '@storybook/components': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
-      '@storybook/core-events': 6.5.14
+      '@storybook/core-events': 6.5.15
       '@storybook/theming': 6.5.15_sfoxds7t5ydpegc3knd667wn6m
       core-js: 3.26.1
       global: 4.4.0
@@ -13149,6 +13166,10 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+    dev: true
+
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
     dev: true
@@ -13666,7 +13687,7 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
       memory-fs: 0.4.1
-      mime: 2.4.6
+      mime: 2.6.0
       mkdirp: 0.5.6
       range-parser: 1.2.1
       webpack: 4.46.0
