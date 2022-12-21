@@ -44,23 +44,19 @@ specifiers:
   eslint-plugin-json: 3.1.0
   eslint-plugin-storybook: 0.6.8
   esm: 3.2.25
-  i18next: 22.4.6
   lit-html: 2.5.0
   mermaid: 9.3.0
   postcss: 8.4.20
   prettier: 2.8.1
   react: 17.0.2
   react-dom: 17.0.2
-  react-i18next: 12.1.1
   register-service-worker: 1.7.2
   require-from-string: 2.0.2
   rimraf: 3.0.2
   serve: 14.1.2
   storybook: 6.5.15
   storybook-addon-themes: 6.1.0
-  storybook-addon-turbo-build: 1.1.0
   typescript: 4.9.4
-  vite: 3.2.5
   webpack: 5.75.0
   webpack-pwa-manifest: 4.3.0
   workbox-build: 6.5.4
@@ -110,23 +106,19 @@ devDependencies:
   eslint-plugin-json: 3.1.0
   eslint-plugin-storybook: 0.6.8_lzzuuodtsqwxnvqeq4g4likcqa
   esm: 3.2.25
-  i18next: 22.4.6
   lit-html: 2.5.0
   mermaid: 9.3.0
   postcss: 8.4.20
   prettier: 2.8.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
-  react-i18next: 12.1.1_zomnyqzhdriokxel4sqxpcxpge
   register-service-worker: 1.7.2
   require-from-string: 2.0.2
   rimraf: 3.0.2
   serve: 14.1.2
   storybook: 6.5.15_mebdfyld42kuclmk74vagplsc4
   storybook-addon-themes: 6.1.0_sfoxds7t5ydpegc3knd667wn6m
-  storybook-addon-turbo-build: 1.1.0_webpack@5.75.0
   typescript: 4.9.4
-  vite: 3.2.5
   webpack: 5.75.0
   webpack-pwa-manifest: 4.3.0
   workbox-build: 6.5.4
@@ -8652,12 +8644,6 @@ packages:
       terser: 5.16.1
     dev: true
 
-  /html-parse-stringify/3.0.1:
-    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
-    dependencies:
-      void-elements: 3.1.0
-    dev: true
-
   /html-tags/3.2.0:
     resolution: {integrity: sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==}
     engines: {node: '>=8'}
@@ -8740,12 +8726,6 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
-    dev: true
-
-  /i18next/22.4.6:
-    resolution: {integrity: sha512-9Tm1ezxWyzV+306CIDMBbYBitC1jedQyYuuLtIv7oxjp2ohh8eyxP9xytIf+2bbQfhH784IQKPSYp+Zq9+YSbw==}
-    dependencies:
-      '@babel/runtime': 7.20.6
     dev: true
 
   /iconv-lite/0.4.24:
@@ -11544,26 +11524,6 @@ packages:
       react-is: 17.0.2
     dev: true
 
-  /react-i18next/12.1.1_zomnyqzhdriokxel4sqxpcxpge:
-    resolution: {integrity: sha512-mFdieOI0LDy84q3JuZU6Aou1DoWW2fhapcTGeBS8+vWSJuViuoCLQAMYSb0QoHhXS8B0WKUOPpx4cffAP7r/aA==}
-    peerDependencies:
-      i18next: '>= 19.0.0'
-      react: '>= 16.8.0'
-      react-dom: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.20.6
-      html-parse-stringify: 3.0.1
-      i18next: 22.4.6
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-    dev: true
-
   /react-inspector/5.1.1_react@17.0.2:
     resolution: {integrity: sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==}
     peerDependencies:
@@ -12594,14 +12554,6 @@ packages:
       - react-dom
     dev: true
 
-  /storybook-addon-turbo-build/1.1.0_webpack@5.75.0:
-    resolution: {integrity: sha512-5Zj74c5vQYAVE7m8DOKv3OuOHMn29ljWj34UUYXpIoYQ786ORXu9MAj4WnqLstQvMy6cDqchUm4pROKVgef5ZA==}
-    dependencies:
-      esbuild-loader: 2.20.0_webpack@5.75.0
-    transitivePeerDependencies:
-      - webpack
-    dev: true
-
   /storybook/6.5.15_mebdfyld42kuclmk74vagplsc4:
     resolution: {integrity: sha512-qaoR70xFK1hQw9IaBU9C3roNRbcTi0JFsqOnuKAFbatLXnGni7Wx4krtqHaSsy9tNPIzZxy0n/RgoBS+4HC2sQ==}
     hasBin: true
@@ -13619,46 +13571,8 @@ packages:
       vfile-message: 2.0.4
     dev: true
 
-  /vite/3.2.5:
-    resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.15.18
-      postcss: 8.4.20
-      resolve: 1.22.1
-      rollup: 2.79.1
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /vm-browserify/1.1.2:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
-    dev: true
-
-  /void-elements/3.1.0:
-    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /vscode-json-languageservice/4.2.1:
