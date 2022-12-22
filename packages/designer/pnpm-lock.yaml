@@ -5,15 +5,15 @@ specifiers:
   '@leanup/stack': 1.3.39
   '@leanup/stack-solid': 1.3.39
   '@leanup/stack-webpack': 1.3.39
-  '@playwright/test': 1.29.0
+  '@playwright/test': 1.29.1
   '@public-oss/kolibri-themes': 0.0.1
   '@public-ui/components': 1.1.15
   '@public-ui/core': 1.1.15
   '@public-ui/solid': 1.1.15
   '@public-ui/themes': 1.1.15
   '@types/prettier': 2.7.2
-  '@unocss/preset-mini': 0.47.6
-  '@unocss/webpack': 0.47.6
+  '@unocss/preset-mini': 0.48.0
+  '@unocss/webpack': 0.48.0
   chromedriver: 108.0.0
   depcheck: 1.4.3
   eslint-plugin-jsx-a11y: 6.6.1
@@ -21,7 +21,7 @@ specifiers:
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1
   nightwatch-axe-verbose: 2.0.3
-  playwright: 1.29.0
+  playwright: 1.29.1
   prettier: 2.8.1
   register-service-worker: 1.7.2
   rimraf: 3.0.2
@@ -49,16 +49,16 @@ devDependencies:
   '@leanup/stack': 1.3.39_ezbnoogsa5ins2tcqsw6oii36i
   '@leanup/stack-solid': 1.3.39_solid-js@1.6.6
   '@leanup/stack-webpack': 1.3.39_@leanup+stack@1.3.39
-  '@playwright/test': 1.29.0
+  '@playwright/test': 1.29.1
   '@types/prettier': 2.7.2
-  '@unocss/preset-mini': 0.47.6
-  '@unocss/webpack': 0.47.6
+  '@unocss/preset-mini': 0.48.0
+  '@unocss/webpack': 0.48.0
   chromedriver: 108.0.0
   depcheck: 1.4.3
   eslint-plugin-jsx-a11y: 6.6.1
   eslint-plugin-no-loops: 0.3.0
   nightwatch-axe-verbose: 2.0.3
-  playwright: 1.29.0
+  playwright: 1.29.1
   prettier: 2.8.1
   rimraf: 3.0.2
   ts-prune: 0.10.3
@@ -2410,7 +2410,7 @@ packages:
       mkdirp: 0.5.6
       phin: 2.9.3
       pixelmatch: 4.0.2
-      tinycolor2: 1.4.2
+      tinycolor2: 1.5.0
     dev: true
 
   /@jimp/custom/0.16.2:
@@ -2481,7 +2481,7 @@ packages:
       '@babel/runtime': 7.20.6
       '@jimp/custom': 0.16.2
       '@jimp/utils': 0.16.2
-      tinycolor2: 1.4.2
+      tinycolor2: 1.5.0
     dev: true
 
   /@jimp/plugin-contain/0.16.2_imjb3y324usacerau4nmcprwgm:
@@ -2975,13 +2975,13 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@playwright/test/1.29.0:
-    resolution: {integrity: sha512-gp5PVBenxTJsm2bATWDNc2CCnrL5OaA/MXQdJwwkGQtqTjmY+ZOqAdLqo49O9MLTDh2vYh+tHWDnmFsILnWaeA==}
+  /@playwright/test/1.29.1:
+    resolution: {integrity: sha512-iQxk2DX5U9wOGV3+/Jh9OHPsw5H3mleUL2S4BgQuwtlAfK3PnKvn38m4Rg9zIViGHVW24opSm99HQm/UFLEy6w==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 18.11.17
-      playwright-core: 1.29.0
+      playwright-core: 1.29.1
     dev: true
 
   /@public-oss/kolibri-themes/0.0.1_4hhirvxkpx4mq54gdpqayzamfq:
@@ -3679,34 +3679,36 @@ packages:
     resolution: {integrity: sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==}
     dev: true
 
-  /@unocss/config/0.47.6:
-    resolution: {integrity: sha512-KycIrpKqPrTnrbNRLUgePuzfZUKk6afsKII6B53q9rVxxC1og4g7wCsvrn2D89lPipsJ6B9041VsdIhNqa8bFg==}
+  /@unocss/config/0.48.0:
+    resolution: {integrity: sha512-fr4baghDl8QhlRiGbIO6FWB0k/MGzm9uiWe+Azhpwi6DgFd3MUJMfTfEqia4n/u/sRRaUAbD1nrWrDtpneFLPQ==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.47.6
+      '@unocss/core': 0.48.0
       unconfig: 0.3.7
     dev: true
 
-  /@unocss/core/0.47.6:
-    resolution: {integrity: sha512-Pjg/NdpuTwZk2Ns3bzI/3XVPuXU+AQ78Sw+9QJyMgA56dArd3TlpNDN6UTOD9XAK6mxdPUu7rNSKpNTLpBW2og==}
+  /@unocss/core/0.48.0:
+    resolution: {integrity: sha512-WvAvChbJ65l97mHismyApeFVgNeGR4uSZl1BzVY+E/fRmyooE4QxiCm3g2akox6mQryzxvBvgSpP9aPzH676ZQ==}
     dev: true
 
-  /@unocss/preset-mini/0.47.6:
-    resolution: {integrity: sha512-XP7ShDB42WU0xvZA1dG4E3LnzN4TYISm6AKQee3gmITUtE0ELTp9XutMgt0sqTe5FXeTRqw9XH7axv+4EqnE3Q==}
+  /@unocss/preset-mini/0.48.0:
+    resolution: {integrity: sha512-u1EWnmLt25SmCC201+9MqLn1qFYw0aRFH+3clHn9xkrLxXMdb5hnCNssTHItalvht+mskHrfxpQmKUBtxpls+g==}
     dependencies:
-      '@unocss/core': 0.47.6
+      '@unocss/core': 0.48.0
     dev: true
 
-  /@unocss/webpack/0.47.6:
-    resolution: {integrity: sha512-ivf1q3NwPaS4xcxHkugxUDuG+iJKPzfCnhwFtsUc3HhV6XSwtQHlih3l71LsXdevBeDGKjbuu7dLwrRAE5Gz+w==}
+  /@unocss/webpack/0.48.0:
+    resolution: {integrity: sha512-SMfaUWaDxq4lrx18vj6VPogkDm/E30Er62xAK8s1D9Li5zhtZPheP1dcc5t5zR1Cm3OA5Ow767eIQbnF3Fh9Lg==}
     peerDependencies:
       webpack: ^4 || ^5
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@rollup/pluginutils': 5.0.2
-      '@unocss/config': 0.47.6
-      '@unocss/core': 0.47.6
-      magic-string: 0.26.7
+      '@unocss/config': 0.48.0
+      '@unocss/core': 0.48.0
+      chokidar: 3.5.3
+      fast-glob: 3.2.12
+      magic-string: 0.27.0
       unplugin: 1.0.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -4422,7 +4424,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001439
+      caniuse-lite: 1.0.30001441
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -4495,8 +4497,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001439:
-    resolution: {integrity: sha512-1MgUzEkoMO6gKfXflStpYgZDlFM7M/ck/bgfVCACO5vnAf0fXoNVHdWtqGU+MYca+4bL9Z5bpOVmR33cWW9G2A==}
+  /caniuse-lite/1.0.30001441:
+    resolution: {integrity: sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg==}
     dev: true
 
   /chai-nightwatch/0.5.3:
@@ -7529,11 +7531,11 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
-  /magic-string/0.26.7:
-    resolution: {integrity: sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==}
+  /magic-string/0.27.0:
+    resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
     dependencies:
-      sourcemap-codec: 1.4.8
+      '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
   /make-dir/2.1.0:
@@ -8244,19 +8246,19 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /playwright-core/1.29.0:
-    resolution: {integrity: sha512-pboOm1m0RD6z1GtwAbEH60PYRfF87vKdzOSRw2RyO0Y0a7utrMyWN2Au1ojGvQr4umuBMODkKTv607YIRypDSQ==}
+  /playwright-core/1.29.1:
+    resolution: {integrity: sha512-20Ai3d+lMkWpI9YZYlxk8gxatfgax5STW8GaMozAHwigLiyiKQrdkt7gaoT9UQR8FIVDg6qVXs9IoZUQrDjIIg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
 
-  /playwright/1.29.0:
-    resolution: {integrity: sha512-vtXgX3FPNcAJq1QoIVCvmiHHKOLVTZkSYEo60n+EnX5MrNznAJzGquxT8c2sv+BG3CDyLeKm351e491HnF7yjw==}
+  /playwright/1.29.1:
+    resolution: {integrity: sha512-lasC+pMqsQ2uWhNurt3YK3xo0gWlMjslYUylKbHcqF/NTjwp9KStRGO7S6wwz2f52GcSnop8XUK/GymJjdzrxw==}
     engines: {node: '>=14'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      playwright-core: 1.29.0
+      playwright-core: 1.29.1
     dev: true
 
   /please-upgrade-node/3.2.0:
@@ -9320,8 +9322,8 @@ packages:
     resolution: {integrity: sha512-IjZc9KIotudix8bMaBW6QvMuq64BrJWFs1+4V0lXwWGQZwH+LnX87doAYhem4caOEusRP9/g6jVDQmZ8XOk1nw==}
     dev: true
 
-  /tinycolor2/1.4.2:
-    resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
+  /tinycolor2/1.5.0:
+    resolution: {integrity: sha512-opkFmTUuHQJj6/+A4B432NAptta/ytJq6UiWxqa860hSvMG9m3FxsbR4jYQfdXf59H1aE80Yd0UpFjhbg1e/zw==}
     dev: true
 
   /tmp/0.2.1:
