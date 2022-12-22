@@ -63,7 +63,7 @@
 		"@playwright/test": "1.29.0",
 		"@types/prettier": "2.7.2",
 		"@unocss/preset-mini": "0.47.6",
-		"@unocss/webpack": "0.47.6",
+		"@unocss/webpack": "0.48.0",
 		"chromedriver": "108.0.0",
 		"depcheck": "1.4.3",
 		"eslint-plugin-jsx-a11y": "6.6.1",
