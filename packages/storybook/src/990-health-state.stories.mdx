@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
-import { KolHeading, KolTable } from '@public-ui/react';
+import { KolHeading, KolTable, KolIndentedText } from '@public-ui/react';
 import { getPackageName } from './constants/utils';
 
 <Meta title="Gesundheitszustand" id="health" />
@@ -11,7 +11,7 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 <KolTable
 	className="col-12"
 	_caption="Liste von Statuswerte zu den Paketen"
-	_minWidth="70em"
+	_minWidth="85em"
 	_headers={{
 		horizontal: [
 			[
@@ -36,6 +36,11 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 </kol-link>`,
 				},
 				{
+					label: 'Quality',
+					key: 'name',
+					render: () => `<img alt="" src="https://packagequality.com/shield/create-kolibri.svg" />`,
+				},
+				{
 					label: 'Install size',
 					key: 'name',
 					render: (el, cell, tupel) => `<kol-link _href="https://packagephobia.com/result?p=${getPackageName(tupel.scope, tupel.name)}" _target="packagephobia">
@@ -47,6 +52,13 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 					key: 'name',
 					render: (el, cell, tupel) => `<kol-link _href="https://libraries.io/npm/${getPackageName(tupel.scope, tupel.name, '%2F')}" _target="libraries">
 	<img alt="" src="https://img.shields.io/librariesio/release/npm/${getPackageName(tupel.scope, tupel.name)}" />
+</kol-link>`,
+				},
+				{
+					label: 'Health',
+					key: 'name',
+					render: (el, cell, tupel) => `<kol-link _href="https://snyk.io/advisor/npm-package/${getPackageName(tupel.scope, tupel.name)}" _target="snyk">
+	<img alt="" src="https://snyk.io/advisor/npm-package/${getPackageName(tupel.scope, tupel.name)}/badge.svg" />
 </kol-link>`,
 				},
 				{
@@ -117,7 +129,14 @@ In der nachfolgenden Tabelle werden zahlreiche Informationen zu den Paketen ange
 		},
 	]}
 ></KolTable>
-<kol-indented-text>
-	<sub>*</sub> Die Anzahl von Vulnerabilities gibt keinen Aufschluss über die Schwere der Betroffenheit des Pakets. Bei der Prüfung werden auch Abhängigkeiten
-	berücksichtigt, die Abhängigkeiten berücksichtigt, die zum Entwickeln des Pakets erforderlich sind (devDependencies).
-</kol-indented-text>
+<div
+	style={{
+		display: 'block',
+		padding: '1rem',
+	}}
+>
+	<KolIndentedText>
+		<sup>*</sup> Die Anzahl von Vulnerabilities gibt keinen Aufschluss über die Schwere der Betroffenheit des Pakets. Bei der Prüfung werden auch Abhängigkeiten
+		berücksichtigt, die zum Entwickeln des Pakets selbst erforderlich sind (devDependencies).
+	</KolIndentedText>
+</div>
