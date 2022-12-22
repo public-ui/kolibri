@@ -1819,7 +1819,7 @@ packages:
       mkdirp: 0.5.6
       phin: 2.9.3
       pixelmatch: 4.0.2
-      tinycolor2: 1.4.2
+      tinycolor2: 1.5.0
     dev: true
 
   /@jimp/custom/0.16.2:
@@ -1890,7 +1890,7 @@ packages:
       '@babel/runtime': 7.20.6
       '@jimp/custom': 0.16.2
       '@jimp/utils': 0.16.2
-      tinycolor2: 1.4.2
+      tinycolor2: 1.5.0
     dev: true
 
   /@jimp/plugin-contain/0.16.2_imjb3y324usacerau4nmcprwgm:
@@ -5105,7 +5105,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001439
+      caniuse-lite: 1.0.30001441
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -5536,7 +5536,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001439
+      caniuse-lite: 1.0.30001441
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -5754,8 +5754,8 @@ packages:
     resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
     dev: true
 
-  /caniuse-lite/1.0.30001439:
-    resolution: {integrity: sha512-1MgUzEkoMO6gKfXflStpYgZDlFM7M/ck/bgfVCACO5vnAf0fXoNVHdWtqGU+MYca+4bL9Z5bpOVmR33cWW9G2A==}
+  /caniuse-lite/1.0.30001441:
+    resolution: {integrity: sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg==}
     dev: true
 
   /capture-exit/2.0.0:
@@ -7949,8 +7949,8 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /flow-parser/0.196.2:
-    resolution: {integrity: sha512-IuLWqI8aCdYH5t3W3PKSFrf/IngJt4WMpuP+5WTLhTPoexTage5evcGouXQ8kAQurOYkuD2YoVPAj+H3foW2Rw==}
+  /flow-parser/0.196.3:
+    resolution: {integrity: sha512-R8wj12eHW6og+IBWeRS6aihkdac1Prh4zw1bfxtt/aeu8r5OFmQEZjnmINcjO/5Q+OKvI4Eg367ygz2SHvtH+w==}
     engines: {node: '>=0.4.0'}
     dev: true
 
@@ -9515,7 +9515,7 @@ packages:
       '@babel/register': 7.18.9_@babel+core@7.20.5
       babel-core: 7.0.0-bridge.0_@babel+core@7.20.5
       chalk: 4.1.2
-      flow-parser: 0.196.2
+      flow-parser: 0.196.3
       graceful-fs: 4.2.10
       micromatch: 3.1.10
       neo-async: 2.6.2
@@ -13058,8 +13058,8 @@ packages:
     resolution: {integrity: sha512-IjZc9KIotudix8bMaBW6QvMuq64BrJWFs1+4V0lXwWGQZwH+LnX87doAYhem4caOEusRP9/g6jVDQmZ8XOk1nw==}
     dev: true
 
-  /tinycolor2/1.4.2:
-    resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
+  /tinycolor2/1.5.0:
+    resolution: {integrity: sha512-opkFmTUuHQJj6/+A4B432NAptta/ytJq6UiWxqa860hSvMG9m3FxsbR4jYQfdXf59H1aE80Yd0UpFjhbg1e/zw==}
     dev: true
 
   /tmpl/1.0.5:
