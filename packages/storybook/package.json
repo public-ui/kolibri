@@ -51,7 +51,7 @@
 		"@babel/core": "7.20.5",
 		"@etchteam/storybook-addon-status": "4.2.2",
 		"@geometricpanda/storybook-addon-badges": "0.2.2",
-		"@leanup/form": "1.3.39",
+		"@leanup/form": "1.3.40",
 		"@leanup/kolibri-components": "1.0.5",
 		"@leanup/kolibri-react": "1.0.5",
 		"@public-oss/kolibri-themes": "0.0.1",
