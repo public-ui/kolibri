@@ -56,7 +56,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"devDependencies": {
-		"@babel/types": "7.20.5",
+		"@babel/types": "7.20.7",
 		"@public-ui/core": "1.1.15",
 		"@public-ui/components": "1.1.15",
 		"@types/minimatch": "5.1.2",
