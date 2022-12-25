@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
+import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxVariant, States } from './types';
@@ -13,7 +14,13 @@ import { ComponentApi, InputCheckboxVariant, States } from './types';
 	shadow: true,
 })
 export class KolInputCheckbox implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolInputCheckboxElement;
+	private ref?: HTMLInputElement;
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
@@ -36,6 +43,7 @@ export class KolInputCheckbox implements ComponentApi {
 						<slot />
 					</span>
 					<input
+						ref={this.catchRef}
 						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}

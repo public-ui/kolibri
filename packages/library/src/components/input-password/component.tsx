@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 
 import { devHint } from '../../utils/a11y.tipps';
+import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
 import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
@@ -18,26 +19,22 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputPassword implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
-	private inputEl!: HTMLInputElement;
-	private caretPosition: number | null = null;
+	@Element() private readonly host?: HTMLKolInputPasswordElement;
+	private ref?: HTMLInputElement;
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
 			propergateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputEl,
+				ref: this.ref,
 			});
 		} else {
 			this.controller.onFacade.onClick(event);
-		}
-	};
-
-	private catchEl = (el: HTMLInputElement) => {
-		this.inputEl = el;
-		if (typeof this.caretPosition === 'number') {
-			this.inputEl.selectionStart = this.caretPosition;
-			this.inputEl.selectionEnd = this.inputEl.selectionStart;
 		}
 	};
 
@@ -61,9 +58,9 @@ export class KolInputPassword implements ComponentApi {
 						<slot />
 					</span>
 					<input
+						ref={this.catchRef}
 						part="input"
 						title=""
-						ref={(el) => this.catchEl(el as HTMLInputElement)}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"

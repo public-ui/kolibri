@@ -1,9 +1,10 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@public-ui/core';
 import { AlternativButtonLinkRole, AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { TooltipAlignment } from '../tooltip/component';
 import { Stringified } from '../../types/common';
+import { propergateFocus } from '../../utils/reuse';
 
 /**
  * @part link - Ermöglicht das Stylen des Links.
@@ -18,34 +19,45 @@ import { Stringified } from '../../types/common';
 	shadow: true,
 })
 export class KolLink implements Generic.Element.Members<RequiredLinkProps, OptionalLinkProps> {
+	@Element() private readonly host?: HTMLKolLinkElement;
+	private ref?: HTMLKolLinkWcElement;
+
+	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
+
 	public render(): JSX.Element {
 		return (
-			<kol-link-wc
-				_ariaControls={this._ariaControls}
-				_ariaCurrent={this._ariaCurrent}
-				_ariaExpanded={this._ariaExpanded}
-				_ariaLabel={this._ariaLabel}
-				_ariaSelected={this._ariaSelected}
-				_disabled={this._disabled}
-				_fill={this._fill}
-				_href={this._href}
-				_icon={this._icon}
-				_iconAlign={this._iconAlign}
-				_iconOnly={this._iconOnly}
-				_on={this._on}
-				_part={this._part}
-				_role={this._role}
-				_selector={this._selector}
-				_stealth={this._stealth}
-				_tabIndex={this._tabIndex}
-				_target={this._target}
-				_targetDescription={this._targetDescription}
-				_tooltipAlign={this._tooltipAlign}
-				_underline={this._underline}
-				_useCase={this._useCase}
-			>
-				<slot />
-			</kol-link-wc>
+			<Host>
+				<kol-link-wc
+					ref={this.catchRef}
+					_ariaControls={this._ariaControls}
+					_ariaCurrent={this._ariaCurrent}
+					_ariaExpanded={this._ariaExpanded}
+					_ariaLabel={this._ariaLabel}
+					_ariaSelected={this._ariaSelected}
+					_disabled={this._disabled}
+					_fill={this._fill}
+					_href={this._href}
+					_icon={this._icon}
+					_iconAlign={this._iconAlign}
+					_iconOnly={this._iconOnly}
+					_on={this._on}
+					_part={this._part}
+					_role={this._role}
+					_selector={this._selector}
+					_stealth={this._stealth}
+					_tabIndex={this._tabIndex}
+					_target={this._target}
+					_targetDescription={this._targetDescription}
+					_tooltipAlign={this._tooltipAlign}
+					_underline={this._underline}
+					_useCase={this._useCase}
+				>
+					<slot />
+				</kol-link-wc>
+			</Host>
 		);
 	}
 

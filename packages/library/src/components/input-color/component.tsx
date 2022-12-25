@@ -3,6 +3,7 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { propergateFocus } from '../../utils/reuse';
 import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
 import { InputColorController } from './controller';
@@ -16,7 +17,13 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputColor implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolInputColorElement;
+	private ref?: HTMLInputElement;
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
@@ -38,6 +45,7 @@ export class KolInputColor implements ComponentApi {
 						<slot />
 					</span>
 					<input
+						ref={this.catchRef}
 						part="input"
 						title=""
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}

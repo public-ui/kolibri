@@ -2,6 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
+import { propergateFocus } from '../../utils/reuse';
 import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
@@ -15,7 +16,13 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputRange implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolInputRangeElement;
+	private ref?: HTMLInputElement;
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
@@ -35,6 +42,7 @@ export class KolInputRange implements ComponentApi {
 						<slot />
 					</span>
 					<input
+						ref={this.catchRef}
 						part="input"
 						title=""
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}

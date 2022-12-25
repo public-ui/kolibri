@@ -2,6 +2,7 @@ import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { setState } from '../../utils/prop.validators';
+import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
@@ -27,7 +28,13 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	shadow: true,
 })
 export class KolTextarea implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolTextareaElement;
+	private ref?: HTMLTextAreaElement;
+
+	private readonly catchRef = (ref?: HTMLTextAreaElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
@@ -49,6 +56,7 @@ export class KolTextarea implements ComponentApi {
 					</span>
 					<div slot="input">
 						<textarea
+							ref={this.catchRef}
 							part="textarea"
 							title=""
 							aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}

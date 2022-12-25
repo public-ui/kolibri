@@ -37,6 +37,38 @@ import { Alignment as Alignment1 } from "./types/props/alignment";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 import { TooltipAlignment as TooltipAlignment1 } from "./components/tooltip/component";
+export { TooltipAlignment } from "./components/tooltip/component";
+export { HeadingLevel } from "./types/heading-level";
+export { KoliBriAccordionCallbacks } from "./components/accordion/component";
+export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
+export { KoliBriColor } from "./components/badge/component";
+export { Stringified } from "./types/common";
+export { Alignment, KoliBriIconProp } from "./types/icon";
+export { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
+export { NavLinkProps } from "./components/link/component";
+export { KoliBriFormCallbacks } from "./components/form/component";
+export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
+export { Icofont } from "./types/icofont";
+export { KoliBriInputIcon } from "./components/input-text/types";
+export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+export { InputCheckboxVariant } from "./components/input-checkbox/types";
+export { Iso8601 } from "./types/input/iso8601";
+export { InputDateType, InputNumberType } from "./types/input/control/number";
+export { Orientation } from "./types/orientation";
+export { InputTextType } from "./types/input/control/text";
+export { ListStyleType } from "./components/link-group/component";
+export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
+export { KoliBriModalEventCallbacks } from "./types/modal";
+export { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/component";
+export { PaginationHasButton } from "./components/pagination/component";
+export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
+export { KoliBriProgressType } from "./types/progress";
+export { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
+export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
+export { Alignment as Alignment1 } from "./types/props/alignment";
+export { CSSResize } from "./components/textarea/types";
+export { KoliBriToastEventCallbacks } from "./types/toast";
+export { TooltipAlignment as TooltipAlignment1 } from "./components/tooltip/component";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -211,10 +243,6 @@ export namespace Components {
           * Gibt an, welche Ausprägung der Button hat.
          */
         "_variant"?: KoliBriButtonVariant;
-        /**
-          * Gibt die Referenz auf das interaktive Element in der Komponente zurück.
-         */
-        "getInteractiveElementRef": () => Promise<HTMLButtonElement | undefined>;
     }
     interface KolButtonGroup {
     }
@@ -369,10 +397,6 @@ export namespace Components {
           * Gibt an, welche Ausprägung der Button hat.
          */
         "_variant"?: KoliBriButtonVariant;
-        /**
-          * Gibt die Referenz auf das interaktive Element in der Komponente zurück.
-         */
-        "getInteractiveElementRef": () => Promise<HTMLButtonElement | undefined>;
     }
     interface KolCard {
         /**
@@ -443,6 +467,9 @@ export namespace Components {
          */
         "_part"?: string;
     }
+    /**
+     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+     */
     interface KolIconFontAwesome {
         /**
           * Gibt das Aria-Label am Icon an.
@@ -461,6 +488,9 @@ export namespace Components {
          */
         "_prefix": FontAwesomeOssPrefix;
     }
+    /**
+     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+     */
     interface KolIconIcofont {
         /**
           * Gibt das Aria-Label am Icon an.
@@ -531,6 +561,9 @@ export namespace Components {
          */
         "_touched"?: boolean;
     }
+    /**
+     * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
+     */
     interface KolInputAdapterLeanup {
     }
     interface KolInputCheckbox {
@@ -1167,6 +1200,9 @@ export namespace Components {
          */
         "_value"?: Stringified<number | boolean | unknown[] | object>;
     }
+    /**
+     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+     */
     interface KolInputRadioGroup {
         /**
           * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
@@ -2152,7 +2188,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: TooltipAlignment;
+        "_align"?: TooltipAlignment1;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -2278,12 +2314,18 @@ declare global {
         prototype: HTMLKolIconElement;
         new (): HTMLKolIconElement;
     };
+    /**
+     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+     */
     interface HTMLKolIconFontAwesomeElement extends Components.KolIconFontAwesome, HTMLStencilElement {
     }
     var HTMLKolIconFontAwesomeElement: {
         prototype: HTMLKolIconFontAwesomeElement;
         new (): HTMLKolIconFontAwesomeElement;
     };
+    /**
+     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+     */
     interface HTMLKolIconIcofontElement extends Components.KolIconIcofont, HTMLStencilElement {
     }
     var HTMLKolIconIcofontElement: {
@@ -2302,6 +2344,9 @@ declare global {
         prototype: HTMLKolInputElement;
         new (): HTMLKolInputElement;
     };
+    /**
+     * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
+     */
     interface HTMLKolInputAdapterLeanupElement extends Components.KolInputAdapterLeanup, HTMLStencilElement {
     }
     var HTMLKolInputAdapterLeanupElement: {
@@ -2356,6 +2401,9 @@ declare global {
         prototype: HTMLKolInputRadioElement;
         new (): HTMLKolInputRadioElement;
     };
+    /**
+     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+     */
     interface HTMLKolInputRadioGroupElement extends Components.KolInputRadioGroup, HTMLStencilElement {
     }
     var HTMLKolInputRadioGroupElement: {
@@ -2963,6 +3011,9 @@ declare namespace LocalJSX {
          */
         "_part"?: string;
     }
+    /**
+     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+     */
     interface KolIconFontAwesome {
         /**
           * Gibt das Aria-Label am Icon an.
@@ -2981,6 +3032,9 @@ declare namespace LocalJSX {
          */
         "_prefix": FontAwesomeOssPrefix;
     }
+    /**
+     * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+     */
     interface KolIconIcofont {
         /**
           * Gibt das Aria-Label am Icon an.
@@ -3051,6 +3105,9 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
     }
+    /**
+     * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
+     */
     interface KolInputAdapterLeanup {
     }
     interface KolInputCheckbox {
@@ -3687,6 +3744,9 @@ declare namespace LocalJSX {
          */
         "_value"?: Stringified<number | boolean | unknown[] | object>;
     }
+    /**
+     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+     */
     interface KolInputRadioGroup {
         /**
           * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
@@ -4672,7 +4732,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: TooltipAlignment;
+        "_align"?: TooltipAlignment1;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -4769,10 +4829,19 @@ declare module "@stencil/core" {
             "kol-heading": LocalJSX.KolHeading & JSXBase.HTMLAttributes<HTMLKolHeadingElement>;
             "kol-heading-wc": LocalJSX.KolHeadingWc & JSXBase.HTMLAttributes<HTMLKolHeadingWcElement>;
             "kol-icon": LocalJSX.KolIcon & JSXBase.HTMLAttributes<HTMLKolIconElement>;
+            /**
+             * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+             */
             "kol-icon-font-awesome": LocalJSX.KolIconFontAwesome & JSXBase.HTMLAttributes<HTMLKolIconFontAwesomeElement>;
+            /**
+             * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+             */
             "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
             "kol-input": LocalJSX.KolInput & JSXBase.HTMLAttributes<HTMLKolInputElement>;
+            /**
+             * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
+             */
             "kol-input-adapter-leanup": LocalJSX.KolInputAdapterLeanup & JSXBase.HTMLAttributes<HTMLKolInputAdapterLeanupElement>;
             "kol-input-checkbox": LocalJSX.KolInputCheckbox & JSXBase.HTMLAttributes<HTMLKolInputCheckboxElement>;
             "kol-input-color": LocalJSX.KolInputColor & JSXBase.HTMLAttributes<HTMLKolInputColorElement>;
@@ -4782,6 +4851,9 @@ declare module "@stencil/core" {
             "kol-input-number": LocalJSX.KolInputNumber & JSXBase.HTMLAttributes<HTMLKolInputNumberElement>;
             "kol-input-password": LocalJSX.KolInputPassword & JSXBase.HTMLAttributes<HTMLKolInputPasswordElement>;
             "kol-input-radio": LocalJSX.KolInputRadio & JSXBase.HTMLAttributes<HTMLKolInputRadioElement>;
+            /**
+             * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+             */
             "kol-input-radio-group": LocalJSX.KolInputRadioGroup & JSXBase.HTMLAttributes<HTMLKolInputRadioGroupElement>;
             "kol-input-range": LocalJSX.KolInputRange & JSXBase.HTMLAttributes<HTMLKolInputRangeElement>;
             "kol-input-text": LocalJSX.KolInputText & JSXBase.HTMLAttributes<HTMLKolInputTextElement>;

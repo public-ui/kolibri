@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
@@ -22,6 +22,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { TooltipAlignment } from '../tooltip/component';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { Stringified } from '../../types/common';
+import { propergateFocus } from '../../utils/reuse';
 
 type RequiredNavLinkProps = RequiredLinkProps & unknown;
 type OptionalNavLinkProps = OptionalLinkProps & {
@@ -41,7 +42,14 @@ export type NavLinkProps = Generic.Element.Members<RequiredNavLinkProps, Optiona
 	shadow: false,
 })
 export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates> {
+	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private readonly nonce = nonce();
+	private ref?: HTMLAnchorElement;
+
+	private readonly catchRef = (ref?: HTMLAnchorElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	private readonly getRenderValues = () => {
 		/**
@@ -114,6 +122,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		return (
 			<Host>
 				<a
+					ref={this.catchRef}
 					{...tagAttrs}
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}

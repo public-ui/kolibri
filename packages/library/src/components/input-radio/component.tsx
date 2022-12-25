@@ -3,6 +3,7 @@ import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
@@ -15,7 +16,13 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputRadio implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolInputRadioElement;
+	private ref?: HTMLInputElement;
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	public render(): JSX.Element {
 		const { ariaDiscribedBy, hasError } = getRenderStates(this.state);
@@ -55,6 +62,7 @@ export class KolInputRadio implements ComponentApi {
 							>
 								<div slot="input">
 									<input
+										ref={this.state._value === option.value ? this.catchRef : undefined}
 										aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
 										part="input"

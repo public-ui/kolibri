@@ -31,6 +31,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { watchButtonType } from '../button/controller';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { TooltipAlignment } from '../tooltip/component';
+import { propergateFocus } from '../../utils/reuse';
 
 @Component({
 	tag: 'kol-button-link',
@@ -42,22 +43,15 @@ import { TooltipAlignment } from '../tooltip/component';
 export class KolButtonLink
 	implements Generic.Element.ComponentApi<RequiredButtonLinkProps, OptionalButtonLinkProps, RequiredButtonLinkStates, OptionalButtonLinkStates>
 {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolButtonLinkElement;
 	private readonly nonce = nonce();
-
-	/**
-	 * - https://github.com/ionic-team/stencil/issues/1660#issuecomment-503225460
-	 * - https://stenciljs.com/docs/templating-jsx
-	 */
-	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public forwardedRef?: HTMLButtonElement;
-	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public ref?: HTMLButtonElement;
+	private ref?: HTMLButtonElement;
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
-		this.forwardedRef = ref;
 		this.ref = ref;
+		propergateFocus(this.host, this.ref);
 	};
+
 	private readonly onClick = (event: Event) => {
 		if (this.state._type === 'submit') {
 			propergateSubmitEventToForm({

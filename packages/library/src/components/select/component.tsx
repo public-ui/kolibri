@@ -2,6 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
+import { propergateFocus } from '../../utils/reuse';
 import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
@@ -22,8 +23,13 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	shadow: true,
 })
 export class KolSelect implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
-	private htmlSelect?: HTMLSelectElement;
+	@Element() private readonly host?: HTMLKolSelectElement;
+	private ref?: HTMLSelectElement;
+
+	private readonly catchRef = (ref?: HTMLSelectElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
 		return (
@@ -68,9 +74,9 @@ export class KolSelect implements ComponentApi {
 						<slot />
 					</span>
 					<select
+						ref={this.catchRef}
 						part="select"
 						title=""
-						ref={(el) => (this.htmlSelect = el as HTMLSelectElement)}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"
@@ -385,7 +391,7 @@ export class KolSelect implements ComponentApi {
 		/**
 		 * TODO: Find values via value keys.
 		 */
-		this._value = Array.from(this.htmlSelect?.options || [])
+		this._value = Array.from(this.ref?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 		this.controller.setFormAssociatedValue(this._value as unknown as string);
