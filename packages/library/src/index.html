@@ -1050,8 +1050,17 @@
 							<kol-heading _level="2">Link</kol-heading>
 						</div>
 						<div class="gap-2 col-12">
+							<strong>Deprecated Variante</strong>
 							<kol-link _href="https://de.wikipedia.org" _target="wikipedia">Wikipedia</kol-link>
 							<kol-link _href="https://wikipedia.de" _icon="icofont-paper-plane">Wikipedia</kol-link>
+							<br />
+							<strong>Label Variante</strong>
+							<kol-link _href="https://de.wikipedia.org" _label="Wikipedia" _target="wikipedia"></kol-link>
+							<kol-link _href="https://wikipedia.de" _label="Wikipedia" _icon="icofont-paper-plane"></kol-link>
+							<br />
+							<strong>Expert-Slot Variante</strong>
+							<kol-link _href="https://de.wikipedia.org" _target="wikipedia"><span slot="expert">Wikipedia</span></kol-link>
+							<kol-link _href="https://wikipedia.de" _icon="icofont-paper-plane"><span slot="expert">Wikipedia</span></kol-link>
 							<p>
 								E-Mail:
 								<kol-link _href="mailto:info@wikipedia.org" _target="mail-client" _target-description="Link wird im E-Mail-Programm geöffnet."

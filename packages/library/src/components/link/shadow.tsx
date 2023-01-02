@@ -43,6 +43,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
 					_iconOnly={this._iconOnly}
+					_label={this._label}
 					_on={this._on}
 					_part={this._part}
 					_role={this._role}
@@ -55,7 +56,9 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_underline={this._underline}
 					_useCase={this._useCase}
 				>
-					<slot />
+					<slot name="expert" slot="expert" />
+					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					<slot slot="expert" />
 				</kol-link-wc>
 			</Host>
 		);
@@ -117,6 +120,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+
+	/**
+	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 */
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.

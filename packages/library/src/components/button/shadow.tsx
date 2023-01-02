@@ -59,7 +59,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 						width: 'inherit',
 					}}
 				>
-					<slot name="expert" slot="expert"></slot>
+					<slot name="expert" slot="expert" />
 				</kol-button-wc>
 			</Host>
 		);

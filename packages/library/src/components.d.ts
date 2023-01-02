@@ -1494,6 +1494,10 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label": string;
+        /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
@@ -1719,6 +1723,10 @@ export namespace Components {
           * Gibt an, ob nur das Icon angezeigt wird.
          */
         "_iconOnly"?: boolean;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
@@ -4038,6 +4046,10 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label": string;
+        /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
@@ -4263,6 +4275,10 @@ declare namespace LocalJSX {
           * Gibt an, ob nur das Icon angezeigt wird.
          */
         "_iconOnly"?: boolean;
+        /**
+          * Gibt den Label für die Beschriftung der Schaltfläche an.
+         */
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.

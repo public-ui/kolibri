@@ -15,7 +15,7 @@ export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
 			<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this._label}>
-				<slot />
+				<slot name="expert" slot="expert" />
 			</kol-span-wc>
 		);
 	}

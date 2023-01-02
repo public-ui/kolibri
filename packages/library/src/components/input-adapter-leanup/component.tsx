@@ -19,9 +19,11 @@ export class KolInputAdapterLeanup {
 			<Host>
 				<kol-alert _type="warning">
 					Die Komponente <code>kol-input-adapter-leanup</code> ist umgezogen. Lesen Sie hier, wie Sie sie migrieren:{' '}
-					<kol-link _href="https://public-ui.github.io/?path=/docs/backlog-und-changelog--page" _target="storybook">
-						https://public-ui.github.io/?path=/docs/backlog-und-changelog--page
-					</kol-link>
+					<kol-link
+						_href="https://public-ui.github.io/?path=/docs/backlog-und-changelog--page"
+						_label="https://public-ui.github.io/?path=/docs/backlog-und-changelog--page"
+						_target="storybook"
+					></kol-link>
 				</kol-alert>
 			</Host>
 		);

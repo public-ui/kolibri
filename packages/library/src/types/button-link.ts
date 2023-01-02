@@ -17,7 +17,9 @@ export type AlternativButtonLinkRole = 'tab';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-type RequiredButtonAndLinkProps = unknown;
+type RequiredButtonAndLinkProps = {
+	label: string;
+};
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
 	ariaCurrent: AriaCurrent;
@@ -48,6 +50,7 @@ type RequiredButtonAndLinkStates = {
 	 * @deprecated
 	 */
 	iconAlign: Alignment;
+	label: string;
 };
 type OptionalButtonAndLinkStates = {
 	ariaControls: string;
@@ -79,9 +82,7 @@ export type KoliBriButtonVariantCustomClass = {
 /**
  * API ButtonLink
  */
-export type RequiredButtonLinkProps = RequiredButtonAndLinkProps & {
-	label: string;
-};
+export type RequiredButtonLinkProps = RequiredButtonAndLinkProps;
 export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated Zweck?!
@@ -94,7 +95,6 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonLinkStates = RequiredButtonAndLinkStates & {
-	label: string;
 	type: KoliBriButtonType;
 };
 export type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
@@ -173,15 +173,11 @@ export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLin
 /**
  * API LinkButton
  */
-export type RequiredLinkButtonProps = RequiredLinkProps & {
-	label: string;
-};
+export type RequiredLinkButtonProps = RequiredLinkProps;
 export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantCustomClass;
 // type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
 
-export type RequiredLinkButtonStates = RequiredLinkStates & {
-	label: string;
-};
+export type RequiredLinkButtonStates = RequiredLinkStates;
 export type OptionalLinkButtonStates = OptionalLinkStates & KoliBriButtonVariantCustomClass;
 export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
