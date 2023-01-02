@@ -36,7 +36,7 @@
 		"@public-ui/solid": "1.1.15",
 		"@public-ui/themes": "1.1.15",
 		"ajv": "8.11.2",
-		"solid-js": "1.6.5"
+		"solid-js": "1.6.6"
 	},
 	"devDependencies": {
 		"@leanup/git-hooks": "1.3.39",
