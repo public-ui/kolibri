@@ -32,7 +32,7 @@ export const getLinkGroupHtml = (props: Props): string => {
 						  )
 						: ''
 				}
-					${lastIndex === index ? `<span>${link._label as string}</span>` : getLinkHtml(link)}
+					${lastIndex === index ? `<span>${link._label}</span>` : getLinkHtml(link)}
 				</li>
 			`;
 	});
