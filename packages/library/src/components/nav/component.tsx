@@ -137,14 +137,13 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 													: 'fa-solid fa-link-slash'
 											}
 											_iconOnly={this.state._compact === true || link._iconOnly === true}
+											_label={link._label}
 											_part={link._active === true ? 'selected' : undefined}
 											_underline={false}
 											onClick={() => this.onClick(link)}
-										>
-											{link._label}
-										</kol-link-wc>
+										></kol-link-wc>
 									</div>
-									{(this._collapsible === false || link._active === true) && (
+									{link._active === true && (
 										<div
 											class={{
 												expanded: true,
@@ -175,6 +174,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										_href={link._href}
 										_icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'}
 										_icon-only={this.state._compact === true || link._iconOnly === true}
+										_label={link._label}
 										_on={link._on}
 										_part={link._active === true ? 'selected' : undefined}
 										_selector={link._selector}
@@ -182,9 +182,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										_target={link._target}
 										_underline={false}
 										_useCase="nav"
-									>
-										{link._label}
-									</kol-link-wc>
+									></kol-link-wc>
 								</div>
 							)}
 						</li>

@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
@@ -22,6 +22,8 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { TooltipAlignment } from '../tooltip/component';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { Stringified } from '../../types/common';
+import { propergateFocus } from '../../utils/reuse';
+import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
 
 type RequiredNavLinkProps = RequiredLinkProps & unknown;
 type OptionalNavLinkProps = OptionalLinkProps & {
@@ -41,7 +43,14 @@ export type NavLinkProps = Generic.Element.Members<RequiredNavLinkProps, Optiona
 	shadow: false,
 })
 export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates> {
+	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private readonly nonce = nonce();
+	private ref?: HTMLAnchorElement;
+
+	private readonly catchRef = (ref?: HTMLAnchorElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	private readonly getRenderValues = () => {
 		/**
@@ -78,7 +87,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		}
 
 		const tagAttrs = {
-			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : '',
+			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: typeof this.state._target === 'string' && this.state._target !== '_self' ? 'noopener' : undefined,
 		};
@@ -114,6 +123,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		return (
 			<Host>
 				<a
+					ref={this.catchRef}
 					{...tagAttrs}
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
@@ -140,43 +150,14 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					}}
 					tabIndex={this.state._tabIndex}
 				>
-					{this.state._icon.left && (
-						<kol-icon
-							class={{
-								'mr-2': this.state._iconOnly === false,
-							}}
-							style={this.state._icon.left.style}
-							_ariaLabel=""
-							_icon={this.state._icon.left.icon}
-						/>
-					)}
-					<span
-						class={{
-							'float-left': this.state._useCase === 'image',
-							'hidden ': this.state._iconOnly === true,
-						}}
-						part={`span${this.state._iconOnly === true ? ' hidden' : ''}`}
-					>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
 						{/*
 							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch
 							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente
 							umgangen werden kann.
 						*/}
-						<slot />
-					</span>
-					{this.state._icon.right && (
-						<kol-icon
-							class={{
-								'ml-2': this.state._iconOnly === false,
-							}}
-							style={this.state._icon.right.style}
-							_ariaLabel=""
-							_icon={this.state._icon.right.icon}
-						/>
-					)}
-					{typeof this.state._target === 'string' && this.state._target !== '_self' && (
-						<kol-icon _ariaLabel={this.state._targetDescription as string} _icon="fa-solid fa-arrow-up-right-from-square" />
-					)}
+						<slot name="expert" slot="expert" />
+					</kol-span-wc>
 				</a>
 				<kol-tooltip
 					/**
@@ -250,6 +231,12 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
+	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 */
+	// - eslint-disable-next-line @stencil/strict-mutable
+	@Prop({ mutable: true, reflect: false }) public _label!: string;
+
+	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
 	 *
 	 * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
@@ -316,6 +303,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		 * @deprecated
 		 */
 		_iconAlign: 'left',
+		_label: '',
 	};
 
 	/**
@@ -353,7 +341,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value);
+		validateAriaLabel(this, value);
 	}
 
 	/**
@@ -414,6 +402,14 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
 		watchBoolean(this, '_iconOnly', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	/**
@@ -538,6 +534,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateIcon(this._icon);
 		// this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validatePart(this._part);
 		this.validateRole(this._role);

@@ -19,7 +19,7 @@
 
 Default
 
-<div style="display: flex;gap: 0.25em;">
+<div class="flex gap-2">
   <kol-button _label="Primary" _variant="primary"></kol-button>
   <kol-button _label="Secondary" _variant="secondary"></kol-button>
   <kol-button _label="Normal" _variant="normal"></kol-button>
@@ -30,7 +30,7 @@ Default
 
 Disabled
 
-<div style="display: flex;gap: 0.25em;">
+<div class="flex gap-2">
   <kol-button _label="Primary" _variant="primary" _disabled></kol-button>
   <kol-button _label="Secondary" _variant="secondary" _disabled></kol-button>
   <kol-button _label="Normal" _variant="normal" _disabled></kol-button>
@@ -55,7 +55,7 @@ _icon =
 	"{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}";
 ```
 
-Es ist möglich, ein Icon an jeder Position des Button anzuzeigen, sowie die Ausgabe mehrerer Icons im Button. Jedes Icon erhält in der JSON-Struktur einen eigenen Abschnitt, in dem seine Properties festgelegt werden.<br>
+Es ist möglich, ein Icon an jeder Position des Button anzuzeigen, sowie die Ausgabe mehrerer Icons im Button. Jedes Icon erhält in der JSON-Struktur einen eigenen Abschnitt, in dem seine Properties festgelegt werden.
 
 Jeder Abschnitt beginnt mit der gewünschten Position des Icon im Button:
 
@@ -156,16 +156,6 @@ Probleme mit Disabled-Status
 | `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.                                                                      | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `'top'`     |
 | `_type`               | `_type`          | Gibt an, welche Typ der Button hat.                                                                                                                | `"button" \| "reset" \| "submit" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `'button'`  |
 | `_variant`            | `_variant`       | Gibt an, welche Ausprägung der Button hat.                                                                                                         | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `'normal'`  |
-
-## Methods
-
-### `getInteractiveElementRef() => Promise<HTMLButtonElement | undefined>`
-
-Gibt die Referenz auf das interaktive Element in der Komponente zurück.
-
-#### Returns
-
-Type: `Promise<HTMLButtonElement | undefined>`
 
 ## Dependencies
 

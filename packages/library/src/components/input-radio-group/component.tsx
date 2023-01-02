@@ -7,7 +7,7 @@ import { deprecatedHint } from '../../utils/a11y.tipps';
 import { Props } from '../input-radio/types';
 
 /**
- * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+ * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
  */
 @Component({
 	tag: 'kol-input-radio-group',

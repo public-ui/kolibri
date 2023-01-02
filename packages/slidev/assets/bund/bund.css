@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "BundesSans Web";
+	font-style: normal;
+	font-weight: bold;
+  src: url(font/BundesSans-Web-Bold.woff) format('woff'), url(font/BundesSans-Web-Bold.woff2) format('woff2'), url(font/BundesSans-Web-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "BundesSans Web";
+	font-style: italic;
+	font-weight: bolder;
+  src: url(font/BundesSans-Web-BoldItalic.woff) format('woff'), url(font/BundesSans-Web-BoldItalic.woff2) format('woff2'), url(font/BundesSans-Web-BoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "BundesSans Web";
+	font-style: italic;
+	font-weight: normal;
+  src: url(font/BundesSans-Web-RegularItalic.woff) format('woff'), url(font/BundesSans-Web-RegularItalic.woff2) format('woff2'), url(font/BundesSans-Web-RegularItalic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "BundesSans Web";
+	font-style: normal;
+	font-weight: normal;
+  src: url(font/BundesSans-Web-Regular.woff) format('woff'), url(font/BundesSans-Web-Regular.woff2) format('woff2'), url(font/BundesSans-Web-Regular.ttf) format('truetype');
+}
+
+/* @font-face {
+  font-family: "BundesSans Web";
+	font-style: normal;
+	font-weight: lighter;
+  src: url(font/BundesSans-Web-Light.woff) format('woff'), url(font/BundesSans-Web-Light.woff2) format('woff2'), url(font/BundesSans-Web-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "BundesSans Web";
+	font-style: italic;
+	font-weight: lighter;
+  src: url(font/BundesSans-Web-LightItalic.woff) format('woff'), url(font/BundesSans-Web-LightItalic.woff2) format('woff2'), url(font/BundesSans-Web-LightItalic.ttf) format('truetype');
+} */

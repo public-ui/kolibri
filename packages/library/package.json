@@ -59,13 +59,13 @@
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"build": "npm run test && npm run build:light && node scripts/cheat-sheet.js",
-		"build:light": "npm run clear && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && npm run format -- -w",
+		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && node scripts/autogen.doc.js && npm run format -- -w",
 		"republish:adapters": "cd ../adapters/angular && npm run republish && cd ../react && npm run republish && cd ../solid && npm run republish && cd ../vue && npm run republish && cd ..",
 		"republish:themes": "cd ../themes && npm run republish && cd ..",
 		"republish:self": "npm run reinstall:kolibri && npm run build:light && npm run :publish",
 		"republish:all": "npm run republish && npm run republish:themes && npm run republish:adapters && d ../storybook && npm run reinstall:kolibri",
 		"republish": "cd ../core && npm run republish && cd ../schema && npm run republish && cd ../library && npm run republish:self",
-		"clear": "rimraf dist loader www ../adapters/angular/src ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vue/src",
+		"clear": "rimraf dist doc loader www ../adapters/angular/src ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vue/src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"generate": "stencil generate",
 		"eslint": "eslint src/**/*{.ts,.tsx}",
@@ -94,7 +94,7 @@
 	"devDependencies": {
 		"@public-ui/core": "1.1.15",
 		"@stencil/angular-output-target": "0.4.0",
-		"@stencil/core": "2.20.0",
+		"@stencil/core": "3.0.0-beta.0",
 		"@stencil/postcss": "2.1.0",
 		"@stencil/react-output-target": "0.3.1",
 		"@stencil/sass": "2.0.1",
@@ -142,6 +142,7 @@
 	},
 	"files": [
 		"dist/",
+		"doc/",
 		"cheat-sheet.html",
 		"custom-elements.json",
 		"jest-test-results.json",

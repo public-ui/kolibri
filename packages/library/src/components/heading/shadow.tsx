@@ -22,5 +22,5 @@ export class KolHeading implements Props {
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
 	 */
-	@Prop() public _level?: HeadingLevel = 1;
+	@Prop({ reflect: true }) public _level?: HeadingLevel = 1; // reflect for simpler test selection
 }

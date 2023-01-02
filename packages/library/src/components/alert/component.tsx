@@ -159,7 +159,9 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
-	@State() public state: States = {};
+	@State() public state: States = {
+		_level: 1,
+	};
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)

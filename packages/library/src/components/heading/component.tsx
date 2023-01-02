@@ -25,7 +25,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
 	 */
-	@Prop() public _level?: HeadingLevel = 1;
+	@Prop({ reflect: true }) public _level?: HeadingLevel = 1;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)

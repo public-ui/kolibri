@@ -6,6 +6,7 @@ export const getToastHtml = (props: Props): string => {
 	props = mixMembers(
 		{
 			_alert: true,
+			_level: 1,
 			_show: true,
 		},
 		props

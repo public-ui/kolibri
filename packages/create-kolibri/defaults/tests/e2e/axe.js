@@ -1,14 +1,26 @@
-module.exports = {
-	'@tags': ['accessibility'],
-	'ensure site is accessible': function (browser) {
-		browser
-			.url('http://localhost:8080')
-			.assert.title('Verwaltung Bibliotheken')
-			.assert.containsText('h1', 'Bibliotheksverwaltung')
-			.axeInject()
-			.axeRun('body', {
-				rules: { 'color-contrast': { enabled: false } },
-			})
-			.end();
-	},
+const goHome = (browser) => {
+	return browser.navigateTo('http://localhost:8080/').waitForElementVisible('body');
 };
+const checkAxe = (browser) => {
+	return browser.axeInject().axeRun();
+};
+
+describe(`app`, function () {
+	this.tags = ['app'];
+	it('axe', function (browser) {
+		const home = goHome(browser);
+		checkAxe(home);
+	});
+
+	// Example
+	it('create', async function (browser) {
+		await browser.navigateTo('http://localhost:8080/').waitForElementVisible('body');
+		const kolNav = await browser.getShadowRoot('kol-nav');
+		const link = await kolNav.find('a[href="#/form"]');
+		await browser.click(link);
+		const kolHeading = await browser.getShadowRoot('kol-heading');
+		const h1 = await kolHeading.find('h1');
+		await browser.assert.containsText(h1, 'Belegerfassung');
+		await browser.assert.containsText('kol-heading', 'Belegerfassung');
+	});
+});

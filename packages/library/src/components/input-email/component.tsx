@@ -3,6 +3,7 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
 import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
@@ -17,22 +18,23 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputEmail implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
-	private inputEl!: HTMLInputElement;
+	@Element() private readonly host?: HTMLKolInputEmailElement;
+	private ref?: HTMLInputElement;
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
 			propergateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputEl,
+				ref: this.ref,
 			});
 		} else {
 			this.controller.onFacade.onChange(event);
 		}
-	};
-
-	private catchEl = (el: HTMLInputElement) => {
-		this.inputEl = el;
 	};
 
 	public render(): JSX.Element {
@@ -58,9 +60,9 @@ export class KolInputEmail implements ComponentApi {
 						<slot />
 					</span>
 					<input
+						ref={this.catchRef}
 						part="input"
 						title=""
-						ref={(el) => this.catchEl(el as HTMLInputElement)}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"

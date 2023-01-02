@@ -54,7 +54,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 									{index === lastIndex ? (
 										<span>
 											{link._iconOnly ? (
-												<kol-icon _ariaLabel={link._label as string} _icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'} />
+												<kol-icon _ariaLabel={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'} />
 											) : (
 												<Fragment>{link._label}</Fragment>
 											)}

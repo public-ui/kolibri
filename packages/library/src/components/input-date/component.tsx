@@ -1,10 +1,11 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { watchValidator } from '../../utils/prop.validators';
+import { propergateFocus } from '../../utils/reuse';
 import { KoliBriInputIcon } from '../input-text/types';
 import { ComponentApi, States } from './types';
 
@@ -16,6 +17,9 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputDate implements ComponentApi {
+	@Element() private readonly host?: HTMLKolInputDateElement;
+	private ref?: HTMLKolInputNumberElement;
+
 	private static readonly DEFAULT_MAX_DATE = new Date(9999, 11, 31, 23, 59, 59);
 
 	// test: https://regex101.com/r/NTVh4L/1
@@ -25,34 +29,42 @@ export class KolInputDate implements ComponentApi {
 	private static readonly isoTimeRegex = /^[0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
 	private static readonly isoWeekRegex = /^\d{4}-W(?:[0-4]\d|5[0-3])$/;
 
+	private readonly catchRef = (ref?: HTMLKolInputNumberElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
+
 	public render(): JSX.Element {
 		return (
-			<kol-input-number
-				_accessKey={this._accessKey}
-				_alert={this._alert}
-				_autoComplete={this._autoComplete}
-				_disabled={this._disabled}
-				_error={this._error}
-				_hideLabel={this._hideLabel}
-				_hint={this._hint}
-				_icon={this._icon}
-				_id={this._id}
-				_list={this._list}
-				_max={this.state._max}
-				_min={this.state._min}
-				_name={this._name}
-				_on={this._on}
-				_readOnly={this._readOnly}
-				_required={this._required}
-				_smartButton={this._smartButton}
-				_step={this._step}
-				_tabIndex={this._tabIndex}
-				_touched={this._touched}
-				_type={this._type}
-				_value={this.state._value}
-			>
-				<slot />
-			</kol-input-number>
+			<Host>
+				<kol-input-number
+					ref={this.catchRef}
+					_accessKey={this._accessKey}
+					_alert={this._alert}
+					_autoComplete={this._autoComplete}
+					_disabled={this._disabled}
+					_error={this._error}
+					_hideLabel={this._hideLabel}
+					_hint={this._hint}
+					_icon={this._icon}
+					_id={this._id}
+					_list={this._list}
+					_max={this.state._max}
+					_min={this.state._min}
+					_name={this._name}
+					_on={this._on}
+					_readOnly={this._readOnly}
+					_required={this._required}
+					_smartButton={this._smartButton}
+					_step={this._step}
+					_tabIndex={this._tabIndex}
+					_touched={this._touched}
+					_type={this._type}
+					_value={this.state._value}
+				>
+					<slot />
+				</kol-input-number>
+			</Host>
 		);
 	}
 

@@ -11,6 +11,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: '',
 			_iconAlign: 'left',
 			_iconOnly: false,
+			_label: '',
 			_stealth: false,
 			_underline: true,
 			_useCase: 'text',

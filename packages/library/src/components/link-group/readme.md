@@ -18,14 +18,7 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine listen
 
 ### Beispiel
 
-<kol-link-group
-\_aria-label="Einfache LinkGroup"
-\_caption="Überschrift der LinkGroup"
-\_links="[{'_label':'Link 1','_href':'https://www.w3.org'},{'_label':'Link 2','_href':'https://www.w3.org'},{'_label':'Link 3','_href':'https://www.w3.org'}]"
-\_list-style-type="disc"
-\_orientation="'vertical"
-
-> </kol-link-group>
+<kol-link-group _aria-label="Einfache LinkGroup" _caption="Überschrift der LinkGroup" _links="[{'_label':'Link 1','_href':'https://www.w3.org'},{'_label':'Link 2','_href':'https://www.w3.org'},{'_label':'Link 3','_href':'https://www.w3.org'}]" _list-style-type="disc" _orientation="'vertical"></kol-link-group>
 
 ## Verwendung
 
@@ -70,11 +63,7 @@ Die Überschrift der LinkGroup wird über das Attribut `_caption` übergeben.
   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
   nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
 
-<kol-link-group
-\_aria-label="LinkGroup innerhalb eines Fließtextes"
-\_links="[{'_label':'Link 1'},{'_label':'Link 2'},{'_label':'Link 3'}]"
-
-> </kol-link-group>
+<kol-link-group _aria-label="LinkGroup innerhalb eines Fließtextes" _links="[{'_label':'Link 1'},{'_label':'Link 2'},{'_label':'Link 3'}]"></kol-link-group>
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
 nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.

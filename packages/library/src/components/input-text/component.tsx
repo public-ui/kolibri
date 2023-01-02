@@ -5,6 +5,7 @@ import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { featureHint } from '../../utils/a11y.tipps';
+import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
@@ -20,15 +21,22 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 	shadow: true,
 })
 export class KolInputText implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
-	private inputEl!: HTMLInputElement;
+	@Element() private readonly host?: HTMLKolInputTextElement;
+	private ref?: HTMLInputElement;
 	private oldValue?: string;
+
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+		this.disconnectedCallback();
+		this.ref?.addEventListener('search', this.onChange);
+	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propergateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputEl,
+				ref: this.ref,
 			});
 		} else {
 			this.onChange(event);
@@ -36,17 +44,9 @@ export class KolInputText implements ComponentApi {
 	};
 
 	private readonly onChange = (event: Event) => {
-		if (this.oldValue !== this.inputEl.value) {
-			this.oldValue = this.inputEl.value;
+		if (this.oldValue !== this.ref?.value) {
+			this.oldValue = this.ref?.value;
 			this.controller.onFacade.onChange(event);
-		}
-	};
-
-	private catchEl = (elm?: HTMLInputElement) => {
-		this.disconnectedCallback();
-		if (this.inputEl !== elm && elm instanceof HTMLInputElement) {
-			this.inputEl = elm;
-			this.inputEl.addEventListener('search', this.onChange);
 		}
 	};
 
@@ -72,6 +72,7 @@ export class KolInputText implements ComponentApi {
 						<slot />
 					</span>
 					<input
+						ref={this.catchRef}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"
@@ -82,7 +83,6 @@ export class KolInputText implements ComponentApi {
 						list={hasList ? `${this.state._id}-list` : undefined}
 						maxlength={this.state._maxLength}
 						name={this.state._name}
-						ref={this.catchEl}
 						part="input"
 						pattern={this.state._pattern}
 						placeholder={this.state._placeholder}
@@ -430,8 +430,6 @@ export class KolInputText implements ComponentApi {
 	}
 
 	public disconnectedCallback(): void {
-		if (this.inputEl instanceof HTMLInputElement) {
-			this.inputEl.removeEventListener('search', this.onChange);
-		}
+		this.ref?.removeEventListener('search', this.onChange);
 	}
 }

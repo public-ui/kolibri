@@ -3,6 +3,7 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
+import { propergateFocus } from '../../utils/reuse';
 import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
@@ -16,11 +17,12 @@ import { ComponentApi, States } from './types';
 	shadow: true,
 })
 export class KolInputFile implements ComponentApi {
-	@Element() private readonly host?: HTMLElement;
-	private inputEl!: HTMLInputElement;
+	@Element() private readonly host?: HTMLKolInputFileElement;
+	private ref?: HTMLInputElement;
 
-	private catchEl = (el: HTMLInputElement) => {
-		this.inputEl = el;
+	private readonly catchRef = (ref?: HTMLInputElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -42,9 +44,9 @@ export class KolInputFile implements ComponentApi {
 						<slot />
 					</span>
 					<input
+						ref={this.catchRef}
 						part="input"
 						title=""
-						ref={(el) => this.catchEl(el as HTMLInputElement)}
 						accept={this.state._accept}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
@@ -311,8 +313,8 @@ export class KolInputFile implements ComponentApi {
 	}
 
 	private onChange = (event: Event) => {
-		if (this.inputEl instanceof HTMLInputElement && this.inputEl.type === 'file' && typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, this.inputEl.files);
+		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file' && typeof this.state._on?.onChange === 'function') {
+			this.state._on.onChange(event, this.ref.files);
 		}
 	};
 }

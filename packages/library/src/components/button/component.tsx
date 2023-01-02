@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
@@ -26,6 +26,7 @@ import {
 	watchString,
 	watchValidator,
 } from '../../utils/prop.validators';
+import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -41,21 +42,13 @@ import { watchButtonType, watchButtonVariant } from './controller';
 	shadow: false,
 })
 export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates> {
-	@Element() private readonly host?: HTMLElement;
+	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private readonly nonce = nonce();
-
-	/**
-	 * - https://github.com/ionic-team/stencil/issues/1660#issuecomment-503225460
-	 * - https://stenciljs.com/docs/templating-jsx
-	 */
-	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public forwardedRef?: HTMLButtonElement;
-	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public ref?: HTMLButtonElement;
+	private ref?: HTMLButtonElement;
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
-		this.forwardedRef = ref;
 		this.ref = ref;
+		propergateFocus(this.host, this.ref);
 	};
 
 	private readonly onClick = (event: Event) => {
@@ -107,7 +100,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					type={this.state._type}
 				>
 					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
-						<slot name="expert" slot="expert"></slot>
+						<slot name="expert" slot="expert" />
 					</kol-span-wc>
 				</button>
 				{this.state._iconOnly === true && (
@@ -124,14 +117,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 				)}
 			</Host>
 		);
-	}
-
-	/**
-	 * Gibt die Referenz auf das interaktive Element in der Komponente zurück.
-	 */
-	@Method()
-	async getInteractiveElementRef(): Promise<HTMLButtonElement | undefined> {
-		return Promise.resolve(this.ref);
 	}
 
 	/**
@@ -456,9 +441,5 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
 		this.validateVariant(this._variant);
-
-		if (Date.now() === 0) {
-			console.log(this.forwardedRef, this.ref);
-		}
 	}
 }

@@ -13,14 +13,7 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
 
 ### Beispiel
 
-<kol-badge
-\_label="Beispieltext"
-\_color="#000000"
-\_icon="home"
-\_icon-align="right"
-style={{ fontWeight: '600' }}
-
-> </kol-badge>
+<kol-badge _label="Beispieltext" _color="#000000" _icon="home" _icon-align="right"></kol-badge>
 
 ## Verwendung
 
@@ -66,26 +59,28 @@ Mit dem Attribut **`_icon-only`** kann festgelegt werden, dass nur das mit dem A
 
 ## Anwendungsfälle
 
-#### Badge als Aufzählungszeichen verwenden
+### Badge als Aufzählungszeichen verwenden
 
-<div style="display: flex; gap: 0.25em;">
+<ul class="m-0 p-0">
+  <li class="flex gap-2">
     <kol-badge _label="1" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" style="margin-left: 10px;">
+    <kol-heading _level="2">
     Auswahl Anliegen
     </kol-heading>
-</div>
-<div style="display: flex; gap: 0.25em;">
+  </li>
+  <li class="flex gap-2">
     <kol-badge _label="2" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" style="margin-left: 10px;">
+    <kol-heading _level="2">
     Auswahl Amtsstelle
     </kol-heading>
-</div>
-<div style="display: flex; gap: 0.25em;">
+  </li>
+  <li class="flex gap-2">
     <kol-badge _label="3" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" style="margin-left: 10px;">
+    <kol-heading _level="2">
     Terminauswahl
     </kol-heading>
-</div>
+  </li>
+</ul>
 
 ## Barrierefreiheit
 
@@ -93,9 +88,7 @@ Für die Einhaltung der Regeln zur Barrierefreiheit, ist ein optimaler Kontrast 
 
 Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hierüber die Art der Information erfassen kann.
 
-<kol-alert _type="info">
-Eine explizite Angabe der Textfarbe ist nicht möglich.
-</kol-alert>
+<kol-alert _type="info">Eine explizite Angabe der Textfarbe ist nicht möglich.</kol-alert>
 
 <!--## Links und Referenzen
 

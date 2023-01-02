@@ -7,7 +7,7 @@ import { Props } from '../component';
 import { getAlertHtml } from './html.mock';
 
 executeTests<Props>(
-	'Abbr',
+	'Alert',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,

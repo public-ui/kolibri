@@ -79,7 +79,11 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
-	@State() public state: States = {};
+	@State() public state: States = {
+		_alert: true,
+		_level: 1,
+		_show: true,
+	};
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)

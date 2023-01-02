@@ -4,7 +4,12 @@ import { mixMembers } from 'stencil-awesome-test';
 import { Props } from '../component';
 
 export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''): string => {
-	props = mixMembers({}, props);
+	props = mixMembers(
+		{
+			_level: 1,
+		},
+		props
+	);
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
 	props._variant = props._variant || 'msg';

@@ -12,7 +12,7 @@
 		<title>BIK BITV-Test | KoliBri</title>
 		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.jsdelivr.net 'sha512-QKRzC0USlImuA0SepIyah1IByDkbSQTmeA/tmaMZ8Tl/E1hnH1nDRtRrYYkEZLb4A9x5tydBHCO7Le1S57wgUg=='" /> -->
+		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.jsdelivr.net " /> -->
 		<script type="module" src="build/kolibri.esm.js"></script>
 		<script nomodule src="build/kolibri.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -1050,8 +1050,17 @@
 							<kol-heading _level="2">Link</kol-heading>
 						</div>
 						<div class="gap-2 col-12">
+							<strong>Deprecated Variante</strong>
 							<kol-link _href="https://de.wikipedia.org" _target="wikipedia">Wikipedia</kol-link>
 							<kol-link _href="https://wikipedia.de" _icon="icofont-paper-plane">Wikipedia</kol-link>
+							<br />
+							<strong>Label Variante</strong>
+							<kol-link _href="https://de.wikipedia.org" _label="Wikipedia" _target="wikipedia"></kol-link>
+							<kol-link _href="https://wikipedia.de" _label="Wikipedia" _icon="icofont-paper-plane"></kol-link>
+							<br />
+							<strong>Expert-Slot Variante</strong>
+							<kol-link _href="https://de.wikipedia.org" _target="wikipedia"><span slot="expert">Wikipedia</span></kol-link>
+							<kol-link _href="https://wikipedia.de" _icon="icofont-paper-plane"><span slot="expert">Wikipedia</span></kol-link>
 							<p>
 								E-Mail:
 								<kol-link _href="mailto:info@wikipedia.org" _target="mail-client" _target-description="Link wird im E-Mail-Programm geöffnet."

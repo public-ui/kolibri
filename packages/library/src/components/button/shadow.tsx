@@ -1,4 +1,4 @@
-import { Component, h, JSX, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
@@ -10,9 +10,10 @@ import {
 	OptionalButtonProps,
 	RequiredButtonProps,
 } from '../../types/button-link';
-import { Alignment, KoliBriIconProp } from '../../types/icon';
-import { TooltipAlignment } from '../tooltip/component';
 import { Stringified } from '../../types/common';
+import { Alignment, KoliBriIconProp } from '../../types/icon';
+import { propergateFocus } from '../../utils/reuse';
+import { TooltipAlignment } from '../tooltip/component';
 
 @Component({
 	tag: 'kol-button',
@@ -22,57 +23,45 @@ import { Stringified } from '../../types/common';
 	shadow: true,
 })
 export class KolButton implements Generic.Element.Members<RequiredButtonProps, OptionalButtonProps> {
-	/**
-	 * - https://github.com/ionic-team/stencil/issues/1660#issuecomment-503225460
-	 * - https://stenciljs.com/docs/templating-jsx
-	 */
-	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public forwardedRef?: HTMLKolButtonWcElement;
-	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public ref?: HTMLKolButtonWcElement;
+	@Element() private readonly host?: HTMLKolButtonElement;
+	private ref?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
-		this.forwardedRef = ref;
 		this.ref = ref;
+		propergateFocus(this.host, this.ref);
 	};
-
-	/**
-	 * Gibt die Referenz auf das interaktive Element in der Komponente zurück.
-	 */
-	@Method()
-	async getInteractiveElementRef(): Promise<HTMLButtonElement | undefined> {
-		return await this.ref?.getInteractiveElementRef();
-	}
 
 	public render(): JSX.Element {
 		return (
-			<kol-button-wc
-				_accessKey={this._accessKey}
-				_ariaControls={this._ariaControls}
-				_ariaCurrent={this._ariaCurrent}
-				_ariaExpanded={this._ariaExpanded}
-				_ariaLabel={this._ariaLabel}
-				_ariaSelected={this._ariaSelected}
-				_customClass={this._customClass}
-				_disabled={this._disabled}
-				_icon={this._icon}
-				_iconAlign={this._iconAlign}
-				_iconOnly={this._iconOnly}
-				_id={this._id}
-				_label={this._label}
-				_on={this._on}
-				_role={this._role}
-				_tabIndex={this._tabIndex}
-				_tooltipAlign={this._tooltipAlign}
-				_type={this._type}
-				_variant={this._variant}
-				ref={this.catchRef}
-				style={{
-					width: 'inherit',
-				}}
-			>
-				<slot name="expert" slot="expert"></slot>
-			</kol-button-wc>
+			<Host>
+				<kol-button-wc
+					ref={this.catchRef}
+					_accessKey={this._accessKey}
+					_ariaControls={this._ariaControls}
+					_ariaCurrent={this._ariaCurrent}
+					_ariaExpanded={this._ariaExpanded}
+					_ariaLabel={this._ariaLabel}
+					_ariaSelected={this._ariaSelected}
+					_customClass={this._customClass}
+					_disabled={this._disabled}
+					_icon={this._icon}
+					_iconAlign={this._iconAlign}
+					_iconOnly={this._iconOnly}
+					_id={this._id}
+					_label={this._label}
+					_on={this._on}
+					_role={this._role}
+					_tabIndex={this._tabIndex}
+					_tooltipAlign={this._tooltipAlign}
+					_type={this._type}
+					_variant={this._variant}
+					style={{
+						width: 'inherit',
+					}}
+				>
+					<slot name="expert" slot="expert" />
+				</kol-button-wc>
+			</Host>
 		);
 	}
 

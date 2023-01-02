@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@public-ui/core';
 import {
@@ -25,6 +25,7 @@ import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { watchButtonVariant } from '../button/controller';
 import { TooltipAlignment } from '../tooltip/component';
+import { propergateFocus } from '../../utils/reuse';
 
 @Component({
 	tag: 'kol-link-button',
@@ -36,7 +37,14 @@ import { TooltipAlignment } from '../tooltip/component';
 export class KolLinkButton
 	implements Generic.Element.ComponentApi<RequiredLinkButtonProps, OptionalLinkButtonProps, RequiredLinkButtonStates, OptionalLinkButtonStates>
 {
+	@Element() private readonly host?: HTMLKolLinkButtonElement;
 	private readonly nonce = nonce();
+	private ref?: HTMLAnchorElement;
+
+	private readonly catchRef = (ref?: HTMLAnchorElement) => {
+		this.ref = ref;
+		propergateFocus(this.host, this.ref);
+	};
 
 	private readonly getRenderValues = () => {
 		/**
@@ -109,6 +117,7 @@ export class KolLinkButton
 		return (
 			<Host>
 				<a
+					ref={this.catchRef}
 					{...tagAttrs}
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
