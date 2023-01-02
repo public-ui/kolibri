@@ -40,25 +40,50 @@ jobs:
           node-version: 16
           registry-url: '${{env.npmjs-registry}}'
           scope: '@public-ui'
+      - name: Build docusaurus
+        run: |
+          npm i --legacy-peer-deps
+          npm run build
+        working-directory: packages/docusaurus
       - name: Build designer
         run: |
           npm i --legacy-peer-deps
           npm run build
         working-directory: packages/designer
+      - name: Build slidev
+        run: |
+          npm i --legacy-peer-deps
+          npm run build
+        working-directory: packages/slidev
       - name: Build storybook
         run: |
           npm i --legacy-peer-deps
           npm run build
         working-directory: packages/storybook
-      - name: Copy designer to storybook
-        run: cp -r ../designer/dist dist/designer
-        working-directory: packages/storybook
+      # - name: Copy designer to storybook
+      #   run: cp -r ../designer/dist dist/designer
+      #   working-directory: packages/storybook
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@public-ui'
+      - name: Publish docusaurus
+        run: npm publish --access restricted || true
+        working-directory: packages/docusaurus
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish designer
+        run: npm publish --access restricted || true
+        working-directory: packages/designer
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish slidev
+        run: npm publish --access restricted || true
+        working-directory: packages/slidev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish storybook
         run: npm publish --access restricted || true
         working-directory: packages/storybook
