@@ -39,7 +39,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 												_ariaLabel: link._ariaLabel as string,
 												_icon: link._icon as Icofont,
 										  })
-										: (link._label as string)
+										: link._label
 							  }</span>`
 							: getLinkHtml(link)
 					}
