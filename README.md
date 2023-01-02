@@ -8,7 +8,7 @@ Wir machen **HTML** mittels **wiederverwendbaren Web Components barrierefrei**, 
 
 ## Mission
 
-Der [HTML-Webstandard](https://www.w3.org/html) ist an sich sehr "offen" spezifiziert, um möglichst langlebig und robust zu sein. Es kommt daher häufig vor, das HTML-Kompositionen nicht ohne Weiteres barrierefrei, semantisch und valide sind.
+Der [HTML-Webstandard](https://html.spec.whatwg.org) ist an sich sehr "offen" spezifiziert, um möglichst langlebig und robust zu sein. Es kommt daher häufig vor, das HTML-Kompositionen nicht ohne Weiteres barrierefrei, semantisch und valide sind.
 KoliBri baut direkt auf den [Webstandards](https://www.w3.org/standards/webdesign/) des [W3C](https://www.w3.org) auf (Framework-agnostisch), ist dabei eine generische Referenzimplementierung des [WCAG-Standards](https://www.w3.org/WAI/standards-guidelines/wcag/) und der [BITV](https://www.bitvtest.de/bitv_test.html) für die Barrierefreiheit und als eine Multi-Theming-fähige Präsentationsschicht umgesetzt. Es gibt keinerlei fachlichen Bezug und keine Datenübertragungsfunktionalitäten. Damit ist KoliBri für die Realisierung statischer Webseiten als auch dynamischer Webanwendungen unterschiedlicher Corporate Designs und Styleguides gleichermaßen wiederverwendbar und somit für Open Source sehr interessant.
 
 ## Kollaboration und Kooperation

@@ -79,7 +79,7 @@
 		"@public-ui/components": "1.1.15",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "18.11.17",
+		"@types/node": "18.11.18",
 		"@types/normalize-package-data": "2.4.1",
 		"prettier": "2.8.1",
 		"rimraf": "3.0.2",

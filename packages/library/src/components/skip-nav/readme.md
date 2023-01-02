@@ -15,7 +15,7 @@ Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt wer
 
 ### Beispiel
 
-Um die **SkipNav** sehen zu können, klicken Sie auf den Text **_Beispiel_** und gehen dann mit der Tab-Taste einen Schritt weiter.<br>
+Um die **SkipNav** sehen zu können, klicken Sie auf den Text **_Beispiel_** und gehen dann mit der Tab-Taste einen Schritt weiter.
 
 <kol-skip-nav _aria-label="Ein versteckter Link" _links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"></kol-skip-nav>
 

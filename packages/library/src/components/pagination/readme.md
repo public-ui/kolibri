@@ -18,7 +18,7 @@ durchlaufen werden.
 
 ### Beispiel
 
-<div style="display: grid;gap: 0.25em;">
+<div class="grid gap-2">
   <kol-heading _level="3">Standardausgabe nur mit aktuellem Element</kol-heading>
   <kol-pagination _total="100" _page="6"></kol-pagination>
   <kol-heading _level="3">Ausgabe 2 Elemente links und rechts dem aktuellen Element (_sibling)</kol-heading>

@@ -2,7 +2,7 @@
 
 <!-- Auto Generated Below -->
 
-> **[DEPRECATED]** Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+> **[DEPRECATED]** Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
 
 ## Properties
 

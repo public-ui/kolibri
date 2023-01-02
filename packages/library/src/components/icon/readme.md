@@ -1,22 +1,20 @@
-# Icofont
+# Icon
 
-Mit Hilfe der **Icofont**-Komponente können Icons aus der Icofont-Bibliothek an beliebigen Positionen erzeugt werden. Die Ausgabe des Icon kann über Attribute gesteuert werden und erfolgt barrierefrei. Die Ausgabe erfolgt standardmäßig als **_inline_**-Element.
+Mit Hilfe der **Icon**-Komponente können Icons aus der Icon-Bibliothek an beliebigen Positionen erzeugt werden. Die Ausgabe des Icon kann über Attribute gesteuert werden und erfolgt barrierefrei. Die Ausgabe erfolgt standardmäßig als **_inline_**-Element.
 
 ## Konstruktion
 
-Die Komponente **Icofont** wird über das HTML-Element `<kol-icofont></kol-icofont>` erzeugt.
+Die Komponente **Icon** wird über das HTML-Element `<kol-icon></kol-icon>` erzeugt.
 
 ### Code
 
 ```tsx
-<kol-icofont _aria-label="" _icon="home"></kol-icofont>
+<kol-icon _aria-label="" _icon="fa-solid fa-house"></kol-icon>
 ```
 
 ### Beispiel
 
-<div style={{ fontSize: '48px' }}>
-  <kol-icofont _aria-label="" _icon="home"></kol-icofont>
-</div>
+<kol-icon _aria-label="" _icon="fa-solid fa-house"></kol-icon>
 
 ## Verwendung
 
@@ -25,32 +23,6 @@ Die Komponente **Icofont** wird über das HTML-Element `<kol-icofont></kol-icofo
 Verwenden Sie das Attribut `_icon` um das anzuzeigende Icon festzulegen.
 
 ### Best practices
-
-### Anwendungsfälle
-
-#### Ein Icon als Einleitung und innerhalb eines Fließtextes
-
-<div>
-    <kol-icofont
-      _aria-label=""
-      _icon="home"
-      style={{
-        color: '#a1a1a1',
-        fontSize: '100%',
-      }}
-    ></kol-icofont>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-    no sea takimata sanctus est Lorem ipsum. Es folgt ein Icon im Fließtext: <kol-icofont
-      _aria-label=""
-      _icon="arrow-right"
-      style={{
-        color: '#a1a1a1',
-        fontSize: '100%',
-      }}
-    ></kol-icofont>
-    dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
-  </div>
 
 ## Barrierefreiheit
 

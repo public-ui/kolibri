@@ -1201,7 +1201,7 @@ export namespace Components {
         "_value"?: Stringified<number | boolean | unknown[] | object>;
     }
     /**
-     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
      */
     interface KolInputRadioGroup {
         /**
@@ -2402,7 +2402,7 @@ declare global {
         new (): HTMLKolInputRadioElement;
     };
     /**
-     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
      */
     interface HTMLKolInputRadioGroupElement extends Components.KolInputRadioGroup, HTMLStencilElement {
     }
@@ -3745,7 +3745,7 @@ declare namespace LocalJSX {
         "_value"?: Stringified<number | boolean | unknown[] | object>;
     }
     /**
-     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+     * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
      */
     interface KolInputRadioGroup {
         /**
@@ -4852,7 +4852,7 @@ declare module "@stencil/core" {
             "kol-input-password": LocalJSX.KolInputPassword & JSXBase.HTMLAttributes<HTMLKolInputPasswordElement>;
             "kol-input-radio": LocalJSX.KolInputRadio & JSXBase.HTMLAttributes<HTMLKolInputRadioElement>;
             /**
-             * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag <kol-input-radio> statt <kol-input-radio-group>.
+             * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
              */
             "kol-input-radio-group": LocalJSX.KolInputRadioGroup & JSXBase.HTMLAttributes<HTMLKolInputRadioGroupElement>;
             "kol-input-range": LocalJSX.KolInputRange & JSXBase.HTMLAttributes<HTMLKolInputRangeElement>;

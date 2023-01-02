@@ -22,7 +22,7 @@ Ein Button hat aus UX-Sicht mehrere Varianten (`primary` oder `secondary` usw.).
 
 ### Beispiel
 
-<div style="display: flex; gap: 0.25em;">
+<div class="flex gap-2">
   <kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
   <kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
   <kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>

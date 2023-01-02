@@ -5,9 +5,9 @@ specifiers:
   '@public-ui/core': 1.1.15
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.17
+  '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.5
+  solid-js: 1.6.6
   typescript: 4.9.4
   unbuild: 1.0.2
 
@@ -16,9 +16,9 @@ devDependencies:
   '@public-ui/core': 1.1.15
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.17
+  '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.5
+  solid-js: 1.6.6
   typescript: 4.9.4
   unbuild: 1.0.2
 
@@ -435,8 +435,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.17:
-    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
+  /@types/node/18.11.18:
+    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1226,8 +1226,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /solid-js/1.6.5:
-    resolution: {integrity: sha512-q1/wIIRmrWltNnP3PW/e29eRWCC24hX5amBiOXomw2kDiM6JZZ10l+chK/Oi/6ipwUxeabYl5YD2lJOObY9heA==}
+  /solid-js/1.6.6:
+    resolution: {integrity: sha512-5x33mEbPI8QLuywvFjQP4krjWDr8xiYFgZx9KCBH7b0ZzypQCHaUubob7bK6i+1u6nhaAqhWtvXS587Kb8DShA==}
     dependencies:
       csstype: 3.1.1
     dev: true

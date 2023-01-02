@@ -138,11 +138,11 @@ Sichtweisen:
 
 <ol type="a">
   <li>Dem sehenden Nutzenden erschließt sich durch die aussagekräftigen Beschriftungen der Optionen das Verhalten der Steuerelement, auch ohne zusätzliches Label. Die Steuerelemente der Pagination können optisch kompakter dargestellt werden.</li>
-  <li>Dem sehenden Nutzenden werden Labels angezeigt, um auf das Verhalten der Steuerelement schließen zu können. Dadurch können die Beschriftungen der Optionen kürzer erfolgen. Die Steuerelemente der Pagination werden tendenziell durch das zusätzliche Label optisch mehr Platz benötigen.<br>
+  <li>Dem sehenden Nutzenden werden Labels angezeigt, um auf das Verhalten der Steuerelement schließen zu können. Dadurch können die Beschriftungen der Optionen kürzer erfolgen. Die Steuerelemente der Pagination werden tendenziell durch das zusätzliche Label optisch mehr Platz benötigen.
 	Wenn die Select-Auswahl ein Label bekommt, dann muss konsequenterweise auch die Seitenauswahl ein Label erhalten.</li>
 </ol>
 
-**Betrachtung:** Der informelle Teil (Label) für das Verständnis muss in der Sichtweise **a** durch die Optionsbeschriftung und bei Sichtweise **b** durch das explizite Label abgebildet werden.<br>
+**Betrachtung:** Der informelle Teil (Label) für das Verständnis muss in der Sichtweise **a** durch die Optionsbeschriftung und bei Sichtweise **b** durch das explizite Label abgebildet werden.
 
 > **Aus Sicht der Barrierefreiheit sind beide Sichtweise barrierefrei.** (?!)
 

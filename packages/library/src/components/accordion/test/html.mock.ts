@@ -14,6 +14,7 @@ export const getAccordionHtml = (
 	props = mixMembers(
 		{
 			_heading: '⚠',
+			_level: 1,
 		},
 		props
 	);

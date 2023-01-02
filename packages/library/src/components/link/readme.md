@@ -36,10 +36,8 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
     <kol-link _display="inline-block">
       Ich bin ein Link als <b>inline-block-Element</b>
     </kol-link>, damit kann man mir per CSS-Styles eine Breite, eine Höhe und andere Eigenschaften zuweisen.
-
     Danach folgt ein Link, der als block-Element ausgegeben wird.
-
-  <kol-link _display="block" style="margin-right: 5px;">
+  <kol-link _display="block">
       Ich bin ein Link als <b>block-Element</b>
     </kol-link>,
     daher gehe ich über die ganze Breite des Eltern-Elements erzeuge so einen Zeilenumbruch.

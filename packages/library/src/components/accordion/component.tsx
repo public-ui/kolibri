@@ -142,6 +142,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@State() public state: States = {
 		_heading: '⚠',
+		_level: 1,
 	};
 
 	/**

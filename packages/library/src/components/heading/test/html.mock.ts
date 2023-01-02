@@ -8,9 +8,14 @@ export const getHeadingWcHtml = (
 	} = {},
 	additionalAttrs = ''
 ): string => {
-	props = mixMembers({}, props);
+	props = mixMembers(
+		{
+			_level: 1,
+		},
+		props
+	);
 	return `
-		<kol-heading-wc${additionalAttrs}>
+		<kol-heading-wc _level="${props._level as unknown as string}"${additionalAttrs}>
 			<h${props._level || 1}>
 				${slots.default !== undefined ? slots.default : '<slot></slot>'}
 			</h${props._level || 1}>
@@ -24,9 +29,14 @@ export const getHeadingHtml = (
 	} = {},
 	additionalAttrs = ''
 ): string => {
-	props = mixMembers({}, props);
+	props = mixMembers(
+		{
+			_level: 1,
+		},
+		props
+	);
 	return `
-	<kol-heading${additionalAttrs}>
+	<kol-heading _level="${props._level as unknown as string}"${additionalAttrs}>
 		<mock:shadow-root>
 			${getHeadingWcHtml(props)}
 		</mock:shadow-root>

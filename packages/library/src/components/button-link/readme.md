@@ -20,7 +20,7 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
 
 ### Beispiel
 
-<div style="display: flex; gap: 0.25em;">
+<div class="flex gap-2">
   <kol-button-link _on="" _label="Schalter sieht wie ein Link aus"></kol-button-link>
 </div>
 
