@@ -1,0 +1,43 @@
+{
+	"icons": [
+		{
+			"src": "/assets/logo.kolibri.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/assets/logo.kolibri.png",
+			"sizes": "384x384",
+			"type": "image/png"
+		},
+		{
+			"src": "/assets/logo.kolibri.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		},
+		{
+			"src": "/assets/logo.kolibri.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/assets/logo.kolibri.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		},
+		{
+			"src": "/assets/logo.kolibri.png",
+			"sizes": "96x96",
+			"type": "image/png"
+		}
+	],
+	"name": "KoliBri | Public-UI",
+	"short_name": "KoliBri",
+	"orientation": "portrait",
+	"display": "standalone",
+	"start_url": "/",
+	"description": "...",
+	"lang": "de-DE",
+	"theme_color": "#fff",
+	"background_color": "#fff"
+}
