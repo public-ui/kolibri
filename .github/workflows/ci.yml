@@ -52,7 +52,7 @@ jobs:
       - name: Install
         run: pnpm install --no-frozen-lockfile
       - name: Unused
-        run: npx lerna exec --stream -- ts-prune src -e
+        run: npx lerna exec --ignore @public-ui/docusaurus --ignore @public-ui/slidev  --stream -- ts-prune src -e
       - name: Format
         if: always()
         run: npx lerna run format
