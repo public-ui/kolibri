@@ -40,7 +40,8 @@
 		"@slidev/cli": "0.38.2",
 		"npm-check-updates": "16.6.2",
 		"playwright-chromium": "1.29.1",
-		"prettier": "2.8.1"
+		"prettier": "2.8.1",
+		"ts-prune": "0.10.3"
 	},
 	"files": [
 		"dist/"
