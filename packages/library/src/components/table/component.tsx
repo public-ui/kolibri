@@ -723,7 +723,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 					</table>
 				</div>
 				{this.pageEndSlice > 0 && this.showPagination && (
-					<div>
+					<div class="pagination">
 						<span>
 							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
 							{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
