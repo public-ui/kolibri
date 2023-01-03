@@ -47,7 +47,7 @@
 		"@unocss/webpack": "0.47.6",
 		"chromedriver": "108.0.0",
 		"eslint-plugin-jsx-a11y": "6.6.1",
-		"nightwatch-axe-verbose": "2.0.3",
+		"nightwatch-axe-verbose": "2.0.4",
 		"npm-check-updates": "16.6.0",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
