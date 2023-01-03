@@ -14,7 +14,6 @@
 	],
 	"license": "UNLICENSED",
 	"browser": false,
-	"private": true,
 	"main": "index.js",
 	"scripts": {
 		"build": "next build",

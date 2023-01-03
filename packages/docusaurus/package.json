@@ -18,7 +18,6 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"private": true,
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"start": "docusaurus start",
