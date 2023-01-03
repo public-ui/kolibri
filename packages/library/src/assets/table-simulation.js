@@ -686,8 +686,22 @@ const TABLE_PAGED_DATA = [
 ];
 
 setTimeout(() => {
-	document.querySelector('#table-1')._headers = TABLE_NEW_HEADERS;
-	document.querySelector('#table-1')._data = TABLE_DATA;
+	document.querySelector('#table-1a')._headers = TABLE_NEW_HEADERS;
+	document.querySelector('#table-1a')._data = TABLE_DATA;
+}, 5000);
+
+setTimeout(() => {
+	document.querySelector('#table-1b')._headers = TABLE_NEW_HEADERS;
+	document.querySelector('#table-1b')._data = TABLE_DATA;
+	setTimeout(() => (document.querySelector('#table-1a')._data = []), 1000);
+}, 5000);
+
+setTimeout(() => {
+	document.querySelector('#table-1c')._headers = TABLE_NEW_HEADERS;
+	document.querySelector('#table-1c')._data = [];
+}, 5000);
+
+setTimeout(() => {
 	document.querySelector('#table-2')._headers = {
 		horizontal: [
 			[
@@ -720,7 +734,7 @@ setTimeout(() => {
 		_boundaryCount: 0,
 		_page: 3,
 		_pageSize: 20,
-		_pageSizeOptions: [ 5, 10, 20, 50, 100 ],
+		_pageSizeOptions: [5, 10, 20, 50, 100],
 		_on: {
 			onClick: console.log,
 			onChangePage: console.log,
@@ -732,7 +746,7 @@ setTimeout(() => {
 		_boundaryCount: 0,
 		_page: 3,
 		_pageSize: 10,
-		_pageSizeOptions: [ 5, 10, 20, 50, 100 ],
+		_pageSizeOptions: [5, 10, 20, 50, 100],
 		_on: {
 			onClick: console.log,
 			onChangePage: console.log,
