@@ -53,7 +53,7 @@
 		"@ngtools/webpack": "15.0.4",
 		"@playwright/test": "1.29.0",
 		"chromedriver": "108.0.0",
-		"nightwatch-axe-verbose": "2.0.3",
+		"nightwatch-axe-verbose": "2.0.4",
 		"npm-check-updates": "16.6.0",
 		"postcss-windicss": "1.0.0",
 		"rimraf": "3.0.2",
