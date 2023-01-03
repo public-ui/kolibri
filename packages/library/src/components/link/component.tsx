@@ -25,13 +25,9 @@ import { Stringified } from '../../types/common';
 import { propergateFocus } from '../../utils/reuse';
 import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
 
-type RequiredNavLinkProps = RequiredLinkProps & unknown;
+type RequiredNavLinkProps = RequiredLinkProps;
 type OptionalNavLinkProps = OptionalLinkProps & {
 	active: boolean;
-	/**
-	 * @deprecated Verwende stattdessen das Property _ariaLabel.
-	 */
-	label?: string;
 };
 export type NavLinkProps = Generic.Element.Members<RequiredNavLinkProps, OptionalNavLinkProps>;
 

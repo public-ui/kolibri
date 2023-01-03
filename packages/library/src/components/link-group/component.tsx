@@ -25,9 +25,7 @@ const ListItem = (props: { links: NavLinkProps[]; orientation: Orientation; list
 						listStyleType: props.listStyleType,
 					}}
 				>
-					<kol-link {...link} _ariaLabel={link._label}>
-						{link._label}
-					</kol-link>
+					<kol-link {...link}></kol-link>
 				</li>
 			) as JSX.Element
 		);
