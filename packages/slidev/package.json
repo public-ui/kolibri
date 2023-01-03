@@ -19,7 +19,7 @@
 		}
 	],
 	"scripts": {
-		"build": "slidev build --base /presentation/",
+		"build": "slidev build --base /presentation",
 		"dev": "slidev --open",
 		"export": "slidev export",
 		"update": "ncu -u"
