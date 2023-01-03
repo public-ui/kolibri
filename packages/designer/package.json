@@ -18,7 +18,6 @@
 			"email": "martin.oppitz@itzbund.de"
 		}
 	],
-	"private": true,
 	"scripts": {
 		"clean": "git clean -f -d -X",
 		"clean:locks": "rimraf package-lock.json pnpm-lock.yaml && npm run clean",
