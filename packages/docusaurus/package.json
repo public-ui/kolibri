@@ -75,7 +75,7 @@
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-react": "7.31.11",
 		"@typescript-eslint/parser": "5.47.1",
-		"@typescript-eslint/eslint-plugin": "5.47.1",
+		"@typescript-eslint/eslint-plugin": "5.48.0",
 		"autoprefixer": "10.4.13",
 		"husky": "8.0.2",
 		"license-report": "6.3.0",
