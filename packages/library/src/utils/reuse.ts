@@ -13,6 +13,7 @@ export const propergateFocus = <H extends HTMLElement, R extends HTMLElement>(ho
  * @param cb Callback with the code to run
  * @param delay Timeout delay
  */
+// ts-prune-ignore-next
 export const smartSetTimeout = (cb: () => void, delay?: number) => {
 	const timeout = setTimeout(() => {
 		clearTimeout(timeout);

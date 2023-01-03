@@ -13,7 +13,6 @@
 		}
 	],
 	"license": "EUPL-1.2",
-	"private": true,
 	"scripts": {
 		"build": "unbuild",
 		"prepack": "unbuild"
