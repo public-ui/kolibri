@@ -88,7 +88,7 @@ export default function Homepage(): JSX.Element {
 						</strong>{' '}
 						und wurde vom{' '}
 						<strong>
-							<KolLink _href="https://itzund.de" _target="itzbund">
+							<KolLink _href="https://itzbund.de" _target="itzbund">
 								Informationstechnikzentrum Bund
 							</KolLink>
 						</strong>
