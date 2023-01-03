@@ -1,6 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { LinkProps } from '../../../types/button-link';
-import { getIconHtml } from '../../icon/test/html.mock';
+import { isEmptyOrPrefixOf } from '../../../utils/validator';
+import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
@@ -24,6 +25,13 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	if (props._useCase === 'image') {
 		underline = false;
 	}
+	if (typeof props._ariaLabel === 'string' && isEmptyOrPrefixOf(props._label, props._ariaLabel) === false) {
+		if (props._label.length > 0) {
+			props._ariaLabel = props._label;
+		} else {
+			props._label = props._ariaLabel;
+		}
+	}
 	return `
 <kol-link${props._ariaExpanded ? ' _aria-expanded' : ''}${props._iconOnly ? ' _icon-only' : ''}${props._stealth ? ' _stealth' : ''}${
 		props._underline ? ' _underline' : ''
@@ -36,46 +44,20 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		props._iconOnly === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
 	} class="${props._stealth === true ? ' skip' : ''}${props._useCase === 'nav' ? '' : ' kol-visited'}${
 		props._iconOnly === true ? ' grid text-center' : ' flex flex-wrap items-center'
-	}" href="${typeof props._href === 'string' && props._href.length > 0 ? props._href : ''}" part="link ${typeof props._part === 'string' ? props._part : ''}"${
-		typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''
-	}${typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''} style="cursor:pointer;${
-		props._useCase === 'image' ? 'display: block;' : ''
-	}text-decoration-line:${underline === true ? 'underline' : 'none'};${props._fill === true ? 'width:100%;' : ''}">
-      ${
-				typeof props._icon === 'string' && props._iconAlign === 'left'
-					? getIconHtml(
-							{
-								_ariaLabel: '',
-								_icon: props._icon,
-							},
-							props._iconOnly === true ? '' : ' class="mr-2"'
-					  )
-					: ''
-			}
-      <span class="${props._iconOnly === true ? 'hidden' : ''}${props._useCase === 'image' ? 'float-left' : ''}" part="span${
-		props._iconOnly === true ? ' hidden' : ''
+	}" href="${typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'}" part="link ${
+		typeof props._part === 'string' ? props._part : ''
+	}"${typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
+		typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''
+	} style="cursor:pointer;${props._useCase === 'image' ? 'display: block;' : ''}text-decoration-line:${underline === true ? 'underline' : 'none'};${
+		props._fill === true ? 'width:100%;' : ''
 	}">
-        <slot />
-      </span>
-      ${
-				typeof props._icon === 'string' && props._iconAlign === 'right'
-					? getIconHtml(
-							{
-								_ariaLabel: '',
-								_icon: props._icon,
-							},
-							props._iconOnly === true ? '' : ' class="ml-2"'
-					  )
-					: ''
-			}
-      ${
-				typeof props._target === 'string' && props._target !== '_self'
-					? getIconHtml({
-							_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
-							_icon: 'fa-solid fa-arrow-up-right-from-square',
-					  })
-					: ''
-			}
+			${getSpanWcHtml(
+				props,
+				{
+					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
+				},
+				''
+			)}
     </a>
     ${getTooltipHtml({
 			_align: props._tooltipAlign,

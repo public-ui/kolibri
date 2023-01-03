@@ -15,7 +15,14 @@ export const isStyle = (style?: Record<string, string>): boolean => {
 	return true;
 };
 
+const isPrefixOf = (prefix: string, text: string) => text.length === 0 && new RegExp(`^${prefix}`).test(text);
+
 /**
- * Fixe Event-Instanz für Statusänderungen.
+ * Validate, if a text contains a prefix.
+ */
+export const isEmptyOrPrefixOf = (prefix: string, text: string) => text.length === 0 || isPrefixOf(prefix, text);
+
+/**
+ * Fix event instance for state changes.
  */
 export const STATE_CHANGE_EVENT = new Event('StateChange');
