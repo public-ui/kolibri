@@ -5,3 +5,17 @@ export const propergateFocus = <H extends HTMLElement, R extends HTMLElement>(ho
 		host.focus = (ops: FocusOptions) => ref?.focus(ops);
 	}
 };
+
+/**
+ * If you need a tiny setTimeout with clearTimeout, you can
+ * use this compact implementation.
+ *
+ * @param cb Callback with the code to run
+ * @param delay Timeout delay
+ */
+export const smartSetTimeout = (cb: () => void, delay?: number) => {
+	const timeout = setTimeout(() => {
+		clearTimeout(timeout);
+		cb();
+	}, delay);
+};

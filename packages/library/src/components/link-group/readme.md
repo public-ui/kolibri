@@ -109,12 +109,12 @@ graph TD;
   kol-link-group --> kol-heading-wc
   kol-link-group --> kol-link
   kol-link --> kol-link-wc
-  kol-link-wc --> kol-icon
+  kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
   kol-badge --> kol-button-wc
-  kol-span-wc --> kol-icon
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   style kol-link-group fill:#f9f,stroke:#333,stroke-width:4px

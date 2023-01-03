@@ -8,17 +8,23 @@ tags:
 
 ## Barrierefreie Komponenten-Bibliotheken
 
-| Merkmal            | Chakra UI | Headless UI | Lion | KoliBri |
-| ------------------ | :-------: | :---------: | :--: | :-----: |
-| Accessibility      |    👍     |     👍      |  👍  |   👍    |
-| Web Component (WC) |    👎     |     👎      |  👍  |   👍    |
-| Single-Source      |    👎     |     👎      |  👍  |   👍    |
-| Frameworks (WC)    |           |             | Lit  | Stencil |
+| Merkmal            | Chakra UI | Headless UI |     Lion     | KoliBri |
+| ------------------ | :-------: | :---------: | :----------: | :-----: |
+| Frameworks         |   React   |    React    |     Lit      | Stencil |
+| Accessibility      |    👍     |     👍      |      👍      |   👍    |
+| Web Component (WC) |    👎     |     👎      |      👍      |   👍    |
+| Single-Source      |    👎     |     👎      |      👍      |   👍    |
+| SSG WC             |    👎     |     👎      |      👍      |   👍    |
+| SSR WC             |    👎     |     👎      | 👍 ([Astro]) |  (👎)   |
+| Framework-Adapter  |    👎     |     👎      |      👎      |   👍    |
+| SSR WC CMS         |    👎     |     👎      |      👎      |   👎    |
 
+[astro]: https://docs.astro.build/de/guides/integrations-guide/lit/
+
+- https://github.com/divriots/spooky/issues/12 (answered)
 - https://github.com/phil-bell/slum-ui/issues/16
 - https://github.com/carlosmmdiaz/cmmd-web/issues/1
 - https://github.com/Ramon92/bulma-web/issues/35
-- https://github.com/divriots/spooky/issues/12
 - https://github.com/manolakis/chi-wc/issues/37
 - https://github.com/benjamind/phyum-elements/issues/1
 

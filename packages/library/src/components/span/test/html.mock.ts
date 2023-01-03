@@ -14,8 +14,7 @@ export const getSpanWcHtml = (
 	slots: Slots = {
 		expert: undefined,
 	},
-	additionalAttrs = '',
-	hiddenSlot = false
+	additionalAttrs = ''
 ): string => {
 	const state = mixMembers<Props, States>(
 		{
@@ -36,7 +35,6 @@ export const getSpanWcHtml = (
 			  })
 			: ''
 	}
-	${hiddenSlot === true ? `<slot hidden=""></slot>` : ``}
 	<span class="flex items-center">
 		${
 			icon.left
@@ -50,7 +48,7 @@ export const getSpanWcHtml = (
 				: ''
 		}
 		<span>${state._iconOnly !== true && state._label.length > 0 ? state._label : ``}</span>
-		<span>${typeof slots.default === 'string' ? `<slot>${slots.default}</slot>` : ``}</span>
+		<span>${typeof slots.expert === 'string' ? slots.expert : ``}</span>
 		${
 			icon.right
 				? getIconHtml(
@@ -78,7 +76,13 @@ export const getSpanHtml = (props: Props): string => {
 	return `
 <kol-span${props._iconOnly ? ' _icon-only' : ''}>
 	<mock:shadow-root>
-		${getSpanWcHtml(props, {}, ``, true)}
+		${getSpanWcHtml(
+			props,
+			{
+				expert: `<slot name="expert" slot="expert"></slot>`,
+			},
+			``
+		)}
 	</mock:shadow-root>
 </kol-span>`;
 };

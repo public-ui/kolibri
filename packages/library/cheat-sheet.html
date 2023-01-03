@@ -292,7 +292,7 @@ Der Link wird standardmäßig in klassischer Form mit Unterstrich ausgegeben, de
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _fill, _href, _icon, _icon-align, _icon-only, _part, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _underline, _use-case`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _fill, _href, _icon, _icon-align, _icon-only, _label, _part, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _underline, _use-case`
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
@@ -520,6 +520,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
+	name: `_label`,
+	desc: `Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.`,
+	types: `string`,
+	comps: `badge, button, button-link, link, link-button, tooltip`
+},{
 	name: `_placeholder`,
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
 	types: `string`,
@@ -529,11 +534,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.`,
 	types: `1 | 2 | 3 | 4 | 5 | 6`,
 	comps: `accordion, alert, card, heading, toast`
-},{
-	name: `_label`,
-	desc: `Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.`,
-	types: `string`,
-	comps: `badge, button, button-link, link-button, tooltip`
 },{
 	name: `_icon-only`,
 	desc: `Gibt an, ob nur das Icon angezeigt wird.`,

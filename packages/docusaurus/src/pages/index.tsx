@@ -58,7 +58,7 @@ export default function Homepage(): JSX.Element {
 		>
 			<HomepageHeader />
 			<main>
-				<div className="grid gap-2 md:w-8/12 m-auto mt-4 p-4">
+				<div className="grid gap-2 md:w-6/12 m-auto mt-4 p-4">
 					<div className="flex gap-4 justify-center">
 						<KolLogo
 							_org={Bundesanstalt['Informationstechnikzentrum Bund']}
@@ -77,15 +77,22 @@ export default function Homepage(): JSX.Element {
 							}}
 						/>
 					</div>
-					<h2 className="text-center">Unabhängige Standards für die Bundesverwaltung</h2>
+					<h2 className="text-center">Barrierefreier Standard</h2>
 					<p className="text-center">
-						<KoliBri /> steht für <u>Ko</u>mponenten-Bio<u>li</u>othek für die <u>B</u>ar<u>ri</u>erefreiheit und wird unter Leitung des{' '}
+						<strong>
+							<KoliBri />
+						</strong>{' '}
+						steht für{' '}
+						<strong>
+							<u>Ko</u>mponenten-Bib<u>li</u>othek für die <u>B</u>ar<u>ri</u>erefreiheit
+						</strong>{' '}
+						und wurde vom{' '}
 						<strong>
 							<KolLink _href="https://itzund.de" _target="itzbund">
 								Informationstechnikzentrum Bund
 							</KolLink>
 						</strong>
-						entwickelt und Open Source gepflegt.
+						Open&nbsp;Source zur Wiederverwendung und Weiterentwicklung freigegeben.
 					</p>
 				</div>
 				<HomepageFeatures />

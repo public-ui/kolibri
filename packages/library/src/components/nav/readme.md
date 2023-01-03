@@ -137,12 +137,12 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 graph TD;
   kol-nav --> kol-link-wc
   kol-nav --> kol-button
-  kol-link-wc --> kol-icon
+  kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
   kol-badge --> kol-button-wc
-  kol-span-wc --> kol-icon
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-button --> kol-button-wc
