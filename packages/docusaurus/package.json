@@ -33,6 +33,7 @@
 		"ncu:major": "ncu",
 		"ncu:minor": "ncu -t minor",
 		"ncu:patch": "ncu -t patch -u",
+		"prepack": "npm run build",
 		"ts-prune": "ts-prune src",
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
 	},
