@@ -29,7 +29,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 			<Navbar {...props} />
 			<KolVersion aria-label="Kontaktformular" role="region" className="text-right pr-4" _version={JSON.version as string}></KolVersion>
 			<section aria-label="Toolbar" className="grid gap-2 col-span-2 p-4 sm:grid-cols-[auto,auto,auto]">
-				<div className="grid gap-2 grid-cols-5 col-span-2 items-center justify-items-center">
+				<div className="grid gap-2 grid-cols-6 col-span-2 items-center justify-items-center">
 					{/* <div>
 						{dark ? (
 							<KolButton _icon={'fa-solid fa-moon'} _iconOnly _label="Dark-Modus ausschalten" _on={onDark} _tooltipAlign="left" _variant="ghost"></KolButton>
@@ -59,6 +59,39 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 					</div>
 					<div>
 						<KolLinkButton
+							_href="/cheat-sheet/"
+							_icon={'fa-solid fa-graduation-cap'}
+							_iconOnly
+							_label="Cheat-Sheet öffnen"
+							_tooltipAlign="left"
+							_target="cheat-sheet"
+							_variant="ghost"
+						></KolLinkButton>
+					</div>
+					<div>
+						<KolLinkButton
+							_href="/designer/"
+							_icon={'fa-solid fa-fill-drip'}
+							_iconOnly
+							_label="Designer öffnen"
+							_tooltipAlign="left"
+							_target="designer"
+							_variant="ghost"
+						></KolLinkButton>
+					</div>
+					<div>
+						<KolLinkButton
+							_href="/presentation/"
+							_icon={'fa-solid fa-chalkboard-user'}
+							_iconOnly
+							_label="Präsentation anschauen"
+							_tooltipAlign="left"
+							_target="presentation"
+							_variant="ghost"
+						></KolLinkButton>
+					</div>
+					<div>
+						<KolLinkButton
 							_href="https://discord.com/invite/7ntYFPns6b"
 							_icon={'fa-brands fa-discord'}
 							_iconOnly
@@ -76,28 +109,6 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_label="Mastodon-Profil"
 							_tooltipAlign="left"
 							_target="mastodon"
-							_variant="ghost"
-						></KolLinkButton>
-					</div>
-					<div>
-						<KolLinkButton
-							_href="/cheat-sheet/"
-							_icon={'fa-solid fa-graduation-cap'}
-							_iconOnly
-							_label="Cheat-Sheet öffnen"
-							_tooltipAlign="left"
-							_target="cheat-sheet"
-							_variant="ghost"
-						></KolLinkButton>
-					</div>
-					<div>
-						<KolLinkButton
-							_href="/presentation/"
-							_icon={'fa-solid fa-chalkboard-user'}
-							_iconOnly
-							_label="Präsentation öffnen"
-							_tooltipAlign="left"
-							_target="presentation"
 							_variant="ghost"
 						></KolLinkButton>
 					</div>
