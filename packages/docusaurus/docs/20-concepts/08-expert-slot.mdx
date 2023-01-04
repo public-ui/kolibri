@@ -47,23 +47,30 @@ import { KolButton } from '@public-ui/react';
 
 ### Komponentenliste
 
-<ul>
-	<li>Badge</li>
-	<li>Button</li>
-	<li>ButtonLink</li>
-	<li>
-		Input, Select und Textarea bzgl. <code>label</code> (Refactoring ausstehend)
-	</li>
-	<li>
-		Link bzgl. <code>innerHTML</code> (Refactoring ausstehend)
-	</li>
-	<li>LinkButton</li>
-	<li>
-		Tooltip <code>innerHTML</code> (Refactoring ausstehend)
-	</li>
-</ul>
+|    Komponente | Verfügbar ab |              Slot-Name               | Ohne Slot-Name |
+| ------------: | :----------: | :----------------------------------: | :------------: |
+|         Badge |      -       |         <code>expert</code>          |
+|        Button |    1.1.10    |         <code>expert</code>          |
+|    ButtonLink |    1.1.15    |         <code>expert</code>          |
+|  ButtonToggle |      -       |         <code>expert</code>          |
+| InputCheckbox |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|     InputDate |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|    InputEmail |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|   InputNumber |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+| InputPassword |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|    InputRange |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|    InputRadio |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|     InputText |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|        Select |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|      Textarea |      -       | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|          Link |    1.1.16    | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|    LinkButton |    1.1.16    | <code>expert</code> \| <code></code> | <sup>\*</sup>  |
+|          Span |    1.1.10    |         <code>expert</code>          |
+|       Tooltip |      -       |         <code>expert</code>          |
 
-<kol-heading _level={3}>Beispiel</kol-heading>
+> <sup>*</sup> Der leer Slot-Name wird nur aufgrund der Abwärtskompatibilität bis zu Major-Release 2 unterstützt.
+
+### Beispiel
 
 <p>Ein Button wird regulär wie folgt verwendet:</p>
 
