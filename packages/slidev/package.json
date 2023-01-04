@@ -19,7 +19,7 @@
 		}
 	],
 	"scripts": {
-		"build": "rimraf dist && slidev build --base /dist && node scripts/fix-underline.js && mv dist/assets/_commonjsHelpers* dist/assets/commonjsHelpers.js",
+		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && mv dist/assets/_commonjsHelpers* dist/assets/commonjsHelpers.js",
 		"dev": "slidev --open",
 		"export": "slidev export",
 		"prepack": "npm run build",
