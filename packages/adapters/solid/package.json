@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/solid",
-	"version": "1.1.16-rc.0",
+	"version": "1.1.16-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -56,8 +56,8 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.16-rc.0",
-		"@public-ui/components": "1.1.16-rc.0",
+		"@public-ui/core": "1.1.16-rc.2",
+		"@public-ui/components": "1.1.16-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.18",
@@ -67,7 +67,7 @@
 		"unbuild": "1.0.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.1.16-rc.0",
+		"@public-ui/components": "1.1.16-rc.2",
 		"solid-js": ">=1.2.0"
 	},
 	"sideEffects": false,

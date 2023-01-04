@@ -50,6 +50,8 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
+const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+
 @Component({
 	tag: 'kol-table',
 	styleUrls: {
@@ -150,6 +152,20 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	private setSortDirection = (sort: KoliBriSortFunction, direction: KoliBriSortDirection) => {
+		/**
+		 * Durch des Clearen, ist es nicht möglich eine Mehr-Spalten-Sortierung
+		 * darzustellen. Das wäre der Fall, wenn man ggf. Daten in außerhalb der
+		 * Komponente sortiert und diese sortiert von außen rein gibt und der
+		 * Sortierungsalgorithmus mehrere Spalten zusammen sortierte.
+		 *
+		 * Beachte auch col.sort !== this.sortFunction
+		 */
+		this.sortDirections.clear();
+		this.sortDirections.set(sort, direction);
+		this.sortFunction = sort;
+	};
+
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
@@ -180,7 +196,14 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 							headers.horizontal?.forEach((header) => {
 								header.forEach((cell) => {
 									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
-										this.sortDirections.set(cell.sort, cell.sortDirection);
+										this.setSortDirection(cell.sort, cell.sortDirection);
+									}
+								});
+							});
+							headers.vertical?.forEach((header) => {
+								header.forEach((cell) => {
+									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
+										this.setSortDirection(cell.sort, cell.sortDirection);
 									}
 								});
 							});
@@ -448,25 +471,31 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	}
 
 	private cellRender(col: KoliBriTableHeaderCellAndData, el?: HTMLElement): void {
-		const timeout = setTimeout(() => {
-			clearTimeout(timeout);
-			if (typeof col.render === 'function' && el instanceof HTMLElement) {
-				const html = col.render(
-					el,
-					{
-						asTd: col.asTd,
-						label: col.label,
-						textAlign: col.textAlign,
-						width: col.width,
-					} as KoliBriTableHeaderCell,
-					col.data,
-					this.state._data
-				);
-				if (typeof html === 'string') {
-					el.innerHTML = html;
-				}
-			}
-		}, 50);
+		if (el instanceof HTMLElement) {
+			clearTimeout(CELL_REFS.get(el));
+			CELL_REFS.set(
+				el,
+				setTimeout(() => {
+					clearTimeout(CELL_REFS.get(el));
+					if (typeof col.render === 'function') {
+						const html = col.render(
+							el,
+							{
+								asTd: col.asTd,
+								label: col.label,
+								textAlign: col.textAlign,
+								width: col.width,
+							} as KoliBriTableHeaderCell,
+							col.data,
+							this.state._data
+						);
+						if (typeof html === 'string') {
+							el.innerHTML = html;
+						}
+					}
+				})
+			);
+		}
 	}
 
 	private updateSortedData = () => {
@@ -517,12 +546,13 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 						<caption>{this.state._caption}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
-								{this.state._headers.horizontal.map((cols) => (
-									<tr>
-										{cols.map((col) => {
+								{this.state._headers.horizontal.map((cols, rowIdx) => (
+									<tr key={`thead-${rowIdx}`}>
+										{cols.map((col, colIdx) => {
 											if (col.asTd === true) {
 												return (
-													<td
+													<td // role="gridcell"
+														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
 														class={{
 															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
 														}}
@@ -532,7 +562,6 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															textAlign: col.textAlign,
 															width: col.width,
 														}}
-														// role="gridcell"
 														ref={
 															typeof col.render === 'function'
 																? (el) => {
@@ -545,8 +574,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 												);
 											} else {
 												return (
-													<th
-														// role="columnheader"
+													<th // role="columnheader"
+														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
 														scope={typeof col.colSpan === 'number' && col.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={col.colSpan}
 														rowSpan={col.rowSpan}
@@ -555,13 +584,16 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 														}}
 														aria-sort={
 															typeof col.sort === 'function'
-																? this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																? col.sort !== this.sortFunction ||
+																  this.sortDirections.get(col.sort) === 'NOS' ||
+																  this.sortDirections.get(col.sort) === undefined
 																	? 'none'
 																	: this.sortDirections.get(col.sort) === 'ASC'
 																	? 'ascending'
 																	: 'descending'
 																: undefined
 														}
+														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
 													>
 														<div class="w-full flex gap-1 items-center">
 															<div
@@ -579,7 +611,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	exportparts="button,ghost"
 																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
 																	_icon={
-																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																		col.sort !== this.sortFunction ||
+																		this.sortDirections.get(col.sort) === 'NOS' ||
+																		this.sortDirections.get(col.sort) === undefined
 																			? 'fas fa-sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
 																			? 'fas fa-sort-up'
@@ -593,13 +627,13 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																				this.sortFunction = col.sort;
 																				switch (this.sortDirections.get(this.sortFunction)) {
 																					case 'ASC':
-																						this.sortDirections.set(this.sortFunction, 'DESC');
+																						this.setSortDirection(this.sortFunction, 'DESC');
 																						break;
 																					case 'DESC':
-																						this.sortDirections.set(this.sortFunction, 'NOS');
+																						this.setSortDirection(this.sortFunction, 'NOS');
 																						break;
 																					default:
-																						this.sortDirections.set(this.sortFunction, 'ASC');
+																						this.setSortDirection(this.sortFunction, 'ASC');
 																				}
 																				this.updateSortedData();
 																			}
@@ -619,14 +653,14 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 						)}
 						{/* <tbody aria-atomic="true" aria-live="polite" aria-relevant="additions removals"> */}
 						<tbody>
-							{dataField.map((row, index) => {
+							{dataField.map((row, rowIdx) => {
 								return (
-									<tr key={`row-${index}`}>
-										{row.map((col) => {
+									<tr key={`tbody-${rowIdx}`}>
+										{row.map((col, colIdx) => {
 											if (col.asTd === false) {
 												return (
-													<th
-														// role="rowheader"
+													<th // role="rowheader"
+														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
 														scope={typeof col.rowSpan === 'number' && col.rowSpan > 1 ? 'rowgroup' : 'row'}
 														colSpan={col.colSpan}
 														rowSpan={col.rowSpan}
@@ -635,13 +669,16 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 														}}
 														aria-sort={
 															typeof col.sort === 'function'
-																? this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																? col.sort !== this.sortFunction ||
+																  this.sortDirections.get(col.sort) === 'NOS' ||
+																  this.sortDirections.get(col.sort) === undefined
 																	? 'none'
 																	: this.sortDirections.get(col.sort) === 'ASC'
 																	? 'ascending'
 																	: 'descending'
 																: undefined
 														}
+														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
 													>
 														<div class="w-full flex gap-1 items-center">
 															<div
@@ -659,7 +696,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	exportparts="button,ghost"
 																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
 																	_icon={
-																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																		col.sort !== this.sortFunction ||
+																		this.sortDirections.get(col.sort) === 'NOS' ||
+																		this.sortDirections.get(col.sort) === undefined
 																			? 'fas fa-sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
 																			? 'fas fa-sort-up'
@@ -673,13 +712,13 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																				this.sortFunction = col.sort;
 																				switch (this.sortDirections.get(this.sortFunction)) {
 																					case 'ASC':
-																						this.sortDirections.set(this.sortFunction, 'DESC');
+																						this.setSortDirection(this.sortFunction, 'DESC');
 																						break;
 																					case 'DESC':
-																						this.sortDirections.set(this.sortFunction, 'NOS');
+																						this.setSortDirection(this.sortFunction, 'NOS');
 																						break;
 																					default:
-																						this.sortDirections.set(this.sortFunction, 'ASC');
+																						this.setSortDirection(this.sortFunction, 'ASC');
 																				}
 																				this.updateSortedData();
 																			}
@@ -693,8 +732,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 												);
 											} else {
 												return (
-													<td
-														// role="gridcell"
+													<td // role="gridcell"
+														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
 														class={{
 															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
 														}}

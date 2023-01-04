@@ -4,7 +4,7 @@
 
 ## Vision
 
-Wir machen **HTML** mittels **wiederverwendbaren Web Components barrierefrei**, um die **Usability** und **Zugänglichkeit** sicherzustellen.
+Wir machen gemeinsam **HTML** mittels **wiederverwendbaren Web Components barrierefrei**, um die **Usability** und **Zugänglichkeit** sicherzustellen.
 
 ## Mission
 

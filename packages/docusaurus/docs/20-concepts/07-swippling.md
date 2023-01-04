@@ -1,7 +1,7 @@
 ---
 slug: /konzepte/swippling
 title: Swippling
-description: TODO
+description: Komplexere Anforderungen an die Komponenten können mittels Swippling ermöglicht werden.
 tags:
   - Architektur
   - arc42
@@ -24,4 +24,4 @@ Die einfachste Methode eine KoliBri-Komponente auf eigene Bedürfnisse anzupasse
 
 ### Overwriting
 
-Eine andere Variante des Swippling ist das Overwriting der inneren Komponenten-Konstruktion. Bei Web Components wird dies häufig mittels Slots gemacht. In KoliBri haben wir dafür die <kol-link _href="expert-slot">Expert-Slots</kol-link> eingeführt.
+Eine andere Variante des Swippling ist das Overwriting der inneren Komponenten-Konstruktion. Bei Web Components wird dies häufig mittels Slots gemacht. In KoliBri haben wir dafür die <kol-link _href="expert-slot" _label="Expert-Slots"></kol-link> eingeführt.

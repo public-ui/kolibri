@@ -1,15 +1,16 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.16-rc.0
-  '@public-ui/core': 1.1.16-rc.0
-  '@public-ui/themes': 1.1.16-rc.0
+  '@public-ui/components': 1.1.16-rc.1
+  '@public-ui/core': 1.1.16-rc.1
+  '@public-ui/themes': 1.1.16-rc.1
   '@slidev/cli': 0.38.2
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
   npm-check-updates: 16.6.2
   playwright-chromium: 1.29.1
   prettier: 2.8.1
+  rimraf: 3.0.2
   slidev-theme-light-icons: 1.0.2
   slidev-theme-penguin: 1.6.1
   slidev-theme-purplin: 1.2.0
@@ -17,9 +18,9 @@ specifiers:
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-ui/components': 1.1.16-rc.0
-  '@public-ui/core': 1.1.16-rc.0
-  '@public-ui/themes': 1.1.16-rc.0_fm4vb4ygwtgfuzhmz3dufck2ve
+  '@public-ui/components': 1.1.16-rc.1
+  '@public-ui/core': 1.1.16-rc.1
+  '@public-ui/themes': 1.1.16-rc.1_5nowwgcneyehyobpg4rfka67y4
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
   slidev-theme-light-icons: 1.0.2_2cexd2gl5wuj3aokcs3pzy7t7a
@@ -32,6 +33,7 @@ devDependencies:
   npm-check-updates: 16.6.2
   playwright-chromium: 1.29.1
   prettier: 2.8.1
+  rimraf: 3.0.2
   ts-prune: 0.10.3
 
 packages:
@@ -758,32 +760,32 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
 
-  /@public-ui/components/1.1.16-rc.0:
-    resolution: {integrity: sha512-uqXfxb7Pnex0n+vwOBeCOATg0zx+Fsw5FqGxK9KI6Frwpy7ge4Q+dMKTmCTRXa0eCU4MxikBkckSxs7cINEWbQ==}
+  /@public-ui/components/1.1.16-rc.1:
+    resolution: {integrity: sha512-+vVC8jjBqcwdP4FlvhVlYh9L9J4RTTpNU3xCktRjsTq+jEHV37suJMzvWIVy7d4LPH4h1EE2S09WzKpSbLB3DA==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.0
+      '@public-ui/schema': 1.1.16-rc.1
     dev: false
 
-  /@public-ui/core/1.1.16-rc.0:
-    resolution: {integrity: sha512-71mGfSJ9L/AnT4LmBLiP4cGhfjWYPIZdDtPPFQkS2qmt0ssJI/VKvWhNPe8LTnp79O/6hwLAAOAJXndEWrIS3w==}
+  /@public-ui/core/1.1.16-rc.1:
+    resolution: {integrity: sha512-DUFSxQlJMHweOLdcGEX8HkpDarFiO1db+6aN2BcGNva6CsWUOW7pHUf9NXYWYHd3f5cP0bfUxIi3aNz8Cfzvjw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/schema/1.1.16-rc.0:
-    resolution: {integrity: sha512-W2Rh1UvJv0Q9G/VHzFWrjMn1XXc8as135HBnNzGVTIKRc2mdYy1Y3MZgb18KiNgq/idvvVcypj+dKWL1JQg64w==}
+  /@public-ui/schema/1.1.16-rc.1:
+    resolution: {integrity: sha512-OvEkn/F8+ZHjanM76ZdDS0kSH4CWIhXUPScC8uGMooPtC5X6ZfN/b741pHvSPMzbtdmBqH0qYOD57jSL/v7naQ==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.0
+      '@public-ui/core': 1.1.16-rc.1
     dev: false
 
-  /@public-ui/themes/1.1.16-rc.0_fm4vb4ygwtgfuzhmz3dufck2ve:
-    resolution: {integrity: sha512-KSPTLRF/R9yJYXmXfNFJAUuGEuHqtD3dsrvbAiY7xQo74vNJRE0qMZG7F5NeAKf8sSPMwE71VBww3eQ9vBS3+Q==}
+  /@public-ui/themes/1.1.16-rc.1_5nowwgcneyehyobpg4rfka67y4:
+    resolution: {integrity: sha512-IRYIFGWGltRtDAuAb78O+IIkUzk3YNlR49eJ1BgkeFK0VQXaSNR/XLu94agChNn+r9YlJDIZcqhFX3fBRHB1Yg==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.1
     dependencies:
-      '@public-ui/components': 1.1.16-rc.0
-      '@public-ui/schema': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.1
+      '@public-ui/schema': 1.1.16-rc.1
     dev: false
 
   /@rollup/pluginutils/4.2.1:

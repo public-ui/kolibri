@@ -16,15 +16,19 @@
 
 /* You can override the default Infima variables here. */
 :root {
-	--ifm-color-primary: #2e8555;
-	--ifm-color-primary-dark: #29784c;
-	--ifm-color-primary-darker: #277148;
-	--ifm-color-primary-darkest: #205d3b;
-	--ifm-color-primary-light: #33925d;
-	--ifm-color-primary-lighter: #359962;
-	--ifm-color-primary-lightest: #3cad6e;
+	--ifm-color-primary: #324454;
+	--ifm-color-primary-dark: #2d3d4c;
+	--ifm-color-primary-darker: #2b3a47;
+	--ifm-color-primary-darkest: #23303b;
+	--ifm-color-primary-light: #374b5c;
+	--ifm-color-primary-lighter: #394e61;
+	--ifm-color-primary-lightest: #41586d;
 	--ifm-code-font-size: 95%;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+.footer__link-item:hover {
+	color: #fff !important;
 }
 
 * {
@@ -54,6 +58,10 @@ p {
 	text-align: justify;
 }
 
+a[aria-current='page'] {
+	font-weight: 700;
+}
+
 .navbar {
 	box-shadow: none !important;
 }
@@ -61,14 +69,18 @@ p {
 #doc-app > footer,
 #doc-app > div > header {
 	background-color: #345;
-	background-size: 50px 50px;
 }
 
-#doc-app > footer:hover,
+/* #doc-app > footer:hover,
 #doc-app > div > header:hover {
 	background-image: radial-gradient(#567 2px, #345 2px);
-}
+	background-size: 50px 50px;
+} */
 
 kol-link-button {
 	text-shadow: none;
+}
+
+.text--truncate {
+	text-overflow: unset !important;
 }

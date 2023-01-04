@@ -41,25 +41,17 @@ jobs:
           registry-url: '${{env.npmjs-registry}}'
           scope: '@public-ui'
       - name: Build docusaurus
-        run: |
-          npm i --legacy-peer-deps
-          npm run build
+        run: npm i --legacy-peer-deps
         working-directory: packages/docusaurus
       - name: Build designer
-        run: |
-          npm i --legacy-peer-deps
-          npm run build
+        run: npm i --legacy-peer-deps
         working-directory: packages/designer
       - name: Build slidev
-        run: |
-          npm i --legacy-peer-deps
-          npm run build
+        run: npm i --legacy-peer-deps
         working-directory: packages/slidev
-      - name: Build storybook
-        run: |
-          npm i --legacy-peer-deps
-          npm run build
-        working-directory: packages/storybook
+      # - name: Build storybook
+      #   run: npm i --legacy-peer-deps
+      #   working-directory: packages/storybook
       # - name: Copy designer to storybook
       #   run: cp -r ../designer/dist dist/designer
       #   working-directory: packages/storybook
@@ -84,8 +76,8 @@ jobs:
         working-directory: packages/slidev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish storybook
-        run: npm publish --access restricted || true
-        working-directory: packages/storybook
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Publish storybook
+      #   run: npm publish --access restricted || true
+      #   working-directory: packages/storybook
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
