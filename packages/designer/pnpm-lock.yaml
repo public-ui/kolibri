@@ -7,10 +7,10 @@ specifiers:
   '@leanup/stack-webpack': 1.3.41
   '@playwright/test': 1.29.1
   '@public-oss/kolibri-themes': 0.0.1
-  '@public-ui/components': 1.1.16-rc.0
-  '@public-ui/core': 1.1.16-rc.0
-  '@public-ui/solid': 1.1.16-rc.0
-  '@public-ui/themes': 1.1.16-rc.0
+  '@public-ui/components': 1.1.16-rc.2
+  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/solid': 1.1.16-rc.2
+  '@public-ui/themes': 1.1.16-rc.2
   '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.48.0
   '@unocss/webpack': 0.48.0
@@ -33,12 +33,12 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@leanup/kolibri-themes': 0.0.6_fm4vb4ygwtgfuzhmz3dufck2ve
-  '@public-oss/kolibri-themes': 0.0.1_fm4vb4ygwtgfuzhmz3dufck2ve
-  '@public-ui/components': 1.1.16-rc.0
-  '@public-ui/core': 1.1.16-rc.0
-  '@public-ui/solid': 1.1.16-rc.0_jbhgznfx5izian2hcvdnjysi7a
-  '@public-ui/themes': 1.1.16-rc.0_fm4vb4ygwtgfuzhmz3dufck2ve
+  '@leanup/kolibri-themes': 0.0.6_vzn6gfsjvylobqtbzkwiwdutoa
+  '@public-oss/kolibri-themes': 0.0.1_vzn6gfsjvylobqtbzkwiwdutoa
+  '@public-ui/components': 1.1.16-rc.2
+  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/solid': 1.1.16-rc.2_3ohuec2f6zsnuurq7dx7sf43xi
+  '@public-ui/themes': 1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1_monaco-editor@0.34.1
   register-service-worker: 1.7.2
@@ -92,13 +92,13 @@ packages:
     resolution: {integrity: sha512-CQkeV+oJxUazwjlHD0/3ZD08QWKuGQkhnrKo3e6ly5pd48VUpXbb77q0xMU4+vc2CkJnDS02Eq/M9ugyX20XZA==}
     dev: true
 
-  /@apideck/better-ajv-errors/0.3.6_ajv@8.11.2:
+  /@apideck/better-ajv-errors/0.3.6_ajv@8.12.0:
     resolution: {integrity: sha512-P+ZygBLZtkp0qqOAJJVX4oX/sFo5JR3eBWwwuqHHhK0GIgQOKWrAfiAaWX0aArHkRWHMuggFEgAZNxVPwPZYaA==}
     engines: {node: '>=10'}
     peerDependencies:
       ajv: '>=8'
     dependencies:
-      ajv: 8.11.2
+      ajv: 8.12.0
       json-schema: 0.4.0
       jsonpointer: 5.0.1
       leven: 3.1.0
@@ -2066,12 +2066,12 @@ packages:
       - webpack
     dev: true
 
-  /@leanup/kolibri-themes/0.0.6_fm4vb4ygwtgfuzhmz3dufck2ve:
+  /@leanup/kolibri-themes/0.0.6_vzn6gfsjvylobqtbzkwiwdutoa:
     resolution: {integrity: sha512-iJ3yPeeUClaF7/eDBacDHq4TFXpfOMe0XGl0VmWLVu0h1+94IITJDmxmAa7VtcdoLvyI9f9RkynXhE2XwEEU4Q==}
     peerDependencies:
       '@public-ui/components': '*'
     dependencies:
-      '@public-ui/components': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.2
       '@public-ui/schema': 1.1.11
     dev: false
 
@@ -2233,19 +2233,19 @@ packages:
       playwright-core: 1.29.1
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.1_fm4vb4ygwtgfuzhmz3dufck2ve:
+  /@public-oss/kolibri-themes/0.0.1_vzn6gfsjvylobqtbzkwiwdutoa:
     resolution: {integrity: sha512-wKZQ8alYuOfj7PVP+Ew6g9XgsL4NzLJvJlEtLC6bikL4J3qyXua8MgIZPO3dkoUpqwxpeH0U6QMYj0larSTEsg==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.2
       '@public-ui/schema': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/components/1.1.16-rc.0:
-    resolution: {integrity: sha512-uqXfxb7Pnex0n+vwOBeCOATg0zx+Fsw5FqGxK9KI6Frwpy7ge4Q+dMKTmCTRXa0eCU4MxikBkckSxs7cINEWbQ==}
+  /@public-ui/components/1.1.16-rc.2:
+    resolution: {integrity: sha512-88GSFVg5oZ5pfxh17OclwdWttjbVaU67Q2tCpqdHy1SW13YyWbiMAwfRPZNEN8XO/IIXV/SlVKxkCTpTuq4DqQ==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.0
+      '@public-ui/schema': 1.1.16-rc.2
     dev: false
 
   /@public-ui/core/1.1.11:
@@ -2264,8 +2264,8 @@ packages:
       rxjs: 7.5.7
     dev: false
 
-  /@public-ui/core/1.1.16-rc.0:
-    resolution: {integrity: sha512-71mGfSJ9L/AnT4LmBLiP4cGhfjWYPIZdDtPPFQkS2qmt0ssJI/VKvWhNPe8LTnp79O/6hwLAAOAJXndEWrIS3w==}
+  /@public-ui/core/1.1.16-rc.2:
+    resolution: {integrity: sha512-xCuOg8O5sCs9ZjuJRy+QWdABDdUB77h/zJmyF0Iu2QmrFdBLmoFywTikvwTwoRWzLwlxq9dhgCjJLYGsTqz4KA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
@@ -2284,29 +2284,29 @@ packages:
       '@public-ui/core': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/schema/1.1.16-rc.0:
-    resolution: {integrity: sha512-W2Rh1UvJv0Q9G/VHzFWrjMn1XXc8as135HBnNzGVTIKRc2mdYy1Y3MZgb18KiNgq/idvvVcypj+dKWL1JQg64w==}
+  /@public-ui/schema/1.1.16-rc.2:
+    resolution: {integrity: sha512-BKDvUmUpqZZSNGxgxyNbuocIwz2AxFvQ9wKM08y9pWLQRjaLTAZ5/W1Pke6OTkwfq3+acNDu8hHDOcUphr0d9w==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.0
+      '@public-ui/core': 1.1.16-rc.2
     dev: false
 
-  /@public-ui/solid/1.1.16-rc.0_jbhgznfx5izian2hcvdnjysi7a:
-    resolution: {integrity: sha512-LVPTnAZ5H9BCLM4TFJ8LGlVGVp5lPRGgiBsAq2cgf9zZa3WmmFjUufZEtueDjf8LLwJ/H59Ez49sqLbfKgLCLA==}
+  /@public-ui/solid/1.1.16-rc.2_3ohuec2f6zsnuurq7dx7sf43xi:
+    resolution: {integrity: sha512-pBHww6t3HBNGfkKEqQtijj3bjMlb7uu/2t2FM+CUvybNlBtxsuJAPE1QYL/PKzzQ3Uv63b7PchyLZaiDlcCOUA==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.2
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.2
       solid-js: 1.6.6
     dev: false
 
-  /@public-ui/themes/1.1.16-rc.0_fm4vb4ygwtgfuzhmz3dufck2ve:
-    resolution: {integrity: sha512-KSPTLRF/R9yJYXmXfNFJAUuGEuHqtD3dsrvbAiY7xQo74vNJRE0qMZG7F5NeAKf8sSPMwE71VBww3eQ9vBS3+Q==}
+  /@public-ui/themes/1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa:
+    resolution: {integrity: sha512-42+FnUL5R133kfSrnOpeWrafrOi+MhZ7Gmq8vD9FuIaXUmZsGuGvpQfC9IqzIsQOH6/p5iQK7VS3IA9NCNcbPw==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.2
     dependencies:
-      '@public-ui/components': 1.1.16-rc.0
-      '@public-ui/schema': 1.1.16-rc.0
+      '@public-ui/components': 1.1.16-rc.2
+      '@public-ui/schema': 1.1.16-rc.2
     dev: false
 
   /@rollup/plugin-babel/5.3.1_quedi3p7womesqmjrcxptomfpa:
@@ -3183,7 +3183,7 @@ packages:
       ajv:
         optional: true
     dependencies:
-      ajv: 8.11.2
+      ajv: 8.12.0
     dev: true
 
   /ajv-keywords/3.5.2_ajv@6.12.6:
@@ -3194,12 +3194,12 @@ packages:
       ajv: 6.12.6
     dev: true
 
-  /ajv-keywords/5.1.0_ajv@8.11.2:
+  /ajv-keywords/5.1.0_ajv@8.12.0:
     resolution: {integrity: sha512-YCS/JNFAUyr5vAuhk1DWm1CBxRHW9LbJ2ozWeemrIqpbsqKjHVxYPyi5GC0rjZIT5JxJ3virVTS8wk4i/Z+krw==}
     peerDependencies:
       ajv: ^8.8.2
     dependencies:
-      ajv: 8.11.2
+      ajv: 8.12.0
       fast-deep-equal: 3.1.3
     dev: true
 
@@ -3212,8 +3212,8 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /ajv/8.11.2:
-    resolution: {integrity: sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==}
+  /ajv/8.12.0:
+    resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
     dependencies:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
@@ -6072,8 +6072,8 @@ packages:
       regenerator-runtime: 0.13.11
     dev: true
 
-  /jiti/1.16.0:
-    resolution: {integrity: sha512-L3BJStEf5NAqNuzrpfbN71dp43mYIcBUlCRea/vdyv5dW/AYa1d4bpelko4SHdY3I6eN9Wzyasxirj1/vv5kmg==}
+  /jiti/1.16.1:
+    resolution: {integrity: sha512-kJUp4Bj44uTaZAwG6R2/GjbodOWHULn8Swue0B7tY8v5BpTkUvDR+zBM5tsbC4x/jCeYDZ+mAdrUIScwIo4oPw==}
     hasBin: true
     dev: true
 
@@ -7768,9 +7768,9 @@ packages:
     engines: {node: '>= 12.13.0'}
     dependencies:
       '@types/json-schema': 7.0.11
-      ajv: 8.11.2
+      ajv: 8.12.0
       ajv-formats: 2.1.1
-      ajv-keywords: 5.1.0_ajv@8.11.2
+      ajv-keywords: 5.1.0_ajv@8.12.0
     dev: true
 
   /scss-parser/1.0.6:
@@ -8466,7 +8466,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.5.2
       defu: 6.1.1
-      jiti: 1.16.0
+      jiti: 1.16.1
     dev: true
 
   /unicode-canonical-property-names-ecmascript/2.0.0:
@@ -8968,7 +8968,7 @@ packages:
     resolution: {integrity: sha512-kgRevLXEYvUW9WS4XoziYqZ8Q9j/2ziJYEtTrjdz5/L/cTUa2XfyMP2i7c3p34lgqJ03+mTiz13SdFef2POwbA==}
     engines: {node: '>=10.0.0'}
     dependencies:
-      '@apideck/better-ajv-errors': 0.3.6_ajv@8.11.2
+      '@apideck/better-ajv-errors': 0.3.6_ajv@8.12.0
       '@babel/core': 7.20.7
       '@babel/preset-env': 7.20.2_@babel+core@7.20.7
       '@babel/runtime': 7.20.7
@@ -8976,7 +8976,7 @@ packages:
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.79.1
       '@rollup/plugin-replace': 2.4.2_rollup@2.79.1
       '@surma/rollup-plugin-off-main-thread': 2.2.3
-      ajv: 8.11.2
+      ajv: 8.12.0
       common-tags: 1.8.2
       fast-json-stable-stringify: 2.1.0
       fs-extra: 9.1.0
