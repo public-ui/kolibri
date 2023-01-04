@@ -1,7 +1,7 @@
 ---
 slug: /konzepte/architektur
 title: Architektur
-description: TODO
+description: Auf dieser Seite werden die Architektur und der Entwicklungsprozess beschrieben.
 tags:
   - Architektur
   - arc42

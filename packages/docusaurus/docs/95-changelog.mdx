@@ -1,6 +1,6 @@
 ---
 title: Changelog und Backlog
-description: TODO
+description: Auf dieser Seite werden alle Änderungen an KoliBri dokumentiert.
 tags:
   - Backlog
   - Changelog
@@ -20,13 +20,10 @@ _headers="{'horizontal':[[{'label':'Symbol','key':'symbol','textAlign':'center',
 _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrierefreiheit'},{'symbol':'👩‍🎨','desc':'Styleguide/Themes'},{'symbol':'🧬','desc':'Test'},{'symbol':'🔧','desc':'Verbesserung/Fehlerbehebung'},{'symbol':'📚','desc':'Dokumentation'},{'symbol':'🚀','desc':'Performance'},{'symbol':'❗','desc':'Refactoring'},{'symbol':'🔥','desc':'Breaking Change'},{'symbol':'🔝','desc':'Pflege des Technologie-Stacks'}]">
 </kol-table>
 
-### 1.1.16 - 03.01.2023 (geplant)
+### 1.1.17 - 20.01.2023 (geplant)
 
 <kol-details _summary="Änderungen">
-	<ul>
-		<li>🔧 Nav + Link: Translationservice fertigstellen</li>
-		<li>🌟 Fokus: Alle interaktiven Komponenten (Button, Link, Input usw.) sind jetzt von außen über fokussierbar.</li>
-	</ul>
+	<ul></ul>
 	<hr />
 	<ul>
 		<li>🔧 I18n: Translationservice fertigstellen</li>
@@ -61,9 +58,38 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	</ul>
 </kol-details>
 
-### 1.1.16-rc.1 - 20.12.2022
+### 1.1.16 - 04.01.2023
 
 <kol-details _summary="Änderungen" _open>
+	<ul>
+		<li>🔧 Table: Optimierung der Sortierungsanzeige (Pfeilrichtungen)</li>
+		<li>🔧 Table: Optimierung des Renderings</li>
+		<li>🔧 Table: Style-Korrektur im MAPZ-Theme (Border)</li>
+		<li>
+			🔧 Nav: Fehlerbehebung beim Aufklappen von Untermenü's
+			<ul>
+				<li>
+					❗ Link: Umsetzung des <kol-link _href="/docs/konzepte/expert-slot" _label="Expert-Slot-Konzepts"></kol-link> bei allen Button- und Link-Komponenten
+					<kol-alert _type="info">
+						Auch wenn jetzt das Property <code>_label</code> erforderlich ist, funktionieren alle per Slot eingefügten Link-Texte weiterhin. Wir empfehlen in
+						Zukunft wie vorgesehen das _label-Property anstatt den Slot zu verwenden. Mit dem nächsten Major-Release werden wir die Abwärtskompatibilität bei
+						der Link-Komponente (unamed-Slot) entfernen.
+					</kol-alert>
+				</li>
+			</ul>
+		</li>
+		<li>
+			🌟 Website: Umstellung der Homepage von KoliBri (<kol-link _href="/blog/seo-optimierung" _label="SEO-Optimierung"></kol-link>)
+		</li>
+		<li>
+			🌟 Fokus: Alle interaktiven Komponenten (Button, Link, Input usw.) sind jetzt von außen fokussierbar (<code>focus()</code>).
+		</li>
+	</ul>
+</kol-details>
+
+### 1.1.15 - 20.12.2022
+
+<kol-details _summary="Änderungen">
 	<ul>
 		<li>🔧 Table: Wenn die Tabelle leer ist, dann wird die Pagination ausgeblendet.</li>
 		<li>🚹 Table: Verbesserung der Auszeichnung bei leeren Tabellen</li>
@@ -84,7 +110,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.14 - 06.12.2022
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _summary="Änderungen">
 	<ul>
 		<li>
 			❗ Themes: Theme der Hansestadt Hamburg "umgezogen" (
@@ -101,7 +127,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 ### 1.1.13 - 05.12.2022
 
-<kol-details _summary="Änderungen" _open>
+<kol-details _summary="Änderungen">
 	<ul>
 		<li>🔧 Form-Events: Event-Handling für Submit optimiert (target: HTMLFormElement)</li>
 		<li>🔧 Dev-Tools: Verbesserung der Consolen-Hinweise bei Validierungsfehlern</li>
@@ -209,7 +235,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 			Es müssen alle Icofont-Identifier beim `_icon`-Property einfach um den Prefix `icofont-` ergänzt werden.
 			<ul>
 				<li>
-					Regex: <code>_icon="([^"]+)"</code> oder <code>_icon=&#123;'([^"]+)'&#125;"</code>
+					Regex: <code>_icon="([^"]+)"</code> oder <code>_icon=&#92;&#123;'([^"]+)'&#92;&#125;"</code>
 				</li>
 				<li>
 					Replacement: <code>_icon="icofont-$1"</code>

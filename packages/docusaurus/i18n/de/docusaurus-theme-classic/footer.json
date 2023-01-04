@@ -13,7 +13,7 @@
   },
   "link.item.label.Dokumentation": {
     "message": "Dokumentation",
-    "description": "The label of footer link with label=Dokumentation linking to /docs/welcome"
+    "description": "The label of footer link with label=Dokumentation linking to /docs/willkommen"
   },
   "link.item.label.Blog": {
     "message": "Blog",
@@ -58,5 +58,9 @@
   "link.item.label.Mastodon": {
     "message": "Mastodon",
     "description": "The label of footer link with label=Mastodon linking to https://social.bund.de/kolibri"
+  },
+  "link.item.label.Impressum": {
+    "message": "Impressum",
+    "description": "The label of footer link with label=Impressum linking to /docs/impressum"
   }
 }

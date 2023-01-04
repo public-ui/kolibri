@@ -19,7 +19,7 @@
 		}
 	],
 	"scripts": {
-		"build": "slidev build --base /presentation",
+		"build": "rimraf dist && slidev build --base /dist && node scripts/fix-underline.js && mv dist/assets/_commonjsHelpers* dist/assets/commonjsHelpers.js",
 		"dev": "slidev --open",
 		"export": "slidev export",
 		"prepack": "npm run build",
@@ -41,6 +41,7 @@
 		"npm-check-updates": "16.6.2",
 		"playwright-chromium": "1.29.1",
 		"prettier": "2.8.1",
+		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3"
 	},
 	"files": [

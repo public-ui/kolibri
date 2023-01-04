@@ -152,6 +152,20 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	private setSortDirection = (sort: KoliBriSortFunction, direction: KoliBriSortDirection) => {
+		/**
+		 * Durch des Clearen, ist es nicht möglich eine Mehr-Spalten-Sortierung
+		 * darzustellen. Das wäre der Fall, wenn man ggf. Daten in außerhalb der
+		 * Komponente sortiert und diese sortiert von außen rein gibt und der
+		 * Sortierungsalgorithmus mehrere Spalten zusammen sortierte.
+		 *
+		 * Beachte auch col.sort !== this.sortFunction
+		 */
+		this.sortDirections.clear();
+		this.sortDirections.set(sort, direction);
+		this.sortFunction = sort;
+	};
+
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
@@ -182,7 +196,14 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 							headers.horizontal?.forEach((header) => {
 								header.forEach((cell) => {
 									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
-										this.sortDirections.set(cell.sort, cell.sortDirection);
+										this.setSortDirection(cell.sort, cell.sortDirection);
+									}
+								});
+							});
+							headers.vertical?.forEach((header) => {
+								header.forEach((cell) => {
+									if (typeof cell.sort === 'function' && typeof cell.sortDirection === 'string') {
+										this.setSortDirection(cell.sort, cell.sortDirection);
 									}
 								});
 							});
@@ -563,13 +584,16 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 														}}
 														aria-sort={
 															typeof col.sort === 'function'
-																? this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																? col.sort !== this.sortFunction ||
+																  this.sortDirections.get(col.sort) === 'NOS' ||
+																  this.sortDirections.get(col.sort) === undefined
 																	? 'none'
 																	: this.sortDirections.get(col.sort) === 'ASC'
 																	? 'ascending'
 																	: 'descending'
 																: undefined
 														}
+														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
 													>
 														<div class="w-full flex gap-1 items-center">
 															<div
@@ -587,7 +611,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	exportparts="button,ghost"
 																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
 																	_icon={
-																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																		col.sort !== this.sortFunction ||
+																		this.sortDirections.get(col.sort) === 'NOS' ||
+																		this.sortDirections.get(col.sort) === undefined
 																			? 'fas fa-sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
 																			? 'fas fa-sort-up'
@@ -601,13 +627,13 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																				this.sortFunction = col.sort;
 																				switch (this.sortDirections.get(this.sortFunction)) {
 																					case 'ASC':
-																						this.sortDirections.set(this.sortFunction, 'DESC');
+																						this.setSortDirection(this.sortFunction, 'DESC');
 																						break;
 																					case 'DESC':
-																						this.sortDirections.set(this.sortFunction, 'NOS');
+																						this.setSortDirection(this.sortFunction, 'NOS');
 																						break;
 																					default:
-																						this.sortDirections.set(this.sortFunction, 'ASC');
+																						this.setSortDirection(this.sortFunction, 'ASC');
 																				}
 																				this.updateSortedData();
 																			}
@@ -643,13 +669,16 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 														}}
 														aria-sort={
 															typeof col.sort === 'function'
-																? this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																? col.sort !== this.sortFunction ||
+																  this.sortDirections.get(col.sort) === 'NOS' ||
+																  this.sortDirections.get(col.sort) === undefined
 																	? 'none'
 																	: this.sortDirections.get(col.sort) === 'ASC'
 																	? 'ascending'
 																	: 'descending'
 																: undefined
 														}
+														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
 													>
 														<div class="w-full flex gap-1 items-center">
 															<div
@@ -667,7 +696,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	exportparts="button,ghost"
 																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
 																	_icon={
-																		this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+																		col.sort !== this.sortFunction ||
+																		this.sortDirections.get(col.sort) === 'NOS' ||
+																		this.sortDirections.get(col.sort) === undefined
 																			? 'fas fa-sort'
 																			: this.sortDirections.get(col.sort) === 'ASC'
 																			? 'fas fa-sort-up'
@@ -681,13 +712,13 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																				this.sortFunction = col.sort;
 																				switch (this.sortDirections.get(this.sortFunction)) {
 																					case 'ASC':
-																						this.sortDirections.set(this.sortFunction, 'DESC');
+																						this.setSortDirection(this.sortFunction, 'DESC');
 																						break;
 																					case 'DESC':
-																						this.sortDirections.set(this.sortFunction, 'NOS');
+																						this.setSortDirection(this.sortFunction, 'NOS');
 																						break;
 																					default:
-																						this.sortDirections.set(this.sortFunction, 'ASC');
+																						this.setSortDirection(this.sortFunction, 'ASC');
 																				}
 																				this.updateSortedData();
 																			}

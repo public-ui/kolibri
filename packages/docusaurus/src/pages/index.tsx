@@ -88,10 +88,8 @@ export default function Homepage(): JSX.Element {
 						</strong>{' '}
 						und wurde vom{' '}
 						<strong>
-							<KolLink _href="https://itzbund.de" _target="itzbund">
-								Informationstechnikzentrum Bund
-							</KolLink>
-						</strong>
+							<KolLink _href="https://itzbund.de" _label="Informationstechnikzentrum Bund" _target="itzbund"></KolLink>
+						</strong>{' '}
 						Open&nbsp;Source zur Wiederverwendung und Weiterentwicklung freigegeben.
 					</p>
 				</div>

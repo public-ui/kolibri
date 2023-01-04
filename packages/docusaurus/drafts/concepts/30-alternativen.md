@@ -21,6 +21,19 @@ tags:
 
 [astro]: https://docs.astro.build/de/guides/integrations-guide/lit/
 
+Gegenüberstellung Lion und KoliBri
+
+| Merkmal            |     Lion     | KoliBri |
+| :----------------- | :----------: | ------- |
+| Frameworks         |     Lit      | Stencil |
+| Accessibility      |      👍      | 👍      |
+| Web Component (WC) |      👍      | 👍      |
+| Single-Source      |      👍      | 👍      |
+| SSG WC             |      👍      | 👍      |
+| SSR WC             | 👍 ([Astro]) | (👎)    |
+| Framework-Adapter  |      👎      | 👍      |
+| SSR WC CMS         |      👎      | 👎      |
+
 - https://github.com/divriots/spooky/issues/12 (answered)
 - https://github.com/phil-bell/slum-ui/issues/16
 - https://github.com/carlosmmdiaz/cmmd-web/issues/1

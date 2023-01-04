@@ -15,12 +15,9 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				<p>
-					Die semantisch barrierefreien und robusten Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet
-					werden. Mittels des{' '}
-					<KolLink _href="/designer" _target="designer">
-						Designers
-					</KolLink>{' '}
-					können die Komponenten an beliebige Styleguides oder Designs angepasst werden.
+					Die semantisch barrierefreien Web Components können nahtlos in anderen Komponenten-Bibliotheken oder Design Systemen wiederverwendet werden. Mittels
+					des <KolLink _href="/designer" _label="Designers" _target="designer"></KolLink> können die Komponenten an beliebige Styleguides oder Designs angepasst
+					werden.
 				</p>
 			</>
 		),
@@ -32,9 +29,8 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				<p>
-					Die semantisch barrierefreien und robusten Web Components lassen sich nahtlos in webbasierten Projekten wiederverwenden. Neben der direkten Verwendung
-					der Web Components bieten wir auch Framework-Adapter für Angular, React, Preact und Solid an. Und es geht noch{' '}
-					<KolLink _href="docs/get-started/frameworks">mehr</KolLink> !
+					Die robusten Web Components (Shadow-Root) lassen sich in allen webbasierten Projekten wiederverwenden. Neben der direkten Verwendung der Web
+					Components bieten wir auch Framework-Adapter für Angular, React, Preact und Solid an.
 				</p>
 			</>
 		),
@@ -46,9 +42,8 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				<p>
-					Die Komponentenvielfalt umfasst mittlerweile mehr als <KolLink _href="docs/components">40 Komponenten</KolLink> mit einem hohen Funktionsumfang für
-					die Umsetzung verschiedenster Fachanwendungen. Mit jedem Release verbessern, erweitern und optimieren wir die Fähigkeiten unserer
-					Komponenten-Bibliothek.
+					Getrieben von eigenen Projekten umfasst die Komponentenvielfalt mittlerweile mehr als 40 Komponenten mit einem hohen Funktionsumfang zur Umsetzung
+					verschiedenster Fachanwendungen und Darstellung von webbasierten Inhalten.
 				</p>
 			</>
 		),
