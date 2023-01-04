@@ -33,7 +33,7 @@
 	],
 	"name": "KoliBri | Public-UI",
 	"short_name": "KoliBri",
-	"orientation": "portrait",
+	"orientation": "any",
 	"display": "standalone",
 	"start_url": "/",
 	"description": "...",
