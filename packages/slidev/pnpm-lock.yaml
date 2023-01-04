@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.16-rc.1
-  '@public-ui/core': 1.1.16-rc.1
-  '@public-ui/themes': 1.1.16-rc.1
+  '@public-ui/components': 1.1.16-rc.2
+  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/themes': 1.1.16-rc.2
   '@slidev/cli': 0.38.2
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
@@ -18,9 +18,9 @@ specifiers:
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-ui/components': 1.1.16-rc.1
-  '@public-ui/core': 1.1.16-rc.1
-  '@public-ui/themes': 1.1.16-rc.1_5nowwgcneyehyobpg4rfka67y4
+  '@public-ui/components': 1.1.16-rc.2
+  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/themes': 1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
   slidev-theme-light-icons: 1.0.2_2cexd2gl5wuj3aokcs3pzy7t7a
@@ -47,7 +47,7 @@ packages:
   /@alvarosabu/ui/2.19.0:
     resolution: {integrity: sha512-hnO9W14ArFJ58GgQehO8G3ItQa7rClSVqcO0P3gFXvVjoWSujEwIr3mKm818vuYVQpDpjDSwokpufdypPDhH6A==}
     dependencies:
-      '@vueuse/core': 9.9.0_vue@3.2.45
+      '@vueuse/core': 9.10.0_vue@3.2.45
       vue: 3.2.45
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -695,7 +695,7 @@ packages:
       globby: 13.1.3
       hash-sum: 2.0.0
       ignore: 5.2.4
-      jiti: 1.16.0
+      jiti: 1.16.1
       knitwork: 1.0.0
       lodash.template: 4.5.0
       mlly: 1.0.0
@@ -705,7 +705,7 @@ packages:
       semver: 7.3.8
       unctx: 2.1.1
       unimport: 1.1.0
-      untyped: 1.2.0
+      untyped: 1.2.1
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -718,7 +718,7 @@ packages:
       c12: 1.1.0
       create-require: 1.1.1
       defu: 6.1.1
-      jiti: 1.16.0
+      jiti: 1.16.1
       pathe: 1.0.0
       pkg-types: 1.0.1
       postcss-import-resolver: 2.0.0
@@ -726,7 +726,7 @@ packages:
       std-env: 3.3.1
       ufo: 1.0.1
       unimport: 1.1.0
-      untyped: 1.2.0
+      untyped: 1.2.1
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -760,32 +760,32 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
 
-  /@public-ui/components/1.1.16-rc.1:
-    resolution: {integrity: sha512-+vVC8jjBqcwdP4FlvhVlYh9L9J4RTTpNU3xCktRjsTq+jEHV37suJMzvWIVy7d4LPH4h1EE2S09WzKpSbLB3DA==}
+  /@public-ui/components/1.1.16-rc.2:
+    resolution: {integrity: sha512-88GSFVg5oZ5pfxh17OclwdWttjbVaU67Q2tCpqdHy1SW13YyWbiMAwfRPZNEN8XO/IIXV/SlVKxkCTpTuq4DqQ==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.1
+      '@public-ui/schema': 1.1.16-rc.2
     dev: false
 
-  /@public-ui/core/1.1.16-rc.1:
-    resolution: {integrity: sha512-DUFSxQlJMHweOLdcGEX8HkpDarFiO1db+6aN2BcGNva6CsWUOW7pHUf9NXYWYHd3f5cP0bfUxIi3aNz8Cfzvjw==}
+  /@public-ui/core/1.1.16-rc.2:
+    resolution: {integrity: sha512-xCuOg8O5sCs9ZjuJRy+QWdABDdUB77h/zJmyF0Iu2QmrFdBLmoFywTikvwTwoRWzLwlxq9dhgCjJLYGsTqz4KA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/schema/1.1.16-rc.1:
-    resolution: {integrity: sha512-OvEkn/F8+ZHjanM76ZdDS0kSH4CWIhXUPScC8uGMooPtC5X6ZfN/b741pHvSPMzbtdmBqH0qYOD57jSL/v7naQ==}
+  /@public-ui/schema/1.1.16-rc.2:
+    resolution: {integrity: sha512-BKDvUmUpqZZSNGxgxyNbuocIwz2AxFvQ9wKM08y9pWLQRjaLTAZ5/W1Pke6OTkwfq3+acNDu8hHDOcUphr0d9w==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.1
+      '@public-ui/core': 1.1.16-rc.2
     dev: false
 
-  /@public-ui/themes/1.1.16-rc.1_5nowwgcneyehyobpg4rfka67y4:
-    resolution: {integrity: sha512-IRYIFGWGltRtDAuAb78O+IIkUzk3YNlR49eJ1BgkeFK0VQXaSNR/XLu94agChNn+r9YlJDIZcqhFX3fBRHB1Yg==}
+  /@public-ui/themes/1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa:
+    resolution: {integrity: sha512-42+FnUL5R133kfSrnOpeWrafrOi+MhZ7Gmq8vD9FuIaXUmZsGuGvpQfC9IqzIsQOH6/p5iQK7VS3IA9NCNcbPw==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.1
+      '@public-ui/components': 1.1.16-rc.2
     dependencies:
-      '@public-ui/components': 1.1.16-rc.1
-      '@public-ui/schema': 1.1.16-rc.1
+      '@public-ui/components': 1.1.16-rc.2
+      '@public-ui/schema': 1.1.16-rc.2
     dev: false
 
   /@rollup/pluginutils/4.2.1:
@@ -841,7 +841,7 @@ packages:
       global-dirs: 3.0.1
       import-from: 4.0.0
       is-installed-globally: 0.4.0
-      jiti: 1.16.0
+      jiti: 1.16.1
       js-base64: 3.7.3
       katex: 0.15.6
       kolorist: 1.6.0
@@ -913,7 +913,7 @@ packages:
       global-dirs: 3.0.1
       import-from: 4.0.0
       is-installed-globally: 0.4.0
-      jiti: 1.16.0
+      jiti: 1.16.1
       js-base64: 3.7.3
       katex: 0.16.4
       kolorist: 1.6.0
@@ -992,7 +992,7 @@ packages:
       global-dirs: 3.0.1
       import-from: 4.0.0
       is-installed-globally: 0.4.0
-      jiti: 1.16.0
+      jiti: 1.16.1
       js-base64: 3.7.3
       katex: 0.16.4
       kolorist: 1.6.0
@@ -1065,7 +1065,7 @@ packages:
       connect: 3.7.0
       fast-glob: 3.2.12
       fs-extra: 10.1.0
-      jiti: 1.16.0
+      jiti: 1.16.1
       js-base64: 3.7.3
       kolorist: 1.6.0
       markdown-it: 12.3.2
@@ -1174,9 +1174,9 @@ packages:
       '@slidev/parser': 0.37.1
       '@slidev/types': 0.37.1
       '@unocss/reset': 0.46.5
-      '@vueuse/core': 9.9.0_vue@3.2.45
+      '@vueuse/core': 9.10.0_vue@3.2.45
       '@vueuse/head': 0.9.8_vue@3.2.45
-      '@vueuse/math': 9.9.0_vue@3.2.45
+      '@vueuse/math': 9.10.0_vue@3.2.45
       '@vueuse/motion': 2.0.0-beta.26_vue@3.2.45
       codemirror: 5.65.11
       defu: 6.1.1
@@ -1213,9 +1213,9 @@ packages:
       '@slidev/parser': 0.38.2
       '@slidev/types': 0.38.2
       '@unocss/reset': 0.47.6
-      '@vueuse/core': 9.9.0_vue@3.2.45
+      '@vueuse/core': 9.10.0_vue@3.2.45
       '@vueuse/head': 1.0.22_vue@3.2.45
-      '@vueuse/math': 9.9.0_vue@3.2.45
+      '@vueuse/math': 9.10.0_vue@3.2.45
       '@vueuse/motion': 2.0.0-beta.26_vue@3.2.45
       codemirror: 5.65.11
       defu: 6.1.1
@@ -1885,12 +1885,12 @@ packages:
       vue: 3.2.45
       vue-demi: 0.13.11_vue@3.2.45
 
-  /@vueuse/core/9.9.0_vue@3.2.45:
-    resolution: {integrity: sha512-JdDb7TrE0imZnwBhMF4+0PCJqGD3AxzH8S2sfk54P0rqvklK+EAtAR/mPb1HwV/JPujQFQJhghQ190Yq03YpVw==}
+  /@vueuse/core/9.10.0_vue@3.2.45:
+    resolution: {integrity: sha512-CxMewME07qeuzuT/AOIQGv0EhhDoojniqU6pC3F8m5VC76L47UT18DcX88kWlP3I7d3qMJ4u/PD8iSRsy3bmNA==}
     dependencies:
       '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.9.0
-      '@vueuse/shared': 9.9.0_vue@3.2.45
+      '@vueuse/metadata': 9.10.0
+      '@vueuse/shared': 9.10.0_vue@3.2.45
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -1920,7 +1920,7 @@ packages:
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@vueuse/shared': 9.9.0_vue@3.2.45
+      '@vueuse/shared': 9.10.0_vue@3.2.45
       '@zhead/schema': 0.8.5
       '@zhead/schema-vue': 0.8.5_vue@3.2.45
       vue: 3.2.45
@@ -1939,10 +1939,10 @@ packages:
       '@unhead/vue': 1.0.14_vue@3.2.45
       vue: 3.2.45
 
-  /@vueuse/math/9.9.0_vue@3.2.45:
-    resolution: {integrity: sha512-+zK0YETmTwlduIiUdkanvsijJclA917npnR5TQ162/H1dGW7aNRIdRwqYT/MrSefkaj9uZt/kM7XTfgHvGfw0Q==}
+  /@vueuse/math/9.10.0_vue@3.2.45:
+    resolution: {integrity: sha512-DvCyQFhXToPgZzSs841TCylIVwuab5gNErjdFCNWX3vs+T3rC8wMnlaBCYTXb5g4ruqm6K/hBnHyalRnCj/VbQ==}
     dependencies:
-      '@vueuse/shared': 9.9.0_vue@3.2.45
+      '@vueuse/shared': 9.10.0_vue@3.2.45
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -1951,16 +1951,16 @@ packages:
   /@vueuse/metadata/8.9.4:
     resolution: {integrity: sha512-IwSfzH80bnJMzqhaapqJl9JRIiyQU0zsRGEgnxN6jhq7992cPUJIRfV+JHRIZXjYqbwt07E1gTEp0R0zPJ1aqw==}
 
-  /@vueuse/metadata/9.9.0:
-    resolution: {integrity: sha512-pgxsUJv/d7IjKpLeB6TthggEsaBwM3ffc5jPrr5TmxAm/fup0mGR5VTzrdA/PSx85tpb+CIvP92D+55qBNc8ag==}
+  /@vueuse/metadata/9.10.0:
+    resolution: {integrity: sha512-G5VZhgTCapzU9rv0Iq2HBrVOSGzOKb+OE668NxhXNcTjUjwYxULkEhAw70FtRLMZc+hxcFAzDZlKYA0xcwNMuw==}
 
   /@vueuse/motion/2.0.0-beta.26_vue@3.2.45:
     resolution: {integrity: sha512-HCrCRT7I9zsSO3BxVFCqgxWh28i1N/qc6MJ5xvfydoLKD0RS+4oFjTGXPV0ao4YhRu14ESZzzhXuBwzI7M9j1A==}
     peerDependencies:
       vue: '>=3.0.0'
     dependencies:
-      '@vueuse/core': 9.9.0_vue@3.2.45
-      '@vueuse/shared': 9.9.0_vue@3.2.45
+      '@vueuse/core': 9.10.0_vue@3.2.45
+      '@vueuse/shared': 9.10.0_vue@3.2.45
       csstype: 3.1.1
       framesync: 6.1.2
       popmotion: 11.0.5
@@ -1996,8 +1996,8 @@ packages:
       vue: 3.2.45
       vue-demi: 0.13.11_vue@3.2.45
 
-  /@vueuse/shared/9.9.0_vue@3.2.45:
-    resolution: {integrity: sha512-+D0XFwHG0T+uaIbCSlROBwm1wzs71B7n3KyDOxnvfEMMHDOzl09rYKwaE2AENmYwYPXfHPbSBRDD2gBVHbvTcg==}
+  /@vueuse/shared/9.10.0_vue@3.2.45:
+    resolution: {integrity: sha512-vakHJ2ZRklAzqmcVBL38RS7BxdBA4+5poG9NsSyqJxrt9kz0zX3P5CXMy0Hm6LFbZXUgvKdqAS3pUH1zX/5qTQ==}
     dependencies:
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
@@ -2008,7 +2008,7 @@ packages:
     resolution: {integrity: sha512-O9SsC110b1Ik3YYa4Ck/0TWuCo7YFfA9KDrwD5sAeqscT5COIGK1HszdCT3oh0MJFej2wNrvpfyW9h6yQaW6PA==}
     dependencies:
       debug: 4.3.4
-      jiti: 1.16.0
+      jiti: 1.16.1
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
@@ -2019,7 +2019,7 @@ packages:
       '@antfu/utils': 0.1.7
       debug: 4.3.4
       fast-glob: 3.2.12
-      jiti: 1.16.0
+      jiti: 1.16.1
       magic-string: 0.25.9
       micromatch: 4.0.5
       windicss: 3.5.6
@@ -2051,7 +2051,7 @@ packages:
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@vueuse/shared': 9.9.0_vue@3.2.45
+      '@vueuse/shared': 9.10.0_vue@3.2.45
       '@zhead/schema': 0.7.4
       vue: 3.2.45
     transitivePeerDependencies:
@@ -2063,7 +2063,7 @@ packages:
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@vueuse/shared': 9.9.0_vue@3.2.45
+      '@vueuse/shared': 9.10.0_vue@3.2.45
       '@zhead/schema': 0.8.5
       '@zhead/schema-raw': 0.8.5
       vue: 3.2.45
@@ -2281,7 +2281,7 @@ packages:
       defu: 6.1.1
       dotenv: 16.0.3
       giget: 1.0.0
-      jiti: 1.16.0
+      jiti: 1.16.1
       mlly: 1.0.0
       pathe: 1.0.0
       pkg-types: 1.0.1
@@ -3535,8 +3535,8 @@ packages:
   /estree-walker/2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
 
-  /estree-walker/3.0.1:
-    resolution: {integrity: sha512-woY0RUD87WzMBUiZLx8NsYr23N5BKsOMZHhu2hoNRVh6NXGfoiT1KOL8G3UHlJAnEDGmfa5ubNA/AacfG+Kb0g==}
+  /estree-walker/3.0.2:
+    resolution: {integrity: sha512-C03BvXCQIH/po+PNPONx/zSM9ziPr9weX8xNhYb/IJtdJ9z+L4z9VKPTB+UTHdmhnIopA2kc419ueyVyHVktwA==}
     optional: true
 
   /execa/5.1.1:
@@ -4122,8 +4122,8 @@ packages:
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  /jiti/1.16.0:
-    resolution: {integrity: sha512-L3BJStEf5NAqNuzrpfbN71dp43mYIcBUlCRea/vdyv5dW/AYa1d4bpelko4SHdY3I6eN9Wzyasxirj1/vv5kmg==}
+  /jiti/1.16.1:
+    resolution: {integrity: sha512-kJUp4Bj44uTaZAwG6R2/GjbodOWHULn8Swue0B7tY8v5BpTkUvDR+zBM5tsbC4x/jCeYDZ+mAdrUIScwIo4oPw==}
     hasBin: true
 
   /jju/1.4.0:
@@ -5879,13 +5879,13 @@ packages:
     dependencies:
       '@antfu/utils': 0.5.2
       defu: 6.1.1
-      jiti: 1.16.0
+      jiti: 1.16.1
 
   /unctx/2.1.1:
     resolution: {integrity: sha512-RffJlpvLOtolWsn0fxXsuSDfwiWcR6cyuykw2e0+zAggvGW1SesXt9WxIWlWpJhwVCZD/WlxxLqKLS50Q0CkWA==}
     dependencies:
       acorn: 8.8.1
-      estree-walker: 3.0.1
+      estree-walker: 3.0.2
       magic-string: 0.26.7
       unplugin: 1.0.1
     optional: true
@@ -6143,8 +6143,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /untyped/1.2.0:
-    resolution: {integrity: sha512-nG0A55YEhUU5UCEM+nhIhCVkA8a4L1spIVtzO0937WDjEA6jrKpu184O2K9iv5UuJNHnwhu+Q3TXiSJh/JrjlQ==}
+  /untyped/1.2.1:
+    resolution: {integrity: sha512-hEtBC6MvqXLEEpx5ItPhnpgHIf3hRP310IYHj7N3D5zjdLJnmJNsGRDFbovk6DM2dekF/OBWuxDr0b6479eUkA==}
     dependencies:
       '@babel/core': 7.20.7
       '@babel/standalone': 7.20.11
