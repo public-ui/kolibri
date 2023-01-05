@@ -61,10 +61,13 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			)}
 			${
 				typeof props._target === 'string' && props._target !== '_self'
-					? getIconHtml({
-							_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
-							_icon: 'fa-solid fa-arrow-up-right-from-square',
-					  })
+					? getIconHtml(
+							{
+								_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
+								_icon: 'fa-solid fa-arrow-up-right-from-square',
+							},
+							' class="external-link"'
+					  )
 					: ''
 			}
     </a>
