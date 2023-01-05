@@ -21,12 +21,12 @@
 		":unpublish": "lerna exec --stream -- pnpm :unpublish"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "17.3.0",
-		"@commitlint/config-conventional": "17.3.0",
+		"@commitlint/cli": "17.4.0",
+		"@commitlint/config-conventional": "17.4.0",
 		"@types/node": "18.11.18",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.3",
-		"husky": "8.0.2",
+		"husky": "8.0.3",
 		"lerna": "6.3.0",
 		"license-report": "6.3.0",
 		"lint-staged": "13.1.0",

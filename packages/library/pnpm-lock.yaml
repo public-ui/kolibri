@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.16-rc.2
-  '@public-ui/schema': 1.1.16-rc.2
+  '@public-ui/core': 1.1.16-rc.4
+  '@public-ui/schema': 1.1.16-rc.4
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 3.0.0-beta.0
   '@stencil/postcss': 2.1.0
   '@stencil/react-output-target': 0.3.1
-  '@stencil/sass': 2.0.1
+  '@stencil/sass': 2.0.2
   '@stencil/solid-output-target': file:node_martin/stencil-solid-output-target-0.0.1.tgz
   '@stencil/svelte-output-target': 0.0.3
   '@stencil/vue-output-target': 0.6.2
@@ -51,15 +51,15 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.1.16-rc.2
+  '@public-ui/schema': 1.1.16-rc.4
 
 devDependencies:
-  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/core': 1.1.16-rc.4
   '@stencil/angular-output-target': 0.4.0_@stencil+core@3.0.0-beta.0
   '@stencil/core': 3.0.0-beta.0
   '@stencil/postcss': 2.1.0_@stencil+core@3.0.0-beta.0
   '@stencil/react-output-target': 0.3.1_@stencil+core@3.0.0-beta.0
-  '@stencil/sass': 2.0.1_@stencil+core@3.0.0-beta.0
+  '@stencil/sass': 2.0.2_@stencil+core@3.0.0-beta.0
   '@stencil/solid-output-target': file:node_martin/stencil-solid-output-target-0.0.1.tgz_@stencil+core@3.0.0-beta.0
   '@stencil/svelte-output-target': 0.0.3_@stencil+core@3.0.0-beta.0
   '@stencil/vue-output-target': 0.6.2_@stencil+core@3.0.0-beta.0
@@ -1627,16 +1627,16 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.1.16-rc.2:
-    resolution: {integrity: sha512-xCuOg8O5sCs9ZjuJRy+QWdABDdUB77h/zJmyF0Iu2QmrFdBLmoFywTikvwTwoRWzLwlxq9dhgCjJLYGsTqz4KA==}
+  /@public-ui/core/1.1.16-rc.4:
+    resolution: {integrity: sha512-7XdwjwbiKgpfJNaHye/xV4AtX95P4Tk4Vezff1SIZ3fO9zkvqP6XAbYjlPExi65QGsu5GhFOSXJU8VyqqOoetQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
 
-  /@public-ui/schema/1.1.16-rc.2:
-    resolution: {integrity: sha512-BKDvUmUpqZZSNGxgxyNbuocIwz2AxFvQ9wKM08y9pWLQRjaLTAZ5/W1Pke6OTkwfq3+acNDu8hHDOcUphr0d9w==}
+  /@public-ui/schema/1.1.16-rc.4:
+    resolution: {integrity: sha512-PJFXqClbKl/n4c0G0+voXd8VK+l3ZxA2mpo2eH7wxLN3T1tSdiXklm9XM7E9/aPMOb1MsdOib/agP2HcIxWANw==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.2
+      '@public-ui/core': 1.1.16-rc.4
     dev: false
 
   /@rollup/plugin-babel/5.3.1_quedi3p7womesqmjrcxptomfpa:
@@ -1795,8 +1795,8 @@ packages:
       '@stencil/core': 3.0.0-beta.0
     dev: true
 
-  /@stencil/sass/2.0.1_@stencil+core@3.0.0-beta.0:
-    resolution: {integrity: sha512-66ZsqBIcK7B8Awjh7RfMVC6Q1OQPlQDNHqqBfMccH9iZiuUunDL9rzrIZAoUWHjjrxWocMMQR5YieTQSreC9DQ==}
+  /@stencil/sass/2.0.2_@stencil+core@3.0.0-beta.0:
+    resolution: {integrity: sha512-+hdPubxA4cBEyJR0ge0aGl9FUr0y6e4yqcsfrxkocOT6Nv+Mi+QpfZ9kx1W3ECL640VRcHqQifPcnoauvmqPZg==}
     peerDependencies:
       '@stencil/core': '>=2.0.0'
     dependencies:

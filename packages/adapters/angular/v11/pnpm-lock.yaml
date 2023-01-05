@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14
   '@angular/core': 11.2.14
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/components': 1.1.16-rc.4
+  '@public-ui/core': 1.1.16-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14_5xxvadz4tf2tlq4hiwi2uyyjke
   '@angular/core': 11.2.14_rxjs@6.5.5+zone.js@0.11.8
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/components': 1.1.16-rc.4
+  '@public-ui/core': 1.1.16-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -328,23 +328,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.1.16-rc.2:
-    resolution: {integrity: sha512-88GSFVg5oZ5pfxh17OclwdWttjbVaU67Q2tCpqdHy1SW13YyWbiMAwfRPZNEN8XO/IIXV/SlVKxkCTpTuq4DqQ==}
+  /@public-ui/components/1.1.16-rc.4:
+    resolution: {integrity: sha512-gKfQMJ5V+XG4mG81OGlvcd0+N/2ZPUsn8WNPoOS1Dtg4bOLLuEkBCj37bTS/AS9U870BCYOYl0vcbynGqu2Liw==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.2
+      '@public-ui/schema': 1.1.16-rc.4
     dev: true
 
-  /@public-ui/core/1.1.16-rc.2:
-    resolution: {integrity: sha512-xCuOg8O5sCs9ZjuJRy+QWdABDdUB77h/zJmyF0Iu2QmrFdBLmoFywTikvwTwoRWzLwlxq9dhgCjJLYGsTqz4KA==}
+  /@public-ui/core/1.1.16-rc.4:
+    resolution: {integrity: sha512-7XdwjwbiKgpfJNaHye/xV4AtX95P4Tk4Vezff1SIZ3fO9zkvqP6XAbYjlPExi65QGsu5GhFOSXJU8VyqqOoetQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.1.16-rc.2:
-    resolution: {integrity: sha512-BKDvUmUpqZZSNGxgxyNbuocIwz2AxFvQ9wKM08y9pWLQRjaLTAZ5/W1Pke6OTkwfq3+acNDu8hHDOcUphr0d9w==}
+  /@public-ui/schema/1.1.16-rc.4:
+    resolution: {integrity: sha512-PJFXqClbKl/n4c0G0+voXd8VK+l3ZxA2mpo2eH7wxLN3T1tSdiXklm9XM7E9/aPMOb1MsdOib/agP2HcIxWANw==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.2
+      '@public-ui/core': 1.1.16-rc.4
     dev: true
 
   /@types/minimatch/5.1.2:
