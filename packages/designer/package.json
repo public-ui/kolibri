@@ -67,7 +67,7 @@
 		"depcheck": "1.4.3",
 		"eslint-plugin-jsx-a11y": "6.6.1",
 		"eslint-plugin-no-loops": "0.3.0",
-		"nightwatch-axe-verbose": "2.0.4",
+		"nightwatch-axe-verbose": "2.1.0",
 		"playwright": "1.29.1",
 		"prettier": "2.8.1",
 		"rimraf": "3.0.2",
