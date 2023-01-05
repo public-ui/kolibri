@@ -58,7 +58,7 @@
 		"@public-ui/components": "1.1.16-rc.2",
 		"@public-ui/core": "1.1.16-rc.2",
 		"@public-ui/react": "1.1.16-rc.2",
-		"@public-ui/themes": "1.1.16-rc.2",
+		"@public-ui/themes": "1.1.16-rc.3",
 		"@storybook/addon-a11y": "6.5.15",
 		"@storybook/addon-actions": "6.5.15",
 		"@storybook/addon-backgrounds": "6.5.15",
