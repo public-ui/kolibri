@@ -53,7 +53,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_iconOnly
 							_label="GitHub-Repository"
 							_tooltipAlign="left"
-							_target="github"
+							// _target="github"
 							_variant="ghost"
 						></KolLinkButton>
 					</div>
@@ -64,7 +64,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_iconOnly
 							_label="Cheat-Sheet öffnen"
 							_tooltipAlign="left"
-							_target="cheat-sheet"
+							// _target="cheat-sheet"
 							_variant="ghost"
 						></KolLinkButton>
 					</div>
@@ -75,7 +75,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_iconOnly
 							_label="Designer öffnen"
 							_tooltipAlign="left"
-							_target="designer"
+							// _target="designer"
 							_variant="ghost"
 						></KolLinkButton>
 					</div>
@@ -86,7 +86,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_iconOnly
 							_label="Präsentation anschauen"
 							_tooltipAlign="left"
-							_target="presentation"
+							// _target="presentation"
 							_variant="ghost"
 						></KolLinkButton>
 					</div>
@@ -97,7 +97,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_iconOnly
 							_label="Discord-Chat"
 							_tooltipAlign="left"
-							_target="discord"
+							// _target="discord"
 							_variant="ghost"
 						></KolLinkButton>
 					</div>
@@ -108,7 +108,7 @@ export const NavbarWrapper: FunctionComponent<PropsWithChildren> = (props: { chi
 							_iconOnly
 							_label="Mastodon-Profil"
 							_tooltipAlign="left"
-							_target="mastodon"
+							// _target="mastodon"
 							_variant="ghost"
 						></KolLinkButton>
 					</div>
