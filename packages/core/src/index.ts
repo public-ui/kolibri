@@ -1,7 +1,6 @@
 import type { Generic, LoaderCallback, RegisterOptions } from '@a11y-ui/core';
 import { register as coreRegister } from '@a11y-ui/core';
-
-import { TranslationService } from './i18n';
+import { I18nextService } from './i18n';
 
 export * from '@a11y-ui/core';
 
@@ -16,18 +15,14 @@ export const register = (
 	try {
 		if (window.A11yUi === undefined) {
 			Object.defineProperty(window, 'A11yUi', {
-				value: {},
+				value: {
+					I18n: new I18nextService(options?.translation?.name ?? 'de', options?.translations),
+				},
 				writable: false,
 			});
 		}
-		Object.defineProperty(window.A11yUi, 'TranslationService', {
-			value: new TranslationService(options?.translations || [], options?.translation?.name),
-			writable: false,
-		});
 	} catch (e) {
 		// das Laden der Sprache ist optional
 	}
 	return coreRegister(themes, loaders, options);
 };
-
-export const getTranslationService = () => window.A11yUi?.TranslationService;
