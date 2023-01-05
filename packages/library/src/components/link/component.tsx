@@ -133,6 +133,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						'flex flex-wrap items-center': this.state._iconOnly === false,
 						'grid text-center': this.state._iconOnly === true,
 						'skip ': this.state._stealth !== false,
+						'icon-only': this.state._iconOnly === true,
 					}}
 					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
@@ -154,6 +155,9 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						*/}
 						<slot name="expert" slot="expert" />
 					</kol-span-wc>
+					{typeof this.state._target === 'string' && this.state._target !== '_self' && (
+						<kol-icon _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
+					)}
 				</a>
 				<kol-tooltip
 					/**

@@ -1,6 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { LinkProps } from '../../../types/button-link';
 import { isEmptyOrPrefixOf } from '../../../utils/validator';
+import { getIconHtml } from '../../icon/test/html.mock';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
@@ -43,7 +44,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
     <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
 		props._iconOnly === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
 	} class="${props._stealth === true ? ' skip' : ''}${props._useCase === 'nav' ? '' : ' kol-visited'}${
-		props._iconOnly === true ? ' grid text-center' : ' flex flex-wrap items-center'
+		props._iconOnly === true ? ' icon-only grid text-center' : ' flex flex-wrap items-center'
 	}" href="${typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'}" part="link ${
 		typeof props._part === 'string' ? props._part : ''
 	}"${typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
@@ -58,6 +59,14 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				},
 				''
 			)}
+			${
+				typeof props._target === 'string' && props._target !== '_self'
+					? getIconHtml({
+							_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
+							_icon: 'fa-solid fa-arrow-up-right-from-square',
+					  })
+					: ''
+			}
     </a>
     ${getTooltipHtml({
 			_align: props._tooltipAlign,

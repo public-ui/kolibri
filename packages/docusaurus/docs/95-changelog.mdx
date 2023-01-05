@@ -47,7 +47,9 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Input: Zeichenzähler für alle Texteingabefelder</li>
 		<li>🔧 Checkbox: Checkbox und mit beliebigen Icon statt "Border-Häkchen"</li>
 		<li>🔧 Slot-Konzept: Weitere Komponenten umstellen (Input-Labels)</li>
-		<li>🌟 ButtonLink unterstützt das `target`-Property</li>
+		<li>
+			🌟 ButtonLink unterstützt das <code>target</code>-Property
+		</li>
 		<li>🌟 DX: Vollständig einheitliche Properties und deren Verwendung über alle Komponenten</li>
 		<li>👩‍🎨 Theming: Designer um CDN-Feature erweitern</li>
 		<li>👩‍🎨 Theming: Designer CSS-Properties und "Globales CSS" trennen</li>
@@ -55,13 +57,17 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Radio: Untersuchung des zu großen Spacing</li>
 		<li>🔧 Radio & SingleSelect: Zusammenführen?!</li>
 		<li>🔧 CheckboxGroup & MultiSelect: Zusammenführen?!</li>
+		<li>🔧 Tabs: Tab-Change aufrufen, sobald die Tab-Selection eine Korrektur durchführt</li>
 	</ul>
 </kol-details>
 
-### 1.1.16 - 04.01.2023
+### 1.1.16 - 05.01.2023
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
+		<li>
+			🔧 Tabs: <code>_on</code>-Property vom Tab-Typ entfernt (unused)
+		</li>
 		<li>🔧 Table: Optimierung der Sortierungsanzeige (Pfeilrichtungen)</li>
 		<li>🔧 Table: Optimierung des Renderings</li>
 		<li>🔧 Table: Style-Korrektur im MAPZ-Theme (Border)</li>
@@ -211,8 +217,12 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	<kol-heading _level={5}>Änderungen</kol-heading>
 	<ul>
 		<li>Alle internen Icons wurden von Icofont auf Font-Awesome (free) umgestellt</li>
-		<li>Alle Komponent-Properties mit dem Typ `Icofont` wurden auf den Typ `KoliBriIconProp` umgestellt</li>
-		<li>Angaben für `_icon` in den Apps müssen den Prefix `icofont-` erhalten, wenn alles so bleiben soll.</li>
+		<li>
+			Alle Komponent-Properties mit dem Typ <code>Icofont</code> wurden auf den Typ <code>KoliBriIconProp</code> umgestellt
+		</li>
+		<li>
+			Angaben für <code>_icon</code> in den Apps müssen den Prefix <code>icofont-</code> erhalten, wenn alles so bleiben soll.
+		</li>
 		<li>
 			Das Property <code>_icon-align</code> bzw. <code>_iconAlign</code> wurde als <code>deprecated</code> markiert und wird mit dem nächsten Major-Release
 			entfernt.
@@ -232,7 +242,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	<p>Die Migration gestaltet sich sehr einfach, da nur folgende zwei Stellen ggf. angepassen werden müssen.</p>
 	<ul>
 		<li>
-			Es müssen alle Icofont-Identifier beim `_icon`-Property einfach um den Prefix `icofont-` ergänzt werden.
+			Es müssen alle Icofont-Identifier beim <code>_icon</code>-Property einfach um den Prefix <code>icofont-</code> ergänzt werden.
 			<ul>
 				<li>
 					Regex: <code>_icon="([^"]+)"</code> oder <code>_icon=&#92;&#123;'([^"]+)'&#92;&#125;"</code>
@@ -476,7 +486,9 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>👩‍🎨 Font: Roboto-Dateien für Theme MAPZ hinzugefügt (⚠️ Assets aus Theme-Paket neu in Projekte übernehmen!)</li>
 		<li>🔥 Open Source: Es sind die Hinweise zur Open Source-Freigabe zu beachten (s.o.)!</li>
 		<li>🌟 KolModal: Schließen mit ESC</li>
-		<li>🔥 CSR: Der ToasterService ist nur client-seitig relevant und muss mit dem `Document` instanziiert werden.</li>
+		<li>
+			🔥 CSR: Der ToasterService ist nur client-seitig relevant und muss mit dem <code>Document</code> instanziiert werden.
+		</li>
 		<li>🌟 SSR: Entkopplung vom Window und Document für Server-Side-Rendering</li>
 		<li>🌟 Designer ist jetzt im Care-Package enthalten</li>
 		<li>🔧 InputText: Search-Event-Handling optimiert</li>
@@ -516,7 +528,9 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <kol-details _summary="Änderungen">
 	<ul>
-		<li>🔧 Console: `console.log`'s entfernt</li>
+		<li>
+			🔧 Console: <code>console.log</code>'s entfernt
+		</li>
 	</ul>
 </kol-details>
 
@@ -535,7 +549,9 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Radio & Select: Fehlersuche bei Auswahl der ersten Option</li>
 		<li>🔥 Leanup-Adapter: Aus DDD-Gründen wird die LeanInputAdapter- durch die LeanInputAdapter-Komponente ersetzt (s. @leanup/kolibri-components)</li>
 		<li>🌟 Table: Das Lesen und Setzen der Seitenlänge von Außen ermöglichen.</li>
-		<li>🔥 Pagination: Anstatt die Anzahl der Schalte muss jetzt die Anzahl der verwalteten Einträge angegeben werden. (`_count` ist deprecated)</li>
+		<li>
+			🔥 Pagination: Anstatt die Anzahl der Schalte muss jetzt die Anzahl der verwalteten Einträge angegeben werden. (<code>_count</code> ist deprecated)
+		</li>
 		<li>🌟 Pagination: Wurde um ein optionales Auswahlfeld für die angezeigten Elemente pro Seite erweitert.</li>
 		<li>🌟 Select: SelectOptions unterstützen mehr Typen als Value</li>
 		<li>🔧 Pagination: Pfeile optional abschaltbar machen.</li>

@@ -110,6 +110,7 @@ graph TD;
   kol-link-group --> kol-link
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
+  kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
