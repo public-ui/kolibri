@@ -55,7 +55,7 @@
 		"@leanup/kolibri-components": "1.0.5",
 		"@leanup/kolibri-react": "1.0.5",
 		"@public-oss/kolibri-themes": "0.0.1",
-		"@public-ui/components": "1.1.16-rc.2",
+		"@public-ui/components": "1.1.16-rc.3",
 		"@public-ui/core": "1.1.16-rc.2",
 		"@public-ui/react": "1.1.16-rc.2",
 		"@public-ui/themes": "1.1.16-rc.2",
