@@ -1,71 +1,60 @@
 import { Generic } from '@a11y-ui/core';
-import { BehaviorSubject } from 'rxjs';
+import i18next, { i18n } from 'i18next';
 
-export class TranslationService<Prefix extends string, Key extends string> {
-	private subject: BehaviorSubject<Record<string, string | undefined>> = new BehaviorSubject({});
+interface IOptional {
+	/**
+	 * The number of items to determine an counted text.
+	 */
+	count?: number;
+}
 
-	private currentLocale!: Generic.I18n.Locale.ISO_639_1;
-	private language: Map<Generic.I18n.Locale.ISO_639_1, Record<string, string | undefined>> = new Map();
+export interface II18nService {
+	/**
+	 * Determines a human-readable translated text for the given resource key.
+	 * @param key the resource key
+	 * @param optional optional parameters
+	 * @returns the translated text
+	 */
+	translate: (key: string, optional?: IOptional) => string;
+}
+
+export class I18nextService implements II18nService {
+	private i18next: i18n;
 
 	constructor(
-		maps:
-			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>
-			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>[]
-			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>>,
-		locale?: Generic.I18n.Locale.ISO_639_1
+		lng: Generic.I18n.Locale.ISO_639_1,
+		translations?:
+			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
+			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
+			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>
 	) {
-		const registeredLocales = this.registerTranslation(maps);
-		this.setLocale(locale || registeredLocales[0] || 'de');
-	}
+		this.i18next = i18next;
 
-	private patchTranslation = <Locale extends Generic.I18n.Locale.ISO_639_1>(language: Locale, translationMap: Generic.I18n.Map<Prefix, Key>): Locale => {
-		let currentMap = this.language.get(language);
-		if (currentMap === null) {
-			currentMap = { ...translationMap };
-		} else {
-			currentMap = { ...currentMap, ...translationMap };
+		if (Array.isArray(translations)) {
+			translations = new Set(translations);
+		} else if (typeof translations === 'function') {
+			translations = new Set([translations]);
 		}
-		return language;
-	};
 
-	public readonly observe = this.subject.asObservable();
+		if (!this.i18next.isInitialized) {
+			void this.i18next.init({
+				lng,
+			});
+		}
 
-	public addTranslation(
-		maps:
-			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>
-			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>[]
-			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>>
-	) {
-		this.registerTranslation(maps);
-		this.setLocale(this.currentLocale);
-	}
+		const patchTranslation = (language: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<string, string>) => {
+			this.i18next.addResources(language, 'base', translationMap);
+			return language;
+		};
 
-	public setLocale(locale: Generic.I18n.Locale.ISO_639_1) {
-		this.currentLocale = locale;
-		if (this.language.has(locale)) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			this.subject.next({ ...this.language.get(locale)! });
-		} else {
-			throw new Error('');
+		if (translations !== undefined) {
+			translations.forEach((t) => t(patchTranslation));
 		}
 	}
 
-	private registerTranslation(
-		maps:
-			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>
-			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>[]
-			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, Prefix, Key>>
-	): Generic.I18n.Locale.ISO_639_1[] {
-		if (Array.isArray(maps)) {
-			maps = new Set(maps);
-		} else if (typeof maps === 'function') {
-			maps = new Set([maps]);
-		}
-
-		const locales: Generic.I18n.Locale.ISO_639_1[] = [];
-		maps.forEach((map) => {
-			locales.push(map(this.patchTranslation));
+	public translate(key: string, optional?: IOptional) {
+		return this.i18next.t(key, {
+			count: optional?.count,
 		});
-		return locales;
 	}
 }
