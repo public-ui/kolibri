@@ -1,5 +1,0 @@
-{
-	"packages": ["packages/components", "packages/schema", "packages/storybook"],
-	"useNx": false,
-	"version": "0.0.0"
-}

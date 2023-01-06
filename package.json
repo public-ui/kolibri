@@ -12,7 +12,7 @@
 		"postinstall": "lerna exec --stream -- pnpm i --no-frozen-lockfile",
 		"prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npx lerna run lint\" && husky add .husky/pre-commit \"npx lerna run format\" && husky add .husky/pre-commit \"pnpm ts-prune\"",
 		"publish": "lerna exec --stream -- pnpm publish",
-		"ts-prune": "lerna exec --ignore @public-ui/docusaurus --ignore @public-ui/slidev --stream -- ts-prune src",
+		"ts-prune": "lerna exec --stream -- ts-prune src",
 		"depcheck": "lerna exec --stream -- depcheck --ignore-bin-package --skip-missing",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",

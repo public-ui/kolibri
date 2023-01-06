@@ -207,6 +207,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop({ reflect: true }) public _fill?: boolean = false;
 
@@ -247,6 +249,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _part?: string;
 
@@ -257,11 +261,15 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _selector?: string;
 
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop({ reflect: true }) public _stealth?: boolean = false;
 
@@ -287,11 +295,15 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt an, ob die Links unterstrichen dargestellt werden.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop({ reflect: true }) public _underline?: boolean = true;
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _useCase?: LinkUseCase = 'text';
 

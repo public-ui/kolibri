@@ -94,10 +94,10 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 };
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-export type RequiredButtonLinkStates = RequiredButtonAndLinkStates & {
+type RequiredButtonLinkStates = RequiredButtonAndLinkStates & {
 	type: KoliBriButtonType;
 };
-export type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
+type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 	KoliBriButtonVariantCustomClass & {
 		/**
 		 * @deprecated Zweck?!
@@ -135,18 +135,36 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
  */
 export type RequiredLinkProps = RequiredButtonAndLinkProps;
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	fill: boolean;
 	href: string;
 	/**
 	 * @deprecated Verwende stattdessen einen Button _showAs=link.
 	 */
 	on: LinkOnCallbacks;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	part: string;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	selector: string;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	underline: boolean;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	useCase: LinkUseCase;
 };
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
@@ -154,18 +172,36 @@ export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkP
 export type RequiredLinkStates = RequiredButtonAndLinkStates;
 export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	fill: boolean;
 	href: string;
 	/**
 	 * @deprecated Verwende stattdessen einen Button _showAs=link.
 	 */
 	on: LinkOnCallbacks;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	part: string;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	selector: string;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	underline: boolean;
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 */
 	useCase: LinkUseCase;
 };
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;

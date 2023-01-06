@@ -7,7 +7,6 @@ import {
 	KoliBriButtonVariant,
 	LinkButtonStates,
 	LinkTarget,
-	LinkUseCase,
 	OptionalLinkButtonProps,
 	OptionalLinkButtonStates,
 	RequiredLinkButtonProps,
@@ -61,21 +60,15 @@ export class KolLinkButton
 					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
-					_fill={this._fill}
 					_href={this._href}
 					_icon={this._icon}
 					_iconOnly={this._iconOnly}
 					_label={this._label}
-					_part={this._part}
 					_role={this._role}
-					_selector={this._selector}
-					_stealth={this._stealth}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
-					_underline={this._underline}
-					_useCase={this._useCase}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</kol-link-wc>
@@ -123,11 +116,6 @@ export class KolLinkButton
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-	 */
-	@Prop({ reflect: true }) public _fill?: boolean = false;
-
-	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href?: string = '';
@@ -148,24 +136,9 @@ export class KolLinkButton
 	@Prop() public _label!: string;
 
 	/**
-	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-	 */
-	@Prop() public _part?: string;
-
-	/**
 	 * Gibt an, welche Role der Schalter hat.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
-
-	/**
-	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-	 */
-	@Prop() public _selector?: string;
-
-	/**
-	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-	 */
-	@Prop({ reflect: true }) public _stealth?: boolean = false;
 
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -186,16 +159,6 @@ export class KolLinkButton
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignment = 'right';
-
-	/**
-	 * Gibt an, ob die Links unterstrichen dargestellt werden.
-	 */
-	@Prop({ reflect: true }) public _underline?: boolean = true;
-
-	/**
-	 * Gibt den Verwendungsfall des Links an.
-	 */
-	@Prop() public _useCase?: LinkUseCase = 'text';
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.

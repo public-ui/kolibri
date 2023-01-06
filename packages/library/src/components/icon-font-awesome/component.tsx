@@ -55,6 +55,8 @@ export class KolIconFontAwesome implements Generic.Element.Members<RequiredProps
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+	/**
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _part?: string;
 }
