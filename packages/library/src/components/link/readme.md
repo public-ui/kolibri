@@ -145,6 +145,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 graph TD;
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
+  kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge

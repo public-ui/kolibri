@@ -1,24 +1,24 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/components': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.6
+  solid-js: 1.6.7
   typescript: 4.9.4
   unbuild: 1.0.2
 
 devDependencies:
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
+  '@public-ui/components': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.6
+  solid-js: 1.6.7
   typescript: 4.9.4
   unbuild: 1.0.2
 
@@ -314,23 +314,23 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.1.16-rc.2:
-    resolution: {integrity: sha512-88GSFVg5oZ5pfxh17OclwdWttjbVaU67Q2tCpqdHy1SW13YyWbiMAwfRPZNEN8XO/IIXV/SlVKxkCTpTuq4DqQ==}
+  /@public-ui/components/1.1.16-rc.6:
+    resolution: {integrity: sha512-zx4arzHklX7t5cokPpS7SXLVbIr3K8+BzkgLACuKKHcwEoo0onXmQmZQEgRwu45+odxJYsOq0KsnOvYrg2sCgQ==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.2
+      '@public-ui/schema': 1.1.16-rc.6
     dev: true
 
-  /@public-ui/core/1.1.16-rc.2:
-    resolution: {integrity: sha512-xCuOg8O5sCs9ZjuJRy+QWdABDdUB77h/zJmyF0Iu2QmrFdBLmoFywTikvwTwoRWzLwlxq9dhgCjJLYGsTqz4KA==}
+  /@public-ui/core/1.1.16-rc.6:
+    resolution: {integrity: sha512-7KC8GHriBShdBofm4SHrhJdg8bT5VZppJA8xhZ04lRARWvzetwmSxXpYDJhjVj8RVA653oRSKIGBAgZL20ysyA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.1.16-rc.2:
-    resolution: {integrity: sha512-BKDvUmUpqZZSNGxgxyNbuocIwz2AxFvQ9wKM08y9pWLQRjaLTAZ5/W1Pke6OTkwfq3+acNDu8hHDOcUphr0d9w==}
+  /@public-ui/schema/1.1.16-rc.6:
+    resolution: {integrity: sha512-PModDkcWYM/zjcRaSSTBgVxPUlM9HryTwFI8Eu3SifalRdr2v5TXJ+53UY6lO/ZcEB9QrDQr0Ji4irMKS2juFQ==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.2
+      '@public-ui/core': 1.1.16-rc.6
     dev: true
 
   /@rollup/plugin-alias/4.0.2_rollup@3.9.1:
@@ -1233,8 +1233,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /solid-js/1.6.6:
-    resolution: {integrity: sha512-5x33mEbPI8QLuywvFjQP4krjWDr8xiYFgZx9KCBH7b0ZzypQCHaUubob7bK6i+1u6nhaAqhWtvXS587Kb8DShA==}
+  /solid-js/1.6.7:
+    resolution: {integrity: sha512-yLLw9mtTqPEEPxmZfAHZi3DyP25XnQZ42+mDYuzhAdeqa+8EDuNKyxOXKY7PEFddCqp1G2UQI5O3JiJtE7yxBQ==}
     dependencies:
       csstype: 3.1.1
     dev: true

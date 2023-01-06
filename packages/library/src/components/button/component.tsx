@@ -93,9 +93,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					{...this.state._on}
 					onClick={this.onClick}
 					role={this.state._role}
-					style={{
-						width: 'inherit',
-					}}
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>

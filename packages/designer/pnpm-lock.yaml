@@ -7,10 +7,10 @@ specifiers:
   '@leanup/stack-webpack': 1.3.41
   '@playwright/test': 1.29.1
   '@public-oss/kolibri-themes': 0.0.1
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
-  '@public-ui/solid': 1.1.16-rc.2
-  '@public-ui/themes': 1.1.16-rc.2
+  '@public-ui/components': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.6
+  '@public-ui/solid': 1.1.16-rc.6
+  '@public-ui/themes': 1.1.16-rc.6
   '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.48.0
   '@unocss/webpack': 0.48.0
@@ -20,12 +20,12 @@ specifiers:
   eslint-plugin-no-loops: 0.3.0
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1
-  nightwatch-axe-verbose: 2.0.4
+  nightwatch-axe-verbose: 2.1.0
   playwright: 1.29.1
   prettier: 2.8.1
   register-service-worker: 1.7.2
   rimraf: 3.0.2
-  solid-js: 1.6.6
+  solid-js: 1.6.7
   ts-prune: 0.10.3
   typescript: 4.9.4
   webpack-pwa-manifest: 4.3.0
@@ -33,21 +33,21 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@leanup/kolibri-themes': 0.0.6_vzn6gfsjvylobqtbzkwiwdutoa
-  '@public-oss/kolibri-themes': 0.0.1_vzn6gfsjvylobqtbzkwiwdutoa
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
-  '@public-ui/solid': 1.1.16-rc.2_3ohuec2f6zsnuurq7dx7sf43xi
-  '@public-ui/themes': 1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa
+  '@leanup/kolibri-themes': 0.0.6_3zfwf3wd246xbn76xrh3lij6bu
+  '@public-oss/kolibri-themes': 0.0.1_3zfwf3wd246xbn76xrh3lij6bu
+  '@public-ui/components': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.6
+  '@public-ui/solid': 1.1.16-rc.6_7454hav42escj6wluqv7ckyc3e
+  '@public-ui/themes': 1.1.16-rc.6_3zfwf3wd246xbn76xrh3lij6bu
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1_monaco-editor@0.34.1
   register-service-worker: 1.7.2
-  solid-js: 1.6.6
+  solid-js: 1.6.7
   world_countries_lists: 2.6.0
 
 devDependencies:
   '@leanup/stack': 1.3.41_ezbnoogsa5ins2tcqsw6oii36i
-  '@leanup/stack-solid': 1.3.41_solid-js@1.6.6
+  '@leanup/stack-solid': 1.3.41_solid-js@1.6.7
   '@leanup/stack-webpack': 1.3.41_@leanup+stack@1.3.41
   '@playwright/test': 1.29.1
   '@types/prettier': 2.7.2
@@ -57,7 +57,7 @@ devDependencies:
   depcheck: 1.4.3
   eslint-plugin-jsx-a11y: 6.6.1
   eslint-plugin-no-loops: 0.3.0
-  nightwatch-axe-verbose: 2.0.4
+  nightwatch-axe-verbose: 2.1.0
   playwright: 1.29.1
   prettier: 2.8.1
   rimraf: 3.0.2
@@ -2066,12 +2066,12 @@ packages:
       - webpack
     dev: true
 
-  /@leanup/kolibri-themes/0.0.6_vzn6gfsjvylobqtbzkwiwdutoa:
+  /@leanup/kolibri-themes/0.0.6_3zfwf3wd246xbn76xrh3lij6bu:
     resolution: {integrity: sha512-iJ3yPeeUClaF7/eDBacDHq4TFXpfOMe0XGl0VmWLVu0h1+94IITJDmxmAa7VtcdoLvyI9f9RkynXhE2XwEEU4Q==}
     peerDependencies:
       '@public-ui/components': '*'
     dependencies:
-      '@public-ui/components': 1.1.16-rc.2
+      '@public-ui/components': 1.1.16-rc.6
       '@public-ui/schema': 1.1.11
     dev: false
 
@@ -2082,7 +2082,7 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@leanup/stack-solid/1.3.41_solid-js@1.6.6:
+  /@leanup/stack-solid/1.3.41_solid-js@1.6.7:
     resolution: {integrity: sha512-+XTpJRmhNIq1q/CFTymWG/sO9O5Ij1wu4zq4nG1lGy2tFvwYGNCimf2b5HlxKW2xJqxUV8tS9hQWqHVt0bWn7w==}
     engines: {node: '>=14 <=18', npm: '>=6 <=8'}
     peerDependencies:
@@ -2091,8 +2091,8 @@ packages:
       '@leanup/cli-core-babel': 1.3.41
       '@snowpack/plugin-babel': 2.1.7
       babel-preset-solid: 1.6.6
-      solid-js: 1.6.6
-      vite-plugin-solid: 2.5.0_solid-js@1.6.6
+      solid-js: 1.6.7
+      vite-plugin-solid: 2.5.0_solid-js@1.6.7
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -2233,19 +2233,19 @@ packages:
       playwright-core: 1.29.1
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.1_vzn6gfsjvylobqtbzkwiwdutoa:
+  /@public-oss/kolibri-themes/0.0.1_3zfwf3wd246xbn76xrh3lij6bu:
     resolution: {integrity: sha512-wKZQ8alYuOfj7PVP+Ew6g9XgsL4NzLJvJlEtLC6bikL4J3qyXua8MgIZPO3dkoUpqwxpeH0U6QMYj0larSTEsg==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.1.16-rc.2
+      '@public-ui/components': 1.1.16-rc.6
       '@public-ui/schema': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/components/1.1.16-rc.2:
-    resolution: {integrity: sha512-88GSFVg5oZ5pfxh17OclwdWttjbVaU67Q2tCpqdHy1SW13YyWbiMAwfRPZNEN8XO/IIXV/SlVKxkCTpTuq4DqQ==}
+  /@public-ui/components/1.1.16-rc.6:
+    resolution: {integrity: sha512-zx4arzHklX7t5cokPpS7SXLVbIr3K8+BzkgLACuKKHcwEoo0onXmQmZQEgRwu45+odxJYsOq0KsnOvYrg2sCgQ==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.2
+      '@public-ui/schema': 1.1.16-rc.6
     dev: false
 
   /@public-ui/core/1.1.11:
@@ -2264,8 +2264,8 @@ packages:
       rxjs: 7.5.7
     dev: false
 
-  /@public-ui/core/1.1.16-rc.2:
-    resolution: {integrity: sha512-xCuOg8O5sCs9ZjuJRy+QWdABDdUB77h/zJmyF0Iu2QmrFdBLmoFywTikvwTwoRWzLwlxq9dhgCjJLYGsTqz4KA==}
+  /@public-ui/core/1.1.16-rc.6:
+    resolution: {integrity: sha512-7KC8GHriBShdBofm4SHrhJdg8bT5VZppJA8xhZ04lRARWvzetwmSxXpYDJhjVj8RVA653oRSKIGBAgZL20ysyA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
@@ -2284,29 +2284,29 @@ packages:
       '@public-ui/core': 1.1.13-rc.9
     dev: false
 
-  /@public-ui/schema/1.1.16-rc.2:
-    resolution: {integrity: sha512-BKDvUmUpqZZSNGxgxyNbuocIwz2AxFvQ9wKM08y9pWLQRjaLTAZ5/W1Pke6OTkwfq3+acNDu8hHDOcUphr0d9w==}
+  /@public-ui/schema/1.1.16-rc.6:
+    resolution: {integrity: sha512-PModDkcWYM/zjcRaSSTBgVxPUlM9HryTwFI8Eu3SifalRdr2v5TXJ+53UY6lO/ZcEB9QrDQr0Ji4irMKS2juFQ==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.2
+      '@public-ui/core': 1.1.16-rc.6
     dev: false
 
-  /@public-ui/solid/1.1.16-rc.2_3ohuec2f6zsnuurq7dx7sf43xi:
-    resolution: {integrity: sha512-pBHww6t3HBNGfkKEqQtijj3bjMlb7uu/2t2FM+CUvybNlBtxsuJAPE1QYL/PKzzQ3Uv63b7PchyLZaiDlcCOUA==}
+  /@public-ui/solid/1.1.16-rc.6_7454hav42escj6wluqv7ckyc3e:
+    resolution: {integrity: sha512-fmZD/EvSZXpyUrkPPMl6bUN4J1YIpQWFy3CsY8wyP5mXztg8C8lW8oPBEEV6YrBv36/pC60mHZsLA/OHA09mTQ==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.2
+      '@public-ui/components': 1.1.16-rc.6
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.1.16-rc.2
-      solid-js: 1.6.6
+      '@public-ui/components': 1.1.16-rc.6
+      solid-js: 1.6.7
     dev: false
 
-  /@public-ui/themes/1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa:
-    resolution: {integrity: sha512-42+FnUL5R133kfSrnOpeWrafrOi+MhZ7Gmq8vD9FuIaXUmZsGuGvpQfC9IqzIsQOH6/p5iQK7VS3IA9NCNcbPw==}
+  /@public-ui/themes/1.1.16-rc.6_3zfwf3wd246xbn76xrh3lij6bu:
+    resolution: {integrity: sha512-LSIco1hv940z1HgOYAHb9fNoNYN/3Bk6aLRKb/hE8WL5RlVbvXPxgzGMvpjjvHQ2gR4igbz9XQagIamTx79enw==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.2
+      '@public-ui/components': 1.1.16-rc.6
     dependencies:
-      '@public-ui/components': 1.1.16-rc.2
-      '@public-ui/schema': 1.1.16-rc.2
+      '@public-ui/components': 1.1.16-rc.6
+      '@public-ui/schema': 1.1.16-rc.6
     dev: false
 
   /@rollup/plugin-babel/5.3.1_quedi3p7womesqmjrcxptomfpa:
@@ -6818,8 +6818,8 @@ packages:
       axe-core: 4.6.1
     dev: true
 
-  /nightwatch-axe-verbose/2.0.4:
-    resolution: {integrity: sha512-/zN2KPC5rFWoiNvTJKQ1/1qqI9MMaOJ1y58FcxAKtQLU6kgcCNXD+lAKFK/4PjG6gv0S+JoR/gS5NBjhcn70Mw==}
+  /nightwatch-axe-verbose/2.1.0:
+    resolution: {integrity: sha512-j31VB0wdv/HXoQWWAJsvNc9UenXzXf1u/QsvExCUDuFOMR4GRg3963wlPIxd2ME47egXsnkXPd1dl8Ozdk7XHA==}
     dependencies:
       axe-core: 4.6.1
     dev: true
@@ -7971,12 +7971,12 @@ packages:
       websocket-driver: 0.7.4
     dev: true
 
-  /solid-js/1.6.6:
-    resolution: {integrity: sha512-5x33mEbPI8QLuywvFjQP4krjWDr8xiYFgZx9KCBH7b0ZzypQCHaUubob7bK6i+1u6nhaAqhWtvXS587Kb8DShA==}
+  /solid-js/1.6.7:
+    resolution: {integrity: sha512-yLLw9mtTqPEEPxmZfAHZi3DyP25XnQZ42+mDYuzhAdeqa+8EDuNKyxOXKY7PEFddCqp1G2UQI5O3JiJtE7yxBQ==}
     dependencies:
       csstype: 3.1.1
 
-  /solid-refresh/0.4.1_solid-js@1.6.6:
+  /solid-refresh/0.4.1_solid-js@1.6.7:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
       solid-js: ^1.3
@@ -7984,7 +7984,7 @@ packages:
       '@babel/generator': 7.20.7
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.20.7
-      solid-js: 1.6.6
+      solid-js: 1.6.7
     dev: true
 
   /source-list-map/2.0.1:
@@ -8587,7 +8587,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-plugin-solid/2.5.0_solid-js@1.6.6:
+  /vite-plugin-solid/2.5.0_solid-js@1.6.7:
     resolution: {integrity: sha512-VneGd3RyFJvwaiffsqgymeMaofn0IzQLPwDzafTV2f1agoWeeJlk5VrI5WqT9BTtLe69vNNbCJWqLhHr9fOdDw==}
     peerDependencies:
       solid-js: ^1.3.17 || ^1.4.0 || ^1.5.0 || ^1.6.0
@@ -8597,8 +8597,8 @@ packages:
       '@babel/preset-typescript': 7.18.6_@babel+core@7.20.7
       babel-preset-solid: 1.6.6_@babel+core@7.20.7
       merge-anything: 5.1.4
-      solid-js: 1.6.6
-      solid-refresh: 0.4.1_solid-js@1.6.6
+      solid-js: 1.6.7
+      solid-refresh: 0.4.1_solid-js@1.6.7
       vitefu: 0.2.4
     transitivePeerDependencies:
       - supports-color

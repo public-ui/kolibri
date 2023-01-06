@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Events } from '../../enums/events';
 import { KoliBriIconProp } from '../../types/icon';
 
@@ -33,7 +33,6 @@ type OptionalTabButtonProps = {
 	disabled: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
-	on: KoliBriTabsCallbacks;
 	tooltipAlign: Alignment;
 };
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;

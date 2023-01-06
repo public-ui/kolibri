@@ -37,7 +37,7 @@ const OPTIONS: SelectOption<Theme>[] = [
 		value: 'mapz',
 	},
 	{
-		label: 'Freistaates Thüringen',
+		label: 'Freistaat Thüringen',
 		value: 'th',
 	},
 	{

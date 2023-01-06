@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
-  '@public-ui/themes': 1.1.16-rc.2
+  '@public-ui/components': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.6
+  '@public-ui/themes': 1.1.16-rc.6
   '@slidev/cli': 0.38.2
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
@@ -18,9 +18,9 @@ specifiers:
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-ui/components': 1.1.16-rc.2
-  '@public-ui/core': 1.1.16-rc.2
-  '@public-ui/themes': 1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa
+  '@public-ui/components': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.6
+  '@public-ui/themes': 1.1.16-rc.6_3zfwf3wd246xbn76xrh3lij6bu
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
   slidev-theme-light-icons: 1.0.2_2cexd2gl5wuj3aokcs3pzy7t7a
@@ -760,32 +760,32 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
 
-  /@public-ui/components/1.1.16-rc.2:
-    resolution: {integrity: sha512-88GSFVg5oZ5pfxh17OclwdWttjbVaU67Q2tCpqdHy1SW13YyWbiMAwfRPZNEN8XO/IIXV/SlVKxkCTpTuq4DqQ==}
+  /@public-ui/components/1.1.16-rc.6:
+    resolution: {integrity: sha512-zx4arzHklX7t5cokPpS7SXLVbIr3K8+BzkgLACuKKHcwEoo0onXmQmZQEgRwu45+odxJYsOq0KsnOvYrg2sCgQ==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.2
+      '@public-ui/schema': 1.1.16-rc.6
     dev: false
 
-  /@public-ui/core/1.1.16-rc.2:
-    resolution: {integrity: sha512-xCuOg8O5sCs9ZjuJRy+QWdABDdUB77h/zJmyF0Iu2QmrFdBLmoFywTikvwTwoRWzLwlxq9dhgCjJLYGsTqz4KA==}
+  /@public-ui/core/1.1.16-rc.6:
+    resolution: {integrity: sha512-7KC8GHriBShdBofm4SHrhJdg8bT5VZppJA8xhZ04lRARWvzetwmSxXpYDJhjVj8RVA653oRSKIGBAgZL20ysyA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/schema/1.1.16-rc.2:
-    resolution: {integrity: sha512-BKDvUmUpqZZSNGxgxyNbuocIwz2AxFvQ9wKM08y9pWLQRjaLTAZ5/W1Pke6OTkwfq3+acNDu8hHDOcUphr0d9w==}
+  /@public-ui/schema/1.1.16-rc.6:
+    resolution: {integrity: sha512-PModDkcWYM/zjcRaSSTBgVxPUlM9HryTwFI8Eu3SifalRdr2v5TXJ+53UY6lO/ZcEB9QrDQr0Ji4irMKS2juFQ==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.2
+      '@public-ui/core': 1.1.16-rc.6
     dev: false
 
-  /@public-ui/themes/1.1.16-rc.2_vzn6gfsjvylobqtbzkwiwdutoa:
-    resolution: {integrity: sha512-42+FnUL5R133kfSrnOpeWrafrOi+MhZ7Gmq8vD9FuIaXUmZsGuGvpQfC9IqzIsQOH6/p5iQK7VS3IA9NCNcbPw==}
+  /@public-ui/themes/1.1.16-rc.6_3zfwf3wd246xbn76xrh3lij6bu:
+    resolution: {integrity: sha512-LSIco1hv940z1HgOYAHb9fNoNYN/3Bk6aLRKb/hE8WL5RlVbvXPxgzGMvpjjvHQ2gR4igbz9XQagIamTx79enw==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.2
+      '@public-ui/components': 1.1.16-rc.6
     dependencies:
-      '@public-ui/components': 1.1.16-rc.2
-      '@public-ui/schema': 1.1.16-rc.2
+      '@public-ui/components': 1.1.16-rc.6
+      '@public-ui/schema': 1.1.16-rc.6
     dev: false
 
   /@rollup/pluginutils/4.2.1:

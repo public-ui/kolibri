@@ -7,18 +7,21 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
 
 ### Code
 
-```tsx
-<kol-abbr _title="Abkürzung" _tooltip-align="top">
-	Abbr
-</kol-abbr>
+```html
+Ich bin <kol-abbr _title="Abkürzung">z.B.</kol-abbr> eine Abkürzung.<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="right">z.B.</kol-abbr> eine Abkürzung (rechts).<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="bottom">z.B.</kol-abbr> eine Abkürzung (unten).<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="left">z.B.</kol-abbr> eine Abkürzung (links).<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="top">z.B.</kol-abbr> eine Abkürzung (oben).
 ```
 
 ### Beispiel
 
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
+Ich bin <kol-abbr _title="Abkürzung">z.B.</kol-abbr> eine Abkürzung.<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="right">z.B.</kol-abbr> eine Abkürzung (rechts).<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="bottom">z.B.</kol-abbr> eine Abkürzung (unten).<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="left">z.B.</kol-abbr> eine Abkürzung (links).<br />
+Ich bin <kol-abbr _title="Abkürzung" _tooltip-align="top">z.B.</kol-abbr> eine Abkürzung (oben).
 
 ## Verwendung
 

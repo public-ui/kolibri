@@ -55,6 +55,7 @@ Referenz: <https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden>
 - [kol-icon-font-awesome](../icon-font-awesome)
 - [kol-icon-icofont](../icon-icofont)
 - kol-input
+- kol-link-wc
 - kol-span-wc
 
 ### Graph
@@ -68,6 +69,7 @@ graph TD;
   kol-icon-font-awesome --> kol-icon
   kol-icon-icofont --> kol-icon
   kol-input --> kol-icon
+  kol-link-wc --> kol-icon
   kol-span-wc --> kol-icon
   style kol-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

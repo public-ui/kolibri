@@ -177,8 +177,8 @@ export type RequiredLinkButtonProps = RequiredLinkProps;
 export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantCustomClass;
 // type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
 
-export type RequiredLinkButtonStates = RequiredLinkStates;
-export type OptionalLinkButtonStates = OptionalLinkStates & KoliBriButtonVariantCustomClass;
+export type RequiredLinkButtonStates = unknown;
+export type OptionalLinkButtonStates = KoliBriButtonVariantCustomClass;
 export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
 export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: TooltipAlignment): void => {

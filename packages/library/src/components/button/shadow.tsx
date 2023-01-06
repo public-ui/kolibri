@@ -55,9 +55,6 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
 					_variant={this._variant}
-					style={{
-						width: 'inherit',
-					}}
 				>
 					<slot name="expert" slot="expert" />
 				</kol-button-wc>

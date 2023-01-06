@@ -282,11 +282,6 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
-          * @deprecated
-         */
-        "_iconAlign"?: Alignment;
-        /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
         "_iconOnly"?: boolean;
@@ -1585,11 +1580,6 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
-         */
-        "_iconAlign"?: Alignment;
-        /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
         "_iconOnly"?: boolean;
@@ -1597,11 +1587,6 @@ export namespace Components {
           * Gibt einen beschreibenden Text für das Text-Element an.
          */
         "_label": string;
-        /**
-          * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
-         */
-        "_on"?: LinkOnCallbacks;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
          */
@@ -2833,11 +2818,6 @@ declare namespace LocalJSX {
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
         "_icon"?: Stringified<KoliBriIconProp>;
-        /**
-          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
-          * @deprecated
-         */
-        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4137,11 +4117,6 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
-         */
-        "_iconAlign"?: Alignment;
-        /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
         "_iconOnly"?: boolean;
@@ -4149,11 +4124,6 @@ declare namespace LocalJSX {
           * Gibt einen beschreibenden Text für das Text-Element an.
          */
         "_label": string;
-        /**
-          * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
-         */
-        "_on"?: LinkOnCallbacks;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
          */
