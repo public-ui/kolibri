@@ -86,6 +86,7 @@ export class KolSelect implements ComponentApi {
 						multiple={this.state._multiple}
 						name={this.state._name}
 						required={this.state._required}
+						size={this.state._size}
 						slot="input"
 						spellcheck="false"
 						style={{
