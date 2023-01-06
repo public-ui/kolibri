@@ -71,11 +71,18 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					: ''
 			}
     </a>
-    ${getTooltipHtml({
-			_align: props._tooltipAlign,
-			_id: props._iconOnly === true || props._useCase === 'image' ? 'nonce' : undefined,
-			_label: props._iconOnly === true && typeof props._ariaLabel === 'string' ? props._ariaLabel : '',
-		})}
+		${
+			props._iconOnly === true || props._useCase === 'image'
+				? getTooltipHtml(
+						{
+							_align: props._tooltipAlign,
+							_id: props._iconOnly === true || props._useCase === 'image' ? 'nonce' : undefined,
+							_label: props._ariaLabel || props._label,
+						},
+						' aria-hidden="true"'
+				  )
+				: ''
+		}
     </kol-link-wc>
   </mock:shadow-root>
   ${innerHTML}

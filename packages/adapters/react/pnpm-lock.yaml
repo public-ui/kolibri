@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.16-rc.6
-  '@public-ui/core': 1.1.16-rc.6
+  '@public-ui/components': 1.1.16-rc.7
+  '@public-ui/core': 1.1.16-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -15,8 +15,8 @@ specifiers:
   unbuild: 0.8.11
 
 devDependencies:
-  '@public-ui/components': 1.1.16-rc.6
-  '@public-ui/core': 1.1.16-rc.6
+  '@public-ui/components': 1.1.16-rc.7
+  '@public-ui/core': 1.1.16-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -202,6 +202,13 @@ packages:
       '@babel/types': 7.20.7
     dev: true
 
+  /@babel/runtime/7.20.7:
+    resolution: {integrity: sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: true
+
   /@babel/standalone/7.20.12:
     resolution: {integrity: sha512-hK/X+m1il3w1tYS4H8LDaGCEdiT47SVqEXY8RiEAgou26BystipSU8ZL6EvBR6t5l7lTv0ilBiChXWblKJ5iUA==}
     engines: {node: '>=6.9.0'}
@@ -329,23 +336,24 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.1.16-rc.6:
-    resolution: {integrity: sha512-zx4arzHklX7t5cokPpS7SXLVbIr3K8+BzkgLACuKKHcwEoo0onXmQmZQEgRwu45+odxJYsOq0KsnOvYrg2sCgQ==}
+  /@public-ui/components/1.1.16-rc.7:
+    resolution: {integrity: sha512-KonCOFLyLlYr6mf1jMxL1M9Kav22NJ5acfi2qK7zpK/g8TlHWIdbK3hnrgNmZeR0sB8PV04fI/Y0JFT2KAd8RA==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.6
+      '@public-ui/schema': 1.1.16-rc.7
     dev: true
 
-  /@public-ui/core/1.1.16-rc.6:
-    resolution: {integrity: sha512-7KC8GHriBShdBofm4SHrhJdg8bT5VZppJA8xhZ04lRARWvzetwmSxXpYDJhjVj8RVA653oRSKIGBAgZL20ysyA==}
+  /@public-ui/core/1.1.16-rc.7:
+    resolution: {integrity: sha512-qRKJn5aFRINxl8go6TO1F8q70aVSqToHQjSl0FnZbTvii32sPLB9rlgZIRSxTYbXBJJy+O+yefwRDKDXH/HFZg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
+      i18next: 22.4.8
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.1.16-rc.6:
-    resolution: {integrity: sha512-PModDkcWYM/zjcRaSSTBgVxPUlM9HryTwFI8Eu3SifalRdr2v5TXJ+53UY6lO/ZcEB9QrDQr0Ji4irMKS2juFQ==}
+  /@public-ui/schema/1.1.16-rc.7:
+    resolution: {integrity: sha512-AK6cLzD/XpbUPY5u6Ls/HnGL85eYgstmJPIFMLjJzWr6/IH+a5SV7Hmx6kVuMv7aQt/F9YlGJrIE72Jfm3eGGw==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.6
+      '@public-ui/core': 1.1.16-rc.7
     dev: true
 
   /@rollup/plugin-alias/3.1.9_rollup@2.79.1:
@@ -1173,6 +1181,12 @@ packages:
     resolution: {integrity: sha512-6rOvaUiNKy9lET1X0ECnyZ5O5kSV0PJbtA5yZUgdEF7fGJEVwSLSislltyt7nFwVVALYHQJtfGeAR2Y0A0uJkg==}
     dev: true
 
+  /i18next/22.4.8:
+    resolution: {integrity: sha512-XSOy17ZWqflOiJRYE/dzv6vDle2Se32dnHREHb93UnZzZ1+UnvQ8yKtt1fpNL3zvXz5AwCqqixrtTVZmRetaiQ==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+    dev: true
+
   /ignore/5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
@@ -1454,6 +1468,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: true
+
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: true
 
   /resolve/1.22.1:

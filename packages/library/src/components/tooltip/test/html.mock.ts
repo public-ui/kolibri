@@ -3,7 +3,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { Props, States } from '../component';
 import { nonce } from '../../../utils/dev.utils';
 
-export const getTooltipHtml = (props: Props): string => {
+export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 	const state: States = mixMembers(
 		{
 			_align: 'top',
@@ -13,7 +13,7 @@ export const getTooltipHtml = (props: Props): string => {
 		props
 	);
 	return `
-<kol-tooltip style="max-width: 300px;">
+<kol-tooltip style="max-width: 300px;"${additionalAttrs}>
   ${
 		state._label === ''
 			? ''
