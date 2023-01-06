@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import i18next from 'i18next';
+import i18next, { i18n } from 'i18next';
 
 interface IOptional {
 	/**
@@ -19,6 +19,8 @@ export interface II18nService {
 }
 
 export class I18nextService implements II18nService {
+	private i18next: i18n;
+
 	constructor(
 		lng: Generic.I18n.Locale.ISO_639_1,
 		translations?:
@@ -26,20 +28,22 @@ export class I18nextService implements II18nService {
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
 			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>
 	) {
+		this.i18next = i18next;
+
 		if (Array.isArray(translations)) {
 			translations = new Set(translations);
 		} else if (typeof translations === 'function') {
 			translations = new Set([translations]);
 		}
 
-		if (!i18next.isInitialized) {
-			void i18next.init({
+		if (!this.i18next.isInitialized) {
+			void this.i18next.init({
 				lng,
 			});
 		}
 
 		const patchTranslation = (language: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<string, string>) => {
-			i18next.addResources(language, 'base', translationMap);
+			this.i18next.addResources(language, 'base', translationMap);
 			return language;
 		};
 
@@ -49,7 +53,7 @@ export class I18nextService implements II18nService {
 	}
 
 	public translate(key: string, optional?: IOptional) {
-		return i18next.t(key, {
+		return this.i18next.t(key, {
 			count: optional?.count,
 		});
 	}
