@@ -26,3 +26,8 @@ export const register = (
 	}
 	return coreRegister(themes, loaders, options);
 };
+
+export const getI18nService = () => window.A11yUi?.I18n;
+
+// TODO: remove later
+export const getTranslationService = () => window.A11yUi?.I18n;
