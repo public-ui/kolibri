@@ -41,7 +41,7 @@
 		"@public-ui/themes": "1.1.16-rc.6",
 		"@types/react": "18.0.26",
 		"@types/node": "18.11.17",
-		"@types/react-dom": "18.0.9",
+		"@types/react-dom": "18.0.10",
 		"astro": "1.7.2",
 		"chromedriver": "108.0.0",
 		"nightwatch-axe-verbose": "2.0.3",
