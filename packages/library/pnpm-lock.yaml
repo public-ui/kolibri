@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.16-rc.6
-  '@public-ui/schema': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.7
+  '@public-ui/schema': 1.1.16-rc.7
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.21.0
   '@stencil/postcss': 2.1.0
@@ -51,10 +51,10 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.1.16-rc.6
+  '@public-ui/schema': 1.1.16-rc.7
 
 devDependencies:
-  '@public-ui/core': 1.1.16-rc.6
+  '@public-ui/core': 1.1.16-rc.7
   '@stencil/angular-output-target': 0.4.0_@stencil+core@2.21.0
   '@stencil/core': 2.21.0
   '@stencil/postcss': 2.1.0_@stencil+core@2.21.0
@@ -1262,7 +1262,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: true
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -1628,16 +1627,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.1.16-rc.6:
-    resolution: {integrity: sha512-7KC8GHriBShdBofm4SHrhJdg8bT5VZppJA8xhZ04lRARWvzetwmSxXpYDJhjVj8RVA653oRSKIGBAgZL20ysyA==}
+  /@public-ui/core/1.1.16-rc.7:
+    resolution: {integrity: sha512-qRKJn5aFRINxl8go6TO1F8q70aVSqToHQjSl0FnZbTvii32sPLB9rlgZIRSxTYbXBJJy+O+yefwRDKDXH/HFZg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
+      i18next: 22.4.8
       rxjs: 7.8.0
 
-  /@public-ui/schema/1.1.16-rc.6:
-    resolution: {integrity: sha512-PModDkcWYM/zjcRaSSTBgVxPUlM9HryTwFI8Eu3SifalRdr2v5TXJ+53UY6lO/ZcEB9QrDQr0Ji4irMKS2juFQ==}
+  /@public-ui/schema/1.1.16-rc.7:
+    resolution: {integrity: sha512-AK6cLzD/XpbUPY5u6Ls/HnGL85eYgstmJPIFMLjJzWr6/IH+a5SV7Hmx6kVuMv7aQt/F9YlGJrIE72Jfm3eGGw==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.6
+      '@public-ui/core': 1.1.16-rc.7
     dev: false
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
@@ -4040,6 +4040,11 @@ packages:
     engines: {node: '>=8.12.0'}
     dev: true
 
+  /i18next/22.4.8:
+    resolution: {integrity: sha512-XSOy17ZWqflOiJRYE/dzv6vDle2Se32dnHREHb93UnZzZ1+UnvQ8yKtt1fpNL3zvXz5AwCqqixrtTVZmRetaiQ==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -6019,7 +6024,6 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-    dev: true
 
   /regenerator-transform/0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
