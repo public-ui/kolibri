@@ -10,13 +10,8 @@
 		"packages/adapters/solid",
 		"packages/adapters/vue",
 		"packages/core",
-		"packages/create-kolibri",
-		"packages/designer",
-		"packages/docusaurus",
 		"packages/library",
 		"packages/schema",
-		"packages/slidev",
-		"packages/storybook",
 		"packages/themes"
 	],
 	"useNx": false,
