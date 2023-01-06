@@ -1206,6 +1206,18 @@ export const components: Record<string, Component> = {
 			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="" _useCase="image">
 				<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']}></KolLogo>
 			</KolLink>
+			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="" _useCase="image">
+				<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']}></KolLogo>
+			</KolLink>
+			<KolLink
+				_icon={{
+					left: 'icofont-arrow-left',
+					right: 'icofont-arrow-right',
+					top: 'icofont-arrow-up',
+					bottom: 'icofont-arrow-down',
+				}}
+				_label="Icons"
+			></KolLink>
 			<KolIndentedText>
 				<p>
 					<b>Links sind unsichtbar geschalten</b>
@@ -1235,8 +1247,17 @@ export const components: Record<string, Component> = {
 			<KolButtonLink _label="Externer Link (gibt es nicht bei ButtonLink)"></KolButtonLink>
 			<KolButtonLink _label="Besuchter Link (gibt es nicht bei ButtonLink)"></KolButtonLink>
 			<KolButtonLink _ariaLabel="Zurück zur Startseite" _label="">
-				<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']}></KolLogo>
+				<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']}></KolLogo>
 			</KolButtonLink>
+			<KolButtonLink
+				_icon={{
+					left: 'icofont-arrow-left',
+					right: 'icofont-arrow-right',
+					top: 'icofont-arrow-up',
+					bottom: 'icofont-arrow-down',
+				}}
+				_label="Icons"
+			></KolButtonLink>
 			<KolIndentedText>
 				<p>
 					<b>Links sind unsichtbar geschalten</b>
@@ -1817,18 +1838,31 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-TOOLTIP': () => (
-		<div class="grid justify-center gap-6">
-			<KolDetails _summary="Hinweis">
-				Damit der Tooltip korrekt ausgerichtet wird, muss für das vorrangehende Referenz-Element `inline-block` gesetzt werden.
-			</KolDetails>
-			<KolButton _icon="icofont-simple-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary"></KolButton>
-			<KolButton _icon="icofont-simple-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary"></KolButton>
-			<KolButton _icon="icofont-simple-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal"></KolButton>
-			<KolButton _icon="icofont-simple-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger"></KolButton>
-			<KolLink class="text-center" _ariaLabel="unten" _icon="icofont-simple-down" _iconOnly _label="" _tooltip-align="bottom"></KolLink>
-			<KolLink class="text-center" _ariaLabel="oben" _icon="icofont-simple-up" _iconOnly _label="" _tooltip-align="top"></KolLink>
-			<KolLink class="text-center" _ariaLabel="links" _icon="icofont-simple-left" _iconOnly _label="" _tooltip-align="left"></KolLink>
-			<KolLink class="text-center" _ariaLabel="rechts" _icon="icofont-simple-right" _iconOnly _label="" _tooltip-align="right"></KolLink>
+		<div class="grid justify-center gap-8">
+			<div class="grid gap-4 grid-cols-4">
+				<KolButton _icon="icofont-simple-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary" />
+				<KolButton _icon="icofont-simple-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary" />
+				<KolButton _icon="icofont-simple-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal" />
+				<KolButton _icon="icofont-simple-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger" />
+			</div>
+			<div class="grid gap-4 grid-cols-4">
+				<KolLinkButton _icon="icofont-simple-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary" />
+				<KolLinkButton _icon="icofont-simple-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary" />
+				<KolLinkButton _icon="icofont-simple-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal" />
+				<KolLinkButton _icon="icofont-simple-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger" />
+			</div>
+			<div class="grid gap-4 grid-cols-4">
+				<KolLink class="text-center" _ariaLabel="unten" _icon="icofont-simple-down" _iconOnly _label="unten" _tooltip-align="bottom" />
+				<KolLink class="text-center" _ariaLabel="oben" _icon="icofont-simple-up" _iconOnly _label="oben" _tooltip-align="top" />
+				<KolLink class="text-center" _ariaLabel="links" _icon="icofont-simple-left" _iconOnly _label="links" _tooltip-align="left" />
+				<KolLink class="text-center" _ariaLabel="rechts" _icon="icofont-simple-right" _iconOnly _label="rechts" _tooltip-align="right" />
+			</div>
+			<div class="grid gap-4 grid-cols-4">
+				<KolButtonLink class="text-center" _ariaLabel="unten" _icon="icofont-simple-down" _iconOnly _label="unten" _tooltip-align="bottom" />
+				<KolButtonLink class="text-center" _ariaLabel="oben" _icon="icofont-simple-up" _iconOnly _label="oben" _tooltip-align="top" />
+				<KolButtonLink class="text-center" _ariaLabel="links" _icon="icofont-simple-left" _iconOnly _label="links" _tooltip-align="left" />
+				<KolButtonLink class="text-center" _ariaLabel="rechts" _icon="icofont-simple-right" _iconOnly _label="rechts" _tooltip-align="right" />
+			</div>
 		</div>
 	),
 	'KOL-VERSION': () => (

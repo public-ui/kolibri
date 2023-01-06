@@ -6,7 +6,5 @@ import './style.sass';
 // PWA
 import './shares/pwa';
 
-// Theme
-
 // App
 import './solid.main';

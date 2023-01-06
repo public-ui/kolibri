@@ -159,16 +159,19 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						<kol-icon class="external-link" _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
 					)}
 				</a>
-				<kol-tooltip
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					// aria-hidden="true"
-					_align={this.state._tooltipAlign}
-					_id={this.state._useCase === 'image' || this.state._iconOnly === true ? this.nonce : undefined}
-					_label={this.state._useCase === 'image' || this.state._iconOnly === true ? this.state._ariaLabel : ''}
-				></kol-tooltip>
+				{this.state._useCase === 'image' ||
+					(this.state._iconOnly === true && (
+						<kol-tooltip
+							/**
+							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+							 */
+							aria-hidden="true"
+							_align={this.state._tooltipAlign}
+							_id={this.nonce}
+							_label={this.state._ariaLabel || this.state._label}
+						></kol-tooltip>
+					))}
 			</Host>
 		);
 	}

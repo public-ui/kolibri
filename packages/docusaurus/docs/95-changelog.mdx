@@ -26,30 +26,24 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 	<ul></ul>
 	<hr />
 	<ul>
-		<li>🔧 I18n: Translationservice fertigstellen</li>
+		<li>🔧 I18n: Translationservice fertigstellen (i18next)</li>
 		<li>📚 Dokumentation: Übersicht über alle Komponenten im Storybook</li>
 		<li>🔧 Table: Sort-Funktion auch die Sortierrichtung übergeben</li>
 		<li>👩‍🎨 Input*, Textarea: onInput prüfen</li>
 		<li>🌟 Image: Neue Image Komponente einfügen (_alt)</li>
-		<li>🔧 Table: Vorlesen des Tabellen-Header optimieren</li>
 		<li>🔧 Table: Sortierrichtung ändern mittels aria-live optimieren</li>
 		<li>
 			🔥 Bund-Komponenten: Aus DDD-Gründen werden alle Bund-spezifischen Komponenten mittelfristig in ein separates Paket ausgelagert werden (s.
 			@public-ui/bund-components)
 		</li>
-		<li>🔧 Storybook: Transformation React-TSX zu WC-TSX Stories (Properties: Camel-Case -> Kebab-Case, ArgTypes)</li>
-		<li>🔧 Table: Checkbox innerhalb der Table</li>
+		<li>🔧 Table: Checkbox innerhalb der Table / ausgewählte Zeilen hervorheben (https://github.com/public-ui/kolibri/issues/156)</li>
 		<li>🔧 Pagination: Aria-Label bei Zahlen-Schalter optimieren (Schalter "1", Schalter "Seite 1")</li>
 		<li>🔧 Badge: Fehlersuche im Color-Handling (RangeError)</li>
 		<li>🔧 Table: Aufspaltung in self- und manuell-managed Table</li>
-		<li>🔧 Button: Kontext-Menü (Overlay)</li>
-		<li>🔧 Table: Header mit Sort-Button und ohne - Grid korrekt behandeln</li>
+		<li>🔧 Button: Kontext-Menü / Dropdown (Overlay)</li>
 		<li>🔧 Input: Zeichenzähler für alle Texteingabefelder</li>
 		<li>🔧 Checkbox: Checkbox und mit beliebigen Icon statt "Border-Häkchen"</li>
 		<li>🔧 Slot-Konzept: Weitere Komponenten umstellen (Input-Labels)</li>
-		<li>
-			🌟 ButtonLink unterstützt das <code>target</code>-Property
-		</li>
 		<li>🌟 DX: Vollständig einheitliche Properties und deren Verwendung über alle Komponenten</li>
 		<li>👩‍🎨 Theming: Designer um CDN-Feature erweitern</li>
 		<li>👩‍🎨 Theming: Designer CSS-Properties und "Globales CSS" trennen</li>
@@ -58,7 +52,8 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 		<li>🔧 Radio & SingleSelect: Zusammenführen?!</li>
 		<li>🔧 CheckboxGroup & MultiSelect: Zusammenführen?!</li>
 		<li>🔧 Tabs: Tab-Change-Callback aufrufen, sobald die Tab-Selection eine Korrektur durchführt</li>
-		<li>🔧 Tabs: Verhalten beim Wechsel von Tabs prüfen</li>
+		<li>🔧 Tabs: Verhalten beim Wechsel von Tabs beobachten</li>
+		<li>🔧 Table: Pagination wahlweise oben oder untern oder beides</li>
 	</ul>
 </kol-details>
 
@@ -66,6 +61,7 @@ _data="[{'symbol':'🌟','desc':'Neue Funktion'},{'symbol':'🚹','desc':'Barrie
 
 <kol-details _summary="Änderungen" _open>
 	<ul>
+		<li>🔧 Link, ButtonLink: Optimierung der Anzeige des Tooltips im Bild- und Icon-Only-Modus</li>
 		<li>
 			🔧 LinkButton: Ist semantisch ein Link und hat daher auch ein <code>_target</code>-Property
 		</li>

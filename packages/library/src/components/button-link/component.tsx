@@ -51,9 +51,6 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
-					style={{
-						width: 'inherit',
-					}}
 				>
 					<slot name="expert" slot="expert" />
 				</kol-button-wc>
