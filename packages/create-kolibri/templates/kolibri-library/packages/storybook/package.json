@@ -70,7 +70,7 @@
 		"@storybook/api": "6.5.14",
 		"@storybook/builder-vite": "0.2.5",
 		"@storybook/builder-webpack5": "6.5.14",
-		"@storybook/components": "6.5.13",
+		"@storybook/components": "6.5.15",
 		"@storybook/core-common": "6.5.14",
 		"@storybook/manager-webpack5": "6.5.13",
 		"@storybook/node-logger": "6.5.13",
