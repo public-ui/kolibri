@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.16-rc.6
-  '@public-ui/core': 1.1.16-rc.6
-  '@public-ui/themes': 1.1.16-rc.6
+  '@public-ui/components': 1.1.16-rc.7
+  '@public-ui/core': 1.1.16-rc.7
+  '@public-ui/themes': 1.1.16-rc.7
   '@slidev/cli': 0.38.2
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
@@ -18,9 +18,9 @@ specifiers:
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-ui/components': 1.1.16-rc.6
-  '@public-ui/core': 1.1.16-rc.6
-  '@public-ui/themes': 1.1.16-rc.6_3zfwf3wd246xbn76xrh3lij6bu
+  '@public-ui/components': 1.1.16-rc.7
+  '@public-ui/core': 1.1.16-rc.7
+  '@public-ui/themes': 1.1.16-rc.7_msf7w73bz6c66y5spulrtvsb2i
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
   slidev-theme-light-icons: 1.0.2_2cexd2gl5wuj3aokcs3pzy7t7a
@@ -232,6 +232,13 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.20.7
+
+  /@babel/runtime/7.20.7:
+    resolution: {integrity: sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
 
   /@babel/standalone/7.20.12:
     resolution: {integrity: sha512-hK/X+m1il3w1tYS4H8LDaGCEdiT47SVqEXY8RiEAgou26BystipSU8ZL6EvBR6t5l7lTv0ilBiChXWblKJ5iUA==}
@@ -760,32 +767,33 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
 
-  /@public-ui/components/1.1.16-rc.6:
-    resolution: {integrity: sha512-zx4arzHklX7t5cokPpS7SXLVbIr3K8+BzkgLACuKKHcwEoo0onXmQmZQEgRwu45+odxJYsOq0KsnOvYrg2sCgQ==}
+  /@public-ui/components/1.1.16-rc.7:
+    resolution: {integrity: sha512-KonCOFLyLlYr6mf1jMxL1M9Kav22NJ5acfi2qK7zpK/g8TlHWIdbK3hnrgNmZeR0sB8PV04fI/Y0JFT2KAd8RA==}
     dependencies:
-      '@public-ui/schema': 1.1.16-rc.6
+      '@public-ui/schema': 1.1.16-rc.7
     dev: false
 
-  /@public-ui/core/1.1.16-rc.6:
-    resolution: {integrity: sha512-7KC8GHriBShdBofm4SHrhJdg8bT5VZppJA8xhZ04lRARWvzetwmSxXpYDJhjVj8RVA653oRSKIGBAgZL20ysyA==}
+  /@public-ui/core/1.1.16-rc.7:
+    resolution: {integrity: sha512-qRKJn5aFRINxl8go6TO1F8q70aVSqToHQjSl0FnZbTvii32sPLB9rlgZIRSxTYbXBJJy+O+yefwRDKDXH/HFZg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
+      i18next: 22.4.8
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/schema/1.1.16-rc.6:
-    resolution: {integrity: sha512-PModDkcWYM/zjcRaSSTBgVxPUlM9HryTwFI8Eu3SifalRdr2v5TXJ+53UY6lO/ZcEB9QrDQr0Ji4irMKS2juFQ==}
+  /@public-ui/schema/1.1.16-rc.7:
+    resolution: {integrity: sha512-AK6cLzD/XpbUPY5u6Ls/HnGL85eYgstmJPIFMLjJzWr6/IH+a5SV7Hmx6kVuMv7aQt/F9YlGJrIE72Jfm3eGGw==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.6
+      '@public-ui/core': 1.1.16-rc.7
     dev: false
 
-  /@public-ui/themes/1.1.16-rc.6_3zfwf3wd246xbn76xrh3lij6bu:
-    resolution: {integrity: sha512-LSIco1hv940z1HgOYAHb9fNoNYN/3Bk6aLRKb/hE8WL5RlVbvXPxgzGMvpjjvHQ2gR4igbz9XQagIamTx79enw==}
+  /@public-ui/themes/1.1.16-rc.7_msf7w73bz6c66y5spulrtvsb2i:
+    resolution: {integrity: sha512-02NNjTp+TU+ziEZffAFKrJ7MwfKFjGTmMTW0EzvJ94tu01ufDcMr2oy4Xq8olPDCcYNw5ti8iPVaMo6RA2jwgA==}
     peerDependencies:
-      '@public-ui/components': 1.1.16-rc.6
+      '@public-ui/components': 1.1.16-rc.7
     dependencies:
-      '@public-ui/components': 1.1.16-rc.6
-      '@public-ui/schema': 1.1.16-rc.6
+      '@public-ui/components': 1.1.16-rc.7
+      '@public-ui/schema': 1.1.16-rc.7
     dev: false
 
   /@rollup/pluginutils/4.2.1:
@@ -3949,6 +3957,12 @@ packages:
       ms: 2.1.3
     dev: true
 
+  /i18next/22.4.8:
+    resolution: {integrity: sha512-XSOy17ZWqflOiJRYE/dzv6vDle2Se32dnHREHb93UnZzZ1+UnvQ8yKtt1fpNL3zvXz5AwCqqixrtTVZmRetaiQ==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+    dev: false
+
   /iconv-lite/0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
@@ -5247,6 +5261,10 @@ packages:
 
   /recordrtc/5.6.2:
     resolution: {integrity: sha512-1QNKKNtl7+KcwD1lyOgP3ZlbiJ1d0HtXnypUy7yq49xEERxk31PHvE9RCciDrulPCY7WJ+oz0R9hpNxgsIurGQ==}
+
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
 
   /registry-auth-token/5.0.1:
     resolution: {integrity: sha512-UfxVOj8seK1yaIOiieV4FIP01vfBDLsY0H9sQzi9EbbUdJiuuBjJgLa1DpImXMNPnVkBD4eVxTEXcrZA6kfpJA==}
