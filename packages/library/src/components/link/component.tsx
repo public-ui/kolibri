@@ -82,10 +82,12 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 			};
 		}
 
+		const isExternal = typeof this.state._target === 'string' && this.state._target !== '_self';
+
 		const tagAttrs = {
 			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
-			rel: typeof this.state._target === 'string' && this.state._target !== '_self' ? 'noopener' : undefined,
+			rel: isExternal ? 'noopener' : undefined,
 		};
 
 		/**
@@ -111,11 +113,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
 		}
-		return { tagAttrs, underline, fill, goToProps };
+		return { isExternal, tagAttrs, underline, fill, goToProps };
 	};
 
 	public render(): JSX.Element {
-		const { tagAttrs, underline, fill, goToProps } = this.getRenderValues();
+		const { isExternal, tagAttrs, underline, fill, goToProps } = this.getRenderValues();
 		return (
 			<Host>
 				<a
@@ -134,6 +136,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						'grid text-center': this.state._iconOnly === true,
 						'skip ': this.state._stealth !== false,
 						'icon-only': this.state._iconOnly === true,
+						'external-link': isExternal,
 					}}
 					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
@@ -155,8 +158,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						*/}
 						<slot name="expert" slot="expert" />
 					</kol-span-wc>
-					{typeof this.state._target === 'string' && this.state._target !== '_self' && (
-						<kol-icon class="external-link" _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
+					{isExternal && (
+						<kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
 					)}
 				</a>
 				{(this.state._iconOnly === true || this.state._useCase === 'image') && (
@@ -207,6 +210,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop({ reflect: true }) public _fill?: boolean = false;
 
@@ -247,6 +252,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _part?: string;
 
@@ -257,11 +264,15 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _selector?: string;
 
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop({ reflect: true }) public _stealth?: boolean = false;
 
@@ -287,11 +298,15 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt an, ob die Links unterstrichen dargestellt werden.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop({ reflect: true }) public _underline?: boolean = true;
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
+	 *
+	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _useCase?: LinkUseCase = 'text';
 

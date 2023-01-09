@@ -593,6 +593,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	: 'descending'
 																: undefined
 														}
+														// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
 													>
 														<div class="w-full flex gap-1 items-center">
@@ -678,6 +679,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	: 'descending'
 																: undefined
 														}
+														// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
 													>
 														<div class="w-full flex gap-1 items-center">

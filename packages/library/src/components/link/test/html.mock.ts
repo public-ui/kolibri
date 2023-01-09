@@ -45,9 +45,9 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		props._iconOnly === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
 	} class="${props._stealth === true ? ' skip' : ''}${props._useCase === 'nav' ? '' : ' kol-visited'}${
 		props._iconOnly === true ? ' icon-only grid text-center' : ' flex flex-wrap items-center'
-	}" href="${typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'}" part="link ${
-		typeof props._part === 'string' ? props._part : ''
-	}"${typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
+	}${typeof props._target === 'string' && props._target !== '_self' ? ' external-link' : ''}" href="${
+		typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'
+	}" part="link ${typeof props._part === 'string' ? props._part : ''}"${typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
 		typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''
 	} style="cursor:pointer;${props._useCase === 'image' ? 'display: block;' : ''}text-decoration-line:${underline === true ? 'underline' : 'none'};${
 		props._fill === true ? 'width:100%;' : ''
@@ -66,7 +66,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 								_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
 								_icon: 'fa-solid fa-arrow-up-right-from-square',
 							},
-							' class="external-link"'
+							' class="external-link-icon"'
 					  )
 					: ''
 			}

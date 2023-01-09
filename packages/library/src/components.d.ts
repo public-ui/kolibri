@@ -37,38 +37,6 @@ import { Alignment as Alignment1 } from "./types/props/alignment";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 import { TooltipAlignment as TooltipAlignment1 } from "./components/tooltip/component";
-export { TooltipAlignment } from "./components/tooltip/component";
-export { HeadingLevel } from "./types/heading-level";
-export { KoliBriAccordionCallbacks } from "./components/accordion/component";
-export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
-export { KoliBriColor } from "./components/badge/component";
-export { Stringified } from "./types/common";
-export { Alignment, KoliBriIconProp } from "./types/icon";
-export { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
-export { NavLinkProps } from "./components/link/component";
-export { KoliBriFormCallbacks } from "./components/form/component";
-export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
-export { Icofont } from "./types/icofont";
-export { KoliBriInputIcon } from "./components/input-text/types";
-export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
-export { InputCheckboxVariant } from "./components/input-checkbox/types";
-export { Iso8601 } from "./types/input/iso8601";
-export { InputDateType, InputNumberType } from "./types/input/control/number";
-export { Orientation } from "./types/orientation";
-export { InputTextType } from "./types/input/control/text";
-export { ListStyleType } from "./components/link-group/component";
-export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
-export { KoliBriModalEventCallbacks } from "./types/modal";
-export { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/component";
-export { PaginationHasButton } from "./components/pagination/component";
-export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
-export { KoliBriProgressType } from "./types/progress";
-export { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
-export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
-export { Alignment as Alignment1 } from "./types/props/alignment";
-export { CSSResize } from "./components/textarea/types";
-export { KoliBriToastEventCallbacks } from "./types/toast";
-export { TooltipAlignment as TooltipAlignment1 } from "./components/tooltip/component";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -458,7 +426,8 @@ export namespace Components {
          */
         "_icon": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
     }
@@ -475,7 +444,8 @@ export namespace Components {
          */
         "_icon": FontAwesome;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
         /**
@@ -496,7 +466,8 @@ export namespace Components {
          */
         "_icon": Icofont;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
     }
@@ -1469,6 +1440,7 @@ export namespace Components {
         "_disabled"?: boolean;
         /**
           * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_fill"?: boolean;
         /**
@@ -1498,7 +1470,8 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
         /**
@@ -1507,10 +1480,12 @@ export namespace Components {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_stealth"?: boolean;
         /**
@@ -1531,10 +1506,12 @@ export namespace Components {
         "_tooltipAlign"?: TooltipAlignment;
         /**
           * Gibt an, ob die Links unterstrichen dargestellt werden.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_underline"?: boolean;
         /**
           * Gibt den Verwendungsfall des Links an.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_useCase"?: LinkUseCase;
     }
@@ -1568,10 +1545,6 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-         */
-        "_fill"?: boolean;
-        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href"?: string;
@@ -1588,21 +1561,9 @@ export namespace Components {
          */
         "_label": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-         */
-        "_part"?: string;
-        /**
           * Gibt an, welche Role der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
-        /**
-          * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-         */
-        "_selector"?: string;
-        /**
-          * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-         */
-        "_stealth"?: boolean;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1619,14 +1580,6 @@ export namespace Components {
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
         "_tooltipAlign"?: TooltipAlignment;
-        /**
-          * Gibt an, ob die Links unterstrichen dargestellt werden.
-         */
-        "_underline"?: boolean;
-        /**
-          * Gibt den Verwendungsfall des Links an.
-         */
-        "_useCase"?: LinkUseCase;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -1689,6 +1642,7 @@ export namespace Components {
         "_disabled"?: boolean;
         /**
           * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_fill"?: boolean;
         /**
@@ -1719,6 +1673,7 @@ export namespace Components {
         "_on"?: LinkOnCallbacks;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
         /**
@@ -1727,10 +1682,12 @@ export namespace Components {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_stealth"?: boolean;
         /**
@@ -1751,10 +1708,12 @@ export namespace Components {
         "_tooltipAlign"?: TooltipAlignment;
         /**
           * Gibt an, ob die Links unterstrichen dargestellt werden.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_underline"?: boolean;
         /**
           * Gibt den Verwendungsfall des Links an.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_useCase"?: LinkUseCase;
     }
@@ -2181,7 +2140,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: TooltipAlignment1;
+        "_align"?: TooltipAlignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -2995,7 +2954,8 @@ declare namespace LocalJSX {
          */
         "_icon": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
     }
@@ -3012,7 +2972,8 @@ declare namespace LocalJSX {
          */
         "_icon": FontAwesome;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
         /**
@@ -3033,7 +2994,8 @@ declare namespace LocalJSX {
          */
         "_icon": Icofont;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
     }
@@ -4006,6 +3968,7 @@ declare namespace LocalJSX {
         "_disabled"?: boolean;
         /**
           * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_fill"?: boolean;
         /**
@@ -4035,7 +3998,8 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
         /**
@@ -4044,10 +4008,12 @@ declare namespace LocalJSX {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_stealth"?: boolean;
         /**
@@ -4068,10 +4034,12 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: TooltipAlignment;
         /**
           * Gibt an, ob die Links unterstrichen dargestellt werden.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_underline"?: boolean;
         /**
           * Gibt den Verwendungsfall des Links an.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_useCase"?: LinkUseCase;
     }
@@ -4105,10 +4073,6 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-         */
-        "_fill"?: boolean;
-        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href"?: string;
@@ -4125,21 +4089,9 @@ declare namespace LocalJSX {
          */
         "_label": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-         */
-        "_part"?: string;
-        /**
           * Gibt an, welche Role der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
-        /**
-          * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-         */
-        "_selector"?: string;
-        /**
-          * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-         */
-        "_stealth"?: boolean;
         /**
           * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4156,14 +4108,6 @@ declare namespace LocalJSX {
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
         "_tooltipAlign"?: TooltipAlignment;
-        /**
-          * Gibt an, ob die Links unterstrichen dargestellt werden.
-         */
-        "_underline"?: boolean;
-        /**
-          * Gibt den Verwendungsfall des Links an.
-         */
-        "_useCase"?: LinkUseCase;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -4226,6 +4170,7 @@ declare namespace LocalJSX {
         "_disabled"?: boolean;
         /**
           * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_fill"?: boolean;
         /**
@@ -4256,6 +4201,7 @@ declare namespace LocalJSX {
         "_on"?: LinkOnCallbacks;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
         /**
@@ -4264,10 +4210,12 @@ declare namespace LocalJSX {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_stealth"?: boolean;
         /**
@@ -4288,10 +4236,12 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: TooltipAlignment;
         /**
           * Gibt an, ob die Links unterstrichen dargestellt werden.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_underline"?: boolean;
         /**
           * Gibt den Verwendungsfall des Links an.
+          * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_useCase"?: LinkUseCase;
     }
@@ -4718,7 +4668,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: TooltipAlignment1;
+        "_align"?: TooltipAlignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */

@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.16-rc.7';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16-rc.7/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.7';
+			import { register } from 'https://esm.sh/@public-ui/core@1.1.16-rc.8';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16-rc.8/dist/loader';
+			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.8';
 				register(MAPZ, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/core@1.1.16-rc.7';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16-rc.7/dist/loader';
-		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.7';
+		import { register } from 'https://esm.sh/@public-ui/core@1.1.16-rc.8';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16-rc.8/dist/loader';
+		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.8';
 		register([MAPZ], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -302,7 +302,7 @@ Einen Link kann man nicht deaktivieren und daher gibt es bei einem LinkButton ni
 Da es die Komponente ButtonLink gibt, die semantisch ein Button und optisch ein Link ist. Ist es nicht mehr notwendig den Click-Callback zu unterstützen. Das Property '_on' wird somit als 'deprecated' markiert und wird mit dem nächsten Major-Release entfernt.
 
 Ein Button hat aus UX-Sicht mehrere Varianten ('primary' oder 'secondary' usw.). Damit der LinkButton das optisch gleich aussehen kann, wurden die Properties '_customClass' und '_variant' von der Button-Komponente übernommen.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _fill, _href, _icon, _icon-only, _label, _part, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _underline, _use-case, _variant`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
 },{
 	name: `modal`,
 	desc: `Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem
@@ -605,11 +605,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `input-email, input-password, input-text`
 },{
-	name: `_part`,
-	desc: `Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)`,
-	types: `string`,
-	comps: `icon, link, link-button`
-},{
 	name: `_multiple`,
 	desc: `Gibt an, ob mehrere Werte eingegeben werden können.`,
 	types: `boolean`,
@@ -630,16 +625,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `button, link-button, pagination`
 },{
-	name: `_use-case`,
-	desc: `Gibt den Verwendungsfall des Links an.`,
-	types: `"image" | "nav" | "text"`,
-	comps: `link, link-button`
-},{
-	name: `_underline`,
-	desc: `Gibt an, ob die Links unterstrichen dargestellt werden.`,
-	types: `boolean`,
-	comps: `link, link-button`
-},{
 	name: `_target-description`,
 	desc: `Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.`,
 	types: `string`,
@@ -650,25 +635,16 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `link, link-button`
 },{
-	name: `_stealth`,
-	desc: `Gibt an, ob der Link nur beim Fokus sichtbar ist.`,
-	types: `boolean`,
-	comps: `link, link-button`
-},{
-	name: `_selector`,
-	desc: `Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.`,
-	types: `string`,
-	comps: `link, link-button`
-},{
 	name: `_href`,
 	desc: `Gibt die Ziel-Url des Links an.`,
 	types: `string`,
 	comps: `link, link-button`
 },{
-	name: `_fill`,
-	desc: `Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.`,
-	types: `boolean`,
-	comps: `link, link-button`
+	name: `_part`,
+	desc: `Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+/**`,
+	types: `string`,
+	comps: `icon, link`
 },{
 	name: `_orientation`,
 	desc: `Gibt die Ausrichtung der LinkList an.`,
@@ -689,6 +665,31 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).`,
 	types: `string`,
 	comps: `modal`
+},{
+	name: `_use-case`,
+	desc: `Gibt den Verwendungsfall des Links an.`,
+	types: `"image" | "nav" | "text"`,
+	comps: `link`
+},{
+	name: `_underline`,
+	desc: `Gibt an, ob die Links unterstrichen dargestellt werden.`,
+	types: `boolean`,
+	comps: `link`
+},{
+	name: `_stealth`,
+	desc: `Gibt an, ob der Link nur beim Fokus sichtbar ist.`,
+	types: `boolean`,
+	comps: `link`
+},{
+	name: `_selector`,
+	desc: `Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.`,
+	types: `string`,
+	comps: `link`
+},{
+	name: `_fill`,
+	desc: `Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.`,
+	types: `boolean`,
+	comps: `link`
 },{
 	name: `_unit`,
 	desc: `Gibt die Einheit der Fortschrittswerte an.`,

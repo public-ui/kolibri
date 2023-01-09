@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.1.16-rc.7",
+	"version": "1.1.16-rc.8",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -58,8 +58,8 @@
 	],
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
-		"build": "npm run test && npm run build:light && node scripts/cheat-sheet.js",
-		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && node scripts/autogen.doc.js && npm run format -- -w",
+		"build": "npm run test && npm run build:light && node scripts/cheat-sheet.js && npm run format -- -w",
+		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && node scripts/autogen.doc.js",
 		"republish:adapters": "cd ../adapters/angular && npm run republish && cd ../react && npm run republish && cd ../solid && npm run republish && cd ../vue && npm run republish && cd ..",
 		"republish:themes": "cd ../themes && npm run republish && cd ..",
 		"republish:self": "npm run reinstall:kolibri && npm run build:light && npm run :publish",
@@ -89,10 +89,10 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.1.16-rc.7"
+		"@public-ui/schema": "1.1.16-rc.8"
 	},
 	"devDependencies": {
-		"@public-ui/core": "1.1.16-rc.7",
+		"@public-ui/core": "1.1.16-rc.8",
 		"@stencil/angular-output-target": "0.4.0",
 		"@stencil/core": "2.21.0",
 		"@stencil/postcss": "2.1.0",
@@ -125,7 +125,7 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "9.6.8",
 		"mathjs": "11.5.0",
-		"postcss": "8.4.20",
+		"postcss": "8.4.21",
 		"postcss-windicss": "1.0.0",
 		"prettier": "2.8.1",
 		"puppeteer": "19.4.1",

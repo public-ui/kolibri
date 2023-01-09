@@ -54,17 +54,21 @@ export class KolBadge implements Props {
 	public render(): JSX.Element {
 		return (
 			<Host>
+				{/* <span> */}
 				<kol-span-wc
 					class={{
+						/**
+						 * TODO: Für eine bestmögliche Style-Anpassbarkeit müssen alle Conditions die die Konstruktion einer Komponente verändern, müssen als CSS-Klasse am umrahmenden HTML-Node angegeben werden.
+						 */
 						'smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
 					}}
-					_label={this._label}
-					_icon={this._icon}
-					_iconOnly={this._iconOnly}
 					style={{
 						backgroundColor: this.bgColorStr,
 						color: this.colorStr,
 					}}
+					_icon={this._icon}
+					_iconOnly={this._iconOnly}
+					_label={this._label}
 				></kol-span-wc>
 				{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 					<kol-button-wc
@@ -80,6 +84,7 @@ export class KolBadge implements Props {
 						_variant={this.state._smartButton._variant}
 					></kol-button-wc>
 				)}
+				{/* </span> */}
 			</Host>
 		);
 	}
