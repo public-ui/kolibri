@@ -59,7 +59,7 @@
 	},
 	"dependencies": {
 		"@a11y-ui/core": "1.0.1-rc.6",
-		"i18next": "22.4.8",
+		"i18next": "22.4.9",
 		"rxjs": "7.8.0"
 	},
 	"devDependencies": {
