@@ -137,13 +137,3 @@ jobs:
         working-directory: packages/adapters/preact
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-      - name: Build and publish create-kolibri
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/create-kolibri
-        env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-  publish-page:
-    needs: publish
-    uses: public-ui/kolibri/.github/workflows/publish-page.yml@main
