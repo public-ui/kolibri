@@ -1,21 +1,32 @@
 import { Generic } from '@a11y-ui/core';
 import i18next, { i18n } from 'i18next';
 
-interface IOptional {
+export interface ITranslationOptions {
 	/**
 	 * The number of items to determine an counted text.
 	 */
 	count?: number;
+
+	/**
+	 * Placeholders to insert into the text. Replacing {{key}} with the specified value if the "key".
+	 */
+	placeholders?: { [K: string]: string };
 }
 
 export interface II18nService {
 	/**
+	 * Adds a resource bundle for the specified language.
+	 * @param lng the language the bundle is for
+	 * @param translationMap the translations of the given language
+	 */
+	addResourceBundle: (lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<string, string>) => void;
+	/**
 	 * Determines a human-readable translated text for the given resource key.
 	 * @param key the resource key
-	 * @param optional optional parameters
+	 * @param options optional translation parameters
 	 * @returns the translated text
 	 */
-	translate: (key: string, optional?: IOptional) => string;
+	translate: (key: string, options?: ITranslationOptions) => string;
 }
 
 export class I18nextService implements II18nService {
@@ -42,19 +53,24 @@ export class I18nextService implements II18nService {
 			});
 		}
 
-		const patchTranslation = (language: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<string, string>) => {
-			this.i18next.addResources(language, 'base', translationMap);
-			return language;
-		};
-
 		if (translations !== undefined) {
-			translations.forEach((t) => t(patchTranslation));
+			translations.forEach((t) =>
+				t((l, t) => {
+					this.addResourceBundle(l, t);
+					return l;
+				})
+			);
 		}
 	}
 
-	public translate(key: string, optional?: IOptional) {
+	public addResourceBundle(lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<string, string>) {
+		this.i18next.addResourceBundle(lng, 'translation', translationMap, true);
+	}
+
+	public translate(key: string, options?: ITranslationOptions) {
 		return this.i18next.t(key, {
-			count: optional?.count,
+			count: options?.count,
+			...options?.placeholders,
 		});
 	}
 }
