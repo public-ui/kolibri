@@ -125,7 +125,7 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "9.6.8",
 		"mathjs": "11.5.0",
-		"postcss": "8.4.20",
+		"postcss": "8.4.21",
 		"postcss-windicss": "1.0.0",
 		"prettier": "2.8.1",
 		"puppeteer": "19.4.1",

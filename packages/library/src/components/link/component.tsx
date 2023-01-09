@@ -82,10 +82,12 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 			};
 		}
 
+		const isExternal = typeof this.state._target === 'string' && this.state._target !== '_self';
+
 		const tagAttrs = {
 			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
-			rel: typeof this.state._target === 'string' && this.state._target !== '_self' ? 'noopener' : undefined,
+			rel: isExternal ? 'noopener' : undefined,
 		};
 
 		/**
@@ -111,11 +113,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
 		}
-		return { tagAttrs, underline, fill, goToProps };
+		return { isExternal, tagAttrs, underline, fill, goToProps };
 	};
 
 	public render(): JSX.Element {
-		const { tagAttrs, underline, fill, goToProps } = this.getRenderValues();
+		const { isExternal, tagAttrs, underline, fill, goToProps } = this.getRenderValues();
 		return (
 			<Host>
 				<a
@@ -134,6 +136,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						'grid text-center': this.state._iconOnly === true,
 						'skip ': this.state._stealth !== false,
 						'icon-only': this.state._iconOnly === true,
+						'external-link': isExternal,
 					}}
 					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
@@ -155,8 +158,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						*/}
 						<slot name="expert" slot="expert" />
 					</kol-span-wc>
-					{typeof this.state._target === 'string' && this.state._target !== '_self' && (
-						<kol-icon class="external-link" _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
+					{isExternal && (
+						<kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
 					)}
 				</a>
 				{(this.state._iconOnly === true || this.state._useCase === 'image') && (
