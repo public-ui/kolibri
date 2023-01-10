@@ -13,7 +13,7 @@ interface ITranslationOptions {
 	placeholders?: { [K: string]: string };
 }
 
-export interface II18nService {
+interface II18nService {
 	/**
 	 * Adds a resource bundle for the specified language.
 	 * @param lng the language the bundle is for
