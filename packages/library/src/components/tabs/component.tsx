@@ -10,6 +10,7 @@ import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
+import { translate } from '../../i18n';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -72,7 +73,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
-	private onCreateLabel = 'Neu …';
+	private onCreateLabel = `${translate('kol-new')} …`;
 	private showCreateTab = false;
 	private selectedTimeout?: ReturnType<typeof setTimeout>;
 
