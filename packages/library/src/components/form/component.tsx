@@ -5,6 +5,7 @@ import { Generic } from '@public-ui/core';
 import { EventCallback } from '../../types/callbacks';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { Stringified } from '../../types/common';
+import { translate } from '../../i18n';
 
 export type KoliBriFormCallbacks = {
 	[Events.onSubmit]?: EventCallback<Event>;
@@ -48,9 +49,7 @@ export class KolForm implements Generic.Element.ComponentApi<RequiredProps, Opti
 			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 				{this.state._requiredText === true ? (
 					<p>
-						<kol-indented-text>
-							Formular-Felder, die mit einem Sternchen <span aria-hidden="true">(*)</span> gekennzeichnet sind, sind Pflichtangaben.
-						</kol-indented-text>
+						<kol-indented-text>{translate('kol-form-description')}</kol-indented-text>
 					</p>
 				) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 					<p>

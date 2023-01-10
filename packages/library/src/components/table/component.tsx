@@ -15,6 +15,7 @@ import {
 } from '../../types/table';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
+import { translate } from '../../i18n';
 
 type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
 	data: KoliBriDataType;
@@ -445,7 +446,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			}
 			const emptyCell = {
 				colSpan: colspan,
-				label: 'Es sind keine Einträge vorhanden.',
+				label: translate('kol-no-entries'),
 				render: undefined,
 				rowSpan: Math.max(rowspan, 1),
 			};
@@ -610,7 +611,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															{typeof col.sort === 'function' && (
 																<kol-button
 																	exportparts="button,ghost"
-																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
+																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||
 																		this.sortDirections.get(col.sort) === 'NOS' ||
@@ -621,7 +622,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																			: 'fas fa-sort-down'
 																	}
 																	_iconOnly
-																	_label={'Sortierung von ' + col.label + ' ändern'}
+																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{
 																		onClick: () => {
 																			if (typeof col.sort === 'function') {
@@ -696,7 +697,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															{typeof col.sort === 'function' && (
 																<kol-button
 																	exportparts="button,ghost"
-																	_ariaLabel={'Sortierung von ' + col.label + ' ändern'}
+																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||
 																		this.sortDirections.get(col.sort) === 'NOS' ||
@@ -707,7 +708,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																			: 'fas fa-sort-down'
 																	}
 																	_iconOnly
-																	_label={'Sortierung von ' + col.label + ' ändern'}
+																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{
 																		onClick: () => {
 																			if (typeof col.sort === 'function') {

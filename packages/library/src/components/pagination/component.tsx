@@ -10,6 +10,7 @@ import { KoliBriPaginationButtonCallbacks } from './types';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
+import { translate } from '../../i18n';
 
 /**
  * Der HasButton-Typ definiert die Einstellungsmöglichkeiten der speziellen
@@ -128,7 +129,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_disabled={this.state._page <= 1}
 							_icon={leftDoubleArrowIcon}
 							_iconOnly
-							_label="Direkt zur ersten Seite"
+							_label={translate('kol-page-first')}
 							_on={this.onGoToFirst}
 							_variant={this.state._variant}
 							_tooltipAlign={this.state._tooltipAlign}
@@ -140,7 +141,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_disabled={this.state._page <= 1}
 							_icon={leftSingleArrow}
 							_iconOnly
-							_label="Eine Seite zurück"
+							_label={translate('kol-page-back')}
 							_on={this.onGoBackward}
 							_variant={this.state._variant}
 							_tooltipAlign={this.state._tooltipAlign}
@@ -153,7 +154,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_disabled={count <= this.state._page}
 							_icon={rightSingleArrowIcon}
 							_iconOnly
-							_label="Eine Seite weiter"
+							_label={translate('kol-page-next')}
 							_on={this.onGoForward}
 							_variant={this.state._variant}
 							_tooltipAlign={this.state._tooltipAlign}
@@ -165,7 +166,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_disabled={count <= this.state._page}
 							_icon={rightDoubleArrowIcon}
 							_iconOnly
-							_label="Direkt zur letzten Seite"
+							_label={translate('kol-page-last')}
 							_on={this.onGoToEnd}
 							_variant={this.state._variant}
 							_tooltipAlign={this.state._tooltipAlign}
@@ -182,7 +183,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 						}}
 						_value={[this.state._pageSize]}
 					>
-						Einträge pro Seite
+						{translate('kol-entries-per-site')}
 					</kol-select>
 				)}
 			</Host>
@@ -321,7 +322,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 			<kol-button
 				key={`${this.nonce}-${page}`}
 				_customClass={this.state._customClass}
-				_ariaLabel={`Seite ${page}`}
+				_ariaLabel={translate('kol-page-current', { placeholders: { page } })}
 				_label={`${page}`}
 				_on={{
 					onClick: (event: Event) => {
@@ -341,7 +342,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 				_customClass={this.state._customClass}
 				_disabled={true}
 				_ariaCurrent={true}
-				_ariaLabel={`Seite ${page} ist ausgewählt`}
+				_ariaLabel={translate('kol-page-selected', { placeholders: { page } })}
 				_label={`${page}`}
 				_variant={this.state._variant}
 			/>
@@ -492,7 +493,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 			for (const value of nextValue) {
 				if (typeof value === 'number') {
 					options.push({
-						label: `${value} Einträge pro Seite`,
+						label: translate('kol-page-per-site', { placeholders: { entries: `${value}` } }),
 						value: value,
 					});
 				}
