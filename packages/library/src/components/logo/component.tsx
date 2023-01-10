@@ -4,7 +4,6 @@ import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from 
 import { Generic } from '@public-ui/core';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState } from '../../utils/prop.validators';
-import { trace } from 'console';
 import { translate } from '../../i18n';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
