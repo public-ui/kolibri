@@ -128,7 +128,7 @@
 		"postcss": "8.4.21",
 		"postcss-windicss": "1.0.0",
 		"prettier": "2.8.2",
-		"puppeteer": "19.4.1",
+		"puppeteer": "19.5.0",
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
