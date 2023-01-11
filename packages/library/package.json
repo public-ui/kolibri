@@ -61,7 +61,7 @@
 		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && node scripts/autogen.doc.js",
 		"clear": "rimraf dist doc loader www ../adapters/angular/src ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vue/src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@public-ui/*,@stencil/*,eslint-*,postcss-windicss,tslib,workbox-build",
-		"format": "prettier --check doc src",
+		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"lint": "eslint src && tsc --noemit",
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch",
