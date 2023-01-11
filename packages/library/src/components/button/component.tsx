@@ -22,6 +22,7 @@ import {
 	mapBoolean2String,
 	mapStringOrBoolean2String,
 	setEventTargetAndStopPropagation,
+	setState,
 	watchBoolean,
 	watchString,
 	watchValidator,
@@ -51,7 +52,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		propergateFocus(this.host, this.ref);
 	};
 
-	private readonly onClick = (event: Event) => {
+	private readonly onClick = (event: MouseEvent) => {
 		if (this.state._type === 'submit') {
 			propergateSubmitEventToForm({
 				form: this.host,
@@ -64,7 +65,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 			});
 		} else if (typeof this.state._on?.onClick === 'function') {
 			setEventTargetAndStopPropagation(event, this.ref);
-			this.state._on?.onClick(event as PointerEvent);
+			this.state._on?.onClick(event, this.state._value);
 		} else {
 			devHint(`It was no button click callback configured!`);
 		}
@@ -191,7 +192,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks;
+	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
 
 	/**
 	 * Gibt an, welche Role der Schalter hat.
@@ -212,6 +213,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * Gibt an, welche Typ der Button hat.
 	 */
 	@Prop() public _type?: KoliBriButtonType = 'button';
+
+	/**
+	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 */
+	@Prop() public _value?: Stringified<unknown>;
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.
@@ -366,7 +372,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_on')
-	public validateOn(value?: KoliBriButtonCallbacks): void {
+	public validateOn(value?: KoliBriButtonCallbacks<unknown>): void {
 		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,
@@ -410,6 +416,14 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_value')
+	public validateValue(value?: Stringified<unknown>): void {
+		setState(this, '_value', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriButtonVariant): void {
 		watchButtonVariant(this, '_variant', value);
@@ -437,6 +451,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
+		this.validateValue(this._value);
 		this.validateVariant(this._variant);
 	}
 }

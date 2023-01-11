@@ -57,7 +57,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-input-radio _id="id" _list={[]}></kol-input-radio>
 				<kol-input-range _id="id"></kol-input-range>
 				<kol-input-text _id="id"></kol-input-text>
-				<kol-link _label="label"></kol-link>
+				<kol-link _href="" _label="label"></kol-link>
 				<kol-link-group _ariaLabel="" _links={[]}></kol-link-group>
 				<kol-logo _org={Bundesministerium['Auswärtiges Amt']}></kol-logo>
 				<kol-modal _ariaLabel=""></kol-modal>

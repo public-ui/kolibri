@@ -2,7 +2,7 @@ import { TooltipAlignment } from '../components/tooltip/component';
 import { Events } from '../enums/events';
 import { Generic } from '@public-ui/core';
 import { watchValidator } from '../utils/prop.validators';
-import { EventCallback } from './callbacks';
+import { EventCallback, EventValueCallback } from './callbacks';
 import { Alignment, KoliBriCustomIcon, KoliBriIconProp } from './icon';
 import { Stringified } from './common';
 
@@ -69,8 +69,8 @@ type OptionalButtonAndLinkStates = {
 export type KoliBriButtonType = 'button' | 'reset' | 'submit';
 export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost' | 'custom';
 
-export type KoliBriButtonCallbacks = {
-	[Events.onClick]?: EventCallback<PointerEvent>;
+export type KoliBriButtonCallbacks<T> = {
+	[Events.onClick]?: EventValueCallback<MouseEvent, T>;
 	[Events.onMouseDown]?: EventCallback<MouseEvent>;
 };
 
@@ -89,8 +89,9 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	 */
 	accessKey: string;
 	id: string;
-	on: KoliBriButtonCallbacks;
+	on: KoliBriButtonCallbacks<unknown>;
 	type: KoliBriButtonType;
+	value: Stringified<unknown>;
 };
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
@@ -104,7 +105,8 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 		 */
 		accessKey: string;
 		id: string;
-		on: KoliBriButtonCallbacks;
+		on: KoliBriButtonCallbacks<unknown>;
+		value: unknown;
 	};
 // type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
@@ -122,7 +124,7 @@ export type ButtonStates = Generic.Element.Members<RequiredButtonStates, Optiona
 /* LINK */
 
 export type LinkOnCallbacks = {
-	[Events.onClick]?: EventCallback<Event>;
+	[Events.onClick]?: EventValueCallback<Event, string>;
 };
 
 // https://www.w3schools.com/tags/att_a_target.asp
@@ -133,16 +135,14 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 /**
  * API Link
  */
-export type RequiredLinkProps = RequiredButtonAndLinkProps;
+export type RequiredLinkProps = RequiredButtonAndLinkProps & {
+	href: string;
+};
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	fill: boolean;
-	href: string;
-	/**
-	 * @deprecated Verwende stattdessen einen Button _showAs=link.
-	 */
 	on: LinkOnCallbacks;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -169,17 +169,15 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 };
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
-export type RequiredLinkStates = RequiredButtonAndLinkStates;
+export type RequiredLinkStates = RequiredButtonAndLinkStates & {
+	href: string;
+};
 export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	fill: boolean;
-	href: string;
-	/**
-	 * @deprecated Verwende stattdessen einen Button _showAs=link.
-	 */
 	on: LinkOnCallbacks;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
