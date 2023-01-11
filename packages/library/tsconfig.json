@@ -1,24 +1,25 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "declaration": false,
-    "experimentalDecorators": true,
-    "lib": ["dom", "ES2017"],
-    "moduleResolution": "node",
-    "module": "ESNext",
-    "target": "ES2017",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "jsx": "react",
-    "jsxFactory": "h",
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "removeComments": true,
-    "types": ["node", "jest", "./declare"],
-    "typeRoots": ["node_modules/@types"],
-    "strict": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": false,
+		"declaration": false,
+		"experimentalDecorators": true,
+		"lib": ["dom", "ES2017"],
+		"moduleResolution": "node",
+		"module": "ESNext",
+		"target": "ES2017",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"jsx": "react",
+		"jsxFactory": "h",
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"removeComments": true,
+		"types": ["node", "jest", "./declare"],
+		"typeRoots": ["node_modules/@types"],
+		"strict": true,
+		"skipLibCheck": true
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }

@@ -1,5 +1,3 @@
-// import 'construct-style-sheets-polyfill';
-
 import { getThemeDetails, setThemeStyle } from '@public-ui/core';
 import { setMode } from '@stencil/core';
 import { Log } from '../utils/dev.utils';
