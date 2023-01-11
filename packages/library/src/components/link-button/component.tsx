@@ -6,6 +6,7 @@ import {
 	AriaCurrent,
 	KoliBriButtonVariant,
 	LinkButtonStates,
+	LinkOnCallbacks,
 	LinkTarget,
 	OptionalLinkButtonProps,
 	OptionalLinkButtonStates,
@@ -64,6 +65,7 @@ export class KolLinkButton
 					_icon={this._icon}
 					_iconOnly={this._iconOnly}
 					_label={this._label}
+					_on={this._on}
 					_role={this._role}
 					_tabIndex={this._tabIndex}
 					_target={this._target}
@@ -118,7 +120,7 @@ export class KolLinkButton
 	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
-	@Prop() public _href?: string = '';
+	@Prop() public _href!: string;
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
@@ -134,6 +136,11 @@ export class KolLinkButton
 	 * Gibt einen beschreibenden Text für das Text-Element an.
 	 */
 	@Prop() public _label!: string;
+
+	/**
+	 * Gibt die EventCallback-Funktionen für den Link an.
+	 */
+	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
 	 * Gibt an, welche Role der Schalter hat.

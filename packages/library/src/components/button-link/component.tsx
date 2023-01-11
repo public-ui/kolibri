@@ -51,6 +51,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
+					_value={this._value}
 				>
 					<slot name="expert" slot="expert" />
 				</kol-button-wc>
@@ -120,7 +121,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks;
+	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
 
 	/**
 	 * Gibt an, welche Role der Schalter hat.
@@ -141,4 +142,9 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	 * Gibt an, welche Typ der Button hat.
 	 */
 	@Prop() public _type?: KoliBriButtonType = 'button';
+
+	/**
+	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 */
+	@Prop() public _value?: Stringified<unknown>;
 }

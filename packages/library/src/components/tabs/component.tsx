@@ -10,6 +10,7 @@ import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
+import { KoliBriButtonCallbacks } from '../../types/button-link';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -23,7 +24,7 @@ export type KoliBriTabsCallbacks = /* {
 				callback: EventCallback<Event>;
 		  };
 } & {
-	[Events.onSelect]?: EventValueCallback<CustomEvent | KeyboardEvent | PointerEvent, number>;
+	[Events.onSelect]?: EventValueCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 
 type RequiredTabButtonProps = {
@@ -113,7 +114,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}, 250);
 	};
 
-	private readonly onClickSelect = (event: PointerEvent, index: number): void => {
+	private readonly onClickSelect = (event: MouseEvent, index: number): void => {
 		this.onSelect(event, index, true);
 	};
 
@@ -124,6 +125,11 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	private readonly onMouseDown = (event: Event): void => {
 		event.stopPropagation();
+	};
+
+	private readonly callbacks: KoliBriButtonCallbacks<number> = {
+		onClick: this.onClickSelect,
+		onMouseDown: this.onMouseDown,
 	};
 
 	private renderButtonGroup() {
@@ -142,10 +148,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_icon={button._icon}
 								_iconOnly={button._iconOnly}
 								_label={button._label && button._label} // TODO: ariaLabel-Konzept prüfen
-								_on={{
-									onClick: (event) => this.onClickSelect(event, index),
-									onMouseDown: this.onMouseDown,
-								}}
+								_on={this.callbacks as KoliBriButtonCallbacks<unknown>}
 								_tabIndex={this.state._selected === index ? 0 : -1}
 								_tooltipAlign={button._tooltipAlign}
 								_variant={this.state._selected === index ? 'custom' : undefined}
@@ -154,6 +157,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								// _ariaSelected={this.state._selected === index ? 'true' : 'false'}
 								_id={`tab-${index}`}
 								_role="tab"
+								_value={index}
 							></kol-button-wc>
 							{/* {typeof button._on?.onClose === 'function' ||
                         (button._on?.onClose === true && (
@@ -438,7 +442,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	}
 
-	private onSelect(event: CustomEvent | KeyboardEvent | PointerEvent, index: number, focus = false): void {
+	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number, focus = false): void {
 		this._selected = index;
 		if (typeof this._on?.onSelect === 'function') {
 			this._on?.onSelect(event, index);
