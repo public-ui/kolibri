@@ -39,12 +39,6 @@ Im Paket-Verzeichnis (`packages/library`) befindet sich das Web Component-Modul.
 
 `npm start`
 
-### Storybook-Modul (storybook)
-
-Im Paket-Verzeichnis (`packages/storybook`) befindet sich das Dokumentations-Modul. Hier werden die Spezifikationen aus dem Library-Modul ins Storybook synchronisiert und um weitere Code-Beispiele (Stories) ergänzt. Zudem sind dort zahlreiche Konzepte und Informationen hinterlegt.
-
-`npm start`
-
 ## Modularisierung
 
 Ziel der Modularisierung ist es den technischen Scope pro Modul auf dessen Kernaufgabe zu beschränken und damit auch die Pflege und Weiterentwicklung zu vereinfachen.

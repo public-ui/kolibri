@@ -48,17 +48,20 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"prepack": "unbuild",
-		":install": "pnpm i && pnpm update",
-		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
-		":republish": "npm run :unpublish && npm run :publish",
-		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
+		"format": "prettier --check src",
+		"lint": "eslint src && tsc --noemit",
+		"prepack": "unbuild"
 	},
 	"dependencies": {
 		"@public-ui/core": "1.1.16"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.18",
+		"@typescript-eslint/eslint-plugin": "5.48.0",
+		"@typescript-eslint/parser": "5.48.0",
+		"eslint": "8.31.0",
+		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "4.9.4",
 		"unbuild": "1.0.2"
 	},

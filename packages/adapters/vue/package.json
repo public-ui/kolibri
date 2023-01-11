@@ -49,11 +49,7 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"prepack": "unbuild",
-		":install": "pnpm i && pnpm update",
-		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
-		":republish": "npm run :unpublish && npm run :publish",
-		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+		"prepack": "unbuild"
 	},
 	"devDependencies": {
 		"@babel/types": "7.20.7",

@@ -48,19 +48,14 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"eslint": "eslint src",
-		"tsc": "tsc --noemit",
-		"lint": "npm run eslint && npm run tsc",
-		"prepack": "unbuild",
-		":install": "pnpm i && pnpm update",
-		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
-		":republish": "npm run :unpublish && npm run :publish",
-		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
+		"format": "prettier --check src",
+		"lint": "eslint src && tsc --noemit",
+		"prepack": "unbuild"
 	},
 	"dependencies": {
 		"@a11y-ui/core": "1.0.1-rc.6",
-		"i18next": "22.4.9",
-		"rxjs": "7.8.0"
+		"i18next": "22.4.9"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.18",

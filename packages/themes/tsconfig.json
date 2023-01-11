@@ -21,8 +21,10 @@
 		"target": "es2015",
 		"forceConsistentCasingInFileNames": false,
 		"importHelpers": false,
-		"strict": true
+		"strict": true,
+		"skipLibCheck": true
 	},
 	"compileOnSave": false,
-	"buildOnSave": false
+	"buildOnSave": false,
+	"exclude": ["node_modules/**"]
 }

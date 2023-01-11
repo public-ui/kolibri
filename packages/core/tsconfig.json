@@ -8,6 +8,7 @@
 		"esModuleInterop": true,
 		"lib": ["dom", "es2015"],
 		"module": "ESNext",
+		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
@@ -20,10 +21,9 @@
 		"target": "es2015",
 		"forceConsistentCasingInFileNames": false,
 		"importHelpers": false,
-		"strict": true
+		"strict": true,
+		"skipLibCheck": true
 	},
 	"compileOnSave": false,
-	"buildOnSave": false,
-	"include": ["src/**/*"],
-	"exclude": ["node_modules/**/*"]
+	"buildOnSave": false
 }

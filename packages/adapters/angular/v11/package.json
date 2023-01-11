@@ -58,11 +58,7 @@
 		"build:types": "tsc -d --outDir types && rimraf types/*.js types/*.map types/**/*.js types/**/*.map",
 		"build:umd": "tsc -m umd --outDir umd",
 		"build": "npm run build:clean && npm run build:ngc",
-		"prepack": "npm run build",
-		":install": "pnpm i && pnpm update",
-		":publish": "npm run :install && npm publish --registry=http://localhost:4873 || true",
-		":republish": "npm run :unpublish && npm run :publish",
-		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
+		"prepack": "npm run build"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
