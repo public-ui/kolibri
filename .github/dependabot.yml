@@ -66,11 +66,6 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
-    directory: '/packages/core/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
     directory: '/packages/library/'
     schedule:
       interval: daily

@@ -9,7 +9,6 @@ npx license-report --output=html --package=packages/adapters/react/package.json 
 npx license-report --output=html --package=packages/adapters/solid/package.json >> license-reports/adapter-solid.html
 npx license-report --output=html --package=packages/adapters/svelte/package.json >> license-reports/adapter-svelte.html
 npx license-report --output=html --package=packages/adapters/vue/package.json >> license-reports/adapter-vue.html
-npx license-report --output=html --package=packages/core/package.json >> license-reports/core.html
 npx license-report --output=html --package=packages/library/package.json >> license-reports/library.html
 npx license-report --output=html --package=packages/schema/package.json >> license-reports/schema.html
 npx license-report --output=html --package=packages/themes/package.json >> license-reports/themes.html
