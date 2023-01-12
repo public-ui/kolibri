@@ -70,7 +70,7 @@
 	"devDependencies": {
 		"@angular/compiler-cli": "13.3.12",
 		"@angular/compiler": "13.3.12",
-		"@angular/core": "13.3.12",
+		"@angular/core": "15.1.0",
 		"@public-ui/core": "1.1.16",
 		"@public-ui/components": "1.1.16",
 		"@types/minimatch": "5.1.2",
