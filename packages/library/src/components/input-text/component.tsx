@@ -55,6 +55,7 @@ export class KolInputText implements ComponentApi {
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
 			<Host>
+				{this.state._accessKey}
 				<kol-input
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -73,6 +74,7 @@ export class KolInputText implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
+						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"

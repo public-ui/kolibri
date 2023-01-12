@@ -59,6 +59,7 @@ export class KolTextarea implements ComponentApi {
 							ref={this.catchRef}
 							part="textarea"
 							title=""
+							accessKey={this.state._accessKey}
 							aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
 							autoCapitalize="off"
