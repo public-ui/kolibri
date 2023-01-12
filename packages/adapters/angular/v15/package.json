@@ -69,7 +69,7 @@
 	},
 	"devDependencies": {
 		"@angular/compiler-cli": "15.0.4",
-		"@angular/compiler": "15.0.4",
+		"@angular/compiler": "15.1.0",
 		"@angular/core": "15.0.4",
 		"@public-ui/core": "1.1.16",
 		"@public-ui/components": "1.1.16",
