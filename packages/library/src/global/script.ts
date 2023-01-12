@@ -4,9 +4,9 @@ import { Log } from '../utils/dev.utils';
 
 // ts-prune-ignore-next
 export default (): void => {
-	if (process.env.NODE_ENV !== 'test')) {
+	if (process.env.NODE_ENV !== 'test') {
 		Log.info(
-		`
+			`
 ,--. ,--.         ,--. ,--. ,-----.           ,--.
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.

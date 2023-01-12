@@ -9,7 +9,6 @@
 		"packages/adapters/react",
 		"packages/adapters/solid",
 		"packages/adapters/vue",
-		"packages/core",
 		"packages/library",
 		"packages/schema",
 		"packages/themes"
