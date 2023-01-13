@@ -7,7 +7,7 @@ specifiers:
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.8
+  solid-js: 1.6.9
   typescript: 4.9.4
   unbuild: 1.0.2
 
@@ -18,7 +18,7 @@ devDependencies:
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.8
+  solid-js: 1.6.9
   typescript: 4.9.4
   unbuild: 1.0.2
 
@@ -696,7 +696,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001443
+      caniuse-lite: 1.0.30001444
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -707,8 +707,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001443:
-    resolution: {integrity: sha512-jUo8svymO8+Mkj3qbUbVjR8zv8LUGpGkUM/jKvc9SO2BvjCI980dp9fQbf/dyLs6RascPzgR4nhAKFA4OHeSaA==}
+  /caniuse-lite/1.0.30001444:
+    resolution: {integrity: sha512-ecER9xgJQVMqcrxThKptsW0pPxSae8R2RB87LNa+ivW9ppNWRHEplXcDzkCOP4LYWGj8hunXLqaiC41iBATNyg==}
     dev: true
 
   /chalk/2.4.2:
@@ -1472,8 +1472,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /solid-js/1.6.8:
-    resolution: {integrity: sha512-+X5rf4bL3Il/LI2pn6O2d63D/KyG8Shxj3DM6violSPOhRgm5ln37Pq6uVDAvJcmsObOBeGOjXAwZvqwyZjisg==}
+  /solid-js/1.6.9:
+    resolution: {integrity: sha512-kV3fMmm+1C2J95c8eDOPKGfZHnuAkHUBLG4hX1Xu08bXeAIPqmxuz/QdH3B8SIdTp3EatBVIyA6RCes3hrGzpg==}
     dependencies:
       csstype: 3.1.1
     dev: true
