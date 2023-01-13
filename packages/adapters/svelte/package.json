@@ -71,7 +71,7 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.17",
 		"@types/normalize-package-data": "2.4.1",
-		"rimraf": "3.0.2",
+		"rimraf": "4.0.4",
 		"svelte": "3.55.0",
 		"typescript": "4.9.4"
 	},
