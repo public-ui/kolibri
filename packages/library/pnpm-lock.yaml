@@ -38,7 +38,7 @@ specifiers:
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
-  rimraf: 3.0.2
+  rimraf: 4.0.4
   stencil-awesome-test: 1.0.4
   terser: 5.16.1
   tslib: 2.4.1
@@ -86,7 +86,7 @@ devDependencies:
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
-  rimraf: 3.0.2
+  rimraf: 4.0.4
   stencil-awesome-test: 1.0.4_@stencil+core@2.21.0
   terser: 5.16.1
   tslib: 2.4.1
@@ -6157,6 +6157,12 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rimraf/4.0.4:
+    resolution: {integrity: sha512-R0hoVr9xTwemarQjoWlNt/nb5dEGVTBhVdkRmEX2zEkT8T6onH0XKiGjuaC7rNNj/gYzY2p4NVRJ3sjO1ascHQ==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /robots-parser/3.0.0:
