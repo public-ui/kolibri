@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/schema",
-	"version": "1.1.16",
+	"version": "1.2.0-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -54,7 +54,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/core": "1.1.16"
+		"@public-ui/core": "1.2.0"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.18",
