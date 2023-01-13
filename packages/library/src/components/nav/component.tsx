@@ -107,7 +107,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				{props.links.map((link, index: number) => {
 					return (
 						<li
-							key={index}
 							part={`li ${props.deep === 0 ? this.state._orientation : 'vertical'}${link._active ? ' selected' : ''}${
 								index < props.links.length - 1 ? '' : ' last'
 							}`}
@@ -170,7 +169,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										}}
 										exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
 										// HERE NOT! _ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
-										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
+										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : undefined}
 										_href={link._href}
 										_icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'}
 										_icon-only={this.state._compact === true || link._iconOnly === true}
