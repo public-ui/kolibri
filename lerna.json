@@ -5,6 +5,7 @@
 		"packages/adapters/angular/v13",
 		"packages/adapters/angular/v14",
 		"packages/adapters/angular/v15",
+		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",
 		"packages/adapters/solid",

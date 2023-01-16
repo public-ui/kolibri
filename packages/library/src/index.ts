@@ -1,4 +1,3 @@
-export type { ThemeDetails } from '@public-ui/core';
 export * from './components';
 export * from './enums/bund';
 export * from './kolibri';

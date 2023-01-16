@@ -41,6 +41,11 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
+    directory: '/packages/adapters/hydrate/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
     directory: '/packages/adapters/preact/'
     schedule:
       interval: daily

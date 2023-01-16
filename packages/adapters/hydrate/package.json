@@ -1,5 +1,5 @@
 {
-	"name": "@public-ui/themes",
+	"name": "@public-ui/hydrate",
 	"version": "1.2.0-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
@@ -12,7 +12,7 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"description": "Contains the style guides and themes of various corporate designs for KoliBri - The accessible HTML-Standard.",
+	"description": "Hydrate function for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -38,44 +38,28 @@
 		"a11y",
 		"w3c",
 		"webstandard",
-		"wcag"
+		"wcag",
+		"hydrate"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
-		"format": "prettier --check src",
-		"lint": "eslint src && tsc --noemit",
-		"prepack": "unbuild"
-	},
-	"dependencies": {
-		"@public-ui/schema": "1.2.0-rc.0"
+		"prepack": "rimraf dist/package.json"
 	},
 	"devDependencies": {
-		"@types/node": "18.11.18",
-		"@typescript-eslint/eslint-plugin": "5.48.1",
-		"@typescript-eslint/parser": "5.48.1",
-		"eslint": "8.31.0",
-		"eslint-plugin-no-loops": "0.3.0",
-		"typescript": "4.9.4",
-		"unbuild": "1.0.2"
+		"rimraf": "4.0.5"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.2.0-rc.0"
 	},
 	"sideEffects": false,
-	"type": "module",
+	"type": "commonjs",
 	"exports": {
 		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs"
+			"require": "./dist/index.js"
 		}
 	},
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.mjs",
+	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"files": [
-		"assets",
-		"reports",
 		"dist"
 	]
 }

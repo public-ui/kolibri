@@ -1,0 +1,15 @@
+lockfileVersion: 5.4
+
+specifiers:
+  rimraf: 4.0.5
+
+devDependencies:
+  rimraf: 4.0.5
+
+packages:
+
+  /rimraf/4.0.5:
+    resolution: {integrity: sha512-3gf/WdsBM+ZkuPb76MpXSxNKt00QQ3PdXqDCCBOsHgcoBs8DAhXbqtrGQUAkhxHgXYWzXxuaOsN4s21+at5fBw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true

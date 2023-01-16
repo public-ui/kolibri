@@ -45,7 +45,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		if (process.env.NODE_ENV !== 'test') {
 			const clientRect = target.getBoundingClientRect();
 
-			if (this.tooltipElement instanceof HTMLElement) {
+			if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 				switch (this.state._align) {
 					case 'top':
 					case 'bottom':
@@ -75,7 +75,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	};
 
 	private showTooltip = (): void => {
-		if (this.tooltipElement instanceof HTMLElement) {
+		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.tooltipElement.style.setProperty('display', 'block');
 			getDocument().body.addEventListener('keyup', this.hideTooltipByEscape);
 			this.alignTooltip();
@@ -85,7 +85,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	};
 
 	private hideTooltip = (): void => {
-		if (this.tooltipElement instanceof HTMLElement) {
+		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.tooltipElement.style.setProperty('display', 'none');
 			this.tooltipElement.style.setProperty('visibility', 'hidden');
 			document.removeEventListener('scroll', this.alignTooltip);
@@ -101,9 +101,9 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 
 	private catchHostElement = (element: HTMLElement | null): void => {
 		this.hostElement = element;
-		if (this.hostElement instanceof HTMLElement) {
+		if (this.hostElement /* SSR instanceof HTMLElement */) {
 			const previousSibling = this.hostElement.previousElementSibling;
-			if (previousSibling instanceof HTMLElement) {
+			if (previousSibling /* SSR instanceof HTMLElement */) {
 				previousSibling.removeEventListener('mouseover', this.showTooltip);
 				previousSibling.addEventListener('mouseover', this.showTooltip);
 				previousSibling.removeEventListener('focus', this.showTooltip);
@@ -112,7 +112,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 				previousSibling.addEventListener('mouseout', this.hideTooltip);
 				previousSibling.removeEventListener('blur', this.hideTooltip);
 				previousSibling.addEventListener('blur', this.hideTooltip);
-				this.childElements.push(previousSibling);
+				this.childElements.push(previousSibling as HTMLElement);
 			}
 		}
 	};
