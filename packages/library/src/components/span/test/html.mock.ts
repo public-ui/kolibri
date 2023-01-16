@@ -43,7 +43,7 @@ export const getSpanWcHtml = (
 							_ariaLabel: '',
 							_icon: (icon.left as KoliBriCustomIcon).icon,
 						},
-						` class="icon left${state._iconOnly === true ? ` mr-2` : ``}"`
+						` class="icon left"`
 				  )
 				: ''
 		}
@@ -56,7 +56,7 @@ export const getSpanWcHtml = (
 							_ariaLabel: '',
 							_icon: (icon.right as KoliBriCustomIcon).icon,
 						},
-						` class="icon right${state._iconOnly === true ? ` ml-2` : ``}"`
+						` class="icon right"`
 				  )
 				: ''
 		}

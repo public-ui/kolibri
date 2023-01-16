@@ -12,12 +12,6 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"contributors": [
-		{
-			"name": "Martin Oppitz",
-			"email": "martin.oppitz@itzbund.de"
-		}
-	],
 	"sideEffects": false,
 	"description": "Svelte framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [

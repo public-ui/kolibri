@@ -71,7 +71,6 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 						<kol-icon
 							class={{
 								'icon left': true,
-								'mr-2': this.state._iconOnly,
 							}}
 							style={this.state._icon.left.style}
 							_ariaLabel=""
@@ -91,7 +90,6 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 						<kol-icon
 							class={{
 								'icon right': true,
-								'ml-2': this.state._iconOnly,
 							}}
 							style={this.state._icon.right.style}
 							_ariaLabel=""

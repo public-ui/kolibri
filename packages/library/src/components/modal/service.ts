@@ -8,6 +8,9 @@ type LockedElementContext = {
 	tabIndex?: string;
 };
 
+/**
+ * The modal service is only working client-side!
+ */
 export class ModalService {
 	private lockedElements: Map<HTMLElement, LockedElementContext> = new Map();
 	private modalStack: Map<HTMLElement, ModalContext> = new Map();

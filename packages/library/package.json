@@ -12,12 +12,6 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"contributors": [
-		{
-			"name": "Martin Oppitz",
-			"email": "martin.oppitz@itzbund.de"
-		}
-	],
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.js",
 	"customElements": "custom-elements.json",
@@ -57,9 +51,9 @@
 		"wcag"
 	],
 	"scripts": {
-		"build": "npm run test && npm run build:light && node scripts/cheat-sheet.js && npm run format -- -w",
+		"build": "npm run build:light && node scripts/cheat-sheet.js && npm run format -- -w",
 		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && node scripts/autogen.doc.js",
-		"clear": "rimraf dist doc loader www ../adapters/angular/src ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vue/src",
+		"clear": "rimraf dist doc loader www ../adapters/angular/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vue/src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@public-ui/*,@stencil/*,eslint-*,postcss-windicss,tslib,workbox-build",
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",

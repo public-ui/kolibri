@@ -1,0 +1,77 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@public-ui/components': 1.2.0-rc.0
+  rimraf: 4.0.5
+
+dependencies:
+  '@public-ui/components': 1.2.0-rc.0
+
+devDependencies:
+  rimraf: 4.0.5
+
+packages:
+
+  /@a11y-ui/core/1.0.1-rc.6:
+    resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: false
+
+  /@babel/runtime/7.20.7:
+    resolution: {integrity: sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
+
+  /@public-ui/components/1.2.0-rc.0:
+    resolution: {integrity: sha512-NyeIsIKCBQTxBouFHecMdCAsvnLW9q3G0XQ4Q2BtpkqGWnBQuNkBpbw9mgdq8p5BpxvDhxpFSkVT+yBCsIHeug==}
+    dependencies:
+      '@public-ui/schema': 1.2.0-rc.0
+    dev: false
+
+  /@public-ui/core/1.2.0:
+    resolution: {integrity: sha512-PJ0ghoopx4FBtovnOHxJ2v1LNCwueVo+L0qxBRrP5xzX0Smx3TzwQknL5LGU5HI79uiXmyWCv01FdtqXQ3LPcg==}
+    dependencies:
+      '@a11y-ui/core': 1.0.1-rc.6
+      i18next: 22.4.9
+      rxjs: 7.8.0
+    dev: false
+
+  /@public-ui/schema/1.2.0-rc.0:
+    resolution: {integrity: sha512-hTNdzg7SoTXSmt9l5yGbLdIR5YFmPEv2ZwA9xAcvUe1Hx87Oic+sHGvFP0EAbuI8e0Jqg6tbFrQVOzGSnvJJBg==}
+    dependencies:
+      '@public-ui/core': 1.2.0
+    dev: false
+
+  /i18next/22.4.9:
+    resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+    dev: false
+
+  /loglevel/1.8.1:
+    resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
+    engines: {node: '>= 0.6.0'}
+    dev: false
+
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
+
+  /rimraf/4.0.5:
+    resolution: {integrity: sha512-3gf/WdsBM+ZkuPb76MpXSxNKt00QQ3PdXqDCCBOsHgcoBs8DAhXbqtrGQUAkhxHgXYWzXxuaOsN4s21+at5fBw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
+
+  /rxjs/7.8.0:
+    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
+    dependencies:
+      tslib: 2.4.1
+    dev: false
+
+  /tslib/2.4.1:
+    resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+    dev: false
