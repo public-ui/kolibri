@@ -86,7 +86,7 @@
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
 		"cross-env": "7.0.3",
-		"eslint": "8.31.0",
+		"eslint": "8.32.0",
 		"eslint-config-prettier": "8.6.0",
 		"eslint-plugin-html": "7.1.0",
 		"eslint-plugin-jsdoc": "39.6.4",
