@@ -56,7 +56,7 @@
 		"unbuild": "1.1.1"
 	},
 	"peerDependencies": {
-		"preact": ">=10.5.15"
+		"preact": ">=10.11.3"
 	},
 	"sideEffects": false,
 	"type": "module",
