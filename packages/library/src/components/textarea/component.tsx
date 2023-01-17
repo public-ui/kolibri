@@ -1,4 +1,5 @@
 import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { translate } from '../../i18n';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { setState } from '../../utils/prop.validators';
@@ -90,13 +91,13 @@ export class KolTextarea implements ComponentApi {
 								{this.state._currentLength}
 								{this.state._maxLength && (
 									<Fragment>
-										<span aria-label="von" role="img">
+										<span aria-label={translate('kol-of')} role="img">
 											/
 										</span>
 										{this.state._maxLength}
 									</Fragment>
 								)}{' '}
-								<span>Zeichen</span>
+								<span>{translate('kol-characters')}</span>
 							</span>
 						)}
 					</div>

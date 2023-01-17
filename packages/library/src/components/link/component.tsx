@@ -24,6 +24,7 @@ import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { Stringified } from '../../types/common';
 import { propergateFocus } from '../../utils/reuse';
 import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
+import { translate } from '../../i18n';
 
 type RequiredNavLinkProps = RequiredLinkProps;
 type OptionalNavLinkProps = OptionalLinkProps & {
@@ -299,7 +300,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
 	 */
-	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
+	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
