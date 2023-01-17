@@ -1,4 +1,4 @@
-import { Theme } from '@public-ui/core';
+import { Theme } from '@a11y-ui/core';
 
 enum TagEnum {
 	'abbr',
