@@ -1,5 +1,5 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Orientation } from '../../types/orientation';
 import { a11yHintLabelingLandmarks, devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';

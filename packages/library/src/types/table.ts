@@ -1,5 +1,5 @@
 import { RequiredProps as PaginationRequiredProps, OptionalProps as PaginationOptionalProps } from '../components/pagination/component';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 
 type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
 

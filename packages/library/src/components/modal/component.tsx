@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { AriaLabel } from '../../types/aria-label';
 import { KoliBriModalEventCallbacks } from '../../types/modal';
 import { featureHint } from '../../utils/a11y.tipps';

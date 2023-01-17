@@ -2,7 +2,7 @@ import { watchJsonArrayString, watchValidator } from '../../utils/prop.validator
 import { InputPasswordController } from '../input-password/controller';
 import { Props as InputTextProps, Watches as InputTextWatches } from './types';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { InputTextType } from '../../types/input/control/text';
 import { Stringified } from '../../types/common';
 

@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { InputCheckboxRadioController } from '../input-radio/controller';
 import { InputCheckboxVariant, Props, Watches } from './types';

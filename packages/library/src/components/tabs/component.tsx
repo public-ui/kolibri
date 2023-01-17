@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Events } from '../../enums/events';
 import { KoliBriIconProp } from '../../types/icon';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { EventCallback, EventValueCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';

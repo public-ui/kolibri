@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
 import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';

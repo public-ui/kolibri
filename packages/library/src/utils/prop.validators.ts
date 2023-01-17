@@ -1,9 +1,9 @@
-import { patchTheme, patchThemeTag } from '@public-ui/core';
+import { patchTheme, patchThemeTag } from '@a11y-ui/core';
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 
 import { devHint } from './a11y.tipps';
 import { getDocument, getExperimalMode, getWindow, Log } from './dev.utils';

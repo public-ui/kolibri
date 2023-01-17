@@ -1,6 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchTooltipAlignment } from '../../types/button-link';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';

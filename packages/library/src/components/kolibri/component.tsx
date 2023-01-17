@@ -2,7 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { colorRgba } from '../badge/color-rgba';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
 

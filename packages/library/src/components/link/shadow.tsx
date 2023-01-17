@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { AlternativButtonLinkRole, AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { TooltipAlignment } from '../tooltip/component';
 import { Stringified } from '../../types/common';

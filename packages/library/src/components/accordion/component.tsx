@@ -1,6 +1,6 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Events } from '../../enums/events';
 

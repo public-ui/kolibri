@@ -1,6 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from '../../types/alert';
 import { HeadingLevel } from '../../types/heading-level';
 import { featureHint } from '../../utils/a11y.tipps';

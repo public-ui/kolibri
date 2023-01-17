@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { getExperimalMode } from '../../utils/dev.utils';
 import { watchBoolean } from '../../utils/prop.validators';
 import { Props, Watches } from './types';

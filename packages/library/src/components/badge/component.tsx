@@ -1,6 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Nationalfarben } from '../../enums/color';
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { devHint, featureHint } from '../../utils/a11y.tipps';
