@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import { getI18nService, ITranslationOptions } from '@public-ui/core';
+import { getI18nService } from '@public-ui/core';
 import locale_de from './locales/de.json';
 import locale_en from './locales/en.json';
 
@@ -14,7 +14,12 @@ export const translations = new Set<Generic.I18n.RegisterPatch<Generic.I18n.Loca
 	(t: (language: 'de', translationMap: Generic.I18n.Map<ResourcePrefix, ComponentKeys>) => Generic.I18n.Locale.ISO_639_1) => t('de', mapLocaleKeys(locale_de)),
 ]);
 
-export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<ComponentKeys>}`, options?: ITranslationOptions) => {
+type Options = {
+	count?: number;
+	placeholders?: { [K: string]: string };
+};
+
+export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<ComponentKeys>}`, options?: Options) => {
 	const i18n = getI18nService();
 	if (i18n === undefined) {
 		console.warn('I18nService not available! Please call the global register function.');
@@ -27,7 +32,7 @@ export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<Compone
 
 		translations.forEach((t) =>
 			t((l, t) => {
-				// i18n.addResourceBundle(l, t);
+				i18n.addResourceBundle(l, t);
 				return l;
 			})
 		);

@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.1.16-rc.8
+  '@public-ui/core': 1.2.0
   '@public-ui/schema': 1.1.16-rc.8
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.21.0
@@ -54,7 +54,7 @@ dependencies:
   '@public-ui/schema': 1.1.16-rc.8
 
 devDependencies:
-  '@public-ui/core': 1.1.16-rc.8
+  '@public-ui/core': 1.2.0
   '@stencil/angular-output-target': 0.4.0_@stencil+core@2.21.0
   '@stencil/core': 2.21.0
   '@stencil/postcss': 2.1.0_@stencil+core@2.21.0
@@ -1633,6 +1633,15 @@ packages:
       '@a11y-ui/core': 1.0.1-rc.6
       i18next: 22.4.8
       rxjs: 7.8.0
+    dev: false
+
+  /@public-ui/core/1.2.0:
+    resolution: {integrity: sha512-PJ0ghoopx4FBtovnOHxJ2v1LNCwueVo+L0qxBRrP5xzX0Smx3TzwQknL5LGU5HI79uiXmyWCv01FdtqXQ3LPcg==}
+    dependencies:
+      '@a11y-ui/core': 1.0.1-rc.6
+      i18next: 22.4.9
+      rxjs: 7.8.0
+    dev: true
 
   /@public-ui/schema/1.1.16-rc.8:
     resolution: {integrity: sha512-tFzlt/WcTN+34HIB4gq520n1CzOHEc4zXiDiLtaQJuShRnXbqhssUOP8wHY6Bj6JbQPuD/dFiQI7NwkR1H/lRw==}
@@ -4044,6 +4053,13 @@ packages:
     resolution: {integrity: sha512-XSOy17ZWqflOiJRYE/dzv6vDle2Se32dnHREHb93UnZzZ1+UnvQ8yKtt1fpNL3zvXz5AwCqqixrtTVZmRetaiQ==}
     dependencies:
       '@babel/runtime': 7.20.7
+    dev: false
+
+  /i18next/22.4.9:
+    resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+    dev: true
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}

@@ -322,7 +322,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 			<kol-button
 				key={`${this.nonce}-${page}`}
 				_customClass={this.state._customClass}
-				_ariaLabel={translate('kol-page-current', { placeholders: { page } })}
+				_ariaLabel={translate('kol-page-current', { placeholders: { page: page.toFixed(0) } })}
 				_label={`${page}`}
 				_on={{
 					onClick: (event: Event) => {
@@ -342,7 +342,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 				_customClass={this.state._customClass}
 				_disabled={true}
 				_ariaCurrent={true}
-				_ariaLabel={translate('kol-page-selected', { placeholders: { page } })}
+				_ariaLabel={translate('kol-page-selected', { placeholders: { page: page.toFixed(0) } })}
 				_label={`${page}`}
 				_variant={this.state._variant}
 			/>

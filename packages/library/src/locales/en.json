@@ -5,7 +5,7 @@
 	"success": "Success",
 	"message": "Message",
 	"close": "Close",
-	"form-description": "Form fields marked with an asterisk <span aria-hidden=\"true\">(*)</span> are mandatory.",
+	"form-description": "Form fields marked with an asterisk (*) are mandatory.",
 	"of": "of",
 	"characters": "characters",
 	"new": "New",

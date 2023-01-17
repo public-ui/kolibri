@@ -5,7 +5,7 @@
 	"success": "Erfolg",
 	"message": "Nachricht",
 	"close": "Schließen",
-	"form-description": "Formular-Felder, die mit einem Sternchen <span aria-hidden=\"true\">(*)</span> gekennzeichnet sind, sind Pflichtangaben.",
+	"form-description": "Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.",
 	"of": "von",
 	"characters": "Zeichen",
 	"new": "Neu",
