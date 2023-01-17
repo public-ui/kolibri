@@ -46,8 +46,8 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	private hostElement?: HTMLElement;
 
 	public componentDidRender(): void {
-		if (this.hostElement instanceof HTMLElement) {
-			if (this.state._activeElement instanceof HTMLElement) {
+		if (this.hostElement /* SSR instanceof HTMLElement */) {
+			if (this.state._activeElement /* SSR instanceof HTMLElement */) {
 				(getKoliBri().Modal as ModalService).openModal(this.hostElement, this.state._activeElement);
 			} else {
 				(getKoliBri().Modal as ModalService).closeModal(this.hostElement);
@@ -56,7 +56,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	}
 
 	public disconnectedCallback(): void {
-		if (this.hostElement instanceof HTMLElement) {
+		if (this.hostElement /* SSR instanceof HTMLElement */) {
 			(getKoliBri().Modal as ModalService).closeModal(this.hostElement);
 		}
 	}
@@ -74,7 +74,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 					this.hostElement = el as HTMLElement;
 				}}
 			>
-				{this.state._activeElement instanceof HTMLElement && (
+				{this.state._activeElement /* SSR instanceof HTMLElement */ && (
 					<div>
 						<div>
 							<div
@@ -86,7 +86,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 								role="dialog"
 								onKeyDown={this.onKeyDown}
 								ref={(el) => {
-									if (el instanceof HTMLElement) {
+									if (el /* SSR instanceof HTMLElement */) {
 										el.setAttribute('tabindex', '0');
 										setTimeout(() => el.focus(), 250);
 									}
@@ -141,7 +141,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Watch('_activeElement')
 	public validateActiveElement(value?: HTMLElement | null): void {
-		watchValidator(this, '_activeElement', (value): boolean => value instanceof HTMLElement || value === null, new Set(['HTMLElement', 'null']), value, {
+		watchValidator(this, '_activeElement', (value): boolean => typeof value === 'object' || value === null, new Set(['HTMLElement', 'null']), value, {
 			defaultValue: null,
 		});
 	}

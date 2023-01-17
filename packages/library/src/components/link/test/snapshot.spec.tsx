@@ -49,7 +49,7 @@ executeTests<LinkProps>(
 		// _ariaExpanded: [false, true],
 		// _ariaLabel: ['Aria-Label'],
 		// _fill: [false, true],
-		// _href: ['https://google.de'],
+		_href: ['https://google.de'],
 		// _icon: ['home'],
 		// _iconAlign: ['left', 'right'],
 		// _iconOnly: [false, true],

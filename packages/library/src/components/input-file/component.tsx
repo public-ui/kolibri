@@ -48,6 +48,7 @@ export class KolInputFile implements ComponentApi {
 						part="input"
 						title=""
 						accept={this.state._accept}
+						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"

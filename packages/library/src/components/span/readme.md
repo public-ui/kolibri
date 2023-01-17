@@ -1,4 +1,20 @@
-# kol-span
+# Span
+
+<kol-alert _type="warning">Die **Span**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung direkt verwendet zu werden. Denn der Span ist nur dann wirklich barrierefrei, wenn es in Kombination mit dem Tooltip verwendet wird.</kol-alert>
+
+Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die Text-Icon-Kombination und das Expert-Slot-Konzept einheitlich umzusetzen.
+
+## Konstruktion
+
+### Code
+
+```html
+<kol-span _icon="fa-solid fa-house" _icon-only="false" _label="Text inside the span."></kol-span>
+```
+
+### Beispiel
+
+<kol-span _icon="fa-solid fa-house" _icon-only="false" _label="Text inside the span."></kol-span>
 
 <!-- Auto Generated Below -->
 

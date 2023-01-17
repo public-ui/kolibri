@@ -4,19 +4,21 @@ import { Log } from '../utils/dev.utils';
 
 // ts-prune-ignore-next
 export default (): void => {
-	Log.info(
-		`
+	if (process.env.NODE_ENV !== 'test') {
+		Log.info(
+			`
 ,--. ,--.         ,--. ,--. ,-----.           ,--.
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
-`,
-		{
-			forceLog: true,
-		}
-	);
+	`,
+			{
+				forceLog: true,
+			}
+		);
+	}
 
 	setMode((elm) => {
 		if (elm.shadowRoot instanceof ShadowRoot) {

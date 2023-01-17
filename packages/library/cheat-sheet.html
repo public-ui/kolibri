@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.16';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.16';
+			import { register } from 'https://esm.sh/@public-ui/core@1.2.0-rc.2';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.2.0-rc.2/dist/loader';
+			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.2';
 				register(MAPZ, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/core@1.1.16';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16/dist/loader';
-		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.16';
+		import { register } from 'https://esm.sh/@public-ui/core@1.2.0-rc.2';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.2.0-rc.2/dist/loader';
+		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.2';
 		register([MAPZ], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -763,7 +763,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: "tab" | undefined; _tabIndex?: number | undefined; _tooltipAlign?: TooltipAlignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks | undefined; _type?: KoliBriButtonType | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: "tab" | undefined; _tabIndex?: number | undefined; _tooltipAlign?: TooltipAlignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; }`,
 	comps: `badge`
 },{
 	name: `_color`,

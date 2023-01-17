@@ -5,15 +5,15 @@
 		"packages/adapters/angular/v13",
 		"packages/adapters/angular/v14",
 		"packages/adapters/angular/v15",
+		"packages/adapters/hydrate",
 		"packages/adapters/preact",
 		"packages/adapters/react",
 		"packages/adapters/solid",
 		"packages/adapters/vue",
-		"packages/core",
 		"packages/library",
 		"packages/schema",
 		"packages/themes"
 	],
 	"useNx": false,
-	"version": "1.1.16"
+	"version": "1.2.0-rc.2"
 }

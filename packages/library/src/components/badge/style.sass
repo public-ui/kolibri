@@ -1,6 +1,35 @@
+/* windicss-touch: 1648427233774 */
 @import ../style
 
-span
-  display: inline-block
-  border-radius: var(--kolibri-border-radius)
-  @apply px-2 py-0.5
+:host
+
+	&>span
+		align-items: center
+		display: inline-flex
+		flex-wrap: nowrap
+
+		&> kol-span-wc
+			align-items: center
+			display: grid
+
+			&> span
+				display: flex
+
+		&> kol-button-wc
+			border-left-color: rgba(0, 0, 0, 0.25)
+			border-left-style: solid
+			border-left-width: 1px
+
+			&> button
+				background-color: inherit
+				border: 0
+				color: inherit
+				margin: 0
+				padding: 0
+
+				&> kol-span-wc
+					align-items: center
+					display: grid
+
+					&> span
+						display: flex

@@ -125,7 +125,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
 											_useCase="nav"
 											_ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
-											_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
+											_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : undefined}
 											_ariaExpanded={link._active === true}
 											_disabled={link._disabled}
 											_href="javascript:void(0)"

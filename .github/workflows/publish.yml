@@ -39,13 +39,6 @@ jobs:
           node-version: 16
           registry-url: '${{env.npmjs-registry}}'
           scope: '@public-ui'
-      - name: Build and publish core
-        run: |
-          npm i
-          npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/core
-        env:
-          NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish schema
         run: |
           npm i

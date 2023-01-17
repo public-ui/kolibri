@@ -44,7 +44,7 @@ export class KolInputCheckbox implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
-						accessKey={this.state._accessKey}
+						accessKey={this.state._accessKey} // by checkbox?!
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						checked={this.state._checked === true}

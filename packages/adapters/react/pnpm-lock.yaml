@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.1.16
-  '@public-ui/core': 1.1.16
+  '@public-ui/components': 1.2.0-rc.2
+  '@public-ui/core': 1.2.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -15,8 +15,8 @@ specifiers:
   unbuild: 0.8.11
 
 devDependencies:
-  '@public-ui/components': 1.1.16
-  '@public-ui/core': 1.1.16
+  '@public-ui/components': 1.2.0-rc.2
+  '@public-ui/core': 1.2.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -336,24 +336,24 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.1.16:
-    resolution: {integrity: sha512-WGJwWeqAyHUlJ6jqrNSrviNkw3QaowxyVqCj47mzFjv9ad8utAXPrUWkxpvGU39gzItj88WNn1OnwasC/Zuoqg==}
+  /@public-ui/components/1.2.0-rc.2:
+    resolution: {integrity: sha512-0AX+Rp7DL7FG6n7tFfvy1vJXWqcPnWxzgNK83/7ol9BWvpQe/MPkMi0OwEPNKD9M/Ca7tBnm3ReZmJNNRIopZQ==}
     dependencies:
-      '@public-ui/schema': 1.1.16
+      '@public-ui/schema': 1.2.0-rc.2
     dev: true
 
-  /@public-ui/core/1.1.16:
-    resolution: {integrity: sha512-7oGJJ5EG+6se9s3zTZxD2/6g6w2/oOfxbZBin9jatN1r4ySAt06PdQsR9yJvwl5Im5V993tzwsqh3AsfM/9Otw==}
+  /@public-ui/core/1.2.0:
+    resolution: {integrity: sha512-PJ0ghoopx4FBtovnOHxJ2v1LNCwueVo+L0qxBRrP5xzX0Smx3TzwQknL5LGU5HI79uiXmyWCv01FdtqXQ3LPcg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
       i18next: 22.4.9
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.1.16:
-    resolution: {integrity: sha512-I4Zw8y/d3b+XZ9p9gA0+c/IuTefOFq/1Obn0XyANU/d6AmC1a8AtKZ1WfnoMcN45gRn3z//uTaXlTKV3BaneTA==}
+  /@public-ui/schema/1.2.0-rc.2:
+    resolution: {integrity: sha512-7F+ClzfaohEKBWfDShUfw+7IsONEsrjuLdXg57LQbHzgCk69SBIobiMtrI2R/1bNrIg3Lizvfa+VvL6QF1orjA==}
     dependencies:
-      '@public-ui/core': 1.1.16
+      '@public-ui/core': 1.2.0
     dev: true
 
   /@rollup/plugin-alias/3.1.9_rollup@2.79.1:
@@ -529,7 +529,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001442
+      caniuse-lite: 1.0.30001445
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -540,8 +540,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001442:
-    resolution: {integrity: sha512-239m03Pqy0hwxYPYR5JwOIxRJfLTWtle9FV8zosfV5pHg+/51uD4nxcUlM8+mWWGfwKtt8lJNHnD3cWw9VZ6ow==}
+  /caniuse-lite/1.0.30001445:
+    resolution: {integrity: sha512-8sdQIdMztYmzfTMO6KfLny878Ln9c2M0fc7EH60IjlP4Dc4PiCy7K2Vl3ITmWgOyPgVQKa5x+UP/KqFsxj4mBg==}
     dev: true
 
   /chalk/2.4.2:
@@ -1243,8 +1243,8 @@ packages:
       '@types/estree': 1.0.0
     dev: true
 
-  /jiti/1.16.1:
-    resolution: {integrity: sha512-kJUp4Bj44uTaZAwG6R2/GjbodOWHULn8Swue0B7tY8v5BpTkUvDR+zBM5tsbC4x/jCeYDZ+mAdrUIScwIo4oPw==}
+  /jiti/1.16.2:
+    resolution: {integrity: sha512-OKBOVWmU3FxDt/UH4zSwiKPuc1nihFZiOD722FuJlngvLz2glX1v2/TJIgoA4+mrpnXxHV6dSAoCvPcYQtoG5A==}
     hasBin: true
     dev: true
 
@@ -1350,7 +1350,7 @@ packages:
       esbuild: 0.14.54
       fs-extra: 10.1.0
       globby: 11.1.0
-      jiti: 1.16.1
+      jiti: 1.16.2
       mri: 1.2.0
       pathe: 0.2.0
       typescript: 4.9.4
@@ -1365,8 +1365,8 @@ packages:
       ufo: 1.0.1
     dev: true
 
-  /mlly/1.0.0:
-    resolution: {integrity: sha512-QL108Hwt+u9bXdWgOI0dhzZfACovn5Aen4Xvc8Jasd9ouRH4NjnrXEiyP3nVvJo91zPlYjVRckta0Nt2zfoR6g==}
+  /mlly/1.1.0:
+    resolution: {integrity: sha512-cwzBrBfwGC1gYJyfcy8TcZU1f+dbH/T+TuOhtYP2wLv/Fb51/uV7HJQfBPtEupZ2ORLRU1EKFS/QfS3eo9+kBQ==}
     dependencies:
       acorn: 8.8.1
       pathe: 1.0.0
@@ -1440,7 +1440,7 @@ packages:
     resolution: {integrity: sha512-jHv9HB+Ho7dj6ItwppRDDl0iZRYBD0jsakHXtFgoLr+cHSF6xC+QL54sJmWxyGxOLYSHm0afhXhXcQDQqH9z8g==}
     dependencies:
       jsonc-parser: 3.2.0
-      mlly: 1.0.0
+      mlly: 1.1.0
       pathe: 1.0.0
     dev: true
 
@@ -1631,7 +1631,7 @@ packages:
       esbuild: 0.15.18
       globby: 13.1.3
       hookable: 5.4.2
-      jiti: 1.16.1
+      jiti: 1.16.2
       magic-string: 0.26.7
       mkdirp: 1.0.4
       mkdist: 0.3.13_typescript@4.9.4

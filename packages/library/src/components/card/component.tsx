@@ -13,6 +13,9 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	hasFooter: boolean;
+	/**
+	 * @deprecated Use _headline instead
+	 */
 	headline: string;
 	level: HeadingLevel;
 };
@@ -107,6 +110,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_headline')
 	public validateHeadline(value?: string): void {

@@ -6,9 +6,9 @@ import { COMPONENTS } from '../../component-list';
 const DEFAULT_PROPS = {
 	_ariaLabel: 'link-group-test',
 	_links: [
-		{ _label: 'Test Link 1', _selector: '#test-link-1' },
-		{ _label: 'Test Link 2', _selector: '#test-link-2' },
-		{ _label: 'Test Link 3', _selector: '#test-link-3' },
+		{ _label: 'Test Link 1', _href: '', _selector: '#test-link-1' },
+		{ _label: 'Test Link 2', _href: '', _selector: '#test-link-2' },
+		{ _label: 'Test Link 3', _href: '', _selector: '#test-link-3' },
 	],
 };
 const DEFAULT_HTML_NAV_PROPS = `aria-label=${DEFAULT_PROPS._ariaLabel} class="rounded"`;

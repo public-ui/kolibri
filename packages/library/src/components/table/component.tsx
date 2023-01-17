@@ -472,7 +472,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	}
 
 	private cellRender(col: KoliBriTableHeaderCellAndData, el?: HTMLElement): void {
-		if (el instanceof HTMLElement) {
+		if (el /* SSR instanceof HTMLElement */) {
 			clearTimeout(CELL_REFS.get(el));
 			CELL_REFS.set(
 				el,

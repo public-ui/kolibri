@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v15",
-	"version": "1.1.16",
+	"version": "1.2.0-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -12,12 +12,6 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"contributors": [
-		{
-			"name": "Martin Oppitz",
-			"email": "martin.oppitz@itzbund.de"
-		}
-	],
 	"sideEffects": false,
 	"description": "Angular (v15) framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
@@ -68,25 +62,25 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler-cli": "15.0.4",
-		"@angular/compiler": "15.0.4",
-		"@angular/core": "15.0.4",
-		"@public-ui/core": "1.1.16",
-		"@public-ui/components": "1.1.16",
+		"@angular/compiler-cli": "15.1.0",
+		"@angular/compiler": "15.1.0",
+		"@angular/core": "15.1.0",
+		"@public-ui/core": "1.2.0",
+		"@public-ui/components": "1.2.0-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.18",
 		"@types/normalize-package-data": "2.4.1",
-		"prettier": "2.8.2",
-		"rimraf": "3.0.2",
+		"prettier": "2.8.3",
+		"rimraf": "4.1.0",
 		"rxjs": "7.8.0",
 		"tslib": "2.4.1",
-		"typescript": "4.8.4",
+		"typescript": "4.9.4",
 		"zone.js": "0.12.0"
 	},
 	"peerDependencies": {
 		"@angular/core": "^15",
-		"@public-ui/components": "1.1.16"
+		"@public-ui/components": "1.2.0-rc.2"
 	},
 	"files": [
 		"dist/"

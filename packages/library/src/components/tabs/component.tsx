@@ -155,7 +155,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_variant={this.state._selected === index ? 'custom' : undefined}
 								_customClass={this.state._selected === index ? 'selected' : undefined}
 								_ariaControls={`tabpanel-${index}`}
-								// _ariaSelected={this.state._selected === index ? 'true' : 'false'}
+								_ariaSelected={this.state._selected === index}
 								_id={`tab-${index}`}
 								_role="tab"
 								_value={index}
@@ -422,7 +422,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 				slot.setAttribute('name', `tabpanel-slot-${i}`);
 				div.appendChild(slot);
 				this.tabPanelHost.appendChild(div);
-				if (this.host?.children instanceof HTMLCollection && this.host?.children[i] instanceof HTMLElement) {
+				if (this.host?.children instanceof HTMLCollection && this.host?.children[i] /* SSR instanceof HTMLElement */) {
 					// div.appendChild(this.host?.children[0]);
 					this.host?.children[i].setAttribute('slot', `tabpanel-slot-${i}`);
 				}
@@ -453,7 +453,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 			// devHint('[KolTabs] Tab-Fokus-verschieben geht im Moment nicht.');
 			this.selectedTimeout = setTimeout(() => {
 				clearTimeout(this.selectedTimeout);
-				if (this.tabPanelsElement instanceof HTMLElement) {
+				if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
 					const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabPanelsElement);
 					button?.focus();
 				}

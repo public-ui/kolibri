@@ -1,6 +1,6 @@
-# Core
+# Hydrate-Adapter (experimentell)
 
-Das **Core**-Modul beinhaltet **generischen Typen** und **allgemeine Funktionalität** für eine beliebige Komponenten-Bibliothek.
+Das Hydrate-Modul ist der SSR-Adapter für die Komponenten-Bibliothek.
 
 Mehr zur **Modularisierung** kann im [Architekturkonzept](https://github.com/public-ui/kolibri/blob/main/docs/ARCHITECTURE.md) nachgelesen werden.
 
