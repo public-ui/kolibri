@@ -154,7 +154,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_variant={this.state._selected === index ? 'custom' : undefined}
 								_customClass={this.state._selected === index ? 'selected' : undefined}
 								_ariaControls={`tabpanel-${index}`}
-								// _ariaSelected={this.state._selected === index ? 'true' : 'false'}
+								_ariaSelected={this.state._selected === index}
 								_id={`tab-${index}`}
 								_role="tab"
 								_value={index}
