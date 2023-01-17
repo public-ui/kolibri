@@ -24,14 +24,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 									props._heading !== undefined
 										? ''
 										: props._type === 'success'
-										? 'Erfolg'
+										? 'kol-success'
 										: props._type === 'error'
-										? 'Fehler'
+										? 'kol-error'
 										: props._type === 'warning'
-										? 'Warnung'
+										? 'kol-warning'
 										: props._type === 'info'
-										? 'Hinweis'
-										: 'Nachricht',
+										? 'kol-info'
+										: 'kol-message',
 								_icon:
 									props._type === 'success'
 										? 'fa-solid fa-circle-check'
@@ -63,14 +63,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 															props._heading !== undefined
 																? ''
 																: props._type === 'success'
-																? 'Erfolg'
+																? 'kol-success'
 																: props._type === 'error'
-																? 'Fehler'
+																? 'kol-error'
 																: props._type === 'warning'
-																? 'Warnung'
+																? 'kol-warning'
 																: props._type === 'info'
-																? 'Hinweis'
-																: 'Nachricht',
+																? 'kol-info'
+																: 'kol-message',
 														_icon:
 															props._type === 'success'
 																? 'fa-solid fa-circle-check'
