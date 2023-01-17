@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@public-ui/core': 1.2.0
-  '@public-ui/schema': 1.1.16-rc.8
+  '@public-ui/schema': 1.1.16
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.21.0
   '@stencil/postcss': 2.1.0
@@ -14,14 +14,11 @@ specifiers:
   '@types/color-convert': 2.0.0
   '@types/jest': 26.0.24
   '@types/node': 18.11.18
-  '@types/puppeteer': 7.0.4
   '@types/wcag-contrast': 3.0.0
   '@typescript-eslint/eslint-plugin': 5.48.0
   '@typescript-eslint/parser': 5.48.0
   color-convert: 2.0.1
   color-rgba: 2.4.0
-  construct-style-sheets-polyfill: 3.1.0
-  contrast-color: 1.0.1
   cross-env: 7.0.3
   eslint: 8.31.0
   eslint-config-prettier: 8.6.0
@@ -30,7 +27,7 @@ specifiers:
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.6.1
   eslint-plugin-no-loops: 0.3.0
-  eslint-plugin-react: 7.31.11
+  eslint-plugin-react: 7.32.0
   jest: 26.6.3
   jest-cli: 26.6.3
   lighthouse: 9.6.8
@@ -38,7 +35,6 @@ specifiers:
   postcss: 8.4.21
   postcss-windicss: 1.0.0
   prettier: 2.8.2
-  puppeteer: 19.4.1
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
@@ -51,7 +47,7 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.1.16-rc.8
+  '@public-ui/schema': 1.1.16
 
 devDependencies:
   '@public-ui/core': 1.2.0
@@ -66,14 +62,11 @@ devDependencies:
   '@types/color-convert': 2.0.0
   '@types/jest': 26.0.24
   '@types/node': 18.11.18
-  '@types/puppeteer': 7.0.4
   '@types/wcag-contrast': 3.0.0
   '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
   '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
   color-convert: 2.0.1
   color-rgba: 2.4.0
-  construct-style-sheets-polyfill: 3.1.0
-  contrast-color: 1.0.1
   cross-env: 7.0.3
   eslint: 8.31.0
   eslint-config-prettier: 8.6.0_eslint@8.31.0
@@ -82,7 +75,7 @@ devDependencies:
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.6.1_eslint@8.31.0
   eslint-plugin-no-loops: 0.3.0_eslint@8.31.0
-  eslint-plugin-react: 7.31.11_eslint@8.31.0
+  eslint-plugin-react: 7.32.0_eslint@8.31.0
   jest: 26.6.3
   jest-cli: 26.6.3
   lighthouse: 9.6.8
@@ -90,7 +83,6 @@ devDependencies:
   postcss: 8.4.21
   postcss-windicss: 1.0.0_postcss@8.4.21
   prettier: 2.8.2
-  puppeteer: 19.4.1
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
@@ -1627,11 +1619,11 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.1.16-rc.8:
-    resolution: {integrity: sha512-A1fCtqHM8LUu75x6Z+VGadoiRQ9Yt7aZL9idqRMcd6CYlE9OBNEC6okbaoe1TJ4EHtqBu03BrJPmGZafsC4WVg==}
+  /@public-ui/core/1.1.16:
+    resolution: {integrity: sha512-7oGJJ5EG+6se9s3zTZxD2/6g6w2/oOfxbZBin9jatN1r4ySAt06PdQsR9yJvwl5Im5V993tzwsqh3AsfM/9Otw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.6
-      i18next: 22.4.8
+      i18next: 22.4.9
       rxjs: 7.8.0
     dev: false
 
@@ -1643,10 +1635,10 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.1.16-rc.8:
-    resolution: {integrity: sha512-tFzlt/WcTN+34HIB4gq520n1CzOHEc4zXiDiLtaQJuShRnXbqhssUOP8wHY6Bj6JbQPuD/dFiQI7NwkR1H/lRw==}
+  /@public-ui/schema/1.1.16:
+    resolution: {integrity: sha512-I4Zw8y/d3b+XZ9p9gA0+c/IuTefOFq/1Obn0XyANU/d6AmC1a8AtKZ1WfnoMcN45gRn3z//uTaXlTKV3BaneTA==}
     dependencies:
-      '@public-ui/core': 1.1.16-rc.8
+      '@public-ui/core': 1.1.16
     dev: false
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
@@ -1930,18 +1922,6 @@ packages:
 
   /@types/prettier/2.7.2:
     resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
-    dev: true
-
-  /@types/puppeteer/7.0.4:
-    resolution: {integrity: sha512-ja78vquZc8y+GM2al07GZqWDKQskQXygCDiu0e3uO0DMRKqE0MjrFBFmTulfPYzLB6WnL7Kl2tFPy0WXSpPomg==}
-    deprecated: This is a stub types definition. puppeteer provides its own type definitions, so you do not need this installed.
-    dependencies:
-      puppeteer: 19.4.1
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - supports-color
-      - utf-8-validate
     dev: true
 
   /@types/resolve/1.17.1:
@@ -2834,15 +2814,6 @@ packages:
       xdg-basedir: 4.0.0
     dev: true
 
-  /construct-style-sheets-polyfill/3.1.0:
-    resolution: {integrity: sha512-HBLKP0chz8BAY6rBdzda11c3wAZeCZ+kIG4weVC2NM3AXzxx09nhe8t0SQNdloAvg5GLuHwq/0SPOOSPvtCcKw==}
-    dev: true
-
-  /contrast-color/1.0.1:
-    resolution: {integrity: sha512-XeTV/LiyWrf/OWnODTqve2YGBfg32N6zlLqQjJKmEY+ffDqIfecgdmluVz7tky1D4VEaweZgoeRJJT87gDSDCQ==}
-    engines: {npm: '>= 4.0.0'}
-    dev: true
-
   /convert-source-map/1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
     dev: true
@@ -2866,16 +2837,6 @@ packages:
   /core-js-pure/3.27.1:
     resolution: {integrity: sha512-BS2NHgwwUppfeoqOXqi08mUqS5FiZpuRuJJpKsaME7kJz0xxuk0xkhDdfMIlP/zLa80krBqss1LtD7f889heAw==}
     requiresBuild: true
-    dev: true
-
-  /cosmiconfig/8.0.0:
-    resolution: {integrity: sha512-da1EafcpH6b/TD8vDRaWV7xFINlHlF6zKsGwS1TsuVJTZRkquaS5HTMq7uq6h31619QjbsYl21gVDOm32KM1vQ==}
-    engines: {node: '>=14'}
-    dependencies:
-      import-fresh: 3.3.0
-      js-yaml: 4.1.0
-      parse-json: 5.2.0
-      path-type: 4.0.0
     dev: true
 
   /cross-env/7.0.3:
@@ -3046,10 +3007,6 @@ packages:
   /detect-newline/3.1.0:
     resolution: {integrity: sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==}
     engines: {node: '>=8'}
-    dev: true
-
-  /devtools-protocol/0.0.1068969:
-    resolution: {integrity: sha512-ATFTrPbY1dKYhPPvpjtwWKSK2mIwGmRwX54UASn9THEuIZCe2n9k3vVuMmt6jWeL+e5QaaguEv/pMyR+JQB7VQ==}
     dev: true
 
   /devtools-protocol/0.0.981744:
@@ -3342,8 +3299,8 @@ packages:
       eslint: 8.31.0
     dev: true
 
-  /eslint-plugin-react/7.31.11_eslint@8.31.0:
-    resolution: {integrity: sha512-TTvq5JsT5v56wPa9OYHzsrOlHzKZKjV+aLgS+55NJP/cuzdiQPC7PfYoUjMoxlffKtvijpk7vA/jmuqRb9nohw==}
+  /eslint-plugin-react/7.32.0_eslint@8.31.0:
+    resolution: {integrity: sha512-vSBi1+SrPiLZCGvxpiZIa28fMEUaMjXtCplrvxcIxGzmFiYdsXQDwInEjuv5/i/2CTTxbkS87tE8lsQ0Qxinbw==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -4049,17 +4006,10 @@ packages:
     engines: {node: '>=8.12.0'}
     dev: true
 
-  /i18next/22.4.8:
-    resolution: {integrity: sha512-XSOy17ZWqflOiJRYE/dzv6vDle2Se32dnHREHb93UnZzZ1+UnvQ8yKtt1fpNL3zvXz5AwCqqixrtTVZmRetaiQ==}
-    dependencies:
-      '@babel/runtime': 7.20.7
-    dev: false
-
   /i18next/22.4.9:
     resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
     dependencies:
       '@babel/runtime': 7.20.7
-    dev: true
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -5924,44 +5874,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer-core/19.4.1:
-    resolution: {integrity: sha512-JHIuqtqrUAx4jGOTxXu4ilapV2jabxtVMA/e4wwFUMvtSsqK4nVBSI+Z1SKDoz7gRy/JUIc8WzmfocCa6SIZ1w==}
-    engines: {node: '>=14.1.0'}
-    dependencies:
-      cross-fetch: 3.1.5
-      debug: 4.3.4
-      devtools-protocol: 0.0.1068969
-      extract-zip: 2.0.1
-      https-proxy-agent: 5.0.1
-      proxy-from-env: 1.1.0
-      rimraf: 3.0.2
-      tar-fs: 2.1.1
-      unbzip2-stream: 1.4.3
-      ws: 8.11.0
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - supports-color
-      - utf-8-validate
-    dev: true
-
-  /puppeteer/19.4.1:
-    resolution: {integrity: sha512-PCnrR13B8A+VSEDXRmrNXRZbrkF1tfsI1hKSC7vs13eNS6CUD3Y4FA8SF8/VZy+Pm1kg5AggJT2Nu3HLAtGkFg==}
-    engines: {node: '>=14.1.0'}
-    requiresBuild: true
-    dependencies:
-      cosmiconfig: 8.0.0
-      https-proxy-agent: 5.0.1
-      progress: 2.0.3
-      proxy-from-env: 1.1.0
-      puppeteer-core: 19.4.1
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - supports-color
-      - utf-8-validate
-    dev: true
-
   /query-selector-all-shadow-root/0.0.3:
     resolution: {integrity: sha512-J7TPo7c+Ut6Wl7Ujk/dToR15eqwu84vJAazgzkcUxCeCtoxbDJPsFs9mBaYoSUfS0ZN3xspLDGBajr0G8d2QZQ==}
     dev: true
@@ -7366,19 +7278,6 @@ packages:
   /ws/7.5.9:
     resolution: {integrity: sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q==}
     engines: {node: '>=8.3.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: ^5.0.2
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-    dev: true
-
-  /ws/8.11.0:
-    resolution: {integrity: sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg==}
-    engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
