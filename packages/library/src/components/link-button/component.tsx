@@ -19,6 +19,7 @@ import { watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { watchButtonVariant } from '../button/controller';
 import { TooltipAlignment } from '../tooltip/component';
+import { translate } from '../../i18n';
 
 type State = {
 	state: Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
@@ -160,7 +161,7 @@ export class KolLinkButton
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
 	 */
-	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
+	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
