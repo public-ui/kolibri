@@ -1,6 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from '../../types/alert';
 import { HeadingLevel } from '../../types/heading-level';
 import { featureHint } from '../../utils/a11y.tipps';
@@ -35,7 +35,7 @@ const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
 const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 	switch (props.type) {
 		case 'error':
-			return <Icon ariaLabel={translate('kol-close')} icon="fa-solid fa-circle-xmark" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-error')} icon="fa-solid fa-circle-xmark" heading={props.heading} />;
 		case 'info':
 			return <Icon ariaLabel={translate('kol-info')} icon="fa-solid fa-circle-info" heading={props.heading} />;
 		case 'warning':

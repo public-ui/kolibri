@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../../types/button-link';
 import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';

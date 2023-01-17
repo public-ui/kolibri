@@ -1,6 +1,6 @@
 import { Component, h, Host, JSX, State } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 
 /**
  * API

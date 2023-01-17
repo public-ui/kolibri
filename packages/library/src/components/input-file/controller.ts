@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';

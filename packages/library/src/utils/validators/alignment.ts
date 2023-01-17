@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Alignment } from '../../types/props/alignment';
 import { watchValidator } from '../prop.validators';
 

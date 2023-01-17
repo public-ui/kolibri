@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 import { Events } from '../../enums/events';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { EventCallback } from '../../types/callbacks';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { Stringified } from '../../types/common';

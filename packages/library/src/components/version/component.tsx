@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 import { Farbspektrum } from '../../enums/color';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchString } from '../../utils/prop.validators';
 
 /**

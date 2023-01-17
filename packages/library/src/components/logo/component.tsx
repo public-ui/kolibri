@@ -1,7 +1,7 @@
 import { Component, JSX, h, Prop, State, Watch } from '@stencil/core';
 
 import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
