@@ -43,7 +43,7 @@ Aktuell können Sie eine `statische Webseite` oder Webanwendungen für die Frame
 
 ## Abgrenzung
 
-![Darstellung, wie die Komponenten mittels verschiedener Styleguides zu kundenspezifischen Komponenten werden.](packages/storybook/src/assets/abgrenzung.jpg)
+![Darstellung, wie die Komponenten mittels verschiedener Styleguides zu kundenspezifischen Komponenten werden.](docs/abgrenzung.jpg)
 
 KoliBri stellt die Barrierefreiheit auf Ebene der webbasierten Komponenten sicher und bietet die ideale Grundlage zur Realisierung barrierefreier Benutzeroberflächen.
 

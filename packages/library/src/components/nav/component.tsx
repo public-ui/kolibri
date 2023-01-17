@@ -128,6 +128,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
 											_ariaExpanded={link._active === true}
 											_disabled={link._disabled}
+											_href="javascript:void(0)"
 											_icon={
 												this.state._collapsible === true
 													? link._active === true

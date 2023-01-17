@@ -17,7 +17,7 @@ import {
 import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, scrollBySelector, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, scrollBySelector, setEventTargetAndStopPropagation, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { TooltipAlignment } from '../tooltip/component';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
@@ -47,6 +47,13 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
 		this.ref = ref;
 		propergateFocus(this.host, this.ref);
+	};
+
+	private readonly onClick = (event: Event) => {
+		if (typeof this.state._on?.onClick === 'function') {
+			setEventTargetAndStopPropagation(event, this.ref);
+			this.state._on?.onClick(event, this.state._href);
+		}
 	};
 
 	private readonly getRenderValues = () => {
@@ -141,6 +148,9 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					}}
 					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
+					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
+					onClick={undefined}
+					onKeyPress={this.onClick}
 					{...goToProps}
 					role={this.state._role}
 					style={{
@@ -219,7 +229,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
-	@Prop() public _href?: string = '';
+	@Prop() public _href!: string;
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
@@ -316,6 +326,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@State() public state: LinkStates = {
 		_ariaLabel: '',
+		_href: 'javascript:void(0)',
 		_icon: {},
 		/**
 		 * @deprecated

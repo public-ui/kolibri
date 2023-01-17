@@ -52,12 +52,15 @@ jobs:
       - name: Install
         run: pnpm install --no-frozen-lockfile
       - name: Unused
-        run: npx lerna exec --stream -- ts-prune src -e
+        run: npm run ts-prune
+      - name: Depcheck
+        if: always()
+        run: npm run depcheck
       - name: Format
         if: always()
-        run: npx lerna run format
+        run: npm run format
       - name: Lint
-        run: npx lerna run lint
+        run: npm run lint
       - name: Test
         run: npx lerna run test
       - name: 'Pack'

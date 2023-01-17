@@ -190,7 +190,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks;
+        "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -207,6 +207,10 @@ export namespace Components {
           * Gibt an, welche Typ der Button hat.
          */
         "_type"?: KoliBriButtonType;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified<unknown>;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -264,7 +268,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks;
+        "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -281,6 +285,10 @@ export namespace Components {
           * Gibt an, welche Typ der Button hat.
          */
         "_type"?: KoliBriButtonType;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified<unknown>;
     }
     interface KolButtonWc {
         /**
@@ -339,7 +347,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks;
+        "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -356,6 +364,10 @@ export namespace Components {
           * Gibt an, welche Typ der Button hat.
          */
         "_type"?: KoliBriButtonType;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified<unknown>;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -1446,7 +1458,7 @@ export namespace Components {
         /**
           * Gibt die Ziel-Url des Links an.
          */
-        "_href"?: string;
+        "_href": string;
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
@@ -1466,7 +1478,6 @@ export namespace Components {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1547,7 +1558,7 @@ export namespace Components {
         /**
           * Gibt die Ziel-Url des Links an.
          */
-        "_href"?: string;
+        "_href": string;
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
@@ -1560,6 +1571,10 @@ export namespace Components {
           * Gibt einen beschreibenden Text für das Text-Element an.
          */
         "_label": string;
+        /**
+          * Gibt die EventCallback-Funktionen für den Link an.
+         */
+        "_on"?: LinkOnCallbacks;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -1648,7 +1663,7 @@ export namespace Components {
         /**
           * Gibt die Ziel-Url des Links an.
          */
-        "_href"?: string;
+        "_href": string;
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
@@ -2718,7 +2733,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks;
+        "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -2735,6 +2750,10 @@ declare namespace LocalJSX {
           * Gibt an, welche Typ der Button hat.
          */
         "_type"?: KoliBriButtonType;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified<unknown>;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -2792,7 +2811,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks;
+        "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -2809,6 +2828,10 @@ declare namespace LocalJSX {
           * Gibt an, welche Typ der Button hat.
          */
         "_type"?: KoliBriButtonType;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified<unknown>;
     }
     interface KolButtonWc {
         /**
@@ -2867,7 +2890,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks;
+        "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -2884,6 +2907,10 @@ declare namespace LocalJSX {
           * Gibt an, welche Typ der Button hat.
          */
         "_type"?: KoliBriButtonType;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified<unknown>;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -3974,7 +4001,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die Ziel-Url des Links an.
          */
-        "_href"?: string;
+        "_href": string;
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
@@ -3994,7 +4021,6 @@ declare namespace LocalJSX {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4075,7 +4101,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die Ziel-Url des Links an.
          */
-        "_href"?: string;
+        "_href": string;
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */
@@ -4088,6 +4114,10 @@ declare namespace LocalJSX {
           * Gibt einen beschreibenden Text für das Text-Element an.
          */
         "_label": string;
+        /**
+          * Gibt die EventCallback-Funktionen für den Link an.
+         */
+        "_on"?: LinkOnCallbacks;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -4176,7 +4206,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die Ziel-Url des Links an.
          */
-        "_href"?: string;
+        "_href": string;
         /**
           * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
          */

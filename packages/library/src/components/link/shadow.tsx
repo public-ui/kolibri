@@ -104,7 +104,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
-	@Prop() public _href?: string = '';
+	@Prop() public _href!: string;
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
@@ -130,8 +130,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
-	 *
-	 * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 

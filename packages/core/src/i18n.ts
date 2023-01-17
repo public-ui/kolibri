@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import i18next, { i18n } from 'i18next';
 
-export interface ITranslationOptions {
+interface ITranslationOptions {
 	/**
 	 * The number of items to determine an counted text.
 	 */
@@ -13,7 +13,7 @@ export interface ITranslationOptions {
 	placeholders?: { [K: string]: string };
 }
 
-export interface II18nService {
+interface II18nService {
 	/**
 	 * Adds a resource bundle for the specified language.
 	 * @param lng the language the bundle is for

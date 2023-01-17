@@ -18,7 +18,8 @@
 		"resolveJsonModule": true,
 		"types": ["node", "jest", "./declare"],
 		"typeRoots": ["node_modules/@types"],
-		"strict": true
+		"strict": true,
+		"skipLibCheck": true
 	},
 	"include": ["src"],
 	"exclude": ["node_modules"]
