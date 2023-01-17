@@ -45,7 +45,7 @@
 		"prepack": "rimraf dist/package.json"
 	},
 	"devDependencies": {
-		"rimraf": "4.0.7"
+		"rimraf": "4.1.0"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.2.0-rc.2"

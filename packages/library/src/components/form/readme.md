@@ -1,20 +1,24 @@
 # Form
 
+Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinweistext für Pflichtfelder korrekt zu positionieren und die Events `submit` und `reset` weiterzuleiten.
+
 ## Konstruktion
 
 ### Code
 
+```html
+<kol-form>
+	<kol-input-text _id="firstname">Vorname</kol-input-text>
+	<kol-input-text _id="lastname">Nachname</kol-input-text>
+</kol-form>
+```
+
 ### Beispiel
 
-## Verwendung
-
-### Anwendungsfälle
-
-### Best practices
-
-## Barrierefreiheit
-
-## Links und Referenzen
+<kol-form>
+	<kol-input-text _id="firstname">Vorname</kol-input-text>
+	<kol-input-text _id="lastname">Nachname</kol-input-text>
+</kol-form>
 
 <!-- Auto Generated Below -->
 
