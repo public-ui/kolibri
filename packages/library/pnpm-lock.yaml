@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.3.0-rc.0
+  '@public-ui/core': 1.3.0-rc.3
   '@public-ui/schema': 1.2.0-rc.3
   '@stencil/angular-output-target': 0.4.0
   '@stencil/core': 2.21.0
@@ -50,7 +50,7 @@ dependencies:
   '@public-ui/schema': 1.2.0-rc.3
 
 devDependencies:
-  '@public-ui/core': 1.3.0-rc.0
+  '@public-ui/core': 1.3.0-rc.3
   '@stencil/angular-output-target': 0.4.0_@stencil+core@2.21.0
   '@stencil/core': 2.21.0
   '@stencil/postcss': 2.1.0_@stencil+core@2.21.0
@@ -96,10 +96,17 @@ devDependencies:
 
 packages:
 
+  /@a11y-ui/core/1.0.1-rc.20:
+    resolution: {integrity: sha512-eXttBA5YqoXYYnLMXwxjM5fzJOUCleSco0uH+TIhY8N1QoLsJsm+0bweUKEqTtpwiOspS7G6FNaWGW0dLmtZFA==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: true
+
   /@a11y-ui/core/1.0.1-rc.9:
     resolution: {integrity: sha512-mdnOMQ9W0e8SOIpE7cc2jVHIt02PBUuiwsOw9gELRlTHZZdsbKOxsBBjZn+QlKV6xdyX74IQ/do+T2rmvsZ6Tg==}
     dependencies:
       loglevel: 1.8.1
+    dev: false
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1612,10 +1619,10 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.3.0-rc.0:
-    resolution: {integrity: sha512-TutEkS7wQIB1aRRqANO7ywKZh/Zs0Fen/wu8OuVH95YlSt0ln+b1cqp+KuhYrOVKzO5zalX2snAr5tql3gfgdQ==}
+  /@public-ui/core/1.3.0-rc.3:
+    resolution: {integrity: sha512-p2XFJvIefElWc1+RK9ofiNunVglQ02f2dkHWQLfq7X9r40D7qrCCLbSVuMq6tqzAIlxTxvMJpS1TQDuZJ4Cy4Q==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.9
+      '@a11y-ui/core': 1.0.1-rc.20
       i18next: 22.4.9
     dev: true
 

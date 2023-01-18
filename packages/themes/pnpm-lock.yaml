@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.2.0-rc.2
-  '@public-ui/schema': 1.2.0-rc.2
+  '@public-ui/components': 1.2.0-rc.3
+  '@public-ui/schema': 1.2.0-rc.3
   '@types/node': 18.11.18
   '@typescript-eslint/eslint-plugin': 5.48.2
   '@typescript-eslint/parser': 5.48.2
@@ -12,8 +12,8 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@public-ui/components': 1.2.0-rc.2
-  '@public-ui/schema': 1.2.0-rc.2
+  '@public-ui/components': 1.2.0-rc.3
+  '@public-ui/schema': 1.2.0-rc.3
 
 devDependencies:
   '@types/node': 18.11.18
@@ -26,8 +26,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.6:
-    resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
+  /@a11y-ui/core/1.0.1-rc.9:
+    resolution: {integrity: sha512-mdnOMQ9W0e8SOIpE7cc2jVHIt02PBUuiwsOw9gELRlTHZZdsbKOxsBBjZn+QlKV6xdyX74IQ/do+T2rmvsZ6Tg==}
     dependencies:
       loglevel: 1.8.1
     dev: false
@@ -197,13 +197,6 @@ packages:
     dependencies:
       '@babel/types': 7.20.7
     dev: true
-
-  /@babel/runtime/7.20.7:
-    resolution: {integrity: sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.11
-    dev: false
 
   /@babel/standalone/7.20.12:
     resolution: {integrity: sha512-hK/X+m1il3w1tYS4H8LDaGCEdiT47SVqEXY8RiEAgou26BystipSU8ZL6EvBR6t5l7lTv0ilBiChXWblKJ5iUA==}
@@ -540,24 +533,16 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.2.0-rc.2:
-    resolution: {integrity: sha512-0AX+Rp7DL7FG6n7tFfvy1vJXWqcPnWxzgNK83/7ol9BWvpQe/MPkMi0OwEPNKD9M/Ca7tBnm3ReZmJNNRIopZQ==}
+  /@public-ui/components/1.2.0-rc.3:
+    resolution: {integrity: sha512-VFMre3duhB2PYl7jNTj3vQ08/5diI30UwpXZpn50yF2GIveK+zK4ucduGtwMhLBIXy4Fs5FZJuFVBkINIjp7Mg==}
     dependencies:
-      '@public-ui/schema': 1.2.0-rc.2
+      '@public-ui/schema': 1.2.0-rc.3
     dev: false
 
-  /@public-ui/core/1.2.0:
-    resolution: {integrity: sha512-PJ0ghoopx4FBtovnOHxJ2v1LNCwueVo+L0qxBRrP5xzX0Smx3TzwQknL5LGU5HI79uiXmyWCv01FdtqXQ3LPcg==}
+  /@public-ui/schema/1.2.0-rc.3:
+    resolution: {integrity: sha512-3viA4OG6BRN7Gije03/yHaKo72fLxL09ldxzXZ0CAT5343OpNgLFnkm4zN29eVTCtcsNwStDR5Zdr9dUWSjL4g==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.6
-      i18next: 22.4.9
-      rxjs: 7.8.0
-    dev: false
-
-  /@public-ui/schema/1.2.0-rc.2:
-    resolution: {integrity: sha512-7F+ClzfaohEKBWfDShUfw+7IsONEsrjuLdXg57LQbHzgCk69SBIobiMtrI2R/1bNrIg3Lizvfa+VvL6QF1orjA==}
-    dependencies:
-      '@public-ui/core': 1.2.0
+      '@a11y-ui/core': 1.0.1-rc.9
     dev: false
 
   /@rollup/plugin-alias/4.0.2_rollup@3.10.0:
@@ -1383,12 +1368,6 @@ packages:
     resolution: {integrity: sha512-6rOvaUiNKy9lET1X0ECnyZ5O5kSV0PJbtA5yZUgdEF7fGJEVwSLSislltyt7nFwVVALYHQJtfGeAR2Y0A0uJkg==}
     dev: true
 
-  /i18next/22.4.9:
-    resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
-    dependencies:
-      '@babel/runtime': 7.20.7
-    dev: false
-
   /ignore/5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
@@ -1750,10 +1729,6 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /regenerator-runtime/0.13.11:
-    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-    dev: false
-
   /regexpp/3.2.0:
     resolution: {integrity: sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==}
     engines: {node: '>=8'}
@@ -1812,12 +1787,6 @@ packages:
     dependencies:
       queue-microtask: 1.2.3
     dev: true
-
-  /rxjs/7.8.0:
-    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
-    dependencies:
-      tslib: 2.4.1
-    dev: false
 
   /scule/1.0.0:
     resolution: {integrity: sha512-4AsO/FrViE/iDNEPaAQlb77tf0csuq27EsVpy6ett584EcRTp6pTDLoGWVxCD77y5iU5FauOvhsI4o1APwPoSQ==}
@@ -1908,10 +1877,6 @@ packages:
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
-
-  /tslib/2.4.1:
-    resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
-    dev: false
 
   /tsutils/3.21.0_typescript@4.9.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
