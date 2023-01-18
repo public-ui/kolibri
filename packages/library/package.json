@@ -104,7 +104,7 @@
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
-		"rimraf": "4.1.0",
+		"rimraf": "4.1.1",
 		"stencil-awesome-test": "1.0.4",
 		"terser": "5.16.1",
 		"tslib": "2.4.1",

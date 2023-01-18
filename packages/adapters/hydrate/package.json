@@ -46,7 +46,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/core": "1.2.0",
-		"rimraf": "4.1.0"
+		"rimraf": "4.1.1"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.2.0-rc.3"
