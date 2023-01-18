@@ -1,7 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
+import { translate } from '../../i18n';
 
 /**
  * API
@@ -28,14 +29,14 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 		return (
 			<Host>
 				{this.state._show ? (
-					<span aria-busy="true" aria-label="Aktion wird ausgeführt ..." aria-live="polite" class="spin" role="alert">
+					<span aria-busy="true" aria-label={translate('kol-action-running')} aria-live="polite" class="spin" role="alert">
 						<span class="bg-spin-1"></span>
 						<span class="bg-spin-2"></span>
 						<span class="bg-spin-3"></span>
 						<span class="bg-neutral"></span>
 					</span>
 				) : (
-					this.showToggled && <span aria-label="Aktion abgeschlossen" aria-busy="false" aria-live="polite" role="alert"></span>
+					this.showToggled && <span aria-label={translate('kol-action-done')} aria-busy="false" aria-live="polite" role="alert"></span>
 				)}
 			</Host>
 		);

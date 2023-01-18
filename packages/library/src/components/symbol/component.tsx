@@ -1,7 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchString } from '../../utils/prop.validators';
+import { translate } from '../../i18n';
 
 /**
  * API
@@ -46,7 +47,7 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_ariaLabel: 'Warnung',
+		_ariaLabel: translate('kol-warning'),
 		_symbol: '⚠',
 	};
 

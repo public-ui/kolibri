@@ -1,12 +1,13 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from '../../types/alert';
 import { HeadingLevel } from '../../types/heading-level';
 import { featureHint } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
+import { translate } from '../../i18n';
 
 /**
  * API
@@ -34,15 +35,15 @@ const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
 const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 	switch (props.type) {
 		case 'error':
-			return <Icon ariaLabel={'Fehler'} icon="fa-solid fa-circle-xmark" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-error')} icon="fa-solid fa-circle-xmark" heading={props.heading} />;
 		case 'info':
-			return <Icon ariaLabel={'Hinweis'} icon="fa-solid fa-circle-info" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-info')} icon="fa-solid fa-circle-info" heading={props.heading} />;
 		case 'warning':
-			return <Icon ariaLabel={'Warnung'} icon="fa-solid fa-triangle-exclamation" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-warning')} icon="fa-solid fa-triangle-exclamation" heading={props.heading} />;
 		case 'success':
-			return <Icon ariaLabel={'Erfolg'} icon="fa-solid fa-circle-check" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-success')} icon="fa-solid fa-circle-check" heading={props.heading} />;
 		default:
-			return <Icon ariaLabel={'Nachricht'} icon="fa-regular fa-comment" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-message')} icon="fa-regular fa-comment" heading={props.heading} />;
 	}
 };
 
@@ -110,7 +111,7 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 									},
 								}}
 								_iconOnly
-								_label="Schließen"
+								_label={translate('kol-close')}
 								_on={this.on}
 								_tooltipAlign="left"
 							></kol-button-wc>

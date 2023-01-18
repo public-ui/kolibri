@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Orientation } from '../../types/orientation';
 import { HeadingLevel } from '../../types/heading-level';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';

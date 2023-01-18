@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnOff, Option } from '../../types/input/types';
 import { watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';

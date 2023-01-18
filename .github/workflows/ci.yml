@@ -2,7 +2,6 @@ name: CI-Pipeline
 
 on:
   pull_request:
-    branches: [main]
   push:
   workflow_dispatch:
 
@@ -14,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          ref: 'main'
+          # ref: 'main'
 
       # - uses: pnpm/action-setup@v2.2.4
       #   with:

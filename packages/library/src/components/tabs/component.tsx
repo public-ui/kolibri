@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Events } from '../../enums/events';
 import { KoliBriIconProp } from '../../types/icon';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { EventCallback, EventValueCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';
@@ -10,6 +10,7 @@ import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
+import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
@@ -73,7 +74,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
-	private onCreateLabel = 'Neu …';
+	private onCreateLabel = `${translate('kol-new')} …`;
 	private showCreateTab = false;
 	private selectedTimeout?: ReturnType<typeof setTimeout>;
 
@@ -154,7 +155,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 								_variant={this.state._selected === index ? 'custom' : undefined}
 								_customClass={this.state._selected === index ? 'selected' : undefined}
 								_ariaControls={`tabpanel-${index}`}
-								// _ariaSelected={this.state._selected === index ? 'true' : 'false'}
+								_ariaSelected={this.state._selected === index}
 								_id={`tab-${index}`}
 								_role="tab"
 								_value={index}

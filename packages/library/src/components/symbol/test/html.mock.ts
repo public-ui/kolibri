@@ -4,7 +4,7 @@ import { Props } from '../component';
 export const getSymbolHtml = (props: Props): string => {
 	props = mixMembers(
 		{
-			_ariaLabel: 'Warnung',
+			_ariaLabel: 'kol-warning',
 			_symbol: '⚠',
 		},
 		props

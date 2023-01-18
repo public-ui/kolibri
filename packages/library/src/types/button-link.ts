@@ -1,6 +1,6 @@
 import { TooltipAlignment } from '../components/tooltip/component';
 import { Events } from '../enums/events';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueCallback } from './callbacks';
 import { Alignment, KoliBriCustomIcon, KoliBriIconProp } from './icon';

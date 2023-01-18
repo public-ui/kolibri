@@ -1,9 +1,10 @@
 import { Component, JSX, h, Prop, State, Watch } from '@stencil/core';
 
 import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState } from '../../utils/prop.validators';
+import { translate } from '../../i18n';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function enumToArray(enumeration: any, enumAsMap: Map<string, string> = new Map()): Map<string, string> {
@@ -155,7 +156,11 @@ export class KolLogo implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	public render(): JSX.Element {
 		return (
-			<svg aria-label={`Logo ${this.state._org}. Bundesadler mit Flaggenstab und Schriftzug ${getAriaLabel(this.state._org)}`} role="img" viewBox="0 0 225 100">
+			<svg
+				aria-label={translate('kol-logo-description', { placeholders: { orgShort: this.state._org, orgLong: getAriaLabel(this.state._org) } })}
+				role="img"
+				viewBox="0 0 225 100"
+			>
 				<rect width="100%" height="100%" fill="white"></rect>
 				<svg x="0" y="4" height="75">
 					<Adler />

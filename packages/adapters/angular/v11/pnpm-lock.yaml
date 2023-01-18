@@ -4,14 +4,14 @@ specifiers:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14
   '@angular/core': 11.2.14
-  '@public-ui/components': 1.2.0-rc.1
+  '@public-ui/components': 1.2.0-rc.2
   '@public-ui/core': 1.2.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.3
-  rimraf: 4.0.7
+  rimraf: 4.1.0
   rxjs: 6.5.5
   tslib: 2.4.1
   typescript: '4.1'
@@ -21,14 +21,14 @@ devDependencies:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14_5xxvadz4tf2tlq4hiwi2uyyjke
   '@angular/core': 11.2.14_rxjs@6.5.5+zone.js@0.11.8
-  '@public-ui/components': 1.2.0-rc.1
+  '@public-ui/components': 1.2.0-rc.2
   '@public-ui/core': 1.2.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.3
-  rimraf: 4.0.7
+  rimraf: 4.1.0
   rxjs: 6.5.5
   tslib: 2.4.1
   typescript: 4.1.6
@@ -335,10 +335,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.2.0-rc.1:
-    resolution: {integrity: sha512-DAlzpOcilWN36tjL6AlUevedFyy3wuRoUoIoPAHx7gpFAslnFk/W65jJKwJ9W9VKd9O1fmaIrztiUUQWpxSmSA==}
+  /@public-ui/components/1.2.0-rc.2:
+    resolution: {integrity: sha512-0AX+Rp7DL7FG6n7tFfvy1vJXWqcPnWxzgNK83/7ol9BWvpQe/MPkMi0OwEPNKD9M/Ca7tBnm3ReZmJNNRIopZQ==}
     dependencies:
-      '@public-ui/schema': 1.2.0-rc.1
+      '@public-ui/schema': 1.2.0-rc.2
     dev: true
 
   /@public-ui/core/1.2.0:
@@ -349,8 +349,8 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.2.0-rc.1:
-    resolution: {integrity: sha512-Ymp6vcz0mZFGwVa82N/eC/uIjic8AmVCmH0UcKeK5b/UmzjIIc6THOlnMpT1FAe5HEu5N1XVOPs40QyhPjyv5w==}
+  /@public-ui/schema/1.2.0-rc.2:
+    resolution: {integrity: sha512-7F+ClzfaohEKBWfDShUfw+7IsONEsrjuLdXg57LQbHzgCk69SBIobiMtrI2R/1bNrIg3Lizvfa+VvL6QF1orjA==}
     dependencies:
       '@public-ui/core': 1.2.0
     dev: true
@@ -701,8 +701,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /rimraf/4.0.7:
-    resolution: {integrity: sha512-CUEDDrZvc0swDgVdXGiv3FcYYQMpJxjvSGt85Amj6yU+MCVWurrLCeLiJDdJPHCzNJnwuebBEdcO//eP11Xa7w==}
+  /rimraf/4.1.0:
+    resolution: {integrity: sha512-ZJdkUR5/dRrRJHdcSKJLrpRn6tVjl9ALxd4yrTCxFsMpjQNzwHF6GLqMsuEzEYIXxHlFPDSk21Vr8VPuFBEz0g==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

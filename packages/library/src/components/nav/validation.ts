@@ -1,4 +1,4 @@
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { watchJsonArrayString } from '../../utils/prop.validators';

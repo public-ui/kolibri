@@ -12,8 +12,8 @@ specifiers:
   lint-staged: 13.1.0
   npm-check-updates: 16.6.2
   npm-run-all: 4.1.5
-  prettier: 2.8.2
-  rimraf: 4.0.4
+  prettier: 2.8.3
+  rimraf: 4.1.0
   ts-node: 10.9.1
   ts-prune: 0.10.3
   typescript: 4.9.4
@@ -30,8 +30,8 @@ devDependencies:
   lint-staged: 13.1.0
   npm-check-updates: 16.6.2
   npm-run-all: 4.1.5
-  prettier: 2.8.2
-  rimraf: 4.0.4
+  prettier: 2.8.3
+  rimraf: 4.1.0
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   ts-prune: 0.10.3
   typescript: 4.9.4
@@ -5427,8 +5427,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prettier/2.8.2:
-    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
+  /prettier/2.8.3:
+    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -5807,8 +5807,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.0.4:
-    resolution: {integrity: sha512-R0hoVr9xTwemarQjoWlNt/nb5dEGVTBhVdkRmEX2zEkT8T6onH0XKiGjuaC7rNNj/gYzY2p4NVRJ3sjO1ascHQ==}
+  /rimraf/4.1.0:
+    resolution: {integrity: sha512-ZJdkUR5/dRrRJHdcSKJLrpRn6tVjl9ALxd4yrTCxFsMpjQNzwHF6GLqMsuEzEYIXxHlFPDSk21Vr8VPuFBEz0g==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

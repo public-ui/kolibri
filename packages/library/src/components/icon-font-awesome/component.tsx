@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 import { FontAwesome, FontAwesomeOssPrefix } from '../../enums/font-awesome';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { AriaLabel } from '../../types/aria-label';
 
 /**

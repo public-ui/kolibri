@@ -1,5 +1,5 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { Orientation } from '../../types/orientation';
 import { a11yHintLabelingLandmarks, devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -7,6 +7,7 @@ import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from './validation';
 import { Stringified } from '../../types/common';
 import { AriaCurrent } from '../../types/button-link';
+import { translate } from '../../i18n';
 
 export type NavLinkWithChildrenProps = NavLinkProps & {
 	_children?: NavLinkWithChildrenProps[];
@@ -218,10 +219,10 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 								exportparts="button,ghost"
 								_ariaControls="nav"
 								_ariaExpanded={this.state._compact === true}
-								_ariaLabel={this.state._compact ? 'Navigation maximieren' : 'Navigation minimieren'}
+								_ariaLabel={translate(this.state._compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_icon={this.state._compact ? 'fa-solid fa-angles-right' : 'fa-solid fa-angles-left'}
 								_iconOnly
-								_label={this.state._compact ? 'Navigation maximieren' : 'Navigation minimieren'}
+								_label={translate(this.state._compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
 									onClick: (): void => {
 										this.state = {

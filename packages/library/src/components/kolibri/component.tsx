@@ -2,8 +2,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { colorRgba } from '../badge/color-rgba';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchValidator } from '../../utils/prop.validators';
+import { translate } from '../../i18n';
 
 const HACK_REG_EX = /^#([a-f0-9]{3}|[a-f0-9]{6})$/;
 
@@ -53,7 +54,7 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 				: `rgb(${this.state._color.red},${this.state._color.green},${this.state._color.blue})`;
 		return (
 			<Host>
-				<svg role="img" aria-label="Logo von KoliBri" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
+				<svg role="img" aria-label={translate('kol-kolibri-logo')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
 					<path d="M353 322L213 304V434L353 322Z" />
 					<path d="M209 564V304L149 434L209 564Z" />
 					<path d="M357 316L417 250L361 210L275 244L357 316Z" />

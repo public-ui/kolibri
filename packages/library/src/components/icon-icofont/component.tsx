@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { AriaLabel } from '../../types/aria-label';
 import { Icofont } from '../../types/icofont';
 
