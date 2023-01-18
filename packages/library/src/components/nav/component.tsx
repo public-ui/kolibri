@@ -124,7 +124,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											class="block w-full h-full"
 											exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
 											_useCase="nav"
-											_ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
+											// _ariaCurrent will not be set here, since it will be set on a child of this item.
 											_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : undefined}
 											_ariaExpanded={link._active === true}
 											_disabled={link._disabled}
@@ -171,7 +171,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											active: link._active === true,
 										}}
 										exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
-										// HERE NOT! _ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
+										_ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
 										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
 										_href={link._href}
 										_icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'}
