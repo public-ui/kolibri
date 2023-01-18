@@ -24,7 +24,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-HEADING':
 		'h1,h2,h3,h4,h5,h6 {color: inherit;font-style: normal;margin: 0;padding: 0;}h1,h2,h3 {font-weight: 700;}h1 {font-size: 1.5rem;line-height: 3.25rem;}h2 {font-size: 1.25rem;line-height: 1.75rem;}h3 {font-size: 1.125rem;line-height: 1.5rem;}',
 	'KOL-BADGE':
-		':host {display: inline-block;}:host > span {border-radius: 0.3125rem;display: inline-flex;font-size: 0.875em;font-style: normal;font-weight: 700;line-height: 1.25rem;}:host > span kol-button-wc {border-left: 1px solid rgba(0, 0, 0, 0.25);}:host > span kol-span-wc {padding: 0.25rem 0.5rem;}:host > span > kol-span-wc {align-items: center;font-style: normal;gap: 0.5rem;}:host > span > kol-span-wc > span {display: flex;gap: 0.25rem;}',
+		':host {display: inline-block;}:host > span {border-radius: 0.3125rem;display: inline-flex;font-size: 0.875em;font-style: normal;font-weight: 700;line-height: 1rem;}:host > span.smart-button {align-items: center;}:host > span kol-button-wc:hover > button {background-color: var(--color-ocean);color: var(--color-white);}:host > span kol-button-wc > button {color: inherit;font-size: 1rem;border-top-right-radius: 0.3125rem;border-bottom-right-radius: 0.3125rem;padding: 2px;}:host > span kol-span-wc {padding: 0.25rem 0.5rem;}:host > span > kol-span-wc {align-items: center;font-style: normal;gap: 0.5rem;}:host > span > kol-span-wc > span {display: flex;gap: 0.25rem;}',
 	'KOL-BUTTON-GROUP': 'div {display: flex;flex-wrap: wrap;gap: 0.5em;}',
 	'KOL-INDENTED-TEXT':
 		':host > div {padding: 0.25em 0.5em;width: 100%;}:host > div {box-shadow: -4px 0px 0px var(--color-ocean);background: var(--color-white);}',
