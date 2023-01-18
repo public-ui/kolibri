@@ -70,7 +70,7 @@
 	"devDependencies": {
 		"@public-ui/core": "1.3.0-rc.0",
 		"@stencil/angular-output-target": "0.4.0",
-		"@stencil/core": "2.21.0",
+		"@stencil/core": "2.22.1",
 		"@stencil/postcss": "2.1.0",
 		"@stencil/react-output-target": "0.3.1",
 		"@stencil/sass": "2.0.2",
