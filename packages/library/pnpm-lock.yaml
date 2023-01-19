@@ -1,16 +1,17 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/core': 1.3.0-rc.0
-  '@public-ui/schema': 1.2.0-rc.3
-  '@stencil/angular-output-target': 0.4.0
-  '@stencil/core': 2.21.0
+  '@a11y-ui/core': 1.0.1-rc.52
+  '@public-ui/core': 1.3.0-rc.6
+  '@public-ui/schema': 1.2.0-rc.4
+  '@stencil/angular-output-target': 0.5.0
+  '@stencil/core': 2.22.1
   '@stencil/postcss': 2.1.0
-  '@stencil/react-output-target': 0.3.1
-  '@stencil/sass': 2.0.2
+  '@stencil/react-output-target': 0.4.0
+  '@stencil/sass': 2.0.3
   '@stencil/solid-output-target': file:node_martin/stencil-solid-output-target-0.0.1.tgz
   '@stencil/svelte-output-target': 0.0.3
-  '@stencil/vue-output-target': 0.6.2
+  '@stencil/vue-output-target': 0.7.0
   '@types/color-convert': 2.0.0
   '@types/jest': 26.0.24
   '@types/node': 18.11.18
@@ -23,7 +24,7 @@ specifiers:
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0
   eslint-plugin-html: 7.1.0
-  eslint-plugin-jsdoc: 39.6.4
+  eslint-plugin-jsdoc: 39.6.6
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-no-loops: 0.3.0
@@ -38,7 +39,7 @@ specifiers:
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
-  rimraf: 4.1.0
+  rimraf: 4.1.1
   stencil-awesome-test: 1.0.4
   terser: 5.16.1
   tslib: 2.4.1
@@ -47,18 +48,19 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.2.0-rc.3
+  '@public-ui/schema': 1.2.0-rc.4
 
 devDependencies:
-  '@public-ui/core': 1.3.0-rc.0
-  '@stencil/angular-output-target': 0.4.0_@stencil+core@2.21.0
-  '@stencil/core': 2.21.0
-  '@stencil/postcss': 2.1.0_@stencil+core@2.21.0
-  '@stencil/react-output-target': 0.3.1_@stencil+core@2.21.0
-  '@stencil/sass': 2.0.2_@stencil+core@2.21.0
-  '@stencil/solid-output-target': file:node_martin/stencil-solid-output-target-0.0.1.tgz_@stencil+core@2.21.0
-  '@stencil/svelte-output-target': 0.0.3_@stencil+core@2.21.0
-  '@stencil/vue-output-target': 0.6.2_@stencil+core@2.21.0
+  '@a11y-ui/core': 1.0.1-rc.52
+  '@public-ui/core': 1.3.0-rc.6
+  '@stencil/angular-output-target': 0.5.0_@stencil+core@2.22.1
+  '@stencil/core': 2.22.1
+  '@stencil/postcss': 2.1.0_@stencil+core@2.22.1
+  '@stencil/react-output-target': 0.4.0_@stencil+core@2.22.1
+  '@stencil/sass': 2.0.3_@stencil+core@2.22.1
+  '@stencil/solid-output-target': file:node_martin/stencil-solid-output-target-0.0.1.tgz_@stencil+core@2.22.1
+  '@stencil/svelte-output-target': 0.0.3_@stencil+core@2.22.1
+  '@stencil/vue-output-target': 0.7.0_@stencil+core@2.22.1
   '@types/color-convert': 2.0.0
   '@types/jest': 26.0.24
   '@types/node': 18.11.18
@@ -71,7 +73,7 @@ devDependencies:
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0_eslint@8.32.0
   eslint-plugin-html: 7.1.0
-  eslint-plugin-jsdoc: 39.6.4_eslint@8.32.0
+  eslint-plugin-jsdoc: 39.6.6_eslint@8.32.0
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.32.0
   eslint-plugin-no-loops: 0.3.0_eslint@8.32.0
@@ -86,8 +88,8 @@ devDependencies:
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
-  rimraf: 4.1.0
-  stencil-awesome-test: 1.0.4_@stencil+core@2.21.0
+  rimraf: 4.1.1
+  stencil-awesome-test: 1.0.4_@stencil+core@2.22.1
   terser: 5.16.1
   tslib: 2.4.1
   typescript: 4.9.4
@@ -96,10 +98,17 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.9:
-    resolution: {integrity: sha512-mdnOMQ9W0e8SOIpE7cc2jVHIt02PBUuiwsOw9gELRlTHZZdsbKOxsBBjZn+QlKV6xdyX74IQ/do+T2rmvsZ6Tg==}
+  /@a11y-ui/core/1.0.1-rc.20:
+    resolution: {integrity: sha512-eXttBA5YqoXYYnLMXwxjM5fzJOUCleSco0uH+TIhY8N1QoLsJsm+0bweUKEqTtpwiOspS7G6FNaWGW0dLmtZFA==}
     dependencies:
       loglevel: 1.8.1
+    dev: false
+
+  /@a11y-ui/core/1.0.1-rc.52:
+    resolution: {integrity: sha512-AGOkqA7RK5xoUScA2Ulk0H9wKVKJK/SY6TOsQ4OyMeFQ6v7/cMejlw0nvlJTTj7/33Cn8b4A1cYSCD2aNPSv1A==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: true
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1612,17 +1621,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.3.0-rc.0:
-    resolution: {integrity: sha512-TutEkS7wQIB1aRRqANO7ywKZh/Zs0Fen/wu8OuVH95YlSt0ln+b1cqp+KuhYrOVKzO5zalX2snAr5tql3gfgdQ==}
+  /@public-ui/core/1.3.0-rc.6:
+    resolution: {integrity: sha512-mdV2QNbiIKHL0mq5Oh/l4p3Fcc8P84d8lU3ryWLOshSOqwQMUD9u8Lr3c6tctxwqWs/8sWteJG4vVZyXjzBt1A==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.9
+      '@a11y-ui/core': 1.0.1-rc.52
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.2.0-rc.3:
-    resolution: {integrity: sha512-3viA4OG6BRN7Gije03/yHaKo72fLxL09ldxzXZ0CAT5343OpNgLFnkm4zN29eVTCtcsNwStDR5Zdr9dUWSjL4g==}
+  /@public-ui/schema/1.2.0-rc.4:
+    resolution: {integrity: sha512-QYKOlBXVMjPC2SobhdRGzt8mfOIMHiGM/0tj8RBYgGvAFVozVi43v7+zP/AFgkCN8CW49o3D9DhSRJ4vrrWTsw==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.9
+      '@a11y-ui/core': 1.0.1-rc.20
     dev: false
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
@@ -1749,61 +1758,61 @@ packages:
       '@sinonjs/commons': 1.8.6
     dev: true
 
-  /@stencil/angular-output-target/0.4.0_@stencil+core@2.21.0:
-    resolution: {integrity: sha512-zauaj0za46IWoPgv2IanDp3tiljwDRDNk4jB7WII6KeL66dkk7ffeqYZ0CgySTU5W2FjnKR6JEKbAnwUxjGIsA==}
+  /@stencil/angular-output-target/0.5.0_@stencil+core@2.22.1:
+    resolution: {integrity: sha512-U2I6dZdL8hvnogafG9IwtYRaAns5fQMacjee/3WNMRMYagrpz7R6cDdX4O0U8q6jks1ej91GchgZsQOVE9UcKg==}
     peerDependencies:
-      '@stencil/core': ^2.9.0
+      '@stencil/core': ^2.9.0 || ^3.0.0-beta.0
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
     dev: true
 
-  /@stencil/core/2.21.0:
-    resolution: {integrity: sha512-c4mVCl87wTV8u7ExQqiiQU5XrkzXjq8ll8skPlFHlJ7+5hGWhRpuVqKgVYJPN1mC/ucRqCUfjzSNUD7cFKHhkw==}
+  /@stencil/core/2.22.1:
+    resolution: {integrity: sha512-L4EsWLXYkg24BfrR3aS1df3BSkH0RFyza+Tu84MaYoF2csiKTJxDTZuFHSnJeF8UdgzV7CBfnsIEV6r3s0+h3g==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
     dev: true
 
-  /@stencil/postcss/2.1.0_@stencil+core@2.21.0:
+  /@stencil/postcss/2.1.0_@stencil+core@2.22.1:
     resolution: {integrity: sha512-/e4TYEXErGaHxH0ocg620YqEMLuMLpK/Wg4MJsiJglrLZCZhU4XCX1N0SwxaIOUbEZ1Zh+AqQ++yMI92ilndEA==}
     peerDependencies:
       '@stencil/core': '>=2.0.0'
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
       autoprefixer: 10.4.13_postcss@8.3.11
       postcss: 8.3.11
     dev: true
 
-  /@stencil/react-output-target/0.3.1_@stencil+core@2.21.0:
-    resolution: {integrity: sha512-6d9pPhyajFfdxkqU/pPP2SzI7wn+EklySQc4KXlI/xcdvC2H9BzLmhmR40fR1q2TQoJbJui/nvSWhbYqkE3OBQ==}
+  /@stencil/react-output-target/0.4.0_@stencil+core@2.22.1:
+    resolution: {integrity: sha512-X7XW6aHSU7ZypkFj4wX/XL7ROj2GXcdTL+Emo1mKNg5laBcuTVtt8zPR4ERG/grq8ec8wav+FxBuSlQ3cH0qcg==}
     peerDependencies:
-      '@stencil/core': ^2.9.0
+      '@stencil/core': ^2.9.0 || ^3.0.0-beta.0
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
     dev: true
 
-  /@stencil/sass/2.0.2_@stencil+core@2.21.0:
-    resolution: {integrity: sha512-+hdPubxA4cBEyJR0ge0aGl9FUr0y6e4yqcsfrxkocOT6Nv+Mi+QpfZ9kx1W3ECL640VRcHqQifPcnoauvmqPZg==}
+  /@stencil/sass/2.0.3_@stencil+core@2.22.1:
+    resolution: {integrity: sha512-ypS+0f6bJH2qXqrNAHirlYOWFax+qKKOIePLs7cu4LfKFr4ZVJSGRFBdgaeRrZMUhJWnhjV6io2uDldhrQhnMg==}
     peerDependencies:
-      '@stencil/core': '>=2.0.0'
+      '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0'
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
     dev: true
 
-  /@stencil/svelte-output-target/0.0.3_@stencil+core@2.21.0:
+  /@stencil/svelte-output-target/0.0.3_@stencil+core@2.22.1:
     resolution: {integrity: sha512-/FtIXopBigcnK+ojsnBMNAHeyam4bgmvqSGTuy1W0vjUqDrayOiqvpz21qBXa9dBBfLTBE68b+68mUPnWtNFbA==}
     deprecated: '@stencil/svelte has been deprecated and is not in active development at this time'
     peerDependencies:
       '@stencil/core': '>=1.8.0 || ^2.0.0'
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
     dev: true
 
-  /@stencil/vue-output-target/0.6.2_@stencil+core@2.21.0:
-    resolution: {integrity: sha512-Oh7SLFbOUchCSCbGe/Dqal2xSYPKCFQiVKnvzvS0dsHP/XS7rfHqp3qptW6JCp9lBoo3wmmBurHfldqxhLlnag==}
+  /@stencil/vue-output-target/0.7.0_@stencil+core@2.22.1:
+    resolution: {integrity: sha512-iPEgnT2z6HsfWVRWVZk5C1AaMZnbJjB+c/hvtWoO7B3aErTJB8Up6oFk/t3IRsr12aNuZ4fUra0FEDx9WweH0Q==}
     peerDependencies:
-      '@stencil/core': ^2.9.0
+      '@stencil/core': ^2.9.0 || ^3.0.0-beta.0
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
     dev: true
 
   /@surma/rollup-plugin-off-main-thread/2.2.3:
@@ -3259,8 +3268,8 @@ packages:
       htmlparser2: 8.0.1
     dev: true
 
-  /eslint-plugin-jsdoc/39.6.4_eslint@8.32.0:
-    resolution: {integrity: sha512-fskvdLCfwmPjHb6e+xNGDtGgbF8X7cDwMtVLAP2WwSf9Htrx68OAx31BESBM1FAwsN2HTQyYQq7m4aW4Q4Nlag==}
+  /eslint-plugin-jsdoc/39.6.6_eslint@8.32.0:
+    resolution: {integrity: sha512-cFkmcdMYHw4XwA4fM5Rdopn9wB2p+Yu966F/6fa9C/oIMH99+YCfhH3+qXMc39VX9KYZ0d/KHgUbKo8D7N/27A==}
     engines: {node: ^14 || ^16 || ^17 || ^18 || ^19}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
@@ -6163,8 +6172,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.1.0:
-    resolution: {integrity: sha512-ZJdkUR5/dRrRJHdcSKJLrpRn6tVjl9ALxd4yrTCxFsMpjQNzwHF6GLqMsuEzEYIXxHlFPDSk21Vr8VPuFBEz0g==}
+  /rimraf/4.1.1:
+    resolution: {integrity: sha512-Z4Y81w8atcvaJuJuBB88VpADRH66okZAuEm+Jtaufa+s7rZmIz+Hik2G53kGaNytE7lsfXyWktTmfVz0H9xuDg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -6495,12 +6504,12 @@ packages:
       object-copy: 0.1.0
     dev: true
 
-  /stencil-awesome-test/1.0.4_@stencil+core@2.21.0:
+  /stencil-awesome-test/1.0.4_@stencil+core@2.22.1:
     resolution: {integrity: sha512-DCdoj6QPb+ay/sGqac2MIQBnQ/WIrDHYSSycCQt75Bkm5awx6vavz6cSl1KDq9IsrQouoyChr4vidaWSWG1c3A==}
     peerDependencies:
       '@stencil/core': ^2
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
     dev: true
 
   /stop-iteration-iterator/1.0.0:
@@ -7464,7 +7473,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  file:node_martin/stencil-solid-output-target-0.0.1.tgz_@stencil+core@2.21.0:
+  file:node_martin/stencil-solid-output-target-0.0.1.tgz_@stencil+core@2.22.1:
     resolution: {integrity: sha512-leO/+AmnieoDOB2Pv3sSk6QOI3htP7ENTnaCW3u1GEdK6OKB6c0VBJkjbklQHh2EtOx2tXWlvXI6ne5iYdIXNg==, tarball: file:node_martin/stencil-solid-output-target-0.0.1.tgz}
     id: file:node_martin/stencil-solid-output-target-0.0.1.tgz
     name: '@stencil/solid-output-target'
@@ -7472,5 +7481,5 @@ packages:
     peerDependencies:
       '@stencil/core': '>=1.8.0'
     dependencies:
-      '@stencil/core': 2.21.0
+      '@stencil/core': 2.22.1
     dev: true

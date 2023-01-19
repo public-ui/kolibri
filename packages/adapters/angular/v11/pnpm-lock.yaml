@@ -4,14 +4,14 @@ specifiers:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14
   '@angular/core': 11.2.14
-  '@public-ui/components': 1.2.0-rc.2
-  '@public-ui/core': 1.2.0
+  '@public-ui/components': 1.2.0-rc.4
+  '@public-ui/core': 1.3.0-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.3
-  rimraf: 4.1.0
+  rimraf: 4.1.1
   rxjs: 6.5.5
   tslib: 2.4.1
   typescript: '4.1'
@@ -21,14 +21,14 @@ devDependencies:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14_5xxvadz4tf2tlq4hiwi2uyyjke
   '@angular/core': 11.2.14_rxjs@6.5.5+zone.js@0.11.8
-  '@public-ui/components': 1.2.0-rc.2
-  '@public-ui/core': 1.2.0
+  '@public-ui/components': 1.2.0-rc.4
+  '@public-ui/core': 1.3.0-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.3
-  rimraf: 4.1.0
+  rimraf: 4.1.1
   rxjs: 6.5.5
   tslib: 2.4.1
   typescript: 4.1.6
@@ -36,8 +36,14 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.6:
-    resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
+  /@a11y-ui/core/1.0.1-rc.20:
+    resolution: {integrity: sha512-eXttBA5YqoXYYnLMXwxjM5fzJOUCleSco0uH+TIhY8N1QoLsJsm+0bweUKEqTtpwiOspS7G6FNaWGW0dLmtZFA==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: true
+
+  /@a11y-ui/core/1.0.1-rc.52:
+    resolution: {integrity: sha512-AGOkqA7RK5xoUScA2Ulk0H9wKVKJK/SY6TOsQ4OyMeFQ6v7/cMejlw0nvlJTTj7/33Cn8b4A1cYSCD2aNPSv1A==}
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -335,24 +341,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.2.0-rc.2:
-    resolution: {integrity: sha512-0AX+Rp7DL7FG6n7tFfvy1vJXWqcPnWxzgNK83/7ol9BWvpQe/MPkMi0OwEPNKD9M/Ca7tBnm3ReZmJNNRIopZQ==}
+  /@public-ui/components/1.2.0-rc.4:
+    resolution: {integrity: sha512-mkVh5T7pfmmM0qCMLAepqb6ajCmROoedC2MZHyJvjj+wEyf7fI6Q+V/Lpaoy7tG4AkquKD9Adf4BpVK3quKxvg==}
     dependencies:
-      '@public-ui/schema': 1.2.0-rc.2
+      '@public-ui/schema': 1.2.0-rc.4
     dev: true
 
-  /@public-ui/core/1.2.0:
-    resolution: {integrity: sha512-PJ0ghoopx4FBtovnOHxJ2v1LNCwueVo+L0qxBRrP5xzX0Smx3TzwQknL5LGU5HI79uiXmyWCv01FdtqXQ3LPcg==}
+  /@public-ui/core/1.3.0-rc.6:
+    resolution: {integrity: sha512-mdV2QNbiIKHL0mq5Oh/l4p3Fcc8P84d8lU3ryWLOshSOqwQMUD9u8Lr3c6tctxwqWs/8sWteJG4vVZyXjzBt1A==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.6
+      '@a11y-ui/core': 1.0.1-rc.52
       i18next: 22.4.9
-      rxjs: 7.8.0
     dev: true
 
-  /@public-ui/schema/1.2.0-rc.2:
-    resolution: {integrity: sha512-7F+ClzfaohEKBWfDShUfw+7IsONEsrjuLdXg57LQbHzgCk69SBIobiMtrI2R/1bNrIg3Lizvfa+VvL6QF1orjA==}
+  /@public-ui/schema/1.2.0-rc.4:
+    resolution: {integrity: sha512-QYKOlBXVMjPC2SobhdRGzt8mfOIMHiGM/0tj8RBYgGvAFVozVi43v7+zP/AFgkCN8CW49o3D9DhSRJ4vrrWTsw==}
     dependencies:
-      '@public-ui/core': 1.2.0
+      '@a11y-ui/core': 1.0.1-rc.20
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -701,8 +706,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /rimraf/4.1.0:
-    resolution: {integrity: sha512-ZJdkUR5/dRrRJHdcSKJLrpRn6tVjl9ALxd4yrTCxFsMpjQNzwHF6GLqMsuEzEYIXxHlFPDSk21Vr8VPuFBEz0g==}
+  /rimraf/4.1.1:
+    resolution: {integrity: sha512-Z4Y81w8atcvaJuJuBB88VpADRH66okZAuEm+Jtaufa+s7rZmIz+Hik2G53kGaNytE7lsfXyWktTmfVz0H9xuDg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -712,12 +717,6 @@ packages:
     engines: {npm: '>=2.0.0'}
     dependencies:
       tslib: 1.14.1
-    dev: true
-
-  /rxjs/7.8.0:
-    resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
-    dependencies:
-      tslib: 2.4.1
     dev: true
 
   /semver/6.3.0:
