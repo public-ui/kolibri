@@ -1,73 +1,40 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.2.0-rc.3
-  '@public-ui/core': 1.3.0-rc.1
-  rimraf: 4.1.0
-
-dependencies:
-  '@public-ui/components': 1.2.0-rc.3
+  '@public-ui/components': 1.2.0-rc.4
+  rimraf: 4.1.1
 
 devDependencies:
-  '@public-ui/core': 1.3.0-rc.1
-  rimraf: 4.1.0
+  '@public-ui/components': 1.2.0-rc.4
+  rimraf: 4.1.1
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.10:
-    resolution: {integrity: sha512-mLUE0SgYCyuhNVoDE/cjS4SqLNyL1aInH3D4lGWJ0AxpQ8hJC12x2iHCxxNQUBEGAaCKW6oG1+du3rx0nwwkeA==}
+  /@a11y-ui/core/1.0.1-rc.20:
+    resolution: {integrity: sha512-eXttBA5YqoXYYnLMXwxjM5fzJOUCleSco0uH+TIhY8N1QoLsJsm+0bweUKEqTtpwiOspS7G6FNaWGW0dLmtZFA==}
     dependencies:
       loglevel: 1.8.1
     dev: true
 
-  /@a11y-ui/core/1.0.1-rc.9:
-    resolution: {integrity: sha512-mdnOMQ9W0e8SOIpE7cc2jVHIt02PBUuiwsOw9gELRlTHZZdsbKOxsBBjZn+QlKV6xdyX74IQ/do+T2rmvsZ6Tg==}
+  /@public-ui/components/1.2.0-rc.4:
+    resolution: {integrity: sha512-mkVh5T7pfmmM0qCMLAepqb6ajCmROoedC2MZHyJvjj+wEyf7fI6Q+V/Lpaoy7tG4AkquKD9Adf4BpVK3quKxvg==}
     dependencies:
-      loglevel: 1.8.1
-    dev: false
-
-  /@babel/runtime/7.20.7:
-    resolution: {integrity: sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.11
+      '@public-ui/schema': 1.2.0-rc.4
     dev: true
 
-  /@public-ui/components/1.2.0-rc.3:
-    resolution: {integrity: sha512-VFMre3duhB2PYl7jNTj3vQ08/5diI30UwpXZpn50yF2GIveK+zK4ucduGtwMhLBIXy4Fs5FZJuFVBkINIjp7Mg==}
+  /@public-ui/schema/1.2.0-rc.4:
+    resolution: {integrity: sha512-QYKOlBXVMjPC2SobhdRGzt8mfOIMHiGM/0tj8RBYgGvAFVozVi43v7+zP/AFgkCN8CW49o3D9DhSRJ4vrrWTsw==}
     dependencies:
-      '@public-ui/schema': 1.2.0-rc.3
-    dev: false
-
-  /@public-ui/core/1.3.0-rc.1:
-    resolution: {integrity: sha512-bz4sLnaW3PvyRs34vzRY3bYUwxB0WHMv+EGHe7pYiqKjv6K1EFGioiPUPrLHUZ0SU3V/L64nBIocH2QSHYkMEg==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.10
-      i18next: 22.4.9
-    dev: true
-
-  /@public-ui/schema/1.2.0-rc.3:
-    resolution: {integrity: sha512-3viA4OG6BRN7Gije03/yHaKo72fLxL09ldxzXZ0CAT5343OpNgLFnkm4zN29eVTCtcsNwStDR5Zdr9dUWSjL4g==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.9
-    dev: false
-
-  /i18next/22.4.9:
-    resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
-    dependencies:
-      '@babel/runtime': 7.20.7
+      '@a11y-ui/core': 1.0.1-rc.20
     dev: true
 
   /loglevel/1.8.1:
     resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
-
-  /regenerator-runtime/0.13.11:
-    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: true
 
-  /rimraf/4.1.0:
-    resolution: {integrity: sha512-ZJdkUR5/dRrRJHdcSKJLrpRn6tVjl9ALxd4yrTCxFsMpjQNzwHF6GLqMsuEzEYIXxHlFPDSk21Vr8VPuFBEz0g==}
+  /rimraf/4.1.1:
+    resolution: {integrity: sha512-Z4Y81w8atcvaJuJuBB88VpADRH66okZAuEm+Jtaufa+s7rZmIz+Hik2G53kGaNytE7lsfXyWktTmfVz0H9xuDg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

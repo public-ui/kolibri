@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.2.0-rc.3
-  '@public-ui/schema': 1.2.0-rc.3
+  '@public-ui/components': 1.2.0-rc.4
+  '@public-ui/schema': 1.2.0-rc.4
   '@types/node': 18.11.18
   '@typescript-eslint/eslint-plugin': 5.48.2
   '@typescript-eslint/parser': 5.48.2
@@ -12,8 +12,8 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@public-ui/components': 1.2.0-rc.3
-  '@public-ui/schema': 1.2.0-rc.3
+  '@public-ui/components': 1.2.0-rc.4
+  '@public-ui/schema': 1.2.0-rc.4
 
 devDependencies:
   '@types/node': 18.11.18
@@ -26,8 +26,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.9:
-    resolution: {integrity: sha512-mdnOMQ9W0e8SOIpE7cc2jVHIt02PBUuiwsOw9gELRlTHZZdsbKOxsBBjZn+QlKV6xdyX74IQ/do+T2rmvsZ6Tg==}
+  /@a11y-ui/core/1.0.1-rc.20:
+    resolution: {integrity: sha512-eXttBA5YqoXYYnLMXwxjM5fzJOUCleSco0uH+TIhY8N1QoLsJsm+0bweUKEqTtpwiOspS7G6FNaWGW0dLmtZFA==}
     dependencies:
       loglevel: 1.8.1
     dev: false
@@ -533,16 +533,16 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.2.0-rc.3:
-    resolution: {integrity: sha512-VFMre3duhB2PYl7jNTj3vQ08/5diI30UwpXZpn50yF2GIveK+zK4ucduGtwMhLBIXy4Fs5FZJuFVBkINIjp7Mg==}
+  /@public-ui/components/1.2.0-rc.4:
+    resolution: {integrity: sha512-mkVh5T7pfmmM0qCMLAepqb6ajCmROoedC2MZHyJvjj+wEyf7fI6Q+V/Lpaoy7tG4AkquKD9Adf4BpVK3quKxvg==}
     dependencies:
-      '@public-ui/schema': 1.2.0-rc.3
+      '@public-ui/schema': 1.2.0-rc.4
     dev: false
 
-  /@public-ui/schema/1.2.0-rc.3:
-    resolution: {integrity: sha512-3viA4OG6BRN7Gije03/yHaKo72fLxL09ldxzXZ0CAT5343OpNgLFnkm4zN29eVTCtcsNwStDR5Zdr9dUWSjL4g==}
+  /@public-ui/schema/1.2.0-rc.4:
+    resolution: {integrity: sha512-QYKOlBXVMjPC2SobhdRGzt8mfOIMHiGM/0tj8RBYgGvAFVozVi43v7+zP/AFgkCN8CW49o3D9DhSRJ4vrrWTsw==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.9
+      '@a11y-ui/core': 1.0.1-rc.20
     dev: false
 
   /@rollup/plugin-alias/4.0.2_rollup@3.10.0:
