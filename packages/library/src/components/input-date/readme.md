@@ -44,12 +44,15 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                           | Fokussiert das Eingabefeld. Nach erhalt des Fokus wechselt die `Tab`-Taste durch die Eingabebereiche. Danach erst wechselt die `Tab`-Taste zum nächsten Eingabefeld.                                                                                            |
 | `Leer`                          | Wenn das Eingabefeld fokussiert ist, kann im Browser mit der `Leer`-Taste ein Auswahldialog aufgerufen bzw. geschlossen werden. Die Navigation und Auswahl erfolgt hier mit Hilfe der `Tab`-Taste, der `Pfeil`-Tasten und der Bestätigung mittes `Enter`-Taste. |
-| `Pfeil-Tasten (links / rechts)` | Wenn das Eingabefeld fokussiert ist, kann mit den Pfeil-Tasten zwischen den Eingabebereichen gewechselt werden.                                                                                                                                                 |
+| `Pfeil-Tasten (links / rechts)` | Wenn das Eingabefeld fokussiert ist, kann mit den `Pfeil`-Tasten zwischen den Eingabebereichen gewechselt werden.                                                                                                                                               |
 | `Pfeil-Tasten (oben / unten)`   | Wenn ein Eingabebereich aktiviert ist, können mit den `Pfeil`-Tasten oben und unten die Werte verändert werden.                                                                                                                                                 |
 | `Esc`                           | Ist ein Auswahldialog verfügbar, kann dieser alternativ zur `Leer`-Taste oder auch mit der `Esc`-Taste geschlossen werden.                                                                                                                                      |
 
 ## Links und Referenzen
 
+- https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html
+- https://www.hassellinclusion.com/blog/input-type-date-ready-for-use/
+- https://a11ysupport.io/tech/html/input(type-date)_element
 - https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
 - https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/
 
