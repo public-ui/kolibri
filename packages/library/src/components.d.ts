@@ -5,13 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { TooltipAlignment } from "./components/tooltip/component";
+import { Alignment } from "./types/props/alignment";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/component";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
-import { Alignment, KoliBriIconProp } from "./types/icon";
+import { KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
 import { NavLinkProps } from "./components/link/component";
 import { KoliBriFormCallbacks } from "./components/form/component";
@@ -33,10 +33,8 @@ import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types"
 import { KoliBriProgressType } from "./types/progress";
 import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
-import { Alignment as Alignment1 } from "./types/props/alignment";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-import { TooltipAlignment as TooltipAlignment1 } from "./components/tooltip/component";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -46,7 +44,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
     }
     interface KolAccordion {
         /**
@@ -202,7 +200,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -280,7 +278,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -359,7 +357,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -1451,11 +1449,6 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_fill"?: boolean;
-        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -1480,11 +1473,6 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für den Link an.
          */
         "_on"?: LinkOnCallbacks;
-        /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -1514,12 +1502,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
-        /**
-          * Gibt an, ob die Links unterstrichen dargestellt werden.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_underline"?: boolean;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1594,7 +1577,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -1656,11 +1639,6 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_fill"?: boolean;
-        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -1686,11 +1664,6 @@ export namespace Components {
           * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
-        /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -1720,12 +1693,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
-        /**
-          * Gibt an, ob die Links unterstrichen dargestellt werden.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_underline"?: boolean;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1835,7 +1803,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
          */
@@ -1882,6 +1850,7 @@ export namespace Components {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
+          * @deprecated Use _size instead.
          */
         "_height"?: string;
         /**
@@ -2033,7 +2002,7 @@ export namespace Components {
         /**
           * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
          */
-        "_tabsAlign"?: Alignment1;
+        "_tabsAlign"?: Alignment;
     }
     interface KolTextarea {
         /**
@@ -2155,7 +2124,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: TooltipAlignment;
+        "_align"?: Alignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -2589,7 +2558,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
     }
     interface KolAccordion {
         /**
@@ -2745,7 +2714,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2823,7 +2792,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2902,7 +2871,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -3994,11 +3963,6 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_fill"?: boolean;
-        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -4023,11 +3987,6 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für den Link an.
          */
         "_on"?: LinkOnCallbacks;
-        /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -4057,12 +4016,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
-        /**
-          * Gibt an, ob die Links unterstrichen dargestellt werden.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_underline"?: boolean;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4137,7 +4091,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -4199,11 +4153,6 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_fill"?: boolean;
-        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -4229,11 +4178,6 @@ declare namespace LocalJSX {
           * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
          */
         "_on"?: LinkOnCallbacks;
-        /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_part"?: string;
         /**
           * Gibt an, welche Role der Schalter hat.
          */
@@ -4263,12 +4207,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: TooltipAlignment;
-        /**
-          * Gibt an, ob die Links unterstrichen dargestellt werden.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
-         */
-        "_underline"?: boolean;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4378,7 +4317,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: TooltipAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
          */
@@ -4425,6 +4364,7 @@ declare namespace LocalJSX {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
+          * @deprecated Use _size instead.
          */
         "_height"?: string;
         /**
@@ -4576,7 +4516,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
          */
-        "_tabsAlign"?: Alignment1;
+        "_tabsAlign"?: Alignment;
     }
     interface KolTextarea {
         /**
@@ -4698,7 +4638,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: TooltipAlignment;
+        "_align"?: Alignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */

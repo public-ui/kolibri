@@ -1,69 +1,51 @@
-/* windicss-touch: 1648427233774 */
 @import ../style
 
 :host
-  display: inline-flex
+	display: inline-block
 
-  &>*
-    color: inherit
-    width: inherit
-    word-spacing: inherit
+	&> kol-button-wc,
+	&> kol-link-wc
+		width: inherit
 
-  button
-    display: grid
-    font-family: var(--kolibri-font-family)
-    letter-spacing: inherit
-    width: inherit
-    word-spacing: inherit
-    border-radius: var(--kolibri-border-radius)
-    align-items: center !important
-    justify-content: center !important
-    @apply border-1 p-2
+		a,
+		button
+			border: 0
+			cursor: pointer
+			display: inline-block
+			min-height: 44px
+			min-width: 44px
+			text-align: center
+			padding: 0
+			transition-duration: 0.5s
+			transition-property: background-color, color, border-color
+			width: inherit
 
-    kol-icon,
-    .kol-icon
-      width: 1.5em
-      height: 1.5em
-      display: inline-block
+			> kol-span-wc
+				display: grid
+				justify-content: center
+				justify-items: center
+				align-items: center
 
-    &.primary
-      @apply bg-primary border-transparent text-white
+				> span
+					display: flex
+					gap: 0.25em
+					align-items: center
+					justify-content: center
 
-      &:hover,
-      &:focus
-        @apply border-primary text-primary
+			&:active
+				outline: 0 !important
+				box-shadow: none !important
 
-    &.secondary
-      @apply bg-secondary border-transparent text-white
+			&:disabled
+				box-shadow: none
+				cursor: not-allowed
+				opacity: 0.5
 
-      &:hover,
-      &:focus
-        @apply border-secondary text-secondary
+			&.icon-only
 
-    &.normal
-      @apply bg-normal border-transparent text-white
+				> kol-span-wc
 
-      &:hover,
-      &:focus
-        @apply border-normal text-normal
+					> span
 
-    &.danger
-      @apply bg-danger border-transparent text-white
-
-      &:hover,
-      &:focus
-        @apply border-danger text-danger
-
-    &.ghost
-      @apply bg-white border-ghost text-ghost
-
-      &:hover,
-      &:focus
-        @apply bg-ghost border-transparent text-white
-
-    &:disabled
-      @apply bg-gray-300 border-transparent  cursor-not-allowed text-gray-700
-
-      &:hover,
-      &:focus
-        @apply bg-gray-700 text-gray-300
+						> span
+							display: none

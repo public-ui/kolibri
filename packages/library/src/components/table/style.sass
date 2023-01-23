@@ -1,10 +1,9 @@
-/* windicss-touch: 1639175625181 */
 @import ../style
 
 :host
   @apply overflow-hidden
 
-  & > div
+  > div
     overflow-x: auto
     border-radius: var(--kolibri-border-radius)
     border-style: solid
@@ -39,8 +38,8 @@
         &:nth-child(odd)
           @apply white
 
-  & > div.pagination
+  > div.pagination
     @apply border-none w-full grid grid-flow-col content-center items-center pt-2 px-1 gap-2
 
-    & > div::last-child
+    > div::last-child
       @apply flex justify-self-end items-center gap-2

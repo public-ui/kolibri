@@ -2,9 +2,9 @@ import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
+import { Alignment } from '../../types/props/alignment';
 import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
-import { TooltipAlignment } from '../tooltip/component';
 
 /**
  * API
@@ -13,7 +13,7 @@ type RequiredProps = {
 	title: string;
 };
 type OptionalProps = {
-	tooltipAlign: TooltipAlignment;
+	tooltipAlign: Alignment;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -33,11 +33,7 @@ export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	public render(): JSX.Element {
 		return (
-			<Host
-				style={{
-					display: 'inline-block',
-				}}
-			>
+			<Host>
 				<abbr aria-labelledby={this.nonce} role="definition" title={this.state._title}>
 					<span title="">
 						<slot />
@@ -51,7 +47,7 @@ export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -91,7 +87,7 @@ export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

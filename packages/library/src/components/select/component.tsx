@@ -18,7 +18,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 @Component({
 	tag: 'kol-select',
 	styleUrls: {
-		default: '../input-line.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })
@@ -153,6 +153,8 @@ export class KolSelect implements ComponentApi {
 
 	/**
 	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
+	 *
+	 * @deprecated Use _size instead.
 	 */
 	@Prop() public _height?: string;
 

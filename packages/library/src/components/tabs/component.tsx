@@ -67,7 +67,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-tabs',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })
@@ -135,7 +135,6 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	private renderButtonGroup() {
 		return (
-			// <!-- style="order:2" -->
 			<kol-button-group-wc role="tablist" aria-label={this.state._ariaLabel} onKeyDown={this.onKeyDown}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => {
 					return (

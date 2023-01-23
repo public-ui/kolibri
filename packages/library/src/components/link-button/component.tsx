@@ -18,7 +18,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { watchButtonVariant } from '../button/controller';
-import { TooltipAlignment } from '../tooltip/component';
+import { Alignment } from '../../types/props/alignment';
 import { translate } from '../../i18n';
 
 type State = {
@@ -28,7 +28,7 @@ type State = {
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
-		default: '../style.sass',
+		default: '../button/style.sass',
 	},
 	shadow: true,
 })
@@ -52,6 +52,7 @@ export class KolLinkButton
 				<kol-link-wc
 					ref={this.catchRef}
 					class={{
+						button: true,
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
@@ -166,7 +167,7 @@ export class KolLinkButton
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignment = 'right';
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.

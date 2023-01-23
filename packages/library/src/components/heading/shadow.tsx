@@ -6,7 +6,7 @@ import { Props } from './component';
 @Component({
 	tag: 'kol-heading',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

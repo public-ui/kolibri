@@ -20,7 +20,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-spin',
 	styleUrls: {
-		default: './spin.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

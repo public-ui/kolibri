@@ -1,9 +1,9 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { Alignment, KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@a11y-ui/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AlternativButtonLinkRole, AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
-import { TooltipAlignment } from '../tooltip/component';
 import { Stringified } from '../../types/common';
+import { KoliBriIconProp } from '../../types/icon';
+import { Alignment } from '../../types/props/alignment';
 import { propergateFocus } from '../../utils/reuse';
 
 /**
@@ -38,14 +38,12 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
-					_fill={this._fill}
 					_href={this._href}
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
 					_iconOnly={this._iconOnly}
 					_label={this._label}
 					_on={this._on}
-					_part={this._part}
 					_role={this._role}
 					_selector={this._selector}
 					_stealth={this._stealth}
@@ -53,7 +51,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_target={this._target}
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
-					_underline={this._underline}
 					_useCase={this._useCase}
 				>
 					<slot name="expert" slot="expert" />
@@ -95,13 +92,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	@Prop({ reflect: true }) public _fill?: boolean = false;
-
-	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
@@ -117,7 +107,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
 	@Prop() public _iconAlign?: Alignment = 'left';
-
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
@@ -132,13 +121,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * Gibt die EventCallback-Funktionen für den Link an.
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
-
-	/**
-	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	@Prop() public _part?: string;
 
 	/**
 	 * Gibt an, welche Role der Schalter hat.
@@ -177,14 +159,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignment = 'right';
-
-	/**
-	 * Gibt an, ob die Links unterstrichen dargestellt werden.
-	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	@Prop({ reflect: true }) public _underline?: boolean = true;
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

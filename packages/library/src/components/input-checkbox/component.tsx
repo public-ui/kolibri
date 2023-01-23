@@ -9,7 +9,7 @@ import { ComponentApi, InputCheckboxVariant, States } from './types';
 @Component({
 	tag: 'kol-input-checkbox',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

@@ -66,7 +66,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 						_icon={this.state._icon.top.icon}
 					/>
 				)}
-				<span class="flex items-center">
+				<span>
 					{this.state._icon.left && (
 						<kol-icon
 							class={{
@@ -77,13 +77,15 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 							_icon={this.state._icon.left.icon}
 						/>
 					)}
-					<span>{this.state._iconOnly !== true && this.state._label.length > 0 ? this.state._label : ''}</span>
+					<span ref={this.state._iconOnly === true ? removeNode : undefined}>
+						{this.state._iconOnly !== true && this.state._label.length > 0 ? this.state._label : ''}
+					</span>
 					{/*
 							Es ist keine gute Idee hier einen Slot einzufügen,
 							da dadurch die komplette Unterstützung der Komponente
 							umgangen werden kann.
 						*/}
-					<span ref={this.state._label.length > 0 ? removeNode : undefined}>
+					<span ref={this.state._label.length > 0 || this.state._iconOnly === true ? removeNode : undefined}>
 						<slot name="expert" />
 					</span>
 					{this.state._icon.right && (

@@ -74,6 +74,7 @@ export class SelectController extends InputController implements Watches {
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated Use _size instead.
 	 */
 	public validateHeight(value?: string): void {
 		watchString(this.component, '_height', value);

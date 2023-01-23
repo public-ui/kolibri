@@ -1,0 +1,23 @@
+@import ../style
+
+:host
+
+	details
+		display: grid
+		width: 100%
+
+		> kol-indented-text
+			margin: 0.25rem 0 0 0.25rem
+
+	summary
+		cursor: pointer
+		display: flow-root
+		margin: 0
+		padding: 0
+
+		span
+			margin-left: 0.25rem
+			text-decoration: underline
+
+		&:hover
+			text-decoration-thickness: 0.25rem

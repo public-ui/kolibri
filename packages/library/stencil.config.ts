@@ -284,12 +284,7 @@ export const config: Config = {
 	plugins: [
 		sass(),
 		postcss({
-			plugins: [
-				// require('postcss-windicss'),
-				require('./node_martin/postcss-windicss')({
-					// touchMode: 'insert-comment',
-				}),
-			],
+			plugins: [require('postcss-windicss')],
 		}),
 	],
 	rollupPlugins: {

@@ -11,7 +11,7 @@ import { ComponentApi, States } from './types';
 @Component({
 	tag: 'kol-input-radio',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

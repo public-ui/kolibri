@@ -50,7 +50,7 @@ const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 @Component({
 	tag: 'kol-alert',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

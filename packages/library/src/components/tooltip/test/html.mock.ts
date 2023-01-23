@@ -13,7 +13,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 		props
 	);
 	return `
-<kol-tooltip style="max-width: 300px;"${additionalAttrs}>
+<kol-tooltip${additionalAttrs}>
   ${
 		state._label === ''
 			? ''
