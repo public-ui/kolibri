@@ -1,35 +1,25 @@
-/* windicss-touch: 1648427233774 */
 @import ../style
 
 :host
 
-	&>span
-		align-items: center
+	> span
+		border-radius: 0.3125rem
 		display: inline-flex
-		flex-wrap: nowrap
+		font-size: 0.875em
+		font-style: normal
+		font-weight: 700
+		line-height: 1.25rem
 
-		&> kol-span-wc
+		> kol-span-wc
 			align-items: center
-			display: grid
+			font-style: normal
+			gap: 0.5rem
+			padding: 0.25rem 0.5rem
 
-			&> span
+			> span
 				display: flex
+				gap: 0.25rem
 
-		&> kol-button-wc
-			border-left-color: rgba(0, 0, 0, 0.25)
-			border-left-style: solid
-			border-left-width: 1px
-
-			&> button
-				background-color: inherit
-				border: 0
-				color: inherit
-				margin: 0
-				padding: 0
-
-				&> kol-span-wc
-					align-items: center
-					display: grid
-
-					&> span
-						display: flex
+		kol-button-wc,
+		.kol-button-wc
+			border-left: 1px solid rgba(0, 0, 0, 0.25)

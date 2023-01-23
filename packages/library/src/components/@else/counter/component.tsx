@@ -6,7 +6,7 @@ import { Component, h, Host, JSX, State } from '@stencil/core';
 @Component({
 	tag: 'kol-counter',
 	styleUrls: {
-		default: './style.sass',
+		default: '../../style.sass',
 	},
 	shadow: true,
 })

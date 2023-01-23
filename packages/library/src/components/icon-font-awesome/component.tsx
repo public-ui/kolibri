@@ -22,7 +22,7 @@ type OptionalProps = {
 @Component({
 	tag: 'kol-icon-font-awesome',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: false,
 })

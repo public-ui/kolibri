@@ -56,7 +56,7 @@ const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 @Component({
 	tag: 'kol-table',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })
@@ -581,6 +581,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 														colSpan={col.colSpan}
 														rowSpan={col.rowSpan}
 														style={{
+															textAlign: col.textAlign,
 															width: col.width,
 														}}
 														aria-sort={
@@ -667,6 +668,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 														colSpan={col.colSpan}
 														rowSpan={col.rowSpan}
 														style={{
+															textAlign: col.textAlign,
 															width: col.width,
 														}}
 														aria-sort={

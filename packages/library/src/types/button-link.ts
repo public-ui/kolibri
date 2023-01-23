@@ -1,10 +1,10 @@
-import { TooltipAlignment } from '../components/tooltip/component';
-import { Events } from '../enums/events';
 import { Generic } from '@a11y-ui/core';
+import { Events } from '../enums/events';
 import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueCallback } from './callbacks';
-import { Alignment, KoliBriCustomIcon, KoliBriIconProp } from './icon';
 import { Stringified } from './common';
+import { KoliBriCustomIcon, KoliBriIconProp } from './icon';
+import { Alignment } from './props/alignment';
 
 /**
  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
@@ -35,7 +35,7 @@ type OptionalButtonAndLinkProps = {
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: TooltipAlignment;
+	tooltipAlign: Alignment;
 };
 
 type RequiredButtonAndLinkStates = {
@@ -61,7 +61,7 @@ type OptionalButtonAndLinkStates = {
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: TooltipAlignment;
+	tooltipAlign: Alignment;
 };
 
 /* Button */
@@ -139,15 +139,7 @@ export type RequiredLinkProps = RequiredButtonAndLinkProps & {
 	href: string;
 };
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	fill: boolean;
 	on: LinkOnCallbacks;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	part: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
@@ -158,10 +150,6 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	underline: boolean;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
@@ -174,15 +162,7 @@ export type RequiredLinkStates = RequiredButtonAndLinkStates & {
 };
 export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	fill: boolean;
 	on: LinkOnCallbacks;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	part: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
@@ -193,10 +173,6 @@ export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	underline: boolean;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
@@ -215,12 +191,12 @@ export type RequiredLinkButtonStates = unknown;
 export type OptionalLinkButtonStates = KoliBriButtonVariantCustomClass;
 export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
-export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: TooltipAlignment): void => {
+export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Alignment): void => {
 	watchValidator(
 		component,
 		propName,
 		(value) => value === 'top' || value === 'right' || value === 'bottom' || value === 'left',
-		new Set(['TooltipAlignment {top, right, buttom, left}']),
+		new Set(['Alignment {top, right, buttom, left}']),
 		value,
 		{
 			defaultValue: 'top',

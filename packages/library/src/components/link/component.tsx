@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
+import { translate } from '../../i18n';
 import {
 	AlternativButtonLinkRole,
 	AriaCurrent,
@@ -14,17 +15,16 @@ import {
 	RequiredLinkStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
-import { Alignment, KoliBriIconProp } from '../../types/icon';
+import { Stringified } from '../../types/common';
+import { KoliBriIconProp } from '../../types/icon';
+import { Alignment } from '../../types/props/alignment';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTargetAndStopPropagation, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
-import { validateTabIndex } from '../../utils/validators/tab-index';
-import { TooltipAlignment } from '../tooltip/component';
-import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
-import { Stringified } from '../../types/common';
 import { propergateFocus } from '../../utils/reuse';
+import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
-import { translate } from '../../i18n';
+import { validateTabIndex } from '../../utils/validators/tab-index';
 
 type RequiredNavLinkProps = RequiredLinkProps;
 type OptionalNavLinkProps = OptionalLinkProps & {
@@ -98,34 +98,17 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 			rel: isExternal ? 'noopener' : undefined,
 		};
 
-		/**
-		 * Das möchte ich ungern für HTML machen, sondern nur für Barrierefreiheitsthemen.
-		 */
-		// if (typeof this.state._ariaLabel === 'string' && this.state._ariaLabel.length > 0) {
-		//   console.error('Setz den Titel.');
-		//   throw new Error('Setz den Titel.');
-		// }
-		let fill = this.state._fill;
-		if (this.state._stealth !== false) {
-			fill = false;
-		}
-
-		let underline = this.state._underline;
-		if (this.state._useCase === 'image') {
-			underline = false;
-		}
-
 		if (
 			(this.state._useCase === 'image' || this.state._iconOnly === true) &&
 			(typeof this.state._ariaLabel !== 'string' || this.state._ariaLabel.length === 0)
 		) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
 		}
-		return { isExternal, tagAttrs, underline, fill, goToProps };
+		return { isExternal, tagAttrs, goToProps };
 	};
 
 	public render(): JSX.Element {
-		const { isExternal, tagAttrs, underline, fill, goToProps } = this.getRenderValues();
+		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
 		return (
 			<Host>
 				<a
@@ -137,28 +120,17 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					aria-labelledby={this.state._useCase === 'image' || this.state._iconOnly === true ? this.nonce : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
-						'disabled ': this.state._disabled === true,
-						// 'bg-white text-normal hover:text-primary': this.state._useCase !== 'nav',
-						'kol-visited': this.state._useCase !== 'nav',
-						'flex flex-wrap items-center': this.state._iconOnly === false,
-						'grid text-center': this.state._iconOnly === true,
+						disabled: this.state._disabled === true,
 						'skip ': this.state._stealth !== false,
 						'icon-only': this.state._iconOnly === true,
 						'external-link': isExternal,
 					}}
-					part={`link ${typeof this.state._part === 'string' ? this.state._part : ''}`}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
 					onClick={undefined}
 					onKeyPress={this.onClick}
 					{...goToProps}
 					role={this.state._role}
-					style={{
-						cursor: 'pointer',
-						display: this.state._useCase === 'image' ? 'block' : undefined,
-						textDecorationLine: underline === true ? 'underline' : 'none',
-						width: fill === true ? '100%' : undefined,
-					}}
 					tabIndex={this.state._tabIndex}
 				>
 					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
@@ -220,13 +192,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Gibt an, ob der Link die gesamte zur Verfügung stehende Breite ausfüllt.
-	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	@Prop({ reflect: true }) public _fill?: boolean = false;
-
-	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
@@ -260,13 +225,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
-
-	/**
-	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	@Prop() public _part?: string;
 
 	/**
 	 * Gibt an, welche Role der Schalter hat.
@@ -305,14 +263,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignment = 'right';
-
-	/**
-	 * Gibt an, ob die Links unterstrichen dargestellt werden.
-	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	@Prop({ reflect: true }) public _underline?: boolean = true;
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -395,14 +346,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	@Watch('_fill')
-	public validateFill(value?: boolean): void {
-		watchBoolean(this, '_fill', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_href')
 	public validateHref(value?: string): void {
 		watchString(this, '_href', value);
@@ -464,16 +407,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	@Watch('_part')
-	public validatePart(value?: string): void {
-		watchString(this, '_part', value, {
-			defaultValue: '',
-		});
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_role')
 	public validateRole(value?: AlternativButtonLinkRole): void {
 		watchString(this, '_role', value);
@@ -523,16 +456,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_underline')
-	public validateUnderline(value?: boolean): void {
-		watchBoolean(this, '_underline', value);
 	}
 
 	/**
@@ -558,14 +483,12 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
-		this.validateFill(this._fill);
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
-		// this.validateIconAlign(this._iconAlign);
+		this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
-		this.validatePart(this._part);
 		this.validateRole(this._role);
 		this.validateSelector(this._selector);
 		this.validateStealth(this._stealth);
@@ -573,7 +496,6 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateTarget(this._target);
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateUnderline(this._underline);
 		this.validateUseCase(this._useCase);
 	}
 }

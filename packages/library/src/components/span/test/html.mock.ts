@@ -35,7 +35,7 @@ export const getSpanWcHtml = (
 			  })
 			: ''
 	}
-	<span class="flex items-center">
+	<span>
 		${
 			icon.left
 				? getIconHtml(

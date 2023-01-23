@@ -21,7 +21,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 @Component({
 	tag: 'kol-icon-icofont',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: false,
 })

@@ -65,7 +65,7 @@ const createProgressSVG = (state: States): JSX.Element => {
 @Component({
 	tag: 'kol-progress',
 	styleUrls: {
-		default: './style.sass',
+		default: '../style.sass',
 	},
 	shadow: true,
 })

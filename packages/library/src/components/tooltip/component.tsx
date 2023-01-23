@@ -2,10 +2,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { watchTooltipAlignment } from '../../types/button-link';
+import { Alignment } from '../../types/props/alignment';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
-
-export type TooltipAlignment = 'top' | 'right' | 'bottom' | 'left';
 
 /**
  * API
@@ -14,7 +13,7 @@ type RequiredProps = {
 	label: string;
 };
 type OptionalProps = {
-	align: TooltipAlignment;
+	align: Alignment;
 	id: string;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -127,12 +126,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 			this.alignTooltip();
 		}, 250);
 		return (
-			<Host
-				ref={this.catchHostElement}
-				style={{
-					maxWidth: '300px',
-				}}
-			>
+			<Host ref={this.catchHostElement}>
 				{this.state._label !== '' && (
 					<kol-badge
 						class={{
@@ -157,7 +151,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _align?: TooltipAlignment = 'top';
+	@Prop() public _align?: Alignment = 'top';
 
 	/**
 	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
@@ -182,7 +176,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_align')
-	public validateAlign(value?: TooltipAlignment): void {
+	public validateAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_align', value);
 	}
 

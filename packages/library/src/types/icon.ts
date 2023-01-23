@@ -1,7 +1,5 @@
 export type KoliBriIconProp = AnyIconFontClass | KoliBriAllIcon;
 
-export type Alignment = 'left' | 'right'; // | 'top' | 'buttom';
-
 // ts-prune-ignore-next
 export type AnyIconFontClass = string;
 

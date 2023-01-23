@@ -15,7 +15,8 @@ import {
 	watchTooltipAlignment,
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { Alignment, KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconProp } from '../../types/icon';
+import { Alignment } from '../../types/props/alignment';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import {
@@ -32,7 +33,6 @@ import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
-import { TooltipAlignment } from '../tooltip/component';
 import { watchButtonType, watchButtonVariant } from './controller';
 
 /**
@@ -207,7 +207,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.
@@ -401,7 +401,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

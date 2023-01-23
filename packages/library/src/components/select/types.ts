@@ -14,6 +14,9 @@ type OptionalProps = {
 	alert: boolean;
 	disabled: boolean;
 	error: string;
+	/**
+	 * @deprecated Use _size instead.
+	 */
 	height: string;
 	hideLabel: boolean;
 	hint: string;
@@ -40,6 +43,9 @@ type OptionalStates = {
 	alert: boolean;
 	disabled: boolean;
 	error: string;
+	/**
+	 * @deprecated Use _size instead.
+	 */
 	height: string;
 	hideLabel: boolean;
 	hint: string;

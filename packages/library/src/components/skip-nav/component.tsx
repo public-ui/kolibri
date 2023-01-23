@@ -30,7 +30,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-skip-nav',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.sass',
 	},
 	shadow: true,
 })
@@ -38,14 +38,11 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 	public render(): JSX.Element {
 		return (
 			<nav aria-label={this.state._ariaLabel}>
-				<ul class="w-full z-50">
+				<ul>
 					{this.state._links.map((link: NavLinkProps, index: number) => {
 						return (
-							<li class="text-center content-center h-0 overflow-y-visible" key={index}>
-								<kol-link class="inline-block mt-4 mx-auto w-4/5" exportparts="link" {...link} _ariaLabel={link._ariaLabel} _useCase="nav" _stealth={true}>
-									{link._label}
-								</kol-link>
-								&#160;
+							<li key={index}>
+								<kol-link {...link} _stealth={true}></kol-link>
 							</li>
 						);
 					})}

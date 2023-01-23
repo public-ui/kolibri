@@ -16,7 +16,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-indented-text',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.sass',
 	},
 	shadow: true,
 })

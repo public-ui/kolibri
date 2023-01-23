@@ -140,8 +140,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											}
 											_iconOnly={this.state._compact === true || link._iconOnly === true}
 											_label={link._label}
-											_part={link._active === true ? 'selected' : undefined}
-											_underline={false}
 											onClick={() => this.onClick(link)}
 										></kol-link-wc>
 									</div>
@@ -178,11 +176,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										_icon-only={this.state._compact === true || link._iconOnly === true}
 										_label={link._label}
 										_on={link._on}
-										_part={link._active === true ? 'selected' : undefined}
 										_selector={link._selector}
 										_tooltipAlign={link._tooltipAlign}
 										_target={link._target}
-										_underline={false}
 										_useCase="nav"
 									></kol-link-wc>
 								</div>

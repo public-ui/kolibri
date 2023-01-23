@@ -11,9 +11,9 @@ import {
 	RequiredButtonProps,
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { Alignment, KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconProp } from '../../types/icon';
+import { Alignment } from '../../types/props/alignment';
 import { propergateFocus } from '../../utils/reuse';
-import { TooltipAlignment } from '../tooltip/component';
 
 @Component({
 	tag: 'kol-button',
@@ -36,6 +36,11 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 			<Host>
 				<kol-button-wc
 					ref={this.catchRef}
+					class={{
+						button: true,
+						[this._variant as string]: this._variant !== 'custom',
+						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+					}}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
 					_ariaCurrent={this._ariaCurrent}
@@ -148,7 +153,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.

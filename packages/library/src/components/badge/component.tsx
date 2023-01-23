@@ -2,7 +2,8 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { Nationalfarben } from '../../enums/color';
-import { Alignment, KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconProp } from '../../types/icon';
+import { Alignment } from '../../types/props/alignment';
 import { devHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchValidator } from '../../utils/prop.validators';
 import { createContrastColorPair, KoliBriContrastColor } from './contrast';
