@@ -36,22 +36,26 @@ Die Icons in der Komponente sind per Tab-Taste nicht erreichbar. Die Auswahlhilf
 
 ### Tastatursteuerung
 
+Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Datum, Uhrzeit u.a). Mit der `Tab`-Taste wird der Fokus auf das Eingabefeld gesetzt. Anschließend kann mittels der `Leer`-Taste das gerätespezifische Auswahldialog geöffent werden.
+
+> Hinweis: Wir haben in unseren Tests festgestellt, dass es je nach Browser-Version manchmal möglich ist, das Kalender-Icon anzufokusieren und mal nicht. Ohne das sich die Implementierung der Komponente geändert hat. Warum das so ist ist uns noch nicht bekannt. Nichtsdestotrotz ist das Öffnen des Auswahldialogs immer mittels der `Leer`-Taste möglich.
+
 #### InputNumber -> Type = **_date_**, **_month_**, **_week_** und **_time_**
 
-| Taste                | Funktion                                                                                                                                                                                                                                     |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `Tab`                | Fokussiert das Eingabefeld. Nach erhalt des Fokus wechselt die Tab-Taste durch die Eingabebereiche. Danach erst wechselt die Tab-Taste zum nächsten Eingabefeld.                                                                             |
-| `Pfeil-Tasten (links | rechts)`                                                                                                                                                                                                                                     | Wenn das Eingabefeld fokussiert ist, kann mit den Pfeil-Tasten zwischen den Eingabebereichen gewechselt werden. |
-| `Pfeil-Tasten (oben  | unten)`                                                                                                                                                                                                                                      | Wenn ein Eingabebereich aktiviert ist können mit den Pfeil-Tasten oben und unten die Werte verändert werden.    |
-| `Leer`               | Wenn das Eingabefeld fokussiert ist, kann in manchen Browsern mit der Leertaste ein Auswahldialog aufgerufen bzw. geschlossen werden. Die Navigation und Auswahl erfolgt hier mit Hilfe der Tab-Taste, der Pfeil-Tasten und der Enter-Taste. |
-| `Esc`                | Ist ein Auswahldialog verfügbar, kann dieser alternativ zur Leertaste auch mit der Esc-Taste geschlossen werden.                                                                                                                             |
+| Taste                           | Funktion                                                                                                                                                                                                                                                        |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                           | Fokussiert das Eingabefeld. Nach erhalt des Fokus wechselt die `Tab`-Taste durch die Eingabebereiche. Danach erst wechselt die `Tab`-Taste zum nächsten Eingabefeld.                                                                                            |
+| `Leer`                          | Wenn das Eingabefeld fokussiert ist, kann im Browser mit der `Leer`-Taste ein Auswahldialog aufgerufen bzw. geschlossen werden. Die Navigation und Auswahl erfolgt hier mit Hilfe der `Tab`-Taste, der `Pfeil`-Tasten und der Bestätigung mittes `Enter`-Taste. |
+| `Pfeil-Tasten (links / rechts)` | Wenn das Eingabefeld fokussiert ist, kann mit den `Pfeil`-Tasten zwischen den Eingabebereichen gewechselt werden.                                                                                                                                               |
+| `Pfeil-Tasten (oben / unten)`   | Wenn ein Eingabebereich aktiviert ist, können mit den `Pfeil`-Tasten oben und unten die Werte verändert werden.                                                                                                                                                 |
+| `Esc`                           | Ist ein Auswahldialog verfügbar, kann dieser alternativ zur `Leer`-Taste oder auch mit der `Esc`-Taste geschlossen werden.                                                                                                                                      |
 
 #### InputNumber -> Type = **_number_**
 
-| Taste               | Funktion                    |
-| ------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`               | Fokussiert das Eingabefeld. |
-| `Pfeil-Tasten (oben | unten)`                     | Erhöht oder verringert den Wert innerhalb der Attribute **`_min`** und **`_max`** entsprechend der im Attribut **`_step`** angegebenen Schrittgröße. |
+| Taste                         | Funktion                                                                                                                                             |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                         | Fokussiert das Eingabefeld.                                                                                                                          |
+| `Pfeil-Tasten (oben / unten)` | Erhöht oder verringert den Wert innerhalb der Attribute **`_min`** und **`_max`** entsprechend der im Attribut **`_step`** angegebenen Schrittgröße. |
 
 ## Links und Referenzen
 
