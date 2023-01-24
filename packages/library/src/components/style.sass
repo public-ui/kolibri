@@ -1,6 +1,8 @@
 @windicss
 
 *
+	--border-radius: 0.125rem
+	--gap: 0.25rem
 	box-sizing: border-box
 	font-size: inherit
 	hyphens: auto
@@ -11,25 +13,28 @@
 a,
 button
 	align-items: center
-	background-color: transparent
-	border: 0
+	border-radius: var(--border-radius)
 	cursor: pointer
 	display: inline-flex !important
-	gap: 0.25rem
+	gap: var(--gap)
 	justify-items: center
+	overflow: hidden
 
 kol-heading-wc
 	font-weight: 700
 
+kol-icon
+	color: inherit
+
 kol-span-wc
 	display: grid
 	align-items: center
-	gap: 0.25rem
+	gap: var(--gap)
 	justify-items: center
 	width: 100%
 
 	> span
 		align-items: center
 		display: flex
-		gap: 0.25rem
+		gap: var(--gap)
 		justify-items: center

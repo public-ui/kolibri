@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.56
   '@public-ui/core': 1.3.0-rc.8
-  '@public-ui/schema': 1.2.0-rc.6
+  '@public-ui/schema': 1.2.0-rc.8
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 2.22.2
   '@stencil/postcss': 2.1.0
@@ -49,7 +49,7 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.2.0-rc.6
+  '@public-ui/schema': 1.2.0-rc.8
 
 devDependencies:
   '@a11y-ui/core': 1.0.1-rc.56
@@ -100,17 +100,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.55:
-    resolution: {integrity: sha512-e51lyobbJOsXkYoZtNf2gshECFLTgF07YgTqM8BGx4YcahQw/iml/fX8aO7hEKtQpyg+NE+5a+nmAcyfQpr+sg==}
-    dependencies:
-      loglevel: 1.8.1
-    dev: false
-
   /@a11y-ui/core/1.0.1-rc.56:
     resolution: {integrity: sha512-BJ9iwujVROxc4iTfmihm53DZ20nJ6/2bwis16gv/ZFt1wCs7TKindmFMjtHSdtk2lydP8m/kE0LS6ydElVSjDQ==}
     dependencies:
       loglevel: 1.8.1
-    dev: true
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1630,10 +1623,10 @@ packages:
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.2.0-rc.6:
-    resolution: {integrity: sha512-M+QMuOJLFiRs3h/nl1vFtiReqHS4XCZl3ArjKGi7fwAv7pVrqmNbEP/3nME3aRYbX6ocDyQ2G4ZKutAEI+dJ/Q==}
+  /@public-ui/schema/1.2.0-rc.8:
+    resolution: {integrity: sha512-iI+PzwxPjOu1OY0192OfqoeaBXPikwG+S3vWBW9iK+8eCVZXvf6bAMuXj4Baxoehbrvzg7GIA58NL7S2NVRnZA==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.55
+      '@a11y-ui/core': 1.0.1-rc.56
     dev: false
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
