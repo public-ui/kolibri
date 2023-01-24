@@ -1,11 +1,34 @@
 @windicss
 
-:host
+*
+	box-sizing: border-box
+	font-size: inherit
+	hyphens: auto
+	letter-spacing: inherit
+	word-break: break-word
+	word-spacing: inherit
 
-	*
-		box-sizing: border-box
-		font-size: inherit
-		hyphens: auto
-		letter-spacing: inherit
-		word-break: break-word
-		word-spacing: inherit
+a,
+button
+	align-items: center
+	background-color: transparent
+	border: 0
+	cursor: pointer
+	display: inline-flex !important
+	gap: 0.25rem
+	justify-items: center
+
+kol-heading-wc
+	font-weight: 700
+
+kol-span-wc
+	display: grid
+	align-items: center
+	gap: 0.25rem
+	justify-items: center
+
+	> span
+		align-items: center
+		display: flex
+		gap: 0.25rem
+		justify-items: center
