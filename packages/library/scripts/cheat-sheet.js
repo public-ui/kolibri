@@ -14,8 +14,8 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
 			import { register } from 'https://esm.sh/@public-ui/core@1.3.0-rc.3';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.2.0-rc.6/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.6';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.2.0-rc.7/dist/loader';
+			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.7';
 				register(MAPZ, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -86,9 +86,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<pre>
 				<code class="language-html">${`<head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.2.0-rc.6';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.2.0-rc.6/dist/loader';
-		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.6';
+		import { register } from 'https://esm.sh/@public-ui/core@1.2.0-rc.7';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.2.0-rc.7/dist/loader';
+		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.7';
 		register([MAPZ], [defineCustomElements])
 			.then(() => {})
 			.catch(console.warn);
