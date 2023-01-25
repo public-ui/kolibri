@@ -48,7 +48,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.2.0-rc.6"
+		"@public-ui/schema": "1.2.0-rc.9"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.18",
