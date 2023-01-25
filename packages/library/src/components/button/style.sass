@@ -19,18 +19,6 @@
 			transition-property: background-color, color, border-color
 			width: inherit
 
-			> kol-span-wc
-				display: grid
-				justify-content: center
-				justify-items: center
-				align-items: center
-
-				> span
-					display: flex
-					gap: 0.25em
-					align-items: center
-					justify-content: center
-
 			&:active
 				outline: 0 !important
 				box-shadow: none !important
@@ -39,12 +27,3 @@
 				box-shadow: none
 				cursor: not-allowed
 				opacity: 0.5
-
-			&.icon-only
-
-				> kol-span-wc
-
-					> span
-
-						> span
-							display: none

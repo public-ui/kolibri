@@ -394,11 +394,10 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	private readonly onChange = (event: Event) => {
-		const path: HTMLElement[] = (event as unknown as { path: HTMLElement[] })?.path;
-		if (Array.isArray(path) && path[0] instanceof HTMLTextAreaElement) {
-			setState(this, '_currentLength', path[0].value.length);
+		if (this.ref instanceof HTMLTextAreaElement) {
+			setState(this, '_currentLength', this.ref.value.length);
 			if (this.state._adjustHeight) {
-				this._rows = increaseTextareaHeight(path[0]);
+				this._rows = increaseTextareaHeight(this.ref);
 			}
 		}
 		if (typeof this.controller.onFacade.onChange === 'function') {

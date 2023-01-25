@@ -282,12 +282,7 @@ export const config: Config = {
 	namespace: 'kolibri',
 	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
-	plugins: [
-		sass(),
-		postcss({
-			plugins: [require('postcss-windicss')],
-		}),
-	],
+	plugins: [sass(), postcss()],
 	rollupPlugins: {
 		before: [],
 		after: [

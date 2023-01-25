@@ -3,246 +3,8 @@
 	<head>
 		<script type="module">
 			import { register } from 'https://esm.sh/@a11y-ui/core@1.0.1-rc.52';
-			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.2.0-rc.9';
-			import { BMF, MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.9';
-
-			const STYLE_BMF_BUTTON = `
-button {
-  background-color: transparent;
-  border: 0;
-  border-radius: 1.5em;
-}
-button > kol-span-wc {
-  gap: 0.25em;
-  line-height: 1.5rem;
-  font-family: var(--font-family);
-  font-weight: 700;
-  border-radius: 1.5em;
-  border-style: solid;
-  border-width: 2px;
-  font-size: 1rem;
-  padding: 8px 14px;
-  font-style: normal;
-  text-transform: uppercase;
-}
-button.primary > kol-span-wc,
-button.primary:disabled:hover > kol-span-wc {
-  background-color: var(--color-midnight);
-  border-color: var(--color-midnight);
-  color: var(--color-white);
-}
-button.secondary > kol-span-wc,
-button.secondary:disabled:hover > kol-span-wc,
-button.normal > kol-span-wc,
-button.normal:disabled:hover > kol-span-wc {
-  background-color: var(--color-white);
-  border-color: var(--color-midnight);
-  color: var(--color-midnight);
-}
-button.danger > kol-span-wc,
-button.danger:disabled:hover > kol-span-wc {
-  background-color: var(--color-red);
-  border-color: var(--color-red);
-  color: var(--color-white);
-}
-button.ghost > kol-span-wc,
-button.ghost:disabled:hover > kol-span-wc {
-  border-color: var(--color-white);
-  background-color: var(--color-white);
-  box-shadow: none;
-  color: var(--color-midnight);
-}
-button.primary:active > kol-span-wc,
-button.primary:hover > kol-span-wc,
-button.secondary:active > kol-span-wc,
-button.secondary:hover > kol-span-wc,
-button.normal:active > kol-span-wc,
-button.normal:hover > kol-span-wc,
-button.danger:active > kol-span-wc,
-button.danger:hover > kol-span-wc,
-button.ghost:active > kol-span-wc,
-button.ghost:hover > kol-span-wc {
-  background-color: var(--color-ocean);
-  border-color: var(--color-ocean);
-  box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-  color: var(--color-white);
-}
-button.danger:active > kol-span-wc,
-button.danger:hover > kol-span-wc {
-  background-color: var(--color-crimson);
-  border-color: var(--color-crimson);
-}
-button:disabled:hover > kol-span-wc,
-button:focus:hover > kol-span-wc {
-  box-shadow: none;
-}
-button.primary:active > kol-span-wc,
-button.secondary:active > kol-span-wc,
-button.normal:active > kol-span-wc,
-button.danger:active > kol-span-wc,
-button.ghost:active > kol-span-wc {
-  border-color: var(--color-white);
-  box-shadow: none;
-  outline: none;
-}
-button > kol-span-wc > span {
-  gap: 0.5em;
-  letter-spacing: 0.75px;
-}
-button.icon-only > kol-span-wc {
-  padding: 8px;
-}
-button.icon-only > kol-span-wc kol-icon {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-}
-button.loading > kol-span-wc kol-icon {
-  animation: spin 5s infinite linear;
-}
-/** small ghost button */
-button.small.ghost > kol-span-wc {
-  border: none;
-  background-color: transparent;
-  box-shadow: none;
-}
-button.small.ghost > kol-span-wc > span {
-  border-radius: 1.5em;
-  border-style: solid;
-  border-width: 2px;
-  border-color: var(--color-white);
-  background-color: var(--color-white);
-}
-button.small.ghost:active > kol-span-wc > span,
-button.small.ghost:hover > kol-span-wc > span,
-button.small.ghost.transparent:active > kol-span-wc > span,
-button.small.ghost.transparent:hover > kol-span-wc > span {
-  background-color: var(--color-ocean);
-  border-color: var(--color-ocean);
-  box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
-  color: var(--color-white);
-} /** button with transparent background */
-button.transparent > kol-span-wc > span,
-button.small.ghost.transparent > kol-span-wc > span,
-button.transparent > kol-span-wc {
-  background-color: transparent;
-  border-color: transparent;
-}`;
-			const STYLE_MAPS_BUTTON = `
-a,
-button {
-	border-radius: var(--kolibri-border-radius);
-	overflow: hidden
-}
-a > kol-span-wc,
-button > kol-span-wc {
-	border-radius: var(--kolibri-border-radius);
-	border-style: solid;
-	border-width: 2px;
-	min-height: 44px;
-	min-width: 44px;
-	box-shadow: 0 0 0.25em gray;
-	font-family: var(--kolibri-font-family);
-	font-size: inherit;
-	line-height: 1.25em;
-	padding: calc(2 * var(--kolibri-spacing));
-}
-a > kol-span-wc,
-button > kol-span-wc {
-	gap: 0.25em;
-}
-kol-link-wc.primary > a > kol-span-wc,
-kol-link-wc.primary > a:disabled:hover > kol-span-wc,
-button.primary > kol-span-wc,
-button.primary:disabled:hover > kol-span-wc {
-	background-color: var(--kolibri-color-primary);
-	border-color: var(--kolibri-color-primary);
-	color: white;
-}
-kol-link-wc.primary > a:hover > kol-span-wc,
-kol-link-wc.primary > a:focus > kol-span-wc,
-button.primary:hover > kol-span-wc,
-button.primary:focus > kol-span-wc {
-	color: var(--kolibri-color-primary);
-}
-kol-link-wc.secondary > a > kol-span-wc,
-kol-link-wc.secondary > a:disabled:hover > kol-span-wc,
-button.secondary > kol-span-wc,
-button.secondary:disabled:hover > kol-span-wc {
-	background-color: var(--kolibri-color-secondary);
-	border-color: var(--kolibri-color-secondary);
-	color: white;
-}
-kol-link-wc.secondary > a:hover > kol-span-wc,
-kol-link-wc.secondary > a:focus > kol-span-wc,
-button.secondary:hover > kol-span-wc,
-button.secondary:focus > kol-span-wc {
-	color: var(--kolibri-color-secondary);
-}
-kol-link-wc.normal > a > kol-span-wc,
-kol-link-wc.normal > a:disabled:hover > kol-span-wc,
-button.normal > kol-span-wc,
-button.normal:disabled:hover > kol-span-wc {
-	background-color: var(--kolibri-color-normal);
-	border-color: var(--kolibri-color-normal);
-	color: white;
-}
-kol-link-wc.normal > a:hover > kol-span-wc,
-kol-link-wc.normal > a:focus > kol-span-wc,
-button.normal:hover > kol-span-wc,
-button.normal:focus > kol-span-wc {
-	color: var(--kolibri-color-normal);
-}
-kol-link-wc.danger > a > kol-span-wc,
-kol-link-wc.danger > a:disabled:hover > kol-span-wc,
-button.danger > kol-span-wc,
-button.danger:disabled:hover > kol-span-wc {
-	background-color: var(--kolibri-color-danger);
-	border-color: var(--kolibri-color-danger);
-	color: white;
-}
-kol-link-wc.danger > a:hover > kol-span-wc,
-kol-link-wc.danger > a:focus > kol-span-wc,
-button.danger:hover > kol-span-wc,
-button.danger:focus > kol-span-wc {
-	color: var(--kolibri-color-danger);
-}
-kol-link-wc.ghost > a > kol-span-wc,
-kol-link-wc.ghost > a:disabled:hover > kol-span-wc,
-button.ghost > kol-span-wc,
-button.ghost:disabled:hover > kol-span-wc {
-	background-color: white;
-	border-color: var(--kolibri-color-ghost);
-	color: var(--kolibri-color-ghost);
-}
-kol-link-wc.ghost > a:hover > kol-span-wc,
-kol-link-wc.ghost > a:focus > kol-span-wc,
-button.ghost:hover > kol-span-wc,
-button.ghost:focus > kol-span-wc {
-	background-color: var(--kolibri-color-ghost);
-	color: white;
-}
-kol-link-wc > a:hover > kol-span-wc,
-kol-link-wc > a:focus > kol-span-wc,
-button:hover > kol-span-wc,
-button:focus > kol-span-wc {
-	background-color: white;
-	box-shadow: 0 0 0.25em black;
-}`;
-
-			register([BMF, MAPZ], [], {
-				theme: {
-					name: 'bmf',
-				},
-			})
-				.then(() => {
-					console.log(Object.getOwnPropertyNames(KoliBriDevHelper));
-					KoliBriDevHelper.patchThemeTag('bmf', 'KOL-BUTTON', STYLE_BMF_BUTTON);
-					KoliBriDevHelper.patchThemeTag('bmf', 'KOL-LINK-BUTTON', STYLE_BMF_BUTTON);
-					KoliBriDevHelper.patchThemeTag('mapz', 'KOL-BUTTON', STYLE_MAPS_BUTTON);
-					KoliBriDevHelper.patchThemeTag('mapz', 'KOL-LINK-BUTTON', STYLE_MAPS_BUTTON);
-				})
-				.catch(console.warn);
+			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.2.0-rc.9';
+			register([MAPZ], []).catch(console.warn);
 		</script>
 		<meta charset="utf-8" />
 		<title>BIK BITV-Test | KoliBri</title>
@@ -271,150 +33,44 @@ button:focus > kol-span-wc {
 	</head>
 
 	<body>
-		<main class="container">
-			<ol>
-				<li>
-					<div class="row">
-						<div class="col-12">
-							<div class="gap-2 d-flex">
-								<kol-badge _icon="icofont-check" _color="#030" _label="BIK BITV-Test v12"></kol-badge>
-								<kol-badge _icon="icofont-search-document" _color="#033" _label="Snapshot-Tests"></kol-badge>
-							</div>
-							<kol-heading _level="2">Button</kol-heading>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<kol-indented-text>Der folgende Schalter hat ein abweichendes Aria-Label:</kol-indented-text>
-							<kol-button class="not-used" _aria-label="Ich bin ein abweichendes Label" style="width: 15em" _variant="primary" _label="Primary-Schaltfläche">
-							</kol-button>
-							<kol-button
-								class="not-used"
-								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
-								_label="Icon's in alle Richtungen"
-								_variant="primary"
-							>
-							</kol-button>
-							<kol-button
-								class="not-used"
-								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}"
-								_label="Icon's in alle Richtungen"
-								_variant="primary"
-							>
-							</kol-button>
-							<kol-button class="not-used" _icon="icofont-ui-play" _label="Martin"></kol-button>
-							<kol-button class="not-used" _icon="icofont-home" _variant="primary" _label="Primary-Schaltfläche"></kol-button>
-							<kol-button class="not-used" _icon="icofont-home" _icon-only _variant="primary" _label="Primary-Schaltfläche"></kol-button>
-							<kol-button class="not-used" style="width: 15em" _variant="secondary" _label="Secondary-Schaltfläche"></kol-button>
-							<kol-button class="not-used" style="width: 15em" _variant="normal" _label="Normal-Schaltfläche"></kol-button>
-							<kol-button class="not-used" style="width: 15em" _variant="danger" _label="Danger-Schaltfläche"></kol-button>
-							<kol-button class="not-used" style="width: 15em" _variant="ghost" _label="Ghost-Schaltfläche"></kol-button>
-							<kol-button class="not-used" _disabled="true" _label="Disabled-Schaltfläche"></kol-button>
-							<kol-button class="not-used" _label="Hinzufügen"></kol-button>
-							<kol-button class="not-used font-80" _icon="icofont-ui-add" _label="Hinzufügen"></kol-button>
-							<kol-button class="not-used font-60" _icon="icofont-ui-add" _icon-align="right" _label="Hinzufügen"></kol-button>
-							<kol-button class="not-used" _icon="icofont-ui-add" _icon-align="right" _icon-only="true" _label="Hinzufügen (nur Icon)"></kol-button>
-							<kol-button class="not-used" _label="ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen"></kol-button>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<div>
-								<kol-button class="not-used" _label="Speichern" _variant="primary"></kol-button>
-								<kol-button class="not-used" _label="Bearbeiten" _disabled></kol-button>
-								<kol-button class="not-used" _label="Abbrechen"></kol-button>
-								<kol-button class="not-used" _label="Löschen"></kol-button>
-							</div>
-							<div class="font-80">
-								<kol-button class="not-used" _label="Speichern" _variant="primary"></kol-button>
-								<kol-button class="not-used" _label="Bearbeiten" _disabled></kol-button>
-								<kol-button class="not-used" _label="Abbrechen"></kol-button>
-								<kol-button class="not-used" _label="Löschen"></kol-button>
-							</div>
-							<div class="font-60">
-								<kol-button class="not-used" _label="" _variant="primary"><span slot="expert">Speichern</span></kol-button>
-								<kol-button class="not-used" _label="" _disabled><span slot="expert">Bearbeiten</span></kol-button>
-								<kol-button class="not-used" _label=""><span slot="expert">Abbrechen</span></kol-button>
-								<kol-button class="not-used" _label=""><span slot="expert">Löschen</span></kol-button>
-							</div>
-						</div>
+		<li>
+			<div class="row">
+				<div class="col-12">
+					<kol-badge _icon="icofont-dashboard" _color="#600" _label="Retest"></kol-badge>
+					<kol-badge _icon="icofont-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
+					<kol-heading _level="2">Input's</kol-heading>
+				</div>
+				<div class="gap-2 col-12 d-grid">
+					<div class="d-grid gap-2">
+						<kol-heading _level="3">Textarea</kol-heading>
+						<lean-input-adapter class="d-grid gap-2" id="new-textarea">
+							<kol-textarea>Label</kol-textarea>
+						</lean-input-adapter>
+						<kol-indented-text>Hier ein Suchfeld ohne sichtbares Label, aber dafür mit Placeholder.</kol-indented-text>
+						<kol-textarea _has-counter _hide-label _placeholder="Ausgeblendetes Label">Ausgeblendetes Label</kol-textarea>
+						<kol-textarea _has-counter _max-length="50" _value="Textfeld mit Zähler und maximaler Länge">
+							Textfeld mit Zähler und maximaler Länge.
+						</kol-textarea>
+						<kol-textarea _adjust-height _has-counter _value="Textfeld das seine Höhe automatisch anpasst"
+							>Textfeld das seine Höhe automatisch anpasst.</kol-textarea
+						>
 					</div>
-				</li>
-				<li>
-					<div class="row">
-						<div class="col-12">
-							<div class="gap-2 d-flex">
-								<!-- <kol-badge _icon="icofont-check" _color="#030" _label="BIK BITV-Test v12"></kol-badge> -->
-								<!-- <kol-badge _icon="icofont-search-document" _color="#033" _label="Snapshot-Tests"></kol-badge> -->
-							</div>
-							<kol-heading _level="2">Link-Button</kol-heading>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<kol-indented-text>Der folgende Schalter hat ein abweichendes Aria-Label:</kol-indented-text>
-							<kol-link-button
-								class="not-used"
-								_aria-label="Ich bin ein abweichendes Label"
-								style="width: 15em"
-								_variant="primary"
-								_label="Primary-Schaltfläche"
-							>
-							</kol-link-button>
-							<kol-link-button
-								class="not-used"
-								_aria-label="Ich bin ein abweichendes Label"
-								style="width: 15em"
-								_variant="primary"
-								_label="Primary-Schaltfläche mit Target"
-								_target="egal"
-							>
-							</kol-link-button>
-							<kol-link-button
-								class="not-used"
-								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
-								_label="Icon's in alle Richtungen"
-								_variant="primary"
-							>
-							</kol-link-button>
-							<kol-link-button
-								class="not-used"
-								_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}"
-								_label="Icon's in alle Richtungen"
-								_variant="primary"
-							>
-							</kol-link-button>
-							<kol-link-button class="not-used" _icon="icofont-ui-play" _label="Martin"></kol-link-button>
-							<kol-link-button class="not-used" _icon="icofont-home" _variant="primary" _label="Primary-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" _icon="icofont-home" _icon-only _variant="primary" _label="Primary-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" style="width: 15em" _variant="secondary" _label="Secondary-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" style="width: 15em" _variant="normal" _label="Normal-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" style="width: 15em" _variant="danger" _label="Danger-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" style="width: 15em" _variant="ghost" _label="Ghost-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" _disabled="true" _label="Disabled-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" _label="Hinzufügen"></kol-link-button>
-							<kol-link-button class="not-used font-80" _icon="icofont-ui-add" _label="Hinzufügen"></kol-link-button>
-							<kol-link-button class="not-used font-60" _icon="icofont-ui-add" _icon-align="right" _label="Hinzufügen"></kol-link-button>
-							<kol-link-button class="not-used" _icon="icofont-ui-add" _icon-align="right" _icon-only="true" _label="Hinzufügen (nur Icon)"></kol-link-button>
-							<kol-link-button class="not-used" _label="ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen"></kol-link-button>
-						</div>
-						<div class="gap-2 py-2 col-12 d-grid">
-							<div>
-								<kol-link-button class="not-used" _label="Speichern" _variant="primary"></kol-link-button>
-								<kol-link-button class="not-used" _label="Bearbeiten" _disabled></kol-link-button>
-								<kol-link-button class="not-used" _label="Abbrechen"></kol-link-button>
-								<kol-link-button class="not-used" _label="Löschen"></kol-link-button>
-							</div>
-							<div class="font-80">
-								<kol-link-button class="not-used" _label="Speichern" _variant="primary"></kol-link-button>
-								<kol-link-button class="not-used" _label="Bearbeiten" _disabled></kol-link-button>
-								<kol-link-button class="not-used" _label="Abbrechen"></kol-link-button>
-								<kol-link-button class="not-used" _label="Löschen"></kol-link-button>
-							</div>
-							<div class="font-60">
-								<kol-link-button class="not-used" _label="" _variant="primary"><span slot="expert">Speichern</span></kol-link-button>
-								<kol-link-button class="not-used" _label=""><span slot="expert">Bearbeiten</span></kol-link-button>
-								<kol-link-button class="not-used" _label=""><span slot="expert">Abbrechen</span></kol-link-button>
-								<kol-link-button class="not-used" _label=""><span slot="expert">Löschen</span></kol-link-button>
-							</div>
-						</div>
+					<div class="d-grid gap-2">
+						<kol-input-password class="smart-button">Passwort</kol-input-password>
+						<kol-input-text class="smart-button">Text</kol-input-text>
 					</div>
-				</li>
-			</ol>
-		</main>
+				</div>
+			</div>
+		</li>
+		<footer>
+			<kol-button
+				style="position: fixed; right: 1rem; bottom: 4rem"
+				id="table-of-content-button"
+				_icon="icofont-arrow-up"
+				_icon-only
+				_tooltip-align="left"
+				_label="Zum Seitenanfang hochscrollen"
+			></kol-button>
+		</footer>
 	</body>
 </html>

@@ -123,7 +123,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										<kol-link-wc
 											class="block w-full h-full"
 											exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
-											_useCase="nav"
 											// _ariaCurrent will not be set here, since it will be set on a child of this item.
 											_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : undefined}
 											_ariaExpanded={link._active === true}
@@ -152,7 +151,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 												'absolute ': props.deep === 0 && this.state._orientation === 'horizontal',
 											}}
 										>
-											<this.linkList links={link._children} deep={props.deep + 1}></this.linkList>
+											<this.linkList links={link._children} deep={props.deep + 1} />
 										</div>
 									)}
 								</div>
@@ -170,7 +169,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										}}
 										exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
 										_ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
-										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : 'undefined'}
+										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : undefined}
 										_href={link._href}
 										_icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'}
 										_icon-only={this.state._compact === true || link._iconOnly === true}
@@ -179,8 +178,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										_selector={link._selector}
 										_tooltipAlign={link._tooltipAlign}
 										_target={link._target}
-										_useCase="nav"
-									></kol-link-wc>
+									/>
 								</div>
 							)}
 						</li>
