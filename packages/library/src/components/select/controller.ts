@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
+import { W3CInputValue } from '../../types/w3c';
 import { watchBoolean, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
@@ -24,20 +25,20 @@ const validateInputSelectList = <T>(option: SelectOption<T>): boolean => {
 export class SelectController extends InputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 	private onStateChange!: () => void;
-	private readonly keyOptionMap = new Map<string, Option<unknown>>();
+	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
 
-	public readonly getOptionByKey = (key: string): Option<unknown> | undefined => this.keyOptionMap.get(key);
+	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
 
-	private readonly isValueInOptions = (value: string, options: SelectOption<unknown>[]): boolean => {
+	private readonly isValueInOptions = (value: string, options: SelectOption<W3CInputValue>[]): boolean => {
 		return (
 			options.find((option) =>
-				typeof (option as Option<unknown>).value === 'string'
-					? (option as Option<unknown>).value === value
+				typeof (option as Option<W3CInputValue>).value === 'string'
+					? (option as Option<W3CInputValue>).value === value
 					: Array.isArray((option as Optgroup<string>).options)
 					? this.isValueInOptions(value, (option as Optgroup<string>).options)
 					: false
@@ -45,7 +46,7 @@ export class SelectController extends InputController implements Watches {
 		);
 	};
 
-	private readonly filterValuesInOptions = (values: string[], options: SelectOption<unknown>[]): string[] => {
+	private readonly filterValuesInOptions = (values: string[], options: SelectOption<W3CInputValue>[]): string[] => {
 		return values.filter((value) => this.isValueInOptions(value, options) !== undefined);
 	};
 
@@ -53,9 +54,9 @@ export class SelectController extends InputController implements Watches {
 		const list = nextState.has('_list') ? nextState.get('_list') : this.component.state._list;
 		if (Array.isArray(list) && list.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<unknown>[]);
+			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<W3CInputValue>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
-			const selected = this.filterValuesInOptions(Array.isArray(value) && value.length > 0 ? (value as string[]) : [], list as SelectOption<unknown>[]);
+			const selected = this.filterValuesInOptions(Array.isArray(value) && value.length > 0 ? (value as string[]) : [], list as SelectOption<W3CInputValue>[]);
 			if (this.component._multiple === false && selected.length === 0) {
 				nextState.set('_value', [
 					(
@@ -127,7 +128,7 @@ export class SelectController extends InputController implements Watches {
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateValue(value?: Stringified<unknown[]>): void {
+	public validateValue(value?: Stringified<W3CInputValue[]>): void {
 		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
 			hooks: {
 				beforePatch: this.beforePatchListValue,

@@ -77,9 +77,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 							_icon={this.state._icon.left.icon}
 						/>
 					)}
-					<span ref={this.state._iconOnly === true ? removeNode : undefined}>
-						{this.state._iconOnly !== true && this.state._label.length > 0 ? this.state._label : ''}
-					</span>
+					{this.state._iconOnly !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
 					{/*
 							Es ist keine gute Idee hier einen Slot einzufügen,
 							da dadurch die komplette Unterstützung der Komponente

@@ -2,6 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
+import { W3CInputValue } from '../../types/w3c';
 import { propergateFocus } from '../../utils/reuse';
 import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
@@ -34,7 +35,7 @@ export class KolSelect implements ComponentApi {
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
 		return (
 			<optgroup disabled={optgroup.disabled === true} label={optgroup.label}>
-				{optgroup.options?.map((option: SelectOption<unknown>, index: number) => {
+				{optgroup.options?.map((option: SelectOption<W3CInputValue>, index: number) => {
 					const key = `${preKey}-${index}`;
 					if (Array.isArray((option as Optgroup<string>).options)) {
 						return this.renderOptgroup(option as Optgroup<string>, key);
@@ -44,7 +45,7 @@ export class KolSelect implements ComponentApi {
 								disabled={option.disabled === true}
 								key={key}
 								// label={option.label}
-								selected={isSelected(this.state._value, (option as Option<unknown>).value)}
+								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
 								value={key}
 							>
 								{option.label}
@@ -115,7 +116,7 @@ export class KolSelect implements ComponentApi {
 										disabled={option.disabled === true}
 										key={key}
 										// label={option.label}
-										selected={isSelected(this.state._value, (option as unknown as Option<unknown>).value)}
+										selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
 										value={key}
 									>
 										{option.label}
@@ -181,7 +182,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
-	@Prop() public _list!: Stringified<SelectOption<unknown>[]>;
+	@Prop() public _list!: Stringified<SelectOption<W3CInputValue>[]>;
 
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
@@ -221,7 +222,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _value?: Stringified<unknown[]>;
+	@Prop({ mutable: true, reflect: false }) public _value?: Stringified<W3CInputValue[]>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -314,7 +315,7 @@ export class KolSelect implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_list')
-	public validateList(value?: Stringified<SelectOption<unknown>[]>): void {
+	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
 		this.controller.validateList(value);
 	}
 
@@ -378,7 +379,7 @@ export class KolSelect implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown[]>): void {
+	public validateValue(value?: Stringified<W3CInputValue[]>): void {
 		this.controller.validateValue(value);
 	}
 

@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
+// import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
@@ -281,15 +282,12 @@ export const config: Config = {
 	namespace: 'kolibri',
 	preamble: 'KoliBri - The accessible HTML-Standard',
 	outputTargets: outputTargets,
-	plugins: [
-		sass(),
-		postcss({
-			plugins: [require('postcss-windicss')],
-		}),
-	],
+	plugins: [sass(), postcss()],
 	rollupPlugins: {
 		before: [],
-		after: [],
+		after: [
+			// nodePolyfills()
+		],
 	},
 	taskQueue: 'immediate',
 };

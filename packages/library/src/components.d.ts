@@ -22,6 +22,7 @@ import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./type
 import { InputCheckboxVariant } from "./components/input-checkbox/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
+import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/component";
@@ -1146,7 +1147,7 @@ export namespace Components {
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
-        "_list": Stringified<Option<unknown>[]>;
+        "_list": Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -1174,7 +1175,7 @@ export namespace Components {
         /**
           * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
          */
-        "_value"?: Stringified<number | boolean | unknown[] | object>;
+        "_value"?: Stringified<W3CInputValue>;
     }
     /**
      * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
@@ -1211,7 +1212,7 @@ export namespace Components {
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
-        "_list": Stringified<Option<unknown>[]>;
+        "_list": Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -1239,7 +1240,7 @@ export namespace Components {
         /**
           * Gibt den Wert der Radio an.
          */
-        "_value"?: string;
+        "_value"?: W3CInputValue;
     }
     interface KolInputRange {
         /**
@@ -1872,7 +1873,7 @@ export namespace Components {
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
-        "_list": Stringified<SelectOption<unknown>[]>;
+        "_list": Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -1904,7 +1905,7 @@ export namespace Components {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: Stringified<unknown[]>;
+        "_value"?: Stringified<W3CInputValue[]>;
     }
     interface KolSkipNav {
         /**
@@ -3660,7 +3661,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
-        "_list": Stringified<Option<unknown>[]>;
+        "_list": Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3688,7 +3689,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
          */
-        "_value"?: Stringified<number | boolean | unknown[] | object>;
+        "_value"?: Stringified<W3CInputValue>;
     }
     /**
      * @deprecated Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
@@ -3725,7 +3726,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
-        "_list": Stringified<Option<unknown>[]>;
+        "_list": Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3753,7 +3754,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert der Radio an.
          */
-        "_value"?: string;
+        "_value"?: W3CInputValue;
     }
     interface KolInputRange {
         /**
@@ -4386,7 +4387,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
-        "_list": Stringified<SelectOption<unknown>[]>;
+        "_list": Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -4418,7 +4419,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: Stringified<unknown[]>;
+        "_value"?: Stringified<W3CInputValue[]>;
     }
     interface KolSkipNav {
         /**

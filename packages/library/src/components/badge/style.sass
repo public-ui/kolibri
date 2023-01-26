@@ -1,25 +1,8 @@
 @import ../style
 
-:host
+span
+	display: inline-flex
 
-	> span
-		border-radius: 0.3125rem
-		display: inline-flex
-		font-size: 0.875em
-		font-style: normal
-		font-weight: 700
-		line-height: 1.25rem
-
-		> kol-span-wc
-			align-items: center
-			font-style: normal
-			gap: 0.5rem
-			padding: 0.25rem 0.5rem
-
-			> span
-				display: flex
-				gap: 0.25rem
-
-		kol-button-wc,
-		.kol-button-wc
-			border-left: 1px solid rgba(0, 0, 0, 0.25)
+	kol-button-wc,
+	.kol-button-wc
+		box-shadow-left: 1px solid rgba(0, 0, 0, 0.25)

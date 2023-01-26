@@ -1,0 +1,48 @@
+{
+	"name": "@public-ui/slidev",
+	"version": "1.1.16",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"private": true,
+	"scripts": {
+		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js && mv dist/assets/_commonjsHelpers* dist/assets/commonjsHelpers.js",
+		"dev": "slidev --open",
+		"export": "slidev export",
+		"prepack": "npm run build",
+		"update": "ncu -u"
+	},
+	"dependencies": {
+		"@public-ui/components": "1.3.0-rc.9",
+		"@public-ui/core": "1.3.0-rc.8",
+		"@public-ui/themes": "1.3.0-rc.9",
+		"@slidev/theme-default": "0.21.2",
+		"@slidev/theme-seriph": "0.21.3",
+		"slidev-theme-light-icons": "1.0.2",
+		"slidev-theme-penguin": "1.6.1",
+		"slidev-theme-purplin": "1.2.0",
+		"slidev-theme-unicorn": "1.1.1"
+	},
+	"devDependencies": {
+		"@slidev/cli": "0.38.4",
+		"npm-check-updates": "16.6.3",
+		"playwright-chromium": "1.30.0",
+		"prettier": "2.8.3",
+		"rimraf": "4.1.2",
+		"ts-prune": "0.10.3"
+	},
+	"files": [
+		"dist/"
+	],
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	}
+}

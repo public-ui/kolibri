@@ -47,7 +47,7 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		<span>${state._iconOnly !== true && state._label.length > 0 ? state._label : ``}</span>
+		${state._iconOnly !== true && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
 		<span>${typeof slots.expert === 'string' ? slots.expert : ``}</span>
 		${
 			icon.right

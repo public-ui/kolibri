@@ -2,6 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { W3CInputValue } from '../../types/w3c';
 import { mapString2Unknown, setState, watchBoolean, watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
@@ -57,16 +58,16 @@ export class InputCheckboxRadioController extends InputController implements Inp
 export class InputRadioController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 	private onStateChange!: () => void;
-	private readonly keyOptionMap = new Map<string, Option<unknown>>();
+	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
 	}
 
-	public readonly getOptionByKey = (key: string): Option<unknown> | undefined => this.keyOptionMap.get(key);
+	public readonly getOptionByKey = (key: string): Option<W3CInputValue> | undefined => this.keyOptionMap.get(key);
 
-	private readonly isValueInOptions = (value: unknown, options: Option<unknown>[]): boolean => {
+	private readonly isValueInOptions = (value: unknown, options: Option<W3CInputValue>[]): boolean => {
 		return options.find((option) => option.value === value) !== undefined;
 	};
 
@@ -74,9 +75,9 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		const list = nextState.has('_list') ? nextState.get('_list') : this.component.state._list;
 		if (Array.isArray(list) && list.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<unknown>[]);
+			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<W3CInputValue>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
-			if (this.isValueInOptions(value, list as Option<unknown>[]) === false) {
+			if (this.isValueInOptions(value, list as Option<W3CInputValue>[]) === false) {
 				const newValue = (
 					list[0] as {
 						value: string;
@@ -107,11 +108,11 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateList(value?: Stringified<Option<unknown>[]>): void {
+	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
 		watchJsonArrayString(
 			this.component,
 			'_list',
-			(item: Option<unknown>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
+			(item: Option<W3CInputValue>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
 			value,
 			undefined,
 			{

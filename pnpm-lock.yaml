@@ -10,10 +10,10 @@ specifiers:
   lerna: 6.4.1
   license-report: 6.3.0
   lint-staged: 13.1.0
-  npm-check-updates: 16.6.2
+  npm-check-updates: 16.6.3
   npm-run-all: 4.1.5
   prettier: 2.8.3
-  rimraf: 4.1.1
+  rimraf: 4.1.2
   ts-node: 10.9.1
   ts-prune: 0.10.3
   typescript: 4.9.4
@@ -28,10 +28,10 @@ devDependencies:
   lerna: 6.4.1
   license-report: 6.3.0
   lint-staged: 13.1.0
-  npm-check-updates: 16.6.2
+  npm-check-updates: 16.6.3
   npm-run-all: 4.1.5
   prettier: 2.8.3
-  rimraf: 4.1.1
+  rimraf: 4.1.2
   ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
   ts-prune: 0.10.3
   typescript: 4.9.4
@@ -4762,8 +4762,8 @@ packages:
       npm-normalize-package-bin: 3.0.0
     dev: true
 
-  /npm-check-updates/16.6.2:
-    resolution: {integrity: sha512-J/L90a+NDDWscBQGKIsPKer+qbQEQRJDpK+BPsVZf9YWDN5DCAMicPqRb+Emnxfi8QboiNmvDJWRUFFWRQzDMg==}
+  /npm-check-updates/16.6.3:
+    resolution: {integrity: sha512-EKhsCbBcVrPlYKzaYQtRhGv9fxpexwROcvl5HebCUNpiCSlOWrzaJvrMlwi9i9GCyJCnH+YAeBPYdqnArA390A==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -5546,7 +5546,7 @@ packages:
     dependencies:
       debug: 4.3.4
       js-yaml: 4.1.0
-      json5: 2.2.1
+      json5: 2.2.3
       require-from-string: 2.0.2
     transitivePeerDependencies:
       - supports-color
@@ -5807,8 +5807,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.1.1:
-    resolution: {integrity: sha512-Z4Y81w8atcvaJuJuBB88VpADRH66okZAuEm+Jtaufa+s7rZmIz+Hik2G53kGaNytE7lsfXyWktTmfVz0H9xuDg==}
+  /rimraf/4.1.2:
+    resolution: {integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
