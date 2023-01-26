@@ -1,5 +1,4 @@
 import type { Generic, ThemeDetails } from '@a11y-ui/core';
-import { II18nService } from './i18n';
 
 declare global {
 	interface Window {
