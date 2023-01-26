@@ -45,17 +45,17 @@ jobs:
           node-version: 16
           registry-url: '${{env.github-registry}}'
           scope: '${{env.scope}}'
-      - name: Publish website
+      - name: Publish designer
         run: npm publish --access restricted || true
         working-directory: packages/designer
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish website
+      - name: Publish slidev
         run: npm publish --access restricted || true
         working-directory: packages/slidev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish website
+      - name: Publish storybook
         run: npm publish --access restricted || true
         working-directory: packages/storybook
         env:

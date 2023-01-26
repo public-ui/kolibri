@@ -23,7 +23,7 @@ export const register = (
 	return coreRegister(themes, loaders, options);
 };
 
-export const getI18nService: () => II18nService | undefined = () => STORE?.I18n;
+export const getI18nService: () => II18nService | undefined = () => STORE?.I18n as II18nService;
 
 // TODO: remove later
 export const getTranslationService = () => STORE?.I18n;
