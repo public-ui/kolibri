@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.2.0-rc.10",
+	"version": "1.3.0-rc.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -65,7 +65,7 @@
 		"postpack": "mv package.bak.json package.json"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.2.0-rc.10"
+		"@public-ui/schema": "1.3.0-rc.9"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.1-rc.56",
