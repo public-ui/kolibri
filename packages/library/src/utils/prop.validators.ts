@@ -45,8 +45,8 @@ export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void 
  */
 export const setEventTargetAndStopPropagation = (event: Event, target?: HTMLElement): void => {
 	if (getExperimalMode()) {
-		console.log(event, target);
-		devHint(`↑ We propagate the (submit) event to this target.`);
+		Log.debug([event, target]);
+		Log.debug(`↑ We propagate the (submit) event to this target.`);
 	}
 	Object.defineProperty(event, 'target', {
 		value: target,
@@ -240,13 +240,13 @@ export const watchJsonArrayString = <T>(
 						setState(component, propName, value, options.hooks);
 					} else {
 						objectObjectHandler(invalid, () => {
-							console.log(invalid);
+							Log.debug(invalid);
 							throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
 						});
 					}
 				} else {
 					objectObjectHandler(value, () => {
-						console.log(value);
+						Log.debug(value);
 						throw new Error(`↑ Das Schema für das Property (_options) ist nicht valide. Der Wert wird nicht geändert.`);
 					});
 				}
@@ -254,8 +254,8 @@ export const watchJsonArrayString = <T>(
 				/**
 				 * TODO: Wir haben einen Known-Bug beim Propergieren von Zeichenkettenliste (string[]).
 				 */
-				// console.warn(error);
-				devHint(`Known bug: Zeichenkettenliste (string[])`);
+				Log.debug(error);
+				// devHint(`Known bug: Zeichenkettenliste (string[])`);
 			}
 		});
 	});
@@ -456,7 +456,7 @@ export class KoliBriUtils {
 					Log.debug(`[KoliBriUtils] Color contrast analysis started...`);
 				}
 			}
-			// console.log(a11yColorContrast.domNode);
+			// Log.debug(a11yColorContrast.domNode);
 			if (targetNode === a11yColorContrast.domNode) {
 				returnValue = a11yColorContrast;
 			} else {
