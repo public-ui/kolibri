@@ -1,13 +1,14 @@
 import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
+import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
 
 /**
  * API
  */
 type RequiredProps = InputRequiredProps & {
-	list: Stringified<SelectOption<unknown>[]>;
+	list: Stringified<SelectOption<W3CInputValue>[]>;
 };
 type OptionalProps = {
 	accessKey: string;
@@ -28,15 +29,15 @@ type OptionalProps = {
 	size: number;
 	tabIndex: number;
 	touched: boolean;
-	value: Stringified<unknown[]>;
+	value: Stringified<W3CInputValue[]>;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	id: string;
-	list: SelectOption<unknown>[];
+	list: SelectOption<W3CInputValue>[];
 	multiple: boolean;
-	value: unknown[];
+	value: W3CInputValue[];
 };
 type OptionalStates = {
 	accessKey: string;

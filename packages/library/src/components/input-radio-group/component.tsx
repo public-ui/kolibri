@@ -2,6 +2,7 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { W3CInputValue } from '../../types/w3c';
 
 import { deprecatedHint } from '../../utils/a11y.tipps';
 import { Props } from '../input-radio/types';
@@ -77,7 +78,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
 	 */
-	@Prop() public _list!: Stringified<Option<unknown>[]>;
+	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -112,5 +113,5 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt den Wert der Radio an.
 	 */
-	@Prop() public _value?: string;
+	@Prop() public _value?: W3CInputValue;
 }

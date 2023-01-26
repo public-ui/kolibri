@@ -3,6 +3,7 @@ import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { W3CInputValue } from '../../types/w3c';
 import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
@@ -147,7 +148,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
 	 */
-	@Prop() public _list!: Stringified<Option<unknown>[]>;
+	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -182,7 +183,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
 	 */
-	@Prop() public _value?: Stringified<number | boolean | unknown[] | object>;
+	@Prop() public _value?: Stringified<W3CInputValue>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -258,7 +259,7 @@ export class KolInputRadio implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_list')
-	public validateList(value?: Stringified<Option<unknown>[]>): void {
+	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
 		this.controller.validateList(value);
 	}
 
@@ -331,7 +332,7 @@ export class KolInputRadio implements ComponentApi {
 		if (event.target instanceof HTMLInputElement) {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
-				this.controller.setValue(event, option.value as string);
+				this.controller.setValue(event, option.value as string); // TODO: fix type
 			}
 		}
 	};
