@@ -1,0 +1,15 @@
+/.husky/
+/license-reports/*.html
+cjs/
+dist/
+esm/
+my-app*/
+umd/
+types/
+node_modules/
+
+package-lock.json
+.DS_Store
+CHANGELOG.*
+*.log
+*.tgz

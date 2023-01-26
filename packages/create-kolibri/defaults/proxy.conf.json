@@ -1,0 +1,9 @@
+// https://webpack.js.org/configuration/dev-server/#devserverproxy
+{
+  "/oidc": {
+    "target": "http://localhost:15000",
+    "changeOrigin": true,
+    "secure": false,
+    "ws": true
+  }
+}
