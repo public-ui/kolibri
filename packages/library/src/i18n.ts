@@ -23,13 +23,13 @@ type Options = {
 export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<ComponentKeys>}`, options?: Options) => {
 	const i18n = getI18nService();
 	if (i18n === undefined) {
-		devHint('I18nService not available! Please call the global register function.');
+		devHint('[I18n] I18nService not available! Please call the global register function.');
 		return key;
 	}
 
-	const text = i18n.translate(key, options);
+	let text = i18n.translate(key, options);
 	if (text === key) {
-		devHint('Locales not initialized! Initialize default locales automatically.');
+		devHint('[I18n] Locales not initialized! Initialize default locales automatically.');
 
 		translations.forEach((t) =>
 			t((l, t) => {
@@ -37,6 +37,8 @@ export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<Compone
 				return l;
 			})
 		);
+
+		text = i18n.translate(key, options);
 	}
 	return text;
 };
