@@ -151,6 +151,6 @@ jobs:
         working-directory: packages/create-kolibri
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
-  # publish-page:
-  #   needs: publish
-  #   uses: public-ui/kolibri/.github/workflows/publish-page.yml@main
+  publish-page:
+    needs: publish
+    uses: public-ui/kolibri/.github/workflows/publish-page.yml@main
