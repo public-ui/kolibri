@@ -12,7 +12,6 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"private": true,
 	"scripts": {
 		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js && mv dist/assets/_commonjsHelpers* dist/assets/commonjsHelpers.js",
 		"dev": "slidev --open",

@@ -12,7 +12,6 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"private": true,
 	"scripts": {
 		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
 		"autogen": "node scripts/autogen.md2mdx.js && node scripts/autogen.stories.js",
