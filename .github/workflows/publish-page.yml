@@ -8,14 +8,12 @@ env:
   scope: '@public-ui'
 
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
   workflow_dispatch:
 
 jobs:
   publish:
-    if: github.repository == 'public-ui/documentation'
+    if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
