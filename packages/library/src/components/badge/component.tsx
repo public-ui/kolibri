@@ -29,7 +29,7 @@ type OptionalProps = {
 	color: Stringified<KoliBriColor>;
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
-	smarButton: Stringified<ButtonProps>;
+	smartButton: Stringified<ButtonProps>;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
