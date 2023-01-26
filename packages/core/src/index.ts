@@ -11,11 +11,9 @@ export const register = (
 	options?: RegisterOptions
 ): Promise<void[]> => {
 	try {
-		if (typeof STORE.A11yUi === 'object' && STORE.A11yUi !== null) {
-			Object.defineProperty(window, 'A11yUi', {
-				value: {
-					I18n: new I18nextService(options?.translation?.name ?? 'de', options?.translations),
-				},
+		if (STORE.I18n === undefined) {
+			Object.defineProperty(STORE, 'I18n', {
+				value: new I18nextService(options?.translation?.name ?? 'de', options?.translations),
 				writable: false,
 			});
 		}
@@ -25,7 +23,7 @@ export const register = (
 	return coreRegister(themes, loaders, options);
 };
 
-export const getI18nService: () => II18nService | undefined = () => window.A11yUi?.I18n;
+export const getI18nService: () => II18nService | undefined = () => STORE?.I18n;
 
 // TODO: remove later
-export const getTranslationService = () => window.A11yUi?.I18n;
+export const getTranslationService = () => STORE?.I18n;
