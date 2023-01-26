@@ -71,12 +71,37 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
+    directory: '/packages/core/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/create-kolibri/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/designer/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
     directory: '/packages/library/'
     schedule:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/schema/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/storybook/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/storybook/'
     schedule:
       interval: daily
     target-branch: main
