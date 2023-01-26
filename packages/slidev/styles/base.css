@@ -1,0 +1,19 @@
+* {
+  font-family: BundesSans Web;
+}
+
+:root {
+  font-size: 16px;
+}
+
+.slidev-vclick-target {
+  transition: all 1000ms ease 50ms;
+}
+
+.slidev-layout h1 {
+  margin-bottom: 1em;
+}
+
+.slidev-layout h1 + p {
+  opacity: 1;
+}

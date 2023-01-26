@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'Gilroy Bold';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: local('Gilroy Bold'),
+    url('../public/fonts/Gilroy-Bold.woff') format('woff');
+}
+
+:root {
+  --slidev-theme-primary: #5d8392;
+}
+
+.slidev-layout {
+  @apply p-10 h-full flex flex-col;
+
+  h1, h2, h3, h4, p, div {
+    @apply select-none;
+  }
+
+  pre, code {
+    @apply select-text;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-title bg-clip-text text-transparent bg-gradient-to-r from-teal-700 to-cyan-800 dark:(from-white to-cyan-50);
+  }
+
+  h1 {
+    @apply text-4xl mb-4;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-lg uppercase tracking-widest font-500;
+  }
+
+  p:not(.mb-0) {
+    @apply mb-4 leading-6;
+  }
+
+  strong {
+    @apply text-cyan-800 dark:text-cyan-100;
+  }
+
+  h1 + p {
+    @apply -mt-3 opacity-70;
+  }
+
+  p + h2, ul + h2, table + h2 {
+    @apply mt-10;
+  }
+
+  ul {
+    list-style: circle;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  li {
+    @apply ml-1.1em pl-0.2em leading-1.8em;
+  }
+
+  blockquote {
+    @apply text-sm px-2 py-1 bg-$prism-background border-$slidev-theme-primary border-l rounded;
+  }
+
+  blockquote > * {
+    @apply my-0;
+  }
+
+  table {
+    @apply w-full;
+  }
+
+  tr {
+    @apply border-b border-gray-400 border-opacity-20;
+  }
+
+  th {
+    @apply text-left font-400;
+  }
+
+  a {
+    @apply border-current border-b border-dashed hover:(text-primary border-solid);
+  }
+
+  td, th {
+    @apply p-2 py-3;
+  }
+
+  b, strong {
+    @apply font-600;
+  }
+
+  kbd {
+    @apply border border-gray-400 border-b-2 border-opacity-20 rounded;
+    @apply bg-gray-400 bg-opacity-5 py-0.5 px-1 text-xs font-mono;
+  }
+}
