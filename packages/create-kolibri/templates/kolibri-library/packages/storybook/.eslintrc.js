@@ -1,4 +1,4 @@
 module.exports = {
-  root: false,
-  sourceModule: 'module',
+	root: false,
+	sourceModule: 'module',
 };

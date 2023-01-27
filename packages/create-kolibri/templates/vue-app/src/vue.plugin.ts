@@ -4,9 +4,9 @@ import { register } from '@public-ui/core';
 import { BMF } from '@public-ui/themes';
 
 export const ComponentLibrary: Plugin = {
-  install() {
-    register(BMF, defineCustomElements)
-      .then(() => console.log('Components registered'))
-      .catch(console.warn);
-  },
+	install() {
+		register(BMF, defineCustomElements)
+			.then(() => console.log('Components registered'))
+			.catch(console.warn);
+	},
 };

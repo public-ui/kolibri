@@ -1,4 +1,4 @@
-import CONFIG from "@leanup/stack/prettier.config";
+import CONFIG from '@leanup/stack/prettier.config';
 
 export default {
 	...CONFIG,

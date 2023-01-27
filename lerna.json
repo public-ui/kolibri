@@ -13,6 +13,7 @@
 		"packages/core",
 		"packages/create-kolibri",
 		"packages/designer",
+		"packages/library",
 		"packages/schema",
 		"packages/slidev",
 		"packages/storybook",
