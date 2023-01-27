@@ -66,7 +66,7 @@
 		"@storybook/addons": "6.5.15",
 		"@storybook/api": "6.5.15",
 		"@storybook/builder-webpack5": "6.5.15",
-		"@storybook/components": "6.5.15",
+		"@storybook/components": "6.5.16",
 		"@storybook/core-common": "6.5.15",
 		"@storybook/manager-webpack5": "6.5.15",
 		"@storybook/node-logger": "6.5.15",
