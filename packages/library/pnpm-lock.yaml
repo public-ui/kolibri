@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.56
-  '@public-ui/core': 1.3.0-rc.10
-  '@public-ui/schema': 1.3.0-rc.10
+  '@public-ui/core': 1.3.0-rc.11
+  '@public-ui/schema': 1.3.0-rc.11
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.0.0
   '@stencil/postcss': 2.1.0
@@ -43,7 +43,7 @@ specifiers:
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
   rimraf: 4.1.2
-  stencil-awesome-test: 1.0.4
+  stencil-awesome-test: 1.0.5
   terser: 5.16.1
   tslib: 2.5.0
   typescript: 4.9.4
@@ -51,11 +51,11 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.3.0-rc.10
+  '@public-ui/schema': 1.3.0-rc.11
 
 devDependencies:
   '@a11y-ui/core': 1.0.1-rc.56
-  '@public-ui/core': 1.3.0-rc.10
+  '@public-ui/core': 1.3.0-rc.11
   '@stencil/angular-output-target': 0.5.0_@stencil+core@3.0.0
   '@stencil/core': 3.0.0
   '@stencil/postcss': 2.1.0_@stencil+core@3.0.0
@@ -95,7 +95,7 @@ devDependencies:
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
   rimraf: 4.1.2
-  stencil-awesome-test: 1.0.4_@stencil+core@3.0.0
+  stencil-awesome-test: 1.0.5_@stencil+core@3.0.0
   terser: 5.16.1
   tslib: 2.5.0
   typescript: 4.9.4
@@ -1620,15 +1620,15 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.3.0-rc.10:
-    resolution: {integrity: sha512-T2pUyzlVVHbrM6B7ziLTYcH9hqsIKjhy/F55VGb07LUv8MVF+0F/V0HxrgSaouFd69z5f7d5LLa+zXPeLdwb5A==}
+  /@public-ui/core/1.3.0-rc.11:
+    resolution: {integrity: sha512-myRkXhCqjm+CXids0cYVhJbeAWJ2EkoszL1QAD0GXKLodyu4ywfh5gbwHQGCVUMd2Btmo1o6uY/nYZTLCmHnEA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.56
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.3.0-rc.10:
-    resolution: {integrity: sha512-Is3ezUnc2peRe5yvbLvpc4HWP72Tvl4AVbc1bBSoBkksWNlCfjCTEXOrL3qi9AWVZQ9mEdZhJT6gRws+AJ7MLQ==}
+  /@public-ui/schema/1.3.0-rc.11:
+    resolution: {integrity: sha512-6L+1LQmGiQ1q/GreKPRBAgE34s3LTi8EFYdYmtDU52TmKIoihDhHhs0jUuS0hHEk3svK3cxusiZsC2CoRUK+Lw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.56
     dev: false
@@ -7008,10 +7008,10 @@ packages:
       object-copy: 0.1.0
     dev: true
 
-  /stencil-awesome-test/1.0.4_@stencil+core@3.0.0:
-    resolution: {integrity: sha512-DCdoj6QPb+ay/sGqac2MIQBnQ/WIrDHYSSycCQt75Bkm5awx6vavz6cSl1KDq9IsrQouoyChr4vidaWSWG1c3A==}
+  /stencil-awesome-test/1.0.5_@stencil+core@3.0.0:
+    resolution: {integrity: sha512-/6SukekYI1ZqmlVPruU8Piz2L6LqlMpQHV3XURKEuVXolaIQHu5+M9fetaIZJiUE6auGITcu5qDpWSi43uziAQ==}
     peerDependencies:
-      '@stencil/core': ^2
+      '@stencil/core': '>=2'
     dependencies:
       '@stencil/core': 3.0.0
     dev: true
