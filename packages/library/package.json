@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.3.0-rc.11",
+	"version": "1.3.0-rc.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -65,11 +65,11 @@
 		"postpack": "mv package.bak.json package.json"
 	},
 	"dependencies": {
-		"@public-ui/schema": "1.3.0-rc.11"
+		"@public-ui/schema": "1.3.0-rc.12"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.1-rc.56",
-		"@public-ui/core": "1.3.0-rc.11",
+		"@public-ui/core": "1.3.0-rc.12",
 		"@stencil/angular-output-target": "0.5.0",
 		"@stencil/core": "3.0.0",
 		"@stencil/postcss": "2.1.0",
