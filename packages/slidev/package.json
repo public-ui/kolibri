@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/slidev",
-	"version": "1.3.0-rc.12",
+	"version": "1.3.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -20,9 +20,9 @@
 		"update": "ncu -u"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.3.0-rc.12",
-		"@public-ui/core": "1.3.0-rc.12",
-		"@public-ui/themes": "1.3.0-rc.12",
+		"@public-ui/components": "1.3.0",
+		"@public-ui/core": "1.3.0",
+		"@public-ui/themes": "1.3.0",
 		"@slidev/theme-default": "0.21.2",
 		"@slidev/theme-seriph": "0.21.3",
 		"slidev-theme-light-icons": "1.0.2",
