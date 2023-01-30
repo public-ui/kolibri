@@ -10,35 +10,78 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-tabs")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-tabs")
 public class KolTabs extends Component {
 	/**
 	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 *
+	 * @param value String
 	 */
-	public void set_ariaLabel(String _ariaLabel) {
-		getElement().setProperty("_aria-label", _ariaLabel);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value);
+	}
+
+	/**
+	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 *
+	 * @return String
+	 */
+	public String getAriaLabel() {
+		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Gibt an, welches Tab selektiert sein soll.
+	 *
+	 * @param value String
 	 */
-	public void set_selected(number | undefined _selected) {
-		getElement().setProperty("_selected", _selected);
+	public void setSelected(final String value) {
+		getElement().setProperty("_selected", value);
+	}
+
+	/**
+	 * Gibt an, welches Tab selektiert sein soll.
+	 *
+	 * @return String
+	 */
+	public String getSelected() {
+		return getElement().getProperty("_selected", null);
 	}
 
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 *
+	 * @param value String
 	 */
-	public void set_tabs(TabButtonProps[] | string _tabs) {
-		getElement().setProperty("_tabs", _tabs);
+	public void setTabs(final String value) {
+		getElement().setProperty("_tabs", value);
+	}
+
+	/**
+	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 *
+	 * @return String
+	 */
+	public String getTabs() {
+		return getElement().getProperty("_tabs", null);
 	}
 
 	/**
 	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+	 *
+	 * @param value String
 	 */
-	public void set_tabsAlign("bottom" | "left" | "right" | "top" | undefined _tabsAlign) {
-		getElement().setProperty("_tabs-align", _tabsAlign);
+	public void setTabsAlign(final String value) {
+		getElement().setProperty("_tabs-align", value);
 	}
 
+	/**
+	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+	 *
+	 * @return String
+	 */
+	public String getTabsAlign() {
+		return getElement().getProperty("_tabs-align", null);
+	}
 }

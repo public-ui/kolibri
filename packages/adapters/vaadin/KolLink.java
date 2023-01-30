@@ -16,140 +16,348 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
  */
 
 @Tag("kol-link")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-link")
 public class KolLink extends Component {
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaControls(string | undefined _ariaControls) {
-		getElement().setProperty("_aria-controls", _ariaControls);
+	public void setAriaControls(final String value) {
+		getElement().setProperty("_aria-controls", value);
+	}
+
+	/**
+	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @return String
+	 */
+	public String getAriaControls() {
+		return getElement().getProperty("_aria-controls", null);
 	}
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaCurrent("date" | "location" | "page" | "step" | "time" | boolean | undefined _ariaCurrent) {
-		getElement().setProperty("_aria-current", _ariaCurrent);
+	public void setAriaCurrent(final String value) {
+		getElement().setProperty("_aria-current", value);
+	}
+
+	/**
+	 * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @return String
+	 */
+	public String getAriaCurrent() {
+		return getElement().getProperty("_aria-current", null);
 	}
 
 	/**
 	 * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaExpanded(boolean | undefined _ariaExpanded) {
-		getElement().setProperty("_aria-expanded", _ariaExpanded);
+	public void setAriaExpanded(final String value) {
+		getElement().setProperty("_aria-expanded", value);
+	}
+
+	/**
+	 * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @return String
+	 */
+	public String getAriaExpanded() {
+		return getElement().getProperty("_aria-expanded", null);
 	}
 
 	/**
 	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaLabel(string | undefined _ariaLabel) {
-		getElement().setProperty("_aria-label", _ariaLabel);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value);
+	}
+
+	/**
+	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 *
+	 * @return String
+	 */
+	public String getAriaLabel() {
+		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaSelected(boolean | undefined _ariaSelected) {
-		getElement().setProperty("_aria-selected", _ariaSelected);
+	public void setAriaSelected(final String value) {
+		getElement().setProperty("_aria-selected", value);
+	}
+
+	/**
+	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @return String
+	 */
+	public String getAriaSelected() {
+		return getElement().getProperty("_aria-selected", null);
 	}
 
 	/**
 	 * Gibt an, ob der Link deaktiviert ist.
+	 *
+	 * @param value String
 	 */
-	public void set_disabled(boolean | undefined _disabled) {
-		getElement().setProperty("_disabled", _disabled);
+	public void setDisabled(final String value) {
+		getElement().setProperty("_disabled", value);
+	}
+
+	/**
+	 * Gibt an, ob der Link deaktiviert ist.
+	 *
+	 * @return String
+	 */
+	public String getDisabled() {
+		return getElement().getProperty("_disabled", null);
 	}
 
 	/**
 	 * Gibt die Ziel-Url des Links an.
+	 *
+	 * @param value String
 	 */
-	public void set_href(String _href) {
-		getElement().setProperty("_href", _href);
+	public void setHref(final String value) {
+		getElement().setProperty("_href", value);
+	}
+
+	/**
+	 * Gibt die Ziel-Url des Links an.
+	 *
+	 * @return String
+	 */
+	public String getHref() {
+		return getElement().getProperty("_href", null);
 	}
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 *
+	 * @param value String
 	 */
-	public void set_icon(string | undefined | { top: string | KoliBriCustomIcon; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right: string | KoliBriCustomIcon; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; } _icon) {
-		getElement().setProperty("_icon", _icon);
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value);
+	}
+
+	/**
+	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 *
+	 * @return String
+	 */
+	public String getIcon() {
+		return getElement().getProperty("_icon", null);
 	}
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_iconAlign("bottom" | "left" | "right" | "top" | undefined _iconAlign) {
-		getElement().setProperty("_icon-align", _iconAlign);
+	public void setIconAlign(final String value) {
+		getElement().setProperty("_icon-align", value);
+	}
+
+	/**
+	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 *
+	 * @return String
+	 */
+	public String getIconAlign() {
+		return getElement().getProperty("_icon-align", null);
 	}
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
+	 *
+	 * @param value String
 	 */
-	public void set_iconOnly(boolean | undefined _iconOnly) {
-		getElement().setProperty("_icon-only", _iconOnly);
+	public void setIconOnly(final String value) {
+		getElement().setProperty("_icon-only", value);
+	}
+
+	/**
+	 * Gibt an, ob nur das Icon angezeigt wird.
+	 *
+	 * @return String
+	 */
+	public String getIconOnly() {
+		return getElement().getProperty("_icon-only", null);
 	}
 
 	/**
 	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 *
+	 * @param value String
 	 */
-	public void set_label(String _label) {
-		getElement().setProperty("_label", _label);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 *
+	 * @return String
+	 */
+	public String getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**
 	 * Gibt an, welche Role der Schalter hat.
+	 *
+	 * @param value String
 	 */
-	public void set_role("tab" | undefined _role) {
-		getElement().setProperty("_role", _role);
+	public void setRole(final String value) {
+		getElement().setProperty("_role", value);
+	}
+
+	/**
+	 * Gibt an, welche Role der Schalter hat.
+	 *
+	 * @return String
+	 */
+	public String getRole() {
+		return getElement().getProperty("_role", null);
 	}
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+	 *
+	 * @param value String
 	 */
-	public void set_selector(string | undefined _selector) {
-		getElement().setProperty("_selector", _selector);
+	public void setSelector(final String value) {
+		getElement().setProperty("_selector", value);
+	}
+
+	/**
+	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
+	 *
+	 * @return String
+	 */
+	public String getSelector() {
+		return getElement().getProperty("_selector", null);
 	}
 
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+	 *
+	 * @param value String
 	 */
-	public void set_stealth(boolean | undefined _stealth) {
-		getElement().setProperty("_stealth", _stealth);
+	public void setStealth(final String value) {
+		getElement().setProperty("_stealth", value);
+	}
+
+	/**
+	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
+	 *
+	 * @return String
+	 */
+	public String getStealth() {
+		return getElement().getProperty("_stealth", null);
 	}
 
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 *
+	 * @param value String
 	 */
-	public void set_tabIndex(number | undefined _tabIndex) {
-		getElement().setProperty("_tab-index", _tabIndex);
+	public void setTabIndex(final String value) {
+		getElement().setProperty("_tab-index", value);
+	}
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 *
+	 * @return String
+	 */
+	public String getTabIndex() {
+		return getElement().getProperty("_tab-index", null);
 	}
 
 	/**
 	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_target(string | undefined _target) {
-		getElement().setProperty("_target", _target);
+	public void setTarget(final String value) {
+		getElement().setProperty("_target", value);
+	}
+
+	/**
+	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 *
+	 * @return String
+	 */
+	public String getTarget() {
+		return getElement().getProperty("_target", null);
 	}
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 *
+	 * @param value String
 	 */
-	public void set_targetDescription(string | undefined _targetDescription) {
-		getElement().setProperty("_target-description", _targetDescription);
+	public void setTargetDescription(final String value) {
+		getElement().setProperty("_target-description", value);
+	}
+
+	/**
+	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
+	 *
+	 * @return String
+	 */
+	public String getTargetDescription() {
+		return getElement().getProperty("_target-description", null);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_tooltipAlign("bottom" | "left" | "right" | "top" | undefined _tooltipAlign) {
-		getElement().setProperty("_tooltip-align", _tooltipAlign);
+	public void setTooltipAlign(final String value) {
+		getElement().setProperty("_tooltip-align", value);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @return String
+	 */
+	public String getTooltipAlign() {
+		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
+	 *
+	 * @param value String
 	 */
-	public void set_useCase("image" | "nav" | "text" | undefined _useCase) {
-		getElement().setProperty("_use-case", _useCase);
+	public void setUseCase(final String value) {
+		getElement().setProperty("_use-case", value);
 	}
 
+	/**
+	 * Gibt den Verwendungsfall des Links an.
+	 *
+	 * @return String
+	 */
+	public String getUseCase() {
+		return getElement().getProperty("_use-case", null);
+	}
 }

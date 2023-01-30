@@ -10,29 +10,62 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-icon")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-icon")
 public class KolIcon extends Component {
 	/**
 	 * Gibt das Aria-Label am Icon an.
+	 *
+	 * @param value String
 	 */
-	public void set_ariaLabel(String _ariaLabel) {
-		getElement().setProperty("_aria-label", _ariaLabel);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value);
+	}
+
+	/**
+	 * Gibt das Aria-Label am Icon an.
+	 *
+	 * @return String
+	 */
+	public String getAriaLabel() {
+		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Gibt einen Identifier eines Icons aus den Icon's an.
+	 *
+	 * @param value String
 	 */
-	public void set_icon(String _icon) {
-		getElement().setProperty("_icon", _icon);
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value);
+	}
+
+	/**
+	 * Gibt einen Identifier eines Icons aus den Icon's an.
+	 *
+	 * @return String
+	 */
+	public String getIcon() {
+		return getElement().getProperty("_icon", null);
 	}
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
 /**
+	 *
+	 * @param value String
 	 */
-	public void set_part(string | undefined _part) {
-		getElement().setProperty("_part", _part);
+	public void setPart(final String value) {
+		getElement().setProperty("_part", value);
 	}
 
+	/**
+	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
+/**
+	 *
+	 * @return String
+	 */
+	public String getPart() {
+		return getElement().getProperty("_part", null);
+	}
 }

@@ -14,42 +14,96 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
 	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 *
+	 * @param value String
 	 */
-	public void set_caption(String _caption) {
-		getElement().setProperty("_caption", _caption);
+	public void setCaption(final String value) {
+		getElement().setProperty("_caption", value);
+	}
+
+	/**
+	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 *
+	 * @return String
+	 */
+	public String getCaption() {
+		return getElement().getProperty("_caption", null);
 	}
 
 	/**
 	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+	 *
+	 * @param value String
 	 */
-	public void set_data(KoliBriDataType[] | string _data) {
-		getElement().setProperty("_data", _data);
+	public void setData(final String value) {
+		getElement().setProperty("_data", value);
+	}
+
+	/**
+	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
+	 *
+	 * @return String
+	 */
+	public String getData() {
+		return getElement().getProperty("_data", null);
 	}
 
 	/**
 	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+	 *
+	 * @param value String
 	 */
-	public void set_headers(string | { horizontal?: KoliBriTableHeaderCell[][] | undefined; vertical?: KoliBriTableHeaderCell[][] | undefined; } _headers) {
-		getElement().setProperty("_headers", _headers);
+	public void setHeaders(final String value) {
+		getElement().setProperty("_headers", value);
+	}
+
+	/**
+	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
+	 *
+	 * @return String
+	 */
+	public String getHeaders() {
+		return getElement().getProperty("_headers", null);
 	}
 
 	/**
 	 * Gibt an, die minimale Breite der Tabelle an.
+	 *
+	 * @param value String
 	 */
-	public void set_minWidth(string | undefined _minWidth) {
-		getElement().setProperty("_min-width", _minWidth);
+	public void setMinWidth(final String value) {
+		getElement().setProperty("_min-width", value);
+	}
+
+	/**
+	 * Gibt an, die minimale Breite der Tabelle an.
+	 *
+	 * @return String
+	 */
+	public String getMinWidth() {
+		return getElement().getProperty("_min-width", null);
 	}
 
 	/**
 	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+	 *
+	 * @param value String
 	 */
-	public void set_pagination(boolean | string | undefined | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks | undefined; _page?: number | undefined; _total?: number | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; _boundaryCount?: number | undefined; _hasButtons?: boolean | Stringified<PaginationHasButton> | undefined; _pageSize?: number | undefined; _pageSizeOptions?: Stringified<number[]> | undefined; _siblingCount?: number | undefined; _tooltipAlign?: Alignment | undefined; } _pagination) {
-		getElement().setProperty("_pagination", _pagination);
+	public void setPagination(final String value) {
+		getElement().setProperty("_pagination", value);
 	}
 
+	/**
+	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
+	 *
+	 * @return String
+	 */
+	public String getPagination() {
+		return getElement().getProperty("_pagination", null);
+	}
 }

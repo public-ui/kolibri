@@ -11,49 +11,114 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
 	 * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+	 *
+	 * @param value String
 	 */
-	public void set_color(string | undefined | { backgroundColor: string; color: string; } _color) {
-		getElement().setProperty("_color", _color);
+	public void setColor(final String value) {
+		getElement().setProperty("_color", value);
+	}
+
+	/**
+	 * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+	 *
+	 * @return String
+	 */
+	public String getColor() {
+		return getElement().getProperty("_color", null);
 	}
 
 	/**
 	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+	 *
+	 * @param value String
 	 */
-	public void set_icon(string | undefined | { top: string | KoliBriCustomIcon; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right: string | KoliBriCustomIcon; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; } _icon) {
-		getElement().setProperty("_icon", _icon);
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value);
+	}
+
+	/**
+	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+	 *
+	 * @return String
+	 */
+	public String getIcon() {
+		return getElement().getProperty("_icon", null);
 	}
 
 	/**
 	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_iconAlign("bottom" | "left" | "right" | "top" | undefined _iconAlign) {
-		getElement().setProperty("_icon-align", _iconAlign);
+	public void setIconAlign(final String value) {
+		getElement().setProperty("_icon-align", value);
+	}
+
+	/**
+	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 *
+	 * @return String
+	 */
+	public String getIconAlign() {
+		return getElement().getProperty("_icon-align", null);
 	}
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
+	 *
+	 * @param value String
 	 */
-	public void set_iconOnly(boolean | undefined _iconOnly) {
-		getElement().setProperty("_icon-only", _iconOnly);
+	public void setIconOnly(final String value) {
+		getElement().setProperty("_icon-only", value);
+	}
+
+	/**
+	 * Gibt an, ob nur das Icon angezeigt wird.
+	 *
+	 * @return String
+	 */
+	public String getIconOnly() {
+		return getElement().getProperty("_icon-only", null);
 	}
 
 	/**
 	 * Gibt den Label-Text des Badges an.
+	 *
+	 * @param value String
 	 */
-	public void set_label(String _label) {
-		getElement().setProperty("_label", _label);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Gibt den Label-Text des Badges an.
+	 *
+	 * @return String
+	 */
+	public String getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**
 	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 *
+	 * @param value String
 	 */
-	public void set_smartButton(string | undefined | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: "tab" | undefined; _tabIndex?: number | undefined; _tooltipAlign?: Alignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; } _smartButton) {
-		getElement().setProperty("_smart-button", _smartButton);
+	public void setSmartButton(final String value) {
+		getElement().setProperty("_smart-button", value);
 	}
 
+	/**
+	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 *
+	 * @return String
+	 */
+	public String getSmartButton() {
+		return getElement().getProperty("_smart-button", null);
+	}
 }

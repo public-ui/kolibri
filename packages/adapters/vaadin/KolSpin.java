@@ -10,14 +10,24 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-spin")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-spin")
 public class KolSpin extends Component {
 	/**
 	 * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
+	 *
+	 * @param value String
 	 */
-	public void set_show(boolean | undefined _show) {
-		getElement().setProperty("_show", _show);
+	public void setShow(final String value) {
+		getElement().setProperty("_show", value);
 	}
 
+	/**
+	 * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
+	 *
+	 * @return String
+	 */
+	public String getShow() {
+		return getElement().getProperty("_show", null);
+	}
 }

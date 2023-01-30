@@ -18,18 +18,22 @@ console.log('LOCATION', LOCATION);
 
 fs.mkdirSync(LOCATION, { recursive: true });
 
+const removeUnderscore = (str) => {
+	return str.replace(/^_/g, '');
+};
+
 const camelCase = (str) => {
-	return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+	return removeUnderscore(str).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 };
 
 const pascalCase = (str) => {
-	return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase()).replace(/^[a-z]/, (g) => g.toUpperCase());
+	return removeUnderscore(str)
+		.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
+		.replace(/^[a-z]/, (g) => g.toUpperCase());
 };
 
 const javaType = (type) => {
 	switch (type) {
-		case 'string':
-			return 'String';
 		case 'boolean':
 			return 'boolean';
 		case 'number':
@@ -38,8 +42,9 @@ const javaType = (type) => {
 			return 'Array';
 		case 'object':
 			return 'Object';
+		case 'string':
 		default:
-			return type;
+			return 'String';
 	}
 };
 
@@ -80,14 +85,27 @@ ELEMENTS.tags.forEach((tag) => {
 	tag.attributes.forEach((attribute) => {
 		file += `	/**
 	 * ${attribute.description}
+	 *
+	 * @param value ${javaType(attribute.type)}
 	 */
-	public void set${pascalCase(attribute.name)}(${javaType(attribute.type)} ${camelCase(attribute.name)}) {
-		getElement().setProperty("${attribute.name}", ${camelCase(attribute.name)});
+	public void set${pascalCase(attribute.name)}(final ${javaType(attribute.type)} value) {
+		getElement().setProperty("${attribute.name}", value);
+	}
+
+	/**
+	 * ${attribute.description}
+	 *
+	 * @return ${javaType(attribute.type)}
+	 */
+	public ${javaType(attribute.type)} get${pascalCase(attribute.name)}() {
+		return getElement().getProperty("${attribute.name}", null);
 	}
 
 `;
 	});
-	file += `}`;
+	file = `${file.trim()}
+}
+`;
 
 	fs.writeFileSync(`${LOCATION}/${pascalCase(tag.name)}.java`, file);
 });

@@ -10,14 +10,24 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-heading")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-heading")
 public class KolHeading extends Component {
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 *
+	 * @param value String
 	 */
-	public void set_level(1 | 2 | 3 | 4 | 5 | 6 | undefined _level) {
-		getElement().setProperty("_level", _level);
+	public void setLevel(final String value) {
+		getElement().setProperty("_level", value);
 	}
 
+	/**
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 *
+	 * @return String
+	 */
+	public String getLevel() {
+		return getElement().getProperty("_level", null);
+	}
 }

@@ -15,35 +15,78 @@ Der **Fuß-Bereich** wird optional durch ein Attribut aktiviert und stellt dann 
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**
 	 * Gibt an, ob die Card einen Footer-Bereich hat.
+	 *
+	 * @param value String
 	 */
-	public void set_hasFooter(boolean | undefined _hasFooter) {
-		getElement().setProperty("_has-footer", _hasFooter);
+	public void setHasFooter(final String value) {
+		getElement().setProperty("_has-footer", value);
+	}
+
+	/**
+	 * Gibt an, ob die Card einen Footer-Bereich hat.
+	 *
+	 * @return String
+	 */
+	public String getHasFooter() {
+		return getElement().getProperty("_has-footer", null);
 	}
 
 	/**
 	 * Gibt die Überschrift der Card an.
+	 *
+	 * @param value String
 	 */
-	public void set_heading(String _heading) {
-		getElement().setProperty("_heading", _heading);
+	public void setHeading(final String value) {
+		getElement().setProperty("_heading", value);
 	}
 
 	/**
 	 * Gibt die Überschrift der Card an.
+	 *
+	 * @return String
 	 */
-	public void set_headline(string | undefined _headline) {
-		getElement().setProperty("_headline", _headline);
+	public String getHeading() {
+		return getElement().getProperty("_heading", null);
+	}
+
+	/**
+	 * Gibt die Überschrift der Card an.
+	 *
+	 * @param value String
+	 */
+	public void setHeadline(final String value) {
+		getElement().setProperty("_headline", value);
+	}
+
+	/**
+	 * Gibt die Überschrift der Card an.
+	 *
+	 * @return String
+	 */
+	public String getHeadline() {
+		return getElement().getProperty("_headline", null);
 	}
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 *
+	 * @param value String
 	 */
-	public void set_level(1 | 2 | 3 | 4 | 5 | 6 | undefined _level) {
-		getElement().setProperty("_level", _level);
+	public void setLevel(final String value) {
+		getElement().setProperty("_level", value);
 	}
 
+	/**
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 *
+	 * @return String
+	 */
+	public String getLevel() {
+		return getElement().getProperty("_level", null);
+	}
 }

@@ -12,77 +12,186 @@ durchlaufen werden.
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**
 	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+	 *
+	 * @param value String
 	 */
-	public void set_boundaryCount(number | undefined _boundaryCount) {
-		getElement().setProperty("_boundary-count", _boundaryCount);
+	public void setBoundaryCount(final String value) {
+		getElement().setProperty("_boundary-count", value);
+	}
+
+	/**
+	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
+	 *
+	 * @return String
+	 */
+	public String getBoundaryCount() {
+		return getElement().getProperty("_boundary-count", null);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 *
+	 * @param value String
 	 */
-	public void set_customClass(string | undefined _customClass) {
-		getElement().setProperty("_custom-class", _customClass);
+	public void setCustomClass(final String value) {
+		getElement().setProperty("_custom-class", value);
+	}
+
+	/**
+	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 *
+	 * @return String
+	 */
+	public String getCustomClass() {
+		return getElement().getProperty("_custom-class", null);
 	}
 
 	/**
 	 * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
+	 *
+	 * @param value String
 	 */
-	public void set_hasButtons(boolean | string | undefined | { first: boolean; last: boolean; next: boolean; previous: boolean; } _hasButtons) {
-		getElement().setProperty("_has-buttons", _hasButtons);
+	public void setHasButtons(final String value) {
+		getElement().setProperty("_has-buttons", value);
+	}
+
+	/**
+	 * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
+	 *
+	 * @return String
+	 */
+	public String getHasButtons() {
+		return getElement().getProperty("_has-buttons", null);
 	}
 
 	/**
 	 * Gibt an, welche Seite aktuell ausgewählt ist.
+	 *
+	 * @param value double
 	 */
-	public void set_page(double _page) {
-		getElement().setProperty("_page", _page);
+	public void setPage(final double value) {
+		getElement().setProperty("_page", value);
+	}
+
+	/**
+	 * Gibt an, welche Seite aktuell ausgewählt ist.
+	 *
+	 * @return double
+	 */
+	public double getPage() {
+		return getElement().getProperty("_page", null);
 	}
 
 	/**
 	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+	 *
+	 * @param value double
 	 */
-	public void set_pageSize(double _pageSize) {
-		getElement().setProperty("_page-size", _pageSize);
+	public void setPageSize(final double value) {
+		getElement().setProperty("_page-size", value);
+	}
+
+	/**
+	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
+	 *
+	 * @return double
+	 */
+	public double getPageSize() {
+		return getElement().getProperty("_page-size", null);
 	}
 
 	/**
 	 * Gibt an, welche Optionen für die Seitenlänge angeboten werden.
+	 *
+	 * @param value String
 	 */
-	public void set_pageSizeOptions(number[] | string _pageSizeOptions) {
-		getElement().setProperty("_page-size-options", _pageSizeOptions);
+	public void setPageSizeOptions(final String value) {
+		getElement().setProperty("_page-size-options", value);
+	}
+
+	/**
+	 * Gibt an, welche Optionen für die Seitenlänge angeboten werden.
+	 *
+	 * @return String
+	 */
+	public String getPageSizeOptions() {
+		return getElement().getProperty("_page-size-options", null);
 	}
 
 	/**
 	 * Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.
+	 *
+	 * @param value String
 	 */
-	public void set_siblingCount(number | undefined _siblingCount) {
-		getElement().setProperty("_sibling-count", _siblingCount);
+	public void setSiblingCount(final String value) {
+		getElement().setProperty("_sibling-count", value);
+	}
+
+	/**
+	 * Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.
+	 *
+	 * @return String
+	 */
+	public String getSiblingCount() {
+		return getElement().getProperty("_sibling-count", null);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+	 *
+	 * @param value String
 	 */
-	public void set_tooltipAlign("bottom" | "left" | "right" | "top" | undefined _tooltipAlign) {
-		getElement().setProperty("_tooltip-align", _tooltipAlign);
+	public void setTooltipAlign(final String value) {
+		getElement().setProperty("_tooltip-align", value);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+	 *
+	 * @return String
+	 */
+	public String getTooltipAlign() {
+		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**
 	 * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
+	 *
+	 * @param value double
 	 */
-	public void set_total(double _total) {
-		getElement().setProperty("_total", _total);
+	public void setTotal(final double value) {
+		getElement().setProperty("_total", value);
+	}
+
+	/**
+	 * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
+	 *
+	 * @return double
+	 */
+	public double getTotal() {
+		return getElement().getProperty("_total", null);
 	}
 
 	/**
 	 * Gibt an, welche Button-Variante verwendet werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_variant("custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | undefined _variant) {
-		getElement().setProperty("_variant", _variant);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value);
 	}
 
+	/**
+	 * Gibt an, welche Button-Variante verwendet werden soll.
+	 *
+	 * @return String
+	 */
+	public String getVariant() {
+		return getElement().getProperty("_variant", null);
+	}
 }

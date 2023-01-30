@@ -22,63 +22,150 @@ noch die Icons ausgegeben.
  */
 
 @Tag("kol-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-nav")
 public class KolNav extends Component {
 	/**
 	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_ariaCurrentValue("date" | "location" | "page" | "step" | "time" | boolean _ariaCurrentValue) {
-		getElement().setProperty("_aria-current-value", _ariaCurrentValue);
+	public void setAriaCurrentValue(final String value) {
+		getElement().setProperty("_aria-current-value", value);
+	}
+
+	/**
+	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 *
+	 * @return String
+	 */
+	public String getAriaCurrentValue() {
+		return getElement().getProperty("_aria-current-value", null);
 	}
 
 	/**
 	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 *
+	 * @param value String
 	 */
-	public void set_ariaLabel(String _ariaLabel) {
-		getElement().setProperty("_aria-label", _ariaLabel);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value);
+	}
+
+	/**
+	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 *
+	 * @return String
+	 */
+	public String getAriaLabel() {
+		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+	 *
+	 * @param value String
 	 */
-	public void set_collapsible(boolean | undefined _collapsible) {
-		getElement().setProperty("_collapsible", _collapsible);
+	public void setCollapsible(final String value) {
+		getElement().setProperty("_collapsible", value);
+	}
+
+	/**
+	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+	 *
+	 * @return String
+	 */
+	public String getCollapsible() {
+		return getElement().getProperty("_collapsible", null);
 	}
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
+	 *
+	 * @param value String
 	 */
-	public void set_compact(boolean | undefined _compact) {
-		getElement().setProperty("_compact", _compact);
+	public void setCompact(final String value) {
+		getElement().setProperty("_compact", value);
+	}
+
+	/**
+	 * Gibt an, ob die Navigation kompakt angezeigt wird.
+	 *
+	 * @return String
+	 */
+	public String getCompact() {
+		return getElement().getProperty("_compact", null);
 	}
 
 	/**
 	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 *
+	 * @param value String
 	 */
-	public void set_hasCompactButton(boolean | undefined _hasCompactButton) {
-		getElement().setProperty("_has-compact-button", _hasCompactButton);
+	public void setHasCompactButton(final String value) {
+		getElement().setProperty("_has-compact-button", value);
+	}
+
+	/**
+	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 *
+	 * @return String
+	 */
+	public String getHasCompactButton() {
+		return getElement().getProperty("_has-compact-button", null);
 	}
 
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 *
+	 * @param value String
 	 */
-	public void set_links(NavLinkWithChildrenProps[] | string _links) {
-		getElement().setProperty("_links", _links);
+	public void setLinks(final String value) {
+		getElement().setProperty("_links", value);
+	}
+
+	/**
+	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 *
+	 * @return String
+	 */
+	public String getLinks() {
+		return getElement().getProperty("_links", null);
 	}
 
 	/**
 	 * Gibt die Ausrichtung der Navigation an.
+	 *
+	 * @param value String
 	 */
-	public void set_orientation("horizontal" | "vertical" | undefined _orientation) {
-		getElement().setProperty("_orientation", _orientation);
+	public void setOrientation(final String value) {
+		getElement().setProperty("_orientation", value);
+	}
+
+	/**
+	 * Gibt die Ausrichtung der Navigation an.
+	 *
+	 * @return String
+	 */
+	public String getOrientation() {
+		return getElement().getProperty("_orientation", null);
 	}
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.
+	 *
+	 * @param value String
 	 */
-	public void set_variant("primary" | "secondary" | undefined _variant) {
-		getElement().setProperty("_variant", _variant);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value);
 	}
 
+	/**
+	 * Gibt an, welche Ausprägung der Button hat.
+	 *
+	 * @return String
+	 */
+	public String getVariant() {
+		return getElement().getProperty("_variant", null);
+	}
 }
