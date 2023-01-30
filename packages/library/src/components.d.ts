@@ -2160,7 +2160,7 @@ export namespace Components {
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
          */
@@ -4674,7 +4674,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
          */

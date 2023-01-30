@@ -36,7 +36,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-abbr _title=""></kol-abbr>
 				<kol-accordion _heading=""></kol-accordion>
 				<kol-alert></kol-alert>
-				<kol-badge _label=""></kol-badge>
+				<kol-badge _label="Label"></kol-badge>
 				<kol-breadcrumb _ariaLabel="" _links={[]}></kol-breadcrumb>
 				<kol-button _ariaLabel="Label" _label="Label" _on={{}}></kol-button>
 				<kol-button-group></kol-button-group>
@@ -57,7 +57,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-input-radio _id="id" _list={[]}></kol-input-radio>
 				<kol-input-range _id="id"></kol-input-range>
 				<kol-input-text _id="id"></kol-input-text>
-				<kol-link _href="" _label="label"></kol-link>
+				<kol-link _href="" _label="Label"></kol-link>
 				<kol-link-group _ariaLabel="" _links={[]}></kol-link-group>
 				<kol-logo _org={Bundesministerium['Auswärtiges Amt']}></kol-logo>
 				<kol-modal _ariaLabel=""></kol-modal>
@@ -70,7 +70,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-table _caption="" _data={[]} _headers={{}}></kol-table>
 				<kol-tabs _ariaLabel="" _tabs={[]}></kol-tabs>
 				<kol-textarea _id="id"></kol-textarea>
-				<kol-tooltip _label=""></kol-tooltip>
+				<kol-tooltip _id="id" _label="Label"></kol-tooltip>
 				<kol-version _version=""></kol-version>
 			</Host>
 		);

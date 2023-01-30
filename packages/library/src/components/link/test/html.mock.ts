@@ -36,7 +36,10 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''
 	}>
 			${getSpanWcHtml(
-				props,
+				{
+					...props,
+					_label: props._ariaLabel || props._label,
+				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
 				},
@@ -59,7 +62,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				? getTooltipHtml(
 						{
 							_align: props._tooltipAlign,
-							_id: props._iconOnly === true || props._useCase === 'image' ? 'nonce' : undefined,
+							_id: 'nonce',
 							_label: props._ariaLabel || props._label,
 						},
 						' aria-hidden="true"'
