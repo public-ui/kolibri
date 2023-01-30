@@ -5,16 +5,17 @@ import { watchTooltipAlignment } from '../../types/button-link';
 import { Alignment } from '../../types/props/alignment';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
+import { smartSetTimeout } from '../../utils/reuse';
 
 /**
  * API
  */
 type RequiredProps = {
+	id: string;
 	label: string;
 };
 type OptionalProps = {
 	align: Alignment;
-	id: string;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -30,44 +31,39 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: false,
 })
 export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	// - eslint-disable-next-line @stencil/own-props-must-be-private
-	public hydrated = false; // TODO: Why?!
-
-	private hostElement?: HTMLElement | null = null;
-	private readonly childElements: HTMLElement[] = [];
+	private previousSibling?: HTMLElement | null;
 	private tooltipElement?: HTMLKolBadgeElement;
 
 	private alignTooltip = (): void => {
-		const target = this.childElements[0];
-
 		// getBoundingClientRect is not defined in test suite
 		if (process.env.NODE_ENV !== 'test') {
-			const clientRect = target.getBoundingClientRect();
-
-			if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-				switch (this.state._align) {
-					case 'top':
-					case 'bottom':
-						this.tooltipElement.style.left = `${clientRect.left + target.offsetWidth / 2 - this.tooltipElement.offsetWidth / 2}px`;
-						break;
-					case 'left':
-					case 'right':
-					default:
-						this.tooltipElement.style.top = `${clientRect.top + clientRect.height / 2 - this.tooltipElement.offsetHeight / 2}px`;
-				}
-				switch (this.state._align) {
-					case 'left':
-						this.tooltipElement.style.left = `calc(${clientRect.left - this.tooltipElement.offsetWidth}px - 0.5em)`;
-						break;
-					case 'right':
-						this.tooltipElement.style.left = `calc(${clientRect.right}px + 0.5em)`;
-						break;
-					case 'bottom':
-						this.tooltipElement.style.top = `calc(${clientRect.bottom}px + 0.5em)`;
-						break;
-					case 'top':
-					default:
-						this.tooltipElement.style.top = `calc(${clientRect.top - this.tooltipElement.offsetHeight}px - 0.5em)`;
+			if (this.previousSibling /* SSR instanceof HTMLElement */) {
+				const clientRect = this.previousSibling.getBoundingClientRect();
+				if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+					switch (this.state._align) {
+						case 'top':
+						case 'bottom':
+							this.tooltipElement.style.left = `${clientRect.left + this.previousSibling.offsetWidth / 2 - this.tooltipElement.offsetWidth / 2}px`;
+							break;
+						case 'left':
+						case 'right':
+						default:
+							this.tooltipElement.style.top = `${clientRect.top + clientRect.height / 2 - this.tooltipElement.offsetHeight / 2}px`;
+					}
+					switch (this.state._align) {
+						case 'left':
+							this.tooltipElement.style.left = `calc(${clientRect.left - this.tooltipElement.offsetWidth}px - 0.5em)`;
+							break;
+						case 'right':
+							this.tooltipElement.style.left = `calc(${clientRect.right}px + 0.5em)`;
+							break;
+						case 'bottom':
+							this.tooltipElement.style.top = `calc(${clientRect.bottom}px + 0.5em)`;
+							break;
+						case 'top':
+						default:
+							this.tooltipElement.style.top = `calc(${clientRect.top - this.tooltipElement.offsetHeight}px - 0.5em)`;
+					}
 				}
 			}
 		}
@@ -98,32 +94,45 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		}
 	};
 
-	private catchHostElement = (element: HTMLElement | null): void => {
-		this.hostElement = element;
-		if (this.hostElement /* SSR instanceof HTMLElement */) {
-			const previousSibling = this.hostElement.previousElementSibling;
-			if (previousSibling /* SSR instanceof HTMLElement */) {
-				previousSibling.removeEventListener('mouseover', this.showTooltip);
-				previousSibling.addEventListener('mouseover', this.showTooltip);
-				previousSibling.removeEventListener('focus', this.showTooltip);
-				previousSibling.addEventListener('focus', this.showTooltip);
-				previousSibling.removeEventListener('mouseout', this.hideTooltip);
-				previousSibling.addEventListener('mouseout', this.hideTooltip);
-				previousSibling.removeEventListener('blur', this.hideTooltip);
-				previousSibling.addEventListener('blur', this.hideTooltip);
-				this.childElements.push(previousSibling as HTMLElement);
+	private addListeners = (el: Element): void => {
+		el.addEventListener('mouseover', this.incrementOverFocusCount);
+		el.addEventListener('focus', this.incrementOverFocusCount);
+		el.addEventListener('mouseout', this.decrementOverFocusCount);
+		el.addEventListener('blur', this.decrementOverFocusCount);
+	};
+
+	private removeListeners = (el: Element): void => {
+		el.removeEventListener('mouseover', this.incrementOverFocusCount);
+		el.removeEventListener('focus', this.incrementOverFocusCount);
+		el.removeEventListener('mouseout', this.decrementOverFocusCount);
+		el.removeEventListener('blur', this.decrementOverFocusCount);
+	};
+
+	private resyncListeners = (el: Element): void => {
+		this.removeListeners(el);
+		this.addListeners(el);
+	};
+
+	private catchHostElement = (el: HTMLElement | null): void => {
+		if (el /* SSR instanceof HTMLElement */) {
+			this.previousSibling = el.previousElementSibling as HTMLElement | null;
+			if (this.previousSibling /* SSR instanceof HTMLElement */) {
+				this.resyncListeners(this.previousSibling);
 			}
 		}
 	};
 
-	private catchTooltipElement = (element?: HTMLKolBadgeElement): void => {
-		this.tooltipElement = element;
+	private catchTooltipElement = (el?: HTMLKolBadgeElement): void => {
+		this.tooltipElement = el;
+		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+			this.resyncListeners(this.tooltipElement);
+		}
 	};
 
 	public render(): JSX.Element {
-		const timeout = setTimeout(() => {
-			clearTimeout(timeout);
+		smartSetTimeout(() => {
 			this.alignTooltip();
+			smartSetTimeout(this.alignTooltip, 750);
 		}, 250);
 		return (
 			<Host ref={this.catchHostElement}>
@@ -156,7 +165,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id!: string;
 
 	/**
 	 * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
@@ -196,6 +205,31 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		watchString(this, '_label', value);
 	}
 
+	private overFocusCount = 0;
+	private overFocusTimeout?: ReturnType<typeof setTimeout>;
+
+	private incrementOverFocusCount = (): void => {
+		this.overFocusCount++;
+		this.showOrHideTooltip();
+	};
+
+	private decrementOverFocusCount = (): void => {
+		this.overFocusCount--;
+		this.showOrHideTooltip();
+	};
+
+	private showOrHideTooltip = (): void => {
+		clearTimeout(this.overFocusTimeout);
+		this.overFocusTimeout = setTimeout(() => {
+			clearTimeout(this.overFocusTimeout);
+			if (this.overFocusCount > 0) {
+				this.showTooltip();
+			} else {
+				this.hideTooltip();
+			}
+		}, 250);
+	};
+
 	/**
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
@@ -203,6 +237,17 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		this.validateAlign(this._align);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
-		this.hydrated = true;
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (componentDidLoad)
+	 */
+	public disconnectedCallback(): void {
+		if (this.previousSibling /* SSR instanceof HTMLElement */) {
+			this.removeListeners(this.previousSibling);
+		}
+		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+			this.removeListeners(this.tooltipElement);
+		}
 	}
 }
