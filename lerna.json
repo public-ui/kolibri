@@ -13,11 +13,12 @@
 		"packages/core",
 		"packages/create-kolibri",
 		"packages/designer",
+		"packages/library",
 		"packages/schema",
 		"packages/slidev",
 		"packages/storybook",
 		"packages/themes"
 	],
 	"useNx": false,
-	"version": "1.3.0-rc.10"
+	"version": "1.3.0"
 }

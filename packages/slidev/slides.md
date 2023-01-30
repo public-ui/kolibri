@@ -3,6 +3,7 @@ theme: ./theme
 colorSchema: light
 highlighter: shiki
 lineNumbers: true
+transition: fade
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.

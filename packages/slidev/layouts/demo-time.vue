@@ -31,7 +31,7 @@
               <div class="text-center">
                 <kol-button
                   _label="Primary"
-                  _icon="ui-home"
+                  _icon="icofont-ui-home"
                   _icon-only
                   _variant="primary"
                 ></kol-button>
@@ -39,7 +39,7 @@
               <div class="text-center">
                 <kol-button
                   _label="Secondary"
-                  _icon="ui-edit"
+                  _icon="icofont-ui-edit"
                   _icon-only
                   _tooltip-align="right"
                   _variant="secondary"
@@ -48,7 +48,7 @@
               <div class="text-center">
                 <kol-button
                   _label="Danger"
-                  _icon="ui-delete"
+                  _icon="icofont-ui-delete"
                   _icon-only
                   _tooltip-align="bottom"
                   _variant="danger"
@@ -57,7 +57,7 @@
               <div class="text-center">
                 <kol-button
                   _label="Ghost"
-                  _icon="ui-flash-light"
+                  _icon="icofont-ui-flash-light"
                   _icon-only
                   _tooltip-align="left"
                   _variant="ghost"
@@ -78,7 +78,7 @@
             >
             <kol-button
               _label="Übernehmen"
-              _icon="ui-reply"
+              _icon="icofont-ui-reply"
               _icon-only
               @click="buttonOn.onClick"
               v-bind:_on="buttonOn"
@@ -101,24 +101,30 @@ const options = [
     value: "bmf",
   },
   {
-    label: "DESY-Styleguide",
+		disabled: true,
+    label: "BZSt-Styleguide (WIP)",
     value: "desy",
   },
   {
-    label: "Hamburg-Styleguide (WIP)",
-    value: "hh",
+    label: "DESY-Styleguide (untested)",
+    value: "desy",
   },
-  // {
-  //   label: "ITZBund-Styleguide (Demo)",
-  //   value: "itzbund",
-  // },
+  {
+		disabled: true,
+    label: "ITZBund-Styleguide (WIP)",
+    value: "itzbund",
+  },
   {
     label: "MAPZoll-Styleguide",
     value: "mapz",
   },
   {
-    label: "Next-Styleguide (WIP)",
-    value: "nxt",
+    label: "Freistaat Thüringen (untested)",
+    value: "th",
+  },
+  {
+    label: "Zoll-Styleguide v2 (untested)",
+    value: "zoll",
   },
 ];
 

@@ -15,10 +15,13 @@ export const isStyle = (style?: Record<string, string>): boolean => {
 	return true;
 };
 
-const isPrefixOf = (prefix: string, text: string) => text.length === 0 && new RegExp(`^${prefix}`).test(text);
-
 /**
  * Validate, if a text contains a prefix.
+ */
+const isPrefixOf = (prefix: string, text: string) => new RegExp(`^${prefix}`).test(text);
+
+/**
+ * Validate, if a text is empty or contains a prefix.
  */
 export const isEmptyOrPrefixOf = (prefix: string, text: string) => text.length === 0 || isPrefixOf(prefix, text);
 

@@ -93,7 +93,7 @@ Beispiel für die Erstellung des JSON-Objekts zur Definition der Radio-Elemente:
 | `_required`          | `_required`    | Gibt an, ob das Eingabefeld ein Pflichtfeld ist.                                           | `boolean \| undefined`                                                                   | `undefined`  |
 | `_tabIndex`          | `_tab-index`   | Gibt an, welchen Tab-Index dieses Input hat.                                               | `number \| undefined`                                                                    | `undefined`  |
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.              | `boolean \| undefined`                                                                   | `false`      |
-| `_value`             | `_value`       | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902) | `boolean \| number \| object \| string \| undefined \| unknown[]`                        | `undefined`  |
+| `_value`             | `_value`       | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902) | `number \| string \| undefined`                                                          | `undefined`  |
 
 ## Dependencies
 

@@ -6,7 +6,7 @@ import { BAMF, BMF, BPA, BZST, DESY, ITZBund, MAPZ, NXT, ZOLL } from '@public-ui
 import { AppComponent } from './components/app/component.solid';
 import { register } from '@public-ui/core';
 
-register([BAMF, BPA, BMF, BZST, DESY, ITZBund, MAPZ, NXT, TH, ZOLL, BAHN, SPK, UKV, VKB], defineCustomElements, {
+register([BAMF, BPA, BMF, BZST, DESY, ITZBund, MAPZ, NXT, TH, BAHN, SPK, UKV, VKB, ZOLL], defineCustomElements, {
 	theme: {
 		detect: 'auto',
 	},
