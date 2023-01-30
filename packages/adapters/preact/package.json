@@ -46,7 +46,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/react": "1.3.0-rc.10"
+		"@public-ui/react": "1.3.0"
 	},
 	"devDependencies": {
 		"@public-ui/components": "1.3.0-rc.10",
