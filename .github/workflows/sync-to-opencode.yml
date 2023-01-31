@@ -1,4 +1,4 @@
-name: Sync to Open CoDE
+name: Sync to OpenCoDE
 
 on:
   workflow_dispatch:
