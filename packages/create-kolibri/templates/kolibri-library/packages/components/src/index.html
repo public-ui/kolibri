@@ -3,8 +3,8 @@
 		<script type="module">
 			import { register } from 'https://esm.sh/@public-ui/core@1.3.3-rc.0';
 			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.3.3-rc.0/dist/loader';
-			import { BMF } from 'https://esm.sh/@public-ui/themes@1.3.3-rc.0';
-			register([BMF], [defineCustomElements]).catch(console.warn);
+			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.3.3-rc.0';
+			register([DEFAULT], [defineCustomElements]).catch(console.warn);
 		</script>
 		<meta charset="utf-8" />
 		<title>{{kebab name}} - Components</title>
@@ -19,7 +19,7 @@
 		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false,experimental-mode=true" />
 	</head>
 
-	<body data-theme="bmf">
+	<body data-theme="default">
 		<header></header>
 		<main class="container my-4 d-grid gap-4">
 			<kol-badge _label="Hello world!"></kol-badge>

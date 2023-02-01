@@ -118,12 +118,12 @@ export class BikBitvTest extends Component<Props, State> {
 								value: '',
 							},
 							{
-								label: 'BAMF-Styleguide',
+								label: 'DEFAULT-Styleguide',
 								value: 'bamf',
 							},
 							{
-								label: 'BMF-Styleguide',
-								value: 'bmf',
+								label: 'DEFAULT-Styleguide',
+								value: 'default',
 							},
 							{
 								label: 'BZSt-Styleguide',
@@ -135,7 +135,7 @@ export class BikBitvTest extends Component<Props, State> {
 							},
 							{
 								label: 'MAPZoll-Styleguide',
-								value: 'mapz',
+								value: 'default',
 							},
 						]}
 						_on={{

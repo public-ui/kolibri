@@ -15,8 +15,8 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<script type="module">
 			import { register } from 'https://esm.sh/@public-ui/core@1.3.3-rc.0';
 			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.3.3-rc.0/dist/loader';
-			import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.3.3-rc.0';
-				register(MAPZ, defineCustomElements)
+			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.3.3-rc.0';
+				register(DEFAULT, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
 		</script>
@@ -60,7 +60,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		</style>
 	</head>
 	<body>
-		<main class="mapz" data-theme="mapz">
+		<main class="default" data-theme="default">
 			<kol-link _href="https://public-ui.github.io" _target="github">
 				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
@@ -68,7 +68,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<p><strong><kol-abbr _title="Komponenten-Bibliothek für die Barrierefreiheit" _tooltip-align="right">KoliBri</kol-abbr></strong> ist eine <strong>barrierefreie Komponenten-Bibliothek</strong> die sich durch separate Themes an unterschiedliche <strong>Styleguides</strong> und <strong>Design Systeme</strong> anpassen lässt.</p>
 			<p><kol-icon _aria-label="" _icon="fa-solid fa-arrow-right"></kol-icon> Link zur ausführliche <kol-link _href="https://public-ui.github.io" _target="github">Dokumentation</kol-link></p>
 			<kol-heading _level="2">Integration</kol-heading>
-			<p>Für eine hohe Flexibilität werden alle Teile (HTML, CSS, Fonts usw.) per Komposition-Prinzip beliebig mit einander kombiniert. Damit alles korrekt funktioniert, müssen alle Teile einer spezifischen Komposition eingebunden bzw. konfiguriert werden. In den folgenden Unterabschnitten wird die Integration am Beispiel des MAPZ-Themes gezeigt.</p>
+			<p>Für eine hohe Flexibilität werden alle Teile (HTML, CSS, Fonts usw.) per Komposition-Prinzip beliebig mit einander kombiniert. Damit alles korrekt funktioniert, müssen alle Teile einer spezifischen Komposition eingebunden bzw. konfiguriert werden. In den folgenden Unterabschnitten wird die Integration am Beispiel des DEFAULT-Themes gezeigt.</p>
 			<kol-heading _level="3">Assets</kol-heading>
 			<p><strong>Fonts</strong> und <strong>Icon-Fonts</strong> müssen im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">${`<head>`
 				.replace(/</g, '&#60;')
@@ -88,8 +88,8 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 	<script type="module">
 		import { register } from 'https://esm.sh/@public-ui/core@1.3.3-rc.0';
 		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.3.3-rc.0/dist/loader';
-		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.3.3-rc.0';
-		register([MAPZ], [defineCustomElements])
+		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.3.3-rc.0';
+		register([DEFAULT], [defineCustomElements])
 			.then(() => {})
 			.catch(console.warn);
 	</script>
@@ -107,7 +107,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 	.replace(/</g, '&#60;')
 	.replace(/>/g, '&#62;')}</code> gesetzt werden.</p>
 			<pre>
-				<code class="language-html">${`<body class="mapz" data-theme="mapz">
+				<code class="language-html">${`<body class="default" data-theme="default">
 	...
 </body>`
 					.replace(/</g, '&#60;')

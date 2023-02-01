@@ -6,7 +6,7 @@ import { AppComponent } from './components/app/component';
 import { KoliBriModule } from '@public-ui/angular-v15';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/core';
-import { BMF } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/themes';
 
 @NgModule({
 	bootstrap: [AppComponent],
@@ -15,6 +15,6 @@ import { BMF } from '@public-ui/themes';
 })
 export class AppModule {
 	public constructor() {
-		register(BMF, defineCustomElements).catch(console.warn);
+		register(DEFAULT, defineCustomElements).catch(console.warn);
 	}
 }

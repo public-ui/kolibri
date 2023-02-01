@@ -17,7 +17,7 @@ export enum Bundesministerium {
 	 * Bundesregierung (BReg)
 	 */
 	'Die Bundesregierung' = 'BReg',
-	'Bundesministerium der Finanzen' = 'BMF',
+	'Bundesministerium der Finanzen' = 'DEFAULT',
 	'Bundesministerium des Innern, für Bau und Heimat' = 'BMI',
 	'Auswärtiges Amt' = 'AA',
 	'Bundesministerium für Wirtschaft und Energie' = 'BMWi',
@@ -48,7 +48,7 @@ export enum Bundesamt {
 	'Bundesamt für Justiz' = 'BfJ',
 	'Bundesamt für Kartographie und Geodäsie' = 'BKG',
 	'Bundesamt für kerntechnische Entsorgungssicherheit' = 'BASE',
-	'Bundesamt für Migration und Flüchtlinge' = 'BAMF',
+	'Bundesamt für Migration und Flüchtlinge' = 'DEFAULT',
 	// 'Bundesamt für Naturschutz' = 'BfN',
 	// 'Bundesamt für Seeschifffahrt und Hydrographie' = 'BSH',
 	'Bundesamt für Sicherheit in der Informationstechnik' = 'BSI',

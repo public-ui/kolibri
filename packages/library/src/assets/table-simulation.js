@@ -22,7 +22,7 @@ const TABLE_NEW_HEADERS = {
 				render: (el, data) => {
 					const button = document.createElement('kol-button');
 					button.setAttribute('_label', data.label);
-					button.setAttribute('data-theme', 'mapz');
+					button.setAttribute('data-theme', 'default');
 					button.setAttribute('style', 'font-size: 75%');
 					button.setAttribute('exportparts', 'button,normal');
 					button._on = { onClick: console.log };
@@ -46,7 +46,7 @@ const TABLE_NEW_HEADERS = {
 			{
 				key: 'dienstag',
 				label: 'Dienstag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#060" data-theme="mapz" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => (el.innerHTML = `<kol-badge _color="#060" data-theme="default" _label="${data.label}"></kol-badge>`),
 				sort: (data) => {
 					return data.sort((first, second) => {
 						if (first.dienstag < second.dienstag) {
@@ -63,27 +63,27 @@ const TABLE_NEW_HEADERS = {
 			{
 				key: 'mittwoch',
 				label: 'Mittwoch',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#006" data-theme="mapz" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => (el.innerHTML = `<kol-badge _color="#006" data-theme="default" _label="${data.label}"></kol-badge>`),
 			},
 			{
 				key: 'donnerstag',
 				label: 'Donnerstag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#600" data-theme="mapz" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => (el.innerHTML = `<kol-badge _color="#600" data-theme="default" _label="${data.label}"></kol-badge>`),
 			},
 			{
 				key: 'freitag',
 				label: 'Freitag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#303" data-theme="mapz" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => (el.innerHTML = `<kol-badge _color="#303" data-theme="default" _label="${data.label}"></kol-badge>`),
 			},
 			{
 				key: 'samstag',
 				label: 'Samstag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#330" data-theme="mapz" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => (el.innerHTML = `<kol-badge _color="#330" data-theme="default" _label="${data.label}"></kol-badge>`),
 			},
 			{
 				key: 'sonntag',
 				label: 'Sonntag',
-				render: (el, data) => (el.innerHTML = `<kol-badge _color="#033" data-theme="mapz" _label="${data.label}"></kol-badge>`),
+				render: (el, data) => (el.innerHTML = `<kol-badge _color="#033" data-theme="default" _label="${data.label}"></kol-badge>`),
 			},
 		],
 	],

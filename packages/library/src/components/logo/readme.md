@@ -24,7 +24,7 @@ Das Attribut `_abbr` wird für die Definition des gewünschten Logos verwendet. 
 
 **BReg** = **_Die Bundesregierung_**
 
-**BMF** = **_Bundesministerium der Finanzen_**
+**DEFAULT** = **_Bundesministerium der Finanzen_**
 
 **BMI** = **_Bundesministerium des Innern, für Bau und Heimat_**
 
