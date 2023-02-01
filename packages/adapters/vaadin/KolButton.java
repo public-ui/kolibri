@@ -10,133 +10,330 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-button")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-button")
 public class KolButton extends Component {
 	/**
 	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+	 *
+	 * @param value String
 	 */
-	public void set_accessKey(string | undefined _accessKey) {
-		getElement().setProperty("_access-key", _accessKey);
+	public void setAccessKey(final String value) {
+		getElement().setProperty("_access-key", value);
+	}
+
+	/**
+	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+	 *
+	 * @return String
+	 */
+	public String getAccessKey() {
+		return getElement().getProperty("_access-key", null);
 	}
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaControls(string | undefined _ariaControls) {
-		getElement().setProperty("_aria-controls", _ariaControls);
+	public void setAriaControls(final String value) {
+		getElement().setProperty("_aria-controls", value);
+	}
+
+	/**
+	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @return String
+	 */
+	public String getAriaControls() {
+		return getElement().getProperty("_aria-controls", null);
 	}
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaCurrent("date" | "location" | "page" | "step" | "time" | boolean | undefined _ariaCurrent) {
-		getElement().setProperty("_aria-current", _ariaCurrent);
+	public void setAriaCurrent(final String value) {
+		getElement().setProperty("_aria-current", value);
+	}
+
+	/**
+	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @return String
+	 */
+	public String getAriaCurrent() {
+		return getElement().getProperty("_aria-current", null);
 	}
 
 	/**
 	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaExpanded(boolean | undefined _ariaExpanded) {
-		getElement().setProperty("_aria-expanded", _ariaExpanded);
+	public void setAriaExpanded(final String value) {
+		getElement().setProperty("_aria-expanded", value);
+	}
+
+	/**
+	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @return String
+	 */
+	public String getAriaExpanded() {
+		return getElement().getProperty("_aria-expanded", null);
 	}
 
 	/**
 	 * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaLabel(string | undefined _ariaLabel) {
-		getElement().setProperty("_aria-label", _ariaLabel);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value);
+	}
+
+	/**
+	 * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 *
+	 * @return String
+	 */
+	public String getAriaLabel() {
+		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @param value String
 	 */
-	public void set_ariaSelected(boolean | undefined _ariaSelected) {
-		getElement().setProperty("_aria-selected", _ariaSelected);
+	public void setAriaSelected(final String value) {
+		getElement().setProperty("_aria-selected", value);
+	}
+
+	/**
+	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @return String
+	 */
+	public String getAriaSelected() {
+		return getElement().getProperty("_aria-selected", null);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 *
+	 * @param value String
 	 */
-	public void set_customClass(string | undefined _customClass) {
-		getElement().setProperty("_custom-class", _customClass);
+	public void setCustomClass(final String value) {
+		getElement().setProperty("_custom-class", value);
+	}
+
+	/**
+	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 *
+	 * @return String
+	 */
+	public String getCustomClass() {
+		return getElement().getProperty("_custom-class", null);
 	}
 
 	/**
 	 * Gibt an, ob der Button deaktiviert ist.
+	 *
+	 * @param value String
 	 */
-	public void set_disabled(boolean | undefined _disabled) {
-		getElement().setProperty("_disabled", _disabled);
+	public void setDisabled(final String value) {
+		getElement().setProperty("_disabled", value);
+	}
+
+	/**
+	 * Gibt an, ob der Button deaktiviert ist.
+	 *
+	 * @return String
+	 */
+	public String getDisabled() {
+		return getElement().getProperty("_disabled", null);
 	}
 
 	/**
 	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 *
+	 * @param value String
 	 */
-	public void set_icon(string | undefined | { top: string | KoliBriCustomIcon; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right: string | KoliBriCustomIcon; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; } _icon) {
-		getElement().setProperty("_icon", _icon);
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value);
+	}
+
+	/**
+	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 *
+	 * @return String
+	 */
+	public String getIcon() {
+		return getElement().getProperty("_icon", null);
 	}
 
 	/**
 	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_iconAlign("bottom" | "left" | "right" | "top" | undefined _iconAlign) {
-		getElement().setProperty("_icon-align", _iconAlign);
+	public void setIconAlign(final String value) {
+		getElement().setProperty("_icon-align", value);
+	}
+
+	/**
+	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+	 *
+	 * @return String
+	 */
+	public String getIconAlign() {
+		return getElement().getProperty("_icon-align", null);
 	}
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
+	 *
+	 * @param value String
 	 */
-	public void set_iconOnly(boolean | undefined _iconOnly) {
-		getElement().setProperty("_icon-only", _iconOnly);
+	public void setIconOnly(final String value) {
+		getElement().setProperty("_icon-only", value);
+	}
+
+	/**
+	 * Gibt an, ob nur das Icon angezeigt wird.
+	 *
+	 * @return String
+	 */
+	public String getIconOnly() {
+		return getElement().getProperty("_icon-only", null);
 	}
 
 	/**
 	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
+	 *
+	 * @param value String
 	 */
-	public void set_id(string | undefined _id) {
-		getElement().setProperty("_id", _id);
+	public void setId(final String value) {
+		getElement().setProperty("_id", value);
+	}
+
+	/**
+	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
+	 *
+	 * @return String
+	 */
+	public String getId() {
+		return getElement().getProperty("_id", null);
 	}
 
 	/**
 	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 *
+	 * @param value String
 	 */
-	public void set_label(String _label) {
-		getElement().setProperty("_label", _label);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 *
+	 * @return String
+	 */
+	public String getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**
 	 * Gibt an, welche Role der Schalter hat.
+	 *
+	 * @param value String
 	 */
-	public void set_role("tab" | undefined _role) {
-		getElement().setProperty("_role", _role);
+	public void setRole(final String value) {
+		getElement().setProperty("_role", value);
+	}
+
+	/**
+	 * Gibt an, welche Role der Schalter hat.
+	 *
+	 * @return String
+	 */
+	public String getRole() {
+		return getElement().getProperty("_role", null);
 	}
 
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 *
+	 * @param value String
 	 */
-	public void set_tabIndex(number | undefined _tabIndex) {
-		getElement().setProperty("_tab-index", _tabIndex);
+	public void setTabIndex(final String value) {
+		getElement().setProperty("_tab-index", value);
+	}
+
+	/**
+	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 *
+	 * @return String
+	 */
+	public String getTabIndex() {
+		return getElement().getProperty("_tab-index", null);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_tooltipAlign("bottom" | "left" | "right" | "top" | undefined _tooltipAlign) {
-		getElement().setProperty("_tooltip-align", _tooltipAlign);
+	public void setTooltipAlign(final String value) {
+		getElement().setProperty("_tooltip-align", value);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @return String
+	 */
+	public String getTooltipAlign() {
+		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**
 	 * Gibt an, welche Typ der Button hat.
+	 *
+	 * @param value String
 	 */
-	public void set_type("button" | "reset" | "submit" | undefined _type) {
-		getElement().setProperty("_type", _type);
+	public void setType(final String value) {
+		getElement().setProperty("_type", value);
+	}
+
+	/**
+	 * Gibt an, welche Typ der Button hat.
+	 *
+	 * @return String
+	 */
+	public String getType() {
+		return getElement().getProperty("_type", null);
 	}
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.
+	 *
+	 * @param value String
 	 */
-	public void set_variant("custom" | "danger" | "ghost" | "normal" | "primary" | "secondary" | undefined _variant) {
-		getElement().setProperty("_variant", _variant);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value);
 	}
 
+	/**
+	 * Gibt an, welche Ausprägung der Button hat.
+	 *
+	 * @return String
+	 */
+	public String getVariant() {
+		return getElement().getProperty("_variant", null);
+	}
 }

@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14
   '@angular/core': 11.2.14
-  '@public-ui/components': 1.3.0-rc.10
-  '@public-ui/core': 1.3.0-rc.10
+  '@public-ui/components': 1.3.1
+  '@public-ui/core': 1.3.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14_5xxvadz4tf2tlq4hiwi2uyyjke
   '@angular/core': 11.2.14_rxjs@6.5.5+zone.js@0.11.8
-  '@public-ui/components': 1.3.0-rc.10
-  '@public-ui/core': 1.3.0-rc.10
+  '@public-ui/components': 1.3.1
+  '@public-ui/core': 1.3.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -103,8 +103,8 @@ packages:
       '@babel/highlight': 7.18.6
     dev: true
 
-  /@babel/compat-data/7.20.10:
-    resolution: {integrity: sha512-sEnuDPpOJR/fcafHMjpcpGN5M2jbUGUHwmuWKM/YdPzeEDJg8bgmbcWQFUfE32MQjti1koACvoPVsDe8Uq+idg==}
+  /@babel/compat-data/7.20.14:
+    resolution: {integrity: sha512-0YpKHD6ImkWMEINCyDAD0HLLUH/lPCefG8ld9it8DJB2wnApraKuhgYTvTY1z7UFIfBTGy5LwncZ+5HWWGbhFw==}
     engines: {node: '>=6.9.0'}
     dev: true
 
@@ -114,7 +114,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.7
+      '@babel/generator': 7.20.14
       '@babel/helper-compilation-targets': 7.20.7_@babel+core@7.20.12
       '@babel/helper-module-transforms': 7.20.11
       '@babel/helpers': 7.20.13
@@ -131,8 +131,8 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/generator/7.20.7:
-    resolution: {integrity: sha512-7wqMOJq8doJMZmP4ApXTzLxSr7+oO2jroJURrVEp6XShrQUObV8Tq/D0NCcoYg2uHqUrjzO0zwBjoYzelxK+sw==}
+  /@babel/generator/7.20.14:
+    resolution: {integrity: sha512-AEmuXHdcD3A52HHXxaTmYlb8q/xMEhoRP67B3T4Oq7lbmSoqroMZzjnGj3+i1io3pdnF8iBYVu4Ilj+c4hBxYg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.20.7
@@ -146,10 +146,10 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
-      '@babel/compat-data': 7.20.10
+      '@babel/compat-data': 7.20.14
       '@babel/core': 7.20.12
       '@babel/helper-validator-option': 7.18.6
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       lru-cache: 5.1.1
       semver: 6.3.0
     dev: true
@@ -275,7 +275,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.20.7
+      '@babel/generator': 7.20.14
       '@babel/helper-environment-visitor': 7.18.9
       '@babel/helper-function-name': 7.19.0
       '@babel/helper-hoist-variables': 7.18.6
@@ -335,21 +335,21 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.3.0-rc.10:
-    resolution: {integrity: sha512-BhodmqqWPPfaV2R3I6XhAAnhkGPdXRy22sKlNtTkYKr2ngMX0p6xO2XwLii01zKWNztoLkKNoZq7vHaCXwLO7Q==}
+  /@public-ui/components/1.3.1:
+    resolution: {integrity: sha512-o0wGdlnbb+qD4V4LrrgkN0bXBcP1BHiB6YYGl+Dzx4jC23qwJT6goY/AGvRva7pDFcNUqxfrDBwblBIGkNa+QA==}
     dependencies:
-      '@public-ui/schema': 1.3.0-rc.10
+      '@public-ui/schema': 1.3.1
     dev: true
 
-  /@public-ui/core/1.3.0-rc.10:
-    resolution: {integrity: sha512-T2pUyzlVVHbrM6B7ziLTYcH9hqsIKjhy/F55VGb07LUv8MVF+0F/V0HxrgSaouFd69z5f7d5LLa+zXPeLdwb5A==}
+  /@public-ui/core/1.3.1:
+    resolution: {integrity: sha512-2SHzXiCnRS9eLf5JSLruUXP0URXAyGVjAExex2tRTk8Qt2Usew/Z93DNrsSqKrrVb9Zjx0Q5rDM7OaE9VrZ0UA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.56
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.3.0-rc.10:
-    resolution: {integrity: sha512-Is3ezUnc2peRe5yvbLvpc4HWP72Tvl4AVbc1bBSoBkksWNlCfjCTEXOrL3qi9AWVZQ9mEdZhJT6gRws+AJ7MLQ==}
+  /@public-ui/schema/1.3.1:
+    resolution: {integrity: sha512-ccvBYLMTD+yW4V37UdXEUZngLY29UI6C4ovvgFOcjWMl7IoPnaJncNcoWW88WTf2n6ZNW+LoKVuWLBuTmdXuKw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.56
     dev: true
@@ -409,19 +409,19 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist/4.21.4:
-    resolution: {integrity: sha512-CBHJJdDmgjl3daYjN5Cp5kbTf1mUhZoS+beLklHIvkOWscs83YAhLlF3Wsh/lciQYAcbBJgTOD44VtG31ZM4Hw==}
+  /browserslist/4.21.5:
+    resolution: {integrity: sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001448
+      caniuse-lite: 1.0.30001449
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
-      update-browserslist-db: 1.0.10_browserslist@4.21.4
+      update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
 
-  /caniuse-lite/1.0.30001448:
-    resolution: {integrity: sha512-tq2YI+MJnooG96XpbTRYkBxLxklZPOdLmNIOdIhvf7SNJan6u5vCKum8iT7ZfCt70m1GPkuC7P3TtX6UuhupuA==}
+  /caniuse-lite/1.0.30001449:
+    resolution: {integrity: sha512-CPB+UL9XMT/Av+pJxCKGhdx+yg1hzplvFJQlJ2n68PyQGMz9L/E2zCyLdOL8uasbouTUgnPl+y0tccI/se+BEw==}
     dev: true
 
   /canonical-path/1.0.0:
@@ -782,13 +782,13 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /update-browserslist-db/1.0.10_browserslist@4.21.4:
+  /update-browserslist-db/1.0.10_browserslist@4.21.5:
     resolution: {integrity: sha512-OztqDenkfFkbSG+tRxBeAnCVPckDBcvibKd35yDONx6OU8N7sqgwc7rCbkJ/WcYtVRZ4ba68d6byhC21GFh7sQ==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.21.4
+      browserslist: 4.21.5
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: true

@@ -15,28 +15,60 @@ geschlossen.
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**
 	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 *
+	 * @param value String
 	 */
-	public void set_ariaLabel(String _ariaLabel) {
-		getElement().setProperty("_aria-label", _ariaLabel);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value);
+	}
+
+	/**
+	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 *
+	 * @return String
+	 */
+	public String getAriaLabel() {
+		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Gibt an, ob das Modal angezeigt wird.
+	 *
+	 * @param value String
 	 */
-	public void set_show(boolean | undefined _show) {
-		getElement().setProperty("_show", _show);
+	public void setShow(final String value) {
+		getElement().setProperty("_show", value);
+	}
+
+	/**
+	 * Gibt an, ob das Modal angezeigt wird.
+	 *
+	 * @return String
+	 */
+	public String getShow() {
+		return getElement().getProperty("_show", null);
 	}
 
 	/**
 	 * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
+	 *
+	 * @param value String
 	 */
-	public void set_width(string | undefined _width) {
-		getElement().setProperty("_width", _width);
+	public void setWidth(final String value) {
+		getElement().setProperty("_width", value);
 	}
 
+	/**
+	 * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
+	 *
+	 * @return String
+	 */
+	public String getWidth() {
+		return getElement().getProperty("_width", null);
+	}
 }

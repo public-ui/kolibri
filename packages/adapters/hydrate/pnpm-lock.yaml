@@ -1,39 +1,40 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.3.0-rc.10
+  '@public-ui/components': 1.3.1
   rimraf: 4.1.2
 
 devDependencies:
-  '@public-ui/components': 1.3.0-rc.10
+  '@public-ui/components': 1.3.1
   rimraf: 4.1.2
 
 packages:
+
   /@a11y-ui/core/1.0.1-rc.56:
-    resolution: { integrity: sha512-BJ9iwujVROxc4iTfmihm53DZ20nJ6/2bwis16gv/ZFt1wCs7TKindmFMjtHSdtk2lydP8m/kE0LS6ydElVSjDQ== }
+    resolution: {integrity: sha512-BJ9iwujVROxc4iTfmihm53DZ20nJ6/2bwis16gv/ZFt1wCs7TKindmFMjtHSdtk2lydP8m/kE0LS6ydElVSjDQ==}
     dependencies:
       loglevel: 1.8.1
     dev: true
 
-  /@public-ui/components/1.3.0-rc.10:
-    resolution: { integrity: sha512-ckEuEBsHBBPE+jZcWL79p7bRYpPkPwJ0JG+/DLR3aN0GfJdlsIozyGdO4pNTO0w9ziju2n4l76K++XbFl/Xb9g== }
+  /@public-ui/components/1.3.1:
+    resolution: {integrity: sha512-o0wGdlnbb+qD4V4LrrgkN0bXBcP1BHiB6YYGl+Dzx4jC23qwJT6goY/AGvRva7pDFcNUqxfrDBwblBIGkNa+QA==}
     dependencies:
-      '@public-ui/schema': 1.3.0-rc.10
+      '@public-ui/schema': 1.3.1
     dev: true
 
-  /@public-ui/schema/1.3.0-rc.10:
-    resolution: { integrity: sha512-9kZxf5/xij2Qbot0Xo2b00D2Iu46iBkMmRnd905dMaB5SyW+CRxth+BUksunVgkTbPws+wdiSxU58c+4sRNzbA== }
+  /@public-ui/schema/1.3.1:
+    resolution: {integrity: sha512-ccvBYLMTD+yW4V37UdXEUZngLY29UI6C4ovvgFOcjWMl7IoPnaJncNcoWW88WTf2n6ZNW+LoKVuWLBuTmdXuKw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.56
     dev: true
 
   /loglevel/1.8.1:
-    resolution: { integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg== }
-    engines: { node: '>= 0.6.0' }
+    resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
+    engines: {node: '>= 0.6.0'}
     dev: true
 
   /rimraf/4.1.2:
-    resolution: { integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ== }
-    engines: { node: '>=14' }
+    resolution: {integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true

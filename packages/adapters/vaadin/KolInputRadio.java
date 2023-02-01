@@ -14,105 +14,258 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-radio")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-input-radio")
 public class KolInputRadio extends Component {
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 *
+	 * @param value String
 	 */
-	public void set_accessKey(string | undefined _accessKey) {
-		getElement().setProperty("_access-key", _accessKey);
+	public void setAccessKey(final String value) {
+		getElement().setProperty("_access-key", value);
+	}
+
+	/**
+	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 *
+	 * @return String
+	 */
+	public String getAccessKey() {
+		return getElement().getProperty("_access-key", null);
 	}
 
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 *
+	 * @param value String
 	 */
-	public void set_alert(boolean | undefined _alert) {
-		getElement().setProperty("_alert", _alert);
+	public void setAlert(final String value) {
+		getElement().setProperty("_alert", value);
+	}
+
+	/**
+	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 *
+	 * @return String
+	 */
+	public String getAlert() {
+		return getElement().getProperty("_alert", null);
 	}
 
 	/**
 	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 *
+	 * @param value String
 	 */
-	public void set_disabled(boolean | undefined _disabled) {
-		getElement().setProperty("_disabled", _disabled);
+	public void setDisabled(final String value) {
+		getElement().setProperty("_disabled", value);
+	}
+
+	/**
+	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 *
+	 * @return String
+	 */
+	public String getDisabled() {
+		return getElement().getProperty("_disabled", null);
 	}
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
+	 *
+	 * @param value String
 	 */
-	public void set_error(string | undefined _error) {
-		getElement().setProperty("_error", _error);
+	public void setError(final String value) {
+		getElement().setProperty("_error", value);
+	}
+
+	/**
+	 * Gibt den Text für eine Fehlermeldung an.
+	 *
+	 * @return String
+	 */
+	public String getError() {
+		return getElement().getProperty("_error", null);
 	}
 
 	/**
 	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 *
+	 * @param value String
 	 */
-	public void set_hideLabel(boolean | undefined _hideLabel) {
-		getElement().setProperty("_hide-label", _hideLabel);
+	public void setHideLabel(final String value) {
+		getElement().setProperty("_hide-label", value);
+	}
+
+	/**
+	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 *
+	 * @return String
+	 */
+	public String getHideLabel() {
+		return getElement().getProperty("_hide-label", null);
 	}
 
 	/**
 	 * Gibt den Text für eine Hinweistext an.
+	 *
+	 * @param value String
 	 */
-	public void set_hint(string | undefined _hint) {
-		getElement().setProperty("_hint", _hint);
+	public void setHint(final String value) {
+		getElement().setProperty("_hint", value);
+	}
+
+	/**
+	 * Gibt den Text für eine Hinweistext an.
+	 *
+	 * @return String
+	 */
+	public String getHint() {
+		return getElement().getProperty("_hint", null);
 	}
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
+	 *
+	 * @param value String
 	 */
-	public void set_id(String _id) {
-		getElement().setProperty("_id", _id);
+	public void setId(final String value) {
+		getElement().setProperty("_id", value);
+	}
+
+	/**
+	 * Gibt die technische ID des Eingabefeldes an.
+	 *
+	 * @return String
+	 */
+	public String getId() {
+		return getElement().getProperty("_id", null);
 	}
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
+	 *
+	 * @param value String
 	 */
-	public void set_list(Option<string>[] | string _list) {
-		getElement().setProperty("_list", _list);
+	public void setList(final String value) {
+		getElement().setProperty("_list", value);
+	}
+
+	/**
+	 * Gibt die Liste der Optionen für das Eingabefeld an.
+	 *
+	 * @return String
+	 */
+	public String getList() {
+		return getElement().getProperty("_list", null);
 	}
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
+	 *
+	 * @param value String
 	 */
-	public void set_name(string | undefined _name) {
-		getElement().setProperty("_name", _name);
+	public void setName(final String value) {
+		getElement().setProperty("_name", value);
+	}
+
+	/**
+	 * Gibt den technischen Namen des Eingabefeldes an.
+	 *
+	 * @return String
+	 */
+	public String getName() {
+		return getElement().getProperty("_name", null);
 	}
 
 	/**
 	 * Gibt die Ausrichtung der LinkList an.
+	 *
+	 * @param value String
 	 */
-	public void set_orientation("horizontal" | "vertical" | undefined _orientation) {
-		getElement().setProperty("_orientation", _orientation);
+	public void setOrientation(final String value) {
+		getElement().setProperty("_orientation", value);
+	}
+
+	/**
+	 * Gibt die Ausrichtung der LinkList an.
+	 *
+	 * @return String
+	 */
+	public String getOrientation() {
+		return getElement().getProperty("_orientation", null);
 	}
 
 	/**
 	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 *
+	 * @param value String
 	 */
-	public void set_required(boolean | undefined _required) {
-		getElement().setProperty("_required", _required);
+	public void setRequired(final String value) {
+		getElement().setProperty("_required", value);
+	}
+
+	/**
+	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 *
+	 * @return String
+	 */
+	public String getRequired() {
+		return getElement().getProperty("_required", null);
 	}
 
 	/**
 	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 *
+	 * @param value String
 	 */
-	public void set_tabIndex(number | undefined _tabIndex) {
-		getElement().setProperty("_tab-index", _tabIndex);
+	public void setTabIndex(final String value) {
+		getElement().setProperty("_tab-index", value);
+	}
+
+	/**
+	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 *
+	 * @return String
+	 */
+	public String getTabIndex() {
+		return getElement().getProperty("_tab-index", null);
 	}
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 *
+	 * @param value String
 	 */
-	public void set_touched(boolean | undefined _touched) {
-		getElement().setProperty("_touched", _touched);
+	public void setTouched(final String value) {
+		getElement().setProperty("_touched", value);
+	}
+
+	/**
+	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 *
+	 * @return String
+	 */
+	public String getTouched() {
+		return getElement().getProperty("_touched", null);
 	}
 
 	/**
 	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
+	 *
+	 * @param value String
 	 */
-	public void set_value(boolean | number | object | string | undefined | unknown[] _value) {
-		getElement().setProperty("_value", _value);
+	public void setValue(final String value) {
+		getElement().setProperty("_value", value);
 	}
 
+	/**
+	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
+	 *
+	 * @return String
+	 */
+	public String getValue() {
+		return getElement().getProperty("_value", null);
+	}
 }

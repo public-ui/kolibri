@@ -10,21 +10,42 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-symbol")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-symbol")
 public class KolSymbol extends Component {
 	/**
 	 * Gibt an, was der Screenreader ausgeben soll
+	 *
+	 * @param value String
 	 */
-	public void set_ariaLabel(String _ariaLabel) {
-		getElement().setProperty("_aria-label", _ariaLabel);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value);
+	}
+
+	/**
+	 * Gibt an, was der Screenreader ausgeben soll
+	 *
+	 * @return String
+	 */
+	public String getAriaLabel() {
+		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Dieses Property gibt den String an der angezeigt werden soll.
+	 *
+	 * @param value String
 	 */
-	public void set_symbol(String _symbol) {
-		getElement().setProperty("_symbol", _symbol);
+	public void setSymbol(final String value) {
+		getElement().setProperty("_symbol", value);
 	}
 
+	/**
+	 * Dieses Property gibt den String an der angezeigt werden soll.
+	 *
+	 * @return String
+	 */
+	public String getSymbol() {
+		return getElement().getProperty("_symbol", null);
+	}
 }

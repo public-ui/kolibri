@@ -14,16 +14,16 @@
 
 @font-face {
   font-family: "BundesSans Web";
-	font-style: normal;
+	font-style: italic;
 	font-weight: normal;
-  src: url(font/BundesSans-Web-Regular.woff) format('woff'), url(font/BundesSans-Web-Regular.woff2) format('woff2'), url(font/BundesSans-Web-Regular.ttf) format('truetype');
+  src: url(font/BundesSans-Web-RegularItalic.woff) format('woff'), url(font/BundesSans-Web-RegularItalic.woff2) format('woff2'), url(font/BundesSans-Web-RegularItalic.ttf) format('truetype');
 }
 
 @font-face {
   font-family: "BundesSans Web";
-	font-style: italic;
+	font-style: normal;
 	font-weight: normal;
-  src: url(font/BundesSans-Web-RegularItalic.woff) format('woff'), url(font/BundesSans-Web-RegularItalic.woff2) format('woff2'), url(font/BundesSans-Web-RegularItalic.ttf) format('truetype');
+  src: url(font/BundesSans-Web-Regular.woff) format('woff'), url(font/BundesSans-Web-Regular.woff2) format('woff2'), url(font/BundesSans-Web-Regular.ttf) format('truetype');
 }
 
 /* @font-face {

@@ -9,6 +9,7 @@ npm dist-tag $1 @public-ui/react@$2 $3
 npm dist-tag $1 @public-ui/solid@$2 $3
 npm dist-tag $1 @public-ui/vue@$2 $3
 npm dist-tag $1 @public-ui/components@$2 $3
+npm dist-tag $1 @public-ui/core@$2 $3
 npm dist-tag $1 @public-ui/schema@$2 $3
 npm dist-tag $1 @public-ui/themes@$2 $3
 

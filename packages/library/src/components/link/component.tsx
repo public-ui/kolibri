@@ -51,6 +51,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	private readonly onClick = (event: Event) => {
 		if (typeof this.state._on?.onClick === 'function') {
+			event.preventDefault();
 			setEventTargetAndStopPropagation(event, this.ref);
 			this.state._on?.onClick(event, this.state._href);
 		}
@@ -127,7 +128,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					}}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
-					onClick={undefined}
+					onClick={this.onClick}
 					onKeyPress={this.onClick}
 					{...goToProps}
 					role={this.state._role}

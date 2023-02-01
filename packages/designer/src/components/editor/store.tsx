@@ -731,7 +731,10 @@ export const components: Record<string, Component> = {
 				<KolInputCheckbox _checked _id="anrede5" _variant="switch">
 					Ausgewählt
 				</KolInputCheckbox>
-				<KolInputCheckbox _id="anrede6" _disabled _indeterminate _variant="switch" _touched _error={ERROR_MSG}>
+				<KolInputCheckbox _id="anrede6" _indeterminate _variant="switch" _touched _error={ERROR_MSG}>
+					Unbestimmt (Indeterminate)
+				</KolInputCheckbox>
+				<KolInputCheckbox _id="anrede7" _disabled _indeterminate _variant="switch" _touched _error={ERROR_MSG}>
 					Unbestimmt (Indeterminate)
 				</KolInputCheckbox>
 			</div>
@@ -759,7 +762,10 @@ export const components: Record<string, Component> = {
 			<KolInputColor _id="farb1" _list="['#000000','#ff0000', '#0000ff','#00ff00']" _error={ERROR_MSG}>
 				Farbe
 			</KolInputColor>
-			<KolInputColor _disabled _id="farbe2" _value="#ff0000">
+			<KolInputColor _id="farbe2" _hint='Hilfetext' _value="#ff0000">
+				Farbe (Disabled)
+			</KolInputColor>
+			<KolInputColor _disabled _id="farbe3" _value="#ff0000">
 				Farbe (Disabled)
 			</KolInputColor>
 		</div>
@@ -951,7 +957,7 @@ export const components: Record<string, Component> = {
 				_id="anrede"
 				_error={ERROR_MSG}
 				_name="anrede"
-				_list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
 			>
 				Anrede
 			</KolInputRadio>
@@ -961,7 +967,7 @@ export const components: Record<string, Component> = {
 				_error={ERROR_MSG}
 				_name="anrede2"
 				_value="Firma"
-				_list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)','value':'Herr'},{'label':'Firma','value':'Firma'}]"
 			>
 				Anrede
 			</KolInputRadio>
@@ -972,7 +978,7 @@ export const components: Record<string, Component> = {
 				_error={ERROR_MSG}
 				_name="anrede2"
 				_value="Firma"
-				_list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
 			>
 				Anrede (horizontal)
 			</KolInputRadio>
@@ -983,7 +989,7 @@ export const components: Record<string, Component> = {
 				_error={ERROR_MSG}
 				_name="anrede3"
 				_value="Firma"
-				_list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+				_list="[{'label':'Frau','value':'Frau'},{'disabled':true,'label':'Herr (disabled)'},{'label':'Firma','value':'Firma'}]"
 			>
 				Anrede
 			</KolInputRadio>

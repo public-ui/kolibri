@@ -15,21 +15,42 @@ seine Ausrichtung von **_rechts_** nach **_unten_**.<br/>Analog lässt sich die 
  */
 
 @Tag("kol-details")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.3.0")
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**
 	 * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+	 *
+	 * @param value String
 	 */
-	public void set_open(boolean | undefined _open) {
-		getElement().setProperty("_open", _open);
+	public void setOpen(final String value) {
+		getElement().setProperty("_open", value);
+	}
+
+	/**
+	 * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+	 *
+	 * @return String
+	 */
+	public String getOpen() {
+		return getElement().getProperty("_open", null);
 	}
 
 	/**
 	 * Gibt die Zusammenfassung der Detailbeschreibung an.
+	 *
+	 * @param value String
 	 */
-	public void set_summary(String _summary) {
-		getElement().setProperty("_summary", _summary);
+	public void setSummary(final String value) {
+		getElement().setProperty("_summary", value);
 	}
 
+	/**
+	 * Gibt die Zusammenfassung der Detailbeschreibung an.
+	 *
+	 * @return String
+	 */
+	public String getSummary() {
+		return getElement().getProperty("_summary", null);
+	}
 }

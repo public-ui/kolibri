@@ -22,7 +22,7 @@
 | `_required`          | `_required`    | Gibt an, ob das Eingabefeld ein Pflichtfeld ist.                                     | `boolean \| undefined`                                                                   | `undefined`  |
 | `_tabIndex`          | `_tab-index`   | Gibt an, welchen Tab-Index dieses Input hat.                                         | `number \| undefined`                                                                    | `undefined`  |
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.        | `boolean \| undefined`                                                                   | `false`      |
-| `_value`             | `_value`       | Gibt den Wert der Radio an.                                                          | `string \| undefined`                                                                    | `undefined`  |
+| `_value`             | `_value`       | Gibt den Wert der Radio an.                                                          | `number \| string \| undefined`                                                          | `undefined`  |
 
 ## Dependencies
 
