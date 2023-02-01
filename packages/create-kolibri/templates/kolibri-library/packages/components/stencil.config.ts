@@ -181,7 +181,7 @@ export const config: Config = {
 	bundles: BUNDLES,
 	globalScript: 'src/global/script.ts',
 	globalStyle: 'src/global/style.css',
-	namespace: 'stencil-ssr',
+	namespace: '{{kebab name}}',
 	preamble: 'Web component library based on KoliBri.',
 	outputTargets: outputTargets,
 	plugins: [sass(), postcss()],
