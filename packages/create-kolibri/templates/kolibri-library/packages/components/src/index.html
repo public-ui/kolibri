@@ -2,24 +2,18 @@
 <html dir="ltr" lang="de">
 	<head>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.1.16-rc.7';
-			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.7';
-			register([BMF], [])
-				.then(() => {})
-				.catch(console.warn);
+			import { register } from 'https://esm.sh/@public-ui/core@1.3.1';
+			import { BMF } from 'https://esm.sh/@public-ui/themes@1.3.1';
+			register([BMF], []).catch(console.warn);
 		</script>
 		<meta charset="utf-8" />
 		<title>BIK BITV-Test</title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.jsdelivr.net " /> -->
-		<script type="module" src="build/my-app.esm.js"></script>
-		<script nomodule src="build/my-app.js"></script>
+		<script type="module" src="build/index.esm.js"></script>
+		<script nomodule src="build/index.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
-		<link rel="stylesheet" href="assets/fontawesome-free/css/all.css" />
-		<link rel="stylesheet" href="assets/icofont/icofont.css" />
-		<link rel="stylesheet" href="assets/bund/bund.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -28,10 +22,10 @@
 		/>
 		<link rel="stylesheet" href="assets/style.css" />
 		<meta name="robots" content="noindex" />
-		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false" />
+		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false,experimental-mode=true" />
 	</head>
 
-	<body data-theme="mapz">
+	<body data-theme="bmf">
 		<header></header>
 		<main class="container my-4 d-grid gap-4">
 			<my-example _label="Hello world!"></my-example>

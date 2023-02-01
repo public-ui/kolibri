@@ -1,0 +1,73 @@
+{
+	"name": "@{{kebab name}}/vue",
+	"version": "0.0.0",
+	"license": "EUPL-1.2",
+	"author": {
+		"name": "{{author}}",
+		"email": "{{email}}"
+	},
+	"description": "Vue framework adapter for the KoliBri accessible web component library (@public-ui).",
+	"keywords": [
+		"accessibility",
+		"accessible",
+		"bitv",
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag",
+		"vue"
+	],
+	"scripts": {
+		"build": "unbuild",
+		"prepack": "unbuild"
+	},
+	"devDependencies": {
+		"@{{kebab name}}/components": "0.0.0",
+		"@babel/types": "7.20.7",
+		"@public-ui/components": "1.3.1",
+		"@types/minimatch": "5.1.2",
+		"@types/minimist": "1.2.2",
+		"@types/node": "18.11.18",
+		"@types/normalize-package-data": "2.4.1",
+		"vue": "3.2.45",
+		"typescript": "4.9.5",
+		"unbuild": "1.1.1"
+	},
+	"peerDependencies": {
+		"@{{kebab name}}/components": "0.0.0",
+		"@public-ui/components": "1.3.1",
+		"vue": ">=3"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	]
+}

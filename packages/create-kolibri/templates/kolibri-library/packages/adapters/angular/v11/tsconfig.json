@@ -3,7 +3,7 @@
 		"annotateForClosureCompiler": false,
 		"strictMetadataEmit": true,
 		"flatModuleOutFile": "core.js",
-		"flatModuleId": "@public-ui/angular",
+		"flatModuleId": "@{{kebab name}}/angular",
 		"skipTemplateCodegen": true,
 		"fullTemplateTypeCheck": false,
 		"enableIvy": true

@@ -93,12 +93,37 @@ let outputTargets: OutputTarget[] = [
 	//   generator: generateCSPHashes,
 	// },
 ];
+
 if (process.env.NODE_ENV === 'production') {
 	outputTargets = outputTargets.concat([
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/src/components.ts',
+			directivesProxyFile: '../adapters/angular/v11/src/components.ts',
+			includeImportCustomElements: false,
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v12/src/components.ts',
+			includeImportCustomElements: false,
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v13/src/components.ts',
+			includeImportCustomElements: false,
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v14/src/components.ts',
+			includeImportCustomElements: false,
+		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v15/src/components.ts',
 			includeImportCustomElements: false,
 		}),
 		reactOutputTarget({
@@ -107,18 +132,15 @@ if (process.env.NODE_ENV === 'production') {
 			proxiesFile: '../adapters/react/src/index.ts',
 			includeDefineCustomElements: false,
 		}),
+		vueOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			proxiesFile: '../adapters/vue/src/index.ts',
+			includeDefineCustomElements: false,
+		}),
 		{
 			type: 'dist-custom-elements',
-			generateTypeDeclarations: true,
 		},
-		// {
-		// 	type: 'dist-custom-elements-bundle',
-		// 	externalRuntime: false,
-		// },
-		// {
-		// 	// https://stenciljs.com/docs/hydrate-app
-		// 	type: 'dist-hydrate-script',
-		// },
 		{
 			// https://stenciljs.com/docs/docs-vscode
 			type: 'docs-vscode',
@@ -165,8 +187,9 @@ export const config: Config = {
 	plugins: [sass(), postcss()],
 	rollupPlugins: {
 		before: [],
-		after: [],
+		after: [
+			// nodePolyfills()
+		],
 	},
-	sourceMap: true,
 	taskQueue: 'immediate',
 };
