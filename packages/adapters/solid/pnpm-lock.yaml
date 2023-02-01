@@ -7,7 +7,7 @@ specifiers:
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.9
+  solid-js: 1.6.10
   typescript: 4.9.5
   unbuild: 1.1.1
 
@@ -18,7 +18,7 @@ devDependencies:
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
   '@types/normalize-package-data': 2.4.1
-  solid-js: 1.6.9
+  solid-js: 1.6.10
   typescript: 4.9.5
   unbuild: 1.1.1
 
@@ -1197,8 +1197,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /solid-js/1.6.9:
-    resolution: {integrity: sha512-kV3fMmm+1C2J95c8eDOPKGfZHnuAkHUBLG4hX1Xu08bXeAIPqmxuz/QdH3B8SIdTp3EatBVIyA6RCes3hrGzpg==}
+  /solid-js/1.6.10:
+    resolution: {integrity: sha512-Sf0e6PQCEFkFtbPq0L+93Ua81YQOefBEbvDJ0YXT92b6Lzw0k7UvzSd2l1BbYM+yzE3UmepU1tyMDc/3nIByjA==}
     dependencies:
       csstype: 3.1.1
     dev: true
