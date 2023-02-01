@@ -63,6 +63,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 	private catchAriaExpanded = (button?: HTMLButtonElement) => {
 		if (button instanceof HTMLButtonElement) {
 			this.buttonRef = button;
+			this.triggerAriaExpanded(button);
 		}
 	};
 	private triggerAriaExpanded = (button: HTMLButtonElement) => {
