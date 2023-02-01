@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.58
-  '@public-ui/core': 1.3.2
-  '@public-ui/schema': 1.3.2
+  '@public-ui/core': 1.3.3-rc.0
+  '@public-ui/schema': 1.3.3-rc.0
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.0.0
   '@stencil/postcss': 2.1.0
@@ -51,11 +51,11 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@public-ui/schema': 1.3.2
+  '@public-ui/schema': 1.3.3-rc.0
 
 devDependencies:
   '@a11y-ui/core': 1.0.1-rc.58
-  '@public-ui/core': 1.3.2
+  '@public-ui/core': 1.3.3-rc.0
   '@stencil/angular-output-target': 0.5.0_@stencil+core@3.0.0
   '@stencil/core': 3.0.0
   '@stencil/postcss': 2.1.0_@stencil+core@3.0.0
@@ -104,16 +104,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.57:
-    resolution: {integrity: sha512-WTv0KeLv/djX9o2QxDYf4LaUonLMBV74K0Wmmn4x2Pku/bHtjJIvWSbn3CHunPAkZAMk7RvZGWxVwgOISeZs3w==}
-    dependencies:
-      loglevel: 1.8.1
-
   /@a11y-ui/core/1.0.1-rc.58:
     resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
     dependencies:
       loglevel: 1.8.1
-    dev: true
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1626,17 +1620,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.3.2:
-    resolution: {integrity: sha512-uSrRcrPmCukFyzjfwAdWWcCBD0ZS4yvfnN8PFeLRjhQz3sMCO8V4YAnw2hWvfHS24/95Evki/G8DlMLMsQwq9A==}
+  /@public-ui/core/1.3.3-rc.0:
+    resolution: {integrity: sha512-8V+57oGsxpHjCNRYHzo7fvxu0lZv/Shp6iazbsH+O2x+H5OHYrm6GFs63QmO8GivoRYEWCuklM2QJSsAFl2ckA==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.57
+      '@a11y-ui/core': 1.0.1-rc.58
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.3.2:
-    resolution: {integrity: sha512-ZGaUKYPf06sCtYr1Q6gKkGIcHLPt4Fd7VCXxInvk4OH7Cd6OEloXbxWTXXEssfRXa2b+6acMq0D8MztWcgTkrQ==}
+  /@public-ui/schema/1.3.3-rc.0:
+    resolution: {integrity: sha512-q8IIe61E1/graqajUSVnNZ5oGGMZ/U2uaBF5pYFeofOCbxddVcNhyceeNyjm876bpckdVjd91l9WbHhGMXfQcg==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.57
+      '@a11y-ui/core': 1.0.1-rc.58
     dev: false
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:

@@ -6,10 +6,10 @@ specifiers:
   '@leanup/stack-webpack': 1.3.43
   '@playwright/test': 1.30.0
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.3.1
-  '@public-ui/core': 1.3.1
-  '@public-ui/solid': 1.3.1
-  '@public-ui/themes': 1.3.1
+  '@public-ui/components': 1.3.3-rc.0
+  '@public-ui/core': 1.3.3-rc.0
+  '@public-ui/solid': 1.3.3-rc.0
+  '@public-ui/themes': 1.3.3-rc.0
   '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.49.1
   '@unocss/webpack': 0.49.1
@@ -33,11 +33,11 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_myhne5ebbg2w446eb6zbutyqqa
-  '@public-ui/components': 1.3.1
-  '@public-ui/core': 1.3.1
-  '@public-ui/solid': 1.3.1_vduxr7oz5au6fnec2oy5xfhhqu
-  '@public-ui/themes': 1.3.1_myhne5ebbg2w446eb6zbutyqqa
+  '@public-oss/kolibri-themes': 0.0.3_wophqpebcp5aeeks6uaav7p25e
+  '@public-ui/components': 1.3.3-rc.0
+  '@public-ui/core': 1.3.3-rc.0
+  '@public-ui/solid': 1.3.3-rc.0_64f3sbgwweywcrtq3ss6ftrzk4
+  '@public-ui/themes': 1.3.3-rc.0_wophqpebcp5aeeks6uaav7p25e
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1_feckyf2jam7vk36gev3ykueqty
   register-service-worker: 1.7.2
@@ -68,8 +68,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.56:
-    resolution: {integrity: sha512-BJ9iwujVROxc4iTfmihm53DZ20nJ6/2bwis16gv/ZFt1wCs7TKindmFMjtHSdtk2lydP8m/kE0LS6ydElVSjDQ==}
+  /@a11y-ui/core/1.0.1-rc.58:
+    resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
     dependencies:
       loglevel: 1.8.1
     dev: false
@@ -2363,19 +2363,19 @@ packages:
       playwright-core: 1.30.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_myhne5ebbg2w446eb6zbutyqqa:
+  /@public-oss/kolibri-themes/0.0.3_wophqpebcp5aeeks6uaav7p25e:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.3.1
+      '@public-ui/components': 1.3.3-rc.0
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.3.1:
-    resolution: {integrity: sha512-o0wGdlnbb+qD4V4LrrgkN0bXBcP1BHiB6YYGl+Dzx4jC23qwJT6goY/AGvRva7pDFcNUqxfrDBwblBIGkNa+QA==}
+  /@public-ui/components/1.3.3-rc.0:
+    resolution: {integrity: sha512-Z4ugMyV8Cogolum4SmzoLBib+qfaXYq8hKwodGRoPYurQ1oTj2Ss4Xlel8I4X6SLF6OAHEWrd1BrZvlHOjGbmw==}
     dependencies:
-      '@public-ui/schema': 1.3.1
+      '@public-ui/schema': 1.3.3-rc.0
     dev: false
 
   /@public-ui/core/1.1.15:
@@ -2385,10 +2385,10 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core/1.3.1:
-    resolution: {integrity: sha512-2SHzXiCnRS9eLf5JSLruUXP0URXAyGVjAExex2tRTk8Qt2Usew/Z93DNrsSqKrrVb9Zjx0Q5rDM7OaE9VrZ0UA==}
+  /@public-ui/core/1.3.3-rc.0:
+    resolution: {integrity: sha512-8V+57oGsxpHjCNRYHzo7fvxu0lZv/Shp6iazbsH+O2x+H5OHYrm6GFs63QmO8GivoRYEWCuklM2QJSsAFl2ckA==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.56
+      '@a11y-ui/core': 1.0.1-rc.58
       i18next: 22.4.9
     dev: false
 
@@ -2398,29 +2398,29 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema/1.3.1:
-    resolution: {integrity: sha512-ccvBYLMTD+yW4V37UdXEUZngLY29UI6C4ovvgFOcjWMl7IoPnaJncNcoWW88WTf2n6ZNW+LoKVuWLBuTmdXuKw==}
+  /@public-ui/schema/1.3.3-rc.0:
+    resolution: {integrity: sha512-q8IIe61E1/graqajUSVnNZ5oGGMZ/U2uaBF5pYFeofOCbxddVcNhyceeNyjm876bpckdVjd91l9WbHhGMXfQcg==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.56
+      '@a11y-ui/core': 1.0.1-rc.58
     dev: false
 
-  /@public-ui/solid/1.3.1_vduxr7oz5au6fnec2oy5xfhhqu:
-    resolution: {integrity: sha512-Dw1yhMss5/XF7D91Qsp8k/k2H0kzZKm7UAjjDHhAZYoUXb6YaEnncbdzNqIp9lXIhcbFQnw+MR6T8g6pzgssuw==}
+  /@public-ui/solid/1.3.3-rc.0_64f3sbgwweywcrtq3ss6ftrzk4:
+    resolution: {integrity: sha512-0CK1yf8EQD0Ty2e28eRrVD9DlWuN9m9DctoW8dfcJUvjRC3xen80e4IvkowvZbWGKUtl6eCSyl8lHY+xwZqKEA==}
     peerDependencies:
-      '@public-ui/components': 1.3.1
+      '@public-ui/components': 1.3.3-rc.0
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.3.1
+      '@public-ui/components': 1.3.3-rc.0
       solid-js: 1.6.10
     dev: false
 
-  /@public-ui/themes/1.3.1_myhne5ebbg2w446eb6zbutyqqa:
-    resolution: {integrity: sha512-RUxy8X1bCcXLrax+704GnOZSuYKC6Kz8gMXn3T47wlVIk2FWPFErSjqF07BrfVOzMNhhNLRd8sQA5JgpboANPw==}
+  /@public-ui/themes/1.3.3-rc.0_wophqpebcp5aeeks6uaav7p25e:
+    resolution: {integrity: sha512-fgyp0hPf3k6tJNWq9445Tu0AAYZ/cbtpo6qG8KIRt4jq1NFOyVlDignoOo0Tv7nLrx6Zw5JyAWI+eaoV7ldbZw==}
     peerDependencies:
-      '@public-ui/components': 1.3.1
+      '@public-ui/components': 1.3.3-rc.0
     dependencies:
-      '@public-ui/components': 1.3.1
-      '@public-ui/schema': 1.3.1
+      '@public-ui/components': 1.3.3-rc.0
+      '@public-ui/schema': 1.3.3-rc.0
     dev: false
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
