@@ -1,8 +1,5 @@
-// import 'construct-style-sheets-polyfill';
-
-import { getThemeDetails, register, setThemeStyle } from '@public-ui/core';
+import { getThemeDetails, setThemeStyle } from '@a11y-ui/core';
 import { setMode } from '@stencil/core';
-import { BMF } from '@public-ui/themes';
 
 // ts-prune-ignore-next
 export default (): void => {
@@ -12,8 +9,4 @@ export default (): void => {
 		}
 		return 'default';
 	});
-
-	register([BMF], () => {
-		return new Promise((resolve) => resolve());
-	}).catch(console.warn);
 };

@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12
   '@angular/core': 13.3.12
-  '@public-ui/components': 1.3.1
-  '@public-ui/core': 1.3.1
+  '@public-ui/components': 1.3.3-rc.0
+  '@public-ui/core': 1.3.3-rc.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12_ykntn3hhgp6n6n66y2ne2wuksi
   '@angular/core': 13.3.12_rxjs@7.6.0+zone.js@0.11.8
-  '@public-ui/components': 1.3.1
-  '@public-ui/core': 1.3.1
+  '@public-ui/components': 1.3.3-rc.0
+  '@public-ui/core': 1.3.3-rc.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -36,8 +36,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.56:
-    resolution: {integrity: sha512-BJ9iwujVROxc4iTfmihm53DZ20nJ6/2bwis16gv/ZFt1wCs7TKindmFMjtHSdtk2lydP8m/kE0LS6ydElVSjDQ==}
+  /@a11y-ui/core/1.0.1-rc.58:
+    resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -332,23 +332,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.3.1:
-    resolution: {integrity: sha512-o0wGdlnbb+qD4V4LrrgkN0bXBcP1BHiB6YYGl+Dzx4jC23qwJT6goY/AGvRva7pDFcNUqxfrDBwblBIGkNa+QA==}
+  /@public-ui/components/1.3.3-rc.0:
+    resolution: {integrity: sha512-Z4ugMyV8Cogolum4SmzoLBib+qfaXYq8hKwodGRoPYurQ1oTj2Ss4Xlel8I4X6SLF6OAHEWrd1BrZvlHOjGbmw==}
     dependencies:
-      '@public-ui/schema': 1.3.1
+      '@public-ui/schema': 1.3.3-rc.0
     dev: true
 
-  /@public-ui/core/1.3.1:
-    resolution: {integrity: sha512-2SHzXiCnRS9eLf5JSLruUXP0URXAyGVjAExex2tRTk8Qt2Usew/Z93DNrsSqKrrVb9Zjx0Q5rDM7OaE9VrZ0UA==}
+  /@public-ui/core/1.3.3-rc.0:
+    resolution: {integrity: sha512-8V+57oGsxpHjCNRYHzo7fvxu0lZv/Shp6iazbsH+O2x+H5OHYrm6GFs63QmO8GivoRYEWCuklM2QJSsAFl2ckA==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.56
+      '@a11y-ui/core': 1.0.1-rc.58
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.3.1:
-    resolution: {integrity: sha512-ccvBYLMTD+yW4V37UdXEUZngLY29UI6C4ovvgFOcjWMl7IoPnaJncNcoWW88WTf2n6ZNW+LoKVuWLBuTmdXuKw==}
+  /@public-ui/schema/1.3.3-rc.0:
+    resolution: {integrity: sha512-q8IIe61E1/graqajUSVnNZ5oGGMZ/U2uaBF5pYFeofOCbxddVcNhyceeNyjm876bpckdVjd91l9WbHhGMXfQcg==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.56
+      '@a11y-ui/core': 1.0.1-rc.58
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -413,7 +413,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001449
       electron-to-chromium: 1.4.284
-      node-releases: 2.0.8
+      node-releases: 2.0.9
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
 
@@ -636,8 +636,8 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /node-releases/2.0.8:
-    resolution: {integrity: sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A==}
+  /node-releases/2.0.9:
+    resolution: {integrity: sha512-2xfmOrRkGogbTK9R6Leda0DGiXeY3p2NJpy4+gNCffdUvV6mdEJnaDEic1i3Ec2djAo8jWYoJMR5PB0MSMpxUA==}
     dev: true
 
   /normalize-path/3.0.0:

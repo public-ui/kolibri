@@ -26,7 +26,7 @@ export const getAccordionHtml = (
 					_level: props._level,
 				},
 				{
-					default: `<button>
+					default: `<button aria-expanded="${props._open ? 'true' : 'false'}">
 							${getIconHtml({
 								_ariaLabel: '',
 								_icon: props._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus',

@@ -6,12 +6,6 @@
 		"name": "{{author}}",
 		"email": "{{email}}"
 	},
-	"contributors": [
-		{
-			"name": "{{author}}",
-			"email": "{{email}}"
-		}
-	],
 	"license": "UNLICENSED",
 	"private": true,
 	"scripts": {

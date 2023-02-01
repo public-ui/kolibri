@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@public-ui/core';
+import { Generic } from '@a11y-ui/core';
 import { OptionalProps, OptionalStates, RequiredProps, RequiredStates, States } from './schema';
 
 /**
