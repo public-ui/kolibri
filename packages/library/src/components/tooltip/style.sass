@@ -1,63 +1,30 @@
 /*
 // @import ../style
 
-kol-badge,
-.tooltip /* fix sass formatter */
-	font-size: 1rem
-	position: fixed
-		// position: absolute
-		// position: relative
-	animation-name: fadeInOpacity
-	animation-iteration-count: 1
-	animation-timing-function: ease-in
-	animation-duration: .5s
-	display: none
-	z-index: 1000
-	max-width: 300px
-	box-shadow: 0 0 0.15rem rgba(255,255,255,0.8)
+:host
+	#floating
+		display: none
+		position: fixed
+		animation-name: fadeInOpacity
+		animation-iteration-count: 1
+		animation-timing-function: ease-in
+		animation-duration: .5s
+		box-sizing: border-box
+		box-shadow: 0 0 0.15rem rgba(255,255,255,0.8)
 
-	&::after
-		content: " "
+	#arrow
 		position: absolute
-		border-style: solid
-		border-width: 5px
+		width: 10px
+		height: 10px
+		background: #333
+		transform: rotate(45deg)
+		z-index: 999
 
-	&.arrow-left
-		&::after
-			margin-top: -5px
-			top: 50%
-			right: 100%
-			border-color: transparent black transparent transparent
-
-	&.arrow-right
-		&::after
-			margin-top: -5px
-			top: 50%
-			left: 100%
-			border-color: transparent transparent transparent black
-
-	&.arrow-top
-		&::after
-			margin-left: -5px
-			left: 50%
-			bottom: 100%
-			border-color: transparent transparent black transparent
-
-	&.arrow-bottom
-		&::after
-			margin-left: -5px
-			left: 50%
-			top: 100%
-			border-color: black transparent transparent transparent
-
-	// &::before
-	//   content: ''
-	//   display: inline-block
-	//   vertical-align: middle
-	//   -webkit-transform: rotate(360deg)
-	//   border-style: solid
-	//   border-width: .5rem .5rem .5rem 0
-	//   border-color: transparent black transparent transparent
+	kol-badge
+		font-size: 1rem
+		max-width: 300px
+		z-index: 1000
+		position: relative
 
 @keyframes fadeInOpacity
 	0%
