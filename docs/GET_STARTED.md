@@ -55,7 +55,7 @@ Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, so
 | Methode              | Erläuterung                                             |
 | -------------------- | ------------------------------------------------------- |
 | register             | Setzt ein Theme und registriert anschließend den Loader |
-| BMF                  | Registriert den Loader für z.B. das BMF-Theme           |
+| DEFAULT              | Registriert den Loader für z.B. das DEFAULT-Theme       |
 | defineCustomElements | Registriert den Loader für die Web Components           |
 
 #### Integration
@@ -68,9 +68,9 @@ import { AppComponent } from './components/app/component';
 
 import { register } from '@public-ui/core';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { BMF } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/themes';
 
-register(BMF, defineCustomElements)
+register(DEFAULT, defineCustomElements)
 	.then(() => {
 		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
 		if (htmlDivElement instanceof HTMLDivElement) {

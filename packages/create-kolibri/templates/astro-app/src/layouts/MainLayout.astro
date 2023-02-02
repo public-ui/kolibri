@@ -21,13 +21,13 @@ import Search from '../components/Search';
 		<script type="module">
 			import { register } from 'https://esm.sh/@public-ui/core@1.1.16-rc.7';
 			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16-rc.7/dist/loader';
-			import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.7';
-			register([BMF], defineCustomElements)
+			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.1.16-rc.7';
+			register([DEFAULT], defineCustomElements)
 				.then(() => {})
 				.catch(console.warn);
 		</script>
 	</head>
-	<body class="bmf" data-theme="bmf">
+	<body class="default" data-theme="default">
 		<div id="app">
 			<Search />
 		</div>

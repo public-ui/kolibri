@@ -4,7 +4,7 @@ import IMG_FRAMEWORK from '../../assets/logo.react.png';
 
 export const AppComponent = (): JSX.Element => {
 	return (
-		<div className="bmf container mx-auto my-10 max-w-800px">
+		<div className="default container mx-auto my-10 max-w-800px">
 			<header className="text-center">
 				<div className="grid grid-cols-2 items-center">
 					<div>

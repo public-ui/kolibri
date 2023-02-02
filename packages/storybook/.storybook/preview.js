@@ -20,20 +20,13 @@ import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/core';
 import { TH } from '@public-oss/kolibri-themes';
-import { BAMF, BMF, BPA, BZST, DESY, ITVSH, ITZBund, MAPZ, NXT, ZOLL } from '@public-ui/themes';
+import { DEFAULT, BPA, DEFAULT, ITZBund, DEFAULT } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
-	// { name: 'BAMF-Styleguide', class: 'bamf', color: '', disabled: true },
-	{ name: 'BMF-Styleguide', class: 'bmf', color: '#004b76' },
 	// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
-	{ name: 'BZSt-Styleguide (WIP)', class: 'bzst', color: '#23614e' },
-	{ name: 'DESY-Styleguide', class: 'desy', color: '#326cae' },
-	{ name: 'Hamburg-Styleguide (WIP)', class: 'hh', color: '#e10019' },
-	{ name: 'ITZBund-Styleguide (Demo)', class: 'itzbund', color: '#007a89' },
-	{ name: 'MAPZoll-Styleguide', class: 'mapz', color: '#1e538f' },
-	{ name: 'Next-Styleguide (WIP)', class: 'nxt', color: '#003064' },
-	{ name: 'Styleguide des Freistaates Thüringen (WIP)', class: 'th', color: '#0089C1' },
-	// { name: 'ZOLL-Styleguide (WIP)', class: 'zoll', color: '#326cae' },
+	{ name: 'DEFAULT-Styleguide (untested)', class: 'default', color: '#326cae' },
+	{ name: 'ITZBund-Styleguide (untested)', class: 'itzbund', color: '#007a89' },
+	{ name: 'Styleguide des Freistaates Thüringen (untested)', class: 'th', color: '#0089C1' },
 ];
 const CACHED_SELECTED_THEME = localStorage.getItem('kolibri-storybook-theme');
 
@@ -49,11 +42,11 @@ const switchTheme = (className) => {
 	if (themeDetails) {
 		document.body.dataset.theme = themeDetails.class;
 	} else {
-		document.body.dataset.theme = 'bmf';
+		document.body.dataset.theme = 'default';
 	}
 };
 
-register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, TH, ZOLL], [kolibri, leanup], {
+register([DEFAULT, ITZBund, DEFAULT, BPA, DEFAULT, TH, DEFAULT], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
 	},
