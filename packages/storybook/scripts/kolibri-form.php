@@ -13,8 +13,8 @@
 	<script type="module">
 		import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.4';
 		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.4/dist/loader';
-		import { MAPZ } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.4';
-		register(MAPZ, defineCustomElements)
+		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.4';
+		register(DEFAULT, defineCustomElements)
 			.then(() => { })
 			.catch(console.warn);
 	</script>
@@ -61,7 +61,7 @@
 </head>
 
 <body>
-	<main class="mapz" data-theme="mapz">
+	<main class="default" data-theme="default">
 		<kol-link _href="https://public-ui.github.io" _target="github">
 			<kol-kolibri _labeled="false"></kol-kolibri>
 		</kol-link>

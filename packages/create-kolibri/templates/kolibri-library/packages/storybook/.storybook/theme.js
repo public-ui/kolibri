@@ -5,12 +5,12 @@ import { create } from '@storybook/theming';
 import { register } from '@public-ui/core';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
-import { BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL } from '@public-ui/themes';
+import { DEFAULT, ITZBund, DEFAULT, BPA, DEFAULT } from '@public-ui/themes';
 
-register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL], [kolibri, leanup], {
+register([DEFAULT, ITZBund, DEFAULT, BPA, DEFAULT], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
-		name: 'bmf',
+		name: 'default',
 	},
 })
 	.then(() => {
@@ -21,26 +21,12 @@ register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL], [kolibri
 					const classAttributes = mutations.filter((mutation) => mutation.type === 'attributes' && mutation.attributeName === 'class');
 					if (classAttributes.length > 0) {
 						const className = classAttributes[classAttributes.length - 1].target.className;
-						if (className.includes('bamf')) {
-							document.body.dataset.theme = 'bamf';
-						} else if (className.includes('bmf')) {
-							document.body.dataset.theme = 'bmf';
-						} else if (className.includes('bpa')) {
+						if (className.includes('bpa')) {
 							document.body.dataset.theme = 'bpa';
-						} else if (className.includes('bzst')) {
-							document.body.dataset.theme = 'bzst';
-						} else if (className.includes('desy')) {
-							document.body.dataset.theme = 'desy';
-						} else if (className.includes('hh')) {
-							document.body.dataset.theme = 'hh';
+						} else if (className.includes('default')) {
+							document.body.dataset.theme = 'default';
 						} else if (className.includes('itzbund')) {
 							document.body.dataset.theme = 'itzbund';
-						} else if (className.includes('mapz')) {
-							document.body.dataset.theme = 'mapz';
-						} else if (className.includes('nxt')) {
-							document.body.dataset.theme = 'nxt';
-						} else if (className.includes('zoll')) {
-							document.body.dataset.theme = 'zoll';
 						}
 					}
 				}),
@@ -49,7 +35,7 @@ register([BMF, BZST, ITZBund, MAPZ, BAMF, BPA, DESY, ITVSH, NXT, ZOLL], [kolibri
 				};
 			observer.observe(document.body, config);
 		}
-		document.body.dataset.theme = 'bmf';
+		document.body.dataset.theme = 'default';
 	})
 	.catch(console.warn);
 

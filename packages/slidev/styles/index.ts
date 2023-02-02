@@ -1,10 +1,10 @@
 import { register } from '@public-ui/core';
 import { TH } from '@public-oss/kolibri-themes';
-import { BMF, BZST, DESY, ITZBund, MAPZ, ZOLL } from '@public-ui/themes';
+import { DEFAULT, ITZBund, DEFAULT } from '@public-ui/themes';
 import './base.css';
 
 register(
-	[BMF, BZST, DESY, ITZBund, MAPZ, TH, ZOLL],
+	[DEFAULT, ITZBund, DEFAULT, TH, DEFAULT],
 	() => {
 		return new Promise((resolve) => resolve());
 	},
@@ -15,6 +15,6 @@ register(
 	}
 )
 	.then(() => {
-		document.body.dataset.theme = 'bmf';
+		document.body.dataset.theme = 'default';
 	})
 	.catch(() => console.warn);

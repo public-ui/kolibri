@@ -69,10 +69,10 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
-		<!-- CDN for ZOLL -->
+		<!-- CDN for DEFAULT -->
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
-		<!-- Assets for BMF -->
+		<!-- Assets for DEFAULT -->
 		<link rel="stylesheet" href="assets/bund/bund.css" />
 		<link rel="stylesheet" href="assets/fontawesome-free/v6/css/all.min.css" />
 	</head>
@@ -87,7 +87,7 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 | Methode              | Erläuterung                                            |
 | -------------------- | ------------------------------------------------------ |
 | register             | Setzt ein Theme und registiert anschließend den Loader |
-| BMF                  | Registiert den Loader für z.B. das BMF-Theme           |
+| DEFAULT              | Registiert den Loader für z.B. das DEFAULT-Theme       |
 | defineCustomElements | Registiert den Loader für die Web Components           |
 
 <kol-heading _level="4">Variant A: Statisches Projekt</kol-heading>
@@ -97,8 +97,8 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 	<script type="module">
 		import { register } from 'https://esm.sh/@public-ui/core@1.1.16';
 		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.16/dist/loader';
-		import { BMF } from 'https://esm.sh/@public-ui/themes@1.1.16';
-		register([BMF], defineCustomElements)
+		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.1.16';
+		register([DEFAULT], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);
 	</script>
@@ -120,9 +120,9 @@ import { AppComponent } from './components/app/component';
 
 import { register } from '@public-ui/core';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { BMF } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/themes';
 
-register(BMF, defineCustomElements)
+register(DEFAULT, defineCustomElements)
 	.then(() => {
 		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
 		if (htmlDivElement instanceof HTMLDivElement) {

@@ -161,9 +161,9 @@ export const AppComponent: Component = () => {
 	};
 
 	return (
-		<div class="font-sans grid gap-2" data-theme="mapz">
+		<div class="font-sans grid gap-2" data-theme="default">
 			{/* <InputComponent /> */}
-			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end mapz">
+			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end default">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
 					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search">
 						Theme
@@ -244,7 +244,7 @@ export const AppComponent: Component = () => {
 				fallback={
 					<>
 						<EditorComponent propsStyle={getPropsStyle()} tagName={getComponent()} theme={getTheme()}></EditorComponent>
-						<div class="grid gap-2 mapz">
+						<div class="grid gap-2 default">
 							<div class="mt-4">
 								Drücke entweder <code class="text-lg border-1 rounded px-1">Strg + S</code> oder <code class="text-lg border-1 rounded px-1">Command + S</code>,
 								um die Änderungen zu übernehmen und zu speichern.
@@ -262,7 +262,7 @@ export const AppComponent: Component = () => {
 				}
 			>
 				<Match when={getShow() === 'overview'}>
-					<div class="grid gap-2 mapz">
+					<div class="grid gap-2 default">
 						<div class="w-full overflow-scroll">
 							<img alt="Abhängigkeitsgraph der Komponenten" src={AllComp as unknown as string}></img>
 						</div>
@@ -270,7 +270,7 @@ export const AppComponent: Component = () => {
 					</div>
 				</Match>
 				<Match when={getShow() === 'result'}>
-					<div class="grid gap-2 p-4 mapz">
+					<div class="grid gap-2 p-4 default">
 						<div>
 							<KolHeading>Theming</KolHeading>
 							<KolAlert _type="info">

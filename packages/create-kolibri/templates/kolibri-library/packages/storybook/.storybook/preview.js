@@ -154,21 +154,14 @@ export const parameters = {
 	},
 	themes: {
 		clearable: false,
-		default: 'BMF-Styleguide',
+		default: 'DEFAULT-Styleguide',
 		onChange: (theme) => {
 			document.body.dataset.theme = theme.class;
 		},
 		list: [
-			// { name: 'BAMF-Styleguide', class: 'bamf', color: '', disabled: true },
-			{ name: 'BMF-Styleguide', class: 'bmf', color: '#004b76' },
 			// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
-			{ name: 'BZSt-Styleguide (WIP)', class: 'bzst', color: '#23614e' },
-			{ name: 'DESY-Styleguide', class: 'desy', color: '#326cae' },
-			{ name: 'Hamburg-Styleguide (WIP)', class: 'hh', color: '#e10019' },
+			{ name: 'DEFAULT-Styleguide', class: 'default', color: '#004b76' },
 			{ name: 'ITZBund-Styleguide (Demo)', class: 'itzbund', color: '#007a89' },
-			{ name: 'MAPZoll-Styleguide', class: 'mapz', color: '#1e538f' },
-			{ name: 'Next-Styleguide (WIP)', class: 'nxt', color: '#003064' },
-			// { name: 'ZOLL-Styleguide (WIP)', class: 'zoll', color: '#326cae' },
 		],
 	},
 	viewMode: 'docs',
