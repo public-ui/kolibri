@@ -1,17 +1,11 @@
 {
 	"name": "@{{kebab name}}/schema",
 	"version": "0.0.0",
+	"license": "EUPL-1.2",
 	"author": {
 		"name": "{{author}}",
 		"email": "{{email}}"
 	},
-	"contributors": [
-		{
-			"name": "{{author}}",
-			"email": "{{email}}"
-		}
-	],
-	"license": "EUPL-1.2",
 	"sideEffects": false,
 	"description": "Das Schema-Modul beinhaltet die konkrete Spezifikation der Komponenten-Bibliothek.",
 	"scripts": {
@@ -23,7 +17,7 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/core": "^1.1.16"
+		"@a11y-ui/core": "^1.0.1-rc.58"
 	},
 	"devDependencies": {
 		"@types/node": "^18.11.9",

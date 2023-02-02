@@ -1,5 +1,16 @@
 {
-	"packages": ["packages/adapters/angular", "packages/adapters/react", "packages/components", "packages/schema", "packages/storybook"],
+	"packages": [
+		"packages/adapters/angular/v11",
+		"packages/adapters/angular/v12",
+		"packages/adapters/angular/v13",
+		"packages/adapters/angular/v14",
+		"packages/adapters/angular/v15",
+		"packages/adapters/react",
+		"packages/adapters/vue",
+		"packages/components",
+		"packages/schema",
+		"packages/storybook"
+	],
 	"useNx": false,
 	"version": "0.0.0"
 }

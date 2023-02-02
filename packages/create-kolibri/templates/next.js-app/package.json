@@ -6,12 +6,6 @@
 		"name": "{{author}}",
 		"email": "{{email}}"
 	},
-	"contributors": [
-		{
-			"name": "{{author}}",
-			"email": "{{email}}"
-		}
-	],
 	"license": "UNLICENSED",
 	"browser": false,
 	"main": "index.js",
@@ -24,10 +18,10 @@
 	},
 	"dependencies": {
 		"@leanup/stack": "^1.3.39",
-		"@public-ui/components": "^1.1.16",
-		"@public-ui/core": "^1.1.16",
-		"@public-ui/react": "^1.1.16",
-		"@public-ui/themes": "^1.1.16",
+		"@public-ui/components": "^1.3.3-rc.0",
+		"@public-ui/core": "^1.3.3-rc.0",
+		"@public-ui/react": "^1.3.3-rc.0",
+		"@public-ui/themes": "^1.3.3-rc.0",
 		"@stencil/core": "^2.20.0",
 		"next": "^13.0.7",
 		"react": "^18.2.0",

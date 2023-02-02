@@ -30,6 +30,7 @@ README.md
 unocss.config.ts
 workbox-config.js
 
+!kolibri-library/**/assets
 !kolibri-library/**/.ts-prunerc.js
 !kolibri-library/**/.eslintignore
 !kolibri-library/**/.prettierignore

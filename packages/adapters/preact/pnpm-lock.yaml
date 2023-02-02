@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.3.1
-  '@public-ui/react': 1.3.1
+  '@public-ui/components': 1.3.3-rc.0
+  '@public-ui/react': 1.3.3-rc.0
   preact: '>=10.11.3'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@public-ui/react': 1.3.1_3mcpq2lrm766kpswdteqwxa654
+  '@public-ui/react': 1.3.3-rc.0_otcgyjjxe4v4hubdu24t4qtkbe
   preact: 10.11.3
 
 devDependencies:
-  '@public-ui/components': 1.3.1
+  '@public-ui/components': 1.3.3-rc.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -22,8 +22,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.56:
-    resolution: {integrity: sha512-BJ9iwujVROxc4iTfmihm53DZ20nJ6/2bwis16gv/ZFt1wCs7TKindmFMjtHSdtk2lydP8m/kE0LS6ydElVSjDQ==}
+  /@a11y-ui/core/1.0.1-rc.58:
+    resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
     dependencies:
       loglevel: 1.8.1
 
@@ -491,27 +491,27 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.3.1:
-    resolution: {integrity: sha512-o0wGdlnbb+qD4V4LrrgkN0bXBcP1BHiB6YYGl+Dzx4jC23qwJT6goY/AGvRva7pDFcNUqxfrDBwblBIGkNa+QA==}
+  /@public-ui/components/1.3.3-rc.0:
+    resolution: {integrity: sha512-Z4ugMyV8Cogolum4SmzoLBib+qfaXYq8hKwodGRoPYurQ1oTj2Ss4Xlel8I4X6SLF6OAHEWrd1BrZvlHOjGbmw==}
     dependencies:
-      '@public-ui/schema': 1.3.1
+      '@public-ui/schema': 1.3.3-rc.0
 
-  /@public-ui/react/1.3.1_3mcpq2lrm766kpswdteqwxa654:
-    resolution: {integrity: sha512-vaOF2GTbJSKm/GM4q69Cv87d7ZGXmX9aYXxvzOhYVawIMvD/aQPDhcmtekIE510PUcwNa93cn63sx/zPzQk9+Q==}
+  /@public-ui/react/1.3.3-rc.0_otcgyjjxe4v4hubdu24t4qtkbe:
+    resolution: {integrity: sha512-oN95+ZFowgWVtvYHMIre3NzfmI/nZRDm24oXDl2hi4MqkNfbG63PBw3C6yUH6vIFJMO56f3z7Ocx8awrr28QeA==}
     peerDependencies:
-      '@public-ui/components': 1.3.1
+      '@public-ui/components': 1.3.3-rc.0
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.3.1
+      '@public-ui/components': 1.3.3-rc.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.3.1:
-    resolution: {integrity: sha512-ccvBYLMTD+yW4V37UdXEUZngLY29UI6C4ovvgFOcjWMl7IoPnaJncNcoWW88WTf2n6ZNW+LoKVuWLBuTmdXuKw==}
+  /@public-ui/schema/1.3.3-rc.0:
+    resolution: {integrity: sha512-q8IIe61E1/graqajUSVnNZ5oGGMZ/U2uaBF5pYFeofOCbxddVcNhyceeNyjm876bpckdVjd91l9WbHhGMXfQcg==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.56
+      '@a11y-ui/core': 1.0.1-rc.58
 
   /@rollup/plugin-alias/4.0.3_rollup@3.12.0:
     resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
@@ -569,7 +569,7 @@ packages:
       '@rollup/pluginutils': 5.0.2_rollup@3.12.0
       '@types/resolve': 1.20.2
       deepmerge: 4.3.0
-      is-builtin-module: 3.2.0
+      is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.1
       rollup: 3.12.0
@@ -649,7 +649,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001449
       electron-to-chromium: 1.4.284
-      node-releases: 2.0.8
+      node-releases: 2.0.9
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
 
@@ -898,8 +898,8 @@ packages:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: true
 
-  /is-builtin-module/3.2.0:
-    resolution: {integrity: sha512-phDA4oSGt7vl1n5tJvTWooWWAsXLY+2xCnxNqvKhGEzujg+A43wPlPOyDg3C8XQHN+6k/JTQWJ/j0dQh/qr+Hw==}
+  /is-builtin-module/3.2.1:
+    resolution: {integrity: sha512-BSLE3HnV2syZ0FK0iMA/yUGplUeMmNz4AW5fnTunbCIqZi4vG3WjJT9FHMy5D69xmAYBHXQhJdALdpwVxV501A==}
     engines: {node: '>=6'}
     dependencies:
       builtin-modules: 3.3.0
@@ -1059,8 +1059,8 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /node-releases/2.0.8:
-    resolution: {integrity: sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A==}
+  /node-releases/2.0.9:
+    resolution: {integrity: sha512-2xfmOrRkGogbTK9R6Leda0DGiXeY3p2NJpy4+gNCffdUvV6mdEJnaDEic1i3Ec2djAo8jWYoJMR5PB0MSMpxUA==}
     dev: true
 
   /once/1.4.0:
