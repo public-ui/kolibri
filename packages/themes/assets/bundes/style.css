@@ -1,0 +1,84 @@
+@font-face {
+	font-family: 'BundesSans Web';
+	font-style: normal;
+	font-weight: bold;
+	src: url(sans/BundesSans-Web-Bold.woff) format('woff'), url(sans/BundesSans-Web-Bold.woff2) format('woff2'),
+		url(sans/BundesSans-Web-Bold.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: normal;
+	font-weight: bold;
+	src: url(serif/BundesSerif-Web-Bold.woff) format('woff'), url(sans/BundesSerif-Web-Bold.woff2) format('woff2'),
+		url(sans/BundesSerif-Web-Bold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSans Web';
+	font-style: italic;
+	font-weight: bolder;
+	src: url(sans/BundesSans-Web-BoldItalic.woff) format('woff'), url(sans/BundesSans-Web-BoldItalic.woff2) format('woff2'),
+		url(sans/BundesSans-Web-BoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: italic;
+	font-weight: bolder;
+	src: url(serif/BundesSerif-Web-BoldItalic.woff) format('woff'), url(serif/BundesSerif-Web-BoldItalic.woff2) format('woff2'),
+		url(serif/BundesSerif-Web-BoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSans Web';
+	font-style: italic;
+	font-weight: normal;
+	src: url(sans/BundesSans-Web-RegularItalic.woff) format('woff'), url(sans/BundesSans-Web-RegularItalic.woff2) format('woff2'),
+		url(sans/BundesSans-Web-RegularItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: italic;
+	font-weight: normal;
+	src: url(serif/BundesSerif-Web-RegularItalic.woff) format('woff'), url(serif/BundesSerif-Web-RegularItalic.woff2) format('woff2'),
+		url(serif/BundesSerif-Web-RegularItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSans Web';
+	font-style: normal;
+	font-weight: normal;
+	src: url(sans/BundesSans-Web-Regular.woff) format('woff'), url(sans/BundesSans-Web-Regular.woff2) format('woff2'),
+		url(sans/BundesSans-Web-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSansCond Web';
+	font-style: normal;
+	font-weight: normal;
+	src: url(sans-cond/BundesSansCond-Web-Regular.woff) format('woff'), url(sans-cond/BundesSansCond-Web-Regular.woff2) format('woff2'),
+		url(sans-cond/BundesSansCond-Web-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'BundesSerif Web';
+	font-style: normal;
+	font-weight: normal;
+	src: url(serif/BundesSerif-Web-Regular.woff) format('woff'), url(serif/BundesSerif-Web-Regular.woff2) format('woff2'),
+		url(serif/BundesSerif-Web-Regular.ttf) format('truetype');
+}
+
+/* @font-face {
+  font-family: "BundesSans Web";
+	font-style: normal;
+	font-weight: lighter;
+  src: url(sans/BundesSans-Web-Light.woff) format('woff'), url(sans/BundesSans-Web-Light.woff2) format('woff2'), url(sans/BundesSans-Web-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "BundesSans Web";
+	font-style: italic;
+	font-weight: lighter;
+  src: url(sans/BundesSans-Web-LightItalic.woff) format('woff'), url(sans/BundesSans-Web-LightItalic.woff2) format('woff2'), url(sans/BundesSans-Web-LightItalic.ttf) format('truetype');
+} */

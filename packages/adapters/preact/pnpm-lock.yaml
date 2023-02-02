@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.3.3-rc.0
-  '@public-ui/react': 1.3.3-rc.0
+  '@public-ui/components': 1.3.3-rc.1
+  '@public-ui/react': 1.3.3-rc.1
   preact: '>=10.11.3'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@public-ui/react': 1.3.3-rc.0_otcgyjjxe4v4hubdu24t4qtkbe
+  '@public-ui/react': 1.3.3-rc.1_rvrf6bjxuss3gu3veeq7sn6gpu
   preact: 10.11.3
 
 devDependencies:
-  '@public-ui/components': 1.3.3-rc.0
+  '@public-ui/components': 1.3.3-rc.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -491,25 +491,25 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.3.3-rc.0:
-    resolution: {integrity: sha512-Z4ugMyV8Cogolum4SmzoLBib+qfaXYq8hKwodGRoPYurQ1oTj2Ss4Xlel8I4X6SLF6OAHEWrd1BrZvlHOjGbmw==}
+  /@public-ui/components/1.3.3-rc.1:
+    resolution: {integrity: sha512-fTs9IoGWmA/uAipQpDSCU2it8qCSM9dPX2PQwYlglL08tJBjuYG8LfIOBviZj2tHObdyHHjKCmHjdkXqxEpAkQ==}
     dependencies:
-      '@public-ui/schema': 1.3.3-rc.0
+      '@public-ui/schema': 1.3.3-rc.1
 
-  /@public-ui/react/1.3.3-rc.0_otcgyjjxe4v4hubdu24t4qtkbe:
-    resolution: {integrity: sha512-oN95+ZFowgWVtvYHMIre3NzfmI/nZRDm24oXDl2hi4MqkNfbG63PBw3C6yUH6vIFJMO56f3z7Ocx8awrr28QeA==}
+  /@public-ui/react/1.3.3-rc.1_rvrf6bjxuss3gu3veeq7sn6gpu:
+    resolution: {integrity: sha512-oTdSV9elniIex/a3OEdxVcmL/wGm4wfITwi3OXRfDfoo6sVDZ5W2P/+ldg+5YJYMUvWD7ilHV4JDv5Y/TAZdKA==}
     peerDependencies:
-      '@public-ui/components': 1.3.3-rc.0
+      '@public-ui/components': 1.3.3-rc.1
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.3.3-rc.0
+      '@public-ui/components': 1.3.3-rc.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.3.3-rc.0:
-    resolution: {integrity: sha512-q8IIe61E1/graqajUSVnNZ5oGGMZ/U2uaBF5pYFeofOCbxddVcNhyceeNyjm876bpckdVjd91l9WbHhGMXfQcg==}
+  /@public-ui/schema/1.3.3-rc.1:
+    resolution: {integrity: sha512-tKOAEOIdG5LroF2cs+HX9eUq3HMdI+4mjvSajnG/eaDF0V2QqqIOSZpvtaJgpiHfQQQpXMZlwNJ4nlnEe5my+Q==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.58
 
