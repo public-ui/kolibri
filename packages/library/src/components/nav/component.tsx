@@ -388,6 +388,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
+		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateCollapsible(this._collapsible);
 		this.validateCompact(this._compact);
