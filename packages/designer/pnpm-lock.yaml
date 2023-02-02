@@ -11,15 +11,15 @@ specifiers:
   '@public-ui/solid': 1.3.3-rc.1
   '@public-ui/themes': 1.3.3-rc.1
   '@types/prettier': 2.7.2
-  '@unocss/preset-mini': 0.49.1
-  '@unocss/webpack': 0.49.1
+  '@unocss/preset-mini': 0.49.4
+  '@unocss/webpack': 0.49.4
   chromedriver: 109.0.0
   depcheck: 1.4.3
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-no-loops: 0.3.0
   monaco-editor: 0.34.1
   monaco-editor-webpack-plugin: 7.0.1
-  nightwatch-axe-verbose: 2.1.1
+  nightwatch-axe-verbose: 2.2.0
   playwright: 1.30.0
   prettier: 2.8.3
   react-dev-utils: 12.0.1
@@ -48,13 +48,13 @@ devDependencies:
   '@leanup/stack-webpack': 1.3.43_hcg25szu22gvo5uedqas7xlygq
   '@playwright/test': 1.30.0
   '@types/prettier': 2.7.2
-  '@unocss/preset-mini': 0.49.1
-  '@unocss/webpack': 0.49.1_webpack@5.75.0
+  '@unocss/preset-mini': 0.49.4
+  '@unocss/webpack': 0.49.4_webpack@5.75.0
   chromedriver: 109.0.0
   depcheck: 1.4.3
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.33.0
   eslint-plugin-no-loops: 0.3.0_eslint@8.33.0
-  nightwatch-axe-verbose: 2.1.1
+  nightwatch-axe-verbose: 2.2.0
   playwright: 1.30.0
   prettier: 2.8.3
   react-dev-utils: 12.0.1_5nsnk2aswgmt3bqwilhpeaeih4
@@ -2499,33 +2499,33 @@ packages:
     resolution: {integrity: sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==}
     dev: true
 
-  /@unocss/config/0.49.1:
-    resolution: {integrity: sha512-26026xrpRabFFR5CbdqGSQVspgj1sEkcct7Z9yA5GC/osues16kAHzwNaO3JtmRTjXsrxZ6568sTtX2qo6UmnA==}
+  /@unocss/config/0.49.4:
+    resolution: {integrity: sha512-Uaifd1QhqpTcqCg+hFR4XuvOck/EbdxcT4qaDuR/VGPfflWcpe6Bw75H7A++emM0LcCGTJ/e54sSpJ7OuYfU4w==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.49.1
+      '@unocss/core': 0.49.4
       unconfig: 0.3.7
     dev: true
 
-  /@unocss/core/0.49.1:
-    resolution: {integrity: sha512-l+L1c8eCwfaQA1sAYDE+xJ+r9ocfyTo9KzRUOIy5eV/wxC82HoLtJN8wIGuWaY8fGQh/gT74Czfq7g7BFNKhaw==}
+  /@unocss/core/0.49.4:
+    resolution: {integrity: sha512-1RNV+KBgRo0uuaa5Etwc5cfxkdhJelIXRFz3LeXBOU4dIrTzBAMr352M+oZ/nnkbnAROGf3icTE0UcmSaCA2RQ==}
     dev: true
 
-  /@unocss/preset-mini/0.49.1:
-    resolution: {integrity: sha512-U2cjE9YjA4ft4zPP4u34QNhCsgdNWf+Pvvw2lQ2tjzP55h1eGSH6lQxnhpESMpnmec3jwP3pK4+zbvnaMhNVlA==}
+  /@unocss/preset-mini/0.49.4:
+    resolution: {integrity: sha512-GsVKBRi2BbliEic7SfdY2AG03T+wEOd3yZOY+NtwEJ9Z/hwb1zRQHiizDuyth0E3FCHVfZkk9C0/WXy8Z1Qj3g==}
     dependencies:
-      '@unocss/core': 0.49.1
+      '@unocss/core': 0.49.4
     dev: true
 
-  /@unocss/webpack/0.49.1_webpack@5.75.0:
-    resolution: {integrity: sha512-y2QFqa92RBWPcRJqM6P5JEKKqelNNeKIJZabbiihPmwinglPFIGUILFX9u5nkfakWbQCkfK6Mz6gichL1hCcdg==}
+  /@unocss/webpack/0.49.4_webpack@5.75.0:
+    resolution: {integrity: sha512-yQmea8c3lJp8mO9j1YD1f9zmqEOqYAhjCR7FkdqvauzmPrUII8KZOEEjPv4Q16Tgld6AU2YOVjHEFl/IAemEcg==}
     peerDependencies:
       webpack: ^4 || ^5
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@rollup/pluginutils': 5.0.2
-      '@unocss/config': 0.49.1
-      '@unocss/core': 0.49.1
+      '@unocss/config': 0.49.4
+      '@unocss/core': 0.49.4
       chokidar: 3.5.3
       fast-glob: 3.2.12
       magic-string: 0.27.0
@@ -6557,8 +6557,8 @@ packages:
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  /nightwatch-axe-verbose/2.1.1:
-    resolution: {integrity: sha512-IdeBDMq8tpDf7cvmDpBHbd7JHIpfJr8R0hyhfxqEEcRWkZUWridfOIoxLOK4CQ7TMCjFinNeK6p6VSwU7RV1Dg==}
+  /nightwatch-axe-verbose/2.2.0:
+    resolution: {integrity: sha512-Dh2ctNE0aDCzE1H3T7PWINcx+Tz/bJUMKmwmyFLKeoo9Y0FYk/pKxs43Povyh+0RrXWx8bYyF1FZHSAQT+0jEw==}
     dependencies:
       axe-core: 4.6.3
     dev: true
@@ -6604,7 +6604,7 @@ packages:
       minimist: 1.2.6
       mkpath: 1.0.0
       mocha: 9.2.2
-      nightwatch-axe-verbose: 2.1.1
+      nightwatch-axe-verbose: 2.2.0
       open: 8.4.0
       ora: 5.4.1
       selenium-webdriver: 4.6.1
