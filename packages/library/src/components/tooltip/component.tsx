@@ -1,3 +1,4 @@
+import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
@@ -32,38 +33,47 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	private previousSibling?: HTMLElement | null;
-	private tooltipElement?: HTMLKolBadgeElement;
+	private tooltipElement?: HTMLDivElement;
+	private arrowElement?: HTMLDivElement;
 
 	private alignTooltip = (): void => {
-		// getBoundingClientRect is not defined in test suite
 		if (process.env.NODE_ENV !== 'test') {
 			if (this.previousSibling /* SSR instanceof HTMLElement */) {
-				const clientRect = this.previousSibling.getBoundingClientRect();
+				const target = this.previousSibling;
 				if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-					switch (this.state._align) {
-						case 'top':
-						case 'bottom':
-							this.tooltipElement.style.left = `${clientRect.left + this.previousSibling.offsetWidth / 2 - this.tooltipElement.offsetWidth / 2}px`;
-							break;
-						case 'left':
-						case 'right':
-						default:
-							this.tooltipElement.style.top = `${clientRect.top + clientRect.height / 2 - this.tooltipElement.offsetHeight / 2}px`;
+					const tooltipEl = this.tooltipElement;
+					const arrowEl = this.arrowElement;
+
+					const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
+					if (arrowEl) {
+						middleware.push(arrow({ element: arrowEl }));
 					}
-					switch (this.state._align) {
-						case 'left':
-							this.tooltipElement.style.left = `calc(${clientRect.left - this.tooltipElement.offsetWidth}px - 0.5em)`;
-							break;
-						case 'right':
-							this.tooltipElement.style.left = `calc(${clientRect.right}px + 0.5em)`;
-							break;
-						case 'bottom':
-							this.tooltipElement.style.top = `calc(${clientRect.bottom}px + 0.5em)`;
-							break;
-						case 'top':
-						default:
-							this.tooltipElement.style.top = `calc(${clientRect.top - this.tooltipElement.offsetHeight}px - 0.5em)`;
-					}
+
+					void computePosition(target, tooltipEl, {
+						placement: this.state._align,
+						middleware: middleware,
+					}).then(({ x, y, middlewareData, placement }) => {
+						Object.assign(tooltipEl.style, {
+							left: `${x}px`,
+							top: `${y}px`,
+						});
+
+						if (arrowEl) {
+							if (middlewareData.arrow?.x) {
+								Object.assign(arrowEl.style, {
+									left: `${middlewareData.arrow.x}px`,
+									top: placement === 'bottom' ? `${-arrowEl.offsetHeight / 2}px` : '',
+									bottom: placement === 'top' ? `${-arrowEl.offsetHeight / 2}px` : '',
+								});
+							} else if (middlewareData.arrow?.y) {
+								Object.assign(arrowEl.style, {
+									left: placement === 'right' ? `${-arrowEl.offsetWidth / 2}px` : '',
+									right: placement === 'left' ? `${-arrowEl.offsetWidth / 2}px` : '',
+									top: `${middlewareData.arrow.y}px`,
+								});
+							}
+						}
+					});
 				}
 			}
 		}
@@ -122,11 +132,14 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		}
 	};
 
-	private catchTooltipElement = (el?: HTMLKolBadgeElement): void => {
+	private catchTooltipElement = (el?: HTMLDivElement): void => {
 		this.tooltipElement = el;
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.resyncListeners(this.tooltipElement);
 		}
+	};
+	private catchArrowElement = (element?: HTMLDivElement): void => {
+		this.arrowElement = element;
 	};
 
 	public render(): JSX.Element {
@@ -137,21 +150,17 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		return (
 			<Host ref={this.catchHostElement}>
 				{this.state._label !== '' && (
-					<kol-badge
-						class={{
-							'arrow-bottom': this.state._align === 'top',
-							'arrow-left': this.state._align === 'right',
-							'arrow-top': this.state._align === 'bottom',
-							'arrow-right': this.state._align === 'left',
-						}}
-						id={this.state._id}
-						ref={this.catchTooltipElement}
-						_color={{
-							backgroundColor: '#333',
-							color: '#ddd',
-						}}
-						_label={this.state._label}
-					></kol-badge>
+					<div id="floating" ref={this.catchTooltipElement}>
+						<div id="arrow" ref={this.catchArrowElement} />
+						<kol-badge
+							id={this.state._id}
+							_color={{
+								backgroundColor: '#333',
+								color: '#ddd',
+							}}
+							_label={this.state._label}
+						></kol-badge>
+					</div>
 				)}
 			</Host>
 		);
