@@ -14,21 +14,22 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 	);
 	return `
 <kol-tooltip${additionalAttrs}>
-  ${
+	${
 		state._label === ''
 			? ''
-			: getBadgeHtml(
-					{
-						_label: state._label,
-						_color: {
-							backgroundColor: '#333',
-							color: '#ddd',
-						},
+			: `<div id="floating">
+			<div id="arrow"></div>
+			${getBadgeHtml(
+				{
+					_label: state._label,
+					_color: {
+						backgroundColor: '#333',
+						color: '#ddd',
 					},
-					` class="arrow-${state._align === 'bottom' ? 'top' : state._align === 'left' ? 'right' : state._align === 'top' ? 'bottom' : 'left'}" id="${
-						state._id
-					}"`
-			  )
+				},
+				` id="${state._id}"`
+			)}
+		</div>`
 	}
 </kol-tooltip>`;
 };
