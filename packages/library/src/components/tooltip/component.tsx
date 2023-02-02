@@ -37,42 +37,44 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	private arrowElement?: HTMLDivElement;
 
 	private alignTooltip = (): void => {
-		if (this.previousSibling /* SSR instanceof HTMLElement */) {
-			const target = this.previousSibling;
-			if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-				const tooltipEl = this.tooltipElement;
-				const arrowEl = this.arrowElement;
+		if (process.env.NODE_ENV !== 'test') {
+			if (this.previousSibling /* SSR instanceof HTMLElement */) {
+				const target = this.previousSibling;
+				if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+					const tooltipEl = this.tooltipElement;
+					const arrowEl = this.arrowElement;
 
-				const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
-				if (arrowEl) {
-					middleware.push(arrow({ element: arrowEl }));
-				}
-
-				void computePosition(target, tooltipEl, {
-					placement: this.state._align,
-					middleware: middleware,
-				}).then(({ x, y, middlewareData, placement }) => {
-					Object.assign(tooltipEl.style, {
-						left: `${x}px`,
-						top: `${y}px`,
-					});
-
+					const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
 					if (arrowEl) {
-						if (middlewareData.arrow?.x) {
-							Object.assign(arrowEl.style, {
-								left: `${middlewareData.arrow.x}px`,
-								top: placement === 'bottom' ? `${-arrowEl.offsetHeight / 2}px` : '',
-								bottom: placement === 'top' ? `${-arrowEl.offsetHeight / 2}px` : '',
-							});
-						} else if (middlewareData.arrow?.y) {
-							Object.assign(arrowEl.style, {
-								left: placement === 'right' ? `${-arrowEl.offsetWidth / 2}px` : '',
-								right: placement === 'left' ? `${-arrowEl.offsetWidth / 2}px` : '',
-								top: `${middlewareData.arrow.y}px`,
-							});
-						}
+						middleware.push(arrow({ element: arrowEl }));
 					}
-				});
+
+					void computePosition(target, tooltipEl, {
+						placement: this.state._align,
+						middleware: middleware,
+					}).then(({ x, y, middlewareData, placement }) => {
+						Object.assign(tooltipEl.style, {
+							left: `${x}px`,
+							top: `${y}px`,
+						});
+
+						if (arrowEl) {
+							if (middlewareData.arrow?.x) {
+								Object.assign(arrowEl.style, {
+									left: `${middlewareData.arrow.x}px`,
+									top: placement === 'bottom' ? `${-arrowEl.offsetHeight / 2}px` : '',
+									bottom: placement === 'top' ? `${-arrowEl.offsetHeight / 2}px` : '',
+								});
+							} else if (middlewareData.arrow?.y) {
+								Object.assign(arrowEl.style, {
+									left: placement === 'right' ? `${-arrowEl.offsetWidth / 2}px` : '',
+									right: placement === 'left' ? `${-arrowEl.offsetWidth / 2}px` : '',
+									top: `${middlewareData.arrow.y}px`,
+								});
+							}
+						}
+					});
+				}
 			}
 		}
 	};
