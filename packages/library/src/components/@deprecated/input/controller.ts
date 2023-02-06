@@ -1,29 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../../types/button-link';
-import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
-import { objectObjectHandler, parseJson, setState, watchBoolean, watchString, watchValidator } from '../../../utils/prop.validators';
-import { isString } from '../../../utils/validator';
-import { isIcon } from '../../../utils/validators/icon';
+import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 import { Props as AdapterProps } from '../../input-adapter-leanup/types';
-import { KoliBriInputIcon } from '../../input-text/types';
 import { Props, Watches } from './types';
-
-const beforePatchIcon = (value: unknown, nextState: Map<string, unknown>): void => {
-	const icon = value as KoliBriInputIcon;
-	if (typeof icon === 'object' && icon !== null) {
-		if (isString(icon.right, 1)) {
-			icon.right = { icon: icon.right as string };
-		}
-		if (isString(icon.left, 1)) {
-			icon.left = { icon: icon.left as string };
-		}
-		nextState.set('_icon', icon);
-	}
-};
 
 export class InputController extends ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props & AdapterProps;
@@ -78,42 +61,6 @@ export class InputController extends ControlledInputController implements Watche
 	 */
 	public validateHint(value?: string): void {
 		watchString(this.component, '_hint', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	public validateIcon(value?: Stringified<KoliBriInputIcon>): void {
-		objectObjectHandler(value, () => {
-			try {
-				value = parseJson<KoliBriInputIcon>(value as string);
-				// eslint-disable-next-line no-empty
-			} catch (e) {
-				// value behält den ursprünglichen Wert
-			}
-			watchValidator(
-				this.component,
-				'_icon',
-				(value): boolean => {
-					return (
-						typeof value === 'object' &&
-						value !== null &&
-						(isString((value as KoliBriInputIcon).left, 1) ||
-							isIcon((value as KoliBriInputIcon).left) ||
-							isString((value as KoliBriInputIcon).right, 1) ||
-							isIcon((value as KoliBriInputIcon).right))
-					);
-				},
-				new Set(['KoliBriInputIcon']),
-				value,
-				{
-					hooks: {
-						beforePatch: beforePatchIcon,
-					},
-					required: true,
-				}
-			);
-		});
 	}
 
 	/**
@@ -186,7 +133,6 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateDisabled(this.component._disabled);
 		this.validateHideLabel(this.component._hideLabel);
 		this.validateHint(this.component._hint);
-		this.validateIcon(this.component._icon);
 		this.validateId(this.component._id);
 		this.validateName(this.component._name);
 		this.validateSmartButton(this.component._smartButton);

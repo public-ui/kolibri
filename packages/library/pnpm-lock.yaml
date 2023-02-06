@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@a11y-ui/core': 1.0.1-rc.58
+  '@a11y-ui/core': 1.0.1-rc.59
   '@floating-ui/dom': 1.1.1
-  '@public-ui/core': 1.3.3-rc.2
+  '@public-ui/core': file:public-ui-core-1.3.3-rc.2.tgz
   '@public-ui/schema': 1.3.3-rc.2
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.0.0
@@ -53,11 +53,11 @@ specifiers:
 
 dependencies:
   '@floating-ui/dom': 1.1.1
+  '@public-ui/core': file:public-ui-core-1.3.3-rc.2.tgz
   '@public-ui/schema': 1.3.3-rc.2
 
 devDependencies:
-  '@a11y-ui/core': 1.0.1-rc.58
-  '@public-ui/core': 1.3.3-rc.2
+  '@a11y-ui/core': 1.0.1-rc.59
   '@stencil/angular-output-target': 0.5.0_@stencil+core@3.0.0
   '@stencil/core': 3.0.0
   '@stencil/postcss': 2.1.0_@stencil+core@3.0.0
@@ -108,6 +108,12 @@ packages:
 
   /@a11y-ui/core/1.0.1-rc.58:
     resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: false
+
+  /@a11y-ui/core/1.0.1-rc.59:
+    resolution: {integrity: sha512-yrzICAwUxBUO+Q5LmfMsA8n1dDHaaa2q+NNX59cyTmi49M1Thb6qwOSUX4+kMrYWjbSAO907KnhcZssYB6YI/A==}
     dependencies:
       loglevel: 1.8.1
 
@@ -1256,7 +1262,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: true
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -1630,13 +1635,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
-    dev: true
-
-  /@public-ui/core/1.3.3-rc.2:
-    resolution: {integrity: sha512-EKduTyvluT6iBF7EPDUcDsGWROWWsMyBPrTJxx0TIB3F9Si4bZ3hgWH65e9SDntCtQFn8TLSP6Host384Xu5rw==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.58
-      i18next: 22.4.9
     dev: true
 
   /@public-ui/schema/1.3.3-rc.2:
@@ -4224,7 +4222,7 @@ packages:
     resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
     dependencies:
       '@babel/runtime': 7.20.13
-    dev: true
+    dev: false
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -6532,7 +6530,6 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-    dev: true
 
   /regenerator-transform/0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
@@ -8030,3 +8027,12 @@ packages:
     dependencies:
       '@stencil/core': 3.0.0
     dev: true
+
+  file:public-ui-core-1.3.3-rc.2.tgz:
+    resolution: {integrity: sha512-koe6HHvD3zd8tZGyrjc7gJVq2TktGIvDEkLbCSeCANG3VqbVy3Awy4EYIyh/wcxhZVuBk8PWiAuK0hp8VU2qVw==, tarball: file:public-ui-core-1.3.3-rc.2.tgz}
+    name: '@public-ui/core'
+    version: 1.3.3-rc.2
+    dependencies:
+      '@a11y-ui/core': 1.0.1-rc.59
+      i18next: 22.4.9
+    dev: false

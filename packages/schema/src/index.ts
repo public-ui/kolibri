@@ -70,3 +70,5 @@ enum KeyEnum {
 }
 
 export const KoliBri = new Theme<'kol', keyof typeof KeyEnum, keyof typeof TagEnum>('kol', KeyEnum, TagEnum);
+
+export { THEMING_ICON_FONT_CSS_FONT_AWESOME } from './fonts';

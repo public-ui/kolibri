@@ -4,7 +4,7 @@ import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
 import { watchBoolean, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { InputController } from '../@deprecated/input/controller';
+import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
 import { Props, Watches } from './types';
 
@@ -22,7 +22,7 @@ const validateInputSelectList = <T>(option: SelectOption<T>): boolean => {
 	return false;
 };
 
-export class SelectController extends InputController implements Watches {
+export class SelectController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 	private onStateChange!: () => void;
 	private readonly keyOptionMap = new Map<string, Option<W3CInputValue>>();

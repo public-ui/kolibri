@@ -4,7 +4,7 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon } from '../../types/icon';
 
-import { KoliBriInputIcon } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { Props } from './types';
 
 /**
@@ -123,7 +123,7 @@ export class KolInput implements Props {
 	/**
 	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
 	 */
-	@Prop() public _icon?: KoliBriInputIcon;
+	@Prop() public _icon?: KoliBriHorizontalIcon;
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.

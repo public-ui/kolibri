@@ -1,11 +1,13 @@
 import { render } from 'solid-js/web';
 
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT, BPA, ITZBund } from '@public-ui/themes';
+import { BPA, ITZBund } from '@public-ui/themes';
+import { BAMF, BMF, BZSt, DESY, MAPZ, ZOLL } from '@itzbund/kolibri-internal-themes';
+import { TH } from '@public-oss/kolibri-themes';
 import { AppComponent } from './components/app/component.solid';
-import { register } from '@public-ui/core';
+import { register } from '@public-ui/components';
 
-register([DEFAULT, BPA, ITZBund], defineCustomElements, {
+register([BPA, ITZBund, BAMF, BMF, BZSt, DESY, MAPZ, ZOLL, TH], defineCustomElements, {
 	theme: {
 		detect: 'auto',
 	},

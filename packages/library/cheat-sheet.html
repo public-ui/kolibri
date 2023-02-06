@@ -242,7 +242,7 @@ In der Komponente kann beliebiger HTML-Code verwendet werden.`,
 	desc: `Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.
 
 Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch_** dar. Hierbei wird die Checkbox zu einem Schieberegler gewandelt, der bei Anklicken nach rechts (aktiv) bzw. nach links (inaktiv) verschoben wird.`,
-	props: `_access-key, _alert, _checked, _disabled, _error, _hide-label, _hint, _id, _indeterminate, _name, _required, _tab-index, _touched, _type, _value, _variant`
+	props: `_access-key, _alert, _checked, _disabled, _error, _hide-label, _hint, _icon, _id, _indeterminate, _name, _required, _tab-index, _touched, _type, _value, _variant`
 },{
 	name: `input-color`,
 	desc: `Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Angabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.`,
@@ -430,15 +430,15 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea`
 },{
+	name: `_icon`,
+	desc: `Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.`,
+	types: `string, string | { checked: string; indeterminate?: string | undefined; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate: string; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate?: string | undefined; unchecked: string; }, string | { right: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { right?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; }, string | { top: string | KoliBriCustomIcon; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right: string | KoliBriCustomIcon; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; }`,
+	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select`
+},{
 	name: `_id`,
 	desc: `Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.`,
 	types: `string`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, tooltip`
-},{
-	name: `_icon`,
-	desc: `Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.`,
-	types: `string, string | { right: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { right?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; }, string | { top: string | KoliBriCustomIcon; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right: string | KoliBriCustomIcon; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; }`,
-	comps: `badge, button, button-link, icon, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select`
 },{
 	name: `_alert`,
 	desc: `Gibt an, ob der Screenreader die Meldung vorlesen soll.`,
@@ -492,7 +492,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_type`,
 	desc: `Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
-	types: `"bar" | "cycle", "button" | "reset" | "submit", "checkbox" | "switch", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
+	types: `"bar" | "cycle", "button" | "checkbox" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
 	comps: `alert, button, button-link, input-checkbox, input-date, input-number, input-text, progress, toast`
 },{
 	name: `_list`,
@@ -507,7 +507,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_variant`,
 	desc: `Gibt an, welche Ausprägung der Button hat.`,
-	types: `"card" | "msg", "checkbox" | "switch", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
+	types: `"button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
 	comps: `alert, button, input-checkbox, link-button, nav, pagination`
 },{
 	name: `_tooltip-align`,

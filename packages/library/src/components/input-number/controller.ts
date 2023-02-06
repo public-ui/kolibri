@@ -4,10 +4,10 @@ import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnOff } from '../../types/input/types';
 import { watchBoolean, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
-import { InputController } from '../@deprecated/input/controller';
+import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 
-export class InputNumberController extends InputController implements Watches {
+export class InputNumberController extends InputIconController implements Watches {
 	/**
 	 * Regex to check whether a string is a number or a date in ISO-8601 format.
 	 * Test the regex here: https://regex101.com/r/nFDzrD/1

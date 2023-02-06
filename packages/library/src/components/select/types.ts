@@ -2,7 +2,8 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
-import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
+import { InputRequiredProps } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 
 /**
  * API
@@ -21,7 +22,7 @@ type OptionalProps = {
 	height: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriInputIcon>;
+	icon: Stringified<KoliBriHorizontalIcon>;
 	multiple: boolean;
 	name: string;
 	on: InputTypeOnDefault;
@@ -50,7 +51,7 @@ type OptionalStates = {
 	height: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: KoliBriInputIcon;
+	icon: KoliBriHorizontalIcon;
 	id: string;
 	name: string;
 	on: InputTypeOnDefault;

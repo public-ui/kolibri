@@ -42,7 +42,7 @@ function getColorNumber(degree: number): number {
 @Component({
 	tag: 'kol-kolibri',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.sass',
 	},
 	shadow: true,
 })

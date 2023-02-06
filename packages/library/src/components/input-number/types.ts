@@ -3,7 +3,8 @@ import { ButtonProps } from '../../types/button-link';
 import { InputNumberType, OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
+import { InputRequiredProps } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 
 /**
  * API
@@ -25,7 +26,7 @@ type OptionalStates = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: KoliBriInputIcon;
+	icon: KoliBriHorizontalIcon;
 	max: string;
 	min: string;
 	name: string;

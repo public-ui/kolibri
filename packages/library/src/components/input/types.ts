@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
-import { KoliBriInputIcon } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 
 /**
  * API
@@ -12,7 +12,7 @@ type OptionalProps = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: KoliBriInputIcon;
+	icon: KoliBriHorizontalIcon;
 	readOnly: boolean;
 	required: boolean;
 	smartButton: ButtonProps;

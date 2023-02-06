@@ -20,7 +20,7 @@ import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/core';
 import { TH } from '@public-oss/kolibri-themes';
-import { DEFAULT, BPA, DEFAULT, ITZBund, DEFAULT } from '@public-ui/themes';
+import { BPA, ITZBund } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
 	// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
@@ -46,7 +46,7 @@ const switchTheme = (className) => {
 	}
 };
 
-register([DEFAULT, ITZBund, DEFAULT, BPA, DEFAULT, TH, DEFAULT], [kolibri, leanup], {
+register([ITZBund, BPA, TH], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
 	},

@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="de">
 	<head>
-		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.3.3-rc.2';
-			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.3.3-rc.2';
-			register([DEFAULT], []).catch(console.warn);
-		</script>
 		<meta charset="utf-8" />
 		<title>BIK BITV-Test | KoliBri</title>
 		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
@@ -888,6 +883,28 @@
 							<kol-heading _level="2">Input's</kol-heading>
 						</div>
 						<div class="gap-2 col-12 d-grid">
+							<div class="d-grid gap-2">
+								<kol-input-checkbox _checked _id="checkbox-checked"
+									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
+								>
+								<kol-input-checkbox _checked _id="checkbox-checked-indeterminate" _indeterminate
+									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
+								>
+								<kol-input-checkbox _id="checkbox-unchecked"
+									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
+								>
+								<kol-input-checkbox _id="checkbox-unchecked-indeterminate" _indeterminate
+									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
+								>
+								<kol-input-checkbox _checked _id="switch-checked" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _id="switch-checked-indeterminate" _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _id="switch-unchecked" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _id="switch-unchecked-indeterminate" _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _id="button-checked" _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _checked _id="button-checked-indeterminate" _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _id="button-unchecked" _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _id="button-unchecked-indeterminate" _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
+							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputCheckbox</kol-heading>
 								<kol-controlled-input-next class="d-grid gap-2" id="new-input-checkbox">

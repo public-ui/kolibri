@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { KoliBriHorizontalIcon } from '../../components';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
@@ -9,7 +10,7 @@ import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
-import { ComponentApi, KoliBriInputIcon, States } from './types';
+import { ComponentApi, States } from './types';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -146,7 +147,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriInputIcon>;
+	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
@@ -297,7 +298,7 @@ export class KolInputText implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriInputIcon>): void {
+	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		this.controller.validateIcon(value);
 	}
 

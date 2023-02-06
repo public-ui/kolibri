@@ -1,10 +1,10 @@
 import { register } from '@public-ui/core';
+import { ITZBund } from '@public-ui/themes';
 import { TH } from '@public-oss/kolibri-themes';
-import { DEFAULT, ITZBund, DEFAULT } from '@public-ui/themes';
 import './base.css';
 
 register(
-	[DEFAULT, ITZBund, DEFAULT, TH, DEFAULT],
+	[ITZBund, TH],
 	() => {
 		return new Promise((resolve) => resolve());
 	},

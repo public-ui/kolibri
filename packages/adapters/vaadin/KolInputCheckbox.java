@@ -12,7 +12,7 @@ Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch
  */
 
 @Tag("kol-input-checkbox")
-@NpmPackage(value = "@public-ui/components", version = "1.3.0")
+@NpmPackage(value = "@public-ui/components", version = "1.3.3-rc.2")
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**
@@ -139,6 +139,24 @@ public class KolInputCheckbox extends Component {
 	 */
 	public String getHint() {
 		return getElement().getProperty("_hint", null);
+	}
+
+	/**
+	 * Ermöglicht das Überschreiben der Icons für die Checkbox.
+	 *
+	 * @param value String
+	 */
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value);
+	}
+
+	/**
+	 * Ermöglicht das Überschreiben der Icons für die Checkbox.
+	 *
+	 * @return String
+	 */
+	public String getIcon() {
+		return getElement().getProperty("_icon", null);
 	}
 
 	/**

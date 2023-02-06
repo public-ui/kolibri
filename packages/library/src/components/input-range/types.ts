@@ -1,7 +1,8 @@
 import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
-import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
+import { InputRequiredProps } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 
 /**
  * API
@@ -15,7 +16,7 @@ type OptionalProps = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriInputIcon>;
+	icon: Stringified<KoliBriHorizontalIcon>;
 	list: Stringified<Option<number>[]>;
 	max: number;
 	min: number;
@@ -40,7 +41,7 @@ type OptionalStates = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: KoliBriInputIcon;
+	icon: KoliBriHorizontalIcon;
 	max: number;
 	min: number;
 	name: string;

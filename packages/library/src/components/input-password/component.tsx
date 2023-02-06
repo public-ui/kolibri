@@ -6,7 +6,7 @@ import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { devHint } from '../../utils/a11y.tipps';
 import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
-import { KoliBriInputIcon } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
@@ -129,7 +129,7 @@ export class KolInputPassword implements ComponentApi {
 	/**
 	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriInputIcon>;
+	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
@@ -271,7 +271,7 @@ export class KolInputPassword implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriInputIcon>): void {
+	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		this.controller.validateIcon(value);
 	}
 

@@ -4,7 +4,7 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
 import { propergateFocus } from '../../utils/reuse';
-import { KoliBriInputIcon } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
@@ -172,7 +172,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriInputIcon>;
+	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
@@ -299,7 +299,7 @@ export class KolSelect implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriInputIcon>): void {
+	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		this.controller.validateIcon(value);
 	}
 

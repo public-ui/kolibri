@@ -1,8 +1,24 @@
 import { Generic } from '@a11y-ui/core';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
+import { AnyIconFontClass } from '../../types/icon';
+import { Stringified } from '../../components';
 
-export type InputCheckboxVariant = 'checkbox' | 'switch';
+export type InputCheckboxVariant = 'button' | 'checkbox' | 'switch';
+
+export type InputCheckboxIcon = {
+	checked: AnyIconFontClass;
+	indeterminate?: AnyIconFontClass;
+	unchecked?: AnyIconFontClass;
+} & {
+	checked?: AnyIconFontClass;
+	indeterminate: AnyIconFontClass;
+	unchecked?: AnyIconFontClass;
+} & {
+	checked?: AnyIconFontClass;
+	indeterminate?: AnyIconFontClass;
+	unchecked: AnyIconFontClass;
+};
 
 /**
  * API
@@ -16,6 +32,7 @@ type OptionalProps = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
+	icon: Stringified<InputCheckboxIcon>;
 	indeterminate: boolean;
 	name: string;
 	on: InputTypeOnDefault;
@@ -33,7 +50,9 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	checked: boolean;
+	icon: InputCheckboxIcon;
 	id: string;
+	indeterminate: boolean;
 	variant: InputCheckboxVariant;
 };
 type OptionalStates = {
@@ -43,7 +62,6 @@ type OptionalStates = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	indeterminate: boolean;
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;

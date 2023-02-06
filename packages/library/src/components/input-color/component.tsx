@@ -1,10 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { propergateFocus } from '../../utils/reuse';
-import { KoliBriInputIcon } from '../input-text/types';
 import { getRenderStates } from '../input/controller';
 import { InputColorController } from './controller';
 import { ComponentApi, States } from './types';
@@ -109,7 +109,7 @@ export class KolInputColor implements ComponentApi {
 	/**
 	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriInputIcon>;
+	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
@@ -224,7 +224,7 @@ export class KolInputColor implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_icon')
-	public validateIcon(value?: Stringified<KoliBriInputIcon>): void {
+	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		this.controller.validateIcon(value);
 	}
 
