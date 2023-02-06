@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 12.2.17
   '@angular/compiler-cli': 12.2.17
   '@angular/core': 12.2.17
-  '@public-ui/components': 1.3.3-rc.2
-  '@public-ui/core': 1.3.3-rc.2
+  '@public-ui/components': 1.4.0-rc.0
+  '@public-ui/core': 1.4.0-rc.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 12.2.17
   '@angular/compiler-cli': 12.2.17_r7idsygkgzla4r2ofe56dih4bq
   '@angular/core': 12.2.17_rxjs@7.6.0+zone.js@0.11.8
-  '@public-ui/components': 1.3.3-rc.2
-  '@public-ui/core': 1.3.3-rc.2
+  '@public-ui/components': 1.4.0-rc.0
+  '@public-ui/core': 1.4.0-rc.0
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.18
@@ -38,6 +38,12 @@ packages:
 
   /@a11y-ui/core/1.0.1-rc.58:
     resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: true
+
+  /@a11y-ui/core/1.0.1-rc.59:
+    resolution: {integrity: sha512-yrzICAwUxBUO+Q5LmfMsA8n1dDHaaa2q+NNX59cyTmi49M1Thb6qwOSUX4+kMrYWjbSAO907KnhcZssYB6YI/A==}
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -302,8 +308,8 @@ packages:
     resolution: {integrity: sha512-PL7g3dhA4dHgZfujkuD8Q+tfJJynEtnNQSPzmucCnxMvkxf4cLBJw/ZYqZUn4HCh33U3WHrAfv2R2tbi9UCSmw==}
     dev: true
 
-  /@floating-ui/dom/1.1.0:
-    resolution: {integrity: sha512-TSogMPVxbRe77QCj1dt8NmRiJasPvuc+eT5jnJ6YpLqgOD2zXc5UA3S1qwybN+GVCDNdKfpKy1oj8RpzLJvh6A==}
+  /@floating-ui/dom/1.1.1:
+    resolution: {integrity: sha512-TpIO93+DIujg3g7SykEAGZMDtbJRrmnYRCNYSjJlvIbGhBjRSNTLVbNeDQBrzy9qDgUbiWdc7KA0uZHZ2tJmiw==}
     dependencies:
       '@floating-ui/core': 1.1.1
     dev: true
@@ -346,22 +352,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.3.3-rc.2:
-    resolution: {integrity: sha512-H5UkH3233c32SuWgkH1KGmLLCHrXfJu+bJHF8DC44trrgJMuI7JxIkprW3K7eOMqtayZgksNho2/DxJMXqVrIQ==}
+  /@public-ui/components/1.4.0-rc.0:
+    resolution: {integrity: sha512-feOOS2qvedCiriHnA+0KeHolM4m64p4Au60W3QLKHKADWQbzGELhh+lWzFVkEVjDUTRTGZF784j2q8E7qZ4yTA==}
     dependencies:
-      '@floating-ui/dom': 1.1.0
-      '@public-ui/schema': 1.3.3-rc.2
+      '@floating-ui/dom': 1.1.1
+      '@public-ui/core': 1.4.0-rc.0
+      '@public-ui/schema': 1.4.0-rc.0
     dev: true
 
-  /@public-ui/core/1.3.3-rc.2:
-    resolution: {integrity: sha512-EKduTyvluT6iBF7EPDUcDsGWROWWsMyBPrTJxx0TIB3F9Si4bZ3hgWH65e9SDntCtQFn8TLSP6Host384Xu5rw==}
+  /@public-ui/core/1.4.0-rc.0:
+    resolution: {integrity: sha512-xo2VdWgUzPpgyy/0DtLIm0uHY8m1LW05uMnYqzkdOFEgXoAc08hiQyGE1cJuwmdcNit95IgNXmcp8rmkyxbw6A==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.58
+      '@a11y-ui/core': 1.0.1-rc.59
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.3.3-rc.2:
-    resolution: {integrity: sha512-XoMG4oEtK1KO4bti+m/W3C0lEX40O3jEsUsLV9g8ClYS/+TqiJNGcbXao7e3tI+IZuWRHLo85bHyNLyiWEd0xw==}
+  /@public-ui/schema/1.4.0-rc.0:
+    resolution: {integrity: sha512-mWvDQIGKo+7XFkGOk789H6M1cOS6xnGuE6wz2dnjp/Q3wPdunM9qPGckq92SCu0zhwF1+cz5aXHclPQ9p8kbXA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.58
     dev: true
