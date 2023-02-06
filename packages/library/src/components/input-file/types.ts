@@ -2,7 +2,8 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
-import { InputRequiredProps, KoliBriInputIcon } from '../input-text/types';
+import { InputRequiredProps } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 
 /**
  * API
@@ -16,7 +17,7 @@ type OptionalProps = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriInputIcon>;
+	icon: Stringified<KoliBriHorizontalIcon>;
 	multiple: boolean;
 	name: string;
 	on: InputTypeOnDefault;
@@ -39,7 +40,7 @@ type OptionalStates = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: KoliBriInputIcon;
+	icon: KoliBriHorizontalIcon;
 	multiple: boolean;
 	name: string;
 	on: InputTypeOnDefault;

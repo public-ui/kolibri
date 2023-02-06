@@ -78,16 +78,20 @@ const LONG_TEXT = `Lorem Ipsum ist ein einfacher Demo-Text für die Print- und S
 const DEFAULT_TABS: TabButtonProps[] = [
 	{
 		_icon: 'fa-solid fa-chart-simple',
-		_label: 'Nicht ausgewählt',
+		_label: 'Erster Tab',
+	},
+	{
+		_icon: 'fa-solid fa-plate-wheat',
+		_label: 'Zweites Tab',
 	},
 	{
 		_disabled: true,
 		_icon: 'fa-solid fa-plate-wheat',
-		_label: 'Ausgewählt',
+		_label: 'Deaktiviertes Tab',
 	},
 	{
 		_icon: 'fa-solid fa-people-group',
-		_label: 'Nicht ausgewählt',
+		_label: 'Letzter Tab',
 	},
 ];
 const TABS_ICON_ONLY = DEFAULT_TABS.map((tab) => {
@@ -714,28 +718,45 @@ export const components: Record<string, Component> = {
 	'KOL-INPUT-CHECKBOX': () => (
 		<div class="grid justify-center gap-6">
 			<div class="grid gap-6 text-center">
-				<KolInputCheckbox _id="anrede1" _required _variant="checkbox">
-					Nicht ausgewählt
+				<KolInputCheckbox _id="checkbox-1" _required>
+					Unchecked
 				</KolInputCheckbox>
-				<KolInputCheckbox _checked _id="anrede2" _variant="checkbox" _touched _error={ERROR_MSG}>
-					Ausgewählt
+				<KolInputCheckbox _id="checkbox-2" _indeterminate _required>
+					Unchecked (indeterminate)
 				</KolInputCheckbox>
-				<KolInputCheckbox _id="anrede3" _indeterminate _variant="checkbox">
-					Unbestimmt (Indeterminate)
+				<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-3" _touched _error={ERROR_MSG}>
+					Checked
+				</KolInputCheckbox>
+				<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-4" _indeterminate _touched _error={ERROR_MSG}>
+					Checked (indeterminate)
 				</KolInputCheckbox>
 			</div>
 			<div class="grid gap-6 text-center">
-				<KolInputCheckbox _id="anrede4" _variant="switch" _error={ERROR_MSG}>
-					Nicht ausgewählt
+				<KolInputCheckbox _id="checkbox-switch-1" _required _variant="switch">
+					Unchecked
 				</KolInputCheckbox>
-				<KolInputCheckbox _checked _id="anrede5" _variant="switch">
-					Ausgewählt
+				<KolInputCheckbox _id="checkbox-switch-2" _indeterminate _required _variant="switch">
+					Unchecked (indeterminate)
 				</KolInputCheckbox>
-				<KolInputCheckbox _id="anrede6" _indeterminate _variant="switch" _touched _error={ERROR_MSG}>
-					Unbestimmt (Indeterminate)
+				<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-switch-3" _variant="switch" _touched _error={ERROR_MSG}>
+					Checked
 				</KolInputCheckbox>
-				<KolInputCheckbox _id="anrede7" _disabled _indeterminate _variant="switch" _touched _error={ERROR_MSG}>
-					Unbestimmt (Indeterminate)
+				<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-switch-4" _indeterminate _variant="switch" _touched _error={ERROR_MSG}>
+					Checked (indeterminate)
+				</KolInputCheckbox>
+			</div>
+			<div class="grid gap-6 text-center">
+				<KolInputCheckbox _id="checkbox-button-1" _required _variant="button">
+					Unchecked
+				</KolInputCheckbox>
+				<KolInputCheckbox _id="checkbox-button-2" _indeterminate _required _variant="button">
+					Unchecked (indeterminate)
+				</KolInputCheckbox>
+				<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-button-3" _variant="button" _touched _error={ERROR_MSG}>
+					Checked
+				</KolInputCheckbox>
+				<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-button-4" _indeterminate _variant="button" _touched _error={ERROR_MSG}>
+					Checked (indeterminate)
 				</KolInputCheckbox>
 			</div>
 		</div>
@@ -762,7 +783,7 @@ export const components: Record<string, Component> = {
 			<KolInputColor _id="farb1" _list="['#000000','#ff0000', '#0000ff','#00ff00']" _error={ERROR_MSG}>
 				Farbe
 			</KolInputColor>
-			<KolInputColor _id="farbe2" _hint='Hilfetext' _value="#ff0000">
+			<KolInputColor _id="farbe2" _hint="Hilfetext" _value="#ff0000">
 				Farbe (Disabled)
 			</KolInputColor>
 			<KolInputColor _disabled _id="farbe3" _value="#ff0000">
@@ -1166,11 +1187,9 @@ export const components: Record<string, Component> = {
 				_label="Icons"
 			/>
 			<KolIndentedText>
-				<p>
-					<b>Links sind unsichtbar geschalten</b>
-					<br />
-					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-				</p>
+				<b>Links sind unsichtbar geschalten</b>
+				<br />
+				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
 			</KolIndentedText>
 			<KolSkipNav
 				_ariaLabel="Skip-Nav"
@@ -1736,11 +1755,9 @@ export const components: Record<string, Component> = {
 	'KOL-SKIP-NAV': () => (
 		<div class="grid justify-center gap-6">
 			<KolIndentedText>
-				<p>
-					<b>Links sind unsichtbar geschalten</b>
-					<br />
-					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-				</p>
+				<b>Links sind unsichtbar geschalten</b>
+				<br />
+				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
 			</KolIndentedText>
 			<KolSkipNav
 				_ariaLabel="Skip-Nav"

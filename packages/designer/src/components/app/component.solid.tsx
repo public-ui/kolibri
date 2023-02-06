@@ -45,7 +45,7 @@ TAG_NAMES.forEach((tagName) => {
 // };
 
 export const AppComponent: Component = () => {
-	const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'demo');
+	const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'default');
 	const [getComponent, setComponent] = createSignal(sessionStorage.getItem('kolibri-component') || 'KOL-BUTTON');
 	const [getShow, setShow] = createSignal<Page>('editor');
 	const [getValue, setValue] = createSignal('');
@@ -161,7 +161,7 @@ export const AppComponent: Component = () => {
 	};
 
 	return (
-		<div class="font-sans grid gap-2" data-theme="default">
+		<div class="font-sans grid gap-2">
 			{/* <InputComponent /> */}
 			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end default">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">

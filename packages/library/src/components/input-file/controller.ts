@@ -1,9 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
-import { InputController } from '../@deprecated/input/controller';
+import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 
-export class InputFileController extends InputController implements Watches {
+export class InputFileController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {

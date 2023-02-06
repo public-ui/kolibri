@@ -9,8 +9,6 @@ export type InputRequiredProps = {
 	id: string;
 };
 
-export type KoliBriInputIcon = KoliBriHorizontalIcon;
-
 /**
  * API
  */
@@ -23,7 +21,7 @@ type OptionalProps = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriInputIcon>;
+	icon: Stringified<KoliBriHorizontalIcon>;
 	list: Stringified<string[]>;
 	maxLength: number;
 	name: string;
@@ -54,7 +52,7 @@ type OptionalStates = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: KoliBriInputIcon;
+	icon: KoliBriHorizontalIcon;
 	maxLength: number;
 	name: string;
 	on: InputTypeOnDefault;

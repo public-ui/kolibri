@@ -11,15 +11,15 @@ import { KoliBriAccordionCallbacks } from "./components/accordion/component";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
-import { KoliBriIconProp } from "./types/icon";
+import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
 import { NavLinkProps } from "./components/link/component";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
-import { KoliBriInputIcon } from "./components/input-text/types";
+import { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
+import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
-import { InputCheckboxVariant } from "./components/input-checkbox/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
@@ -42,15 +42,15 @@ export { KoliBriAccordionCallbacks } from "./components/accordion/component";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
 export { KoliBriColor } from "./components/badge/component";
 export { Stringified } from "./types/common";
-export { KoliBriIconProp } from "./types/icon";
+export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
 export { NavLinkProps } from "./components/link/component";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
-export { KoliBriInputIcon } from "./components/input-text/types";
+export { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
+export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
-export { InputCheckboxVariant } from "./components/input-checkbox/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
@@ -539,7 +539,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: KoliBriInputIcon;
+        "_icon"?: KoliBriHorizontalIcon;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -603,6 +603,10 @@ export namespace Components {
           * Gibt den Text für eine Hinweistext an.
          */
         "_hint"?: string;
+        /**
+          * Ermöglicht das Überschreiben der Icons für die Checkbox.
+         */
+        "_icon"?: Stringified1<InputCheckboxIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -677,7 +681,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -743,7 +747,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -833,7 +837,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -927,7 +931,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -997,7 +1001,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1092,7 +1096,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1305,7 +1309,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1379,7 +1383,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified1<KoliBriHorizontalIcon1>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1896,7 +1900,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3053,7 +3057,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: KoliBriInputIcon;
+        "_icon"?: KoliBriHorizontalIcon;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3117,6 +3121,10 @@ declare namespace LocalJSX {
           * Gibt den Text für eine Hinweistext an.
          */
         "_hint"?: string;
+        /**
+          * Ermöglicht das Überschreiben der Icons für die Checkbox.
+         */
+        "_icon"?: Stringified1<InputCheckboxIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3191,7 +3199,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3257,7 +3265,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3347,7 +3355,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3441,7 +3449,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3511,7 +3519,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3606,7 +3614,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3819,7 +3827,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3893,7 +3901,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified1<KoliBriHorizontalIcon1>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -4410,7 +4418,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified<KoliBriInputIcon>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */

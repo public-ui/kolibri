@@ -2,10 +2,10 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnOff, Option } from '../../types/input/types';
 import { watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
-import { InputController } from '../@deprecated/input/controller';
+import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 
-export class InputRangeController extends InputController implements Watches {
+export class InputRangeController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {

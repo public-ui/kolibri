@@ -6,7 +6,7 @@ import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { watchValidator } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
-import { KoliBriInputIcon } from '../input-text/types';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { ComponentApi, States } from './types';
 
 @Component({
@@ -106,7 +106,7 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriInputIcon>;
+	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.

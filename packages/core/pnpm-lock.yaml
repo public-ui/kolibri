@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@a11y-ui/core': 1.0.1-rc.58
+  '@a11y-ui/core': 1.0.1-rc.59
   '@commitlint/cli': 17.4.2
   '@commitlint/config-conventional': 17.4.2
   '@types/node': 18.11.18
@@ -17,7 +17,7 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@a11y-ui/core': 1.0.1-rc.58
+  '@a11y-ui/core': 1.0.1-rc.59
   i18next: 22.4.9
 
 devDependencies:
@@ -36,8 +36,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.58:
-    resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
+  /@a11y-ui/core/1.0.1-rc.59:
+    resolution: {integrity: sha512-yrzICAwUxBUO+Q5LmfMsA8n1dDHaaa2q+NNX59cyTmi49M1Thb6qwOSUX4+kMrYWjbSAO907KnhcZssYB6YI/A==}
     dependencies:
       loglevel: 1.8.1
     dev: false

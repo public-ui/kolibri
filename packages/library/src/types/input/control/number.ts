@@ -1,6 +1,6 @@
-import { KoliBriInputIcon } from '../../../components/input-text/types';
 import { ButtonProps } from '../../button-link';
 import { Stringified } from '../../common';
+import { KoliBriHorizontalIcon } from '../../icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../types';
 
 export type InputDateType = 'date' | 'datetime-local' | 'month' | 'time' | 'week';
@@ -14,7 +14,7 @@ export type OptionalInputProps<T> = {
 	error: string;
 	hideLabel: boolean;
 	hint: string;
-	icon: Stringified<KoliBriInputIcon>;
+	icon: Stringified<KoliBriHorizontalIcon>;
 	list: Stringified<string[]>;
 	max: T;
 	min: T;

@@ -44,7 +44,7 @@ class CssProvider implements languages.CompletionItemProvider {
 		});
 		whiteList = [...new Set(whiteList)];
 		whiteList.sort();
-		console.log('whiteList', whiteList);
+		// console.log('whiteList', whiteList);
 
 		let blackList: string[] = [];
 		blackList = blackList.concat(model.getValue().match(/-(-[a-z0-9]+)+:/g) || []);
@@ -54,7 +54,7 @@ class CssProvider implements languages.CompletionItemProvider {
 		});
 		blackList = [...new Set(blackList)];
 		blackList.sort();
-		console.log('blackList', blackList);
+		// console.log('blackList', blackList);
 
 		const suggestions: languages.CompletionItem[] = [];
 		whiteList.forEach((property) => {
@@ -63,13 +63,12 @@ class CssProvider implements languages.CompletionItemProvider {
 					insertText: property,
 					label: property,
 					kind: languages.CompletionItemKind.Property,
-					range: null,
-					// range: {
-					//   endColumn: position.column,
-					//   endLineNumber: position.lineNumber,
-					//   startColumn: position.column,
-					//   startLineNumber: position.lineNumber,
-					// },
+					range: {
+						endColumn: position.column,
+						endLineNumber: position.lineNumber,
+						startColumn: position.column,
+						startLineNumber: position.lineNumber,
+					},
 				});
 			}
 		});
