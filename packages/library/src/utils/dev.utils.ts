@@ -1,5 +1,6 @@
 import { ModalService } from '../components/modal/service';
 import { ToasterService } from '../components/toast/toaster';
+import { processEnv } from './reuse';
 
 let WINDOW: Window | null = null;
 let DOCUMENT: Document | null = null;
@@ -172,7 +173,7 @@ Hinweise:
 
 let nonce = (): string => Math.floor(Math.random() * 16777215).toString(16);
 
-if (process.env.NODE_ENV === 'test') {
+if (processEnv === 'test') {
 	nonce = (): string => 'nonce';
 }
 

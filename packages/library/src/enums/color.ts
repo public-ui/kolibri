@@ -1,9 +1,15 @@
+/**
+ * @deprecated We will remove this enum in the next major release.
+ */
 export enum Nationalfarben {
 	'Schwarz' = '#000000',
 	'Rot' = '#ff0000',
 	'Gold' = '#ffc0c0',
 }
 
+/**
+ * @deprecated We will remove this enum in the next major release.
+ */
 export type FarbspektrumNames =
 	| 'Violett'
 	| 'Dunkelrot'
@@ -23,6 +29,9 @@ export type FarbspektrumNames =
 	| 'Dunkelgrau'
 	| 'Hellgrau';
 
+/**
+ * @deprecated We will remove this enum in the next major release.
+ */
 export enum Farbspektrum {
 	'Violett' = '#5f316e',
 	'Dunkelrot' = '#780f2d',

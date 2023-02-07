@@ -1,5 +1,3 @@
-@windicss
-
 *
 	box-sizing: border-box
 	font-size: inherit
@@ -9,7 +7,7 @@
 	word-spacing: inherit
 
 kol-heading-wc
-	font-weight: 700
+	font-weight: bold
 
 kol-icon
 	color: inherit
@@ -25,9 +23,14 @@ kol-span-wc
 		place-items: center
 
 a,
-button
+button,
+input,
+select,
+textarea
 	cursor: pointer
 
+a,
+button
 	&.icon-only
 
 		> kol-span-wc
@@ -42,4 +45,5 @@ a
 	place-items: baseline
 
 button
+	background-color: transparent
 	border-width: 0
