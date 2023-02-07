@@ -1,14 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@angular/compiler': 15.1.2
-  '@angular/compiler-cli': 15.1.2
-  '@angular/core': 15.1.2
-  '@public-ui/components': 1.4.0-rc.0
-  '@public-ui/core': 1.4.0-rc.0
+  '@angular/compiler': 15.1.3
+  '@angular/compiler-cli': 15.1.3
+  '@angular/core': 15.1.3
+  '@public-ui/components': 1.4.0-rc.1
+  '@public-ui/core': 1.4.0-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.18
+  '@types/node': 18.11.19
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.3
   rimraf: 4.1.2
@@ -18,14 +18,14 @@ specifiers:
   zone.js: 0.12.0
 
 devDependencies:
-  '@angular/compiler': 15.1.2_@angular+core@15.1.2
-  '@angular/compiler-cli': 15.1.2_qbb6prygfkdcmogcfoew4a7yfy
-  '@angular/core': 15.1.2_rxjs@7.8.0+zone.js@0.12.0
-  '@public-ui/components': 1.4.0-rc.0
-  '@public-ui/core': 1.4.0-rc.0
+  '@angular/compiler': 15.1.3_@angular+core@15.1.3
+  '@angular/compiler-cli': 15.1.3_4khyt5yocueaoa5yhnzf5rhw64
+  '@angular/core': 15.1.3_rxjs@7.8.0+zone.js@0.12.0
+  '@public-ui/components': 1.4.0-rc.1
+  '@public-ui/core': 1.4.0-rc.1
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.18
+  '@types/node': 18.11.19
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.3
   rimraf: 4.1.2
@@ -36,14 +36,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.58:
-    resolution: {integrity: sha512-q8m03dfgy9bSjj2WgYl32cHbbvlmBrMeObbYnXpOGjFQ3GRG7vcBoyOBrNC/3lBnM83UzHL370tGoFYuafvojw==}
-    dependencies:
-      loglevel: 1.8.1
-    dev: true
-
-  /@a11y-ui/core/1.0.1-rc.59:
-    resolution: {integrity: sha512-yrzICAwUxBUO+Q5LmfMsA8n1dDHaaa2q+NNX59cyTmi49M1Thb6qwOSUX4+kMrYWjbSAO907KnhcZssYB6YI/A==}
+  /@a11y-ui/core/1.0.1-rc.61:
+    resolution: {integrity: sha512-h4pofqmDZwMXpsy142c55r4ZGWE1/ltTCBr4pJ+NSRDW1UntRi0yX0akTdPKLz+ngEo/Tv7w4I3bE4KA6URjMg==}
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -56,15 +50,15 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
-  /@angular/compiler-cli/15.1.2_qbb6prygfkdcmogcfoew4a7yfy:
-    resolution: {integrity: sha512-gAqbQSKI4oeboh0UKsFdaEoST9IBVzqeckJzSTwAGxJeS33IM7Jjo3LViqHuzQyWKXe6srkci0LD4C2Mrj4kfQ==}
+  /@angular/compiler-cli/15.1.3_4khyt5yocueaoa5yhnzf5rhw64:
+    resolution: {integrity: sha512-z5bGdQQcStXWPpb5vztqqUOET+vxw+GUFtfktYxV40kE2d1zHLZh93AGEnM1NnBaOz+9NZrX+dWoEyWmv/T2LQ==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 15.1.2
+      '@angular/compiler': 15.1.3
       typescript: '>=4.8.2 <5.0'
     dependencies:
-      '@angular/compiler': 15.1.2_@angular+core@15.1.2
+      '@angular/compiler': 15.1.3_@angular+core@15.1.3
       '@babel/core': 7.19.3
       '@jridgewell/sourcemap-codec': 1.4.14
       chokidar: 3.5.3
@@ -80,21 +74,21 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler/15.1.2_@angular+core@15.1.2:
-    resolution: {integrity: sha512-hKlr1i61a2Gl0h53goSSUbZmzNgdC1zAHu+Ws0+1Qfv9cDgg1aVphFGFMdV0kbjLV+k7LyFjj5EgWU48o5UXww==}
+  /@angular/compiler/15.1.3_@angular+core@15.1.3:
+    resolution: {integrity: sha512-CxEpm5Z3EpjeGNoWKtcHOrf2IQTSckpAEFwsRrADP2nqcXXYp/IjIHi+PUTjLhjrOEbukH9zreHsL5BoIQhgUQ==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
-      '@angular/core': 15.1.2
+      '@angular/core': 15.1.3
     peerDependenciesMeta:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 15.1.2_rxjs@7.8.0+zone.js@0.12.0
+      '@angular/core': 15.1.3_rxjs@7.8.0+zone.js@0.12.0
       tslib: 2.5.0
     dev: true
 
-  /@angular/core/15.1.2_rxjs@7.8.0+zone.js@0.12.0:
-    resolution: {integrity: sha512-K9pz6Bq6RuY/OWhKLZT1JQvk4orvU9wozgXY8cZaOGmNCQQ7sJv5zGkO5csO6o1ON1v/AHowrP/FAF1i8tml5g==}
+  /@angular/core/15.1.3_rxjs@7.8.0+zone.js@0.12.0:
+    resolution: {integrity: sha512-rad9OYnaoRnXBztOBXsiD59VvOZTpsvO3sWx6KndytQFceFfkL722bF2l2LARN+R3IWDOwRap46HOtc0O0N+sw==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -127,7 +121,7 @@ packages:
       '@babel/helper-compilation-targets': 7.20.7_@babel+core@7.19.3
       '@babel/helper-module-transforms': 7.20.11
       '@babel/helpers': 7.20.13
-      '@babel/parser': 7.20.13
+      '@babel/parser': 7.20.15
       '@babel/template': 7.20.7
       '@babel/traverse': 7.20.13
       '@babel/types': 7.20.7
@@ -255,8 +249,8 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@babel/parser/7.20.13:
-    resolution: {integrity: sha512-gFDLKMfpiXCsjt4za2JA9oTMn70CeseCehb11kRZgvd7+F67Hih3OHOK24cRrWECJ/ljfPGac6ygXAs/C8kIvw==}
+  /@babel/parser/7.20.15:
+    resolution: {integrity: sha512-DI4a1oZuf8wC+oAJA9RW6ga3Zbe8RZFt7kD9i4qAspz3I/yHet1VvC3DiSy/fsUvv5pvJuNPh0LPOdCcqinDPg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
@@ -275,7 +269,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/parser': 7.20.13
+      '@babel/parser': 7.20.15
       '@babel/types': 7.20.7
     dev: true
 
@@ -289,7 +283,7 @@ packages:
       '@babel/helper-function-name': 7.19.0
       '@babel/helper-hoist-variables': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.20.13
+      '@babel/parser': 7.20.15
       '@babel/types': 7.20.7
       debug: 4.3.4
       globals: 11.12.0
@@ -306,14 +300,14 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@floating-ui/core/1.1.1:
-    resolution: {integrity: sha512-PL7g3dhA4dHgZfujkuD8Q+tfJJynEtnNQSPzmucCnxMvkxf4cLBJw/ZYqZUn4HCh33U3WHrAfv2R2tbi9UCSmw==}
+  /@floating-ui/core/1.2.0:
+    resolution: {integrity: sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==}
     dev: true
 
   /@floating-ui/dom/1.1.1:
     resolution: {integrity: sha512-TpIO93+DIujg3g7SykEAGZMDtbJRrmnYRCNYSjJlvIbGhBjRSNTLVbNeDQBrzy9qDgUbiWdc7KA0uZHZ2tJmiw==}
     dependencies:
-      '@floating-ui/core': 1.1.1
+      '@floating-ui/core': 1.2.0
     dev: true
 
   /@jridgewell/gen-mapping/0.1.1:
@@ -354,25 +348,27 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.4.0-rc.0:
-    resolution: {integrity: sha512-feOOS2qvedCiriHnA+0KeHolM4m64p4Au60W3QLKHKADWQbzGELhh+lWzFVkEVjDUTRTGZF784j2q8E7qZ4yTA==}
+  /@public-ui/components/1.4.0-rc.1:
+    resolution: {integrity: sha512-GBmV+cOafcUZdr8R5KKdS+iei3S74W8RRHz7stwKjv+fykTFvisZ8VJy41co0WC4Tqw495r5u64XOA7Zq4GzSg==}
     dependencies:
       '@floating-ui/dom': 1.1.1
-      '@public-ui/core': 1.4.0-rc.0
-      '@public-ui/schema': 1.4.0-rc.0
+      '@public-ui/core': 1.4.0-rc.1
+      '@public-ui/schema': 1.4.0-rc.1
+      npm: 9.4.1
+      start: 5.1.0
     dev: true
 
-  /@public-ui/core/1.4.0-rc.0:
-    resolution: {integrity: sha512-xo2VdWgUzPpgyy/0DtLIm0uHY8m1LW05uMnYqzkdOFEgXoAc08hiQyGE1cJuwmdcNit95IgNXmcp8rmkyxbw6A==}
+  /@public-ui/core/1.4.0-rc.1:
+    resolution: {integrity: sha512-DIqbQT0wGNZJgHiGm0fSASbWzmiOy/w3760P3tJerCxcKFyoCnTd/PST+rM/5cH9w+GFjlSyaVuWnxTp0vX6zQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.59
+      '@a11y-ui/core': 1.0.1-rc.61
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.0:
-    resolution: {integrity: sha512-mWvDQIGKo+7XFkGOk789H6M1cOS6xnGuE6wz2dnjp/Q3wPdunM9qPGckq92SCu0zhwF1+cz5aXHclPQ9p8kbXA==}
+  /@public-ui/schema/1.4.0-rc.1:
+    resolution: {integrity: sha512-7QdfMfdrN8I3LvXC9M0BFE0HMFNcGkWZf/FbUMK7eQF59LUSquBieZ4H3fMCkyWr/tc4HPq64/aehXDZpvacoA==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.58
+      '@a11y-ui/core': 1.0.1-rc.61
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -383,8 +379,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.18:
-    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+  /@types/node/18.11.19:
+    resolution: {integrity: sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -435,14 +431,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001449
-      electron-to-chromium: 1.4.284
-      node-releases: 2.0.9
+      caniuse-lite: 1.0.30001450
+      electron-to-chromium: 1.4.288
+      node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
 
-  /caniuse-lite/1.0.30001449:
-    resolution: {integrity: sha512-CPB+UL9XMT/Av+pJxCKGhdx+yg1hzplvFJQlJ2n68PyQGMz9L/E2zCyLdOL8uasbouTUgnPl+y0tccI/se+BEw==}
+  /caniuse-lite/1.0.30001450:
+    resolution: {integrity: sha512-qMBmvmQmFXaSxexkjjfMvD5rnDL0+m+dUMZKoDYsGG8iZN29RuYh9eRoMvKsT6uMAWlyUUGDEQGJJYjzCIO9ew==}
     dev: true
 
   /chalk/2.4.2:
@@ -520,8 +516,8 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /electron-to-chromium/1.4.284:
-    resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
+  /electron-to-chromium/1.4.288:
+    resolution: {integrity: sha512-8s9aJf3YiokIrR+HOQzNOGmEHFXVUQzXM/JaViVvKdCkNUjS+lEa/uT7xw3nDVG/IgfxiIwUGkwJ6AR1pTpYsQ==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -660,14 +656,88 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /node-releases/2.0.9:
-    resolution: {integrity: sha512-2xfmOrRkGogbTK9R6Leda0DGiXeY3p2NJpy4+gNCffdUvV6mdEJnaDEic1i3Ec2djAo8jWYoJMR5PB0MSMpxUA==}
+  /node-releases/2.0.10:
+    resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}
     dev: true
 
   /normalize-path/3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /npm/9.4.1:
+    resolution: {integrity: sha512-yCtrPwN/vPtc2KRyIBLdTqPMFy0R9pPurr8wJKtDvDfzICY/3IBG6t2z+zHA79pl5R8+mVH8EcJICLUeU48oQQ==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+    hasBin: true
+    dev: true
+    bundledDependencies:
+      - '@isaacs/string-locale-compare'
+      - '@npmcli/arborist'
+      - '@npmcli/config'
+      - '@npmcli/map-workspaces'
+      - '@npmcli/package-json'
+      - '@npmcli/run-script'
+      - abbrev
+      - archy
+      - cacache
+      - chalk
+      - ci-info
+      - cli-columns
+      - cli-table3
+      - columnify
+      - fastest-levenshtein
+      - fs-minipass
+      - glob
+      - graceful-fs
+      - hosted-git-info
+      - ini
+      - init-package-json
+      - is-cidr
+      - json-parse-even-better-errors
+      - libnpmaccess
+      - libnpmdiff
+      - libnpmexec
+      - libnpmfund
+      - libnpmhook
+      - libnpmorg
+      - libnpmpack
+      - libnpmpublish
+      - libnpmsearch
+      - libnpmteam
+      - libnpmversion
+      - make-fetch-happen
+      - minimatch
+      - minipass
+      - minipass-pipeline
+      - mkdirp
+      - ms
+      - node-gyp
+      - nopt
+      - npm-audit-report
+      - npm-install-checks
+      - npm-package-arg
+      - npm-pick-manifest
+      - npm-profile
+      - npm-registry-fetch
+      - npm-user-validate
+      - npmlog
+      - p-map
+      - pacote
+      - parse-conflict-json
+      - proc-log
+      - qrcode-terminal
+      - read
+      - read-package-json
+      - read-package-json-fast
+      - semver
+      - ssri
+      - tar
+      - text-table
+      - tiny-relative-date
+      - treeverse
+      - validate-npm-package-name
+      - which
+      - write-file-atomic
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
@@ -727,6 +797,12 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: true
+
+  /start/5.1.0:
+    resolution: {integrity: sha512-lirwWQmvBC65bnxU3HzKx5m7vfZJZTx/FrKyPWbtobcvujGbinQQRrNodtcgkp4mTZ00umzDeg7lraN351l0aA==}
+    engines: {node: '>=4'}
+    deprecated: Deprecated in favor of https://github.com/deepsweet/start
     dev: true
 
   /string-width/4.2.3:
