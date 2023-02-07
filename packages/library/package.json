@@ -86,7 +86,7 @@
 		"@stencil/vue-output-target": "0.7.0",
 		"@types/color-convert": "2.0.0",
 		"@types/jest": "26.0.24",
-		"@types/node": "18.11.18",
+		"@types/node": "18.11.19",
 		"@types/wcag-contrast": "3.0.0",
 		"@typescript-eslint/eslint-plugin": "5.50.0",
 		"@typescript-eslint/parser": "5.50.0",
