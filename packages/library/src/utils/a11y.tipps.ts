@@ -5,7 +5,7 @@ export const a11yHint = (msg: string): void => {
 	if (a11yCache.has(msg) === false) {
 		a11yCache.add(msg);
 		Log.info(msg, {
-			classifier: `✋a11y`,
+			classifier: `✋ a11y`,
 			overwriteStyle: '; background-color: #09f',
 		});
 	}
@@ -16,7 +16,7 @@ export const deprecatedHint = (msg: string): void => {
 	if (deprecatedCache.has(msg) === false) {
 		deprecatedCache.add(msg);
 		Log.warn(msg, {
-			classifier: `🔥deprecated`,
+			classifier: `🔥 deprecated`,
 			forceLog: true,
 			overwriteStyle: '; background-color: #f00',
 		});
@@ -28,7 +28,7 @@ export const devHint = (msg: string): void => {
 	if (devCache.has(msg) === false) {
 		devCache.add(msg);
 		Log.debug(msg, {
-			classifier: `💻dev`,
+			classifier: `💻 dev`,
 			overwriteStyle: '; background-color: #f09',
 		});
 	}
@@ -40,7 +40,7 @@ export const featureHint = (msg: string, done = false): void => {
 		featureCache.add(msg);
 		msg += done === true ? ' ✅' : '';
 		Log.debug(msg, {
-			classifier: `🌟feature`,
+			classifier: `🌟 feature`,
 			overwriteStyle: '; background-color: #309',
 		});
 	}
@@ -54,7 +54,7 @@ const uiUxHint = (msg: string): void => {
 	if (uiUxCache.has(msg) === false) {
 		uiUxCache.add(msg);
 		Log.debug(msg, {
-			classifier: `📑ui/ux`,
+			classifier: `📑 ui/ux`,
 			overwriteStyle: '; background-color: #060;',
 		});
 	}

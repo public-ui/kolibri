@@ -98,7 +98,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 						}
 						// style={
 						// 	this.state._open
-						// 		? height > 0 && process.env.NODE_ENV !== 'test' // TODO: remove this check when testing is fixed
+						// 		? height > 0 && processEnv !== 'test' // TODO: remove this check when testing is fixed
 						// 			? {
 						// 				height: `${height}px`,
 						// 				overflow: 'hidden',

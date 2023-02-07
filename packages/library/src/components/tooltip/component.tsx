@@ -6,7 +6,7 @@ import { watchTooltipAlignment } from '../../types/button-link';
 import { Alignment } from '../../types/props/alignment';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
-import { smartSetTimeout } from '../../utils/reuse';
+import { processEnv, smartSetTimeout } from '../../utils/reuse';
 
 /**
  * API
@@ -37,7 +37,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	private arrowElement?: HTMLDivElement;
 
 	private alignTooltip = (): void => {
-		if (process.env.NODE_ENV !== 'test') {
+		if (processEnv !== 'test') {
 			if (this.previousSibling /* SSR instanceof HTMLElement */) {
 				const target = this.previousSibling;
 				if (this.tooltipElement /* SSR instanceof HTMLElement */) {

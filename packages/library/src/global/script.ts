@@ -3,11 +3,12 @@ import { register } from '@public-ui/core';
 import { KoliBri } from '@public-ui/schema';
 import { setMode } from '@stencil/core';
 import { Log } from '../utils/dev.utils';
+import { processEnv } from '../utils/reuse';
 import { THEMING_ICON_FONT_CSS_FONT_AWESOME } from './defaults/icon';
 
 // ts-prune-ignore-next
 export default (): void => {
-	if (process.env.NODE_ENV !== 'test') {
+	if (processEnv !== 'test') {
 		Log.info(
 			`
 ,--. ,--.         ,--. ,--. ,-----.           ,--.

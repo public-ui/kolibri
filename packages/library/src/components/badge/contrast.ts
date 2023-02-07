@@ -36,8 +36,17 @@ export const getContrastYIQ = (r: number, g: number, b: number): number => {
 	return yiq >= 128 ? -1 : 1;
 };
 
+export type ColorPair<T> = {
+	background: T;
+	foreground: T;
+};
+
+export type ColorContrast<T> = ColorPair<T> & {
+	contrast: number;
+};
+
 // ts-prune-ignore-next
-export const calcContrastColor = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): RGB => {
+export const calcColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
 	const color: RGB = [
 		Math.max(Math.min(Math.round(contrastColor[0] + dir * Math.max(1, contrastColor[0] / 100)), 255), 0),
 		Math.max(Math.min(Math.round(contrastColor[1] + dir * Math.max(1, contrastColor[1] / 100)), 255), 0),
@@ -46,54 +55,54 @@ export const calcContrastColor = (baseColor: RGB, contrastColor: RGB, ratio: num
 	const contrast = hex(rgbaConvert.hex(`rgba(${baseColor.join(',')},1)`), rgbaConvert.hex(`rgba(${color.join(',')},1)`));
 	const summe = color[0] + color[1] + color[2];
 	if (summe === 0 || summe === 765 || contrast > ratio) {
-		return color;
+		return {
+			background: baseColor,
+			foreground: color,
+			contrast,
+		};
 	} else {
-		return calcContrastColor(baseColor, color, ratio, dir);
+		return calcColorContrast(baseColor, color, ratio, dir);
 	}
 };
 
+const cache: Map<unknown, ColorContrast<RGB>> = new Map();
+
 // ts-prune-ignore-next
-export const getContrastColor = (baseColor: RGB, contrastcolor: RGB, ratio: number, dir = 1): RGB => {
+export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
 	if (cache.has(baseColor)) {
-		return cache.get(baseColor) as RGB;
+		return cache.get(baseColor) as ColorContrast<RGB>;
 	}
-	const color = calcContrastColor(baseColor, contrastcolor, ratio, dir);
+	const color = calcColorContrast(baseColor, contrastColor, ratio, dir);
 	cache.set(baseColor, color);
 	return color;
 };
 
-const cache: Map<unknown, RGB> = new Map();
-
-export type KoliBriContrastColor = {
-	baseColor: string;
-	contrastColor: string;
-};
-
-export const createContrastColorPair = (color: string | KoliBriContrastColor, contrastRatio = 7): KoliBriContrastColor => {
+export const createContrastColorPair = (color: string | ColorPair<string>, contrastRatio = 7): ColorContrast<string> => {
 	let baseColor: RGBA = [0, 0, 0, 1];
 	let contrastColor: RGBA = [255, 255, 255, 1];
 	if (typeof color === 'string') {
 		baseColor = colorRgba(color);
 		contrastColor = baseColor;
-	} else if (typeof color === 'object' && color !== null && typeof color.baseColor === 'string') {
-		baseColor = colorRgba(color.baseColor);
-		if (typeof color.contrastColor === 'string') {
-			contrastColor = colorRgba(color.contrastColor);
+	} else if (typeof color === 'object' && color !== null && typeof color.background === 'string' && typeof color.foreground === 'string') {
+		baseColor = colorRgba(color.background);
+		if (typeof color.foreground === 'string') {
+			contrastColor = colorRgba(color.foreground);
 		} else {
 			contrastColor = baseColor;
 		}
 	}
 	const yiq = getContrastYIQ(baseColor[0], baseColor[1], baseColor[2]);
-	const contrastColorRGB = getContrastColor(
+	const colorContrast = getColorContrast(
 		[baseColor[0], baseColor[1], baseColor[2]],
 		[contrastColor[0], contrastColor[1], contrastColor[2]],
 		contrastRatio,
 		yiq
 	);
-	contrastColor = [...contrastColorRGB, 1];
+	contrastColor = [...colorContrast.foreground, 1];
 
 	return {
-		baseColor: rgbaConvert.hex(`rgba(${baseColor.join(',')})`),
-		contrastColor: rgbaConvert.hex(`rgba(${contrastColor.join(',')})`),
+		background: rgbaConvert.hex(`rgba(${baseColor.join(',')})`),
+		foreground: rgbaConvert.hex(`rgba(${contrastColor.join(',')})`),
+		contrast: colorContrast.contrast,
 	};
 };

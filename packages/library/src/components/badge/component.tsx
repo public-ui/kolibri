@@ -1,12 +1,11 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { Nationalfarben } from '../../enums/color';
 import { KoliBriIconProp } from '../../types/icon';
 import { Alignment } from '../../types/props/alignment';
-import { devHint, featureHint } from '../../utils/a11y.tipps';
+import { a11yHint, devHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchValidator } from '../../utils/prop.validators';
-import { createContrastColorPair, KoliBriContrastColor } from './contrast';
+import { createContrastColorPair, ColorContrast } from './contrast';
 import { Stringified } from '../../types/common';
 import { ButtonProps } from '../../types/button-link';
 
@@ -87,7 +86,7 @@ export class KolBadge implements Props {
 	/**
 	 * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
 	 */
-	@Prop() public _color?: string | KoliBriColor = Nationalfarben.Schwarz;
+	@Prop() public _color?: string | KoliBriColor = '#000';
 
 	/**
 	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
@@ -119,12 +118,12 @@ export class KolBadge implements Props {
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_color: Nationalfarben.Schwarz,
+		_color: '#000',
 	};
 
 	private handleColorChange = (value: unknown) => {
 		let color = value as string | KoliBriColor;
-		let colorPair: KoliBriContrastColor;
+		let colorContrast: ColorContrast<string>;
 		if (typeof color === 'string') {
 			if (HACK_REG_EX.test(color)) {
 				// Catch Breaking Change - remove next Major
@@ -133,15 +132,20 @@ export class KolBadge implements Props {
 				);
 				color = `#${color}`;
 			}
-			colorPair = createContrastColorPair(color);
+			colorContrast = createContrastColorPair(color);
 		} else {
-			colorPair = createContrastColorPair({
-				baseColor: color.backgroundColor,
-				contrastColor: color.color,
+			colorContrast = createContrastColorPair({
+				background: color.backgroundColor,
+				foreground: color.color,
 			});
 		}
-		this.bgColorStr = colorPair.baseColor;
-		this.colorStr = colorPair.contrastColor;
+		if (colorContrast.contrast < 7) {
+			a11yHint(
+				`[KolBadge] The contrast of ${colorContrast.contrast} (≥7, AAA) is too low, between the color pair ${colorContrast.background} and ${colorContrast.foreground}.`
+			);
+		}
+		this.bgColorStr = colorContrast.background;
+		this.colorStr = colorContrast.foreground;
 	};
 
 	/**
@@ -152,11 +156,13 @@ export class KolBadge implements Props {
 		watchValidator(
 			this,
 			'_color',
-			(value) => typeof value === 'string' || (typeof value === 'object' && value !== null),
+			(value) =>
+				typeof value === 'string' ||
+				(typeof value === 'object' && value !== null && typeof value.backgroundColor === 'string' && typeof value.color === 'string'),
 			new Set(['string', 'KoliBriColor']),
 			value,
 			{
-				defaultValue: Nationalfarben.Schwarz,
+				defaultValue: '#000',
 				hooks: {
 					beforePatch: this.handleColorChange,
 				},

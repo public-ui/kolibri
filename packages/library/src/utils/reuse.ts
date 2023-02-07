@@ -20,3 +20,11 @@ export const smartSetTimeout = (cb: () => void, delay?: number) => {
 		cb();
 	}, delay);
 };
+
+type ProzessEnv = 'development' | 'production' | 'test';
+export let processEnv: ProzessEnv = 'development';
+try {
+	processEnv = process.env.NODE_ENV as ProzessEnv;
+} catch (e) {
+	processEnv = 'production';
+}

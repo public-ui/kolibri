@@ -2,7 +2,8 @@ import { promises as fs } from 'fs';
 
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
-// import nodePolyfills from 'rollup-plugin-node-polyfills';
+import replace from '@rollup/plugin-replace';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
@@ -284,10 +285,14 @@ export const config: Config = {
 	outputTargets: outputTargets,
 	plugins: [sass(), postcss()],
 	rollupPlugins: {
-		before: [],
-		after: [
-			// nodePolyfills()
+		before: [
+			replace({
+				preventAssignment: true,
+				'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+				'process.platform': "'browser'",
+			}),
 		],
+		after: [nodePolyfills()],
 	},
 	taskQueue: 'immediate',
 };
