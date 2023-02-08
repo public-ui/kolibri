@@ -71,7 +71,7 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.11.19",
 		"@types/normalize-package-data": "2.4.1",
-		"prettier": "2.8.3",
+		"prettier": "2.8.4",
 		"rimraf": "4.1.2",
 		"rxjs": "7.8.0",
 		"tslib": "2.5.0",
