@@ -29,17 +29,17 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
 	 */
-	@Prop({ reflect: true }) public _level?: HeadingLevel = 1;
+	@Prop() public _level?: HeadingLevel = 1;
 
 	/**
 	 * Gibt den Text der Überschrift an.
 	 */
-	@Prop({ reflect: true }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt den Text der zusätzlichen Beschriftung an.
 	 */
-	@Prop({ reflect: true }) public _overline?: string = '';
+	@Prop() public _overline?: string = '';
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -138,8 +138,8 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	public render(): JSX.Element {
 		return (
 			<Host>
-				{this.renderHeadline(this._label, this._level)}
-				{this._overline && <span class="overline">{this._overline}</span>}
+				{this.renderHeadline(this.state._label, this.state._level)}
+				{this.state._overline && <span class="overline">{this.state._overline}</span>}
 			</Host>
 		);
 	}

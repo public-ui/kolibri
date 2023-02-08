@@ -16,9 +16,10 @@ export const getCardHtml = (props: Props): string => {
 				${getHeadingWcHtml(
 					{
 						_label: props._heading,
+						_level: props._level,
 					},
 					{
-						default: props._heading,
+						default: '',
 					}
 				)}
 				<slot name="header"></slot>
