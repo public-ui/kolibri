@@ -1,0 +1,93 @@
+@import '../style.css';
+
+/* INPUT */
+:host input:focus {
+	outline-color: var(--kolibri-color-primary) !important;
+	outline-offset: 2px;
+	outline-style: solid;
+	outline-width: 3px;
+}
+label {
+	display: grid;
+	font-size: 14px;
+	line-height: 20px;
+	gap: 8px;
+	width: 100%;
+}
+input {
+	width: 100%;
+	border-color: var(--kolibri-border-color);
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 5px; /* padding: 10px 14px; */
+	line-height: 24px;
+	font-size: 16px;
+}
+input:hover {
+	border-color: var(--kolibri-color-primary);
+}
+kol-alert {
+	display: block;
+	width: 100%;
+}
+.kol-required span::after {
+	content: '*';
+} /* RADIO */
+:host fieldset {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	display: grid;
+	gap: 0.25em;
+}
+:host fieldset legend {
+	display: block;
+	width: 100%;
+	line-height: 1.5em;
+}
+:host fieldset div {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	gap: 0.5em;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	align-items: center;
+	position: relative;
+}
+:host fieldset div label {
+	cursor: pointer;
+	display: flex;
+	width: 100%;
+}
+:host fieldset div label span {
+	margin-top: 0.125em;
+}
+:host fieldset div input[type='radio'] {
+	appearance: none;
+	transition: 0.5s;
+	border-radius: 100%;
+	height: calc(6 * var(--kolibri-spacing));
+	min-width: calc(6 * var(--kolibri-spacing));
+	width: calc(6 * var(--kolibri-spacing));
+}
+:host fieldset div input[type='radio']:before {
+	content: '';
+	cursor: pointer;
+	left: calc(1.5 * var(--kolibri-spacing) - 2px);
+	top: calc(1.5 * var(--kolibri-spacing) - 2px);
+	position: relative;
+	border-radius: 100%;
+	display: block;
+	height: calc(3 * var(--kolibri-spacing));
+	width: calc(3 * var(--kolibri-spacing));
+}
+:host fieldset div input[type='radio']:checked:before {
+	box-shadow: 0 0 0.1rem black;
+	background-color: var(--kolibri-color-normal);
+}
+:host fieldset div input[type='radio']:disabled {
+	background-color: var(--kolibri-color-disabled);
+	border-color: #999;
+	cursor: not-allowed;
+}

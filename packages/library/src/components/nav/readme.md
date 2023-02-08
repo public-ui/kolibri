@@ -18,7 +18,7 @@ noch die Icons ausgegeben.
 
 ### Code
 
-```tsx
+```html
 <kol-nav
 	_links='[{_"label":"Startseite", "_href":"startseite"},{_"label":"Unterseite von Startseite", "_href":"unterseite"}]'
 	_has-compact-button="true"
@@ -35,28 +35,15 @@ noch die Icons ausgegeben.
 
 Die Navigationsstruktur wird als JSON-Struktur an das Attribut `_links_` übergeben. Die Struktur ist als Wert/Parameter-Paar aufgebaut:
 
-```tsx
-[
-  {"_label":"Startseite", "_href":"startseite"},
-  {"_label":"Unterseite 1":"_href":"unterseite1"},
-  {"_label":"Unterseite 2":"_href":"unterseite2"}
-]
+```html
+[ {"_label":"Startseite", "_href":"startseite"}, {"_label":"Unterseite 1":"_href":"unterseite1"}, {"_label":"Unterseite 2":"_href":"unterseite2"} ]
 ```
 
 Um Untermenüpunkte zu erzeugen, erweitern Sie die JSON-Struktur um das zusätzliche Attribut `_children` im übergeordneten Element.
 
-```tsx
-[
-	{
-		_label: 'Startseite',
-		_href: 'startseite',
-		_children: [
-			{ _label: '1. Untermenüpunkt', _href: 'startseite/1-untermenuepunkt' },
-			{ _label: '2. Untermenüpunkt', _href: 'startseite/2-untermenuepunkt' },
-		],
-	},
-	{ _label: '2. Menüpunkt', _href: 'unterseite' },
-];
+```html
+[ { _label: 'Startseite', _href: 'startseite', _children: [ { _label: '1. Untermenüpunkt', _href: 'startseite/1-untermenuepunkt' }, { _label: '2.
+Untermenüpunkt', _href: 'startseite/2-untermenuepunkt' }, ], }, { _label: '2. Menüpunkt', _href: 'unterseite' }, ];
 ```
 
 ### Kompakte Navigationsleiste anzeigen
@@ -123,6 +110,24 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 | Part    | Description |
 | ------- | ----------- |
 | `"nav"` | TBD         |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

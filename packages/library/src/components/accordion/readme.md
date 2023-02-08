@@ -8,7 +8,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 ### Code
 
-```tsx
+```html
 <kol-accordion _heading="Überschrift" _level="1" _open>
 	<div slot="content">Beispieltext</div>
 </kol-accordion>
@@ -98,7 +98,7 @@ Standardansicht gelegt.
 | Property                | Attribute  | Description                                               | Type                                                                          | Default     |
 | ----------------------- | ---------- | --------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------- |
 | `_heading` _(required)_ | `_heading` | Gibt die Überschrift des Accordions an.                   | `string`                                                                      | `undefined` |
-| `_level`                | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                     | `1`         |
+| `_level`                | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                | `1`         |
 | `_on`                   | --         | Gibt die EventCallback-Funktionen an.                     | `undefined \| { onClick?: EventValueCallback<Event, boolean> \| undefined; }` | `undefined` |
 | `_open`                 | `_open`    | Gibt an, ob das Accordion geöffnet ist.                   | `boolean \| undefined`                                                        | `false`     |
 
@@ -119,6 +119,24 @@ Standardansicht gelegt.
 | `"header"`    | Ermöglicht das Stylen des Kopfbereichs.                     |
 | `"icon"`      | Ermöglicht das Stylen der Icons.                            |
 | `"open"`      | Ermöglicht das Stylen des geöffneten Zustands und Icons.    |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

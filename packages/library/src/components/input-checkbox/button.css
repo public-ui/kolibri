@@ -1,0 +1,8 @@
+kol-input.button {
+	cursor: pointer;
+	display: inline-flex;
+	width: auto;
+}
+.button input {
+	display: none;
+}

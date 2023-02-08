@@ -1,0 +1,56 @@
+@import '../style.css';
+
+:host > div {
+	background-color: white;
+	border-color: var(--kolibri-border-color);
+	border-radius: var(--kolibri-border-radius);
+	border-style: solid;
+	border-width: var(--kolibri-border-width);
+	display: flex;
+	overflow: hidden;
+	width: 100%;
+}
+:host > div.error {
+	border-color: var(--kolibri-color-error);
+}
+:host > div.error .icon {
+	background-color: var(--kolibri-color-error);
+}
+:host > div.info {
+	border-color: var(--kolibri-color-info);
+}
+:host > div.info .icon {
+	background-color: var(--kolibri-color-info);
+}
+:host > div.success {
+	border-color: var(--kolibri-color-success);
+}
+:host > div.success .icon {
+	background-color: var(--kolibri-color-success);
+}
+:host > div.warning {
+	border-color: var(--kolibri-color-warning);
+}
+:host > div.warning .icon {
+	background-color: var(--kolibri-color-warning);
+}
+:host > div .icon {
+	color: white;
+	display: inline-block;
+	padding: 0 var(--kolibri-spacing);
+}
+:host > div > div {
+	display: grid;
+}
+:host > div > div .heading {
+	display: inline-block;
+	padding: 0 var(--kolibri-spacing);
+}
+:host > div > div .heading .icon {
+	border-radius: 0 0 var(--kolibri-border-radius) 0;
+	margin-left: var(--kolibri-spacing);
+	margin-right: var(--kolibri-spacing);
+}
+:host > div > div > div:last-child {
+	padding: var(--kolibri-spacing);
+}

@@ -56,7 +56,7 @@ const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 @Component({
 	tag: 'kol-table',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

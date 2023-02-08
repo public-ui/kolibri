@@ -67,7 +67,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-tabs',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

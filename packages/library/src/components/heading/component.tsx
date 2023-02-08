@@ -1,14 +1,18 @@
-import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { watchHeadingLevel } from './validation';
+import { watchString } from '../../utils/prop.validators';
 
 /**
  * API
  */
-type RequiredProps = unknown;
+type RequiredProps = {
+	label: string;
+};
 type OptionalProps = {
+	overline: string;
 	level: HeadingLevel;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -23,14 +27,34 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
 	 */
 	@Prop({ reflect: true }) public _level?: HeadingLevel = 1;
 
 	/**
+	 * Gibt den Text der Überschrift an.
+	 */
+	@Prop({ reflect: true }) public _label!: string;
+
+	/**
+	 * Gibt den Text der zusätzlichen Beschriftung an.
+	 */
+	@Prop({ reflect: true }) public _overline?: string = '';
+
+	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
-	@State() public state: States = {};
+	@State() public state: States = {
+		_label: 'Untitled',
+	};
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		watchString(this, '_label', value);
+	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
@@ -41,50 +65,82 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	}
 
 	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_overline')
+	public validateOverline(value?: string): void {
+		watchString(this, '_overline', value);
+	}
+
+	/**
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
+		this.validateOverline(this._overline);
 	}
 
-	public render(): JSX.Element {
-		switch (this.state._level) {
+	private readonly renderHeadline = (label: string, level?: HeadingLevel): JSX.Element => {
+		switch (level) {
+			case 1:
+				return (
+					<h1 class="headline">
+						{label}
+						<slot />
+					</h1>
+				);
 			case 2:
 				return (
-					<h2>
+					<h2 class="headline">
+						{label}
 						<slot />
 					</h2>
 				);
 			case 3:
 				return (
-					<h3>
+					<h3 class="headline">
+						{label}
 						<slot />
 					</h3>
 				);
 			case 4:
 				return (
-					<h4>
+					<h4 class="headline">
+						{label}
 						<slot />
 					</h4>
 				);
 			case 5:
 				return (
-					<h5>
+					<h5 class="headline">
+						{label}
 						<slot />
 					</h5>
 				);
 			case 6:
 				return (
-					<h6>
+					<h6 class="headline">
+						{label}
 						<slot />
 					</h6>
 				);
 			default:
 				return (
-					<h1>
+					<strong class="headline">
+						{label}
 						<slot />
-					</h1>
+					</strong>
 				);
 		}
+	};
+
+	public render(): JSX.Element {
+		return (
+			<Host>
+				{this.renderHeadline(this._label, this._level)}
+				{this._overline && <span class="overline">{this._overline}</span>}
+			</Host>
+		);
 	}
 }

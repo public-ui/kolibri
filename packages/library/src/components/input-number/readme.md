@@ -6,10 +6,8 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen, Datumswerte, Datum
 
 ### Code
 
-```tsx
-<kol-input-number _type="date" _id="mein_datum" _name="mein_datum">
-	Erstellungsdatum
-</kol-input-number>
+```html
+<kol-input-number _type="date" _id="mein_datum" _name="mein_datum"> Erstellungsdatum </kol-input-number>
 ```
 
 ### Beispiel
@@ -91,6 +89,24 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 | `_touched`         | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                                                                                                                                             | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `false`     |
 | `_type`            | `_type`          | <span style="color:red">**[DEPRECATED]**</span> Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.<br/><br/>Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist. | `"date" \| "datetime-local" \| "month" \| "number" \| "time" \| "week" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `'number'`  |
 | `_value`           | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                                                                                                                                       | ``${number}-${number}-${number}T${number}:${number}:${number}.${number}` \| `${number}-${number}-${number}T${number}:${number}:${number}` \| `${number}-${number}-${number}` \| `${number}-${number}` \| `${number}-W${number}` \| `${number}:${number}:${number}.${number}` \| `${number}:${number}:${number}` \| number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

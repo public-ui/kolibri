@@ -6,19 +6,10 @@ Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere v
 
 ### Code
 
-```tsx
-<kol-select
-  _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]"
-  _value="['1']"
->
-  Auswahlfeld
-</kol-select>
-<kol-select
-  _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]"
-  _multiple
-  _value="['0','2']"
->
-  Auswahlfeld (Mehrfachauswahl)
+```html
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _value="['1']"> Auswahlfeld </kol-select>
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
+	Auswahlfeld (Mehrfachauswahl)
 </kol-select>
 ```
 
@@ -34,28 +25,15 @@ Die Auswahlmöglichkeiten, **_Option-List_**, werden über das Attribut **_\_lis
 
 Beispiel für die Konstruktion des JSON-Objektes:
 
-```tsx
-[
-	{
-		label: 'Herr',
-		value: '0',
-	},
-	{
-		label: 'Frau',
-		value: '1',
-	},
-	{
-		label: 'Firma',
-		value: '2',
-	},
-];
+```html
+[ { label: 'Herr', value: '0', }, { label: 'Frau', value: '1', }, { label: 'Firma', value: '2', }, ];
 ```
 
 ### Individuelle Höhe angeben
 
 Mit der Property **`_height`** kann eine individuelle Höhe der Selectbox mittels CSS bestimmt werden. Die property erwartet einen String als Übergabewert, der innerhalb des style-Attributes ausgegeben wird. Es ist daher erforderlich, auch die gewünschte Ausgabeeinheit, z.B. px oder em, mit zu übergeben.
 
-```tsx
+```html
 <kol-select _height="85px"></kol-select>
 ```
 
@@ -76,37 +54,22 @@ Mit der Property **`_height`** kann eine individuelle Höhe der Selectbox mittel
 Die Select-Komponente liefert bei Auswahl eines Wertes eine Liste (Array) mit genau einem
 Wert zurück (im Single-Modus). Das kann bei der weiteren Verarbeitung zu unnötigem Aufwand führen. Einfacher ist es hier, den Wert der Select-Komponente über einen <b>SingeSelectFormatter</b> zu Filtern. Fügen Sie hierzu im Formular nachfolgende Klasse ein:
 
-```tsx
-class SingleSelectFormatter extends AbstractFormatter {
-	public format(value: unknown): unknown {
-		return [value];
-	}
-
-	public parse(value: unknown): unknown {
-		if (Array.isArray(value) && value.length > 0) {
-			return value[0];
-		}
-		return value;
-	}
-}
+```html
+class SingleSelectFormatter extends AbstractFormatter { public format(value: unknown): unknown { return [value]; } public parse(value: unknown): unknown { if
+(Array.isArray(value) && value.length > 0) { return value[0]; } return value; } }
 ```
 
 Fügen Sie den Formatter anschließend der Select-Komponente hinzu:
 
-```tsx
-const singleSelectFormatHandler = new FormatHandler();
-singleSelectFormatHandler.formatters.add([new SingleSelectFormatter()]);
-(this.getInput('kategorie') as InputControl).setFormatHandler(singleSelectFormatHandler);
+```html
+const singleSelectFormatHandler = new FormatHandler(); singleSelectFormatHandler.formatters.add([new SingleSelectFormatter()]); (this.getInput('kategorie') as
+InputControl).setFormatHandler(singleSelectFormatHandler);
 ```
 
 Beachten Sie, dass der FormatHandler zunächst in die Form importiert wird.
 
-```tsx
-import {
-  xxx...,
-  xxx...,
-  FormatHandler,
-} from '@leanup/form';
+```html
+import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 ```
 
 ## Links und Referenzen
@@ -143,6 +106,24 @@ import {
 | Part       | Description                               |
 | ---------- | ----------------------------------------- |
 | `"select"` | Ermöglicht das Stylen des select-Knotens. |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

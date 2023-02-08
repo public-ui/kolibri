@@ -27,7 +27,7 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-tooltip',
 	styleUrls: {
-		default: './style.sass',
+		default: './style.css',
 	},
 	shadow: false,
 })

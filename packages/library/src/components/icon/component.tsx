@@ -22,7 +22,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-icon',
 	styleUrls: {
-		default: './style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

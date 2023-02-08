@@ -6,7 +6,7 @@ Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt wer
 
 ### Code
 
-```tsx
+```html
 <kol-skip-nav
 	_aria-label="Ein versteckter Link"
 	_links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"
@@ -23,17 +23,8 @@ Um die **SkipNav** sehen zu können, klicken Sie auf den Text **_Beispiel_** und
 
 Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Rendern der versteckten Links zuständig ist.
 
-```tsx
-[
-	{
-		_label: 'Navigation',
-		_href: '#nav',
-	},
-	{
-		_label: 'Inhalt',
-		_href: '#main',
-	},
-];
+```html
+[ { _label: 'Navigation', _href: '#nav', }, { _label: 'Inhalt', _href: '#main', }, ];
 ```
 
 <!--### Best practices
@@ -67,6 +58,24 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 | Part     | Description                      |
 | -------- | -------------------------------- |
 | `"link"` | Ermöglicht das Stylen der Links. |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

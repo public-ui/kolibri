@@ -10,7 +10,7 @@ import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from '.
 @Component({
 	tag: 'kol-input-checkbox',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })
@@ -31,6 +31,8 @@ export class KolInputCheckbox implements ComponentApi {
 					class={{
 						[this.state._variant]: true,
 					}}
+					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
+					tabIndex={this.state._variant === 'button' ? 0 : undefined}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}

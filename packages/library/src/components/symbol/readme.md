@@ -6,7 +6,7 @@ Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerb
 
 ### Code
 
-```tsx
+```html
 <kol-symbol _aria-label_="Slash" _symbol="/"></kol-symbol>
 ```
 

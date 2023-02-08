@@ -1,0 +1,8 @@
+@import '../../assets/codicons/codicon.css';
+@import '../../assets/fontawesome-free/css/all.css';
+@import '../../assets/icofont/icofont.css';
+
+:host > i {
+	color: inherit !important;
+	font-size: inherit !important;
+}

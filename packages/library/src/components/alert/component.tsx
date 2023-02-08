@@ -50,7 +50,7 @@ const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 @Component({
 	tag: 'kol-alert',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })
@@ -94,7 +94,7 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 					{this.state._variant === 'msg' && <AlertIcon heading={this.state._heading} type={this.state._type} />}
 					<div>
 						{((typeof this.state._heading === 'string' && this.state._heading.length > 0) || this.state._variant === 'card') && (
-							<kol-heading-wc class="heading" _level={this.state._level}>
+							<kol-heading-wc class="heading" _label="" _level={this.state._level}>
 								{this.state._variant === 'card' && <AlertIcon heading={this.state._heading} type={this.state._type} />}
 								{this.state._heading}
 							</kol-heading-wc>

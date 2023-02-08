@@ -21,9 +21,6 @@ type OptionalProps = {
  */
 @Component({
 	tag: 'kol-icon-font-awesome',
-	styleUrls: {
-		default: '../style.sass',
-	},
 	shadow: false,
 })
 export class KolIconFontAwesome implements Generic.Element.Members<RequiredProps, OptionalProps> {

@@ -11,7 +11,7 @@ Diese ist nicht mit einem link versehen. Alle Elemente links der aktuellen Seite
 
 ### Code
 
-```tsx
+```html
 <div>
 	<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/"},{"_label":"Unterseite von Startseite","_href":"#/unterseite"}]'></kol-breadcrumb>
 </div>
@@ -43,23 +43,9 @@ Das gesamte JSON-Objekt muss in eckigen Klammern an das Attribut **`_links`** ü
 
 Beispiel für ein JSON-Objekt, das an das Attribut **\_links** übergeben wird:
 
-```tsx
-[
-	{
-		_label: 'Startseite',
-		_href: '#/',
-		_icon: 'home',
-		_iconOnly: true,
-	},
-	{
-		_label: '1. Unterseite',
-		_href: '/1_unterseite',
-	},
-	{
-		_label: '2. Unterseite',
-		_href: '/2_unterseite',
-	},
-];
+```html
+[ { _label: 'Startseite', _href: '#/', _icon: 'home', _iconOnly: true, }, { _label: '1. Unterseite', _href: '/1_unterseite', }, { _label: '2. Unterseite',
+_href: '/2_unterseite', }, ];
 ```
 
 <kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/","_icon":"home","_icon-only": "true"},{"_label":"1. Unterseite","_href":"#/1_unterseite"},{"_label":"2. Unterseite","_href":"#/2_unterseite"}]'></kol-breadcrumb>
@@ -110,6 +96,24 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 | ------------- | ------------------------------------------ |
 | `"link"`      | Ermöglicht das Stylen der Links.           |
 | `"separator"` | Ermöglicht das Ändern des Separator-Icons. |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

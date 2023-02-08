@@ -1,0 +1,40 @@
+@import './tokens.css';
+@import './a11y.css';
+
+kol-icon {
+	color: inherit;
+}
+
+kol-span-wc {
+	display: grid;
+	place-items: center;
+	width: 100%;
+}
+kol-span-wc > span {
+	display: flex;
+	gap: 0.25rem;
+	place-items: center;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+	cursor: pointer;
+}
+
+a.icon-only > kol-span-wc > span > span,
+button.icon-only > kol-span-wc > span > span {
+	display: none;
+}
+
+a {
+	display: inline-flex;
+	place-items: baseline;
+}
+
+button {
+	background-color: transparent;
+	border-width: 0;
+}

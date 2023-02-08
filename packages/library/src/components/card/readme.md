@@ -11,7 +11,7 @@ Der **Fuß-Bereich** wird optional durch ein Attribut aktiviert und stellt dann 
 
 ### Code
 
-```tsx
+```html
 <kol-card _heading="Testtitel" _has-footer _max-height="vh2">
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">
@@ -62,7 +62,7 @@ Auch **HTML-Code** können sie hier einfügen. Dieser wird ausgewertet und ansch
 
 Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container verwenden können, es aber empfohlen wird ein `<div></div>`-Tag zu verwenden.
 
-```tsx
+```html
 <kol-card _heading="Beispiel" _level="1">
 	<div slot="header">Text im Header-Bereich</div>
 </kol-card>
@@ -75,7 +75,7 @@ Auch **HTML-Code** können sie hier einfügen. Dieser wird ausgewertet und ansch
 
 Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container verwenden können, es aber empfohlen wird ein `<div></div>`-Tag zu verwenden.
 
-```tsx
+```html
 <kol-card _heading="Beispiel" _level="1">
 	<div slot="content">Text im Inhalts-Bereich</div>
 </kol-card>
@@ -90,7 +90,7 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 Wenn Sie den Fuß-Bereich der Card-Komponente nutzen möchten, achten Sie darauf das Attribut **\_has-footer** im Element `<kol-card>` zu setzen
 
-```tsx
+```html
 <kol-card _heading="Beispiel" _level="1" _has-footer>
 	<div slot="footer">Text im Fuß-Bereich</div>
 </kol-card>
@@ -119,12 +119,12 @@ Es ist auch möglich andere Komponenten der KoliBri-Bibliothek innerhalb der **C
 
 ## Properties
 
-| Property                | Attribute     | Description                                                                                                                             | Type                                      | Default     |
-| ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ----------- |
-| `_hasFooter`            | `_has-footer` | Gibt an, ob die Card einen Footer-Bereich hat.                                                                                          | `boolean \| undefined`                    | `false`     |
-| `_heading` _(required)_ | `_heading`    | Gibt die Überschrift der Card an.                                                                                                       | `string`                                  | `undefined` |
-| `_headline`             | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Überschrift der Card an. | `string \| undefined`                     | `undefined` |
-| `_level`                | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                                                                               | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| Property                | Attribute     | Description                                                                                                                             | Type                                           | Default     |
+| ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `_hasFooter`            | `_has-footer` | Gibt an, ob die Card einen Footer-Bereich hat.                                                                                          | `boolean \| undefined`                         | `false`     |
+| `_heading` _(required)_ | `_heading`    | Gibt die Überschrift der Card an.                                                                                                       | `string`                                       | `undefined` |
+| `_headline`             | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Überschrift der Card an. | `string \| undefined`                          | `undefined` |
+| `_level`                | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                                                                               | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
 
 ## Slots
 
@@ -139,6 +139,24 @@ Es ist auch möglich andere Komponenten der KoliBri-Bibliothek innerhalb der **C
 | Part     | Description |
 | -------- | ----------- |
 | `"card"` | TBD         |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

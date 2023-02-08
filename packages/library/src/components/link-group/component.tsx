@@ -80,7 +80,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-link-group',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })
@@ -95,7 +95,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 				}}
 			>
 				{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-					<kol-heading-wc _level={this.state._level}>{this.state._heading}</kol-heading-wc>
+					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
 				)}
 
 				{this.isUl === false ? (

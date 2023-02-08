@@ -6,7 +6,7 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine listen
 
 ### Code
 
-```tsx
+```html
 <kol-link-group
 	_aria-label="Einfache LinkGroup"
 	_caption="Überschrift der LinkGroup"
@@ -26,12 +26,8 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine listen
 
 Die auszugebenden Links werden als JSON-Objekt an das Attribut `_links` übergeben.
 
-```tsx
-[
-	{ _label: 'Link 1', _href: 'https://www.w3.org' },
-	{ _label: 'Link 2', _href: 'https://www.w3.org' },
-	{ _label: 'Link 3', _href: 'https://www.w3.org' },
-];
+```html
+[ { _label: 'Link 1', _href: 'https://www.w3.org' }, { _label: 'Link 2', _href: 'https://www.w3.org' }, { _label: 'Link 3', _href: 'https://www.w3.org' }, ];
 ```
 
 Die Konstruktion der einzelnen **Links**, die innerhalb der JSON-Struktur über das Attribut **\_links** übergeben wird, ist im Abschnitt **Links** beschrieben.
@@ -89,11 +85,29 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 | ------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | `_ariaLabel` _(required)_ | `_aria-label`      | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                                                                                                           | `string`                                                                                                                                                                                                              | `undefined`  |
 | `_heading`                | `_heading`         | Gibt die optionale Überschrift zur Link-Gruppe an.                                                                                                                                                     | `string \| undefined`                                                                                                                                                                                                 | `undefined`  |
-| `_level`                  | `_level`           | Gibt die geordnete Liste der Seitenhierarchie in Links an.                                                                                                                                             | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                                                                                                                                                             | `undefined`  |
+| `_level`                  | `_level`           | Gibt die geordnete Liste der Seitenhierarchie in Links an.                                                                                                                                             | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                                                                                                                                                        | `undefined`  |
 | `_links` _(required)_     | `_links`           | Gibt die geordnete Liste der Seitenhierarchie in Links an.                                                                                                                                             | `NavLinkProps[] \| string`                                                                                                                                                                                            | `undefined`  |
 | `_listStyleType`          | `_list-style-type` | Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet                                                                                           | `"circle" \| "decimal" \| "decimal-leading-zero" \| "disc" \| "lower-alpha" \| "lower-greek" \| "lower-latin" \| "lower-roman" \| "none" \| "square" \| "upper-alpha" \| "upper-latin" \| "upper-roman" \| undefined` | `undefined`  |
 | `_ordered`                | `_ordered`         | <span style="color:red">**[DEPRECATED]**</span> Wird mittels der Property \_list-style-type automatisch gesteuert. Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.<br/><br/> | `boolean \| undefined`                                                                                                                                                                                                | `undefined`  |
 | `_orientation`            | `_orientation`     | Gibt die Ausrichtung der LinkList an.                                                                                                                                                                  | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

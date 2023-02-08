@@ -14,7 +14,7 @@ Typischer Aufbau einer **Tab**-Komponente:
 
 ### Code
 
-```tsx
+```html
 <kol-tabs _selected="0" _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true}},{"_label":"Tab 3"}]'>
 	<div>Inhalt von Tab 1</div>
 	<div>Inhalt von Tab 2</div>
@@ -36,21 +36,8 @@ Typischer Aufbau einer **Tab**-Komponente:
 
 Die Registerkarten werden als JSON-Struktur an das Attribut `_tabs` übergeben. Die Struktur ist als Wert-/Parameter-Paar aufgebaut:
 
-```tsx
-[
-	{
-		_label: 'Tab 1',
-	},
-	{
-		_label: 'Tab 2',
-		_disabled: true,
-	},
-	{
-		_label: 'Tab 3',
-		_icon: 'home',
-		_on: { onClose: true },
-	},
-];
+```html
+[ { _label: 'Tab 1', }, { _label: 'Tab 2', _disabled: true, }, { _label: 'Tab 3', _icon: 'home', _on: { onClose: true }, }, ];
 ```
 
 ### Registerkarte auswählen
@@ -122,6 +109,24 @@ W3C-Samples:
 | `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                            | `number \| undefined`                                                                                                                                                                                                                             | `0`         |
 | `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                            | `TabButtonProps[] \| string`                                                                                                                                                                                                                      | `undefined` |
 | `_tabsAlign`              | `_tabs-align` | Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                             | `'top'`     |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

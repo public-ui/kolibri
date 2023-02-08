@@ -14,7 +14,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.3.3-rc.2")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
