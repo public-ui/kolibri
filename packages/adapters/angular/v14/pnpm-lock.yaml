@@ -4,13 +4,13 @@ specifiers:
   '@angular/compiler': 14.2.12
   '@angular/compiler-cli': 14.2.12
   '@angular/core': 14.2.12
-  '@public-ui/components': 1.4.0-rc.1
-  '@public-ui/core': 1.4.0-rc.1
+  '@public-ui/components': 1.4.0-rc.2
+  '@public-ui/core': 1.4.0-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.19
+  '@types/node': 18.13.0
   '@types/normalize-package-data': 2.4.1
-  prettier: 2.8.3
+  prettier: 2.8.4
   rimraf: 4.1.2
   rxjs: 7.6.0
   tslib: 2.5.0
@@ -21,13 +21,13 @@ devDependencies:
   '@angular/compiler': 14.2.12_@angular+core@14.2.12
   '@angular/compiler-cli': 14.2.12_xny3jupsupef4qvbeynwkkewkm
   '@angular/core': 14.2.12_rxjs@7.6.0+zone.js@0.12.0
-  '@public-ui/components': 1.4.0-rc.1
-  '@public-ui/core': 1.4.0-rc.1
+  '@public-ui/components': 1.4.0-rc.2
+  '@public-ui/core': 1.4.0-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.19
+  '@types/node': 18.13.0
   '@types/normalize-package-data': 2.4.1
-  prettier: 2.8.3
+  prettier: 2.8.4
   rimraf: 4.1.2
   rxjs: 7.6.0
   tslib: 2.5.0
@@ -304,8 +304,8 @@ packages:
     resolution: {integrity: sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==}
     dev: true
 
-  /@floating-ui/dom/1.1.1:
-    resolution: {integrity: sha512-TpIO93+DIujg3g7SykEAGZMDtbJRrmnYRCNYSjJlvIbGhBjRSNTLVbNeDQBrzy9qDgUbiWdc7KA0uZHZ2tJmiw==}
+  /@floating-ui/dom/1.2.0:
+    resolution: {integrity: sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==}
     dependencies:
       '@floating-ui/core': 1.2.0
     dev: true
@@ -348,25 +348,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.4.0-rc.1:
-    resolution: {integrity: sha512-GBmV+cOafcUZdr8R5KKdS+iei3S74W8RRHz7stwKjv+fykTFvisZ8VJy41co0WC4Tqw495r5u64XOA7Zq4GzSg==}
+  /@public-ui/components/1.4.0-rc.2:
+    resolution: {integrity: sha512-9OmYF6Ab895WY8dOqbEtB4GLC+t41mtvVzfKwPNoIgxu8AmGTRfKwmSoxtd8Xay5RiwWp/oSquXiUe+wxrBzLw==}
     dependencies:
-      '@floating-ui/dom': 1.1.1
-      '@public-ui/core': 1.4.0-rc.1
-      '@public-ui/schema': 1.4.0-rc.1
-      npm: 9.4.1
-      start: 5.1.0
+      '@floating-ui/dom': 1.2.0
+      '@public-ui/core': 1.4.0-rc.2
+      '@public-ui/schema': 1.4.0-rc.2
     dev: true
 
-  /@public-ui/core/1.4.0-rc.1:
-    resolution: {integrity: sha512-DIqbQT0wGNZJgHiGm0fSASbWzmiOy/w3760P3tJerCxcKFyoCnTd/PST+rM/5cH9w+GFjlSyaVuWnxTp0vX6zQ==}
+  /@public-ui/core/1.4.0-rc.2:
+    resolution: {integrity: sha512-+k4aTD3hnnHPm5JBaInUIlfKeOJblJKeHYNO/+TWZLQcoqCTAPV7c1pidaILn+dBbGK/xxl7vSsMfmV+/inDiw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.61
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.1:
-    resolution: {integrity: sha512-7QdfMfdrN8I3LvXC9M0BFE0HMFNcGkWZf/FbUMK7eQF59LUSquBieZ4H3fMCkyWr/tc4HPq64/aehXDZpvacoA==}
+  /@public-ui/schema/1.4.0-rc.2:
+    resolution: {integrity: sha512-vJ5ds6ObQdu7r6mKe8PKjfFSylUnvL0vNcjRRtosxI+JT/Hvrq8WKXqiaLxmkNg7pc/izXj9pTPavsEU+/oMew==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.61
     dev: true
@@ -379,8 +377,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.19:
-    resolution: {integrity: sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==}
+  /@types/node/18.13.0:
+    resolution: {integrity: sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -665,80 +663,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /npm/9.4.1:
-    resolution: {integrity: sha512-yCtrPwN/vPtc2KRyIBLdTqPMFy0R9pPurr8wJKtDvDfzICY/3IBG6t2z+zHA79pl5R8+mVH8EcJICLUeU48oQQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    hasBin: true
-    dev: true
-    bundledDependencies:
-      - '@isaacs/string-locale-compare'
-      - '@npmcli/arborist'
-      - '@npmcli/config'
-      - '@npmcli/map-workspaces'
-      - '@npmcli/package-json'
-      - '@npmcli/run-script'
-      - abbrev
-      - archy
-      - cacache
-      - chalk
-      - ci-info
-      - cli-columns
-      - cli-table3
-      - columnify
-      - fastest-levenshtein
-      - fs-minipass
-      - glob
-      - graceful-fs
-      - hosted-git-info
-      - ini
-      - init-package-json
-      - is-cidr
-      - json-parse-even-better-errors
-      - libnpmaccess
-      - libnpmdiff
-      - libnpmexec
-      - libnpmfund
-      - libnpmhook
-      - libnpmorg
-      - libnpmpack
-      - libnpmpublish
-      - libnpmsearch
-      - libnpmteam
-      - libnpmversion
-      - make-fetch-happen
-      - minimatch
-      - minipass
-      - minipass-pipeline
-      - mkdirp
-      - ms
-      - node-gyp
-      - nopt
-      - npm-audit-report
-      - npm-install-checks
-      - npm-package-arg
-      - npm-pick-manifest
-      - npm-profile
-      - npm-registry-fetch
-      - npm-user-validate
-      - npmlog
-      - p-map
-      - pacote
-      - parse-conflict-json
-      - proc-log
-      - qrcode-terminal
-      - read
-      - read-package-json
-      - read-package-json-fast
-      - semver
-      - ssri
-      - tar
-      - text-table
-      - tiny-relative-date
-      - treeverse
-      - validate-npm-package-name
-      - which
-      - write-file-atomic
-
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: true
@@ -748,8 +672,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /prettier/2.8.3:
-    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
+  /prettier/2.8.4:
+    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -802,12 +726,6 @@ packages:
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
     deprecated: Please use @jridgewell/sourcemap-codec instead
-    dev: true
-
-  /start/5.1.0:
-    resolution: {integrity: sha512-lirwWQmvBC65bnxU3HzKx5m7vfZJZTx/FrKyPWbtobcvujGbinQQRrNodtcgkp4mTZ00umzDeg7lraN351l0aA==}
-    engines: {node: '>=4'}
-    deprecated: Deprecated in favor of https://github.com/deepsweet/start
     dev: true
 
   /string-width/4.2.3:

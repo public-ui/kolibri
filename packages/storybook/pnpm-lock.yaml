@@ -8,10 +8,10 @@ specifiers:
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.0-rc.1
-  '@public-ui/core': 1.4.0-rc.1
-  '@public-ui/react': 1.4.0-rc.1
-  '@public-ui/themes': 1.4.0-rc.1
+  '@public-ui/components': 1.4.0-rc.2
+  '@public-ui/core': 1.4.0-rc.2
+  '@public-ui/react': 1.4.0-rc.2
+  '@public-ui/themes': 1.4.0-rc.2
   '@storybook/addon-a11y': 6.5.16
   '@storybook/addon-actions': 6.5.16
   '@storybook/addon-backgrounds': 6.5.16
@@ -47,7 +47,7 @@ specifiers:
   lit-html: 2.6.1
   mermaid: 9.3.0
   postcss: 8.4.21
-  prettier: 2.8.3
+  prettier: 2.8.4
   react: 17.0.2
   react-dom: 17.0.2
   register-service-worker: 1.7.2
@@ -68,13 +68,13 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 0.2.2
   '@leanup/form': 1.3.43
-  '@leanup/kolibri-components': 1.0.5_xlneijetu3qcy7tvkeajbvdtpe
+  '@leanup/kolibri-components': 1.0.5_33nqtqt5nrixnf5k3zs5ev2rgm
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-oss/kolibri-themes': 0.0.3_ldc36dyfklas6sfazxdvj2grju
-  '@public-ui/components': 1.4.0-rc.1
-  '@public-ui/core': 1.4.0-rc.1
-  '@public-ui/react': 1.4.0-rc.1_k3la5do4rysmb6pvuqenqbkvgm
-  '@public-ui/themes': 1.4.0-rc.1_ldc36dyfklas6sfazxdvj2grju
+  '@public-oss/kolibri-themes': 0.0.3_7srzqxlcomnhwomhnaa66avbra
+  '@public-ui/components': 1.4.0-rc.2
+  '@public-ui/core': 1.4.0-rc.2
+  '@public-ui/react': 1.4.0-rc.2_fkpy7tr5i5cykwbie4s6xgntci
+  '@public-ui/themes': 1.4.0-rc.2_7srzqxlcomnhwomhnaa66avbra
   '@storybook/addon-a11y': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
@@ -110,7 +110,7 @@ devDependencies:
   lit-html: 2.6.1
   mermaid: 9.3.0
   postcss: 8.4.21
-  prettier: 2.8.3
+  prettier: 2.8.4
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   register-service-worker: 1.7.2
@@ -127,12 +127,6 @@ devDependencies:
   workbox-webpack-plugin: 6.5.4_webpack@5.75.0
 
 packages:
-
-  /@a11y-ui/core/1.0.0-rc.15:
-    resolution: {integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw==}
-    dependencies:
-      '@leanup/lib': 1.3.20
-    dev: true
 
   /@a11y-ui/core/1.0.1-rc.6:
     resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
@@ -1902,8 +1896,8 @@ packages:
     resolution: {integrity: sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==}
     dev: true
 
-  /@floating-ui/dom/1.1.1:
-    resolution: {integrity: sha512-TpIO93+DIujg3g7SykEAGZMDtbJRrmnYRCNYSjJlvIbGhBjRSNTLVbNeDQBrzy9qDgUbiWdc7KA0uZHZ2tJmiw==}
+  /@floating-ui/dom/1.2.0:
+    resolution: {integrity: sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==}
     dependencies:
       '@floating-ui/core': 1.2.0
     dev: true
@@ -2421,16 +2415,14 @@ packages:
       '@leanup/lib': 1.3.43
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_xlneijetu3qcy7tvkeajbvdtpe:
+  /@leanup/kolibri-components/1.0.5_33nqtqt5nrixnf5k3zs5ev2rgm:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.43
-      '@leanup/kolibri-schema': 1.0.5
-      '@leanup/lib': 1.3.39
-      '@public-ui/components': 1.4.0-rc.1
+      '@public-ui/components': 1.4.0-rc.2
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -2440,29 +2432,9 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_xlneijetu3qcy7tvkeajbvdtpe
+      '@leanup/kolibri-components': 1.0.5_33nqtqt5nrixnf5k3zs5ev2rgm
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-    dev: true
-
-  /@leanup/kolibri-schema/1.0.5:
-    resolution: {integrity: sha512-Z02G4XaQTx1igEaXtaNhafTBUHYMpI3PECfSwai3GzB/YxduUXXg8Xb+BwILwcNwaRjYLb6cja7lgMx69JG7zA==}
-    dependencies:
-      '@a11y-ui/core': 1.0.0-rc.15
-    dev: true
-
-  /@leanup/lib/1.3.20:
-    resolution: {integrity: sha512-xAHNLTMaXuV8ENPoMU+4J1WTzoXciRgkP0U9205DcPcZUf90M7jTCgRBz2z0mrbqNzUjJOaS9eBvznmYsIj+zg==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.0
-    dev: true
-
-  /@leanup/lib/1.3.39:
-    resolution: {integrity: sha512-7ic6B4iN7cOXnVC3Q3cIXM9FbmmD4yhTwc2Em51h0cZNAv7Lu4EkzIFP3u261771I8ugCq26689XvtiuKa0fqw==}
-    dependencies:
-      loglevel: 1.8.0
-      tslib: 2.4.1
     dev: true
 
   /@leanup/lib/1.3.43:
@@ -2599,23 +2571,21 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_ldc36dyfklas6sfazxdvj2grju:
+  /@public-oss/kolibri-themes/0.0.3_7srzqxlcomnhwomhnaa66avbra:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.0-rc.1
+      '@public-ui/components': 1.4.0-rc.2
       '@public-ui/schema': 1.1.15
     dev: true
 
-  /@public-ui/components/1.4.0-rc.1:
-    resolution: {integrity: sha512-GBmV+cOafcUZdr8R5KKdS+iei3S74W8RRHz7stwKjv+fykTFvisZ8VJy41co0WC4Tqw495r5u64XOA7Zq4GzSg==}
+  /@public-ui/components/1.4.0-rc.2:
+    resolution: {integrity: sha512-9OmYF6Ab895WY8dOqbEtB4GLC+t41mtvVzfKwPNoIgxu8AmGTRfKwmSoxtd8Xay5RiwWp/oSquXiUe+wxrBzLw==}
     dependencies:
-      '@floating-ui/dom': 1.1.1
-      '@public-ui/core': 1.4.0-rc.1
-      '@public-ui/schema': 1.4.0-rc.1
-      npm: 9.4.1
-      start: 5.1.0
+      '@floating-ui/dom': 1.2.0
+      '@public-ui/core': 1.4.0-rc.2
+      '@public-ui/schema': 1.4.0-rc.2
     dev: true
 
   /@public-ui/core/1.1.15:
@@ -2625,21 +2595,21 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/core/1.4.0-rc.1:
-    resolution: {integrity: sha512-DIqbQT0wGNZJgHiGm0fSASbWzmiOy/w3760P3tJerCxcKFyoCnTd/PST+rM/5cH9w+GFjlSyaVuWnxTp0vX6zQ==}
+  /@public-ui/core/1.4.0-rc.2:
+    resolution: {integrity: sha512-+k4aTD3hnnHPm5JBaInUIlfKeOJblJKeHYNO/+TWZLQcoqCTAPV7c1pidaILn+dBbGK/xxl7vSsMfmV+/inDiw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.61
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/react/1.4.0-rc.1_k3la5do4rysmb6pvuqenqbkvgm:
-    resolution: {integrity: sha512-xetNgCXVJfet232X42wzyghx/Ux+BMjIiISQhHWYA21DgdhaqyJdmQAZmEjvYdr4vTxhzZRisvZohgKvOMeHpQ==}
+  /@public-ui/react/1.4.0-rc.2_fkpy7tr5i5cykwbie4s6xgntci:
+    resolution: {integrity: sha512-q9OTi2Mx0O4e25GbAwHqDjZYQ2hfPaZljdNZF1BJW9P5OXOoPDIV2p/BxYEKezrgCbULWj+Op0hDlVe4JdsvhA==}
     peerDependencies:
-      '@public-ui/components': 1.4.0-rc.1
+      '@public-ui/components': 1.4.0-rc.2
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.4.0-rc.1
+      '@public-ui/components': 1.4.0-rc.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2650,19 +2620,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.1:
-    resolution: {integrity: sha512-7QdfMfdrN8I3LvXC9M0BFE0HMFNcGkWZf/FbUMK7eQF59LUSquBieZ4H3fMCkyWr/tc4HPq64/aehXDZpvacoA==}
+  /@public-ui/schema/1.4.0-rc.2:
+    resolution: {integrity: sha512-vJ5ds6ObQdu7r6mKe8PKjfFSylUnvL0vNcjRRtosxI+JT/Hvrq8WKXqiaLxmkNg7pc/izXj9pTPavsEU+/oMew==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.61
     dev: true
 
-  /@public-ui/themes/1.4.0-rc.1_ldc36dyfklas6sfazxdvj2grju:
-    resolution: {integrity: sha512-DM4ldx9iOOKFkm5Qw8rUfGqWAAr1aX0trFmqOGLyRBywrwXV6unMb7f+QVa/oJpAF2NZYgnT2WEPZe0s7MX6vg==}
+  /@public-ui/themes/1.4.0-rc.2_7srzqxlcomnhwomhnaa66avbra:
+    resolution: {integrity: sha512-TauZslKao+mLhkL98Y+sG2FbvpoXOM20saXdv1CAD+5VjDe3tVdSWB+kT5lUpgsCzrSD+6zfMCIdf0jW10Ptqw==}
     peerDependencies:
-      '@public-ui/components': 1.4.0-rc.1
+      '@public-ui/components': 1.4.0-rc.2
     dependencies:
-      '@public-ui/components': 1.4.0-rc.1
-      '@public-ui/schema': 1.4.0-rc.1
+      '@public-ui/components': 1.4.0-rc.2
+      '@public-ui/schema': 1.4.0-rc.2
     dev: true
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
@@ -9894,11 +9864,6 @@ packages:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: true
 
-  /loglevel/1.8.0:
-    resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
-    engines: {node: '>= 0.6.0'}
-    dev: true
-
   /loglevel/1.8.1:
     resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
@@ -10550,80 +10515,6 @@ packages:
     dependencies:
       path-key: 3.1.1
     dev: true
-
-  /npm/9.4.1:
-    resolution: {integrity: sha512-yCtrPwN/vPtc2KRyIBLdTqPMFy0R9pPurr8wJKtDvDfzICY/3IBG6t2z+zHA79pl5R8+mVH8EcJICLUeU48oQQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    hasBin: true
-    dev: true
-    bundledDependencies:
-      - '@isaacs/string-locale-compare'
-      - '@npmcli/arborist'
-      - '@npmcli/config'
-      - '@npmcli/map-workspaces'
-      - '@npmcli/package-json'
-      - '@npmcli/run-script'
-      - abbrev
-      - archy
-      - cacache
-      - chalk
-      - ci-info
-      - cli-columns
-      - cli-table3
-      - columnify
-      - fastest-levenshtein
-      - fs-minipass
-      - glob
-      - graceful-fs
-      - hosted-git-info
-      - ini
-      - init-package-json
-      - is-cidr
-      - json-parse-even-better-errors
-      - libnpmaccess
-      - libnpmdiff
-      - libnpmexec
-      - libnpmfund
-      - libnpmhook
-      - libnpmorg
-      - libnpmpack
-      - libnpmpublish
-      - libnpmsearch
-      - libnpmteam
-      - libnpmversion
-      - make-fetch-happen
-      - minimatch
-      - minipass
-      - minipass-pipeline
-      - mkdirp
-      - ms
-      - node-gyp
-      - nopt
-      - npm-audit-report
-      - npm-install-checks
-      - npm-package-arg
-      - npm-pick-manifest
-      - npm-profile
-      - npm-registry-fetch
-      - npm-user-validate
-      - npmlog
-      - p-map
-      - pacote
-      - parse-conflict-json
-      - proc-log
-      - qrcode-terminal
-      - read
-      - read-package-json
-      - read-package-json-fast
-      - semver
-      - ssri
-      - tar
-      - text-table
-      - tiny-relative-date
-      - treeverse
-      - validate-npm-package-name
-      - which
-      - write-file-atomic
 
   /npmlog/5.0.1:
     resolution: {integrity: sha512-AqZtDUWOMKs1G/8lwylVjrdYgqA4d9nu8hc+0gzRxlDb1I10+FHBGMXs6aiQHFdCUUlqH99MUMuLfzWDNDtfxw==}
@@ -11389,8 +11280,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.8.3:
-    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
+  /prettier/2.8.4:
+    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -12710,12 +12601,6 @@ packages:
     resolution: {integrity: sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==}
     dev: true
 
-  /start/5.1.0:
-    resolution: {integrity: sha512-lirwWQmvBC65bnxU3HzKx5m7vfZJZTx/FrKyPWbtobcvujGbinQQRrNodtcgkp4mTZ00umzDeg7lraN351l0aA==}
-    engines: {node: '>=4'}
-    deprecated: Deprecated in favor of https://github.com/deepsweet/start
-    dev: true
-
   /state-toggle/1.0.3:
     resolution: {integrity: sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==}
     dev: true
@@ -13378,10 +13263,6 @@ packages:
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-    dev: true
-
-  /tslib/2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: true
 
   /tslib/2.4.1:
