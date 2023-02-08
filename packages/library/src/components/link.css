@@ -1,4 +1,4 @@
-@import '../style.css';
+@import './style.css';
 
 :host > kol-link-wc a {
 	display: inline-flex;
