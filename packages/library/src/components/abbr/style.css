@@ -1,0 +1,5 @@
+@import '../style.css';
+
+:host > abbr {
+	cursor: help;
+}

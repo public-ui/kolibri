@@ -52,7 +52,7 @@
 	],
 	"scripts": {
 		"build": "npm run test && npm run build:light && node scripts/cheat-sheet.js && node scripts/vaadin.js && npm run format -- -w",
-		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod --stats && node scripts/hashing.js && node scripts/autogen.doc.js",
+		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/hashing.js && node scripts/autogen.doc.js",
 		"clear": "rimraf dist doc loader www ../adapters/angular/v11/src ../adapters/angular/v12/src ../adapters/angular/v13/src ../adapters/angular/v14/src ../adapters/angular/v15/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@public-ui/*,@stencil/*,eslint-*,postcss-windicss,tslib,workbox-build",
 		"format": "prettier --check src",
@@ -67,20 +67,14 @@
 	"dependencies": {
 		"@floating-ui/dom": "1.2.0",
 		"@public-ui/core": "1.4.0-rc.1",
-		"@public-ui/schema": "1.4.0-rc.1",
-		"npm": "^9.4.1",
-		"start": "^5.1.0"
+		"@public-ui/schema": "1.4.0-rc.1"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.1-rc.61",
-		"@rollup/plugin-inject": "5.0.3",
-		"@rollup/plugin-replace": "5.0.2",
-		"@rollup/pluginutils": "5.0.2",
 		"@stencil/angular-output-target": "0.5.0",
 		"@stencil/core": "3.0.0",
 		"@stencil/postcss": "2.1.0",
 		"@stencil/react-output-target": "0.4.0",
-		"@stencil/sass": "2.0.3",
 		"@stencil/solid-output-target": "file:node_martin/stencil-solid-output-target-0.0.1.tgz",
 		"@stencil/svelte-output-target": "0.0.3",
 		"@stencil/vue-output-target": "0.7.0",
@@ -114,9 +108,6 @@
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
 		"rimraf": "4.1.2",
-		"rollup": "3.14.0",
-		"rollup-plugin-node-polyfills": "0.2.1",
-		"rollup-plugin-polyfill-node": "0.12.0",
 		"stencil-awesome-test": "1.0.5",
 		"terser": "5.16.3",
 		"tslib": "2.5.0",

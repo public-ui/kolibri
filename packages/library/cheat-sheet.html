@@ -226,10 +226,18 @@ seine Ausrichtung von **_rechts_** nach **_unten_**.<br/>Analog lässt sich die 
 },{
 	name: `heading`,
 	desc: `Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und abwechslungsreich präsentieren. Sie trennt Styling von Semantik und ermöglicht Flexibilität.`,
-	props: `_level`
+	props: `_label, _level, _overline`
 },{
 	name: `icon`,
-	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus der Icon-Bibliothek an beliebigen Positionen erzeugt werden. Die Ausgabe des Icon kann über Attribute gesteuert werden und erfolgt barrierefrei. Die Ausgabe erfolgt standardmäßig als **_inline_**-Element.`,
+	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut '_icon' gesteuert werden und erfolgt durch das Attribut '_aria-label' barrierefrei. Die Ausgabe erfolgt standardmäßig als _'inline'_-Element.
+
+Folgende Icon-Fonts werden _'out-of-the-box'_ unterstützt.
+
+- [Codicons]
+- [Font-Awesome]
+- [Icofont]
+
+<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateien der Icon-Fonts eingebunden sind.</kol-alert>`,
 	props: `_aria-label, _icon, _part`
 },{
 	name: `indented-text`,
@@ -500,6 +508,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Option<W3CInputValue>[] | string, Option<number>[] | string, SelectOption<W3CInputValue>[] | string, string | string[]`,
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
+	name: `_label`,
+	desc: `Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.`,
+	types: `string`,
+	comps: `badge, button, button-link, heading, link, link-button, tooltip`
+},{
 	name: `_auto-complete`,
 	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
 	types: `"off" | "on"`,
@@ -520,11 +533,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
-	name: `_label`,
-	desc: `Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.`,
-	types: `string`,
-	comps: `badge, button, button-link, link, link-button, tooltip`
-},{
 	name: `_placeholder`,
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
 	types: `string`,
@@ -532,7 +540,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_level`,
 	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.`,
-	types: `1 | 2 | 3 | 4 | 5 | 6`,
+	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
 	comps: `accordion, alert, card, heading, toast`
 },{
 	name: `_icon-only`,
@@ -815,6 +823,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.`,
 	types: `string`,
 	comps: `table`
+},{
+	name: `_overline`,
+	desc: `Gibt den Text der zusätzlichen Beschriftung an.`,
+	types: `string`,
+	comps: `heading`
 },{
 	name: `_indeterminate`,
 	desc: `Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.`,

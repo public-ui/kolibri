@@ -8,10 +8,8 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
 
 ### Code
 
-```tsx
-<kol-toast _heading="Überschrift" _type="success">
-	Web Component
-</kol-toast>
+```html
+<kol-toast _heading="Überschrift" _type="success"> Web Component </kol-toast>
 ```
 
 ### Beispiel
@@ -60,11 +58,29 @@ Verwenden Sie das Attribut `_type`, um den Typ des Toasts festzulegen.
 | `_alert`        | `_alert`         | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean \| undefined`                                                  | `true`      |
 | `_hasCloser`    | `_has-closer`    | Gibt an, ob der Toast ein Schließen-Icon hat.                                     | `boolean \| undefined`                                                  | `false`     |
 | `_heading`      | `_heading`       | Gibt den Titel der Meldung an.                                                    | `string \| undefined`                                                   | `''`        |
-| `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                         | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                               | `1`         |
+| `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                         | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
 | `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                  | `undefined \| { onClose?: EventCallback<Event> \| undefined; }`         | `undefined` |
 | `_show`         | `_show`          | Gibt an, ob der Toast eingeblendet wird.                                          | `boolean \| undefined`                                                  | `true`      |
 | `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.              | `number \| undefined`                                                   | `10000`     |
 | `_type`         | `_type`          | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

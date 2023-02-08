@@ -18,7 +18,7 @@ import { propergateFocus } from '../../utils/reuse';
 @Component({
 	tag: 'kol-button',
 	styleUrls: {
-		default: './style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

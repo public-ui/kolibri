@@ -35,7 +35,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-card',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })
@@ -45,7 +45,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 			<Host>
 				<div>
 					<div class="header">
-						<kol-heading-wc _level={this.state._level}>{this.state._heading}</kol-heading-wc>
+						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
 						<slot name="header" />
 					</div>
 					<div class="content">

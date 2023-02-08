@@ -36,7 +36,7 @@ export const getContrastYIQ = (r: number, g: number, b: number): number => {
 	return yiq >= 128 ? -1 : 1;
 };
 
-export type ColorPair<T> = {
+type ColorPair<T> = {
 	background: T;
 	foreground: T;
 };

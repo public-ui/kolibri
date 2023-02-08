@@ -10,7 +10,7 @@ export const getHeadingWcHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_level: 1,
+			_label: 'Untitled',
 		},
 		props
 	);
@@ -31,7 +31,7 @@ export const getHeadingHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_level: 1,
+			_label: 'Untitled',
 		},
 		props
 	);

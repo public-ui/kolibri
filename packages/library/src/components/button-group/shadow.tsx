@@ -5,7 +5,7 @@ import { Props } from './component';
 @Component({
 	tag: 'kol-button-group',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

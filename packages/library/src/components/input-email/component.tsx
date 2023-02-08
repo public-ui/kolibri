@@ -13,7 +13,7 @@ import { ComponentApi, States } from './types';
 @Component({
 	tag: 'kol-input-email',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

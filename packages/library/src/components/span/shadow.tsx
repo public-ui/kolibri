@@ -7,7 +7,7 @@ import { Props } from './component';
 @Component({
 	tag: 'kol-span',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

@@ -23,6 +23,7 @@ export const getAccordionHtml = (
     <div part="accordion ${props._open ? 'open' : 'close'}">
       ${getHeadingWcHtml(
 				{
+					_label: '',
 					_level: props._level,
 				},
 				{

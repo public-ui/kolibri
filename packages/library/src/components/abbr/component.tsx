@@ -24,7 +24,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 @Component({
 	tag: 'kol-abbr',
 	styleUrls: {
-		default: './style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

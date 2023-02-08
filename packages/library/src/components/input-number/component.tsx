@@ -14,7 +14,7 @@ import { ComponentApi, States } from './types';
 @Component({
 	tag: 'kol-input-number',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

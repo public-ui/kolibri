@@ -12,12 +12,12 @@ Ein Button hat aus UX-Sicht mehrere Varianten (`primary` oder `secondary` usw.).
 
 ### Code
 
-```tsx
+```html
 <kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
 <kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
 <kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
 <kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
-<kol-link-button _href="#"_label="Ghost" _variant="ghost"></kol-link-button>
+<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
 ```
 
 ### Beispiel
@@ -54,6 +54,24 @@ Ein Button hat aus UX-Sicht mehrere Varianten (`primary` oder `secondary` usw.).
 | `_targetDescription`  | `_target-description` | Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.                                                                                                                                                                                                     | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `translate('kol-open-link-in-tab')` |
 | `_tooltipAlign`       | `_tooltip-align`      | Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.                                                                                                                                                                                               | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `'right'`                           |
 | `_variant`            | `_variant`            | Gibt an, welche Ausprägung der Button hat.                                                                                                                                                                                                                                           | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `'normal'`                          |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

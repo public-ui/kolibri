@@ -1,0 +1,23 @@
+@import '../style.css';
+
+:host details {
+	display: grid;
+	width: 100%;
+}
+:host details > kol-indented-text {
+	margin: var(--kolibri-spacing) 0 0 var(--kolibri-spacing);
+}
+
+:host summary {
+	cursor: pointer;
+	display: flow-root;
+	margin: 0;
+	padding: 0;
+}
+:host summary span {
+	margin-left: var(--kolibri-spacing);
+	text-decoration: underline;
+}
+:host summary:hover {
+	text-decoration-thickness: var(--kolibri-spacing);
+}

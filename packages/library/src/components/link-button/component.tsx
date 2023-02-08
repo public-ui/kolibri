@@ -28,7 +28,7 @@ type State = {
 @Component({
 	tag: 'kol-link-button',
 	styleUrls: {
-		default: '../button/style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

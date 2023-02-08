@@ -35,7 +35,7 @@
 					<kol-kolibri style="display: block; width: 150px"></kol-kolibri>
 				</div>
 				<div class="col-12">
-					<kol-heading>BIK BITV-Test</kol-heading>
+					<kol-heading _label="BIK BITV-Test" _overline="Overline"></kol-heading>
 				</div>
 				<div class="gap-2 col-12 d-flex">
 					<kol-version _version="1.4.0-rc.1"></kol-version>
@@ -841,15 +841,20 @@
 							</kol-details>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-heading _level="3">FontAwesome</kol-heading>
-							<kol-icon-font-awesome _prefix="fas" _icon="icofont-home" _aria-label="Haus"></kol-icon-font-awesome>
+							<kol-heading _level="3">Font-Awesome</kol-heading>
+							<kol-icon _aria-label="Haus" _icon="fa-solid fa-house"></kol-icon>
 							<kol-indented-text>Mit Aria-Label</kol-indented-text>
-							<kol-icon _icon="icofont-fas fa-home" _aria-label=""></kol-icon>
+							<kol-icon _aria-label="" _icon="fa-solid fa-house"></kol-icon>
+							<kol-indented-text>Ohne Aria-Label</kol-indented-text>
+							<kol-heading _level="3">Codicons</kol-heading>
+							<kol-icon _aria-label="Haus" _icon="codicon codicon-home"></kol-icon>
+							<kol-indented-text>Mit Aria-Label</kol-indented-text>
+							<kol-icon _aria-label="" _icon="codicon codicon-home"></kol-icon>
 							<kol-indented-text>Ohne Aria-Label</kol-indented-text>
 							<kol-heading _level="3">Icofont</kol-heading>
-							<kol-icon-icofont _icon="icofont-home" _aria-label="Haus"></kol-icon-icofont>
+							<kol-icon _aria-label="Haus" _icon="icofont-home"></kol-icon>
 							<kol-indented-text>Mit Aria-Label</kol-indented-text>
-							<kol-icon _icon="icofont-home"></kol-icon>
+							<kol-icon _aria-label="" _icon="icofont-home"></kol-icon>
 							<kol-indented-text>Ohne Aria-Label</kol-indented-text>
 						</div>
 					</div>

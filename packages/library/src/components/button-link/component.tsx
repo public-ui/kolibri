@@ -17,7 +17,7 @@ import { Alignment } from '../../types/props/alignment';
 @Component({
 	tag: 'kol-button-link',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

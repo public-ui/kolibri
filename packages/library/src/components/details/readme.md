@@ -13,10 +13,8 @@ Der gewünschte Inhalt wird zwischen öffnendem und schließendem Element notier
 
 ### Code
 
-```tsx
-<kol-details _summary="Ihre Überschrift" _open>
-	Ihr Text im Detail-Bereich
-</kol-details>
+```html
+<kol-details _summary="Ihre Überschrift" _open> Ihr Text im Detail-Bereich </kol-details>
 ```
 
 ### Beispiel
@@ -93,6 +91,24 @@ Verwenden Sie das Attribut `_summary`, um den Text zu definieren, der als Übers
 | ----------------------- | ---------- | ----------------------------------------------------------------- | ---------------------- | ----------- |
 | `_open`                 | `_open`    | Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist. | `boolean \| undefined` | `false`     |
 | `_summary` _(required)_ | `_summary` | Gibt die Zusammenfassung der Detailbeschreibung an.               | `string`               | `undefined` |
+
+## CSS Custom Properties
+
+| Name                        | Description                     |
+| --------------------------- | ------------------------------- |
+| `--kolibri-border-color`    | Default color of the border.    |
+| `--kolibri-border-radius`   | Default radius of the border.   |
+| `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-danger`    | Default color of the danger.    |
+| `--kolibri-color-disabled`  | Default color of the disabled.  |
+| `--kolibri-color-error`     | Default color of the error.     |
+| `--kolibri-color-ghost`     | Default color of the ghost.     |
+| `--kolibri-color-info`      | Default color of the info.      |
+| `--kolibri-color-normal`    | Default color of the normal.    |
+| `--kolibri-color-primary`   | Default color of the primary.   |
+| `--kolibri-color-secondary` | Default color of the secondary. |
+| `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-warning`   | Default color of the warning.   |
 
 ## Dependencies
 

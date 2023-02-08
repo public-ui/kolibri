@@ -1,0 +1,10 @@
+@import '../style.css';
+
+ul {
+	display: grid;
+	list-style: none;
+	place-items: center;
+}
+ul li {
+	height: 0;
+}

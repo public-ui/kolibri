@@ -14,10 +14,10 @@ type RequiredStates = RequiredProps & OptionalProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+// ts-prune-ignore-next
 // @Component({
 //   tag: 'kol-all',
 // })
-// ts-prune-ignore-next
 export class KolAll implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -43,7 +43,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-card _heading=""></kol-card>
 				<kol-details _summary=""></kol-details>
 				<kol-form _on={{}}></kol-form>
-				<kol-heading></kol-heading>
+				<kol-heading _label=""></kol-heading>
 				<kol-icon _ariaLabel="" _icon="fa-solid fa-house"></kol-icon>
 				<kol-icon-font-awesome _ariaLabel="" _icon="500px" _prefix="fab"></kol-icon-font-awesome>
 				<kol-icon-icofont _ariaLabel="" _icon="home"></kol-icon-icofont>

@@ -6,7 +6,7 @@ Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Übersch
 
 ### Code
 
-```tsx
+```html
 <div>
 	<kol-heading _level="1">Inhalt einer H1-Überschrift</kol-heading>
 </div>
@@ -34,9 +34,11 @@ Geben Sie mit dem Attribut `_level` das H-Element an, das Sie ausgeben möchten.
 
 ## Properties
 
-| Property | Attribute | Description                                               | Type                                      | Default |
-| -------- | --------- | --------------------------------------------------------- | ----------------------------------------- | ------- |
-| `_level` | `_level`  | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`     |
+| Property              | Attribute   | Description                                                                                                            | Type                                           | Default     |
+| --------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `_label` _(required)_ | `_label`    | Gibt den Text der Überschrift an.                                                                                      | `string`                                       | `undefined` |
+| `_level`              | `_level`    | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| `_overline`           | `_overline` | Gibt den Text der zusätzlichen Beschriftung an.                                                                        | `string \| undefined`                          | `''`        |
 
 ## Dependencies
 

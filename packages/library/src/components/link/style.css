@@ -1,0 +1,39 @@
+@import '../style.css';
+
+:host > * {
+	width: inherit;
+	word-spacing: inherit;
+}
+
+:host a {
+	overflow: inherit;
+	text-overflow: inherit;
+}
+:host a:active {
+	text-decoration: none;
+}
+:host a:focus,
+:host a:hover {
+	text-decoration-thickness: 3px;
+}
+:host a.kol-visited:visited {
+	color: var(--kolibri-color-visited);
+}
+:host a .screen-reader-only {
+	position: absolute;
+	width: 1px;
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+:host a.skip {
+	left: -99999px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 9999999;
+}
+:host a.skip:focus {
+	background: white;
+	box-shadow: 0 0 0.5rem 0.5rem white;
+	left: unset;
+	position: unset;
+}

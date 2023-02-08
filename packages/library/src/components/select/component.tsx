@@ -19,7 +19,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 @Component({
 	tag: 'kol-select',
 	styleUrls: {
-		default: '../style.sass',
+		default: './style.css',
 	},
 	shadow: true,
 })

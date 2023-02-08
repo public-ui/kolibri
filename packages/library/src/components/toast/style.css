@@ -1,0 +1,23 @@
+@import '../style.css';
+
+:host > div {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	z-index: 200;
+}
+:host > div > kol-alert {
+	display: block;
+	margin: auto;
+	padding: 1rem;
+	max-width: 750px;
+}
+:host > div > kol-button-wc {
+	top: 0;
+	position: relative;
+	display: block;
+	margin: auto;
+	width: 1em;
+}

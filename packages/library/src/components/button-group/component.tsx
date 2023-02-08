@@ -21,9 +21,7 @@ export class KolButtonGroupWc implements Generic.Element.ComponentApi<RequiredPr
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<div class="flex flex-wrap bg-normal">
-					<slot />
-				</div>
+				<slot />
 			</Host>
 		);
 	}

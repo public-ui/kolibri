@@ -13,9 +13,14 @@ export const getCardHtml = (props: Props): string => {
 	<mock:shadow-root>
 		<div>
 			<div class="header">
-				${getHeadingWcHtml(props, {
-					default: props._heading,
-				})}
+				${getHeadingWcHtml(
+					{
+						_label: props._heading,
+					},
+					{
+						default: props._heading,
+					}
+				)}
 				<slot name="header"></slot>
 			</div>
 			<div class="content">

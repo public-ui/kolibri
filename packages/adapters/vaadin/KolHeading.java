@@ -10,11 +10,29 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-heading")
-@NpmPackage(value = "@public-ui/components", version = "1.3.3-rc.2")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-heading")
 public class KolHeading extends Component {
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Gibt den Text der Überschrift an.
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Gibt den Text der Überschrift an.
+	 *
+	 * @return String
+	 */
+	public String getLabel() {
+		return getElement().getProperty("_label", null);
+	}
+
+	/**
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
 	 *
 	 * @param value String
 	 */
@@ -23,11 +41,29 @@ public class KolHeading extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
 	 *
 	 * @return String
 	 */
 	public String getLevel() {
 		return getElement().getProperty("_level", null);
+	}
+
+	/**
+	 * Gibt den Text der zusätzlichen Beschriftung an.
+	 *
+	 * @param value String
+	 */
+	public void setOverline(final String value) {
+		getElement().setProperty("_overline", value);
+	}
+
+	/**
+	 * Gibt den Text der zusätzlichen Beschriftung an.
+	 *
+	 * @return String
+	 */
+	public String getOverline() {
+		return getElement().getProperty("_overline", null);
 	}
 }

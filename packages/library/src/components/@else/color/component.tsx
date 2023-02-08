@@ -1,6 +1,6 @@
 import { hex as hexContrast } from 'wcag-contrast';
 
-import { Component, h, JSX, State } from '@stencil/core';
+import { h, JSX, State } from '@stencil/core';
 
 import { Farbspektrum, FarbspektrumNames } from '../../../enums/color';
 import { getValues } from '../../../utils/color.utils';
@@ -8,13 +8,13 @@ import { getValues } from '../../../utils/color.utils';
 const COLOR_NAMES = Object.keys(Farbspektrum) as FarbspektrumNames[];
 
 // ts-prune-ignore-next
-@Component({
-	tag: 'kol-color',
-	styleUrls: {
-		default: '../../style.sass',
-	},
-	shadow: true,
-})
+// @Component({
+// 	tag: 'kol-color',
+// 	styleUrls: {
+// 		default: '../../style.css',
+// 	},
+// 	shadow: true,
+// })
 export class KolColor {
 	/**
 	 * @see: components/abbr/component.tsx (@State)

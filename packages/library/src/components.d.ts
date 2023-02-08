@@ -422,10 +422,6 @@ export namespace Components {
          */
         "_level"?: HeadingLevel;
     }
-    interface KolColor {
-    }
-    interface KolCounter {
-    }
     interface KolDetails {
         /**
           * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
@@ -448,15 +444,31 @@ export namespace Components {
     }
     interface KolHeading {
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Gibt den Text der Überschrift an.
+         */
+        "_label": string;
+        /**
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Gibt den Text der zusätzlichen Beschriftung an.
+         */
+        "_overline"?: string;
     }
     interface KolHeadingWc {
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Gibt den Text der Überschrift an.
+         */
+        "_label": string;
+        /**
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Gibt den Text der zusätzlichen Beschriftung an.
+         */
+        "_overline"?: string;
     }
     interface KolIcon {
         /**
@@ -2244,18 +2256,6 @@ declare global {
         prototype: HTMLKolCardElement;
         new (): HTMLKolCardElement;
     };
-    interface HTMLKolColorElement extends Components.KolColor, HTMLStencilElement {
-    }
-    var HTMLKolColorElement: {
-        prototype: HTMLKolColorElement;
-        new (): HTMLKolColorElement;
-    };
-    interface HTMLKolCounterElement extends Components.KolCounter, HTMLStencilElement {
-    }
-    var HTMLKolCounterElement: {
-        prototype: HTMLKolCounterElement;
-        new (): HTMLKolCounterElement;
-    };
     interface HTMLKolDetailsElement extends Components.KolDetails, HTMLStencilElement {
     }
     var HTMLKolDetailsElement: {
@@ -2538,8 +2538,6 @@ declare global {
         "kol-button-link": HTMLKolButtonLinkElement;
         "kol-button-wc": HTMLKolButtonWcElement;
         "kol-card": HTMLKolCardElement;
-        "kol-color": HTMLKolColorElement;
-        "kol-counter": HTMLKolCounterElement;
         "kol-details": HTMLKolDetailsElement;
         "kol-form": HTMLKolFormElement;
         "kol-heading": HTMLKolHeadingElement;
@@ -2940,10 +2938,6 @@ declare namespace LocalJSX {
          */
         "_level"?: HeadingLevel;
     }
-    interface KolColor {
-    }
-    interface KolCounter {
-    }
     interface KolDetails {
         /**
           * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
@@ -2966,15 +2960,31 @@ declare namespace LocalJSX {
     }
     interface KolHeading {
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Gibt den Text der Überschrift an.
+         */
+        "_label": string;
+        /**
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Gibt den Text der zusätzlichen Beschriftung an.
+         */
+        "_overline"?: string;
     }
     interface KolHeadingWc {
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Gibt den Text der Überschrift an.
+         */
+        "_label": string;
+        /**
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Gibt den Text der zusätzlichen Beschriftung an.
+         */
+        "_overline"?: string;
     }
     interface KolIcon {
         /**
@@ -4706,8 +4716,6 @@ declare namespace LocalJSX {
         "kol-button-link": KolButtonLink;
         "kol-button-wc": KolButtonWc;
         "kol-card": KolCard;
-        "kol-color": KolColor;
-        "kol-counter": KolCounter;
         "kol-details": KolDetails;
         "kol-form": KolForm;
         "kol-heading": KolHeading;
@@ -4768,8 +4776,6 @@ declare module "@stencil/core" {
             "kol-button-link": LocalJSX.KolButtonLink & JSXBase.HTMLAttributes<HTMLKolButtonLinkElement>;
             "kol-button-wc": LocalJSX.KolButtonWc & JSXBase.HTMLAttributes<HTMLKolButtonWcElement>;
             "kol-card": LocalJSX.KolCard & JSXBase.HTMLAttributes<HTMLKolCardElement>;
-            "kol-color": LocalJSX.KolColor & JSXBase.HTMLAttributes<HTMLKolColorElement>;
-            "kol-counter": LocalJSX.KolCounter & JSXBase.HTMLAttributes<HTMLKolCounterElement>;
             "kol-details": LocalJSX.KolDetails & JSXBase.HTMLAttributes<HTMLKolDetailsElement>;
             "kol-form": LocalJSX.KolForm & JSXBase.HTMLAttributes<HTMLKolFormElement>;
             "kol-heading": LocalJSX.KolHeading & JSXBase.HTMLAttributes<HTMLKolHeadingElement>;
