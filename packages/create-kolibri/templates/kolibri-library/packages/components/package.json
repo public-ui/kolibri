@@ -59,7 +59,7 @@
 		"@stencil/vue-output-target": "^0.7.0",
 		"@stencil/sass": "^2.0.0",
 		"@types/color-convert": "^2.0.0",
-		"@types/jest": "^26.0.24",
+		"@types/jest": "^29.4.0",
 		"@types/node": "^18.11.9",
 		"@types/puppeteer": "^7.0.4",
 		"@types/wcag-contrast": "^3.0.0",
