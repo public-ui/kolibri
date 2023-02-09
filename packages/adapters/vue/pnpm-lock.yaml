@@ -2,11 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.20.7
-  '@public-ui/components': 1.4.0-rc.1
-  '@public-ui/core': 1.4.0-rc.1
+  '@public-ui/components': 1.4.0-rc.3
+  '@public-ui/core': 1.4.0-rc.3
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.19
+  '@types/node': 18.13.0
   '@types/normalize-package-data': 2.4.1
   typescript: 4.9.5
   unbuild: 1.1.1
@@ -14,11 +14,11 @@ specifiers:
 
 devDependencies:
   '@babel/types': 7.20.7
-  '@public-ui/components': 1.4.0-rc.1
-  '@public-ui/core': 1.4.0-rc.1
+  '@public-ui/components': 1.4.0-rc.3
+  '@public-ui/core': 1.4.0-rc.3
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.11.19
+  '@types/node': 18.13.0
   '@types/normalize-package-data': 2.4.1
   typescript: 4.9.5
   unbuild: 1.1.1
@@ -646,8 +646,8 @@ packages:
     resolution: {integrity: sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==}
     dev: true
 
-  /@floating-ui/dom/1.1.1:
-    resolution: {integrity: sha512-TpIO93+DIujg3g7SykEAGZMDtbJRrmnYRCNYSjJlvIbGhBjRSNTLVbNeDQBrzy9qDgUbiWdc7KA0uZHZ2tJmiw==}
+  /@floating-ui/dom/1.2.0:
+    resolution: {integrity: sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==}
     dependencies:
       '@floating-ui/core': 1.2.0
     dev: true
@@ -711,25 +711,23 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.4.0-rc.1:
-    resolution: {integrity: sha512-GBmV+cOafcUZdr8R5KKdS+iei3S74W8RRHz7stwKjv+fykTFvisZ8VJy41co0WC4Tqw495r5u64XOA7Zq4GzSg==}
+  /@public-ui/components/1.4.0-rc.3:
+    resolution: {integrity: sha512-vWTLng3It/ymg5d5est0IywzoYBAvy6uN+txmPp9c5VJgAb3T8pAeU4Ev2oApNgJ03KA7T8aHK/NinjdhjjavA==}
     dependencies:
-      '@floating-ui/dom': 1.1.1
-      '@public-ui/core': 1.4.0-rc.1
-      '@public-ui/schema': 1.4.0-rc.1
-      npm: 9.4.1
-      start: 5.1.0
+      '@floating-ui/dom': 1.2.0
+      '@public-ui/core': 1.4.0-rc.3
+      '@public-ui/schema': 1.4.0-rc.3
     dev: true
 
-  /@public-ui/core/1.4.0-rc.1:
-    resolution: {integrity: sha512-DIqbQT0wGNZJgHiGm0fSASbWzmiOy/w3760P3tJerCxcKFyoCnTd/PST+rM/5cH9w+GFjlSyaVuWnxTp0vX6zQ==}
+  /@public-ui/core/1.4.0-rc.3:
+    resolution: {integrity: sha512-upm/tx3hNG+qoSwO0k1CTji7Msa6Ritb9NLtJpNIjhEwn1KdB+kz79Cp7ptODHLvHycJsIi0Qda68zUV7dc3KQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.61
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.1:
-    resolution: {integrity: sha512-7QdfMfdrN8I3LvXC9M0BFE0HMFNcGkWZf/FbUMK7eQF59LUSquBieZ4H3fMCkyWr/tc4HPq64/aehXDZpvacoA==}
+  /@public-ui/schema/1.4.0-rc.3:
+    resolution: {integrity: sha512-o0GfkTL7H+FbI50kNHwZxzlaX3Uc/hlm3GGThy5E63DxFXO/mVsId6EOQbJKmDBxklu027kTojumxWdlKeSOMw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.61
     dev: true
@@ -837,8 +835,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.11.19:
-    resolution: {integrity: sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==}
+  /@types/node/18.13.0:
+    resolution: {integrity: sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1431,80 +1429,6 @@ packages:
     resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}
     dev: true
 
-  /npm/9.4.1:
-    resolution: {integrity: sha512-yCtrPwN/vPtc2KRyIBLdTqPMFy0R9pPurr8wJKtDvDfzICY/3IBG6t2z+zHA79pl5R8+mVH8EcJICLUeU48oQQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    hasBin: true
-    dev: true
-    bundledDependencies:
-      - '@isaacs/string-locale-compare'
-      - '@npmcli/arborist'
-      - '@npmcli/config'
-      - '@npmcli/map-workspaces'
-      - '@npmcli/package-json'
-      - '@npmcli/run-script'
-      - abbrev
-      - archy
-      - cacache
-      - chalk
-      - ci-info
-      - cli-columns
-      - cli-table3
-      - columnify
-      - fastest-levenshtein
-      - fs-minipass
-      - glob
-      - graceful-fs
-      - hosted-git-info
-      - ini
-      - init-package-json
-      - is-cidr
-      - json-parse-even-better-errors
-      - libnpmaccess
-      - libnpmdiff
-      - libnpmexec
-      - libnpmfund
-      - libnpmhook
-      - libnpmorg
-      - libnpmpack
-      - libnpmpublish
-      - libnpmsearch
-      - libnpmteam
-      - libnpmversion
-      - make-fetch-happen
-      - minimatch
-      - minipass
-      - minipass-pipeline
-      - mkdirp
-      - ms
-      - node-gyp
-      - nopt
-      - npm-audit-report
-      - npm-install-checks
-      - npm-package-arg
-      - npm-pick-manifest
-      - npm-profile
-      - npm-registry-fetch
-      - npm-user-validate
-      - npmlog
-      - p-map
-      - pacote
-      - parse-conflict-json
-      - proc-log
-      - qrcode-terminal
-      - read
-      - read-package-json
-      - read-package-json-fast
-      - semver
-      - ssri
-      - tar
-      - text-table
-      - tiny-relative-date
-      - treeverse
-      - validate-npm-package-name
-      - which
-      - write-file-atomic
-
   /once/1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
@@ -1632,12 +1556,6 @@ packages:
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
     deprecated: Please use @jridgewell/sourcemap-codec instead
-    dev: true
-
-  /start/5.1.0:
-    resolution: {integrity: sha512-lirwWQmvBC65bnxU3HzKx5m7vfZJZTx/FrKyPWbtobcvujGbinQQRrNodtcgkp4mTZ00umzDeg7lraN351l0aA==}
-    engines: {node: '>=4'}
-    deprecated: Deprecated in favor of https://github.com/deepsweet/start
     dev: true
 
   /supports-color/5.5.0:

@@ -52,7 +52,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 					(typeof props._heading === 'string' && props._heading.length > 0) || props._variant === 'card'
 						? getHeadingWcHtml(
 								{
-									_label: typeof props._heading === 'string' ? props._heading : '',
+									_label: typeof props._heading === 'string' && props._heading.length > 0 ? props._heading : '',
 									_level: props._level,
 								},
 								{

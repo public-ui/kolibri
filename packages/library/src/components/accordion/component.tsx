@@ -4,7 +4,7 @@ import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Events } from '../../enums/events';
 
-import { EventValueCallback } from '../../types/callbacks';
+import { EventValueOrEventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
 import { featureHint } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
@@ -18,7 +18,7 @@ featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer n
 featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
 export type KoliBriAccordionCallbacks = {
-	[Events.onClick]?: EventValueCallback<Event, boolean>;
+	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
 };
 
 /**

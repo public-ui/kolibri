@@ -22,15 +22,15 @@ export class KolHeading implements Props {
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
 	 */
-	@Prop({ reflect: true }) public _level?: HeadingLevel;
+	@Prop() public _level?: HeadingLevel;
 
 	/**
 	 * Gibt den Text der Überschrift an.
 	 */
-	@Prop({ reflect: true }) public _label!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt den Text der zusätzlichen Beschriftung an.
 	 */
-	@Prop({ reflect: true }) public _overline?: string = '';
+	@Prop() public _overline?: string = '';
 }
