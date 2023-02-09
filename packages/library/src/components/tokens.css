@@ -68,14 +68,24 @@
 	--kolibri-color-disabled: #bdbdbd;
 
 	/**
-	 * @prop --kolibri-border-color: Default color of the border.
+	 * @prop --kolibri-color-text: Default color of the text.
 	 */
 	--kolibri-color-text: #222222;
 
 	/**
-	 * @prop --kolibri-border-color: Default color of the border.
+	 * @prop --kolibri-color-visited: Default color of the visited.
 	 */
 	--kolibri-color-visited: #9c27b0;
+
+	/**
+	 * @prop --kolibri-font-family: Default font family.
+	 */
+	--kolibri-font-family: Verdana, Arial, Tahoma, Helvetica, sans-serif;
+
+	/**
+	 * @prop --kolibri-font-size: Default font size.
+	 */
+	--kolibri-font-size: 16px;
 
 	/**
 	 * @prop --kolibri-border-color: Default color of the border.

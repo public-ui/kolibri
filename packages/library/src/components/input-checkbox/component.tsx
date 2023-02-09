@@ -31,8 +31,6 @@ export class KolInputCheckbox implements ComponentApi {
 					class={{
 						[this.state._variant]: true,
 					}}
-					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
-					tabIndex={this.state._variant === 'button' ? 0 : undefined}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -42,7 +40,17 @@ export class KolInputCheckbox implements ComponentApi {
 					_required={this.state._required}
 					_touched={this.state._touched}
 				>
-					<span slot="label">
+					<span
+						data-role={this.state._variant === 'button' ? 'button' : undefined}
+						onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
+						tabIndex={this.state._variant === 'button' ? 0 : undefined}
+						slot="label"
+					>
+						<kol-icon
+							onClick={this.onChange}
+							_ariaLabel=""
+							_icon={this.state._indeterminate ? this.state._icon.indeterminate : this.state._checked ? this.state._icon.checked : this.state._icon.unchecked}
+						/>
 						<slot />
 					</span>
 					<div slot="input">
@@ -64,11 +72,6 @@ export class KolInputCheckbox implements ComponentApi {
 							{...this.controller.onFacade}
 							onChange={this.onChange}
 						></input>
-						<kol-icon
-							onClick={this.onChange}
-							_ariaLabel=""
-							_icon={this.state._indeterminate ? this.state._icon.indeterminate : this.state._checked ? this.state._icon.checked : this.state._icon.unchecked}
-						/>
 					</div>
 				</kol-input>
 			</Host>

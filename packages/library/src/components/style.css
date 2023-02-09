@@ -1,6 +1,11 @@
 @import './tokens.css';
 @import './a11y.css';
 
+* {
+	box-sizing: border-box;
+	font-family: var(--kolibri-font-family);
+}
+
 kol-icon {
 	color: inherit;
 }

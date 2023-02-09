@@ -136,11 +136,6 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
-         */
-        "_iconAlign"?: Alignment;
-        /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
         "_iconOnly"?: boolean;
@@ -2651,11 +2646,6 @@ declare namespace LocalJSX {
           * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
          */
         "_icon"?: Stringified<KoliBriIconProp>;
-        /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-          * @deprecated
-         */
-        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
