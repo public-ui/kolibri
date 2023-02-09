@@ -1,23 +1,26 @@
 label {
 	cursor: pointer;
 }
+
 input {
 	border-color: var(--kolibri-border-color);
 	border-width: 2px;
 	border-style: solid;
 	line-height: 24px;
-	font-size: 16px;
+	font-size: var(--kolibri-font-size);
 }
+
 .required label > span::after {
 	content: '*';
 	padding-left: 0.125em;
 }
 input:hover {
 	border-color: var(--kolibri-color-normal);
-} /* NEU */
+}
 kol-input {
-	display: grid;
 	align-items: center;
+	display: grid;
+	gap: calc(2 * var(--kolibri-spacing));
 	justify-items: left;
 	width: 100%;
 }
@@ -27,18 +30,20 @@ kol-input.checkbox {
 kol-input.switch {
 	grid-template-columns: calc(13 * var(--kolibri-spacing)) auto;
 }
-kol-input > div.input {
+kol-input .input {
 	display: inline-flex;
 	order: 1;
 }
-kol-input > div.input input {
+kol-input .input div {
+	display: inline-flex;
+}
+kol-input .input input {
 	margin: 0px;
 }
-kol-input > label {
+kol-input label {
 	order: 2;
-	padding-left: calc(2 * var(--kolibri-spacing));
 }
-kol-input > kol-alert.error {
+kol-input kol-alert.error {
 	order: 3;
 	padding-top: 0.25em;
 	grid-column: span 2 / auto;

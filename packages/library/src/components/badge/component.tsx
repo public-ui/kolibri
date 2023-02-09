@@ -1,13 +1,12 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
+import { ButtonProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Alignment } from '../../types/props/alignment';
 import { a11yHint, devHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchValidator } from '../../utils/prop.validators';
-import { createContrastColorPair, ColorContrast } from './contrast';
-import { Stringified } from '../../types/common';
-import { ButtonProps } from '../../types/button-link';
+import { ColorContrast, createContrastColorPair } from './contrast';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -92,12 +91,6 @@ export class KolBadge implements Props {
 	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
-
-	/**
-	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-	 * @deprecated
-	 */
-	@Prop() public _iconAlign?: Alignment = 'left';
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.

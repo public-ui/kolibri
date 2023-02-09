@@ -107,13 +107,17 @@ export const validateIcon = (component: Generic.Element.Component, value?: KoliB
 };
 
 export const watchIconAlign = (component: Generic.Element.Component, value?: Alignment): void => {
-	deprecatedHint(
-		`Das Property _icon-align bzw. _iconAlign ist veraltet. Die Ausrichtung der Icon's kann jetzt direkt über das _icon-Property vorgenommen werden. (v1.1.10: https://public-ui.github.io/?path=/story/backlog-und-changelog--page)`
-	);
 	watchValidator(component, '_iconAlign', (value) => value === 'left' || value === 'right', new Set(['Alignment {left, right, top, bottom}']), value, {
 		hooks: {
 			beforePatch: () => {
 				beforePatchIcon(component);
+			},
+			afterPatch: (value: unknown) => {
+				deprecatedHint(
+					`Das Property _icon-align bzw. _iconAlign ist veraltet (value: ${
+						value as string
+					}). Die Ausrichtung der Icon's kann jetzt direkt über das _icon-Property vorgenommen werden. (v1.1.10: https://public-ui.github.io/?path=/story/backlog-und-changelog--page)`
+				);
 			},
 		},
 	});
