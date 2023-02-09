@@ -3,7 +3,7 @@ import { Events } from '../../enums/events';
 import { KoliBriIconProp } from '../../types/icon';
 
 import { Generic } from '@a11y-ui/core';
-import { EventCallback, EventValueCallback } from '../../types/callbacks';
+import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
@@ -16,7 +16,7 @@ import { KoliBriButtonCallbacks } from '../../types/button-link';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 export type KoliBriTabsCallbacks = /* {
-	onClose?: true | EventValueCallback<Event, number>;
+	onClose?: true | EventOrEventValueCallback<Event, number>;
 } & */ {
 	onCreate?:
 		| EventCallback<Event>
@@ -25,7 +25,7 @@ export type KoliBriTabsCallbacks = /* {
 				callback: EventCallback<Event>;
 		  };
 } & {
-	[Events.onSelect]?: EventValueCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
+	[Events.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 
 type RequiredTabButtonProps = {

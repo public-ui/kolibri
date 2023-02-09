@@ -1,5 +1,5 @@
 import { Events } from '../../enums/events';
-import { EventCallback, EventValueCallback } from '../callbacks';
+import { EventCallback, EventValueOrEventCallback } from '../callbacks';
 
 export type InputTypeOnOff = 'on' | 'off';
 
@@ -12,7 +12,7 @@ type InputTypeOnClick = {
 };
 
 type InputTypeOnChange = {
-	[Events.onChange]?: EventValueCallback<Event, unknown>;
+	[Events.onChange]?: EventValueOrEventCallback<Event, unknown>;
 };
 
 type InputTypeOnFocus = {

@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { Events } from '../enums/events';
 import { watchValidator } from '../utils/prop.validators';
-import { EventCallback, EventValueCallback } from './callbacks';
+import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriCustomIcon, KoliBriIconProp } from './icon';
 import { Alignment } from './props/alignment';
@@ -70,7 +70,7 @@ export type KoliBriButtonType = 'button' | 'reset' | 'submit';
 export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost' | 'custom';
 
 export type KoliBriButtonCallbacks<T> = {
-	[Events.onClick]?: EventValueCallback<MouseEvent, T>;
+	[Events.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
 	[Events.onMouseDown]?: EventCallback<MouseEvent>;
 };
 
@@ -124,7 +124,7 @@ export type ButtonStates = Generic.Element.Members<RequiredButtonStates, Optiona
 /* LINK */
 
 export type LinkOnCallbacks = {
-	[Events.onClick]?: EventValueCallback<Event, string>;
+	[Events.onClick]?: EventValueOrEventCallback<Event, string>;
 };
 
 // https://www.w3schools.com/tags/att_a_target.asp
