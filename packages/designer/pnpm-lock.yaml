@@ -8,7 +8,6 @@ specifiers:
   '@playwright/test': 1.30.0
   '@public-oss/kolibri-themes': 0.0.3
   '@public-ui/components': 1.4.0-rc.5
-  '@public-ui/core': 1.4.0-rc.5
   '@public-ui/solid': 1.4.0-rc.5
   '@public-ui/themes': 1.4.0-rc.5
   '@types/prettier': 2.7.2
@@ -34,7 +33,6 @@ specifiers:
 dependencies:
   '@public-oss/kolibri-themes': 0.0.3_fi5w42p3spq2qpaphuzah5s534
   '@public-ui/components': 1.4.0-rc.5
-  '@public-ui/core': 1.4.0-rc.5
   '@public-ui/solid': 1.4.0-rc.5_4kqh5iyo2mat6332qeosppxgyi
   '@public-ui/themes': 1.4.0-rc.5_fi5w42p3spq2qpaphuzah5s534
   monaco-editor: 0.35.0
