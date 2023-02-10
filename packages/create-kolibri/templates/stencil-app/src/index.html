@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <script type="module">
+      import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.6';
+      import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6/dist/loader';
+      import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.6';
+      register(ITZBund, defineCustomElements)
+        .then(() => {})
+        .catch(console.warn);
+    </script>
+    <meta charset="utf-8" />
+    <title>Stencil Starter App</title>
+    <meta name="Description" content="Welcome to the Stencil App Starter. You can use this starter to build entire apps all with web components using Stencil!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta name="theme-color" content="#16161d" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+
+    <script type="module" src="/build/app.esm.js"></script>
+    <script nomodule src="/build/app.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="assets/bundes/style.css" />
+    <link rel="stylesheet" href="assets/codicons/codicon.css" />
+    <link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+    <link rel="stylesheet" href="assets/kreon/style.css" />
+    <link rel="stylesheet" href="assets/roboto/roboto.css" />
+    <link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+    <link href="/build/app.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" href="/assets/icon/icon.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body data-theme="itzbund">
+    <app-root></app-root>
+  </body>
+</html>

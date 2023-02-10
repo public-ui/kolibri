@@ -5,9 +5,9 @@ import { create } from '@storybook/theming';
 import { register } from '@public-ui/core';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
-import { DEFAULT, ITZBund, DEFAULT, BPA, DEFAULT } from '@public-ui/themes';
+import { ITZBund, ITZBund, ITZBund, BPA, ITZBund } from '@public-ui/themes';
 
-register([DEFAULT, ITZBund, DEFAULT, BPA, DEFAULT], [kolibri, leanup], {
+register([ITZBund, ITZBund, ITZBund, BPA, ITZBund], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
 		name: 'default',

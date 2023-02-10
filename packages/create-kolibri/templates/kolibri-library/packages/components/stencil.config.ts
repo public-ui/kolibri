@@ -7,7 +7,7 @@ import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 
-const TAGS = ['my-example', 'my-example-wc'];
+const TAGS = ['{{kebab name}}-form-login', '{{kebab name}}-form-login-wc'];
 const EXCLUDE_TAGS = [];
 const BUNDLES: {
 	components: string[];
@@ -187,9 +187,7 @@ export const config: Config = {
 	plugins: [sass(), postcss()],
 	rollupPlugins: {
 		before: [],
-		after: [
-			// nodePolyfills()
-		],
+		after: [],
 	},
 	taskQueue: 'immediate',
 };
