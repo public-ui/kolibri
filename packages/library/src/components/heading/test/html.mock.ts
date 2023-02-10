@@ -10,8 +10,7 @@ export const getHeadingWcHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_label: 'Untitled',
-			_level: 1,
+			_label: '',
 		},
 		props
 	);
@@ -30,13 +29,6 @@ export const getHeadingHtml = (
 		default?: string;
 	} = {}
 ): string => {
-	props = mixMembers(
-		{
-			_label: 'Untitled',
-			_level: 1,
-		},
-		props
-	);
 	return `
 <kol-heading>
 	<mock:shadow-root>

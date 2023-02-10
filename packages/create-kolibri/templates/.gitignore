@@ -44,4 +44,7 @@ yarn.lock
 !kolibri-library/**/gitignore
 !kolibri-library/**/prettier.config.js
 !kolibri-library/**/stencil-solid-output-target-*.tgz
+!stencil-app/**/assets/favicon.ico
+!stencil-app/**/assets/style.css
+!stencil-app/README.md
 !kolibri-*/**/README.md

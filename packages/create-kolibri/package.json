@@ -68,6 +68,7 @@
 		"postinstall:preact": "cpy \"defaults/**/*\" templates/preact-app/ --dot",
 		"postinstall:react": "cpy \"defaults/**/*\" templates/react-app/ --dot",
 		"postinstall:solid": "cpy \"defaults/**/*\" templates/solid-app/ --dot",
+		"postinstall:stencil": "cpy \"{bundes,codicons,fontawesome-free,icofont,kreon,noto-sans,roboto,favicon.ico}\" \"../../../templates/stencil-app/src/assets/\" --cwd=\"defaults/public/assets/\" --dot",
 		"postinstall:static": "cpy \"defaults/{public/**/*,**/.npmrc,**/gitignore}\" \"!defaults/public/index.html\" templates/static-page --dot",
 		"postinstall:vue": "cpy \"defaults/**/*\" templates/vue-app/ --dot",
 		"dev": "tsup src/cli.ts --watch",

@@ -45,7 +45,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_label: 'Untitled',
+		_label: '',
 	};
 
 	/**
