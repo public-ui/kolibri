@@ -3,22 +3,22 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
-import { getExampleHtml } from './html.mock';
+import { getFormLoginHtml } from './html.mock';
 import { Props } from '../schema';
 
 executeTests<Props>(
-	'Example',
+	'FormLogin',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <my-example {...props} />,
+			template: () => <my-form-login {...props} />,
 		});
 		return page;
 	},
 	{
-		_label: ['Hello world!'],
+		_heading: ['Hello world!'],
 	},
-	getExampleHtml,
+	getFormLoginHtml,
 	{
 		execMode: 'default',
 	}

@@ -3,7 +3,7 @@
 cjs/
 dist/
 esm/
-my-app*/
+my-*/
 umd/
 types/
 node_modules/

@@ -1,7 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import { applyPolyfills, defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT } from '@public-ui/themes';
+import { ITZBund } from '@public-ui/themes';
 import { register } from '@public-ui/core';
 import '../style.css';
 import '../style.scss';
@@ -10,7 +10,7 @@ class RootApp extends App {
 	componentDidMount() {
 		void applyPolyfills()
 			.then(() => {
-				return register(DEFAULT, []).then(() => {
+				return register(ITZBund, []).then(() => {
 					void defineCustomElements(window);
 				});
 			})

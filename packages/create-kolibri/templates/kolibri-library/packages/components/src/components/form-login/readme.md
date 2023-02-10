@@ -1,4 +1,4 @@
-# Example
+# FormLogin
 
 <!-- Auto Generated Below -->
 
@@ -12,14 +12,14 @@
 
 ### Used by
 
-- [my-example](.)
+- [my-form-login](.)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  my-example --> my-example-wc
-  style my-example-wc fill:#f9f,stroke:#333,stroke-width:4px
+  my-form-login --> my-form-login-wc
+  style my-form-login-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---

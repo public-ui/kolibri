@@ -1,5 +1,5 @@
 <template>
-	<div className="default container mx-auto my-10 max-w-800px">
+	<div className="itzbund container mx-auto my-10 max-w-800px">
 		<header className="text-center">
 			<div className="grid grid-cols-2 items-center">
 				<div>

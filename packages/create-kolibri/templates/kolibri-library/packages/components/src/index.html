@@ -3,28 +3,67 @@
 		<script type="module">
 			import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.4';
 			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.4/dist/loader';
-			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.4';
-			register([DEFAULT], [defineCustomElements]).catch(console.warn);
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.4';
+			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.4.0-rc.4';
+			register([ITZBund], [defineCustomElements], {
+				theme: {
+					detect: 'auto',
+				},
+			})
+				.then(() => {
+					KoliBriDevHelper.patchTheme('{{kebab name}}', {
+						GLOBAL:
+							':host {--border-color: var(--color-grau-dark);--border-radius: 2px;--color-blut: #cc071e;--color-blut-dark: #a0081a;--color-grau: #e6e6e6;--color-grau-light: #f6f6f6;--color-grau-dark: #4c4c4c;--font-size: 16px;--spacing: 0.125rem;}:host * {box-sizing: border-box;}a,button {align-items: center;background-color: transparent;cursor: pointer;display: inline-flex;gap: 0.25rem;justify-items: center;}input,option,select,summary,textarea {display: inline-block;}a,button,input,option,select,summary,textarea {-ms-hyphens: auto;-webkit-hyphens: auto;hyphens: auto;letter-spacing: inherit;word-break: break-word;}*[tabindex]:focus,a:focus,button:focus,input:focus,select:focus,summary:focus,textarea:focus {cursor: pointer;outline-color: var(--color-blut-dark);outline-offset: var(--spacing);outline-style: solid;outline-width: var(--spacing);transition: outline-offset 0.2s linear;}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}',
+						'KOL-BUTTON':
+							':host kol-link-wc a,:host kol-button-wc button {border-radius: var(--border-radius);font-size: var(--font-size);text-decoration: none;display: inline-flex;}a kol-span-wc,button kol-span-wc {border-radius: var(--border-radius);border-style: solid;border-width: 1px;font-weight: bold;min-height: 44px;min-width: 44px;padding: 0.25rem 0.5rem;}.primary kol-span-wc {border-color: var(--border-blut);background-color: var(--color-blut);color: white;}a:focus kol-span-wc,a.primary:hover kol-span-wc,button:focus kol-span-wc,button.primary:hover kol-span-wc {border-color: var(--border-blut-dark);background-color: var(--color-blut-dark);color: white;}.ghost kol-span-wc {border-color: var(--border-color);background-color: var(--color-grau-light);color: var(--color-grau-dark);}.ghost:hover kol-span-wc {border-color: var(--border-color);background-color: var(--color-grau);}',
+						'KOL-LINK-BUTTON':
+							':host kol-link-wc a,:host kol-button-wc button {border-radius: var(--border-radius);font-size: var(--font-size);text-decoration: none;display: inline-flex;}a kol-span-wc,button kol-span-wc {border-radius: var(--border-radius);border-style: solid;border-width: 1px;font-weight: bold;min-height: 44px;min-width: 44px;padding: 0.25rem 0.5rem;}.primary kol-span-wc {border-color: var(--border-blut);background-color: var(--color-blut);color: white;}a:focus kol-span-wc,a.primary:hover kol-span-wc,button:focus kol-span-wc,button.primary:hover kol-span-wc {border-color: var(--border-blut-dark);background-color: var(--color-blut-dark);color: white;}.ghost kol-span-wc {border-color: var(--border-color);background-color: var(--color-grau-light);color: var(--color-grau-dark);}.ghost:hover kol-span-wc {border-color: var(--border-color);background-color: var(--color-grau);}',
+						'KOL-INPUT-TEXT':
+							'kol-input {display: grid;}kol-input label {display: grid;order: 2;margin-bottom: calc(4 * var(--spacing));}kol-input div.input {box-sizing: border-box;order: 2;background-color: white;border-radius: var(--border-radius);}kol-input kol-alert.error {margin-top: calc(4 * var(--spacing));order: 3;}input,select,textarea {background-color: transparent;box-sizing: border-box;font-size: 1rem;display: inline-flex;line-height: 1.5em;border-color: var(--border-color);border-radius: var(--border-radius);border-width: 2px;border-style: solid;padding: 0.625em 0.875em;overflow: hidden;width: 100%;}input,select:not([multiple]) {height: 2.75em;}input::placeholder {color: var(--color-grey);}input:hover {border-color: var(--border-color);}input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {cursor: not-allowed;border-color: var(--border-color);}.required label > span::after {content: "*";padding-left: 0.125em;}.icons {display: flex;justify-content: space-between;height: 0;}.icons > * {margin: 0.75em;}.icon-left input,.icon-left select {padding-left: 2em;}.icon-right input,.icon-right select {padding-right: 2em;}kol-input.error input:focus,kol-input.error select:focus,kol-input.error textarea:focus {outline-color: var(--color-red) !important;}kol-input.error kol-alert.error {color: var(--color-red);font-weight: 700;}kol-button-wc {position: relative;float: right;z-index: 1000;margin-top: -33px;}kol-button-wc button {border: 1px solid var(--color-grey);border-radius: 0.25rem;box-sizing: border-box;background-color: transparent;cursor: pointer;}.icon-right kol-button-wc {margin-right: 2.5em;}.disabled {opacity: 0.33;}select[multiple],textarea {overflow: auto;}textarea {display: block;}select option {margin: 1px 0;padding: 0.5em;border-radius: 0.25em;cursor: pointer;}select option:disabled {cursor: not-allowed;}option:active:not(:disabled),option:checked:not(:disabled),option:focus:not(:disabled),option:hover:not(:disabled) {background: var(--color-ocean);color: white;}',
+						'KOL-INPUT-PASSWORD':
+							'kol-input {display: grid;}kol-input label {display: grid;order: 2;margin-bottom: calc(4 * var(--spacing));}kol-input div.input {box-sizing: border-box;order: 2;background-color: white;border-radius: var(--border-radius);}kol-input kol-alert.error {margin-top: calc(4 * var(--spacing));order: 3;}input,select,textarea {background-color: transparent;box-sizing: border-box;font-size: 1rem;display: inline-flex;line-height: 1.5em;border-color: var(--border-color);border-radius: var(--border-radius);border-width: 2px;border-style: solid;padding: 0.625em 0.875em;overflow: hidden;width: 100%;}input,select:not([multiple]) {height: 2.75em;}input::placeholder {color: var(--color-grey);}input:hover {border-color: var(--border-color);}input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {cursor: not-allowed;border-color: var(--border-color);}.required label > span::after {content: "*";padding-left: 0.125em;}.icons {display: flex;justify-content: space-between;height: 0;}.icons > * {margin: 0.75em;}.icon-left input,.icon-left select {padding-left: 2em;}.icon-right input,.icon-right select {padding-right: 2em;}kol-input.error input:focus,kol-input.error select:focus,kol-input.error textarea:focus {outline-color: var(--color-red) !important;}kol-input.error kol-alert.error {color: var(--color-red);font-weight: 700;}kol-button-wc {position: relative;float: right;z-index: 1000;margin-top: -33px;}kol-button-wc button {border: 1px solid var(--color-grey);border-radius: 0.25rem;box-sizing: border-box;background-color: transparent;cursor: pointer;}.icon-right kol-button-wc {margin-right: 2.5em;}.disabled {opacity: 0.33;}select[multiple],textarea {overflow: auto;}textarea {display: block;}select option {margin: 1px 0;padding: 0.5em;border-radius: 0.25em;cursor: pointer;}select option:disabled {cursor: not-allowed;}option:active:not(:disabled),option:checked:not(:disabled),option:focus:not(:disabled),option:hover:not(:disabled) {background: var(--color-ocean);color: white;}',
+					});
+				})
+				.catch(console.warn);
 		</script>
 		<meta charset="utf-8" />
 		<title>{{kebab name}} - Components</title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.jsdelivr.net " /> -->
-		<script type="module" src="build/my-app.esm.js"></script>
-		<script nomodule src="build/my-app.js"></script>
+		<!-- <meta http-equiv="Content-Security-Policy" content="itzbund-src 'self' *.jsdelivr.net " /> -->
+		<script type="module" src="build/{{kebab name}}.esm.js"></script>
+		<script nomodule src="build/{{kebab name}}.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link rel="stylesheet" href="assets/bundes/style.css" />
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/kreon/style.css" />
+		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
 		<link rel="stylesheet" href="assets/style.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
 		<meta name="robots" content="noindex" />
 		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false,experimental-mode=true" />
 	</head>
 
-	<body data-theme="default">
+	<body data-theme="itzbund">
 		<header></header>
 		<main class="container my-4 d-grid gap-4">
-			<kol-badge _label="Hello world!"></kol-badge>
-			<my-example _label="Hello world!"></my-example>
-			<my-example-wc _label="Hello world!"></my-example-wc>
+			<div class="itzbund" data-theme="itzbund">
+				<{{kebab name}}-form-login _heading="Hell😉!"></{{kebab name}}-form-login>
+				<!-- <{{kebab name}}-form-login-wc _heading="Hell😉!"></{{kebab name}}-form-login-wc> -->
+			</div>
+			<hr aria-hidden="true" />
+			<div class="{{kebab name}}" data-theme="{{kebab name}}">
+				<{{kebab name}}-form-login _heading="Hell😉!"></{{kebab name}}-form-login>
+				<!-- <{{kebab name}}-form-login-wc _heading="Hell😉!"></{{kebab name}}-form-login-wc> -->
+			</div>
 		</main>
 		<footer></footer>
 	</body>

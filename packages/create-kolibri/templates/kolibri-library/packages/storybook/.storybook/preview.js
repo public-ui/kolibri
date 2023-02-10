@@ -154,13 +154,13 @@ export const parameters = {
 	},
 	themes: {
 		clearable: false,
-		default: 'DEFAULT-Styleguide',
+		default: 'ITZBund-Styleguide',
 		onChange: (theme) => {
 			document.body.dataset.theme = theme.class;
 		},
 		list: [
 			// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
-			{ name: 'DEFAULT-Styleguide', class: 'default', color: '#004b76' },
+			{ name: 'ITZBund-Styleguide', class: 'default', color: '#004b76' },
 			{ name: 'ITZBund-Styleguide (Demo)', class: 'itzbund', color: '#007a89' },
 		],
 	},

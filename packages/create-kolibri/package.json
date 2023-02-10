@@ -56,13 +56,13 @@
 		"template"
 	],
 	"scripts": {
-		"build": "rimraf dist && tsup src/cli.ts --minify",
+		"build": "rimraf dist templates/**/package-lock.json templates/**/pnpm-lock.yaml templates/**/yarn.lock && tsup src/cli.ts --minify",
 		"clean": "git clean -f -d -X",
 		"postinstall": "npm-run-all postinstall:*",
 		"postinstall:angular": "cpy \"defaults/**/*\" \"!defaults/unocss.config.ts\" templates/angular-app/ --dot",
 		"postinstall:astro": "cpy \"defaults/**/*\" \"!defaults/public/index.html\" templates/astro-app/ --dot",
 		"postinstall:library": "cpy \"defaults/*{.editorconfig,commitlint.config.js}\" templates/kolibri-library/ --dot",
-		"postinstall:library:assets": "cpy \"{codicons,fontawesome-free,icofont,noto-sans,roboto,favicon.ico}\" \"../../../templates/kolibri-library/packages/components/src/assets/\" --cwd=\"defaults/public/assets/\" --dot",
+		"postinstall:library-assets": "cpy \"{bundes,codicons,fontawesome-free,icofont,kreon,noto-sans,roboto,favicon.ico}\" \"../../../templates/kolibri-library/packages/components/src/assets/\" --cwd=\"defaults/public/assets/\" --dot",
 		"postinstall:theme": "cpy \"defaults/{**/.{editorconfig,eslintignore,npmrc,prettierignore,ts-prunerc.js},**/gitignore}\" templates/kolibri-theme/ --dot",
 		"postinstall:next.js": "cpy \"defaults/**/*\" \"!defaults/public/index.html\" templates/next.js-app/ --dot",
 		"postinstall:preact": "cpy \"defaults/**/*\" templates/preact-app/ --dot",
@@ -87,7 +87,7 @@
 		"ncu:patch": "ncu -t patch -u",
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major",
 		"ts-prune": "ts-prune src -e",
-		"test": "npm run clean && pnpm i && npm run build && rimraf my-app && node dist/cli.js my-app"
+		"test": "npm run clean && pnpm i && npm run build && rimraf my-* && node dist/cli.js"
 	},
 	"bin": "dist/cli.js",
 	"dependencies": {

@@ -5,7 +5,7 @@ import IMG_FRAMEWORK from '../../assets/logo.solid.png';
 
 export const AppComponent: Component = () => {
 	return (
-		<div class="default container mx-auto my-10 max-w-800px">
+		<div class="itzbund container mx-auto my-10 max-w-800px">
 			<header class="text-center">
 				<div class="grid grid-cols-2 items-center">
 					<div>
