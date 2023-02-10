@@ -57,7 +57,7 @@
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"devDependencies": {
-		"@babel/types": "7.20.5",
+		"@babel/types": "7.20.7",
 		"@a11y-ui/core": "1.0.1-rc.61",
 		"@public-ui/core": "1.4.0-rc.6",
 		"@public-ui/components": "1.4.0-rc.6",
