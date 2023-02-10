@@ -2,7 +2,6 @@ import { h, Host, JSX, State } from '@stencil/core';
 
 // https://webcomponents.dev/blog/all-the-ways-to-make-a-web-component/
 
-// ts-prune-ignore-next
 // @Component({
 // 	tag: 'kol-counter',
 // 	styleUrls: {
@@ -10,6 +9,7 @@ import { h, Host, JSX, State } from '@stencil/core';
 // 	},
 // 	shadow: true,
 // })
+// ts-prune-ignore-next
 export class KolCounter {
 	/**
 	 * @see: components/abbr/component.tsx (@State)
