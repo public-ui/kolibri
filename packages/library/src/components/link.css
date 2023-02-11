@@ -2,7 +2,7 @@
 
 :host > kol-link-wc a {
 	display: inline-flex;
-	gap: 0.25rem;
+	gap: var(--kolibri-spacing);
 	place-items: center;
 	text-decoration: none;
 }
@@ -48,7 +48,7 @@ a.skip {
 }
 a.skip:focus {
 	background-color: white;
-	box-shadow: 0 0 0.5rem 0.5rem white;
+	box-shadow: 0 0 calc(2 * var(--kolibri-spacing)) calc(2 * var(--kolibri-spacing)) white;
 	left: unset;
 	position: unset;
 }

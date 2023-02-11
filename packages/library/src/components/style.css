@@ -17,7 +17,7 @@ kol-span-wc {
 }
 kol-span-wc > span {
 	display: flex;
-	gap: 0.25rem;
+	gap: var(--kolibri-spacing);
 	place-items: center;
 }
 

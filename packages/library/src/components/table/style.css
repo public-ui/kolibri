@@ -35,6 +35,6 @@ div.pagination > div:last-child {
 
 	div.pagination kol-pagination {
 		display: flex;
-		gap: 1rem;
+		gap: calc(4 * var(--kolibri-spacing));
 	}
 }
