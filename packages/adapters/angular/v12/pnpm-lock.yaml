@@ -4,8 +4,8 @@ specifiers:
   '@angular/compiler': 12.2.17
   '@angular/compiler-cli': 12.2.17
   '@angular/core': 12.2.17
-  '@public-ui/components': 1.4.0-rc.5
-  '@public-ui/core': 1.4.0-rc.5
+  '@public-ui/components': 1.4.0-rc.6
+  '@public-ui/core': 1.4.0-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.13.0
@@ -21,8 +21,8 @@ devDependencies:
   '@angular/compiler': 12.2.17
   '@angular/compiler-cli': 12.2.17_r7idsygkgzla4r2ofe56dih4bq
   '@angular/core': 12.2.17_rxjs@7.6.0+zone.js@0.11.8
-  '@public-ui/components': 1.4.0-rc.5
-  '@public-ui/core': 1.4.0-rc.5
+  '@public-ui/components': 1.4.0-rc.6
+  '@public-ui/core': 1.4.0-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.13.0
@@ -346,23 +346,23 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.4.0-rc.5:
-    resolution: {integrity: sha512-qJGfZ3qMajRsEonDyXl1nlsiK1+lJ1GWC/I/VTWtvqWz/DGSH7n2DI3LUDS2XoxtqDy6JxmgXrQig0SKZznLtw==}
+  /@public-ui/components/1.4.0-rc.6:
+    resolution: {integrity: sha512-by6BlsMVEyqbVP5zJEriMV4uhSkpK7A8L9TUWql33+pEIVAPq+2jU11pEiy4nWCdOpktUCK5TDd4na3GNgfGOw==}
     dependencies:
       '@floating-ui/dom': 1.2.0
-      '@public-ui/core': 1.4.0-rc.5
-      '@public-ui/schema': 1.4.0-rc.5
+      '@public-ui/core': 1.4.0-rc.6
+      '@public-ui/schema': 1.4.0-rc.6
     dev: true
 
-  /@public-ui/core/1.4.0-rc.5:
-    resolution: {integrity: sha512-3s/WvVlx+ZZ5uGn0wFyYqHsUaow71vNu8g6+Jx7deFpeGYFOhkarS//zDrIWjV7pDzIoyF1P/pRnWliwK0vykQ==}
+  /@public-ui/core/1.4.0-rc.6:
+    resolution: {integrity: sha512-ZSutvFrFVTyrOspqxTM5J+st4d9rf/udHqx+rySxwM8+J35CZ8nkZeOffbwqlgrxubXRv3tIFv0OI7Ig1rf62g==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.62
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.5:
-    resolution: {integrity: sha512-WU7NdYtsAQSPaheU5KJez1R52KzzjrPIq0wph54ZLIMc5Dftv59yncSPLGSMiSJ8ETxRdzzeHijsUux1OoZQ3A==}
+  /@public-ui/schema/1.4.0-rc.6:
+    resolution: {integrity: sha512-7oKPtXUpyc7YLA4Mrji1n8l+coEmO8WI1Dl5xs2e3I7SY7vyvAEUoU8CsMcmOw7uPgXfbvFN0L/gHkQYZt26ew==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.62
     dev: true

@@ -8,10 +8,10 @@ specifiers:
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.0-rc.5
-  '@public-ui/core': 1.4.0-rc.5
-  '@public-ui/react': 1.4.0-rc.5
-  '@public-ui/themes': 1.4.0-rc.5
+  '@public-ui/components': 1.4.0-rc.6
+  '@public-ui/core': 1.4.0-rc.6
+  '@public-ui/react': 1.4.0-rc.6
+  '@public-ui/themes': 1.4.0-rc.6
   '@storybook/addon-a11y': 6.5.16
   '@storybook/addon-actions': 6.5.16
   '@storybook/addon-backgrounds': 6.5.16
@@ -68,13 +68,13 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 0.2.2
   '@leanup/form': 1.3.43
-  '@leanup/kolibri-components': 1.0.5_3z7hexhckevz6i2ttzrt37jyr4
+  '@leanup/kolibri-components': 1.0.5_sy2pyayhla5hhe43rfgcqliifi
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-oss/kolibri-themes': 0.0.3_fi5w42p3spq2qpaphuzah5s534
-  '@public-ui/components': 1.4.0-rc.5
-  '@public-ui/core': 1.4.0-rc.5
-  '@public-ui/react': 1.4.0-rc.5_jrnjwjpceo7jjlhhfp7v2nf7se
-  '@public-ui/themes': 1.4.0-rc.5_fi5w42p3spq2qpaphuzah5s534
+  '@public-oss/kolibri-themes': 0.0.3_onl2d63ira4h6renfxpavbwddy
+  '@public-ui/components': 1.4.0-rc.6
+  '@public-ui/core': 1.4.0-rc.6
+  '@public-ui/react': 1.4.0-rc.6_kxis263omcmaqekmgs3a7wluvu
+  '@public-ui/themes': 1.4.0-rc.6_onl2d63ira4h6renfxpavbwddy
   '@storybook/addon-a11y': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
@@ -2613,14 +2613,14 @@ packages:
       '@leanup/lib': 1.3.43
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_3z7hexhckevz6i2ttzrt37jyr4:
+  /@leanup/kolibri-components/1.0.5_sy2pyayhla5hhe43rfgcqliifi:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.43
-      '@public-ui/components': 1.4.0-rc.5
+      '@public-ui/components': 1.4.0-rc.6
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -2630,7 +2630,7 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_3z7hexhckevz6i2ttzrt37jyr4
+      '@leanup/kolibri-components': 1.0.5_sy2pyayhla5hhe43rfgcqliifi
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2769,21 +2769,21 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_fi5w42p3spq2qpaphuzah5s534:
+  /@public-oss/kolibri-themes/0.0.3_onl2d63ira4h6renfxpavbwddy:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.0-rc.5
+      '@public-ui/components': 1.4.0-rc.6
       '@public-ui/schema': 1.1.15
     dev: true
 
-  /@public-ui/components/1.4.0-rc.5:
-    resolution: {integrity: sha512-qJGfZ3qMajRsEonDyXl1nlsiK1+lJ1GWC/I/VTWtvqWz/DGSH7n2DI3LUDS2XoxtqDy6JxmgXrQig0SKZznLtw==}
+  /@public-ui/components/1.4.0-rc.6:
+    resolution: {integrity: sha512-by6BlsMVEyqbVP5zJEriMV4uhSkpK7A8L9TUWql33+pEIVAPq+2jU11pEiy4nWCdOpktUCK5TDd4na3GNgfGOw==}
     dependencies:
       '@floating-ui/dom': 1.2.0
-      '@public-ui/core': 1.4.0-rc.5
-      '@public-ui/schema': 1.4.0-rc.5
+      '@public-ui/core': 1.4.0-rc.6
+      '@public-ui/schema': 1.4.0-rc.6
     dev: true
 
   /@public-ui/core/1.1.15:
@@ -2793,21 +2793,21 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/core/1.4.0-rc.5:
-    resolution: {integrity: sha512-3s/WvVlx+ZZ5uGn0wFyYqHsUaow71vNu8g6+Jx7deFpeGYFOhkarS//zDrIWjV7pDzIoyF1P/pRnWliwK0vykQ==}
+  /@public-ui/core/1.4.0-rc.6:
+    resolution: {integrity: sha512-ZSutvFrFVTyrOspqxTM5J+st4d9rf/udHqx+rySxwM8+J35CZ8nkZeOffbwqlgrxubXRv3tIFv0OI7Ig1rf62g==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.62
       i18next: 22.4.9
     dev: true
 
-  /@public-ui/react/1.4.0-rc.5_jrnjwjpceo7jjlhhfp7v2nf7se:
-    resolution: {integrity: sha512-JAimY7LRs7UtdoGMZGwyfh8XcacbSIxZfAosVkeehCijJP4HKnr2n9MMBMIAy5K7Xu0Rxe144eLYfU783johkQ==}
+  /@public-ui/react/1.4.0-rc.6_kxis263omcmaqekmgs3a7wluvu:
+    resolution: {integrity: sha512-x8IIyheT3j/YNTZkcy8ObBEYONpcwdW8eCH3cAMvWTE2qIiDbcWiZcB5uZtAusp+Hn5qqFbfBp4H2U+xi7CKvg==}
     peerDependencies:
-      '@public-ui/components': 1.4.0-rc.5
+      '@public-ui/components': 1.4.0-rc.6
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.4.0-rc.5
+      '@public-ui/components': 1.4.0-rc.6
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2818,19 +2818,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.5:
-    resolution: {integrity: sha512-WU7NdYtsAQSPaheU5KJez1R52KzzjrPIq0wph54ZLIMc5Dftv59yncSPLGSMiSJ8ETxRdzzeHijsUux1OoZQ3A==}
+  /@public-ui/schema/1.4.0-rc.6:
+    resolution: {integrity: sha512-7oKPtXUpyc7YLA4Mrji1n8l+coEmO8WI1Dl5xs2e3I7SY7vyvAEUoU8CsMcmOw7uPgXfbvFN0L/gHkQYZt26ew==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.62
     dev: true
 
-  /@public-ui/themes/1.4.0-rc.5_fi5w42p3spq2qpaphuzah5s534:
-    resolution: {integrity: sha512-GX4vPZAv7sUXamm6ix8E/uomZ8QrHA6miNZ+VDUV+Qek2GPECtOJDcXrA+96CETVhIBLz2piWtCJn++CsakH1Q==}
+  /@public-ui/themes/1.4.0-rc.6_onl2d63ira4h6renfxpavbwddy:
+    resolution: {integrity: sha512-AokudqhBT+Ek6IfTVQOeuhbF7kXAzHh3Gn6uPQZyl70NcZU4SNP9fi3N472V0Y7xa0lhvthbp5izjGiMtgzvag==}
     peerDependencies:
-      '@public-ui/components': 1.4.0-rc.5
+      '@public-ui/components': 1.4.0-rc.6
     dependencies:
-      '@public-ui/components': 1.4.0-rc.5
-      '@public-ui/schema': 1.4.0-rc.5
+      '@public-ui/components': 1.4.0-rc.6
+      '@public-ui/schema': 1.4.0-rc.6
     dev: true
 
   /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
