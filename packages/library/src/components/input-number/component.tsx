@@ -209,7 +209,7 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: number | Iso8601;
+	@Prop() public _value?: number | Iso8601 | null;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -407,8 +407,12 @@ export class KolInputNumber implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_value')
-	public validateValue(value?: number | Iso8601): void {
-		this.controller.validateValue(value);
+	public validateValue(value?: number | Iso8601 | null): void {
+		this.controller.validateValueEx(value, (v) => {
+			if (v === '' && this.ref) {
+				this.ref.value = '';
+			}
+		});
 	}
 
 	/**
