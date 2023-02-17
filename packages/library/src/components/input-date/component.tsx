@@ -197,7 +197,12 @@ export class KolInputDate implements ComponentApi {
 				case 'month':
 					return `${v.getFullYear()}-${v.getMonth() + 1}`;
 				case 'time':
-					return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+					// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#using_the_step_attribute
+					if (this._step === undefined || (typeof this._step === 'string' && this._step === '60') || (typeof this._step === 'number' && this._step === 60)) {
+						return `${v.getHours()}:${v.getMinutes()}`;
+					} else {
+						return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+					}
 				case 'week':
 					throw new Error('Auto convert to week is not supported!');
 			}

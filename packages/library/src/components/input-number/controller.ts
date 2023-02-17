@@ -10,9 +10,10 @@ import { Props, Watches } from './types';
 export class InputNumberController extends InputIconController implements Watches {
 	/**
 	 * Regex to check whether a string is a number or a date in ISO-8601 format.
-	 * Test the regex here: https://regex101.com/r/nFDzrD/1
+	 * Test the regex here: https://regex101.com/r/ddGR4V/1
 	 */
-	private readonly numberOrIsoDateRegex = /^\d+$|(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?([+-][0-2]\d:[0-5]\d|Z)?)?$)/;
+	private readonly numberOrIsoDateRegex =
+		/^\d+$|(^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])([T ][0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?([+-][0-2]\d:[0-5]\d|Z)?)?$)|(^[0-2]\d:[0-5]\d(:[0-5]\d)?$)/;
 
 	protected readonly component: Generic.Element.Component & Props;
 
