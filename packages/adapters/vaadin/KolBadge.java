@@ -11,7 +11,7 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.1")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.6")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
@@ -48,24 +48,6 @@ public class KolBadge extends Component {
 	 */
 	public String getIcon() {
 		return getElement().getProperty("_icon", null);
-	}
-
-	/**
-	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-	 *
-	 * @param value String
-	 */
-	public void setIconAlign(final String value) {
-		getElement().setProperty("_icon-align", value);
-	}
-
-	/**
-	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
-	 *
-	 * @return String
-	 */
-	public String getIconAlign() {
-		return getElement().getProperty("_icon-align", null);
 	}
 
 	/**
