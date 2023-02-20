@@ -1,10 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@a11y-ui/core': 1.0.1-rc.62
+  '@a11y-ui/core': 1.0.1-rc.65
   '@floating-ui/dom': 1.2.0
-  '@public-ui/core': 1.4.0-rc.5
-  '@public-ui/schema': 1.4.0-rc.5
+  '@public-ui/core': 1.4.0-rc.6
+  '@public-ui/schema': 1.4.0-rc.6
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.0.0
   '@stencil/postcss': 2.1.0
@@ -52,11 +52,11 @@ specifiers:
 
 dependencies:
   '@floating-ui/dom': 1.2.0
-  '@public-ui/core': 1.4.0-rc.5
-  '@public-ui/schema': 1.4.0-rc.5
+  '@public-ui/core': 1.4.0-rc.6
+  '@public-ui/schema': 1.4.0-rc.6
 
 devDependencies:
-  '@a11y-ui/core': 1.0.1-rc.62
+  '@a11y-ui/core': 1.0.1-rc.65
   '@stencil/angular-output-target': 0.5.0_@stencil+core@3.0.0
   '@stencil/core': 3.0.0
   '@stencil/postcss': 2.1.0_@stencil+core@3.0.0
@@ -108,6 +108,13 @@ packages:
     resolution: {integrity: sha512-CPkhwXdSEWZk53h9se0oNX2HOsXIfsWZim02uR5J555H2rENhjpR3uyAo6hMVRsn3Ws4wuvJ+D2t68g3nD0PiA==}
     dependencies:
       loglevel: 1.8.1
+    dev: false
+
+  /@a11y-ui/core/1.0.1-rc.65:
+    resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: true
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1625,15 +1632,15 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.4.0-rc.5:
-    resolution: {integrity: sha512-3s/WvVlx+ZZ5uGn0wFyYqHsUaow71vNu8g6+Jx7deFpeGYFOhkarS//zDrIWjV7pDzIoyF1P/pRnWliwK0vykQ==}
+  /@public-ui/core/1.4.0-rc.6:
+    resolution: {integrity: sha512-ZSutvFrFVTyrOspqxTM5J+st4d9rf/udHqx+rySxwM8+J35CZ8nkZeOffbwqlgrxubXRv3tIFv0OI7Ig1rf62g==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.62
       i18next: 22.4.9
     dev: false
 
-  /@public-ui/schema/1.4.0-rc.5:
-    resolution: {integrity: sha512-WU7NdYtsAQSPaheU5KJez1R52KzzjrPIq0wph54ZLIMc5Dftv59yncSPLGSMiSJ8ETxRdzzeHijsUux1OoZQ3A==}
+  /@public-ui/schema/1.4.0-rc.6:
+    resolution: {integrity: sha512-7oKPtXUpyc7YLA4Mrji1n8l+coEmO8WI1Dl5xs2e3I7SY7vyvAEUoU8CsMcmOw7uPgXfbvFN0L/gHkQYZt26ew==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.62
     dev: false

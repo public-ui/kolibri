@@ -28,8 +28,8 @@
 		"@slidev/theme-seriph": "0.21.3"
 	},
 	"devDependencies": {
-		"@slidev/cli": "0.40.2",
-		"npm-check-updates": "16.7.4",
+		"@slidev/cli": "0.40.3",
+		"npm-check-updates": "16.7.5",
 		"playwright-chromium": "1.30.0",
 		"prettier": "2.8.4",
 		"rimraf": "4.1.2",
