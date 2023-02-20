@@ -1,5 +1,4 @@
 import { KoliBri } from '@public-ui/schema';
-import { KOL_ICON } from './defaults/icon';
 
 // Presse- und Informationsamt der Bundesregierung
 export const BPA = KoliBri.createTheme('bpa', {
