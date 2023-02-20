@@ -3,7 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from '../../types/alert';
 import { HeadingLevel } from '../../types/heading-level';
-import { featureHint } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
@@ -29,7 +28,7 @@ type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
-	return <kol-icon class="icon" _ariaLabel={typeof props.heading === 'string' && props.heading.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
+	return <kol-icon class="heading-icon" _ariaLabel={typeof props.heading === 'string' && props.heading.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
 };
 
 const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
@@ -91,23 +90,24 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 					}}
 					role={this.state._alert ? 'alert' : undefined}
 				>
-					{this.state._variant === 'msg' && <AlertIcon heading={this.state._heading} type={this.state._type} />}
-					<div>
-						{((typeof this.state._heading === 'string' && this.state._heading.length > 0) || this.state._variant === 'card') && (
-							<kol-heading-wc class="heading" _label="" _level={this.state._level}>
-								{this.state._variant === 'card' && <AlertIcon heading={this.state._heading} type={this.state._type} />}
-								{this.state._heading || ''}
-							</kol-heading-wc>
-						)}
-						<div class="content">
-							<slot />
+					<div class="heading">
+						<AlertIcon heading={this.state._heading} type={this.state._type} />
+						<div>
+							{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
+								<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+							)}
+							{this._variant === 'msg' && (
+								<div class="content">
+									<slot />
+								</div>
+							)}
 						</div>
 						{this.state._hasCloser && (
 							<kol-button-wc
 								class="close"
 								_icon={{
 									left: {
-										icon: 'fa-solid fa-circle-xmark',
+										icon: 'fa-solid fa-xmark',
 									},
 								}}
 								_iconOnly
@@ -117,6 +117,11 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 							></kol-button-wc>
 						)}
 					</div>
+					{this._variant === 'card' && (
+						<div class="content">
+							<slot />
+						</div>
+					)}
 				</div>
 			</Host>
 		);
@@ -196,18 +201,33 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 		watchHeadingLevel(this, value);
 	}
 
+	private validateOnValue = (value: unknown): boolean =>
+		typeof value === 'object' && value !== null && typeof (value as KoliBriAlertEventCallbacks).onClose === 'function';
+
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriAlertEventCallbacks): void {
-		if (typeof value === 'object' && value !== null) {
-			featureHint('[KolAlert] Prüfen, wie man auch einen EventCallback einzeln ändern kann.');
-			const callbacks: KoliBriAlertEventCallbacks = {};
-			if (typeof value.onClose === 'function' || value.onClose === true) {
-				callbacks.onClose = value.onClose;
-			}
-			setState<KoliBriAlertEventCallbacks>(this, '_on', callbacks);
+		if (this.validateOnValue(value)) {
+			setState<KoliBriAlertEventCallbacks>(
+				this,
+				'_on',
+				{
+					onClose: (value as KoliBriAlertEventCallbacks).onClose,
+				}
+				// {
+				// 	afterPatch: (value: unknown) => {
+				// 		this._hasCloser = this.validateOnValue(value);
+				// 	},
+				// }
+			);
+			// } else {
+			// 	setState<KoliBriAlertEventCallbacks>(this, '_on', null, {
+			// 		afterPatch: (value: unknown) => {
+			// 			this._hasCloser = this.validateOnValue(value);
+			// 		},
+			// 	});
 		}
 	}
 

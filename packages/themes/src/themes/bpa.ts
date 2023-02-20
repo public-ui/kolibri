@@ -55,5 +55,5 @@ export const BPA = KoliBri.createTheme('bpa', {
 		'nav {background-color: white;}ul {list-style: none;margin: 0px;padding: 0px;}nav.horizontal ul {display: flex;flex-wrap: wrap;}li {margin-left: 1rem;margin-right: 0.5rem;}li.list-none {list-style-type: none !important;margin-left: 0;}',
 	'KOL-TOAST':
 		':host > div {display: fixed;top: 0;left: 0;width: 100%;height: 0;z-index: 50;}:host > div > kol-alert {display: block;padding: 1em;margin: auto;max-width: 750px;}',
-	'KOL-ICON': KOL_ICON,
+	'KOL-ICON': '',
 });

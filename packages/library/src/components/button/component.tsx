@@ -230,6 +230,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@State() public state: ButtonStates = {
 		_ariaLabel: '',
 		_icon: {},
+		/**
+		 * @deprecated
+		 */
 		_iconAlign: 'left',
 		_label: '',
 		_on: {},

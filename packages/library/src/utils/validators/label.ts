@@ -3,6 +3,15 @@ import { a11yHint } from '../a11y.tipps';
 import { watchString } from '../prop.validators';
 import { isEmptyOrPrefixOf } from '../validator';
 
+const READABLE_CHARS = /[a-zA-Z0-9äöüÄÖÜß]/g;
+const ONLY_NUMBERS = /^\d+$/;
+
+const countReadableChars = (str: string): number => (typeof str === 'string' ? str.match(READABLE_CHARS)?.length || 0 : 0);
+
+export const hasEnoughReadableChars = (str: string, min = 1): boolean => countReadableChars(str) >= min;
+
+export const containsOnlyNumbers = (str: string): boolean => ONLY_NUMBERS.test(str);
+
 /**
  * Ein abweichendes Aria-Label muss aus Gründern der Barrierefreiheit für
  * die Sprachsteuerung mit dem Label-Text beginnen.
@@ -20,7 +29,7 @@ const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextV
 				// smartSetTimeout(() => ((component as Generic.Element.Component & { _ariaLabel: string })._ariaLabel = label), 50);
 			}
 			a11yHint(
-				`Das abweichende Aria-Label am Schalter ist nicht barrierefrei. Ein abweichendes Aria-Label muss aus Gründern der Barrierefreiheit für die Sprachsteuerung mit dem Label-Text beginnen.`
+				`Das abweichende Aria-Label ist nicht barrierefrei. Ein abweichendes Aria-Label muss aus Gründern der Barrierefreiheit für die Sprachsteuerung mit dem Label-Text beginnen.`
 			);
 		}
 	}
@@ -29,6 +38,13 @@ const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextV
 export const validateAriaLabel = (component: Generic.Element.Component, value?: string): void => {
 	watchString(component, '_ariaLabel', value, {
 		hooks: {
+			afterPatch: (value) => {
+				if (typeof value === 'string' && value.length > 0 && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
+					a11yHint(
+						`Ein abweichendes Aria-Label (${value}) ist nicht barrierefrei. Ein abweichendes Aria-Label sollte aus mindestens drei lesbaren Zeichen bestehen.`
+					);
+				}
+			},
 			beforePatch: syncAriaLabelBeforePatch,
 		},
 	});
@@ -37,6 +53,11 @@ export const validateAriaLabel = (component: Generic.Element.Component, value?: 
 export const validateLabel = (component: Generic.Element.Component, value?: string): void => {
 	watchString(component, '_label', value, {
 		hooks: {
+			afterPatch: (value) => {
+				if (typeof value === 'string' && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
+					a11yHint(`Ein Label (${value}) ist nicht barrierefrei. Ein Label sollte aus mindestens drei lesbaren Zeichen bestehen.`);
+				}
+			},
 			beforePatch: syncAriaLabelBeforePatch,
 		},
 		required: true,
