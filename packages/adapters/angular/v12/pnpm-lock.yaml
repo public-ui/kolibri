@@ -4,11 +4,11 @@ specifiers:
   '@angular/compiler': 12.2.17
   '@angular/compiler-cli': 12.2.17
   '@angular/core': 12.2.17
-  '@public-ui/components': 1.4.0-rc.6
-  '@public-ui/core': 1.4.0-rc.6
+  '@public-ui/components': 1.4.0-rc.7
+  '@public-ui/core': 1.4.0-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.13.0
+  '@types/node': 18.14.0
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.4
   rimraf: 4.1.2
@@ -21,11 +21,11 @@ devDependencies:
   '@angular/compiler': 12.2.17
   '@angular/compiler-cli': 12.2.17_r7idsygkgzla4r2ofe56dih4bq
   '@angular/core': 12.2.17_rxjs@7.6.0+zone.js@0.11.8
-  '@public-ui/components': 1.4.0-rc.6
-  '@public-ui/core': 1.4.0-rc.6
+  '@public-ui/components': 1.4.0-rc.7
+  '@public-ui/core': 1.4.0-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.13.0
+  '@types/node': 18.14.0
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.4
   rimraf: 4.1.2
@@ -36,8 +36,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.62:
-    resolution: {integrity: sha512-CPkhwXdSEWZk53h9se0oNX2HOsXIfsWZim02uR5J555H2rENhjpR3uyAo6hMVRsn3Ws4wuvJ+D2t68g3nD0PiA==}
+  /@a11y-ui/core/1.0.1-rc.65:
+    resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -298,14 +298,14 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@floating-ui/core/1.2.0:
-    resolution: {integrity: sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==}
+  /@floating-ui/core/1.2.1:
+    resolution: {integrity: sha512-LSqwPZkK3rYfD7GKoIeExXOyYx6Q1O4iqZWwIehDNuv3Dv425FIAE8PRwtAx1imEolFTHgBEcoFHm9MDnYgPCg==}
     dev: true
 
-  /@floating-ui/dom/1.2.0:
-    resolution: {integrity: sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==}
+  /@floating-ui/dom/1.2.1:
+    resolution: {integrity: sha512-Rt45SmRiV8eU+xXSB9t0uMYiQ/ZWGE/jumse2o3i5RGlyvcbqOF4q+1qBnzLE2kZ5JGhq0iMkcGXUKbFe7MpTA==}
     dependencies:
-      '@floating-ui/core': 1.2.0
+      '@floating-ui/core': 1.2.1
     dev: true
 
   /@jridgewell/gen-mapping/0.1.1:
@@ -346,25 +346,25 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.4.0-rc.6:
-    resolution: {integrity: sha512-by6BlsMVEyqbVP5zJEriMV4uhSkpK7A8L9TUWql33+pEIVAPq+2jU11pEiy4nWCdOpktUCK5TDd4na3GNgfGOw==}
+  /@public-ui/components/1.4.0-rc.7:
+    resolution: {integrity: sha512-BU7vULAbeJoYdyhkL43PbJ92uUti2wqpR+DVwDjTTXgmmDz3+tE8vXpLeLgRjWuS9bPgI3HrJ8UyryGuOdftPA==}
     dependencies:
-      '@floating-ui/dom': 1.2.0
-      '@public-ui/core': 1.4.0-rc.6
-      '@public-ui/schema': 1.4.0-rc.6
+      '@floating-ui/dom': 1.2.1
+      '@public-ui/core': 1.4.0-rc.7
+      '@public-ui/schema': 1.4.0-rc.7
     dev: true
 
-  /@public-ui/core/1.4.0-rc.6:
-    resolution: {integrity: sha512-ZSutvFrFVTyrOspqxTM5J+st4d9rf/udHqx+rySxwM8+J35CZ8nkZeOffbwqlgrxubXRv3tIFv0OI7Ig1rf62g==}
+  /@public-ui/core/1.4.0-rc.7:
+    resolution: {integrity: sha512-EUrWGhFqgaWAEsG66pzpQdEJrvqN4c0J/bVXhMibAYPPIj/s+TiAg3yMKWV9BK2CRtr2Vaw4UqyOXbfMDEZXnQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.62
-      i18next: 22.4.9
+      '@a11y-ui/core': 1.0.1-rc.65
+      i18next: 22.4.10
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.6:
-    resolution: {integrity: sha512-7oKPtXUpyc7YLA4Mrji1n8l+coEmO8WI1Dl5xs2e3I7SY7vyvAEUoU8CsMcmOw7uPgXfbvFN0L/gHkQYZt26ew==}
+  /@public-ui/schema/1.4.0-rc.7:
+    resolution: {integrity: sha512-7Yl5SqQpE80KGRys6ArTAXstjOrxqFaLb/apd/5hRtew68fHvnlPdWzmbmLjHNHhX6Ku1fWSg8eNA1jVDyS4+Q==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.62
+      '@a11y-ui/core': 1.0.1-rc.65
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -375,8 +375,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.13.0:
-    resolution: {integrity: sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==}
+  /@types/node/18.14.0:
+    resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -576,8 +576,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /i18next/22.4.9:
-    resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
+  /i18next/22.4.10:
+    resolution: {integrity: sha512-3EqgGK6fAJRjnGgfkNSStl4mYLCjUoJID338yVyLMj5APT67HUtWoqSayZewiiC5elzMUB1VEUwcmSCoeQcNEA==}
     dependencies:
       '@babel/runtime': 7.20.13
     dev: true

@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.4.0-rc.6
-  '@public-ui/react': 1.4.0-rc.6
+  '@public-ui/components': 1.4.0-rc.7
+  '@public-ui/react': 1.4.0-rc.7
   preact: '>=10.11.3'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@public-ui/react': 1.4.0-rc.6_zjdh4uxqz5gmdcqeosbd5ayr54
+  '@public-ui/react': 1.4.0-rc.7_ek32xxrcqje7b2tuwjjcij2ogi
   preact: 10.12.0
 
 devDependencies:
-  '@public-ui/components': 1.4.0-rc.6
+  '@public-ui/components': 1.4.0-rc.7
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -22,8 +22,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.62:
-    resolution: {integrity: sha512-CPkhwXdSEWZk53h9se0oNX2HOsXIfsWZim02uR5J555H2rENhjpR3uyAo6hMVRsn3Ws4wuvJ+D2t68g3nD0PiA==}
+  /@a11y-ui/core/1.0.1-rc.65:
+    resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
     dependencies:
       loglevel: 1.8.1
 
@@ -636,13 +636,13 @@ packages:
     dev: true
     optional: true
 
-  /@floating-ui/core/1.2.0:
-    resolution: {integrity: sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==}
+  /@floating-ui/core/1.2.1:
+    resolution: {integrity: sha512-LSqwPZkK3rYfD7GKoIeExXOyYx6Q1O4iqZWwIehDNuv3Dv425FIAE8PRwtAx1imEolFTHgBEcoFHm9MDnYgPCg==}
 
-  /@floating-ui/dom/1.2.0:
-    resolution: {integrity: sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==}
+  /@floating-ui/dom/1.2.1:
+    resolution: {integrity: sha512-Rt45SmRiV8eU+xXSB9t0uMYiQ/ZWGE/jumse2o3i5RGlyvcbqOF4q+1qBnzLE2kZ5JGhq0iMkcGXUKbFe7MpTA==}
     dependencies:
-      '@floating-ui/core': 1.2.0
+      '@floating-ui/core': 1.2.1
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
@@ -703,35 +703,35 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.4.0-rc.6:
-    resolution: {integrity: sha512-by6BlsMVEyqbVP5zJEriMV4uhSkpK7A8L9TUWql33+pEIVAPq+2jU11pEiy4nWCdOpktUCK5TDd4na3GNgfGOw==}
+  /@public-ui/components/1.4.0-rc.7:
+    resolution: {integrity: sha512-BU7vULAbeJoYdyhkL43PbJ92uUti2wqpR+DVwDjTTXgmmDz3+tE8vXpLeLgRjWuS9bPgI3HrJ8UyryGuOdftPA==}
     dependencies:
-      '@floating-ui/dom': 1.2.0
-      '@public-ui/core': 1.4.0-rc.6
-      '@public-ui/schema': 1.4.0-rc.6
+      '@floating-ui/dom': 1.2.1
+      '@public-ui/core': 1.4.0-rc.7
+      '@public-ui/schema': 1.4.0-rc.7
 
-  /@public-ui/core/1.4.0-rc.6:
-    resolution: {integrity: sha512-ZSutvFrFVTyrOspqxTM5J+st4d9rf/udHqx+rySxwM8+J35CZ8nkZeOffbwqlgrxubXRv3tIFv0OI7Ig1rf62g==}
+  /@public-ui/core/1.4.0-rc.7:
+    resolution: {integrity: sha512-EUrWGhFqgaWAEsG66pzpQdEJrvqN4c0J/bVXhMibAYPPIj/s+TiAg3yMKWV9BK2CRtr2Vaw4UqyOXbfMDEZXnQ==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.62
-      i18next: 22.4.9
+      '@a11y-ui/core': 1.0.1-rc.65
+      i18next: 22.4.10
 
-  /@public-ui/react/1.4.0-rc.6_zjdh4uxqz5gmdcqeosbd5ayr54:
-    resolution: {integrity: sha512-x8IIyheT3j/YNTZkcy8ObBEYONpcwdW8eCH3cAMvWTE2qIiDbcWiZcB5uZtAusp+Hn5qqFbfBp4H2U+xi7CKvg==}
+  /@public-ui/react/1.4.0-rc.7_ek32xxrcqje7b2tuwjjcij2ogi:
+    resolution: {integrity: sha512-phGo3h3CUAi1PfmWaQLIMdniHcmWixN/R645nUYpnggD1ksWZDxbq/Lx7iQxJF9tilehsRTBYXYoOL5Kmaj+sg==}
     peerDependencies:
-      '@public-ui/components': 1.4.0-rc.6
+      '@public-ui/components': 1.4.0-rc.7
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.4.0-rc.6
+      '@public-ui/components': 1.4.0-rc.7
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@public-ui/schema/1.4.0-rc.6:
-    resolution: {integrity: sha512-7oKPtXUpyc7YLA4Mrji1n8l+coEmO8WI1Dl5xs2e3I7SY7vyvAEUoU8CsMcmOw7uPgXfbvFN0L/gHkQYZt26ew==}
+  /@public-ui/schema/1.4.0-rc.7:
+    resolution: {integrity: sha512-7Yl5SqQpE80KGRys6ArTAXstjOrxqFaLb/apd/5hRtew68fHvnlPdWzmbmLjHNHhX6Ku1fWSg8eNA1jVDyS4+Q==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.62
+      '@a11y-ui/core': 1.0.1-rc.65
 
   /@rollup/plugin-alias/4.0.3_rollup@3.14.0:
     resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
@@ -1132,8 +1132,8 @@ packages:
     resolution: {integrity: sha512-6rOvaUiNKy9lET1X0ECnyZ5O5kSV0PJbtA5yZUgdEF7fGJEVwSLSislltyt7nFwVVALYHQJtfGeAR2Y0A0uJkg==}
     dev: true
 
-  /i18next/22.4.9:
-    resolution: {integrity: sha512-8gWMmUz460KJDQp/ob3MNUX84cVuDRY9PLFPnV8d+Qezz/6dkjxwOaH70xjrCNDO+JrUL25iXfAIN9wUkInNZw==}
+  /i18next/22.4.10:
+    resolution: {integrity: sha512-3EqgGK6fAJRjnGgfkNSStl4mYLCjUoJID338yVyLMj5APT67HUtWoqSayZewiiC5elzMUB1VEUwcmSCoeQcNEA==}
     dependencies:
       '@babel/runtime': 7.20.13
 
