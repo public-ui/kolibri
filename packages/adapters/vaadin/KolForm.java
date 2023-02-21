@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-form")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.1")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.6")
 @JsModule("@public-ui/components/dist/components/kol-form")
 public class KolForm extends Component {
 	/**

@@ -102,13 +102,13 @@ W3C-Samples:
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                           | Type                                                                                                                                                                                                                                              | Default     |
-| ------------------------- | ------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.          | `string`                                                                                                                                                                                                                                          | `undefined` |
-| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.   | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueCallback<MouseEvent \| KeyboardEvent \| CustomEvent<any> \| PointerEvent, number> \| undefined; }` | `undefined` |
-| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                            | `number \| undefined`                                                                                                                                                                                                                             | `0`         |
-| `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                            | `TabButtonProps[] \| string`                                                                                                                                                                                                                      | `undefined` |
-| `_tabsAlign`              | `_tabs-align` | Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                             | `'top'`     |
+| Property                  | Attribute     | Description                                                                           | Type                                                                                                                                                                                                                                                     | Default     |
+| ------------------------- | ------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.          | `string`                                                                                                                                                                                                                                                 | `undefined` |
+| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.   | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent \| KeyboardEvent \| CustomEvent<any> \| PointerEvent, number> \| undefined; }` | `undefined` |
+| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                            | `number \| undefined`                                                                                                                                                                                                                                    | `0`         |
+| `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                            | `TabButtonProps[] \| string`                                                                                                                                                                                                                             | `undefined` |
+| `_tabsAlign`              | `_tabs-align` | Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
 
 ## CSS Custom Properties
 
@@ -126,7 +126,11 @@ W3C-Samples:
 | `--kolibri-color-primary`   | Default color of the primary.   |
 | `--kolibri-color-secondary` | Default color of the secondary. |
 | `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-text`      | Default color of the text.      |
+| `--kolibri-color-visited`   | Default color of the visited.   |
 | `--kolibri-color-warning`   | Default color of the warning.   |
+| `--kolibri-font-family`     | Default font family.            |
+| `--kolibri-font-size`       | Default font size.              |
 
 ## Dependencies
 

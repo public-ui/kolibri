@@ -1,54 +1,43 @@
 @import './style.css';
+kol-link-wc,
+kol-link-button-wc {
+	display: inline-block;
+}
 
-:host > kol-link-wc a {
-	display: inline-flex;
-	gap: 0.25rem;
-	place-items: center;
-	text-decoration: none;
-}
-button {
+kol-link-wc a,
+kol-button-wc button {
 	background-color: transparent;
-}
-a,
-button {
-	background-image: repeating-linear-gradient(to right, #66ddec, #66ddec);
-	background-repeat: no-repeat;
-	background-position: left 0 bottom 0;
-	background-size: 25% 0.25ex;
-	border-radius: var(--spacing);
-	color: var(--color-petrol);
-	font-family: var(--font-family-sans);
+	display: inline-flex;
 	font-size: inherit;
-	text-transform: uppercase;
-	transition-delay: 0;
-	transition-timing-function: ease-in-out;
-	transition-duration: 0.5s;
-	transition-property: background-color, border-color, color;
+	gap: var(--kolibri-spacing);
+	place-items: center;
+	text-decoration-line: underline;
 }
+
 a:focus,
 a:hover,
 button:focus,
 button:hover {
-	background-size: 100% 0.25ex;
-	color: var(--color-achat);
+	text-decoration-thickness: 0.2em;
 }
-a > kol-span-wc,
-button > kol-span-wc {
-	gap: 0.25em;
+kol-icon {
+	padding: 0 var(--kolibri-spacing);
+	display: inline-block;
 }
 .hidden {
 	display: none;
 	visibility: hidden;
 }
-a.skip {
+.skip {
 	left: -99999px;
 	overflow: hidden;
 	position: absolute;
 	z-index: 9999999;
+	line-height: 1em;
 }
-a.skip:focus {
+.skip:focus {
 	background-color: white;
-	box-shadow: 0 0 0.5rem 0.5rem white;
+	box-shadow: 0 0 calc(2 * var(--kolibri-spacing)) calc(2 * var(--kolibri-spacing)) white;
 	left: unset;
 	position: unset;
 }
