@@ -38,7 +38,7 @@
 					<kol-heading _label="BIK BITV-Test" _overline="Overline"></kol-heading>
 				</div>
 				<div class="gap-2 col-12 d-flex">
-					<kol-version _version="1.4.0-rc.6"></kol-version>
+					<kol-version _version="1.4.0-rc.9"></kol-version>
 					<kol-badge _icon="icofont-check" _color="#030" _label="BIK BITV-Test"></kol-badge>
 					<kol-badge _color="#f0f" _label="Test"></kol-badge>
 					<kol-badge _color="#0bf" _label="Test"></kol-badge>
@@ -259,6 +259,7 @@
 							<kol-alert _type="warning" _variant="card">Hier wird die Warnung kurz beschrieben.</kol-alert>
 						</div>
 					</div>
+					<script src="assets/alert-simulation.js"></script>
 				</li>
 				<li>
 					<div class="row">
@@ -392,6 +393,13 @@
 								<kol-button class="not-used" _label=""><span slot="expert">Abbrechen</span></kol-button>
 								<kol-button class="not-used" _label=""><span slot="expert">Löschen</span></kol-button>
 							</div>
+						</div>
+						<div>
+							<p>Keine lesbaren Labels</p>
+							<kol-button _label="a"></kol-button>
+							<kol-button _label="ab"></kol-button>
+							<kol-button _label="abc"></kol-button>
+							<kol-button _label="a👋c"></kol-button>
 						</div>
 					</div>
 				</li>
@@ -1106,6 +1114,14 @@
 								_target="wikipedia"
 							></kol-link>
 						</div>
+						<div class="gap-2 col-12">
+							<kol-link _aria-label="Zurück zur Startseite" _href="#/" _label="">
+								<kol-logo _org="ITZBund"></kol-logo>
+							</kol-link>
+							<kol-link _aria-label="Zurück zur Startseite" _href="#/" _label="">
+								<kol-logo slot="expert" _org="ITZBund"></kol-logo>
+							</kol-link>
+						</div>
 					</div>
 					<script src="assets/link-simulation.js"></script>
 				</li>
@@ -1131,6 +1147,14 @@
 							</p>
 							<kol-button-link _icon="icofont-paper-plane" _icon-only _label="Icon als Link"></kol-button-link>
 							<kol-button-link _aria-label="Icon als Link" _icon="icofont-paper-plane" _icon-only _label=""></kol-button-link>
+						</div>
+						<div class="gap-2 col-12">
+							<kol-button-link _aria-label="Zurück zur Startseite" _label="">
+								<kol-logo _org="ITZBund"></kol-logo>
+							</kol-button-link>
+							<kol-button-link _aria-label="Zurück zur Startseite" _label="">
+								<kol-logo slot="expert" _org="ITZBund"></kol-logo>
+							</kol-button-link>
 						</div>
 					</div>
 				</li>

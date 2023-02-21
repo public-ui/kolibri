@@ -5,52 +5,70 @@
 	border-color: var(--kolibri-border-color);
 	border-radius: var(--kolibri-border-radius);
 	border-style: solid;
-	border-width: var(--kolibri-border-width);
-	display: flex;
+	border-width: calc(2 * var(--kolibri-border-width));
+	display: inline-block;
 	overflow: hidden;
 	width: 100%;
+}
+
+:host > div > div.heading {
+	display: grid;
+	gap: var(--kolibri-spacing);
+	grid-template-columns: 2em auto 44px;
+	place-items: stretch start;
+}
+:host > div > div.heading .heading-icon {
+	display: inline-flex;
+	color: white;
+	padding: 0.5em;
+	place-items: center;
+}
+:host > div.card > div.heading .heading-icon {
+	border-radius: 0 0 var(--kolibri-border-radius) 0;
+}
+:host > div > div.heading > div {
+	align-self: center;
+	display: grid;
+	gap: var(--kolibri-spacing);
+}
+:host > div.card > div.content {
+	padding: var(--kolibri-spacing);
+}
+:host > div.default {
+	border-color: var(--kolibri-color-normal);
+}
+:host > div.default .heading-icon {
+	background-color: var(--kolibri-color-normal);
 }
 :host > div.error {
 	border-color: var(--kolibri-color-error);
 }
-:host > div.error .icon {
+:host > div.error .heading-icon {
 	background-color: var(--kolibri-color-error);
 }
 :host > div.info {
 	border-color: var(--kolibri-color-info);
 }
-:host > div.info .icon {
+:host > div.info .heading-icon {
 	background-color: var(--kolibri-color-info);
 }
 :host > div.success {
 	border-color: var(--kolibri-color-success);
 }
-:host > div.success .icon {
+:host > div.success .heading-icon {
 	background-color: var(--kolibri-color-success);
 }
 :host > div.warning {
 	border-color: var(--kolibri-color-warning);
 }
-:host > div.warning .icon {
+:host > div.warning .heading-icon {
 	background-color: var(--kolibri-color-warning);
 }
-:host > div .icon {
-	color: white;
-	display: inline-block;
-	padding: 0 var(--kolibri-spacing);
-}
-:host > div > div {
-	display: grid;
-}
-:host > div > div .heading {
-	display: inline-block;
-	padding: 0 var(--kolibri-spacing);
-}
-:host > div > div .heading .icon {
-	border-radius: 0 0 var(--kolibri-border-radius) 0;
-	margin-left: var(--kolibri-spacing);
-	margin-right: var(--kolibri-spacing);
-}
-:host > div > div > div:last-child {
-	padding: var(--kolibri-spacing);
+
+/* close button */
+
+.close,
+.close > button {
+	min-width: 44px;
+	min-height: 44px;
 }

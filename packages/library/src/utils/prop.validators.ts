@@ -88,7 +88,7 @@ type SetStateHooks = {
 	beforePatch?: Generic.Element.NextStateHooksCallback;
 };
 
-export const setState = <T>(component: Generic.Element.Component, propName: string, value?: T, hooks: SetStateHooks = {}): void => {
+export const setState = <T>(component: Generic.Element.Component, propName: string, value?: T | null | undefined, hooks: SetStateHooks = {}): void => {
 	if (component.nextHooks === undefined) {
 		component.nextHooks = new Map();
 	}

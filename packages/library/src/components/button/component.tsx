@@ -98,6 +98,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					type={this.state._type}
 				>
 					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
+						{/*
+							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
+							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
+						*/}
 						<slot name="expert" slot="expert" />
 					</kol-span-wc>
 				</button>
@@ -230,6 +234,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@State() public state: ButtonStates = {
 		_ariaLabel: '',
 		_icon: {},
+		/**
+		 * @deprecated
+		 */
 		_iconAlign: 'left',
 		_label: '',
 		_on: {},

@@ -65,6 +65,10 @@ Verwenden Sie das Attribut `_value`, um den aktuellen Wert der Komponente zu bes
 | `--kolibri-color-primary`   | Default color of the primary.   |
 | `--kolibri-color-secondary` | Default color of the secondary. |
 | `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-text`      | Default color of the text.      |
+| `--kolibri-color-visited`   | Default color of the visited.   |
 | `--kolibri-color-warning`   | Default color of the warning.   |
+| `--kolibri-font-family`     | Default font family.            |
+| `--kolibri-font-size`       | Default font size.              |
 
 ---

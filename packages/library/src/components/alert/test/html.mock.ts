@@ -16,86 +16,63 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 	return `<kol-alert${props._alert ? ' _alert' : ''}${additionalHTML}>
   <mock:shadow-root>
     <div class="${type} ${props._variant}"${props._alert === true ? ' role="alert"' : ''}>
-      ${
-				props._variant === 'msg'
-					? getIconHtml(
-							{
-								_ariaLabel:
-									props._heading !== undefined
-										? ''
-										: props._type === 'success'
-										? 'kol-success'
-										: props._type === 'error'
-										? 'kol-error'
-										: props._type === 'warning'
-										? 'kol-warning'
-										: props._type === 'info'
-										? 'kol-info'
-										: 'kol-message',
-								_icon:
-									props._type === 'success'
-										? 'fa-solid fa-circle-check'
-										: props._type === 'error'
-										? 'fa-solid fa-circle-xmark'
-										: props._type === 'warning'
-										? 'fa-solid fa-triangle-exclamation'
-										: props._type === 'info'
-										? 'fa-solid fa-circle-info'
-										: 'fa-regular fa-comment',
-							},
-							` class="icon"`
-					  )
+			<div class="heading">
+				${getIconHtml(
+					{
+						_ariaLabel:
+							props._heading !== undefined
+								? ''
+								: props._type === 'success'
+								? 'kol-success'
+								: props._type === 'error'
+								? 'kol-error'
+								: props._type === 'warning'
+								? 'kol-warning'
+								: props._type === 'info'
+								? 'kol-info'
+								: 'kol-message',
+						_icon:
+							props._type === 'success'
+								? 'fa-solid fa-circle-check'
+								: props._type === 'error'
+								? 'fa-solid fa-circle-xmark'
+								: props._type === 'warning'
+								? 'fa-solid fa-triangle-exclamation'
+								: props._type === 'info'
+								? 'fa-solid fa-circle-info'
+								: 'fa-regular fa-comment',
+					},
+					` class="heading-icon"`
+				)}
+				<div>
+					${
+						typeof props._heading === 'string' && props._heading.length > 0
+							? getHeadingWcHtml(
+									{
+										_label: '',
+										_level: props._level,
+									},
+									{
+										default: props._heading,
+									}
+							  )
+							: ''
+					}
+					${
+						props._variant === 'msg'
+							? `<div class="content">
+									<slot />
+								</div>`
+							: ''
+					}
+				</div>
+			</div>${
+				props._variant === 'card'
+					? `<div class="content">
+						<slot />
+					</div>`
 					: ''
 			}
-      <div>
-        ${
-					(typeof props._heading === 'string' && props._heading.length > 0) || props._variant === 'card'
-						? getHeadingWcHtml(
-								{
-									_label: '',
-									_level: props._level,
-								},
-								{
-									default: `${
-										props._variant === 'card'
-											? getIconHtml(
-													{
-														_ariaLabel:
-															props._heading !== undefined
-																? ''
-																: props._type === 'success'
-																? 'kol-success'
-																: props._type === 'error'
-																? 'kol-error'
-																: props._type === 'warning'
-																? 'kol-warning'
-																: props._type === 'info'
-																? 'kol-info'
-																: 'kol-message',
-														_icon:
-															props._type === 'success'
-																? 'fa-solid fa-circle-check'
-																: props._type === 'error'
-																? 'fa-solid fa-circle-xmark'
-																: props._type === 'warning'
-																? 'fa-solid fa-triangle-exclamation'
-																: props._type === 'info'
-																? 'fa-solid fa-circle-info'
-																: 'fa-regular fa-comment',
-													},
-													` class="icon"`
-											  )
-											: ''
-									}
-									${typeof props._heading === 'string' && props._heading.length > 0 ? props._heading : ''}`,
-								},
-								' class="heading"'
-						  )
-						: ''
-				}<div class="content">
-          <slot />
-        </div>
-      </div>
     </div>
   </mock:shadow-root>
  ${innerHTML}
