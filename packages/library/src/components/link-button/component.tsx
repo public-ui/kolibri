@@ -74,6 +74,10 @@ export class KolLinkButton
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
+					{/*
+						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
+						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
+					*/}
 					<slot name="expert" slot="expert"></slot>
 				</kol-link-wc>
 			</Host>

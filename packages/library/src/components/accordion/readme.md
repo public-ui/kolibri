@@ -95,12 +95,12 @@ Standardansicht gelegt.
 
 ## Properties
 
-| Property                | Attribute  | Description                                               | Type                                                                          | Default     |
-| ----------------------- | ---------- | --------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------- |
-| `_heading` _(required)_ | `_heading` | Gibt die Überschrift des Accordions an.                   | `string`                                                                      | `undefined` |
-| `_level`                | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                | `1`         |
-| `_on`                   | --         | Gibt die EventCallback-Funktionen an.                     | `undefined \| { onClick?: EventValueCallback<Event, boolean> \| undefined; }` | `undefined` |
-| `_open`                 | `_open`    | Gibt an, ob das Accordion geöffnet ist.                   | `boolean \| undefined`                                                        | `false`     |
+| Property                | Attribute  | Description                                               | Type                                                                                 | Default     |
+| ----------------------- | ---------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
+| `_heading` _(required)_ | `_heading` | Gibt die Überschrift des Accordions an.                   | `string`                                                                             | `undefined` |
+| `_level`                | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
+| `_on`                   | --         | Gibt die EventCallback-Funktionen an.                     | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
+| `_open`                 | `_open`    | Gibt an, ob das Accordion geöffnet ist.                   | `boolean \| undefined`                                                               | `false`     |
 
 ## Slots
 
@@ -136,7 +136,11 @@ Standardansicht gelegt.
 | `--kolibri-color-primary`   | Default color of the primary.   |
 | `--kolibri-color-secondary` | Default color of the secondary. |
 | `--kolibri-color-success`   | Default color of the success.   |
+| `--kolibri-color-text`      | Default color of the text.      |
+| `--kolibri-color-visited`   | Default color of the visited.   |
 | `--kolibri-color-warning`   | Default color of the warning.   |
+| `--kolibri-font-family`     | Default font family.            |
+| `--kolibri-font-size`       | Default font size.              |
 
 ## Dependencies
 

@@ -11,7 +11,7 @@
 :host > div > kol-alert {
 	display: block;
 	margin: auto;
-	padding: 1rem;
+	padding: calc(4 * var(--kolibri-spacing));
 	max-width: 750px;
 }
 :host > div > kol-button-wc {

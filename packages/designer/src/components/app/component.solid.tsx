@@ -184,7 +184,7 @@ export const AppComponent: Component = () => {
 					<KolButton
 						_label="Komponenten-Übersicht"
 						_on={{
-							onClick: (event) => {
+							onClick: (event: MouseEvent) => {
 								event.preventDefault();
 								setShow('overview');
 							},
@@ -196,7 +196,7 @@ export const AppComponent: Component = () => {
 							_icon="icofont-arrow-left"
 							_iconOnly
 							_on={{
-								onClick: (event) => {
+								onClick: (event: MouseEvent) => {
 									event.preventDefault();
 									const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
 									if (index > 0) {
@@ -226,7 +226,7 @@ export const AppComponent: Component = () => {
 							_icon="icofont-arrow-right"
 							_iconOnly
 							_on={{
-								onClick: (event) => {
+								onClick: (event: MouseEvent) => {
 									event.preventDefault();
 									const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
 									if (index < TAG_NAMES.length - 1) {

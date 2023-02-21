@@ -24,10 +24,10 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "^1.4.0-rc.6",
-		"@public-ui/core": "^1.4.0-rc.6",
-		"@public-ui/themes": "^1.4.0-rc.6",
-		"@public-ui/vue": "^1.4.0-rc.6",
+		"@public-ui/components": "^1.4.0-rc.9",
+		"@public-ui/core": "^1.4.0-rc.9",
+		"@public-ui/themes": "^1.4.0-rc.9",
+		"@public-ui/vue": "^1.4.0-rc.9",
 		"vue": "^3.2.45"
 	},
 	"devDependencies": {
@@ -39,5 +39,8 @@
 		"chromedriver": "^108.0.0",
 		"npm-check-updates": "^16.6.2",
 		"typescript": "^4.9.4"
-	}
+	},
+	"files": [
+		"dist"
+	]
 }

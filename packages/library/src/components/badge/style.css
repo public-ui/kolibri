@@ -4,7 +4,7 @@
 	display: inline-flex;
 }
 :host > span > kol-button-wc {
-	box-shadow-left: 1px solid rgba(0, 0, 0, 0.25);
+	border-left: 1px solid rgba(0, 0, 0, 0.25);
 }
 :host > span > kol-button-wc button {
 	color: inherit;
