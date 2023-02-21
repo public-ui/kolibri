@@ -22,7 +22,7 @@ type InputTypeOnFocus = {
 // https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element
 export type Option<T> = {
 	disabled?: boolean;
-	label: string | number;
+	label: string;
 	// selected?: boolean; // wird über den value der *-Komponente gesteuert
 	value: T;
 };
