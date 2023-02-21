@@ -53,6 +53,10 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_tooltipAlign={this._tooltipAlign}
 					_useCase={this._useCase}
 				>
+					{/*
+						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
+						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
+					*/}
 					<slot name="expert" slot="expert" />
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<slot slot="expert" />
