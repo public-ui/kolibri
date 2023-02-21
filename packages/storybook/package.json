@@ -83,7 +83,7 @@
 		"esbuild-loader": "3.0.1",
 		"eslint": "8.34.0",
 		"eslint-plugin-json": "3.1.0",
-		"eslint-plugin-storybook": "0.6.10",
+		"eslint-plugin-storybook": "0.6.11",
 		"esm": "3.2.25",
 		"lit-html": "2.6.1",
 		"mermaid": "9.4.0",
