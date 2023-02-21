@@ -42,7 +42,7 @@ export class InputNumberController extends InputIconController implements Watche
 		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
 	}
 
-	private readonly parseToString = (value?: number | Date | string) => {
+	private readonly parseToString = (value?: number | Date | string | null) => {
 		if (typeof value === 'string') {
 			return value;
 		}
@@ -55,17 +55,31 @@ export class InputNumberController extends InputIconController implements Watche
 		return '';
 	};
 
-	private readonly validateIso8601 = (propName: string, value?: number | Iso8601) => {
+	private readonly validateIso8601 = (propName: string, value?: number | Iso8601 | null, afterPatch?: (v: string) => void) => {
 		const parsedValue = parseFloat(value as string);
 		const valueMatched = parsedValue == value;
 		return watchValidator(
 			this.component,
 			propName,
-			(value): boolean => value === undefined || (valueMatched && typeof parsedValue === 'number') || this.numberOrIsoDateRegex.test(value),
+			(value): boolean => value === undefined || value === '' || (valueMatched && typeof parsedValue === 'number') || this.numberOrIsoDateRegex.test(value),
 			new Set(['number', 'Date', 'string{ISO-8601}']),
-			this.parseToString(value)
+			this.parseToString(value),
+			{
+				hooks: {
+					afterPatch: (value) => {
+						if (typeof value === 'string' && afterPatch) {
+							afterPatch(value);
+						}
+					},
+				},
+			}
 		);
 	};
+
+	protected onChange(event: Event): void {
+		super.onChange(event);
+		this.component._value = (event.target as HTMLInputElement).value as number | Iso8601;
+	}
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
@@ -128,8 +142,15 @@ export class InputNumberController extends InputIconController implements Watche
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
-	public validateValue(value?: number | Iso8601): void {
-		this.validateIso8601('_value', value);
+	public validateValue(value?: number | Iso8601 | null): void {
+		this.validateValueEx(value);
+	}
+
+	/**
+	 * Overload of validate value. Extends by an after patch callback function.
+	 */
+	public validateValueEx(value?: number | Iso8601 | null, afterPatch?: (v: string) => void): void {
+		this.validateIso8601('_value', value, afterPatch);
 	}
 
 	/**

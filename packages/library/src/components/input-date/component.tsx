@@ -4,7 +4,7 @@ import { Stringified } from '../../types/common';
 import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { watchValidator } from '../../utils/prop.validators';
+import { setState, watchValidator } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { ComponentApi, States } from './types';
@@ -52,7 +52,7 @@ export class KolInputDate implements ComponentApi {
 					_max={this.state._max}
 					_min={this.state._min}
 					_name={this._name}
-					_on={this._on}
+					_on={this.state._on}
 					_readOnly={this._readOnly}
 					_required={this._required}
 					_smartButton={this._smartButton}
@@ -176,14 +176,14 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: Iso8601 | Date;
+	@Prop() public _value?: Iso8601 | Date | null;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {};
 
-	private valueAsIsoDate(value?: Iso8601 | Date, defaultValue?: Date): Iso8601 | undefined {
+	private valueAsIsoDate(value?: Iso8601 | Date | null, defaultValue?: Date): Iso8601 | null | undefined {
 		const v: Iso8601 | Date | undefined = value ?? defaultValue;
 		if (typeof v === 'string') {
 			return v;
@@ -207,6 +207,9 @@ export class KolInputDate implements ComponentApi {
 					throw new Error('Auto convert to week is not supported!');
 			}
 		}
+		if (value === null) {
+			return null;
+		}
 		return undefined;
 	}
 
@@ -225,6 +228,19 @@ export class KolInputDate implements ComponentApi {
 		}
 	}
 
+	@Watch('_on')
+	public validateOn(value?: InputTypeOnDefault) {
+		setState(this, '_on', {
+			...value,
+			onChange: (e: Event, v: unknown) => {
+				this._value = v as Iso8601;
+				if (value?.onChange) {
+					value.onChange(e, v);
+				}
+			},
+		});
+	}
+
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
@@ -233,7 +249,7 @@ export class KolInputDate implements ComponentApi {
 		watchValidator(
 			this,
 			'_max',
-			(value): boolean => value === undefined || this.validateDateString(value),
+			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
 			new Set(['Iso8601', 'Date']),
 			this.valueAsIsoDate(value, this._type === 'date' || this._type === 'month' || this._type === 'datetime-local' ? KolInputDate.DEFAULT_MAX_DATE : undefined)
 		);
@@ -247,7 +263,7 @@ export class KolInputDate implements ComponentApi {
 		watchValidator(
 			this,
 			'_min',
-			(value): boolean => value === undefined || this.validateDateString(value),
+			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
 			new Set(['Iso8601', 'Date']),
 			this.valueAsIsoDate(value)
 		);
@@ -257,11 +273,11 @@ export class KolInputDate implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_value')
-	public validateValue(value?: Iso8601 | Date): void {
+	public validateValue(value?: Iso8601 | Date | null): void {
 		watchValidator(
 			this,
 			'_value',
-			(value): boolean => value === undefined || this.validateDateString(value),
+			(value): boolean => value === undefined || value === null || this.validateDateString(value),
 			new Set(['Iso8601', 'Date']),
 			this.valueAsIsoDate(value)
 		);
@@ -271,6 +287,7 @@ export class KolInputDate implements ComponentApi {
 	 * @see: components/abbr/component.tsx (componentWillLoad)
 	 */
 	public componentWillLoad(): void {
+		this.validateOn(this._on);
 		this.validateMax(this._max);
 		this.validateMin(this._min);
 		this.validateValue(this._value);
