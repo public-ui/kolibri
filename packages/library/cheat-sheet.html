@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.6';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6/dist/loader';
-			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.6';
+			import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.9';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.9/dist/loader';
+			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.9';
 				register(DEFAULT, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.6';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.6/dist/loader';
-		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.6';
+		import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.9';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.9/dist/loader';
+		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.9';
 		register([DEFAULT], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -174,7 +174,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 	name: `badge`,
 	desc: `Mit **Badges** können Sie bestimmte Informationen auf Ihrer Webseite optisch hervorheben.
 KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnung der Textfarbe auch die Möglichkeit, einem Badge ein Icon und/oder einen anderen Schriftschnitt mitzugeben.`,
-	props: `_color, _icon, _icon-align, _icon-only, _label, _smart-button`
+	props: `_color, _icon, _icon-only, _label, _smart-button`
 },{
 	name: `breadcrumb`,
 	desc: `Mit Hilfe der **Breadcrumb**-Komponente kann der Pfad zur aktuellen Position einer Webseite in einer hierarchischen Struktur dargestellt werden.`,
@@ -623,11 +623,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `NavLinkProps[] | string, NavLinkWithChildrenProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
-	name: `_icon-align`,
-	desc: `Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `badge, button, link`
-},{
 	name: `_custom-class`,
 	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
 	types: `string`,
@@ -657,6 +652,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, ob das Accordion geöffnet ist.`,
 	types: `boolean`,
 	comps: `accordion, details`
+},{
+	name: `_icon-align`,
+	desc: `Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `button, link`
 },{
 	name: `_has-closer`,
 	desc: `Gibt an, ob der Alert ein Schließen-Icon hat.`,

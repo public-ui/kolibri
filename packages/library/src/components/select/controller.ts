@@ -7,20 +7,7 @@ import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
 import { Props, Watches } from './types';
-
-const validateInputSelectList = <T>(option: SelectOption<T>): boolean => {
-	if (typeof option === 'object' && option !== null && typeof option.label === 'string' && option.label.length > 0) {
-		if (Array.isArray((option as Optgroup<T>).options)) {
-			return (
-				(option as Optgroup<T>).options.find((item) => {
-					return validateInputSelectList(item) === false;
-				}) === undefined
-			);
-		}
-		return true;
-	}
-	return false;
-};
+import { validateInputSelectList } from '../../utils/validators/list';
 
 export class SelectController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

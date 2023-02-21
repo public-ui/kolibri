@@ -33,14 +33,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 				return typeof value === 'object' && value !== null && (isString(value.checked, 1) || isString(value.indeterminate, 1) || isString(value.unchecked, 1));
 			},
 			new Set(['InputCheckboxIcons']),
-			value,
-			{
-				hooks: {
-					beforePatch: (_value: unknown, _nextState: Map<string, unknown>): void => {
-						// empty
-					},
-				},
-			}
+			value
 		);
 	}
 

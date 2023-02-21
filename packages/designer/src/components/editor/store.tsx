@@ -1170,10 +1170,10 @@ export const components: Record<string, Component> = {
 			<KolLink _href="/" _label="">
 				Besuchter Link
 			</KolLink>
-			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="" _useCase="image">
+			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="">
 				<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
 			</KolLink>
-			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="" _useCase="image">
+			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="">
 				<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
 			</KolLink>
 			<KolLink

@@ -116,7 +116,7 @@ export const watchIconAlign = (component: Generic.Element.Component, value?: Ali
 				deprecatedHint(
 					`Das Property _icon-align bzw. _iconAlign ist veraltet (value: ${
 						value as string
-					}). Die Ausrichtung der Icon's kann jetzt direkt über das _icon-Property vorgenommen werden. (v1.1.10: https://public-ui.github.io/?path=/story/backlog-und-changelog--page)`
+					}). Die Ausrichtung der Icon's kann jetzt direkt über das _icon-Property vorgenommen werden. (v1.1.10: https://public-ui.github.io/docs/changelog#1110---11112022)`
 				);
 			},
 		},

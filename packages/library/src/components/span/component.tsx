@@ -78,12 +78,12 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 						/>
 					)}
 					{this.state._iconOnly !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
-					{/*
-							Es ist keine gute Idee hier einen Slot einzufügen,
-							da dadurch die komplette Unterstützung der Komponente
-							umgangen werden kann.
-						*/}
+
 					<span ref={this.state._label.length > 0 || this.state._iconOnly === true ? removeNode : undefined}>
+						{/*
+							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
+							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
+						*/}
 						<slot name="expert" />
 					</span>
 					{this.state._icon.right && (

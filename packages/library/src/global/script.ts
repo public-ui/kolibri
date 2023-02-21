@@ -1,13 +1,11 @@
 import { getThemeDetails, setThemeStyle } from '@a11y-ui/core';
 import { setMode } from '@stencil/core';
 import { Log } from '../utils/dev.utils';
-import { processEnv } from '../utils/reuse';
 
 // ts-prune-ignore-next
 export default (): void => {
-	if (processEnv !== 'test') {
-		Log.info(
-			`
+	Log.debug(
+		`
 ,--. ,--.         ,--. ,--. ,-----.           ,--.
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
@@ -15,11 +13,10 @@ export default (): void => {
 \`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
 	`,
-			{
-				forceLog: true,
-			}
-		);
-	}
+		{
+			forceLog: true,
+		}
+	);
 
 	setMode((elm) => {
 		if (elm.shadowRoot instanceof ShadowRoot) {
