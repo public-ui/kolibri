@@ -15,8 +15,5 @@
 	"devDependencies": {
 		"npm-check-updates": "^16.6.0",
 		"serve": "^14.1.2"
-	},
-	"files": [
-		"dist/"
-	]
+	}
 }
