@@ -810,7 +810,7 @@ export namespace Components {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: Iso8601 | Date;
+        "_value"?: Iso8601 | Date | null;
     }
     interface KolInputEmail {
         /**
@@ -1069,7 +1069,7 @@ export namespace Components {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: number | Iso8601;
+        "_value"?: number | Iso8601 | null;
     }
     interface KolInputPassword {
         /**
@@ -3321,7 +3321,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: Iso8601 | Date;
+        "_value"?: Iso8601 | Date | null;
     }
     interface KolInputEmail {
         /**
@@ -3580,7 +3580,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
-        "_value"?: number | Iso8601;
+        "_value"?: number | Iso8601 | null;
     }
     interface KolInputPassword {
         /**

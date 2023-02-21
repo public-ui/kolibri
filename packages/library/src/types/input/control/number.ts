@@ -26,5 +26,5 @@ export type OptionalInputProps<T> = {
 	step: number;
 	tabIndex: number;
 	touched: boolean;
-	value: T;
+	value: T | null;
 };

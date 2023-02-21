@@ -54,7 +54,7 @@
 		"@types/normalize-package-data": "2.4.1",
 		"solid-js": "1.6.11",
 		"typescript": "4.9.5",
-		"unbuild": "1.1.1"
+		"unbuild": "1.1.2"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "1.4.0-rc.9",
