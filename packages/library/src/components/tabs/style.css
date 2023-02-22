@@ -6,6 +6,14 @@
 	border-bottom-width: 6px !important;
 }
 
+:host kol-button-group-wc > div {
+	display: inline-flex;
+}
+
+:host kol-button-group-wc > div > kol-button-wc {
+	height: 100%;
+}
+
 :host .close-button {
 	font-size: 50%;
 	height: fit-content;
