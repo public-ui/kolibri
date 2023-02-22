@@ -97,7 +97,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}>
 						{/*
 							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.

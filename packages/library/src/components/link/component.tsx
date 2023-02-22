@@ -134,7 +134,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._ariaLabel || this.state._label}>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}>
 						{/*
 							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
