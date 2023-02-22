@@ -14,12 +14,12 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
-		"@public-ui/schema": "^1.4.0-rc.9"
+		"@public-ui/schema": "^1.4.0-rc.10"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "^1.0.1-rc.61",
-		"@public-ui/components": "^1.4.0-rc.9",
-		"@public-ui/core": "^1.4.0-rc.9",
+		"@public-ui/components": "^1.4.0-rc.10",
+		"@public-ui/core": "^1.4.0-rc.10",
 		"@types/node": "^18.11.17",
 		"eslint": "^8.30.0",
 		"npm-check-updates": "^16.6.0",
