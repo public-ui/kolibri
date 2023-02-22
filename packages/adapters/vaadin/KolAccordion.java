@@ -12,7 +12,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
  */
 
 @Tag("kol-accordion")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.6")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.9")
 @JsModule("@public-ui/components/dist/components/kol-accordion")
 public class KolAccordion extends Component {
 	/**

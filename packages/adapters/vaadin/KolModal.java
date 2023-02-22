@@ -15,7 +15,7 @@ geschlossen.
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.6")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.9")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**

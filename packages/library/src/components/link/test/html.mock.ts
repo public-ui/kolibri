@@ -38,7 +38,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			${getSpanWcHtml(
 				{
 					...props,
-					_label: props._ariaLabel || props._label,
+					_label: props._label,
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,

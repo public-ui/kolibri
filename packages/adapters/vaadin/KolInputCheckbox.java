@@ -12,7 +12,7 @@ Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch
  */
 
 @Tag("kol-input-checkbox")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.6")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.9")
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**
