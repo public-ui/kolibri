@@ -3,7 +3,9 @@ import { Theme } from '@a11y-ui/core';
 enum TagEnum {
 	'abbr',
 	'accordion',
+	'accordion-group', // TODO: github pr link
 	'alert',
+	'avatar', // TODO: github pr link
 	'badge',
 	'breadcrumb',
 	'button',
@@ -11,9 +13,12 @@ enum TagEnum {
 	'button-link',
 	'card',
 	'details',
+	'dialog', // TODO: github pr link
+	'dropdown', // TODO: github pr link
 	'form',
 	'heading',
 	'icon',
+	'image', // TODO: github pr link
 	'indented-text',
 	'input-checkbox',
 	'input-color',
@@ -31,8 +36,10 @@ enum TagEnum {
 	'modal',
 	'nav',
 	'pagination',
+	'popover', // TODO: github pr link
 	'progress',
 	'select',
+	'separator', // TODO: github pr link
 	'skip-nav',
 	'spin',
 	'symbol',
@@ -40,6 +47,7 @@ enum TagEnum {
 	'tabs',
 	'textarea',
 	'toast',
+	'toolbar', // TODO: github pr link
 	'tooltip',
 }
 
