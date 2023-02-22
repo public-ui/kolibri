@@ -60,7 +60,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		</style>
 	</head>
 	<body>
-		<main class="default" data-theme="default">
+		<main class="itzbund" data-theme="itzbund">
 			<kol-link _href="https://public-ui.github.io" _target="github">
 				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
@@ -107,7 +107,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 	.replace(/</g, '&#60;')
 	.replace(/>/g, '&#62;')}</code> gesetzt werden.</p>
 			<pre>
-				<code class="language-html">${`<body class="default" data-theme="default">
+				<code class="language-html">${`<body class="itzbund" data-theme="itzbund">
 	...
 </body>`
 					.replace(/</g, '&#60;')

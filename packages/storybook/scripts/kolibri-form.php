@@ -61,7 +61,7 @@
 </head>
 
 <body>
-	<main class="default" data-theme="default">
+	<main class="itzbund" data-theme="itzbund">
 		<kol-link _href="https://public-ui.github.io" _target="github">
 			<kol-kolibri _labeled="false"></kol-kolibri>
 		</kol-link>
