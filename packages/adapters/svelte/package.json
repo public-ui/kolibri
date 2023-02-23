@@ -59,7 +59,7 @@
 	"devDependencies": {
 		"@babel/types": "7.21.0",
 		"@public-ui/core": "1.4.0-rc.9",
-		"@public-ui/components": "1.4.0-rc.9",
+		"@public-ui/components": "1.4.0-rc.10",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "18.14.0",
@@ -69,7 +69,7 @@
 		"typescript": "4.9.5"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.4.0-rc.9",
+		"@public-ui/components": "1.4.0-rc.10",
 		"svelte": ">=3"
 	},
 	"files": [
