@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from '../../types/alert';
 import { HeadingLevel } from '../../types/heading-level';
-import { Log } from '../../utils/dev.utils';
+import { Log } from '../../utils/log';
 import { setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { translate } from '../../i18n';

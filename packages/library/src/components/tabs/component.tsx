@@ -7,7 +7,7 @@ import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks'
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { Log } from '../../utils/dev.utils';
+import { Log } from '../../utils/log';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 import { translate } from '../../i18n';

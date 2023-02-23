@@ -1,4 +1,4 @@
-import { Log } from './dev.utils';
+import { Log } from './log';
 
 const a11yCache: Set<string> = new Set<string>();
 export const a11yHint = (msg: string): void => {

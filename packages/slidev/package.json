@@ -13,7 +13,7 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"scripts": {
-		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js && mv dist/assets/_commonjsHelpers* dist/assets/commonjsHelpers.js",
+		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js",
 		"dev": "slidev --open",
 		"export": "slidev export",
 		"prepack": "npm run build",
