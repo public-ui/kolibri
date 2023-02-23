@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.4.0-rc.9
+  '@public-ui/components': 1.4.0-rc.10
   rimraf: 4.1.2
 
 devDependencies:
-  '@public-ui/components': 1.4.0-rc.9
+  '@public-ui/components': 1.4.0-rc.10
   rimraf: 4.1.2
 
 packages:
@@ -16,8 +16,8 @@ packages:
       loglevel: 1.8.1
     dev: true
 
-  /@babel/runtime/7.20.13:
-    resolution: {integrity: sha512-gt3PKXs0DBoL9xCvOIIZ2NEqAGZqHjAnmVbfQtB620V0uReIQutpel14KcneZuer7UioY8ALKZ7iocavvzTNFA==}
+  /@babel/runtime/7.21.0:
+    resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
@@ -33,23 +33,23 @@ packages:
       '@floating-ui/core': 1.2.1
     dev: true
 
-  /@public-ui/components/1.4.0-rc.9:
-    resolution: {integrity: sha512-6lIzySw2vXctkmGRMcTbJcsz3g/efus9/MBCU6zDJmjuuKtJwLFSDzvSkH8t3mtBz2eNb+rAC+6kEZJKQ4FxuA==}
+  /@public-ui/components/1.4.0-rc.10:
+    resolution: {integrity: sha512-StTZ20D8K6ykjzeFgGTkja/t9wWvY/Kie3tvEm+/7TzXHt43umMKylMz6txw5oSxlIfYr1sDtUktt9L/sog7+w==}
     dependencies:
       '@floating-ui/dom': 1.2.1
-      '@public-ui/core': 1.4.0-rc.9
-      '@public-ui/schema': 1.4.0-rc.9
+      '@public-ui/core': 1.4.0-rc.10
+      '@public-ui/schema': 1.4.0-rc.10
     dev: true
 
-  /@public-ui/core/1.4.0-rc.9:
-    resolution: {integrity: sha512-9TQiMYgg4JhTQlY6E1lKfkBYANlroO+hFnugedUkby47QeuZp7pb4cB3Eg3oby+d456XNPdl/HHbatLdcjLmHg==}
+  /@public-ui/core/1.4.0-rc.10:
+    resolution: {integrity: sha512-TRl8/qf0WzfnSpLZLuvZUlUPBr4ljZ9psxEHYUPC/6Ne0Bc6YL8/JUSGZPxPJ1VLaMkZKR03BszOln0L5lSL+w==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.9:
-    resolution: {integrity: sha512-898q6uDdynRdug9wN0CwW0jRKMU9108h8TWmb9kLJmYuo8VZ/zhdOtpZJesCV691bCgx40zSvUkmJV+BaMfDyQ==}
+  /@public-ui/schema/1.4.0-rc.10:
+    resolution: {integrity: sha512-YdaWQfKEMzAQ+llW581NRRdQhYlquJOtIw7XuQzKsVaNxRZkeWf8xwbQJZr8RJhbnY9Om99sYRlHrID/maA5zg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: true
@@ -57,7 +57,7 @@ packages:
   /i18next/22.4.10:
     resolution: {integrity: sha512-3EqgGK6fAJRjnGgfkNSStl4mYLCjUoJID338yVyLMj5APT67HUtWoqSayZewiiC5elzMUB1VEUwcmSCoeQcNEA==}
     dependencies:
-      '@babel/runtime': 7.20.13
+      '@babel/runtime': 7.21.0
     dev: true
 
   /loglevel/1.8.1:

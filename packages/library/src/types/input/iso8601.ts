@@ -37,7 +37,8 @@ type CalendarWeek = `${number}`;
 type IsoDate = `${Year}-${Month}-${Day}`;
 
 // spec: https://www.w3.org/TR/2012/WD-html-markup-20121025/datatypes.html#form.data.time-def
-type IsoTime = `${Hour}:${Minute}:${Second}` | `${Hour}:${Minute}:${Second}.${number}`;
+// input time is hh:mm or hh:mm:ss (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time)
+type IsoTime = `${Hour}:${Minute}` | `${Hour}:${Minute}:${Second}`;
 
 // spec: https://www.w3.org/TR/2012/WD-html-markup-20121025/datatypes.html#form.data.datetime-local-def
 type IsoLocalDateTime = `${IsoDate}T${IsoTime}`;
