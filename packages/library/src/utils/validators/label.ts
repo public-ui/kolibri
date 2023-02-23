@@ -19,7 +19,7 @@ export const containsOnlyNumbers = (str: string): boolean => ONLY_NUMBERS.test(s
 const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextValue, nextState, component: Generic.Element.Component, key): void => {
 	const ariaLabel: string | undefined = nextState.has('_ariaLabel') ? (nextState.get('_ariaLabel') as string) : (component.state._ariaLabel as string);
 	if (typeof ariaLabel === 'string') {
-		const label: string | undefined = nextState.has('_label') ? (nextState.get('_label') as string) : (component.state._label as string);
+		const label: string = nextState.has('_label') ? (nextState.get('_label') as string) : (component.state._label as string);
 		if (isEmptyOrPrefixOf(label, ariaLabel) === false) {
 			if (key === '_ariaLabel') {
 				nextState.set('_label', ariaLabel);
