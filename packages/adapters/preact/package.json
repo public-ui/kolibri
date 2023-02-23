@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/preact",
-	"version": "1.4.0-rc.10",
+	"version": "1.4.0-rc.11",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,10 +46,10 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/react": "1.4.0-rc.10"
+		"@public-ui/react": "1.4.0-rc.11"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.4.0-rc.10",
+		"@public-ui/components": "1.4.0-rc.11",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"typescript": "4.9.5",
