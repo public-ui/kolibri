@@ -14,7 +14,7 @@ setTimeout(() => {
 			onSelect: callback('onSelect'),
 		};
 		tabs._tabs = [
-			{ _label: 'Tab 1', _icon: 'home' },
+			{ _label: 'Tab 1', _icon: 'fa-solid fa-house' },
 			{ _label: 'Tab 2', _cta: 'primary' },
 			{ _label: 'Tab 3', _disabled: true },
 			{

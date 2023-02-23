@@ -21,12 +21,20 @@ kol-span-wc > span {
 	place-items: center;
 }
 
+button {
+	min-height: 44px;
+	min-width: 44px;
+	padding: 0;
+	margin: 0;
+}
+
 a,
 button,
 input,
 select,
 textarea {
 	cursor: pointer;
+	font-family: inherit;
 }
 
 a.icon-only > kol-span-wc > span > span,

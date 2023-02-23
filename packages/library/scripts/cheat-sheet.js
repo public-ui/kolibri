@@ -13,9 +13,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.9';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.9/dist/loader';
-			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.9';
+			import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.11';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.11/dist/loader';
+			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.11';
 				register(DEFAULT, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -60,7 +60,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		</style>
 	</head>
 	<body>
-		<main class="default" data-theme="default">
+		<main class="itzbund" data-theme="itzbund">
 			<kol-link _href="https://public-ui.github.io" _target="github">
 				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
@@ -86,9 +86,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<pre>
 				<code class="language-html">${`<head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.9';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.9/dist/loader';
-		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.9';
+		import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.11';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.11/dist/loader';
+		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.11';
 		register([DEFAULT], [defineCustomElements])
 			.then(() => {})
 			.catch(console.warn);
@@ -107,7 +107,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 	.replace(/</g, '&#60;')
 	.replace(/>/g, '&#62;')}</code> gesetzt werden.</p>
 			<pre>
-				<code class="language-html">${`<body class="default" data-theme="default">
+				<code class="language-html">${`<body class="itzbund" data-theme="itzbund">
 	...
 </body>`
 					.replace(/</g, '&#60;')

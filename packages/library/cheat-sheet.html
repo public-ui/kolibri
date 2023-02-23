@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.9';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.9/dist/loader';
-			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.9';
+			import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.11';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.11/dist/loader';
+			import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.11';
 				register(DEFAULT, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -56,7 +56,7 @@
 		</style>
 	</head>
 	<body>
-		<main class="default" data-theme="default">
+		<main class="itzbund" data-theme="itzbund">
 			<kol-link _href="https://public-ui.github.io" _target="github">
 				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.9';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.9/dist/loader';
-		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.9';
+		import { register } from 'https://esm.sh/@public-ui/core@1.4.0-rc.11';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.4.0-rc.11/dist/loader';
+		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.4.0-rc.11';
 		register([DEFAULT], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -90,7 +90,7 @@
 			<kol-heading _level="3">Config</kol-heading>
 			<p>Wenn ein Theme registriert wird, werden alle darin enthaltenen <strong>CSS-Properties</strong> unter dem Theme-Namen als CSS-Klasse im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite hinzugefügt. So wird es ermöglicht, dass diese CSS-Properties in eigenem CSS für das "umrahmende" HTML wiederverwendet werden können. Damit das funktioniert, muss die CSS-Klasse mit dem Theme-Namen z.B. am <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;body&#62;</code> gesetzt werden.</p>
 			<pre>
-				<code class="language-html">&#60;body class="default" data-theme="default"&#62;
+				<code class="language-html">&#60;body class="itzbund" data-theme="itzbund"&#62;
 	...
 &#60;/body&#62;</code>
 		</pre>
@@ -460,7 +460,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_value`,
 	desc: `Gibt an, wie weit die Anzeige fortgeschritten ist.`,
-	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96;, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | number, number, number | string, string`,
+	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, number, number | string, string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, textarea`
 },{
 	name: `_touched`,
@@ -585,7 +585,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_max`,
 	desc: `Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.`,
-	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | number, number`,
+	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range, progress`
 },{
 	name: `_heading`,
@@ -600,7 +600,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_min`,
 	desc: `Gibt den Minimalwert des Eingabefeldes an.`,
-	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}.&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | number, number`,
+	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range`
 },{
 	name: `_show`,

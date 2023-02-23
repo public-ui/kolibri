@@ -6,7 +6,7 @@
 }
 
 * {
-	font-family: var(--font-family);
+	font-family: var(--font-family-sans);
 }
 
 kol-icon.homepage,

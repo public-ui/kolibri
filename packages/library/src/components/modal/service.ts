@@ -1,4 +1,5 @@
-import { Log, getDocument } from '../../utils/dev.utils';
+import { getDocument } from '../../utils/dev.utils';
+import { Log } from '../../utils/log';
 
 type ModalContext = {
 	activeElement?: HTMLElement;

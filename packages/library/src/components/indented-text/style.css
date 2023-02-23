@@ -4,6 +4,6 @@
 	border-left-color: var(--kolibri-border-color);
 	border-left-style: solid;
 	border-left-width: var(--kolibri-spacing);
-	padding: calc(--kolibri-spacing / 2) var(--kolibri-spacing);
-	width: 100%;
+	display: block;
+	padding: calc(var(--kolibri-spacing) / 2) calc(2 * var(--kolibri-spacing));
 }

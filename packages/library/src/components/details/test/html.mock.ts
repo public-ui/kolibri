@@ -19,10 +19,12 @@ export const getDetailsHtml = (
 	<mock:shadow-root>
 		<details${props._open ? ' open' : ''}>
 			<summary>
-				${getIconHtml({
-					_ariaLabel: '',
-					_icon: props._open ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right',
-				})}
+				<span>
+					${getIconHtml({
+						_ariaLabel: '',
+						_icon: props._open ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right',
+					})}
+				</span>
 				<span>
 					${props._summary}
 				</span>

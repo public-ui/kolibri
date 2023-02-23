@@ -1,4 +1,5 @@
-import { getColorContrastAnalysis, getDevMode, getDocument, getExperimalMode, initKoliBri, KoliBri, Log, renderDevAdvice } from '../utils/dev.utils';
+import { getColorContrastAnalysis, getDevMode, getDocument, getExperimalMode, initKoliBri, KoliBri, renderDevAdvice } from '../utils/dev.utils';
+import { Log } from '../utils/log';
 import {
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,

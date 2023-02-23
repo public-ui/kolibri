@@ -4,20 +4,31 @@
 	display: grid;
 	width: 100%;
 }
-:host details > kol-indented-text {
-	margin: var(--kolibri-spacing) 0 0 var(--kolibri-spacing);
-}
-
-:host summary {
+:host details > summary {
+	border-radius: var(--kolibri-spacing);
 	cursor: pointer;
-	display: flow-root;
-	margin: 0;
-	padding: 0;
+	display: flex;
+	place-items: center;
 }
-:host summary span {
-	margin-left: var(--kolibri-spacing);
-	text-decoration: underline;
+:host details > summary > span {
+	border-bottom-color: var(--kolibri-border-color);
+	border-bottom-style: solid;
+	border-bottom-width: calc(var(--kolibri-spacing) / 2);
+	padding: 0 var(--kolibri-spacing);
 }
-:host summary:hover {
-	text-decoration-thickness: var(--kolibri-spacing);
+:host details > summary > span:first-child {
+	padding-right: var(--kolibri-spacing);
+	text-align: center;
+	width: 1rem;
+}
+:host details > summary > span:last-child {
+	padding-left: var(--kolibri-spacing);
+}
+:host details[open] > summary > span,
+:host details:focus > summary > span,
+:host details:hover > summary > span {
+	border-bottom-color: black;
+}
+:host details > kol-indented-text {
+	margin: var(--kolibri-spacing) 0 0 calc(2 * var(--kolibri-spacing));
 }

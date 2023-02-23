@@ -6,8 +6,9 @@ import { hex, score } from 'wcag-contrast';
 import { Generic } from '@a11y-ui/core';
 
 import { devHint } from './a11y.tipps';
-import { getDocument, getExperimalMode, getWindow, Log } from './dev.utils';
+import { getDocument, getExperimalMode, getWindow } from './dev.utils';
 import { Stringified } from '../types/common';
+import { Log } from './log';
 
 // https://regex101.com/r/lSYLO9/1
 /**

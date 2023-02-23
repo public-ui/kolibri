@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/slidev",
-	"version": "1.4.0-rc.9",
+	"version": "1.4.0-rc.11",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -13,7 +13,7 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"scripts": {
-		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js && mv dist/assets/_commonjsHelpers* dist/assets/commonjsHelpers.js",
+		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js",
 		"dev": "slidev --open",
 		"export": "slidev export",
 		"prepack": "npm run build",
@@ -21,9 +21,9 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "1.4.0-rc.9",
-		"@public-ui/core": "1.4.0-rc.9",
-		"@public-ui/themes": "1.4.0-rc.9",
+		"@public-ui/components": "1.4.0-rc.11",
+		"@public-ui/core": "1.4.0-rc.11",
+		"@public-ui/themes": "1.4.0-rc.11",
 		"@slidev/theme-default": "0.21.2",
 		"@slidev/theme-seriph": "0.21.3"
 	},

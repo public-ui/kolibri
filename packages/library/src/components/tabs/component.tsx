@@ -7,7 +7,7 @@ import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks'
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { Log } from '../../utils/dev.utils';
+import { Log } from '../../utils/log';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 import { translate } from '../../i18n';
@@ -136,52 +136,24 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	private renderButtonGroup() {
 		return (
 			<kol-button-group-wc role="tablist" aria-label={this.state._ariaLabel} onKeyDown={this.onKeyDown}>
-				{this.state._tabs.map((button: TabButtonProps, index: number) => {
-					return (
-						/**
-						 * Ohne Shadow-DOM könnte auch die kol-button-wc genutzt werden.
-						 */
-						<div class="inline-flex">
-							<kol-button-wc
-								class="h-full"
-								_disabled={button._disabled}
-								_icon={button._icon}
-								_iconOnly={button._iconOnly}
-								_label={button._label && button._label} // TODO: ariaLabel-Konzept prüfen
-								_on={this.callbacks as KoliBriButtonCallbacks<unknown>}
-								_tabIndex={this.state._selected === index ? 0 : -1}
-								_tooltipAlign={button._tooltipAlign}
-								_variant={this.state._selected === index ? 'custom' : undefined}
-								_customClass={this.state._selected === index ? 'selected' : undefined}
-								_ariaControls={`tabpanel-${index}`}
-								_ariaSelected={this.state._selected === index}
-								_id={`tab-${index}`}
-								_role="tab"
-								_value={index}
-							></kol-button-wc>
-							{/* {typeof button._on?.onClose === 'function' ||
-                        (button._on?.onClose === true && (
-                            <kol-button-wc
-                                class="close-button"
-                                _icon={{
-                                    left: {
-                                        icon: 'fa-solid fa-xmark',
-                                        style: {
-                                            'font-size': '200%',
-                                        },
-                                    },
-                                }}
-                                _iconOnly
-                                _label={`Registerkarte ${button._label} schließen`}
-                                _on={{
-                                    onClick: (event: Event) => this.onClickClose(event, button, index),
-                                }}
-                                _variant="ghost"
-                            ></kol-button-wc>
-                        ))} */}
-						</div>
-					);
-				})}
+				{this.state._tabs.map((button: TabButtonProps, index: number) => (
+					<kol-button-wc
+						_disabled={button._disabled}
+						_icon={button._icon}
+						_iconOnly={button._iconOnly}
+						_label={button._label && button._label} // TODO: ariaLabel-Konzept prüfen
+						_on={this.callbacks as KoliBriButtonCallbacks<unknown>}
+						_tabIndex={this.state._selected === index ? 0 : -1}
+						_tooltipAlign={button._tooltipAlign}
+						_variant={this.state._selected === index ? 'custom' : undefined}
+						_customClass={this.state._selected === index ? 'selected' : undefined}
+						_ariaControls={`tabpanel-${index}`}
+						_ariaSelected={this.state._selected === index}
+						_id={`tab-${index}`}
+						_role="tab"
+						_value={index}
+					></kol-button-wc>
+				))}
 				{this.showCreateTab && (
 					<kol-button-wc
 						class="create-button"
