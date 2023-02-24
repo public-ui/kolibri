@@ -7,6 +7,7 @@ export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
 	const state = mixMembers<Props, States>(
 		{
 			_color: '#000',
+			_label: '',
 		},
 		props
 	);

@@ -1,5 +1,8 @@
 @import '../style.css';
 
+:host {
+	display: inline-block;
+}
 :host > div {
 	background-color: white;
 	border-color: var(--kolibri-border-color);
@@ -10,7 +13,6 @@
 	overflow: hidden;
 	width: 100%;
 }
-
 :host > div > div.heading {
 	display: grid;
 	gap: var(--kolibri-spacing);

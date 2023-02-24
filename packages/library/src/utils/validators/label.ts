@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { a11yHint } from '../a11y.tipps';
-import { watchString } from '../prop.validators';
+import { watchString, WatchStringOptions } from '../prop.validators';
 import { isEmptyOrPrefixOf } from '../validator';
 
 const READABLE_CHARS = /[a-zA-Z0-9äöüÄÖÜß]/g;
@@ -35,31 +35,53 @@ const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextV
 	}
 };
 
-export const validateAriaLabel = (component: Generic.Element.Component, value?: string): void => {
+export const validateAriaLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
 	watchString(component, '_ariaLabel', value, {
 		hooks: {
-			afterPatch: (value) => {
+			afterPatch: (value, state, component, key) => {
+				if (typeof options.hooks?.afterPatch === 'function') {
+					options.hooks?.afterPatch(value, state, component, key);
+				}
 				if (typeof value === 'string' && value.length > 0 && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
 					a11yHint(
 						`Ein abweichendes Aria-Label (${value}) ist nicht barrierefrei. Ein abweichendes Aria-Label sollte aus mindestens drei lesbaren Zeichen bestehen.`
 					);
 				}
 			},
+			beforePatch: options.hooks?.beforePatch,
+		},
+	});
+};
+
+export const validateAriaLabelWithLabel = (component: Generic.Element.Component, value?: string): void => {
+	validateAriaLabel(component, value, {
+		hooks: {
 			beforePatch: syncAriaLabelBeforePatch,
 		},
 	});
 };
 
-export const validateLabel = (component: Generic.Element.Component, value?: string): void => {
+export const validateLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
 	watchString(component, '_label', value, {
 		hooks: {
-			afterPatch: (value) => {
+			afterPatch: (value, state, component, key) => {
+				if (typeof options.hooks?.afterPatch === 'function') {
+					options.hooks?.afterPatch(value, state, component, key);
+				}
 				if (typeof value === 'string' && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
 					a11yHint(`Ein Label (${value}) ist nicht barrierefrei. Ein Label sollte aus mindestens drei lesbaren Zeichen bestehen.`);
 				}
 			},
-			beforePatch: syncAriaLabelBeforePatch,
+			beforePatch: options.hooks?.beforePatch,
 		},
 		required: true,
+	});
+};
+
+export const validateLabelWithAriaLabel = (component: Generic.Element.Component, value?: string): void => {
+	validateLabel(component, value, {
+		hooks: {
+			beforePatch: syncAriaLabelBeforePatch,
+		},
 	});
 };

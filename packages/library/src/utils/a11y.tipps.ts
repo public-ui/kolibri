@@ -1,10 +1,10 @@
-import { Log } from './log';
+import { Log } from './dev.utils';
 
 const a11yCache: Set<string> = new Set<string>();
 export const a11yHint = (msg: string): void => {
 	if (a11yCache.has(msg) === false) {
 		a11yCache.add(msg);
-		Log.info(msg, {
+		Log.debug(msg, {
 			classifier: `✋ a11y`,
 			overwriteStyle: '; background-color: #09f',
 		});

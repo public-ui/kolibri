@@ -1,6 +1,5 @@
 import { ModalService } from '../components/modal/service';
 import { ToasterService } from '../components/toast/toaster';
-import { Log } from './log';
 import { processEnv } from './reuse';
 
 let WINDOW: Window | null = null;
@@ -30,6 +29,76 @@ let COLOR_CONTRAST_ANALYSIS: boolean | null = null;
 export const getDevMode = (): boolean => DEV_MODE === true;
 export const getExperimalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const getColorContrastAnalysis = (): boolean => COLOR_CONTRAST_ANALYSIS === true;
+
+type LogShield = {
+	label: string;
+	style: string;
+};
+
+type LogShieldOptions = {
+	classifier?: string;
+	forceLog?: boolean;
+	overwriteStyle?: string;
+};
+
+export class Log {
+	private static shield: LogShield = {
+		label: '%cKoliBri',
+		style: 'color: white; background: #666; font-weight: bold; padding: .25em .5em; border-radius: 3px; border: 1px solid #000',
+	};
+
+	private static mapToArray(msg: unknown | unknown[]): unknown[] {
+		return Array.isArray(msg) ? msg : [msg];
+	}
+
+	private static handleClassifier(classifier?: string): string {
+		if (typeof classifier === 'string' && classifier.length > 0) {
+			return `${Log.shield.label} | ${classifier}`;
+		} else {
+			return Log.shield.label;
+		}
+	}
+
+	private static getShield(options?: LogShieldOptions): string[] {
+		return [Log.handleClassifier(options?.classifier), `${Log.shield.style};${options?.overwriteStyle || ''}`];
+	}
+
+	public static debug(msg: unknown | unknown[], options?: LogShieldOptions): void {
+		if (DEV_MODE || options?.forceLog === true) {
+			console.debug(...Log.getShield(options), ...Log.mapToArray(msg));
+		}
+	}
+
+	public static info(msg: unknown | unknown[], options?: LogShieldOptions): void {
+		if (DEV_MODE || options?.forceLog === true) {
+			console.info(...Log.getShield(options), ...Log.mapToArray(msg));
+		}
+	}
+
+	public static trace(msg: unknown | unknown[], options?: LogShieldOptions): void {
+		if (DEV_MODE || options?.forceLog === true) {
+			console.trace(...Log.getShield(options), ...Log.mapToArray(msg));
+		}
+	}
+
+	public static warn(msg: unknown | unknown[], options?: LogShieldOptions): void {
+		if (DEV_MODE || options?.forceLog === true) {
+			console.warn(...Log.getShield(options), ...Log.mapToArray(msg));
+		}
+	}
+
+	public static error(msg: unknown | unknown[], options?: LogShieldOptions): void {
+		if (DEV_MODE || options?.forceLog === true) {
+			console.error(...Log.getShield(options), ...Log.mapToArray(msg));
+		}
+	}
+
+	public static throw(msg: unknown | unknown[], options?: LogShieldOptions): void {
+		if (DEV_MODE || options?.forceLog === true) {
+			throw new Error(...Log.getShield(options), ...Log.mapToArray(msg));
+		}
+	}
+}
 
 const initMeta = (): void => {
 	if (DEV_MODE === null && EXPERIMENTAL_MODE === null && COLOR_CONTRAST_ANALYSIS === null) {
@@ -65,6 +134,19 @@ export const initKoliBri = (): void => {
 			},
 		});
 		initMeta();
+		Log.debug(
+			`
+	,--. ,--.         ,--. ,--. ,-----.           ,--.
+	|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
+	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
+	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
+	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
+		`,
+			{
+				forceLog: true,
+			}
+		);
 	} else {
 		console.warn(`You can only initialize KoliBri once.`);
 	}
