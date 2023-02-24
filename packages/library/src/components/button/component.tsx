@@ -30,7 +30,7 @@ import {
 } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
-import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
+import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
@@ -286,7 +286,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabel(this, value);
+		validateAriaLabelWithLabel(this, value);
 	}
 
 	/**
@@ -372,7 +372,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		validateLabelWithAriaLabel(this, value);
 	}
 
 	/**

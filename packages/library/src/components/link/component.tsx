@@ -23,7 +23,7 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTargetAndStopPropagation, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
-import { validateAriaLabel, validateLabel } from '../../utils/validators/label';
+import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 
 type RequiredNavLinkProps = RequiredLinkProps;
@@ -321,7 +321,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabel(this, value);
+		validateAriaLabelWithLabel(this, value);
 	}
 
 	/**
@@ -381,7 +381,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		validateLabelWithAriaLabel(this, value);
 	}
 
 	/**

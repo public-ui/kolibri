@@ -1,23 +1,9 @@
 import { getThemeDetails, setThemeStyle } from '@a11y-ui/core';
 import { setMode } from '@stencil/core';
-import { Log } from '../utils/log';
+import { Log } from '../utils/dev.utils';
 
 // ts-prune-ignore-next
 export default (): void => {
-	Log.debug(
-		`
-,--. ,--.         ,--. ,--. ,-----.           ,--.
-|  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
-|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
-|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
-\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
-	`,
-		{
-			forceLog: true,
-		}
-	);
-
 	setMode((elm) => {
 		if (elm.shadowRoot instanceof ShadowRoot) {
 			setThemeStyle(elm, getThemeDetails(elm));

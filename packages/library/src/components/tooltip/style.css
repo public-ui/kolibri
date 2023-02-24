@@ -1,30 +1,30 @@
 @import '../style.css';
 
 :host #floating {
-	display: none;
-	position: absolute;
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
 	animation-duration: 0.5s;
 	box-sizing: border-box;
-	box-shadow: 0 0 calc(var(--kolibri-spacing) / 2) rgba(255, 255, 255, 0.8);
+	display: none;
+	position: absolute;
 }
 
 :host #arrow {
-	position: absolute;
-	width: 10px;
-	height: 10px;
 	background: #333;
+	height: 10px;
+	position: absolute;
 	transform: rotate(45deg);
+	width: 10px;
 	z-index: 999;
 }
 
 :host kol-badge {
+	border-radius: var(--kolibri-border-radius);
 	font-size: calc(4 * var(--kolibri-spacing));
 	max-width: 300px;
-	z-index: 1000;
 	position: relative;
+	z-index: 1000;
 }
 
 @keyframes fadeInOpacity {

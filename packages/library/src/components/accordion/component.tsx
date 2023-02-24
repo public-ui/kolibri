@@ -7,6 +7,7 @@ import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
 import { featureHint } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -58,6 +59,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	private buttonRef?: HTMLButtonElement;
+	private readonly nonce = nonce();
 	// private content?: HTMLDivElement;
 
 	private catchAriaExpanded = (button?: HTMLButtonElement) => {
@@ -76,7 +78,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 			<Host>
 				<div part={`accordion ${this.state._open ? 'open' : 'close'}`}>
 					<kol-heading-wc _label="" _level={this.state._level}>
-						<button ref={this.catchAriaExpanded} onClick={this.onClick}>
+						<button aria-controls={this.nonce} ref={this.catchAriaExpanded} onClick={this.onClick}>
 							<kol-icon _ariaLabel="" _icon={this.state._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus'} _part={this.state._open ? 'close' : 'open'} />
 							<span>{this.state._heading}</span>
 						</button>
@@ -85,6 +87,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 						<slot name="header" />
 					</div>
 					<div
+						id={this.nonce}
 						part="content"
 						// ref={(r) => (this.content = r)}
 						style={

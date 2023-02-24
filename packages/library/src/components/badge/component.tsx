@@ -6,6 +6,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { a11yHint, devHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchValidator } from '../../utils/prop.validators';
+import { validateLabel } from '../../utils/validators/label';
 import { ColorContrast, createContrastColorPair } from './contrast';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
@@ -33,6 +34,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	color: Stringified<KoliBriColor>;
+	label: string;
 };
 type OptionalStates = {
 	smartButton: ButtonProps;
@@ -62,7 +64,7 @@ export class KolBadge implements Props {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this._label}></kol-span-wc>
+					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}></kol-span-wc>
 					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 						<kol-button-wc
 							_ariaLabel={this.state._smartButton._ariaLabel}
@@ -112,6 +114,7 @@ export class KolBadge implements Props {
 	 */
 	@State() public state: States = {
 		_color: '#000',
+		_label: '',
 	};
 
 	private handleColorChange = (value: unknown) => {
@@ -166,6 +169,22 @@ export class KolBadge implements Props {
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value, {
+			hooks: {
+				afterPatch: (value) => {
+					if (typeof value === 'string' && value.length > 32) {
+						a11yHint(`[KolBadge] The label is too long for a badge (${value.length} > 32).`);
+					}
+				},
+			},
+		});
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		objectObjectHandler(value, () => {
@@ -184,6 +203,7 @@ export class KolBadge implements Props {
 	 */
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
+		this.validateLabel(this._label);
 		this.validateSmartButton(this._smartButton);
 	}
 }

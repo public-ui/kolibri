@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v14",
-	"version": "1.4.0-rc.11",
+	"version": "1.4.0-rc.14",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -65,11 +65,11 @@
 		"@angular/compiler-cli": "14.2.12",
 		"@angular/compiler": "14.2.12",
 		"@angular/core": "14.2.12",
-		"@public-ui/core": "1.4.0-rc.11",
-		"@public-ui/components": "1.4.0-rc.11",
+		"@public-ui/core": "1.4.0-rc.14",
+		"@public-ui/components": "1.4.0-rc.14",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "18.14.0",
+		"@types/node": "18.14.1",
 		"@types/normalize-package-data": "2.4.1",
 		"prettier": "2.8.4",
 		"rimraf": "4.1.2",
@@ -80,7 +80,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "^14",
-		"@public-ui/components": "1.4.0-rc.11"
+		"@public-ui/components": "1.4.0-rc.14"
 	},
 	"files": [
 		"dist/"

@@ -8,10 +8,10 @@ specifiers:
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.0-rc.11
-  '@public-ui/core': 1.4.0-rc.11
-  '@public-ui/react': 1.4.0-rc.11
-  '@public-ui/themes': 1.4.0-rc.11
+  '@public-ui/components': 1.4.0-rc.12
+  '@public-ui/core': 1.4.0-rc.12
+  '@public-ui/react': 1.4.0-rc.12
+  '@public-ui/themes': 1.4.0-rc.12
   '@storybook/addon-a11y': 6.5.16
   '@storybook/addon-actions': 6.5.16
   '@storybook/addon-backgrounds': 6.5.16
@@ -68,13 +68,13 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 0.2.2
   '@leanup/form': 1.3.43
-  '@leanup/kolibri-components': 1.0.5_tiusatxo7ij35kh43x7xvd35oq
+  '@leanup/kolibri-components': 1.0.5_vmnznmy4jjmvcbbyxdigpozfum
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-oss/kolibri-themes': 0.0.3_ft2ympz24d64ejmv5uhivchvtq
-  '@public-ui/components': 1.4.0-rc.11
-  '@public-ui/core': 1.4.0-rc.11
-  '@public-ui/react': 1.4.0-rc.11_26aukut26jwhx5gcimym6luxgy
-  '@public-ui/themes': 1.4.0-rc.11_ft2ympz24d64ejmv5uhivchvtq
+  '@public-oss/kolibri-themes': 0.0.3_viwdrrdiqphalwvapccc5k4yn4
+  '@public-ui/components': 1.4.0-rc.12
+  '@public-ui/core': 1.4.0-rc.12
+  '@public-ui/react': 1.4.0-rc.12_4cjgkzsyhwito2maify3ctpy3a
+  '@public-ui/themes': 1.4.0-rc.12_viwdrrdiqphalwvapccc5k4yn4
   '@storybook/addon-a11y': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
@@ -2622,14 +2622,14 @@ packages:
       '@leanup/lib': 1.3.43
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_tiusatxo7ij35kh43x7xvd35oq:
+  /@leanup/kolibri-components/1.0.5_vmnznmy4jjmvcbbyxdigpozfum:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.43
-      '@public-ui/components': 1.4.0-rc.11
+      '@public-ui/components': 1.4.0-rc.12
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -2639,7 +2639,7 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_tiusatxo7ij35kh43x7xvd35oq
+      '@leanup/kolibri-components': 1.0.5_vmnznmy4jjmvcbbyxdigpozfum
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2778,21 +2778,21 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_ft2ympz24d64ejmv5uhivchvtq:
+  /@public-oss/kolibri-themes/0.0.3_viwdrrdiqphalwvapccc5k4yn4:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.0-rc.11
+      '@public-ui/components': 1.4.0-rc.12
       '@public-ui/schema': 1.1.15
     dev: true
 
-  /@public-ui/components/1.4.0-rc.11:
-    resolution: {integrity: sha512-XmYUJT4b/war0yjfDkbQ1jq5Hp86Ypj9e+jQ5jYJhfjQJ9zTXjd1bbHkswkF7mlL8OgyMsTstjfcuBW3fwa8Mw==}
+  /@public-ui/components/1.4.0-rc.12:
+    resolution: {integrity: sha512-vMK/SgjBovUfUnHPb+eiPsKFimGBp1+ysJzZMiz4QTxf670k4KMEr5vhWlBfktzdFjb1VNhD+dNqt6ZKN7KweQ==}
     dependencies:
       '@floating-ui/dom': 1.2.1
-      '@public-ui/core': 1.4.0-rc.11
-      '@public-ui/schema': 1.4.0-rc.11
+      '@public-ui/core': 1.4.0-rc.12
+      '@public-ui/schema': 1.4.0-rc.12
     dev: true
 
   /@public-ui/core/1.1.15:
@@ -2802,21 +2802,21 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/core/1.4.0-rc.11:
-    resolution: {integrity: sha512-DJqDyFi8ZC8Crj1etzNPlrppwQynxUwNh5qhQJ5mPtCSca0Z4vkebXcwcxZ4iOP+3gE0sM8odGQxXueSB6t5FQ==}
+  /@public-ui/core/1.4.0-rc.12:
+    resolution: {integrity: sha512-VMBlCHmGT80LxxQf2QHqgnIkW+SR8iI/45sGRAV/g6FjamJHa+cSJ6rvuwz8nsQBs38LlU3oiKYsBlBXy29+lw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: true
 
-  /@public-ui/react/1.4.0-rc.11_26aukut26jwhx5gcimym6luxgy:
-    resolution: {integrity: sha512-JDXM7SUxI5+cNCdyMPLFaGJe0SBNRDOyEq7SkRIMpuqAv0ioa4dHGeIigECQ4oc5WL3fvBI/khqGqVKYQgWIuw==}
+  /@public-ui/react/1.4.0-rc.12_4cjgkzsyhwito2maify3ctpy3a:
+    resolution: {integrity: sha512-XmW35PyfE6H82P+jPMgKgA/ymPuM9ptWhM/ZjkR3HzDcGyWv7LLuZ4BnHabRn4sicRWUXZle7/ARCEQrkdAMwA==}
     peerDependencies:
-      '@public-ui/components': 1.4.0-rc.11
+      '@public-ui/components': 1.4.0-rc.12
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.4.0-rc.11
+      '@public-ui/components': 1.4.0-rc.12
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2827,19 +2827,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.11:
-    resolution: {integrity: sha512-sQKrQnQ3QyozW4DkpSbec4QN0dw5/yw6n6yYSWSUF8pGauPDON6Wp+b6rOgfFlguHh9mwxOf6PIrhEB1p6rFdA==}
+  /@public-ui/schema/1.4.0-rc.12:
+    resolution: {integrity: sha512-c60kOErKnKmPEu5KmpOgGXYAaiy11rkb7j1ZIf0JJwPOEgoA4+oT8mUBODKaeZLU4t2D/ia7jnB7SwL9KzYxrQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: true
 
-  /@public-ui/themes/1.4.0-rc.11_ft2ympz24d64ejmv5uhivchvtq:
-    resolution: {integrity: sha512-ifvOuBqebrlqEngnQVjmhaF7lxKmHsTM7pQKpUDWcx6F9avOhHhVO45H2QiqtQjGRrhaUPsDPvof8CmAcoquXw==}
+  /@public-ui/themes/1.4.0-rc.12_viwdrrdiqphalwvapccc5k4yn4:
+    resolution: {integrity: sha512-F9I8vkwKAj/0CheDiLqV9y6A/lBmHJiPYabXAocGBdcFcHbV3sPNSz5PqD3cZNmMsKyNYWi2eh2IHfxS0FheVg==}
     peerDependencies:
-      '@public-ui/components': 1.4.0-rc.11
+      '@public-ui/components': 1.4.0-rc.12
     dependencies:
-      '@public-ui/components': 1.4.0-rc.11
-      '@public-ui/schema': 1.4.0-rc.11
+      '@public-ui/components': 1.4.0-rc.12
+      '@public-ui/schema': 1.4.0-rc.12
     dev: true
 
   /@rollup/plugin-babel/5.3.1_4tnfxcmsyr7y5qv3uwkivwqysm:
