@@ -35,7 +35,7 @@ const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextV
 	}
 };
 
-export const validateAriaLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
+const validateAriaLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
 	watchString(component, '_ariaLabel', value, {
 		hooks: {
 			afterPatch: (value, state, component, key) => {
