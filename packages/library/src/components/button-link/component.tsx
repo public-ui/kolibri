@@ -47,7 +47,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_id={this._id}
 					_label={this._label}
 					_on={this._on}
-					_role={this._role}
+					_role="link"
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}

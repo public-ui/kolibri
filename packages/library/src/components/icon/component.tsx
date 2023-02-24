@@ -41,7 +41,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 					aria-label={this.state._ariaLabel.length > 0 ? this.state._ariaLabel : undefined}
 					class={this.state._icon}
 					part={`icon${typeof this._part === 'string' ? ` ${this._part}` : ''}`}
-					role={this.state._ariaLabel.length > 0 ? 'img' : undefined}
+					role="img"
 				></i>
 			</Host>
 		);

@@ -10,7 +10,7 @@ import { Alignment } from './props/alignment';
  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
  */
 export type AriaCurrent = boolean | 'page' | 'step' | 'location' | 'date' | 'time';
-export type AlternativButtonLinkRole = 'tab';
+export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
