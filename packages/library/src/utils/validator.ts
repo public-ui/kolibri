@@ -18,7 +18,7 @@ export const isStyle = (style?: Record<string, string>): boolean => {
 /**
  * Validate, if a text contains a prefix.
  */
-const isPrefixOf = (prefix: string, text: string) => new RegExp(`^${prefix}`).test(text);
+const isPrefixOf = (prefix: string, text: string) => text.startsWith(prefix);
 
 /**
  * Validate, if a text is empty or contains a prefix.
