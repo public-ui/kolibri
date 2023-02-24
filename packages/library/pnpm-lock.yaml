@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.65
   '@floating-ui/dom': 1.2.1
-  '@public-ui/core': 1.4.0-rc.12
-  '@public-ui/schema': 1.4.0-rc.12
+  '@public-ui/core': 1.4.0-rc.14
+  '@public-ui/schema': 1.4.0-rc.14
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.0.1
   '@stencil/postcss': 2.1.0
@@ -34,7 +34,7 @@ specifiers:
   jest: 26.6.3
   jest-cli: 26.6.3
   lighthouse: 10.0.1
-  mathjs: 11.5.1
+  mathjs: 11.6.0
   postcss: 8.4.21
   postcss-sorting: 8.0.1
   prettier: 2.8.4
@@ -52,8 +52,8 @@ specifiers:
 
 dependencies:
   '@floating-ui/dom': 1.2.1
-  '@public-ui/core': 1.4.0-rc.12
-  '@public-ui/schema': 1.4.0-rc.12
+  '@public-ui/core': 1.4.0-rc.14
+  '@public-ui/schema': 1.4.0-rc.14
 
 devDependencies:
   '@a11y-ui/core': 1.0.1-rc.65
@@ -86,7 +86,7 @@ devDependencies:
   jest: 26.6.3
   jest-cli: 26.6.3
   lighthouse: 10.0.1_typescript@4.9.5
-  mathjs: 11.5.1
+  mathjs: 11.6.0
   postcss: 8.4.21
   postcss-sorting: 8.0.1_postcss@8.4.21
   prettier: 2.8.4
@@ -1630,15 +1630,15 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.4.0-rc.12:
-    resolution: {integrity: sha512-VMBlCHmGT80LxxQf2QHqgnIkW+SR8iI/45sGRAV/g6FjamJHa+cSJ6rvuwz8nsQBs38LlU3oiKYsBlBXy29+lw==}
+  /@public-ui/core/1.4.0-rc.14:
+    resolution: {integrity: sha512-xGNwk8u3alH2YL93K86tI6K8oz3ARhEoldPIHB/pfvdq8OZWwagZKn0cDIeHC2xDOpr0/Qp2Hzzs5wSOtw3KZw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: false
 
-  /@public-ui/schema/1.4.0-rc.12:
-    resolution: {integrity: sha512-c60kOErKnKmPEu5KmpOgGXYAaiy11rkb7j1ZIf0JJwPOEgoA4+oT8mUBODKaeZLU4t2D/ia7jnB7SwL9KzYxrQ==}
+  /@public-ui/schema/1.4.0-rc.14:
+    resolution: {integrity: sha512-p8HpFgZ2rG3l8WAdSlIL8qzQVcGYEWpMzU3KNTF6IluV/Fdcw9Ex4MQIXX1MdZT4fdUbrlp+tBwilaeavFgzCw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: false
@@ -5637,8 +5637,8 @@ packages:
     resolution: {integrity: sha512-q9JtQJKjpsVxCRVgQ+WapguSbKC3SQ5HEzFGPAJMStgh3QjCawp00UKv3MTTAArTmGmmPUvllHZoNbZ3gs0I+Q==}
     dev: true
 
-  /mathjs/11.5.1:
-    resolution: {integrity: sha512-9r35KHkpywim2hfYhJS3QHnKS7u61CODQcYPbJZ6Rov2jXDOAun07mM+8a7SRsJKfiMxtWWMJeiHQXTEnnHyoQ==}
+  /mathjs/11.6.0:
+    resolution: {integrity: sha512-6AAhoVvmCJSozTW+pc3XAwe9pLlAO5fYHnrHv4XWb0NQxjdz0DRnT3qneOPkKH6raTnlvHuX3XGLv8BmgXfiEg==}
     engines: {node: '>= 14'}
     hasBin: true
     dependencies:
