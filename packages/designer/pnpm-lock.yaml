@@ -8599,11 +8599,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-<<<<<<< Updated upstream
-  file:itzbund-interne-kolibri-themes-0.0.0.tgz_ar3ivip6up7y2tlydr2uy43m4m:
-=======
   file:itzbund-interne-kolibri-themes-0.0.0.tgz_ft2ympz24d64ejmv5uhivchvtq:
->>>>>>> Stashed changes
     resolution: {integrity: sha512-JeD7gfn7IQgPRneQfqJw39fCZZ6E8J1G+eVqPbvoqsiVHXk5ZHuaEMYSwT0SG13pFduukhiwBLDT3nqAoiU0cg==, tarball: file:itzbund-interne-kolibri-themes-0.0.0.tgz}
     id: file:itzbund-interne-kolibri-themes-0.0.0.tgz
     name: '@itzbund/interne-kolibri-themes'

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.4.0-rc.11",
+	"version": "1.4.0-rc.12",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -66,8 +66,8 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.2.1",
-		"@public-ui/core": "1.4.0-rc.11",
-		"@public-ui/schema": "1.4.0-rc.11"
+		"@public-ui/core": "1.4.0-rc.12",
+		"@public-ui/schema": "1.4.0-rc.12"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.1-rc.65",
