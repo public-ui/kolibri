@@ -24,10 +24,10 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "^1.4.0-rc.12",
-		"@public-ui/core": "^1.4.0-rc.12",
-		"@public-ui/react": "^1.4.0-rc.12",
-		"@public-ui/themes": "^1.4.0-rc.12",
+		"@public-ui/components": "^1.4.0-rc.13",
+		"@public-ui/core": "^1.4.0-rc.13",
+		"@public-ui/react": "^1.4.0-rc.13",
+		"@public-ui/themes": "^1.4.0-rc.13",
 		"preact": "^10.11.3"
 	},
 	"devDependencies": {
