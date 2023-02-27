@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-select")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.14")
 @JsModule("@public-ui/components/dist/components/kol-select")
 public class KolSelect extends Component {
 	/**

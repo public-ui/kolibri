@@ -1,41 +1,41 @@
 @import './input.css';
 
-.kol-disabled {
+:host .kol-disabled {
 	opacity: 0.5;
 }
 
-.kol-cursor-not-allowed,
-.kol-cursor-not-allowed * {
+:host .kol-cursor-not-allowed,
+:host .kol-cursor-not-allowed * {
 	cursor: not-allowed;
 }
 
-input[type='color'],
-input[type='date'],
-input[type='datetime-local'],
-input[type='email'],
-input[type='file'],
-input[type='month'],
-input[type='number'],
-input[type='password'],
-input[type='search'],
-input[type='tel'],
-input[type='text'],
-input[type='time'],
-input[type='url'],
-input[type='week'],
-select,
-textarea {
+:host input[type='color'],
+:host input[type='date'],
+:host input[type='datetime-local'],
+:host input[type='email'],
+:host input[type='file'],
+:host input[type='month'],
+:host input[type='number'],
+:host input[type='password'],
+:host input[type='search'],
+:host input[type='tel'],
+:host input[type='text'],
+:host input[type='time'],
+:host input[type='url'],
+:host input[type='week'],
+:host select,
+:host textarea {
 	background-color: white;
 	display: block;
 	line-height: 1em;
 	padding: 0.5em;
 }
 
-input[type='color'] {
+:host input[type='color'] {
 	height: 2.5em;
 	padding: 0.25em 0.5em;
 }
 
-textarea {
+:host textarea {
 	padding: 0.5em;
 }

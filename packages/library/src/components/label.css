@@ -1,5 +1,5 @@
 @import './style.css';
 
-.kol-required span::after {
+:host .kol-required span::after {
 	content: '*';
 }
