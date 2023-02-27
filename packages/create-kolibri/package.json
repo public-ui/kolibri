@@ -1,6 +1,6 @@
 {
 	"name": "create-kolibri",
-	"version": "1.4.0-rc.14",
+	"version": "1.4.0-rc.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -102,7 +102,7 @@
 		"@commitlint/cli": "17.4.4",
 		"@commitlint/config-conventional": "17.4.4",
 		"@leanup/stack": "1.3.43",
-		"@types/node": "18.14.1",
+		"@types/node": "18.14.2",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.3",
 		"husky": "8.0.3",

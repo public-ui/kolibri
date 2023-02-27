@@ -1,11 +1,12 @@
 @import './style.css';
-kol-link-wc,
-kol-link-button-wc {
+
+:host kol-link-wc,
+:host kol-link-button-wc {
 	display: inline-block;
 }
 
-kol-link-wc a,
-kol-button-wc button {
+:host kol-link-wc a,
+:host kol-button-wc button {
 	background-color: transparent;
 	display: inline-flex;
 	font-size: inherit;
@@ -14,28 +15,31 @@ kol-button-wc button {
 	text-decoration-line: underline;
 }
 
-a:focus,
-a:hover,
-button:focus,
-button:hover {
+:host a:focus,
+:host a:hover,
+:host button:focus,
+:host button:hover {
 	text-decoration-thickness: 0.2em;
 }
-kol-icon {
+
+:host kol-icon {
 	padding: 0 var(--kolibri-spacing);
 	display: inline-block;
 }
-.hidden {
+
+:host .hidden {
 	display: none;
 	visibility: hidden;
 }
-.skip {
+
+:host .skip {
 	left: -99999px;
 	overflow: hidden;
 	position: absolute;
 	z-index: 9999999;
 	line-height: 1em;
 }
-.skip:focus {
+:host .skip:focus {
 	background-color: white;
 	box-shadow: 0 0 calc(2 * var(--kolibri-spacing)) calc(2 * var(--kolibri-spacing)) white;
 	left: unset;
