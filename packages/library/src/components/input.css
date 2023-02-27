@@ -1,48 +1,48 @@
 @import './label.css';
 
-input,
-select,
-textarea {
+:host input,
+:host select,
+:host textarea {
 	border-color: var(--kolibri-border-color);
 	border-style: solid;
 	border-width: 1px;
 }
-input input.error,
-input select.error,
-input textarea.error,
-select input.error,
-select select.error,
-select textarea.error,
-textarea input.error,
-textarea select.error,
-textarea textarea.error {
+:host input input.error,
+:host input select.error,
+:host input textarea.error,
+:host select input.error,
+:host select select.error,
+:host select textarea.error,
+:host textarea input.error,
+:host textarea select.error,
+:host textarea textarea.error {
 	border-color: var(--kolibri-border-error);
 }
-input input:focus,
-input input:hover,
-input select:focus,
-input select:hover,
-input textarea:focus,
-input textarea:hover,
-select input:focus,
-select input:hover,
-select select:focus,
-select select:hover,
-select textarea:focus,
-select textarea:hover,
-textarea input:focus,
-textarea input:hover,
-textarea select:focus,
-textarea select:hover,
-textarea textarea:focus,
-textarea textarea:hover {
+:host input input:focus,
+:host input input:hover,
+:host input select:focus,
+:host input select:hover,
+:host input textarea:focus,
+:host input textarea:hover,
+:host select input:focus,
+:host select input:hover,
+:host select select:focus,
+:host select select:hover,
+:host select textarea:focus,
+:host select textarea:hover,
+:host textarea input:focus,
+:host textarea input:hover,
+:host textarea select:focus,
+:host textarea select:hover,
+:host textarea textarea:focus,
+:host textarea textarea:hover {
 	border-color: #999;
 }
 
-input:not([type='checkbox']),
-option,
-select,
-textarea {
+:host input:not([type='checkbox']),
+:host option,
+:host select,
+:host textarea {
 	font-size: inherit;
 	letter-spacing: inherit;
 	word-spacing: inherit;

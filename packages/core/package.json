@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.4.0-rc.14",
+	"version": "1.4.0-rc.15",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/core",
@@ -57,10 +57,10 @@
 		"i18next": "22.4.10"
 	},
 	"devDependencies": {
-		"@types/node": "18.14.1",
+		"@types/node": "18.14.2",
 		"@typescript-eslint/eslint-plugin": "5.53.0",
 		"@typescript-eslint/parser": "5.53.0",
-		"eslint": "8.34.0",
+		"eslint": "8.35.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"npm-check-updates": "16.7.9",
 		"prettier": "2.8.4",
