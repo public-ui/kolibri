@@ -69,8 +69,8 @@
 
 /* close button */
 
-:host .close,
-:host .close > button {
+.close,
+.close > button {
 	min-width: 44px;
 	min-height: 44px;
 }

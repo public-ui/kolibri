@@ -1,15 +1,15 @@
-:host .button label {
+.button label {
 	cursor: pointer;
 	display: inline-flex;
 	width: auto;
 }
 
-:host .button label > span > span {
+.button label > span > span {
 	display: inline-flex;
 	gap: calc(2 * var(--kolibri-spacing));
 	place-items: center;
 }
 
-:host .button input {
+.button input {
 	display: none;
 }

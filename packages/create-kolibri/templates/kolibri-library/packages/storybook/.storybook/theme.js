@@ -2,7 +2,7 @@
 
 import { create } from '@storybook/theming';
 
-import { register } from '@public-ui/components';
+import { register } from '@public-ui/core';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
 import { ITZBund, ITZBund, ITZBund, BPA, ITZBund } from '@public-ui/themes';

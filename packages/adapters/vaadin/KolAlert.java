@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-alert")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.14")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.10")
 @JsModule("@public-ui/components/dist/components/kol-alert")
 public class KolAlert extends Component {
 	/**

@@ -1,4 +1,4 @@
-import { register } from '@public-ui/components';
+import { register } from '@public-ui/core';
 import { ITZBund } from '@public-ui/themes';
 
 import React from 'react';

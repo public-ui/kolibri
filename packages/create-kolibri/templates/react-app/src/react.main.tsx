@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import { AppComponent } from './components/app/component';
 
-import { register } from '@public-ui/components';
+import { register } from '@public-ui/core';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { ITZBund } from '@public-ui/themes';
 

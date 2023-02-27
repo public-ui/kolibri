@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.4.0-rc.14
-  '@public-ui/core': 1.4.0-rc.14
+  '@public-ui/components': 1.4.0-rc.12
+  '@public-ui/core': 1.4.0-rc.12
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.14.2
+  '@types/node': 18.14.1
   '@types/normalize-package-data': 2.4.1
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -15,11 +15,11 @@ specifiers:
   unbuild: 0.8.11
 
 devDependencies:
-  '@public-ui/components': 1.4.0-rc.14
-  '@public-ui/core': 1.4.0-rc.14
+  '@public-ui/components': 1.4.0-rc.12
+  '@public-ui/core': 1.4.0-rc.12
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.14.2
+  '@types/node': 18.14.1
   '@types/normalize-package-data': 2.4.1
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -347,23 +347,23 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.4.0-rc.14:
-    resolution: {integrity: sha512-m8t5yy1tX6vriH4XShUwANE7h8TFBWtnt7pvOrrKUCzfmfgXdwqbZ5oT87bhC9yYOO0cFpGgkvPPi2MSxb6L6A==}
+  /@public-ui/components/1.4.0-rc.12:
+    resolution: {integrity: sha512-vMK/SgjBovUfUnHPb+eiPsKFimGBp1+ysJzZMiz4QTxf670k4KMEr5vhWlBfktzdFjb1VNhD+dNqt6ZKN7KweQ==}
     dependencies:
       '@floating-ui/dom': 1.2.1
-      '@public-ui/core': 1.4.0-rc.14
-      '@public-ui/schema': 1.4.0-rc.14
+      '@public-ui/core': 1.4.0-rc.12
+      '@public-ui/schema': 1.4.0-rc.12
     dev: true
 
-  /@public-ui/core/1.4.0-rc.14:
-    resolution: {integrity: sha512-xGNwk8u3alH2YL93K86tI6K8oz3ARhEoldPIHB/pfvdq8OZWwagZKn0cDIeHC2xDOpr0/Qp2Hzzs5wSOtw3KZw==}
+  /@public-ui/core/1.4.0-rc.12:
+    resolution: {integrity: sha512-VMBlCHmGT80LxxQf2QHqgnIkW+SR8iI/45sGRAV/g6FjamJHa+cSJ6rvuwz8nsQBs38LlU3oiKYsBlBXy29+lw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: true
 
-  /@public-ui/schema/1.4.0-rc.14:
-    resolution: {integrity: sha512-p8HpFgZ2rG3l8WAdSlIL8qzQVcGYEWpMzU3KNTF6IluV/Fdcw9Ex4MQIXX1MdZT4fdUbrlp+tBwilaeavFgzCw==}
+  /@public-ui/schema/1.4.0-rc.12:
+    resolution: {integrity: sha512-c60kOErKnKmPEu5KmpOgGXYAaiy11rkb7j1ZIf0JJwPOEgoA4+oT8mUBODKaeZLU4t2D/ia7jnB7SwL9KzYxrQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: true
@@ -464,8 +464,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.14.2:
-    resolution: {integrity: sha512-1uEQxww3DaghA0RxqHx0O0ppVlo43pJhepY51OxuQIKHpjbnYLA7vcdwioNPzIqmC2u3I/dmylcqjlh0e7AyUA==}
+  /@types/node/18.14.1:
+    resolution: {integrity: sha512-QH+37Qds3E0eDlReeboBxfHbX9omAcBCXEzswCu6jySP642jiM3cYSIkU/REqwhCUqXdonHFuBfJDiAJxMNhaQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -493,7 +493,7 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.14.2
+      '@types/node': 18.14.1
     dev: true
 
   /@types/scheduler/0.16.2:

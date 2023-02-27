@@ -1,8 +1,9 @@
 import { render } from 'preact';
+import React from 'react';
 
 import { AppComponent } from './components/app/component';
 
-import { register } from '@public-ui/components';
+import { register } from '@public-ui/core';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { ITZBund } from '@public-ui/themes';
 

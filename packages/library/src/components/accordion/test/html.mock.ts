@@ -40,10 +40,10 @@ export const getAccordionHtml = (
 				}
 			)}
 
-      <div part="header">
+      <div id="nonce" part="header">
         <slot name="header"></slot>
       </div>
-      <div id="nonce" part="content"${props._open ? '' : ' style="display: none; height: 0; visibility: hidden;"'}>
+      <div part="content"${props._open ? '' : ' style="display: none; height: 0; visibility: hidden;"'}>
         <slot name="content"></slot>
       </div>
     </div>

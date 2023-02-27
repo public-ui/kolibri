@@ -1,26 +1,6 @@
-:host * {
-	/**
-	 * This rule enables the font-family to be inherited for all elements (incl. Button, Input etc.).
-	 */
-	font-family: inherit;
-	/**
-	 * This rule enables the font-size to be inherited for all elements.
-	 */
-	font-size: inherit;
-	/**
-	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-	 */
+* {
 	hyphens: auto;
-	/**
-	 * Letter spacing is required for all texts.
-	 */
 	letter-spacing: inherit;
-	/**
-	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
-	 */
 	word-break: break-word;
-	/**
-	 * Word spacing is required for all texts.
-	 */
 	word-spacing: inherit;
 }

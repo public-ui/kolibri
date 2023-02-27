@@ -6,7 +6,7 @@
 :host > span {
 	border-radius: var(--kolibri-border-radius);
 	display: flex;
-	/* height: calc(1rem + 3 * var(--kolibri-spacing)); we could not limited the height */
+	height: calc(1rem + 3 * var(--kolibri-spacing));
 	line-height: calc(1rem + var(--kolibri-spacing));
 	place-items: center;
 }
