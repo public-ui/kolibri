@@ -1,15 +1,15 @@
 @import '../style.css';
 
-:host progress,
-:host span {
+progress,
+span {
 	display: block;
 	height: 0px;
 	overflow: hidden;
 	width: 0px;
 }
 
-:host .bar,
-:host .cycle {
+.bar,
+.cycle {
 	transition: all 0.5s ease-in-out 0s;
 	transition-property: all;
 	transition-duration: 0.5s;
@@ -17,7 +17,7 @@
 	transition-delay: 0.25s;
 }
 
-:host .cycle {
+.cycle {
 	transform-origin: 50% 50%;
 	transform: rotate(-90deg);
 }
