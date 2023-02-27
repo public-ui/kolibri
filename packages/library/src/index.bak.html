@@ -9,7 +9,8 @@
 		<script type="module">
 			import('./build/index.esm.js')
 				.then((module) => {
-					module.KoliBriDevHelper.patchTheme('demo', {})
+					module.KoliBriDevHelper.patchTheme('demo', {});
+				})
 				.catch(console.warn);
 		</script>
 		<script type="module" src="build/kolibri.esm.js"></script>

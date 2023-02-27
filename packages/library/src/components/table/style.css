@@ -5,35 +5,35 @@
 	overflow-y: hidden;
 }
 
-table {
+:host table {
 	width: 100%;
 }
 
-th > div {
+:host th > div {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	place-items: center;
 	gap: 0.25em;
 }
 
-div.pagination {
+:host div.pagination {
 	padding: 0.5em;
 }
 
-div.pagination,
-div.pagination > div:last-child {
+:host div.pagination,
+:host div.pagination > div:last-child {
 	display: grid;
 	place-items: center;
 	gap: 0.5em;
 }
 
 @media (min-width: 1024px) {
-	div.pagination,
-	div.pagination > div:last-child {
+	:host div.pagination,
+	:host div.pagination > div:last-child {
 		grid-auto-flow: column;
 	}
 
-	div.pagination kol-pagination {
+	:host div.pagination kol-pagination {
 		display: flex;
 		gap: calc(4 * var(--kolibri-spacing));
 	}
