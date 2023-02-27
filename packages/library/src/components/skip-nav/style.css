@@ -1,10 +1,10 @@
 @import '../style.css';
 
-ul {
+:host ul {
 	display: grid;
 	list-style: none;
 	place-items: center;
 }
-ul li {
+:host ul li {
 	height: 0;
 }

@@ -1,4 +1,4 @@
-@import '../style.css';
+@import '../input-line.css';
 
 /* INPUT */
 input:focus {
@@ -7,14 +7,14 @@ input:focus {
 	outline-style: solid;
 	outline-width: 3px;
 }
-label {
+:host label {
 	display: grid;
 	font-size: 14px;
 	line-height: 20px;
 	gap: 8px;
 	width: 100%;
 }
-input {
+:host input {
 	width: 100%;
 	border-color: var(--kolibri-border-color);
 	border-width: 2px;
@@ -23,14 +23,14 @@ input {
 	line-height: 24px;
 	font-size: 16px;
 }
-input:hover {
+:host input:hover {
 	border-color: var(--kolibri-color-primary);
 }
-kol-alert {
+:host kol-alert {
 	display: block;
 	width: 100%;
 }
-.kol-required span::after {
+:host .kol-required span::after {
 	content: '*';
 } /* RADIO */
 fieldset {

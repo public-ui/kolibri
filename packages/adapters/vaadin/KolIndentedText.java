@@ -12,7 +12,7 @@ In der Komponente kann beliebiger HTML-Code verwendet werden.
  */
 
 @Tag("kol-indented-text")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.10")
+@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.14")
 @JsModule("@public-ui/components/dist/components/kol-indented-text")
 public class KolIndentedText extends Component {
 }

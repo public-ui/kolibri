@@ -9,7 +9,8 @@
 		<script type="module">
 			import('./build/index.esm.js')
 				.then((module) => {
-					module.KoliBriDevHelper.patchTheme('demo', {})
+					module.KoliBriDevHelper.patchTheme('demo', {});
+				})
 				.catch(console.warn);
 		</script>
 		<script type="module" src="build/kolibri.esm.js"></script>
@@ -43,7 +44,7 @@
 					<kol-heading _label="BIK BITV-Test" _overline="Overline"></kol-heading>
 				</div>
 				<div class="gap-2 col-12 d-flex">
-					<kol-version _version="1.4.0-rc.14"></kol-version>
+					<kol-version _version="1.4.0-rc.15"></kol-version>
 					<kol-badge _icon="icofont-check" _color="#030" _label="BIK BITV-Test"></kol-badge>
 					<kol-badge _color="#f0f" _label="Test"></kol-badge>
 					<kol-badge _color="#0bf" _label="Test"></kol-badge>
@@ -1393,7 +1394,6 @@
 					</div>
 					<script src="assets/pagination-simulation.js"></script>
 				</li>
-				<li></li>
 				<li>
 					<div class="row">
 						<div class="col-12">
