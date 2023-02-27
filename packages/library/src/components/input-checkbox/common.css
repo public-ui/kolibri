@@ -1,8 +1,8 @@
-:host label {
+label {
 	cursor: pointer;
 }
 
-:host input {
+input {
 	border-color: var(--kolibri-border-color);
 	border-width: 2px;
 	border-style: solid;
@@ -10,69 +10,69 @@
 	font-size: var(--kolibri-font-size);
 }
 
-:host .required label > span::after {
+.required label > span::after {
 	content: '*';
 	padding-left: 0.125em;
 }
-:host input:hover {
+input:hover {
 	border-color: var(--kolibri-color-normal);
 }
-:host kol-input {
+kol-input {
 	align-items: center;
 	display: grid;
 	gap: calc(2 * var(--kolibri-spacing));
 	justify-items: left;
 	width: 100%;
 }
-:host kol-input.checkbox {
+kol-input.checkbox {
 	grid-template-columns: calc(6 * var(--kolibri-spacing)) auto;
 }
-:host kol-input.switch {
+kol-input.switch {
 	grid-template-columns: calc(13 * var(--kolibri-spacing)) auto;
 }
-:host kol-input .input {
+kol-input .input {
 	display: inline-flex;
 	order: 1;
 }
-:host kol-input .input div {
+kol-input .input div {
 	display: inline-flex;
 }
-:host kol-input .input input {
+kol-input .input input {
 	margin: 0px;
 }
-:host kol-input label {
+kol-input label {
 	order: 2;
 }
-:host kol-input kol-alert.error {
+kol-input kol-alert.error {
 	order: 3;
 	padding-top: 0.25em;
 	grid-column: span 2 / auto;
-}
-:host input[type='checkbox'] {
+} /* CHECKBOX */
+input[type='checkbox'] {
 	appearance: none;
 	background-color: white;
 	cursor: pointer;
 	transition: 0.5s;
 }
-:host input[type='checkbox'].kol-disabled:before {
+input[type='checkbox'].kol-disabled:before {
 	cursor: not-allowed;
 }
-:host input[type='checkbox']:before {
+input[type='checkbox']:before {
 	content: '';
 	cursor: pointer;
 }
-:host input[type='checkbox']:checked {
+input[type='checkbox']:checked {
 	background-color: var(--kolibri-color-primary);
 	border-color: var(--kolibri-color-primary);
 }
-:host .disabled {
+.disabled {
 	opacity: 0.33;
 }
-:host .checkbox kol-icon,
-:host .switch kol-icon {
+.checkbox kol-icon,
+.switch kol-icon {
 	display: none;
 }
-:host kol-input span.hint {
+kol-input span.hint {
 	grid-column: span 2;
 	font-style: italic;
 	color: gray;

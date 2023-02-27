@@ -1,4 +1,4 @@
-:host .switch input[type='checkbox'] {
+.switch input[type='checkbox'] {
 	/* border-radius: 0.25em; */
 	min-width: 3.2em;
 	width: 3.2em;
@@ -6,7 +6,7 @@
 	display: inline-block;
 	position: relative;
 }
-:host .switch input[type='checkbox']:before {
+.switch input[type='checkbox']:before {
 	/* border-radius: 0.25em; */
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
@@ -19,14 +19,14 @@
 	background-color: black;
 	position: absolute;
 }
-:host .switch input[type='checkbox']:checked:before {
+.switch input[type='checkbox']:checked:before {
 	-webkit-transform: translateX(1.5em);
 	-moz-transform: translateX(1.5em);
 	-ms-transform: translateX(1.5em);
 	transform: translateX(1.5em);
 	background-color: white;
 }
-:host .switch input[type='checkbox']:indeterminate:before {
+.switch input[type='checkbox']:indeterminate:before {
 	-webkit-transform: translateX(0.75em);
 	-moz-transform: translateX(0.75em);
 	-ms-transform: translateX(0.75em);
