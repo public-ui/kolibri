@@ -7,11 +7,11 @@ import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks'
 import { Stringified } from '../../types/common';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { Log } from '../../utils/log';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';
+import { Log } from '../../utils/dev.utils';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 

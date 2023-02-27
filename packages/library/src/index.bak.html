@@ -6,6 +6,12 @@
 		<meta name="description" content="Auf der Seite werden alle KoliBri-Komponenten für den BIK BITV-Test dargestellt." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.jsdelivr.net " /> -->
+		<script type="module">
+			import('./build/index.esm.js')
+				.then((module) => {
+					module.KoliBriDevHelper.patchTheme('demo', {})
+				.catch(console.warn);
+		</script>
 		<script type="module" src="build/kolibri.esm.js"></script>
 		<script nomodule src="build/kolibri.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -26,8 +32,7 @@
 		<meta name="robots" content="noindex" />
 		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false" />
 	</head>
-
-	<body>
+	<body class="demo" data-theme="demo">
 		<header class="container">
 			<!-- <kol-all></kol-all> -->
 			<div class="row">
@@ -38,7 +43,7 @@
 					<kol-heading _label="BIK BITV-Test" _overline="Overline"></kol-heading>
 				</div>
 				<div class="gap-2 col-12 d-flex">
-					<kol-version _version="1.4.0-rc.11"></kol-version>
+					<kol-version _version="1.4.0-rc.14"></kol-version>
 					<kol-badge _icon="icofont-check" _color="#030" _label="BIK BITV-Test"></kol-badge>
 					<kol-badge _color="#f0f" _label="Test"></kol-badge>
 					<kol-badge _color="#0bf" _label="Test"></kol-badge>
@@ -287,6 +292,10 @@
 								<kol-badge _label="Ich auch!" _icon="icofont-ui-rating" _icon-align="right" _color="#94083c"></kol-badge>
 								<kol-badge _label="Und ich!" _color="#0c247d"></kol-badge>
 								<kol-badge _icon="icofont-ui-rate-blank" _label="Ich bin ein Icon!" _icon-only _color="#030"></kol-badge>
+							</div>
+							<kol-heading _level="3">Zu langer Badge-Text</kol-heading>
+							<div>
+								<kol-badge _label="Ich bin ein Tag! Ich bin ein Tag! Ich bin ein Tag!" _icon="icofont-ui-love" _color="#000"></kol-badge>
 							</div>
 							<kol-heading _level="3">Badge mit Schalter</kol-heading>
 							<div>

@@ -68,7 +68,7 @@ export class KolLinkButton
 					_iconOnly={this._iconOnly}
 					_label={this._label}
 					_on={this._on}
-					_role={this._role}
+					_role="button"
 					_tabIndex={this._tabIndex}
 					_target={this._target}
 					_targetDescription={this._targetDescription}

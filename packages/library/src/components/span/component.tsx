@@ -5,7 +5,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
 import { watchBoolean } from '../../utils/prop.validators';
 import { validateIcon } from '../../utils/validators/icon';
-import { validateLabel } from '../../utils/validators/label';
+import { validateLabelWithAriaLabel } from '../../utils/validators/label';
 
 /**
  * API
@@ -156,7 +156,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		validateLabelWithAriaLabel(this, value);
 	}
 
 	/**

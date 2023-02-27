@@ -27,7 +27,7 @@ export const getAccordionHtml = (
 					_level: props._level,
 				},
 				{
-					default: `<button aria-expanded="${props._open ? 'true' : 'false'}">
+					default: `<button aria-controls="nonce" aria-expanded="${props._open ? 'true' : 'false'}">
 							${getIconHtml({
 								_ariaLabel: '',
 								_icon: props._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus',
@@ -40,7 +40,7 @@ export const getAccordionHtml = (
 				}
 			)}
 
-      <div part="header">
+      <div id="nonce" part="header">
         <slot name="header"></slot>
       </div>
       <div part="content"${props._open ? '' : ' style="display: none; height: 0; visibility: hidden;"'}>

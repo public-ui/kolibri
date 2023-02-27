@@ -6,9 +6,8 @@ import { hex, score } from 'wcag-contrast';
 import { Generic } from '@a11y-ui/core';
 
 import { devHint } from './a11y.tipps';
-import { getDocument, getExperimalMode, getWindow } from './dev.utils';
+import { getDocument, getExperimalMode, getWindow, Log } from './dev.utils';
 import { Stringified } from '../types/common';
-import { Log } from './log';
 
 // https://regex101.com/r/lSYLO9/1
 /**
@@ -142,8 +141,9 @@ type WatchBooleanOptions = WatchOptions & {
 	defaultValue?: boolean | null;
 };
 
-type WatchStringOptions = WatchOptions & {
+export type WatchStringOptions = WatchOptions & {
 	defaultValue?: string | null;
+	maxLength?: number;
 	minLength?: number;
 };
 
@@ -194,8 +194,9 @@ export const watchString = (component: Generic.Element.Component, propName: stri
 	watchValidator(
 		component,
 		propName,
-		(value): boolean => typeof value === 'string' && value.length >= minLength,
-		new Set([`String (Mindestlänge ${minLength})`]),
+		(value): boolean =>
+			typeof value === 'string' && value.length >= minLength && (typeof options?.maxLength === 'undefined' || value.length <= options.maxLength),
+		new Set([`String`]),
 		value,
 		options
 	);

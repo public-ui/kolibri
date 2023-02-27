@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.65
-  '@types/node': 18.14.0
+  '@types/node': 18.14.1
   '@typescript-eslint/eslint-plugin': 5.53.0
   '@typescript-eslint/parser': 5.53.0
   eslint: 8.34.0
@@ -14,7 +14,7 @@ dependencies:
   '@a11y-ui/core': 1.0.1-rc.65
 
 devDependencies:
-  '@types/node': 18.14.0
+  '@types/node': 18.14.1
   '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
   '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
   eslint: 8.34.0
@@ -829,8 +829,8 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
-  /@types/node/18.14.0:
-    resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
+  /@types/node/18.14.1:
+    resolution: {integrity: sha512-QH+37Qds3E0eDlReeboBxfHbX9omAcBCXEzswCu6jySP642jiM3cYSIkU/REqwhCUqXdonHFuBfJDiAJxMNhaQ==}
     dev: true
 
   /@types/resolve/1.20.2:
