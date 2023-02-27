@@ -41,7 +41,7 @@
 		"@public-ui/components": "1.4.0-rc.14",
 		"@public-ui/solid": "1.4.0-rc.14",
 		"@public-ui/themes": "1.4.0-rc.14",
-		"monaco-editor": "0.35.0",
+		"monaco-editor": "0.36.0",
 		"monaco-editor-webpack-plugin": "7.0.1",
 		"register-service-worker": "1.7.2",
 		"solid-js": "1.6.11",
