@@ -1,34 +1,34 @@
 @import '../style.css';
 
-:host details {
+details {
 	display: grid;
 	width: 100%;
 }
-:host details > summary {
+details > summary {
 	border-radius: var(--kolibri-spacing);
 	cursor: pointer;
 	display: flex;
 	place-items: center;
 }
-:host details > summary > span {
+details > summary > span {
 	border-bottom-color: var(--kolibri-border-color);
 	border-bottom-style: solid;
 	border-bottom-width: calc(var(--kolibri-spacing) / 2);
 	padding: 0 var(--kolibri-spacing);
 }
-:host details > summary > span:first-child {
+details > summary > span:first-child {
 	padding-right: var(--kolibri-spacing);
 	text-align: center;
 	width: 1rem;
 }
-:host details > summary > span:last-child {
+details > summary > span:last-child {
 	padding-left: var(--kolibri-spacing);
 }
-:host details[open] > summary > span,
-:host details:focus > summary > span,
-:host details:hover > summary > span {
+details[open] > summary > span,
+details:focus > summary > span,
+details:hover > summary > span {
 	border-bottom-color: black;
 }
-:host details > kol-indented-text {
+details > kol-indented-text {
 	margin: var(--kolibri-spacing) 0 0 calc(2 * var(--kolibri-spacing));
 }

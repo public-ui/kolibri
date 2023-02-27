@@ -10,7 +10,7 @@ applicationSuite: Informationstechnikzentrum Bund
 landingURL: 'https://github.com/public-ui'
 documentationURL: 'https://public-ui.github.io'
 releaseDate: '2023-02-01'
-version: '1.4.0-rc.15'
+version: '1.4.0'
 logo: https://avatars.githubusercontent.com/u/109126739
 
 platforms:
