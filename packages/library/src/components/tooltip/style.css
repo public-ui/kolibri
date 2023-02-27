@@ -1,6 +1,6 @@
 @import '../style.css';
 
-:host #floating {
+kol-tooltip #floating {
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -10,7 +10,7 @@
 	position: absolute;
 }
 
-:host #arrow {
+kol-tooltip #arrow {
 	background: #333;
 	height: 10px;
 	position: absolute;
@@ -19,7 +19,7 @@
 	z-index: 999;
 }
 
-:host kol-badge {
+kol-tooltip kol-badge {
 	border-radius: var(--kolibri-border-radius);
 	font-size: calc(4 * var(--kolibri-spacing));
 	max-width: 300px;
