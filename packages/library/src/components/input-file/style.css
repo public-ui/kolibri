@@ -1,17 +1,17 @@
 @import '../input-line.css';
 
-:host label.kol-required span::after {
+label.kol-required span::after {
 	content: '*';
 }
 
-:host label input[type='file']::-webkit-file-upload-button {
+label input[type='file']::-webkit-file-upload-button {
 	display: none;
 }
 
-:host label input[type='file']::before {
+label input[type='file']::before {
 	content: 'Datei auswählen';
 }
 
-:host label input[multiple]::before {
+label input[multiple]::before {
 	content: 'Dateien auswählen';
 }
