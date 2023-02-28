@@ -1,6 +1,11 @@
 @import '../input.css';
 
 /* INPUT */
+
+kol-input .icons {
+	display: none;
+}
+
 input:focus {
 	outline-color: var(--kolibri-color-primary) !important;
 	outline-offset: 2px;
