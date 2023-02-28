@@ -1,6 +1,6 @@
 {
 	"name": "create-kolibri",
-	"version": "1.4.1-rc.0",
+	"version": "1.4.1-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -109,7 +109,7 @@
 		"lerna": "6.5.1",
 		"license-report": "6.3.0",
 		"lint-staged": "13.1.2",
-		"npm-check-updates": "16.7.9",
+		"npm-check-updates": "16.7.10",
 		"prettier": "2.8.4",
 		"rimraf": "4.1.2",
 		"ts-node": "10.9.1",

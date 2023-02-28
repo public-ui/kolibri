@@ -2,29 +2,29 @@ lockfileVersion: 5.4
 
 specifiers:
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.0
-  '@public-ui/core': 1.4.0
-  '@public-ui/themes': 1.4.0
+  '@public-ui/components': 1.4.1-rc.0
+  '@public-ui/core': 1.4.1-rc.0
+  '@public-ui/themes': 1.4.1-rc.0
   '@slidev/cli': 0.40.3
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
-  npm-check-updates: 16.7.9
+  npm-check-updates: 16.7.10
   playwright-chromium: 1.31.1
   prettier: 2.8.4
   rimraf: 4.1.2
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_vd7sleeildezbdwk4avnxzmucy
-  '@public-ui/components': 1.4.0
-  '@public-ui/core': 1.4.0
-  '@public-ui/themes': 1.4.0_vd7sleeildezbdwk4avnxzmucy
+  '@public-oss/kolibri-themes': 0.0.3_pnhlmgeg27i36t54xlz52cjcsu
+  '@public-ui/components': 1.4.1-rc.0
+  '@public-ui/core': 1.4.1-rc.0
+  '@public-ui/themes': 1.4.1-rc.0_pnhlmgeg27i36t54xlz52cjcsu
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
 
 devDependencies:
   '@slidev/cli': 0.40.3_lnuj7rdmmp2tvhq64vixhmkkny
-  npm-check-updates: 16.7.9
+  npm-check-updates: 16.7.10
   playwright-chromium: 1.31.1
   prettier: 2.8.4
   rimraf: 4.1.2
@@ -879,21 +879,21 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_vd7sleeildezbdwk4avnxzmucy:
+  /@public-oss/kolibri-themes/0.0.3_pnhlmgeg27i36t54xlz52cjcsu:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.0
+      '@public-ui/components': 1.4.1-rc.0
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.4.0:
-    resolution: {integrity: sha512-t9QxsDNbLBnwOJcdmQaZqNQgPAWEFO1+YLV8ki1ojP22DFyx7GRGrxf/G3wGlW4SnWJTCzgwusrlKUVizwW/zA==}
+  /@public-ui/components/1.4.1-rc.0:
+    resolution: {integrity: sha512-KoPBMuWk1xxjIs8dVuWf8T8NSPebmlhMHRKWxJ7i5OeDwBgIuRAjNAg+r5YTn0SNvhy4wPYGv75KkvN7YKydzg==}
     dependencies:
       '@floating-ui/dom': 1.2.1
-      '@public-ui/core': 1.4.0
-      '@public-ui/schema': 1.4.0
+      '@public-ui/core': 1.4.1-rc.0
+      '@public-ui/schema': 1.4.1-rc.0
     dev: false
 
   /@public-ui/core/1.1.15:
@@ -903,8 +903,8 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core/1.4.0:
-    resolution: {integrity: sha512-bV07Jde2utbpIIVR3ZYkx+aQfllI+/cQICoejzPVqyipU0gRW8gEIrB+P5vruKA65uakqESzl7g1hv5KjpAyIQ==}
+  /@public-ui/core/1.4.1-rc.0:
+    resolution: {integrity: sha512-WMxouoaWTw5+0xgHUe09BNpg4p0sTeS/j5h8KSbyDtq6F3ZwlHF9UIWzMp0REqphHtgbRLzwSgMrX+O8twYcqg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
@@ -916,19 +916,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema/1.4.0:
-    resolution: {integrity: sha512-tTWK853YLpW7T3nus+eELRnNfC0Xm4y56UC6jKxz0O1lAjexym5kvPiv/06kVcQaJaKKfKzj8v4+A3J2xDcvBA==}
+  /@public-ui/schema/1.4.1-rc.0:
+    resolution: {integrity: sha512-Gc8iLJQidFK4O67T0Hrv+gLCQL3nYpIQX0z25D4yf2GpIYAeqUOH78f0hpiE/FdA2Kmgmus9EJzW2pNwxsrxXA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: false
 
-  /@public-ui/themes/1.4.0_vd7sleeildezbdwk4avnxzmucy:
-    resolution: {integrity: sha512-YjUMyuQ1EAgq7+0cOM872l6VWDwye3MZVecsxFimzX1XFe2GUrG/e0g+cG31rmpgt4kIB7mryKQpJBG+zoEU7A==}
+  /@public-ui/themes/1.4.1-rc.0_pnhlmgeg27i36t54xlz52cjcsu:
+    resolution: {integrity: sha512-ispMuA6YawhwCQoEe3IWgUaVa9H+y72WlkiVZZ8F6FgrkUB3gJYyMvxebgIWHZfGQFticSL0kc5s+rk4Z4LuLw==}
     peerDependencies:
-      '@public-ui/components': 1.4.0
+      '@public-ui/components': 1.4.1-rc.0
     dependencies:
-      '@public-ui/components': 1.4.0
-      '@public-ui/schema': 1.4.0
+      '@public-ui/components': 1.4.1-rc.0
+      '@public-ui/schema': 1.4.1-rc.0
     dev: false
 
   /@rollup/pluginutils/5.0.2:
@@ -3809,6 +3809,13 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch/7.3.0:
+    resolution: {integrity: sha512-WaMDuhKa7a6zKiwplR1AOz+zGvJba24k5VU1Cy6NhEguavT2YRlHxuINUgTas4wiS6fwBpYq4TcA1XIECSntyw==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist/1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
@@ -4019,8 +4026,8 @@ packages:
       npm-normalize-package-bin: 3.0.0
     dev: true
 
-  /npm-check-updates/16.7.9:
-    resolution: {integrity: sha512-2/T9PB0W1uABB1N11jdnPauqNLXMhPUyC0DBeeGlUktcGl/412f40iqFsnNGCqIAag/C37SjLNiW2/yuD7Salw==}
+  /npm-check-updates/16.7.10:
+    resolution: {integrity: sha512-sLDgYD8ebkH9Jd6mPIq7UDGLr3DAxkHl6ZuJrEF4rauLv6DqHBxtnF16MHUPN+/eBt5QbH4GL/+nxfSAFm3TfQ==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -4037,9 +4044,9 @@ packages:
       json-parse-helpfulerror: 1.0.3
       jsonlines: 0.1.1
       lodash: 4.17.21
-      minimatch: 6.2.0
+      minimatch: 7.3.0
       p-map: 4.0.0
-      pacote: 15.1.0
+      pacote: 15.1.1
       parse-github-url: 1.0.2
       progress: 2.0.3
       prompts-ncu: 2.5.1
@@ -4208,8 +4215,8 @@ packages:
       semver: 7.3.8
     dev: true
 
-  /pacote/15.1.0:
-    resolution: {integrity: sha512-FFcjtIl+BQNfeliSm7MZz5cpdohvUV1yjGnqgVM4UnVF7JslRY0ImXAygdaCDV0jjUADEWu4y5xsDV8brtrTLg==}
+  /pacote/15.1.1:
+    resolution: {integrity: sha512-eeqEe77QrA6auZxNHIp+1TzHQ0HBKf5V6c8zcaYZ134EJe1lCi+fjXATkNiEEfbG+e50nu02GLvUtmZcGOYabQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     hasBin: true
     dependencies:
