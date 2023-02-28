@@ -1,1 +1,32 @@
 @import '../input-line.css';
+
+kol-input .input {
+	display: grid;
+	height: 2.5em;
+	align-content: center;
+	align-items: center;
+	padding: calc(2 * var(--kolibri-spacing));
+}
+
+input[type='range'],
+input[type='range']::-webkit-slider-thumb {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+input[type='range'] {
+	background-color: var(--kolibri-color-normal);
+	border: 0;
+	height: calc(2 * var(--kolibri-spacing));
+	margin: 0;
+	overflow: visible;
+	padding: 0;
+	width: 100%;
+}
+input[type='range']::-webkit-slider-thumb {
+	background-color: var(--kolibri-color-primary);
+	border-radius: 1.5rem;
+	cursor: pointer;
+	height: 1.5rem;
+	width: 1.5rem;
+}

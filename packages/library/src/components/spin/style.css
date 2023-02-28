@@ -1,12 +1,12 @@
 @import '../style.css';
 
-:host .spin {
+.spin {
 	display: inline-block;
 	height: 1rem;
 	position: relative;
 	width: 3rem;
 }
-:host .spin span {
+.spin span {
 	animation-timing-function: cubic-bezier(0, 1, 1, 0);
 	border-color: #fff;
 	border-radius: 50%;
@@ -17,25 +17,25 @@
 	top: 0.1rem;
 	width: 0.8rem;
 }
-:host .spin span:nth-child(1) {
+.spin span:nth-child(1) {
 	background-color: #fc0;
 	z-index: 0;
 	animation: spin1 2s infinite;
 	left: 0.1rem;
 }
-:host .spin span:nth-child(2) {
+.spin span:nth-child(2) {
 	background-color: #f00;
 	z-index: 1;
 	animation: spin2 2s infinite;
 	left: 0.1rem;
 }
-:host .spin span:nth-child(3) {
+.spin span:nth-child(3) {
 	background-color: #000;
 	z-index: 1;
 	animation: spin2 2s infinite;
 	left: 1.1rem;
 }
-:host .spin span:nth-child(4) {
+.spin span:nth-child(4) {
 	background-color: #666;
 	z-index: 0;
 	animation: spin3 2s infinite;

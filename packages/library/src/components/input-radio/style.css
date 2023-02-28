@@ -1,20 +1,25 @@
-@import '../input-line.css';
+@import '../input.css';
 
 /* INPUT */
+
+kol-input .icons {
+	display: none;
+}
+
 input:focus {
 	outline-color: var(--kolibri-color-primary) !important;
 	outline-offset: 2px;
 	outline-style: solid;
 	outline-width: 3px;
 }
-:host label {
+label {
 	display: grid;
 	font-size: 14px;
 	line-height: 20px;
 	gap: 8px;
 	width: 100%;
 }
-:host input {
+input {
 	width: 100%;
 	border-color: var(--kolibri-border-color);
 	border-width: 2px;
@@ -23,14 +28,14 @@ input:focus {
 	line-height: 24px;
 	font-size: 16px;
 }
-:host input:hover {
+input:hover {
 	border-color: var(--kolibri-color-primary);
 }
-:host kol-alert {
+kol-alert {
 	display: block;
 	width: 100%;
 }
-:host .kol-required span::after {
+.kol-required span::after {
 	content: '*';
 } /* RADIO */
 fieldset {

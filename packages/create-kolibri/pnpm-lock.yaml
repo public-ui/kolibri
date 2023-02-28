@@ -14,7 +14,7 @@ specifiers:
   lerna: 6.5.1
   license-report: 6.3.0
   lint-staged: 13.1.2
-  npm-check-updates: 16.7.9
+  npm-check-updates: 16.7.10
   npm-run-all: 4.1.5
   prettier: 2.8.4
   rimraf: 4.1.2
@@ -40,7 +40,7 @@ devDependencies:
   lerna: 6.5.1
   license-report: 6.3.0
   lint-staged: 13.1.2
-  npm-check-updates: 16.7.9
+  npm-check-updates: 16.7.10
   prettier: 2.8.4
   rimraf: 4.1.2
   ts-node: 10.9.1_ellgaeuoqnti3hful2ny2iugba
@@ -6126,6 +6126,13 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch/7.3.0:
+    resolution: {integrity: sha512-WaMDuhKa7a6zKiwplR1AOz+zGvJba24k5VU1Cy6NhEguavT2YRlHxuINUgTas4wiS6fwBpYq4TcA1XIECSntyw==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist-options/4.1.0:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
     engines: {node: '>= 6'}
@@ -6584,8 +6591,8 @@ packages:
       npm-normalize-package-bin: 3.0.0
     dev: true
 
-  /npm-check-updates/16.7.9:
-    resolution: {integrity: sha512-2/T9PB0W1uABB1N11jdnPauqNLXMhPUyC0DBeeGlUktcGl/412f40iqFsnNGCqIAag/C37SjLNiW2/yuD7Salw==}
+  /npm-check-updates/16.7.10:
+    resolution: {integrity: sha512-sLDgYD8ebkH9Jd6mPIq7UDGLr3DAxkHl6ZuJrEF4rauLv6DqHBxtnF16MHUPN+/eBt5QbH4GL/+nxfSAFm3TfQ==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -6602,9 +6609,9 @@ packages:
       json-parse-helpfulerror: 1.0.3
       jsonlines: 0.1.1
       lodash: 4.17.21
-      minimatch: 6.2.0
+      minimatch: 7.3.0
       p-map: 4.0.0
-      pacote: 15.1.0
+      pacote: 15.1.1
       parse-github-url: 1.0.2
       progress: 2.0.3
       prompts-ncu: 2.5.1
@@ -7190,8 +7197,8 @@ packages:
       - supports-color
     dev: true
 
-  /pacote/15.1.0:
-    resolution: {integrity: sha512-FFcjtIl+BQNfeliSm7MZz5cpdohvUV1yjGnqgVM4UnVF7JslRY0ImXAygdaCDV0jjUADEWu4y5xsDV8brtrTLg==}
+  /pacote/15.1.1:
+    resolution: {integrity: sha512-eeqEe77QrA6auZxNHIp+1TzHQ0HBKf5V6c8zcaYZ134EJe1lCi+fjXATkNiEEfbG+e50nu02GLvUtmZcGOYabQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     hasBin: true
     dependencies:
