@@ -1,41 +1,99 @@
 @import './input.css';
 
-:host .kol-disabled {
-	opacity: 0.5;
+kol-input {
+	display: grid;
+	gap: calc(2 * var(--kolibri-spacing));
 }
-
-:host .kol-cursor-not-allowed,
-:host .kol-cursor-not-allowed * {
+input,
+select,
+textarea {
+	background-color: white;
+	border-color: var(--kolibri-border-color);
+	border-radius: var(--kolibri-border-radius);
+	border-style: solid;
+	border-width: var(--kolibri-border-width);
+	font-size: 1em;
+	font-family: var(--kolibri-font-family-sans);
+	line-height: 1.5em;
+	overflow: hidden;
+	width: 100%;
+}
+input,
+select:not([multiple]) {
+	height: 2.75em;
+}
+input::placeholder {
+	color: var(--kolibri-color-normal);
+}
+input:hover {
+	border-color: var(--kolibri-color-primary);
+}
+input:not([type='color']):read-only,
+input:disabled,
+select:read-only,
+select:disabled,
+textarea:read-only,
+textarea:disabled {
 	cursor: not-allowed;
 }
-
-:host input[type='color'],
-:host input[type='date'],
-:host input[type='datetime-local'],
-:host input[type='email'],
-:host input[type='file'],
-:host input[type='month'],
-:host input[type='number'],
-:host input[type='password'],
-:host input[type='search'],
-:host input[type='tel'],
-:host input[type='text'],
-:host input[type='time'],
-:host input[type='url'],
-:host input[type='week'],
-:host select,
-:host textarea {
-	background-color: white;
+.required label > span::after {
+	content: '*';
+	padding-left: var(--kolibri-spacing);
+}
+.icons {
+	display: flex;
+	justify-content: space-between;
+	height: 0;
+}
+.icons > kol-icon {
 	display: block;
-	line-height: 1em;
-	padding: 0.5em;
+	margin: 0.75em;
+	height: 1em;
 }
-
-:host input[type='color'] {
-	height: 2.5em;
-	padding: 0.25em 0.5em;
+.icon-left input,
+.icon-left select {
+	padding-left: 2em;
 }
-
-:host textarea {
+.icon-right input,
+.icon-right select {
+	padding-right: 2em;
+}
+kol-button-wc {
+	position: relative;
+	float: right;
+	z-index: 1000;
+	margin-top: -44px;
+}
+kol-button-wc button {
+	background-color: transparent;
+	cursor: pointer;
+}
+.icon-right kol-button-wc {
+	margin-right: 44px;
+}
+.disabled {
+	opacity: 0.5;
+}
+select[multiple],
+textarea {
+	overflow: auto;
+}
+textarea {
+	display: block;
+}
+select option {
+	margin: var(--kolibri-spacing) 0;
 	padding: 0.5em;
+	border-radius: 0.25em;
+	cursor: pointer;
+}
+select option:disabled {
+	cursor: not-allowed;
+}
+option:active:not(:disabled),
+option:checked:not(:disabled),
+option:focus:not(:disabled),
+option:hover:not(:disabled) {
+	background-color: var(--kolibri-color-primary);
+	color: white;
 }

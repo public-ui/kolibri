@@ -12,54 +12,51 @@
 	font-size: inherit;
 }
 
-:host * {
+* {
 	/**
 	 * We prefer to box-sizing: border-box for all elements.
 	 */
 	box-sizing: border-box;
 }
 
-:host kol-icon {
+kol-icon {
 	color: inherit;
 }
 
-:host kol-span-wc {
+kol-span-wc {
 	display: grid;
 	place-items: center;
 	width: 100%;
 }
-:host kol-span-wc > span {
+kol-span-wc > span {
 	display: flex;
 	gap: var(--kolibri-spacing);
 	place-items: center;
 }
 
-:host button {
+a {
+	display: inline-flex;
+	place-items: baseline;
+}
+
+button {
+	background-color: transparent;
+	border-width: 0;
 	margin: 0;
 	min-height: 44px;
 	min-width: 44px;
 	padding: 0;
 }
 
-:host a,
-:host button,
-:host input,
-:host select,
-:host textarea {
+a,
+button,
+input,
+select,
+textarea {
 	cursor: pointer;
 }
 
-:host a.icon-only > kol-span-wc > span > span,
+a.icon-only > kol-span-wc > span > span,
 :host button.icon-only > kol-span-wc > span > span {
 	display: none;
-}
-
-:host a {
-	display: inline-flex;
-	place-items: baseline;
-}
-
-:host button {
-	background-color: transparent;
-	border-width: 0;
 }
