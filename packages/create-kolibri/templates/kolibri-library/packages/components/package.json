@@ -60,7 +60,7 @@
 		"@stencil/sass": "^2.0.3",
 		"@types/color-convert": "^2.0.0",
 		"@types/jest": "^26.0.24",
-		"@types/node": "^18.13.0",
+		"@types/node": "ts4.9",
 		"@types/puppeteer": "^7.0.4",
 		"@types/wcag-contrast": "^3.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.51.0",
