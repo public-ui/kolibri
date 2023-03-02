@@ -57,7 +57,7 @@
 		"i18next": "22.4.10"
 	},
 	"devDependencies": {
-		"@types/node": "18.14.2",
+		"@types/node": "ts4.9",
 		"@typescript-eslint/eslint-plugin": "5.54.0",
 		"@typescript-eslint/parser": "5.54.0",
 		"eslint": "8.35.0",

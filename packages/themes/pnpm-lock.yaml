@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@public-ui/components': 1.4.1
   '@public-ui/schema': 1.4.1
-  '@types/node': 18.14.2
+  '@types/node': ts4.9
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
   eslint: 8.35.0
@@ -16,7 +16,7 @@ dependencies:
   '@public-ui/schema': 1.4.1
 
 devDependencies:
-  '@types/node': 18.14.2
+  '@types/node': 18.14.3
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
   eslint: 8.35.0
@@ -675,8 +675,8 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
-  /@types/node/18.14.2:
-    resolution: {integrity: sha512-1uEQxww3DaghA0RxqHx0O0ppVlo43pJhepY51OxuQIKHpjbnYLA7vcdwioNPzIqmC2u3I/dmylcqjlh0e7AyUA==}
+  /@types/node/18.14.3:
+    resolution: {integrity: sha512-1y36CC5iL5CMyKALzwX9cwwxcWIxvIBe3gzs4GrXWXEQ8klQnCZ2U/WDGiNrXHmQcUhnaun17XG9TEIDlGj2RA==}
     dev: true
 
   /@types/resolve/1.20.2:
