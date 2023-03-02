@@ -9,16 +9,16 @@
 					<div slot="content" class="p-2 grid grid-cols-[1.5fr_1fr] items-center">
 						<div class="grid gap-2">
 							<div class="text-center">
-								<kol-button _label="Primary" _variant="primary"></kol-button>
+								<kol-button _label="Primary" _icon="icofont-ui-home" _variant="primary"></kol-button>
 							</div>
 							<div class="text-center">
-								<kol-button _label="Secondary" _variant="secondary"></kol-button>
+								<kol-button _label="Secondary" v-bind:_icon="{right: 'icofont-ui-edit'}" _variant="secondary"></kol-button>
 							</div>
 							<div class="text-center">
-								<kol-button _label="Danger" _variant="danger"></kol-button>
+								<kol-button _label="Danger" _icon="icofont-ui-delete" _variant="danger"></kol-button>
 							</div>
 							<div class="text-center">
-								<kol-button _label="Ghost" _variant="ghost"></kol-button>
+								<kol-button _label="Ghost" v-bind:_icon="{right: 'icofont-ui-flash-light'}" _variant="ghost"></kol-button>
 							</div>
 						</div>
 						<div class="grid gap-2">
@@ -36,8 +36,8 @@
 							</div>
 						</div>
 					</div>
-					<div slot="footer" class="py-2 grid grid-cols-[1fr_auto] gap-4 items-end">
-						<kol-select v-bind:_value="value" v-bind:_list="options" v-bind:_on="on"> Styleguide</kol-select>
+					<div slot="footer" class="p-2 grid grid-cols-[1fr_auto] gap-4 items-end">
+						<kol-select v-bind:_list="options" v-bind:_on="on" v-bind:_value="[value]">Styleguide</kol-select>
 						<kol-button
 							_label="Übernehmen"
 							_icon="icofont-ui-reply"
@@ -60,26 +60,37 @@ import Default from '../theme/layouts/default.vue';
 const options = [
 	{
 		disabled: true,
-		label: 'BPA-Styleguide',
-		value: 'default',
+		label: 'BPA-Styleguide (WIP)',
+		value: 'bpa',
 	},
 	{
-		label: 'DEFAULT-Styleguide (untested)',
-		value: 'default',
+		label: 'BMF-Styleguide',
+		value: 'bmf',
 	},
 	{
-		disabled: true,
+		label: 'DEZY-Styleguide (untested)',
+		value: 'desy-v2',
+	},
+	{
 		label: 'ITZBund-Styleguide (untested)',
 		value: 'itzbund',
+	},
+	{
+		label: 'MAPZoll-Styleguide',
+		value: 'mapz',
 	},
 	{
 		label: 'Freistaat Thüringen (untested)',
 		value: 'th',
 	},
+	{
+		label: 'Zoll-Designsystem (untested)',
+		value: 'zoll-v2',
+	},
 ];
 
 const local = window.localStorage.getItem('kolibri');
-let value = 'default';
+let value = 'itzbund';
 if (local) {
 	try {
 		const json = JSON.parse(local);
