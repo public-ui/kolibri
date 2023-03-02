@@ -51,7 +51,7 @@
 		"@a11y-ui/core": "1.0.1-rc.65"
 	},
 	"devDependencies": {
-		"@types/node": "18.14.2",
+		"@types/node": "18.14.3",
 		"@typescript-eslint/eslint-plugin": "5.54.0",
 		"@typescript-eslint/parser": "5.54.0",
 		"eslint": "8.35.0",
