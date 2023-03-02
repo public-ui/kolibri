@@ -1,27 +1,3 @@
 import { KoliBri } from '@public-ui/schema';
 
-export const EN = KoliBri.createTranslation('en', {
-	'kol-alert-error-label': 'Error',
-	'kol-alert-info-label': 'Information',
-	'kol-alert-warning-label': 'Warning',
-	'kol-alert-success-label': 'Success',
-	'kol-form-required-advise': 'Form fields, marked with an asterisk (*), are required.',
-	'kol-link-target-advise': 'Link opens in new tab',
-	'kol-logo-label': 'Figurative mark',
-	'kol-nav-label-close': 'Maximize navigation',
-	'kol-nav-label-open': 'Minmize Navigation',
-	'kol-pagination-label-first': 'First site',
-	'kol-pagination-label-last': 'Last site',
-	'kol-pagination-label-next': 'One site forward',
-	'kol-pagination-label-previous': 'One site back',
-	'kol-pagination-label-current': 'Site {$1} choosen',
-	'kol-spin-label-busy': 'Busy',
-	'kol-spin-label-finished': 'Finished',
-	'kol-table-button-sort-label': 'Change sort of {$1}',
-	'kol-table-pagination-label': '{$1} entries per site',
-	'kol-table-pagination-sites-no': 'No entries',
-	'kol-table-pagination-sites-yes': 'Entry {$1} to {$2}',
-	'kol-tabs-button-add-label': 'Add',
-	'kol-tabs-button-close-label': 'Close tab',
-	'kol-toast-button-close-label': 'Close',
-});
+export const EN = KoliBri.createTranslation('en', {});
