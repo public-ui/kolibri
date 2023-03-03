@@ -31,16 +31,7 @@ export class KolInput implements Props {
 				}}
 			>
 				{this._renderNoLabel === false && (
-					<label
-						htmlFor={this._id}
-						id={`${this._id}-label`}
-						style={{
-							height: hideLabel ? '0' : undefined,
-							margin: hideLabel ? '0' : undefined,
-							padding: hideLabel ? '0' : undefined,
-							visibility: hideLabel ? 'hidden' : undefined,
-						}}
-					>
+					<label id={`${this._id}-label`} hidden={hideLabel} htmlFor={this._id}>
 						<span>
 							<slot name="label"></slot>
 						</span>

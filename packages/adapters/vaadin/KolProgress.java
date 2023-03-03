@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-progress")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.14")
+@NpmPackage(value = "@public-ui/components", version = "1.4.2-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
 	/**

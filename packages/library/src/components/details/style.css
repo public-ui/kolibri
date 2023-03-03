@@ -25,10 +25,10 @@ details > summary > span:last-child {
 	padding-left: var(--kolibri-spacing);
 }
 details[open] > summary > span,
-details:focus > summary > span,
-details:hover > summary > span {
+details > summary:focus > span,
+details > summary:hover > span {
 	border-bottom-color: black;
 }
 details > kol-indented-text {
-	margin: var(--kolibri-spacing) 0 0 calc(2 * var(--kolibri-spacing));
+	margin: 0.25em 0 0 0.75em;
 }

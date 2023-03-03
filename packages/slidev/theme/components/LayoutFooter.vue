@@ -3,7 +3,7 @@
     v-if="website || handle"
     class="mt-auto grid grid-cols-3 justify-between w-full text-gray-500 dark:text-white"
   >
-    <small>14.11.2022</small>
+    <small>02.03.2023</small>
     <small class="text-center"
       ><strong>Ko</strong>mponenten-Bib<strong>li</strong>othek für die
       <strong>B</strong>ar<strong>ri</strong>erefreiheit</small

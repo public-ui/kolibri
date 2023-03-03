@@ -60,10 +60,10 @@
 		"@angular/compiler-cli": "14.2.12",
 		"@angular/compiler": "14.2.12",
 		"@angular/core": "14.2.12",
-		"@public-ui/components": "1.4.1",
+		"@public-ui/components": "1.4.2-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "18.11.18",
+		"@types/node": "ts4.8",
 		"@types/normalize-package-data": "2.4.1",
 		"prettier": "2.8.3",
 		"rimraf": "4.1.2",
@@ -75,7 +75,7 @@
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
 		"@angular/core": "^14",
-		"@public-ui/components": "1.4.1"
+		"@public-ui/components": "1.4.2-rc.2"
 	},
 	"files": [
 		"dist/"

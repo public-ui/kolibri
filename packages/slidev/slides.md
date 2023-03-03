@@ -309,10 +309,10 @@ Du kannst folgendes tun, um **KoliBri** kennenzulernen …
 
 <v-clicks>
 
-- <kol-link _href="https://public-ui.github.io" _target="storybook">Lese mehr über KoliBri</kol-link> (Dokumenation)
-- <kol-link _href="https://public-ui.github.io/?path=3D/docs/get-stated--page" _target="storybook">Probiere KoliBri aus</kol-link> (Create-App)
+- <kol-link _href="https://public-ui.github.io" _target="website">Lese mehr über KoliBri</kol-link> (Dokumentation)
+- <kol-link _href="https://public-ui.github.io/docs/get-started/erste-schritte" _target="website">Probiere KoliBri aus</kol-link> (Create-App)
 - <kol-link _href="https://github.com/public-ui/kolibri/releases" _target="github">Informiere Dich über die Neuerungen</kol-link> (Changelog)
-- <kol-link _href="https://public-ui.github.io/?path=3D/docs/theming--page" _target="storybook">Gestalte Dein eigenen KoliBri</kol-link> (Designer)
+- <kol-link _href="https://public-ui.github.io/docs/concepts/styling/theming" _target="website">Gestalte Dein eigenen KoliBri</kol-link> (Designer)
 - <kol-link _href="https://github.com/public-ui/kolibri/issues" _target="github">Gib uns Feedback</kol-link> (Feature, Issue)
 - <kol-link _href="https://github.com/public-ui/kolibri" _target="github">Folge uns auf GitHub</kol-link> (Follow-Button)
 
@@ -340,9 +340,9 @@ KoliBri zahlt mit seiner Funktion und Modularität in die strategischen Ziele de
 
 - Sorgt für mehr Einheitlichkeit über Projekte hinweg
 - Reduziert Mehraufwände in Entwicklung und Test
-- Komponenten sind so umgesetzt, wie wird sie brauchen
+- Komponenten sind so umgesetzt, wie wir sie brauchen
 - Kontinuierliche Verbesserung durch konsolidiertes Feedback
-- Schnelle Änderbarkeit durch hohe Automatisierung
+- Schnelle Änderbarkeit durch Code-Hoheit und Automatisierung
 - Generische Referenzimplementierung für Alle
 
 </v-clicks>

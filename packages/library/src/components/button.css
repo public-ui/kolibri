@@ -13,6 +13,7 @@
 :host > kol-link-wc button {
 	cursor: pointer;
 	display: inline-block;
+	font-size: 1rem;
 	min-height: 44px;
 	min-width: 44px;
 	padding: 0;
@@ -25,8 +26,8 @@
 :host > kol-button-wc button:active,
 :host > kol-link-wc a:active,
 :host > kol-link-wc button:active {
-	outline: 0 !important;
-	box-shadow: none !important;
+	outline: 0;
+	box-shadow: none;
 }
 :host > kol-button-wc a:disabled,
 :host > kol-button-wc button:disabled,

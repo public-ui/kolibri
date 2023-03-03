@@ -7,7 +7,7 @@ kol-input .icons {
 }
 
 input:focus {
-	outline-color: var(--kolibri-color-primary) !important;
+	outline-color: var(--kolibri-color-primary);
 	outline-offset: 2px;
 	outline-style: solid;
 	outline-width: 3px;
@@ -89,7 +89,7 @@ fieldset div input[type='radio']:before {
 }
 fieldset div input[type='radio']:checked:before {
 	box-shadow: 0 0 0.1rem black;
-	background-color: var(--kolibri-color-normal);
+	background-color: var(--kolibri-color-primary);
 }
 fieldset div input[type='radio']:disabled {
 	background-color: var(--kolibri-color-disabled);

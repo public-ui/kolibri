@@ -3,6 +3,6 @@
 @import '../../assets/icofont/icofont.css';
 
 :host > i {
-	color: inherit !important;
-	font-size: inherit !important;
+	color: inherit;
+	font-size: inherit;
 }

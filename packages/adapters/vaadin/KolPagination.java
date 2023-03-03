@@ -12,7 +12,7 @@ durchlaufen werden.
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.14")
+@NpmPackage(value = "@public-ui/components", version = "1.4.2-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**

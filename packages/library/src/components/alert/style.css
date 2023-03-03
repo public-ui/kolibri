@@ -13,64 +13,61 @@
 	overflow: hidden;
 	width: 100%;
 }
-:host > div > div.heading {
-	display: grid;
-	gap: var(--kolibri-spacing);
-	grid-template-columns: 2em auto 44px;
-	place-items: stretch start;
-}
-:host > div > div.heading .heading-icon {
-	display: inline-flex;
-	color: white;
-	padding: 0.5em;
+
+.heading {
+	display: flex;
+	gap: calc(2 * var(--kolibri-spacing));
 	place-items: center;
 }
-:host > div.card > div.heading .heading-icon {
-	border-radius: 0 0 var(--kolibri-border-radius) 0;
-}
-:host > div > div.heading > div {
-	align-self: center;
+.heading > div {
 	display: grid;
 	gap: var(--kolibri-spacing);
+	margin: var(--kolibri-spacing) 0;
 }
-:host > div.card > div.content {
-	padding: var(--kolibri-spacing);
+.heading .heading-icon {
+	align-items: center;
+	align-self: stretch;
+	display: inline-flex;
+	color: white;
+	padding: calc(2 * var(--kolibri-spacing));
 }
-:host > div.default {
-	border-color: var(--kolibri-color-normal);
+.card > .heading .heading-icon {
+	border-radius: 0 0 var(--kolibri-border-radius) 0;
 }
-:host > div.default .heading-icon {
-	background-color: var(--kolibri-color-normal);
-}
-:host > div.error {
-	border-color: var(--kolibri-color-error);
-}
-:host > div.error .heading-icon {
-	background-color: var(--kolibri-color-error);
-}
-:host > div.info {
-	border-color: var(--kolibri-color-info);
-}
-:host > div.info .heading-icon {
-	background-color: var(--kolibri-color-info);
-}
-:host > div.success {
-	border-color: var(--kolibri-color-success);
-}
-:host > div.success .heading-icon {
-	background-color: var(--kolibri-color-success);
-}
-:host > div.warning {
-	border-color: var(--kolibri-color-warning);
-}
-:host > div.warning .heading-icon {
-	background-color: var(--kolibri-color-warning);
-}
-
-/* close button */
-
-.close,
-.close > button {
+.heading .close button {
 	min-width: 44px;
 	min-height: 44px;
+}
+.card > .content {
+	padding: var(--kolibri-spacing);
+}
+.default {
+	border-color: var(--kolibri-color-normal);
+}
+.default .heading-icon {
+	background-color: var(--kolibri-color-normal);
+}
+.error {
+	border-color: var(--kolibri-color-error);
+}
+.error .heading-icon {
+	background-color: var(--kolibri-color-error);
+}
+.info {
+	border-color: var(--kolibri-color-info);
+}
+.info .heading-icon {
+	background-color: var(--kolibri-color-info);
+}
+.success {
+	border-color: var(--kolibri-color-success);
+}
+.success .heading-icon {
+	background-color: var(--kolibri-color-success);
+}
+.warning {
+	border-color: var(--kolibri-color-warning);
+}
+.warning .heading-icon {
+	background-color: var(--kolibri-color-warning);
 }

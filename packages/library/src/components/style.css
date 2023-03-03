@@ -60,3 +60,15 @@ a.icon-only > kol-span-wc > span > span,
 :host button.icon-only > kol-span-wc > span > span {
 	display: none;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--kolibri-font-family);
+	font-size: var(--kolibri-font-size);
+	margin: 0;
+	padding: 0;
+}
