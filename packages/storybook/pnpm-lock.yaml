@@ -8,10 +8,10 @@ specifiers:
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.2-rc.0
-  '@public-ui/core': 1.4.2-rc.0
-  '@public-ui/react': 1.4.2-rc.0
-  '@public-ui/themes': 1.4.2-rc.0
+  '@public-ui/components': 1.4.2-rc.1
+  '@public-ui/core': 1.4.2-rc.1
+  '@public-ui/react': 1.4.2-rc.1
+  '@public-ui/themes': 1.4.2-rc.1
   '@storybook/addon-a11y': 6.5.16
   '@storybook/addon-actions': 6.5.16
   '@storybook/addon-backgrounds': 6.5.16
@@ -53,7 +53,7 @@ specifiers:
   react-dom: 17.0.2
   register-service-worker: 1.7.2
   require-from-string: 2.0.2
-  rimraf: 4.1.2
+  rimraf: 4.2.0
   serve: 14.2.0
   storybook: 6.5.16
   storybook-addon-themes: 6.1.0
@@ -69,13 +69,13 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 1.1.1_pj6mvphdicuicorzeql6b4idzm
   '@leanup/form': 1.3.43
-  '@leanup/kolibri-components': 1.0.5_j2lqadvda3oreoxya6cheralcq
+  '@leanup/kolibri-components': 1.0.5_zqwwcsxcxnybvefa7gub2seueu
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-oss/kolibri-themes': 0.0.3_vfrzhwgi5wr5vaz7hw6szik3v4
-  '@public-ui/components': 1.4.2-rc.0
-  '@public-ui/core': 1.4.2-rc.0
-  '@public-ui/react': 1.4.2-rc.0_nmqsvpssz5cv4xqxs2tdwn5moi
-  '@public-ui/themes': 1.4.2-rc.0_vfrzhwgi5wr5vaz7hw6szik3v4
+  '@public-oss/kolibri-themes': 0.0.3_qp5mijculrdvgdfceiyko42cb4
+  '@public-ui/components': 1.4.2-rc.1
+  '@public-ui/core': 1.4.2-rc.1
+  '@public-ui/react': 1.4.2-rc.1_pkgzf2rawgfeacn26qh2su2zla
+  '@public-ui/themes': 1.4.2-rc.1_qp5mijculrdvgdfceiyko42cb4
   '@storybook/addon-a11y': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
@@ -117,7 +117,7 @@ devDependencies:
   react-dom: 17.0.2_react@17.0.2
   register-service-worker: 1.7.2
   require-from-string: 2.0.2
-  rimraf: 4.1.2
+  rimraf: 4.2.0
   serve: 14.2.0
   storybook: 6.5.16_7mjm5426kkuhy5hbehc4skdtn4
   storybook-addon-themes: 6.1.0_sfoxds7t5ydpegc3knd667wn6m
@@ -2605,14 +2605,14 @@ packages:
       '@leanup/lib': 1.3.43
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_j2lqadvda3oreoxya6cheralcq:
+  /@leanup/kolibri-components/1.0.5_zqwwcsxcxnybvefa7gub2seueu:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.43
-      '@public-ui/components': 1.4.2-rc.0
+      '@public-ui/components': 1.4.2-rc.1
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -2622,7 +2622,7 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_j2lqadvda3oreoxya6cheralcq
+      '@leanup/kolibri-components': 1.0.5_zqwwcsxcxnybvefa7gub2seueu
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2761,21 +2761,21 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_vfrzhwgi5wr5vaz7hw6szik3v4:
+  /@public-oss/kolibri-themes/0.0.3_qp5mijculrdvgdfceiyko42cb4:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.0
+      '@public-ui/components': 1.4.2-rc.1
       '@public-ui/schema': 1.1.15
     dev: true
 
-  /@public-ui/components/1.4.2-rc.0:
-    resolution: {integrity: sha512-7ALKtSINybeno4KyPDyHecrll6znVHviURsDR7ldOn+mR99m+C8YG+U3exHbp+0dmXPRvV6clMvsB2RIlzac1A==}
+  /@public-ui/components/1.4.2-rc.1:
+    resolution: {integrity: sha512-b2FhopjnIHYa+IP9M3fFsNMNzCr2ri+TXdPXYdONlrKMO5UEioRk1Y90L6bnZ7NzCZ7PhATPJYq0tLvKCzniPA==}
     dependencies:
       '@floating-ui/dom': 1.2.1
-      '@public-ui/core': 1.4.2-rc.0
-      '@public-ui/schema': 1.4.2-rc.0
+      '@public-ui/core': 1.4.2-rc.1
+      '@public-ui/schema': 1.4.2-rc.1
     dev: true
 
   /@public-ui/core/1.1.15:
@@ -2785,21 +2785,21 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/core/1.4.2-rc.0:
-    resolution: {integrity: sha512-2m35nkrjrGYxtmKGWbPPtlbpx+j7F57CzpTyJ4H8hYajx/3hKQbWlqwfdy0DPI/6fZKJ0kTC+kmCnXsPkZw8YA==}
+  /@public-ui/core/1.4.2-rc.1:
+    resolution: {integrity: sha512-ipzTDgNBOyONW7DuN6rdhOk5jcp0nXNFw9GciBTOsICg99V7EXj+TaxRMf3+05CO6O9rAw12trTmgUBdrs3WVA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: true
 
-  /@public-ui/react/1.4.2-rc.0_nmqsvpssz5cv4xqxs2tdwn5moi:
-    resolution: {integrity: sha512-YwHHDPxKJaUKmSsfS4SpFh39IP1qT8g55CBM+alTxr47Tri5KsxQfJIBNRr8858yqFVobHHRf7LE5MfC2SM+/Q==}
+  /@public-ui/react/1.4.2-rc.1_pkgzf2rawgfeacn26qh2su2zla:
+    resolution: {integrity: sha512-VmAaMZaNav4Qf8fBTgZZD1yR5BB86IWFZ/qMWG42VeL95CdHT+S6btlGjD8s/anWCM/hxRK5hz8ECvDCX1k2VA==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.0
+      '@public-ui/components': 1.4.2-rc.1
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.0
+      '@public-ui/components': 1.4.2-rc.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2810,19 +2810,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: true
 
-  /@public-ui/schema/1.4.2-rc.0:
-    resolution: {integrity: sha512-r6m5NvXMDArqKlgLrOdwlkuyyhymVAHTRZLia8yafAWTIqDf4QjNwXQQL6StN3irgsyHqQ6CsEjjgzmVJi0qTg==}
+  /@public-ui/schema/1.4.2-rc.1:
+    resolution: {integrity: sha512-rg0SHHDiM3ccxvfk4Ztoxc27tmdklUdnOTROTwiL5aZjYiG/Gbi5c3fHyV2+qewd79Ylj3xp5uMzPyyRZBhUeg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: true
 
-  /@public-ui/themes/1.4.2-rc.0_vfrzhwgi5wr5vaz7hw6szik3v4:
-    resolution: {integrity: sha512-dgqtmK+s8ygKWJpPg54Wm9V8SPnAP+IZlgdJrlanjOXvNYIr6+h2YI7RvEtpT/6Vxu75gfMy+7mwSoLNYPx61Q==}
+  /@public-ui/themes/1.4.2-rc.1_qp5mijculrdvgdfceiyko42cb4:
+    resolution: {integrity: sha512-J787I4aCRDo2wb76wNmGvM4s7MTRNKswKwH8Jnz9pYerkSZwoxwEd12VrNO3La4IttKst6p9Ye2lVejLHDD2GA==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.0
+      '@public-ui/components': 1.4.2-rc.1
     dependencies:
-      '@public-ui/components': 1.4.2-rc.0
-      '@public-ui/schema': 1.4.2-rc.0
+      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/schema': 1.4.2-rc.1
     dev: true
 
   /@rollup/plugin-babel/5.3.1_4tnfxcmsyr7y5qv3uwkivwqysm:
@@ -5187,8 +5187,10 @@ packages:
       ajv: 6.12.6
     dev: true
 
-  /ajv-formats/2.1.1:
+  /ajv-formats/2.1.1_ajv@8.12.0:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -8663,6 +8665,16 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
+  /glob/9.2.1:
+    resolution: {integrity: sha512-Pxxgq3W0HyA3XUvSXcFhRSs+43Jsx0ddxcFrbjxNGkL2Ak5BAUBxLqI5G6ADDeCHLfzzXFhe0b1yYcctGmytMA==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      fs.realpath: 1.0.0
+      minimatch: 7.4.2
+      minipass: 4.2.4
+      path-scurry: 1.6.1
+    dev: true
+
   /global-dirs/3.0.1:
     resolution: {integrity: sha512-NBcGGFbBA9s1VzD41QXDG+3++t9Mn5t1FpLdhESY6oKY4gYTFpX4wO3sqGUa0Srjtbfj3szX0RnemmrVRUdULA==}
     engines: {node: '>=10'}
@@ -10216,6 +10228,11 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lru-cache/7.18.1:
+    resolution: {integrity: sha512-8/HcIENyQnfUTCDizRu9rrDyG6XG/21M4X7/YEGZeD76ZJilFPAUVb/2zysFf7VVO1LEjCDFyHp8pMMvozIrvg==}
+    engines: {node: '>=12'}
+    dev: true
+
   /magic-string/0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
     dependencies:
@@ -10544,6 +10561,13 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch/7.4.2:
+    resolution: {integrity: sha512-xy4q7wou3vUoC9k1xGTXc+awNdGaGVHtFUaey8tiX4H1QRc04DZ/rmDFwNm2EBsuYEhAZ6SgMmYf3InGY6OauA==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
@@ -10578,6 +10602,11 @@ packages:
 
   /minipass/4.0.2:
     resolution: {integrity: sha512-4Hbzei7ZyBp+1aw0874YWpKOubZd/jc53/XU+gkYry1QV+VvrbO8icLM5CUtm4F0hyXn85DXYKEMIS26gitD3A==}
+    engines: {node: '>=8'}
+    dev: true
+
+  /minipass/4.2.4:
+    resolution: {integrity: sha512-lwycX3cBMTvcejsHITUgYj6Gy6A7Nh4Q6h9NP4sTHY1ccJlC7yKzDmiShEHsJ16Jf1nKGDEaiHxiltsJEvk0nQ==}
     engines: {node: '>=8'}
     dev: true
 
@@ -11281,6 +11310,14 @@ packages:
 
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
+    dev: true
+
+  /path-scurry/1.6.1:
+    resolution: {integrity: sha512-OW+5s+7cw6253Q4E+8qQ/u1fVvcJQCJo/VFD8pje+dbJCF1n5ZRMV2AEHbGp+5Q7jxQIYJxkHopnj6nzdGeZLA==}
+    engines: {node: '>=14'}
+    dependencies:
+      lru-cache: 7.18.1
+      minipass: 4.2.4
     dev: true
 
   /path-to-regexp/0.1.7:
@@ -12363,10 +12400,12 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.1.2:
-    resolution: {integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ==}
+  /rimraf/4.2.0:
+    resolution: {integrity: sha512-tPt+gLORNVqRCk0NwuJ5SlMEcOGvt4CCU8sUPqgCFtCbnoNCTd9Q6vq7JlBbxQlACiH14OR28y7piA2Bak9Sxw==}
     engines: {node: '>=14'}
     hasBin: true
+    dependencies:
+      glob: 9.2.1
     dev: true
 
   /ripemd160/2.0.2:
@@ -12530,7 +12569,7 @@ packages:
     dependencies:
       '@types/json-schema': 7.0.11
       ajv: 8.12.0
-      ajv-formats: 2.1.1
+      ajv-formats: 2.1.1_ajv@8.12.0
       ajv-keywords: 5.1.0_ajv@8.12.0
     dev: true
 
