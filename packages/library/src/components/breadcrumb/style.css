@@ -7,6 +7,7 @@ ul {
 	display: flex;
 	flex-wrap: wrap;
 	place-items: center start;
+	font: normal normal 400 0.875rem/1rem arial, sans-serif;
 }
 kol-icon[exportparts*='separator'] {
 	padding: 0 0.5rem;
@@ -16,7 +17,6 @@ kol-icon::part(icon separator) {
 	font-size: 0.875rem;
 }
 kol-icon::part(icon separator)::before {
-	color: black;
 	content: '\f054';
 	font-family: 'Font Awesome 6 Free';
 }
