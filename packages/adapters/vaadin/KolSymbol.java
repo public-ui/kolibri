@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-symbol")
-@NpmPackage(value = "@public-ui/components", version = "1.4.0-rc.14")
+@NpmPackage(value = "@public-ui/components", version = "1.4.2-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-symbol")
 public class KolSymbol extends Component {
 	/**
