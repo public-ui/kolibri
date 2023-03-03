@@ -79,7 +79,7 @@
 		"@stencil/svelte-output-target": "0.0.3",
 		"@stencil/vue-output-target": "0.7.0",
 		"@types/color-convert": "2.0.0",
-		"@types/jest": "26.0.24",
+		"@types/jest": "29.4.0",
 		"@types/node": "ts4.9",
 		"@types/wcag-contrast": "3.0.0",
 		"@typescript-eslint/eslint-plugin": "5.54.0",
