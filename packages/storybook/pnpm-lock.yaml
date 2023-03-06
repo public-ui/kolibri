@@ -8,10 +8,10 @@ specifiers:
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.2-rc.1
-  '@public-ui/core': 1.4.2-rc.1
-  '@public-ui/react': 1.4.2-rc.1
-  '@public-ui/themes': 1.4.2-rc.1
+  '@public-ui/components': 1.4.2-rc.2
+  '@public-ui/core': 1.4.2-rc.2
+  '@public-ui/react': 1.4.2-rc.2
+  '@public-ui/themes': 1.4.2-rc.2
   '@storybook/addon-a11y': 6.5.16
   '@storybook/addon-actions': 6.5.16
   '@storybook/addon-backgrounds': 6.5.16
@@ -53,7 +53,7 @@ specifiers:
   react-dom: 17.0.2
   register-service-worker: 1.7.2
   require-from-string: 2.0.2
-  rimraf: 4.2.0
+  rimraf: 4.3.0
   serve: 14.2.0
   storybook: 6.5.16
   storybook-addon-themes: 6.1.0
@@ -69,13 +69,13 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 1.1.1_pj6mvphdicuicorzeql6b4idzm
   '@leanup/form': 1.3.43
-  '@leanup/kolibri-components': 1.0.5_zqwwcsxcxnybvefa7gub2seueu
+  '@leanup/kolibri-components': 1.0.5_3gkc5cbtwzuo3nh3nsf473o72e
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-oss/kolibri-themes': 0.0.3_qp5mijculrdvgdfceiyko42cb4
-  '@public-ui/components': 1.4.2-rc.1
-  '@public-ui/core': 1.4.2-rc.1
-  '@public-ui/react': 1.4.2-rc.1_pkgzf2rawgfeacn26qh2su2zla
-  '@public-ui/themes': 1.4.2-rc.1_qp5mijculrdvgdfceiyko42cb4
+  '@public-oss/kolibri-themes': 0.0.3_h7pdbrhglrqjj6lb2o77ldwt3m
+  '@public-ui/components': 1.4.2-rc.2
+  '@public-ui/core': 1.4.2-rc.2
+  '@public-ui/react': 1.4.2-rc.2_zocfq5oax63f2y6dwpqdwkph5y
+  '@public-ui/themes': 1.4.2-rc.2_h7pdbrhglrqjj6lb2o77ldwt3m
   '@storybook/addon-a11y': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
@@ -117,7 +117,7 @@ devDependencies:
   react-dom: 17.0.2_react@17.0.2
   register-service-worker: 1.7.2
   require-from-string: 2.0.2
-  rimraf: 4.2.0
+  rimraf: 4.3.0
   serve: 14.2.0
   storybook: 6.5.16_7mjm5426kkuhy5hbehc4skdtn4
   storybook-addon-themes: 6.1.0_sfoxds7t5ydpegc3knd667wn6m
@@ -2070,14 +2070,14 @@ packages:
       - react-dom
     dev: true
 
-  /@floating-ui/core/1.2.1:
-    resolution: {integrity: sha512-LSqwPZkK3rYfD7GKoIeExXOyYx6Q1O4iqZWwIehDNuv3Dv425FIAE8PRwtAx1imEolFTHgBEcoFHm9MDnYgPCg==}
+  /@floating-ui/core/1.2.2:
+    resolution: {integrity: sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==}
     dev: true
 
-  /@floating-ui/dom/1.2.1:
-    resolution: {integrity: sha512-Rt45SmRiV8eU+xXSB9t0uMYiQ/ZWGE/jumse2o3i5RGlyvcbqOF4q+1qBnzLE2kZ5JGhq0iMkcGXUKbFe7MpTA==}
+  /@floating-ui/dom/1.2.3:
+    resolution: {integrity: sha512-lK9cZUrHSJLMVAdCvDqs6Ug8gr0wmqksYiaoj/bxj2gweRQkSuhg2/V6Jswz2KiQ0RAULbqw1oQDJIMpQ5GfGA==}
     dependencies:
-      '@floating-ui/core': 1.2.1
+      '@floating-ui/core': 1.2.2
     dev: true
 
   /@gar/promisify/1.1.3:
@@ -2605,14 +2605,14 @@ packages:
       '@leanup/lib': 1.3.43
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_zqwwcsxcxnybvefa7gub2seueu:
+  /@leanup/kolibri-components/1.0.5_3gkc5cbtwzuo3nh3nsf473o72e:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.43
-      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -2622,7 +2622,7 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_zqwwcsxcxnybvefa7gub2seueu
+      '@leanup/kolibri-components': 1.0.5_3gkc5cbtwzuo3nh3nsf473o72e
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2761,21 +2761,21 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_qp5mijculrdvgdfceiyko42cb4:
+  /@public-oss/kolibri-themes/0.0.3_h7pdbrhglrqjj6lb2o77ldwt3m:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
       '@public-ui/schema': 1.1.15
     dev: true
 
-  /@public-ui/components/1.4.2-rc.1:
-    resolution: {integrity: sha512-b2FhopjnIHYa+IP9M3fFsNMNzCr2ri+TXdPXYdONlrKMO5UEioRk1Y90L6bnZ7NzCZ7PhATPJYq0tLvKCzniPA==}
+  /@public-ui/components/1.4.2-rc.2:
+    resolution: {integrity: sha512-0suxtvme5YHD7tsSA80hSUyY2u1W8jl7unVUINZ7U+exOVIDyUn4E2OcPzHHP0a6jsgiTsDaJrPewqlVYlJ/vw==}
     dependencies:
-      '@floating-ui/dom': 1.2.1
-      '@public-ui/core': 1.4.2-rc.1
-      '@public-ui/schema': 1.4.2-rc.1
+      '@floating-ui/dom': 1.2.3
+      '@public-ui/core': 1.4.2-rc.2
+      '@public-ui/schema': 1.4.2-rc.2
     dev: true
 
   /@public-ui/core/1.1.15:
@@ -2785,21 +2785,21 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/core/1.4.2-rc.1:
-    resolution: {integrity: sha512-ipzTDgNBOyONW7DuN6rdhOk5jcp0nXNFw9GciBTOsICg99V7EXj+TaxRMf3+05CO6O9rAw12trTmgUBdrs3WVA==}
+  /@public-ui/core/1.4.2-rc.2:
+    resolution: {integrity: sha512-hJeoPO23DqO6Jlr5gz/+v+wGuKxndhKwhYyYmgdiq7Fy0eq7q7FJ2c/zHRx0snjk0kpgXXbuDynbDAOErgYNRQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: true
 
-  /@public-ui/react/1.4.2-rc.1_pkgzf2rawgfeacn26qh2su2zla:
-    resolution: {integrity: sha512-VmAaMZaNav4Qf8fBTgZZD1yR5BB86IWFZ/qMWG42VeL95CdHT+S6btlGjD8s/anWCM/hxRK5hz8ECvDCX1k2VA==}
+  /@public-ui/react/1.4.2-rc.2_zocfq5oax63f2y6dwpqdwkph5y:
+    resolution: {integrity: sha512-7Z8HbHkAaymN6qZmLQYJOGB4TMYD1RX9l3TrWu7be7n0U9tr+TaGjjsgdT46YhAX9Ty7yWlSxORX80KU5+Yrxg==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2810,19 +2810,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: true
 
-  /@public-ui/schema/1.4.2-rc.1:
-    resolution: {integrity: sha512-rg0SHHDiM3ccxvfk4Ztoxc27tmdklUdnOTROTwiL5aZjYiG/Gbi5c3fHyV2+qewd79Ylj3xp5uMzPyyRZBhUeg==}
+  /@public-ui/schema/1.4.2-rc.2:
+    resolution: {integrity: sha512-BjpOyvfHEb76cnkpOW0O38bblJwlO1OpwGpLQGaISRXgawXXV9gfmadzhLppegxnj0KOmb5L9uw3OPg8XposiQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: true
 
-  /@public-ui/themes/1.4.2-rc.1_qp5mijculrdvgdfceiyko42cb4:
-    resolution: {integrity: sha512-J787I4aCRDo2wb76wNmGvM4s7MTRNKswKwH8Jnz9pYerkSZwoxwEd12VrNO3La4IttKst6p9Ye2lVejLHDD2GA==}
+  /@public-ui/themes/1.4.2-rc.2_h7pdbrhglrqjj6lb2o77ldwt3m:
+    resolution: {integrity: sha512-et0+CdCpj+YdWx0GZP8Egdl1L2h9qt1kjx/kbWSj0VqR5ZJXC96kp/MZSchkH+ZuVwvUeoHrrJWtZem6FoXg6A==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
     dependencies:
-      '@public-ui/components': 1.4.2-rc.1
-      '@public-ui/schema': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
+      '@public-ui/schema': 1.4.2-rc.2
     dev: true
 
   /@rollup/plugin-babel/5.3.1_4tnfxcmsyr7y5qv3uwkivwqysm:
@@ -10600,11 +10600,6 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /minipass/4.0.2:
-    resolution: {integrity: sha512-4Hbzei7ZyBp+1aw0874YWpKOubZd/jc53/XU+gkYry1QV+VvrbO8icLM5CUtm4F0hyXn85DXYKEMIS26gitD3A==}
-    engines: {node: '>=8'}
-    dev: true
-
   /minipass/4.2.4:
     resolution: {integrity: sha512-lwycX3cBMTvcejsHITUgYj6Gy6A7Nh4Q6h9NP4sTHY1ccJlC7yKzDmiShEHsJ16Jf1nKGDEaiHxiltsJEvk0nQ==}
     engines: {node: '>=8'}
@@ -12400,8 +12395,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.2.0:
-    resolution: {integrity: sha512-tPt+gLORNVqRCk0NwuJ5SlMEcOGvt4CCU8sUPqgCFtCbnoNCTd9Q6vq7JlBbxQlACiH14OR28y7piA2Bak9Sxw==}
+  /rimraf/4.3.0:
+    resolution: {integrity: sha512-5qVDXPbByA1qSJEWMv1qAwKsoS22vVpsL2QyxCKBw4gf6XiFo1K3uRLY6uSOOBFDwnqAZtnbILqWKKlzh8bkGg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -13307,7 +13302,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.0.2
+      minipass: 4.2.4
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
