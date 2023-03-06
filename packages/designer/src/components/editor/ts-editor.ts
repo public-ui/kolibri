@@ -12,9 +12,21 @@ export const createTsEditor = (ref: HTMLElement, theme: string, code: string) =>
 		try {
 			code = format(
 				`
-import { KoliBriDevHelper } from '@public-ui/components';
+import { KoliBriDevHelper, register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { YOUR_THEME } from '…';
 
-KoliBriDevHelper.patchTheme('${theme}', ${code}); `,
+register(YOUR_THEME, defineCustomElements)
+  .then(() => {
+		/**
+		 * You should patch the theme after the components and your default theme are registered.
+		 *
+		 * ↓ Here is your code!
+		 */
+		KoliBriDevHelper.patchTheme('${theme}', ${code});
+	})
+	.catch(console.warn);
+`,
 				{ parser: 'typescript', plugins: [parserTypeScript] }
 			);
 		} catch (e) {}
