@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.65
+  '@public-ui/components': ^1.4.1
   '@types/node': ts4.9
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
@@ -16,10 +17,11 @@ specifiers:
 
 dependencies:
   '@a11y-ui/core': 1.0.1-rc.65
+  '@public-ui/components': 1.4.1
   i18next: 22.4.10
 
 devDependencies:
-  '@types/node': 18.14.3
+  '@types/node': 18.14.6
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
   eslint: 8.35.0
@@ -671,6 +673,16 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@floating-ui/core/1.2.2:
+    resolution: {integrity: sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==}
+    dev: false
+
+  /@floating-ui/dom/1.2.1:
+    resolution: {integrity: sha512-Rt45SmRiV8eU+xXSB9t0uMYiQ/ZWGE/jumse2o3i5RGlyvcbqOF4q+1qBnzLE2kZ5JGhq0iMkcGXUKbFe7MpTA==}
+    dependencies:
+      '@floating-ui/core': 1.2.2
+    dev: false
+
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
@@ -845,6 +857,27 @@ packages:
       config-chain: 1.1.13
     dev: true
 
+  /@public-ui/components/1.4.1:
+    resolution: {integrity: sha512-1PHncZz/aDH0yLWoQgxOTZJOHaUCYoLkq7iebc6bzsvfupWIVi1s9VSxYEeUNukbrNQbYiNjmLF0A44fS2TfcA==}
+    dependencies:
+      '@floating-ui/dom': 1.2.1
+      '@public-ui/core': 1.4.1
+      '@public-ui/schema': 1.4.1
+    dev: false
+
+  /@public-ui/core/1.4.1:
+    resolution: {integrity: sha512-iWGSgXMrGmhAFzK3wZbtOnOrbZHH/1emNsyLsEJ8CSKGVBTowf0Mzuq3qbR5PUSRHCsI1ftOrvbzGRmXMi6u6w==}
+    dependencies:
+      '@a11y-ui/core': 1.0.1-rc.65
+      i18next: 22.4.10
+    dev: false
+
+  /@public-ui/schema/1.4.1:
+    resolution: {integrity: sha512-T0BdHaXsq/NfV5GZKujR0Oqs0Nly7xghSqrYd7pS+RhBmI18iNkmqpdH+cbu+7XCp2bNNLETn7eXHJpVmgVmVQ==}
+    dependencies:
+      '@a11y-ui/core': 1.0.1-rc.65
+    dev: false
+
   /@rollup/plugin-alias/4.0.3_rollup@3.17.2:
     resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
     engines: {node: '>=14.0.0'}
@@ -974,8 +1007,8 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
-  /@types/node/18.14.3:
-    resolution: {integrity: sha512-1y36CC5iL5CMyKALzwX9cwwxcWIxvIBe3gzs4GrXWXEQ8klQnCZ2U/WDGiNrXHmQcUhnaun17XG9TEIDlGj2RA==}
+  /@types/node/18.14.6:
+    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
     dev: true
 
   /@types/parse-json/4.0.0:
