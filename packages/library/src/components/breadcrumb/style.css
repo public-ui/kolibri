@@ -1,22 +1,22 @@
 @import '../style.css';
 
-ul {
+ul,
+li {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	display: flex;
+	gap: 0.5em;
 	flex-wrap: wrap;
-	place-items: center start;
-	font: normal normal 400 0.875rem/1rem arial, sans-serif;
+	place-items: center;
 }
-kol-icon[exportparts*='separator'] {
-	padding: 0 0.5rem;
-}
-kol-icon::part(icon separator) {
+
+kol-icon::part(separator) {
 	font-weight: 900;
-	font-size: 0.875rem;
+	font-size: 0.7em;
 }
-kol-icon::part(icon separator)::before {
+
+kol-icon::part(separator)::before {
 	content: '\f054';
 	font-family: 'Font Awesome 6 Free';
 }

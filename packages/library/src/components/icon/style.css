@@ -2,7 +2,12 @@
 @import '../../assets/fontawesome-free/css/all.css';
 @import '../../assets/icofont/icofont.css';
 
-:host > i {
+:host {
 	color: inherit;
 	font-size: inherit;
+	line-height: inherit;
+}
+:host > i {
+	display: inline-block;
+	overflow: hidden;
 }

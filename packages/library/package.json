@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.4.2-rc.2",
+	"version": "1.4.2-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -66,8 +66,8 @@
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.2.3",
-		"@public-ui/core": "1.4.2-rc.2",
-		"@public-ui/schema": "1.4.2-rc.2"
+		"@public-ui/core": "1.4.2-rc.3",
+		"@public-ui/schema": "1.4.2-rc.3"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.1-rc.65",
@@ -107,7 +107,7 @@
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
-		"rimraf": "4.2.0",
+		"rimraf": "4.3.0",
 		"stencil-awesome-test": "1.0.5",
 		"terser": "5.16.5",
 		"tslib": "2.5.0",

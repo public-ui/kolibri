@@ -20,15 +20,13 @@ input:hover {
 kol-input {
 	align-items: center;
 	display: grid;
-	gap: calc(2 * var(--kolibri-spacing));
+	gap: var(--kolibri-spacing);
 	justify-items: left;
-	width: 100%;
+	width: 100;
 }
-kol-input.checkbox {
-	grid-template-columns: calc(6 * var(--kolibri-spacing)) auto;
-}
+kol-input.checkbox,
 kol-input.switch {
-	grid-template-columns: calc(13 * var(--kolibri-spacing)) auto;
+	grid-template-columns: auto 1fr;
 }
 kol-input .input {
 	display: inline-flex;
@@ -43,10 +41,16 @@ kol-input .input input {
 kol-input label {
 	order: 2;
 }
+
+kol-input.error > kol-alert,
+kol-input .hint {
+	grid-column: span 2;
+}
 kol-input kol-alert.error {
 	order: 3;
-	padding-top: 0.25em;
-	grid-column: span 2 / auto;
+}
+kol-input .hint {
+	order: 4;
 }
 input[type='checkbox'] {
 	appearance: none;
@@ -71,12 +75,4 @@ input[type='checkbox']:checked {
 .checkbox kol-icon,
 .switch kol-icon {
 	display: none;
-}
-kol-input span.hint {
-	grid-column: span 2;
-	font-style: italic;
-	color: gray;
-	display: block;
-	order: 3;
-	padding: 0 var(--kolibri-spacing);
 }

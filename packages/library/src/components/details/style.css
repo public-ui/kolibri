@@ -8,7 +8,6 @@ details > summary {
 	border-radius: var(--kolibri-spacing);
 	cursor: pointer;
 	display: flex;
-	place-items: center;
 }
 details > summary > span {
 	border-bottom-color: var(--kolibri-border-color);
@@ -17,7 +16,7 @@ details > summary > span {
 	padding: 0 var(--kolibri-spacing);
 }
 details > summary > span:first-child {
-	padding-right: var(--kolibri-spacing);
+	display: inline-flex;
 	text-align: center;
 	width: 1rem;
 }
@@ -30,5 +29,5 @@ details > summary:hover > span {
 	border-bottom-color: black;
 }
 details > kol-indented-text {
-	margin: 0.25em 0 0 0.75em;
+	margin: 0.25em 0 0 0.7em;
 }

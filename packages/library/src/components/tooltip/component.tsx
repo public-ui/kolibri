@@ -6,7 +6,7 @@ import { watchTooltipAlignment } from '../../types/button-link';
 import { Alignment } from '../../types/props/alignment';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
-import { processEnv, smartSetTimeout } from '../../utils/reuse';
+import { processEnv } from '../../utils/reuse';
 
 /**
  * API
@@ -36,7 +36,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
 
-	private alignTooltip = (): void => {
+	private alignTooltip = (cb?: () => void): void => {
 		if (processEnv !== 'test') {
 			if (this.previousSibling /* SSR instanceof HTMLElement */) {
 				const target = this.previousSibling;
@@ -53,6 +53,10 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 						placement: this.state._align,
 						middleware: middleware,
 					}).then(({ x, y, middlewareData, placement }) => {
+						const oldPos = {
+							left: tooltipEl.style.left,
+							top: tooltipEl.style.top,
+						};
 						Object.assign(tooltipEl.style, {
 							left: `${x}px`,
 							top: `${y}px`,
@@ -73,6 +77,11 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 								});
 							}
 						}
+						if (oldPos.left !== tooltipEl.style.left || oldPos.top !== tooltipEl.style.top) {
+							this.alignTooltip(cb);
+						} else if (typeof cb === 'function') {
+							cb();
+						}
 					});
 				}
 			}
@@ -83,9 +92,12 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.tooltipElement.style.setProperty('display', 'block');
 			getDocument().body.addEventListener('keyup', this.hideTooltipByEscape);
-			this.alignTooltip();
-			this.tooltipElement.style.setProperty('visibility', 'visible');
-			document.addEventListener('scroll', this.alignTooltip);
+			this.alignTooltip(() => {
+				if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+					this.tooltipElement.style.setProperty('visibility', 'visible');
+					document.addEventListener('scroll', this.showTooltip);
+				}
+			});
 		}
 	};
 
@@ -93,7 +105,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.tooltipElement.style.setProperty('display', 'none');
 			this.tooltipElement.style.setProperty('visibility', 'hidden');
-			document.removeEventListener('scroll', this.alignTooltip);
+			document.removeEventListener('scroll', this.showTooltip);
 		}
 	};
 
@@ -143,10 +155,6 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	};
 
 	public render(): JSX.Element {
-		smartSetTimeout(() => {
-			this.alignTooltip();
-			smartSetTimeout(this.alignTooltip, 750);
-		}, 250);
 		return (
 			<Host ref={this.catchHostElement}>
 				{this.state._label !== '' && (

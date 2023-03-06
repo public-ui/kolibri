@@ -2,23 +2,23 @@ lockfileVersion: 5.4
 
 specifiers:
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.2-rc.1
-  '@public-ui/core': 1.4.2-rc.1
-  '@public-ui/themes': 1.4.2-rc.1
+  '@public-ui/components': 1.4.2-rc.2
+  '@public-ui/core': 1.4.2-rc.2
+  '@public-ui/themes': 1.4.2-rc.2
   '@slidev/cli': 0.40.3
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
   npm-check-updates: 16.7.10
   playwright-chromium: 1.31.2
   prettier: 2.8.4
-  rimraf: 4.2.0
+  rimraf: 4.3.0
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_qp5mijculrdvgdfceiyko42cb4
-  '@public-ui/components': 1.4.2-rc.1
-  '@public-ui/core': 1.4.2-rc.1
-  '@public-ui/themes': 1.4.2-rc.1_qp5mijculrdvgdfceiyko42cb4
+  '@public-oss/kolibri-themes': 0.0.3_h7pdbrhglrqjj6lb2o77ldwt3m
+  '@public-ui/components': 1.4.2-rc.2
+  '@public-ui/core': 1.4.2-rc.2
+  '@public-ui/themes': 1.4.2-rc.2_h7pdbrhglrqjj6lb2o77ldwt3m
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
 
@@ -27,7 +27,7 @@ devDependencies:
   npm-check-updates: 16.7.10
   playwright-chromium: 1.31.2
   prettier: 2.8.4
-  rimraf: 4.2.0
+  rimraf: 4.3.0
   ts-prune: 0.10.3
 
 packages:
@@ -582,14 +582,14 @@ packages:
     dev: true
     optional: true
 
-  /@floating-ui/core/1.2.1:
-    resolution: {integrity: sha512-LSqwPZkK3rYfD7GKoIeExXOyYx6Q1O4iqZWwIehDNuv3Dv425FIAE8PRwtAx1imEolFTHgBEcoFHm9MDnYgPCg==}
+  /@floating-ui/core/1.2.2:
+    resolution: {integrity: sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==}
     dev: false
 
-  /@floating-ui/dom/1.2.1:
-    resolution: {integrity: sha512-Rt45SmRiV8eU+xXSB9t0uMYiQ/ZWGE/jumse2o3i5RGlyvcbqOF4q+1qBnzLE2kZ5JGhq0iMkcGXUKbFe7MpTA==}
+  /@floating-ui/dom/1.2.3:
+    resolution: {integrity: sha512-lK9cZUrHSJLMVAdCvDqs6Ug8gr0wmqksYiaoj/bxj2gweRQkSuhg2/V6Jswz2KiQ0RAULbqw1oQDJIMpQ5GfGA==}
     dependencies:
-      '@floating-ui/core': 1.2.1
+      '@floating-ui/core': 1.2.2
     dev: false
 
   /@gar/promisify/1.1.3:
@@ -879,21 +879,21 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_qp5mijculrdvgdfceiyko42cb4:
+  /@public-oss/kolibri-themes/0.0.3_h7pdbrhglrqjj6lb2o77ldwt3m:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.4.2-rc.1:
-    resolution: {integrity: sha512-b2FhopjnIHYa+IP9M3fFsNMNzCr2ri+TXdPXYdONlrKMO5UEioRk1Y90L6bnZ7NzCZ7PhATPJYq0tLvKCzniPA==}
+  /@public-ui/components/1.4.2-rc.2:
+    resolution: {integrity: sha512-0suxtvme5YHD7tsSA80hSUyY2u1W8jl7unVUINZ7U+exOVIDyUn4E2OcPzHHP0a6jsgiTsDaJrPewqlVYlJ/vw==}
     dependencies:
-      '@floating-ui/dom': 1.2.1
-      '@public-ui/core': 1.4.2-rc.1
-      '@public-ui/schema': 1.4.2-rc.1
+      '@floating-ui/dom': 1.2.3
+      '@public-ui/core': 1.4.2-rc.2
+      '@public-ui/schema': 1.4.2-rc.2
     dev: false
 
   /@public-ui/core/1.1.15:
@@ -903,8 +903,8 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core/1.4.2-rc.1:
-    resolution: {integrity: sha512-ipzTDgNBOyONW7DuN6rdhOk5jcp0nXNFw9GciBTOsICg99V7EXj+TaxRMf3+05CO6O9rAw12trTmgUBdrs3WVA==}
+  /@public-ui/core/1.4.2-rc.2:
+    resolution: {integrity: sha512-hJeoPO23DqO6Jlr5gz/+v+wGuKxndhKwhYyYmgdiq7Fy0eq7q7FJ2c/zHRx0snjk0kpgXXbuDynbDAOErgYNRQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
@@ -916,19 +916,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema/1.4.2-rc.1:
-    resolution: {integrity: sha512-rg0SHHDiM3ccxvfk4Ztoxc27tmdklUdnOTROTwiL5aZjYiG/Gbi5c3fHyV2+qewd79Ylj3xp5uMzPyyRZBhUeg==}
+  /@public-ui/schema/1.4.2-rc.2:
+    resolution: {integrity: sha512-BjpOyvfHEb76cnkpOW0O38bblJwlO1OpwGpLQGaISRXgawXXV9gfmadzhLppegxnj0KOmb5L9uw3OPg8XposiQ==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: false
 
-  /@public-ui/themes/1.4.2-rc.1_qp5mijculrdvgdfceiyko42cb4:
-    resolution: {integrity: sha512-J787I4aCRDo2wb76wNmGvM4s7MTRNKswKwH8Jnz9pYerkSZwoxwEd12VrNO3La4IttKst6p9Ye2lVejLHDD2GA==}
+  /@public-ui/themes/1.4.2-rc.2_h7pdbrhglrqjj6lb2o77ldwt3m:
+    resolution: {integrity: sha512-et0+CdCpj+YdWx0GZP8Egdl1L2h9qt1kjx/kbWSj0VqR5ZJXC96kp/MZSchkH+ZuVwvUeoHrrJWtZem6FoXg6A==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
     dependencies:
-      '@public-ui/components': 1.4.2-rc.1
-      '@public-ui/schema': 1.4.2-rc.1
+      '@public-ui/components': 1.4.2-rc.2
+      '@public-ui/schema': 1.4.2-rc.2
     dev: false
 
   /@rollup/pluginutils/5.0.2:
@@ -1881,7 +1881,7 @@ packages:
       fs-minipass: 3.0.1
       glob: 8.1.0
       lru-cache: 7.16.1
-      minipass: 4.0.3
+      minipass: 4.2.4
       minipass-collect: 1.0.2
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
@@ -2902,7 +2902,7 @@ packages:
     resolution: {integrity: sha512-MhaJDcFRTuLidHrIttu0RDGyyXs/IYHVmlcxfLAEFIWjc1vdLAkdwT7Ace2u7DbitWC0toKMl5eJZRYNVreIMw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.0.3
+      minipass: 4.2.4
     dev: true
 
   /fs.realpath/1.0.0:
@@ -3687,7 +3687,7 @@ packages:
       https-proxy-agent: 5.0.1
       is-lambda: 1.0.1
       lru-cache: 7.16.1
-      minipass: 4.0.3
+      minipass: 4.2.4
       minipass-fetch: 3.0.1
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
@@ -3859,7 +3859,7 @@ packages:
     resolution: {integrity: sha512-t9/wowtf7DYkwz8cfMSt0rMwiyNIBXf5CKZ3S5ZMqRqMYT0oLTp0x1WorMI9WTwvaPg21r1JbFxJMum8JrLGfw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.0.3
+      minipass: 4.2.4
       minipass-sized: 1.0.3
       minizlib: 2.1.2
     optionalDependencies:
@@ -4074,7 +4074,7 @@ packages:
       prompts-ncu: 2.5.1
       rc-config-loader: 4.1.2
       remote-git-tags: 3.0.0
-      rimraf: 4.2.0
+      rimraf: 4.3.0
       semver: 7.3.8
       semver-utils: 1.1.4
       source-map-support: 0.5.21
@@ -4132,7 +4132,7 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       make-fetch-happen: 11.0.3
-      minipass: 4.0.3
+      minipass: 4.2.4
       minipass-fetch: 3.0.1
       minipass-json-stream: 1.0.1
       minizlib: 2.1.2
@@ -4248,7 +4248,7 @@ packages:
       '@npmcli/run-script': 6.0.0
       cacache: 17.0.4
       fs-minipass: 3.0.1
-      minipass: 4.0.3
+      minipass: 4.2.4
       npm-package-arg: 10.1.0
       npm-packlist: 7.0.4
       npm-pick-manifest: 8.0.1
@@ -4689,8 +4689,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.2.0:
-    resolution: {integrity: sha512-tPt+gLORNVqRCk0NwuJ5SlMEcOGvt4CCU8sUPqgCFtCbnoNCTd9Q6vq7JlBbxQlACiH14OR28y7piA2Bak9Sxw==}
+  /rimraf/4.3.0:
+    resolution: {integrity: sha512-5qVDXPbByA1qSJEWMv1qAwKsoS22vVpsL2QyxCKBw4gf6XiFo1K3uRLY6uSOOBFDwnqAZtnbILqWKKlzh8bkGg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -4920,7 +4920,7 @@ packages:
     resolution: {integrity: sha512-WVy6di9DlPOeBWEjMScpNipeSX2jIZBGEn5Uuo8Q7aIuFEuDX0pw8RxcOjlD1TWP4obi24ki7m/13+nFpcbXrw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.0.3
+      minipass: 4.2.4
     dev: true
 
   /ssri/9.0.1:

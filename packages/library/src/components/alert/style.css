@@ -5,24 +5,24 @@
 }
 :host > div {
 	background-color: white;
-	border-color: var(--kolibri-border-color);
 	border-radius: var(--kolibri-border-radius);
 	border-style: solid;
 	border-width: calc(2 * var(--kolibri-border-width));
-	display: inline-block;
+	display: inline-grid;
+	place-items: stretch;
 	overflow: hidden;
 	width: 100%;
 }
 
 .heading {
 	display: flex;
-	gap: calc(2 * var(--kolibri-spacing));
+	gap: var(--kolibri-spacing);
 	place-items: center;
 }
 .heading > div {
 	display: grid;
 	gap: var(--kolibri-spacing);
-	margin: var(--kolibri-spacing) 0;
+	margin: var(--kolibri-spacing) var(--kolibri-spacing) var(--kolibri-spacing) 0;
 }
 .heading .heading-icon {
 	align-items: center;

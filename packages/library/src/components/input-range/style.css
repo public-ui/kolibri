@@ -25,8 +25,8 @@ input[type='range'] {
 }
 input[type='range']::-webkit-slider-thumb {
 	background-color: var(--kolibri-color-primary);
-	border-radius: 1.5rem;
+	border-radius: 1.5em;
 	cursor: pointer;
-	height: 1.5rem;
-	width: 1.5rem;
+	height: 1.5em;
+	width: 1.5em;
 }

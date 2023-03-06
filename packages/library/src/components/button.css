@@ -1,38 +1,33 @@
 @import './style.css';
 
-:host {
+a {
+	text-decoration-line: none;
+}
+
+a,
+button {
 	display: inline-block;
 }
-:host > kol-button-wc,
-:host > kol-link-wc {
-	width: inherit;
-}
-:host > kol-button-wc a,
-:host > kol-button-wc button,
-:host > kol-link-wc a,
-:host > kol-link-wc button {
-	cursor: pointer;
-	display: inline-block;
-	font-size: 1rem;
+
+a,
+button {
 	min-height: 44px;
 	min-width: 44px;
-	padding: 0;
-	text-align: center;
-	transition-duration: 0.5s;
-	transition-property: background-color, color, border-color;
-	width: inherit;
+	width: 100%;
 }
-:host > kol-button-wc a:active,
-:host > kol-button-wc button:active,
-:host > kol-link-wc a:active,
-:host > kol-link-wc button:active {
+
+a:active,
+button:active,
+a:active,
+button:active {
 	outline: 0;
 	box-shadow: none;
 }
-:host > kol-button-wc a:disabled,
-:host > kol-button-wc button:disabled,
-:host > kol-link-wc a:disabled,
-:host > kol-link-wc button:disabled {
+
+a:disabled,
+button:disabled,
+a:disabled,
+button:disabled {
 	box-shadow: none;
 	cursor: not-allowed;
 	opacity: 0.5;
