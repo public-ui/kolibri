@@ -78,7 +78,11 @@ export class InputNumberController extends InputIconController implements Watche
 
 	protected onChange(event: Event): void {
 		super.onChange(event);
-		this.component._value = (event.target as HTMLInputElement).value as number | Iso8601;
+
+		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
+		if (!!(event.target as HTMLInputElement).value !== !!this.component._value) {
+			this.component._value = (event.target as HTMLInputElement).value as number | Iso8601;
+		}
 	}
 
 	/**

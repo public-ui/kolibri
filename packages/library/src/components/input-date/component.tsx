@@ -176,7 +176,7 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: Iso8601 | Date | null;
+	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -233,7 +233,11 @@ export class KolInputDate implements ComponentApi {
 		setState(this, '_on', {
 			...value,
 			onChange: (e: Event, v: unknown) => {
-				this._value = v as Iso8601;
+				// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
+				if (!!v !== !!this._value) {
+					this._value = v as Iso8601;
+				}
+
 				if (value?.onChange) {
 					value.onChange(e, v);
 				}
