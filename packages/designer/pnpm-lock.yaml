@@ -6,9 +6,9 @@ specifiers:
   '@leanup/stack-webpack': 1.3.43
   '@playwright/test': 1.31.2
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.2-rc.3
-  '@public-ui/solid': 1.4.2-rc.3
-  '@public-ui/themes': 1.4.2-rc.3
+  '@public-ui/components': 1.4.2-rc.4
+  '@public-ui/solid': 1.4.2-rc.4
+  '@public-ui/themes': 1.4.2-rc.4
   '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.50.3
   '@unocss/webpack': 0.50.3
@@ -30,10 +30,10 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_ag4deoevfxuf5lqv4rqcpupc3q
-  '@public-ui/components': 1.4.2-rc.3
-  '@public-ui/solid': 1.4.2-rc.3_dwdu5h3lvbjiyilned5eg3q6ly
-  '@public-ui/themes': 1.4.2-rc.3_ag4deoevfxuf5lqv4rqcpupc3q
+  '@public-oss/kolibri-themes': 0.0.3_zhkcdp5n3wid2rjwstrki5gwtu
+  '@public-ui/components': 1.4.2-rc.4
+  '@public-ui/solid': 1.4.2-rc.4_xl3dd5w5cy6nv5g4yb5uig3nye
+  '@public-ui/themes': 1.4.2-rc.4_zhkcdp5n3wid2rjwstrki5gwtu
   monaco-editor: 0.36.1
   monaco-editor-webpack-plugin: 7.0.1_yuuxqubmlwm7s5vqmasqf2oquq
   register-service-worker: 1.7.2
@@ -1784,21 +1784,21 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_ag4deoevfxuf5lqv4rqcpupc3q:
+  /@public-oss/kolibri-themes/0.0.3_zhkcdp5n3wid2rjwstrki5gwtu:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.3
+      '@public-ui/components': 1.4.2-rc.4
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.4.2-rc.3:
-    resolution: {integrity: sha512-C7UrCziJAUDDj9geRWSoLNTv0QXX+6+8reTnvG/ZYk5lAbU8sFRHkZI0Z3S/SQS2HcZ/0SrOiilKkKglICVNIA==}
+  /@public-ui/components/1.4.2-rc.4:
+    resolution: {integrity: sha512-tnol6P+aM0uCi6eQN7fXWosJ6/yMn0HtNGgCukM5qGJ9Us+tlLyT22jG+X5sVCyyUWixMoswZURkCNapKo+uiw==}
     dependencies:
       '@floating-ui/dom': 1.2.3
-      '@public-ui/core': 1.4.2-rc.3
-      '@public-ui/schema': 1.4.2-rc.3
+      '@public-ui/core': 1.4.2-rc.4
+      '@public-ui/schema': 1.4.2-rc.4
     dev: false
 
   /@public-ui/core/1.1.15:
@@ -1808,8 +1808,8 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core/1.4.2-rc.3:
-    resolution: {integrity: sha512-JCZ6ORtfE87PWQGPg2KvS/Qpe4pmv3xOySWx9mXZGlidEvM3o1/cppTnbznNo01xqx0eKz6zDonppOBlTehPsA==}
+  /@public-ui/core/1.4.2-rc.4:
+    resolution: {integrity: sha512-Elg6Fim1uMq4i4OccJ1nsiTV78bGUudekcidF0C/p9HGq8Y42TDSD3Ajz42/NzC5C5HBpQ6V8JJ92RMHB9Y5bg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
@@ -1821,29 +1821,29 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema/1.4.2-rc.3:
-    resolution: {integrity: sha512-8oqELuZHPNLSiAeRvfvIT8xZFi4opEE5qSUahZytsg/tTfnWJ/vMSYtHtW3GRrHEHkjMAO++Dzc1xjqr+0neQw==}
+  /@public-ui/schema/1.4.2-rc.4:
+    resolution: {integrity: sha512-/H7kyK27rDQuBsTaVTxzc48QjmmIu14+cCVe2corLkARzhwErWSP2QbMmxZi6iRwQknICuSm0ysVdfaIEC9nzg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: false
 
-  /@public-ui/solid/1.4.2-rc.3_dwdu5h3lvbjiyilned5eg3q6ly:
-    resolution: {integrity: sha512-DrHlz8HIwqHu6ioRWvMO3LxLPR34rcM/2xEmDyVfWEDl1tbxRx78QbLTExZ6rFJUyrLYDDSUCEj6gWw2NB5V/Q==}
+  /@public-ui/solid/1.4.2-rc.4_xl3dd5w5cy6nv5g4yb5uig3nye:
+    resolution: {integrity: sha512-tyl0PaOYSHztVESKC7Q+Sdy1oHG+0ufYz2/K8lrvRIFC34FYrenBwrW8Y1Jw8Xj6jrQz+djEQamR1m83b+x0rw==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.3
+      '@public-ui/components': 1.4.2-rc.4
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.3
+      '@public-ui/components': 1.4.2-rc.4
       solid-js: 1.6.11
     dev: false
 
-  /@public-ui/themes/1.4.2-rc.3_ag4deoevfxuf5lqv4rqcpupc3q:
-    resolution: {integrity: sha512-wojLa4dReNOM8WBjSufvK9DWorsQxNKkxG+Vs0VEpNbAfnnnfn4JUvFSVaYE2ah/zYY4Vu2GbJiyrLpQFAJBsg==}
+  /@public-ui/themes/1.4.2-rc.4_zhkcdp5n3wid2rjwstrki5gwtu:
+    resolution: {integrity: sha512-h6b44bFygF1Cqlb/nYytHtYUnb02U6HRPu+l5msywBsDK2eAbb4O6xCEuConTKwnYeMleGhauD5qUEoeX4z/+w==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.3
+      '@public-ui/components': 1.4.2-rc.4
     dependencies:
-      '@public-ui/components': 1.4.2-rc.3
-      '@public-ui/schema': 1.4.2-rc.3
+      '@public-ui/components': 1.4.2-rc.4
+      '@public-ui/schema': 1.4.2-rc.4
     dev: false
 
   /@rollup/pluginutils/5.0.2:

@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.65
   '@floating-ui/dom': 1.2.3
-  '@public-ui/core': 1.4.2-rc.3
-  '@public-ui/schema': 1.4.2-rc.3
+  '@public-ui/core': 1.4.2-rc.4
+  '@public-ui/schema': 1.4.2-rc.4
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.1.0
   '@stencil/postcss': 2.1.0
@@ -52,8 +52,8 @@ specifiers:
 
 dependencies:
   '@floating-ui/dom': 1.2.3
-  '@public-ui/core': 1.4.2-rc.3
-  '@public-ui/schema': 1.4.2-rc.3
+  '@public-ui/core': 1.4.2-rc.4
+  '@public-ui/schema': 1.4.2-rc.4
 
 devDependencies:
   '@a11y-ui/core': 1.0.1-rc.65
@@ -1635,15 +1635,15 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.4.2-rc.3:
-    resolution: {integrity: sha512-JCZ6ORtfE87PWQGPg2KvS/Qpe4pmv3xOySWx9mXZGlidEvM3o1/cppTnbznNo01xqx0eKz6zDonppOBlTehPsA==}
+  /@public-ui/core/1.4.2-rc.4:
+    resolution: {integrity: sha512-Elg6Fim1uMq4i4OccJ1nsiTV78bGUudekcidF0C/p9HGq8Y42TDSD3Ajz42/NzC5C5HBpQ6V8JJ92RMHB9Y5bg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: false
 
-  /@public-ui/schema/1.4.2-rc.3:
-    resolution: {integrity: sha512-8oqELuZHPNLSiAeRvfvIT8xZFi4opEE5qSUahZytsg/tTfnWJ/vMSYtHtW3GRrHEHkjMAO++Dzc1xjqr+0neQw==}
+  /@public-ui/schema/1.4.2-rc.4:
+    resolution: {integrity: sha512-/H7kyK27rDQuBsTaVTxzc48QjmmIu14+cCVe2corLkARzhwErWSP2QbMmxZi6iRwQknICuSm0ysVdfaIEC9nzg==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: false
