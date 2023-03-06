@@ -10,6 +10,9 @@ kol-button-group-wc button {
 	border-bottom-color: transparent;
 	border-bottom-style: solid;
 	border-bottom-width: var(--kolibri-spacing);
+	display: block;
+	min-height: 44px;
+	min-width: 44px;
 }
 
 kol-button-group-wc button[aria-selected='true'],

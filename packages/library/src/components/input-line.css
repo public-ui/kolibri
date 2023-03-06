@@ -14,7 +14,7 @@ textarea {
 	border-width: var(--kolibri-border-width);
 	font-size: 1em;
 	font-family: var(--kolibri-font-family-sans);
-	line-height: 1.5em;
+	line-height: 2.5em;
 	overflow: hidden;
 	width: 100%;
 }
@@ -46,9 +46,10 @@ textarea:disabled {
 	height: 0;
 }
 .icons > kol-icon {
-	display: block;
-	margin: 0.75em;
-	height: 1em;
+	display: grid;
+	height: 44px;
+	padding: 0 0.75em;
+	place-items: center;
 }
 .icon-left input,
 .icon-left select {
@@ -66,7 +67,9 @@ kol-button-wc {
 }
 kol-button-wc button {
 	background-color: transparent;
-	cursor: pointer;
+	display: inline-block;
+	min-height: 44px;
+	min-width: 44px;
 }
 .icon-right kol-button-wc {
 	margin-right: 44px;

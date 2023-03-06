@@ -1,5 +1,6 @@
 @import './tokens.css';
 @import './a11y.css';
+@import './button-and-link.css';
 
 :host {
 	/**
@@ -25,27 +26,20 @@ kol-icon {
 
 kol-span-wc {
 	display: grid;
+	gap: var(--kolibri-spacing);
 	place-items: center;
-	width: 100%;
 }
 kol-span-wc > span {
 	display: flex;
 	gap: var(--kolibri-spacing);
 	place-items: center;
 }
-
-a {
-	display: inline-flex;
-	place-items: baseline;
-}
-
-button {
-	background-color: transparent;
-	border-width: 0;
-	margin: 0;
-	min-height: 44px;
-	min-width: 44px;
-	padding: 0;
+kol-span-wc > kol-icon,
+kol-span-wc > span > kol-icon {
+	display: inline-grid;
+	place-items: center;
+	width: 1em;
+	height: 1em;
 }
 
 a,
@@ -53,11 +47,12 @@ button,
 input,
 select,
 textarea {
+	appearance: none;
 	cursor: pointer;
 }
 
 a.icon-only > kol-span-wc > span > span,
-:host button.icon-only > kol-span-wc > span > span {
+button.icon-only > kol-span-wc > span > span {
 	display: none;
 }
 

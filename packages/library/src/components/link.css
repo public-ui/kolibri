@@ -1,18 +1,18 @@
 @import './style.css';
 
-kol-link-wc,
-kol-link-button-wc {
-	display: inline-block;
+a,
+button {
+	text-decoration-line: underline;
 }
 
-kol-link-wc a,
-kol-button-wc button {
-	background-color: transparent;
+a {
 	display: inline-flex;
-	font-size: inherit;
-	gap: var(--kolibri-spacing);
-	place-items: center;
-	text-decoration-line: underline;
+}
+
+button {
+	display: inline-block;
+	background-color: transparent;
+	border: none;
 }
 
 a:focus,
@@ -23,8 +23,8 @@ button:hover {
 }
 
 kol-icon {
-	padding: 0 var(--kolibri-spacing);
 	display: inline-block;
+	padding: 0 var(--kolibri-spacing);
 }
 
 .hidden {
