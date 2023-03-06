@@ -209,7 +209,7 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: number | Iso8601 | null;
+	@Prop({ mutable: true }) public _value?: number | Iso8601 | null;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
