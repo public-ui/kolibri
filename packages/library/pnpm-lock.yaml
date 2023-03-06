@@ -2,9 +2,9 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.65
+  '@ally-ui/core': ^0.0.22
   '@floating-ui/dom': 1.2.3
-  '@public-ui/core': 1.4.2-rc.2
-  '@public-ui/schema': 1.4.2-rc.2
+  '@public-ui/schema': 1.4.2-rc.3
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.1.0
   '@stencil/postcss': 2.1.0
@@ -31,6 +31,7 @@ specifiers:
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-no-loops: 0.3.0
   eslint-plugin-react: 7.32.2
+  i18next: ^22.4.10
   jest: 26.6.3
   jest-cli: 26.6.3
   lighthouse: 10.0.2
@@ -51,9 +52,10 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
+  '@ally-ui/core': 0.0.22
   '@floating-ui/dom': 1.2.3
-  '@public-ui/core': 1.4.2-rc.2
-  '@public-ui/schema': 1.4.2-rc.2
+  '@public-ui/schema': 1.4.2-rc.3
+  i18next: 22.4.10
 
 devDependencies:
   '@a11y-ui/core': 1.0.1-rc.65
@@ -108,6 +110,12 @@ packages:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
     dependencies:
       loglevel: 1.8.1
+
+  /@ally-ui/core/0.0.22:
+    resolution: {integrity: sha512-KKc8Ly7TyrgbL0it83jikn29Fk6/HZDfDLnzy5P61SMGmyeiCF/llWj5KrTc3IrQkFyATjBKi1M0EZ9vA7m9/w==}
+    dependencies:
+      lodash.isequal: 4.5.0
+    dev: false
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1635,15 +1643,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/core/1.4.2-rc.2:
-    resolution: {integrity: sha512-hJeoPO23DqO6Jlr5gz/+v+wGuKxndhKwhYyYmgdiq7Fy0eq7q7FJ2c/zHRx0snjk0kpgXXbuDynbDAOErgYNRQ==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-      i18next: 22.4.10
-    dev: false
-
-  /@public-ui/schema/1.4.2-rc.2:
-    resolution: {integrity: sha512-BjpOyvfHEb76cnkpOW0O38bblJwlO1OpwGpLQGaISRXgawXXV9gfmadzhLppegxnj0KOmb5L9uw3OPg8XposiQ==}
+  /@public-ui/schema/1.4.2-rc.3:
+    resolution: {integrity: sha512-8oqELuZHPNLSiAeRvfvIT8xZFi4opEE5qSUahZytsg/tTfnWJ/vMSYtHtW3GRrHEHkjMAO++Dzc1xjqr+0neQw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: false
@@ -5565,6 +5566,10 @@ packages:
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: true
+
+  /lodash.isequal/4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: false
 
   /lodash.memoize/4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
