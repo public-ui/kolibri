@@ -67,7 +67,7 @@
 	"dependencies": {
 		"@floating-ui/dom": "1.2.3",
 		"@public-ui/core": "1.4.2-rc.3",
-		"@public-ui/schema": "1.4.2-rc.3"
+		"@public-ui/schema": "1.4.2"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.1-rc.65",
