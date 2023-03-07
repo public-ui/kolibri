@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.65
-  '@ally-ui/core': ^0.0.22
   '@floating-ui/dom': 1.2.3
   '@public-ui/schema': 1.4.2-rc.3
   '@stencil/angular-output-target': 0.5.0
@@ -52,13 +51,12 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
-  '@ally-ui/core': 0.0.22
+  '@a11y-ui/core': 1.0.1-rc.65
   '@floating-ui/dom': 1.2.3
   '@public-ui/schema': 1.4.2-rc.3
   i18next: 22.4.10
 
 devDependencies:
-  '@a11y-ui/core': 1.0.1-rc.65
   '@stencil/angular-output-target': 0.5.0_@stencil+core@3.1.0
   '@stencil/core': 3.1.0
   '@stencil/postcss': 2.1.0_@stencil+core@3.1.0
@@ -110,11 +108,6 @@ packages:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
     dependencies:
       loglevel: 1.8.1
-
-  /@ally-ui/core/0.0.22:
-    resolution: {integrity: sha512-KKc8Ly7TyrgbL0it83jikn29Fk6/HZDfDLnzy5P61SMGmyeiCF/llWj5KrTc3IrQkFyATjBKi1M0EZ9vA7m9/w==}
-    dependencies:
-      lodash.isequal: 4.5.0
     dev: false
 
   /@ampproject/remapping/2.2.0:
@@ -5567,10 +5560,6 @@ packages:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: true
 
-  /lodash.isequal/4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: false
-
   /lodash.memoize/4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
     dev: true
@@ -5594,6 +5583,7 @@ packages:
   /loglevel/1.8.1:
     resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
+    dev: false
 
   /lookup-closest-locale/6.2.0:
     resolution: {integrity: sha512-/c2kL+Vnp1jnV6K6RpDTHK3dgg0Tu2VVp+elEiJpjfS1UyY7AjOYHohRug6wT0OpoX2qFgNORndE9RqesfVxWQ==}
