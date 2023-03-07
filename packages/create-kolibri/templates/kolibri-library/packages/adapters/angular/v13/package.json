@@ -77,6 +77,6 @@
 		"@public-ui/components": "1.4.2"
 	},
 	"files": [
-		"dist/"
+		"dist"
 	]
 }

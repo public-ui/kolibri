@@ -95,7 +95,7 @@
 		"wcag-contrast": "^3.0.0"
 	},
 	"files": [
-		"dist/",
+		"dist",
 		"custom-elements.json",
 		"jest-test-results.json",
 		"vscode-custom-data.json"

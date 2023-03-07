@@ -73,6 +73,6 @@
 		"svelte": ">=3"
 	},
 	"files": [
-		"dist/"
+		"dist"
 	]
 }
