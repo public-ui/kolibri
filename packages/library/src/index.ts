@@ -1,4 +1,4 @@
-export * from './core';
+export { register } from './core';
 export * from './components';
 export * from './enums/bund';
 export * from './kolibri';
