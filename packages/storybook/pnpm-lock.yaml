@@ -8,10 +8,10 @@ specifiers:
   '@leanup/kolibri-components': 1.0.5
   '@leanup/kolibri-react': 1.0.5
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.2-rc.2
-  '@public-ui/core': 1.4.2-rc.2
-  '@public-ui/react': 1.4.2-rc.2
-  '@public-ui/themes': 1.4.2-rc.2
+  '@public-ui/components': 1.4.2
+  '@public-ui/core': 1.4.2
+  '@public-ui/react': 1.4.2
+  '@public-ui/themes': 1.4.2
   '@storybook/addon-a11y': 6.5.16
   '@storybook/addon-actions': 6.5.16
   '@storybook/addon-backgrounds': 6.5.16
@@ -69,13 +69,13 @@ devDependencies:
   '@etchteam/storybook-addon-status': 4.2.2_sfoxds7t5ydpegc3knd667wn6m
   '@geometricpanda/storybook-addon-badges': 1.1.1_pj6mvphdicuicorzeql6b4idzm
   '@leanup/form': 1.3.43
-  '@leanup/kolibri-components': 1.0.5_3gkc5cbtwzuo3nh3nsf473o72e
+  '@leanup/kolibri-components': 1.0.5_cdi6v4kd7qyaipqg6jdmakxwve
   '@leanup/kolibri-react': 1.0.5_v5e7xd2ecehwyasehqcgnjo7m4
-  '@public-oss/kolibri-themes': 0.0.3_h7pdbrhglrqjj6lb2o77ldwt3m
-  '@public-ui/components': 1.4.2-rc.2
-  '@public-ui/core': 1.4.2-rc.2
-  '@public-ui/react': 1.4.2-rc.2_zocfq5oax63f2y6dwpqdwkph5y
-  '@public-ui/themes': 1.4.2-rc.2_h7pdbrhglrqjj6lb2o77ldwt3m
+  '@public-oss/kolibri-themes': 0.0.3_3klldl73gbsumq7rt4zco5h33u
+  '@public-ui/components': 1.4.2
+  '@public-ui/core': 1.4.2
+  '@public-ui/react': 1.4.2_egwijjs7tistk7kcva4cos7imm
+  '@public-ui/themes': 1.4.2_3klldl73gbsumq7rt4zco5h33u
   '@storybook/addon-a11y': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-actions': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
   '@storybook/addon-backgrounds': 6.5.16_sfoxds7t5ydpegc3knd667wn6m
@@ -2605,14 +2605,14 @@ packages:
       '@leanup/lib': 1.3.43
     dev: true
 
-  /@leanup/kolibri-components/1.0.5_3gkc5cbtwzuo3nh3nsf473o72e:
+  /@leanup/kolibri-components/1.0.5_cdi6v4kd7qyaipqg6jdmakxwve:
     resolution: {integrity: sha512-o+C0aC4JYJUoGDVa5Zy3bd8nLtjYyjXBMgDVaVO5sZCSvImsPVVzXm3AJMfrHEtvtxTkusQXGlflVKXAvL3fEw==}
     peerDependencies:
       '@leanup/form': '>=1.2 <2'
       '@public-ui/components': '>=1 <2'
     dependencies:
       '@leanup/form': 1.3.43
-      '@public-ui/components': 1.4.2-rc.2
+      '@public-ui/components': 1.4.2
     dev: true
 
   /@leanup/kolibri-react/1.0.5_v5e7xd2ecehwyasehqcgnjo7m4:
@@ -2622,7 +2622,7 @@ packages:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@leanup/kolibri-components': 1.0.5_3gkc5cbtwzuo3nh3nsf473o72e
+      '@leanup/kolibri-components': 1.0.5_cdi6v4kd7qyaipqg6jdmakxwve
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2761,21 +2761,21 @@ packages:
       webpack: 5.75.0
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_h7pdbrhglrqjj6lb2o77ldwt3m:
+  /@public-oss/kolibri-themes/0.0.3_3klldl73gbsumq7rt4zco5h33u:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.2
+      '@public-ui/components': 1.4.2
       '@public-ui/schema': 1.1.15
     dev: true
 
-  /@public-ui/components/1.4.2-rc.2:
-    resolution: {integrity: sha512-0suxtvme5YHD7tsSA80hSUyY2u1W8jl7unVUINZ7U+exOVIDyUn4E2OcPzHHP0a6jsgiTsDaJrPewqlVYlJ/vw==}
+  /@public-ui/components/1.4.2:
+    resolution: {integrity: sha512-Sc+z4NQ94l4r0pAdfm6I3wflUezyhQt/ioEIigKRO5rYBGy9pdVAgkob9wD0MRAZ8PP3Ojg9z1CJSOa9PWGqZg==}
     dependencies:
       '@floating-ui/dom': 1.2.3
-      '@public-ui/core': 1.4.2-rc.2
-      '@public-ui/schema': 1.4.2-rc.2
+      '@public-ui/core': 1.4.2
+      '@public-ui/schema': 1.4.2
     dev: true
 
   /@public-ui/core/1.1.15:
@@ -2785,21 +2785,21 @@ packages:
       rxjs: 7.8.0
     dev: true
 
-  /@public-ui/core/1.4.2-rc.2:
-    resolution: {integrity: sha512-hJeoPO23DqO6Jlr5gz/+v+wGuKxndhKwhYyYmgdiq7Fy0eq7q7FJ2c/zHRx0snjk0kpgXXbuDynbDAOErgYNRQ==}
+  /@public-ui/core/1.4.2:
+    resolution: {integrity: sha512-XuIn3Xquc5hit1rQhFn53emDCLYnqYhkXc9M67R8/954nvWQYSPQiO8gwghTnBYWHkFAkAsjtYSts9s+eGterA==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
     dev: true
 
-  /@public-ui/react/1.4.2-rc.2_zocfq5oax63f2y6dwpqdwkph5y:
-    resolution: {integrity: sha512-7Z8HbHkAaymN6qZmLQYJOGB4TMYD1RX9l3TrWu7be7n0U9tr+TaGjjsgdT46YhAX9Ty7yWlSxORX80KU5+Yrxg==}
+  /@public-ui/react/1.4.2_egwijjs7tistk7kcva4cos7imm:
+    resolution: {integrity: sha512-2x32auE239AFZFj2Wrg+jfIzdb5isjkT+OqP34NdNc5jsEA64zE9EZxuUAF+0UcMKjypju8VnvXwpqbSfmbQSQ==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.2
+      '@public-ui/components': 1.4.2
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.4.2-rc.2
+      '@public-ui/components': 1.4.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: true
@@ -2810,19 +2810,19 @@ packages:
       '@public-ui/core': 1.1.15
     dev: true
 
-  /@public-ui/schema/1.4.2-rc.2:
-    resolution: {integrity: sha512-BjpOyvfHEb76cnkpOW0O38bblJwlO1OpwGpLQGaISRXgawXXV9gfmadzhLppegxnj0KOmb5L9uw3OPg8XposiQ==}
+  /@public-ui/schema/1.4.2:
+    resolution: {integrity: sha512-TXtjG9jw6EvxoIqtAkjv1h93zZhrVI64HpT3W7CYdvyAyNXBBrVCQJVhPOOFi+srV7reZZgbjLqE/WwB3x+7Pw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
     dev: true
 
-  /@public-ui/themes/1.4.2-rc.2_h7pdbrhglrqjj6lb2o77ldwt3m:
-    resolution: {integrity: sha512-et0+CdCpj+YdWx0GZP8Egdl1L2h9qt1kjx/kbWSj0VqR5ZJXC96kp/MZSchkH+ZuVwvUeoHrrJWtZem6FoXg6A==}
+  /@public-ui/themes/1.4.2_3klldl73gbsumq7rt4zco5h33u:
+    resolution: {integrity: sha512-kh2yFJC8KqKsQ5PFDysHNc66hLvMVefN0aEqDpLX20ljX9FGmyi2oKRFKoXo2uLHOgy9eBly+da92LH6jiuCTw==}
     peerDependencies:
-      '@public-ui/components': 1.4.2-rc.2
+      '@public-ui/components': 1.4.2
     dependencies:
-      '@public-ui/components': 1.4.2-rc.2
-      '@public-ui/schema': 1.4.2-rc.2
+      '@public-ui/components': 1.4.2
+      '@public-ui/schema': 1.4.2
     dev: true
 
   /@rollup/plugin-babel/5.3.1_4tnfxcmsyr7y5qv3uwkivwqysm:

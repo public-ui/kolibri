@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/slidev",
-	"version": "1.4.2-rc.3",
+	"version": "1.4.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -13,7 +13,9 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"scripts": {
-		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js",
+		"build": "npm run build:site && npm run build:pdf",
+		"build:pdf": "slidev export --with-clicks && mv slides-export.pdf presentation.pdf",
+		"build:site": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js",
 		"dev": "slidev --open",
 		"export": "slidev export",
 		"prepack": "npm run build",
@@ -21,9 +23,9 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "1.4.2-rc.3",
-		"@public-ui/core": "1.4.2-rc.3",
-		"@public-ui/themes": "1.4.2-rc.3",
+		"@public-ui/components": "1.4.2",
+		"@public-ui/core": "1.4.2",
+		"@public-ui/themes": "1.4.2",
 		"@slidev/theme-default": "0.21.2",
 		"@slidev/theme-seriph": "0.21.3"
 	},
@@ -36,7 +38,8 @@
 		"ts-prune": "0.10.3"
 	},
 	"files": [
-		"dist/"
+		"dist",
+		"presentation.pdf"
 	],
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"

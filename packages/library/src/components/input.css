@@ -78,7 +78,7 @@ textarea select:focus,
 textarea select:hover,
 textarea textarea:focus,
 textarea textarea:hover {
-	border-color: #999;
+	border-color: var(--kolibri-color-text);
 }
 
 input:not([type='checkbox']),
