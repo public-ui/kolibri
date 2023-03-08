@@ -1,14 +1,11 @@
-import type { Generic, LoaderCallback, RegisterOptions } from '@a11y-ui/core';
 import { register as componentRegister } from '@public-ui/components';
 
 /**
  * @deprecated Moved to \@public-ui/components.
  */
-export const register = (
-	themes:
-		| Generic.Theming.RegisterPatch<string, string, string>
-		| Generic.Theming.RegisterPatch<string, string, string>[]
-		| Set<Generic.Theming.RegisterPatch<string, string, string>>,
-	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
-	options?: RegisterOptions
-): Promise<void[]> => componentRegister(themes, loaders, options);
+export const register = (() => {
+	console.debug(
+		`The register functions has been moved to the @public-ui/components package and thus the @public-ui/core package is deprecated. Now you can import the register function directly from the @public-ui/components package.`
+	);
+	return componentRegister;
+})();
