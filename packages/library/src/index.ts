@@ -1,6 +1,7 @@
 export * from './components';
 export * from './enums/bund';
 export * from './kolibri';
+export * from './schema';
 export { configKoliBri } from './utils/dev.utils';
 export { Optgroup, Option, SelectOption } from './types/input/types';
 export { KoliBriDevHelper } from './utils/prop.validators';
