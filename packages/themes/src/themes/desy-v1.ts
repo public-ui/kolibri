@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 
 // GZD Design System (Desy v1)
 export const DESYv1 = KoliBri.createTheme('desy-v1', {
