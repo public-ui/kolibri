@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@a11y-ui/core': 1.0.1-rc.65
   '@floating-ui/dom': 1.2.3
-  '@public-ui/core': 1.4.2
   '@public-ui/schema': 1.4.2
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.1.0
@@ -31,6 +30,7 @@ specifiers:
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-no-loops: 0.3.0
   eslint-plugin-react: 7.32.2
+  i18next: ^22.4.10
   jest: 26.6.3
   jest-cli: 26.6.3
   lighthouse: 10.0.2
@@ -51,12 +51,12 @@ specifiers:
   workbox-build: 6.5.4
 
 dependencies:
+  '@a11y-ui/core': 1.0.1-rc.65
   '@floating-ui/dom': 1.2.3
-  '@public-ui/core': 1.4.2
   '@public-ui/schema': 1.4.2
+  i18next: 22.4.10
 
 devDependencies:
-  '@a11y-ui/core': 1.0.1-rc.65
   '@stencil/angular-output-target': 0.5.0_@stencil+core@3.1.0
   '@stencil/core': 3.1.0
   '@stencil/postcss': 2.1.0_@stencil+core@3.1.0
@@ -108,6 +108,7 @@ packages:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
     dependencies:
       loglevel: 1.8.1
+    dev: false
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -1634,13 +1635,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
-
-  /@public-ui/core/1.4.2:
-    resolution: {integrity: sha512-XuIn3Xquc5hit1rQhFn53emDCLYnqYhkXc9M67R8/954nvWQYSPQiO8gwghTnBYWHkFAkAsjtYSts9s+eGterA==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-      i18next: 22.4.10
-    dev: false
 
   /@public-ui/schema/1.4.2:
     resolution: {integrity: sha512-TXtjG9jw6EvxoIqtAkjv1h93zZhrVI64HpT3W7CYdvyAyNXBBrVCQJVhPOOFi+srV7reZZgbjLqE/WwB3x+7Pw==}
@@ -5589,6 +5583,7 @@ packages:
   /loglevel/1.8.1:
     resolution: {integrity: sha512-tCRIJM51SHjAayKwC+QAg8hT8vg6z7GSgLJKGvzuPb1Wc+hLzqtuVLxp6/HzSPOozuK+8ErAhy7U/sVzw8Dgfg==}
     engines: {node: '>= 0.6.0'}
+    dev: false
 
   /lookup-closest-locale/6.2.0:
     resolution: {integrity: sha512-/c2kL+Vnp1jnV6K6RpDTHK3dgg0Tu2VVp+elEiJpjfS1UyY7AjOYHohRug6wT0OpoX2qFgNORndE9RqesfVxWQ==}

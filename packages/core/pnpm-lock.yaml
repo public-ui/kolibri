@@ -1,13 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@a11y-ui/core': 1.0.1-rc.65
+  '@public-ui/components': 1.4.2
   '@types/node': ts4.9
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
   eslint: 8.35.0
   eslint-plugin-no-loops: 0.3.0
-  i18next: 22.4.10
   npm-check-updates: 16.7.10
   prettier: 2.8.4
   ts-prune: 0.10.3
@@ -15,11 +14,10 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@a11y-ui/core': 1.0.1-rc.65
-  i18next: 22.4.10
+  '@public-ui/components': 1.4.2
 
 devDependencies:
-  '@types/node': 18.14.3
+  '@types/node': 18.14.6
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
   eslint: 8.35.0
@@ -671,6 +669,16 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@floating-ui/core/1.2.2:
+    resolution: {integrity: sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==}
+    dev: false
+
+  /@floating-ui/dom/1.2.3:
+    resolution: {integrity: sha512-lK9cZUrHSJLMVAdCvDqs6Ug8gr0wmqksYiaoj/bxj2gweRQkSuhg2/V6Jswz2KiQ0RAULbqw1oQDJIMpQ5GfGA==}
+    dependencies:
+      '@floating-ui/core': 1.2.2
+    dev: false
+
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
@@ -845,6 +853,27 @@ packages:
       config-chain: 1.1.13
     dev: true
 
+  /@public-ui/components/1.4.2:
+    resolution: {integrity: sha512-Sc+z4NQ94l4r0pAdfm6I3wflUezyhQt/ioEIigKRO5rYBGy9pdVAgkob9wD0MRAZ8PP3Ojg9z1CJSOa9PWGqZg==}
+    dependencies:
+      '@floating-ui/dom': 1.2.3
+      '@public-ui/core': 1.4.2
+      '@public-ui/schema': 1.4.2
+    dev: false
+
+  /@public-ui/core/1.4.2:
+    resolution: {integrity: sha512-XuIn3Xquc5hit1rQhFn53emDCLYnqYhkXc9M67R8/954nvWQYSPQiO8gwghTnBYWHkFAkAsjtYSts9s+eGterA==}
+    dependencies:
+      '@a11y-ui/core': 1.0.1-rc.65
+      i18next: 22.4.10
+    dev: false
+
+  /@public-ui/schema/1.4.2:
+    resolution: {integrity: sha512-TXtjG9jw6EvxoIqtAkjv1h93zZhrVI64HpT3W7CYdvyAyNXBBrVCQJVhPOOFi+srV7reZZgbjLqE/WwB3x+7Pw==}
+    dependencies:
+      '@a11y-ui/core': 1.0.1-rc.65
+    dev: false
+
   /@rollup/plugin-alias/4.0.3_rollup@3.17.2:
     resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
     engines: {node: '>=14.0.0'}
@@ -974,8 +1003,8 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
-  /@types/node/18.14.3:
-    resolution: {integrity: sha512-1y36CC5iL5CMyKALzwX9cwwxcWIxvIBe3gzs4GrXWXEQ8klQnCZ2U/WDGiNrXHmQcUhnaun17XG9TEIDlGj2RA==}
+  /@types/node/18.14.6:
+    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
     dev: true
 
   /@types/parse-json/4.0.0:
