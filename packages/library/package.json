@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.4.2-rc.3",
+	"version": "1.4.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -67,7 +67,7 @@
 	"dependencies": {
 		"@a11y-ui/core": "1.0.1-rc.65",
 		"@floating-ui/dom": "1.2.3",
-		"@public-ui/schema": "1.4.2-rc.3",
+		"@public-ui/schema": "1.4.2",
 		"i18next": "^22.4.10"
 	},
 	"devDependencies": {
@@ -117,7 +117,7 @@
 		"workbox-build": "6.5.4"
 	},
 	"files": [
-		"dist/",
+		"dist",
 		"doc/",
 		"cheat-sheet.html",
 		"custom-elements.json",

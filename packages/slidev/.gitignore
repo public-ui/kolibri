@@ -4,3 +4,4 @@ dist
 *.local
 .remote-assets
 components.d.ts
+presentation.pdf
