@@ -60,7 +60,7 @@ import Default from '../theme/layouts/default.vue';
 const options = [
 	{
 		disabled: true,
-		label: 'BPA-Styleguide (WIP)',
+		label: 'Bundes-Styleguide (WIP)',
 		value: 'bpa',
 	},
 	{
@@ -70,6 +70,15 @@ const options = [
 	{
 		label: 'DEZY-Styleguide (untested)',
 		value: 'desy-v2',
+	},
+	{
+		label: 'European Commission-Styleguide (untested)',
+		value: 'ecl-ec',
+	},
+	{
+		disabled: true,
+		label: 'European Union-Styleguide (untested)',
+		value: 'ecl-eu',
 	},
 	{
 		label: 'ITZBund-Styleguide (untested)',

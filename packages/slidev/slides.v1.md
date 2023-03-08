@@ -61,7 +61,7 @@ layout: about-me
 
 - Mein Name ist **Martin** Oppitz.
 - **Wertegang:**
-  - Inzwischen **über 25 Jahre** im Web unterwegs
+  - Inzwischen **über 20 Jahre** im Web unterwegs
   - Informatikstudium, Einzelunternehmer und Privatwirtschaft
   - Seit 3 Jahren beim **ITZBund**
 - **Softwarearchitekt** im Referat **Anforderungs- und Lösungsdesign** (II A 2)
@@ -95,20 +95,19 @@ layout: egg
 handle: 1
 ---
 
-# Vom **Ei** zum **Open Source**-Standard
+# Vom **Ei** zu **Open Source**
 
-**KoliBri** hat den **<kol-abbr _title="Beschreibt einen Augenblick einer besonderen Zufriedenheit. (Webcomponents-Durchbruch, 2021)">Magic-Moment</kol-abbr>** der Webcomponents abgepasst und einen Standard zur Umsetzung zugänglicher Benutzeroberflächen realisiert.
+Wir gehen zurück zum Anfang und schauen uns die verschiedenen Aspekte der Bibliothek entlang der KoliBri-**Geschichte** an.
 
 <v-clicks>
 
 - Was ist eine **Webcomponent**?
-- Worin liegt eigentlich das **Problem**?
-- Welche **Ziele** können mit KoliBri erreichen werden?
-- Wie ist KoliBri **aufgestellt**?
-- Was macht eigentlich den **Unterschied**?
-- Wo steht KoliBri und wo will er **hin**?
-- Die EUPL ist die "perfekte" **Lizenz**‽
-- Häufig gestellte **Fragen**.
+- Was ist der große **Vorteil**?
+- Welche **Ziele** können wir damit erreichen?
+- Wie haben wir KoliBri **realisiert**?
+- Wie hat KoliBri **fliegen gelernt**?
+- Welche **Ergebnisse** können wir schon heute sehen?
+- Was möchte KoliBri noch **erreichen**?
 
 </v-clicks>
 
@@ -119,7 +118,6 @@ handle: 2
 ---
 
 # Webcomponents
-<small class="underline">Was ist eine Webcomponent?</small>
 
 <strong>Webcomponents</strong> ist seit Juli 2014 ein <strong>Webstandard</strong> des <strong><kol-abbr _title="World Wide Web Consortium">W3C</kol-abbr></strong>.
 
@@ -145,26 +143,42 @@ handle: 3
 ---
 
 # Viele Wege führen nach Rom
-<small class="underline">Worin liegt eigentlich das Problem?</small>
 
 Barrierefreie Benutzeroberflächen werden durch die semantisch korrekte Komposition von HTML-Elementen realisiert.
 
 <v-clicks>
 
-Der HTML-Webstandard lässt aber das **Wie**, dabei offen. Somit liegt die Aufgabe das "Problem" zu lösen, bei den Entwickelnden. Darüber hinaus gilt es die Richtlinien der <kol-abbr _title="Web Content Accessibility Guidelines">WCAG</kol-abbr> mit den gestalterischen Aspekten aus den vielseitigen Styleguides zu vereinen.
+Der HTML-Webstandard lässt aber das **Wie** dabei offen. Es gilt zudem die Richtlinien der <kol-abbr _title="Web Content Accessibility Guidelines">WCAG</kol-abbr> mit den gestalterischen Aspekten aus den Styleguides zu vereinen.
 
 Der **große Vorteil für die Bundesverwaltung** liegt darin, dass wir mittels des Webcomponent-Standards eine für uns **ideale Lösung** gemeinsam **umsetzen**, **wiederverwenden** (teilen), **verbessern** und **erweitern** können.
 
 </v-clicks>
 
 ---
-layout: image-right-50
-image: '/assets/reaktionsschnell.png'
+layout: image-right
+image: '/assets/teleskop.png'
 handle: 4
 ---
 
+# Vision
+
+<span class="block py-4 text-xl leading-2em">
+Wir stellen gemeinsam <strong>wiederverwendbare
+Webkomponenten</strong> zur Verfügung, die die
+<strong>Barrierefreiheit</strong> und <strong>Usability</strong> für webbasierte
+Benutzeroberflächen der Bundesverwaltung
+<strong>sicherstellen</strong>.
+</span>
+
+<br />
+
+---
+layout: image-right-50
+image: '/assets/reaktionsschnell.png'
+handle: 5
+---
+
 # Ziele
-<small class="underline">Welche Ziele können damit erreichen werden?</small>
 
 Wir wollen **benutzerfreundliche**, **barrierefreie**, **Styleguide-konforme** und **wiederverwendbare** Benutzeroberflächen realisieren.
 
@@ -181,13 +195,58 @@ Wir wollen **benutzerfreundliche**, **barrierefreie**, **Styleguide-konforme** u
 <br />
 
 ---
+layout: image-right-50
+image: '/assets/teamwork.png'
+handle: 6
+---
+
+# Realisierung
+
+Das erste Release sollte alle Komponenten beinhalten, die für eine vollwertige barrierefreie Webanwendung benötigt werden.
+
+<v-clicks>
+
+- Cross-funktionales Team
+- Über 40 Komponenten
+- BIK BITV-Test pro Komponente
+- Mehrere Referenzprojekte
+- Wöchentliche Community of Practice
+- Repräsentative Demo-Anwendung
+- Automatisierung des gesamten Entwicklungsprozesses
+- Agil nach Scrum vorgegangen
+
+</v-clicks>
+
+
+---
+layout: image-right-50
+image: '/assets/avatar.png'
+handle: 7
+---
+
+# Kontinuierliche Verbesserung
+
+Damit KoliBri gut genug wird, um fliegen zu können, mussten wir ihn **immer wieder verbessern** und **erweitern**.
+
+<v-clicks>
+
+- Fokus auf kleinteiligen Komponenten halten
+- Vorhandene Komponenten verbessern und funktional erweitern
+- Vollständiges Refactoring des Theming-Systems / Designer
+- Verbesserung der Dokumentation und Code-Beispiele
+- Erweiterung um weiterer Styleguides
+- Evaluierung alternativer Einsatz-Szenarien
+- Immer mehr interne und externe Projekte
+
+</v-clicks>
+
+---
 layout: image-right-66
 image: '/assets/theming.png'
-handle: 5
+handle: 8
 ---
 
 # Theming
-<small class="underline">Wie ist KoliBri aufgestellt?</small>
 
 Das Theming entkoppelt das Aussehen vollständig von den barrierefreien Komponenten.
 
@@ -200,13 +259,12 @@ Das Theming entkoppelt das Aussehen vollständig von den barrierefreien Komponen
 
 ---
 layout: demo-time
-handle: 6
+handle: 9
 ---
 
 # Live-Demo
-<small class="underline">Was macht eigentlich den Unterschied?</small>
 
-Im Code-Beispiel wird dargestellt, wie die Anforderungen an die Barrierefreiheit im Button "weggekapselt" werden.
+Im Code-Beispiel wird dargestellt, wie u.a. die Anforderungen an die Barrierefreiheit und die Gestaltbarkeit in der Button-Komponente "weggekapselt" werden.
 
 <!-- <kol-accordion _heading="test" _level="5">
 <div slot="content"> -->
@@ -237,12 +295,41 @@ Im Code-Beispiel wird dargestellt, wie die Anforderungen an die Barrierefreiheit
 
 ---
 layout: image-right-50
+image: '/assets/get-started.png'
+handle: 10
+style: 'width: 100%'
+---
+
+# Erste Schritte
+
+Du kannst folgendes tun, um **KoliBri** kennenzulernen …
+
+<v-clicks>
+
+- <kol-link _href="https://public-ui.github.io" _target="website">Lese mehr über KoliBri</kol-link> (Dokumentation)
+- <kol-link _href="https://public-ui.github.io/docs/get-started/erste-schritte" _target="website">Probiere KoliBri aus</kol-link> (Create-App)
+- <kol-link _href="https://github.com/public-ui/kolibri/releases" _target="github">Informiere Dich über die Neuerungen</kol-link> (Changelog)
+- <kol-link _href="https://public-ui.github.io/docs/concepts/styling/theming" _target="website">Gestalte Dein eigenen KoliBri</kol-link> (Designer)
+- <kol-link _href="https://github.com/public-ui/kolibri/issues" _target="github">Gib uns Feedback</kol-link> (Feature, Issue)
+- <kol-link _href="https://github.com/public-ui/kolibri" _target="github">Folge uns auf GitHub</kol-link> (Follow-Button)
+
+</v-clicks>
+
+<br />
+
+<v-after>
+
+<strong>Lasst uns KoliBri bunter und besser machen!</strong>
+
+</v-after>
+
+---
+layout: image-right-50
 image: '/assets/berge.png'
-handle: 7
+handle: 11
 ---
 
 # Fazit
-<small class="underline">Wo steht KoliBri?</small>
 
 KoliBri zahlt mit seiner Funktion und Modularität in die strategischen Ziele des ITZBund Digitale Souveränität, Zukunftssicherheit, Leistungsfähigkeit, Wirtschaftlichkeit und Kundenzufriedenheit ein.
 
@@ -260,11 +347,10 @@ KoliBri zahlt mit seiner Funktion und Modularität in die strategischen Ziele de
 ---
 layout: image-right
 image: '/assets/oss.png'
-handle: 8
+handle: 12
 ---
 
 # Ausblick
-<small class="underline">Wo will KoliBri hin?</small>
 
 **KoliBri** wurde durch den **ITZBund** für die **Open Source**-Entwicklung **freigegeben**, um für alle zugänglich zu sein und um aus dem Feedback der Community kontinuierlich verbessert und erweitert werden zu können.
 
@@ -291,76 +377,12 @@ handle: 8
 </v-after>
 
 ---
-layout: image-right
-image: '/assets/eupl.jpeg'
-handle: 9
----
-
-# Lizenz
-<small class="underline">Die EUPL ist die "perfekte" Lizenz‽</small>
-
-Die Open-Source-Lizenz für die Europäische Union ist eine von der Europäischen Union herausgegebene Copyleft-Lizenz für die Lizenzierung freier Software.
-
-<small>
-<hr/>
-
-<v-clicks>
-
-- Der **Quellcode** ist die konkrete Implementierung der Komponenten und beinhaltet das schützenswerte geistige Eigentum der Urheber:innen. Es wird durch das Code-Repository (Git) repräsentiert und durch die Copyleft-Klausel geschützt, wenn davon eine Kopie (z.B. Fork) erstellt wird.
-- Aus dem Quellcode werden die sogenannten **Artefakte** "gebauten" und über eine öffentliche Plattform (npm) verteilt. Alle Projekte können diese Artefakte herunterladen und die darin enthaltenen Komponenten uneingeschränkt in ihren Anwendungen wiederverwenden und von außen, wie vorgesehen, konfigurieren.
-
-</v-clicks>
-
-<hr/><br/>
-</small>
-
-<v-clicks>
-
-- Die reine Wiederverwendung der Artefakt ist vollkommen **unproblematisch**!
-- **Achtung** beim Kopieren von Code! - Einfach direkt bei KoliBri mit einbringen - ist wiederrum **unproblematisch**!
-
-</v-clicks>
-
----
-layout: image-right
-image: '/assets/swizzling.png'
-handle: 10
----
-
-# Fragen
-<small class="underline">Häufig gestellt Fragen.</small>
-
--
--
--
-
----
-layout: image-right
-image: '/assets/teleskop.png' 
-handle: 11
----
-
-# Vision
-
-<span class="block py-4 text-xl leading-2em">
-Wir stellen gemeinsam <strong>wiederverwendbare
-Webcomponents</strong> zur Verfügung, die die
-<strong>Barrierefreiheit</strong> und <strong>Usability</strong> für webbasierte
-Benutzeroberflächen der Öffentliche Verwaltung
-<strong>sicherstellen</strong>.
-</span>
-
-<br />
-
----
 layout: center
 ---
 
 <img class="m-auto block w-50 pb-15" src="/assets/qr-code.png" />
-<small class="underline">Lasst uns gemeinsam KoliBri bunter und besser machen!</small>
 
 # Vielen Dank für Ihre Aufmerksamkeit
-
 
 <ul class="flex">
   <li class="list-none"><kol-link _href="https://public-ui.github.io" _target="storybook"><kol-icon _icon="fa-sharp fa-solid fa-book" /> Dokumentation</kol-link></li>

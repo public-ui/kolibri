@@ -1,19 +1,32 @@
 * {
-  font-family: BundesSans Web;
+	font-family: BundesSans Web;
 }
 
 :root {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 .slidev-vclick-target {
-  transition: all 1000ms ease 50ms;
+	transition: all 1000ms ease 50ms;
 }
 
 .slidev-layout h1 {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 .slidev-layout h1 + p {
-  opacity: 1;
+	opacity: 1;
+}
+
+small.underline {
+	color: #666;
+	display: block;
+	margin-top: -3em;
+	font-family: monospace;
+	font-size: 0.75em;
+	font-style: italic;
+	text-decoration: none !important;
+}
+small.underline::before {
+	content: '// ';
 }
