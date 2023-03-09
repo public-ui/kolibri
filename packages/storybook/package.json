@@ -50,7 +50,6 @@
 		"@leanup/kolibri-react": "1.0.5",
 		"@public-oss/kolibri-themes": "0.0.3",
 		"@public-ui/components": "1.5.0-rc.0",
-		"@public-ui/core": "1.5.0-rc.0",
 		"@public-ui/react": "1.5.0-rc.0",
 		"@public-ui/themes": "1.5.0-rc.0",
 		"@storybook/addon-a11y": "6.5.16",

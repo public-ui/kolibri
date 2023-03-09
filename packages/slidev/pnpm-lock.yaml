@@ -2,9 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.2
-  '@public-ui/core': 1.4.2
-  '@public-ui/themes': 1.4.2
+  '@public-ui/components': 1.5.0-rc.0
+  '@public-ui/themes': 1.5.0-rc.0
   '@slidev/cli': 0.40.3
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
@@ -15,10 +14,9 @@ specifiers:
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_3klldl73gbsumq7rt4zco5h33u
-  '@public-ui/components': 1.4.2
-  '@public-ui/core': 1.4.2
-  '@public-ui/themes': 1.4.2_3klldl73gbsumq7rt4zco5h33u
+  '@public-oss/kolibri-themes': 0.0.3_pugs4hliwudxdajnvcucbzhmxa
+  '@public-ui/components': 1.5.0-rc.0
+  '@public-ui/themes': 1.5.0-rc.0
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
 
@@ -879,21 +877,21 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_3klldl73gbsumq7rt4zco5h33u:
+  /@public-oss/kolibri-themes/0.0.3_pugs4hliwudxdajnvcucbzhmxa:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.2
+      '@public-ui/components': 1.5.0-rc.0
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.4.2:
-    resolution: {integrity: sha512-Sc+z4NQ94l4r0pAdfm6I3wflUezyhQt/ioEIigKRO5rYBGy9pdVAgkob9wD0MRAZ8PP3Ojg9z1CJSOa9PWGqZg==}
+  /@public-ui/components/1.5.0-rc.0:
+    resolution: {integrity: sha512-7qhekRVFf5HCJ5hzqMmRyPRRpeL2QpxYp/q9kdYzjoihPOzPlZtyZQ0q5/DpAJGMlaueb4ZzYemQ/uY+y6O6sw==}
     dependencies:
+      '@a11y-ui/core': 1.0.1-rc.65
       '@floating-ui/dom': 1.2.3
-      '@public-ui/core': 1.4.2
-      '@public-ui/schema': 1.4.2
+      i18next: 22.4.10
     dev: false
 
   /@public-ui/core/1.1.15:
@@ -903,32 +901,16 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core/1.4.2:
-    resolution: {integrity: sha512-XuIn3Xquc5hit1rQhFn53emDCLYnqYhkXc9M67R8/954nvWQYSPQiO8gwghTnBYWHkFAkAsjtYSts9s+eGterA==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-      i18next: 22.4.10
-    dev: false
-
   /@public-ui/schema/1.1.15:
     resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
     dependencies:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema/1.4.2:
-    resolution: {integrity: sha512-TXtjG9jw6EvxoIqtAkjv1h93zZhrVI64HpT3W7CYdvyAyNXBBrVCQJVhPOOFi+srV7reZZgbjLqE/WwB3x+7Pw==}
+  /@public-ui/themes/1.5.0-rc.0:
+    resolution: {integrity: sha512-RecBdOd6/jRhs3Y2GOMHieC1BLiMdCjoQHkeu21mBvy3eFIzaRFi81KeJ/pS6vHhZ9tl3ba+1TqbwSzgK3016w==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-    dev: false
-
-  /@public-ui/themes/1.4.2_3klldl73gbsumq7rt4zco5h33u:
-    resolution: {integrity: sha512-kh2yFJC8KqKsQ5PFDysHNc66hLvMVefN0aEqDpLX20ljX9FGmyi2oKRFKoXo2uLHOgy9eBly+da92LH6jiuCTw==}
-    peerDependencies:
-      '@public-ui/components': 1.4.2
-    dependencies:
-      '@public-ui/components': 1.4.2
-      '@public-ui/schema': 1.4.2
+      '@public-ui/components': 1.5.0-rc.0
     dev: false
 
   /@rollup/pluginutils/5.0.2:

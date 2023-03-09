@@ -25,7 +25,6 @@
 	},
 	"dependencies": {
 		"@public-ui/components": "^1.5.0-rc.0",
-		"@public-ui/core": "^1.5.0-rc.0",
 		"@public-ui/react": "^1.5.0-rc.0",
 		"@public-ui/themes": "^1.5.0-rc.0",
 		"react": "^18.2.0",

@@ -29,7 +29,6 @@
 		"@angular/platform-browser-dynamic": "^15.0.4",
 		"@public-ui/angular-v15": "^1.5.0-rc.0",
 		"@public-ui/components": "^1.5.0-rc.0",
-		"@public-ui/core": "^1.5.0-rc.0",
 		"@public-ui/themes": "^1.5.0-rc.0",
 		"zone.js": "^0.12.0"
 	},

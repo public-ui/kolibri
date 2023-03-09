@@ -6,9 +6,9 @@ specifiers:
   '@leanup/stack-webpack': 1.3.43
   '@playwright/test': 1.31.2
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.4.2
-  '@public-ui/solid': 1.4.2
-  '@public-ui/themes': 1.4.2
+  '@public-ui/components': 1.5.0-rc.0
+  '@public-ui/solid': 1.5.0-rc.0
+  '@public-ui/themes': 1.5.0-rc.0
   '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.50.3
   '@unocss/webpack': 0.50.3
@@ -30,10 +30,10 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_3klldl73gbsumq7rt4zco5h33u
-  '@public-ui/components': 1.4.2
-  '@public-ui/solid': 1.4.2_qkz2w4ywi7wreapnek7iolqxoq
-  '@public-ui/themes': 1.4.2_3klldl73gbsumq7rt4zco5h33u
+  '@public-oss/kolibri-themes': 0.0.3_pugs4hliwudxdajnvcucbzhmxa
+  '@public-ui/components': 1.5.0-rc.0
+  '@public-ui/solid': 1.5.0-rc.0_j4xyv6fena2qhx6pii7mzrid5i
+  '@public-ui/themes': 1.5.0-rc.0
   monaco-editor: 0.36.1
   monaco-editor-webpack-plugin: 7.0.1_yuuxqubmlwm7s5vqmasqf2oquq
   register-service-worker: 1.7.2
@@ -1784,21 +1784,21 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_3klldl73gbsumq7rt4zco5h33u:
+  /@public-oss/kolibri-themes/0.0.3_pugs4hliwudxdajnvcucbzhmxa:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.4.2
+      '@public-ui/components': 1.5.0-rc.0
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.4.2:
-    resolution: {integrity: sha512-Sc+z4NQ94l4r0pAdfm6I3wflUezyhQt/ioEIigKRO5rYBGy9pdVAgkob9wD0MRAZ8PP3Ojg9z1CJSOa9PWGqZg==}
+  /@public-ui/components/1.5.0-rc.0:
+    resolution: {integrity: sha512-7qhekRVFf5HCJ5hzqMmRyPRRpeL2QpxYp/q9kdYzjoihPOzPlZtyZQ0q5/DpAJGMlaueb4ZzYemQ/uY+y6O6sw==}
     dependencies:
+      '@a11y-ui/core': 1.0.1-rc.65
       '@floating-ui/dom': 1.2.3
-      '@public-ui/core': 1.4.2
-      '@public-ui/schema': 1.4.2
+      i18next: 22.4.10
     dev: false
 
   /@public-ui/core/1.1.15:
@@ -1808,42 +1808,26 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/core/1.4.2:
-    resolution: {integrity: sha512-XuIn3Xquc5hit1rQhFn53emDCLYnqYhkXc9M67R8/954nvWQYSPQiO8gwghTnBYWHkFAkAsjtYSts9s+eGterA==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-      i18next: 22.4.10
-    dev: false
-
   /@public-ui/schema/1.1.15:
     resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
     dependencies:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema/1.4.2:
-    resolution: {integrity: sha512-TXtjG9jw6EvxoIqtAkjv1h93zZhrVI64HpT3W7CYdvyAyNXBBrVCQJVhPOOFi+srV7reZZgbjLqE/WwB3x+7Pw==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-    dev: false
-
-  /@public-ui/solid/1.4.2_qkz2w4ywi7wreapnek7iolqxoq:
-    resolution: {integrity: sha512-fCNgB2iaYWGy0Iyw5Ew3aoB88WmjfbRuRo4hogEJKcLHDTKTKhYlkw7j5fV4PUyb0K9z6GLMVRAmtKo7ZXfyYg==}
+  /@public-ui/solid/1.5.0-rc.0_j4xyv6fena2qhx6pii7mzrid5i:
+    resolution: {integrity: sha512-vP74BoXp2gaoeS5VDQuTz+8fLkwEjzrCihS3ux+lK1BMtbVGublDMFjx0RSFmHv5XEw4Y/37+89BpqhAdqfrlQ==}
     peerDependencies:
-      '@public-ui/components': 1.4.2
+      '@public-ui/components': 1.5.0-rc.0
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.4.2
+      '@public-ui/components': 1.5.0-rc.0
       solid-js: 1.6.11
     dev: false
 
-  /@public-ui/themes/1.4.2_3klldl73gbsumq7rt4zco5h33u:
-    resolution: {integrity: sha512-kh2yFJC8KqKsQ5PFDysHNc66hLvMVefN0aEqDpLX20ljX9FGmyi2oKRFKoXo2uLHOgy9eBly+da92LH6jiuCTw==}
-    peerDependencies:
-      '@public-ui/components': 1.4.2
+  /@public-ui/themes/1.5.0-rc.0:
+    resolution: {integrity: sha512-RecBdOd6/jRhs3Y2GOMHieC1BLiMdCjoQHkeu21mBvy3eFIzaRFi81KeJ/pS6vHhZ9tl3ba+1TqbwSzgK3016w==}
     dependencies:
-      '@public-ui/components': 1.4.2
-      '@public-ui/schema': 1.4.2
+      '@public-ui/components': 1.5.0-rc.0
     dev: false
 
   /@rollup/pluginutils/5.0.2:
