@@ -86,7 +86,7 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
-    directory: '/packages/library/'
+    directory: '/packages/components/'
     schedule:
       interval: daily
     target-branch: main

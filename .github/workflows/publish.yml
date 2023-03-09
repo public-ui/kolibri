@@ -39,11 +39,11 @@ jobs:
           node-version: 16
           registry-url: '${{env.npmjs-registry}}'
           scope: '@public-ui'
-      - name: Build and publish library
+      - name: Build and publish components
         run: |
           npm i
           npm publish --access ${{env.access}} --tag ${{env.npmjs-tag}} || true
-        working-directory: packages/library
+        working-directory: packages/components
         env:
           NODE_AUTH_TOKEN: ${{env.npmjs-token}}
       - name: Build and publish themes
