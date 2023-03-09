@@ -1,5 +1,7 @@
 * {
 	font-family: BundesSans Web;
+	hyphens: auto;
+	word-break: break-word;
 }
 
 :root {

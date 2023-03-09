@@ -17,6 +17,7 @@
 		"build:pdf": "slidev export --with-clicks && mv slides-export.pdf presentation.pdf",
 		"build:site": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js",
 		"dev": "slidev --open",
+		"start": "npm run dev",
 		"export": "slidev export",
 		"prepack": "npm run build",
 		"update": "ncu -u"
