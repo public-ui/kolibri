@@ -67,7 +67,6 @@
 	"dependencies": {
 		"@a11y-ui/core": "1.0.1-rc.65",
 		"@floating-ui/dom": "1.2.3",
-		"@public-ui/schema": "1.5.0-rc.0",
 		"i18next": "22.4.10"
 	},
 	"devDependencies": {
