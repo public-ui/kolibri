@@ -254,10 +254,10 @@ Aus Sicht der öffentlichen Verwaltung hat KoliBri eine ganze Reihe an Alleinste
 <v-clicks>
 
 - **Spezifikation** - <span class="text-gray-500">Barrierefreiheit kommt zu erst (by Design)</span>
-- **Architektur** - <span class="text-gray-500">Einmalige Implementierung (Framework-agnostisch)</span>
-- **Robustheit** - <span class="text-gray-500">Web Components im restriktiven Modus (Shadow-Root)</span>
 - **Theming** - <span class="text-gray-500">Entkoppeltes Styling im Shadow-Root (Theming)</span>
 - **Zugänglichkeit** - <span class="text-gray-500">Code-Hoheit liegt beim Bund (Digitale Souveränität)</span>
+- **Architektur** - <span class="text-gray-500">Einmalige Implementierung (Framework-agnostisch)</span>
+- **Robustheit** - <span class="text-gray-500">Web Components im restriktiven Modus (Shadow-Root)</span>
 
 </v-clicks>
 
