@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 
 // Europa Component Library - European Commission | https://ec.europa.eu/component-library/ec/
 export const ECL_EC = KoliBri.createTheme('ecl-ec', {
