@@ -154,7 +154,7 @@ Barrierefreie Benutzeroberflächen werden durch die semantisch korrekte Komposit
 
 <v-clicks>
 
-Der HTML-Webstandard lässt aber das **Wie** dabei offen. Somit liegt die Aufgabe das "Problem" zu lösen, bei den Entwickelnden. Darüber hinaus gilt es, die Richtlinien der <kol-abbr _title="Web Content Accessibility Guidelines">WCAG</kol-abbr> mit den gestalterischen Aspekten aus den vielseitigen Styleguides zu vereinen.
+Der HTML-Webstandard lässt aber das **Wie** dabei offen. Somit liegt die Aufgabe, das "Problem" zu lösen, bei den Entwickelnden. Darüber hinaus gilt es, die Richtlinien der <kol-abbr _title="Web Content Accessibility Guidelines">WCAG</kol-abbr> mit den gestalterischen Aspekten aus den vielseitigen Styleguides zu vereinen.
 
 Der **große Vorteil für die Bundesverwaltung** liegt darin, dass wir mittels des Web Component-Standards eine für uns **ideale Lösung** gemeinsam **umsetzen**, **wiederverwenden** (teilen), **verbessern** und **erweitern** können.
 
@@ -253,7 +253,7 @@ Aus Sicht der öffentlichen Verwaltung hat KoliBri eine ganze Reihe an Alleinste
 
 <v-clicks>
 
-- **Spezifikation** - <span class="text-gray-500">Barrierefreiheit kommt zu erst (by Design)</span>
+- **Spezifikation** - <span class="text-gray-500">Barrierefreiheit kommt zuerst (by Design)</span>
 - **Theming** - <span class="text-gray-500">Entkoppeltes Styling im Shadow-Root (Theming)</span>
 - **Zugänglichkeit** - <span class="text-gray-500">Code-Hoheit liegt beim Bund (Digitale Souveränität)</span>
 - **Architektur** - <span class="text-gray-500">Einmalige Implementierung (Framework-agnostisch)</span>
@@ -363,11 +363,11 @@ handle: 11
 <small>
 <v-clicks>
 
-- **Wie abhängig mach ich mich, wenn ich KoliBri einsetze?**<br/>
+- **Wie abhängig mache ich mich, wenn ich KoliBri einsetze?**<br/>
  Vergleicht man KoliBri mit einem LEGO®-Set, dann kann man die enthaltenen Bausteine einfach mir anderen Bausteinen mischen, um die Gesamtanwendung abzubilden _(s. blaue, orange und graue Komponenten)_.<br/><br/>
 - **Wie kann ich eine Komponente beeinflussen, wenn nötig?**<br/>
-  KoliBri-Komponenten sind zur Sicherstellung der Barrierefreiheit sehr restriktiv und werden durch Komposition wiederverwendet. Anpassungen von außen lassen sich nur durch das **Wrappen** oder den **Expert-Slot** vornehmen _(s. orange in blau, blau in orange)_. Das Styling ist über das **Theme-Konzept** durch Konfiguration möglich.<br/><br/>
-- **Was mach ich, wenn eine Komponente oder Funktion fehlt?**<br/>
+  KoliBri-Komponenten sind zur Sicherstellung der Barrierefreiheit sehr restriktiv und werden durch Komposition wiederverwendet. Anpassungen von außen lassen sich nur durch das **Wrappen** oder den **Expert-Slot** vornehmen _(s. Orange in Blau, Blau in Orange)_. Das Styling ist über das **Theme-Konzept** durch Konfiguration möglich.<br/><br/>
+- **Was mache ich, wenn eine Komponente oder Funktion fehlt?**<br/>
   Neue **fachlich neutrale Komponenten** oder **Funktionen** sollen innerhalb von KoliBri realisiert werden. Hierbei ist das **Mitwirken** ausdrücklich erwünscht und beschleunigt die Umsetzung.
 
 </v-clicks>
