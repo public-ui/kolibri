@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.4.2
+  '@public-ui/components': 1.5.0-rc.0
   '@types/node': ts4.9
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
@@ -14,7 +14,7 @@ specifiers:
   unbuild: 1.1.1
 
 dependencies:
-  '@public-ui/components': 1.4.2
+  '@public-ui/components': 1.5.0-rc.0
 
 devDependencies:
   '@types/node': 18.14.6
@@ -853,25 +853,12 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@public-ui/components/1.4.2:
-    resolution: {integrity: sha512-Sc+z4NQ94l4r0pAdfm6I3wflUezyhQt/ioEIigKRO5rYBGy9pdVAgkob9wD0MRAZ8PP3Ojg9z1CJSOa9PWGqZg==}
+  /@public-ui/components/1.5.0-rc.0:
+    resolution: {integrity: sha512-7qhekRVFf5HCJ5hzqMmRyPRRpeL2QpxYp/q9kdYzjoihPOzPlZtyZQ0q5/DpAJGMlaueb4ZzYemQ/uY+y6O6sw==}
     dependencies:
+      '@a11y-ui/core': 1.0.1-rc.65
       '@floating-ui/dom': 1.2.3
-      '@public-ui/core': 1.4.2
-      '@public-ui/schema': 1.4.2
-    dev: false
-
-  /@public-ui/core/1.4.2:
-    resolution: {integrity: sha512-XuIn3Xquc5hit1rQhFn53emDCLYnqYhkXc9M67R8/954nvWQYSPQiO8gwghTnBYWHkFAkAsjtYSts9s+eGterA==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
       i18next: 22.4.10
-    dev: false
-
-  /@public-ui/schema/1.4.2:
-    resolution: {integrity: sha512-TXtjG9jw6EvxoIqtAkjv1h93zZhrVI64HpT3W7CYdvyAyNXBBrVCQJVhPOOFi+srV7reZZgbjLqE/WwB3x+7Pw==}
-    dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
     dev: false
 
   /@rollup/plugin-alias/4.0.3_rollup@3.17.2:
