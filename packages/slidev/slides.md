@@ -105,6 +105,7 @@ handle: 1
 - Worin liegt eigentlich das **Problem**?
 - Welche **Ziele** können mit KoliBri erreicht werden?
 - Wie ist KoliBri **aufgestellt**?
+- Wo wird denn hier was **eingespart**?
 - Was macht eigentlich den **Unterschied**?
 - Wo steht KoliBri und wo will er **hin**?
 - Die EUPL ist die "perfekte" **Lizenz**‽
@@ -209,7 +210,7 @@ handle: 6
 
 # Live-Demo
 
-<small class="underline">Was macht eigentlich den Unterschied?</small>
+<small class="underline">Wo wird denn hier was eingespart?</small>
 
 Im Code-Beispiel wird dargestellt, wie die Anforderungen an die Barrierefreiheit im Button "weg gekapselt" werden.
 
@@ -239,9 +240,31 @@ Im Code-Beispiel wird dargestellt, wie die Anforderungen an die Barrierefreiheit
 <small class="mt-8 text-xs"><sup>\*</sup> Quellcode ist für die bessere Nachvollziehbarkeit stark vereinfacht.</small>
 
 ---
+layout: image-right
+image: '/assets/usp.png'
+handle: 7
+---
+
+# Unique Selling Points
+
+<small class="underline">Was macht eigentlich den Unterschied?</small>
+
+Aus Sicht der öffentlichen Verwaltung hat KoliBri eine ganze Reihe an Alleinstellungsmerkmalen:
+
+<v-clicks>
+
+- **Spezifikation** - <span class="text-gray-500">Barrierefreiheit kommt zu erst (by Design)</span>
+- **Architektur** - <span class="text-gray-500">Einmalige Implementierung (Framework-agnostisch)</span>
+- **Robustheit** - <span class="text-gray-500">Web Components im restriktiven Modus (Shadow-Root)</span>
+- **Theming** - <span class="text-gray-500">Entkoppeltes Styling im Shadow-Root (Theming)</span>
+- **Zugänglichkeit** - <span class="text-gray-500">Code-Hoheit liegt beim Bund (Digitale Souveränität)</span>
+
+</v-clicks>
+
+---
 layout: image-right-50
 image: '/assets/berge.png'
-handle: 7
+handle: 8
 ---
 
 # Fazit
@@ -264,7 +287,7 @@ KoliBri zahlt mit seiner Funktion und Modularität in die strategischen Ziele de
 ---
 layout: image-right
 image: '/assets/oss.png'
-handle: 8
+handle: 9
 ---
 
 # Ausblick
@@ -297,64 +320,71 @@ handle: 8
 ---
 layout: image-right
 image: '/assets/eupl.jpeg'
-handle: 9
+handle: 10
 ---
 
 # Lizenz
 
 <small class="underline">Die EUPL ist die "perfekte" Lizenz‽</small>
 
-Die Open-Source-Lizenz für die Europäische Union ist eine von der Europäischen Union herausgegebene Copyleft-Lizenz für die Lizenzierung freier Software.
+Die "Open-Source-Lizenz für die Europäische Union" (EUPL) ist eine von der Europäischen Union herausgegebene Copyleft-Lizenz für die Lizenzierung freier Software.
 
 <small>
-<hr/>
+
 
 <v-clicks>
 
-- Der **Quellcode** ist die konkrete Implementierung der Komponenten und beinhaltet das schützenswerte geistige Eigentum der Urheber:innen. Es wird durch das Code-Repository (Git) repräsentiert und durch die Copyleft-Klausel geschützt, wenn davon eine Kopie (z.B. Fork) erstellt wird.
+- Der **Quellcode** ist die konkrete Implementierung der Komponenten und beinhaltet das schützenswerte geistige Eigentum der Urheber:innen. Es wird durch das Code-Repository (Git) repräsentiert und durch die Copyleft-Klausel geschützt, wenn davon eine Kopie (z.B. Fork) erstellt wird.<br/><br/>
 - Aus dem Quellcode werden die sogenannten **Artefakte** "gebauten" und über eine öffentliche Plattform (npm) verteilt. Alle Projekte können diese Artefakte herunterladen und die darin enthaltenen Komponenten uneingeschränkt in ihren Anwendungen wiederverwenden und von außen, wie vorgesehen, konfigurieren.
 
 </v-clicks>
 
-<hr/><br/>
+<br/>
 </small>
 
 <v-clicks>
 
-- Die reine Wiederverwendung der Artefakte ist vollkommen **unproblematisch**!
-- **Achtung** beim Kopieren von Code! (zieht Copyleft nach sich)
-- Änderungswünsche einfach direkt bei KoliBri **einbringen**!
+- 🤗 Die reine Wiederverwendung der Artefakte ist vollkommen **unproblematisch**!
+- 🤔 **Achtung** beim Kopieren von Code! _(zieht **Copyleft** nach sich)_
+- 😉 Dann einfach Änderungswünsche direkt bei KoliBri **einbringen**!
 
 </v-clicks>
 
 ---
 layout: image-right
 image: '/assets/swizzling.png'
-handle: 10
+handle: 11
 ---
 
 # Fragen
 
 <small class="underline">Häufig gestellt Fragen.</small>
 
--
--
--
+<small>
+<v-clicks>
+
+- **Wie abhängig mach ich mich, wenn ich KoliBri einsetze?**<br/>
+ Vergleicht man KoliBri mit einem LEGO®-Set, dann kann man die enthaltenen Bausteine einfach mir anderen Bausteinen mischen, um die Gesamtanwendung abzubilden _(s. blaue, orange und graue Komponenten)_.<br/><br/>
+- **Wie kann ich eine Komponente beeinflussen, wenn nötig?**<br/>
+  KoliBri-Komponenten sind zur Sicherstellung der Barrierefreiheit sehr restriktiv und werden durch Komposition wiederverwendet. Anpassungen von außen lassen sich nur durch das **Wrappen** oder den **Expert-Slot** vornehmen _(s. orange in blau, blau in orange)_. Das Styling ist über das **Theme-Konzept** durch Konfiguration möglich.<br/><br/>
+- **Was mach ich, wenn eine Komponente oder Funktion fehlt?**<br/>
+  Neue **fachlich neutrale Komponenten** oder **Funktionen** sollen innerhalb von KoliBri realisiert werden. Hierbei ist das **Mitwirken** ausdrücklich erwünscht und beschleunigt die Umsetzung.
+
+</v-clicks>
+</small>
 
 ---
 layout: image-right
-image: '/assets/teleskop.png' 
-handle: 11
+image: '/assets/teleskop.png'
+handle: 12
 ---
 
 # Vision
 
 <span class="block py-4 text-xl leading-2em">
-Wir stellen gemeinsam <strong>wiederverwendbare
-Web Components</strong> zur Verfügung, die die
-<strong>Barrierefreiheit</strong> und <strong>Usability</strong> für webbasierte
-Benutzeroberflächen der öffentlichen Verwaltung
-<strong>sicherstellen</strong>.
+Wir stellen gemeinsam <strong>wiederverwendbare Web Components</strong> zur Verfügung, die die
+<strong>Barrierefreiheit</strong> und <strong>Usability</strong> für webbasierte Benutzeroberflächen
+der öffentlichen Verwaltung <strong>sicherstellen</strong>.
 </span>
 
 <br />
@@ -386,29 +416,29 @@ layout: center
 
 <div class="grid grid-cols-[10rem_auto_4rem_10rem_auto] items-center gap-4">
   <div>
-    <img src="/assets/teleskop.png" class="mt-8 w-25 m-auto" />
+    <img src="/assets/reaktionsschnell.png" class="mt-8 w-20 m-auto" />
   </div>
   <div class="mt-6">
-    <kol-link _href="https://www.flaticon.com/de/kostenlose-icons/fernglas" _target="flaticon">Fernglas Icons erstellt von Freepik - Flaticon</kol-link>
+    <kol-link _href="https://www.flaticon.com/de/kostenlose-icons/reaktionsschnell" _target="flaticon">Reaktionsschnell Icons erstellt von Freepik - Flaticon</kol-link>
   </div>
   <div></div>
   <div>
-    <img src="/assets/berge.png" class="mt-8 w-25 m-auto" />
+    <img src="/assets/usp.png" class="mt-8 w-20 m-auto" />
+  </div>
+  <div class="mt-6">
+    <kol-link _href="https://www.flaticon.com/de/kostenlose-icons/usp" _target="flaticon">Usp Icons erstellt von Freepik - Flaticon</kol-link>
+  </div>
+  <div>
+    <img src="/assets/berge.png" class="mt-8 w-20 m-auto" />
   </div>
   <div class="mt-6">
     <kol-link _href="https://www.flaticon.com/de/kostenlose-icons/berg" _target="flaticon">Berg Icons erstellt von Freepik - Flaticon</kol-link>
   </div>
-  <div>
-    <img src="/assets/teamwork.png" class="mt-8 w-25 m-auto" />
-  </div>
-  <div class="mt-6">
-    <kol-link _href="https://www.flaticon.com/de/kostenlose-icons/teamwork" _target="flaticon">Teamwork Icons erstellt von Freepik - Flaticon</kol-link>
-  </div>
   <div></div>
   <div>
-    <img src="/assets/reaktionsschnell.png" class="mt-8 w-25 m-auto" />
+    <img src="/assets/teleskop.png" class="mt-8 w-20 m-auto" />
   </div>
   <div class="mt-6">
-    <kol-link _href="https://www.flaticon.com/de/kostenlose-icons/reaktionsschnell" _target="flaticon">Reaktionsschnell Icons erstellt von Freepik - Flaticon</kol-link>
+    <kol-link _href="https://www.flaticon.com/de/kostenlose-icons/fernglas" _target="flaticon">Fernglas Icons erstellt von Freepik - Flaticon</kol-link>
   </div>
 </div>
