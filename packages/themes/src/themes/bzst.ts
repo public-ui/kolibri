@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 
 // Bundeszentralamt für Steuern
 export const BZSt = KoliBri.createTheme('bzst', {

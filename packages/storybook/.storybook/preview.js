@@ -18,7 +18,7 @@ import { THEME } from './theme';
 
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
-import { register } from '@public-ui/core';
+import { register } from '@public-ui/components';
 import { TH } from '@public-oss/kolibri-themes';
 import { BPA, ITZBund } from '@public-ui/themes';
 

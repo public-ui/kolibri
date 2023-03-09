@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 
 // Informationstechnik Zentrum Bund
 export const ITZBund = KoliBri.createTheme('itzbund', {

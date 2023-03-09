@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/schema';
+import { KoliBri } from '@public-ui/components';
 
 // Design System Zoll (v2
 export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {

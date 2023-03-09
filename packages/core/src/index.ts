@@ -1,29 +1,10 @@
-import type { Generic, LoaderCallback, RegisterOptions } from '@a11y-ui/core';
-import { register as coreRegister, STORE } from '@a11y-ui/core';
-import { I18nextService, II18nService } from './i18n';
+import { register } from '@public-ui/components';
 
-export const register = (
-	themes:
-		| Generic.Theming.RegisterPatch<string, string, string>
-		| Generic.Theming.RegisterPatch<string, string, string>[]
-		| Set<Generic.Theming.RegisterPatch<string, string, string>>,
-	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
-	options?: RegisterOptions
-): Promise<void[]> => {
-	try {
-		if (STORE.I18n === undefined) {
-			Object.defineProperty(STORE, 'I18n', {
-				value: new I18nextService(options?.translation?.name ?? 'de', options?.translations),
-				writable: false,
-			});
-		}
-	} catch (e) {
-		// das Laden der Sprache ist optional
-	}
-	return coreRegister(themes, loaders, options);
-};
+console.debug(
+	`The register functions has been moved to the @public-ui/components package and thus the @public-ui/core package is deprecated. Now you can import the register function directly from the @public-ui/components package.`
+);
 
-export const getI18nService: () => II18nService | undefined = () => STORE?.I18n as II18nService;
-
-// TODO: remove later
-export const getTranslationService = () => STORE?.I18n;
+/**
+ * @deprecated Moved to \@public-ui/components.
+ */
+export { register };

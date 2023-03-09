@@ -10,15 +10,15 @@
 		"packages/adapters/react",
 		"packages/adapters/solid",
 		"packages/adapters/vue",
+		"packages/components",
 		"packages/core",
 		"packages/create-kolibri",
 		"packages/designer",
-		"packages/library",
 		"packages/schema",
 		"packages/slidev",
 		"packages/storybook",
 		"packages/themes"
 	],
 	"useNx": false,
-	"version": "1.4.2"
+	"version": "1.5.0-rc.0"
 }
