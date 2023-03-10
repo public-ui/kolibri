@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { getI18nService } from './core';
+import { KoliBri, KoliBriPrefix } from "./schema";
 /**
  * Issue #2456: Don't use json files
  * - https://github.com/public-ui/kolibri/issues/2456
@@ -8,16 +9,11 @@ import { getI18nService } from './core';
 import locale_de from './locales/de';
 import locale_en from './locales/en';
 import { devHint } from './utils/a11y.tipps';
+import { KeyEnum } from './schema/i18n-keys';
 
-type ResourcePrefix = 'Kol';
-type ComponentKeys = keyof typeof locale_de;
-
-const mapLocaleKeys = (locale: { [K in ComponentKeys]: string }) =>
-	(Object.keys(locale) as ComponentKeys[]).reduce((a, c) => ((a[`${'kol'}-${c}`] = locale[c]), a), {} as Generic.I18n.Map<ResourcePrefix, ComponentKeys>);
-
-export const translations = new Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, ResourcePrefix, ComponentKeys>>([
-	(t: (language: 'en', translationMap: Generic.I18n.Map<ResourcePrefix, ComponentKeys>) => Generic.I18n.Locale.ISO_639_1) => t('en', mapLocaleKeys(locale_en)),
-	(t: (language: 'de', translationMap: Generic.I18n.Map<ResourcePrefix, ComponentKeys>) => Generic.I18n.Locale.ISO_639_1) => t('de', mapLocaleKeys(locale_de)),
+export const translations = new Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, "kol", keyof typeof KeyEnum>>([
+	KoliBri.createTranslation("en", locale_en),
+	KoliBri.createTranslation("de", locale_de)
 ]);
 
 type Options = {
@@ -25,7 +21,7 @@ type Options = {
 	placeholders?: { [K: string]: string };
 };
 
-export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<ComponentKeys>}`, options?: Options) => {
+export const translate = (key: `${Lowercase<KoliBriPrefix>}-${Lowercase<keyof typeof KeyEnum>}`, options?: Options) => {
 	const i18n = getI18nService();
 	if (i18n === undefined) {
 		devHint('[I18n] I18nService not available! Please call the global register function.');
