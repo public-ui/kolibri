@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { getI18nService } from './core';
-import { KoliBri, KoliBriPrefix } from "./schema";
+import { KoliBri } from "./schema";
 /**
  * Issue #2456: Don't use json files
  * - https://github.com/public-ui/kolibri/issues/2456
@@ -10,6 +10,7 @@ import locale_de from './locales/de';
 import locale_en from './locales/en';
 import { devHint } from './utils/a11y.tipps';
 import { KeyEnum } from './schema/i18n-keys';
+import { ResourceKeys } from './core/i18n';
 
 export const translations = new Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, "kol", keyof typeof KeyEnum>>([
 	KoliBri.createTranslation("en", locale_en),
@@ -21,7 +22,7 @@ type Options = {
 	placeholders?: { [K: string]: string };
 };
 
-export const translate = (key: `${Lowercase<KoliBriPrefix>}-${Lowercase<keyof typeof KeyEnum>}`, options?: Options) => {
+export const translate = (key: ResourceKeys, options?: Options) => {
 	const i18n = getI18nService();
 	if (i18n === undefined) {
 		devHint('[I18n] I18nService not available! Please call the global register function.');
