@@ -118,11 +118,11 @@ export class BikBitvTest extends Component<Props, State> {
 								value: '',
 							},
 							{
-								label: 'DEFAULT-Styleguide',
+								label: 'BAMF-Styleguide',
 								value: 'bamf',
 							},
 							{
-								label: 'DEFAULT-Styleguide',
+								label: 'BMF-Styleguide',
 								value: 'default',
 							},
 							{

@@ -15,26 +15,6 @@ updates:
     schedule:
       interval: daily
     target-branch: main
-  #   - package-ecosystem: npm
-  #     directory: '/packages/adapters/angular/v11/'
-  #     schedule:
-  #       interval: daily
-  #     target-branch: main
-  #   - package-ecosystem: npm
-  #     directory: '/packages/adapters/angular/v12/'
-  #     schedule:
-  #       interval: daily
-  #     target-branch: main
-  #   - package-ecosystem: npm
-  #     directory: '/packages/adapters/angular/v13/'
-  #     schedule:
-  #       interval: daily
-  #     target-branch: main
-  #   - package-ecosystem: npm
-  #     directory: '/packages/adapters/angular/v14/'
-  #     schedule:
-  #       interval: daily
-  #     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/angular/v15/'
     schedule:
@@ -71,7 +51,7 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
-    directory: '/packages/core/'
+    directory: '/packages/components/'
     schedule:
       interval: daily
     target-branch: main
@@ -86,17 +66,7 @@ updates:
       interval: daily
     target-branch: main
   - package-ecosystem: npm
-    directory: '/packages/components/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/schema/'
-    schedule:
-      interval: daily
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/storybook/'
+    directory: '/packages/slidev/'
     schedule:
       interval: daily
     target-branch: main
@@ -107,6 +77,18 @@ updates:
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/themes/'
+    schedule:
+      interval: daily
+    target-branch: main
+
+  # deprecated
+  - package-ecosystem: npm
+    directory: '/packages/core/'
+    schedule:
+      interval: daily
+    target-branch: main
+  - package-ecosystem: npm
+    directory: '/packages/schema/'
     schedule:
       interval: daily
     target-branch: main

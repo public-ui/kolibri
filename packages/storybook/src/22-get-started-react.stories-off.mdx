@@ -61,7 +61,7 @@ Er sorgt dafür, dass die Components asychron (lazy) nachgeladen werden, sobald 
 | Methode              | Erläuterung                                            |
 | -------------------- | ------------------------------------------------------ |
 | register             | Setzt ein Theme und registiert anschließend den Loader |
-| DEFAULT              | Registiert den Loader für z.B. das DEFAULT-Theme       |
+| ITZBund              | Registiert den Loader für z.B. das ITZBund-Theme       |
 | defineCustomElements | Registiert den Loader für die Web Components           |
 
 #### Integration
@@ -74,9 +74,9 @@ import { AppComponent } from './components/app/component';
 
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT } from '@public-ui/themes';
+import { ITZBund } from '@public-ui/themes';
 
-register(DEFAULT, defineCustomElements)
+register(ITZBund, defineCustomElements)
 	.then(() => {
 		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
 		if (htmlDivElement instanceof HTMLDivElement) {

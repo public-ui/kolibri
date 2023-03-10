@@ -28,12 +28,12 @@ input::placeholder {
 input:hover {
 	border-color: var(--kolibri-color-primary);
 }
-input:not([type='color']):read-only,
 input:disabled,
-select:read-only,
 select:disabled,
-textarea:read-only,
-textarea:disabled {
+textarea:disabled,
+input:not([type='color']):read-only,
+/* select:read-only, */
+textarea:read-only {
 	cursor: not-allowed;
 }
 .required label > span::after {
