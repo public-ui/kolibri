@@ -19,11 +19,11 @@ export type ResourceKeys = `${Lowercase<KoliBriPrefix>}-${Lowercase<keyof typeof
 
 export interface II18nService {
 	/**
-	 * Adds a resource bundle for the specified language.
-	 * @param lng the language the bundle is for
-	 * @param translationMap the translations of the given language
+	 * Changes resources for the specified language.
+	 * @param lng the language the changes are for
+	 * @param translationMap the translations of the given language to change
 	 */
-	addResourceBundle: (lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<KoliBriPrefix, keyof typeof KeyEnum>) => void;
+	change: (lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<KoliBriPrefix, keyof typeof KeyEnum>) => void;
 	/**
 	 * Determines a human-readable translated text for the given resource key.
 	 * @param key the resource key
@@ -53,7 +53,7 @@ export class I18nextService implements II18nService {
 
 		if (!this.i18next.isInitialized) {
 			void this.i18next.init({
-				lng
+				lng,
 			});
 		}
 
@@ -67,15 +67,19 @@ export class I18nextService implements II18nService {
 		}
 	}
 
-	public addResourceBundle(lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<KoliBriPrefix, keyof typeof KeyEnum>) {
-		this.i18next.addResourceBundle(lng, "kol" satisfies KoliBriPrefix, translationMap, true);
-	}
-
 	public translate(key: ResourceKeys, options?: ITranslationOptions) {
 		return this.i18next.t(key, {
 			count: options?.count,
-			ns: "kol" satisfies KoliBriPrefix,
+			ns: 'kol' satisfies KoliBriPrefix,
 			...options?.placeholders,
 		});
+	}
+
+	public change(lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<KoliBriPrefix, keyof typeof KeyEnum>) {
+		this.i18next.addResources(lng, 'kol' satisfies KoliBriPrefix, translationMap);
+	}
+
+	private addResourceBundle(lng: Generic.I18n.Locale.ISO_639_1, translationMap: Generic.I18n.Map<KoliBriPrefix, keyof typeof KeyEnum>) {
+		this.i18next.addResourceBundle(lng, 'kol' satisfies KoliBriPrefix, translationMap, true);
 	}
 }

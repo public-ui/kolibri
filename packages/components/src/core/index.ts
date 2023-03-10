@@ -1,5 +1,6 @@
 import type { Generic, LoaderCallback, RegisterOptions } from '@a11y-ui/core';
 import { register as coreRegister, STORE } from '@a11y-ui/core';
+import { translations } from '../i18n';
 import { I18nextService, II18nService } from '../i18n/service';
 
 export const register = (
@@ -13,7 +14,7 @@ export const register = (
 	try {
 		if (STORE.I18n === undefined) {
 			Object.defineProperty(STORE, 'I18n', {
-				value: new I18nextService(options?.translation?.name ?? 'de', options?.translations),
+				value: new I18nextService(options?.translation?.name ?? 'de', options?.translations ?? translations),
 				writable: false,
 			});
 		}
