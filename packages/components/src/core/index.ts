@@ -1,6 +1,6 @@
 import type { Generic, LoaderCallback, RegisterOptions } from '@a11y-ui/core';
 import { register as coreRegister, STORE } from '@a11y-ui/core';
-import { I18nextService, II18nService } from './i18n';
+import { I18nextService, II18nService } from '../i18n/service';
 
 export const register = (
 	themes:

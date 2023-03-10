@@ -1,6 +1,6 @@
 import { Generic } from "@a11y-ui/core";
-import { KoliBriPrefix } from "../schema";
-import { KeyEnum } from "../schema/i18n-keys";
+import { KoliBriPrefix } from "../../schema";
+import { KeyEnum } from "../../schema/i18n-keys";
 
 export default {
 	'kol-error': 'Fehler',
