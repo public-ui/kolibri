@@ -53,7 +53,7 @@ export class KolInputRadio implements ComponentApi {
 						return (
 							<kol-input
 								key={customId}
-								_disabled={this.state._disabled}
+								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
 								_hint={this.state._hint}
 								_id={customId}

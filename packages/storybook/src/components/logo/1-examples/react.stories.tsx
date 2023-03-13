@@ -115,13 +115,13 @@ export const Darstellungsvariante = () => {
 	return (
 		<div style={{ display: 'grid', gap: '0.25em' }}>
 			<KolLogo _org="BReg" style={{ width: '300px' }}></KolLogo>
-			<KolLogo _org="DEFAULT" style={{ width: '300px' }}></KolLogo>
+			<KolLogo _org="BMF" style={{ width: '300px' }}></KolLogo>
 			<KolLogo _org="BMG" style={{ width: '300px' }}></KolLogo>
 			<p>
 				<KolIndentedText>Im Folgenden wird ein "Zurück zur Startseite"-Link dargestellt:</KolIndentedText>
 				<br />
 				<KolLink _href="https://itzbund.de" _use-case="image" _aria-label="Zurück zur Startseite des ITZBund">
-					<KolLogo _org="DEFAULT" style={{ display: 'inline-block', width: '300px' }}></KolLogo>
+					<KolLogo _org="BMF" style={{ display: 'inline-block', width: '300px' }}></KolLogo>
 				</KolLink>
 			</p>
 		</div>
