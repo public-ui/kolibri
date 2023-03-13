@@ -49,35 +49,12 @@ textarea {
 	border-style: solid;
 	border-width: calc(var(--kolibri-spacing) / 2);
 }
-input input.error,
-input select.error,
-input textarea.error,
-select input.error,
-select select.error,
-select textarea.error,
-textarea input.error,
-textarea select.error,
-textarea textarea.error {
+
+.error :is(input, select, textarea) {
 	border-color: var(--kolibri-border-error);
 }
-input input:focus,
-input input:hover,
-input select:focus,
-input select:hover,
-input textarea:focus,
-input textarea:hover,
-select input:focus,
-select input:hover,
-select select:focus,
-select select:hover,
-select textarea:focus,
-select textarea:hover,
-textarea input:focus,
-textarea input:hover,
-textarea select:focus,
-textarea select:hover,
-textarea textarea:focus,
-textarea textarea:hover {
+
+:is(input, select, textarea):is(:focus, :hover) {
 	border-color: var(--kolibri-color-text);
 }
 

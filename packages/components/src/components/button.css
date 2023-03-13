@@ -7,25 +7,17 @@ a {
 a,
 button {
 	display: inline-block;
-}
-
-a,
-button {
 	min-height: 44px;
 	min-width: 44px;
 	width: 100%;
 }
 
 a:active,
-button:active,
-a:active,
 button:active {
 	outline: 0;
 	box-shadow: none;
 }
 
-a:disabled,
-button:disabled,
 a:disabled,
 button:disabled {
 	box-shadow: none;
