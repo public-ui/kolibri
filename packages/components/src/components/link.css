@@ -11,14 +11,9 @@ a {
 
 button {
 	display: inline-block;
-	background-color: transparent;
-	border: none;
 }
 
-a:focus,
-a:hover,
-button:focus,
-button:hover {
+:is(a, button):is(:focus, :hover) {
 	text-decoration-thickness: 0.2em;
 }
 

@@ -51,8 +51,7 @@ textarea {
 	cursor: pointer;
 }
 
-a.icon-only > kol-span-wc > span > span,
-button.icon-only > kol-span-wc > span > span {
+.icon-only > kol-span-wc > span > span {
 	display: none;
 }
 
