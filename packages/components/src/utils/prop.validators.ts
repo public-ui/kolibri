@@ -165,20 +165,20 @@ export const watchValidator = <T>(
 		/**
 		 * Triff zu, wenn der Wert entweder VALIDE ist.
 		 */
-		setState(component, propName, value, options?.hooks);
-	} else if (value === undefined || (value === null && (options?.required === undefined || options?.required === false))) {
+		setState(component, propName, value, options.hooks);
+	} else if ((value === undefined || value === null) && !options.required) {
 		/**
 		 * Triff zu, wenn der Wert entweder ...
 		 * - UNDEFINED oder
 		 * - NULL und NICHT REQUIRED
 		 * ... ist.
 		 */
-		setState(component, propName, options?.defaultValue, options?.hooks);
+		setState(component, propName, options?.defaultValue, options.hooks);
 	} else {
 		/**
 		 * Triff zu, wenn der Wert NICHT valide ist.
 		 */
-		if (options?.required === undefined || options?.required === false) {
+		if (!options.required) {
 			requiredGeneric.add(null);
 		}
 		logWarn(component, propName, value, requiredGeneric);
