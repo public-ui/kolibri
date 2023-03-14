@@ -89,7 +89,7 @@ select option {
 select option:disabled {
 	cursor: not-allowed;
 }
-option:not(:disabled):id(:active, :checked, :focus, :hover) {
+option:not(:disabled):is(:active, :checked, :focus, :hover) {
 	background-color: var(--kolibri-color-primary);
 	color: white;
 }
