@@ -68,15 +68,15 @@ export class KolImg implements ComponentApi {
 		});
 	}
 	@Watch('_loading')
-	public validateLoading(value?: string): void {
+	public validateLoading(value?: 'eager' | 'lazy'): void {
 		watchString(this, '_loading', value, {
-			required: true,
+			required: false,
 		});
 	}
 	@Watch('_srcset')
 	public validateSrcset(value?: string): void {
 		watchString(this, '_srcset', value, {
-			required: true,
+			required: false,
 		});
 	}
 
