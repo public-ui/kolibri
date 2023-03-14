@@ -39,33 +39,34 @@ type OptionalButtonAndLinkProps = {
 };
 
 type RequiredButtonAndLinkStates = {
-	ariaLabel: string;
 	icon: {
 		top?: KoliBriCustomIcon;
 		right?: KoliBriCustomIcon;
 		bottom?: KoliBriCustomIcon;
 		left?: KoliBriCustomIcon;
 	};
-	/**
-	 * @deprecated
-	 */
-	iconAlign: Alignment;
 	label: string;
 };
 type OptionalButtonAndLinkStates = {
+	ariaLabel: string;
 	ariaControls: string;
 	ariaCurrent: AriaCurrent;
 	ariaExpanded: boolean;
 	ariaSelected: boolean;
 	disabled: boolean;
+	/**
+	 * @deprecated
+	 */
+	iconAlign: Alignment;
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: Alignment;
 };
 
-/* Button */
-
+/**
+ * Button
+ */
 export type KoliBriButtonType = 'button' | 'reset' | 'submit';
 export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost' | 'custom';
 
@@ -74,9 +75,11 @@ export type KoliBriButtonCallbacks<T> = {
 	[Events.onMouseDown]?: EventCallback<MouseEvent>;
 };
 
-export type KoliBriButtonVariantCustomClass = {
-	customClass: string;
+export type KoliBriButtonVariantPropState = {
 	variant: KoliBriButtonVariant;
+};
+export type KoliBriButtonCustomClassPropState = {
+	customClass: string;
 };
 
 /**
@@ -95,11 +98,12 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 };
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-type RequiredButtonLinkStates = RequiredButtonAndLinkStates & {
-	type: KoliBriButtonType;
-};
+type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
+	KoliBriButtonVariantPropState & {
+		type: KoliBriButtonType;
+	};
 type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
-	KoliBriButtonVariantCustomClass & {
+	KoliBriButtonCustomClassPropState & {
 		/**
 		 * @deprecated Zweck?!
 		 */
@@ -114,11 +118,11 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
  * API Button
  */
 export type RequiredButtonProps = RequiredButtonLinkProps;
-export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantCustomClass;
+export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-export type RequiredButtonStates = RequiredButtonLinkStates;
-export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonVariantCustomClass;
+export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState;
+export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonCustomClassPropState;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /* LINK */
@@ -184,11 +188,11 @@ export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLin
  * API LinkButton
  */
 export type RequiredLinkButtonProps = RequiredLinkProps;
-export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantCustomClass;
+export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 // type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
 
-export type RequiredLinkButtonStates = unknown;
-export type OptionalLinkButtonStates = KoliBriButtonVariantCustomClass;
+export type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
+export type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
 export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Alignment): void => {

@@ -90,7 +90,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	 *
 	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string = '';
+	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)

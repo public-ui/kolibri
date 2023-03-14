@@ -1,5 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { Props } from '../component';
+import { Props, States } from '../component';
 
 export const getHeadingWcHtml = (
 	props: Props,
@@ -8,18 +8,19 @@ export const getHeadingWcHtml = (
 	} = {},
 	additionalAttrs = ''
 ): string => {
-	props = mixMembers(
+	const state = mixMembers<Props, States>(
 		{
-			_label: '',
+			_headline: '…', // ⚠ required
+			_level: 1,
 		},
 		props
 	);
 	return `
 		<kol-heading-wc${additionalAttrs}>
-			<h${props._level || 1} class="headline">
-				${props._label}
+			<h${state._level || 1} class="headline">
+				${state._headline}
 				${typeof slots.default === 'string' ? slots.default : `<slot />`}
-			</h${props._level || 1}>
+			</h${state._level || 1}>
 		</kol-heading-wc>`;
 };
 

@@ -5,7 +5,7 @@ import { Props } from '../component';
 export const getAbbrHtml = (props: Props): string => {
 	props = mixMembers(
 		{
-			_title: '',
+			_title: '…', // ⚠ required
 			_tooltipAlign: 'top',
 		},
 		props

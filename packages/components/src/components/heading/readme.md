@@ -34,11 +34,11 @@ Geben Sie mit dem Attribut `_level` das H-Element an, das Sie ausgeben möchten.
 
 ## Properties
 
-| Property              | Attribute   | Description                                                                                                            | Type                                           | Default     |
-| --------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `_label` _(required)_ | `_label`    | Gibt den Text der Überschrift an.                                                                                      | `string`                                       | `undefined` |
-| `_level`              | `_level`    | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
-| `_overline`           | `_overline` | Gibt den Text der zusätzlichen Beschriftung an.                                                                        | `string \| undefined`                          | `''`        |
+| Property                 | Attribute             | Description                                                                                                            | Type                                           | Default     |
+| ------------------------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `_headline` _(required)_ | `_headline`           | Gibt den Text der Überschrift an.                                                                                      | `string`                                       | `undefined` |
+| `_level`                 | `_level`              | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| `_secondaryHeadline`     | `_secondary-headline` | Gibt den Text der zusätzlichen Überschrift an.                                                                         | `string \| undefined`                          | `undefined` |
 
 ## Dependencies
 

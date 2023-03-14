@@ -16,9 +16,9 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_label: ['Headline'],
+		_headline: ['Headline'],
 		_level: [1, 2, 3, 4, 5, 6],
-		// _overline: ['Overline'],
+		// _secondaryHeadline: ['Secondary Headline'],
 	},
 	getHeadingHtml,
 	{

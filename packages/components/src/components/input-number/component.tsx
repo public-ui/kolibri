@@ -216,7 +216,7 @@ export class KolInputNumber implements ComponentApi {
 	 */
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: '⚠',
+		_id: '…', // ⚠ required
 		_list: [],
 
 		_type: 'number',

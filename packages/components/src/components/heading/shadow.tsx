@@ -13,11 +13,15 @@ import { Props } from './component';
 export class KolHeading implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-heading-wc _label={this._label} _level={this._level} _overline={this._overline}>
+			<kol-heading-wc _headline={this._headline} _level={this._level} _secondaryHeadline={this._secondaryHeadline}>
 				<slot />
 			</kol-heading-wc>
 		);
 	}
+	/**
+	 * Gibt den Text der Überschrift an.
+	 */
+	@Prop() public _headline!: string;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
@@ -25,12 +29,7 @@ export class KolHeading implements Props {
 	@Prop() public _level?: HeadingLevel;
 
 	/**
-	 * Gibt den Text der Überschrift an.
+	 * Gibt den Text der zusätzlichen Überschrift an.
 	 */
-	@Prop() public _label!: string;
-
-	/**
-	 * Gibt den Text der zusätzlichen Beschriftung an.
-	 */
-	@Prop() public _overline?: string = '';
+	@Prop() public _secondaryHeadline?: string;
 }

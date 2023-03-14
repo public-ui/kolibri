@@ -4,7 +4,7 @@ import { Props } from '../component';
 export const getIconHtml = (props: Props, additionalAttrs = ''): string => {
 	props = mixMembers(
 		{
-			_ariaLabel: '',
+			_ariaLabel: '…', // ⚠ required
 			_icon: 'fa-solid fa-house',
 		},
 		props

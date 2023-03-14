@@ -62,7 +62,7 @@ type OptionalProps = {
 	ordered: boolean;
 	orientation: Orientation;
 };
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
@@ -95,7 +95,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 				}}
 			>
 				{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+					<kol-heading-wc _headline={this.state._heading} _level={this.state._level}></kol-heading-wc>
 				)}
 
 				{this.isUl === false ? (
