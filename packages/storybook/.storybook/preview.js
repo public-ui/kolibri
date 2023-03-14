@@ -23,8 +23,9 @@ import { TH } from '@public-oss/kolibri-themes';
 import { BPA, ITZBund } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
-	// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
-	{ name: 'DEFAULT-Styleguide (untested)', class: 'default', color: '#326cae' },
+	{ name: 'Bundes-Styleguide (untested)', class: 'bpa', color: '#326cae' },
+	{ name: 'ECL-EC-Styleguide (untested)', class: 'ecl-ec', color: '#326cae' },
+	{ name: 'ECL-EU-Styleguide (untested)', class: 'ecl-eu', color: '#326cae' },
 	{ name: 'ITZBund-Styleguide (untested)', class: 'itzbund', color: '#007a89' },
 	{ name: 'Styleguide des Freistaates Thüringen (untested)', class: 'th', color: '#0089C1' },
 ];

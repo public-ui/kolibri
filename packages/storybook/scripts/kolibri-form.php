@@ -11,10 +11,10 @@
 	<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 	<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.1.15-rc.4';
+		import { register } from 'https://esm.sh/@public-ui/components@1.1.15-rc.4';
 		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.1.15-rc.4/dist/loader';
-		import { DEFAULT } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.4';
-		register(DEFAULT, defineCustomElements)
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.1.15-rc.4';
+		register(ITZBund, defineCustomElements)
 			.then(() => { })
 			.catch(console.warn);
 	</script>

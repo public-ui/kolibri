@@ -4,7 +4,7 @@ export const argTypes = {
 		control: {
 			type: 'select',
 		},
-		options: ['BReg', 'DEFAULT', 'BMI', 'AA', 'BMWi', 'BMJV', 'BMAS', 'BMVg', 'BMEL', 'BMFSFJ', 'BMG', 'BMVI', 'BMU', 'BMBF', 'BMZ'],
+		options: ['BReg', 'BMF', 'BMI', 'AA', 'BMWi', 'BMJV', 'BMAS', 'BMVg', 'BMEL', 'BMFSFJ', 'BMG', 'BMVI', 'BMU', 'BMBF', 'BMZ'],
 		type: {
 			required: true,
 		},
