@@ -7,7 +7,7 @@ const AVAILABLE_HORIZONTAL_ALIGNMENT_VALUES = new Set(['"left", "right"']);
 // 	watchValidator(component, propName, (value) => value === 'left' || value === 'right', AVAILABLE_HORIZONTAL_ALIGNMENT_VALUES, value);
 // };
 
-const AVAILABLE_VERTICAL_ALIGNMENT_VALUES = new Set(['"left", "right"']);
+const AVAILABLE_VERTICAL_ALIGNMENT_VALUES = new Set(['"bottom", "top"']);
 // export const validateVertivalAlignment = (component: Generic.Element.Component, propName: string, value?: VerticalAlignment): void => {
 // 	watchValidator(component, propName, (value) => value === 'top' || value === 'bottom', AVAILABLE_VERTICAL_ALIGNMENT_VALUES, value);
 // };
