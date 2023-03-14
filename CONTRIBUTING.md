@@ -35,3 +35,11 @@ Sie können neue Funktionen anfordern, indem Sie ein Problem an unser Ticketsyst
 - Es ist hilfreich vor dem Implementieren das [Architekturkonzept](./docs/ARCHITECTURE.md) zu KoliBri zu lesen.
 - Bei größeren Neuerungen legen Sie bitte ein Ticket mit der Beschreibung der neuen Funktion an.
 - Bei kleinen Neuerungen können Sie die Implementierung direkt als Pull Request anbieten und begründen.
+
+### Änder-/Neuerungen implementieren
+
+- [pnpm installieren](https://pnpm.io/installation)
+- Konsole im Projekt root öffnen
+- Alle Pakete installieren mit "pnpm i"
+- in gewüschtes Projekt wechseln
+- Projekt starten mit "pnpm start"
