@@ -50,44 +50,17 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 <!-- Auto Generated Below -->
 
+## Overview
+
+API
+
 ## Properties
 
-| Property                  | Attribute     | Description                                                                                                                                                                                                                                 | Type                  | Default     |
-| ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt das Aria-Label am Icon an.                                                                                                                                                                                                             | `string`              | `undefined` |
-| `_icon` _(required)_      | `_icon`       | Gibt einen Identifier eines Icons aus den Icon's an.                                                                                                                                                                                        | `string`              | `undefined` |
-| `_part`                   | `_part`       | <span style="color:red">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /\*\* | `string \| undefined` | `undefined` |
-
-## Dependencies
-
-### Used by
-
-- [kol-accordion](../accordion)
-- [kol-alert](../alert)
-- [kol-breadcrumb](../breadcrumb)
-- [kol-details](../details)
-- [kol-icon-font-awesome](../icon-font-awesome)
-- [kol-icon-icofont](../icon-icofont)
-- kol-input
-- [kol-input-checkbox](../input-checkbox)
-- kol-link-wc
-- kol-span-wc
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-accordion --> kol-icon
-  kol-alert --> kol-icon
-  kol-breadcrumb --> kol-icon
-  kol-details --> kol-icon
-  kol-icon-font-awesome --> kol-icon
-  kol-icon-icofont --> kol-icon
-  kol-input --> kol-icon
-  kol-input-checkbox --> kol-icon
-  kol-link-wc --> kol-icon
-  kol-span-wc --> kol-icon
-  style kol-icon fill:#f9f,stroke:#333,stroke-width:4px
-```
+| Property            | Attribute  | Description                                               | Type                             | Default     |
+| ------------------- | ---------- | --------------------------------------------------------- | -------------------------------- | ----------- |
+| `_alt` _(required)_ | `_alt`     | Gibt den alternativen Text an.                            | `string`                         | `undefined` |
+| `_loading`          | `_loading` | Gibt den Lademodus an.                                    | `"eager" \| "lazy" \| undefined` | `undefined` |
+| `_src` _(required)_ | `_src`     | Gibt die Quell-URL an.                                    | `string`                         | `undefined` |
+| `_srcset`           | `_srcset`  | Gibt eine Liste von Quell-URLs mit Breiten der Bilder an. | `string \| undefined`            | `undefined` |
 
 ---

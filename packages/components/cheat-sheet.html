@@ -240,6 +240,10 @@ Folgende Icon-Fonts werden _'out-of-the-box'_ unterstützt.
 <kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateien der Icon-Fonts eingebunden sind.</kol-alert>`,
 	props: `_aria-label, _icon, _part`
 },{
+	name: `img`,
+	desc: `API`,
+	props: `_alt, _loading, _src, _srcset`
+},{
 	name: `indented-text`,
 	desc: `Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate.
 
@@ -752,6 +756,26 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt die Zusammenfassung der Detailbeschreibung an.`,
 	types: `string`,
 	comps: `details`
+},{
+	name: `_srcset`,
+	desc: `Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.`,
+	types: `string`,
+	comps: `img`
+},{
+	name: `_src`,
+	desc: `Gibt die Quell-URL an.`,
+	types: `string`,
+	comps: `img`
+},{
+	name: `_loading`,
+	desc: `Gibt den Lademodus an.`,
+	types: `"eager" | "lazy"`,
+	comps: `img`
+},{
+	name: `_alt`,
+	desc: `Gibt den alternativen Text an.`,
+	types: `string`,
+	comps: `img`
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
