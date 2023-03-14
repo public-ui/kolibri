@@ -521,7 +521,7 @@ export namespace Components {
         "_part"?: string;
     }
     /**
-     * API
+     * Image component
      */
     interface KolImg {
         /**
@@ -2321,7 +2321,7 @@ declare global {
         new (): HTMLKolIconIcofontElement;
     };
     /**
-     * API
+     * Image component
      */
     interface HTMLKolImgElement extends Components.KolImg, HTMLStencilElement {
     }
@@ -3063,7 +3063,7 @@ declare namespace LocalJSX {
         "_part"?: string;
     }
     /**
-     * API
+     * Image component
      */
     interface KolImg {
         /**
@@ -4833,7 +4833,7 @@ declare module "@stencil/core" {
              */
             "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
             /**
-             * API
+             * Image component
              */
             "kol-img": LocalJSX.KolImg & JSXBase.HTMLAttributes<HTMLKolImgElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;

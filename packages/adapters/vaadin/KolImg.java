@@ -6,7 +6,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * API
+ * Image component
  */
 
 @Tag("kol-img")
