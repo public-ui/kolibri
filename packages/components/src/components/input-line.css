@@ -55,10 +55,6 @@ textarea:read-only {
 .icon-left select {
 	padding-left: 2em;
 }
-.icon-right input,
-.icon-right select {
-	padding-right: 2em;
-}
 kol-button-wc {
 	position: relative;
 	float: right;
@@ -93,10 +89,7 @@ select option {
 select option:disabled {
 	cursor: not-allowed;
 }
-option:active:not(:disabled),
-option:checked:not(:disabled),
-option:focus:not(:disabled),
-option:hover:not(:disabled) {
+option:not(:disabled):id(:active, :checked, :focus, :hover) {
 	background-color: var(--kolibri-color-primary);
 	color: white;
 }

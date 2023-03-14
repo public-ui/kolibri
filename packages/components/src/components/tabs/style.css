@@ -34,6 +34,7 @@ div[role='tabpanel'] {
 div.grid {
 	height: 100%;
 }
+
 :host > .tabs-align-right {
 	display: grid;
 	grid-template-columns: 1fr auto;
@@ -42,6 +43,7 @@ div.grid {
 	display: grid;
 	order: 2;
 }
+
 :host > .tabs-align-left {
 	display: grid;
 	grid-template-columns: auto 1fr;
@@ -50,6 +52,7 @@ div.grid {
 	display: grid;
 	order: 0;
 }
+
 :host > .tabs-align-bottom {
 	display: grid;
 	grid-template-rows: 1fr auto;
@@ -66,6 +69,7 @@ div.grid {
 :host > .tabs-align-bottom > kol-button-group-wc > div > div {
 	margin: 0px 1em;
 }
+
 :host > .tabs-align-top {
 	display: grid;
 	grid-template-rows: auto 1fr;
@@ -82,15 +86,11 @@ div.grid {
 :host > .tabs-align-top > kol-button-group-wc > div > div {
 	margin: 0px 1em;
 }
+
 :host > div {
 	display: grid;
 }
-:host > div.tabs-align-left {
-	grid-template-columns: auto 1fr;
-}
-:host > div.tabs-align-right {
-	grid-template-columns: 1fr auto;
-}
+
 :host > .tabs-align-left kol-button-group-wc,
 :host > .tabs-align-top kol-button-group-wc {
 	order: 0;

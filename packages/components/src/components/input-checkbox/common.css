@@ -2,21 +2,11 @@ label {
 	cursor: pointer;
 }
 
-input {
-	border-color: var(--kolibri-border-color);
-	border-width: 2px;
-	border-style: solid;
-	line-height: 24px;
-	font-size: var(--kolibri-font-size);
-}
-
 .required label > span::after {
 	content: '*';
 	padding-left: 0.125em;
 }
-input:hover {
-	border-color: var(--kolibri-color-normal);
-}
+
 kol-input {
 	align-items: center;
 	display: grid;
@@ -52,6 +42,17 @@ kol-input kol-alert.error {
 kol-input .hint {
 	order: 4;
 }
+
+input {
+	border-color: var(--kolibri-border-color);
+	border-width: 2px;
+	border-style: solid;
+	line-height: 24px;
+	font-size: var(--kolibri-font-size);
+}
+input:hover {
+	border-color: var(--kolibri-color-normal);
+}
 input[type='checkbox'] {
 	appearance: none;
 	background-color: white;
@@ -69,6 +70,7 @@ input[type='checkbox']:checked {
 	background-color: var(--kolibri-color-primary);
 	border-color: var(--kolibri-color-primary);
 }
+
 .disabled {
 	opacity: 0.33;
 }
