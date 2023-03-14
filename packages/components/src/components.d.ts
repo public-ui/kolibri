@@ -520,6 +520,27 @@ export namespace Components {
          */
         "_part"?: string;
     }
+    /**
+     * API
+     */
+    interface KolImg {
+        /**
+          * Gibt den alternativen Text an.
+         */
+        "_alt": string;
+        /**
+          * Gibt den Lademodus an.
+         */
+        "_loading"?: 'eager' | 'lazy';
+        /**
+          * Gibt die Quell-URL an.
+         */
+        "_src": string;
+        /**
+          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+         */
+        "_srcset"?: string;
+    }
     interface KolIndentedText {
     }
     interface KolInput {
@@ -2299,6 +2320,15 @@ declare global {
         prototype: HTMLKolIconIcofontElement;
         new (): HTMLKolIconIcofontElement;
     };
+    /**
+     * API
+     */
+    interface HTMLKolImgElement extends Components.KolImg, HTMLStencilElement {
+    }
+    var HTMLKolImgElement: {
+        prototype: HTMLKolImgElement;
+        new (): HTMLKolImgElement;
+    };
     interface HTMLKolIndentedTextElement extends Components.KolIndentedText, HTMLStencilElement {
     }
     var HTMLKolIndentedTextElement: {
@@ -2540,6 +2570,7 @@ declare global {
         "kol-icon": HTMLKolIconElement;
         "kol-icon-font-awesome": HTMLKolIconFontAwesomeElement;
         "kol-icon-icofont": HTMLKolIconIcofontElement;
+        "kol-img": HTMLKolImgElement;
         "kol-indented-text": HTMLKolIndentedTextElement;
         "kol-input": HTMLKolInputElement;
         "kol-input-adapter-leanup": HTMLKolInputAdapterLeanupElement;
@@ -3030,6 +3061,27 @@ declare namespace LocalJSX {
           * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
+    }
+    /**
+     * API
+     */
+    interface KolImg {
+        /**
+          * Gibt den alternativen Text an.
+         */
+        "_alt": string;
+        /**
+          * Gibt den Lademodus an.
+         */
+        "_loading"?: 'eager' | 'lazy';
+        /**
+          * Gibt die Quell-URL an.
+         */
+        "_src": string;
+        /**
+          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+         */
+        "_srcset"?: string;
     }
     interface KolIndentedText {
     }
@@ -4713,6 +4765,7 @@ declare namespace LocalJSX {
         "kol-icon": KolIcon;
         "kol-icon-font-awesome": KolIconFontAwesome;
         "kol-icon-icofont": KolIconIcofont;
+        "kol-img": KolImg;
         "kol-indented-text": KolIndentedText;
         "kol-input": KolInput;
         "kol-input-adapter-leanup": KolInputAdapterLeanup;
@@ -4779,6 +4832,10 @@ declare module "@stencil/core" {
              * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
              */
             "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
+            /**
+             * API
+             */
+            "kol-img": LocalJSX.KolImg & JSXBase.HTMLAttributes<HTMLKolImgElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
             "kol-input": LocalJSX.KolInput & JSXBase.HTMLAttributes<HTMLKolInputElement>;
             /**
