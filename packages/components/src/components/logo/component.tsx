@@ -6,11 +6,9 @@ import { devHint } from '../../utils/a11y.tipps';
 import { setState } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function enumToArray(enumeration: any, enumAsMap: Map<string, string> = new Map()): Map<string, string> {
-	Object.keys(enumeration as Record<string, unknown>).map((key) => {
-		// eslint-disable-next-line
-		enumAsMap.set(enumeration[key], key);
+function enumToArray(enumeration: Record<string, string>, enumAsMap: Map<string, string> = new Map()): Map<string, string> {
+	Object.entries(enumeration).map(([key, value]) => {
+		enumAsMap.set(value, key);
 	});
 	return enumAsMap;
 }

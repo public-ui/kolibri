@@ -6,12 +6,6 @@ kol-input .icons {
 	display: none;
 }
 
-input:focus {
-	outline-color: var(--kolibri-color-primary);
-	outline-offset: 2px;
-	outline-style: solid;
-	outline-width: 3px;
-}
 label {
 	display: grid;
 	font-size: 14px;
@@ -19,6 +13,7 @@ label {
 	gap: 8px;
 	width: 100%;
 }
+
 input {
 	width: 100%;
 	border-color: var(--kolibri-border-color);
@@ -28,9 +23,16 @@ input {
 	line-height: 24px;
 	font-size: 16px;
 }
+input:focus {
+	outline-color: var(--kolibri-color-primary);
+	outline-offset: 2px;
+	outline-style: solid;
+	outline-width: 3px;
+}
 input:hover {
 	border-color: var(--kolibri-color-primary);
 }
+
 kol-alert {
 	display: block;
 	width: 100%;

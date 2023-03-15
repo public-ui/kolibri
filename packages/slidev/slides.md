@@ -245,7 +245,7 @@ image: '/assets/usp.png'
 handle: 7
 ---
 
-# Unique Selling Points
+# Alleinstellungsmerkmale
 
 <small class="underline">Was macht eigentlich den Unterschied?</small>
 
@@ -258,29 +258,6 @@ Aus Sicht der öffentlichen Verwaltung hat KoliBri eine ganze Reihe an Alleinste
 - **Zugänglichkeit** - <span class="text-gray-500">Code-Hoheit liegt beim Bund (Digitale Souveränität)</span>
 - **Architektur** - <span class="text-gray-500">Einmalige Implementierung (Framework-agnostisch)</span>
 - **Robustheit** - <span class="text-gray-500">Web Components im restriktiven Modus (Shadow-Root)</span>
-
-</v-clicks>
-
----
-layout: image-right-50
-image: '/assets/berge.png'
-handle: 8
----
-
-# Fazit
-
-<small class="underline">Wo steht KoliBri?</small>
-
-KoliBri zahlt mit seiner Funktion und Modularität in die strategischen Ziele des ITZBund digitale Souveränität, Zukunftssicherheit, Leistungsfähigkeit, Wirtschaftlichkeit und Kundenzufriedenheit ein.
-
-<v-clicks>
-
-- Sorgt für mehr Einheitlichkeit über Projekte hinweg
-- Reduziert Mehraufwände in Entwicklung und Test
-- Komponenten sind so umgesetzt, wie wir sie brauchen
-- Kontinuierliche Verbesserung durch konsolidiertes Feedback
-- Schnelle Änderbarkeit durch Code-Hoheit und Automatisierung
-- Generische Referenzimplementierung für alle
 
 </v-clicks>
 
@@ -374,20 +351,34 @@ handle: 11
 </small>
 
 ---
-layout: image-right
-image: '/assets/teleskop.png'
-handle: 12
+layout: image-right-50
+image: '/assets/get-started.png'
+handle: 10
+style: 'width: 100%'
 ---
 
-# Vision
+# Erste Schritte
 
-<span class="block py-4 text-xl leading-2em">
-Wir stellen gemeinsam <strong>wiederverwendbare Web Components</strong> zur Verfügung, die die
-<strong>Barrierefreiheit</strong> und <strong>Usability</strong> für webbasierte Benutzeroberflächen
-der öffentlichen Verwaltung <strong>sicherstellen</strong>.
-</span>
+Du kannst folgendes tun, um **KoliBri** kennenzulernen …
+
+<v-clicks>
+
+- <kol-link _href="https://public-ui.github.io" _target="website">Lese mehr über KoliBri</kol-link> (Dokumentation)
+- <kol-link _href="https://public-ui.github.io/docs/get-started/erste-schritte" _target="website">Probiere KoliBri aus</kol-link> (Create-App)
+- <kol-link _href="https://github.com/public-ui/kolibri/releases" _target="github">Informiere Dich über die Neuerungen</kol-link> (Changelog)
+- <kol-link _href="https://public-ui.github.io/docs/concepts/styling/theming" _target="website">Gestalte Dein eigenen KoliBri</kol-link> (Designer)
+- <kol-link _href="https://github.com/public-ui/kolibri/issues" _target="github">Gib uns Feedback</kol-link> (Feature, Issue)
+- <kol-link _href="https://github.com/public-ui/kolibri" _target="github">Folge uns auf GitHub</kol-link> (Follow-Button)
+
+</v-clicks>
 
 <br />
+
+<v-after>
+
+<strong>Lasst uns KoliBri bunter und besser machen!</strong>
+
+</v-after>
 
 ---
 layout: center
