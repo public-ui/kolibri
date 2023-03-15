@@ -94,7 +94,7 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 						<AlertIcon heading={this.state._heading} type={this.state._type} />
 						<div>
 							{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-								<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+								<kol-heading-wc _headline={this.state._heading} _level={this.state._level}></kol-heading-wc>
 							)}
 							{this._variant === 'msg' && (
 								<div class="content">

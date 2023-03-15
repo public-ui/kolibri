@@ -62,7 +62,6 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ### Used by
 
-- [kol-accordion](../accordion)
 - [kol-alert](../alert)
 - [kol-breadcrumb](../breadcrumb)
 - [kol-details](../details)
@@ -77,7 +76,6 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ```mermaid
 graph TD;
-  kol-accordion --> kol-icon
   kol-alert --> kol-icon
   kol-breadcrumb --> kol-icon
   kol-details --> kol-icon

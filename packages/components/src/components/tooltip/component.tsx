@@ -195,7 +195,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	@State() public state: States = {
 		_align: 'top',
 		_id: nonce(),
-		_label: '',
+		_label: '…', // ⚠ required
 	};
 
 	/**

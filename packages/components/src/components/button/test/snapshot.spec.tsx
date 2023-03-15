@@ -3,25 +3,20 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
-import { Props } from '../component';
-import { getAccordionHtml } from './html.mock';
+import { getButtonHtml } from './html.mock';
+import { ButtonProps } from '../../../components';
 
-executeTests<Props>(
-	'Accordion',
+executeTests<ButtonProps>(
+	'Button',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-accordion {...props} />,
+			template: () => <kol-button {...props} />,
 		});
 		return page;
 	},
 	{
-		_heading: ['Überschrift'],
-		// _level: [1, 2, 3, 4, 5, 6],
-		// _open: [true, false],
+		_label: ['Label'],
 	},
-	getAccordionHtml,
-	{
-		execMode: 'default', // ready
-	}
+	getButtonHtml
 );

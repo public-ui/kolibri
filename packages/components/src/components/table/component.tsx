@@ -98,7 +98,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_caption: '',
+		_caption: '…', // ⚠ required
 		_data: [],
 		_headers: {
 			horizontal: [],

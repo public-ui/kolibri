@@ -68,7 +68,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_ariaLabel: '',
+		_ariaLabel: '…', // ⚠ required
 		_icon: 'fa-solid fa-house',
 	};
 

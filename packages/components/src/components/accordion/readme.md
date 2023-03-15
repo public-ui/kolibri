@@ -147,14 +147,20 @@ Standardansicht gelegt.
 ### Depends on
 
 - [kol-heading-wc](../heading)
-- [kol-icon](../icon)
+- kol-button-wc
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-accordion --> kol-heading-wc
-  kol-accordion --> kol-icon
+  kol-accordion --> kol-button-wc
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
+  kol-tooltip --> kol-badge
+  kol-badge --> kol-span-wc
+  kol-badge --> kol-button-wc
   style kol-accordion fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

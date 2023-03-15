@@ -5,7 +5,7 @@ export const getSymbolHtml = (props: Props): string => {
 	props = mixMembers(
 		{
 			_ariaLabel: 'kol-warning',
-			_symbol: '⚠',
+			_symbol: '…', // ⚠ required
 		},
 		props
 	);

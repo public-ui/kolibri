@@ -179,7 +179,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 	 */
-	@Prop() public _ariaLabel?: string = '';
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -206,7 +206,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Alignment = 'left';
+	@Prop() public _iconAlign?: Alignment;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
@@ -276,14 +276,10 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: LinkStates = {
-		_ariaLabel: '',
 		_href: 'javascript:void(0)',
 		_icon: {},
-		/**
-		 * @deprecated
-		 */
-		_iconAlign: 'left',
-		_label: '',
+		_label: '', // TODO: must removed to v2
+		// _label: '…', // ⚠ required
 	};
 
 	/**

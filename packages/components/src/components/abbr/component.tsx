@@ -64,7 +64,7 @@ export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_title: '',
+		_title: '…', // ⚠ required
 		_tooltipAlign: 'top',
 	};
 

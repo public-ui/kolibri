@@ -78,7 +78,7 @@ export class KolLinkButton
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
 					*/}
-					<slot name="expert" slot="expert"></slot>
+					<slot name="expert" slot="expert" />
 				</kol-link-wc>
 			</Host>
 		);
@@ -181,7 +181,9 @@ export class KolLinkButton
 	/**
 	 * @see: components/abbr/component.tsx (@State)
 	 */
-	@State() public state: LinkButtonStates = {};
+	@State() public state: LinkButtonStates = {
+		_variant: 'normal',
+	};
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)

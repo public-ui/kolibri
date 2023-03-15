@@ -18,8 +18,8 @@ public class KolHeading extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final String value) {
-		getElement().setProperty("_label", value);
+	public void setHeadline(final String value) {
+		getElement().setProperty("_headline", value);
 	}
 
 	/**
@@ -27,8 +27,8 @@ public class KolHeading extends Component {
 	 *
 	 * @return String
 	 */
-	public String getLabel() {
-		return getElement().getProperty("_label", null);
+	public String getHeadline() {
+		return getElement().getProperty("_headline", null);
 	}
 
 	/**
@@ -50,20 +50,20 @@ public class KolHeading extends Component {
 	}
 
 	/**
-	 * Gibt den Text der zusätzlichen Beschriftung an.
+	 * Gibt den Text der zusätzlichen Überschrift an.
 	 *
 	 * @param value String
 	 */
-	public void setOverline(final String value) {
-		getElement().setProperty("_overline", value);
+	public void setSecondaryHeadline(final String value) {
+		getElement().setProperty("_secondary-headline", value);
 	}
 
 	/**
-	 * Gibt den Text der zusätzlichen Beschriftung an.
+	 * Gibt den Text der zusätzlichen Überschrift an.
 	 *
 	 * @return String
 	 */
-	public String getOverline() {
-		return getElement().getProperty("_overline", null);
+	public String getSecondaryHeadline() {
+		return getElement().getProperty("_secondary-headline", null);
 	}
 }

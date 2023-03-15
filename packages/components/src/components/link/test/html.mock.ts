@@ -8,10 +8,10 @@ import { getTooltipHtml } from '../../tooltip/test/html.mock';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	props = mixMembers(
 		{
-			_ariaLabel: '',
-			_href: '',
+			_href: 'javascript:void(0)',
 			_iconOnly: false,
 			_label: '',
+			// _label: '…', // ⚠ required
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
