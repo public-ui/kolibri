@@ -7,6 +7,8 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
  * Image component
+
+- https://www.mediaevent.de/html/srcset.html
  */
 
 @Tag("kol-image")
@@ -47,6 +49,24 @@ public class KolImage extends Component {
 	 */
 	public String getLoading() {
 		return getElement().getProperty("_loading", null);
+	}
+
+	/**
+	 * ...
+	 *
+	 * @param value String
+	 */
+	public void setSizes(final String value) {
+		getElement().setProperty("_sizes", value);
+	}
+
+	/**
+	 * ...
+	 *
+	 * @return String
+	 */
+	public String getSizes() {
+		return getElement().getProperty("_sizes", null);
 	}
 
 	/**

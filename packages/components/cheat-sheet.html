@@ -241,8 +241,10 @@ Folgende Icon-Fonts werden _'out-of-the-box'_ unterstützt.
 	props: `_aria-label, _icon, _part`
 },{
 	name: `image`,
-	desc: `Image component`,
-	props: `_alt, _loading, _src, _srcset`
+	desc: `Image component
+
+- https://www.mediaevent.de/html/srcset.html`,
+	props: `_alt, _loading, _sizes, _src, _srcset`
 },{
 	name: `indented-text`,
 	desc: `Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate.
@@ -764,6 +766,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_src`,
 	desc: `Gibt die Quell-URL an.`,
+	types: `string`,
+	comps: `image`
+},{
+	name: `_sizes`,
+	desc: `...`,
 	types: `string`,
 	comps: `image`
 },{

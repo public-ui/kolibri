@@ -17,6 +17,7 @@ import { NavLinkProps } from "./components/link/component";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
+import { Loading } from "./utils/validators/loading";
 import { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
@@ -48,6 +49,7 @@ export { NavLinkProps } from "./components/link/component";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
+export { Loading } from "./utils/validators/loading";
 export { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
@@ -522,6 +524,7 @@ export namespace Components {
     }
     /**
      * Image component
+     * - https://www.mediaevent.de/html/srcset.html
      */
     interface KolImage {
         /**
@@ -531,7 +534,11 @@ export namespace Components {
         /**
           * Gibt den Lademodus an.
          */
-        "_loading"?: 'eager' | 'lazy';
+        "_loading"?: Loading;
+        /**
+          * ...
+         */
+        "_sizes"?: string;
         /**
           * Gibt die Quell-URL an.
          */
@@ -2322,6 +2329,7 @@ declare global {
     };
     /**
      * Image component
+     * - https://www.mediaevent.de/html/srcset.html
      */
     interface HTMLKolImageElement extends Components.KolImage, HTMLStencilElement {
     }
@@ -3064,6 +3072,7 @@ declare namespace LocalJSX {
     }
     /**
      * Image component
+     * - https://www.mediaevent.de/html/srcset.html
      */
     interface KolImage {
         /**
@@ -3073,7 +3082,11 @@ declare namespace LocalJSX {
         /**
           * Gibt den Lademodus an.
          */
-        "_loading"?: 'eager' | 'lazy';
+        "_loading"?: Loading;
+        /**
+          * ...
+         */
+        "_sizes"?: string;
         /**
           * Gibt die Quell-URL an.
          */
@@ -4834,6 +4847,7 @@ declare module "@stencil/core" {
             "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
             /**
              * Image component
+             * - https://www.mediaevent.de/html/srcset.html
              */
             "kol-image": LocalJSX.KolImage & JSXBase.HTMLAttributes<HTMLKolImageElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
