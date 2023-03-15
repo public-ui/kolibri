@@ -229,7 +229,7 @@ export class KolSelect implements ComponentApi {
 	 */
 	@State() public state: States = {
 		_height: '',
-		_id: '⚠',
+		_id: '…', // ⚠ required
 		_list: [],
 		_multiple: false,
 		_value: [],

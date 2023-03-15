@@ -48,7 +48,7 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@State() public state: States = {
 		_ariaLabel: translate('kol-warning'),
-		_symbol: '⚠',
+		_symbol: '…', // ⚠ required
 	};
 
 	/**

@@ -15,10 +15,6 @@ export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
 			<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this._label}>
-				{/*
-					Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-					die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-				*/}
 				<slot name="expert" slot="expert" />
 			</kol-span-wc>
 		);

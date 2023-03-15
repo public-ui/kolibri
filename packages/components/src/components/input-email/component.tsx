@@ -215,7 +215,7 @@ export class KolInputEmail implements ComponentApi {
 	 */
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: '⚠',
+		_id: '…', // ⚠ required
 		_list: [],
 	};
 

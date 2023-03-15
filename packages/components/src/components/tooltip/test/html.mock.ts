@@ -8,7 +8,7 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 		{
 			_align: 'top',
 			_id: nonce(),
-			_label: '',
+			_label: '…', // ⚠ required
 		},
 		props
 	);

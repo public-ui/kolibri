@@ -25,7 +25,7 @@ const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextV
 				nextState.set('_label', ariaLabel);
 				// smartSetTimeout(() => ((component as Generic.Element.Component & { _label: string })._label = ariaLabel), 50);
 			} else {
-				nextState.set('_ariaLabel', label);
+				nextState.set('_ariaLabel', undefined);
 				// smartSetTimeout(() => ((component as Generic.Element.Component & { _ariaLabel: string })._ariaLabel = label), 50);
 			}
 			a11yHint(

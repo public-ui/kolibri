@@ -214,7 +214,7 @@ export class KolTextarea implements ComponentApi {
 	@State() public state: States = {
 		_adjustHeight: false,
 		_currentLength: 0,
-		_id: '⚠',
+		_id: '…', // ⚠ required
 
 		_resize: 'vertical',
 	};

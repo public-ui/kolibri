@@ -443,29 +443,29 @@ export namespace Components {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_label": string;
+        "_headline": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Beschriftung an.
+          * Gibt den Text der zusätzlichen Überschrift an.
          */
-        "_overline"?: string;
+        "_secondaryHeadline"?: string;
     }
     interface KolHeadingWc {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_label": string;
+        "_headline": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Beschriftung an.
+          * Gibt den Text der zusätzlichen Überschrift an.
          */
-        "_overline"?: string;
+        "_secondaryHeadline"?: string;
     }
     interface KolIcon {
         /**
@@ -2991,29 +2991,29 @@ declare namespace LocalJSX {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_label": string;
+        "_headline": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Beschriftung an.
+          * Gibt den Text der zusätzlichen Überschrift an.
          */
-        "_overline"?: string;
+        "_secondaryHeadline"?: string;
     }
     interface KolHeadingWc {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_label": string;
+        "_headline": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Beschriftung an.
+          * Gibt den Text der zusätzlichen Überschrift an.
          */
-        "_overline"?: string;
+        "_secondaryHeadline"?: string;
     }
     interface KolIcon {
         /**

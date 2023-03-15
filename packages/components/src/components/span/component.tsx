@@ -32,15 +32,6 @@ type RequiredStates = {
 type OptionalStates = unknown;
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-const removeNode = (el?: Node) => {
-	if (el instanceof Node) {
-		setTimeout(() => {
-			el.parentElement?.removeChild(el);
-			el.parentNode?.removeChild(el);
-		});
-	}
-};
-
 /**
  * @internal
  */
@@ -50,6 +41,7 @@ const removeNode = (el?: Node) => {
 })
 export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
+		const hideExpertSlot = this.state._label.length > 0;
 		return (
 			<Host
 				class={{
@@ -78,12 +70,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 						/>
 					)}
 					{this.state._iconOnly !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
-
-					<span ref={this.state._label.length > 0 || this.state._iconOnly === true ? removeNode : undefined}>
-						{/*
-							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-						*/}
+					<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
 					{this.state._icon.right && (
@@ -132,7 +119,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	@State() public state: States = {
 		_icon: {},
 		_iconOnly: false,
-		_label: '',
+		_label: '…', // ⚠ required
 	};
 
 	/**

@@ -58,38 +58,37 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: true,
 })
 export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	private buttonRef?: HTMLButtonElement;
 	private readonly nonce = nonce();
-	// private content?: HTMLDivElement;
-
-	private catchAriaExpanded = (button?: HTMLButtonElement) => {
-		if (button instanceof HTMLButtonElement) {
-			this.buttonRef = button;
-			this.triggerAriaExpanded(button);
-		}
-	};
-	private triggerAriaExpanded = (button: HTMLButtonElement) => {
-		button.setAttribute('aria-expanded', this.state._open ? 'true' : 'false');
-	};
 
 	public render(): JSX.Element {
 		// const height = this.content?.getBoundingClientRect().height ?? 0;
 		return (
 			<Host>
-				<div part={`accordion ${this.state._open ? 'open' : 'close'}`}>
-					<kol-heading-wc _label="" _level={this.state._level}>
-						<button aria-controls={this.nonce} ref={this.catchAriaExpanded} onClick={this.onClick}>
-							<kol-icon _ariaLabel="" _icon={this.state._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus'} _part={this.state._open ? 'close' : 'open'} />
-							<span>{this.state._heading}</span>
-						</button>
+				<div
+					class={{
+						accordion: true,
+						open: this.state._open === true,
+						close: this.state._open !== true,
+					}}
+				>
+					<kol-heading-wc _headline="" _level={this.state._level}>
+						<kol-button-wc
+							// slot="expert"
+							_ariaControls={this.nonce}
+							_ariaExpanded={this.state._open}
+							_icon={this.state._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus'}
+							_label={this.state._heading}
+							_on={{ onClick: this.onClick }}
+						></kol-button-wc>
 					</kol-heading-wc>
-					<div part="header">
+					<div class="header">
 						<slot name="header" />
 					</div>
 					<div
+						aria-hidden={this.state._open === false ? 'true' : undefined}
+						class="content"
 						id={this.nonce}
-						part="content"
-						// ref={(r) => (this.content = r)}
+						hidden={this.state._open === false}
 						style={
 							this.state._open === false
 								? {
@@ -145,7 +144,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_heading: '⚠',
+		_heading: '…', // ⚠ required
 		_level: 1,
 	};
 
@@ -208,9 +207,6 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 			clearTimeout(timeout);
 			if (typeof this.state._on?.onClick === 'function') {
 				this.state._on.onClick(event, this._open === true);
-			}
-			if (this.buttonRef instanceof HTMLButtonElement) {
-				this.triggerAriaExpanded(this.buttonRef);
 			}
 		});
 	};

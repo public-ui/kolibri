@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { KoliBriButtonVariant, KoliBriButtonVariantCustomClass, watchTooltipAlignment } from '../../types/button-link';
+import { KoliBriButtonVariant, KoliBriButtonVariantPropState, KoliBriButtonCustomClassPropState, watchTooltipAlignment } from '../../types/button-link';
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchButtonVariant } from '../button/controller';
@@ -43,17 +43,18 @@ export type RequiredProps = {
 	page: number;
 	total: number;
 };
-export type OptionalProps = KoliBriButtonVariantCustomClass & {
-	boundaryCount: number;
-	hasButtons: boolean | Stringified<PaginationHasButton>;
-	pageSize: number;
-	pageSizeOptions: Stringified<number[]>;
-	siblingCount: number;
-	tooltipAlign: Alignment;
-};
+export type OptionalProps = KoliBriButtonCustomClassPropState &
+	KoliBriButtonVariantPropState & {
+		boundaryCount: number;
+		hasButtons: boolean | Stringified<PaginationHasButton>;
+		pageSize: number;
+		pageSizeOptions: Stringified<number[]>;
+		siblingCount: number;
+		tooltipAlign: Alignment;
+	};
 // export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = {
+type RequiredStates = KoliBriButtonVariantPropState & {
 	boundaryCount: number;
 	hasButtons: PaginationHasButton;
 	page: number;
@@ -63,7 +64,7 @@ type RequiredStates = {
 	siblingCount: number;
 	total: number;
 };
-type OptionalStates = KoliBriButtonVariantCustomClass & {
+type OptionalStates = KoliBriButtonCustomClassPropState & {
 	tooltipAlign: Alignment;
 };
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;

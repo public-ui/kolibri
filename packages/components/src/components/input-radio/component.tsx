@@ -189,7 +189,7 @@ export class KolInputRadio implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_id: '⚠',
+		_id: '…', // ⚠ required
 		_list: [],
 
 		_orientation: 'vertical',

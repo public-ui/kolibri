@@ -2,7 +2,6 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonStates } from '../../types/button-link';
 import { AnyIconFontClass, KoliBriAllIcon, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
 import { Alignment } from '../../types/props/alignment';
-import { deprecatedHint } from '../a11y.tipps';
 import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
 import { isObject, isString, isStyle } from '../validator';
 
@@ -49,7 +48,7 @@ const beforePatchIcon = (component: Generic.Element.Component): void => {
 		const iconAlign = (component.nextState?.get('_iconAlign') as Alignment) || (component.state as ButtonStates)._iconAlign;
 		component.nextState?.set('_icon', mapIconProp2State(icon, iconAlign));
 	} else if (component.nextState?.has('_iconAlign')) {
-		const lastIconAlign = (component.state as ButtonStates)._iconAlign;
+		const lastIconAlign = (component.state as ButtonStates)._iconAlign as Alignment;
 		component.nextState?.set('_icon', {
 			[lastIconAlign]: undefined,
 			[component.nextState?.get('_iconAlign') as Alignment]: (component.state as ButtonStates)._icon[lastIconAlign],
@@ -111,13 +110,6 @@ export const watchIconAlign = (component: Generic.Element.Component, value?: Ali
 		hooks: {
 			beforePatch: () => {
 				beforePatchIcon(component);
-			},
-			afterPatch: (value: unknown) => {
-				deprecatedHint(
-					`Das Property _icon-align bzw. _iconAlign ist veraltet (value: ${
-						value as string
-					}). Die Ausrichtung der Icon's kann jetzt direkt über das _icon-Property vorgenommen werden. (v1.1.10: https://public-ui.github.io/docs/changelog#1110---11112022)`
-				);
 			},
 		},
 	});

@@ -2,24 +2,29 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../types/heading-level';
-import { watchHeadingLevel } from './validation';
 import { watchString } from '../../utils/prop.validators';
+import { watchHeadingLevel } from './validation';
 
 /**
  * API
  */
 type RequiredProps = {
-	label: string;
+	headline: string;
 };
 type OptionalProps = {
-	overline: string;
+	secondaryHeadline: string;
 	level: HeadingLevel;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+type RequiredStates = {
+	headline: string;
+	level: HeadingLevel;
+};
+type OptionalStates = {
+	secondaryHeadline: string;
+};
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-heading-wc',
@@ -27,119 +32,130 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	/**
+	 * Gibt den Text der Überschrift an.
+	 */
+	@Prop() public _headline!: string;
+
+	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
 	/**
-	 * Gibt den Text der Überschrift an.
+	 * Gibt den Text der zusätzlichen Überschrift an.
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _secondaryHeadline?: string;
 
-	/**
-	 * Gibt den Text der zusätzlichen Beschriftung an.
-	 */
-	@Prop() public _overline?: string = '';
-
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
-		_label: '',
+		_headline: '…', // ⚠ required
+		_level: 1,
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_label')
-	public validateLabel(value?: string): void {
-		watchString(this, '_label', value);
+	@Watch('_headline')
+	public validateHeadline(value?: string): void {
+		watchString(this, '_headline', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_overline')
-	public validateOverline(value?: string): void {
-		watchString(this, '_overline', value);
+	@Watch('_secondaryHeadline')
+	public validateSecondaryHeadline(value?: string): void {
+		watchString(this, '_secondaryHeadline', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
-		this.validateLabel(this._label);
+		this.validateHeadline(this._headline);
 		this.validateLevel(this._level);
-		this.validateOverline(this._overline);
+		this.validateSecondaryHeadline(this._secondaryHeadline);
 	}
 
-	private readonly renderHeadline = (label: string, level?: HeadingLevel): JSX.Element => {
+	private readonly renderHeadline = (headline: string, level?: number): JSX.Element => {
 		switch (level) {
 			case 1:
 				return (
 					<h1 class="headline">
-						{label}
+						{headline}
 						<slot />
 					</h1>
 				);
 			case 2:
 				return (
 					<h2 class="headline">
-						{label}
+						{headline}
 						<slot />
 					</h2>
 				);
 			case 3:
 				return (
 					<h3 class="headline">
-						{label}
+						{headline}
 						<slot />
 					</h3>
 				);
 			case 4:
 				return (
 					<h4 class="headline">
-						{label}
+						{headline}
 						<slot />
 					</h4>
 				);
 			case 5:
 				return (
 					<h5 class="headline">
-						{label}
+						{headline}
 						<slot />
 					</h5>
 				);
 			case 6:
 				return (
 					<h6 class="headline">
-						{label}
+						{headline}
 						<slot />
 					</h6>
 				);
 			default:
 				return (
 					<strong class="headline">
-						{label}
+						{headline}
 						<slot />
 					</strong>
 				);
 		}
 	};
 
+	private readonly renderSecondaryHeadline = (headline: string, level?: number): JSX.Element => {
+		switch (level) {
+			case 1:
+				return <h1 class="secondary-headline">{headline}</h1>;
+			case 2:
+				return <h2 class="secondary-headline">{headline}</h2>;
+			case 3:
+				return <h3 class="secondary-headline">{headline}</h3>;
+			case 4:
+				return <h4 class="secondary-headline">{headline}</h4>;
+			case 5:
+				return <h5 class="secondary-headline">{headline}</h5>;
+			case 6:
+				return <h6 class="secondary-headline">{headline}</h6>;
+			default:
+				return <strong class="secondary-headline">{headline}</strong>;
+		}
+	};
+
 	public render(): JSX.Element {
 		return (
 			<Host>
-				{this.renderHeadline(this.state._label, this.state._level)}
-				{this.state._overline && <span class="overline">{this.state._overline}</span>}
+				{typeof this.state._secondaryHeadline === 'string' && this.state._secondaryHeadline.length > 0 ? (
+					<hgroup>
+						{this.renderHeadline(this.state._headline, this.state._level)}
+						{this.state._secondaryHeadline && this.renderSecondaryHeadline(this.state._secondaryHeadline, this.state._level + 1)}
+					</hgroup>
+				) : (
+					this.renderHeadline(this.state._headline, this.state._level)
+				)}
 			</Host>
 		);
 	}

@@ -80,7 +80,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-label={this.state._iconOnly === false ? this.state._ariaLabel || this.state._label : undefined}
+					aria-label={this.state._iconOnly === false ? this.state._ariaLabel : undefined}
 					aria-labelledby={this.state._iconOnly === true ? this.nonce : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
@@ -148,7 +148,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 *
 	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 */
-	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string = '';
+	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -175,7 +175,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Alignment = 'left';
+	@Prop() public _iconAlign?: Alignment;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
@@ -232,15 +232,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: ButtonStates = {
-		_ariaLabel: '',
 		_icon: {},
-		/**
-		 * @deprecated
-		 */
-		_iconAlign: 'left',
-		_label: '',
+		_label: '…', // ⚠ required
 		_on: {},
 		_type: 'button',
+		_variant: 'normal',
 	};
 
 	/**

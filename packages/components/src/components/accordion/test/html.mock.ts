@@ -1,6 +1,6 @@
-import { getHeadingWcHtml } from '../../heading/test/html.mock';
-import { getIconHtml } from '../../icon/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
+import { getButtonWcHtml } from '../../button/test/html.mock';
+import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { Props } from '../component';
 
 export const getAccordionHtml = (
@@ -13,37 +13,33 @@ export const getAccordionHtml = (
 ): string => {
 	props = mixMembers(
 		{
-			_heading: '⚠',
+			_heading: '…', // ⚠ required
 			_level: 1,
 		},
 		props
 	);
-	return `<kol-accordion${props._open ? ' _open' : ''}>
+	const open = props._open === true;
+	return `<kol-accordion${open ? ' _open' : ''}>
   <mock:shadow-root>
-    <div part="accordion ${props._open ? 'open' : 'close'}">
+    <div class="accordion ${open ? 'open' : 'close'}">
       ${getHeadingWcHtml(
 				{
-					_label: '',
+					_headline: '',
 					_level: props._level,
 				},
 				{
-					default: `<button aria-controls="nonce" aria-expanded="${props._open ? 'true' : 'false'}">
-							${getIconHtml({
-								_ariaLabel: '',
-								_icon: props._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus',
-								_part: props._open ? 'close' : 'open',
-							})}
-							<span>
-								${props._heading}
-							</span>
-						</button>`,
+					default: `${getButtonWcHtml({
+						_ariaControls: 'nonce',
+						_ariaExpanded: open,
+						_icon: `fa-solid fa-${open ? 'minus' : 'plus'}`,
+						_label: props._heading,
+					})}`,
 				}
 			)}
-
-      <div part="header">
+      <div class="header">
         <slot name="header"></slot>
       </div>
-      <div id="nonce" part="content"${props._open ? '' : ' style="display: none; height: 0; visibility: hidden;"'}>
+      <div class="content" id="nonce" ${open ? '' : 'aria-hidden="true" hidden style="display: none; height: 0; visibility: hidden;"'}>
         <slot name="content"></slot>
       </div>
     </div>

@@ -161,7 +161,7 @@ export class KolInputFile implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_id: '⚠',
+		_id: '…', // ⚠ required
 	};
 
 	public constructor() {

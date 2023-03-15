@@ -114,7 +114,7 @@ export class KolBadge implements Props {
 	 */
 	@State() public state: States = {
 		_color: '#000',
-		_label: '',
+		_label: '…', // ⚠ required
 	};
 
 	private handleColorChange = (value: unknown) => {

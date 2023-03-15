@@ -83,7 +83,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 	 */
-	@Prop() public _ariaLabel?: string = '';
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -110,7 +110,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Alignment = 'left';
+	@Prop() public _iconAlign?: Alignment;
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */

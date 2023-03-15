@@ -13,7 +13,7 @@ type RequiredProps = AriaLabel & {
 type OptionalProps = {
 	part: string;
 };
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 /**
  * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.

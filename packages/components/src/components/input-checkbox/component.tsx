@@ -182,7 +182,7 @@ export class KolInputCheckbox implements ComponentApi {
 			indeterminate: 'fa-solid fa-minus',
 			unchecked: 'fa-solid fa-plus',
 		},
-		_id: '⚠',
+		_id: '…', // ⚠ required
 		_indeterminate: false,
 		_variant: 'checkbox',
 	};
