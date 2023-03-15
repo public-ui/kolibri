@@ -26,7 +26,7 @@ export class KolImage implements ComponentApi {
 	/**
 	 * Gibt den Lademodus an.
 	 */
-	@Prop() public _loading?: Loading;
+	@Prop() public _loading?: Loading = 'lazy';
 
 	/**
 	 * ...
@@ -45,7 +45,7 @@ export class KolImage implements ComponentApi {
 
 	@State() public state: States = {
 		_alt: '…', // ⚠ required
-		_loading: 'eager', // ⚠ required
+		_loading: 'lazy', // ⚠ required
 		_src: '…', // ⚠ required
 	};
 
