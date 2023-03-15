@@ -1,14 +1,3 @@
-:host {
-	/**
-	 * This rule enables the font-family to be inherited only for the host element.
-	 */
-	font-family: inherit;
-	/**
-	 * This rule enables the font-size to be inherited only for the host element.
-	 */
-	font-size: inherit;
-}
-
 :host * {
 	/**
 	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
