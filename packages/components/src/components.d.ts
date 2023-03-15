@@ -523,7 +523,7 @@ export namespace Components {
     /**
      * Image component
      */
-    interface KolImg {
+    interface KolImage {
         /**
           * Gibt den alternativen Text an.
          */
@@ -2323,11 +2323,11 @@ declare global {
     /**
      * Image component
      */
-    interface HTMLKolImgElement extends Components.KolImg, HTMLStencilElement {
+    interface HTMLKolImageElement extends Components.KolImage, HTMLStencilElement {
     }
-    var HTMLKolImgElement: {
-        prototype: HTMLKolImgElement;
-        new (): HTMLKolImgElement;
+    var HTMLKolImageElement: {
+        prototype: HTMLKolImageElement;
+        new (): HTMLKolImageElement;
     };
     interface HTMLKolIndentedTextElement extends Components.KolIndentedText, HTMLStencilElement {
     }
@@ -2570,7 +2570,7 @@ declare global {
         "kol-icon": HTMLKolIconElement;
         "kol-icon-font-awesome": HTMLKolIconFontAwesomeElement;
         "kol-icon-icofont": HTMLKolIconIcofontElement;
-        "kol-img": HTMLKolImgElement;
+        "kol-image": HTMLKolImageElement;
         "kol-indented-text": HTMLKolIndentedTextElement;
         "kol-input": HTMLKolInputElement;
         "kol-input-adapter-leanup": HTMLKolInputAdapterLeanupElement;
@@ -3065,7 +3065,7 @@ declare namespace LocalJSX {
     /**
      * Image component
      */
-    interface KolImg {
+    interface KolImage {
         /**
           * Gibt den alternativen Text an.
          */
@@ -4765,7 +4765,7 @@ declare namespace LocalJSX {
         "kol-icon": KolIcon;
         "kol-icon-font-awesome": KolIconFontAwesome;
         "kol-icon-icofont": KolIconIcofont;
-        "kol-img": KolImg;
+        "kol-image": KolImage;
         "kol-indented-text": KolIndentedText;
         "kol-input": KolInput;
         "kol-input-adapter-leanup": KolInputAdapterLeanup;
@@ -4835,7 +4835,7 @@ declare module "@stencil/core" {
             /**
              * Image component
              */
-            "kol-img": LocalJSX.KolImg & JSXBase.HTMLAttributes<HTMLKolImgElement>;
+            "kol-image": LocalJSX.KolImage & JSXBase.HTMLAttributes<HTMLKolImageElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
             "kol-input": LocalJSX.KolInput & JSXBase.HTMLAttributes<HTMLKolInputElement>;
             /**

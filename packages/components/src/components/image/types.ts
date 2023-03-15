@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+import { Loading } from '../../utils/validators/loading';
 
 /**
  * API
@@ -8,12 +9,18 @@ type RequiredProps = {
 	alt: string;
 };
 type OptionalProps = {
-	loading: 'eager' | 'lazy';
+	loading: Loading;
+	sizes: string;
 	srcset: string;
 };
 
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
+type RequiredStates = RequiredProps & {
+	loading: Loading;
+};
+type OptionalStates = {
+	sizes: string;
+	srcset: string;
+};
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
