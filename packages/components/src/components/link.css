@@ -9,16 +9,11 @@ a {
 	display: inline-flex;
 }
 
-button {
-	display: inline-block;
-}
-
 :is(a, button):is(:focus, :hover) {
 	text-decoration-thickness: 0.2em;
 }
 
 kol-icon {
-	display: inline-block;
 	padding: 0 var(--kolibri-spacing);
 }
 

@@ -1,7 +1,7 @@
-:host {
-	display: inline-block;
-}
-
+/**
+ * Dieses CSS stellt sicher, dass der Standard-Style
+ * von A und Button resettet werden.
+ */
 a,
 button {
 	background-color: transparent;
