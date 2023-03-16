@@ -4,22 +4,15 @@ a {
 	text-decoration-line: none;
 }
 
+/* a11y-req */
 a,
 button {
-	display: inline-block;
 	min-height: 44px;
 	min-width: 44px;
 }
 
-a:active,
-button:active {
-	outline: 0;
-	box-shadow: none;
-}
-
 a:disabled,
 button:disabled {
-	box-shadow: none;
 	cursor: not-allowed;
 	opacity: 0.5;
 }

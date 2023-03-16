@@ -153,27 +153,27 @@ export type WatchNumberOptions = WatchOptions & {
 	max?: number;
 };
 
-export const watchValidator = <T>(
+export function watchValidator<T>(
 	component: Generic.Element.Component,
 	propName: string,
 	validationFunction: (value?: T) => boolean,
 	requiredGeneric: Set<string | null | undefined>,
 	value?: T,
 	options: WatchOptions = {}
-): void => {
+): void {
 	if (validationFunction(value)) {
 		/**
-		 * Triff zu, wenn der Wert entweder VALIDE ist.
+		 * Triff zu, wenn der Wert VALIDE ist.
 		 */
 		setState(component, propName, value, options.hooks);
 	} else if ((value === undefined || value === null) && !options.required) {
 		/**
 		 * Triff zu, wenn der Wert entweder ...
-		 * - UNDEFINED oder
-		 * - NULL und NICHT REQUIRED
+		 * - UNDEFINED oder NULL
+		 * - und NICHT REQUIRED
 		 * ... ist.
 		 */
-		setState(component, propName, options?.defaultValue, options.hooks);
+		setState(component, propName, options.defaultValue, options.hooks);
 	} else {
 		/**
 		 * Triff zu, wenn der Wert NICHT valide ist.
@@ -183,7 +183,7 @@ export const watchValidator = <T>(
 		}
 		logWarn(component, propName, value, requiredGeneric);
 	}
-};
+}
 
 export const watchBoolean = (component: Generic.Element.Component, propName: string, value?: boolean, options?: WatchBooleanOptions): void => {
 	watchValidator(component, propName, (value): boolean => typeof value === 'boolean', new Set(['Boolean {true, false}']), value, options);

@@ -10,7 +10,7 @@
 	/**
 	 * This rule enables the font-size to be inherited from outside for easy scaling.
 	 */
-	font-size: inherit;
+	font-size: var(--kolibri-font-size);
 }
 
 * {
