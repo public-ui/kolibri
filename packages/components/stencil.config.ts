@@ -5,7 +5,6 @@ import { Config } from '@stencil/core';
 import { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
-import { sass } from '@stencil/sass';
 import { solidOutputTarget } from '@stencil/solid-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
@@ -22,6 +21,7 @@ const TAGS = [
 	'kol-details',
 	'kol-form',
 	'kol-heading',
+	'kol-image',
 	'kol-icon',
 	'kol-icon-font-awesome',
 	'kol-icon-icofont',
