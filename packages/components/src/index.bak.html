@@ -146,10 +146,9 @@
 			</div>
 			<kol-link-group _aria-label="Inhaltsverzeichnis" _heading="Inhaltsverzeichnis" _level="2" _ordered id="table-of-content"></kol-link-group>
 		</header>
-
 		<main class="container">
 			<ol>
-				<li>
+				<li id="abbr">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -172,7 +171,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="accordion">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -232,7 +231,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="alert">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -267,7 +266,7 @@
 					</div>
 					<script src="assets/alert-simulation.js"></script>
 				</li>
-				<li>
+				<li id="badge">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -310,7 +309,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="breadcrumb">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -343,7 +342,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="button">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -413,7 +412,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="link-button">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -491,7 +490,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="button-group">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -522,7 +521,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="card">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -580,7 +579,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="details">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -623,7 +622,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="form">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -789,7 +788,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="heading">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -820,7 +819,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="icon">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -877,7 +876,25 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="image">
+					<div class="row">
+						<div class="col-12">
+							<kol-heading _level="2">Image</kol-heading>
+						</div>
+						<div class="gap-2 col-6">
+							<p>
+								<b>Native HTML</b>
+								<img src="/assets/images/abgrenzung.jpg" />
+							</p>
+						</div>
+						<div class="col-6"></div>
+						<div class="gap-2 col-6">
+							<b>KoliBri</b>
+							<kol-image _src="/assets/images/abgrenzung.jpg" _alt="Dartstellung der Funktionsweise von KoliBri"></kol-image>
+						</div>
+					</div>
+				</li>
+				<li id="indented-text">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -898,7 +915,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="input">
 					<div class="row">
 						<div class="col-12">
 							<kol-badge _icon="icofont-dashboard" _color="#600" _label="Retest"></kol-badge>
@@ -907,26 +924,32 @@
 						</div>
 						<div class="gap-2 col-12 d-grid">
 							<div class="d-grid gap-2">
-								<kol-input-checkbox _checked _id="checkbox-checked"
-									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
-								>
-								<kol-input-checkbox _checked _id="checkbox-checked-indeterminate" _indeterminate
-									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
-								>
-								<kol-input-checkbox _id="checkbox-unchecked"
-									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
-								>
-								<kol-input-checkbox _id="checkbox-unchecked-indeterminate" _indeterminate
-									>Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
-								>
-								<kol-input-checkbox _checked _id="switch-checked" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _checked _id="switch-checked-indeterminate" _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _id="switch-unchecked" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _id="switch-unchecked-indeterminate" _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _checked _id="button-checked" _variant="button">Schalter deaktiviert</kol-input-checkbox>
-								<kol-input-checkbox _checked _id="button-checked-indeterminate" _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
-								<kol-input-checkbox _id="button-unchecked" _variant="button">Schalter deaktiviert</kol-input-checkbox>
-								<kol-input-checkbox _id="button-unchecked-indeterminate" _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _checked _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _checked _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
+							</div>
+							<div class="d-grid gap-2">
+								<kol-input-checkbox _checked _hide-label _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _hide-label _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _hide-label _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _hide-label _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _hide-label _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _hide-label _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _hide-label _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _hide-label _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _checked _hide-label _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _checked _hide-label _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _hide-label _variant="button">Schalter deaktiviert</kol-input-checkbox>
+								<kol-input-checkbox _hide-label _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _level="3">InputCheckbox</kol-heading>
@@ -1088,7 +1111,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="link">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1135,7 +1158,7 @@
 					</div>
 					<script src="assets/link-simulation.js"></script>
 				</li>
-				<li>
+				<li id="button-link">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1168,7 +1191,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="link-group">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1209,7 +1232,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="logo">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1230,7 +1253,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="modal">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1304,7 +1327,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="nav">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1351,7 +1374,7 @@
 					</div>
 					<script src="assets/nav-simulation.js"></script>
 				</li>
-				<li>
+				<li id="pagination">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1394,7 +1417,7 @@
 					</div>
 					<script src="assets/pagination-simulation.js"></script>
 				</li>
-				<li>
+				<li id="progress">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1416,7 +1439,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="skip-nav">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1434,7 +1457,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="spin">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1449,7 +1472,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="symbol">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1463,7 +1486,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="table">
 					<div class="row">
 						<div class="col-12">
 							<kol-badge _icon="icofont-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
@@ -1748,7 +1771,7 @@
 					</div>
 					<script src="assets/table-simulation.js"></script>
 				</li>
-				<li>
+				<li id="tabs">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1882,7 +1905,7 @@
 					</div>
 					<script src="assets/tabs-simulation.js"></script>
 				</li>
-				<li>
+				<li id="toast">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1905,7 +1928,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="tooltip">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1943,7 +1966,7 @@
 						</div>
 					</div>
 				</li>
-				<li>
+				<li id="version">
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
