@@ -33,4 +33,5 @@ export const BPA = KoliBri.createTheme('bpa', {
 	'KOL-INPUT-RADIO': '',
 	'KOL-LINK-GROUP': '',
 	'KOL-TOAST': '',
+	'KOL-ICON': '/* https://styleguide.bundesregierung.de/sg-de/medien/digitale-medien/webanwendungen/komponenten/atome/icon */:host {font-size: 2.5em;}',
 });
