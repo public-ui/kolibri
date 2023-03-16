@@ -5,11 +5,6 @@ import { Loading, validateLoading } from '../../utils/validators/loading';
 
 import { ComponentApi, States } from './types';
 
-/**
- * Image component
- *
- * - https://www.mediaevent.de/html/srcset.html
- */
 @Component({
 	tag: 'kol-image',
 	styleUrls: {
