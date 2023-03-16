@@ -17,6 +17,7 @@ import { NavLinkProps } from "./components/link/component";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
+import { Loading } from "./utils/validators/loading";
 import { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
@@ -48,6 +49,7 @@ export { NavLinkProps } from "./components/link/component";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
+export { Loading } from "./utils/validators/loading";
 export { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
@@ -519,6 +521,32 @@ export namespace Components {
           * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
+    }
+    /**
+     * Image component
+     * - https://www.mediaevent.de/html/srcset.html
+     */
+    interface KolImage {
+        /**
+          * Gibt den alternativen Text an.
+         */
+        "_alt": string;
+        /**
+          * Gibt den Lademodus an.
+         */
+        "_loading"?: Loading;
+        /**
+          * ...
+         */
+        "_sizes"?: string;
+        /**
+          * Gibt die Quell-URL an.
+         */
+        "_src": string;
+        /**
+          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+         */
+        "_srcset"?: string;
     }
     interface KolIndentedText {
     }
@@ -2299,6 +2327,16 @@ declare global {
         prototype: HTMLKolIconIcofontElement;
         new (): HTMLKolIconIcofontElement;
     };
+    /**
+     * Image component
+     * - https://www.mediaevent.de/html/srcset.html
+     */
+    interface HTMLKolImageElement extends Components.KolImage, HTMLStencilElement {
+    }
+    var HTMLKolImageElement: {
+        prototype: HTMLKolImageElement;
+        new (): HTMLKolImageElement;
+    };
     interface HTMLKolIndentedTextElement extends Components.KolIndentedText, HTMLStencilElement {
     }
     var HTMLKolIndentedTextElement: {
@@ -2540,6 +2578,7 @@ declare global {
         "kol-icon": HTMLKolIconElement;
         "kol-icon-font-awesome": HTMLKolIconFontAwesomeElement;
         "kol-icon-icofont": HTMLKolIconIcofontElement;
+        "kol-image": HTMLKolImageElement;
         "kol-indented-text": HTMLKolIndentedTextElement;
         "kol-input": HTMLKolInputElement;
         "kol-input-adapter-leanup": HTMLKolInputAdapterLeanupElement;
@@ -3030,6 +3069,32 @@ declare namespace LocalJSX {
           * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
+    }
+    /**
+     * Image component
+     * - https://www.mediaevent.de/html/srcset.html
+     */
+    interface KolImage {
+        /**
+          * Gibt den alternativen Text an.
+         */
+        "_alt": string;
+        /**
+          * Gibt den Lademodus an.
+         */
+        "_loading"?: Loading;
+        /**
+          * ...
+         */
+        "_sizes"?: string;
+        /**
+          * Gibt die Quell-URL an.
+         */
+        "_src": string;
+        /**
+          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+         */
+        "_srcset"?: string;
     }
     interface KolIndentedText {
     }
@@ -4713,6 +4778,7 @@ declare namespace LocalJSX {
         "kol-icon": KolIcon;
         "kol-icon-font-awesome": KolIconFontAwesome;
         "kol-icon-icofont": KolIconIcofont;
+        "kol-image": KolImage;
         "kol-indented-text": KolIndentedText;
         "kol-input": KolInput;
         "kol-input-adapter-leanup": KolInputAdapterLeanup;
@@ -4779,6 +4845,11 @@ declare module "@stencil/core" {
              * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
              */
             "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
+            /**
+             * Image component
+             * - https://www.mediaevent.de/html/srcset.html
+             */
+            "kol-image": LocalJSX.KolImage & JSXBase.HTMLAttributes<HTMLKolImageElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
             "kol-input": LocalJSX.KolInput & JSXBase.HTMLAttributes<HTMLKolInputElement>;
             /**
