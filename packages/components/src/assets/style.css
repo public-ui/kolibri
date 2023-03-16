@@ -1,8 +1,30 @@
+.container {
+	display: grid;
+	gap: 1.5rem;
+	margin-inline: auto;
+	max-width: 1000px;
+	padding-inline: 2rem;
+}
+@media (min-width: 1280px) {
+	.container {
+		max-width: 1200px;
+	}
+}
+@media (min-width: 1600px) {
+	.container {
+		max-width: 1500px;
+	}
+}
+
 .font-80 {
 	font-size: 80%;
 }
 .font-60 {
 	font-size: 60%;
+}
+
+.grid {
+	display: grid;
 }
 
 kol-accordion p,
@@ -23,7 +45,6 @@ kol-card p {
 kol-accordion div[slot='content'],
 kol-accordion div[slot='header'] {
 	padding: 0.5rem;
-	padding-left: 0rem;
 }
 
 kol-logo {
@@ -47,12 +68,12 @@ kol-logo {
 	width: 175px;
 }
 
-/* .bordered {
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--kolibri-border-color);
-  border-radius: var(--kolibri-border-radius);
-} */
+.bordered {
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--kolibri-border-color);
+	border-radius: var(--kolibri-border-radius);
+}
 
 .bg-black {
 	background-color: black;
@@ -72,8 +93,7 @@ kol-logo {
 
 .col-12 {
 	overflow: hidden;
-	padding-top: 0.25rem;
-	padding-bottom: 0.25rem;
+	padding-block: 0.25rem;
 }
 
 hr {
