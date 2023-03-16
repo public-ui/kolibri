@@ -1,5 +1,13 @@
 @import '../style.css';
 
+:host {
+	/**
+	 * The max-width is needed to prevent the table from overflowing the
+	 * parent node, if the table is wider than the parent node.
+	 */
+	max-width: 100%;
+}
+
 :host > div {
 	overflow-x: auto;
 	overflow-y: hidden;
