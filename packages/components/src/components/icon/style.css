@@ -4,6 +4,7 @@
 
 :host {
 	color: inherit;
+	display: contents;
 	font-size: inherit;
 	line-height: inherit;
 }
