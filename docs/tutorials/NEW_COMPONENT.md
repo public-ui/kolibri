@@ -20,7 +20,8 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 |    3    | Klasse zur API implementieren<br>- Props<br>- State<br>- Watcher<br>- Initialer Hook<br>- Render-Methode                                |
 |    4    | Styling anlegen                                                                                                                         |
 |    5    | Beispiele in `index.html` aufnehmen                                                                                                     |
-|    6    | readme.md vervollständigen                                                                                                              |
+|    6    | readme.md vervollständigen 
+|.   7.   | in die `stencil.config.js` eintragen
 |   ...   | ...                                                                                                                                     |
 |   ...   | Klasse in Komponenten-Liste für Tests aufnehmen (packages/components/src/components/component-list.ts)                                  |
 
