@@ -50,7 +50,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					? getIconHtml(
 							{
 								_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
-								_icon: 'fa-solid fa-arrow-up-right-from-square',
+								_icon: 'codicon codicon-link-external',
 							},
 							' class="external-link-icon"'
 					  )

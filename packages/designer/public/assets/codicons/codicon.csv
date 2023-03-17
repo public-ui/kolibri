@@ -22,7 +22,10 @@ azure,,EBD8
 beaker-stop,,EBE1
 beaker,,EA79
 bell-dot,,EB9A
+bell-slash-dot,,EC09
+bell-slash,,EC08
 bell,,EAA2
+blank,,EC03
 bold,,EAA3
 book,,EAA4
 bookmark,,EAA5
@@ -52,6 +55,8 @@ circle-large-filled,,EBB4
 circle-large-outline,,EBB5
 circle-outline,,EABC
 circle-slash,,EABD
+circle-small-filled,,EB8A
+circle-small,,EC07
 circuit-board,,EABE
 clear-all,,EABF
 clippy,,EAC0
@@ -65,6 +70,7 @@ collapse-all,,EAC5
 color-mode,,EAC6
 combine,,EBB6
 comment-discussion,,EAC7
+comment-unresolved,,EC0A
 comment,,EA6B
 compass-active,,EBD7
 compass-dot,,EBD6
@@ -98,7 +104,6 @@ debug-restart-frame,,EB90
 debug-restart,,EAD2
 debug-reverse-continue,,EB8E
 debug-stackframe-active,,EB89
-debug-stackframe-dot,,EB8A
 debug-stackframe,,EB8B
 debug-start,,EAD3
 debug-step-back,,EB8F
@@ -160,6 +165,8 @@ git-merge,,EAFE
 git-pull-request-closed,,EBDA
 git-pull-request-create,,EBBC
 git-pull-request-draft,,EBDB
+git-pull-request-go-to-changes,,EC0B
+git-pull-request-new-changes,,EC0C
 git-pull-request,,EA64
 github-action,,EAFF
 github-alt,,EB00
@@ -174,6 +181,7 @@ graph-scatter,,EBE3
 graph,,EB03
 gripper,,EB04
 group-by-ref-type,,EB97
+heart-filled,,EC04
 heart,,EB05
 history,,EA82
 home,,EB06
@@ -202,9 +210,12 @@ layout-menubar,,EBF6
 layout-panel-center,,EBEF
 layout-panel-justify,,EBF0
 layout-panel-left,,EBEE
+layout-panel-off,,EC01
 layout-panel-right,,EBF1
 layout-panel,,EBF2
+layout-sidebar-left-off,,EC02
 layout-sidebar-left,,EBF3
+layout-sidebar-right-off,,EC00
 layout-sidebar-right,,EBF4
 layout-statusbar,,EBF5
 layout,,EBEB
@@ -227,6 +238,8 @@ lock,,EA75
 magnet,,EBAE
 mail-read,,EB1B
 mail,,EB1C
+map-filled,,EC06
+map,,EC05
 markdown,,EB1D
 megaphone,,EB1E
 mention,,EB1F

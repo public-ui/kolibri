@@ -17,12 +17,12 @@ Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
 ### Code
 
 ```html
-<kol-icon _aria-label="Zu Hause" _icon="fa-solid fa-house"></kol-icon>
+<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 ```
 
 ### Beispiel
 
-<kol-icon _aria-label="Zu Hause" _icon="fa-solid fa-house"></kol-icon>
+<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 
 ## Verwendung
 

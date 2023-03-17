@@ -51,8 +51,8 @@ Für die eindeutige Beschriftung des Buttons nutzen Sie das Attribut **`_label`*
 Über das Attribut **`_icon`** wird eine JSON-Struktur übergeben, mit der alle Paramater zu Anzeige des Icon im Button festgelegt wird.
 
 ```html
-_icon = "{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid
-fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}";
+_icon = "{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'codicon codicon-arrow-up'},'right': {'icon': 'fa-solid
+fa-arrow-right'},'bottom': {'icon': 'codicon codicon-arrow-down'},'left': {'icon': 'codicon codicon-arrow-left'}}";
 ```
 
 Es ist möglich, ein Icon an jeder Position des Button anzuzeigen, sowie die Ausgabe mehrerer Icons im Button. Jedes Icon erhält in der JSON-Struktur einen eigenen Abschnitt, in dem seine Properties festgelegt werden.
@@ -73,13 +73,13 @@ Als weitere Properties zur Konfiguration des Icon stehen zur Verfügung:
 - icon: legt das anzuzeigende Icon aus der Icofont-Bibliothek fest.
 
 ```html
-"{'top': {'icon':'fa-solid fa-arrow-up'}";
+"{'top': {'icon':'codicon codicon-arrow-up'}";
 ```
 
 - style: übergibt ggfls. eigene CSS-Stylinganweisungen an das Icon, wie z.B. font-size, transform oder color.
 
 ```html
-"{'top': {'style': {'font-size':'200%','color':'#040404','transform':'rotate(45deg)'},'icon':'fa-solid fa-arrow-up'}";
+"{'top': {'style': {'font-size':'200%','color':'#040404','transform':'rotate(45deg)'},'icon':'codicon codicon-arrow-up'}";
 ```
 
 Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie [hier](https://icofont.com/icons)

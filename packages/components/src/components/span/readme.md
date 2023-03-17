@@ -9,12 +9,12 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 ### Code
 
 ```html
-<kol-span _icon="fa-solid fa-house" _icon-only="false" _label="Text inside the span."></kol-span>
+<kol-span _icon="codicon codicon-home" _icon-only="false" _label="Text inside the span."></kol-span>
 ```
 
 ### Beispiel
 
-<kol-span _icon="fa-solid fa-house" _icon-only="false" _label="Text inside the span."></kol-span>
+<kol-span _icon="codicon codicon-home" _icon-only="false" _label="Text inside the span."></kol-span>
 
 <!-- Auto Generated Below -->
 

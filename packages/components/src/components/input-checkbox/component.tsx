@@ -176,9 +176,9 @@ export class KolInputCheckbox implements ComponentApi {
 	@State() public state: States = {
 		_checked: false,
 		_icon: {
-			checked: 'fa-solid fa-check',
-			indeterminate: 'fa-solid fa-minus',
-			unchecked: 'fa-solid fa-plus',
+			checked: 'codicon codicon-check',
+			indeterminate: 'codicon codicon-remove',
+			unchecked: 'codicon codicon-add',
 		},
 		_id: '…', // ⚠ required
 		_indeterminate: false,

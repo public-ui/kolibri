@@ -522,10 +522,6 @@ export namespace Components {
          */
         "_part"?: string;
     }
-    /**
-     * Image component
-     * - https://www.mediaevent.de/html/srcset.html
-     */
     interface KolImage {
         /**
           * Gibt den alternativen Text an.
@@ -2327,10 +2323,6 @@ declare global {
         prototype: HTMLKolIconIcofontElement;
         new (): HTMLKolIconIcofontElement;
     };
-    /**
-     * Image component
-     * - https://www.mediaevent.de/html/srcset.html
-     */
     interface HTMLKolImageElement extends Components.KolImage, HTMLStencilElement {
     }
     var HTMLKolImageElement: {
@@ -3070,10 +3062,6 @@ declare namespace LocalJSX {
          */
         "_part"?: string;
     }
-    /**
-     * Image component
-     * - https://www.mediaevent.de/html/srcset.html
-     */
     interface KolImage {
         /**
           * Gibt den alternativen Text an.
@@ -4845,10 +4833,6 @@ declare module "@stencil/core" {
              * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
              */
             "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
-            /**
-             * Image component
-             * - https://www.mediaevent.de/html/srcset.html
-             */
             "kol-image": LocalJSX.KolImage & JSXBase.HTMLAttributes<HTMLKolImageElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
             "kol-input": LocalJSX.KolInput & JSXBase.HTMLAttributes<HTMLKolInputElement>;
