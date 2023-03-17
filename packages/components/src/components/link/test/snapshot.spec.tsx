@@ -19,7 +19,7 @@ executeTests<LinkProps>(
 		_ariaExpanded: [false, true],
 		_ariaLabel: ['Aria-Label'],
 		_href: ['https://google.de'],
-		_icon: ['fa-solid fa-house'],
+		_icon: ['codicon codicon-home'],
 		_iconOnly: [false, true],
 		_label: ['Label'],
 		_target: ['_self', '_blank', 'egal'],

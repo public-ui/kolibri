@@ -131,11 +131,11 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											_icon={
 												this.state._collapsible === true
 													? link._active === true
-														? 'fa-solid fa-minus'
-														: 'fa-solid fa-plus'
+														? 'codicon codicon-remove'
+														: 'codicon codicon-add'
 													: typeof link._icon === 'string'
 													? link._icon
-													: 'fa-solid fa-link-slash'
+													: 'codicon codicon-symbol-event'
 											}
 											_iconOnly={this.state._compact === true || link._iconOnly === true}
 											_label={link._label}
@@ -171,7 +171,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 										_ariaCurrent={link._active === true ? this.state._ariaCurrentValue : false}
 										_ariaLabel={this.state._compact === true || link._iconOnly === true ? link._label : undefined}
 										_href={link._href}
-										_icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'}
+										_icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'}
 										_icon-only={this.state._compact === true || link._iconOnly === true}
 										_label={link._label}
 										_on={link._on}
@@ -214,7 +214,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 								_ariaControls="nav"
 								_ariaExpanded={this.state._compact === true}
 								_ariaLabel={translate(this.state._compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
-								_icon={this.state._compact ? 'fa-solid fa-angles-right' : 'fa-solid fa-angles-left'}
+								_icon={this.state._compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_iconOnly
 								_label={translate(this.state._compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
@@ -405,16 +405,16 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 // console.log(
 //   stringifyJson([
-//     { _label: '1 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed', _target: 'asdasd' },
-//     { _label: '2 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed' },
+//     { _label: '1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
+//     { _label: '2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
 //     {
 //       _active: true,
 //       _label: '3 Navigationspunkt',
 //       _href: '#abc',
-//       _icon: 'fa-solid fa-folder-closed',
+//       _icon: 'codicon codicon-folder-closed',
 //       _children: [
-//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed' },
-//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'fa-solid fa-folder-closed', _target: 'asdasd' },
+//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
+//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
 //         {
 //           _active: true,
 //           _label: '3.3 Navigationspunkt',

@@ -1,6 +1,6 @@
 @import '../../assets/codicons/codicon.css';
-@import '../../assets/fontawesome-free/css/all.css';
-@import '../../assets/icofont/icofont.css';
+/* @import '../../assets/fontawesome-free/css/all.css'; */
+/* @import '../../assets/icofont/icofont.css'; */
 
 :host {
 	color: inherit;
@@ -11,4 +11,8 @@
 :host > i {
 	display: inline-block;
 	overflow: hidden;
+}
+
+.codicon[class*='codicon-'] {
+	font-size: inherit;
 }

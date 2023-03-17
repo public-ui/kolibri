@@ -5,7 +5,7 @@ export const getIconHtml = (props: Props, additionalAttrs = ''): string => {
 	props = mixMembers(
 		{
 			_ariaLabel: '…', // ⚠ required
-			_icon: 'fa-solid fa-house',
+			_icon: 'codicon codicon-home',
 		},
 		props
 	);

@@ -7,6 +7,8 @@ button {
 
 a {
 	display: inline-flex;
+	gap: var(--kolibri-spacing);
+	place-items: center;
 }
 
 :is(a, button):is(:focus, :hover) {

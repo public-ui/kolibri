@@ -70,16 +70,16 @@ type OptionalStates = KoliBriButtonCustomClassPropState & {
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const leftDoubleArrowIcon = {
-	left: 'fa-solid fa-angles-left',
+	left: 'codicon codicon-debug-reverse-continue',
 };
 const leftSingleArrow = {
-	left: 'fa-solid fa-angle-left',
+	left: 'codicon codicon-chevron-left',
 };
 const rightSingleArrowIcon = {
-	right: 'fa-solid fa-angle-right',
+	right: 'codicon codicon-chevron-right',
 };
 const rightDoubleArrowIcon = {
-	right: 'fa-solid fa-angles-right',
+	right: 'codicon codicon-debug-continue',
 };
 
 @Component({

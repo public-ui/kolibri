@@ -16,7 +16,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_icon: ['fa-solid fa-house'],
+		_icon: ['codicon codicon-home'],
 		_iconOnly: [true, false],
 		_label: ['Text'],
 	},
@@ -36,7 +36,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_icon: ['fa-solid fa-house'],
+		_icon: ['codicon codicon-home'],
 		_iconOnly: [true, false],
 		_label: ['Text'],
 	},

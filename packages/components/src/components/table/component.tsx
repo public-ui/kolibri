@@ -617,10 +617,10 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																		col.sort !== this.sortFunction ||
 																		this.sortDirections.get(col.sort) === 'NOS' ||
 																		this.sortDirections.get(col.sort) === undefined
-																			? 'fas fa-sort'
+																			? 'codicon codicon-fold'
 																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'fas fa-sort-up'
-																			: 'fas fa-sort-down'
+																			? 'codicon codicon-chevron-up'
+																			: 'codicon codicon-chevron-down'
 																	}
 																	_iconOnly
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
@@ -704,10 +704,10 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																		col.sort !== this.sortFunction ||
 																		this.sortDirections.get(col.sort) === 'NOS' ||
 																		this.sortDirections.get(col.sort) === undefined
-																			? 'fas fa-sort'
+																			? 'codicon codicon-fold'
 																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'fas fa-sort-up'
-																			: 'fas fa-sort-down'
+																			? 'codicon codicon-chevron-up'
+																			: 'codicon codicon-chevron-down'
 																	}
 																	_iconOnly
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}

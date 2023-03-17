@@ -11,4 +11,5 @@ button {
 	padding: 0;
 	transition-duration: 0.5s;
 	transition-property: background-color, color, border-color;
+	width: 100%;
 }
