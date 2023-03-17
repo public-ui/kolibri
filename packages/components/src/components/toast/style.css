@@ -1,8 +1,5 @@
 @import '../style.css';
-
-:host {
-	display: block;
-}
+@import '../host-display-block.css';
 
 :host > div {
 	height: 0;

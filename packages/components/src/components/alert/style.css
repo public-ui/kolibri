@@ -1,8 +1,6 @@
 @import '../style.css';
+@import '../host-display-block.css';
 
-:host {
-	display: inline-block;
-}
 :host > div {
 	background-color: white;
 	border-radius: var(--kolibri-border-radius);
@@ -15,14 +13,16 @@
 }
 
 .heading {
-	display: flex;
+	display: grid;
 	gap: var(--kolibri-spacing);
+	grid-template-columns: auto 1fr auto;
 	place-items: center;
 }
 .heading > div {
 	display: grid;
 	gap: var(--kolibri-spacing);
-	margin: var(--kolibri-spacing) var(--kolibri-spacing) var(--kolibri-spacing) 0;
+	justify-self: start;
+	margin: var(--kolibri-spacing) 0;
 }
 .heading .heading-icon {
 	align-items: center;

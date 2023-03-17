@@ -1,3 +1,7 @@
+:host {
+	display: inline-flex;
+}
+
 /**
  * Dieses CSS stellt sicher, dass der Standard-Style
  * von A und Button resettet werden.
@@ -12,4 +16,8 @@ button {
 	transition-duration: 0.5s;
 	transition-property: background-color, color, border-color;
 	width: 100%;
+}
+
+kol-icon.external-link-icon {
+	display: inline-flex;
 }

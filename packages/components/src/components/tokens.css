@@ -18,6 +18,16 @@
 	--kolibri-border-width: 1px;
 
 	/**
+	 * @prop --kolibri-color-black: Default color of black (dark).
+	 */
+	--kolibri-color-black: #000;
+
+	/**
+	 * @prop --kolibri-color-white: Default color of white (light).
+	 */
+	--kolibri-color-white: #fff;
+
+	/**
 	 * @prop --kolibri-color-error: Default color of the error.
 	 */
 	--kolibri-color-error: #f44336;

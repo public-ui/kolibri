@@ -5,14 +5,42 @@ a {
 }
 
 /* a11y-req */
-a,
-button {
+:is(a, button) {
 	min-height: 44px;
 	min-width: 44px;
+	text-align: center;
 }
 
-a:disabled,
-button:disabled {
+:is(a, button):disabled {
 	cursor: not-allowed;
 	opacity: 0.5;
+}
+
+kol-span-wc {
+	padding: calc(2 * var(--kolibri-spacing));
+}
+
+.primary :is(a, button) kol-span-wc {
+	background-color: var(--kolibri-color-primary);
+	color: var(--kolibri-color-white);
+}
+
+.secondary :is(a, button) kol-span-wc {
+	background-color: var(--kolibri-color-secondary);
+	color: var(--kolibri-color-white);
+}
+
+.normal :is(a, button) kol-span-wc {
+	background-color: var(--kolibri-color-normal);
+	color: var(--kolibri-color-white);
+}
+
+.danger :is(a, button) kol-span-wc {
+	background-color: var(--kolibri-color-danger);
+	color: var(--kolibri-color-white);
+}
+
+.ghost :is(a, button) kol-span-wc {
+	background-color: var(--kolibri-color-ghost);
+	color: var(--kolibri-color-black);
 }

@@ -3,13 +3,7 @@
 @import './button-and-link.css';
 
 :host {
-	/**
-	 * For design systems it is important to have a basis font-family.
-	 */
 	font-family: var(--kolibri-font-family);
-	/**
-	 * This rule enables the font-size to be inherited from outside for easy scaling.
-	 */
 	font-size: var(--kolibri-font-size);
 }
 
@@ -18,10 +12,6 @@
 	 * We prefer to box-sizing: border-box for all elements.
 	 */
 	box-sizing: border-box;
-}
-
-kol-icon {
-	color: inherit;
 }
 
 kol-span-wc {
@@ -34,12 +24,9 @@ kol-span-wc > span {
 	gap: var(--kolibri-spacing);
 	place-items: center;
 }
-kol-span-wc > kol-icon,
-kol-span-wc > span > kol-icon {
-	display: inline-grid;
-	place-items: center;
-	width: 1em;
-	height: 1em;
+kol-span-wc kol-icon {
+	display: contents;
+	padding: 0 var(--kolibri-spacing);
 }
 
 a,
@@ -49,20 +36,9 @@ select,
 textarea {
 	appearance: none;
 	cursor: pointer;
+	font-family: var(--kolibri-font-family);
 }
 
 .icon-only > kol-span-wc > span > span {
 	display: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: var(--kolibri-font-family);
-	font-size: var(--kolibri-font-size);
-	margin: 0;
-	padding: 0;
 }
