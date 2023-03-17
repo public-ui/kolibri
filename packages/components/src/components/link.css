@@ -2,6 +2,7 @@
 
 a,
 button {
+	text-align: left;
 	text-decoration-line: underline;
 }
 
@@ -11,10 +12,6 @@ a {
 
 :is(a, button):is(:focus, :hover) {
 	text-decoration-thickness: 0.2em;
-}
-
-kol-icon {
-	padding: 0 var(--kolibri-spacing);
 }
 
 .hidden {

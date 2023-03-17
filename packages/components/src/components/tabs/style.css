@@ -1,4 +1,5 @@
 @import '../style.css';
+@import '../host-display-block.css';
 
 kol-button-group-wc {
 	display: inline-flex;

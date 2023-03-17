@@ -1,4 +1,5 @@
 @import './label.css';
+@import './host-display-block.css';
 
 .kol-disabled {
 	opacity: 0.5;

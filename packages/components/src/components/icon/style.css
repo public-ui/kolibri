@@ -4,11 +4,13 @@
 
 :host {
 	color: inherit;
-	display: contents;
 	font-size: inherit;
 	line-height: inherit;
 }
+
 :host > i {
-	display: inline-block;
+	height: 1em;
+	display: contents;
 	overflow: hidden;
+	width: 1em;
 }
