@@ -32,13 +32,13 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 ### Tastatursteuerung
 
-| Taste                 | Funktion                                                                                                                                    |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `Tab`                 | Fokussiert das Eingabefeld. Bei geöffnetem Dialogfeld kann mit der Tab-Taste zwischen den Steuerfeldern gewechselt werden.                  |
-| `Enter`               | Öffnet bzw. schließt das Dialogfeld der Komponente. Bei fokussierter Pipette wird mit der Enter-Taste die Funktion **_Pipette_** gestartet. |
-| `ESC`                 | Beendet die Pipetten-Funktion. .                                                                                                            |
-| `Pfeil-Tasten (rechts | links)`                                                                                                                                     | Verschieben bei fokussiertem Feld **_Farbspektrum_** den Auswahlpunkt. |
-| `Pfeil-Tasten (oben   | unten)`                                                                                                                                     | Ändert bei fokussiertem Feld **_Farbsystem_** die Auswahl.             |
+| Taste                           | Funktion                                                                                                                                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                           | Fokussiert das Eingabefeld. Bei geöffnetem Dialogfeld kann mit der Tab-Taste zwischen den Steuerfeldern gewechselt werden.                  |
+| `Enter`                         | Öffnet bzw. schließt das Dialogfeld der Komponente. Bei fokussierter Pipette wird mit der Enter-Taste die Funktion **_Pipette_** gestartet. |
+| `ESC`                           | Beendet die Pipetten-Funktion. .                                                                                                            |
+| `Pfeil-Tasten (rechts / links)` | Verschieben bei fokussiertem Feld **_Farbspektrum_** den Auswahlpunkt.                                                                      |
+| `Pfeil-Tasten (oben   / unten)` | Ändert bei fokussiertem Feld **_Farbsystem_** die Auswahl.                                                                                  |
 
 ## Links und Referenzen
 
