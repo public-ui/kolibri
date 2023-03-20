@@ -47,7 +47,7 @@ specifiers:
   lit-html: 2.6.1
   mermaid: 10.0.2
   postcss: 8.4.21
-  prettier: 2.8.4
+  prettier: 2.8.5
   react: 17.0.2
   react-dom: 17.0.2
   register-service-worker: 1.7.2
@@ -110,7 +110,7 @@ devDependencies:
   lit-html: 2.6.1
   mermaid: 10.0.2
   postcss: 8.4.21
-  prettier: 2.8.4
+  prettier: 2.8.5
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   register-service-worker: 1.7.2
@@ -130,18 +130,21 @@ packages:
 
   /@a11y-ui/core/1.0.0-rc.15:
     resolution: {integrity: sha512-vv4CcFc090ZVHTaxc6oX66oBR6dcVj27IxGV9cOFPcoRMKElfR9WFGYNxb3MFBnqj7OMfu5QfVEAgMTXQa8Jjw==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       '@leanup/lib': 1.3.20
     dev: true
 
   /@a11y-ui/core/1.0.1-rc.6:
     resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: true
 
   /@a11y-ui/core/1.0.1-rc.65:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -4425,12 +4428,12 @@ packages:
   /@types/eslint-scope/3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
-      '@types/eslint': 8.21.2
+      '@types/eslint': 8.21.3
       '@types/estree': 0.0.51
     dev: true
 
-  /@types/eslint/8.21.2:
-    resolution: {integrity: sha512-EMpxUyystd3uZVByZap1DACsMXvb82ypQnGn89e1Y0a+LYu3JJscUd/gqhRsVFDkaD2MIiWo0MT8EfXr3DGRKw==}
+  /@types/eslint/8.21.3:
+    resolution: {integrity: sha512-fa7GkppZVEByMWGbTtE5MbmXWJTVbrjjaS8K6uQj+XtuuUv1fsuPAxhygfqLmsb/Ufb3CV8deFCpiMfAgi00Sw==}
     dependencies:
       '@types/estree': 0.0.51
       '@types/json-schema': 7.0.11
@@ -5512,7 +5515,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001467
+      caniuse-lite: 1.0.30001468
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -5931,7 +5934,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001467
+      caniuse-lite: 1.0.30001468
       electron-to-chromium: 1.4.333
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
@@ -6145,8 +6148,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /caniuse-lite/1.0.30001467:
-    resolution: {integrity: sha512-cEdN/5e+RPikvl9AHm4uuLXxeCNq8rFsQ+lPHTfe/OtypP3WwnVVbjn+6uBV7PaFL6xUFzTh+sSCOz1rKhcO+Q==}
+  /caniuse-lite/1.0.30001468:
+    resolution: {integrity: sha512-zgAo8D5kbOyUcRAgSmgyuvBkjrGk5CGYG5TYgFdpQv+ywcyEpo1LOWoG8YmoflGnh+V+UsNuKYedsoYs0hzV5A==}
     dev: true
 
   /capture-exit/2.0.0:
@@ -11574,8 +11577,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
+  /prettier/2.8.5:
+    resolution: {integrity: sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true

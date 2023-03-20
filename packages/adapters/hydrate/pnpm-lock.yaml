@@ -12,6 +12,7 @@ packages:
 
   /@a11y-ui/core/1.0.1-rc.65:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: true

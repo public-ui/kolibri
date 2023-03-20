@@ -30,6 +30,7 @@ packages:
 
   /@a11y-ui/core/1.0.1-rc.65:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -526,7 +527,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001467
+      caniuse-lite: 1.0.30001468
       electron-to-chromium: 1.4.333
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
@@ -537,8 +538,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001467:
-    resolution: {integrity: sha512-cEdN/5e+RPikvl9AHm4uuLXxeCNq8rFsQ+lPHTfe/OtypP3WwnVVbjn+6uBV7PaFL6xUFzTh+sSCOz1rKhcO+Q==}
+  /caniuse-lite/1.0.30001468:
+    resolution: {integrity: sha512-zgAo8D5kbOyUcRAgSmgyuvBkjrGk5CGYG5TYgFdpQv+ywcyEpo1LOWoG8YmoflGnh+V+UsNuKYedsoYs0hzV5A==}
     dev: true
 
   /chalk/2.4.2:
