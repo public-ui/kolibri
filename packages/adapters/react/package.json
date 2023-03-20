@@ -46,7 +46,7 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.5.0-rc.1",
+		"@public-ui/components": "1.5.0-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -59,7 +59,7 @@
 		"unbuild": "0.8.11"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.1",
+		"@public-ui/components": "1.5.0-rc.2",
 		"react": ">=16.14.0",
 		"react-dom": ">=16.14.0"
 	},
