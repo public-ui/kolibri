@@ -5,10 +5,11 @@ import { Config } from '@stencil/core';
 import { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { sass } from '@stencil/sass';
 
-const TAGS = ['{{kebab name}}-form-login', '{{kebab name}}-form-login-wc'];
-const EXCLUDE_TAGS = [];
+const TAGS = ['{{kebab name}}-button', '{{kebab name}}-form-login'];
+const EXCLUDE_TAGS = ['{{kebab name}}-button-wc', '{{kebab name}}-form-login-wc'];
 const BUNDLES: {
 	components: string[];
 }[] = [];

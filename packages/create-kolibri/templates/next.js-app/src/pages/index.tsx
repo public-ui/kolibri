@@ -13,11 +13,12 @@ const Index = () => {
 				<link rel="stylesheet" href="assets/bpa-icons/style.css" />
 				<link rel="stylesheet" href="assets/bundes/style.css" />
 				<link rel="stylesheet" href="assets/codicons/codicon.css" />
-				<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-				<link rel="stylesheet" href="assets/kreon/style.css" />
-				<link rel="stylesheet" href="assets/roboto/roboto.css" />
 				<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 				<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+				<link rel="stylesheet" href="assets/kreon/style.css" />
+				<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+				<link rel="stylesheet" href="assets/roboto/roboto.css" />
+				<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
 				<meta name="robots" content="noindex" />
 				<meta name="kolibri" content="dev-mode=true" />
 			</Head>
@@ -35,22 +36,22 @@ const Index = () => {
 				</header>
 				<main className="grid md:grid-cols-2 gap-6 p-12">
 					<KolAlert _type="success" _heading="Dokumentation" _variant="card" _level={2}>
-						<KolLink _href="https://public-ui.github.io/" _fill _target="_blank">
+						<KolLink _href="https://public-ui.github.io/" _label="" _target="_blank">
 							<KolIcon _ariaLabel="" _icon="fa-sharp fa-solid fa-book" /> Dokumentation öffnen
 						</KolLink>
 					</KolAlert>
 					<KolAlert _type="info" _heading="Theming" _variant="card" _level={2}>
-						<KolLink _href="https://public-ui.github.io/?path=/docs/designer--page" _fill _target="_blank">
+						<KolLink _href="https://public-ui.github.io/docs/concepts/styling/designer" _label="" _target="_blank">
 							<KolIcon _ariaLabel="" _icon="fa-solid fa-palette" /> KoliBri-Designer öffnen
 						</KolLink>
 					</KolAlert>
 					<KolAlert _type="warning" _heading="Mitwirken" _variant="card" _level={2}>
-						<KolLink _href="https://github.com/public-ui/kolibri/" _fill _target="_blank">
-							<KolIcon _ariaLabel="" _icon="fa-brands fa-github" /> Github öffnen
+						<KolLink _href="https://github.com/public-ui/kolibri/" _label="" _target="_blank">
+							<KolIcon _ariaLabel="" _icon="fa-brands fa-github" /> GitHub öffnen
 						</KolLink>
 					</KolAlert>
 					<KolAlert _type="error" _heading="Kontakt" _variant="card" _level={2}>
-						<KolLink _href="mailto:kolibri@itzbund.de" _fill _target="_blank">
+						<KolLink _href="mailto:kolibri@itzbund.de" _label="" _target="_blank">
 							<KolIcon _ariaLabel="" _icon="fa-solid fa-envelope" /> E-Mail schreiben
 						</KolLink>
 					</KolAlert>

@@ -15,7 +15,7 @@
 		"target": "es2015",
 		"typeRoots": ["node_modules/@types"],
 		"lib": ["es2018", "dom"],
-		"types": ["mocha", "node"],
+		"types": ["@public-ui/components", "mocha", "node"],
 		"forceConsistentCasingInFileNames": true,
 		"removeComments": false,
 		"strict": false
