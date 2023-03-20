@@ -18,7 +18,7 @@ Folgende Icon-Fonts werden _`out-of-the-box`_ unterstützt.
  */
 
 @Tag("kol-icon")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.1")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.2")
 @JsModule("@public-ui/components/dist/components/kol-icon")
 public class KolIcon extends Component {
 	/**
