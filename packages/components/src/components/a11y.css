@@ -33,6 +33,7 @@
  */
 *[role='button'],
 button:not([role='link']),
+/* input[type='checkbox'], */
 input[type='color'],
 input[type='date'],
 input[type='datetime-local'],
@@ -41,6 +42,8 @@ input[type='file'],
 input[type='month'],
 input[type='number'],
 input[type='password'],
+/* input[type='radio'], */
+/* input[type='range'], */
 input[type='search'],
 input[type='tel'],
 input[type='text'],
