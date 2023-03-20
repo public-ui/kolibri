@@ -46,7 +46,7 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.5.0-rc.1",
+		"@public-ui/components": "1.5.0-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -56,7 +56,7 @@
 		"unbuild": "1.1.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.1",
+		"@public-ui/components": "1.5.0-rc.2",
 		"solid-js": ">=1.2.0"
 	},
 	"sideEffects": false,
