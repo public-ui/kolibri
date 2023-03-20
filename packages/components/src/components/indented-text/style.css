@@ -1,6 +1,2 @@
 @import '../style.css';
 @import '../host-display-block.css';
-
-:host > div {
-	border-left-style: solid;
-}

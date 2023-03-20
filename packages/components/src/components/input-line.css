@@ -66,14 +66,6 @@ textarea {
 textarea {
 	display: block;
 }
-select option {
-	padding: 0.5em;
-	border-radius: 0.25em;
-	cursor: pointer;
-}
-select option:disabled {
-	cursor: not-allowed;
-}
 option:not(:disabled):is(:active, :checked, :focus, :hover) {
 	color: white;
 }
