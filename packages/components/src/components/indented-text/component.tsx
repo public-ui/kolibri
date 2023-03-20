@@ -29,9 +29,9 @@ export class KolIndentedText implements Generic.Element.ComponentApi<RequiredPro
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<div>
+				<blockquote>
 					<slot />
-				</div>
+				</blockquote>
 			</Host>
 		);
 	}

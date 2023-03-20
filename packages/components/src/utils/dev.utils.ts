@@ -172,7 +172,7 @@ export const renderDevAdvice = (): void => {
 You are using the KoliBri component library. If you have any suggestions for improvement or find a problem, please contact us:
 
 Ticket: https://github.com/public-ui/kolibri/issues/new/choose (for privacy reasons, please use email)
-Email: kolibri@itzbund.des
+Email: kolibri@itzbund.de
 `
 		);
 	}

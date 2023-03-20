@@ -14,7 +14,7 @@ label {
 
 input {
 	width: 100%;
-	border-color: var(--kolibri-border-color);
+
 	border-width: 2px;
 	border-style: solid;
 	border-radius: 5px;
@@ -22,13 +22,9 @@ input {
 	font-size: 16px;
 }
 input:focus {
-	outline-color: var(--kolibri-color-primary);
 	outline-offset: 2px;
 	outline-style: solid;
 	outline-width: 3px;
-}
-input:hover {
-	border-color: var(--kolibri-color-primary);
 }
 
 kol-alert {
@@ -72,27 +68,19 @@ fieldset div input[type='radio'] {
 	appearance: none;
 	transition: 0.5s;
 	border-radius: 100%;
-	height: calc(6 * var(--kolibri-spacing));
-	min-width: calc(6 * var(--kolibri-spacing));
-	width: calc(6 * var(--kolibri-spacing));
 }
 fieldset div input[type='radio']:before {
 	content: '';
 	cursor: pointer;
-	left: calc(1.5 * var(--kolibri-spacing) - 2px);
-	top: calc(1.5 * var(--kolibri-spacing) - 2px);
+
 	position: relative;
 	border-radius: 100%;
 	display: block;
-	height: calc(3 * var(--kolibri-spacing));
-	width: calc(3 * var(--kolibri-spacing));
 }
 fieldset div input[type='radio']:checked:before {
 	box-shadow: 0 0 0.1rem black;
-	background-color: var(--kolibri-color-primary);
 }
 fieldset div input[type='radio']:disabled {
-	background-color: var(--kolibri-color-disabled);
 	border-color: #999;
 	cursor: not-allowed;
 }

@@ -2,43 +2,24 @@
 
 kol-input {
 	display: grid;
-	gap: calc(2 * var(--kolibri-spacing));
 }
+
 input,
+option,
 select,
 textarea {
-	background-color: white;
-	border-color: var(--kolibri-border-color);
-	border-radius: var(--kolibri-border-radius);
-	border-style: solid;
-	border-width: var(--kolibri-border-width);
-	font-size: 1em;
-	font-family: var(--kolibri-font-family-sans);
+	display: block;
 	line-height: 2.5em;
-	overflow: hidden;
 	width: 100%;
 }
+
 input,
 select:not([multiple]) {
 	height: 2.75em;
 }
-input::placeholder {
-	color: var(--kolibri-color-normal);
-}
-input:hover {
-	border-color: var(--kolibri-color-primary);
-}
-input:disabled,
-select:disabled,
-textarea:disabled,
-input:not([type='color']):read-only,
-/* select:read-only, */
-textarea:read-only {
-	cursor: not-allowed;
-}
+
 .required label > span::after {
 	content: '*';
-	padding-left: var(--kolibri-spacing);
 }
 .icons {
 	display: flex;
@@ -47,49 +28,25 @@ textarea:read-only {
 }
 .icons > kol-icon {
 	display: grid;
-	height: 44px;
-	padding: 0 0.75em;
+	height: var(--a11y-min-size);
 	place-items: center;
 }
 .icon-left input,
 .icon-left select {
-	padding-left: 2em;
+	padding-left: var(--a11y-min-size);
 }
 kol-button-wc {
 	position: relative;
 	float: right;
 	z-index: 1000;
-	margin-top: -44px;
-}
-kol-button-wc button {
-	background-color: transparent;
-	display: inline-block;
-	min-height: 44px;
-	min-width: 44px;
+	margin-top: calc(-1 * var(--a11y-min-size));
 }
 .icon-right kol-button-wc {
-	margin-right: 44px;
+	margin-right: var(--a11y-min-size);
 }
 .disabled {
 	opacity: 0.5;
 }
-select[multiple],
-textarea {
-	overflow: auto;
-}
-textarea {
-	display: block;
-}
-select option {
-	margin: var(--kolibri-spacing) 0;
-	padding: 0.5em;
-	border-radius: 0.25em;
-	cursor: pointer;
-}
-select option:disabled {
-	cursor: not-allowed;
-}
 option:not(:disabled):is(:active, :checked, :focus, :hover) {
-	background-color: var(--kolibri-color-primary);
 	color: white;
 }
