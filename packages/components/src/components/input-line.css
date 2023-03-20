@@ -28,22 +28,21 @@ select:not([multiple]) {
 }
 .icons > kol-icon {
 	display: grid;
-	height: 44px;
-	padding: 0 0.75em;
+	height: var(--a11y-min-size);
 	place-items: center;
 }
 .icon-left input,
 .icon-left select {
-	padding-left: 2em;
+	padding-left: var(--a11y-min-size);
 }
 kol-button-wc {
 	position: relative;
 	float: right;
 	z-index: 1000;
-	margin-top: -44px;
+	margin-top: calc(-1 * var(--a11y-min-size));
 }
 .icon-right kol-button-wc {
-	margin-right: 44px;
+	margin-right: var(--a11y-min-size);
 }
 .disabled {
 	opacity: 0.5;

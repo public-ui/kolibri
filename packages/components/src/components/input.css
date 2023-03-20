@@ -22,8 +22,7 @@ select[multiple] option,
 select:not([multiple]),
 textarea {
 	font-size: 1rem;
-	line-height: 1.5em;
-	padding: 0.25em 0.5em;
+	line-height: var(--a11y-min-size);
 }
 
 :is(button, input, option, select, textarea):disabled,

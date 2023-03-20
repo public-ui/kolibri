@@ -2,6 +2,13 @@
  * This file contains all rules for accessibility.
  */
 
+:host {
+	/**
+	 * Minimum size of interactive elements.
+	 */
+	--a11y-min-size: 44px;
+}
+
 * {
 	/**
 	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
@@ -40,8 +47,9 @@ input[type='text'],
 input[type='time'],
 input[type='url'],
 input[type='week'],
+option,
 select,
 textarea {
-	min-height: 44px;
-	min-width: 44px;
+	min-height: var(--a11y-min-size);
+	min-width: var(--a11y-min-size);
 }
