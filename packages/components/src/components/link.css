@@ -1,14 +1,17 @@
 @import './style.css';
 
-a,
-button {
+:host {
+	display: inline-flex;
+}
+
+:is(a, button) {
+	align-items: baseline;
 	text-align: left;
 	text-decoration-line: underline;
 }
 
 a {
 	display: inline-flex;
-	gap: var(--kolibri-spacing);
 	place-items: center;
 }
 
@@ -30,7 +33,10 @@ a {
 }
 .skip:focus {
 	background-color: white;
-	box-shadow: 0 0 calc(2 * var(--kolibri-spacing)) calc(2 * var(--kolibri-spacing)) white;
 	left: unset;
 	position: unset;
+}
+
+kol-icon.external-link-icon {
+	display: inline-flex;
 }

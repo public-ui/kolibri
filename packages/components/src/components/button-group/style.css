@@ -3,5 +3,4 @@
 :host > kol-button-group-wc {
 	display: inline-flex;
 	flex-wrap: wrap;
-	gap: calc(2 * var(--kolibri-spacing));
 }

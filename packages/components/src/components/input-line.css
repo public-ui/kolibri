@@ -2,18 +2,13 @@
 
 kol-input {
 	display: grid;
-	gap: calc(2 * var(--kolibri-spacing));
 }
 input,
 select,
 textarea {
 	background-color: white;
-	border-color: var(--kolibri-border-color);
-	border-radius: var(--kolibri-border-radius);
 	border-style: solid;
-	border-width: var(--kolibri-border-width);
 	font-size: 1em;
-	font-family: var(--kolibri-font-family-sans);
 	line-height: 2.5em;
 	overflow: hidden;
 	width: 100%;
@@ -21,12 +16,6 @@ textarea {
 input,
 select:not([multiple]) {
 	height: 2.75em;
-}
-input::placeholder {
-	color: var(--kolibri-color-normal);
-}
-input:hover {
-	border-color: var(--kolibri-color-primary);
 }
 input:disabled,
 select:disabled,
@@ -38,7 +27,6 @@ textarea:read-only {
 }
 .required label > span::after {
 	content: '*';
-	padding-left: var(--kolibri-spacing);
 }
 .icons {
 	display: flex;
@@ -64,8 +52,6 @@ kol-button-wc {
 kol-button-wc button {
 	background-color: transparent;
 	display: inline-block;
-	min-height: 44px;
-	min-width: 44px;
 }
 .icon-right kol-button-wc {
 	margin-right: 44px;
@@ -81,7 +67,6 @@ textarea {
 	display: block;
 }
 select option {
-	margin: var(--kolibri-spacing) 0;
 	padding: 0.5em;
 	border-radius: 0.25em;
 	cursor: pointer;
@@ -90,6 +75,5 @@ select option:disabled {
 	cursor: not-allowed;
 }
 option:not(:disabled):is(:active, :checked, :focus, :hover) {
-	background-color: var(--kolibri-color-primary);
 	color: white;
 }

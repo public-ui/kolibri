@@ -1,12 +1,5 @@
 @import '../style.css';
-
-:host {
-	/**
-	 * The max-width is needed to prevent the table from overflowing the
-	 * parent node, if the table is wider than the parent node.
-	 */
-	max-width: 100%;
-}
+@import '../host-display-block.css';
 
 :host > div {
 	overflow-x: auto;
@@ -43,6 +36,5 @@ div.pagination > div:last-child {
 
 	div.pagination kol-pagination {
 		display: flex;
-		gap: calc(4 * var(--kolibri-spacing));
 	}
 }

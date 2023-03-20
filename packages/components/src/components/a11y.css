@@ -1,4 +1,8 @@
-:host * {
+/*
+ * This file contains all rules for accessibility.
+ */
+
+* {
 	/**
 	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 	 */
@@ -15,4 +19,29 @@
 	 * Word spacing is required for all texts.
 	 */
 	word-spacing: inherit;
+}
+
+/**
+ * All interactive elements should have a minimum size of 44px.
+ */
+*[role='button'],
+button:not([role='link']),
+input[type='color'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='email'],
+input[type='file'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'],
+input[type='week'],
+select,
+textarea {
+	min-height: 44px;
+	min-width: 44px;
 }

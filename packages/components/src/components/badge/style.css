@@ -1,18 +1,13 @@
 @import '../style.css';
 
 :host > span {
-	border-radius: var(--kolibri-border-radius);
 	display: inline-flex;
-	line-height: calc(1rem + var(--kolibri-spacing));
+
 	place-items: center;
-}
-:host > span kol-span-wc {
-	padding: var(--kolibri-spacing) calc(2 * var(--kolibri-spacing));
 }
 :host > span.smart-button > kol-span-wc {
 	border-right: 1px solid rgba(0, 0, 0, 0.25);
 }
 :host > span > kol-button-wc button {
-	border-radius: 0 var(--kolibri-spacing) var(--kolibri-spacing) 0;
 	color: inherit;
 }

@@ -24,13 +24,13 @@ input[type='text'],
 input[type='time'],
 input[type='url'],
 input[type='week'],
+option,
 select,
 textarea {
 	background-color: white;
 	display: block;
 	font-size: 1rem;
 	line-height: 1.5em;
-	min-height: 44px;
 	padding: 0.5em 0.75em;
 }
 
@@ -46,17 +46,7 @@ textarea {
 input,
 select,
 textarea {
-	border-color: var(--kolibri-border-color);
 	border-style: solid;
-	border-width: calc(var(--kolibri-spacing) / 2);
-}
-
-.error :is(input, select, textarea) {
-	border-color: var(--kolibri-border-error);
-}
-
-:is(input, select, textarea):is(:focus, :hover) {
-	border-color: var(--kolibri-color-text);
 }
 
 input:not([type='checkbox']),

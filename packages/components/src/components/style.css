@@ -1,10 +1,11 @@
-@import './tokens.css';
 @import './a11y.css';
-@import './button-and-link.css';
 
 :host {
-	font-family: var(--kolibri-font-family);
-	font-size: var(--kolibri-font-size);
+	/**
+	 * The max-width is needed to prevent the table from overflowing the
+	 * parent node, if the table is wider than the parent node.
+	 */
+	max-width: 100%;
 }
 
 * {
@@ -16,27 +17,26 @@
 
 kol-span-wc {
 	display: grid;
-	gap: var(--kolibri-spacing);
 	place-items: center;
 }
 kol-span-wc > span {
+	align-items: baseline;
 	display: flex;
-	gap: var(--kolibri-spacing);
-	place-items: center;
+	justify-items: center;
 }
 kol-span-wc kol-icon {
 	display: contents;
-	padding: 0 var(--kolibri-spacing);
 }
 
 a,
 button,
 input,
+option,
 select,
 textarea {
 	appearance: none;
 	cursor: pointer;
-	font-family: var(--kolibri-font-family);
+	font-family: inherit;
 }
 
 .icon-only > kol-span-wc > span > span {

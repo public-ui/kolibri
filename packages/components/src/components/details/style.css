@@ -3,19 +3,16 @@
 
 details {
 	display: grid;
-	width: 100%;
 }
 details > summary {
-	border-radius: var(--kolibri-spacing);
 	cursor: pointer;
 	display: flex;
-	gap: var(--kolibri-spacing);
 	place-items: center;
 }
 details > summary > span {
 	border-bottom-color: grey;
 	border-bottom-style: solid;
-	border-bottom-width: calc(var(--kolibri-spacing) / 2);
+	border-bottom-width: 1px;
 }
 details[open] > summary > span,
 details > summary:focus > span,
@@ -23,5 +20,5 @@ details > summary:hover > span {
 	border-bottom-color: black;
 }
 details > kol-indented-text {
-	margin: 0.25em 0px 0px 0.35em;
+	margin: 0.25em 0px 0px 0.5em;
 }
