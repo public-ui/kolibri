@@ -1,5 +1,12 @@
 @import './style.css';
-@import './host-display-block.css';
+
+:host {
+	display: inline-block;
+}
+
+:is(a, button) {
+	width: 100%;
+}
 
 a {
 	text-decoration-line: none;

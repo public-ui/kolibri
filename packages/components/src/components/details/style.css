@@ -12,7 +12,6 @@ details > summary {
 details > summary > span {
 	border-bottom-color: grey;
 	border-bottom-style: solid;
-	border-bottom-width: 1px;
 }
 details[open] > summary > span,
 details > summary:focus > span,

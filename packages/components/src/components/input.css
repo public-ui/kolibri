@@ -1,10 +1,7 @@
 @import './label.css';
 @import './host-display-block.css';
 
-.kol-disabled {
-	opacity: 0.5;
-}
-
+/* input[type='checkbox'], */
 input[type='color'],
 input[type='date'],
 input[type='datetime-local'],
@@ -13,38 +10,20 @@ input[type='file'],
 input[type='month'],
 input[type='number'],
 input[type='password'],
+/* input[type='radio'], */
+/* input[type='range'], */
 input[type='search'],
 input[type='tel'],
 input[type='text'],
 input[type='time'],
 input[type='url'],
 input[type='week'],
-option,
-select,
+select[multiple] option,
+select:not([multiple]),
 textarea {
-	background-color: white;
-	display: block;
 	font-size: 1rem;
 	line-height: 1.5em;
-	padding: 0.5em 0.75em;
-}
-
-input[type='color'] {
-	height: 2.5em;
 	padding: 0.25em 0.5em;
-}
-
-textarea {
-	padding: 0.5em;
-}
-
-input:not([type='checkbox']),
-option,
-select,
-textarea {
-	font-size: inherit;
-	letter-spacing: inherit;
-	word-spacing: inherit;
 }
 
 :is(button, input, option, select, textarea):disabled,

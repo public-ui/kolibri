@@ -3,28 +3,21 @@
 kol-input {
 	display: grid;
 }
+
 input,
+option,
 select,
 textarea {
-	background-color: white;
-	border-style: solid;
-	font-size: 1em;
+	display: block;
 	line-height: 2.5em;
-	overflow: hidden;
 	width: 100%;
 }
+
 input,
 select:not([multiple]) {
 	height: 2.75em;
 }
-input:disabled,
-select:disabled,
-textarea:disabled,
-input:not([type='color']):read-only,
-/* select:read-only, */
-textarea:read-only {
-	cursor: not-allowed;
-}
+
 .required label > span::after {
 	content: '*';
 }
@@ -49,22 +42,11 @@ kol-button-wc {
 	z-index: 1000;
 	margin-top: -44px;
 }
-kol-button-wc button {
-	background-color: transparent;
-	display: inline-block;
-}
 .icon-right kol-button-wc {
 	margin-right: 44px;
 }
 .disabled {
 	opacity: 0.5;
-}
-select[multiple],
-textarea {
-	overflow: auto;
-}
-textarea {
-	display: block;
 }
 option:not(:disabled):is(:active, :checked, :focus, :hover) {
 	color: white;

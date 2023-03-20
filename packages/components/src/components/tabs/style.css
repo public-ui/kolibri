@@ -3,14 +3,12 @@
 
 kol-button-group-wc {
 	display: inline-flex;
-
 	flex-wrap: wrap;
 }
 kol-button-group-wc button {
 	border: 0;
 	border-bottom-color: transparent;
 	border-bottom-style: solid;
-	border-bottom-width: 1px;
 	display: block;
 }
 

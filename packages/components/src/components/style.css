@@ -25,7 +25,7 @@ kol-span-wc > span {
 	justify-items: center;
 }
 kol-span-wc kol-icon {
-	display: contents;
+	display: inline-flex;
 }
 
 a,
