@@ -15,7 +15,7 @@ Der **Fuß-Bereich** wird optional durch ein Attribut aktiviert und stellt dann 
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.1")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.2")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**
