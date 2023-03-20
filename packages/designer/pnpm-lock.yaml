@@ -6,9 +6,9 @@ specifiers:
   '@leanup/stack-webpack': 1.3.43
   '@playwright/test': 1.31.2
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.5.0-rc.1
-  '@public-ui/solid': 1.5.0-rc.1
-  '@public-ui/themes': 1.5.0-rc.1
+  '@public-ui/components': 1.5.0-rc.2
+  '@public-ui/solid': 1.5.0-rc.2
+  '@public-ui/themes': 1.5.0-rc.2
   '@types/prettier': 2.7.2
   '@unocss/preset-mini': 0.50.4
   '@unocss/webpack': 0.50.4
@@ -30,10 +30,10 @@ specifiers:
   world_countries_lists: 2.6.0
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_vzilghpal2qlh4wpbgy6vda4qi
-  '@public-ui/components': 1.5.0-rc.1
-  '@public-ui/solid': 1.5.0-rc.1_3pxgjqifnnh4x4j32pqfoxa3wi
-  '@public-ui/themes': 1.5.0-rc.1
+  '@public-oss/kolibri-themes': 0.0.3_oxuqdcehghhdpunbfehvyj3ome
+  '@public-ui/components': 1.5.0-rc.2
+  '@public-ui/solid': 1.5.0-rc.2_3toy3jwuioo5qxurf7mk67nosa
+  '@public-ui/themes': 1.5.0-rc.2
   monaco-editor: 0.36.1
   monaco-editor-webpack-plugin: 7.0.1_jlcholbkjtct7dtrbaaecgrrn4
   register-service-worker: 1.7.2
@@ -64,12 +64,14 @@ packages:
 
   /@a11y-ui/core/1.0.1-rc.6:
     resolution: {integrity: sha512-CQ7JYWchDYA0dtRfSI14gV+uEEFfDUnWFzJdqF4qaIZBrENzjcF2JHKL7ksqvSuPbpMjBMRoybZ7M5YjlulvWw==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: false
 
   /@a11y-ui/core/1.0.1-rc.65:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: false
@@ -2120,17 +2122,17 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_vzilghpal2qlh4wpbgy6vda4qi:
+  /@public-oss/kolibri-themes/0.0.3_oxuqdcehghhdpunbfehvyj3ome:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.1
+      '@public-ui/components': 1.5.0-rc.2
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.5.0-rc.1:
-    resolution: {integrity: sha512-wgq3rLozwqafDYlrfmPTTOTuapGCmML7PqsovmuLM3VqDgQY3efoYbKgc/4GVLBLbFFDwq4Ff8t9KQRogYI1gw==}
+  /@public-ui/components/1.5.0-rc.2:
+    resolution: {integrity: sha512-zs28pSjYE+DlxPwaI8h/RWHTaek4amjIFqZjcfF/4Qz61JOKYciZNyc995KEWzdak+7+l90RI3EZbYVhrqSHAw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       '@floating-ui/dom': 1.2.4
@@ -2150,20 +2152,20 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/solid/1.5.0-rc.1_3pxgjqifnnh4x4j32pqfoxa3wi:
-    resolution: {integrity: sha512-j1XLux9iPF4wr/8TfHJWMRKYKCcopWt66Bp9fxxtQv3EkWPRYuOAWOpH0kUUl7z7dBCgj7jRbbLTl7QXajAwjg==}
+  /@public-ui/solid/1.5.0-rc.2_3toy3jwuioo5qxurf7mk67nosa:
+    resolution: {integrity: sha512-WjkTuY74Si8SdIdW1klUa3488cdkNl9oxng7ump99Y++9w5GieY8dTNACclfJwzi0PyBhsIUMEaBDRZuQWqJ4w==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.1
+      '@public-ui/components': 1.5.0-rc.2
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.1
+      '@public-ui/components': 1.5.0-rc.2
       solid-js: 1.6.14
     dev: false
 
-  /@public-ui/themes/1.5.0-rc.1:
-    resolution: {integrity: sha512-SSyJwzI0w7prEnDLWATkHxU0SSvphGzG24DiFKHInYwj3VEnaZDautMsQS+0PEtPAIbE9xX8G6e+DIBHh8rE8g==}
+  /@public-ui/themes/1.5.0-rc.2:
+    resolution: {integrity: sha512-k3uocbLqS9wTmBzgcokSFPek4IrPHvdh0kEPoLc+pcsd1D2ACKUufk/racz6Kt6NViQkDMxZDwAot3EQHw/tYg==}
     dependencies:
-      '@public-ui/components': 1.5.0-rc.1
+      '@public-ui/components': 1.5.0-rc.2
     dev: false
 
   /@rollup/pluginutils/5.0.2:

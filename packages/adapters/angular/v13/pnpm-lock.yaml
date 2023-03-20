@@ -4,7 +4,7 @@ specifiers:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12
   '@angular/core': 13.3.12
-  '@public-ui/components': 1.5.0-rc.1
+  '@public-ui/components': 1.5.0-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.6
@@ -20,7 +20,7 @@ devDependencies:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12_ykntn3hhgp6n6n66y2ne2wuksi
   '@angular/core': 13.3.12_rxjs@7.6.0+zone.js@0.11.8
-  '@public-ui/components': 1.5.0-rc.1
+  '@public-ui/components': 1.5.0-rc.2
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.15.3
@@ -36,6 +36,7 @@ packages:
 
   /@a11y-ui/core/1.0.1-rc.65:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
+    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -341,8 +342,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.5.0-rc.1:
-    resolution: {integrity: sha512-wgq3rLozwqafDYlrfmPTTOTuapGCmML7PqsovmuLM3VqDgQY3efoYbKgc/4GVLBLbFFDwq4Ff8t9KQRogYI1gw==}
+  /@public-ui/components/1.5.0-rc.2:
+    resolution: {integrity: sha512-zs28pSjYE+DlxPwaI8h/RWHTaek4amjIFqZjcfF/4Qz61JOKYciZNyc995KEWzdak+7+l90RI3EZbYVhrqSHAw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       '@floating-ui/dom': 1.2.4
