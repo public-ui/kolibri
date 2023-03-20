@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@a11y-ui/core': 1.0.2
-  '@floating-ui/dom': 1.2.4
+  '@floating-ui/dom': 1.2.5
   '@stencil/angular-output-target': 0.5.0
   '@stencil/core': 3.2.0
   '@stencil/postcss': 2.1.0
@@ -24,19 +24,19 @@ specifiers:
   eslint: 8.36.0
   eslint-config-prettier: 8.7.0
   eslint-plugin-html: 7.1.0
-  eslint-plugin-jsdoc: 40.0.3
+  eslint-plugin-jsdoc: 40.1.0
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.7.1
   eslint-plugin-no-loops: 0.3.0
   eslint-plugin-react: 7.32.2
-  i18next: 22.4.11
+  i18next: 22.4.12
   jest: 26.6.3
   jest-cli: 26.6.3
   lighthouse: 10.0.2
   mathjs: 11.7.0
   postcss: 8.4.21
   postcss-sorting: 8.0.2
-  prettier: 2.8.4
+  prettier: 2.8.5
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
@@ -51,8 +51,8 @@ specifiers:
 
 dependencies:
   '@a11y-ui/core': 1.0.2
-  '@floating-ui/dom': 1.2.4
-  i18next: 22.4.11
+  '@floating-ui/dom': 1.2.5
+  i18next: 22.4.12
 
 devDependencies:
   '@stencil/angular-output-target': 0.5.0_@stencil+core@3.2.0
@@ -76,7 +76,7 @@ devDependencies:
   eslint: 8.36.0
   eslint-config-prettier: 8.7.0_eslint@8.36.0
   eslint-plugin-html: 7.1.0
-  eslint-plugin-jsdoc: 40.0.3_eslint@8.36.0
+  eslint-plugin-jsdoc: 40.1.0_eslint@8.36.0
   eslint-plugin-json: 3.1.0
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.36.0
   eslint-plugin-no-loops: 0.3.0_eslint@8.36.0
@@ -87,7 +87,7 @@ devDependencies:
   mathjs: 11.7.0
   postcss: 8.4.21
   postcss-sorting: 8.0.2_postcss@8.4.21
-  prettier: 2.8.4
+  prettier: 2.8.5
   query-selector-all-shadow-root: 0.0.3
   query-selector-shadow-root: 0.0.3
   rgba-convert: 0.3.0
@@ -106,7 +106,6 @@ packages:
     resolution: {integrity: sha512-RWGduw5+d/QgNfJogkuJPWvGxmWfa1qFleoAaBlt6UIPOaqP1eXY5ch06s+5yWfG93WYY2Otm3XQBV0RAGWGlA==}
     dependencies:
       adopted-style-sheets: 1.0.2
-      loglevel: 1.8.1
     dev: false
 
   /@ampproject/remapping/2.2.0:
@@ -1355,8 +1354,8 @@ packages:
     resolution: {integrity: sha512-SQOeVbMwb1di+mVWWJLpsUTToKfqVNioXys011beCAhyOIFtS+GQoW4EQSneuxzmQKddExDwQ+X0hLl4lJJaSQ==}
     dev: false
 
-  /@floating-ui/dom/1.2.4:
-    resolution: {integrity: sha512-4+k+BLhtWj+peCU60gp0+rHeR8+Ohqx6kjJf/lHMnJ8JD5Qj6jytcq1+SZzRwD7rvHKRhR7TDiWWddrNrfwQLg==}
+  /@floating-ui/dom/1.2.5:
+    resolution: {integrity: sha512-+sAUfpQ3Frz+VCbPCqj+cZzvEESy3fjSeT/pDWkYCWOBXYNNKZfuVsHuv8/JO2zze8+Eb/Q7a6hZVgzS81fLbQ==}
     dependencies:
       '@floating-ui/core': 1.2.4
     dev: false
@@ -1885,12 +1884,12 @@ packages:
   /@types/eslint-scope/3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
-      '@types/eslint': 8.21.2
+      '@types/eslint': 8.21.3
       '@types/estree': 0.0.51
     dev: true
 
-  /@types/eslint/8.21.2:
-    resolution: {integrity: sha512-EMpxUyystd3uZVByZap1DACsMXvb82ypQnGn89e1Y0a+LYu3JJscUd/gqhRsVFDkaD2MIiWo0MT8EfXr3DGRKw==}
+  /@types/eslint/8.21.3:
+    resolution: {integrity: sha512-fa7GkppZVEByMWGbTtE5MbmXWJTVbrjjaS8K6uQj+XtuuUv1fsuPAxhygfqLmsb/Ufb3CV8deFCpiMfAgi00Sw==}
     dependencies:
       '@types/estree': 0.0.51
       '@types/json-schema': 7.0.11
@@ -2481,7 +2480,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001467
+      caniuse-lite: 1.0.30001468
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2497,7 +2496,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001467
+      caniuse-lite: 1.0.30001468
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2710,7 +2709,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001467
+      caniuse-lite: 1.0.30001468
       electron-to-chromium: 1.4.333
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
@@ -2783,13 +2782,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001467
+      caniuse-lite: 1.0.30001468
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite/1.0.30001467:
-    resolution: {integrity: sha512-cEdN/5e+RPikvl9AHm4uuLXxeCNq8rFsQ+lPHTfe/OtypP3WwnVVbjn+6uBV7PaFL6xUFzTh+sSCOz1rKhcO+Q==}
+  /caniuse-lite/1.0.30001468:
+    resolution: {integrity: sha512-zgAo8D5kbOyUcRAgSmgyuvBkjrGk5CGYG5TYgFdpQv+ywcyEpo1LOWoG8YmoflGnh+V+UsNuKYedsoYs0hzV5A==}
     dev: true
 
   /capture-exit/2.0.0:
@@ -3595,8 +3594,8 @@ packages:
       htmlparser2: 8.0.1
     dev: true
 
-  /eslint-plugin-jsdoc/40.0.3_eslint@8.36.0:
-    resolution: {integrity: sha512-4QXkuo4yVFJWsZIvdgFMBs6ZWVGDBZGO06kcgM060/96G8+6Fr7JZWy+Wg0I1C0+qxxfpB+aIepdE29vYxX2kA==}
+  /eslint-plugin-jsdoc/40.1.0_eslint@8.36.0:
+    resolution: {integrity: sha512-ANvrhiu62VlSorARM0hup60VQsS3hNyp0Ca7cnJDj8tpJzM7tNhBVqMVYXSuLzEmqrpwx6aAh+NAN2DdAGG5fQ==}
     engines: {node: ^14 || ^16 || ^17 || ^18 || ^19}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
@@ -4361,8 +4360,8 @@ packages:
     engines: {node: '>=8.12.0'}
     dev: true
 
-  /i18next/22.4.11:
-    resolution: {integrity: sha512-ShfTzXVMjXdF2iPiT/wbizOrssLh9Ab6VpuVROihLCAu+u25KbZiEYVgsA0W6g0SgjPa/JmGWcUEV/g6cKzEjQ==}
+  /i18next/22.4.12:
+    resolution: {integrity: sha512-2lE+vRXxQ3lGLub1CVbwgO0IfkLHmUSDVOAVdPh22CsxttMXi+35n2qgxh2wZIkKl6t/NMzPfgFPRDiFQOmiCg==}
     dependencies:
       '@babel/runtime': 7.21.0
     dev: false
@@ -6526,8 +6525,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
+  /prettier/2.8.5:
+    resolution: {integrity: sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
