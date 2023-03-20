@@ -17,7 +17,7 @@ export const getVersionHtml = (props: Props, additionalAttrs = ''): string => {
 				? ''
 				: getBadgeHtml({
 						_color: '#BEC5C9',
-						_icon: 'fa-solid fa-infinity',
+						_icon: 'codicon codicon-versions',
 						_label: `v${props._version}`,
 				  })
 		}

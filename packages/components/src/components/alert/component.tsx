@@ -34,15 +34,15 @@ const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
 const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 	switch (props.type) {
 		case 'error':
-			return <Icon ariaLabel={translate('kol-error')} icon="fa-solid fa-circle-xmark" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-error')} icon="codicon codicon-error" heading={props.heading} />;
 		case 'info':
-			return <Icon ariaLabel={translate('kol-info')} icon="fa-solid fa-circle-info" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-info')} icon="codicon codicon-info" heading={props.heading} />;
 		case 'warning':
-			return <Icon ariaLabel={translate('kol-warning')} icon="fa-solid fa-triangle-exclamation" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-warning')} icon="codicon codicon-warning" heading={props.heading} />;
 		case 'success':
-			return <Icon ariaLabel={translate('kol-success')} icon="fa-solid fa-circle-check" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-success')} icon="codicon codicon-pass" heading={props.heading} />;
 		default:
-			return <Icon ariaLabel={translate('kol-message')} icon="fa-regular fa-comment" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-message')} icon="codicon codicon-comment" heading={props.heading} />;
 	}
 };
 
@@ -107,7 +107,7 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 								class="close"
 								_icon={{
 									left: {
-										icon: 'fa-solid fa-xmark',
+										icon: 'codicon codicon-close',
 									},
 								}}
 								_iconOnly

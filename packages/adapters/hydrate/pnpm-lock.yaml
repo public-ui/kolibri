@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.0
+  '@public-ui/components': 1.5.0-rc.1
   rimraf: 4.4.0
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.0
+  '@public-ui/components': 1.5.0-rc.1
   rimraf: 4.4.0
 
 packages:
@@ -27,18 +27,18 @@ packages:
     resolution: {integrity: sha512-SQOeVbMwb1di+mVWWJLpsUTToKfqVNioXys011beCAhyOIFtS+GQoW4EQSneuxzmQKddExDwQ+X0hLl4lJJaSQ==}
     dev: true
 
-  /@floating-ui/dom/1.2.3:
-    resolution: {integrity: sha512-lK9cZUrHSJLMVAdCvDqs6Ug8gr0wmqksYiaoj/bxj2gweRQkSuhg2/V6Jswz2KiQ0RAULbqw1oQDJIMpQ5GfGA==}
+  /@floating-ui/dom/1.2.4:
+    resolution: {integrity: sha512-4+k+BLhtWj+peCU60gp0+rHeR8+Ohqx6kjJf/lHMnJ8JD5Qj6jytcq1+SZzRwD7rvHKRhR7TDiWWddrNrfwQLg==}
     dependencies:
       '@floating-ui/core': 1.2.4
     dev: true
 
-  /@public-ui/components/1.5.0-rc.0:
-    resolution: {integrity: sha512-7qhekRVFf5HCJ5hzqMmRyPRRpeL2QpxYp/q9kdYzjoihPOzPlZtyZQ0q5/DpAJGMlaueb4ZzYemQ/uY+y6O6sw==}
+  /@public-ui/components/1.5.0-rc.1:
+    resolution: {integrity: sha512-wgq3rLozwqafDYlrfmPTTOTuapGCmML7PqsovmuLM3VqDgQY3efoYbKgc/4GVLBLbFFDwq4Ff8t9KQRogYI1gw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
-      '@floating-ui/dom': 1.2.3
-      i18next: 22.4.10
+      '@floating-ui/dom': 1.2.4
+      i18next: 22.4.11
     dev: true
 
   /balanced-match/1.0.2:
@@ -65,8 +65,8 @@ packages:
       path-scurry: 1.6.1
     dev: true
 
-  /i18next/22.4.10:
-    resolution: {integrity: sha512-3EqgGK6fAJRjnGgfkNSStl4mYLCjUoJID338yVyLMj5APT67HUtWoqSayZewiiC5elzMUB1VEUwcmSCoeQcNEA==}
+  /i18next/22.4.11:
+    resolution: {integrity: sha512-ShfTzXVMjXdF2iPiT/wbizOrssLh9Ab6VpuVROihLCAu+u25KbZiEYVgsA0W6g0SgjPa/JmGWcUEV/g6cKzEjQ==}
     dependencies:
       '@babel/runtime': 7.21.0
     dev: true

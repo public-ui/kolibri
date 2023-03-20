@@ -2,19 +2,18 @@
 
 a,
 button {
+	text-align: left;
 	text-decoration-line: underline;
 }
 
 a {
 	display: inline-flex;
+	gap: var(--kolibri-spacing);
+	place-items: center;
 }
 
 :is(a, button):is(:focus, :hover) {
 	text-decoration-thickness: 0.2em;
-}
-
-kol-icon {
-	padding: 0 var(--kolibri-spacing);
 }
 
 .hidden {

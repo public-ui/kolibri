@@ -1,29 +1,16 @@
 @import '../style.css';
 
-:host {
-	display: inline-block;
-}
 :host > span {
 	border-radius: var(--kolibri-border-radius);
-	display: flex;
-	/* height: calc(1rem + 3 * var(--kolibri-spacing)); we could not limited the height */
+	display: inline-flex;
 	line-height: calc(1rem + var(--kolibri-spacing));
 	place-items: center;
 }
 :host > span kol-span-wc {
 	padding: var(--kolibri-spacing) calc(2 * var(--kolibri-spacing));
 }
-:host > span > kol-span-wc {
-	align-items: center;
-	font-style: normal;
-	gap: calc(2 * var(--kolibri-spacing));
-}
 :host > span.smart-button > kol-span-wc {
 	border-right: 1px solid rgba(0, 0, 0, 0.25);
-}
-:host > span > kol-span-wc > span {
-	display: flex;
-	gap: var(--kolibri-spacing);
 }
 :host > span > kol-button-wc button {
 	border-radius: 0 var(--kolibri-spacing) var(--kolibri-spacing) 0;

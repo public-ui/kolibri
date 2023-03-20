@@ -9,12 +9,12 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 ### Code
 
 ```html
-<kol-span _icon="fa-solid fa-house" _icon-only="false" _label="Text inside the span."></kol-span>
+<kol-span _icon="codicon codicon-home" _icon-only="false" _label="Text inside the span."></kol-span>
 ```
 
 ### Beispiel
 
-<kol-span _icon="fa-solid fa-house" _icon-only="false" _label="Text inside the span."></kol-span>
+<kol-span _icon="codicon codicon-home" _icon-only="false" _label="Text inside the span."></kol-span>
 
 <!-- Auto Generated Below -->
 
@@ -33,6 +33,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 | `--kolibri-border-color`    | Default color of the border.    |
 | `--kolibri-border-radius`   | Default radius of the border.   |
 | `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-black`     | Default color of black (dark).  |
 | `--kolibri-color-danger`    | Default color of the danger.    |
 | `--kolibri-color-disabled`  | Default color of the disabled.  |
 | `--kolibri-color-error`     | Default color of the error.     |
@@ -45,6 +46,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 | `--kolibri-color-text`      | Default color of the text.      |
 | `--kolibri-color-visited`   | Default color of the visited.   |
 | `--kolibri-color-warning`   | Default color of the warning.   |
+| `--kolibri-color-white`     | Default color of white (light). |
 | `--kolibri-font-family`     | Default font family.            |
 | `--kolibri-font-size`       | Default font size.              |
 

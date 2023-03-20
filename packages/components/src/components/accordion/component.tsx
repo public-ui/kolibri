@@ -76,7 +76,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 							// slot="expert"
 							_ariaControls={this.nonce}
 							_ariaExpanded={this.state._open}
-							_icon={this.state._open ? 'fa-solid fa-minus' : 'fa-solid fa-plus'}
+							_icon={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
 							_label={this.state._heading}
 							_on={{ onClick: this.onClick }}
 						></kol-button-wc>

@@ -141,9 +141,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						*/}
 						<slot name="expert" slot="expert" />
 					</kol-span-wc>
-					{isExternal && (
-						<kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'fa-solid fa-arrow-up-right-from-square'} />
-					)}
+					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
 				{(this.state._iconOnly === true || this.state._useCase === 'image') && (
 					<kol-tooltip

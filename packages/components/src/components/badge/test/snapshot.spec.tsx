@@ -17,7 +17,7 @@ executeTests<Props>(
 	},
 	{
 		_color: ['#000000'],
-		_icon: ['fa-solid fa-house'],
+		_icon: ['codicon codicon-home'],
 		_iconOnly: [false, true],
 		_label: ['Text'],
 	},

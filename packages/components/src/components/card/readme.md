@@ -147,6 +147,7 @@ Es ist auch möglich andere Komponenten der KoliBri-Bibliothek innerhalb der **C
 | `--kolibri-border-color`    | Default color of the border.    |
 | `--kolibri-border-radius`   | Default radius of the border.   |
 | `--kolibri-border-width`    | Default width of the border.    |
+| `--kolibri-color-black`     | Default color of black (dark).  |
 | `--kolibri-color-danger`    | Default color of the danger.    |
 | `--kolibri-color-disabled`  | Default color of the disabled.  |
 | `--kolibri-color-error`     | Default color of the error.     |
@@ -159,6 +160,7 @@ Es ist auch möglich andere Komponenten der KoliBri-Bibliothek innerhalb der **C
 | `--kolibri-color-text`      | Default color of the text.      |
 | `--kolibri-color-visited`   | Default color of the visited.   |
 | `--kolibri-color-warning`   | Default color of the warning.   |
+| `--kolibri-color-white`     | Default color of white (light). |
 | `--kolibri-font-family`     | Default font family.            |
 | `--kolibri-font-size`       | Default font size.              |
 
