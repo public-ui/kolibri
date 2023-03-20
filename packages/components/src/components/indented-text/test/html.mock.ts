@@ -8,9 +8,9 @@ export const getIndentedTextHtml = (
 ): string => {
 	return `<kol-indented-text>
 	<mock:shadow-root>
-		<div>
+		<blockquote>
 			${typeof slots.default === 'undefined' ? '<slot />' : slots.default}
-		</div>
+		</blockquote>
 	</mock:shadow-root>
 	${typeof slots.default === 'undefined' ? (Object.getOwnPropertyNames(props).length === 0 ? '' : '<slot />') : slots.default}
 </kol-indented-text>`;
