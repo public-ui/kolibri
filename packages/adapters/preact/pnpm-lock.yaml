@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.2
-  '@public-ui/react': 1.5.0-rc.2
+  '@public-ui/components': 1.5.0-rc.1
+  '@public-ui/react': 1.5.0-rc.1
   preact: '>=10.11.3'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.1.2
 
 dependencies:
-  '@public-ui/react': 1.5.0-rc.2_giomchz4lp24g7ck6te7byls6i
+  '@public-ui/react': 1.5.0-rc.1_f2e2xm4qhs46tzeas4lhkhpc2e
   preact: 10.13.1
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.2
+  '@public-ui/components': 1.5.0-rc.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -24,7 +24,6 @@ packages:
 
   /@a11y-ui/core/1.0.1-rc.65:
     resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
-    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
     dependencies:
       loglevel: 1.8.1
 
@@ -507,21 +506,21 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.2:
-    resolution: {integrity: sha512-zs28pSjYE+DlxPwaI8h/RWHTaek4amjIFqZjcfF/4Qz61JOKYciZNyc995KEWzdak+7+l90RI3EZbYVhrqSHAw==}
+  /@public-ui/components/1.5.0-rc.1:
+    resolution: {integrity: sha512-wgq3rLozwqafDYlrfmPTTOTuapGCmML7PqsovmuLM3VqDgQY3efoYbKgc/4GVLBLbFFDwq4Ff8t9KQRogYI1gw==}
     dependencies:
       '@a11y-ui/core': 1.0.1-rc.65
       '@floating-ui/dom': 1.2.4
       i18next: 22.4.11
 
-  /@public-ui/react/1.5.0-rc.2_giomchz4lp24g7ck6te7byls6i:
-    resolution: {integrity: sha512-JMe1Vh/XkSLHQDKl6AEwn1S9vXxwJn5Uc6t9Ge91TQ1gLgoApmV0kmCMpYyK8BcRp66LEKPSjdjUlGy2FuV0lw==}
+  /@public-ui/react/1.5.0-rc.1_f2e2xm4qhs46tzeas4lhkhpc2e:
+    resolution: {integrity: sha512-4akOlXuYX1zdvQ9LfNekGEahyIj36St9ZCVZJUEdI9WA4Nii9FJT7gPBmIW3/0fKFxV4c03S0ZD6YyQeY/75bg==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.2
+      '@public-ui/components': 1.5.0-rc.1
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.2
+      '@public-ui/components': 1.5.0-rc.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
