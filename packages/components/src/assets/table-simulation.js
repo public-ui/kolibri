@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable no-undef */
 const TABLE_NEW_HEADERS = {
 	horizontal: [
 		[
@@ -756,3 +761,30 @@ setTimeout(() => {
 	document.querySelector('#table-5')._data = TABLE_PAGED_DATA;
 	document.querySelector('#table-6')._data = TABLE_PAGED_DATA;
 }, 5000);
+
+const dayTable = document.querySelector('[_id="day_table"]');
+dayTable._headers = {
+	horizontal: [
+		[
+			{ label: '', colSpan: 1, rowSpan: 1, asTd: true },
+			{ label: 'Tag', key: 'day' },
+			{ label: 'Info', key: 'info' },
+		],
+	],
+	vertical: [
+		[
+			{ label: '1', key: '1' },
+			{ label: '2', key: '2' },
+			{ label: '3', key: '3' },
+			{ label: '4', key: '4' },
+			{ label: '5', key: '5' },
+		],
+	],
+};
+dayTable._data = [
+	{ day: 'Montag', info: 'Herr Mohn' },
+	{ day: 'Dienstag', info: 'Dienst' },
+	{ day: 'Mittwoch', info: 'Mitte der Woche' },
+	{ day: 'Donnerstag', info: 'Donner' },
+	{ day: 'Freitag', info: 'frei' },
+];
