@@ -33,6 +33,7 @@ import { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/co
 import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 import { KoliBriProgressType } from "./types/progress";
+import { KoliBriQuoteVariant } from "./components/quote/types";
 import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
@@ -65,6 +66,7 @@ export { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/co
 export { PaginationHasButton } from "./components/pagination/component";
 export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 export { KoliBriProgressType } from "./types/progress";
+export { KoliBriQuoteVariant } from "./components/quote/types";
 export { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 export { CSSResize } from "./components/textarea/types";
@@ -477,7 +479,7 @@ export namespace Components {
          */
         "_icon": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
@@ -1898,6 +1900,24 @@ export namespace Components {
          */
         "_value": number;
     }
+    interface KolQuote {
+        /**
+          * The caption of the quote.
+         */
+        "_caption"?: string;
+        /**
+          * The href is a URL that designates a source document or message for the information quoted.
+         */
+        "_href": string;
+        /**
+          * The text of the quote.
+         */
+        "_quote": string;
+        /**
+          * The variant of the quote.
+         */
+        "_variant"?: KoliBriQuoteVariant;
+    }
     interface KolSelect {
         /**
           * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
@@ -2479,6 +2499,12 @@ declare global {
         prototype: HTMLKolProgressElement;
         new (): HTMLKolProgressElement;
     };
+    interface HTMLKolQuoteElement extends Components.KolQuote, HTMLStencilElement {
+    }
+    var HTMLKolQuoteElement: {
+        prototype: HTMLKolQuoteElement;
+        new (): HTMLKolQuoteElement;
+    };
     interface HTMLKolSelectElement extends Components.KolSelect, HTMLStencilElement {
     }
     var HTMLKolSelectElement: {
@@ -2595,6 +2621,7 @@ declare global {
         "kol-nav": HTMLKolNavElement;
         "kol-pagination": HTMLKolPaginationElement;
         "kol-progress": HTMLKolProgressElement;
+        "kol-quote": HTMLKolQuoteElement;
         "kol-select": HTMLKolSelectElement;
         "kol-skip-nav": HTMLKolSkipNavElement;
         "kol-span": HTMLKolSpanElement;
@@ -3017,7 +3044,7 @@ declare namespace LocalJSX {
          */
         "_icon": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
@@ -4438,6 +4465,24 @@ declare namespace LocalJSX {
          */
         "_value": number;
     }
+    interface KolQuote {
+        /**
+          * The caption of the quote.
+         */
+        "_caption"?: string;
+        /**
+          * The href is a URL that designates a source document or message for the information quoted.
+         */
+        "_href": string;
+        /**
+          * The text of the quote.
+         */
+        "_quote": string;
+        /**
+          * The variant of the quote.
+         */
+        "_variant"?: KoliBriQuoteVariant;
+    }
     interface KolSelect {
         /**
           * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
@@ -4791,6 +4836,7 @@ declare namespace LocalJSX {
         "kol-nav": KolNav;
         "kol-pagination": KolPagination;
         "kol-progress": KolProgress;
+        "kol-quote": KolQuote;
         "kol-select": KolSelect;
         "kol-skip-nav": KolSkipNav;
         "kol-span": KolSpan;
@@ -4864,6 +4910,7 @@ declare module "@stencil/core" {
             "kol-nav": LocalJSX.KolNav & JSXBase.HTMLAttributes<HTMLKolNavElement>;
             "kol-pagination": LocalJSX.KolPagination & JSXBase.HTMLAttributes<HTMLKolPaginationElement>;
             "kol-progress": LocalJSX.KolProgress & JSXBase.HTMLAttributes<HTMLKolProgressElement>;
+            "kol-quote": LocalJSX.KolQuote & JSXBase.HTMLAttributes<HTMLKolQuoteElement>;
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;
             "kol-skip-nav": LocalJSX.KolSkipNav & JSXBase.HTMLAttributes<HTMLKolSkipNavElement>;
             "kol-span": LocalJSX.KolSpan & JSXBase.HTMLAttributes<HTMLKolSpanElement>;
