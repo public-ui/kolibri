@@ -9,7 +9,7 @@
 		"preserveSymlinks": true,
 		"moduleResolution": "node",
 		"lib": ["es2017", "dom"],
-		"types": ["mocha", "node"],
+		"types": ["@public-ui/components", "mocha", "node"],
 		"typeRoots": ["node_modules/@types", "src/types"],
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,

@@ -1,17 +1,17 @@
 <html dir="ltr" lang="de">
 	<head>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.2';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.2/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.2';
-			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.5.0-rc.2';
-			register([ITZBund], [defineCustomElements], {
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.3';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.3/dist/loader';
+			import { ITZBund, ECL_EC, ECL_EU } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.3';
+			import { KoliBriDevHelper } from 'https://esm.sh/@public-ui/components@1.5.0-rc.3';
+			register([ITZBund, ECL_EC, ECL_EU], [defineCustomElements], {
 				theme: {
 					detect: 'auto',
 				},
 			})
 				.then(() => {
-					KoliBriDevHelper.patchTheme('{{kebab name}}', {
+					KoliBriDevHelper.patchTheme('my-kolibri', {
 						GLOBAL:
 							':host {--border-color: var(--color-grau-dark);--border-radius: 2px;--color-blut: #cc071e;--color-blut-dark: #a0081a;--color-grau: #e6e6e6;--color-grau-light: #f6f6f6;--color-grau-dark: #4c4c4c;--font-size: 16px;--spacing: 0.125rem;}:host * {box-sizing: border-box;}a,button {align-items: center;background-color: transparent;cursor: pointer;display: inline-flex;gap: 0.25rem;justify-items: center;}input,option,select,summary,textarea {display: inline-block;}a,button,input,option,select,summary,textarea {-ms-hyphens: auto;-webkit-hyphens: auto;hyphens: auto;letter-spacing: inherit;word-break: break-word;}*[tabindex]:focus,a:focus,button:focus,input:focus,select:focus,summary:focus,textarea:focus {cursor: pointer;outline-color: var(--color-blut-dark);outline-offset: var(--spacing);outline-style: solid;outline-width: var(--spacing);transition: outline-offset 0.2s linear;}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}',
 						'KOL-BUTTON':
@@ -37,11 +37,12 @@
 		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
 		<link rel="stylesheet" href="assets/bundes/style.css" />
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
 		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+		<link rel="stylesheet" href="assets/kreon/style.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
 		<link rel="stylesheet" href="assets/style.css" />
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -64,6 +65,36 @@
 			<div class="{{kebab name}}" data-theme="{{kebab name}}">
 				<{{kebab name}}-form-login _heading="Hell😉!"></{{kebab name}}-form-login>
 				<!-- <{{kebab name}}-form-login-wc _heading="Hell😉!"></{{kebab name}}-form-login-wc> -->
+			</div>
+			<div style="display: grid; grid-template-columns: auto auto; gap: 2rem">
+				<div data-theme="itzbund" style="display: grid; gap: 1rem; justify-items: center">
+					<{{kebab name}}-button _label="My first button"></{{kebab name}}-button>
+					<{{kebab name}}-button _disabled _label="Disabled button"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Primary button" _variant="primary"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Tertiary button" _variant="tertiary"></{{kebab name}}-button>
+					<{{kebab name}}-button _hide-label _icon="codicon codicon-home" _label="Button without label text"></{{kebab name}}-button>
+				</div>
+				<div data-theme="{{kebab name}}-kolibri" style="display: grid; gap: 1rem; justify-items: center">
+					<{{kebab name}}-button _label="My first button"></{{kebab name}}-button>
+					<{{kebab name}}-button _disabled _label="Disabled button"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Primary button" _variant="primary"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Tertiary button" _variant="tertiary"></{{kebab name}}-button>
+					<{{kebab name}}-button _hide-label _icon="codicon codicon-home" _label="Button without label text"></{{kebab name}}-button>
+				</div>
+				<div data-theme="ecl-ec" style="display: grid; gap: 1rem; justify-items: center">
+					<{{kebab name}}-button _label="My first button"></{{kebab name}}-button>
+					<{{kebab name}}-button _disabled _label="Disabled button"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Primary button" _variant="primary"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Tertiary button" _variant="tertiary"></{{kebab name}}-button>
+					<{{kebab name}}-button _hide-label _icon="codicon codicon-home" _label="Button without label text"></{{kebab name}}-button>
+				</div>
+				<div data-theme="ecl-eu" style="display: grid; gap: 1rem; justify-items: center">
+					<{{kebab name}}-button _label="My first button"></{{kebab name}}-button>
+					<{{kebab name}}-button _disabled _label="Disabled button"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Primary button" _variant="primary"></{{kebab name}}-button>
+					<{{kebab name}}-button _label="Tertiary button" _variant="tertiary"></{{kebab name}}-button>
+					<{{kebab name}}-button _hide-label _icon="codicon codicon-home" _label="Button without label text"></{{kebab name}}-button>
+				</div>
 			</div>
 		</main>
 		<footer></footer>

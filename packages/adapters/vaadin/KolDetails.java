@@ -15,7 +15,7 @@ seine Ausrichtung von **_rechts_** nach **_unten_**.<br/>Analog lässt sich die 
  */
 
 @Tag("kol-details")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.1")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.3")
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**

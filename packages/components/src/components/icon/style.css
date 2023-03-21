@@ -1,21 +1,18 @@
-@import '../../assets/bpa-icons/style.css';
 @import '../../assets/codicons/codicon.css';
-/* @import '../../assets/fontawesome-free/css/all.css'; */
-/* @import '../../assets/icofont/icofont.css'; */
 
 :host {
 	color: inherit;
+	display: contents;
 	font-size: inherit;
 	line-height: inherit;
 }
 
 :host > i {
 	height: 1em;
-	display: contents;
-	overflow: hidden;
 	width: 1em;
 }
 
-.codicon[class*='codicon-'] {
+:host > i.codicon[class*='codicon-'] {
+	display: contents;
 	font-size: inherit;
 }

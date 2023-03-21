@@ -16,7 +16,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"importHelpers": true,
 		"removeComments": true,
-		"types": ["node"],
+		"types": ["@public-ui/components", "node"],
 		"typeRoots": ["node_modules/@types"],
 		"strict": true
 	},

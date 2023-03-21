@@ -1,0 +1,28 @@
+@import '../style.css';
+
+cite,
+figure,
+q + figcaption {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+quote::before {
+	content: '»';
+	padding-right: 0.5em;
+}
+quote::after {
+	content: '«';
+	padding-left: 0.5em;
+}
+
+cite::before {
+	content: '—';
+}
+.block cite::before {
+	padding-right: 0.5em;
+}
+.inline cite::before {
+	padding: 0.5em;
+}
