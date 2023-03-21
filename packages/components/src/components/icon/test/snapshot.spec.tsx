@@ -18,7 +18,6 @@ executeTests<Props>(
 	{
 		_ariaLabel: ['Aria-Label'],
 		_icon: ['codicon codicon-home'],
-		_part: ['part-key'],
 	},
 	getIconHtml,
 	{

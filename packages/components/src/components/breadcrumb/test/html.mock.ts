@@ -24,7 +24,6 @@ export const getBreadcrumbHtml = (props: Props): string => {
 						? getIconHtml({
 								_ariaLabel: '',
 								_icon: 'codicon codicon-chevron-right',
-								_part: 'separator',
 						  })
 						: ''
 				}
