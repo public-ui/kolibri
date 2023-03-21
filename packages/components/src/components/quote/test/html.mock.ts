@@ -18,7 +18,7 @@ export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
 	const showExpertSlot = state._quote === '';
 	return `<kol-quote>
   <mock:shadow-root>
-		<figure class="${state._variant === 'block' ? 'block' : 'inline'}">
+		<figure class="${state._variant}">
 			<${state._variant === 'block' ? 'blockquote' : 'q'} cite="${state._href}">
 			${state._quote}
 				<span${showExpertSlot && typeof slots.expert === 'string' ? `` : ` aria-hidden="true" hidden=""`}>
