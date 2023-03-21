@@ -9,8 +9,20 @@ q + figcaption {
 }
 
 quote::before {
-	content: '» ';
+	content: '»';
+	padding-right: 0.5em;
 }
 quote::after {
-	content: ' «';
+	content: '«';
+	padding-left: 0.5em;
+}
+
+cite::before {
+	content: '—';
+}
+.block cite::before {
+	padding-right: 0.5em;
+}
+.inline cite::before {
+	padding: 0.5em;
 }

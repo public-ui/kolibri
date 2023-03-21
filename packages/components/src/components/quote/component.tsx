@@ -16,12 +16,12 @@ export class KolQuote implements ComponentApi {
 	@Prop() public _caption?: string;
 
 	/**
-	 * The cite of the quote.
+	 * The href is a URL that designates a source document or message for the information quoted.
 	 */
-	@Prop() public _cite!: string;
+	@Prop() public _href!: string;
 
 	/**
-	 * The quote of the quote.
+	 * The text of the quote.
 	 */
 	@Prop() public _quote!: string;
 
@@ -31,7 +31,7 @@ export class KolQuote implements ComponentApi {
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
 	@State() public state: States = {
-		_cite: '…', // ⚠ required
+		_href: '…', // ⚠ required
 		_quote: '…', // ⚠ required
 		_variant: 'inline',
 	};
@@ -41,9 +41,9 @@ export class KolQuote implements ComponentApi {
 		watchString(this, '_caption', value);
 	}
 
-	@Watch('_cite')
-	public validateCite(value?: string): void {
-		watchString(this, '_cite', value);
+	@Watch('_href')
+	public validateHref(value?: string): void {
+		watchString(this, '_href', value);
 	}
 
 	@Watch('_quote')
@@ -58,7 +58,7 @@ export class KolQuote implements ComponentApi {
 
 	public componentWillLoad(): void {
 		this.validateCaption(this._caption);
-		this.validateCite(this._cite);
+		this.validateHref(this._href);
 		this.validateQuote(this._quote);
 		this.validateVariant(this._variant);
 	}
@@ -67,16 +67,20 @@ export class KolQuote implements ComponentApi {
 		const hideExpertSlot = this.state._quote !== '';
 		return (
 			<Host>
-				<figure>
+				<figure
+					class={{
+						[this.state._variant]: true,
+					}}
+				>
 					{this.state._variant === 'block' ? (
-						<blockquote cite={this.state._cite}>
+						<blockquote cite={this.state._href}>
 							{this.state._quote}
 							<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 								<slot name="expert" />
 							</span>
 						</blockquote>
 					) : (
-						<q cite={this.state._cite}>
+						<q cite={this.state._href}>
 							{this.state._quote}
 							<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 								<slot name="expert" />
@@ -85,9 +89,8 @@ export class KolQuote implements ComponentApi {
 					)}
 					{typeof this.state._caption === 'string' && this.state._caption.length > 0 && (
 						<figcaption>
-							{` — `}
 							<cite>
-								<kol-link _href={this.state._cite} _label={this.state._caption} _target="_blank" />
+								<kol-link _href={this.state._href} _label={this.state._caption} _target="_blank" />
 							</cite>
 						</figcaption>
 					)}

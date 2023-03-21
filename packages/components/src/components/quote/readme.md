@@ -1,8 +1,8 @@
 # Quote
 
-The quote component is implements in two variants. The first variant is the default `short` variant as inline quote with quotation marks. The second variant is the indented `long` variant. The indented variant is used to highlight a text passage or information visually.
+The quote component is implemented in two variants. The first variant is the default `short` variant as inline quote with quotation marks. The second variant is the indented `long` variant. The indented variant is used to highlight a text passage or information visually.
 
-Both variants can be extended with a `cite` element. The `cite` element is used to identify the source of a quotation and will be displayed below the quote as link.
+Both variants can be extended with a `cite` element. The `cite` element is used to identify the source of a quotation and will be displayed below the quote as a link.
 
 ## References
 

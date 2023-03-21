@@ -6,7 +6,7 @@ export type KoliBriQuoteVariant = 'block' | 'inline';
  * API for the Quote component.
  */
 type RequiredProps = {
-	cite: string;
+	href: string; // URL to the source of the quote (cite)
 	quote: string;
 };
 type OptionalProps = {
@@ -16,7 +16,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	cite: string;
+	href: string; // URL to the source of the quote (cite)
 	quote: string;
 	variant: KoliBriQuoteVariant;
 };

@@ -9,7 +9,7 @@ type Slot = {
 export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
 	const state = mixMembers<Props, States>(
 		{
-			_cite: '…', // ⚠ required
+			_href: '…', // ⚠ required
 			_quote: '…', // ⚠ required
 			_variant: 'inline',
 		},
@@ -19,7 +19,7 @@ export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
 	return `<kol-quote>
   <mock:shadow-root>
 		<figure>
-			<${state._variant === 'block' ? 'blockquote' : 'q'} cite="${state._cite}">
+			<${state._variant === 'block' ? 'blockquote' : 'q'} cite="${state._href}">
 			${state._quote}
 				<span${showExpertSlot && typeof slots.expert === 'string' ? `` : ` aria-hidden="true" hidden=""`}>
 					<slot name="expert">
@@ -30,9 +30,9 @@ export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
 			${
 				typeof state._caption === 'string' && state._caption.length > 0
 					? `<figcaption>
-							 — <cite>
+							<cite>
 								${getLinkHtml({
-									_href: state._cite,
+									_href: state._href,
 									_label: state._caption,
 									_target: '_blank',
 								})}

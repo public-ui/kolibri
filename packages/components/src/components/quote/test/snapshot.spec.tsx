@@ -17,7 +17,7 @@ executeTests<Props>(
 	},
 	{
 		_caption: ['Caption'],
-		_cite: ['https://www.example.com'],
+		_href: ['https://www.example.com'],
 		_quote: ['Text of the Quote'],
 		_variant: ['block', 'inline'],
 	},
