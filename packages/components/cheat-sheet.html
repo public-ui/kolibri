@@ -351,6 +351,12 @@ durchlaufen werden.`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
 	props: `_max, _type, _unit, _value`
 },{
+	name: `quote`,
+	desc: `The quote component is implemented in two variants. The first variant is the default 'short' variant as inline quote with quotation marks. The second variant is the indented 'long' variant. The indented variant is used to highlight a text passage or information visually.
+
+Both variants can be extended with a 'cite' element. The 'cite' element is used to identify the source of a quotation and will be displayed below the quote as a link.`,
+	props: `_caption, _href, _quote, _variant`
+},{
 	name: `select`,
 	desc: `Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.`,
 	props: `_access-key, _alert, _disabled, _error, _height, _hide-label, _hint, _icon, _id, _list, _multiple, _name, _required, _size, _tab-index, _touched, _value`
@@ -512,15 +518,15 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Option<W3CInputValue>[] | string, Option<number>[] | string, SelectOption<W3CInputValue>[] | string, string | string[]`,
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
+	name: `_variant`,
+	desc: `Gibt an, welche Ausprägung der Button hat.`,
+	types: `"block" | "inline", "button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
+	comps: `alert, button, input-checkbox, link-button, nav, pagination, quote`
+},{
 	name: `_auto-complete`,
 	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
 	types: `"off" | "on"`,
 	comps: `input-color, input-date, input-email, input-number, input-password, input-range, input-text`
-},{
-	name: `_variant`,
-	desc: `Gibt an, welche Ausprägung der Button hat.`,
-	types: `"button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
-	comps: `alert, button, input-checkbox, link-button, nav, pagination`
 },{
 	name: `_tooltip-align`,
 	desc: `Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.`,
@@ -627,6 +633,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `NavLinkProps[] | string, NavLinkWithChildrenProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
+	name: `_href`,
+	desc: `Gibt die Ziel-Url des Links an.`,
+	types: `string`,
+	comps: `link, link-button, quote`
+},{
 	name: `_custom-class`,
 	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
 	types: `string`,
@@ -639,11 +650,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_target`,
 	desc: `Definiert das Verhalten, bei dem der Link geöffnet werden soll.`,
-	types: `string`,
-	comps: `link, link-button`
-},{
-	name: `_href`,
-	desc: `Gibt die Ziel-Url des Links an.`,
 	types: `string`,
 	comps: `link, link-button`
 },{
@@ -671,6 +677,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, ob der Alert ein Schließen-Icon hat.`,
 	types: `boolean`,
 	comps: `alert, toast`
+},{
+	name: `_caption`,
+	desc: `Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.`,
+	types: `string`,
+	comps: `quote, table`
 },{
 	name: `_width`,
 	desc: `Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).`,
@@ -832,9 +843,13 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean | string`,
 	comps: `form`
 },{
+	name: `_quote`,
+	desc: `The text of the quote.`,
+	types: `string`,
+	comps: `quote`
+},{
 	name: `_part`,
-	desc: `Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-/**`,
+	desc: `Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)`,
 	types: `string`,
 	comps: `icon`
 },{
@@ -856,11 +871,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_data`,
 	desc: `Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.`,
 	types: `KoliBriDataType[] | string`,
-	comps: `table`
-},{
-	name: `_caption`,
-	desc: `Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.`,
-	types: `string`,
 	comps: `table`
 },{
 	name: `_indeterminate`,
