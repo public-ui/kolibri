@@ -9,7 +9,7 @@ export const getIconHtml = (props: Props, additionalAttrs = ''): string => {
 		},
 		props
 	);
-	return `<kol-icon${additionalAttrs}>
+	return `<kol-icon exportparts="icon"${additionalAttrs}>
   <mock:shadow-root>
     <i ${props._ariaLabel === '' ? 'aria-hidden="true"' : `aria-label="${props._ariaLabel}"`} class="${props._icon}" part="icon${
 		typeof props._part === 'string' ? ` ${props._part}` : ''
