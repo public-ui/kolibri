@@ -11,7 +11,7 @@ InputText können hier auch umfangreiche Inhalte eingegeben werden, die auch mit
  */
 
 @Tag("kol-textarea")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.2")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.3")
 @JsModule("@public-ui/components/dist/components/kol-textarea")
 public class KolTextarea extends Component {
 	/**

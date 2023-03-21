@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.21.3
-  '@public-ui/components': 1.5.0-rc.2
+  '@public-ui/components': 1.5.0-rc.3
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -13,10 +13,10 @@ specifiers:
 
 devDependencies:
   '@babel/types': 7.21.3
-  '@public-ui/components': 1.5.0-rc.2
+  '@public-ui/components': 1.5.0-rc.3
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.15.3
+  '@types/node': 18.15.5
   '@types/normalize-package-data': 2.4.1
   typescript: 4.9.5
   unbuild: 1.1.2
@@ -24,11 +24,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core/1.0.1-rc.65:
-    resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
-    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
+  /@a11y-ui/core/1.0.2:
+    resolution: {integrity: sha512-RWGduw5+d/QgNfJogkuJPWvGxmWfa1qFleoAaBlt6UIPOaqP1eXY5ch06s+5yWfG93WYY2Otm3XQBV0RAGWGlA==}
     dependencies:
-      loglevel: 1.8.1
+      adopted-style-sheets: 1.0.2
     dev: true
 
   /@ampproject/remapping/2.2.0:
@@ -448,8 +447,8 @@ packages:
     resolution: {integrity: sha512-SQOeVbMwb1di+mVWWJLpsUTToKfqVNioXys011beCAhyOIFtS+GQoW4EQSneuxzmQKddExDwQ+X0hLl4lJJaSQ==}
     dev: true
 
-  /@floating-ui/dom/1.2.4:
-    resolution: {integrity: sha512-4+k+BLhtWj+peCU60gp0+rHeR8+Ohqx6kjJf/lHMnJ8JD5Qj6jytcq1+SZzRwD7rvHKRhR7TDiWWddrNrfwQLg==}
+  /@floating-ui/dom/1.2.5:
+    resolution: {integrity: sha512-+sAUfpQ3Frz+VCbPCqj+cZzvEESy3fjSeT/pDWkYCWOBXYNNKZfuVsHuv8/JO2zze8+Eb/Q7a6hZVgzS81fLbQ==}
     dependencies:
       '@floating-ui/core': 1.2.4
     dev: true
@@ -513,12 +512,12 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.2:
-    resolution: {integrity: sha512-zs28pSjYE+DlxPwaI8h/RWHTaek4amjIFqZjcfF/4Qz61JOKYciZNyc995KEWzdak+7+l90RI3EZbYVhrqSHAw==}
+  /@public-ui/components/1.5.0-rc.3:
+    resolution: {integrity: sha512-tFiXyU3c1MAvhdwYHcwD47s/wMWwWQvWqH5UfUIKx1JjsmLRMxjmBaoguzO5gG+10/M6FKjIV2PIzRwFUAgFjA==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-      '@floating-ui/dom': 1.2.4
-      i18next: 22.4.11
+      '@a11y-ui/core': 1.0.2
+      '@floating-ui/dom': 1.2.5
+      i18next: 22.4.12
     dev: true
 
   /@rollup/plugin-alias/4.0.3_rollup@3.20.0:
@@ -624,8 +623,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.15.3:
-    resolution: {integrity: sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==}
+  /@types/node/18.15.5:
+    resolution: {integrity: sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -723,6 +722,12 @@ packages:
     resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+    dev: true
+
+  /adopted-style-sheets/1.0.2:
+    resolution: {integrity: sha512-3+0pE9cocYLYuYa47zHzmAfeEPOaT1IpilwdPiLaow+YKJ2C9usVAcuDRsZqEJWsWIqJVALPL+FXeE0TGOvRyw==}
+    dependencies:
+      loglevel: 1.8.1
     dev: true
 
   /ansi-styles/3.2.1:
@@ -993,8 +998,8 @@ packages:
     resolution: {integrity: sha512-ac50aYjbtRMMZEtTG0qnVaBDA+1lqL9fHzDnxMQlVuO6LZWcBB7NXjIu9H9iImClewNdrit4RiEzi9QpRTgKrg==}
     dev: true
 
-  /i18next/22.4.11:
-    resolution: {integrity: sha512-ShfTzXVMjXdF2iPiT/wbizOrssLh9Ab6VpuVROihLCAu+u25KbZiEYVgsA0W6g0SgjPa/JmGWcUEV/g6cKzEjQ==}
+  /i18next/22.4.12:
+    resolution: {integrity: sha512-2lE+vRXxQ3lGLub1CVbwgO0IfkLHmUSDVOAVdPh22CsxttMXi+35n2qgxh2wZIkKl6t/NMzPfgFPRDiFQOmiCg==}
     dependencies:
       '@babel/runtime': 7.21.0
     dev: true

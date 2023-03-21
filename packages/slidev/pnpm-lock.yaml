@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.5.0-rc.2
-  '@public-ui/themes': 1.5.0-rc.2
+  '@public-ui/components': 1.5.0-rc.3
+  '@public-ui/themes': 1.5.0-rc.3
   '@slidev/cli': 0.40.3
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
@@ -14,9 +14,9 @@ specifiers:
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_oxuqdcehghhdpunbfehvyj3ome
-  '@public-ui/components': 1.5.0-rc.2
-  '@public-ui/themes': 1.5.0-rc.2
+  '@public-oss/kolibri-themes': 0.0.3_a4jpr3p6jssyw2466sh2fiuqla
+  '@public-ui/components': 1.5.0-rc.3
+  '@public-ui/themes': 1.5.0-rc.3
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
 
@@ -37,11 +37,10 @@ packages:
       loglevel: 1.8.1
     dev: false
 
-  /@a11y-ui/core/1.0.1-rc.65:
-    resolution: {integrity: sha512-MtiyEBWNxAU0ihBe4FIRcIOJg++uVfHSxFMf0XegZm2cJgK9VU5qKMfdm7Voq1+66dT31smx5+nIppKMbdPhxg==}
-    deprecated: This version of @a11y-ui/core is deprecated and unmaintained. Please use a new latest version.
+  /@a11y-ui/core/1.0.2:
+    resolution: {integrity: sha512-RWGduw5+d/QgNfJogkuJPWvGxmWfa1qFleoAaBlt6UIPOaqP1eXY5ch06s+5yWfG93WYY2Otm3XQBV0RAGWGlA==}
     dependencies:
-      loglevel: 1.8.1
+      adopted-style-sheets: 1.0.2
     dev: false
 
   /@ampproject/remapping/2.2.0:
@@ -594,8 +593,8 @@ packages:
     resolution: {integrity: sha512-SQOeVbMwb1di+mVWWJLpsUTToKfqVNioXys011beCAhyOIFtS+GQoW4EQSneuxzmQKddExDwQ+X0hLl4lJJaSQ==}
     dev: false
 
-  /@floating-ui/dom/1.2.4:
-    resolution: {integrity: sha512-4+k+BLhtWj+peCU60gp0+rHeR8+Ohqx6kjJf/lHMnJ8JD5Qj6jytcq1+SZzRwD7rvHKRhR7TDiWWddrNrfwQLg==}
+  /@floating-ui/dom/1.2.5:
+    resolution: {integrity: sha512-+sAUfpQ3Frz+VCbPCqj+cZzvEESy3fjSeT/pDWkYCWOBXYNNKZfuVsHuv8/JO2zze8+Eb/Q7a6hZVgzS81fLbQ==}
     dependencies:
       '@floating-ui/core': 1.2.4
     dev: false
@@ -893,21 +892,21 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_oxuqdcehghhdpunbfehvyj3ome:
+  /@public-oss/kolibri-themes/0.0.3_a4jpr3p6jssyw2466sh2fiuqla:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.2
+      '@public-ui/components': 1.5.0-rc.3
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.5.0-rc.2:
-    resolution: {integrity: sha512-zs28pSjYE+DlxPwaI8h/RWHTaek4amjIFqZjcfF/4Qz61JOKYciZNyc995KEWzdak+7+l90RI3EZbYVhrqSHAw==}
+  /@public-ui/components/1.5.0-rc.3:
+    resolution: {integrity: sha512-tFiXyU3c1MAvhdwYHcwD47s/wMWwWQvWqH5UfUIKx1JjsmLRMxjmBaoguzO5gG+10/M6FKjIV2PIzRwFUAgFjA==}
     dependencies:
-      '@a11y-ui/core': 1.0.1-rc.65
-      '@floating-ui/dom': 1.2.4
-      i18next: 22.4.11
+      '@a11y-ui/core': 1.0.2
+      '@floating-ui/dom': 1.2.5
+      i18next: 22.4.12
     dev: false
 
   /@public-ui/core/1.1.15:
@@ -923,10 +922,10 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/themes/1.5.0-rc.2:
-    resolution: {integrity: sha512-k3uocbLqS9wTmBzgcokSFPek4IrPHvdh0kEPoLc+pcsd1D2ACKUufk/racz6Kt6NViQkDMxZDwAot3EQHw/tYg==}
+  /@public-ui/themes/1.5.0-rc.3:
+    resolution: {integrity: sha512-BNhDKPet+bhWljJL56yQm8F90BJ/CqIsYFHMSfEvIdm+T0PiaeVhQrWJu6tl8+r0ItZ+nuS6quVCQDQvbenoWw==}
     dependencies:
-      '@public-ui/components': 1.5.0-rc.2
+      '@public-ui/components': 1.5.0-rc.3
     dev: false
 
   /@rollup/pluginutils/5.0.2:
@@ -1649,6 +1648,12 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
+
+  /adopted-style-sheets/1.0.2:
+    resolution: {integrity: sha512-3+0pE9cocYLYuYa47zHzmAfeEPOaT1IpilwdPiLaow+YKJ2C9usVAcuDRsZqEJWsWIqJVALPL+FXeE0TGOvRyw==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: false
 
   /agent-base/6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -3200,8 +3205,8 @@ packages:
       ms: 2.1.3
     dev: true
 
-  /i18next/22.4.11:
-    resolution: {integrity: sha512-ShfTzXVMjXdF2iPiT/wbizOrssLh9Ab6VpuVROihLCAu+u25KbZiEYVgsA0W6g0SgjPa/JmGWcUEV/g6cKzEjQ==}
+  /i18next/22.4.12:
+    resolution: {integrity: sha512-2lE+vRXxQ3lGLub1CVbwgO0IfkLHmUSDVOAVdPh22CsxttMXi+35n2qgxh2wZIkKl6t/NMzPfgFPRDiFQOmiCg==}
     dependencies:
       '@babel/runtime': 7.21.0
     dev: false
