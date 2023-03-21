@@ -28,85 +28,163 @@
 		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
 		<link rel="stylesheet" href="assets/style.css" />
+
+		<script defer src="assets/modal-simulation.js"></script>
+		<script defer src="assets/progress-simulation.js"></script>
+		<script defer src="assets/smart-button-simulation.js"></script>
+		<script defer src="assets/table-simulation.js"></script>
+		<script defer src="assets/toast-simulation.js"></script>
+		<script defer src="assets/tooltip-simulation.js"></script>
 	</head>
 	<body class="demo" data-theme="demo">
 		<main class="container">
-			<kol-heading _level="1">KoliBri Komponenten</kol-heading>
-			<kol-accordion _open="true" id="anythingandeverythingallofthetime" _heading="Überblick">
-				<kol-heading _headline="Überblick" slot="header" _level="2"></kol-heading>
-				<div slot="content" class="grid" style="gap: 1rem">
-					<kol-button-group>
-						<kol-button
-							class="not-used"
-							_icon="{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'icofont-arrow-up'},'right': {'icon': 'icofont-arrow-right'},'bottom': {'icon': 'icofont-arrow-down'},'left': {'icon': 'icofont-arrow-left'}}"
-							_label="Button-to-Toast®"
-							_variant="primary"
-							onclick="createAndShowToast()"
-						>
-							<script src="assets/toast-simulation.js"></script>
-						</kol-button>
-						<kol-link-button _variant="secondary" _label="zu den restlichen buttons" _href="#button"></kol-link-button>
-						<kol-button
-							_label="Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip."
-							_icon="fa-solid fa-tools"
-							_icon-only
-							_variant="normal"
-						></kol-button>
-					</kol-button-group>
-
-					<kol-heading _level="3" _headline="Form/Inputs"></kol-heading>
-					<kol-form>
-						<div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1rem">
-							<kol-input-checkbox _id="input-checkbox" _type="checkbox"
-								>Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
-							>
-							<kol-input-color _id="input-color">Farbe</kol-input-color>
-							<kol-input-email _id="input-email" _error="Test einer Fehlermeldung" _touched>E-Mail-Adresse</kol-input-email>
-							<kol-input-file _id="input-file">Datei hochladen</kol-input-file>
-
-							<kol-input-number _id="input-number" _type="number">Zahleneingabe</kol-input-number>
-							<kol-input-date _id="input-date" _type="date">Datum</kol-input-date>
-							<kol-input-password _id="input-password">Passwort</kol-input-password>
-							<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
-								>Anrede</kol-input-radio
-							>
-							<div>
-								<kol-input-range _id="schnitzelwert" _min="0" _max="50" _onchange="onSchnitzelchange" _unit="Schnitzel" _value="25"
-									>Schieberegler</kol-input-range
-								>
-								<kol-progress _id="schnitzelfortschritt" _type="cycle" _value="25"></kol-progress>
-								<script>
-									const progressIn = document.querySelector('[_id="schnitzelwert"]');
-									const progressEl = document.querySelector('[_id="schnitzelfortschritt"]');
-									progressIn._on = { onChange: onSchnitzelchange };
-									function onSchnitzelchange(e, value) {
-										progressEl.setAttribute('_value', value);
-									}
-								</script>
+			<kol-heading _level="1" _headline="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
+			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
+				<div slot="content" class="grid gap">
+					<div style="display: flex; justify-content: space-between">
+						<kol-card _heading="buttons" _level="3">
+							<div slot="content" class="grid gap">
+								<kol-button
+									_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
+									_label="primary"
+									_variant="primary"
+									onclick="createAndShowToast()"
+								></kol-button>
+								<kol-button
+									_icon="{ 'right': { 'icon': 'codicon codicon-arrow-right' } }"
+									_label="secondary"
+									_variant="secondary"
+									onclick="createAndShowToast()"
+								></kol-button>
+								<kol-button
+									_icon="{ 'top': { 'icon': 'codicon codicon-arrow-up' } }"
+									_label="danger"
+									_variant="danger"
+									onclick="createAndShowToast()"
+								></kol-button>
+								<kol-button
+									_icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }"
+									_label="normal"
+									_variant="normal"
+									onclick="createAndShowToast()"
+								></kol-button>
+								<kol-button _label="ghost" _variant="ghost" onclick="createAndShowToast()"></kol-button>
+								<kol-button _label="custom" _variant="custom" onclick="createAndShowToast()"></kol-button>
 							</div>
-							<kol-input-text _id="input-text" _hint="Ich bin ein Hinweis." _type="text">Vorname (Auto-Vervollständigung) </kol-input-text>
-							<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung</kol-select>
-							<kol-textarea _id="textarea">Textarea</kol-textarea>
-							<kol-button _label="Absenden" _type="submit" _variant="primary"></kol-button>
-							<kol-button _label="Zurücksetzen" _type="reset"></kol-button>
-						</div>
-					</kol-form>
+						</kol-card>
+						<kol-card _heading="disabled buttons" _level="3">
+							<div slot="content" class="grid gap">
+								<kol-button _icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }" _disabled _label="primary" _variant="primary"></kol-button>
+								<kol-button _icon="{ 'right': { 'icon': 'codicon codicon-arrow-right' } }" _disabled _label="secondary" _variant="secondary"></kol-button>
+								<kol-button _icon="{ 'top': { 'icon': 'codicon codicon-arrow-up' } }" _disabled _label="danger" _variant="danger"></kol-button>
+								<kol-button _icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }" _disabled _label="normal" _variant="normal"></kol-button>
+								<kol-button _disabled _label="ghost" _variant="ghost"></kol-button>
+								<kol-button _disabled _label="custom" _variant="custom"></kol-button>
+							</div>
+						</kol-card>
+						<kol-card _heading="headings" _level="3">
+							<div slot="content" class="grid gap">
+								<kol-heading _headline="Überschrift Stufe 1" _level="1"></kol-heading>
+								<kol-heading _headline="Überschrift Stufe 2" _level="2"></kol-heading>
+								<kol-heading _headline="Überschrift Stufe 3" _level="3"></kol-heading>
+								<kol-heading _headline="Überschrift Stufe 4" _level="4"></kol-heading>
+								<kol-heading _headline="Überschrift Stufe 5" _level="5"></kol-heading>
+								<kol-heading _headline="Überschrift Stufe 6" _level="6"></kol-heading>
+							</div>
+						</kol-card>
+						<kol-card _heading="Links&Co" _level="3">
+							<div slot="content" class="grid gap">
+								<kol-link _href="#card">Zur Card</kol-link>
+								<kol-button-link _href="#pagination" _label="Zur Pagination"></kol-button-link>
+								<kol-nav
+									_links="[
+													{'_label':'Navigation', '_href':'#nav'},
+													{'_label':'Modal', '_href':'#modal'},
+													{'_label':'Pagination', '_href':'#pagination'}
+												]"
+									_has-compact-button="false"
+								></kol-nav>
+								<div class="grid">
+									<kol-heading _headline="hover this" _level="4"><kol-icon _icon="codicon codicon-arrow-down"></kol-icon></kol-heading>
+									<kol-button
+										_icon="codicon codicon-tools"
+										_icon-only
+										_id="tooltip_button"
+										_label="Klick me for Action."
+										_variant="normal"
+										onclick="openModal()"
+									></kol-button>
+									<kol-modal _id="overviewModal" _aria-label="Beschreibung zur Modalbox" _width="400px" onclick="closeModal()">
+										<div style="height: 300px; background-color: beige; display: grid; place-content: center; font-size: xx-large">Action!</div>
+									</kol-modal>
+								</div>
+							</div>
+						</kol-card>
+						<kol-card _heading="Icons&Co" _level="3">
+							<kol-badge _label="wie badges"></kol-badge>
+							<div slot="content" class="grid gap">
+								<p>
+									In diesem Satz wird das <kol-symbol _aria-label="Lächelndes Gesicht" _symbol="☺"></kol-symbol><br />
+									vom Screenreader vorgelesen.
+								</p>
+								<kol-spin _show="true"></kol-spin>
+								<kol-icon _aria-label="kol-icon" _icon="codicon codicon-home" style="display: inline-grid"></kol-icon>
+								<kol-kolibri style="width: 100px"></kol-kolibri>
+							</div>
+						</kol-card>
+						<kol-card _heading="Mitte" _level="3">
+							<div slot="content" class="grid">
+								<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]'>
+									<div>Seite 1</div>
+									<div>Tab 2</div>
+									<div>Ich bin hier nur zu Spass.</div>
+								</kol-tabs>
+								<hr />
+								<kol-table _id="day_table" _caption="Tabelle" _data=""></kol-table>
+							</div>
+						</kol-card>
+					</div>
 
-					<kol-card _heading="Test" _level="3">
-						<kol-badge _label="wie badges"></kol-badge>
-						<div slot="content" style="display: grid">
-							<kol-spin _show="true"></kol-spin>
-							<p>In diesem Satz wird das <kol-symbol _aria-label="Lächelndes Gesicht" _symbol="☺"></kol-symbol> vom Screenreader vorgelesen.</p>
-							<kol-image></kol-image>
-							<kol-icon _aria-label="kol-icon" _icon="codicon codicon-home"></kol-icon>
-						</div>
+					<kol-card _heading="Form" _level="3">
+						<kol-form slot="content">
+							<div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem">
+								<kol-input-color _id="input-color">Farbe</kol-input-color>
+								<kol-input-file _id="input-file">Datei hochladen</kol-input-file>
+								<kol-input-number _id="input-number" _type="number">Zahleneingabe</kol-input-number>
+								<kol-input-date _id="input-date" _type="date">Datum</kol-input-date>
+
+								<kol-input-email _icon="{'left': 'codicon codicon-home'}" _id="input-email" _error="Test einer Fehlermeldung" _touched
+									>E-Mail-Adresse</kol-input-email
+								>
+								<kol-input-text _id="input-text" _hint="Ich bin ein Hinweis." _type="text">Vorname</kol-input-text>
+								<kol-input-password _id="input-password" _name="input-password">Passwort</kol-input-password>
+								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung</kol-select>
+
+								<kol-textarea _id="textarea">Textarea</kol-textarea>
+								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
+									>Anrede</kol-input-radio
+								>
+								<kol-input-range _id="schnitzelwert" _min="0" _max="50" _unit="Schnitzel" _value="25">Schieberegler</kol-input-range>
+								<kol-progress _id="schnitzelfortschritt" _type="cycle" _value="25"></kol-progress>
+
+								<kol-input-checkbox _id="input-checkbox" _type="checkbox"
+									>Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
+								>
+								<kol-button _label="Absenden" _type="submit" _variant="primary"></kol-button>
+								<kol-button _label="Zurücksetzen" _type="reset"></kol-button>
+							</div>
+						</kol-form>
 					</kol-card>
 
-					<kol-version _version="0.0.5-rc1"></kol-version>
+					<div style="display: flex; gap: 2rem; justify-content: space-between">
+						<kol-pagination _total="9" _page="3" class="bordered p-i"></kol-pagination>
+
+						<kol-version _version="1.0.0"></kol-version>
+					</div>
+					<kol-image _src="/assets/images/abgrenzung.jpg" _alt="KoliBri Darstellung"></kol-image>
 				</div>
 			</kol-accordion>
-
-			<!-- <kol-accordion _heading="Abbr" id="abbr">
+			<kol-accordion _heading="Abbr" id="abbr">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -130,8 +208,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="alert" id="alert">
+			</kol-accordion>
+			<kol-accordion _heading="alert" id="alert">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -167,8 +245,8 @@
 					</div>
 				</div>
 				<script src="assets/alert-simulation.js"></script>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="badge" id="badge">
+			</kol-accordion>
+			<kol-accordion _heading="badge" id="badge">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -212,8 +290,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="breadcrumb" id="breadcrumb">
+			</kol-accordion>
+			<kol-accordion _heading="breadcrumb" id="breadcrumb">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -247,8 +325,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="button" id="button">
+			</kol-accordion>
+			<kol-accordion _heading="button" id="button">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -320,8 +398,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			-->
-			<!-- <kol-accordion _heading="link-button" id="link-button">
+			<kol-accordion _heading="link-button" id="link-button">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -406,8 +483,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="button-group" id="button-group">
+			</kol-accordion>
+			<kol-accordion _heading="button-group" id="button-group">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -439,8 +516,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="card" id="card">
+			</kol-accordion>
+			<kol-accordion _heading="card" id="card">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -499,8 +576,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="details" id="details">
+			</kol-accordion>
+			<kol-accordion _heading="details" id="details">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -544,8 +621,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="form" id="form">
+			</kol-accordion>
+			<kol-accordion _heading="form" id="form">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -713,8 +790,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			-->
-			<!-- <kol-accordion _heading="heading" id="heading">
+			<kol-accordion _heading="heading" id="heading">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -746,8 +822,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="icon" id="icon">
+			</kol-accordion>
+			<kol-accordion _heading="icon" id="icon">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -805,8 +881,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="image" id="image">
+			</kol-accordion>
+			<kol-accordion _heading="image" id="image">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -825,8 +901,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="indented-text" id="indented-text">
+			</kol-accordion>
+			<kol-accordion _heading="indented-text" id="indented-text">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -848,8 +924,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="input" id="input">
+			</kol-accordion>
+			<kol-accordion _heading="input" id="input">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1046,8 +1122,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="link" id="link">
+			</kol-accordion>
+			<kol-accordion _heading="link" id="link">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1095,8 +1171,8 @@
 					</div>
 				</div>
 				<script src="assets/link-simulation.js"></script>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="button-link" id="button-link">
+			</kol-accordion>
+			<kol-accordion _heading="button-link" id="button-link">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1130,8 +1206,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="link-group" id="link-group">
+			</kol-accordion>
+			<kol-accordion _heading="link-group" id="link-group">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1173,8 +1249,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="logo" id="logo">
+			</kol-accordion>
+			<kol-accordion _heading="logo" id="logo">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1196,8 +1272,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="modal" id="modal">
+			</kol-accordion>
+			<kol-accordion _heading="modal" id="modal">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1246,7 +1322,7 @@
 										dolor sit amet.
 									</div>
 									<div slot="footer">
-										<kol-button id="modal-1-cancel" _label="Schließen" style="margin-right: 0.5em"></kol-button>
+										<kol-button id="modal-1-cancel" _label="Schließen"></kol-button>
 									</div>
 								</kol-card>
 							</kol-modal>
@@ -1254,7 +1330,7 @@
 								<kol-card _headline="Vorgang löschen" _has-footer>
 									<div slot="content">Wollen Sie den Vorgang wirklich löschen?</div>
 									<div slot="footer">
-										<kol-button id="modal-2-cancel" _label="Schließen" style="margin-right: 0.5em"></kol-button>
+										<kol-button id="modal-2-cancel" _label="Schließen"></kol-button>
 									</div>
 								</kol-card>
 							</kol-modal>
@@ -1272,8 +1348,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="nav" id="nav">
+			</kol-accordion>
+			<kol-accordion _heading="nav" id="nav">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1321,8 +1397,8 @@
 					</div>
 				</div>
 				<script src="assets/nav-simulation.js"></script>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="pagination" id="pagination">
+			</kol-accordion>
+			<kol-accordion _heading="pagination" id="pagination">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1366,8 +1442,8 @@
 					</div>
 				</div>
 				<script src="assets/pagination-simulation.js"></script>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="progress" id="progress">
+			</kol-accordion>
+			<kol-accordion _heading="progress" id="progress">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1390,8 +1466,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="skip-nav" id="skip-nav">
+			</kol-accordion>
+			<kol-accordion _heading="skip-nav" id="skip-nav">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1410,8 +1486,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="spin" id="spin">
+			</kol-accordion>
+			<kol-accordion _heading="spin" id="spin">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1427,8 +1503,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="symbol" id="symbol">
+			</kol-accordion>
+			<kol-accordion _heading="symbol" id="symbol">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1443,8 +1519,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="table" id="table">
+			</kol-accordion>
+			<kol-accordion _heading="table" id="table">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1726,8 +1802,8 @@
 					</div>
 				</div>
 				<script src="assets/table-simulation.js"></script>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="tabs" id="tabs">
+			</kol-accordion>
+			<kol-accordion _heading="tabs" id="tabs">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1862,8 +1938,8 @@
 					</div>
 				</div>
 				<script src="assets/tabs-simulation.js"></script>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="toast" id="toast">
+			</kol-accordion>
+			<kol-accordion _heading="toast" id="toast">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1887,8 +1963,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="tooltip" id="tooltip">
+			</kol-accordion>
+			<kol-accordion _heading="tooltip" id="tooltip">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1927,8 +2003,8 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
-			<!-- <kol-accordion _heading="version" id="version">
+			</kol-accordion>
+			<kol-accordion _heading="version" id="version">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1946,7 +2022,7 @@
 						</div>
 					</div>
 				</div>
-			</kol-accordion> -->
+			</kol-accordion>
 		</main>
 		<footer>
 			<kol-button
