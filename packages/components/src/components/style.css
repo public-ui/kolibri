@@ -20,12 +20,8 @@ kol-span-wc {
 	place-items: center;
 }
 kol-span-wc > span {
-	align-items: baseline;
 	display: flex;
-	justify-items: center;
-}
-kol-span-wc kol-icon {
-	display: inline-flex;
+	place-items: center;
 }
 
 a,
@@ -34,9 +30,9 @@ input,
 option,
 select,
 textarea {
-	appearance: none;
 	cursor: pointer;
 	font-family: inherit;
+	font-size: inherit;
 }
 
 .icon-only > kol-span-wc > span > span {

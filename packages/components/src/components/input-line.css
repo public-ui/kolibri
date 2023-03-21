@@ -47,6 +47,3 @@ kol-button-wc {
 .disabled {
 	opacity: 0.5;
 }
-option:not(:disabled):is(:active, :checked, :focus, :hover) {
-	color: white;
-}

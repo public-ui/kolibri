@@ -1,4 +1,5 @@
 @import './style.css';
+@import './button-and-link.css';
 
 :host {
 	display: inline-block;

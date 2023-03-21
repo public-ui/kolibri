@@ -29,7 +29,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host exportparts="icon">
 				<i
 					aria-hidden={this.state._ariaLabel.length > 0 ? undefined : 'true'}
 					/**
@@ -94,6 +94,8 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 *
+	 * @deprecated
 	 */
 	@Watch('_part')
 	public validatePart(value?: string): void {
