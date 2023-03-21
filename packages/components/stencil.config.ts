@@ -45,6 +45,7 @@ const TAGS = [
 	'kol-nav',
 	'kol-pagination',
 	'kol-progress',
+	'kol-quote',
 	'kol-select',
 	'kol-skip-nav',
 	'kol-span',
