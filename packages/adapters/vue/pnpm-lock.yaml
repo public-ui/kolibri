@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.21.3
-  '@public-ui/components': 1.5.0-rc.3
+  '@public-ui/components': 1.5.0-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -13,7 +13,7 @@ specifiers:
 
 devDependencies:
   '@babel/types': 7.21.3
-  '@public-ui/components': 1.5.0-rc.3
+  '@public-ui/components': 1.5.0-rc.4
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.15.5
@@ -512,8 +512,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.3:
-    resolution: {integrity: sha512-tFiXyU3c1MAvhdwYHcwD47s/wMWwWQvWqH5UfUIKx1JjsmLRMxjmBaoguzO5gG+10/M6FKjIV2PIzRwFUAgFjA==}
+  /@public-ui/components/1.5.0-rc.4:
+    resolution: {integrity: sha512-GUmAgd1dXtBbLYbAk7ScoAZjSKKfMOOWtxLqOIerrZuAMCc2diUnjgrS8PA3pnhrvn1+OmwtnYZIs8pyX0uKVw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
