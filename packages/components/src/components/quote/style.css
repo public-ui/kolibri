@@ -8,13 +8,11 @@ q + figcaption {
 	padding: 0;
 }
 
-quote::before {
-	content: '»';
-	padding-right: 0.5em;
+blockquote::before {
+	content: open-quote;
 }
-quote::after {
-	content: '«';
-	padding-left: 0.5em;
+blockquote::after {
+	content: close-quote;
 }
 
 cite::before {
