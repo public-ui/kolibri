@@ -13,7 +13,7 @@ export const createCssEditor = (model: editor.ITextModel, ref: HTMLElement, tagN
 	setTimeout(() => {
 		let css = ``;
 		if (window.A11yUi?.Themes?.[theme]?.[tagName] && typeof window.A11yUi.Themes[theme][tagName] === 'string') {
-			css = window.A11yUi.Themes[theme][tagName];
+			css = window.A11yUi.Themes[theme][tagName] as string;
 			try {
 				css = format(css, { parser: 'css', plugins: [parserCss] });
 			} catch (e) {}
