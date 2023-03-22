@@ -63,7 +63,7 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
 		"@types/normalize-package-data": "2.4.1",
-		"rimraf": "4.1.2",
+		"rimraf": "4.4.0",
 		"svelte": "3.55.1",
 		"typescript": "4.9.5"
 	},
