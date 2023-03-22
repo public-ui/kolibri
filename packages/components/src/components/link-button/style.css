@@ -1,8 +1,1 @@
 @import '../button.css';
-
-a[role='button'] {
-	display: inline-flex;
-}
-a[role='button'] > kol-span-wc {
-	margin: auto;
-}

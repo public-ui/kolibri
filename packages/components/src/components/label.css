@@ -1,5 +1,6 @@
 @import './style.css';
 
-.kol-required span::after {
+.required *[id*='-label'] > span::after {
 	content: '*';
+	padding-left: 0.125em;
 }

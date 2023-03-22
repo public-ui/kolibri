@@ -1,5 +1,10 @@
 @import '../input.css';
 
+:host {
+	--border-width: 2px;
+	--input-size: 1.5em;
+}
+
 kol-input .icons {
 	display: none;
 }
@@ -13,13 +18,16 @@ label {
 }
 
 input {
-	width: 100%;
-
-	border-width: 2px;
+	border-width: var(--border-width);
 	border-style: solid;
-	border-radius: 5px;
-	line-height: 24px;
+	border-radius: 100%;
 	font-size: 16px;
+	height: var(--input-size);
+	min-height: var(--input-size);
+	min-width: var(--input-size);
+	margin: 0;
+	padding: 0;
+	width: var(--input-size);
 }
 input:focus {
 	outline-offset: 2px;
@@ -31,29 +39,26 @@ kol-alert {
 	display: block;
 	width: 100%;
 }
-.kol-required span::after {
-	content: '*';
-} /* RADIO */
 fieldset {
 	border: 0px;
-	margin: 0px;
-	padding: 0px;
 	display: grid;
 	gap: 0.25em;
+	margin: 0px;
+	padding: 0px;
 }
 fieldset legend {
 	display: block;
-	width: 100%;
 	line-height: 1.5em;
+	width: 100%;
 }
 fieldset div {
+	align-items: center;
 	cursor: pointer;
 	display: flex;
 	flex-direction: row;
 	gap: 0.5em;
-	margin-top: 0.25em;
 	margin-bottom: 0.25em;
-	align-items: center;
+	margin-top: 0.25em;
 	position: relative;
 }
 fieldset div label {
@@ -66,21 +71,20 @@ fieldset div label span {
 }
 fieldset div input[type='radio'] {
 	appearance: none;
-	transition: 0.5s;
 	border-radius: 100%;
+	transition: 0.5s;
 }
 fieldset div input[type='radio']:before {
-	content: '';
-	cursor: pointer;
-
-	position: relative;
+	border: none;
 	border-radius: 100%;
+	content: '';
 	display: block;
+	height: calc(var(--input-size) / 2);
+	left: calc(var(--input-size) / 4 - var(--border-width));
+	position: relative;
+	top: calc(var(--input-size) / 4 - var(--border-width));
+	width: calc(var(--input-size) / 2);
 }
 fieldset div input[type='radio']:checked:before {
-	box-shadow: 0 0 0.1rem black;
-}
-fieldset div input[type='radio']:disabled {
-	border-color: #999;
-	cursor: not-allowed;
+	background-color: black;
 }

@@ -18,9 +18,6 @@ select:not([multiple]) {
 	height: 2.75em;
 }
 
-.required label > span::after {
-	content: '*';
-}
 .icons {
 	display: flex;
 	justify-content: space-between;
@@ -30,6 +27,7 @@ select:not([multiple]) {
 	display: grid;
 	height: var(--a11y-min-size);
 	place-items: center;
+	width: 2.5em;
 }
 .icon-left input,
 .icon-left select {

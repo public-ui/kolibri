@@ -1,19 +1,15 @@
 @import './style.css';
-@import './button-and-link.css';
 
 :host {
-	display: inline-flex;
+	display: inline-block;
 }
 
 :is(a, button) {
 	align-items: baseline;
-	text-align: left;
-	text-decoration-line: underline;
-}
-
-a {
 	display: inline-flex;
 	place-items: center;
+	text-align: left;
+	text-decoration-line: underline;
 }
 
 :is(a, button):is(:focus, :hover) {
