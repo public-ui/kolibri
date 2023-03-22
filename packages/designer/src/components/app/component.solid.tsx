@@ -67,11 +67,6 @@ export const AppComponent: Component = () => {
 	restoreThemes();
 
 	const renderJsonString = (theme: string): void => {
-			const styles = window.A11yUi.Themes[theme] as string;
-			const keys = Object.getOwnPropertyNames(styles);
-			keys.forEach((key: string) => {
-				styles[key] = (styles[key] as string).replace(/( {2,}|\n|)/g, '');
-			});
 		if (window.A11yUi?.Themes?.[theme] && typeof window.A11yUi.Themes[theme]) {
 			setValue(JSON.stringify(window.A11yUi.Themes[theme]));
 		}
