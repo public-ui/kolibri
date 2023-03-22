@@ -23,7 +23,6 @@
 	width: 0.375em;
 }
 .checkbox input[type='checkbox']:indeterminate:before {
-	background-color: var(--kolibri-color-normal);
 	height: 0.35em;
 	left: 0.14em;
 	top: 0.45em;

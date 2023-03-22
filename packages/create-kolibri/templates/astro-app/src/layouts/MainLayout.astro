@@ -10,19 +10,21 @@ import Search from '../components/Search';
 		<meta name="description" content="Webanwendung mit der KoliBri-Komponentenbibliothek." />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
 		<link rel="stylesheet" href="assets/bundes/style.css" />
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
 		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+		<link rel="stylesheet" href="assets/kreon/style.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
 		<meta name="robots" content="noindex" />
 		<meta name="kolibri" content="dev-mode=true" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.0';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.5';
 			register([ITZBund], defineCustomElements)
 				.then(() => {})
 				.catch(console.warn);

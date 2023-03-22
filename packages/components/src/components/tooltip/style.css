@@ -21,9 +21,6 @@ kol-tooltip #arrow {
 }
 
 kol-tooltip kol-badge {
-	border-radius: var(--kolibri-border-radius);
-	font-size: calc(4 * var(--kolibri-spacing));
-	max-width: 300px;
 	position: relative;
 	z-index: 1000;
 }

@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.0';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.5';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.0';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.5';
 		register([ITZBund], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -240,6 +240,10 @@ Folgende Icon-Fonts werden _'out-of-the-box'_ unterstützt.
 <kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateien der Icon-Fonts eingebunden sind.</kol-alert>`,
 	props: `_aria-label, _icon, _part`
 },{
+	name: `image`,
+	desc: `Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
+	props: `_alt, _loading, _sizes, _src, _srcset`
+},{
 	name: `indented-text`,
 	desc: `Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate.
 
@@ -346,6 +350,12 @@ durchlaufen werden.`,
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
 	props: `_max, _type, _unit, _value`
+},{
+	name: `quote`,
+	desc: `The quote component is implemented in two variants. The first variant is the default 'short' variant as inline quote with quotation marks. The second variant is the indented 'long' variant. The indented variant is used to highlight a text passage or information visually.
+
+Both variants can be extended with a 'cite' element. The 'cite' element is used to identify the source of a quotation and will be displayed below the quote as a link.`,
+	props: `_caption, _href, _quote, _variant`
 },{
 	name: `select`,
 	desc: `Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.`,
@@ -508,15 +518,15 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Option<W3CInputValue>[] | string, Option<number>[] | string, SelectOption<W3CInputValue>[] | string, string | string[]`,
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
+	name: `_variant`,
+	desc: `Gibt an, welche Ausprägung der Button hat.`,
+	types: `"block" | "inline", "button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
+	comps: `alert, button, input-checkbox, link-button, nav, pagination, quote`
+},{
 	name: `_auto-complete`,
 	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
 	types: `"off" | "on"`,
 	comps: `input-color, input-date, input-email, input-number, input-password, input-range, input-text`
-},{
-	name: `_variant`,
-	desc: `Gibt an, welche Ausprägung der Button hat.`,
-	types: `"button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
-	comps: `alert, button, input-checkbox, link-button, nav, pagination`
 },{
 	name: `_tooltip-align`,
 	desc: `Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.`,
@@ -623,6 +633,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `NavLinkProps[] | string, NavLinkWithChildrenProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
+	name: `_href`,
+	desc: `Gibt die Ziel-Url des Links an.`,
+	types: `string`,
+	comps: `link, link-button, quote`
+},{
 	name: `_custom-class`,
 	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
 	types: `string`,
@@ -635,11 +650,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_target`,
 	desc: `Definiert das Verhalten, bei dem der Link geöffnet werden soll.`,
-	types: `string`,
-	comps: `link, link-button`
-},{
-	name: `_href`,
-	desc: `Gibt die Ziel-Url des Links an.`,
 	types: `string`,
 	comps: `link, link-button`
 },{
@@ -667,6 +677,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, ob der Alert ein Schließen-Icon hat.`,
 	types: `boolean`,
 	comps: `alert, toast`
+},{
+	name: `_caption`,
+	desc: `Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.`,
+	types: `string`,
+	comps: `quote, table`
 },{
 	name: `_width`,
 	desc: `Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).`,
@@ -758,6 +773,31 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `details`
 },{
+	name: `_srcset`,
+	desc: `Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.`,
+	types: `string`,
+	comps: `image`
+},{
+	name: `_src`,
+	desc: `Gibt die Quell-URL an.`,
+	types: `string`,
+	comps: `image`
+},{
+	name: `_sizes`,
+	desc: `...`,
+	types: `string`,
+	comps: `image`
+},{
+	name: `_loading`,
+	desc: `Gibt den Lademodus an.`,
+	types: `"eager" | "lazy"`,
+	comps: `image`
+},{
+	name: `_alt`,
+	desc: `Gibt den alternativen Text an.`,
+	types: `string`,
+	comps: `image`
+},{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
 	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: Alignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
@@ -803,9 +843,13 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean | string`,
 	comps: `form`
 },{
+	name: `_quote`,
+	desc: `The text of the quote.`,
+	types: `string`,
+	comps: `quote`
+},{
 	name: `_part`,
-	desc: `Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-/**`,
+	desc: `Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)`,
 	types: `string`,
 	comps: `icon`
 },{
@@ -827,11 +871,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_data`,
 	desc: `Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.`,
 	types: `KoliBriDataType[] | string`,
-	comps: `table`
-},{
-	name: `_caption`,
-	desc: `Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.`,
-	types: `string`,
 	comps: `table`
 },{
 	name: `_indeterminate`,

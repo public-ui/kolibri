@@ -1,13 +1,14 @@
 @import '../../assets/codicons/codicon.css';
-@import '../../assets/fontawesome-free/css/all.css';
-@import '../../assets/icofont/icofont.css';
 
 :host {
 	color: inherit;
+	display: contents;
 	font-size: inherit;
 	line-height: inherit;
 }
+
 :host > i {
-	display: inline-block;
-	overflow: hidden;
+	font-size: inherit;
+	height: 1em;
+	width: 1em;
 }

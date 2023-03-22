@@ -1,9 +1,7 @@
 @import '../style.css';
+@import '../host-display-block.css';
 
 :host > div {
-	border-left-color: var(--kolibri-border-color);
 	border-left-style: solid;
-	border-left-width: var(--kolibri-spacing);
-	display: block;
-	padding: calc(var(--kolibri-spacing) / 2) calc(2 * var(--kolibri-spacing));
+	padding-left: 0.5em;
 }

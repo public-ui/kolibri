@@ -44,17 +44,17 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
-								<kol-icon _ariaLabel="" _icon="fa-solid fa-house" />…
+								<kol-icon _ariaLabel="" _icon="codicon codicon-home" />…
 							</li>
 						)}
 						{this.state._links.map((link, index: number) => {
 							return (
 								<li key={index}>
-									{index !== 0 && <kol-icon _ariaLabel="" _icon="fa-solid fa-angle-right" _part="separator" exportparts="separator" />}
+									{index !== 0 && <kol-icon _ariaLabel="" _icon="codicon codicon-chevron-right" />}
 									{index === lastIndex ? (
 										<span>
 											{link._iconOnly ? (
-												<kol-icon _ariaLabel={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'fa-solid fa-link-slash'} />
+												<kol-icon _ariaLabel={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 											) : (
 												<Fragment>{link._label}</Fragment>
 											)}

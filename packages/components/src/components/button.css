@@ -1,25 +1,23 @@
 @import './style.css';
+@import './button-and-link.css';
+
+:host {
+	display: inline-block;
+}
+
+:is(a, button) {
+	width: 100%;
+}
 
 a {
 	text-decoration-line: none;
 }
 
-a,
-button {
-	display: inline-block;
-	min-height: 44px;
-	min-width: 44px;
+:is(a, button) {
+	text-align: center;
 }
 
-a:active,
-button:active {
-	outline: 0;
-	box-shadow: none;
-}
-
-a:disabled,
-button:disabled {
-	box-shadow: none;
+:is(a, button):disabled {
 	cursor: not-allowed;
 	opacity: 0.5;
 }

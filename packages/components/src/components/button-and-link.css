@@ -1,14 +1,13 @@
-:host {
-	display: inline-block;
-}
-
-a,
-button {
+/**
+ * Dieses CSS stellt sicher, dass der Standard-Style
+ * von A und Button resettet werden.
+ */
+:is(a, button) {
 	background-color: transparent;
 	border: none;
-	font-size: inherit;
 	margin: 0;
 	padding: 0;
 	transition-duration: 0.5s;
 	transition-property: background-color, color, border-color;
+	width: 100%;
 }

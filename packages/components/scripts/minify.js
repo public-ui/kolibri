@@ -24,4 +24,3 @@ function minifyFiles(dir) {
 }
 
 minifyFiles(path.resolve(__dirname, '../dist'));
-minifyFiles(path.resolve(__dirname, '../www'));

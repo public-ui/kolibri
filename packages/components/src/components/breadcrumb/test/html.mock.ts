@@ -21,14 +21,10 @@ export const getBreadcrumbHtml = (props: Props): string => {
 				<li>
 				${
 					index !== 0
-						? getIconHtml(
-								{
-									_ariaLabel: '',
-									_icon: 'fa-solid fa-angle-right',
-									_part: 'separator',
-								},
-								' exportparts="separator"'
-						  )
+						? getIconHtml({
+								_ariaLabel: '',
+								_icon: 'codicon codicon-chevron-right',
+						  })
 						: ''
 				}
 					${
@@ -56,7 +52,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 					props._links.length === 0
 						? `<li>${getIconHtml({
 								_ariaLabel: '',
-								_icon: 'fa-house fa-solid',
+								_icon: 'codicon codicon-home',
 						  })}…</li>`
 						: ''
 				}

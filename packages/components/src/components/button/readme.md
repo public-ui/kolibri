@@ -51,8 +51,8 @@ Für die eindeutige Beschriftung des Buttons nutzen Sie das Attribut **`_label`*
 Über das Attribut **`_icon`** wird eine JSON-Struktur übergeben, mit der alle Paramater zu Anzeige des Icon im Button festgelegt wird.
 
 ```html
-_icon = "{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'fa-solid fa-arrow-up'},'right': {'icon': 'fa-solid
-fa-arrow-right'},'bottom': {'icon': 'fa-solid fa-arrow-down'},'left': {'icon': 'fa-solid fa-arrow-left'}}";
+_icon = "{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'codicon codicon-arrow-up'},'right': {'icon': 'fa-solid
+fa-arrow-right'},'bottom': {'icon': 'codicon codicon-arrow-down'},'left': {'icon': 'codicon codicon-arrow-left'}}";
 ```
 
 Es ist möglich, ein Icon an jeder Position des Button anzuzeigen, sowie die Ausgabe mehrerer Icons im Button. Jedes Icon erhält in der JSON-Struktur einen eigenen Abschnitt, in dem seine Properties festgelegt werden.
@@ -73,13 +73,13 @@ Als weitere Properties zur Konfiguration des Icon stehen zur Verfügung:
 - icon: legt das anzuzeigende Icon aus der Icofont-Bibliothek fest.
 
 ```html
-"{'top': {'icon':'fa-solid fa-arrow-up'}";
+"{'top': {'icon':'codicon codicon-arrow-up'}";
 ```
 
 - style: übergibt ggfls. eigene CSS-Stylinganweisungen an das Icon, wie z.B. font-size, transform oder color.
 
 ```html
-"{'top': {'style': {'font-size':'200%','color':'#040404','transform':'rotate(45deg)'},'icon':'fa-solid fa-arrow-up'}";
+"{'top': {'style': {'font-size':'200%','color':'#040404','transform':'rotate(45deg)'},'icon':'codicon codicon-arrow-up'}";
 ```
 
 Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie [hier](https://icofont.com/icons)
@@ -157,28 +157,6 @@ Probleme mit Disabled-Status
 | `_type`               | `_type`          | Gibt an, welche Typ der Button hat.                                                                                                                | `"button" \| "reset" \| "submit" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `'button'`  |
 | `_value`              | --               | Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.                                                                                   | `unknown`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
 | `_variant`            | `_variant`       | Gibt an, welche Ausprägung der Button hat.                                                                                                         | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `'normal'`  |
-
-## CSS Custom Properties
-
-| Name                        | Description                     |
-| --------------------------- | ------------------------------- |
-| `--kolibri-border-color`    | Default color of the border.    |
-| `--kolibri-border-radius`   | Default radius of the border.   |
-| `--kolibri-border-width`    | Default width of the border.    |
-| `--kolibri-color-danger`    | Default color of the danger.    |
-| `--kolibri-color-disabled`  | Default color of the disabled.  |
-| `--kolibri-color-error`     | Default color of the error.     |
-| `--kolibri-color-ghost`     | Default color of the ghost.     |
-| `--kolibri-color-info`      | Default color of the info.      |
-| `--kolibri-color-normal`    | Default color of the normal.    |
-| `--kolibri-color-primary`   | Default color of the primary.   |
-| `--kolibri-color-secondary` | Default color of the secondary. |
-| `--kolibri-color-success`   | Default color of the success.   |
-| `--kolibri-color-text`      | Default color of the text.      |
-| `--kolibri-color-visited`   | Default color of the visited.   |
-| `--kolibri-color-warning`   | Default color of the warning.   |
-| `--kolibri-font-family`     | Default font family.            |
-| `--kolibri-font-size`       | Default font size.              |
 
 ## Dependencies
 

@@ -121,28 +121,6 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 | `"link"`   | Ermöglicht das Stylen des Links.          |
 | `"span"`   | Ermöglicht das Stylen des Linktextes.     |
 
-## CSS Custom Properties
-
-| Name                        | Description                     |
-| --------------------------- | ------------------------------- |
-| `--kolibri-border-color`    | Default color of the border.    |
-| `--kolibri-border-radius`   | Default radius of the border.   |
-| `--kolibri-border-width`    | Default width of the border.    |
-| `--kolibri-color-danger`    | Default color of the danger.    |
-| `--kolibri-color-disabled`  | Default color of the disabled.  |
-| `--kolibri-color-error`     | Default color of the error.     |
-| `--kolibri-color-ghost`     | Default color of the ghost.     |
-| `--kolibri-color-info`      | Default color of the info.      |
-| `--kolibri-color-normal`    | Default color of the normal.    |
-| `--kolibri-color-primary`   | Default color of the primary.   |
-| `--kolibri-color-secondary` | Default color of the secondary. |
-| `--kolibri-color-success`   | Default color of the success.   |
-| `--kolibri-color-text`      | Default color of the text.      |
-| `--kolibri-color-visited`   | Default color of the visited.   |
-| `--kolibri-color-warning`   | Default color of the warning.   |
-| `--kolibri-font-family`     | Default font family.            |
-| `--kolibri-font-size`       | Default font size.              |
-
 ## Dependencies
 
 ### Used by
@@ -150,6 +128,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 - [kol-breadcrumb](../breadcrumb)
 - [kol-input-adapter-leanup](../input-adapter-leanup)
 - [kol-link-group](../link-group)
+- [kol-quote](../quote)
 - [kol-skip-nav](../skip-nav)
 
 ### Depends on
@@ -173,6 +152,7 @@ graph TD;
   kol-breadcrumb --> kol-link
   kol-input-adapter-leanup --> kol-link
   kol-link-group --> kol-link
+  kol-quote --> kol-link
   kol-skip-nav --> kol-link
   style kol-link fill:#f9f,stroke:#333,stroke-width:4px
 ```

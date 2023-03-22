@@ -6,13 +6,15 @@
 		<meta name="description" content="Webanwendung mit der KoliBri-Komponentenbibliothek." />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
 		<link rel="stylesheet" href="assets/bundes/style.css" />
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
 		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+		<link rel="stylesheet" href="assets/kreon/style.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
 		<link rel="stylesheet" href="style.css" />
 		<meta name="robots" content="noindex" />
 		<meta name="kolibri" content="dev-mode=true" />
@@ -32,9 +34,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.0/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.0';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.5/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.5';
 			register([ITZBund], defineCustomElements)
 				.then(() => {})
 				.catch(console.warn);
@@ -55,22 +57,22 @@
 			</header>
 			<main class="grid md:grid-cols-2 gap-6 p-12">
 				<kol-alert _type="success" _heading="Dokumentation" _variant="card" _level="2">
-					<kol-link _href="https://public-ui.github.io/" _fill _target="_blank"
+					<kol-link _href="https://public-ui.github.io/" _label="" _target="_blank"
 						><kol-icon _ariaLabel="" _icon="fa-sharp fa-solid fa-book"></kol-icon> Dokumentation öffnen</kol-link
 					>
 				</kol-alert>
 				<kol-alert _type="info" _heading="Theming" _variant="card" _level="2">
-					<kol-link _href="https://public-ui.github.io/?path=/docs/designer--page" _fill _target="_blank"
+					<kol-link _href="https://public-ui.github.io/docs/concepts/styling/designer" _label="" _target="_blank"
 						><kol-icon _ariaLabel="" _icon="fa-solid fa-palette"></kol-icon> KoliBri-Designer öffnen</kol-link
 					>
 				</kol-alert>
 				<kol-alert _type="warning" _heading="Mitwirken" _variant="card" _level="2">
-					<kol-link _href="https://github.com/public-ui/kolibri/" _fill _target="_blank"
+					<kol-link _href="https://github.com/public-ui/kolibri/" _label="" _target="_blank"
 						><kol-icon _ariaLabel="" _icon="fa-brands fa-github"></kol-icon> Github öffnen</kol-link
 					>
 				</kol-alert>
 				<kol-alert _type="error" _heading="Kontakt" _variant="card" _level="2">
-					<kol-link _href="mailto:kolibri@itzbund.de" _fill _target="_blank"
+					<kol-link _href="mailto:kolibri@itzbund.de" _label="" l="" _target="_blank"
 						><kol-icon _ariaLabel="" _icon="fa-solid fa-envelope"></kol-icon> E-Mail schreiben</kol-link
 					>
 				</kol-alert>

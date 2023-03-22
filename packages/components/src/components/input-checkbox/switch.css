@@ -25,6 +25,5 @@
 	transform: translateX(1.5em);
 }
 .switch input[type='checkbox']:indeterminate:before {
-	background-color: var(--kolibri-color-normal);
 	transform: translateX(0.75em);
 }

@@ -1,25 +1,23 @@
 @import './style.css';
+@import './button-and-link.css';
 
-a,
-button {
+:host {
+	display: inline-flex;
+}
+
+:is(a, button) {
+	align-items: baseline;
+	text-align: left;
 	text-decoration-line: underline;
 }
 
 a {
 	display: inline-flex;
-}
-
-button {
-	display: inline-block;
+	place-items: center;
 }
 
 :is(a, button):is(:focus, :hover) {
 	text-decoration-thickness: 0.2em;
-}
-
-kol-icon {
-	display: inline-block;
-	padding: 0 var(--kolibri-spacing);
 }
 
 .hidden {
@@ -36,7 +34,11 @@ kol-icon {
 }
 .skip:focus {
 	background-color: white;
-	box-shadow: 0 0 calc(2 * var(--kolibri-spacing)) calc(2 * var(--kolibri-spacing)) white;
 	left: unset;
+	padding: 1em;
 	position: unset;
+}
+
+kol-icon.external-link-icon {
+	display: inline-flex;
 }

@@ -11,7 +11,7 @@
 }
 :host > div > div {
 	height: 100%;
-	padding: calc(4 * var(--kolibri-spacing));
+
 	position: absolute;
 	width: 100%;
 }

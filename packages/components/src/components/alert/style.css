@@ -1,73 +1,23 @@
 @import '../style.css';
+@import '../host-display-block.css';
 
-:host {
-	display: inline-block;
-}
 :host > div {
-	background-color: white;
-	border-radius: var(--kolibri-border-radius);
-	border-style: solid;
-	border-width: calc(2 * var(--kolibri-border-width));
-	display: inline-grid;
+	display: grid;
 	place-items: stretch;
 	overflow: hidden;
-	width: 100%;
 }
 
 .heading {
-	display: flex;
-	gap: var(--kolibri-spacing);
+	display: grid;
+	grid-template-columns: auto 1fr auto;
 	place-items: center;
 }
 .heading > div {
 	display: grid;
-	gap: var(--kolibri-spacing);
-	margin: var(--kolibri-spacing) var(--kolibri-spacing) var(--kolibri-spacing) 0;
+	justify-self: start;
 }
 .heading .heading-icon {
 	align-items: center;
 	align-self: stretch;
 	display: inline-flex;
-	color: white;
-	padding: calc(2 * var(--kolibri-spacing));
-}
-.card > .heading .heading-icon {
-	border-radius: 0 0 var(--kolibri-border-radius) 0;
-}
-.heading .close button {
-	min-width: 44px;
-	min-height: 44px;
-}
-.card > .content {
-	padding: var(--kolibri-spacing);
-}
-.default {
-	border-color: var(--kolibri-color-normal);
-}
-.default .heading-icon {
-	background-color: var(--kolibri-color-normal);
-}
-.error {
-	border-color: var(--kolibri-color-error);
-}
-.error .heading-icon {
-	background-color: var(--kolibri-color-error);
-}
-.info {
-	border-color: var(--kolibri-color-info);
-}
-.info .heading-icon {
-	background-color: var(--kolibri-color-info);
-}
-.success {
-	border-color: var(--kolibri-color-success);
-}
-.success .heading-icon {
-	background-color: var(--kolibri-color-success);
-}
-.warning {
-	border-color: var(--kolibri-color-warning);
-}
-.warning .heading-icon {
-	background-color: var(--kolibri-color-warning);
 }

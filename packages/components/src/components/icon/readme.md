@@ -17,12 +17,12 @@ Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
 ### Code
 
 ```html
-<kol-icon _aria-label="Zu Hause" _icon="fa-solid fa-house"></kol-icon>
+<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 ```
 
 ### Beispiel
 
-<kol-icon _aria-label="Zu Hause" _icon="fa-solid fa-house"></kol-icon>
+<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 
 ## Verwendung
 
@@ -52,11 +52,17 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                                                                                                                                                                                 | Type                  | Default     |
-| ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt das Aria-Label am Icon an.                                                                                                                                                                                                             | `string`              | `undefined` |
-| `_icon` _(required)_      | `_icon`       | Gibt einen Identifier eines Icons aus den Icon's an.                                                                                                                                                                                        | `string`              | `undefined` |
-| `_part`                   | `_part`       | <span style="color:red">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /\*\* | `string \| undefined` | `undefined` |
+| Property                  | Attribute     | Description                                                                                                                                                                                                                           | Type                  | Default     |
+| ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt das Aria-Label am Icon an.                                                                                                                                                                                                       | `string`              | `undefined` |
+| `_icon` _(required)_      | `_icon`       | Gibt einen Identifier eines Icons aus den Icon's an.                                                                                                                                                                                  | `string`              | `undefined` |
+| `_part`                   | `_part`       | <span style="color:red">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) | `string \| undefined` | `undefined` |
+
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"icon"` |             |
 
 ## Dependencies
 

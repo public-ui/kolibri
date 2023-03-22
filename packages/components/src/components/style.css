@@ -1,16 +1,11 @@
-@import './tokens.css';
 @import './a11y.css';
-@import './button-and-link.css';
 
 :host {
 	/**
-	 * For design systems it is important to have a basis font-family.
+	 * The max-width is needed to prevent the table from overflowing the
+	 * parent node, if the table is wider than the parent node.
 	 */
-	font-family: var(--kolibri-font-family);
-	/**
-	 * This rule enables the font-size to be inherited from outside for easy scaling.
-	 */
-	font-size: inherit;
+	max-width: 100%;
 }
 
 * {
@@ -20,49 +15,26 @@
 	box-sizing: border-box;
 }
 
-kol-icon {
-	color: inherit;
-}
-
 kol-span-wc {
 	display: grid;
-	gap: var(--kolibri-spacing);
 	place-items: center;
 }
 kol-span-wc > span {
 	display: flex;
-	gap: var(--kolibri-spacing);
 	place-items: center;
-}
-kol-span-wc > kol-icon,
-kol-span-wc > span > kol-icon {
-	display: inline-grid;
-	place-items: center;
-	width: 1em;
-	height: 1em;
 }
 
 a,
 button,
 input,
+option,
 select,
 textarea {
-	appearance: none;
 	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
 }
 
 .icon-only > kol-span-wc > span > span {
 	display: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: var(--kolibri-font-family);
-	font-size: var(--kolibri-font-size);
-	margin: 0;
-	padding: 0;
 }

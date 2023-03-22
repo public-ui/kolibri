@@ -47,13 +47,6 @@ kol-logo {
 	width: 175px;
 }
 
-/* .bordered {
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--kolibri-border-color);
-  border-radius: var(--kolibri-border-radius);
-} */
-
 .bg-black {
 	background-color: black;
 }
@@ -96,7 +89,8 @@ kol-card[_level='6'] {
 
 kol-icon[_icon='codicon codicon-home'],
 kol-icon[_icon='fa-solid fa-house'],
-kol-icon[_icon='icofont-home'] {
+kol-icon[_icon='icofont-home'],
+kol-icon[_icon='ti ti-home'] {
 	color: #00646b;
 	font-size: 500%;
 }
