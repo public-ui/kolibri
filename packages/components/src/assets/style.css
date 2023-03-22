@@ -1,8 +1,32 @@
+body,
+* {
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	display: grid;
+	gap: 1.5rem;
+	margin-inline: auto;
+	padding-inline: 2rem;
+}
+
 .font-80 {
 	font-size: 80%;
 }
 .font-60 {
 	font-size: 60%;
+}
+
+.gap {
+	gap: 0.5rem;
+}
+
+.grid {
+	display: grid;
 }
 
 kol-accordion p,
@@ -23,7 +47,6 @@ kol-card p {
 kol-accordion div[slot='content'],
 kol-accordion div[slot='header'] {
 	padding: 0.5rem;
-	padding-left: 0rem;
 }
 
 kol-logo {
@@ -37,9 +60,9 @@ kol-badge[_label='Und ich!'] {
 
 kol-button.min-width {
 	display: inline-block;
-	width: 8rem;
-	margin-right: 0.1rem;
 	margin-bottom: 0.1rem;
+	margin-right: 0.1rem;
+	width: 8rem;
 }
 
 kol-logo {
@@ -47,11 +70,23 @@ kol-logo {
 	width: 175px;
 }
 
+.bordered {
+	border: 1px solid var(--kolibri-border-color);
+	border-radius: var(--kolibri-border-radius);
+}
+
 .bg-black {
 	background-color: black;
 }
 .bg-blueviolet {
 	background-color: blueviolet;
+}
+
+.p-b {
+	padding-block: 0.5rem;
+}
+.p-i {
+	padding-inline: 1rem;
 }
 
 .row {
@@ -65,8 +100,7 @@ kol-logo {
 
 .col-12 {
 	overflow: hidden;
-	padding-top: 0.25rem;
-	padding-bottom: 0.25rem;
+	padding-block: 0.25rem;
 }
 
 hr {
