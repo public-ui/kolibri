@@ -43,11 +43,11 @@ Mit der Property **`_height`** kann eine individuelle Höhe der Selectbox mittel
 
 ### Tastatursteuerung
 
-| Taste               | Funktion                              |
-| ------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`               | Fokussiert das Auswahlfeld.           |
-| `Enter`             | Öffnet bzw.schließt die Auswahlliste. |
-| `Pfeil-Tasten (oben | unten)`                               | Wechselt in der Auswahlliste das aktivierte Element. Diese Funktion ist auch bei eingeklappter Auswahlliste aktiv. Bei Mehrfachauswahl muss zur Auswahl mehrerer Einträge zusätzlich die Shift-Taste gedrück gehalten werden. |
+| Taste                         | Funktion                                                                                                                                                                                                                      |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                         | Fokussiert das Auswahlfeld.                                                                                                                                                                                                   |
+| `Enter`                       | Öffnet bzw.schließt die Auswahlliste.                                                                                                                                                                                         |
+| `Pfeil-Tasten (oben / unten)` | Wechselt in der Auswahlliste das aktivierte Element. Diese Funktion ist auch bei eingeklappter Auswahlliste aktiv. Bei Mehrfachauswahl muss zur Auswahl mehrerer Einträge zusätzlich die Shift-Taste gedrück gehalten werden. |
 
 ### `Single-Select-Filter` für Select-Komponente
 

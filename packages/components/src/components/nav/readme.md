@@ -20,7 +20,7 @@ noch die Icons ausgegeben.
 
 ```html
 <kol-nav
-	_links='[{_"label":"Startseite", "_href":"startseite"},{_"label":"Unterseite von Startseite", "_href":"unterseite"}]'
+	_links='[{"_label":"Startseite", "_href":"startseite"},{"_label":"Unterseite von Startseite", "_href":"unterseite"}]'
 	_has-compact-button="true"
 ></kol-nav>
 ```
