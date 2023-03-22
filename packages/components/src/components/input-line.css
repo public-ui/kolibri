@@ -30,6 +30,7 @@ select:not([multiple]) {
 	display: grid;
 	height: var(--a11y-min-size);
 	place-items: center;
+	width: 2.5em;
 }
 .icon-left input,
 .icon-left select {

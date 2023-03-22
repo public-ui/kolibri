@@ -1,20 +1,19 @@
 @import './style.css';
-@import './button-and-link.css';
 
 :host {
 	display: inline-block;
 }
 
 :is(a, button) {
-	width: 100%;
-}
-
-a {
+	display: inline-flex;
+	place-items: center;
+	text-align: center;
 	text-decoration-line: none;
 }
 
-:is(a, button) {
-	text-align: center;
+:is(a, button) > kol-span-wc {
+	margin: auto;
+	width: 100%;
 }
 
 :is(a, button):disabled {
