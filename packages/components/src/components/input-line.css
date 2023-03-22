@@ -18,9 +18,6 @@ select:not([multiple]) {
 	height: 2.75em;
 }
 
-.required label > span::after {
-	content: '*';
-}
 .icons {
 	display: flex;
 	justify-content: space-between;
