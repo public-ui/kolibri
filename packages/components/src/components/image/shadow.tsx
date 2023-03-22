@@ -40,7 +40,7 @@ export class KolImage implements ComponentApi {
 
 	@State() public state: States = {
 		_alt: '…', // ⚠ required
-		_loading: 'lazy', // ⚠ required
+		_loading: 'lazy',
 		_src: '…', // ⚠ required
 	};
 
@@ -63,7 +63,6 @@ export class KolImage implements ComponentApi {
 
 	@Watch('_src')
 	public validateSrc(value?: string): void {
-		console.log('src', value);
 		watchString(this, '_src', value, {
 			required: true,
 		});

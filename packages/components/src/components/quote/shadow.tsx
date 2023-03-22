@@ -43,12 +43,16 @@ export class KolQuote implements ComponentApi {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		watchString(this, '_href', value);
+		watchString(this, '_href', value, {
+			required: true,
+		});
 	}
 
 	@Watch('_quote')
 	public validateQuote(value?: string): void {
-		watchString(this, '_quote', value);
+		watchString(this, '_quote', value, {
+			required: true,
+		});
 	}
 
 	@Watch('_variant')

@@ -8,11 +8,7 @@
 }
 
 :host > i {
+	font-size: inherit;
 	height: 1em;
 	width: 1em;
-}
-
-:host > i.codicon[class*='codicon-'] {
-	display: contents;
-	font-size: inherit;
 }
