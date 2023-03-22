@@ -67,20 +67,7 @@ export const AppComponent: Component = () => {
 	restoreThemes();
 
 	const renderJsonString = (theme: string): void => {
-		if (
-			typeof window.A11yUi === 'object' &&
-			window.A11yUi !== null &&
-			typeof window.A11yUi.Themes === 'object' &&
-			window.A11yUi.Themes !== null &&
-			typeof window.A11yUi.Themes[theme] === 'object' &&
-			window.A11yUi.Themes[theme] !== null &&
-			window.A11yUi.Themes[theme] !== undefined
-		) {
-			const styles = window.A11yUi.Themes[theme] as string;
-			const keys = Object.getOwnPropertyNames(styles);
-			keys.forEach((key: string) => {
-				styles[key] = (styles[key] as string).replace(/( {2,}|\n|)/g, '');
-			});
+		if (window.A11yUi?.Themes?.[theme] && typeof window.A11yUi.Themes[theme]) {
 			setValue(JSON.stringify(window.A11yUi.Themes[theme]));
 		}
 	};
@@ -153,7 +140,7 @@ export const AppComponent: Component = () => {
 	};
 
 	const getList = (): string[] => {
-		if (typeof window.A11yUi === 'object' && window.A11yUi !== null && typeof window.A11yUi.Themes === 'object' && window.A11yUi.Themes !== null) {
+		if (window.A11yUi?.Themes && typeof window.A11yUi.Themes === 'object') {
 			return Object.getOwnPropertyNames(window.A11yUi.Themes);
 		} else {
 			return [];
@@ -169,6 +156,7 @@ export const AppComponent: Component = () => {
 						Theme
 					</KolInputText>
 					<KolInputCheckbox
+						_id="scope switch"
 						_on={{
 							onChange: () => {
 								setPropsStyle((props) => props === false);
@@ -208,6 +196,7 @@ export const AppComponent: Component = () => {
 							_tooltipAlign="bottom"
 						></KolButton>
 						<KolSelect
+							_id="component-select"
 							_list={TAG_NAME_LIST}
 							_on={{
 								onChange: (_event, value) => {
@@ -255,7 +244,9 @@ export const AppComponent: Component = () => {
 								<KolButton class="w-full sm:w-auto" _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
 							</div>
 							<div class="flex gap-2">
-								<KolInputFile _on={onChangeUpload}>Theme laden</KolInputFile>
+								<KolInputFile _id="theme-upload-input" _on={onChangeUpload}>
+									Theme laden
+								</KolInputFile>
 							</div>
 						</div>
 					</>
@@ -272,16 +263,16 @@ export const AppComponent: Component = () => {
 				<Match when={getShow() === 'result'}>
 					<div class="grid gap-2 p-4 default">
 						<div>
-							<KolHeading>Theming</KolHeading>
+							<KolHeading _headline="Theming"></KolHeading>
 							<KolAlert _type="info">
 								Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden Sie sich gerne an{' '}
-								<KolLink _href="mailto: ---@---.de">---@---.de</KolLink>
+								<KolLink _href="mailto: ---@---.de" _label="---@---.de"></KolLink>
 							</KolAlert>
 							<p>
 								Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet CSS-Definitionen, die jede Komponente individuell
 								stylt.
 							</p>
-							<KolHeading>Theme einbinden</KolHeading>
+							<KolHeading _headline="Theme einbinden"></KolHeading>
 							<p>
 								Um ihr Theme ({getTheme()}) in ihre Anwendung einzubinden, müssen Sie einfach den Quellcode kopieren und in z.B. die <code>main.ts</code> ihrer
 								Anwendung einfügen.
