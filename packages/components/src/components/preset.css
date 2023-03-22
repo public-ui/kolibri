@@ -7,4 +7,5 @@
 	border: none;
 	margin: 0;
 	padding: 0;
+	width: 100%; /* 100% needed for custom width from outside */
 }
