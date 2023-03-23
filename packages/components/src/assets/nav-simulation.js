@@ -154,10 +154,10 @@ function populateNavFromElements(nav, elements, numberOfChildren) {
 	elements.forEach((c) => {
 		if (counter >= numberOfChildren) counter = 0;
 		if (counter === 0) {
-			parentCount++;
 			const n = parentCount * numberOfChildren;
 			currentParent = { _label: `Komponente ${n + 1} bis ${n + numberOfChildren}`, _icon: 'codicon codicon-flame', _children: [] };
 			result.push(currentParent);
+			parentCount++;
 		}
 		currentParent._children.push(createEntry(c));
 		counter++;

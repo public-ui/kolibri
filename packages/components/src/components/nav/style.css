@@ -15,6 +15,10 @@
 	flex-direction: column;
 }
 
+.entry,
+.entry > kol-button-wc > button {
+	height: 100%;
+}
 .entry.has-children {
 	display: flex;
 	justify-content: space-between;
