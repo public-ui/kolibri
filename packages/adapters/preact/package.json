@@ -49,7 +49,7 @@
 		"@public-ui/react": "1.5.0-rc.5"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.5.0-rc.5",
+		"@public-ui/components": "1.5.0-rc.6",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"typescript": "4.9.5",
