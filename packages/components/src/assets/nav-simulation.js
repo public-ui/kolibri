@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable no-undef */
 document.querySelector('#nav-test')._links = [
 	{
@@ -120,3 +124,37 @@ document.querySelector('#click-nav')._links = [
 	},
 	{ _label: '4 Navigationspunkt', _href: '#abc' },
 ];
+
+setTimeout(() => {
+	const mainNav = document.querySelector('#main-nav');
+	const mainNavElements = document.querySelectorAll('main > kol-accordion');
+	const numberOfChildren = 6;
+	populateNavFromElements(mainNav, mainNavElements, numberOfChildren);
+}, 1000);
+
+function createEntry(c) {
+	return {
+		_label: c.getAttribute('_heading'),
+		_href: `#${c.id}`,
+		_icon: 'codicon codicon-flame',
+	};
+}
+
+function populateNavFromElements(nav, elements, numberOfChildren) {
+	const result = [];
+	let counter = 0;
+	let parentCount = 0;
+	let currentParent = null;
+	elements.forEach((c) => {
+		if (counter >= numberOfChildren) counter = 0;
+		if (counter === 0) {
+			parentCount++;
+			const n = parentCount * numberOfChildren;
+			currentParent = { _label: `Komponente ${n + 1} bis ${n + numberOfChildren}`, _icon: 'codicon codicon-flame', _children: [] };
+			result.push(currentParent);
+		}
+		currentParent._children.push(createEntry(c));
+		counter++;
+	});
+	nav._links = result;
+}
