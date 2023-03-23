@@ -48,7 +48,7 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.5.0-rc.5",
+		"@public-ui/components": "1.5.0-rc.6",
 		"@types/node": "ts4.9",
 		"@typescript-eslint/eslint-plugin": "5.56.0",
 		"@typescript-eslint/parser": "5.56.0",
@@ -58,7 +58,7 @@
 		"unbuild": "1.1.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.5"
+		"@public-ui/components": "1.5.0-rc.6"
 	},
 	"sideEffects": false,
 	"type": "module",
