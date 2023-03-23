@@ -47,7 +47,7 @@
 	},
 	"devDependencies": {
 		"@babel/types": "7.21.3",
-		"@public-ui/components": "1.5.0-rc.5",
+		"@public-ui/components": "1.5.0-rc.6",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -57,7 +57,7 @@
 		"unbuild": "1.1.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.5",
+		"@public-ui/components": "1.5.0-rc.6",
 		"vue": ">=3"
 	},
 	"sideEffects": false,
