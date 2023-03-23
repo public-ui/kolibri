@@ -1,8 +1,12 @@
 @import '../style.css';
 
-/** Liste */
+.list-container.absolute {
+	position: absolute;
+	inset: 100% 0 auto 0;
+}
 .list {
 	display: flex;
+	/** ul reset um das erwartete Verhalten zu erzeugen */
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
@@ -16,73 +20,11 @@
 	justify-content: space-between;
 }
 
-a:focus {
-	position: relative;
-	z-index: 1;
+.entry kol-link-wc {
+	flex-grow: 1;
 }
 
-.expand-button {
-	margin-right: 3px;
-}
-.expand-button button,
-.expand-button {
-	color: inherit;
+.expand-button-container {
 	display: grid;
 	place-content: center;
-}
-.expand-button button {
-	background-color: transparent;
-	border: none;
-}
-
-/** theme */
-* {
-	hyphens: var(--kolibri-hyphens);
-	font-family: var(--font-family);
-	line-height: var(--kolibri-line-height);
-	word-break: break-word;
-}
-
-.list {
-	background-color: var(--kolibri-color-normal);
-	border-radius: var(--kolibri-border-radius);
-	color: white;
-}
-
-.list.vertical > li:not(:first-child) {
-	border-top: 0.1em dotted white;
-}
-.list.horizontal > li:not(:first-child) {
-	border-left: 0.1em dotted white;
-}
-
-.entry {
-	padding: 0.125em;
-}
-.entry:focus,
-.entry:hover {
-	background-color: var(--kolibri-color-focus);
-}
-.entry.selected {
-	background-color: var(--kolibri-color-active);
-	font-weight: 700;
-}
-.entry.has-children.selected {
-	border-right: 0.375em solid var(--kolibri-color-accent);
-}
-
-a {
-	border: 1px solid transparent;
-	border-radius: var(--kolibri-border-radius);
-	color: inherit;
-	display: flex;
-	line-height: 2em;
-	padding: 0.5em;
-	text-decoration: none;
-}
-.entry a:focus {
-	outline-color: transparent;
-}
-a kol-icon + span {
-	margin-left: 0.5rem;
 }

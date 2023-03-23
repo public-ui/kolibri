@@ -83,7 +83,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolNav implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	private readonly onClick = (link: NavLinkWithChildrenProps): void => {
-		link._active = link._active === false;
+		link._active = !link._active;
 		this.state = {
 			...this.state,
 		};
@@ -100,7 +100,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	private linkList = (props: { links: NavLinkWithChildrenProps[]; deep: number }): JSX.Element => {
 		return (
 			<ul
-				class={`list ${this.state._orientation}${props.deep === 0 && this.state._orientation === 'horizontal' ? ' flex' : ''}`}
+				class={`list ${props.deep === 0 && this.state._orientation === 'horizontal' ? ' horizontal' : ' vertical'}`}
 				data-deep={props.deep}
 				part={`nav ${this.state._orientation}`}
 			>
@@ -115,8 +115,8 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 							}`}
 						>
 							{hasChildren ? (
-								<div>
-									<div class={{ 'entry has-children': true, 'expanded selected': !!link._active }}>
+								<div style={{ position: 'relative' }}>
+									<div class={{ 'entry has-children': true, 'expanded selected': !!link._active, 'has-link': !!link._href }}>
 										<kol-link-wc
 											exportparts={`icon,link,span${link._active === true ? ',selected' : ''}`}
 											// _ariaCurrent will not be set here, since it will be set on a child of this item.
@@ -127,13 +127,15 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 											_icon={link._icon}
 											_iconOnly={this.state._compact === true || link._iconOnly === true}
 											_label={link._label}
+											onClick={link._href ? undefined : () => this.onClick(link)}
 										></kol-link-wc>
 										<kol-button-wc
-											_disabled={!this.state._collapsible}
+											_customClass="expand-button"
+											_disabled={!this.state._collapsible || !link._href}
 											_icon={'codicon codicon-' + (link._active ? 'remove' : 'add')}
 											_label=""
-											_variant="ghost"
-											class="expand-button"
+											_variant="custom"
+											class="expand-button-container"
 											onClick={() => this.onClick(link)}
 										></kol-button-wc>
 									</div>
