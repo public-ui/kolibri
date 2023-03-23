@@ -30,7 +30,7 @@
 	},
 	"devDependencies": {
 		"@slidev/cli": "0.40.3",
-		"npm-check-updates": "16.7.13",
+		"npm-check-updates": "16.8.0",
 		"playwright-chromium": "1.31.2",
 		"prettier": "2.8.6",
 		"rimraf": "4.4.0",
