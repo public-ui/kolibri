@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.5
+  '@public-ui/components': 1.5.0-rc.6
   '@types/node': ts4.9
   '@typescript-eslint/eslint-plugin': 5.56.0
   '@typescript-eslint/parser': 5.56.0
@@ -11,7 +11,7 @@ specifiers:
   unbuild: 1.1.1
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.5
+  '@public-ui/components': 1.5.0-rc.6
   '@types/node': 18.15.5
   '@typescript-eslint/eslint-plugin': 5.56.0_iskin7c6dxqunwflhstekcjqmq
   '@typescript-eslint/parser': 5.56.0_vgl77cfdswitgr47lm5swmv43m
@@ -765,8 +765,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.5:
-    resolution: {integrity: sha512-NEu5u286hCwk9zc3IBCG0TAGZw1qUyGSWSs3JcRqRnLEWXD0pmFFRMJtxiTrqZC9mDaG0ptQujb5Ol0ahB9PGQ==}
+  /@public-ui/components/1.5.0-rc.6:
+    resolution: {integrity: sha512-rf2rXgQnX+La9kJDtDhBCasBxygWaEINV0p3zzldGciSoij9lLTbXD5HGjxOLcAIpmIpPAgPP086YofLPHVQOw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
@@ -1101,7 +1101,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001469
-      electron-to-chromium: 1.4.334
+      electron-to-chromium: 1.4.336
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -1227,8 +1227,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium/1.4.334:
-    resolution: {integrity: sha512-laZ1odk+TRen6q0GeyQx/JEkpD3iSZT7ewopCpKqg9bTjP1l8XRfU3Bg20CFjNPZkp5+NDBl3iqd4o/kPO+Vew==}
+  /electron-to-chromium/1.4.336:
+    resolution: {integrity: sha512-yLaoSY/ngjgRpEGU4ueeW0vlj456idQBn74r6s1yutoOIadvd7rwt05TGenPj0PoetJ5pEHomVkmfTdIgqPfJw==}
     dev: true
 
   /esbuild/0.16.17:
@@ -1369,7 +1369,7 @@ packages:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
-      js-sdsl: 4.3.0
+      js-sdsl: 4.4.0
       js-yaml: 4.1.0
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
@@ -1708,8 +1708,8 @@ packages:
     hasBin: true
     dev: true
 
-  /js-sdsl/4.3.0:
-    resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
+  /js-sdsl/4.4.0:
+    resolution: {integrity: sha512-FfVSdx6pJ41Oa+CF7RDaFmTnCaFhua+SNYQX74riGOpl96x+2jQCqEfQ2bnXu/5DPCqlRuiqyvTJM0Qjz26IVg==}
     dev: true
 
   /js-tokens/4.0.0:

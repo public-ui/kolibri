@@ -4,13 +4,13 @@ specifiers:
   '@angular/compiler': 14.3.0
   '@angular/compiler-cli': 14.3.0
   '@angular/core': 14.3.0
-  '@public-ui/components': 1.5.0-rc.5
+  '@public-ui/components': 1.5.0-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.8
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.6
-  rimraf: 4.4.0
+  rimraf: 4.4.1
   rxjs: 7.6.0
   tslib: 2.5.0
   typescript: 4.8.4
@@ -20,13 +20,13 @@ devDependencies:
   '@angular/compiler': 14.3.0_@angular+core@14.3.0
   '@angular/compiler-cli': 14.3.0_kzmsl3zluntdbyyy7ziauwne3m
   '@angular/core': 14.3.0_rxjs@7.6.0+zone.js@0.12.0
-  '@public-ui/components': 1.5.0-rc.5
+  '@public-ui/components': 1.5.0-rc.6
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.15.5
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.6
-  rimraf: 4.4.0
+  rimraf: 4.4.1
   rxjs: 7.6.0
   tslib: 2.5.0
   typescript: 4.8.4
@@ -347,8 +347,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.5.0-rc.5:
-    resolution: {integrity: sha512-NEu5u286hCwk9zc3IBCG0TAGZw1qUyGSWSs3JcRqRnLEWXD0pmFFRMJtxiTrqZC9mDaG0ptQujb5Ol0ahB9PGQ==}
+  /@public-ui/components/1.5.0-rc.6:
+    resolution: {integrity: sha512-rf2rXgQnX+La9kJDtDhBCasBxygWaEINV0p3zzldGciSoij9lLTbXD5HGjxOLcAIpmIpPAgPP086YofLPHVQOw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
@@ -432,7 +432,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001469
-      electron-to-chromium: 1.4.334
+      electron-to-chromium: 1.4.336
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -516,8 +516,8 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /electron-to-chromium/1.4.334:
-    resolution: {integrity: sha512-laZ1odk+TRen6q0GeyQx/JEkpD3iSZT7ewopCpKqg9bTjP1l8XRfU3Bg20CFjNPZkp5+NDBl3iqd4o/kPO+Vew==}
+  /electron-to-chromium/1.4.336:
+    resolution: {integrity: sha512-yLaoSY/ngjgRpEGU4ueeW0vlj456idQBn74r6s1yutoOIadvd7rwt05TGenPj0PoetJ5pEHomVkmfTdIgqPfJw==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -570,14 +570,14 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /glob/9.3.1:
-    resolution: {integrity: sha512-qERvJb7IGsnkx6YYmaaGvDpf77c951hICMdWaFXyH3PlVob8sbPJJyJX0kWkiCWyXUzoy9UOTNjGg0RbD8bYIw==}
+  /glob/9.3.2:
+    resolution: {integrity: sha512-BTv/JhKXFEHsErMte/AnfiSv8yYOLLiyH2lTg8vn02O21zWFgHPTfxtgn1QRe7NRgggUhC8hacR2Re94svHqeA==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       fs.realpath: 1.0.0
-      minimatch: 7.4.2
+      minimatch: 7.4.3
       minipass: 4.2.5
-      path-scurry: 1.6.1
+      path-scurry: 1.6.3
     dev: true
 
   /globals/11.12.0:
@@ -671,8 +671,8 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
-  /minimatch/7.4.2:
-    resolution: {integrity: sha512-xy4q7wou3vUoC9k1xGTXc+awNdGaGVHtFUaey8tiX4H1QRc04DZ/rmDFwNm2EBsuYEhAZ6SgMmYf3InGY6OauA==}
+  /minimatch/7.4.3:
+    resolution: {integrity: sha512-5UB4yYusDtkRPbRiy1cqZ1IpGNcJCGlEMG17RKzPddpyiPKoCdwohbED8g4QXT0ewCt8LTkQXuljsUfQ3FKM4A==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -696,9 +696,9 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /path-scurry/1.6.1:
-    resolution: {integrity: sha512-OW+5s+7cw6253Q4E+8qQ/u1fVvcJQCJo/VFD8pje+dbJCF1n5ZRMV2AEHbGp+5Q7jxQIYJxkHopnj6nzdGeZLA==}
-    engines: {node: '>=14'}
+  /path-scurry/1.6.3:
+    resolution: {integrity: sha512-RAmB+n30SlN+HnNx6EbcpoDy9nwdpcGPnEKrJnu6GZoDWBdIjo1UQMVtW2ybtC7LC2oKLcMq8y5g8WnKLiod9g==}
+    engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       lru-cache: 7.18.3
       minipass: 4.2.5
@@ -739,12 +739,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /rimraf/4.4.0:
-    resolution: {integrity: sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==}
+  /rimraf/4.4.1:
+    resolution: {integrity: sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      glob: 9.3.1
+      glob: 9.3.2
     dev: true
 
   /rxjs/7.6.0:

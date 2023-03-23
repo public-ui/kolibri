@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.5
-  '@public-ui/react': 1.5.0-rc.5
+  '@public-ui/components': 1.5.0-rc.6
+  '@public-ui/react': 1.5.0-rc.6
   preact: '>=10.11.3'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.1.2
 
 dependencies:
-  '@public-ui/react': 1.5.0-rc.5_gdx7bgccv32cylgckkg3fz24vy
+  '@public-ui/react': 1.5.0-rc.6_d47xtwpfzxmks6fc5notl3lvfm
   preact: 10.13.1
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.5
+  '@public-ui/components': 1.5.0-rc.6
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -506,21 +506,21 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.5:
-    resolution: {integrity: sha512-NEu5u286hCwk9zc3IBCG0TAGZw1qUyGSWSs3JcRqRnLEWXD0pmFFRMJtxiTrqZC9mDaG0ptQujb5Ol0ahB9PGQ==}
+  /@public-ui/components/1.5.0-rc.6:
+    resolution: {integrity: sha512-rf2rXgQnX+La9kJDtDhBCasBxygWaEINV0p3zzldGciSoij9lLTbXD5HGjxOLcAIpmIpPAgPP086YofLPHVQOw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
       i18next: 22.4.13
 
-  /@public-ui/react/1.5.0-rc.5_gdx7bgccv32cylgckkg3fz24vy:
-    resolution: {integrity: sha512-wBtdCwTxSh2jzcgYImuLPmTks+8uuXFs1ZEifrDwXK0InzdTP4P7gOSc5tU2Vs3mbRGE9W55rVUZ7hVkqN6jpw==}
+  /@public-ui/react/1.5.0-rc.6_d47xtwpfzxmks6fc5notl3lvfm:
+    resolution: {integrity: sha512-iaXoU0GYXWKCor/VWVAX69UInuDsfiHJZ6CH5K/228ijHJVDSMoWrt3VEoWE0JDmFKx5iWPHInzV7eNw21xwhg==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.5
+      '@public-ui/components': 1.5.0-rc.6
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.5
+      '@public-ui/components': 1.5.0-rc.6
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -665,7 +665,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001469
-      electron-to-chromium: 1.4.334
+      electron-to-chromium: 1.4.336
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -743,8 +743,8 @@ packages:
       path-type: 4.0.0
     dev: true
 
-  /electron-to-chromium/1.4.334:
-    resolution: {integrity: sha512-laZ1odk+TRen6q0GeyQx/JEkpD3iSZT7ewopCpKqg9bTjP1l8XRfU3Bg20CFjNPZkp5+NDBl3iqd4o/kPO+Vew==}
+  /electron-to-chromium/1.4.336:
+    resolution: {integrity: sha512-yLaoSY/ngjgRpEGU4ueeW0vlj456idQBn74r6s1yutoOIadvd7rwt05TGenPj0PoetJ5pEHomVkmfTdIgqPfJw==}
     dev: true
 
   /esbuild/0.17.12:
