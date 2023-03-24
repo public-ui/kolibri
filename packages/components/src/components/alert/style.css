@@ -2,6 +2,7 @@
 @import '../host-display-block.css';
 
 :host > div {
+	background-color: white; /* needed for overlay situations */
 	display: grid;
 	place-items: stretch;
 	overflow: hidden;
