@@ -9,25 +9,6 @@ import { format } from 'prettier';
 import parserBabel from 'prettier/esm/parser-babel.mjs';
 import { TAG_NAMES } from '../tags';
 import { restoreThemes, saveData, storeThemes } from '../../shares/theme';
-import { copyToClipboard, formatReadableCssJson } from '../editor/utils';
-
-// const kebabToPascalCase = (str: string) =>
-//   str
-//     .toLowerCase()
-//     .split('-')
-//     .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
-//     .join('');
-
-// https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841
-// https://stackoverflow.com/questions/63116039/camelcase-to-kebab-case
-// const camelOrPascalToKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-// const camelToKebabCase = camelOrPascalToKebabCase;
-// const pascalToKebabCase = camelOrPascalToKebabCase;
-// const snakeToKebabCase = (str: string) => str.replace(/_/g, '-').toLowerCase();
-// console.log(kebabToPascalCase('ich-bin-ein-berliner'));
-// console.log(camelToKebabCase('ichBinEinBerliner'));
-// console.log(pascalToKebabCase('IchBinEinBerliner'));
-// console.log(snakeToKebabCase('ich_bin_ein_Berliner'));
 
 type Page = 'editor' | 'result' | 'overview';
 
@@ -39,23 +20,12 @@ TAG_NAMES.forEach((tagName) => {
 	});
 });
 
-// const InputComponent: Component = () => {
-//   const [getClass, setClass] = createSignal('');
-
-//   return <input class={getClass()} onInput={(event) => setClass((event.target as HTMLInputElement).value)} />;
-// };
-
 export const AppComponent: Component = () => {
 	const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'default');
 	const [getComponent, setComponent] = createSignal(sessionStorage.getItem('kolibri-component') || 'KOL-BUTTON');
 	const [getShow, setShow] = createSignal<Page>('editor');
 	const [getValue, setValue] = createSignal('');
 	const [getPropsStyle, setPropsStyle] = createSignal(false);
-
-	// setInterval(() => {
-	// 	renderJsonString(getTheme());
-	// 	downloadTheme();
-	// }, 300000);
 
 	let select: HTMLKolSelectElement;
 
@@ -155,7 +125,6 @@ export const AppComponent: Component = () => {
 
 	return (
 		<div class="font-sans grid gap-2">
-			{/* <InputComponent /> */}
 			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end default">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
 					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search">
