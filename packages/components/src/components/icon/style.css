@@ -9,7 +9,6 @@
 /**
  * The <code>:important</code> is important, because we should always override the font icon style.
  */
-:host,
 :host > i,
 :host > i::before {
 	font-size: inherit !important;
