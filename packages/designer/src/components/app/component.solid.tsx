@@ -9,6 +9,7 @@ import { format } from 'prettier';
 import parserBabel from 'prettier/esm/parser-babel.mjs';
 import { TAG_NAMES } from '../tags';
 import { restoreThemes, saveData, storeThemes } from '../../shares/theme';
+import { copyToClipboard, formatReadableCssJson } from '../editor/utils';
 
 // const kebabToPascalCase = (str: string) =>
 //   str
@@ -67,6 +68,11 @@ export const AppComponent: Component = () => {
 	restoreThemes();
 
 	const renderJsonString = (theme: string): void => {
+		const styles = window.A11yUi.Themes[theme] as string;
+		const keys = Object.getOwnPropertyNames(styles);
+		keys.forEach((key: string) => {
+			styles[key] = (styles[key] as string).replace(/( {2,}|\n|)/g, '');
+		});
 		if (window.A11yUi?.Themes?.[theme] && typeof window.A11yUi.Themes[theme]) {
 			setValue(JSON.stringify(window.A11yUi.Themes[theme]));
 		}
@@ -169,15 +175,23 @@ export const AppComponent: Component = () => {
 					</KolInputCheckbox>
 				</div>
 				<div class="w-full grid gap-2 md:grid-cols-2 md:col-span-2 justify-items-center items-end">
-					<KolButton
-						_label="Komponenten-Übersicht"
-						_on={{
-							onClick: (event: MouseEvent) => {
-								event.preventDefault();
-								setShow('overview');
-							},
-						}}
-					></KolButton>
+					<Switch
+						fallback={
+							<KolButton
+								_label="Komponenten-Übersicht"
+								_on={{
+									onClick: (event: MouseEvent) => {
+										event.preventDefault();
+										setShow('overview');
+									},
+								}}
+							></KolButton>
+						}
+					>
+						<Match when={getShow() === 'overview'}>
+							<KolButton _label="Zurück zum Theme editieren" _on={onClickEdit}></KolButton>
+						</Match>
+					</Switch>
 					<div class="flex gap-2 items-end">
 						<KolButton
 							_label="Zurück"
@@ -257,7 +271,6 @@ export const AppComponent: Component = () => {
 						<div class="w-full overflow-scroll">
 							<img alt="Abhängigkeitsgraph der Komponenten" src={AllComp as unknown as string}></img>
 						</div>
-						<KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
 					</div>
 				</Match>
 				<Match when={getShow() === 'result'}>
@@ -266,7 +279,7 @@ export const AppComponent: Component = () => {
 							<KolHeading _headline="Theming"></KolHeading>
 							<KolAlert _type="info">
 								Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden Sie sich gerne an{' '}
-								<KolLink _href="mailto: ---@---.de" _label="---@---.de"></KolLink>
+								<KolLink _href="mailto:kolibri@itzbund.de" _label="kolibri@itzbund.de" _target="mail"></KolLink>
 							</KolAlert>
 							<p>
 								Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet CSS-Definitionen, die jede Komponente individuell
@@ -278,6 +291,9 @@ export const AppComponent: Component = () => {
 								Anwendung einfügen.
 							</p>
 						</div>
+						<div>
+							<KolButton _label="Zurück zum Theme editieren" _on={onClickEdit}></KolButton>
+						</div>
 						<div
 							ref={renderTsEditor}
 							style={{
@@ -285,7 +301,6 @@ export const AppComponent: Component = () => {
 								width: '100%',
 							}}
 						></div>
-						<KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
 					</div>
 				</Match>
 			</Switch>
