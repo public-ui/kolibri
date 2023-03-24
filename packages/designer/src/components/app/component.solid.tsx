@@ -57,7 +57,7 @@ export const AppComponent: Component = () => {
 	// 	downloadTheme();
 	// }, 300000);
 
-	let select: HTMLElement;
+	let select: HTMLKolSelectElement;
 
 	createEffect(() => {
 		if (select instanceof HTMLElement) {
@@ -73,8 +73,8 @@ export const AppComponent: Component = () => {
 		keys.forEach((key: string) => {
 			styles[key] = (styles[key] as string).replace(/( {2,}|\n|)/g, '');
 		});
-		if (window.A11yUi?.Themes?.[theme] && typeof window.A11yUi.Themes[theme]) {
-			setValue(JSON.stringify(window.A11yUi.Themes[theme]));
+		if (styles) {
+			setValue(JSON.stringify(styles));
 		}
 	};
 
@@ -146,7 +146,7 @@ export const AppComponent: Component = () => {
 	};
 
 	const getList = (): string[] => {
-		if (window.A11yUi?.Themes && typeof window.A11yUi.Themes === 'object') {
+		if (typeof window.A11yUi?.Themes === 'object') {
 			return Object.getOwnPropertyNames(window.A11yUi.Themes);
 		} else {
 			return [];

@@ -6,7 +6,7 @@ import parserCss from 'prettier/esm/parser-postcss.mjs';
 export function formatReadableCssJson(code: string) {
 	let css = `{`;
 	try {
-		const json = JSON.parse(code);
+		const json = JSON.parse(code) as Record<string, string>;
 		for (const key in json) {
 			try {
 				json[key] = format(json[key], { parser: 'css', plugins: [parserCss] });
