@@ -1,5 +1,30 @@
 @import '../style.css';
 
-:host > div {
-	display: inline-block;
+.list-container.absolute {
+	position: absolute;
+	inset: 100% 0 auto 0;
+}
+.list {
+	display: flex;
+	/** ul reset um das erwartete Verhalten zu erzeugen */
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+.list.vertical {
+	flex-direction: column;
+}
+
+.entry.has-children {
+	display: flex;
+	justify-content: space-between;
+}
+
+.entry kol-link-wc {
+	flex-grow: 1;
+}
+
+.expand-button-container {
+	display: grid;
+	place-content: center;
 }

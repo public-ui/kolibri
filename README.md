@@ -117,7 +117,7 @@ In der folgenden Tabelle werden die priorisierten Qualitäten von KoliBri aufgel
 
 KoliBri ist für die Umsetzung beliebiger webbasierter Benutzeroberflächen vorgesehen und soll auf allen modernen Geräten (PC, Tablet, Mobil), Betriebssystemen (Windows, Linux, MaxOS, Android, iOS) und standardkonformen Browsern eingesetzt werden können.
 
-Der Microsoft Internet Explorer wird explizit nicht unterstützt, um das Projekt und die Entwicklung nicht durch Altlasten zu schwächen. KoliBri investiert stattdessen konziquent in die Zukunft.
+Der Microsoft Internet Explorer wird explizit nicht unterstützt, um das Projekt und die Entwicklung nicht durch Altlasten zu schwächen. KoliBri investiert stattdessen konzequent in die Zukunft.
 
 | Gerät            | Betriebsystem               | Browser                                                      | Screenreader                            |
 | ---------------- | --------------------------- | ------------------------------------------------------------ | --------------------------------------- |
