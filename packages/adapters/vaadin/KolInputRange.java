@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-range")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.5")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.7")
 @JsModule("@public-ui/components/dist/components/kol-input-range")
 public class KolInputRange extends Component {
 	/**

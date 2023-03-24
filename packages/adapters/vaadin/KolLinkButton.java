@@ -16,7 +16,7 @@ Ein Button hat aus UX-Sicht mehrere Varianten (`primary` oder `secondary` usw.).
  */
 
 @Tag("kol-link-button")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.5")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.7")
 @JsModule("@public-ui/components/dist/components/kol-link-button")
 public class KolLinkButton extends Component {
 	/**
