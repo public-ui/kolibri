@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable no-undef */
-const simButtons = document.querySelectorAll('kol-button[_label="Simulation starten"]');
-const progressBars = document.querySelectorAll('kol-progress');
+const simButtons = document.querySelectorAll('kol-button[class*="progress"]');
+const progressBars = document.querySelectorAll('kol-progress[class*="progress"]');
 
 function runProcess(index) {
 	let percent = 0;
-	console.log(simButtons[index]);
+	console.log(simButtons[index], index);
 	simButtons[index].setAttribute('_disabled', 'true');
 	const interval = setInterval(() => {
 		if (percent <= 100) {
