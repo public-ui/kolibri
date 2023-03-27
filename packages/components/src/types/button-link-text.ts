@@ -30,10 +30,10 @@ type OptionalButtonOrLinkOrTextProps = {
 type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
 	disabled: boolean;
 };
-export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
-export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalButtonOrLinkOrTextProps>;
-export type TextProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextProps>;
-export type ButtonOrLinkOrTextProps = ButtonProps | LinkProps | TextProps;
+// type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
+// type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalButtonOrLinkOrTextProps>;
+// type TextProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextProps>;
+// type ButtonOrLinkOrTextProps = ButtonProps | LinkProps | TextProps;
 
 type OptionalButtonOrLinkOrTextWithChildrenProps = OptionalButtonOrLinkOrTextProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
@@ -43,5 +43,5 @@ type OptionalButtonWithChildrenProps = OptionalButtonProps & {
 };
 export type ButtonWithChildrenProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonWithChildrenProps>;
 export type LinkWithChildrenProps = Generic.Element.Members<RequiredLinkProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
-export type TextWithChildrenProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
+type TextWithChildrenProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
 export type ButtonOrLinkOrTextWithChildrenProps = ButtonWithChildrenProps | LinkWithChildrenProps | TextWithChildrenProps;
