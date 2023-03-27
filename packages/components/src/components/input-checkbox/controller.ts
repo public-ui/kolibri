@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import { Stringified } from '../../components';
+import { Stringified } from '../../types/common';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';

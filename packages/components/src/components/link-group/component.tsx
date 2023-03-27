@@ -1,16 +1,16 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { Orientation } from '../../types/orientation';
+import { LinkProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
+import { Orientation } from '../../types/orientation';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from '../nav/validation';
-import { Stringified } from '../../types/common';
 
-const ListItem = (props: { links: NavLinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
+const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
 	props.links.map((link, index: number) => {
 		list.push(
@@ -53,7 +53,7 @@ export type ListStyleType =
  */
 type RequiredProps = {
 	ariaLabel: string;
-	links: Stringified<NavLinkProps[]>;
+	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
 	heading: string;
@@ -66,7 +66,7 @@ type OptionalProps = {
 
 type RequiredStates = {
 	ariaLabel: string;
-	links: NavLinkProps[];
+	links: LinkProps[];
 	listStyleType: ListStyleType;
 	orientation: Orientation;
 };
@@ -136,7 +136,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
 	 */
-	@Prop() public _links!: Stringified<NavLinkProps[]>;
+	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
 	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
@@ -226,7 +226,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_links')
-	public validateLinks(value?: Stringified<NavLinkProps[]>): void {
+	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolLinkGroup', this, value);
 	}
 

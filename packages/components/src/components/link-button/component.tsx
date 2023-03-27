@@ -145,6 +145,7 @@ export class KolLinkButton
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
+	 * @deprecated
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 

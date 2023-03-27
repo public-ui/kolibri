@@ -12,13 +12,11 @@ import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/ale
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
-import { NavLinkProps } from "./components/link/component";
+import { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
-import { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
@@ -29,7 +27,8 @@ import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
-import { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/component";
+import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+import { KoliBriNavVariant } from "./components/nav/component";
 import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 import { KoliBriProgressType } from "./types/progress";
@@ -45,13 +44,11 @@ export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/ale
 export { KoliBriColor } from "./components/badge/component";
 export { Stringified } from "./types/common";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
-export { NavLinkProps } from "./components/link/component";
+export { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
-export { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
@@ -62,7 +59,8 @@ export { InputTextType } from "./types/input/control/text";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
-export { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/component";
+export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+export { KoliBriNavVariant } from "./components/nav/component";
 export { PaginationHasButton } from "./components/pagination/component";
 export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 export { KoliBriProgressType } from "./types/progress";
@@ -160,7 +158,7 @@ export namespace Components {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolButton {
         /**
@@ -639,7 +637,7 @@ export namespace Components {
         /**
           * Ermöglicht das Überschreiben der Icons für die Checkbox.
          */
-        "_icon"?: Stringified1<InputCheckboxIcon>;
+        "_icon"?: Stringified<InputCheckboxIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1416,7 +1414,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified1<KoliBriHorizontalIcon1>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1540,6 +1538,7 @@ export namespace Components {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1625,6 +1624,7 @@ export namespace Components {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1668,7 +1668,7 @@ export namespace Components {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
         /**
           * Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet
          */
@@ -1705,6 +1705,7 @@ export namespace Components {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
+          * @deprecated A link could never be disabled. Use a button instead.
          */
         "_disabled"?: boolean;
         /**
@@ -1730,7 +1731,7 @@ export namespace Components {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1826,13 +1827,14 @@ export namespace Components {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
-        "_links": Stringified<NavLinkWithChildrenProps[]>;
+        "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
           * Gibt die Ausrichtung der Navigation an.
          */
         "_orientation"?: Orientation;
         /**
           * Gibt an, welche Ausprägung der Button hat.
+          * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
     }
@@ -2001,7 +2003,7 @@ export namespace Components {
         /**
           * Ist die Liste der unsichtbaren Links.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
@@ -2725,7 +2727,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolButton {
         /**
@@ -3204,7 +3206,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Überschreiben der Icons für die Checkbox.
          */
-        "_icon"?: Stringified1<InputCheckboxIcon>;
+        "_icon"?: Stringified<InputCheckboxIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3981,7 +3983,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified1<KoliBriHorizontalIcon1>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -4105,6 +4107,7 @@ declare namespace LocalJSX {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4190,6 +4193,7 @@ declare namespace LocalJSX {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4233,7 +4237,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
         /**
           * Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet
          */
@@ -4270,6 +4274,7 @@ declare namespace LocalJSX {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
+          * @deprecated A link could never be disabled. Use a button instead.
          */
         "_disabled"?: boolean;
         /**
@@ -4295,7 +4300,7 @@ declare namespace LocalJSX {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4391,13 +4396,14 @@ declare namespace LocalJSX {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
-        "_links": Stringified<NavLinkWithChildrenProps[]>;
+        "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
           * Gibt die Ausrichtung der Navigation an.
          */
         "_orientation"?: Orientation;
         /**
           * Gibt an, welche Ausprägung der Button hat.
+          * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
     }
@@ -4566,7 +4572,7 @@ declare namespace LocalJSX {
         /**
           * Ist die Liste der unsichtbaren Links.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**

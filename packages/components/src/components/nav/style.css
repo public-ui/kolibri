@@ -28,7 +28,7 @@
 	flex-grow: 1;
 }
 
-.expand-button-container {
+.expand-button {
 	display: grid;
 	place-content: center;
 }

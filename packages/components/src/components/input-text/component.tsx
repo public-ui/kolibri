@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { KoliBriHorizontalIcon } from '../../components';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';

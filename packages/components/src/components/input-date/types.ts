@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
-import { InputTypeOnDefault } from '../../components';
 import { InputDateType, OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
+import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 
 /**
