@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.6
+  '@public-ui/components': 1.5.0-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -14,10 +14,10 @@ specifiers:
   unbuild: 0.8.11
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.6
+  '@public-ui/components': 1.5.0-rc.7
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.15.5
+  '@types/node': 18.15.7
   '@types/normalize-package-data': 2.4.1
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -345,8 +345,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.6:
-    resolution: {integrity: sha512-rf2rXgQnX+La9kJDtDhBCasBxygWaEINV0p3zzldGciSoij9lLTbXD5HGjxOLcAIpmIpPAgPP086YofLPHVQOw==}
+  /@public-ui/components/1.5.0-rc.7:
+    resolution: {integrity: sha512-V/AO0TH6+tX8k+f2H/o927kkbfK7DWwRm9B6Her7reyz0deRKdYzMOJGoxfsZQQ7U2KWTIWJ1TJV+ZIvyvk7Wg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
@@ -449,8 +449,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.15.5:
-    resolution: {integrity: sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==}
+  /@types/node/18.15.7:
+    resolution: {integrity: sha512-LFmUbFunqmBn26wJZgZPYZPrDR1RwGOu2v79Mgcka1ndO6V0/cwjivPTc4yoK6n9kmw4/ls1r8cLrvh2iMibFA==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -478,7 +478,7 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.15.5
+      '@types/node': 18.15.7
     dev: true
 
   /@types/scheduler/0.16.2:
