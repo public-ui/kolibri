@@ -106,7 +106,7 @@
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.3",
 		"husky": "8.0.3",
-		"lerna": "6.5.1",
+		"lerna": "6.6.1",
 		"license-report": "6.3.0",
 		"lint-staged": "13.2.0",
 		"npm-check-updates": "16.7.13",
