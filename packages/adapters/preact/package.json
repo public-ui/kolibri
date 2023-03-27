@@ -46,7 +46,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/react": "1.5.0-rc.6"
+		"@public-ui/react": "1.5.0-rc.7"
 	},
 	"devDependencies": {
 		"@public-ui/components": "1.5.0-rc.6",
