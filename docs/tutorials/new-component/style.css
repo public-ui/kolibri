@@ -1,0 +1,15 @@
+/* Standardstyling für alle Komponenten, kann entfernt werden, wenn nicht benötigt */
+@import '../style.css';
+
+/* Mit ':host' kann das äußere Element, das den shadow-DOM enthält, angesprochen werden */
+:host {
+	display: block;
+}
+
+/* Außer ':host' verlässt kein Selektor den shadow-DOM, diese Regel gilt also nur für Elemente innerhalb der Komponente */
+* {
+	display: flex;
+}
+
+/* Komponenten sollten keine Farben oder Abstände definieren, ein Zurücksetzen auf 0 ist erlaubt. */
+/* Hinweis zum Zurücksetzen: da diese Regeln vom Theme überschreibbar sein sollen, sollte die Spezifität möglichst gering sein. (z.B. mit :where()) */

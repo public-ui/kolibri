@@ -203,8 +203,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 		 * So ist es dem Anwendenden möglich das _open-
 		 * Attribute abzufragen.
 		 */
-		const timeout = setTimeout(() => {
-			clearTimeout(timeout);
+		setTimeout(() => {
 			if (typeof this.state._on?.onClick === 'function') {
 				this.state._on.onClick(event, this._open === true);
 			}
