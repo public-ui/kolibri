@@ -98,7 +98,7 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 | ------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
 | `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll. | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
 | `_ariaLabel` _(required)_ | `_aria-label`         | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                     | `string`                                                        | `undefined`  |
-| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                    | `boolean \| undefined`                                          | `false`      |
+| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                    | `boolean \| undefined`                                          | `true`       |
 | `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                               | `boolean \| undefined`                                          | `false`      |
 | `_hasCompactButton`       | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.   | `boolean \| undefined`                                          | `false`      |
 | `_links` _(required)_     | `_links`              | Gibt die geordnete Liste der Seitenhierarchie an.                                                                | `NavLinkWithChildrenProps[] \| string`                          | `undefined`  |
@@ -115,6 +115,7 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 
 ### Depends on
 
+- kol-button-wc
 - kol-link-wc
 - [kol-button](../button)
 
@@ -122,17 +123,18 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 
 ```mermaid
 graph TD;
+  kol-nav --> kol-button-wc
   kol-nav --> kol-link-wc
   kol-nav --> kol-button
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
   kol-badge --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-link-wc --> kol-span-wc
+  kol-link-wc --> kol-icon
+  kol-link-wc --> kol-tooltip
   kol-button --> kol-button-wc
   style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```
