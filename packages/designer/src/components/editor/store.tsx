@@ -103,7 +103,7 @@ const TABS_ICON_ONLY = DEFAULT_TABS.map((tab) => {
 
 export const components: Record<string, Component> = {
 	'KOL-ABBR': () => (
-		<div class="grid justify-center">
+		<div class="grid justify-items-center">
 			<div class="grid gap-6 text-center">
 				<p>
 					Ich bin eine{' '}
@@ -137,7 +137,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-ACCORDION': () => (
-		<div class="grid justify-center gap-1">
+		<div class="grid justify-items-center gap-1">
 			<KolAccordion _level={1} _heading="Überschrift Accordion 1" _open>
 				<div slot="content">{LONG_TEXT}</div>
 			</KolAccordion>
@@ -171,7 +171,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-ALERT': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolAlert _heading="Nachricht" _level={3}>
 				Hier wird die Nachricht näher beschrieben.
 			</KolAlert>
@@ -315,7 +315,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-BREADCRUMB': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolBreadcrumb
 				_ariaLabel="Breadcrumb aus Text-Links"
 				_links={[
@@ -662,7 +662,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-DETAILS': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolDetails _open _summary="Ihre Überschrift 1">
 				Inhalt der ersten Details-Komponente
 			</KolDetails>
@@ -684,7 +684,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-ICON': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<strong>Icofont</strong>
 			<div class="flex gap-2">
 				<KolIcon _ariaLabel="icofont" _icon="codicon codicon-home" />
@@ -706,7 +706,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INDENTED-TEXT': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolIndentedText>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -716,7 +716,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-CHECKBOX': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<div class="grid gap-6 text-center">
 				<KolInputCheckbox _id="checkbox-1" _required>
 					Unchecked
@@ -762,7 +762,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-COLOR': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputColor
 				_id="farbe"
 				_name="farbe"
@@ -792,7 +792,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-DATE': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputDate _id="date1" _type="date">
 				Datumseingabe
 			</KolInputDate>
@@ -823,7 +823,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-EMAIL': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputEmail _id="email" _required _value="test@mail.de" _error={ERROR_MSG}>
 				E-Mail
 			</KolInputEmail>
@@ -854,7 +854,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-FILE': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputFile
 				_id="file"
 				_name="file"
@@ -881,7 +881,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-NUMBER': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputNumber
 				_id="number"
 				_name="number"
@@ -933,7 +933,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-PASSWORD': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputPassword
 				_id="password"
 				_name="password"
@@ -973,7 +973,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-RADIO': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputRadio
 				_id="anrede"
 				_error={ERROR_MSG}
@@ -1017,7 +1017,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-RANGE': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputRange
 				_id="range"
 				_min={0}
@@ -1045,7 +1045,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-INPUT-TEXT': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolInputText
 				_id=""
 				_hint={HINT_MSG}
@@ -1124,7 +1124,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-LINK-GROUP': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolLinkGroup
 				_ariaLabel=""
 				_heading="Überschrift für diese Linkgroup"
@@ -1245,14 +1245,14 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-LOGO': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolLogo _org={Bundesministerium['Die Bundesregierung']} />
 			<KolLogo _org={Bundesministerium['Bundesministerium der Finanzen']} />
 			<KolLogo _org={Bundesministerium['Bundesministerium für Gesundheit']} />
 		</div>
 	),
 	'KOL-MODAL': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolModal
 				_ariaLabel=""
 				_width="80%"
@@ -1540,7 +1540,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-PAGINATION': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolPagination _on={{}} _total={15} _page={6} _sibling-count={0} _variant="primary" />
 			<KolPagination _on={{}} _total={15} _page={6} _variant="secondary" />
 			<KolPagination _on={{}} _total={15} _page={6} _sibling-count={0} _boundary-count={2} _variant="normal" />
@@ -1550,13 +1550,13 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-PROGRESS': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolProgress _max={100} _type="bar" _unit="Meter" _value={10} />
 			<KolProgress _max={100} _type="cycle" _value={10} />
 		</div>
 	),
 	'KOL-SELECT': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolSelect
 				_id=""
 				_list={STATUS_OPTIONS}
@@ -1579,12 +1579,12 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-SPIN': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolSpin _show />
 		</div>
 	),
 	'KOL-TABLE': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolTable
 				_caption="Öffnungszeiten"
 				_data={DATA}
@@ -1734,7 +1734,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-TEXTAREA': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolTextarea _id="text" _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched>
 				Ihre Nachricht
 			</KolTextarea>
@@ -1753,7 +1753,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-SKIP-NAV': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-items-center gap-6">
 			<KolIndentedText>
 				<b>Links sind unsichtbar geschalten</b>
 				<br />
@@ -1772,7 +1772,7 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-TOAST': () => (
 		<div
-			class="grid justify-center gap-6"
+			class="grid justify-items-center gap-6"
 			ref={(elm) => {
 				if (elm instanceof HTMLElement) {
 					const toasts = elm.querySelectorAll('kol-toast');
@@ -1802,26 +1802,26 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-TOOLTIP': () => (
-		<div class="grid justify-center gap-8">
-			<div class="grid gap-4 grid-cols-4">
+		<div class="grid justify-items-center gap-8">
+			<div class="grid gap-4 grid-cols-4 justify-items-center">
 				<KolButton _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary" />
 				<KolButton _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary" />
 				<KolButton _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal" />
 				<KolButton _icon="codicon codicon-arrow-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger" />
 			</div>
-			<div class="grid gap-4 grid-cols-4">
+			<div class="grid gap-4 grid-cols-4 justify-items-center">
 				<KolLinkButton _href="#" _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary" />
 				<KolLinkButton _href="#" _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary" />
 				<KolLinkButton _href="#" _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal" />
 				<KolLinkButton _href="#" _icon="codicon codicon-arrow-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger" />
 			</div>
-			<div class="grid gap-4 grid-cols-4">
+			<div class="grid gap-4 grid-cols-4 justify-items-center">
 				<KolLink class="text-center" _ariaLabel="unten" _href="#" _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" />
 				<KolLink class="text-center" _ariaLabel="oben" _href="#" _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" />
 				<KolLink class="text-center" _ariaLabel="links" _href="#" _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" />
 				<KolLink class="text-center" _ariaLabel="rechts" _href="#" _icon="codicon codicon-arrow-right" _iconOnly _label="rechts" _tooltip-align="right" />
 			</div>
-			<div class="grid gap-4 grid-cols-4">
+			<div class="grid gap-4 grid-cols-4 justify-items-center">
 				<KolButtonLink class="text-center" _ariaLabel="unten" _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" />
 				<KolButtonLink class="text-center" _ariaLabel="oben" _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" />
 				<KolButtonLink class="text-center" _ariaLabel="links" _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" />
