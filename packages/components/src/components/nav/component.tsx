@@ -168,12 +168,12 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				_customClass="expand-button"
-				_disabled={!collapsible || !link._href}
+				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_label=""
+				_on={{ onClick: () => this.onClick(link) }}
 				_variant="custom"
 				class="expand-button-container"
-				onClick={() => this.onClick(link)}
 			></kol-button-wc>
 		);
 	}
