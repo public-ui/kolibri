@@ -33,6 +33,15 @@ export const devHint = (msg: string): void => {
 		});
 	}
 };
+export const devWarning = (msg: string): void => {
+	if (devCache.has(msg) === false) {
+		devCache.add(msg);
+		Log.warn(msg, {
+			classifier: `💻 dev`,
+			overwriteStyle: '; background-color: #f09',
+		});
+	}
+};
 
 const featureCache: Set<string> = new Set<string>();
 export const featureHint = (msg: string, done = false): void => {
