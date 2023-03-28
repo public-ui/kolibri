@@ -2,9 +2,9 @@
 @import '../host-display-block.css';
 
 :host > div {
+	background-color: white; /* needed for overlay situations */
 	height: 0;
 	left: 0;
-	margin: 1rem; /* needed for overlay situations */
 	position: fixed;
 	top: 0;
 	width: 100%;
