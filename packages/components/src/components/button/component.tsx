@@ -17,17 +17,9 @@ import {
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Alignment } from '../../types/props/alignment';
-import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
+import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import {
-	mapBoolean2String,
-	mapStringOrBoolean2String,
-	setEventTargetAndStopPropagation,
-	setState,
-	watchBoolean,
-	watchString,
-	watchValidator,
-} from '../../utils/prop.validators';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
@@ -64,10 +56,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 				ref: this.ref,
 			});
 		} else if (typeof this.state._on?.onClick === 'function') {
-			setEventTargetAndStopPropagation(event, this.ref);
+			event.stopPropagation();
+			setEventTarget(event, this.ref);
 			this.state._on?.onClick(event, this.state._value);
 		} else {
-			devHint(`It was no button click callback configured!`);
+			devWarning(`It was no button click callback configured!`);
 		}
 	};
 
