@@ -5,7 +5,7 @@ import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateAlert, validateTouched } from '../../types/props';
+import { validateAlert, validateHideLabel, validateTouched } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
@@ -284,7 +284,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
-		this.controller.validateHideLabel(value);
+		validateHideLabel(this, value);
 	}
 
 	/**
