@@ -1,11 +1,11 @@
 import { Generic } from '@a11y-ui/core';
 import { ButtonStates } from '../../types/button-link';
-import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
 import { Alignment } from '../../types/props/alignment';
 import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
 import { isObject, isString, isStyle } from '../validator';
 
-const mapCustomIcon = (state: KoliBriIconState, alignment: Alignment, icon?: KoliBriIcon) => {
+const mapCustomIcon = (state: KoliBriIconState, alignment: Alignment, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
 		state[alignment] = icon as KoliBriCustomIcon;
 	} else if (isString(icon, 1)) {
