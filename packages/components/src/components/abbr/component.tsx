@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';

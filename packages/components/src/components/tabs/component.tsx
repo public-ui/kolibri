@@ -5,7 +5,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@a11y-ui/core';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';

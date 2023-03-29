@@ -12,7 +12,7 @@ import {
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { propergateFocus } from '../../utils/reuse';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 
 @Component({
 	tag: 'kol-button-link',

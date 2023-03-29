@@ -1,8 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* internal helpers */
-
 /* exported types */
 /** de
  * Gibt an, ob die Fehlermeldung zu diesem Element von Screenreadern vorgelesen werden soll.

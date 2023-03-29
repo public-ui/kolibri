@@ -16,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment, validateDisabled } from '../../types/props';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -26,7 +26,6 @@ import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../ut
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
-import { validateDisabled } from '../../types/props/disabled';
 
 /**
  * @internal

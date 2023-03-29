@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { watchValidator } from '../prop.validators';
 
 const AVAILABLE_HORIZONTAL_ALIGNMENT_VALUES = new Set(['"left", "right"']);

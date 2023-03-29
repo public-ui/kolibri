@@ -1,8 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* internal helpers */
-
 /* exported types */
 /** de
  * Wenn true ignoriert das Element alle Events und lässt sich nicht fokussieren.

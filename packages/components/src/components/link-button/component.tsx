@@ -18,7 +18,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { watchButtonVariant } from '../button/controller';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { translate } from '../../i18n';
 
 type State = {

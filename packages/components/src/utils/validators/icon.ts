@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { ButtonStates } from '../../types/button-link';
 import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
 import { isObject, isString, isStyle } from '../validator';
 

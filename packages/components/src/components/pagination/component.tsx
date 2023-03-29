@@ -5,7 +5,7 @@ import { KoliBriButtonVariant, KoliBriButtonVariantPropState, KoliBriButtonCusto
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchButtonVariant } from '../button/controller';
-import { PropAlignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { KoliBriPaginationButtonCallbacks } from './types';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';

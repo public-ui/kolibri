@@ -1,3 +1,4 @@
 export { PropAlert } from './alert';
+export { PropAlert, validateAlert } from './alert';
 export { PropAlignment } from './alignment';
-export { PropDisabled } from './disabled';
+export { PropDisabled, validateDisabled } from './disabled';
