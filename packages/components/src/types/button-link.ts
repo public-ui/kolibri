@@ -4,6 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriCustomIcon, KoliBriIconProp } from './icon';
+import { PropAriaSelected } from './props';
 import { PropAlignment } from './props/alignment';
 import { PropDisabled } from './props/disabled';
 
@@ -165,7 +166,6 @@ export type RequiredLinkStates = RequiredButtonAndLinkStates & {
 	href: string;
 };
 export type OptionalLinkStates = OptionalButtonAndLinkStates & {
-	ariaSelected: boolean;
 	on: LinkOnCallbacks;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -181,7 +181,7 @@ export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	useCase: LinkUseCase;
-};
+} & PropAriaSelected;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 
 /**
