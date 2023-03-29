@@ -327,7 +327,6 @@ GROUPED_PROPS.forEach((group) => {
 			console.log(name, ':', PROP_DESCS);
 			// throw new Error('Property-Beschreibung ist nicht gesetzt oder einheitlich.');
 		}
-		console.log(name, PROP_DESCS);
 		PROP_DESCS.forEach((_desc, idx) => {
 			MARKDOWN += `| ${name} | ${PROP_TYPES.map((type) => type.replace(/\|/g, '&#124;')).join(', ')} | ${PROP_DESCS[idx].replace(/\n/g, '')} |
 `;
