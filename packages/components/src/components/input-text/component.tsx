@@ -5,7 +5,7 @@ import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateAlert } from '../../types/props/alert';
+import { validateAlert, validateTouched } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
@@ -404,7 +404,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
-		this.controller.validateTouched(value);
+		validateTouched(this, value);
 	}
 
 	/**
