@@ -1,25 +1,14 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
 import { Alignment } from '../../types/props/alignment';
 import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
+import { API, States } from './types';
 
 /**
  * API
  */
-type RequiredProps = {
-	title: string;
-};
-type OptionalProps = {
-	tooltipAlign: Alignment;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps & OptionalProps;
-type OptionalStates = unknown;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-abbr',
@@ -28,7 +17,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolAbbr implements API {
 	private readonly nonce = nonce();
 
 	public render(): JSX.Element {
