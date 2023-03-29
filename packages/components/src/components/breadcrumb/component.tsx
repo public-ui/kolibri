@@ -1,10 +1,10 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
+import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
-import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from '../nav/validation';
 
 /**
@@ -12,14 +12,14 @@ import { watchNavLinks } from '../nav/validation';
  */
 type RequiredProps = {
 	ariaLabel: string;
-	links: Stringified<NavLinkProps[]>;
+	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = unknown;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
-	links: NavLinkProps[];
+	links: LinkProps[];
 };
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
@@ -81,7 +81,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
 	 */
-	@Prop() public _links!: Stringified<NavLinkProps[]>;
+	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -106,7 +106,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_links')
-	public validateLinks(value?: Stringified<NavLinkProps[]>): void {
+	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolBreadcrumb', this, value);
 	}
 
