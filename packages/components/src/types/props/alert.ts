@@ -3,7 +3,7 @@ import { watchBoolean } from '../../utils/prop.validators';
 
 /* exported types */
 /** de
- * Gibt an, ob die Fehlermeldung zu diesem Element von Screenreadern vorgelesen werden soll.
+ * Macht die Fehlermeldung dieses Elements von Screenreadern lesbar.
  */
 /** en
  * Makes hints readable for screenreaders.

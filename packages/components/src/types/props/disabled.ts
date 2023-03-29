@@ -3,10 +3,10 @@ import { watchBoolean } from '../../utils/prop.validators';
 
 /* exported types */
 /** de
- * Wenn true ignoriert das Element alle Events und lässt sich nicht fokussieren.
+ * Macht das Element nicht fokussierbar und lässt es alle Events ignorieren.
  */
 /** en
- * If true the element ignores all events and is not focusable.
+ * Makes the element not focusable and ignore all events.
  */
 export type PropDisabled = {
 	disabled?: boolean;
