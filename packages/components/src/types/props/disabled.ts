@@ -11,7 +11,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * If true the element ignores all events and is not focusable.
  */
 export type PropDisabled = {
-	_disabled: boolean;
+	disabled: boolean;
 };
 
 /* validator */
