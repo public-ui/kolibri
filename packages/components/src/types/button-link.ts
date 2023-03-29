@@ -4,7 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriCustomIcon, KoliBriIconProp } from './icon';
-import { Alignment } from './props/alignment';
+import { PropAlignment } from './props/alignment';
 import { PropDisabled } from './props/disabled';
 
 /**
@@ -31,11 +31,11 @@ type OptionalButtonAndLinkProps = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: PropAlignment;
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
+	tooltipAlign: PropAlignment;
 } & PropDisabled;
 
 type RequiredButtonAndLinkStates = {
@@ -57,11 +57,11 @@ type OptionalButtonAndLinkStates = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: PropAlignment;
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
+	tooltipAlign: PropAlignment;
 };
 
 /**
@@ -195,7 +195,7 @@ export type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
 export type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
-export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Alignment): void => {
+export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: PropAlignment): void => {
 	watchValidator(
 		component,
 		propName,

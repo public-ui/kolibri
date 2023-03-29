@@ -1,0 +1,1 @@
+export { PropAlignment } from './alignment';

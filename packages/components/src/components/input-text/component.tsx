@@ -5,6 +5,7 @@ import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { validateAlert } from '../../types/props/alert';
 import { featureHint } from '../../utils/a11y.tipps';
 import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
@@ -251,7 +252,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
+		validateAlert(this, value);
 	}
 
 	/**

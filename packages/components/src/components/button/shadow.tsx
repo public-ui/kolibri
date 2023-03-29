@@ -12,7 +12,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Alignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props/alignment';
 import { propergateFocus } from '../../utils/reuse';
 
 @Component({
@@ -122,7 +122,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: PropAlignment;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
@@ -157,7 +157,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: PropAlignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.

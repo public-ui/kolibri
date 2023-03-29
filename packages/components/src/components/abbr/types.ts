@@ -1,11 +1,11 @@
 import { Generic } from '@a11y-ui/core';
-import { Alignment } from '../../components';
+import { PropAlignment } from '../../components';
 
 type RequiredProps = {
 	title: string;
 };
 type OptionalProps = {
-	tooltipAlign: Alignment;
+	tooltipAlign: PropAlignment;
 };
 
 type RequiredStates = RequiredProps & OptionalProps;

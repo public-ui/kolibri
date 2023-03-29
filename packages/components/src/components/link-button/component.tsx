@@ -18,7 +18,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { watchButtonVariant } from '../button/controller';
-import { Alignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props/alignment';
 import { translate } from '../../i18n';
 
 type State = {
@@ -171,7 +171,7 @@ export class KolLinkButton
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'right';
+	@Prop() public _tooltipAlign?: PropAlignment = 'right';
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.
