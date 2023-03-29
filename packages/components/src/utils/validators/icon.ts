@@ -1,11 +1,11 @@
 import { Generic } from '@a11y-ui/core';
 import { ButtonStates } from '../../types/button-link';
-import { AnyIconFontClass, KoliBriAllIcon, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
 import { Alignment } from '../../types/props/alignment';
 import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
 import { isObject, isString, isStyle } from '../validator';
 
-const mapCustomIcon = (state: KoliBriIconState, alignment: Alignment | 'top' | 'bottom', icon?: AnyIconFontClass | KoliBriCustomIcon) => {
+const mapCustomIcon = (state: KoliBriIconState, alignment: Alignment, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
 		state[alignment] = icon as KoliBriCustomIcon;
 	} else if (isString(icon, 1)) {
@@ -78,14 +78,14 @@ export const validateIcon = (component: Generic.Element.Component, value?: KoliB
 					isString(value, 1) ||
 					(typeof value === 'object' &&
 						value !== null &&
-						(isString((value as KoliBriAllIcon).left, 1) ||
-							isIcon((value as KoliBriAllIcon).left) ||
-							isString((value as KoliBriAllIcon).right, 1) ||
-							isIcon((value as KoliBriAllIcon).right) ||
-							isString((value as KoliBriAllIcon).top, 1) ||
-							isIcon((value as KoliBriAllIcon).top) ||
-							isString((value as KoliBriAllIcon).bottom, 1) ||
-							isIcon((value as KoliBriAllIcon).bottom)))
+						(isString(value.left, 1) ||
+							isIcon(value.left) ||
+							isString(value.right, 1) ||
+							isIcon(value.right) ||
+							isString(value.top, 1) ||
+							isIcon(value.top) ||
+							isString(value.bottom, 1) ||
+							isIcon(value.bottom)))
 				);
 			},
 			new Set(['KoliBriIcon']),

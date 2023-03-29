@@ -88,13 +88,13 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 * @deprecated
 	 */
 	@Watch('_part')
-	public validatePart(_value?: string): void {
+	public validatePart(): void {
 		devHint(`ICON: The usage of the part attribute is deprecated and has no effect.`);
 	}
 
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateIcon(this._icon);
-		this.validatePart(this._part);
+		this.validatePart();
 	}
 }

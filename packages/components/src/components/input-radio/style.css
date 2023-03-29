@@ -72,6 +72,8 @@ fieldset div label span {
 fieldset div input[type='radio'] {
 	appearance: none;
 	border-radius: 100%;
+	display: grid;
+	place-content: center;
 	transition: 0.5s;
 }
 fieldset div input[type='radio']:before {
@@ -80,9 +82,6 @@ fieldset div input[type='radio']:before {
 	content: '';
 	display: block;
 	height: calc(var(--input-size) / 2);
-	left: calc(var(--input-size) / 4 - var(--border-width));
-	position: relative;
-	top: calc(var(--input-size) / 4 - var(--border-width));
 	width: calc(var(--input-size) / 2);
 }
 fieldset div input[type='radio']:checked:before {

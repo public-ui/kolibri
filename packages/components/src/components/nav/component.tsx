@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { Orientation } from '../../types/orientation';
-import { a11yHintLabelingLandmarks, devHint } from '../../utils/a11y.tipps';
+import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from './validation';
@@ -268,7 +268,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		let hasCompactButton = this.state._hasCompactButton;
 		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
 			hasCompactButton = false;
-			devHint(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
+			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
 		const collapsible = this.state._collapsible;
 		const compact = this.state._compact === true;

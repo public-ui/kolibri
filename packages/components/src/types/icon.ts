@@ -28,7 +28,7 @@ export type KoliBriHorizontalIcon =
 // 			bottom: AnyIconFontClass | KoliBriCustomIcon;
 // 	  };
 
-export type KoliBriAllIcon =
+type KoliBriAllIcon =
 	| {
 			top: AnyIconFontClass | KoliBriCustomIcon;
 			right?: AnyIconFontClass | KoliBriCustomIcon;

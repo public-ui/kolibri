@@ -20,7 +20,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, scrollBySelector, setEventTargetAndStopPropagation, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
@@ -52,7 +52,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	private readonly onClick = (event: Event) => {
 		if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
-			setEventTargetAndStopPropagation(event, this.ref);
+			setEventTarget(event, this.ref);
 			this.state._on?.onClick(event, this.state._href);
 		}
 	};
