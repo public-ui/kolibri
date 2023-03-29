@@ -1,5 +1,3 @@
-export type KoliBriIconProp = AnyIconFontClass | KoliBriAllIcon;
-
 export type AnyIconFontClass = string;
 
 export type KoliBriCustomIcon = {
@@ -7,18 +5,20 @@ export type KoliBriCustomIcon = {
 	style?: Record<string, string>;
 };
 
-export type IconOrIconClass = AnyIconFontClass | KoliBriCustomIcon;
+type IconOrIconClass = AnyIconFontClass | KoliBriCustomIcon;
 
 export type KoliBriHorizontalIcon = {
 	right?: IconOrIconClass;
 	left?: IconOrIconClass;
 };
 
-export type KoliBriVerticalIcon = {
+type KoliBriVerticalIcon = {
 	top?: IconOrIconClass;
 	bottom?: IconOrIconClass;
 };
 
-export type KoliBriAllIcon = KoliBriHorizontalIcon & KoliBriVerticalIcon;
+type KoliBriAllIcon = KoliBriHorizontalIcon & KoliBriVerticalIcon;
+
+export type KoliBriIconProp = AnyIconFontClass | KoliBriAllIcon;
 
 export type KoliBriIconState = KoliBriAllIcon;

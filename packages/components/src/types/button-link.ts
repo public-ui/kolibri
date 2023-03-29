@@ -5,6 +5,7 @@ import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriCustomIcon, KoliBriIconProp } from './icon';
 import { Alignment } from './props/alignment';
+import { PropDisabled } from './props/disabled';
 
 /**
  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
@@ -26,7 +27,6 @@ type OptionalButtonAndLinkProps = {
 	ariaExpanded: boolean;
 	ariaLabel: string;
 	ariaSelected: boolean;
-	disabled: boolean; // TODO: Link disabled?!
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
@@ -36,7 +36,7 @@ type OptionalButtonAndLinkProps = {
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: Alignment;
-};
+} & PropDisabled;
 
 type RequiredButtonAndLinkStates = {
 	icon: {

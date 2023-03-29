@@ -26,6 +26,7 @@ import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../ut
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
+import { validateDisabled } from '../../types/props/disabled';
 
 /**
  * @internal
@@ -301,7 +302,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
-		watchBoolean(this, '_disabled', value);
+		validateDisabled(this, value);
 		if (value === true) {
 			a11yHintDisabled();
 		}
