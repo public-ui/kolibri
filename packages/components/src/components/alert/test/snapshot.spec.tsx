@@ -1,9 +1,9 @@
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
+import { executeTests } from 'stencil-awesome-test';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { Props } from '../component';
+import { Props } from '../types';
 import { getAlertHtml } from './html.mock';
 
 executeTests<Props>(

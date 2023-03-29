@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { AlertType } from '../../types/alert';
+import { AlertType } from '../alert/types';
 import { HeadingLevel } from '../../types/heading-level';
 import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
