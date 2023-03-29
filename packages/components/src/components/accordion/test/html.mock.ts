@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { getButtonWcHtml } from '../../button/test/html.mock';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
-import { Props } from '../component';
+import { Props } from '../types';
 
 export const getAccordionHtml = (
 	props: Props,
