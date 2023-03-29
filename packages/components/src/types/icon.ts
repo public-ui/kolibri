@@ -19,16 +19,6 @@ export type KoliBriVerticalIcon = {
 	bottom?: IconOrIconClass;
 };
 
-export type KoliBriAllIcon = {
-	top?: IconOrIconClass;
-	right?: IconOrIconClass;
-	bottom?: IconOrIconClass;
-	left?: IconOrIconClass;
-};
+export type KoliBriAllIcon = KoliBriHorizontalIcon & KoliBriVerticalIcon;
 
-export type KoliBriIconState = {
-	top?: IconOrIconClass;
-	right?: IconOrIconClass;
-	bottom?: IconOrIconClass;
-	left?: IconOrIconClass;
-};
+export type KoliBriIconState = KoliBriAllIcon;

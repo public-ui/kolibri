@@ -58,6 +58,7 @@
 		"format": "prettier --check src",
 		"lighthouse": "lighthouse --chrome-flags=\"--headless\" --output-path lighthouse.report.html --preset=desktop --quiet",
 		"lint": "eslint src && tsc --noemit",
+		"ts-prune": "npx ts-prune src -e",
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
