@@ -630,7 +630,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_links`,
 	desc: `Gibt die geordnete Liste der Seitenhierarchie an.`,
-	types: `NavLinkProps[] | string, NavLinkWithChildrenProps[] | string`,
+	types: `ButtonOrLinkOrTextWithChildrenProps[] | string, LinkProps[] | string`,
 	comps: `breadcrumb, nav, skip-nav`
 },{
 	name: `_href`,
@@ -800,7 +800,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: Alignment | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: Alignment | undefined; _accessKey?: string | undefined; _disabled?: boolean | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
 	comps: `badge`
 },{
 	name: `_color`,
