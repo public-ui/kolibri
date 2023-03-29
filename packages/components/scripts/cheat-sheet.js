@@ -2,6 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const ELEMENTS = require(path.relative(__dirname, 'custom-elements.json'));
 const TODAY = new Date();
+let MARKDOWN = `# Cheat Sheet
+
+## Unified properties
+
+| Property | Type | Descriptions |
+| --- | --- | --- |
+`;
 let SHEET_CHEAT = `<!DOCTYPE html>
 <html lang="de" dir="ltr">
 	<head>
@@ -309,8 +316,7 @@ SHEET_CHEAT += `
 				};
 				propertyTable._data = [`;
 GROUPED_PROPS.forEach((group) => {
-	const SPAN = group.length;
-	group.forEach((name, index) => {
+	group.forEach((name) => {
 		const COMPS = PROPS.get(name).get('components');
 		const DESCS = PROPS.get(name).get('descriptions');
 		const TYPES = PROPS.get(name).get('types');
@@ -321,6 +327,11 @@ GROUPED_PROPS.forEach((group) => {
 			console.log(name, ':', PROP_DESCS);
 			// throw new Error('Property-Beschreibung ist nicht gesetzt oder einheitlich.');
 		}
+		console.log(name, PROP_DESCS);
+		PROP_DESCS.forEach((_desc, idx) => {
+			MARKDOWN += `| ${name} | ${PROP_TYPES.map((type) => type.replace(/\|/g, '&#124;')).join(', ')} | ${PROP_DESCS[idx].replace(/\n/g, '')} |
+`;
+		});
 		SHEET_CHEAT += `{
 	name: \`${name}\`,
 	desc: \`${PROP_DESCS[0]}\`,
@@ -344,3 +355,4 @@ SHEET_CHEAT += `
 </html>`;
 
 fs.writeFileSync('cheat-sheet.html', SHEET_CHEAT);
+fs.writeFileSync('cheat-sheet.md', MARKDOWN);
