@@ -44,12 +44,7 @@ export class InputIconController extends InputController implements Watches {
 				'_icon',
 				(value): boolean => {
 					return (
-						typeof value === 'object' &&
-						value !== null &&
-						(isString((value as KoliBriHorizontalIcon).left, 1) ||
-							isIcon((value as KoliBriHorizontalIcon).left) ||
-							isString((value as KoliBriHorizontalIcon).right, 1) ||
-							isIcon((value as KoliBriHorizontalIcon).right))
+						typeof value === 'object' && value !== null && (isString(value.left, 1) || isIcon(value.left) || isString(value.right, 1) || isIcon(value.right))
 					);
 				},
 				new Set(['KoliBriHorizontalIcon']),

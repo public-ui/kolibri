@@ -1,6 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { ButtonProps } from '../../../components';
-import { ButtonStates } from '../../../types/button-link';
+import { ButtonProps, ButtonStates } from '../../../types/button-link';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 
 type Slots = {

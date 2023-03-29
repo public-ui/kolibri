@@ -20,17 +20,11 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Alignment } from '../../types/props/alignment';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, scrollBySelector, setEventTargetAndStopPropagation, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-
-type RequiredNavLinkProps = RequiredLinkProps;
-type OptionalNavLinkProps = OptionalLinkProps & {
-	active: boolean;
-};
-export type NavLinkProps = Generic.Element.Members<RequiredNavLinkProps, OptionalNavLinkProps>;
 
 /**
  * @internal
@@ -52,7 +46,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	private readonly onClick = (event: Event) => {
 		if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
-			setEventTargetAndStopPropagation(event, this.ref);
+			setEventTarget(event, this.ref);
 			this.state._on?.onClick(event, this.state._href);
 		}
 	};
@@ -186,6 +180,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt an, ob der Link deaktiviert ist.
+	 *
+	 * @deprecated A link could never be disabled. Use a button instead.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
@@ -219,8 +215,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
-	 *
-	 * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
+	 * @deprecated
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
@@ -328,6 +323,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * @see: components/abbr/component.tsx (@Watch)
+	 *
+	 * @deprecated
 	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {

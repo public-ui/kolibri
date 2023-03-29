@@ -1,19 +1,18 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
-import { Orientation } from '../../types/orientation';
-import { a11yHintLabelingLandmarks, devHint } from '../../utils/a11y.tipps';
-import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
-import { NavLinkProps } from '../link/component';
-import { watchNavLinks } from './validation';
-import { Stringified } from '../../types/common';
-import { AriaCurrent, KoliBriButtonCallbacks } from '../../types/button-link';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
-import { KoliBriIconProp } from '../../components';
+import { AriaCurrent, KoliBriButtonCallbacks } from '../../types/button-link';
+import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
+import { Stringified } from '../../types/common';
+import { KoliBriIconProp } from '../../types/icon';
+import { Orientation } from '../../types/orientation';
+import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
+import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { watchNavLinks } from './validation';
 
-export type NavLinkWithChildrenProps = NavLinkProps & {
-	_children?: NavLinkWithChildrenProps[];
-};
-
+/**
+ * @deprecated
+ */
 export type KoliBriNavVariant = 'primary' | 'secondary';
 
 const UNIQUE_ARIA_LABEL: string[] = [];
@@ -24,7 +23,7 @@ const removeAriaLabel = (ariaLabel: string) => {
 	}
 };
 
-const linkValidator = (link: NavLinkWithChildrenProps): boolean => {
+const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
 		if (Array.isArray(link._children)) {
 			return linksValidator(link._children);
@@ -34,7 +33,7 @@ const linkValidator = (link: NavLinkWithChildrenProps): boolean => {
 	return true;
 };
 
-const linksValidator = (links: NavLinkWithChildrenProps[]): boolean => {
+const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean => {
 	if (Array.isArray(links)) {
 		return links.find(linkValidator) !== undefined;
 	}
@@ -46,7 +45,7 @@ const linksValidator = (links: NavLinkWithChildrenProps[]): boolean => {
  */
 type RequiredProps = {
 	ariaLabel: string;
-	links: Stringified<NavLinkWithChildrenProps[]>;
+	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 };
 type OptionalProps = {
 	ariaCurrentValue: AriaCurrent;
@@ -54,6 +53,9 @@ type OptionalProps = {
 	compact: boolean;
 	hasCompactButton: boolean;
 	orientation: Orientation;
+	/**
+	 * @deprecated
+	 */
 	variant: KoliBriNavVariant;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -63,8 +65,11 @@ type RequiredStates = {
 	ariaLabel: string;
 	collapsible: boolean;
 	hasCompactButton: boolean;
-	links: NavLinkWithChildrenProps[];
+	links: ButtonOrLinkOrTextWithChildrenProps[];
 	orientation: Orientation;
+	/**
+	 * @deprecated
+	 */
 	variant: KoliBriNavVariant;
 };
 type OptionalStates = {
@@ -83,14 +88,14 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: true,
 })
 export class KolNav implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	private readonly onClick = (link: NavLinkWithChildrenProps): void => {
+	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
 			...this.state,
 		};
 	};
 
-	private readonly hasActiveChild = (link: NavLinkWithChildrenProps): boolean => {
+	private readonly hasActiveChild = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 		if (Array.isArray(link._children) && link._children.length > 0) {
 			return link._children.some(this.hasActiveChild);
 		}
@@ -104,7 +109,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		compact: boolean,
 		disabled: boolean,
 		icon: Stringified<KoliBriIconProp> | undefined,
-		iconOnly: boolean,
 		label: string,
 		on: KoliBriButtonCallbacks<unknown>
 	): JSX.Element {
@@ -112,18 +116,21 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 			<kol-button-wc
 				exportparts={`icon,button,span${selected ? ',selected' : ''}`}
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaLabel={compact || iconOnly ? label : undefined}
 				_ariaExpanded={selected}
 				_disabled={disabled}
 				_icon={icon}
-				_iconOnly={compact || iconOnly}
+				_iconOnly={compact}
 				_label={label}
 				_on={on}
 			></kol-button-wc>
 		);
 	}
 
-	private dropDown(collapsible: boolean, compact: boolean, deep: number, link: NavLinkWithChildrenProps, orientation: Orientation): JSX.Element {
+	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
+		return <kol-span-wc _icon={icon} _iconOnly={compact} _label={label}></kol-span-wc>;
+	}
+
+	private dropDown(collapsible: boolean, compact: boolean, deep: number, link: ButtonOrLinkOrTextWithChildrenProps, orientation: Orientation): JSX.Element {
 		return (
 			<div
 				class={{
@@ -142,7 +149,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		collapsible: boolean,
 		compact: boolean,
 		hasChildren: boolean,
-		link: NavLinkWithChildrenProps,
+		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean,
 		selected: boolean,
 		textCenter: boolean
@@ -152,28 +159,26 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				class={{
 					entry: true,
 					'has-children': hasChildren,
-					'has-link': !!link._href,
 					selected,
 					expanded,
 					'text-center': textCenter,
 				}}
 			>
-				{this.textLinkOrButton(collapsible, compact, link, selected)}
+				{this.buttonOrLinkOrText(compact, link, selected)}
 				{hasChildren ? this.expandButton(collapsible, link, selected) : ''}
 			</div>
 		);
 	}
 
-	private expandButton(collapsible: boolean, link: NavLinkWithChildrenProps, selected: boolean): JSX.Element {
+	private expandButton(collapsible: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		return (
 			<kol-button-wc
-				_customClass="expand-button"
+				class="expand-button"
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
-				_label=""
+				_iconOnly
+				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
-				_variant="custom"
-				class="expand-button-container"
 			></kol-button-wc>
 		);
 	}
@@ -184,18 +189,18 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		deep: number,
 		index: number,
 		isLast: boolean,
-		link: NavLinkWithChildrenProps,
+		link: ButtonOrLinkOrTextWithChildrenProps,
 		orientation: Orientation
 	): JSX.Element {
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
 		const selected = !!link._active;
 		const expanded = hasChildren && !!link._active;
-		const textCenter = compact || link._iconOnly === true;
+		const textCenter = compact;
 		return (
 			<li
-				class={{ selected, 'has-children': hasChildren }}
+				class={{ expanded, selected, 'has-children': hasChildren }}
 				key={index}
-				part={`li ${deep === 0 ? orientation : 'vertical'}${selected ? ' selected' : ''}${isLast ? '' : ' last'}`}
+				part={`li ${deep === 0 ? orientation : 'vertical'}${expanded ? ' expanded' : ''}${selected ? ' selected' : ''}${isLast ? '' : ' last'}`}
 				style={{ position: 'relative' }}
 			>
 				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
@@ -204,25 +209,15 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	}
 
-	private link(
-		selected: boolean,
-		compact: boolean,
-		disabled: boolean,
-		href: string,
-		icon: Stringified<KoliBriIconProp> | undefined,
-		iconOnly: boolean,
-		label: string
-	): JSX.Element {
+	private link(selected: boolean, compact: boolean, href: string, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
 		return (
 			<kol-link-wc
 				exportparts={`icon,link,span${selected ? ',selected' : ''}`}
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaLabel={compact || iconOnly ? label : undefined}
 				_ariaExpanded={selected}
-				_disabled={disabled}
 				_href={href}
 				_icon={icon}
-				_iconOnly={compact || iconOnly}
+				_iconOnly={compact}
 				_label={label}
 			></kol-link-wc>
 		);
@@ -232,7 +227,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		collapsible: boolean;
 		compact: boolean;
 		deep: number;
-		links: NavLinkWithChildrenProps[];
+		links: ButtonOrLinkOrTextWithChildrenProps[];
 		orientation: Orientation;
 	}): JSX.Element => {
 		return (
@@ -248,19 +243,20 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	};
 
-	private textLinkOrButton(collapsible: boolean, compact: boolean, link: NavLinkWithChildrenProps, selected: boolean): JSX.Element {
-		if (link._href) {
-			return this.link(selected, compact, link._disabled === true, link._href, link._icon, link._iconOnly === true, link._label);
-		} else {
+	private buttonOrLinkOrText(compact: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
+		if ((link as ButtonWithChildrenProps)._on) {
 			return this.button(
 				selected,
 				compact,
-				link._disabled === true,
+				(link as ButtonWithChildrenProps)._disabled === true,
 				link._icon,
-				link._iconOnly === true,
 				link._label,
-				(link._on ? link._on : collapsible ? { onClick: () => this.onClick(link) } : null) as KoliBriButtonCallbacks<unknown>
+				(link as ButtonWithChildrenProps)._on
 			);
+		} else if ((link as LinkWithChildrenProps)._href) {
+			return this.link(selected, compact, (link as LinkWithChildrenProps)._href, link._icon, link._label);
+		} else {
+			return this.text(compact, link._icon, link._label);
 		}
 	}
 
@@ -268,7 +264,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		let hasCompactButton = this.state._hasCompactButton;
 		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
 			hasCompactButton = false;
-			devHint(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
+			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
 		const collapsible = this.state._collapsible;
 		const compact = this.state._compact === true;
@@ -346,10 +342,12 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie an.
 	 */
-	@Prop() public _links!: Stringified<NavLinkWithChildrenProps[]>;
+	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.
+	 *
+	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
@@ -430,7 +428,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_links')
-	public validateLinks(value?: Stringified<NavLinkWithChildrenProps[]>): void {
+	public validateLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
 		watchNavLinks('KolNav', this, value);
 		devHint(`[KolNav] Die Navigationsstruktur wird noch nicht rekursiv validiert.`);
 	}

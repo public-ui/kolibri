@@ -49,3 +49,6 @@ function openModal() {
 function closeModal() {
 	modal._show = false;
 }
+
+const openModalButton = document.querySelector('.openmodalbutton');
+if (openModalButton) openModalButton._on = { onClick: openModal };

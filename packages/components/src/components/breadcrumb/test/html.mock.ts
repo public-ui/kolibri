@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
+import { LinkProps } from '../../../types/button-link';
 import { Icofont } from '../../../types/icofont';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { NavLinkProps } from '../../link/component';
 import { getLinkHtml } from '../../link/test/html.mock';
 import { Props } from '../component';
 
@@ -16,7 +16,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 
 	const lastIndex = props._links.length - 1;
 	let list = '';
-	(props._links as NavLinkProps[]).forEach((link, index) => {
+	(props._links as LinkProps[]).forEach((link, index) => {
 		list += `
 				<li>
 				${
