@@ -4,9 +4,11 @@ import { watchBoolean } from '../../utils/prop.validators';
 /* exported types */
 /** de
  * Markiert dieses Element als ausgewählt.
+ * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
  */
 /** en
  * Marks this element as selected.
+ * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
  */
 export type PropAriaSelected = {
 	ariaSelected?: boolean;
