@@ -1795,10 +1795,6 @@ export namespace Components {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Gibt an, ob das Modal angezeigt wird.
-         */
-        "_show"?: boolean;
-        /**
           * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
          */
         "_width"?: string;
@@ -4363,10 +4359,6 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
         "_on"?: KoliBriModalEventCallbacks;
-        /**
-          * Gibt an, ob das Modal angezeigt wird.
-         */
-        "_show"?: boolean;
         /**
           * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
          */
