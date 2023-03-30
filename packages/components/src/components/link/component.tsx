@@ -4,7 +4,6 @@ import { Generic } from '@a11y-ui/core';
 import { translate } from '../../i18n';
 import {
 	AlternativButtonLinkRole,
-	AriaCurrent,
 	LinkOnCallbacks,
 	LinkStates,
 	LinkTarget,
@@ -17,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { PropAlignment, validateAriaSelected } from '../../types/props';
+import { AriaCurrent, PropAlignment, validateAriaSelected } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';

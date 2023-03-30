@@ -4,12 +4,8 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { PropAlignment, PropAriaExpanded, PropAriaSelected, PropDisabled } from './props';
+import { AriaCurrent, PropAlignment, PropAriaExpanded, PropAriaSelected, PropDisabled } from './props';
 
-/**
- * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
- */
-export type AriaCurrent = boolean | 'page' | 'step' | 'location' | 'date' | 'time';
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
 /**

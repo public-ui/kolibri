@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Generic } from '@a11y-ui/core';
 import {
 	AlternativButtonLinkRole,
-	AriaCurrent,
 	KoliBriButtonVariant,
 	LinkButtonStates,
 	LinkOnCallbacks,
@@ -18,7 +17,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { watchButtonVariant } from '../button/controller';
-import { PropAlignment } from '../../types/props';
+import { AriaCurrent, PropAlignment } from '../../types/props';
 import { translate } from '../../i18n';
 
 type State = {

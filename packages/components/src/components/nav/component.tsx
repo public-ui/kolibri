@@ -6,9 +6,10 @@ import { watchBoolean, watchString, watchValidator } from '../../utils/prop.vali
 import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from './validation';
 import { Stringified } from '../../types/common';
-import { AriaCurrent, KoliBriButtonCallbacks } from '../../types/button-link';
+import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { translate } from '../../i18n';
 import { KoliBriIconProp } from '../../components';
+import { AriaCurrent } from '../../types/props';
 
 export type NavLinkWithChildrenProps = NavLinkProps & {
 	_children?: NavLinkWithChildrenProps[];

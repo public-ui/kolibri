@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import {
 	AlternativButtonLinkRole,
-	AriaCurrent,
 	KoliBriButtonCallbacks,
 	KoliBriButtonType,
 	KoliBriButtonVariant,
@@ -12,7 +11,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { PropAlignment } from '../../types/props';
+import { AriaCurrent, PropAlignment } from '../../types/props';
 import { propergateFocus } from '../../utils/reuse';
 
 @Component({

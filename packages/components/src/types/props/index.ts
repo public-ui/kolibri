@@ -1,5 +1,6 @@
 export { PropAlert, validateAlert } from './alert';
 export { PropAlignment } from './alignment';
+export { AriaCurrent, PropAriaCurrent, validateAriaCurrent } from './aria-current';
 export { PropAriaExpanded, validateAriaExpanded } from './aria-expanded';
 export { PropAriaSelected, validateAriaSelected } from './aria-selected';
 export { PropDisabled, validateDisabled } from './disabled';
