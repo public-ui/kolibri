@@ -7,6 +7,7 @@ import { setState, watchBoolean, watchNumber, watchString, watchValidator } from
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { featureHint } from '../../utils/a11y.tipps';
+import { PropShow, validateShow } from '../../types/props';
 
 /**
  * API
@@ -18,10 +19,9 @@ type OptionalProps = {
 	heading: string;
 	level: HeadingLevel;
 	on: KoliBriToastEventCallbacks;
-	show: boolean;
 	showDuration: number;
 	type: AlertType;
-};
+} & PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
@@ -137,11 +137,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
-		watchBoolean(this, '_show', value, {
-			hooks: {
-				afterPatch: this.handleShowAndDuration,
-			},
-		});
+		validateShow(this, value, { hooks: { afterPatch: this.handleShowAndDuration } });
 	}
 
 	/**
@@ -190,7 +186,6 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 		if (this.state._show === true && typeof this.state._showDuration === 'number' && this.state._showDuration >= 0) {
 			clearTimeout(this.durationTimeout as NodeJS.Timer);
 			this.durationTimeout = setTimeout(() => {
-				clearTimeout(this.durationTimeout as NodeJS.Timer);
 				this.close();
 			}, this.state._showDuration);
 		}
