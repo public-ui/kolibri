@@ -16,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { PropAlignment, validateDisabled } from '../../types/props';
+import { PropAlignment, validateAriaExpanded, validateDisabled } from '../../types/props';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -267,7 +267,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_ariaExpanded')
 	public validateAriaExpanded(value?: boolean): void {
-		watchBoolean(this, '_ariaExpanded', value);
+		validateAriaExpanded(this, value);
 	}
 
 	/**

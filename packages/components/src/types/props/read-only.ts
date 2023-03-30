@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Makes the input element read only.
  */
 export type PropReadOnly = {
-	'read-only'?: boolean;
+	readOnly?: boolean;
 };
 
 /* validator */

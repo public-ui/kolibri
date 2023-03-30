@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Tells the element to hide the label.
  */
 export type PropHideLabel = {
-	'hide-label'?: boolean;
+	hideLabel?: boolean;
 };
 
 /* validator */

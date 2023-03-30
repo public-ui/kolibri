@@ -17,7 +17,7 @@ type KoliBriVerticalIcon = {
 	bottom?: IconOrIconClass;
 };
 
-type KoliBriAllIcon = KoliBriHorizontalIcon & KoliBriVerticalIcon;
+export type KoliBriAllIcon = KoliBriHorizontalIcon & KoliBriVerticalIcon;
 
 export type KoliBriIconProp = AnyIconFontClass | KoliBriAllIcon;
 

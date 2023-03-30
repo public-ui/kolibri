@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Marks this element as selected.
  */
 export type PropAriaSelected = {
-	'aria-selected'?: boolean;
+	ariaSelected?: boolean;
 };
 
 /* validator */

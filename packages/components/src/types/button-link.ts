@@ -3,10 +3,8 @@ import { Events } from '../enums/events';
 import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
-import { KoliBriCustomIcon, KoliBriIconProp } from './icon';
-import { PropAriaSelected } from './props';
-import { PropAlignment } from './props/alignment';
-import { PropDisabled } from './props/disabled';
+import { KoliBriAllIcon, KoliBriIconProp } from './icon';
+import { PropAlignment, PropAriaExpanded, PropAriaSelected, PropDisabled } from './props';
 
 /**
  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
@@ -25,9 +23,7 @@ type RequiredButtonAndLinkProps = {
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
 	ariaCurrent: AriaCurrent;
-	ariaExpanded: boolean;
 	ariaLabel: string;
-	ariaSelected: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
@@ -37,24 +33,18 @@ type OptionalButtonAndLinkProps = {
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: PropAlignment;
-} & PropDisabled;
+} & PropAriaExpanded &
+	PropAriaSelected &
+	PropDisabled;
 
 type RequiredButtonAndLinkStates = {
-	icon: {
-		top?: KoliBriCustomIcon;
-		right?: KoliBriCustomIcon;
-		bottom?: KoliBriCustomIcon;
-		left?: KoliBriCustomIcon;
-	};
+	icon: KoliBriAllIcon;
 	label: string;
 };
 type OptionalButtonAndLinkStates = {
 	ariaLabel: string;
 	ariaControls: string;
 	ariaCurrent: AriaCurrent;
-	ariaExpanded: boolean;
-	ariaSelected: boolean;
-	disabled: boolean;
 	/**
 	 * @deprecated
 	 */
@@ -63,7 +53,9 @@ type OptionalButtonAndLinkStates = {
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: PropAlignment;
-};
+} & PropAriaExpanded &
+	PropAriaSelected &
+	PropDisabled;
 
 /**
  * Button
