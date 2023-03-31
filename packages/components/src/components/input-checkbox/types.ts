@@ -3,6 +3,7 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { AnyIconFontClass } from '../../types/icon';
 import { Stringified } from '../../components';
+import { PropIndeterminate } from '../../types/props';
 
 export type InputCheckboxVariant = 'button' | 'checkbox' | 'switch';
 
@@ -33,7 +34,6 @@ type OptionalProps = {
 	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<InputCheckboxIcon>;
-	indeterminate: boolean;
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
@@ -45,16 +45,15 @@ type OptionalProps = {
 	type: InputCheckboxVariant;
 	value: string;
 	variant: InputCheckboxVariant;
-};
+} & PropIndeterminate;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	checked: boolean;
 	icon: InputCheckboxIcon;
 	id: string;
-	indeterminate: boolean;
 	variant: InputCheckboxVariant;
-};
+} & PropIndeterminate;
 type OptionalStates = {
 	alert: boolean;
 	accessKey: string;
