@@ -4,6 +4,7 @@ export { AriaCurrent, PropAriaCurrent, validateAriaCurrent } from './aria-curren
 export { PropAriaExpanded, validateAriaExpanded } from './aria-expanded';
 export { PropAriaSelected, validateAriaSelected } from './aria-selected';
 export { PropDisabled, validateDisabled } from './disabled';
+export { PropHasCloser, validateHasCloser } from './has-closer';
 export { PropHideLabel, validateHideLabel } from './hide-label';
 export { PropMultiple, validateMultiple } from './multiple';
 export { PropOpen, validateOpen } from './open';

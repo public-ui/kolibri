@@ -7,7 +7,7 @@ import { setState, watchBoolean, watchNumber, watchString, watchValidator } from
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { featureHint } from '../../utils/a11y.tipps';
-import { PropShow, validateShow } from '../../types/props';
+import { PropHasCloser, PropShow, validateHasCloser, validateShow } from '../../types/props';
 
 /**
  * API
@@ -15,13 +15,13 @@ import { PropShow, validateShow } from '../../types/props';
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;
-	hasCloser: boolean;
 	heading: string;
 	level: HeadingLevel;
 	on: KoliBriToastEventCallbacks;
 	showDuration: number;
 	type: AlertType;
-} & PropShow;
+} & PropHasCloser &
+	PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
@@ -98,7 +98,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: boolean): void {
-		watchBoolean(this, '_hasCloser', value);
+		validateHasCloser(this, value);
 	}
 
 	/**
