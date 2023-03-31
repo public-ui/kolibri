@@ -2,8 +2,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../types/heading-level';
-import { watchBoolean, watchString } from '../../utils/prop.validators';
+import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
+import { PropHasFooter, validateHasFooter } from '../../types/props';
 
 /**
  * API
@@ -12,13 +13,12 @@ type RequiredProps = {
 	heading: string;
 };
 type OptionalProps = {
-	hasFooter: boolean;
 	/**
 	 * @deprecated Use _headline instead
 	 */
 	headline: string;
 	level: HeadingLevel;
-};
+} & PropHasFooter;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
@@ -95,7 +95,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Watch('_hasFooter')
 	public validateHasFooter(value?: boolean): void {
-		watchBoolean(this, '_hasFooter', value);
+		validateHasFooter(this, value);
 	}
 
 	/**

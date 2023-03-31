@@ -8,6 +8,7 @@ export { PropAriaSelected, validateAriaSelected } from './aria-selected';
 export { PropDisabled, validateDisabled } from './disabled';
 export { PropHasCloser, validateHasCloser } from './has-closer';
 export { PropHasCounter, validateHasCounter } from './has-counter';
+export { PropHasFooter, validateHasFooter } from './has-footer';
 export { PropHideLabel, validateHideLabel } from './hide-label';
 export { PropIndeterminate, validateIndeterminate } from './indeterminate';
 export { PropMultiple, validateMultiple } from './multiple';
