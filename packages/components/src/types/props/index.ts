@@ -11,4 +11,5 @@ export { PropOpen, validateOpen } from './open';
 export { PropReadOnly, validateReadOnly } from './read-only';
 export { PropRequired, validateRequired } from './required';
 export { PropShow, validateShow } from './show';
+export { PropStealth, validateStealth } from './stealth';
 export { PropTouched, validateTouched } from './touched';

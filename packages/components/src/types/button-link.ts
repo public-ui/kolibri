@@ -4,7 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { PropAlignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled } from './props';
+import { PropAlignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropStealth } from './props';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -140,14 +140,13 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
-	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	useCase: LinkUseCase;
-};
+} & PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
 export type RequiredLinkStates = RequiredButtonAndLinkStates & {
@@ -162,14 +161,14 @@ export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
-	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	useCase: LinkUseCase;
-} & PropAriaSelected;
+} & PropAriaSelected &
+	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 
 /**

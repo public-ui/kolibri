@@ -16,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment, validateAriaCurrent, validateAriaSelected } from '../../types/props';
+import { AriaCurrent, PropAlignment, validateAriaCurrent, validateAriaSelected, validateStealth } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
@@ -412,7 +412,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_stealth')
 	public validateStealth(value?: boolean): void {
-		watchBoolean(this, '_stealth', value);
+		validateStealth(this, value);
 	}
 
 	/**
