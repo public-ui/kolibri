@@ -4,7 +4,7 @@ specifiers:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14
   '@angular/core': 11.2.14
-  '@public-ui/components': 1.5.0-rc.7
+  '@public-ui/components': 1.5.0-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.1
@@ -20,7 +20,7 @@ devDependencies:
   '@angular/compiler': 11.2.14
   '@angular/compiler-cli': 11.2.14_5xxvadz4tf2tlq4hiwi2uyyjke
   '@angular/core': 11.2.14_rxjs@6.5.5+zone.js@0.11.8
-  '@public-ui/components': 1.5.0-rc.7
+  '@public-ui/components': 1.5.0-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.11.9
@@ -344,8 +344,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.5.0-rc.7:
-    resolution: {integrity: sha512-V/AO0TH6+tX8k+f2H/o927kkbfK7DWwRm9B6Her7reyz0deRKdYzMOJGoxfsZQQ7U2KWTIWJ1TJV+ZIvyvk7Wg==}
+  /@public-ui/components/1.5.0-rc.8:
+    resolution: {integrity: sha512-bGBAdD4/w9Mg54Qp52ZtbGHAXkDxp+JnDwzv4VuPJIWP87mCecacpSYsSDMy6018DfUl9igsC91SnXm2wOEgyg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
