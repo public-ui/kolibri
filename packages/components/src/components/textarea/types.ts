@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { InputTypeOnDefault } from '../../types/input/types';
-import { PropHasCounter } from '../../types/props';
+import { PropAdjustHeight, PropHasCounter } from '../../types/props';
 import { InputRequiredProps } from '../input-text/types';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
@@ -11,7 +11,6 @@ export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;
-	adjustHeight: boolean;
 	alert: boolean;
 	disabled: boolean;
 	error: string;
@@ -28,7 +27,8 @@ type OptionalProps = {
 	tabIndex: number;
 	touched: boolean;
 	value: string;
-} & PropHasCounter;
+} & PropAdjustHeight &
+	PropHasCounter;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -36,7 +36,7 @@ type RequiredStates = {
 	currentLength: number;
 	id: string;
 	resize: CSSResize;
-};
+} & PropAdjustHeight;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;

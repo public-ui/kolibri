@@ -2,7 +2,7 @@ import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '
 import { translate } from '../../i18n';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { validateHasCounter } from '../../types/props';
+import { validateAdjustHeight, validateHasCounter } from '../../types/props';
 import { setState } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
@@ -237,7 +237,7 @@ export class KolTextarea implements ComponentApi {
 	 */
 	@Watch('_adjustHeight')
 	public validateAdjustHeight(value?: boolean): void {
-		this.controller.validateAdjustHeight(value);
+		validateAdjustHeight(this, value);
 	}
 
 	/**

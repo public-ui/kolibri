@@ -1,3 +1,4 @@
+export { PropAdjustHeight, validateAdjustHeight } from './adjust-heigt';
 export { PropAlert, validateAlert } from './alert';
 export { PropAlignment } from './alignment';
 export { AriaCurrent, PropAriaCurrent, validateAriaCurrent } from './aria-current';
