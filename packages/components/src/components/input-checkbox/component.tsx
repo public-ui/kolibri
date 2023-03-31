@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../components';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { validateIndeterminate } from '../../types/props';
+import { validateChecked, validateIndeterminate } from '../../types/props';
 import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
@@ -211,7 +211,7 @@ export class KolInputCheckbox implements ComponentApi {
 	 */
 	@Watch('_checked')
 	public validateChecked(value?: boolean): void {
-		this.controller.validateChecked(value);
+		validateChecked(this, value);
 	}
 
 	/**
