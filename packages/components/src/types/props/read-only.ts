@@ -14,5 +14,5 @@ export type PropReadOnly = {
 
 /* validator */
 export const validateReadOnly = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_read-only', value);
+	watchBoolean(component, '_readOnly', value);
 };

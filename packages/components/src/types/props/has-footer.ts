@@ -14,5 +14,5 @@ export type PropHasFooter = {
 
 /* validator */
 export const validateHasFooter = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_has-footer', value);
+	watchBoolean(component, '_hasFooter', value);
 };

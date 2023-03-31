@@ -14,5 +14,5 @@ export type PropHasCompactButton = {
 
 /* validator */
 export const validateHasCompactButton = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_has-compact-button', value);
+	watchBoolean(component, '_hasCompactButton', value);
 };

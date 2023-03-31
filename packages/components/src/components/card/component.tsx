@@ -51,7 +51,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 					<div class="content">
 						<slot name="content" />
 					</div>
-					{this.state._hasFooter === true && (
+					{this.state._hasFooter && (
 						<div class="footer">
 							<slot name="footer" />
 						</div>

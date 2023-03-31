@@ -14,5 +14,5 @@ export type PropHasCloser = {
 
 /* validator */
 export const validateHasCloser = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_has-closer', value);
+	watchBoolean(component, '_hasCloser', value);
 };

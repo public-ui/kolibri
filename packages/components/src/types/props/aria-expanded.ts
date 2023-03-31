@@ -16,5 +16,5 @@ export type PropAriaExpanded = {
 
 /* validator */
 export const validateAriaExpanded = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_aria-expanded', value);
+	watchBoolean(component, '_ariaExpanded', value);
 };

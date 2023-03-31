@@ -14,5 +14,5 @@ export type PropHideLabel = {
 
 /* validator */
 export const validateHideLabel = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_hide-label', value);
+	watchBoolean(component, '_hideL<abel', value);
 };

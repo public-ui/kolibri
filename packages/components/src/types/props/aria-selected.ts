@@ -16,5 +16,5 @@ export type PropAriaSelected = {
 
 /* validator */
 export const validateAriaSelected = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_aria-selected', value);
+	watchBoolean(component, '_ariaSelected', value);
 };

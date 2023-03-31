@@ -275,7 +275,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 			hasCompactButton = false;
 			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
-		const collapsible = this.state._collapsible;
+		const collapsible = this.state._collapsible === true;
 		const compact = this.state._compact === true;
 		const orientation = this.state._orientation;
 		return (

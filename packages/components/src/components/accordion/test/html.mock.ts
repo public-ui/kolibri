@@ -29,7 +29,7 @@ export const getAccordionHtml = (
 				{
 					default: `${getButtonWcHtml({
 						_ariaControls: 'nonce',
-						_ariaExpanded: props._open,
+						_ariaExpanded: props._open === true,
 						_icon: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
 						_label: props._heading,
 					})}`,

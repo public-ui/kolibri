@@ -14,5 +14,5 @@ export type PropAdjustHeight = {
 
 /* validator */
 export const validateAdjustHeight = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_adjust-height', value);
+	watchBoolean(component, '_adjustHeight', value);
 };

@@ -14,5 +14,5 @@ export type PropHasCounter = {
 
 /* validator */
 export const validateHasCounter = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_has-counter', value);
+	watchBoolean(component, '_hasCounter', value);
 };
