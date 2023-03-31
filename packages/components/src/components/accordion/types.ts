@@ -2,6 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../components';
 import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
+import { PropOpen } from '../../types/props';
 
 export type KoliBriAccordionCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
@@ -12,9 +13,8 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	level: HeadingLevel;
-	open: boolean;
 	on: KoliBriAccordionCallbacks;
-};
+} & PropOpen;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;

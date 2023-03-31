@@ -3,9 +3,10 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
+import { validateOpen } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
+import { setState, watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriAccordionCallbacks, States } from './types';
 
@@ -162,7 +163,7 @@ export class KolAccordion implements API {
 	 */
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
-		watchBoolean(this, '_open', value);
+		validateOpen(this, value);
 	}
 
 	/**
