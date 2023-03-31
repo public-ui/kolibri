@@ -41,7 +41,11 @@ export class KolInputPassword implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		return (
-			<Host>
+			<Host
+				class={{
+					'has-value': this.state._hasValue,
+				}}
+			>
 				<kol-input
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -202,6 +206,7 @@ export class KolInputPassword implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: '…', // ⚠ required
+		_hasValue: false,
 	};
 
 	public constructor() {
@@ -386,5 +391,8 @@ export class KolInputPassword implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 }
