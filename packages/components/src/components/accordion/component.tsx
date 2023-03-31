@@ -1,15 +1,14 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Events } from '../../enums/events';
 
-import { EventValueOrEventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
+import { validateOpen } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
+import { setState, watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
+import { API, KoliBriAccordionCallbacks, States } from './types';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -18,26 +17,9 @@ featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer n
 - Logik Öffnet und Schließt entsprechend`);
 featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
-export type KoliBriAccordionCallbacks = {
-	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
-};
-
 /**
  * API
  */
-type RequiredProps = {
-	heading: string;
-};
-type OptionalProps = {
-	level: HeadingLevel;
-	open: boolean;
-	on: KoliBriAccordionCallbacks;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
  * @part accordion - Ermöglicht das Stylen des äußeren Container des Accordions.
@@ -57,7 +39,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolAccordion implements API {
 	private readonly nonce = nonce();
 
 	public render(): JSX.Element {
@@ -181,7 +163,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
-		watchBoolean(this, '_open', value);
+		validateOpen(this, value);
 	}
 
 	/**

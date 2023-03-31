@@ -1,14 +1,23 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
-import { AriaCurrent, KoliBriButtonCallbacks } from '../../types/button-link';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
+import { KoliBriButtonCallbacks } from '../../types/button-link';
+import {
+	AriaCurrent,
+	PropCollapsible,
+	PropCompact,
+	PropHasCompactButton,
+	validateCollapsible,
+	validateCompact,
+	validateHasCompactButton,
+} from '../../types/props';
 
 /**
  * @deprecated
@@ -49,15 +58,14 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	ariaCurrentValue: AriaCurrent;
-	collapsible: boolean;
-	compact: boolean;
-	hasCompactButton: boolean;
 	orientation: Orientation;
 	/**
 	 * @deprecated
 	 */
 	variant: KoliBriNavVariant;
-};
+} & PropCollapsible &
+	PropCompact &
+	PropHasCompactButton;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -71,10 +79,9 @@ type RequiredStates = {
 	 * @deprecated
 	 */
 	variant: KoliBriNavVariant;
-};
-type OptionalStates = {
-	compact: boolean;
-};
+} & PropCollapsible &
+	PropHasCompactButton;
+type OptionalStates = PropCompact;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
@@ -266,7 +273,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 			hasCompactButton = false;
 			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
-		const collapsible = this.state._collapsible;
+		const collapsible = this.state._collapsible === true;
 		const compact = this.state._compact === true;
 		const orientation = this.state._orientation;
 		return (
@@ -405,7 +412,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 */
 	@Watch('_collapsible')
 	public validateCollapsible(value?: boolean): void {
-		watchBoolean(this, '_collapsible', value);
+		validateCollapsible(this, value);
 	}
 
 	/**
@@ -413,7 +420,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 */
 	@Watch('_compact')
 	public validateCompact(value?: boolean): void {
-		watchBoolean(this, '_compact', value);
+		validateCompact(this, value);
 	}
 
 	/**
@@ -421,7 +428,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 */
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
-		watchBoolean(this, '_hasCompactButton', value);
+		validateHasCompactButton(this, value);
 	}
 
 	/**

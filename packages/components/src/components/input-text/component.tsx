@@ -5,6 +5,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { validateAlert, validateHideLabel, validateReadOnly, validateRequired, validateTouched } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { propergateFocus } from '../../utils/reuse';
 import { propergateSubmitEventToForm } from '../form/controller';
@@ -256,7 +257,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
+		validateAlert(this, value);
 	}
 
 	/**
@@ -288,7 +289,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
-		this.controller.validateHideLabel(value);
+		validateHideLabel(this, value);
 	}
 
 	/**
@@ -368,7 +369,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_readOnly')
 	public validateReadOnly(value?: boolean): void {
-		this.controller.validateReadOnly(value);
+		validateReadOnly(this, value);
 	}
 
 	/**
@@ -376,7 +377,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
-		this.controller.validateRequired(value);
+		validateRequired(this, value);
 	}
 
 	/**
@@ -408,7 +409,7 @@ export class KolInputText implements ComponentApi {
 	 */
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
-		this.controller.validateTouched(value);
+		validateTouched(this, value);
 	}
 
 	/**

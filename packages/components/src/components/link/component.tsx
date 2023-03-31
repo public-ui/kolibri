@@ -4,7 +4,6 @@ import { Generic } from '@a11y-ui/core';
 import { translate } from '../../i18n';
 import {
 	AlternativButtonLinkRole,
-	AriaCurrent,
 	LinkOnCallbacks,
 	LinkStates,
 	LinkTarget,
@@ -17,10 +16,10 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Alignment } from '../../types/props/alignment';
+import { AriaCurrent, PropAlignment, validateAriaCurrent, validateAriaSelected, validateStealth } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
@@ -200,7 +199,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: PropAlignment;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
@@ -256,7 +255,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'right';
+	@Prop() public _tooltipAlign?: PropAlignment = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -288,13 +287,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_ariaCurrent')
 	public validateAriaCurrent(value?: AriaCurrent): void {
-		watchValidator(
-			this,
-			'_ariaCurrent',
-			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
-			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
-		);
+		validateAriaCurrent(this, value);
 	}
 
 	/**
@@ -318,7 +311,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_ariaSelected')
 	public validateAriaSelected(value?: boolean): void {
-		watchBoolean(this, '_ariaSelected', value);
+		validateAriaSelected(this, value);
 	}
 
 	/**
@@ -355,7 +348,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @deprecated
 	 */
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: Alignment): void {
+	public validateIconAlign(value?: PropAlignment): void {
 		watchIconAlign(this, value);
 	}
 
@@ -416,7 +409,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_stealth')
 	public validateStealth(value?: boolean): void {
-		watchBoolean(this, '_stealth', value);
+		validateStealth(this, value);
 	}
 
 	/**
@@ -447,7 +440,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: PropAlignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

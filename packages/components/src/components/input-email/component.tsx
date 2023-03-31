@@ -9,6 +9,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
+import { validateMultiple } from '../../types/props';
 
 @Component({
 	tag: 'kol-input-email',
@@ -321,7 +322,7 @@ export class KolInputEmail implements ComponentApi {
 	 */
 	@Watch('_multiple')
 	public validateMultiple(value?: boolean): void {
-		this.controller.validateMultiple(value);
+		validateMultiple(this, value);
 	}
 
 	/**

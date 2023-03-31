@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
-import { Props } from '../component';
+import { Props } from '../types';
 
 export const getAbbrHtml = (props: Props): string => {
 	props = mixMembers(

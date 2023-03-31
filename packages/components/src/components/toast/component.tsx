@@ -1,12 +1,13 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { AlertType } from '../../types/alert';
+import { AlertType } from '../alert/types';
 import { HeadingLevel } from '../../types/heading-level';
 import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { featureHint } from '../../utils/a11y.tipps';
+import { PropHasCloser, PropShow, validateHasCloser, validateShow } from '../../types/props';
 
 /**
  * API
@@ -14,14 +15,13 @@ import { featureHint } from '../../utils/a11y.tipps';
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;
-	hasCloser: boolean;
 	heading: string;
 	level: HeadingLevel;
 	on: KoliBriToastEventCallbacks;
-	show: boolean;
 	showDuration: number;
 	type: AlertType;
-};
+} & PropHasCloser &
+	PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
@@ -98,7 +98,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: boolean): void {
-		watchBoolean(this, '_hasCloser', value);
+		validateHasCloser(this, value);
 	}
 
 	/**
@@ -137,11 +137,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
-		watchBoolean(this, '_show', value, {
-			hooks: {
-				afterPatch: this.handleShowAndDuration,
-			},
-		});
+		validateShow(this, value, { hooks: { afterPatch: this.handleShowAndDuration } });
 	}
 
 	/**
@@ -190,7 +186,6 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 		if (this.state._show === true && typeof this.state._showDuration === 'number' && this.state._showDuration >= 0) {
 			clearTimeout(this.durationTimeout as NodeJS.Timer);
 			this.durationTimeout = setTimeout(() => {
-				clearTimeout(this.durationTimeout as NodeJS.Timer);
 				this.close();
 			}, this.state._showDuration);
 		}

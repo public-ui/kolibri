@@ -5,10 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Alignment } from "./types/props/alignment";
+import { PropAlignment } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
-import { KoliBriAccordionCallbacks } from "./components/accordion/component";
-import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
+import { KoliBriAccordionCallbacks } from "./components/accordion/types";
+import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
@@ -37,10 +37,10 @@ import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } fro
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { Alignment } from "./types/props/alignment";
+export { PropAlignment } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
-export { KoliBriAccordionCallbacks } from "./components/accordion/component";
-export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
+export { KoliBriAccordionCallbacks } from "./components/accordion/types";
+export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { KoliBriColor } from "./components/badge/component";
 export { Stringified } from "./types/common";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
@@ -70,6 +70,9 @@ export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/componen
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
+    /**
+     * API
+     */
     interface KolAbbr {
         /**
           * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -78,7 +81,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
     }
     interface KolAccordion {
         /**
@@ -201,7 +204,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -229,7 +232,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -307,7 +310,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -358,7 +361,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -386,7 +389,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -1527,7 +1530,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1570,7 +1573,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1646,7 +1649,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -1720,7 +1723,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1763,7 +1766,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1870,7 +1873,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
          */
@@ -2087,7 +2090,7 @@ export namespace Components {
         /**
           * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: PropAlignment;
     }
     interface KolTextarea {
         /**
@@ -2209,7 +2212,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: Alignment;
+        "_align"?: PropAlignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -2227,6 +2230,9 @@ export namespace Components {
     }
 }
 declare global {
+    /**
+     * API
+     */
     interface HTMLKolAbbrElement extends Components.KolAbbr, HTMLStencilElement {
     }
     var HTMLKolAbbrElement: {
@@ -2635,6 +2641,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * API
+     */
     interface KolAbbr {
         /**
           * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -2643,7 +2652,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
     }
     interface KolAccordion {
         /**
@@ -2766,7 +2775,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -2794,7 +2803,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2872,7 +2881,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2923,7 +2932,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -2951,7 +2960,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -4092,7 +4101,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4135,7 +4144,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4211,7 +4220,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -4285,7 +4294,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4328,7 +4337,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4435,7 +4444,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
          */
@@ -4652,7 +4661,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: PropAlignment;
     }
     interface KolTextarea {
         /**
@@ -4774,7 +4783,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: Alignment;
+        "_align"?: PropAlignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -4853,6 +4862,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * API
+             */
             "kol-abbr": LocalJSX.KolAbbr & JSXBase.HTMLAttributes<HTMLKolAbbrElement>;
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
