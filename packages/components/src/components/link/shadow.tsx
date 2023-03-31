@@ -123,6 +123,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
+	 * @deprecated
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 

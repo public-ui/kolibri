@@ -35,6 +35,7 @@ type RequiredStates = {
 	adjustHeight: boolean;
 	currentLength: number;
 	id: string;
+	hasValue: boolean;
 	resize: CSSResize;
 } & PropAdjustHeight;
 type OptionalStates = {

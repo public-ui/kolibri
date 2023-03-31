@@ -1,25 +1,25 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
+import { LinkProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
-import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from '../nav/validation';
-import { Stringified } from '../../types/common';
 
 /**
  * API
  */
 type RequiredProps = {
 	ariaLabel: string;
-	links: Stringified<NavLinkProps[]>;
+	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = unknown;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
-	links: NavLinkProps[];
+	links: LinkProps[];
 };
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
@@ -39,9 +39,13 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 		return (
 			<nav aria-label={this.state._ariaLabel}>
 				<ul>
-					{this.state._links.map((link: NavLinkProps, index: number) => {
+					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
 							<li key={index}>
+								{/*
+									This stealth link should be replaced with the kol-link-wc and
+									styled only inside skip-nav css.
+								*/}
 								<kol-link {...link} _stealth={true}></kol-link>
 							</li>
 						);
@@ -59,7 +63,7 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Ist die Liste der unsichtbaren Links.
 	 */
-	@Prop() public _links!: Stringified<NavLinkProps[]>;
+	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
 	 * @see: components/abbr/component.tsx (@State)
@@ -84,7 +88,7 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_links')
-	public validateLinks(value?: Stringified<NavLinkProps[]>): void {
+	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolSkipNav', this, value);
 	}
 

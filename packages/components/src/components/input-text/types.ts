@@ -41,6 +41,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
+	hasValue: boolean;
 	id: string;
 	list: string[];
 	type: InputTextType;

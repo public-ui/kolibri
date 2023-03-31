@@ -42,7 +42,11 @@ export class KolInputNumber implements ComponentApi {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
-			<Host>
+			<Host
+				class={{
+					'has-value': this.state._hasValue,
+				}}
+			>
 				<kol-input
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -217,8 +221,8 @@ export class KolInputNumber implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: '…', // ⚠ required
+		_hasValue: false,
 		_list: [],
-
 		_type: 'number',
 	};
 
@@ -422,5 +426,8 @@ export class KolInputNumber implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 }

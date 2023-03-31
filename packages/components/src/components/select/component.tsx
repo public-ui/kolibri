@@ -60,7 +60,11 @@ export class KolSelect implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		return (
-			<Host>
+			<Host
+				class={{
+					'has-value': this.state._hasValue,
+				}}
+			>
 				<kol-input
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -228,6 +232,7 @@ export class KolSelect implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
+		_hasValue: false,
 		_height: '',
 		_id: '…', // ⚠ required
 		_list: [],
@@ -390,6 +395,9 @@ export class KolSelect implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad(this.onChange);
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
 	private onChange = (event: Event): void => {

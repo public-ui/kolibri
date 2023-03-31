@@ -5,6 +5,7 @@ import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { PropAlignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropStealth } from './props';
+import { Label } from './props/label';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -13,9 +14,7 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-type RequiredButtonAndLinkProps = {
-	label: string;
-};
+type RequiredButtonAndLinkProps = Label;
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
 	ariaLabel: string;
@@ -80,6 +79,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	 * @deprecated Zweck?!
 	 */
 	accessKey: string;
+	disabled: boolean;
 	id: string;
 	on: KoliBriButtonCallbacks<unknown>;
 	type: KoliBriButtonType;
@@ -97,6 +97,7 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 		 * @deprecated Zweck?!
 		 */
 		accessKey: string;
+		disabled: boolean;
 		id: string;
 		on: KoliBriButtonCallbacks<unknown>;
 		value: unknown;
@@ -116,6 +117,9 @@ export type ButtonStates = Generic.Element.Members<RequiredButtonStates, Optiona
 
 /* LINK */
 
+/**
+ * @deprecated Link should not use the on-click event. Use a button instead.
+ */
 export type LinkOnCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, string>;
 };
@@ -132,6 +136,13 @@ export type RequiredLinkProps = RequiredButtonAndLinkProps & {
 	href: string;
 };
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
+	/**
+	 * @deprecated A link could never be disabled. Use a button instead.
+	 */
+	disabled: boolean;
+	/**
+	 * @deprecated We use the on-click event only on buttons styled as link.
+	 */
 	on: LinkOnCallbacks;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -153,6 +164,10 @@ export type RequiredLinkStates = RequiredButtonAndLinkStates & {
 	href: string;
 };
 export type OptionalLinkStates = OptionalButtonAndLinkStates & {
+	ariaSelected: boolean;
+	/**
+	 * @deprecated We use the on-click event only on buttons styled as link.
+	 */
 	on: LinkOnCallbacks;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.

@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Stringified } from '../../components';
+import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { validateChecked, validateIndeterminate } from '../../types/props';

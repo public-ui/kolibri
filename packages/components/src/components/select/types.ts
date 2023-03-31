@@ -35,6 +35,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
+	hasValue: boolean;
 	id: string;
 	list: SelectOption<W3CInputValue>[];
 	multiple: boolean;

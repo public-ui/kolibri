@@ -1,8 +1,8 @@
 import { Generic } from '@a11y-ui/core';
+import { Stringified } from '../../types/common';
+import { AnyIconFontClass } from '../../types/icon';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
-import { AnyIconFontClass } from '../../types/icon';
-import { Stringified } from '../../components';
 import { PropChecked, PropIndeterminate } from '../../types/props';
 
 export type InputCheckboxVariant = 'button' | 'checkbox' | 'switch';
