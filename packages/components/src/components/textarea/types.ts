@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { InputTypeOnDefault } from '../../types/input/types';
+import { PropHasCounter } from '../../types/props';
 import { InputRequiredProps } from '../input-text/types';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
@@ -14,7 +15,6 @@ type OptionalProps = {
 	alert: boolean;
 	disabled: boolean;
 	error: string;
-	hasCounter: boolean;
 	hideLabel: boolean;
 	hint: string;
 	maxLength: number;
@@ -28,7 +28,7 @@ type OptionalProps = {
 	tabIndex: number;
 	touched: boolean;
 	value: string;
-};
+} & PropHasCounter;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -42,7 +42,6 @@ type OptionalStates = {
 	alert: boolean;
 	disabled: boolean;
 	error: string;
-	hasCounter: boolean;
 	hideLabel: boolean;
 	hint: string;
 	maxLength: number;
@@ -55,7 +54,7 @@ type OptionalStates = {
 	tabIndex: number;
 	touched: boolean;
 	value: string;
-};
+} & PropHasCounter;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
