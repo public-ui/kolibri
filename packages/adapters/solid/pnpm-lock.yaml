@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.7
+  '@public-ui/components': 1.5.0-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -11,10 +11,10 @@ specifiers:
   unbuild: 1.1.2
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.7
+  '@public-ui/components': 1.5.0-rc.8
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.15.7
+  '@types/node': 18.15.11
   '@types/normalize-package-data': 2.4.1
   solid-js: 1.6.15
   typescript: 4.9.5
@@ -510,8 +510,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.7:
-    resolution: {integrity: sha512-V/AO0TH6+tX8k+f2H/o927kkbfK7DWwRm9B6Her7reyz0deRKdYzMOJGoxfsZQQ7U2KWTIWJ1TJV+ZIvyvk7Wg==}
+  /@public-ui/components/1.5.0-rc.8:
+    resolution: {integrity: sha512-bGBAdD4/w9Mg54Qp52ZtbGHAXkDxp+JnDwzv4VuPJIWP87mCecacpSYsSDMy6018DfUl9igsC91SnXm2wOEgyg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
@@ -621,8 +621,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.15.7:
-    resolution: {integrity: sha512-LFmUbFunqmBn26wJZgZPYZPrDR1RwGOu2v79Mgcka1ndO6V0/cwjivPTc4yoK6n9kmw4/ls1r8cLrvh2iMibFA==}
+  /@types/node/18.15.11:
+    resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:

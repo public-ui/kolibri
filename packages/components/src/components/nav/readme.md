@@ -94,16 +94,16 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 
 ## Properties
 
-| Property                  | Attribute             | Description                                                                                                      | Type                                                            | Default      |
-| ------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
-| `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll. | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
-| `_ariaLabel` _(required)_ | `_aria-label`         | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                     | `string`                                                        | `undefined`  |
-| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                    | `boolean \| undefined`                                          | `true`       |
-| `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                               | `boolean \| undefined`                                          | `false`      |
-| `_hasCompactButton`       | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.   | `boolean \| undefined`                                          | `false`      |
-| `_links` _(required)_     | `_links`              | Gibt die geordnete Liste der Seitenhierarchie an.                                                                | `NavLinkWithChildrenProps[] \| string`                          | `undefined`  |
-| `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                          | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
-| `_variant`                | `_variant`            | Gibt an, welche Ausprägung der Button hat.                                                                       | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
+| Property                  | Attribute             | Description                                                                                                                                                                    | Type                                                            | Default      |
+| ------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------ |
+| `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.                                                               | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
+| `_ariaLabel` _(required)_ | `_aria-label`         | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                                                                                   | `string`                                                        | `undefined`  |
+| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                                                                                  | `boolean \| undefined`                                          | `true`       |
+| `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                                                                                             | `boolean \| undefined`                                          | `false`      |
+| `_hasCompactButton`       | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                                                                 | `boolean \| undefined`                                          | `false`      |
+| `_links` _(required)_     | `_links`              | Gibt die geordnete Liste der Seitenhierarchie an.                                                                                                                              | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
+| `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                                                                                        | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
+| `_variant`                | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Gibt an, welche Ausprägung der Button hat. | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
 
 ## Shadow Parts
 
@@ -116,6 +116,7 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 ### Depends on
 
 - kol-button-wc
+- kol-span-wc
 - kol-link-wc
 - [kol-button](../button)
 
@@ -124,6 +125,7 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 ```mermaid
 graph TD;
   kol-nav --> kol-button-wc
+  kol-nav --> kol-span-wc
   kol-nav --> kol-link-wc
   kol-nav --> kol-button
   kol-button-wc --> kol-span-wc

@@ -85,10 +85,10 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                  | Type                       | Default     |
-| ------------------------- | ------------- | ---------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                   | `undefined` |
-| `_links` _(required)_     | `_links`      | Gibt die geordnete Liste der Seitenhierarchie in Links an.                   | `NavLinkProps[] \| string` | `undefined` |
+| Property                  | Attribute     | Description                                                                  | Type                    | Default     |
+| ------------------------- | ------------- | ---------------------------------------------------------------------------- | ----------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
+| `_links` _(required)_     | `_links`      | Gibt die geordnete Liste der Seitenhierarchie in Links an.                   | `LinkProps[] \| string` | `undefined` |
 
 ## Shadow Parts
 

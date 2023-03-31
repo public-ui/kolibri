@@ -48,10 +48,10 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                  | Type                       | Default     |
-| ------------------------- | ------------- | ---------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                   | `undefined` |
-| `_links` _(required)_     | `_links`      | Ist die Liste der unsichtbaren Links.                                        | `NavLinkProps[] \| string` | `undefined` |
+| Property                  | Attribute     | Description                                                                  | Type                    | Default     |
+| ------------------------- | ------------- | ---------------------------------------------------------------------------- | ----------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
+| `_links` _(required)_     | `_links`      | Ist die Liste der unsichtbaren Links.                                        | `LinkProps[] \| string` | `undefined` |
 
 ## Shadow Parts
 
