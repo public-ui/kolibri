@@ -55,7 +55,11 @@ export class KolInputText implements ComponentApi {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
-			<Host>
+			<Host
+				class={{
+					'has-value': this.state._hasValue,
+				}}
+			>
 				{this.state._accessKey}
 				<kol-input
 					_disabled={this.state._disabled}
@@ -230,6 +234,7 @@ export class KolInputText implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: 'id',
+		_hasValue: false,
 		_list: [],
 		_type: 'text',
 	};
@@ -430,6 +435,9 @@ export class KolInputText implements ComponentApi {
 		this._touched = this._touched === true;
 		this.oldValue = this._value;
 		this.controller.componentWillLoad();
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
 	public disconnectedCallback(): void {

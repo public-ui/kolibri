@@ -41,7 +41,11 @@ export class KolInputEmail implements ComponentApi {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
-			<Host>
+			<Host
+				class={{
+					'has-value': this.state._hasValue,
+				}}
+			>
 				<kol-input
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
@@ -216,6 +220,7 @@ export class KolInputEmail implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: '…', // ⚠ required
+		_hasValue: false,
 		_list: [],
 	};
 
@@ -414,5 +419,8 @@ export class KolInputEmail implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 }

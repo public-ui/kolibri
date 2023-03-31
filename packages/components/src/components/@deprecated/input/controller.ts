@@ -8,10 +8,14 @@ import { ControlledInputController } from '../../input-adapter-leanup/controller
 import { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import { Props, Watches } from './types';
 
+type ValueChangeListener = (value: string) => void;
+
 export class InputController extends ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props & AdapterProps;
 
 	public hideLabel = false;
+
+	private readonly valueChangeListeners: ValueChangeListener[] = [];
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		super(component, name, host);
@@ -150,7 +154,9 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onChange(event: Event): void {
-		this.setFormAssociatedValue((event.target as HTMLInputElement).value);
+		const value = (event.target as HTMLInputElement).value;
+		this.setFormAssociatedValue(value);
+		this.valueChangeListeners.forEach((listener) => listener(value));
 		if (typeof this.component._on?.onChange === 'function') {
 			/**
 			 * TODO
@@ -159,7 +165,7 @@ export class InputController extends ControlledInputController implements Watche
 			 * - valueAsNumber
 			 * - valueAsDate
 			 */
-			this.component._on.onChange(event, (event.target as HTMLInputElement).value);
+			this.component._on.onChange(event, value);
 		}
 	}
 
@@ -181,6 +187,10 @@ export class InputController extends ControlledInputController implements Watche
 		if (typeof this.component._on?.onChange === 'function') {
 			this.component._on.onChange(event, value);
 		}
+	}
+
+	public addValueChangeListener(listener: ValueChangeListener) {
+		this.valueChangeListeners.push(listener);
 	}
 
 	/**

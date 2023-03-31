@@ -40,7 +40,11 @@ export class KolTextarea implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDiscribedBy } = getRenderStates(this.state);
 		return (
-			<Host>
+			<Host
+				class={{
+					'has-value': this.state._hasValue,
+				}}
+			>
 				<kol-input
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
@@ -214,8 +218,8 @@ export class KolTextarea implements ComponentApi {
 	@State() public state: States = {
 		_adjustHeight: false,
 		_currentLength: 0,
+		_hasValue: false,
 		_id: '…', // ⚠ required
-
 		_resize: 'vertical',
 	};
 
@@ -391,6 +395,9 @@ export class KolTextarea implements ComponentApi {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 		this.validateAdjustHeight(this._adjustHeight);
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
 	private readonly onChange = (event: Event) => {
