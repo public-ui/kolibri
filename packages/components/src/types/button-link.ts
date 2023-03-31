@@ -4,7 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { AriaCurrent, PropAlignment, PropAriaExpanded, PropAriaSelected, PropDisabled } from './props';
+import { PropAlignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled } from './props';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -18,7 +18,6 @@ type RequiredButtonAndLinkProps = {
 };
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
-	ariaCurrent: AriaCurrent;
 	ariaLabel: string;
 	icon: Stringified<KoliBriIconProp>;
 	/**
@@ -29,7 +28,8 @@ type OptionalButtonAndLinkProps = {
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: PropAlignment;
-} & PropAriaExpanded &
+} & PropAriaCurrent &
+	PropAriaExpanded &
 	PropAriaSelected &
 	PropDisabled;
 
@@ -40,7 +40,6 @@ type RequiredButtonAndLinkStates = {
 type OptionalButtonAndLinkStates = {
 	ariaLabel: string;
 	ariaControls: string;
-	ariaCurrent: AriaCurrent;
 	/**
 	 * @deprecated
 	 */
@@ -49,7 +48,8 @@ type OptionalButtonAndLinkStates = {
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: PropAlignment;
-} & PropAriaExpanded &
+} & PropAriaCurrent &
+	PropAriaExpanded &
 	PropAriaSelected &
 	PropDisabled;
 

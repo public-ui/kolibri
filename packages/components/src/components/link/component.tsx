@@ -16,10 +16,10 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment, validateAriaSelected } from '../../types/props';
+import { AriaCurrent, PropAlignment, validateAriaCurrent, validateAriaSelected } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
@@ -292,13 +292,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_ariaCurrent')
 	public validateAriaCurrent(value?: AriaCurrent): void {
-		watchValidator(
-			this,
-			'_ariaCurrent',
-			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
-			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
-		);
+		validateAriaCurrent(this, value);
 	}
 
 	/**
