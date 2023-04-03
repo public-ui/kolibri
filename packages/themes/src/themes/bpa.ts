@@ -990,7 +990,50 @@ export const BPA = KoliBri.createTheme('bpa', {
 	kol-alert {
 		margin-top: 1.5rem;
 	}`,
-	'KOL-INPUT-RANGE': ``,
+	'KOL-INPUT-RANGE': `input[type="range"] {
+		height: 3em;
+		background-color: transparent;
+		outline: none;
+	}
+	input[type="range"]::-webkit-slider-thumb {
+		border: 1px solid var(--color-darkblue);
+		margin-top: -0.75em;
+		height: 2em;
+		width: 1em;
+		border-radius: 3px;
+		background: var(--color-blue);
+		cursor: pointer;
+		box-shadow: 1px 1px 1px var(--color-black), 0px 0px 1px var(--color-darkgray);
+	}
+	input[type="range"]::-moz-range-thumb {
+		border: 1px solid var(--color-darkblue);
+		height: 2em;
+		width: 1em;
+		border-radius: 3px;
+		background: var(--color-blue);
+		cursor: pointer;
+		box-shadow: 1px 1px 1px var(--color-black), 0px 0px 1px var(--color-darkgray);
+	}
+	input[type="range"]::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 0.5em;
+		cursor: pointer;
+		background: var(--color-lightgray);
+		border-radius: 1.3px;
+		border: 0.2px solid var(--color-black);
+	}
+	input[type="range"]:focus::-webkit-slider-runnable-track {
+		background: var(--color-darkgray);
+	}
+	input[type="range"]::-moz-range-track {
+		width: 100%;
+		margin-top: 2.5em;
+		height: 0.5em;
+		cursor: pointer;
+		background: var(--color-lightgray);
+		border-radius: 1.3px;
+		border: 0.2px solid var(--color-black);
+	}`,
 	'KOL-PROGRESS': `:host progress,
 	:host span {
 		display: block;
@@ -1010,5 +1053,23 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	progress {
 		display: none;
+	}`,
+	'KOL-PAGINATION': ``,
+	'KOL-INPUT-RADIO': `input {
+		border: 1px solid var(--color-blue);
+	}
+	input:focus {
+		border: 1px dashed var(--color-blue);
+		outline: none;
+	}
+	.disabled {
+		opacity: 0.5;
+	}
+	.disabled label,
+	.disabled input {
+		cursor: not-allowed;
+	}
+	input:checked::before {
+		background-color: var(--color-blue);
 	}`,
 });
