@@ -18,9 +18,11 @@ type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @part icon - Ermöglicht das Styling des inneren Icons.
- *
  * TODO: Wy we provide not a icon-wc component instead?!
+ */
+
+/**
+ * @part icon - Ermöglicht das Styling des inneren Icons.
  */
 @Component({
 	tag: 'kol-icon',
