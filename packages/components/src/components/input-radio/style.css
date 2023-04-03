@@ -10,12 +10,7 @@ kol-input .icons {
 }
 
 label {
-	display: grid;
 	cursor: pointer;
-	font-size: 14px;
-	line-height: 20px;
-	gap: 8px;
-	width: 100%;
 }
 
 input {
@@ -25,18 +20,10 @@ input {
 	border-radius: 100%;
 	cursor: pointer;
 	display: flex;
-	font-size: 16px;
 	height: var(--input-size);
 	min-height: var(--input-size);
 	min-width: var(--input-size);
-	margin: 0;
-	padding: 0;
 	width: var(--input-size);
-}
-input:focus {
-	outline-offset: 2px;
-	outline-style: solid;
-	outline-width: 3px;
 }
 input:before {
 	border-radius: 100%;
@@ -49,35 +36,15 @@ input:checked:before {
 	background-color: black;
 }
 
-kol-alert {
-	display: block;
-	width: 100%;
-}
 fieldset {
-	border: 0px;
-	display: grid;
-	gap: 0.25em;
-	margin: 0px;
-	padding: 0px;
-}
-fieldset legend {
-	display: block;
-	line-height: 1.5em;
-	width: 100%;
-}
-fieldset div {
-	align-items: center;
 	display: flex;
-	flex-direction: row;
-	gap: 0.5em;
-	margin-bottom: 0.25em;
-	margin-top: 0.25em;
-	position: relative;
 }
-fieldset div label {
+
+fieldset.vertical {
+	flex-direction: column;
+}
+
+fieldset [slot='input'] {
+	align-items: baseline;
 	display: flex;
-	width: 100%;
-}
-fieldset div label span {
-	margin-top: 0.125em;
 }
