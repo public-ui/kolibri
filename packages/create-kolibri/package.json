@@ -109,7 +109,7 @@
 		"lerna": "6.5.1",
 		"license-report": "6.3.0",
 		"lint-staged": "13.2.0",
-		"npm-check-updates": "16.7.13",
+		"npm-check-updates": "16.10.0",
 		"prettier": "2.8.6",
 		"rimraf": "4.4.0",
 		"ts-node": "10.9.1",
