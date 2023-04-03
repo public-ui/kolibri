@@ -12,7 +12,7 @@ import {
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AriaCurrent, PropAlignment } from '../../types/props';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 
 @Component({
 	tag: 'kol-button',
@@ -27,7 +27,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {

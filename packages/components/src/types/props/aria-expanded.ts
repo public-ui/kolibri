@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Markiert dieses Element als geöffnet, oder dass das verknüpfte Element (aria-controls/aria-owns) geöffnet ist.
  * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -11,7 +11,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
  */
 export type PropAriaExpanded = {
-	ariaExpanded?: boolean;
+	ariaExpanded: boolean;
 };
 
 /* validator */

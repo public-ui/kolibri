@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Adjusts the height of the element to its content.
  */
 export type PropAdjustHeight = {
-	adjustHeight?: boolean;
+	adjustHeight: boolean;
 };
 
 /* validator */

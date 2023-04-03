@@ -3,7 +3,7 @@ import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
@@ -26,7 +26,7 @@ export class KolSelect implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLSelectElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {

@@ -3,8 +3,8 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { propergateFocus } from '../../utils/reuse';
-import { propergateSubmitEventToForm } from '../form/controller';
+import { propagateFocus } from '../../utils/reuse';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
@@ -24,12 +24,12 @@ export class KolInputEmail implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
-			propergateSubmitEventToForm({
+			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
