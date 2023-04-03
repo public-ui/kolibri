@@ -86,7 +86,7 @@ export namespace Components {
          */
         "_heading": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -112,7 +112,7 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -130,7 +130,7 @@ export namespace Components {
     }
     interface KolBadge {
         /**
-          * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+          * Setzt die Hintergrundfarbe.
          */
         "_color"?: string | KoliBriColor;
         /**
@@ -2651,7 +2651,7 @@ declare namespace LocalJSX {
          */
         "_heading": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2677,7 +2677,7 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2695,7 +2695,7 @@ declare namespace LocalJSX {
     }
     interface KolBadge {
         /**
-          * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+          * Setzt die Hintergrundfarbe.
          */
         "_color"?: string | KoliBriColor;
         /**

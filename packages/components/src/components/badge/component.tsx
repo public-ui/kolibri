@@ -82,7 +82,7 @@ export class KolBadge implements Props {
 	}
 
 	/**
-	 * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+	 * Setzt die Hintergrundfarbe.
 	 */
 	@Prop() public _color?: string | KoliBriColor = '#000';
 
