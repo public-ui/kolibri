@@ -14,7 +14,7 @@ textarea {
 }
 div.input {
 	display: flex;
-	place-items: center; /* centers the range slider and all others vertically */
+	align-items: baseline;
 }
 div.input > kol-icon {
 	display: grid;
