@@ -510,4 +510,486 @@ export const BPA = KoliBri.createTheme('bpa', {
 	kol-button-wc > button:focus {
 		outline: none;
 	}`,
+	'KOL-INPUT-EMAIL': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+		line-height: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+			line-height: 1.125rem;
+		}
+	} /* Move label over input as placeholder */
+	:host label {
+		transition: all 0.3s ease-in-out 0ms;
+		transform-origin: 0;
+	}
+	kol-input:not(.has-value):not(:focus-within) label {
+		transform: translateY(1.9375rem) scale(1.3333333333);
+		cursor: text;
+	}
+	kol-input:not(.has-value):not(:focus-within):has(div.icon-left) label {
+		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
+	}
+	kol-input:not(.has-value):not(:focus-within) label,
+	input::placeholder {
+		color: var(--color-darkgray);
+	}
+	:host([_error]) kol-input:not(.has-value):not(:focus-within) label {
+		color: var(--color-red);
+	} /* Move hint under input */
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input {
+		border-bottom: 1px solid var(--color-lightgray);
+	}
+	div.input:focus-within {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input input {
+		border: none;
+		background-color: var(--color-white);
+		outline: none;
+		height: 2.5rem;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	kol-input:has(label:not([hidden])) div.input input::placeholder {
+		color: transparent;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		padding: 0.625rem 1.125rem;
+		font-family: var(--font);
+		font-size: 1rem;
+		line-height: 1.125rem;
+		border: none;
+		border-radius: 0.125rem;
+		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+	}
+	kol-button-wc > button > kol-span-wc > span {
+		gap: 0.625rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
+	kol-button-wc > button > kol-span-wc kol-icon {
+		color: var(--color-blue);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc kol-icon {
+		color: var(--color-white);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc {
+		cursor: pointer;
+		background-color: var(--color-blue);
+		color: var(--color-white);
+	}
+	kol-button-wc > button:focus > kol-span-wc {
+		outline: 1px dotted var(--color-black);
+		border: none;
+	}
+	kol-button-wc > button:focus {
+		outline: none;
+	}`,
+	'KOL-INPUT-NUMBER': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+		line-height: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+			line-height: 1.125rem;
+		}
+	} /* Move label over input as placeholder */
+	:host label {
+		transition: all 0.3s ease-in-out 0ms;
+		transform-origin: 0;
+	}
+	kol-input:has(input[type="number"]):not(.has-value):not(:focus-within) label {
+		transform: translateY(1.9375rem) scale(1.3333333333);
+		cursor: text;
+	}
+	kol-input:has(input[type="number"]):not(.has-value):not(:focus-within):has(
+			div.icon-left
+		)label {
+		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
+	}
+	:host label {
+		transition: all 0.3s ease-in-out 0ms;
+		transform-origin: 0;
+	}
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input {
+		border-bottom: 1px solid var(--color-lightgray);
+	}
+	div.input:focus-within {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input input {
+		border: none;
+		background-color: var(--color-white);
+		outline: none;
+		height: 2.5rem;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	kol-input:has(label:not([hidden])) div.input input::placeholder {
+		color: transparent;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		padding: 0.625rem 1.125rem;
+		font-family: var(--font);
+		font-size: 1rem;
+		line-height: 1.125rem;
+		border: none;
+		border-radius: 0.125rem;
+		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+	}
+	kol-button-wc > button > kol-span-wc > span {
+		gap: 0.625rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
+	kol-button-wc > button > kol-span-wc kol-icon {
+		color: var(--color-blue);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc kol-icon {
+		color: var(--color-white);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc {
+		cursor: pointer;
+		background-color: var(--color-blue);
+		color: var(--color-white);
+	}
+	kol-button-wc > button:focus > kol-span-wc {
+		outline: 1px dotted var(--color-black);
+		border: none;
+	}
+	kol-button-wc > button:focus {
+		outline: none;
+	}`,
+	'KOL-INPUT-COLOR': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+		line-height: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+			line-height: 1.125rem;
+		}
+	} /* Move hint under input */
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input {
+		border-bottom: 1px solid var(--color-lightgray);
+	}
+	div.input:focus-within {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input input {
+		border: none;
+		background-color: var(--color-white);
+		outline: none;
+		height: 2.5rem;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	kol-input:has(label:not([hidden])) div.input input::placeholder {
+		color: transparent;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		padding: 0.625rem 1.125rem;
+		font-family: var(--font);
+		font-size: 1rem;
+		line-height: 1.125rem;
+		border: none;
+		border-radius: 0.125rem;
+		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+	}
+	kol-button-wc > button > kol-span-wc > span {
+		gap: 0.625rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
+	kol-button-wc > button > kol-span-wc kol-icon {
+		color: var(--color-blue);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc kol-icon {
+		color: var(--color-white);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc {
+		cursor: pointer;
+		background-color: var(--color-blue);
+		color: var(--color-white);
+	}
+	kol-button-wc > button:focus > kol-span-wc {
+		outline: 1px dotted var(--color-black);
+		border: none;
+	}
+	kol-button-wc > button:focus {
+		outline: none;
+	}`,
+	'KOL-INPUT-FILE': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+		line-height: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+			line-height: 1.125rem;
+		}
+	} /* Move hint under input */
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input {
+		align-items: baseline;
+		border-bottom: 1px solid var(--color-lightgray);
+	}
+	div.input:focus-within {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input input {
+		border: none;
+		background-color: var(--color-white);
+		outline: none;
+		height: 3.2rem;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	kol-input:has(label:not([hidden])) div.input input::placeholder {
+		color: transparent;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		padding: 0.625rem 1.125rem;
+		font-family: var(--font);
+		font-size: 1rem;
+		line-height: 1.125rem;
+		border: none;
+		border-radius: 0.125rem;
+		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+	}
+	kol-button-wc > button > kol-span-wc > span {
+		gap: 0.625rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
+	kol-button-wc > button > kol-span-wc kol-icon {
+		color: var(--color-blue);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc kol-icon {
+		color: var(--color-white);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc {
+		cursor: pointer;
+		background-color: var(--color-blue);
+		color: var(--color-white);
+	}
+	kol-button-wc > button:focus > kol-span-wc {
+		outline: 1px dotted var(--color-black);
+		border: none;
+	}
+	kol-button-wc > button:focus {
+		outline: none;
+	}`,
+	'KOL-INPUT-PASSWORD': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+		line-height: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+			line-height: 1.125rem;
+		}
+	} /* Move label over input as placeholder */
+	:host label {
+		transition: all 0.3s ease-in-out 0ms;
+		transform-origin: 0;
+	}
+	kol-input:not(.has-value):not(:focus-within) label {
+		transform: translateY(1.9375rem) scale(1.3333333333);
+		cursor: text;
+	}
+	kol-input:not(.has-value):not(:focus-within):has(div.icon-left) label {
+		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
+	}
+	kol-input:not(.has-value):not(:focus-within) label,
+	input::placeholder {
+		color: var(--color-darkgray);
+	}
+	:host([_error]) kol-input:not(.has-value):not(:focus-within) label {
+		color: var(--color-red);
+	} /* Move hint under input */
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input {
+		align-items: baseline;
+		border-bottom: 1px solid var(--color-lightgray);
+	}
+	div.input:focus-within {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input input {
+		border: none;
+		background-color: var(--color-white);
+		outline: none;
+		height: 2.5rem;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	kol-input:has(label:not([hidden])) div.input input::placeholder {
+		color: transparent;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		padding: 0.625rem 1.125rem;
+		font-family: var(--font);
+		font-size: 1rem;
+		line-height: 1.125rem;
+		border: none;
+		border-radius: 0.125rem;
+		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+	}
+	kol-button-wc > button > kol-span-wc > span {
+		gap: 0.625rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
+	kol-button-wc > button > kol-span-wc kol-icon {
+		color: var(--color-blue);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc kol-icon {
+		color: var(--color-white);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc {
+		cursor: pointer;
+		background-color: var(--color-blue);
+		color: var(--color-white);
+	}
+	kol-button-wc > button:focus > kol-span-wc {
+		outline: 1px dotted var(--color-black);
+		border: none;
+	}
+	kol-button-wc > button:focus {
+		outline: none;
+	}`,
+	'KOL-TEXTAREA': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+		line-height: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+			line-height: 1.125rem;
+		}
+	} /* Move label over input as placeholder */
+	:host label {
+		transition: all 0.3s ease-in-out 0ms;
+		transform-origin: 0;
+	}
+	kol-input:not(.has-value):not(:focus-within) label {
+		transform: translateY(1.9375rem) scale(1.3333333333);
+		cursor: text;
+	}
+	kol-input:not(.has-value):not(:focus-within):has(div.icon-left) label {
+		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
+	}
+	kol-input:not(.has-value):not(:focus-within) label,
+	textarea::placeholder {
+		color: var(--color-darkgray);
+	}
+	:host([_error]) kol-input:not(.has-value):not(:focus-within) label {
+		color: var(--color-red);
+	} /* Move hint under input */
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input textarea:focus {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input textarea {
+		border: none;
+		border-bottom: 1px solid var(--color-lightgray);
+		background-color: var(--color-white);
+		outline: none;
+		height: 2.5rem;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	kol-input:has(label:not([hidden])) div.input textarea::placeholder {
+		color: transparent;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
+	}`,
+	'KOL-INPUT-RANGE': ``,
 });
