@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Zeigt die Zeichenanzahlanzeige am unteren Rand des EIngabefeldes.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Shows the the character count on the lower border of the input.
  */
 export type PropHasCounter = {
-	hasCounter?: boolean;
+	hasCounter: boolean;
 };
 
 /* validator */

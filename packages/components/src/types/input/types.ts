@@ -1,6 +1,5 @@
 import { Events } from '../../enums/events';
 import { EventCallback, EventValueOrEventCallback } from '../callbacks';
-import { PropDisabled } from '../props/disabled';
 
 export type InputTypeOnOff = 'on' | 'off';
 
@@ -22,15 +21,17 @@ type InputTypeOnFocus = {
 
 // https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element
 export type Option<T> = {
+	disabled?: boolean;
 	label: string | number;
 	// selected?: boolean; // wird über den value der *-Komponente gesteuert
 	value: T;
-} & PropDisabled;
+};
 
 export type Optgroup<T> = {
+	disabled?: boolean;
 	label: string;
 	options: Option<T>[];
-} & PropDisabled;
+};
 
 export type SelectOption<T> = Option<T> | Optgroup<T>;
 

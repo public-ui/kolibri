@@ -7,8 +7,8 @@ import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { validateAlert, validateHideLabel, validateReadOnly, validateRequired, validateTouched } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
-import { propergateFocus } from '../../utils/reuse';
-import { propergateSubmitEventToForm } from '../form/controller';
+import { propagateFocus } from '../../utils/reuse';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
 import { ComponentApi, States } from './types';
@@ -29,14 +29,14 @@ export class KolInputText implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 		this.disconnectedCallback();
 		this.ref?.addEventListener('search', this.onChange);
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-			propergateSubmitEventToForm({
+			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});

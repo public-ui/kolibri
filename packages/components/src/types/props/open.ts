@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Klappt das Element auf sofern gesetzt (oder true) und klappt es zu sofern nicht gesetzt (oder false).
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * If set (to true) opens/expands the element, closes if not set (or set to false).
  */
 export type PropOpen = {
-	open?: boolean;
+	open: boolean;
 };
 
 /* validator */

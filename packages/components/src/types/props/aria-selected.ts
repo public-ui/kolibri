@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Markiert dieses Element als ausgewählt.
  * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -11,7 +11,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
  */
 export type PropAriaSelected = {
-	ariaSelected?: boolean;
+	ariaSelected: boolean;
 };
 
 /* validator */

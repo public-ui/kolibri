@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Setzt den unbestimmten Zustand auf der Checkbox, hat keine Auswirkung auf _checked.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Puts the checkbox in the indeterminate state, does not change the value of _checked.
  */
 export type PropIndeterminate = {
-	indeterminate?: boolean;
+	indeterminate: boolean;
 };
 
 /* validator */

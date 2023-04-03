@@ -19,11 +19,11 @@ import { AriaCurrent, PropAlignment, validateAriaExpanded, validateDisabled } fr
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../utils/validators/label';
+import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
 
 /**
@@ -40,17 +40,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private readonly onClick = (event: MouseEvent) => {
 		if (this.state._type === 'submit') {
-			propergateSubmitEventToForm({
+			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
 		} else if (this.state._type === 'reset') {
-			propergateResetEventToForm({
+			propagateResetEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
@@ -220,9 +220,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: ButtonStates = {
 		_icon: {},
 		_label: '…', // ⚠ required
@@ -231,25 +228,16 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		_variant: 'normal',
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		watchString(this, '_accessKey', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
 		watchString(this, '_ariaControls', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaCurrent')
 	public validateAriaCurrent(value?: AriaCurrent): void {
 		watchValidator(
@@ -261,33 +249,21 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaExpanded')
 	public validateAriaExpanded(value?: boolean): void {
 		validateAriaExpanded(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		validateAriaLabelWithLabel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaSelected')
 	public validateAriaSelected(value?: boolean): void {
 		watchBoolean(this, '_ariaSelected', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_customClass')
 	public validateCustomClass(value?: string): void {
 		watchString(this, '_customClass', value, {
@@ -295,9 +271,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		validateDisabled(this, value);
@@ -306,9 +279,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
 		validateIcon(this, value);
@@ -317,17 +287,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * @deprecated
 	 */
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
+
 	@Watch('_iconAlign')
 	public validateIconAlign(value?: PropAlignment): void {
 		watchIconAlign(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
 		watchBoolean(this, '_iconOnly', value, {
@@ -347,25 +312,16 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_id')
 	public validateId(value?: string): void {
 		watchString(this, '_id', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
 		validateLabelWithAriaLabel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriButtonCallbacks<unknown>): void {
 		if (typeof value === 'object' && value !== null) {
@@ -376,57 +332,36 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_role')
 	public validateRole(value?: AlternativButtonLinkRole): void {
 		watchString(this, '_role', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tabIndex')
 	public validateTabIndex(value?: number): void {
 		validateTabIndex(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: PropAlignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_type')
 	public validateType(value?: KoliBriButtonType): void {
 		watchButtonType(this, '_type', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: Stringified<unknown>): void {
 		setState(this, '_value', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriButtonVariant): void {
 		watchButtonVariant(this, '_variant', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaControls(this._ariaControls);
