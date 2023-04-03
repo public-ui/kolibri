@@ -18,9 +18,11 @@ label {
 }
 
 input {
+	appearance: none;
 	border-width: var(--border-width);
 	border-style: solid;
 	border-radius: 100%;
+	display: flex;
 	font-size: 16px;
 	height: var(--input-size);
 	min-height: var(--input-size);
@@ -33,6 +35,16 @@ input:focus {
 	outline-offset: 2px;
 	outline-style: solid;
 	outline-width: 3px;
+}
+input:before {
+	border-radius: 100%;
+	content: '';
+	margin: auto;
+	height: calc(var(--input-size) / 2);
+	width: calc(var(--input-size) / 2);
+}
+input:checked:before {
+	background-color: black;
 }
 
 kol-alert {
@@ -68,22 +80,4 @@ fieldset div label {
 }
 fieldset div label span {
 	margin-top: 0.125em;
-}
-fieldset div input[type='radio'] {
-	appearance: none;
-	border-radius: 100%;
-	display: grid;
-	place-content: center;
-	transition: 0.5s;
-}
-fieldset div input[type='radio']:before {
-	border: none;
-	border-radius: 100%;
-	content: '';
-	display: block;
-	height: calc(var(--input-size) / 2);
-	width: calc(var(--input-size) / 2);
-}
-fieldset div input[type='radio']:checked:before {
-	background-color: black;
 }
