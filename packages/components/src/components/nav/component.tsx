@@ -1,23 +1,14 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
+import { AriaCurrent, KoliBriButtonCallbacks } from '../../types/button-link';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchString, watchValidator } from '../../utils/prop.validators';
+import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
-import { KoliBriButtonCallbacks } from '../../types/button-link';
-import {
-	AriaCurrent,
-	PropCollapsible,
-	PropCompact,
-	PropHasCompactButton,
-	validateCollapsible,
-	validateCompact,
-	validateHasCompactButton,
-} from '../../types/props';
 
 /**
  * @deprecated
@@ -49,20 +40,24 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	return true;
 };
 
+/**
+ * API
+ */
 type RequiredProps = {
 	ariaLabel: string;
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 };
 type OptionalProps = {
 	ariaCurrentValue: AriaCurrent;
+	collapsible: boolean;
+	compact: boolean;
+	hasCompactButton: boolean;
 	orientation: Orientation;
 	/**
 	 * @deprecated
 	 */
 	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropCompact &
-	PropHasCompactButton;
+};
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -76,11 +71,15 @@ type RequiredStates = {
 	 * @deprecated
 	 */
 	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropHasCompactButton;
-type OptionalStates = PropCompact;
+};
+type OptionalStates = {
+	compact: boolean;
+};
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @part nav - TBD
+ */
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {
@@ -115,6 +114,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	): JSX.Element {
 		return (
 			<kol-button-wc
+				exportparts={`icon,button,span${selected ? ',selected' : ''}`}
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_ariaExpanded={selected}
 				_disabled={disabled}
@@ -212,6 +212,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	private link(selected: boolean, compact: boolean, href: string, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
 		return (
 			<kol-link-wc
+				exportparts={`icon,link,span${selected ? ',selected' : ''}`}
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_ariaExpanded={selected}
 				_href={href}
@@ -265,7 +266,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 			hasCompactButton = false;
 			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
-		const collapsible = this.state._collapsible === true;
+		const collapsible = this.state._collapsible;
 		const compact = this.state._compact === true;
 		const orientation = this.state._orientation;
 		return (
@@ -283,6 +284,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 					{hasCompactButton && (
 						<div class="mt-2 w-full text-center">
 							<kol-button
+								exportparts="button,ghost"
 								_ariaControls="nav"
 								_ariaExpanded={compact}
 								_ariaLabel={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
@@ -349,6 +351,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_ariaLabel: '…', // '⚠'
@@ -359,6 +364,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		_variant: 'primary',
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_ariaCurrentValue')
 	public validateAriaCurrentValue(value?: AriaCurrent): void {
 		watchValidator(
@@ -370,6 +378,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -389,27 +400,42 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		a11yHintLabelingLandmarks(value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_collapsible')
 	public validateCollapsible(value?: boolean): void {
-		validateCollapsible(this, value);
+		watchBoolean(this, '_collapsible', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_compact')
 	public validateCompact(value?: boolean): void {
-		validateCompact(this, value);
+		watchBoolean(this, '_compact', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
-		validateHasCompactButton(this, value);
+		watchBoolean(this, '_hasCompactButton', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_links')
 	public validateLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
 		watchNavLinks('KolNav', this, value);
 		devHint(`[KolNav] Die Navigationsstruktur wird noch nicht rekursiv validiert.`);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_orientation')
 	public validateOrientation(value?: Orientation): void {
 		watchValidator(
@@ -424,6 +450,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriNavVariant): void {
 		watchValidator(this, '_variant', (value) => value === 'primary' || value === 'secondary', new Set(['KoliBriNavVariant {primary, secondary}']), value, {
@@ -431,6 +460,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateAriaLabel(this._ariaLabel);

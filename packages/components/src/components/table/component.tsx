@@ -21,6 +21,9 @@ type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
 	data: KoliBriDataType;
 };
 
+/**
+ * API
+ */
 type RequiredProps = {
 	caption: string;
 	data: Stringified<KoliBriDataType[]>;
@@ -91,6 +94,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_caption: '…', // ⚠ required
 		_data: [],
@@ -106,6 +112,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		_sortedData: [],
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_caption')
 	public validateCaption(value?: string): void {
 		watchString(this, '_caption', value, {
@@ -113,6 +122,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_data')
 	public validateData(value?: Stringified<KoliBriDataType[]>): void {
 		emptyStringByArrayHandler(value, () => {
@@ -155,6 +167,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		this.sortFunction = sort;
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_headers')
 	public validateHeaders(value?: Stringified<KoliBriTableHeaders>): void {
 		/**
@@ -200,6 +215,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_minWidth')
 	public validateMinWidth(value?: string): void {
 		watchString(this, '_minWidth', value, {
@@ -244,6 +262,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		}
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_pagination')
 	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		try {
@@ -259,6 +280,9 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateCaption(this._caption);
 		this.validateData(this._data);
@@ -587,6 +611,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															></div>
 															{typeof col.sort === 'function' && (
 																<kol-button
+																	exportparts="button,ghost"
 																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||
@@ -673,6 +698,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															></div>
 															{typeof col.sort === 'function' && (
 																<kol-button
+																	exportparts="button,ghost"
 																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||

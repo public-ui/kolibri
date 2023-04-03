@@ -109,7 +109,7 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 
 | Part    | Description |
 | ------- | ----------- |
-| `"nav"` |             |
+| `"nav"` | TBD         |
 
 ## Dependencies
 

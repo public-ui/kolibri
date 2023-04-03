@@ -11,6 +11,9 @@ import { h, Host, JSX, State } from '@stencil/core';
 // })
 // ts-prune-ignore-next
 export class KolCounter {
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state = {
 		_count: 0,
 	};

@@ -1,11 +1,16 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { AlternativButtonLinkRole, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
+import { AlternativButtonLinkRole, AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props/alignment';
 import { propergateFocus } from '../../utils/reuse';
 
+/**
+ * @part link - Ermöglicht das Stylen des Links.
+ * @part span - Ermöglicht das Stylen des Linktextes.
+ * @part hidden - Ermöglicht das Ausblenden des Linktextes.
+ */
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
@@ -105,7 +110,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: PropAlignment;
+	@Prop() public _iconAlign?: Alignment;
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
@@ -159,7 +164,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'right';
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

@@ -13,6 +13,9 @@ export class InputRangeController extends InputIconController implements Watches
 		this.component = component;
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
 			this.component,
@@ -23,6 +26,9 @@ export class InputRangeController extends InputIconController implements Watches
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateList(value?: Stringified<Option<number>[]>): void {
 		watchJsonArrayString(
 			this.component,
@@ -32,23 +38,38 @@ export class InputRangeController extends InputIconController implements Watches
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMax(value?: number): void {
 		watchNumber(this.component, '_max', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMin(value?: number): void {
 		watchNumber(this.component, '_min', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateStep(value?: number): void {
 		watchNumber(this.component, '_step', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateValue(value?: number): void {
 		watchNumber(this.component, '_value', value);
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);

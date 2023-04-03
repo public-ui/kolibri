@@ -8,6 +8,9 @@ import { translate } from '../../i18n';
 
 const HACK_REG_EX = /^#([a-f0-9]{3}|[a-f0-9]{6})$/;
 
+/**
+ * API
+ */
 type RequiredProps = unknown;
 type OptionalProps = {
 	animate: boolean;
@@ -85,6 +88,9 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop({ reflect: true }) public _labeled?: boolean;
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_animate: false,
 		_color: {
@@ -95,6 +101,9 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 		_labeled: true,
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_animate')
 	public validateAnimate(value?: boolean): void {
 		watchBoolean(this, '_animate', value);
@@ -109,6 +118,9 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_color')
 	public validateColor(value?: string): void {
 		watchValidator(this, '_color', (value) => typeof value === 'string' && HACK_REG_EX.test(value), new Set(['Color Hex Color Codes']), value, {
@@ -119,11 +131,17 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_labeled')
 	public validateLabeled(value?: boolean): void {
 		watchBoolean(this, '_labeled', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateAnimate(this._animate);
 		this.validateColor(this._color);

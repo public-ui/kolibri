@@ -1,24 +1,27 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { AlertType } from '../alert/types';
+import { AlertType } from '../../types/alert';
 import { HeadingLevel } from '../../types/heading-level';
 import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { featureHint } from '../../utils/a11y.tipps';
-import { PropHasCloser, PropShow, validateHasCloser, validateShow } from '../../types/props';
 
+/**
+ * API
+ */
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;
+	hasCloser: boolean;
 	heading: string;
 	level: HeadingLevel;
 	on: KoliBriToastEventCallbacks;
+	show: boolean;
 	showDuration: number;
 	type: AlertType;
-} & PropHasCloser &
-	PropShow;
+};
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
@@ -73,32 +76,50 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_alert: true,
 		_level: 1,
 		_show: true,
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		watchBoolean(this, '_alert', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: boolean): void {
-		validateHasCloser(this, value);
+		watchBoolean(this, '_hasCloser', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriToastEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
@@ -111,11 +132,21 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 		}
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
-		validateShow(this, value, { hooks: { afterPatch: this.handleShowAndDuration } });
+		watchBoolean(this, '_show', value, {
+			hooks: {
+				afterPatch: this.handleShowAndDuration,
+			},
+		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_showDuration')
 	public validateShowDuration(value?: number): void {
 		watchNumber(this, '_showDuration', value, {
@@ -125,6 +156,9 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_type')
 	public validateType(value?: AlertType): void {
 		watchValidator(
@@ -136,6 +170,9 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateAlert(this._alert);
 		this.validateHasCloser(this._hasCloser);
@@ -153,6 +190,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 		if (this.state._show === true && typeof this.state._showDuration === 'number' && this.state._showDuration >= 0) {
 			clearTimeout(this.durationTimeout as NodeJS.Timer);
 			this.durationTimeout = setTimeout(() => {
+				clearTimeout(this.durationTimeout as NodeJS.Timer);
 				this.close();
 			}, this.state._showDuration);
 		}

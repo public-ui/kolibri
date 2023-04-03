@@ -5,6 +5,9 @@ import { Orientation } from '../../types/orientation';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input-text/types';
 
+/**
+ * API
+ */
 type RequiredProps = InputRequiredProps & {
 	list: Stringified<Option<W3CInputValue>[]>;
 };

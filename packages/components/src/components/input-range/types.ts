@@ -4,6 +4,9 @@ import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/ty
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
+/**
+ * API
+ */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;

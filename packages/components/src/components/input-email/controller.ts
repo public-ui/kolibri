@@ -11,10 +11,16 @@ export class InputEmailController extends InputTextEmailController implements Wa
 		this.component = component;
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMultiple(value?: boolean): void {
 		watchBoolean(this.component, '_multiple', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateMultiple(this.component._multiple);

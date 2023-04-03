@@ -1,11 +1,18 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
+import {
+	AlternativButtonLinkRole,
+	AriaCurrent,
+	KoliBriButtonCallbacks,
+	KoliBriButtonType,
+	OptionalButtonLinkProps,
+	RequiredButtonLinkProps,
+} from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { propergateFocus } from '../../utils/reuse';
-import { AriaCurrent, PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props/alignment';
 
 @Component({
 	tag: 'kol-button-link',
@@ -133,7 +140,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.

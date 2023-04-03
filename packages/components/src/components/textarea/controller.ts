@@ -17,6 +17,9 @@ export class TextareaController extends InputController implements Watches {
 		}
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateHasCounter(value?: boolean): void {
 		watchBoolean(this.component, '_hasCounter', value, {
 			hooks: {
@@ -25,6 +28,9 @@ export class TextareaController extends InputController implements Watches {
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMaxLength(value?: number): void {
 		watchNumber(this.component, '_maxLength', value, {
 			hooks: {
@@ -34,14 +40,23 @@ export class TextareaController extends InputController implements Watches {
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validatePlaceholder(value?: string): void {
 		watchString(this.component, '_placeholder', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateReadOnly(value?: boolean): void {
 		watchBoolean(this.component, '_readOnly', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateResize(value?: CSSResize): void {
 		watchValidator(
 			this.component,
@@ -52,14 +67,23 @@ export class TextareaController extends InputController implements Watches {
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateRows(value?: number): void {
 		watchNumber(this.component, '_rows', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value, {
 			hooks: {
@@ -69,6 +93,9 @@ export class TextareaController extends InputController implements Watches {
 		this.setFormAssociatedValue(this.component._value as string);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateHasCounter(this.component._hasCounter);

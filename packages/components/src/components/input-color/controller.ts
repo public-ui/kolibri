@@ -13,6 +13,9 @@ export class InputColorController extends InputIconController implements Watches
 		this.component = component;
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
 			this.component,
@@ -23,14 +26,23 @@ export class InputColorController extends InputIconController implements Watches
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateList(value?: Stringified<string[]>): void {
 		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);

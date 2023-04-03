@@ -7,6 +7,9 @@ import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
 import { watchNavLinks } from '../nav/validation';
 
+/**
+ * API
+ */
 type RequiredProps = {
 	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
@@ -21,6 +24,10 @@ type RequiredStates = {
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @part link - Ermöglicht das Stylen der Links.
+ * @part separator - Ermöglicht das Ändern des Separator-Icons.
+ */
 @Component({
 	tag: 'kol-breadcrumb',
 	styleUrls: {
@@ -53,7 +60,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 											)}
 										</span>
 									) : (
-										<kol-link _useCase="nav" {...link} _ariaLabel={link._label}>
+										<kol-link exportparts="link" _useCase="nav" {...link} _ariaLabel={link._label}>
 											{link._label}
 										</kol-link>
 									)}
@@ -76,11 +83,17 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_ariaLabel: '…', // '⚠'
 		_links: [],
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -89,11 +102,17 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 		a11yHintLabelingLandmarks(value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_links')
 	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolBreadcrumb', this, value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateLinks(this._links);

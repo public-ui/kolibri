@@ -22,6 +22,9 @@ export class InputNumberController extends InputIconController implements Watche
 		this.component = component;
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
 			this.component,
@@ -32,6 +35,9 @@ export class InputNumberController extends InputIconController implements Watche
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateList(value?: Stringified<string[]>): void {
 		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
 	}
@@ -79,26 +85,44 @@ export class InputNumberController extends InputIconController implements Watche
 		}
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMax(value?: number | Iso8601): void {
 		this.validateIso8601('_max', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMin(value?: number | Iso8601): void {
 		this.validateIso8601('_min', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validatePlaceholder(value?: string): void {
 		watchString(this.component, '_placeholder', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateReadOnly(value?: boolean): void {
 		watchBoolean(this.component, '_readOnly', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateStep(value?: number): void {
 		watchNumber(this.component, '_step', value);
 	}
@@ -119,6 +143,9 @@ export class InputNumberController extends InputIconController implements Watche
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateValue(value?: number | Iso8601 | null): void {
 		this.validateValueEx(value);
 	}
@@ -130,6 +157,9 @@ export class InputNumberController extends InputIconController implements Watche
 		this.validateIso8601('_value', value, afterPatch);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);

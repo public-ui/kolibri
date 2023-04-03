@@ -92,6 +92,13 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 | `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
 | `_links` _(required)_     | `_links`      | Gibt die geordnete Liste der Seitenhierarchie in Links an.                   | `LinkProps[] \| string` | `undefined` |
 
+## Shadow Parts
+
+| Part          | Description                                |
+| ------------- | ------------------------------------------ |
+| `"link"`      | Ermöglicht das Stylen der Links.           |
+| `"separator"` | Ermöglicht das Ändern des Separator-Icons. |
+
 ## Dependencies
 
 ### Depends on

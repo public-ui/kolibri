@@ -2,6 +2,9 @@ import { Component, h, Host, JSX, State } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 
+/**
+ * API
+ */
 type RequiredProps = unknown;
 type OptionalProps = unknown;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -23,5 +26,8 @@ export class KolButtonGroupWc implements Generic.Element.ComponentApi<RequiredPr
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {};
 }

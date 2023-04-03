@@ -5,7 +5,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@a11y-ui/core';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props/alignment';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
@@ -35,24 +35,27 @@ type OptionalTabButtonProps = {
 	disabled: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
-	tooltipAlign: PropAlignment;
+	tooltipAlign: Alignment;
 };
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
+/**
+ * API
+ */
 type RequiredProps = {
 	ariaLabel: string;
 	tabs: Stringified<TabButtonProps[]>;
 };
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
-	tabsAlign: PropAlignment;
+	tabsAlign: Alignment;
 	selected: number;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
-	tabsAlign: PropAlignment;
+	tabsAlign: Alignment;
 	selected: number;
 	tabs: TabButtonProps[];
 };
@@ -211,8 +214,11 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
 	 */
-	@Prop() public _tabsAlign?: PropAlignment = 'top';
+	@Prop() public _tabsAlign?: Alignment = 'top';
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_ariaLabel: '…',
 		_selected: 0,
@@ -267,6 +273,9 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -275,6 +284,9 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		a11yHintLabelingLandmarks(value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriTabsCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
@@ -318,6 +330,9 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_selected')
 	public validateSelected(value?: number): void {
 		watchNumber(this, '_selected', value, {
@@ -327,6 +342,9 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_tabs')
 	public validateTabs(value?: Stringified<TabButtonProps[]>): void {
 		watchJsonArrayString(
@@ -344,11 +362,17 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 		uiUxHintMillerscheZahl('KolTabs', this.state._tabs.length);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_tabsAlign')
-	public validateTabsAlign(value?: PropAlignment): void {
+	public validateTabsAlign(value?: Alignment): void {
 		validateAlignment(this, '_tabsAlign', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateOn(this._on);

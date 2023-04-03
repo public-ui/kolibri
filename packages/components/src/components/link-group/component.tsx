@@ -48,6 +48,9 @@ export type ListStyleType =
 	| 'upper-latin'
 	| 'upper-roman';
 
+/**
+ * API
+ */
 type RequiredProps = {
 	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
@@ -146,6 +149,9 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_ariaLabel: '…', // '⚠'
 		_listStyleType: 'disc',
@@ -153,6 +159,9 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		_orientation: 'vertical',
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -161,6 +170,9 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		a11yHintLabelingLandmarks(value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_listStyleType')
 	public validateListStyleType(value?: ListStyleType): void {
 		watchValidator(
@@ -194,26 +206,41 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_links')
 	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolLinkGroup', this, value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_ordered')
 	public validateOrdered(value?: boolean): void {
 		watchBoolean(this, '_ordered', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_orientation')
 	public validateOrientation(value?: Orientation): void {
 		watchValidator(
@@ -228,6 +255,9 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateListStyleType(this._listStyleType);

@@ -135,6 +135,17 @@ Standardansicht gelegt.
 | `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
 | `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.    |
 
+## Shadow Parts
+
+| Part          | Description                                                 |
+| ------------- | ----------------------------------------------------------- |
+| `"accordion"` | Ermöglicht das Stylen des äußeren Container des Accordions. |
+| `"close"`     | Ermöglicht das Stylen des geschlossenen Zustands und Icons. |
+| `"content"`   | Ermöglicht das Stylen des Inhaltsbereichs.                  |
+| `"header"`    | Ermöglicht das Stylen des Kopfbereichs.                     |
+| `"icon"`      | Ermöglicht das Stylen der Icons.                            |
+| `"open"`      | Ermöglicht das Stylen des geöffneten Zustands und Icons.    |
+
 ## Dependencies
 
 ### Depends on

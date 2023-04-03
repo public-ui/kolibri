@@ -5,6 +5,9 @@ import { HeadingLevel } from '../../types/heading-level';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from './validation';
 
+/**
+ * API
+ */
 type RequiredProps = {
 	headline: string;
 };

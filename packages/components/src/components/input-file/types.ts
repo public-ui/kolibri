@@ -5,6 +5,9 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
+/**
+ * API
+ */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accept: string;

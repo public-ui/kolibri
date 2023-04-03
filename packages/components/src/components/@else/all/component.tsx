@@ -3,6 +3,9 @@ import { Bundesministerium } from '../../../enums/bund';
 
 import { Generic } from '@a11y-ui/core';
 
+/**
+ * API
+ */
 type RequiredProps = unknown;
 type OptionalProps = unknown;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -16,6 +19,9 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 // })
 // ts-prune-ignore-next
 export class KolAll implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {};
 
 	public render(): JSX.Element {

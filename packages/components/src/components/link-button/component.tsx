@@ -3,6 +3,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Generic } from '@a11y-ui/core';
 import {
 	AlternativButtonLinkRole,
+	AriaCurrent,
 	KoliBriButtonVariant,
 	LinkButtonStates,
 	LinkOnCallbacks,
@@ -17,7 +18,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { watchString } from '../../utils/prop.validators';
 import { propergateFocus } from '../../utils/reuse';
 import { watchButtonVariant } from '../button/controller';
-import { AriaCurrent, PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props/alignment';
 import { translate } from '../../i18n';
 
 type State = {
@@ -171,7 +172,7 @@ export class KolLinkButton
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'right';
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.

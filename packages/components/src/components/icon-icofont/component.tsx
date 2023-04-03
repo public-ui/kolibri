@@ -4,6 +4,9 @@ import { Generic } from '@a11y-ui/core';
 import { AriaLabel } from '../../types/aria-label';
 import { Icofont } from '../../types/icofont';
 
+/**
+ * API
+ */
 type RequiredProps = AriaLabel & {
 	icon: Icofont;
 };

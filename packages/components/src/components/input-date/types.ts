@@ -4,6 +4,9 @@ import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 
+/**
+ * API
+ */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = OptionalInputProps<Iso8601 | Date> & { type: InputDateType };
 

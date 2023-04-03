@@ -114,6 +114,7 @@ Zusätzlich stellt die Komponente sicher, dass die Darstellung beliebiger Inhalt
 | `_activeElement`          | --            | Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde. | `HTMLElement \| null \| undefined`                              | `undefined` |
 | `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.            | `string`                                                        | `undefined` |
 | `_on`                     | --            | Gibt die EventCallback-Function für das Schließen des Modals an.                        | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
+| `_show`                   | `_show`       | Gibt an, ob das Modal angezeigt wird.                                                   | `boolean \| undefined`                                          | `false`     |
 | `_width`                  | `_width`      | Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).                   | `string \| undefined`                                           | `'100%'`    |
 
 ---

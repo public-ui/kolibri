@@ -4,6 +4,9 @@ import { FontAwesome, FontAwesomeOssPrefix } from '../../enums/font-awesome';
 import { Generic } from '@a11y-ui/core';
 import { AriaLabel } from '../../types/aria-label';
 
+/**
+ * API
+ */
 type RequiredProps = AriaLabel & {
 	icon: FontAwesome;
 	prefix: FontAwesomeOssPrefix;

@@ -137,7 +137,7 @@ type WatchOptions = {
 	required?: boolean;
 };
 
-export type WatchBooleanOptions = WatchOptions & {
+type WatchBooleanOptions = WatchOptions & {
 	defaultValue?: boolean | null;
 };
 

@@ -68,6 +68,9 @@ export class SelectController extends InputIconController implements Watches {
 		watchString(this.component, '_height', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateList<T>(value?: SelectOption<T>[] | string): void {
 		watchJsonArrayString(this.component, '_list', validateInputSelectList, value, undefined, {
 			hooks: {
@@ -76,6 +79,9 @@ export class SelectController extends InputIconController implements Watches {
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMultiple(value?: boolean): void {
 		watchBoolean(this.component, '_multiple', value, {
 			hooks: {
@@ -90,16 +96,25 @@ export class SelectController extends InputIconController implements Watches {
 		// }
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateSize(value?: number): void {
 		watchNumber(this.component, '_size', value, {
 			min: 1,
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateValue(value?: Stringified<W3CInputValue[]>): void {
 		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
 			hooks: {
@@ -109,6 +124,9 @@ export class SelectController extends InputIconController implements Watches {
 		this.setFormAssociatedValue(this.component._value as string);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(onChange?: (event: Event) => void): void {
 		super.componentWillLoad();
 

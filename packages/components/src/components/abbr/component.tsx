@@ -1,10 +1,25 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props/alignment';
 import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
-import { API, States } from './types';
+
+/**
+ * API
+ */
+type RequiredProps = {
+	title: string;
+};
+type OptionalProps = {
+	tooltipAlign: Alignment;
+};
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+
+type RequiredStates = RequiredProps & OptionalProps;
+type OptionalStates = unknown;
+type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-abbr',
@@ -13,7 +28,7 @@ import { API, States } from './types';
 	},
 	shadow: true,
 })
-export class KolAbbr implements API {
+export class KolAbbr implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	private readonly nonce = nonce();
 
 	public render(): JSX.Element {
@@ -32,7 +47,7 @@ export class KolAbbr implements API {
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -44,6 +59,9 @@ export class KolAbbr implements API {
 	 * einer Komponente.
 	 *
 	 * @see: https://stenciljs.com/docs/state
+	 */
+	/**
+	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
 		_title: '…', // ⚠ required
@@ -65,11 +83,17 @@ export class KolAbbr implements API {
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: PropAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateTitle(this._title);
 		this.validateTooltipAlign(this._tooltipAlign);

@@ -23,6 +23,9 @@ export class InputPasswordController extends InputIconController implements Watc
 		}
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
 			this.component,
@@ -33,6 +36,9 @@ export class InputPasswordController extends InputIconController implements Watc
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateHideLabel(value?: boolean): void {
 		watchBoolean(this.component, '_hideLabel', value, {
 			hooks: {
@@ -41,24 +47,39 @@ export class InputPasswordController extends InputIconController implements Watc
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateMaxLength(value?: number): void {
 		watchNumber(this.component, '_maxLength', value, {
 			min: 0,
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validatePattern(value?: string): void {
 		watchString(this.component, '_pattern', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validatePlaceholder(value?: string): void {
 		watchString(this.component, '_placeholder', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateReadOnly(value?: boolean): void {
 		watchBoolean(this.component, '_readOnly', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value, {
 			hooks: {
@@ -67,16 +88,25 @@ export class InputPasswordController extends InputIconController implements Watc
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateSize(value?: number): void {
 		watchNumber(this.component, '_size', value, {
 			min: 1,
 		});
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);

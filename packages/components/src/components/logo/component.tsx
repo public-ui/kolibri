@@ -23,6 +23,9 @@ function getAriaLabel(organ: string): string {
 	}
 }
 
+/**
+ * API
+ */
 type RequiredProps = {
 	org: Bundesministerium | Bundesamt | Bundesanstalt;
 };
@@ -115,15 +118,24 @@ export class KolLogo implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop() public _org!: Bundesministerium | Bundesamt | Bundesanstalt;
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_org: Bundesanstalt['Informationstechnikzentrum Bund'],
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_abbr')
 	public validateAbbr(value?: Bundesministerium | Bundesamt | Bundesanstalt): void {
 		this.validateOrg(value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_org')
 	public validateOrg(value?: Bundesministerium | Bundesamt | Bundesanstalt): void {
 		if (typeof value === 'string' && ENUM_AS_MAP.has(value)) {
@@ -133,6 +145,9 @@ export class KolLogo implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateOrg(this._org || this._abbr);
 	}

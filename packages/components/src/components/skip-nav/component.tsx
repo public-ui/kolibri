@@ -7,6 +7,9 @@ import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
 import { watchNavLinks } from '../nav/validation';
 
+/**
+ * API
+ */
 type RequiredProps = {
 	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
@@ -21,6 +24,9 @@ type RequiredStates = {
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @part link - Ermöglicht das Stylen der Links.
+ */
 @Component({
 	tag: 'kol-skip-nav',
 	styleUrls: {
@@ -59,11 +65,17 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
 	@State() public state: States = {
 		_ariaLabel: '…', // '⚠'
 		_links: [],
 	};
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -72,11 +84,17 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 		a11yHintLabelingLandmarks(value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	@Watch('_links')
 	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolSkipNav', this, value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateLinks(this._links);

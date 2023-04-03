@@ -3,6 +3,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Generic } from '@a11y-ui/core';
 import {
 	AlternativButtonLinkRole,
+	AriaCurrent,
 	ButtonStates,
 	KoliBriButtonCallbacks,
 	KoliBriButtonType,
@@ -15,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment, validateAriaExpanded, validateDisabled } from '../../types/props';
+import { Alignment } from '../../types/props/alignment';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -167,7 +168,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: PropAlignment;
+	@Prop() public _iconAlign?: Alignment;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
@@ -203,7 +204,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.
@@ -266,7 +267,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_ariaExpanded')
 	public validateAriaExpanded(value?: boolean): void {
-		validateAriaExpanded(this, value);
+		watchBoolean(this, '_ariaExpanded', value);
 	}
 
 	/**
@@ -300,7 +301,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
-		validateDisabled(this, value);
+		watchBoolean(this, '_disabled', value);
 		if (value === true) {
 			a11yHintDisabled();
 		}
@@ -321,7 +322,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: PropAlignment): void {
+	public validateIconAlign(value?: Alignment): void {
 		watchIconAlign(this, value);
 	}
 
@@ -396,7 +397,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * @see: components/abbr/component.tsx (@Watch)
 	 */
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: PropAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

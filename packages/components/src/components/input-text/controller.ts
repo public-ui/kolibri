@@ -6,6 +6,9 @@ import { Generic } from '@a11y-ui/core';
 import { InputTextType } from '../../types/input/control/text';
 import { Stringified } from '../../types/common';
 
+/**
+ * API
+ */
 type RequiredProps = {
 	id: string;
 };
@@ -23,10 +26,16 @@ export class InputTextEmailController extends InputPasswordController implements
 		this.component = component;
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateList(value?: Stringified<string[]>): void {
 		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateList(this.component._list);
@@ -44,6 +53,9 @@ export class InputTextController extends InputTextEmailController implements Inp
 		this.component = component;
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
 	public validateType(value?: InputTextType): void {
 		watchValidator(
 			this.component,
@@ -54,6 +66,9 @@ export class InputTextController extends InputTextEmailController implements Inp
 		);
 	}
 
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateType(this.component._type);
