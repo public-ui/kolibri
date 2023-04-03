@@ -143,7 +143,7 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _heading?: string;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 

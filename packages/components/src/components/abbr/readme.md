@@ -8,7 +8,10 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
 ### Code
 
 ```html
-<kol-abbr _title="Abkürzung" _tooltip-align="top"> Abbr </kol-abbr>
+<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
+<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
+<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
+<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
 ```
 
 ### Beispiel
@@ -22,7 +25,7 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
 
 ### Angabe der Beschreibung zur Abkürzung
 
-Die eigentliche Beschreibung wird über das Attribut **`_title`** übergeben.
+Der Begriff bzw. die Erklärung wird über das Attribut **`_title`** übergeben, die Abkürzung bzw. der erklärungswürdige Begriff kommt zwischen die Tags im HTML.
 
 ### Ausrichtung des Tooltip
 
@@ -34,7 +37,8 @@ Die eigentliche Beschreibung wird über das Attribut **`_title`** übergeben.
 
 ## Barrierefreiheit
 
-Die Abbr-Komponente wurde von KoliBri umgesetzt, weil der Standard-Tooltip nicht barrierefrei bzgl. der Skalierung ist. Mittels der KoliBri-Komponente zoomt der Tooltip proportional zu seinem Text mit und wird vorgelesen.
+Die Abbr-Komponente wurde von KoliBri umgesetzt, weil der Standard-Tooltip nicht barrierefrei bzgl. der Skalierung ist.
+Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert seine Größe beim Zoomen korrekt.
 
 ## Links und Referenzen
 

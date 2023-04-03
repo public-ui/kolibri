@@ -126,7 +126,7 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _heading!: string;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
