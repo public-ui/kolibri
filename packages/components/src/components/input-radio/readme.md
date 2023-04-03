@@ -43,15 +43,16 @@ Beispiel für die Erstellung des JSON-Objekts zur Definition der Radio-Elemente:
 Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und der Wert des ausgewählten RadioButtons.
 <kol-alert _heading="Hinweis für Versionen <2" _type="info">event.target.value enthält die Nummer der Checkbox mit einem '-' davor.</kol-alert>
 
-```html
+```jsx
 <kol-input-radio
 	_id="anrede"
 	_name="anrede"
-	_list='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'
-  react:
-  _on={{ onChange: (_event, value) => setValue(value) }}
-  vue:
-  :_on="{ onChange: (_event, value) => radioValue = value }"
+	_list={[
+		{ label: 'Herr', value: 'Herr' },
+		{ label: 'Frau', value: 'Frau' },
+		{ label: 'Firma', value: 'Firma' },
+	]}
+	_on={{ onChange: (_event, value) => setValue(value) }}
 ></kol-input-radio>
 ```
 
