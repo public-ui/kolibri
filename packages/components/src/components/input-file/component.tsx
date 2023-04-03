@@ -3,7 +3,7 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
@@ -22,7 +22,7 @@ export class KolInputFile implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {

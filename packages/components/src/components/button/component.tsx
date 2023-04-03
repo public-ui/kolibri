@@ -19,11 +19,11 @@ import { AriaCurrent, PropAlignment, validateAriaExpanded, validateDisabled } fr
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { propergateResetEventToForm, propergateSubmitEventToForm } from '../form/controller';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
 
 /**
@@ -40,17 +40,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private readonly onClick = (event: MouseEvent) => {
 		if (this.state._type === 'submit') {
-			propergateSubmitEventToForm({
+			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
 		} else if (this.state._type === 'reset') {
-			propergateResetEventToForm({
+			propagateResetEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});

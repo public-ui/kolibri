@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { validateAdjustHeight, validateHasCounter } from '../../types/props';
 import { setState } from '../../utils/prop.validators';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
@@ -35,7 +35,7 @@ export class KolTextarea implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLTextAreaElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {

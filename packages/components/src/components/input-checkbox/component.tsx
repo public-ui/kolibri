@@ -3,7 +3,7 @@ import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { validateChecked, validateIndeterminate } from '../../types/props';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
@@ -21,7 +21,7 @@ export class KolInputCheckbox implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {

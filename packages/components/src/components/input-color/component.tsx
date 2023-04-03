@@ -4,7 +4,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputColorController } from './controller';
 import { ComponentApi, States } from './types';
@@ -22,7 +22,7 @@ export class KolInputColor implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
