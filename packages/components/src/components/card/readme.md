@@ -134,12 +134,6 @@ Es ist auch möglich andere Komponenten der KoliBri-Bibliothek innerhalb der **C
 | `"footer"`  | Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.                            |
 | `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card. |
 
-## Shadow Parts
-
-| Part     | Description |
-| -------- | ----------- |
-| `"card"` | TBD         |
-
 ## Dependencies
 
 ### Depends on
