@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Zeigt den slot="footer" an.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Shows the slot="footer".
  */
 export type PropHasFooter = {
-	hasFooter?: boolean;
+	hasFooter: boolean;
 };
 
 /* validator */

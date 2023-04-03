@@ -4,7 +4,7 @@ import { Generic } from '@a11y-ui/core';
 import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { AriaCurrent, PropAlignment } from '../../types/props';
 
 @Component({
@@ -20,7 +20,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {

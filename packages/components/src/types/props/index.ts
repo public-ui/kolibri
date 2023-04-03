@@ -1,4 +1,4 @@
-export { PropAdjustHeight, validateAdjustHeight } from './adjust-heigt';
+export { PropAdjustHeight, validateAdjustHeight } from './adjust-height';
 export { PropAlert, validateAlert } from './alert';
 export { PropAlignment } from './alignment';
 export { PropChecked, validateChecked } from './checked';

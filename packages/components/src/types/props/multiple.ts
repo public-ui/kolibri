@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Schlatet das Eingabefeld um, sodass es mehrere Eingaben akzeptiert.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Makes the input accept multiple inputs.
  */
 export type PropMultiple = {
-	multiple?: boolean;
+	multiple: boolean;
 };
 
 /* validator */

@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/components';
+import { ITZBund } from './itzbund';
 
 // KoliBri Default-Theme
-export const DEFAULT = KoliBri.createTheme('default', {});
+export const DEFAULT = ITZBund;

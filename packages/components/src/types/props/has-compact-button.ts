@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Erzeugt eine Schaltfläche, die _collapsible umschaltet. Nur verfügbar bei _orientation="vertical".
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
  */
 export type PropHasCompactButton = {
-	hasCompactButton?: boolean;
+	hasCompactButton: boolean;
 };
 
 /* validator */

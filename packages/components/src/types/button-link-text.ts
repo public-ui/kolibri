@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { KoliBriButtonCallbacks, LinkTarget } from './button-link';
 import { Stringified } from './common';
 import { KoliBriIconProp } from './icon';
-import { Label } from './props/label';
+import { PropLabel } from './props/label';
 
 /**
  * This types specifies the props of a link or button in navigations.
@@ -11,13 +11,13 @@ import { Label } from './props/label';
  */
 
 // do not inherit RequiredLinkProps
-type RequiredButtonProps = Label & {
+type RequiredButtonProps = PropLabel & {
 	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
 };
-type RequiredLinkProps = Label & {
+type RequiredLinkProps = PropLabel & {
 	href: string;
 };
-type RequiredTextProps = Label;
+type RequiredTextProps = PropLabel;
 // do not inherit OptionalLinkProps
 type OptionalButtonOrLinkOrTextProps = {
 	active: boolean;

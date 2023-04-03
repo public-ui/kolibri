@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchValidator } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Markiert das Element als ausgewähltes/aktiviertes. Kann folgende Werte annehmen: `date` | `location` | `page` | `step` | `time` | `true`.
  *  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
@@ -12,7 +12,7 @@ import { watchValidator } from '../../utils/prop.validators';
  */
 export type AriaCurrent = 'date' | 'location' | 'page' | 'step' | 'time' | boolean;
 export type PropAriaCurrent = {
-	ariaCurrent?: AriaCurrent;
+	ariaCurrent: AriaCurrent;
 };
 
 /* validator */

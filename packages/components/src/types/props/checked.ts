@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Hakt die Checkbox an.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Checks the checkbox.
  */
 export type PropChecked = {
-	checked?: boolean;
+	checked: boolean;
 };
 
 /* validator */

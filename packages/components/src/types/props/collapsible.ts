@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Wenn auf false gesetzt können Knoten in der Navigation nicht zugeklappt werden.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * If set to false navigation nodes cannot be collapsed.
  */
 export type PropCollapsible = {
-	collapsible?: boolean;
+	collapsible: boolean;
 };
 
 /* validator */

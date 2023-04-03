@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Macht das Element nicht fokussierbar und lässt es alle Events ignorieren.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Makes the element not focusable and ignore all events.
  */
 export type PropDisabled = {
-	disabled?: boolean;
+	disabled: boolean;
 };
 
 /* validator */

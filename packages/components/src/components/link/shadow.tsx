@@ -4,7 +4,7 @@ import { AlternativButtonLinkRole, LinkOnCallbacks, LinkTarget, LinkUseCase, Opt
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AriaCurrent, PropAlignment } from '../../types/props';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 
 @Component({
 	tag: 'kol-link',
@@ -19,7 +19,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
