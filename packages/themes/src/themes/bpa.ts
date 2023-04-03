@@ -189,11 +189,10 @@ export const BPA = KoliBri.createTheme('bpa', {
 	button > kol-span-wc kol-icon {
 		color: var(--color-blue);
 	}
-	button:is(:hover, :focus) > kol-span-wc kol-icon {
+	button:not(:disabled):is(:hover, :focus) > kol-span-wc kol-icon {
 		color: var(--color-white);
 	}
-	button:is(:hover, :focus) > kol-span-wc {
-		cursor: pointer;
+	button:not(:disabled):is(:hover, :focus) > kol-span-wc {
 		background-color: var(--color-blue);
 		color: var(--color-white);
 	}
@@ -255,19 +254,19 @@ export const BPA = KoliBri.createTheme('bpa', {
 		background-color: var(--color-darkblue);
 		padding: 4.5454545455%;
 	}
-	:host .header {
+	:host .headline {
 		font-size: 1.375rem;
 		line-height: 1.5rem;
 		margin: 1rem 0;
 	}
 	@media only screen and (min-width: 600px) and (max-width: 1023px) {
-		:host .header {
+		:host .headline {
 			font-size: 1.5rem;
 			line-height: 1.75rem;
 		}
 	}
 	@media only screen and (min-width: 1024px) {
-		:host .header {
+		:host .headline {
 			font-size: 2rem;
 			line-height: 2.25rem;
 		}
