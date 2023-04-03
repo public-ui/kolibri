@@ -5,9 +5,6 @@ import { AriaLabel } from '../../types/aria-label';
 import { watchString } from '../../utils/prop.validators';
 import { devHint } from '../../utils/a11y.tipps';
 
-/**
- * API
- */
 type RequiredProps = AriaLabel & {
 	icon: string;
 };
@@ -20,6 +17,11 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @part icon - Ermöglicht das Styling des inneren Icons.
+ *
+ * TODO: Wy we provide not a icon-wc component instead?!
+ */
 @Component({
 	tag: 'kol-icon',
 	styleUrls: {

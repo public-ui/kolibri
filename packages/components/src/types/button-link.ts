@@ -5,7 +5,7 @@ import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { PropAlignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropStealth } from './props';
-import { Label } from './props/label';
+import { PropLabel } from './props/label';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -14,7 +14,7 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-type RequiredButtonAndLinkProps = Label;
+type RequiredButtonAndLinkProps = PropLabel;
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
 	ariaLabel: string;

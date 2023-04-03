@@ -3,7 +3,9 @@
 :host {
 	color: inherit;
 	display: contents;
+	height: 1em;
 	line-height: inherit;
+	width: 1em;
 }
 
 /**

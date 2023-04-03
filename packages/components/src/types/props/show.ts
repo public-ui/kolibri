@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean, WatchBooleanOptions } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Macht das Element sichtbar.
  */
@@ -9,7 +9,7 @@ import { watchBoolean, WatchBooleanOptions } from '../../utils/prop.validators';
  * Makes the element show up.
  */
 export type PropShow = {
-	show?: boolean;
+	show: boolean;
 };
 
 /* validator */

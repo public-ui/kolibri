@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Macht das Eingabeelement zu einem Pflichtfeld.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Makes the input element required.
  */
 export type PropRequired = {
-	required?: boolean;
+	required: boolean;
 };
 
 /* validator */
