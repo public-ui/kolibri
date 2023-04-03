@@ -193,9 +193,9 @@ export type RequiredLinkButtonProps = RequiredLinkProps;
 export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 // type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
 
-export type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
-export type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
-export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
+// type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
+// type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
+// type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
 export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: PropAlignment): void => {
 	watchValidator(
