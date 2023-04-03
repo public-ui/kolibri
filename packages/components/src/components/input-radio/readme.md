@@ -38,6 +38,23 @@ Beispiel für die Erstellung des JSON-Objekts zur Definition der Radio-Elemente:
 [ { label: 'Herr', value: 'Herr', }, { label: 'Frau', value: 'Frau', }, { label: 'Firma', value: 'Firma', }, ];
 ```
 
+### onChange
+
+Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und der Wert des ausgewählten RadioButtons.
+<kol-alert _heading="Hinweis für Versionen <2" _type="info">event.target.value enthält die Nummer der Checkbox mit einem '-' davor.</kol-alert>
+
+```html
+<kol-input-radio
+	_id="anrede"
+	_name="anrede"
+	_list='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'
+  react:
+  _on={{ onChange: (_event, value) => setValue(value) }}
+  vue:
+  :_on="{ onChange: (_event, value) => radioValue = value }"
+></kol-input-radio>
+```
+
 ### Best practices
 
 - Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
@@ -49,9 +66,9 @@ Beispiel für die Erstellung des JSON-Objekts zur Definition der Radio-Elemente:
 
 | Taste          | Funktion                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------ |
-| `Tab`          | Fokussiert das erste Radio-Element, aktiviert es aber nicht aus.                                 |
+| `Tab`          | Fokussiert das erste Radio-Element, aktiviert es aber nicht.                                     |
 | `Leer`         | Aktiviert das erste Radio-Element, nachdem die RadioGroup über die Tab-Taste angesprungen wurde. |
-| `Pfeil-Tasten` | Durchlaufen alle Radio-Elemente und aktivieren das gerade fokussierte Element.                   |
+| `Pfeil-Tasten` | Durchlaufen aller Radio-Elemente und aktiviert das gerade fokussierte Element.                   |
 
 ## Links und Referenzen
 
