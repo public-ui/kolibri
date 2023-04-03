@@ -351,7 +351,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -360,7 +360,7 @@ export namespace Components {
          */
         "_iconAlign"?: Alignment;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
         "_iconOnly"?: boolean;
         /**
@@ -376,7 +376,7 @@ export namespace Components {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -384,11 +384,11 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
         "_tooltipAlign"?: Alignment;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Schaltfläche.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -2916,7 +2916,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2925,7 +2925,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: Alignment;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
         "_iconOnly"?: boolean;
         /**
@@ -2941,7 +2941,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -2949,11 +2949,11 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
         "_tooltipAlign"?: Alignment;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Schaltfläche.
          */
         "_type"?: KoliBriButtonType;
         /**
