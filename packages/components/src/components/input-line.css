@@ -14,6 +14,7 @@ textarea {
 }
 div.input {
 	display: flex;
+	align-items: baseline;
 }
 div.input > kol-icon {
 	display: grid;
