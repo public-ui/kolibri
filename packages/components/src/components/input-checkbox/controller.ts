@@ -14,17 +14,11 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.component = component;
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateChecked(value?: boolean): void {
 		watchBoolean(this.component, '_checked', value);
 		this.setFormAssociatedValue(this.component.state._checked as string);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
 		watchValidator(
 			this.component,
@@ -37,9 +31,6 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateIndeterminate(value?: boolean): void {
 		watchBoolean(this.component, '_indeterminate', value);
 	}
@@ -53,16 +44,10 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.validateVariant(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateValue(value?: string): void {
 		setState(this.component, '_value', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateVariant(value?: InputCheckboxVariant): void {
 		watchValidator(
 			this.component,
@@ -73,9 +58,6 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateChecked(this.component._checked);

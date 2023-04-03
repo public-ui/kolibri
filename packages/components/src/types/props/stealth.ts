@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Versteckt den Link und lässt ihn bei Fokussierung erscheinen.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Hides the link und makes it appear on focus.
  */
 export type PropStealth = {
-	stealth?: boolean;
+	stealth: boolean;
 };
 
 /* validator */

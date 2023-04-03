@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Setzt den Zugriff auf dieses Eingabeelement auf nur lesen.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Makes the input element read only.
  */
 export type PropReadOnly = {
-	readOnly?: boolean;
+	readOnly: boolean;
 };
 
 /* validator */

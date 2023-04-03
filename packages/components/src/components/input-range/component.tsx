@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
@@ -21,7 +21,7 @@ export class KolInputRange implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -173,9 +173,6 @@ export class KolInputRange implements ComponentApi {
 	 */
 	@Prop() public _value?: number;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: '…', // ⚠ required
@@ -186,153 +183,96 @@ export class KolInputRange implements ComponentApi {
 		this.controller = new InputRangeController(this, 'range', this.host);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_autoComplete')
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		this.controller.validateAutoComplete(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hint')
 	public validateHint(value?: string): void {
 		this.controller.validateHint(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		this.controller.validateIcon(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_list')
 	public validateList(value?: Stringified<Option<number>[]>): void {
 		this.controller.validateList(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_max')
 	public validateMax(value?: number): void {
 		this.controller.validateMax(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_min')
 	public validateMin(value?: number): void {
 		this.controller.validateMin(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_step')
 	public validateStep(value?: number): void {
 		this.controller.validateStep(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tabIndex')
 	public validateTabIndex(value?: number): void {
 		this.controller.validateTabIndex(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
 		this.controller.validateTouched(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: number): void {
 		this.controller.validateValue(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;

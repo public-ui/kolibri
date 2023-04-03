@@ -9,9 +9,6 @@ export type InputRequiredProps = {
 	id: string;
 };
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;

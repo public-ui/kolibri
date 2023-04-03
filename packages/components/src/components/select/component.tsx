@@ -3,7 +3,7 @@ import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
@@ -13,9 +13,6 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
 
-/**
- * @part select - Ermöglicht das Stylen des select-Knotens.
- */
 @Component({
 	tag: 'kol-select',
 	styleUrls: {
@@ -29,7 +26,7 @@ export class KolSelect implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLSelectElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
@@ -228,9 +225,6 @@ export class KolSelect implements ComponentApi {
 	 */
 	@Prop({ mutable: true, reflect: false }) public _value?: Stringified<W3CInputValue[]>;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_hasValue: false,
 		_height: '',
@@ -244,153 +238,96 @@ export class KolSelect implements ComponentApi {
 		this.controller = new SelectController(this, 'textarea', this.host);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_height')
 	public validateHeight(value?: string): void {
 		this.controller.validateHeight(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hint')
 	public validateHint(value?: string): void {
 		this.controller.validateHint(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		this.controller.validateIcon(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_list')
 	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
 		this.controller.validateList(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_multiple')
 	public validateMultiple(value?: boolean): void {
 		this.controller.validateMultiple(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tabIndex')
 	public validateTabIndex(value?: number): void {
 		this.controller.validateTabIndex(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
 		this.controller.validateTouched(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: Stringified<W3CInputValue[]>): void {
 		this.controller.validateValue(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;

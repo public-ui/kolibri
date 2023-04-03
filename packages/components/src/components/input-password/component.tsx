@@ -4,8 +4,8 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 
 import { devHint } from '../../utils/a11y.tipps';
-import { propergateFocus } from '../../utils/reuse';
-import { propergateSubmitEventToForm } from '../form/controller';
+import { propagateFocus } from '../../utils/reuse';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
@@ -24,12 +24,12 @@ export class KolInputPassword implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
-			propergateSubmitEventToForm({
+			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
@@ -200,9 +200,6 @@ export class KolInputPassword implements ComponentApi {
 	 */
 	@Prop() public _value?: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: '…', // ⚠ required
@@ -213,25 +210,16 @@ export class KolInputPassword implements ComponentApi {
 		this.controller = new InputPasswordController(this, 'password', this.host);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_autoComplete')
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		this.controller.validateAutoComplete(value);
@@ -240,153 +228,96 @@ export class KolInputPassword implements ComponentApi {
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hint')
 	public validateHint(value?: string): void {
 		this.controller.validateHint(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		this.controller.validateIcon(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_pattern')
 	public validatePattern(value?: string): void {
 		this.controller.validatePattern(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_placeholder')
 	public validatePlaceholder(value?: string): void {
 		this.controller.validatePlaceholder(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_readOnly')
 	public validateReadOnly(value?: boolean): void {
 		this.controller.validateReadOnly(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		this.controller.validateSmartButton(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tabIndex')
 	public validateTabIndex(value?: number): void {
 		this.controller.validateTabIndex(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
 		this.controller.validateTouched(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;

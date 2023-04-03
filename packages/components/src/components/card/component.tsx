@@ -6,9 +6,6 @@ import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { PropHasFooter, validateHasFooter } from '../../types/props';
 
-/**
- * API
- */
 type RequiredProps = {
 	heading: string;
 };
@@ -26,8 +23,6 @@ type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @part card - TBD
- *
  * @slot header - Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
  * @slot footer - Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -83,24 +78,15 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_heading: '…', // '⚠'
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hasFooter')
 	public validateHasFooter(value?: boolean): void {
 		validateHasFooter(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value, {
@@ -117,17 +103,11 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 		this.validateHeading(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateHasFooter(this._hasFooter);
 		this.validateHeading(this._heading || this._headline);

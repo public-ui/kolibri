@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Macht die Fehlermeldung dieses Elements von Screenreadern lesbar.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Makes hints readable for screenreaders.
  */
 export type PropAlert = {
-	alert?: boolean;
+	alert: boolean;
 };
 
 /* validator */

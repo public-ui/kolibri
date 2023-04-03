@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
  */

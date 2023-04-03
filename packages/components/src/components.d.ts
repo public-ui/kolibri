@@ -70,9 +70,6 @@ export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/componen
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
-    /**
-     * API
-     */
     interface KolAbbr {
         /**
           * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -2230,9 +2227,6 @@ export namespace Components {
     }
 }
 declare global {
-    /**
-     * API
-     */
     interface HTMLKolAbbrElement extends Components.KolAbbr, HTMLStencilElement {
     }
     var HTMLKolAbbrElement: {
@@ -2641,9 +2635,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    /**
-     * API
-     */
     interface KolAbbr {
         /**
           * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -4862,9 +4853,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            /**
-             * API
-             */
             "kol-abbr": LocalJSX.KolAbbr & JSXBase.HTMLAttributes<HTMLKolAbbrElement>;
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;

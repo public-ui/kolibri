@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
-/* exported types */
+/* types */
 /** de
  * Macht die Navigation kompakt.
  */
@@ -9,7 +9,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Makes the navigation compact.
  */
 export type PropCompact = {
-	compact?: boolean;
+	compact: boolean;
 };
 
 /* validator */

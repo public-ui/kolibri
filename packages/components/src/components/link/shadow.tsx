@@ -4,13 +4,8 @@ import { AlternativButtonLinkRole, LinkOnCallbacks, LinkTarget, LinkUseCase, Opt
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AriaCurrent, PropAlignment } from '../../types/props';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 
-/**
- * @part link - Ermöglicht das Stylen des Links.
- * @part span - Ermöglicht das Stylen des Linktextes.
- * @part hidden - Ermöglicht das Ausblenden des Linktextes.
- */
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
@@ -24,7 +19,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
