@@ -6,9 +6,6 @@ import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropMultiple } from '../../types/props';
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;

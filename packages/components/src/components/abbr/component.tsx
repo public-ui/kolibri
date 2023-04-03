@@ -6,10 +6,6 @@ import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
 
-/**
- * API
- */
-
 @Component({
 	tag: 'kol-abbr',
 	styleUrls: {
@@ -49,9 +45,6 @@ export class KolAbbr implements API {
 	 *
 	 * @see: https://stenciljs.com/docs/state
 	 */
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_title: '…', // ⚠ required
 		_tooltipAlign: 'top',
@@ -72,17 +65,11 @@ export class KolAbbr implements API {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: PropAlignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateTitle(this._title);
 		this.validateTooltipAlign(this._tooltipAlign);

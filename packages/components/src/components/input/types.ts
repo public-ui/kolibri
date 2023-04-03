@@ -3,9 +3,6 @@ import { ButtonProps } from '../../types/button-link';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropAlert, PropDisabled, PropHideLabel, PropReadOnly, PropRequired, PropTouched } from '../../types/props';
 
-/**
- * API
- */
 type RequiredProps = unknown;
 type OptionalProps = {
 	error: string;

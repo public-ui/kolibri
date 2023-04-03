@@ -5,9 +5,6 @@ import { InputRequiredProps } from '../input-text/types';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;

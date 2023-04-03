@@ -17,9 +17,6 @@ const COLOR_NAMES = Object.keys(Farbspektrum) as FarbspektrumNames[];
 // })
 // ts-prune-ignore-next
 export class KolColor {
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() private selectedColor: string | null = null;
 
 	public render(): JSX.Element {

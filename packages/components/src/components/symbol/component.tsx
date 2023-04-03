@@ -4,9 +4,6 @@ import { Generic } from '@a11y-ui/core';
 import { watchString } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
 
-/**
- * API
- */
 type RequiredProps = {
 	ariaLabel: string;
 	symbol: string;
@@ -43,17 +40,11 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Prop() public _symbol!: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_ariaLabel: translate('kol-warning'),
 		_symbol: '…', // ⚠ required
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -61,9 +52,6 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_symbol')
 	public validateSymbol(value?: string): void {
 		watchString(this, '_symbol', value, {
@@ -71,9 +59,6 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateSymbol(this._symbol);
