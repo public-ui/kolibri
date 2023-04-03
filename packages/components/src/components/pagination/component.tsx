@@ -5,7 +5,7 @@ import { KoliBriButtonVariant, KoliBriButtonVariantPropState, KoliBriButtonCusto
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchButtonVariant } from '../button/controller';
-import { Alignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { KoliBriPaginationButtonCallbacks } from './types';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
@@ -35,9 +35,6 @@ export type PaginationHasButton = {
 	previous: boolean;
 };
 
-/**
- * API
- */
 export type RequiredProps = {
 	on: KoliBriPaginationButtonCallbacks;
 	page: number;
@@ -50,7 +47,7 @@ export type OptionalProps = KoliBriButtonCustomClassPropState &
 		pageSize: number;
 		pageSizeOptions: Stringified<number[]>;
 		siblingCount: number;
-		tooltipAlign: Alignment;
+		tooltipAlign: PropAlignment;
 	};
 // export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -65,7 +62,7 @@ type RequiredStates = KoliBriButtonVariantPropState & {
 	total: number;
 };
 type OptionalStates = KoliBriButtonCustomClassPropState & {
-	tooltipAlign: Alignment;
+	tooltipAlign: PropAlignment;
 };
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
@@ -234,7 +231,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: PropAlignment = 'top';
 
 	/**
 	 * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
@@ -246,9 +243,6 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_boundaryCount: 1,
 		_hasButtons: {
@@ -350,17 +344,11 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_boundaryCount')
 	public validateBoundaryCount(value?: number): void {
 		watchNumber(this, '_boundaryCount', Math.max(0, value ?? 1));
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_customClass')
 	public validateCustomClass(value?: string): void {
 		watchString(this, '_customClass', value, {
@@ -368,9 +356,6 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hasButtons')
 	public validateHasButtons(value?: string | boolean | Stringified<PaginationHasButton>): void {
 		watchValidator(
@@ -426,9 +411,6 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriPaginationButtonCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
@@ -439,9 +421,6 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_page')
 	public validatePage(value?: number): void {
 		watchNumber(this, '_page', value, {
@@ -504,9 +483,6 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		this.beforePageSize(options, nextState);
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_pageSize')
 	public validatePageSize(value?: number): void {
 		watchNumber(this, '_pageSize', value, {
@@ -516,9 +492,6 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_pageSizeOptions')
 	public validatePageSizeOptions(value?: Stringified<number[]>): void {
 		watchJsonArrayString(this, '_pageSizeOptions', (value) => typeof value === 'number', value, undefined, {
@@ -528,17 +501,11 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_siblingCount')
 	public validateSiblingCount(value?: number): void {
 		watchNumber(this, '_siblingCount', Math.max(0, value ?? 1));
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_total')
 	public validateTotal(value?: number): void {
 		watchNumber(this, '_total', value, {
@@ -552,25 +519,16 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: PropAlignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriButtonVariant): void {
 		watchButtonVariant(this, '_variant', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateBoundaryCount(this._boundaryCount);
 		this.validateCustomClass(this._customClass);

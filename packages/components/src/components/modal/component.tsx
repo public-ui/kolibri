@@ -13,9 +13,6 @@ import { ModalService } from './service';
  * https://en.wikipedia.org/wiki/Modal_window
  */
 
-/**
- * API
- */
 type RequiredProps = AriaLabel;
 type OptionalProps = {
 	activeElement: HTMLElement | null;
@@ -119,18 +116,12 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_activeElement: null,
 		_ariaLabel: '…',
 		_width: '100%',
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_activeElement')
 	public validateActiveElement(value?: HTMLElement | null): void {
 		watchValidator(this, '_activeElement', (value): boolean => typeof value === 'object' || value === null, new Set(['HTMLElement', 'null']), value, {
@@ -138,9 +129,6 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -148,9 +136,6 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriModalEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
@@ -163,9 +148,6 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_width')
 	public validateWidth(value?: string): void {
 		watchString(this, '_width', value, {
@@ -173,9 +155,6 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateActiveElement(this._activeElement);
 		this.validateAriaLabel(this._ariaLabel);

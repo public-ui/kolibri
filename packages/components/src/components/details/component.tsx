@@ -3,9 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 
-/**
- * API
- */
 type RequiredProps = {
 	summary: string;
 };
@@ -63,24 +60,15 @@ export class KolDetails implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _summary!: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_summary: '…', // '⚠'
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
 		watchBoolean(this, '_open', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_summary')
 	public validateSummary(value?: string): void {
 		watchString(this, '_summary', value, {
@@ -88,9 +76,6 @@ export class KolDetails implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateOpen(this._open);
 		this.validateSummary(this._summary);

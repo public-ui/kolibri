@@ -22,23 +22,14 @@ export class InputController extends ControlledInputController implements Watche
 		this.component = component;
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateAccessKey(value?: string): void {
 		watchString(this.component, '_accessKey', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateAdjustHeight(value?: boolean): void {
 		watchBoolean(this.component, '_adjustHeight', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateDisabled(value?: boolean): void {
 		watchBoolean(this.component, '_disabled', value);
 		if (value === true) {
@@ -46,30 +37,18 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateError(value?: string): void {
 		watchString(this.component, '_error', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateHideLabel(value?: boolean): void {
 		watchBoolean(this.component, '_hideLabel', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateHint(value?: string): void {
 		watchString(this.component, '_hint', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateId(value?: string): void {
 		watchString(this.component, '_id', value, {
 			hooks: {
@@ -81,9 +60,6 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateName(value?: string): void {
 		watchString(this.component, '_name', value, {
 			hooks: {
@@ -95,18 +71,12 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateOn(value?: InputTypeOnDefault): void {
 		if (typeof value === 'object') {
 			setState(this.component, '_on', value);
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateSmartButton(value?: ButtonProps | string): void {
 		objectObjectHandler(value, () => {
 			try {
@@ -119,16 +89,10 @@ export class InputController extends ControlledInputController implements Watche
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateTabIndex(value?: number): void {
 		validateTabIndex(this.component, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAccessKey(this.component._accessKey);

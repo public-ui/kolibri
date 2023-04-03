@@ -28,9 +28,6 @@ export class InputIconController extends InputController implements Watches {
 		this.component = component;
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		objectObjectHandler(value, () => {
 			try {
@@ -59,9 +56,6 @@ export class InputIconController extends InputController implements Watches {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateIcon(this.component._icon);

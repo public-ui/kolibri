@@ -41,23 +41,14 @@ export class ControlledInputController implements Watches {
 		}
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateAlert(value?: boolean): void {
 		watchBoolean(this.component, '_alert', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateTouched(value?: boolean): void {
 		watchBoolean(this.component, '_touched', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAlert(this.component._alert);
 		this.validateTouched(this.component._touched);

@@ -4,9 +4,6 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
 
-/**
- * API
- */
 type RequiredProps = unknown;
 type OptionalProps = {
 	show: boolean;
@@ -47,25 +44,16 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop({ reflect: true }) public _show?: boolean = false;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {};
 
 	private showToggled = false;
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
 		this.showToggled = this.state._show === true && this._show === false;
 		watchBoolean(this, '_show', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateShow(this._show);
 	}

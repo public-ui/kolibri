@@ -3,20 +3,17 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { watchTooltipAlignment } from '../../types/button-link';
-import { Alignment } from '../../types/props/alignment';
+import { PropAlignment } from '../../types/props';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
 
-/**
- * API
- */
 type RequiredProps = {
 	id: string;
 	label: string;
 };
 type OptionalProps = {
-	align: Alignment;
+	align: PropAlignment;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -177,7 +174,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _align?: Alignment = 'top';
+	@Prop() public _align?: PropAlignment = 'top';
 
 	/**
 	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
@@ -189,34 +186,22 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _label!: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_align')
-	public validateAlign(value?: Alignment): void {
+	public validateAlign(value?: PropAlignment): void {
 		watchTooltipAlignment(this, '_align', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_id')
 	public validateId(value?: string): void {
 		watchString(this, '_id', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
 		watchString(this, '_label', value);
@@ -247,9 +232,6 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		}, 250);
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAlign(this._align);
 		this.validateId(this._id);

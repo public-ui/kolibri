@@ -3,14 +3,10 @@ import { Events } from '../enums/events';
 import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
-import { KoliBriCustomIcon, KoliBriIconProp } from './icon';
-import { Alignment } from './props/alignment';
+import { KoliBriAllIcon, KoliBriIconProp } from './icon';
+import { PropAlignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropStealth } from './props';
 import { Label } from './props/label';
 
-/**
- * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current#values
- */
-export type AriaCurrent = boolean | 'page' | 'step' | 'location' | 'date' | 'time';
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
 /**
@@ -21,45 +17,40 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 type RequiredButtonAndLinkProps = Label;
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
-	ariaCurrent: AriaCurrent;
-	ariaExpanded: boolean;
 	ariaLabel: string;
-	ariaSelected: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: PropAlignment;
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
-};
+	tooltipAlign: PropAlignment;
+} & PropAriaCurrent &
+	PropAriaExpanded &
+	PropAriaSelected &
+	PropDisabled;
 
 type RequiredButtonAndLinkStates = {
-	icon: {
-		top?: KoliBriCustomIcon;
-		right?: KoliBriCustomIcon;
-		bottom?: KoliBriCustomIcon;
-		left?: KoliBriCustomIcon;
-	};
+	icon: KoliBriAllIcon;
 	label: string;
 };
 type OptionalButtonAndLinkStates = {
 	ariaLabel: string;
 	ariaControls: string;
-	ariaCurrent: AriaCurrent;
-	ariaExpanded: boolean;
-	ariaSelected: boolean;
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: PropAlignment;
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
-};
+	tooltipAlign: PropAlignment;
+} & PropAriaCurrent &
+	PropAriaExpanded &
+	PropAriaSelected &
+	PropDisabled;
 
 /**
  * Button
@@ -160,14 +151,13 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
-	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	useCase: LinkUseCase;
-};
+} & PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
 export type RequiredLinkStates = RequiredButtonAndLinkStates & {
@@ -175,10 +165,6 @@ export type RequiredLinkStates = RequiredButtonAndLinkStates & {
 };
 export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
-	/**
-	 * @deprecated A link could never be disabled. Use a button instead.
-	 */
-	disabled: boolean;
 	/**
 	 * @deprecated We use the on-click event only on buttons styled as link.
 	 */
@@ -190,14 +176,14 @@ export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
-	stealth: boolean;
 	target: LinkTarget;
 	targetDescription: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	useCase: LinkUseCase;
-};
+} & PropAriaSelected &
+	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 
 /**
@@ -211,7 +197,7 @@ export type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
 export type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 export type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
-export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Alignment): void => {
+export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: PropAlignment): void => {
 	watchValidator(
 		component,
 		propName,

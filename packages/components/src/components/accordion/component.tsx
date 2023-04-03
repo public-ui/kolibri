@@ -1,15 +1,14 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Events } from '../../enums/events';
 
-import { EventValueOrEventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
+import { validateOpen } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
+import { setState, watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
+import { API, KoliBriAccordionCallbacks, States } from './types';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -18,34 +17,7 @@ featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer n
 - Logik Öffnet und Schließt entsprechend`);
 featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
-export type KoliBriAccordionCallbacks = {
-	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
-};
-
 /**
- * API
- */
-type RequiredProps = {
-	heading: string;
-};
-type OptionalProps = {
-	level: HeadingLevel;
-	open: boolean;
-	on: KoliBriAccordionCallbacks;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
-/**
- * @part accordion - Ermöglicht das Stylen des äußeren Container des Accordions.
- * @part open - Ermöglicht das Stylen des geöffneten Zustands und Icons.
- * @part close - Ermöglicht das Stylen des geschlossenen Zustands und Icons.
- * @part icon - Ermöglicht das Stylen der Icons.
- * @part header - Ermöglicht das Stylen des Kopfbereichs.
- * @part content - Ermöglicht das Stylen des Inhaltsbereichs.
  *
  * @slot header - Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
@@ -57,7 +29,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolAccordion implements API {
 	private readonly nonce = nonce();
 
 	public render(): JSX.Element {
@@ -140,17 +112,11 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_heading: '…', // ⚠ required
 		_level: 1,
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value, {
@@ -158,17 +124,11 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriAccordionCallbacks): void {
 		if (typeof value === 'object' && value !== null && typeof value.onClick === 'function') {
@@ -176,17 +136,11 @@ export class KolAccordion implements Generic.Element.ComponentApi<RequiredProps,
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
-		watchBoolean(this, '_open', value);
+		validateOpen(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateHeading(this._heading);
 		this.validateLevel(this._level);
