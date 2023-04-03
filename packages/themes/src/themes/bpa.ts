@@ -992,4 +992,24 @@ export const BPA = KoliBri.createTheme('bpa', {
 		margin-top: 1.5rem;
 	}`,
 	'KOL-INPUT-RANGE': ``,
+	'KOL-PROGRESS': `:host progress,
+	:host span {
+		display: block;
+		height: 0px;
+		overflow: hidden;
+		width: 0px;
+	}
+	svg line:first-child,
+	svg circle:first-child {
+		fill: transparent;
+		stroke: var(--color-lightgray);
+	}
+	svg line:last-child,
+	svg circle:last-child {
+		stroke: var(--color-darkblue);
+		fill: transparent;
+	}
+	progress {
+		display: none;
+	}`,
 });
