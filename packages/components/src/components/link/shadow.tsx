@@ -6,11 +6,6 @@ import { KoliBriIconProp } from '../../types/icon';
 import { AriaCurrent, PropAlignment } from '../../types/props';
 import { propergateFocus } from '../../utils/reuse';
 
-/**
- * @part link - Ermöglicht das Stylen des Links.
- * @part span - Ermöglicht das Stylen des Linktextes.
- * @part hidden - Ermöglicht das Ausblenden des Linktextes.
- */
 @Component({
 	tag: 'kol-link',
 	styleUrls: {

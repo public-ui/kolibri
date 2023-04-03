@@ -18,16 +18,6 @@ featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer n
 featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
 /**
- * API
- */
-
-/**
- * @part accordion - Ermöglicht das Stylen des äußeren Container des Accordions.
- * @part open - Ermöglicht das Stylen des geöffneten Zustands und Icons.
- * @part close - Ermöglicht das Stylen des geschlossenen Zustands und Icons.
- * @part icon - Ermöglicht das Stylen der Icons.
- * @part header - Ermöglicht das Stylen des Kopfbereichs.
- * @part content - Ermöglicht das Stylen des Inhaltsbereichs.
  *
  * @slot header - Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
@@ -122,17 +112,11 @@ export class KolAccordion implements API {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_heading: '…', // ⚠ required
 		_level: 1,
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value, {
@@ -140,17 +124,11 @@ export class KolAccordion implements API {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriAccordionCallbacks): void {
 		if (typeof value === 'object' && value !== null && typeof value.onClick === 'function') {
@@ -158,17 +136,11 @@ export class KolAccordion implements API {
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
 		validateOpen(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateHeading(this._heading);
 		this.validateLevel(this._level);

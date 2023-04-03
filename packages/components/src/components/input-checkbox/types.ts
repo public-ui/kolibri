@@ -21,9 +21,6 @@ export type InputCheckboxIcon = {
 	unchecked: AnyIconFontClass;
 };
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	alert: boolean;

@@ -2,9 +2,6 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../../types/button-link';
 import { InputTypeOnDefault } from '../../../types/input/types';
 
-/**
- * API
- */
 type RequiredProps = unknown;
 type OptionalProps = {
 	accessKey: string;

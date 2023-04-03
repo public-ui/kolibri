@@ -7,10 +7,6 @@ import { watchHeadingLevel } from '../heading/validation';
 import { translate } from '../../i18n';
 import { Log } from '../../utils/dev.utils';
 
-/**
- * API
- */
-
 const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
 	return <kol-icon class="heading-icon" _ariaLabel={typeof props.heading === 'string' && props.heading.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
 };
@@ -146,40 +142,25 @@ export class KolAlert implements API {
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_level: 1,
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		watchBoolean(this, '_alert', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: boolean): void {
 		watchBoolean(this, '_hasCloser', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
@@ -188,9 +169,6 @@ export class KolAlert implements API {
 	private validateOnValue = (value: unknown): boolean =>
 		typeof value === 'object' && value !== null && typeof (value as KoliBriAlertEventCallbacks).onClose === 'function';
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriAlertEventCallbacks): void {
 		if (this.validateOnValue(value)) {
@@ -215,9 +193,6 @@ export class KolAlert implements API {
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_type')
 	public validateType(value?: AlertType): void {
 		watchValidator(
@@ -229,17 +204,11 @@ export class KolAlert implements API {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_variant')
 	public validateVariant(value?: AlertVariant): void {
 		watchValidator(this, '_variant', (value) => value === 'card' || value === 'msg', new Set('AlertVariant {card, msg}'), value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAlert(this._alert);
 		this.validateHasCloser(this._hasCloser);

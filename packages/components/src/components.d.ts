@@ -5,14 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { PropAlignment } from "./types/props";
+import { AriaCurrent, PropAlignment } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -37,14 +37,14 @@ import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } fro
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { PropAlignment } from "./types/props";
+export { AriaCurrent, PropAlignment } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { KoliBriColor } from "./components/badge/component";
 export { Stringified } from "./types/common";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -70,9 +70,6 @@ export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/componen
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
-    /**
-     * API
-     */
     interface KolAbbr {
         /**
           * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -2230,9 +2227,6 @@ export namespace Components {
     }
 }
 declare global {
-    /**
-     * API
-     */
     interface HTMLKolAbbrElement extends Components.KolAbbr, HTMLStencilElement {
     }
     var HTMLKolAbbrElement: {
@@ -2641,9 +2635,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    /**
-     * API
-     */
     interface KolAbbr {
         /**
           * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -4862,9 +4853,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            /**
-             * API
-             */
             "kol-abbr": LocalJSX.KolAbbr & JSXBase.HTMLAttributes<HTMLKolAbbrElement>;
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;

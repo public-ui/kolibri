@@ -4,9 +4,6 @@ import { Generic } from '@a11y-ui/core';
 import { KoliBriProgressType } from '../../types/progress';
 import { watchNumber, watchString } from '../../utils/prop.validators';
 
-/**
- * API
- */
 type RequiredProps = {
 	max: number;
 	value: number;
@@ -105,9 +102,6 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _value!: number;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_max: 100,
 		_type: 'bar',
@@ -116,9 +110,6 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		_liveValue: 0,
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_max')
 	public validateMax(value?: number): void {
 		if (typeof value !== 'number') {
@@ -129,9 +120,6 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_type')
 	public validateType(value?: KoliBriProgressType): void {
 		switch (value) {
@@ -146,17 +134,11 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		};
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_unit')
 	public validateUnit(value?: string): void {
 		watchString(this, '_unit', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: number): void {
 		if (typeof value !== 'number') {
@@ -168,9 +150,6 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateMax(this._max);
 		this.validateType(this._type);

@@ -178,9 +178,6 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {};
 
 	private valueAsIsoDate(value?: Iso8601 | Date | null, defaultValue?: Date): Iso8601 | null | undefined {
@@ -245,9 +242,6 @@ export class KolInputDate implements ComponentApi {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_max')
 	public validateMax(value?: Iso8601 | Date): void {
 		watchValidator(
@@ -259,9 +253,6 @@ export class KolInputDate implements ComponentApi {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_min')
 	public validateMin(value?: Iso8601 | Date): void {
 		watchValidator(
@@ -273,9 +264,6 @@ export class KolInputDate implements ComponentApi {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date | null): void {
 		watchValidator(
@@ -287,9 +275,6 @@ export class KolInputDate implements ComponentApi {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateMax(this._max);
