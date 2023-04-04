@@ -67,7 +67,7 @@ export class KolForm implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _on?: KoliBriFormCallbacks;
 
 	/**
-	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 

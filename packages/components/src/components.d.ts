@@ -435,7 +435,7 @@ export namespace Components {
          */
         "_on"?: KoliBriFormCallbacks;
         /**
-          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
          */
         "_requiredText"?: Stringified<boolean>;
     }
@@ -3000,7 +3000,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriFormCallbacks;
         /**
-          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
          */
         "_requiredText"?: Stringified<boolean>;
     }
