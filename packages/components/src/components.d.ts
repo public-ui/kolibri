@@ -804,7 +804,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -902,7 +902,7 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -910,7 +910,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
@@ -1062,7 +1062,7 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -1153,7 +1153,7 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -1161,7 +1161,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
@@ -1436,7 +1436,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -1444,7 +1444,7 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -1452,7 +1452,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
@@ -2143,7 +2143,7 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -3369,7 +3369,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -3467,7 +3467,7 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -3475,7 +3475,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
@@ -3627,7 +3627,7 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -3718,7 +3718,7 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -3726,7 +3726,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
@@ -4001,7 +4001,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -4009,7 +4009,7 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
@@ -4017,7 +4017,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
@@ -4708,7 +4708,7 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**

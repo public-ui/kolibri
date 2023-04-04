@@ -139,7 +139,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 */
 	@Prop({ reflect: true }) public _readOnly?: boolean;
 

@@ -180,7 +180,7 @@ export class KolInputEmail implements ComponentApi {
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 */
 	@Prop({ reflect: true }) public _readOnly?: boolean;
 
@@ -190,7 +190,7 @@ export class KolInputEmail implements ComponentApi {
 	@Prop({ reflect: true }) public _required?: boolean;
 
 	/**
-	 * Gibt an, wie viele Zeichen man eingeben kann.
+	 * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
 	 */
 	@Prop() public _size?: number;
 

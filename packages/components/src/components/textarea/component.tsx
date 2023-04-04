@@ -178,7 +178,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 */
 	@Prop({ reflect: true }) public _readOnly?: boolean;
 
