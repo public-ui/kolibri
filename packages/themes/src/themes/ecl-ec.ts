@@ -1328,9 +1328,9 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		text-decoration: underline;
 	}
 	div > .expand-button kol-icon::part(icon)::before {
-		content: "\eab6";
+		content: "\\eab6";
 	}
 	.expanded > div > .expand-button kol-icon::part(icon)::before {
-		content: "\eab4";
+		content: "\\eab4";
 	}`,
 });

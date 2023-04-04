@@ -1139,16 +1139,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-weight: 900;
 	}
 	:host > div.error .heading-icon::part(icon)::before {
-		content: "\f06a";
+		content: "\\f06a";
 	}
 	:host > div.info .heading-icon::part(icon)::before {
-		content: "\f05a";
+		content: "\\f05a";
 	}
 	:host > div.success .heading-icon::part(icon)::before {
-		content: "\f058";
+		content: "\\f058";
 	}
 	:host > div.warning .heading-icon::part(icon)::before {
-		content: "\f071";
+		content: "\\f071";
 	}
 	:host > div.card > div > .content {
 		grid-row: 2;
@@ -1697,11 +1697,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-midnight);
 	}
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
-		content: "\f077";
+		content: "\\f077";
 	}
 	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
 		font-family: "Font Awesome 6 Free";
-		content: "\f078";
+		content: "\\f078";
 	}
 	:host > div {
 		width: 100%;
