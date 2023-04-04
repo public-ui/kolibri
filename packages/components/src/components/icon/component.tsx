@@ -54,7 +54,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _ariaLabel!: string;
 
 	/**
-	 * Gibt einen Identifier eines Icons aus den Icon's an.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon!: string;
 

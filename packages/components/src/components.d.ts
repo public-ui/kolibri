@@ -473,7 +473,7 @@ export namespace Components {
          */
         "_ariaLabel": string;
         /**
-          * Gibt einen Identifier eines Icons aus den Icon's an.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
         /**
@@ -3038,7 +3038,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel": string;
         /**
-          * Gibt einen Identifier eines Icons aus den Icon's an.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
         /**
