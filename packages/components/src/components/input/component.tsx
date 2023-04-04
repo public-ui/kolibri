@@ -89,7 +89,7 @@ export class KolInput implements Props {
 	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
@@ -99,7 +99,7 @@ export class KolInput implements Props {
 	@Prop() public _error?: string = '';
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
 
@@ -134,12 +134,12 @@ export class KolInput implements Props {
 	@Prop({ reflect: true }) public _renderNoLabel?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean = false;
 
 	/**
-	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
 	@Prop() public _smartButton?: ButtonProps;
 

@@ -121,7 +121,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -131,7 +131,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -166,7 +166,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean;
 

@@ -139,7 +139,7 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Macht die Checkbox zu einem Pflichtfeld.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean;
 

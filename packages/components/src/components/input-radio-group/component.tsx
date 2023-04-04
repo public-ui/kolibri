@@ -51,7 +51,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -61,7 +61,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -96,7 +96,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean;
 

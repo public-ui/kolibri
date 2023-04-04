@@ -7,26 +7,24 @@ Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können k
 ### Code
 
 ```html
-<kol-input-date _id="mein_datum" _name="mein_datum" _type="date"> Erstellungsdatum </kol-input-date>
+<kol-input-date _id="mein_datum" _name="mein_datum" _type="date">Erstellungsdatum</kol-input-date>
 ```
 
 ### Beispiel
 
-<kol-input-date _id="mein_datum" _name="mein_datum" _type="date">
-  Erstellungsdatum
-</kol-input-date>
+<kol-input-date _id="mein_datum" _name="mein_datum" _type="date">Erstellungsdatum</kol-input-date>
 
 ## Verwendung
 
 Die **InputDate**-Komponente kann für die Erfassung von Daten verwendet werden. Es verwendet intern die InputNumber-Komponente.
 
-<kol-alert _type="info">Beachten Sie, dass im <b>Firefox</b> nicht alle <b>Typen</b> der **InputDate**-Komponente funktional sind. Es werden bei den Typen <b>Month</b>, <b>Week</b> und <b>Datum & Zeit</b> keine Auswahldialoge angezeigt.</kol-alert>
+<kol-alert _type="info">Beachten Sie, dass im **Firefox** nicht alle **`_types`** der **InputDate**-Komponente funktional sind. Es werden bei den Typen `month`, `time` und `week` keine Auswahldialoge angezeigt.</kol-alert>
 
 Die Komponente zeichnet sich dadurch aus, dass sie zahlreiche Ziffern-basierte Eingabemuster unterstützt. Hierbei ist es wichtig zu beachten, dass sich das Verhalten bei der Eingabe von Browser zu Browser und Geräte zu Gerät unterscheiden kann. Beispielsweise ist es möglich beim Datum, 01.01.999999 einzugeben, auch wenn max=2022-02-02 ist. Der Feldwert ist aber trotzdem 2022-02-02.
 
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf, die Pflichtfelder **`_id`** und **`_name`** korrekt zu setzen.
 
 ## Barrierefreiheit
 
@@ -52,7 +50,6 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 - https://www.hassellinclusion.com/blog/input-type-date-ready-for-use/
 - https://a11ysupport.io/tech/html/input(type-date)_element
 - https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
-- https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/
 
 <!-- Auto Generated Below -->
 

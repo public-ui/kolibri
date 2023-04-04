@@ -552,7 +552,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -560,7 +560,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -588,11 +588,11 @@ export namespace Components {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -655,7 +655,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht die Checkbox zu einem Pflichtfeld.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -760,7 +760,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -768,7 +768,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -808,11 +808,11 @@ export namespace Components {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -850,7 +850,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -858,7 +858,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -906,7 +906,7 @@ export namespace Components {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Radio ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -914,7 +914,7 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -944,7 +944,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -952,7 +952,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -980,11 +980,11 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1014,7 +1014,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1022,7 +1022,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1066,11 +1066,11 @@ export namespace Components {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1109,7 +1109,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1117,7 +1117,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1157,7 +1157,7 @@ export namespace Components {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -1165,7 +1165,7 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1191,7 +1191,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1199,7 +1199,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1227,7 +1227,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -1256,7 +1256,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1264,7 +1264,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1292,7 +1292,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -1322,7 +1322,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1330,7 +1330,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1396,7 +1396,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1404,7 +1404,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1448,7 +1448,7 @@ export namespace Components {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -1456,7 +1456,7 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1926,7 +1926,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1939,7 +1939,7 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1971,7 +1971,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Selectbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -2103,7 +2103,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -2115,7 +2115,7 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2147,7 +2147,7 @@ export namespace Components {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3117,7 +3117,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3125,7 +3125,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3153,11 +3153,11 @@ declare namespace LocalJSX {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3220,7 +3220,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht die Checkbox zu einem Pflichtfeld.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3325,7 +3325,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3333,7 +3333,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3373,11 +3373,11 @@ declare namespace LocalJSX {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3415,7 +3415,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3423,7 +3423,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3471,7 +3471,7 @@ declare namespace LocalJSX {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Radio ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3479,7 +3479,7 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3509,7 +3509,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3517,7 +3517,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3545,11 +3545,11 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3579,7 +3579,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3587,7 +3587,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3631,11 +3631,11 @@ declare namespace LocalJSX {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3674,7 +3674,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3682,7 +3682,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3722,7 +3722,7 @@ declare namespace LocalJSX {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3730,7 +3730,7 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3756,7 +3756,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3764,7 +3764,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3792,7 +3792,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3821,7 +3821,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3829,7 +3829,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3857,7 +3857,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3887,7 +3887,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3895,7 +3895,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3961,7 +3961,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3969,7 +3969,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4013,7 +4013,7 @@ declare namespace LocalJSX {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -4021,7 +4021,7 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -4491,7 +4491,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -4504,7 +4504,7 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4536,7 +4536,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Selectbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -4668,7 +4668,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -4680,7 +4680,7 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4712,7 +4712,7 @@ declare namespace LocalJSX {
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
