@@ -77,7 +77,12 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	}
 	kol-span-wc,
 	kol-span-wc > span {
-		gap: 0.25em;
+		gap: 0.5em;
+	}
+	.required label span::after,
+	.required legend span::after {
+		color: var(--color-red);
+		padding-left: 0.25em;
 	}`,
 	'KOL-HEADING': `h1 {
 		font-size: 2rem;
@@ -143,7 +148,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	}`,
 	'KOL-INDENTED-TEXT': `:host > div {
 		border-end-start-radius: 0;
-		border-inline-start: 10px solid #ffd617;
+		border-inline-start: 10px solid var(--color-yellow);
 		border-start-start-radius: 0;
 		padding-bottom: 1rem;
 		padding-inline-start: 1.5rem;
@@ -437,10 +442,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		outline-style: solid;
 		outline-width: 2px;
 	}`,
-	'KOL-LINK': `:host {
-		--kolibri-spacing: 0.25rem;
-	}
-	a,
+	'KOL-LINK': `a,
 	button {
 		appearance: none;
 		color: var(--color-blue);
@@ -645,6 +647,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	input,
 	select,
 	textarea {
+		background-color: white;
 		border: none;
 		outline: none;
 	}
@@ -672,7 +675,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -686,17 +689,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-CARD': `:host > div {
 		display: grid;
@@ -731,10 +725,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		flex-wrap: wrap;
 		gap: var(--spacing-2xs);
 	}`,
-	'KOL-INPUT-RADIO': `:host {
-		--kolibri-spacing: 0.25rem;
-	}
-	fieldset kol-alert {
+	'KOL-INPUT-RADIO': `fieldset kol-alert {
 		order: 1;
 	}
 	fieldset .hint {
@@ -747,26 +738,25 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 4;
 	}
 	input[type="radio"] {
-		border: 2px solid #707070;
+		border: 2px solid var(--color-grey-75);
 	}
 	input[type="radio"]:before {
 		display: none;
 	}
 	input[type="radio"]:checked {
-		border-color: #004494;
+		border-color: var(--color-blue);
 		border-width: 7px;
 	}
 	input[type="radio"]:focus {
-		outline: 2px solid #004494;
+		outline: 2px solid var(--color-blue);
 		outline-offset: 2px;
 	}
 	input[type="radio"]:not(:disabled):hover {
-		border-color: #004494;
+		border-color: var(--color-blue);
 	}
 	label,
 	legend {
-		color: #404040;
-		font-size: 1rem;
+		color: var(--color-grey);
 	}
 	legend {
 		font-weight: var(--font-weight-bold);
@@ -793,16 +783,6 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.hint {
 		font-size: 0.875rem;
 		order: 4;
-	}
-	.disabled input,
-	.disabled label {
-		opacity: 0.5;
-	}
-	.required label span::after,
-	.required legend span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-INPUT-RANGE': `kol-input {
 		color: var(--color-grey);
@@ -838,7 +818,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -852,17 +832,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-INPUT-TEXT': `kol-input {
 		color: var(--color-grey);
@@ -898,7 +869,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -912,17 +883,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-INPUT-PASSWORD': `kol-input {
 		color: var(--color-grey);
@@ -958,7 +920,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -972,17 +934,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-INPUT-NUMBER': `kol-input {
 		color: var(--color-grey);
@@ -1018,7 +971,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1032,17 +985,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-INPUT-EMAIL': `kol-input {
 		color: var(--color-grey);
@@ -1078,7 +1022,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1092,17 +1036,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-INPUT-FILE': `kol-input {
 		color: var(--color-grey);
@@ -1138,7 +1073,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1152,17 +1087,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-SELECT': `kol-input {
 		color: var(--color-grey);
@@ -1198,7 +1124,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1212,17 +1138,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-TEXTAREA': `kol-input {
 		color: var(--color-grey);
@@ -1258,7 +1175,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
-		place-items: center;
+		align-items: center;
 	}
 	input::placeholder,
 	textarea::placeholder {
@@ -1272,20 +1189,148 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.input:hover {
 		border-color: var(--color-blue) !important;
 	}
-	.disabled .input {
-		opacity: 0.5;
-	}
 	.error .input {
 		border-color: var(--color-red);
-	}
-	.required label > span::after,
-	.required legend > span::after {
-		color: var(--color-red);
-		content: "*";
-		padding-left: var(--spacing-2xs);
 	}`,
 	'KOL-ICON': `:host {
 		height: 1em;
 		width: 1em;
+	}`,
+	'KOL-TABLE': `:host > div {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+	caption {
+		padding: 0.5em;
+	}
+	th {
+		font-weight: normal;
+		color: var(--color-midnight);
+	}
+	:host table thead tr:first-child th,
+	:host table thead tr:first-child td {
+		border-width: 0;
+		border-top-width: 2px;
+		border-style: solid;
+		border-color: var(--color-ice);
+	}
+	table {
+		width: 100%;
+		border-spacing: 0;
+	}
+	table,
+	:host table thead tr:last-child th,
+	:host table thead tr:last-child td {
+		border-width: 0;
+		border-bottom-width: 2px;
+		border-style: solid;
+		border-color: var(--color-ice);
+	}
+	th {
+		background-color: var(--color-white);
+	}
+	th div {
+		width: 100%;
+		display: flex;
+		gap: 0.5em;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+	}
+	th div.center {
+		justify-content: center;
+	}
+	th div.right {
+		justify-content: end;
+	}
+	tbody tr:nth-child(odd) {
+		background-color: var(--color-grey-10);
+	}
+	th,
+	td {
+		padding: 0.5em;
+	}
+	td.center > div {
+		display: flex;
+		justify-content: center;
+	}
+	td.right > div {
+		display: flex;
+		justify-content: end;
+	}
+	th[aria-sort="ascending"],
+	th[aria-sort="descending"] {
+		font-weight: 700;
+	}
+	:host > div:last-child {
+		padding: 0.5em;
+	}
+	:host > div:last-child,
+	:host > div:last-child > div:last-child {
+		display: grid;
+		align-items: center;
+		justify-items: center;
+		gap: 1em;
+	}
+	@media (min-width: 1024px) {
+		:host > div:last-child,
+		:host > div:last-child > div:last-child {
+			grid-auto-flow: column;
+		}
+		:host > div:last-child kol-pagination {
+			display: flex;
+			gap: 1rem;
+		}
+	}`,
+	'KOL-NAV': `nav {
+		background-color: var(--color-blue);
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.entry {
+		display: flex;
+		flex-flow: row wrap;
+		align-content: stretch;
+		width: 100%;
+	}
+	.expand-button button {
+		background-color: var(--color-blue-130);
+		border: 2px solid transparent;
+		color: var(--color-white);
+		margin: auto;
+		height: 100%;
+	}
+	.expand-button button:focus {
+		border-color: var(--color-white);
+	}
+	:is(kol-link-wc, kol-button-link) kol-span-wc {
+		border-color: transparent;
+		border-style: solid;
+		border-width: 2px;
+		color: var(--color-white);
+		font-size: 18px;
+		justify-items: start;
+		padding: 1rem;
+	}
+	li + li {
+		border-color: var(--color-blue-75);
+		border-style: solid;
+		border-width: 0;
+		border-top-width: 2px;
+	}
+	:is(kol-link-wc, kol-button-link):focus-within kol-span-wc {
+		border-color: var(--color-white);
+	}
+	:is(kol-link-wc, kol-button-link):focus-within kol-span-wc,
+	:is(kol-link-wc, kol-button-link):hover kol-span-wc {
+		text-decoration: underline;
+	}
+	div > .expand-button kol-icon::part(icon)::before {
+		content: "\eab6";
+	}
+	.expanded > div > .expand-button kol-icon::part(icon)::before {
+		content: "\eab4";
 	}`,
 });

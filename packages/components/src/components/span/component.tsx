@@ -4,7 +4,7 @@ import { Stringified } from '../../types/common';
 
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
 import { watchBoolean } from '../../utils/prop.validators';
-import { validateIcon } from '../../utils/validators/icon';
+import { validateIcon } from '../../types/props/icon';
 import { validateLabelWithAriaLabel } from '../../types/props/label';
 
 type RequiredProps = {

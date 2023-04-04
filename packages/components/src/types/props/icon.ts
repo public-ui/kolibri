@@ -1,9 +1,23 @@
 import { Generic } from '@a11y-ui/core';
-import { ButtonStates } from '../../types/button-link';
-import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
-import { PropAlignment } from '../../types/props';
-import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
-import { isObject, isString, isStyle } from '../validator';
+import { ButtonStates } from '../button-link';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../icon';
+import { PropAlignment } from '.';
+import { objectObjectHandler, parseJson, watchValidator } from '../../utils/prop.validators';
+import { isObject, isString, isStyle } from '../../utils/validator';
+import { Stringified } from '../common';
+
+/* types */
+/** de
+ * Setzt den unbestimmten Zustand auf der Checkbox, hat keine Auswirkung auf _checked.
+ */
+/** en
+ * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+ */
+export type PropIcon = {
+	icon: Stringified<KoliBriIconProp>;
+};
+
+/* validator */
 
 const mapCustomIcon = (state: KoliBriIconState, alignment: PropAlignment, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {

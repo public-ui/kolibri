@@ -1,7 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { KoliBriButtonCallbacks, LinkTarget } from './button-link';
-import { Stringified } from './common';
-import { KoliBriIconProp } from './icon';
+import { PropIcon } from './props/icon';
 import { PropLabel } from './props/label';
 
 /**
@@ -11,17 +10,18 @@ import { PropLabel } from './props/label';
  */
 
 // do not inherit RequiredLinkProps
-type RequiredButtonProps = PropLabel & {
-	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
-};
-type RequiredLinkProps = PropLabel & {
-	href: string;
-};
-type RequiredTextProps = PropLabel;
+type RequiredButtonProps = PropIcon &
+	PropLabel & {
+		on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
+	};
+type RequiredLinkProps = PropIcon &
+	PropLabel & {
+		href: string;
+	};
+type RequiredTextProps = PropIcon & PropLabel;
 // do not inherit OptionalLinkProps
 type OptionalButtonOrLinkOrTextProps = {
 	active: boolean;
-	icon: Stringified<KoliBriIconProp>;
 	// tabIndex: number; // possible, but sensible ?!
 	// tooltipAlign: Alignment; // possible, but sensible ?!
 	target: LinkTarget;

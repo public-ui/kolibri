@@ -4,7 +4,7 @@ kol-input {
 	display: grid;
 }
 
-input,
+input:not([type='radio']),
 option,
 select,
 textarea {
@@ -12,20 +12,19 @@ textarea {
 	line-height: 2.5em;
 	flex-grow: 1;
 }
-div.input {
+
+input:not([type='radio']),
+select:not([multiple]) {
+	height: 2.75em;
+}
+
+.input {
 	display: flex;
 	align-items: baseline;
 }
-div.input > kol-icon {
+.input > kol-icon {
 	display: grid;
 	height: var(--a11y-min-size);
 	place-items: center;
 	width: 2.5em;
-}
-input,
-select:not([multiple]) {
-	height: 2.75em;
-}
-.disabled {
-	opacity: 0.5;
 }

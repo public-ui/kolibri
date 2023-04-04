@@ -63,7 +63,6 @@ export class KolTextarea implements ComponentApi {
 					<div slot="input">
 						<textarea
 							ref={this.catchRef}
-							part="textarea"
 							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}

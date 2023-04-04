@@ -1298,22 +1298,22 @@ export const components: Record<string, Component> = {
 						{
 							_label: '1 Navigationspunkt mit sehr langem Link-Test',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_target: 'asdasd',
 						},
 						{
 							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 						},
 						{
 							_active: true,
 							_label: '3 Navigationspunkt',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
+								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
 								{
 									_active: true,
 									_label: '3.3 Navigationspunkt',
@@ -1347,22 +1347,22 @@ export const components: Record<string, Component> = {
 						{
 							_label: '1 Navigationspunkt mit sehr langem Link-Test',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_target: 'asdasd',
 						},
 						{
 							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 						},
 						{
 							_active: true,
 							_label: '3 Navigationspunkt',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
+								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
 								{
 									_active: true,
 									_label: '3.3 Navigationspunkt',
@@ -1394,22 +1394,22 @@ export const components: Record<string, Component> = {
 						{
 							_label: '1 Navigationspunkt mit sehr langem Link-Test',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_target: 'asdasd',
 						},
 						{
 							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 						},
 						{
 							_active: true,
 							_label: '3 Navigationspunkt',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
+								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
 								{
 									_active: true,
 									_label: '3.3 Navigationspunkt',
@@ -1444,25 +1444,25 @@ export const components: Record<string, Component> = {
 						{
 							_label: '1 Navigationspunkt mit sehr langem Link-Test',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_iconOnly: true,
 							_target: 'asdasd',
 						},
 						{
 							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_iconOnly: true,
 						},
 						{
 							_active: true,
 							_label: '3 Navigationspunkt',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_iconOnly: true,
 							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
+								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
 								{
 									_active: true,
 									_label: '3.3 Navigationspunkt',
@@ -1497,24 +1497,24 @@ export const components: Record<string, Component> = {
 						{
 							_label: '1 Navigationspunkt mit sehr langem Link-Test',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_iconOnly: true,
 							_target: 'asdasd',
 						},
 						{
 							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_iconOnly: true,
 						},
 						{
 							_label: '3 Navigationspunkt',
 							_href: '#abc',
-							_icon: 'woodpecker',
+							_icon: 'codicon codicon-pie-chart',
 							_iconOnly: true,
 							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
+								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
 								{
 									_label: '3.3 Navigationspunkt',
 									_href: '#abc',

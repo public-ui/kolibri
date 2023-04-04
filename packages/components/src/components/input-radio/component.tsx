@@ -67,7 +67,6 @@ export class KolInputRadio implements ComponentApi {
 										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
-										part="input"
 										title=""
 										type="radio"
 										id={customId}

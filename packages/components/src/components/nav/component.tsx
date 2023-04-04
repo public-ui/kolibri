@@ -1,14 +1,11 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
+import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
-import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchString, watchValidator } from '../../utils/prop.validators';
-import { watchNavLinks } from './validation';
-import { KoliBriButtonCallbacks } from '../../types/button-link';
 import {
 	AriaCurrent,
 	PropCollapsible,
@@ -18,6 +15,9 @@ import {
 	validateCompact,
 	validateHasCompactButton,
 } from '../../types/props';
+import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
+import { watchString, watchValidator } from '../../utils/prop.validators';
+import { watchNavLinks } from './validation';
 
 /**
  * @deprecated
@@ -188,7 +188,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		compact: boolean,
 		deep: number,
 		index: number,
-		isLast: boolean,
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		orientation: Orientation
 	): JSX.Element {
@@ -197,12 +196,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		const expanded = hasChildren && !!link._active;
 		const textCenter = compact;
 		return (
-			<li
-				class={{ expanded, selected, 'has-children': hasChildren }}
-				key={index}
-				part={`li ${deep === 0 ? orientation : 'vertical'}${expanded ? ' expanded' : ''}${selected ? ' selected' : ''}${isLast ? '' : ' last'}`}
-				style={{ position: 'relative' }}
-			>
+			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
 				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
 				{hasChildren && selected ? this.dropDown(collapsible, compact, deep, link, orientation) : ''}
 			</li>
@@ -230,13 +224,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		orientation: Orientation;
 	}): JSX.Element => {
 		return (
-			<ul
-				class={`list ${props.deep === 0 && props.orientation === 'horizontal' ? ' horizontal' : ' vertical'}`}
-				data-deep={props.deep}
-				part={`nav ${props.orientation}`}
-			>
+			<ul class={`list ${props.deep === 0 && props.orientation === 'horizontal' ? ' horizontal' : ' vertical'}`} data-deep={props.deep}>
 				{props.links.map((link, index: number) => {
-					return this.li(props.collapsible, props.compact, props.deep, index, index < props.links.length - 1, link, props.orientation);
+					return this.li(props.collapsible, props.compact, props.deep, index, link, props.orientation);
 				})}
 			</ul>
 		);
@@ -277,7 +267,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 						[this.state._variant]: true,
 					}}
 				>
-					<nav aria-label={this.state._ariaLabel} id="nav" part="nav">
+					<nav aria-label={this.state._ariaLabel} id="nav">
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
