@@ -459,11 +459,11 @@ export namespace Components {
          */
         "_headline": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Überschrift an.
+          * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
     }
@@ -3024,11 +3024,11 @@ declare namespace LocalJSX {
          */
         "_headline": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Überschrift an.
+          * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
     }

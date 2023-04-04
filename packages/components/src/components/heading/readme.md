@@ -7,24 +7,31 @@ Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Übersch
 ### Code
 
 ```html
-<div>
-	<kol-heading _level="1">Inhalt einer H1-Überschrift</kol-heading>
-</div>
+<kol-heading _level="1" _headline="Inhalt einer H1-Überschrift"></kol-heading>
+<kol-heading _level="2" _headline="Inhalt einer H2-Überschrift"></kol-heading>
+<kol-heading _level="3" _headline="Inhalt einer H3-Überschrift"></kol-heading>
+<kol-heading _level="4" _headline="Inhalt einer H4-Überschrift"></kol-heading>
+<kol-heading _level="5" _headline="Inhalt einer H5-Überschrift"></kol-heading>
+<kol-heading _level="6" _headline="Inhalt einer H6-Überschrift"></kol-heading>
 ```
 
 ### Beispiel
 
-<kol-heading _level="1">Inhalt einer H1-Überschrift</kol-heading>
+<kol-heading _level="1" _headline="Inhalt einer H1-Überschrift"></kol-heading>
+<kol-heading _level="2" _headline="Inhalt einer H2-Überschrift"></kol-heading>
+<kol-heading _level="3" _headline="Inhalt einer H3-Überschrift"></kol-heading>
+<kol-heading _level="4" _headline="Inhalt einer H4-Überschrift"></kol-heading>
+<kol-heading _level="5" _headline="Inhalt einer H5-Überschrift"></kol-heading>
+<kol-heading _level="6" _headline="Inhalt einer H6-Überschrift"></kol-heading>
 
 ## Verwendung
 
-Geben Sie mit dem Attribut `_level` das H-Element an, das Sie ausgeben möchten. Möglich sind H1 bis H6.
+Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
 
 ### Best practices
 
 - Achten Sie bei der Verwendung von Headings auf die empfohlene Semantik für die Suchmaschinenoptimierung.
 - Setzen Sie Headings in verschiedenen Größen ein, um eine sinnvolle Struktur Ihrer Inhalte zu erzeugen.
-- Kombinieren Sie die **Heading**-Komponente mit allen anderen **KoliBri**-Komponenten. Setzen Sie sie im Inhaltsbereich der Komponenten ein.
 
 ## Barrierefreiheit
 
