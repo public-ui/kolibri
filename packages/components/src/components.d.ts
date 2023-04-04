@@ -524,23 +524,23 @@ export namespace Components {
     }
     interface KolImage {
         /**
-          * Gibt den alternativen Text an.
+          * Setzt den alternativen Text.
          */
         "_alt": string;
         /**
-          * Gibt den Lademodus an.
+          * Setzt den Lademodus.
          */
         "_loading"?: Loading;
         /**
-          * ...
+          * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
          */
         "_sizes"?: string;
         /**
-          * Gibt die Quell-URL an.
+          * Setzt die Quell-URL des Bildes.
          */
         "_src": string;
         /**
-          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+          * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
         "_srcset"?: string;
     }
@@ -3089,23 +3089,23 @@ declare namespace LocalJSX {
     }
     interface KolImage {
         /**
-          * Gibt den alternativen Text an.
+          * Setzt den alternativen Text.
          */
         "_alt": string;
         /**
-          * Gibt den Lademodus an.
+          * Setzt den Lademodus.
          */
         "_loading"?: Loading;
         /**
-          * ...
+          * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
          */
         "_sizes"?: string;
         /**
-          * Gibt die Quell-URL an.
+          * Setzt die Quell-URL des Bildes.
          */
         "_src": string;
         /**
-          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+          * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
         "_srcset"?: string;
     }
