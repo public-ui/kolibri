@@ -21,7 +21,7 @@ import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
-import { validateIcon, watchIconAlign } from '../../utils/validators/icon';
+import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 

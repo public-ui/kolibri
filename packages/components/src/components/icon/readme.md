@@ -60,9 +60,9 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ## Shadow Parts
 
-| Part     | Description                                                                                     |
-| -------- | ----------------------------------------------------------------------------------------------- |
-| `"icon"` | Ermöglicht das Styling des inneren Icons. TODO: Wy we provide not a icon-wc component instead?! |
+| Part     | Description                               |
+| -------- | ----------------------------------------- |
+| `"icon"` | Ermöglicht das Styling des inneren Icons. |
 
 ## Dependencies
 

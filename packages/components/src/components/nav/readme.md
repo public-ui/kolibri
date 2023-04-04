@@ -105,12 +105,6 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 | `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                                                                                        | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
 | `_variant`                | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Gibt an, welche Ausprägung der Button hat. | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
 
-## Shadow Parts
-
-| Part    | Description |
-| ------- | ----------- |
-| `"nav"` |             |
-
 ## Dependencies
 
 ### Depends on

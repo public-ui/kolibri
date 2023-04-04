@@ -91,7 +91,6 @@ export class KolInputText implements ComponentApi {
 						list={hasList ? `${this.state._id}-list` : undefined}
 						maxlength={this.state._maxLength}
 						name={this.state._name}
-						part="input"
 						pattern={this.state._pattern}
 						placeholder={this.state._placeholder}
 						readOnly={this.state._readOnly}

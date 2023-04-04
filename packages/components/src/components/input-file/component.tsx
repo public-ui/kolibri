@@ -45,7 +45,6 @@ export class KolInputFile implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
-						part="input"
 						title=""
 						accept={this.state._accept}
 						accessKey={this.state._accessKey}

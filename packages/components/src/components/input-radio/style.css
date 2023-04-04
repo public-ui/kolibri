@@ -21,8 +21,10 @@ input {
 	cursor: pointer;
 	display: flex;
 	height: var(--input-size);
+	margin: 0;
 	min-height: var(--input-size);
 	min-width: var(--input-size);
+	padding: 0;
 	width: var(--input-size);
 }
 input:before {
@@ -45,6 +47,11 @@ fieldset.vertical {
 }
 
 fieldset [slot='input'] {
-	align-items: baseline;
+	align-items: center;
 	display: flex;
+}
+
+/* required star is on fieldset legend */
+.required label > span::after {
+	content: '';
 }

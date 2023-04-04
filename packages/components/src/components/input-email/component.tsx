@@ -66,7 +66,6 @@ export class KolInputEmail implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
-						part="input"
 						title=""
 						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}

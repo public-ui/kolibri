@@ -77,7 +77,6 @@ export class KolSelect implements ComponentApi {
 					</span>
 					<select
 						ref={this.catchRef}
-						part="select"
 						title=""
 						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
