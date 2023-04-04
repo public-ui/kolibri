@@ -430,22 +430,26 @@ export const BPA = KoliBri.createTheme('bpa', {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
 	}
-	kol-input:not(.has-value):not(:focus-within) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within) label {
 		transform: translateY(1.9375rem) scale(1.3333333333);
 		cursor: text;
 	}
-	kol-input:not(.has-value):not(:focus-within):has(div.icon-left) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within):has(div.icon-left) label {
 		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
 	}
-	kol-input:not(.has-value):not(:focus-within) label,
+	:host(:not(.has-value)) kol-input:not(:focus-within) label,
 	input::placeholder {
 		color: var(--color-darkgray);
 	}
-	:host([_error]) kol-input:not(.has-value):not(:focus-within) label {
+	:host([_error]:not(.has-value)) kol-input:not(:focus-within) label {
 		color: var(--color-red);
 	} /* Move hint under input */
 	span.hint {
 		order: 1;
+	}
+	span.hint::before {
+		font-family: codicon;
+		content: "i";
 	}
 	kol-alert {
 		order: 2;
@@ -522,18 +526,18 @@ export const BPA = KoliBri.createTheme('bpa', {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
 	}
-	kol-input:not(.has-value):not(:focus-within) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within) label {
 		transform: translateY(1.9375rem) scale(1.3333333333);
 		cursor: text;
 	}
-	kol-input:not(.has-value):not(:focus-within):has(div.icon-left) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within):has(div.icon-left) label {
 		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
 	}
-	kol-input:not(.has-value):not(:focus-within) label,
+	:host(:not(.has-value)) kol-input:not(:focus-within) label,
 	input::placeholder {
 		color: var(--color-darkgray);
 	}
-	:host([_error]) kol-input:not(.has-value):not(:focus-within) label {
+	:host([_error]) kol-input:not(:focus-within) label {
 		color: var(--color-red);
 	} /* Move hint under input */
 	span.hint {
@@ -610,22 +614,27 @@ export const BPA = KoliBri.createTheme('bpa', {
 			line-height: 1.125rem;
 		}
 	} /* Move label over input as placeholder */
-	:host label {
+	:host(:not(.has-value)) kol-input:has(input[type="number"]) label {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
 	}
-	kol-input:has(input[type="number"]):not(.has-value):not(:focus-within) label {
+	:host(:not(.has-value))kol-input:has(input[type="number"]):not(
+			:focus-within
+		)label {
 		transform: translateY(1.9375rem) scale(1.3333333333);
 		cursor: text;
 	}
-	kol-input:has(input[type="number"]):not(.has-value):not(:focus-within):has(
-			div.icon-left
-		)label {
+	:host(:not(.has-value))kol-input:has(input[type="number"]):not(
+			:focus-within
+		):has(div.icon-left)label {
 		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
 	}
-	:host label {
-		transition: all 0.3s ease-in-out 0ms;
-		transform-origin: 0;
+	:host(:not(.has-value)) kol-input:not(:focus-within) label,
+	input::placeholder {
+		color: var(--color-darkgray);
+	}
+	:host([_error]) kol-input:not(:focus-within) label {
+		color: var(--color-red);
 	}
 	span.hint {
 		order: 1;
@@ -854,18 +863,18 @@ export const BPA = KoliBri.createTheme('bpa', {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
 	}
-	kol-input:not(.has-value):not(:focus-within) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within) label {
 		transform: translateY(1.9375rem) scale(1.3333333333);
 		cursor: text;
 	}
-	kol-input:not(.has-value):not(:focus-within):has(div.icon-left) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within):has(div.icon-left) label {
 		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
 	}
-	kol-input:not(.has-value):not(:focus-within) label,
+	:host(:not(.has-value)) kol-input:not(:focus-within) label,
 	input::placeholder {
 		color: var(--color-darkgray);
 	}
-	:host([_error]) kol-input:not(.has-value):not(:focus-within) label {
+	:host([_error]) kol-input:not(:focus-within) label {
 		color: var(--color-red);
 	} /* Move hint under input */
 	span.hint {
@@ -947,18 +956,18 @@ export const BPA = KoliBri.createTheme('bpa', {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
 	}
-	kol-input:not(.has-value):not(:focus-within) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within) label {
 		transform: translateY(1.9375rem) scale(1.3333333333);
 		cursor: text;
 	}
-	kol-input:not(.has-value):not(:focus-within):has(div.icon-left) label {
+	:host(:not(.has-value)) kol-input:not(:focus-within):has(div.icon-left) label {
 		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
 	}
-	kol-input:not(.has-value):not(:focus-within) label,
+	:host(:not(.has-value)) kol-input:not(:focus-within) label,
 	textarea::placeholder {
 		color: var(--color-darkgray);
 	}
-	:host([_error]) kol-input:not(.has-value):not(:focus-within) label {
+	:host([_error]:not(.has-value)) kol-input:not(:focus-within) label {
 		color: var(--color-red);
 	} /* Move hint under input */
 	span.hint {
