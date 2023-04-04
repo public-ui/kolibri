@@ -615,11 +615,11 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
+          * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
          */
         "_checked"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -627,7 +627,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -655,7 +655,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht die Checkbox zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -672,7 +672,7 @@ export namespace Components {
          */
         "_type"?: InputCheckboxVariant;
         /**
-          * Gibt den Wert der Checkbox an.
+          * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
         "_value"?: string;
         /**
@@ -3180,11 +3180,11 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
+          * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
          */
         "_checked"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3192,7 +3192,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3220,7 +3220,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht die Checkbox zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3237,7 +3237,7 @@ declare namespace LocalJSX {
          */
         "_type"?: InputCheckboxVariant;
         /**
-          * Gibt den Wert der Checkbox an.
+          * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
         "_value"?: string;
         /**
