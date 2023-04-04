@@ -66,7 +66,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 */
 	@Prop() public _hint?: string = '';
 

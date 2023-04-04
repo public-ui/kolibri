@@ -144,7 +144,7 @@ export class KolInputText implements ComponentApi {
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 */
 	@Prop() public _hint?: string = '';
 

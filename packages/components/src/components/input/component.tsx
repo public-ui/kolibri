@@ -104,7 +104,7 @@ export class KolInput implements Props {
 	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 */
 	@Prop() public _hint?: string = '';
 
