@@ -694,7 +694,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -702,7 +702,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -730,7 +730,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3259,7 +3259,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3267,7 +3267,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3295,7 +3295,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
