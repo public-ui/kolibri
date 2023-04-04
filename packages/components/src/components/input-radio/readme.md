@@ -58,7 +58,7 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 - Es wird immer mindestens ein Wert ausgewählt. Ähnlich dem Verhalten einer Select-Auswahl. (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default)
 
 ## Barrierefreiheit

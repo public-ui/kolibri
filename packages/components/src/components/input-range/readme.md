@@ -20,7 +20,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 

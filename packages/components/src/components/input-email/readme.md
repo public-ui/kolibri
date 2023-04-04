@@ -22,7 +22,7 @@ Standardmäßig ist die Komponente für die Erfassung einer einzelnen E-Mail-Adr
 
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder **`_id`** und **`_name`** korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 

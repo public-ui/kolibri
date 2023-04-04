@@ -21,6 +21,7 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 
 ### Best practices
 
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 - Lassen Sie nur die Dateitypen zum Upload zu, die für die Programmausführung benötigt werden. Eine fehlende Einschränkung der hochladbaren Dateitypen kann ein erhebliches Sicherheitsrisiko sein.
 - Begrenzen Sie die Größe der Dateien, die Sie zum Upload zulassen möchten.
 

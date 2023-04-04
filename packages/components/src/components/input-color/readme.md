@@ -20,7 +20,7 @@ Stellen Sie die Default-Farbe über das Attribut `_value` ein. Verwenden Sie hie
 
 ### Best practices
 
-- Achten Sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 
