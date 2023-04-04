@@ -5,9 +5,6 @@ import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;
@@ -35,6 +32,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
+	hasValue: boolean;
 	id: string;
 };
 type OptionalStates = {

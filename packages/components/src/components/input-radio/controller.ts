@@ -21,9 +21,6 @@ export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, option
 	});
 };
 
-/**
- * API
- */
 type RequiredProps = unknown;
 type OptionalProps = {
 	required: boolean;
@@ -39,16 +36,10 @@ export class InputCheckboxRadioController extends InputController implements Inp
 		this.component = component;
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateRequired(this.component._required);
@@ -89,9 +80,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		}
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateOrientation(value?: Orientation): void {
 		watchValidator(
 			this.component,
@@ -105,9 +93,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
 		watchJsonArrayString(
 			this.component,
@@ -123,9 +108,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateValue(value?: Stringified<unknown>): void {
 		value = mapString2Unknown(value);
 		value = Array.isArray(value) ? value[0] : value;
@@ -135,9 +117,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		this.setFormAssociatedValue(this.component._value as string);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(onChange?: (event: Event) => void): void {
 		super.componentWillLoad();
 

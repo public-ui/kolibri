@@ -4,10 +4,8 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
+import { PropMultiple } from '../../types/props';
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;
@@ -20,7 +18,6 @@ type OptionalProps = {
 	icon: Stringified<KoliBriHorizontalIcon>;
 	list: Stringified<string[]>;
 	maxLength: number;
-	multiple: boolean;
 	name: string;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -32,12 +29,13 @@ type OptionalProps = {
 	touched: boolean;
 	tabIndex: number;
 	value: string;
-};
+} & PropMultiple;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
+	hasValue: boolean;
 	list: string[];
 };
 type OptionalStates = {

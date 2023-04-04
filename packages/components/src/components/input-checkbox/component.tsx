@@ -1,8 +1,9 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Stringified } from '../../components';
+import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { propergateFocus } from '../../utils/reuse';
+import { validateChecked, validateIndeterminate } from '../../types/props';
+import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
@@ -20,7 +21,7 @@ export class KolInputCheckbox implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -31,6 +32,9 @@ export class KolInputCheckbox implements ComponentApi {
 					class={{
 						[this.state._variant]: true,
 					}}
+					data-role={this.state._variant === 'button' ? 'button' : undefined}
+					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
+					tabIndex={this.state._variant === 'button' ? 0 : undefined}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -40,20 +44,15 @@ export class KolInputCheckbox implements ComponentApi {
 					_required={this.state._required}
 					_touched={this.state._touched}
 				>
-					<span
-						data-role={this.state._variant === 'button' ? 'button' : undefined}
-						onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
-						tabIndex={this.state._variant === 'button' ? 0 : undefined}
-						slot="label"
-					>
+					<span slot="label">
+						<slot />
+					</span>
+					<div slot="input">
 						<kol-icon
 							onClick={this.onChange}
 							_ariaLabel=""
 							_icon={this.state._indeterminate ? this.state._icon.indeterminate : this.state._checked ? this.state._icon.checked : this.state._icon.unchecked}
 						/>
-						<slot />
-					</span>
-					<div slot="input">
 						<input
 							ref={this.catchRef}
 							accessKey={this.state._accessKey} // by checkbox?!
@@ -172,15 +171,12 @@ export class KolInputCheckbox implements ComponentApi {
 	 */
 	@Prop() public _variant?: InputCheckboxVariant; // = 'checkbox';
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_checked: false,
 		_icon: {
-			checked: 'fa-solid fa-check',
-			indeterminate: 'fa-solid fa-minus',
-			unchecked: 'fa-solid fa-plus',
+			checked: 'codicon codicon-check',
+			indeterminate: 'codicon codicon-remove',
+			unchecked: 'codicon codicon-add',
 		},
 		_id: '…', // ⚠ required
 		_indeterminate: false,
@@ -191,153 +187,96 @@ export class KolInputCheckbox implements ComponentApi {
 		this.controller = new InputCheckboxController(this, 'checkbox', this.host);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		this.controller.validateAlert(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_checked')
 	public validateChecked(value?: boolean): void {
-		this.controller.validateChecked(value);
+		validateChecked(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
 		this.controller.validateHideLabel(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hint')
 	public validateHint(value?: string): void {
 		this.controller.validateHint(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
 		this.controller.validateIcon(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_indeterminate')
 	public validateIndeterminate(value?: boolean): void {
-		this.controller.validateIndeterminate(value);
+		validateIndeterminate(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_tabIndex')
 	public validateTabIndex(value?: number): void {
 		this.controller.validateTabIndex(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
 		this.controller.validateTouched(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_type')
 	public validateType(value?: InputCheckboxVariant): void {
 		this.controller.validateType(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_variant')
 	public validateVariant(value?: InputCheckboxVariant): void {
 		this.controller.validateVariant(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;

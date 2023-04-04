@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
+import { LinkProps } from '../../../types/button-link';
 import { Icofont } from '../../../types/icofont';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { NavLinkProps } from '../../link/component';
 import { getLinkHtml } from '../../link/test/html.mock';
 import { Props } from '../component';
 
@@ -16,19 +16,15 @@ export const getBreadcrumbHtml = (props: Props): string => {
 
 	const lastIndex = props._links.length - 1;
 	let list = '';
-	(props._links as NavLinkProps[]).forEach((link, index) => {
+	(props._links as LinkProps[]).forEach((link, index) => {
 		list += `
 				<li>
 				${
 					index !== 0
-						? getIconHtml(
-								{
-									_ariaLabel: '',
-									_icon: 'fa-solid fa-angle-right',
-									_part: 'separator',
-								},
-								' exportparts="separator"'
-						  )
+						? getIconHtml({
+								_ariaLabel: '',
+								_icon: 'codicon codicon-chevron-right',
+						  })
 						: ''
 				}
 					${
@@ -56,7 +52,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 					props._links.length === 0
 						? `<li>${getIconHtml({
 								_ariaLabel: '',
-								_icon: 'fa-house fa-solid',
+								_icon: 'codicon codicon-home',
 						  })}…</li>`
 						: ''
 				}

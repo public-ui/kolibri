@@ -3,6 +3,6 @@
 ## Styling
 
 1. Do not use `!important`!
-2. Really, only use `:host` when addressing a direct child node via the selection (like `:host > .first-button`)!
-3. Align your styling to the default alignment, not the full styling!
-4. Use only the colors from the `design tokens`!
+2. Only alignment/position/layout!
+3. No colors/spacing/font/transform/animation!
+4. padding/margin 0 is allowed! If set, use comment.

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/slidev",
-	"version": "1.5.0-rc.0",
+	"version": "1.5.0-rc.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -23,17 +23,17 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "1.5.0-rc.0",
-		"@public-ui/themes": "1.5.0-rc.0",
+		"@public-ui/components": "1.5.0-rc.9",
+		"@public-ui/themes": "1.5.0-rc.9",
 		"@slidev/theme-default": "0.21.2",
 		"@slidev/theme-seriph": "0.21.3"
 	},
 	"devDependencies": {
-		"@slidev/cli": "0.40.3",
-		"npm-check-updates": "16.7.10",
-		"playwright-chromium": "1.31.2",
-		"prettier": "2.8.4",
-		"rimraf": "4.3.0",
+		"@slidev/cli": "0.40.6",
+		"npm-check-updates": "16.10.1",
+		"playwright-chromium": "1.32.2",
+		"prettier": "2.8.7",
+		"rimraf": "4.4.1",
 		"ts-prune": "0.10.3"
 	},
 	"files": [

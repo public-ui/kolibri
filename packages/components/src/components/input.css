@@ -1,14 +1,7 @@
 @import './label.css';
+@import './host-display-block.css';
 
-.kol-disabled {
-	opacity: 0.5;
-}
-
-.kol-cursor-not-allowed,
-.kol-cursor-not-allowed * {
-	cursor: not-allowed;
-}
-
+/* input[type='checkbox'], */
 input[type='color'],
 input[type='date'],
 input[type='datetime-local'],
@@ -17,52 +10,32 @@ input[type='file'],
 input[type='month'],
 input[type='number'],
 input[type='password'],
+/* input[type='radio'], */
+/* input[type='range'], */
 input[type='search'],
 input[type='tel'],
 input[type='text'],
 input[type='time'],
 input[type='url'],
 input[type='week'],
-select,
+select[multiple] option,
+select:not([multiple]),
 textarea {
-	background-color: white;
-	display: block;
 	font-size: 1rem;
-	line-height: 1.5em;
-	min-height: 44px;
-	padding: 0.5em 0.75em;
+	padding: 0 0.5em;
 }
 
-input[type='color'] {
-	height: 2.5em;
-	padding: 0.25em 0.5em;
+/* needed hack for vertical alignment */
+input[type='file'] {
+	padding: calc((var(--a11y-min-size) - 1rem) / 10) 0.5em;
 }
 
-textarea {
-	padding: 0.5em;
+/* needed hack for vertical alignment */
+select[multiple] option {
+	padding: calc((var(--a11y-min-size) - 1rem) / 2) 0.5em;
 }
 
-input,
-select,
-textarea {
-	border-color: var(--kolibri-border-color);
-	border-style: solid;
-	border-width: calc(var(--kolibri-spacing) / 2);
-}
-
-.error :is(input, select, textarea) {
-	border-color: var(--kolibri-border-error);
-}
-
-:is(input, select, textarea):is(:focus, :hover) {
-	border-color: var(--kolibri-color-text);
-}
-
-input:not([type='checkbox']),
-option,
-select,
-textarea {
-	font-size: inherit;
-	letter-spacing: inherit;
-	word-spacing: inherit;
+kol-input.disabled :is(button, input, label, option, select, textarea) {
+	cursor: not-allowed;
+	opacity: 0.5;
 }

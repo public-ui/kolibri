@@ -1,16 +1,16 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { Orientation } from '../../types/orientation';
+import { LinkProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
+import { Orientation } from '../../types/orientation';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { NavLinkProps } from '../link/component';
 import { watchNavLinks } from '../nav/validation';
-import { Stringified } from '../../types/common';
 
-const ListItem = (props: { links: NavLinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
+const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
 	props.links.map((link, index: number) => {
 		list.push(
@@ -48,12 +48,9 @@ export type ListStyleType =
 	| 'upper-latin'
 	| 'upper-roman';
 
-/**
- * API
- */
 type RequiredProps = {
 	ariaLabel: string;
-	links: Stringified<NavLinkProps[]>;
+	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
 	heading: string;
@@ -66,7 +63,7 @@ type OptionalProps = {
 
 type RequiredStates = {
 	ariaLabel: string;
-	links: NavLinkProps[];
+	links: LinkProps[];
 	listStyleType: ListStyleType;
 	orientation: Orientation;
 };
@@ -136,7 +133,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
 	 */
-	@Prop() public _links!: Stringified<NavLinkProps[]>;
+	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
 	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
@@ -149,9 +146,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_ariaLabel: '…', // '⚠'
 		_listStyleType: 'disc',
@@ -159,9 +153,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		_orientation: 'vertical',
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -170,9 +161,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		a11yHintLabelingLandmarks(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_listStyleType')
 	public validateListStyleType(value?: ListStyleType): void {
 		watchValidator(
@@ -206,41 +194,26 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_links')
-	public validateLinks(value?: Stringified<NavLinkProps[]>): void {
+	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolLinkGroup', this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ordered')
 	public validateOrdered(value?: boolean): void {
 		watchBoolean(this, '_ordered', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_orientation')
 	public validateOrientation(value?: Orientation): void {
 		watchValidator(
@@ -255,9 +228,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateListStyleType(this._listStyleType);

@@ -1,0 +1,11 @@
+/**
+ * Dieses CSS stellt sicher, dass der Standard-Style
+ * von A und Button resettet werden.
+ */
+:is(a, button) {
+	background-color: transparent;
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: 100%; /* 100% needed for custom width from outside */
+}

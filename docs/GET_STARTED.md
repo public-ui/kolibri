@@ -36,13 +36,15 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
 		<link rel="stylesheet" href="assets/bundes/style.css" />
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
 		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
 		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+		<link rel="stylesheet" href="assets/kreon/style.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
 	</head>
 </html>
 ```

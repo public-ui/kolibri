@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { Loading } from '../../utils/validators/loading';
 
 /**
- * API
+ * API for the Image component.
  */
 type RequiredProps = {
 	src: string;
@@ -21,6 +21,8 @@ type OptionalStates = {
 	sizes: string;
 	srcset: string;
 };
+
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 

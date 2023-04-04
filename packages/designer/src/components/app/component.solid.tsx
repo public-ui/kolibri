@@ -10,24 +10,6 @@ import parserBabel from 'prettier/esm/parser-babel.mjs';
 import { TAG_NAMES } from '../tags';
 import { restoreThemes, saveData, storeThemes } from '../../shares/theme';
 
-// const kebabToPascalCase = (str: string) =>
-//   str
-//     .toLowerCase()
-//     .split('-')
-//     .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
-//     .join('');
-
-// https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841
-// https://stackoverflow.com/questions/63116039/camelcase-to-kebab-case
-// const camelOrPascalToKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-// const camelToKebabCase = camelOrPascalToKebabCase;
-// const pascalToKebabCase = camelOrPascalToKebabCase;
-// const snakeToKebabCase = (str: string) => str.replace(/_/g, '-').toLowerCase();
-// console.log(kebabToPascalCase('ich-bin-ein-berliner'));
-// console.log(camelToKebabCase('ichBinEinBerliner'));
-// console.log(pascalToKebabCase('IchBinEinBerliner'));
-// console.log(snakeToKebabCase('ich_bin_ein_Berliner'));
-
 type Page = 'editor' | 'result' | 'overview';
 
 const TAG_NAME_LIST: SelectOption<string>[] = [];
@@ -38,12 +20,6 @@ TAG_NAMES.forEach((tagName) => {
 	});
 });
 
-// const InputComponent: Component = () => {
-//   const [getClass, setClass] = createSignal('');
-
-//   return <input class={getClass()} onInput={(event) => setClass((event.target as HTMLInputElement).value)} />;
-// };
-
 export const AppComponent: Component = () => {
 	const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'default');
 	const [getComponent, setComponent] = createSignal(sessionStorage.getItem('kolibri-component') || 'KOL-BUTTON');
@@ -51,12 +27,7 @@ export const AppComponent: Component = () => {
 	const [getValue, setValue] = createSignal('');
 	const [getPropsStyle, setPropsStyle] = createSignal(false);
 
-	// setInterval(() => {
-	// 	renderJsonString(getTheme());
-	// 	downloadTheme();
-	// }, 300000);
-
-	let select: HTMLElement;
+	let select: HTMLKolSelectElement;
 
 	createEffect(() => {
 		if (select instanceof HTMLElement) {
@@ -67,21 +38,13 @@ export const AppComponent: Component = () => {
 	restoreThemes();
 
 	const renderJsonString = (theme: string): void => {
-		if (
-			typeof window.A11yUi === 'object' &&
-			window.A11yUi !== null &&
-			typeof window.A11yUi.Themes === 'object' &&
-			window.A11yUi.Themes !== null &&
-			typeof window.A11yUi.Themes[theme] === 'object' &&
-			window.A11yUi.Themes[theme] !== null &&
-			window.A11yUi.Themes[theme] !== undefined
-		) {
-			const styles = window.A11yUi.Themes[theme] as string;
-			const keys = Object.getOwnPropertyNames(styles);
-			keys.forEach((key: string) => {
-				styles[key] = (styles[key] as string).replace(/( {2,}|\n|)/g, '');
-			});
-			setValue(JSON.stringify(window.A11yUi.Themes[theme]));
+		const styles = (window.A11yUi.Themes[theme] as Record<string, string>) || {};
+		const keys = Object.getOwnPropertyNames(styles);
+		keys.forEach((key: string) => {
+			styles[key] = styles[key].replace(/( {2,}|\n|)/g, '');
+		});
+		if (styles) {
+			setValue(JSON.stringify(styles));
 		}
 	};
 
@@ -153,7 +116,7 @@ export const AppComponent: Component = () => {
 	};
 
 	const getList = (): string[] => {
-		if (typeof window.A11yUi === 'object' && window.A11yUi !== null && typeof window.A11yUi.Themes === 'object' && window.A11yUi.Themes !== null) {
+		if (typeof window.A11yUi?.Themes === 'object') {
 			return Object.getOwnPropertyNames(window.A11yUi.Themes);
 		} else {
 			return [];
@@ -162,13 +125,13 @@ export const AppComponent: Component = () => {
 
 	return (
 		<div class="font-sans grid gap-2">
-			{/* <InputComponent /> */}
 			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end default">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
 					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search">
 						Theme
 					</KolInputText>
 					<KolInputCheckbox
+						_id="scope switch"
 						_on={{
 							onChange: () => {
 								setPropsStyle((props) => props === false);
@@ -181,19 +144,27 @@ export const AppComponent: Component = () => {
 					</KolInputCheckbox>
 				</div>
 				<div class="w-full grid gap-2 md:grid-cols-2 md:col-span-2 justify-items-center items-end">
-					<KolButton
-						_label="Komponenten-Übersicht"
-						_on={{
-							onClick: (event: MouseEvent) => {
-								event.preventDefault();
-								setShow('overview');
-							},
-						}}
-					></KolButton>
+					<Switch
+						fallback={
+							<KolButton
+								_label="Komponenten-Übersicht"
+								_on={{
+									onClick: (event: MouseEvent) => {
+										event.preventDefault();
+										setShow('overview');
+									},
+								}}
+							></KolButton>
+						}
+					>
+						<Match when={getShow() === 'overview'}>
+							<KolButton _label="Zurück zum Theme editieren" _on={onClickEdit}></KolButton>
+						</Match>
+					</Switch>
 					<div class="flex gap-2 items-end">
 						<KolButton
 							_label="Zurück"
-							_icon="icofont-arrow-left"
+							_icon="codicon codicon-arrow-left"
 							_iconOnly
 							_on={{
 								onClick: (event: MouseEvent) => {
@@ -208,6 +179,7 @@ export const AppComponent: Component = () => {
 							_tooltipAlign="bottom"
 						></KolButton>
 						<KolSelect
+							_id="component-select"
 							_list={TAG_NAME_LIST}
 							_on={{
 								onChange: (_event, value) => {
@@ -223,7 +195,7 @@ export const AppComponent: Component = () => {
 						</KolSelect>
 						<KolButton
 							_label="Weiter"
-							_icon="icofont-arrow-right"
+							_icon="codicon codicon-arrow-right"
 							_iconOnly
 							_on={{
 								onClick: (event: MouseEvent) => {
@@ -255,7 +227,9 @@ export const AppComponent: Component = () => {
 								<KolButton class="w-full sm:w-auto" _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
 							</div>
 							<div class="flex gap-2">
-								<KolInputFile _on={onChangeUpload}>Theme laden</KolInputFile>
+								<KolInputFile _id="theme-upload-input" _on={onChangeUpload}>
+									Theme laden
+								</KolInputFile>
 							</div>
 						</div>
 					</>
@@ -266,26 +240,28 @@ export const AppComponent: Component = () => {
 						<div class="w-full overflow-scroll">
 							<img alt="Abhängigkeitsgraph der Komponenten" src={AllComp as unknown as string}></img>
 						</div>
-						<KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
 					</div>
 				</Match>
 				<Match when={getShow() === 'result'}>
 					<div class="grid gap-2 p-4 default">
 						<div>
-							<KolHeading>Theming</KolHeading>
+							<KolHeading _headline="Theming"></KolHeading>
 							<KolAlert _type="info">
 								Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden Sie sich gerne an{' '}
-								<KolLink _href="mailto: ---@---.de">---@---.de</KolLink>
+								<KolLink _href="mailto:kolibri@itzbund.de" _label="kolibri@itzbund.de" _target="mail"></KolLink>
 							</KolAlert>
 							<p>
 								Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet CSS-Definitionen, die jede Komponente individuell
 								stylt.
 							</p>
-							<KolHeading>Theme einbinden</KolHeading>
+							<KolHeading _headline="Theme einbinden"></KolHeading>
 							<p>
 								Um ihr Theme ({getTheme()}) in ihre Anwendung einzubinden, müssen Sie einfach den Quellcode kopieren und in z.B. die <code>main.ts</code> ihrer
 								Anwendung einfügen.
 							</p>
+						</div>
+						<div>
+							<KolButton _label="Zurück zum Theme editieren" _on={onClickEdit}></KolButton>
 						</div>
 						<div
 							ref={renderTsEditor}
@@ -294,7 +270,6 @@ export const AppComponent: Component = () => {
 								width: '100%',
 							}}
 						></div>
-						<KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
 					</div>
 				</Match>
 			</Switch>

@@ -1,25 +1,23 @@
 @import './style.css';
 
-a {
+:host {
+	display: inline-block;
+}
+
+:is(a, button) {
+	display: inline-flex;
+	place-items: center;
+	text-align: center;
 	text-decoration-line: none;
 }
 
-a,
-button {
-	display: inline-block;
-	min-height: 44px;
-	min-width: 44px;
+/* TODO: Why we need this? */
+:is(a, button) > kol-span-wc {
+	margin: auto;
+	width: 100%;
 }
 
-a:active,
-button:active {
-	outline: 0;
-	box-shadow: none;
-}
-
-a:disabled,
-button:disabled {
-	box-shadow: none;
+:is(button):disabled {
 	cursor: not-allowed;
 	opacity: 0.5;
 }

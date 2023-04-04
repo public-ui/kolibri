@@ -8,87 +8,87 @@ updates:
   - package-ecosystem: github-actions
     directory: '/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/angular/v15/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/hydrate/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/preact/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/react/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/solid/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/svelte/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/adapters/vue/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/components/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/create-kolibri/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/designer/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/slidev/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/storybook/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/themes/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
 
   # deprecated
   - package-ecosystem: npm
     directory: '/packages/core/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
   - package-ecosystem: npm
     directory: '/packages/schema/'
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main

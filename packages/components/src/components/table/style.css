@@ -1,4 +1,5 @@
 @import '../style.css';
+@import '../host-display-block.css';
 
 :host > div {
 	overflow-x: auto;
@@ -35,6 +36,5 @@ div.pagination > div:last-child {
 
 	div.pagination kol-pagination {
 		display: flex;
-		gap: calc(4 * var(--kolibri-spacing));
 	}
 }

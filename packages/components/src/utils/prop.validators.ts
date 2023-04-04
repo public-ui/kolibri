@@ -43,7 +43,7 @@ export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void 
  * Damit wir das "richtige" interaktive HTML-Element an das Event binden, setzen
  * wir das Target explizit und stoppen die Propagation.
  */
-export const setEventTargetAndStopPropagation = (event: Event, target?: HTMLElement): void => {
+export const setEventTarget = (event: Event, target?: HTMLElement): void => {
 	if (getExperimalMode()) {
 		Log.debug([event, target]);
 		Log.debug(`↑ We propagate the (submit) event to this target.`);
@@ -137,7 +137,7 @@ type WatchOptions = {
 	required?: boolean;
 };
 
-type WatchBooleanOptions = WatchOptions & {
+export type WatchBooleanOptions = WatchOptions & {
 	defaultValue?: boolean | null;
 };
 

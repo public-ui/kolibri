@@ -1,6 +1,3 @@
-export type KoliBriIconProp = AnyIconFontClass | KoliBriAllIcon;
-
-// ts-prune-ignore-next
 export type AnyIconFontClass = string;
 
 export type KoliBriCustomIcon = {
@@ -8,55 +5,20 @@ export type KoliBriCustomIcon = {
 	style?: Record<string, string>;
 };
 
-export type KoliBriHorizontalIcon =
-	| {
-			right: AnyIconFontClass | KoliBriCustomIcon;
-			left?: AnyIconFontClass | KoliBriCustomIcon;
-	  }
-	| {
-			right?: AnyIconFontClass | KoliBriCustomIcon;
-			left: AnyIconFontClass | KoliBriCustomIcon;
-	  };
+type IconOrIconClass = AnyIconFontClass | KoliBriCustomIcon;
 
-// export type KoliBriVerticalIcon =
-// 	| {
-// 			top: AnyIconFontClass | KoliBriCustomIcon;
-// 			bottom?: AnyIconFontClass | KoliBriCustomIcon;
-// 	  }
-// 	| {
-// 			top?: AnyIconFontClass | KoliBriCustomIcon;
-// 			bottom: AnyIconFontClass | KoliBriCustomIcon;
-// 	  };
-
-export type KoliBriAllIcon =
-	| {
-			top: AnyIconFontClass | KoliBriCustomIcon;
-			right?: AnyIconFontClass | KoliBriCustomIcon;
-			bottom?: AnyIconFontClass | KoliBriCustomIcon;
-			left?: AnyIconFontClass | KoliBriCustomIcon;
-	  }
-	| {
-			top?: AnyIconFontClass | KoliBriCustomIcon;
-			right: AnyIconFontClass | KoliBriCustomIcon;
-			bottom?: AnyIconFontClass | KoliBriCustomIcon;
-			left?: AnyIconFontClass | KoliBriCustomIcon;
-	  }
-	| {
-			top?: AnyIconFontClass | KoliBriCustomIcon;
-			right?: AnyIconFontClass | KoliBriCustomIcon;
-			bottom: AnyIconFontClass | KoliBriCustomIcon;
-			left?: AnyIconFontClass | KoliBriCustomIcon;
-	  }
-	| {
-			top?: AnyIconFontClass | KoliBriCustomIcon;
-			right?: AnyIconFontClass | KoliBriCustomIcon;
-			bottom?: AnyIconFontClass | KoliBriCustomIcon;
-			left: AnyIconFontClass | KoliBriCustomIcon;
-	  };
-
-export type KoliBriIconState = {
-	top?: AnyIconFontClass | KoliBriCustomIcon;
-	right?: AnyIconFontClass | KoliBriCustomIcon;
-	bottom?: AnyIconFontClass | KoliBriCustomIcon;
-	left?: AnyIconFontClass | KoliBriCustomIcon;
+export type KoliBriHorizontalIcon = {
+	right?: IconOrIconClass;
+	left?: IconOrIconClass;
 };
+
+type KoliBriVerticalIcon = {
+	top?: IconOrIconClass;
+	bottom?: IconOrIconClass;
+};
+
+export type KoliBriAllIcon = KoliBriHorizontalIcon & KoliBriVerticalIcon;
+
+export type KoliBriIconProp = AnyIconFontClass | KoliBriAllIcon;
+
+export type KoliBriIconState = KoliBriAllIcon;

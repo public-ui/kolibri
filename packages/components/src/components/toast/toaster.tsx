@@ -1,4 +1,4 @@
-import { AlertType } from '../../types/alert';
+import { AlertType } from '../alert/types';
 
 type Toast = {
 	heading: string;

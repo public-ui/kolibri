@@ -1,5 +1,1 @@
 @import '../style.css';
-
-:host > div {
-	display: inline-block;
-}

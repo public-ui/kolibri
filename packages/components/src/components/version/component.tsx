@@ -4,9 +4,6 @@ import { Farbspektrum } from '../../enums/color';
 import { Generic } from '@a11y-ui/core';
 import { watchString } from '../../utils/prop.validators';
 
-/**
- * API
- */
 type RequiredProps = {
 	version: string;
 };
@@ -26,7 +23,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolVersion implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
-		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="fa-solid fa-infinity" _label={`v${this.state._version}`} />;
+		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="codicon codicon-versions" _label={`v${this.state._version}`} />;
 	}
 
 	/**
@@ -34,16 +31,10 @@ export class KolVersion implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _version!: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_version: '0.0.0-alpha.0',
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_version')
 	public validateVersion(value?: string): void {
 		watchString(this, '_version', value, {
@@ -51,9 +42,6 @@ export class KolVersion implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateVersion(this._version);
 	}

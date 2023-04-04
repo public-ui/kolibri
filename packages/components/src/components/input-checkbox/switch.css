@@ -18,13 +18,11 @@
 	width: 1.2em;
 }
 .switch input[type='checkbox']:checked:before {
-	background-color: white;
 	-webkit-transform: translateX(1.5em);
 	-moz-transform: translateX(1.5em);
 	-ms-transform: translateX(1.5em);
 	transform: translateX(1.5em);
 }
 .switch input[type='checkbox']:indeterminate:before {
-	background-color: var(--kolibri-color-normal);
 	transform: translateX(0.75em);
 }

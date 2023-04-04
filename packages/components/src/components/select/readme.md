@@ -43,11 +43,11 @@ Mit der Property **`_height`** kann eine individuelle Höhe der Selectbox mittel
 
 ### Tastatursteuerung
 
-| Taste               | Funktion                              |
-| ------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`               | Fokussiert das Auswahlfeld.           |
-| `Enter`             | Öffnet bzw.schließt die Auswahlliste. |
-| `Pfeil-Tasten (oben | unten)`                               | Wechselt in der Auswahlliste das aktivierte Element. Diese Funktion ist auch bei eingeklappter Auswahlliste aktiv. Bei Mehrfachauswahl muss zur Auswahl mehrerer Einträge zusätzlich die Shift-Taste gedrück gehalten werden. |
+| Taste                         | Funktion                                                                                                                                                                                                                      |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                         | Fokussiert das Auswahlfeld.                                                                                                                                                                                                   |
+| `Enter`                       | Öffnet bzw.schließt die Auswahlliste.                                                                                                                                                                                         |
+| `Pfeil-Tasten (oben / unten)` | Wechselt in der Auswahlliste das aktivierte Element. Diese Funktion ist auch bei eingeklappter Auswahlliste aktiv. Bei Mehrfachauswahl muss zur Auswahl mehrerer Einträge zusätzlich die Shift-Taste gedrück gehalten werden. |
 
 ### `Single-Select-Filter` für Select-Komponente
 
@@ -80,54 +80,26 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 
 ## Properties
 
-| Property             | Attribute     | Description                                                                                                                            | Type                                                                                                                                                                                                          | Default     |
-| -------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_accessKey`         | `_access-key` | Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.                                                   | `string \| undefined`                                                                                                                                                                                         | `undefined` |
-| `_alert`             | `_alert`      | Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.                                                               | `boolean \| undefined`                                                                                                                                                                                        | `true`      |
-| `_disabled`          | `_disabled`   | Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.                                                                            | `boolean \| undefined`                                                                                                                                                                                        | `undefined` |
-| `_error`             | `_error`      | Gibt den Text für eine Fehlermeldung an.                                                                                               | `string \| undefined`                                                                                                                                                                                         | `undefined` |
-| `_height`            | `_height`     | <span style="color:red">**[DEPRECATED]**</span> Use \_size instead.<br/><br/>Gibt an, ob eine individuelle Höhe übergeben werden soll. | `string \| undefined`                                                                                                                                                                                         | `undefined` |
-| `_hideLabel`         | `_hide-label` | Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.                                                                          | `boolean \| undefined`                                                                                                                                                                                        | `undefined` |
-| `_hint`              | `_hint`       | Gibt den Text für eine Hinweistext an.                                                                                                 | `string \| undefined`                                                                                                                                                                                         | `''`        |
-| `_icon`              | `_icon`       | Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.                                                     | `string \| undefined \| { right: string \| KoliBriCustomIcon; left?: string \| KoliBriCustomIcon \| undefined; } \| { right?: string \| KoliBriCustomIcon \| undefined; left: string \| KoliBriCustomIcon; }` | `undefined` |
-| `_id` _(required)_   | `_id`         | Gibt die technische ID des Eingabefeldes an.                                                                                           | `string`                                                                                                                                                                                                      | `undefined` |
-| `_list` _(required)_ | `_list`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                       | `SelectOption<W3CInputValue>[] \| string`                                                                                                                                                                     | `undefined` |
-| `_multiple`          | `_multiple`   | Gibt an, ob mehrere Werte eingegeben werden können.                                                                                    | `boolean \| undefined`                                                                                                                                                                                        | `false`     |
-| `_name`              | `_name`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                       | `string \| undefined`                                                                                                                                                                                         | `undefined` |
-| `_on`                | --            | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                              | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                                                                                                                      | `undefined` |
-| `_required`          | `_required`   | Gibt an, ob die Selectbox ein Pflichtfeld ist.                                                                                         | `boolean \| undefined`                                                                                                                                                                                        | `undefined` |
-| `_size`              | `_size`       | Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.                                                                    | `number \| undefined`                                                                                                                                                                                         | `undefined` |
-| `_tabIndex`          | `_tab-index`  | Gibt an, welchen Tab-Index dieses Input hat.                                                                                           | `number \| undefined`                                                                                                                                                                                         | `undefined` |
-| `_touched`           | `_touched`    | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                          | `boolean \| undefined`                                                                                                                                                                                        | `false`     |
-| `_value`             | `_value`      | Gibt den Wert des Eingabefeldes an.                                                                                                    | `W3CInputValue[] \| string \| undefined`                                                                                                                                                                      | `undefined` |
-
-## Shadow Parts
-
-| Part       | Description                               |
-| ---------- | ----------------------------------------- |
-| `"select"` | Ermöglicht das Stylen des select-Knotens. |
-
-## CSS Custom Properties
-
-| Name                        | Description                     |
-| --------------------------- | ------------------------------- |
-| `--kolibri-border-color`    | Default color of the border.    |
-| `--kolibri-border-radius`   | Default radius of the border.   |
-| `--kolibri-border-width`    | Default width of the border.    |
-| `--kolibri-color-danger`    | Default color of the danger.    |
-| `--kolibri-color-disabled`  | Default color of the disabled.  |
-| `--kolibri-color-error`     | Default color of the error.     |
-| `--kolibri-color-ghost`     | Default color of the ghost.     |
-| `--kolibri-color-info`      | Default color of the info.      |
-| `--kolibri-color-normal`    | Default color of the normal.    |
-| `--kolibri-color-primary`   | Default color of the primary.   |
-| `--kolibri-color-secondary` | Default color of the secondary. |
-| `--kolibri-color-success`   | Default color of the success.   |
-| `--kolibri-color-text`      | Default color of the text.      |
-| `--kolibri-color-visited`   | Default color of the visited.   |
-| `--kolibri-color-warning`   | Default color of the warning.   |
-| `--kolibri-font-family`     | Default font family.            |
-| `--kolibri-font-size`       | Default font size.              |
+| Property             | Attribute     | Description                                                                                                                            | Type                                                                                                    | Default     |
+| -------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- |
+| `_accessKey`         | `_access-key` | Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.                                                   | `string \| undefined`                                                                                   | `undefined` |
+| `_alert`             | `_alert`      | Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.                                                               | `boolean \| undefined`                                                                                  | `true`      |
+| `_disabled`          | `_disabled`   | Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.                                                                            | `boolean \| undefined`                                                                                  | `undefined` |
+| `_error`             | `_error`      | Gibt den Text für eine Fehlermeldung an.                                                                                               | `string \| undefined`                                                                                   | `undefined` |
+| `_height`            | `_height`     | <span style="color:red">**[DEPRECATED]**</span> Use \_size instead.<br/><br/>Gibt an, ob eine individuelle Höhe übergeben werden soll. | `string \| undefined`                                                                                   | `undefined` |
+| `_hideLabel`         | `_hide-label` | Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.                                                                          | `boolean \| undefined`                                                                                  | `undefined` |
+| `_hint`              | `_hint`       | Gibt den Text für eine Hinweistext an.                                                                                                 | `string \| undefined`                                                                                   | `''`        |
+| `_icon`              | `_icon`       | Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.                                                     | `string \| undefined \| { right?: IconOrIconClass \| undefined; left?: IconOrIconClass \| undefined; }` | `undefined` |
+| `_id` _(required)_   | `_id`         | Gibt die technische ID des Eingabefeldes an.                                                                                           | `string`                                                                                                | `undefined` |
+| `_list` _(required)_ | `_list`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                       | `SelectOption<W3CInputValue>[] \| string`                                                               | `undefined` |
+| `_multiple`          | `_multiple`   | Gibt an, ob mehrere Werte eingegeben werden können.                                                                                    | `boolean \| undefined`                                                                                  | `false`     |
+| `_name`              | `_name`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                       | `string \| undefined`                                                                                   | `undefined` |
+| `_on`                | --            | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                              | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                | `undefined` |
+| `_required`          | `_required`   | Gibt an, ob die Selectbox ein Pflichtfeld ist.                                                                                         | `boolean \| undefined`                                                                                  | `undefined` |
+| `_size`              | `_size`       | Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.                                                                    | `number \| undefined`                                                                                   | `undefined` |
+| `_tabIndex`          | `_tab-index`  | Gibt an, welchen Tab-Index dieses Input hat.                                                                                           | `number \| undefined`                                                                                   | `undefined` |
+| `_touched`           | `_touched`    | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                          | `boolean \| undefined`                                                                                  | `false`     |
+| `_value`             | `_value`      | Gibt den Wert des Eingabefeldes an.                                                                                                    | `W3CInputValue[] \| string \| undefined`                                                                | `undefined` |
 
 ## Dependencies
 

@@ -1,6 +1,6 @@
 import { devHint } from '../../utils/a11y.tipps';
 import { getExperimalMode } from '../../utils/dev.utils';
-import { KoliBriDevHelper, setEventTargetAndStopPropagation } from '../../utils/prop.validators';
+import { KoliBriDevHelper, setEventTarget } from '../../utils/prop.validators';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimalMode()) {
@@ -25,7 +25,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 	return el;
 };
 
-export const propergateResetEventToForm = (
+export const propagateResetEventToForm = (
 	options: {
 		form?: HTMLElement | ParentNode | null;
 		ref?: HTMLElement;
@@ -38,10 +38,10 @@ export const propergateResetEventToForm = (
 			cancelable: true,
 		});
 		if (form.tagName === 'FORM') {
-			setEventTargetAndStopPropagation(event, form);
+			setEventTarget(event, form);
 			form.dispatchEvent(event);
 		} else if (form.tagName === 'KOL-FORM') {
-			setEventTargetAndStopPropagation(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
+			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as HTMLKolFormElement;
 			if (typeof kolForm._on === 'object' && typeof kolForm._on !== null && typeof kolForm._on.onReset === 'function') {
 				kolForm._on.onReset(event);
@@ -50,7 +50,7 @@ export const propergateResetEventToForm = (
 	}
 };
 
-export const propergateSubmitEventToForm = (
+export const propagateSubmitEventToForm = (
 	options: {
 		form?: HTMLElement | ParentNode | null;
 		ref?: HTMLElement;
@@ -74,10 +74,10 @@ export const propergateSubmitEventToForm = (
 		 *       - https://github.com/public-ui/kolibri/issues/946
 		 */
 		if (form.tagName === 'FORM') {
-			setEventTargetAndStopPropagation(event, form);
+			setEventTarget(event, form);
 			form.dispatchEvent(event);
 		} else if (form.tagName === 'KOL-FORM') {
-			setEventTargetAndStopPropagation(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
+			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as HTMLKolFormElement;
 			if (typeof kolForm._on === 'object' && typeof kolForm._on !== null && typeof kolForm._on.onSubmit === 'function') {
 				kolForm._on.onSubmit(event);

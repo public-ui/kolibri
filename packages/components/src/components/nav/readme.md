@@ -20,7 +20,7 @@ noch die Icons ausgegeben.
 
 ```html
 <kol-nav
-	_links='[{_"label":"Startseite", "_href":"startseite"},{_"label":"Unterseite von Startseite", "_href":"unterseite"}]'
+	_links='[{"_label":"Startseite", "_href":"startseite"},{"_label":"Unterseite von Startseite", "_href":"unterseite"}]'
 	_has-compact-button="true"
 ></kol-nav>
 ```
@@ -94,49 +94,23 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 
 ## Properties
 
-| Property                  | Attribute             | Description                                                                                                      | Type                                                            | Default      |
-| ------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
-| `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll. | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
-| `_ariaLabel` _(required)_ | `_aria-label`         | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                     | `string`                                                        | `undefined`  |
-| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                    | `boolean \| undefined`                                          | `false`      |
-| `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                               | `boolean \| undefined`                                          | `false`      |
-| `_hasCompactButton`       | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.   | `boolean \| undefined`                                          | `false`      |
-| `_links` _(required)_     | `_links`              | Gibt die geordnete Liste der Seitenhierarchie an.                                                                | `NavLinkWithChildrenProps[] \| string`                          | `undefined`  |
-| `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                          | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
-| `_variant`                | `_variant`            | Gibt an, welche Ausprägung der Button hat.                                                                       | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
-
-## Shadow Parts
-
-| Part    | Description |
-| ------- | ----------- |
-| `"nav"` | TBD         |
-
-## CSS Custom Properties
-
-| Name                        | Description                     |
-| --------------------------- | ------------------------------- |
-| `--kolibri-border-color`    | Default color of the border.    |
-| `--kolibri-border-radius`   | Default radius of the border.   |
-| `--kolibri-border-width`    | Default width of the border.    |
-| `--kolibri-color-danger`    | Default color of the danger.    |
-| `--kolibri-color-disabled`  | Default color of the disabled.  |
-| `--kolibri-color-error`     | Default color of the error.     |
-| `--kolibri-color-ghost`     | Default color of the ghost.     |
-| `--kolibri-color-info`      | Default color of the info.      |
-| `--kolibri-color-normal`    | Default color of the normal.    |
-| `--kolibri-color-primary`   | Default color of the primary.   |
-| `--kolibri-color-secondary` | Default color of the secondary. |
-| `--kolibri-color-success`   | Default color of the success.   |
-| `--kolibri-color-text`      | Default color of the text.      |
-| `--kolibri-color-visited`   | Default color of the visited.   |
-| `--kolibri-color-warning`   | Default color of the warning.   |
-| `--kolibri-font-family`     | Default font family.            |
-| `--kolibri-font-size`       | Default font size.              |
+| Property                  | Attribute             | Description                                                                                                                                                                    | Type                                                            | Default      |
+| ------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------ |
+| `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.                                                               | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
+| `_ariaLabel` _(required)_ | `_aria-label`         | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                                                                                   | `string`                                                        | `undefined`  |
+| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                                                                                  | `boolean \| undefined`                                          | `true`       |
+| `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                                                                                             | `boolean \| undefined`                                          | `false`      |
+| `_hasCompactButton`       | `_has-compact-button` | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                                                                 | `boolean \| undefined`                                          | `false`      |
+| `_links` _(required)_     | `_links`              | Gibt die geordnete Liste der Seitenhierarchie an.                                                                                                                              | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
+| `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                                                                                        | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
+| `_variant`                | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Gibt an, welche Ausprägung der Button hat. | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
 
 ## Dependencies
 
 ### Depends on
 
+- kol-button-wc
+- kol-span-wc
 - kol-link-wc
 - [kol-button](../button)
 
@@ -144,17 +118,19 @@ Die Navigationsleiste kann mit dem Attribut `_orientation` zwischen horizontaler
 
 ```mermaid
 graph TD;
+  kol-nav --> kol-button-wc
+  kol-nav --> kol-span-wc
   kol-nav --> kol-link-wc
   kol-nav --> kol-button
-  kol-link-wc --> kol-span-wc
-  kol-link-wc --> kol-icon
-  kol-link-wc --> kol-tooltip
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-badge
   kol-badge --> kol-span-wc
   kol-badge --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-link-wc --> kol-span-wc
+  kol-link-wc --> kol-icon
+  kol-link-wc --> kol-tooltip
   kol-button --> kol-button-wc
   style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```

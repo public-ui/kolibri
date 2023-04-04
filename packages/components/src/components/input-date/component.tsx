@@ -5,7 +5,7 @@ import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { setState, watchValidator } from '../../utils/prop.validators';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { ComponentApi, States } from './types';
 
@@ -31,7 +31,7 @@ export class KolInputDate implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLKolInputNumberElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -178,9 +178,6 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {};
 
 	private valueAsIsoDate(value?: Iso8601 | Date | null, defaultValue?: Date): Iso8601 | null | undefined {
@@ -245,9 +242,6 @@ export class KolInputDate implements ComponentApi {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_max')
 	public validateMax(value?: Iso8601 | Date): void {
 		watchValidator(
@@ -259,9 +253,6 @@ export class KolInputDate implements ComponentApi {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_min')
 	public validateMin(value?: Iso8601 | Date): void {
 		watchValidator(
@@ -273,9 +264,6 @@ export class KolInputDate implements ComponentApi {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date | null): void {
 		watchValidator(
@@ -287,9 +275,6 @@ export class KolInputDate implements ComponentApi {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateMax(this._max);

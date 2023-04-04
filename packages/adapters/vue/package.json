@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/vue",
-	"version": "1.5.0-rc.0",
+	"version": "1.5.0-rc.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,8 +46,8 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.21.2",
-		"@public-ui/components": "1.5.0-rc.0",
+		"@babel/types": "7.21.4",
+		"@public-ui/components": "1.5.0-rc.9",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -57,7 +57,7 @@
 		"unbuild": "1.1.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.0",
+		"@public-ui/components": "1.5.0-rc.9",
 		"vue": ">=3"
 	},
 	"sideEffects": false,

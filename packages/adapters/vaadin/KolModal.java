@@ -15,7 +15,7 @@ geschlossen.
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**
@@ -34,24 +34,6 @@ public class KolModal extends Component {
 	 */
 	public String getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
-	}
-
-	/**
-	 * Gibt an, ob das Modal angezeigt wird.
-	 *
-	 * @param value String
-	 */
-	public void setShow(final String value) {
-		getElement().setProperty("_show", value);
-	}
-
-	/**
-	 * Gibt an, ob das Modal angezeigt wird.
-	 *
-	 * @return String
-	 */
-	public String getShow() {
-		return getElement().getProperty("_show", null);
 	}
 
 	/**

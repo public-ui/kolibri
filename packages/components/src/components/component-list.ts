@@ -41,6 +41,7 @@ import { KolModal } from './modal/component';
 import { KolNav } from './nav/component';
 import { KolPagination } from './pagination/component';
 import { KolProcess } from './progress/component';
+import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/component';
 import { KolSkipNav } from './skip-nav/component';
 import { KolSpanWc } from './span/component';
@@ -98,6 +99,7 @@ export const COMPONENTS = [
 	KolNav,
 	KolPagination,
 	KolProcess,
+	KolQuote,
 	KolSelect,
 	KolSkipNav,
 	KolSpan,

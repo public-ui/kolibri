@@ -12,17 +12,7 @@ import { storeThemes } from '../../shares/theme';
 export const createCssEditor = (model: editor.ITextModel, ref: HTMLElement, tagName: string, theme: string, setSignal: Function) => {
 	setTimeout(() => {
 		let css = ``;
-		if (
-			typeof window.A11yUi === 'object' &&
-			window.A11yUi !== null &&
-			typeof window.A11yUi.Themes === 'object' &&
-			window.A11yUi.Themes !== null &&
-			typeof window.A11yUi.Themes[theme] === 'object' &&
-			window.A11yUi.Themes[theme] !== null &&
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-			typeof window.A11yUi.Themes[theme][tagName] === 'string'
-		) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+		if (window.A11yUi?.Themes?.[theme]?.[tagName] && typeof window.A11yUi.Themes[theme][tagName] === 'string') {
 			css = window.A11yUi.Themes[theme][tagName] as string;
 			try {
 				css = format(css, { parser: 'css', plugins: [parserCss] });

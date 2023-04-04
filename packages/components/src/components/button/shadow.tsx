@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import {
 	AlternativButtonLinkRole,
-	AriaCurrent,
 	KoliBriButtonCallbacks,
 	KoliBriButtonType,
 	KoliBriButtonVariant,
@@ -12,8 +11,8 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Alignment } from '../../types/props/alignment';
-import { propergateFocus } from '../../utils/reuse';
+import { AriaCurrent, PropAlignment } from '../../types/props';
+import { propagateFocus } from '../../utils/reuse';
 
 @Component({
 	tag: 'kol-button',
@@ -28,7 +27,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -122,7 +121,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: PropAlignment;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
@@ -157,7 +156,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: PropAlignment = 'top';
 
 	/**
 	 * Gibt an, welche Typ der Button hat.

@@ -4,12 +4,9 @@ import { Stringified } from '../../types/common';
 
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
 import { watchBoolean } from '../../utils/prop.validators';
-import { validateIcon } from '../../utils/validators/icon';
-import { validateLabelWithAriaLabel } from '../../utils/validators/label';
+import { validateIcon } from '../../types/props/icon';
+import { validateLabelWithAriaLabel } from '../../types/props/label';
 
-/**
- * API
- */
 type RequiredProps = {
 	label: string;
 };
@@ -48,52 +45,16 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 					'icon-only': this.state._iconOnly,
 				}}
 			>
-				{this.state._icon.top && (
-					<kol-icon
-						class={{
-							'icon top': true,
-						}}
-						style={this.state._icon.top.style}
-						_ariaLabel=""
-						_icon={this.state._icon.top.icon}
-					/>
-				)}
+				{this.state._icon.top && <kol-icon class="icon top" style={this.state._icon.top.style} _ariaLabel="" _icon={this.state._icon.top.icon} />}
 				<span>
-					{this.state._icon.left && (
-						<kol-icon
-							class={{
-								'icon left': true,
-							}}
-							style={this.state._icon.left.style}
-							_ariaLabel=""
-							_icon={this.state._icon.left.icon}
-						/>
-					)}
+					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _ariaLabel="" _icon={this.state._icon.left.icon} />}
 					{this.state._iconOnly !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
-					{this.state._icon.right && (
-						<kol-icon
-							class={{
-								'icon right': true,
-							}}
-							style={this.state._icon.right.style}
-							_ariaLabel=""
-							_icon={this.state._icon.right.icon}
-						/>
-					)}
+					{this.state._icon.right && <kol-icon class="icon right" style={this.state._icon.right.style} _ariaLabel="" _icon={this.state._icon.right.icon} />}
 				</span>
-				{this.state._icon.bottom && (
-					<kol-icon
-						class={{
-							'icon bottom': true,
-						}}
-						style={this.state._icon.bottom.style}
-						_ariaLabel=""
-						_icon={this.state._icon.bottom.icon}
-					/>
-				)}
+				{this.state._icon.bottom && <kol-icon class="icon bottom" style={this.state._icon.bottom.style} _ariaLabel="" _icon={this.state._icon.bottom.icon} />}
 			</Host>
 		);
 	}
@@ -113,42 +74,27 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Prop() public _label!: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_icon: {},
 		_iconOnly: false,
 		_label: '…', // ⚠ required
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
 		validateIcon(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
 		watchBoolean(this, '_iconOnly', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
 		validateLabelWithAriaLabel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateIcon(this._icon);
 		this.validateIconOnly(this._iconOnly);

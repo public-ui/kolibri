@@ -3,10 +3,8 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { AriaLabel } from '../../types/aria-label';
 import { watchString } from '../../utils/prop.validators';
+import { devHint } from '../../utils/a11y.tipps';
 
-/**
- * API
- */
 type RequiredProps = AriaLabel & {
 	icon: string;
 };
@@ -19,6 +17,13 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * TODO: Wy we provide not a icon-wc component instead?!
+ */
+
+/**
+ * @part icon - Ermöglicht das Styling des inneren Icons.
+ */
 @Component({
 	tag: 'kol-icon',
 	styleUrls: {
@@ -29,7 +34,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host exportparts="icon">
 				<i
 					aria-hidden={this.state._ariaLabel.length > 0 ? undefined : 'true'}
 					/**
@@ -40,7 +45,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 					 */
 					aria-label={this.state._ariaLabel.length > 0 ? this.state._ariaLabel : undefined}
 					class={this.state._icon}
-					part={`icon${typeof this._part === 'string' ? ` ${this._part}` : ''}`}
+					part="icon"
 					role="img"
 				></i>
 			</Host>
@@ -59,22 +64,16 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-	/**
+	 *
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	@Prop() public _part?: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_ariaLabel: '…', // ⚠ required
-		_icon: 'fa-solid fa-house',
+		_icon: 'codicon codicon-home',
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -82,9 +81,6 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: string): void {
 		watchString(this, '_icon', value, {
@@ -93,19 +89,16 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated
 	 */
 	@Watch('_part')
-	public validatePart(value?: string): void {
-		watchString(this, '_part', value);
+	public validatePart(): void {
+		devHint(`ICON: The usage of the part attribute is deprecated and has no effect.`);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateIcon(this._icon);
-		this.validatePart(this._part);
+		this.validatePart();
 	}
 }

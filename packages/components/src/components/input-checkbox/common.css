@@ -2,15 +2,10 @@ label {
 	cursor: pointer;
 }
 
-.required label > span::after {
-	content: '*';
-	padding-left: 0.125em;
-}
-
 kol-input {
 	align-items: center;
 	display: grid;
-	gap: var(--kolibri-spacing);
+
 	justify-items: left;
 	width: 100;
 }
@@ -44,14 +39,9 @@ kol-input .hint {
 }
 
 input {
-	border-color: var(--kolibri-border-color);
 	border-width: 2px;
 	border-style: solid;
 	line-height: 24px;
-	font-size: var(--kolibri-font-size);
-}
-input:hover {
-	border-color: var(--kolibri-color-normal);
 }
 input[type='checkbox'] {
 	appearance: none;
@@ -66,14 +56,7 @@ input[type='checkbox']:before {
 	content: '';
 	cursor: pointer;
 }
-input[type='checkbox']:checked {
-	background-color: var(--kolibri-color-primary);
-	border-color: var(--kolibri-color-primary);
-}
 
-.disabled {
-	opacity: 0.33;
-}
 .checkbox kol-icon,
 .switch kol-icon {
 	display: none;

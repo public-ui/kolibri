@@ -1,5 +1,6 @@
 @import './style.css';
 
-.kol-required span::after {
+.required label > span::after,
+.required legend > span::after {
 	content: '*';
 }

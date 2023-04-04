@@ -1,13 +1,17 @@
 @import '../../assets/codicons/codicon.css';
-@import '../../assets/fontawesome-free/css/all.css';
-@import '../../assets/icofont/icofont.css';
 
 :host {
 	color: inherit;
-	font-size: inherit;
+	display: contents;
+	height: 1em;
 	line-height: inherit;
+	width: 1em;
 }
-:host > i {
-	display: inline-block;
-	overflow: hidden;
+
+/**
+ * The <code>:important</code> is important, because we should always override the font icon style.
+ */
+:host > i,
+:host > i::before {
+	font-size: inherit !important;
 }

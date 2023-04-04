@@ -5,20 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Alignment } from "./types/props/alignment";
+import { AriaCurrent, PropAlignment } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
-import { KoliBriAccordionCallbacks } from "./components/accordion/component";
-import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
+import { KoliBriAccordionCallbacks } from "./components/accordion/types";
+import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
-import { NavLinkProps } from "./components/link/component";
+import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
-import { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
@@ -29,28 +27,28 @@ import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
-import { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/component";
+import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+import { KoliBriNavVariant } from "./components/nav/component";
 import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 import { KoliBriProgressType } from "./types/progress";
+import { KoliBriQuoteVariant } from "./components/quote/types";
 import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { Alignment } from "./types/props/alignment";
+export { AriaCurrent, PropAlignment } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
-export { KoliBriAccordionCallbacks } from "./components/accordion/component";
-export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./types/alert";
+export { KoliBriAccordionCallbacks } from "./components/accordion/types";
+export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { KoliBriColor } from "./components/badge/component";
 export { Stringified } from "./types/common";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { AlternativButtonLinkRole, AriaCurrent, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget, LinkUseCase } from "./types/button-link";
-export { NavLinkProps } from "./components/link/component";
+export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
-export { KoliBriHorizontalIcon as KoliBriHorizontalIcon1, Stringified as Stringified1 } from "./components";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
@@ -61,10 +59,12 @@ export { InputTextType } from "./types/input/control/text";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
-export { KoliBriNavVariant, NavLinkWithChildrenProps } from "./components/nav/component";
+export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+export { KoliBriNavVariant } from "./components/nav/component";
 export { PaginationHasButton } from "./components/pagination/component";
 export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 export { KoliBriProgressType } from "./types/progress";
+export { KoliBriQuoteVariant } from "./components/quote/types";
 export { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 export { CSSResize } from "./components/textarea/types";
@@ -78,7 +78,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
     }
     interface KolAccordion {
         /**
@@ -158,7 +158,7 @@ export namespace Components {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolButton {
         /**
@@ -201,7 +201,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -229,7 +229,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -307,7 +307,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -358,7 +358,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -386,7 +386,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -477,7 +477,7 @@ export namespace Components {
          */
         "_icon": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
@@ -522,10 +522,6 @@ export namespace Components {
          */
         "_part"?: string;
     }
-    /**
-     * Image component
-     * - https://www.mediaevent.de/html/srcset.html
-     */
     interface KolImage {
         /**
           * Gibt den alternativen Text an.
@@ -641,7 +637,7 @@ export namespace Components {
         /**
           * Ermöglicht das Überschreiben der Icons für die Checkbox.
          */
-        "_icon"?: Stringified1<InputCheckboxIcon>;
+        "_icon"?: Stringified<InputCheckboxIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1418,7 +1414,7 @@ export namespace Components {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified1<KoliBriHorizontalIcon1>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -1531,7 +1527,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1542,6 +1538,7 @@ export namespace Components {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1573,7 +1570,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1627,6 +1624,7 @@ export namespace Components {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1648,7 +1646,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -1670,7 +1668,7 @@ export namespace Components {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
         /**
           * Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet
          */
@@ -1707,6 +1705,7 @@ export namespace Components {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
+          * @deprecated A link could never be disabled. Use a button instead.
          */
         "_disabled"?: boolean;
         /**
@@ -1721,7 +1720,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1732,7 +1731,7 @@ export namespace Components {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1764,7 +1763,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1796,10 +1795,6 @@ export namespace Components {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Gibt an, ob das Modal angezeigt wird.
-         */
-        "_show"?: boolean;
-        /**
           * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
          */
         "_width"?: string;
@@ -1828,13 +1823,14 @@ export namespace Components {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
-        "_links": Stringified<NavLinkWithChildrenProps[]>;
+        "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
           * Gibt die Ausrichtung der Navigation an.
          */
         "_orientation"?: Orientation;
         /**
           * Gibt an, welche Ausprägung der Button hat.
+          * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
     }
@@ -1874,7 +1870,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
          */
@@ -1901,6 +1897,24 @@ export namespace Components {
           * Gibt an, wie weit die Anzeige fortgeschritten ist.
          */
         "_value": number;
+    }
+    interface KolQuote {
+        /**
+          * The caption of the quote.
+         */
+        "_caption"?: string;
+        /**
+          * The href is a URL that designates a source document or message for the information quoted.
+         */
+        "_href": string;
+        /**
+          * The text of the quote.
+         */
+        "_quote": string;
+        /**
+          * The variant of the quote.
+         */
+        "_variant"?: KoliBriQuoteVariant;
     }
     interface KolSelect {
         /**
@@ -1985,7 +1999,7 @@ export namespace Components {
         /**
           * Ist die Liste der unsichtbaren Links.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
@@ -2073,7 +2087,7 @@ export namespace Components {
         /**
           * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: PropAlignment;
     }
     interface KolTextarea {
         /**
@@ -2195,7 +2209,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: Alignment;
+        "_align"?: PropAlignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -2327,10 +2341,6 @@ declare global {
         prototype: HTMLKolIconIcofontElement;
         new (): HTMLKolIconIcofontElement;
     };
-    /**
-     * Image component
-     * - https://www.mediaevent.de/html/srcset.html
-     */
     interface HTMLKolImageElement extends Components.KolImage, HTMLStencilElement {
     }
     var HTMLKolImageElement: {
@@ -2487,6 +2497,12 @@ declare global {
         prototype: HTMLKolProgressElement;
         new (): HTMLKolProgressElement;
     };
+    interface HTMLKolQuoteElement extends Components.KolQuote, HTMLStencilElement {
+    }
+    var HTMLKolQuoteElement: {
+        prototype: HTMLKolQuoteElement;
+        new (): HTMLKolQuoteElement;
+    };
     interface HTMLKolSelectElement extends Components.KolSelect, HTMLStencilElement {
     }
     var HTMLKolSelectElement: {
@@ -2603,6 +2619,7 @@ declare global {
         "kol-nav": HTMLKolNavElement;
         "kol-pagination": HTMLKolPaginationElement;
         "kol-progress": HTMLKolProgressElement;
+        "kol-quote": HTMLKolQuoteElement;
         "kol-select": HTMLKolSelectElement;
         "kol-skip-nav": HTMLKolSkipNavElement;
         "kol-span": HTMLKolSpanElement;
@@ -2626,7 +2643,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
     }
     interface KolAccordion {
         /**
@@ -2706,7 +2723,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolButton {
         /**
@@ -2749,7 +2766,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -2777,7 +2794,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2855,7 +2872,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2906,7 +2923,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -2934,7 +2951,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -3025,7 +3042,7 @@ declare namespace LocalJSX {
          */
         "_icon": string;
         /**
-          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) /**
+          * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
          */
         "_part"?: string;
@@ -3070,10 +3087,6 @@ declare namespace LocalJSX {
          */
         "_part"?: string;
     }
-    /**
-     * Image component
-     * - https://www.mediaevent.de/html/srcset.html
-     */
     interface KolImage {
         /**
           * Gibt den alternativen Text an.
@@ -3189,7 +3202,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Überschreiben der Icons für die Checkbox.
          */
-        "_icon"?: Stringified1<InputCheckboxIcon>;
+        "_icon"?: Stringified<InputCheckboxIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -3966,7 +3979,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
          */
-        "_icon"?: Stringified1<KoliBriHorizontalIcon1>;
+        "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
@@ -4079,7 +4092,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4090,6 +4103,7 @@ declare namespace LocalJSX {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4121,7 +4135,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4175,6 +4189,7 @@ declare namespace LocalJSX {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4196,7 +4211,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
@@ -4218,7 +4233,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie in Links an.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
         /**
           * Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet
          */
@@ -4255,6 +4270,7 @@ declare namespace LocalJSX {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
+          * @deprecated A link could never be disabled. Use a button instead.
          */
         "_disabled"?: boolean;
         /**
@@ -4269,7 +4285,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: PropAlignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4280,7 +4296,7 @@ declare namespace LocalJSX {
         "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated Hierzu sollte statt Link- die ButtonLink-Komponente verwendet werden.
+          * @deprecated
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4312,7 +4328,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4344,10 +4360,6 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Gibt an, ob das Modal angezeigt wird.
-         */
-        "_show"?: boolean;
-        /**
           * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
          */
         "_width"?: string;
@@ -4376,13 +4388,14 @@ declare namespace LocalJSX {
         /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
-        "_links": Stringified<NavLinkWithChildrenProps[]>;
+        "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
           * Gibt die Ausrichtung der Navigation an.
          */
         "_orientation"?: Orientation;
         /**
           * Gibt an, welche Ausprägung der Button hat.
+          * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
     }
@@ -4422,7 +4435,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: PropAlignment;
         /**
           * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
          */
@@ -4449,6 +4462,24 @@ declare namespace LocalJSX {
           * Gibt an, wie weit die Anzeige fortgeschritten ist.
          */
         "_value": number;
+    }
+    interface KolQuote {
+        /**
+          * The caption of the quote.
+         */
+        "_caption"?: string;
+        /**
+          * The href is a URL that designates a source document or message for the information quoted.
+         */
+        "_href": string;
+        /**
+          * The text of the quote.
+         */
+        "_quote": string;
+        /**
+          * The variant of the quote.
+         */
+        "_variant"?: KoliBriQuoteVariant;
     }
     interface KolSelect {
         /**
@@ -4533,7 +4564,7 @@ declare namespace LocalJSX {
         /**
           * Ist die Liste der unsichtbaren Links.
          */
-        "_links": Stringified<NavLinkProps[]>;
+        "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
@@ -4621,7 +4652,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: PropAlignment;
     }
     interface KolTextarea {
         /**
@@ -4743,7 +4774,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_align"?: Alignment;
+        "_align"?: PropAlignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -4803,6 +4834,7 @@ declare namespace LocalJSX {
         "kol-nav": KolNav;
         "kol-pagination": KolPagination;
         "kol-progress": KolProgress;
+        "kol-quote": KolQuote;
         "kol-select": KolSelect;
         "kol-skip-nav": KolSkipNav;
         "kol-span": KolSpan;
@@ -4845,10 +4877,6 @@ declare module "@stencil/core" {
              * @deprecated Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
              */
             "kol-icon-icofont": LocalJSX.KolIconIcofont & JSXBase.HTMLAttributes<HTMLKolIconIcofontElement>;
-            /**
-             * Image component
-             * - https://www.mediaevent.de/html/srcset.html
-             */
             "kol-image": LocalJSX.KolImage & JSXBase.HTMLAttributes<HTMLKolImageElement>;
             "kol-indented-text": LocalJSX.KolIndentedText & JSXBase.HTMLAttributes<HTMLKolIndentedTextElement>;
             "kol-input": LocalJSX.KolInput & JSXBase.HTMLAttributes<HTMLKolInputElement>;
@@ -4880,6 +4908,7 @@ declare module "@stencil/core" {
             "kol-nav": LocalJSX.KolNav & JSXBase.HTMLAttributes<HTMLKolNavElement>;
             "kol-pagination": LocalJSX.KolPagination & JSXBase.HTMLAttributes<HTMLKolPaginationElement>;
             "kol-progress": LocalJSX.KolProgress & JSXBase.HTMLAttributes<HTMLKolProgressElement>;
+            "kol-quote": LocalJSX.KolQuote & JSXBase.HTMLAttributes<HTMLKolQuoteElement>;
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;
             "kol-skip-nav": LocalJSX.KolSkipNav & JSXBase.HTMLAttributes<HTMLKolSkipNavElement>;
             "kol-span": LocalJSX.KolSpan & JSXBase.HTMLAttributes<HTMLKolSpanElement>;

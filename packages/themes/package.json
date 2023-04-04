@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "1.5.0-rc.0",
+	"version": "1.5.0-rc.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -48,13 +48,13 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.5.0-rc.0"
+		"@public-ui/components": "1.5.0-rc.9"
 	},
 	"devDependencies": {
 		"@types/node": "ts4.9",
-		"@typescript-eslint/eslint-plugin": "5.54.0",
-		"@typescript-eslint/parser": "5.54.0",
-		"eslint": "8.35.0",
+		"@typescript-eslint/eslint-plugin": "5.57.1",
+		"@typescript-eslint/parser": "5.57.1",
+		"eslint": "8.37.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "4.9.5",
 		"unbuild": "1.1.2"

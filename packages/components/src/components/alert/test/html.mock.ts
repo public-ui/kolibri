@@ -1,7 +1,7 @@
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
-import { Props } from '../component';
+import { Props } from '../types';
 
 export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''): string => {
 	props = mixMembers(
@@ -33,14 +33,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 								: 'kol-message',
 						_icon:
 							props._type === 'success'
-								? 'fa-solid fa-circle-check'
+								? 'codicon codicon-pass'
 								: props._type === 'error'
-								? 'fa-solid fa-circle-xmark'
+								? 'codicon codicon-error'
 								: props._type === 'warning'
-								? 'fa-solid fa-triangle-exclamation'
+								? 'codicon codicon-warning'
 								: props._type === 'info'
-								? 'fa-solid fa-circle-info'
-								: 'fa-regular fa-comment',
+								? 'codicon codicon-info'
+								: 'codicon codicon-comment',
 					},
 					` class="heading-icon"`
 				)}

@@ -3,9 +3,6 @@ import { Bundesministerium } from '../../../enums/bund';
 
 import { Generic } from '@a11y-ui/core';
 
-/**
- * API
- */
 type RequiredProps = unknown;
 type OptionalProps = unknown;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -19,9 +16,6 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 // })
 // ts-prune-ignore-next
 export class KolAll implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {};
 
 	public render(): JSX.Element {
@@ -44,7 +38,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-details _summary=""></kol-details>
 				<kol-form _on={{}}></kol-form>
 				<kol-heading _headline=""></kol-heading>
-				<kol-icon _ariaLabel="" _icon="fa-solid fa-house"></kol-icon>
+				<kol-icon _ariaLabel="" _icon="codicon codicon-home"></kol-icon>
 				<kol-icon-font-awesome _ariaLabel="" _icon="500px" _prefix="fab"></kol-icon-font-awesome>
 				<kol-icon-icofont _ariaLabel="" _icon="home"></kol-icon-icofont>
 				<kol-indented-text></kol-indented-text>

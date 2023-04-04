@@ -1,29 +1,19 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
+import { translate } from '../../i18n';
 import {
 	AlternativButtonLinkRole,
-	AriaCurrent,
 	KoliBriButtonVariant,
-	LinkButtonStates,
 	LinkOnCallbacks,
 	LinkTarget,
 	OptionalLinkButtonProps,
-	OptionalLinkButtonStates,
 	RequiredLinkButtonProps,
-	RequiredLinkButtonStates,
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { watchString } from '../../utils/prop.validators';
-import { propergateFocus } from '../../utils/reuse';
-import { watchButtonVariant } from '../button/controller';
-import { Alignment } from '../../types/props/alignment';
-import { translate } from '../../i18n';
-
-type State = {
-	state: Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
-};
+import { AriaCurrent, PropAlignment } from '../../types/props';
+import { propagateFocus } from '../../utils/reuse';
 
 @Component({
 	tag: 'kol-link-button',
@@ -32,18 +22,13 @@ type State = {
 	},
 	shadow: true,
 })
-export class KolLinkButton
-	implements
-		Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>,
-		Generic.Element.Watchers<RequiredLinkButtonStates, OptionalLinkButtonStates>,
-		State
-{
+export class KolLinkButton implements Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps> {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 	private ref?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -53,9 +38,8 @@ export class KolLinkButton
 					ref={this.catchRef}
 					class={{
 						button: true,
-						[this.state._variant as string]: this.state._variant !== 'custom',
-						[this.state._customClass as string]:
-							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+						[this._variant as string]: this._variant !== 'custom',
+						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 					}}
 					_ariaControls={this._ariaControls}
 					_ariaCurrent={this._ariaCurrent}
@@ -145,6 +129,7 @@ export class KolLinkButton
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
+	 * @deprecated
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
@@ -171,43 +156,10 @@ export class KolLinkButton
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'right';
+	@Prop() public _tooltipAlign?: PropAlignment = 'right';
 
 	/**
 	 * Gibt an, welche Ausprägung der Button hat.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
-
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
-	@State() public state: LinkButtonStates = {
-		_variant: 'normal',
-	};
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
-	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
-	}
-
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
-	public componentWillLoad(): void {
-		this.validateCustomClass(this._customClass);
-		this.validateVariant(this._variant);
-	}
 }

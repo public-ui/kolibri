@@ -6,15 +6,13 @@ import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = OptionalInputProps<number | Iso8601> & { placeholder: string; type: InputNumberType };
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
+	hasValue: boolean;
 	list: string[];
 	type: InputNumberType;
 };

@@ -1,5 +1,5 @@
 export { register } from './core';
-export * from './components';
+export * from './components.d';
 export * from './enums/bund';
 export * from './kolibri';
 export * from './schema';

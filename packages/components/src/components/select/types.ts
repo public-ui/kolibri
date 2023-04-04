@@ -5,9 +5,6 @@ import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps & {
 	list: Stringified<SelectOption<W3CInputValue>[]>;
 };
@@ -35,6 +32,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
+	hasValue: boolean;
 	id: string;
 	list: SelectOption<W3CInputValue>[];
 	multiple: boolean;

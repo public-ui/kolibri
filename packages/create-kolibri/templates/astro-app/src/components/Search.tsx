@@ -31,15 +31,15 @@ export default function Search() {
           _variant="card"
           _level={2}
         >
-          <KolLink _href="https://public-ui.github.io/" _fill _target="_blank">
+          <KolLink _href="https://public-ui.github.io/" _label="" _target="_blank">
             <KolIcon _ariaLabel="" _icon={"fa-sharp fa-solid fa-book"} />{" "}
             Dokumentation öffnen
           </KolLink>
         </KolAlert>
         <KolAlert _type="info" _heading="Theming" _variant="card" _level={2}>
           <KolLink
-            _href="https://public-ui.github.io/?path=/docs/designer--page"
-            _fill
+            _href="https://public-ui.github.io/docs/concepts/styling/designer"
+            _label=""
             _target="_blank"
           >
             <KolIcon _ariaLabel="" _icon={"fa-solid fa-palette"} />{" "}
@@ -54,15 +54,15 @@ export default function Search() {
         >
           <KolLink
             _href="https://github.com/public-ui/kolibri/"
-            _fill
+            _label=""
             _target="_blank"
           >
-            <KolIcon _ariaLabel="" _icon={"fa-brands fa-github"} /> Github
+            <KolIcon _ariaLabel="" _icon={"fa-brands fa-github"} /> GitHub
             öffnen
           </KolLink>
         </KolAlert>
         <KolAlert _type="error" _heading="Kontakt" _variant="card" _level={2}>
-          <KolLink _href="mailto:kolibri@itzbund.de" _fill _target="_blank">
+          <KolLink _href="mailto:kolibri@itzbund.de" _label="" _target="_blank">
             <KolIcon _ariaLabel="" _icon={"fa-solid fa-envelope"} /> E-Mail
             schreiben
           </KolLink>

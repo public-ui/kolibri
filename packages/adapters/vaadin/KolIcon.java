@@ -18,7 +18,7 @@ Folgende Icon-Fonts werden _`out-of-the-box`_ unterstützt.
  */
 
 @Tag("kol-icon")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
 @JsModule("@public-ui/components/dist/components/kol-icon")
 public class KolIcon extends Component {
 	/**
@@ -59,7 +59,6 @@ public class KolIcon extends Component {
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-/**
 	 *
 	 * @param value String
 	 */
@@ -69,7 +68,6 @@ public class KolIcon extends Component {
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
-/**
 	 *
 	 * @return String
 	 */

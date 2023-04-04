@@ -109,39 +109,6 @@ Standardansicht gelegt.
 | `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
 | `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.    |
 
-## Shadow Parts
-
-| Part          | Description                                                 |
-| ------------- | ----------------------------------------------------------- |
-| `"accordion"` | Ermöglicht das Stylen des äußeren Container des Accordions. |
-| `"close"`     | Ermöglicht das Stylen des geschlossenen Zustands und Icons. |
-| `"content"`   | Ermöglicht das Stylen des Inhaltsbereichs.                  |
-| `"header"`    | Ermöglicht das Stylen des Kopfbereichs.                     |
-| `"icon"`      | Ermöglicht das Stylen der Icons.                            |
-| `"open"`      | Ermöglicht das Stylen des geöffneten Zustands und Icons.    |
-
-## CSS Custom Properties
-
-| Name                        | Description                     |
-| --------------------------- | ------------------------------- |
-| `--kolibri-border-color`    | Default color of the border.    |
-| `--kolibri-border-radius`   | Default radius of the border.   |
-| `--kolibri-border-width`    | Default width of the border.    |
-| `--kolibri-color-danger`    | Default color of the danger.    |
-| `--kolibri-color-disabled`  | Default color of the disabled.  |
-| `--kolibri-color-error`     | Default color of the error.     |
-| `--kolibri-color-ghost`     | Default color of the ghost.     |
-| `--kolibri-color-info`      | Default color of the info.      |
-| `--kolibri-color-normal`    | Default color of the normal.    |
-| `--kolibri-color-primary`   | Default color of the primary.   |
-| `--kolibri-color-secondary` | Default color of the secondary. |
-| `--kolibri-color-success`   | Default color of the success.   |
-| `--kolibri-color-text`      | Default color of the text.      |
-| `--kolibri-color-visited`   | Default color of the visited.   |
-| `--kolibri-color-warning`   | Default color of the warning.   |
-| `--kolibri-font-family`     | Default font family.            |
-| `--kolibri-font-size`       | Default font size.              |
-
 ## Dependencies
 
 ### Depends on

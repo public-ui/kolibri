@@ -1,6 +1,10 @@
+import { ToasterService } from '@public-ui/components';
 import { editor } from 'monaco-editor';
 import { format } from 'prettier';
 import parserTypeScript from 'prettier/esm/parser-typescript.mjs';
+import { copyToClipboard, formatReadableCssJson } from './utils';
+
+const Toaster = new ToasterService(document);
 
 /**
  * - https://www.npmjs.com/package/sass
@@ -8,6 +12,13 @@ import parserTypeScript from 'prettier/esm/parser-typescript.mjs';
  * - https://www.npmjs.com/package/monaco-editor
  */
 export const createTsEditor = (ref: HTMLElement, theme: string, code: string) => {
+	const css = formatReadableCssJson(code).replace(/\\/g, '\\\\');
+	copyToClipboard(css);
+	Toaster.enqueue({
+		heading: 'CSS code block copied to clipboard',
+		description: 'You can now paste it in your javascript or typescript theme file.',
+		type: 'info',
+	});
 	setTimeout(() => {
 		try {
 			code = format(
@@ -21,9 +32,9 @@ register(YOUR_THEME, defineCustomElements)
 		/**
 		 * You should patch the theme after the components and your default theme are registered.
 		 *
-		 * ↓ Here is your code!
+		 * ↓ Here is your formatted code! (readable and better for git diff)
 		 */
-		KoliBriDevHelper.patchTheme('${theme}', ${code});
+		KoliBriDevHelper.patchTheme('${theme}', ${css});
 	})
 	.catch(console.warn);
 `,
@@ -35,9 +46,11 @@ register(YOUR_THEME, defineCustomElements)
 			language: 'typescript',
 			theme: 'vs-dark',
 			lineNumbers: 'on',
-			formatOnPaste: true,
-			formatOnType: true,
-			automaticLayout: true,
+			showFoldingControls: 'mouseover',
+			formatOnPaste: false,
+			formatOnType: false,
+			automaticLayout: false,
+			readOnly: true,
 		});
 	}, 0);
 };
