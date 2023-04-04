@@ -450,7 +450,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 	span.hint::before {
 		font-family: codicon;
 		font-size: 1rem;
-		content: "\ea74";
+		content: "\\ea74";
 	}
 	kol-alert {
 		order: 2;
