@@ -156,13 +156,11 @@ export const BPA = KoliBri.createTheme('bpa', {
 		animation: blinker 0.25s linear infinite;
 	}`,
 	'KOL-BADGE': `:host > span {
-		border-radius: 0.35rem;
+		border-radius: 2px;
 	}
 	:host > span > kol-span-wc {
-		font: normal normal var(--font-weight-bold) 2em var(--font-family);
-		letter-spacing: 0.15rem;
-		padding: 0.75rem 1.25rem;
-		text-transform: uppercase;
+		font-family: var(--font-family-heading);
+		padding: 0.25rem 0.5rem;
 	}
 	:host > span > kol-span-wc > span {
 		gap: 0.5rem;
@@ -996,14 +994,13 @@ export const BPA = KoliBri.createTheme('bpa', {
 		outline: none;
 	}
 	input[type="range"]::-webkit-slider-thumb {
-		border: 1px solid var(--color-darkblue);
-		margin-top: -0.75em;
-		height: 2em;
-		width: 1em;
-		border-radius: 3px;
-		background: var(--color-blue);
+		border: none;
+		margin-top: -0.5em;
+		height: 1.5em;
+		width: 1.5em;
+		border-radius: 100%;
+		background: var(--color-darkblue);
 		cursor: pointer;
-		box-shadow: 1px 1px 1px var(--color-black), 0px 0px 1px var(--color-darkgray);
 	}
 	input[type="range"]::-moz-range-thumb {
 		border: 1px solid var(--color-darkblue);
@@ -1019,20 +1016,20 @@ export const BPA = KoliBri.createTheme('bpa', {
 		height: 0.5em;
 		cursor: pointer;
 		background: var(--color-lightgray);
-		border-radius: 1.3px;
-		border: 0.2px solid var(--color-black);
+		border-radius: 0.25em;
+		border: none;
 	}
 	input[type="range"]:focus::-webkit-slider-runnable-track {
-		background: var(--color-darkgray);
+		outline: var(--color-black) dotted 1px;
+		outline-offset: 0.25em;
 	}
 	input[type="range"]::-moz-range-track {
 		width: 100%;
-		margin-top: 2.5em;
 		height: 0.5em;
 		cursor: pointer;
 		background: var(--color-lightgray);
-		border-radius: 1.3px;
-		border: 0.2px solid var(--color-black);
+		border-radius: 0.25em;
+		border: none;
 	}`,
 	'KOL-PROGRESS': `:host progress,
 	:host span {
@@ -1054,7 +1051,6 @@ export const BPA = KoliBri.createTheme('bpa', {
 	progress {
 		display: none;
 	}`,
-	'KOL-PAGINATION': ``,
 	'KOL-INPUT-RADIO': `input {
 		border: 1px solid var(--color-blue);
 	}
@@ -1071,5 +1067,33 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	input:checked::before {
 		background-color: var(--color-blue);
+	}`,
+	'KOL-LINK': `a {
+		margin-bottom: 0;
+		font-weight: 700;
+		vertical-align: top;
+		text-decoration: none;
+		color: var(--color-blue);
+	}
+	a:focus,
+	a:hover {
+		color: var(--color-darkblue);
+	}
+	a:focus {
+		outline: var(--color-darkblue) solid 1px;
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+	a:visited {
+		text-decoration: underline;
+	}
+	kol-icon {
+		color: var(--color-blue);
+	}
+	kol-icon:hover {
+		color: var(--color-darkblue);
+	}
+	kol-span-wc > span {
+		gap: 0.25rem;
 	}`,
 });
