@@ -7,22 +7,22 @@ Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Übersch
 ### Code
 
 ```html
-<kol-heading _level="1" _headline="Inhalt einer H1-Überschrift"></kol-heading>
-<kol-heading _level="2" _headline="Inhalt einer H2-Überschrift"></kol-heading>
-<kol-heading _level="3" _headline="Inhalt einer H3-Überschrift"></kol-heading>
-<kol-heading _level="4" _headline="Inhalt einer H4-Überschrift"></kol-heading>
-<kol-heading _level="5" _headline="Inhalt einer H5-Überschrift"></kol-heading>
-<kol-heading _level="6" _headline="Inhalt einer H6-Überschrift"></kol-heading>
+<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
+<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
+<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
+<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
+<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
+<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
 ```
 
 ### Beispiel
 
-<kol-heading _level="1" _headline="Inhalt einer H1-Überschrift"></kol-heading>
-<kol-heading _level="2" _headline="Inhalt einer H2-Überschrift"></kol-heading>
-<kol-heading _level="3" _headline="Inhalt einer H3-Überschrift"></kol-heading>
-<kol-heading _level="4" _headline="Inhalt einer H4-Überschrift"></kol-heading>
-<kol-heading _level="5" _headline="Inhalt einer H5-Überschrift"></kol-heading>
-<kol-heading _level="6" _headline="Inhalt einer H6-Überschrift"></kol-heading>
+<kol-heading _level="1" _label="Inhalt einer H1-Überschrift"></kol-heading>
+<kol-heading _level="2" _label="Inhalt einer H2-Überschrift"></kol-heading>
+<kol-heading _level="3" _label="Inhalt einer H3-Überschrift"></kol-heading>
+<kol-heading _level="4" _label="Inhalt einer H4-Überschrift"></kol-heading>
+<kol-heading _level="5" _label="Inhalt einer H5-Überschrift"></kol-heading>
+<kol-heading _level="6" _label="Inhalt einer H6-Überschrift"></kol-heading>
 
 ## Verwendung
 
