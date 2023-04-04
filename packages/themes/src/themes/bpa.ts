@@ -23,9 +23,9 @@ export const BPA = KoliBri.createTheme('bpa', {
 		--kolibri-spacing: unset;
 	}
 	:host {
-		--font-family-sans: "BundesSans Web, Arial, Helvetica, sans-serif";
-		--font-family-serif: "BundesSerif Web, var(--kolibri-font-family-sans)";
-		--font-family: "var(--kolibri-font-family-sans), Helvetica, sans-serif";
+		--font-family-sans: BundesSans Web, Arial, Helvetica, sans-serif;
+		--font-family-serif: BundesSerif Web, var(--kolibri-font-family-sans);
+		--font-family: var(--kolibri-font-family-sans), Helvetica, sans-serif;
 		--font-weight: 400;
 		--font-weight-bold: bold;
 		--color-white: white;
@@ -46,6 +46,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		}
 	}
 	:host {
+		font-family: var(--font-family-sans);
 		color: var(--color-black);
 	}
 	p {
@@ -219,7 +220,6 @@ export const BPA = KoliBri.createTheme('bpa', {
 	@media only screen and (min-width: 600px) {
 		:host > div {
 			font-size: 1.125rem;
-			line-height: 1.125em;
 		}
 	}
 	.heading .heading-icon {
@@ -240,6 +240,9 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	.default .heading-icon {
 		color: var(--color-black);
+	}
+	.close {
+		align-self: start;
 	}`,
 	'KOL-INDENTED-TEXT': `:host > div {
 		border-left: none;
@@ -301,7 +304,6 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	.hint {
 		font-size: 1.125rem;
-		line-height: 1.125em;
 	}
 	.checkbox input[type="checkbox"] {
 		border-width: 1px;
@@ -418,12 +420,10 @@ export const BPA = KoliBri.createTheme('bpa', {
 	'KOL-INPUT-TEXT': `:host label {
 		color: var(--color-darkblue);
 		font-size: 0.9375rem;
-		line-height: 0.9375rem;
 	}
 	@media (min-width: 37.5rem) {
 		:host label {
 			font-size: 1.125rem;
-			line-height: 1.125rem;
 		}
 	} /* Move label over input as placeholder */
 	:host label {
@@ -449,7 +449,8 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	span.hint::before {
 		font-family: codicon;
-		content: "i";
+		font-size: 1rem;
+		content: "\ea74";
 	}
 	kol-alert {
 		order: 2;
@@ -514,12 +515,10 @@ export const BPA = KoliBri.createTheme('bpa', {
 	'KOL-INPUT-EMAIL': `:host label {
 		color: var(--color-darkblue);
 		font-size: 0.9375rem;
-		line-height: 0.9375rem;
 	}
 	@media (min-width: 37.5rem) {
 		:host label {
 			font-size: 1.125rem;
-			line-height: 1.125rem;
 		}
 	} /* Move label over input as placeholder */
 	:host label {
@@ -606,12 +605,10 @@ export const BPA = KoliBri.createTheme('bpa', {
 	'KOL-INPUT-NUMBER': `:host label {
 		color: var(--color-darkblue);
 		font-size: 0.9375rem;
-		line-height: 0.9375rem;
 	}
 	@media (min-width: 37.5rem) {
 		:host label {
 			font-size: 1.125rem;
-			line-height: 1.125rem;
 		}
 	} /* Move label over input as placeholder */
 	:host(:not(.has-value)) kol-input:has(input[type="number"]) label {
@@ -702,12 +699,10 @@ export const BPA = KoliBri.createTheme('bpa', {
 	'KOL-INPUT-COLOR': `:host label {
 		color: var(--color-darkblue);
 		font-size: 0.9375rem;
-		line-height: 0.9375rem;
 	}
 	@media (min-width: 37.5rem) {
 		:host label {
 			font-size: 1.125rem;
-			line-height: 1.125rem;
 		}
 	} /* Move hint under input */
 	span.hint {
@@ -776,12 +771,10 @@ export const BPA = KoliBri.createTheme('bpa', {
 	'KOL-INPUT-FILE': `:host label {
 		color: var(--color-darkblue);
 		font-size: 0.9375rem;
-		line-height: 0.9375rem;
 	}
 	@media (min-width: 37.5rem) {
 		:host label {
 			font-size: 1.125rem;
-			line-height: 1.125rem;
 		}
 	} /* Move hint under input */
 	span.hint {
@@ -851,12 +844,10 @@ export const BPA = KoliBri.createTheme('bpa', {
 	'KOL-INPUT-PASSWORD': `:host label {
 		color: var(--color-darkblue);
 		font-size: 0.9375rem;
-		line-height: 0.9375rem;
 	}
 	@media (min-width: 37.5rem) {
 		:host label {
 			font-size: 1.125rem;
-			line-height: 1.125rem;
 		}
 	} /* Move label over input as placeholder */
 	:host label {
@@ -1083,6 +1074,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		vertical-align: top;
 		text-decoration: none;
 		color: var(--color-blue);
+		gap: 0.25rem;
 	}
 	a:focus,
 	a:hover {
@@ -1104,5 +1096,67 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	kol-span-wc > span {
 		gap: 0.25rem;
+	}`,
+	'KOL-BUTTON-LINK': `button {
+		margin-bottom: 0;
+		font-weight: 700;
+		vertical-align: top;
+		text-decoration: none;
+		color: var(--color-blue);
+	}
+	button:focus,
+	button:hover {
+		color: var(--color-darkblue);
+	}
+	button:focus {
+		outline: var(--color-darkblue) solid 1px;
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+	kol-icon {
+		color: var(--color-blue);
+	}
+	kol-icon:hover {
+		color: var(--color-darkblue);
+	}
+	kol-span-wc > span {
+		gap: 0.25rem;
+	}`,
+	'KOL-SELECT': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+		}
+	}
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input {
+		border-bottom: 1px solid var(--color-lightgray);
+	}
+	div.input:focus-within {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input select {
+		border: none;
+		background-color: var(--color-white);
+		outline: none;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	div.input select:not([multiple]) {
+		height: 2.5rem;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
 	}`,
 });
