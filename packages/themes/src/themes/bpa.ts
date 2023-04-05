@@ -970,17 +970,18 @@ export const BPA = KoliBri.createTheme('bpa', {
 	:host([_error]) label {
 		color: var(--color-red);
 	}
-	div.input textarea:focus {
+	div.input:focus-within {
 		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input {
+		border-bottom: 1px solid var(--color-lightgray);
+		background-color: var(--color-white);
+		font-size: 1.5rem;
+		padding: 0;
 	}
 	div.input textarea {
 		border: none;
-		border-bottom: 1px solid var(--color-lightgray);
-		background-color: var(--color-white);
 		outline: none;
-		height: 2.5rem;
-		font-size: 1.5rem;
-		padding: 0;
 	}
 	kol-input:has(label:not([hidden])) div.input textarea::placeholder {
 		color: transparent;
@@ -998,9 +999,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		margin-top: -0.5em;
 		height: 1.5em;
 		width: 1.5em;
-		border-radius: 100%;
 		background: var(--color-darkblue);
-		cursor: pointer;
 	}
 	input[type="range"]::-moz-range-thumb {
 		border: 1px solid var(--color-darkblue);
@@ -1008,8 +1007,6 @@ export const BPA = KoliBri.createTheme('bpa', {
 		width: 1em;
 		border-radius: 3px;
 		background: var(--color-blue);
-		cursor: pointer;
-		box-shadow: 1px 1px 1px var(--color-black), 0px 0px 1px var(--color-darkgray);
 	}
 	input[type="range"]::-webkit-slider-runnable-track {
 		width: 100%;
@@ -1158,5 +1155,24 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	kol-alert {
 		margin-top: 1.5rem;
+	}`,
+	'KOL-BREADCRUMB': `kol-icon::part(icon):before {
+		content: "/";
+	}
+	:host {
+		font-size: 1.25rem;
+		line-height: 1.875rem;
+	}
+	@media only screen and (min-width: 600px) and (max-width: 1023px) {
+		:host {
+			font-size: 1.125rem;
+			line-height: 2.125rem;
+		}
+	}
+	@media only screen and (min-width: 1024px) {
+		:host {
+			font-size: 1.375rem;
+			line-height: 2rem;
+		}
 	}`,
 });
