@@ -30,7 +30,7 @@ export type PaginationHasButton = {
 	 */
 	next: boolean;
 	/**
-	 * Der Next-Button ist der Schalter, um direkt auf die vorherige Seite zu gelangen.
+	 * Der Previous-Button ist der Schalter, um direkt auf die vorherige Seite zu gelangen.
 	 */
 	previous: boolean;
 };
@@ -202,9 +202,9 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _customClass?: string;
 
 	/**
-	 * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
+	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
 	 */
-	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton>;
+	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
 
 	/**
 	 * Gibt an, welche Seite aktuell ausgewählt ist.
@@ -217,7 +217,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
 
 	/**
-	 * Gibt an, welche Optionen für die Seitenlänge angeboten werden.
+	 * Setzt die Optionen für das Seitenlängenselect.
 	 */
 	@Prop() public _pageSizeOptions: Stringified<number[]> = [];
 
@@ -227,7 +227,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _on!: KoliBriPaginationButtonCallbacks;
 
 	/**
-	 * Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.
+	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
 	 */
 	@Prop() public _siblingCount?: number = 1;
 
@@ -237,7 +237,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
-	 * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
+	 * Setzt die Gesamtanzahl der Seiten.
 	 */
 	@Prop() public _total!: number;
 

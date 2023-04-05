@@ -1845,7 +1845,7 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
+          * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
@@ -1861,11 +1861,11 @@ export namespace Components {
          */
         "_pageSize": number;
         /**
-          * Gibt an, welche Optionen für die Seitenlänge angeboten werden.
+          * Setzt die Optionen für das Seitenlängenselect.
          */
         "_pageSizeOptions": Stringified<number[]>;
         /**
-          * Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.
+          * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
          */
         "_siblingCount"?: number;
         /**
@@ -1873,7 +1873,7 @@ export namespace Components {
          */
         "_tooltipAlign"?: Alignment;
         /**
-          * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
+          * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
@@ -4411,7 +4411,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
+          * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
@@ -4427,11 +4427,11 @@ declare namespace LocalJSX {
          */
         "_pageSize"?: number;
         /**
-          * Gibt an, welche Optionen für die Seitenlänge angeboten werden.
+          * Setzt die Optionen für das Seitenlängenselect.
          */
         "_pageSizeOptions"?: Stringified<number[]>;
         /**
-          * Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.
+          * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
          */
         "_siblingCount"?: number;
         /**
@@ -4439,7 +4439,7 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: Alignment;
         /**
-          * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
+          * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
