@@ -4,7 +4,7 @@ specifiers:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12
   '@angular/core': 13.3.12
-  '@public-ui/components': 1.5.0-rc.9
+  '@public-ui/components': 1.5.0-rc.10
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.6
@@ -20,7 +20,7 @@ devDependencies:
   '@angular/compiler': 13.3.12
   '@angular/compiler-cli': 13.3.12_ykntn3hhgp6n6n66y2ne2wuksi
   '@angular/core': 13.3.12_rxjs@7.6.0+zone.js@0.11.8
-  '@public-ui/components': 1.5.0-rc.9
+  '@public-ui/components': 1.5.0-rc.10
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.15.11
@@ -341,12 +341,12 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.5.0-rc.9:
-    resolution: {integrity: sha512-HkwWcHQdXgTBZVvHPL+XEb/Eke0u3m0ahUvCp3AZTGii1Y7/G4YcwpxveueFTQ4CC15YN3/Pa+2ikmm/oaFRBQ==}
+  /@public-ui/components/1.5.0-rc.10:
+    resolution: {integrity: sha512-80vfAtY86pio0wcYmVNP3R3szsv45yDvqZSNkUkofWmi/MfRaCQScr5quqT4eYdmxQ8G/0MRy7nLdMyp8eJRIw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
-      i18next: 22.4.13
+      i18next: 22.4.14
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -584,8 +584,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /i18next/22.4.13:
-    resolution: {integrity: sha512-GX7flMHRRqQA0I1yGLmaZ4Hwt1JfLqagk8QPDPZsqekbKtXsuIngSVWM/s3SLgNkrEXjA+0sMGNuOEkkmyqmWg==}
+  /i18next/22.4.14:
+    resolution: {integrity: sha512-VtLPtbdwGn0+DAeE00YkiKKXadkwg+rBUV+0v8v0ikEjwdiJ0gmYChVE4GIa9HXymY6wKapkL93vGT7xpq6aTw==}
     dependencies:
       '@babel/runtime': 7.21.0
     dev: true
