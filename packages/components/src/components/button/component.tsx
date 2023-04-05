@@ -181,7 +181,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _id?: string;
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: false }) public _label!: string;

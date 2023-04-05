@@ -134,7 +134,7 @@ export namespace Components {
          */
         "_color"?: string | KoliBriColor;
         /**
-          * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -142,7 +142,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label-Text des Badges an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -156,7 +156,7 @@ export namespace Components {
          */
         "_ariaLabel": string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
@@ -194,7 +194,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -207,11 +207,11 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die ID der Schaltfläche an.
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -277,7 +277,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -289,7 +289,7 @@ export namespace Components {
          */
         "_id"?: string;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -368,7 +368,7 @@ export namespace Components {
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -1520,7 +1520,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -1533,7 +1533,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -1542,7 +1542,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle das Element hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1560,7 +1560,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -1611,7 +1611,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -1619,7 +1619,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -1628,7 +1628,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Setzt die Role der Schaltfläche.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1636,7 +1636,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -1648,7 +1648,7 @@ export namespace Components {
          */
         "_tooltipAlign"?: Alignment;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Ausprägung der Link-Button hat.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -1662,11 +1662,11 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -1674,7 +1674,8 @@ export namespace Components {
          */
         "_listStyleType"?: ListStyleType;
         /**
-          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert. Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
          */
         "_ordered"?: boolean;
         /**
@@ -1705,7 +1706,7 @@ export namespace Components {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
-          * @deprecated A link could never be disabled. Use a button instead.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -1713,7 +1714,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -1726,7 +1727,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -1735,7 +1736,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1753,7 +1754,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -1997,13 +1998,13 @@ export namespace Components {
          */
         "_ariaLabel": string;
         /**
-          * Ist die Liste der unsichtbaren Links.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2011,13 +2012,13 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }
     interface KolSpanWc {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2025,7 +2026,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }
@@ -2699,7 +2700,7 @@ declare namespace LocalJSX {
          */
         "_color"?: string | KoliBriColor;
         /**
-          * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2707,7 +2708,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label-Text des Badges an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -2721,7 +2722,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel": string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
@@ -2759,7 +2760,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2772,11 +2773,11 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die ID der Schaltfläche an.
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -2842,7 +2843,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2854,7 +2855,7 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -2933,7 +2934,7 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -4085,7 +4086,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4098,7 +4099,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -4107,7 +4108,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle das Element hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4125,7 +4126,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -4176,7 +4177,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4184,7 +4185,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -4193,7 +4194,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Setzt die Role der Schaltfläche.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4201,7 +4202,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -4213,7 +4214,7 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: Alignment;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Ausprägung der Link-Button hat.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -4227,11 +4228,11 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -4239,7 +4240,8 @@ declare namespace LocalJSX {
          */
         "_listStyleType"?: ListStyleType;
         /**
-          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert. Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
          */
         "_ordered"?: boolean;
         /**
@@ -4270,7 +4272,7 @@ declare namespace LocalJSX {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
-          * @deprecated A link could never be disabled. Use a button instead.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -4278,7 +4280,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4291,7 +4293,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -4300,7 +4302,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4318,7 +4320,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -4562,13 +4564,13 @@ declare namespace LocalJSX {
          */
         "_ariaLabel": string;
         /**
-          * Ist die Liste der unsichtbaren Links.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4576,13 +4578,13 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }
     interface KolSpanWc {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4590,7 +4592,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }

@@ -113,7 +113,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -130,12 +130,12 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
+	 * Gibt die ID der Schaltfläche an.
 	 */
 	@Prop() public _id?: string;
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 */
 	@Prop() public _label!: string;
 

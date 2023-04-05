@@ -79,7 +79,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _ariaLabel!: string;
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt die Liste der darzustellenden Links.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 

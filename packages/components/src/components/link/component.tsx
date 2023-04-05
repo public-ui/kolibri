@@ -181,7 +181,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob der Link deaktiviert ist.
 	 *
-	 * @deprecated A link could never be disabled. Use a button instead.
+	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
@@ -191,7 +191,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _href!: string;
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -208,7 +208,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: false }) public _label!: string;
@@ -220,7 +220,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle der Schalter hat.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
@@ -244,7 +244,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 * Gibt an wo der Link geöffnet werden soll.
 	 */
 	@Prop() public _target?: LinkTarget;
 
