@@ -4,7 +4,6 @@
 :host > div {
 	display: grid;
 	place-items: stretch;
-	overflow: hidden;
 }
 
 .heading {

@@ -11,8 +11,8 @@ type OptionalProps = OptionalInputProps<number | Iso8601> & { placeholder: strin
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
-	id: string;
 	hasValue: boolean;
+	id: string;
 	list: string[];
 	type: InputNumberType;
 };

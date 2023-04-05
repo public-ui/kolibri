@@ -1,4 +1,4 @@
-import { Bundesanstalt, Bundesministerium, SelectOption } from '@public-ui/components';
+import { Bundesanstalt, Bundesministerium, ButtonOrLinkOrTextWithChildrenProps, SelectOption } from '@public-ui/components';
 import { TabButtonProps } from '@public-ui/components/dist/types/components/tabs/component';
 import {
 	KolAbbr,
@@ -100,6 +100,73 @@ const TABS_ICON_ONLY = DEFAULT_TABS.map((tab) => {
 		_iconOnly: true,
 	};
 });
+
+const NAV_CHILDREN: ButtonOrLinkOrTextWithChildrenProps[] = [
+	{
+		_href: '#link',
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt als Link',
+		_target: '_blank',
+	},
+	{
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt als Button',
+		_on: {
+			onClick: console.log,
+		},
+	},
+	{
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt nur Text',
+	},
+	{
+		_href: '#link',
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt als Link',
+		_target: '_blank',
+		_children: [],
+	},
+];
+
+const NAV_LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
+	{
+		_href: '#link',
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt als Link',
+		_target: '_blank',
+	},
+	{
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt als Button',
+		_on: {
+			onClick: console.log,
+		},
+	},
+	{
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt nur Text',
+	},
+	{
+		_children: NAV_CHILDREN,
+		_href: '#link',
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt als Link',
+		_target: '_blank',
+	},
+	{
+		_children: NAV_CHILDREN,
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt als Button',
+		_on: {
+			onClick: console.log,
+		},
+	},
+	{
+		_children: NAV_CHILDREN,
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt nur Text',
+	},
+];
 
 export const components: Record<string, Component> = {
 	'KOL-ABBR': () => (
@@ -1290,254 +1357,19 @@ export const components: Record<string, Component> = {
 	'KOL-NAV': () => (
 		<div class="col-12 grid gap-6">
 			<div class="inline-flex">
-				<KolNav
-					class="font-80 max-width"
-					_ariaLabel="Navigation in der Breite beschränkt"
-					_has-compact-button
-					_links={[
-						{
-							_label: '1 Navigationspunkt mit sehr langem Link-Test',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_target: 'asdasd',
-						},
-						{
-							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-						},
-						{
-							_active: true,
-							_label: '3 Navigationspunkt',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
-								{
-									_active: true,
-									_label: '3.3 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{
-									_label: '3.4 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
-							],
-						},
-						{ _label: '4 Navigationspunkt', _href: '#abc' },
-					]}
-				/>
+				<KolNav class="font-80 max-width" _ariaLabel="Navigation in der Breite beschränkt" _has-compact-button _links={NAV_LINKS} />
 			</div>
 			<div class="inline-flex">
-				<KolNav
-					class="font-60 max-width"
-					_ariaLabel="Navigation initial eingeklappt"
-					_compact
-					_links={[
-						{
-							_label: '1 Navigationspunkt mit sehr langem Link-Test',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_target: 'asdasd',
-						},
-						{
-							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-						},
-						{
-							_active: true,
-							_label: '3 Navigationspunkt',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
-								{
-									_active: true,
-									_label: '3.3 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{
-									_label: '3.4 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
-							],
-						},
-						{ _label: '4 Navigationspunkt', _href: '#abc' },
-					]}
-				/>
+				<KolNav class="font-60 max-width" _ariaLabel="Navigation initial eingeklappt" _compact _links={NAV_LINKS} />
 			</div>
 			<div class="inline-flex">
-				<KolNav
-					_ariaLabel="Navigation mit sinnvoller Breite"
-					_links={[
-						{
-							_label: '1 Navigationspunkt mit sehr langem Link-Test',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_target: 'asdasd',
-						},
-						{
-							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-						},
-						{
-							_active: true,
-							_label: '3 Navigationspunkt',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
-								{
-									_active: true,
-									_label: '3.3 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{
-									_label: '3.4 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
-							],
-						},
-						{ _label: '4 Navigationspunkt', _href: '#abc' },
-					]}
-					_orientation="horizontal"
-				/>
+				<KolNav _ariaLabel="Navigation mit sinnvoller Breite" _links={NAV_LINKS} _orientation="horizontal" />
 			</div>
 			<div class="inline-flex">
-				<KolNav
-					class="font-80"
-					style="display: inline-flex"
-					_ariaLabel="Navigation mit sinnvoller Breite"
-					_links={[
-						{
-							_label: '1 Navigationspunkt mit sehr langem Link-Test',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_iconOnly: true,
-							_target: 'asdasd',
-						},
-						{
-							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_iconOnly: true,
-						},
-						{
-							_active: true,
-							_label: '3 Navigationspunkt',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_iconOnly: true,
-							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
-								{
-									_active: true,
-									_label: '3.3 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{
-									_label: '3.4 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
-							],
-						},
-						{ _label: '4 Navigationspunkt', _href: '#abc', _iconOnly: true },
-					]}
-					_orientation="horizontal"
-				/>
+				<KolNav class="font-80" style="display: inline-flex" _ariaLabel="Navigation mit sinnvoller Breite" _links={NAV_LINKS} _orientation="horizontal" />
 			</div>
 			<div class="inline-flex">
-				<KolNav
-					class="font-80"
-					style="display: inline-flex"
-					_ariaLabel="Navigation mit sinnvoller Breite"
-					_links={[
-						{
-							_label: '1 Navigationspunkt mit sehr langem Link-Test',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_iconOnly: true,
-							_target: 'asdasd',
-						},
-						{
-							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_iconOnly: true,
-						},
-						{
-							_label: '3 Navigationspunkt',
-							_href: '#abc',
-							_icon: 'codicon codicon-pie-chart',
-							_iconOnly: true,
-							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-pie-chart', _target: 'asdasd' },
-								{
-									_label: '3.3 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.3.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{
-									_label: '3.4 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{ _active: true, _label: '3.5 Navigationspunkt (aktiv)', _href: '#abc' },
-							],
-						},
-						{ _label: '4 Navigationspunkt', _href: '#abc', _iconOnly: true },
-					]}
-					_orientation="horizontal"
-				/>
+				<KolNav class="font-80" style="display: inline-flex" _ariaLabel="Navigation mit sinnvoller Breite" _links={NAV_LINKS} _orientation="horizontal" />
 			</div>
 		</div>
 	),

@@ -10,6 +10,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-password',
@@ -137,7 +138,7 @@ export class KolInputPassword implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
@@ -201,7 +202,7 @@ export class KolInputPassword implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_hasValue: false,
 	};
 

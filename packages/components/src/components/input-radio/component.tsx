@@ -8,6 +8,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-radio',
@@ -142,7 +143,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
@@ -185,7 +186,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _value?: Stringified<W3CInputValue>;
 
 	@State() public state: States = {
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_list: [],
 
 		_orientation: 'vertical',
