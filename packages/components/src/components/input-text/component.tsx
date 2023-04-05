@@ -156,7 +156,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.

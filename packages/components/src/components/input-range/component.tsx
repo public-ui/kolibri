@@ -7,6 +7,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-range',
@@ -125,7 +126,7 @@ export class KolInputRange implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -174,7 +175,7 @@ export class KolInputRange implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_list: [],
 	};
 

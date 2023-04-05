@@ -8,6 +8,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-file',
@@ -114,7 +115,7 @@ export class KolInputFile implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
@@ -157,7 +158,7 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _value?: string;
 
 	@State() public state: States = {
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 	};
 
 	public constructor() {

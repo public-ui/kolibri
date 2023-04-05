@@ -1,1 +1,22 @@
 @import '../style.css';
+
+.list {
+	display: flex;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.list.vertical {
+	flex-direction: column;
+}
+
+.entry {
+	display: flex;
+}
+
+.entry kol-button-wc:first-child,
+.entry kol-link-wc,
+.entry kol-span-wc {
+	flex-grow: 1;
+}
