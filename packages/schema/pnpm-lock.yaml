@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.9
+  '@public-ui/components': 1.5.0-rc.10
   '@types/node': ts4.9
   '@typescript-eslint/eslint-plugin': 5.57.1
   '@typescript-eslint/parser': 5.57.1
@@ -11,7 +11,7 @@ specifiers:
   unbuild: 1.1.1
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.9
+  '@public-ui/components': 1.5.0-rc.10
   '@types/node': 18.15.11
   '@typescript-eslint/eslint-plugin': 5.57.1_iify4w3mi7rbbu6mxzspkpx4b4
   '@typescript-eslint/parser': 5.57.1_ip5up2nocltd47wbnuyybe5dxu
@@ -765,12 +765,12 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.9:
-    resolution: {integrity: sha512-HkwWcHQdXgTBZVvHPL+XEb/Eke0u3m0ahUvCp3AZTGii1Y7/G4YcwpxveueFTQ4CC15YN3/Pa+2ikmm/oaFRBQ==}
+  /@public-ui/components/1.5.0-rc.10:
+    resolution: {integrity: sha512-80vfAtY86pio0wcYmVNP3R3szsv45yDvqZSNkUkofWmi/MfRaCQScr5quqT4eYdmxQ8G/0MRy7nLdMyp8eJRIw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
-      i18next: 22.4.13
+      i18next: 22.4.14
     dev: true
 
   /@rollup/plugin-alias/4.0.3_rollup@3.20.2:
@@ -1619,8 +1619,8 @@ packages:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
     dev: true
 
-  /i18next/22.4.13:
-    resolution: {integrity: sha512-GX7flMHRRqQA0I1yGLmaZ4Hwt1JfLqagk8QPDPZsqekbKtXsuIngSVWM/s3SLgNkrEXjA+0sMGNuOEkkmyqmWg==}
+  /i18next/22.4.14:
+    resolution: {integrity: sha512-VtLPtbdwGn0+DAeE00YkiKKXadkwg+rBUV+0v8v0ikEjwdiJ0gmYChVE4GIa9HXymY6wKapkL93vGT7xpq6aTw==}
     dependencies:
       '@babel/runtime': 7.21.0
     dev: true
