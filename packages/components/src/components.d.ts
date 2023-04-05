@@ -1891,7 +1891,7 @@ export namespace Components {
          */
         "_type"?: KoliBriProgressType;
         /**
-          * Gibt die Einheit der Fortschrittswerte an.
+          * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
         "_unit"?: string;
         /**
@@ -4457,7 +4457,7 @@ declare namespace LocalJSX {
          */
         "_type"?: KoliBriProgressType;
         /**
-          * Gibt die Einheit der Fortschrittswerte an.
+          * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
         "_unit"?: string;
         /**

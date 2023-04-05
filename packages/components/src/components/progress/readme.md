@@ -18,20 +18,20 @@ Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine opt
 
 ## Verwendung
 
-Verwenden Sie das Attribut `_type`, um die optische Ausgabe der Komponente zu steuern. Mögliche Werte sind:
+Verwenden Sie das Attribut **`_type`**, um die optische Ausgabe der Komponente zu steuern. Mögliche Werte sind:
 
-- **bar** für eine Ausgabe als horizontaler Fortschrittsbalken
-- **cycle** für eine Ausgabe als kreisförmiger Fortschrittsbalken
+- `bar`: für eine Ausgabe als horizontaler Fortschrittsbalken
+- `cycle`: für eine Ausgabe als kreisförmiger Fortschrittsbalken
 
-Verwenden Sie das Attribut `_max`, um den maximalen Wert der Komponente zu bestimmen.
+Verwenden Sie das Attribut **`_max`**, um den maximalen Wert der Komponente zu bestimmen, das Minimum ist immer 0.
 
-Verwenden Sie das Attribut `_value`, um den aktuellen Wert der Komponente zu bestimmen.
+Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu bestimmen.
 
 <!--### Best practices
 
 ### Anwendungsfälle-->
 
-## Barrierefreiheit
+<!-- ## Barrierefreiheit -->
 
 ## Links und Referenzen
 
