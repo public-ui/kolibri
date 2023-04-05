@@ -1796,7 +1796,7 @@ export namespace Components {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
+          * Setzt die Breite des Modals. (max-width: 100%).
          */
         "_width"?: string;
     }
@@ -1830,7 +1830,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -4362,7 +4362,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
+          * Setzt die Breite des Modals. (max-width: 100%).
          */
         "_width"?: string;
     }
@@ -4396,7 +4396,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
