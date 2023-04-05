@@ -1901,19 +1901,19 @@ export namespace Components {
     }
     interface KolQuote {
         /**
-          * The caption of the quote.
+          * Setzt die Überschrift.
          */
         "_caption"?: string;
         /**
-          * The href is a URL that designates a source document or message for the information quoted.
+          * Link auf die Quelle des Zitates.
          */
         "_href": string;
         /**
-          * The text of the quote.
+          * Setzt den Text, also das Zitat selbst.
          */
         "_quote": string;
         /**
-          * The variant of the quote.
+          * Setzt die Variante des Zitats.
          */
         "_variant"?: KoliBriQuoteVariant;
     }
@@ -4467,19 +4467,19 @@ declare namespace LocalJSX {
     }
     interface KolQuote {
         /**
-          * The caption of the quote.
+          * Setzt die Überschrift.
          */
         "_caption"?: string;
         /**
-          * The href is a URL that designates a source document or message for the information quoted.
+          * Link auf die Quelle des Zitates.
          */
         "_href": string;
         /**
-          * The text of the quote.
+          * Setzt den Text, also das Zitat selbst.
          */
         "_quote": string;
         /**
-          * The variant of the quote.
+          * Setzt die Variante des Zitats.
          */
         "_variant"?: KoliBriQuoteVariant;
     }

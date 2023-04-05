@@ -1,8 +1,11 @@
 # Quote
 
-The quote component is implemented in two variants. The first variant is the default `short` variant as inline quote with quotation marks. The second variant is the indented `long` variant. The indented variant is used to highlight a text passage or information visually.
+Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`inline`) und eine eingerückte(`block`) Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.
 
-Both variants can be extended with a `cite` element. The `cite` element is used to identify the source of a quotation and will be displayed below the quote as a link.
+## Verwendung
+
+Mittels **`_caption`** kann eine Überschrift gesetzt werden, während **`_quote`** das eigentliche Zitat enthält. Der Ursprung wird über **`_href`** gesetzt.
+Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann **`_variant`** auf `block` gesetzt werden.
 
 ## References
 
