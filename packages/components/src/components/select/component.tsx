@@ -209,7 +209,7 @@ export class KolSelect implements ComponentApi {
 	@Prop({ reflect: true }) public _required?: boolean;
 
 	/**
-	 * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
 	 */
 	@Prop() public _size?: number;
 

@@ -1976,7 +1976,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+          * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
         "_size"?: number;
         /**
@@ -4542,7 +4542,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+          * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
         "_size"?: number;
         /**
