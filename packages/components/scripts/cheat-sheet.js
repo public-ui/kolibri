@@ -20,9 +20,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.9';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.9/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.9';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.10';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.10/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.10';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -93,9 +93,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<pre>
 				<code class="language-html">${`<head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.9';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.9/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.9';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.10';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.10/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.10';
 		register([ITZBund], [defineCustomElements])
 			.then(() => {})
 			.catch(console.warn);
