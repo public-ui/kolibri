@@ -1,7 +1,6 @@
 # Modal
 
-Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem
-Dialogfenster angezeigt werden. Sie wird nach Klick auf einen Button aufgerufen und über ein eigenes
+Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Sie wird nach Klick auf einen Button aufgerufen und über ein eigenes
 Close-Icon wieder geschlossen. Die **Modal**-Komponente basiert auf der **Card**-Komponente und ist standardmäßig versteckt. Sie wird i.d.R.
 erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt
 des Modal-Fensters ist aktiv. Das **Modal**-Fenster wird über ein **Close-Icon** oben rechts im Kopfbereich wieder
