@@ -7,12 +7,14 @@ Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie be
 ### Code
 
 ```html
-<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="msg"> Textbereich im Alert </kol-alert>
+<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 ```
 
 ### Beispiel
 
 <kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 
 ## Verwendung
 
@@ -20,9 +22,9 @@ Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie be
 
 Die **Überschrift** der Alert-Komponente wird über das Attribut `_heading` bestimmt.
 
-### Größe der Überschrift
+### Überschriftenebene
 
-Die **Größe** der Überschrift wird über das Attribut `_level` bestimmt und lässt die Werte 1 - 6 zu.
+Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
 
 ### Typ des Alert
 
@@ -43,7 +45,7 @@ Der Inhalt des Alert wird zwischen das öffnende Element `<kol-alert>` und das s
 
 ### Variante des Alert
 
-Über das Attribut **`_variant`** kann festgelegt werden, in welcher Darstellungsvariante das Alert angezeigt wird.
+Über das Attribut **`_variant`** kann festgelegt werden, in welcher Darstellungsvariante das Alert angezeigt wird. `msg` lässt die linke, farbig hinterlegte Spalte mit dem Icon über die gesamte Höhe des Alerts gehen, `card` setzt die linke Spalte nur neben die Überchrift.
 
 ### Best practices
 

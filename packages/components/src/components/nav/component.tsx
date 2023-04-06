@@ -324,7 +324,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
 	 *
 	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */

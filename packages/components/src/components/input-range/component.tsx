@@ -99,7 +99,7 @@ export class KolInputRange implements ComponentApi {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -109,12 +109,12 @@ export class KolInputRange implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 */
 	@Prop() public _hint?: string = '';
 

@@ -126,18 +126,18 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _heading?: string;
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 */
 	@Prop() public _level?: HeadingLevel;
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt die Liste der darzustellenden Links.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	/**
-	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
 	 * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
 	 */
 	@Prop({ reflect: true }) public _ordered?: boolean;
 

@@ -2,7 +2,7 @@
 
 <!-- Auto Generated Below -->
 
-> **[DEPRECATED]** Wir empfehlen die flexiblere KolIcon-Komponente zu verwenden.
+> **[DEPRECATED]** Wir empfehlen die flexiblere <kol-link _href="/docs/components/icon" _label="KolIcon-Komponente"></kol-link> zu verwenden.
 
 ## Properties
 
