@@ -1096,7 +1096,11 @@ export const BPA = KoliBri.createTheme('bpa', {
 	progress {
 		display: none;
 	}`,
-	'KOL-INPUT-RADIO': `input {
+	'KOL-INPUT-RADIO': `:host {
+		font-size: 1.375rem;
+		line-height: 2rem;
+	}
+	input {
 		border: 1px solid var(--color-blue);
 	}
 	input:focus {
@@ -1112,6 +1116,18 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	input:checked::before {
 		background-color: var(--color-blue);
+	}
+	fieldset {
+		border: none;
+	}
+	fieldset.vertical {
+		gap: 0.5rem;
+	}
+	fieldset.horizontal {
+		gap: 2.5rem;
+	}
+	div[slot="input"] {
+		gap: 0.5rem;
 	}`,
 	'KOL-LINK': `a {
 		margin-bottom: 0;
@@ -1387,5 +1403,38 @@ export const BPA = KoliBri.createTheme('bpa', {
 		outline-color: var(--color-darkblue);
 		outline-style: solid;
 		outline-width: 2px;
+	}`,
+	'KOL-BUTTON-GROUP': `kol-button-group-wc {
+		gap: 0.5rem;
+	}`,
+	'KOL-PAGINATION': `:host {
+		display: grid;
+		gap: var(--spacing-m);
+	}
+	:host > div {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	.selected button {
+		min-width: 44px;
+		min-height: 44px;
+		display: grid;
+		line-height: 1.5rem;
+		font-family: var(--font-family);
+		cursor: not-allowed;
+		font-weight: 700;
+		padding: 10px 12px;
+		border: none;
+		font-size: 16px;
+		font-style: normal;
+		text-align: center;
+		text-decoration: underline;
+		text-transform: uppercase;
+		width: inherit;
+		color: var(--color-white);
+		background-color: var(--color-darkblue);
+		border-color: var(--color-darkblue);
 	}`,
 });
