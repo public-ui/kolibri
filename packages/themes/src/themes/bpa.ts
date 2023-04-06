@@ -34,6 +34,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		--color-darkblue: #004b76;
 		--color-darkgray: #576164;
 		--color-lightgray: #bec5c9;
+		--color-lightgray-40: #e5e8e9;
 		--color-red: #c0003c;
 		--color-lightorange: #f7bb3d;
 		--color-orange: #e19688;
@@ -250,7 +251,12 @@ export const BPA = KoliBri.createTheme('bpa', {
 		padding: 0.25em 0.5em;
 		width: 100%;
 	}`,
-	'KOL-CARD': `:host {
+	'KOL-CARD': `:host > div {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: stretch;
 		color: var(--color-white);
 		background-color: var(--color-darkblue);
 		padding: 4.5454545455%;
@@ -273,6 +279,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		}
 	}
 	:host .content {
+		flex-grow: 1;
 		font-size: 1.1875rem;
 		line-height: 1.6875rem;
 	}
@@ -946,20 +953,6 @@ export const BPA = KoliBri.createTheme('bpa', {
 	:host label {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
-	}
-	:host(:not(.has-value)) kol-input:not(:focus-within) label {
-		transform: translateY(1.9375rem) scale(1.3333333333);
-		cursor: text;
-	}
-	:host(:not(.has-value)) kol-input:not(:focus-within):has(div.icon-left) label {
-		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
-	}
-	:host(:not(.has-value)) kol-input:not(:focus-within) label,
-	textarea::placeholder {
-		color: var(--color-darkgray);
-	}
-	:host([_error]:not(.has-value)) kol-input:not(:focus-within) label {
-		color: var(--color-red);
 	} /* Move hint under input */
 	span.hint {
 		order: 1;
@@ -970,18 +963,16 @@ export const BPA = KoliBri.createTheme('bpa', {
 	:host([_error]) label {
 		color: var(--color-red);
 	}
-	div.input:focus-within {
-		border-bottom: 1px solid var(--color-darkgray);
-	}
 	div.input {
-		border-bottom: 1px solid var(--color-lightgray);
 		background-color: var(--color-white);
-		font-size: 1.5rem;
 		padding: 0;
 	}
 	div.input textarea {
-		border: none;
+		font-size: 1.5rem;
 		outline: none;
+		color: var(--color-black);
+		border: 1px solid var(--color-darkgray);
+		padding: 0.75rem 1rem 1rem;
 	}
 	kol-input:has(label:not([hidden])) div.input textarea::placeholder {
 		color: transparent;
@@ -990,7 +981,6 @@ export const BPA = KoliBri.createTheme('bpa', {
 		margin-top: 1.5rem;
 	}`,
 	'KOL-INPUT-RANGE': `input[type="range"] {
-		height: 3em;
 		background-color: transparent;
 		outline: none;
 	}
@@ -1064,6 +1054,15 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	input:checked::before {
 		background-color: var(--color-blue);
+	}
+	fieldset.vertical {
+		gap: 0.5rem;
+	}
+	fieldset.horizontal {
+		gap: 2rem;
+	}
+	fieldset [slot="input"] {
+		gap: 0.5rem;
 	}`,
 	'KOL-LINK': `a {
 		margin-bottom: 0;
@@ -1175,4 +1174,57 @@ export const BPA = KoliBri.createTheme('bpa', {
 			line-height: 2rem;
 		}
 	}`,
+	'KOL-NAV': `nav {
+		background-color: var(--color-lightgray-40);
+		color: var(--color-black);
+		padding-top: 3.8461538462%;
+		padding-right: 3.8461538462%;
+		padding-left: 3.8461538462%;
+	}
+	@media only screen and (min-width: 1170px) {
+		.nav {
+			padding-right: 28px;
+		}
+	}
+	ul {
+		list-style: none;
+	}
+	li,
+	button {
+		font-size: 1.375rem;
+		line-height: 2rem;
+		padding: 0.375rem 0 0.625rem;
+	}
+	.entry kol-span-wc {
+		display: flex;
+		border-color: transparent;
+	}
+	.entry kol-span-wc > span {
+		gap: 0.5rem;
+	}
+	a {
+		color: var(--color-black);
+		text-decoration: none;
+	}
+	a:hover kol-span-wc,
+	a:focus kol-span-wc {
+		text-decoration: underline;
+	}
+	button {
+		text-align: left;
+	}
+	button:hover kol-span-wc,
+	button:focus kol-span-wc {
+		text-decoration: underline;
+	}
+	div > .expand-button kol-icon::part(icon)::before {
+		content: "\\eab6";
+	}
+	.expanded > div > .expand-button kol-icon::part(icon)::before {
+		content: "\\eab4";
+	}
+	li > ul.list {
+		margin-left: 2rem;
+	}`,
+	'KOL-ACCORDION': `/* https://www.bundesregierung.de/breg-de/themen/regierungsmonitor */`,
 });
