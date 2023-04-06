@@ -1,7 +1,6 @@
 # Version
 
-Die **Version**-Komponente stellt kurze Inhalte auf einem farbigen Hintergrund dar. Die **Version**-Komponente ist mit der **Tag**-Komponente eng verwandt, bietet aber nur ein Attribut zur Konfiguration. Sie ist optimiert für die
-Angabe z.B. von Versionen einer Seite.
+Die **Version**-Komponente stellt kurze Inhalte auf einem farbigen Hintergrund dar. Die **Version**-Komponente ist mit der **Tag**-Komponente eng verwandt, bietet aber nur ein Attribut zur Konfiguration. Sie ist optimiert für die Angabe z.B. von Versionen einer Seite.
 
 ## Konstruktion
 
@@ -9,27 +8,25 @@ Angabe z.B. von Versionen einer Seite.
 
 ```html
 <div>
-	<kol-version _version="1.0.0"></kol-version>
+	<kol-version _version="1.44.0"></kol-version>
 </div>
 ```
 
 ### Beispiel
 
-<kol-version _version="1.0.0"></kol-version>
+<kol-version _version="1.44.0"></kol-version>
 
 ## Verwendung
 
-Für die Konfiguration steht das Attribut `_label_` zur Verfügung und nimmt einen beliebigen Text auf, der in der Komponente angezeigt wird.
+Für die Konfiguration steht das Attribut **`_version`** zur Verfügung und nimmt einen beliebigen Text auf, dem in der Komponente ein `v` vorgestellt wird.
 
 Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
-
-Bitte beachten Sie, dass innerhalb der Komponente dem Text aus dem Attribut **\_version** ein **"v"** vorangestellt wird.
 
 <!--### Best practices
 
 ### Anwendungsfälle-->
 
-## Barrierefreiheit
+<!-- ## Barrierefreiheit -->
 
 <!--## Links und Referenzen
 
