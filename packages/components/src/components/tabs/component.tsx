@@ -207,12 +207,12 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt die Daten für die Registrierkarten.
 	 */
 	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
 
 	/**
-	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+	 * Setzt die Position der Registrierkarten.
 	 */
 	@Prop() public _tabsAlign?: Alignment = 'top';
 

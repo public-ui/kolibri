@@ -2082,11 +2082,11 @@ export namespace Components {
          */
         "_selected"?: number;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Daten für die Registrierkarten.
          */
         "_tabs": Stringified<TabButtonProps[]>;
         /**
-          * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+          * Setzt die Position der Registrierkarten.
          */
         "_tabsAlign"?: Alignment;
     }
@@ -4648,11 +4648,11 @@ declare namespace LocalJSX {
          */
         "_selected"?: number;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Daten für die Registrierkarten.
          */
         "_tabs": Stringified<TabButtonProps[]>;
         /**
-          * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+          * Setzt die Position der Registrierkarten.
          */
         "_tabsAlign"?: Alignment;
     }
