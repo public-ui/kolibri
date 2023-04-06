@@ -51,36 +51,16 @@ layout: tunnel
 </div>
 
 ---
-layout: about-itzbund
----
-
-# Referat II A 2
-
-<v-clicks>
-
-- Unter Leitung von **Christine** Heinrich
-- Referat **Anforderungs- und Lösungsdesign** (II A 2)
-- Projekt **KoliBri**:
-  - Start 2021
-  - 1. Final-Release Dezember 2021
-  - 2022 geprägt durch Reifephase
-  - 2023 Open Source Standard
-
-</v-clicks>
-
----
 layout: about-me
 ---
 
-# Vortragender
+# Speaker
 
 <v-clicks>
 
 - Mein Name ist **Martin** Oppitz
-- **Wertegang:**
-  - Inzwischen **über 25 Jahre** im Web unterwegs
-  - Seit 3 Jahren beim **ITZBund** in der **Architektur-Beratung**
-- **Softwarearchitekt** im Referat **Anforderungs- und Lösungsdesign** (II A 2)
+- Inzwischen **über 25 Jahre** im Web unterwegs
+- Seit 3 Jahren beim **ITZBund** in der **Architektur-Beratung**
 - **Interessen:** Familie, Rad und Ski fahren, Reisen und Open Source
 
 </v-clicks>
