@@ -106,7 +106,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _ariaLabel!: string;
 
 	/**
-	 * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
+	 * Setzt die Breite des Modals. (max-width: 100%).
 	 */
 	@Prop() public _width?: string = '100%';
 

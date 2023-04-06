@@ -21,7 +21,7 @@ export class KolSpan implements Props {
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -31,7 +31,7 @@ export class KolSpan implements Props {
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Gibt einen beschreibenden Text für das Text-Element an.
+	 * Setzt den sichtbaren Text des Elements.
 	 */
 	@Prop() public _label!: string;
 }

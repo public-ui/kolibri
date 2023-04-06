@@ -1,6 +1,6 @@
 # LinkGroup
 
-Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine listenartige, vertikale oder horizontale Darstellung von Links. Sie rendert eine auf Barrierefreiheit optimierte Liste von Links, die als Text, als Icon oder auch in Kombination ausgegeben werden kann. Möglich ist auch die Ausgabe von versteckten Links.
+Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine vertikale oder horizontale Liste von Links. Sie rendert eine auf Barrierefreiheit optimierte Liste von Links, die als Text, als Icon oder auch in Kombination ausgegeben werden kann. Möglich ist auch die Ausgabe von versteckten Links.
 
 ## Konstruktion
 
@@ -24,25 +24,27 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine listen
 
 ### Links
 
-Die auszugebenden Links werden als JSON-Objekt an das Attribut `_links` übergeben.
+Die auszugebenden Links werden als JSON-Objekt an das Attribut **`_links`** übergeben. Dort können die Attribute des <kol-link _href="" _label="Links"></kol-link> übergeben werden, **`_href`** und **`_label`** sind jedoch Pflicht.
 
-```html
-[ { _label: 'Link 1', _href: 'https://www.w3.org' }, { _label: 'Link 2', _href: 'https://www.w3.org' }, { _label: 'Link 3', _href: 'https://www.w3.org' }, ];
+```js
+[
+	{ _label: 'Link 1', _href: 'https://www.w3.org' },
+	{ _label: 'Link 2', _href: 'https://www.w3.org' },
+	{ _label: 'Link 3', _href: 'https://www.w3.org' },
+];
 ```
-
-Die Konstruktion der einzelnen **Links**, die innerhalb der JSON-Struktur über das Attribut **\_links** übergeben wird, ist im Abschnitt **Links** beschrieben.
 
 ### Überschrift
 
-Die Überschrift der LinkGroup wird über das Attribut `_caption` übergeben.
+Die Überschrift der LinkGroup wird über das Attribut **`_heading`** übergeben.
 
 ### Ausrichtung
 
-Über das Attribut `_orientation` kann die Ausrichtung der LinkGroup bestimmt werden. Standardwert ist `_orientation="vertical"`. Für eine horizontale Anzeige den Wert `horizontal` verwenden.
+Über das Attribut **`_orientation`** kann die Ausrichtung der LinkGroup bestimmt werden. Mögliche Werte sind `horizontal` und `vertical` (Standard).
 
 ### List-Style-Type
 
-Über das Attribut `_list-style-type` kann bestimmt werden, mit welchem Symbol die einzelnen Zeilen der Group dargestellt werden sollen. Es stehen vier Möglichkeiten zur Auswahl.
+Über das Attribut **`_list-style-type`** kann bestimmt werden, mit welchem Symbol die einzelnen Zeilen der Group dargestellt werden sollen. Es stehen diese vier Möglichkeiten zur Auswahl:
 
 - `disc`
 - `circle`
