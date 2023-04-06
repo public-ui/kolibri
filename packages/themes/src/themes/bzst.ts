@@ -2,7 +2,7 @@ import { KoliBri } from '@public-ui/components';
 
 // Bundeszentralamt für Steuern
 export const BZSt = KoliBri.createTheme('bzst', {
-"GLOBAL": `/* colors */
+	GLOBAL: `/* colors */
 :root,
 :host {
   /* token */
@@ -189,7 +189,7 @@ textarea:focus {
     transform: rotate(360deg);
   }
 }`,
-"KOL-BUTTON": `:host {
+	'KOL-BUTTON': `:host {
   --background-color: var(--color-gruen-dunkel);
   --border-color: var(--color-gruen-dunkel);
   --border-size: 1px;
@@ -275,7 +275,7 @@ button.icon-only kol-icon {
 button.loading kol-icon {
   animation: spin 5s infinite linear;
 }`,
-"KOL-INPUT-TEXT": `kol-input {
+	'KOL-INPUT-TEXT': `kol-input {
   display: grid;
   padding: 0;
   margin: 0;
@@ -405,7 +405,7 @@ option:focus:not(:disabled),
 option:hover:not(:disabled) {
   color: white;
 }`,
-"KOL-INPUT-PASSWORD": `kol-input {
+	'KOL-INPUT-PASSWORD': `kol-input {
   display: grid;
   padding: 0;
   margin: 0;
@@ -525,7 +525,7 @@ option:focus:not(:disabled),
 option:hover:not(:disabled) {
   color: white;
 }`,
-"KOL-INPUT-NUMBER": `kol-input {
+	'KOL-INPUT-NUMBER': `kol-input {
   display: grid;
   padding: 0;
   margin: 0;
@@ -651,7 +651,7 @@ option:hover:not(:disabled) {
   background: var(--color-ocean);
   color: white;
 }`,
-"KOL-INPUT-EMAIL": `kol-input {
+	'KOL-INPUT-EMAIL': `kol-input {
   display: grid;
   padding: 0;
   margin: 0;
@@ -771,7 +771,7 @@ option:focus:not(:disabled),
 option:hover:not(:disabled) {
   color: white;
 }`,
-"KOL-INPUT-FILE": `kol-input {
+	'KOL-INPUT-FILE': `kol-input {
   display: grid;
   padding: 0;
   margin: 0;
@@ -891,7 +891,7 @@ option:focus:not(:disabled),
 option:hover:not(:disabled) {
   color: white;
 }`,
-"KOL-TEXTAREA": `/* input */
+	'KOL-TEXTAREA': `/* input */
 kol-input {
   display: grid;
   padding: 0;
@@ -1022,7 +1022,7 @@ option:focus:not(:disabled),
 option:hover:not(:disabled) {
   color: white;
 }`,
-"KOL-ALERT": `:host > div {
+	'KOL-ALERT': `:host > div {
   background-color: white;
   border-width: 2px;
   border-style: solid;
@@ -1182,7 +1182,7 @@ option:hover:not(:disabled) {
 .close kol-icon::part(icon)::before {
   content: "\\f00d";
 }`,
-"KOL-BADGE": `:host {
+	'KOL-BADGE': `:host {
   display: inline-block;
 }
 kol-span-wc {
@@ -1197,18 +1197,18 @@ kol-span-wc span {
   display: flex;
   gap: 0.25rem;
 }`,
-"KOL-BUTTON-GROUP": `div {
+	'KOL-BUTTON-GROUP': `div {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
 }`,
-"KOL-INDENTED-TEXT": `:host > div {
+	'KOL-INDENTED-TEXT': `:host > div {
   width: 100%;
   padding: 15px;
   background: var(--color-grau-weiss);
   box-shadow: -4px 0px 0px var(--color-gruen);
 }`,
-"KOL-LINK": `kol-link-wc {
+	'KOL-LINK': `kol-link-wc {
   display: inline-block;
 }
 a {
@@ -1246,7 +1246,7 @@ kol-icon {
   left: unset;
   position: unset;
 }`,
-"KOL-DETAILS": `details {
+	'KOL-DETAILS': `details {
   display: grid;
   width: 100%;
 }
@@ -1266,7 +1266,7 @@ summary span:hover {
 details > kol-indented-text {
   margin: 0.25em 0 0 0.6em;
 }`,
-"KOL-SPIN": `.spin {
+	'KOL-SPIN': `.spin {
   display: inline-block;
   height: 1rem;
   position: relative;
@@ -1329,7 +1329,7 @@ details > kol-indented-text {
     transform: scale(0);
   }
 }`,
-"KOL-PROGRESS": `:host progress,
+	'KOL-PROGRESS': `:host progress,
 :host span {
   display: block;
   height: 0px;
@@ -1349,7 +1349,7 @@ svg circle:last-child {
 progress {
   display: none;
 }`,
-"KOL-SELECT": `kol-input {
+	'KOL-SELECT': `kol-input {
   display: grid;
   padding: 0;
   margin: 0;
@@ -1485,7 +1485,7 @@ option:focus:not(:disabled),
 option:hover:not(:disabled) {
   color: white;
 }`,
-"KOL-INPUT-COLOR": `kol-input {
+	'KOL-INPUT-COLOR': `kol-input {
   display: grid;
   padding: 0;
   margin: 0;
@@ -1605,7 +1605,7 @@ option:focus:not(:disabled),
 option:hover:not(:disabled) {
   color: white;
 }`,
-"KOL-ACCORDION": `:host > div {
+	'KOL-ACCORDION': `:host > div {
   font-family: var(--font-family);
   padding: 0 0.5rem 0 0;
 }
@@ -1675,7 +1675,7 @@ h5,
 h6 {
   margin: 0;
 }`,
-"KOL-TABLE": `:host * {
+	'KOL-TABLE': `:host * {
   hyphens: var(--hyphens);
   line-height: var(--textFontLineHeight);
 }
@@ -1749,7 +1749,7 @@ th > div {
 th kol-button button {
   padding: 0.5rem;
 }`,
-"KOL-NAV": `* {
+	'KOL-NAV': `* {
   margin: 0;
   padding: 0;
 }
@@ -1811,7 +1811,7 @@ ul.flex {
 li > div > div.absolute {
   position: absolute;
 }`,
-"KOL-CARD": `:host > div {
+	'KOL-CARD': `:host > div {
   --card-padding: var(--gap);
   border-color: var(--color-gruen);
   border-style: solid;
@@ -1866,7 +1866,7 @@ li > div > div.absolute {
   margin-top: 3rem;
   padding: 0 var(--card-padding);
 }`,
-"KOL-INPUT-CHECKBOX": `:host {
+	'KOL-INPUT-CHECKBOX': `:host {
   --border-width: 1px;
   --spacing: 0.25rem;
 }
@@ -2001,7 +2001,7 @@ input[type="checkbox"]:checked {
 .disabled {
   opacity: 0.33;
 }`,
-"KOL-INPUT-RADIO": `:host {
+	'KOL-INPUT-RADIO': `:host {
   --border-width: 1px;
   --input-color: var(--color-gruen-dunkel);
   --input-inner-position: calc(var(--spacing) + var(--border-width));
@@ -2118,7 +2118,7 @@ legend {
   content: "*";
   padding-left: 0.125em;
 }`,
-"KOL-TOAST": `:host > div {
+	'KOL-TOAST': `:host > div {
   position: fixed;
   top: 0;
   left: 0;
@@ -2139,7 +2139,7 @@ legend {
   margin: auto;
   width: 1em;
 }`,
-"KOL-TABS": `button:disabled {
+	'KOL-TABS': `button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -2329,7 +2329,7 @@ button:active {
 :host > div.tabs-align-right > div {
   border-radius: 0.25rem 0 0 0.25rem;
 }`,
-"KOL-PAGINATION": `:host {
+	'KOL-PAGINATION': `:host {
   display: grid;
   gap: 1rem;
 }
@@ -2366,7 +2366,7 @@ button:active {
   padding-bottom: 0.5rem;
   color: var(--color-midnight);
 }`,
-"KOL-INPUT-RANGE": `/* https://www.cssportal.com/style-input-range/ */
+	'KOL-INPUT-RANGE': `/* https://www.cssportal.com/style-input-range/ */
 kol-input {
   display: grid;
 }
@@ -2503,7 +2503,7 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
 }`,
-"KOL-LINK-BUTTON": `:host {
+	'KOL-LINK-BUTTON': `:host {
   display: inline-block;
 } /*-----------*/
 a {
@@ -2577,7 +2577,7 @@ a.icon-only kol-icon {
 a.loading kol-icon {
   animation: spin 5s infinite linear;
 }`,
-"KOL-BUTTON-LINK": `button {
+	'KOL-BUTTON-LINK': `button {
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -2602,11 +2602,11 @@ kol-icon {
   padding: 0 0.25em;
   display: inline-block;
 }`,
-"KOL-ABBR": `abbr {
+	'KOL-ABBR': `abbr {
   text-decoration: none;
   border-bottom: dotted var(--color-metal) 1px;
 }`,
-"KOL-BREADCRUMB": `nav {
+	'KOL-BREADCRUMB': `nav {
   width: 100%;
 }
 ul {
@@ -2635,7 +2635,7 @@ kol-link {
 :host li > kol-link > kol-link-wc > a {
   color: red !important;
 }`,
-"KOL-LINK-GROUP": `ul {
+	'KOL-LINK-GROUP': `ul {
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -2663,7 +2663,8 @@ li.list-none {
   list-style-type: none !important;
   margin-left: 0;
 }`,
-"KOL-ICON": ``,
-"KOL-TOOLTIP": `:host {
+	'KOL-ICON': ``,
+	'KOL-TOOLTIP': `:host {
   --kolibri-font-size: var(--textFontSize);
-}`,});
+}`,
+});
