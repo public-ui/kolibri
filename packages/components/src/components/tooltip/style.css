@@ -19,10 +19,6 @@ kol-tooltip #arrow {
 	z-index: 999;
 }
 
-kol-tooltip .area {
-	background-color: white;
-}
-
 kol-tooltip kol-span-wc {
 	position: relative;
 	z-index: 1000;
