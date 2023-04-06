@@ -3,10 +3,11 @@ import { translate } from '../../i18n';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { setState } from '../../utils/prop.validators';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -34,7 +35,7 @@ export class KolTextarea implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLTextAreaElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -62,7 +63,6 @@ export class KolTextarea implements ComponentApi {
 					<div slot="input">
 						<textarea
 							ref={this.catchRef}
-							part="textarea"
 							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
@@ -155,7 +155,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Setzt die maximale Zeichenanzahl.
@@ -219,7 +219,7 @@ export class KolTextarea implements ComponentApi {
 		_adjustHeight: false,
 		_currentLength: 0,
 		_hasValue: false,
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_resize: 'vertical',
 	};
 

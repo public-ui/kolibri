@@ -3,12 +3,14 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { propergateFocus } from '../../utils/reuse';
-import { propergateSubmitEventToForm } from '../form/controller';
+import { propagateFocus } from '../../utils/reuse';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
+import { validateMultiple } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-email',
@@ -23,12 +25,12 @@ export class KolInputEmail implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
-			propergateSubmitEventToForm({
+			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
@@ -65,7 +67,6 @@ export class KolInputEmail implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
-						part="input"
 						title=""
 						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
@@ -142,7 +143,7 @@ export class KolInputEmail implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -219,7 +220,7 @@ export class KolInputEmail implements ComponentApi {
 	 */
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_hasValue: false,
 		_list: [],
 	};

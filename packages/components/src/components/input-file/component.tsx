@@ -3,11 +3,12 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-file',
@@ -22,7 +23,7 @@ export class KolInputFile implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -45,7 +46,6 @@ export class KolInputFile implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
-						part="input"
 						title=""
 						accept={this.state._accept}
 						accessKey={this.state._accessKey}
@@ -115,7 +115,7 @@ export class KolInputFile implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
@@ -161,7 +161,7 @@ export class KolInputFile implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 	};
 
 	public constructor() {

@@ -1,6 +1,20 @@
 @import './label.css';
 @import './host-display-block.css';
 
+input,
+textarea {
+	cursor: text;
+}
+
+input[type='checkbox'],
+input[type='radio'],
+input[type='range'],
+label,
+option,
+select {
+	cursor: pointer;
+}
+
 /* input[type='checkbox'], */
 input[type='color'],
 input[type='date'],
@@ -22,7 +36,6 @@ select[multiple] option,
 select:not([multiple]),
 textarea {
 	font-size: 1rem;
-	padding: 0 0.5em;
 }
 
 /* needed hack for vertical alignment */
@@ -35,8 +48,7 @@ select[multiple] option {
 	padding: calc((var(--a11y-min-size) - 1rem) / 2) 0.5em;
 }
 
-:is(button, input, option, select, textarea):disabled,
-.kol-cursor-not-allowed,
-.kol-cursor-not-allowed * {
+kol-input.disabled :is(button, input, label, option, select, textarea) {
 	cursor: not-allowed;
+	opacity: 0.5;
 }

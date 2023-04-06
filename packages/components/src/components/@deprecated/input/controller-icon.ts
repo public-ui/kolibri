@@ -3,7 +3,7 @@ import { Stringified } from '../../../types/common';
 import { KoliBriHorizontalIcon } from '../../../types/icon';
 import { objectObjectHandler, parseJson, watchValidator } from '../../../utils/prop.validators';
 import { isString } from '../../../utils/validator';
-import { isIcon } from '../../../utils/validators/icon';
+import { isIcon } from '../../../types/props/icon';
 import { InputController } from './controller';
 import { Props, Watches } from './types-icon';
 

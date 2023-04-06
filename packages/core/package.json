@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.5.0-rc.8",
+	"version": "1.5.0-rc.11",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/core",
@@ -53,16 +53,16 @@
 		"update": "pnpm ncu:patch && pnpm ncu:minor && pnpm ncu:major"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.5.0-rc.8"
+		"@public-ui/components": "1.5.0-rc.11"
 	},
 	"devDependencies": {
 		"@types/node": "ts4.9",
-		"@typescript-eslint/eslint-plugin": "5.56.0",
-		"@typescript-eslint/parser": "5.56.0",
-		"eslint": "8.36.0",
+		"@typescript-eslint/eslint-plugin": "5.57.1",
+		"@typescript-eslint/parser": "5.57.1",
+		"eslint": "8.37.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"npm-check-updates": "16.7.13",
-		"prettier": "2.8.6",
+		"npm-check-updates": "16.10.1",
+		"prettier": "2.8.7",
 		"ts-prune": "0.10.3",
 		"typescript": "4.9.5",
 		"unbuild": "1.1.1"

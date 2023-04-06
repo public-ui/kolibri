@@ -12,7 +12,7 @@ const Toaster = new ToasterService(document);
  * - https://www.npmjs.com/package/monaco-editor
  */
 export const createTsEditor = (ref: HTMLElement, theme: string, code: string) => {
-	const css = formatReadableCssJson(code);
+	const css = formatReadableCssJson(code).replace(/\\/g, '\\\\');
 	copyToClipboard(css);
 	Toaster.enqueue({
 		heading: 'CSS code block copied to clipboard',

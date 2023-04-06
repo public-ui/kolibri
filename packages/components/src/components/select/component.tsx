@@ -3,11 +3,12 @@ import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
-import { propergateFocus } from '../../utils/reuse';
+import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -29,7 +30,7 @@ export class KolSelect implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLSelectElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
@@ -80,7 +81,6 @@ export class KolSelect implements ComponentApi {
 					</span>
 					<select
 						ref={this.catchRef}
-						part="select"
 						title=""
 						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
@@ -181,7 +181,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -234,7 +234,7 @@ export class KolSelect implements ComponentApi {
 	@State() public state: States = {
 		_hasValue: false,
 		_height: '',
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_list: [],
 		_multiple: false,
 		_value: [],

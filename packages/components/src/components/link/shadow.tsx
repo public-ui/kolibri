@@ -3,8 +3,8 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AlternativButtonLinkRole, AriaCurrent, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Alignment } from '../../types/props/alignment';
-import { propergateFocus } from '../../utils/reuse';
+import { AriaCurrent, PropAlignment } from '../../types/props';
+import { propagateFocus } from '../../utils/reuse';
 
 /**
  * @part link - Ermöglicht das Stylen des Links.
@@ -24,7 +24,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
 		this.ref = ref;
-		propergateFocus(this.host, this.ref);
+		propagateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {

@@ -159,15 +159,8 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 			<Host ref={this.catchHostElement}>
 				{this.state._label !== '' && (
 					<div id="floating" ref={this.catchTooltipElement}>
-						<div id="arrow" ref={this.catchArrowElement} />
-						<kol-badge
-							id={this.state._id}
-							_color={{
-								backgroundColor: '#333',
-								color: '#ddd',
-							}}
-							_label={this.state._label}
-						></kol-badge>
+						<div class="area" id="arrow" ref={this.catchArrowElement} />
+						<kol-span-wc class="area" id={this.state._id} _label={this.state._label}></kol-span-wc>
 					</div>
 				)}
 			</Host>
