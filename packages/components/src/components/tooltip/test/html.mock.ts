@@ -1,10 +1,10 @@
+import { getBadgeHtml } from '../../badge/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
 import { Props, States } from '../component';
 import { nonce } from '../../../utils/dev.utils';
-import { getSpanWcHtml } from '../../span/test/html.mock';
 
 export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
-	const state: States = mixMembers<Props, States>(
+	const state: States = mixMembers(
 		{
 			_align: 'top',
 			_id: nonce(),
@@ -18,15 +18,16 @@ export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
 		state._label === ''
 			? ''
 			: `<div id="floating">
-			<div class="area" id="arrow"></div>
-			${getSpanWcHtml(
+			<div id="arrow"></div>
+			${getBadgeHtml(
 				{
 					_label: state._label,
+					_color: {
+						backgroundColor: '#333',
+						color: '#ddd',
+					},
 				},
-				{
-					expert: undefined,
-				},
-				` class="area" id="${state._id}"`
+				` id="${state._id}"`
 			)}
 		</div>`
 	}

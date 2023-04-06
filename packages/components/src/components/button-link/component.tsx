@@ -11,8 +11,8 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { propagateFocus } from '../../utils/reuse';
-import { AriaCurrent, PropAlignment } from '../../types/props';
+import { propergateFocus } from '../../utils/reuse';
+import { Alignment } from '../../types/props/alignment';
 
 @Component({
 	tag: 'kol-button-link',
@@ -27,7 +27,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propergateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {

@@ -1,25 +1,11 @@
 import { Generic } from '@a11y-ui/core';
-import { ButtonStates } from '../button-link';
-import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../icon';
-import { PropAlignment } from '.';
-import { objectObjectHandler, parseJson, watchValidator } from '../../utils/prop.validators';
-import { isObject, isString, isStyle } from '../../utils/validator';
-import { Stringified } from '../common';
+import { ButtonStates } from '../../types/button-link';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../../types/icon';
+import { Alignment } from '../../types/props/alignment';
+import { objectObjectHandler, parseJson, watchValidator } from '../prop.validators';
+import { isObject, isString, isStyle } from '../validator';
 
-/* types */
-/** de
- * Setzt den unbestimmten Zustand auf der Checkbox, hat keine Auswirkung auf _checked.
- */
-/** en
- * Puts the checkbox in the indeterminate state, does not change the value of _checked.
- */
-export type PropIcon = {
-	icon: Stringified<KoliBriIconProp>;
-};
-
-/* validator */
-
-const mapCustomIcon = (state: KoliBriIconState, alignment: PropAlignment, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
+const mapCustomIcon = (state: KoliBriIconState, alignment: Alignment, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
 		state[alignment] = icon as KoliBriCustomIcon;
 	} else if (isString(icon, 1)) {
@@ -29,7 +15,7 @@ const mapCustomIcon = (state: KoliBriIconState, alignment: PropAlignment, icon?:
 	}
 };
 
-export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: PropAlignment): KoliBriIconState => {
+export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: Alignment): KoliBriIconState => {
 	let state: KoliBriIconState = {};
 	if (isString(icon, 1)) {
 		switch (iconAlign) {
@@ -59,13 +45,13 @@ export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: PropAlignme
 const beforePatchIcon = (component: Generic.Element.Component): void => {
 	if (component.nextState?.has('_icon')) {
 		const icon = component.nextState?.get('_icon') as KoliBriIconProp;
-		const iconAlign = (component.nextState?.get('_iconAlign') as PropAlignment) || (component.state as ButtonStates)._iconAlign;
+		const iconAlign = (component.nextState?.get('_iconAlign') as Alignment) || (component.state as ButtonStates)._iconAlign;
 		component.nextState?.set('_icon', mapIconProp2State(icon, iconAlign));
 	} else if (component.nextState?.has('_iconAlign')) {
-		const lastIconAlign = (component.state as ButtonStates)._iconAlign as PropAlignment;
+		const lastIconAlign = (component.state as ButtonStates)._iconAlign as Alignment;
 		component.nextState?.set('_icon', {
 			[lastIconAlign]: undefined,
-			[component.nextState?.get('_iconAlign') as PropAlignment]: (component.state as ButtonStates)._icon[lastIconAlign],
+			[component.nextState?.get('_iconAlign') as Alignment]: (component.state as ButtonStates)._icon[lastIconAlign],
 		});
 	}
 };
@@ -119,7 +105,7 @@ export const validateIcon = (component: Generic.Element.Component, value?: KoliB
 	});
 };
 
-export const watchIconAlign = (component: Generic.Element.Component, value?: PropAlignment): void => {
+export const watchIconAlign = (component: Generic.Element.Component, value?: Alignment): void => {
 	watchValidator(component, '_iconAlign', (value) => value === 'left' || value === 'right', new Set(['Alignment {left, right, top, bottom}']), value, {
 		hooks: {
 			beforePatch: () => {

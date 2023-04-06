@@ -2,9 +2,10 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
-type RequiredProps = {
-	id: string;
-};
+/**
+ * API
+ */
+type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;
 	disabled: boolean;

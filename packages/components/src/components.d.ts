@@ -641,7 +641,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
          */
@@ -716,7 +716,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -782,7 +782,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -872,7 +872,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -966,7 +966,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -1036,7 +1036,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -1131,7 +1131,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt an, wie viele Zeichen man maximal eingeben kann.
          */
@@ -1209,7 +1209,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1274,7 +1274,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1344,7 +1344,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1418,7 +1418,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1819,7 +1819,6 @@ export namespace Components {
         "_compact"?: boolean;
         /**
           * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
-          * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
         /**
@@ -1955,7 +1954,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -2127,7 +2126,7 @@ export namespace Components {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Setzt die maximale Zeichenanzahl.
          */
@@ -3208,7 +3207,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
          */
@@ -3283,7 +3282,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3349,7 +3348,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -3439,7 +3438,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3533,7 +3532,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -3603,7 +3602,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -3698,7 +3697,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt an, wie viele Zeichen man maximal eingeben kann.
          */
@@ -3776,7 +3775,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -3841,7 +3840,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -3911,7 +3910,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3985,7 +3984,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -4386,7 +4385,6 @@ declare namespace LocalJSX {
         "_compact"?: boolean;
         /**
           * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
-          * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
         /**
@@ -4522,7 +4520,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -4694,7 +4692,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die technische ID des Eingabefeldes an.
          */
-        "_id"?: string;
+        "_id": string;
         /**
           * Setzt die maximale Zeichenanzahl.
          */

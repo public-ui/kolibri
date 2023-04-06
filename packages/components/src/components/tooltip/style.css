@@ -12,6 +12,7 @@ kol-tooltip #floating {
 }
 
 kol-tooltip #arrow {
+	background: #333;
 	height: 10px;
 	position: absolute;
 	transform: rotate(45deg);
@@ -19,11 +20,7 @@ kol-tooltip #arrow {
 	z-index: 999;
 }
 
-kol-tooltip .area {
-	background-color: white;
-}
-
-kol-tooltip kol-span-wc {
+kol-tooltip kol-badge {
 	position: relative;
 	z-index: 1000;
 }

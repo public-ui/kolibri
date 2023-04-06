@@ -5,7 +5,7 @@ import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { setState, watchValidator } from '../../utils/prop.validators';
-import { propagateFocus } from '../../utils/reuse';
+import { propergateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { ComponentApi, States } from './types';
 
@@ -31,7 +31,7 @@ export class KolInputDate implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLKolInputNumberElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propergateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -111,7 +111,7 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.

@@ -50,28 +50,23 @@
 									_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
 									_label="primary"
 									_variant="primary"
-									onclick="createAndShowToast()"
+									class="openmodalbutton"
 								></kol-button>
 								<kol-button
 									_icon="{ 'right': { 'icon': 'codicon codicon-arrow-right' } }"
 									_label="secondary"
 									_variant="secondary"
-									onclick="createAndShowToast()"
+									class="openmodalbutton"
 								></kol-button>
-								<kol-button
-									_icon="{ 'top': { 'icon': 'codicon codicon-arrow-up' } }"
-									_label="danger"
-									_variant="danger"
-									onclick="createAndShowToast()"
-								></kol-button>
+								<kol-button _icon="{ 'top': { 'icon': 'codicon codicon-arrow-up' } }" _label="danger" _variant="danger" class="openmodalbutton"></kol-button>
 								<kol-button
 									_icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }"
 									_label="normal"
 									_variant="normal"
-									onclick="createAndShowToast()"
+									class="openmodalbutton"
 								></kol-button>
-								<kol-button _label="ghost" _variant="ghost" onclick="createAndShowToast()"></kol-button>
-								<kol-button _label="custom" _variant="custom" onclick="createAndShowToast()"></kol-button>
+								<kol-button _label="ghost" _variant="ghost" class="openmodalbutton"></kol-button>
+								<kol-button _label="custom" _variant="custom" class="openmodalbutton"></kol-button>
 							</div>
 						</kol-card>
 						<kol-card _heading="disabled buttons" _level="3">
@@ -165,13 +160,6 @@
 								<kol-textarea _id="textarea">Textarea</kol-textarea>
 								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
 									>Anrede</kol-input-radio
-								><kol-input-radio
-									_orientation="horizontal"
-									class="herr-frau"
-									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
-									_value="1"
-									>Anrede</kol-input-radio
 								>
 								<kol-input-range _id="schnitzelwert" _min="0" _max="50" _unit="Schnitzel" _value="25">Schieberegler</kol-input-range>
 								<kol-progress _id="schnitzelfortschritt" _type="cycle" _value="25"></kol-progress>
@@ -188,7 +176,7 @@
 					<div style="display: flex; gap: 2rem; justify-content: space-between">
 						<kol-pagination _total="9" _page="3" class="bordered p-i"></kol-pagination>
 
-						<kol-version _version="1.5.0-rc.11"></kol-version>
+						<kol-version _version="1.5.0-rc.8"></kol-version>
 					</div>
 					<kol-image _src="/assets/images/abgrenzung.jpg" _alt="KoliBri Darstellung"></kol-image>
 				</div>
@@ -664,14 +652,6 @@
 								<kol-input-date _id="input-date-time" _type="time">Zeit (Standard)</kol-input-date>
 								<kol-input-password _id="input-password">Passwort</kol-input-password>
 								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
-									>Anrede</kol-input-radio
-								>
-								<kol-input-radio
-									_orientation="horizontal"
-									class="herr-frau"
-									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
-									_value="1"
 									>Anrede</kol-input-radio
 								>
 								<kol-input-range class="herr-frau" _id="input-range" _min="0" _max="50">Schieberegler</kol-input-range>
@@ -1482,12 +1462,12 @@
 							<kol-heading _headline="" _level="2">Progress</kol-heading>
 						</div>
 						<div class="col-12">
-							<kol-progress></kol-progress>
-							<kol-button _label="Simulation starten"></kol-button>
+							<kol-progress class="progress"></kol-progress>
+							<kol-button class="progress" _label="Balken-Anzeige starten"></kol-button>
 						</div>
 						<div class="col-12">
-							<kol-progress _unit="Schnitzel" _value="75" _type="cycle"></kol-progress>
-							<kol-button _label="Simulation starten"></kol-button>
+							<kol-progress class="progress" _unit="Schnitzel" _value="75" _type="cycle"></kol-progress>
+							<kol-button class="progress" _label="Kreis-Anzeige starten"></kol-button>
 						</div>
 						<div class="col-12">
 							<script src="assets/progress-simulation.js"></script>
@@ -2091,8 +2071,8 @@
 						</div>
 						<div class="col-12">
 							<div class="gap-2 d-flex">
-								<kol-version _version="1.5.0-rc.11"></kol-version>
-								<kol-version _label="1.5.0-rc.11"></kol-version>
+								<kol-version _version="1.5.0-rc.8"></kol-version>
+								<kol-version _label="1.5.0-rc.8"></kol-version>
 							</div>
 						</div>
 					</div>

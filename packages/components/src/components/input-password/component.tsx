@@ -4,13 +4,12 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 
 import { devHint } from '../../utils/a11y.tipps';
-import { propagateFocus } from '../../utils/reuse';
-import { propagateSubmitEventToForm } from '../form/controller';
+import { propergateFocus } from '../../utils/reuse';
+import { propergateSubmitEventToForm } from '../form/controller';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-password',
@@ -25,12 +24,12 @@ export class KolInputPassword implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propergateFocus(this.host, this.ref);
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
 		if (event.code === 'Enter') {
-			propagateSubmitEventToForm({
+			propergateSubmitEventToForm({
 				form: this.host,
 				ref: this.ref,
 			});
@@ -64,6 +63,7 @@ export class KolInputPassword implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
+						part="input"
 						title=""
 						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
@@ -138,7 +138,7 @@ export class KolInputPassword implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id!: string;
 
 	/**
 	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
@@ -205,7 +205,7 @@ export class KolInputPassword implements ComponentApi {
 	 */
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
+		_id: '…', // ⚠ required
 		_hasValue: false,
 	};
 

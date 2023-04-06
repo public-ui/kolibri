@@ -73,24 +73,25 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 				}}
 			>
 				{this.state._activeElement /* SSR instanceof HTMLElement */ && (
-					<div class="overlay">
-						<div
-							class="modal"
-							style={{
-								width: this.state._width,
-							}}
-							aria-label={this.state._ariaLabel}
-							aria-modal="true"
-							role="dialog"
-							onKeyDown={this.onKeyDown}
-							ref={(el) => {
-								if (el /* SSR instanceof HTMLElement */) {
-									el.setAttribute('tabindex', '0');
-									setTimeout(() => el.focus(), 250);
-								}
-							}}
-						>
-							<slot />
+					<div>
+						<div>
+							<div
+								style={{
+									width: this.state._width,
+								}}
+								aria-label={this.state._ariaLabel}
+								aria-modal="true"
+								role="dialog"
+								onKeyDown={this.onKeyDown}
+								ref={(el) => {
+									if (el /* SSR instanceof HTMLElement */) {
+										el.setAttribute('tabindex', '0');
+										setTimeout(() => el.focus(), 250);
+									}
+								}}
+							>
+								<slot />
+							</div>
 						</div>
 					</div>
 				)}

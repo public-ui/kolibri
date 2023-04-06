@@ -73,7 +73,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id!: string;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.

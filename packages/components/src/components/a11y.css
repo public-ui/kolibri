@@ -56,15 +56,3 @@ textarea {
 	min-height: var(--a11y-min-size);
 	min-width: var(--a11y-min-size);
 }
-
-/**
- * Some interactive elements should not inherit the font-family.
- */
-a,
-button,
-input,
-option,
-select,
-textarea {
-	font-family: inherit;
-}

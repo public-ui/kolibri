@@ -4,11 +4,10 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { W3CInputValue } from '../../types/w3c';
-import { propagateFocus } from '../../utils/reuse';
+import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-radio',
@@ -23,7 +22,7 @@ export class KolInputRadio implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propergateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -68,6 +67,7 @@ export class KolInputRadio implements ComponentApi {
 										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
+										part="input"
 										title=""
 										type="radio"
 										id={customId}
@@ -143,7 +143,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id!: string;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
@@ -189,7 +189,7 @@ export class KolInputRadio implements ComponentApi {
 	 * @see: components/abbr/component.tsx (@State)
 	 */
 	@State() public state: States = {
-		_id: nonce(), // ⚠ required
+		_id: '…', // ⚠ required
 		_list: [],
 
 		_orientation: 'vertical',

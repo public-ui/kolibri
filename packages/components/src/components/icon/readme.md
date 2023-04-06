@@ -56,9 +56,9 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ## Shadow Parts
 
-| Part     | Description                               |
-| -------- | ----------------------------------------- |
-| `"icon"` | Ermöglicht das Styling des inneren Icons. |
+| Part     | Description |
+| -------- | ----------- |
+| `"icon"` |             |
 
 ## Dependencies
 

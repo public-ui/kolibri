@@ -6,9 +6,13 @@ import { Generic } from '@a11y-ui/core';
 import { InputTextType } from '../../types/input/control/text';
 import { Stringified } from '../../types/common';
 
-type RequiredProps = unknown;
-type OptionalProps = {
+/**
+ * API
+ */
+type RequiredProps = {
 	id: string;
+};
+type OptionalProps = {
 	list: Stringified<string[]>;
 };
 type InputTextEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;

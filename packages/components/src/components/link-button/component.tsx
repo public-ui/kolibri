@@ -1,20 +1,29 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { translate } from '../../i18n';
 import {
 	AlternativButtonLinkRole,
 	AriaCurrent,
 	KoliBriButtonVariant,
+	LinkButtonStates,
 	LinkOnCallbacks,
 	LinkTarget,
 	OptionalLinkButtonProps,
+	OptionalLinkButtonStates,
 	RequiredLinkButtonProps,
+	RequiredLinkButtonStates,
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment } from '../../types/props';
-import { propagateFocus } from '../../utils/reuse';
+import { watchString } from '../../utils/prop.validators';
+import { propergateFocus } from '../../utils/reuse';
+import { watchButtonVariant } from '../button/controller';
+import { Alignment } from '../../types/props/alignment';
+import { translate } from '../../i18n';
+
+type State = {
+	state: Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
+};
 
 @Component({
 	tag: 'kol-link-button',
@@ -23,13 +32,18 @@ import { propagateFocus } from '../../utils/reuse';
 	},
 	shadow: true,
 })
-export class KolLinkButton implements Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps> {
+export class KolLinkButton
+	implements
+		Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>,
+		Generic.Element.Watchers<RequiredLinkButtonStates, OptionalLinkButtonStates>,
+		State
+{
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 	private ref?: HTMLKolLinkWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolLinkWcElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propergateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -39,8 +53,9 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 					ref={this.catchRef}
 					class={{
 						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+						[this.state._variant as string]: this.state._variant !== 'custom',
+						[this.state._customClass as string]:
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					}}
 					_ariaControls={this._ariaControls}
 					_ariaCurrent={this._ariaCurrent}
@@ -163,4 +178,37 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	 * Gibt an, welche Ausprägung der Link-Button hat.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+
+	/**
+	 * @see: components/abbr/component.tsx (@State)
+	 */
+	@State() public state: LinkButtonStates = {
+		_variant: 'normal',
+	};
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_customClass')
+	public validateCustomClass(value?: string): void {
+		watchString(this, '_customClass', value, {
+			defaultValue: undefined,
+		});
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (@Watch)
+	 */
+	@Watch('_variant')
+	public validateVariant(value?: KoliBriButtonVariant): void {
+		watchButtonVariant(this, '_variant', value);
+	}
+
+	/**
+	 * @see: components/abbr/component.tsx (componentWillLoad)
+	 */
+	public componentWillLoad(): void {
+		this.validateCustomClass(this._customClass);
+		this.validateVariant(this._variant);
+	}
 }

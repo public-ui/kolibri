@@ -4,11 +4,10 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { propagateFocus } from '../../utils/reuse';
+import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputColorController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-color',
@@ -23,7 +22,7 @@ export class KolInputColor implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propergateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -47,6 +46,7 @@ export class KolInputColor implements ComponentApi {
 					</span>
 					<input
 						ref={this.catchRef}
+						part="input"
 						title=""
 						accessKey={this.state._accessKey}
 						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
@@ -114,7 +114,7 @@ export class KolInputColor implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -156,7 +156,7 @@ export class KolInputColor implements ComponentApi {
 	 */
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
+		_id: '…', // ⚠ required
 		_list: [],
 	};
 

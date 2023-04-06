@@ -2,12 +2,10 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { validateChecked, validateIndeterminate } from '../../types/props';
-import { propagateFocus } from '../../utils/reuse';
+import { propergateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-checkbox',
@@ -22,7 +20,7 @@ export class KolInputCheckbox implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		propergateFocus(this.host, this.ref);
 	};
 
 	public render(): JSX.Element {
@@ -123,7 +121,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id!: string;
 
 	/**
 	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
@@ -182,7 +180,7 @@ export class KolInputCheckbox implements ComponentApi {
 			indeterminate: 'codicon codicon-remove',
 			unchecked: 'codicon codicon-add',
 		},
-		_id: nonce(), // ⚠ required
+		_id: '…', // ⚠ required
 		_indeterminate: false,
 		_variant: 'checkbox',
 	};

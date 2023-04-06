@@ -10,48 +10,80 @@ kol-input .icons {
 }
 
 label {
-	cursor: pointer;
+	display: grid;
+	font-size: 14px;
+	line-height: 20px;
+	gap: 8px;
+	width: 100%;
 }
 
 input {
-	appearance: none;
 	border-width: var(--border-width);
 	border-style: solid;
 	border-radius: 100%;
-	cursor: pointer;
-	display: flex;
+	font-size: 16px;
 	height: var(--input-size);
-	margin: 0;
 	min-height: var(--input-size);
 	min-width: var(--input-size);
+	margin: 0;
 	padding: 0;
 	width: var(--input-size);
 }
-input:before {
+input:focus {
+	outline-offset: 2px;
+	outline-style: solid;
+	outline-width: 3px;
+}
+
+kol-alert {
+	display: block;
+	width: 100%;
+}
+fieldset {
+	border: 0px;
+	display: grid;
+	gap: 0.25em;
+	margin: 0px;
+	padding: 0px;
+}
+fieldset legend {
+	display: block;
+	line-height: 1.5em;
+	width: 100%;
+}
+fieldset div {
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	gap: 0.5em;
+	margin-bottom: 0.25em;
+	margin-top: 0.25em;
+	position: relative;
+}
+fieldset div label {
+	cursor: pointer;
+	display: flex;
+	width: 100%;
+}
+fieldset div label span {
+	margin-top: 0.125em;
+}
+fieldset div input[type='radio'] {
+	appearance: none;
+	border-radius: 100%;
+	display: grid;
+	place-content: center;
+	transition: 0.5s;
+}
+fieldset div input[type='radio']:before {
+	border: none;
 	border-radius: 100%;
 	content: '';
-	margin: auto;
+	display: block;
 	height: calc(var(--input-size) / 2);
 	width: calc(var(--input-size) / 2);
 }
-input:checked:before {
+fieldset div input[type='radio']:checked:before {
 	background-color: black;
-}
-
-fieldset {
-	display: flex;
-}
-
-fieldset.vertical {
-	flex-direction: column;
-}
-
-fieldset [slot='input'] {
-	align-items: center;
-	display: flex;
-}
-
-/* required star is on fieldset legend */
-.required label > span::after {
-	content: '';
 }

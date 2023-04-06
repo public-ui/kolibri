@@ -18,8 +18,8 @@ title: Komponenten-Bibliothek für die Barrierefreiheit | KoliBri
 <kol-logo _org="ITZBund" class="m-auto pl-40 block w-140" />
 
 ---
-layout: center
----
+
+## layout: center
 
 <button class="border-1 mb-30 h-4 w-4 border-gray-700 rounded shadow bg-gray-100 p-1 hover:outline"><i class="absolute -pl fa-solid fa-arrow-pointer"></i></button>
 
@@ -29,8 +29,8 @@ layout: center
 </div>
 
 ---
-layout: center
----
+
+## layout: center
 
 <img src="/assets/torte.png" class="block w-50 mb-15"/>
 
@@ -40,8 +40,8 @@ layout: center
 </div>
 
 ---
-layout: tunnel
----
+
+## layout: tunnel
 
 <img src="/assets/accordion.png" class="block w-150 mb-15"/>
 
@@ -51,34 +51,17 @@ layout: tunnel
 </div>
 
 ---
-layout: about-itzbund
----
 
-# Referat II A 2
+## layout: about-me
 
-<v-clicks>
-
-- Unter Leitung von **Christine** Heinrich
-- Referat **Anforderungs- und Lösungsdesign** (II A 2)
-- Projekt **KoliBri**:
-  - Start 2021
-  - 1. Final-Release Dezember 2021
-  - 2022 geprägt durch Reifephase
-  - 2023 Open Source Standard
-
-</v-clicks>
-
----
-layout: about-me
----
-
-# Vortragender
+# Speaker
 
 <v-clicks>
 
-- Mein Name ist **Martin** Oppitz
+- Mein Name ist **Martin** Oppitz.
 - **Wertegang:**
   - Inzwischen **über 25 Jahre** im Web unterwegs
+  - Informatikstudium, Einzelunternehmer und Privatwirtschaft
   - Seit 3 Jahren beim **ITZBund** in der **Architektur-Beratung**
 - **Softwarearchitekt** im Referat **Anforderungs- und Lösungsdesign** (II A 2)
 - **Interessen:** Familie, Rad und Ski fahren, Reisen und Open Source
@@ -86,8 +69,8 @@ layout: about-me
 </v-clicks>
 
 ---
-layout: center
----
+
+## layout: center
 
 <v-click>
 
@@ -108,8 +91,10 @@ layout: center
 </v-after>
 
 ---
+
 layout: egg
 handle: 1
+
 ---
 
 # Vom **Ei** zum **Open Source**-Standard
@@ -120,7 +105,7 @@ handle: 1
 
 - Was ist eine **Web Component**?
 - Worin liegt eigentlich das **Problem**?
-- Welche **Ziele** können mit KoliBri verfolgt werden?
+- Welche **Ziele** können mit KoliBri erreicht werden?
 - Wie ist KoliBri **aufgestellt**?
 - Wo wird denn hier was **eingespart**?
 - Was macht eigentlich den **Unterschied**?
@@ -131,9 +116,11 @@ handle: 1
 </v-clicks>
 
 ---
+
 layout: image-right-50
 image: '/assets/html-js-css.png'
 handle: 2
+
 ---
 
 # Web Components
@@ -146,9 +133,9 @@ handle: 2
 
 - Komponente ≙ <strong>eigene</strong> HTML-Elemente
 - Komponente besteht aus …
-  - HTML <kol-icon _icon="codicon codicon-arrow-right"></kol-icon> <strong>Semantik</strong>
-  - JavaScript <kol-icon _icon="codicon codicon-arrow-right"></kol-icon> <strong>Verhalten</strong>
-  - CSS <kol-icon _icon="codicon codicon-arrow-right"></kol-icon> <strong>Aussehen</strong>
+  - HTML <kol-icon _icon="icofont-arrow-right"></kol-icon> <strong>Semantik</strong>
+  - JavaScript <kol-icon _icon="icofont-arrow-right"></kol-icon> <strong>Verhalten</strong>
+  - CSS <kol-icon _icon="icofont-arrow-right"></kol-icon> <strong>Aussehen</strong>
 - <strong>Robuster, konsistenter und teilbarer</strong> Baustein (Shadow DOM)
 - **erst 2021** technischer Durchbruch (<kol-abbr _title="Microsoft Internet Explorer 11">IE11</kol-abbr> & <kol-abbr _title="Microsoft Edge Webbrowser">EDGE</kol-abbr>)
 - in allen webbasierten Benutzeroberflächen wiederverwendbar (Web & App)<sup>1</sup>
@@ -158,9 +145,11 @@ handle: 2
 <small v-after class="mt-8 float-right text-xs"><sup>1</sup> Es gibt ausführungseitig unterschiedliche Randbedingungen (<kol-link _href="https://dev.to/pahanperera/visual-explanation-and-comparison-of-csr-ssr-ssg-and-isr-34ea" _target="dev.to"><kol-abbr _title="Client Side Rendering">CSR</kol-abbr>, <kol-abbr _title="Server Side Rendering">SSR</kol-abbr>, <kol-abbr _title="Static Side Gerneration">SSG</kol-abbr>, <kol-abbr _title="Incremental Static Regeneration">IRS</kol-abbr></kol-link>)</small>
 
 ---
+
 layout: image-right-50
 image: '/assets/w3c.jpeg'
 handle: 3
+
 ---
 
 # Viele Wege führen nach Rom
@@ -178,14 +167,16 @@ Der **große Vorteil für die Bundesverwaltung** liegt darin, dass wir mittels d
 </v-clicks>
 
 ---
+
 layout: image-right-50
 image: '/assets/reaktionsschnell.png'
 handle: 4
+
 ---
 
-# Motivation
+# Ziele
 
-<small class="underline">Welche Ziele können damit verfolgt werden?</small>
+<small class="underline">Welche Ziele können damit erreicht werden?</small>
 
 Wir wollen **benutzerfreundliche**, **barrierefreie**, **Styleguide-konforme** und **wiederverwendbare** Benutzeroberflächen realisieren.
 
@@ -202,9 +193,11 @@ Wir wollen **benutzerfreundliche**, **barrierefreie**, **Styleguide-konforme** u
 <br />
 
 ---
+
 layout: image-right-66
 image: '/assets/theming.png'
 handle: 5
+
 ---
 
 # Theming
@@ -215,16 +208,16 @@ Das Theming entkoppelt das Aussehen vollständig von den barrierefreien Komponen
 
 <v-clicks>
 
-1. Komponenten<br/>_(Semantik und Verhalten)_
-2. Styleguide/Corporate Design<br/>_(Aussehen)_
-3. Kundenspezifischer Kolibri<br/>_(Design System)_
-
+- Jede Komponente kann innerhalb der semantischen HTML-Struktur unterschiedlich gestaltet werden.
+- Jede Kombination aus KoliBri-Komponenten und Styleguide kann unabhängig umgesetzt und getestet werden.
 
 </v-clicks>
 
 ---
+
 layout: demo-time
 handle: 6
+
 ---
 
 # Live-Demo
@@ -259,9 +252,11 @@ Im Code-Beispiel wird dargestellt, wie die Anforderungen an die Barrierefreiheit
 <small class="mt-8 text-xs"><sup>\*</sup> Quellcode ist für die bessere Nachvollziehbarkeit stark vereinfacht.</small>
 
 ---
+
 layout: image-right
 image: '/assets/usp.png'
 handle: 7
+
 ---
 
 # Alleinstellungsmerkmale
@@ -281,9 +276,11 @@ Aus Sicht der öffentlichen Verwaltung hat KoliBri eine ganze Reihe an Alleinste
 </v-clicks>
 
 ---
+
 layout: image-right
 image: '/assets/oss.png'
 handle: 9
+
 ---
 
 # Ausblick
@@ -314,9 +311,11 @@ handle: 9
 </v-after>
 
 ---
+
 layout: image-right
 image: '/assets/eupl.jpeg'
 handle: 10
+
 ---
 
 # Lizenz
@@ -346,9 +345,11 @@ Die "Open-Source-Lizenz für die Europäische Union" (EUPL) ist eine von der Eur
 </v-clicks>
 
 ---
+
 layout: image-right
 image: '/assets/swizzling.png'
 handle: 11
+
 ---
 
 # Fragen
@@ -369,10 +370,12 @@ handle: 11
 </small>
 
 ---
+
 layout: image-right-50
 image: '/assets/get-started.png'
 handle: 10
 style: 'width: 100%'
+
 ---
 
 # Erste Schritte
@@ -399,8 +402,8 @@ Du kannst folgendes tun, um **KoliBri** kennenzulernen …
 </v-after>
 
 ---
-layout: center
----
+
+## layout: center
 
 <img class="m-auto block w-50 pb-15" src="/assets/qr-code.png" />
 <small class="underline">Lasst uns gemeinsam KoliBri bunter und besser machen!</small>
@@ -408,11 +411,11 @@ layout: center
 # Vielen Dank für Ihre Aufmerksamkeit
 
 <ul class="flex">
-  <li class="list-none"><kol-link _href="https://public-ui.github.io" _target="storybook"><kol-icon _icon="codicon codicon-book" /> Dokumentation</kol-link></li>
+  <li class="list-none"><kol-link _href="https://public-ui.github.io" _target="storybook"><kol-icon _icon="fa-sharp fa-solid fa-book" /> Dokumentation</kol-link></li>
   <li class="list-none">|</li>
-  <li class="list-none"><kol-link _href="mailto:kolibri@itzbund.de" _target="storybook"><kol-icon _icon="codicon codicon-mail" /> kolibri@itzbund.de</kol-link></li>
+  <li class="list-none"><kol-link _href="mailto:kolibri@itzbund.de" _target="storybook"><kol-icon _icon="fa-solid fa-envelope" /> kolibri@itzbund.de</kol-link></li>
   <li class="list-none">|</li>
-  <li class="list-none"><kol-link _href="https://github.com/public-ui" _target="storybook"><kol-icon _icon="codicon codicon-github" /> GitHub</kol-link></li>
+  <li class="list-none"><kol-link _href="https://github.com/public-ui" _target="storybook"><kol-icon _icon="fa-brands fa-github" /> GitHub</kol-link></li>
 </ul>
 
 ---

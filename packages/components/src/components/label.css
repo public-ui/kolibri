@@ -1,6 +1,6 @@
 @import './style.css';
 
-.required label > span::after,
-.required legend > span::after {
+.required *[id*='-label'] > span::after {
 	content: '*';
+	padding-left: 0.125em;
 }
