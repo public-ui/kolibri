@@ -1,9 +1,6 @@
 # Link
 
 Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
-Möglich ist auch die Ausgabe eines versteckten Links.
-
-Der Link wird standardmäßig in klassischer Form mit Unterstrich ausgegeben, der jedoch über ein Attribut auch ohne CSS entfernt werden kann. Weitere Informationen zu Custom Styles finden Sie weiter unten.
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.
@@ -13,62 +10,44 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 ### Code
 
 ```html
-<kol-link _href="https://www.w3.org" _target="_self" _underline="false"> Hier steht ein Link </kol-link>
+<p>
+	In diesem Absatz wird ein Link gesetzt, der keine weiteren Attribute enthält.
+	<kol-link _href="https://www.w3.org">Hier steht ein Link</kol-link>Er wird standardmäßig als
+	<i>
+		<b>inline-Element</b>
+	</i>
+	ausgegeben.
+</p>
 ```
 
 ### Beispiel
 
 <p>
    In diesem Absatz wird ein Link gesetzt, der keine weiteren Attribute enthält.
-  <kol-link _href="https://www.w3.org">Hier steht ein Link</kol-link> Er wird standardmäßig als <i>
+  <kol-link _href="https://www.w3.org">Hier steht ein Link</kol-link>Er wird standardmäßig als <i>
     <b>inline-Element</b>
     </i> ausgegeben.
 </p>
 
 ## Verwendung
 
-### Link innerhalb eines Fließtextes, mit unterschiedlichen **\_display**-Werten
-
- <p>
-    In diesem Absatz wird ein Link gesetzt, der einmal als inline-block-Element ausgegeben wird.
-    <kol-link _display="inline-block">
-      Ich bin ein Link als <b>inline-block-Element</b>
-    </kol-link>, damit kann man mir per CSS-Styles eine Breite, eine Höhe und andere Eigenschaften zuweisen.
-    Danach folgt ein Link, der als block-Element ausgegeben wird.
-  <kol-link _display="block">
-      Ich bin ein Link als <b>block-Element</b>
-    </kol-link>,
-    daher gehe ich über die ganze Breite des Eltern-Elements erzeuge so einen Zeilenumbruch.
-</p>
-
 ### Link innerhalb eines Fließtextes mit Icon und Text
 
   <p>
-    <kol-link _icon="home">Ich bin ein Link mit Icon links</kol-link><br/>
-    <kol-link _icon="home" _icon-align="right">
+    <kol-link _icon="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link><br/>
+    <kol-link _icon="codicon codicon-home" _icon-align="right">
       Ich bin ein Link mit Icon rechts
     </kol-link>
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
     nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-    <kol-link _icon="home">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
-    elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi <kol-link
-      _icon="home"
+    <kol-link _icon="codicon codicon-home">Ich bin ein Link mit Icon links</kol-link>. Lorem, ipsum dolor sit amet consectetur adipisicing
+    elit. Ea optio deleniti fuga quos molestias, voluptate nobis nemo, incidunt excepturi<kol-link
+      _icon="codicon codicon-home"
       _icon-align="right"
     >
       Ich bin ein Link mit Icon rechts
     </kol-link>
     facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
-
-  </p>
-
-### Link mit und ohne Unterstrich
-
-  <p>
-    <kol-link _icon="home">Ich bin ein Link in Standardausgabe mit Unterstrich</kol-link><br/>
-    <kol-link _icon="home" _underline="false">
-      Ich bin ein Link in Standardausgabe ohne Unterstrich
-    </kol-link>
-
   </p>
 
 <!--### Best practices

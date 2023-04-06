@@ -55,7 +55,7 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _ariaLabel!: string;
 
 	/**
-	 * Ist die Liste der unsichtbaren Links.
+	 * Setzt die Liste der darzustellenden Links.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 

@@ -1,18 +1,18 @@
 # InputColor
 
-Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Angabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.
+Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Eingabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.
 
 ## Konstruktion
 
 ### Code
 
 ```html
-<kol-input-color _id="meine_farbe" _name="meine_farbe" _value="#ff0000"> Hintergrundfarbe </kol-input-color>
+<kol-input-color _id="meine_farbe" _name="meine_farbe" _value="#d4fcf4"> Hintergrundfarbe </kol-input-color>
 ```
 
 ### Beispiel
 
-<kol-input-color  _id="meine_farbe" _name="meine_farbe" _value="#ff0000">Hintergrundfarbe</kol-input-color>
+<kol-input-color  _id="meine_farbe" _name="meine_farbe" _value="#d4fcf4">Hintergrundfarbe</kol-input-color>
 
 ## Verwendung
 
@@ -20,7 +20,7 @@ Stellen Sie die Default-Farbe über das Attribut `_value` ein. Verwenden Sie hie
 
 ### Best practices
 
-- Achten Sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 
@@ -28,22 +28,19 @@ Beachten Sie, dass die **InputColor**-Komponente nicht vollständig barrierefrei
 
 Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgefertigten Farbauswahlliste, z.B. über Checkboxen oder Select-Felder.
 
-Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenreadern vorgelesen wird und so eine eindeutige Identifikation des Eingabefeldes ermöglicht.
-
 ### Tastatursteuerung
 
 | Taste                           | Funktion                                                                                                                                    |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                           | Fokussiert das Eingabefeld. Bei geöffnetem Dialogfeld kann mit der Tab-Taste zwischen den Steuerfeldern gewechselt werden.                  |
 | `Enter`                         | Öffnet bzw. schließt das Dialogfeld der Komponente. Bei fokussierter Pipette wird mit der Enter-Taste die Funktion **_Pipette_** gestartet. |
-| `ESC`                           | Beendet die Pipetten-Funktion. .                                                                                                            |
+| `ESC`                           | Beendet die Pipettenfunktion. Schließt das Dialogfeld, wenn die Pipettenfunktion nicht aktiv ist.                                           |
 | `Pfeil-Tasten (rechts / links)` | Verschieben bei fokussiertem Feld **_Farbspektrum_** den Auswahlpunkt.                                                                      |
 | `Pfeil-Tasten (oben   / unten)` | Ändert bei fokussiertem Feld **_Farbsystem_** die Auswahl.                                                                                  |
 
 ## Links und Referenzen
 
 - https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
-- https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/
 
 <!-- Auto Generated Below -->
 

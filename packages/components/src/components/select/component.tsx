@@ -144,7 +144,7 @@ export class KolSelect implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -161,12 +161,12 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _height?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 */
 	@Prop() public _hint?: string = '';
 
@@ -201,12 +201,12 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt an, ob die Selectbox ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean;
 
 	/**
-	 * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
 	 */
 	@Prop() public _size?: number;
 

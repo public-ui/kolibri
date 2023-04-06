@@ -1,6 +1,6 @@
 # InputFile
 
-Der Input-Typ **File** erzeugt ein Eingabefeld für Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.
+Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.
 
 ## Konstruktion
 
@@ -12,14 +12,16 @@ Der Input-Typ **File** erzeugt ein Eingabefeld für Uploads. Es können eine ode
 
 ### Beispiel
 
-<kol-input-file _id="mein_upload" _name="mein_upload" _accept="image/png">Bild hochladen</kol-input-file>
+<kol-input-file _id="mein_upload" _name="mein_upload" _accept="image/png, image/jpeg, application/pdf"> Bild hochladen </kol-input-file>
 
 ## Verwendung
 
 Geben Sie über das Attribut **`_accept`** an, welche Dateitypen zur Auswahl erlaubt sind. Wird das Attribut nicht oder leer übergeben, sind alle Dateitypen erlaubt.
+Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" _label="MDN Artikel zum Attribut accept"></kol-link>.
 
 ### Best practices
 
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 - Lassen Sie nur die Dateitypen zum Upload zu, die für die Programmausführung benötigt werden. Eine fehlende Einschränkung der hochladbaren Dateitypen kann ein erhebliches Sicherheitsrisiko sein.
 - Begrenzen Sie die Größe der Dateien, die Sie zum Upload zulassen möchten.
 

@@ -1,4 +1,4 @@
-# Table
+k# Table
 
 Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
@@ -10,33 +10,13 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
 
 Die Table-Komponente ist so konstruiert, dass nicht der gesamte Tabellenaufbau im Markup selbst beschrieben werden muss. Wie genau die Tabelle Markup-spezifisch aufgebaut werden muss, um barrierefrei zu sein, übernimmt die Komponente selbst.
 
-**Beispiel**, wie es nicht gedacht ist:
-
-```html
-<kol-table>
-	<kol-tr>
-		<kol-th>…</kol-th>
-		…
-	</kol-tr>
-	…
-</kol-table>
-```
-
-**Beispiel**, wie es gedacht ist:
-
-```html
-<div>
-	<kol-table _caption="…" _headers="…" _data="…" _pagination="…"></kol-table>
-</div>
-```
-
-Dadurch, dass die Table-Komponente das valide und barrierefreie Markup dynamisch "zusammenbaut", kann die komplexe Auszeichnung für die assistive Systeme dem/der Entwickler:in abgenommen werden.
+Dadurch, dass die Table-Komponente das valide und barrierefreie Markup dynamisch zusammenbaut, kann die komplexe Auszeichnung für die assistive Systeme dem/der Entwickler:in abgenommen werden.
 
 ### Funktionalitäten
 
 Die Table-Komponente unterstützt folgende Funktionalitäten:
 
-- Tabellenbeschreibung durch ein `caption`-Attribut.
+- Tabellenbeschreibung durch ein **`caption`**-Attribut.
 - Mehrzeilige Spaltenüberschriften in horizontaler oder vertikaler Richtung.
 - Sortierfunktion für entweder horizontale und vertikale Ausrichtung.
 - Unterschiedliche Render-Funktion für die Zellen.
@@ -49,11 +29,9 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 
 > Beides könnte jedoch mittels der Render-Funktion umgesetzt werden.
 
-### Typen
-
 ### Pagination
 
-Über die Property `_pagination` kann optional eine Vielzahl zusätzlicher Properties zur Steuerung der Pagination übergeben werden. Die genaue Beschreibung der Optionen ist in der Pagination-Spezifikation zu finden.
+Über das Attribut **`_pagination`** kann optional eine Vielzahl zusätzlicher Properties zur Steuerung der Pagination übergeben werden. Die genaue Beschreibung der Optionen ist auf der Seite <kol-link _href="/docs/components/pagination" _label="Pagination"></kol-link> zu finden.
 
 #### KoliBriTableHeaders
 
@@ -92,10 +70,6 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 };
 ```
 
-#### KoliBriTablePaginationStates
-
-Die Tabellen-Komponente verwendet intern die Pagination-Komponente die sich mit den gleichen Properties steuern lässt. Die Steuerung wird in der Beschreibung der Pagination-Komponente erläutert.
-
 ### Code
 
 ```html
@@ -111,9 +85,8 @@ Die Tabellen-Komponente verwendet intern die Pagination-Komponente die sich mit 
 ### Sortierung
 
 - Zu jedem Header kann man eine Sortierfunktion definieren.
-- Es ist maximal nur eine Sortierfunktion aktiviert oder keine.
-- Bei dem Rendern der Daten in die Tabelle muss jetzt geprüft werden, ob eine Sortierung aktiv ist und vorher die Daten durch die Funktion sortiert werden.
-- Aktuell wird nicht unterstützt, dass bei zweidimensionalen Headern, die Header der jeweils anderen Header-Seite mitsortiert werden. Bei der Anforderung der Sortierung empfehlen wir die Verwendung nur einer Header-Dimension (entweder horizontal oder vertikal).
+- Es ist exakt eine oder keine Sortierfunktion aktiviert.
+- Aktuell wird nicht unterstützt, dass bei zweidimensionalen Headern, die Header der jeweils anderen Header-Seite mit sortiert werden. Bei der Anforderung der Sortierung empfehlen wir die Verwendung nur einer Header-Dimension (entweder horizontal oder vertikal).
 
 <!--### Best practices
 
@@ -123,36 +96,11 @@ Die Tabellen-Komponente verwendet intern die Pagination-Komponente die sich mit 
 
 Bei der Table-Komponente werden zahlreiche Attribut-Definitionen dem Tabellen-Markup hinzugefügt, um die Screenreader bestmöglich zu unterstützen.
 
-Aktuell werden folgende Attribute von der Komponente gemanaged: `role`, `scope` und `aria-\*`.
+Aktuell werden folgende Attribute von der Komponente verwaltet: `role`, `scope` und `aria-\*`.
 
 Das heißt beispielsweise, dass bei den Spaltenüberschriften automatisch entweder die Rolle `colheader` oder `rowheader` gesetzt wird. Darüber hinaus wird der Scope entweder auf `col`/`colgroup` oder `row`/`rowgroup` gesetzt. Ähnlich dieser Automatismen werden auch die `aria-\*`-Attribute je nach Relevanz gesetzt.
 
 Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschrieben: https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
-
-### Pagination ohne/mit Label
-
-Bei der Tabelle kann die Pagination optional hinzugefügt werden. Die Steuerelemente der Pagination haben hierbei keine sichtbaren Labels, weil das eine übliche Darstellung ist (State-of-the-art). Für den Screenreader-Nutzenden werden alle Steuerelemente genauso vorgelesen, als würde es ein sichtbares Label geben (KoliBri-Inputs).
-Nun bleibt aus Sicht der Barrierefreiheit nur noch zu beurteilen, ob für sehende Nutzende die Steuerung auch barrierefrei ist.
-
-Sichtweisen:
-
-<ol type="a">
-  <li>Dem sehenden Nutzenden erschließt sich durch die aussagekräftigen Beschriftungen der Optionen das Verhalten der Steuerelement, auch ohne zusätzliches Label. Die Steuerelemente der Pagination können optisch kompakter dargestellt werden.</li>
-  <li>Dem sehenden Nutzenden werden Labels angezeigt, um auf das Verhalten der Steuerelement schließen zu können. Dadurch können die Beschriftungen der Optionen kürzer erfolgen. Die Steuerelemente der Pagination werden tendenziell durch das zusätzliche Label optisch mehr Platz benötigen.
-	Wenn die Select-Auswahl ein Label bekommt, dann muss konsequenterweise auch die Seitenauswahl ein Label erhalten.</li>
-</ol>
-
-**Betrachtung:** Der informelle Teil (Label) für das Verständnis muss in der Sichtweise **a** durch die Optionsbeschriftung und bei Sichtweise **b** durch das explizite Label abgebildet werden.
-
-> **Aus Sicht der Barrierefreiheit sind beide Sichtweise barrierefrei.** (?!)
-
-**Lösungsentscheidung:** Es wäre möglich, die Pagination mit um einen `_labelled`-Modus zu erweitern, um somit den Projekten beide Sichtweisen anbieten zu können.
-
-### Verwendung von Role
-
-Die Auszeichnung der Rolle (`role`) führt bei manchen Screenreadern zu Problemen. Da der Fokus der Table-Komponente auf der Darstellung von Daten liegt und somit der semantische Aufbau auf der HTML-Table beruht, sollte das Vorlesen auch ohne zusätzliche Rollenauszeichnung gut funktionieren (Retest).
-
-_Lediglich die Rollen `columnheader` und `rowheader` wird beibehalten, da die Tabellenköpfe (`th`) in entweder Spalten- oder Zeilen-orientiert sind._
 
 ## Links und Referenzen
 

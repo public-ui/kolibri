@@ -14,27 +14,27 @@ import { ComponentApi, States } from './types';
 })
 export class KolImage implements ComponentApi {
 	/**
-	 * Gibt den alternativen Text an.
+	 * Setzt den alternativen Text.
 	 */
 	@Prop() public _alt!: string;
 
 	/**
-	 * Gibt den Lademodus an.
+	 * Setzt den Lademodus.
 	 */
 	@Prop() public _loading?: Loading = 'lazy';
 
 	/**
-	 * ...
+	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
 	 */
 	@Prop() public _sizes?: string;
 
 	/**
-	 * Gibt die Quell-URL an.
+	 * Setzt die Quell-URL des Bildes.
 	 */
 	@Prop() public _src!: string;
 
 	/**
-	 * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+	 * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
 	 */
 	@Prop() public _srcset?: string;
 

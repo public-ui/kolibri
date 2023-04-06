@@ -7,39 +7,48 @@ Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere v
 ### Code
 
 ```html
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _value="['1']"> Auswahlfeld </kol-select>
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}" _value="['1']"> Auswahlfeld </kol-select>
 <kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
 	Auswahlfeld (Mehrfachauswahl)
+</kol-select>
+<kol-select
+	_list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]"
+	_size="4"
+	_value="['1']"
+>
+	Auswahlfeld mit _size
 </kol-select>
 ```
 
 ### Beispiel
 
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _value="['1']">Auswahlfeld</kol-select>
-
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">Auswahlfeld (Mehrfachauswahl)</kol-select>
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}" _value="['1']"> Auswahlfeld </kol-select>
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
+Auswahlfeld (Mehrfachauswahl)
+</kol-select>
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]" _size="4" _value="['1']">Auswahlfeld mit size</kol-select>
 
 ## Verwendung
 
-Die Auswahlmöglichkeiten, **_Option-List_**, werden über das Attribut **_\_list_** als JSON-Objekt an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
+Die Auswahlmöglichkeiten werden über das Attribut **`_list`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
 
 Beispiel für die Konstruktion des JSON-Objektes:
 
-```html
-[ { label: 'Herr', value: '0', }, { label: 'Frau', value: '1', }, { label: 'Firma', value: '2', }, ];
+```js
+[
+	{ label: 'Herr', value: '0' },
+	{ label: 'Frau', value: '1' },
+	{ label: 'Firma', value: '2' },
+];
 ```
 
 ### Individuelle Höhe angeben
 
-Mit der Property **`_height`** kann eine individuelle Höhe der Selectbox mittels CSS bestimmt werden. Die property erwartet einen String als Übergabewert, der innerhalb des style-Attributes ausgegeben wird. Es ist daher erforderlich, auch die gewünschte Ausgabeeinheit, z.B. px oder em, mit zu übergeben.
-
-```html
-<kol-select _height="85px"></kol-select>
-```
+Über das Attribut **`_size`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
 
 <!--### Best practices-->
 
-## Barrierefreiheit
+<!-- ## Barrierefreiheit -->
 
 ### Tastatursteuerung
 

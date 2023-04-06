@@ -86,7 +86,7 @@ export namespace Components {
          */
         "_heading": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -112,7 +112,7 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -130,11 +130,11 @@ export namespace Components {
     }
     interface KolBadge {
         /**
-          * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+          * Setzt die Hintergrundfarbe.
          */
         "_color"?: string | KoliBriColor;
         /**
-          * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -142,7 +142,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label-Text des Badges an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -156,7 +156,7 @@ export namespace Components {
          */
         "_ariaLabel": string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
@@ -194,7 +194,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -207,11 +207,11 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die ID der Schaltfläche an.
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -277,7 +277,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -289,7 +289,7 @@ export namespace Components {
          */
         "_id"?: string;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -351,7 +351,7 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -360,7 +360,7 @@ export namespace Components {
          */
         "_iconAlign"?: PropAlignment;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
         "_iconOnly"?: boolean;
         /**
@@ -368,7 +368,7 @@ export namespace Components {
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -376,7 +376,7 @@ export namespace Components {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -384,11 +384,11 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
         "_tooltipAlign"?: PropAlignment;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Schaltfläche.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -402,7 +402,7 @@ export namespace Components {
     }
     interface KolCard {
         /**
-          * Gibt an, ob die Card einen Footer-Bereich hat.
+          * Macht den Footerbereich der Card sichtbar.
          */
         "_hasFooter"?: boolean;
         /**
@@ -415,7 +415,7 @@ export namespace Components {
          */
         "_headline"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
     }
@@ -435,7 +435,7 @@ export namespace Components {
          */
         "_on"?: KoliBriFormCallbacks;
         /**
-          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
          */
         "_requiredText"?: Stringified<boolean>;
     }
@@ -459,11 +459,11 @@ export namespace Components {
          */
         "_headline": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Überschrift an.
+          * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
     }
@@ -473,7 +473,7 @@ export namespace Components {
          */
         "_ariaLabel": string;
         /**
-          * Gibt einen Identifier eines Icons aus den Icon's an.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
         /**
@@ -524,23 +524,23 @@ export namespace Components {
     }
     interface KolImage {
         /**
-          * Gibt den alternativen Text an.
+          * Setzt den alternativen Text.
          */
         "_alt": string;
         /**
-          * Gibt den Lademodus an.
+          * Setzt den Lademodus.
          */
         "_loading"?: Loading;
         /**
-          * ...
+          * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
          */
         "_sizes"?: string;
         /**
-          * Gibt die Quell-URL an.
+          * Setzt die Quell-URL des Bildes.
          */
         "_src": string;
         /**
-          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+          * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
         "_srcset"?: string;
     }
@@ -552,7 +552,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -560,11 +560,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -588,11 +588,11 @@ export namespace Components {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -615,11 +615,11 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
+          * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
          */
         "_checked"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -627,11 +627,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -655,7 +655,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -672,7 +672,7 @@ export namespace Components {
          */
         "_type"?: InputCheckboxVariant;
         /**
-          * Gibt den Wert der Checkbox an.
+          * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
         "_value"?: string;
         /**
@@ -694,7 +694,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -702,11 +702,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -730,7 +730,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -760,7 +760,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -768,11 +768,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -804,15 +804,15 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -850,7 +850,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -858,11 +858,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -902,19 +902,19 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Radio ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -944,7 +944,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -952,11 +952,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -980,11 +980,11 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1014,7 +1014,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1022,11 +1022,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -1062,15 +1062,15 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1109,7 +1109,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1117,11 +1117,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -1153,19 +1153,19 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1191,7 +1191,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1199,11 +1199,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -1227,7 +1227,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -1256,7 +1256,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1264,11 +1264,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -1292,7 +1292,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -1322,7 +1322,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1330,11 +1330,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -1396,7 +1396,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1404,11 +1404,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -1436,7 +1436,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -1444,19 +1444,19 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -1520,7 +1520,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -1533,7 +1533,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -1542,7 +1542,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle das Element hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1560,7 +1560,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -1611,7 +1611,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -1619,7 +1619,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -1628,7 +1628,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Setzt die Role der Schaltfläche.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1636,7 +1636,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -1648,7 +1648,7 @@ export namespace Components {
          */
         "_tooltipAlign"?: PropAlignment;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Ausprägung der Link-Button hat.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -1662,11 +1662,11 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -1674,7 +1674,8 @@ export namespace Components {
          */
         "_listStyleType"?: ListStyleType;
         /**
-          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert. Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
          */
         "_ordered"?: boolean;
         /**
@@ -1705,7 +1706,7 @@ export namespace Components {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
-          * @deprecated A link could never be disabled. Use a button instead.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -1713,7 +1714,7 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -1726,7 +1727,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -1735,7 +1736,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1753,7 +1754,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -1795,7 +1796,7 @@ export namespace Components {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
+          * Setzt die Breite des Modals. (max-width: 100%).
          */
         "_width"?: string;
     }
@@ -1830,7 +1831,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -1845,7 +1846,7 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
+          * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
@@ -1861,11 +1862,11 @@ export namespace Components {
          */
         "_pageSize": number;
         /**
-          * Gibt an, welche Optionen für die Seitenlänge angeboten werden.
+          * Setzt die Optionen für das Seitenlängenselect.
          */
         "_pageSizeOptions": Stringified<number[]>;
         /**
-          * Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.
+          * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
          */
         "_siblingCount"?: number;
         /**
@@ -1873,7 +1874,7 @@ export namespace Components {
          */
         "_tooltipAlign"?: PropAlignment;
         /**
-          * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
+          * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
@@ -1891,7 +1892,7 @@ export namespace Components {
          */
         "_type"?: KoliBriProgressType;
         /**
-          * Gibt die Einheit der Fortschrittswerte an.
+          * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
         "_unit"?: string;
         /**
@@ -1901,19 +1902,19 @@ export namespace Components {
     }
     interface KolQuote {
         /**
-          * The caption of the quote.
+          * Setzt die Überschrift.
          */
         "_caption"?: string;
         /**
-          * The href is a URL that designates a source document or message for the information quoted.
+          * Link auf die Quelle des Zitates.
          */
         "_href": string;
         /**
-          * The text of the quote.
+          * Setzt den Text, also das Zitat selbst.
          */
         "_quote": string;
         /**
-          * The variant of the quote.
+          * Setzt die Variante des Zitats.
          */
         "_variant"?: KoliBriQuoteVariant;
     }
@@ -1927,7 +1928,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -1940,11 +1941,11 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -1972,11 +1973,11 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Selectbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+          * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
         "_size"?: number;
         /**
@@ -1998,13 +1999,13 @@ export namespace Components {
          */
         "_ariaLabel": string;
         /**
-          * Ist die Liste der unsichtbaren Links.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2012,13 +2013,13 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }
     interface KolSpanWc {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2026,7 +2027,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }
@@ -2082,11 +2083,11 @@ export namespace Components {
          */
         "_selected"?: number;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Daten für die Registrierkarten.
          */
         "_tabs": Stringified<TabButtonProps[]>;
         /**
-          * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+          * Setzt die Position der Registrierkarten.
          */
         "_tabsAlign"?: PropAlignment;
     }
@@ -2104,7 +2105,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -2112,15 +2113,15 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
          */
         "_hasCounter"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -2128,7 +2129,7 @@ export namespace Components {
          */
         "_id"?: string;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Setzt die maximale Zeichenanzahl.
          */
         "_maxLength"?: number;
         /**
@@ -2144,15 +2145,15 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+          * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
          */
         "_resize"?: CSSResize;
         /**
@@ -2178,7 +2179,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Toast ein Schließen-Icon hat.
+          * Aktiviert das Schließen-Icon.
          */
         "_hasCloser"?: boolean;
         /**
@@ -2208,7 +2209,7 @@ export namespace Components {
     }
     interface KolTooltip {
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
         "_align"?: PropAlignment;
         /**
@@ -2216,7 +2217,7 @@ export namespace Components {
          */
         "_id": string;
         /**
-          * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+          * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
          */
         "_label": string;
     }
@@ -2652,7 +2653,7 @@ declare namespace LocalJSX {
          */
         "_heading": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2678,7 +2679,7 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2696,11 +2697,11 @@ declare namespace LocalJSX {
     }
     interface KolBadge {
         /**
-          * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+          * Setzt die Hintergrundfarbe.
          */
         "_color"?: string | KoliBriColor;
         /**
-          * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2708,7 +2709,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label-Text des Badges an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -2722,7 +2723,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel": string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
@@ -2760,7 +2761,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2773,11 +2774,11 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die ID der Schaltfläche an.
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -2843,7 +2844,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2855,7 +2856,7 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -2917,7 +2918,7 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -2926,7 +2927,7 @@ declare namespace LocalJSX {
          */
         "_iconAlign"?: PropAlignment;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
         "_iconOnly"?: boolean;
         /**
@@ -2934,7 +2935,7 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -2942,7 +2943,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -2950,11 +2951,11 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
         "_tooltipAlign"?: PropAlignment;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Schaltfläche.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -2968,7 +2969,7 @@ declare namespace LocalJSX {
     }
     interface KolCard {
         /**
-          * Gibt an, ob die Card einen Footer-Bereich hat.
+          * Macht den Footerbereich der Card sichtbar.
          */
         "_hasFooter"?: boolean;
         /**
@@ -2981,7 +2982,7 @@ declare namespace LocalJSX {
          */
         "_headline"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
     }
@@ -3001,7 +3002,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriFormCallbacks;
         /**
-          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+          * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
          */
         "_requiredText"?: Stringified<boolean>;
     }
@@ -3025,11 +3026,11 @@ declare namespace LocalJSX {
          */
         "_headline": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt den Text der zusätzlichen Überschrift an.
+          * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
          */
         "_secondaryHeadline"?: string;
     }
@@ -3039,7 +3040,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel": string;
         /**
-          * Gibt einen Identifier eines Icons aus den Icon's an.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
         /**
@@ -3090,23 +3091,23 @@ declare namespace LocalJSX {
     }
     interface KolImage {
         /**
-          * Gibt den alternativen Text an.
+          * Setzt den alternativen Text.
          */
         "_alt": string;
         /**
-          * Gibt den Lademodus an.
+          * Setzt den Lademodus.
          */
         "_loading"?: Loading;
         /**
-          * ...
+          * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
          */
         "_sizes"?: string;
         /**
-          * Gibt die Quell-URL an.
+          * Setzt die Quell-URL des Bildes.
          */
         "_src": string;
         /**
-          * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+          * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
         "_srcset"?: string;
     }
@@ -3118,7 +3119,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3126,11 +3127,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3154,11 +3155,11 @@ declare namespace LocalJSX {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3181,11 +3182,11 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
+          * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
          */
         "_checked"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3193,11 +3194,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3221,7 +3222,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3238,7 +3239,7 @@ declare namespace LocalJSX {
          */
         "_type"?: InputCheckboxVariant;
         /**
-          * Gibt den Wert der Checkbox an.
+          * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
         "_value"?: string;
         /**
@@ -3260,7 +3261,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3268,11 +3269,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3296,7 +3297,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3326,7 +3327,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3334,11 +3335,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3370,15 +3371,15 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3416,7 +3417,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3424,11 +3425,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3468,19 +3469,19 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Radio ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3510,7 +3511,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3518,11 +3519,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3546,11 +3547,11 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3580,7 +3581,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3588,11 +3589,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3628,15 +3629,15 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3675,7 +3676,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3683,11 +3684,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3719,19 +3720,19 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -3757,7 +3758,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3765,11 +3766,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3793,7 +3794,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3822,7 +3823,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3830,11 +3831,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3858,7 +3859,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3888,7 +3889,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3896,11 +3897,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -3962,7 +3963,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -3970,11 +3971,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -4002,7 +4003,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -4010,19 +4011,19 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Zeichen man eingeben kann.
+          * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
          */
         "_size"?: number;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
         /**
@@ -4086,7 +4087,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4099,7 +4100,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -4108,7 +4109,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle das Element hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4126,7 +4127,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -4177,7 +4178,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4185,7 +4186,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -4194,7 +4195,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Setzt die Role der Schaltfläche.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4202,7 +4203,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -4214,7 +4215,7 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: PropAlignment;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Ausprägung der Link-Button hat.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -4228,11 +4229,11 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
         "_level"?: HeadingLevel;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -4240,7 +4241,8 @@ declare namespace LocalJSX {
          */
         "_listStyleType"?: ListStyleType;
         /**
-          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert. Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
+          * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
          */
         "_ordered"?: boolean;
         /**
@@ -4271,7 +4273,7 @@ declare namespace LocalJSX {
         "_ariaSelected"?: boolean;
         /**
           * Gibt an, ob der Link deaktiviert ist.
-          * @deprecated A link could never be disabled. Use a button instead.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -4279,7 +4281,7 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4292,7 +4294,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt den Label für die Beschriftung der Schaltfläche an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
         /**
@@ -4301,7 +4303,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt an, welche Rolle der Schalter hat.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4319,7 +4321,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+          * Gibt an wo der Link geöffnet werden soll.
          */
         "_target"?: LinkTarget;
         /**
@@ -4361,7 +4363,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriModalEventCallbacks;
         /**
-          * Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).
+          * Setzt die Breite des Modals. (max-width: 100%).
          */
         "_width"?: string;
     }
@@ -4396,7 +4398,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -4411,7 +4413,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, welche Sprung-Schalter sichtbar sein sollen.
+          * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
         "_hasButtons"?: boolean | Stringified<PaginationHasButton>;
         /**
@@ -4427,11 +4429,11 @@ declare namespace LocalJSX {
          */
         "_pageSize"?: number;
         /**
-          * Gibt an, welche Optionen für die Seitenlänge angeboten werden.
+          * Setzt die Optionen für das Seitenlängenselect.
          */
         "_pageSizeOptions"?: Stringified<number[]>;
         /**
-          * Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.
+          * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
          */
         "_siblingCount"?: number;
         /**
@@ -4439,7 +4441,7 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: PropAlignment;
         /**
-          * Gibt an, wie viele Einträge mit der Pagination gehandelt werden.
+          * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
@@ -4457,7 +4459,7 @@ declare namespace LocalJSX {
          */
         "_type"?: KoliBriProgressType;
         /**
-          * Gibt die Einheit der Fortschrittswerte an.
+          * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
         "_unit"?: string;
         /**
@@ -4467,19 +4469,19 @@ declare namespace LocalJSX {
     }
     interface KolQuote {
         /**
-          * The caption of the quote.
+          * Setzt die Überschrift.
          */
         "_caption"?: string;
         /**
-          * The href is a URL that designates a source document or message for the information quoted.
+          * Link auf die Quelle des Zitates.
          */
         "_href": string;
         /**
-          * The text of the quote.
+          * Setzt den Text, also das Zitat selbst.
          */
         "_quote": string;
         /**
-          * The variant of the quote.
+          * Setzt die Variante des Zitats.
          */
         "_variant"?: KoliBriQuoteVariant;
     }
@@ -4493,7 +4495,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -4506,11 +4508,11 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -4538,11 +4540,11 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt an, ob die Selectbox ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+          * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
         "_size"?: number;
         /**
@@ -4564,13 +4566,13 @@ declare namespace LocalJSX {
          */
         "_ariaLabel": string;
         /**
-          * Ist die Liste der unsichtbaren Links.
+          * Setzt die Liste der darzustellenden Links.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4578,13 +4580,13 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }
     interface KolSpanWc {
         /**
-          * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+          * Iconklasse (z.B.: "codicon codicon-home")
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
@@ -4592,7 +4594,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für das Text-Element an.
+          * Setzt den sichtbaren Text des Elements.
          */
         "_label": string;
     }
@@ -4648,11 +4650,11 @@ declare namespace LocalJSX {
          */
         "_selected"?: number;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+          * Setzt die Daten für die Registrierkarten.
          */
         "_tabs": Stringified<TabButtonProps[]>;
         /**
-          * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+          * Setzt die Position der Registrierkarten.
          */
         "_tabsAlign"?: PropAlignment;
     }
@@ -4670,7 +4672,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
          */
         "_disabled"?: boolean;
         /**
@@ -4678,15 +4680,15 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
          */
         "_hasCounter"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+          * Versteckt das sichtbare Label des Elements.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt den Text für eine Hinweistext an.
+          * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
@@ -4694,7 +4696,7 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Setzt die maximale Zeichenanzahl.
          */
         "_maxLength"?: number;
         /**
@@ -4710,15 +4712,15 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
         /**
-          * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+          * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
-          * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+          * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
          */
         "_resize"?: CSSResize;
         /**
@@ -4744,7 +4746,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Toast ein Schließen-Icon hat.
+          * Aktiviert das Schließen-Icon.
          */
         "_hasCloser"?: boolean;
         /**
@@ -4774,7 +4776,7 @@ declare namespace LocalJSX {
     }
     interface KolTooltip {
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
         "_align"?: PropAlignment;
         /**
@@ -4782,7 +4784,7 @@ declare namespace LocalJSX {
          */
         "_id": string;
         /**
-          * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+          * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
          */
         "_label": string;
     }

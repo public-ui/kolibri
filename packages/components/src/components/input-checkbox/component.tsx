@@ -91,12 +91,12 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
+	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
 	 */
 	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -106,12 +106,12 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 */
 	@Prop() public _hint?: string = '';
 
@@ -141,7 +141,7 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean;
 
@@ -163,7 +163,7 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _type?: InputCheckboxVariant;
 
 	/**
-	 * Gibt den Wert der Checkbox an.
+	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 */
 	@Prop() public _value?: string;
 
