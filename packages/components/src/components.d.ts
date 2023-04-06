@@ -2112,7 +2112,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
          */
         "_hasCounter"?: boolean;
         /**
@@ -2128,7 +2128,7 @@ export namespace Components {
          */
         "_id": string;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Setzt die maximale Zeichenanzahl.
          */
         "_maxLength"?: number;
         /**
@@ -2152,7 +2152,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+          * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
          */
         "_resize"?: CSSResize;
         /**
@@ -4678,7 +4678,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
          */
         "_hasCounter"?: boolean;
         /**
@@ -4694,7 +4694,7 @@ declare namespace LocalJSX {
          */
         "_id": string;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Setzt die maximale Zeichenanzahl.
          */
         "_maxLength"?: number;
         /**
@@ -4718,7 +4718,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+          * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
          */
         "_resize"?: CSSResize;
         /**

@@ -128,7 +128,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
 	 */
 	@Prop({ reflect: true }) public _hasCounter?: boolean;
 
@@ -158,7 +158,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _id!: string;
 
 	/**
-	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
+	 * Setzt die maximale Zeichenanzahl.
 	 */
 	@Prop() public _maxLength?: number;
 
@@ -183,7 +183,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop({ reflect: true }) public _readOnly?: boolean;
 
 	/**
-	 * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 */
 	@Prop() public _resize?: CSSResize = 'vertical';
 
