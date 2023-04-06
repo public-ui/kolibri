@@ -11,12 +11,13 @@
 	text-decoration-line: none;
 }
 
+/* TODO: Why we need this? */
 :is(a, button) > kol-span-wc {
 	margin: auto;
 	width: 100%;
 }
 
-:is(a, button):disabled {
+:is(button):disabled {
 	cursor: not-allowed;
 	opacity: 0.5;
 }

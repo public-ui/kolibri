@@ -12,9 +12,6 @@ export type KoliBriFormCallbacks = {
 	[Events.onReset]?: EventCallback<Event>;
 };
 
-/**
- * API
- */
 type RequiredProps = unknown;
 type OptionalProps = {
 	on: KoliBriFormCallbacks;
@@ -71,14 +68,8 @@ export class KolForm implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriFormCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
@@ -89,9 +80,6 @@ export class KolForm implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_requiredText')
 	public validateRequiredText(value?: Stringified<boolean>): void {
 		if (typeof value === 'boolean') {
@@ -101,9 +89,6 @@ export class KolForm implements Generic.Element.ComponentApi<RequiredProps, Opti
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateOn(this._on);
 		this.validateRequiredText(this._requiredText);

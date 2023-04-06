@@ -25,7 +25,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 	return el;
 };
 
-export const propergateResetEventToForm = (
+export const propagateResetEventToForm = (
 	options: {
 		form?: HTMLElement | ParentNode | null;
 		ref?: HTMLElement;
@@ -50,7 +50,7 @@ export const propergateResetEventToForm = (
 	}
 };
 
-export const propergateSubmitEventToForm = (
+export const propagateSubmitEventToForm = (
 	options: {
 		form?: HTMLElement | ParentNode | null;
 		ref?: HTMLElement;

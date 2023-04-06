@@ -1,13 +1,22 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
-import { AriaCurrent, KoliBriButtonCallbacks } from '../../types/button-link';
+import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
+import {
+	AriaCurrent,
+	PropCollapsible,
+	PropCompact,
+	PropHasCompactButton,
+	validateCollapsible,
+	validateCompact,
+	validateHasCompactButton,
+} from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
 
 /**
@@ -40,30 +49,29 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	return true;
 };
 
-/**
- * API
- */
 type RequiredProps = {
 	ariaLabel: string;
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 };
 type OptionalProps = {
 	ariaCurrentValue: AriaCurrent;
-	collapsible: boolean;
-	compact: boolean;
-	hasCompactButton: boolean;
 	orientation: Orientation;
 	/**
 	 * @deprecated
 	 */
 	variant: KoliBriNavVariant;
-};
+} & PropCollapsible &
+	PropCompact &
+	PropHasCompactButton;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaCurrentValue: AriaCurrent;
 	ariaLabel: string;
 	collapsible: boolean;
+	/**
+	 * @deprecated Version 2
+	 */
 	hasCompactButton: boolean;
 	links: ButtonOrLinkOrTextWithChildrenProps[];
 	orientation: Orientation;
@@ -71,15 +79,11 @@ type RequiredStates = {
 	 * @deprecated
 	 */
 	variant: KoliBriNavVariant;
-};
-type OptionalStates = {
-	compact: boolean;
-};
+} & PropCollapsible &
+	PropHasCompactButton;
+type OptionalStates = PropCompact;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-/**
- * @part nav - TBD
- */
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {
@@ -114,11 +118,10 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	): JSX.Element {
 		return (
 			<kol-button-wc
-				exportparts={`icon,button,span${selected ? ',selected' : ''}`}
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_ariaExpanded={selected}
 				_disabled={disabled}
-				_icon={icon}
+				_icon={icon || '-'}
 				_iconOnly={compact}
 				_label={label}
 				_on={on}
@@ -127,22 +130,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	}
 
 	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return <kol-span-wc _icon={icon} _iconOnly={compact} _label={label}></kol-span-wc>;
-	}
-
-	private dropDown(collapsible: boolean, compact: boolean, deep: number, link: ButtonOrLinkOrTextWithChildrenProps, orientation: Orientation): JSX.Element {
-		return (
-			<div
-				class={{
-					'list-container': true,
-					'active-child': this.hasActiveChild(link),
-					'absolute ': deep === 0 && orientation === 'horizontal',
-				}}
-			>
-				{/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
-				<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children!} orientation={orientation} />
-			</div>
-		);
+		return <kol-span-wc _icon={icon || '-'} _iconOnly={compact} _label={label}></kol-span-wc>;
 	}
 
 	private entry(
@@ -188,7 +176,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		compact: boolean,
 		deep: number,
 		index: number,
-		isLast: boolean,
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		orientation: Orientation
 	): JSX.Element {
@@ -197,14 +184,13 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		const expanded = hasChildren && !!link._active;
 		const textCenter = compact;
 		return (
-			<li
-				class={{ expanded, selected, 'has-children': hasChildren }}
-				key={index}
-				part={`li ${deep === 0 ? orientation : 'vertical'}${expanded ? ' expanded' : ''}${selected ? ' selected' : ''}${isLast ? '' : ' last'}`}
-				style={{ position: 'relative' }}
-			>
+			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
 				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
-				{hasChildren && selected ? this.dropDown(collapsible, compact, deep, link, orientation) : ''}
+				{hasChildren && selected ? (
+					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
+				) : (
+					''
+				)}
 			</li>
 		);
 	}
@@ -212,11 +198,10 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	private link(selected: boolean, compact: boolean, href: string, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
 		return (
 			<kol-link-wc
-				exportparts={`icon,link,span${selected ? ',selected' : ''}`}
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_ariaExpanded={selected}
 				_href={href}
-				_icon={icon}
+				_icon={icon || '-'}
 				_iconOnly={compact}
 				_label={label}
 			></kol-link-wc>
@@ -231,13 +216,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		orientation: Orientation;
 	}): JSX.Element => {
 		return (
-			<ul
-				class={`list ${props.deep === 0 && props.orientation === 'horizontal' ? ' horizontal' : ' vertical'}`}
-				data-deep={props.deep}
-				part={`nav ${props.orientation}`}
-			>
+			<ul class={`list ${props.deep === 0 && props.orientation === 'horizontal' ? ' horizontal' : ' vertical'}`} data-deep={props.deep}>
 				{props.links.map((link, index: number) => {
-					return this.li(props.collapsible, props.compact, props.deep, index, index < props.links.length - 1, link, props.orientation);
+					return this.li(props.collapsible, props.compact, props.deep, index, link, props.orientation);
 				})}
 			</ul>
 		);
@@ -266,7 +247,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 			hasCompactButton = false;
 			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
-		const collapsible = this.state._collapsible;
+		const collapsible = this.state._collapsible === true;
 		const compact = this.state._compact === true;
 		const orientation = this.state._orientation;
 		return (
@@ -274,20 +255,17 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<div
 					class={{
 						[orientation]: true,
-						'inline-block': compact,
 						[this.state._variant]: true,
 					}}
 				>
-					<nav aria-label={this.state._ariaLabel} id="nav" part="nav">
+					<nav aria-label={this.state._ariaLabel} id="nav">
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
 						<div class="mt-2 w-full text-center">
 							<kol-button
-								exportparts="button,ghost"
 								_ariaControls="nav"
 								_ariaExpanded={compact}
-								_ariaLabel={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_iconOnly
 								_label={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
@@ -331,6 +309,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 	/**
 	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 * @deprecated Version 2
 	 */
 	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
@@ -351,9 +330,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_ariaLabel: '…', // '⚠'
@@ -364,9 +340,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		_variant: 'primary',
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaCurrentValue')
 	public validateAriaCurrentValue(value?: AriaCurrent): void {
 		watchValidator(
@@ -378,9 +351,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		watchString(this, '_ariaLabel', value, {
@@ -400,42 +370,30 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		a11yHintLabelingLandmarks(value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_collapsible')
 	public validateCollapsible(value?: boolean): void {
-		watchBoolean(this, '_collapsible', value);
+		validateCollapsible(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_compact')
 	public validateCompact(value?: boolean): void {
-		watchBoolean(this, '_compact', value);
+		validateCompact(this, value);
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
+	 * @deprecated Version 2
 	 */
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
-		watchBoolean(this, '_hasCompactButton', value);
+		validateHasCompactButton(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_links')
 	public validateLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
 		watchNavLinks('KolNav', this, value);
 		devHint(`[KolNav] Die Navigationsstruktur wird noch nicht rekursiv validiert.`);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_orientation')
 	public validateOrientation(value?: Orientation): void {
 		watchValidator(
@@ -450,9 +408,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriNavVariant): void {
 		watchValidator(this, '_variant', (value) => value === 'primary' || value === 'secondary', new Set(['KoliBriNavVariant {primary, secondary}']), value, {
@@ -460,9 +415,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateAriaLabel(this._ariaLabel);

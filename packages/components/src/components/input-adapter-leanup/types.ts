@@ -1,8 +1,5 @@
 import { Generic } from '@a11y-ui/core';
 
-/**
- * API
- */
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;

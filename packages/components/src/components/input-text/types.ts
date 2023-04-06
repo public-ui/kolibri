@@ -5,13 +5,8 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 
-export type InputRequiredProps = {
-	id: string;
-};
+export type InputRequiredProps = unknown;
 
-/**
- * API
- */
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;
@@ -22,6 +17,7 @@ type OptionalProps = {
 	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
+	id: string;
 	list: Stringified<string[]>;
 	maxLength: number;
 	name: string;

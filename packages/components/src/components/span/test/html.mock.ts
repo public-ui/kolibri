@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
-import { mapIconProp2State } from '../../../utils/validators/icon';
+import { mapIconProp2State } from '../../../types/props/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { Props, States } from '../component';
 

@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.8';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.8/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.8';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.11';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.11/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.11';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.8';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.8/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.8';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.11';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.11/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.11';
 		register([ITZBund], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -323,7 +323,7 @@ Close-Icon wieder geschlossen. Die **Modal**-Komponente basiert auf der **Card**
 erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt
 des Modal-Fensters ist aktiv. Das **Modal**-Fenster wird über ein **Close-Icon** oben rechts im Kopfbereich wieder
 geschlossen.`,
-	props: `_aria-label, _show, _width`
+	props: `_aria-label, _width`
 },{
 	name: `nav`,
 	desc: `Eine **Navigationsleiste** ist eine Gruppe von verwandten Links oder „Navigationselementen“, die durch Anklicken eine Aktion ausführen oder Inhalte anzeigen. Sie navigiert Nutzer:innen direkt zu bestimmten Inhalten der aktuellen Seite oder zu externen Seiten. Außerdem dient sie Nutzer:innen (ähnlich wie Registerkarten) als Steuerelement, um Inhalte anzuzeigen, auszublenden und zwischen ihnen zu wechseln. Dabei werden häufig animierte Übergänge verwendet.
@@ -450,7 +450,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_icon`,
 	desc: `Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.`,
-	types: `string, string | { checked: string; indeterminate?: string | undefined; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate: string; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate?: string | undefined; unchecked: string; }, string | { right: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { right?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; }, string | { top: string | KoliBriCustomIcon; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right: string | KoliBriCustomIcon; bottom?: string | KoliBriCustomIcon | undefined; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom: string | KoliBriCustomIcon; left?: string | KoliBriCustomIcon | undefined; } | { top?: string | KoliBriCustomIcon | undefined; right?: string | KoliBriCustomIcon | undefined; bottom?: string | KoliBriCustomIcon | undefined; left: string | KoliBriCustomIcon; }`,
+	types: `KoliBriHorizontalIcon & KoliBriVerticalIcon | string, string, string | { checked: string; indeterminate?: string | undefined; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate: string; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate?: string | undefined; unchecked: string; }, string | { right?: IconOrIconClass | undefined; left?: IconOrIconClass | undefined; }`,
 	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select`
 },{
 	name: `_id`,
@@ -613,11 +613,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range`
 },{
-	name: `_show`,
-	desc: `Gibt an, ob das Modal angezeigt wird.`,
-	types: `boolean`,
-	comps: `modal, spin, toast`
-},{
 	name: `_pattern`,
 	desc: `Gibt ein Prüfpattern für das Eingabefeld an.`,
 	types: `string`,
@@ -652,6 +647,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Definiert das Verhalten, bei dem der Link geöffnet werden soll.`,
 	types: `string`,
 	comps: `link, link-button`
+},{
+	name: `_show`,
+	desc: `Gibt an, ob der Toast eingeblendet wird.`,
+	types: `boolean`,
+	comps: `spin, toast`
 },{
 	name: `_orientation`,
 	desc: `Gibt die Ausrichtung der LinkList an.`,
@@ -800,7 +800,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaLabel?: string | undefined; _ariaSelected?: boolean | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: Alignment | undefined; _accessKey?: string | undefined; _disabled?: boolean | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaLabel?: string | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: PropAlignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: PropAlignment | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
 	comps: `badge`
 },{
 	name: `_color`,
@@ -855,7 +855,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_pagination`,
 	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks | undefined; _page?: number | undefined; _total?: number | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; _boundaryCount?: number | undefined; _hasButtons?: boolean | Stringified<PaginationHasButton> | undefined; _pageSize?: number | undefined; _pageSizeOptions?: Stringified<number[]> | undefined; _siblingCount?: number | undefined; _tooltipAlign?: Alignment | undefined; }`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks | undefined; _page?: number | undefined; _total?: number | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; _boundaryCount?: number | undefined; _hasButtons?: boolean | Stringified<PaginationHasButton> | undefined; _pageSize?: number | undefined; _pageSizeOptions?: Stringified<number[]> | undefined; _siblingCount?: number | undefined; _tooltipAlign?: PropAlignment | undefined; }`,
 	comps: `table`
 },{
 	name: `_min-width`,

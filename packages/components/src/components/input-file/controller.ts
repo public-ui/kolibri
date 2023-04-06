@@ -11,38 +11,23 @@ export class InputFileController extends InputIconController implements Watches 
 		this.component = component;
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateAccept(value?: string): void {
 		watchString(this.component, '_accept', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateMultiple(value?: boolean): void {
 		watchBoolean(this.component, '_multiple', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateRequired(value?: boolean): void {
 		watchBoolean(this.component, '_required', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
 		this.setFormAssociatedValue(this.component._value as string);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAccept(this.component._accept);

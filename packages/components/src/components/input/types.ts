@@ -1,22 +1,21 @@
 import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
 import { KoliBriHorizontalIcon } from '../../types/icon';
+import { PropAlert, PropDisabled, PropHideLabel, PropReadOnly, PropRequired, PropTouched } from '../../types/props';
 
-/**
- * API
- */
-type RequiredProps = unknown;
+type RequiredProps = {
+	id: string;
+};
 type OptionalProps = {
-	alert: boolean;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
-	readOnly: boolean;
-	required: boolean;
 	smartButton: ButtonProps;
-	touched: boolean;
-};
+} & PropDisabled &
+	PropAlert &
+	PropTouched &
+	PropHideLabel &
+	PropRequired &
+	PropReadOnly;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

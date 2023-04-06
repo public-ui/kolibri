@@ -1,31 +1,11 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from '../../types/alert';
+import { API, States, AlertType, AlertVariant, KoliBriAlertEventCallbacks } from './types';
 import { HeadingLevel } from '../../types/heading-level';
 import { setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { translate } from '../../i18n';
 import { Log } from '../../utils/dev.utils';
-
-/**
- * API
- */
-type RequiredProps = unknown;
-type OptionalProps = {
-	alert: boolean;
-	hasCloser: boolean;
-	heading: string;
-	level: HeadingLevel;
-	on: KoliBriAlertEventCallbacks;
-	type: AlertType;
-	variant: AlertVariant;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
 	return <kol-icon class="heading-icon" _ariaLabel={typeof props.heading === 'string' && props.heading.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
@@ -53,7 +33,7 @@ const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 	},
 	shadow: true,
 })
-export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolAlert implements API {
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
@@ -162,40 +142,25 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_level: 1,
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_alert')
 	public validateAlert(value?: boolean): void {
 		watchBoolean(this, '_alert', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: boolean): void {
 		watchBoolean(this, '_hasCloser', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
 		watchString(this, '_heading', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_level')
 	public validateLevel(value?: HeadingLevel): void {
 		watchHeadingLevel(this, value);
@@ -204,9 +169,6 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 	private validateOnValue = (value: unknown): boolean =>
 		typeof value === 'object' && value !== null && typeof (value as KoliBriAlertEventCallbacks).onClose === 'function';
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_on')
 	public validateOn(value?: KoliBriAlertEventCallbacks): void {
 		if (this.validateOnValue(value)) {
@@ -231,9 +193,6 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 		}
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_type')
 	public validateType(value?: AlertType): void {
 		watchValidator(
@@ -245,17 +204,11 @@ export class KolAlert implements Generic.Element.ComponentApi<RequiredProps, Opt
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_variant')
 	public validateVariant(value?: AlertVariant): void {
 		watchValidator(this, '_variant', (value) => value === 'card' || value === 'msg', new Set('AlertVariant {card, msg}'), value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateAlert(this._alert);
 		this.validateHasCloser(this._hasCloser);

@@ -1134,21 +1134,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host > div.card.warning > .heading {
 		background-color: var(--color-orange);
 	}
-	:is(.error, .info, .success, .warning) .heading-icon::part(icon)::before {
+	:is(.error, .info, .success, .warning) .heading-icon::part(icon) {
 		font-family: "Font Awesome 6 Free" !important;
 		font-weight: 900;
 	}
 	:host > div.error .heading-icon::part(icon)::before {
-		content: "\f06a";
+		content: "\\f06a";
 	}
 	:host > div.info .heading-icon::part(icon)::before {
-		content: "\f05a";
+		content: "\\f05a";
 	}
 	:host > div.success .heading-icon::part(icon)::before {
-		content: "\f058";
+		content: "\\f058";
 	}
 	:host > div.warning .heading-icon::part(icon)::before {
-		content: "\f071";
+		content: "\\f071";
 	}
 	:host > div.card > div > .content {
 		grid-row: 2;
@@ -1692,16 +1692,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding-bottom: 0;
 	}
 	:host > div > kol-heading-wc button kol-icon::part(icon) {
+		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 		color: var(--color-midnight);
 	}
-	:host > div > kol-heading-wc button kol-icon::part(close)::before {
-		font-family: "Font Awesome 6 Free";
-		content: "\f077";
+	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
+		content: "\\f077";
 	}
-	:host > div > kol-heading-wc button kol-icon::part(open)::before {
+	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
 		font-family: "Font Awesome 6 Free";
-		content: "\f078";
+		content: "\\f078";
 	}
 	:host > div {
 		width: 100%;

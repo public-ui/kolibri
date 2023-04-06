@@ -3,7 +3,7 @@ import { Stringified } from '../../../types/common';
 import { KoliBriHorizontalIcon } from '../../../types/icon';
 import { objectObjectHandler, parseJson, watchValidator } from '../../../utils/prop.validators';
 import { isString } from '../../../utils/validator';
-import { isIcon } from '../../../utils/validators/icon';
+import { isIcon } from '../../../types/props/icon';
 import { InputController } from './controller';
 import { Props, Watches } from './types-icon';
 
@@ -28,9 +28,6 @@ export class InputIconController extends InputController implements Watches {
 		this.component = component;
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
 		objectObjectHandler(value, () => {
 			try {
@@ -59,9 +56,6 @@ export class InputIconController extends InputController implements Watches {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateIcon(this.component._icon);

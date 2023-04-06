@@ -6,7 +6,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { a11yHint, devHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchValidator } from '../../utils/prop.validators';
-import { validateLabel } from '../../utils/validators/label';
+import { validateLabel } from '../../types/props/label';
 import { ColorContrast, createContrastColorPair } from './contrast';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
@@ -18,9 +18,6 @@ export type KoliBriColor = {
 	color: string;
 };
 
-/**
- * API
- */
 type RequiredProps = {
 	label: string;
 };
@@ -109,9 +106,6 @@ export class KolBadge implements Props {
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_color: '#000',
 		_label: '…', // ⚠ required
@@ -144,9 +138,6 @@ export class KolBadge implements Props {
 		this.colorStr = colorContrast.foreground;
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_color')
 	public validateColor(value?: string | KoliBriColor): void {
 		watchValidator(
@@ -166,9 +157,6 @@ export class KolBadge implements Props {
 		);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
 		validateLabel(this, value, {
@@ -182,9 +170,6 @@ export class KolBadge implements Props {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		objectObjectHandler(value, () => {
@@ -198,9 +183,6 @@ export class KolBadge implements Props {
 		});
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
 		this.validateLabel(this._label);

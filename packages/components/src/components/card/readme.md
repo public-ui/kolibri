@@ -90,12 +90,6 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 | `"footer"`  | Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.                            |
 | `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card. |
 
-## Shadow Parts
-
-| Part     | Description |
-| -------- | ----------- |
-| `"card"` | TBD         |
-
 ## Dependencies
 
 ### Depends on

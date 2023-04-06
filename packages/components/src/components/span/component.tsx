@@ -4,12 +4,9 @@ import { Stringified } from '../../types/common';
 
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
 import { watchBoolean } from '../../utils/prop.validators';
-import { validateIcon } from '../../utils/validators/icon';
-import { validateLabelWithAriaLabel } from '../../utils/validators/label';
+import { validateIcon } from '../../types/props/icon';
+import { validateLabelWithAriaLabel } from '../../types/props/label';
 
-/**
- * API
- */
 type RequiredProps = {
 	label: string;
 };
@@ -77,42 +74,27 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Prop() public _label!: string;
 
-	/**
-	 * @see: components/abbr/component.tsx (@State)
-	 */
 	@State() public state: States = {
 		_icon: {},
 		_iconOnly: false,
 		_label: '…', // ⚠ required
 	};
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
 		validateIcon(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
 		watchBoolean(this, '_iconOnly', value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 */
 	@Watch('_label')
 	public validateLabel(value?: string): void {
 		validateLabelWithAriaLabel(this, value);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentWillLoad)
-	 */
 	public componentWillLoad(): void {
 		this.validateIcon(this._icon);
 		this.validateIconOnly(this._iconOnly);
