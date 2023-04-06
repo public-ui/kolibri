@@ -85,12 +85,12 @@ export class KolBadge implements Props {
 	}
 
 	/**
-	 * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+	 * Setzt die Hintergrundfarbe.
 	 */
 	@Prop() public _color?: string | KoliBriColor = '#000';
 
 	/**
-	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -100,7 +100,7 @@ export class KolBadge implements Props {
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Gibt den Label-Text des Badges an.
+	 * Setzt den sichtbaren Text des Elements.
 	 */
 	@Prop() public _label!: string;
 

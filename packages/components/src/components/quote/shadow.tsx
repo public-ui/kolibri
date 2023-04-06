@@ -11,22 +11,22 @@ import { ComponentApi, KoliBriQuoteVariant, States } from './types';
 })
 export class KolQuote implements ComponentApi {
 	/**
-	 * The caption of the quote.
+	 * Setzt die Überschrift.
 	 */
 	@Prop() public _caption?: string;
 
 	/**
-	 * The href is a URL that designates a source document or message for the information quoted.
+	 * Link auf die Quelle des Zitates.
 	 */
 	@Prop() public _href!: string;
 
 	/**
-	 * The text of the quote.
+	 * Setzt den Text, also das Zitat selbst.
 	 */
 	@Prop() public _quote!: string;
 
 	/**
-	 * The variant of the quote.
+	 * Setzt die Variante des Zitats.
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 

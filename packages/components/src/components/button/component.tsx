@@ -159,7 +159,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -171,7 +171,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _iconAlign?: Alignment;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
@@ -181,7 +181,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _id?: string;
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: false }) public _label!: string;
@@ -192,7 +192,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle der Schalter hat.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
@@ -202,12 +202,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
 	 */
 	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
-	 * Gibt an, welche Typ der Button hat.
+	 * Setzt den Typ der Schaltfläche.
 	 */
 	@Prop() public _type?: KoliBriButtonType = 'button';
 

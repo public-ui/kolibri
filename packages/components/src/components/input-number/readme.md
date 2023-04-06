@@ -1,54 +1,26 @@
 # InputNumber
 
-Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen, Datumswerte, Datums- und Zeitwerte, Wochen, Monate und Zeiten.
+Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 
 ## Konstruktion
 
 ### Code
 
 ```html
-<kol-input-number _type="date" _id="mein_datum" _name="mein_datum"> Erstellungsdatum </kol-input-number>
+<kol-input-number _id="meine_zahl" _name="meine_zahl" _value="74">ZAHL!</kol-input-number>
 ```
 
 ### Beispiel
 
-<kol-input-number _type="date" _id="mein_datum" _name="mein_datum">
-  Erstellungsdatum
-</kol-input-number>
+<kol-input-number _id="meine_zahl" _name="meine_zahl" _value="74">ZAHL!</kol-input-number>
 
 ## Verwendung
 
-Die **InputNumber**-Komponente kann für die Erfassung diverser Werte verwendet werden. Stellen Sie den gewünschten Typ über das Attribut `_type` ein.
-
-<kol-alert _type="info">Beachten Sie, dass im <b>Firefox</b> nicht alle <b>Typen</b> der **InputNumber**-Komponente funktional sind. Es werden bei den Typen <b>Month</b>, <b>Week</b> und <b>Datum & Zeit</b> keine Auswahldialoge angezeigt.</kol-alert>
-
-Die Komponente zeichnet sich dadurch aus, dass sie zahlreiche Ziffern-basierte Eingabemuster unterstützt. Hierbei ist es wichtig zu beachten, dass sich das Verhalten bei der Eingabe von Browser zu Browser und Geräte zu Gerät unterscheiden kann. Beispielsweise ist es möglich beim Datum, 01.01.999999 einzugeben, auch wenn max=2022-02-02 ist. Der Feldwert ist aber trotzdem 2022-02-02.
-
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
-
-## Barrierefreiheit
-
-Die Icons in der Komponente sind per Tab-Taste nicht erreichbar. Die Auswahlhilfen der Komponente werden über die **Leertaste** geöffnet. So erhalten Sie beispielsweise beim Typ **date** ein Kalendermodul, über das per Maus oder über die Tastatur das gewünschte Datum ausgewählt werden kann. Die manuelle Eingabe der Werte ist alternativ möglich.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ### Tastatursteuerung
-
-Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Datum, Uhrzeit u.a). Mit der `Tab`-Taste wird der Fokus auf das Eingabefeld gesetzt. Anschließend kann mittels der `Leer`-Taste das gerätespezifische Auswahldialog geöffent werden.
-
-> Hinweis: Wir haben in unseren Tests festgestellt, dass es je nach Browser-Version manchmal möglich ist, das Kalender-Icon anzufokusieren und mal nicht. Ohne das sich die Implementierung der Komponente geändert hat. Warum das so ist ist uns noch nicht bekannt. Nichtsdestotrotz ist das Öffnen des Auswahldialogs immer mittels der `Leer`-Taste möglich.
-
-#### InputNumber -> Type = **_date_**, **_month_**, **_week_** und **_time_**
-
-| Taste                           | Funktion                                                                                                                                                                                                                                                        |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`                           | Fokussiert das Eingabefeld. Nach erhalt des Fokus wechselt die `Tab`-Taste durch die Eingabebereiche. Danach erst wechselt die `Tab`-Taste zum nächsten Eingabefeld.                                                                                            |
-| `Leer`                          | Wenn das Eingabefeld fokussiert ist, kann im Browser mit der `Leer`-Taste ein Auswahldialog aufgerufen bzw. geschlossen werden. Die Navigation und Auswahl erfolgt hier mit Hilfe der `Tab`-Taste, der `Pfeil`-Tasten und der Bestätigung mittes `Enter`-Taste. |
-| `Pfeil-Tasten (links / rechts)` | Wenn das Eingabefeld fokussiert ist, kann mit den `Pfeil`-Tasten zwischen den Eingabebereichen gewechselt werden.                                                                                                                                               |
-| `Pfeil-Tasten (oben / unten)`   | Wenn ein Eingabebereich aktiviert ist, können mit den `Pfeil`-Tasten oben und unten die Werte verändert werden.                                                                                                                                                 |
-| `Esc`                           | Ist ein Auswahldialog verfügbar, kann dieser alternativ zur `Leer`-Taste oder auch mit der `Esc`-Taste geschlossen werden.                                                                                                                                      |
-
-#### InputNumber -> Type = **_number_**
 
 | Taste                         | Funktion                                                                                                                                             |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -58,7 +30,6 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 ## Links und Referenzen
 
 - https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
-- https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/
 
 <!-- Auto Generated Below -->
 

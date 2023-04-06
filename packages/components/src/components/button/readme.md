@@ -7,12 +7,15 @@
 ### Code
 
 ```html
-<kol-button _label="Primary" _variant="primary"></kol-button>
-<kol-button _label="Secondary" _variant="secondary"></kol-button>
-<kol-button _label="Normal" _variant="normal"></kol-button>
-<kol-button _label="Secondary" _variant="danger"></kol-button>
-<kol-button _label="Ghost" _variant="ghost"></kol-button>
-<kol-button _label="Custom" _variant="custom" _custom-class="myClass"></kol-button>
+<kol-button class="clickme" _label="Primary" _variant="primary"></kol-button>
+<kol-button class="clickme" _label="Secondary" _variant="secondary"></kol-button>
+<kol-button class="clickme" _label="Normal" _variant="normal"></kol-button>
+<kol-button class="clickme" _label="Danger" _variant="danger"></kol-button>
+<kol-button class="clickme" _label="Ghost" _variant="ghost"></kol-button>
+<kol-button class="clickme" _label="Custom" _variant="custom" _custom-class="myClass"></kol-button>
+<script>
+	document.querySelectorAll('.clickme').forEach((b) => (b._on = { onClick: console.log }));
+</script>
 ```
 
 ### Beispiel
@@ -20,13 +23,16 @@
 Default
 
 <div class="flex gap-2">
-  <kol-button _label="Primary" _variant="primary"></kol-button>
-  <kol-button _label="Secondary" _variant="secondary"></kol-button>
-  <kol-button _label="Normal" _variant="normal"></kol-button>
-  <kol-button _label="Danger" _variant="danger"></kol-button>
-  <kol-button _label="Ghost" _variant="ghost"></kol-button>
-  <kol-button _label="Custom" _variant="custom" _custom-class="myClass"></kol-button>
+  <kol-button class="clickme" _label="Primary" _variant="primary"></kol-button>
+  <kol-button class="clickme" _label="Secondary" _variant="secondary"></kol-button>
+  <kol-button class="clickme" _label="Normal" _variant="normal"></kol-button>
+  <kol-button class="clickme" _label="Danger" _variant="danger"></kol-button>
+  <kol-button class="clickme" _label="Ghost" _variant="ghost"></kol-button>
+  <kol-button class="clickme" _label="Custom" _variant="custom" _custom-class="myClass"></kol-button>
 </div>
+<script>
+  document.querySelectorAll('.clickme').forEach(b => b._on = { onClick: console.log });
+</script>
 
 Disabled
 
@@ -44,59 +50,27 @@ Disabled
 ### Beschriftung
 
 Für die eindeutige Beschriftung des Buttons nutzen Sie das Attribut **`_label`**.
-`_label="Buttonbeschriftung"`
+`_label="Schaltflächenbeschriftung"`
 
-### Button mit Icon
+### Icon
 
-Über das Attribut **`_icon`** wird eine JSON-Struktur übergeben, mit der alle Paramater zu Anzeige des Icon im Button festgelegt wird.
+Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
+Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
+Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
-```html
-_icon = "{'top': {'style': {'font-size': '200%', 'transform': 'rotate(45deg)'}, 'icon': 'codicon codicon-arrow-up'},'right': {'icon': 'fa-solid
-fa-arrow-right'},'bottom': {'icon': 'codicon codicon-arrow-down'},'left': {'icon': 'codicon codicon-arrow-left'}}";
-```
+<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
 
-Es ist möglich, ein Icon an jeder Position des Button anzuzeigen, sowie die Ausgabe mehrerer Icons im Button. Jedes Icon erhält in der JSON-Struktur einen eigenen Abschnitt, in dem seine Properties festgelegt werden.
+### Schaltfläche ohne Text
 
-Jeder Abschnitt beginnt mit der gewünschten Position des Icon im Button:
+Mittels **`_iconOnly`** wird die Schaltfläche nur das icon anzeigen (<kol-link _href="#icon" _label="siehe icon"></kol-link>)
 
-- top
-- bottom
-- right
-- left
+<kol-alert _type="info">Beachten Sie, dass das Attribut **`_label`** auch dann gesetzt werden muss, wenn nur ein Icon angezeigt werden soll, dieses wird von Screenreadern vorgelesen und in den Tooltip gesetzt.</kol-alert>
 
-```html
-"{'top': {weitere Properties}";
-```
+### Darstellung angeben
 
-Als weitere Properties zur Konfiguration des Icon stehen zur Verfügung:
+Zur Steuerung der Darstellung verwenden Sie das Attribut **`_variant`**. Der Standardwert ist `primary`, alternativ kann auch `primary`, `secondary`, `normal`, `danger`, `ghost`, oder `custom` gesetzt werden.<br/>
 
-- icon: legt das anzuzeigende Icon aus der Icofont-Bibliothek fest.
-
-```html
-"{'top': {'icon':'codicon codicon-arrow-up'}";
-```
-
-- style: übergibt ggfls. eigene CSS-Stylinganweisungen an das Icon, wie z.B. font-size, transform oder color.
-
-```html
-"{'top': {'style': {'font-size':'200%','color':'#040404','transform':'rotate(45deg)'},'icon':'codicon codicon-arrow-up'}";
-```
-
-Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie [hier](https://icofont.com/icons)
-
-### Nur Icon im Button anzeigen
-
-In der **Button**-Komponente kann auf die Beschriftung auch verzichtet werden. Hierzu wird das Attribut **`_iconOnly`** gesetzt.
-
-Beachten Sie, dass das Attribut **`_label`** auch dann gesetzt werden muss, wenn nur ein Icon angezeigt werden soll. Die Komponente gibt in diesem Fall drei Punkte (...) als Platzhalter aus.
-
-`_icon-only="true"`
-
-### Style angeben
-
-Die Button-Komponente kann als primärer oder sekundärer Button ausgegeben werden. Zur Steuerung verwenden Sie das Attribut `_variant="primary/secondary/normal/danger/ghost/custom"`. Als Default-Wert wird ein Button als **primary** gerendert.<br/>
-
-Bei Verwendung des Attribut **\_variant="custom"** kann der Entwickler für den Button eigene Styles realisieren. Verpflichtend ist in diesem Fall das Setzen des Attribut **\_custom-class**, damit das Button-Element im Shadow-Dom mittels CSS selektiert werden kann.
+Über die Verwendung des Wertes `custom` kann eine eigene Darstellung gewählt werden. Verpflichtend ist in diesem Fall das Setzen des Attribut **`_custom-class`**, damit die Schaltfläche im Shadow-Dom mittels CSS selektiert werden kann.
 
 ### Best practices
 
@@ -105,15 +79,12 @@ Bei Verwendung des Attribut **\_variant="custom"** kann der Entwickler für den 
 - Verwenden Sie nur eine primäre Schaltfläche je Viewport. Auf der gesamten Seite kann ein Button-Style beliebig oft auftreten.
 - Die Beschriftung des Button muss die Aktion beschreiben, die die Schaltfläche ausführt. Sie sollte ein Verb enthalten (z.B. Speichern). Verwenden Sie prägnante, spezifische, selbsterklärende Beschriftungen.
 - Schaltflächenbeschriftungen sollten immer dann auch ein Nomen enthalten, wenn es Raum für Interpretationen darüber gibt, wofür das Verb zuständig ist. Verwenden Sie keine generischen Bezeichnungen wie "OK", insbesondere nicht im Fehlerfall. Fehler sind nie "OK".
-- Wenn Sie mehrere Buttons kombinieren oder anordnen möchten, verwenden Sie die **ButtonGroup**-Komponente.
-- Verwenden Sie nicht mehrere Buttons im Style "primär" in einer **ButtonGroup**.
+- Verwenden Sie nicht mehrere Buttons im Style "primär" innerhalb einer Gruppierung.
 - Verwenden Sie Buttons nicht als Link oder als Navigationselement.
 
 ## Barrierefreiheit
 
-Für Menschen mit einem eingeschränkten Sichtfeld ist die Positionierung des **Icons** im Button links von der Beschriftung optimal (**`_icon-align="left"`**, bzw. kein **`_icon-align`**).
-
-Ebenfalls aus Gründen optimaler Barrierefreiheit verzichtet KoliBri bei der **Button**-Komponente auf den Status **disabled**.
+Für Menschen mit einem eingeschränkten Sichtfeld ist die Positionierung des **Icons** im Button links von der Beschriftung optimal.
 
 Probleme mit Disabled-Status
 
@@ -122,10 +93,10 @@ Probleme mit Disabled-Status
 
 ### Tastatursteuerung
 
-| Taste   | Funktion                                                                       |
-| ------- | ------------------------------------------------------------------------------ |
-| `Tab`   | Springt den einzelnen Button an und fokussiert ihn.                            |
-| `Enter` | Öffnet den Link des fokussierten Button oder führt dessen onClick-Methode aus. |
+| Taste   | Funktion                                                     |
+| ------- | ------------------------------------------------------------ |
+| `Tab`   | Springt den einzelnen Button an und fokussiert ihn.          |
+| `Enter` | Führt die onClick-Methode der fokussierten Schaltfläche aus. |
 
 ## Links und Referenzen
 

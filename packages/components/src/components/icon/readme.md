@@ -1,14 +1,10 @@
 # Icon
 
-Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut `_icon` gesteuert werden und erfolgt durch das Attribut `_aria-label` barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
+Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_aria-label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
 
-Folgende Icon-Fonts werden _`out-of-the-box`_ unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-lik> unterstützt.
 
-- [Codicons]
-- [Font-Awesome]
-- [Icofont]
-
-<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateien der Icon-Fonts eingebunden sind.</kol-alert>
+<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>
 
 ## Konstruktion
 
@@ -24,19 +20,19 @@ Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
 
 <kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 
-## Verwendung
+### Icon
 
-### Best practices
+Das Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
+Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
+Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
+
+<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
 
 ## Barrierefreiheit
 
 Wichtig ist bei Kontext-relevanten Grafiken, dass sie beschriftet werden.
 
 - https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/
-
-### Aria-Hidden
-
-Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
 
 ### Aria-Label
 

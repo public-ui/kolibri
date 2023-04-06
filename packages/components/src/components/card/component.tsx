@@ -62,7 +62,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
-	 * Gibt an, ob die Card einen Footer-Bereich hat.
+	 * Macht den Footerbereich der Card sichtbar.
 	 */
 	@Prop({ reflect: true }) public _hasFooter?: boolean = false;
 
@@ -79,7 +79,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _headline?: string;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 

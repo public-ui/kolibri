@@ -42,7 +42,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob der Toast ein Schließen-Icon hat.
+	 * Aktiviert das Schließen-Icon.
 	 */
 	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
 

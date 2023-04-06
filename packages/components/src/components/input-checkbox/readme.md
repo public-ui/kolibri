@@ -2,8 +2,6 @@
 
 Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.
 
-Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch_** dar. Hierbei wird die Checkbox zu einem Schieberegler gewandelt, der bei Anklicken nach rechts (aktiv) bzw. nach links (inaktiv) verschoben wird.
-
 ## Konstruktion
 
 ### Code
@@ -26,15 +24,21 @@ Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch
 
 Checkboxen werden als Einzelelement oder als Liste beliebig vieler Checkboxen verwendet. Sie ermöglichen den Nutzer:innen, aus einer vordefinierten Anzahl von Möglichkeiten eine oder mehrere auszuwählen.
 
+### Varianten
+
+Mittels des Attributs **`_variant`** können folgende Varianten ausgewählt werden (Beispiele siehe oben):
+
+- `button`: wechselt das Icon je nach Zustand (Beispiel 3+4)
+- `switch`: verwandelt die Checkbox in einen horizontalen Schalter, hierbei gilt rechts als aktiv und links als inaktiv. (Beispiel 2)
+
 ### Best practices
 
 - Verwenden Sie eine einzelne Checkbox, wenn Sie von den Nutzer:innen eine einfach Bestätigung wünschen, z.B. Akzeptieren der Datenschutzerklärung.
 - Verwenden Sie eine Gruppe von Checkboxen, um den Nutzer:innen die Möglichkeit zu geben einen oder mehrere Werte auszuwählen.
-- Vermeiden Sie zu viele Checkboxen, da hierdurch die Übersichtlichkeit verloren geht. Verwenden Sie in diesem Fall eine Select-Box.
 
 ## Barrierefreiheit
 
-Vermeiden Sie die Verwendung von vielen Checkboxen auf einer Seite, da Ihre Inhalte hierdurch schnell unübersichtlich und lang werden. Prüfen Sie in solchen Anwendungsfällen die Verwendung einer <a href="?path=/story/react-select-beschreibung--page">Select-Box</a>.
+Vermeiden Sie die Verwendung von vielen Checkboxen auf einer Seite, da Ihre Inhalte hierdurch schnell unübersichtlich und lang werden. Prüfen Sie in solchen Anwendungsfällen die Verwendung einer <kol-link _href="/docs/components/select">Select-Box mit **`_multiple`**</kol-link>.
 
 Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenreadern vorgelesen wird und so eine eindeutige Identifikation des Eingabefeldes ermöglicht.
 

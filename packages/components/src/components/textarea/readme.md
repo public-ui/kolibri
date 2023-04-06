@@ -1,7 +1,6 @@
 # Textarea
 
-Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum
-InputText können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
+Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
 
 ## Konstruktion
 
@@ -28,9 +27,9 @@ InputText können hier auch umfangreiche Inhalte eingegeben werden, die auch mit
 
 ## Verwendung
 
-Verwenden Sie die **Textarea**-Komponente wenn die Eingabe von größeren Textmengen erforderlich ist, z.B. bei der Erfassung eines Anliegens innerhalb eines Formulars.<br/>
-Mit Hilfe der Property **`_rows`** kann die Höhe der Textarea in Zeilen bestimmt werden.<br/>
-Über die Property **`_resize`** kann zusätzlich festgelegt werden ob und in welche Richtung die Textarea vergrößert werden kann. Der Wert **`none`** sperrt die Textarea gegen Größenänderungen.
+Verwenden Sie die **Textarea**-Komponente wenn die Eingabe von größeren Textmengen erforderlich ist, z.B. bei der Erfassung eines Anliegens innerhalb eines Formulars.
+Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestimmt werden.
+Über das Attribut **`_resize`** kann zusätzlich festgelegt werden ob und in welche Richtung die Textarea vergrößert werden kann. Der Wert **`none`** sperrt die Textarea gegen Größenänderungen.
 
 <!--### Best practices
 
@@ -41,9 +40,9 @@ Mit Hilfe der Property **`_rows`** kann die Höhe der Textarea in Zeilen bestimm
 ### Tastatursteuerung
 
 | Taste          | Funktion                                                                        |
-| -------------- | ------------------------------------------------------------------------------- | --- |
+| -------------- | ------------------------------------------------------------------------------- |
 | `Tab`          | Fokussiert die Textarea.                                                        |
-| `Pfeil-Tasten` | Können für die Navigation im Inhalt der fokussierten Textarea verwendet werden. |     |
+| `Pfeil-Tasten` | Können für die Navigation im Inhalt der fokussierten Textarea verwendet werden. |
 
 ## Links und Referenzen
 

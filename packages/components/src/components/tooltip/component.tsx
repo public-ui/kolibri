@@ -175,7 +175,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 */
 	@Prop() public _align?: Alignment = 'top';
 
@@ -185,7 +185,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _id!: string;
 
 	/**
-	 * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
 	 */
 	@Prop() public _label!: string;
 

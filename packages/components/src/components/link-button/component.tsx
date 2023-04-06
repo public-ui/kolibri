@@ -129,7 +129,7 @@ export class KolLinkButton
 	@Prop() public _href!: string;
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
@@ -139,7 +139,7 @@ export class KolLinkButton
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Gibt einen beschreibenden Text für das Text-Element an.
+	 * Setzt den sichtbaren Text des Elements.
 	 */
 	@Prop() public _label!: string;
 
@@ -150,7 +150,7 @@ export class KolLinkButton
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Setzt die Role der Schaltfläche.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
@@ -160,7 +160,7 @@ export class KolLinkButton
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 * Gibt an wo der Link geöffnet werden soll.
 	 */
 	@Prop() public _target?: LinkTarget;
 
@@ -175,7 +175,7 @@ export class KolLinkButton
 	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Gibt an, welche Ausprägung der Link-Button hat.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 

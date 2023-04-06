@@ -20,7 +20,7 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 

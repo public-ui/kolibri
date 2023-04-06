@@ -1,8 +1,6 @@
 # IndentedText
 
-Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate.
-
-In der Komponente kann beliebiger HTML-Code verwendet werden.
+Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate (für verlinkte Zitate kann auch die <kol-link _href="/docs/components/quote/" _label="kol-quote-Komponente"></kol-link> verwendet werden.).
 
 ## Konstruktion
 
@@ -36,10 +34,6 @@ Die Komponente besitzt keine weiteren Attribute. Der hervorzuhebende Text wird z
 ### Anwendungsfälle
 
 Verwenden Sie die **IndentedText**-Komponente, um Textpassagen oder Informationen optisch hervorzuheben.
-
-## Barrierefreiheit
-
-<!--## Links und Referenzen
 
 <!-- Auto Generated Below -->
 

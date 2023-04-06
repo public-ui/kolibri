@@ -1,11 +1,7 @@
 # Modal
 
-Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem
-Dialogfenster angezeigt werden. Sie wird nach Klick auf einen Button aufgerufen und über ein eigenes
-Close-Icon wieder geschlossen. Die **Modal**-Komponente basiert auf der **Card**-Komponente und ist standardmäßig versteckt. Sie wird i.d.R.
-erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt
-des Modal-Fensters ist aktiv. Das **Modal**-Fenster wird über ein **Close-Icon** oben rechts im Kopfbereich wieder
-geschlossen.
+Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
+Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt des Modal-Fensters ist aktiv.
 
 ## Funktionsweise
 
@@ -13,54 +9,45 @@ Das **Modal** realisiert die Basis für barrierefreie Overlays und ermöglicht e
 
 Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der Webseite deaktiviert, außer die innerhalb des aktiven Modals.
 
-Werden mehrere **Modale** nach einander geöffnet, dann wird immer nur das letzte geöffnete angezeigt. Die **Modale** werden nach dem _Last In – First Out_ -Prinzip (LIFO) angezeigt, wobei die einzelnen **Modale** in beliebiger Reihenfolge wieder geschlossen werden können.
-
 ## Konstruktion
 
 ### Code
 
-> Um das Zusammenspiel von Komponenten (HTML) und Controller (TypeScript) gemeinsam darzustellen, wurden alle Code-Beispiele auf dieser Seite mit den Web Components im TSX geschrieben.
-
 ```html
-<kol-modal
-  _activeElement={this.state.activeElement}
-  _aria-label="Beschreibung zur Modalbox"
-  _on={{
-    onClick: (event: Event) => {
-      this.setState({
-        activeElement: null // schließt das Modal
-      })
-    }
-  }}
-  _width="400px"
->
-  <kol-card _heading="Vorgang löschen" _has-footer>
-    <p slot="content">Wollen Sie den Vorgang wirklich löschen?</p>
-    <div slot="footer">
-      <kol-button _label="Ok" _variant="primary"></kol-button>
-      <kol-button _label="Abbrechen"></kol-button>
-    </div>
-  </kol-card>
+<kol-modal id="test-modal" _aria-label="Beschreibung zur Modalbox">
+	<kol-card _heading="Vorgang löschen" _has-footer style="background-color: bisque">
+		<p slot="content">Wollen Sie den Vorgang wirklich löschen?</p>
+		<div slot="footer">
+			<kol-button class="close-modal" _label="Ok" _variant="primary"></kol-button>
+			<kol-button class="close-modal" _label="Abbrechen"></kol-button>
+		</div>
+	</kol-card>
 </kol-modal>
-<kol-button
-  _on={{
-    onClick: (event: Event) => {
-      this.setState({
-        activeElement: event.target as HTMLElement // öffnen das Modal
-      })
-    }
-  }}
-  _label="Modal öffnen"
-></kol-button>
+<kol-button id="modal-open-button" _label="Modal öffnen"></kol-button>
+<script>
+	const modal = document.querySelector('#test-modal');
+	const modalOpenButton = document.querySelector('#modal-open-button');
+	function openModal() {
+		modal._activeElement = modalOpenButton;
+		modal._open = true;
+	}
+	function closeModal() {
+		modal._activeElement = null;
+	}
+	document.querySelectorAll('.close-modal').forEach((b) => (b._on = { onClick: closeModal }));
+	modalOpenButton._on = { onClick: openModal };
+</script>
 ```
 
 ## Verwendung
 
-Über das Attribut `_width` geben Sie die gewünschte Breite der Modalbox an. Sie wird in der gewählten Größe immer mittig auf dem Bildschirm angezeigt.
+Über das Attribut **`_width`** geben Sie die gewünschte Breite der Modalbox an. Sie wird in der gewählten Größe immer mittig auf dem Bildschirm angezeigt.
 
-Da das Modal vom eigentlichen Modal entkoppelt ist, aber für eine teilweisen Sperrung der Inhalte sorgt. Muss es auch eine Möglichkeit bieten, das Schließen (Sperrung aufheben) aus dem Modal-Kontext zu ermöglichen. Das wird durch einen optionalen Schließen-Button rechts oben in der Ecke sichergestellt.
+Da das Modal vom eigentlichen Modal entkoppelt ist, aber für eine teilweisen Sperrung der Inhalte sorgt. Muss es auch eine Möglichkeit bieten, das Schließen (Sperrung aufheben) aus dem Modal-Kontext zu ermöglichen.
 
-<kol-alert _type="info">Standardmäßig wird die Modalbox mit einem **Close-Button** oben rechts gerendert. Diese Position ist aktuell fix und kann nicht geändert werden. Es ist aber möglich innerhalb der Modalbox einen eigenen Close-Button einzubauen und den Standardbutton auszublenden.</kol-alert>
+<kol-alert _type="info">Es wird empfohlen einen Close-Button oben rechts einzubauen.</kol-alert>
+
+Das **Modal** hat einen `z-index` von `100`.
 
 ### Best practices
 
@@ -80,25 +67,20 @@ Da das Modal vom eigentlichen Modal entkoppelt ist, aber für eine teilweisen Sp
 
 Das **Modal** ist so realisiert, dass der Fokus darauf liegt, wenn es geöffnet wird. Elemente außerhalb des Modals sind dann nicht mehr fokussierbar.
 
-Wird das **Modal** geschlossen, liegt der Fokus wieder auf dem Element, welches ursprünglich das **Modal** geöffnet hatte.
+Wird das **Modal** geschlossen, liegt der Fokus wieder auf dem Element, welches unter **`_activeElement`** angegeben wurde.
 
-Bei der Realisierung dieser Funktionalität haben wir auf die Verwendung der CSS-Properties `user-select` und `pointer-events` verzichtet, um das Navigieren aus der Webseite in die Browser-Menü's weiterhin zu ermöglichen. Ebenfalls haben wir darauf verzichtet die _Event-Propagation_ zu manipulieren.
+Bei der Realisierung dieser Funktionalität haben wir auf die Verwendung der CSS-Properties **`user-select`** und **`pointer-events`** verzichtet, um das Navigieren aus der Webseite in die Browser-Menü's weiterhin zu ermöglichen. Ebenfalls haben wir darauf verzichtet die _Event-Propagation_ zu manipulieren.
 
 Achten Sie für eine optimale Ausgabe der **Modal**-Komponente in Screenreadern darauf, das Attribut **`aria-label`** korrekt zu setzen.
 
-Beim Öffnen eines Modals, muss der Entwickler:in das aktive Element übergeben, zu dem nach dem Schließen des Modals automatisch der Fokus gesetzt werden soll.
-
 Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektierbaren Elemente deaktiviert außer die innerhalb des eigenen Modals. Hierbei ist zu beachten, dass KoliBri nur Elemente deaktiviert die sich im Browser-Seitenbereich befinden. Das Fokussieren den Browser-Menü's ist weiterhin möglich.
-
-Zusätzlich stellt die Komponente sicher, dass die Darstellung beliebiger Inhalte bei beliebiger Zoomstufe barrierefrei bleibt. Hierzu wird ein vertikaler Scroll-Balken bei bedarf verwendet.
 
 ### Tastatursteuerung
 
-| Taste   | Funktion                                                                                                                                                                         |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab`   | Fokussiert den Aufrufbutton des Modal. Bei geöffnetem Modal werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen, insbesondere auch der Close-Button des Modal. |
-| `Enter` | Öffnet das Modal.                                                                                                                                                                |
-| `Leer`  | Öffnet das Modal.                                                                                                                                                                |
+| Taste | Funktion                                                                                    |
+| ----- | ------------------------------------------------------------------------------------------- |
+| `Tab` | Bei geöffnetem Modal werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
+| `ESC` | Schließt das Modal.                                                                         |
 
 ## Links und Referenzen
 

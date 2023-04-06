@@ -128,12 +128,12 @@ export class KolTextarea implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
 	 */
 	@Prop({ reflect: true }) public _hasCounter?: boolean;
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -143,12 +143,12 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 */
 	@Prop() public _hint?: string = '';
 
@@ -158,7 +158,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _id!: string;
 
 	/**
-	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
+	 * Setzt die maximale Zeichenanzahl.
 	 */
 	@Prop() public _maxLength?: number;
 
@@ -178,17 +178,17 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 */
 	@Prop({ reflect: true }) public _readOnly?: boolean;
 
 	/**
-	 * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 */
 	@Prop() public _resize?: CSSResize = 'vertical';
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean;
 

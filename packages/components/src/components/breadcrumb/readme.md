@@ -36,19 +36,21 @@ Das gesamte JSON-Objekt muss in eckigen Klammern an das Attribut **`_links`** ü
 <b>Folgende Eigenschaften stehen zur Verfügung:</b>
 
 - **`_href`** übergibt den Link, der für dieses Element verwendet werden soll.
-- **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen alle Icons aus der **Icofont-Bibliothek** zur Verfügung
+- **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen die <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-lik> zur Verfügung
 - **`_iconOnly`** (optional). Wenn der Wert auf **true** gesetzt wird, erscheint im Link ausschließlich das Icon, ohne weiteren Text. Die Eigenschaft `_icon` muss gesetzt werden.
 - **`_label`** übergibt den Text, der für dieses Element angezeigt werden soll.
-- **`_links`** übergibt den Pfadaufbau der Komponente als JSON-Objekt.
 
-Beispiel für ein JSON-Objekt, das an das Attribut **\_links** übergeben wird:
+Beispiel für ein JSON-Objekt, das an das Attribut **`_links`** übergeben wird:
 
-```html
-[ { _label: 'Startseite', _href: '#/', _icon: 'home', _iconOnly: true, }, { _label: '1. Unterseite', _href: '/1_unterseite', }, { _label: '2. Unterseite',
-_href: '/2_unterseite', }, ];
+```JSON
+[
+  { '_label': 'Startseite', '_href': '#/', '_icon': 'codicon codicon-home', '_iconOnly': true },
+  { '_label': '1. Unterseite', '_href': '/unterseite_eins' },
+  { '_label': '2. Unterseite', '_href': '/unterseite_zwei' }
+]
 ```
 
-<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/","_icon":"home","_icon-only": "true"},{"_label":"1. Unterseite","_href":"#/1_unterseite"},{"_label":"2. Unterseite","_href":"#/2_unterseite"}]'></kol-breadcrumb>
+<kol-breadcrumb _links='[{"_label":"Startseite","_href":"#/","_icon":"codicon codicon-home","_icon-only": "true"},{"_label":"1. Unterseite","_href":"#/1_unterseite"},{"_label":"2. Unterseite","_href":"#/2_unterseite"}]'></kol-breadcrumb>
 
 ### Best practices
 

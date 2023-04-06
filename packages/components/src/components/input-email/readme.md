@@ -18,15 +18,16 @@ Der Input-Typ **E-Mail** erzeugt ein Eingabefeld für E-Mails.
 
 Setzen Sie die **InputEmail**-Komponente auf Formularen ein, wenn dort die Eingabe einer oder mehrerer E-Mail-Adressen erforderlich ist.
 
-Standardmäßig ist die Komponente für die Erfassung einer einzelnen E-Mail-Adresse vorgesehen. Setzen Sie das Attribut `_multiple=true`, um mehrere E-Mail-Adressen zu erfassen. Trennen Sie die einzelnen E-Mail-Adressen mit einem Komma (,) voneinander.
+Standardmäßig ist die Komponente für die Erfassung einer einzelnen E-Mail-Adresse vorgesehen. Setzen Sie das Attribut **`_multiple`**, um mehrere E-Mail-Adressen zu erfassen. Trennen Sie die einzelnen E-Mail-Adressen mit einem Komma (,) voneinander.
 
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 
-Die Validierung der erfassten E-Mail-Adressen erfolgt programmseitig. Bei Eingabe einer nicht validen E-Mail-Adresse wird unterhalb der Komponente eine **Alert**-Komponente angezeigt, die über das Attribut `_error` textseitig angepasst werden kann.
+Eine Validierung der erfassten E-Mail-Adressen innerhalb der Komponente erfolgt nicht.
+Um eine fehlgeschlagene Validierung anzuzeigen, setzen Sie das Attrbut **`_error`** mit der entsprechenden Fehlermeldung, diese wird dann via **kol-alert** unterhalb angezeigt.
 
 ### Tastatursteuerung
 

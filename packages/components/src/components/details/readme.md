@@ -4,17 +4,20 @@ Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunäc
 durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
 
 Die **Detail**-Komponente stellt sich standardmäßig als einzeiliges Layout-Element dar, das aus einem Pfeil-Icon und einem nachfolgenden,
-kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente wird erst nach Klick auf das Icon nach unten hin geöffnet. Das Pfeil-Icon ändert dabei
-seine Ausrichtung von **_rechts_** nach **_unten_**.<br/>Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit verbergen.
+kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente wird erst nach Klick auf den Kopfbereich nach unten hin geöffnet. Das Pfeil-Icon ändert dabei
+seine Ausrichtung von **_rechts_** nach **_unten_**.
+Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit verbergen.
 
 ## Konstruktion
-
-Der gewünschte Inhalt wird zwischen öffnendem und schließendem Element notiert.
 
 ### Code
 
 ```html
-<kol-details _summary="Ihre Überschrift" _open> Ihr Text im Detail-Bereich </kol-details>
+<kol-details _summary="Nach Laden der Seite geschlossen">
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+	vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+	amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+</kol-details>
 ```
 
 ### Beispiel
@@ -30,16 +33,16 @@ Der gewünschte Inhalt wird zwischen öffnendem und schließendem Element notier
 
 ### Geöffnet anzeigen
 
-Verwenden Sie das Attribut `_open`, um die Komponente beim Anzeigen geöffnet darzustellen.
+Verwenden Sie das Attribut **`_open`**, um die Komponente geöffnet darzustellen.
 
 ### Einleitungstext
 
-Verwenden Sie das Attribut `_summary`, um den Text zu definieren, der als Überschrift angezeigt werden soll.
+Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Überschrift angezeigt werden soll.
 
 ### Best practices
 
 - Verwenden Sie die **Detail**-Komponente, um ergänzende Inhalte zu einem Hauptthema platzsparend anzuordnen.
-- Die **Detail**-Komponente eignet sich gut für die Realisierung einer FAQ-Seite, wobei die Frage über das Attribut `_summary` und die Antwort im Inhaltsbereich ausgegeben werden kann.
+- Die **Detail**-Komponente eignet sich gut für die Realisierung einer FAQ-Seite, wobei die Frage über das Attribut **`_summary`** und die Antwort im Inhaltsbereich ausgegeben werden kann.
 - Vermeiden Sie es, wichtige Informationen, die z.B. rechtliche Aspekte betreffen, in einem verborgenen Bereich auszugeben. Es kann nicht sichergestellt werden, dass der Benutzer diese Informationen auch sicher liest.
 - Vermeiden Sie es, zu viele **Detail**-Komponenten zu verwenden, da die Übersichtlichkeit der Seite hierunter leiden kann.
 
@@ -54,7 +57,7 @@ Verwenden Sie das Attribut `_summary`, um den Text zu definieren, der als Übers
       kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
       sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
     </p>
-    <kol-details _summary="Nach Laden der Seite geschlossen">
+    <kol-details _summary="Erst nach Klick offen">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
       dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
       kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
