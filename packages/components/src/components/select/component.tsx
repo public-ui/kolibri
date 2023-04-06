@@ -8,6 +8,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -177,7 +178,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -227,7 +228,7 @@ export class KolSelect implements ComponentApi {
 	@State() public state: States = {
 		_hasValue: false,
 		_height: '',
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_list: [],
 		_multiple: false,
 		_value: [],

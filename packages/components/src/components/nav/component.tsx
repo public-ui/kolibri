@@ -69,6 +69,9 @@ type RequiredStates = {
 	ariaCurrentValue: AriaCurrent;
 	ariaLabel: string;
 	collapsible: boolean;
+	/**
+	 * @deprecated Version 2
+	 */
 	hasCompactButton: boolean;
 	links: ButtonOrLinkOrTextWithChildrenProps[];
 	orientation: Orientation;
@@ -118,7 +121,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_ariaExpanded={selected}
 				_disabled={disabled}
-				_icon={icon}
+				_icon={icon || '-'}
 				_iconOnly={compact}
 				_label={label}
 				_on={on}
@@ -127,22 +130,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	}
 
 	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return <kol-span-wc _icon={icon} _iconOnly={compact} _label={label}></kol-span-wc>;
-	}
-
-	private dropDown(collapsible: boolean, compact: boolean, deep: number, link: ButtonOrLinkOrTextWithChildrenProps, orientation: Orientation): JSX.Element {
-		return (
-			<div
-				class={{
-					'list-container': true,
-					'active-child': this.hasActiveChild(link),
-					'absolute ': deep === 0 && orientation === 'horizontal',
-				}}
-			>
-				{/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
-				<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children!} orientation={orientation} />
-			</div>
-		);
+		return <kol-span-wc _icon={icon || '-'} _iconOnly={compact} _label={label}></kol-span-wc>;
 	}
 
 	private entry(
@@ -198,7 +186,11 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
 				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
-				{hasChildren && selected ? this.dropDown(collapsible, compact, deep, link, orientation) : ''}
+				{hasChildren && selected ? (
+					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
+				) : (
+					''
+				)}
 			</li>
 		);
 	}
@@ -209,7 +201,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_ariaExpanded={selected}
 				_href={href}
-				_icon={icon}
+				_icon={icon || '-'}
 				_iconOnly={compact}
 				_label={label}
 			></kol-link-wc>
@@ -263,7 +255,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<div
 					class={{
 						[orientation]: true,
-						'inline-block': compact,
 						[this.state._variant]: true,
 					}}
 				>
@@ -275,7 +266,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 							<kol-button
 								_ariaControls="nav"
 								_ariaExpanded={compact}
-								_ariaLabel={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_iconOnly
 								_label={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
@@ -319,6 +309,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 	/**
 	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
+	 * @deprecated Version 2
 	 */
 	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
@@ -389,6 +380,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		validateCompact(this, value);
 	}
 
+	/**
+	 * @deprecated Version 2
+	 */
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
 		validateHasCompactButton(this, value);
