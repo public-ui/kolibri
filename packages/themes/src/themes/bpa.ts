@@ -660,15 +660,11 @@ export const BPA = KoliBri.createTheme('bpa', {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
 	}
-	:host(:not(.has-value))kol-input:has(input[type="number"]):not(
-			:focus-within
-		)label {
+	:host(:not(.has-value)) kol-input:has(input[type="number"]):not(:focus-within) label {
 		transform: translateY(1.9375rem) scale(1.3333333333);
 		cursor: text;
 	}
-	:host(:not(.has-value))kol-input:has(input[type="number"]):not(
-			:focus-within
-		):has(div.icon-left)label {
+	:host(:not(.has-value)) kol-input:has(input[type="number"]):not(:focus-within):has(div.icon-left) label {
 		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
 	}
 	:host(:not(.has-value)) kol-input:not(:focus-within) label,
