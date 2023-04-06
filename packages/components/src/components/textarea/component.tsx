@@ -8,6 +8,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -155,7 +156,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
@@ -216,7 +217,7 @@ export class KolTextarea implements ComponentApi {
 		_adjustHeight: false,
 		_currentLength: 0,
 		_hasValue: false,
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_resize: 'vertical',
 	};
 

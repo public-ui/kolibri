@@ -647,15 +647,14 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	input,
 	select,
 	textarea {
-		background-color: white;
 		border: none;
+		margin: 1px;
 		outline: none;
 	}
-	input:not([type="range"]):focus,
-	select:focus,
-	textarea:focus {
-		border-top: 1px solid var(--color-blue);
-		border-bottom: 1px solid var(--color-blue);
+	input,
+	select:not([multiple]) {
+		height: 44px !important;
+		min-height: 44px !important;
 	}
 	label {
 		font-weight: var(--font-weight-bold);
@@ -672,6 +671,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 3;
 	}
 	.input {
+		min-height: 44px !important;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -725,7 +725,14 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		flex-wrap: wrap;
 		gap: var(--spacing-2xs);
 	}`,
-	'KOL-INPUT-RADIO': `fieldset kol-alert {
+	'KOL-INPUT-RADIO': `fieldset {
+		border: 0;
+		gap: 0.5rem;
+	}
+	div[slot="input"] {
+		gap: 0.25rem;
+	}
+	fieldset kol-alert {
 		order: 1;
 	}
 	fieldset .hint {
@@ -894,13 +901,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
+		margin: 1px 0.5em;
 		outline: none;
 	}
-	input:not([type="range"]):focus,
-	select:focus,
-	textarea:focus {
-		border-top: 1px solid var(--color-blue);
-		border-bottom: 1px solid var(--color-blue);
+	input,
+	select:not([multiple]) {
+		height: 40px !important;
+		min-height: 40px !important;
 	}
 	label {
 		font-weight: var(--font-weight-bold);
@@ -917,6 +924,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 3;
 	}
 	.input {
+		min-height: 44px !important;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -945,13 +953,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
+		margin: 1px 0.5em;
 		outline: none;
 	}
-	input:not([type="range"]):focus,
-	select:focus,
-	textarea:focus {
-		border-top: 1px solid var(--color-blue);
-		border-bottom: 1px solid var(--color-blue);
+	input,
+	select:not([multiple]) {
+		height: 40px !important;
+		min-height: 40px !important;
 	}
 	label {
 		font-weight: var(--font-weight-bold);
@@ -968,6 +976,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 3;
 	}
 	.input {
+		min-height: 44px !important;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -996,13 +1005,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
+		margin: 1px 0.5em;
 		outline: none;
 	}
-	input:not([type="range"]):focus,
-	select:focus,
-	textarea:focus {
-		border-top: 1px solid var(--color-blue);
-		border-bottom: 1px solid var(--color-blue);
+	input,
+	select:not([multiple]) {
+		height: 40px !important;
+		min-height: 40px !important;
 	}
 	label {
 		font-weight: var(--font-weight-bold);
@@ -1019,6 +1028,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 3;
 	}
 	.input {
+		min-height: 44px !important;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -1047,13 +1057,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
+		margin: 1px;
 		outline: none;
 	}
-	input:not([type="range"]):focus,
-	select:focus,
-	textarea:focus {
-		border-top: 1px solid var(--color-blue);
-		border-bottom: 1px solid var(--color-blue);
+	input,
+	select:not([multiple]) {
+		height: 44px !important;
+		min-height: 44px !important;
 	}
 	label {
 		font-weight: var(--font-weight-bold);
@@ -1070,6 +1080,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 3;
 	}
 	.input {
+		min-height: 44px !important;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -1098,13 +1109,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
+		margin: 1px 0.5em;
 		outline: none;
 	}
-	input:not([type="range"]):focus,
-	select:focus,
-	textarea:focus {
-		border-top: 1px solid var(--color-blue);
-		border-bottom: 1px solid var(--color-blue);
+	input,
+	select:not([multiple]) {
+		height: 40px !important;
+		min-height: 40px !important;
 	}
 	label {
 		font-weight: var(--font-weight-bold);
@@ -1121,6 +1132,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 3;
 	}
 	.input {
+		min-height: 44px !important;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -1149,13 +1161,13 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	select,
 	textarea {
 		border: none;
+		margin: 1px 0.5em;
 		outline: none;
 	}
-	input:not([type="range"]):focus,
-	select:focus,
-	textarea:focus {
-		border-top: 1px solid var(--color-blue);
-		border-bottom: 1px solid var(--color-blue);
+	input,
+	select:not([multiple]) {
+		height: 40px !important;
+		min-height: 40px !important;
 	}
 	label {
 		font-weight: var(--font-weight-bold);
@@ -1172,6 +1184,7 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		order: 3;
 	}
 	.input {
+		min-height: 44px !important;
 		border: 1px solid var(--color-grey-75);
 		color: var(--color-grey);
 		order: 4;
@@ -1281,7 +1294,24 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 			gap: 1rem;
 		}
 	}`,
-	'KOL-NAV': `nav {
+	'KOL-NAV': `.list {
+		display: flex;
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+	}
+	.list.vertical {
+		flex-direction: column;
+	}
+	.entry {
+		display: flex;
+	}
+	.entry kol-button-wc:first-child,
+	.entry kol-link-wc,
+	.entry kol-span-wc {
+		flex-grow: 1;
+	} /* custom. */
+	nav {
 		background-color: var(--color-blue);
 	}
 	ul {
@@ -1289,23 +1319,12 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		margin: 0;
 		padding: 0;
 	}
-	.entry {
-		display: flex;
-		flex-flow: row wrap;
-		align-content: stretch;
-		width: 100%;
-	}
 	.expand-button button {
 		background-color: var(--color-blue-130);
-		border: 2px solid transparent;
-		color: var(--color-white);
 		margin: auto;
 		height: 100%;
 	}
-	.expand-button button:focus {
-		border-color: var(--color-white);
-	}
-	:is(kol-link-wc, kol-button-link) kol-span-wc {
+	kol-span-wc {
 		border-color: transparent;
 		border-style: solid;
 		border-width: 2px;
@@ -1313,18 +1332,23 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 		font-size: 18px;
 		justify-items: start;
 		padding: 1rem;
+		height: 100%;
 	}
+	li > ul,
 	li + li {
 		border-color: var(--color-blue-75);
 		border-style: solid;
 		border-width: 0;
 		border-top-width: 2px;
 	}
-	:is(kol-link-wc, kol-button-link):focus-within kol-span-wc {
+	a {
+		text-decoration: none;
+	}
+	:is(kol-button-wc, kol-link-wc):focus-within kol-span-wc {
 		border-color: var(--color-white);
 	}
-	:is(kol-link-wc, kol-button-link):focus-within kol-span-wc,
-	:is(kol-link-wc, kol-button-link):hover kol-span-wc {
+	:is(kol-button-wc, kol-link-wc):focus-within kol-span-wc,
+	:is(kol-button-wc, kol-link-wc):hover kol-span-wc {
 		text-decoration: underline;
 	}
 	div > .expand-button kol-icon::part(icon)::before {

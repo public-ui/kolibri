@@ -26,16 +26,17 @@ kol-span-wc > span {
 }
 
 a,
-button,
-input[type='checkbox'],
-input[type='color'],
-input[type='file'],
-input[type='radio'],
-option,
-select {
+button {
 	cursor: pointer;
+}
+
+a,
+button,
+input,
+option,
+select,
+textarea {
 	font-family: inherit;
-	font-size: inherit;
 }
 
 .icon-only > kol-span-wc > span > span {

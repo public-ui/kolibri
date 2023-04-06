@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.9
-  '@public-ui/react': 1.5.0-rc.9
+  '@public-ui/components': 1.5.0-rc.10
+  '@public-ui/react': 1.5.0-rc.10
   preact: '>=10.11.3'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.1.2
 
 dependencies:
-  '@public-ui/react': 1.5.0-rc.9_h5peyoj32nlnoyaokplve45ywa
+  '@public-ui/react': 1.5.0-rc.10_xdc7a7ojy3vrhwsejl3gwu3fti
   preact: 10.13.2
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.9
+  '@public-ui/components': 1.5.0-rc.10
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -506,21 +506,21 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.9:
-    resolution: {integrity: sha512-HkwWcHQdXgTBZVvHPL+XEb/Eke0u3m0ahUvCp3AZTGii1Y7/G4YcwpxveueFTQ4CC15YN3/Pa+2ikmm/oaFRBQ==}
+  /@public-ui/components/1.5.0-rc.10:
+    resolution: {integrity: sha512-80vfAtY86pio0wcYmVNP3R3szsv45yDvqZSNkUkofWmi/MfRaCQScr5quqT4eYdmxQ8G/0MRy7nLdMyp8eJRIw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
-      i18next: 22.4.13
+      i18next: 22.4.14
 
-  /@public-ui/react/1.5.0-rc.9_h5peyoj32nlnoyaokplve45ywa:
-    resolution: {integrity: sha512-Lq0b+B+VRrpoEvP402GzqudZz5N7hLIuAm1FFKObqV1QBQbBMiC8mpHxhTWaWlD9DR8e4s7WornFMhVstc/QAg==}
+  /@public-ui/react/1.5.0-rc.10_xdc7a7ojy3vrhwsejl3gwu3fti:
+    resolution: {integrity: sha512-GPED1aJoyt0F3OnnekxqDLrGjrIvQX6eA0CnWPyPWynDTDT7YDrZBgBKGbK0SoHOpkMj86TTTy2EJtNLzCR+jg==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.9
+      '@public-ui/components': 1.5.0-rc.10
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.9
+      '@public-ui/components': 1.5.0-rc.10
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -899,8 +899,8 @@ packages:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
     dev: true
 
-  /i18next/22.4.13:
-    resolution: {integrity: sha512-GX7flMHRRqQA0I1yGLmaZ4Hwt1JfLqagk8QPDPZsqekbKtXsuIngSVWM/s3SLgNkrEXjA+0sMGNuOEkkmyqmWg==}
+  /i18next/22.4.14:
+    resolution: {integrity: sha512-VtLPtbdwGn0+DAeE00YkiKKXadkwg+rBUV+0v8v0ikEjwdiJ0gmYChVE4GIa9HXymY6wKapkL93vGT7xpq6aTw==}
     dependencies:
       '@babel/runtime': 7.21.0
 

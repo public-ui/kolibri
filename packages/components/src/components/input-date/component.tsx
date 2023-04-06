@@ -111,7 +111,7 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.

@@ -47,14 +47,37 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		outline-width: 0.125rem;
 		transition: outline-offset 0.25s linear;
 	}
+	:host {
+		display: inline-block;
+		font-family: var(--font-family);
+	}
+	a,
+	button {
+		font-size: var(--font-size);
+		outline: none;
+	}
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
 		margin: 0;
 		padding: 0;
+	}
+	p {
+		font-weight: var(--font-weight);
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.5em;
+	}
+	.required label span::after,
+	.required legend span::after {
+		color: var(--color-red);
+		padding-left: 0.25em;
 	}`,
 	'KOL-BADGE': `:host {
 		display: inline-block;
@@ -276,13 +299,15 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	td,
 	th {
-		background-color: white;
 		color: var(--color-neutral-dark);
 		border-color: var(--color-neutral);
 		border-style: solid;
 		border-width: 0;
 		border-bottom-width: 1px;
 		padding: 0.5rem;
+	}
+	tbody tr:nth-child(odd) {
+		background-color: var(--color-grau-10);
 	}`,
 	'KOL-ACCORDION': `:host > div {
 		border-color: var(--border-color);
@@ -320,10 +345,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		font-weight: 900;
 	}
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
-		content: "\f077";
+		content: "\\f077";
 	}
 	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
-		content: "\f078";
+		content: "\\f078";
 	}`,
 	'KOL-ALERT': `:host > div {
 		background-color: white;
@@ -342,9 +367,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	div.card .heading {
 		display: flex;
-	}
-	div.card .heading div {
-		width: 100%;
 	}
 	div.card .heading .heading-icon {
 		align-items: center;
@@ -420,33 +442,37 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		grid-column: 1 / span 3;
 	}
 	:host .close button {
+		border-radius: var(--border-radius);
 		min-height: 44px;
 		min-width: 44px;
 		background-color: var(--color-neutral);
 		padding: 0.75rem;
 		color: var(--color-blau);
 	}
+	div.card .close button {
+		transform: translateX(1.5rem) translateY(-2.5rem);
+	}
 	kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 	}
 	div.default kol-icon::part(icon)::before {
-		content: "\f05a";
+		content: "\\f05a";
 	}
 	div.error kol-icon::part(icon)::before {
-		content: "\f06a";
+		content: "\\f06a";
 	}
 	div.info kol-icon::part(icon)::before {
-		content: "\f0eb";
+		content: "\\f0eb";
 	}
 	div.success kol-icon::part(icon)::before {
-		content: "\f058";
+		content: "\\f058";
 	}
 	div.warning kol-icon::part(icon)::before {
-		content: "\f0eb";
+		content: "\\f0eb";
 	}
 	:host .close button kol-icon::part(icon)::before {
-		content: "\f00d";
+		content: "\\f00d";
 	}`,
 	'KOL-CARD': `:host > div {
 		border-color: var(--border-color);
@@ -1420,8 +1446,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		background-color: var(--color-blau);
 		color: white;
 	}`,
-	'KOL-INPUT-PASSWORD': ``,
-	'KOL-INPUT-RANGE': ``,
 	'KOL-INPUT-TEXT': `kol-input {
 		display: grid;
 		padding: 0;
@@ -1768,76 +1792,68 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	'KOL-DETAILS': `:host details > kol-indented-text {
 		margin: 0.25em 0 0 0.65em;
 	}`,
-	'KOL-NAV': `* {
-		margin: 0;
-		padding: 0;
+	'KOL-NAV': `.list {
+		display: flex;
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
 	}
+	.list.vertical {
+		flex-direction: column;
+	}
+	.entry {
+		display: flex;
+	}
+	.entry kol-button-wc:first-child,
+	.entry kol-link-wc,
+	.entry kol-span-wc {
+		flex-grow: 1;
+	} /* custom. */
 	nav {
-		font-family: var(--font-family);
-		font-size: var(--font-size);
+		background-color: var(--color-blue);
 	}
 	ul {
 		list-style: none;
+		margin: 0;
+		padding: 0;
 	}
-	a {
-		background-color: white;
-		text-decoration: none;
-		width: 100%;
-		color: var(--color-grau-90);
-		display: flex;
-		align-items: center;
-		font-style: normal;
-		padding: 0.75rem 0.5rem 0.75rem 0;
-		border-left-color: transparent;
-		border-radius: 0;
-		border-left-style: solid;
-		border-left-width: 0.25rem;
-		line-height: 1.5rem;
-		min-height: 44px;
-		min-width: 44px;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
-	}
-	li[part*="selected"] {
-		border-left-color: var(--color-blau-dark);
-		border-left-style: solid;
-		border-left-width: 0.25rem;
-	}
-	a:focus,
-	a:hover {
-		background-color: var(--color-neutral-light);
-		border-left-color: var(--color-blau-dark);
-		color: var(--color-white);
-	}
-	a > kol-icon {
-		display: inline-block;
-		text-align: center;
-		width: 44px;
-		flex-shrink: 0;
-	}
-	.hidden {
-		display: none;
-	}
-	:host > div > div:last-child {
-		margin-top: 0.5em;
-		width: 100%;
-		text-align: center;
-	} /* horizontal */
-	ul.flex {
-		display: flex;
-	}
-	li > div > div.absolute {
-		position: absolute;
-	}
-	.horizontal a {
-		display: block;
+	.expand-button button {
+		background-color: var(--color-blue-130);
+		margin: auto;
+		height: 100%;
 	}
 	kol-span-wc {
-		margin: 0 0.25rem;
-		justify-items: baseline;
+		border-color: transparent;
+		border-style: solid;
+		border-width: 2px;
+		color: var(--color-white);
+		font-size: 18px;
+		justify-items: start;
+		padding: 1rem;
+		height: 100%;
 	}
-	kol-span-wc > span {
-		gap: 0.5rem;
+	li > ul,
+	li + li {
+		border-color: var(--color-blue-75);
+		border-style: solid;
+		border-width: 0;
+		border-top-width: 2px;
+	}
+	a {
+		text-decoration: none;
+	}
+	:is(kol-button-wc, kol-link-wc):focus-within kol-span-wc {
+		border-color: var(--color-white);
+	}
+	:is(kol-button-wc, kol-link-wc):focus-within kol-span-wc,
+	:is(kol-button-wc, kol-link-wc):hover kol-span-wc {
+		text-decoration: underline;
+	}
+	div > .expand-button kol-icon::part(icon)::before {
+		content: "\\eab6";
+	}
+	.expanded > div > .expand-button kol-icon::part(icon)::before {
+		content: "\\eab4";
 	}`,
 	'KOL-TABS': `:host > div {
 		display: block;

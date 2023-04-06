@@ -7,6 +7,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 @Component({
 	tag: 'kol-input-checkbox',
@@ -122,7 +123,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: string;
 
 	/**
 	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
@@ -178,7 +179,7 @@ export class KolInputCheckbox implements ComponentApi {
 			indeterminate: 'codicon codicon-remove',
 			unchecked: 'codicon codicon-add',
 		},
-		_id: '…', // ⚠ required
+		_id: nonce(), // ⚠ required
 		_indeterminate: false,
 		_variant: 'checkbox',
 	};
