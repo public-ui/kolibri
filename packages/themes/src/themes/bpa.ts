@@ -14,6 +14,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		--color-darkblue: #004b76;
 		--color-darkgray: #576164;
 		--color-lightgray: #bec5c9;
+		--color-lightgray-40: #e5e8e9;
 		--color-red: #c0003c;
 		--color-lightorange: #f7bb3d;
 		--color-orange: #e19688;
@@ -33,6 +34,26 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	p {
 		font-size: 1.5rem;
+	}
+	kol-tooltip #arrow {
+		display: none;
+	}
+	kol-tooltip .area {
+		background-color: var(--color-lightgray-40);
+	}
+	kol-tooltip kol-span-wc {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid var(--color-lightgray);
+		margin: 0.25rem;
+	}
+	@media only screen and (min-width: 600px) {
+		kol-tooltip kol-span-wc {
+			font-size: 1rem;
+			line-height: 1.375rem;
+		}
 	}`,
 	'KOL-HEADING': `/* https://styleguide.bundesregierung.de/sg-de/medien/digitale-medien/webanwendungen/komponenten/atome/heading */
 	h1,
@@ -359,7 +380,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		text-decoration: none;
 		border-bottom: 1px dotted currentColor;
 	}`,
-	'KOL-LINK-BUTTON': `.button kol-span-wc {
+	'KOL-LINK-BUTTON': `.button a kol-span-wc {
 		font-family: var(----font-family);
 		font-size: 1rem;
 		line-height: 1.125rem;
@@ -371,17 +392,17 @@ export const BPA = KoliBri.createTheme('bpa', {
 	.icon-only > kol-span-wc {
 		padding: 0.625rem;
 	}
-	.button.ghost kol-span-wc {
+	.button.ghost a kol-span-wc {
 		border: none;
 	}
-	.button kol-span-wc > span {
+	.button a kol-span-wc > span {
 		gap: 0.625rem;
 	}
-	.button kol-span-wc {
+	.button a kol-span-wc {
 		background-color: var(--color-white);
 		color: var(--color-black);
 	}
-	.button kol-span-wc kol-icon {
+	.button a kol-span-wc kol-icon {
 		color: var(--color-blue);
 	}
 	a:is(:hover, :focus) kol-span-wc kol-icon {
