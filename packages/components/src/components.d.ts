@@ -2178,7 +2178,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Toast ein Schließen-Icon hat.
+          * Aktiviert das Schließen-Icon.
          */
         "_hasCloser"?: boolean;
         /**
@@ -4744,7 +4744,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Toast ein Schließen-Icon hat.
+          * Aktiviert das Schließen-Icon.
          */
         "_hasCloser"?: boolean;
         /**
