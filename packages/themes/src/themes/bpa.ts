@@ -1226,4 +1226,90 @@ export const BPA = KoliBri.createTheme('bpa', {
 	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f078";
 	}`,
+	'KOL-TABLE': `:host > div {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+	caption {
+		padding: 0.5em;
+	}
+	:host th {
+		font-weight: normal;
+		background-color: var(--color-darkblue);
+		color: var(--color-white);
+	}
+	:host table thead tr:first-child th,
+	:host table thead tr:first-child td {
+		border-width: 0;
+		border-top-width: 2px;
+		border-style: solid;
+		border-color: var(--color-darkgray);
+	}
+	table {
+		width: 100%;
+		border-spacing: 0;
+	}
+	table,
+	:host table thead tr:last-child th,
+	:host table thead tr:last-child td {
+		border-width: 0;
+		border-bottom-width: 2px;
+		border-style: solid;
+		border-color: var(--color-darkgray);
+	}
+	th {
+		background-color: var(--color-white);
+	}
+	th div {
+		width: 100%;
+		display: flex;
+		gap: 0.5em;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+	}
+	th div.center {
+		justify-content: center;
+	}
+	th div.right {
+		justify-content: end;
+	}
+	tbody tr:nth-child(odd) {
+		background-color: var(--color-lightgray-40);
+	}
+	th,
+	td {
+		padding: 0.5em;
+	}
+	td.center > div {
+		display: flex;
+		justify-content: center;
+	}
+	td.right > div {
+		display: flex;
+		justify-content: end;
+	}
+	th[aria-sort="ascending"],
+	th[aria-sort="descending"] {
+		font-weight: 700;
+	}
+	:host > div:last-child {
+		padding: 0.5em;
+	}
+	:host > div:last-child,
+	:host > div:last-child > div:last-child {
+		display: grid;
+		align-items: center;
+		justify-items: center;
+		gap: 1em;
+	}
+	@media (min-width: 1024px) {
+		:host > div:last-child,
+		:host > div:last-child > div:last-child {
+			grid-auto-flow: column;
+		}
+		:host > div:last-child kol-pagination {
+			display: flex;
+			gap: 1rem;
+		}
+	}`,
 });
