@@ -52,3 +52,28 @@ kol-input.disabled :is(button, input, label, option, select, textarea) {
 	cursor: not-allowed;
 	opacity: 0.5;
 }
+
+.icon-left input,
+.icon-left select {
+	padding-left: 2em;
+}
+.icon-right input,
+.icon-right select {
+	padding-right: 2em;
+}
+
+.input {
+	position: relative;
+}
+
+:where(kol-input:not(.input-range) > .input) > :is(.left-icon, .right-icon) {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+.left-icon {
+	left: 0;
+}
+.right-icon {
+	right: 0;
+}

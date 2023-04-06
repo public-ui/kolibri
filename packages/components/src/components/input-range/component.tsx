@@ -38,6 +38,7 @@ export class KolInputRange implements ComponentApi {
 					_icon={this.state._icon}
 					_id={this.state._id}
 					_touched={this.state._touched}
+					class="input-range"
 				>
 					<span slot="label">
 						<slot />
