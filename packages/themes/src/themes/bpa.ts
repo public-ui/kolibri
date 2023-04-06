@@ -32,8 +32,28 @@ export const BPA = KoliBri.createTheme('bpa', {
 		font-family: var(--font-family-sans);
 		color: var(--color-black);
 	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
+		margin: 0;
+		padding: 0;
+	}
+	a,
+	button {
+		font-size: var(--font-size);
+		outline: none;
+	}
 	p {
 		font-size: 1.5rem;
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.5em;
 	}
 	kol-tooltip #arrow {
 		display: none;
@@ -219,6 +239,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	:host > div {
 		border: none;
+		background-color: var(--color-white);
 	}
 	@media only screen and (min-width: 600px) {
 		:host > div {
@@ -246,6 +267,27 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	.close {
 		align-self: start;
+	}
+	.card.success {
+		border: 1px solid var(--color-green);
+	}
+	.card.warning {
+		border: 1px solid var(--color-orange);
+	}
+	.card.error {
+		border: 1px solid var(--color-red);
+	}
+	.card.info {
+		border: 1px solid var(--color-cyan);
+	}
+	.card.default {
+		border: 1px solid var(--color-black);
+	}
+	.card .heading {
+		padding: 0.5rem;
+	}
+	.card .content {
+		padding: 0.5rem;
 	}`,
 	'KOL-INDENTED-TEXT': `:host > div {
 		border-left: none;
@@ -1311,5 +1353,39 @@ export const BPA = KoliBri.createTheme('bpa', {
 			display: flex;
 			gap: 1rem;
 		}
+	}`,
+	'KOL-TABS': `:host {
+		--kolibri-spacing: 0.25rem;
+	}
+	kol-button-group-wc {
+		border-bottom: 1px solid var(--color-lightgray);
+		margin-bottom: -1px;
+	}
+	kol-button-group-wc button {
+		border: none;
+		margin-bottom: -1px;
+	}
+	kol-button-group-wc button kol-span-wc {
+		padding: 0.5rem;
+		min-height: 44px;
+		min-width: 44px;
+	}
+	kol-button-group-wc button.selected kol-span-wc {
+		border-color: var(--color-lightgray-40);
+		border-style: solid;
+		border-width: 1px;
+		border-bottom-color: white;
+		border-top-color: var(--color-blue);
+		box-shadow: 0 -3px var(--color-blue);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-blue);
+	}
+	kol-button-group-wc button:hover:not(:disabled) kol-span-wc {
+		color: var(--color-darkblue);
+	}
+	kol-button-group-wc button:focus kol-span-wc {
+		outline-color: var(--color-darkblue);
+		outline-style: solid;
+		outline-width: 2px;
 	}`,
 });
