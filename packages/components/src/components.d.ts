@@ -2208,7 +2208,7 @@ export namespace Components {
     }
     interface KolTooltip {
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
         "_align"?: Alignment;
         /**
@@ -2216,7 +2216,7 @@ export namespace Components {
          */
         "_id": string;
         /**
-          * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+          * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
          */
         "_label": string;
     }
@@ -4774,7 +4774,7 @@ declare namespace LocalJSX {
     }
     interface KolTooltip {
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
         "_align"?: Alignment;
         /**
@@ -4782,7 +4782,7 @@ declare namespace LocalJSX {
          */
         "_id": string;
         /**
-          * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+          * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
          */
         "_label": string;
     }
