@@ -38,7 +38,7 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "1.5.0-rc.11",
+		"@public-ui/components": "1.5.0-rc.12",
 		"@public-ui/solid": "1.5.0-rc.11",
 		"@public-ui/themes": "1.5.0-rc.11",
 		"monaco-editor": "0.37.0",
