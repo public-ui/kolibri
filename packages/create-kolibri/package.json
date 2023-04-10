@@ -108,7 +108,7 @@
 		"husky": "8.0.3",
 		"lerna": "6.6.1",
 		"license-report": "6.3.0",
-		"lint-staged": "13.2.0",
+		"lint-staged": "13.2.1",
 		"npm-check-updates": "16.10.7",
 		"prettier": "2.8.7",
 		"rimraf": "4.4.1",
