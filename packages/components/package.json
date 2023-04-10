@@ -89,7 +89,7 @@
 		"color-rgba": "2.4.0",
 		"cross-env": "7.0.3",
 		"cssnano": "5.1.15",
-		"eslint": "8.37.0",
+		"eslint": "8.38.0",
 		"eslint-config-prettier": "8.8.0",
 		"eslint-plugin-html": "7.1.0",
 		"eslint-plugin-jsdoc": "40.1.1",
