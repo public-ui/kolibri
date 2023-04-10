@@ -45,11 +45,11 @@
 		"prepack": "rimraf dist/package.json"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.5.0-rc.11",
+		"@public-ui/components": "1.5.0-rc.12",
 		"rimraf": "4.4.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.11"
+		"@public-ui/components": "1.5.0-rc.12"
 	},
 	"sideEffects": false,
 	"type": "commonjs",
