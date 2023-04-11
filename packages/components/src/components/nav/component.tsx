@@ -18,6 +18,7 @@ import {
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
+import { PropId, validateId } from '../../types/props/id';
 
 /**
  * @deprecated
@@ -55,6 +56,7 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	ariaCurrentValue: AriaCurrent;
+	id: string;
 	orientation: Orientation;
 	/**
 	 * @deprecated
@@ -81,7 +83,7 @@ type RequiredStates = {
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
 	PropHasCompactButton;
-type OptionalStates = PropCompact;
+type OptionalStates = PropCompact & PropId;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
@@ -162,6 +164,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				class="expand-button"
+				_ariaControls={this.state._id}
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_iconOnly
@@ -258,7 +261,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 						[this.state._variant]: true,
 					}}
 				>
-					<nav aria-label={this.state._ariaLabel} id="nav">
+					<nav aria-label={this.state._ariaLabel} id={this.state._id}>
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
@@ -314,6 +317,11 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
 	/**
+	 * Setzt die ID der Navigation.
+	 */
+	@Prop() public _id?: string = 'nav';
+
+	/**
 	 * Gibt die Ausrichtung der Navigation an.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
@@ -335,6 +343,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		_ariaLabel: '…', // '⚠'
 		_collapsible: true,
 		_hasCompactButton: false,
+		_id: 'nav',
 		_links: [],
 		_orientation: 'vertical',
 		_variant: 'primary',
@@ -386,6 +395,11 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
 		validateHasCompactButton(this, value);
+	}
+
+	@Watch('_id')
+	public validateId(value?: string): void {
+		validateId(this, value);
 	}
 
 	@Watch('_links')

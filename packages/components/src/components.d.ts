@@ -1823,6 +1823,10 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
+          * Setzt die ID der Navigation.
+         */
+        "_id"?: string;
+        /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
@@ -4389,6 +4393,10 @@ declare namespace LocalJSX {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Setzt die ID der Navigation.
+         */
+        "_id"?: string;
         /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
