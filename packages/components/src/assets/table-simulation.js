@@ -6,11 +6,6 @@ const TABLE_HEADERS_HORIZONTAL = {
 	horizontal: [
 		[
 			{
-				label: '',
-				rowSpan: 2,
-				asTd: true,
-			},
-			{
 				label: 'Werktage',
 				colSpan: 5,
 			},
