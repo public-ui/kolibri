@@ -21,6 +21,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten:
 - Sortierfunktion für entweder horizontale und vertikale Ausrichtung.
 - Unterschiedliche Render-Funktion für die Zellen.
 - Pagination für die Tabelle.
+- Wenn in der Höhe begrenzt erhält die Tabelle einen Scrollbalken und die Header bleiben stehen. `<kol-table>` ist das scrollende Element, damit kann `overscroll-behavior`(CSS) von außen gesetzt werden.
 
 Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 
