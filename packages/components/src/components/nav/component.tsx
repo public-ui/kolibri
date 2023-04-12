@@ -82,8 +82,9 @@ type RequiredStates = {
 	 */
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
-	PropHasCompactButton;
-type OptionalStates = PropCompact & PropId;
+	PropHasCompactButton &
+	PropId;
+type OptionalStates = PropCompact;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
@@ -164,7 +165,8 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				class="expand-button"
-				_ariaControls={this.state._id}
+				_ariaControls={`${link._label.replace(/\s/g, '-').toLowerCase()}-submenu`}
+				_ariaExpanded={selected}
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_iconOnly
@@ -189,11 +191,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
 				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
-				{hasChildren && selected ? (
-					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
-				) : (
-					''
-				)}
+				{hasChildren && selected
+					? this.linkList(collapsible, compact, deep + 1, `${link._label.replace(/\s/g, '-').toLowerCase()}-submenu`, link._children || [], orientation)
+					: ''}
 			</li>
 		);
 	}
@@ -211,21 +211,22 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	}
 
-	private linkList = (props: {
-		collapsible: boolean;
-		compact: boolean;
-		deep: number;
-		links: ButtonOrLinkOrTextWithChildrenProps[];
-		orientation: Orientation;
-	}): JSX.Element => {
+	private linkList(
+		collapsible: boolean,
+		compact: boolean,
+		deep: number,
+		id: string,
+		links: ButtonOrLinkOrTextWithChildrenProps[],
+		orientation: Orientation
+	): JSX.Element {
 		return (
-			<ul class={`list ${props.deep === 0 && props.orientation === 'horizontal' ? ' horizontal' : ' vertical'}`} data-deep={props.deep}>
-				{props.links.map((link, index: number) => {
-					return this.li(props.collapsible, props.compact, props.deep, index, link, props.orientation);
+			<ul class={`list ${deep === 0 && orientation === 'horizontal' ? ' horizontal' : ' vertical'}`} data-deep={deep} id={id}>
+				{links.map((link, index: number) => {
+					return this.li(collapsible, compact, deep, index, link, orientation);
 				})}
 			</ul>
 		);
-	};
+	}
 
 	private buttonOrLinkOrText(compact: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		if ((link as ButtonWithChildrenProps)._on) {
@@ -262,12 +263,12 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 					}}
 				>
 					<nav aria-label={this.state._ariaLabel} id={this.state._id}>
-						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
+						{this.linkList(collapsible, compact, 0, this.state._id, this.state._links, orientation)}
 					</nav>
 					{hasCompactButton && (
 						<div class="mt-2 w-full text-center">
 							<kol-button
-								_ariaControls="nav"
+								_ariaControls={this.state._id}
 								_ariaExpanded={compact}
 								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_iconOnly
