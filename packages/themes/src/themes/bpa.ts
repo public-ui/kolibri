@@ -3,26 +3,6 @@ import { KoliBri } from '@public-ui/components';
 // Presse- und Informationsamt der Bundesregierung
 export const BPA = KoliBri.createTheme('bpa', {
 	GLOBAL: `:host {
-		--kolibri-border-color: unset;
-		--kolibri-border-radius: unset;
-		--kolibri-border-width: unset;
-		--kolibri-color-error: unset;
-		--kolibri-color-info: unset;
-		--kolibri-color-success: unset;
-		--kolibri-color-warning: unset;
-		--kolibri-color-primary: unset;
-		--kolibri-color-secondary: unset;
-		--kolibri-color-normal: unset;
-		--kolibri-color-danger: unset;
-		--kolibri-color-ghost: unset;
-		--kolibri-color-disabled: unset;
-		--kolibri-color-text: unset;
-		--kolibri-color-visited: unset;
-		--kolibri-font-family: unset;
-		--kolibri-font-size: unset;
-		--kolibri-spacing: unset;
-	}
-	:host {
 		--font-family-sans: BundesSans Web, Arial, Helvetica, sans-serif;
 		--font-family-serif: BundesSerif Web, var(--kolibri-font-family-sans);
 		--font-family: var(--kolibri-font-family-sans), Helvetica, sans-serif;
@@ -34,11 +14,14 @@ export const BPA = KoliBri.createTheme('bpa', {
 		--color-darkblue: #004b76;
 		--color-darkgray: #576164;
 		--color-lightgray: #bec5c9;
+		--color-lightgray-40: #e5e8e9;
 		--color-red: #c0003c;
 		--color-lightorange: #f7bb3d;
 		--color-orange: #e19688;
 		--color-green: #00854a;
 		--color-cyan: #00818b;
+		--color-violet-40: #bfadbc;
+		--color-violet-20: #dfd6de;
 	}
 	@keyframes blinker {
 		50% {
@@ -49,8 +32,48 @@ export const BPA = KoliBri.createTheme('bpa', {
 		font-family: var(--font-family-sans);
 		color: var(--color-black);
 	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
+		margin: 0;
+		padding: 0;
+	}
+	a,
+	button {
+		font-size: var(--font-size);
+		outline: none;
+	}
 	p {
 		font-size: 1.5rem;
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.5em;
+	}
+	kol-tooltip #arrow {
+		display: none;
+	}
+	kol-tooltip .area {
+		background-color: var(--color-lightgray-40);
+	}
+	kol-tooltip kol-span-wc {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid var(--color-lightgray);
+		margin: 0.25rem;
+	}
+	@media only screen and (min-width: 600px) {
+		kol-tooltip kol-span-wc {
+			font-size: 1rem;
+			line-height: 1.375rem;
+		}
 	}`,
 	'KOL-HEADING': `/* https://styleguide.bundesregierung.de/sg-de/medien/digitale-medien/webanwendungen/komponenten/atome/heading */
 	h1,
@@ -216,6 +239,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	:host > div {
 		border: none;
+		background-color: var(--color-white);
 	}
 	@media only screen and (min-width: 600px) {
 		:host > div {
@@ -243,6 +267,27 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	.close {
 		align-self: start;
+	}
+	.card.success {
+		border: 1px solid var(--color-green);
+	}
+	.card.warning {
+		border: 1px solid var(--color-orange);
+	}
+	.card.error {
+		border: 1px solid var(--color-red);
+	}
+	.card.info {
+		border: 1px solid var(--color-cyan);
+	}
+	.card.default {
+		border: 1px solid var(--color-black);
+	}
+	.card .heading {
+		padding: 0.5rem;
+	}
+	.card .content {
+		padding: 0.5rem;
 	}`,
 	'KOL-INDENTED-TEXT': `:host > div {
 		border-left: none;
@@ -377,7 +422,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		text-decoration: none;
 		border-bottom: 1px dotted currentColor;
 	}`,
-	'KOL-LINK-BUTTON': `.button kol-span-wc {
+	'KOL-LINK-BUTTON': `.button a kol-span-wc {
 		font-family: var(----font-family);
 		font-size: 1rem;
 		line-height: 1.125rem;
@@ -389,17 +434,17 @@ export const BPA = KoliBri.createTheme('bpa', {
 	.icon-only > kol-span-wc {
 		padding: 0.625rem;
 	}
-	.button.ghost kol-span-wc {
+	.button.ghost a kol-span-wc {
 		border: none;
 	}
-	.button kol-span-wc > span {
+	.button a kol-span-wc > span {
 		gap: 0.625rem;
 	}
-	.button kol-span-wc {
+	.button a kol-span-wc {
 		background-color: var(--color-white);
 		color: var(--color-black);
 	}
-	.button kol-span-wc kol-icon {
+	.button a kol-span-wc kol-icon {
 		color: var(--color-blue);
 	}
 	a:is(:hover, :focus) kol-span-wc kol-icon {
@@ -615,15 +660,11 @@ export const BPA = KoliBri.createTheme('bpa', {
 		transition: all 0.3s ease-in-out 0ms;
 		transform-origin: 0;
 	}
-	:host(:not(.has-value))kol-input:has(input[type="number"]):not(
-			:focus-within
-		)label {
+	:host(:not(.has-value)) kol-input:has(input[type="number"]):not(:focus-within) label {
 		transform: translateY(1.9375rem) scale(1.3333333333);
 		cursor: text;
 	}
-	:host(:not(.has-value))kol-input:has(input[type="number"]):not(
-			:focus-within
-		):has(div.icon-left)label {
+	:host(:not(.has-value)) kol-input:has(input[type="number"]):not(:focus-within):has(div.icon-left) label {
 		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
 	}
 	:host(:not(.has-value)) kol-input:not(:focus-within) label,
@@ -1051,7 +1092,11 @@ export const BPA = KoliBri.createTheme('bpa', {
 	progress {
 		display: none;
 	}`,
-	'KOL-INPUT-RADIO': `input {
+	'KOL-INPUT-RADIO': `:host {
+		font-size: 1.375rem;
+		line-height: 2rem;
+	}
+	input {
 		border: 1px solid var(--color-blue);
 	}
 	input:focus {
@@ -1067,6 +1112,18 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	input:checked::before {
 		background-color: var(--color-blue);
+	}
+	fieldset {
+		border: none;
+	}
+	fieldset.vertical {
+		gap: 0.5rem;
+	}
+	fieldset.horizontal {
+		gap: 2.5rem;
+	}
+	div[slot="input"] {
+		gap: 0.5rem;
 	}`,
 	'KOL-LINK': `a {
 		margin-bottom: 0;
@@ -1158,5 +1215,222 @@ export const BPA = KoliBri.createTheme('bpa', {
 	}
 	kol-alert {
 		margin-top: 1.5rem;
+	}`,
+	'KOL-ACCORDION': `.headline button {
+		font-size: 1.1875rem;
+		line-height: 1.6875rem;
+	}
+	@media only screen and (min-width: 600px) and (max-width: 1023px) {
+		.headline button {
+			font-size: 1.375rem;
+			line-height: 2rem;
+		}
+	}
+	@media only screen and (min-width: 1024px) {
+		.headline button {
+			font-size: 1.5rem;
+			line-height: 2.125rem;
+		}
+	}
+	.headline {
+		margin: 0;
+		padding: 0;
+	}
+	.headline button {
+		padding: 1rem 1rem 1rem 3.125rem;
+	}
+	.headline button:is(:focus, :hover) {
+		text-decoration: underline;
+	}
+	.headline kol-span-wc {
+		display: block;
+	}
+	.headline kol-span-wc > span {
+		align-items: flex-start;
+	}
+	.headline kol-span-wc > span > kol-icon {
+		display: block;
+		order: 2;
+	}
+	.headline kol-span-wc > span > span {
+		flex-grow: 1;
+		order: 1;
+		text-align: start;
+	}
+	:host {
+		border-top: 1px solid var(--color-violet-40);
+	}
+	.content {
+		padding: 3.125rem;
+		background-color: var(--color-violet-20);
+	}
+	button {
+		outline: none;
+	}
+	:host > div > kol-heading-wc button kol-icon {
+		font-size: 1rem;
+	}
+	:host > div > kol-heading-wc button kol-icon::part(icon) {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+	}
+	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
+		content: "\\f077";
+	}
+	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
+		content: "\\f078";
+	}`,
+	'KOL-TABLE': `:host > div {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+	caption {
+		padding: 0.5em;
+	}
+	:host th {
+		font-weight: normal;
+		background-color: var(--color-darkblue);
+		color: var(--color-white);
+	}
+	:host table thead tr:first-child th,
+	:host table thead tr:first-child td {
+		border-width: 0;
+		border-top-width: 2px;
+		border-style: solid;
+		border-color: var(--color-darkgray);
+	}
+	table {
+		width: 100%;
+		border-spacing: 0;
+	}
+	table,
+	:host table thead tr:last-child th,
+	:host table thead tr:last-child td {
+		border-width: 0;
+		border-bottom-width: 2px;
+		border-style: solid;
+		border-color: var(--color-darkgray);
+	}
+	th {
+		background-color: var(--color-white);
+	}
+	th div {
+		width: 100%;
+		display: flex;
+		gap: 0.5em;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+	}
+	th div.center {
+		justify-content: center;
+	}
+	th div.right {
+		justify-content: end;
+	}
+	tbody tr:nth-child(odd) {
+		background-color: var(--color-lightgray-40);
+	}
+	th,
+	td {
+		padding: 0.5em;
+	}
+	td.center > div {
+		display: flex;
+		justify-content: center;
+	}
+	td.right > div {
+		display: flex;
+		justify-content: end;
+	}
+	th[aria-sort="ascending"],
+	th[aria-sort="descending"] {
+		font-weight: 700;
+	}
+	:host > div:last-child {
+		padding: 0.5em;
+	}
+	:host > div:last-child,
+	:host > div:last-child > div:last-child {
+		display: grid;
+		align-items: center;
+		justify-items: center;
+		gap: 1em;
+	}
+	@media (min-width: 1024px) {
+		:host > div:last-child,
+		:host > div:last-child > div:last-child {
+			grid-auto-flow: column;
+		}
+		:host > div:last-child kol-pagination {
+			display: flex;
+			gap: 1rem;
+		}
+	}`,
+	'KOL-TABS': `:host {
+		--kolibri-spacing: 0.25rem;
+	}
+	kol-button-group-wc {
+		border-bottom: 1px solid var(--color-lightgray);
+		margin-bottom: -1px;
+	}
+	kol-button-group-wc button {
+		border: none;
+		margin-bottom: -1px;
+	}
+	kol-button-group-wc button kol-span-wc {
+		padding: 0.5rem;
+		min-height: 44px;
+		min-width: 44px;
+	}
+	kol-button-group-wc button.selected kol-span-wc {
+		border-color: var(--color-lightgray-40);
+		border-style: solid;
+		border-width: 1px;
+		border-bottom-color: white;
+		border-top-color: var(--color-blue);
+		box-shadow: 0 -3px var(--color-blue);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-blue);
+	}
+	kol-button-group-wc button:hover:not(:disabled) kol-span-wc {
+		color: var(--color-darkblue);
+	}
+	kol-button-group-wc button:focus kol-span-wc {
+		outline-color: var(--color-darkblue);
+		outline-style: solid;
+		outline-width: 2px;
+	}`,
+	'KOL-BUTTON-GROUP': `kol-button-group-wc {
+		gap: 0.5rem;
+	}`,
+	'KOL-PAGINATION': `:host {
+		display: grid;
+		gap: var(--spacing-m);
+	}
+	:host > div {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	.selected button {
+		min-width: 44px;
+		min-height: 44px;
+		display: grid;
+		line-height: 1.5rem;
+		font-family: var(--font-family);
+		cursor: not-allowed;
+		font-weight: 700;
+		padding: 10px 12px;
+		border: none;
+		font-size: 16px;
+		font-style: normal;
+		text-align: center;
+		text-decoration: underline;
+		text-transform: uppercase;
+		width: inherit;
+		color: var(--color-white);
+		background-color: var(--color-darkblue);
+		border-color: var(--color-darkblue);
 	}`,
 });

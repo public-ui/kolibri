@@ -1,10 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@angular/compiler': 15.2.5
-  '@angular/compiler-cli': 15.2.5
-  '@angular/core': 15.2.5
-  '@public-ui/components': 1.5.0-rc.10
+  '@angular/compiler': 15.2.6
+  '@angular/compiler-cli': 15.2.6
+  '@angular/core': 15.2.6
+  '@public-ui/components': 1.5.0-rc.11
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -17,10 +17,10 @@ specifiers:
   zone.js: 0.12.0
 
 devDependencies:
-  '@angular/compiler': 15.2.5_@angular+core@15.2.5
-  '@angular/compiler-cli': 15.2.5_g7fd5x7sgwusoheznmie6tjtqi
-  '@angular/core': 15.2.5_rxjs@7.8.0+zone.js@0.12.0
-  '@public-ui/components': 1.5.0-rc.10
+  '@angular/compiler': 15.2.6_@angular+core@15.2.6
+  '@angular/compiler-cli': 15.2.6_54xk3mtsepvzoktlwdjj2rm7na
+  '@angular/core': 15.2.6_rxjs@7.8.0+zone.js@0.12.0
+  '@public-ui/components': 1.5.0-rc.11
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.15.11
@@ -48,15 +48,15 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
-  /@angular/compiler-cli/15.2.5_g7fd5x7sgwusoheznmie6tjtqi:
-    resolution: {integrity: sha512-NNrnvL0JMg6dZMuTgBTb/IVIFJwy2my5XTNLngTNBfDCVu0SL1TKrYnpqp2qRi2ip9XdNqCtNF7JFDEklVbK2A==}
+  /@angular/compiler-cli/15.2.6_54xk3mtsepvzoktlwdjj2rm7na:
+    resolution: {integrity: sha512-GHwL4l+NkaUGGdypF+nMFWCmTqvGusTzIriIwpnp38wc8lpmVME2jVodB6sHAkrxFmaHXU/gOCDFK4AnOi6Gmw==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 15.2.5
+      '@angular/compiler': 15.2.6
       typescript: '>=4.8.2 <5.0'
     dependencies:
-      '@angular/compiler': 15.2.5_@angular+core@15.2.5
+      '@angular/compiler': 15.2.6_@angular+core@15.2.6
       '@babel/core': 7.19.3
       '@jridgewell/sourcemap-codec': 1.4.14
       chokidar: 3.5.3
@@ -72,21 +72,21 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler/15.2.5_@angular+core@15.2.5:
-    resolution: {integrity: sha512-0mAFF6Ud4ojsb8qGLQCWYh/LgKKrnn1Fz788LzfYcLYhi7UZPiCFrQJrEcCXBKtQsk8sG335CA9Qk0I/qc35zg==}
+  /@angular/compiler/15.2.6_@angular+core@15.2.6:
+    resolution: {integrity: sha512-6oBAIY5KcC1UNsrnWGLcopZ9RD7c0HzpTCQY46N6HytHtUjBvzLbGWZu5MfahPtIjKz9FMVYBX9hugcbVpWnTA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
-      '@angular/core': 15.2.5
+      '@angular/core': 15.2.6
     peerDependenciesMeta:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 15.2.5_rxjs@7.8.0+zone.js@0.12.0
+      '@angular/core': 15.2.6_rxjs@7.8.0+zone.js@0.12.0
       tslib: 2.5.0
     dev: true
 
-  /@angular/core/15.2.5_rxjs@7.8.0+zone.js@0.12.0:
-    resolution: {integrity: sha512-GtmjJmwtzCuF4FDXIY+9UFMAcfPlJzJDBDF7mgEmD2YKf/HV5PSyU91lfv9yDPnAkdzlDAL9u4YxnGgoURY8/g==}
+  /@angular/core/15.2.6_rxjs@7.8.0+zone.js@0.12.0:
+    resolution: {integrity: sha512-eN46OfSOLQGN6AciUvyHOJ8xQxmiEakkxJeoG1jwcSRXCjwSYYnQ/6drnhUpq5p43XXBAIduKfJXNztEPvLAkA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -347,8 +347,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components/1.5.0-rc.10:
-    resolution: {integrity: sha512-80vfAtY86pio0wcYmVNP3R3szsv45yDvqZSNkUkofWmi/MfRaCQScr5quqT4eYdmxQ8G/0MRy7nLdMyp8eJRIw==}
+  /@public-ui/components/1.5.0-rc.11:
+    resolution: {integrity: sha512-REQU0ok+UARxo9J4w4EeUfAi5DNmnonmzKRG3Q7ATb+absY/Gal7xEn1CijED2yp6syRFg4lhNJibnFm5Wlkjw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
@@ -432,7 +432,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001474
-      electron-to-chromium: 1.4.349
+      electron-to-chromium: 1.4.353
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -516,8 +516,8 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /electron-to-chromium/1.4.349:
-    resolution: {integrity: sha512-34LBfVDiL6byWorSmQOPwq4gD5wpN8Mhh5yPGQr67FbcxsfUS0BDJP9y6RykSgeWVUfSkN/2dChywnsrmKVyUg==}
+  /electron-to-chromium/1.4.353:
+    resolution: {integrity: sha512-IdJVpMHJoBT/nn0GQ02wPfbhogDVpd1ud95lP//FTf5l35wzxKJwibB4HBdY7Q+xKPA1nkZ0UDLOMyRj5U5IAQ==}
     dev: true
 
   /emoji-regex/8.0.0:

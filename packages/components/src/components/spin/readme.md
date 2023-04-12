@@ -1,6 +1,6 @@
 # Spin
 
-Lader, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.
+Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.
 
 ## Konstruktion
 
@@ -22,9 +22,8 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 
 ### Best practices
 
-- Verwenden Sie Lader, um die Nutzer:innen über einen Ladezustand oder einen laufenden Prozess zu informieren.
-- Verwenden Sie Lader an konsistenten Stellen in der Benutzeroberfläche, um die Benutzererfahrung zu verbessern.
-- Verwenden Sie einen Lader, um anzuzeigen, wie viel Arbeit noch übrig ist, bevor das Ergebnis angezeigt werden kann.
+- Verwenden Sie Ladeanzeigen, um die Nutzer:innen über einen Ladezustand oder einen laufenden Prozess zu informieren.
+- Verwenden Sie Ladeanzeigen an konsistenten Stellen in der Benutzeroberfläche, um die Benutzererfahrung zu verbessern.
 
 ### Anwendungsfälle
 
@@ -33,7 +32,7 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 - Download von Inhalten.
 - Laden von umfangreichen Inhalten, z.B. Videos.
 
-## Barrierefreiheit
+<!-- ## Barrierefreiheit -->
 
 <!--## Links und Referenzen
 

@@ -7,20 +7,18 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 ### Code
 
 ```html
-<kol-input-range _id="meine_range" _name="meine_range" _min="{100}" _max="{200}" _step="{10}"> Wertebereich </kol-input-range>
+<kol-input-range _id="meine_range" _name="meine_range" _min="100" _max="200" _value="100" _step="20">Wertebereich</kol-input-range>
 ```
 
 ### Beispiel
 
-<kol-input-range _id="meine_range" _name="meine_range" _min={100} _max={200} _step={10}>
-  Wertebereich
-</kol-input-range>
+<kol-input-range _id="meine_range" _name="meine_range" _min="100" _max="200" _value="100" _step="20">Wertebereich</kol-input-range>
 
 ## Verwendung
 
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 
 ## Barrierefreiheit
 
@@ -34,7 +32,6 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 ## Links und Referenzen
 
 - https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
-- https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/
 
 <!-- Auto Generated Below -->
 

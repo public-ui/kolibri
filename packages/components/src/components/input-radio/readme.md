@@ -1,6 +1,6 @@
 # InputRadio
 
-Die Komponente ** InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
+Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
 
 <kol-alert _alert _heading="Hinweis" _level="1" _type="info">
   Das Input-Radio dient der Abbildung einer Auswahlmöglichkeit bei der mindestens und maximal eine Auswahl getroffen werden kann. Das bedeutet, dass ein Input-Radio nicht einzeln vorkommen kann. Aufgrund dessen haben wir die Komponente als Listen-Komponente umgesetzt.
@@ -38,9 +38,27 @@ Beispiel für die Erstellung des JSON-Objekts zur Definition der Radio-Elemente:
 [ { label: 'Herr', value: 'Herr', }, { label: 'Frau', value: 'Frau', }, { label: 'Firma', value: 'Firma', }, ];
 ```
 
+### onChange
+
+Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und der Wert des ausgewählten RadioButtons.
+<kol-alert _heading="Hinweis für Versionen <2" _type="info">event.target.value enthält die Nummer der Checkbox mit einem '-' davor.</kol-alert>
+
+```jsx
+<kol-input-radio
+	_id="anrede"
+	_name="anrede"
+	_list={[
+		{ label: 'Herr', value: 'Herr' },
+		{ label: 'Frau', value: 'Frau' },
+		{ label: 'Firma', value: 'Firma' },
+	]}
+	_on={{ onChange: (_event, value) => setValue(value) }}
+></kol-input-radio>
+```
+
 ### Best practices
 
-- Achten sie darauf, die Pflichtfelder `id` und `name` korrekt zu setzen.
+- Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
 - Es wird immer mindestens ein Wert ausgewählt. Ähnlich dem Verhalten einer Select-Auswahl. (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default)
 
 ## Barrierefreiheit
@@ -49,9 +67,9 @@ Beispiel für die Erstellung des JSON-Objekts zur Definition der Radio-Elemente:
 
 | Taste          | Funktion                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------ |
-| `Tab`          | Fokussiert das erste Radio-Element, aktiviert es aber nicht aus.                                 |
+| `Tab`          | Fokussiert das erste Radio-Element, aktiviert es aber nicht.                                     |
 | `Leer`         | Aktiviert das erste Radio-Element, nachdem die RadioGroup über die Tab-Taste angesprungen wurde. |
-| `Pfeil-Tasten` | Durchlaufen alle Radio-Elemente und aktivieren das gerade fokussierte Element.                   |
+| `Pfeil-Tasten` | Durchlaufen aller Radio-Elemente und aktiviert das gerade fokussierte Element.                   |
 
 ## Links und Referenzen
 

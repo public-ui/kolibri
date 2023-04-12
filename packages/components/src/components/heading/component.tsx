@@ -34,12 +34,12 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _headline!: string;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
 	/**
-	 * Gibt den Text der zusätzlichen Überschrift an.
+	 * Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.
 	 */
 	@Prop() public _secondaryHeadline?: string;
 

@@ -2,14 +2,15 @@
 
 Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
 
-Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für fünf Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.
+Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.
 
 ## Konstruktion
 
 ### Code
 
 ```html
-<kol-toast _heading="Überschrift" _type="success"> Web Component </kol-toast>
+<kol-alert _heading="Erfolg" _type="success">Hier wird der Erfolg näher beschrieben.</kol-alert>
+<kol-alert _type="success" _show="false">Hier wird der Erfolg näher beschrieben.</kol-alert>
 ```
 
 ### Beispiel
@@ -23,23 +24,29 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
 
 ### Überschrift
 
-Verwenden Sie das Attribut `_heading`, um die Überschrift des Toasts zu bestimmen.
+Verwenden Sie das Attribut **`_heading`**, um die Überschrift des Toasts zu bestimmen.
 
 ### Größe der Überschrift
 
-Verwenden Sie das Attribut `_level`, um die Größe der Überschrift zu bestimmen. Möglich sind die Werte 1 - 6.
+Verwenden Sie das Attribut **`_level`**, um die Überschriftenebene zu setzen.
 
 ### Anzeigen des Toasts
 
-Verwenden Sie das Attribut `_show`, um den Toast manuell anzuzeigen.
+Verwenden Sie das Attribut **`_show`**, um den Toast manuell anzuzeigen.
 
 ### Anzeigedauer des Toast
 
-Verwenden Sie das Attribut `_showDuration`, um die Anzeigedauer des Toasts festzulegen.
+Verwenden Sie das Attribut **`_showDuration`**, um die Anzeigedauer des Toasts festzulegen.
 
 ### Anzeigetyp des Toast
 
-Verwenden Sie das Attribut `_type`, um den Typ des Toasts festzulegen.
+Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögliche Werte sind:
+
+- `default`
+- `error`
+- `info`
+- `success`
+- `warning`
 
 <!--### Best practices
 

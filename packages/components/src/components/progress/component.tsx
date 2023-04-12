@@ -93,7 +93,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _type?: KoliBriProgressType;
 
 	/**
-	 * Gibt die Einheit der Fortschrittswerte an.
+	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
 	 */
 	@Prop() public _unit?: string = '%';
 

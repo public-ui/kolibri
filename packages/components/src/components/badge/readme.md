@@ -8,12 +8,14 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
 ### Code
 
 ```html
-<kol-badge _label="Beispieltext" _color="#000000" _icon="home" _icon-align="right" style={{ fontWeight: '600' }}></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icon="home" _icon-align="right"></kol-badge>
 ```
 
 ### Beispiel
 
-<kol-badge _label="Beispieltext" _color="#000000" _icon="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#b7e4b4" _icon="home" _icon-align="right"></kol-badge>
+<kol-badge _label="Beispieltext" _color="#0c8703" _icon="home" _icon-align="right"></kol-badge>
 
 ## Verwendung
 
@@ -30,16 +32,13 @@ Die Angabe der gewünschten Hintergrundfarbe erfolgt in hexadezimaler Schreibwei
 
 Die Textfarbe wird automatisch als Kontrastfarbe zur gewählten Hintergrundfarbe errechnet.
 
-### Anzeige eines Icon im Badge
+### Icon
 
-KoliBri stellt die komplette Bibliothek von **Icofont** zur Verfügung. Sie können daher optional im Badge ein Icon aus Icofont anzeigen lassen. Bestimmen Sie das Icon über das Attribut **\_icon="_Name des Icon_"**.
+Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objekt.
+Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
+Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
-Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie [hier](https://icofont.com/icons)
-
-### Position des Icon
-
-Das Icon kann zusätzlich entweder links oder rechts vom Text angezeigt werden. Verwenden Sie für die Angabe der Ausgabeposition das Attribut **\_icon-align=""**.
-Als Wert können Sie `_icon-align="left"` oder `_icon-align="right"` angeben.
+<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-lik>
 
 ### Nur Icon anzeigen
 
@@ -47,8 +46,7 @@ Mit dem Attribut **`_icon-only`** kann festgelegt werden, dass nur das mit dem A
 
 ### Schriftschnitt
 
-Über Stylinganweisungen im Attribut **style** können Sie den Schriftschnitt im Badge festlegen. Das Attribut **style** erwartet als Wert ein Objekt.
-`style={{ fontWeight: '600' }}`
+Der Schriftschnitt wird vom Host übernommen, kann also via CSS von außen gesetzt werden.
 
 ### Best practices
 
@@ -64,21 +62,15 @@ Mit dem Attribut **`_icon-only`** kann festgelegt werden, dass nur das mit dem A
 <ul class="m-0 p-0">
   <li class="flex gap-2">
     <kol-badge _label="1" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2">
-    Auswahl Anliegen
-    </kol-heading>
+    <kol-heading _level="2" _headline="Auswahl Anliegen"></kol-heading>
   </li>
   <li class="flex gap-2">
     <kol-badge _label="2" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2">
-    Auswahl Amtsstelle
-    </kol-heading>
+    <kol-heading _level="2" _headline="Auswahl Amtsstelle"></kol-heading>
   </li>
   <li class="flex gap-2">
     <kol-badge _label="3" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2">
-    Terminauswahl
-    </kol-heading>
+    <kol-heading _level="2" _headline="Terminauswahl"></kol-heading>
   </li>
 </ul>
 

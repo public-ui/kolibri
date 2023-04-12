@@ -1,26 +1,22 @@
 # Logo
 
-Mit Hilfe der **Logo**-Komponente können an beliebigen Positionen Logos ausgegeben werden. Die zur Verfügung stehenden Logos entstammen aus dem Umfeld
-der Bundesinstitutionen. Die **Logo**-Komponente rendert an beliebiger Position auf der Webseite ein Logo, das über ein Attribut definiert wird. Das Logo wird dabei aus einer
-Sammlung von SVG-Grafiken zusammengesetzt, die fertig konstruiert vorliegen. Die Ausgabe des Logos kann über das Attribut **style** definiert werden.
+Mit Hilfe der **Logo**-Komponente können an beliebigen Positionen die Logos verschiedener Bundesinstitutionen ausgegeben werden. Das Logo wird dabei aus einer Sammlung von SVG-Grafiken zusammengesetzt, die fertig konstruiert vorliegen.
 
 ## Konstruktion
 
 ### Code
 
 ```html
-<div>
-	<kol-logo _abbr="BReg"></kol-logo>
-</div>
+<kol-logo _org_="BReg"></kol-logo>
 ```
 
 ### Beispiel
 
-<kol-logo _abbr="BReg"></kol-logo>
+<kol-logo _org_="BReg"></kol-logo>
 
 ## Verwendung
 
-Das Attribut `_abbr` wird für die Definition des gewünschten Logos verwendet. Es sind folgende Parameter möglich:
+Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwendet. Es sind folgende Parameter möglich:
 
 **BReg** = **_Die Bundesregierung_**
 
