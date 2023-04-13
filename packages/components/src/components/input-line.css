@@ -21,6 +21,7 @@ select:not([multiple]) {
 .input {
 	display: flex;
 	align-items: baseline;
+	width: 100%;
 }
 .input > kol-icon {
 	display: grid;
