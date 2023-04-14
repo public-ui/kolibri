@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.11
+  '@public-ui/components': 1.5.0-rc.12
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -14,7 +14,7 @@ specifiers:
   unbuild: 0.8.11
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.11
+  '@public-ui/components': 1.5.0-rc.12
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.15.11
@@ -345,8 +345,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.11:
-    resolution: {integrity: sha512-REQU0ok+UARxo9J4w4EeUfAi5DNmnonmzKRG3Q7ATb+absY/Gal7xEn1CijED2yp6syRFg4lhNJibnFm5Wlkjw==}
+  /@public-ui/components/1.5.0-rc.12:
+    resolution: {integrity: sha512-MYwaBh5zc1cDCiPwsRFPUlThL4RvVFXGcj0j40szzsprC+SOPmSIqRwszT/1scL1mf5o6HpfvdGAEzFBlqzMtg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
