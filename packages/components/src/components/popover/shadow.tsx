@@ -101,6 +101,8 @@ export class KolPopover implements API {
 	private showPopover = (): void => {
 		if (this.popoverElement && this.triggerElement) {
 			this.popoverElement.classList.remove('hidden');
+			this.popoverElement.setAttribute('tabindex', '0');
+			this.popoverElement.focus();
 			this.addListenersToBody();
 			this.addListenersToTrigger();
 
@@ -114,6 +116,8 @@ export class KolPopover implements API {
 	private hidePopover(): void {
 		if (this.popoverElement) {
 			this.popoverElement.classList.remove('show');
+			this.popoverElement.removeAttribute('tabindex');
+			this.triggerElement?.focus();
 			setTimeout(() => this.popoverElement?.classList.add('hidden'), 1);
 			this.removeListenersToBody();
 		}
