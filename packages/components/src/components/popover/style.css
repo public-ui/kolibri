@@ -1,31 +1,40 @@
 @import '../style.css';
 
-kol-tooltip #floating {
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.5s;
+:host {
+	height: 0;
+}
+
+.popover {
+	background-color: var(--kolibri-tooltip-background-color);
 	box-sizing: border-box;
+	opacity: 0;
+	position: absolute;
+}
+.hidden {
 	display: none;
+}
+.show {
+	animation: fadeInOpacity 300ms ease-in forwards;
+}
+
+.arrow {
+	border: calc(var(--font-size) / 2) solid transparent;
+	height: 0;
 	position: absolute;
-	visibility: hidden;
+	width: 0;
+	z-index: -1;
 }
-
-kol-tooltip #arrow {
-	height: 10px;
-	position: absolute;
-	transform: rotate(45deg);
-	width: 10px;
-	z-index: 999;
+:where(.arrow).top {
+	border-top-color: var(--kolibri-tooltip-background-color);
 }
-
-kol-tooltip .area {
-	background-color: white;
+:where(.arrow).right {
+	border-right-color: var(--kolibri-tooltip-background-color);
 }
-
-kol-tooltip kol-span-wc {
-	position: relative;
-	z-index: 1000;
+:where(.arrow).bottom {
+	border-bottom-color: var(--kolibri-tooltip-background-color);
+}
+:where(.arrow).left {
+	border-left-color: var(--kolibri-tooltip-background-color);
 }
 
 @keyframes fadeInOpacity {
