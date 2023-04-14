@@ -16,11 +16,6 @@ const KolLink: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolLink {...args}>{args.content}</KolLink>
@@ -30,11 +25,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Text = (args: any) => (
 	<div>
 		<p>
@@ -53,11 +43,6 @@ Text.args = {
 };
 Text.storyName = 'Fließtext';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Display = (args: any) => (
 	<div>
 		<p>
@@ -81,11 +66,6 @@ Display.args = {
 };
 Display.storyName = 'Positionierung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithIcon = (args: any) => (
 	<div>
 		<p>
@@ -113,11 +93,6 @@ WithIcon.args = {
 };
 WithIcon.storyName = 'Mit Icon';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Underline = (args: any) => (
 	<div>
 		<p>
@@ -134,11 +109,6 @@ Underline.args = {
 };
 Underline.storyName = 'Unterstrichen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Open = (args: any) => (
 	<div>
 		<p>
@@ -157,11 +127,6 @@ Open.args = {
 };
 Open.storyName = 'Öffnungsverhalten';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Stealth = (args: any) => (
 	<div>
 		<p>
@@ -180,11 +145,6 @@ Stealth.args = {
 };
 Stealth.storyName = 'Versteckt';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Image = (args: any) => (
 	<div>
 		<p>

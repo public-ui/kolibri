@@ -16,11 +16,6 @@ const LeanInputAdapter: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<LeanInputAdapter {...args}>
@@ -34,11 +29,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Select = (args: any) => (
 	<div>
 		<LeanInputAdapter {...args}>
@@ -51,11 +41,6 @@ Select.args = {
 };
 Select.storyName = 'Selectbox';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Radio = (args: any) => (
 	<div>
 		<LeanInputAdapter {...args}>
