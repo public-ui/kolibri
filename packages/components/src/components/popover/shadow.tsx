@@ -8,10 +8,11 @@ import { Alignment, PropAlignment, validateAlignment } from '../../types/props';
 
 type RequiredProps = unknown;
 type OptionalProps = PropAlignment;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = PropAlignment;
 type OptionalStates = unknown;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
 
@@ -27,7 +28,7 @@ export class KolPopover implements API {
 	private popoverElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
 
-	private helpFunction(x: number, y: number, middlewareData: MiddlewareData, placement: Placement, callBack?: () => unknown) {
+	private setPosition(x: number, y: number, middlewareData: MiddlewareData, placement: Placement, callBack?: () => unknown) {
 		if (this.popoverElement) {
 			const oldPos = {
 				left: this.popoverElement.style.left,
@@ -92,7 +93,7 @@ export class KolPopover implements API {
 					placement: this.state._alignment,
 					middleware: middleware,
 				}).then(({ x, y, middlewareData, placement }) => {
-					this.helpFunction(x, y, middlewareData, placement, callBack);
+					this.setPosition(x, y, middlewareData, placement, callBack);
 				});
 			}
 		}

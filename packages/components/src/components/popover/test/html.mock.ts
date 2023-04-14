@@ -1,34 +1,18 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { Props, States } from '../component';
-import { nonce } from '../../../utils/dev.utils';
-import { getSpanWcHtml } from '../../span/test/html.mock';
+import { Props, States } from '../shadow';
 
-export const getTooltipHtml = (props: Props, additionalAttrs = ''): string => {
+export const getPopoverHtml = (props: Props, slots?: { default?: string }, additionalAttrs = ''): string => {
 	const state: States = mixMembers<Props, States>(
 		{
-			_align: 'top',
-			_id: nonce(),
-			_label: '…', // ⚠ required
+			_alignment: 'top',
 		},
 		props
 	);
 	return `
-<kol-tooltip${additionalAttrs}>
-	${
-		state._label === ''
-			? ''
-			: `<div id="floating">
-			<div class="area" id="arrow"></div>
-			${getSpanWcHtml(
-				{
-					_label: state._label,
-				},
-				{
-					expert: undefined,
-				},
-				` class="area" id="${state._id}"`
-			)}
-		</div>`
-	}
-</kol-tooltip>`;
+  <kol-popover _alignment="${state._alignment}"${additionalAttrs}>
+		<div class="popover hidden">
+    	<div class="arrow ${state._alignment}" />
+    	${slots?.default !== undefined ? slots.default : ''}
+		</div>
+  </kol-popover>`;
 };

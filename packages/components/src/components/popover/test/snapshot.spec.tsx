@@ -3,24 +3,22 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
-import { Props } from '../component';
-import { getTooltipHtml } from './html.mock';
+import { Props } from '../shadow';
+import { getPopoverHtml } from './html.mock';
 
 executeTests<Props>(
-	'Tooltip',
+	'Popover',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
 			components: COMPONENTS,
-			template: () => <kol-tooltip {...props} />,
+			template: () => <kol-popover {...props} />,
 		});
 		return page;
 	},
 	{
-		_align: ['top', 'right', 'bottom', 'left'],
-		_id: ['id'],
-		_label: ['Label'],
+		_alignment: ['top', 'right', 'bottom', 'left'],
 	},
-	getTooltipHtml,
+	getPopoverHtml,
 	{
 		execMode: 'default', // ready
 	}
