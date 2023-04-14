@@ -106,16 +106,16 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 ## Properties
 
-| Property                  | Attribute             | Description                                                                                                                                                                       | Type                                                            | Default      |
-| ------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
-| `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.                                                                  | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
-| `_ariaLabel` _(required)_ | `_aria-label`         | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                                                                                      | `string`                                                        | `undefined`  |
-| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                                                                                     | `boolean \| undefined`                                          | `true`       |
-| `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                                                                                                | `boolean \| undefined`                                          | `false`      |
-| `_hasCompactButton`       | `_has-compact-button` | <span style="color:red">**[DEPRECATED]**</span> Version 2<br/><br/>Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll. | `boolean \| undefined`                                          | `false`      |
-| `_links` _(required)_     | `_links`              | Gibt die geordnete Liste der Seitenhierarchie an.                                                                                                                                 | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
-| `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                                                                                           | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
-| `_variant`                | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Gibt an, welche Ausprägung der Button hat.    | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
+| Property                  | Attribute             | Description                                                                                                                                                                                                                      | Type                                                            | Default      |
+| ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
+| `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.                                                                                                                 | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
+| `_ariaLabel` _(required)_ | `_aria-label`         | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.                                                                                                                                                     | `string`                                                        | `undefined`  |
+| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                                                                                                                                    | `boolean \| undefined`                                          | `true`       |
+| `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                                                                                                                                               | `boolean \| undefined`                                          | `false`      |
+| `_hasCompactButton`       | `_has-compact-button` | <span style="color:red">**[DEPRECATED]**</span> Version 2<br/><br/>Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                                                | `boolean \| undefined`                                          | `false`      |
+| `_links` _(required)_     | `_links`              | Gibt die geordnete Liste der Seitenhierarchie an.                                                                                                                                                                                | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
+| `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                                                                                                                                          | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
+| `_variant`                | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren) | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
 
 ## Dependencies
 
@@ -137,9 +137,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip

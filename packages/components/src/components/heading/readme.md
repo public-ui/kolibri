@@ -41,11 +41,11 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 ## Properties
 
-| Property                 | Attribute             | Description                                                                                                            | Type                                           | Default     |
-| ------------------------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `_headline` _(required)_ | `_headline`           | Gibt den Text der Überschrift an.                                                                                      | `string`                                       | `undefined` |
-| `_level`                 | `_level`              | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
-| `_secondaryHeadline`     | `_secondary-headline` | Gibt den Text der zusätzlichen Überschrift an.                                                                         | `string \| undefined`                          | `undefined` |
+| Property                 | Attribute             | Description                                                                       | Type                                           | Default     |
+| ------------------------ | --------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `_headline` _(required)_ | `_headline`           | Gibt den Text der Überschrift an.                                                 | `string`                                       | `undefined` |
+| `_level`                 | `_level`              | Setzt den H-Level, von 1 bis 6, der Überschrift.                                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| `_secondaryHeadline`     | `_secondary-headline` | Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten. | `string \| undefined`                          | `undefined` |
 
 ## Dependencies
 

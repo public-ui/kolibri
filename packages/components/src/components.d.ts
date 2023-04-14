@@ -9,7 +9,7 @@ import { AriaCurrent, PropAlignment } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-import { KoliBriColor } from "./components/badge/component";
+import { PropColor } from "./types/props/color";
 import { Stringified } from "./types/common";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
@@ -41,7 +41,7 @@ export { AriaCurrent, PropAlignment } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-export { KoliBriColor } from "./components/badge/component";
+export { PropColor } from "./types/props/color";
 export { Stringified } from "./types/common";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
@@ -132,7 +132,7 @@ export namespace Components {
         /**
           * Setzt die Hintergrundfarbe.
          */
-        "_color"?: string | KoliBriColor;
+        "_color"?: string | PropColor;
         /**
           * Iconklasse (z.B.: "codicon codicon-home")
          */
@@ -2699,7 +2699,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Hintergrundfarbe.
          */
-        "_color"?: string | KoliBriColor;
+        "_color"?: string | PropColor;
         /**
           * Iconklasse (z.B.: "codicon codicon-home")
          */
