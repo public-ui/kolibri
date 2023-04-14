@@ -59,7 +59,7 @@ import Default from '../theme/layouts/default.vue';
 
 const options = [
 	{
-		label: 'Bundes-Styleguide (WIP)',
+		label: 'Bundes-Styleguide',
 		value: 'bpa',
 	},
 	{
@@ -67,19 +67,19 @@ const options = [
 		value: 'bmf',
 	},
 	{
-		label: 'DEZY-Styleguide (untested)',
+		label: 'DEZY-Styleguide',
 		value: 'desy-v2',
 	},
 	{
-		label: 'European Commission-Styleguide (WIP)',
+		label: 'European Commission-Styleguide',
 		value: 'ecl-ec',
 	},
 	{
-		label: 'European Union-Styleguide (WIP)',
+		label: 'European Union-Styleguide',
 		value: 'ecl-eu',
 	},
 	{
-		label: 'ITZBund-Styleguide (untested)',
+		label: 'ITZBund-Styleguide',
 		value: 'itzbund',
 	},
 	{
@@ -87,17 +87,17 @@ const options = [
 		value: 'mapz',
 	},
 	// {
-	// 	label: 'Freistaat Thüringen (untested)',
+	// 	label: 'Freistaat Thüringen',
 	// 	value: 'th',
 	// },
 	{
-		label: 'Zoll-Designsystem (untested)',
+		label: 'Zoll-Designsystem',
 		value: 'zoll-v2',
 	},
 ];
 
 const local = window.localStorage.getItem('kolibri');
-let value = 'itzbund';
+let value = 'ecl-eu';
 if (local) {
 	try {
 		const json = JSON.parse(local);
