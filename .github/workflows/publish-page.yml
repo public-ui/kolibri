@@ -44,6 +44,11 @@ jobs:
         working-directory: packages/designer
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish handout
+        run: npm publish --access restricted || true
+        working-directory: packages/handout
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish slidev
         run: npm publish --access restricted || true
         working-directory: packages/slidev

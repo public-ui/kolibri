@@ -1,0 +1,40 @@
+# Next
+.next
+
+# GraphQL
+src/__generated__
+
+# IDE's
+.idea
+.project
+*.sublime-*
+*.code-*
+
+
+# Node.js
+node_modules
+npm-debug.log
+
+
+# Build and test tools
+*.zip
+dist/*
+
+# Cache
+.sass-cache
+.cache
+
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+
+# Other
+/.husky
+/.reports
+.env
+.eslintcache
+*~
+*.log
+*.tgz
