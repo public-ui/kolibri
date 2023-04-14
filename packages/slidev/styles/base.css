@@ -32,3 +32,14 @@ small.underline {
 small.underline::before {
 	content: '// ';
 }
+
+.grey kol-button {
+	--color-red: #777;
+	--color-midnight: #555;
+}
+
+:host a,
+:host kol-span-wc,
+:host kol-span-wc > span {
+	gap: 0.5em;
+}
