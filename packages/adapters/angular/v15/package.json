@@ -75,7 +75,7 @@
 		"rxjs": "7.8.0",
 		"tslib": "2.5.0",
 		"typescript": "4.9.5",
-		"zone.js": "0.12.0"
+		"zone.js": "0.13.0"
 	},
 	"peerDependencies": {
 		"@angular/core": "^15",
