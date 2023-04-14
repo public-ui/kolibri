@@ -16,11 +16,6 @@ const KolLogo: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolLogo {...args}></KolLogo>
@@ -30,11 +25,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Block = (args: any) => (
 	<div>
 		<KolLogo
@@ -53,11 +43,6 @@ Block.args = {
 };
 Block.storyName = 'Block-Ausgabe';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Inline = (args: any) => (
 	<div>
 		<KolLogo
@@ -76,11 +61,6 @@ Inline.args = {
 };
 Inline.storyName = 'Inline-Ausgabe';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Sizes = (args: any) => (
 	<div>
 		<KolLogo

@@ -17,11 +17,6 @@ const KolInputEmail: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputEmail {...args}>{args.content}</KolInputEmail>
@@ -31,11 +26,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Autocomplete = (args: any) => (
 	<div>
 		<KolInputEmail _id="meine_email" _name="meine_email" _value="" _list="['alpha@email.de','beta@email.de','gamma@email.de']"></KolInputEmail>
@@ -46,11 +36,6 @@ Autocomplete.args = {
 };
 Autocomplete.storyName = 'Auto-Vervollständigen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Multiple = (args: any) => (
 	<div>
 		<p>Trennzeichen für die einzelnen E-Mail-Adressen ist ein Komma (,)</p>
@@ -62,11 +47,6 @@ Multiple.args = {
 };
 Multiple.storyName = 'Auto-Vervollständigen/Mehrfachauswahl';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Messages = (args: any) => (
 	<div>
 		<KolInputEmail _id="meine_email" _name="meine_email" _error="Fehlermeldung" _touched _value="info@email.de"></KolInputEmail>
@@ -77,11 +57,6 @@ Messages.args = {
 };
 Messages.storyName = 'Fehlermeldung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolInputEmail _id="meine_email" _name="meine_email" _value="info@email.de"></KolInputEmail>

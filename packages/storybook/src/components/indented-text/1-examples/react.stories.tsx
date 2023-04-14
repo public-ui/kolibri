@@ -16,11 +16,6 @@ const KolIndentedText: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolIndentedText {...args}>{args.content}</KolIndentedText>
@@ -30,11 +25,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Single = (args: any) => (
 	<div>
 		<KolIndentedText>
@@ -49,11 +39,6 @@ Single.args = {
 };
 Single.storyName = 'Einzelnes Element';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Text = (args: any) => (
 	<div>
 		<p>
@@ -79,11 +64,6 @@ Text.args = {
 };
 Text.storyName = 'Im Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Cite = (args: any) => (
 	<div>
 		<p>
