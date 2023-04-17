@@ -18,11 +18,6 @@ const DefaultArgs = {
 	_label: 'Label-Text',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolButton {...args}></KolButton>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithIcon = (args: any) => (
 	<div>
 		<KolButton {...args}></KolButton>
@@ -48,11 +38,6 @@ WithIcon.args = {
 };
 WithIcon.storyName = 'Button mit Icon und Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithAllIcon = (args: any) => (
 	<div>
 		<KolButton {...args}></KolButton>
@@ -65,11 +50,6 @@ WithAllIcon.args = {
 };
 WithAllIcon.storyName = 'Button mit allen Icon und Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithIcons = (args: any) => (
 	<div>
 		<KolButton {...args}></KolButton>
@@ -82,11 +62,6 @@ WithIcons.args = {
 };
 WithIcons.storyName = 'Button mit verschiedenen Icon-Positionen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const OnlyIcon = (args: any) => (
 	<div>
 		<KolButton {...args}></KolButton>
@@ -99,11 +74,6 @@ OnlyIcon.args = {
 };
 OnlyIcon.storyName = 'Button nur mit Icon';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Tooltip = (args: any) => (
 	<div>
 		<KolButton {...args}></KolButton>
@@ -118,11 +88,6 @@ Tooltip.args = {
 };
 Tooltip.storyName = 'Button mit Icon und Tooltip';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithCta = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25rem' }}>
 		<KolButton {...args} _variant="primary" _label="Primary"></KolButton>
@@ -139,11 +104,6 @@ WithCta.args = {
 };
 WithCta.storyName = 'Styles';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithSizes = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25rem' }}>
 		<KolButton _label="Button ohne Mindestbreite" _icon="icofont-home" _iconAlign="left"></KolButton>
@@ -162,11 +122,6 @@ WithSizes.args = {
 };
 WithSizes.storyName = 'Mindestbreite von Buttons';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Context = (args: any) => (
 	<div>
 		<div style={{ display: 'grid', gap: '0.25rem' }}>
@@ -184,11 +139,6 @@ Context.args = {
 };
 Context.storyName = 'Anwendung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Output = (args: any) => (
 	<div style={{ display: 'grid', gap: '0.25rem' }}>
 		<KolButton class="not-used" _variant="primary" _label="Primary-Schaltfläche"></KolButton>

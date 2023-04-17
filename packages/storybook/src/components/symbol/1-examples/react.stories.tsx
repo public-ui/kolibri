@@ -17,11 +17,6 @@ const KolSymbol: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolSymbol ariaLabel={args._ariaLabel} {...args}></KolSymbol>
@@ -31,11 +26,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const sign = (args: any) => (
 	<div>
 		<KolSymbol ariaLabel={args._ariaLabel} {...args}></KolSymbol>
@@ -47,11 +37,6 @@ sign.args = {
 };
 sign.storyName = 'Einzelnes Zeichen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Bar = (args: any) => (
 	<div>
 		<KolSymbol ariaLabel={args._ariaLabel} {...args}></KolSymbol>
@@ -64,11 +49,6 @@ Bar.args = {
 };
 Bar.storyName = 'Langer Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const signText = (args: any) => (
 	<div>
 		<p>
