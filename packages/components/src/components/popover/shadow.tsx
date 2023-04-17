@@ -27,6 +27,7 @@ export class KolPopover implements API {
 	private arrowElement?: HTMLDivElement;
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;
+	private host?: HTMLElement;
 
 	/* Popover functions */
 	private alignPopover = (callBack?: () => unknown): void => {
@@ -106,7 +107,7 @@ export class KolPopover implements API {
 		if (event.key === 'Escape') this.hidePopover();
 	};
 	private hidePopoverByClickOutside = (event: MouseEvent): void => {
-		if (this.popoverElement && !this.popoverElement.contains(event.target as HTMLElement)) {
+		if (this.host && !this.host.contains(event.target as HTMLElement)) {
 			this.hidePopover();
 		}
 	};
@@ -126,8 +127,9 @@ export class KolPopover implements API {
 	}
 
 	/* catchElement functions */
-	private catchTriggerElement = (element: HTMLElement | null): void => {
+	private catchHostAndTriggerElement = (element: HTMLElement | null): void => {
 		if (element) {
+			this.host = element;
 			this.triggerElement = element.previousElementSibling as HTMLElement | null;
 		}
 	};
@@ -140,7 +142,7 @@ export class KolPopover implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchTriggerElement}>
+			<Host ref={this.catchHostAndTriggerElement}>
 				<div class={{ popover: true, hidden: !this.state._open, show: this.state._show }} ref={this.catchPopoverElement}>
 					<div class={`arrow ${this.state._alignment}`} ref={this.catchArrowElement} />
 					<slot />
@@ -184,9 +186,5 @@ export class KolPopover implements API {
 	public componentWillLoad(): void {
 		this.validateAlignment(this._alignment);
 		this.validateOpen(this._open);
-	}
-
-	public disconnectedCallback(): void {
-		console.log('unused');
 	}
 }
