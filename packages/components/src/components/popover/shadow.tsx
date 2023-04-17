@@ -4,7 +4,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
-import { Alignment, PropAlignment, PropOpen, PropShow, validateAlignment, validateOpen, validateShow } from '../../types/props';
+import { Alignment, PropAlignment, PropOpen, PropShow, validateAlignment, validateOpen } from '../../types/props';
 
 type RequiredProps = unknown;
 type OptionalProps = PropAlignment & PropOpen;
@@ -176,11 +176,6 @@ export class KolPopover implements API {
 	public validateOpen(value?: boolean): void {
 		validateOpen(this, value);
 		if (value) this.showPopover();
-	}
-
-	@Watch('_show')
-	public validateShow(value?: boolean): void {
-		validateShow(this, value);
 	}
 
 	public componentWillLoad(): void {
