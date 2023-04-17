@@ -59,7 +59,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 			setEventTarget(event, this.ref);
 			this.state._on?.onClick(event, this.state._value);
 		} else {
-			devWarning(`It was no button click callback configured!`);
+			devWarning(`There was no button click callback configured! (_on.onClick)`);
 		}
 	};
 

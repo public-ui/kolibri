@@ -1887,6 +1887,10 @@ export namespace Components {
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
         "_alignment"?: Alignment;
+        /**
+          * Öffnet/schließt das Popover.
+         */
+        "_open"?: boolean;
     }
     interface KolProgress {
         /**
@@ -4467,6 +4471,10 @@ declare namespace LocalJSX {
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
         "_alignment"?: Alignment;
+        /**
+          * Öffnet/schließt das Popover.
+         */
+        "_open"?: boolean;
     }
     interface KolProgress {
         /**

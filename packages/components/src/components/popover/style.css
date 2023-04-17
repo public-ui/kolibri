@@ -2,10 +2,11 @@
 
 :host {
 	height: 0;
+	position: absolute;
 }
 
 .popover {
-	background-color: var(--kolibri-popover-background-color);
+	background-color: white;
 	box-sizing: border-box;
 	opacity: 0;
 	position: absolute;
@@ -16,25 +17,17 @@
 .show {
 	animation: fadeInOpacity 300ms ease-in forwards;
 }
+.disappear {
+	animation: fadeInOpacity 300ms ease-in backwards;
+}
 
 .arrow {
-	border: calc(var(--font-size) / 2) solid transparent;
-	height: 0;
+	background-color: inherit;
+	height: var(--font-size);
 	position: absolute;
-	width: 0;
+	rotate: 0.125turn;
+	width: var(--font-size);
 	z-index: -1;
-}
-:where(.arrow).top {
-	border-top-color: var(--kolibri-popover-background-color);
-}
-:where(.arrow).right {
-	border-right-color: var(--kolibri-popover-background-color);
-}
-:where(.arrow).bottom {
-	border-bottom-color: var(--kolibri-popover-background-color);
-}
-:where(.arrow).left {
-	border-left-color: var(--kolibri-popover-background-color);
 }
 
 @keyframes fadeInOpacity {

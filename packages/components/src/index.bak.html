@@ -1464,6 +1464,35 @@
 				</div>
 				<script src="assets/pagination-simulation.js"></script>
 			</kol-accordion>
+			<kol-accordion _heading="popover" id="popover">
+				<div slot="content">
+					<div class="row">
+						<div class="col-12">
+							<kol-heading _headline="" _level="2">Popover</kol-heading>
+							<p>Die Popover-Komponente implementiert einen Container für Inhalte, die mehr sind wie ein Tooltip, aber kein Modal rechtfertigen.</p>
+							<p>
+								Das Anzeigen der Popover-Komponente wird über das Attribut _activeElement gesteuert. Sofern ein Wert ungleich null angegeben wird, wird das
+								Popover am übergebenen Element angezeigt. Die Ausrichtung kann mit _alignment gesteuert werden und ist standardmäßig oberhalb.
+							</p>
+						</div>
+						<div class="gap-2 col-12 d-grid justify-content-center">
+							<kol-button id="popover-button-top" _label="Oben" _icon="codicon codicon-arrow-up" _variant="primary"></kol-button>
+							<kol-popover id="popover-top">Ich bin oberhalb</kol-popover>
+							<kol-button id="popover-button-right" _label="Rechts" _icon="codicon codicon-arrow-right" _variant="danger"></kol-button>
+							<kol-popover id="popover-right" _alignment="right">Ich bin rechts</kol-popover>
+							<kol-button id="popover-button-bottom" _label="Unten" _icon="codicon codicon-arrow-down" _variant="secondary"></kol-button>
+							<kol-popover id="popover-bottom" _alignment="bottom">Ich bin unterhalb</kol-popover>
+							<kol-button id="popover-button-left" _label="Links" _icon="codicon codicon-arrow-left" _variant="normal"></kol-button>
+							<kol-popover id="popover-left" _alignment="left">Ich bin links</kol-popover>
+							<kol-button id="popover-button-login" _label="PR starten" _icon="codicon codicon-git-pull-request" _variant="normal"></kol-button>
+							<kol-popover id="popover-login">
+								<kol-input-text>Benutzername</kol-input-text>
+								<kol-input-password>Passwort</kol-input-password>
+							</kol-popover>
+						</div>
+					</div>
+				</div>
+			</kol-accordion>
 			<kol-accordion _heading="progress" id="progress">
 				<div slot="content">
 					<div class="row">

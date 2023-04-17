@@ -4,13 +4,13 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
-import { Alignment, PropAlignment, validateAlignment } from '../../types/props';
+import { Alignment, PropAlignment, PropOpen, PropShow, validateAlignment, validateOpen, validateShow } from '../../types/props';
 
 type RequiredProps = unknown;
-type OptionalProps = PropAlignment;
+type OptionalProps = PropAlignment & PropOpen;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = PropAlignment;
+type RequiredStates = PropAlignment & PropOpen & PropShow;
 type OptionalStates = unknown;
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
@@ -24,10 +24,30 @@ type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredSt
 	shadow: true,
 })
 export class KolPopover implements API {
-	private triggerElement?: HTMLElement | null;
-	private popoverElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
+	private popoverElement?: HTMLDivElement;
+	private triggerElement?: HTMLElement | null;
 
+	/* Popover functions */
+	private alignPopover = (callBack?: () => unknown): void => {
+		if (processEnv !== 'test' && this.triggerElement && this.popoverElement) {
+			const trigger = this.triggerElement;
+			const popoverEl = this.popoverElement;
+			const arrowEl = this.arrowElement;
+
+			const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
+			if (arrowEl) {
+				middleware.push(arrow({ element: arrowEl }));
+			}
+
+			void computePosition(trigger, popoverEl, {
+				placement: this.state._alignment,
+				middleware: middleware,
+			}).then(({ x, y, middlewareData, placement }) => {
+				this.setPosition(x, y, middlewareData, placement, callBack);
+			});
+		}
+	};
 	private setPosition(x: number, y: number, middlewareData: MiddlewareData, placement: Placement, callBack?: () => unknown) {
 		if (this.popoverElement) {
 			const oldPos = {
@@ -40,31 +60,22 @@ export class KolPopover implements API {
 			});
 
 			if (this.arrowElement && middlewareData.arrow) {
-				console.log(middlewareData.arrow);
 				switch (placement) {
 					case 'top':
-						Object.assign(this.arrowElement.style, {
-							left: `${middlewareData.arrow.x || 0}px`,
-							top: '100%',
-						});
+						this.arrowElement.style.inset = `100% auto auto ${middlewareData.arrow.x || 0}px`;
+						this.arrowElement.style.translate = '0 -50%';
 						break;
 					case 'right':
-						Object.assign(this.arrowElement.style, {
-							right: '100%',
-							top: `${middlewareData.arrow.y || 0}px`,
-						});
+						this.arrowElement.style.inset = `${middlewareData.arrow.y || 0}px 100% auto auto`;
+						this.arrowElement.style.translate = '50% 0';
 						break;
 					case 'bottom':
-						Object.assign(this.arrowElement.style, {
-							bottom: '100%',
-							left: `${middlewareData.arrow.x || 0}px`,
-						});
+						this.arrowElement.style.inset = `auto auto 100% ${middlewareData.arrow.x || 0}px`;
+						this.arrowElement.style.translate = '0 50%';
 						break;
 					case 'left':
-						Object.assign(this.arrowElement.style, {
-							left: '100%',
-							top: `${middlewareData.arrow.y || 0}px`,
-						});
+						this.arrowElement.style.inset = `${middlewareData.arrow.y || 0}px auto auto 100%`;
+						this.arrowElement.style.translate = '-50% 0';
 						break;
 				}
 			}
@@ -75,57 +86,24 @@ export class KolPopover implements API {
 			}
 		}
 	}
-
-	/* Popover functions */
-	private alignPopover = (callBack?: () => unknown): void => {
-		if (processEnv !== 'test') {
-			if (this.triggerElement && this.popoverElement) {
-				const trigger = this.triggerElement;
-				const popoverEl = this.popoverElement;
-				const arrowEl = this.arrowElement;
-
-				const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
-				if (arrowEl) {
-					middleware.push(arrow({ element: arrowEl }));
-				}
-
-				void computePosition(trigger, popoverEl, {
-					placement: this.state._alignment,
-					middleware: middleware,
-				}).then(({ x, y, middlewareData, placement }) => {
-					this.setPosition(x, y, middlewareData, placement, callBack);
-				});
-			}
-		}
-	};
 	private showPopover = (): void => {
-		if (this.popoverElement && this.triggerElement) {
-			this.popoverElement.classList.remove('hidden');
-			this.popoverElement.setAttribute('tabindex', '0');
-			this.popoverElement.focus();
-			this.addListenersToBody();
-			this.addListenersToTrigger();
+		this.addListenersToBody();
 
-			this.alignPopover(() => {
-				if (this.popoverElement) {
-					this.popoverElement.classList.add('show');
-				}
-			});
-		}
+		this.alignPopover(() => {
+			this.state = { ...this.state, _show: true };
+		});
 	};
 	private hidePopover(): void {
-		if (this.popoverElement) {
-			this.popoverElement.classList.remove('show');
-			this.popoverElement.removeAttribute('tabindex');
-			this.triggerElement?.focus();
-			setTimeout(() => this.popoverElement?.classList.add('hidden'), 1);
-			this.removeListenersToBody();
-		}
+		this.state = {
+			...this.state,
+			_show: false,
+		};
+		this._open = false;
+		this.triggerElement?.focus();
+		this.removeListenersToBody();
 	}
 	private hidePopoverByEscape = (event: KeyboardEvent): void => {
-		if (event.key === 'Escape') {
-			this.hidePopover();
-		}
+		if (event.key === 'Escape') this.hidePopover();
 	};
 	private hidePopoverByClickOutside = (event: MouseEvent): void => {
 		if (this.popoverElement && !this.popoverElement.contains(event.target as HTMLElement)) {
@@ -134,26 +112,6 @@ export class KolPopover implements API {
 	};
 
 	/* EventListener functions */
-	private addListenersToTrigger(): void {
-		if (this.triggerElement) {
-			this.triggerElement.addEventListener('focus', this.setFocus);
-			this.triggerElement.addEventListener('blur', this.removeFocus);
-			this.triggerElement.addEventListener('mouseover', this.setHover);
-			this.triggerElement.addEventListener('mouseout', this.removeHover);
-		}
-	}
-	private removeListenersFromTrigger(): void {
-		if (this.triggerElement) {
-			this.triggerElement.removeEventListener('focus', this.setFocus);
-			this.triggerElement.removeEventListener('blur', this.removeFocus);
-			this.triggerElement.removeEventListener('mouseover', this.setHover);
-			this.triggerElement.removeEventListener('mouseout', this.removeHover);
-		}
-	}
-	private resyncTriggerListeners(): void {
-		this.removeListenersFromTrigger();
-		this.addListenersToTrigger();
-	}
 	private addListenersToBody(): void {
 		const body = getDocument().body;
 		body.addEventListener('keyup', this.hidePopoverByEscape);
@@ -168,17 +126,13 @@ export class KolPopover implements API {
 	}
 
 	/* catchElement functions */
-	private catchHostElement = (element: HTMLElement | null): void => {
+	private catchTriggerElement = (element: HTMLElement | null): void => {
 		if (element) {
 			this.triggerElement = element.previousElementSibling as HTMLElement | null;
-			this.resyncTriggerListeners();
 		}
 	};
 	private catchPopoverElement = (element?: HTMLDivElement): void => {
 		this.popoverElement = element;
-		if (this.popoverElement) {
-			this.resyncTriggerListeners();
-		}
 	};
 	private catchArrowElement = (element?: HTMLDivElement): void => {
 		this.arrowElement = element;
@@ -186,8 +140,8 @@ export class KolPopover implements API {
 
 	public render(): JSX.Element {
 		return (
-			<Host ref={this.catchHostElement}>
-				<div class="popover hidden" ref={this.catchPopoverElement}>
+			<Host ref={this.catchTriggerElement}>
+				<div class={{ popover: true, hidden: !this.state._open, show: this.state._show }} ref={this.catchPopoverElement}>
 					<div class={`arrow ${this.state._alignment}`} ref={this.catchArrowElement} />
 					<slot />
 				</div>
@@ -200,8 +154,15 @@ export class KolPopover implements API {
 	 */
 	@Prop() public _alignment?: Alignment = 'top';
 
+	/**
+	 * Öffnet/schließt das Popover.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+
 	@State() public state: States = {
 		_alignment: 'top',
+		_open: false,
+		_show: false,
 	};
 
 	@Watch('_alignment')
@@ -209,31 +170,23 @@ export class KolPopover implements API {
 		validateAlignment(this, value);
 	}
 
-	/* show/hide on focus/hover in/out */
-	private isFocus = false;
-	private isHover = false;
-	private setFocus = (): void => {
-		this.isFocus = true;
-		this.showPopover();
-	};
-	private removeFocus = (): void => {
-		this.isFocus = false;
-		if (!this.isHover) this.hidePopover();
-	};
-	private setHover = (): void => {
-		this.isHover = true;
-		this.showPopover();
-	};
-	private removeHover = (): void => {
-		this.isHover = false;
-		if (!this.isFocus) this.hidePopover();
-	};
+	@Watch('_open')
+	public validateOpen(value?: boolean): void {
+		validateOpen(this, value);
+		if (value) this.showPopover();
+	}
+
+	@Watch('_show')
+	public validateShow(value?: boolean): void {
+		validateShow(this, value);
+	}
 
 	public componentWillLoad(): void {
 		this.validateAlignment(this._alignment);
+		this.validateOpen(this._open);
 	}
 
 	public disconnectedCallback(): void {
-		this.removeListenersFromTrigger();
+		console.log('unused');
 	}
 }
