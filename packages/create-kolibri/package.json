@@ -100,7 +100,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/cli": "17.5.1",
-		"@commitlint/config-conventional": "17.4.4",
+		"@commitlint/config-conventional": "17.6.1",
 		"@leanup/stack": "1.3.43",
 		"@types/node": "ts4.9",
 		"cross-env": "7.0.3",
