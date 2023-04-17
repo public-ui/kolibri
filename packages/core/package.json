@@ -61,7 +61,7 @@
 		"@typescript-eslint/parser": "5.57.1",
 		"eslint": "8.37.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"npm-check-updates": "16.10.7",
+		"npm-check-updates": "16.10.8",
 		"prettier": "2.8.7",
 		"ts-prune": "0.10.3",
 		"typescript": "4.9.5",
