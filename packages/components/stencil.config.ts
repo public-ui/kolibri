@@ -44,7 +44,6 @@ const TAGS = [
 	'kol-modal',
 	'kol-nav',
 	'kol-pagination',
-	'kol-popover',
 	'kol-progress',
 	'kol-quote',
 	'kol-select',

@@ -5,7 +5,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@a11y-ui/core';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { Alignment } from '../../types/props';
+import { PropAlignment } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
@@ -35,7 +35,7 @@ type OptionalTabButtonProps = {
 	disabled: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
-	tooltipAlign: Alignment;
+	tooltipAlign: PropAlignment;
 };
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
@@ -45,14 +45,14 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
-	tabsAlign: Alignment;
+	tabsAlign: PropAlignment;
 	selected: number;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaLabel: string;
-	tabsAlign: Alignment;
+	tabsAlign: PropAlignment;
 	selected: number;
 	tabs: TabButtonProps[];
 };
@@ -211,7 +211,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Setzt die Position der Registrierkarten.
 	 */
-	@Prop() public _tabsAlign?: Alignment = 'top';
+	@Prop() public _tabsAlign?: PropAlignment = 'top';
 
 	@State() public state: States = {
 		_ariaLabel: '…',
@@ -345,7 +345,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	@Watch('_tabsAlign')
-	public validateTabsAlign(value?: Alignment): void {
+	public validateTabsAlign(value?: PropAlignment): void {
 		validateAlignment(this, '_tabsAlign', value);
 	}
 

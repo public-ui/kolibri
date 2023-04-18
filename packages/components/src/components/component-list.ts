@@ -40,7 +40,6 @@ import { KolLogo } from './logo/component';
 import { KolModal } from './modal/component';
 import { KolNav } from './nav/component';
 import { KolPagination } from './pagination/component';
-import { KolPopover } from './popover/shadow';
 import { KolProcess } from './progress/component';
 import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/component';
@@ -99,7 +98,6 @@ export const COMPONENTS = [
 	KolModal,
 	KolNav,
 	KolPagination,
-	KolPopover,
 	KolProcess,
 	KolQuote,
 	KolSelect,

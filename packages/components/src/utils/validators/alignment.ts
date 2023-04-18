@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import { Alignment } from '../../types/props';
+import { PropAlignment } from '../../types/props';
 import { watchValidator } from '../prop.validators';
 
 const AVAILABLE_HORIZONTAL_ALIGNMENT_VALUES = new Set(['"left", "right"']);
@@ -13,7 +13,7 @@ const AVAILABLE_VERTICAL_ALIGNMENT_VALUES = new Set(['"bottom", "top"']);
 // };
 
 const AVAILABLE_ALIGNMENT_VALUES = new Set([...AVAILABLE_HORIZONTAL_ALIGNMENT_VALUES, ...AVAILABLE_VERTICAL_ALIGNMENT_VALUES]);
-export const validateAlignment = (component: Generic.Element.Component, propName: string, value?: Alignment): void => {
+export const validateAlignment = (component: Generic.Element.Component, propName: string, value?: PropAlignment): void => {
 	watchValidator(
 		component,
 		propName,
