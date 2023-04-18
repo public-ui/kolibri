@@ -28,7 +28,7 @@
 		"start": "npm run serve -- --open",
 		"-test": "cross-env NODE_ENV=test mocha",
 		"unused": "ts-prune -e src",
-		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@leanup/stack-webpack,nightwatch-axe-verbose,rimraf",
+		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@leanup/stack-webpack,nightwatch-axe-verbose,rimraf,world_countries_lists",
 		"prepack": "npm run build",
 		":install": "pnpm i && pnpm update",
 		":postinstall": "npm i puppeteer --no-save || true",
