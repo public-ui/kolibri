@@ -18,11 +18,6 @@ const KolInputRange: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputRange {...args}></KolInputRange>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Error = (args: any) => (
 	<div>
 		<KolInputRange _id="meine_range" _name="meine_range" _error="Fehlermeldung" _touched></KolInputRange>
@@ -47,11 +37,6 @@ Error.args = {
 };
 Error.storyName = 'Fehlermeldung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolInputRange _id="meine_range" _name="meine_range"></KolInputRange>

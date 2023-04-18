@@ -18,11 +18,6 @@ const DefaultArgs = {
 	_level: 1,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolHeading {...args}>{args.content}</KolHeading>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Sizes = (args: any) => (
 	<div>
 		<p>
@@ -60,11 +50,6 @@ Sizes.args = {
 };
 Sizes.storyName = 'Größen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const With = (args: any) => (
 	<div>
 		<div>
@@ -112,11 +97,6 @@ With.args = {
 };
 With.storyName = 'Im Textzusammenhang';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Combination = (args: any) => (
 	<div>
 		<KolHeading _level={1}>

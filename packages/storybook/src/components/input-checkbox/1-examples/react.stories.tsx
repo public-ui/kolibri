@@ -17,11 +17,6 @@ const KolInputCheckbox: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputCheckbox {...args}>{args.content}</KolInputCheckbox>
@@ -31,11 +26,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Switch = (args: any) => (
 	<div>
 		<KolInputCheckbox _id="mein_switch" _name="mein_switch" _type="switch"></KolInputCheckbox>
@@ -46,11 +36,6 @@ Switch.args = {
 };
 Switch.storyName = 'Checkbox als Switch';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Cases = (args: any) => (
 	<div>
 		<KolInputCheckbox _id="mein_switch" _name="mein_switch" _type="checkbox">
@@ -69,11 +54,6 @@ Cases.args = {
 };
 Cases.storyName = 'Mögliche Zustände einer Checkbox';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const CasesS = (args: any) => (
 	<div>
 		<KolInputCheckbox _id="mein_switch" _name="mein_switch" _type="switch">
@@ -92,11 +72,6 @@ CasesS.args = {
 };
 CasesS.storyName = 'Mögliche Zustände eines Switch';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithText = (args: any) => (
 	<div>
 		<KolInputCheckbox _id="mein_switch" _name="mein_switch" _type="checkbox">
@@ -112,11 +87,6 @@ WithText.args = {
 };
 WithText.storyName = 'Checkbox mit Label';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithLink = (args: any) => (
 	<div>
 		<KolInputCheckbox _id="mein_switch" _name="mein_switch" _type="checkbox">
@@ -132,11 +102,6 @@ WithLink.args = {
 };
 WithLink.storyName = 'Label mit Link';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Messages = (args: any) => (
 	<div>
 		<KolInputCheckbox _id="mein_switch" _name="mein_switch" _type="checkbox" _error="Fehlermeldung" _touched>
@@ -149,11 +114,6 @@ Messages.args = {
 };
 Messages.storyName = 'Checkbox Fehlermeldung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolInputCheckbox _id="mein_switch" _name="mein_switch" _type="checkbox">
@@ -169,11 +129,6 @@ Disabled.args = {
 };
 Disabled.storyName = 'Aktiv / Nicht aktiv';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Formularbeispiel = (args: any) => {
 	const [touched, setTouched] = useState<boolean>(false);
 	return (

@@ -18,11 +18,6 @@ const KolInputFile: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputFile {...args}>{args.content}</KolInputFile>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const JustJPG = (args: any) => (
 	<div>
 		<KolInputFile _accept="image/jpg" _id="mein_upload" _name="mein_upload"></KolInputFile>
@@ -47,11 +37,6 @@ JustJPG.args = {
 };
 JustJPG.storyName = 'Nur JPG';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Multiple = (args: any) => (
 	<div>
 		<KolInputFile _id="mein_upload" _name="mein_upload" _multiple={true}></KolInputFile>
@@ -62,11 +47,6 @@ Multiple.args = {
 };
 Multiple.storyName = 'Mehrfachauswahl';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Messages = (args: any) => (
 	<div>
 		<KolInputFile _id="mein_upload" _name="mein_upload" _error="Fehlermeldung" _touched _value="info@email.de"></KolInputFile>
@@ -77,11 +57,6 @@ Messages.args = {
 };
 Messages.storyName = 'Fehlermeldung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolInputFile _id="mein_upload" _name="mein_upload"></KolInputFile>

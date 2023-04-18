@@ -13,7 +13,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 
 const HACK_REG_EX = /^([a-f0-9]{3}|[a-f0-9]{6})$/;
 
-export type KoliBriColor = {
+type KoliBriColor = {
 	backgroundColor: string;
 	color: string;
 };

@@ -16,11 +16,6 @@ const KolTabs: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolTabs {...args}></KolTabs>
@@ -30,11 +25,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Simple = (args: any) => (
 	<div>
 		<KolTabs _ariaLabel="Tabs" _selected={0} _tabs="[{'_label':'Tab 1'},{'_label':'Tab 2'},{'_label':'Tab 3'}]">
@@ -49,11 +39,6 @@ Simple.args = {
 };
 Simple.storyName = 'Einfache Tabs';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Icon = (args: any) => (
 	<div>
 		<KolTabs
@@ -72,11 +57,6 @@ Icon.args = {
 };
 Icon.storyName = 'Tabs mit Icon';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Active = (args: any) => (
 	<div>
 		<KolTabs _ariaLabel="Tabs" _selected={1} _tabs="[{'_label':'Nicht ausgewählt'},{'_label':'Ausgewählt'},{'_label':'Nicht ausgewählt'}]">
@@ -91,11 +71,6 @@ Active.args = {
 };
 Active.storyName = 'Tab auswählen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Deactive = (args: any) => (
 	<div>
 		<KolTabs
@@ -114,11 +89,6 @@ Deactive.args = {
 };
 Deactive.storyName = 'Tab deaktivieren';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const TabsRight = () => (
 	<div>
 		<KolTabs _ariaLabel="Tabs" _selected={0} _tabsAlign="right" _tabs="[{'_label':'Tab 1'},{'_label':'Tab 2'},{'_label':'Tab 3'}]">
@@ -133,11 +103,6 @@ TabsRight.args = {
 };
 TabsRight.storyName = 'Tabs rechts';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const TabsLeft = () => (
 	<div>
 		<KolTabs _ariaLabel="Tabs" _selected={0} _tabsAlign="left" _tabs="[{'_label':'Tab 1'},{'_label':'Tab 2'},{'_label':'Tab 3'}]">
