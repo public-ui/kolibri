@@ -62,13 +62,17 @@
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
-		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js",
-		"postpack": "mv package.bak.json package.json"
+		"postinstall": "npm-run-all postinstall:*",
+		"postinstall:assets": "cpy \"assets/**/*\" public/assets --dot",
+		"postpack": "mv package.bak.json package.json",
+		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js"
 	},
 	"dependencies": {
 		"@a11y-ui/core": "1.0.2",
 		"@floating-ui/dom": "1.2.5",
-		"i18next": "22.4.14"
+		"cpy-cli": "4.2.0",
+		"i18next": "22.4.14",
+		"npm-run-all": "4.1.5"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.6.0",
@@ -111,14 +115,15 @@
 		"stencil-awesome-test": "1.0.6",
 		"terser": "5.16.8",
 		"tslib": "2.5.0",
-		"typescript": "4.9.5",
+		"typescript": "5.0.4",
 		"wcag-contrast": "3.0.0",
 		"webpack": "5.78.0",
 		"workbox-build": "6.5.4"
 	},
 	"files": [
+		"assets",
 		"dist",
-		"doc/",
+		"doc",
 		"cheat-sheet.html",
 		"custom-elements.json",
 		"jest-test-results.json",

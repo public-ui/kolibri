@@ -18,11 +18,6 @@ const DefaultArgs = {
 	_icon: 'icofont-home',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolIconFontAwesome {...args} style={{ fontSize: args.size }}></KolIconFontAwesome>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Text = (args: any) => (
 	<div style={{ fontFamily: 'Arial' }}>
 		<KolIconFontAwesome
@@ -71,11 +61,6 @@ Text.args = {
 };
 Text.storyName = 'IconFontAwesome im Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Sizes = (args: any) => (
 	<div>
 		<KolIconFontAwesome
@@ -114,11 +99,6 @@ Sizes.args = {
 };
 Sizes.storyName = 'Größen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Colors = (args: any) => (
 	<div style={{ fontFamily: 'Arial' }}>
 		<KolIconFontAwesome
@@ -160,11 +140,6 @@ Colors.args = {
 };
 Colors.storyName = 'Farben';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Output = (args: any) => (
 	<div>
 		<p>
