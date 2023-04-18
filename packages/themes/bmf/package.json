@@ -1,0 +1,81 @@
+{
+	"name": "@public-ui/theme-bmf",
+	"version": "1.5.0-rc.12",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": "https://github.com/public-ui/kolibri",
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"description": "Contains the style guides and themes of various corporate designs for KoliBri - The accessible HTML-Standard.",
+	"keywords": [
+		"accessibility",
+		"accessible",
+		"bitv",
+		"framework",
+		"library",
+		"designsystem",
+		"design",
+		"system",
+		"web components",
+		"webcomponents",
+		"aria",
+		"wai",
+		"axe",
+		"custom elements",
+		"styleguide",
+		"style",
+		"guide",
+		"ui",
+		"html",
+		"css",
+		"web",
+		"a11y",
+		"w3c",
+		"webstandard",
+		"wcag"
+	],
+	"scripts": {
+		"build": "unbuild",
+		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
+		"format": "prettier --check src",
+		"lint": "eslint src && tsc --noemit",
+		"postinstall": "npm-run-all postinstall:*",
+		"postinstall:assets": "cpy \"assets/**/*\" public/assets --dot",
+		"prepack": "unbuild"
+	},
+	"dependencies": {
+		"cpy-cli": "4.2.0",
+		"npm-run-all": "4.1.5"
+	},
+	"devDependencies": {
+		"@public-ui/components": "1.5.0-rc.12",
+		"@types/node": "ts4.9",
+		"eslint": "8.37.0",
+		"typescript": "4.9.5",
+		"unbuild": "1.1.2"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "1.5.0-rc.12"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"assets",
+		"dist"
+	]
+}

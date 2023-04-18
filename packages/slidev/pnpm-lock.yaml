@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@public-oss/kolibri-themes': 0.0.3
-  '@public-ui/components': 1.5.0-rc.11
-  '@public-ui/themes': 1.5.0-rc.11
+  '@public-ui/components': 1.5.0-rc.12
+  '@public-ui/themes': 1.5.0-rc.12
   '@slidev/cli': 0.40.6
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
@@ -14,9 +14,9 @@ specifiers:
   ts-prune: 0.10.3
 
 dependencies:
-  '@public-oss/kolibri-themes': 0.0.3_kc5pfiin7masbwnlyzcmrd54nq
-  '@public-ui/components': 1.5.0-rc.11
-  '@public-ui/themes': 1.5.0-rc.11
+  '@public-oss/kolibri-themes': 0.0.3_p7qqoz2gxcrbu6i63trotzy2fm
+  '@public-ui/components': 1.5.0-rc.12
+  '@public-ui/themes': 1.5.0-rc.12
   '@slidev/theme-default': 0.21.2
   '@slidev/theme-seriph': 0.21.3
 
@@ -895,17 +895,17 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@public-oss/kolibri-themes/0.0.3_kc5pfiin7masbwnlyzcmrd54nq:
+  /@public-oss/kolibri-themes/0.0.3_p7qqoz2gxcrbu6i63trotzy2fm:
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.11
+      '@public-ui/components': 1.5.0-rc.12
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components/1.5.0-rc.11:
-    resolution: {integrity: sha512-REQU0ok+UARxo9J4w4EeUfAi5DNmnonmzKRG3Q7ATb+absY/Gal7xEn1CijED2yp6syRFg4lhNJibnFm5Wlkjw==}
+  /@public-ui/components/1.5.0-rc.12:
+    resolution: {integrity: sha512-MYwaBh5zc1cDCiPwsRFPUlThL4RvVFXGcj0j40szzsprC+SOPmSIqRwszT/1scL1mf5o6HpfvdGAEzFBlqzMtg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
@@ -925,10 +925,10 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/themes/1.5.0-rc.11:
-    resolution: {integrity: sha512-p3gosfbEYPBFynQTSQizKxZPjjtE/3Yg6EzcKmUyvo2AdQXdCVNtsRDbIhgDWF7gNUyUthRxdaFeks3Ht0v4sw==}
+  /@public-ui/themes/1.5.0-rc.12:
+    resolution: {integrity: sha512-2TtbYcgIzkt8MlcwRHvixh6PDuoRprPgikKZHSGVMcn1FzWsq+KSXgQZ4v5q3m7bk5NMpX6vq+ZFggPRrwwrOw==}
     dependencies:
-      '@public-ui/components': 1.5.0-rc.11
+      '@public-ui/components': 1.5.0-rc.12
     dev: false
 
   /@rollup/pluginutils/5.0.2:

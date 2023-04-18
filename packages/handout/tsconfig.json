@@ -1,0 +1,32 @@
+{
+	"compilerOptions": {
+		"experimentalDecorators": true,
+		"pretty": true,
+		"target": "ESNext",
+		"module": "ESNext",
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"preserveSymlinks": true,
+		"moduleResolution": "node",
+		"lib": ["es2017", "dom"],
+		"types": ["@public-ui/components", "mocha", "node", "react", "react-dom"],
+		"typeRoots": ["node_modules/@types", "src/types"],
+		"noUnusedLocals": true,
+		"resolveJsonModule": true,
+		"noEmit": true,
+		"skipLibCheck": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"removeComments": true,
+		"strict": true,
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react",
+		"jsxFactory": "React.createElement",
+		"jsxFragmentFactory": "React.Fragment"
+	},
+	"include": ["src/**/*", "tests/**/*", "node_modules/@leanup/**/*", "decs.d.ts"],
+	"exclude": ["node_modules/@leanup/**/template/**/*"]
+}
