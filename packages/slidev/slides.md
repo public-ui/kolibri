@@ -42,8 +42,6 @@ layout: about-me
 
 # Speaker
 
-
-
 - Mein Name ist Martin Oppitz
 - Inzwischen über 25 Jahre im Web unterwegs
 - Seit 3 Jahren beim ITZBund in der Architekturberatung
