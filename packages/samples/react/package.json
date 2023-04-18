@@ -7,16 +7,10 @@
 		"clean": "git clean -f -d -X",
 		"clean:locks": "rimraf package-lock.json pnpm-lock.yaml && npm run clean",
 		"build": "rimraf dist && cross-env NODE_ENV=production webpack",
-		"coverage": "cross-env NODE_ENV=test nyc mocha --exit",
-		"cucumber": "cross-env NIGHTWATCH_ENV=chrome cucumber-js tests/cucumber/features/**/*.feature --require @babel/register --require cucumber.conf.js --require tests/cucumber/step-definitions --format node_modules/cucumber-pretty --format json:.reports/cucumber/report.json",
-		"e2e": "nightwatch",
 		"format": "prettier --check {src,tests}/**",
 		"lint": "eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
-		":prepare": "rimraf .husky && husky install && husky add .husky/commit-msg \"npx commitlint --edit $1\" && husky add .husky/pre-commit \"npm run lint\" && husky add .husky/pre-commit \"npm run format\" && husky add .husky/pre-commit \"npm run unused\"",
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
 		"start": "npm run serve -- --open",
-		"test": "cross-env NODE_ENV=test mocha --exit",
-		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
