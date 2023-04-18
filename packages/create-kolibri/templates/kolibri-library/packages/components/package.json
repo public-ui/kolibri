@@ -86,7 +86,7 @@
 		"query-selector-all-shadow-root": "^0.0.3",
 		"query-selector-shadow-root": "^0.0.3",
 		"rgba-convert": "^0.3.0",
-		"rimraf": "^4.1.2",
+		"rimraf": "^3.0.2",
 		"stencil-awesome-test": "^1.0.5",
 		"terser": "^5.16.3",
 		"tslib": "^2.5.0",

@@ -42,8 +42,8 @@ import {
 	KolLinkButton,
 } from '@public-ui/solid';
 import { Component } from 'solid-js';
-import countries from 'world_countries_lists/data/countries/de/countries.json';
 import { DATA, Zeiten } from './data';
+import { COUNTRIES } from './countries';
 
 // https://css-tricks.com/snippets/javascript/random-hex-color/
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
@@ -56,13 +56,7 @@ const STATUS_OPTIONS: SelectOption<string>[] = [
 	},
 ];
 
-type Country = {
-	id: number;
-	alpha2: string;
-	alpha3: string;
-	name: string;
-};
-(countries as Country[]).forEach((country) =>
+COUNTRIES.forEach((country) =>
 	STATUS_OPTIONS.push({
 		label: country.name,
 		value: country.alpha2,

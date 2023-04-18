@@ -45,12 +45,16 @@
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*",
 		"format": "prettier --check src",
 		"lint": "eslint src && tsc --noemit",
+		"postinstall": "npm-run-all postinstall:*",
+		"postinstall:assets": "cpy \"assets/**/*\" public/assets --dot",
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.5.0-rc.12"
+		"cpy-cli": "4.2.0",
+		"npm-run-all": "4.1.5"
 	},
 	"devDependencies": {
+		"@public-ui/components": "1.5.0-rc.12",
 		"@types/node": "ts4.9",
 		"@typescript-eslint/eslint-plugin": "5.57.1",
 		"@typescript-eslint/parser": "5.57.1",
@@ -58,6 +62,9 @@
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "4.9.5",
 		"unbuild": "1.1.2"
+	},
+	"peerDependencies": {
+		"@public-ui/components": "1.5.0-rc.12"
 	},
 	"sideEffects": false,
 	"type": "module",
