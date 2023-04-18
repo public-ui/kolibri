@@ -16,11 +16,6 @@ const KolToast: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolToast {...args}></KolToast>
@@ -30,11 +25,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Success = (args: any) => {
 	setTimeout(() => {
 		let buttonSuccess = document.querySelector('#showSuccess');
@@ -62,11 +52,6 @@ Success.args = {
 };
 Success.storyName = 'Success-Toast';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Error = (args: any) => {
 	setTimeout(() => {
 		let buttonSuccess = document.querySelector('#showError');
@@ -93,11 +78,6 @@ Error.args = {
 };
 Error.storyName = 'Error-Toast';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Info = (args: any) => {
 	setTimeout(() => {
 		let buttonSuccess = document.querySelector('#showInfo');
@@ -124,11 +104,6 @@ Info.args = {
 };
 Info.storyName = 'Info-Toast';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Warning = (args: any) => {
 	setTimeout(() => {
 		let buttonSuccess = document.querySelector('#showWarning');
