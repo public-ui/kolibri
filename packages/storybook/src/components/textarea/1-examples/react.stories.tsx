@@ -18,11 +18,6 @@ const KolTextarea: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolTextarea _rows={args._rows} {...args}></KolTextarea>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Placeholder = (args: any) => (
 	<div>
 		<KolTextarea _id="" _name="" _value="" _placeholder="Hier steht ein Platzhaltertext"></KolTextarea>
@@ -48,11 +38,6 @@ Placeholder.args = {
 
 Placeholder.storyName = 'Platzhaltertext';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Rows1 = (args: any) => (
 	<div>
 		<KolTextarea
@@ -75,11 +60,6 @@ Rows1.args = {
 
 Rows1.storyName = 'Höhe: 1 Zeile';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Rows10 = (args: any) => (
 	<div>
 		<KolTextarea
@@ -102,11 +82,6 @@ Rows10.args = {
 
 Rows10.storyName = 'Höhe: 10 Zeilen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const ResizeNone = (args: any) => (
 	<div>
 		<KolTextarea
@@ -129,11 +104,6 @@ ResizeNone.args = {
 
 ResizeNone.storyName = 'Keine Größenänderung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const ResizeVertical = (args: any) => (
 	<div>
 		<KolTextarea
@@ -156,11 +126,6 @@ ResizeVertical.args = {
 
 ResizeVertical.storyName = 'Vertikale Größenänderung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const ResizeHorizontal = (args: any) => (
 	<div>
 		<KolTextarea
@@ -183,11 +148,6 @@ ResizeHorizontal.args = {
 
 ResizeHorizontal.storyName = 'Horizontale Größenänderung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const ResizeBoth = (args: any) => (
 	<div>
 		<KolTextarea
@@ -210,11 +170,6 @@ ResizeBoth.args = {
 
 ResizeBoth.storyName = 'Beidseitige Größenänderung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const AdjustHeight = () => (
 	<div>
 		<KolTextarea
@@ -234,11 +189,6 @@ AdjustHeight.args = {
 
 AdjustHeight.storyName = 'Automatische Höhenanpassung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Readonly = (args: any) => (
 	<div>
 		<KolTextarea
@@ -260,11 +210,6 @@ Readonly.args = {
 
 Readonly.storyName = 'Read only';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolTextarea
