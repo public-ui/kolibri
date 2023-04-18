@@ -44,7 +44,7 @@ jobs:
         working-directory: packages/designer
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       - name: Publish sample react
+      - name: Publish sample react
         run: npm publish --access restricted || true
         working-directory: packages/samples/react
         env:
