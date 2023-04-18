@@ -2,7 +2,21 @@ import { KoliBri } from '@public-ui/components';
 
 // Design System Zoll (v2
 export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
-	GLOBAL: `:host {
+	GLOBAL: `
+	kol-tooltip .area {
+		background-color:#f2f2f2;
+	}
+	kol-tooltip #arrow {
+		background-color: #626262;
+	}
+	kol-tooltip kol-span-wc {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
+	}
+	:host {
 		--border-color: var(--color-neutral);
 		--border-radius: 0.25rem;
 		--box-shadow: rgba(0, 0, 0, 0.12) 0 12px 12px -4px,

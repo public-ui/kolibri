@@ -3,6 +3,7 @@ import { KoliBri } from '@public-ui/components';
 export const BMF = KoliBri.createTheme('bmf', {
 	GLOBAL: `/* Design Tokens */
 	:host {
+		--border-radius: 5px;
 		--color-midnight: #004b76;
 		--color-ocean: #0077b6;
 		--color-sky: #99c9e2;
@@ -53,16 +54,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-family: var(--font-family);
 		font-size: var(--font-size);
 		margin: 0;
-	}
-	a,
-	button {
-		align-items: center;
-		background-color: transparent;
-		border: 0;
-		cursor: pointer;
-		display: inline-flex;
-		gap: 0.25rem;
-		justify-items: center;
+		padding: 0;
 	}
 	input,
 	option,
@@ -87,10 +79,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	*[tabindex]:focus,
 	a:focus,
 	button:focus,
-	input:focus,
-	select:focus,
-	summary:focus,
-	textarea:focus {
+	kol-input .input:focus-within,
+	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-ocean);
 		outline-offset: 2px;
@@ -108,6 +98,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	kol-heading-wc {
 		font-weight: 700;
+	}
+	kol-tooltip .area {
+		background-color: var(--color-metal);
+	}
+	kol-tooltip kol-span-wc {
+		border-radius: var(--border-radius);
+		color: var(--color-white);
+		line-height: 1.5em;
+		padding: 0.5rem 0.75rem;
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.5em;
 	}`,
 	'KOL-BUTTON': `:host {
 		display: inline-block;
@@ -258,98 +261,68 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-color: transparent;
 	}`,
 	'KOL-INPUT-TEXT': `kol-input {
-		display: grid;
 		gap: 0.4em;
+	}
+	kol-input .error {
+		order: 1;
 	}
 	kol-input label {
 		order: 2;
 	}
-	kol-input div.input {
-		box-sizing: border-box;
+	kol-input .input {
 		order: 3;
-		background-color: white;
-		border-radius: 0.3125rem;
 	}
-	kol-input kol-alert.error {
-		order: 1;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grey);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.625em 0.875em;
-		border-radius: 0.3125rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input,
-	select:not([multiple]) {
-		height: 2.75em;
+	input {
+		border: none;
+		line-height: 1em;
+		min-height: 40px !important;
+		padding: 0.625em 0;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
-	input:hover {
+	.input {
+		border-color: var(--color-grey);
+		border-radius: 0.3125rem;
+		border-style: solid;
+		border-width: 2px;
+		height: 44px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
 		border-color: var(--color-midnight);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
-		border-color: var(--border-default);
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
 	kol-input.error {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	kol-input.error input:focus,
-	kol-input.error select:focus,
-	kol-input.error textarea:focus {
+	kol-input.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
 	kol-input.error kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-	}
-	kol-button-wc button kol-span-wc {
-		border: 1px solid var(--color-grey);
-		display: grid;
-		min-height: 44px;
-		min-width: 44px;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -378,98 +351,68 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: white;
 	}`,
 	'KOL-INPUT-PASSWORD': `kol-input {
-		display: grid;
 		gap: 0.4em;
+	}
+	kol-input .error {
+		order: 1;
 	}
 	kol-input label {
 		order: 2;
 	}
-	kol-input div.input {
-		box-sizing: border-box;
+	kol-input .input {
 		order: 3;
-		background-color: white;
-		border-radius: 0.3125rem;
 	}
-	kol-input kol-alert.error {
-		order: 1;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grey);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.625em 0.875em;
-		border-radius: 0.3125rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input,
-	select:not([multiple]) {
-		height: 2.75em;
+	input {
+		border: none;
+		line-height: 1em;
+		min-height: 40px !important;
+		padding: 0.625em 0;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
-	input:hover {
+	.input {
+		border-color: var(--color-grey);
+		border-radius: 0.3125rem;
+		border-style: solid;
+		border-width: 2px;
+		height: 44px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
 		border-color: var(--color-midnight);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
-		border-color: var(--border-default);
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
 	kol-input.error {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	kol-input.error input:focus,
-	kol-input.error select:focus,
-	kol-input.error textarea:focus {
+	kol-input.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
 	kol-input.error kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-	}
-	kol-button-wc button kol-span-wc {
-		border: 1px solid var(--color-grey);
-		display: grid;
-		min-height: 44px;
-		min-width: 44px;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -498,98 +441,68 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: white;
 	}`,
 	'KOL-INPUT-NUMBER': `kol-input {
-		display: grid;
 		gap: 0.4em;
+	}
+	kol-input .error {
+		order: 1;
 	}
 	kol-input label {
 		order: 2;
 	}
-	kol-input div.input {
-		box-sizing: border-box;
+	kol-input .input {
 		order: 3;
-		background-color: white;
-		border-radius: 0.3125rem;
 	}
-	kol-input kol-alert.error {
-		order: 1;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grey);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.625em 0.875em;
-		border-radius: 0.3125rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input,
-	select:not([multiple]) {
-		height: 2.75em;
+	input {
+		border: none;
+		line-height: 1em;
+		min-height: 40px !important;
+		padding: 0.625em 0;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
-	input:hover {
+	.input {
+		border-color: var(--color-grey);
+		border-radius: 0.3125rem;
+		border-style: solid;
+		border-width: 2px;
+		height: 44px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
 		border-color: var(--color-midnight);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
-		border-color: var(--border-default);
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
 	kol-input.error {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	kol-input.error input:focus,
-	kol-input.error select:focus,
-	kol-input.error textarea:focus {
+	kol-input.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
 	kol-input.error kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-	}
-	kol-button-wc button kol-span-wc {
-		border: 1px solid var(--color-grey);
-		display: grid;
-		min-height: 44px;
-		min-width: 44px;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -618,98 +531,68 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: white;
 	}`,
 	'KOL-INPUT-EMAIL': `kol-input {
-		display: grid;
 		gap: 0.4em;
+	}
+	kol-input .error {
+		order: 1;
 	}
 	kol-input label {
 		order: 2;
 	}
-	kol-input div.input {
-		box-sizing: border-box;
+	kol-input .input {
 		order: 3;
-		background-color: white;
-		border-radius: 0.3125rem;
 	}
-	kol-input kol-alert.error {
-		order: 1;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grey);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.625em 0.875em;
-		border-radius: 0.3125rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input,
-	select:not([multiple]) {
-		height: 2.75em;
+	input {
+		border: none;
+		line-height: 1em;
+		min-height: 40px !important;
+		padding: 0.625em 0;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
-	input:hover {
+	.input {
+		border-color: var(--color-grey);
+		border-radius: 0.3125rem;
+		border-style: solid;
+		border-width: 2px;
+		height: 44px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
 		border-color: var(--color-midnight);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
-		border-color: var(--border-default);
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
 	kol-input.error {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	kol-input.error input:focus,
-	kol-input.error select:focus,
-	kol-input.error textarea:focus {
+	kol-input.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
 	kol-input.error kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-	}
-	kol-button-wc button kol-span-wc {
-		border: 1px solid var(--color-grey);
-		display: grid;
-		min-height: 44px;
-		min-width: 44px;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -738,98 +621,68 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: white;
 	}`,
 	'KOL-INPUT-FILE': `kol-input {
-		display: grid;
 		gap: 0.4em;
+	}
+	kol-input .error {
+		order: 1;
 	}
 	kol-input label {
 		order: 2;
 	}
-	kol-input div.input {
-		box-sizing: border-box;
+	kol-input .input {
 		order: 3;
-		background-color: white;
-		border-radius: 0.3125rem;
 	}
-	kol-input kol-alert.error {
-		order: 1;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grey);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.625em 0.875em;
-		border-radius: 0.3125rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input,
-	select:not([multiple]) {
-		height: 2.75em;
+	input {
+		border: none;
+		line-height: 1em;
+		min-height: 40px !important;
+		padding: 0.625em 0;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
-	input:hover {
+	.input {
+		border-color: var(--color-grey);
+		border-radius: 0.3125rem;
+		border-style: solid;
+		border-width: 2px;
+		height: 44px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
 		border-color: var(--color-midnight);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
-		border-color: var(--border-default);
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
 	kol-input.error {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	kol-input.error input:focus,
-	kol-input.error select:focus,
-	kol-input.error textarea:focus {
+	kol-input.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
 	kol-input.error kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-	}
-	kol-button-wc button kol-span-wc {
-		border: 1px solid var(--color-grey);
-		display: grid;
-		min-height: 44px;
-		min-width: 44px;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -1044,9 +897,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-orange);
 	}
 	:host .heading-icon {
-		align-items: center;
 		color: white;
-		display: inline-flex;
 	}
 	:host > div > div.heading .heading-icon {
 		padding: 0;
@@ -1095,9 +946,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		flex-direction: column;
 	}
 	:host > div.card > .heading {
-		grid-template-columns: 2.5em auto 44px;
-		gap: 8px;
-		min-height: 44px;
 		padding: 0.5rem 1rem;
 	}
 	:host > div.card > .heading > div {
@@ -1286,23 +1134,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}`,
 	'KOL-LINK': `a,
 	button {
-		background-color: transparent;
-		border: 0;
-		cursor: pointer;
-		display: inline-block;
-		margin: 0;
-		padding: 0;
-	}
-	kol-link-wc,
-	kol-link-button-wc {
-		display: inline-block;
-	}
-	a,
-	button {
 		color: var(--color-midnight);
+		font-size: 1rem;
 		font-style: normal;
 		font-weight: 400;
-		display: inline-flex;
 		line-height: 1.5em;
 		text-decoration-line: underline;
 		border-radius: 0.25rem;
@@ -1333,12 +1168,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background: white;
 		left: unset;
 		position: unset;
+	}
+	a,
+	kol-span-wc > span {
+		place-items: baseline;
+	}
+	kol-span-wc > span {
+		gap: 0.25em;
 	}`,
-	'KOL-DETAILS': `details summary:focus-visible {
-		border-radius: 4px;
+	'KOL-DETAILS': `details > summary {
+		border-radius: var(--border-radius);
 	}
 	details kol-indented-text {
-		margin: 0.25em 0px 0px 0.6em;
+		margin: 0.25em 0px 0px 0.65em;
 	}`,
 	'KOL-SPIN': `.spin {
 		display: inline-block;
@@ -1541,98 +1383,68 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: white;
 	}`,
 	'KOL-INPUT-COLOR': `kol-input {
-		display: grid;
 		gap: 0.4em;
+	}
+	kol-input .error {
+		order: 1;
 	}
 	kol-input label {
 		order: 2;
 	}
-	kol-input div.input {
-		box-sizing: border-box;
+	kol-input .input {
 		order: 3;
-		background-color: white;
-		border-radius: 0.3125rem;
 	}
-	kol-input kol-alert.error {
-		order: 1;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grey);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.625em 0.875em;
-		border-radius: 0.3125rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input,
-	select:not([multiple]) {
-		height: 2.75em;
+	input {
+		border: none;
+		line-height: 1em;
+		min-height: 40px !important;
+		padding: 0.625em 0;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
-	input:hover {
+	.input {
+		border-color: var(--color-grey);
+		border-radius: 0.3125rem;
+		border-style: solid;
+		border-width: 2px;
+		height: 44px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
 		border-color: var(--color-midnight);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
-		border-color: var(--border-default);
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
 	kol-input.error {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	kol-input.error input:focus,
-	kol-input.error select:focus,
-	kol-input.error textarea:focus {
+	kol-input.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
 	kol-input.error kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-	}
-	kol-button-wc button kol-span-wc {
-		border: 1px solid var(--color-grey);
-		display: grid;
-		min-height: 44px;
-		min-width: 44px;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -1660,36 +1472,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background: var(--color-ocean);
 		color: white;
 	}`,
-	'KOL-ACCORDION': `:host > div {
-		font-family: var(--font-family);
+	'KOL-ACCORDION': `:host > .accordion {
 		padding: 0 0.5rem 0 0;
 	}
-	:host > div > kol-heading-wc {
+	:host > div > kol-heading-wc button {
+		border-radius: var(--border-radius);
+	}
+	:host > div > kol-heading-wc button kol-span-wc {
 		font-weight: 700;
 		font-size: 1.25rem;
-		line-height: 1.75rem;
-	}
-	:host > div > kol-heading-wc button {
-		cursor: pointer;
-		width: 100%;
-		margin: 0;
-		display: flex;
-		gap: 0.5em;
-		border: 0;
-		align-items: center;
-		overflow: hidden;
-		font-size: inherit;
+		gap: 0.5rem;
 		line-height: 1.75em;
-		background-color: transparent;
-		padding: 0;
+		margin-left: 0.5rem;
 	}
-	:host > div > kol-heading-wc button kol-icon {
-		text-align: center;
-		width: 1em;
-		margin-left: 0.5em;
-	}
-	:host > div[part*="open"] > kol-heading-wc button {
-		padding-bottom: 0;
+	:host > div > kol-heading-wc button kol-span-wc > span {
+		gap: 0.5em;
 	}
 	:host > div > kol-heading-wc button kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
@@ -1700,7 +1497,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		content: "\\f077";
 	}
 	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
-		font-family: "Font Awesome 6 Free";
 		content: "\\f078";
 	}
 	:host > div {
@@ -1708,20 +1504,15 @@ export const BMF = KoliBri.createTheme('bmf', {
 		height: 100%;
 		display: grid;
 	}
-	:host > div div[part="header"],
-	:host > div[part*="open"] div[part="content"] {
+	:host > div div[class="header"],
+	:host > div[class*="open"] div[class="content"] {
 		margin: 0;
 		padding-left: 2em;
-	}
-	button {
-		font-weight: inherit;
-		font-size: inherit;
-		line-height: inherit;
 	}
 	:host > div {
 		background: var(--color-white);
 	}
-	:host > div[part*="open"] {
+	:host > div[class*="open"] {
 		padding-bottom: 1em;
 	}`,
 	'KOL-TABLE': `:host * {
@@ -1827,7 +1618,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	ul {
 		list-style: none;
 	}
-	a {
+	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		background-color: var(--color-white);
 		text-decoration: none;
 		color: var(--color-midnight);
@@ -1846,13 +1637,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		transition-property: background-color, color, border-color;
 		letter-spacing: 0.175px;
 	}
-	a:hover {
+	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
 		border-left-color: var(--color-ocean);
 		font-weight: 700;
-		letter-spacing: unset;
 	}
-	.selected a,
-	[exportparts*="selected"] a {
+	.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		background-color: var(--color-ice);
 		border-left-color: var(--color-midnight);
 		color: var(--color-midnight);
@@ -1864,42 +1653,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	[exportparts*="selected"] a:hover {
 		background-color: var(--color-ocean);
 		color: var(--color-white);
-	}
-	a.icon-only > kol-span-wc {
-		justify-items: center;
-	}
-	a.icon-only > kol-span-wc kol-icon {
-		display: inline-block;
-		text-align: center;
-		width: 44px;
-		flex-shrink: 0;
-	}
-	kol-icon ~ span {
-		padding-left: 0.5rem;
-	}
-	.hidden {
-		display: none;
-	}
-	:host > div {
-		width: 100%;
-	}
-	:host > div > div:last-child {
-		margin-top: 0.5em;
-		width: 100%;
-		text-align: center;
-	} /* horizontal */
-	ul.flex {
-		display: flex;
-	}
-	li > div > div.absolute {
-		position: absolute;
-	}
-	.horizontal a {
-		display: block;
-	}
-	:host kol-span-wc {
-		margin: 0 0.25rem;
-		justify-items: baseline;
 	}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	:host > div {
@@ -1912,10 +1665,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-radius: 0.25rem;
 	}
 	:host kol-heading-wc {
-		display: inline-flex;
-		font-style: normal;
-		font-weight: 700;
-		font-size: 1.25rem;
 		line-height: 1.75rem;
 	}
 	:host div.header {
@@ -2740,23 +2489,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}`,
 	'KOL-BUTTON-LINK': `a,
 	button {
-		background-color: transparent;
-		border: 0;
-		cursor: pointer;
-		display: inline-block;
-		margin: 0;
-		padding: 0;
-	}
-	kol-link-wc,
-	kol-link-button-wc {
-		display: inline-block;
-	}
-	a,
-	button {
 		color: var(--color-midnight);
+		font-size: 1rem;
 		font-style: normal;
 		font-weight: 400;
-		display: inline-flex;
 		line-height: 1.5em;
 		text-decoration-line: underline;
 		border-radius: 0.25rem;
@@ -2787,9 +2523,225 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background: white;
 		left: unset;
 		position: unset;
+	}
+	a,
+	kol-span-wc > span {
+		place-items: baseline;
+	}
+	kol-span-wc > span {
+		gap: 0.25em;
 	}`,
 	'KOL-ABBR': `abbr {
 		border-bottom: dotted var(--color-metal) 1px;
 		text-decoration: none !important;
+	}`,
+	'KOL-ICON': `@font-face {
+		font-family: "Material Icons";
+		font-style: normal;
+		font-weight: 400;
+		font-display: block;
+		src: url("./material-icons.woff2") format("woff2"),
+			url("./material-icons.woff") format("woff");
+	}
+	.material-icons {
+		font-family: "Material Icons";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	@font-face {
+		font-family: "Material Icons Outlined";
+		font-style: normal;
+		font-weight: 400;
+		font-display: block;
+		src: url("./material-icons-outlined.woff2") format("woff2"),
+			url("./material-icons-outlined.woff") format("woff");
+	}
+	.material-icons-outlined {
+		font-family: "Material Icons Outlined";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	@font-face {
+		font-family: "Material Icons Round";
+		font-style: normal;
+		font-weight: 400;
+		font-display: block;
+		src: url("./material-icons-round.woff2") format("woff2"),
+			url("./material-icons-round.woff") format("woff");
+	}
+	.material-icons-round {
+		font-family: "Material Icons Round";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	@font-face {
+		font-family: "Material Icons Sharp";
+		font-style: normal;
+		font-weight: 400;
+		font-display: block;
+		src: url("./material-icons-sharp.woff2") format("woff2"),
+			url("./material-icons-sharp.woff") format("woff");
+	}
+	.material-icons-sharp {
+		font-family: "Material Icons Sharp";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	@font-face {
+		font-family: "Material Icons Two Tone";
+		font-style: normal;
+		font-weight: 400;
+		font-display: block;
+		src: url("./material-icons-two-tone.woff2") format("woff2"),
+			url("./material-icons-two-tone.woff") format("woff");
+	}
+	.material-icons-two-tone {
+		font-family: "Material Icons Two Tone";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	@font-face {
+		font-family: "Material Symbols Outlined";
+		font-style: normal;
+		font-weight: 100 700;
+		font-display: block;
+		src: url("./material-symbols-outlined.woff2") format("woff2");
+	}
+	.material-symbols-outlined {
+		font-family: "Material Symbols Outlined";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	@font-face {
+		font-family: "Material Symbols Rounded";
+		font-style: normal;
+		font-weight: 100 700;
+		font-display: block;
+		src: url("./material-symbols-rounded.woff2") format("woff2");
+	}
+	.material-symbols-rounded {
+		font-family: "Material Symbols Rounded";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	@font-face {
+		font-family: "Material Symbols Sharp";
+		font-style: normal;
+		font-weight: 100 700;
+		font-display: block;
+		src: url("./material-symbols-sharp.woff2") format("woff2");
+	}
+	.material-symbols-sharp {
+		font-family: "Material Symbols Sharp";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		font-feature-settings: "liga";
+	}
+	[class*="material-icons"].home:after {
+		content: "home";
+	}
+	[class*="material-icons"].east:after {
+		content: "east";
+	}
+	[class*="material-symbols"].home:after {
+		content: "home";
+	}
+	[class*="material-symbols"].arrow_right_alt:after {
+		content: "arrow_right_alt";
 	}`,
 });

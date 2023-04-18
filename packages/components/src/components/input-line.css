@@ -8,23 +8,29 @@ input:not([type='radio']),
 option,
 select,
 textarea {
-	display: block;
-	line-height: 2.5em;
+	/* display: block;
+	line-height: 2.5em; */
 	flex-grow: 1;
 }
 
-input:not([type='radio']),
+/* input:not([type='radio']),
 select:not([multiple]) {
 	height: 2.75em;
+} */
+
+input:focus,
+option:focus,
+select:focus,
+textarea:focus {
+	outline: none;
 }
 
 .input {
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 }
 .input > kol-icon {
 	display: grid;
 	height: var(--a11y-min-size);
 	place-items: center;
-	width: 2.5em;
 }

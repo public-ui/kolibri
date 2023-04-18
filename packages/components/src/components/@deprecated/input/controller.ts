@@ -54,8 +54,9 @@ export class InputController extends ControlledInputController implements Watche
 			hooks: {
 				afterPatch: this.syncFormAssociatedName,
 			},
+			minLength: 1,
 		});
-		if (typeof value === 'undefined') {
+		if (value === '' || typeof value === 'undefined') {
 			devHint(`Eine eindeutige ID an den Eingabefeldern ist nicht zwingend erforderlich, könnte aber für die E2E-Tests relevant sein.`);
 		}
 	}

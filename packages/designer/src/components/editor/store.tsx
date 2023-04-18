@@ -769,6 +769,22 @@ export const components: Record<string, Component> = {
 				<KolIcon class="text-red" _ariaLabel="font-awesome arrow right in red" _icon="codicon codicon-arrow-right" />
 			</div>
 			<span>
+				<strong>Material Icons</strong> (only if it is also stored in the theme)
+			</span>
+			<div class="flex gap-2">
+				<KolIcon _ariaLabel="material icons house" _icon="material-icons home" />
+				<KolIcon _ariaLabel="material icons arrow right" _icon="material-icons east" />
+				<KolIcon class="text-red" _ariaLabel="material icons arrow right in red" _icon="material-icons east" />
+			</div>
+			<span>
+				<strong>Material Symbols</strong> (only if it is also stored in the theme)
+			</span>
+			<div class="flex gap-2">
+				<KolIcon _ariaLabel="material symbols house" _icon="material-symbols-outlined home" />
+				<KolIcon _ariaLabel="material symbols arrow right" _icon="material-symbols-outlined arrow_right_alt" />
+				<KolIcon class="text-red" _ariaLabel="material symbols arrow right in red" _icon="material-symbols-outlined arrow_right_alt" />
+			</div>
+			<span>
 				<strong>Tabler</strong> (only if it is also stored in the theme)
 			</span>
 			<div class="flex gap-2">
@@ -1220,97 +1236,137 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-LINK': () => (
 		<div class="grid gap-6">
-			<KolLink _ariaLabel="Home" _href="https://www.w3.org" _icon="codicon codicon-home" _iconOnly _label="" />
-			<KolLink _href="https://www.w3.org" _label="">
-				Normaler Link
-			</KolLink>
-			<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _label="">
-				Normaler Link mit Icon links
-			</KolLink>
-			<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _label="">
-				Normaler Link mit Icon rechts
-			</KolLink>
-			<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _iconOnly _label="">
-				Nur Icon-Link
-			</KolLink>
-			<p>
-				Ich bin ein Link <KolLink _href="https://www.w3.org" _label="Externer Link" _target="w3c" /> und sehe auch so aus.
-			</p>
-			<KolLink _href="/" _label="">
-				Besuchter Link
-			</KolLink>
-			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="">
-				<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-			</KolLink>
-			<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="">
-				<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-			</KolLink>
-			<KolLink
-				_href="#"
-				_icon={{
-					left: 'codicon codicon-arrow-left',
-					right: 'codicon codicon-arrow-right',
-					top: 'codicon codicon-arrow-up',
-					bottom: 'codicon codicon-arrow-down',
-				}}
-				_label="Icons"
-			/>
-			<KolIndentedText>
-				<b>Links sind unsichtbar geschalten</b>
-				<br />
-				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-			</KolIndentedText>
-			<KolSkipNav
-				_ariaLabel="Skip-Nav"
-				_links={[
-					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
-				]}
-			/>
+			<div>
+				<KolLink _ariaLabel="Home" _href="https://www.w3.org" _icon="codicon codicon-home" _iconOnly _label="" />
+			</div>
+			<div>
+				<KolLink _href="https://www.w3.org" _label="">
+					Normaler Link
+				</KolLink>
+			</div>
+			<div>
+				<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _label="">
+					Normaler Link mit Icon links
+				</KolLink>
+			</div>
+			<div>
+				<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _label="">
+					Normaler Link mit Icon rechts
+				</KolLink>
+			</div>
+			<div>
+				<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _iconOnly _label="">
+					Nur Icon-Link
+				</KolLink>
+			</div>
+			<div>
+				<p>
+					Ich bin ein Link <KolLink _href="https://www.w3.org" _label="Externer Link" _target="w3c" /> und sehe auch so aus.
+				</p>
+				<KolLink _href="/" _label="">
+					Besuchter Link
+				</KolLink>
+			</div>
+			<div>
+				<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="">
+					<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
+				</KolLink>
+			</div>
+			<div>
+				<KolLink _ariaLabel="Zurück zur Startseite" _href="#/" _label="">
+					<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
+				</KolLink>
+			</div>
+			<div>
+				<KolLink
+					_href="#"
+					_icon={{
+						left: 'codicon codicon-arrow-left',
+						right: 'codicon codicon-arrow-right',
+						top: 'codicon codicon-arrow-up',
+						bottom: 'codicon codicon-arrow-down',
+					}}
+					_label="Icons"
+				/>
+			</div>
+			<div>
+				<KolIndentedText>
+					<b>Links sind unsichtbar geschalten</b>
+					<br />
+					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+				</KolIndentedText>
+				<KolSkipNav
+					_ariaLabel="Skip-Nav"
+					_links={[
+						{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
+						{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
+						{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
+						{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
+					]}
+				/>
+			</div>
 		</div>
 	),
 	'KOL-BUTTON-LINK': () => (
 		<div class="grid gap-6">
-			<KolButtonLink _icon="codicon codicon-home" _iconOnly _label="Label-Text" />
-			<KolButtonLink _ariaLabel="Label-Text (aria-label)" _icon="codicon codicon-home" _iconOnly _label="Label-Text" />
-			<KolButtonLink _label="Normaler Link" />
-			<KolButtonLink _icon="codicon codicon-home" _label="Normaler Link mit Icon links" />
-			<KolButtonLink _icon="codicon codicon-home" _label="Normaler Link mit Icon rechts" />
-			<KolButtonLink _icon="codicon codicon-home" _iconOnly _label="Nur Icon-Link" />
-			<p>
-				Ich bin eigentlich ein Button <KolButtonLink _label="Externer Link (gibt es nicht bei ButtonLink)" /> und sehe aber wie ein Link aus.
-			</p>
-			<KolButtonLink _label="Besuchter Link (gibt es nicht bei ButtonLink)" />
-			<KolButtonLink _ariaLabel="Zurück zur Startseite" _label="">
-				<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-			</KolButtonLink>
-			<KolButtonLink
-				_icon={{
-					left: 'codicon codicon-arrow-left',
-					right: 'codicon codicon-arrow-right',
-					top: 'codicon codicon-arrow-up',
-					bottom: 'codicon codicon-arrow-down',
-				}}
-				_label="Icons"
-			/>
-			<KolIndentedText>
+			<div>
+				<KolButtonLink _icon="codicon codicon-home" _iconOnly _label="Label-Text" />
+			</div>
+			<div>
+				<KolButtonLink _ariaLabel="Label-Text (aria-label)" _icon="codicon codicon-home" _iconOnly _label="Label-Text" />
+			</div>
+			<div>
+				<KolButtonLink _label="Normaler Link" />
+			</div>
+			<div>
+				<KolButtonLink _icon="codicon codicon-home" _label="Normaler Link mit Icon links" />
+			</div>
+			<div>
+				<KolButtonLink _icon="codicon codicon-home" _label="Normaler Link mit Icon rechts" />
+			</div>
+			<div>
+				<KolButtonLink _icon="codicon codicon-home" _iconOnly _label="Nur Icon-Link" />
+			</div>
+			<div>
 				<p>
-					<b>Links sind unsichtbar geschalten</b>
-					<br />
-					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+					Ich bin eigentlich ein Button <KolButtonLink _label="Externer Link (gibt es nicht bei ButtonLink)" /> und sehe aber wie ein Link aus.
 				</p>
-			</KolIndentedText>
-			<KolSkipNav
-				_ariaLabel="Skip-Nav"
-				_links={[
-					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
-				]}
-			/>
+				<KolButtonLink _label="Besuchter Link (gibt es nicht bei ButtonLink)" />
+			</div>
+			<div>
+				<KolButtonLink _ariaLabel="Zurück zur Startseite" _label="">
+					<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
+				</KolButtonLink>
+			</div>
+			<div>
+				<KolButtonLink
+					_icon={{
+						left: 'codicon codicon-arrow-left',
+						right: 'codicon codicon-arrow-right',
+						top: 'codicon codicon-arrow-up',
+						bottom: 'codicon codicon-arrow-down',
+					}}
+					_label="Icons"
+				/>
+			</div>
+			<div>
+				<KolIndentedText>
+					<p>
+						<b>Links sind unsichtbar geschalten</b>
+						<br />
+						Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+					</p>
+				</KolIndentedText>
+				<KolSkipNav
+					_ariaLabel="Skip-Nav"
+					_links={[
+						{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
+						{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
+						{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'codicon codicon-home' },
+						{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
+					]}
+				/>
+			</div>
 		</div>
 	),
 	'KOL-LOGO': () => (

@@ -125,19 +125,19 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 
 	private readonly renderSecondaryHeadline = (headline: string, level?: number): JSX.Element => {
 		switch (level) {
-			case 1:
-				return <h1 class="secondary-headline">{headline}</h1>;
-			case 2:
+			case 1: // if the headline is only strong
+				return <span class="secondary-headline">{headline}</span>;
+			case 2: // if the headline is h1
 				return <h2 class="secondary-headline">{headline}</h2>;
-			case 3:
+			case 3: // if the headline is h2
 				return <h3 class="secondary-headline">{headline}</h3>;
-			case 4:
+			case 4: // if the headline is h3
 				return <h4 class="secondary-headline">{headline}</h4>;
-			case 5:
+			case 5: // if the headline is h4
 				return <h5 class="secondary-headline">{headline}</h5>;
-			case 6:
+			case 6: // if the headline is h5
 				return <h6 class="secondary-headline">{headline}</h6>;
-			default:
+			default: // if the headline is h6
 				return <strong class="secondary-headline">{headline}</strong>;
 		}
 	};
