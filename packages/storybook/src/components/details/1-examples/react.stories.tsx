@@ -18,11 +18,6 @@ const DefaultArgs = {
 	_open: true,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolDetails {...args}>{args.content}</KolDetails>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Without = (args: any) => (
 	<div>
 		<KolDetails _summary="Nach Laden der Seite geschlossen">
@@ -57,11 +47,6 @@ Without.args = {
 };
 Without.storyName = 'Ohne Textzusammenhang';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const With = (args: any) => (
 	<div>
 		<div style={{ fontFamily: 'Arial' }}>

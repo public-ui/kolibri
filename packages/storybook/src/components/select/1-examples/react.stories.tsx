@@ -18,11 +18,6 @@ const KolSelect: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolSelect {...args}>{args.content}</KolSelect>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Number = (args: any) => (
 	<div>
 		<KolSelect
@@ -52,11 +42,6 @@ Number.args = {
 };
 Number.storyName = 'Multiselect';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const error = (args: any) => (
 	<div>
 		<KolSelect
@@ -73,11 +58,6 @@ error.args = {
 };
 error.storyName = 'Fehlermeldung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolSelect
@@ -99,11 +79,6 @@ Disabled.args = {
 };
 Disabled.storyName = 'Aktiv / Nicht aktiv';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Height = (args: any) => (
 	<div>
 		<KolSelect
