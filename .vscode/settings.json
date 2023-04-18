@@ -36,5 +36,6 @@
 	"javascript.preferences.importModuleSpecifier": "relative",
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"typescript.preferences.importModuleSpecifier": "relative",
-	"typescript.updateImportsOnFileMove.enabled": "always"
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"html.customData": ["./node_modules/@public-ui/components/vscode-custom-data.json"]
 }

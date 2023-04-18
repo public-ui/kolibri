@@ -2,7 +2,7 @@
 	<default>
 		<div class="grid gap-16 grid-cols-[1fr_3fr] ml-10">
 			<div>
-				<kol-logo _org="ITZBund" class="w-75 m-auto" />
+				<kol-kolibri class="w-75 m-auto" />
 			</div>
 			<div>
 				<slot />
