@@ -6,11 +6,12 @@ export const watchHeadingLevel = (component: Generic.Element.Component, value?: 
 		component,
 		'_level',
 		(value): boolean => {
-			return typeof value === 'number' && 1 <= value && value <= 6;
+			return typeof value === 'number' && 0 <= value && value <= 6;
 		},
-		new Set(['Number {1, 2, 3, 4, 5, 6}']),
+		new Set(['Number {0, 1, 2, 3, 4, 5, 6}']),
 		value,
 		{
+			// TODO: options not in the validator
 			defaultValue: 1,
 			required: true,
 		}

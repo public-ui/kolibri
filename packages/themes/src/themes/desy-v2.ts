@@ -2,7 +2,21 @@ import { KoliBri } from '@public-ui/components';
 
 // GZD Design System (Desy v2)
 export const DESYv2 = KoliBri.createTheme('desy-v2', {
-	GLOBAL: `:host {
+	GLOBAL: `
+	kol-tooltip .area {
+		background-color:#f2f2f2;
+	}
+	kol-tooltip #arrow {
+		background-color: #626262;
+	}
+	kol-tooltip kol-span-wc {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
+	}
+	:host {
 		--color-primary: #326cae;
 		--color-primary-10: #1e538f;
 		--color-primary-20: #08335e;
