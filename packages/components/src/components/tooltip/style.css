@@ -1,10 +1,10 @@
 @import '../style.css';
 
 kol-tooltip #floating {
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
 	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-name: fadeInOpacity;
+	animation-timing-function: ease-in;
 	box-sizing: border-box;
 	display: none;
 	position: absolute;
@@ -21,6 +21,7 @@ kol-tooltip #arrow {
 
 kol-tooltip .area {
 	background-color: white;
+	color: black;
 }
 
 kol-tooltip kol-span-wc {
