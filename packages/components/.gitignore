@@ -1,6 +1,7 @@
 /dist/
 /doc/**
 /loader/
+/public/
 /screenshot/
 /www/
 custom-elements.json

@@ -51,9 +51,9 @@ layout: about-me
 layout: center
 ---
 
-<div class="flex gap-2 mb-4 grey"  data-theme="bmf">
-  <kol-button _label="Schalter 1" _variant="danger" />
-  <kol-button _label="Schalter 2" _variant="primary" />
+<div class="flex gap-2 mb-4"  data-theme="bmf">
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="danger" />
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="primary" />
 </div>
 
 <div class="text-left border-l-3 border-gray-400 p-2 bg-gray-100">
@@ -65,9 +65,9 @@ layout: center
 layout: center
 ---
 
-<div class="flex gap-2 mb-4"  data-theme="bmf">
-  <kol-button _label="Schalter 1" _variant="danger" />
-  <kol-button _label="Schalter 2" _variant="primary" />
+<div class="flex gap-2 mb-4 grey"  data-theme="bmf">
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="danger" />
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="primary" />
 </div>
 
 <div class="text-left border-l-3 border-gray-400 p-2 bg-gray-100">

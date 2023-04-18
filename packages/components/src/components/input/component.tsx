@@ -49,7 +49,7 @@ export class KolInput implements Props {
 						'icon-right': typeof this._icon?.right === 'object',
 					}}
 				>
-					{this._icon?.left ? <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon> : <i />}
+					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}
 					<slot name="input"></slot>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
@@ -65,7 +65,7 @@ export class KolInput implements Props {
 							_variant={this._smartButton._variant}
 						></kol-button-wc>
 					)}
-					{this._icon?.right ? <kol-icon _ariaLabel="" _icon={(this._icon.right as KoliBriCustomIcon).icon}></kol-icon> : <i />}
+					{this._icon?.right && <kol-icon _ariaLabel="" _icon={(this._icon.right as KoliBriCustomIcon).icon}></kol-icon>}
 				</div>
 				{hasError && (
 					<kol-alert class="error" id={`${this._id}-error`} _alert={this._alert} _type="error" _variant="msg">
