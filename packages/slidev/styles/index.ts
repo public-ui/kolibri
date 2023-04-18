@@ -7,7 +7,21 @@ register(
 	[BPA, BMF, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, TH],
 	() => {
 		KoliBriDevHelper.patchTheme('itzbund', {
-			GLOBAL: `:host {
+			GLOBAL: `
+			kol-tooltip .area {
+				background-color: #f2f2f2;
+			}
+			kol-tooltip #arrow {
+				background-color: #626262;
+			}
+			kol-tooltip kol-span-wc {
+				padding: 0.25rem 0.5rem;
+				font-size: 0.875rem;
+				line-height: 1.25rem;
+				border-radius: 2px;
+				border: 1px solid #626262;
+			}
+			:host {
 				--kolibri-border-color: unset;
 				--kolibri-border-radius: unset;
 				--kolibri-border-width: unset;
@@ -1657,6 +1671,24 @@ register(
 			:host > div.tabs-align-top kol-button-group-wc div {
 				display: flex;
 				flex-wrap: wrap;
+			}`,
+		});
+		KoliBriDevHelper.patchTheme('th', {
+			GLOBAL: `
+			kol-tooltip .area {
+				background-color: #f2f2f2;
+			}
+			kol-tooltip #arrow {
+				background-color: #626262;
+			}
+			kol-tooltip kol-span-wc {
+				padding: 0.25rem 0.5rem;
+				font-size: 0.875rem;
+				line-height: 1.25rem;
+				border-radius: 2px;
+				border: 1px solid #626262;
+			}
+			/* https: //thueringen.de/styleguide/styleguide.063.20210902/?p=dokumentation-basiselemente */ /* @import url("https://fonts.cdnfonts.com/css/source-sans-pro"); */:host {--th-color-unknown: rgb(222, 0, 222);--th-color-blau-darker: rgb(0, 100, 140);--th-color-blau-dark: rgb(0, 118, 166);--th-color-blau: rgb(0, 137, 193);--th-color-blau-light: rgb(91, 179, 218);--th-color-blau-lighter: rgb(148, 200, 228);--th-color-blau-lightest: rgb(200, 224, 239);--th-color-grau-darker: rgb(136, 136, 136);--th-color-grau-dark: rgb(156, 156, 156);--th-color-grau: rgb(177, 177, 177);--th-color-grau-light: rgb(197, 197, 197);--th-color-grau-lighter: rgb(217, 217, 217);--th-color-grau-lightest: rgb(230, 230, 230);--th-color-black: black;--th-color-white: white;--th-color-rot-darker: rgb(152, 35, 15);--th-color-rot-dark: rgb(190, 44, 19);--th-color-rot: rgb(229, 53, 23);--th-color-rot-lightest: rgb(253, 214, 195);--th-color-orange-darker: rgb(115, 67, 0);--th-color-orange-dark: rgb(166, 97, 0);--th-color-orange: rgb(241, 140, 0);--th-color-orange-lightest: rgb(254, 228, 201);--th-color-dunkelgruen-darker: rgb(50, 100, 0);--th-color-dunkelgruen-dark: rgb(65, 128, 0);--th-color-dunkelgruen: rgb(106, 176, 35);--th-color-dunkelgruen-lightest: rgb(222, 239, 212);--th-color-hellgruen-dark: rgb(170, 170, 12);--th-color-hellgruen: rgb(201, 211, 14);--th-color-hellgruen-lightest: rgb(233, 240, 196);--th-color-gelb-dark: rgb(216, 174, 0);--th-color-gelb: rgb(255, 204, 0);--th-color-gelb-lightest: rgb(255, 236, 189);--th-color-hellgelb-dark: rgb(235, 200, 0);--th-color-hellgelb: rgb(255, 232, 0);--th-color-hellgelb-lightest: rgb(255, 247, 193);--th-font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial,sans-serif; /* https: //fonts.google.com/specimen/Source+Sans+Pro */--font-size: 16px;--th-hyphens: auto;--th-line-height: 1.5em;--th-spacing: 0.25em;}:host * {box-sizing: border-box;font-family: var(--th-font-family);}:host h1,:host h2,:host h3,:host h4,:host h5,:host h6 {margin: 0;font-family: var(--th-font-family);}a,button {align-items: center;background-color: transparent;border: 0;color: black;cursor: pointer;display: inline-flex;gap: 0.25rem;justify-items: center;}input,option,select,summary,textarea {display: inline-block;}a,button,input,option,select,summary,textarea {-ms-hyphens: auto;-webkit-hyphens: auto;hyphens: auto;letter-spacing: inherit;word-break: break-word;}*[tabindex]:focus,a:focus,button:focus,input:focus,select:focus,summary:focus,textarea:focus {cursor: pointer;outline-color: var(--th-color-blau);outline-offset: 2px;outline-style: solid;outline-width: 3px;transition: outline-offset 0.2s linear;}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}
 			}`,
 		});
 		return new Promise((resolve) => resolve());
