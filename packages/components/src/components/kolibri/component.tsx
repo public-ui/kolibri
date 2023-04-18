@@ -3,15 +3,16 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { colorRgba } from '../badge/color-rgba';
 
 import { Generic } from '@a11y-ui/core';
-import { watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
-
-const HACK_REG_EX = /^#([a-f0-9]{3}|[a-f0-9]{6})$/;
+import { PropColor, validateColor } from '../../types/props/color';
+import { watchBoolean } from '../../utils/prop.validators';
+import { devHint } from '../../utils/a11y.tipps';
+import { Stringified } from '../../components';
 
 type RequiredProps = unknown;
 type OptionalProps = {
 	animate: boolean;
-	color: string;
+	color: Stringified<PropColor>;
 	labeled: boolean;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -78,7 +79,7 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
 	 */
-	@Prop() public _color?: string = '#003c78';
+	@Prop() public _color?: Stringified<PropColor> = '#003c78';
 
 	/**
 	 * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
@@ -101,17 +102,21 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	private handleColorChange: Generic.Element.NextStateHooksCallback = (nextValue: unknown, nextState: Map<string, unknown>): void => {
-		const rgba = colorRgba(nextValue as string);
-		nextState.set('_color', {
-			red: rgba[0],
-			green: rgba[1],
-			blue: rgba[2],
-		});
+		if (typeof nextValue === 'string') {
+			const rgba = colorRgba(nextValue);
+			nextState.set('_color', {
+				red: rgba[0],
+				green: rgba[1],
+				blue: rgba[2],
+			});
+		} else {
+			devHint(`[KolKolibri] You used the complex color schema. For the KoliBri we use need the color as hex string.`);
+		}
 	};
 
 	@Watch('_color')
-	public validateColor(value?: string): void {
-		watchValidator(this, '_color', (value) => typeof value === 'string' && HACK_REG_EX.test(value), new Set(['Color Hex Color Codes']), value, {
+	public validateColor(value?: Stringified<PropColor>): void {
+		validateColor(this, value, {
 			defaultValue: '#003c78',
 			hooks: {
 				beforePatch: this.handleColorChange,
