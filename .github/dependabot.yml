@@ -8,87 +8,110 @@ updates:
   - package-ecosystem: github-actions
     directory: '/'
     schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/adapters/angular/v15/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/adapters/hydrate/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/adapters/preact/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/adapters/react/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/adapters/solid/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/adapters/svelte/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/adapters/vue/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/components/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/create-kolibri/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/designer/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/slidev/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/storybook/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/themes/'
-    schedule:
-      interval: weekly
-    target-branch: main
+      interval: monthly
+    assignees:
+      - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/adapters/angular/v15/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/adapters/hydrate/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/adapters/preact/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/adapters/react/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/adapters/solid/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/adapters/svelte/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/adapters/vue/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/components/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/create-kolibri/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/designer/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/samples/react/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/slidev/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/storybook/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/themes/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
 
   # deprecated
-  - package-ecosystem: npm
-    directory: '/packages/core/'
-    schedule:
-      interval: weekly
-    target-branch: main
-  - package-ecosystem: npm
-    directory: '/packages/schema/'
-    schedule:
-      interval: weekly
-    target-branch: main
+  # - package-ecosystem: npm
+  #   directory: '/packages/core/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
+  # - package-ecosystem: npm
+  #   directory: '/packages/schema/'
+  #   schedule:
+  #     interval: monthly
+  #   assignees:
+  #     - 'deleonio'
