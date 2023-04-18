@@ -98,7 +98,7 @@
 		"storybook": "6.5.16",
 		"storybook-addon-themes": "6.1.0",
 		"storybook-addon-turbo-build": "1.1.0",
-		"typescript": "4.9.5",
+		"typescript": "5.0.4",
 		"webpack": "5.78.0",
 		"webpack-pwa-manifest": "4.3.0",
 		"workbox-build": "6.5.4",
