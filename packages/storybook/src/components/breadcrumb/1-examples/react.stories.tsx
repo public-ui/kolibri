@@ -15,11 +15,6 @@ const KolBreadcrumb: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolBreadcrumb {...args}></KolBreadcrumb>
@@ -29,11 +24,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Einfaerben = (args: any) => (
 	<div>
 		<KolBreadcrumb {...args}></KolBreadcrumb>
@@ -44,11 +34,6 @@ Einfaerben.args = {
 };
 Einfaerben.storyName = 'Breadcrumb nur Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithIcon = (args: any) => (
 	<div>
 		<KolBreadcrumb {...args}></KolBreadcrumb>
@@ -61,11 +46,6 @@ WithIcon.args = {
 };
 WithIcon.storyName = 'Breadcrumb mit Icons und Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const OnlyIcon = (args: any) => (
 	<div>
 		<KolBreadcrumb {...args}></KolBreadcrumb>
@@ -78,11 +58,6 @@ OnlyIcon.args = {
 };
 OnlyIcon.storyName = 'Breadcrumb nur Icons';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithAll = (args: any) => (
 	<div>
 		<KolBreadcrumb {...args}></KolBreadcrumb>
@@ -101,11 +76,6 @@ WithAll.args = {
 };
 WithAll.storyName = 'Breadcrumb im Seitenzusammenhang';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Output = (args: any) => (
 	<div>
 		<KolBreadcrumb
