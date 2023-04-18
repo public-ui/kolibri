@@ -4,25 +4,18 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { a11yHint, devHint, featureHint } from '../../utils/a11y.tipps';
-import { objectObjectHandler, parseJson, setState, watchValidator } from '../../utils/prop.validators';
+import { ColorPair, handleColorChange, PropColor, validateColor } from '../../types/props/color';
 import { validateLabel } from '../../types/props/label';
-import { ColorContrast, createContrastColorPair } from './contrast';
+import { a11yHint, featureHint } from '../../utils/a11y.tipps';
+import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
-
-const HACK_REG_EX = /^([a-f0-9]{3}|[a-f0-9]{6})$/;
-
-export type KoliBriColor = {
-	backgroundColor: string;
-	color: string;
-};
 
 type RequiredProps = {
 	label: string;
 };
 type OptionalProps = {
-	color: Stringified<KoliBriColor>;
+	color: Stringified<PropColor>;
 	icon: Stringified<KoliBriIconProp>;
 	iconOnly: boolean;
 	smartButton: Stringified<ButtonProps>;
@@ -30,7 +23,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	color: Stringified<KoliBriColor>;
+	color: ColorPair;
 	label: string;
 };
 type OptionalStates = {
@@ -84,7 +77,7 @@ export class KolBadge implements Props {
 	/**
 	 * Setzt die Hintergrundfarbe.
 	 */
-	@Prop() public _color?: string | KoliBriColor = '#000';
+	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
 	 * Iconklasse (z.B.: "codicon codicon-home")
@@ -107,54 +100,27 @@ export class KolBadge implements Props {
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	@State() public state: States = {
-		_color: '#000',
+		_color: {
+			backgroundColor: '#000',
+			foregroundColor: '#fff',
+		},
 		_label: '…', // ⚠ required
 	};
 
 	private handleColorChange = (value: unknown) => {
-		let color = value as string | KoliBriColor;
-		let colorContrast: ColorContrast<string>;
-		if (typeof color === 'string') {
-			if (HACK_REG_EX.test(color)) {
-				// Catch Breaking Change - remove next Major
-				devHint(
-					`[KolBadge] Bitte verwenden Sie zukünftig nur noch das Standard-Farbformat für CSS (https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).`
-				);
-				color = `#${color}`;
-			}
-			colorContrast = createContrastColorPair(color);
-		} else {
-			colorContrast = createContrastColorPair({
-				background: color.backgroundColor,
-				foreground: color.color,
-			});
-		}
-		if (colorContrast.contrast < 7) {
-			a11yHint(
-				`[KolBadge] The contrast of ${colorContrast.contrast} (≥7, AAA) is too low, between the color pair ${colorContrast.background} and ${colorContrast.foreground}.`
-			);
-		}
-		this.bgColorStr = colorContrast.background;
-		this.colorStr = colorContrast.foreground;
+		const colorPair = handleColorChange(value);
+		this.bgColorStr = colorPair.backgroundColor;
+		this.colorStr = colorPair.foregroundColor as string;
 	};
 
 	@Watch('_color')
-	public validateColor(value?: string | KoliBriColor): void {
-		watchValidator(
-			this,
-			'_color',
-			(value) =>
-				typeof value === 'string' ||
-				(typeof value === 'object' && value !== null && typeof value.backgroundColor === 'string' && typeof value.color === 'string'),
-			new Set(['string', 'KoliBriColor']),
-			value,
-			{
-				defaultValue: '#000',
-				hooks: {
-					beforePatch: this.handleColorChange,
-				},
-			}
-		);
+	public validateColor(value?: Stringified<PropColor>): void {
+		validateColor(this, value, {
+			defaultValue: '#000',
+			hooks: {
+				beforePatch: this.handleColorChange,
+			},
+		});
 	}
 
 	@Watch('_label')
