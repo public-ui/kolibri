@@ -38,11 +38,6 @@ Einzeln.args = {
 	content: 'Inhalt des Accordions',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Mehrere = (args: any) => {
 	return (
 		<div style={{ display: 'grid', gap: '0.25em' }}>
@@ -62,11 +57,6 @@ Mehrere.args = {
 	header: 'asdfdsf',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Ueberschriften = (args: any) => {
 	return (
 		<div style={{ display: 'grid', gap: '0.25em' }}>
@@ -93,11 +83,6 @@ export const Ueberschriften = (args: any) => {
 };
 Ueberschriften.storyName = 'Überschriften';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Geoeffnet = (args: any) => {
 	return (
 		<div>
@@ -113,11 +98,6 @@ export const Geoeffnet = (args: any) => {
 };
 Geoeffnet.storyName = 'Geöffnet';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const MitHeader = (args: any) => {
 	return (
 		<div>
@@ -132,11 +112,7 @@ export const MitHeader = (args: any) => {
 		</div>
 	);
 };
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
+
 export const MitButton = (args: any) => {
 	setTimeout(() => {
 		let buttons = document.querySelectorAll('kol-button');
@@ -200,11 +176,7 @@ export const MitButton = (args: any) => {
 		</div>
 	);
 };
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
+
 export const Alert = (args: any) => {
 	return (
 		<div>
