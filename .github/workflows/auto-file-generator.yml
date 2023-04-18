@@ -1,0 +1,70 @@
+name: Auto file generator
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: 'main'
+
+      # - uses: pnpm/action-setup@v2.2.4
+      #   with:
+      #     run_install: false
+      #     version: 7
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     cache: pnpm
+      #     node-version: 16
+
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          # cache: pnpm
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store # -${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+
+      - name: Create new branch
+        run: git checkout -b chore/auto-file-gen
+      - name: Install dependencies
+        run: pnpm i
+      - name: Build all packages
+        run: npm run pack
+      - name: Commit changed files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add **/package.json **/pnpm-lock.yaml
+          git status
+          git commit -m "chore: auto file generate"
+
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'chore/auto-file-gen'
+          force: true

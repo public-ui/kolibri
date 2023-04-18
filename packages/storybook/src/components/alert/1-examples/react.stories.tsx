@@ -37,11 +37,6 @@ Standard.args = {
 	_variant: 'msg-icon',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Success = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="success">
@@ -52,11 +47,6 @@ export const Success = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Error = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="error">
@@ -67,11 +57,6 @@ export const Error = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Info = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="info">
@@ -82,11 +67,6 @@ export const Info = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Warning = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="warning">
@@ -97,11 +77,6 @@ export const Warning = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Card = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="warning" _variant="card">
@@ -114,11 +89,6 @@ export const Card = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const CardIcon = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="warning" _variant="card_icon">
@@ -131,11 +101,6 @@ export const CardIcon = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Msg = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="warning" _variant="msg">
@@ -148,11 +113,6 @@ export const Msg = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const MsgIcon = (args: any) => (
 	<div>
 		<KolAlert _heading="Das ist die Überschrift des Alert." _type="warning" _variant="msg-icon">
@@ -165,11 +125,6 @@ export const MsgIcon = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Html = (args: any) => (
 	<div>
 		<KolAlert _heading="Ausgabe von HTML-Code im Alert" _type="info">

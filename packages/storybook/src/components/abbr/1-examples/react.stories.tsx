@@ -17,11 +17,6 @@ const KolAbbr: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolAbbr {...args}>{args.content}</KolAbbr>
@@ -31,11 +26,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Top = (args: any) => (
 	<div>
 		Ich bin eine
@@ -50,11 +40,6 @@ Top.args = {
 };
 Top.storyName = 'Tooltip oben';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Right = (args: any) => (
 	<div>
 		Ich bin eine
@@ -69,11 +54,6 @@ Right.args = {
 };
 Right.storyName = 'Tooltip rechts';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Bottom = (args: any) => (
 	<div>
 		Ich bin eine
@@ -88,11 +68,6 @@ Bottom.args = {
 };
 Bottom.storyName = 'Tooltip unten';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Left = (args: any) => (
 	<div>
 		Ich bin eine
@@ -107,11 +82,6 @@ Left.args = {
 };
 Left.storyName = 'Tooltip links';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Content = (args: any) => (
 	<div>
 		<p style={{ fontFamily: 'Arial' }}>

@@ -59,39 +59,39 @@ import Default from '../theme/layouts/default.vue';
 
 const options = [
 	{
-		label: 'Bundes-Styleguide (WIP)',
+		label: 'Bundes-Styleguide',
 		value: 'bpa',
 	},
 	{
 		label: 'BMF-Styleguide',
 		value: 'bmf',
 	},
+	// {
+	// 	label: 'DEZY-Styleguide',
+	// 	value: 'desy-v2',
+	// },
 	{
-		label: 'DEZY-Styleguide (untested)',
-		value: 'desy-v2',
-	},
-	{
-		label: 'European Commission-Styleguide (WIP)',
+		label: 'European Commission-Styleguide',
 		value: 'ecl-ec',
 	},
 	{
-		label: 'European Union-Styleguide (WIP)',
+		label: 'European Union-Styleguide',
 		value: 'ecl-eu',
 	},
 	{
-		label: 'ITZBund-Styleguide (untested)',
+		label: 'ITZBund-Styleguide',
 		value: 'itzbund',
 	},
 	{
 		label: 'MAPZoll-Styleguide',
 		value: 'mapz',
 	},
-	// {
-	// 	label: 'Freistaat Thüringen (untested)',
-	// 	value: 'th',
-	// },
 	{
-		label: 'Zoll-Designsystem (untested)',
+		label: 'Freistaat Thüringen',
+		value: 'th',
+	},
+	{
+		label: 'Zoll-Designsystem',
 		value: 'zoll-v2',
 	},
 ];

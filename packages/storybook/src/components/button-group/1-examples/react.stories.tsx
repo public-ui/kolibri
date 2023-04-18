@@ -17,11 +17,6 @@ const DefaultArgs = {
 	_nestled: 'top',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolButtonGroup {...args}>
@@ -35,11 +30,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithIcon = (args: any) => (
 	<div>
 		<KolButtonGroup>
@@ -54,11 +44,6 @@ WithIcon.args = {
 };
 WithIcon.storyName = 'Button-Group mit Icon und Text';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithCta = (args: any) => (
 	<div>
 		<KolButtonGroup>
@@ -76,11 +61,6 @@ WithCta.args = {
 };
 WithCta.storyName = 'Button-Group mit Styles';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithDisabled = (args: any) => (
 	<KolButtonGroup>
 		<KolButton _on _label="Aktiv"></KolButton>
@@ -93,11 +73,6 @@ WithDisabled.args = {
 };
 WithDisabled.storyName = 'Button-Group mit deaktiviertem Button';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Nestled = (args: any) => (
 	<div>
 		<KolHeading _level={3}>Nestled Top</KolHeading>
@@ -134,11 +109,6 @@ WithDisabled.args = {
 };
 WithDisabled.storyName = 'Button-Group mit deaktiviertem Button';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Output = (args: any) => (
 	<div style={{ display: 'grid', gap: '0.25em' }}>
 		<KolButtonGroup>

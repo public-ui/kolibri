@@ -16,11 +16,6 @@ const KolInputRadio: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputRadio {...args}></KolInputRadio>
@@ -30,11 +25,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Anrede = (args: any) => (
 	<div>
 		<KolInputRadio _id="anrede" _name="anrede" _list={args._list}></KolInputRadio>
@@ -45,11 +35,6 @@ Anrede.args = {
 };
 Anrede.storyName = 'Radio als Radiogroup';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Cases = (args: any) => (
 	<div>
 		<KolInputRadio
@@ -69,11 +54,6 @@ Cases.args = {
 };
 Cases.storyName = 'Deaktiviert';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Messages = (args: any) => (
 	<div>
 		<KolInputRadio
