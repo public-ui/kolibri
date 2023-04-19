@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
@@ -32,7 +32,7 @@ export class KolAbbr implements API {
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -66,7 +66,7 @@ export class KolAbbr implements API {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: PropAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
