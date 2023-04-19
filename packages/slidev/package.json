@@ -13,7 +13,7 @@
 		"email": "kolibri@itzbund.de"
 	},
 	"scripts": {
-		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js",
+		"build": "rimraf dist && slidev build --base /presentation && node scripts/fix-underline.js && node scripts/copy-assets-images.js && npm run build:pdf",
 		"build:pdf": "slidev export --with-clicks && mv slides-export.pdf presentation.pdf",
 		"dev": "slidev --open",
 		"start": "npm run dev",
@@ -37,7 +37,8 @@
 		"ts-prune": "0.10.3"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"presentation.pdf"
 	],
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com"

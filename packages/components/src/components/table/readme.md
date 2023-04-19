@@ -119,15 +119,17 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                | Attribute     | Description                                                             | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Default     |
 | ----------------------- | ------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_caption` _(required)_ | `_caption`    | Gibt den Titel oder eine Legende mit Erklärungen zur Tabelle an.        | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `undefined` |
+| `_caption` _(required)_ | `_caption`    | Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.       | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `undefined` |
 | `_data` _(required)_    | `_data`       | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden. | `KoliBriDataType[] \| string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
 | `_headers` _(required)_ | `_headers`    | Gibt die horizontalen und vertikalen Header für die Tabelle an.         | `string \| { horizontal?: KoliBriTableHeaderCell[][] \| undefined; vertical?: KoliBriTableHeaderCell[][] \| undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                                             | `undefined` |
 | `_minWidth`             | `_min-width`  | Gibt an, die minimale Breite der Tabelle an.                            | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 | `_pagination`           | `_pagination` | Gibt an, ob die Daten geteilt in Seiten angezeigt wird.                 | `boolean \| string \| undefined \| { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks \| undefined; _page?: number \| undefined; _total?: number \| undefined; _customClass?: string \| undefined; _variant?: KoliBriButtonVariant \| undefined; _boundaryCount?: number \| undefined; _hasButtons?: boolean \| Stringified<PaginationHasButton> \| undefined; _pageSize?: number \| undefined; _pageSizeOptions?: Stringified<number[]> \| undefined; _siblingCount?: number \| undefined; _tooltipAlign?: PropAlignment \| undefined; }` | `undefined` |
+
 
 ## Dependencies
 
@@ -137,7 +139,6 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 - [kol-pagination](../pagination)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-table --> kol-button
@@ -146,9 +147,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-pagination --> kol-button
   kol-pagination --> kol-select
   kol-pagination --> kol-button-wc
@@ -162,4 +161,6 @@ graph TD;
   style kol-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

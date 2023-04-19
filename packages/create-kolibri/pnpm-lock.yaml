@@ -17,7 +17,7 @@ specifiers:
   npm-check-updates: 16.10.7
   npm-run-all: 4.1.5
   prettier: 2.8.7
-  rimraf: 4.4.1
+  rimraf: 3.0.2
   ts-node: 10.9.1
   ts-prune: 0.10.3
   tsup: 6.7.0
@@ -42,7 +42,7 @@ devDependencies:
   lint-staged: 13.2.0
   npm-check-updates: 16.10.7
   prettier: 2.8.7
-  rimraf: 4.4.1
+  rimraf: 3.0.2
   ts-node: 10.9.1_o6avl3oodj6mwqsx3rm2wfkgv4
   ts-prune: 0.10.3
   tsup: 6.7.0_6qtx7vkbdhwvdm4crzlegk4mvi
@@ -3299,7 +3299,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       globby: 11.1.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       is-glob: 4.0.3
       is-path-cwd: 2.2.0
       is-path-inside: 3.0.3
@@ -4440,7 +4440,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
@@ -5545,7 +5545,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
     dev: true
 
   /jsonlines/0.1.1:
@@ -6708,7 +6708,7 @@ packages:
     dependencies:
       env-paths: 2.2.1
       glob: 7.2.3
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       make-fetch-happen: 10.2.1
       nopt: 6.0.0
       npmlog: 6.0.2
@@ -9637,7 +9637,7 @@ packages:
   /write-file-atomic/2.4.3:
     resolution: {integrity: sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
     dev: true
@@ -9672,7 +9672,7 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       detect-indent: 5.0.0
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       make-dir: 2.1.0
       pify: 4.0.1
       sort-keys: 2.0.0

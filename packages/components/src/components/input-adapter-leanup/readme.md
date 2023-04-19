@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 > **[DEPRECATED]** Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
 
 ## Dependencies
@@ -12,7 +13,6 @@
 - [kol-link](../link)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-adapter-leanup --> kol-alert
@@ -23,9 +23,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
@@ -33,4 +31,6 @@ graph TD;
   style kol-input-adapter-leanup fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

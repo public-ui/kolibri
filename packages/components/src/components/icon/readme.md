@@ -2,7 +2,7 @@
 
 Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_aria-label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
 
-Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-lik> unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
 
 <kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>
 
@@ -46,13 +46,15 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                  | Attribute     | Description                                                                                                                                                                                                                           | Type                  | Default     |
 | ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
 | `_ariaLabel` _(required)_ | `_aria-label` | Gibt das Aria-Label am Icon an.                                                                                                                                                                                                       | `string`              | `undefined` |
-| `_icon` _(required)_      | `_icon`       | Gibt einen Identifier eines Icons aus den Icon's an.                                                                                                                                                                                  | `string`              | `undefined` |
+| `_icon` _(required)_      | `_icon`       | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                                                                                                           | `string`              | `undefined` |
 | `_part`                   | `_part`       | <span style="color:red">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) | `string \| undefined` | `undefined` |
+
 
 ## Shadow Parts
 
@@ -60,22 +62,22 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 | -------- | ----------------------------------------- |
 | `"icon"` | Ermöglicht das Styling des inneren Icons. |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-alert](../alert)
-- [kol-breadcrumb](../breadcrumb)
-- [kol-details](../details)
-- [kol-icon-font-awesome](../icon-font-awesome)
-- [kol-icon-icofont](../icon-icofont)
-- kol-input
-- [kol-input-checkbox](../input-checkbox)
-- kol-link-wc
-- kol-span-wc
+ - [kol-alert](../alert)
+ - [kol-breadcrumb](../breadcrumb)
+ - [kol-details](../details)
+ - [kol-icon-font-awesome](../icon-font-awesome)
+ - [kol-icon-icofont](../icon-icofont)
+ - kol-input
+ - [kol-input-checkbox](../input-checkbox)
+ - kol-link-wc
+ - kol-span-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-alert --> kol-icon
@@ -90,4 +92,6 @@ graph TD;
   style kol-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

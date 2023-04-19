@@ -88,15 +88,17 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                  | Attribute     | Description                                                                           | Type                                                                                                                                                                                                                                                     | Default     |
-| ------------------------- | ------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.          | `string`                                                                                                                                                                                                                                                 | `undefined` |
-| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.   | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent \| CustomEvent<any> \| KeyboardEvent \| PointerEvent, number> \| undefined; }` | `undefined` |
-| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                            | `number \| undefined`                                                                                                                                                                                                                                    | `0`         |
-| `_tabs` _(required)_      | `_tabs`       | Gibt die geordnete Liste der Seitenhierarchie in Links an.                            | `TabButtonProps[] \| string`                                                                                                                                                                                                                             | `undefined` |
-| `_tabsAlign`              | `_tabs-align` | Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
+| Property                  | Attribute     | Description                                                                         | Type                                                                                                                                                                                                                                                     | Default     |
+| ------------------------- | ------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert.        | `string`                                                                                                                                                                                                                                                 | `undefined` |
+| `_on`                     | --            | Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen. | `undefined \| { onCreate?: EventCallback<Event> \| { label: string; callback: EventCallback<Event>; } \| undefined; } & { onSelect?: EventValueOrEventCallback<MouseEvent \| CustomEvent<any> \| KeyboardEvent \| PointerEvent, number> \| undefined; }` | `undefined` |
+| `_selected`               | `_selected`   | Gibt an, welches Tab selektiert sein soll.                                          | `number \| undefined`                                                                                                                                                                                                                                    | `0`         |
+| `_tabs` _(required)_      | `_tabs`       | Setzt die Daten für die Registrierkarten.                                           | `TabButtonProps[] \| string`                                                                                                                                                                                                                             | `undefined` |
+| `_tabsAlign`              | `_tabs-align` | Setzt die Position der Registrierkarten.                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
+
 
 ## Dependencies
 
@@ -106,7 +108,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 - kol-button-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-tabs --> kol-button-group-wc
@@ -114,10 +115,10 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

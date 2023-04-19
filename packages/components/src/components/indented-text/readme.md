@@ -37,15 +37,15 @@ Verwenden Sie die **IndentedText**-Komponente, um Textpassagen oder Informatione
 
 <!-- Auto Generated Below -->
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-details](../details)
-- [kol-form](../form)
+ - [kol-details](../details)
+ - [kol-form](../form)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-details --> kol-indented-text
@@ -53,4 +53,6 @@ graph TD;
   style kol-indented-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

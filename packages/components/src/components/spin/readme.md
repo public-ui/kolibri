@@ -38,10 +38,14 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description                                               | Type                   | Default |
 | -------- | --------- | --------------------------------------------------------- | ---------------------- | ------- |
 | `_show`  | `_show`   | Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht. | `boolean \| undefined` | `false` |
 
----
+
+----------------------------------------------
+
+

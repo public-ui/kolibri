@@ -88,12 +88,14 @@ Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Ü
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                | Attribute  | Description                                                       | Type                   | Default     |
 | ----------------------- | ---------- | ----------------------------------------------------------------- | ---------------------- | ----------- |
 | `_open`                 | `_open`    | Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist. | `boolean \| undefined` | `false`     |
 | `_summary` _(required)_ | `_summary` | Gibt die Zusammenfassung der Detailbeschreibung an.               | `string`               | `undefined` |
+
 
 ## Dependencies
 
@@ -103,7 +105,6 @@ Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Ü
 - [kol-indented-text](../indented-text)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-details --> kol-icon
@@ -111,4 +112,6 @@ graph TD;
   style kol-details fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+
