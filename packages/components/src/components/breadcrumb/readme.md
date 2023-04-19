@@ -85,14 +85,12 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                  | Attribute     | Description                                                                  | Type                    | Default     |
 | ------------------------- | ------------- | ---------------------------------------------------------------------------- | ----------------------- | ----------- |
 | `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
 | `_links` _(required)_     | `_links`      | Setzt die Liste der darzustellenden Links.                                   | `LinkProps[] \| string` | `undefined` |
-
 
 ## Dependencies
 
@@ -102,6 +100,7 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 - [kol-link](../link)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-breadcrumb --> kol-icon
@@ -115,6 +114,4 @@ graph TD;
   style kol-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---
