@@ -16,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment, validateAriaCurrent, validateAriaSelected, validateStealth } from '../../types/props';
+import { AriaCurrent, Alignment, validateAriaCurrent, validateAriaSelected, validateStealth } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
@@ -199,7 +199,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: PropAlignment;
+	@Prop() public _iconAlign?: Alignment;
 
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
@@ -255,7 +255,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'right';
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -324,7 +324,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @deprecated
 	 */
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: PropAlignment): void {
+	public validateIconAlign(value?: Alignment): void {
 		watchIconAlign(this, value);
 	}
 
@@ -389,7 +389,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: PropAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
