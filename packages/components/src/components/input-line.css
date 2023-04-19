@@ -4,7 +4,7 @@ kol-input {
 	display: grid;
 }
 
-input:not([type='radio']),
+input:not([type='checkbox'], [type='radio']),
 option,
 select,
 textarea {
@@ -13,10 +13,10 @@ textarea {
 	flex-grow: 1;
 }
 
-/* input:not([type='radio']),
+/* input:not([type='checkbox'], [type='radio']), */
 select:not([multiple]) {
 	height: 2.75em;
-} */
+}
 
 input:focus,
 option:focus,

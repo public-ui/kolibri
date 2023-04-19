@@ -101,10 +101,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	kol-tooltip .area {
 		background-color: var(--color-metal);
+		color: var(--color-white);
 	}
 	kol-tooltip kol-span-wc {
 		border-radius: var(--border-radius);
-		color: var(--color-white);
 		line-height: 1.5em;
 		padding: 0.5rem 0.75rem;
 	}
