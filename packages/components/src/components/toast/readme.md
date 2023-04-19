@@ -58,7 +58,6 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property        | Attribute        | Description                                                                       | Type                                                                    | Default     |
@@ -72,7 +71,6 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 | `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.              | `number \| undefined`                                                   | `10000`     |
 | `_type`         | `_type`          | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 
-
 ## Dependencies
 
 ### Depends on
@@ -80,6 +78,7 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 - [kol-alert](../alert)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-toast --> kol-alert
@@ -93,6 +92,4 @@ graph TD;
   style kol-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

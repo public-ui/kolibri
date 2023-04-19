@@ -50,7 +50,6 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property        | Attribute        | Description                                                                                                                           | Type                                                                                     | Default      |
@@ -76,7 +75,6 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                         | `boolean \| undefined`                                                                   | `false`      |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                   | `string \| undefined`                                                                    | `undefined`  |
 
-
 ## Dependencies
 
 ### Depends on
@@ -84,6 +82,7 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 - kol-input
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-textarea --> kol-input
@@ -100,6 +99,4 @@ graph TD;
   style kol-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

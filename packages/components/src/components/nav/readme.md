@@ -104,7 +104,6 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                  | Attribute             | Description                                                                                                                                                                                     | Type                                                            | Default      |
@@ -118,7 +117,6 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 | `_orientation`            | `_orientation`        | Gibt die Ausrichtung der Navigation an.                                                                                                                                                         | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
 | `_variant`                | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Stellt verschiedene Varianten der Navigation zur Verfügung. | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
 
-
 ## Dependencies
 
 ### Depends on
@@ -129,6 +127,7 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 - [kol-button](../button)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-nav --> kol-button-wc
@@ -146,6 +145,4 @@ graph TD;
   style kol-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

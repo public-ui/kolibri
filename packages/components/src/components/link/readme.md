@@ -67,15 +67,14 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute             | Description                                                                                                                                                                           | Type                                                                                | Default                                        |
 | --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `_ariaControls`       | `_aria-controls`      | Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)                                             | `string \| undefined`                                                               | `undefined`                                    |
+| `_ariaControls`       | `_aria-controls`      | Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)                                              | `string \| undefined`                                                               | `undefined`                                    |
 | `_ariaCurrent`        | `_aria-current`       | Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)                                      | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean \| undefined`        | `undefined`                                    |
 | `_ariaExpanded`       | `_aria-expanded`      | Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)                                        | `boolean \| undefined`                                                              | `undefined`                                    |
-| `_ariaLabel`          | `_aria-label`         | Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)                                                 | `string \| undefined`                                                               | `undefined`                                    |
+| `_ariaLabel`          | `_aria-label`         | Gibt einen beschreibenden Text des Links an. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)                                                  | `string \| undefined`                                                               | `undefined`                                    |
 | `_ariaSelected`       | `_aria-selected`      | Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)                                                | `boolean \| undefined`                                                              | `undefined`                                    |
 | `_disabled`           | `_disabled`           | Gibt an, ob der Link deaktiviert ist.                                                                                                                                                 | `boolean \| undefined`                                                              | `false`                                        |
 | `_href` _(required)_  | `_href`               | Gibt die Ziel-Url des Links an.                                                                                                                                                       | `string`                                                                            | `undefined`                                    |
@@ -93,22 +92,22 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 | `_tooltipAlign`       | `_tooltip-align`      | Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.                                                                                                | `"bottom" \| "left" \| "right" \| "top" \| undefined`                               | `'right'`                                      |
 | `_useCase`            | `_use-case`           | <span style="color:red">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Gibt den Verwendungsfall des Links an.                                           | `"image" \| "nav" \| "text" \| undefined`                                           | `'text'`                                       |
 
-
 ## Dependencies
 
 ### Used by
 
- - [kol-breadcrumb](../breadcrumb)
- - [kol-input-adapter-leanup](../input-adapter-leanup)
- - [kol-link-group](../link-group)
- - [kol-quote](../quote)
- - [kol-skip-nav](../skip-nav)
+- [kol-breadcrumb](../breadcrumb)
+- [kol-input-adapter-leanup](../input-adapter-leanup)
+- [kol-link-group](../link-group)
+- [kol-quote](../quote)
+- [kol-skip-nav](../skip-nav)
 
 ### Depends on
 
 - kol-link-wc
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-link --> kol-link-wc
@@ -125,6 +124,4 @@ graph TD;
   style kol-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

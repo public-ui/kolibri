@@ -88,7 +88,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                  | Attribute     | Description                                                                         | Type                                                                                                                                                                                                                                                     | Default     |
@@ -99,7 +98,6 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 | `_tabs` _(required)_      | `_tabs`       | Setzt die Daten für die Registrierkarten.                                           | `TabButtonProps[] \| string`                                                                                                                                                                                                                             | `undefined` |
 | `_tabsAlign`              | `_tabs-align` | Setzt die Position der Registrierkarten.                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                    | `'top'`     |
 
-
 ## Dependencies
 
 ### Depends on
@@ -108,6 +106,7 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 - kol-button-wc
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-tabs --> kol-button-group-wc
@@ -119,6 +118,4 @@ graph TD;
   style kol-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---
