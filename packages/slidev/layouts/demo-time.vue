@@ -97,7 +97,7 @@ const options = [
 ];
 
 const local = window.localStorage.getItem('kolibri');
-let value = 'itzbund';
+let value = 'ecl-eu';
 if (local) {
 	try {
 		const json = JSON.parse(local);
