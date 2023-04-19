@@ -1,6 +1,6 @@
-# KoliBri-Logo
+# Logo
 
-Diese Komponente implementiert das KoliBri-Logo.
+Diese Komponente implementiert das Logo von KoliBri.
 
 ## Konstruktion
 
