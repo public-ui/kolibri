@@ -22,21 +22,21 @@
 		"react-dom": "18.2.0",
 		"react-router": "6.10.0",
 		"react-router-dom": "6.10.0",
-		"world_countries_lists": "2.6.0"
+		"world_countries_lists": "2.8.1"
 	},
 	"devDependencies": {
 		"@leanup/stack": "1.3.43",
 		"@leanup/stack-react": "1.3.43",
 		"@leanup/stack-webpack": "1.3.43",
-		"@types/react": "18.0.33",
+		"@types/react": "18.0.37",
 		"@types/react-dom": "18.0.11",
-		"@unocss/preset-mini": "0.50.6",
-		"@unocss/webpack": "0.50.6",
+		"@unocss/preset-mini": "0.51.4",
+		"@unocss/webpack": "0.51.4",
 		"chromedriver": "108.0.0",
 		"eslint-plugin-jsx-a11y": "6.7.1",
 		"eslint-plugin-react": "7.32.2",
 		"nightwatch-axe-verbose": "2.2.0",
-		"npm-check-updates": "16.10.7",
+		"npm-check-updates": "16.10.8",
 		"rimraf": "3.0.2",
 		"ts-prune": "0.10.3",
 		"typescript": "4.9.5"
