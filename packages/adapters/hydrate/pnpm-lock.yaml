@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.13
+  '@public-ui/components': 1.5.0-rc.14
   rimraf: 3.0.2
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.13
+  '@public-ui/components': 1.5.0-rc.14
   rimraf: 3.0.2
 
 packages:
@@ -44,14 +44,14 @@ packages:
       regenerator-runtime: 0.13.11
     dev: true
 
-  /@floating-ui/core/1.2.5:
-    resolution: {integrity: sha512-qrcbyfnRVziRlB6IYwjCopYhO7Vud750JlJyuljruIXcPxr22y8zdckcJGsuOdnQ639uVD1tTXddrcH3t3QYIQ==}
+  /@floating-ui/core/1.2.6:
+    resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
     dev: true
 
   /@floating-ui/dom/1.2.5:
     resolution: {integrity: sha512-+sAUfpQ3Frz+VCbPCqj+cZzvEESy3fjSeT/pDWkYCWOBXYNNKZfuVsHuv8/JO2zze8+Eb/Q7a6hZVgzS81fLbQ==}
     dependencies:
-      '@floating-ui/core': 1.2.5
+      '@floating-ui/core': 1.2.6
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -75,8 +75,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.13:
-    resolution: {integrity: sha512-P7T9D0Qapq/X6nbLCoyCN2N3CaxvnFG/5E8lvAWoEm6bmFKbDGf62ZEaNx3ipaOKOR+PMlNLWd09ZaWqLLqCxw==}
+  /@public-ui/components/1.5.0-rc.14:
+    resolution: {integrity: sha512-MjdpJ2uFLb1gtH3MbHDIcoV35sd0y7w0qWnZtoJJkobiEIZRXGJ3J8X3o0LRULWbnpfxYcR7SfVdBabczU9/FA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.5
