@@ -80,31 +80,33 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property             | Attribute      | Description                                                                                | Type                                                                                     | Default      |
 | -------------------- | -------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------ |
 | `_accessKey`         | `_access-key`  | Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.       | `string \| undefined`                                                                    | `undefined`  |
 | `_alert`             | `_alert`       | Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.                   | `boolean \| undefined`                                                                   | `true`       |
-| `_disabled`          | `_disabled`    | Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.                                | `boolean \| undefined`                                                                   | `undefined`  |
+| `_disabled`          | `_disabled`    | Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.            | `boolean \| undefined`                                                                   | `undefined`  |
 | `_error`             | `_error`       | Gibt den Text für eine Fehlermeldung an.                                                   | `string \| undefined`                                                                    | `undefined`  |
-| `_hideLabel`         | `_hide-label`  | Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.                              | `boolean \| undefined`                                                                   | `undefined`  |
-| `_hint`              | `_hint`        | Gibt den Text für eine Hinweistext an.                                                     | `string \| undefined`                                                                    | `''`         |
+| `_hideLabel`         | `_hide-label`  | Versteckt das sichtbare Label des Elements.                                                | `boolean \| undefined`                                                                   | `undefined`  |
+| `_hint`              | `_hint`        | Gibt den Hinweistext an.                                                                   | `string \| undefined`                                                                    | `''`         |
 | `_id`                | `_id`          | Gibt die technische ID des Eingabefeldes an.                                               | `string \| undefined`                                                                    | `undefined`  |
 | `_list` _(required)_ | `_list`        | Gibt die Liste der Optionen für das Eingabefeld an.                                        | `Option<W3CInputValue>[] \| string`                                                      | `undefined`  |
 | `_name`              | `_name`        | Gibt den technischen Namen des Eingabefeldes an.                                           | `string \| undefined`                                                                    | `undefined`  |
 | `_on`                | --             | Gibt die EventCallback-Funktionen für das Input-Event an.                                  | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
 | `_orientation`       | `_orientation` | Gibt die Ausrichtung der LinkList an.                                                      | `"horizontal" \| "vertical" \| undefined`                                                | `'vertical'` |
-| `_required`          | `_required`    | Gibt an, ob das Eingabefeld ein Pflichtfeld ist.                                           | `boolean \| undefined`                                                                   | `undefined`  |
+| `_required`          | `_required`    | Macht das Eingabeelement zu einem Pflichtfeld.                                             | `boolean \| undefined`                                                                   | `undefined`  |
 | `_tabIndex`          | `_tab-index`   | Gibt an, welchen Tab-Index dieses Input hat.                                               | `number \| undefined`                                                                    | `undefined`  |
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.              | `boolean \| undefined`                                                                   | `false`      |
 | `_value`             | `_value`       | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902) | `number \| string \| undefined`                                                          | `undefined`  |
+
 
 ## Dependencies
 
 ### Used by
 
-- [kol-input-radio-group](../input-radio-group)
+ - [kol-input-radio-group](../input-radio-group)
 
 ### Depends on
 
@@ -112,7 +114,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 - [kol-alert](../alert)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-radio --> kol-input
@@ -123,9 +124,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-alert --> kol-heading-wc
   kol-alert --> kol-button-wc
   kol-alert --> kol-icon
@@ -133,4 +132,6 @@ graph TD;
   style kol-input-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

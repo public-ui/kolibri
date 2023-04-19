@@ -73,14 +73,16 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                | Attribute     | Description                                                                                                                             | Type                                           | Default     |
-| ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `_hasFooter`            | `_has-footer` | Gibt an, ob die Card einen Footer-Bereich hat.                                                                                          | `boolean \| undefined`                         | `false`     |
-| `_heading` _(required)_ | `_heading`    | Gibt die Überschrift der Card an.                                                                                                       | `string`                                       | `undefined` |
-| `_headline`             | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Überschrift der Card an. | `string \| undefined`                          | `undefined` |
-| `_level`                | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                                                                               | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| Property                | Attribute     | Description                                                                                                                            | Type                                           | Default     |
+| ----------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `_hasFooter`            | `_has-footer` | Macht den Footerbereich der Card sichtbar.                                                                                             | `boolean \| undefined`                         | `false`     |
+| `_heading` _(required)_ | `_heading`    | Gibt die Überschrift der Card an.                                                                                                      | `string`                                       | `undefined` |
+| `_headline`             | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property _heading.<br/><br/>Gibt die Überschrift der Card an. | `string \| undefined`                          | `undefined` |
+| `_level`                | `_level`      | Setzt den H-Level, von 1 bis 6, der Überschrift.                                                                                       | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+
 
 ## Slots
 
@@ -90,6 +92,7 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 | `"footer"`  | Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.                            |
 | `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card. |
 
+
 ## Dependencies
 
 ### Depends on
@@ -97,11 +100,12 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 - [kol-heading-wc](../heading)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-card --> kol-heading-wc
   style kol-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

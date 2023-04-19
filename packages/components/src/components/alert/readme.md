@@ -77,6 +77,7 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property     | Attribute     | Description                                                                       | Type                                                                    | Default     |
@@ -84,19 +85,20 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | `_alert`     | `_alert`      | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean \| undefined`                                                  | `false`     |
 | `_hasCloser` | `_has-closer` | Gibt an, ob der Alert ein Schließen-Icon hat.                                     | `boolean \| undefined`                                                  | `false`     |
 | `_heading`   | `_heading`    | Gibt den Titel der Meldung an.                                                    | `string \| undefined`                                                   | `undefined` |
-| `_level`     | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                         | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
+| `_level`     | `_level`      | Setzt den H-Level, von 1 bis 6, der Überschrift.                                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
 | `_on`        | --            | Gibt die EventCallback-Function für das Schließen des Alerts an.                  | `undefined \| { onClose?: EventCallback<Event> \| undefined; }`         | `undefined` |
 | `_type`      | `_type`       | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 | `_variant`   | `_variant`    | Gibt an, welche Benachrichtigungsvariante dargestellt wird.                       | `"card" \| "msg" \| undefined`                                          | `'msg'`     |
+
 
 ## Dependencies
 
 ### Used by
 
-- kol-input
-- [kol-input-adapter-leanup](../input-adapter-leanup)
-- [kol-input-radio](../input-radio)
-- [kol-toast](../toast)
+ - kol-input
+ - [kol-input-adapter-leanup](../input-adapter-leanup)
+ - [kol-input-radio](../input-radio)
+ - [kol-toast](../toast)
 
 ### Depends on
 
@@ -105,7 +107,6 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 - [kol-icon](../icon)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-alert --> kol-heading-wc
@@ -114,9 +115,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-input --> kol-alert
   kol-input-adapter-leanup --> kol-alert
   kol-input-radio --> kol-alert
@@ -124,4 +123,6 @@ graph TD;
   style kol-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+
