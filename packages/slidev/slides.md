@@ -324,11 +324,11 @@ Lasst uns gemeinsam KoliBri bunter und besser machen!<br/><br/></small>
 
 
 <ul class="flex">
-  <li class="list-none"><kol-link _href="https://public-ui.github.io" _target="storybook"><kol-icon _icon="codicon codicon-book" /> Dokumentation</kol-link></li>
+  <li class="list-none"><kol-link _href="https://public-ui.github.io" _target="website"><kol-icon _icon="codicon codicon-book" /> Dokumentation</kol-link></li>
   <li class="list-none">|</li>
-  <li class="list-none"><kol-link _href="mailto:kolibri@itzbund.de" _target="storybook"><kol-icon _icon="codicon codicon-mail" /> kolibri@itzbund.de</kol-link></li>
+  <li class="list-none"><kol-link _href="mailto:kolibri@itzbund.de" _target="mail"><kol-icon _icon="codicon codicon-mail" /> kolibri@itzbund.de</kol-link></li>
   <li class="list-none">|</li>
-  <li class="list-none"><kol-link _href="https://github.com/public-ui" _target="storybook"><kol-icon _icon="codicon codicon-github" /> GitHub</kol-link></li>
+  <li class="list-none"><kol-link _href="https://github.com/public-ui/kolibri" _target="github"><kol-icon _icon="codicon codicon-github" /> GitHub</kol-link></li>
 </ul>
 
 ---
