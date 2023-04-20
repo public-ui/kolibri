@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/types': 7.21.4
-  '@public-ui/components': 1.5.0-rc.14
+  '@public-ui/components': 1.5.0-rc.15
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -13,7 +13,7 @@ specifiers:
 
 devDependencies:
   '@babel/types': 7.21.4
-  '@public-ui/components': 1.5.0-rc.14
+  '@public-ui/components': 1.5.0-rc.15
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': 18.15.11
@@ -447,8 +447,8 @@ packages:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
     dev: true
 
-  /@floating-ui/dom/1.2.5:
-    resolution: {integrity: sha512-+sAUfpQ3Frz+VCbPCqj+cZzvEESy3fjSeT/pDWkYCWOBXYNNKZfuVsHuv8/JO2zze8+Eb/Q7a6hZVgzS81fLbQ==}
+  /@floating-ui/dom/1.2.6:
+    resolution: {integrity: sha512-02vxFDuvuVPs22iJICacezYJyf7zwwOCWkPNkWNBr1U0Qt1cKFYzWvxts0AmqcOQGwt/3KJWcWIgtbUU38keyw==}
     dependencies:
       '@floating-ui/core': 1.2.6
     dev: true
@@ -508,11 +508,11 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.14:
-    resolution: {integrity: sha512-MjdpJ2uFLb1gtH3MbHDIcoV35sd0y7w0qWnZtoJJkobiEIZRXGJ3J8X3o0LRULWbnpfxYcR7SfVdBabczU9/FA==}
+  /@public-ui/components/1.5.0-rc.15:
+    resolution: {integrity: sha512-0SmQEbNmSeddb5KwJUkot+Uelx1XyB/NSC67pDEbKgPjxjaQL4cWzG8uJrMS0hDlDAJDMUem6bnJbsN54dOiCA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
-      '@floating-ui/dom': 1.2.5
+      '@floating-ui/dom': 1.2.6
       cpy-cli: 4.2.0
       i18next: 22.4.14
       npm-run-all: 4.1.5

@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.14
-  '@public-ui/react': 1.5.0-rc.14
+  '@public-ui/components': 1.5.0-rc.15
+  '@public-ui/react': 1.5.0-rc.15
   preact: '>=10.11.3'
   react: 18.2.0
   react-dom: 18.2.0
@@ -10,11 +10,11 @@ specifiers:
   unbuild: 1.1.2
 
 dependencies:
-  '@public-ui/react': 1.5.0-rc.14_elpxjtluz2blvcbgmehmaodkoi
+  '@public-ui/react': 1.5.0-rc.15_3ikkjz4vzqsg4via7iy3a4ew3m
   preact: 10.13.2
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.14
+  '@public-ui/components': 1.5.0-rc.15
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -439,8 +439,8 @@ packages:
   /@floating-ui/core/1.2.6:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
 
-  /@floating-ui/dom/1.2.5:
-    resolution: {integrity: sha512-+sAUfpQ3Frz+VCbPCqj+cZzvEESy3fjSeT/pDWkYCWOBXYNNKZfuVsHuv8/JO2zze8+Eb/Q7a6hZVgzS81fLbQ==}
+  /@floating-ui/dom/1.2.6:
+    resolution: {integrity: sha512-02vxFDuvuVPs22iJICacezYJyf7zwwOCWkPNkWNBr1U0Qt1cKFYzWvxts0AmqcOQGwt/3KJWcWIgtbUU38keyw==}
     dependencies:
       '@floating-ui/core': 1.2.6
 
@@ -496,23 +496,23 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@public-ui/components/1.5.0-rc.14:
-    resolution: {integrity: sha512-MjdpJ2uFLb1gtH3MbHDIcoV35sd0y7w0qWnZtoJJkobiEIZRXGJ3J8X3o0LRULWbnpfxYcR7SfVdBabczU9/FA==}
+  /@public-ui/components/1.5.0-rc.15:
+    resolution: {integrity: sha512-0SmQEbNmSeddb5KwJUkot+Uelx1XyB/NSC67pDEbKgPjxjaQL4cWzG8uJrMS0hDlDAJDMUem6bnJbsN54dOiCA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
-      '@floating-ui/dom': 1.2.5
+      '@floating-ui/dom': 1.2.6
       cpy-cli: 4.2.0
       i18next: 22.4.14
       npm-run-all: 4.1.5
 
-  /@public-ui/react/1.5.0-rc.14_elpxjtluz2blvcbgmehmaodkoi:
-    resolution: {integrity: sha512-j4BJ4gn+8p+J9QPE01APWY4o46ko6R5UskkwV27zG7HQJCGYs2w2FXNAbuA7VPy0+QGG8uYuWdOSj1OmS2h5MA==}
+  /@public-ui/react/1.5.0-rc.15_3ikkjz4vzqsg4via7iy3a4ew3m:
+    resolution: {integrity: sha512-4/Lh1UaOFxLsQ/glf5IwW6OBIvsEK3f6xRX9PDUfK4XYadAJ3DBbDpCm4Dom3j+AT9HdHOQsKSfnFSWTqOcr8g==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.14
+      '@public-ui/components': 1.5.0-rc.15
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.14
+      '@public-ui/components': 1.5.0-rc.15
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
