@@ -21,6 +21,9 @@ export const InputTextBasic: FC = () => (
 					},
 				},
 			}}
+			_on={{
+				onBlur: console.log,
+			}}
 			_hideLabel
 			_required
 			_smartButton={{
