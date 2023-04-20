@@ -41,6 +41,7 @@ export class KolInputColor implements ComponentApi {
 					_list={this.state._list}
 					_smartButton={this.state._smartButton}
 					_touched={this.state._touched}
+					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
 						<slot />

@@ -61,6 +61,7 @@ export class KolInputEmail implements ComponentApi {
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
 					_touched={this.state._touched}
+					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
 						<slot />
