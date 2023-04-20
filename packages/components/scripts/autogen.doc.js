@@ -33,6 +33,14 @@ const reverseString = (str) => {
 rimraf('doc/*.md', () => {
 	README_PATHS.forEach((readmePath) => {
 		const name = reverseString(reverseString(path.dirname(readmePath)).replace(/\/.+/g, ''));
-		fs.writeFileSync(`${DOC_FOLDER}/${name}.md`, fs.readFileSync(readmePath, 'utf-8').replace('style="color:red"', 'class="text-red-500"'), 'utf-8');
+		fs.writeFileSync(
+			`${DOC_FOLDER}/${name}.md`,
+			fs
+				.readFileSync(readmePath, 'utf-8')
+				.replace('style="color:red"', 'class="text-red-500"')
+				.replace(/ \\\| /g, '` \\| `'),
+			'utf-8'
+		);
+		console.log(`Generated ${name}.md`);
 	});
 });
