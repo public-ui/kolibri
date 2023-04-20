@@ -13,7 +13,7 @@ textarea {
 	flex-grow: 1;
 }
 
-/* input:not([type='checkbox'], [type='radio']), */
+input:not([type='checkbox'], [type='radio']),
 select:not([multiple]) {
 	height: 2.75em;
 }

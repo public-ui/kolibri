@@ -14,7 +14,8 @@ kol-input.switch {
 	grid-template-columns: auto 1fr;
 }
 kol-input .input {
-	display: inline-flex;
+	align-items: center;
+	display: grid;
 	order: 1;
 }
 kol-input .input div {

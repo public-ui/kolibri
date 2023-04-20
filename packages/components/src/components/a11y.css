@@ -32,7 +32,8 @@
  * All interactive elements should have a minimum size of 44px.
  */
 *[role='button'],
-button:not([role='link'])
+button:not([role='link']),
+kol-input .input
 /* input:not([type='checkbox'], [type='radio'], [type='range']), */
 /* option, */
 /* select, */

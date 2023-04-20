@@ -57,6 +57,7 @@ export class KolTextarea implements ComponentApi {
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_touched={this.state._touched}
+					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
 						<slot />
