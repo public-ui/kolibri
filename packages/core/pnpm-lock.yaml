@@ -7,7 +7,7 @@ specifiers:
   '@typescript-eslint/parser': 5.59.0
   eslint: 8.38.0
   eslint-plugin-no-loops: 0.3.0
-  npm-check-updates: 16.10.9
+  npm-check-updates: 16.10.8
   prettier: 2.8.7
   ts-prune: 0.10.3
   typescript: 4.9.5
@@ -17,12 +17,12 @@ dependencies:
   '@public-ui/components': 1.5.0-rc.15
 
 devDependencies:
-  '@types/node': 18.15.13
+  '@types/node': 18.15.11
   '@typescript-eslint/eslint-plugin': 5.59.0_fdxyi3g57a6lyb5rx36h2olw2q
   '@typescript-eslint/parser': 5.59.0_ze6bmax3gcsfve3yrzu6npguhe
   eslint: 8.38.0
   eslint-plugin-no-loops: 0.3.0_eslint@8.38.0
-  npm-check-updates: 16.10.9
+  npm-check-updates: 16.10.8
   prettier: 2.8.7
   ts-prune: 0.10.3
   typescript: 4.9.5
@@ -1031,8 +1031,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: false
 
-  /@types/node/18.15.13:
-    resolution: {integrity: sha512-N+0kuo9KgrUQ1Sn/ifDXsvg0TTleP7rIy4zOBGECxAljqvqfqpTfzx0Q1NUedOixRMBfe2Whhb056a42cWs26Q==}
+  /@types/node/18.15.11:
+    resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1658,7 +1658,7 @@ packages:
       arrify: 3.0.0
       cp-file: 9.1.0
       globby: 13.1.4
-      junk: 4.0.1
+      junk: 4.0.0
       micromatch: 4.0.5
       nested-error-stacks: 2.1.1
       p-filter: 3.0.0
@@ -1857,7 +1857,7 @@ packages:
       object-inspect: 1.12.3
       object-keys: 1.1.1
       object.assign: 4.1.4
-      regexp.prototype.flags: 1.5.0
+      regexp.prototype.flags: 1.4.3
       safe-regex-test: 1.0.0
       string.prototype.trim: 1.2.7
       string.prototype.trimend: 1.0.6
@@ -2883,8 +2883,8 @@ packages:
     engines: {'0': node >= 0.2.0}
     dev: true
 
-  /junk/4.0.1:
-    resolution: {integrity: sha512-Qush0uP+G8ZScpGMZvHUiRfI0YBWuB3gVBYlI0v0vvOJt5FLicco+IkP0a50LqTTQhmts/m6tP5SWE+USyIvcQ==}
+  /junk/4.0.0:
+    resolution: {integrity: sha512-ojtSU++zLJ3jQG9bAYjg94w+/DOJtRyD7nPaerMFrBhmdVmiV5/exYH5t4uHga4G/95nT6hr1OJoKIFbYbrW5w==}
     engines: {node: '>=12.20'}
     dev: false
 
@@ -3373,8 +3373,8 @@ packages:
       npm-normalize-package-bin: 3.0.0
     dev: true
 
-  /npm-check-updates/16.10.9:
-    resolution: {integrity: sha512-J3ggasYJIFB+XqAT9qQcAAOKehpCXGRoZWlK4/u5YAOZB6hmM4CxdrxCA7A34hBK5zaPIEBnMqWBSV7mU6nixg==}
+  /npm-check-updates/16.10.8:
+    resolution: {integrity: sha512-e+p3rUCvaU0iKOvi+/Xiyx+mLe9/aRTu9Zrc7+TR6H2q+uFgmXEwqbXYN9Ngqsta8gdTjpn751UD5MEOogO5cA==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -3618,7 +3618,7 @@ packages:
       promise-retry: 2.0.1
       read-package-json: 6.0.1
       read-package-json-fast: 3.0.2
-      sigstore: 1.3.2
+      sigstore: 1.3.0
       ssri: 10.0.3
       tar: 6.1.13
     transitivePeerDependencies:
@@ -3894,8 +3894,8 @@ packages:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: false
 
-  /regexp.prototype.flags/1.5.0:
-    resolution: {integrity: sha512-0SutC3pNudRKgquxGoRGIz946MZVHqbNfPjBdxeOhBrdgDKlRoXmYLQN9xRbrR09ZXWeGAdPuif7egofn6v5LA==}
+  /regexp.prototype.flags/1.4.3:
+    resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
@@ -4094,8 +4094,8 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /sigstore/1.3.2:
-    resolution: {integrity: sha512-0KT1DjpVB11FK15ep7BIsZQV6j1jBm4SnXIInbBCRvql6II39IKONOMO+j036sGsArU/+2xqa1NDJwJkic0neA==}
+  /sigstore/1.3.0:
+    resolution: {integrity: sha512-dhdv+jOAi1RgLHw13lxumk3rlgZtumUz9QrCNPTx9MazUnUV3BfAb74oYAMPQQ7uaeogB5vTosbz3POzKbEHUQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     hasBin: true
     dependencies:
