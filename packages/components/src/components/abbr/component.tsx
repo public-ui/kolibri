@@ -35,7 +35,7 @@ export class KolAbbr implements API {
 	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
-	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+	 * Gibt die Beschreibung oder Erläuterung der Abkürzung an.
 	 */
 	@Prop() public _title!: string;
 
