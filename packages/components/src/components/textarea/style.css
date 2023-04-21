@@ -3,3 +3,6 @@
 textarea {
 	width: 100%;
 }
+div.input {
+	cursor: text;
+}
