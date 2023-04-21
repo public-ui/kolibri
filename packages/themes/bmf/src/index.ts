@@ -56,13 +56,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		margin: 0;
 		padding: 0;
 	}
-	input,
-	option,
-	select,
-	summary,
-	textarea {
-		display: inline-block;
-	}
 	a,
 	button,
 	input,
@@ -70,8 +63,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 	select,
 	summary,
 	textarea {
-		-ms-hyphens: auto;
-		-webkit-hyphens: auto;
 		hyphens: auto;
 		letter-spacing: inherit;
 		word-break: break-word;
@@ -111,6 +102,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-span-wc,
 	kol-span-wc > span {
 		gap: 0.5em;
+	}
+	input:not([type="checkbox"], [type="radio"]) {
+		background-color: transparent;
+		height: 0;
 	}`,
 	'KOL-BUTTON': `:host {
 		display: inline-block;
@@ -711,98 +706,68 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: white;
 	}`,
 	'KOL-TEXTAREA': `kol-input {
-		display: grid;
 		gap: 0.4em;
+	}
+	kol-input .error {
+		order: 1;
 	}
 	kol-input label {
 		order: 2;
 	}
-	kol-input div.input {
-		box-sizing: border-box;
+	kol-input .input {
 		order: 3;
-		background-color: white;
-		border-radius: 0.3125rem;
 	}
-	kol-input kol-alert.error {
-		order: 1;
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grey);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.625em 0.875em;
-		border-radius: 0.3125rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input,
-	select:not([multiple]) {
-		height: 2.75em;
+	input {
+		border: none;
+		line-height: 1em;
+		min-height: 40px !important;
+		padding: 0.625em 0;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
-	input:hover {
+	.input {
+		border-color: var(--color-grey);
+		border-radius: 0.3125rem;
+		border-style: solid;
+		border-width: 2px;
+		height: 44px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
 		border-color: var(--color-midnight);
 	}
 	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
 		cursor: not-allowed;
-		border-color: var(--border-default);
 	}
 	.required label > span::after {
 		content: "*";
 		padding-left: 0.125em;
 	}
-	.icons {
-		display: flex;
-		justify-content: space-between;
-		height: 0;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
 	kol-input.error {
 		border-left: 3px solid var(--color-red);
 		padding-left: 1em;
 	}
-	kol-input.error input:focus,
-	kol-input.error select:focus,
-	kol-input.error textarea:focus {
+	kol-input.error .input:focus-within {
 		outline-color: var(--color-red) !important;
 	}
 	kol-input.error kol-alert.error {
 		color: var(--color-red);
 		font-weight: 700;
-	}
-	kol-button-wc {
-		position: relative;
-		float: right;
-		z-index: 1000;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-	}
-	kol-button-wc button kol-span-wc {
-		border: 1px solid var(--color-grey);
-		display: grid;
-		min-height: 44px;
-		min-width: 44px;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
 	}
 	.disabled {
 		opacity: 0.33;
@@ -1937,13 +1902,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	fieldset div input[type="radio"]:before {
 		content: "";
 		cursor: pointer;
-		left: calc(1.5 * var(--spacing) - 2px);
-		top: calc(1.5 * var(--spacing) - 2px);
-		position: relative;
 		border-radius: 100%;
 		display: block;
-		height: calc(3 * var(--spacing));
-		width: calc(3 * var(--spacing));
 	}
 	fieldset div input[type="radio"]:checked:before {
 		background-color: var(--color-midnight);
