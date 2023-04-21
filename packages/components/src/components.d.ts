@@ -168,7 +168,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -255,7 +255,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -325,7 +325,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -1494,7 +1494,7 @@ export namespace Components {
     }
     interface KolLink {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -1581,7 +1581,7 @@ export namespace Components {
     }
     interface KolLinkButton {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -1687,7 +1687,7 @@ export namespace Components {
     }
     interface KolLinkWc {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -2752,7 +2752,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -2839,7 +2839,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -2909,7 +2909,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -4078,7 +4078,7 @@ declare namespace LocalJSX {
     }
     interface KolLink {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -4165,7 +4165,7 @@ declare namespace LocalJSX {
     }
     interface KolLinkButton {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -4271,7 +4271,7 @@ declare namespace LocalJSX {
     }
     interface KolLinkWc {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
