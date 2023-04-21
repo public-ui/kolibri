@@ -1,20 +1,16 @@
-@import '../style.css';
-
+@import url(../style.css);
 .list {
 	display: flex;
 	list-style: none;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
-
 .list.vertical {
 	flex-direction: column;
 }
-
 .entry {
 	display: flex;
 }
-
 .entry kol-button-wc:first-child,
 .entry kol-link-wc,
 .entry kol-span-wc {

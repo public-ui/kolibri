@@ -1,5 +1,4 @@
-@import '../../assets/codicons/codicon.css';
-
+@import url(../../assets/codicons/codicon.css);
 :host {
 	color: inherit;
 	display: contents;
@@ -7,11 +6,10 @@
 	line-height: inherit;
 	width: 1em;
 }
-
-/**
+/*
  * The <code>:important</code> is important, because we should always override the font icon style.
  */
 :host > i,
-:host > i::before {
+:host > i:before {
 	font-size: inherit !important;
 }

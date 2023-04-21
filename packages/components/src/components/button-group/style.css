@@ -1,5 +1,4 @@
-@import '../style.css';
-
+@import url(../style.css);
 :host > kol-button-group-wc {
 	display: inline-flex;
 	flex-wrap: wrap;

@@ -51,8 +51,8 @@
 		"wcag"
 	],
 	"scripts": {
-		"build": "npm run test && npm run build:light && node scripts/cheat-sheet.js && node scripts/vaadin.js && npm run format -- -w",
-		"build:light": "npm run clear && mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/hashing.js && node scripts/autogen.doc.js",
+		"build": "npm run test && npm run build:light",
+		"build:light": "npm run clear && mkdir doc && node scripts/transform.css.js && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/hashing.js && node scripts/autogen.doc.js && node scripts/cheat-sheet.js && node scripts/vaadin.js && npm run format -- -w",
 		"clear": "rimraf dist doc loader www ../adapters/angular/v11/src ../adapters/angular/v12/src ../adapters/angular/v13/src ../adapters/angular/v14/src ../adapters/angular/v15/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@public-ui/*,@stencil/*,eslint-*,postcss-windicss,tslib,workbox-build",
 		"format": "prettier --check src",
@@ -92,6 +92,7 @@
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
 		"cross-env": "7.0.3",
+		"clean-css": "5.3.2",
 		"cssnano": "5.1.15",
 		"eslint": "8.38.0",
 		"eslint-config-prettier": "8.8.0",
