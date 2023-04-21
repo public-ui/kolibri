@@ -38,9 +38,9 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "file:../components/public-ui-components-1.5.0-rc.16.tgz",
+		"@public-ui/components": "1.5.0-rc.16",
 		"@public-ui/solid": "1.5.0-rc.16",
-		"@public-ui/themes": "file:../themes/public-ui-themes-1.5.0-rc.16.tgz",
+		"@public-ui/themes": "1.5.0-rc.16",
 		"monaco-editor": "0.37.1",
 		"monaco-editor-webpack-plugin": "7.0.1",
 		"prettier": "2.8.7",
