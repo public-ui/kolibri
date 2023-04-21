@@ -2,12 +2,7 @@
 kol-input {
 	display: grid;
 }
-input:not([type='checkbox'], [type='radio']),
-option,
-select,
-textarea {
-	/* display: block;
-	line-height: 2.5em; */
+kol-input [slot='input'] {
 	flex-grow: 1;
 }
 input:not([type='checkbox'], [type='radio']),
