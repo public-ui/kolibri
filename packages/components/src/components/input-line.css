@@ -7,7 +7,7 @@ kol-input {
 input:not([type='checkbox'], [type='radio']),
 option,
 select,
-textarea {
+div[slot='input'] {
 	/* display: block;
 	line-height: 2.5em; */
 	flex-grow: 1;
