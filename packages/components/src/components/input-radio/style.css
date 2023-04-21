@@ -1,18 +1,14 @@
-@import '../input.css';
-
+@import url(../input.css);
 :host {
 	--border-width: 2px;
 	--input-size: 1.5em;
 }
-
 kol-input .icons {
 	display: none;
 }
-
 label {
 	cursor: pointer;
 }
-
 input {
 	appearance: none;
 	border-width: var(--border-width);
@@ -35,22 +31,18 @@ input:before {
 	width: calc(var(--input-size) / 2);
 }
 input:checked:before {
-	background-color: black;
+	background-color: #000;
 }
-
 fieldset {
 	display: flex;
 }
-
 fieldset.vertical {
 	flex-direction: column;
 }
-
 fieldset [slot='input'] {
 	align-items: center;
 	display: flex;
 }
-
 /* required star is on fieldset legend */
 .required label > span::after {
 	content: '';

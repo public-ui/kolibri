@@ -6,7 +6,7 @@ import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from './validation';
 
 type RequiredProps = {
-	headline: string;
+	label: string;
 };
 type OptionalProps = {
 	secondaryHeadline: string;
@@ -15,7 +15,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	headline: string;
+	label: string;
 	level: HeadingLevel;
 };
 type OptionalStates = {
@@ -31,7 +31,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	/**
 	 * Gibt den Text der Überschrift an.
 	 */
-	@Prop() public _headline!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
@@ -44,13 +44,13 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _secondaryHeadline?: string;
 
 	@State() public state: States = {
-		_headline: '…', // ⚠ required
+		_label: '…', // ⚠ required
 		_level: 1,
 	};
 
-	@Watch('_headline')
-	public validateHeadline(value?: string): void {
-		watchString(this, '_headline', value);
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		watchString(this, '_label', value);
 	}
 
 	@Watch('_level')
@@ -64,7 +64,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	}
 
 	public componentWillLoad(): void {
-		this.validateHeadline(this._headline);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateSecondaryHeadline(this._secondaryHeadline);
 	}
@@ -147,11 +147,11 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 			<Host>
 				{typeof this.state._secondaryHeadline === 'string' && this.state._secondaryHeadline.length > 0 ? (
 					<hgroup>
-						{this.renderHeadline(this.state._headline, this.state._level)}
+						{this.renderHeadline(this.state._label, this.state._level)}
 						{this.state._secondaryHeadline && this.renderSecondaryHeadline(this.state._secondaryHeadline, this.state._level + 1)}
 					</hgroup>
 				) : (
-					this.renderHeadline(this.state._headline, this.state._level)
+					this.renderHeadline(this.state._label, this.state._level)
 				)}
 			</Host>
 		);

@@ -1,22 +1,15 @@
-@import '../style.css';
-
+@import url(../style.css);
 progress,
 span {
 	display: block;
-	height: 0px;
+	height: 0;
 	overflow: hidden;
-	width: 0px;
+	width: 0;
 }
-
 .bar,
 .cycle {
-	transition: all 0.5s ease-in-out 0s;
-	transition-property: all;
-	transition-duration: 0.5s;
-	transition-timing-function: ease-in-out;
-	transition-delay: 0.25s;
+	transition: 0.5s ease-in-out 0.25s;
 }
-
 .cycle {
 	transform-origin: 50% 50%;
 	transform: rotate(-90deg);

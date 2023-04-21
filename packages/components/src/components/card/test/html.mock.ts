@@ -15,7 +15,7 @@ export const getCardHtml = (props: Props): string => {
 			<div class="header">
 				${getHeadingWcHtml(
 					{
-						_headline: props._heading,
+						_label: props._heading,
 						_level: props._level,
 					},
 					{

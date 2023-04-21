@@ -43,7 +43,7 @@ export class KolAccordion implements API {
 						close: this.state._open !== true,
 					}}
 				>
-					<kol-heading-wc _headline="" _level={this.state._level}>
+					<kol-heading-wc _label="" _level={this.state._level}>
 						<kol-button-wc
 							// slot="expert"
 							_ariaControls={this.nonce}

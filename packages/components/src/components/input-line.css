@@ -1,9 +1,7 @@
-@import './input.css';
-
+@import url(input.css);
 kol-input {
 	display: grid;
 }
-
 input:not([type='checkbox'], [type='radio']),
 option,
 select,
@@ -12,19 +10,16 @@ div[slot='input'] {
 	line-height: 2.5em; */
 	flex-grow: 1;
 }
-
 input:not([type='checkbox'], [type='radio']),
 select:not([multiple]) {
 	height: 2.75em;
 }
-
 input:focus,
 option:focus,
 select:focus,
 textarea:focus {
-	outline: none;
+	outline: 0;
 }
-
 .input {
 	display: flex;
 	align-items: center;
