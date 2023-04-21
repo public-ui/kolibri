@@ -1,14 +1,11 @@
-@import '../input-line.css';
-
+@import url(../input-line.css);
 label input[type='file']::-webkit-file-upload-button {
 	display: none;
 }
-
-label input[type='file']::before {
+label input[type='file']:before {
 	content: 'Datei auswählen';
 }
-
-label input[multiple]::before {
+label input[multiple]:before {
 	content: 'Dateien auswählen';
 }
 

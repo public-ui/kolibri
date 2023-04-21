@@ -1,6 +1,5 @@
-@import '../style.css';
-@import '../host-display-block.css';
-
+@import url(../style.css);
+@import url(../host-display-block.css);
 kol-button-group-wc {
 	display: inline-flex;
 	flex-wrap: wrap;
@@ -11,14 +10,10 @@ kol-button-group-wc button {
 	border-bottom-style: solid;
 	display: block;
 }
-
+div.grid,
 div[role='tabpanel'] {
 	height: 100%;
 }
-div.grid {
-	height: 100%;
-}
-
 :host > .tabs-align-right {
 	display: grid;
 	grid-template-columns: 1fr auto;
@@ -27,7 +22,6 @@ div.grid {
 	display: grid;
 	order: 2;
 }
-
 :host > .tabs-align-left {
 	display: grid;
 	grid-template-columns: auto 1fr;
@@ -36,7 +30,6 @@ div.grid {
 	display: grid;
 	order: 0;
 }
-
 :host > .tabs-align-bottom {
 	display: grid;
 	grid-template-rows: 1fr auto;
@@ -48,12 +41,11 @@ div.grid {
 	display: flex;
 }
 :host > .tabs-align-bottom > kol-button-group-wc > div > div:first-child {
-	margin: 0px 1em 0px 0px;
+	margin: 0 1em 0 0;
 }
 :host > .tabs-align-bottom > kol-button-group-wc > div > div {
-	margin: 0px 1em;
+	margin: 0 1em;
 }
-
 :host > .tabs-align-top {
 	display: grid;
 	grid-template-rows: auto 1fr;
@@ -65,16 +57,14 @@ div.grid {
 	display: flex;
 }
 :host > .tabs-align-top > kol-button-group-wc > div > div:first-child {
-	margin: 0px 1em 0px 0px;
+	margin: 0 1em 0 0;
 }
 :host > .tabs-align-top > kol-button-group-wc > div > div {
-	margin: 0px 1em;
+	margin: 0 1em;
 }
-
 :host > div {
 	display: grid;
 }
-
 :host > .tabs-align-left kol-button-group-wc,
 :host > .tabs-align-top kol-button-group-wc {
 	order: 0;

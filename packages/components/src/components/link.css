@@ -1,9 +1,7 @@
-@import './style.css';
-
+@import url(style.css);
 :host {
 	display: inline-block;
 }
-
 :is(a, button) {
 	align-items: baseline;
 	display: inline-flex;
@@ -11,16 +9,13 @@
 	text-align: left;
 	text-decoration-line: underline;
 }
-
 :is(a, button):is(:focus, :hover) {
 	text-decoration-thickness: 0.2em;
 }
-
 .hidden {
 	display: none;
 	visibility: hidden;
 }
-
 .skip {
 	left: -99999px;
 	overflow: hidden;
@@ -29,12 +24,11 @@
 	line-height: 1em;
 }
 .skip:focus {
-	background-color: white;
+	background-color: #fff;
 	left: unset;
 	padding: 1em;
 	position: unset;
 }
-
 kol-icon.external-link-icon {
 	display: inline-flex;
 }

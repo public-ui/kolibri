@@ -16,7 +16,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_headline: ['Headline'],
+		_label: ['Headline'],
 		_level: [1, 2, 3, 4, 5, 6],
 		// _secondaryHeadline: ['Secondary Headline'],
 	},

@@ -77,7 +77,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
 

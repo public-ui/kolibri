@@ -9,8 +9,8 @@ import { Alignment, AriaCurrent } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
+import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
@@ -24,6 +24,7 @@ import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
+import { Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -41,8 +42,8 @@ export { Alignment, AriaCurrent } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-export { KoliBriColor } from "./components/badge/component";
 export { Stringified } from "./types/common";
+export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { KoliBriFormCallbacks } from "./components/form/component";
@@ -56,6 +57,7 @@ export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
+export { Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -132,7 +134,7 @@ export namespace Components {
         /**
           * Setzt die Hintergrundfarbe.
          */
-        "_color"?: string | KoliBriColor;
+        "_color"?: Stringified<PropColor>;
         /**
           * Iconklasse (z.B.: "codicon codicon-home")
          */
@@ -443,7 +445,7 @@ export namespace Components {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
@@ -457,7 +459,7 @@ export namespace Components {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
@@ -1484,7 +1486,7 @@ export namespace Components {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: string;
+        "_color"?: Stringified1<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -1831,7 +1833,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
+          * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -2716,7 +2718,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Hintergrundfarbe.
          */
-        "_color"?: string | KoliBriColor;
+        "_color"?: Stringified<PropColor>;
         /**
           * Iconklasse (z.B.: "codicon codicon-home")
          */
@@ -3027,7 +3029,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
@@ -3041,7 +3043,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
@@ -4068,7 +4070,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: string;
+        "_color"?: Stringified1<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -4415,7 +4417,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
+          * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
