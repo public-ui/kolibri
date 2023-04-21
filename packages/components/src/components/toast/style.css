@@ -1,8 +1,8 @@
-@import '../style.css';
-@import '../host-display-block.css';
-
+@import url(../style.css);
+@import url(../host-display-block.css);
 :host > div {
-	background-color: white; /* needed for overlay situations */
+	background-color: #fff;
+	/* needed for overlay situations */
 	height: 0;
 	left: 0;
 	position: fixed;
@@ -10,13 +10,11 @@
 	width: 100%;
 	z-index: 200;
 }
-
 :host > div > kol-alert {
 	display: block;
 	margin: auto;
 	max-width: 750px;
 }
-
 :host > div > kol-button-wc {
 	display: block;
 	margin: auto;

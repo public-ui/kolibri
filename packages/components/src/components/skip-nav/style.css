@@ -1,5 +1,4 @@
-@import '../style.css';
-
+@import url(../style.css);
 ul {
 	display: grid;
 	list-style: none;

@@ -1,5 +1,4 @@
-@import '../style.css';
-
+@import url(../style.css);
 cite,
 figure,
 q + figcaption {
@@ -7,20 +6,18 @@ q + figcaption {
 	margin: 0;
 	padding: 0;
 }
-
-blockquote::before {
+blockquote:before {
 	content: open-quote;
 }
 blockquote::after {
 	content: close-quote;
 }
-
-cite::before {
+cite:before {
 	content: '—';
 }
-.block cite::before {
+.block cite:before {
 	padding-right: 0.5em;
 }
-.inline cite::before {
+.inline cite:before {
 	padding: 0.5em;
 }

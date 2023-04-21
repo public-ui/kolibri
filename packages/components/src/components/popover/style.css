@@ -1,12 +1,10 @@
-@import '../style.css';
-
+@import url(../style.css);
 :host {
 	height: 0;
 	position: absolute;
 }
-
 .popover {
-	background-color: white;
+	background-color: #fff;
 	box-sizing: border-box;
 	opacity: 0;
 	position: absolute;
@@ -15,12 +13,11 @@
 	display: none;
 }
 .show {
-	animation: fadeInOpacity 300ms ease-in forwards;
+	animation: 0.3s ease-in forwards fadeInOpacity;
 }
 .disappear {
-	animation: fadeInOpacity 300ms ease-in backwards;
+	animation: 0.3s ease-in backwards fadeInOpacity;
 }
-
 .arrow {
 	background-color: inherit;
 	height: var(--font-size);
@@ -29,7 +26,6 @@
 	width: var(--font-size);
 	z-index: -1;
 }
-
 @keyframes fadeInOpacity {
 	0% {
 		opacity: 0;

@@ -1,6 +1,5 @@
-@import '../style.css';
-@import '../host-display-block.css';
-
+@import url(../style.css);
+@import url(../host-display-block.css);
 details {
 	display: grid;
 }
@@ -13,11 +12,11 @@ details > summary > span {
 	border-bottom-color: grey;
 	border-bottom-style: solid;
 }
-details[open] > summary > span,
 details > summary:focus > span,
-details > summary:hover > span {
-	border-bottom-color: black;
+details > summary:hover > span,
+details[open] > summary > span {
+	border-bottom-color: #000;
 }
 details > kol-indented-text {
-	margin: 0.25em 0px 0px 0.5em;
+	margin: 0.25em 0 0 0.5em;
 }

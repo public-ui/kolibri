@@ -1,5 +1,4 @@
-@import '../style.css';
-
+@import url(../style.css);
 text {
 	font-size: 90px;
 	letter-spacing: normal;

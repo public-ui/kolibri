@@ -1,5 +1,4 @@
-@import '../style.css';
-
+@import url(../style.css);
 kol-tooltip #floating {
 	animation-duration: 0.5s;
 	animation-iteration-count: 1;
@@ -10,7 +9,6 @@ kol-tooltip #floating {
 	position: absolute;
 	visibility: hidden;
 }
-
 kol-tooltip #arrow {
 	height: 10px;
 	position: absolute;
@@ -18,17 +16,14 @@ kol-tooltip #arrow {
 	width: 10px;
 	z-index: 999;
 }
-
 kol-tooltip .area {
-	background-color: white;
-	color: black;
+	background-color: #fff;
+	color: #000;
 }
-
 kol-tooltip kol-span-wc {
 	position: relative;
 	z-index: 1000;
 }
-
 @keyframes fadeInOpacity {
 	0% {
 		opacity: 0;
