@@ -5,6 +5,8 @@ textarea {
 	cursor: text;
 }
 input[type='checkbox'],
+input[type='color'],
+input[type='file'],
 input[type='radio'],
 input[type='range'],
 label,

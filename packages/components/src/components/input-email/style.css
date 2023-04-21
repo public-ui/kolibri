@@ -1,1 +1,5 @@
 @import url(../input-line.css);
+
+div.input {
+	cursor: text;
+}
