@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-bpa",
-	"version": "1.5.0-rc.15",
+	"version": "1.5.0-rc.16",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -54,14 +54,14 @@
 		"npm-run-all": "4.1.5"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.5.0-rc.15",
+		"@public-ui/components": "1.5.0-rc.16",
 		"@types/node": "ts4.9",
 		"eslint": "8.38.0",
 		"typescript": "4.9.5",
 		"unbuild": "1.1.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.15"
+		"@public-ui/components": "1.5.0-rc.16"
 	},
 	"sideEffects": false,
 	"type": "module",
