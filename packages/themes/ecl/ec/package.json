@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-ecl-ec",
-	"version": "1.5.0-rc.16",
+	"version": "1.5.0-rc.17",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -48,14 +48,14 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/components": "1.5.0-rc.16",
+		"@public-ui/components": "1.5.0-rc.17",
 		"@types/node": "ts4.9",
 		"eslint": "8.38.0",
 		"typescript": "4.9.5",
 		"unbuild": "1.1.2"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.5.0-rc.16"
+		"@public-ui/components": "1.5.0-rc.17"
 	},
 	"sideEffects": false,
 	"type": "module",
