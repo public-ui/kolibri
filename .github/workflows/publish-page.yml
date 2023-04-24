@@ -28,6 +28,9 @@ jobs:
       - name: Build designer
         run: npm i --legacy-peer-deps
         working-directory: packages/designer
+      - name: Build sample react
+        run: npm i --legacy-peer-deps
+        working-directory: packages/samples/react
       - name: Build slidev
         run: npm i --legacy-peer-deps
         working-directory: packages/slidev

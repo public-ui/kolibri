@@ -38,5 +38,6 @@ Thumbs.db
 /node_modules
 *.log
 .DS_Store
+/public/assets/
 
 !itzbund-interne-kolibri-themes-0.0.0.tgz
