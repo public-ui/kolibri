@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@public-ui/components': 1.5.0-rc.15
+  '@public-ui/components': 1.5.0-rc.16
   rimraf: 3.0.2
 
 devDependencies:
-  '@public-ui/components': 1.5.0-rc.15
+  '@public-ui/components': 1.5.0-rc.16
   rimraf: 3.0.2
 
 packages:
@@ -75,8 +75,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.15:
-    resolution: {integrity: sha512-0SmQEbNmSeddb5KwJUkot+Uelx1XyB/NSC67pDEbKgPjxjaQL4cWzG8uJrMS0hDlDAJDMUem6bnJbsN54dOiCA==}
+  /@public-ui/components/1.5.0-rc.16:
+    resolution: {integrity: sha512-TK5JINWcETTZ4vSko3riT+9Pl4jjh+A08tRmNoeQWpvqDu8G6MoWwlHS3XUZDo5QiFAJBj2hd66BaMAMUhV6ZA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.6

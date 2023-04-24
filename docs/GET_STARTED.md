@@ -35,7 +35,7 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 		<meta name="description" content="..." />
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
 		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
 		<link rel="stylesheet" href="assets/bundes/style.css" />
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
@@ -43,6 +43,8 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
 		<link rel="stylesheet" href="assets/kreon/style.css" />
 		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/material-icons/iconfont/material-icons.css" />
+		<link rel="stylesheet" href="assets/material-symbols/index.css" />
 		<link rel="stylesheet" href="assets/roboto/roboto.css" />
 		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
 	</head>

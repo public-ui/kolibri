@@ -5,3 +5,16 @@ dist
 .remote-assets
 components.d.ts
 *.pdf
+
+/assets/bpa-icons/
+/assets/bundes/
+/assets/codicons/
+/assets/fontawesome-free/
+/assets/icofont/
+/assets/kreon/
+/assets/material-icons/
+/assets/material-symbols/
+/assets/noto-sans/
+/assets/roboto/
+/assets/tabler-icons/
+/assets/kolibri.ico

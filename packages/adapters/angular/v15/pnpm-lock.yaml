@@ -4,7 +4,7 @@ specifiers:
   '@angular/compiler': 15.2.7
   '@angular/compiler-cli': 15.2.7
   '@angular/core': 15.2.7
-  '@public-ui/components': 1.5.0-rc.15
+  '@public-ui/components': 1.5.0-rc.16
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
   '@types/node': ts4.9
@@ -20,10 +20,10 @@ devDependencies:
   '@angular/compiler': 15.2.7_@angular+core@15.2.7
   '@angular/compiler-cli': 15.2.7_auyd34vdqbba5s3wum3lmsn2xy
   '@angular/core': 15.2.7_rxjs@7.8.0+zone.js@0.12.0
-  '@public-ui/components': 1.5.0-rc.15
+  '@public-ui/components': 1.5.0-rc.16
   '@types/minimatch': 5.1.2
   '@types/minimist': 1.2.2
-  '@types/node': 18.15.11
+  '@types/node': 18.16.0
   '@types/normalize-package-data': 2.4.1
   prettier: 2.8.7
   rimraf: 3.0.2
@@ -364,8 +364,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components/1.5.0-rc.15:
-    resolution: {integrity: sha512-0SmQEbNmSeddb5KwJUkot+Uelx1XyB/NSC67pDEbKgPjxjaQL4cWzG8uJrMS0hDlDAJDMUem6bnJbsN54dOiCA==}
+  /@public-ui/components/1.5.0-rc.16:
+    resolution: {integrity: sha512-TK5JINWcETTZ4vSko3riT+9Pl4jjh+A08tRmNoeQWpvqDu8G6MoWwlHS3XUZDo5QiFAJBj2hd66BaMAMUhV6ZA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.6
@@ -382,8 +382,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/18.15.11:
-    resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
+  /@types/node/18.16.0:
+    resolution: {integrity: sha512-BsAaKhB+7X+H4GnSjGhJG9Qi8Tw+inU9nJDwmD5CgOmBLEI6ArdhikpLX7DjbjDRDTbqZzU2LSQNZg8WGPiSZQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:

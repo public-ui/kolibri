@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.15';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.15/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.15';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.16';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.16/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.16';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.15';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.15/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.15';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.16';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.16/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.16';
 		register([ITZBund], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -162,7 +162,7 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
 	props: `_title, _tooltip-align`
 },{
 	name: `accordion`,
-	desc: `Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, öffnet sich ein Textfeld mit zusätzlichen Informationen. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
+	desc: `Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit zusätzlichen Informationen auf. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
 
 Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zugeordnete Inhalte angezeigt oder verborgen werden sollen. Sie erlauben umfangreichere Detailinformationen zu einem Oberbegriff, als es aus Gründen der Übersichtlichkeit eigentlich sinnvoll wäre. Sie überlassen es den Besucher:innen selbst, ob sie sich diese Informationen anzeigen lassen möchten.`,
 	props: `_heading, _level, _open`
@@ -208,7 +208,7 @@ Da der Link, nicht wie der Button, in mehrere Varianten ('primary' oder 'seconda
 Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-Bereich_** und einem **_Fuß-Bereich_**.
 
 Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.
-Der **Fuß-Bereich** wird optional durch ein Attribut aktiviert und stellt dann Platz für weitere Inhalte, z.B. eine **Button**-Komponente bereit. Der Fuß-Bereich ist optisch durch eine horizontale Trennlinie vom Inhalts-Bereich abgetrennt.`,
+Der **Fuß-Bereich** wird optional durch das Attribut **'_has-footer'** aktiviert und stellt dann Platz für weitere Inhalte, z.B. eine **Button**-Komponente bereit. Der Fuß-Bereich ist optisch durch eine horizontale Trennlinie vom Inhalts-Bereich abgetrennt.`,
 	props: `_has-footer, _heading, _headline, _level`
 },{
 	name: `details`,
@@ -216,8 +216,9 @@ Der **Fuß-Bereich** wird optional durch ein Attribut aktiviert und stellt dann 
 durch die Nutzer:innen auf ein Pfeil-Icon in voller Größe aufgeklappt werden.
 
 Die **Detail**-Komponente stellt sich standardmäßig als einzeiliges Layout-Element dar, das aus einem Pfeil-Icon und einem nachfolgenden,
-kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente wird erst nach Klick auf das Icon nach unten hin geöffnet. Das Pfeil-Icon ändert dabei
-seine Ausrichtung von **_rechts_** nach **_unten_**.<br/>Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit verbergen.`,
+kurzen Einleitungstext gebildet wird. Der eigentliche Inhalt der Komponente wird erst nach Klick auf den Kopfbereich nach unten hin geöffnet. Das Pfeil-Icon ändert dabei
+seine Ausrichtung von **_rechts_** nach **_unten_**.
+Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit verbergen.`,
 	props: `_open, _summary`
 },{
 	name: `form`,
@@ -226,18 +227,14 @@ seine Ausrichtung von **_rechts_** nach **_unten_**.<br/>Analog lässt sich die 
 },{
 	name: `heading`,
 	desc: `Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und abwechslungsreich präsentieren. Sie trennt Styling von Semantik und ermöglicht Flexibilität.`,
-	props: `_headline, _level, _secondary-headline`
+	props: `_label, _level, _secondary-headline`
 },{
 	name: `icon`,
-	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut '_icon' gesteuert werden und erfolgt durch das Attribut '_aria-label' barrierefrei. Die Ausgabe erfolgt standardmäßig als _'inline'_-Element.
+	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **'_icon'** gesteuert werden und erfolgt durch das Attribut **'_aria-label'** barrierefrei. Die Ausgabe erfolgt standardmäßig als _'inline'_-Element.
 
-Folgende Icon-Fonts werden _'out-of-the-box'_ unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
 
-- [Codicons]
-- [Font-Awesome]
-- [Icofont]
-
-<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateien der Icon-Fonts eingebunden sind.</kol-alert>`,
+<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>`,
 	props: `_aria-label, _icon, _part`
 },{
 	name: `image`,
@@ -245,19 +242,15 @@ Folgende Icon-Fonts werden _'out-of-the-box'_ unterstützt.
 	props: `_alt, _loading, _sizes, _src, _srcset`
 },{
 	name: `indented-text`,
-	desc: `Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate.
-
-In der Komponente kann beliebiger HTML-Code verwendet werden.`,
+	desc: `Heben Sie einzelne Informationen auf Ihrer Webseite optisch mit der **IndentedText**-Komponente hervor. Die Komponente eignet sich nicht nur für besondere Abschnitte auf der Webseite, sondern auch beispielsweise für Zitate (für verlinkte Zitate kann auch die <kol-link _href="/docs/components/quote/" _label="kol-quote-Komponente"></kol-link> verwendet werden.).`,
 	props: ``
 },{
 	name: `input-checkbox`,
-	desc: `Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.
-
-Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch_** dar. Hierbei wird die Checkbox zu einem Schieberegler gewandelt, der bei Anklicken nach rechts (aktiv) bzw. nach links (inaktiv) verschoben wird.`,
+	desc: `Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.`,
 	props: `_access-key, _alert, _checked, _disabled, _error, _hide-label, _hint, _icon, _id, _indeterminate, _name, _required, _tab-index, _touched, _type, _value, _variant`
 },{
 	name: `input-color`,
-	desc: `Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Angabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.`,
+	desc: `Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Eingabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _name, _tab-index, _touched, _value`
 },{
 	name: `input-date`,
@@ -269,11 +262,11 @@ Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max-length, _multiple, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _value`
 },{
 	name: `input-file`,
-	desc: `Der Input-Typ **File** erzeugt ein Eingabefeld für Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.`,
+	desc: `Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.`,
 	props: `_accept, _access-key, _alert, _disabled, _error, _hide-label, _hint, _icon, _id, _multiple, _name, _required, _tab-index, _touched, _value`
 },{
 	name: `input-number`,
-	desc: `Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen, Datumswerte, Datums- und Zeitwerte, Wochen, Monate und Zeiten.`,
+	desc: `Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.`,
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max, _min, _name, _placeholder, _read-only, _required, _step, _tab-index, _touched, _type, _value`
 },{
 	name: `input-password`,
@@ -281,7 +274,7 @@ Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch
 	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _value`
 },{
 	name: `input-radio`,
-	desc: `Die Komponente ** InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
+	desc: `Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
 
 <kol-alert _alert _heading="Hinweis" _level="1" _type="info">
   Das Input-Radio dient der Abbildung einer Auswahlmöglichkeit bei der mindestens und maximal eine Auswahl getroffen werden kann. Das bedeutet, dass ein Input-Radio nicht einzeln vorkommen kann. Aufgrund dessen haben wir die Komponente als Listen-Komponente umgesetzt.
@@ -298,9 +291,6 @@ Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch
 },{
 	name: `link`,
 	desc: `Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
-Möglich ist auch die Ausgabe eines versteckten Links.
-
-Der Link wird standardmäßig in klassischer Form mit Unterstrich ausgegeben, der jedoch über ein Attribut auch ohne CSS entfernt werden kann. Weitere Informationen zu Custom Styles finden Sie weiter unten.
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.`,
@@ -308,53 +298,41 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-
-Einen Link kann man nicht deaktivieren und daher gibt es bei einem LinkButton nicht das Property '_disabled'.
-
-Da es die Komponente ButtonLink gibt, die semantisch ein Button und optisch ein Link ist. Ist es nicht mehr notwendig den Click-Callback zu unterstützen. Das Property '_on' wird somit als 'deprecated' markiert und wird mit dem nächsten Major-Release entfernt.
-
-Ein Button hat aus UX-Sicht mehrere Varianten ('primary' oder 'secondary' usw.). Damit der LinkButton das optisch gleich aussehen kann, wurden die Properties '_customClass' und '_variant' von der Button-Komponente übernommen.`,
+Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
 	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
 },{
 	name: `modal`,
-	desc: `Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem
-Dialogfenster angezeigt werden. Sie wird nach Klick auf einen Button aufgerufen und über ein eigenes
-Close-Icon wieder geschlossen. Die **Modal**-Komponente basiert auf der **Card**-Komponente und ist standardmäßig versteckt. Sie wird i.d.R.
-erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt
-des Modal-Fensters ist aktiv. Das **Modal**-Fenster wird über ein **Close-Icon** oben rechts im Kopfbereich wieder
-geschlossen.`,
+	desc: `Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
+Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt des Modal-Fensters ist aktiv.`,
 	props: `_aria-label, _width`
 },{
 	name: `nav`,
-	desc: `Eine **Navigationsleiste** ist eine Gruppe von verwandten Links oder „Navigationselementen“, die durch Anklicken eine Aktion ausführen oder Inhalte anzeigen. Sie navigiert Nutzer:innen direkt zu bestimmten Inhalten der aktuellen Seite oder zu externen Seiten. Außerdem dient sie Nutzer:innen (ähnlich wie Registerkarten) als Steuerelement, um Inhalte anzuzeigen, auszublenden und zwischen ihnen zu wechseln. Dabei werden häufig animierte Übergänge verwendet.
-
-Die **Nav**-Komponente stellt eine vollwertige vertikale , bzw. horizontale **Navigationsleiste** bereit. Sie kann mehrere Ebenen enthalten und in verschiedenen Breiten ausgegeben werden. Die **Nav**-Komponente repräsentiert die Struktur der Webseite und hat so eine fundamentale Bedeutung sowohl für Nutzer:innen, als auch für Suchmaschinen.
+	desc: `Eine **Navigationsleiste** ist eine Gruppe von verwandten Links oder Navigationselementen, die durch Anklicken eine Aktion ausführen oder Inhalte anzeigen. Sie navigiert Nutzer:innen direkt zu bestimmten Inhalten der aktuellen Seite oder zu externen Seiten. Außerdem dient sie Nutzer:innen (ähnlich wie Registerkarten) als Steuerelement, um Inhalte anzuzeigen, auszublenden und zwischen ihnen zu wechseln.
 
 **KoliBri** stellt eine umfangreich konfigurierbare, vertikale oder horizontale **Navigationsleiste** zur Verfügung, die mehrere Ebenen darstellen und in der Breite variiert werden kann.
-Menüpunkte der obersten Ebene, wie z.B. die Startseite, werden stets über die ganze Breite der **Navigation** gestreckt. Nachfolgende Ebenen, als direkte Kindelemente, werden auf der linken Seite
-etwas eingerückt ausgegeben. Übergeordnete Menüpunkte die Untermenüpunkte enthalten, werden mit einem **Plus-Icon** am linken Rand angezeigt. Wird der übergeordnete Menüpunkt mit dem Plus-Icon geöffnet, ändert sich
-das Plus-Icon automatisch zu einem **Minus-Icon**, mit dem der Menüpunkt wieder geschlossen werden kann.
+Übergeordnete Menüpunkte die Untermenüpunkte enthalten, werden mit einem **Plus-Icon** am rechten Rand angezeigt. Wird der übergeordnete Menüpunkt mit dem Plus-Icon geöffnet, ändert sich das Plus-Icon automatisch zu einem **Minus-Icon**, mit dem der Menüpunkt wieder geschlossen werden kann.
 
 Aktive Menüpunkte werden mit einer farbigen Markierung dargestellt.
 
-Über ein **Doppelpfeil-Icon** unterhalb der Navigation kann die Breite der **Nav**-Komponente verändert werden. In der kleinsten Breite werden die Menütitel ausgeblendet und nur
+Über eine optionale Schaltfläche unterhalb der Navigation kann die Breite der **Nav**-Komponente verändert werden. In der kleinsten Breite werden die Menütitel ausgeblendet und nur
 noch die Icons ausgegeben.`,
 	props: `_aria-current-value, _aria-label, _collapsible, _compact, _has-compact-button, _links, _orientation, _variant`
 },{
 	name: `pagination`,
-	desc: `Mit Hilfe der <b>Paginierung-Komponente</b> lassen sich umfangreiche Inhalte auf der Seite
-in handliche Abschnitte unterteilen. Diese können dann über die Paginierung der Reihe nach
-durchlaufen werden.`,
+	desc: `Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.`,
 	props: `_boundary-count, _custom-class, _has-buttons, _page, _page-size, _page-size-options, _sibling-count, _tooltip-align, _total, _variant`
+},{
+	name: `popover`,
+	desc: `Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
+Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).`,
+	props: `_alignment, _open`
 },{
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
 	props: `_max, _type, _unit, _value`
 },{
 	name: `quote`,
-	desc: `The quote component is implemented in two variants. The first variant is the default 'short' variant as inline quote with quotation marks. The second variant is the indented 'long' variant. The indented variant is used to highlight a text passage or information visually.
-
-Both variants can be extended with a 'cite' element. The 'cite' element is used to identify the source of a quotation and will be displayed below the quote as a link.`,
+	desc: `Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('inline') und eine eingerückte('block') Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.`,
 	props: `_caption, _href, _quote, _variant`
 },{
 	name: `select`,
@@ -366,7 +344,7 @@ Both variants can be extended with a 'cite' element. The 'cite' element is used 
 	props: `_aria-label, _links`
 },{
 	name: `spin`,
-	desc: `Lader, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.`,
+	desc: `Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.`,
 	props: `_show`
 },{
 	name: `symbol`,
@@ -374,7 +352,9 @@ Both variants can be extended with a 'cite' element. The 'cite' element is used 
 	props: `_aria-label, _symbol`
 },{
 	name: `table`,
-	desc: `Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+	desc: `k# Table
+
+Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
 	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
@@ -386,14 +366,13 @@ Both variants can be extended with a 'cite' element. The 'cite' element is used 
 	props: `_aria-label, _selected, _tabs, _tabs-align`
 },{
 	name: `textarea`,
-	desc: `Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum
-InputText können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.`,
+	desc: `Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.`,
 	props: `_access-key, _adjust-height, _alert, _disabled, _error, _has-counter, _hide-label, _hint, _id, _max-length, _name, _placeholder, _read-only, _required, _resize, _rows, _tab-index, _touched, _value`
 },{
 	name: `toast`,
 	desc: `Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
 
-Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für fünf Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.`,
+Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.`,
 	props: `_alert, _has-closer, _heading, _level, _show, _show-duration, _type`
 },{
 	name: `tooltip`,
@@ -403,7 +382,7 @@ Die **Tooltip**-Komponente implementiert das Gegenstück zum 'Aria-Label'. Es is
 
 Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. überlagerte Seiteninformationen wieder sichtbar zu machen.
 
-**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, muss für das vorrangehende Referenz-Element 'inline-block' gesetzt werden.`,
+**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, darf das Referenz-Element nicht 'display: inline' haben.`,
 	props: `_align, _id, _label`
 },
 				];
@@ -444,7 +423,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea`
 },{
 	name: `_disabled`,
-	desc: `Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.`,
+	desc: `Gibt an, ob der Button deaktiviert ist.`,
 	types: `boolean`,
 	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea`
 },{
@@ -484,12 +463,12 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_hint`,
-	desc: `Gibt den Text für eine Hinweistext an.`,
+	desc: `Gibt den Hinweistext an.`,
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
 	name: `_hide-label`,
-	desc: `Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.`,
+	desc: `Versteckt das sichtbare Label des Elements.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
@@ -504,7 +483,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, symbol, tabs`
 },{
 	name: `_required`,
-	desc: `Gibt an, ob das Eingabefeld ein Pflichtfeld ist.`,
+	desc: `Macht das Eingabeelement zu einem Pflichtfeld.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
 },{
@@ -523,6 +502,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `"block" | "inline", "button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
 	comps: `alert, button, input-checkbox, link-button, nav, pagination, quote`
 },{
+	name: `_label`,
+	desc: `Gibt den Text der Überschrift an.`,
+	types: `string`,
+	comps: `badge, button, button-link, heading, link, link-button, tooltip`
+},{
 	name: `_auto-complete`,
 	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
 	types: `"off" | "on"`,
@@ -534,14 +518,9 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `abbr, button, button-link, link, link-button, pagination`
 },{
 	name: `_read-only`,
-	desc: `Gibt an, ob das Eingabefeld nur lesend ist.`,
+	desc: `Setzt das Eingabefeld in den schreibgeschützten Modus.`,
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
-},{
-	name: `_label`,
-	desc: `Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.`,
-	types: `string`,
-	comps: `badge, button, button-link, link, link-button, tooltip`
 },{
 	name: `_placeholder`,
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
@@ -559,7 +538,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `badge, button, button-link, link, link-button`
 },{
 	name: `_size`,
-	desc: `Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.`,
+	desc: `Setzt die Breite des Eingabefeldes in Buchstabenbreiten.`,
 	types: `number`,
 	comps: `input-email, input-password, input-text, select`
 },{
@@ -584,7 +563,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `button, button-link, link, link-button`
 },{
 	name: `_aria-controls`,
-	desc: `Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
+	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
 	comps: `button, button-link, link, link-button`
 },{
@@ -614,9 +593,14 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-date, input-number, input-range`
 },{
 	name: `_pattern`,
-	desc: `Gibt ein Prüfpattern für das Eingabefeld an.`,
+	desc: `Gibt ein Prüfmuster für das Eingabefeld an.`,
 	types: `string`,
 	comps: `input-email, input-password, input-text`
+},{
+	name: `_open`,
+	desc: `Gibt an, ob das Accordion geöffnet ist.`,
+	types: `boolean`,
+	comps: `accordion, details, popover`
 },{
 	name: `_multiple`,
 	desc: `Gibt an, ob mehrere Werte eingegeben werden können.`,
@@ -644,7 +628,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `link, link-button`
 },{
 	name: `_target`,
-	desc: `Definiert das Verhalten, bei dem der Link geöffnet werden soll.`,
+	desc: `Gibt an wo der Link geöffnet werden soll.`,
 	types: `string`,
 	comps: `link, link-button`
 },{
@@ -658,23 +642,13 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `"horizontal" | "vertical"`,
 	comps: `input-radio, nav`
 },{
-	name: `_open`,
-	desc: `Gibt an, ob das Accordion geöffnet ist.`,
-	types: `boolean`,
-	comps: `accordion, details`
-},{
 	name: `_icon-align`,
 	desc: `Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `button, link`
 },{
-	name: `_headline`,
-	desc: `Gibt den Text der Überschrift an.`,
-	types: `string`,
-	comps: `card, heading`
-},{
 	name: `_has-closer`,
-	desc: `Gibt an, ob der Alert ein Schließen-Icon hat.`,
+	desc: `Aktiviert das Schließen-Icon.`,
 	types: `boolean`,
 	comps: `alert, toast`
 },{
@@ -684,7 +658,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `quote, table`
 },{
 	name: `_width`,
-	desc: `Gibt an, wie breit der Anzeigebereich sein soll (<= max-width: 100%).`,
+	desc: `Setzt die Breite des Modals. (max-width: 100%).`,
 	types: `string`,
 	comps: `modal`
 },{
@@ -704,22 +678,22 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `link`
 },{
 	name: `_unit`,
-	desc: `Gibt die Einheit der Fortschrittswerte an.`,
+	desc: `Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)`,
 	types: `string`,
 	comps: `progress`
 },{
 	name: `_total`,
-	desc: `Gibt an, wie viele Einträge mit der Pagination gehandelt werden.`,
+	desc: `Setzt die Gesamtanzahl der Seiten.`,
 	types: `number`,
 	comps: `pagination`
 },{
 	name: `_sibling-count`,
-	desc: `Gibt an, wie viele Seiten neben dem aktuell ausgewählten Seite angezeigt werden.`,
+	desc: `Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.`,
 	types: `number`,
 	comps: `pagination`
 },{
 	name: `_page-size-options`,
-	desc: `Gibt an, welche Optionen für die Seitenlänge angeboten werden.`,
+	desc: `Setzt die Optionen für das Seitenlängenselect.`,
 	types: `number[] | string`,
 	comps: `pagination`
 },{
@@ -734,7 +708,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `pagination`
 },{
 	name: `_has-buttons`,
-	desc: `Gibt an, welche Sprung-Schalter sichtbar sein sollen.`,
+	desc: `Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.`,
 	types: `boolean | string | { first: boolean; last: boolean; next: boolean; previous: boolean; }`,
 	comps: `pagination`
 },{
@@ -749,12 +723,12 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `abbr`
 },{
 	name: `_tabs-align`,
-	desc: `Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.`,
+	desc: `Setzt die Position der Registrierkarten.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `tabs`
 },{
 	name: `_tabs`,
-	desc: `Gibt die geordnete Liste der Seitenhierarchie in Links an.`,
+	desc: `Setzt die Daten für die Registrierkarten.`,
 	types: `TabButtonProps[] | string`,
 	comps: `tabs`
 },{
@@ -774,38 +748,38 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `details`
 },{
 	name: `_srcset`,
-	desc: `Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.`,
+	desc: `Setzt eine Liste von Quell-URLs mit Breiten der Bilder.`,
 	types: `string`,
 	comps: `image`
 },{
 	name: `_src`,
-	desc: `Gibt die Quell-URL an.`,
+	desc: `Setzt die Quell-URL des Bildes.`,
 	types: `string`,
 	comps: `image`
 },{
 	name: `_sizes`,
-	desc: `...`,
+	desc: `Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.`,
 	types: `string`,
 	comps: `image`
 },{
 	name: `_loading`,
-	desc: `Gibt den Lademodus an.`,
+	desc: `Setzt den Lademodus.`,
 	types: `"eager" | "lazy"`,
 	comps: `image`
 },{
 	name: `_alt`,
-	desc: `Gibt den alternativen Text an.`,
+	desc: `Setzt den alternativen Text.`,
 	types: `string`,
 	comps: `image`
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaLabel?: string | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: PropAlignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: PropAlignment | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaLabel?: string | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: Alignment | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
 	comps: `badge`
 },{
 	name: `_color`,
-	desc: `Gibt die Farbe des Hintergrundes bzw. der Schrift an.`,
-	types: `string | { backgroundColor: string; color: string; }`,
+	desc: `Setzt die Hintergrundfarbe.`,
+	types: `string | { backgroundColor: string; color: string; } | { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; }`,
 	comps: `badge`
 },{
 	name: `_show-duration`,
@@ -824,12 +798,12 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `textarea`
 },{
 	name: `_resize`,
-	desc: `Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)`,
+	desc: `Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)`,
 	types: `"both" | "horizontal" | "none" | "vertical"`,
 	comps: `textarea`
 },{
 	name: `_has-counter`,
-	desc: `Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.`,
+	desc: `Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.`,
 	types: `boolean`,
 	comps: `textarea`
 },{
@@ -839,12 +813,12 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `textarea`
 },{
 	name: `_required-text`,
-	desc: `Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.`,
+	desc: `Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.`,
 	types: `boolean | string`,
 	comps: `form`
 },{
 	name: `_quote`,
-	desc: `The text of the quote.`,
+	desc: `Setzt den Text, also das Zitat selbst.`,
 	types: `string`,
 	comps: `quote`
 },{
@@ -855,7 +829,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_pagination`,
 	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks | undefined; _page?: number | undefined; _total?: number | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; _boundaryCount?: number | undefined; _hasButtons?: boolean | Stringified<PaginationHasButton> | undefined; _pageSize?: number | undefined; _pageSizeOptions?: Stringified<number[]> | undefined; _siblingCount?: number | undefined; _tooltipAlign?: PropAlignment | undefined; }`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks | undefined; _page?: number | undefined; _total?: number | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; _boundaryCount?: number | undefined; _hasButtons?: boolean | Stringified<PaginationHasButton> | undefined; _pageSize?: number | undefined; _pageSizeOptions?: Stringified<number[]> | undefined; _siblingCount?: number | undefined; _tooltipAlign?: Alignment | undefined; }`,
 	comps: `table`
 },{
 	name: `_min-width`,
@@ -879,7 +853,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `input-checkbox`
 },{
 	name: `_checked`,
-	desc: `Gibt an, ob die Checkbox ausgewählt ist oder nicht.`,
+	desc: `Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)`,
 	types: `boolean`,
 	comps: `input-checkbox`
 },{
@@ -888,8 +862,13 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `select`
 },{
+	name: `_headline`,
+	desc: `Gibt die Überschrift der Card an.`,
+	types: `string`,
+	comps: `card`
+},{
 	name: `_has-footer`,
-	desc: `Gibt an, ob die Card einen Footer-Bereich hat.`,
+	desc: `Macht den Footerbereich der Card sichtbar.`,
 	types: `boolean`,
 	comps: `card`
 },{
@@ -913,8 +892,13 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
 },{
+	name: `_alignment`,
+	desc: `Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `popover`
+},{
 	name: `_align`,
-	desc: `Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.`,
+	desc: `Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `tooltip`
 },{

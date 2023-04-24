@@ -6,9 +6,12 @@ import { Option } from '@public-ui/components';
 import { KolAlert, KolButton, KolSelect } from '@public-ui/react';
 import { FC, useState } from 'react';
 import { ROUTES } from './shares/routes';
-import { THEME_OPTIONS, Theme } from './shares/themes';
+import { THEME_OPTIONS, Theme } from './shares/theme';
+import { getTheme, setTheme, setStorage } from './shares/store';
 
 const THEME_REGEX = /theme=([^&]+)/;
+
+setStorage(localStorage);
 
 const getThemeFromLocation = () => {
 	if (THEME_REGEX.test(window.location.hash)) {
@@ -17,7 +20,7 @@ const getThemeFromLocation = () => {
 			return match[0].replace(THEME_REGEX, '$1').toLowerCase();
 		}
 	}
-	return 'itzbund';
+	return getTheme();
 };
 
 const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
@@ -110,6 +113,8 @@ export const App: FC = () => {
 	const on = {
 		onChange: (_event: Event, value: unknown) => {
 			if (active) {
+				value = Array.isArray(value) ? value[0] : value;
+				setTheme(value as Theme);
 				window.location.href =
 					window.location.href
 						.replace(THEME_REGEX, '')

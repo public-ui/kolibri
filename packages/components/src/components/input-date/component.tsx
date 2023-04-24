@@ -11,10 +11,10 @@ import { ComponentApi, States } from './types';
 
 @Component({
 	tag: 'kol-input-date',
-	styleUrls: {
-		default: './style.css',
-	},
-	shadow: true,
+	// styleUrls: {
+	// 	default: './style.css',
+	// },
+	shadow: false,
 })
 export class KolInputDate implements ComponentApi {
 	@Element() private readonly host?: HTMLKolInputDateElement;
