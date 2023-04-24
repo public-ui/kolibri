@@ -3,16 +3,16 @@ lockfileVersion: '6.0'
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.5.0-rc.15)
+    version: 0.0.3(@public-ui/components@1.5.0-rc.16)
   '@public-ui/components':
-    specifier: 1.5.0-rc.15
-    version: 1.5.0-rc.15
+    specifier: 1.5.0-rc.16
+    version: 1.5.0-rc.16
   '@public-ui/react':
-    specifier: 1.5.0-rc.15
-    version: 1.5.0-rc.15(@public-ui/components@1.5.0-rc.15)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.5.0-rc.16
+    version: 1.5.0-rc.16(@public-ui/components@1.5.0-rc.16)(react-dom@18.2.0)(react@18.2.0)
   '@public-ui/themes':
-    specifier: 1.5.0-rc.15
-    version: 1.5.0-rc.15(@public-ui/components@1.5.0-rc.15)
+    specifier: file:../../themes/public-ui-themes-1.5.0-rc.16.tgz
+    version: file:../../themes/public-ui-themes-1.5.0-rc.16.tgz(@public-ui/components@1.5.0-rc.16)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -909,17 +909,17 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.5.0-rc.15):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.5.0-rc.16):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.15
+      '@public-ui/components': 1.5.0-rc.16
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.5.0-rc.15:
-    resolution: {integrity: sha512-0SmQEbNmSeddb5KwJUkot+Uelx1XyB/NSC67pDEbKgPjxjaQL4cWzG8uJrMS0hDlDAJDMUem6bnJbsN54dOiCA==}
+  /@public-ui/components@1.5.0-rc.16:
+    resolution: {integrity: sha512-TK5JINWcETTZ4vSko3riT+9Pl4jjh+A08tRmNoeQWpvqDu8G6MoWwlHS3XUZDo5QiFAJBj2hd66BaMAMUhV6ZA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.6
@@ -935,14 +935,14 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/react@1.5.0-rc.15(@public-ui/components@1.5.0-rc.15)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-4/Lh1UaOFxLsQ/glf5IwW6OBIvsEK3f6xRX9PDUfK4XYadAJ3DBbDpCm4Dom3j+AT9HdHOQsKSfnFSWTqOcr8g==}
+  /@public-ui/react@1.5.0-rc.16(@public-ui/components@1.5.0-rc.16)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-o9r51pbJcjBKBvLQtLh7IYdUJxou6DuQfDzhMQNnWfY613UmNZs44bYWnbH9W2sn0tjK19p7zA84YAK+UBb8FQ==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.15
+      '@public-ui/components': 1.5.0-rc.16
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.15
+      '@public-ui/components': 1.5.0-rc.16
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -951,17 +951,6 @@ packages:
     resolution: {integrity: sha512-1I1QM2xHyaXSBwHV4mlsAX6fi8vjLkcDsFrkxNl3gNl5qtZF8vP9kveOWYNqr1jKG4ZoRDFZ+/1/xP+Lu2a/dw==}
     dependencies:
       '@public-ui/core': 1.1.15
-    dev: false
-
-  /@public-ui/themes@1.5.0-rc.15(@public-ui/components@1.5.0-rc.15):
-    resolution: {integrity: sha512-wDyd+e6ZlfT13TTmpCSAR2kexf0eUUl8qKIhat9Xg+t3kYq9kxjd+BYseOIUed8QJguTPrgIp2b5IPoRmMb9Hw==}
-    requiresBuild: true
-    peerDependencies:
-      '@public-ui/components': 1.5.0-rc.15
-    dependencies:
-      '@public-ui/components': 1.5.0-rc.15
-      cpy-cli: 4.2.0
-      npm-run-all: 4.1.5
     dev: false
 
   /@remix-run/router@1.5.0:
@@ -8956,3 +8945,16 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  file:../../themes/public-ui-themes-1.5.0-rc.16.tgz(@public-ui/components@1.5.0-rc.16):
+    resolution: {integrity: sha512-RC5PPpSkrd2wnbun0K/SsLkf3cwGge8LJ4yqgyGmr2Q1y7XphEcKHUoBN6JyKEPNt5NyzObvWvPmF3hYWRVjyg==, tarball: file:../../themes/public-ui-themes-1.5.0-rc.16.tgz}
+    id: file:../../themes/public-ui-themes-1.5.0-rc.16.tgz
+    name: '@public-ui/themes'
+    version: 1.5.0-rc.16
+    requiresBuild: true
+    peerDependencies:
+      '@public-ui/components': 1.5.0-rc.16
+    dependencies:
+      '@public-ui/components': 1.5.0-rc.16
+      cpy-cli: 4.2.0
+    dev: false
