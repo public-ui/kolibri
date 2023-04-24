@@ -68,7 +68,7 @@
 	"dependencies": {
 		"@a11y-ui/core": "1.0.2",
 		"@floating-ui/dom": "1.2.6",
-		"i18next": "22.4.14"
+		"i18next": "22.4.15"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.6.0",
@@ -90,7 +90,7 @@
 		"cross-env": "7.0.3",
 		"clean-css": "5.3.2",
 		"cssnano": "5.1.15",
-		"eslint": "8.38.0",
+		"eslint": "8.39.0",
 		"eslint-config-prettier": "8.8.0",
 		"eslint-plugin-html": "7.1.0",
 		"eslint-plugin-jsdoc": "40.3.0",
@@ -102,9 +102,9 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "10.1.1",
 		"mathjs": "11.8.0",
-		"postcss": "8.4.22",
+		"postcss": "8.4.23",
 		"postcss-sorting": "8.0.2",
-		"prettier": "2.8.7",
+		"prettier": "2.8.8",
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",
@@ -114,7 +114,7 @@
 		"tslib": "2.5.0",
 		"typescript": "4.9.5",
 		"wcag-contrast": "3.0.0",
-		"webpack": "5.79.0",
+		"webpack": "5.80.0",
 		"workbox-build": "6.5.4"
 	},
 	"files": [

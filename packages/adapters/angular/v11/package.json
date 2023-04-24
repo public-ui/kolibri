@@ -70,7 +70,7 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.1",
 		"@types/normalize-package-data": "2.4.1",
-		"prettier": "2.8.7",
+		"prettier": "2.8.8",
 		"rimraf": "3.0.2",
 		"rxjs": "6.5.5",
 		"tslib": "2.5.0",
