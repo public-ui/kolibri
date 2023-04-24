@@ -30,10 +30,10 @@ jobs:
         working-directory: packages/designer
       - name: Build sample react
         run: npm i --legacy-peer-deps
-        working-directory: packages/slidev
+        working-directory: packages/samples/react
       - name: Build slidev
         run: npm i --legacy-peer-deps
-        working-directory: packages/samples/react
+        working-directory: packages/slidev
       - name: Build storybook
         run: npm i --legacy-peer-deps
         working-directory: packages/storybook
