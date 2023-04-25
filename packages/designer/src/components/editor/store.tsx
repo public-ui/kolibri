@@ -732,12 +732,12 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-HEADING': () => (
 		<div class="grid gap-6">
-			<KolHeading _headline="H1-Überschrift" _level={1} />
-			<KolHeading _headline="H2-Überschrift" _level={2} />
-			<KolHeading _headline="H3-Überschrift" _level={3} />
-			<KolHeading _headline="H4-Überschrift" _level={4} />
-			<KolHeading _headline="H5-Überschrift" _level={5} />
-			<KolHeading _headline="H6-Überschrift" _level={6} />
+			<KolHeading _label="H1-Überschrift" _level={1} />
+			<KolHeading _label="H2-Überschrift" _level={2} />
+			<KolHeading _label="H3-Überschrift" _level={3} />
+			<KolHeading _label="H4-Überschrift" _level={4} />
+			<KolHeading _label="H5-Überschrift" _level={5} />
+			<KolHeading _label="H6-Überschrift" _level={6} />
 		</div>
 	),
 	'KOL-ICON': () => (
