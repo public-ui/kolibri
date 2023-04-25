@@ -1,22 +1,8 @@
 import { KoliBri } from '@public-ui/components';
 
-// Design System Zoll (v2
+// Design System Zoll (v2)
 export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
-	GLOBAL: `
-	kol-tooltip .area {
-		background-color:#f2f2f2;
-	}
-	kol-tooltip #arrow {
-		background-color: #626262;
-	}
-	kol-tooltip kol-span-wc {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		border-radius: 2px;
-		border: 1px solid #626262;
-	}
-	:host {
+	GLOBAL: `:host {
 		--border-color: var(--color-neutral);
 		--border-radius: 0.25rem;
 		--box-shadow: rgba(0, 0, 0, 0.12) 0 12px 12px -4px,
@@ -92,6 +78,19 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	.required legend span::after {
 		color: var(--color-red);
 		padding-left: 0.25em;
+	}
+	kol-tooltip .area {
+		background-color: #f2f2f2;
+	}
+	kol-tooltip #arrow {
+		background-color: #626262;
+	}
+	kol-tooltip kol-span-wc {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
 	}`,
 	'KOL-BADGE': `:host {
 		display: inline-block;
@@ -156,6 +155,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		align-items: baseline;
 		color: var(--color-blau);
 		gap: 0.25em;
+		min-height: 1em;
+		text-decoration-line: none;
 	}
 	a:active,
 	a:focus,
@@ -191,13 +192,12 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		left: unset;
 		position: unset;
 	}`,
-	'KOL-BUTTON-LINK': `button:not([role="button"]) {
-		min-height: 1em;
-	}
-	:is(a, button) {
+	'KOL-BUTTON-LINK': `:is(a, button) {
 		align-items: baseline;
 		color: var(--color-blau);
 		gap: 0.25em;
+		min-height: 1em;
+		text-decoration-line: none;
 	}
 	a:active,
 	a:focus,
@@ -371,8 +371,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-radius: 0.25rem;
 		color: var(--color-neutral-dark);
 	}
-	div > div.heading .heading-icon {
-		color: inherit;
+	:host > div .content {
+		font-style: italic;
+		font-size: 0.8rem;
 	}
 	div.card {
 		display: grid;
@@ -429,8 +430,34 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		display: flex;
 		gap: calc(2 * var(--gap));
 		padding: var(--gap);
-		font-style: italic;
-		font-size: 0.8rem;
+	}
+	div.msg .heading {
+		display: flex;
+		gap: var(--spacing);
+		flex-grow: 1;
+		align-items: flex-start;
+	}
+	div.msg .heading > div {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+	div.info .heading kol-icon.heading-icon {
+		display: grid;
+		place-items: center;
+		background-color: var(--color-blau);
+		border-radius: 100%;
+		min-width: 2em;
+		min-height: 2em;
+	}
+	div.card.info .heading kol-icon.heading-icon {
+		font-size: 1em;
+	}
+	div.msg.info .heading kol-icon.heading-icon {
+		font-size: 0.5em;
+	}
+	div.info .heading kol-icon.heading-icon::part(icon) {
+		color: white;
 	}
 	div.msg.default {
 		color: var(--color-neutral-dark);
@@ -447,15 +474,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	div.msg.success {
 		color: var(--color-gruen);
 	}
-	div > div {
-		display: grid;
-		gap: var(--gap);
-		grid-template-columns: auto auto auto;
-	}
 	div > div > kol-heading-wc {
 		grid-column: 1 / span 3;
 	}
-	:host .close button {
+	.close button {
 		border-radius: var(--border-radius);
 		min-height: 44px;
 		min-width: 44px;
@@ -464,7 +486,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		color: var(--color-blau);
 	}
 	div.card .close button {
-		transform: translateX(1.5rem) translateY(-2.5rem);
+		transform: translateX(1.5rem)
+			translateY(calc(-1rem - 44px - 2px + var(--gap)));
 	}
 	kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
@@ -483,9 +506,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		content: "\\f058";
 	}
 	div.warning kol-icon::part(icon)::before {
-		content: "\\f0eb";
+		content: "\\f071";
 	}
-	:host .close button kol-icon::part(icon)::before {
+	.close button kol-icon::part(icon)::before {
 		content: "\\f00d";
 	}`,
 	'KOL-CARD': `:host > div {
@@ -752,21 +775,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	svg circle:last-child {
 		stroke: var(--color-blau);
 	}`,
-	'KOL-INPUT-CHECKBOX': `/* ALL INPUT, SELECT, TEXTAREA */
-	:host {
+	'KOL-INPUT-CHECKBOX': `:host {
 		--spacing: 0.25rem;
 	}
 	input {
-		border-color: var(--color-neutral);
+		border-color: var(--color-neutral-dark);
 		border-width: 2px;
 		border-style: solid;
 	}
 	label {
 		cursor: pointer;
-	}
-	kol-input:hover input,
-	input:focus {
-		border-color: var(--color-neutral-dark);
 	}
 	kol-input:hover label,
 	kol-input:has(input:focus, select:focus, textarea:focus, ) label {
@@ -905,11 +923,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host {
 		--spacing: 0.25rem;
 	}
-	input {
-		border-color: var(--color-neutral);
-		border-width: 2px;
-		border-style: solid;
-	}
 	label {
 		cursor: pointer;
 	}
@@ -917,10 +930,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	kol-input:has(input:disabled) label {
 		cursor: not-allowed !important;
 		opacity: 0.5;
-	}
-	kol-input:hover input,
-	input:focus {
-		border-color: var(--color-neutral-dark);
 	}
 	kol-input:hover label,
 	kol-input:has(input:focus, select:focus, textarea:focus, ) label {
@@ -937,7 +946,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	input {
 		width: 100%;
-		border-color: var(--border-color);
+		border-color: var(--color-neutral-dark);
 		border-width: 2px;
 		border-style: solid;
 	}
@@ -979,17 +988,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		height: calc(6 * var(--spacing));
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
-	}
-	fieldset div input[type="radio"]:before {
-		content: "";
-		cursor: pointer;
-		left: calc(1.5 * var(--spacing) - 2px);
-		top: calc(1.5 * var(--spacing) - 2px);
-		position: relative;
-		border-radius: 100%;
-		display: block;
-		height: calc(3 * var(--spacing));
-		width: calc(3 * var(--spacing));
 	}
 	fieldset div input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
@@ -1489,7 +1487,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		order: 2;
 	}
 	kol-input > span.hint {
-		color: var(--color-grau-40);
+		color: var(--color-grau-60);
 		font-style: italic;
 		order: 4;
 		font-size: 0.8rem;
@@ -2056,7 +2054,15 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host > div.tabs-align-right > div {
 		border-radius: 0.25rem 0 0 0.25rem;
 	}`,
-	'KOL-BREADCRUMB': `kol-icon::part(icon):before {
+	'KOL-BREADCRUMB': `ul,
+	li {
+		gap: 0;
+	}
+	kol-icon {
+		text-align: center;
+	}
+	kol-icon::part(icon):before {
 		content: "/";
+		text-align: center;
 	}`,
 });
