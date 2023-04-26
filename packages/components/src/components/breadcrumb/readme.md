@@ -36,7 +36,7 @@ Das gesamte JSON-Objekt muss in eckigen Klammern an das Attribut **`_links`** ü
 <b>Folgende Eigenschaften stehen zur Verfügung:</b>
 
 - **`_href`** übergibt den Link, der für dieses Element verwendet werden soll.
-- **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen die <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-lik> zur Verfügung
+- **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen die <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> zur Verfügung
 - **`_iconOnly`** (optional). Wenn der Wert auf **true** gesetzt wird, erscheint im Link ausschließlich das Icon, ohne weiteren Text. Die Eigenschaft `_icon` muss gesetzt werden.
 - **`_label`** übergibt den Text, der für dieses Element angezeigt werden soll.
 
@@ -90,7 +90,7 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 | Property                  | Attribute     | Description                                                                  | Type                    | Default     |
 | ------------------------- | ------------- | ---------------------------------------------------------------------------- | ----------------------- | ----------- |
 | `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
-| `_links` _(required)_     | `_links`      | Gibt die geordnete Liste der Seitenhierarchie in Links an.                   | `LinkProps[] \| string` | `undefined` |
+| `_links` _(required)_     | `_links`      | Setzt die Liste der darzustellenden Links.                                   | `LinkProps[] \| string` | `undefined` |
 
 ## Dependencies
 
@@ -110,11 +110,7 @@ graph TD;
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-tooltip --> kol-span-wc
   style kol-breadcrumb fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

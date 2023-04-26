@@ -64,12 +64,8 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 ```mermaid
 graph TD;
   kol-abbr --> kol-tooltip
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-span-wc --> kol-icon
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
   style kol-abbr fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

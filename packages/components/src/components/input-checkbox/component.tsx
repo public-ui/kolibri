@@ -26,7 +26,7 @@ export class KolInputCheckbox implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDiscribedBy } = getRenderStates(this.state);
+		const { ariaDescribedBy } = getRenderStates(this.state);
 		return (
 			<Host>
 				<kol-input
@@ -44,6 +44,7 @@ export class KolInputCheckbox implements ComponentApi {
 					_id={this.state._id}
 					_required={this.state._required}
 					_touched={this.state._touched}
+					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
 						<slot />
@@ -57,12 +58,12 @@ export class KolInputCheckbox implements ComponentApi {
 						<input
 							ref={this.catchRef}
 							accessKey={this.state._accessKey} // by checkbox?!
-							aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
-							checked={this.state._checked === true}
+							checked={this.state._checked}
 							disabled={this.state._disabled === true}
 							id={this.state._id}
-							indeterminate={this.state._indeterminate === true}
+							indeterminate={this.state._indeterminate}
 							name={this.state._name}
 							required={this.state._required === true}
 							tabIndex={this.state._tabIndex}
@@ -285,7 +286,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	private onChange = (event: Event): void => {
-		this._checked = this._checked === false;
+		this._checked = !this._checked;
 		this._indeterminate = false;
 		this.controller.setValue(event, this._checked);
 	};

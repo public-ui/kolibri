@@ -16,11 +16,6 @@ const KolInputColor: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputColor {...args}>{args.content}</KolInputColor>
@@ -30,11 +25,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Messages = (args: any) => (
 	<div>
 		<KolInputColor _id="mein_switch" _name="mein_switch" _error="Fehlermeldung" _touched _value="#ff0000"></KolInputColor>
@@ -45,11 +35,6 @@ Messages.args = {
 };
 Messages.storyName = 'Fehlermeldung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolInputColor _id="mein_switch" _name="mein_switch" _value="#ff0000"></KolInputColor>

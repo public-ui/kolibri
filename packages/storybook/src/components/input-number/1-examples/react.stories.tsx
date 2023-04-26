@@ -18,11 +18,6 @@ const KolInputNumber: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputNumber {...args}>{args._label}</KolInputNumber>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Number = (args: any) => (
 	<div>
 		<KolInputNumber _type="number" _id="meine_zahl" _name="meine_zahl">
@@ -49,11 +39,6 @@ Number.args = {
 };
 Number.storyName = 'Zahlen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const NumberBetween = (args: any) => (
 	<div>
 		<KolInputNumber _type="number" _min={100} _max={200} _id="meine_zahl" _name="meine_zahl">
@@ -66,11 +51,6 @@ NumberBetween.args = {
 };
 NumberBetween.storyName = 'Zahlen mit Min- und Max-Wert';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const NumberStep = (args: any) => (
 	<div>
 		<KolInputNumber _type="number" _min={100} _max={200} _step={50} _id="meine_zahl" _name="meine_zahl">
@@ -83,11 +63,6 @@ NumberStep.args = {
 };
 NumberStep.storyName = 'Zahlen mit Min- und Max-Wert und Schrittweite';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const DateDefault = (args: any) => (
 	<div>
 		<KolInputNumber _type="date" _id="mein_datum" _name="mein_datum">
@@ -100,11 +75,7 @@ Date.args = {
 };
 Date.storyName = 'Datum';
 s;
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
+
 export const Month = (args: any) => (
 	<div>
 		<KolInputNumber _type="month" _id="mein_monat" _name="mein_monat">
@@ -117,11 +88,6 @@ Month.args = {
 };
 Month.storyName = 'Monat';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Week = (args: any) => (
 	<div>
 		<KolInputNumber _type="week" _id="meine_woche" _name="meine_woche">
@@ -134,11 +100,6 @@ Week.args = {
 };
 Week.storyName = 'Woche';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Time = (args: any) => (
 	<div>
 		<KolInputNumber _type="time" _id="meine_zeit" _name="meine_zeit">
@@ -151,11 +112,6 @@ Time.args = {
 };
 Time.storyName = 'Zeit';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const TimeLocal = (args: any) => (
 	<div>
 		<KolInputNumber _type="datetime-local" _id="meine_zeit" _name="meine_zeit">
@@ -168,11 +124,6 @@ TimeLocal.args = {
 };
 TimeLocal.storyName = 'Datum & Zeit';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolInputNumber _type="number" _id="meine_zahl" _name="meine_zahl">

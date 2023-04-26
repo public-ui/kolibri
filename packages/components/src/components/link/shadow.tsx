@@ -3,7 +3,7 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AlternativButtonLinkRole, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment } from '../../types/props';
+import { AriaCurrent, Alignment } from '../../types/props';
 import { propagateFocus } from '../../utils/reuse';
 
 @Component({
@@ -33,6 +33,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
+					_download={this._download}
 					_href={this._href}
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
@@ -61,7 +62,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
 
@@ -91,6 +92,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
+	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 */
+	@Prop() public _download?: boolean | string = false;
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
@@ -105,7 +111,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: PropAlignment;
+	@Prop() public _iconAlign?: Alignment;
 	/**
 	 * Gibt an, ob nur das Icon angezeigt wird.
 	 */
@@ -159,7 +165,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'right';
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

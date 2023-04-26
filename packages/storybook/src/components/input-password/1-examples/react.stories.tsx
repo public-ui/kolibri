@@ -18,11 +18,6 @@ const KolInputPassword: ComponentStory<typeof MyComponent> = (args: any) => {
 
 const DefaultArgs = {};
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolInputPassword {...args}>{args.content}</KolInputPassword>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Error = (args: any) => (
 	<div>
 		<KolInputPassword _id="mein_passwort" _name="mein_passwort" _error="Fehlermeldung" _touched></KolInputPassword>
@@ -47,11 +37,6 @@ Error.args = {
 };
 Error.storyName = 'Fehlermeldung';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Disabled = (args: any) => (
 	<div>
 		<KolInputPassword _id="mein_passwort" _name="mein_passwort"></KolInputPassword>

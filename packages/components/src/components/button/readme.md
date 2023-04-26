@@ -7,42 +7,33 @@
 ### Code
 
 ```html
-<kol-button class="clickme" _label="Primary" _variant="primary"></kol-button>
-<kol-button class="clickme" _label="Secondary" _variant="secondary"></kol-button>
-<kol-button class="clickme" _label="Normal" _variant="normal"></kol-button>
-<kol-button class="clickme" _label="Danger" _variant="danger"></kol-button>
-<kol-button class="clickme" _label="Ghost" _variant="ghost"></kol-button>
-<kol-button class="clickme" _label="Custom" _variant="custom" _custom-class="myClass"></kol-button>
-<script>
-	document.querySelectorAll('.clickme').forEach((b) => (b._on = { onClick: console.log }));
-</script>
+<kol-button _label="Primary" _variant="primary"></kol-button>
+<kol-button _label="Secondary" _variant="secondary"></kol-button>
+<kol-button _label="Normal" _variant="normal"></kol-button>
+<kol-button _label="Danger" _variant="danger"></kol-button>
+<kol-button _label="Ghost" _variant="ghost"></kol-button>
 ```
 
 ### Beispiel
 
 Default
 
-<div class="flex gap-2">
-  <kol-button class="clickme" _label="Primary" _variant="primary"></kol-button>
-  <kol-button class="clickme" _label="Secondary" _variant="secondary"></kol-button>
-  <kol-button class="clickme" _label="Normal" _variant="normal"></kol-button>
-  <kol-button class="clickme" _label="Danger" _variant="danger"></kol-button>
-  <kol-button class="clickme" _label="Ghost" _variant="ghost"></kol-button>
-  <kol-button class="clickme" _label="Custom" _variant="custom" _custom-class="myClass"></kol-button>
+<div class="flex flex-wrap gap-2">
+  <kol-button _label="Primary" _variant="primary"></kol-button>
+  <kol-button _label="Secondary" _variant="secondary"></kol-button>
+  <kol-button _label="Normal" _variant="normal"></kol-button>
+  <kol-button _label="Danger" _variant="danger"></kol-button>
+  <kol-button _label="Ghost" _variant="ghost"></kol-button>
 </div>
-<script>
-  document.querySelectorAll('.clickme').forEach(b => b._on = { onClick: console.log });
-</script>
 
 Disabled
 
-<div class="flex gap-2">
+<div class="flex flex-wrap gap-2">
   <kol-button _label="Primary" _variant="primary" _disabled></kol-button>
   <kol-button _label="Secondary" _variant="secondary" _disabled></kol-button>
   <kol-button _label="Normal" _variant="normal" _disabled></kol-button>
   <kol-button _label="Danger" _variant="danger" _disabled></kol-button>
   <kol-button _label="Ghost" _variant="ghost" _disabled></kol-button>
-  <kol-button _label="Custom" _variant="custom" _custom-class="myClass" _disabled></kol-button>
 </div>
 
 ## Verwendung
@@ -116,11 +107,11 @@ Probleme mit Disabled-Status
 | `_ariaSelected`       | `_aria-selected` | Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)          | `boolean \| undefined`                                                                                                                          | `undefined` |
 | `_customClass`        | `_custom-class`  | Gibt an, welche Custom-Class übergeben werden soll, wenn \_variant="custom" gesetzt ist.                                                           | `string \| undefined`                                                                                                                           | `undefined` |
 | `_disabled`           | `_disabled`      | Gibt an, ob der Button deaktiviert ist.                                                                                                            | `boolean \| undefined`                                                                                                                          | `false`     |
-| `_icon`               | `_icon`          | Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)                                                     | `KoliBriHorizontalIcon & KoliBriVerticalIcon \| string \| undefined`                                                                            | `undefined` |
+| `_icon`               | `_icon`          | Iconklasse (z.B.: "codicon codicon-home")                                                                                                          | `KoliBriHorizontalIcon & KoliBriVerticalIcon \| string \| undefined`                                                                            | `undefined` |
 | `_iconAlign`          | `_icon-align`    | <span style="color:red">**[DEPRECATED]**</span> <br/><br/>Gibt an, ob das Icon links oder rechts dargestellt werden soll.                          | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                           | `undefined` |
 | `_iconOnly`           | `_icon-only`     | Gibt an, ob nur das Icon angezeigt wird.                                                                                                           | `boolean \| undefined`                                                                                                                          | `false`     |
-| `_id`                 | `_id`            | Gibt die ID der Schaltfläche an. (Selection, Testing)                                                                                              | `string \| undefined`                                                                                                                           | `undefined` |
-| `_label` _(required)_ | `_label`         | Gibt den Label für die Beschriftung der Schaltfläche an.                                                                                           | `string`                                                                                                                                        | `undefined` |
+| `_id`                 | `_id`            | Gibt die ID der Schaltfläche an.                                                                                                                   | `string \| undefined`                                                                                                                           | `undefined` |
+| `_label` _(required)_ | `_label`         | Setzt den sichtbaren Text des Elements.                                                                                                            | `string`                                                                                                                                        | `undefined` |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für die Button-Events an.                                                                                        | `undefined \| { onClick?: EventValueOrEventCallback<MouseEvent, unknown> \| undefined; onMouseDown?: EventCallback<MouseEvent> \| undefined; }` | `undefined` |
 | `_role`               | `_role`          | Gibt an, welche Role der Schalter hat.                                                                                                             | `"button" \| "link" \| "tab" \| undefined`                                                                                                      | `undefined` |
 | `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                          | `number \| undefined`                                                                                                                           | `undefined` |
@@ -149,9 +140,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-nav --> kol-button
   kol-pagination --> kol-button
   kol-table --> kol-button

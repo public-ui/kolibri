@@ -19,11 +19,6 @@ const DefaultArgs = {
 	_headline: 'Card-Überschrift',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolCard {...args}>
@@ -37,11 +32,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Sizes = (args: any) => (
 	<div style={{ display: 'grid', gap: '0.25em' }}>
 		<KolCard _headline="Ein Beispieltitel in Größe 1" _level={1}></KolCard>
@@ -57,11 +47,6 @@ Sizes.args = {
 };
 Sizes.storyName = 'Card mit Überschrift in verschiedenen Größen';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithContent = (args: any) => (
 	<div>
 		<KolCard {...args}>
@@ -81,11 +66,6 @@ WithContent.args = {
 };
 WithContent.storyName = 'Card mit Inhalt';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithHeader = (args: any) => (
 	<div>
 		<KolCard {...args}>
@@ -105,11 +85,6 @@ WithHeader.args = {
 };
 WithHeader.storyName = 'Card mit Headerbereich';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithFooter = (args: any) => (
 	<div>
 		<KolCard {...args}>
@@ -130,11 +105,6 @@ WithFooter.args = {
 };
 WithFooter.storyName = 'Card mit Fußbereich';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithButton = (args: any) => (
 	<div>
 		<KolCard _level={1} _has-footer _headline="Mit h1-Überschrift und Footer">
@@ -173,11 +143,6 @@ export const WithButton = (args: any) => (
 
 WithButton.storyName = 'Card mit Buttons';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithStyleContent = (args: any) => (
 	<div>
 		<KolCard {...args}>
@@ -215,11 +180,6 @@ WithStyleContent.args = {
 };
 WithStyleContent.storyName = 'Card mit Inhalten';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const WithStyleChoose = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.5em' }}>
 		<KolCard {...args}>

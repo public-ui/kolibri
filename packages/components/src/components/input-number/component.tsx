@@ -40,7 +40,7 @@ export class KolInputNumber implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDiscribedBy } = getRenderStates(this.state);
+		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		return (
 			<Host
@@ -69,7 +69,7 @@ export class KolInputNumber implements ComponentApi {
 						ref={this.catchRef}
 						title=""
 						accessKey={this.state._accessKey}
-						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
+						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"
 						autoComplete={this.state._autoComplete}

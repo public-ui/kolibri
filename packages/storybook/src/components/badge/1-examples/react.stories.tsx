@@ -18,11 +18,6 @@ const DefaultArgs = {
 	_label: 'Label-Text',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Standard = (args: any) => (
 	<div>
 		<KolBadge {...args}></KolBadge>
@@ -32,11 +27,6 @@ Standard.args = {
 	...DefaultArgs,
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Einfaerben = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25em' }}>
 		<KolBadge {...args}></KolBadge>
@@ -51,11 +41,6 @@ Einfaerben.args = {
 };
 Einfaerben.storyName = 'Einfärben';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const MitIcon = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25em' }}>
 		<KolBadge {...args} _label="Standard ohne Icon"></KolBadge>
@@ -66,11 +51,6 @@ export const MitIcon = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const IconPosition = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25em' }}>
 		<KolBadge {...args} _iconAlign={'left'}></KolBadge>
@@ -82,11 +62,6 @@ IconPosition.args = {
 	_icon: 'icofont-home',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Schriftschnitt = (args: any) => (
 	<div style={{ display: 'flex', gap: '0.25em' }}>
 		<KolBadge {...args} _label="Normale Schrift"></KolBadge>
@@ -100,11 +75,6 @@ export const Schriftschnitt = (args: any) => (
 	</div>
 );
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const AlsLabel = (args: any) => (
 	<div>
 		<KolBadge {...args}></KolBadge>
@@ -121,11 +91,6 @@ AlsLabel.args = {
 	_color: '#4682B4',
 };
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Bright = (args: any) => (
 	<div>
 		<KolDetails _summary="Hinweise zur Barrierefreiheit">Die Komponente managed die Schriftfarbe in Abhängigkeit zur Hintergrundfarbe automatisch.</KolDetails>
@@ -141,11 +106,6 @@ export const Bright = (args: any) => (
 );
 Bright.storyName = 'Heller Hintergrund';
 
-/**
- * Die Component stellt eine konkrete Story im Storybook dar.
- *
- * @see: https://storybook.js.org/docs/react/get-started/whats-a-story
- */
 export const Dark = (args: any) => (
 	<div>
 		<KolDetails _summary="Hinweise zur Barrierefreiheit">Die Komponente managed die Schriftfarbe in Abhängigkeit zur Hintergrundfarbe automatisch.</KolDetails>

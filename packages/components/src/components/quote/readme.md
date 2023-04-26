@@ -19,12 +19,12 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 ## Properties
 
-| Property              | Attribute  | Description                                                                                | Type                               | Default     |
-| --------------------- | ---------- | ------------------------------------------------------------------------------------------ | ---------------------------------- | ----------- |
-| `_caption`            | `_caption` | The caption of the quote.                                                                  | `string \| undefined`              | `undefined` |
-| `_href` _(required)_  | `_href`    | The href is a URL that designates a source document or message for the information quoted. | `string`                           | `undefined` |
-| `_quote` _(required)_ | `_quote`   | The text of the quote.                                                                     | `string`                           | `undefined` |
-| `_variant`            | `_variant` | The variant of the quote.                                                                  | `"block" \| "inline" \| undefined` | `'inline'`  |
+| Property              | Attribute  | Description                            | Type                               | Default     |
+| --------------------- | ---------- | -------------------------------------- | ---------------------------------- | ----------- |
+| `_caption`            | `_caption` | Setzt die Überschrift.                 | `string \| undefined`              | `undefined` |
+| `_href` _(required)_  | `_href`    | Link auf die Quelle des Zitates.       | `string`                           | `undefined` |
+| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst. | `string`                           | `undefined` |
+| `_variant`            | `_variant` | Setzt die Variante des Zitats.         | `"block" \| "inline" \| undefined` | `'inline'`  |
 
 ## Dependencies
 
@@ -42,11 +42,7 @@ graph TD;
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
-  kol-button-wc --> kol-span-wc
-  kol-button-wc --> kol-tooltip
+  kol-tooltip --> kol-span-wc
   style kol-quote fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,5 +1,5 @@
-@import '../input.css';
-@import './common.css';
-@import './button.css';
-@import './checkbox.css';
-@import './switch.css';
+@import url(../input.css);
+@import url(common.css);
+@import url(button.css);
+@import url(checkbox.css);
+@import url(switch.css);

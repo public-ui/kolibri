@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { rimrafSync } = require('rimraf');
+const rimraf = require('rimraf');
 const exclude = /(@else|symbol)/;
 // const exclude = /(@else|font-awesome|icofont|leanup|symbol)/;
 function filterMdFiles(dir) {
@@ -30,9 +30,17 @@ const reverseString = (str) => {
 	return str.split('').reverse().join('');
 };
 
-rimrafSync('doc/*.md');
-
-README_PATHS.forEach((readmePath) => {
-	const name = reverseString(reverseString(path.dirname(readmePath)).replace(/\/.+/g, ''));
-	fs.writeFileSync(`${DOC_FOLDER}/${name}.md`, fs.readFileSync(readmePath, 'utf-8').replace('style="color:red"', 'class="text-red-500"'), 'utf-8');
+rimraf('doc/*.md', () => {
+	README_PATHS.forEach((readmePath) => {
+		const name = reverseString(reverseString(path.dirname(readmePath)).replace(/\/.+/g, ''));
+		fs.writeFileSync(
+			`${DOC_FOLDER}/${name}.md`,
+			fs
+				.readFileSync(readmePath, 'utf-8')
+				.replace('style="color:red"', 'class="text-red-500"')
+				.replace(/ \\\| /g, '` \\| `'),
+			'utf-8'
+		);
+		console.log(`Generated ${name}.md`);
+	});
 });

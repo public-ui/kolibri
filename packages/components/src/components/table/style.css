@@ -1,10 +1,8 @@
-@import '../style.css';
-@import '../host-display-block.css';
-
+@import url(../style.css);
+@import url(../host-display-block.css);
 :host {
 	overflow: auto;
 }
-
 table {
 	position: relative;
 	width: 100%;
@@ -31,24 +29,20 @@ th > div {
 	place-items: center;
 	gap: 0.25em;
 }
-
 div.pagination {
 	padding: 0.5em;
 }
-
 div.pagination,
 div.pagination > div:last-child {
 	display: grid;
 	place-items: center;
 	gap: 0.5em;
 }
-
 @media (min-width: 1024px) {
 	div.pagination,
 	div.pagination > div:last-child {
 		grid-auto-flow: column;
 	}
-
 	div.pagination kol-pagination {
 		display: flex;
 	}

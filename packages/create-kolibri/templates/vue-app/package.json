@@ -20,13 +20,16 @@
 		"serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
 		"start": "npm run serve -- --open",
 		"test": "cross-env NODE_ENV=test mocha --exit",
+		"postinstall": "npm-run-all postinstall:*",
+		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
+		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
 		"update": "ncu -t minor -u && ncu",
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "^1.5.0-rc.11",
-		"@public-ui/themes": "^1.5.0-rc.11",
-		"@public-ui/vue": "^1.5.0-rc.11",
+		"@public-ui/components": "^1.5.0-rc.17",
+		"@public-ui/themes": "^1.5.0-rc.17",
+		"@public-ui/vue": "^1.5.0-rc.17",
 		"vue": "^3.2.45"
 	},
 	"devDependencies": {
@@ -36,7 +39,9 @@
 		"@unocss/preset-mini": "^0.45.29",
 		"@unocss/webpack": "^0.45.29",
 		"chromedriver": "^108.0.0",
+		"cpy-cli": "^4.2.0",
 		"npm-check-updates": "^16.6.2",
+		"npm-run-all": "^4.1.5",
 		"typescript": "^4.9.4"
 	},
 	"files": [

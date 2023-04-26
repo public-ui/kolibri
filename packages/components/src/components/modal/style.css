@@ -1,5 +1,4 @@
-@import '../style.css';
-
+@import url(../style.css);
 .overlay {
 	background-color: rgba(0, 0, 0, 0.33);
 	display: grid;
@@ -10,7 +9,6 @@
 	width: 100%;
 	z-index: 100;
 }
-
 .modal {
 	max-height: 100%;
 	max-width: 100%;

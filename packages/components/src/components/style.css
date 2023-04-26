@@ -1,21 +1,18 @@
-@import './a11y.css';
-@import './preset.css';
-
+@import url(a11y.css);
+@import url(preset.css);
 :host {
-	/**
+	/*
 	 * The max-width is needed to prevent the table from overflowing the
 	 * parent node, if the table is wider than the parent node.
 	 */
 	max-width: 100%;
 }
-
 * {
-	/**
+	/*
 	 * We prefer to box-sizing: border-box for all elements.
 	 */
 	box-sizing: border-box;
 }
-
 kol-span-wc {
 	display: grid;
 	place-items: center;
@@ -24,12 +21,10 @@ kol-span-wc > span {
 	display: flex;
 	place-items: center;
 }
-
 a,
 button {
 	cursor: pointer;
 }
-
 a,
 button,
 input,
@@ -38,7 +33,6 @@ select,
 textarea {
 	font-family: inherit;
 }
-
 .icon-only > kol-span-wc > span > span {
 	display: none;
 }

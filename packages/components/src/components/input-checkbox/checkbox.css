@@ -9,11 +9,9 @@
 	width: 1.5em;
 }
 .checkbox input[type='checkbox']:checked:before {
-	border-bottom-width: 3px;
 	border-radius: 1px;
-	border-right-width: 3px;
 	border-style: solid;
-	border-width: 0px 3px 3px 0px;
+	border-width: 0 3px 3px 0;
 	height: 0.75em;
 	left: calc(0.375em - 2px);
 	transform: rotate(40deg) translate(-50%, -50%);
@@ -21,7 +19,7 @@
 	width: 0.375em;
 }
 .checkbox input[type='checkbox']:indeterminate:before {
-	background-color: black;
+	background-color: #000;
 	height: 0.2em;
 	left: 0.24em;
 	top: 0.575em;

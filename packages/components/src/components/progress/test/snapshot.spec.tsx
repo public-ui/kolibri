@@ -27,10 +27,14 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-           <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
-             <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-             <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="1" y1="1" y2="1"></line>
-           </svg>
+				 	 <div>
+					   <div style="display: flex; gap: 0.3em;">
+               <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
+                 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
+                 <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="1" y1="1" y2="1"></line>
+               </svg>
+						 </div>
+					 </div>
            <progress aria-busy="true" max="100" value="0"></progress>
            <span ${DEFAULT_HTML_SPAN_PROPS}>
              0 von 100 %
@@ -49,10 +53,14 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-           <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
-             <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-             <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="10" y1="1" y2="1"></line>
-           </svg>
+				 	 <div>
+					   <div style="display: flex; gap: 0.3em;">
+							 <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
+							 	 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
+								 <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="10" y1="1" y2="1"></line>
+							 </svg>
+						 </div>
+					 </div>
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>
            <span ${DEFAULT_HTML_SPAN_PROPS}>
              0 von 42 %
@@ -70,10 +78,14 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-           <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
-             <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-             <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-           </svg>
+				 	 <div>
+					   <div style="display: flex; gap: 0.3em;">
+							 <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
+								 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
+								 <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
+							 </svg>
+						 </div>
+					 </div>
            <progress aria-busy="false" max="${DEFAULT_PROPS._max}" value="${DEFAULT_PROPS._max}"></progress>
            <span ${DEFAULT_HTML_SPAN_PROPS}>
              0 von 42 %

@@ -27,7 +27,7 @@ export class KolInputRadio implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDiscribedBy, hasError } = getRenderStates(this.state);
+		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
 		return (
 			<Host>
 				<fieldset
@@ -61,12 +61,13 @@ export class KolInputRadio implements ComponentApi {
 								_renderNoLabel={true}
 								_required={this.state._required}
 								_touched={this.state._touched}
+								onClick={() => this.ref?.focus()}
 							>
 								<div slot="input">
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										accessKey={this.state._accessKey} // by radio?!
-										aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
+										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
 										title=""
 										type="radio"

@@ -27,7 +27,7 @@ export class KolInputFile implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDiscribedBy } = getRenderStates(this.state);
+		const { ariaDescribedBy } = getRenderStates(this.state);
 		return (
 			<Host>
 				<kol-input
@@ -40,6 +40,7 @@ export class KolInputFile implements ComponentApi {
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
 					_touched={this.state._touched}
+					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
 						<slot />
@@ -49,7 +50,7 @@ export class KolInputFile implements ComponentApi {
 						title=""
 						accept={this.state._accept}
 						accessKey={this.state._accessKey}
-						aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
+						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 						aria-labelledby={`${this.state._id}-label`}
 						autoCapitalize="off"
 						autoCorrect="off"

@@ -1,11 +1,9 @@
 label {
 	cursor: pointer;
 }
-
 kol-input {
 	align-items: center;
 	display: grid;
-
 	justify-items: left;
 	width: 100;
 }
@@ -14,21 +12,21 @@ kol-input.switch {
 	grid-template-columns: auto 1fr;
 }
 kol-input .input {
-	display: inline-flex;
+	align-items: center;
+	display: grid;
 	order: 1;
 }
 kol-input .input div {
 	display: inline-flex;
 }
 kol-input .input input {
-	margin: 0px;
+	margin: 0;
 }
 kol-input label {
 	order: 2;
 }
-
-kol-input.error > kol-alert,
-kol-input .hint {
+kol-input .hint,
+kol-input.error > kol-alert {
 	grid-column: span 2;
 }
 kol-input kol-alert.error {
@@ -37,7 +35,6 @@ kol-input kol-alert.error {
 kol-input .hint {
 	order: 4;
 }
-
 input {
 	border-width: 2px;
 	border-style: solid;
@@ -45,7 +42,7 @@ input {
 }
 input[type='checkbox'] {
 	appearance: none;
-	background-color: white;
+	background-color: #fff;
 	cursor: pointer;
 	transition: 0.5s;
 }
@@ -56,7 +53,6 @@ input[type='checkbox']:before {
 	content: '';
 	cursor: pointer;
 }
-
 .checkbox kol-icon,
 .switch kol-icon {
 	display: none;

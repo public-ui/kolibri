@@ -40,7 +40,7 @@ export class KolTextarea implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDiscribedBy } = getRenderStates(this.state);
+		const { ariaDescribedBy } = getRenderStates(this.state);
 		return (
 			<Host
 				class={{
@@ -57,6 +57,7 @@ export class KolTextarea implements ComponentApi {
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_touched={this.state._touched}
+					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
 						<slot />
@@ -66,7 +67,7 @@ export class KolTextarea implements ComponentApi {
 							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey}
-							aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
 							autoCapitalize="off"
 							// aria-hidden="true" // Wieso ist das hier?

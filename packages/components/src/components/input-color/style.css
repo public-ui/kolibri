@@ -1,1 +1,4 @@
-@import '../input-line.css';
+@import url(../input-line.css);
+div.input {
+	cursor: pointer;
+}

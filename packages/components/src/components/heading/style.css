@@ -1,5 +1,4 @@
-@import '../style.css';
-
+@import url(../style.css);
 :host > kol-heading-wc {
 	display: grid;
 }

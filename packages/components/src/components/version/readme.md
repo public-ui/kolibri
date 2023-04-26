@@ -54,7 +54,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
-  kol-tooltip --> kol-badge
+  kol-tooltip --> kol-span-wc
   style kol-version fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

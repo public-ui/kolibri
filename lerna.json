@@ -14,11 +14,17 @@
 		"packages/core",
 		"packages/create-kolibri",
 		"packages/designer",
+		"packages/samples/react",
 		"packages/schema",
 		"packages/slidev",
 		"packages/storybook",
-		"packages/themes"
+		"packages/themes",
+		"packages/themes/bmf",
+		"packages/themes/bpa",
+		"packages/themes/ecl/ec",
+		"packages/themes/ecl/eu",
+		"packages/themes/itzbund"
 	],
 	"useNx": false,
-	"version": "1.5.0-rc.11"
+	"version": "1.5.0-rc.17"
 }
