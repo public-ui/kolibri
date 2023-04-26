@@ -26,7 +26,8 @@ simButtons.forEach((button, index) => {
 	};
 });
 
-document.querySelector('[_id="schnitzelwert"]')._on = { onChange: onSchnitzelchange };
+const schnitzelwert = document.querySelector('[_id="schnitzelwert"]');
+if (schnitzelwert) schnitzelwert._on = { onChange: onSchnitzelchange };
 const progressOut = document.querySelector('[_id="schnitzelfortschritt"]');
 function onSchnitzelchange(e, value) {
 	progressOut.setAttribute('_value', value);
