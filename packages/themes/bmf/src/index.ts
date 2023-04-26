@@ -134,7 +134,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		justify-content: center;
 		font-style: normal;
 		text-align: center;
-		text-transform: uppercase;
 		width: inherit;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
@@ -221,7 +220,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		width: 1.5em;
 		height: 1.5em;
 	}
-	button.loading > kol-span-wc kol-icon {
+	button.loading > kol-span-wc kol-icon::part(icon) {
 		animation: spin 5s infinite linear;
 	} /** small ghost button */
 	button.small.ghost > kol-span-wc {
@@ -2008,7 +2007,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		line-height: 22px;
 		min-height: 44px;
 		min-width: 44px;
-		text-transform: uppercase;
 		color: var(--color-grey);
 		padding: 0;
 	}
@@ -2302,7 +2300,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		justify-content: center;
 		font-style: normal;
 		text-align: center;
-		text-transform: uppercase;
 		width: inherit;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
@@ -2389,9 +2386,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		width: 1.5em;
 		height: 1.5em;
 	}
-	a.loading > kol-span-wc kol-icon {
-		animation: spin 5s infinite linear;
-	} /** small ghost a */
+	/** small ghost a */
 	.ghost.small a > kol-span-wc {
 		border: none;
 		background-color: transparent;
@@ -2419,7 +2414,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: transparent;
 		border-color: transparent;
 	}
-	.loading a > kol-span-wc kol-icon {
+	.loading a > kol-span-wc kol-icon::part(icon) {
 		animation: spin 5s infinite linear;
 	}`,
 	'KOL-BUTTON-LINK': `a,
