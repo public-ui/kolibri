@@ -1505,7 +1505,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="progress" id="progress">
+			<kol-accordion _heading="progress" id="progress" _open>
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1516,16 +1516,24 @@
 							<kol-heading _headline="" _level="2">Progress</kol-heading>
 						</div>
 						<div class="col-12">
-							<kol-progress></kol-progress>
+							<div style="display: flex; gap: 1rem; align-items: center">
+								<kol-progress _unit="/100"></kol-progress>
+								<kol-progress _show-unit></kol-progress>
+								<kol-progress _show-unit _unit="/100"></kol-progress>
+								<kol-progress _show-unit _unit="/100" _description="Fortschritt"></kol-progress>
+							</div>
 							<kol-button _label="Simulation starten"></kol-button>
 						</div>
 						<div class="col-12">
-							<kol-progress _unit="Schnitzel" _value="75" _type="cycle"></kol-progress>
+							<div style="display: flex; gap: 1rem; align-items: center">
+								<kol-progress _type="cycle" _value="75" _unit="/100"></kol-progress>
+								<kol-progress _type="cycle" _value="75" _show-unit></kol-progress>
+								<kol-progress _type="cycle" _value="75" _show-unit _unit="/100"></kol-progress>
+								<kol-progress _type="cycle" _value="75" _show-unit _unit="/100" _description="Fortschritt"></kol-progress>
+							</div>
 							<kol-button _label="Simulation starten"></kol-button>
 						</div>
-						<div class="col-12">
-							<script src="assets/progress-simulation.js"></script>
-						</div>
+						<div class="col-12"></div>
 					</div>
 				</div>
 			</kol-accordion>
