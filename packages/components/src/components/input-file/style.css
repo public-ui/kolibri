@@ -8,7 +8,6 @@ label input[type='file']:before {
 label input[multiple]:before {
 	content: 'Dateien auswählen';
 }
-
 div.input {
 	cursor: pointer;
 }
