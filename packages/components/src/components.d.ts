@@ -1518,6 +1518,10 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
+          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+         */
+        "_download"?: boolean | string;
+        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -1608,6 +1612,10 @@ export namespace Components {
           * Gibt an, ob der Link deaktiviert ist.
          */
         "_disabled"?: boolean;
+        /**
+          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+         */
+        "_download"?: boolean | string;
         /**
           * Gibt die Ziel-Url des Links an.
          */
@@ -1711,6 +1719,10 @@ export namespace Components {
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
+        /**
+          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+         */
+        "_download"?: boolean | string;
         /**
           * Gibt die Ziel-Url des Links an.
          */
@@ -1892,7 +1904,7 @@ export namespace Components {
         /**
           * Öffnet/schließt das Popover.
          */
-        "_open"?: boolean;
+        "_show"?: boolean;
     }
     interface KolProgress {
         /**
@@ -4110,6 +4122,10 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
+          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+         */
+        "_download"?: boolean | string;
+        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -4200,6 +4216,10 @@ declare namespace LocalJSX {
           * Gibt an, ob der Link deaktiviert ist.
          */
         "_disabled"?: boolean;
+        /**
+          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+         */
+        "_download"?: boolean | string;
         /**
           * Gibt die Ziel-Url des Links an.
          */
@@ -4303,6 +4323,10 @@ declare namespace LocalJSX {
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
+        /**
+          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+         */
+        "_download"?: boolean | string;
         /**
           * Gibt die Ziel-Url des Links an.
          */
@@ -4484,7 +4508,7 @@ declare namespace LocalJSX {
         /**
           * Öffnet/schließt das Popover.
          */
-        "_open"?: boolean;
+        "_show"?: boolean;
     }
     interface KolProgress {
         /**
