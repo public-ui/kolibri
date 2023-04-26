@@ -5,9 +5,9 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { ColorPair, handleColorChange, PropColor, validateColor } from '../../types/props/color';
-import { validateLabel } from '../../types/props/label';
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
+import { validateLabel } from '../../types/props';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
