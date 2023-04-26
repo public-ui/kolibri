@@ -13,17 +13,17 @@ export const getRenderStates = (state: {
 }): {
 	hasError: boolean;
 	hasHint: boolean;
-	ariaDiscribedBy: string[];
+	ariaDescribedBy: string[];
 } => {
 	const hasError = typeof state._error === 'string' && state._error.length > 0 && state._touched === true;
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 
-	const ariaDiscribedBy: string[] = [];
+	const ariaDescribedBy: string[] = [];
 	if (hasError === true) {
-		ariaDiscribedBy.push(`${state._id}-error`);
+		ariaDescribedBy.push(`${state._id}-error`);
 	}
 	if (hasHint === true) {
-		ariaDiscribedBy.push(`${state._id}-hint`);
+		ariaDescribedBy.push(`${state._id}-hint`);
 	}
-	return { hasError, hasHint, ariaDiscribedBy };
+	return { hasError, hasHint, ariaDescribedBy };
 };

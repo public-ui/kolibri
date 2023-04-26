@@ -26,7 +26,7 @@ export class KolInputCheckbox implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { ariaDiscribedBy } = getRenderStates(this.state);
+		const { ariaDescribedBy } = getRenderStates(this.state);
 		return (
 			<Host>
 				<kol-input
@@ -58,7 +58,7 @@ export class KolInputCheckbox implements ComponentApi {
 						<input
 							ref={this.catchRef}
 							accessKey={this.state._accessKey} // by checkbox?!
-							aria-describedby={ariaDiscribedBy.length > 0 ? ariaDiscribedBy.join(' ') : undefined}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
 							checked={this.state._checked === true}
 							disabled={this.state._disabled === true}
