@@ -155,7 +155,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		align-items: baseline;
 		color: var(--color-blau);
 		gap: 0.25em;
-		min-height: 1em;
 		text-decoration-line: none;
 	}
 	a:active,
@@ -196,7 +195,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		align-items: baseline;
 		color: var(--color-blau);
 		gap: 0.25em;
-		min-height: 1em;
 		text-decoration-line: none;
 	}
 	a:active,
@@ -365,7 +363,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		content: "\\f078";
 	}`,
 	'KOL-ALERT': `:host > div {
-		background-color: white;
 		border-width: 2px;
 		border-style: solid;
 		border-radius: 0.25rem;
@@ -923,6 +920,11 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host {
 		--spacing: 0.25rem;
 	}
+	input {
+		border-color: var(--color-neutral-dark);
+		border-width: 2px;
+		border-style: solid;
+	}
 	label {
 		cursor: pointer;
 	}
@@ -1016,125 +1018,25 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		display: inline-block;
 		margin-bottom: 0.25em;
 	}`,
-	'KOL-INPUT-COLOR': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		gap: 0.25rem;
-	}
-	kol-input > label {
-		font-weight: var(--font-weight-bold);
-		order: 1;
-		margin-bottom: 0.25rem;
-	}
-	kol-input > label > span {
-		color: var(--default-letter);
-	}
-	kol-input > div.input {
-		background-color: white;
-		border-radius: 0.25rem;
-		display: block;
-		order: 2;
-	}
-	kol-input > span.hint {
-		color: var(--color-grau-40);
-		font-style: italic;
-		order: 4;
-		font-size: 0.8rem;
-	}
-	kol-input > kol-alert.error {
-		order: 3;
-	}
-	kol-input > .input:focus-within,
-	kol-input > .input:hover {
-		border-color: var(--color-grau-60);
-	}
-	kol-input > .input {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
+	'KOL-INPUT-COLOR': `kol-input .input {
 		border-color: var(--color-grau-30);
 		border-width: 2px;
 		border-style: solid;
-		padding: 0.5em 0.75em;
-		border-radius: 0.25rem;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
 		overflow: hidden;
-		width: 100%;
 	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
-	}
-	textarea {
-		display: inherit;
-	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-grau-10);
-	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-blau);
-		color: white;
-	}`,
-	'KOL-INPUT-FILE': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		gap: 0.25rem;
-	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
+	kol-input .input:focus-within,
+	kol-input .input:hover {
 		border-color: var(--color-grau-60);
+	}
+	kol-input .input input {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
 	}
 	kol-input > label {
 		font-weight: var(--font-weight-bold);
@@ -1145,345 +1047,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		color: var(--default-letter);
 	}
 	kol-input > div.input {
-		background-color: white;
 		border-radius: 0.25rem;
-		display: block;
-		order: 2;
-	}
-	kol-input > span.hint {
-		color: var(--color-grau-40);
-		font-style: italic;
-		order: 4;
-		font-size: 0.8rem;
-	}
-	kol-input > kol-alert.error {
-		order: 3;
-	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grau-30);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.5em 0.75em;
-		border-radius: 0.25rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
-	}
-	textarea {
-		display: inherit;
-	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-grau-10);
-	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-blau);
-		color: white;
-	}`,
-	'KOL-INPUT-EMAIL': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		gap: 0.25rem;
-	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
-		border-color: var(--color-grau-60);
-	}
-	kol-input > label {
-		font-weight: var(--font-weight-bold);
-		order: 1;
-		margin-bottom: 0.25rem;
-	}
-	kol-input > label > span {
-		color: var(--default-letter);
-	}
-	kol-input > div.input {
-		background-color: white;
-		border-radius: 0.25rem;
-		display: block;
-		order: 2;
-	}
-	kol-input > span.hint {
-		color: var(--color-grau-40);
-		font-style: italic;
-		order: 4;
-		font-size: 0.8rem;
-	}
-	kol-input > kol-alert.error {
-		order: 3;
-	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grau-30);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.5em 0.75em;
-		border-radius: 0.25rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
-	}
-	textarea {
-		display: inherit;
-	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-grau-10);
-	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-blau);
-		color: white;
-	}`,
-	'KOL-INPUT-NUMBER': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		gap: 0.25rem;
-	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
-		border-color: var(--color-grau-60);
-	}
-	kol-input > label {
-		font-weight: var(--font-weight-bold);
-		order: 1;
-		margin-bottom: 0.25rem;
-	}
-	kol-input > label > span {
-		color: var(--default-letter);
-	}
-	kol-input > div.input {
-		background-color: white;
-		border-radius: 0.25rem;
-		display: block;
-		order: 2;
-	}
-	kol-input > span.hint {
-		color: var(--color-grau-40);
-		font-style: italic;
-		order: 4;
-		font-size: 0.8rem;
-	}
-	kol-input > kol-alert.error {
-		order: 3;
-	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
-		border-color: var(--color-grau-30);
-		border-width: 2px;
-		border-style: solid;
-		padding: 0.5em 0.75em;
-		border-radius: 0.25rem;
-		overflow: hidden;
-		width: 100%;
-	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
-	}
-	textarea {
-		display: inherit;
-	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-grau-10);
-	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-blau);
-		color: white;
-	}`,
-	'KOL-INPUT-TEXT': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		gap: 0.25rem;
-	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
-		border-color: var(--color-grau-60);
-	}
-	kol-input > label {
-		font-weight: var(--font-weight-bold);
-		order: 1;
-		margin-bottom: 0.25rem;
-	}
-	kol-input > label > span {
-		color: var(--default-letter);
-	}
-	kol-input > div.input {
-		background-color: white;
-		border-radius: 0.25rem;
-		display: block;
 		order: 2;
 	}
 	kol-input > span.hint {
@@ -1494,95 +1058,26 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	kol-input > kol-alert.error {
 		order: 3;
-	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
+	}`,
+	'KOL-INPUT-FILE': `kol-input .input {
 		border-color: var(--color-grau-30);
 		border-width: 2px;
 		border-style: solid;
-		padding: 0.5em 0.75em;
-		border-radius: 0.25rem;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
 		overflow: hidden;
-		width: 100%;
 	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
-	}
-	textarea {
-		display: inherit;
-	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-grau-10);
-	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-blau);
-		color: white;
-	}`,
-	'KOL-SELECT': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		gap: 0.25rem;
-	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
+	kol-input .input:focus-within,
+	kol-input .input:hover {
 		border-color: var(--color-grau-60);
+	}
+	kol-input .input input {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
 	}
 	kol-input > label {
 		font-weight: var(--font-weight-bold);
@@ -1593,108 +1088,37 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		color: var(--default-letter);
 	}
 	kol-input > div.input {
-		background-color: white;
 		border-radius: 0.25rem;
-		display: block;
 		order: 2;
 	}
 	kol-input > span.hint {
-		color: var(--color-grau-40);
+		color: var(--color-grau-60);
 		font-style: italic;
 		order: 4;
 		font-size: 0.8rem;
 	}
 	kol-input > kol-alert.error {
 		order: 3;
-	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
+	}`,
+	'KOL-INPUT-EMAIL': `kol-input .input {
 		border-color: var(--color-grau-30);
 		border-width: 2px;
 		border-style: solid;
-		padding: 0.5em 0.75em;
-		border-radius: 0.25rem;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
 		overflow: hidden;
-		width: 100%;
 	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
-	}
-	textarea {
-		display: inherit;
-	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-grau-10);
-	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
-	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
-	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc button {
-		border-radius: 0.25rem;
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
-	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
-	}
-	.disabled {
-		opacity: 0.33;
-	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-blau);
-		color: white;
-	}`,
-	'KOL-TEXTAREA': `kol-input {
-		display: grid;
-		padding: 0;
-		margin: 0;
-		gap: 0.25rem;
-	}
-	input:focus,
-	input:hover,
-	select:focus,
-	select:hover,
-	textarea:focus,
-	textarea:hover {
+	kol-input .input:focus-within,
+	kol-input .input:hover {
 		border-color: var(--color-grau-60);
+	}
+	kol-input .input input {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
 	}
 	kol-input > label {
 		font-weight: var(--font-weight-bold);
@@ -1705,94 +1129,185 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		color: var(--default-letter);
 	}
 	kol-input > div.input {
-		background-color: white;
 		border-radius: 0.25rem;
-		display: block;
 		order: 2;
 	}
 	kol-input > span.hint {
-		color: var(--color-grau-40);
+		color: var(--color-grau-60);
 		font-style: italic;
 		order: 4;
 		font-size: 0.8rem;
 	}
 	kol-input > kol-alert.error {
 		order: 3;
-	}
-	input,
-	select,
-	textarea {
-		font-family: var(--font-family);
-		background-color: transparent;
-		box-sizing: border-box;
-		font-size: 1rem;
-		display: inline-flex;
-		line-height: 1.5em;
+	}`,
+	'KOL-INPUT-NUMBER': `kol-input .input {
 		border-color: var(--color-grau-30);
 		border-width: 2px;
 		border-style: solid;
-		padding: 0.5em 0.75em;
-		border-radius: 0.25rem;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
 		overflow: hidden;
-		width: 100%;
 	}
-	input:not([type="range"]),
-	select:not([multiple]) {
-		height: 2.75em;
+	kol-input .input:focus-within,
+	kol-input .input:hover {
+		border-color: var(--color-grau-60);
 	}
-	textarea {
-		display: inherit;
+	kol-input .input input {
+		background-color: white;
+		border: 0;
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-grau-10);
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
 	}
-	.required label > span::after {
-		content: "*";
-		padding-left: 0.125em;
+	kol-input > label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+		margin-bottom: 0.25rem;
 	}
-	.icon-left input,
-	.icon-left select {
-		padding-left: 2em;
+	kol-input > label > span {
+		color: var(--default-letter);
 	}
-	.icon-right input,
-	.icon-right select {
-		padding-right: 2em;
-	}
-	kol-button-wc button {
+	kol-input > div.input {
 		border-radius: 0.25rem;
-		box-sizing: border-box;
-		background-color: transparent;
-		cursor: pointer;
+		order: 2;
 	}
-	.icon-right kol-button-wc {
-		margin-right: 2.5em;
+	kol-input > span.hint {
+		color: var(--color-grau-60);
+		font-style: italic;
+		order: 4;
+		font-size: 0.8rem;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input > kol-alert.error {
+		order: 3;
+	}`,
+	'KOL-INPUT-TEXT': `kol-input .input {
+		border-color: var(--color-grau-30);
+		border-width: 2px;
+		border-style: solid;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
+		overflow: hidden;
 	}
-	select[multiple],
+	kol-input .input:focus-within,
+	kol-input .input:hover {
+		border-color: var(--color-grau-60);
+	}
+	kol-input .input input {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
+	}
+	kol-input > label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+		margin-bottom: 0.25rem;
+	}
+	kol-input > label > span {
+		color: var(--default-letter);
+	}
+	kol-input > div.input {
+		border-radius: 0.25rem;
+		order: 2;
+	}
+	kol-input > span.hint {
+		color: var(--color-grau-60);
+		font-style: italic;
+		order: 4;
+		font-size: 0.8rem;
+	}
+	kol-input > kol-alert.error {
+		order: 3;
+	}`,
+	'KOL-SELECT': `kol-input .input {
+		border-color: var(--color-grau-30);
+		border-width: 2px;
+		border-style: solid;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
+		overflow: hidden;
+	}
+	kol-input .input:focus-within,
+	kol-input .input:hover {
+		border-color: var(--color-grau-60);
+	}
+	kol-input .input :is(input, select, textarea) {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
+	}
+	kol-input > label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+		margin-bottom: 0.25rem;
+	}
+	kol-input > label > span {
+		color: var(--default-letter);
+	}
+	kol-input > div.input {
+		border-radius: 0.25rem;
+		order: 2;
+	}
+	kol-input > span.hint {
+		color: var(--color-grau-60);
+		font-style: italic;
+		order: 4;
+		font-size: 0.8rem;
+	}
+	kol-input > kol-alert.error {
+		order: 3;
+	}`,
+	'KOL-TEXTAREA': `kol-input .input {
+		border-color: var(--color-grau-30);
+		border-width: 2px;
+		border-style: solid;
+		padding: 0 0.75em;
+		gap: var(--gap);
+		height: unset !important;
+		overflow: hidden;
+	}
+	kol-input .input:focus-within,
+	kol-input .input:hover {
+		border-color: var(--color-grau-60);
+	}
+	kol-input .input :is(input, select, textarea) {
+		background-color: white;
+		border: 0;
+	}
 	textarea {
-		overflow: auto;
+		margin-top: 2px;
+		padding: 0.5em 0;
 	}
-	textarea {
-		display: block;
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
 	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
+	kol-input > label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+		margin-bottom: 0.25rem;
 	}
-	select option:disabled {
-		cursor: not-allowed;
+	kol-input > label > span {
+		color: var(--default-letter);
 	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background-color: var(--color-blau);
-		color: white;
+	kol-input > div.input {
+		border-radius: 0.25rem;
+		order: 2;
+	}
+	kol-input > span.hint {
+		color: var(--color-grau-60);
+		font-style: italic;
+		order: 4;
+		font-size: 0.8rem;
+	}
+	kol-input > kol-alert.error {
+		order: 3;
 	}`,
 	'KOL-INDENTED-TEXT': `:host > div {
 		background: white;
@@ -2064,5 +1579,87 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	kol-icon::part(icon):before {
 		content: "/";
 		text-align: center;
+	}`,
+	'KOL-INPUT-PASSWORD': `kol-input .input {
+		border-color: var(--color-grau-30);
+		border-width: 2px;
+		border-style: solid;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
+		overflow: hidden;
+	}
+	kol-input .input:focus-within,
+	kol-input .input:hover {
+		border-color: var(--color-grau-60);
+	}
+	kol-input .input input {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
+	}
+	kol-input > label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+		margin-bottom: 0.25rem;
+	}
+	kol-input > label > span {
+		color: var(--default-letter);
+	}
+	kol-input > div.input {
+		border-radius: 0.25rem;
+		order: 2;
+	}
+	kol-input > span.hint {
+		color: var(--color-grau-60);
+		font-style: italic;
+		order: 4;
+		font-size: 0.8rem;
+	}
+	kol-input > kol-alert.error {
+		order: 3;
+	}`,
+	'KOL-INPUT-RANGE': `kol-input .input {
+		border-color: var(--color-grau-30);
+		border-width: 2px;
+		border-style: solid;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		height: 44px;
+		overflow: hidden;
+	}
+	kol-input .input:focus-within,
+	kol-input .input:hover {
+		border-color: var(--color-grau-60);
+	}
+	kol-input .input input {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
+	}
+	kol-input > label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+		margin-bottom: 0.25rem;
+	}
+	kol-input > label > span {
+		color: var(--default-letter);
+	}
+	kol-input > div.input {
+		border-radius: 0.25rem;
+		order: 2;
+	}
+	kol-input > span.hint {
+		color: var(--color-grau-60);
+		font-style: italic;
+		order: 4;
+		font-size: 0.8rem;
+	}
+	kol-input > kol-alert.error {
+		order: 3;
 	}`,
 });
