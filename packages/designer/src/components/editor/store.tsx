@@ -1619,21 +1619,20 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-TEXTAREA': () => (
 		<div class="grid gap-6">
-			<KolTextarea _id="text" _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched>
+			<KolTextarea _rows={1} _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched>
+				Ihre Nachricht (1 Row)
+			</KolTextarea>
+			<KolTextarea _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched>
 				Ihre Nachricht
 			</KolTextarea>
-			<KolTextarea _id="text" _resize="none" _rows={10} _required _error={ERROR_MSG}>
+			<KolTextarea _resize="none" _rows={10} _required _error={ERROR_MSG}>
 				Ihre Nachricht
 			</KolTextarea>
-			<KolTextarea _id="text" _hasCounter _maxLength={200} _resize="none" _rows={10} _required _error={ERROR_MSG}>
+			<KolTextarea _hasCounter _maxLength={200} _resize="none" _rows={10} _required _error={ERROR_MSG}>
 				Ihre Nachricht
 			</KolTextarea>
-			<KolTextarea _disabled _id="text">
-				Ihre Nachricht (Disabled)
-			</KolTextarea>
-			<KolTextarea _id="text" _read-only>
-				Ihre Nachricht (Readonly)
-			</KolTextarea>
+			<KolTextarea _disabled>Ihre Nachricht (Disabled)</KolTextarea>
+			<KolTextarea _read-only>Ihre Nachricht (Readonly)</KolTextarea>
 		</div>
 	),
 	'KOL-SKIP-NAV': () => (
