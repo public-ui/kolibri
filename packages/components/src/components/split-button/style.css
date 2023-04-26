@@ -1,0 +1,24 @@
+@import url(../style.css);
+
+.wrapper {
+	display: flex;
+	padding-inline: 0.5rem;
+	position: relative;
+
+	background-color: hsl(222, 10%, 90%);
+	border: 1px solid hsl(222, 10%, 50%);
+}
+
+kol-button-wc:first-child {
+	flex-grow: 1;
+	text-align: left;
+}
+kol-button-wc:first-child kol-span-wc {
+	place-items: start;
+}
+
+kol-button-wc[_icon-only] button {
+	--a11y-min-size: 0;
+	height: 100%;
+	padding-left: 0.5rem;
+}
