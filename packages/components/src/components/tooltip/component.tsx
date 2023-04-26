@@ -34,7 +34,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	private arrowElement?: HTMLDivElement;
 
 	private alignTooltip = (cb?: () => void): void => {
-		if (processEnv !== 'test' && this.previousSibling && this.tooltipElement) {
+		if (processEnv !== 'test' && this.previousSibling /* SSR instanceof HTMLElement */ && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
 			const arrowEl = this.arrowElement;
