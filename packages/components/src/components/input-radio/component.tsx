@@ -4,7 +4,6 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { W3CInputValue } from '../../types/w3c';
-import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
@@ -19,12 +18,6 @@ import { nonce } from '../../utils/dev.utils';
 })
 export class KolInputRadio implements ComponentApi {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
-	private ref?: HTMLInputElement;
-
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		propagateFocus(this.host, this.ref);
-	};
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
@@ -45,11 +38,6 @@ export class KolInputRadio implements ComponentApi {
 					</legend>
 
 					{this.state._list.map((option, index) => {
-						/**
-						 * Damit der Value einer Option ein beliebigen Typ haben kann
-						 * muss man auf HTML-Ebene den Value auf einen String-Wert
-						 * mappen. Das tun wir mittels der Map.
-						 */
 						const customId = `${this.state._id}-${index}`;
 						return (
 							<kol-input
@@ -61,12 +49,10 @@ export class KolInputRadio implements ComponentApi {
 								_renderNoLabel={true}
 								_required={this.state._required}
 								_touched={this.state._touched}
-								onClick={() => this.ref?.focus()}
 							>
 								<div slot="input">
 									<input
-										ref={this.state._value === option.value ? this.catchRef : undefined}
-										accessKey={this.state._accessKey} // by radio?!
+										// accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
 										title=""
