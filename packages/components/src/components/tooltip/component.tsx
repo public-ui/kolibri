@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { watchTooltipAlignment } from '../../types/button-link';
-import { PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
@@ -13,7 +13,7 @@ type RequiredProps = {
 	label: string;
 };
 type OptionalProps = {
-	align: PropAlignment;
+	align: Alignment;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -167,7 +167,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 */
-	@Prop() public _align?: PropAlignment = 'top';
+	@Prop() public _align?: Alignment = 'top';
 
 	/**
 	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
@@ -186,7 +186,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	};
 
 	@Watch('_align')
-	public validateAlign(value?: PropAlignment): void {
+	public validateAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_align', value);
 	}
 

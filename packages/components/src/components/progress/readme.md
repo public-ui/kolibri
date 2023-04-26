@@ -46,7 +46,7 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 | --------------------- | --------- | -------------------------------------------------------------------- | ------------------------------- | ----------- |
 | `_max` _(required)_   | `_max`    | Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist. | `number`                        | `undefined` |
 | `_type`               | `_type`   | Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.      | `"bar" \| "cycle" \| undefined` | `undefined` |
-| `_unit`               | `_unit`   | Gibt die Einheit der Fortschrittswerte an.                           | `string \| undefined`           | `'%'`       |
+| `_unit`               | `_unit`   | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)      | `string \| undefined`           | `'%'`       |
 | `_value` _(required)_ | `_value`  | Gibt an, wie weit die Anzeige fortgeschritten ist.                   | `number`                        | `undefined` |
 
 ---

@@ -66,10 +66,10 @@ const options = [
 		label: 'BMF-Styleguide',
 		value: 'bmf',
 	},
-	{
-		label: 'DEZY-Styleguide',
-		value: 'desy-v2',
-	},
+	// {
+	// 	label: 'DEZY-Styleguide',
+	// 	value: 'desy-v2',
+	// },
 	{
 		label: 'European Commission-Styleguide',
 		value: 'ecl-ec',
@@ -86,10 +86,10 @@ const options = [
 		label: 'MAPZoll-Styleguide',
 		value: 'mapz',
 	},
-	// {
-	// 	label: 'Freistaat Thüringen',
-	// 	value: 'th',
-	// },
+	{
+		label: 'Freistaat Thüringen',
+		value: 'th',
+	},
 	{
 		label: 'Zoll-Designsystem',
 		value: 'zoll-v2',

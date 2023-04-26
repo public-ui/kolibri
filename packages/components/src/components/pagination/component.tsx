@@ -5,7 +5,7 @@ import { KoliBriButtonVariant, KoliBriButtonVariantPropState, KoliBriButtonCusto
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchButtonVariant } from '../button/controller';
-import { PropAlignment } from '../../types/props';
+import { Alignment } from '../../types/props';
 import { KoliBriPaginationButtonCallbacks } from './types';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
@@ -47,7 +47,7 @@ export type OptionalProps = KoliBriButtonCustomClassPropState &
 		pageSize: number;
 		pageSizeOptions: Stringified<number[]>;
 		siblingCount: number;
-		tooltipAlign: PropAlignment;
+		tooltipAlign: Alignment;
 	};
 // export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -62,7 +62,7 @@ type RequiredStates = KoliBriButtonVariantPropState & {
 	total: number;
 };
 type OptionalStates = KoliBriButtonCustomClassPropState & {
-	tooltipAlign: PropAlignment;
+	tooltipAlign: Alignment;
 };
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
@@ -231,7 +231,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'top';
+	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
@@ -520,7 +520,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: PropAlignment): void {
+	public validateTooltipAlign(value?: Alignment): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

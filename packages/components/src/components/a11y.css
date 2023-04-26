@@ -1,67 +1,54 @@
 /*
  * This file contains all rules for accessibility.
  */
-
 :host {
-	/**
+	/*
 	 * Minimum size of interactive elements.
 	 */
 	--a11y-min-size: 44px;
 }
-
 * {
-	/**
+	/*
 	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 	 */
 	hyphens: auto;
-	/**
+	/*
 	 * Letter spacing is required for all texts.
 	 */
 	letter-spacing: inherit;
-	/**
+	/*
 	 * This rule enables the word dividing for all texts. That is important for high zoom levels.
 	 */
 	word-break: break-word;
-	/**
+	/*
 	 * Word spacing is required for all texts.
 	 */
 	word-spacing: inherit;
 }
-
-/**
+/*
  * All interactive elements should have a minimum size of 44px.
  */
-*[role='button'],
+/* input:not([type='checkbox'], [type='radio'], [type='range']), */
+/* option, */
+/* select, */
+/* textarea, */
+[role='button'],
 button:not([role='link']),
-/* input[type='checkbox'], */
-input[type='color'],
-input[type='date'],
-input[type='datetime-local'],
-input[type='email'],
-input[type='file'],
-input[type='month'],
-input[type='number'],
-input[type='password'],
-/* input[type='radio'], */
-/* input[type='range'], */
-input[type='search'],
-input[type='tel'],
-input[type='text'],
-input[type='time'],
-input[type='url'],
-input[type='week'],
-option,
-select,
-textarea {
+kol-input .input {
 	min-height: var(--a11y-min-size);
 	min-width: var(--a11y-min-size);
 }
-
-/**
+/*
  * Some interactive elements should not inherit the font-family.
  */
 a,
 button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 input,
 option,
 select,

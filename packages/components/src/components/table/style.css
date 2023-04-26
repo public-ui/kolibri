@@ -1,54 +1,32 @@
-@import '../style.css';
-@import '../host-display-block.css';
-
-:host {
-	overflow: auto;
+@import url(../style.css);
+@import url(../host-display-block.css);
+:host > div {
+	overflow-x: auto;
+	overflow-y: hidden;
 }
-
 table {
-	position: relative;
 	width: 100%;
 }
-
-thead {
-	position: sticky;
-	top: 0;
-}
-thead::after {
-	background-color: var(--kolibri-border-color);
-	content: '';
-	inset: -1px 0 0 0;
-	position: absolute;
-	z-index: -1;
-}
-:where(thead > tr) > :is(td, th) {
-	background-color: white;
-}
-
 th > div {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	place-items: center;
 	gap: 0.25em;
 }
-
 div.pagination {
 	padding: 0.5em;
 }
-
 div.pagination,
 div.pagination > div:last-child {
 	display: grid;
 	place-items: center;
 	gap: 0.5em;
 }
-
 @media (min-width: 1024px) {
 	div.pagination,
 	div.pagination > div:last-child {
 		grid-auto-flow: column;
 	}
-
 	div.pagination kol-pagination {
 		display: flex;
 	}

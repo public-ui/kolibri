@@ -63,7 +63,7 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 | Property        | Attribute        | Description                                                                       | Type                                                                    | Default     |
 | --------------- | ---------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
 | `_alert`        | `_alert`         | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean \| undefined`                                                  | `true`      |
-| `_hasCloser`    | `_has-closer`    | Gibt an, ob der Toast ein Schließen-Icon hat.                                     | `boolean \| undefined`                                                  | `false`     |
+| `_hasCloser`    | `_has-closer`    | Aktiviert das Schließen-Icon.                                                     | `boolean \| undefined`                                                  | `false`     |
 | `_heading`      | `_heading`       | Gibt den Titel der Meldung an.                                                    | `string \| undefined`                                                   | `''`        |
 | `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                         | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
 | `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                  | `undefined \| { onClose?: EventCallback<Event> \| undefined; }`         | `undefined` |
@@ -88,9 +88,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   style kol-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

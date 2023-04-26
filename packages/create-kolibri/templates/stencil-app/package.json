@@ -13,19 +13,24 @@
 		"test": "stencil test --spec --e2e",
 		"test.watch": "stencil test --spec --e2e --watchAll",
 		"generate": "stencil generate",
+		"postinstall": "npm-run-all postinstall:*",
+		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
+		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot",
 		"update": "ncu -t patch -u && ncu -t minor -u -x @stencil/core && ncu"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.5.0-rc.12",
-		"@public-ui/themes": "1.5.0-rc.12"
+		"@public-ui/components": "1.5.0-rc.17",
+		"@public-ui/themes": "1.5.0-rc.17"
 	},
 	"devDependencies": {
 		"@stencil-community/router": "^1.0.2",
 		"@stencil/core": "~2.13.0",
 		"@types/jest": "^27.5.2",
+		"cpy-cli": "^4.2.0",
 		"jest": "^27.5.1",
 		"jest-cli": "^27.5.1",
 		"npm-check-updates": "^16.7.5",
+		"npm-run-all": "^4.1.5",
 		"puppeteer": "^19.7.2"
 	},
 	"files": [

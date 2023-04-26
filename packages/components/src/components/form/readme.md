@@ -24,10 +24,10 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 
 ## Properties
 
-| Property        | Attribute        | Description                                                   | Type                                                                                                          | Default     |
-| --------------- | ---------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_on`           | --               | Gibt die EventCallback-Funktionen für die Form-Events an.     | `undefined \| { onSubmit?: EventCallback<Event> \| undefined; onReset?: EventCallback<Event> \| undefined; }` | `undefined` |
-| `_requiredText` | `_required-text` | Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. | `boolean \| string \| undefined`                                                                              | `true`      |
+| Property        | Attribute        | Description                                                                                             | Type                                                                                                          | Default     |
+| --------------- | ---------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_on`           | --               | Gibt die EventCallback-Funktionen für die Form-Events an.                                               | `undefined \| { onSubmit?: EventCallback<Event> \| undefined; onReset?: EventCallback<Event> \| undefined; }` | `undefined` |
+| `_requiredText` | `_required-text` | Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext. | `boolean \| string \| undefined`                                                                              | `true`      |
 
 ## Dependencies
 

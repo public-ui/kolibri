@@ -49,7 +49,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 						typeof props._heading === 'string' && props._heading.length > 0
 							? getHeadingWcHtml(
 									{
-										_headline: '',
+										_label: '',
 										_level: props._level,
 									},
 									{

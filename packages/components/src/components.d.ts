@@ -5,12 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AriaCurrent, PropAlignment } from "./types/props";
+import { Alignment, AriaCurrent } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-import { KoliBriColor } from "./components/badge/component";
 import { Stringified } from "./types/common";
+import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { KoliBriFormCallbacks } from "./components/form/component";
@@ -24,6 +24,7 @@ import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
+import { Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -37,12 +38,12 @@ import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } fro
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { AriaCurrent, PropAlignment } from "./types/props";
+export { Alignment, AriaCurrent } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-export { KoliBriColor } from "./components/badge/component";
 export { Stringified } from "./types/common";
+export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { KoliBriFormCallbacks } from "./components/form/component";
@@ -56,6 +57,7 @@ export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
+export { Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -78,7 +80,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
     }
     interface KolAccordion {
         /**
@@ -132,7 +134,7 @@ export namespace Components {
         /**
           * Setzt die Hintergrundfarbe.
          */
-        "_color"?: string | KoliBriColor;
+        "_color"?: Stringified<PropColor>;
         /**
           * Iconklasse (z.B.: "codicon codicon-home")
          */
@@ -166,7 +168,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -201,7 +203,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -229,7 +231,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -253,7 +255,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -307,7 +309,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -323,7 +325,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -358,7 +360,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
@@ -386,7 +388,7 @@ export namespace Components {
         /**
           * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Setzt den Typ der Schaltfläche.
          */
@@ -443,7 +445,7 @@ export namespace Components {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
@@ -457,7 +459,7 @@ export namespace Components {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
@@ -1484,7 +1486,7 @@ export namespace Components {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: string;
+        "_color"?: Stringified1<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -1492,7 +1494,7 @@ export namespace Components {
     }
     interface KolLink {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -1527,7 +1529,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1570,7 +1572,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1579,7 +1581,7 @@ export namespace Components {
     }
     interface KolLinkButton {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -1646,7 +1648,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Ausprägung der Link-Button hat.
          */
@@ -1685,7 +1687,7 @@ export namespace Components {
     }
     interface KolLinkWc {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -1721,7 +1723,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1764,7 +1766,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1831,7 +1833,7 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
+          * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -1872,7 +1874,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -1881,6 +1883,16 @@ export namespace Components {
           * Gibt an, welche Button-Variante verwendet werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
+    }
+    interface KolPopover {
+        /**
+          * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+         */
+        "_alignment"?: Alignment;
+        /**
+          * Öffnet/schließt das Popover.
+         */
+        "_open"?: boolean;
     }
     interface KolProgress {
         /**
@@ -2089,7 +2101,7 @@ export namespace Components {
         /**
           * Setzt die Position der Registrierkarten.
          */
-        "_tabsAlign"?: PropAlignment;
+        "_tabsAlign"?: Alignment;
     }
     interface KolTextarea {
         /**
@@ -2211,7 +2223,7 @@ export namespace Components {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: PropAlignment;
+        "_align"?: Alignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -2493,6 +2505,12 @@ declare global {
         prototype: HTMLKolPaginationElement;
         new (): HTMLKolPaginationElement;
     };
+    interface HTMLKolPopoverElement extends Components.KolPopover, HTMLStencilElement {
+    }
+    var HTMLKolPopoverElement: {
+        prototype: HTMLKolPopoverElement;
+        new (): HTMLKolPopoverElement;
+    };
     interface HTMLKolProgressElement extends Components.KolProgress, HTMLStencilElement {
     }
     var HTMLKolProgressElement: {
@@ -2620,6 +2638,7 @@ declare global {
         "kol-modal": HTMLKolModalElement;
         "kol-nav": HTMLKolNavElement;
         "kol-pagination": HTMLKolPaginationElement;
+        "kol-popover": HTMLKolPopoverElement;
         "kol-progress": HTMLKolProgressElement;
         "kol-quote": HTMLKolQuoteElement;
         "kol-select": HTMLKolSelectElement;
@@ -2645,7 +2664,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
     }
     interface KolAccordion {
         /**
@@ -2699,7 +2718,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Hintergrundfarbe.
          */
-        "_color"?: string | KoliBriColor;
+        "_color"?: Stringified<PropColor>;
         /**
           * Iconklasse (z.B.: "codicon codicon-home")
          */
@@ -2733,7 +2752,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -2768,7 +2787,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -2796,7 +2815,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2820,7 +2839,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -2874,7 +2893,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -2890,7 +2909,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -2925,7 +2944,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
@@ -2953,7 +2972,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Setzt den Typ der Schaltfläche.
          */
@@ -3010,7 +3029,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
          */
@@ -3024,7 +3043,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Text der Überschrift an.
          */
-        "_headline": string;
+        "_label": string;
         /**
           * Setzt den H-Level, von 1 bis 6, der Überschrift.
          */
@@ -4051,7 +4070,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: string;
+        "_color"?: Stringified1<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -4059,7 +4078,7 @@ declare namespace LocalJSX {
     }
     interface KolLink {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -4094,7 +4113,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4137,7 +4156,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4146,7 +4165,7 @@ declare namespace LocalJSX {
     }
     interface KolLinkButton {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -4213,7 +4232,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt an, welche Ausprägung der Link-Button hat.
          */
@@ -4252,7 +4271,7 @@ declare namespace LocalJSX {
     }
     interface KolLinkWc {
         /**
-          * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
          */
         "_ariaControls"?: string;
         /**
@@ -4288,7 +4307,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: PropAlignment;
+        "_iconAlign"?: Alignment;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4331,7 +4350,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4398,7 +4417,7 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren)
+          * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -4439,7 +4458,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: PropAlignment;
+        "_tooltipAlign"?: Alignment;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -4448,6 +4467,16 @@ declare namespace LocalJSX {
           * Gibt an, welche Button-Variante verwendet werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
+    }
+    interface KolPopover {
+        /**
+          * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+         */
+        "_alignment"?: Alignment;
+        /**
+          * Öffnet/schließt das Popover.
+         */
+        "_open"?: boolean;
     }
     interface KolProgress {
         /**
@@ -4656,7 +4685,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Position der Registrierkarten.
          */
-        "_tabsAlign"?: PropAlignment;
+        "_tabsAlign"?: Alignment;
     }
     interface KolTextarea {
         /**
@@ -4778,7 +4807,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: PropAlignment;
+        "_align"?: Alignment;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -4837,6 +4866,7 @@ declare namespace LocalJSX {
         "kol-modal": KolModal;
         "kol-nav": KolNav;
         "kol-pagination": KolPagination;
+        "kol-popover": KolPopover;
         "kol-progress": KolProgress;
         "kol-quote": KolQuote;
         "kol-select": KolSelect;
@@ -4911,6 +4941,7 @@ declare module "@stencil/core" {
             "kol-modal": LocalJSX.KolModal & JSXBase.HTMLAttributes<HTMLKolModalElement>;
             "kol-nav": LocalJSX.KolNav & JSXBase.HTMLAttributes<HTMLKolNavElement>;
             "kol-pagination": LocalJSX.KolPagination & JSXBase.HTMLAttributes<HTMLKolPaginationElement>;
+            "kol-popover": LocalJSX.KolPopover & JSXBase.HTMLAttributes<HTMLKolPopoverElement>;
             "kol-progress": LocalJSX.KolProgress & JSXBase.HTMLAttributes<HTMLKolProgressElement>;
             "kol-quote": LocalJSX.KolQuote & JSXBase.HTMLAttributes<HTMLKolQuoteElement>;
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;

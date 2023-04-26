@@ -131,7 +131,7 @@ const logWarn = (component: Generic.Element.Component, propName: string, value: 
 	);
 };
 
-type WatchOptions = {
+export type WatchOptions = {
 	defaultValue?: unknown;
 	hooks?: SetStateHooks;
 	required?: boolean;

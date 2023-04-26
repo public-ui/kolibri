@@ -23,9 +23,7 @@ graph TD;
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
-  kol-tooltip --> kol-badge
-  kol-badge --> kol-span-wc
-  kol-badge --> kol-button-wc
+  kol-tooltip --> kol-span-wc
   kol-link --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon

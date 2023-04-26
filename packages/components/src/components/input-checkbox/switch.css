@@ -6,7 +6,7 @@
 	width: 3.2em;
 }
 .switch input[type='checkbox']:before {
-	background-color: black;
+	background-color: #000;
 	height: 1.2em;
 	left: calc(0.25em - 2px);
 	top: calc(0.25em - 2px);
@@ -14,7 +14,7 @@
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
 	-ms-transition: 0.5s;
-	transition: 0.5;
+	transition: 0.5s;
 	width: 1.2em;
 }
 .switch input[type='checkbox']:checked:before {

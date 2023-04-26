@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.12';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.12/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.12';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.17';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.12';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.12/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.12';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.17';
 		register([ITZBund], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -227,12 +227,12 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
 },{
 	name: `heading`,
 	desc: `Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und abwechslungsreich präsentieren. Sie trennt Styling von Semantik und ermöglicht Flexibilität.`,
-	props: `_headline, _level, _secondary-headline`
+	props: `_label, _level, _secondary-headline`
 },{
 	name: `icon`,
 	desc: `Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **'_icon'** gesteuert werden und erfolgt durch das Attribut **'_aria-label'** barrierefrei. Die Ausgabe erfolgt standardmäßig als _'inline'_-Element.
 
-Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-lik> unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
 
 <kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite ('index.html') die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>`,
 	props: `_aria-label, _icon, _part`
@@ -321,6 +321,11 @@ noch die Icons ausgegeben.`,
 	name: `pagination`,
 	desc: `Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.`,
 	props: `_boundary-count, _custom-class, _has-buttons, _page, _page-size, _page-size-options, _sibling-count, _tooltip-align, _total, _variant`
+},{
+	name: `popover`,
+	desc: `Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
+Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).`,
+	props: `_alignment, _open`
 },{
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
@@ -497,6 +502,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `"block" | "inline", "button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
 	comps: `alert, button, input-checkbox, link-button, nav, pagination, quote`
 },{
+	name: `_label`,
+	desc: `Gibt den Text der Überschrift an.`,
+	types: `string`,
+	comps: `badge, button, button-link, heading, link, link-button, tooltip`
+},{
 	name: `_auto-complete`,
 	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
 	types: `"off" | "on"`,
@@ -511,11 +521,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Setzt das Eingabefeld in den schreibgeschützten Modus.`,
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
-},{
-	name: `_label`,
-	desc: `Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.`,
-	types: `string`,
-	comps: `badge, button, button-link, link, link-button, tooltip`
 },{
 	name: `_placeholder`,
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
@@ -558,7 +563,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	comps: `button, button-link, link, link-button`
 },{
 	name: `_aria-controls`,
-	desc: `Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
+	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
 	comps: `button, button-link, link, link-button`
 },{
@@ -591,6 +596,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt ein Prüfmuster für das Eingabefeld an.`,
 	types: `string`,
 	comps: `input-email, input-password, input-text`
+},{
+	name: `_open`,
+	desc: `Gibt an, ob das Accordion geöffnet ist.`,
+	types: `boolean`,
+	comps: `accordion, details, popover`
 },{
 	name: `_multiple`,
 	desc: `Gibt an, ob mehrere Werte eingegeben werden können.`,
@@ -632,20 +642,10 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `"horizontal" | "vertical"`,
 	comps: `input-radio, nav`
 },{
-	name: `_open`,
-	desc: `Gibt an, ob das Accordion geöffnet ist.`,
-	types: `boolean`,
-	comps: `accordion, details`
-},{
 	name: `_icon-align`,
 	desc: `Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `button, link`
-},{
-	name: `_headline`,
-	desc: `Gibt den Text der Überschrift an.`,
-	types: `string`,
-	comps: `card, heading`
 },{
 	name: `_has-closer`,
 	desc: `Aktiviert das Schließen-Icon.`,
@@ -774,7 +774,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaLabel?: string | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: PropAlignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: PropAlignment | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string | undefined; _ariaLabel?: string | undefined; _icon?: Stringified<KoliBriIconProp> | undefined; _iconAlign?: Alignment | undefined; _iconOnly?: boolean | undefined; _role?: AlternativButtonLinkRole | undefined; _tabIndex?: number | undefined; _tooltipAlign?: Alignment | undefined; _ariaCurrent?: AriaCurrent | undefined; _ariaExpanded?: boolean | undefined; _ariaSelected?: boolean | undefined; _disabled?: boolean | undefined; _accessKey?: string | undefined; _id?: string | undefined; _on?: KoliBriButtonCallbacks<unknown> | undefined; _type?: KoliBriButtonType | undefined; _value?: unknown; _variant?: KoliBriButtonVariant | undefined; _customClass?: string | undefined; }`,
 	comps: `badge`
 },{
 	name: `_color`,
@@ -829,7 +829,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_pagination`,
 	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks | undefined; _page?: number | undefined; _total?: number | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; _boundaryCount?: number | undefined; _hasButtons?: boolean | Stringified<PaginationHasButton> | undefined; _pageSize?: number | undefined; _pageSizeOptions?: Stringified<number[]> | undefined; _siblingCount?: number | undefined; _tooltipAlign?: PropAlignment | undefined; }`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks | undefined; _page?: number | undefined; _total?: number | undefined; _customClass?: string | undefined; _variant?: KoliBriButtonVariant | undefined; _boundaryCount?: number | undefined; _hasButtons?: boolean | Stringified<PaginationHasButton> | undefined; _pageSize?: number | undefined; _pageSizeOptions?: Stringified<number[]> | undefined; _siblingCount?: number | undefined; _tooltipAlign?: Alignment | undefined; }`,
 	comps: `table`
 },{
 	name: `_min-width`,
@@ -862,6 +862,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `select`
 },{
+	name: `_headline`,
+	desc: `Gibt die Überschrift der Card an.`,
+	types: `string`,
+	comps: `card`
+},{
 	name: `_has-footer`,
 	desc: `Macht den Footerbereich der Card sichtbar.`,
 	types: `boolean`,
@@ -886,6 +891,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
+},{
+	name: `_alignment`,
+	desc: `Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `popover`
 },{
 	name: `_align`,
 	desc: `Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.`,

@@ -42,8 +42,6 @@ layout: about-me
 
 # Speaker
 
-
-
 - Mein Name ist Martin Oppitz
 - Inzwischen über 25 Jahre im Web unterwegs
 - Seit 3 Jahren beim ITZBund in der Architekturberatung
@@ -53,9 +51,9 @@ layout: about-me
 layout: center
 ---
 
-<div class="flex gap-2 mb-4 grey"  data-theme="bmf">
-  <kol-button _label="Schalter 1" _variant="danger" />
-  <kol-button _label="Schalter 2" _variant="primary" />
+<div class="flex gap-2 mb-4"  data-theme="bmf">
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="danger" />
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="primary" />
 </div>
 
 <div class="text-left border-l-3 border-gray-400 p-2 bg-gray-100">
@@ -67,9 +65,9 @@ layout: center
 layout: center
 ---
 
-<div class="flex gap-2 mb-4"  data-theme="bmf">
-  <kol-button _label="Schalter 1" _variant="danger" />
-  <kol-button _label="Schalter 2" _variant="primary" />
+<div class="flex gap-2 mb-4 grey"  data-theme="bmf">
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="danger" />
+  <kol-button _label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" _variant="primary" />
 </div>
 
 <div class="text-left border-l-3 border-gray-400 p-2 bg-gray-100">
@@ -145,7 +143,7 @@ handle: 2
 
 <br/>
 
-**Ziel:** Schaffung eines barrierefreien und wieder verwendbaren Standard-Bibliothek, ohne dabei die notwendige Flexibilität und
+**Ziel:** Schaffung einer barrierefreien und wieder verwendbaren Standard-Bibliothek, ohne dabei die notwendige Flexibilität und
 Gestaltungsfreiheit zu verlieren.
 
 ---
@@ -176,7 +174,7 @@ handle: 4
 
 Webseiten werden mit HTML-Elementen umgesetzt.
 
-- **Web Components**-Standard ermöglich **eigene** HTMl-Element zu definieren
+- **Web Components**-Standard ermöglicht **eigene** HTMl-Element zu definieren
 - Das ist **fixiert**
   - Semantik (HTML) → Assistive Systems / Barrierefreiheit
   - Verhalten (JavaScript) → Usability & Barrierefreiheit
@@ -245,7 +243,7 @@ Aus Sicht der öffentlichen Verwaltung hat KoliBri eine ganze Reihe an Alleinste
 - **Barrierefreiheit** - kommt zuerst und vor Design
 - **Architektur** - universell im Web einsetzbar
 - **Wiederverwendbarkeit** - Kleinteilig und gestaltbar
-- **Digitale Souveränität** - Code-Hoheit liegt beim uns
+- **Digitale Souveränität** - Code-Hoheit liegt bei uns
 - **Robust** - vor Manipulationen geschützt
 
 ---
@@ -326,11 +324,11 @@ Lasst uns gemeinsam KoliBri bunter und besser machen!<br/><br/></small>
 
 
 <ul class="flex">
-  <li class="list-none"><kol-link _href="https://public-ui.github.io" _target="storybook"><kol-icon _icon="codicon codicon-book" /> Dokumentation</kol-link></li>
+  <li class="list-none"><kol-link _href="https://public-ui.github.io" _target="website"><kol-icon _icon="codicon codicon-book" /> Dokumentation</kol-link></li>
   <li class="list-none">|</li>
-  <li class="list-none"><kol-link _href="mailto:kolibri@itzbund.de" _target="storybook"><kol-icon _icon="codicon codicon-mail" /> kolibri@itzbund.de</kol-link></li>
+  <li class="list-none"><kol-link _href="mailto:kolibri@itzbund.de" _target="mail"><kol-icon _icon="codicon codicon-mail" /> kolibri@itzbund.de</kol-link></li>
   <li class="list-none">|</li>
-  <li class="list-none"><kol-link _href="https://github.com/public-ui" _target="storybook"><kol-icon _icon="codicon codicon-github" /> GitHub</kol-link></li>
+  <li class="list-none"><kol-link _href="https://github.com/public-ui/kolibri" _target="github"><kol-icon _icon="codicon codicon-github" /> GitHub</kol-link></li>
 </ul>
 
 ---

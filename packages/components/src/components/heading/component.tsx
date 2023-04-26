@@ -6,7 +6,7 @@ import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from './validation';
 
 type RequiredProps = {
-	headline: string;
+	label: string;
 };
 type OptionalProps = {
 	secondaryHeadline: string;
@@ -15,7 +15,7 @@ type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	headline: string;
+	label: string;
 	level: HeadingLevel;
 };
 type OptionalStates = {
@@ -31,7 +31,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	/**
 	 * Gibt den Text der Überschrift an.
 	 */
-	@Prop() public _headline!: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
@@ -44,13 +44,13 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _secondaryHeadline?: string;
 
 	@State() public state: States = {
-		_headline: '…', // ⚠ required
+		_label: '…', // ⚠ required
 		_level: 1,
 	};
 
-	@Watch('_headline')
-	public validateHeadline(value?: string): void {
-		watchString(this, '_headline', value);
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		watchString(this, '_label', value);
 	}
 
 	@Watch('_level')
@@ -64,7 +64,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	}
 
 	public componentWillLoad(): void {
-		this.validateHeadline(this._headline);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateSecondaryHeadline(this._secondaryHeadline);
 	}
@@ -125,19 +125,19 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 
 	private readonly renderSecondaryHeadline = (headline: string, level?: number): JSX.Element => {
 		switch (level) {
-			case 1:
-				return <h1 class="secondary-headline">{headline}</h1>;
-			case 2:
+			case 1: // if the headline is only strong
+				return <span class="secondary-headline">{headline}</span>;
+			case 2: // if the headline is h1
 				return <h2 class="secondary-headline">{headline}</h2>;
-			case 3:
+			case 3: // if the headline is h2
 				return <h3 class="secondary-headline">{headline}</h3>;
-			case 4:
+			case 4: // if the headline is h3
 				return <h4 class="secondary-headline">{headline}</h4>;
-			case 5:
+			case 5: // if the headline is h4
 				return <h5 class="secondary-headline">{headline}</h5>;
-			case 6:
+			case 6: // if the headline is h5
 				return <h6 class="secondary-headline">{headline}</h6>;
-			default:
+			default: // if the headline is h6
 				return <strong class="secondary-headline">{headline}</strong>;
 		}
 	};
@@ -147,11 +147,11 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 			<Host>
 				{typeof this.state._secondaryHeadline === 'string' && this.state._secondaryHeadline.length > 0 ? (
 					<hgroup>
-						{this.renderHeadline(this.state._headline, this.state._level)}
+						{this.renderHeadline(this.state._label, this.state._level)}
 						{this.state._secondaryHeadline && this.renderSecondaryHeadline(this.state._secondaryHeadline, this.state._level + 1)}
 					</hgroup>
 				) : (
-					this.renderHeadline(this.state._headline, this.state._level)
+					this.renderHeadline(this.state._label, this.state._level)
 				)}
 			</Host>
 		);

@@ -12,7 +12,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, PropAlignment } from '../../types/props';
+import { AriaCurrent, Alignment } from '../../types/props';
 import { propagateFocus } from '../../utils/reuse';
 
 @Component({
@@ -69,7 +69,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
 
@@ -156,7 +156,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: PropAlignment = 'right';
+	@Prop() public _tooltipAlign?: Alignment = 'right';
 
 	/**
 	 * Gibt an, welche Ausprägung der Link-Button hat.

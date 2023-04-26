@@ -44,6 +44,7 @@ export class KolInputCheckbox implements ComponentApi {
 					_id={this.state._id}
 					_required={this.state._required}
 					_touched={this.state._touched}
+					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
 						<slot />

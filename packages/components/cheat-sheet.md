@@ -54,14 +54,15 @@
 | _variant | "block" &#124; "inline", "button" &#124; "checkbox" &#124; "switch", "card" &#124; "msg", "custom" &#124; "danger" &#124; "ghost" &#124; "normal" &#124; "primary" &#124; "secondary", "primary" &#124; "secondary" | Gibt an, welche Button-Variante verwendet werden soll. |
 | _variant | "block" &#124; "inline", "button" &#124; "checkbox" &#124; "switch", "card" &#124; "msg", "custom" &#124; "danger" &#124; "ghost" &#124; "normal" &#124; "primary" &#124; "secondary", "primary" &#124; "secondary" | Gibt an, welchen Type das Input haben soll. |
 | _variant | "block" &#124; "inline", "button" &#124; "checkbox" &#124; "switch", "card" &#124; "msg", "custom" &#124; "danger" &#124; "ghost" &#124; "normal" &#124; "primary" &#124; "secondary", "primary" &#124; "secondary" | Setzt die Variante des Zitats. |
-| _variant | "block" &#124; "inline", "button" &#124; "checkbox" &#124; "switch", "card" &#124; "msg", "custom" &#124; "danger" &#124; "ghost" &#124; "normal" &#124; "primary" &#124; "secondary", "primary" &#124; "secondary" | Setzt zusätzliche Klassen an das das <nav> umschließende <div>. (müssen im Theme existieren) |
+| _variant | "block" &#124; "inline", "button" &#124; "checkbox" &#124; "switch", "card" &#124; "msg", "custom" &#124; "danger" &#124; "ghost" &#124; "normal" &#124; "primary" &#124; "secondary", "primary" &#124; "secondary" | Stellt verschiedene Varianten der Navigation zur Verfügung. |
+| _label | string | Gibt den Text der Überschrift an. |
+| _label | string | Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird. |
+| _label | string | Setzt den sichtbaren Text des Elements. |
 | _auto-complete | "off" &#124; "on" | Gibt an, ob das Eingabefeld autovervollständigt werden kann. |
 | _tooltip-align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll. |
 | _tooltip-align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll. |
 | _tooltip-align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden. |
 | _read-only | boolean | Setzt das Eingabefeld in den schreibgeschützten Modus. |
-| _label | string | Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird. |
-| _label | string | Setzt den sichtbaren Text des Elements. |
 | _placeholder | string | Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist. |
 | _level | 0 &#124; 1 &#124; 2 &#124; 3 &#124; 4 &#124; 5 &#124; 6 | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. |
 | _level | 0 &#124; 1 &#124; 2 &#124; 3 &#124; 4 &#124; 5 &#124; 6 | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt. |
@@ -78,7 +79,7 @@
 | _aria-expanded | boolean | Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded) |
 | _aria-current | "date" &#124; "location" &#124; "page" &#124; "step" &#124; "time" &#124; boolean | Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) |
 | _aria-current | "date" &#124; "location" &#124; "page" &#124; "step" &#124; "time" &#124; boolean | Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) |
-| _aria-controls | string | Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls) |
+| _aria-controls | string | Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls) |
 | _max-length | number | Gibt an, wie viele Zeichen man maximal eingeben kann. |
 | _max-length | number | Setzt die maximale Zeichenanzahl. |
 | _max | Date &#124; `${number}-${number}-${number}T${number}:${number}:${number}` &#124; `${number}-${number}-${number}T${number}:${number}` &#124; `${number}-${number}-${number}` &#124; `${number}-${number}` &#124; `${number}-W${number}` &#124; `${number}:${number}:${number}` &#124; `${number}:${number}`, `${number}-${number}-${number}T${number}:${number}:${number}` &#124; `${number}-${number}-${number}T${number}:${number}` &#124; `${number}-${number}-${number}` &#124; `${number}-${number}` &#124; `${number}-W${number}` &#124; `${number}:${number}:${number}` &#124; `${number}:${number}` &#124; number, number | Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist. |
@@ -95,6 +96,9 @@
 | _min | Date &#124; `${number}-${number}-${number}T${number}:${number}:${number}` &#124; `${number}-${number}-${number}T${number}:${number}` &#124; `${number}-${number}-${number}` &#124; `${number}-${number}` &#124; `${number}-W${number}` &#124; `${number}:${number}:${number}` &#124; `${number}:${number}`, `${number}-${number}-${number}T${number}:${number}:${number}` &#124; `${number}-${number}-${number}T${number}:${number}` &#124; `${number}-${number}-${number}` &#124; `${number}-${number}` &#124; `${number}-W${number}` &#124; `${number}:${number}:${number}` &#124; `${number}:${number}` &#124; number, number | Gibt den kleinstmöglichen Zahlenwert an. |
 | _pattern | string | Gibt ein Prüfmuster für das Eingabefeld an. |
 | _pattern | string | Gibt ein Prüfpattern für das Eingabefeld an. |
+| _open | boolean | Gibt an, ob das Accordion geöffnet ist. |
+| _open | boolean | Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist. |
+| _open | boolean | Öffnet/schließt das Popover. |
 | _multiple | boolean | Gibt an, ob mehrere Werte eingegeben werden können. |
 | _links | ButtonOrLinkOrTextWithChildrenProps[] &#124; string, LinkProps[] &#124; string | Gibt die geordnete Liste der Seitenhierarchie an. |
 | _links | ButtonOrLinkOrTextWithChildrenProps[] &#124; string, LinkProps[] &#124; string | Setzt die Liste der darzustellenden Links. |
@@ -107,12 +111,8 @@
 | _show | boolean | Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht. |
 | _orientation | "horizontal" &#124; "vertical" | Gibt die Ausrichtung der LinkList an. |
 | _orientation | "horizontal" &#124; "vertical" | Gibt die Ausrichtung der Navigation an. |
-| _open | boolean | Gibt an, ob das Accordion geöffnet ist. |
-| _open | boolean | Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist. |
 | _icon-align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll. |
 | _icon-align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Gibt an, ob das Icon links oder rechts dargestellt werden soll. |
-| _headline | string | Gibt den Text der Überschrift an. |
-| _headline | string | Gibt die Überschrift der Card an. |
 | _has-closer | boolean | Aktiviert das Schließen-Icon. |
 | _has-closer | boolean | Gibt an, ob der Alert ein Schließen-Icon hat. |
 | _caption | string | Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an. |
@@ -140,7 +140,7 @@
 | _sizes | string | Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset. |
 | _loading | "eager" &#124; "lazy" | Setzt den Lademodus. |
 | _alt | string | Setzt den alternativen Text. |
-| _smart-button | string &#124; { _label: string; } & { _ariaControls?: string &#124; undefined; _ariaLabel?: string &#124; undefined; _icon?: Stringified<KoliBriIconProp> &#124; undefined; _iconAlign?: PropAlignment &#124; undefined; _iconOnly?: boolean &#124; undefined; _role?: AlternativButtonLinkRole &#124; undefined; _tabIndex?: number &#124; undefined; _tooltipAlign?: PropAlignment &#124; undefined; _ariaCurrent?: AriaCurrent &#124; undefined; _ariaExpanded?: boolean &#124; undefined; _ariaSelected?: boolean &#124; undefined; _disabled?: boolean &#124; undefined; _accessKey?: string &#124; undefined; _id?: string &#124; undefined; _on?: KoliBriButtonCallbacks<unknown> &#124; undefined; _type?: KoliBriButtonType &#124; undefined; _value?: unknown; _variant?: KoliBriButtonVariant &#124; undefined; _customClass?: string &#124; undefined; } | Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only). |
+| _smart-button | string &#124; { _label: string; } & { _ariaControls?: string &#124; undefined; _ariaLabel?: string &#124; undefined; _icon?: Stringified<KoliBriIconProp> &#124; undefined; _iconAlign?: Alignment &#124; undefined; _iconOnly?: boolean &#124; undefined; _role?: AlternativButtonLinkRole &#124; undefined; _tabIndex?: number &#124; undefined; _tooltipAlign?: Alignment &#124; undefined; _ariaCurrent?: AriaCurrent &#124; undefined; _ariaExpanded?: boolean &#124; undefined; _ariaSelected?: boolean &#124; undefined; _disabled?: boolean &#124; undefined; _accessKey?: string &#124; undefined; _id?: string &#124; undefined; _on?: KoliBriButtonCallbacks<unknown> &#124; undefined; _type?: KoliBriButtonType &#124; undefined; _value?: unknown; _variant?: KoliBriButtonVariant &#124; undefined; _customClass?: string &#124; undefined; } | Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only). |
 | _color | string &#124; { backgroundColor: string; color: string; } &#124; { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; } | Setzt die Hintergrundfarbe. |
 | _show-duration | number | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll. |
 | _secondary-headline | string | Gibt den Text der zusätzlichen Überschrift an. |
@@ -151,17 +151,19 @@
 | _required-text | boolean &#124; string | Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext. |
 | _quote | string | Setzt den Text, also das Zitat selbst. |
 | _part | string | Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) |
-| _pagination | boolean &#124; string &#124; { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks &#124; undefined; _page?: number &#124; undefined; _total?: number &#124; undefined; _customClass?: string &#124; undefined; _variant?: KoliBriButtonVariant &#124; undefined; _boundaryCount?: number &#124; undefined; _hasButtons?: boolean &#124; Stringified<PaginationHasButton> &#124; undefined; _pageSize?: number &#124; undefined; _pageSizeOptions?: Stringified<number[]> &#124; undefined; _siblingCount?: number &#124; undefined; _tooltipAlign?: PropAlignment &#124; undefined; } | Gibt an, ob die Daten geteilt in Seiten angezeigt wird. |
+| _pagination | boolean &#124; string &#124; { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks &#124; undefined; _page?: number &#124; undefined; _total?: number &#124; undefined; _customClass?: string &#124; undefined; _variant?: KoliBriButtonVariant &#124; undefined; _boundaryCount?: number &#124; undefined; _hasButtons?: boolean &#124; Stringified<PaginationHasButton> &#124; undefined; _pageSize?: number &#124; undefined; _pageSizeOptions?: Stringified<number[]> &#124; undefined; _siblingCount?: number &#124; undefined; _tooltipAlign?: Alignment &#124; undefined; } | Gibt an, ob die Daten geteilt in Seiten angezeigt wird. |
 | _min-width | string | Gibt an, die minimale Breite der Tabelle an. |
 | _headers | string &#124; { horizontal?: KoliBriTableHeaderCell[][]; vertical?: KoliBriTableHeaderCell[][] &#124; undefined; } | Gibt die horizontalen und vertikalen Header für die Tabelle an. |
 | _data | KoliBriDataType[] &#124; string | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden. |
 | _indeterminate | boolean | Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist. |
 | _checked | boolean | Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden) |
 | _height | string | Gibt an, ob eine individuelle Höhe übergeben werden soll. |
+| _headline | string | Gibt die Überschrift der Card an. |
 | _has-footer | boolean | Macht den Footerbereich der Card sichtbar. |
 | _has-compact-button | boolean | Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll. |
 | _compact | boolean | Gibt an, ob die Navigation kompakt angezeigt wird. |
 | _collapsible | boolean | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv. |
 | _aria-current-value | "date" &#124; "location" &#124; "page" &#124; "step" &#124; "time" &#124; boolean | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll. |
+| _alignment | "bottom" &#124; "left" &#124; "right" &#124; "top" | Setzt die Ausrichtung des Popovers in Relation zum Triggerelement. |
 | _align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement. |
 | _accept | string | Gibt an, welche Dateiformate erlaubt sind. |
