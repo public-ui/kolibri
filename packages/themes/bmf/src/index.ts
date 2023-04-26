@@ -36,8 +36,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		--spacing: 0.25em;
 	}
 	:host {
-		font-family: var(--font-family);
-		font-size: var(--font-size);
+		font-family: var(--font-family); /* font-size: var(--font-size); */
 	}
 	* {
 		box-sizing: border-box;
@@ -220,7 +219,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		width: 1.5em;
 		height: 1.5em;
 	}
-	button.loading > kol-span-wc kol-icon::part(icon) {
+	button.loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
 	} /** small ghost button */
 	button.small.ghost > kol-span-wc {
@@ -1032,7 +1031,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		justify-content: center;
 		font-style: normal;
 		text-align: center;
-		text-transform: uppercase;
 		width: inherit;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
@@ -1450,18 +1448,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background: var(--color-ocean);
 		color: white;
 	}`,
-	'KOL-ACCORDION': `:host > .accordion {
-		padding: 0 0.5rem 0 0;
+	'KOL-ACCORDION': `kol-span-wc > span {
+		display: flex;
+		place-items: baseline center;
+		text-align: left;
 	}
 	:host > div > kol-heading-wc button {
 		border-radius: var(--border-radius);
+		min-height: 22px;
+		padding: 12px 8px;
 	}
 	:host > div > kol-heading-wc button kol-span-wc {
 		font-weight: 700;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
+		line-height: 20px;
 		gap: 0.5rem;
-		line-height: 1.75em;
-		margin-left: 0.5rem;
 	}
 	:host > div > kol-heading-wc button kol-span-wc > span {
 		gap: 0.5em;
@@ -1472,7 +1473,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-midnight);
 	}
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
-		content: "\\f077";
+		content: "\\f054";
 	}
 	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
 		content: "\\f078";
@@ -1485,13 +1486,23 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host > div div[class="header"],
 	:host > div[class*="open"] div[class="content"] {
 		margin: 0;
-		padding-left: 2em;
+		padding-left: 2.25em;
 	}
-	:host > div {
-		background: var(--color-white);
+	:host > div[class*="open"] div[class="content"] {
+		padding-bottom: 12px;
+		padding-right: 8px;
 	}
-	:host > div[class*="open"] {
-		padding-bottom: 1em;
+	button:focus {
+		outline: none;
+	}
+	:host > .accordion:focus-within {
+		border-radius: var(--border-radius);
+		cursor: pointer;
+		outline-color: var(--color-ocean);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
 	}`,
 	'KOL-TABLE': `:host * {
 		hyphens: var(--kolibri-hyphens);
@@ -2157,7 +2168,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 16px;
 		font-style: normal;
 		text-align: center;
-		text-transform: uppercase;
 		width: inherit;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
@@ -2386,7 +2396,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		width: 1.5em;
 		height: 1.5em;
 	}
-	/** small ghost a */
+	a.loading > kol-span-wc kol-icon {
+		animation: spin 5s infinite linear;
+	} /** small ghost a */
 	.ghost.small a > kol-span-wc {
 		border: none;
 		background-color: transparent;
@@ -2414,7 +2426,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: transparent;
 		border-color: transparent;
 	}
-	.loading a > kol-span-wc kol-icon::part(icon) {
+	.loading a > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
 	}`,
 	'KOL-BUTTON-LINK': `a,
@@ -2465,7 +2477,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-bottom: dotted var(--color-metal) 1px;
 		text-decoration: none !important;
 	}`,
-	'KOL-ICON': `@font-face {
+	'KOL-ICON': `:host {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+	}
+	:host > i {
+		width: 1em;
+		height: 1em;
+	}
+	@font-face {
 		font-family: "Material Icons";
 		font-style: normal;
 		font-weight: 400;
