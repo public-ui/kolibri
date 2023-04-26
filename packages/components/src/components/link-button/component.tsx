@@ -47,6 +47,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
+					_download={this._download}
 					_href={this._href}
 					_icon={this._icon}
 					_iconOnly={this._iconOnly}
@@ -106,6 +107,11 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	 * Gibt an, ob der Link deaktiviert ist.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
+
+	/**
+	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 */
+	@Prop() public _download?: boolean | string = false;
 
 	/**
 	 * Gibt die Ziel-Url des Links an.

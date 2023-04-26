@@ -5,8 +5,8 @@ export const getPopoverHtml = (props: Props, slots?: { default?: string }, addit
 	const state: States = mixMembers<Props, States>(
 		{
 			_alignment: 'top',
-			_open: false,
 			_show: false,
+			_visible: false,
 		},
 		props
 	);

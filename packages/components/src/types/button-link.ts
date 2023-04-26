@@ -4,8 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { Alignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropStealth } from './props';
-import { PropLabel } from './props/label';
+import { Alignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropLabel, PropStealth } from './props';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -157,7 +156,8 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	useCase: LinkUseCase;
-} & PropStealth;
+} & PropDownload &
+	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
 export type RequiredLinkStates = RequiredButtonAndLinkStates & {
@@ -183,6 +183,7 @@ export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	 */
 	useCase: LinkUseCase;
 } & PropAriaSelected &
+	PropDownload &
 	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 

@@ -52,7 +52,7 @@ export class KolInputRadio implements ComponentApi {
 							>
 								<div slot="input">
 									<input
-										// accessKey={this.state._accessKey} // by radio?!
+										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
 										title=""

@@ -2,13 +2,15 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { KoliBriProgressType } from '../../types/progress';
-import { watchNumber, watchString } from '../../utils/prop.validators';
+import { watchBoolean, watchNumber, watchString } from '../../utils/prop.validators';
 
 type RequiredProps = {
 	max: number;
 	value: number;
 };
 type OptionalProps = {
+	description: string;
+	showUnit: boolean;
 	type: KoliBriProgressType;
 	unit: string;
 };
@@ -37,24 +39,58 @@ const createProgressSVG = (state: States): JSX.Element => {
 						cy="6px"
 						r="5px"
 					></circle>
+					{state._description || state._showUnit ? (
+						<text font-size="0.1em" x="50%" y="50%" text-anchor="middle" fill="currentColor">
+							{state._description ? (
+								<tspan text-anchor="middle" x="50%" dy="-0.5em">
+									{state._description}
+								</tspan>
+							) : (
+								''
+							)}
+							{state._showUnit ? (
+								<tspan text-anchor="middle" x="50%" dy={state._description ? '1em' : '0em'}>
+									{state._value}
+									{state._unit}
+								</tspan>
+							) : (
+								''
+							)}
+						</text>
+					) : (
+						''
+					)}
 				</svg>
 			);
 		default:
 			return (
-				<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
-					<line stroke-width="2" x1="1" stroke-linecap="round" y1="1" x2="23" y2="1" fill="#efefef" stroke="#efefef"></line>
-					<line
-						class="bar"
-						stroke-width="2"
-						x1="1"
-						stroke-linecap="round"
-						y1="1"
-						x2={`${1 + Math.round((state._value / state._max) * 22)}`}
-						y2="1"
-						fill="#0075ff"
-						stroke="#0075ff"
-					></line>
-				</svg>
+				<div>
+					{state._description ? <div>{state._description}</div> : ''}
+					<div style={{ display: 'flex', gap: '0.3em' }}>
+						<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
+							<line stroke-width="2" x1="1" stroke-linecap="round" y1="1" x2="23" y2="1" fill="#efefef" stroke="#efefef"></line>
+							<line
+								class="bar"
+								stroke-width="2"
+								x1="1"
+								stroke-linecap="round"
+								y1="1"
+								x2={`${1 + Math.round((state._value / state._max) * 22)}`}
+								y2="1"
+								fill="#0075ff"
+								stroke="#0075ff"
+							></line>
+						</svg>
+						{state._showUnit ? (
+							<text font-size="0.1em" text-anchor="middle" dominant-baseline="central" fill="currentColor">
+								{state._value}
+								{state._unit}
+							</text>
+						) : (
+							''
+						)}
+					</div>
+				</div>
 			);
 	}
 };
@@ -83,9 +119,19 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	/**
+	 * Setzt die Beschreibung der Fortschrittsanzeige.
+	 */
+	@Prop() public _description?: string;
+
+	/**
 	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
 	 */
 	@Prop() public _max!: number;
+
+	/**
+	 * Zeigt die Einheit der Fortschrittswerte an.
+	 */
+	@Prop() public _showUnit?: boolean;
 
 	/**
 	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
@@ -110,6 +156,11 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		_liveValue: 0,
 	};
 
+	@Watch('_description')
+	public validateDescription(value?: string): void {
+		watchString(this, '_description', value);
+	}
+
 	@Watch('_max')
 	public validateMax(value?: number): void {
 		if (typeof value !== 'number') {
@@ -118,6 +169,11 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		watchNumber(this, '_max', value, {
 			required: true,
 		});
+	}
+
+	@Watch('_showUnit')
+	public validateShowUnit(value?: boolean): void {
+		watchBoolean(this, '_showUnit', value);
 	}
 
 	@Watch('_type')
@@ -151,7 +207,9 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	public componentWillLoad(): void {
+		this.validateDescription(this._description);
 		this.validateMax(this._max);
+		this.validateShowUnit(this._showUnit);
 		this.validateType(this._type);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);
@@ -167,6 +225,6 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	public disconnectedCallback(): void {
-		clearInterval(this.interval as unknown as number);
+		clearInterval(this.interval);
 	}
 }

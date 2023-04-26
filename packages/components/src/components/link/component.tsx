@@ -16,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Alignment, validateAriaCurrent, validateAriaSelected, validateStealth } from '../../types/props';
+import { AriaCurrent, Alignment, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
@@ -185,6 +185,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
+	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 */
+	@Prop() public _download?: boolean | string = false;
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
@@ -309,6 +314,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		}
 	}
 
+	@Watch('_download')
+	public validateDownload(value?: boolean | string): void {
+		validateDownload(this, value);
+	}
+
 	@Watch('_href')
 	public validateHref(value?: string): void {
 		watchString(this, '_href', value);
@@ -410,6 +420,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
+		this.validateDownload(this._download);
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
