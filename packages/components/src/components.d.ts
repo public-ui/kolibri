@@ -1896,9 +1896,17 @@ export namespace Components {
     }
     interface KolProgress {
         /**
+          * Setzt die Beschreibung der Fortschrittsanzeige.
+         */
+        "_description"?: string;
+        /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
         "_max": number;
+        /**
+          * Zeigt die Einheit der Fortschrittswerte an.
+         */
+        "_showUnit"?: boolean;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
          */
@@ -4480,9 +4488,17 @@ declare namespace LocalJSX {
     }
     interface KolProgress {
         /**
+          * Setzt die Beschreibung der Fortschrittsanzeige.
+         */
+        "_description"?: string;
+        /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
         "_max": number;
+        /**
+          * Zeigt die Einheit der Fortschrittswerte an.
+         */
+        "_showUnit"?: boolean;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
          */
