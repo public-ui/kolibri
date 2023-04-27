@@ -42,7 +42,6 @@ Um eine fehlgeschlagene Validierung anzuzeigen, setzen Sie das Attrbut **`_error
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property        | Attribute        | Description                                                                                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Default     |
@@ -71,7 +70,6 @@ Um eine fehlgeschlagene Validierung anzuzeigen, setzen Sie das Attrbut **`_error
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 
-
 ## Dependencies
 
 ### Depends on
@@ -79,6 +77,7 @@ Um eine fehlgeschlagene Validierung anzuzeigen, setzen Sie das Attrbut **`_error
 - kol-input
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-input-email --> kol-input
@@ -95,6 +94,4 @@ graph TD;
   style kol-input-email fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

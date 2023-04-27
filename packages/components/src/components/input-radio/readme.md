@@ -80,7 +80,6 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property             | Attribute      | Description                                                                                | Type                                                                                     | Default      |
@@ -101,12 +100,11 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.              | `boolean \| undefined`                                                                   | `false`      |
 | `_value`             | `_value`       | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902) | `number \| string \| undefined`                                                          | `undefined`  |
 
-
 ## Dependencies
 
 ### Used by
 
- - [kol-input-radio-group](../input-radio-group)
+- [kol-input-radio-group](../input-radio-group)
 
 ### Depends on
 
@@ -114,6 +112,7 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 - [kol-alert](../alert)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-input-radio --> kol-input
@@ -132,6 +131,4 @@ graph TD;
   style kol-input-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

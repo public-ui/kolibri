@@ -46,14 +46,12 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute        | Description                                                                            | Type                                                  | Default     |
 | --------------------- | ---------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
 | `_title` _(required)_ | `_title`         | Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.               | `string`                                              | `undefined` |
 | `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-
 
 ## Dependencies
 
@@ -62,6 +60,7 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 - [kol-tooltip](../tooltip)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-abbr --> kol-tooltip
@@ -70,6 +69,4 @@ graph TD;
   style kol-abbr fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

@@ -89,7 +89,6 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                  | Attribute     | Description                                                                             | Type                                                            | Default     |
@@ -99,7 +98,4 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 | `_on`                     | --            | Gibt die EventCallback-Function für das Schließen des Modals an.                        | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
 | `_width`                  | `_width`      | Setzt die Breite des Modals. (max-width: 100%).                                         | `string \| undefined`                                           | `'100%'`    |
 
-
-----------------------------------------------
-
-
+---

@@ -40,7 +40,6 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute      | Description                                                          | Type                            | Default     |
@@ -52,7 +51,4 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 | `_unit`               | `_unit`        | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)      | `string \| undefined`           | `'%'`       |
 | `_value` _(required)_ | `_value`       | Gibt an, wie weit die Anzeige fortgeschritten ist.                   | `number`                        | `undefined` |
 
-
-----------------------------------------------
-
-
+---

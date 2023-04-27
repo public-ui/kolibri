@@ -77,7 +77,6 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property     | Attribute     | Description                                                                       | Type                                                                    | Default     |
@@ -90,15 +89,14 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | `_type`      | `_type`       | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 | `_variant`   | `_variant`    | Gibt an, welche Benachrichtigungsvariante dargestellt wird.                       | `"card" \| "msg" \| undefined`                                          | `'msg'`     |
 
-
 ## Dependencies
 
 ### Used by
 
- - kol-input
- - [kol-input-adapter-leanup](../input-adapter-leanup)
- - [kol-input-radio](../input-radio)
- - [kol-toast](../toast)
+- kol-input
+- [kol-input-adapter-leanup](../input-adapter-leanup)
+- [kol-input-radio](../input-radio)
+- [kol-toast](../toast)
 
 ### Depends on
 
@@ -107,6 +105,7 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 - [kol-icon](../icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-alert --> kol-heading-wc
@@ -123,6 +122,4 @@ graph TD;
   style kol-alert fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---
