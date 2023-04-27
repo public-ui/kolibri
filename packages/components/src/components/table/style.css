@@ -1,12 +1,28 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
-:host > div {
-	overflow-x: auto;
-	overflow-y: hidden;
+:host {
+	overflow: auto;
 }
 table {
+	position: relative;
 	width: 100%;
 }
+
+thead {
+	position: sticky;
+	top: 0;
+}
+thead::after {
+	background-color: var(--kolibri-border-color);
+	content: '';
+	inset: -1px 0 0 0;
+	position: absolute;
+	z-index: -1;
+}
+:where(thead > tr) > :is(td, th) {
+	background-color: white;
+}
+
 th > div {
 	display: grid;
 	grid-template-columns: 1fr auto;
