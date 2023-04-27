@@ -18,6 +18,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute    | Description                               | Type                                                                 | Default     |
@@ -26,6 +27,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 | `_iconOnly`           | `_icon-only` | Gibt an, ob nur das Icon angezeigt wird.  | `boolean \| undefined`                                               | `false`     |
 | `_label` _(required)_ | `_label`     | Setzt den sichtbaren Text des Elements.   | `string`                                                             | `undefined` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -33,7 +35,6 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 - kol-span-wc
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-span --> kol-span-wc
@@ -41,4 +42,6 @@ graph TD;
   style kol-span fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

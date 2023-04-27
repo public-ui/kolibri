@@ -30,6 +30,7 @@ Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Pr
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                  | Attribute     | Description                                                   | Type     | Default     |
@@ -37,4 +38,7 @@ Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Pr
 | `_ariaLabel` _(required)_ | `_aria-label` | Gibt an, was der Screenreader ausgeben soll                   | `string` | `undefined` |
 | `_symbol` _(required)_    | `_symbol`     | Dieses Property gibt den String an der angezeigt werden soll. | `string` | `undefined` |
 
----
+
+----------------------------------------------
+
+

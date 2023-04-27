@@ -39,6 +39,7 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property              | Attribute             | Description                                                                       | Type                                           | Default     |
@@ -47,18 +48,18 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 | `_level`              | `_level`              | Setzt den H-Level, von 1 bis 6, der Überschrift.                                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
 | `_secondaryHeadline`  | `_secondary-headline` | Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten. | `string \| undefined`                          | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-accordion](../accordion)
-- [kol-alert](../alert)
-- [kol-card](../card)
-- [kol-heading](.)
-- [kol-link-group](../link-group)
+ - [kol-accordion](../accordion)
+ - [kol-alert](../alert)
+ - [kol-card](../card)
+ - [kol-heading](.)
+ - [kol-link-group](../link-group)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-accordion --> kol-heading-wc
@@ -69,4 +70,6 @@ graph TD;
   style kol-heading-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

@@ -51,12 +51,14 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                  | Attribute     | Description                                                                  | Type                    | Default     |
 | ------------------------- | ------------- | ---------------------------------------------------------------------------- | ----------------------- | ----------- |
 | `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
 | `_links` _(required)_     | `_links`      | Setzt die Liste der darzustellenden Links.                                   | `LinkProps[] \| string` | `undefined` |
+
 
 ## Dependencies
 
@@ -65,7 +67,6 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 - [kol-link](../link)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-skip-nav --> kol-link
@@ -78,4 +79,6 @@ graph TD;
   style kol-skip-nav fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

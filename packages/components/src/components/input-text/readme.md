@@ -40,6 +40,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Default     |
@@ -68,6 +69,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 | `_type`         | `_type`          | Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.                                     | `"search" \| "tel" \| "text" \| "url" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `'text'`    |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -75,7 +77,6 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 - kol-input
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-text --> kol-input
@@ -92,4 +93,6 @@ graph TD;
   style kol-input-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

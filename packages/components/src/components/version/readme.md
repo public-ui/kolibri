@@ -32,11 +32,13 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property                | Attribute  | Description                          | Type     | Default     |
 | ----------------------- | ---------- | ------------------------------------ | -------- | ----------- |
 | `_version` _(required)_ | `_version` | Gibt die Versionsnummer als Text an. | `string` | `undefined` |
+
 
 ## Dependencies
 
@@ -45,7 +47,6 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 - [kol-badge](../badge)
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-version --> kol-badge
@@ -58,4 +59,6 @@ graph TD;
   style kol-version fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

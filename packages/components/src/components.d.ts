@@ -1912,6 +1912,18 @@ export namespace Components {
          */
         "_show"?: boolean;
     }
+    interface KolPopoverWc {
+        /**
+          * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+         */
+        "_alignment"?: Alignment;
+        "_host"?: HTMLElement;
+        /**
+          * Öffnet/schließt das Popover.
+         */
+        "_show"?: boolean;
+        "_triggerElement"?: HTMLElement;
+    }
     interface KolProgress {
         /**
           * Setzt die Beschreibung der Fortschrittsanzeige.
@@ -2620,6 +2632,12 @@ declare global {
         prototype: HTMLKolPopoverElement;
         new (): HTMLKolPopoverElement;
     };
+    interface HTMLKolPopoverWcElement extends Components.KolPopoverWc, HTMLStencilElement {
+    }
+    var HTMLKolPopoverWcElement: {
+        prototype: HTMLKolPopoverWcElement;
+        new (): HTMLKolPopoverWcElement;
+    };
     interface HTMLKolProgressElement extends Components.KolProgress, HTMLStencilElement {
     }
     var HTMLKolProgressElement: {
@@ -2754,6 +2772,7 @@ declare global {
         "kol-nav": HTMLKolNavElement;
         "kol-pagination": HTMLKolPaginationElement;
         "kol-popover": HTMLKolPopoverElement;
+        "kol-popover-wc": HTMLKolPopoverWcElement;
         "kol-progress": HTMLKolProgressElement;
         "kol-quote": HTMLKolQuoteElement;
         "kol-select": HTMLKolSelectElement;
@@ -4610,6 +4629,18 @@ declare namespace LocalJSX {
          */
         "_show"?: boolean;
     }
+    interface KolPopoverWc {
+        /**
+          * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+         */
+        "_alignment"?: Alignment;
+        "_host"?: HTMLElement;
+        /**
+          * Öffnet/schließt das Popover.
+         */
+        "_show"?: boolean;
+        "_triggerElement"?: HTMLElement;
+    }
     interface KolProgress {
         /**
           * Setzt die Beschreibung der Fortschrittsanzeige.
@@ -5090,6 +5121,7 @@ declare namespace LocalJSX {
         "kol-nav": KolNav;
         "kol-pagination": KolPagination;
         "kol-popover": KolPopover;
+        "kol-popover-wc": KolPopoverWc;
         "kol-progress": KolProgress;
         "kol-quote": KolQuote;
         "kol-select": KolSelect;
@@ -5166,6 +5198,7 @@ declare module "@stencil/core" {
             "kol-nav": LocalJSX.KolNav & JSXBase.HTMLAttributes<HTMLKolNavElement>;
             "kol-pagination": LocalJSX.KolPagination & JSXBase.HTMLAttributes<HTMLKolPaginationElement>;
             "kol-popover": LocalJSX.KolPopover & JSXBase.HTMLAttributes<HTMLKolPopoverElement>;
+            "kol-popover-wc": LocalJSX.KolPopoverWc & JSXBase.HTMLAttributes<HTMLKolPopoverWcElement>;
             "kol-progress": LocalJSX.KolProgress & JSXBase.HTMLAttributes<HTMLKolProgressElement>;
             "kol-quote": LocalJSX.KolQuote & JSXBase.HTMLAttributes<HTMLKolQuoteElement>;
             "kol-select": LocalJSX.KolSelect & JSXBase.HTMLAttributes<HTMLKolSelectElement>;

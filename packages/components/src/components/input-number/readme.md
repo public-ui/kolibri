@@ -33,6 +33,7 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                                                                                                                                                                                               | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Default     |
@@ -61,18 +62,18 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 | `_type`         | `_type`          | <span style="color:red">**[DEPRECATED]**</span> Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.<br/><br/>Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist. | `"date" \| "datetime-local" \| "month" \| "number" \| "time" \| "week" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `'number'`  |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                                                                                                                                       | ``${number}-${number}-${number}T${number}:${number}:${number}` \| `${number}-${number}-${number}T${number}:${number}` \| `${number}-${number}-${number}` \| `${number}-${number}` \| `${number}-W${number}` \| `${number}:${number}:${number}` \| `${number}:${number}` \| null \| number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [kol-input-date](../input-date)
+ - [kol-input-date](../input-date)
 
 ### Depends on
 
 - kol-input
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-number --> kol-input
@@ -90,4 +91,6 @@ graph TD;
   style kol-input-number fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

@@ -39,6 +39,7 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute     | Description                                                                                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Default     |
@@ -61,6 +62,7 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 | `_touched`     | `_touched`    | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
 | `_value`       | `_value`      | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -68,7 +70,6 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 - kol-input
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-file --> kol-input
@@ -85,4 +86,6 @@ graph TD;
   style kol-input-file fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

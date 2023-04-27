@@ -29,40 +29,60 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property                | Attribute  | Description                                      | Type                                                                                 | Default     |
-| ----------------------- | ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------ | ----------- |
-| `_heading` _(required)_ | `_heading` | Gibt die Überschrift des Accordions an.          | `string`                                                                             | `undefined` |
-| `_level`                | `_level`   | Setzt den H-Level, von 1 bis 6, der Überschrift. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
-| `_on`                   | --         | Gibt die EventCallback-Funktionen an.            | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
-| `_open`                 | `_open`    | Gibt an, ob das Accordion geöffnet ist.          | `boolean \| undefined`                                                               | `false`     |
+| Property              | Attribute        | Description                                                                                                                                                                                                                                                                           | Type                                                                                   | Default     |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ----------- |
+| `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.                                                                                                                                                                                                 | `string \| undefined`                                                                  | `undefined` |
+| `_ariaControls`       | `_aria-controls` | Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)                                                                                                                                              | `string \| undefined`                                                                  | `undefined` |
+| `_ariaCurrent`        | `_aria-current`  | Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)                                                                                                                                    | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean \| undefined`           | `undefined` |
+| `_ariaExpanded`       | `_aria-expanded` | Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)                                                                                                                                      | `boolean \| undefined`                                                                 | `undefined` |
+| `_ariaLabel`          | `_aria-label`    | Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label | `string \| undefined`                                                                  | `undefined` |
+| `_ariaSelected`       | `_aria-selected` | Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)                                                                                                                                             | `boolean \| undefined`                                                                 | `undefined` |
+| `_customClass`        | `_custom-class`  | Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.                                                                                                                                                                                               | `string \| undefined`                                                                  | `undefined` |
+| `_disabled`           | `_disabled`      | Gibt an, ob der Button deaktiviert ist.                                                                                                                                                                                                                                               | `boolean \| undefined`                                                                 | `false`     |
+| `_hideLabel`          | `_hide-label`    | Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.                                                                                                                                                                                     | `boolean \| undefined`                                                                 | `false`     |
+| `_icon`               | `_icon`          | Iconklasse (z.B.: "codicon codicon-home")                                                                                                                                                                                                                                             | `string \| undefined`                                                                  | `undefined` |
+| `_iconOnly`           | `_icon-only`     | <span style="color:red">**[DEPRECATED]**</span> use _hide-label<br/><br/>Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.                                                                                                            | `boolean \| undefined`                                                                 | `false`     |
+| `_label` _(required)_ | `_label`         | Setzt den sichtbaren Text des Elements.                                                                                                                                                                                                                                               | `string`                                                                               | `undefined` |
+| `_onClick`            | --               | Gibt die EventCallback-Funktionen für die Button-Events an.                                                                                                                                                                                                                           | `((e: Event, v: unknown) => void) \| undefined`                                        | `undefined` |
+| `_role`               | `_role`          | Gibt an, welche Rolle der Schalter hat.                                                                                                                                                                                                                                               | `"button" \| "link" \| "tab" \| undefined`                                             | `undefined` |
+| `_showDropdown`       | `_show-dropdown` | Gibt an, welche Rolle der Schalter hat.                                                                                                                                                                                                                                               | `boolean \| undefined`                                                                 | `undefined` |
+| `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                                                                                                                                                             | `number \| undefined`                                                                  | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).                                                                                                                                                                                                                         | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                  | `'top'`     |
+| `_type`               | `_type`          | Setzt den Typ der Schaltfläche.                                                                                                                                                                                                                                                       | `"button" \| "reset" \| "submit" \| undefined`                                         | `'button'`  |
+| `_value`              | --               | Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.                                                                                                                                                                                                                      | `unknown`                                                                              | `undefined` |
+| `_variant`            | `_variant`       | Gibt an, welche Ausprägung der Button hat.                                                                                                                                                                                                                                            | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined` | `'normal'`  |
+
 
 ## Slots
 
-| Slot        | Description                                                                     |
-| ----------- | ------------------------------------------------------------------------------- |
-| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
-| `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.    |
+| Slot        | Description                                                |
+| ----------- | ---------------------------------------------------------- |
+| `"popover"` | Ermöglicht das Einfügen beliebigen HTML's in das dropdown. |
+
 
 ## Dependencies
 
 ### Depends on
 
-- [kol-heading-wc](../heading)
 - kol-button-wc
+- [kol-popover](../popover)
 
 ### Graph
-
 ```mermaid
 graph TD;
-  kol-accordion --> kol-heading-wc
-  kol-accordion --> kol-button-wc
+  kol-split-button --> kol-button-wc
+  kol-split-button --> kol-popover
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
-  style kol-accordion fill:#f9f,stroke:#333,stroke-width:4px
+  kol-popover --> kol-popover-wc
+  style kol-split-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

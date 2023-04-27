@@ -44,6 +44,7 @@ Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgef
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Default     |
@@ -65,6 +66,7 @@ Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgef
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -72,7 +74,6 @@ Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgef
 - kol-input
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-color --> kol-input
@@ -89,4 +90,6 @@ graph TD;
   style kol-input-color fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

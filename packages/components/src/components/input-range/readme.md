@@ -35,6 +35,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property        | Attribute        | Description                                                                          | Type                                                                                                    | Default     |
@@ -58,6 +59,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.        | `boolean \| undefined`                                                                                  | `false`     |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                  | `number \| undefined`                                                                                   | `undefined` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -65,7 +67,6 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 - kol-input
 
 ### Graph
-
 ```mermaid
 graph TD;
   kol-input-range --> kol-input
@@ -82,4 +83,6 @@ graph TD;
   style kol-input-range fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
+
+

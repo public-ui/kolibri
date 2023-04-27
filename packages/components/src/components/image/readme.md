@@ -50,14 +50,18 @@ Ausführliche Erklärung zu `_srcset` und `_sizes`: https://www.mediaevent.de/ht
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
-| Property            | Attribute  | Description                                                                | Type                             | Default     |
-| ------------------- | ---------- | -------------------------------------------------------------------------- | -------------------------------- | ----------- |
-| `_alt` _(required)_ | `_alt`     | Setzt den alternativen Text.                                               | `string`                         | `undefined` |
-| `_loading`          | `_loading` | Setzt den Lademodus.                                                       | `"eager" \| "lazy" \| undefined` | `'lazy'`    |
-| `_sizes`            | `_sizes`   | Setzt Größen für unterschiedliche Auflösungen, unterstützend für \_srcset. | `string \| undefined`            | `undefined` |
-| `_src` _(required)_ | `_src`     | Setzt die Quell-URL des Bildes.                                            | `string`                         | `undefined` |
-| `_srcset`           | `_srcset`  | Setzt eine Liste von Quell-URLs mit Breiten der Bilder.                    | `string \| undefined`            | `undefined` |
+| Property            | Attribute  | Description                                                               | Type                             | Default     |
+| ------------------- | ---------- | ------------------------------------------------------------------------- | -------------------------------- | ----------- |
+| `_alt` _(required)_ | `_alt`     | Setzt den alternativen Text.                                              | `string`                         | `undefined` |
+| `_loading`          | `_loading` | Setzt den Lademodus.                                                      | `"eager" \| "lazy" \| undefined` | `'lazy'`    |
+| `_sizes`            | `_sizes`   | Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset. | `string \| undefined`            | `undefined` |
+| `_src` _(required)_ | `_src`     | Setzt die Quell-URL des Bildes.                                           | `string`                         | `undefined` |
+| `_srcset`           | `_srcset`  | Setzt eine Liste von Quell-URLs mit Breiten der Bilder.                   | `string \| undefined`            | `undefined` |
 
----
+
+----------------------------------------------
+
+
