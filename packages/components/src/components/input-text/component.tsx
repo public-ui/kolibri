@@ -63,6 +63,9 @@ export class KolInputText implements ComponentApi {
 			>
 				{this.state._accessKey}
 				<kol-input
+					class={{
+						[this.state._type]: true,
+					}}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
 					_hideLabel={this.state._hideLabel}

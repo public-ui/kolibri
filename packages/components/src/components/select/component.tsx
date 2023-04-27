@@ -64,6 +64,9 @@ export class KolSelect implements ComponentApi {
 				}}
 			>
 				<kol-input
+					class={{
+						select: true,
+					}}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
 					_hideLabel={this.state._hideLabel}

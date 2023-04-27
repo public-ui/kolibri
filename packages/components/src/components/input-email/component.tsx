@@ -49,6 +49,9 @@ export class KolInputEmail implements ComponentApi {
 				}}
 			>
 				<kol-input
+					class={{
+						email: true,
+					}}
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}

@@ -350,19 +350,19 @@ export const BPA = KoliBri.createTheme('bpa', {
 	.hint {
 		font-size: 1.125rem;
 	}
-	.checkbox input[type="checkbox"] {
+	.default input[type="checkbox"] {
 		border-width: 1px;
 		padding: 0.125rem;
 		width: 1.375rem;
 		height: 1.375rem;
 	}
-	.checkbox input[type="checkbox"]:checked {
+	.default input[type="checkbox"]:checked {
 		color: var(--color-white);
 		background-color: var(--color-blue);
 		border-color: var(--color-blue);
 		padding: 0;
 	}
-	.checkbox input[type="checkbox"]:checked:before {
+	.default input[type="checkbox"]:checked:before {
 		left: 0.35rem;
 		top: 45%;
 		height: 0.6rem;
@@ -370,7 +370,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		transform: rotate(45deg) translate(-50%, -50%);
 		border-width: 0px 2px 2px 0px;
 	}
-	.checkbox input[type="checkbox"]:indeterminate:before {
+	.default input[type="checkbox"]:indeterminate:before {
 		background-color: var(--color-blue);
 		top: 0;
 		left: 0;

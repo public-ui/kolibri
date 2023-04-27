@@ -38,17 +38,19 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		--line-height-bold: 1.2em; /* em! */
 		--line-height-regular: 1.5em; /* em! */
 	}
-	*[tabindex]:focus,a:focus,button:focus,/* input:focus, *//* select:focus, */summary:focus,/* textarea:focus, */kol-input .input:focus-within
-	{
-		border-radius: var(--border-radius);
+	*[tabindex]:focus,
+	a:focus,
+	button:focus,
+	summary:focus,
+	kol-input:not(.checkbox, .radio) .input:focus-within,
+	kol-input:is(.checkbox, .radio) input:focus {
 		outline-color: var(--color-blau-dark);
 		outline-offset: 0.125rem;
 		outline-style: solid;
 		outline-width: 0.125rem;
 		transition: outline-offset 0.25s linear;
 	}
-	:host {
-		display: inline-block;
+	*:not(i) {
 		font-family: var(--font-family);
 	}
 	a,
@@ -797,7 +799,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		justify-items: left;
 		width: 100%;
 	}
-	kol-input.checkbox {
+	kol-input.default {
 		grid-template-columns: calc(6 * var(--spacing)) auto;
 	}
 	kol-input.switch {
@@ -837,13 +839,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		background-color: var(--color-blau);
 		border-color: var(--color-blau);
 	}
-	.checkbox input[type="checkbox"] {
+	.default input[type="checkbox"] {
 		border-radius: 0.25em;
 		height: calc(6 * var(--spacing));
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	}
-	.checkbox input[type="checkbox"]:before {
+	.default input[type="checkbox"]:before {
 		border-radius: 0.25em;
 		background-color: transparent;
 		display: block;
@@ -851,7 +853,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		position: relative;
 		width: calc(6 * var(--spacing));
 	}
-	.checkbox input[type="checkbox"]:checked:before {
+	.default input[type="checkbox"]:checked:before {
 		border-right-width: 3px;
 		border-bottom-width: 3px;
 		left: calc(1.5 * var(--spacing) - 2px);
@@ -865,10 +867,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		height: calc(3 * var(--spacing));
 		width: calc(1.5 * var(--spacing));
 	}
-	.checkbox input[type="checkbox"]:indeterminate {
+	.default input[type="checkbox"]:indeterminate {
 		background-color: var(--color-blau);
 	}
-	.checkbox input[type="checkbox"]:indeterminate:before {
+	.default input[type="checkbox"]:indeterminate:before {
 		background-color: white;
 		height: 0.25rem;
 		top: 0.5rem;
@@ -1024,14 +1026,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input input {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1065,14 +1069,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input input {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1106,14 +1112,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input input {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1147,14 +1155,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input input {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1188,14 +1198,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input input {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1229,14 +1241,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input :is(input, select, textarea) {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1268,22 +1282,20 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-color: var(--color-grau-30);
 		border-width: 2px;
 		border-style: solid;
-		padding: 0 0.75em;
+		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: unset !important;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input :is(input, select, textarea) {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
-	}
-	textarea {
-		margin-top: 2px;
-		padding: 0.5em 0;
 	}
 	kol-input .input input[type="file"] {
 		padding-top: calc(0.5em + 2px);
@@ -1334,10 +1346,11 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	.entry kol-button-wc:first-child,
 	.entry kol-link-wc,
 	.entry kol-span-wc {
+		color: black;
 		flex-grow: 1;
 	} /* custom. */
 	nav {
-		background-color: var(--color-blue);
+		background-color: #f2f2f2;
 	}
 	ul {
 		list-style: none;
@@ -1345,9 +1358,11 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		padding: 0;
 	}
 	.expand-button button {
-		background-color: var(--color-blue-130);
 		margin: auto;
 		height: 100%;
+	}
+	:is(a, button):focus {
+		outline: none;
 	}
 	kol-span-wc {
 		border-color: transparent;
@@ -1358,13 +1373,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		justify-items: start;
 		padding: 1rem;
 		height: 100%;
-	}
-	li > ul,
-	li + li {
-		border-color: var(--color-blue-75);
-		border-style: solid;
-		border-width: 0;
-		border-top-width: 2px;
 	}
 	a {
 		text-decoration: none;
@@ -1571,7 +1579,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}`,
 	'KOL-BREADCRUMB': `ul,
 	li {
-		gap: 0;
+		gap: 0px;
+		place-items: baseline;
 	}
 	kol-icon {
 		text-align: center;
@@ -1586,14 +1595,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input input {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1627,14 +1638,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 		padding: 0px 0.75em;
 		gap: var(--gap);
-		height: 44px;
 		overflow: hidden;
 	}
 	kol-input .input:focus-within,
 	kol-input .input:hover {
 		border-color: var(--color-grau-60);
 	}
-	kol-input .input input {
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
 		background-color: white;
 		border: 0;
 	}
@@ -1661,5 +1674,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	kol-input > kol-alert.error {
 		order: 3;
+	}`,
+	'KOL-ICON': `:host,
+	:host > i {
+		height: 1em;
+		width: 1em;
 	}`,
 });
