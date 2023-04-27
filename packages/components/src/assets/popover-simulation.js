@@ -12,17 +12,22 @@ const popoverLeft = document.querySelector('#popover-left');
 const popoverLogin = document.querySelector('#popover-login');
 
 if (buttonTop && popoverTop) {
-	buttonTop._on = { onClick: () => popoverTop.setAttribute('_open', '') };
+	console.log("popover-top set")
+	buttonTop._on = { onClick: () => popoverTop.setAttribute('_show', '') };
 }
 if (buttonRight && popoverRight) {
-	buttonRight._on = { onClick: () => popoverRight.setAttribute('_open', '') };
+	console.log("popover-right set")
+	buttonRight._on = { onClick: () => popoverRight.setAttribute('_show', '') };
 }
 if (buttonBottom && popoverBottom) {
-	buttonBottom._on = { onClick: () => popoverBottom.setAttribute('_open', '') };
+	console.log("popover-bottom set")
+	buttonBottom._on = { onClick: () => popoverBottom.setAttribute('_show', '') };
 }
 if (buttonLeft && popoverLeft) {
-	buttonLeft._on = { onClick: () => popoverLeft.setAttribute('_open', '') };
+	console.log("popover-left set")
+	buttonLeft._on = { onClick: () => popoverLeft.setAttribute('_show', '') };
 }
 if (buttonLogin && popoverLogin) {
-	buttonLogin._on = { onClick: () => popoverLogin.setAttribute('_open', '') };
+	console.log("popover-login set")
+	buttonLogin._on = { onClick: () => popoverLogin.setAttribute('_show', '') };
 }
