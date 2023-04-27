@@ -1,11 +1,12 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
-:host {
+.wrapper {
+	height: 100%;
 	overflow: auto;
+	width: 100%;
 }
 table {
 	position: relative;
-	width: 100%;
 }
 
 thead {

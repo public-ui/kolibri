@@ -502,7 +502,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 
 		return (
 			<Host>
-				{/*
+				<div class="wrapper">
+					{/*
 				  - https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
 					- https://www.a11yproject.com/posts/how-to-use-the-tabindex-attribute/
 					- https://ux.stackexchange.com/questions/119952/when-is-it-wrong-to-put-tabindex-0-on-non-interactive-content
@@ -512,250 +513,255 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 					DOCH!!!
 					https://dequeuniversity.com/rules/axe/4.4/scrollable-region-focusable?application=AxeChrome
 				*/}
-				<table
-					// role="grid"
-					// aria-readonly="true"
-					style={{
-						minWidth: this.state._minWidth,
-					}}
-					tabindex="0"
-				>
-					<caption>{this.state._caption}</caption>
-					{Array.isArray(this.state._headers.horizontal) && (
-						<thead>
-							{this.state._headers.horizontal.map((cols, rowIdx) => (
-								<tr key={`thead-${rowIdx}`}>
-									{cols.map((col, colIdx) => {
-										if (col.asTd === true) {
-											return (
-												<td // role="gridcell"
-													key={`thead-${rowIdx}-${colIdx}-${col.label}`}
-													class={{
-														[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
-													}}
-													colSpan={col.colSpan}
-													rowSpan={col.rowSpan}
-													style={{
-														textAlign: col.textAlign,
-														width: col.width,
-													}}
-													ref={
-														typeof col.render === 'function'
-															? (el) => {
-																	this.cellRender(col as KoliBriTableHeaderCellAndData, el);
-															  }
-															: undefined
-													}
-													innerHTML={typeof col.render !== 'function' ? col.label : ''}
-												></td>
-											);
-										} else {
-											return (
-												<th // role="columnheader"
-													key={`thead-${rowIdx}-${colIdx}-${col.label}`}
-													scope={typeof col.colSpan === 'number' && col.colSpan > 1 ? 'colgroup' : 'col'}
-													colSpan={col.colSpan}
-													rowSpan={col.rowSpan}
-													style={{
-														textAlign: col.textAlign,
-														width: col.width,
-													}}
-													aria-sort={
-														typeof col.sort === 'function'
-															? col.sort !== this.sortFunction || this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
-																? 'none'
-																: this.sortDirections.get(col.sort) === 'ASC'
-																? 'ascending'
-																: 'descending'
-															: undefined
-													}
-													// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-													data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
-												>
-													<div class="w-full flex gap-1 items-center">
-														<div
-															class={{
-																'w-full': true,
-																[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
-															}}
-															innerHTML={col.label}
-															style={{
-																textAlign: col.textAlign,
-															}}
-														></div>
-														{typeof col.sort === 'function' && (
-															<kol-button
-																_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																_icon={
-																	col.sort !== this.sortFunction ||
-																	this.sortDirections.get(col.sort) === 'NOS' ||
-																	this.sortDirections.get(col.sort) === undefined
-																		? 'codicon codicon-fold'
-																		: this.sortDirections.get(col.sort) === 'ASC'
-																		? 'codicon codicon-chevron-up'
-																		: 'codicon codicon-chevron-down'
-																}
-																_iconOnly
-																_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																_on={{
-																	onClick: () => {
-																		if (typeof col.sort === 'function') {
-																			this.sortFunction = col.sort;
-																			switch (this.sortDirections.get(this.sortFunction)) {
-																				case 'ASC':
-																					this.setSortDirection(this.sortFunction, 'DESC');
-																					break;
-																				case 'DESC':
-																					this.setSortDirection(this.sortFunction, 'NOS');
-																					break;
-																				default:
-																					this.setSortDirection(this.sortFunction, 'ASC');
-																			}
-																			this.updateSortedData();
-																		}
-																	},
+					<table
+						// role="grid"
+						// aria-readonly="true"
+						style={{
+							minWidth: this.state._minWidth,
+						}}
+						tabindex="0"
+					>
+						<caption>{this.state._caption}</caption>
+						{Array.isArray(this.state._headers.horizontal) && (
+							<thead>
+								{this.state._headers.horizontal.map((cols, rowIdx) => (
+									<tr key={`thead-${rowIdx}`}>
+										{cols.map((col, colIdx) => {
+											if (col.asTd === true) {
+												return (
+													<td // role="gridcell"
+														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
+														class={{
+															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+														}}
+														colSpan={col.colSpan}
+														rowSpan={col.rowSpan}
+														style={{
+															textAlign: col.textAlign,
+															width: col.width,
+														}}
+														ref={
+															typeof col.render === 'function'
+																? (el) => {
+																		this.cellRender(col as KoliBriTableHeaderCellAndData, el);
+																  }
+																: undefined
+														}
+														innerHTML={typeof col.render !== 'function' ? col.label : ''}
+													></td>
+												);
+											} else {
+												return (
+													<th // role="columnheader"
+														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
+														scope={typeof col.colSpan === 'number' && col.colSpan > 1 ? 'colgroup' : 'col'}
+														colSpan={col.colSpan}
+														rowSpan={col.rowSpan}
+														style={{
+															textAlign: col.textAlign,
+															width: col.width,
+														}}
+														aria-sort={
+															typeof col.sort === 'function'
+																? col.sort !== this.sortFunction ||
+																  this.sortDirections.get(col.sort) === 'NOS' ||
+																  this.sortDirections.get(col.sort) === undefined
+																	? 'none'
+																	: this.sortDirections.get(col.sort) === 'ASC'
+																	? 'ascending'
+																	: 'descending'
+																: undefined
+														}
+														// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
+													>
+														<div class="w-full flex gap-1 items-center">
+															<div
+																class={{
+																	'w-full': true,
+																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
 																}}
-																_variant="ghost"
-															></kol-button>
-														)}
-													</div>
-												</th>
-											);
-										}
-									})}
-								</tr>
-							))}
-						</thead>
-					)}
-					{/* <tbody aria-atomic="true" aria-live="polite" aria-relevant="additions removals"> */}
-					<tbody>
-						{dataField.map((row, rowIdx) => {
-							return (
-								<tr key={`tbody-${rowIdx}`}>
-									{row.map((col, colIdx) => {
-										if (col.asTd === false) {
-											return (
-												<th // role="rowheader"
-													key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
-													scope={typeof col.rowSpan === 'number' && col.rowSpan > 1 ? 'rowgroup' : 'row'}
-													colSpan={col.colSpan}
-													rowSpan={col.rowSpan}
-													style={{
-														textAlign: col.textAlign,
-														width: col.width,
-													}}
-													aria-sort={
-														typeof col.sort === 'function'
-															? col.sort !== this.sortFunction || this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
-																? 'none'
-																: this.sortDirections.get(col.sort) === 'ASC'
-																? 'ascending'
-																: 'descending'
-															: undefined
-													}
-													// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-													data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
-												>
-													<div class="w-full flex gap-1 items-center">
-														<div
-															class={{
-																'w-full': true,
-																[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
-															}}
-															innerHTML={col.label}
-															style={{
-																textAlign: col.textAlign,
-															}}
-														></div>
-														{typeof col.sort === 'function' && (
-															<kol-button
-																_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																_icon={
-																	col.sort !== this.sortFunction ||
-																	this.sortDirections.get(col.sort) === 'NOS' ||
-																	this.sortDirections.get(col.sort) === undefined
-																		? 'codicon codicon-fold'
-																		: this.sortDirections.get(col.sort) === 'ASC'
-																		? 'codicon codicon-chevron-up'
-																		: 'codicon codicon-chevron-down'
-																}
-																_iconOnly
-																_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																_on={{
-																	onClick: () => {
-																		if (typeof col.sort === 'function') {
-																			this.sortFunction = col.sort;
-																			switch (this.sortDirections.get(this.sortFunction)) {
-																				case 'ASC':
-																					this.setSortDirection(this.sortFunction, 'DESC');
-																					break;
-																				case 'DESC':
-																					this.setSortDirection(this.sortFunction, 'NOS');
-																					break;
-																				default:
-																					this.setSortDirection(this.sortFunction, 'ASC');
-																			}
-																			this.updateSortedData();
-																		}
-																	},
+																innerHTML={col.label}
+																style={{
+																	textAlign: col.textAlign,
 																}}
-																_variant="ghost"
-															></kol-button>
-														)}
-													</div>
-												</th>
-											);
-										} else {
-											return (
-												<td // role="gridcell"
-													key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
-													class={{
-														[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
-													}}
-													colSpan={col.colSpan}
-													rowSpan={col.rowSpan}
-													style={{
-														textAlign: col.textAlign,
-														width: col.width,
-													}}
-													ref={
-														typeof col.render === 'function'
-															? (el) => {
-																	this.cellRender(col as KoliBriTableHeaderCellAndData, el);
-															  }
-															: undefined
-													}
-													innerHTML={typeof col.render !== 'function' ? col.label : ''}
-												></td>
-											);
-										}
-									})}
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
-				{this.pageEndSlice > 0 && this.showPagination && (
-					<div class="pagination">
-						<span>
-							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
-						</span>
-						<div>
-							<kol-pagination
-								_boundaryCount={this.state._pagination._boundaryCount}
-								_customClass={this.state._pagination._customClass}
-								_on={this.handlePagination}
-								_page={this.state._pagination._page}
-								_pageSize={this.state._pagination._pageSize}
-								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-								_siblingCount={this.state._pagination._siblingCount}
-								_tooltipAlign="bottom"
-								_total={this.state._pagination._total || this.state._data.length}
-							></kol-pagination>
+															></div>
+															{typeof col.sort === 'function' && (
+																<kol-button
+																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
+																	_icon={
+																		col.sort !== this.sortFunction ||
+																		this.sortDirections.get(col.sort) === 'NOS' ||
+																		this.sortDirections.get(col.sort) === undefined
+																			? 'codicon codicon-fold'
+																			: this.sortDirections.get(col.sort) === 'ASC'
+																			? 'codicon codicon-chevron-up'
+																			: 'codicon codicon-chevron-down'
+																	}
+																	_iconOnly
+																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
+																	_on={{
+																		onClick: () => {
+																			if (typeof col.sort === 'function') {
+																				this.sortFunction = col.sort;
+																				switch (this.sortDirections.get(this.sortFunction)) {
+																					case 'ASC':
+																						this.setSortDirection(this.sortFunction, 'DESC');
+																						break;
+																					case 'DESC':
+																						this.setSortDirection(this.sortFunction, 'NOS');
+																						break;
+																					default:
+																						this.setSortDirection(this.sortFunction, 'ASC');
+																				}
+																				this.updateSortedData();
+																			}
+																		},
+																	}}
+																	_variant="ghost"
+																></kol-button>
+															)}
+														</div>
+													</th>
+												);
+											}
+										})}
+									</tr>
+								))}
+							</thead>
+						)}
+						{/* <tbody aria-atomic="true" aria-live="polite" aria-relevant="additions removals"> */}
+						<tbody>
+							{dataField.map((row, rowIdx) => {
+								return (
+									<tr key={`tbody-${rowIdx}`}>
+										{row.map((col, colIdx) => {
+											if (col.asTd === false) {
+												return (
+													<th // role="rowheader"
+														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
+														scope={typeof col.rowSpan === 'number' && col.rowSpan > 1 ? 'rowgroup' : 'row'}
+														colSpan={col.colSpan}
+														rowSpan={col.rowSpan}
+														style={{
+															textAlign: col.textAlign,
+															width: col.width,
+														}}
+														aria-sort={
+															typeof col.sort === 'function'
+																? col.sort !== this.sortFunction ||
+																  this.sortDirections.get(col.sort) === 'NOS' ||
+																  this.sortDirections.get(col.sort) === undefined
+																	? 'none'
+																	: this.sortDirections.get(col.sort) === 'ASC'
+																	? 'ascending'
+																	: 'descending'
+																: undefined
+														}
+														// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
+													>
+														<div class="w-full flex gap-1 items-center">
+															<div
+																class={{
+																	'w-full': true,
+																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+																}}
+																innerHTML={col.label}
+																style={{
+																	textAlign: col.textAlign,
+																}}
+															></div>
+															{typeof col.sort === 'function' && (
+																<kol-button
+																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
+																	_icon={
+																		col.sort !== this.sortFunction ||
+																		this.sortDirections.get(col.sort) === 'NOS' ||
+																		this.sortDirections.get(col.sort) === undefined
+																			? 'codicon codicon-fold'
+																			: this.sortDirections.get(col.sort) === 'ASC'
+																			? 'codicon codicon-chevron-up'
+																			: 'codicon codicon-chevron-down'
+																	}
+																	_iconOnly
+																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
+																	_on={{
+																		onClick: () => {
+																			if (typeof col.sort === 'function') {
+																				this.sortFunction = col.sort;
+																				switch (this.sortDirections.get(this.sortFunction)) {
+																					case 'ASC':
+																						this.setSortDirection(this.sortFunction, 'DESC');
+																						break;
+																					case 'DESC':
+																						this.setSortDirection(this.sortFunction, 'NOS');
+																						break;
+																					default:
+																						this.setSortDirection(this.sortFunction, 'ASC');
+																				}
+																				this.updateSortedData();
+																			}
+																		},
+																	}}
+																	_variant="ghost"
+																></kol-button>
+															)}
+														</div>
+													</th>
+												);
+											} else {
+												return (
+													<td // role="gridcell"
+														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
+														class={{
+															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+														}}
+														colSpan={col.colSpan}
+														rowSpan={col.rowSpan}
+														style={{
+															textAlign: col.textAlign,
+															width: col.width,
+														}}
+														ref={
+															typeof col.render === 'function'
+																? (el) => {
+																		this.cellRender(col as KoliBriTableHeaderCellAndData, el);
+																  }
+																: undefined
+														}
+														innerHTML={typeof col.render !== 'function' ? col.label : ''}
+													></td>
+												);
+											}
+										})}
+									</tr>
+								);
+							})}
+						</tbody>
+					</table>
+					{this.pageEndSlice > 0 && this.showPagination && (
+						<div class="pagination">
+							<span>
+								Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
+								{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
+							</span>
+							<div>
+								<kol-pagination
+									_boundaryCount={this.state._pagination._boundaryCount}
+									_customClass={this.state._pagination._customClass}
+									_on={this.handlePagination}
+									_page={this.state._pagination._page}
+									_pageSize={this.state._pagination._pageSize}
+									_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+									_siblingCount={this.state._pagination._siblingCount}
+									_tooltipAlign="bottom"
+									_total={this.state._pagination._total || this.state._data.length}
+								></kol-pagination>
+							</div>
 						</div>
-					</div>
-				)}
+					)}
+				</div>
 			</Host>
 		);
 	}
