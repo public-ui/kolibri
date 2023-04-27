@@ -4,13 +4,14 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
 import { Alignment, validateAlignment, validateShow } from '../../types/props';
-import { API, States } from './types';
+import { APIWc, States } from './types';
+import { watchBoolean } from '../../utils/prop.validators';
 
 @Component({
-	tag: 'kol-popover',
+	tag: 'kol-popover-wc',
 	shadow: false,
 })
-export class KolPopover implements API {
+export class KolPopover implements APIWc {
 	private arrowElement?: HTMLDivElement;
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;
@@ -137,6 +138,8 @@ export class KolPopover implements API {
 	 */
 	@Prop() public _alignment?: Alignment = 'top';
 
+	@Prop() public _hideArrow?: boolean;
+
 	@Prop() public _host?: HTMLElement;
 
 	/**
@@ -157,6 +160,11 @@ export class KolPopover implements API {
 		validateAlignment(this, value);
 	}
 
+	@Watch('_hideArrow')
+	public validateHideArrow(value?: boolean): void {
+		watchBoolean(this, '_hideArrow', value);
+	}
+
 	@Watch('_host')
 	public validateHost(value?: HTMLElement): void {
 		if (value) this.host = value;
@@ -166,6 +174,7 @@ export class KolPopover implements API {
 	public validateShow(value?: boolean): void {
 		validateShow(this, value);
 		if (value) this.showPopover();
+		else this.host?.removeAttribute('_show');
 	}
 
 	@Watch('_triggerElement')
@@ -175,6 +184,9 @@ export class KolPopover implements API {
 
 	public componentWillLoad(): void {
 		this.validateAlignment(this._alignment);
+		this.validateHideArrow(this._hideArrow);
+		this.validateHost(this._host);
 		this.validateShow(this._show);
+		this.validateTriggerElement(this._triggerElement);
 	}
 }

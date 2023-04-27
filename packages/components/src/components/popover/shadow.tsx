@@ -11,27 +11,21 @@ import { Props } from './types';
 	shadow: true,
 })
 export class KolPopover implements Props {
-	private triggerElement?: HTMLElement | null;
+	private triggerElement?: HTMLElement;
 	private host?: HTMLElement;
 
 	/* catchElement functions */
 	private catchHostAndTriggerElement = (element: HTMLElement | null): void => {
-		if (element) {
-			this.host = element;
-			this.triggerElement = element.previousElementSibling as HTMLElement | null;
-		}
+		if (element) this.host = element;
+		if (element?.previousElementSibling) this.triggerElement = element.previousElementSibling as HTMLElement;
 	};
 
 	public render(): JSX.Element {
 		return (
 			<Host ref={this.catchHostAndTriggerElement}>
-				<kol-popover-wc
-					_alignment={this._alignment}
-					_hideArrow={this._hideArrow}
-					_host={this.host}
-					_show={this._show}
-					_triggerElement={this.triggerElement}
-				></kol-popover-wc>
+				<kol-popover-wc _alignment={this._alignment} _hideArrow={this._hideArrow} _host={this.host} _show={this._show} _triggerElement={this.triggerElement}>
+					<slot />
+				</kol-popover-wc>
 			</Host>
 		);
 	}

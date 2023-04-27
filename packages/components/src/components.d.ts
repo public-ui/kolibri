@@ -1917,6 +1917,7 @@ export namespace Components {
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
         "_alignment"?: Alignment;
+        "_hideArrow"?: boolean;
         "_host"?: HTMLElement;
         /**
           * Öffnet/schließt das Popover.
@@ -4634,6 +4635,7 @@ declare namespace LocalJSX {
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
         "_alignment"?: Alignment;
+        "_hideArrow"?: boolean;
         "_host"?: HTMLElement;
         /**
           * Öffnet/schließt das Popover.

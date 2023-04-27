@@ -10,3 +10,8 @@ type OptionalStates = unknown;
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+
+type OptionalPropsWc = PropAlignment & PropShow & { hideArrow?: boolean; host?: HTMLElement; triggerElement?: HTMLElement };
+export type PropsWc = Generic.Element.Members<RequiredProps, OptionalPropsWc>;
+
+type APIWc = Generic.Element.ComponentApi<RequiredProps, OptionalPropsWc, RequiredStates, OptionalStates>;
