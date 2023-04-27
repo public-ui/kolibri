@@ -61,7 +61,6 @@ export class KolInputRadio implements ComponentApi {
 								_renderNoLabel={true}
 								_required={this.state._required}
 								_touched={this.state._touched}
-								onClick={() => this.ref?.focus()}
 							>
 								<div slot="input">
 									<input
