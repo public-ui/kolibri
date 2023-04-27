@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.5.0-rc.17",
+	"version": "1.5.0-rc.18",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/core",
@@ -52,7 +52,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.5.0-rc.17"
+		"@public-ui/components": "1.5.0-rc.18"
 	},
 	"devDependencies": {
 		"@types/node": "ts4.9",
