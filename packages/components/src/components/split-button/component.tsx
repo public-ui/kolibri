@@ -21,32 +21,68 @@ import { watchButtonType, watchButtonVariant } from '../button/controller';
 	shadow: true,
 })
 export class KolSplitButton implements API {
-	private openDropdown = () => {
-		console.log('toggle dropdown');
+	private dropdown: HTMLDivElement | undefined;
+	private dropdownContent: HTMLDivElement | undefined;
+
+	private toggleDropdown = () => {
+		if (this.dropdown && this.dropdownContent) {
+			if (this.state._showDropdown) this.dropdown.style.height = '';
+			else this.dropdown.style.height = `${this.dropdownContent.clientHeight}px`;
+		}
 		this.state = { ...this.state, _showDropdown: !this.state._showDropdown };
+	};
+
+	private catchDropdownElements = (e?: HTMLDivElement | null) => {
+		if (e) {
+			this.dropdown = e;
+			setTimeout(() => {
+				this.dropdownContent = e.firstChild as HTMLDivElement;
+			}, 1);
+		}
 	};
 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<div class="wrapper">
-					<kol-button-wc
-						{...this.state}
-						_on={
-							typeof this.state._onClick === 'function'
-								? { onClick: this.state._onClick }
-								: {
-										onClick: (e: Event) => {
-											console.log('interner ClickHandler', e);
-										},
-								  }
-						}
-					></kol-button-wc>
-					<div class="horizontal-line"></div>
-					<kol-button-wc _icon-only _icon="codicon codicon-triangle-down" _label="dropdown öffnen" _on={{ onClick: this.openDropdown }}></kol-button-wc>
-					<kol-popover _alignment="bottom" _hideArrow _show={this.state._showDropdown}>
+				<kol-button-wc
+					class={{
+						'main-button': true,
+						button: true,
+						[this._variant as string]: this._variant !== 'custom',
+						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+					}}
+					_accessKey={this._accessKey}
+					_ariaControls={this._ariaControls}
+					_ariaCurrent={this._ariaCurrent}
+					_ariaExpanded={this._ariaExpanded}
+					_ariaLabel={this._ariaLabel}
+					_ariaSelected={this._ariaSelected}
+					_customClass={this._customClass}
+					_disabled={this._disabled}
+					_icon={this._icon}
+					_iconOnly={this._hideLabel}
+					_label={this._label}
+					_on={typeof this.state._onClick === 'function' ? { onClick: this.state._onClick } : { onClick: this.toggleDropdown }}
+					_role={this._role}
+					_tabIndex={this._tabIndex}
+					_tooltipAlign={this._tooltipAlign}
+					_type={this._type}
+					_value={this._value}
+					_variant={this._variant}
+				></kol-button-wc>
+				<div class="horizontal-line"></div>
+				<kol-button-wc
+					class="secondary-button"
+					_disabled={this._disabled}
+					_icon-only
+					_icon="codicon codicon-triangle-down"
+					_label="dropdown öffnen"
+					_on={{ onClick: this.toggleDropdown }}
+				></kol-button-wc>
+				<div class="popover" ref={this.catchDropdownElements}>
+					<div class="popover-content">
 						<slot name="popover"></slot>
-					</kol-popover>
+					</div>
 				</div>
 			</Host>
 		);
@@ -130,7 +166,7 @@ export class KolSplitButton implements API {
 	/**
 	 * Gibt an, welche Rolle der Schalter hat.
 	 */
-	@Prop() public _showDropdown?: boolean;
+	@Prop({ mutable: true, reflect: true }) public _showDropdown?: boolean = false;
 
 	/**
 	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -160,6 +196,7 @@ export class KolSplitButton implements API {
 	@State() public state: States = {
 		_icon: '',
 		_label: '',
+		_showDropdown: false,
 	};
 
 	@Watch('_accessKey')
@@ -194,9 +231,7 @@ export class KolSplitButton implements API {
 
 	@Watch('_customClass')
 	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
+		watchString(this, '_customClass', value, { defaultValue: undefined });
 	}
 
 	@Watch('_disabled')

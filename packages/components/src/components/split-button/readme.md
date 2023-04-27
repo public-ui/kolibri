@@ -68,18 +68,15 @@
 ### Depends on
 
 - kol-button-wc
-- [kol-popover](../popover)
 
 ### Graph
 ```mermaid
 graph TD;
   kol-split-button --> kol-button-wc
-  kol-split-button --> kol-popover
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
-  kol-popover --> kol-popover-wc
   style kol-split-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,24 +1,40 @@
 @import url(../style.css);
-
-.wrapper {
+:host {
 	display: flex;
-	padding-inline: 0.5rem;
 	position: relative;
-
-	background-color: hsl(222, 10%, 90%);
-	border: 1px solid hsl(222, 10%, 50%);
 }
 
-kol-button-wc:first-child {
+.main-button {
 	flex-grow: 1;
 	text-align: left;
 }
-kol-button-wc:first-child kol-span-wc {
+.main-button kol-span-wc {
 	place-items: start;
 }
-
-kol-button-wc[_icon-only] button {
-	--a11y-min-size: 0;
+.secondary-button button {
 	height: 100%;
-	padding-left: 0.5rem;
+}
+.horizontal-line {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	height: 70%;
+	margin-block: auto;
+	width: 1px;
+}
+
+/* popover */
+.popover {
+	height: 0;
+	left: 0;
+	min-width: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 100%;
+	transition: height 300ms ease-in-out;
+	z-index: -1;
+}
+.popover-content {
+	position: absolute;
+	inset: 0 0 auto 0;
+	min-width: 100%;
 }
