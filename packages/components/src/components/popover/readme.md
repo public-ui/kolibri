@@ -8,26 +8,11 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
 ## Properties
 
-| Property          | Attribute    | Description                                                        | Type                                                  | Default     |
-| ----------------- | ------------ | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
-| `_alignment`      | `_alignment` | Setzt die Ausrichtung des Popovers in Relation zum Triggerelement. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-| `_host`           | --           |                                                                    | `HTMLElement \| undefined`                            | `undefined` |
-| `_show`           | `_show`      | Öffnet/schließt das Popover.                                       | `boolean \| undefined`                                | `false`     |
-| `_triggerElement` | --           |                                                                    | `HTMLElement \| undefined`                            | `undefined` |
+| Property     | Attribute    | Description                                                        | Type                                                  | Default |
+| ------------ | ------------ | ------------------------------------------------------------------ | ----------------------------------------------------- | ------- |
+| `_alignment` | `_alignment` | Setzt die Ausrichtung des Popovers in Relation zum Triggerelement. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'` |
+| `_show`      | `_show`      | Öffnet/schließt das Popover.                                       | `boolean \| undefined`                                | `false` |
 
-
-## Dependencies
-
-### Used by
-
- - [kol-popover](.)
-
-### Graph
-```mermaid
-graph TD;
-  kol-popover --> kol-popover-wc
-  style kol-popover-wc fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 
