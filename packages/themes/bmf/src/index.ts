@@ -69,7 +69,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	*[tabindex]:focus,
 	a:focus,
 	button:focus,
-	kol-input .input:focus-within,
+	kol-input:not(.checkbox, .radio) .input:focus-within,
+	kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {
 		cursor: pointer;
 		outline-color: var(--color-ocean);
@@ -1678,7 +1679,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		min-height: 44px;
 		gap: 0.4em;
 	}
-	:host kol-input.checkbox {
+	:host kol-input.default {
 		grid-template-columns: 2rem auto;
 	}
 	:host kol-input.switch {
@@ -1763,13 +1764,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: var(--color-midnight);
 		border-color: var(--color-midnight);
 	}
-	:host kol-input.checkbox input[type="checkbox"] {
+	:host kol-input.default input[type="checkbox"] {
 		border-radius: 0.25em;
 		height: calc(6 * var(--spacing));
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
 	}
-	:host kol-input.checkbox input[type="checkbox"]:before {
+	:host kol-input.default input[type="checkbox"]:before {
 		border-radius: 1.5em;
 		background-color: transparent;
 		display: block;
@@ -1777,7 +1778,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		position: relative;
 		width: calc(6 * var(--spacing));
 	}
-	:host kol-input.checkbox input[type="checkbox"]:checked:before {
+	:host kol-input.default input[type="checkbox"]:checked:before {
 		border-right-width: 3px;
 		border-bottom-width: 3px;
 		left: calc(1.5 * var(--spacing) - 2px);
@@ -1791,10 +1792,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		height: calc(3 * var(--spacing));
 		width: calc(1.5 * var(--spacing));
 	}
-	:host kol-input.checkbox input[type="checkbox"]:indeterminate {
+	:host kol-input.default input[type="checkbox"]:indeterminate {
 		--tw-bg-opacity: 1; /* background-color: white; */
 	}
-	:host kol-input.checkbox input[type="checkbox"]:indeterminate:before {
+	:host kol-input.default input[type="checkbox"]:indeterminate:before {
 		background-color: var(--color-white);
 		height: 0.125rem;
 		top: 0.6rem;
@@ -1802,7 +1803,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		width: calc(4 * var(--spacing));
 		transform: inherit;
 	}
-	:host kol-input.checkbox input[type="checkbox"]:checked:indeterminate:before {
+	:host kol-input.default input[type="checkbox"]:checked:indeterminate:before {
 		border-width: 0px 1px 1px 0px;
 	}
 	:host kol-input.switch input[type="checkbox"] {

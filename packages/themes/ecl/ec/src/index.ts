@@ -2,9 +2,8 @@ import { KoliBri } from '@public-ui/components';
 
 // Europa Component Library - European Commission | https://ec.europa.eu/component-library/ec/
 export const ECL_EC = KoliBri.createTheme('ecl-ec', {
-	GLOBAL: `
-	kol-tooltip .area {
-		background-color:#f2f2f2;
+	GLOBAL: `kol-tooltip .area {
+		background-color: #f2f2f2;
 	}
 	kol-tooltip #arrow {
 		background-color: #626262;
@@ -1219,7 +1218,8 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.error .input {
 		border-color: var(--color-red);
 	}`,
-	'KOL-ICON': `:host {
+	'KOL-ICON': `:host,
+	:host > i {
 		height: 1em;
 		width: 1em;
 	}`,

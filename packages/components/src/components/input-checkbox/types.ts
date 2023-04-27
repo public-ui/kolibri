@@ -5,7 +5,11 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { PropChecked, PropIndeterminate } from '../../types/props';
 
-export type InputCheckboxVariant = 'button' | 'checkbox' | 'switch';
+export type InputCheckboxVariant =
+	| 'button'
+	| 'checkbox' //deprecated
+	| 'default'
+	| 'switch';
 
 export type InputCheckboxIcon = {
 	checked: AnyIconFontClass;

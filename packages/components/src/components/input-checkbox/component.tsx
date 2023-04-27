@@ -31,6 +31,7 @@ export class KolInputCheckbox implements ComponentApi {
 			<Host>
 				<kol-input
 					class={{
+						checkbox: true,
 						[this.state._variant]: true,
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
@@ -171,7 +172,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, welchen Type das Input haben soll.
 	 */
-	@Prop() public _variant?: InputCheckboxVariant; // = 'checkbox';
+	@Prop() public _variant?: InputCheckboxVariant; // TODO: = 'default'; in v2 setzen
 
 	@State() public state: States = {
 		_checked: false,
@@ -182,7 +183,7 @@ export class KolInputCheckbox implements ComponentApi {
 		},
 		_id: nonce(), // ⚠ required
 		_indeterminate: false,
-		_variant: 'checkbox',
+		_variant: 'default',
 	};
 
 	public constructor() {

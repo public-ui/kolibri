@@ -32,8 +32,8 @@ export class KolInputRadio implements ComponentApi {
 			<Host>
 				<fieldset
 					class={{
-						error: hasError === true,
 						disabled: this.state._disabled === true,
+						error: hasError === true,
 						required: this.state._required === true,
 						[this.state._orientation]: true,
 					}}
@@ -53,6 +53,9 @@ export class KolInputRadio implements ComponentApi {
 						const customId = `${this.state._id}-${index}`;
 						return (
 							<kol-input
+								class={{
+									radio: true,
+								}}
 								key={customId}
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
@@ -61,7 +64,6 @@ export class KolInputRadio implements ComponentApi {
 								_renderNoLabel={true}
 								_required={this.state._required}
 								_touched={this.state._touched}
-								onClick={() => this.ref?.focus()}
 							>
 								<div slot="input">
 									<input

@@ -1,14 +1,14 @@
-.checkbox input[type='checkbox'] {
+.default input[type='checkbox'] {
 	height: 1.5em;
 	width: 1.5em;
 }
-.checkbox input[type='checkbox']:before {
+.default input[type='checkbox']:before {
 	display: block;
 	height: 1.5em;
 	position: relative;
 	width: 1.5em;
 }
-.checkbox input[type='checkbox']:checked:before {
+.default input[type='checkbox']:checked:before {
 	border-radius: 1px;
 	border-style: solid;
 	border-width: 0 3px 3px 0;
@@ -18,7 +18,7 @@
 	top: calc(0.7125em - 2px);
 	width: 0.375em;
 }
-.checkbox input[type='checkbox']:indeterminate:before {
+.default input[type='checkbox']:indeterminate:before {
 	background-color: #000;
 	height: 0.2em;
 	left: 0.24em;

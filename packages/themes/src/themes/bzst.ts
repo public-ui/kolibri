@@ -1894,7 +1894,7 @@ kol-input {
   justify-items: left;
   width: 100%;
 }
-kol-input.checkbox {
+kol-input.default {
   grid-template-columns: calc(6 * var(--spacing)) auto;
 }
 kol-input.switch {
@@ -1933,19 +1933,19 @@ input[type="checkbox"]:checked {
   background-color: var(--color-blau);
   border-color: var(--color-blau);
 }
-.checkbox input[type="checkbox"] {
+.default input[type="checkbox"] {
   height: calc(6 * var(--spacing));
   min-width: calc(6 * var(--spacing));
   width: calc(6 * var(--spacing));
 }
-.checkbox input[type="checkbox"]:before {
+.default input[type="checkbox"]:before {
   background-color: transparent;
   display: block;
   height: calc(6 * var(--spacing));
   position: relative;
   width: calc(6 * var(--spacing));
 }
-.checkbox input[type="checkbox"]:checked:before {
+.default input[type="checkbox"]:checked:before {
   border-right-width: 3px;
   border-bottom-width: 3px;
   left: calc(1.5 * var(--spacing) - var(--border-width));
@@ -1958,7 +1958,7 @@ input[type="checkbox"]:checked {
   height: calc(3 * var(--spacing));
   width: calc(1.5 * var(--spacing));
 }
-.checkbox input[type="checkbox"]:indeterminate:before {
+.default input[type="checkbox"]:indeterminate:before {
   background-color: var(--color-grau-dunkel);
   height: 0.375rem;
   top: 0.5rem;

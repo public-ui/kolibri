@@ -875,7 +875,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		justify-items: left;
 		width: 100%;
 	}
-	kol-input.checkbox {
+	kol-input.default {
 		grid-template-columns: calc(6 * var(--spacing)) auto;
 	}
 	kol-input.switch {
@@ -914,13 +914,13 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		background-color: var(--kolibri-color-primary);
 		border-color: var(--kolibri-color-primary);
 	}
-	.checkbox input[type="checkbox"] {
+	.default input[type="checkbox"] {
 		border-radius: 0.25em;
 		height: calc(6 * var(--kolibri-spacing));
 		min-width: calc(6 * var(--kolibri-spacing));
 		width: calc(6 * var(--kolibri-spacing));
 	}
-	.checkbox input[type="checkbox"]:before {
+	.default input[type="checkbox"]:before {
 		border-radius: 0.25em;
 		background-color: transparent;
 		display: block;
@@ -928,7 +928,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		position: relative;
 		width: calc(6 * var(--kolibri-spacing));
 	}
-	.checkbox input[type="checkbox"]:checked:before {
+	.default input[type="checkbox"]:checked:before {
 		border-right-width: 3px;
 		border-bottom-width: 3px;
 		left: calc(1.5 * var(--kolibri-spacing) - 2px);
@@ -942,7 +942,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		height: calc(3 * var(--kolibri-spacing));
 		width: calc(1.5 * var(--kolibri-spacing));
 	}
-	.checkbox input[type="checkbox"]:indeterminate:before {
+	.default input[type="checkbox"]:indeterminate:before {
 		background-color: var(--kolibri-color-normal);
 		height: 0.375rem;
 		top: 0.45rem;
