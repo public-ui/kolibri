@@ -1,5 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { Props, States } from '../types';
+import { Props, States } from '../shadow';
 
 export const getPopoverHtml = (props: Props, slots?: { default?: string }, additionalAttrs = ''): string => {
 	const state: States = mixMembers<Props, States>(
@@ -11,12 +11,12 @@ export const getPopoverHtml = (props: Props, slots?: { default?: string }, addit
 		props
 	);
 	return `
-  <kol-popover-wc ${additionalAttrs}>
+  <kol-popover ${additionalAttrs}>
 		<mock:shadow-root>
 			<div class="popover hidden">
 				<div class="arrow ${state._alignment}"></div>
 				${slots?.default ? slots.default : '<slot></slot>'}
 			</div>
 		</mock:shadow-root>
-  </kol-popover-wc>`;
+  </kol-popover>`;
 };

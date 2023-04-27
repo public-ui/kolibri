@@ -1,13 +1,13 @@
 @import url(../style.css);
 :host {
+	height: 0;
 	position: absolute;
 }
 .popover {
 	background-color: #fff;
 	box-sizing: border-box;
-	filter: drop-shadow(1px 1px 10px hsla(0, 0%, 0%, 0.3));
 	opacity: 0;
-	position: relative;
+	position: absolute;
 }
 .hidden {
 	display: none;
@@ -20,10 +20,10 @@
 }
 .arrow {
 	background-color: inherit;
-	height: calc(var(--font-size, 16px) / 1.75);
+	height: var(--font-size);
 	position: absolute;
 	rotate: 0.125turn;
-	width: calc(var(--font-size, 16px) / 1.75);
+	width: var(--font-size);
 	z-index: -1;
 }
 @keyframes fadeInOpacity {
