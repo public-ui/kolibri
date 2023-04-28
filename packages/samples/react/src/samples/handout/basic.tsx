@@ -704,8 +704,8 @@ export const HandoutBasic: FC = () => (
 			</KolHeading>
 			<KolDetails _summary="Abstract" _open>
 				The handout shows a selection of KoliBri components in the style of <strong>{getThemeName(getTheme())}</strong>. Since KoliBri offers self-contained,
-				accessible web components that can be customized to your own corporate design using theming, you don't have to develop these components yourself. For
-				more information read our documentation and follow us (
+				accessible web components that can be customized to your own corporate design using theming, you don&#39;t have to develop these components yourself.
+				For more information read our documentation and follow us (
 				<KolLink _label="https://github.com/public-ui/kolibri" _href="https://github.com/public-ui/kolibri" _target="_blank" />
 				).
 			</KolDetails>
