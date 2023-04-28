@@ -61,6 +61,7 @@ const TAGS = [
 ];
 const EXCLUDE_TAGS = [
 	'kol-all',
+	'kol-alert-wc',
 	'kol-button-wc',
 	'kol-color',
 	'kol-counter',
