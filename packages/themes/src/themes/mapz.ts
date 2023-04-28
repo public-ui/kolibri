@@ -2,41 +2,7 @@ import { KoliBri } from '@public-ui/components';
 
 // Mitarbeiterportal Zoll
 export const MAPZ = KoliBri.createTheme('mapz', {
-	GLOBAL: `
-	kol-tooltip .area {
-		background-color:#f2f2f2;
-	}
-	kol-tooltip #arrow {
-		background-color: #626262;
-	}
-	kol-tooltip kol-span-wc {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		border-radius: 2px;
-		border: 1px solid #626262;
-	}
-	:host {
-		--kolibri-border-color: unset;
-		--kolibri-border-radius: unset;
-		--kolibri-border-width: unset;
-		--kolibri-color-error: unset;
-		--kolibri-color-info: unset;
-		--kolibri-color-success: unset;
-		--kolibri-color-warning: unset;
-		--kolibri-color-primary: unset;
-		--kolibri-color-secondary: unset;
-		--kolibri-color-normal: unset;
-		--kolibri-color-danger: unset;
-		--kolibri-color-ghost: unset;
-		--kolibri-color-disabled: unset;
-		--kolibri-color-text: unset;
-		--kolibri-color-visited: unset;
-		--kolibri-font-family: unset;
-		--kolibri-font-size: unset;
-		--kolibri-spacing: unset;
-	}
-	:host {
+	GLOBAL: `:host {
 		--kolibri-background-color: white;
 		--kolibri-background-color-modal: rgba(0, 0, 0, 0.5);
 		--kolibri-border-color: #aaaaaa;
@@ -73,6 +39,26 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		--font-family: Roboto, Droid Sans, Arial, Helvetica, sans-serif;
 		--font-size: 16px;
 	}
+	:host {
+		font-family: var(--font-family); /* font-size: var(--font-size); */
+	}
+	* {
+		box-sizing: border-box;
+	}
+	*:not(i) {
+		font-family: var(--font-family);
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+		margin: 0;
+		padding: 0;
+	}
 	*[tabindex]:focus,
 	a:focus,
 	button:focus,
@@ -86,6 +72,26 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		outline-style: solid;
 		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
+	}
+	kol-tooltip .area {
+		background-color: #f2f2f2;
+	}
+	kol-tooltip #arrow {
+		background-color: #626262;
+	}
+	kol-tooltip kol-span-wc {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.25em;
+	}
+	kol-span-wc > span {
+		align-items: baseline;
 	}`,
 	'KOL-BUTTON': `a,
 	button {
@@ -187,14 +193,7 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		background-color: white;
 		box-shadow: 0 0 0.25em black;
 	}`,
-	'KOL-ALERT': `:host {
-		--kolibri-border-width: 1px;
-	}
-	.heading kol-icon {
-		align-self: stretch;
-		align-items: center;
-	}
-	.heading .heading-icon {
+	'KOL-ALERT': `.heading .heading-icon {
 		height: 100%;
 		width: 2em;
 		padding: calc(2 * var(--kolibri-spacing));
@@ -1092,15 +1091,37 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		display: inline-block;
 	}
 	:host > span {
-		border-radius: 0.3125rem;
-		gap: 0.5rem;
-		line-height: 1.25rem;
-	}`,
-	'KOL-LINK': `kol-link-wc,
-	kol-link-button-wc {
-		display: inline-block;
+		border-radius: var(--kolibri-border-radius);
+		display: inline-flex;
+		font-style: normal;
 	}
-	a,
+	:host > span.smart-button {
+		align-items: center;
+	}
+	:host > span kol-button-wc:hover > button {
+		background-color: var(--color-ocean);
+		color: var(--color-white);
+	}
+	:host > span kol-button-wc > button {
+		color: inherit;
+		font-size: 1rem;
+		border-top-right-radius: var(--kolibri-border-radius);
+		border-bottom-right-radius: var(--kolibri-border-radius);
+		padding: 2px;
+	}
+	:host > span kol-span-wc {
+		padding: 0.25rem 0.5rem;
+	}
+	:host > span > kol-span-wc {
+		align-items: center;
+		font-style: normal;
+		gap: 0.5rem;
+	}
+	:host > span > kol-span-wc > span {
+		display: flex;
+		gap: 0.25rem;
+	}`,
+	'KOL-LINK': `a,
 	button {
 		color: var(--kolibri-color-primary);
 		text-decoration-line: underline;
@@ -1109,9 +1130,8 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	button:hover {
 		text-decoration-thickness: 0.2em;
 	}
-	kol-icon {
-		padding: 0 0.25em;
-		display: inline-block;
+	kol-span-wc > span {
+		align-items: baseline;
 	}
 	.hidden {
 		display: none;
@@ -1882,7 +1902,12 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 			gap: 1rem;
 		}
 	}`,
-	'KOL-LINK-BUTTON': `a > kol-span-wc,
+	'KOL-LINK-BUTTON': `a,
+	button {
+		border-radius: var(--kolibri-border-radius);
+		overflow: hidden;
+	}
+	a > kol-span-wc,
 	button > kol-span-wc {
 		border-radius: var(--kolibri-border-radius);
 		border-style: solid;
@@ -1979,29 +2004,15 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 	}`,
 	'KOL-BUTTON-LINK': `a,
 	button {
-		background-color: transparent;
-		border: 0;
-		cursor: pointer;
-		display: inline-block;
-	}
-	kol-link-wc,
-	kol-link-button-wc {
-		display: inline-block;
-	}
-	a,
-	button {
 		color: var(--kolibri-color-primary);
-		display: inline-flex;
-		flex-wrap: wrap;
 		text-decoration-line: underline;
 	}
 	a:hover,
 	button:hover {
 		text-decoration-thickness: 0.2em;
 	}
-	kol-icon {
-		padding: 0 0.25em;
-		display: inline-block;
+	kol-span-wc > span {
+		align-items: baseline;
 	}
 	.hidden {
 		display: none;

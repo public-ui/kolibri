@@ -1,5 +1,7 @@
 import { isTheme, Store, Theme } from './theme';
 import PackageJson from '../../node_modules/@public-ui/components/package.json';
+import { THEME_OPTIONS } from './theme';
+import { Option } from '@public-ui/components';
 
 const STORE_IDENTIFIER = `public-ui.v${PackageJson.version}`;
 
@@ -74,4 +76,12 @@ export const setTheme = (theme: Theme) => {
 
 export const getTheme = (): Theme => {
 	return `${STORE.theme}`;
+};
+
+export const getThemeName = (theme: Theme): string => {
+	if (isTheme(theme)) {
+		return THEME_OPTIONS.find((option) => (option as Option<Theme>).value === theme)?.label;
+	} else {
+		throw new Error(`The theme identifier "${theme}" is not valid or an available option.`);
+	}
 };

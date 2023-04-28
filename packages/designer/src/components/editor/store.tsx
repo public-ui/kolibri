@@ -742,45 +742,42 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-ICON': () => (
 		<div class="grid gap-6">
-			<strong>Icofont</strong>
-			<div class="flex gap-2">
-				<KolIcon _ariaLabel="icofont house" _icon="codicon codicon-home" />
-				<KolIcon _ariaLabel="icofont arrow right" _icon="codicon codicon-arrow-right" />
-				<KolIcon class="text-red" _ariaLabel="icofont arrow right in red" _icon="codicon codicon-arrow-right" />
-			</div>
+			<KolDetails _open _summary="Description">
+				In KoliBri you can use any icon font you want. You should know that you need to insert your preferred icon font CSS file into the HTML page (header,
+				link). Also, you need to insert this icon font CSS information into KoliBri Icon Style. In the following examples, we have integrated the font files
+				into the designer.
+			</KolDetails>
 			<strong>Codicon</strong>
 			<div class="flex gap-2">
 				<KolIcon _ariaLabel="codicon house" _icon="codicon codicon-home" />
 				<KolIcon _ariaLabel="codicon arrow right" _icon="codicon codicon-arrow-right" />
 				<KolIcon class="text-red" _ariaLabel="codicon arrow right in red" _icon="codicon codicon-arrow-right" />
 			</div>
-			<span>
-				<strong>Font-Awesome</strong> (v6)
-			</span>
+			<strong>Font-Awesome (v6)</strong>
 			<div class="flex gap-2">
-				<KolIcon _ariaLabel="font-awesome house" _icon="codicon codicon-home" />
-				<KolIcon _ariaLabel="font-awesome arrow right" _icon="codicon codicon-arrow-right" />
-				<KolIcon class="text-red" _ariaLabel="font-awesome arrow right in red" _icon="codicon codicon-arrow-right" />
+				<KolIcon _ariaLabel="font-awesome house" _icon="fa-solid fa-home" />
+				<KolIcon _ariaLabel="font-awesome arrow right" _icon="fa-solid fa-arrow-right" />
+				<KolIcon class="text-red" _ariaLabel="font-awesome arrow right in red" _icon="fa-solid fa-arrow-right" />
 			</div>
-			<span>
-				<strong>Material Icons</strong> (only if it is also stored in the theme)
-			</span>
+			<strong>Icofont</strong>
+			<div class="flex gap-2">
+				<KolIcon _ariaLabel="icofont house" _icon="icofont-home" />
+				<KolIcon _ariaLabel="icofont arrow right" _icon="icofont-arrow-right" />
+				<KolIcon class="text-red" _ariaLabel="icofont arrow right in red" _icon="icofont-arrow-right" />
+			</div>
+			<strong>Material Icons</strong>
 			<div class="flex gap-2">
 				<KolIcon _ariaLabel="material icons house" _icon="material-icons home" />
 				<KolIcon _ariaLabel="material icons arrow right" _icon="material-icons east" />
 				<KolIcon class="text-red" _ariaLabel="material icons arrow right in red" _icon="material-icons east" />
 			</div>
-			<span>
-				<strong>Material Symbols</strong> (only if it is also stored in the theme)
-			</span>
+			<strong>Material Symbols</strong>
 			<div class="flex gap-2">
 				<KolIcon _ariaLabel="material symbols house" _icon="material-symbols-outlined home" />
 				<KolIcon _ariaLabel="material symbols arrow right" _icon="material-symbols-outlined arrow_right_alt" />
 				<KolIcon class="text-red" _ariaLabel="material symbols arrow right in red" _icon="material-symbols-outlined arrow_right_alt" />
 			</div>
-			<span>
-				<strong>Tabler</strong> (only if it is also stored in the theme)
-			</span>
+			<strong>Tabler</strong>
 			<div class="flex gap-2">
 				<KolIcon _ariaLabel="tabler" _icon="ti ti-home-2" />
 				<KolIcon _ariaLabel="tabler arrow right" _icon="ti ti-arrow-right" />
@@ -1437,6 +1434,8 @@ export const components: Record<string, Component> = {
 		<div class="grid gap-6">
 			<KolProgress _max={100} _type="bar" _unit="Meter" _value={10} />
 			<KolProgress _max={100} _type="cycle" _value={10} />
+			<KolProgress _label="Progress bar" _max={100} _type="bar" _unit="Meter" _value={10} />
+			<KolProgress _label="Progress cycle" _max={100} _type="cycle" _value={10} />
 		</div>
 	),
 	'KOL-SELECT': () => (

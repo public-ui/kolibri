@@ -2,40 +2,7 @@ import { KoliBri } from '@public-ui/components';
 
 // Informationstechnikzentrum Bund
 export const ITZBund = KoliBri.createTheme('itzbund', {
-	GLOBAL: `kol-tooltip .area {
-		background-color: #f2f2f2;
-	}
-	kol-tooltip #arrow {
-		background-color: #626262;
-	}
-	kol-tooltip kol-span-wc {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-		border-radius: 2px;
-		border: 1px solid #626262;
-	}
-	:host {
-		--kolibri-border-color: unset;
-		--kolibri-border-radius: unset;
-		--kolibri-border-width: unset;
-		--kolibri-color-error: unset;
-		--kolibri-color-info: unset;
-		--kolibri-color-success: unset;
-		--kolibri-color-warning: unset;
-		--kolibri-color-primary: unset;
-		--kolibri-color-secondary: unset;
-		--kolibri-color-normal: unset;
-		--kolibri-color-danger: unset;
-		--kolibri-color-ghost: unset;
-		--kolibri-color-disabled: unset;
-		--kolibri-color-text: unset;
-		--kolibri-color-visited: unset;
-		--kolibri-font-family: unset;
-		--kolibri-font-size: unset;
-		--kolibri-spacing: unset;
-	}
-	:host {
+	GLOBAL: `:host {
 		--border-color: var(--color-anthrazit);
 		--border-radius: 0.125rem;
 		--color-anthrazit: #333;
@@ -71,6 +38,26 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		--spacing: 0.125em;
 		--kolibri-spacing: calc(2 * var(--spacing));
 	}
+	:host {
+		font-family: var(--font-family); /* font-size: var(--font-size); */
+	}
+	* {
+		box-sizing: border-box;
+	}
+	*:not(i) {
+		font-family: var(--font-family);
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+		margin: 0;
+		padding: 0;
+	}
 	*[tabindex]:focus,
 	a:focus,
 	button:focus,
@@ -84,6 +71,23 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		outline-style: solid;
 		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
+	}
+	kol-span-wc,
+	kol-span-wc > span {
+		gap: 0.25em;
+	}
+	kol-tooltip .area {
+		background-color: #f2f2f2;
+	}
+	kol-tooltip #arrow {
+		background-color: #626262;
+	}
+	kol-tooltip kol-span-wc {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		border-radius: 2px;
+		border: 1px solid #626262;
 	}`,
 	'KOL-BUTTON': `button {
 		background-color: transparent;
