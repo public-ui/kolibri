@@ -29,39 +29,33 @@ type DeprecatedColorPair = {
 
 export type PropColor = ColorPair | DeprecatedColorPair;
 
+function validatorFunction(value?: Stringified<PropColor>): boolean {
+	const isString = typeof value === 'string';
+
+	const asColorPair = value as ColorPair;
+	const isColorPair =
+		typeof asColorPair === 'object' &&
+		asColorPair &&
+		typeof asColorPair.backgroundColor === 'string' &&
+		(typeof asColorPair.foregroundColor === 'string' ||
+			(asColorPair.foregroundColor &&
+				typeof asColorPair.foregroundColor.primary === 'string' &&
+				typeof asColorPair.foregroundColor.secondary === 'string' &&
+				typeof asColorPair.foregroundColor.neutral === 'string'));
+
+	const asDeprecatedColorPair = value as DeprecatedColorPair;
+	const isDeeprecatedColorPair =
+		typeof asDeprecatedColorPair === 'object' &&
+		asDeprecatedColorPair !== null &&
+		typeof asDeprecatedColorPair.backgroundColor === 'string' &&
+		typeof asDeprecatedColorPair.color === 'string';
+
+	return isString || isColorPair || isDeeprecatedColorPair;
+}
+
 /* validator */
 export const validateColor = (component: Generic.Element.Component, value?: Stringified<PropColor>, options?: WatchOptions): void => {
-	watchValidator(
-		component,
-		'_color',
-		(value) => {
-			const asString = value;
-			const asColorPair = value as ColorPair;
-			const asDeprecatedColorPair = value as DeprecatedColorPair;
-			return (
-				typeof asString === 'string' ||
-				(typeof asColorPair === 'object' &&
-					asColorPair !== null &&
-					typeof asColorPair.backgroundColor === 'string' &&
-					typeof asColorPair.foregroundColor === 'string') ||
-				(typeof asColorPair === 'object' &&
-					asColorPair !== null &&
-					typeof asColorPair.backgroundColor === 'string' &&
-					typeof asColorPair.foregroundColor === 'object' &&
-					asColorPair.foregroundColor !== null &&
-					typeof asColorPair.foregroundColor.primary === 'string' &&
-					typeof asColorPair.foregroundColor.secondary === 'string' &&
-					typeof asColorPair.foregroundColor.neutral === 'string') ||
-				(typeof asDeprecatedColorPair === 'object' &&
-					asDeprecatedColorPair !== null &&
-					typeof asDeprecatedColorPair.backgroundColor === 'string' &&
-					typeof asDeprecatedColorPair.color === 'string')
-			);
-		},
-		new Set(['PropColor']),
-		value,
-		options
-	);
+	watchValidator(component, '_color', validatorFunction, new Set(['PropColor']), value, options);
 };
 
 const HACK_REG_EX = /^([a-f0-9]{3}|[a-f0-9]{6})$/;
