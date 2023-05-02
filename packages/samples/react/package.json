@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/sample-react",
-	"version": "1.5.0-rc.18",
+	"version": "1.5.0-rc.19",
 	"description": "This app contains samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"scripts": {
@@ -19,9 +19,9 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "1.5.0-rc.18",
-		"@public-ui/react": "1.5.0-rc.18",
-		"@public-ui/themes": "1.5.0-rc.18",
+		"@public-ui/components": "1.5.0-rc.19",
+		"@public-ui/react": "1.5.0-rc.19",
+		"@public-ui/themes": "1.5.0-rc.19",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-router": "6.11.0",
