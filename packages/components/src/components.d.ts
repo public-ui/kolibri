@@ -130,6 +130,36 @@ export namespace Components {
          */
         "_variant"?: AlertVariant;
     }
+    interface KolAlertWc {
+        /**
+          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+         */
+        "_alert"?: boolean;
+        /**
+          * Gibt an, ob der Alert ein Schließen-Icon hat.
+         */
+        "_hasCloser"?: boolean;
+        /**
+          * Gibt den Titel der Meldung an.
+         */
+        "_heading"?: string;
+        /**
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+         */
+        "_level"?: HeadingLevel;
+        /**
+          * Gibt die EventCallback-Function für das Schließen des Alerts an.
+         */
+        "_on"?: KoliBriAlertEventCallbacks;
+        /**
+          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+         */
+        "_type"?: AlertType;
+        /**
+          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+         */
+        "_variant"?: AlertVariant;
+    }
     interface KolBadge {
         /**
           * Setzt die Hintergrundfarbe.
@@ -1837,6 +1867,10 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
+          * Setzt die Navigation auf Hamburger-Modus.
+         */
+        "_isHamburgerMenu"?: boolean;
+        /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
@@ -1844,6 +1878,10 @@ export namespace Components {
           * Gibt die Ausrichtung der Navigation an.
          */
         "_orientation"?: Orientation;
+        /**
+          * Öffnet/schließt das Navigationmenü, sofern _isHamburgerMenu = true.
+         */
+        "_show"?: boolean;
         /**
           * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.
@@ -1908,17 +1946,13 @@ export namespace Components {
     }
     interface KolProgress {
         /**
-          * Setzt die Beschreibung der Fortschrittsanzeige.
+          * Setzt die Bezeichnung der Fortschrittsanzeige.
          */
-        "_description"?: string;
+        "_label"?: string;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
         "_max": number;
-        /**
-          * Zeigt die Einheit der Fortschrittswerte an.
-         */
-        "_showUnit"?: boolean;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
          */
@@ -2279,6 +2313,12 @@ declare global {
         prototype: HTMLKolAlertElement;
         new (): HTMLKolAlertElement;
     };
+    interface HTMLKolAlertWcElement extends Components.KolAlertWc, HTMLStencilElement {
+    }
+    var HTMLKolAlertWcElement: {
+        prototype: HTMLKolAlertWcElement;
+        new (): HTMLKolAlertWcElement;
+    };
     interface HTMLKolBadgeElement extends Components.KolBadge, HTMLStencilElement {
     }
     var HTMLKolBadgeElement: {
@@ -2619,6 +2659,7 @@ declare global {
         "kol-abbr": HTMLKolAbbrElement;
         "kol-accordion": HTMLKolAccordionElement;
         "kol-alert": HTMLKolAlertElement;
+        "kol-alert-wc": HTMLKolAlertWcElement;
         "kol-badge": HTMLKolBadgeElement;
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
@@ -2705,6 +2746,36 @@ declare namespace LocalJSX {
         "_open"?: boolean;
     }
     interface KolAlert {
+        /**
+          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+         */
+        "_alert"?: boolean;
+        /**
+          * Gibt an, ob der Alert ein Schließen-Icon hat.
+         */
+        "_hasCloser"?: boolean;
+        /**
+          * Gibt den Titel der Meldung an.
+         */
+        "_heading"?: string;
+        /**
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+         */
+        "_level"?: HeadingLevel;
+        /**
+          * Gibt die EventCallback-Function für das Schließen des Alerts an.
+         */
+        "_on"?: KoliBriAlertEventCallbacks;
+        /**
+          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+         */
+        "_type"?: AlertType;
+        /**
+          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+         */
+        "_variant"?: AlertVariant;
+    }
+    interface KolAlertWc {
         /**
           * Gibt an, ob der Screenreader die Meldung vorlesen soll.
          */
@@ -4441,6 +4512,10 @@ declare namespace LocalJSX {
          */
         "_hasCompactButton"?: boolean;
         /**
+          * Setzt die Navigation auf Hamburger-Modus.
+         */
+        "_isHamburgerMenu"?: boolean;
+        /**
           * Gibt die geordnete Liste der Seitenhierarchie an.
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
@@ -4448,6 +4523,10 @@ declare namespace LocalJSX {
           * Gibt die Ausrichtung der Navigation an.
          */
         "_orientation"?: Orientation;
+        /**
+          * Öffnet/schließt das Navigationmenü, sofern _isHamburgerMenu = true.
+         */
+        "_show"?: boolean;
         /**
           * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.
@@ -4512,17 +4591,13 @@ declare namespace LocalJSX {
     }
     interface KolProgress {
         /**
-          * Setzt die Beschreibung der Fortschrittsanzeige.
+          * Setzt die Bezeichnung der Fortschrittsanzeige.
          */
-        "_description"?: string;
+        "_label"?: string;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
         "_max": number;
-        /**
-          * Zeigt die Einheit der Fortschrittswerte an.
-         */
-        "_showUnit"?: boolean;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
          */
@@ -4867,6 +4942,7 @@ declare namespace LocalJSX {
         "kol-abbr": KolAbbr;
         "kol-accordion": KolAccordion;
         "kol-alert": KolAlert;
+        "kol-alert-wc": KolAlertWc;
         "kol-badge": KolBadge;
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
@@ -4930,6 +5006,7 @@ declare module "@stencil/core" {
             "kol-abbr": LocalJSX.KolAbbr & JSXBase.HTMLAttributes<HTMLKolAbbrElement>;
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
+            "kol-alert-wc": LocalJSX.KolAlertWc & JSXBase.HTMLAttributes<HTMLKolAlertWcElement>;
             "kol-badge": LocalJSX.KolBadge & JSXBase.HTMLAttributes<HTMLKolBadgeElement>;
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;

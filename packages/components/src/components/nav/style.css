@@ -1,8 +1,24 @@
 @import url(../style.css);
-:host > div {
-	display: grid;
-	place-items: center;
+
+.burger_menu_button {
+	font-size: 2.25rem;
 }
+.burger_menu {
+	background-color: aliceblue;
+	inset: 0 auto auto 100%;
+	max-height: 100vh;
+	max-width: 300px;
+	overflow: auto;
+	position: fixed;
+	transition: 300ms ease-in-out;
+	transition-property: box-shadow, transform;
+	width: 100vw;
+}
+.show {
+	box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.2);
+	transform: translateX(-100%);
+}
+
 .list {
 	display: flex;
 	list-style: none;
@@ -22,4 +38,15 @@
 }
 .entry kol-span-wc {
 	justify-items: start;
+}
+
+/* workaround because of: :is(a, button) { width: 100% } */
+.burger_menu_button {
+	display: block;
+	margin-left: auto;
+	padding: 5px;
+	width: 54px;
+}
+.burger_menu_button kol-span-wc {
+	place-content: center;
 }

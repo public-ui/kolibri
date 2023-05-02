@@ -114,6 +114,13 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return false;
 	};
 
+	private readonly toggleMenu = (): void => {
+		this.state = {
+			...this.state,
+			_show: !this.state._show,
+		};
+	};
+
 	/** Element creation functions */
 	private button(
 		selected: boolean,
@@ -249,22 +256,46 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	}
 
 	public render(): JSX.Element {
-		let hasCompactButton = this.state._hasCompactButton;
+		let hasCompactButton = this.state._hasCompactButton && !this.state._isHamburgerMenu;
 		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
 			hasCompactButton = false;
 			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
 		const collapsible = this.state._collapsible === true;
 		const compact = this.state._compact === true;
-		const orientation = this.state._orientation;
+		const orientation = this.state._isHamburgerMenu ? 'vertical' : this.state._orientation;
 		return (
 			<Host>
+				{this.state._isHamburgerMenu ? (
+					<kol-button-wc
+						class="burger_menu_button"
+						_icon="codicon codicon-three-bars"
+						_iconOnly
+						_label="Menü öffnen"
+						_on={{ onClick: this.toggleMenu }}
+					></kol-button-wc>
+				) : (
+					''
+				)}
 				<div
 					class={{
 						[orientation]: true,
 						[this.state._variant]: true,
+						burger_menu: this.state._isHamburgerMenu,
+						show: this.state._show && this.state._isHamburgerMenu,
 					}}
 				>
+					{this.state._isHamburgerMenu ? (
+						<kol-button-wc
+							class="burger_menu_button"
+							_icon="codicon codicon-close"
+							_iconOnly
+							_label="Menü schließen"
+							_on={{ onClick: this.toggleMenu }}
+						></kol-button-wc>
+					) : (
+						''
+					)}
 					<nav aria-label={this.state._ariaLabel} id="nav">
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>

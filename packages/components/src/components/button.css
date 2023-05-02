@@ -9,6 +9,8 @@
 	text-decoration-line: none;
 }
 /* TODO: Why we need this? */
+/* I second that, it makes using the button harder, and aligns icons left. see: https://github.com/public-ui/kolibri/issues/3060 */
+/* "width: 100%" should generally be avoided, because it is 99% useless and may break the layout. */
 :is(a, button) > kol-span-wc {
 	margin: auto;
 	width: 100%;
