@@ -259,7 +259,7 @@ Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode
 },{
 	name: `input-date`,
 	desc: `Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max, _min, _name, _read-only, _required, _step, _tab-index, _touched, _type, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max, _min, _name, _placeholder, _read-only, _required, _step, _tab-index, _touched, _type, _value`
 },{
 	name: `input-email`,
 	desc: `Der Input-Typ **E-Mail** erzeugt ein Eingabefeld für E-Mails.`,
@@ -568,7 +568,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_placeholder`,
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
 	types: `string`,
-	comps: `input-email, input-number, input-password, input-text, textarea`
+	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_heading`,
 	desc: `Gibt den Titel der Meldung an.`,
@@ -692,6 +692,16 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_unit`,
 	desc: `Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)`,
+	types: `string`,
+	comps: `progress`
+},{
+	name: `_show-unit`,
+	desc: `Zeigt die Einheit der Fortschrittswerte an.`,
+	types: `boolean`,
+	comps: `progress`
+},{
+	name: `_description`,
+	desc: `Setzt die Beschreibung der Fortschrittsanzeige.`,
 	types: `string`,
 	comps: `progress`
 },{

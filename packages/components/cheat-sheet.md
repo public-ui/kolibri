@@ -129,6 +129,8 @@
 | _stealth | boolean | Gibt an, ob der Link nur beim Fokus sichtbar ist. |
 | _selector | string | Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus. |
 | _unit | string | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt) |
+| _show-unit | boolean | Zeigt die Einheit der Fortschrittswerte an. |
+| _description | string | Setzt die Beschreibung der Fortschrittsanzeige. |
 | _total | number | Setzt die Gesamtanzahl der Seiten. |
 | _sibling-count | number | Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden. |
 | _page-size-options | number[] &#124; string | Setzt die Optionen für das Seitenlängenselect. |
