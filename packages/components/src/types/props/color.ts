@@ -31,7 +31,7 @@ export type PropColor = ColorPair | DeprecatedColorPair;
 
 type typeOfColorType = 'string' | 'ColorPair' | 'DeprecatedColorPair' | null;
 
-const HEX_REGEX = /^#(\d|[a-f]|[A-F]){6}$|^#(\d|[a-f]|[A-F]){3}$/;
+const HEX_REGEX = /^#((\d|[a-f]){6}|(\d|[a-f]){3})$/i;
 function isHexString(value: string): boolean {
 	return HEX_REGEX.test(value);
 }
@@ -40,8 +40,8 @@ function isColorObjectString(value: string): { type: typeOfColorType; value: Pro
 	if (value.startsWith('{')) {
 		try {
 			const parsed = JSON.parse(value) as unknown;
-			if (colorPairValidator(parsed as ColorPair)) return { type: 'ColorPair', value: parsed as ColorPair };
-			if (deprecatedColorPairValidator(parsed as DeprecatedColorPair)) return { type: 'DeprecatedColorPair', value: parsed as DeprecatedColorPair };
+			if (isValidColorPair(parsed as ColorPair)) return { type: 'ColorPair', value: parsed as ColorPair };
+			if (isValidDeprecatedColorPair(parsed as DeprecatedColorPair)) return { type: 'DeprecatedColorPair', value: parsed as DeprecatedColorPair };
 		} catch (error) {
 			return { type: null, value: null };
 		}
@@ -59,16 +59,16 @@ function typeOfColor(value?: unknown): { type: typeOfColorType; valid: boolean; 
 			}
 		} else {
 			const asColorPair = value as ColorPair;
-			if (colorPairValidator(asColorPair)) return { type: 'ColorPair', valid: true, value: asColorPair };
+			if (isValidColorPair(asColorPair)) return { type: 'ColorPair', valid: true, value: asColorPair };
 			const asDeprecatedColorPair = value as DeprecatedColorPair;
-			if (deprecatedColorPairValidator(asDeprecatedColorPair)) return { type: 'DeprecatedColorPair', valid: true, value: asDeprecatedColorPair };
+			if (isValidDeprecatedColorPair(asDeprecatedColorPair)) return { type: 'DeprecatedColorPair', valid: true, value: asDeprecatedColorPair };
 		}
 	}
 	return { type: null, valid: false, value: '' };
 }
 
 /* validate different color options */
-function colorPairValidator(value: ColorPair): boolean {
+function isValidColorPair(value: ColorPair): boolean {
 	return (
 		typeof value === 'object' &&
 		value &&
@@ -80,7 +80,7 @@ function colorPairValidator(value: ColorPair): boolean {
 				typeof value.foregroundColor.neutral === 'string'))
 	);
 }
-function deprecatedColorPairValidator(value: DeprecatedColorPair): boolean {
+function isValidDeprecatedColorPair(value: DeprecatedColorPair): boolean {
 	return typeof value === 'object' && value && typeof value.backgroundColor === 'string' && typeof value.color === 'string';
 }
 
