@@ -123,6 +123,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 				<div>
 					{this.state._hasButtons.first && (
 						<kol-button
+							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
 							_icon={leftDoubleArrowIcon}
@@ -135,6 +136,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					)}
 					{this.state._hasButtons.previous && (
 						<kol-button
+							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
 							_icon={leftSingleArrow}
@@ -148,6 +150,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					{pageButtons}
 					{this.state._hasButtons.next && (
 						<kol-button
+							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}
 							_icon={rightSingleArrowIcon}
@@ -160,6 +163,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					)}
 					{this.state._hasButtons.last && (
 						<kol-button
+							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}
 							_icon={rightDoubleArrowIcon}
@@ -315,6 +319,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	private getUnselectedPageButton(page: number): JSX.Element {
 		return (
 			<kol-button
+				exportparts="icon"
 				key={`${this.nonce}-${page}`}
 				_customClass={this.state._customClass}
 				_ariaLabel={translate('kol-page-current', { placeholders: { page: page.toFixed(0) } })}
