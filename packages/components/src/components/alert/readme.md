@@ -93,10 +93,7 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 ### Used by
 
-- kol-input
-- [kol-input-adapter-leanup](../input-adapter-leanup)
-- [kol-input-radio](../input-radio)
-- [kol-toast](../toast)
+- [kol-alert](.)
 
 ### Depends on
 
@@ -108,18 +105,15 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 ```mermaid
 graph TD;
-  kol-alert --> kol-heading-wc
-  kol-alert --> kol-button-wc
-  kol-alert --> kol-icon
+  kol-alert-wc --> kol-heading-wc
+  kol-alert-wc --> kol-button-wc
+  kol-alert-wc --> kol-icon
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
-  kol-input --> kol-alert
-  kol-input-adapter-leanup --> kol-alert
-  kol-input-radio --> kol-alert
-  kol-toast --> kol-alert
-  style kol-alert fill:#f9f,stroke:#333,stroke-width:4px
+  kol-alert --> kol-alert-wc
+  style kol-alert-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ---

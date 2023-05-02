@@ -1,4 +1,8 @@
 @import url(../style.css);
+:host > div {
+	display: grid;
+	place-items: center;
+}
 .list {
 	display: flex;
 	list-style: none;
@@ -15,4 +19,7 @@
 .entry kol-link-wc,
 .entry kol-span-wc {
 	flex-grow: 1;
+}
+.entry kol-span-wc {
+	justify-items: start;
 }

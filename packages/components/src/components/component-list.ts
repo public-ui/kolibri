@@ -1,6 +1,7 @@
 import { KolAbbr } from './abbr/component';
 import { KolAccordion } from './accordion/component';
-import { KolAlert } from './alert/component';
+import { KolAlertWc } from './alert/component';
+import { KolAlert } from './alert/shadow';
 import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/component';
 import { KolButtonGroupWc } from './button-group/component';
@@ -60,6 +61,7 @@ export const COMPONENTS = [
 	KolAbbr,
 	KolAccordion,
 	KolAlert,
+	KolAlertWc,
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
