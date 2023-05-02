@@ -107,7 +107,7 @@ export const App: FC = () => {
 
 	const title = document.querySelector('title');
 	if (title) {
-		title.innerHTML = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}}`;
+		title.innerHTML = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
 	}
 
 	const catchRef = () => {
