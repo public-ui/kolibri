@@ -1,20 +1,12 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
-:host > div {
+kol-alert-wc {
 	display: grid;
-	place-items: stretch;
 }
-.heading {
-	display: grid;
-	grid-template-columns: auto 1fr auto;
+kol-alert-wc .heading {
+	display: flex;
 	place-items: center;
 }
-.heading > div {
-	display: grid;
-	justify-self: start;
+kol-alert-wc .heading > div {
+	flex-grow: 1;
 }
-/* .heading .heading-icon {
-	align-items: center;
-	align-self: stretch;
-	display: inline-flex;
-} */

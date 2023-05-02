@@ -154,9 +154,10 @@ graph TD;
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert
-  kol-alert --> kol-heading-wc
-  kol-alert --> kol-button-wc
-  kol-alert --> kol-icon
+  kol-alert --> kol-alert-wc
+  kol-alert-wc --> kol-heading-wc
+  kol-alert-wc --> kol-button-wc
+  kol-alert-wc --> kol-icon
   style kol-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
