@@ -21,7 +21,7 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 |    4    | Styling anlegen                                                                                                                         |
 |    5    | Beispiele in `index.html` aufnehmen                                                                                                     |
 |    6    | readme.md vervollständigen                                                                                                              |
-|.   7.   | in die `stencil.config.js` eintragen                                                                                                    |
+|.   7.   | Component-Identifier in die `stencil.config.js` eintragen                                                                               |
 |   ...   | ...                                                                                                                                     |
 |   ...   | Klasse in Komponenten-Liste für Tests aufnehmen (packages/components/src/components/component-list.ts)                                  |
 |   ...   | Alle autogeneierten Daten zur Komponenten mit einchecken                                                                                |
