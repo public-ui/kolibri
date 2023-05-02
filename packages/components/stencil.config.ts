@@ -51,6 +51,7 @@ const TAGS = [
 	'kol-skip-nav',
 	'kol-span',
 	'kol-spin',
+	'kol-split-button',
 	'kol-symbol',
 	'kol-table',
 	'kol-tabs',
