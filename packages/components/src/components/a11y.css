@@ -39,7 +39,7 @@ kol-input .input {
 	min-width: var(--a11y-min-size);
 }
 /*
- * Some interactive elements should not inherit the font-family.
+ * Some interactive elements should not inherit the font-family and font-size.
  */
 a,
 button,
@@ -53,5 +53,12 @@ input,
 option,
 select,
 textarea {
+	/*
+	 * All elements should inherit the font family from his parent element.
+	 */
 	font-family: inherit;
+	/*
+	 * All elements should inherit the font size from his parent element.
+	 */
+	font-size: inherit;
 }

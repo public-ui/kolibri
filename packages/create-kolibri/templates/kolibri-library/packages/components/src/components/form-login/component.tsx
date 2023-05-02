@@ -14,7 +14,7 @@ export class {{capital name}}FormLoginWc implements Generic.Element.ComponentApi
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-heading _headline={this.state._heading}></kol-heading>
+				<kol-heading _label={this.state._heading}></kol-heading>
 				<kol-form
 					_on=\{{
 						onSubmit: console.log,

@@ -2,15 +2,14 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { KoliBriProgressType } from '../../types/progress';
-import { watchBoolean, watchNumber, watchString } from '../../utils/prop.validators';
+import { PropLabel } from '../../types/props';
+import { watchNumber, watchString } from '../../utils/prop.validators';
 
 type RequiredProps = {
 	max: number;
 	value: number;
 };
-type OptionalProps = {
-	description: string;
-	showUnit: boolean;
+type OptionalProps = PropLabel & {
 	type: KoliBriProgressType;
 	unit: string;
 };
@@ -29,6 +28,17 @@ const createProgressSVG = (state: States): JSX.Element => {
 			return (
 				<svg width="100" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
 					<circle fill="none" stroke="#efefef" cx="6px" cy="6px" r="5px"></circle>
+					<text aria-hidden="true" font-size="0.1em" x="50%" y="50%" text-anchor="middle" fill="currentColor">
+						{state._label && (
+							<tspan text-anchor="middle" x="50%" dy="-0.5em">
+								{state._label}
+							</tspan>
+						)}
+						<tspan text-anchor="middle" x="50%" dy={state._label ? '1em' : '0em'}>
+							{state._value}
+							{state._unit}
+						</tspan>
+					</text>
 					<circle
 						class="cycle"
 						stroke-linecap="round"
@@ -39,33 +49,12 @@ const createProgressSVG = (state: States): JSX.Element => {
 						cy="6px"
 						r="5px"
 					></circle>
-					{state._description || state._showUnit ? (
-						<text font-size="0.1em" x="50%" y="50%" text-anchor="middle" fill="currentColor">
-							{state._description ? (
-								<tspan text-anchor="middle" x="50%" dy="-0.5em">
-									{state._description}
-								</tspan>
-							) : (
-								''
-							)}
-							{state._showUnit ? (
-								<tspan text-anchor="middle" x="50%" dy={state._description ? '1em' : '0em'}>
-									{state._value}
-									{state._unit}
-								</tspan>
-							) : (
-								''
-							)}
-						</text>
-					) : (
-						''
-					)}
 				</svg>
 			);
 		default:
 			return (
 				<div>
-					{state._description ? <div>{state._description}</div> : ''}
+					{state._label && <div>{state._label}</div>}
 					<div style={{ display: 'flex', gap: '0.3em' }}>
 						<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
 							<line stroke-width="2" x1="1" stroke-linecap="round" y1="1" x2="23" y2="1" fill="#efefef" stroke="#efefef"></line>
@@ -81,14 +70,10 @@ const createProgressSVG = (state: States): JSX.Element => {
 								stroke="#0075ff"
 							></line>
 						</svg>
-						{state._showUnit ? (
-							<text font-size="0.1em" text-anchor="middle" dominant-baseline="central" fill="currentColor">
-								{state._value}
-								{state._unit}
-							</text>
-						) : (
-							''
-						)}
+						<text aria-hidden="true" font-size="0.1em" text-anchor="middle" dominant-baseline="central" fill="currentColor">
+							{state._value}
+							{state._unit}
+						</text>
 					</div>
 				</div>
 			);
@@ -111,7 +96,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 			<Host>
 				{createProgressSVG(this.state)}
 				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
-				<span aria-live="polite" aria-relevant="removals text">
+				<span aria-live="polite" aria-relevant="removals text" hidden>
 					{this.state._liveValue} von {this.state._max} {this.state._unit}
 				</span>
 			</Host>
@@ -119,19 +104,14 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	/**
-	 * Setzt die Beschreibung der Fortschrittsanzeige.
+	 * Setzt die Bezeichnung der Fortschrittsanzeige.
 	 */
-	@Prop() public _description?: string;
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
 	 */
 	@Prop() public _max!: number;
-
-	/**
-	 * Zeigt die Einheit der Fortschrittswerte an.
-	 */
-	@Prop() public _showUnit?: boolean;
 
 	/**
 	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
@@ -156,9 +136,9 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		_liveValue: 0,
 	};
 
-	@Watch('_description')
-	public validateDescription(value?: string): void {
-		watchString(this, '_description', value);
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		watchString(this, '_label', value);
 	}
 
 	@Watch('_max')
@@ -169,11 +149,6 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		watchNumber(this, '_max', value, {
 			required: true,
 		});
-	}
-
-	@Watch('_showUnit')
-	public validateShowUnit(value?: boolean): void {
-		watchBoolean(this, '_showUnit', value);
 	}
 
 	@Watch('_type')
@@ -207,9 +182,8 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	public componentWillLoad(): void {
-		this.validateDescription(this._description);
+		this.validateLabel(this._label);
 		this.validateMax(this._max);
-		this.validateShowUnit(this._showUnit);
 		this.validateType(this._type);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);

@@ -7,7 +7,8 @@ import { KolAlert, KolButton, KolSelect } from '@public-ui/react';
 import { FC, useState } from 'react';
 import { ROUTES } from './shares/routes';
 import { THEME_OPTIONS, Theme } from './shares/theme';
-import { getTheme, setTheme, setStorage } from './shares/store';
+import PackageJson from '../package.json';
+import { getTheme, setTheme, setStorage, getThemeName } from './shares/store';
 
 const THEME_REGEX = /theme=([^&]+)/;
 
@@ -104,6 +105,11 @@ export const App: FC = () => {
 	const [sample, setSample] = useState(clearHash(window.location.hash));
 	const [active, setActive] = useState(false);
 
+	const title = document.querySelector('title');
+	if (title) {
+		title.innerHTML = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}}`;
+	}
+
 	const catchRef = () => {
 		setTimeout(() => {
 			setActive(true);
@@ -153,7 +159,7 @@ export const App: FC = () => {
 
 	return (
 		<div className="grid gap-4" data-theme={theme} ref={catchRef}>
-			<div className="grid gap-4 toolbar">
+			<div className="no-print grid gap-4 toolbar">
 				<dl>
 					<dt>Beispiel:</dt>
 					<dd>
