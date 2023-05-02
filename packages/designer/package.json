@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/designer",
-	"version": "1.5.0-rc.19",
+	"version": "1.5.0-rc.20",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -41,9 +41,9 @@
 	},
 	"dependencies": {
 		"@public-oss/kolibri-themes": "0.0.3",
-		"@public-ui/components": "1.5.0-rc.19",
-		"@public-ui/solid": "1.5.0-rc.19",
-		"@public-ui/themes": "1.5.0-rc.19",
+		"@public-ui/components": "1.5.0-rc.20",
+		"@public-ui/solid": "1.5.0-rc.20",
+		"@public-ui/themes": "1.5.0-rc.20",
 		"monaco-editor": "0.37.1",
 		"monaco-editor-webpack-plugin": "7.0.1",
 		"prettier": "2.8.8",
