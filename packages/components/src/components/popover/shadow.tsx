@@ -49,7 +49,7 @@ export class KolPopover implements API {
 					this.setPosition(x, y, middlewareData, placement, callBack);
 				});
 			}
-		}, 1);
+		});
 	};
 	private setPosition(x: number, y: number, middlewareData: MiddlewareData, placement: Placement, callBack?: () => unknown) {
 		if (this.popoverElement) {
