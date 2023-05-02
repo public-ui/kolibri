@@ -31,23 +31,25 @@ export class KolPopover implements API {
 
 	/* Popover functions */
 	private alignPopover = (callBack?: () => unknown): void => {
-		if (processEnv !== 'test' && this.triggerElement && this.popoverElement) {
-			const trigger = this.triggerElement;
-			const popoverEl = this.popoverElement;
-			const arrowEl = this.arrowElement;
+		setTimeout(() => {
+			if (processEnv !== 'test' && this.triggerElement && this.popoverElement) {
+				const trigger = this.triggerElement;
+				const popoverEl = this.popoverElement;
+				const arrowEl = this.arrowElement;
 
-			const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
-			if (arrowEl) {
-				middleware.push(arrow({ element: arrowEl }));
+				const middleware = [offset(arrowEl?.offsetHeight ?? 10), flip(), shift()];
+				if (arrowEl) {
+					middleware.push(arrow({ element: arrowEl }));
+				}
+
+				void computePosition(trigger, popoverEl, {
+					placement: this.state._alignment,
+					middleware: middleware,
+				}).then(({ x, y, middlewareData, placement }) => {
+					this.setPosition(x, y, middlewareData, placement, callBack);
+				});
 			}
-
-			void computePosition(trigger, popoverEl, {
-				placement: this.state._alignment,
-				middleware: middleware,
-			}).then(({ x, y, middlewareData, placement }) => {
-				this.setPosition(x, y, middlewareData, placement, callBack);
-			});
-		}
+		}, 1);
 	};
 	private setPosition(x: number, y: number, middlewareData: MiddlewareData, placement: Placement, callBack?: () => unknown) {
 		if (this.popoverElement) {
