@@ -24,7 +24,7 @@ import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
-import { Stringified as Stringified1 } from "./components";
+import { Alignment as Alignment1, AlternativButtonLinkRole as AlternativButtonLinkRole1, AriaCurrent as AriaCurrent1, KoliBriButtonType as KoliBriButtonType1, KoliBriButtonVariant as KoliBriButtonVariant1, Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -34,6 +34,7 @@ import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 import { KoliBriProgressType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
+import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
@@ -57,7 +58,7 @@ export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
-export { Stringified as Stringified1 } from "./components";
+export { Alignment as Alignment1, AlternativButtonLinkRole as AlternativButtonLinkRole1, AriaCurrent as AriaCurrent1, KoliBriButtonType as KoliBriButtonType1, KoliBriButtonVariant as KoliBriButtonVariant1, Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -67,6 +68,7 @@ export { PaginationHasButton } from "./components/pagination/component";
 export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 export { KoliBriProgressType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
+export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 export { CSSResize } from "./components/textarea/types";
@@ -101,6 +103,36 @@ export namespace Components {
         "_open"?: boolean;
     }
     interface KolAlert {
+        /**
+          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+         */
+        "_alert"?: boolean;
+        /**
+          * Gibt an, ob der Alert ein Schließen-Icon hat.
+         */
+        "_hasCloser"?: boolean;
+        /**
+          * Gibt den Titel der Meldung an.
+         */
+        "_heading"?: string;
+        /**
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+         */
+        "_level"?: HeadingLevel;
+        /**
+          * Gibt die EventCallback-Function für das Schließen des Alerts an.
+         */
+        "_on"?: KoliBriAlertEventCallbacks;
+        /**
+          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+         */
+        "_type"?: AlertType;
+        /**
+          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+         */
+        "_variant"?: AlertVariant;
+    }
+    interface KolAlertWc {
         /**
           * Gibt an, ob der Screenreader die Meldung vorlesen soll.
          */
@@ -1908,17 +1940,13 @@ export namespace Components {
     }
     interface KolProgress {
         /**
-          * Setzt die Beschreibung der Fortschrittsanzeige.
+          * Setzt die Bezeichnung der Fortschrittsanzeige.
          */
-        "_description"?: string;
+        "_label"?: string;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
         "_max": number;
-        /**
-          * Zeigt die Einheit der Fortschrittswerte an.
-         */
-        "_showUnit"?: boolean;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
          */
@@ -2068,6 +2096,89 @@ export namespace Components {
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
          */
         "_show"?: boolean;
+    }
+    interface KolSplitButton {
+        /**
+          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+         */
+        "_accessKey"?: string;
+        /**
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+         */
+        "_ariaControls"?: string;
+        /**
+          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+         */
+        "_ariaCurrent"?: AriaCurrent1;
+        /**
+          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+         */
+        "_ariaExpanded"?: boolean;
+        /**
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+         */
+        "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
+          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+         */
+        "_customClass"?: string;
+        /**
+          * Gibt an, ob der Button deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+         */
+        "_hideLabel"?: boolean;
+        /**
+          * Iconklasse (z.B.: "codicon codicon-home")
+         */
+        "_icon"?: string;
+        /**
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * @deprecated use _hide-label
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Setzt den sichtbaren Text des Elements.
+         */
+        "_label": string;
+        /**
+          * Gibt die EventCallback-Funktionen für die Button-Events an.
+         */
+        "_onClick"?: KoliBriSplitButtonCallback;
+        /**
+          * Gibt an, welche Rolle der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole1;
+        /**
+          * Gibt an, welche Rolle der Schalter hat.
+         */
+        "_showDropdown"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
+        /**
+          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+         */
+        "_tooltipAlign"?: Alignment1;
+        /**
+          * Setzt den Typ der Schaltfläche.
+         */
+        "_type"?: KoliBriButtonType1;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified1<unknown>;
+        /**
+          * Gibt an, welche Ausprägung der Button hat.
+         */
+        "_variant"?: KoliBriButtonVariant1;
     }
     interface KolSymbol {
         /**
@@ -2278,6 +2389,12 @@ declare global {
     var HTMLKolAlertElement: {
         prototype: HTMLKolAlertElement;
         new (): HTMLKolAlertElement;
+    };
+    interface HTMLKolAlertWcElement extends Components.KolAlertWc, HTMLStencilElement {
+    }
+    var HTMLKolAlertWcElement: {
+        prototype: HTMLKolAlertWcElement;
+        new (): HTMLKolAlertWcElement;
     };
     interface HTMLKolBadgeElement extends Components.KolBadge, HTMLStencilElement {
     }
@@ -2573,6 +2690,12 @@ declare global {
         prototype: HTMLKolSpinElement;
         new (): HTMLKolSpinElement;
     };
+    interface HTMLKolSplitButtonElement extends Components.KolSplitButton, HTMLStencilElement {
+    }
+    var HTMLKolSplitButtonElement: {
+        prototype: HTMLKolSplitButtonElement;
+        new (): HTMLKolSplitButtonElement;
+    };
     interface HTMLKolSymbolElement extends Components.KolSymbol, HTMLStencilElement {
     }
     var HTMLKolSymbolElement: {
@@ -2619,6 +2742,7 @@ declare global {
         "kol-abbr": HTMLKolAbbrElement;
         "kol-accordion": HTMLKolAccordionElement;
         "kol-alert": HTMLKolAlertElement;
+        "kol-alert-wc": HTMLKolAlertWcElement;
         "kol-badge": HTMLKolBadgeElement;
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
@@ -2666,6 +2790,7 @@ declare global {
         "kol-span": HTMLKolSpanElement;
         "kol-span-wc": HTMLKolSpanWcElement;
         "kol-spin": HTMLKolSpinElement;
+        "kol-split-button": HTMLKolSplitButtonElement;
         "kol-symbol": HTMLKolSymbolElement;
         "kol-table": HTMLKolTableElement;
         "kol-tabs": HTMLKolTabsElement;
@@ -2705,6 +2830,36 @@ declare namespace LocalJSX {
         "_open"?: boolean;
     }
     interface KolAlert {
+        /**
+          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+         */
+        "_alert"?: boolean;
+        /**
+          * Gibt an, ob der Alert ein Schließen-Icon hat.
+         */
+        "_hasCloser"?: boolean;
+        /**
+          * Gibt den Titel der Meldung an.
+         */
+        "_heading"?: string;
+        /**
+          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+         */
+        "_level"?: HeadingLevel;
+        /**
+          * Gibt die EventCallback-Function für das Schließen des Alerts an.
+         */
+        "_on"?: KoliBriAlertEventCallbacks;
+        /**
+          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+         */
+        "_type"?: AlertType;
+        /**
+          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+         */
+        "_variant"?: AlertVariant;
+    }
+    interface KolAlertWc {
         /**
           * Gibt an, ob der Screenreader die Meldung vorlesen soll.
          */
@@ -4512,17 +4667,13 @@ declare namespace LocalJSX {
     }
     interface KolProgress {
         /**
-          * Setzt die Beschreibung der Fortschrittsanzeige.
+          * Setzt die Bezeichnung der Fortschrittsanzeige.
          */
-        "_description"?: string;
+        "_label"?: string;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
         "_max": number;
-        /**
-          * Zeigt die Einheit der Fortschrittswerte an.
-         */
-        "_showUnit"?: boolean;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
          */
@@ -4672,6 +4823,89 @@ declare namespace LocalJSX {
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
          */
         "_show"?: boolean;
+    }
+    interface KolSplitButton {
+        /**
+          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+         */
+        "_accessKey"?: string;
+        /**
+          * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+         */
+        "_ariaControls"?: string;
+        /**
+          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+         */
+        "_ariaCurrent"?: AriaCurrent1;
+        /**
+          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+         */
+        "_ariaExpanded"?: boolean;
+        /**
+          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+         */
+        "_ariaLabel"?: string;
+        /**
+          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+         */
+        "_ariaSelected"?: boolean;
+        /**
+          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+         */
+        "_customClass"?: string;
+        /**
+          * Gibt an, ob der Button deaktiviert ist.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+         */
+        "_hideLabel"?: boolean;
+        /**
+          * Iconklasse (z.B.: "codicon codicon-home")
+         */
+        "_icon"?: string;
+        /**
+          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * @deprecated use _hide-label
+         */
+        "_iconOnly"?: boolean;
+        /**
+          * Setzt den sichtbaren Text des Elements.
+         */
+        "_label": string;
+        /**
+          * Gibt die EventCallback-Funktionen für die Button-Events an.
+         */
+        "_onClick"?: KoliBriSplitButtonCallback;
+        /**
+          * Gibt an, welche Rolle der Schalter hat.
+         */
+        "_role"?: AlternativButtonLinkRole1;
+        /**
+          * Gibt an, welche Rolle der Schalter hat.
+         */
+        "_showDropdown"?: boolean;
+        /**
+          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+         */
+        "_tabIndex"?: number;
+        /**
+          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+         */
+        "_tooltipAlign"?: Alignment1;
+        /**
+          * Setzt den Typ der Schaltfläche.
+         */
+        "_type"?: KoliBriButtonType1;
+        /**
+          * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+         */
+        "_value"?: Stringified1<unknown>;
+        /**
+          * Gibt an, welche Ausprägung der Button hat.
+         */
+        "_variant"?: KoliBriButtonVariant1;
     }
     interface KolSymbol {
         /**
@@ -4867,6 +5101,7 @@ declare namespace LocalJSX {
         "kol-abbr": KolAbbr;
         "kol-accordion": KolAccordion;
         "kol-alert": KolAlert;
+        "kol-alert-wc": KolAlertWc;
         "kol-badge": KolBadge;
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
@@ -4914,6 +5149,7 @@ declare namespace LocalJSX {
         "kol-span": KolSpan;
         "kol-span-wc": KolSpanWc;
         "kol-spin": KolSpin;
+        "kol-split-button": KolSplitButton;
         "kol-symbol": KolSymbol;
         "kol-table": KolTable;
         "kol-tabs": KolTabs;
@@ -4930,6 +5166,7 @@ declare module "@stencil/core" {
             "kol-abbr": LocalJSX.KolAbbr & JSXBase.HTMLAttributes<HTMLKolAbbrElement>;
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
+            "kol-alert-wc": LocalJSX.KolAlertWc & JSXBase.HTMLAttributes<HTMLKolAlertWcElement>;
             "kol-badge": LocalJSX.KolBadge & JSXBase.HTMLAttributes<HTMLKolBadgeElement>;
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;
@@ -4989,6 +5226,7 @@ declare module "@stencil/core" {
             "kol-span": LocalJSX.KolSpan & JSXBase.HTMLAttributes<HTMLKolSpanElement>;
             "kol-span-wc": LocalJSX.KolSpanWc & JSXBase.HTMLAttributes<HTMLKolSpanWcElement>;
             "kol-spin": LocalJSX.KolSpin & JSXBase.HTMLAttributes<HTMLKolSpinElement>;
+            "kol-split-button": LocalJSX.KolSplitButton & JSXBase.HTMLAttributes<HTMLKolSplitButtonElement>;
             "kol-symbol": LocalJSX.KolSymbol & JSXBase.HTMLAttributes<HTMLKolSymbolElement>;
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;
             "kol-tabs": LocalJSX.KolTabs & JSXBase.HTMLAttributes<HTMLKolTabsElement>;
