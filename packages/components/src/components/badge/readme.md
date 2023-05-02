@@ -62,15 +62,15 @@ Der Schriftschnitt wird vom Host übernommen, kann also via CSS von außen geset
 <ul class="m-0 p-0">
   <li class="flex gap-2">
     <kol-badge _label="1" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" _headline="Auswahl Anliegen"></kol-heading>
+    <kol-heading _level="2" _label="Auswahl Anliegen"></kol-heading>
   </li>
   <li class="flex gap-2">
     <kol-badge _label="2" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" _headline="Auswahl Amtsstelle"></kol-heading>
+    <kol-heading _level="2" _label="Auswahl Amtsstelle"></kol-heading>
   </li>
   <li class="flex gap-2">
     <kol-badge _label="3" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" _headline="Terminauswahl"></kol-heading>
+    <kol-heading _level="2" _label="Terminauswahl"></kol-heading>
   </li>
 </ul>
 
