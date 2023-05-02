@@ -87,42 +87,41 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
-| Property             | Attribute     | Description                                                                                                                           | Type                                                                                                    | Default     |
-| -------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- |
-| `_accessKey`         | `_access-key` | Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.                                                  | `string \| undefined`                                                                                   | `undefined` |
-| `_alert`             | `_alert`      | Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.                                                              | `boolean \| undefined`                                                                                  | `true`      |
-| `_disabled`          | `_disabled`   | Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.                                                       | `boolean \| undefined`                                                                                  | `undefined` |
-| `_error`             | `_error`      | Gibt den Text für eine Fehlermeldung an.                                                                                              | `string \| undefined`                                                                                   | `undefined` |
-| `_height`            | `_height`     | <span style="color:red">**[DEPRECATED]**</span> Use _size instead.<br/><br/>Gibt an, ob eine individuelle Höhe übergeben werden soll. | `string \| undefined`                                                                                   | `undefined` |
-| `_hideLabel`         | `_hide-label` | Versteckt das sichtbare Label des Elements.                                                                                           | `boolean \| undefined`                                                                                  | `undefined` |
-| `_hint`              | `_hint`       | Gibt den Hinweistext an.                                                                                                              | `string \| undefined`                                                                                   | `''`        |
-| `_icon`              | `_icon`       | Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.                                                    | `string \| undefined \| { right?: IconOrIconClass \| undefined; left?: IconOrIconClass \| undefined; }` | `undefined` |
-| `_id`                | `_id`         | Gibt die technische ID des Eingabefeldes an.                                                                                          | `string \| undefined`                                                                                   | `undefined` |
-| `_list` _(required)_ | `_list`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                      | `SelectOption<W3CInputValue>[] \| string`                                                               | `undefined` |
-| `_multiple`          | `_multiple`   | Gibt an, ob mehrere Werte eingegeben werden können.                                                                                   | `boolean \| undefined`                                                                                  | `false`     |
-| `_name`              | `_name`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                      | `string \| undefined`                                                                                   | `undefined` |
-| `_on`                | --            | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                             | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                | `undefined` |
-| `_required`          | `_required`   | Macht das Eingabeelement zu einem Pflichtfeld.                                                                                        | `boolean \| undefined`                                                                                  | `undefined` |
-| `_size`              | `_size`       | Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.                                                   | `number \| undefined`                                                                                   | `undefined` |
-| `_tabIndex`          | `_tab-index`  | Gibt an, welchen Tab-Index dieses Input hat.                                                                                          | `number \| undefined`                                                                                   | `undefined` |
-| `_touched`           | `_touched`    | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                         | `boolean \| undefined`                                                                                  | `false`     |
-| `_value`             | `_value`      | Gibt den Wert des Eingabefeldes an.                                                                                                   | `W3CInputValue[] \| string \| undefined`                                                                | `undefined` |
-
+| Property             | Attribute     | Description                                                                                                                            | Type                                                                                                    | Default     |
+| -------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- |
+| `_accessKey`         | `_access-key` | Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.                                                   | `string \| undefined`                                                                                   | `undefined` |
+| `_alert`             | `_alert`      | Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.                                                               | `boolean \| undefined`                                                                                  | `true`      |
+| `_disabled`          | `_disabled`   | Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.                                                        | `boolean \| undefined`                                                                                  | `undefined` |
+| `_error`             | `_error`      | Gibt den Text für eine Fehlermeldung an.                                                                                               | `string \| undefined`                                                                                   | `undefined` |
+| `_height`            | `_height`     | <span style="color:red">**[DEPRECATED]**</span> Use \_size instead.<br/><br/>Gibt an, ob eine individuelle Höhe übergeben werden soll. | `string \| undefined`                                                                                   | `undefined` |
+| `_hideLabel`         | `_hide-label` | Versteckt das sichtbare Label des Elements.                                                                                            | `boolean \| undefined`                                                                                  | `undefined` |
+| `_hint`              | `_hint`       | Gibt den Hinweistext an.                                                                                                               | `string \| undefined`                                                                                   | `''`        |
+| `_icon`              | `_icon`       | Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.                                                     | `string \| undefined \| { right?: IconOrIconClass \| undefined; left?: IconOrIconClass \| undefined; }` | `undefined` |
+| `_id`                | `_id`         | Gibt die technische ID des Eingabefeldes an.                                                                                           | `string \| undefined`                                                                                   | `undefined` |
+| `_list` _(required)_ | `_list`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                       | `SelectOption<W3CInputValue>[] \| string`                                                               | `undefined` |
+| `_multiple`          | `_multiple`   | Gibt an, ob mehrere Werte eingegeben werden können.                                                                                    | `boolean \| undefined`                                                                                  | `false`     |
+| `_name`              | `_name`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                       | `string \| undefined`                                                                                   | `undefined` |
+| `_on`                | --            | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                              | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                | `undefined` |
+| `_required`          | `_required`   | Macht das Eingabeelement zu einem Pflichtfeld.                                                                                         | `boolean \| undefined`                                                                                  | `undefined` |
+| `_size`              | `_size`       | Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.                                                    | `number \| undefined`                                                                                   | `undefined` |
+| `_tabIndex`          | `_tab-index`  | Gibt an, welchen Tab-Index dieses Input hat.                                                                                           | `number \| undefined`                                                                                   | `undefined` |
+| `_touched`           | `_touched`    | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                          | `boolean \| undefined`                                                                                  | `false`     |
+| `_value`             | `_value`      | Gibt den Wert des Eingabefeldes an.                                                                                                    | `W3CInputValue[] \| string \| undefined`                                                                | `undefined` |
 
 ## Dependencies
 
 ### Used by
 
- - [kol-pagination](../pagination)
+- [kol-pagination](../pagination)
 
 ### Depends on
 
 - kol-input
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-select --> kol-input
@@ -141,6 +140,4 @@ graph TD;
   style kol-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

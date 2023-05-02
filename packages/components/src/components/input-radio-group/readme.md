@@ -2,7 +2,6 @@
 
 <!-- Auto Generated Below -->
 
-
 > **[DEPRECATED]** Die Komponenten Input-Radio-Group und Input-Radio werden zur Komponente Input-Radio zusammengeführt. Verwendet einfach den Tag `<kol-input-radio>` statt `<kol-input-radio-group>`.
 
 ## Properties
@@ -25,7 +24,6 @@
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.        | `boolean \| undefined`                                                                   | `false`      |
 | `_value`             | `_value`       | Gibt den Wert der Radio an.                                                          | `number \| string \| undefined`                                                          | `undefined`  |
 
-
 ## Dependencies
 
 ### Depends on
@@ -33,6 +31,7 @@
 - [kol-input-radio](../input-radio)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-input-radio-group --> kol-input-radio
@@ -52,6 +51,4 @@ graph TD;
   style kol-input-radio-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

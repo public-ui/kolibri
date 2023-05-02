@@ -47,13 +47,12 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute            | Description                                                                                    | Type                                                                                                                                                                                                                   | Default     |
 | --------------------- | -------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `_boundaryCount`      | `_boundary-count`    | Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen. | `number \| undefined`                                                                                                                                                                                                  | `1`         |
-| `_customClass`        | `_custom-class`      | Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.        | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
+| `_customClass`        | `_custom-class`      | Gibt an, welche Custom-Class übergeben werden soll, wenn \_variant="custom" gesetzt ist.       | `string \| undefined`                                                                                                                                                                                                  | `undefined` |
 | `_hasButtons`         | `_has-buttons`       | Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.                            | `boolean \| string \| undefined \| { first: boolean; last: boolean; next: boolean; previous: boolean; }`                                                                                                               | `true`      |
 | `_on` _(required)_    | --                   | Gibt an, auf welche Callback-Events reagiert werden.                                           | `{ onChangePage?: EventValueOrEventCallback<Event, number> \| undefined; onChangePageSize?: EventValueOrEventCallback<Event, number> \| undefined; onClick?: EventValueOrEventCallback<Event, number> \| undefined; }` | `undefined` |
 | `_page` _(required)_  | `_page`              | Gibt an, welche Seite aktuell ausgewählt ist.                                                  | `number`                                                                                                                                                                                                               | `undefined` |
@@ -64,12 +63,11 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 | `_total` _(required)_ | `_total`             | Setzt die Gesamtanzahl der Seiten.                                                             | `number`                                                                                                                                                                                                               | `undefined` |
 | `_variant`            | `_variant`           | Gibt an, welche Button-Variante verwendet werden soll.                                         | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                                                                                                 | `'normal'`  |
 
-
 ## Dependencies
 
 ### Used by
 
- - [kol-table](../table)
+- [kol-table](../table)
 
 ### Depends on
 
@@ -78,6 +76,7 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 - kol-button-wc
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-pagination --> kol-button
@@ -100,6 +99,4 @@ graph TD;
   style kol-pagination fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---
