@@ -49,11 +49,15 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	}
 
 	public validateVariant(value?: InputCheckboxVariant): void {
+		if (value === 'checkbox') {
+			devHint(`[KolCheckbox] The "_variant" value 'checkbox' is deprecated. Use the new value 'default' instead.`);
+			value = 'default';
+		}
 		watchValidator(
 			this.component,
 			'_variant',
-			(value): boolean => typeof value === 'string' && (value === 'button' || value === 'checkbox' || value === 'switch'),
-			new Set(['String {button, checkbox, switch}']),
+			(value): boolean => typeof value === 'string' && (value === 'button' || value === 'default' || value === 'switch'),
+			new Set(['String {button, default, switch}']),
 			value
 		);
 	}

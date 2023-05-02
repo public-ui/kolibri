@@ -83,9 +83,10 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 ```mermaid
 graph TD;
   kol-toast --> kol-alert
-  kol-alert --> kol-heading-wc
-  kol-alert --> kol-button-wc
-  kol-alert --> kol-icon
+  kol-alert --> kol-alert-wc
+  kol-alert-wc --> kol-heading-wc
+  kol-alert-wc --> kol-button-wc
+  kol-alert-wc --> kol-icon
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon

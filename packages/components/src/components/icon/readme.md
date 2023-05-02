@@ -46,7 +46,6 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                  | Attribute     | Description                                                                                                                                                                                                                           | Type                  | Default     |
@@ -55,32 +54,31 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 | `_icon` _(required)_      | `_icon`       | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                                                                                                           | `string`              | `undefined` |
 | `_part`                   | `_part`       | <span style="color:red">**[DEPRECATED]**</span> Das Styling sollte stets über CSS erfolgen.<br/><br/>Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) | `string \| undefined` | `undefined` |
 
-
 ## Shadow Parts
 
 | Part     | Description                               |
 | -------- | ----------------------------------------- |
 | `"icon"` | Ermöglicht das Styling des inneren Icons. |
 
-
 ## Dependencies
 
 ### Used by
 
- - [kol-alert](../alert)
- - [kol-breadcrumb](../breadcrumb)
- - [kol-details](../details)
- - [kol-icon-font-awesome](../icon-font-awesome)
- - [kol-icon-icofont](../icon-icofont)
- - kol-input
- - [kol-input-checkbox](../input-checkbox)
- - kol-link-wc
- - kol-span-wc
+- [kol-alert-wc](../alert)
+- [kol-breadcrumb](../breadcrumb)
+- [kol-details](../details)
+- [kol-icon-font-awesome](../icon-font-awesome)
+- [kol-icon-icofont](../icon-icofont)
+- kol-input
+- [kol-input-checkbox](../input-checkbox)
+- kol-link-wc
+- kol-span-wc
 
 ### Graph
+
 ```mermaid
 graph TD;
-  kol-alert --> kol-icon
+  kol-alert-wc --> kol-icon
   kol-breadcrumb --> kol-icon
   kol-details --> kol-icon
   kol-icon-font-awesome --> kol-icon
@@ -92,6 +90,4 @@ graph TD;
   style kol-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

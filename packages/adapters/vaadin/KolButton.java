@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-button")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-button")
 public class KolButton extends Component {
 	/**
@@ -32,7 +32,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -41,7 +41,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return String
 	 */
@@ -158,7 +158,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @param value String
 	 */
@@ -167,7 +167,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @return String
 	 */
@@ -212,7 +212,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
+	 * Gibt die ID der Schaltfläche an.
 	 *
 	 * @param value String
 	 */
@@ -221,7 +221,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
+	 * Gibt die ID der Schaltfläche an.
 	 *
 	 * @return String
 	 */
@@ -230,7 +230,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @param value String
 	 */
@@ -239,7 +239,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @return String
 	 */

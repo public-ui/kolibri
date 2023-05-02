@@ -953,7 +953,7 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		width: 100%;
 		min-height: 44px;
 	}
-	kol-input.checkbox {
+	kol-input.default {
 		grid-template-columns: 2rem auto;
 	}
 	kol-input.switch {
@@ -1035,18 +1035,18 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		background-color: var(--color-primary-20);
 		border-color: var(--color-primary-20);
 	}
-	kol-input.checkbox input[type="checkbox"] {
+	kol-input.default input[type="checkbox"] {
 		width: 1rem;
 		height: 1rem;
 	}
-	kol-input.checkbox input[type="checkbox"]:before {
+	kol-input.default input[type="checkbox"]:before {
 		background-color: transparent;
 		display: block;
 		height: calc(2 * var(--spacing));
 		position: relative;
 		width: calc(2 * var(--spacing));
 	}
-	kol-input.checkbox input[type="checkbox"]:checked:before {
+	kol-input.default input[type="checkbox"]:checked:before {
 		border-right-width: 1px;
 		border-bottom-width: 1px;
 		left: calc(1.2 * var(--spacing) - 2px);
@@ -1060,11 +1060,11 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		height: calc(2 * var(--spacing));
 		width: calc(1 * var(--spacing));
 	}
-	kol-input.checkbox input[type="checkbox"]:indeterminate {
+	kol-input.default input[type="checkbox"]:indeterminate {
 		--tw-bg-opacity: 1;
 		background-color: white;
 	}
-	kol-input.checkbox input[type="checkbox"]:indeterminate:before {
+	kol-input.default input[type="checkbox"]:indeterminate:before {
 		background-color: var(--color-gray-30);
 		height: 0.2rem;
 		top: 0.35rem;

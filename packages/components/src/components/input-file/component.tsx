@@ -31,6 +31,9 @@ export class KolInputFile implements ComponentApi {
 		return (
 			<Host>
 				<kol-input
+					class={{
+						file: true,
+					}}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
 					_hideLabel={this.state._hideLabel}

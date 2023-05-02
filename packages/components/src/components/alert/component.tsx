@@ -27,13 +27,10 @@ const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 };
 
 @Component({
-	tag: 'kol-alert',
-	styleUrls: {
-		default: './style.css',
-	},
-	shadow: true,
+	tag: 'kol-alert-wc',
+	shadow: false,
 })
-export class KolAlert implements API {
+export class KolAlertWc implements API {
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
@@ -62,47 +59,45 @@ export class KolAlert implements API {
 		}
 
 		return (
-			<Host>
-				<div
-					class={{
-						[this.state._type as string]: true,
-						[this.state._variant as string]: true,
-					}}
-					role={this.state._alert ? 'alert' : undefined}
-				>
-					<div class="heading">
-						<AlertIcon heading={this.state._heading} type={this.state._type} />
-						<div>
-							{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-								<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
-							)}
-							{this._variant === 'msg' && (
-								<div class="content">
-									<slot />
-								</div>
-							)}
-						</div>
-						{this.state._hasCloser && (
-							<kol-button-wc
-								class="close"
-								_icon={{
-									left: {
-										icon: 'codicon codicon-close',
-									},
-								}}
-								_iconOnly
-								_label={translate('kol-close')}
-								_on={this.on}
-								_tooltipAlign="left"
-							></kol-button-wc>
+			<Host
+				class={{
+					[this.state._type as string]: true,
+					[this.state._variant as string]: true,
+				}}
+				role={this.state._alert ? 'alert' : undefined}
+			>
+				<div class="heading">
+					<AlertIcon heading={this.state._heading} type={this.state._type} />
+					<div>
+						{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
+							<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+						)}
+						{this._variant === 'msg' && (
+							<div class="content">
+								<slot />
+							</div>
 						)}
 					</div>
-					{this._variant === 'card' && (
-						<div class="content">
-							<slot />
-						</div>
+					{this.state._hasCloser && (
+						<kol-button-wc
+							class="close"
+							_icon={{
+								left: {
+									icon: 'codicon codicon-close',
+								},
+							}}
+							_iconOnly
+							_label={translate('kol-close')}
+							_on={this.on}
+							_tooltipAlign="left"
+						></kol-button-wc>
 					)}
 				</div>
+				{this._variant === 'card' && (
+					<div class="content">
+						<slot />
+					</div>
+				)}
 			</Host>
 		);
 	}

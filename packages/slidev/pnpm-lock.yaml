@@ -3,13 +3,13 @@ lockfileVersion: '6.0'
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.5.0-rc.17)
+    version: 0.0.3(@public-ui/components@1.5.0-rc.18)
   '@public-ui/components':
-    specifier: 1.5.0-rc.17
-    version: 1.5.0-rc.17
+    specifier: 1.5.0-rc.18
+    version: 1.5.0-rc.18
   '@public-ui/themes':
-    specifier: 1.5.0-rc.17
-    version: 1.5.0-rc.17(@public-ui/components@1.5.0-rc.17)
+    specifier: 1.5.0-rc.18
+    version: 1.5.0-rc.18(@public-ui/components@1.5.0-rc.18)
   '@slidev/theme-default':
     specifier: 0.21.2
     version: 0.21.2
@@ -19,8 +19,8 @@ dependencies:
 
 devDependencies:
   '@slidev/cli':
-    specifier: ~0.37.0
-    version: 0.37.0(playwright-chromium@1.32.3)(postcss@8.4.22)
+    specifier: 0.37.1
+    version: 0.37.1(playwright-chromium@1.33.0)(postcss@8.4.22)
   cpy-cli:
     specifier: 4.2.0
     version: 4.2.0
@@ -28,8 +28,8 @@ devDependencies:
     specifier: 4.1.5
     version: 4.1.5
   playwright-chromium:
-    specifier: 1.32.3
-    version: 1.32.3
+    specifier: 1.33.0
+    version: 1.33.0
   prettier:
     specifier: 2.8.8
     version: 2.8.8
@@ -535,21 +535,21 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.5.0-rc.17):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.5.0-rc.18):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.17
+      '@public-ui/components': 1.5.0-rc.18
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.5.0-rc.17:
-    resolution: {integrity: sha512-TXax/p5/4ghwMyPQsjneTqWxcuzFuY6E3bPMetTpj2BZgWJ7lWzV3zuHcFVxPF++2HenO0KKgtwKP63Ve7mu9A==}
+  /@public-ui/components@1.5.0-rc.18:
+    resolution: {integrity: sha512-z0tIPKr9PMTOG4GOnpYpqPS2FZy2p2PmuEuTC+LdR2Xd3lfSDgCvxEhqCkn0l12tNSvU35c7FxZo+EXudhsDnQ==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.6
-      i18next: 22.4.14
+      i18next: 22.4.15
     dev: false
 
   /@public-ui/core@1.1.15:
@@ -565,12 +565,12 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/themes@1.5.0-rc.17(@public-ui/components@1.5.0-rc.17):
-    resolution: {integrity: sha512-cJVEOqR8rUxmk/gAswgsZhdlSqLJN3L6whC0zICIU/CaMq4W3zGN+n4IoNHBtaOVQXn8bzYo9ddOI40p+G+xuQ==}
+  /@public-ui/themes@1.5.0-rc.18(@public-ui/components@1.5.0-rc.18):
+    resolution: {integrity: sha512-RoF5zVBpBqDgwVnqwMKIW6/f4mqB3b/NzuFwXKhIY30I3IjrEheJUHqgM384FZ0Yu8cHu+mU0TgdQ0FLVzkgPA==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.17
+      '@public-ui/components': 1.5.0-rc.18
     dependencies:
-      '@public-ui/components': 1.5.0-rc.17
+      '@public-ui/components': 1.5.0-rc.18
     dev: false
 
   /@rollup/pluginutils@5.0.2:
@@ -587,8 +587,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@slidev/cli@0.37.0(playwright-chromium@1.32.3)(postcss@8.4.22):
-    resolution: {integrity: sha512-T5rA20f03zItsPmZSMajiKCrmFs49XqZPMrm9rBNQTkhs68AQDaDB8oDfL50enyqrfxsZf+JawatKveVKsBXzQ==}
+  /@slidev/cli@0.37.1(playwright-chromium@1.33.0)(postcss@8.4.22):
+    resolution: {integrity: sha512-da6hM/pzwW3fyh4Y89jOyTdoW5aIPYXwrnD53/S3+B2KiNw1tyVHT+kT9XevZdAmmeK3OiK1ERbP3AxO2n7eMw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
@@ -602,9 +602,9 @@ packages:
       '@iconify-json/carbon': 1.1.16
       '@iconify-json/ph': 1.1.5
       '@lillallol/outline-pdf': 4.0.0
-      '@slidev/client': 0.37.0(vite@3.2.6)
-      '@slidev/parser': 0.37.0
-      '@slidev/types': 0.37.0
+      '@slidev/client': 0.37.1(vite@3.2.6)
+      '@slidev/parser': 0.37.1
+      '@slidev/types': 0.37.1
       '@vitejs/plugin-vue': 3.2.0(vite@3.2.6)(vue@3.2.47)
       cli-progress: 3.12.0
       codemirror: 5.65.12
@@ -627,7 +627,7 @@ packages:
       open: 8.4.2
       pdf-lib: 1.17.1
       plantuml-encoder: 1.4.0
-      playwright-chromium: 1.32.3
+      playwright-chromium: 1.33.0
       postcss-nested: 6.0.1(postcss@8.4.22)
       prismjs: 1.29.0
       prompts: 2.4.2
@@ -666,13 +666,13 @@ packages:
       - vue-template-es2015-compiler
     dev: true
 
-  /@slidev/client@0.37.0(vite@3.2.6):
-    resolution: {integrity: sha512-y6Kd1CmaxNDpquIbf4Kqo0f29Br+wioVTj000j0OGpH8ukkawFgHRyG1O5Yp8iPZWqdYk2UCl53Ewt1Hq8peqg==}
+  /@slidev/client@0.37.1(vite@3.2.6):
+    resolution: {integrity: sha512-UpZZvyTGdJZiHEPgictUZ1o5L/0tHtPq1E95/Hn9TcoXCpOBB5mCkxQqPuOTHUbFSqZpH6awcqt1W2Y3nit3Gg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@antfu/utils': 0.6.3
-      '@slidev/parser': 0.37.0
-      '@slidev/types': 0.37.0
+      '@slidev/parser': 0.37.1
+      '@slidev/types': 0.37.1
       '@unocss/reset': 0.46.5
       '@vueuse/core': 9.13.0(vue@3.2.47)
       '@vueuse/head': 0.9.8(vue@3.2.47)
@@ -705,11 +705,11 @@ packages:
       - vite
     dev: true
 
-  /@slidev/parser@0.37.0:
-    resolution: {integrity: sha512-NkHR4wozXX9AKQshbAkn1QMNsYqbxEkoOpMBmCPi8QyhaV3gjSuAb1frW0cS60THnrMSjJRvdutDpbOs9S3xTw==}
+  /@slidev/parser@0.37.1:
+    resolution: {integrity: sha512-5C+afymn/9t9BG88bK8j/t4IeHmSi8tedzkBh9xAV2BtF/EoU1niRaKb9Z4byCUY+qz0usA+6G0f8+gO6qHMQQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@slidev/types': 0.37.0
+      '@slidev/types': 0.37.1
       js-yaml: 4.1.0
     dev: true
 
@@ -738,8 +738,8 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
-  /@slidev/types@0.37.0:
-    resolution: {integrity: sha512-3r35Q12E0EJjUSbxu72reQPOzqb5kq5nL6uQYrrFGBd/+L4GzHSxdRo/Sev4/PIKoHEwPDi9y9RcLpLsWLIGYQ==}
+  /@slidev/types@0.37.1:
+    resolution: {integrity: sha512-JbaFfChFn8GcwR9x89+gIiH/xr6dbjm1lJpjL6PanXJKHOOUYM0HWbnBBWOvq8dTNbG6qvbcFnB7CQKd2e+fig==}
     engines: {node: '>=14.0.0'}
     dev: true
 
@@ -2782,8 +2782,8 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /i18next@22.4.14:
-    resolution: {integrity: sha512-VtLPtbdwGn0+DAeE00YkiKKXadkwg+rBUV+0v8v0ikEjwdiJ0gmYChVE4GIa9HXymY6wKapkL93vGT7xpq6aTw==}
+  /i18next@22.4.15:
+    resolution: {integrity: sha512-yYudtbFrrmWKLEhl6jvKUYyYunj4bTBCe2qIUYAxbXoPusY7YmdwPvOE6fx6UIfWvmlbCWDItr7wIs8KEBZ5Zg==}
     dependencies:
       '@babel/runtime': 7.21.0
     dev: false
@@ -3784,17 +3784,17 @@ packages:
     resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
     dev: true
 
-  /playwright-chromium@1.32.3:
-    resolution: {integrity: sha512-NhhXYl/6lH4JfiPlv0ZEkeQq/Kqj4vQGXf0AYs63kxqWMSc4jl69qtB4Yjd0j0iPZb38N5OItUiy8zunhh5wJg==}
+  /playwright-chromium@1.33.0:
+    resolution: {integrity: sha512-aG2IqRp7Q6vRltZFT+N2stWwDUH2fEUTOTv8RxSKMK5QmIQQoNL9nJvNMIJ3yLuin8+coaa3mhJXjjUheo0+/A==}
     engines: {node: '>=14'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      playwright-core: 1.32.3
+      playwright-core: 1.33.0
     dev: true
 
-  /playwright-core@1.32.3:
-    resolution: {integrity: sha512-SB+cdrnu74ZIn5Ogh/8278ngEh9NEEV0vR4sJFmK04h2iZpybfbqBY0bX6+BLYWVdV12JLLI+JEFtSnYgR+mWg==}
+  /playwright-core@1.33.0:
+    resolution: {integrity: sha512-aizyPE1Cj62vAECdph1iaMILpT0WUDCq3E6rW6I+dleSbBoGbktvJtzS6VHkZ4DKNEOG9qJpiom/ZxO+S15LAw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

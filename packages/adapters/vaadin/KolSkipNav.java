@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-skip-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-skip-nav")
 public class KolSkipNav extends Component {
 	/**
@@ -32,7 +32,7 @@ public class KolSkipNav extends Component {
 	}
 
 	/**
-	 * Ist die Liste der unsichtbaren Links.
+	 * Setzt die Liste der darzustellenden Links.
 	 *
 	 * @param value String
 	 */
@@ -41,7 +41,7 @@ public class KolSkipNav extends Component {
 	}
 
 	/**
-	 * Ist die Liste der unsichtbaren Links.
+	 * Setzt die Liste der darzustellenden Links.
 	 *
 	 * @return String
 	 */

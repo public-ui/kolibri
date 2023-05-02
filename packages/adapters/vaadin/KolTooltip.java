@@ -12,15 +12,15 @@ Die **Tooltip**-Komponente implementiert das Gegenstück zum `Aria-Label`. Es is
 
 Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. überlagerte Seiteninformationen wieder sichtbar zu machen.
 
-**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, muss für das vorrangehende Referenz-Element `inline-block` gesetzt werden.
+**Hinweis:** Damit der Tooltip korrekt ausgerichtet wird, darf das Referenz-Element nicht `display: inline` haben.
  */
 
 @Tag("kol-tooltip")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-tooltip")
 public class KolTooltip extends Component {
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 *
 	 * @param value String
 	 */
@@ -29,7 +29,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 *
 	 * @return String
 	 */
@@ -56,7 +56,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
 	 *
 	 * @param value String
 	 */
@@ -65,7 +65,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Das Label gibt an, welcher Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
 	 *
 	 * @return String
 	 */

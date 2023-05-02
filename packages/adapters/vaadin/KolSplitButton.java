@@ -6,21 +6,13 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Der ButtonLink ist semantisch ein Button und hat das Design eines Links. Hierzu werden alle relevanten Properties der Button-Komponente übernommen und um die Design-bestimmenden Properties des Links erweitert.
-
-Einen Button kann man deaktivieren und daher gibt es bei einem ButtonLink das Property `_disabled`. Wie das optisch ausgestaltet wird, entscheidet die UX-Designer:in.
-
-Statt, wie bei einem Link, `_href` zu verwenden, wird bei einem ButtonLink das Property über den `Click-Callback` gesteuert. Hierzu wird das `_on`-Property verwendet.
-
-Bei einem Link gibt es das Property `target`, welches ggf. den Link in einem neuen Fenster/Tab öffnet. Das Verhalten ist aktuell noch nicht umgesetzt.
-
-Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `secondary` usw.) angeboten wird, stehen die Properties `_customClass` und `_variant` nicht zur Verfügung.
+ * 
  */
 
-@Tag("kol-button-link")
+@Tag("kol-split-button")
 @NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
-@JsModule("@public-ui/components/dist/components/kol-button-link")
-public class KolButtonLink extends Component {
+@JsModule("@public-ui/components/dist/components/kol-split-button")
+public class KolSplitButton extends Component {
 	/**
 	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
 	 *
@@ -138,6 +130,24 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
+	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 *
+	 * @param value String
+	 */
+	public void setCustomClass(final String value) {
+		getElement().setProperty("_custom-class", value);
+	}
+
+	/**
+	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 *
+	 * @return String
+	 */
+	public String getCustomClass() {
+		return getElement().getProperty("_custom-class", null);
+	}
+
+	/**
 	 * Gibt an, ob der Button deaktiviert ist.
 	 *
 	 * @param value String
@@ -153,6 +163,24 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	 */
 	public String getDisabled() {
 		return getElement().getProperty("_disabled", null);
+	}
+
+	/**
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 *
+	 * @param value String
+	 */
+	public void setHideLabel(final String value) {
+		getElement().setProperty("_hide-label", value);
+	}
+
+	/**
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 *
+	 * @return String
+	 */
+	public String getHideLabel() {
+		return getElement().getProperty("_hide-label", null);
 	}
 
 	/**
@@ -174,7 +202,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
 	 *
 	 * @param value String
 	 */
@@ -183,30 +211,12 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
 	 *
 	 * @return String
 	 */
 	public String getIconOnly() {
 		return getElement().getProperty("_icon-only", null);
-	}
-
-	/**
-	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
-	 *
-	 * @param value String
-	 */
-	public void setId(final String value) {
-		getElement().setProperty("_id", value);
-	}
-
-	/**
-	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
-	 *
-	 * @return String
-	 */
-	public String getId() {
-		return getElement().getProperty("_id", null);
 	}
 
 	/**
@@ -228,7 +238,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle der Schalter hat.
 	 *
 	 * @param value String
 	 */
@@ -237,12 +247,30 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle der Schalter hat.
 	 *
 	 * @return String
 	 */
 	public String getRole() {
 		return getElement().getProperty("_role", null);
+	}
+
+	/**
+	 * Gibt an, welche Rolle der Schalter hat.
+	 *
+	 * @param value String
+	 */
+	public void setShowDropdown(final String value) {
+		getElement().setProperty("_show-dropdown", value);
+	}
+
+	/**
+	 * Gibt an, welche Rolle der Schalter hat.
+	 *
+	 * @return String
+	 */
+	public String getShowDropdown() {
+		return getElement().getProperty("_show-dropdown", null);
 	}
 
 	/**
@@ -264,7 +292,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
 	 *
 	 * @param value String
 	 */
@@ -273,7 +301,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
 	 *
 	 * @return String
 	 */
@@ -282,7 +310,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Typ der Button hat.
+	 * Setzt den Typ der Schaltfläche.
 	 *
 	 * @param value String
 	 */
@@ -291,11 +319,29 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Typ der Button hat.
+	 * Setzt den Typ der Schaltfläche.
 	 *
 	 * @return String
 	 */
 	public String getType() {
 		return getElement().getProperty("_type", null);
+	}
+
+	/**
+	 * Gibt an, welche Ausprägung der Button hat.
+	 *
+	 * @param value String
+	 */
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value);
+	}
+
+	/**
+	 * Gibt an, welche Ausprägung der Button hat.
+	 *
+	 * @return String
+	 */
+	public String getVariant() {
+		return getElement().getProperty("_variant", null);
 	}
 }

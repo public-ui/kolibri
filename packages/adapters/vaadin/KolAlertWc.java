@@ -9,10 +9,10 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  * Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ `_type` des Alert.
  */
 
-@Tag("kol-alert")
+@Tag("kol-alert-wc")
 @NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
-@JsModule("@public-ui/components/dist/components/kol-alert")
-public class KolAlert extends Component {
+@JsModule("@public-ui/components/dist/components/kol-alert-wc")
+public class KolAlertWc extends Component {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
 	 *

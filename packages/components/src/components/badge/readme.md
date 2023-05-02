@@ -62,15 +62,15 @@ Der Schriftschnitt wird vom Host übernommen, kann also via CSS von außen geset
 <ul class="m-0 p-0">
   <li class="flex gap-2">
     <kol-badge _label="1" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" _headline="Auswahl Anliegen"></kol-heading>
+    <kol-heading _level="2" _label="Auswahl Anliegen"></kol-heading>
   </li>
   <li class="flex gap-2">
     <kol-badge _label="2" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" _headline="Auswahl Amtsstelle"></kol-heading>
+    <kol-heading _level="2" _label="Auswahl Amtsstelle"></kol-heading>
   </li>
   <li class="flex gap-2">
     <kol-badge _label="3" _color="#0747a6"></kol-badge>
-    <kol-heading _level="2" _headline="Terminauswahl"></kol-heading>
+    <kol-heading _level="2" _label="Terminauswahl"></kol-heading>
   </li>
 </ul>
 
@@ -86,7 +86,6 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute       | Description                                                                                              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Default     |
@@ -97,12 +96,11 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 | `_label` _(required)_ | `_label`        | Setzt den sichtbaren Text des Elements.                                                                  | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `undefined` |
 | `_smartButton`        | `_smart-button` | Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only). | `string \| undefined \| { _label: string; } & { _ariaControls?: string \| undefined; _ariaLabel?: string \| undefined; _icon?: Stringified<KoliBriIconProp> \| undefined; _iconAlign?: Alignment \| undefined; _iconOnly?: boolean \| undefined; _role?: AlternativButtonLinkRole \| undefined; _tabIndex?: number \| undefined; _tooltipAlign?: Alignment \| undefined; _ariaCurrent?: AriaCurrent \| undefined; _ariaExpanded?: boolean \| undefined; _ariaSelected?: boolean \| undefined; _disabled?: boolean \| undefined; _accessKey?: string \| undefined; _id?: string \| undefined; _on?: KoliBriButtonCallbacks<unknown> \| undefined; _type?: KoliBriButtonType \| undefined; _value?: unknown; _variant?: KoliBriButtonVariant \| undefined; _customClass?: string \| undefined; }` | `undefined` |
 
-
 ## Dependencies
 
 ### Used by
 
- - [kol-version](../version)
+- [kol-version](../version)
 
 ### Depends on
 
@@ -110,6 +108,7 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 - kol-button-wc
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-badge --> kol-span-wc
@@ -122,6 +121,4 @@ graph TD;
   style kol-badge fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

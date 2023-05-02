@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-breadcrumb")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-breadcrumb")
 public class KolBreadcrumb extends Component {
 	/**
@@ -32,7 +32,7 @@ public class KolBreadcrumb extends Component {
 	}
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt die Liste der darzustellenden Links.
 	 *
 	 * @param value String
 	 */
@@ -41,7 +41,7 @@ public class KolBreadcrumb extends Component {
 	}
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt die Liste der darzustellenden Links.
 	 *
 	 * @return String
 	 */

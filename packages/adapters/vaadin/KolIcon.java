@@ -6,19 +6,15 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut `_icon` gesteuert werden und erfolgt durch das Attribut `_aria-label` barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
+ * Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_aria-label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
 
-Folgende Icon-Fonts werden _`out-of-the-box`_ unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
 
-- [Codicons]
-- [Font-Awesome]
-- [Icofont]
-
-<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateien der Icon-Fonts eingebunden sind.</kol-alert>
+<kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>
  */
 
 @Tag("kol-icon")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-icon")
 public class KolIcon extends Component {
 	/**
@@ -40,7 +36,7 @@ public class KolIcon extends Component {
 	}
 
 	/**
-	 * Gibt einen Identifier eines Icons aus den Icon's an.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
 	 * @param value String
 	 */
@@ -49,7 +45,7 @@ public class KolIcon extends Component {
 	}
 
 	/**
-	 * Gibt einen Identifier eines Icons aus den Icon's an.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
 	 * @return String
 	 */

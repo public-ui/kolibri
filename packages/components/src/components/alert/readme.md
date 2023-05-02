@@ -77,7 +77,6 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property     | Attribute     | Description                                                                       | Type                                                                    | Default     |
@@ -90,15 +89,11 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | `_type`      | `_type`       | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 | `_variant`   | `_variant`    | Gibt an, welche Benachrichtigungsvariante dargestellt wird.                       | `"card" \| "msg" \| undefined`                                          | `'msg'`     |
 
-
 ## Dependencies
 
 ### Used by
 
- - kol-input
- - [kol-input-adapter-leanup](../input-adapter-leanup)
- - [kol-input-radio](../input-radio)
- - [kol-toast](../toast)
+- [kol-alert](.)
 
 ### Depends on
 
@@ -107,22 +102,18 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 - [kol-icon](../icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
-  kol-alert --> kol-heading-wc
-  kol-alert --> kol-button-wc
-  kol-alert --> kol-icon
+  kol-alert-wc --> kol-heading-wc
+  kol-alert-wc --> kol-button-wc
+  kol-alert-wc --> kol-icon
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
-  kol-input --> kol-alert
-  kol-input-adapter-leanup --> kol-alert
-  kol-input-radio --> kol-alert
-  kol-toast --> kol-alert
-  style kol-alert fill:#f9f,stroke:#333,stroke-width:4px
+  kol-alert --> kol-alert-wc
+  style kol-alert-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

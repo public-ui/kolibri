@@ -79,3 +79,11 @@ hr {
 		grid-column: span 2;
 	}
 }
+
+@media print {
+
+	.no-print,
+	.no-print * {
+		display: none !important;
+	}
+}

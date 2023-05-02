@@ -6,6 +6,10 @@
 	line-height: inherit;
 	width: 1em;
 }
+:host > i {
+	height: 1em;
+	width: 1em;
+}
 /*
  * The <code>:important</code> is important, because we should always override the font icon style.
  */

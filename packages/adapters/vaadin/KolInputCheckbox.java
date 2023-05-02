@@ -7,12 +7,10 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
  * Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.
-
-Eine optische Alternative zur Standard-Checkbox stellt die Ausgabe als **_Switch_** dar. Hierbei wird die Checkbox zu einem Schieberegler gewandelt, der bei Anklicken nach rechts (aktiv) bzw. nach links (inaktiv) verschoben wird.
  */
 
 @Tag("kol-input-checkbox")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**
@@ -52,7 +50,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
+	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
 	 *
 	 * @param value String
 	 */
@@ -61,7 +59,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht.
+	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
 	 *
 	 * @return String
 	 */
@@ -70,7 +68,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @param value String
 	 */
@@ -79,7 +77,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @return String
 	 */
@@ -106,7 +104,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @param value String
 	 */
@@ -115,7 +113,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @return String
 	 */
@@ -124,7 +122,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @param value String
 	 */
@@ -133,7 +131,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @return String
 	 */
@@ -214,7 +212,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @param value String
 	 */
@@ -223,7 +221,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @return String
 	 */
@@ -286,7 +284,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt den Wert der Checkbox an.
+	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 *
 	 * @param value String
 	 */
@@ -295,7 +293,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt den Wert der Checkbox an.
+	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 *
 	 * @return String
 	 */

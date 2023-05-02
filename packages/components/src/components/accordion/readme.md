@@ -119,7 +119,6 @@ Standardansicht gelegt.
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property                | Attribute  | Description                                      | Type                                                                                 | Default     |
@@ -129,14 +128,12 @@ Standardansicht gelegt.
 | `_on`                   | --         | Gibt die EventCallback-Funktionen an.            | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
 | `_open`                 | `_open`    | Gibt an, ob das Accordion geöffnet ist.          | `boolean \| undefined`                                                               | `false`     |
 
-
 ## Slots
 
 | Slot        | Description                                                                     |
 | ----------- | ------------------------------------------------------------------------------- |
 | `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
 | `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.    |
-
 
 ## Dependencies
 
@@ -146,6 +143,7 @@ Standardansicht gelegt.
 - kol-button-wc
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-accordion --> kol-heading-wc
@@ -157,6 +155,4 @@ graph TD;
   style kol-accordion fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

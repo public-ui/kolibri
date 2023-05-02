@@ -6,11 +6,11 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen, Datumswerte, Datums- und Zeitwerte, Wochen, Monate und Zeiten.
+ * Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
  */
 
 @Tag("kol-input-number")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-input-number")
 public class KolInputNumber extends Component {
 	/**
@@ -68,7 +68,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @param value String
 	 */
@@ -77,7 +77,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @return String
 	 */
@@ -104,7 +104,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @param value String
 	 */
@@ -113,7 +113,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @return String
 	 */
@@ -122,7 +122,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @param value String
 	 */
@@ -131,7 +131,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @return String
 	 */
@@ -266,7 +266,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 *
 	 * @param value String
 	 */
@@ -275,7 +275,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 *
 	 * @return String
 	 */
@@ -284,7 +284,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @param value String
 	 */
@@ -293,7 +293,7 @@ public class KolInputNumber extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @return String
 	 */

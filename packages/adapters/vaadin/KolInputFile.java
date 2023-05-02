@@ -6,11 +6,11 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Der Input-Typ **File** erzeugt ein Eingabefeld für Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.
+ * Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.
  */
 
 @Tag("kol-input-file")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-input-file")
 public class KolInputFile extends Component {
 	/**
@@ -68,7 +68,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @param value String
 	 */
@@ -77,7 +77,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @return String
 	 */
@@ -104,7 +104,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @param value String
 	 */
@@ -113,7 +113,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @return String
 	 */
@@ -122,7 +122,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @param value String
 	 */
@@ -131,7 +131,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @return String
 	 */
@@ -212,7 +212,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @param value String
 	 */
@@ -221,7 +221,7 @@ public class KolInputFile extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @return String
 	 */

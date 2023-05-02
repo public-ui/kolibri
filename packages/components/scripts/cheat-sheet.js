@@ -20,9 +20,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.17';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.19';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -71,12 +71,12 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			<kol-link _href="https://public-ui.github.io" _target="github">
 				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
-			<kol-heading>Cheat Sheet</kol-heading>
+			<kol-heading _label="">Cheat Sheet</kol-heading>
 			<p><strong><kol-abbr _title="Komponenten-Bibliothek für die Barrierefreiheit" _tooltip-align="right">KoliBri</kol-abbr></strong> ist eine <strong>barrierefreie Komponenten-Bibliothek</strong> die sich durch separate Themes an unterschiedliche <strong>Styleguides</strong> und <strong>Design Systeme</strong> anpassen lässt.</p>
 			<p><kol-icon _aria-label="" _icon="fa-solid fa-arrow-right"></kol-icon> Link zur ausführliche <kol-link _href="https://public-ui.github.io" _target="github">Dokumentation</kol-link></p>
-			<kol-heading _level="2">Integration</kol-heading>
+			<kol-heading _label="" _level="2">Integration</kol-heading>
 			<p>Für eine hohe Flexibilität werden alle Teile (HTML, CSS, Fonts usw.) per Komposition-Prinzip beliebig mit einander kombiniert. Damit alles korrekt funktioniert, müssen alle Teile einer spezifischen Komposition eingebunden bzw. konfiguriert werden. In den folgenden Unterabschnitten wird die Integration am Beispiel des ITZBund-Themes gezeigt.</p>
-			<kol-heading _level="3">Assets</kol-heading>
+			<kol-heading _label="" _level="3">Assets</kol-heading>
 			<p><strong>Fonts</strong> und <strong>Icon-Fonts</strong> müssen im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">${`<head>`
 				.replace(/</g, '&#60;')
 				.replace(/>/g, '&#62;')}</code> der HTML-Seite eingebunden werden.</p>
@@ -88,14 +88,14 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 					.replace(/</g, '&#60;')
 					.replace(/>/g, '&#62;')}</code>
 			</pre>
-			<kol-heading _level="3">Loader</kol-heading>
+			<kol-heading _label="" _level="3">Loader</kol-heading>
 			<p>Mit <strong>KoliBri</strong> ist es möglich unterschiedliche Themes mit den Komponenten zu kombinieren. Die Verknüpfung erfolgt über die <strong>Register</strong>-Methode. Ihr können eine oder mehrere Loader für die Custom-Elements und Themes übergeben werden.</p>
 			<pre>
 				<code class="language-html">${`<head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.17/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.17';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0-rc.19/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0-rc.19';
 		register([ITZBund], [defineCustomElements])
 			.then(() => {})
 			.catch(console.warn);
@@ -104,7 +104,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 					.replace(/</g, '&#60;')
 					.replace(/>/g, '&#62;')}</code>
 			</pre>
-			<kol-heading _level="3">Config</kol-heading>
+			<kol-heading _label="" _level="3">Config</kol-heading>
 			<p>Wenn ein Theme registriert wird, werden alle darin enthaltenen <strong>CSS-Properties</strong> unter dem Theme-Namen als CSS-Klasse im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">${`<head>`
 				.replace(/</g, '&#60;')
 				.replace(
@@ -120,7 +120,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 					.replace(/</g, '&#60;')
 					.replace(/>/g, '&#62;')}</code>
 		</pre>
-		<kol-heading _level="3">VSCode</kol-heading>
+		<kol-heading _label="" _level="3">VSCode</kol-heading>
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
 		<pre>
 			<code class="language-json">${`{
@@ -129,7 +129,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 				.replace(/</g, '&#60;')
 				.replace(/>/g, '&#62;')}</code>
 		</pre>
-		<kol-heading _level="3">Dev-Tools</kol-heading>
+		<kol-heading _label="" _level="3">Dev-Tools</kol-heading>
 		<p>KoliBri hat zahlreiche Hinweise für die Barrierefreiheit und Verwendung der Komponenten für die Entwicklung eingebaut. Damit die Hinweise in der Konsole des Browsers angezeigt werden, muss folgende Definition im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">${`<head>`
 			.replace(/</g, '&#60;')
 			.replace(/>/g, '&#62;')}</code> der HTML-Seite hinzugefügt werden.</p>
@@ -161,7 +161,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 			</pre>
 		</kol-details>
 		<br>
-		<kol-heading _level="2">Usage</kol-heading>
+		<kol-heading _label="" _level="2">Usage</kol-heading>
 		<p>KoliBri-Komponenten sind wie eigenen HTML-Tags und werden einfach als solche im "umrahmenden" HTML (Responsiveness, Grid usw.) wiederverwendet und deren Ausprägung mittels der Komponenten-Eigenschaften bestimmt.</p>
 		<pre>
 			<code class="language-html">${`<kol-input-text _id="surname" _required _value="Mustermann">Surname</kol-input-text>
@@ -249,7 +249,7 @@ PROP_NAMES.forEach((name) => {
 });
 
 SHEET_CHEAT += `
-			<kol-heading _level="2">Components</kol-heading>
+			<kol-heading _label="" _level="2">Components</kol-heading>
 			<p>In der folgenden Tabelle werden alle Komponenten erläutert und deren jeweiligen Eigenschaften aufgelistet.</p>
 			<kol-table id="components" _caption="Available components"></kol-table>
 			<script>
@@ -285,7 +285,7 @@ COMPONENTS.forEach((component, name) => {
 SHEET_CHEAT += `
 				];
 			</script>
-			<kol-heading _level="2">Properties</kol-heading>
+			<kol-heading _label="" _level="2">Properties</kol-heading>
 			<p>In der folgenden Tabelle werden alle Eigenschaften der Häufigkeit nach erläutert und jeweils die Komponenten aufgelistet, wo sie verwendet werden..</p>
 			<kol-table id="properties" _caption="Available properties"></kol-table>
 			<script>

@@ -95,7 +95,6 @@ Probleme mit Disabled-Status
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property              | Attribute        | Description                                                                                                                                        | Type                                                                                                                                            | Default     |
@@ -104,9 +103,9 @@ Probleme mit Disabled-Status
 | `_ariaControls`       | `_aria-controls` | Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)           | `string \| undefined`                                                                                                                           | `undefined` |
 | `_ariaCurrent`        | `_aria-current`  | Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean \| undefined`                                                                    | `undefined` |
 | `_ariaExpanded`       | `_aria-expanded` | Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)   | `boolean \| undefined`                                                                                                                          | `undefined` |
-| `_ariaLabel`          | `_aria-label`    | Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)            | `string \| undefined`                                                                                                                           | `undefined` |
+| `_ariaLabel`          | `_aria-label`    | Gibt einen beschreibenden Text des Buttons an. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)             | `string \| undefined`                                                                                                                           | `undefined` |
 | `_ariaSelected`       | `_aria-selected` | Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)          | `boolean \| undefined`                                                                                                                          | `undefined` |
-| `_customClass`        | `_custom-class`  | Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.                                                            | `string \| undefined`                                                                                                                           | `undefined` |
+| `_customClass`        | `_custom-class`  | Gibt an, welche Custom-Class übergeben werden soll, wenn \_variant="custom" gesetzt ist.                                                           | `string \| undefined`                                                                                                                           | `undefined` |
 | `_disabled`           | `_disabled`      | Gibt an, ob der Button deaktiviert ist.                                                                                                            | `boolean \| undefined`                                                                                                                          | `false`     |
 | `_icon`               | `_icon`          | Iconklasse (z.B.: "codicon codicon-home")                                                                                                          | `KoliBriHorizontalIcon & KoliBriVerticalIcon \| string \| undefined`                                                                            | `undefined` |
 | `_iconAlign`          | `_icon-align`    | <span style="color:red">**[DEPRECATED]**</span> <br/><br/>Gibt an, ob das Icon links oder rechts dargestellt werden soll.                          | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                           | `undefined` |
@@ -121,20 +120,20 @@ Probleme mit Disabled-Status
 | `_value`              | --               | Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.                                                                                   | `unknown`                                                                                                                                       | `undefined` |
 | `_variant`            | `_variant`       | Gibt an, welche Ausprägung der Button hat.                                                                                                         | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                          | `'normal'`  |
 
-
 ## Dependencies
 
 ### Used by
 
- - [kol-nav](../nav)
- - [kol-pagination](../pagination)
- - [kol-table](../table)
+- [kol-nav](../nav)
+- [kol-pagination](../pagination)
+- [kol-table](../table)
 
 ### Depends on
 
 - kol-button-wc
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-button --> kol-button-wc
@@ -148,6 +147,4 @@ graph TD;
   style kol-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

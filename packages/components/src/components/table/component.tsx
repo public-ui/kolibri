@@ -587,6 +587,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															></div>
 															{typeof col.sort === 'function' && (
 																<kol-button
+																	exportparts="icon"
 																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||
@@ -673,6 +674,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															></div>
 															{typeof col.sort === 'function' && (
 																<kol-button
+																	exportparts="icon"
 																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||

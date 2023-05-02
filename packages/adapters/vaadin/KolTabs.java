@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-tabs")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-tabs")
 public class KolTabs extends Component {
 	/**
@@ -50,7 +50,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt die Daten für die Registrierkarten.
 	 *
 	 * @param value String
 	 */
@@ -59,7 +59,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie in Links an.
+	 * Setzt die Daten für die Registrierkarten.
 	 *
 	 * @return String
 	 */
@@ -68,7 +68,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+	 * Setzt die Position der Registrierkarten.
 	 *
 	 * @param value String
 	 */
@@ -77,7 +77,7 @@ public class KolTabs extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Tab-Schalter entweder oben, rechts, unten oder links angeordnet sind.
+	 * Setzt die Position der Registrierkarten.
 	 *
 	 * @return String
 	 */

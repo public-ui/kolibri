@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-select")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-select")
 public class KolSelect extends Component {
 	/**
@@ -50,7 +50,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @param value String
 	 */
@@ -59,7 +59,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @return String
 	 */
@@ -104,7 +104,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @param value String
 	 */
@@ -113,7 +113,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @return String
 	 */
@@ -122,7 +122,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @param value String
 	 */
@@ -131,7 +131,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @return String
 	 */
@@ -230,7 +230,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Selectbox ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @param value String
 	 */
@@ -239,7 +239,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Selectbox ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @return String
 	 */
@@ -248,7 +248,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
 	 *
 	 * @param value String
 	 */
@@ -257,7 +257,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Optionen im Drop-Down-Menü sichtbar sein sollen.
+	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
 	 *
 	 * @return String
 	 */

@@ -10,17 +10,15 @@ import { PropLabel } from './props/label';
  */
 
 // do not inherit RequiredLinkProps
-type RequiredButtonProps = PropIcon &
-	PropLabel & {
-		on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
-	};
-type RequiredLinkProps = PropIcon &
-	PropLabel & {
-		href: string;
-	};
-type RequiredTextProps = PropIcon & PropLabel;
+type RequiredButtonProps = PropLabel & {
+	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
+};
+type RequiredLinkProps = PropLabel & {
+	href: string;
+};
+type RequiredTextProps = PropLabel;
 // do not inherit OptionalLinkProps
-type OptionalButtonOrLinkOrTextProps = {
+type OptionalButtonOrLinkOrTextProps = PropIcon & {
 	active: boolean;
 	// tabIndex: number; // possible, but sensible ?!
 	// tooltipAlign: Alignment; // possible, but sensible ?!
