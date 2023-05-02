@@ -31,7 +31,7 @@ export type PropColor = ColorPair | DeprecatedColorPair;
 
 type typeOfColorType = 'string' | 'ColorPair' | 'DeprecatedColorPair' | null;
 
-const HEX_REGEX = /^#(\d|[a-f]){3}(\d|[a-f]){6}$/;
+const HEX_REGEX = /^#(\d|[a-f]|[A-F]){6}$|^#(\d|[a-f]|[A-F]){3}$/;
 function isHexString(value: string): boolean {
 	return HEX_REGEX.test(value);
 }
@@ -124,8 +124,11 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			break;
 		}
 		case null:
-			// should not happen, because validatorFunction() is called before.
-			throw new Error('_color was an unexpected value.');
+			console.warn(`_color was empty or invalid (${JSON.stringify(value)})`);
+			colorContrast = createContrastColorPair({
+				background: '#000',
+				foreground: '#000',
+			});
 	}
 
 	if (colorContrast.contrast < 7) {
