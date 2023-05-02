@@ -38,7 +38,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<div>
+				<div class="card">
 					<div class="header">
 						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
 						<slot name="header" />
