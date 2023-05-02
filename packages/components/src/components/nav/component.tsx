@@ -11,9 +11,13 @@ import {
 	PropCollapsible,
 	PropCompact,
 	PropHasCompactButton,
+	PropIsHamburgerMenu,
+	PropShow,
 	validateCollapsible,
 	validateCompact,
 	validateHasCompactButton,
+	validateIsHamburgerMenu,
+	validateShow,
 } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchString, watchValidator } from '../../utils/prop.validators';
@@ -62,8 +66,9 @@ type OptionalProps = {
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
 	PropCompact &
-	PropHasCompactButton;
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+	PropHasCompactButton &
+	PropIsHamburgerMenu &
+	PropShow;
 
 type RequiredStates = {
 	ariaCurrentValue: AriaCurrent;
@@ -80,7 +85,9 @@ type RequiredStates = {
 	 */
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
-	PropHasCompactButton;
+	PropHasCompactButton &
+	PropIsHamburgerMenu &
+	PropShow;
 type OptionalStates = PropCompact;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
@@ -314,9 +321,19 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
 	/**
+	 * Setzt die Navigation auf Hamburger-Modus.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _isHamburgerMenu?: boolean = false;
+
+	/**
 	 * Gibt die Ausrichtung der Navigation an.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
+
+	/**
+	 * Öffnet/schließt das Navigationmenü, sofern _isHamburgerMenu = true.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
 	/**
 	 * Gibt die geordnete Liste der Seitenhierarchie an.
@@ -335,8 +352,10 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		_ariaLabel: '…', // '⚠'
 		_collapsible: true,
 		_hasCompactButton: false,
+		_isHamburgerMenu: false,
 		_links: [],
 		_orientation: 'vertical',
+		_show: false,
 		_variant: 'primary',
 	};
 
@@ -388,6 +407,11 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		validateHasCompactButton(this, value);
 	}
 
+	@Watch('_isHamburgerMenu')
+	public validateIsHamburgerMenu(value?: boolean): void {
+		validateIsHamburgerMenu(this, value);
+	}
+
 	@Watch('_links')
 	public validateLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
 		watchNavLinks('KolNav', this, value);
@@ -408,6 +432,11 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		);
 	}
 
+	@Watch('_show')
+	public validateShow(value?: boolean): void {
+		validateShow(this, value);
+	}
+
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriNavVariant): void {
 		watchValidator(this, '_variant', (value) => value === 'primary' || value === 'secondary', new Set(['KoliBriNavVariant {primary, secondary}']), value, {
@@ -421,8 +450,10 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		this.validateCollapsible(this._collapsible);
 		this.validateCompact(this._compact);
 		this.validateHasCompactButton(this._hasCompactButton);
+		this.validateIsHamburgerMenu(this._isHamburgerMenu);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
+		this.validateShow(this._show);
 		this.validateVariant(this._variant);
 	}
 

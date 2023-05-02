@@ -15,6 +15,7 @@ export { PropHasCounter, validateHasCounter } from './has-counter';
 export { PropHasFooter, validateHasFooter } from './has-footer';
 export { PropHideLabel, validateHideLabel } from './hide-label';
 export { PropIndeterminate, validateIndeterminate } from './indeterminate';
+export { PropIsHamburgerMenu, validateIsHamburgerMenu } from './is-hamburger-menu';
 export { PropLabel, validateLabel } from './label';
 export { PropMultiple, validateMultiple } from './multiple';
 export { PropOpen, validateOpen } from './open';
