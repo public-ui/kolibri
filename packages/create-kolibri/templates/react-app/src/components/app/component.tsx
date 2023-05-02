@@ -13,7 +13,7 @@ export const App: FC = () => (
 					<img className="block m-auto h-25" src={IMG_FRAMEWORK as string} alt="Logo vom React Framework" />
 				</div>
 			</div>
-			<KolHeading className="text-2xl" _headline="Willkommen zu KoliBri" />
+			<KolHeading className="text-2xl" _label="Willkommen zu KoliBri" />
 		</header>
 		<main className="grid md:grid-cols-2 gap-6 p-12">
 			<KolAlert _type="success" _heading="Dokumentation" _variant="card" _level={2}>

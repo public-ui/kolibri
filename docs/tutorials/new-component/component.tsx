@@ -39,7 +39,7 @@ export class KolNewComponent implements NewComponentAPI {
 						close: !this.state._open,
 					}}
 				>
-					<kol-heading-wc _headline={this.state._heading} _level={this.state._level}></kol-heading-wc>
+					<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
 					<div
 						aria-hidden={this.state._open ? undefined : 'true'}
 						class="content"

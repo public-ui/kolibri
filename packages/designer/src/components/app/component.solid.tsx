@@ -245,7 +245,7 @@ export const AppComponent: Component = () => {
 				<Match when={getShow() === 'result'}>
 					<div class="grid gap-2 p-4 default">
 						<div>
-							<KolHeading _headline="Theming"></KolHeading>
+							<KolHeading _label="Theming"></KolHeading>
 							<KolAlert _type="info">
 								Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden Sie sich gerne an{' '}
 								<KolLink _href="mailto:kolibri@itzbund.de" _label="kolibri@itzbund.de" _target="mail"></KolLink>
@@ -254,7 +254,7 @@ export const AppComponent: Component = () => {
 								Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet CSS-Definitionen, die jede Komponente individuell
 								stylt.
 							</p>
-							<KolHeading _headline="Theme einbinden"></KolHeading>
+							<KolHeading _label="Theme einbinden"></KolHeading>
 							<p>
 								Um ihr Theme ({getTheme()}) in ihre Anwendung einzubinden, müssen Sie einfach den Quellcode kopieren und in z.B. die <code>main.ts</code> ihrer
 								Anwendung einfügen.

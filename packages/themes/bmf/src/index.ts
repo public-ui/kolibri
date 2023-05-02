@@ -55,20 +55,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		margin: 0;
 		padding: 0;
 	}
-	a,
-	button,
-	input,
-	option,
-	select,
-	summary,
-	textarea {
-		hyphens: auto;
-		letter-spacing: inherit;
-		word-break: break-word;
-	}
 	*[tabindex]:focus,
-	a:focus,
-	button:focus,
 	kol-input:not(.checkbox, .radio) .input:focus-within,
 	kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {
@@ -103,150 +90,114 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-span-wc > span {
 		gap: 0.5em;
 	}`,
-	'KOL-BUTTON': `:host {
-		display: inline-block;
+	'KOL-BUTTON': `:is(a, button):focus {
+		outline: none;
 	}
-	button {
-		background-color: transparent;
-		border: 0;
-		cursor: pointer;
-		border-radius: 1.5em;
-		min-width: 44px;
-		min-height: 44px;
-		padding: 0;
-		text-decoration: none !important;
+	:is(a, button):focus kol-span-wc {
+		outline-color: var(--color-ocean);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
 	}
-	button > kol-span-wc {
-		min-width: 44px;
-		min-height: 44px;
-		display: grid;
-		gap: 0.25em;
-		line-height: 1.5rem;
-		font-family: var(--font-family);
+	:is(a, button) > kol-span-wc {
 		font-weight: 700;
-		cursor: pointer;
-		border-radius: 1.5em;
+		border-radius: var(--a11y-min-size);
 		border-style: solid;
 		border-width: 2px;
-		font-size: 1rem;
-		align-items: center;
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
 		padding: 8px 14px;
-		justify-content: center;
-		font-style: normal;
 		text-align: center;
-		width: inherit;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
 	}
-	button:disabled > kol-span-wc {
+	:is(a, button):disabled > kol-span-wc {
 		cursor: not-allowed;
 		opacity: 0.5;
 	}
-	button.primary > kol-span-wc,
-	button.primary:disabled:hover > kol-span-wc {
+	.primary :is(a, button) > kol-span-wc,
+	.primary :is(a, button):disabled:hover > kol-span-wc {
 		background-color: var(--color-midnight);
 		border-color: var(--color-midnight);
 		color: var(--color-white);
 	}
-	button.secondary > kol-span-wc,
-	button.secondary:disabled:hover > kol-span-wc,
-	button.normal > kol-span-wc,
-	button.normal:disabled:hover > kol-span-wc {
+	.secondary :is(a, button) > kol-span-wc,
+	.secondary :is(a, button):disabled:hover > kol-span-wc,
+	.normal :is(a, button) > kol-span-wc,
+	.normal :is(a, button):disabled:hover > kol-span-wc {
 		background-color: var(--color-white);
 		border-color: var(--color-midnight);
 		color: var(--color-midnight);
 	}
-	button.danger > kol-span-wc,
-	button.danger:disabled:hover > kol-span-wc {
+	.danger :is(a, button) > kol-span-wc,
+	.danger :is(a, button):disabled:hover > kol-span-wc {
 		background-color: var(--color-red);
 		border-color: var(--color-red);
 		color: var(--color-white);
 	}
-	button.ghost > kol-span-wc,
-	button.ghost:disabled:hover > kol-span-wc {
+	.ghost :is(a, button) > kol-span-wc,
+	.ghost :is(a, button):disabled:hover > kol-span-wc {
 		border-color: var(--color-white);
 		background-color: var(--color-white);
 		box-shadow: none;
 		color: var(--color-midnight);
 	} /*-----------*/
-	button.primary:active > kol-span-wc,
-	button.primary:hover > kol-span-wc,
-	button.secondary:active > kol-span-wc,
-	button.secondary:hover > kol-span-wc,
-	button.normal:active > kol-span-wc,
-	button.normal:hover > kol-span-wc,
-	button.danger:active > kol-span-wc,
-	button.danger:hover > kol-span-wc,
-	button.ghost:active > kol-span-wc,
-	button.ghost:hover > kol-span-wc {
+	.primary :is(a, button):active > kol-span-wc,
+	.primary :is(a, button):hover > kol-span-wc,
+	.secondary :is(a, button):active > kol-span-wc,
+	.secondary :is(a, button):hover > kol-span-wc,
+	.normal :is(a, button):active > kol-span-wc,
+	.normal :is(a, button):hover > kol-span-wc,
+	.danger :is(a, button):active > kol-span-wc,
+	.danger :is(a, button):hover > kol-span-wc,
+	.ghost :is(a, button):active > kol-span-wc,
+	.ghost :is(a, button):hover > kol-span-wc {
 		background-color: var(--color-ocean);
 		border-color: var(--color-ocean);
 		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 		color: var(--color-white);
 	}
-	button.danger:active > kol-span-wc,
-	button.danger:hover > kol-span-wc {
+	.danger :is(a, button):active > kol-span-wc,
+	.danger :is(a, button):hover > kol-span-wc {
 		background-color: var(--color-crimson);
 		border-color: var(--color-crimson);
 	}
-	button:disabled:hover > kol-span-wc,
-	button:focus:hover > kol-span-wc {
+	:is(a, button):disabled:hover > kol-span-wc,
+	:is(a, button):focus:hover > kol-span-wc {
 		box-shadow: none;
 	}
-	button.primary:active > kol-span-wc,
-	button.secondary:active > kol-span-wc,
-	button.normal:active > kol-span-wc,
-	button.danger:active > kol-span-wc,
-	button.ghost:active > kol-span-wc {
+	.primary :is(a, button):active > kol-span-wc,
+	.secondary :is(a, button):active > kol-span-wc,
+	.normal :is(a, button):active > kol-span-wc,
+	.danger :is(a, button):active > kol-span-wc,
+	.ghost :is(a, button):active > kol-span-wc {
 		border-color: var(--color-white);
 		box-shadow: none;
 		outline: none;
 	}
-	:host button > kol-span-wc > span {
-		display: flex;
-		gap: 0.5em;
-		margin: auto;
-		align-items: center;
-		justify-content: center;
-		letter-spacing: 0.75px;
-	}
-	button.icon-only > kol-span-wc {
+	:is(a, button).icon-only > kol-span-wc {
 		padding: 8px;
+		width: unset;
 	}
-	button.icon-only > kol-span-wc > span > span {
+	:is(a, button).icon-only > kol-span-wc > span > span {
 		display: none;
 	}
-	button.icon-only > kol-span-wc kol-icon {
-		width: 1.5em;
-		height: 1.5em;
-	}
-	button.loading > kol-span-wc kol-icon {
+	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
-	} /** small ghost button */
-	button.small.ghost > kol-span-wc {
-		border: none;
-		background-color: transparent;
-		box-shadow: none;
 	}
-	button.small.ghost > kol-span-wc > span {
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: 2px;
-		border-color: var(--color-white);
-		background-color: var(--color-white);
-	}
-	button.small.ghost:active > kol-span-wc > span,
-	button.small.ghost:hover > kol-span-wc > span,
-	button.small.ghost.transparent:active > kol-span-wc > span,
-	button.small.ghost.transparent:hover > kol-span-wc > span {
+	.ghost :is(a, button).small:active > kol-span-wc > span,
+	.ghost :is(a, button).small:hover > kol-span-wc > span,
+	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
+	.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
 		background-color: var(--color-ocean);
 		border-color: var(--color-ocean);
 		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 		color: var(--color-white);
-	} /** button with transparent background */
-	button.transparent > kol-span-wc > span,
-	button.small.ghost.transparent > kol-span-wc > span,
-	button.transparent > kol-span-wc {
+	} /** :is(a,button) with transparent background */
+	:is(a, button).transparent > kol-span-wc > span,
+	.ghost :is(a, button).small.transparent > kol-span-wc > span,
+	:is(a, button).transparent > kol-span-wc {
 		background-color: transparent;
 		border-color: transparent;
 	}`,
@@ -650,6 +601,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 		order: 4;
 		font-size: 0.875em;
 		font-style: italic;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
 	}
 	input,
 	select,
@@ -1127,26 +1081,24 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding: 0.25em 0.5em;
 		width: 100%;
 	}`,
-	'KOL-LINK': `a,
-	button {
+	'KOL-LINK': `:is(a, button) {
 		color: var(--color-midnight);
-		font-size: 1rem;
 		font-style: normal;
 		font-weight: 400;
-		line-height: 1.5em;
 		text-decoration-line: underline;
-		border-radius: 0.25rem;
 	}
-	a:hover,
-	button:hover {
+	:is(a, button):focus {
+		outline: none;
+	}
+	:is(a, button):focus kol-span-wc {
+		border-radius: var(--border-radius);
+		outline: 2px solid;
+	}
+	:is(a, button):hover {
 		text-decoration-thickness: 0.25em;
 	}
-	a:visited,
-	button:visited {
+	:is(a, button):visited {
 		color: var(--visited);
-	}
-	kol-icon {
-		padding: 0 0.25em;
 	}
 	.hidden {
 		display: none;
@@ -1163,13 +1115,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background: white;
 		left: unset;
 		position: unset;
-	}
-	a,
-	kol-span-wc > span {
-		place-items: baseline;
-	}
-	kol-span-wc > span {
-		gap: 0.25em;
 	}`,
 	'KOL-DETAILS': `details > summary {
 		border-radius: var(--border-radius);
@@ -2277,179 +2222,136 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background: var(--color-ocean);
 		color: white;
 	}`,
-	'KOL-LINK-BUTTON': `a {
-		display: inline-flex;
-		gap: 0.25rem;
-		align-items: center;
-		justify-items: center;
+	'KOL-LINK-BUTTON': `:is(a, button):focus {
+		outline: none;
 	}
-	a {
-		background-color: transparent;
-		border: 0;
-		cursor: pointer;
-		border-radius: 1.5em;
-		min-width: 44px;
-		min-height: 44px;
-		padding: 0;
-		text-decoration: none !important;
+	:is(a, button):focus kol-span-wc {
+		outline-color: var(--color-ocean);
+		outline-offset: 2px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline-offset 0.2s linear;
 	}
-	a > kol-span-wc {
-		display: grid;
-		min-width: 44px;
-		min-height: 44px;
-		gap: 0.25em;
-		line-height: 1.5rem;
-		font-family: var(--font-family);
+	:is(a, button) > kol-span-wc {
 		font-weight: 700;
-		cursor: pointer;
-		border-radius: 1.5em;
+		border-radius: var(--a11y-min-size);
 		border-style: solid;
 		border-width: 2px;
-		font-size: 1rem;
-		align-items: center;
+		min-height: var(--a11y-min-size);
+		min-width: var(--a11y-min-size);
 		padding: 8px 14px;
-		justify-content: center;
-		font-style: normal;
 		text-align: center;
-		width: inherit;
 		transition-duration: 0.5s;
 		transition-property: background-color, color, border-color;
 	}
-	a:disabled > kol-span-wc {
+	:is(a, button):disabled > kol-span-wc {
 		cursor: not-allowed;
 		opacity: 0.5;
 	}
-	.primary a > kol-span-wc,
-	.primary a:disabled:hover > kol-span-wc {
+	.primary :is(a, button) > kol-span-wc,
+	.primary :is(a, button):disabled:hover > kol-span-wc {
 		background-color: var(--color-midnight);
 		border-color: var(--color-midnight);
 		color: var(--color-white);
 	}
-	.secondary a > kol-span-wc,
-	.secondary a:disabled:hover > kol-span-wc,
-	.normal a > kol-span-wc,
-	.normal a:disabled:hover > kol-span-wc {
+	.secondary :is(a, button) > kol-span-wc,
+	.secondary :is(a, button):disabled:hover > kol-span-wc,
+	.normal :is(a, button) > kol-span-wc,
+	.normal :is(a, button):disabled:hover > kol-span-wc {
 		background-color: var(--color-white);
 		border-color: var(--color-midnight);
 		color: var(--color-midnight);
 	}
-	.danger a > kol-span-wc,
-	.danger a:disabled:hover > kol-span-wc {
+	.danger :is(a, button) > kol-span-wc,
+	.danger :is(a, button):disabled:hover > kol-span-wc {
 		background-color: var(--color-red);
 		border-color: var(--color-red);
 		color: var(--color-white);
 	}
-	.ghost a > kol-span-wc,
-	.ghost a:disabled:hover > kol-span-wc {
+	.ghost :is(a, button) > kol-span-wc,
+	.ghost :is(a, button):disabled:hover > kol-span-wc {
 		border-color: var(--color-white);
 		background-color: var(--color-white);
 		box-shadow: none;
 		color: var(--color-midnight);
 	} /*-----------*/
-	.primary a:active > kol-span-wc,
-	.primary a:hover > kol-span-wc,
-	.secondary a:active > kol-span-wc,
-	.secondary a:hover > kol-span-wc,
-	.normal a:active > kol-span-wc,
-	.normal a:hover > kol-span-wc,
-	.danger a:active > kol-span-wc,
-	.danger a:hover > kol-span-wc,
-	.ghost a:active > kol-span-wc,
-	.ghost a:hover > kol-span-wc {
+	.primary :is(a, button):active > kol-span-wc,
+	.primary :is(a, button):hover > kol-span-wc,
+	.secondary :is(a, button):active > kol-span-wc,
+	.secondary :is(a, button):hover > kol-span-wc,
+	.normal :is(a, button):active > kol-span-wc,
+	.normal :is(a, button):hover > kol-span-wc,
+	.danger :is(a, button):active > kol-span-wc,
+	.danger :is(a, button):hover > kol-span-wc,
+	.ghost :is(a, button):active > kol-span-wc,
+	.ghost :is(a, button):hover > kol-span-wc {
 		background-color: var(--color-ocean);
 		border-color: var(--color-ocean);
 		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 		color: var(--color-white);
 	}
-	.danger a:active > kol-span-wc,
-	.danger a:hover > kol-span-wc {
+	.danger :is(a, button):active > kol-span-wc,
+	.danger :is(a, button):hover > kol-span-wc {
 		background-color: var(--color-crimson);
 		border-color: var(--color-crimson);
 	}
-	a:disabled:hover > kol-span-wc,
-	a:focus:hover > kol-span-wc {
+	:is(a, button):disabled:hover > kol-span-wc,
+	:is(a, button):focus:hover > kol-span-wc {
 		box-shadow: none;
 	}
-	.primary a:active > kol-span-wc,
-	.secondary a:active > kol-span-wc,
-	.normal a:active > kol-span-wc,
-	.danger a:active > kol-span-wc,
-	.ghost a:active > kol-span-wc {
+	.primary :is(a, button):active > kol-span-wc,
+	.secondary :is(a, button):active > kol-span-wc,
+	.normal :is(a, button):active > kol-span-wc,
+	.danger :is(a, button):active > kol-span-wc,
+	.ghost :is(a, button):active > kol-span-wc {
 		border-color: var(--color-white);
 		box-shadow: none;
 		outline: none;
 	}
-	:host a > kol-span-wc > span {
-		display: flex;
-		gap: 0.5em;
-		margin: auto;
-		align-items: center;
-		justify-content: center;
-		letter-spacing: 0.75px;
-	}
-	a.icon-only > kol-span-wc {
+	:is(a, button).icon-only > kol-span-wc {
 		padding: 8px;
+		width: unset;
 	}
-	a.icon-only > kol-span-wc > span > span {
+	:is(a, button).icon-only > kol-span-wc > span > span {
 		display: none;
 	}
-	a.icon-only > kol-span-wc kol-icon {
-		width: 1.5em;
-		height: 1.5em;
-	}
-	a.loading > kol-span-wc kol-icon {
+	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
-	} /** small ghost a */
-	.ghost.small a > kol-span-wc {
-		border: none;
-		background-color: transparent;
-		box-shadow: none;
 	}
-	.ghost.small a > kol-span-wc > span {
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: 2px;
-		border-color: var(--color-white);
-		background-color: var(--color-white);
-	}
-	.ghost.small a:active > kol-span-wc > span,
-	.ghost.small a:hover > kol-span-wc > span,
-	.ghost.small.transparent a:active > kol-span-wc > span,
-	.ghost.small.transparent a:hover > kol-span-wc > span {
+	.ghost :is(a, button).small:active > kol-span-wc > span,
+	.ghost :is(a, button).small:hover > kol-span-wc > span,
+	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
+	.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
 		background-color: var(--color-ocean);
 		border-color: var(--color-ocean);
 		box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
 		color: var(--color-white);
-	} /** a with transparent background */
-	.transparent a > kol-span-wc > span,
-	.ghost.small.transparent a > kol-span-wc > span,
-	.transparent a > kol-span-wc {
+	} /** :is(a,button) with transparent background */
+	:is(a, button).transparent > kol-span-wc > span,
+	.ghost :is(a, button).small.transparent > kol-span-wc > span,
+	:is(a, button).transparent > kol-span-wc {
 		background-color: transparent;
 		border-color: transparent;
-	}
-	.loading a > kol-span-wc kol-icon {
-		animation: spin 5s infinite linear;
 	}`,
-	'KOL-BUTTON-LINK': `a,
-	button {
+	'KOL-BUTTON-LINK': `:is(a, button) {
 		color: var(--color-midnight);
-		font-size: 1rem;
 		font-style: normal;
 		font-weight: 400;
-		line-height: 1.5em;
 		text-decoration-line: underline;
-		border-radius: 0.25rem;
+		font-size: inherit;
 	}
-	a:hover,
-	button:hover {
+	:is(a, button):focus {
+		outline: none;
+	}
+	:is(a, button):focus kol-span-wc {
+		border-radius: var(--border-radius);
+		outline: 2px solid;
+	}
+	:is(a, button):hover {
 		text-decoration-thickness: 0.25em;
 	}
-	a:visited,
-	button:visited {
+	:is(a, button):visited {
 		color: var(--visited);
-	}
-	kol-icon {
-		padding: 0 0.25em;
 	}
 	.hidden {
 		display: none;
@@ -2460,19 +2362,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		overflow: hidden;
 		position: absolute;
 		z-index: 9999999;
-		line-height: 1em;
 	}
 	.skip:focus {
 		background: white;
 		left: unset;
 		position: unset;
-	}
-	a,
-	kol-span-wc > span {
-		place-items: baseline;
-	}
-	kol-span-wc > span {
-		gap: 0.25em;
 	}`,
 	'KOL-ABBR': `abbr {
 		border-bottom: dotted var(--color-metal) 1px;
