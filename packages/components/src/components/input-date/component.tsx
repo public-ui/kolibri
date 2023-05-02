@@ -87,7 +87,7 @@ export class KolInputDate implements ComponentApi {
 						step={this.state._step}
 						spellcheck="false"
 						type={this.state._type}
-						value={this.state._value}
+						value={this.state._value || ''}
 						{...this.controller.onFacade}
 						onKeyUp={this.onKeyUp}
 					/>

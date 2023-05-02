@@ -36,7 +36,7 @@ type OptionalStates = {
 	step: number;
 	tabIndex: number;
 	touched: boolean;
-	value: Iso8601;
+	value: Iso8601 | null;
 };
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
