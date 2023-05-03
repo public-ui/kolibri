@@ -9,7 +9,9 @@
 .content_wrapper {
 	overflow: hidden;
 	position: relative;
-	transition: height 1000ms ease-in-out;
+}
+.transition {
+	transition: height 300ms ease-in-out;
 }
 .content {
 	inset: 0 0 auto 0;

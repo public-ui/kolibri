@@ -34,11 +34,12 @@ export class KolAccordion implements API {
 	private contentElement: HTMLElement | null = null;
 	private contentWrapperElement: HTMLElement | null = null;
 	private contentObserver = new ResizeObserver(this.resizeWrapper.bind(this));
+	private transition = false;
 
-	private readonly catchContentElement = (element?: HTMLDivElement) => {
+	private readonly catchContentElement = (element?: HTMLElement) => {
 		if (element) this.contentElement = element;
 	};
-	private readonly catchContentWrapperElement = (element?: HTMLDivElement) => {
+	private readonly catchContentWrapperElement = (element?: HTMLElement) => {
 		if (element) this.contentWrapperElement = element;
 	};
 
@@ -89,7 +90,7 @@ export class KolAccordion implements API {
 					<div class="header">
 						<slot name="header" />
 					</div>
-					<div ref={this.catchContentWrapperElement} class="content_wrapper" style={{ display: 'none', height: '0' }}>
+					<div ref={this.catchContentWrapperElement} class={{ content_wrapper: true, transition: this.transition }}>
 						<div ref={this.catchContentElement} aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
 							<slot name="content" />
 						</div>
@@ -153,6 +154,14 @@ export class KolAccordion implements API {
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
+		setTimeout(() => {
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			this.contentObserver.observe(this.contentElement!);
+		});
+		// So it does not transition if it is set to open from the start.
+		setTimeout(() => {
+			this.transition = true;
+		}, 200);
 	}
 
 	private onClick = (event: Event) => {
