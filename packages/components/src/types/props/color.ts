@@ -113,10 +113,12 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			const asColorPair = valueType.value as ColorPair;
 			const asDeprecatedColorPair = valueType.value as DeprecatedColorPair;
 			let foreground = '';
-			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
-			else if (asColorPair.foregroundColor.primary) foreground = asColorPair.foregroundColor.primary;
-			else if (typeof asDeprecatedColorPair.color === 'string') foreground = asDeprecatedColorPair.color;
-
+			if (asDeprecatedColorPair.color) foreground = asDeprecatedColorPair.color;
+			else {
+				if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
+				else if (asColorPair.foregroundColor?.primary) foreground = asColorPair.foregroundColor.primary;
+			}
+			if (!foreground || typeof foreground !== 'string') foreground = '#fff';
 			colorContrast = createContrastColorPair({
 				background: asColorPair.backgroundColor,
 				foreground,
