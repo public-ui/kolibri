@@ -69,7 +69,7 @@ function typeOfColor(value?: unknown): { type: typeOfColorType; valid: boolean; 
 
 /* validate different color options */
 function isValidColorPair(value: ColorPair): boolean {
-	return (
+	return !!(
 		typeof value === 'object' &&
 		value &&
 		typeof value.backgroundColor === 'string' &&
@@ -113,10 +113,12 @@ export const handleColorChange = (value: unknown): ColorPair => {
 			const asColorPair = valueType.value as ColorPair;
 			const asDeprecatedColorPair = valueType.value as DeprecatedColorPair;
 			let foreground = '';
-			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
-			else if (asColorPair.foregroundColor.primary) foreground = asColorPair.foregroundColor.primary;
-			else if (typeof asDeprecatedColorPair.color === 'string') foreground = asDeprecatedColorPair.color;
-
+			if (asDeprecatedColorPair.color) foreground = asDeprecatedColorPair.color;
+			else {
+				if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
+				else if (asColorPair.foregroundColor?.primary) foreground = asColorPair.foregroundColor.primary;
+			}
+			if (!foreground || typeof foreground !== 'string') foreground = '#fff';
 			colorContrast = createContrastColorPair({
 				background: asColorPair.backgroundColor,
 				foreground,
@@ -133,7 +135,7 @@ export const handleColorChange = (value: unknown): ColorPair => {
 
 	if (colorContrast.contrast < 7) {
 		a11yHint(
-			`[KolBadge] The contrast of ${colorContrast.contrast} (≥7, AAA) is too low, between the color pair ${colorContrast.background} and ${colorContrast.foreground}.`
+			`[KolBadge] The contrast of ${colorContrast.contrast} (≥7, AAA) is to low, between the color pair ${colorContrast.background} and ${colorContrast.foreground}.`
 		);
 	}
 	return {
