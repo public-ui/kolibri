@@ -9513,10 +9513,11 @@
 				<kol-nav :_orientation="orientation" id="nav-test" :_is-hamburger-menu="isHamburgerMenu" :_show="showMenu"></kol-nav>
 			</header>
 			<div style="display: grid; gap: 1rem; margin: auto">
-				<label><input name="orientation" value="horizontal" type="radio" v-model="orientation" /> horizontal</label>
-				<label><input name="orientation" value="vertical" type="radio" v-model="orientation" /> vertical</label>
-				<button @click="isHamburgerMenu = !isHamburgerMenu">menu auf {{ isHamburgerMenu ? 'desktop' : 'mobil' }} umschalten</button>
-				<button @click="showMenu = !showMenu">menu {{ showMenu ? 'zu' : 'auf' }}klappen</button>
+				<button @click="orientation = orientation === 'vertical' ? 'horizontal' : 'vertical'">
+					auf <b>{{ orientation === 'vertical' ? 'horizontal' : 'vertikal' }}</b> umschalten
+				</button>
+				<button @click="isHamburgerMenu = !isHamburgerMenu">menu auf <b>{{ isHamburgerMenu ? 'desktop' : 'mobil' }}</b> umschalten</button>
+				<button @click="showMenu = !showMenu">menu <b>{{ showMenu ? 'zu' : 'auf' }}</b>klappen</button>
 			</div>
 		</main>
 	</body>
