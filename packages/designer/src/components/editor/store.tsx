@@ -218,7 +218,7 @@ export const components: Record<string, Component> = {
 			<KolAccordion class="bordered" _heading="Accordion #3 Header" _level={3}>
 				<p slot="header">
 					In den Accordion-Header kann auch noch was komplexeres eingefügt werden.
-					<KolButton class="not-used" _icon="codicon codicon-ui-add" _label="Hinzufügen" _variant="secondary" />
+					<KolButton class="not-used" _icon="codicon codicon-add" _label="Hinzufügen" _variant="secondary" />
 				</p>
 				<p slot="content">
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum earum aut
