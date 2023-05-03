@@ -140,7 +140,10 @@ export class InputDateController extends InputIconController implements Watches 
 			'_max',
 			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
 			new Set(['Iso8601', 'Date']),
-			this.valueAsIsoDate(value, this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local' ? this.DEFAULT_MAX_DATE : undefined)
+			this.valueAsIsoDate(
+				value,
+				this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local' ? this.DEFAULT_MAX_DATE : undefined
+			)
 		);
 	}
 
