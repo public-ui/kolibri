@@ -1,1 +1,7 @@
 @import url(../button.css);
+
+button {
+	background-color: blueviolet;
+	color: white;
+	color: hsla(120, 74%, 70%, 1);
+}
