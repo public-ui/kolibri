@@ -112,7 +112,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					}
 				} else if (ellipsis === true) {
 					ellipsis = false;
-					return <span key={`${this.nonce}-el-${page}`}>•••</span>;
+					return <span class="separator" key={`${this.nonce}-el-${page}`}></span>;
 				} else {
 					return null;
 				}
@@ -123,6 +123,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 				<div>
 					{this.state._hasButtons.first && (
 						<kol-button
+							class="first"
 							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
@@ -136,6 +137,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					)}
 					{this.state._hasButtons.previous && (
 						<kol-button
+							class="previous"
 							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
@@ -150,6 +152,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					{pageButtons}
 					{this.state._hasButtons.next && (
 						<kol-button
+							class="next"
 							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}
@@ -163,6 +166,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					)}
 					{this.state._hasButtons.last && (
 						<kol-button
+							class="last"
 							exportparts="icon"
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}

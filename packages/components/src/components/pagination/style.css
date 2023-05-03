@@ -1,1 +1,4 @@
 @import url(../style.css);
+.separator:before {
+	content: '•••';
+}
