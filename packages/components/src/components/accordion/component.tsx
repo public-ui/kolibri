@@ -31,9 +31,42 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 })
 export class KolAccordion implements API {
 	private readonly nonce = nonce();
+	private contentElement: HTMLElement | null = null;
+	private contentWrapperElement: HTMLElement | null = null;
+	private contentObserver = new ResizeObserver(this.resizeWrapper.bind(this));
+
+	private readonly catchContentElement = (element?: HTMLDivElement) => {
+		if (element) this.contentElement = element;
+	};
+	private readonly catchContentWrapperElement = (element?: HTMLDivElement) => {
+		if (element) this.contentWrapperElement = element;
+	};
+
+	resizeWrapper(list?: ResizeObserverEntry[]) {
+		const content = this.contentElement;
+		const wrapper = this.contentWrapperElement;
+		if (content && wrapper) {
+			if (this._open) {
+				wrapper.style.display = 'block';
+				setTimeout(() => {
+					wrapper.style.height = `${content?.clientHeight ?? 0}px`;
+				});
+				if (!list) this.contentObserver.observe(content);
+			} else {
+				this.contentObserver.unobserve(content);
+				wrapper.style.height = '0';
+				wrapper.addEventListener(
+					'transitionend',
+					() => {
+						wrapper.style.display = 'none';
+					},
+					{ once: true }
+				);
+			}
+		}
+	}
 
 	public render(): JSX.Element {
-		// const height = this.content?.getBoundingClientRect().height ?? 0;
 		return (
 			<Host>
 				<div
@@ -56,36 +89,10 @@ export class KolAccordion implements API {
 					<div class="header">
 						<slot name="header" />
 					</div>
-					<div
-						aria-hidden={this.state._open === false ? 'true' : undefined}
-						class="content"
-						id={this.nonce}
-						hidden={this.state._open === false}
-						style={
-							this.state._open === false
-								? {
-										display: 'none',
-										height: '0',
-										visibility: 'hidden',
-								  }
-								: undefined
-						}
-						// style={
-						// 	this.state._open
-						// 		? height > 0 && processEnv !== 'test' // TODO: remove this check when testing is fixed
-						// 			? {
-						// 				height: `${height}px`,
-						// 				overflow: 'hidden',
-						// 			}
-						// 			: undefined
-						// 		: {
-						// 			height: '0',
-						// 			overflow: 'hidden',
-						// 			visibility: 'hidden',
-						// 		}
-						// }
-					>
-						<slot name="content" />
+					<div ref={this.catchContentWrapperElement} class="content_wrapper" style={{ display: 'none', height: '0' }}>
+						<div ref={this.catchContentElement} aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
+							<slot name="content" />
+						</div>
 					</div>
 				</div>
 			</Host>
@@ -149,7 +156,8 @@ export class KolAccordion implements API {
 	}
 
 	private onClick = (event: Event) => {
-		this._open = this._open === false;
+		this._open = !this._open;
+		this.resizeWrapper();
 
 		/**
 		 * Der Timeout wird benötigt, damit das Event
