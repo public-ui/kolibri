@@ -2,16 +2,16 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@public-ui/react':
-    specifier: 1.5.0-rc.18
-    version: 1.5.0-rc.18(@public-ui/components@1.5.0-rc.18)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.5.0-rc.20
+    version: 1.5.0-rc.20(@public-ui/components@1.5.0-rc.20)(react-dom@18.2.0)(react@18.2.0)
   preact:
     specifier: '>=10.11.3'
     version: 10.13.2
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.0-rc.18
-    version: 1.5.0-rc.18
+    specifier: 1.5.0-rc.20
+    version: 1.5.0-rc.20
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -447,8 +447,8 @@ packages:
   /@floating-ui/core@1.2.6:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
 
-  /@floating-ui/dom@1.2.6:
-    resolution: {integrity: sha512-02vxFDuvuVPs22iJICacezYJyf7zwwOCWkPNkWNBr1U0Qt1cKFYzWvxts0AmqcOQGwt/3KJWcWIgtbUU38keyw==}
+  /@floating-ui/dom@1.2.7:
+    resolution: {integrity: sha512-DyqylONj1ZaBnzj+uBnVfzdjjCkFCL2aA9ESHLyUOGSqb03RpbLMImP1ekIQXYs4KLk9jAjJfZAU8hXfWSahEg==}
     dependencies:
       '@floating-ui/core': 1.2.6
 
@@ -507,21 +507,21 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.5.0-rc.18:
-    resolution: {integrity: sha512-z0tIPKr9PMTOG4GOnpYpqPS2FZy2p2PmuEuTC+LdR2Xd3lfSDgCvxEhqCkn0l12tNSvU35c7FxZo+EXudhsDnQ==}
+  /@public-ui/components@1.5.0-rc.20:
+    resolution: {integrity: sha512-7ZRDuyFrD8+8BnD16ZZatl7PA1On8eOCkkaGvs/VVLBDv9c63WFsG7vpWKY1/Au9UHZ5xzLDHK4aZ/Dv/pMYjg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
-      '@floating-ui/dom': 1.2.6
+      '@floating-ui/dom': 1.2.7
       i18next: 22.4.15
 
-  /@public-ui/react@1.5.0-rc.18(@public-ui/components@1.5.0-rc.18)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-R8CGF1C4Drd9bKPY6WAxov0zBuo+9zRtg0VH7S4fR7QkwsU1dZCEScYoPnCtVJE64kWuU9RRYe4s2LBJNU8oFw==}
+  /@public-ui/react@1.5.0-rc.20(@public-ui/components@1.5.0-rc.20)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-VjxlRkVqRt/7f6pvzD3sr3beBi4nfdHaECI29WYfO21ljhqPK/JUpvP0v69zb+yjU5Atm531iRelSQymyEUiOA==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.18
+      '@public-ui/components': 1.5.0-rc.20
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.18
+      '@public-ui/components': 1.5.0-rc.20
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
