@@ -7,20 +7,15 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
  * Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-
-Einen Link kann man nicht deaktivieren und daher gibt es bei einem LinkButton nicht das Property `_disabled`.
-
-Da es die Komponente ButtonLink gibt, die semantisch ein Button und optisch ein Link ist. Ist es nicht mehr notwendig den Click-Callback zu unterstützen. Das Property `_on` wird somit als `deprecated` markiert und wird mit dem nächsten Major-Release entfernt.
-
-Ein Button hat aus UX-Sicht mehrere Varianten (`primary` oder `secondary` usw.). Damit der LinkButton das optisch gleich aussehen kann, wurden die Properties `_customClass` und `_variant` von der Button-Komponente übernommen.
+Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.
  */
 
 @Tag("kol-link-button")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-link-button")
 public class KolLinkButton extends Component {
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -29,7 +24,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return String
 	 */
@@ -154,6 +149,24 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
+	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 *
+	 * @param value String
+	 */
+	public void setDownload(final String value) {
+		getElement().setProperty("_download", value);
+	}
+
+	/**
+	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 *
+	 * @return String
+	 */
+	public String getDownload() {
+		return getElement().getProperty("_download", null);
+	}
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 *
 	 * @param value String
@@ -172,7 +185,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @param value String
 	 */
@@ -181,7 +194,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @return String
 	 */
@@ -208,7 +221,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text für das Text-Element an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @param value String
 	 */
@@ -217,7 +230,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text für das Text-Element an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @return String
 	 */
@@ -226,7 +239,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Setzt die Role der Schaltfläche.
 	 *
 	 * @param value String
 	 */
@@ -235,7 +248,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Setzt die Role der Schaltfläche.
 	 *
 	 * @return String
 	 */
@@ -262,7 +275,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 * Gibt an wo der Link geöffnet werden soll.
 	 *
 	 * @param value String
 	 */
@@ -271,7 +284,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 * Gibt an wo der Link geöffnet werden soll.
 	 *
 	 * @return String
 	 */
@@ -316,7 +329,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Gibt an, welche Ausprägung der Link-Button hat.
 	 *
 	 * @param value String
 	 */
@@ -325,7 +338,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Gibt an, welche Ausprägung der Link-Button hat.
 	 *
 	 * @return String
 	 */

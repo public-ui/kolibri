@@ -6,12 +6,11 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum
-InputText können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
+ * Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
  */
 
 @Tag("kol-textarea")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-textarea")
 public class KolTextarea extends Component {
 	/**
@@ -69,7 +68,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @param value String
 	 */
@@ -78,7 +77,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld aktiviert oder deaktiviert ist.
+	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
 	 * @return String
 	 */
@@ -105,7 +104,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
 	 *
 	 * @param value String
 	 */
@@ -114,7 +113,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob am unteren Rand des Eingabefeldes die Anzahl der Zeichen angezeigt werden soll.
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
 	 *
 	 * @return String
 	 */
@@ -123,7 +122,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @param value String
 	 */
@@ -132,7 +131,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld kein sichtbares Label haben soll.
+	 * Versteckt das sichtbare Label des Elements.
 	 *
 	 * @return String
 	 */
@@ -141,7 +140,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @param value String
 	 */
@@ -150,7 +149,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt den Text für eine Hinweistext an.
+	 * Gibt den Hinweistext an.
 	 *
 	 * @return String
 	 */
@@ -177,7 +176,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
+	 * Setzt die maximale Zeichenanzahl.
 	 *
 	 * @param value String
 	 */
@@ -186,7 +185,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
+	 * Setzt die maximale Zeichenanzahl.
 	 *
 	 * @return String
 	 */
@@ -231,7 +230,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 *
 	 * @param value String
 	 */
@@ -240,7 +239,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 *
 	 * @return String
 	 */
@@ -249,7 +248,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @param value String
 	 */
@@ -258,7 +257,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Eingabefeld ein Pflichtfeld ist.
+	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
 	 * @return String
 	 */
@@ -267,7 +266,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 *
 	 * @param value String
 	 */
@@ -276,7 +275,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Größe des Eingabefeldes geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 *
 	 * @return String
 	 */

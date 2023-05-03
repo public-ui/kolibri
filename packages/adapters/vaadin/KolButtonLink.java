@@ -18,7 +18,7 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
  */
 
 @Tag("kol-button-link")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-button-link")
 public class KolButtonLink extends Component {
 	/**
@@ -40,7 +40,7 @@ public class KolButtonLink extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -49,7 +49,7 @@ public class KolButtonLink extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return String
 	 */
@@ -156,7 +156,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @param value String
 	 */
@@ -165,7 +165,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @return String
 	 */
@@ -210,7 +210,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text für das Text-Element an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @param value String
 	 */
@@ -219,7 +219,7 @@ Aria-Label-Text mit dem Label-Text des Buttons beginnen.
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text für das Text-Element an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @return String
 	 */

@@ -60,12 +60,12 @@
 			<kol-link _href="https://public-ui.github.io" _target="github">
 				<kol-kolibri _labeled="false"></kol-kolibri>
 			</kol-link>
-			<kol-heading>Cheat Sheet</kol-heading>
+			<kol-heading _label="">Cheat Sheet</kol-heading>
 			<p><strong><kol-abbr _title="Komponenten-Bibliothek für die Barrierefreiheit" _tooltip-align="right">KoliBri</kol-abbr></strong> ist eine <strong>barrierefreie Komponenten-Bibliothek</strong> die sich durch separate Themes an unterschiedliche <strong>Styleguides</strong> und <strong>Design Systeme</strong> anpassen lässt.</p>
 			<p><kol-icon _aria-label="" _icon="fa-solid fa-arrow-right"></kol-icon> Link zur ausführliche <kol-link _href="https://public-ui.github.io" _target="github">Dokumentation</kol-link></p>
-			<kol-heading _level="2">Integration</kol-heading>
+			<kol-heading _label="" _level="2">Integration</kol-heading>
 			<p>Für eine hohe Flexibilität werden alle Teile (HTML, CSS, Fonts usw.) per Komposition-Prinzip beliebig mit einander kombiniert. Damit alles korrekt funktioniert, müssen alle Teile einer spezifischen Komposition eingebunden bzw. konfiguriert werden. In den folgenden Unterabschnitten wird die Integration am Beispiel des ITZBund-Themes gezeigt.</p>
-			<kol-heading _level="3">Assets</kol-heading>
+			<kol-heading _label="" _level="3">Assets</kol-heading>
 			<p><strong>Fonts</strong> und <strong>Icon-Fonts</strong> müssen im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite eingebunden werden.</p>
 			<pre>
 				<code class="language-html">&#60;head&#62;
@@ -73,7 +73,7 @@
 	&#60;link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet"&#62;
 &#60;/head&#62;</code>
 			</pre>
-			<kol-heading _level="3">Loader</kol-heading>
+			<kol-heading _label="" _level="3">Loader</kol-heading>
 			<p>Mit <strong>KoliBri</strong> ist es möglich unterschiedliche Themes mit den Komponenten zu kombinieren. Die Verknüpfung erfolgt über die <strong>Register</strong>-Methode. Ihr können eine oder mehrere Loader für die Custom-Elements und Themes übergeben werden.</p>
 			<pre>
 				<code class="language-html">&#60;head&#62;
@@ -87,21 +87,21 @@
 	&#60;/script&#62;
 &#60;/head&#62;</code>
 			</pre>
-			<kol-heading _level="3">Config</kol-heading>
+			<kol-heading _label="" _level="3">Config</kol-heading>
 			<p>Wenn ein Theme registriert wird, werden alle darin enthaltenen <strong>CSS-Properties</strong> unter dem Theme-Namen als CSS-Klasse im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite hinzugefügt. So wird es ermöglicht, dass diese CSS-Properties in eigenem CSS für das "umrahmende" HTML wiederverwendet werden können. Damit das funktioniert, muss die CSS-Klasse mit dem Theme-Namen z.B. am <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;body&#62;</code> gesetzt werden.</p>
 			<pre>
 				<code class="language-html">&#60;body class="itzbund" data-theme="itzbund"&#62;
 	...
 &#60;/body&#62;</code>
 		</pre>
-		<kol-heading _level="3">VSCode</kol-heading>
+		<kol-heading _label="" _level="3">VSCode</kol-heading>
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
 		<pre>
 			<code class="language-json">{
 	"html.customData": ["./node_modules/@public-ui/components/vscode-custom-data.json"]
 }</code>
 		</pre>
-		<kol-heading _level="3">Dev-Tools</kol-heading>
+		<kol-heading _label="" _level="3">Dev-Tools</kol-heading>
 		<p>KoliBri hat zahlreiche Hinweise für die Barrierefreiheit und Verwendung der Komponenten für die Entwicklung eingebaut. Damit die Hinweise in der Konsole des Browsers angezeigt werden, muss folgende Definition im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite hinzugefügt werden.</p>
 		<pre>
 			<code class="language-html">&#60;head&#62;
@@ -125,13 +125,13 @@
 			</pre>
 		</kol-details>
 		<br>
-		<kol-heading _level="2">Usage</kol-heading>
+		<kol-heading _label="" _level="2">Usage</kol-heading>
 		<p>KoliBri-Komponenten sind wie eigenen HTML-Tags und werden einfach als solche im "umrahmenden" HTML (Responsiveness, Grid usw.) wiederverwendet und deren Ausprägung mittels der Komponenten-Eigenschaften bestimmt.</p>
 		<pre>
 			<code class="language-html">&#60;kol-input-text _id="surname" _required _value="Mustermann"&#62;Surname&#60;/kol-input-text&#62;
 &#60;kol-spin _show&#62;&#60;/kol-spin&#62;</code>
 	</pre>
-			<kol-heading _level="2">Components</kol-heading>
+			<kol-heading _label="" _level="2">Components</kol-heading>
 			<p>In der folgenden Tabelle werden alle Komponenten erläutert und deren jeweiligen Eigenschaften aufgelistet.</p>
 			<kol-table id="components" _caption="Available components"></kol-table>
 			<script>
@@ -168,6 +168,10 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 	props: `_heading, _level, _open`
 },{
 	name: `alert`,
+	desc: `Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ '_type' des Alert.`,
+	props: `_alert, _has-closer, _heading, _level, _type, _variant`
+},{
+	name: `alert-wc`,
 	desc: `Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie besteht aus einem farblich gestalteten Container, einer Überschrift, einem Inhaltstext sowie einem Icon. Das verwendete Icon und die farbliche Gestaltung sind abhängig vom Typ '_type' des Alert.`,
 	props: `_alert, _has-closer, _heading, _level, _type, _variant`
 },{
@@ -294,12 +298,12 @@ Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _href, _icon, _icon-align, _icon-only, _label, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _use-case`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _disabled, _download, _href, _icon, _icon-align, _icon-only, _label, _role, _selector, _stealth, _tab-index, _target, _target-description, _tooltip-align, _use-case`
 },{
 	name: `link-button`,
 	desc: `Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
 Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.`,
-	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
+	props: `_aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _download, _href, _icon, _icon-only, _label, _role, _tab-index, _target, _target-description, _tooltip-align, _variant`
 },{
 	name: `modal`,
 	desc: `Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
@@ -325,11 +329,11 @@ noch die Icons ausgegeben.`,
 	name: `popover`,
 	desc: `Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
 Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).`,
-	props: `_alignment, _open`
+	props: `_alignment, _show`
 },{
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
-	props: `_max, _type, _unit, _value`
+	props: `_label, _max, _type, _unit, _value`
 },{
 	name: `quote`,
 	desc: `Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('inline') und eine eingerückte('block') Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.`,
@@ -346,6 +350,10 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 	name: `spin`,
 	desc: `Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.`,
 	props: `_show`
+},{
+	name: `split-button`,
+	desc: ``,
+	props: `_access-key, _aria-controls, _aria-current, _aria-expanded, _aria-label, _aria-selected, _custom-class, _disabled, _hide-label, _icon, _icon-only, _label, _role, _show-dropdown, _tab-index, _tooltip-align, _type, _variant`
 },{
 	name: `symbol`,
 	desc: `Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerbarer Ausgabe durch den Screenreader.`,
@@ -387,7 +395,7 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },
 				];
 			</script>
-			<kol-heading _level="2">Properties</kol-heading>
+			<kol-heading _label="" _level="2">Properties</kol-heading>
 			<p>In der folgenden Tabelle werden alle Eigenschaften der Häufigkeit nach erläutert und jeweils die Komponenten aufgelistet, wo sie verwendet werden..</p>
 			<kol-table id="properties" _caption="Available properties"></kol-table>
 			<script>
@@ -420,17 +428,17 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_tab-index`,
 	desc: `Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
 	types: `number`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea`
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_disabled`,
 	desc: `Gibt an, ob der Button deaktiviert ist.`,
 	types: `boolean`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, textarea`
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, select, split-button, textarea`
 },{
 	name: `_icon`,
 	desc: `Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.`,
 	types: `KoliBriHorizontalIcon & KoliBriVerticalIcon | string, string, string | { checked: string; indeterminate?: string | undefined; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate: string; unchecked?: string | undefined; } & { checked?: string | undefined; indeterminate?: string | undefined; unchecked: string; }, string | { right?: IconOrIconClass | undefined; left?: IconOrIconClass | undefined; }`,
-	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select`
+	comps: `badge, button, button-link, icon, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-range, input-text, link, link-button, select, split-button`
 },{
 	name: `_id`,
 	desc: `Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.`,
@@ -440,17 +448,22 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_alert`,
 	desc: `Gibt an, ob der Screenreader die Meldung vorlesen soll.`,
 	types: `boolean`,
-	comps: `alert, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, toast`
+	comps: `alert, alert-wc, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea, toast`
 },{
 	name: `_access-key`,
 	desc: `Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.`,
 	types: `string`,
-	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
+	comps: `button, button-link, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
 	name: `_value`,
 	desc: `Gibt an, wie weit die Anzeige fortgeschritten ist.`,
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null, W3CInputValue[] | string, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | null | number, number, number | string, string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, progress, select, textarea`
+},{
+	name: `_hide-label`,
+	desc: `Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.`,
+	types: `boolean`,
+	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, split-button, textarea`
 },{
 	name: `_touched`,
 	desc: `Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.`,
@@ -467,11 +480,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
 },{
-	name: `_hide-label`,
-	desc: `Versteckt das sichtbare Label des Elements.`,
-	types: `boolean`,
-	comps: `input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, select, textarea`
-},{
 	name: `_error`,
 	desc: `Gibt den Text für eine Fehlermeldung an.`,
 	types: `string`,
@@ -480,92 +488,97 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	name: `_aria-label`,
 	desc: `Gibt an, was der Screenreader ausgeben soll`,
 	types: `string`,
-	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, symbol, tabs`
+	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, split-button, symbol, tabs`
+},{
+	name: `_type`,
+	desc: `Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
+	types: `"bar" | "cycle", "button" | "checkbox" | "default" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
+	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, split-button, toast`
 },{
 	name: `_required`,
 	desc: `Macht das Eingabeelement zu einem Pflichtfeld.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
 },{
-	name: `_type`,
-	desc: `Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
-	types: `"bar" | "cycle", "button" | "checkbox" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
-	comps: `alert, button, button-link, input-checkbox, input-date, input-number, input-text, progress, toast`
+	name: `_variant`,
+	desc: `Gibt an, welche Ausprägung der Button hat.`,
+	types: `"block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
+	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, quote, split-button`
+},{
+	name: `_label`,
+	desc: `Gibt den Text der Überschrift an.`,
+	types: `string`,
+	comps: `badge, button, button-link, heading, link, link-button, progress, split-button, tooltip`
 },{
 	name: `_list`,
 	desc: `Gibt den technischen Namen des Eingabefeldes an.`,
 	types: `Option<W3CInputValue>[] | string, Option<number>[] | string, SelectOption<W3CInputValue>[] | string, string | string[]`,
 	comps: `input-color, input-date, input-email, input-number, input-radio, input-range, input-text, select`
 },{
-	name: `_variant`,
-	desc: `Gibt an, welche Ausprägung der Button hat.`,
-	types: `"block" | "inline", "button" | "checkbox" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
-	comps: `alert, button, input-checkbox, link-button, nav, pagination, quote`
-},{
-	name: `_label`,
-	desc: `Gibt den Text der Überschrift an.`,
-	types: `string`,
-	comps: `badge, button, button-link, heading, link, link-button, tooltip`
+	name: `_tooltip-align`,
+	desc: `Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `abbr, button, button-link, link, link-button, pagination, split-button`
 },{
 	name: `_auto-complete`,
 	desc: `Gibt an, ob das Eingabefeld autovervollständigt werden kann.`,
 	types: `"off" | "on"`,
 	comps: `input-color, input-date, input-email, input-number, input-password, input-range, input-text`
 },{
-	name: `_tooltip-align`,
-	desc: `Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `abbr, button, button-link, link, link-button, pagination`
-},{
 	name: `_read-only`,
 	desc: `Setzt das Eingabefeld in den schreibgeschützten Modus.`,
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
+},{
+	name: `_level`,
+	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.`,
+	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
+	comps: `accordion, alert, alert-wc, card, heading, toast`
+},{
+	name: `_icon-only`,
+	desc: `Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.`,
+	types: `boolean`,
+	comps: `badge, button, button-link, link, link-button, split-button`
+},{
+	name: `_role`,
+	desc: `Gibt an, welche Role der Schalter hat.`,
+	types: `"button" | "link" | "tab"`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-selected`,
+	desc: `Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
+	types: `boolean`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-expanded`,
+	desc: `Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
+	types: `boolean`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-current`,
+	desc: `Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
+	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
+	comps: `button, button-link, link, link-button, split-button`
+},{
+	name: `_aria-controls`,
+	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
+	types: `string`,
+	comps: `button, button-link, link, link-button, split-button`
 },{
 	name: `_placeholder`,
 	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
 	types: `string`,
 	comps: `input-email, input-number, input-password, input-text, textarea`
 },{
-	name: `_level`,
-	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.`,
-	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
-	comps: `accordion, alert, card, heading, toast`
-},{
-	name: `_icon-only`,
-	desc: `Gibt an, ob nur das Icon angezeigt wird.`,
-	types: `boolean`,
-	comps: `badge, button, button-link, link, link-button`
+	name: `_heading`,
+	desc: `Gibt den Titel der Meldung an.`,
+	types: `string`,
+	comps: `accordion, alert, alert-wc, card, toast`
 },{
 	name: `_size`,
 	desc: `Setzt die Breite des Eingabefeldes in Buchstabenbreiten.`,
 	types: `number`,
 	comps: `input-email, input-password, input-text, select`
-},{
-	name: `_role`,
-	desc: `Gibt an, welche Role der Schalter hat.`,
-	types: `"button" | "link" | "tab"`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-selected`,
-	desc: `Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)`,
-	types: `boolean`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-expanded`,
-	desc: `Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)`,
-	types: `boolean`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-current`,
-	desc: `Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)`,
-	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
-	comps: `button, button-link, link, link-button`
-},{
-	name: `_aria-controls`,
-	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
-	types: `string`,
-	comps: `button, button-link, link, link-button`
 },{
 	name: `_max-length`,
 	desc: `Gibt an, wie viele Zeichen man maximal eingeben kann.`,
@@ -577,10 +590,10 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range, progress`
 },{
-	name: `_heading`,
-	desc: `Gibt den Titel der Meldung an.`,
+	name: `_custom-class`,
+	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
 	types: `string`,
-	comps: `accordion, alert, card, toast`
+	comps: `button, link-button, pagination, split-button`
 },{
 	name: `_step`,
 	desc: `Gibt die Schrittweite der Wertveränderung an`,
@@ -592,15 +605,15 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `Date | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96;, &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}T&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-&#36;{number}&#96; | &#96;&#36;{number}-W&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}:&#36;{number}&#96; | &#96;&#36;{number}:&#36;{number}&#96; | number, number`,
 	comps: `input-date, input-number, input-range`
 },{
+	name: `_show`,
+	desc: `Gibt an, ob der Toast eingeblendet wird.`,
+	types: `boolean`,
+	comps: `popover, spin, toast`
+},{
 	name: `_pattern`,
 	desc: `Gibt ein Prüfmuster für das Eingabefeld an.`,
 	types: `string`,
 	comps: `input-email, input-password, input-text`
-},{
-	name: `_open`,
-	desc: `Gibt an, ob das Accordion geöffnet ist.`,
-	types: `boolean`,
-	comps: `accordion, details, popover`
 },{
 	name: `_multiple`,
 	desc: `Gibt an, ob mehrere Werte eingegeben werden können.`,
@@ -617,10 +630,10 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `link, link-button, quote`
 },{
-	name: `_custom-class`,
-	desc: `Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.`,
-	types: `string`,
-	comps: `button, link-button, pagination`
+	name: `_has-closer`,
+	desc: `Aktiviert das Schließen-Icon.`,
+	types: `boolean`,
+	comps: `alert, alert-wc, toast`
 },{
 	name: `_target-description`,
 	desc: `Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.`,
@@ -632,25 +645,25 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `link, link-button`
 },{
-	name: `_show`,
-	desc: `Gibt an, ob der Toast eingeblendet wird.`,
-	types: `boolean`,
-	comps: `spin, toast`
+	name: `_download`,
+	desc: `Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.`,
+	types: `boolean | string`,
+	comps: `link, link-button`
 },{
 	name: `_orientation`,
 	desc: `Gibt die Ausrichtung der LinkList an.`,
 	types: `"horizontal" | "vertical"`,
 	comps: `input-radio, nav`
 },{
+	name: `_open`,
+	desc: `Gibt an, ob das Accordion geöffnet ist.`,
+	types: `boolean`,
+	comps: `accordion, details`
+},{
 	name: `_icon-align`,
 	desc: `Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.`,
 	types: `"bottom" | "left" | "right" | "top"`,
 	comps: `button, link`
-},{
-	name: `_has-closer`,
-	desc: `Aktiviert das Schließen-Icon.`,
-	types: `boolean`,
-	comps: `alert, toast`
 },{
 	name: `_caption`,
 	desc: `Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.`,
@@ -786,6 +799,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.`,
 	types: `number`,
 	comps: `toast`
+},{
+	name: `_show-dropdown`,
+	desc: `Gibt an, welche Rolle der Schalter hat.`,
+	types: `boolean`,
+	comps: `split-button`
 },{
 	name: `_secondary-headline`,
 	desc: `Gibt den Text der zusätzlichen Überschrift an.`,

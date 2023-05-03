@@ -6,17 +6,15 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * The quote component is implemented in two variants. The first variant is the default `short` variant as inline quote with quotation marks. The second variant is the indented `long` variant. The indented variant is used to highlight a text passage or information visually.
-
-Both variants can be extended with a `cite` element. The `cite` element is used to identify the source of a quotation and will be displayed below the quote as a link.
+ * Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`inline`) und eine eingerückte(`block`) Variante. Beide Varianten enthalten einen Link auf die Quelle des Zitates.
  */
 
 @Tag("kol-quote")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-quote")
 public class KolQuote extends Component {
 	/**
-	 * The caption of the quote.
+	 * Setzt die Überschrift.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +23,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * The caption of the quote.
+	 * Setzt die Überschrift.
 	 *
 	 * @return String
 	 */
@@ -34,7 +32,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * The href is a URL that designates a source document or message for the information quoted.
+	 * Link auf die Quelle des Zitates.
 	 *
 	 * @param value String
 	 */
@@ -43,7 +41,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * The href is a URL that designates a source document or message for the information quoted.
+	 * Link auf die Quelle des Zitates.
 	 *
 	 * @return String
 	 */
@@ -52,7 +50,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * The text of the quote.
+	 * Setzt den Text, also das Zitat selbst.
 	 *
 	 * @param value String
 	 */
@@ -61,7 +59,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * The text of the quote.
+	 * Setzt den Text, also das Zitat selbst.
 	 *
 	 * @return String
 	 */
@@ -70,7 +68,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * The variant of the quote.
+	 * Setzt die Variante des Zitats.
 	 *
 	 * @param value String
 	 */
@@ -79,7 +77,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * The variant of the quote.
+	 * Setzt die Variante des Zitats.
 	 *
 	 * @return String
 	 */

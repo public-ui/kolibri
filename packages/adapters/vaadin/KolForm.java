@@ -10,11 +10,11 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-form")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-form")
 public class KolForm extends Component {
 	/**
-	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
 	 *
 	 * @param value String
 	 */
@@ -23,7 +23,7 @@ public class KolForm extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll.
+	 * Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext.
 	 *
 	 * @return String
 	 */

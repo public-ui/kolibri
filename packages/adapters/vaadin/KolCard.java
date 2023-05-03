@@ -11,15 +11,15 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 Die **Card**-Komponente besteht aus einem **_Titel-Bereich_**, einem **_Inhalts-Bereich_** und einem **_Fuß-Bereich_**.
 
 Der **Titel-Bereich** wird in einer größeren Schrift dargestellt. Der **Inhalts-Bereich** ist optisch durch eine horizontale Trennlinie unterhalb des Titel-Bereichs abgetrennt und wird in der Standardschrift ausgegeben.
-Der **Fuß-Bereich** wird optional durch ein Attribut aktiviert und stellt dann Platz für weitere Inhalte, z.B. eine **Button**-Komponente bereit. Der Fuß-Bereich ist optisch durch eine horizontale Trennlinie vom Inhalts-Bereich abgetrennt.
+Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktiviert und stellt dann Platz für weitere Inhalte, z.B. eine **Button**-Komponente bereit. Der Fuß-Bereich ist optisch durch eine horizontale Trennlinie vom Inhalts-Bereich abgetrennt.
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**
-	 * Gibt an, ob die Card einen Footer-Bereich hat.
+	 * Macht den Footerbereich der Card sichtbar.
 	 *
 	 * @param value String
 	 */
@@ -28,7 +28,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Card einen Footer-Bereich hat.
+	 * Macht den Footerbereich der Card sichtbar.
 	 *
 	 * @return String
 	 */
@@ -73,7 +73,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
 	 * @param value String
 	 */
@@ -82,7 +82,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
 	 * @return String
 	 */

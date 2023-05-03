@@ -10,11 +10,11 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-image")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-image")
 public class KolImage extends Component {
 	/**
-	 * Gibt den alternativen Text an.
+	 * Setzt den alternativen Text.
 	 *
 	 * @param value String
 	 */
@@ -23,7 +23,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Gibt den alternativen Text an.
+	 * Setzt den alternativen Text.
 	 *
 	 * @return String
 	 */
@@ -32,7 +32,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Gibt den Lademodus an.
+	 * Setzt den Lademodus.
 	 *
 	 * @param value String
 	 */
@@ -41,7 +41,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Gibt den Lademodus an.
+	 * Setzt den Lademodus.
 	 *
 	 * @return String
 	 */
@@ -50,7 +50,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * ...
+	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
 	 *
 	 * @param value String
 	 */
@@ -59,7 +59,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * ...
+	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
 	 *
 	 * @return String
 	 */
@@ -68,7 +68,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Gibt die Quell-URL an.
+	 * Setzt die Quell-URL des Bildes.
 	 *
 	 * @param value String
 	 */
@@ -77,7 +77,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Gibt die Quell-URL an.
+	 * Setzt die Quell-URL des Bildes.
 	 *
 	 * @return String
 	 */
@@ -86,7 +86,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+	 * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
 	 *
 	 * @param value String
 	 */
@@ -95,7 +95,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Gibt eine Liste von Quell-URLs mit Breiten der Bilder an.
+	 * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
 	 *
 	 * @return String
 	 */
