@@ -7,20 +7,17 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
  * Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
-Möglich ist auch die Ausgabe eines versteckten Links.
-
-Der Link wird standardmäßig in klassischer Form mit Unterstrich ausgegeben, der jedoch über ein Attribut auch ohne CSS entfernt werden kann. Weitere Informationen zu Custom Styles finden Sie weiter unten.
 
 Beachten Sie, dass die Komponente automatisch ein Padding links und rechts zum umgebenden Text erzeugt. Sie kann daher im Fließtext ohne
 Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern den Abstand zum umgebenden Text.
  */
 
 @Tag("kol-link")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-link")
 public class KolLink extends Component {
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @param value String
 	 */
@@ -29,7 +26,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Elemente kontrolliert werden.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
 	 * @return String
 	 */
@@ -128,6 +125,24 @@ public class KolLink extends Component {
 	}
 
 	/**
+	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 *
+	 * @param value String
+	 */
+	public void setDownload(final String value) {
+		getElement().setProperty("_download", value);
+	}
+
+	/**
+	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 *
+	 * @return String
+	 */
+	public String getDownload() {
+		return getElement().getProperty("_download", null);
+	}
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 *
 	 * @param value String
@@ -146,7 +161,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @param value String
 	 */
@@ -155,7 +170,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt den Class-Identifier eines Icons eine eingebunden Icofont an. (z.B. https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @return String
 	 */
@@ -200,7 +215,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @param value String
 	 */
@@ -209,7 +224,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt den Label für die Beschriftung der Schaltfläche an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @return String
 	 */
@@ -218,7 +233,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle das Element hat.
 	 *
 	 * @param value String
 	 */
@@ -227,7 +242,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle das Element hat.
 	 *
 	 * @return String
 	 */
@@ -290,7 +305,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 * Gibt an wo der Link geöffnet werden soll.
 	 *
 	 * @param value String
 	 */
@@ -299,7 +314,7 @@ public class KolLink extends Component {
 	}
 
 	/**
-	 * Definiert das Verhalten, bei dem der Link geöffnet werden soll.
+	 * Gibt an wo der Link geöffnet werden soll.
 	 *
 	 * @return String
 	 */

@@ -10,9 +10,27 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-progress")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
+	/**
+	 * Setzt die Bezeichnung der Fortschrittsanzeige.
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Setzt die Bezeichnung der Fortschrittsanzeige.
+	 *
+	 * @return String
+	 */
+	public String getLabel() {
+		return getElement().getProperty("_label", null);
+	}
+
 	/**
 	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
 	 *
@@ -50,7 +68,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt die Einheit der Fortschrittswerte an.
+	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
 	 *
 	 * @param value String
 	 */
@@ -59,7 +77,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt die Einheit der Fortschrittswerte an.
+	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
 	 *
 	 * @return String
 	 */

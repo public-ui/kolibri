@@ -8,11 +8,11 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 /**
  * Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
 
-Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für fünf Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.
+Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster für zehn Sekunden angezeigt. Mit Ausblenden des **Toasts** wird dieser automatisch aus dem DOM entfernt. Wird er erneut benötigt, muss er z.B. über eine JavaScript-Funktion nachgeladen werden.
  */
 
 @Tag("kol-toast")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**
@@ -34,7 +34,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Toast ein Schließen-Icon hat.
+	 * Aktiviert das Schließen-Icon.
 	 *
 	 * @param value String
 	 */
@@ -43,7 +43,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Toast ein Schließen-Icon hat.
+	 * Aktiviert das Schließen-Icon.
 	 *
 	 * @return String
 	 */

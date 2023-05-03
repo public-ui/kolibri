@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-heading")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-heading")
 public class KolHeading extends Component {
 	/**
@@ -18,8 +18,8 @@ public class KolHeading extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHeadline(final String value) {
-		getElement().setProperty("_headline", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value);
 	}
 
 	/**
@@ -27,8 +27,8 @@ public class KolHeading extends Component {
 	 *
 	 * @return String
 	 */
-	public String getHeadline() {
-		return getElement().getProperty("_headline", null);
+	public String getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**

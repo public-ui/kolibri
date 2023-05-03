@@ -11,11 +11,11 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.8")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
-	 * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+	 * Setzt die Hintergrundfarbe.
 	 *
 	 * @param value String
 	 */
@@ -24,7 +24,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Gibt die Farbe des Hintergrundes bzw. der Schrift an.
+	 * Setzt die Hintergrundfarbe.
 	 *
 	 * @return String
 	 */
@@ -33,7 +33,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @param value String
 	 */
@@ -42,7 +42,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Gibt einen Identifier eines Icons aus den Icofont's an. (https://icofont.com/)
+	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @return String
 	 */
@@ -69,7 +69,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Gibt den Label-Text des Badges an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @param value String
 	 */
@@ -78,7 +78,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Gibt den Label-Text des Badges an.
+	 * Setzt den sichtbaren Text des Elements.
 	 *
 	 * @return String
 	 */

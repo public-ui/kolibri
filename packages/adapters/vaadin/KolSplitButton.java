@@ -6,13 +6,13 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * **Buttons** dienen dazu, Benutzer:innen Auswahlmöglichkeiten für Aktionen anzuzeigen und diese in einer klaren Hierarchie anzuordnen. Sie helfen Nutzer:innen, die wichtigsten Aktionen einer Seite oder innerhalb eines Viewports zu finden und ermöglichen es ihnen, diese Aktionen auszuführen. Die Beschriftung des Buttons wird verwendet, um Nutzer:innen klar anzuzeigen, welche Aktion ausgelöst wird. Buttons ermöglichen es Nutzer:innen, eine Änderung zu bestätigen, Schritte in einer Aufgabe abzuschließen oder Entscheidungen zu treffen.
+ * 
  */
 
-@Tag("kol-button")
+@Tag("kol-split-button")
 @NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
-@JsModule("@public-ui/components/dist/components/kol-button")
-public class KolButton extends Component {
+@JsModule("@public-ui/components/dist/components/kol-split-button")
+public class KolSplitButton extends Component {
 	/**
 	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
 	 *
@@ -86,7 +86,11 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
+Sprachsteuerung von interaktiven Elementen funktioniert, muss der
+Aria-Label-Text mit dem Label-Text des Buttons beginnen.
+
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 *
 	 * @param value String
 	 */
@@ -95,7 +99,11 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
+Sprachsteuerung von interaktiven Elementen funktioniert, muss der
+Aria-Label-Text mit dem Label-Text des Buttons beginnen.
+
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
 	 *
 	 * @return String
 	 */
@@ -158,6 +166,24 @@ public class KolButton extends Component {
 	}
 
 	/**
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 *
+	 * @param value String
+	 */
+	public void setHideLabel(final String value) {
+		getElement().setProperty("_hide-label", value);
+	}
+
+	/**
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 *
+	 * @return String
+	 */
+	public String getHideLabel() {
+		return getElement().getProperty("_hide-label", null);
+	}
+
+	/**
 	 * Iconklasse (z.B.: "codicon codicon-home")
 	 *
 	 * @param value String
@@ -176,25 +202,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
-	 *
-	 * @param value String
-	 */
-	public void setIconAlign(final String value) {
-		getElement().setProperty("_icon-align", value);
-	}
-
-	/**
-	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
-	 *
-	 * @return String
-	 */
-	public String getIconAlign() {
-		return getElement().getProperty("_icon-align", null);
-	}
-
-	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
 	 *
 	 * @param value String
 	 */
@@ -203,30 +211,12 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
 	 *
 	 * @return String
 	 */
 	public String getIconOnly() {
 		return getElement().getProperty("_icon-only", null);
-	}
-
-	/**
-	 * Gibt die ID der Schaltfläche an.
-	 *
-	 * @param value String
-	 */
-	public void setId(final String value) {
-		getElement().setProperty("_id", value);
-	}
-
-	/**
-	 * Gibt die ID der Schaltfläche an.
-	 *
-	 * @return String
-	 */
-	public String getId() {
-		return getElement().getProperty("_id", null);
 	}
 
 	/**
@@ -248,7 +238,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle der Schalter hat.
 	 *
 	 * @param value String
 	 */
@@ -257,12 +247,30 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt an, welche Rolle der Schalter hat.
 	 *
 	 * @return String
 	 */
 	public String getRole() {
 		return getElement().getProperty("_role", null);
+	}
+
+	/**
+	 * Gibt an, welche Rolle der Schalter hat.
+	 *
+	 * @param value String
+	 */
+	public void setShowDropdown(final String value) {
+		getElement().setProperty("_show-dropdown", value);
+	}
+
+	/**
+	 * Gibt an, welche Rolle der Schalter hat.
+	 *
+	 * @return String
+	 */
+	public String getShowDropdown() {
+		return getElement().getProperty("_show-dropdown", null);
 	}
 
 	/**
@@ -284,7 +292,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
 	 *
 	 * @param value String
 	 */
@@ -293,7 +301,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
 	 *
 	 * @return String
 	 */
@@ -302,7 +310,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Typ der Button hat.
+	 * Setzt den Typ der Schaltfläche.
 	 *
 	 * @param value String
 	 */
@@ -311,7 +319,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Typ der Button hat.
+	 * Setzt den Typ der Schaltfläche.
 	 *
 	 * @return String
 	 */
