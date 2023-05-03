@@ -13,10 +13,12 @@
 	 */
 	box-sizing: border-box;
 }
+/* Why not place-content? */
 kol-span-wc {
 	display: grid;
 	place-items: center;
 }
+/* What is this targeting? */
 kol-span-wc > span {
 	display: flex;
 	place-items: center;
@@ -25,6 +27,7 @@ a,
 button {
 	cursor: pointer;
 }
+/* font-family is inherited by default, why is this needed? */
 a,
 button,
 input,
@@ -33,6 +36,7 @@ select,
 textarea {
 	font-family: inherit;
 }
+/* What is this targeting? */
 .icon-only > kol-span-wc > span > span {
 	display: none;
 }
