@@ -67,6 +67,7 @@
 | _tooltip-align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`). |
 | _auto-complete | "off" &#124; "on" | Gibt an, ob das Eingabefeld autovervollständigt werden kann. |
 | _read-only | boolean | Setzt das Eingabefeld in den schreibgeschützten Modus. |
+| _placeholder | string | Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist. |
 | _level | 0 &#124; 1 &#124; 2 &#124; 3 &#124; 4 &#124; 5 &#124; 6 | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. |
 | _level | 0 &#124; 1 &#124; 2 &#124; 3 &#124; 4 &#124; 5 &#124; 6 | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt. |
 | _level | 0 &#124; 1 &#124; 2 &#124; 3 &#124; 4 &#124; 5 &#124; 6 | Setzt den H-Level, von 1 bis 6, der Überschrift. |
@@ -83,7 +84,6 @@
 | _aria-current | "date" &#124; "location" &#124; "page" &#124; "step" &#124; "time" &#124; boolean | Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) |
 | _aria-current | "date" &#124; "location" &#124; "page" &#124; "step" &#124; "time" &#124; boolean | Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) |
 | _aria-controls | string | Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls) |
-| _placeholder | string | Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist. |
 | _heading | string | Gibt den Titel der Meldung an. |
 | _heading | string | Gibt die Überschrift der Card an. |
 | _heading | string | Gibt die Überschrift des Accordions an. |
@@ -129,8 +129,6 @@
 | _stealth | boolean | Gibt an, ob der Link nur beim Fokus sichtbar ist. |
 | _selector | string | Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus. |
 | _unit | string | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt) |
-| _show-unit | boolean | Zeigt die Einheit der Fortschrittswerte an. |
-| _description | string | Setzt die Beschreibung der Fortschrittsanzeige. |
 | _total | number | Setzt die Gesamtanzahl der Seiten. |
 | _sibling-count | number | Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden. |
 | _page-size-options | number[] &#124; string | Setzt die Optionen für das Seitenlängenselect. |

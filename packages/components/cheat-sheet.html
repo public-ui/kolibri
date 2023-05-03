@@ -530,6 +530,11 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `boolean`,
 	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
+	name: `_placeholder`,
+	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
+	types: `string`,
+	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
+},{
 	name: `_level`,
 	desc: `Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.`,
 	types: `0 | 1 | 2 | 3 | 4 | 5 | 6`,
@@ -564,11 +569,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	desc: `Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)`,
 	types: `string`,
 	comps: `button, button-link, link, link-button, split-button`
-},{
-	name: `_placeholder`,
-	desc: `Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.`,
-	types: `string`,
-	comps: `input-date, input-email, input-number, input-password, input-text, textarea`
 },{
 	name: `_heading`,
 	desc: `Gibt den Titel der Meldung an.`,
@@ -692,16 +692,6 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 },{
 	name: `_unit`,
 	desc: `Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)`,
-	types: `string`,
-	comps: `progress`
-},{
-	name: `_show-unit`,
-	desc: `Zeigt die Einheit der Fortschrittswerte an.`,
-	types: `boolean`,
-	comps: `progress`
-},{
-	name: `_description`,
-	desc: `Setzt die Beschreibung der Fortschrittsanzeige.`,
 	types: `string`,
 	comps: `progress`
 },{
