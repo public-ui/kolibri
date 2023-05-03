@@ -63,10 +63,6 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 
 ## Dependencies
 
-### Used by
-
-- [kol-input-date](../input-date)
-
 ### Depends on
 
 - kol-input
@@ -87,7 +83,6 @@ graph TD;
   kol-alert-wc --> kol-heading-wc
   kol-alert-wc --> kol-button-wc
   kol-alert-wc --> kol-icon
-  kol-input-date --> kol-input-number
   style kol-input-number fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
