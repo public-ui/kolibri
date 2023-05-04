@@ -31,3 +31,7 @@ div.pagination > div:last-child {
 		display: flex;
 	}
 }
+
+:host {
+	display: flex;
+}

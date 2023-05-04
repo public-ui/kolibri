@@ -2211,6 +2211,10 @@ export namespace Components {
           * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Setzt die Pagination unter die Tabelle.
+         */
+        "_paginationBottom"?: boolean;
     }
     interface KolTabs {
         /**
@@ -4938,6 +4942,10 @@ declare namespace LocalJSX {
           * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Setzt die Pagination unter die Tabelle.
+         */
+        "_paginationBottom"?: boolean;
     }
     interface KolTabs {
         /**
