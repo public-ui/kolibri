@@ -18,7 +18,6 @@ kol-span-wc {
 	display: grid;
 	place-items: center;
 }
-/* What is this targeting? */
 /* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
 kol-span-wc > span {
 	display: flex;
