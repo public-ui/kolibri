@@ -1,7 +1,7 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
 
-/* What is this targeting? */
+/* Inside a button the label text ist alwaiys centered - so we need text align left. */
 .accordion kol-heading-wc kol-button-wc button kol-span-wc {
 	justify-items: start;
 }
