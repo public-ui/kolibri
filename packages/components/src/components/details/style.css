@@ -20,3 +20,20 @@ details[open] > summary > span {
 details > kol-indented-text {
 	margin: 0.25em 0 0 0.5em;
 }
+
+@keyframes details-show {
+	to {
+		opacity: 1;
+		scale: 1;
+	}
+}
+
+.content {
+	opacity: 0;
+	scale: 1 0;
+	transform-origin: top;
+}
+
+details[open] > .content {
+	animation: details-show 250ms ease-in-out forwards;
+}

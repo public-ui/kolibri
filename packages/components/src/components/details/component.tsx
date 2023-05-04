@@ -42,7 +42,7 @@ export class KolDetails implements Generic.Element.ComponentApi<RequiredProps, O
 						)}
 						<span>{this.state._summary}</span>
 					</summary>
-					<kol-indented-text>
+					<kol-indented-text class="content">
 						<slot />
 					</kol-indented-text>
 				</details>

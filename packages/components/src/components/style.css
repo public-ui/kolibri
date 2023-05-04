@@ -27,8 +27,7 @@ a,
 button {
 	cursor: pointer;
 }
-/* font-family is NOT inherited all HTML elements. We should set it hard. */
-a,
+/* font-family is NOT inherited all HTML elements. */
 button,
 input,
 option,
@@ -36,7 +35,7 @@ select,
 textarea {
 	font-family: inherit;
 }
-/* That is the icon only (hide label) case, where the label text is hide. */
+/* This is the text label. */
 .icon-only > kol-span-wc > span > span {
 	display: none;
 }
