@@ -6,7 +6,7 @@
 	justify-items: start;
 }
 
-.content_wrapper {
+.wrapper {
 	overflow: hidden;
 	position: relative;
 }

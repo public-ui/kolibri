@@ -90,7 +90,7 @@ export class KolAccordion implements API {
 					<div class="header">
 						<slot name="header" />
 					</div>
-					<div ref={this.catchContentWrapperElement} class={{ content_wrapper: true, transition: this.transition }}>
+					<div ref={this.catchContentWrapperElement} class={{ wrapper: true, transition: this.transition }}>
 						<div ref={this.catchContentElement} aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
 							<slot name="content" />
 						</div>
