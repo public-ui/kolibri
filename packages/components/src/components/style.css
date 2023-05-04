@@ -13,12 +13,13 @@
 	 */
 	box-sizing: border-box;
 }
-/* Why not place-content? */
+/* KolSpan is a layout component with icons in all directions and a label text in the middle. */
 kol-span-wc {
 	display: grid;
 	place-items: center;
 }
 /* What is this targeting? */
+/* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
 kol-span-wc > span {
 	display: flex;
 	place-items: center;
@@ -27,7 +28,7 @@ a,
 button {
 	cursor: pointer;
 }
-/* font-family is inherited by default, why is this needed? */
+/* font-family is NOT inherited all HTML elements. We should set it hard. */
 a,
 button,
 input,
@@ -36,7 +37,7 @@ select,
 textarea {
 	font-family: inherit;
 }
-/* What is this targeting? */
+/* That is the icon only (hide label) case, where the label text is hide. */
 .icon-only > kol-span-wc > span > span {
 	display: none;
 }
