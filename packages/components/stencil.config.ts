@@ -231,6 +231,7 @@ if (process.env.NODE_ENV === 'production') {
 			includeDefineCustomElements: false,
 		}),
 		{
+			minify: true,
 			type: 'dist-custom-elements',
 		},
 		// {
