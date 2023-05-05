@@ -531,7 +531,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 					DOCH!!!
 					https://dequeuniversity.com/rules/axe/4.4/scrollable-region-focusable?application=AxeChrome
 				*/}
-				<div tabindex="0">
+				<div class="table" tabindex="0">
 					<table
 						// role="grid"
 						// aria-readonly="true"
