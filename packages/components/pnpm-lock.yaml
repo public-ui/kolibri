@@ -7,6 +7,9 @@ dependencies:
   '@floating-ui/dom':
     specifier: 1.2.7
     version: 1.2.7
+  '@public-ui/schema':
+    specifier: 1.5.0-rc.21
+    version: 1.5.0-rc.21(@public-ui/components@1.5.0-rc.21)
   i18next:
     specifier: 22.4.15
     version: 22.4.15
@@ -1692,6 +1695,22 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@public-ui/components@1.5.0-rc.21:
+    resolution: {integrity: sha512-rtJ6p6IgYJeVFAFNd1mIMJkIzeeRAG8BqoFutFuvR5Ab1X9NrDnh0BEtqPS6D1/4bjtWdYrxJ4rvDEoPvHzX/Q==}
+    dependencies:
+      '@a11y-ui/core': 1.0.2
+      '@floating-ui/dom': 1.2.7
+      i18next: 22.4.15
+    dev: false
+
+  /@public-ui/schema@1.5.0-rc.21(@public-ui/components@1.5.0-rc.21):
+    resolution: {integrity: sha512-PuX9sFDuvKPy9N2rVn949D41TREMJbFItherusPzjkZ1kZs2UGi0EwveV6LNDTWQhoWClh47Bz80gkO5KsOvEQ==}
+    peerDependencies:
+      '@public-ui/components': 1.5.0-rc.21
+    dependencies:
+      '@public-ui/components': 1.5.0-rc.21
+    dev: false
 
   /@puppeteer/browsers@0.5.0(typescript@5.0.4):
     resolution: {integrity: sha512-Uw6oB7VvmPRLE4iKsjuOh8zgDabhNX67dzo8U/BB0f9527qx+4eeUs+korU98OhG5C4ubg7ufBgVi63XYwS6TQ==}
