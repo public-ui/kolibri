@@ -32,7 +32,7 @@ const reverseString = (str) => {
 
 rimraf('doc/*.md', () => {
 	README_PATHS.forEach((readmePath) => {
-		const name = reverseString(reverseString(path.dirname(readmePath)).replace(/\/.+/g, ''));
+		const name = reverseString(reverseString(path.dirname(readmePath)).replace(/(\/|\\).+/g, ''));
 		fs.writeFileSync(
 			`${DOC_FOLDER}/${name}.md`,
 			fs
