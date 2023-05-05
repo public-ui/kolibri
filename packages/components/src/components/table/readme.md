@@ -133,23 +133,23 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 ### Depends on
 
-- [kol-button](../button)
 - [kol-pagination](../pagination)
+- [kol-button](../button)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-table --> kol-button
   kol-table --> kol-pagination
+  kol-table --> kol-button
+  kol-pagination --> kol-button
+  kol-pagination --> kol-select
+  kol-pagination --> kol-button-wc
   kol-button --> kol-button-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
-  kol-pagination --> kol-button
-  kol-pagination --> kol-select
-  kol-pagination --> kol-button-wc
   kol-select --> kol-input
   kol-input --> kol-icon
   kol-input --> kol-button-wc
