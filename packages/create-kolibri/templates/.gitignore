@@ -34,6 +34,7 @@ unocss.config.ts
 workbox-config.js
 yarn.lock
 
+!kolibri-library/**/assets/bundle.js
 !kolibri-library/**/assets/favicon.ico
 !kolibri-library/**/assets/FONTS.md
 !kolibri-library/**/assets/style.css
