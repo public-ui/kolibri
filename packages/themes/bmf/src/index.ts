@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/components';
+import { KoliBri } from '@public-ui/schema';
 
 export const BMF = KoliBri.createTheme('bmf', {
 	GLOBAL: `/* Design Tokens */

@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/components';
+import { KoliBri } from '@public-ui/schema';
 
 // Mitarbeiterportal Zoll
 export const MAPZ = KoliBri.createTheme('mapz', {
