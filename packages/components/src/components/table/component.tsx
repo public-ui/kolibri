@@ -89,11 +89,6 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
-	/**
-	 * Setzt die Pagination unter die Tabelle.
-	 */
-	@Prop() public _paginationBottom?: boolean;
-
 	@State() public state: States = {
 		_caption: '…', // ⚠ required
 		_data: [],
@@ -123,13 +118,11 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 				if (typeof value === 'undefined') {
 					value = [];
 				}
-				if (typeof value === 'string' && ['[', '{'].includes(value[0])) {
-					try {
-						value = parseJson<KoliBriDataType[]>(value);
-						// eslint-disable-next-line no-empty
-					} catch (e) {
-						// value behält den ursprünglichen Wert
-					}
+				try {
+					value = parseJson<KoliBriDataType[]>(value);
+					// eslint-disable-next-line no-empty
+				} catch (e) {
+					// value behält den ursprünglichen Wert
 				}
 				if (Array.isArray(value) && value.find((dataTupel: KoliBriDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
 					setState(this, '_data', value, {
