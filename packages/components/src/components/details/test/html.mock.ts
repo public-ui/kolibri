@@ -27,7 +27,9 @@ export const getDetailsHtml = (
 					${props._summary}
 				</span>
 			</summary>
-			${getIndentedTextHtml(props, slots)}
+			<div class="content">
+				${getIndentedTextHtml(props, slots)}
+			</div>
 		</details>
 	</mock:shadow-root>
 </kol-details>`;

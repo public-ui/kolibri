@@ -1,5 +1,20 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
+
+/* Inside a button the label text ist alwaiys centered - so we need text align left. */
 .accordion kol-heading-wc kol-button-wc button kol-span-wc {
 	justify-items: start;
+}
+
+.wrapper {
+	overflow: hidden;
+	position: relative;
+}
+.transition {
+	transition: height 300ms ease-in-out;
+}
+.content {
+	inset: 0 0 auto 0;
+	position: absolute;
+	width: 100%;
 }
