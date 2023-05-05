@@ -35,9 +35,8 @@
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection",
 		"postinstall": "npm-run-all postinstall:*",
-		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets --dot",
-		"postinstall:components-lib": "cpy \"node_modules/@public-ui/components/dist/kolibri/**/*\" src/kolibri --dot",
-		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot",
+		"postinstall:components-assets": "cpy \"node_modules/@public-ui/components/assets/**/*\" src/assets/ --dot",
+		"postinstall:components-lib": "cpy \"node_modules/@public-ui/components/dist/kolibri/**/*\" src/assets/kolibri/ --dot",
 		"postpack": "mv package.bak.json package.json",
 		"remove:lock": "rimraf package-lock.json",
 		"remove": "npm run remove:lock && git clean -f -d -X",
@@ -50,11 +49,11 @@
 		":unpublish": "npm unpublish -f --registry=http://localhost:4873"
 	},
 	"dependencies": {
-		"@public-ui/components": "^1.5.0-rc.21"
+		"@a11y-ui/core": "^1.0.2",
+		"@public-ui/components": "^1.5.0-rc.21",
+		"@public-ui/schema": "^1.5.0-rc.21"
 	},
 	"devDependencies": {
-		"@a11y-ui/core": "^1.0.2",
-		"@public-ui/themes": "^1.5.0-rc.21",
 		"@stencil/angular-output-target": "^0.5.0",
 		"@stencil/core": "^3.0.0",
 		"@stencil/postcss": "^2.1.0",
