@@ -30,7 +30,6 @@ type OptionalProps = {
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 };
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	caption: string;
@@ -41,7 +40,6 @@ type RequiredStates = {
 };
 type OptionalStates = {
 	minWidth: string;
-} & {
 	sortDirection: KoliBriSortDirection;
 };
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
@@ -58,7 +56,7 @@ const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	shadow: true,
 })
 export class KolTable implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	// https://github.com/ionic-team/stencil/issues/2895
+	// https://github.com/ionic-team/stencil/issues/2895 // was ist damit?
 	private horizontal = true;
 	private sortFunction?: KoliBriSortFunction;
 	private sortDirections: Map<KoliBriSortFunction, KoliBriSortDirection> = new Map();
@@ -502,6 +500,27 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 
 		return (
 			<Host>
+				{this.pageEndSlice > 0 && this.showPagination && (
+					<div class="pagination">
+						<span>
+							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
+							{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
+						</span>
+						<div>
+							<kol-pagination
+								_boundaryCount={this.state._pagination._boundaryCount}
+								_customClass={this.state._pagination._customClass}
+								_on={this.handlePagination}
+								_page={this.state._pagination._page}
+								_pageSize={this.state._pagination._pageSize}
+								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
+								_siblingCount={this.state._pagination._siblingCount}
+								_tooltipAlign="bottom"
+								_total={this.state._pagination._total || this.state._data.length}
+							></kol-pagination>
+						</div>
+					</div>
+				)}
 				{/*
 				  - https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
 					- https://www.a11yproject.com/posts/how-to-use-the-tabindex-attribute/
@@ -512,7 +531,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 					DOCH!!!
 					https://dequeuniversity.com/rules/axe/4.4/scrollable-region-focusable?application=AxeChrome
 				*/}
-				<div tabindex="0">
+				<div class="table" tabindex="0">
 					<table
 						// role="grid"
 						// aria-readonly="true"
@@ -742,27 +761,6 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 						</tbody>
 					</table>
 				</div>
-				{this.pageEndSlice > 0 && this.showPagination && (
-					<div class="pagination">
-						<span>
-							Einträge {this.pageEndSlice > 0 ? this.pageStartSlice + 1 : 0} bis {this.pageEndSlice} von{' '}
-							{this.state._pagination._total || (Array.isArray(this.state._data) ? this.state._data.length : 0)} angezeigt
-						</span>
-						<div>
-							<kol-pagination
-								_boundaryCount={this.state._pagination._boundaryCount}
-								_customClass={this.state._pagination._customClass}
-								_on={this.handlePagination}
-								_page={this.state._pagination._page}
-								_pageSize={this.state._pagination._pageSize}
-								_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
-								_siblingCount={this.state._pagination._siblingCount}
-								_tooltipAlign="bottom"
-								_total={this.state._pagination._total || this.state._data.length}
-							></kol-pagination>
-						</div>
-					</div>
-				)}
 			</Host>
 		);
 	}
