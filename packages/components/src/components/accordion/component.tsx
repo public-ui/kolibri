@@ -9,6 +9,7 @@ import { nonce } from '../../utils/dev.utils';
 import { setState, watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriAccordionCallbacks, States } from './types';
+import { processEnv } from '../../utils/reuse';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -33,7 +34,7 @@ export class KolAccordion implements API {
 	private readonly nonce = nonce();
 	private contentElement: HTMLElement | null = null;
 	private contentWrapperElement: HTMLElement | null = null;
-	private contentObserver = new ResizeObserver(this.resizeWrapper.bind(this));
+	private contentObserver: ResizeObserver | null = null;
 	private transition = false;
 
 	private readonly catchContentElement = (element?: HTMLElement) => {
@@ -46,15 +47,16 @@ export class KolAccordion implements API {
 	resizeWrapper(list?: ResizeObserverEntry[]) {
 		const content = this.contentElement;
 		const wrapper = this.contentWrapperElement;
-		if (content && wrapper) {
+		const observer = this.contentObserver;
+		if (content && wrapper && observer) {
 			if (this._open) {
 				wrapper.style.display = 'block';
 				setTimeout(() => {
 					wrapper.style.height = `${content?.clientHeight ?? 0}px`;
 				});
-				if (!list) this.contentObserver.observe(content);
+				if (!list) observer.observe(content);
 			} else {
-				this.contentObserver.unobserve(content);
+				observer.unobserve(content);
 				wrapper.style.height = '0';
 				wrapper.addEventListener(
 					'transitionend',
@@ -154,9 +156,9 @@ export class KolAccordion implements API {
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);
+		if (processEnv !== 'test') this.contentObserver = new ResizeObserver(this.resizeWrapper.bind(this));
 		setTimeout(() => {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			this.contentObserver.observe(this.contentElement!);
+			if (this.contentObserver && this.contentElement) this.contentObserver.observe(this.contentElement);
 		});
 		// So it does not transition if it is set to open from the start.
 		setTimeout(() => {
