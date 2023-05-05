@@ -16,7 +16,6 @@ import {
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import { translate } from '../../i18n';
-import { PropPaginationBottom, validatePaginationBottom } from '../../types/props';
 
 type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
 	data: KoliBriDataType;
@@ -30,7 +29,7 @@ type RequiredProps = {
 type OptionalProps = {
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-} & PropPaginationBottom;
+};
 
 type RequiredStates = {
 	caption: string;
@@ -42,7 +41,7 @@ type RequiredStates = {
 type OptionalStates = {
 	minWidth: string;
 	sortDirection: KoliBriSortDirection;
-} & PropPaginationBottom;
+};
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -265,18 +264,12 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
-	@Watch('_paginationBottom')
-	public validatePaginationBottom(value?: boolean): void {
-		validatePaginationBottom(this, value);
-	}
-
 	public componentWillLoad(): void {
 		this.validateCaption(this._caption);
 		this.validateData(this._data);
 		this.validateHeaders(this._headers);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
-		this.validatePaginationBottom(this._paginationBottom);
 	}
 
 	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriDataType[]): number {
@@ -513,7 +506,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		const dataField = this.createDataField(displayedData, this.state._headers);
 
 		return (
-			<Host style={{ 'flex-direction': this.state._paginationBottom ? 'column-reverse' : 'column' }}>
+			<Host>
 				{this.pageEndSlice > 0 && this.showPagination && (
 					<div class="pagination">
 						<span>

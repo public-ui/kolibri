@@ -18,7 +18,6 @@ export { PropIndeterminate, validateIndeterminate } from './indeterminate';
 export { PropLabel, validateLabel } from './label';
 export { PropMultiple, validateMultiple } from './multiple';
 export { PropOpen, validateOpen } from './open';
-export { PropPaginationBottom, validatePaginationBottom } from './pagination-bottom';
 export { PropReadOnly, validateReadOnly } from './read-only';
 export { PropRequired, validateRequired } from './required';
 export { PropShow, validateShow } from './show';
