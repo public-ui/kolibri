@@ -135,7 +135,7 @@ setTimeout(() => {
 	const mainNav = document.querySelector('#main-nav');
 	const mainNavElements = document.querySelectorAll('main > kol-accordion');
 	const numberOfChildren = 6;
-	populateNavFromElements(mainNav, mainNavElements, numberOfChildren);
+	if (mainNav) populateNavFromElements(mainNav, mainNavElements, numberOfChildren);
 }, 1000);
 
 function createEntry(c) {

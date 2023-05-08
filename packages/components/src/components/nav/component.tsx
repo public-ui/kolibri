@@ -40,6 +40,9 @@ const removeAriaLabel = (ariaLabel: string) => {
 	shadow: true,
 })
 export class KolNav implements API {
+	private expandedDepth = -1;
+	private expandedLink: ButtonOrLinkOrTextWithChildrenProps | undefined;
+
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
@@ -47,12 +50,16 @@ export class KolNav implements API {
 		};
 	};
 
-	private readonly hasActiveChild = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
-		if (Array.isArray(link._children) && link._children.length > 0) {
-			return link._children.some(this.hasActiveChild);
-		}
-
-		return false;
+	private readonly calculateExpandedDepth = (links: ButtonOrLinkOrTextWithChildrenProps[], deep: number): void => {
+		links.forEach((link) => {
+			if (link._active) {
+				if (deep > this.expandedDepth) {
+					this.expandedDepth = deep;
+					this.expandedLink = link;
+				}
+				if (Array.isArray(link._children)) this.calculateExpandedDepth(link._children, deep + 1);
+			}
+		});
 	};
 
 	/** Element creation functions */
@@ -109,7 +116,7 @@ export class KolNav implements API {
 	private expandButton(collapsible: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		return (
 			<kol-button-wc
-				class="expand-button"
+				class="expand_button"
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_iconOnly
@@ -131,16 +138,20 @@ export class KolNav implements API {
 		const selected = !!link._active;
 		const expanded = hasChildren && !!link._active;
 		const textCenter = compact;
-		return (
-			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
-				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
-				{hasChildren && selected ? (
-					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
-				) : (
-					''
-				)}
-			</li>
-		);
+
+		if (this.expandedDepth >= deep && !expanded) return '';
+		else {
+			return (
+				<li class={{ expanded, selected, 'has-children': hasChildren }} key={index} data-deep={deep}>
+					{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
+					{hasChildren && selected ? (
+						<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
+					) : (
+						''
+					)}
+				</li>
+			);
+		}
 	}
 
 	private link(selected: boolean, compact: boolean, href: string, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
@@ -190,6 +201,9 @@ export class KolNav implements API {
 	}
 
 	public render(): JSX.Element {
+		this.expandedDepth = -1;
+		this.expandedLink = undefined;
+		this.calculateExpandedDepth(this.state._links, 0);
 		let hasCompactButton = this.state._hasCompactButton;
 		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
 			hasCompactButton = false;
@@ -207,6 +221,17 @@ export class KolNav implements API {
 					}}
 				>
 					<nav aria-label={this.state._ariaLabel} id="nav">
+						{this.expandedLink ? (
+							<kol-button-wc
+								class="back_button"
+								_label="Zurück"
+								_icon="codicon codicon-chevron-left"
+								// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+								_on={{ onClick: () => this.onClick(this.expandedLink!) }}
+							></kol-button-wc>
+						) : (
+							<div class="button_placeholder"></div>
+						)}
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (

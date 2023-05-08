@@ -1,8 +1,4 @@
 @import url(../style.css);
-:host > div {
-	display: grid;
-	place-items: center;
-}
 .list {
 	display: flex;
 	list-style: none;
@@ -22,4 +18,8 @@
 }
 .entry kol-span-wc {
 	justify-items: start;
+}
+
+.button_placeholder {
+	height: var(--a11y-min-size);
 }

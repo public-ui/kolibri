@@ -39,8 +39,11 @@
 		<script defer src="assets/table-simulation.js"></script>
 		<script defer src="assets/toast-simulation.js"></script>
 		<script defer src="assets/tooltip-simulation.js"></script>
+
+		<script src="https://unpkg.com/petite-vue" defer init></script>
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
-	<body class="demo" data-theme="demo">
+	<body class="demo" data-theme="demo" v-scope="{  }">
 		<main class="container">
 			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
@@ -2148,7 +2151,7 @@
 				_icon="codicon codicon-arrow-up"
 				_icon-only
 				_tooltip-align="left"
-				_label="Zum Seitenanfang hochscrollen"
+				_label="Zum Seitenanfang"
 			></kol-button>
 		</footer>
 	</body>
