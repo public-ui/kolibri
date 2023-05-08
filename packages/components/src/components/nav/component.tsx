@@ -35,12 +35,14 @@ const removeAriaLabel = (ariaLabel: string) => {
 export class KolNav implements API {
 	private expandedDepth = -1;
 	private expandedLink: ButtonOrLinkOrTextWithChildrenProps | undefined;
+	private activeExpandButton: HTMLKolButtonWcElement | undefined;
 
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
 			...this.state,
 		};
+		if (this.state._paging) this.activeExpandButton?.focus();
 	};
 
 	private readonly calculateExpandedDepth = (links: ButtonOrLinkOrTextWithChildrenProps[], deep: number): void => {
@@ -53,6 +55,10 @@ export class KolNav implements API {
 				if (Array.isArray(link._children)) this.calculateExpandedDepth(link._children, deep + 1);
 			}
 		});
+	};
+
+	private readonly catchActiveExpandButton = (button?: HTMLKolButtonWcElement): void => {
+		if (button) this.activeExpandButton = button;
 	};
 
 	/** Element creation functions */
@@ -109,6 +115,7 @@ export class KolNav implements API {
 	private expandButton(collapsible: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		return (
 			<kol-button-wc
+				ref={selected ? (button) => this.catchActiveExpandButton(button) : undefined}
 				class="expand_button"
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
