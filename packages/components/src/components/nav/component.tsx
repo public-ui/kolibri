@@ -1,4 +1,3 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';
@@ -18,6 +17,7 @@ import {
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
+import { API, States } from './types';
 
 /**
  * @deprecated
@@ -32,58 +32,6 @@ const removeAriaLabel = (ariaLabel: string) => {
 	}
 };
 
-const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
-	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
-		if (Array.isArray(link._children)) {
-			return linksValidator(link._children);
-		}
-		return false;
-	}
-	return true;
-};
-
-const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean => {
-	if (Array.isArray(links)) {
-		return links.find(linkValidator) !== undefined;
-	}
-	return true;
-};
-
-type RequiredProps = {
-	ariaLabel: string;
-	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
-};
-type OptionalProps = {
-	ariaCurrentValue: AriaCurrent;
-	orientation: Orientation;
-	/**
-	 * @deprecated
-	 */
-	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropCompact &
-	PropHasCompactButton;
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	ariaCurrentValue: AriaCurrent;
-	ariaLabel: string;
-	collapsible: boolean;
-	/**
-	 * @deprecated Version 2
-	 */
-	hasCompactButton: boolean;
-	links: ButtonOrLinkOrTextWithChildrenProps[];
-	orientation: Orientation;
-	/**
-	 * @deprecated
-	 */
-	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropHasCompactButton;
-type OptionalStates = PropCompact;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {
@@ -91,7 +39,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolNav implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolNav implements API {
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
