@@ -1877,6 +1877,10 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
+          * Versetzt die Navigation in den Umblättermodus. Nur in vertikaler Orientation.
+         */
+        "_paging"?: boolean;
+        /**
           * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
@@ -4603,6 +4607,10 @@ declare namespace LocalJSX {
           * Gibt die Ausrichtung der Navigation an.
          */
         "_orientation"?: Orientation;
+        /**
+          * Versetzt die Navigation in den Umblättermodus. Nur in vertikaler Orientation.
+         */
+        "_paging"?: boolean;
         /**
           * Stellt verschiedene Varianten der Navigation zur Verfügung.
           * @deprecated This property is deprecated and will be removed in the next major version.

@@ -5,19 +5,12 @@ import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithC
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
-import {
-	AriaCurrent,
-	PropCollapsible,
-	PropCompact,
-	PropHasCompactButton,
-	validateCollapsible,
-	validateCompact,
-	validateHasCompactButton,
-} from '../../types/props';
+import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
 import { API, States } from './types';
+import { validatePaging } from '../../types/props/paging';
 
 /**
  * @deprecated
@@ -201,9 +194,11 @@ export class KolNav implements API {
 	}
 
 	public render(): JSX.Element {
-		this.expandedDepth = -1;
-		this.expandedLink = undefined;
-		this.calculateExpandedDepth(this.state._links, 0);
+		if (this.state._paging) {
+			this.expandedDepth = -1;
+			this.expandedLink = undefined;
+			this.calculateExpandedDepth(this.state._links, 0);
+		}
 		let hasCompactButton = this.state._hasCompactButton;
 		if (this.state._orientation === 'horizontal' && this.state._hasCompactButton === true) {
 			hasCompactButton = false;
@@ -287,14 +282,19 @@ export class KolNav implements API {
 	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
 	/**
+	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 */
+	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
+
+	/**
 	 * Gibt die Ausrichtung der Navigation an.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 * Versetzt die Navigation in den Umblättermodus. Nur in vertikaler Orientation.
 	 */
-	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
+	@Prop() public _paging?: boolean;
 
 	/**
 	 * Stellt verschiedene Varianten der Navigation zur Verfügung.
@@ -381,6 +381,11 @@ export class KolNav implements API {
 		);
 	}
 
+	@Watch('_paging')
+	public validatePaging(value?: boolean): void {
+		validatePaging(this, value);
+	}
+
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriNavVariant): void {
 		watchValidator(this, '_variant', (value) => value === 'primary' || value === 'secondary', new Set(['KoliBriNavVariant {primary, secondary}']), value, {
@@ -396,6 +401,7 @@ export class KolNav implements API {
 		this.validateHasCompactButton(this._hasCompactButton);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
+		this.validatePaging(this._paging);
 		this.validateVariant(this._variant);
 	}
 
