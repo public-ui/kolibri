@@ -9,6 +9,7 @@ import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
+import { validateLabel } from '../../types/props';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -78,7 +79,13 @@ export class KolSelect implements ComponentApi {
 					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">
-						<slot />
+						{this._label !== '' ? (
+							<span>{this.state._label}</span>
+						) : (
+							<slot name="expert">
+								<slot></slot>
+							</slot>
+						)}
 					</span>
 					<select
 						ref={this.catchRef}
@@ -185,6 +192,20 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label = '...';
+
+	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
 	@Prop() public _list!: Stringified<SelectOption<W3CInputValue>[]>;
@@ -233,6 +254,7 @@ export class KolSelect implements ComponentApi {
 		_hasValue: false,
 		_height: '',
 		_id: nonce(), // ⚠ required
+		_label: '...', // ⚠ required
 		_list: [],
 		_multiple: false,
 		_value: [],
@@ -287,6 +309,11 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateId(value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
+	}
+
 	@Watch('_list')
 	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
 		this.controller.validateList(value);
@@ -339,6 +366,7 @@ export class KolSelect implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.validateLabel(this._label);
 	}
 
 	private onChange = (event: Event): void => {
