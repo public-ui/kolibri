@@ -73,7 +73,6 @@ export class KolTextarea implements ComponentApi {
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
 							autoCapitalize="off"
-							// aria-hidden="true" // Wieso ist das hier?
 							autoCorrect="off"
 							disabled={this.state._disabled}
 							id={this.state._id}
