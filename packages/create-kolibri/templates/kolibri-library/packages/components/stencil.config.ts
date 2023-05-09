@@ -127,6 +127,12 @@ if (process.env.NODE_ENV === 'production') {
 			directivesProxyFile: '../adapters/angular/v15/src/components.ts',
 			includeImportCustomElements: false,
 		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v16/src/components.ts',
+			includeImportCustomElements: false,
+		}),
 		reactOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
