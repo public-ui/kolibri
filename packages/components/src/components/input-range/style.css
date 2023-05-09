@@ -1,4 +1,5 @@
-@import url(../input-line.css); /*
+@import url(../input-line.css);
+/*
  * For Chrome and Firefox is it needed to use redundant style definitions with separate selectors. The reason is unknown.
  */
 input[type='range'] {
