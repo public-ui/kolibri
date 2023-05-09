@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.0-rc.21
-    version: 1.5.0-rc.21
+    specifier: 1.5.0-rc.22
+    version: 1.5.0-rc.22
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -12,16 +12,16 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.9
-    version: 18.16.3
+    version: 20.1.1
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
   '@types/react':
-    specifier: 18.2.0
-    version: 18.2.0
+    specifier: 18.2.6
+    version: 18.2.6
   '@types/react-dom':
-    specifier: 18.2.1
-    version: 18.2.1
+    specifier: 18.2.4
+    version: 18.2.4
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -350,12 +350,19 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.5.0-rc.21:
-    resolution: {integrity: sha512-rtJ6p6IgYJeVFAFNd1mIMJkIzeeRAG8BqoFutFuvR5Ab1X9NrDnh0BEtqPS6D1/4bjtWdYrxJ4rvDEoPvHzX/Q==}
+  /@public-ui/components@1.5.0-rc.22:
+    resolution: {integrity: sha512-EHmx0A5Zl+XDUHFjLMSf6AnTko/w6IPBSu1drMnybfLmckNA74jYrOpeWqvDJsywhZms676K1CNSvB55AXrIQw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.7
+      '@public-ui/schema': 1.5.0-rc.22
       i18next: 22.4.15
+    dev: true
+
+  /@public-ui/schema@1.5.0-rc.22:
+    resolution: {integrity: sha512-zULsBBm5aEkmGEqDladzk/oiFg0RriAwlhgTZvtrMDDDviIyiFgI/e+CGr5f/a/ho8B1k6CgCb7PTTNFMyi5AQ==}
+    dependencies:
+      '@a11y-ui/core': 1.0.2
     dev: true
 
   /@rollup/plugin-alias@3.1.9(rollup@2.79.1):
@@ -454,8 +461,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@18.16.3:
-    resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
+  /@types/node@20.1.1:
+    resolution: {integrity: sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -466,14 +473,14 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom@18.2.1:
-    resolution: {integrity: sha512-8QZEV9+Kwy7tXFmjJrp3XUKQSs9LTnE0KnoUb0YCguWBiNW0Yfb2iBMYZ08WPg35IR6P3Z0s00B15SwZnO26+w==}
+  /@types/react-dom@18.2.4:
+    resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
-      '@types/react': 18.2.0
+      '@types/react': 18.2.6
     dev: true
 
-  /@types/react@18.2.0:
-    resolution: {integrity: sha512-0FLj93y5USLHdnhIhABk83rm8XEGA7kH3cr+YUlvxoUGp1xNt/DINUMvqPxLyOQMzLmZe8i4RTHbvb8MC7NmrA==}
+  /@types/react@18.2.6:
+    resolution: {integrity: sha512-wRZClXn//zxCFW+ye/D2qY65UsYP1Fpex2YXorHc8awoNamkMZSvBxwxdYVInsHOZZd2Ppq8isnSzJL5Mpf8OA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -483,7 +490,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.16.3
+      '@types/node': 20.1.1
     dev: true
 
   /@types/scheduler@0.16.3:

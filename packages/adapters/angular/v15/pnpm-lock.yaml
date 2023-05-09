@@ -2,17 +2,17 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@angular/compiler':
-    specifier: 15.2.8
-    version: 15.2.8(@angular/core@15.2.8)
+    specifier: 15.2.9
+    version: 15.2.9(@angular/core@15.2.9)
   '@angular/compiler-cli':
-    specifier: 15.2.8
-    version: 15.2.8(@angular/compiler@15.2.8)(typescript@4.9.5)
+    specifier: 15.2.9
+    version: 15.2.9(@angular/compiler@15.2.9)(typescript@4.9.5)
   '@angular/core':
-    specifier: 15.2.8
-    version: 15.2.8(rxjs@7.8.1)(zone.js@0.12.0)
+    specifier: 15.2.9
+    version: 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
   '@public-ui/components':
-    specifier: 1.5.0-rc.21
-    version: 1.5.0-rc.21
+    specifier: 1.5.0-rc.22
+    version: 1.5.0-rc.22
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -21,7 +21,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.9
-    version: 18.16.3
+    version: 20.1.1
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -60,15 +60,15 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
 
-  /@angular/compiler-cli@15.2.8(@angular/compiler@15.2.8)(typescript@4.9.5):
-    resolution: {integrity: sha512-fFxaDlbILo0t2t662qA0cjgn+kWItGlc1tFYKU6X7bvYb3t2e0cd9FzrFPLXUQVboGis83ULcJ2zkDxScnuPuQ==}
+  /@angular/compiler-cli@15.2.9(@angular/compiler@15.2.9)(typescript@4.9.5):
+    resolution: {integrity: sha512-zsbI8G2xHOeYWI0hjFzrI//ZhZV9il/uQW5dAimfwJp06KZDeXZ3PdwY9JQslf6F+saLwOObxy6QMrIVvfjy9w==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 15.2.8
+      '@angular/compiler': 15.2.9
       typescript: '>=4.8.2 <5.0'
     dependencies:
-      '@angular/compiler': 15.2.8(@angular/core@15.2.8)
+      '@angular/compiler': 15.2.9(@angular/core@15.2.9)
       '@babel/core': 7.19.3
       '@jridgewell/sourcemap-codec': 1.4.15
       chokidar: 3.5.3
@@ -84,21 +84,21 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler@15.2.8(@angular/core@15.2.8):
-    resolution: {integrity: sha512-+dvspIDvuGoYqdL7r/3o9ojkR3fH1zevgC0ISJivcIrMi+WcJ0FV2JmJdnm8V52oNsHy+sMF9eEZGEbCbACE/A==}
+  /@angular/compiler@15.2.9(@angular/core@15.2.9):
+    resolution: {integrity: sha512-MoKugbjk+E0wRBj12uvIyDLELlVLonnqjA2+XiF+7FxALIeyds3/qQeEoMmYIqAbN3NnTT5pV92RxWwG4tHFwA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
-      '@angular/core': 15.2.8
+      '@angular/core': 15.2.9
     peerDependenciesMeta:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 15.2.8(rxjs@7.8.1)(zone.js@0.12.0)
+      '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
       tslib: 2.5.0
     dev: true
 
-  /@angular/core@15.2.8(rxjs@7.8.1)(zone.js@0.12.0):
-    resolution: {integrity: sha512-NDs+g4uM4EhyCvluf8a0YBCFXsDAEfCMHOD5cS00Bl+liTQ7JwtmepkWXMyjLB92irC9JaR79kdy4BoIKOh8WA==}
+  /@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.12.0):
+    resolution: {integrity: sha512-w46Z1yUXCQfKV7XfnamOoLA2VD0MVUUYVrUjO73mHSskDXSXxfZAEHO9kfUS71Cj35PvhP3mbkqWscpea2WeYg==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -355,12 +355,19 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.5.0-rc.21:
-    resolution: {integrity: sha512-rtJ6p6IgYJeVFAFNd1mIMJkIzeeRAG8BqoFutFuvR5Ab1X9NrDnh0BEtqPS6D1/4bjtWdYrxJ4rvDEoPvHzX/Q==}
+  /@public-ui/components@1.5.0-rc.22:
+    resolution: {integrity: sha512-EHmx0A5Zl+XDUHFjLMSf6AnTko/w6IPBSu1drMnybfLmckNA74jYrOpeWqvDJsywhZms676K1CNSvB55AXrIQw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.7
+      '@public-ui/schema': 1.5.0-rc.22
       i18next: 22.4.15
+    dev: true
+
+  /@public-ui/schema@1.5.0-rc.22:
+    resolution: {integrity: sha512-zULsBBm5aEkmGEqDladzk/oiFg0RriAwlhgTZvtrMDDDviIyiFgI/e+CGr5f/a/ho8B1k6CgCb7PTTNFMyi5AQ==}
+    dependencies:
+      '@a11y-ui/core': 1.0.2
     dev: true
 
   /@types/minimatch@5.1.2:
@@ -371,8 +378,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@18.16.3:
-    resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
+  /@types/node@20.1.1:
+    resolution: {integrity: sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
