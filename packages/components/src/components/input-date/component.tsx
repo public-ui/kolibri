@@ -8,6 +8,7 @@ import { setState, watchValidator } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { ComponentApi, States } from './types';
+import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-input-date',
@@ -35,6 +36,8 @@ export class KolInputDate implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
+		const showExpertSlot = this._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '...'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host>
 				<kol-input-number
@@ -62,7 +65,7 @@ export class KolInputDate implements ComponentApi {
 					_type={this._type}
 					_value={this.state._value}
 				>
-					<slot />
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 				</kol-input-number>
 			</Host>
 		);
@@ -112,6 +115,20 @@ export class KolInputDate implements ComponentApi {
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label = '...';
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
@@ -178,7 +195,9 @@ export class KolInputDate implements ComponentApi {
 	 */
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
-	@State() public state: States = {};
+	@State() public state: States = {
+		_label: '...', // ⚠ required
+	};
 
 	private valueAsIsoDate(value?: Iso8601 | Date | null, defaultValue?: Date): Iso8601 | null | undefined {
 		const v: Iso8601 | Date | undefined = value ?? defaultValue;
@@ -225,21 +244,9 @@ export class KolInputDate implements ComponentApi {
 		}
 	}
 
-	@Watch('_on')
-	public validateOn(value?: InputTypeOnDefault) {
-		setState(this, '_on', {
-			...value,
-			onChange: (e: Event, v: unknown) => {
-				// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
-				if (!!v !== !!this._value) {
-					this._value = v as Iso8601;
-				}
-
-				if (value?.onChange) {
-					value.onChange(e, v);
-				}
-			},
-		});
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_max')
@@ -264,6 +271,23 @@ export class KolInputDate implements ComponentApi {
 		);
 	}
 
+	@Watch('_on')
+	public validateOn(value?: InputTypeOnDefault) {
+		setState(this, '_on', {
+			...value,
+			onChange: (e: Event, v: unknown) => {
+				// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
+				if (!!v !== !!this._value) {
+					this._value = v as Iso8601;
+				}
+
+				if (value?.onChange) {
+					value.onChange(e, v);
+				}
+			},
+		});
+	}
+
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date | null): void {
 		watchValidator(
@@ -276,9 +300,10 @@ export class KolInputDate implements ComponentApi {
 	}
 
 	public componentWillLoad(): void {
-		this.validateOn(this._on);
+		this.validateLabel(this._label);
 		this.validateMax(this._max);
 		this.validateMin(this._min);
+		this.validateOn(this._on);
 		this.validateValue(this._value);
 	}
 }

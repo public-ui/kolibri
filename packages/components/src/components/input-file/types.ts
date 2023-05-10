@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
+import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -28,7 +29,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	id: string;
-};
+} & PropLabel;
 type OptionalStates = {
 	accept: string;
 	alert: boolean;

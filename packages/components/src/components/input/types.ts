@@ -11,11 +11,11 @@ type OptionalProps = {
 	hint: string;
 	icon: KoliBriHorizontalIcon;
 	smartButton: ButtonProps;
-} & PropDisabled &
-	PropAlert &
-	PropTouched &
+} & PropAlert &
+	PropDisabled &
 	PropHideLabel &
+	PropReadOnly &
 	PropRequired &
-	PropReadOnly;
+	PropTouched;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
+import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -34,7 +35,7 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	id: string;
-};
+} & PropLabel;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;

@@ -9,6 +9,7 @@ import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
+import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-input-radio',
@@ -28,6 +29,8 @@ export class KolInputRadio implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
+		const showExpertSlot = this._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '...'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host>
 				<fieldset
@@ -39,9 +42,7 @@ export class KolInputRadio implements ComponentApi {
 					}}
 				>
 					<legend class="block w-full mb-1 leading-normal">
-						<span>
-							<slot />
-						</span>
+						<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					</legend>
 
 					{this.state._list.map((option, index) => {
@@ -149,6 +150,20 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label = '...';
+
+	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
 	 */
 	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
@@ -190,8 +205,8 @@ export class KolInputRadio implements ComponentApi {
 
 	@State() public state: States = {
 		_id: nonce(), // ⚠ required
+		_label: '...', // ⚠ required
 		_list: [],
-
 		_orientation: 'vertical',
 	};
 
@@ -232,6 +247,11 @@ export class KolInputRadio implements ComponentApi {
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_list')
@@ -278,6 +298,7 @@ export class KolInputRadio implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad(this.onChange);
+		this.validateLabel(this._label);
 	}
 
 	private onChange = (event: Event): void => {

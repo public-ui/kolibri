@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { PropLabel } from '../../types/props';
 
 export type InputRequiredProps = unknown;
 
@@ -41,7 +42,7 @@ type RequiredStates = {
 	id: string;
 	list: string[];
 	type: InputTextType;
-};
+} & PropLabel;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;

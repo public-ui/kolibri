@@ -11,6 +11,7 @@ import { getRenderStates } from '../input/controller';
 import { InputNumberController } from './controller';
 import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
+import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-input-number',
@@ -42,6 +43,8 @@ export class KolInputNumber implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
+		const showExpertSlot = this._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '...'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -65,9 +68,7 @@ export class KolInputNumber implements ComponentApi {
 					_touched={this.state._touched}
 				>
 					{' '}
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<input
 						ref={this.catchRef}
 						title=""
@@ -147,6 +148,20 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label = '...';
+
+	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
@@ -220,8 +235,9 @@ export class KolInputNumber implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
 		_hasValue: false,
+		_id: nonce(), // ⚠ required
+		_label: '...', // ⚠ required
 		_list: [],
 		_type: 'number',
 	};
@@ -273,6 +289,11 @@ export class KolInputNumber implements ComponentApi {
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_list')
@@ -360,5 +381,6 @@ export class KolInputNumber implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.validateLabel(this._label);
 	}
 }

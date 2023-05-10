@@ -9,7 +9,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
-import { validateMultiple } from '../../types/props';
+import { validateLabel, validateMultiple } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
 
 @Component({
@@ -42,6 +42,8 @@ export class KolInputEmail implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
+		const showExpertSlot = this._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '...'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -49,9 +51,7 @@ export class KolInputEmail implements ComponentApi {
 				}}
 			>
 				<kol-input
-					class={{
-						email: true,
-					}}
+					class="email"
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -66,9 +66,7 @@ export class KolInputEmail implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<input
 						ref={this.catchRef}
 						title=""
@@ -91,7 +89,6 @@ export class KolInputEmail implements ComponentApi {
 						size={this.state._size}
 						slot="input"
 						spellcheck="false"
-						// title={this.state._title}
 						type="email"
 						value={this.state._value as string}
 						{...this.controller.onFacade}
@@ -148,6 +145,20 @@ export class KolInputEmail implements ComponentApi {
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label = '...';
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -221,8 +232,9 @@ export class KolInputEmail implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
 		_hasValue: false,
+		_id: nonce(), // ⚠ required
+		_label: '...', // ⚠ required
 		_list: [],
 	};
 
@@ -273,6 +285,11 @@ export class KolInputEmail implements ComponentApi {
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_list')
@@ -352,5 +369,6 @@ export class KolInputEmail implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.validateLabel(this._label);
 	}
 }

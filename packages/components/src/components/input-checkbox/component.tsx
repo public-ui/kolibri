@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { validateChecked, validateIndeterminate } from '../../types/props';
+import { validateChecked, validateIndeterminate, validateLabel } from '../../types/props';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
@@ -27,6 +27,8 @@ export class KolInputCheckbox implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const showExpertSlot = this._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '...'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host>
 				<kol-input
@@ -47,9 +49,7 @@ export class KolInputCheckbox implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input">
 						<kol-icon
 							onClick={this.onChange}
@@ -133,6 +133,20 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
 
 	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label = '...';
+
+	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
 	@Prop() public _name?: string;
@@ -183,6 +197,7 @@ export class KolInputCheckbox implements ComponentApi {
 		},
 		_id: nonce(), // ⚠ required
 		_indeterminate: false,
+		_label: '...', // ⚠ required
 		_variant: 'default',
 	};
 
@@ -240,6 +255,11 @@ export class KolInputCheckbox implements ComponentApi {
 		validateIndeterminate(this, value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
+	}
+
 	@Watch('_name')
 	public validateName(value?: string): void {
 		this.controller.validateName(value);
@@ -284,6 +304,7 @@ export class KolInputCheckbox implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
+		this.validateLabel(this._label);
 	}
 
 	private onChange = (event: Event): void => {

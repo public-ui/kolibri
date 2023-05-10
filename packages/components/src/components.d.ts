@@ -681,6 +681,10 @@ export namespace Components {
          */
         "_indeterminate"?: boolean;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
+        /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
         "_name"?: string;
@@ -752,6 +756,10 @@ export namespace Components {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
+        /**
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<string[]>;
@@ -817,6 +825,10 @@ export namespace Components {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -907,6 +919,10 @@ export namespace Components {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1002,6 +1018,10 @@ export namespace Components {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
+        /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
         "_multiple"?: boolean;
@@ -1071,6 +1091,10 @@ export namespace Components {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -1167,6 +1191,10 @@ export namespace Components {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
+        /**
           * Gibt an, wie viele Zeichen man maximal eingeben kann.
          */
         "_maxLength"?: number;
@@ -1244,6 +1272,10 @@ export namespace Components {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1380,6 +1412,10 @@ export namespace Components {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
+        /**
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<Option<number>[]>;
@@ -1453,6 +1489,10 @@ export namespace Components {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label": string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3416,6 +3456,10 @@ declare namespace LocalJSX {
          */
         "_indeterminate"?: boolean;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
+        /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
         "_name"?: string;
@@ -3487,6 +3531,10 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
+        /**
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<string[]>;
@@ -3552,6 +3600,10 @@ declare namespace LocalJSX {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -3642,6 +3694,10 @@ declare namespace LocalJSX {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3737,6 +3793,10 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
+        /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
         "_multiple"?: boolean;
@@ -3806,6 +3866,10 @@ declare namespace LocalJSX {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -3902,6 +3966,10 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
+        /**
           * Gibt an, wie viele Zeichen man maximal eingeben kann.
          */
         "_maxLength"?: number;
@@ -3979,6 +4047,10 @@ declare namespace LocalJSX {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -4115,6 +4187,10 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
+        /**
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<Option<number>[]>;
@@ -4188,6 +4264,10 @@ declare namespace LocalJSX {
           * Gibt die technische ID des Eingabefeldes an.
          */
         "_id"?: string;
+        /**
+          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+         */
+        "_label"?: string;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */

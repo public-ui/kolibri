@@ -3,11 +3,12 @@ import { InputDateType, OptionalInputProps } from '../../types/input/control/num
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { InputRequiredProps } from '../input-text/types';
+import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = OptionalInputProps<Iso8601 | Date> & { type: InputDateType };
 
-type RequiredStates = unknown;
+type RequiredStates = PropLabel;
 
 type OptionalStates = {
 	on: InputTypeOnDefault;
