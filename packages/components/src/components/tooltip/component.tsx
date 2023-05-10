@@ -110,17 +110,17 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	};
 
 	private addListeners = (el: Element): void => {
-		el.addEventListener('mouseover', this.incrementOverFocusCount);
-		el.addEventListener('focus', this.incrementOverFocusCount);
-		el.addEventListener('mouseout', this.decrementOverFocusCount);
-		el.addEventListener('blur', this.decrementOverFocusCount);
+		el.addEventListener('mouseover', this.showTooltip);
+		el.addEventListener('focus', this.showTooltip);
+		el.addEventListener('mouseout', this.hideTooltip);
+		el.addEventListener('blur', this.hideTooltip);
 	};
 
 	private removeListeners = (el: Element): void => {
-		el.removeEventListener('mouseover', this.incrementOverFocusCount);
-		el.removeEventListener('focus', this.incrementOverFocusCount);
-		el.removeEventListener('mouseout', this.decrementOverFocusCount);
-		el.removeEventListener('blur', this.decrementOverFocusCount);
+		el.removeEventListener('mouseover', this.showTooltip);
+		el.removeEventListener('focus', this.showTooltip);
+		el.removeEventListener('mouseout', this.hideTooltip);
+		el.removeEventListener('blur', this.hideTooltip);
 	};
 
 	private resyncListeners = (el: Element): void => {
@@ -129,19 +129,15 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	};
 
 	private catchHostElement = (el: HTMLElement | null): void => {
-		if (el /* SSR instanceof HTMLElement */) {
+		if (el) {
 			this.previousSibling = el.previousElementSibling as HTMLElement | null;
-			if (this.previousSibling /* SSR instanceof HTMLElement */) {
-				this.resyncListeners(this.previousSibling);
-			}
+			if (this.previousSibling) this.resyncListeners(this.previousSibling);
 		}
 	};
 
 	private catchTooltipElement = (el?: HTMLDivElement): void => {
 		this.tooltipElement = el;
-		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-			this.resyncListeners(this.tooltipElement);
-		}
+		if (this.tooltipElement) this.resyncListeners(this.tooltipElement);
 	};
 	private catchArrowElement = (element?: HTMLDivElement): void => {
 		this.arrowElement = element;
@@ -196,46 +192,20 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 		watchString(this, '_label', value);
 	}
 
-	private overFocusCount = 0;
-	private overFocusTimeout?: ReturnType<typeof setTimeout>;
-
-	private incrementOverFocusCount = (): void => {
-		this.overFocusCount++;
-		this.showOrHideTooltip();
-	};
-
-	private decrementOverFocusCount = (): void => {
-		this.overFocusCount--;
-		this.showOrHideTooltip();
-	};
-
-	private showOrHideTooltip = (): void => {
-		clearTimeout(this.overFocusTimeout);
-		this.overFocusTimeout = setTimeout(() => {
-			clearTimeout(this.overFocusTimeout);
-			if (this.overFocusCount > 0) {
-				this.showTooltip();
-			} else {
-				this.hideTooltip();
-			}
-		}, 250);
-	};
-
 	public componentWillLoad(): void {
 		this.validateAlign(this._align);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 	}
 
-	/**
-	 * @see: components/abbr/component.tsx (componentDidLoad)
-	 */
+	public connectedCallback(): void {
+		if (this.previousSibling) this.resyncListeners(this.previousSibling);
+		if (this.tooltipElement) this.resyncListeners(this.tooltipElement);
+	}
+
 	public disconnectedCallback(): void {
-		if (this.previousSibling /* SSR instanceof HTMLElement */) {
-			this.removeListeners(this.previousSibling);
-		}
-		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-			this.removeListeners(this.tooltipElement);
-		}
+		if (this.previousSibling) this.removeListeners(this.previousSibling);
+		if (this.tooltipElement) this.removeListeners(this.tooltipElement);
+		setTimeout(this.hideTooltip);
 	}
 }
