@@ -30,9 +30,9 @@
 		"@angular/forms": "^16.0.0",
 		"@angular/platform-browser": "^16.0.0",
 		"@angular/platform-browser-dynamic": "^16.0.0",
-		"@public-ui/angular-v15": "^1.5.0-rc.22",
-		"@public-ui/components": "^1.5.0-rc.22",
-		"@public-ui/themes": "^1.5.0-rc.22",
+		"@public-ui/angular-v15": "^1.5.0-rc.23",
+		"@public-ui/components": "^1.5.0-rc.23",
+		"@public-ui/themes": "^1.5.0-rc.23",
 		"zone.js": "^0.13.0"
 	},
 	"devDependencies": {
