@@ -1,26 +1,29 @@
 @import url(../style.css);
 @import url(../host-display-block.css);
-:host > div {
+:host {
+	display: grid;
+}
+:host > div.table {
+	max-width: 100%;
+	order: 1;
 	overflow-x: auto;
 	overflow-y: hidden;
 }
-table {
+:host > div.table table {
 	width: 100%;
 }
 th > div {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	place-items: center;
-	gap: 0.25em;
 }
 div.pagination {
-	padding: 0.5em;
+	order: 2;
 }
 div.pagination,
 div.pagination > div:last-child {
 	display: grid;
 	place-items: center;
-	gap: 0.5em;
 }
 @media (min-width: 1024px) {
 	div.pagination,

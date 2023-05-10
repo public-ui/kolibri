@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v15",
-	"version": "1.5.0-rc.21",
+	"version": "1.5.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -62,10 +62,10 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler-cli": "15.2.8",
-		"@angular/compiler": "15.2.8",
-		"@angular/core": "15.2.8",
-		"@public-ui/components": "1.5.0-rc.21",
+		"@angular/compiler-cli": "15.2.9",
+		"@angular/compiler": "15.2.9",
+		"@angular/core": "15.2.9",
+		"@public-ui/components": "1.5.0",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -79,7 +79,7 @@
 	},
 	"peerDependencies": {
 		"@angular/core": "^15",
-		"@public-ui/components": "1.5.0-rc.21"
+		"@public-ui/components": "1.5.0"
 	},
 	"files": [
 		"dist"

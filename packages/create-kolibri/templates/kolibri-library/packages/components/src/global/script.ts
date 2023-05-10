@@ -1,14 +1,24 @@
-import { getThemeDetails, register, setThemeStyle } from '@a11y-ui/core';
-import { setMode } from '@stencil/core';
-import { ITZBund, ECL_EC, ECL_EU } from '@public-ui/themes';
+import { register } from '@a11y-ui/core';
+import { KoliBri } from '@public-ui/schema';
 
 // ts-prune-ignore-next
 export default (): void => {
-	register([ITZBund, ECL_EC, ECL_EU], []).catch(console.warn);
-	setMode((elm) => {
-		if (elm.shadowRoot instanceof ShadowRoot) {
-			setThemeStyle(elm, getThemeDetails(elm));
+	register(
+		[
+			KoliBri.createTheme('{{kebab name}}', {
+				'KOL-BUTTON': `button {
+			background-color: #000;
+			color: #fff;
+			padding: .5em .75em;
+		}`,
+			}),
+		],
+		[],
+		{
+			theme: {
+				detect: 'fixed',
+				name: '{{kebab name}}',
+			},
 		}
-		return 'default';
-	});
+	).catch(console.warn);
 };
