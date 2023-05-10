@@ -32,9 +32,7 @@ export class KolInput implements Props {
 			>
 				{this._renderNoLabel === false && (
 					<label id={`${this._id}-label`} hidden={hideLabel} htmlFor={this._id}>
-						<span>
-							<slot name="label"></slot>
-						</span>
+						<slot name="label"></slot>
 					</label>
 				)}
 				{hasHint && (
