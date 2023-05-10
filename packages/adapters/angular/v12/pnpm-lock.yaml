@@ -11,8 +11,8 @@ devDependencies:
     specifier: 12.2.17
     version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
   '@public-ui/components':
-    specifier: 1.5.0-rc.22
-    version: 1.5.0-rc.22
+    specifier: 1.5.0-rc.23
+    version: 1.5.0-rc.23
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -353,17 +353,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.5.0-rc.22:
-    resolution: {integrity: sha512-EHmx0A5Zl+XDUHFjLMSf6AnTko/w6IPBSu1drMnybfLmckNA74jYrOpeWqvDJsywhZms676K1CNSvB55AXrIQw==}
+  /@public-ui/components@1.5.0-rc.23:
+    resolution: {integrity: sha512-nYXyH3fLLlFqcqYv9CJp7vT2I5kKhxcIR+ZBqNhRaDgFNDZ1tiP9Og9ntaOSGy/x2VpO8VgoJ6ohzQlzuQCGYw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.7
-      '@public-ui/schema': 1.5.0-rc.22
+      '@public-ui/schema': 1.5.0-rc.23
       i18next: 22.4.15
     dev: true
 
-  /@public-ui/schema@1.5.0-rc.22:
-    resolution: {integrity: sha512-zULsBBm5aEkmGEqDladzk/oiFg0RriAwlhgTZvtrMDDDviIyiFgI/e+CGr5f/a/ho8B1k6CgCb7PTTNFMyi5AQ==}
+  /@public-ui/schema@1.5.0-rc.23:
+    resolution: {integrity: sha512-Bk9Rmf19FGXa4Xb0pbbasNHKzr0SCKMOqDZARdQUHddHKvBTHMuX5y3tm8aNXfG1TqCWUf+Q90xTUgy1qkZdFw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
