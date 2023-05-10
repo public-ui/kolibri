@@ -58,6 +58,8 @@ export class KolSelect implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const showExpertSlot = this._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '...'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -78,15 +80,7 @@ export class KolSelect implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						{this._label !== '' ? (
-							<span>{this.state._label}</span>
-						) : (
-							<slot name="expert">
-								<slot></slot>
-							</slot>
-						)}
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<select
 						ref={this.catchRef}
 						title=""
