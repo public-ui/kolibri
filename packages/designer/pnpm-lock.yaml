@@ -3,16 +3,16 @@ lockfileVersion: '6.0'
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.5.0-rc.22)
+    version: 0.0.3(@public-ui/components@1.5.0-rc.23)
   '@public-ui/components':
-    specifier: 1.5.0-rc.22
-    version: 1.5.0-rc.22
+    specifier: 1.5.0-rc.23
+    version: 1.5.0-rc.23
   '@public-ui/solid':
-    specifier: 1.5.0-rc.22
-    version: 1.5.0-rc.22(@public-ui/components@1.5.0-rc.22)(solid-js@1.7.4)
+    specifier: 1.5.0-rc.23
+    version: 1.5.0-rc.23(@public-ui/components@1.5.0-rc.23)(solid-js@1.7.4)
   '@public-ui/themes':
-    specifier: 1.5.0-rc.22
-    version: 1.5.0-rc.22(@public-ui/components@1.5.0-rc.22)
+    specifier: 1.5.0-rc.23
+    version: 1.5.0-rc.23(@public-ui/components@1.5.0-rc.23)
   monaco-editor:
     specifier: 0.38.0
     version: 0.38.0
@@ -2114,21 +2114,21 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.5.0-rc.22):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.5.0-rc.23):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.22
+      '@public-ui/components': 1.5.0-rc.23
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.5.0-rc.22:
-    resolution: {integrity: sha512-EHmx0A5Zl+XDUHFjLMSf6AnTko/w6IPBSu1drMnybfLmckNA74jYrOpeWqvDJsywhZms676K1CNSvB55AXrIQw==}
+  /@public-ui/components@1.5.0-rc.23:
+    resolution: {integrity: sha512-nYXyH3fLLlFqcqYv9CJp7vT2I5kKhxcIR+ZBqNhRaDgFNDZ1tiP9Og9ntaOSGy/x2VpO8VgoJ6ohzQlzuQCGYw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.7
-      '@public-ui/schema': 1.5.0-rc.22
+      '@public-ui/schema': 1.5.0-rc.23
       i18next: 22.4.15
     dev: false
 
@@ -2145,28 +2145,28 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.5.0-rc.22:
-    resolution: {integrity: sha512-zULsBBm5aEkmGEqDladzk/oiFg0RriAwlhgTZvtrMDDDviIyiFgI/e+CGr5f/a/ho8B1k6CgCb7PTTNFMyi5AQ==}
+  /@public-ui/schema@1.5.0-rc.23:
+    resolution: {integrity: sha512-Bk9Rmf19FGXa4Xb0pbbasNHKzr0SCKMOqDZARdQUHddHKvBTHMuX5y3tm8aNXfG1TqCWUf+Q90xTUgy1qkZdFw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: false
 
-  /@public-ui/solid@1.5.0-rc.22(@public-ui/components@1.5.0-rc.22)(solid-js@1.7.4):
-    resolution: {integrity: sha512-WqdO/wJkn5F0hT56qO3j3MKJKKUaZOca5oNnwHQoZDrokFihE8tdcrLxKDtFkcQ1/3TY4KIgNuJ7I4gNUslRfg==}
+  /@public-ui/solid@1.5.0-rc.23(@public-ui/components@1.5.0-rc.23)(solid-js@1.7.4):
+    resolution: {integrity: sha512-1YTDIXxkxJSEZnL5k5y6xHjy38w7GCbU4itJV79ZIgwr2VfArdSaAwoCHigHDtdxCK5mNZiGssuWxSqH+KcsDg==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.22
+      '@public-ui/components': 1.5.0-rc.23
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.5.0-rc.22
+      '@public-ui/components': 1.5.0-rc.23
       solid-js: 1.7.4
     dev: false
 
-  /@public-ui/themes@1.5.0-rc.22(@public-ui/components@1.5.0-rc.22):
-    resolution: {integrity: sha512-Ugvl8sng6FO5ai6kR4BhH0rdKpFoeyAWyDQHeqiJuTF8NYqtBhY4lMGpVUKcGpqBXeaAHNiBr7yCE410wybrCg==}
+  /@public-ui/themes@1.5.0-rc.23(@public-ui/components@1.5.0-rc.23):
+    resolution: {integrity: sha512-1KJO74zeIOYQJZAtPtJKYaFV9D6bPGZZbZdLJFVEfs53/+QC9ev0pOlUPe92qJlEG0UGz2FRI5UigiKBT3mhjw==}
     peerDependencies:
-      '@public-ui/components': 1.5.0-rc.22
+      '@public-ui/components': 1.5.0-rc.23
     dependencies:
-      '@public-ui/components': 1.5.0-rc.22
+      '@public-ui/components': 1.5.0-rc.23
     dev: false
 
   /@rollup/pluginutils@5.0.2:
