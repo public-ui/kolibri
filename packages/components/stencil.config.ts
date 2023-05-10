@@ -200,6 +200,12 @@ if (process.env.NODE_ENV === 'production') {
 			directivesProxyFile: '../adapters/angular/v15/src/components.ts',
 			includeImportCustomElements: false,
 		}),
+		angularOutputTarget({
+			componentCorePackage: '@public-ui/components',
+			excludeComponents: EXCLUDE_TAGS,
+			directivesProxyFile: '../adapters/angular/v16/src/components.ts',
+			includeImportCustomElements: false,
+		}),
 		// preactOutputTarget({
 		//   componentCorePackage: '@public-ui/components',
 		//   excludeComponents: EXCLUDE_TAGS,
@@ -231,6 +237,7 @@ if (process.env.NODE_ENV === 'production') {
 			includeDefineCustomElements: false,
 		}),
 		{
+			minify: true,
 			type: 'dist-custom-elements',
 		},
 		// {

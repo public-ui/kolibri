@@ -9,6 +9,7 @@ const cleanCss = new CleanCSS({
 	// https://github.com/clean-css/clean-css#formatting-options
 	format: {
 		breaks: {
+			afterAtRule: true,
 			afterComment: true,
 			afterProperty: true,
 			afterRuleEnds: true,
