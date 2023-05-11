@@ -1,7 +1,12 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { Props, States } from '../component';
 
-export const getPopoverHtml = (props: Props, slots?: { default?: string }, additionalAttrs = ''): string => {
+export const getPopoverHtml = (
+	props: Props,
+	slots: {
+		default?: string;
+	} = {}
+): string => {
 	const state: States = mixMembers<Props, States>(
 		{
 			_alignment: 'top',
@@ -11,10 +16,10 @@ export const getPopoverHtml = (props: Props, slots?: { default?: string }, addit
 		props
 	);
 	return `
-  <kol-popover ${additionalAttrs}>
+  <kol-popover>
 		<div class="popover hidden">
 			<div class="arrow ${state._alignment}"></div>
-			${slots?.default ? slots.default : '<slot></slot>'}
+			${slots.default !== undefined ? slots.default : ''}
 		</div>
   </kol-popover>`;
 };
