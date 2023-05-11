@@ -898,6 +898,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.card > .heading {
 		padding: 0.5rem 1rem;
 	}
+	.card[_has-closer] > .heading {
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-right: 0;
+	}
 	.card > .heading > div {
 		width: 100%;
 	}
@@ -1549,9 +1554,20 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-family: var(--font-family);
 		font-size: var(--font-size);
 		background-color: var(--color-smoke);
+		width: 100%;
 	}
 	ul {
 		list-style: none;
+	}
+	kol-link-wc,
+	a {
+		height: 100%;
+		min-height: 44px;
+		display: flex;
+		place-items: center;
+	}
+	.entry > kol-span-wc > span {
+		width: 100%;
 	}
 	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		background-color: var(--color-white);
@@ -1561,10 +1577,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: flex;
 		align-items: center;
 		font-style: normal;
-		padding: 0.75rem 0.5rem 0.75rem 0;
-		border-left-color: var(--color-white);
-		border-left-style: solid;
-		border-left-width: 0.5rem;
 		line-height: 1.5rem;
 		min-height: 44px;
 		min-width: 44px;
@@ -1572,22 +1584,55 @@ export const BMF = KoliBri.createTheme('bmf', {
 		transition-property: background-color, color, border-color;
 		letter-spacing: 0.175px;
 	}
+	.entry > :is(kol-link-wc, kol-button-wc):first-child :is(a, button) {
+		color: var(--color-midnight);
+		text-decoration: none;
+	}
 	.entry > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
 		border-left-color: var(--color-ocean);
-		font-weight: 700;
+		background-color: var(--color-ocean);
 	}
-	.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
-		background-color: var(--color-ice);
-		border-left-color: var(--color-midnight);
-		color: var(--color-midnight);
+	.entry
+		> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child:hover
+		> :is(a, button, span) {
+		color: var(--color-white);
 		font-weight: 700;
 		letter-spacing: unset;
 	}
-	a:hover,
-	.selected a:hover,
-	[exportparts*="selected"] a:hover {
-		background-color: var(--color-ocean);
+	.selected > :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		background-color: var(--color-ice);
+		color: var(--color-midnight);
+		font-weight: 700;
+	}
+	.selected
+		> :is(kol-link-wc, kol-button-wc, kol-span-wc):first-child
+		> :is(a, button, span) {
+		font-weight: 700;
+	}
+	.selected :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child:hover {
 		color: var(--color-white);
+		letter-spacing: unset;
+	}
+	.entry > kol-span-wc > span,
+	.entry :is(a, button) {
+		border-left-color: transparent;
+		border-left-style: solid;
+		border-left-width: 0.5rem;
+		padding: 0.75rem 0.5rem 0.75rem 0.25rem;
+	}
+	.selected :is(a, button),
+	[exportparts*="selected"] a {
+		border-left-color: var(--color-midnight);
+	} /** Compact mode */
+	.entry.text-center :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+		place-items: center;
+	}
+	.entry.text-center > kol-span-wc > span {
+		flex-direction: column;
+	}
+	.entry.text-center > kol-span-wc > span,
+	.entry.text-center :is(a, button) {
+		padding-left: 0;
 	}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	:host > div {
