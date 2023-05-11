@@ -18,10 +18,8 @@ type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredSt
 
 @Component({
 	tag: 'kol-popover',
-	styleUrls: {
-		default: './style.css',
-	},
-	shadow: true,
+	styleUrl: './style.css',
+	shadow: false,
 })
 export class KolPopover implements API {
 	private arrowElement?: HTMLDivElement;
