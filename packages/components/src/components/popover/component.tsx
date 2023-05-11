@@ -6,6 +6,16 @@ import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
 import { Alignment, PropAlignment, PropShow, validateAlignment, validateShow } from '../../types/props';
 
+/**
+ * Todos:
+ *
+ * - [x] Popover is a no shadow component
+ * - [x] Rename file from shadow.tsx to component.tsx
+ * - [ ] Reuse the alignment logic in popover and tooltip
+ * - [ ] Add samples to test cases (samples/react)
+ * - [ ] Use the overlay handling (utils/overlay.ts)
+ */
+
 type RequiredProps = unknown;
 type OptionalProps = PropAlignment & PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -18,10 +28,8 @@ type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredSt
 
 @Component({
 	tag: 'kol-popover',
-	styleUrls: {
-		default: './style.css',
-	},
-	shadow: true,
+	styleUrl: './style.css',
+	shadow: false,
 })
 export class KolPopover implements API {
 	private arrowElement?: HTMLDivElement;
