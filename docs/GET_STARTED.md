@@ -130,7 +130,37 @@ index.html
 
 ```
 
-#### 4. Beispiel
+#### 4. Komponenten als custom components registrieren
+
+vite.config.ts
+```diff
+import { fileURLToPath, URL } from 'node:url'
+
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+-  plugins: [],
++  plugins: [
++    vue({
++      template: {
++        compilerOptions: {
++          // treat all tags with a dash as custom elements
++          isCustomElement: (tag) => tag.includes('-')
++        }
++      }
++    })
++  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
+})
+```
+
+#### 5. Beispiel
 
 ```html
 <kol-input-text
