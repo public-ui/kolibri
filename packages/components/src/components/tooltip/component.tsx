@@ -9,14 +9,6 @@ import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
 
-/**
- * Todos:
- *
- * - [ ] Alignment logic in separate file
- * - [ ] Reuse the alignment logic in popover and tooltip
- * - [ ] Add samples to test cases (samples/react)
- */
-
 type RequiredProps = {
 	id: string;
 	label: string;
