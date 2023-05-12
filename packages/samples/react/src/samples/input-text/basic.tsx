@@ -23,6 +23,9 @@ export const InputTextBasic: FC = () => (
 			}}
 			_on={{
 				onBlur: console.log,
+				onChange: console.log,
+				onClick: console.log,
+				onFocus: console.log,
 			}}
 			_hideLabel
 			_required
