@@ -31,7 +31,7 @@ export type PropColor = ColorPair | DeprecatedColorPair;
 
 type typeOfColorType = 'string' | 'ColorPair' | 'DeprecatedColorPair' | null;
 
-const HEX_REGEX = /^#((\d|[a-f]){6}|(\d|[a-f]){3})$/i;
+const HEX_REGEX = /^#((\d|[a-f]){8}|(\d|[a-f]){6}|(\d|[a-f]){3,4})$/i;
 function isHexString(value: string): boolean {
 	return HEX_REGEX.test(value);
 }
