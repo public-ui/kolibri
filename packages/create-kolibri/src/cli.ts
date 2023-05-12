@@ -13,7 +13,7 @@ const caveat = (props: any) => {
 	console.log(kleur.bold().magenta('Next steps'));
 	console.log(``);
 	console.log(`1. You can now cd into the new project directory. (${kleur.cyan(`cd ${props.name}`)})`);
-	console.log(`2. Run ${kleur.cyan(`npm start`)} to run the dev server. CTRL-C to close.`);
+	console.log(`2. Read the README.md file in the project directory for more information on how to get started.`);
 	console.log(`3. Read our documentation and coding samples at ${kleur.underline().cyan('https://public-ui.github.io')}`);
 	console.log(``);
 	console.log(`Ready? Come follow us at ${kleur.underline().cyan('https://github.com/public-ui')}`);
