@@ -13,7 +13,9 @@ const OPEN_UI = {
 	components: [],
 };
 const BLACKLIST = [
+	'kol-alert-wc',
 	'kol-button-group',
+	'kol-button-group-wc',
 	'kol-color',
 	'kol-counter',
 	'kol-heading-wc',
