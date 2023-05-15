@@ -32,6 +32,7 @@ import { PROGRESS_ROUTES } from '../samples/progress/routes';
 import { SELECT_ROUTES } from '../samples/select/routes';
 import { SKIP_NAV_ROUTES } from '../samples/skip-nav/routes';
 import { SPIN_ROUTES } from '../samples/spin/routes';
+import { SPLIT_BUTTON_ROUTES } from '../samples/split-button/routes';
 import { TABLE_ROUTES } from '../samples/table/routes';
 import { TEXTAREA_ROUTES } from '../samples/textarea/routes';
 import { TOAST_ROUTES } from '../samples/toast/routes';
@@ -75,6 +76,7 @@ export const ROUTES: Routes = {
 	...SELECT_ROUTES,
 	...SKIP_NAV_ROUTES,
 	...SPIN_ROUTES,
+	...SPLIT_BUTTON_ROUTES,
 	...TABLE_ROUTES,
 	...TEXTAREA_ROUTES,
 	...TOAST_ROUTES,
