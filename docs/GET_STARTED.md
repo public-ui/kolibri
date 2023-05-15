@@ -4,6 +4,37 @@ Dieses Beispiel setzt voraus, dass Sie bereits eine React-Projekt erstellt haben
 
 ## Schritt für Schritt-Anleitung
 
+### Einbinden von Schriftarten
+
+Schriftarten werden von Natur aus losgelöst vom CSS geladen und müssen je nach **KoliBri**-Theme in die projektspezifische Rahmenseite (`index.html`) eingebunden werden.
+
+Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen Assets kopiert werden: `node_modules/@public-ui/themes/assets`, oder eigene verwendet werden.
+
+```html
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+	<head>
+		<title>Webanwendung | KoliBri</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="..." />
+		<base href="/" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
+		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
+		<link rel="stylesheet" href="assets/bundes/style.css" />
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
+		<link rel="stylesheet" href="assets/kreon/style.css" />
+		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
+		<link rel="stylesheet" href="assets/material-icons/iconfont/material-icons.css" />
+		<link rel="stylesheet" href="assets/material-symbols/index.css" />
+		<link rel="stylesheet" href="assets/roboto/roboto.css" />
+		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
+	</head>
+</html>
+```
+
 ### I React
 
 #### 1. Installieren der KoliBri-Bibliotheken
@@ -67,7 +98,7 @@ export const AppComponent = () => {
 };
 ```
 
-### II Vue + Vite
+### II Vite + Vue
 
 #### 1. Installieren der KoliBri-Bibliotheken
 <kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
@@ -173,34 +204,5 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 
 
 
-### Einbinden von Schriftarten
 
-Schriftarten werden von Natur aus losgelöst vom CSS geladen und müssen je nach **KoliBri**-Theme in die projektspezifische Rahmenseite (`index.html`) eingebunden werden.
-
-Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen Assets kopiert werden: `node_modules/@public-ui/themes/assets`, oder eigene verwendet werden.
-
-```html
-<!DOCTYPE html>
-<html lang="de" dir="ltr">
-	<head>
-		<title>Webanwendung | KoliBri</title>
-		<meta charset="UTF-8" />
-		<meta name="description" content="..." />
-		<base href="/" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
-		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
-		<link rel="stylesheet" href="assets/bundes/style.css" />
-		<link rel="stylesheet" href="assets/codicons/codicon.css" />
-		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
-		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/material-icons/iconfont/material-icons.css" />
-		<link rel="stylesheet" href="assets/material-symbols/index.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
-		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
-	</head>
-</html>
-```
 
