@@ -49,7 +49,7 @@
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
 			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
 				<div slot="content" class="grid gap">
-					<div style="display: flex; justify-content: space-between">
+					<div class="flex flex-wrap gap-2 xl:gap-4 justify-between">
 						<kol-card _heading="buttons" _level="3">
 							<div slot="content" class="grid gap">
 								<kol-button
@@ -74,10 +74,28 @@
 									_icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }"
 									_label="normal"
 									_variant="normal"
-									onclick="createAndShowToast()"
+									:_on="{ onClick: ()=> showLogin = !showLogin }"
 								></kol-button>
+								<kol-popover :_show="showLogin">
+									<kol-input-text>Benutzername</kol-input-text>
+									<kol-input-password>Passwort</kol-input-password>
+								</kol-popover>
 								<kol-button _label="ghost" _variant="ghost" onclick="createAndShowToast()"></kol-button>
 								<kol-button _label="custom" _variant="custom" onclick="createAndShowToast()"></kol-button>
+								<kol-split-button _label="kick me">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
+								<kol-split-button _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
 							</div>
 						</kol-card>
 						<kol-card _heading="disabled buttons" _level="3">
@@ -88,6 +106,20 @@
 								<kol-button _icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }" _disabled _label="normal" _variant="normal"></kol-button>
 								<kol-button _disabled _label="ghost" _variant="ghost"></kol-button>
 								<kol-button _disabled _label="custom" _variant="custom"></kol-button>
+								<kol-split-button _label="kick me" _disabled>
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
+								<kol-split-button _disabled _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
 							</div>
 						</kol-card>
 						<kol-card _heading="headings" _level="3">
