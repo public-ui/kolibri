@@ -35,7 +35,7 @@ export class KolInputPassword implements ComponentApi {
 				ref: this.ref,
 			});
 		} else {
-			this.controller.onFacade.onClick(event);
+			this.controller.onFacade.onChange(event);
 		}
 	};
 
