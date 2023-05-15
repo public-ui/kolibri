@@ -24,20 +24,44 @@ export class KolSplitButton implements API {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
-	private toggleDropdown = () => {
-		if (this.dropdown && this.dropdownContent) {
-			if (this.state._showDropdown) this.dropdown.style.height = '';
-			else this.dropdown.style.height = `${this.dropdownContent.clientHeight}px`;
-		}
-		this.state = { ...this.state, _showDropdown: !this.state._showDropdown };
+	private readonly clickHandler = (e: Event) => {
+		if (typeof this.state._on.onClick === 'function') this.state._on.onClick(e);
+		else this.toggleDropdown();
 	};
 
-	private catchDropdownElements = (e?: HTMLDivElement | null) => {
+	private readonly openDropdown = () => {
+		if (this.dropdown && this.dropdownContent) {
+			this.dropdown.style.height = `${this.dropdownContent.clientHeight}px`;
+			this.state = { ...this.state, _showDropdown: true };
+		}
+	};
+	private readonly closeDropdown = () => {
+		if (this.dropdown && this.dropdownContent) {
+			this.dropdown.style.height = ``;
+			this.state = { ...this.state, _showDropdown: true };
+		}
+	};
+	private readonly toggleDropdown = (value?: boolean) => {
+		const openIt = typeof value === 'boolean' ? value : this.state._showDropdown;
+		if (openIt) this.openDropdown();
+		else this.closeDropdown();
+	};
+	private forceCounter = 100; // because the dropdown could be empty
+	private readonly forceOpenDropdown = () => {
+		if (this.forceCounter > 0) {
+			if (this.dropdownContent?.clientHeight) this.openDropdown();
+			else setTimeout(this.forceOpenDropdown, 10);
+			this.forceCounter--;
+		}
+	};
+
+	private readonly catchDropdownElements = (e?: HTMLDivElement | null) => {
 		if (e) {
 			this.dropdown = e;
 			setTimeout(() => {
 				this.dropdownContent = e.firstChild as HTMLDivElement;
-			}, 1);
+				if (this._showDropdown) this.forceOpenDropdown();
+			});
 		}
 	};
 
@@ -62,7 +86,7 @@ export class KolSplitButton implements API {
 					_icon={this._icon}
 					_iconOnly={this._hideLabel}
 					_label={this._label}
-					_on={typeof this.state._onClick === 'function' ? { onClick: this.state._onClick } : { onClick: this.toggleDropdown }}
+					_on={{ onClick: this.clickHandler }}
 					_role={this._role}
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
@@ -76,8 +100,8 @@ export class KolSplitButton implements API {
 					_disabled={this._disabled}
 					_icon-only
 					_icon="codicon codicon-triangle-down"
-					_label="dropdown öffnen"
-					_on={{ onClick: this.toggleDropdown }}
+					_label={`dropdown ${this.state._showDropdown ? 'schließen' : 'öffnen'}`}
+					_on={{ onClick: () => this.toggleDropdown() }}
 				></kol-button-wc>
 				<div class="popover" ref={this.catchDropdownElements}>
 					<div class="popover-content">
@@ -156,7 +180,7 @@ export class KolSplitButton implements API {
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _onClick?: KoliBriSplitButtonCallback;
+	@Prop() public _on?: { onClick: KoliBriSplitButtonCallback };
 
 	/**
 	 * Gibt an, welche Rolle der Schalter hat.
@@ -196,6 +220,7 @@ export class KolSplitButton implements API {
 	@State() public state: States = {
 		_icon: '',
 		_label: '',
+		_on: {},
 		_showDropdown: false,
 	};
 
@@ -260,12 +285,12 @@ export class KolSplitButton implements API {
 		validateLabelWithAriaLabel(this, value);
 	}
 
-	@Watch('_onClick')
-	public validateOnClick(value?: KoliBriSplitButtonCallback): void {
-		if (typeof value === 'function') {
+	@Watch('_on')
+	public validateOn(value?: { onClick: KoliBriSplitButtonCallback }): void {
+		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,
-				_onClick: value,
+				_on: value,
 			};
 		}
 	}
@@ -278,6 +303,7 @@ export class KolSplitButton implements API {
 	@Watch('_showDropdown')
 	public validateShowDropdown(value?: boolean): void {
 		watchBoolean(this, '_showDropdown', value);
+		this.toggleDropdown(value);
 	}
 
 	@Watch('_tabIndex')
@@ -318,8 +344,9 @@ export class KolSplitButton implements API {
 		this.validateIcon(this._icon);
 		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
-		this.validateOnClick(this._onClick);
+		this.validateOn(this._on);
 		this.validateRole(this._role);
+		this.validateShowDropdown(this._showDropdown);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);
