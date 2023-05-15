@@ -1878,6 +1878,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 	fieldset.horizontal legend {
 		display: inline-block;
 		margin-bottom: 0.25em;
+	}
+	fieldset [slot="input"] {
+		gap: 0.5rem;
+	}
+	fieldset div label {
+		padding-left: 0;
 	}`,
 	'KOL-TOAST': `:host > div {
 		position: fixed;
