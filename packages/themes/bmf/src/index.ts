@@ -231,6 +231,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -307,6 +308,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -384,6 +386,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -460,6 +463,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -543,6 +547,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -620,6 +625,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -1153,6 +1159,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -1256,6 +1263,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -2128,6 +2136,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}
 	.input {
+		background-color: var(--color-white);
 		border-color: var(--color-grey);
 		border-radius: var(--border-radius);
 		border-style: solid;
