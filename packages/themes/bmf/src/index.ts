@@ -8,28 +8,34 @@ export const BMF = KoliBri.createTheme('bmf', {
 		--color-ocean: #0077b6;
 		--color-sky: #99c9e2;
 		--color-ice: #cce4f0;
+		--color-crystal: #f0f7fb;
 		--color-crimson: #780f2d;
 		--color-red: #c0003c;
 		--color-pink: #f2ccd8;
+		--color-blossom: #fbf0f3;
 		--color-olive: #004d38;
 		--color-green: #005c45;
 		--color-jungle: #00854a;
 		--color-lime: #c1ca31;
 		--color-mint: #ccdeda;
+		--color-haze: #f0f5f4;
 		--color-fire: #7a2e1f;
 		--color-orange: #c44931;
 		--color-coral: #f5dcd7;
-		--color-bronze: #c44931;
-		--color-yellow: #c44931;
-		--color-ivory: #c44931;
-		--color-purple: #c44931;
-		--color-lavender: #c44931;
+		--color-peach: #fdf6f5;
+		--color-bronze: #6a4a06;
+		--color-yellow: #f9e03a;
+		--color-ivory: #fdf3b0;
+		--color-wine: #3f1d4a;
+		--color-purple: #6b4479;
+		--color-lavender: #dfd6de;
 		--color-black: #202020;
 		--color-metal: #454d4f;
 		--color-grey: #576164;
 		--color-granite: #bec5c9;
 		--color-silver: #e5e8e9;
 		--color-smoke: #f2f3f4;
+		--color-cloud: #f6f7f7;
 		--color-white: #ffffff;
 		--font-family: BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif;
 		--font-size: 16px;
@@ -202,7 +208,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-color: transparent;
 	}`,
 	'KOL-INPUT-TEXT': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -218,31 +224,29 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
+	input {
 		border: none;
-	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
-	input[type="file"] {
-		background-color: transparent;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -253,7 +257,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	input:read-only,
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -271,34 +276,15 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(input, label) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	kol-input.disabled :is(input, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
 	}`,
 	'KOL-INPUT-PASSWORD': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -314,31 +300,29 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
+	input {
 		border: none;
-	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
-	input[type="file"] {
-		background-color: transparent;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -349,7 +333,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	input:read-only,
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -367,34 +352,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(button, input, label, option, select, textarea) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	kol-input.disabled :is(input, select, textarea, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+		color: var(--color-black);
 	}`,
 	'KOL-INPUT-NUMBER': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -410,31 +377,29 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
+	input {
 		border: none;
-	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
-	input[type="file"] {
-		background-color: transparent;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -445,7 +410,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -463,34 +428,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(input, label) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	kol-input.disabled :is(input, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+		color: var(--color-black);
 	}`,
 	'KOL-INPUT-EMAIL': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -506,31 +453,29 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
+	input {
 		border: none;
-	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
-	input[type="file"] {
-		background-color: transparent;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -541,7 +486,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	input:read-only,
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -559,34 +505,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(input, label) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	kol-input.disabled :is(input, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+		color: var(--color-black);
 	}`,
 	'KOL-INPUT-FILE': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -605,16 +533,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-input .input input[type="file"] {
 		padding-top: calc(0.5em + 2px);
 	}
-	input,
-	select,
-	textarea {
+	input {
 		border: none;
 	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
 	input[type="file"] {
 		background-color: transparent;
 	}
@@ -623,13 +544,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -640,7 +569,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	input:read-only,
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -658,34 +588,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(button, input, label, option, select, textarea) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	kol-input.disabled :is(input, select, textarea, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+		color: var(--color-black);
 	}`,
 	'KOL-TEXTAREA': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -701,31 +613,29 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
 	textarea {
 		border: none;
-	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
-	input[type="file"] {
-		background-color: transparent;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -736,7 +646,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	textarea:read-only,
+	textarea:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -764,21 +675,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 	textarea {
 		display: block;
 	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
+	.input {
+		position: relative;
 	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	.input textarea ~ span {
+		position: absolute;
+		top: -1.5rem;
+		right: 0;
+		color: var(--color-grey);
 	}`,
 	'KOL-ALERT': `.msg,
 	.msg {
@@ -859,6 +763,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.msg > .heading > .heading-icon::part(icon) {
 		line-height: 1.375rem;
 	}
+	.msg > .heading > div > kol-heading-wc {
+		line-height: 20px;
+		padding-top: 0.125rem;
+	}
 	.msg.default .heading > div > kol-heading-wc {
 		color: var(--color-grey);
 	}
@@ -905,16 +813,18 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	.card > .heading > div {
 		width: 100%;
+		min-height: 1.25rem;
 	}
 	.card > .heading .heading-icon {
 		justify-self: right;
+		margin-top: -4px;
 	}
 	.card > .heading kol-heading-wc {
 		width: 100%;
 		color: white;
 		display: flex;
 		font-size: 1.25rem;
-		line-height: 1.75rem;
+		line-height: 1.25rem;
 	}
 	.card > .heading kol-heading-wc > * {
 		margin: auto 0;
@@ -940,6 +850,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:is(.error, .info, .success, .warning) .heading-icon::part(icon) {
 		font-family: "Font Awesome 6 Free" !important;
 		font-weight: 900;
+		height: 1.25rem;
+		width: 1.25rem;
+	}
+	:is(.error, .info, .success, .warning) .heading-icon {
+		font-size: 1.25rem !important;
 	}
 	.error .heading-icon::part(icon)::before {
 		content: "\\f06a";
@@ -1001,9 +916,17 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding: 8px;
 	}
 	.close > button.icon-only kol-icon {
-		display: inline-block;
-		width: 1.5em;
-		height: 1.5em;
+		display: flex;
+		width: 1em;
+		height: 1em;
+		font-size: 1rem;
+	}
+	.close > button.icon-only kol-icon::part(icon) {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+	}
+	.close > button.icon-only kol-icon::part(icon)::before {
+		content: "\\f00d";
 	}
 	.close > button:active {
 		box-shadow: none;
@@ -1027,7 +950,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	h1 {
 		font-size: 1.5rem;
-		line-height: 3.25rem;
+		line-height: 1.75rem;
 	}
 	h2 {
 		font-size: 1.25rem;
@@ -1043,10 +966,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host > span {
 		border-radius: 0.3125rem;
 		display: inline-flex;
-		font-size: 0.875em;
+		font-size: 1em;
 		font-style: normal;
-		font-weight: 700;
-		line-height: 1rem;
+		line-height: 1.25rem;
 	}
 	:host > span.smart-button {
 		align-items: center;
@@ -1063,7 +985,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		padding: 2px;
 	}
 	:host > span kol-span-wc {
-		padding: 0.25rem 0.5rem;
+		padding: 0.25rem 0.75rem;
 	}
 	:host > span > kol-span-wc {
 		align-items: center;
@@ -1082,8 +1004,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-INDENTED-TEXT': `:host > div {
 		background-color: var(--color-white);
 		border-left: none;
-		box-shadow: -4px 0px 0px var(--color-ocean);
-		padding: 0.25em 0.5em;
+		box-shadow: -2px 0px 0px var(--color-ocean);
+		padding: 0 0.5em;
 		width: 100%;
 	}`,
 	'KOL-LINK': `:is(a, button) {
@@ -1208,7 +1130,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		stroke: var(--color-midnight);
 	}`,
 	'KOL-SELECT': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -1224,31 +1146,31 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
+	select {
 		border: none;
-	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
-	input[type="file"] {
-		background-color: transparent;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input.icon-left kol-icon:first-child {
+		margin-right: 0.5em;
+	}
+	.input.icon-right kol-icon:last-child {
+		margin-left: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -1259,7 +1181,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	select:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -1277,15 +1199,15 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(select, label, option) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
+	kol-input.disabled :is(select, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+	}
+	select[multiple] {
 		overflow: auto;
-	}
-	textarea {
-		display: block;
 	}
 	select option {
 		margin: 1px 0;
@@ -1304,7 +1226,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: white;
 	}`,
 	'KOL-INPUT-COLOR': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -1320,17 +1242,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
+	input {
 		border: none;
 	}
 	input[type="color"] {
 		border: none;
 		min-height: 40px !important;
 	}
-	input[type="color"],
-	input[type="file"] {
+	input[type="color"] {
 		background-color: transparent;
 	}
 	input::placeholder {
@@ -1338,13 +1257,21 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
 		padding: 0 0.5em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
 	}
 	.input > input:first-child {
 		padding-left: 0.375em;
@@ -1355,7 +1282,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	input:not([type="color"]):read-only,
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -1373,31 +1301,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(input, label) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	kol-input.disabled :is(input, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+		color: var(--color-black);
 	}`,
 	'KOL-ACCORDION': `kol-span-wc > span {
 		display: flex;
@@ -1424,10 +1334,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-midnight);
 	}
 	:host > div.open > kol-heading-wc button kol-icon::part(icon)::before {
-		content: "\\f054";
+		content: "\\f078";
 	}
 	:host > div.close > kol-heading-wc button kol-icon::part(icon)::before {
-		content: "\\f078";
+		content: "\\f054";
 	}
 	:host > div {
 		width: 100%;
@@ -1437,9 +1347,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host > div div[class="header"],
 	:host > div[class*="open"] div[class="content"] {
 		margin: 0;
-		padding-left: 2.25em;
 	}
-	:host > div[class*="open"] div[class="content"] {
+	:host > div div[class="content"] {
+		padding-left: 2.25em;
 		padding-bottom: 12px;
 		padding-right: 8px;
 	}
@@ -1670,10 +1580,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 		gap: 0.4em;
 	}
 	:host kol-input.default {
-		grid-template-columns: 2rem auto;
+		grid-template-columns: 1.5rem auto;
 	}
 	:host kol-input.switch {
-		grid-template-columns: 4rem auto;
+		grid-template-columns: 3.5rem auto;
 	}
 	:host kol-input > div.input {
 		display: inherit;
@@ -1755,7 +1665,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-color: var(--color-midnight);
 	}
 	:host kol-input.default input[type="checkbox"] {
-		border-radius: 0.25em;
+		border-radius: var(--border-radius);
 		height: calc(6 * var(--spacing));
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
@@ -1783,14 +1693,15 @@ export const BMF = KoliBri.createTheme('bmf', {
 		width: calc(1.5 * var(--spacing));
 	}
 	:host kol-input.default input[type="checkbox"]:indeterminate {
-		--tw-bg-opacity: 1; /* background-color: white; */
+		--tw-bg-opacity: 1;
+		background-color: var(--color-midnight);
 	}
 	:host kol-input.default input[type="checkbox"]:indeterminate:before {
 		background-color: var(--color-white);
 		height: 0.125rem;
 		top: 0.6rem;
-		left: 0.1rem;
-		width: calc(4 * var(--spacing));
+		left: 0.25rem;
+		width: calc(3 * var(--spacing));
 		transform: inherit;
 	}
 	:host kol-input.default input[type="checkbox"]:checked:indeterminate:before {
@@ -1971,22 +1882,22 @@ export const BMF = KoliBri.createTheme('bmf', {
 	'KOL-TOAST': `:host > div {
 		position: fixed;
 		top: 0;
-		left: 0;
+		right: 0;
 		width: 100%;
 		height: 0;
 		z-index: 200;
 	}
 	:host > div > kol-alert {
 		display: block;
-		margin: auto;
-		padding: 1rem;
+		margin-left: auto;
+		margin-right: unset;
+		padding: 2rem;
 		max-width: 750px;
 	}
 	:host > div > kol-button-wc {
 		top: 0;
 		position: relative;
 		display: block;
-		margin: auto;
 		width: 1em;
 	}`,
 	'KOL-TABS': `button:disabled {
@@ -2170,9 +2081,25 @@ export const BMF = KoliBri.createTheme('bmf', {
 		align-self: flex-end;
 		padding-bottom: 0.5rem;
 		color: var(--color-midnight);
+	}
+	kol-button::part(icon) {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+	}
+	kol-button.first::part(icon):before {
+		content: "\\f100";
+	}
+	kol-button.previous::part(icon):before {
+		content: "\\f104";
+	}
+	kol-button.next::part(icon):before {
+		content: "\\f105";
+	}
+	kol-button.last::part(icon):before {
+		content: "\\f101";
 	}`,
 	'KOL-INPUT-RANGE': `kol-input {
-		gap: 0.4em;
+		gap: 0.25em;
 	}
 	kol-input .error {
 		order: 1;
@@ -2188,42 +2115,37 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input,
-	select,
-	textarea {
+	input {
 		border: none;
-	}
-	input[type="color"] {
-		border: none;
-		min-height: 40px !important;
-	}
-	input[type="color"],
-	input[type="file"] {
-		background-color: transparent;
 	}
 	input::placeholder {
 		color: var(--color-grey);
 	}
 	.input {
 		border-color: var(--color-grey);
-		border-radius: 0.3125rem;
+		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 2px;
-		padding: 0 0.5em;
+		padding: 0 1em;
 	}
 	.input > kol-icon {
-		width: 1.5em;
+		width: 1em;
 	}
-	.input > input:first-child {
-		padding-left: 0.375em;
+	.input.icon-left > kol-icon:first-child {
+		margin-right: 0.5em;
 	}
-	.input > input:last-child {
-		padding-right: 0.375em;
+	.input.icon-right > kol-icon:last-child {
+		margin-left: 0.5em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 	.input:hover {
 		border-color: var(--color-midnight);
 	}
-	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+	input:read-only,
+	input:disabled {
 		cursor: not-allowed;
 	}
 	.required label > span::after {
@@ -2241,31 +2163,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-red);
 		font-weight: 700;
 	}
-	.disabled {
-		opacity: 0.33;
+	kol-input.disabled :is(input, label) {
+		opacity: 1;
 	}
-	select[multiple],
-	textarea {
-		overflow: auto;
-	}
-	textarea {
-		display: block;
-	}
-	select option {
-		margin: 1px 0;
-		padding: 0.5em;
-		border-radius: 0.25em;
-		cursor: pointer;
-	}
-	select option:disabled {
-		cursor: not-allowed;
-	}
-	option:active:not(:disabled),
-	option:checked:not(:disabled),
-	option:focus:not(:disabled),
-	option:hover:not(:disabled) {
-		background: var(--color-ocean);
-		color: white;
+	kol-input.disabled :is(.input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+		color: var(--color-black);
 	}`,
 	'KOL-LINK-BUTTON': `:is(a, button):focus {
 		outline: none;
@@ -2363,6 +2267,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
 	}
+	/** small ghost button */
+	.ghost :is(a, button).small > kol-span-wc {
+		border: none;
+		background-color: transparent;
+		box-shadow: none;
+	}
+	.ghost :is(a, button).small > kol-span-wc > span {
+		border-radius: 1.5em;
+		border-style: solid;
+		border-width: 2px;
+		border-color: var(--color-white);
+		background-color: var(--color-white);
+	}
 	.ghost :is(a, button).small:active > kol-span-wc > span,
 	.ghost :is(a, button).small:hover > kol-span-wc > span,
 	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
@@ -2414,8 +2331,29 @@ export const BMF = KoliBri.createTheme('bmf', {
 		position: unset;
 	}`,
 	'KOL-ABBR': `abbr {
-		border-bottom: dotted var(--color-metal) 1px;
+		border-bottom: dashed var(--color-black) 1px;
 		text-decoration: none !important;
+	}`,
+	'KOL-BREADCRUMB': `kol-icon {
+		font-size: 0.75rem;
+	}
+	kol-icon::part(icon) {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		color: var(--color-grey);
+	}
+	kol-icon::part(icon)::before {
+		content: "\\f054";
+	}
+	kol-link::part(icon) {
+		font-size: 1.25rem;
+	}
+	ul li > :is(span, kol-link) {
+		line-height: 1.25rem;
+		height: 20px;
+	}
+	ul li:last-child > span {
+		color: var(--color-grey);
 	}`,
 	'KOL-ICON': `:host {
 		display: inline-block;
