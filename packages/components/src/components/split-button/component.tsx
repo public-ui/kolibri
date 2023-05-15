@@ -38,11 +38,11 @@ export class KolSplitButton implements API {
 	private readonly closeDropdown = () => {
 		if (this.dropdown && this.dropdownContent) {
 			this.dropdown.style.height = ``;
-			this.state = { ...this.state, _showDropdown: true };
+			this.state = { ...this.state, _showDropdown: false };
 		}
 	};
 	private readonly toggleDropdown = (value?: boolean) => {
-		const openIt = typeof value === 'boolean' ? value : this.state._showDropdown;
+		const openIt = typeof value === 'boolean' ? value : !this.state._showDropdown;
 		if (openIt) this.openDropdown();
 		else this.closeDropdown();
 	};
