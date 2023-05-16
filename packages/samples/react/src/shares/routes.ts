@@ -28,6 +28,7 @@ import { LINK_GROUP_ROUTES } from '../samples/link-group/routes';
 import { LINK_ROUTES } from '../samples/link/routes';
 import { NAV_ROUTES } from '../samples/nav/routes';
 import { PAGINATION_ROUTES } from '../samples/pagination/routes';
+import { POPOVER_ROUTES } from '../samples/popover/routes';
 import { PROGRESS_ROUTES } from '../samples/progress/routes';
 import { SELECT_ROUTES } from '../samples/select/routes';
 import { SKIP_NAV_ROUTES } from '../samples/skip-nav/routes';
@@ -71,6 +72,7 @@ export const ROUTES: Routes = {
 	...LINK_GROUP_ROUTES,
 	...NAV_ROUTES,
 	...PAGINATION_ROUTES,
+	...POPOVER_ROUTES,
 	...PROGRESS_ROUTES,
 	...SELECT_ROUTES,
 	...SELECT_ROUTES,
