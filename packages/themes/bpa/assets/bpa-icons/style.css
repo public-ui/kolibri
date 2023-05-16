@@ -1,11 +1,11 @@
 @font-face {
   font-family: "bpa-icons";
-  src: url('bpa-icons.eot?t=1679001673948'); /* IE9*/
-  src: url('bpa-icons.eot?t=1679001673948#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("bpa-icons.woff2?t=1679001673948") format("woff2"),
-  url("bpa-icons.woff?t=1679001673948") format("woff"),
-  url('bpa-icons.ttf?t=1679001673948') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('bpa-icons.svg?t=1679001673948#bpa-icons') format('svg'); /* iOS 4.1- */
+  src: url('bpa-icons.eot?t=1684209078629'); /* IE9*/
+  src: url('bpa-icons.eot?t=1684209078629#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("bpa-icons.woff2?t=1684209078629") format("woff2"),
+  url("bpa-icons.woff?t=1684209078629") format("woff"),
+  url('bpa-icons.ttf?t=1684209078629') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('bpa-icons.svg?t=1684209078629#bpa-icons') format('svg'); /* iOS 4.1- */
 }
 
 [class^="bpa-"], [class*=" bpa-"] {
