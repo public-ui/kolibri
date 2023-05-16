@@ -2,6 +2,11 @@ import { Component, h, Host, JSX, State } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 
+/**
+ * @slot default
+ * Der Text.
+ */
+
 type RequiredProps = unknown;
 type OptionalProps = unknown;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -24,6 +29,7 @@ export class KolIndentedText implements Generic.Element.ComponentApi<RequiredPro
 		return (
 			<Host>
 				<div>
+					{/* TODO: Für was wird dieses div benötigt? */}
 					<slot />
 				</div>
 			</Host>

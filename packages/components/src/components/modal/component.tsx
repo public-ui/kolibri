@@ -10,6 +10,11 @@ import { setState, watchString, watchValidator } from '../../utils/prop.validato
 import { ModalService } from './service';
 
 /**
+ * @slot default
+ * Der Inhalt des Modals.
+ */
+
+/**
  * https://en.wikipedia.org/wiki/Modal_window
  */
 

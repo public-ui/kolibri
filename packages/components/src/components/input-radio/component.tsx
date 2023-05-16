@@ -10,6 +10,11 @@ import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @slot default
+ * Die Legende/Überschrift der Radiobuttons.
+ */
+
 @Component({
 	tag: 'kol-input-radio',
 	styleUrls: {
@@ -40,6 +45,7 @@ export class KolInputRadio implements ComponentApi {
 				>
 					<legend class="block w-full mb-1 leading-normal">
 						<span>
+							{/* TODO: Für was wird dieses span benötigt? */}
 							<slot />
 						</span>
 					</legend>

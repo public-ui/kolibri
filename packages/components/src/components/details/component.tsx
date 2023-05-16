@@ -3,6 +3,11 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 
+/**
+ * @slot default
+ * Der Inhalt, der in der Detailbeschreibung angezeigt wird.
+ */
+
 type RequiredProps = {
 	summary: string;
 };

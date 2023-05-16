@@ -13,6 +13,11 @@ import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
 import { ComponentApi, States } from './types';
 
+/**
+ * @slot default
+ * Die Beschriftung des Eingabefeldes.
+ */
+
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
 @Component({

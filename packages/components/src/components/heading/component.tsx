@@ -5,6 +5,11 @@ import { HeadingLevel } from '../../types/heading-level';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from './validation';
 
+/**
+ * @slot default
+ * Inhalt der Überschrift.
+ */
+
 type RequiredProps = {
 	label: string;
 };

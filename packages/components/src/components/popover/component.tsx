@@ -6,6 +6,11 @@ import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
 import { Alignment, PropAlignment, PropShow, validateAlignment, validateShow } from '../../types/props';
 
+/**
+ * @slot default
+ * Der Inhalt des Popover.
+ */
+
 type RequiredProps = unknown;
 type OptionalProps = PropAlignment & PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

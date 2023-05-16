@@ -9,6 +9,11 @@ import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { featureHint } from '../../utils/a11y.tipps';
 import { PropHasCloser, PropShow, validateHasCloser, validateShow } from '../../types/props';
 
+/**
+ * @slot default
+ * Der Inhalt der Meldung.
+ */
+
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;

@@ -11,6 +11,11 @@ import { ComponentApi, CSSResize, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
 /**
+ * @slot default
+ * Die Beschriftung des Eingabefeldes.
+ */
+
+/**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
  */
 const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {

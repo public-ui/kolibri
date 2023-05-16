@@ -7,6 +7,11 @@ import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { Stringified } from '../../types/common';
 import { translate } from '../../i18n';
 
+/**
+ * @slot default
+ * Inhalt der Form.
+ */
+
 export type KoliBriFormCallbacks = {
 	[Events.onSubmit]?: EventCallback<Event>;
 	[Events.onReset]?: EventCallback<Event>;
