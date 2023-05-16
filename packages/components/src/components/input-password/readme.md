@@ -7,12 +7,12 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 ### Code
 
 ```html
-<kol-input-password _id="main_passwort" _name="main_passwort"> Passwort </kol-input-password>
+<kol-input-password _id="main_passwort" _name="main_passwort" _smartButton="{ _icon: { left: { icon: 'codicon codicon-eye', }, }, _iconOnly: true, _label: 'Passwort anzeigen', _on: { onClick: () => {}, }, }"> Passwort </kol-input-password>
 ```
 
 ### Beispiel
 
-<kol-input-password _id="main_passwort" _name="main_passwort">
+<kol-input-password _id="main_passwort" _name="main_passwort" _smartButton="{ _icon: { left: { icon: 'codicon codicon-eye', }, }, _iconOnly: true, _label: 'Passwort anzeigen', _on: { onClick: () => {}, }, }">
   Passwort
 </kol-input-password>
 
