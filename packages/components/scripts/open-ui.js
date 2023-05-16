@@ -12,6 +12,14 @@ const OPEN_UI = {
 	by: 'Informationstechnik Zentrum Bund',
 	components: [],
 };
+const removeUnderscore = (str) => {
+	return str.replace(/^_/g, '');
+};
+const pascalCase = (str) => {
+	return removeUnderscore(str)
+		.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
+		.replace(/^[a-z]/, (g) => g.toUpperCase());
+};
 const BLACKLIST = [
 	'kol-alert-wc',
 	'kol-button-group',
@@ -32,15 +40,19 @@ const BLACKLIST = [
 ];
 ELEMENTS.tags.forEach((tag) => {
 	if (BLACKLIST.indexOf(tag.name) === -1) {
+		const clearedName = tag.name.replace('kol-', '');
 		const COMPONENT = {
-			name: tag.name.replace('kol-', ''),
+			name: clearedName,
+			openUIName: pascalCase(clearedName),
 			definition: tag.description,
+			url: `https://public-ui.github.io/docs/components/${clearedName}`,
 			anatomy: [],
 			concepts: [],
 		};
 		tag.attributes.forEach((attribute) => {
 			COMPONENT.concepts.push({
 				name: attribute.name,
+				openUIName: removeUnderscore(attribute.name),
 				description: attribute.description,
 			});
 		});
