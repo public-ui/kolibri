@@ -2372,7 +2372,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 `,
 	'KOL-ICON': `:host {
-		display: inline-block;
+		display: contents;
 		width: 1em;
 		height: 1em;
 	}
