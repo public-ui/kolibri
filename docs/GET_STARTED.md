@@ -206,3 +206,32 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 
 
 
+
+### III ohne Framework
+
+Hinweis: ohne einen Bundler ist KoliBri aktuell nicht verwendbar.
+
+`pnpm i @public-ui/core @public-ui/components @public-ui/themes`
+`npm i @public-ui/core @public-ui/components @public-ui/themes`
+`yarn add @public-ui/core @public-ui/components @public-ui/themes`
+
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
++    <script
++      type="module"
++      src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
++    ></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+```
+Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)
