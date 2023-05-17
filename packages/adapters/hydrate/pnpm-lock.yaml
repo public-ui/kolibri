@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.0-rc.23
-    version: 1.5.0-rc.23
+    specifier: 1.5.0
+    version: 1.5.0
   rimraf:
     specifier: 3.0.2
     version: 3.0.2
@@ -33,17 +33,17 @@ packages:
       '@floating-ui/core': 1.2.6
     dev: true
 
-  /@public-ui/components@1.5.0-rc.23:
-    resolution: {integrity: sha512-nYXyH3fLLlFqcqYv9CJp7vT2I5kKhxcIR+ZBqNhRaDgFNDZ1tiP9Og9ntaOSGy/x2VpO8VgoJ6ohzQlzuQCGYw==}
+  /@public-ui/components@1.5.0:
+    resolution: {integrity: sha512-eSZUFcNfKd/M4+5U0d88xKsGseXBOnMWKDg8YRtLADUUzOxPV1TkJhCgmtdFxUXAXXztFVYH4TKUIsRKpzlyOA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.7
-      '@public-ui/schema': 1.5.0-rc.23
+      '@public-ui/schema': 1.5.0
       i18next: 22.4.15
     dev: true
 
-  /@public-ui/schema@1.5.0-rc.23:
-    resolution: {integrity: sha512-Bk9Rmf19FGXa4Xb0pbbasNHKzr0SCKMOqDZARdQUHddHKvBTHMuX5y3tm8aNXfG1TqCWUf+Q90xTUgy1qkZdFw==}
+  /@public-ui/schema@1.5.0:
+    resolution: {integrity: sha512-jkeX06beDFzv8H2Ch5BOMroBcrsHnGBr3YLMJtgPM5MtuiCnMVrCFh7wh7MTtE4H3/zEwVRlXi9OiXAEx7SGTw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
