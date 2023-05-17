@@ -3,10 +3,8 @@
 ## neues Projekt erstellen
 
 Es gibt zwei Möglichkeiten:
- 1) das Projekt via der KoliBri CLI zu erstellen oder
+ 1) das Projekt via der KoliBri CLI zu erstellen (`npm init kolibri@latest my-kolibri-app`) oder
  2) ein Projekt mittels einer anderen CLI erstellen und dann wie unten beschrieben KoliBri hinzufügen.
-
-
 
 ## Einbinden in ein bestehendes Projekt
 
@@ -41,54 +39,61 @@ Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen 
 </html>
 ```
 
-### I React
-
+### I Vite + React
 #### 1. Installieren der KoliBri-Bibliotheken
 
-`npm i @public-ui/components @public-ui/react @public-ui/themes`
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>`npm i @public-ui/components @public-ui/themes @public-ui/react`</div>
+	<div>`pnpm i @public-ui/components @public-ui/themes @public-ui/react`</div>
+	<div>`yarn add @public-ui/components @public-ui/themes @public-ui/react`</div>
+</kol-tabs>
 
-oder
+#### 2. Integration
 
-`pnpm i @public-ui/components @public-ui/react @public-ui/themes`
+main.tsx
+```diff
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
 
-oder
++import { register } from "@public-ui/components";
++import { defineCustomElements } from "@public-ui/components/dist/loader";
++import { DE } from "@public-ui/themes";
 
-`yarn add @public-ui/components @public-ui/react @public-ui/themes`
-
-#### 2. Registrieren des KoliBri-Loaders
-
-Nachdem die Vorbereitungen abgeschlossen sind, muss nur noch der KoliBri-Loader registriert werden.
-Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
-
-| Methode              | Erläuterung                                             |
-| -------------------- | ------------------------------------------------------- |
-| register             | Setzt ein Theme und registriert anschließend den Loader |
-| DEFAULT              | Registriert den Loader für z.B. das DEFAULT-Theme       |
-| defineCustomElements | Registriert den Loader für die Web Components           |
-
-#### 3. Integration
-
-```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { AppComponent } from './components/app/component';
-
-import { register } from '@public-ui/core';
-import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT } from '@public-ui/themes';
-
-register(DEFAULT, defineCustomElements)
-	.then(() => {
-		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
-		if (htmlDivElement instanceof HTMLDivElement) {
-			const root = createRoot(htmlDivElement);
-			root.render(<AppComponent />);
-		}
-	})
-	.catch(console.warn);
++register(DE, defineCustomElements)
++  .then(() => {
+    ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
++  })
++  .catch(console.warn);
 ```
 
+#### 3. module einbinden
+
+index.html
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
++   <script
++     type="module"
++     src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
++   ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
 #### 4. Beispiel
 
 ```tsx
@@ -103,6 +108,7 @@ export const AppComponent = () => {
 	);
 };
 ```
+
 
 ### II Vite + Vue
 
@@ -207,61 +213,55 @@ export default defineConfig({
 ```
 Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Parameter und den Wert des Feldes als Zweiten.
 
-### III Vite + React
+
+### III React
+
 #### 1. Installieren der KoliBri-Bibliotheken
 
-<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>`npm i @public-ui/components @public-ui/themes @public-ui/react`</div>
-	<div>`pnpm i @public-ui/components @public-ui/themes @public-ui/react`</div>
-	<div>`yarn add @public-ui/components @public-ui/themes @public-ui/react`</div>
-</kol-tabs>
+`npm i @public-ui/components @public-ui/react @public-ui/themes`
 
-#### 2. Integration
+oder
 
-main.tsx
-```diff
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
+`pnpm i @public-ui/components @public-ui/react @public-ui/themes`
 
-+import { register } from "@public-ui/components";
-+import { defineCustomElements } from "@public-ui/components/dist/loader";
-+import { DE } from "@public-ui/themes";
+oder
 
-+register(DE, defineCustomElements)
-+  .then(() => {
-    ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    );
-+  })
-+  .catch(console.warn);
+`yarn add @public-ui/components @public-ui/react @public-ui/themes`
+
+#### 2. Registrieren des KoliBri-Loaders
+
+Nachdem die Vorbereitungen abgeschlossen sind, muss nur noch der KoliBri-Loader registriert werden.
+Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
+
+| Methode              | Erläuterung                                             |
+| -------------------- | ------------------------------------------------------- |
+| register             | Setzt ein Theme und registriert anschließend den Loader |
+| DEFAULT              | Registriert den Loader für z.B. das DEFAULT-Theme       |
+| defineCustomElements | Registriert den Loader für die Web Components           |
+
+#### 3. Integration
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { AppComponent } from './components/app/component';
+
+import { register } from '@public-ui/core';
+import { defineCustomElements } from '@public-ui/components/dist/loader';
+import { DEFAULT } from '@public-ui/themes';
+
+register(DEFAULT, defineCustomElements)
+	.then(() => {
+		const htmlDivElement: HTMLDivElement | null = document.querySelector<HTMLDivElement>('div#app');
+		if (htmlDivElement instanceof HTMLDivElement) {
+			const root = createRoot(htmlDivElement);
+			root.render(<AppComponent />);
+		}
+	})
+	.catch(console.warn);
 ```
 
-#### 3. module einbinden
-
-index.html
-```diff
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-+   <script
-+     type="module"
-+     src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
-+   ></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
-```
 #### 4. Beispiel
 
 ```tsx
