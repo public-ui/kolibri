@@ -1,6 +1,6 @@
 # Getting Started
 
-## neues Projekt erstellen
+## Neues Projekt erstellen
 
 Es gibt zwei Möglichkeiten:
  1) das Projekt via der KoliBri CLI zu erstellen (`npm init kolibri@latest my-kolibri-app`) oder
