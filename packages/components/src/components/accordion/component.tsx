@@ -58,13 +58,15 @@ export class KolAccordion implements API {
 			} else {
 				observer.unobserve(content);
 				wrapper.style.height = '0';
-				wrapper.addEventListener(
-					'transitionend',
-					() => {
-						wrapper.style.display = 'none';
-					},
-					{ once: true }
-				);
+				if (this.transition) {
+					wrapper.addEventListener(
+						'transitionend',
+						() => {
+							wrapper.style.display = 'none';
+						},
+						{ once: true }
+					);
+				} else wrapper.style.display = 'none';
 			}
 		}
 	}
