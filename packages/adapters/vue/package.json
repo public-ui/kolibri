@@ -52,7 +52,7 @@
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
 		"@types/normalize-package-data": "2.4.1",
-		"vue": "3.2.47",
+		"vue": "3.3.2",
 		"typescript": "5.0.4",
 		"unbuild": "1.2.1"
 	},
