@@ -39,15 +39,15 @@ Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen 
 
 #### 1. Installieren der KoliBri-Bibliotheken
 
-`npm i @public-ui/core @public-ui/components @public-ui/react @public-ui/themes`
+`npm i @public-ui/components @public-ui/react @public-ui/themes`
 
 oder
 
-`pnpm i @public-ui/core @public-ui/components @public-ui/react @public-ui/themes`
+`pnpm i @public-ui/components @public-ui/react @public-ui/themes`
 
 oder
 
-`yarn add @public-ui/core @public-ui/components @public-ui/react @public-ui/themes`
+`yarn add @public-ui/components @public-ui/react @public-ui/themes`
 
 #### 2. Registrieren des KoliBri-Loaders
 
@@ -102,9 +102,9 @@ export const AppComponent = () => {
 
 #### 1. Installieren der KoliBri-Bibliotheken
 <kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>`npm i @public-ui/core @public-ui/components @public-ui/themes`</div>
-	<div>`pnpm i @public-ui/core @public-ui/components @public-ui/themes`</div>
-	<div>`yarn add @public-ui/core @public-ui/components @public-ui/themes`</div>
+	<div>`npm i @public-ui/components @public-ui/themes`</div>
+	<div>`pnpm i @public-ui/components @public-ui/themes`</div>
+	<div>`yarn add @public-ui/components @public-ui/themes`</div>
 </kol-tabs>
 
 #### 2. Plugin
@@ -206,3 +206,32 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 
 
 
+
+### III ohne Framework
+
+Hinweis: ohne einen Bundler ist KoliBri aktuell nicht verwendbar.
+
+`pnpm i @public-ui/components @public-ui/themes`
+`npm i @public-ui/components @public-ui/themes`
+`yarn add @public-ui/components @public-ui/themes`
+
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
++    <script
++      type="module"
++      src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
++    ></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+```
+Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)
