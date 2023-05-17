@@ -47,6 +47,12 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 | `_level`              | `_level`              | Setzt den H-Level, von 1 bis 6, der Überschrift.                                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
 | `_secondaryHeadline`  | `_secondary-headline` | Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten. | `string \| undefined`                          | `undefined` |
 
+## Slots
+
+| Slot                                | Description |
+| ----------------------------------- | ----------- |
+| `"default Inhalt der Überschrift."` |             |
+
 ## Dependencies
 
 ### Used by

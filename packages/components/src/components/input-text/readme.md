@@ -7,14 +7,20 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 ### Code
 
 ```html
-<kol-input-text _type="text" _id="mein_text" _name="mein_text"_icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }">Texteingabe</kol-input-text>
+<kol-input-text
+	_type="text"
+	_id="mein_text"
+	_name="mein_text"
+	_icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }"
+	>Texteingabe</kol-input-text
+>
 <kol-input-text _type="text" _id="deaktiviert" _name="deaktiviert" _disabled>Deaktiviert</kol-input-text>
 <kol-input-text _type="text" _id="schreibgeschützt" _name="schreibgeschützt" _read-only>Schreibgeschützt</kol-input-text>
 ```
 
 ### Beispiel
 
-<kol-input-text _type="text" _id="mein_text" _name="mein_text"_icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }">Texteingabe</kol-input-text>
+<kol-input-text \_type="text" \_id="mein_text" \_name="mein_text"\_icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }">Texteingabe</kol-input-text>
 <kol-input-text _type="text" _id="deaktiviert" _name="deaktiviert" _disabled>Deaktiviert</kol-input-text>
 <kol-input-text _type="text" _id="schreibgeschützt" _name="schreibgeschützt" _read-only>Schreibgeschützt</kol-input-text>
 
@@ -67,6 +73,12 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
 | `_type`         | `_type`          | Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.                                     | `"search" \| "tel" \| "text" \| "url" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `'text'`    |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
+
+## Slots
+
+| Slot                                            | Description |
+| ----------------------------------------------- | ----------- |
+| `"default Die Beschriftung des Eingabefeldes."` |             |
 
 ## Dependencies
 

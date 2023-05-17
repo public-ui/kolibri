@@ -71,6 +71,12 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 | `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.              | `number \| undefined`                                                   | `10000`     |
 | `_type`         | `_type`          | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 
+## Slots
+
+| Slot                                | Description |
+| ----------------------------------- | ----------- |
+| `"default Der Inhalt der Meldung."` |             |
+
 ## Dependencies
 
 ### Depends on

@@ -12,7 +12,7 @@ Die **ButtonGroup**-Komponente fasst mehrere Buttons zu einer optischen und funk
  */
 
 @Tag("kol-button-group-wc")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0")
 @JsModule("@public-ui/components/dist/components/kol-button-group-wc")
 public class KolButtonGroupWc extends Component {
 }
