@@ -164,7 +164,6 @@ index.html
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
-
 ```
 
 #### 4. Komponenten als custom components registrieren
@@ -221,19 +220,49 @@ Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Pa
 
 main.tsx
 ```diff
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
++import { register } from "@public-ui/components";
++import { defineCustomElements } from "@public-ui/components/dist/loader";
++import { DE } from "@public-ui/themes";
+
++register(DE, defineCustomElements)
++  .then(() => {
+    ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
++  })
++  .catch(console.warn);
 ```
 
-#### 3. Beispiel
+#### 3. module einbinden
+
+index.html
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
++   <script
++     type="module"
++     src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
++   ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
+#### 4. Beispiel
 
 ```tsx
 import React from 'react';
