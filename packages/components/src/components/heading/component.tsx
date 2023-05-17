@@ -5,11 +5,6 @@ import { HeadingLevel } from '../../types/heading-level';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from './validation';
 
-/**
- * @slot default
- * Inhalt der Überschrift.
- */
-
 type RequiredProps = {
 	label: string;
 };
@@ -28,6 +23,9 @@ type OptionalStates = {
 };
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Inhalt der Überschrift.
+ */
 @Component({
 	tag: 'kol-heading-wc',
 	shadow: false,

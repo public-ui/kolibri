@@ -13,10 +13,8 @@ import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
 /**
- * @slot default
- * Die Beschriftung des Eingabefeldes.
+ * @slot default Die Beschriftung des Eingabefeldes.
  */
-
 @Component({
 	tag: 'kol-input-password',
 	styleUrls: {

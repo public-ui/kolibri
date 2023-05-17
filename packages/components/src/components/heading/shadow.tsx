@@ -4,10 +4,8 @@ import { HeadingLevel } from '../../types/heading-level';
 import { Props } from './component';
 
 /**
- * @slot default
- * Inhalt der Überschrift.
+ * @slot default Inhalt der Überschrift.
  */
-
 @Component({
 	tag: 'kol-heading',
 	styleUrls: {

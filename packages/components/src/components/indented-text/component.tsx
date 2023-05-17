@@ -2,11 +2,6 @@ import { Component, h, Host, JSX, State } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 
-/**
- * @slot default
- * Der Text.
- */
-
 type RequiredProps = unknown;
 type OptionalProps = unknown;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -15,6 +10,9 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Text.
+ */
 @Component({
 	tag: 'kol-indented-text',
 	styleUrls: {

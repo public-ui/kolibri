@@ -11,10 +11,8 @@ import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
 /**
- * @slot default
- * Die Legende/Überschrift der Radiobuttons.
+ * @slot default Die Legende/Überschrift der Radiobuttons.
  */
-
 @Component({
 	tag: 'kol-input-radio',
 	styleUrls: {

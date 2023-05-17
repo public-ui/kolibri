@@ -13,10 +13,8 @@ import { validateMultiple } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
 
 /**
- * @slot default
- * Die Beschriftung des Eingabefeldes.
+ * @slot default Die Beschriftung des Eingabefeldes.
  */
-
 @Component({
 	tag: 'kol-input-email',
 	styleUrls: {

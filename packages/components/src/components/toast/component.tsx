@@ -9,11 +9,6 @@ import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { featureHint } from '../../utils/a11y.tipps';
 import { PropHasCloser, PropShow, validateHasCloser, validateShow } from '../../types/props';
 
-/**
- * @slot default
- * Der Inhalt der Meldung.
- */
-
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;
@@ -30,6 +25,9 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Inhalt der Meldung.
+ */
 @Component({
 	tag: 'kol-toast',
 	styleUrls: {

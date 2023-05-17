@@ -27,10 +27,8 @@ const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 };
 
 /**
- * @slot default
- * Der Inhalt der Meldung.
+ * @slot default Der Inhalt der Meldung.
  */
-
 @Component({
 	tag: 'kol-alert-wc',
 	shadow: false,

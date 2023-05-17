@@ -4,10 +4,8 @@ import { HeadingLevel } from '../../types/heading-level';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } from './types';
 
 /**
- * @slot default
- * Der Inhalt der Meldung.
+ * @slot default Der Inhalt der Meldung.
  */
-
 @Component({
 	tag: 'kol-alert',
 	styleUrls: {

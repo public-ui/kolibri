@@ -10,15 +10,13 @@ import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
-/**
- * @slot default
- * Die Beschriftung des Eingabefeldes.
- */
-
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
 
+/**
+ * @slot default Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-select',
 	styleUrls: {

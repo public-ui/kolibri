@@ -6,11 +6,6 @@ import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
 import { Alignment, PropAlignment, PropShow, validateAlignment, validateShow } from '../../types/props';
 
-/**
- * @slot default
- * Der Inhalt des Popover.
- */
-
 type RequiredProps = unknown;
 type OptionalProps = PropAlignment & PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -21,6 +16,9 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Inhalt des Popover.
+ */
 @Component({
 	tag: 'kol-popover',
 	styleUrl: './style.css',
