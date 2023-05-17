@@ -2150,7 +2150,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_onClick"?: KoliBriSplitButtonCallback;
+        "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
@@ -4877,7 +4877,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_onClick"?: KoliBriSplitButtonCallback;
+        "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
