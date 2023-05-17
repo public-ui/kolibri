@@ -14,7 +14,7 @@ Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode
  */
 
 @Tag("kol-icon")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0")
 @JsModule("@public-ui/components/dist/components/kol-icon")
 public class KolIcon extends Component {
 	/**

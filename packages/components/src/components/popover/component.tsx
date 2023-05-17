@@ -16,6 +16,9 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Inhalt des Popover.
+ */
 @Component({
 	tag: 'kol-popover',
 	styleUrl: './style.css',

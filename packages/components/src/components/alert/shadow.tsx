@@ -3,6 +3,9 @@ import { Component, h, Host, JSX, Prop, State } from '@stencil/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } from './types';
 
+/**
+ * @slot default Der Inhalt der Meldung.
+ */
 @Component({
 	tag: 'kol-alert',
 	styleUrls: {

@@ -55,16 +55,28 @@ export class KolAccordion implements API {
 					wrapper.style.height = `${content?.clientHeight ?? 0}px`;
 				});
 				if (!list) observer.observe(content);
-			} else {
-				observer.unobserve(content);
-				wrapper.style.height = '0';
 				wrapper.addEventListener(
 					'transitionend',
 					() => {
-						wrapper.style.display = 'none';
+						wrapper.style.overflow = '';
 					},
 					{ once: true }
 				);
+			} else {
+				wrapper.style.overflow = 'hidden';
+				observer.unobserve(content);
+				wrapper.style.height = '0';
+				if (this.transition) {
+					wrapper.addEventListener(
+						'transitionend',
+						() => {
+							wrapper.style.display = 'none';
+						},
+						{ once: true }
+					);
+				} else {
+					wrapper.style.display = 'none';
+				}
 			}
 		}
 	}

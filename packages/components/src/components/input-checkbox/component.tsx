@@ -9,6 +9,9 @@ import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @slot default Die Beschriftung der Checkbox.
+ */
 @Component({
 	tag: 'kol-input-checkbox',
 	styleUrls: {

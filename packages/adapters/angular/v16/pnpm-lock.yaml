@@ -2,17 +2,17 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@angular/compiler':
-    specifier: 16.0.0
-    version: 16.0.0(@angular/core@16.0.0)
+    specifier: 16.0.1
+    version: 16.0.1(@angular/core@16.0.1)
   '@angular/compiler-cli':
-    specifier: 16.0.0
-    version: 16.0.0(@angular/compiler@16.0.0)(typescript@5.0.4)
+    specifier: 16.0.1
+    version: 16.0.1(@angular/compiler@16.0.1)(typescript@5.0.4)
   '@angular/core':
-    specifier: 16.0.0
-    version: 16.0.0(rxjs@7.8.1)(zone.js@0.13.0)
+    specifier: 16.0.1
+    version: 16.0.1(rxjs@7.8.1)(zone.js@0.13.0)
   '@public-ui/components':
-    specifier: 1.5.0-rc.23
-    version: 1.5.0-rc.23
+    specifier: 1.5.0
+    version: 1.5.0
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -21,7 +21,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.9
-    version: 20.1.1
+    version: 20.1.7
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -60,21 +60,21 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
 
-  /@angular/compiler-cli@16.0.0(@angular/compiler@16.0.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-oyJzxiTHxziv7mD0QuA7K6tpDoL6YNGPkquKjeJjNVZvUrodGsvJ8xHO4ydmjK3nMu2ET1YarsdI8bRp4vp/7w==}
+  /@angular/compiler-cli@16.0.1(@angular/compiler@16.0.1)(typescript@5.0.4):
+    resolution: {integrity: sha512-EW7Oxp8EuTz3vCNd4RAncZGB7dCUYviUkBA4PzuyPmL2copZPt12j9qx0pXXF3T6ydjoZ+99ZEgfkKOV6FeU3g==}
     engines: {node: ^16.14.0 || >=18.10.0}
     hasBin: true
     peerDependencies:
-      '@angular/compiler': 16.0.0
+      '@angular/compiler': 16.0.1
       typescript: '>=4.9.3 <5.1'
     dependencies:
-      '@angular/compiler': 16.0.0(@angular/core@16.0.0)
+      '@angular/compiler': 16.0.1(@angular/core@16.0.1)
       '@babel/core': 7.19.3
       '@jridgewell/sourcemap-codec': 1.4.15
       chokidar: 3.5.3
       convert-source-map: 1.9.0
       reflect-metadata: 0.1.13
-      semver: 7.5.0
+      semver: 7.5.1
       tslib: 2.5.0
       typescript: 5.0.4
       yargs: 17.7.2
@@ -82,21 +82,21 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler@16.0.0(@angular/core@16.0.0):
-    resolution: {integrity: sha512-xtg+KRvSeB9DUzMDtvlaRGKv+Y0MERsz+JOoqV9H4606ThNz5h8ih6fEhVKYqG100o7GhdJaVFO+vlr2/edUHA==}
+  /@angular/compiler@16.0.1(@angular/core@16.0.1):
+    resolution: {integrity: sha512-7zNo6H1qVQow3T4EUul76SaIDSMRSl0hmtyWUzPjtWkxMjrCPSduqjA4/NHaG0KX1BsUvUtQEoDJ5jv/7EHWTQ==}
     engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
-      '@angular/core': 16.0.0
+      '@angular/core': 16.0.1
     peerDependenciesMeta:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 16.0.0(rxjs@7.8.1)(zone.js@0.13.0)
+      '@angular/core': 16.0.1(rxjs@7.8.1)(zone.js@0.13.0)
       tslib: 2.5.0
     dev: true
 
-  /@angular/core@16.0.0(rxjs@7.8.1)(zone.js@0.13.0):
-    resolution: {integrity: sha512-scppDxtXubum6ZiGu3ogmReBtMuA5XXk5FL3YKLb3c9O7q9Z5PC8KNQ6SsaOwEb6oW+0BWXMV698p/zmd0J4tA==}
+  /@angular/core@16.0.1(rxjs@7.8.1)(zone.js@0.13.0):
+    resolution: {integrity: sha512-3s4XBbzWgyWcjI0WFlNDKRxsbm4J+OKIL4mJCM9r8gWwno9y0K/giziAm9YMIJ4VOBIvrcMbOh85o44FCk8cRA==}
     engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -353,17 +353,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.5.0-rc.23:
-    resolution: {integrity: sha512-nYXyH3fLLlFqcqYv9CJp7vT2I5kKhxcIR+ZBqNhRaDgFNDZ1tiP9Og9ntaOSGy/x2VpO8VgoJ6ohzQlzuQCGYw==}
+  /@public-ui/components@1.5.0:
+    resolution: {integrity: sha512-eSZUFcNfKd/M4+5U0d88xKsGseXBOnMWKDg8YRtLADUUzOxPV1TkJhCgmtdFxUXAXXztFVYH4TKUIsRKpzlyOA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.7
-      '@public-ui/schema': 1.5.0-rc.23
+      '@public-ui/schema': 1.5.0
       i18next: 22.4.15
     dev: true
 
-  /@public-ui/schema@1.5.0-rc.23:
-    resolution: {integrity: sha512-Bk9Rmf19FGXa4Xb0pbbasNHKzr0SCKMOqDZARdQUHddHKvBTHMuX5y3tm8aNXfG1TqCWUf+Q90xTUgy1qkZdFw==}
+  /@public-ui/schema@1.5.0:
+    resolution: {integrity: sha512-jkeX06beDFzv8H2Ch5BOMroBcrsHnGBr3YLMJtgPM5MtuiCnMVrCFh7wh7MTtE4H3/zEwVRlXi9OiXAEx7SGTw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
@@ -376,8 +376,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.1.1:
-    resolution: {integrity: sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==}
+  /@types/node@20.1.7:
+    resolution: {integrity: sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -445,14 +445,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001486
-      electron-to-chromium: 1.4.388
+      caniuse-lite: 1.0.30001487
+      electron-to-chromium: 1.4.397
       node-releases: 2.0.10
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
     dev: true
 
-  /caniuse-lite@1.0.30001486:
-    resolution: {integrity: sha512-uv7/gXuHi10Whlj0pp5q/tsK/32J2QSqVRKQhs2j8VsDCjgyruAh/eEXHF822VqO9yT6iZKw3nRwZRSPBE9OQg==}
+  /caniuse-lite@1.0.30001487:
+    resolution: {integrity: sha512-83564Z3yWGqXsh2vaH/mhXfEM0wX+NlBCm1jYHOb97TrTWJEmPTccZgeLTPBUUb0PNVo+oomb7wkimZBIERClA==}
     dev: true
 
   /chalk@2.4.2:
@@ -529,8 +529,8 @@ packages:
       ms: 2.1.2
     dev: true
 
-  /electron-to-chromium@1.4.388:
-    resolution: {integrity: sha512-xZ0y4zjWZgp65okzwwt00f2rYibkFPHUv9qBz+Vzn8cB9UXIo9Zc6Dw81LJYhhNt0G/vR1OJEfStZ49NKl0YxQ==}
+  /electron-to-chromium@1.4.397:
+    resolution: {integrity: sha512-jwnPxhh350Q/aMatQia31KAIQdhEsYS0fFZ0BQQlN9tfvOEwShu6ZNwI4kL/xBabjcB/nTy6lSt17kNIluJZ8Q==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -767,8 +767,8 @@ packages:
     hasBin: true
     dev: true
 
-  /semver@7.5.0:
-    resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==}
+  /semver@7.5.1:
+    resolution: {integrity: sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:

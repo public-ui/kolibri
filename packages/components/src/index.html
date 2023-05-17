@@ -39,14 +39,17 @@
 		<script defer src="assets/table-simulation.js"></script>
 		<script defer src="assets/toast-simulation.js"></script>
 		<script defer src="assets/tooltip-simulation.js"></script>
+
+		<script src="https://unpkg.com/petite-vue" defer init></script>
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
-	<body class="demo" data-theme="demo">
+	<body class="demo" data-theme="demo" v-scope="{ on: console.log, showDropdown: true }">
 		<main class="container">
 			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
 			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
 				<div slot="content" class="grid gap">
-					<div style="display: flex; justify-content: space-between">
+					<div class="flex flex-wrap gap-2 xl:gap-4 justify-between">
 						<kol-card _heading="buttons" _level="3">
 							<div slot="content" class="grid gap">
 								<kol-button
@@ -71,10 +74,28 @@
 									_icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }"
 									_label="normal"
 									_variant="normal"
-									onclick="createAndShowToast()"
+									:_on="{ onClick: ()=> showLogin = !showLogin }"
 								></kol-button>
+								<kol-popover :_show="showLogin">
+									<kol-input-text>Benutzername</kol-input-text>
+									<kol-input-password>Passwort</kol-input-password>
+								</kol-popover>
 								<kol-button _label="ghost" _variant="ghost" onclick="createAndShowToast()"></kol-button>
 								<kol-button _label="custom" _variant="custom" onclick="createAndShowToast()"></kol-button>
+								<kol-split-button _label="kick me">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
+								<kol-split-button _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
 							</div>
 						</kol-card>
 						<kol-card _heading="disabled buttons" _level="3">
@@ -85,6 +106,20 @@
 								<kol-button _icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }" _disabled _label="normal" _variant="normal"></kol-button>
 								<kol-button _disabled _label="ghost" _variant="ghost"></kol-button>
 								<kol-button _disabled _label="custom" _variant="custom"></kol-button>
+								<kol-split-button _label="kick me" _disabled>
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
+								<kol-split-button _disabled _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
 							</div>
 						</kol-card>
 						<kol-card _heading="headings" _level="3">
@@ -1505,7 +1540,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="progress" id="progress" _open>
+			<kol-accordion _heading="progress" id="progress">
 				<div slot="content">
 					<div class="row">
 						<div class="col-12">
@@ -1618,6 +1653,55 @@
 							<kol-spin></kol-spin>
 							<script src="assets/spin-simulation.js"></script>
 						</div>
+					</div>
+				</div>
+			</kol-accordion>
+			<kol-accordion _heading="SplitButton" id="splitbutton">
+				<div slot="content">
+					<div>
+						<kol-heading _label="SplitButton" _level="2"></kol-heading>
+						<p>Die SplitButton-Komponente implementiert eine zweigeteilte Schaltfläche, die ein Popover einblenden kann.</p>
+						<p>
+							Über _open kann das Popover angezeigt werden. Dieses Attribut wird auch durch den rechten Teil der Schaltfläche umgeschaltet, sofern kein
+							ClickHandler übergeben wird, tut der Linke dasselbe. Das Popover kann über den Slot "popover" befüllt werden.
+						</p>
+					</div>
+					<div class="gap-2 flex flex-wrap">
+						<kol-split-button _label="kick me" id="blubb">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button _label="ohne label" _hide-label _icon="codicon codicon-git-pull-request">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button _label="schon offen" :_show-dropdown="showDropdown">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button :_label="`vorherigen ${ showDropdown ? 'schließen' : 'öffnen' }`" :_on="{onClick: ()=>showDropdown = !showDropdown}">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
 					</div>
 				</div>
 			</kol-accordion>

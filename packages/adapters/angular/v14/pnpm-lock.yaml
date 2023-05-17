@@ -11,8 +11,8 @@ devDependencies:
     specifier: 14.3.0
     version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
   '@public-ui/components':
-    specifier: 1.5.0-rc.23
-    version: 1.5.0-rc.23
+    specifier: 1.5.0
+    version: 1.5.0
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -21,7 +21,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.8
-    version: 20.1.1
+    version: 20.1.7
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -75,7 +75,7 @@ packages:
       dependency-graph: 0.11.0
       magic-string: 0.26.7
       reflect-metadata: 0.1.13
-      semver: 7.5.0
+      semver: 7.5.1
       sourcemap-codec: 1.4.8
       tslib: 2.5.0
       typescript: 4.8.4
@@ -355,17 +355,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.5.0-rc.23:
-    resolution: {integrity: sha512-nYXyH3fLLlFqcqYv9CJp7vT2I5kKhxcIR+ZBqNhRaDgFNDZ1tiP9Og9ntaOSGy/x2VpO8VgoJ6ohzQlzuQCGYw==}
+  /@public-ui/components@1.5.0:
+    resolution: {integrity: sha512-eSZUFcNfKd/M4+5U0d88xKsGseXBOnMWKDg8YRtLADUUzOxPV1TkJhCgmtdFxUXAXXztFVYH4TKUIsRKpzlyOA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.7
-      '@public-ui/schema': 1.5.0-rc.23
+      '@public-ui/schema': 1.5.0
       i18next: 22.4.15
     dev: true
 
-  /@public-ui/schema@1.5.0-rc.23:
-    resolution: {integrity: sha512-Bk9Rmf19FGXa4Xb0pbbasNHKzr0SCKMOqDZARdQUHddHKvBTHMuX5y3tm8aNXfG1TqCWUf+Q90xTUgy1qkZdFw==}
+  /@public-ui/schema@1.5.0:
+    resolution: {integrity: sha512-jkeX06beDFzv8H2Ch5BOMroBcrsHnGBr3YLMJtgPM5MtuiCnMVrCFh7wh7MTtE4H3/zEwVRlXi9OiXAEx7SGTw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
@@ -378,8 +378,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.1.1:
-    resolution: {integrity: sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==}
+  /@types/node@20.1.7:
+    resolution: {integrity: sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -447,14 +447,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001486
-      electron-to-chromium: 1.4.388
+      caniuse-lite: 1.0.30001487
+      electron-to-chromium: 1.4.397
       node-releases: 2.0.10
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
     dev: true
 
-  /caniuse-lite@1.0.30001486:
-    resolution: {integrity: sha512-uv7/gXuHi10Whlj0pp5q/tsK/32J2QSqVRKQhs2j8VsDCjgyruAh/eEXHF822VqO9yT6iZKw3nRwZRSPBE9OQg==}
+  /caniuse-lite@1.0.30001487:
+    resolution: {integrity: sha512-83564Z3yWGqXsh2vaH/mhXfEM0wX+NlBCm1jYHOb97TrTWJEmPTccZgeLTPBUUb0PNVo+oomb7wkimZBIERClA==}
     dev: true
 
   /chalk@2.4.2:
@@ -536,8 +536,8 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: true
 
-  /electron-to-chromium@1.4.388:
-    resolution: {integrity: sha512-xZ0y4zjWZgp65okzwwt00f2rYibkFPHUv9qBz+Vzn8cB9UXIo9Zc6Dw81LJYhhNt0G/vR1OJEfStZ49NKl0YxQ==}
+  /electron-to-chromium@1.4.397:
+    resolution: {integrity: sha512-jwnPxhh350Q/aMatQia31KAIQdhEsYS0fFZ0BQQlN9tfvOEwShu6ZNwI4kL/xBabjcB/nTy6lSt17kNIluJZ8Q==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -781,8 +781,8 @@ packages:
     hasBin: true
     dev: true
 
-  /semver@7.5.0:
-    resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==}
+  /semver@7.5.1:
+    resolution: {integrity: sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:

@@ -46,10 +46,6 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_type={this._type}
 					_value={this._value}
 				>
-					{/*
-						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-					*/}
 					<slot name="expert" slot="expert" />
 				</kol-button-wc>
 			</Host>
