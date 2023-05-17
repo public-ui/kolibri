@@ -2371,7 +2371,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-grey);
 	}`,
 	'KOL-ICON': `:host {
-		display: contents;
 		width: 1em;
 		height: 1em;
 	}
