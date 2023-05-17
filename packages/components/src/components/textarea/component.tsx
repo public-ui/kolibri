@@ -23,6 +23,9 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	return nextRows;
 };
 
+/**
+ * @slot default Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-textarea',
 	styleUrls: {

@@ -2349,16 +2349,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-bottom: dashed var(--color-black) 1px;
 		text-decoration: none !important;
 	}`,
-	'KOL-BREADCRUMB': `li:has(kol-icon + kol-link) kol-icon {
+	'KOL-BREADCRUMB': `li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
 		font-size: 0.75rem;
 	}
-	li:has(kol-icon + kol-link) kol-icon::part(icon) {
+	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 		color: var(--color-grey);
 	}
-	li:has(kol-icon + kol-link) kol-icon::part(icon)::before {
-		content: "\f054";
+	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon::part(icon)::before {
+		content: "\\f054";
 	}
 	kol-link::part(icon) {
 		font-size: 1.25rem;
@@ -2369,10 +2369,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	ul li:last-child > span {
 		color: var(--color-grey);
-	}
-`,
+	}`,
 	'KOL-ICON': `:host {
-		display: inline-block;
 		width: 1em;
 		height: 1em;
 	}

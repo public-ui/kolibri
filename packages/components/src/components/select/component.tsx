@@ -14,6 +14,9 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
 
+/**
+ * @slot default Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-select',
 	styleUrls: {

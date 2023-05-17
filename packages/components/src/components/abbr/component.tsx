@@ -6,6 +6,9 @@ import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
 
+/**
+ * @slot default Der Begriff, der erläutert werden soll.
+ */
 @Component({
 	tag: 'kol-abbr',
 	styleUrls: {

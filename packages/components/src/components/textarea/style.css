@@ -1,7 +1,1 @@
 @import url(../input-line.css);
-textarea {
-	width: 100%;
-}
-div.input {
-	cursor: text;
-}

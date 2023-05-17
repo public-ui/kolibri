@@ -11,7 +11,7 @@ Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nac
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.5.0")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**
