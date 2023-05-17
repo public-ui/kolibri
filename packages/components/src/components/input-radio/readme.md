@@ -100,6 +100,12 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 | `_touched`           | `_touched`     | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.              | `boolean \| undefined`                                                                   | `false`      |
 | `_value`             | `_value`       | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902) | `number \| string \| undefined`                                                          | `undefined`  |
 
+## Slots
+
+| Slot                                                  | Description |
+| ----------------------------------------------------- | ----------- |
+| `"default Die Legende/Überschrift der Radiobuttons."` |             |
+
 ## Dependencies
 
 ### Used by

@@ -61,6 +61,12 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 | `_type`         | `_type`          | <span style="color:red">**[DEPRECATED]**</span> Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.<br/><br/>Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist. | `"date" \| "datetime-local" \| "month" \| "number" \| "time" \| "week" \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `'number'`  |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                                                                                                                                       | ``${number}-${number}-${number}T${number}:${number}:${number}` \| `${number}-${number}-${number}T${number}:${number}` \| `${number}-${number}-${number}` \| `${number}-${number}` \| `${number}-W${number}` \| `${number}:${number}:${number}` \| `${number}:${number}` \| null \| number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
 
+## Slots
+
+| Slot                                            | Description |
+| ----------------------------------------------- | ----------- |
+| `"default Die Beschriftung des Eingabefeldes."` |             |
+
 ## Dependencies
 
 ### Used by
