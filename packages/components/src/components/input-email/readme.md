@@ -7,12 +7,12 @@ Der Input-Typ **E-Mail** erzeugt ein Eingabefeld für E-Mails.
 ### Code
 
 ```html
-<kol-input-email _id="meine_email" _name="meine_email"_icon="codicon codicon-mail"> E-Mail-Adresse </kol-input-email>
+<kol-input-email _id="meine_email" _name="meine_email" _icon="codicon codicon-mail"> E-Mail-Adresse </kol-input-email>
 ```
 
 ### Beispiel
 
-<kol-input-email _id="meine_email" _name="meine_email"_icon="codicon codicon-mail">E-Mail-Adresse</kol-input-email>
+<kol-input-email \_id="meine_email" \_name="meine_email"\_icon="codicon codicon-mail">E-Mail-Adresse</kol-input-email>
 
 ## Verwendung
 
@@ -69,6 +69,12 @@ Um eine fehlgeschlagene Validierung anzuzeigen, setzen Sie das Attrbut **`_error
 | `_tabIndex`     | `_tab-index`     | Gibt an, welchen Tab-Index dieses Input hat.                                                             | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
+
+## Slots
+
+| Slot                                            | Description |
+| ----------------------------------------------- | ----------- |
+| `"default Die Beschriftung des Eingabefeldes."` |             |
 
 ## Dependencies
 

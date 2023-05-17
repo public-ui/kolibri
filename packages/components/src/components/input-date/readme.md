@@ -80,6 +80,12 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 | `_type`         | `_type`          | Gibt den Typ des Eingabefeldes an.                                                                       | `"date" \| "datetime-local" \| "month" \| "time" \| "week"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `'date'`    |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `Date \| `${number}-${number}-${number}T${number}:${number}:${number}`\|`${number}-${number}-${number}T${number}:${number}` \| `${number}-${number}-${number}`\|`${number}-${number}`\|`${number}-W${number}`\|`${number}:${number}:${number}` \| `${number}:${number}` \| null \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
 
+## Slots
+
+| Slot                                            | Description |
+| ----------------------------------------------- | ----------- |
+| `"default Die Beschriftung des Eingabefeldes."` |             |
+
 ## Dependencies
 
 ### Depends on

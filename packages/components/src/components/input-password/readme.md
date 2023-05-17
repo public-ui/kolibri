@@ -7,7 +7,9 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 ### Code
 
 ```html
-<kol-input-password _id="main_passwort" _name="main_passwort" _smartButton="{ _icon: 'codicon codicon-eye', _iconOnly: true, _label: 'Passwort anzeigen' }"> Passwort </kol-input-password>
+<kol-input-password _id="main_passwort" _name="main_passwort" _smartButton="{ _icon: 'codicon codicon-eye', _iconOnly: true, _label: 'Passwort anzeigen' }">
+	Passwort
+</kol-input-password>
 ```
 
 ### Beispiel
@@ -61,6 +63,12 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 | `_tabIndex`     | `_tab-index`     | Gibt an, welchen Tab-Index dieses Input hat.                                                             | `number \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
+
+## Slots
+
+| Slot                                            | Description |
+| ----------------------------------------------- | ----------- |
+| `"default Die Beschriftung des Eingabefeldes."` |             |
 
 ## Dependencies
 
