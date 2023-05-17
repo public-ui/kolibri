@@ -1,8 +1,14 @@
 # Getting Started
 
-Dieses Beispiel setzt voraus, dass Sie bereits eine React-Projekt erstellt haben und **KoliBri** nun dort integrieren möchten.
+## neues Projekt erstellen
 
-## Schritt für Schritt-Anleitung
+Es gibt zwei Möglichkeiten:
+ 1) das Projekt via der KoliBri CLI zu erstellen oder
+ 2) ein Projekt mittels einer anderen CLI erstellen und dann wie unten beschrieben KoliBri hinzufügen.
+
+
+
+## Einbinden in ein bestehendes Projekt
 
 ### Einbinden von Schriftarten
 
@@ -102,9 +108,9 @@ export const AppComponent = () => {
 
 #### 1. Installieren der KoliBri-Bibliotheken
 <kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
-	<div>`npm i @public-ui/components @public-ui/themes`</div>
-	<div>`pnpm i @public-ui/components @public-ui/themes`</div>
-	<div>`yarn add @public-ui/components @public-ui/themes`</div>
+	<div>`npm i @public-ui/components @public-ui/themes @public-ui/vue`</div>
+	<div>`pnpm i @public-ui/components @public-ui/themes @public-ui/vue`</div>
+	<div>`yarn add @public-ui/components @public-ui/themes @public-ui/vue`</div>
 </kol-tabs>
 
 #### 2. Plugin
@@ -202,12 +208,47 @@ export default defineConfig({
 ```
 Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Parameter und den Wert des Feldes als Zweiten.
 
+### III Vite + React
+#### 1. Installieren der KoliBri-Bibliotheken
 
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>`npm i @public-ui/components @public-ui/themes @public-ui/react`</div>
+	<div>`pnpm i @public-ui/components @public-ui/themes @public-ui/react`</div>
+	<div>`yarn add @public-ui/components @public-ui/themes @public-ui/react`</div>
+</kol-tabs>
 
+#### 2. Integration
 
+main.tsx
+```diff
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
 
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+```
 
-### III ohne Framework
+#### 3. Beispiel
+
+```tsx
+import React from 'react';
+import { KolSpin } from '@public-ui/react';
+
+export const AppComponent = () => {
+	return (
+		<div>
+			<KolSpin _show />
+		</div>
+	);
+};
+```
+
+### IV ohne Framework
 
 Hinweis: ohne einen Bundler ist KoliBri aktuell nicht verwendbar.
 
