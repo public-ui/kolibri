@@ -55,7 +55,15 @@ export class KolAccordion implements API {
 					wrapper.style.height = `${content?.clientHeight ?? 0}px`;
 				});
 				if (!list) observer.observe(content);
+				wrapper.addEventListener(
+					'transitionend',
+					() => {
+						wrapper.style.overflow = '';
+					},
+					{ once: true }
+				);
 			} else {
+				wrapper.style.overflow = 'hidden';
 				observer.unobserve(content);
 				wrapper.style.height = '0';
 				wrapper.addEventListener(
