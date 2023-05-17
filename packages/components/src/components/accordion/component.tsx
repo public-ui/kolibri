@@ -66,7 +66,9 @@ export class KolAccordion implements API {
 						},
 						{ once: true }
 					);
-				} else wrapper.style.display = 'none';
+				} else {
+					wrapper.style.display = 'none';
+				}
 			}
 		}
 	}
