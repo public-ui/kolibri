@@ -100,9 +100,9 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.5.0';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0';
+		import { register } from 'https://esm.sh/@public-ui/core@1.5.1';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.1/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.1';
 		register([ITZBund], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);

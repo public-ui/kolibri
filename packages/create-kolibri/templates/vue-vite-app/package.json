@@ -15,10 +15,10 @@
 		"postinstall:themes-assets": "cpy \"node_modules/@public-ui/themes/assets/**/*\" src/assets --dot"
 	},
 	"dependencies": {
-		"@public-ui/components": "^1.5.0",
-		"@public-ui/core": "^1.5.0",
-		"@public-ui/themes": "^1.5.0",
-		"@public-ui/vue": "^1.5.0",
+		"@public-ui/components": "^1.5.1",
+		"@public-ui/core": "^1.5.1",
+		"@public-ui/themes": "^1.5.1",
+		"@public-ui/vue": "^1.5.1",
 		"cpy-cli": "^4.2.0",
 		"pinia": "^2.0.36",
 		"vue": "^3.3.2",
