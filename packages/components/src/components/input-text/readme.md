@@ -20,7 +20,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 
 ### Beispiel
 
-<kol-input-text \_type="text" \_id="mein_text" \_name="mein_text"\_icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }">Texteingabe</kol-input-text>
+<kol-input-text _type="text" _id="mein_text" _name="mein_text" _icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }">Texteingabe</kol-input-text>
 <kol-input-text _type="text" _id="deaktiviert" _name="deaktiviert" _disabled>Deaktiviert</kol-input-text>
 <kol-input-text _type="text" _id="schreibgeschützt" _name="schreibgeschützt" _read-only>Schreibgeschützt</kol-input-text>
 
