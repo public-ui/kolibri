@@ -1,17 +1,28 @@
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { watchBoolean } from '../../utils/prop.validators';
+import { watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
+
+/**
+ * Loadingspinner
+ * - https://github.com/vineethtrv/css-loader
+ */
+type SpinAnimation = 'default' | 'none';
 
 type RequiredProps = unknown;
 type OptionalProps = {
 	show: boolean;
+	variant: SpinAnimation;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
+type RequiredStates = {
+	variant: SpinAnimation;
+};
+type OptionalStates = {
+	show: boolean;
+};
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
@@ -22,15 +33,23 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	shadow: true,
 })
 export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+	private showToggled = false;
+
 	public render(): JSX.Element {
 		return (
 			<Host>
 				{this.state._show ? (
 					<span aria-busy="true" aria-label={translate('kol-action-running')} aria-live="polite" class="spin" role="alert">
-						<span class="bg-spin-1"></span>
-						<span class="bg-spin-2"></span>
-						<span class="bg-spin-3"></span>
-						<span class="bg-neutral"></span>
+						{this.state._variant === 'default' ? (
+							<Fragment>
+								<span class="bg-spin-1"></span>
+								<span class="bg-spin-2"></span>
+								<span class="bg-spin-3"></span>
+								<span class="bg-neutral"></span>
+							</Fragment>
+						) : (
+							<slot name="expert"></slot>
+						)}
 					</span>
 				) : (
 					this.showToggled && <span aria-label={translate('kol-action-done')} aria-busy="false" aria-live="polite" role="alert"></span>
@@ -44,9 +63,14 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop({ reflect: true }) public _show?: boolean = false;
 
-	@State() public state: States = {};
+	/**
+	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+	 */
+	@Prop() public _variant?: SpinAnimation = 'default';
 
-	private showToggled = false;
+	@State() public state: States = {
+		_variant: 'default',
+	};
 
 	@Watch('_show')
 	public validateShow(value?: boolean): void {
@@ -54,7 +78,13 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 		watchBoolean(this, '_show', value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: SpinAnimation): void {
+		watchValidator(this, '_variant', (value) => value === 'default' || value === 'none', new Set(['default', 'none']), value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateShow(this._show);
+		this.validateVariant(this._variant);
 	}
 }
