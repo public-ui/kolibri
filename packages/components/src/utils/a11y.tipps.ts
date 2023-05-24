@@ -59,7 +59,7 @@ devHint(
 );
 
 const uiUxCache: Set<string> = new Set<string>();
-const uiUxHint = (msg: string): void => {
+export const uiUxHint = (msg: string): void => {
 	if (uiUxCache.has(msg) === false) {
 		uiUxCache.add(msg);
 		Log.debug(msg, {
