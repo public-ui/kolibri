@@ -1080,7 +1080,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
-	:host > div:first-child {
+	:host > div:last-child {
 		border-style: solid;
 		border-width: 1px;
 		border-color: var(--border-color);
