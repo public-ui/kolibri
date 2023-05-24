@@ -37,15 +37,17 @@ function replacePropNames(code, prefix, seperator) {
 	return code;
 }
 
-function replaceTagNames(code, prefix, seperator) {
-	let tags = code.split(`${prefix}${seperator}`);
-	code = tags[0];
-	for (let i = 1; i < tags.length; i++) {
-		const tag = camel2KebabCase(tags[i].replace(/^([a-z]+)(.*\n?)*/i, '$1'));
-		code += `${prefix}${camel2KebabCase(seperator)}-${tags[i].replace(/^([a-z]+)/i, tag)}`;
-	}
-	return code;
-}
+function replaceTagNames(code, prefix, separator) {
+	const lines = code.split('\n');
+	const replacedLines = lines.map((line) => {
+	  if (line.startsWith(prefix + separator)) {
+		const tag = camel2KebabCase(line.replace(new RegExp(`^(${prefix})([a-z]+)`), '$2'));
+		return `${prefix}${camel2KebabCase(separator)}-${tag}${line.substring(prefix.length + tag.length + 1)}`;
+	  }
+	  return line;
+	});
+	return replacedLines.join('\n');
+  }
 
 function generateWcStory(dir, name) {
 	dir = path.resolve(process.cwd(), dir);
