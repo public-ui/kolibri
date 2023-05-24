@@ -1679,7 +1679,7 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		hyphens: var(--hyphens);
 		line-height: var(--textFontLineHeight);
 	}
-	:host > div:first-child {
+	:host > div:last-child {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
