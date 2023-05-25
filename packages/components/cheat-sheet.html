@@ -9,9 +9,9 @@
 		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
 		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.0';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.1';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.1/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.1';
 				register(ITZBund, defineCustomElements)
 						.then(() => {})
 						.catch(console.warn);
@@ -78,9 +78,9 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.0';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.0/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.0';
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.1';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.1/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.1';
 		register([ITZBund], [defineCustomElements])
 			.then(() =&#62; {})
 			.catch(console.warn);
@@ -355,7 +355,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 },{
 	name: `spin`,
 	desc: `Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.`,
-	props: `_show`
+	props: `_show, _variant`
 },{
 	name: `split-button`,
 	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.`,
@@ -501,15 +501,15 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `"bar" | "cycle", "button" | "checkbox" | "default" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
 	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, split-button, toast`
 },{
+	name: `_variant`,
+	desc: `Gibt an, welche Ausprägung der Button hat.`,
+	types: `"block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "default" | "none", "primary" | "secondary"`,
+	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, quote, spin, split-button`
+},{
 	name: `_required`,
 	desc: `Macht das Eingabeelement zu einem Pflichtfeld.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
-},{
-	name: `_variant`,
-	desc: `Gibt an, welche Ausprägung der Button hat.`,
-	types: `"block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "primary" | "secondary"`,
-	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, quote, split-button`
 },{
 	name: `_label`,
 	desc: `Gibt den Text der Überschrift an.`,
