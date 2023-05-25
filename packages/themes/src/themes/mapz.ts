@@ -74,11 +74,11 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		background-color: #f2f2f2;
 	}
 	kol-tooltip #arrow {
-		background-color: #000000;
+		background-color: #626262;
 	}
 	kol-tooltip kol-span-wc {
 		border-radius: 2px;
-		border: 1px solid #000000;
+		border: 1px solid #626262;
 		color: #000000 !important;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
