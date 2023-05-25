@@ -52,9 +52,9 @@
 	},
 	"devDependencies": {
 		"@types/node": "ts4.9",
-		"@typescript-eslint/eslint-plugin": "5.59.6",
-		"@typescript-eslint/parser": "5.59.6",
-		"eslint": "8.40.0",
+		"@typescript-eslint/eslint-plugin": "5.59.7",
+		"@typescript-eslint/parser": "5.59.7",
+		"eslint": "8.41.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "5.0.4",
 		"unbuild": "1.2.1"
