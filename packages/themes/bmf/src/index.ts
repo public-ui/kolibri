@@ -1054,6 +1054,17 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	details kol-indented-text {
 		margin: 0.25em 0px 0px 0.65em;
+	}
+	kol-icon::part(icon) {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		margin-right: 0.5rem;
+	}
+	details[open] kol-icon::part(icon):before {
+		content: "\\f078";
+	}
+	details:not([open]) kol-icon::part(icon):before {
+		content: "\\f054";
 	}`,
 	'KOL-SPIN': `.spin {
 		display: inline-block;

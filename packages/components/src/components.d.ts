@@ -2096,6 +2096,10 @@ export namespace Components {
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
          */
         "_show"?: boolean;
+        /**
+          * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+         */
+        "_variant"?: SpinAnimation;
     }
     interface KolSplitButton {
         /**
@@ -4823,6 +4827,10 @@ declare namespace LocalJSX {
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
          */
         "_show"?: boolean;
+        /**
+          * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+         */
+        "_variant"?: SpinAnimation;
     }
     interface KolSplitButton {
         /**
