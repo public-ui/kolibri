@@ -38,16 +38,20 @@ function replacePropNames(code, prefix, seperator) {
 }
 
 function replaceTagNames(code, prefix, separator) {
-	const lines = code.split('\n');
-	const replacedLines = lines.map((line) => {
-	  if (line.startsWith(prefix + separator)) {
-		const tag = camel2KebabCase(line.replace(new RegExp(`^(${prefix})([a-z]+)`), '$2'));
-		return `${prefix}${camel2KebabCase(separator)}-${tag}${line.substring(prefix.length + tag.length + 1)}`;
-	  }
-	  return line;
-	});
-	return replacedLines.join('\n');
-  }
+  const tagRegex = new RegExp(`^(${prefix})([a-z]+)`, 'i');
+  const lines = code.split('\n');
+  const replacedLines = lines.map((line) => {
+    if (line.startsWith(prefix + separator)) {
+      const tagMatch = line.match(tagRegex);
+      if (tagMatch) {
+        const tag = camel2KebabCase(tagMatch[2]);
+        return `${prefix}${camel2KebabCase(separator)}-${tag}${line.substring(tagMatch[1].length + tagMatch[2].length + 1)}`;
+      }
+    }
+    return line;
+  });
+  return replacedLines.join('\n');
+}
 
 function generateWcStory(dir, name) {
 	dir = path.resolve(process.cwd(), dir);
