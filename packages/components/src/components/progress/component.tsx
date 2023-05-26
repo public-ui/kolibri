@@ -55,7 +55,7 @@ const createProgressSVG = (state: States): JSX.Element => {
 			return (
 				<div class={state._type}>
 					{state._label && <div>{state._label}</div>}
-					<div style={{ display: 'flex', gap: '0.3em' }} >
+					<div style={{ display: 'flex', gap: '0.3em' }}>
 						<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
 							<line stroke-width="2" x1="1" stroke-linecap="round" y1="1" x2="23" y2="1" fill="#efefef" stroke="#efefef"></line>
 							<line
