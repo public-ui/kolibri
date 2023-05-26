@@ -1553,14 +1553,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 	[exportparts*="selected"] a {
 		border-left-color: var(--color-midnight);
 	} /** Compact mode */
-	.entry.text-center :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		place-items: center;
 	}
-	.entry.text-center > kol-span-wc > span {
+	.entry.compact > kol-span-wc > span {
 		flex-direction: column;
 	}
-	.entry.text-center > kol-span-wc > span,
-	.entry.text-center :is(a, button) {
+	.entry.compact > kol-span-wc > span,
+	.entry.compact :is(a, button) {
 		padding-left: 0;
 	}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
