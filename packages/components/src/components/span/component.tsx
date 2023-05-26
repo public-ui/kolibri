@@ -3,9 +3,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
-import { watchBoolean } from '../../utils/prop.validators';
 import { validateIcon } from '../../types/props/icon';
 import { validateLabelWithAriaLabel } from '../../types/props/label';
+import { watchBoolean } from '../../utils/prop.validators';
 
 type RequiredProps = {
 	label: string;

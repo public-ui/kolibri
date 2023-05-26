@@ -1,24 +1,19 @@
-import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Fragment, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
-
-/**
- * Loadingspinner
- * - https://github.com/vineethtrv/css-loader
- */
-type SpinAnimation = 'default' | 'none';
+import { SpinVariant, validateSpinVariant } from '../../types/props/variant/spin';
+import { watchBoolean } from '../../utils/prop.validators';
 
 type RequiredProps = unknown;
 type OptionalProps = {
 	show: boolean;
-	variant: SpinAnimation;
+	variant: SpinVariant;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	variant: SpinAnimation;
+	variant: SpinVariant;
 };
 type OptionalStates = {
 	show: boolean;
@@ -66,7 +61,7 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
 	 */
-	@Prop() public _variant?: SpinAnimation = 'default';
+	@Prop() public _variant?: SpinVariant = 'default';
 
 	@State() public state: States = {
 		_variant: 'default',
@@ -79,8 +74,8 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: SpinAnimation): void {
-		watchValidator(this, '_variant', (value) => value === 'default' || value === 'none', new Set(['default', 'none']), value);
+	public validateVariant(value?: SpinVariant): void {
+		validateSpinVariant(this, value);
 	}
 
 	public componentWillLoad(): void {

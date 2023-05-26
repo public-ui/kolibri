@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.1
-    version: 1.5.1
+    specifier: 1.5.2-rc.0
+    version: 1.5.2-rc.0
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -12,7 +12,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.9
-    version: 20.2.3
+    version: 20.2.4
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -350,17 +350,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.5.1:
-    resolution: {integrity: sha512-ie0n1/mt4AqdYuRyw1fSjhIDQmuVelipVOKADIvTACc9f9q4OqmLFAl7FuDivhqJc1HZGZUu2MBDjf9C+NyjuQ==}
+  /@public-ui/components@1.5.2-rc.0:
+    resolution: {integrity: sha512-NaxpzStN9oND9i5TrXNocHbBDGg1nVOCyX7J0jjoQiKVVClxclsTwoLZ7kD6wpETTA5QRJUu0PU7uygb/wtYbA==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.8
-      '@public-ui/schema': 1.5.1
-      i18next: 22.4.15
+      '@public-ui/schema': 1.5.2-rc.0
+      i18next: 22.5.0
     dev: true
 
-  /@public-ui/schema@1.5.1:
-    resolution: {integrity: sha512-BDe6eLWfMCmM7NNqBcKS3ZPewkUlHPBs/2tI7FdmsPZuYXVcYbC0OlNjZIG5VgQ1Dz0jk6B8RqaONfdC+32DyQ==}
+  /@public-ui/schema@1.5.2-rc.0:
+    resolution: {integrity: sha512-7Ob7R/u4iIHdE42iDARFuy33Rsq04y5E/m24ZniLKg/AJE/rQwgiHvI9D0v/2ems4XxnseIrT+Prcy2huDGQJQ==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
@@ -461,8 +461,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.2.3:
-    resolution: {integrity: sha512-pg9d0yC4rVNWQzX8U7xb4olIOFuuVL9za3bzMT2pu2SU0SNEi66i2qrvhE2qt0HvkhuCaWJu7pLNOt/Pj8BIrw==}
+  /@types/node@20.2.4:
+    resolution: {integrity: sha512-ni5f8Xlf4PwnT/Z3f0HURc3ZSw8UyrqMqmM3L5ysa7VjHu8c3FOmIo1nKCcLrV/OAmtf3N4kFna/aJqxsfEtnA==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -490,7 +490,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 20.2.3
+      '@types/node': 20.2.4
     dev: true
 
   /@types/scheduler@0.16.3:
@@ -1196,8 +1196,8 @@ packages:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
     dev: true
 
-  /i18next@22.4.15:
-    resolution: {integrity: sha512-yYudtbFrrmWKLEhl6jvKUYyYunj4bTBCe2qIUYAxbXoPusY7YmdwPvOE6fx6UIfWvmlbCWDItr7wIs8KEBZ5Zg==}
+  /i18next@22.5.0:
+    resolution: {integrity: sha512-sqWuJFj+wJAKQP2qBQ+b7STzxZNUmnSxrehBCCj9vDOW9RDYPfqCaK1Hbh2frNYQuPziz6O2CGoJPwtzY3vAYA==}
     dependencies:
       '@babel/runtime': 7.21.5
     dev: true
