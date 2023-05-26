@@ -192,6 +192,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
 	}
+  /** small ghost button */
+	.ghost :is(a, button).small > kol-span-wc {
+		border: none;
+		background-color: transparent;
+		box-shadow: none;
+	}
+	.ghost :is(a, button).small > kol-span-wc > span {
+		border-radius: 1.5em;
+		border-style: solid;
+		border-width: 2px;
+		border-color: var(--color-white);
+		background-color: var(--color-white);
+	}
 	.ghost :is(a, button).small:active > kol-span-wc > span,
 	.ghost :is(a, button).small:hover > kol-span-wc > span,
 	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
