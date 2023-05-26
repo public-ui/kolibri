@@ -26,7 +26,7 @@ const createProgressSVG = (state: States): JSX.Element => {
 	switch (state._type) {
 		case 'cycle':
 			return (
-				<svg width="100" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+				<svg class={state._type} width="100" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
 					<circle fill="none" stroke="#efefef" cx="6px" cy="6px" r="5px"></circle>
 					<text aria-hidden="true" font-size="0.1em" x="50%" y="50%" text-anchor="middle" fill="currentColor">
 						{state._label && (
@@ -53,7 +53,7 @@ const createProgressSVG = (state: States): JSX.Element => {
 			);
 		default:
 			return (
-				<div>
+				<div class={state._type}>
 					{state._label && <div>{state._label}</div>}
 					<div style={{ display: 'flex', gap: '0.3em' }}>
 						<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
