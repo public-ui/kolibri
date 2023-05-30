@@ -59,10 +59,6 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
-					{/*
-						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-					*/}
 					<slot name="expert" slot="expert" />
 				</kol-link-wc>
 			</Host>

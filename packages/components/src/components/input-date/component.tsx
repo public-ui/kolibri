@@ -10,11 +10,11 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { ComponentApi, States } from './types';
 import { validateLabel } from '../../types/props';
 
+/**
+ * @slot default Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-input-date',
-	// styleUrls: {
-	// 	default: './style.css',
-	// },
 	shadow: false,
 })
 export class KolInputDate implements ComponentApi {

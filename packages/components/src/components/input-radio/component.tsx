@@ -11,6 +11,9 @@ import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 import { validateLabel } from '../../types/props';
 
+/**
+ * @slot default Die Legende/Überschrift der Radiobuttons.
+ */
 @Component({
 	tag: 'kol-input-radio',
 	styleUrls: {
@@ -44,7 +47,6 @@ export class KolInputRadio implements ComponentApi {
 					<legend class="block w-full mb-1 leading-normal">
 						<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					</legend>
-
 					{this.state._list.map((option, index) => {
 						/**
 						 * Damit der Value einer Option ein beliebigen Typ haben kann

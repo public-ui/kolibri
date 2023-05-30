@@ -10,6 +10,9 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Text.
+ */
 @Component({
 	tag: 'kol-indented-text',
 	styleUrls: {
@@ -24,6 +27,7 @@ export class KolIndentedText implements Generic.Element.ComponentApi<RequiredPro
 		return (
 			<Host>
 				<div>
+					{/* TODO: Für was wird dieses div benötigt? */}
 					<slot />
 				</div>
 			</Host>

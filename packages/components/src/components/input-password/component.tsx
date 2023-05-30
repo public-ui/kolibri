@@ -13,6 +13,9 @@ import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 import { validateLabel } from '../../types/props';
 
+/**
+ * @slot default Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-input-password',
 	styleUrls: {
@@ -36,7 +39,7 @@ export class KolInputPassword implements ComponentApi {
 				ref: this.ref,
 			});
 		} else {
-			this.controller.onFacade.onClick(event);
+			this.controller.onFacade.onChange(event);
 		}
 	};
 

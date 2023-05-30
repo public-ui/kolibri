@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import { a11yHint } from '../../utils/a11y.tipps';
+import { a11yHint, uiUxHint } from '../../utils/a11y.tipps';
 import { watchString, WatchStringOptions } from '../../utils/prop.validators';
 import { isEmptyOrPrefixOf } from '../../utils/validator';
 
@@ -7,6 +7,8 @@ import { isEmptyOrPrefixOf } from '../../utils/validator';
 
 /**
  * This is a regular expression that matches all readable characters.
+ *
+ * Interesting: https://stackoverflow.com/questions/150033/regular-expression-to-match-non-english-characters
  */
 const READABLE_CHARS = /[a-zA-Z0-9äöüÄÖÜß]/g;
 
@@ -91,7 +93,7 @@ const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextV
 				// smartSetTimeout(() => ((component as Generic.Element.Component & { _ariaLabel: string })._ariaLabel = label), 50);
 			}
 			a11yHint(
-				`Das abweichende Aria-Label ist nicht barrierefrei. Ein abweichendes Aria-Label muss aus Gründern der Barrierefreiheit für die Sprachsteuerung mit dem Label-Text beginnen.`
+				`The different Aria label is not barrier-free. A different Aria label must start with the label text for reasons of accessibility for voice control.`
 			);
 		}
 	}
@@ -105,9 +107,7 @@ const validateAriaLabel = (component: Generic.Element.Component, value?: string,
 					options.hooks?.afterPatch(value, state, component, key);
 				}
 				if (typeof value === 'string' && value.length > 0 && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
-					a11yHint(
-						`Ein abweichendes Aria-Label (${value}) ist nicht barrierefrei. Ein abweichendes Aria-Label sollte aus mindestens drei lesbaren Zeichen bestehen.`
-					);
+					a11yHint(`The different aria label ("${value}") is not accessible. A different aria label should consist of at least three readable characters.`);
 				}
 			},
 			beforePatch: options.hooks?.beforePatch,
@@ -131,7 +131,10 @@ export const validateLabel = (component: Generic.Element.Component, value?: stri
 					options.hooks?.afterPatch(value, state, component, key);
 				}
 				if (typeof value === 'string' && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
-					a11yHint(`Ein Label (${value}) ist nicht barrierefrei. Ein Label sollte aus mindestens drei lesbaren Zeichen bestehen.`);
+					a11yHint(`The heading or label ("${value}") is not accessible. A label should consist of at least three readable characters.`);
+				}
+				if (typeof value === 'string' && value.length > 80) {
+					uiUxHint(`A heading or label should not be longer than 80 characters.`);
 				}
 			},
 			beforePatch: options.hooks?.beforePatch,

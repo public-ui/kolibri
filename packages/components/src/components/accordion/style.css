@@ -8,7 +8,6 @@
 	justify-items: start;
 }
 .wrapper {
-	overflow: hidden;
 	position: relative;
 }
 .transition {

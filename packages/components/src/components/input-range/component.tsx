@@ -10,6 +10,9 @@ import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 import { validateLabel } from '../../types/props';
 
+/**
+ * @slot default	Die Beschriftung des Eingabeelements.
+ */
 @Component({
 	tag: 'kol-input-range',
 	styleUrls: {

@@ -16,12 +16,13 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Inhalt des Popover.
+ */
 @Component({
 	tag: 'kol-popover',
-	styleUrls: {
-		default: './style.css',
-	},
-	shadow: true,
+	styleUrl: './style.css',
+	shadow: false,
 })
 export class KolPopover implements API {
 	private arrowElement?: HTMLDivElement;

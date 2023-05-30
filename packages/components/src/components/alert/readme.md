@@ -89,6 +89,12 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | `_type`      | `_type`       | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 | `_variant`   | `_variant`    | Gibt an, welche Benachrichtigungsvariante dargestellt wird.                       | `"card" \| "msg" \| undefined`                                          | `'msg'`     |
 
+## Slots
+
+| Slot                                | Description |
+| ----------------------------------- | ----------- |
+| `"default Der Inhalt der Meldung."` |             |
+
 ## Dependencies
 
 ### Used by

@@ -96,7 +96,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	button {
 		border-radius: 2rem !important;
 		font-family: var(--font-family-sans);
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}
 	a > kol-span-wc,
 	button > kol-span-wc {
@@ -208,7 +208,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	button {
 		border-radius: 2rem !important;
 		font-family: var(--font-family-sans);
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}
 	a > kol-span-wc,
 	button > kol-span-wc {
@@ -351,7 +351,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		color: var(--color-petrol);
 		font-family: var(--font-family-sans);
 		font-size: inherit;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 		transition-delay: 0;
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.5s;
@@ -796,7 +796,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		color: var(--color-petrol);
 		font-family: var(--font-family-sans);
 		font-size: inherit;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 		transition-delay: 0;
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.5s;
@@ -831,7 +831,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	}`,
 	'KOL-BREADCRUMB': `li > span {
 		font-weight: bold;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}`,
 	'KOL-SPIN': `.spin {
 		display: inline-block;
@@ -1080,7 +1080,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
-	:host > div:first-child {
+	:host > div:last-child {
 		border-style: solid;
 		border-width: 1px;
 		border-color: var(--border-color);

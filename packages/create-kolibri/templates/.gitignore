@@ -48,4 +48,5 @@ yarn.lock
 !stencil-app/**/assets/favicon.ico
 !stencil-app/**/assets/style.css
 !stencil-app/README.md
+!svg2font-tool/**/README.md
 !kolibri-*/**/README.md

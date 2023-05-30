@@ -15,6 +15,9 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Inhalt, der in der Detailbeschreibung angezeigt wird.
+ */
 @Component({
 	tag: 'kol-details',
 	styleUrls: {
