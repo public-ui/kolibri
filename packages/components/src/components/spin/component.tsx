@@ -2,22 +2,16 @@ import { Component, Fragment, Host, JSX, Prop, State, Watch, h } from '@stencil/
 
 import { Generic } from '@a11y-ui/core';
 import { translate } from '../../i18n';
-import { SpinVariant, validateSpinVariant } from '../../types/props/variant/spin';
+import { PropSpinVariant, SpinVariant, validateSpinVariant } from '../../types/props/variant/spin';
 import { watchBoolean } from '../../utils/prop.validators';
+import { PropShow } from '../../types/props';
 
 type RequiredProps = unknown;
-type OptionalProps = {
-	show: boolean;
-	variant: SpinVariant;
-};
+type OptionalProps = PropSpinVariant & PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = {
-	variant: SpinVariant;
-};
-type OptionalStates = {
-	show: boolean;
-};
+type RequiredStates = PropSpinVariant;
+type OptionalStates = PropShow;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({

@@ -17,25 +17,25 @@
 .spin span:first-child {
 	background-color: #fc0;
 	z-index: 0;
-	animation: 2s infinite spin1;
+	animation: 1s infinite spin1;
 	left: 0.1rem;
 }
 .spin span:nth-child(2) {
 	background-color: red;
 	z-index: 1;
-	animation: 2s infinite spin2;
+	animation: 1s infinite spin2;
 	left: 0.1rem;
 }
 .spin span:nth-child(3) {
 	background-color: #000;
 	z-index: 1;
-	animation: 2s infinite spin2;
+	animation: 1s infinite spin2;
 	left: 1.1rem;
 }
 .spin span:nth-child(4) {
 	background-color: #666;
 	z-index: 0;
-	animation: 2s infinite spin3;
+	animation: 1s infinite spin3;
 	left: 2.1rem;
 }
 @keyframes spin1 {
@@ -60,5 +60,15 @@
 	}
 	100% {
 		transform: scale(0);
+	}
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
+@media (prefers-reduced-motion) {
+	.spin span:first-child,
+	.spin span:nth-child(2),
+	.spin span:nth-child(3),
+	.spin span:nth-child(4) {
+		animation-duration: 2s;
 	}
 }
