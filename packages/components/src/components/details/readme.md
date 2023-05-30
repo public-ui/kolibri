@@ -95,6 +95,12 @@ Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Ü
 | `_open`                 | `_open`    | Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist. | `boolean \| undefined` | `false`     |
 | `_summary` _(required)_ | `_summary` | Gibt die Zusammenfassung der Detailbeschreibung an.               | `string`               | `undefined` |
 
+## Slots
+
+| Slot                                                                  | Description |
+| --------------------------------------------------------------------- | ----------- |
+| `"default Der Inhalt, der in der Detailbeschreibung angezeigt wird."` |             |
+
 ## Dependencies
 
 ### Depends on

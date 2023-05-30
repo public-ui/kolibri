@@ -79,6 +79,12 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_value`         | `_value`         | Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })                                                                                 | `string \| undefined`                                                                                                                                                                                                                                                                                         | `undefined` |
 | `_variant`       | `_variant`       | Gibt an, welchen Type das Input haben soll.                                                                                                        | `"button" \| "checkbox" \| "default" \| "switch" \| undefined`                                                                                                                                                                                                                                                | `undefined` |
 
+## Slots
+
+| Slot                                       | Description |
+| ------------------------------------------ | ----------- |
+| `"default Die Beschriftung der Checkbox."` |             |
+
 ## Dependencies
 
 ### Depends on

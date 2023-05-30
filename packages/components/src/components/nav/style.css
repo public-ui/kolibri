@@ -1,4 +1,11 @@
 @import url(../style.css);
+:host > div {
+	display: grid;
+	place-items: center;
+}
+nav {
+	width: 100%;
+}
 .list {
 	display: flex;
 	list-style: none;

@@ -3,7 +3,7 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
-import { Props } from '../shadow';
+import { Props } from '../component';
 import { getPopoverHtml } from './html.mock';
 
 executeTests<Props>(

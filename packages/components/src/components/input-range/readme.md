@@ -58,6 +58,12 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 | `_touched`      | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.        | `boolean \| undefined`                                                                                  | `false`     |
 | `_value`        | `_value`         | Gibt den Wert des Eingabefeldes an.                                                  | `number \| undefined`                                                                                   | `undefined` |
 
+## Slots
+
+| Slot                                             | Description |
+| ------------------------------------------------ | ----------- |
+| `"default	Die Beschriftung des Eingabeelements."` |             |
+
 ## Dependencies
 
 ### Depends on

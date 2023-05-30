@@ -34,6 +34,7 @@ import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 import { KoliBriProgressType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
+import { SpinVariant } from "./types/props/variant/spin";
 import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
@@ -68,6 +69,7 @@ export { PaginationHasButton } from "./components/pagination/component";
 export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
 export { KoliBriProgressType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
+export { SpinVariant } from "./types/props/variant/spin";
 export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./types/table";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
@@ -2100,6 +2102,10 @@ export namespace Components {
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
          */
         "_show"?: boolean;
+        /**
+          * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+         */
+        "_variant"?: SpinVariant;
     }
     interface KolSplitButton {
         /**
@@ -2154,7 +2160,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_onClick"?: KoliBriSplitButtonCallback;
+        "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
@@ -4831,6 +4837,10 @@ declare namespace LocalJSX {
           * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
          */
         "_show"?: boolean;
+        /**
+          * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+         */
+        "_variant"?: SpinVariant;
     }
     interface KolSplitButton {
         /**
@@ -4885,7 +4895,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_onClick"?: KoliBriSplitButtonCallback;
+        "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
