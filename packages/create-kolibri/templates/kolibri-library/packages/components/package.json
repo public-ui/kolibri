@@ -36,8 +36,8 @@
 	},
 	"dependencies": {
 		"@a11y-ui/core": "^1.0.2",
-		"@public-ui/components": "^1.5.2-rc.1",
-		"@public-ui/schema": "^1.5.2-rc.1"
+		"@public-ui/components": "^1.5.2-rc.2",
+		"@public-ui/schema": "^1.5.2-rc.2"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "^0.5.0",
