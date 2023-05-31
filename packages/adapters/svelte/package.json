@@ -57,7 +57,7 @@
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"devDependencies": {
-		"@babel/types": "7.21.0",
+		"@babel/types": "7.22.4",
 		"@public-ui/components": "1.5.2-rc.2",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
