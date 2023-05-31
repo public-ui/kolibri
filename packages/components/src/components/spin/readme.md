@@ -58,10 +58,10 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
 	@media (prefers-reduced-motion) {
 		.loader {
-      animation-duration: 6s;
+			animation-duration: 6s;
 		}
 		.loader::after {
-      animation-duration: 3s;
+			animation-duration: 3s;
 		}
 	}
 </style>
