@@ -25,7 +25,8 @@ export const getCardHtml = (props: Props): string => {
 				<slot name="header"></slot>
 			</div>
 			<div class="content">
-				<slot name="content"/>
+				<slot name="content"></slot>
+				<slot />
 			</div>
 			${
 				props._hasFooter

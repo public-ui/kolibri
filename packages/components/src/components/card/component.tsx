@@ -42,15 +42,15 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 				<div class="card">
 					<div class="header">
 						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
-						<slot name="header" />
+						<slot name="header"></slot>
 					</div>
 					<div class="content">
-						<slot name="content" /> {/* Deprecated for version 2 */}
+						<slot name="content"></slot> {/* Deprecated for version 2 */}
 						<slot />
 					</div>
 					{this.state._hasFooter && (
 						<div class="footer">
-							<slot name="footer" />
+							<slot name="footer"></slot>
 						</div>
 					)}
 				</div>

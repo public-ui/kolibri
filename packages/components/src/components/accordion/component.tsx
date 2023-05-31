@@ -103,11 +103,11 @@ export class KolAccordion implements API {
 						></kol-button-wc>
 					</kol-heading-wc>
 					<div class="header">
-						<slot name="header" />
+						<slot name="header"></slot>
 					</div>
 					<div ref={this.catchContentWrapperElement} class={{ wrapper: true, transition: this.transition }}>
 						<div ref={this.catchContentElement} aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
-							<slot name="content" /> {/* Deprecated for version 2 */}
+							<slot name="content"></slot> {/* Deprecated for version 2 */}
 							<slot />
 						</div>
 					</div>
