@@ -11,8 +11,8 @@ devDependencies:
     specifier: 12.2.17
     version: 12.2.17(rxjs@7.6.0)(zone.js@0.11.8)
   '@public-ui/components':
-    specifier: 1.5.2-rc.1
-    version: 1.5.2-rc.1
+    specifier: 1.5.2-rc.2
+    version: 1.5.2-rc.2
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -21,7 +21,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.3
-    version: 20.2.4
+    version: 20.2.5
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -353,17 +353,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.5.2-rc.1:
-    resolution: {integrity: sha512-aUuQJrJm1PKywDUNe4MXJf5wm/Cq2dECAY5vmsrBW4Ew+GbSgAR5YwIIM9hO++6nccAYw7UiKwMnKjQ+wvVloQ==}
+  /@public-ui/components@1.5.2-rc.2:
+    resolution: {integrity: sha512-leIfq14iK4kfNZlFf45fVQ+y4phohiIZP9a8ESuLB5jkbeFFujGpJ8bbOLhBQQHlhYM8wp/n4fhHLAeEsD4TgQ==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.8
-      '@public-ui/schema': 1.5.2-rc.1
+      '@public-ui/schema': 1.5.2-rc.2
       i18next: 22.5.0
     dev: true
 
-  /@public-ui/schema@1.5.2-rc.1:
-    resolution: {integrity: sha512-xz7rYL+8RVDYJZOTWoRobN4wn7QQ10Q75iyYKOAqxGP2cXO9TiRM0LxH9SaOVM7jGfQsDqMwrjlsPkPbYzmj4g==}
+  /@public-ui/schema@1.5.2-rc.2:
+    resolution: {integrity: sha512-d+h2Azq/dvzB1QqJPNrhDhq5YsHMhAjg8BdEsFjN4cXUGf9AfCy1vbK0Lo1xFukpNvD5aOlrtn63DtCQdjb9Vw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
@@ -376,8 +376,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.2.4:
-    resolution: {integrity: sha512-ni5f8Xlf4PwnT/Z3f0HURc3ZSw8UyrqMqmM3L5ysa7VjHu8c3FOmIo1nKCcLrV/OAmtf3N4kFna/aJqxsfEtnA==}
+  /@types/node@20.2.5:
+    resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
