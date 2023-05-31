@@ -1,14 +1,14 @@
 import { Generic } from '@a11y-ui/core';
 import { Alignment } from '../../components';
 
-type RequiredProps = {
-	title: string;
-};
+type RequiredProps = unknown;
 type OptionalProps = {
+	label: string;
+	title: string;
 	tooltipAlign: Alignment;
 };
 
-type RequiredStates = RequiredProps & OptionalProps;
+type RequiredStates = RequiredProps & { label: string; tooltipAlign: Alignment };
 type OptionalStates = unknown;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

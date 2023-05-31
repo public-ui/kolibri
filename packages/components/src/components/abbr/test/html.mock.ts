@@ -5,7 +5,7 @@ import { Props } from '../types';
 export const getAbbrHtml = (props: Props): string => {
 	props = mixMembers(
 		{
-			_title: '…', // ⚠ required
+			_label: '…', // ⚠ required
 			_tooltipAlign: 'top',
 		},
 		props
@@ -13,7 +13,7 @@ export const getAbbrHtml = (props: Props): string => {
 	return `
 <kol-abbr>
   <mock:shadow-root>
-    <abbr aria-labelledby="nonce" role="definition" ${typeof props._title === 'string' ? ` title="${props._title}"` : ''}>
+    <abbr aria-labelledby="nonce" role="definition" ${typeof props._label === 'string' ? ` title="${props._label}"` : ''}>
       <span>
         <slot />
       </span>
@@ -21,7 +21,7 @@ export const getAbbrHtml = (props: Props): string => {
     ${getTooltipHtml({
 			_align: props._tooltipAlign,
 			_id: 'nonce',
-			_label: props._title,
+			_label: props._label || '...',
 		})}
   </mock:shadow-root>
 </kol-abbr>`;

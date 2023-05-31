@@ -78,9 +78,14 @@ export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Gibt die Beschreibung oder Erläuterung der Abkürzung an.
          */
-        "_title": string;
+        "_label"?: string;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated use _label instead; will get removed in v2.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -2809,9 +2814,14 @@ declare global {
 declare namespace LocalJSX {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Gibt die Beschreibung oder Erläuterung der Abkürzung an.
          */
-        "_title": string;
+        "_label"?: string;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated use _label instead; will get removed in v2.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */

@@ -1,9 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { Alignment } from '../../types/props';
+import { Alignment, validateLabel } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
-import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
 
 /**
@@ -22,15 +21,20 @@ export class KolAbbr implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<abbr aria-labelledby={this.nonce} role="definition" title={this.state._title}>
+				<abbr aria-labelledby={this.nonce} role="definition" title={this.state._label}>
 					<span title="">
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._title}></kol-tooltip>
+				<kol-tooltip _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip>
 			</Host>
 		);
 	}
+
+	/**
+	 * Gibt die Beschreibung oder Erläuterung der Abkürzung an.
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
@@ -39,8 +43,9 @@ export class KolAbbr implements API {
 
 	/**
 	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+	 * @deprecated use _label instead; will get removed in v2.
 	 */
-	@Prop() public _title!: string;
+	@Prop() public _title?: string;
 
 	/**
 	 * Die State-Parameter repräsentieren den inneren State
@@ -49,7 +54,7 @@ export class KolAbbr implements API {
 	 * @see: https://stenciljs.com/docs/state
 	 */
 	@State() public state: States = {
-		_title: '…', // ⚠ required
+		_label: '…', // ⚠ required
 		_tooltipAlign: 'top',
 	};
 
@@ -61,11 +66,15 @@ export class KolAbbr implements API {
 	 *
 	 * @see: https://stenciljs.com/docs/properties#prop-validation
 	 */
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
+	}
+
+	// @deprecated, remove in v2
 	@Watch('_title')
 	public validateTitle(value?: string): void {
-		watchString(this, '_title', value, {
-			required: true,
-		});
+		validateLabel(this, value);
 	}
 
 	@Watch('_tooltipAlign')
@@ -74,6 +83,7 @@ export class KolAbbr implements API {
 	}
 
 	public componentWillLoad(): void {
+		this.validateLabel(this._label);
 		this.validateTitle(this._title);
 		this.validateTooltipAlign(this._tooltipAlign);
 	}

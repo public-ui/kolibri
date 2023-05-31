@@ -16,7 +16,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_title: ['Text'],
+		_label: ['Text'],
 		_tooltipAlign: ['left', 'bottom', 'right', 'top'],
 	},
 	getAbbrHtml,
