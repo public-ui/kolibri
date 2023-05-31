@@ -25,6 +25,9 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @slot default Der Inhalt der Meldung.
+ */
 @Component({
 	tag: 'kol-toast',
 	styleUrls: {

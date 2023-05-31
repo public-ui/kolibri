@@ -3,6 +3,9 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { Props } from './component';
 
+/**
+ * @slot default Inhalt der Überschrift.
+ */
 @Component({
 	tag: 'kol-heading',
 	styleUrls: {

@@ -61,11 +61,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 					_value={this._value}
 					_variant={this._variant}
 				>
-					{/*
-						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-					*/}
-					<slot name="expert" slot="expert" />
+					<slot name="expert" slot="expert"></slot>
 				</kol-button-wc>
 			</Host>
 		);

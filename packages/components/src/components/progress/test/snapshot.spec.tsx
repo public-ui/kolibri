@@ -27,11 +27,11 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-				 	 <div>
+				 	 <div class="bar">
 					   <div style="display: flex; gap: 0.3em;">
                <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
                  <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-                 <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="1" y1="1" y2="1"></line>
+                 <line class="progress" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="1" y1="1" y2="1"></line>
                </svg> <text aria-hidden="true" dominant-baseline="central" fill="currentColor" font-size="0.1em" text-anchor="middle">
 							         0%
 							          </text>
@@ -55,11 +55,11 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-				 	 <div>
+				 	 <div class="bar">
 					   <div style="display: flex; gap: 0.3em;">
 							 <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
 							 	 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-								 <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="10" y1="1" y2="1"></line>
+								 <line class="progress" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="10" y1="1" y2="1"></line>
 							 </svg>
 							          <text aria-hidden="true" dominant-baseline="central" fill="currentColor" font-size="0.1em" text-anchor="middle">
 							            17%
@@ -83,11 +83,11 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-				 	 <div>
+				 	 <div class="bar">
 					   <div style="display: flex; gap: 0.3em;">
 							 <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
 								 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-								 <line class="bar" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
+								 <line class="progress" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
 							 </svg> <text aria-hidden="true" dominant-baseline="central" fill="currentColor" font-size="0.1em" text-anchor="middle">
 							            42%
 							          </text>
@@ -110,14 +110,14 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-           <svg viewBox="0 0 12 12" width="100" xmlns="http://www.w3.org/2000/svg">
+           <svg class="cycle" viewBox="0 0 12 12" width="100" xmlns="http://www.w3.org/2000/svg">
              <circle cx="6px" cy="6px" fill="none" r="5px" stroke="#efefef"></circle>
 						 <text aria-hidden="true" fill="currentColor" font-size="0.1em" text-anchor="middle" x="50%" y="50%">
 						         <tspan dy="0em" text-anchor="middle" x="50%">
 						            17%
 						          </tspan>
 						        </text>
-           <circle class="cycle" cx="6px" cy="6px" fill="none" r="5px" stroke="#0075ff" stroke-dasharray="13px 32px" stroke-linecap="round"></circle>
+           <circle class="progress" cx="6px" cy="6px" fill="none" r="5px" stroke="#0075ff" stroke-dasharray="13px 32px" stroke-linecap="round"></circle>
            </svg>
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>
            <span ${DEFAULT_HTML_SPAN_PROPS} hidden>

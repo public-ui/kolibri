@@ -192,6 +192,19 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
 	}
+  /** small ghost button */
+	.ghost :is(a, button).small > kol-span-wc {
+		border: none;
+		background-color: transparent;
+		box-shadow: none;
+	}
+	.ghost :is(a, button).small > kol-span-wc > span {
+		border-radius: 1.5em;
+		border-style: solid;
+		border-width: 2px;
+		border-color: var(--color-white);
+		background-color: var(--color-white);
+	}
 	.ghost :is(a, button).small:active > kol-span-wc > span,
 	.ghost :is(a, button).small:hover > kol-span-wc > span,
 	.ghost :is(a, button).small.transparent:active > kol-span-wc > span,
@@ -1054,6 +1067,17 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	details kol-indented-text {
 		margin: 0.25em 0px 0px 0.65em;
+	}
+	kol-icon::part(icon) {
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		margin-right: 0.5rem;
+	}
+	details[open] kol-icon::part(icon):before {
+		content: "\\f078";
+	}
+	details:not([open]) kol-icon::part(icon):before {
+		content: "\\f054";
 	}`,
 	'KOL-SPIN': `.spin {
 		display: inline-block;
@@ -1542,14 +1566,14 @@ export const BMF = KoliBri.createTheme('bmf', {
 	[exportparts*="selected"] a {
 		border-left-color: var(--color-midnight);
 	} /** Compact mode */
-	.entry.text-center :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
+	.entry.compact :is(kol-button-wc, kol-link-wc, kol-span-wc):first-child {
 		place-items: center;
 	}
-	.entry.text-center > kol-span-wc > span {
+	.entry.compact > kol-span-wc > span {
 		flex-direction: column;
 	}
-	.entry.text-center > kol-span-wc > span,
-	.entry.text-center :is(a, button) {
+	.entry.compact > kol-span-wc > span,
+	.entry.compact :is(a, button) {
 		padding-left: 0;
 	}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
@@ -2349,16 +2373,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-bottom: dashed var(--color-black) 1px;
 		text-decoration: none !important;
 	}`,
-	'KOL-BREADCRUMB': `li:has(kol-icon + kol-link) kol-icon {
+	'KOL-BREADCRUMB': `li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon {
 		font-size: 0.75rem;
 	}
-	li:has(kol-icon + kol-link) kol-icon::part(icon) {
+	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 		color: var(--color-grey);
 	}
-	li:has(kol-icon + kol-link) kol-icon::part(icon)::before {
-		content: "\f054";
+	li:has(:is(kol-icon + kol-link, kol-icon + span)) kol-icon::part(icon)::before {
+		content: "\\f054";
 	}
 	kol-link::part(icon) {
 		font-size: 1.25rem;
@@ -2369,10 +2393,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	ul li:last-child > span {
 		color: var(--color-grey);
-	}
-`,
+	}`,
 	'KOL-ICON': `:host {
-		display: inline-block;
 		width: 1em;
 		height: 1em;
 	}

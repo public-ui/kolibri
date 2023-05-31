@@ -61,6 +61,12 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 | `_touched`     | `_touched`    | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                            | `boolean \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`     |
 | `_value`       | `_value`      | Gibt den Wert des Eingabefeldes an.                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
 
+## Slots
+
+| Slot                                            | Description |
+| ----------------------------------------------- | ----------- |
+| `"default Die Beschriftung des Eingabefeldes."` |             |
+
 ## Dependencies
 
 ### Depends on

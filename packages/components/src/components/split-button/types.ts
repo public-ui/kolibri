@@ -4,10 +4,10 @@ import { PropLabel } from '../../types/props';
 export type KoliBriSplitButtonCallback = (e: Event) => void;
 
 type RequiredProps = PropLabel;
-type OptionalProps = { icon: string; onClick: KoliBriSplitButtonCallback; showDropdown: boolean };
+type OptionalProps = { icon: string; on?: { onClick: KoliBriSplitButtonCallback }; showDropdown: boolean };
 
-type RequiredStates = PropLabel & { showDropdown: boolean };
-type OptionalStates = { icon: string; onClick: KoliBriSplitButtonCallback };
+type RequiredStates = PropLabel & { showDropdown: boolean; on: { onClick?: KoliBriSplitButtonCallback } };
+type OptionalStates = { icon: string };
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
