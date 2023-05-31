@@ -23,7 +23,7 @@ export class KolAbbr implements API {
 		return (
 			<Host>
 				<abbr aria-labelledby={this.nonce} role="definition" title={this.state._title}>
-					<span title="">
+					<span title="" tabindex="0">
 						<slot />
 					</span>
 				</abbr>
