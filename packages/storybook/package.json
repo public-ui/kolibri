@@ -47,7 +47,7 @@
 	"devDependencies": {
 		"@babel/core": "7.21.8",
 		"@etchteam/storybook-addon-status": "4.2.4",
-		"@geometricpanda/storybook-addon-badges": "1.1.1",
+		"@geometricpanda/storybook-addon-badges": "2.0.0",
 		"@leanup/form": "1.3.44",
 		"@leanup/kolibri-components": "1.0.5",
 		"@leanup/kolibri-react": "1.0.5",
