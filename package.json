@@ -24,7 +24,7 @@
 	},
 	"devDependencies": {
 		"@commitlint/cli": "17.6.1",
-		"@commitlint/config-conventional": "17.6.1",
+		"@commitlint/config-conventional": "17.6.5",
 		"@types/node": "ts4.9",
 		"cross-env": "7.0.3",
 		"depcheck": "1.4.3",
