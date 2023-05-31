@@ -32,11 +32,6 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 <kol-input-text _type="text" _id="schreibgeschützt" _name="schreibgeschützt" _read-only>Schreibgeschützt</kol-input-text>
 <kol-input-text _type="text" _id="loeschbar" _name="loeschbar">Löschbar</kol-input-text>
 
-<script>
-  const deletable = document.queryselector("#loeschbar");
-  deletable._smartbutton = { _icon: 'codicon codicon-chrome-close', _iconOnly: true, _label: 'Löschen', _on: { onClick: ()=>deletable._value = "" } }
-</script>
-
 ## Verwendung
 
 ### Best practices
