@@ -14,6 +14,24 @@ type RequiredStates = PropSpinVariant;
 type OptionalStates = PropShow;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+function renderSpin(variant: SpinVariant): JSX.Element {
+	switch (variant) {
+		case 'cycle':
+			return <span class="loader"></span>;
+		case 'none':
+			return <slot name="expert"></slot>;
+		default:
+			return (
+				<Fragment>
+					<span class="bg-spin-1"></span>
+					<span class="bg-spin-2"></span>
+					<span class="bg-spin-3"></span>
+					<span class="bg-neutral"></span>
+				</Fragment>
+			);
+	}
+}
+
 @Component({
 	tag: 'kol-spin',
 	styleUrls: {
@@ -28,17 +46,18 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 		return (
 			<Host>
 				{this.state._show ? (
-					<span aria-busy="true" aria-label={translate('kol-action-running')} aria-live="polite" class="spin" role="alert">
-						{this.state._variant === 'default' ? (
-							<Fragment>
-								<span class="bg-spin-1"></span>
-								<span class="bg-spin-2"></span>
-								<span class="bg-spin-3"></span>
-								<span class="bg-neutral"></span>
-							</Fragment>
-						) : (
-							<slot name="expert"></slot>
-						)}
+					<span
+						aria-busy="true"
+						aria-label={translate('kol-action-running')}
+						aria-live="polite"
+						class={{
+							spin: true,
+							[this.state._variant]: true,
+							/* [`spin--${this.state._variant}`]: true, witch benefit have this notation? */
+						}}
+						role="alert"
+					>
+						{renderSpin(this.state._variant)}
 					</span>
 				) : (
 					this.showToggled && <span aria-label={translate('kol-action-done')} aria-busy="false" aria-live="polite" role="alert"></span>
@@ -55,10 +74,10 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
 	 */
-	@Prop() public _variant?: SpinVariant = 'default';
+	@Prop() public _variant?: SpinVariant = 'dot';
 
 	@State() public state: States = {
-		_variant: 'default',
+		_variant: 'dot',
 	};
 
 	@Watch('_show')
