@@ -115,7 +115,7 @@
 		"tslib": "2.5.2",
 		"typescript": "5.0.4",
 		"wcag-contrast": "3.0.0",
-		"webpack": "5.84.0",
+		"webpack": "5.84.1",
 		"workbox-build": "6.5.4"
 	},
 	"files": [
