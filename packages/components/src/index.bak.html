@@ -51,10 +51,10 @@
 			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
 			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
-				<div slot="content" class="grid gap">
+				<div class="grid gap">
 					<div class="flex flex-wrap gap-2 xl:gap-4 justify-between">
 						<kol-card _heading="buttons" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-button
 									_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
 									_label="primary"
@@ -102,7 +102,7 @@
 							</div>
 						</kol-card>
 						<kol-card _heading="disabled buttons" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-button _icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }" _disabled _label="primary" _variant="primary"></kol-button>
 								<kol-button _icon="{ 'right': { 'icon': 'codicon codicon-arrow-right' } }" _disabled _label="secondary" _variant="secondary"></kol-button>
 								<kol-button _icon="{ 'top': { 'icon': 'codicon codicon-arrow-up' } }" _disabled _label="danger" _variant="danger"></kol-button>
@@ -126,7 +126,7 @@
 							</div>
 						</kol-card>
 						<kol-card _heading="headings" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-heading _label="Überschrift Stufe 1" _level="1"></kol-heading>
 								<kol-heading _label="Überschrift Stufe 2" _level="2"></kol-heading>
 								<kol-heading _label="Überschrift Stufe 3" _level="3"></kol-heading>
@@ -136,7 +136,7 @@
 							</div>
 						</kol-card>
 						<kol-card _heading="Links&Co" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-link _href="#card">Zur Card</kol-link>
 								<kol-button-link _href="#pagination" _label="Zur Pagination"></kol-button-link>
 								<kol-nav
@@ -165,7 +165,7 @@
 						</kol-card>
 						<kol-card _heading="Icons&Co" _level="3">
 							<kol-badge _label="wie badges"></kol-badge>
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<p>
 									In diesem Satz wird das <kol-symbol _aria-label="Lächelndes Gesicht" _symbol="☺"></kol-symbol><br />
 									vom Screenreader vorgelesen.
@@ -180,7 +180,7 @@
 							</div>
 						</kol-card>
 						<kol-card _heading="Mitte" _level="3">
-							<div slot="content" class="grid">
+							<div class="grid">
 								<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]'>
 									<div>Seite 1</div>
 									<div>Tab 2</div>
@@ -193,7 +193,7 @@
 					</div>
 
 					<kol-card _heading="Form" _level="3">
-						<kol-form slot="content">
+						<kol-form>
 							<div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem">
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
 								<kol-input-file _id="input-file">Datei hochladen</kol-input-file>
@@ -241,7 +241,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="Abbr" id="abbr">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -266,7 +266,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="alert" id="alert">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -303,7 +303,7 @@
 				<script src="assets/alert-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="badge" id="badge">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -348,7 +348,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="breadcrumb" id="breadcrumb">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -383,7 +383,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="button" id="button">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -455,7 +455,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="link-button" id="link-button">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -541,7 +541,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="button-group" id="button-group">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -574,7 +574,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="card" id="card">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -586,7 +586,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-card _label="Mit h1-Überschrift und Footer" _has-footer>
 								<p slot="header">Test</p>
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum
 									earum aut doloribus autem libero exercitationem dolor ad, magni dignissimos ratione fuga. Lorem ipsum dolor sit amet consectetur adipisicing
 									elit. Officiis perferendis qui animi nesciunt illo facere, doloribus sint cupiditate nihil dolorem voluptate ab esse! Ducimus ad est commodi
@@ -598,19 +598,19 @@
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h2-Überschrift" _level="2" class="bordered">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h3-Überschrift" _level="3">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h4-Überschrift" _level="4">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
@@ -618,13 +618,13 @@
 						</div>
 						<div class="gap-2 mt-4 col-12 d-md-flex">
 							<kol-card _label="Mit h5-Überschrift" _level="5" class="bordered">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h6-Überschrift" _level="6" class="bordered">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
@@ -634,7 +634,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="details" id="details">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -679,7 +679,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="form" id="form">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -855,7 +855,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="heading" id="heading">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -888,7 +888,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="icon" id="icon">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -947,7 +947,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="image" id="image">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-heading _label="" _level="2">Image</kol-heading>
@@ -967,7 +967,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="indented-text" id="indented-text">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -990,7 +990,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="input" id="input">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-badge _icon="codicon codicon-dashboard" _color="#600" _label="Retest"></kol-badge>
@@ -1093,7 +1093,7 @@
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _label="" _level="3">InputRadio</kol-heading>
-								<div slot="content">
+								<div>
 									<lean-input-adapter class="d-grid gap-2" id="anrede-adapter">
 										<kol-input-radio>Anrede</kol-input-radio>
 									</lean-input-adapter>
@@ -1192,7 +1192,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="link" id="link">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1241,7 +1241,7 @@
 				<script src="assets/link-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="button-link" id="button-link">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1276,7 +1276,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="link-group" id="link-group">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1319,7 +1319,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="logo" id="logo">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1342,7 +1342,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="modal" id="modal">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1379,7 +1379,7 @@
 						<div class="col-12">
 							<kol-modal id="modal-1" _aria-label="Willkommen bei KoliBri" _has-footer>
 								<kol-card _label="Willkommen bei KoliBri" _has-footer>
-									<div slot="content">
+									<div>
 										Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 										diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
 										dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
@@ -1396,7 +1396,7 @@
 							</kol-modal>
 							<kol-modal id="modal-2" _aria-label="Vorgang löschen" _width="400px">
 								<kol-card _label="Vorgang löschen" _has-footer>
-									<div slot="content">Wollen Sie den Vorgang wirklich löschen?</div>
+									<div>Wollen Sie den Vorgang wirklich löschen?</div>
 									<div slot="footer">
 										<kol-button id="modal-2-cancel" _label="Schließen"></kol-button>
 									</div>
@@ -1404,7 +1404,7 @@
 							</kol-modal>
 							<kol-modal id="modal-3" _aria-label="Modal schließen" _width="400px">
 								<kol-card _label="Modal schließen">
-									<div slot="content">Klicken Sie einfach rechts oben auf das X.</div>
+									<div>Klicken Sie einfach rechts oben auf das X.</div>
 								</kol-card>
 							</kol-modal>
 						</div>
@@ -1418,7 +1418,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="nav" id="nav">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1474,7 +1474,7 @@
 				<script src="assets/nav-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="pagination" id="pagination">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1519,7 +1519,7 @@
 				<script src="assets/pagination-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="popover" id="popover">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-heading _label="" _level="2">Popover</kol-heading>
@@ -1548,7 +1548,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="progress" id="progress">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1580,7 +1580,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="Quote" id="quote">
-				<div slot="content" class="row">
+				<div class="row">
 					<div class="gap-2 col-12">
 						<section>
 							<kol-heading _label="" _level="3">Long bockquote</kol-heading>
@@ -1627,7 +1627,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="skip-nav" id="skip-nav">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1647,7 +1647,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="spin" id="spin">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1664,7 +1664,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="SplitButton" id="splitbutton">
-				<div slot="content">
+				<div>
 					<div>
 						<kol-heading _label="SplitButton" _level="2"></kol-heading>
 						<p>Die SplitButton-Komponente implementiert eine zweigeteilte Schaltfläche, die ein Popover einblenden kann.</p>
@@ -1713,7 +1713,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="symbol" id="symbol">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1729,7 +1729,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="table" id="table">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
@@ -2012,7 +2012,7 @@
 				<script src="assets/table-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="tabs" id="tabs">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -2148,7 +2148,7 @@
 				<script src="assets/tabs-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="toast" id="toast">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -2173,7 +2173,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="tooltip" id="tooltip">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -2213,7 +2213,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="version" id="version">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">

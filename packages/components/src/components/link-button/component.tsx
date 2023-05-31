@@ -59,7 +59,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
-					<slot name="expert" slot="expert" />
+					<slot name="expert" slot="expert"></slot>
 				</kol-link-wc>
 			</Host>
 		);
