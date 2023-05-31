@@ -109,14 +109,14 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _ariaLabel!: string;
 
 	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
-	 */
-	@Prop() public _width?: string = '100%';
-
-	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
+
+	/**
+	 * Setzt die Breite des Modals. (max-width: 100%).
+	 */
+	@Prop() public _width?: string = '100%';
 
 	@State() public state: States = {
 		_activeElement: null,
