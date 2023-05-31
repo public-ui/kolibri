@@ -46,7 +46,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_type={this._type}
 					_value={this._value}
 				>
-					<slot name="expert" slot="expert" />
+					<slot name="expert" slot="expert"></slot>
 				</kol-button-wc>
 			</Host>
 		);
