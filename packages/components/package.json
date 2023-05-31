@@ -103,7 +103,7 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "10.2.0",
 		"mathjs": "11.8.0",
-		"postcss": "8.4.23",
+		"postcss": "8.4.24",
 		"postcss-sorting": "8.0.2",
 		"prettier": "2.8.8",
 		"query-selector-all-shadow-root": "0.0.3",
