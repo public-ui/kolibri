@@ -16,6 +16,13 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 >
 <kol-input-text _type="text" _id="deaktiviert" _name="deaktiviert" _disabled>Deaktiviert</kol-input-text>
 <kol-input-text _type="text" _id="schreibgeschützt" _name="schreibgeschützt" _read-only>Schreibgeschützt</kol-input-text>
+<kol-input-text
+	_type="text"
+	_id="loeschbar"
+	_name="loeschbar"
+	_smartButton="{ _icon: 'codicon codicon-chrome-close', _iconOnly: true, _label: 'Löschen', _on: { onClick: clearInput } }"
+	>Löschbar</kol-input-text
+>
 ```
 
 ### Beispiel
@@ -23,6 +30,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 <kol-input-text _type="text" _id="mein_text" _name="mein_text" _icon="{ left: 'codicon codicon-arrow-left', right: { icon: 'codicon codicon-arrow-right', style: { 'font-size': '200%', }, }, }">Texteingabe</kol-input-text>
 <kol-input-text _type="text" _id="deaktiviert" _name="deaktiviert" _disabled>Deaktiviert</kol-input-text>
 <kol-input-text _type="text" _id="schreibgeschützt" _name="schreibgeschützt" _read-only>Schreibgeschützt</kol-input-text>
+<kol-input-text _type="text" _id="loeschbar" _name="loeschbar">Löschbar</kol-input-text>
 
 ## Verwendung
 
