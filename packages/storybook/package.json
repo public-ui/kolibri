@@ -107,7 +107,7 @@
 		"webpack": "5.84.0",
 		"webpack-pwa-manifest": "4.3.0",
 		"workbox-build": "6.5.4",
-		"workbox-webpack-plugin": "6.5.4"
+		"workbox-webpack-plugin": "7.0.0"
 	},
 	"files": [
 		"dist"
