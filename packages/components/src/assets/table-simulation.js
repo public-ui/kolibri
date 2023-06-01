@@ -756,44 +756,52 @@ setTimeout(() => {
 
 setTimeout(() => {
 	const t = document.querySelector('#table-3b');
-	t._data = TABLE_PAGED_DATA;
-	t._pagination = {
-		_boundaryCount: 0,
-		_page: 3,
-		_pageSize: 20,
-		_pageSizeOptions: [5, 10, 20, 50, 100],
-		_on: {
-			onClick: console.log,
-			onChangePage: console.log,
-			onChangePageSize: console.log,
-		},
-	};
+	if (t) {
+		t._data = TABLE_PAGED_DATA;
+		t._pagination = {
+			_boundaryCount: 0,
+			_page: 3,
+			_pageSize: 20,
+			_pageSizeOptions: [5, 10, 20, 50, 100],
+			_on: {
+				onClick: console.log,
+				onChangePage: console.log,
+				onChangePageSize: console.log,
+			},
+		};
+	}
 }, 5000);
 
 setTimeout(() => {
 	const t = document.querySelector('#table-4');
-	t._data = TABLE_PAGED_DATA;
-	t._pagination = {
-		_boundaryCount: 0,
-		_page: 3,
-		_pageSize: 10,
-		_pageSizeOptions: [5, 10, 20, 50, 100],
-		_on: {
-			onClick: console.log,
-			onChangePage: console.log,
-			onChangePageSize: console.log,
-		},
-	};
+	if (t) {
+		t._data = TABLE_PAGED_DATA;
+		t._pagination = {
+			_boundaryCount: 0,
+			_page: 3,
+			_pageSize: 10,
+			_pageSizeOptions: [5, 10, 20, 50, 100],
+			_on: {
+				onClick: console.log,
+				onChangePage: console.log,
+				onChangePageSize: console.log,
+			},
+		};
+	}
 }, 5000);
 
 setTimeout(() => {
 	const t = document.querySelector('#table-5');
-	t._data = TABLE_PAGED_DATA;
+	if (t) {
+		t._data = TABLE_PAGED_DATA;
+	}
 }, 5000);
 
 setTimeout(() => {
 	const t = document.querySelector('#table-6');
-	t._data = TABLE_PAGED_DATA;
+	if (t) {
+		t._data = TABLE_PAGED_DATA;
+	}
 }, 5000);
 
 const dayTable = document.querySelector('[_id="day_table"]');
