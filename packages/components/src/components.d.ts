@@ -2214,9 +2214,21 @@ export namespace Components {
          */
         "_minWidth"?: string;
         /**
+          * Ermöglicht das Übergeben von Callbacks (hier: onSelect)
+         */
+        "_on"?: KoliBriTableCallbacks;
+        /**
           * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Macht Zeilen selektierbar. single: n=1, multiple: n>=0
+         */
+        "_select"?: KolibriRowSelectType;
+        /**
+          * Gibt den Index der selektierten Zeile(n) an.
+         */
+        "_selected"?: number | number[];
     }
     interface KolTabs {
         /**
@@ -4945,9 +4957,21 @@ declare namespace LocalJSX {
          */
         "_minWidth"?: string;
         /**
+          * Ermöglicht das Übergeben von Callbacks (hier: onSelect)
+         */
+        "_on"?: KoliBriTableCallbacks;
+        /**
           * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
          */
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
+        /**
+          * Macht Zeilen selektierbar. single: n=1, multiple: n>=0
+         */
+        "_select"?: KolibriRowSelectType;
+        /**
+          * Gibt den Index der selektierten Zeile(n) an.
+         */
+        "_selected"?: number | number[];
     }
     interface KolTabs {
         /**

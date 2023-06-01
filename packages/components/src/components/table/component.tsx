@@ -22,8 +22,10 @@ type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
 };
 
 type KoliBriTableCallbacks = {
-	onSelect: (event: Event, selectedID: number | number[], selectedObject: Record<string, string> | Record<string, string>[]) => void;
+	onSelect: (event: Event, selectedID: number | number[], selectedObject: KoliBriDataType | KoliBriDataType[]) => void;
 };
+
+type KolibriRowSelectType = 'single' | 'multiple';
 
 type RequiredProps = {
 	caption: string;
@@ -34,8 +36,8 @@ type OptionalProps = {
 	minWidth: string;
 	on: KoliBriTableCallbacks;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-	select: 'single' | 'multiple';
-	selected: Record<string, string> | Record<string, string>[];
+	select: KolibriRowSelectType;
+	selected: number | number[];
 };
 
 type RequiredStates = {
@@ -47,6 +49,9 @@ type RequiredStates = {
 };
 type OptionalStates = {
 	minWidth: string;
+	on: KoliBriTableCallbacks;
+	select: KolibriRowSelectType;
+	selected: number | number[];
 	sortDirection: KoliBriSortDirection;
 };
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
@@ -54,6 +59,19 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+
+function isKolibriRowSelectType(v: unknown): boolean {
+	return typeof v === 'string' && ['single', 'multiple'].includes(v);
+}
+function isSelected(i: number, select?: KolibriRowSelectType, selected?: number | number[]): boolean {
+	if (select === 'single') {
+		return selected === i;
+	} else if (select === 'multiple') {
+		return selected ? (selected as number[]).includes(i) : false;
+	} else {
+		return false;
+	}
+}
 
 @Component({
 	tag: 'kol-table',
@@ -104,12 +122,12 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	/**
 	 * Macht Zeilen selektierbar. single: n=1, multiple: n>=0
 	 */
-	@Prop() public _select?: 'single' | 'multiple';
+	@Prop() public _select?: KolibriRowSelectType;
 
 	/**
-	 * Gibt die selektierten Zeilen an.
+	 * Gibt den Index der selektierten Zeile(n) an.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: Record<string, string> | Record<string, string>[];
+	@Prop({ mutable: true, reflect: true }) public _selected?: number | number[];
 
 	@State() public state: States = {
 		_caption: '…', // ⚠ required
@@ -236,12 +254,12 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	}
 
 	@Watch('_select')
-	public validateSelect(value?: 'single' | 'multiple'): void {
-		watchValidator(this, '_select', (v) => ['multiple', 'single'].includes(v || ''), new Set(['single', 'multiple']), value);
+	public validateSelect(value?: KolibriRowSelectType): void {
+		watchValidator(this, '_select', isKolibriRowSelectType, new Set(['single', 'multiple']), value);
 	}
 
 	@Watch('_selected')
-	public validateSelected(value?: Record<string, string> | Record<string, string>[]): void {
+	public validateSelected(value?: number | number[]): void {
 		watchValidator(this, '_selected', () => true, new Set(['object', 'object[]']), value);
 	}
 
@@ -250,7 +268,10 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		this.validateData(this._data);
 		this.validateHeaders(this._headers);
 		this.validateMinWidth(this._minWidth);
+		this.validateOn(this._on);
 		this.validatePagination(this._pagination);
+		this.validateSelect(this._select);
+		this.validateSelected(this._selected);
 	}
 
 	private setSortDirection = (sort: KoliBriSortFunction, direction: KoliBriSortDirection) => {
@@ -529,6 +550,45 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		setState(this, '_sortedData', sortedData);
 	};
 
+	private readonly rowClick = (e: Event, index: number) => {
+		const select = this.state._select;
+		if (isKolibriRowSelectType(select)) {
+			let selectedID;
+			if (select === 'single') {
+				selectedID = index;
+			} else {
+				selectedID = this.state._selected ? (this.state._selected as number[]) : [];
+				if (selectedID.includes(index)) {
+					selectedID.splice(selectedID.indexOf(index), 1);
+				} else {
+					selectedID.push(index);
+				}
+			}
+			setState(this, '_selected', selectedID);
+
+			if (typeof this.state._on?.onSelect === 'function') {
+				let selectedObject;
+				if (select === 'single') {
+					selectedObject = this.state._data[index];
+				} else {
+					selectedObject = [];
+					(selectedID as number[]).forEach((i) => selectedObject.push(this.state._data[i]));
+				}
+				this.state._on.onSelect(e, selectedID, selectedObject);
+			}
+		}
+	};
+
+	private readonly renderRowSelectInput = (select: 'multiple' | 'single', _row: KoliBriTableCell[], index: number) => {
+		let input;
+		if (select === 'multiple') {
+			input = <kol-input-checkbox _name={index.toString()} _checked={(this.state._selected as number[])?.includes(index)}></kol-input-checkbox>;
+		} else if (select === 'single') {
+			input = <input type="radio" name="row-select" value={index} checked={(this.state._selected as number) === index}></input>;
+		}
+		return <th>{input}</th>;
+	};
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -560,24 +620,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 						</div>
 					</div>
 				)}
-				{/*
-				  - https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
-					- https://www.a11yproject.com/posts/how-to-use-the-tabindex-attribute/
-					- https://ux.stackexchange.com/questions/119952/when-is-it-wrong-to-put-tabindex-0-on-non-interactive-content
-
-					Nicht <div tabindex="0">
-
-					DOCH!!!
-					https://dequeuniversity.com/rules/axe/4.4/scrollable-region-focusable?application=AxeChrome
-				*/}
 				<div class="table" tabindex="0">
-					<table
-						// role="grid"
-						// aria-readonly="true"
-						style={{
-							minWidth: this.state._minWidth,
-						}}
-					>
+					<table style={{ minWidth: this.state._minWidth }}>
 						<caption>{this.state._caption}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
@@ -586,7 +630,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 										{cols.map((col, colIdx) => {
 											if (col.asTd === true) {
 												return (
-													<td // role="gridcell"
+													<td
 														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
 														class={{
 															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
@@ -609,7 +653,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 												);
 											} else {
 												return (
-													<th // role="columnheader"
+													<th
 														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
 														scope={typeof col.colSpan === 'number' && col.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={col.colSpan}
@@ -688,15 +732,19 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 								))}
 							</thead>
 						)}
-						{/* <tbody aria-atomic="true" aria-live="polite" aria-relevant="additions removals"> */}
 						<tbody>
 							{dataField.map((row, rowIdx) => {
 								return (
-									<tr key={`tbody-${rowIdx}`}>
+									<tr
+										key={`tbody-${rowIdx}`}
+										onClick={(e: Event) => this.rowClick(e, rowIdx)}
+										class={{ selectable: isKolibriRowSelectType(this.state._select), selected: isSelected(rowIdx, this.state._select, this.state._selected) }}
+									>
+										{this.state._select ? this.renderRowSelectInput(this.state._select, row, rowIdx) : ''}
 										{row.map((col, colIdx) => {
 											if (col.asTd === false) {
 												return (
-													<th // role="rowheader"
+													<th
 														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
 														scope={typeof col.rowSpan === 'number' && col.rowSpan > 1 ? 'rowgroup' : 'row'}
 														colSpan={col.colSpan}
@@ -771,7 +819,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 												);
 											} else {
 												return (
-													<td // role="gridcell"
+													<td
 														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
 														class={{
 															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
