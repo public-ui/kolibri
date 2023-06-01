@@ -703,8 +703,8 @@ setTimeout(() => {
 	if (t) {
 		t._headers = TABLE_NEW_HEADERS;
 		t._data = TABLE_DATA;
+		setTimeout(() => (t._data = []), 1000);
 	}
-	setTimeout(() => (t._data = []), 1000);
 }, 5000);
 
 setTimeout(() => {
