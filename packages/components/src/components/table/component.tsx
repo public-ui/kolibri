@@ -21,6 +21,10 @@ type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
 	data: KoliBriDataType;
 };
 
+type KoliBriTableCallbacks = {
+	onSelect: (event: Event, selectedID: number | number[], selectedObject: Record<string, string> | Record<string, string>[]) => void;
+};
+
 type RequiredProps = {
 	caption: string;
 	data: Stringified<KoliBriDataType[]>;
@@ -28,7 +32,10 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	minWidth: string;
+	on: KoliBriTableCallbacks;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
+	select: 'single' | 'multiple';
+	selected: Record<string, string> | Record<string, string>[];
 };
 
 type RequiredStates = {
@@ -85,9 +92,24 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _minWidth?: string;
 
 	/**
+	 * Ermöglicht das Übergeben von Callbacks (hier: onSelect)
+	 */
+	@Prop() public _on?: KoliBriTableCallbacks;
+
+	/**
 	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
+
+	/**
+	 * Macht Zeilen selektierbar. single: n=1, multiple: n>=0
+	 */
+	@Prop() public _select?: 'single' | 'multiple';
+
+	/**
+	 * Gibt die selektierten Zeilen an.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _selected?: Record<string, string> | Record<string, string>[];
 
 	@State() public state: States = {
 		_caption: '…', // ⚠ required
@@ -138,20 +160,6 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			});
 		});
 	}
-
-	private setSortDirection = (sort: KoliBriSortFunction, direction: KoliBriSortDirection) => {
-		/**
-		 * Durch des Clearen, ist es nicht möglich eine Mehr-Spalten-Sortierung
-		 * darzustellen. Das wäre der Fall, wenn man ggf. Daten in außerhalb der
-		 * Komponente sortiert und diese sortiert von außen rein gibt und der
-		 * Sortierungsalgorithmus mehrere Spalten zusammen sortierte.
-		 *
-		 * Beachte auch col.sort !== this.sortFunction
-		 */
-		this.sortDirections.clear();
-		this.sortDirections.set(sort, direction);
-		this.sortFunction = sort;
-	};
 
 	@Watch('_headers')
 	public validateHeaders(value?: Stringified<KoliBriTableHeaders>): void {
@@ -205,6 +213,60 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	@Watch('_on')
+	public validateOn(value?: KoliBriTableCallbacks): void {
+		if (value && typeof value === 'object' && typeof value.onSelect === 'function') {
+			setState(this, '_on', value);
+		}
+	}
+
+	@Watch('_pagination')
+	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
+		try {
+			value = parseJson<KoliBriTablePaginationProps>(value);
+			// eslint-disable-next-line no-empty
+		} catch (e) {
+			// value behält den ursprünglichen Wert
+		}
+		watchValidator(this, '_pagination', () => true, new Set(['boolean', 'KoliBriTablePagination']), value, {
+			hooks: {
+				beforePatch: this.beforePatchPagination,
+			},
+		});
+	}
+
+	@Watch('_select')
+	public validateSelect(value?: 'single' | 'multiple'): void {
+		watchValidator(this, '_select', (v) => ['multiple', 'single'].includes(v || ''), new Set(['single', 'multiple']), value);
+	}
+
+	@Watch('_selected')
+	public validateSelected(value?: Record<string, string> | Record<string, string>[]): void {
+		watchValidator(this, '_selected', () => true, new Set(['object', 'object[]']), value);
+	}
+
+	public componentWillLoad(): void {
+		this.validateCaption(this._caption);
+		this.validateData(this._data);
+		this.validateHeaders(this._headers);
+		this.validateMinWidth(this._minWidth);
+		this.validatePagination(this._pagination);
+	}
+
+	private setSortDirection = (sort: KoliBriSortFunction, direction: KoliBriSortDirection) => {
+		/**
+		 * Durch des Clearen, ist es nicht möglich eine Mehr-Spalten-Sortierung
+		 * darzustellen. Das wäre der Fall, wenn man ggf. Daten in außerhalb der
+		 * Komponente sortiert und diese sortiert von außen rein gibt und der
+		 * Sortierungsalgorithmus mehrere Spalten zusammen sortierte.
+		 *
+		 * Beachte auch col.sort !== this.sortFunction
+		 */
+		this.sortDirections.clear();
+		this.sortDirections.set(sort, direction);
+		this.sortFunction = sort;
+	};
+
 	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
 		onClick: (event: Event, page: number) => {
 			if (typeof this.state._pagination._on?.onClick === 'function') {
@@ -241,29 +303,6 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			this.showPagination = nextValue === true || nextValue === '' /* true */ || (typeof nextValue === 'object' && nextValue !== null);
 		}
 	};
-
-	@Watch('_pagination')
-	public validatePagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
-		try {
-			value = parseJson<KoliBriTablePaginationProps>(value);
-			// eslint-disable-next-line no-empty
-		} catch (e) {
-			// value behält den ursprünglichen Wert
-		}
-		watchValidator(this, '_pagination', () => true, new Set(['boolean', 'KoliBriTablePagination']), value, {
-			hooks: {
-				beforePatch: this.beforePatchPagination,
-			},
-		});
-	}
-
-	public componentWillLoad(): void {
-		this.validateCaption(this._caption);
-		this.validateData(this._data);
-		this.validateHeaders(this._headers);
-		this.validateMinWidth(this._minWidth);
-		this.validatePagination(this._pagination);
-	}
 
 	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriDataType[]): number {
 		let max = 0;
