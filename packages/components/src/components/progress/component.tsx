@@ -161,10 +161,18 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
-	// @deprecated remove with v2 / needed for eslint
+	// @deprecated remove with v2
 	@Watch('_type')
-	public validateType(): void {
-		return undefined;
+	public validateType(value?: KoliBriProgressType): void {
+		if (value) {
+			if (value !== 'cycle') {
+				value = 'bar';
+			}
+			this.state = {
+				...this.state,
+				_variant: value,
+			};
+		}
 	}
 
 	@Watch('_unit')
@@ -185,6 +193,10 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriProgressType): void {
+		if (!value && this._type) {
+			// remove with v2
+			value = this._type;
+		}
 		if (value !== 'cycle') {
 			value = 'bar';
 		}
@@ -197,9 +209,10 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateMax(this._max);
+		this.validateType(this._type);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);
-		this.validateVariant(this._variant || this._type);
+		this.validateVariant(this._variant);
 
 		this.interval = setInterval(() => {
 			if (this.state._liveValue !== this.state._value) {
