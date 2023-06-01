@@ -691,51 +691,73 @@ const TABLE_PAGED_DATA = [
 ];
 
 setTimeout(() => {
-	document.querySelector('#table-1a')._headers = TABLE_NEW_HEADERS;
-	document.querySelector('#table-1a')._data = TABLE_DATA;
+	const t = document.querySelector('#table-1a');
+	if (t) {
+		t._headers = TABLE_NEW_HEADERS;
+		t._data = TABLE_DATA;
+	}
 }, 5000);
 
 setTimeout(() => {
-	document.querySelector('#table-1b')._headers = TABLE_NEW_HEADERS;
-	document.querySelector('#table-1b')._data = TABLE_DATA;
-	setTimeout(() => (document.querySelector('#table-1a')._data = []), 1000);
+	const t = document.querySelector('#table-1b');
+	if (t) {
+		t._headers = TABLE_NEW_HEADERS;
+		t._data = TABLE_DATA;
+	}
+	setTimeout(() => (t._data = []), 1000);
 }, 5000);
 
 setTimeout(() => {
-	document.querySelector('#table-1c')._headers = TABLE_NEW_HEADERS;
-	document.querySelector('#table-1c')._data = [];
+	const t = document.querySelector('#table-1c');
+	if (t) {
+		t._headers = TABLE_NEW_HEADERS;
+		t._data = [];
+	}
 }, 5000);
 
 setTimeout(() => {
-	document.querySelector('#table-2')._headers = {
-		horizontal: [
-			[
-				{
-					asTd: true,
-					colSpan: 2,
-				},
-			].concat(TABLE_NEW_HEADERS.vertical[0]),
-			// cols: [TABLE_NEW_HEADERS.horizontal[0].cols[0]].concat(TABLE_NEW_HEADERS.vertical[0].rows),
-		],
-		vertical: [
-			[
-				{
-					...TABLE_NEW_HEADERS.horizontal[0][1],
-					rowSpan: TABLE_NEW_HEADERS.horizontal[0][1].colSpan,
-					colSpan: undefined,
-				},
-				{
-					...TABLE_NEW_HEADERS.horizontal[0][2],
-					rowSpan: TABLE_NEW_HEADERS.horizontal[0][2].colSpan,
-					colSpan: undefined,
-				},
+	const t = document.querySelector('#table-2');
+	if (t) {
+		t._headers = {
+			horizontal: [
+				[
+					{
+						asTd: true,
+						colSpan: 2,
+					},
+				].concat(TABLE_NEW_HEADERS.vertical[0]),
+				// cols: [TABLE_NEW_HEADERS.horizontal[0].cols[0]].concat(TABLE_NEW_HEADERS.vertical[0].rows),
 			],
-		].concat([TABLE_NEW_HEADERS.horizontal[1]]),
-	};
-	document.querySelector('#table-2')._data = TABLE_DATA;
-	document.querySelector('#table-3a')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-3b')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-3b')._pagination = {
+			vertical: [
+				[
+					{
+						...TABLE_NEW_HEADERS.horizontal[0][1],
+						rowSpan: TABLE_NEW_HEADERS.horizontal[0][1].colSpan,
+						colSpan: undefined,
+					},
+					{
+						...TABLE_NEW_HEADERS.horizontal[0][2],
+						rowSpan: TABLE_NEW_HEADERS.horizontal[0][2].colSpan,
+						colSpan: undefined,
+					},
+				],
+			].concat([TABLE_NEW_HEADERS.horizontal[1]]),
+		};
+		t._data = TABLE_DATA;
+	}
+}, 5000);
+
+setTimeout(() => {
+	const t = document.querySelector('#table-3a');
+	if (t) {
+		t._data = TABLE_PAGED_DATA;
+	}
+}, 5000);
+
+setTimeout(() => {
+	const t = document.querySelector('#table-3b');
+	t._data = TABLE_PAGED_DATA;
+	t._pagination = {
 		_boundaryCount: 0,
 		_page: 3,
 		_pageSize: 20,
@@ -746,8 +768,12 @@ setTimeout(() => {
 			onChangePageSize: console.log,
 		},
 	};
-	document.querySelector('#table-4')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-4')._pagination = {
+}, 5000);
+
+setTimeout(() => {
+	const t = document.querySelector('#table-4');
+	t._data = TABLE_PAGED_DATA;
+	t._pagination = {
 		_boundaryCount: 0,
 		_page: 3,
 		_pageSize: 10,
@@ -758,33 +784,43 @@ setTimeout(() => {
 			onChangePageSize: console.log,
 		},
 	};
-	document.querySelector('#table-5')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-6')._data = TABLE_PAGED_DATA;
+}, 5000);
+
+setTimeout(() => {
+	const t = document.querySelector('#table-5');
+	t._data = TABLE_PAGED_DATA;
+}, 5000);
+
+setTimeout(() => {
+	const t = document.querySelector('#table-6');
+	t._data = TABLE_PAGED_DATA;
 }, 5000);
 
 const dayTable = document.querySelector('[_id="day_table"]');
-dayTable._headers = {
-	horizontal: [
-		[
-			{ label: '', colSpan: 1, rowSpan: 1, asTd: true },
-			{ label: 'Tag', key: 'day' },
-			{ label: 'Info', key: 'info' },
+if (dayTable) {
+	dayTable._headers = {
+		horizontal: [
+			[
+				{ label: '', colSpan: 1, rowSpan: 1, asTd: true },
+				{ label: 'Tag', key: 'day' },
+				{ label: 'Info', key: 'info' },
+			],
 		],
-	],
-	vertical: [
-		[
-			{ label: '1', key: '1' },
-			{ label: '2', key: '2' },
-			{ label: '3', key: '3' },
-			{ label: '4', key: '4' },
-			{ label: '5', key: '5' },
+		vertical: [
+			[
+				{ label: '1', key: '1' },
+				{ label: '2', key: '2' },
+				{ label: '3', key: '3' },
+				{ label: '4', key: '4' },
+				{ label: '5', key: '5' },
+			],
 		],
-	],
-};
-dayTable._data = [
-	{ day: 'Montag', info: 'Herr Mohn' },
-	{ day: 'Dienstag', info: 'Dienst' },
-	{ day: 'Mittwoch', info: 'Mitte der Woche' },
-	{ day: 'Donnerstag', info: 'Donner' },
-	{ day: 'Freitag', info: 'frei' },
-];
+	};
+	dayTable._data = [
+		{ day: 'Montag', info: 'Herr Mohn' },
+		{ day: 'Dienstag', info: 'Dienst' },
+		{ day: 'Mittwoch', info: 'Mitte der Woche' },
+		{ day: 'Donnerstag', info: 'Donner' },
+		{ day: 'Freitag', info: 'frei' },
+	];
+}
