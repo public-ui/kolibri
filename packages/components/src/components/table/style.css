@@ -34,3 +34,12 @@ div.pagination > div:last-child {
 		display: flex;
 	}
 }
+
+.selectable {
+	cursor: pointer;
+}
+
+.selected {
+	background-color: hsl(229, 100%, 80%);
+	color: hsl(229, 100%, 20%);
+}
