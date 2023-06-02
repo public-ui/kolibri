@@ -22,9 +22,9 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/index.min.js"></script>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components/+esm';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader/+esm';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.2-rc.2';
 				register(ITZBund, defineCustomElements)
 						.catch(console.warn);
 		</script>
