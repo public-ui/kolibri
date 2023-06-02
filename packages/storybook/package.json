@@ -78,7 +78,7 @@
 		"@types/mermaid": "9.2.0",
 		"@types/react": "17.0.59",
 		"@types/react-dom": "17.0.20",
-		"@typescript-eslint/eslint-plugin": "5.59.7",
+		"@typescript-eslint/eslint-plugin": "5.59.8",
 		"@typescript-eslint/parser": "5.59.7",
 		"auto-changelog": "2.4.0",
 		"babel-loader": "9.1.2",
