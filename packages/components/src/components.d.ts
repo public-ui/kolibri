@@ -1951,6 +1951,7 @@ export namespace Components {
         "_max": number;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+          * @deprecated will be removed in v2, use _variant
          */
         "_type"?: KoliBriProgressType;
         /**
@@ -1961,6 +1962,10 @@ export namespace Components {
           * Gibt an, wie weit die Anzeige fortgeschritten ist.
          */
         "_value": number;
+        /**
+          * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+         */
+        "_variant"?: KoliBriProgressType;
     }
     interface KolQuote {
         /**
@@ -4682,6 +4687,7 @@ declare namespace LocalJSX {
         "_max": number;
         /**
           * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+          * @deprecated will be removed in v2, use _variant
          */
         "_type"?: KoliBriProgressType;
         /**
@@ -4692,6 +4698,10 @@ declare namespace LocalJSX {
           * Gibt an, wie weit die Anzeige fortgeschritten ist.
          */
         "_value": number;
+        /**
+          * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+         */
+        "_variant"?: KoliBriProgressType;
     }
     interface KolQuote {
         /**
