@@ -116,7 +116,7 @@
 		"typescript": "5.0.4",
 		"wcag-contrast": "3.0.0",
 		"webpack": "5.84.0",
-		"workbox-build": "6.5.4"
+		"workbox-build": "7.0.0"
 	},
 	"files": [
 		"assets",
