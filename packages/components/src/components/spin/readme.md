@@ -113,9 +113,9 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                  | Type                               | Default     |
-| ---------- | ---------- | ---------------------------------------------------------------------------- | ---------------------------------- | ----------- |
-| `_show`    | `_show`    | Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.                    | `boolean \| undefined`             | `false`     |
-| `_variant` | `_variant` | Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll. | `"default" \| "none" \| undefined` | `'default'` |
+| Property   | Attribute  | Description                                                                  | Type                                      | Default |
+| ---------- | ---------- | ---------------------------------------------------------------------------- | ----------------------------------------- | ------- |
+| `_show`    | `_show`    | Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.                    | `boolean \| undefined`                    | `false` |
+| `_variant` | `_variant` | Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll. | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
 
 ---

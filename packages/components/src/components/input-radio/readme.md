@@ -102,9 +102,9 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ## Slots
 
-| Slot                                                  | Description |
-| ----------------------------------------------------- | ----------- |
-| `"default Die Legende/Überschrift der Radiobuttons."` |             |
+| Slot | Description                               |
+| ---- | ----------------------------------------- |
+|      | Die Legende/Überschrift der Radiobuttons. |
 
 ## Dependencies
 

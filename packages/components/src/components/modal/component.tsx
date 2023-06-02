@@ -31,7 +31,7 @@ type OptionalStates = {
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @slot default - Der Inhalt des Modals.
+ * @slot - Der Inhalt des Modals.
  */
 @Component({
 	tag: 'kol-modal',

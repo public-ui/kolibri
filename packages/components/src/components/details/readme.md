@@ -97,9 +97,9 @@ Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Ü
 
 ## Slots
 
-| Slot                                                                  | Description |
-| --------------------------------------------------------------------- | ----------- |
-| `"default Der Inhalt, der in der Detailbeschreibung angezeigt wird."` |             |
+| Slot | Description                                               |
+| ---- | --------------------------------------------------------- |
+|      | Der Inhalt, der in der Detailbeschreibung angezeigt wird. |
 
 ## Dependencies
 

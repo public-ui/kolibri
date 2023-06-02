@@ -60,9 +60,9 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 ## Slots
 
-| Slot                                             | Description |
-| ------------------------------------------------ | ----------- |
-| `"default	Die Beschriftung des Eingabeelements."` |             |
+| Slot | Description                           |
+| ---- | ------------------------------------- |
+|      | Die Beschriftung des Eingabeelements. |
 
 ## Dependencies
 

@@ -16,8 +16,8 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
 ## Slots
 
-| Slot                                | Description |
-| ----------------------------------- | ----------- |
-| `"default Der Inhalt des Popover."` |             |
+| Slot | Description             |
+| ---- | ----------------------- |
+|      | Der Inhalt des Popover. |
 
 ---

@@ -6,6 +6,7 @@
 	 * Minimum size of interactive elements.
 	 */
 	--a11y-min-size: 44px;
+	font-size: inherit;
 }
 * {
 	/*
@@ -24,9 +25,6 @@
 	 * Word spacing is required for all texts.
 	 */
 	word-spacing: inherit;
-}
-:host {
-	font-size: inherit;
 }
 /*
  * All interactive elements should have a minimum size of 44px.

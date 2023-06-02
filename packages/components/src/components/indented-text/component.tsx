@@ -11,7 +11,7 @@ type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @slot default - Der Text.
+ * @slot - Der Text.
  */
 @Component({
 	tag: 'kol-indented-text',

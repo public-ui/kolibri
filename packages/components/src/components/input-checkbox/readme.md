@@ -81,9 +81,9 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 ## Slots
 
-| Slot                                       | Description |
-| ------------------------------------------ | ----------- |
-| `"default Die Beschriftung der Checkbox."` |             |
+| Slot | Description                    |
+| ---- | ------------------------------ |
+|      | Die Beschriftung der Checkbox. |
 
 ## Dependencies
 

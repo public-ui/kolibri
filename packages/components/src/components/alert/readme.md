@@ -91,9 +91,9 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 ## Slots
 
-| Slot                                | Description |
-| ----------------------------------- | ----------- |
-| `"default Der Inhalt der Meldung."` |             |
+| Slot | Description             |
+| ---- | ----------------------- |
+|      | Der Inhalt der Meldung. |
 
 ## Dependencies
 

@@ -82,9 +82,9 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 
 ## Slots
 
-| Slot                                            | Description |
-| ----------------------------------------------- | ----------- |
-| `"default Die Beschriftung des Eingabefeldes."` |             |
+| Slot | Description                         |
+| ---- | ----------------------------------- |
+|      | Die Beschriftung des Eingabefeldes. |
 
 ## Dependencies
 

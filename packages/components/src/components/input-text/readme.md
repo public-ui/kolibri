@@ -84,9 +84,9 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 
 ## Slots
 
-| Slot                                            | Description |
-| ----------------------------------------------- | ----------- |
-| `"default Die Beschriftung des Eingabefeldes."` |             |
+| Slot | Description                         |
+| ---- | ----------------------------------- |
+|      | Die Beschriftung des Eingabefeldes. |
 
 ## Dependencies
 

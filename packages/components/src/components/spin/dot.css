@@ -58,9 +58,7 @@
 	100% {
 		transform: scale(0);
 	}
-}
-
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
+} /* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
 @media (prefers-reduced-motion) {
 	.spin.dot > span:first-child,
 	.spin.dot > span:nth-child(2),

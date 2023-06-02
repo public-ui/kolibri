@@ -67,9 +67,9 @@ Für eine vollständige Barrierefreiheit prüfen Sie die Verwendung einer vorgef
 
 ## Slots
 
-| Slot                                            | Description |
-| ----------------------------------------------- | ----------- |
-| `"default Die Beschriftung des Eingabefeldes."` |             |
+| Slot | Description                         |
+| ---- | ----------------------------------- |
+|      | Die Beschriftung des Eingabefeldes. |
 
 ## Dependencies
 

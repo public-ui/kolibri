@@ -39,9 +39,9 @@ Verwenden Sie die **IndentedText**-Komponente, um Textpassagen oder Informatione
 
 ## Slots
 
-| Slot                  | Description |
-| --------------------- | ----------- |
-| `"default Der Text."` |             |
+| Slot | Description |
+| ---- | ----------- |
+|      | Der Text.   |
 
 ## Dependencies
 

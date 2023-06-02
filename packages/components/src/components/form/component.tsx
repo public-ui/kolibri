@@ -24,7 +24,7 @@ type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @slot default - Inhalt der Form.
+ * @slot - Inhalt der Form.
  */
 @Component({
 	tag: 'kol-form',
