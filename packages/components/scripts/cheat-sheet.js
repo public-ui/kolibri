@@ -18,7 +18,6 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.33/dist/codicon.min.css" rel="stylesheet" />
-		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.min.css" rel="stylesheet">
 		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/a11y-light.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/index.min.js"></script>
 		<script type="module">
