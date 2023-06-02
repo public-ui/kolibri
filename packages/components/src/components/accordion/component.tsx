@@ -20,7 +20,7 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
 /**
  *
- * @slot default - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
+ * @slot default - - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
  * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
  */

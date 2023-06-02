@@ -23,7 +23,7 @@ type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @slot default - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
+ * @slot default - - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
  * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
  * @slot footer - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.

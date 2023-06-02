@@ -11,7 +11,7 @@ import { watchTooltipAlignment } from '../../types/button-link';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
 
 /**
- * @slot default - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
+ * @slot default - - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
  */
 @Component({
 	tag: 'kol-split-button',
