@@ -17,17 +17,17 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<meta name="description" content="..." />
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
-		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.33/dist/codicon.min.css" rel="stylesheet" />
+		<link href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/index.min.js"></script>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.2-rc.2';
+			import { register } from 'https://esm.sh/@public-ui/components/+esm';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader/+esm';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes';
 				register(ITZBund, defineCustomElements)
-						.then(() => {})
 						.catch(console.warn);
 		</script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-light.min.css">
 		<style>
 			:root {
 				font-size: 10px;
