@@ -25,6 +25,9 @@
 	 */
 	word-spacing: inherit;
 }
+:host {
+	font-size: inherit;
+}
 /*
  * All interactive elements should have a minimum size of 44px.
  */
