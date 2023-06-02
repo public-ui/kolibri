@@ -64,7 +64,6 @@ export class KolInputText implements ComponentApi {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				{this.state._accessKey}
 				<kol-input
 					class={{
 						[this.state._type]: true,
