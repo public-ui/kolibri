@@ -17,8 +17,8 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<meta name="description" content="..." />
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.33/dist/codicon.min.css" rel="stylesheet" />
-		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/a11y-light.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.33/dist/codicon.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/a11y-light.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/index.min.js"></script>
 		<script type="module">
 			import { register } from 'https://esm.sh/@public-ui/components@1.5.2-rc.3';
@@ -81,8 +81,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 				.replace(/>/g, '&#62;')}</code> der HTML-Seite eingebunden werden.</p>
 			<pre>
 				<code class="language-html">${`<head>
-	<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
-	<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
+				<link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.33/dist/codicon.min.css" rel="stylesheet">
 </head>`
 					.replace(/</g, '&#60;')
 					.replace(/>/g, '&#62;')}</code>
@@ -95,9 +94,8 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		import { register } from 'https://esm.sh/@public-ui/components@1.5.2-rc.3';
 		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.2-rc.3/dist/loader';
 		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.2-rc.3';
-		register([ITZBund], [defineCustomElements])
-			.then(() => {})
-			.catch(console.warn);
+			register(ITZBund, defineCustomElements)
+					.catch(console.warn);
 	</script>
 </head>`
 					.replace(/</g, '&#60;')
@@ -123,7 +121,7 @@ let SHEET_CHEAT = `<!DOCTYPE html>
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
 		<pre>
 			<code class="language-json">${`{
-	"html.customData": ["./node_modules/@public-ui/components/vscode-custom-data.json"]
+	"html.customData": ["https://esm.sh/@public-ui/components@1.5.2-rc.3/vscode-custom-data.json"]
 }`
 				.replace(/</g, '&#60;')
 				.replace(/>/g, '&#62;')}</code>

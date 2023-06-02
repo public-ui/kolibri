@@ -2,16 +2,16 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@public-ui/react':
-    specifier: 1.5.2-rc.2
-    version: 1.5.2-rc.2(@public-ui/components@1.5.2-rc.2)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.5.2-rc.3
+    version: 1.5.2-rc.3(@public-ui/components@1.5.2-rc.3)(react-dom@18.2.0)(react@18.2.0)
   preact:
     specifier: '>=10.11.3'
     version: 10.11.3
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.2-rc.2
-    version: 1.5.2-rc.2
+    specifier: 1.5.2-rc.3
+    version: 1.5.2-rc.3
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -507,28 +507,28 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.5.2-rc.2:
-    resolution: {integrity: sha512-leIfq14iK4kfNZlFf45fVQ+y4phohiIZP9a8ESuLB5jkbeFFujGpJ8bbOLhBQQHlhYM8wp/n4fhHLAeEsD4TgQ==}
+  /@public-ui/components@1.5.2-rc.3:
+    resolution: {integrity: sha512-u5r5/gnzW3kVaIvhsOiaP803hhg+CYdXTLh56w6sHEWTlr9NJwBnSWq0crneha0OUASUxZRDvFNylEWACE3zJw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.8
-      '@public-ui/schema': 1.5.2-rc.2
+      '@public-ui/schema': 1.5.2-rc.3
       i18next: 22.5.0
 
-  /@public-ui/react@1.5.2-rc.2(@public-ui/components@1.5.2-rc.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-2DEAKjSImd5SHLRRnqFUTjp/vAeG6RRPvZwxMQ8/SMRb92DmxRLPoAc4nZdU1cykX/dQ436vSQGsg8S0jMptow==}
+  /@public-ui/react@1.5.2-rc.3(@public-ui/components@1.5.2-rc.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-7yw/bTQL16QFZpsnGFJvLHUD2Umu5CaZxZxAA4FI0HnoEVVRgc4j5uvPlqqUoyUYYtu9sHQ2ACKYyhX/xcKPlQ==}
     peerDependencies:
-      '@public-ui/components': 1.5.2-rc.2
+      '@public-ui/components': 1.5.2-rc.3
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.2-rc.2
+      '@public-ui/components': 1.5.2-rc.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@public-ui/schema@1.5.2-rc.2:
-    resolution: {integrity: sha512-d+h2Azq/dvzB1QqJPNrhDhq5YsHMhAjg8BdEsFjN4cXUGf9AfCy1vbK0Lo1xFukpNvD5aOlrtn63DtCQdjb9Vw==}
+  /@public-ui/schema@1.5.2-rc.3:
+    resolution: {integrity: sha512-MK5RdquEkWqw55Pp3X0CM6N1z5g9OIZJDMgwCITAGKaprk54BEKag64uz6+6wD8Zotmi7rD7WI0bdp4Mf1DJWg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
 

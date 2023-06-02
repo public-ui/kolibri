@@ -8,15 +8,15 @@ Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine opt
 
 ```html
 <div>
-	<kol-progress _label="Fortschritt" _type="bar" _max="100" _value="20"></kol-progress>
-	<kol-progress _label="Fortschritt" _type="cycle" _max="100" _value="20"></kol-progress>
+	<kol-progress _label="Fortschritt" _variant="bar" _max="100" _value="20"></kol-progress>
+	<kol-progress _label="Fortschritt" _variant="cycle" _max="100" _value="20"></kol-progress>
 </div>
 ```
 
 ### Beispiel
 
-<kol-progress _label="Fortschritt" _type="bar" _max="100" _value="20"></kol-progress>
-<kol-progress _label="Fortschritt" _type="cycle" _max="100" _value="20"></kol-progress>
+<kol-progress _label="Fortschritt" _variant="bar" _max="100" _value="20"></kol-progress>
+<kol-progress _label="Fortschritt" _variant="cycle" _max="100" _value="20"></kol-progress>
 
 ## Verwendung
 
