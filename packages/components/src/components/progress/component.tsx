@@ -164,15 +164,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	// @deprecated remove with v2
 	@Watch('_type')
 	public validateType(value?: KoliBriProgressType): void {
-		if (value) {
-			if (value !== 'cycle') {
-				value = 'bar';
-			}
-			this.state = {
-				...this.state,
-				_variant: value,
-			};
-		}
+		this.validateVariant(value);
 	}
 
 	@Watch('_unit')
@@ -209,10 +201,9 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateMax(this._max);
-		this.validateType(this._type);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);
-		this.validateVariant(this._variant);
+		this.validateVariant(this._variant || this._type);
 
 		this.interval = setInterval(() => {
 			if (this.state._liveValue !== this.state._value) {
