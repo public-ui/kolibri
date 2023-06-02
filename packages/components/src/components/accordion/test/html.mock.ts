@@ -41,6 +41,7 @@ export const getAccordionHtml = (
 			<div class="wrapper">
 				<div class="content" id="nonce" ${props._open ? '' : 'aria-hidden="true"'}>
 					<slot name="content"></slot>
+					<slot />
 				</div>
 			</div=>
     </div>
