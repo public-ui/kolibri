@@ -35,11 +35,11 @@ div.pagination > div:last-child {
 	}
 }
 
-.selectable {
+tr:has(.row-select) {
 	cursor: pointer;
 }
 
-.selected {
+tr:has(*:checked) {
 	background-color: hsl(229, 100%, 80%);
 	color: hsl(229, 100%, 20%);
 }

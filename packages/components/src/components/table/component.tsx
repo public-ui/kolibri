@@ -582,11 +582,11 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	private readonly renderRowSelectInput = (select: 'multiple' | 'single', _row: KoliBriTableCell[], index: number) => {
 		let input;
 		if (select === 'multiple') {
-			input = <kol-input-checkbox _name={index.toString()} _checked={(this.state._selected as number[])?.includes(index)}></kol-input-checkbox>;
+			input = <input type="checkbox" name={index.toString()} checked={(this.state._selected as number[])?.includes(index)}></input>;
 		} else if (select === 'single') {
 			input = <input type="radio" name="row-select" value={index} checked={(this.state._selected as number) === index}></input>;
 		}
-		return <th>{input}</th>;
+		return <th class="row-select">{input}</th>;
 	};
 
 	public render(): JSX.Element {
