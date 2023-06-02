@@ -10,7 +10,7 @@ import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
 /**
- * @slot default Die Beschriftung des Eingabeelements.
+ * @slot default - Die Beschriftung des Eingabeelements.
  */
 @Component({
 	tag: 'kol-input-range',
