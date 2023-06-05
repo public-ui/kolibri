@@ -137,7 +137,7 @@ export class KolInputFile implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
@@ -181,7 +181,7 @@ export class KolInputFile implements ComponentApi {
 
 	@State() public state: States = {
 		_id: nonce(), // ⚠ required
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 	};
 
 	public constructor() {
@@ -235,7 +235,7 @@ export class KolInputFile implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_multiple')
@@ -282,7 +282,6 @@ export class KolInputFile implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-		this.validateLabel(this._label);
 	}
 
 	private onChange = (event: Event) => {

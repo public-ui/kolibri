@@ -160,7 +160,7 @@ export class KolInputPassword implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
@@ -225,7 +225,7 @@ export class KolInputPassword implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: nonce(), // ⚠ required
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 		_hasValue: false,
 	};
 
@@ -283,7 +283,7 @@ export class KolInputPassword implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_maxLength')
@@ -353,6 +353,5 @@ export class KolInputPassword implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-		this.validateLabel(this._label);
 	}
 }

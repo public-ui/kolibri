@@ -176,7 +176,7 @@ export class KolInputText implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -252,7 +252,7 @@ export class KolInputText implements ComponentApi {
 		_autoComplete: 'off',
 		_id: 'id',
 		_hasValue: false,
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
 		_type: 'text',
 	};
@@ -308,7 +308,7 @@ export class KolInputText implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_list')
@@ -389,7 +389,6 @@ export class KolInputText implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-		this.validateLabel(this._label);
 	}
 
 	public disconnectedCallback(): void {

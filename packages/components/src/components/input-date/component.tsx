@@ -128,7 +128,7 @@ export class KolInputDate implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
@@ -196,7 +196,7 @@ export class KolInputDate implements ComponentApi {
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: States = {
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 	};
 
 	private valueAsIsoDate(value?: Iso8601 | Date | null, defaultValue?: Date): Iso8601 | null | undefined {

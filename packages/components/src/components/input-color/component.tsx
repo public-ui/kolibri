@@ -136,7 +136,7 @@ export class KolInputColor implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -176,7 +176,7 @@ export class KolInputColor implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: nonce(), // ⚠ required
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
 	};
 
@@ -231,7 +231,7 @@ export class KolInputColor implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_list')
@@ -273,6 +273,5 @@ export class KolInputColor implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-		this.validateLabel(this._label);
 	}
 }

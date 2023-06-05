@@ -162,7 +162,7 @@ export class KolInputNumber implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
@@ -240,7 +240,7 @@ export class KolInputNumber implements ComponentApi {
 		_autoComplete: 'off',
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
 		_type: 'number',
 	};
@@ -296,7 +296,7 @@ export class KolInputNumber implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_list')
@@ -384,6 +384,5 @@ export class KolInputNumber implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-		this.validateLabel(this._label);
 	}
 }

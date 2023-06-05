@@ -166,7 +166,7 @@ export class KolInputRadio implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
@@ -210,7 +210,7 @@ export class KolInputRadio implements ComponentApi {
 
 	@State() public state: States = {
 		_id: nonce(), // ⚠ required
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
 		_orientation: 'vertical',
 	};
@@ -256,7 +256,7 @@ export class KolInputRadio implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_list')
@@ -303,7 +303,6 @@ export class KolInputRadio implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad(this.onChange);
-		this.validateLabel(this._label);
 	}
 
 	private onChange = (event: Event): void => {

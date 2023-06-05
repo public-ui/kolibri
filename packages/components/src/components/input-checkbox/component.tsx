@@ -147,7 +147,7 @@ export class KolInputCheckbox implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -200,7 +200,7 @@ export class KolInputCheckbox implements ComponentApi {
 		},
 		_id: nonce(), // ⚠ required
 		_indeterminate: false,
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 		_variant: 'default',
 	};
 
@@ -260,7 +260,7 @@ export class KolInputCheckbox implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_name')
@@ -307,7 +307,6 @@ export class KolInputCheckbox implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-		this.validateLabel(this._label);
 	}
 
 	private onChange = (event: Event): void => {

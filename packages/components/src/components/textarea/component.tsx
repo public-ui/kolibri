@@ -170,7 +170,7 @@ export class KolTextarea implements ComponentApi {
 	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 */
-	@Prop() public _label = '...';
+	@Prop() public _label!: string;
 
 	/**
 	 * Setzt die maximale Zeichenanzahl.
@@ -232,7 +232,7 @@ export class KolTextarea implements ComponentApi {
 		_currentLength: 0,
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
-		_label: '...', // ⚠ required
+		_label: '…', // ⚠ required
 		_resize: 'vertical',
 	};
 
@@ -287,7 +287,7 @@ export class KolTextarea implements ComponentApi {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_maxLength')
@@ -353,7 +353,6 @@ export class KolTextarea implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-		this.validateLabel(this._label);
 	}
 
 	private readonly onChange = (event: Event) => {
