@@ -5,7 +5,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateAlert, validateHideLabel, validateLabel, validateReadOnly, validateRequired, validateTouched } from '../../types/props';
+import { validateAlert, validateHideLabel, validateReadOnly, validateRequired, validateTouched } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';

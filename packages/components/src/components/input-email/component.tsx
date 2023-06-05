@@ -2,15 +2,15 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { validateMultiple } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
-import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
-import { validateLabel, validateMultiple } from '../../types/props';
-import { nonce } from '../../utils/dev.utils';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.

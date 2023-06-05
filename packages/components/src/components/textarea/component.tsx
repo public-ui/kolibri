@@ -2,13 +2,13 @@ import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '
 import { translate } from '../../i18n';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { validateAdjustHeight, validateHasCounter, validateLabel } from '../../types/props';
+import { validateAdjustHeight, validateHasCounter } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height

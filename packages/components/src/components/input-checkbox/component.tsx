@@ -2,12 +2,12 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { validateChecked, validateIndeterminate, validateLabel } from '../../types/props';
+import { validateChecked, validateIndeterminate } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
