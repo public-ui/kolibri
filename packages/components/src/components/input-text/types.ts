@@ -5,8 +5,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabel } from '../../types/props';
-
-export type InputRequiredProps = unknown;
+import { InputRequiredProps } from '../input/types';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {

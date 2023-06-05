@@ -3,7 +3,7 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { W3CInputValue } from '../../types/w3c';
-import { InputRequiredProps } from '../input-text/types';
+import { InputRequiredProps } from '../input/types';
 import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps & {

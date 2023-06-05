@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { AnyIconFontClass } from '../../types/icon';
 import { InputTypeOnDefault } from '../../types/input/types';
-import { InputRequiredProps } from '../input-text/types';
+import { InputRequiredProps } from '../input/types';
 import { PropChecked, PropIndeterminate, PropLabel } from '../../types/props';
 
 export type InputCheckboxVariant =

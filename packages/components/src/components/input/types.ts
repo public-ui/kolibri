@@ -1,7 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
 import { KoliBriHorizontalIcon } from '../../types/icon';
-import { PropAlert, PropDisabled, PropHideLabel, PropReadOnly, PropRequired, PropTouched } from '../../types/props';
+import { PropAlert, PropDisabled, PropHideLabel, PropLabel, PropReadOnly, PropRequired, PropTouched } from '../../types/props';
+
+export type InputRequiredProps = PropLabel;
 
 type RequiredProps = {
 	id: string;

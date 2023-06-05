@@ -3,7 +3,7 @@ import { ButtonProps } from '../../types/button-link';
 import { InputNumberType, OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { InputRequiredProps } from '../input-text/types';
+import { InputRequiredProps } from '../input/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropLabel } from '../../types/props';
 

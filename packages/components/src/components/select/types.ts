@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
-import { InputRequiredProps } from '../input-text/types';
+import { InputRequiredProps } from '../input/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropLabel } from '../../types/props';
 
