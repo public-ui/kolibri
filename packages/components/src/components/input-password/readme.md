@@ -66,9 +66,9 @@ Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe
 
 ## Slots
 
-| Slot                                            | Description |
-| ----------------------------------------------- | ----------- |
-| `"default Die Beschriftung des Eingabefeldes."` |             |
+| Slot | Description                         |
+| ---- | ----------------------------------- |
+|      | Die Beschriftung des Eingabefeldes. |
 
 ## Dependencies
 

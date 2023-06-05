@@ -63,9 +63,9 @@ Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.
 
 ## Slots
 
-| Slot                                            | Description |
-| ----------------------------------------------- | ----------- |
-| `"default Die Beschriftung des Eingabefeldes."` |             |
+| Slot | Description                         |
+| ---- | ----------------------------------- |
+|      | Die Beschriftung des Eingabefeldes. |
 
 ## Dependencies
 

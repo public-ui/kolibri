@@ -20,8 +20,9 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
 /**
  *
- * @slot header - Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
+ * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
+ * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
  */
 @Component({
 	tag: 'kol-accordion',
@@ -102,11 +103,12 @@ export class KolAccordion implements API {
 						></kol-button-wc>
 					</kol-heading-wc>
 					<div class="header">
-						<slot name="header" />
+						<slot name="header"></slot>
 					</div>
 					<div ref={this.catchContentWrapperElement} class={{ wrapper: true, transition: this.transition }}>
 						<div ref={this.catchContentElement} aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
-							<slot name="content" />
+							<slot name="content"></slot> {/* Deprecated for version 2 */}
+							<slot />
 						</div>
 					</div>
 				</div>

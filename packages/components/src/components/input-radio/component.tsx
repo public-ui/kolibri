@@ -12,7 +12,7 @@ import { nonce } from '../../utils/dev.utils';
 import { validateLabel } from '../../types/props';
 
 /**
- * @slot default Die Legende/Überschrift der Radiobuttons.
+ * @slot - Die Legende/Überschrift der Radiobuttons.
  */
 @Component({
 	tag: 'kol-input-radio',
@@ -45,7 +45,10 @@ export class KolInputRadio implements ComponentApi {
 					}}
 				>
 					<legend class="block w-full mb-1 leading-normal">
-						<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
+						<span>
+							{/* TODO: Für was wird dieses span benötigt? */}
+							<slot />
+						</span>
 					</legend>
 					{this.state._list.map((option, index) => {
 						/**

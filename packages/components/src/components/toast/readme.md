@@ -73,9 +73,9 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ## Slots
 
-| Slot                                | Description |
-| ----------------------------------- | ----------- |
-| `"default Der Inhalt der Meldung."` |             |
+| Slot | Description             |
+| ---- | ----------------------- |
+|      | Der Inhalt der Meldung. |
 
 ## Dependencies
 

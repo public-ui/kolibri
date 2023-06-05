@@ -130,10 +130,11 @@ Standardansicht gelegt.
 
 ## Slots
 
-| Slot        | Description                                                                     |
-| ----------- | ------------------------------------------------------------------------------- |
-| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions. |
-| `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.    |
+| Slot        | Description                                                                                            |
+| ----------- | ------------------------------------------------------------------------------------------------------ |
+|             | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
+| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.                        |
+| `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions. |
 
 ## Dependencies
 

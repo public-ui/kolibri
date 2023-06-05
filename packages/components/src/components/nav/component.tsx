@@ -109,7 +109,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 	/** Element creation functions */
 	private button(
-		selected: boolean,
 		compact: boolean,
 		disabled: boolean,
 		icon: Stringified<KoliBriIconProp> | undefined,
@@ -119,7 +118,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaExpanded={selected}
 				_disabled={disabled}
 				_icon={icon || '-'}
 				_iconOnly={compact}
@@ -161,6 +159,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				class="expand-button"
+				_ariaExpanded={selected}
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_iconOnly
@@ -224,14 +223,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 	private buttonOrLinkOrText(compact: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		if ((link as ButtonWithChildrenProps)._on) {
-			return this.button(
-				selected,
-				compact,
-				(link as ButtonWithChildrenProps)._disabled === true,
-				link._icon,
-				link._label,
-				(link as ButtonWithChildrenProps)._on
-			);
+			return this.button(compact, (link as ButtonWithChildrenProps)._disabled === true, link._icon, link._label, (link as ButtonWithChildrenProps)._on);
 		} else if ((link as LinkWithChildrenProps)._href) {
 			return this.link(selected, compact, (link as LinkWithChildrenProps)._href, link._icon, link._label);
 		} else {

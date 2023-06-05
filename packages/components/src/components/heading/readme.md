@@ -49,9 +49,9 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 ## Slots
 
-| Slot                                | Description |
-| ----------------------------------- | ----------- |
-| `"default Inhalt der Überschrift."` |             |
+| Slot | Description             |
+| ---- | ----------------------- |
+|      | Inhalt der Überschrift. |
 
 ## Dependencies
 

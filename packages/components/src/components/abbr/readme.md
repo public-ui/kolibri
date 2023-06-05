@@ -55,9 +55,9 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 ## Slots
 
-| Slot                                                | Description |
-| --------------------------------------------------- | ----------- |
-| `"default Der Begriff, der erläutert werden soll."` |             |
+| Slot | Description                             |
+| ---- | --------------------------------------- |
+|      | Der Begriff, der erläutert werden soll. |
 
 ## Dependencies
 

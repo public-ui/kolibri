@@ -16,7 +16,7 @@ import { ComponentApi, States } from './types';
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
 /**
- * @slot default Die Beschriftung des Eingabefeldes.
+ * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
 	tag: 'kol-input-text',
@@ -66,7 +66,6 @@ export class KolInputText implements ComponentApi {
 					'has-value': this.state._hasValue,
 				}}
 			>
-				{this.state._accessKey}
 				<kol-input
 					class={{
 						[this.state._type]: true,

@@ -10,7 +10,7 @@ import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from '.
 import { nonce } from '../../utils/dev.utils';
 
 /**
- * @slot default Die Beschriftung der Checkbox.
+ * @slot - Die Beschriftung der Checkbox.
  */
 @Component({
 	tag: 'kol-input-checkbox',

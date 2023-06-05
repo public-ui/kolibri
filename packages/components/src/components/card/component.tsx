@@ -23,9 +23,10 @@ type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @slot header - Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
- * @slot footer - Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.
+ * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
+ * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
+ * @slot footer - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.
  */
 @Component({
 	tag: 'kol-card',
@@ -41,14 +42,15 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 				<div class="card">
 					<div class="header">
 						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
-						<slot name="header" />
+						<slot name="header"></slot>
 					</div>
 					<div class="content">
-						<slot name="content" />
+						<slot name="content"></slot> {/* Deprecated for version 2 */}
+						<slot />
 					</div>
 					{this.state._hasFooter && (
 						<div class="footer">
-							<slot name="footer" />
+							<slot name="footer"></slot>
 						</div>
 					)}
 				</div>

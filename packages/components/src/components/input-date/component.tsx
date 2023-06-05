@@ -11,7 +11,7 @@ import { ComponentApi, States } from './types';
 import { validateLabel } from '../../types/props';
 
 /**
- * @slot default Die Beschriftung des Eingabefeldes.
+ * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
 	tag: 'kol-input-date',
