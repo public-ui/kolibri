@@ -3,15 +3,14 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { devHint } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
-import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
-import { validateLabel } from '../../types/props';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
