@@ -45,8 +45,8 @@ export class KolInputEmail implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
-		const showExpertSlot = this._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '...'; // deprecated: default slot will be removed in v2.0.0
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
