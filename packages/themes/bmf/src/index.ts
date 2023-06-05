@@ -2394,6 +2394,9 @@ export const BMF = KoliBri.createTheme('bmf', {
 	ul li:last-child > span {
 		color: var(--color-grey);
 	}`,
+	'KOL-MODAL': `:host .overlay .modal {
+		max-height: calc(100% - 32px);
+	}`,
 	'KOL-ICON': `:host {
 		width: 1em;
 		height: 1em;
