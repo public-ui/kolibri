@@ -44,10 +44,7 @@ export class KolInputRadio implements ComponentApi {
 					}}
 				>
 					<legend class="block w-full mb-1 leading-normal">
-						<span>
-							{/* TODO: Für was wird dieses span benötigt? */}
-							<slot />
-						</span>
+						<span>{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					</legend>
 					{this.state._list.map((option, index) => {
 						/**
