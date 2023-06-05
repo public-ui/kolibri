@@ -1,30 +1,18 @@
 # Getting Started
 
-Dieses Beispiel setzt voraus, dass Sie bereits eine React-Projekt erstellt haben und **KoliBri** nun dort integrieren möchten.
+## Neues Projekt erstellen
 
-## Schritt für Schritt-Anleitung
+Es gibt zwei Möglichkeiten:
+ 1) das Projekt via der KoliBri CLI zu erstellen (`npm init kolibri@latest my-kolibri-app`) oder
+ 2) ein Projekt mittels einer anderen CLI erstellen und dann wie unten beschrieben KoliBri hinzufügen.
 
-### 1. Installieren der KoliBri-Bibliotheken
+## Einbinden in ein bestehendes Projekt
 
-`npm i @public-ui/core @public-ui/components @public-ui/react @public-ui/themes`
+### Einbinden von Schriftarten
 
-oder
+Schriftarten werden von Natur aus losgelöst vom CSS geladen und müssen je nach **KoliBri**-Theme in die projektspezifische Rahmenseite (`index.html`) eingebunden werden.
 
-`pnpm i @public-ui/core @public-ui/components @public-ui/react @public-ui/themes`
-
-oder
-
-`yarn add @public-ui/core @public-ui/components @public-ui/react @public-ui/themes`
-
-### 2. Einbinden von Schriftarten
-
-Schriftarten, sogenannte Fonts, werden von Natur aus losgelöst vom CSS geladen und müssen je nach **KoliBri**-Theme (Styleguide) in die projektspezifische Rahmenseite (`index.html`) eingebunden werden.
-
-Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen Assets kopiert werden.
-
-z.B. `cp -r node_modules/@public-ui/themes/assets public/assets`
-
-Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen im `<head>` der Rahmenseite (`index.html`) eingebunden werden.
+Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen Assets kopiert werden: `node_modules/@public-ui/themes/assets`, oder eigene verwendet werden.
 
 ```html
 <!DOCTYPE html>
@@ -51,7 +39,196 @@ Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen
 </html>
 ```
 
-### 3. Registrieren des KoliBri-Loaders
+### I Vite + React
+#### 1. Installieren der KoliBri-Bibliotheken
+
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>`npm i @public-ui/components @public-ui/themes @public-ui/react`</div>
+	<div>`pnpm i @public-ui/components @public-ui/themes @public-ui/react`</div>
+	<div>`yarn add @public-ui/components @public-ui/themes @public-ui/react`</div>
+</kol-tabs>
+
+#### 2. Integration
+
+main.tsx
+```diff
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+
++import { register } from "@public-ui/components";
++import { defineCustomElements } from "@public-ui/components/dist/loader";
++import { DE } from "@public-ui/themes";
+
++register(DE, defineCustomElements)
++  .then(() => {
+    ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
++  })
++  .catch(console.warn);
+```
+
+#### 3. module einbinden
+
+index.html
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
++   <script
++     type="module"
++     src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
++   ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
+#### 4. Beispiel
+
+```tsx
+import React from 'react';
+import { KolSpin } from '@public-ui/react';
+
+export const AppComponent = () => {
+	return (
+		<div>
+			<KolSpin _show />
+		</div>
+	);
+};
+```
+
+
+### II Vite + Vue
+
+#### 1. Installieren der KoliBri-Bibliotheken
+<kol-tabs _headers="['npm', 'pnpm', 'yarn']" _tabs='[{"_label":"NPM"},{"_label":"PNPM"},{"_label":"YARN"}]'>
+	<div>`npm i @public-ui/components @public-ui/themes @public-ui/vue`</div>
+	<div>`pnpm i @public-ui/components @public-ui/themes @public-ui/vue`</div>
+	<div>`yarn add @public-ui/components @public-ui/themes @public-ui/vue`</div>
+</kol-tabs>
+
+#### 2. Plugin
+
+kolibri.plugin.ts
+```js
+import type { Plugin } from 'vue'
+import { defineCustomElements } from '@public-ui/components/dist/loader'
+import { register } from '@public-ui/components'
+import { ITZBund } from '@public-ui/themes'
+export const ComponentLibrary: Plugin = {
+  install() {
+    register(ITZBund, defineCustomElements)
+      .then(() => console.log('Components registered'))
+      .catch(console.warn)
+  }
+}
+```
+main.ts:
+```diff
+import { createApp } from 'vue'
+import App from './App.vue'
+import './assets/main.css'
++ import { ComponentLibrary } from './vue.plugin'
+
+const app = createApp(App)
+
++ app.use(ComponentLibrary)
+
+app.mount('#app')
+```
+
+#### 3. module einbinden
+
+index.html
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <script
++      type="module"
++      src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
++    ></script>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+```
+
+#### 4. Komponenten als custom components registrieren
+
+vite.config.ts
+```diff
+import { fileURLToPath, URL } from 'node:url'
+
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+-  plugins: [],
++  plugins: [
++    vue({
++      template: {
++        compilerOptions: {
++          // treat all tags with a dash as custom elements
++          isCustomElement: (tag) => tag.includes('-')
++        }
++      }
++    })
++  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
+})
+```
+
+#### 5. Beispiel
+
+```html
+<kol-input-text
+	:_value="text"
+	:_on="{ onChange: (e: unknown, v: string) => (text = v) }"
+></kol-input-text>
+<kol-button _label="Text löschen" :_on="{ onClick: () => (text = '') }"></kol-button>
+```
+Hinweis: KoliBri-Inputs übergeben in der Regel das Ursprungsevent als ersten Parameter und den Wert des Feldes als Zweiten.
+
+
+### III React
+
+#### 1. Installieren der KoliBri-Bibliotheken
+
+`npm i @public-ui/components @public-ui/react @public-ui/themes`
+
+oder
+
+`pnpm i @public-ui/components @public-ui/react @public-ui/themes`
+
+oder
+
+`yarn add @public-ui/components @public-ui/react @public-ui/themes`
+
+#### 2. Registrieren des KoliBri-Loaders
 
 Nachdem die Vorbereitungen abgeschlossen sind, muss nur noch der KoliBri-Loader registriert werden.
 Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, sobald sie in der Webseite verwendet werden.
@@ -62,7 +239,7 @@ Er sorgt dafür, dass die Web Components asynchron (lazy) nachgeladen werden, so
 | DEFAULT              | Registriert den Loader für z.B. das DEFAULT-Theme       |
 | defineCustomElements | Registriert den Loader für die Web Components           |
 
-#### Integration
+#### 3. Integration
 
 ```tsx
 import React from 'react';
@@ -85,7 +262,7 @@ register(DEFAULT, defineCustomElements)
 	.catch(console.warn);
 ```
 
-#### Beispiel
+#### 4. Beispiel
 
 ```tsx
 import React from 'react';
@@ -99,3 +276,32 @@ export const AppComponent = () => {
 	);
 };
 ```
+
+### IV ohne Framework
+
+Hinweis: ohne einen Bundler ist KoliBri aktuell nicht verwendbar.
+
+`pnpm i @public-ui/components @public-ui/themes`
+`npm i @public-ui/components @public-ui/themes`
+`yarn add @public-ui/components @public-ui/themes`
+
+```diff
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
++    <script
++      type="module"
++      src="/node_modules/@public-ui/components/dist/kolibri/kolibri.esm.js"
++    ></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+```
+Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)

@@ -109,7 +109,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 	/** Element creation functions */
 	private button(
-		selected: boolean,
 		compact: boolean,
 		disabled: boolean,
 		icon: Stringified<KoliBriIconProp> | undefined,
@@ -119,7 +118,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaExpanded={selected}
 				_disabled={disabled}
 				_icon={icon || '-'}
 				_iconOnly={compact}
@@ -139,8 +137,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		hasChildren: boolean,
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean,
-		selected: boolean,
-		textCenter: boolean
+		selected: boolean
 	): JSX.Element {
 		return (
 			<div
@@ -149,7 +146,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 					'has-children': hasChildren,
 					selected,
 					expanded,
-					'text-center': textCenter,
+					compact,
 				}}
 			>
 				{this.buttonOrLinkOrText(compact, link, selected)}
@@ -162,6 +159,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				class="expand-button"
+				_ariaExpanded={selected}
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_iconOnly
@@ -182,10 +180,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
 		const selected = !!link._active;
 		const expanded = hasChildren && !!link._active;
-		const textCenter = compact;
 		return (
 			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
-				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
+				{this.entry(collapsible, compact, hasChildren, link, expanded, selected)}
 				{hasChildren && selected ? (
 					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
 				) : (
@@ -226,14 +223,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 
 	private buttonOrLinkOrText(compact: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		if ((link as ButtonWithChildrenProps)._on) {
-			return this.button(
-				selected,
-				compact,
-				(link as ButtonWithChildrenProps)._disabled === true,
-				link._icon,
-				link._label,
-				(link as ButtonWithChildrenProps)._on
-			);
+			return this.button(compact, (link as ButtonWithChildrenProps)._disabled === true, link._icon, link._label, (link as ButtonWithChildrenProps)._on);
 		} else if ((link as LinkWithChildrenProps)._href) {
 			return this.link(selected, compact, (link as LinkWithChildrenProps)._href, link._icon, link._label);
 		} else {
@@ -262,7 +252,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
-						<div class="mt-2 w-full text-center">
+						<div class="mt-2 w-full compact">
 							<kol-button
 								_ariaControls="nav"
 								_ariaExpanded={compact}

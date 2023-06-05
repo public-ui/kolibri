@@ -12,6 +12,9 @@ import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @slot - Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-input-password',
 	styleUrls: {
@@ -35,7 +38,7 @@ export class KolInputPassword implements ComponentApi {
 				ref: this.ref,
 			});
 		} else {
-			this.controller.onFacade.onClick(event);
+			this.controller.onFacade.onChange(event);
 		}
 	};
 

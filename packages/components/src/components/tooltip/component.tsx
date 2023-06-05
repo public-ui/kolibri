@@ -1,10 +1,11 @@
 import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { watchTooltipAlignment } from '../../types/button-link';
 import { Alignment } from '../../types/props';
 import { getDocument, nonce } from '../../utils/dev.utils';
+import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
 
@@ -23,9 +24,7 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-tooltip',
-	styleUrls: {
-		default: './style.css',
-	},
+	styleUrl: './style.css',
 	shadow: false,
 })
 export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
@@ -83,6 +82,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 
 	private showTooltip = (): void => {
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+			showOverlay(this.tooltipElement);
 			this.tooltipElement.style.setProperty('display', 'block');
 			getDocument().body.addEventListener('keyup', this.hideTooltipByEscape);
 			this.alignTooltip(() => {
@@ -96,6 +96,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 
 	private hideTooltip = (): void => {
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+			hideOverlay(this.tooltipElement);
 			this.tooltipElement.style.setProperty('display', 'none');
 			this.tooltipElement.style.setProperty('visibility', 'hidden');
 			document.removeEventListener('scroll', this.showTooltip);

@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.0-rc.23
-    version: 1.5.0-rc.23
+    specifier: 1.5.2
+    version: 1.5.2
   rimraf:
     specifier: 3.0.2
     version: 3.0.2
@@ -27,23 +27,23 @@ packages:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
     dev: true
 
-  /@floating-ui/dom@1.2.7:
-    resolution: {integrity: sha512-DyqylONj1ZaBnzj+uBnVfzdjjCkFCL2aA9ESHLyUOGSqb03RpbLMImP1ekIQXYs4KLk9jAjJfZAU8hXfWSahEg==}
+  /@floating-ui/dom@1.2.8:
+    resolution: {integrity: sha512-XLwhYV90MxiHDq6S0rzFZj00fnDM+A1R9jhSioZoMsa7G0Q0i+Q4x40ajR8FHSdYDE1bgjG45mIWe6jtv9UPmg==}
     dependencies:
       '@floating-ui/core': 1.2.6
     dev: true
 
-  /@public-ui/components@1.5.0-rc.23:
-    resolution: {integrity: sha512-nYXyH3fLLlFqcqYv9CJp7vT2I5kKhxcIR+ZBqNhRaDgFNDZ1tiP9Og9ntaOSGy/x2VpO8VgoJ6ohzQlzuQCGYw==}
+  /@public-ui/components@1.5.2:
+    resolution: {integrity: sha512-izo59SzDJhzMUqjOxPoR5G+uMJpFF3CDl3dPH63UpP1HzpW7ZQ902B8AzsA8rYQYkiPrpuG0Z55JLAqIAnXDrg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
-      '@floating-ui/dom': 1.2.7
-      '@public-ui/schema': 1.5.0-rc.23
-      i18next: 22.4.15
+      '@floating-ui/dom': 1.2.8
+      '@public-ui/schema': 1.5.2
+      i18next: 22.5.0
     dev: true
 
-  /@public-ui/schema@1.5.0-rc.23:
-    resolution: {integrity: sha512-Bk9Rmf19FGXa4Xb0pbbasNHKzr0SCKMOqDZARdQUHddHKvBTHMuX5y3tm8aNXfG1TqCWUf+Q90xTUgy1qkZdFw==}
+  /@public-ui/schema@1.5.2:
+    resolution: {integrity: sha512-swKTxifw1/8FHxLIffV0UWC66qoQnPM0qKwSeAAaaQyGa8pabvttfU06j4aAoSjVBhjaM3QLxoIKcc7eCuLGPg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
@@ -84,8 +84,8 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
-  /i18next@22.4.15:
-    resolution: {integrity: sha512-yYudtbFrrmWKLEhl6jvKUYyYunj4bTBCe2qIUYAxbXoPusY7YmdwPvOE6fx6UIfWvmlbCWDItr7wIs8KEBZ5Zg==}
+  /i18next@22.5.0:
+    resolution: {integrity: sha512-sqWuJFj+wJAKQP2qBQ+b7STzxZNUmnSxrehBCCj9vDOW9RDYPfqCaK1Hbh2frNYQuPziz6O2CGoJPwtzY3vAYA==}
     dependencies:
       '@babel/runtime': 7.21.5
     dev: true

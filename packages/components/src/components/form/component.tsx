@@ -23,6 +23,9 @@ type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
+/**
+ * @slot - Inhalt der Form.
+ */
 @Component({
 	tag: 'kol-form',
 	shadow: true,

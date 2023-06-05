@@ -10,23 +10,27 @@ type RequiredProps = {
 	value: number;
 };
 type OptionalProps = PropLabel & {
-	type: KoliBriProgressType;
+	type: KoliBriProgressType; // @deprecated
 	unit: string;
+	variant: KoliBriProgressType;
 };
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps & {
 	liveValue: number;
 };
-type OptionalStates = OptionalProps;
+type OptionalStates = PropLabel & {
+	unit: string;
+	variant: KoliBriProgressType;
+};
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 // https://css-tricks.com/html5-progress-element/
 const createProgressSVG = (state: States): JSX.Element => {
-	switch (state._type) {
+	switch (state._variant) {
 		case 'cycle':
 			return (
-				<svg width="100" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+				<svg class="cycle" width="100" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
 					<circle fill="none" stroke="#efefef" cx="6px" cy="6px" r="5px"></circle>
 					<text aria-hidden="true" font-size="0.1em" x="50%" y="50%" text-anchor="middle" fill="currentColor">
 						{state._label && (
@@ -40,7 +44,7 @@ const createProgressSVG = (state: States): JSX.Element => {
 						</tspan>
 					</text>
 					<circle
-						class="cycle"
+						class="progress"
 						stroke-linecap="round"
 						stroke-dasharray={`${Math.round((state._value / state._max) * 32)}px 32px`}
 						fill="none"
@@ -53,13 +57,13 @@ const createProgressSVG = (state: States): JSX.Element => {
 			);
 		default:
 			return (
-				<div>
+				<div class="bar">
 					{state._label && <div>{state._label}</div>}
 					<div style={{ display: 'flex', gap: '0.3em' }}>
 						<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
 							<line stroke-width="2" x1="1" stroke-linecap="round" y1="1" x2="23" y2="1" fill="#efefef" stroke="#efefef"></line>
 							<line
-								class="bar"
+								class="progress"
 								stroke-width="2"
 								x1="1"
 								stroke-linecap="round"
@@ -115,6 +119,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 
 	/**
 	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * @deprecated will be removed in v2, use _variant
 	 */
 	@Prop() public _type?: KoliBriProgressType;
 
@@ -128,11 +133,16 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _value!: number;
 
+	/**
+	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+	 */
+	@Prop() public _variant?: KoliBriProgressType;
+
 	@State() public state: States = {
 		_max: 100,
-		_type: 'bar',
 		_unit: '%',
 		_value: 0,
+		_variant: 'bar',
 		_liveValue: 0,
 	};
 
@@ -151,18 +161,10 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
+	// @deprecated remove with v2
 	@Watch('_type')
 	public validateType(value?: KoliBriProgressType): void {
-		switch (value) {
-			case 'cycle':
-				break;
-			default:
-				value = 'bar';
-		}
-		this.state = {
-			...this.state,
-			_type: value,
-		};
+		this.validateVariant(value);
 	}
 
 	@Watch('_unit')
@@ -181,12 +183,27 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: KoliBriProgressType): void {
+		if (!value && this._type) {
+			// remove with v2
+			value = this._type;
+		}
+		if (value !== 'cycle') {
+			value = 'bar';
+		}
+		this.state = {
+			...this.state,
+			_variant: value,
+		};
+	}
+
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateMax(this._max);
-		this.validateType(this._type);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);
+		this.validateVariant(this._variant || this._type);
 
 		this.interval = setInterval(() => {
 			if (this.state._liveValue !== this.state._value) {

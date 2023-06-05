@@ -128,11 +128,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					tabIndex={this.state._tabIndex}
 				>
 					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}>
-						{/*
-							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-						*/}
-						<slot name="expert" slot="expert" />
+						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>

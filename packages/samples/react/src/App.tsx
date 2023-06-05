@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
 import { Option } from '@public-ui/components';
-import { KolAlert, KolButton, KolSelect } from '@public-ui/react';
+import { KolAlert, KolButton, KolSelect, KolVersion } from '@public-ui/react';
 import { FC, useState } from 'react';
 import { ROUTES } from './shares/routes';
 import { THEME_OPTIONS, Theme } from './shares/theme';
@@ -168,6 +168,9 @@ export const App: FC = () => {
 							{sample.replace(/\//g, ' ')}
 						</strong>{' '}
 						({getIndexOfRoute(window.location.hash) + 1}/{ROUTE_LIST.length})
+					</dd>
+					<dd>
+						<KolVersion _version={PackageJson.version}></KolVersion>
 					</dd>
 				</dl>
 				{active && (

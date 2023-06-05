@@ -12,11 +12,11 @@ import { getRenderStates } from '../input/controller';
 import { InputDateController } from './controler';
 import { ComponentApi, States } from './types';
 
+/**
+ * @slot - Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-input-date',
-	// styleUrls: {
-	// 	default: './style.css',
-	// },
 	shadow: false,
 })
 export class KolInputDate implements ComponentApi {

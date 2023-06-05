@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v16",
-	"version": "1.5.0",
+	"version": "1.5.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -62,10 +62,10 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/compiler-cli": "16.0.0",
-		"@angular/compiler": "16.0.0",
-		"@angular/core": "16.0.0",
-		"@public-ui/components": "1.5.0",
+		"@angular/compiler-cli": "16.0.3",
+		"@angular/compiler": "16.0.3",
+		"@angular/core": "16.0.3",
+		"@public-ui/components": "1.5.3",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
@@ -73,13 +73,13 @@
 		"prettier": "2.8.8",
 		"rimraf": "3.0.2",
 		"rxjs": "7.8.1",
-		"tslib": "2.5.0",
+		"tslib": "2.5.2",
 		"typescript": "5.0.4",
 		"zone.js": "0.13.0"
 	},
 	"peerDependencies": {
 		"@angular/core": "^16",
-		"@public-ui/components": "1.5.0"
+		"@public-ui/components": "1.5.3"
 	},
 	"files": [
 		"dist"

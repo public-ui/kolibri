@@ -9,6 +9,9 @@ import { InputRangeController } from './controller';
 import { ComponentApi, States } from './types';
 import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @slot - Die Beschriftung des Eingabeelements.
+ */
 @Component({
 	tag: 'kol-input-range',
 	styleUrls: {

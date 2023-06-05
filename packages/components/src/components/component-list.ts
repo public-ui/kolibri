@@ -41,7 +41,7 @@ import { KolLogo } from './logo/component';
 import { KolModal } from './modal/component';
 import { KolNav } from './nav/component';
 import { KolPagination } from './pagination/component';
-import { KolPopover } from './popover/shadow';
+import { KolPopover } from './popover/component';
 import { KolProcess } from './progress/component';
 import { KolQuote } from './quote/shadow';
 import { KolSelect } from './select/component';
