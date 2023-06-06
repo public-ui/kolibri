@@ -1,7 +1,6 @@
 @import url(../style.css);
-@import url(./cycle.css);
-@import url(./dot.css);
-
+@import url(cycle.css);
+@import url(dot.css);
 .spin {
 	display: block;
 	padding: 0.125rem;

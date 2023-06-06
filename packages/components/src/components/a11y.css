@@ -6,6 +6,7 @@
 	 * Minimum size of interactive elements.
 	 */
 	--a11y-min-size: 44px;
+	font-size: inherit;
 }
 * {
 	/*

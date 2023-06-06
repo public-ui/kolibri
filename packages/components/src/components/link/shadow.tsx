@@ -53,7 +53,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
 					*/}
-					<slot name="expert" slot="expert" />
+					<slot name="expert" slot="expert"></slot>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<slot slot="expert" />
 				</kol-link-wc>

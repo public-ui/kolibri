@@ -58,7 +58,7 @@ export const InputTextHiddenLabel: FC = () => (
 		>
 			Suche
 		</KolInputText>
-		<KolInputText _id="" _hideLabel _placeholder="Placeholder" _required _type="text">
+		<KolInputText _id="" _hideLabel _placeholder="Placeholder" _required>
 			Vorname (text)
 		</KolInputText>
 		<KolInputText _id="" _placeholder="Placeholder" _type="search">
@@ -70,16 +70,16 @@ export const InputTextHiddenLabel: FC = () => (
 		<KolInputText _id="" _placeholder="Placeholder" _type="tel">
 			Telefon (tel)
 		</KolInputText>
-		<KolInputText _id="" _placeholder="Placeholder" _read-only _type="text">
+		<KolInputText _id="" _placeholder="Placeholder" _read-only>
 			Vorname (text, readonly)
 		</KolInputText>
-		<KolInputText _id="" _value="Value" _read-only _type="text">
+		<KolInputText _id="" _value="Value" _read-only>
 			Vorname (text, readonly)
 		</KolInputText>
-		<KolInputText _id="" _placeholder="Placeholder" _disabled _type="text">
+		<KolInputText _id="" _placeholder="Placeholder" _disabled>
 			Vorname (text, disabled)
 		</KolInputText>
-		<KolInputText _id="" _value="Value" _disabled _type="text">
+		<KolInputText _id="" _value="Value" _disabled>
 			Vorname (text, disabled)
 		</KolInputText>
 	</div>

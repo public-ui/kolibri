@@ -7,6 +7,7 @@ import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 import { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import { Props, Watches } from './types';
+import { validateLabel } from '../../../types/props';
 
 type ValueChangeListener = (value: string) => void;
 
@@ -61,6 +62,10 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
+	public validateLabel(value?: string): void {
+		validateLabel(this.component, value);
+	}
+
 	public validateName(value?: string): void {
 		watchString(this.component, '_name', value, {
 			hooks: {
@@ -105,6 +110,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateHideLabel(this.component._hideLabel);
 		this.validateHint(this.component._hint);
 		this.validateId(this.component._id);
+		this.validateLabel(this.component._label);
 		this.validateName(this.component._name);
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);

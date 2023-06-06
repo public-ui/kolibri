@@ -56,9 +56,9 @@
 
 ## Slots
 
-| Slot        | Description                                                |
-| ----------- | ---------------------------------------------------------- |
-| `"popover"` | Ermöglicht das Einfügen beliebigen HTML's in das dropdown. |
+| Slot | Description                                                |
+| ---- | ---------------------------------------------------------- |
+|      | Ermöglicht das Einfügen beliebigen HTML's in das dropdown. |
 
 ## Dependencies
 

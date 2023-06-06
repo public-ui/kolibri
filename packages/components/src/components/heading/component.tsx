@@ -24,7 +24,7 @@ type OptionalStates = {
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
- * @slot default Inhalt der Überschrift.
+ * @slot - Inhalt der Überschrift.
  */
 @Component({
 	tag: 'kol-heading-wc',

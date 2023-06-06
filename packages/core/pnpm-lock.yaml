@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@public-ui/components':
-    specifier: 1.5.2-rc.2
-    version: 1.5.2-rc.2
+    specifier: 1.5.2
+    version: 1.5.2
 
 devDependencies:
   '@a11y-ui/core':
@@ -579,17 +579,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.5.2-rc.2:
-    resolution: {integrity: sha512-leIfq14iK4kfNZlFf45fVQ+y4phohiIZP9a8ESuLB5jkbeFFujGpJ8bbOLhBQQHlhYM8wp/n4fhHLAeEsD4TgQ==}
+  /@public-ui/components@1.5.2:
+    resolution: {integrity: sha512-izo59SzDJhzMUqjOxPoR5G+uMJpFF3CDl3dPH63UpP1HzpW7ZQ902B8AzsA8rYQYkiPrpuG0Z55JLAqIAnXDrg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.8
-      '@public-ui/schema': 1.5.2-rc.2
+      '@public-ui/schema': 1.5.2
       i18next: 22.5.0
     dev: false
 
-  /@public-ui/schema@1.5.2-rc.2:
-    resolution: {integrity: sha512-d+h2Azq/dvzB1QqJPNrhDhq5YsHMhAjg8BdEsFjN4cXUGf9AfCy1vbK0Lo1xFukpNvD5aOlrtn63DtCQdjb9Vw==}
+  /@public-ui/schema@1.5.2:
+    resolution: {integrity: sha512-swKTxifw1/8FHxLIffV0UWC66qoQnPM0qKwSeAAaaQyGa8pabvttfU06j4aAoSjVBhjaM3QLxoIKcc7eCuLGPg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: false

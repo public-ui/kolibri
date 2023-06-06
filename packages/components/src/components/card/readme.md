@@ -84,11 +84,12 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 ## Slots
 
-| Slot        | Description                                                                                      |
-| ----------- | ------------------------------------------------------------------------------------------------ |
-| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.                        |
-| `"footer"`  | Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.                            |
-| `"header"`  | Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card. |
+| Slot        | Description                                                                                                                |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------- |
+|             | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.                                                  |
+| `"content"` | Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.                                                  |
+| `"footer"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.                            |
+| `"header"`  | Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card. |
 
 ## Dependencies
 

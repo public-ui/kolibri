@@ -100,8 +100,8 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 ## Slots
 
-| Slot                               | Description |
-| ---------------------------------- | ----------- |
-| `"default Der Inhalt des Modals."` |             |
+| Slot | Description            |
+| ---- | ---------------------- |
+|      | Der Inhalt des Modals. |
 
 ---

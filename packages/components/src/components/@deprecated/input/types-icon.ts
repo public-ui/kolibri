@@ -1,8 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../../types/common';
 import { KoliBriHorizontalIcon } from '../../../types/icon';
+import { PropLabel } from '../../../types/props/label';
 
-type RequiredProps = unknown;
+type RequiredProps = PropLabel;
 type OptionalProps = {
 	icon: Stringified<KoliBriHorizontalIcon>;
 };

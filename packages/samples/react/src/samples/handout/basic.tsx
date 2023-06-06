@@ -775,8 +775,8 @@ export const HandoutBasic: FC = () => (
 						mit Tooltip links
 					</p>
 					<div className="grid grid-cols-2 items-center">
-						<KolProgress _type="bar" _max={100} _value={33} _label="Progress"></KolProgress>
-						<KolProgress _type="cycle" _max={100} _value={66} _label="Progress"></KolProgress>
+						<KolProgress _variant="bar" _max={100} _value={33} _label="Progress" />
+						<KolProgress _variant="cycle" _max={100} _value={66} _label="Progress" />
 					</div>
 				</div>
 			</KolCard>
@@ -978,9 +978,7 @@ export const HandoutBasic: FC = () => (
 						<KolInputEmail _icon="{'left': 'codicon codicon-home'}" _error="Test einer Fehlermeldung" _touched>
 							E-Mail-Adresse
 						</KolInputEmail>
-						<KolInputText _hint="Ich bin ein Hinweis." _type="text">
-							Vorname
-						</KolInputText>
+						<KolInputText _hint="Ich bin ein Hinweis.">Vorname</KolInputText>
 						<KolInputPassword>Passwort</KolInputPassword>
 						<KolSelect _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung</KolSelect>
 						<KolInputRange _min={0} _max={50} _value={25}>

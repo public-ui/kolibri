@@ -31,9 +31,9 @@ Die **Form**-Komponente dient dazu alle Eingabefelder zu umschließen, den Hinwe
 
 ## Slots
 
-| Slot                         | Description |
-| ---------------------------- | ----------- |
-| `"default Inhalt der Form."` |             |
+| Slot | Description      |
+| ---- | ---------------- |
+|      | Inhalt der Form. |
 
 ## Dependencies
 

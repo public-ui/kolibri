@@ -3,17 +3,17 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { devHint } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
-import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 /**
- * @slot default Die Beschriftung des Eingabefeldes.
+ * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
 	tag: 'kol-input-password',
@@ -44,6 +44,8 @@ export class KolInputPassword implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -66,9 +68,7 @@ export class KolInputPassword implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<input
 						ref={this.catchRef}
 						title=""
@@ -148,6 +148,20 @@ export class KolInputPassword implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label!: string;
+
+	/**
 	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
 	 */
 	@Prop() public _maxLength?: number;
@@ -210,6 +224,7 @@ export class KolInputPassword implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_hasValue: false,
 	};
 
@@ -263,6 +278,11 @@ export class KolInputPassword implements ComponentApi {
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_maxLength')

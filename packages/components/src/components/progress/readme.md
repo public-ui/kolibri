@@ -8,15 +8,15 @@ Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine opt
 
 ```html
 <div>
-	<kol-progress _label="Fortschritt" _type="bar" _max="100" _value="20"></kol-progress>
-	<kol-progress _label="Fortschritt" _type="cycle" _max="100" _value="20"></kol-progress>
+	<kol-progress _label="Fortschritt" _variant="bar" _max="100" _value="20"></kol-progress>
+	<kol-progress _label="Fortschritt" _variant="cycle" _max="100" _value="20"></kol-progress>
 </div>
 ```
 
 ### Beispiel
 
-<kol-progress _label="Fortschritt" _type="bar" _max="100" _value="20"></kol-progress>
-<kol-progress _label="Fortschritt" _type="cycle" _max="100" _value="20"></kol-progress>
+<kol-progress _label="Fortschritt" _variant="bar" _max="100" _value="20"></kol-progress>
+<kol-progress _label="Fortschritt" _variant="cycle" _max="100" _value="20"></kol-progress>
 
 ## Verwendung
 
@@ -44,12 +44,13 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 
 ## Properties
 
-| Property              | Attribute | Description                                                          | Type                            | Default     |
-| --------------------- | --------- | -------------------------------------------------------------------- | ------------------------------- | ----------- |
-| `_label`              | `_label`  | Setzt die Bezeichnung der Fortschrittsanzeige.                       | `string \| undefined`           | `undefined` |
-| `_max` _(required)_   | `_max`    | Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist. | `number`                        | `undefined` |
-| `_type`               | `_type`   | Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.      | `"bar" \| "cycle" \| undefined` | `undefined` |
-| `_unit`               | `_unit`   | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)      | `string \| undefined`           | `'%'`       |
-| `_value` _(required)_ | `_value`  | Gibt an, wie weit die Anzeige fortgeschritten ist.                   | `number`                        | `undefined` |
+| Property              | Attribute  | Description                                                                                                                                                   | Type                            | Default     |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------- |
+| `_label`              | `_label`   | Setzt die Bezeichnung der Fortschrittsanzeige.                                                                                                                | `string \| undefined`           | `undefined` |
+| `_max` _(required)_   | `_max`     | Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.                                                                                          | `number`                        | `undefined` |
+| `_type`               | `_type`    | <span style="color:red">**[DEPRECATED]**</span> will be removed in v2, use \_variant<br/><br/>Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird. | `"bar" \| "cycle" \| undefined` | `undefined` |
+| `_unit`               | `_unit`    | Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)                                                                                               | `string \| undefined`           | `'%'`       |
+| `_value` _(required)_ | `_value`   | Gibt an, wie weit die Anzeige fortgeschritten ist.                                                                                                            | `number`                        | `undefined` |
+| `_variant`            | `_variant` | Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.                                                                                   | `"bar" \| "cycle" \| undefined` | `undefined` |
 
 ---

@@ -6,17 +6,16 @@
 		<meta name="description" content="..." />
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
-		<link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.33/dist/codicon.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/a11y-light.min.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/index.min.js"></script>
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.2-rc.2';
+			import { register } from 'https://esm.sh/@public-ui/components@1.5.3';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.3/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.3';
 				register(ITZBund, defineCustomElements)
-						.then(() => {})
 						.catch(console.warn);
 		</script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-light.min.css">
 		<style>
 			:root {
 				font-size: 10px;
@@ -69,8 +68,7 @@
 			<p><strong>Fonts</strong> und <strong>Icon-Fonts</strong> müssen im <code class="language-html" style="background-color: #f3f3f3; padding: .25rem !important;">&#60;head&#62;</code> der HTML-Seite eingebunden werden.</p>
 			<pre>
 				<code class="language-html">&#60;head&#62;
-	&#60;link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" /&#62;
-	&#60;link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet"&#62;
+				&#60;link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.33/dist/codicon.min.css" rel="stylesheet"&#62;
 &#60;/head&#62;</code>
 			</pre>
 			<kol-heading _label="" _level="3">Loader</kol-heading>
@@ -78,12 +76,11 @@
 			<pre>
 				<code class="language-html">&#60;head&#62;
 	&#60;script type="module"&#62;
-		import { register } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.2-rc.2/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.2-rc.2';
-		register([ITZBund], [defineCustomElements])
-			.then(() =&#62; {})
-			.catch(console.warn);
+		import { register } from 'https://esm.sh/@public-ui/components@1.5.3';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.5.3/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.5.3';
+			register(ITZBund, defineCustomElements)
+					.catch(console.warn);
 	&#60;/script&#62;
 &#60;/head&#62;</code>
 			</pre>
@@ -98,7 +95,7 @@
 		<p>Im VSCode können die Meta-Informationen der Komponenten und deren Eigenschaften für die Autovervollständigung von HTML aktiviert werden.</p>
 		<pre>
 			<code class="language-json">{
-	"html.customData": ["./node_modules/@public-ui/components/vscode-custom-data.json"]
+	"html.customData": ["https://esm.sh/@public-ui/components@1.5.3/vscode-custom-data.json"]
 }</code>
 		</pre>
 		<kol-heading _label="" _level="3">Dev-Tools</kol-heading>
@@ -253,31 +250,31 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 },{
 	name: `input-checkbox`,
 	desc: `Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken aktiviert und wieder deaktiviert wird. In aktiviertem Zustand befindet sich ein farbiger Haken in der Box.`,
-	props: `_access-key, _alert, _checked, _disabled, _error, _hide-label, _hint, _icon, _id, _indeterminate, _name, _required, _tab-index, _touched, _type, _value, _variant`
+	props: `_access-key, _alert, _checked, _disabled, _error, _hide-label, _hint, _icon, _id, _indeterminate, _label, _name, _required, _tab-index, _touched, _type, _value, _variant`
 },{
 	name: `input-color`,
 	desc: `Der Input-Typ **Color** erzeugt ein Auswahlfeld für die Definition einer beliebigen Farbe. Die Eingabe der Farbe kann in hexadezimaler Schreibweise, in RGB-Schreibweise oder in HSL-Schreibweise erfolgen. Möglich ist die Auswahl einer Farbe über einen Picker oder auch die exakte Eingabe von Farbwerten.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _name, _tab-index, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _name, _tab-index, _touched, _value`
 },{
 	name: `input-date`,
 	desc: `Der Input-Typ **Date** erzeugt ein Eingabefeld für Datumswerte. Diese können konkrete Daten sein, aber auch Wochen, Monate oder Zeitangaben.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max, _min, _name, _read-only, _required, _step, _tab-index, _touched, _type, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max, _min, _name, _read-only, _required, _step, _tab-index, _touched, _type, _value`
 },{
 	name: `input-email`,
 	desc: `Der Input-Typ **E-Mail** erzeugt ein Eingabefeld für E-Mails.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max-length, _multiple, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max-length, _multiple, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _value`
 },{
 	name: `input-file`,
 	desc: `Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es können eine oder auch mehrere Dateien ausgewählt werden.`,
-	props: `_accept, _access-key, _alert, _disabled, _error, _hide-label, _hint, _icon, _id, _multiple, _name, _required, _tab-index, _touched, _value`
+	props: `_accept, _access-key, _alert, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _multiple, _name, _required, _tab-index, _touched, _value`
 },{
 	name: `input-number`,
 	desc: `Der Input-Typ **Number** erzeugt ein Eingabefeld für Zahlen.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max, _min, _name, _placeholder, _read-only, _required, _step, _tab-index, _touched, _type, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max, _min, _name, _placeholder, _read-only, _required, _step, _tab-index, _touched, _type, _value`
 },{
 	name: `input-password`,
 	desc: `Der Input-Typ **Password** erzeugt ein Eingabefeld für Passwörter. Die Eingabe wird über Punktsymbole maskiert.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _value`
 },{
 	name: `input-radio`,
 	desc: `Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und stellt so eine Auswahlmöglichkeit zwischen verschiedenen Werten dar. Es kann immer nur ein einzelner Wert zur gleichen Zeit ausgewählt werden. Ausgewählte Radio-Elemente werden i.d.R. mit einem gefüllten und optisch hervorgehobenen Kreis dargestellt.
@@ -285,15 +282,15 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.`,
 <kol-alert _alert _heading="Hinweis" _level="1" _type="info">
   Das Input-Radio dient der Abbildung einer Auswahlmöglichkeit bei der mindestens und maximal eine Auswahl getroffen werden kann. Das bedeutet, dass ein Input-Radio nicht einzeln vorkommen kann. Aufgrund dessen haben wir die Komponente als Listen-Komponente umgesetzt.
 </kol-alert><br/>`,
-	props: `_access-key, _alert, _disabled, _error, _hide-label, _hint, _id, _list, _name, _orientation, _required, _tab-index, _touched, _value`
+	props: `_access-key, _alert, _disabled, _error, _hide-label, _hint, _id, _label, _list, _name, _orientation, _required, _tab-index, _touched, _value`
 },{
 	name: `input-range`,
 	desc: `Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Verschieben eines Reglers verändert werden können.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max, _min, _name, _step, _tab-index, _touched, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max, _min, _name, _step, _tab-index, _touched, _value`
 },{
 	name: `input-text`,
 	desc: `Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe, URLs oder Telefonnummern.`,
-	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _list, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _type, _value`
+	props: `_access-key, _alert, _auto-complete, _disabled, _error, _hide-label, _hint, _icon, _id, _label, _list, _max-length, _name, _pattern, _placeholder, _read-only, _required, _size, _tab-index, _touched, _type, _value`
 },{
 	name: `link`,
 	desc: `Die **Link**-Komponente rendert einen auf Barrierefreiheit optimierten Link, der als Text, als Icon oder auch in Kombination ausgegeben werden kann.
@@ -337,7 +334,7 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 },{
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
-	props: `_label, _max, _type, _unit, _value`
+	props: `_label, _max, _type, _unit, _value, _variant`
 },{
 	name: `quote`,
 	desc: `> <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
@@ -347,7 +344,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-('
 },{
 	name: `select`,
 	desc: `Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.`,
-	props: `_access-key, _alert, _disabled, _error, _height, _hide-label, _hint, _icon, _id, _list, _multiple, _name, _required, _size, _tab-index, _touched, _value`
+	props: `_access-key, _alert, _disabled, _error, _height, _hide-label, _hint, _icon, _id, _label, _list, _multiple, _name, _required, _size, _tab-index, _touched, _value`
 },{
 	name: `skip-nav`,
 	desc: `Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt werden. Sie dient dazu, Sehbehinderten das Überspringen von Seitenbereichen zu ermöglichen. Sie wird nur nach Anspringen durch die **Tab-Taste** sichtbar.`,
@@ -381,7 +378,7 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
 },{
 	name: `textarea`,
 	desc: `Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.`,
-	props: `_access-key, _adjust-height, _alert, _disabled, _error, _has-counter, _hide-label, _hint, _id, _max-length, _name, _placeholder, _read-only, _required, _resize, _rows, _tab-index, _touched, _value`
+	props: `_access-key, _adjust-height, _alert, _disabled, _error, _has-counter, _hide-label, _hint, _id, _label, _max-length, _name, _placeholder, _read-only, _required, _resize, _rows, _tab-index, _touched, _value`
 },{
 	name: `toast`,
 	desc: `Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
@@ -431,6 +428,20 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 					]]
 				};
 				propertyTable._data = [{
+	name: `_label`,
+	desc: `Das Label dient der Beschriftung unterschiedlicher Elemente.
+- Button -> label text
+- Heading -> headline text
+- Input, Select und Textarea -> label text
+- Summary -> summary text
+- Table -> caption text
+- etc.
+
+Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+wenn man das Label mittels dem Expert-Slot überschreiben will.`,
+	types: `string`,
+	comps: `badge, button, button-link, heading, input-checkbox, input-color, input-date, input-email, input-file, input-number, input-password, input-radio, input-range, input-text, link, link-button, progress, select, split-button, textarea, tooltip`
+},{
 	name: `_tab-index`,
 	desc: `Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)`,
 	types: `number`,
@@ -496,25 +507,20 @@ Ein geöffneter Tooltip lässt sich mit der 'Escape'-Taste schließen, um ggf. �
 	types: `string`,
 	comps: `breadcrumb, button, button-link, icon, link, link-button, modal, nav, skip-nav, split-button, symbol, tabs`
 },{
+	name: `_variant`,
+	desc: `Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.`,
+	types: `"bar" | "cycle", "block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "cycle" | "dot" | "none", "primary" | "secondary"`,
+	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, progress, quote, spin, split-button`
+},{
 	name: `_type`,
 	desc: `Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.`,
 	types: `"bar" | "cycle", "button" | "checkbox" | "default" | "switch", "button" | "reset" | "submit", "date" | "datetime-local" | "month" | "number" | "time" | "week", "date" | "datetime-local" | "month" | "time" | "week", "default" | "error" | "info" | "success" | "warning", "search" | "tel" | "text" | "url"`,
 	comps: `alert, alert-wc, button, button-link, input-checkbox, input-date, input-number, input-text, progress, split-button, toast`
 },{
-	name: `_variant`,
-	desc: `Gibt an, welche Ausprägung der Button hat.`,
-	types: `"block" | "inline", "button" | "checkbox" | "default" | "switch", "card" | "msg", "custom" | "danger" | "ghost" | "normal" | "primary" | "secondary", "default" | "none", "primary" | "secondary"`,
-	comps: `alert, alert-wc, button, input-checkbox, link-button, nav, pagination, quote, spin, split-button`
-},{
 	name: `_required`,
 	desc: `Macht das Eingabeelement zu einem Pflichtfeld.`,
 	types: `boolean`,
 	comps: `input-checkbox, input-date, input-email, input-file, input-number, input-password, input-radio, input-text, select, textarea`
-},{
-	name: `_label`,
-	desc: `Gibt den Text der Überschrift an.`,
-	types: `string`,
-	comps: `badge, button, button-link, heading, link, link-button, progress, split-button, tooltip`
 },{
 	name: `_list`,
 	desc: `Gibt den technischen Namen des Eingabefeldes an.`,

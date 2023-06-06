@@ -11,7 +11,7 @@ import { watchTooltipAlignment } from '../../types/button-link';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
 
 /**
- * @slot popover - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
+ * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
  */
 @Component({
 	tag: 'kol-split-button',
@@ -105,7 +105,7 @@ export class KolSplitButton implements API {
 				></kol-button-wc>
 				<div class="popover" ref={this.catchDropdownElements}>
 					<div class="popover-content">
-						<slot name="popover"></slot>
+						<slot />
 					</div>
 				</div>
 			</Host>

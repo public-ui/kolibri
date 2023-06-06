@@ -3,12 +3,12 @@ import { translate } from '../../i18n';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { validateAdjustHeight, validateHasCounter } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -24,7 +24,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 };
 
 /**
- * @slot default Die Beschriftung des Eingabefeldes.
+ * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
 	tag: 'kol-textarea',
@@ -44,6 +44,8 @@ export class KolTextarea implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -51,9 +53,7 @@ export class KolTextarea implements ComponentApi {
 				}}
 			>
 				<kol-input
-					class={{
-						textarea: true,
-					}}
+					class="textarea"
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -65,9 +65,7 @@ export class KolTextarea implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input">
 						<textarea
 							ref={this.catchRef}
@@ -76,7 +74,6 @@ export class KolTextarea implements ComponentApi {
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
 							autoCapitalize="off"
-							// aria-hidden="true" // Wieso ist das hier?
 							autoCorrect="off"
 							disabled={this.state._disabled}
 							id={this.state._id}
@@ -94,10 +91,6 @@ export class KolTextarea implements ComponentApi {
 							}}
 							value={this.state._value}
 						></textarea>
-						{/**
-						 * https://webstandardssherpa.com/reviews/improving-the-tweet-box/
-						 * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live
-						 */}
 						{this.state._hasCounter && (
 							<span aria-atomic="true" aria-live="polite">
 								{this.state._currentLength}
@@ -136,11 +129,6 @@ export class KolTextarea implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
-	 */
-	@Prop({ reflect: true }) public _hasCounter?: boolean;
-
-	/**
 	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
@@ -149,6 +137,11 @@ export class KolTextarea implements ComponentApi {
 	 * Gibt den Text für eine Fehlermeldung an.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 */
+	@Prop({ reflect: true }) public _hasCounter?: boolean;
 
 	/**
 	 * Versteckt das sichtbare Label des Elements.
@@ -164,6 +157,20 @@ export class KolTextarea implements ComponentApi {
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label!: string;
 
 	/**
 	 * Setzt die maximale Zeichenanzahl.
@@ -225,6 +232,7 @@ export class KolTextarea implements ComponentApi {
 		_currentLength: 0,
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_resize: 'vertical',
 	};
 
@@ -275,6 +283,11 @@ export class KolTextarea implements ComponentApi {
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_maxLength')

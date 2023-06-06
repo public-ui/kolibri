@@ -183,14 +183,13 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					<kol-select
 						_hideLabel
 						_id="pagination-size"
+						_label={translate('kol-entries-per-site')}
 						_list={this.state._pageSizeOptions}
 						_on={{
 							onChange: this.onChangePageSize,
 						}}
 						_value={[this.state._pageSize]}
-					>
-						{translate('kol-entries-per-site')}
-					</kol-select>
+					></kol-select>
 				)}
 			</Host>
 		);
