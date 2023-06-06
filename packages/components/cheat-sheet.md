@@ -4,6 +4,11 @@
 
 | Property | Type | Descriptions |
 | --- | --- | --- |
+| _label | string | Das Label dient der Beschriftung unterschiedlicher Elemente.- Button -> label text- Heading -> headline text- Input, Select und Textarea -> label text- Summary -> summary text- Table -> caption text- etc.Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,wenn man das Label mittels dem Expert-Slot überschreiben will. |
+| _label | string | Gibt den Text der Überschrift an. |
+| _label | string | Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird. |
+| _label | string | Setzt den sichtbaren Text des Elements. |
+| _label | string | Setzt die Bezeichnung der Fortschrittsanzeige. |
 | _tab-index | number | Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) |
 | _tab-index | number | Gibt an, welchen Tab-Index dieses Input hat. |
 | _disabled | boolean | Gibt an, ob der Button deaktiviert ist. |
@@ -55,10 +60,6 @@
 | _type | "bar" &#124; "cycle", "button" &#124; "checkbox" &#124; "default" &#124; "switch", "button" &#124; "reset" &#124; "submit", "date" &#124; "datetime-local" &#124; "month" &#124; "number" &#124; "time" &#124; "week", "date" &#124; "datetime-local" &#124; "month" &#124; "time" &#124; "week", "default" &#124; "error" &#124; "info" &#124; "success" &#124; "warning", "search" &#124; "tel" &#124; "text" &#124; "url" | Gibt den Typ des Eingabefeldes an. |
 | _type | "bar" &#124; "cycle", "button" &#124; "checkbox" &#124; "default" &#124; "switch", "button" &#124; "reset" &#124; "submit", "date" &#124; "datetime-local" &#124; "month" &#124; "number" &#124; "time" &#124; "week", "date" &#124; "datetime-local" &#124; "month" &#124; "time" &#124; "week", "default" &#124; "error" &#124; "info" &#124; "success" &#124; "warning", "search" &#124; "tel" &#124; "text" &#124; "url" | Setzt den Typ der Schaltfläche. |
 | _required | boolean | Macht das Eingabeelement zu einem Pflichtfeld. |
-| _label | string | Gibt den Text der Überschrift an. |
-| _label | string | Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird. |
-| _label | string | Setzt den sichtbaren Text des Elements. |
-| _label | string | Setzt die Bezeichnung der Fortschrittsanzeige. |
 | _list | Option<W3CInputValue>[] &#124; string, Option<number>[] &#124; string, SelectOption<W3CInputValue>[] &#124; string, string &#124; string[] | Gibt den technischen Namen des Eingabefeldes an. |
 | _list | Option<W3CInputValue>[] &#124; string, Option<number>[] &#124; string, SelectOption<W3CInputValue>[] &#124; string, string &#124; string[] | Gibt die Liste der Optionen für das Eingabefeld an. |
 | _list | Option<W3CInputValue>[] &#124; string, Option<number>[] &#124; string, SelectOption<W3CInputValue>[] &#124; string, string &#124; string[] | Gibt die Liste der Vorschlagswörter an. |

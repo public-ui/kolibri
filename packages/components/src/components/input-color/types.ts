@@ -3,7 +3,8 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { InputRequiredProps } from '../input-text/types';
+import { InputRequiredProps } from '../input/types';
+import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -29,7 +30,7 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
 	list: string[];
-};
+} & PropLabel;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;

@@ -2,8 +2,8 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { AnyIconFontClass } from '../../types/icon';
 import { InputTypeOnDefault } from '../../types/input/types';
-import { InputRequiredProps } from '../input-text/types';
-import { PropChecked, PropIndeterminate } from '../../types/props';
+import { InputRequiredProps } from '../input/types';
+import { PropChecked, PropIndeterminate, PropLabel } from '../../types/props';
 
 export type InputCheckboxVariant =
 	| 'button'
@@ -54,7 +54,8 @@ type RequiredStates = {
 	id: string;
 	variant: InputCheckboxVariant;
 } & PropChecked &
-	PropIndeterminate;
+	PropIndeterminate &
+	PropLabel;
 type OptionalStates = {
 	alert: boolean;
 	accessKey: string;

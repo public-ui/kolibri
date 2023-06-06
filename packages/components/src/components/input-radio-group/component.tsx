@@ -26,6 +26,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 				_error={this._error}
 				_hideLabel={this._hideLabel}
 				_id={this._id}
+				_label={this._label}
 				_list={this._list}
 				_name={this._name}
 				_on={this._on}
@@ -74,6 +75,20 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	 * Gibt die technische ID des Eingabefeldes an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.

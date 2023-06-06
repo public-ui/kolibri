@@ -1,14 +1,14 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
-import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -60,6 +60,8 @@ export class KolSelect implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -80,9 +82,7 @@ export class KolSelect implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<select
 						ref={this.catchRef}
 						title=""
@@ -188,6 +188,20 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label!: string;
+
+	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
 	@Prop() public _list!: Stringified<SelectOption<W3CInputValue>[]>;
@@ -236,6 +250,7 @@ export class KolSelect implements ComponentApi {
 		_hasValue: false,
 		_height: '',
 		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
 		_multiple: false,
 		_value: [],
@@ -288,6 +303,11 @@ export class KolSelect implements ComponentApi {
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_list')
