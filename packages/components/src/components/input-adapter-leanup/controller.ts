@@ -29,9 +29,16 @@ export class ControlledInputController implements Watches {
 		}
 	}
 
+	/**
+	 * We try to support native form-associated custom elements.
+	 *
+	 * @see https://github.com/public-ui/kolibri/discussions/2821
+	 */
 	protected readonly syncFormAssociatedName = () => {
 		if (EXPERIMENTAL_MODE) {
-			this.formAssociated?.setAttribute('name', (this.component.state._name as string) || (this.component.state._id as string));
+			this.formAssociated?.setAttribute('id', this.component.state._id as string);
+			this.formAssociated?.setAttribute('name', this.component.state._name as string);
+			this.formAssociated?.setAttribute('value', this.component.state._value as string);
 		}
 	};
 
