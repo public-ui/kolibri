@@ -32,7 +32,9 @@ export class KolInput implements Props {
 			>
 				{this._renderNoLabel === false && (
 					<label id={`${this._id}-label`} hidden={hideLabel} htmlFor={this._id}>
+						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
+							{/* INFO: label comes with any html tag or as plain text! */}
 							<slot name="label"></slot>
 						</span>
 					</label>

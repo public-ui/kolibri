@@ -4,11 +4,11 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { W3CInputValue } from '../../types/w3c';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -31,6 +31,8 @@ export class KolInputRadio implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host>
 				<fieldset
@@ -42,12 +44,12 @@ export class KolInputRadio implements ComponentApi {
 					}}
 				>
 					<legend class="block w-full mb-1 leading-normal">
+						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
-							{/* TODO: Für was wird dieses span benötigt? */}
-							<slot />
+							{/* INFO: label comes with any html tag or as plain text! */}
+							{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
 						</span>
 					</legend>
-
 					{this.state._list.map((option, index) => {
 						/**
 						 * Damit der Value einer Option ein beliebigen Typ haben kann
@@ -153,6 +155,20 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+	 * - Button -> label text
+	 * - Heading -> headline text
+	 * - Input, Select und Textarea -> label text
+	 * - Summary -> summary text
+	 * - Table -> caption text
+	 * - etc.
+	 *
+	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 */
+	@Prop() public _label!: string;
+
+	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
 	 */
 	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
@@ -194,8 +210,8 @@ export class KolInputRadio implements ComponentApi {
 
 	@State() public state: States = {
 		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
-
 		_orientation: 'vertical',
 	};
 
@@ -236,6 +252,11 @@ export class KolInputRadio implements ComponentApi {
 	@Watch('_id')
 	public validateId(value?: string): void {
 		this.controller.validateId(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
 	}
 
 	@Watch('_list')
