@@ -51,6 +51,7 @@ export class KolInputDate implements ComponentApi {
 					_hint={this._hint}
 					_icon={this._icon}
 					_id={this._id}
+					_label={this._label}
 					_list={this._list}
 					_max={this.state._max}
 					_min={this.state._min}
