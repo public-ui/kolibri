@@ -1,9 +1,13 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.2
-    version: 1.5.2
+    specifier: 1.5.3
+    version: 1.5.3
   rimraf:
     specifier: 3.0.2
     version: 3.0.2
@@ -16,8 +20,8 @@ packages:
       adopted-style-sheets: 1.0.2
     dev: true
 
-  /@babel/runtime@7.21.5:
-    resolution: {integrity: sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==}
+  /@babel/runtime@7.22.3:
+    resolution: {integrity: sha512-XsDuspWKLUsxwCp6r7EhsExHtYfbe5oAGQ19kqngTdCPUoPQzOPdUbD/pB9PJiwb2ptYKQDjSJT3R6dC+EPqfQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
@@ -33,17 +37,17 @@ packages:
       '@floating-ui/core': 1.2.6
     dev: true
 
-  /@public-ui/components@1.5.2:
-    resolution: {integrity: sha512-izo59SzDJhzMUqjOxPoR5G+uMJpFF3CDl3dPH63UpP1HzpW7ZQ902B8AzsA8rYQYkiPrpuG0Z55JLAqIAnXDrg==}
+  /@public-ui/components@1.5.3:
+    resolution: {integrity: sha512-+ZPcFmFygC7O1JLt8T3JtWZwqoEXrp56Oi5zKwqX0a5LZdMUJjWpQHrH/mfQN9kmocb073Mkxtm6BLZsgc1Jxg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.8
-      '@public-ui/schema': 1.5.2
+      '@public-ui/schema': 1.5.3
       i18next: 22.5.0
     dev: true
 
-  /@public-ui/schema@1.5.2:
-    resolution: {integrity: sha512-swKTxifw1/8FHxLIffV0UWC66qoQnPM0qKwSeAAaaQyGa8pabvttfU06j4aAoSjVBhjaM3QLxoIKcc7eCuLGPg==}
+  /@public-ui/schema@1.5.3:
+    resolution: {integrity: sha512-ohcsD0aAG+3yyonFSGdEd0tUF7zr599YDpvqQBkkKO9SUCBbF3T0HrspG+JAbWVkBGRR4qY+xMt2zuqTtCkeDQ==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true
@@ -87,7 +91,7 @@ packages:
   /i18next@22.5.0:
     resolution: {integrity: sha512-sqWuJFj+wJAKQP2qBQ+b7STzxZNUmnSxrehBCCj9vDOW9RDYPfqCaK1Hbh2frNYQuPziz6O2CGoJPwtzY3vAYA==}
     dependencies:
-      '@babel/runtime': 7.21.5
+      '@babel/runtime': 7.22.3
     dev: true
 
   /inflight@1.0.6:
