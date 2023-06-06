@@ -69,11 +69,7 @@ export class KolInputNumber implements ComponentApi {
 					_smartButton={this.state._smartButton}
 					_touched={this.state._touched}
 				>
-					{/* INFO: span is needed! */}
-					<span slot="label">
-						{/* INFO: label comes with any html tag or nothing! */}
-						{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<input
 						ref={this.catchRef}
 						title=""

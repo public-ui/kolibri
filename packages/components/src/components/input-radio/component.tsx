@@ -44,7 +44,11 @@ export class KolInputRadio implements ComponentApi {
 					}}
 				>
 					<legend class="block w-full mb-1 leading-normal">
-						<span>{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
+						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
+						<span>
+							{/* INFO: label comes with any html tag or as plain text! */}
+							{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
+						</span>
 					</legend>
 					{this.state._list.map((option, index) => {
 						/**
