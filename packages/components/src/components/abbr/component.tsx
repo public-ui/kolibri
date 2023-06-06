@@ -22,7 +22,8 @@ export class KolAbbr implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<abbr aria-labelledby={this.nonce} role="definition" title={this.state._title}>
+				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._title}>
 					<span title="">
 						<slot />
 					</span>
