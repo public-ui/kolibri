@@ -14,7 +14,7 @@ export const getAbbrHtml = (props: Props): string => {
 <kol-abbr>
   <mock:shadow-root>
     <abbr aria-labelledby="nonce" role="definition" tabindex="0" ${typeof props._title === 'string' ? ` title="${props._title}"` : ''}>
-      <span tabindex="0">
+      <span>
         <slot />
       </span>
     </abbr>
