@@ -42,8 +42,9 @@ ELEMENTS.tags.forEach((tag) => {
 	if (BLACKLIST.indexOf(tag.name) === -1) {
 		const clearedName = tag.name.replace('kol-', '');
 		const COMPONENT = {
-			name: clearedName,
-			openUIName: pascalCase(clearedName),
+			// name: clearedName,
+			// openUIName: pascalCase(clearedName),
+			name: pascalCase(clearedName),
 			definition: tag.description,
 			url: `https://public-ui.github.io/docs/components/${clearedName}`,
 			anatomy: [],
@@ -51,8 +52,9 @@ ELEMENTS.tags.forEach((tag) => {
 		};
 		tag.attributes.forEach((attribute) => {
 			COMPONENT.concepts.push({
-				name: attribute.name,
-				openUIName: removeUnderscore(attribute.name),
+				// name: attribute.name,
+				// openUIName: removeUnderscore(attribute.name),
+				name: removeUnderscore(attribute.name),
 				description: attribute.description,
 			});
 		});

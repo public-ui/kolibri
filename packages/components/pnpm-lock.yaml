@@ -12,8 +12,8 @@ dependencies:
     specifier: 1.2.9
     version: 1.2.9
   '@public-ui/schema':
-    specifier: 1.5.3
-    version: 1.5.3
+    specifier: 1.6.0-rc.0
+    version: 1.6.0-rc.0
   i18next:
     specifier: 22.5.0
     version: 22.5.0
@@ -1757,8 +1757,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/schema@1.5.3:
-    resolution: {integrity: sha512-ohcsD0aAG+3yyonFSGdEd0tUF7zr599YDpvqQBkkKO9SUCBbF3T0HrspG+JAbWVkBGRR4qY+xMt2zuqTtCkeDQ==}
+  /@public-ui/schema@1.6.0-rc.0:
+    resolution: {integrity: sha512-KNrhQydXNljfw08EB1TYi3bdvdlqyAhmgaa1pw7i2196fpiqfMZ2dzkAYnySpsryFxdL7o5kPTG8bdhy9qzbhw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: false

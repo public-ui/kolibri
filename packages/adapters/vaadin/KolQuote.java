@@ -12,7 +12,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
  */
 
 @Tag("kol-quote")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-quote")
 public class KolQuote extends Component {
 	/**
