@@ -20,6 +20,7 @@ export type OptionalInputProps<T> = {
 	min: T;
 	name: string;
 	on: InputTypeOnDefault;
+	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
 	smartButton: ButtonProps;

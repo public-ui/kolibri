@@ -852,6 +852,10 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
+          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+         */
+        "_placeholder"?: string;
+        /**
           * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */
         "_readOnly"?: boolean;
@@ -3639,6 +3643,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
+        /**
+          * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
+         */
+        "_placeholder"?: string;
         /**
           * Setzt das Eingabefeld in den schreibgeschützten Modus.
          */

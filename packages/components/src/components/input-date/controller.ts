@@ -1,0 +1,212 @@
+import { Generic } from '@a11y-ui/core';
+import { Stringified } from '../../types/common';
+import { InputNumberType } from '../../types/input/control/number';
+import { Iso8601 } from '../../types/input/iso8601';
+import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { setState, watchBoolean, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { InputIconController } from '../@deprecated/input/controller-icon';
+import { Props, Watches } from './types';
+
+export class InputDateController extends InputIconController implements Watches {
+	// test: https://regex101.com/r/NTVh4L/1
+	private static readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
+	private static readonly isoLocalDateTimeRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])[T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
+	private static readonly isoMonthRegex = /^\d{4}-([0]\d|1[0-2])/;
+	private static readonly isoTimeRegex = /^[0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
+	private static readonly isoWeekRegex = /^\d{4}-W(?:[0-4]\d|5[0-3])$/;
+
+	private static readonly DEFAULT_MAX_DATE = new Date(9999, 11, 31, 23, 59, 59);
+
+	protected readonly component: Generic.Element.Component & Props;
+
+	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
+		super(component, name, host);
+		this.component = component;
+	}
+
+	public validateAutoComplete(value?: InputTypeOnOff): void {
+		watchValidator(
+			this.component,
+			'_autoComplete',
+			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
+			new Set(['on | off']),
+			value
+		);
+	}
+
+	public validateList(value?: Stringified<string[]>): void {
+		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
+	}
+
+	private tryParseToString(value?: Iso8601 | Date | null, defaultValue?: Date): string | null | undefined {
+		const v: Iso8601 | Date | undefined = value ?? defaultValue;
+		if (typeof v === 'string') {
+			return v;
+		}
+		if (typeof v === 'object' && v instanceof Date) {
+			switch (this.component._type) {
+				case 'date':
+					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}`;
+				case 'datetime-local':
+					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}T${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+				case 'month':
+					return `${v.getFullYear()}-${v.getMonth() + 1}`;
+				case 'time':
+					const step = this.component._step;
+					// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#using_the_step_attribute
+					if (step === undefined || (typeof step === 'string' && step === '60') || (typeof step === 'number' && step === 60)) {
+						return `${v.getHours()}:${v.getMinutes()}`;
+					} else {
+						return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
+					}
+				case 'week':
+					throw new Error('Auto convert to week is not supported!');
+			}
+		}
+		if (value === null) {
+			return null;
+		}
+		return undefined;
+	}
+
+	private validateDateString(value: string): boolean {
+		switch (this.component._type) {
+			case 'date':
+				return InputDateController.isoDateRegex.test(value);
+			case 'datetime-local':
+				return InputDateController.isoLocalDateTimeRegex.test(value);
+			case 'month':
+				return InputDateController.isoMonthRegex.test(value);
+			case 'time':
+				return InputDateController.isoTimeRegex.test(value);
+			case 'week':
+				return InputDateController.isoWeekRegex.test(value);
+			default:
+				return false;
+		}
+	}
+
+	private readonly validateIso8601 = (propName: string, value?: Date | Iso8601 | null, afterPatch?: (v: string) => void) => {
+		return watchValidator(
+			this.component,
+			propName,
+			(value): boolean => value === undefined || value == null || value === '' || this.validateDateString(value),
+			new Set(['Date', 'string{ISO-8601}']),
+			this.tryParseToString(value),
+			{
+				hooks: {
+					afterPatch: (value) => {
+						if (typeof value === 'string' && afterPatch) {
+							afterPatch(value);
+						}
+					},
+				},
+			}
+		);
+	};
+
+	protected onChange(event: Event): void {
+		super.onChange(event);
+
+		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
+		if (!!(event.target as HTMLInputElement).value !== !!this.component._value) {
+			this.component._value = (event.target as HTMLInputElement).value as Iso8601;
+		}
+	}
+
+	public validateMax(value?: Iso8601 | Date): void {
+		watchValidator(
+			this.component,
+			'_max',
+			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
+			new Set(['Iso8601', 'Date']),
+			this.tryParseToString(
+				value,
+				this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local'
+					? InputDateController.DEFAULT_MAX_DATE
+					: undefined
+			)
+		);
+	}
+
+	public validateMin(value?: Iso8601 | Date): void {
+		watchValidator(
+			this.component,
+			'_min',
+			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
+			new Set(['Iso8601', 'Date']),
+			this.tryParseToString(value)
+		);
+	}
+
+	public validateOn(value?: InputTypeOnDefault) {
+		setState(this.component, '_on', {
+			...value,
+			onChange: (e: Event, v: unknown) => {
+				// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
+				if (!!v !== !!this.component._value) {
+					this.component._value = v as Iso8601;
+				}
+
+				if (value?.onChange) {
+					value.onChange(e, v);
+				}
+			},
+		});
+	}
+
+	public validatePlaceholder(value?: string): void {
+		watchString(this.component, '_placeholder', value);
+	}
+
+	public validateReadOnly(value?: boolean): void {
+		watchBoolean(this.component, '_readOnly', value);
+	}
+
+	public validateRequired(value?: boolean): void {
+		watchBoolean(this.component, '_required', value);
+	}
+
+	public validateStep(value?: number): void {
+		watchNumber(this.component, '_step', value);
+	}
+
+	public validateType(value?: InputNumberType): void {
+		watchValidator(
+			this.component,
+			'_type',
+			(value): boolean =>
+				typeof value === 'string' &&
+				(value === 'date' || value === 'datetime-local' || value === 'month' || value === 'number' || value === 'time' || value === 'week'),
+			new Set(['String {date, datetime-local, month, number, time, week}']),
+			value
+		);
+	}
+
+	public validateValue(value?: Iso8601 | Date | null): void {
+		this.validateValueEx(value);
+	}
+
+	/**
+	 * Overload of validate value. Extends by an after patch callback function.
+	 */
+	public validateValueEx(value?: Iso8601 | Date | null, afterPatch?: (v: string) => void): void {
+		this.validateIso8601('_value', value, afterPatch);
+		this.setFormAssociatedValue(this.component.state._value as string);
+	}
+
+	public componentWillLoad(): void {
+		super.componentWillLoad();
+		this.validateAutoComplete(this.component._autoComplete);
+		this.validateMax(this.component._max);
+		this.validateMin(this.component._min);
+		this.validateLabel(this.component._label);
+		this.validateList(this.component._list);
+		this.validateOn(this.component._on);
+		this.validateReadOnly(this.component._readOnly);
+		this.validateRequired(this.component._required);
+		this.validateStep(this.component._step);
+		this.validateType(this.component._type);
+		this.validateValue(this.component._value);
+	}
+}
