@@ -15,8 +15,8 @@ devDependencies:
     specifier: 13.4.0
     version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
   '@public-ui/components':
-    specifier: 1.5.3
-    version: 1.5.3
+    specifier: 1.6.0-rc.0
+    version: 1.6.0-rc.0
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -313,8 +313,8 @@ packages:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
     dev: true
 
-  /@floating-ui/dom@1.2.8:
-    resolution: {integrity: sha512-XLwhYV90MxiHDq6S0rzFZj00fnDM+A1R9jhSioZoMsa7G0Q0i+Q4x40ajR8FHSdYDE1bgjG45mIWe6jtv9UPmg==}
+  /@floating-ui/dom@1.2.9:
+    resolution: {integrity: sha512-sosQxsqgxMNkV3C+3UqTS6LxP7isRLwX8WMepp843Rb3/b0Wz8+MdUkxJksByip3C2WwLugLHN1b4ibn//zKwQ==}
     dependencies:
       '@floating-ui/core': 1.2.6
     dev: true
@@ -353,17 +353,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.5.3:
-    resolution: {integrity: sha512-+ZPcFmFygC7O1JLt8T3JtWZwqoEXrp56Oi5zKwqX0a5LZdMUJjWpQHrH/mfQN9kmocb073Mkxtm6BLZsgc1Jxg==}
+  /@public-ui/components@1.6.0-rc.0:
+    resolution: {integrity: sha512-b6pQe1ZbbZEfnQKjYfQNLQ9CJCgGErqu6V4e78uQfrvjEn3O/oe1LzyGrkRFhL8lhBOVbZDLUTUad/lJwYiukQ==}
     dependencies:
       '@a11y-ui/core': 1.0.2
-      '@floating-ui/dom': 1.2.8
-      '@public-ui/schema': 1.5.3
+      '@floating-ui/dom': 1.2.9
+      '@public-ui/schema': 1.6.0-rc.0
       i18next: 22.5.0
     dev: true
 
-  /@public-ui/schema@1.5.3:
-    resolution: {integrity: sha512-ohcsD0aAG+3yyonFSGdEd0tUF7zr599YDpvqQBkkKO9SUCBbF3T0HrspG+JAbWVkBGRR4qY+xMt2zuqTtCkeDQ==}
+  /@public-ui/schema@1.6.0-rc.0:
+    resolution: {integrity: sha512-KNrhQydXNljfw08EB1TYi3bdvdlqyAhmgaa1pw7i2196fpiqfMZ2dzkAYnySpsryFxdL7o5kPTG8bdhy9qzbhw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true

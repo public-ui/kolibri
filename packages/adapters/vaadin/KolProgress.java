@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-progress")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
 	/**
@@ -101,5 +101,23 @@ public class KolProgress extends Component {
 	 */
 	public double getValue() {
 		return getElement().getProperty("_value", null);
+	}
+
+	/**
+	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+	 *
+	 * @param value String
+	 */
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value);
+	}
+
+	/**
+	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+	 *
+	 * @return String
+	 */
+	public String getVariant() {
+		return getElement().getProperty("_variant", null);
 	}
 }
