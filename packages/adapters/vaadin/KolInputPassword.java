@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-password")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-input-password")
 public class KolInputPassword extends Component {
 	/**
@@ -173,6 +173,42 @@ public class KolInputPassword extends Component {
 	 */
 	public String getId() {
 		return getElement().getProperty("_id", null);
+	}
+
+	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+- Button -> label text
+- Heading -> headline text
+- Input, Select und Textarea -> label text
+- Summary -> summary text
+- Table -> caption text
+- etc.
+
+Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
+- Button -> label text
+- Heading -> headline text
+- Input, Select und Textarea -> label text
+- Summary -> summary text
+- Table -> caption text
+- etc.
+
+Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
+wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 *
+	 * @return String
+	 */
+	public String getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**

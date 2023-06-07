@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.5.3)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.0)
   '@public-ui/components':
-    specifier: 1.5.3
-    version: 1.5.3
+    specifier: 1.6.0-rc.0
+    version: 1.6.0-rc.0
   '@public-ui/react':
-    specifier: 1.5.3
-    version: 1.5.3(@public-ui/components@1.5.3)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.6.0-rc.0
+    version: 1.6.0-rc.0(@public-ui/components@1.6.0-rc.0)(react-dom@18.2.0)(react@18.2.0)
   '@public-ui/themes':
-    specifier: 1.5.3
-    version: 1.5.3(@public-ui/components@1.5.3)
+    specifier: 1.6.0-rc.0
+    version: 1.6.0-rc.0(@public-ui/components@1.6.0-rc.0)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -780,8 +780,8 @@ packages:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
     dev: false
 
-  /@floating-ui/dom@1.2.8:
-    resolution: {integrity: sha512-XLwhYV90MxiHDq6S0rzFZj00fnDM+A1R9jhSioZoMsa7G0Q0i+Q4x40ajR8FHSdYDE1bgjG45mIWe6jtv9UPmg==}
+  /@floating-ui/dom@1.2.9:
+    resolution: {integrity: sha512-sosQxsqgxMNkV3C+3UqTS6LxP7isRLwX8WMepp843Rb3/b0Wz8+MdUkxJksByip3C2WwLugLHN1b4ibn//zKwQ==}
     dependencies:
       '@floating-ui/core': 1.2.6
     dev: false
@@ -999,21 +999,21 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.5.3):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.0):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.5.3
+      '@public-ui/components': 1.6.0-rc.0
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.5.3:
-    resolution: {integrity: sha512-+ZPcFmFygC7O1JLt8T3JtWZwqoEXrp56Oi5zKwqX0a5LZdMUJjWpQHrH/mfQN9kmocb073Mkxtm6BLZsgc1Jxg==}
+  /@public-ui/components@1.6.0-rc.0:
+    resolution: {integrity: sha512-b6pQe1ZbbZEfnQKjYfQNLQ9CJCgGErqu6V4e78uQfrvjEn3O/oe1LzyGrkRFhL8lhBOVbZDLUTUad/lJwYiukQ==}
     dependencies:
       '@a11y-ui/core': 1.0.2
-      '@floating-ui/dom': 1.2.8
-      '@public-ui/schema': 1.5.3
+      '@floating-ui/dom': 1.2.9
+      '@public-ui/schema': 1.6.0-rc.0
       i18next: 22.5.0
     dev: false
 
@@ -1024,14 +1024,14 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/react@1.5.3(@public-ui/components@1.5.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-e96rRDsXF/rt9UNuFJ6j5OrWeo5UfymFfSmO+uZVfk006hO0rmzG4n7DeJAGwSIMl3nDWGX11c7N+NG+17vEEQ==}
+  /@public-ui/react@1.6.0-rc.0(@public-ui/components@1.6.0-rc.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-XItHHZaungMiVc3H6oS+5y6BwmI69HFuq2wSMWgD0Qytn8ojcacDglmq9fcoMb4R6hYTPEVMTP4uo33jcVyo2w==}
     peerDependencies:
-      '@public-ui/components': 1.5.3
+      '@public-ui/components': 1.6.0-rc.0
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.5.3
+      '@public-ui/components': 1.6.0-rc.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -1042,18 +1042,18 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.5.3:
-    resolution: {integrity: sha512-ohcsD0aAG+3yyonFSGdEd0tUF7zr599YDpvqQBkkKO9SUCBbF3T0HrspG+JAbWVkBGRR4qY+xMt2zuqTtCkeDQ==}
+  /@public-ui/schema@1.6.0-rc.0:
+    resolution: {integrity: sha512-KNrhQydXNljfw08EB1TYi3bdvdlqyAhmgaa1pw7i2196fpiqfMZ2dzkAYnySpsryFxdL7o5kPTG8bdhy9qzbhw==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: false
 
-  /@public-ui/themes@1.5.3(@public-ui/components@1.5.3):
-    resolution: {integrity: sha512-hRmmK6qzwlROCKS2iV5s+VFo3JvBPZoCgogzg1oa8jua0n+ORWyLRiwv+/b/76UWc1L/MbsVnz2KrtKGaS8O7g==}
+  /@public-ui/themes@1.6.0-rc.0(@public-ui/components@1.6.0-rc.0):
+    resolution: {integrity: sha512-dDZ3QOex/lFLgHilKk+cy7vTzyCwbjs6F6RzeDIZoGiidend806IJ4/mBVKLZoO0OUus3O/OjBbxMoJ2gcBVpw==}
     peerDependencies:
-      '@public-ui/components': 1.5.3
+      '@public-ui/components': 1.6.0-rc.0
     dependencies:
-      '@public-ui/components': 1.5.3
+      '@public-ui/components': 1.6.0-rc.0
     dev: false
 
   /@remix-run/router@1.6.2:

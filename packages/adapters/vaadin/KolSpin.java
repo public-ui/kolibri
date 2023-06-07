@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-spin")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
 @JsModule("@public-ui/components/dist/components/kol-spin")
 public class KolSpin extends Component {
 	/**
@@ -29,5 +29,23 @@ public class KolSpin extends Component {
 	 */
 	public String getShow() {
 		return getElement().getProperty("_show", null);
+	}
+
+	/**
+	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+	 *
+	 * @param value String
+	 */
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value);
+	}
+
+	/**
+	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+	 *
+	 * @return String
+	 */
+	public String getVariant() {
+		return getElement().getProperty("_variant", null);
 	}
 }
