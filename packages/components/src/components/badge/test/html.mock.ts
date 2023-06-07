@@ -20,7 +20,7 @@ export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
 	return `<kol-badge${props._iconOnly ? ' _icon-only' : ''}${additionalAttrs}>
 	<mock:shadow-root>
 		<span style="background-color: ${state._color.backgroundColor}; color: ${state._color.foregroundColor as string};">
-			${getSpanWcHtml(props)}
+			${getSpanWcHtml(props, undefined, ' id="nonce"')}
 		</span>
 	</mock:shadow-root>
 </kol-badge>`;
