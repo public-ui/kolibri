@@ -8,6 +8,7 @@ import {
 	KolBreadcrumb,
 	KolButton,
 	KolButtonGroup,
+	KolButtonLink,
 	KolCard,
 	KolDetails,
 	KolHeading,
@@ -24,7 +25,7 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolLink,
-	KolButtonLink,
+	KolLinkButton,
 	KolLinkGroup,
 	KolLogo,
 	KolModal,
@@ -39,11 +40,10 @@ import {
 	KolTextarea,
 	KolToast,
 	KolVersion,
-	KolLinkButton,
 } from '@public-ui/solid';
 import { Component } from 'solid-js';
-import { DATA, Zeiten } from './data';
 import { COUNTRIES } from './countries';
+import { DATA, Zeiten } from './data';
 
 // https://css-tricks.com/snippets/javascript/random-hex-color/
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
@@ -139,6 +139,14 @@ const NAV_LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_icon: 'codicon codicon-pie-chart',
 		_label: 'Navigationspunkt nur Text',
+	},
+	{
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt Aktiv',
+		_active: true,
+		_on: {
+			onClick: console.log,
+		},
 	},
 	{
 		_children: NAV_CHILDREN,
@@ -1440,6 +1448,12 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-SELECT': () => (
 		<div class="grid gap-6">
+			<KolSelect _id="" _list={STATUS_OPTIONS} _error={ERROR_MSG}>
+				Anrede
+			</KolSelect>
+			<KolSelect _id="" _disabled _list={STATUS_OPTIONS} _error={ERROR_MSG}>
+				Anrede
+			</KolSelect>
 			<KolSelect
 				_id=""
 				_list={STATUS_OPTIONS}
