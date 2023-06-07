@@ -8,6 +8,7 @@ import { ColorPair, handleColorChange, PropColor, validateColor } from '../../ty
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
 import { validateLabel } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -41,6 +42,7 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export class KolBadge implements Props {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
+	private readonly id = nonce();
 
 	public render(): JSX.Element {
 		return (
@@ -54,9 +56,10 @@ export class KolBadge implements Props {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}></kol-span-wc>
+					<kol-span-wc id={this.id} _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}></kol-span-wc>
 					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 						<kol-button-wc
+							_ariaControls={this.id}
 							_ariaLabel={this.state._smartButton._ariaLabel}
 							_customClass={this.state._smartButton._customClass}
 							_disabled={this.state._smartButton._disabled}
