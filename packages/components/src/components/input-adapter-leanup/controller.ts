@@ -5,6 +5,16 @@ import { Props, Watches } from './types';
 
 const EXPERIMENTAL_MODE = getExperimalMode();
 
+function syncElementAttribute(qualifiedName: string, element?: HTMLElement, value?: string | number | boolean) {
+	if (EXPERIMENTAL_MODE) {
+		if (typeof value === 'boolean' || typeof value === 'number' || typeof value === 'string') {
+			element?.setAttribute(qualifiedName, `${value as string}`);
+		} else {
+			element?.removeAttribute(qualifiedName);
+		}
+	}
+}
+
 export class ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 	protected readonly name: string;
@@ -35,17 +45,13 @@ export class ControlledInputController implements Watches {
 	 * @see https://github.com/public-ui/kolibri/discussions/2821
 	 */
 	protected readonly syncFormAssociatedName = () => {
-		if (EXPERIMENTAL_MODE) {
-			this.formAssociated?.setAttribute('id', this.component.state._id as string);
-			this.formAssociated?.setAttribute('name', this.component.state._name as string);
-			this.formAssociated?.setAttribute('value', this.component.state._value as string);
-		}
+		syncElementAttribute('id', this.formAssociated, this.component.state._id as string);
+		syncElementAttribute('name', this.formAssociated, this.component.state._name as string);
+		syncElementAttribute('value', this.formAssociated, this.component.state._value as string);
 	};
 
 	public readonly setFormAssociatedValue = (value: string | null = null) => {
-		if (EXPERIMENTAL_MODE) {
-			this.formAssociated?.setAttribute('value', value as string);
-		}
+		syncElementAttribute('value', this.formAssociated, value as string);
 	};
 
 	public validateAlert(value?: boolean): void {
