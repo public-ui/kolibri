@@ -1199,6 +1199,52 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	kol-input > kol-alert.error {
 		order: 3;
 	}`,
+	'KOL-INPUT-DATE': `kol-input {
+		gap: var(--gap);
+	}
+	kol-input .input {
+		border-color: var(--color-grau-30);
+		border-width: 2px;
+		border-style: solid;
+		padding: 0px 0.75em;
+		gap: var(--gap);
+		overflow: hidden;
+	}
+	kol-input .input:focus-within,
+	kol-input .input:hover {
+		border-color: var(--color-grau-60);
+	}
+	kol-input:not(.select, .textarea) .input {
+		height: calc(var(--a11y-min-size) - 4px);
+	}
+	kol-input:not(.range) .input :is(input, select, textarea) {
+		background-color: white;
+		border: 0;
+	}
+	kol-input .input input[type="file"] {
+		padding-top: calc(0.5em + 2px);
+	}
+	kol-input > label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+		margin-bottom: 0.25rem;
+	}
+	kol-input > label > span {
+		color: var(--default-letter);
+	}
+	kol-input > div.input {
+		border-radius: 0.25rem;
+		order: 2;
+	}
+	kol-input > span.hint {
+		color: var(--color-grau-60);
+		font-style: italic;
+		order: 4;
+		font-size: 0.8rem;
+	}
+	kol-input > kol-alert.error {
+		order: 3;
+	}`,
 	'KOL-INPUT-TEXT': `kol-input {
 		gap: var(--gap);
 	}

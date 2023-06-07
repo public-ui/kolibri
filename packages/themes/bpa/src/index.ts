@@ -737,6 +737,96 @@ export const BPA = KoliBri.createTheme('bpa', {
 	kol-button-wc > button:focus {
 		outline: none;
 	}`,
+	'KOL-INPUT-DATE': `:host label {
+		color: var(--color-darkblue);
+		font-size: 0.9375rem;
+	}
+	@media (min-width: 37.5rem) {
+		:host label {
+			font-size: 1.125rem;
+		}
+	} /* Move label over input as placeholder */
+	:host(:not(.has-value)) kol-input:has(input[type="number"]) label {
+		transition: all 0.3s ease-in-out 0ms;
+		transform-origin: 0;
+	}
+	:host(:not(.has-value)) kol-input:has(input[type="number"]):not(:focus-within) label {
+		transform: translateY(1.9375rem) scale(1.3333333333);
+		cursor: text;
+	}
+	:host(:not(.has-value)) kol-input:has(input[type="number"]):not(:focus-within):has(div.icon-left) label {
+		transform: translateX(2.5rem) translateY(1.9375rem) scale(1.3333333333);
+	}
+	:host(:not(.has-value)) kol-input:not(:focus-within) label,
+	input::placeholder {
+		color: var(--color-darkgray);
+	}
+	:host([_error]) kol-input:not(:focus-within) label {
+		color: var(--color-red);
+	}
+	span.hint {
+		order: 1;
+	}
+	kol-alert {
+		order: 2;
+	}
+	:host([_error]) label {
+		color: var(--color-red);
+	}
+	div.input {
+		border-bottom: 1px solid var(--color-lightgray);
+	}
+	div.input:focus-within {
+		border-bottom: 1px solid var(--color-darkgray);
+	}
+	div.input input {
+		border: none;
+		background-color: var(--color-white);
+		outline: none;
+		height: 2.5rem;
+		font-size: 1.5rem;
+		padding: 0;
+	}
+	kol-input:has(label:not([hidden])) div.input input::placeholder {
+		color: transparent;
+	}
+	kol-alert {
+		margin-top: 1.5rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		padding: 0.625rem 1.125rem;
+		font-family: var(--font);
+		font-size: 1rem;
+		line-height: 1.125rem;
+		border: none;
+		border-radius: 0.125rem;
+		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+	}
+	kol-button-wc > button > kol-span-wc > span {
+		gap: 0.625rem;
+	}
+	kol-button-wc > button > kol-span-wc {
+		background-color: var(--color-white);
+		color: var(--color-black);
+	}
+	kol-button-wc > button > kol-span-wc kol-icon {
+		color: var(--color-blue);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc kol-icon {
+		color: var(--color-white);
+	}
+	kol-button-wc > button:is(:hover, :focus) > kol-span-wc {
+		cursor: pointer;
+		background-color: var(--color-blue);
+		color: var(--color-white);
+	}
+	kol-button-wc > button:focus > kol-span-wc {
+		outline: 1px dotted var(--color-black);
+		border: none;
+	}
+	kol-button-wc > button:focus {
+		outline: none;
+	}`,
 	'KOL-INPUT-COLOR': `:host label {
 		color: var(--color-darkblue);
 		font-size: 0.9375rem;
