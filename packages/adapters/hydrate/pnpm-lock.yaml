@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.0
-    version: 1.6.0-rc.0
+    specifier: 1.6.0-rc.1
+    version: 1.6.0-rc.1
   rimraf:
     specifier: 3.0.2
     version: 3.0.2
@@ -37,17 +37,17 @@ packages:
       '@floating-ui/core': 1.2.6
     dev: true
 
-  /@public-ui/components@1.6.0-rc.0:
-    resolution: {integrity: sha512-b6pQe1ZbbZEfnQKjYfQNLQ9CJCgGErqu6V4e78uQfrvjEn3O/oe1LzyGrkRFhL8lhBOVbZDLUTUad/lJwYiukQ==}
+  /@public-ui/components@1.6.0-rc.1:
+    resolution: {integrity: sha512-kNCc/di+jU61nqwFPg2nGhskShiB3zsnqzmXaTqqAiFdgcLNyQg30Qk+x+Hvg9qlndL/3Nt0EFOgFqkovJdVWg==}
     dependencies:
       '@a11y-ui/core': 1.0.2
       '@floating-ui/dom': 1.2.9
-      '@public-ui/schema': 1.6.0-rc.0
+      '@public-ui/schema': 1.6.0-rc.1
       i18next: 22.5.0
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.0:
-    resolution: {integrity: sha512-KNrhQydXNljfw08EB1TYi3bdvdlqyAhmgaa1pw7i2196fpiqfMZ2dzkAYnySpsryFxdL7o5kPTG8bdhy9qzbhw==}
+  /@public-ui/schema@1.6.0-rc.1:
+    resolution: {integrity: sha512-R75Gt03jaVtlTTCdJBhjmwBy4u6hMxHdnjQ2+DQaeubbfsq4h3v5jwLSRXVojyVLHc34Wi3Xvln5Eu6zUHF3ug==}
     dependencies:
       '@a11y-ui/core': 1.0.2
     dev: true

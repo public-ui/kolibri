@@ -37,7 +37,7 @@ packages:
   /@a11y-ui/core@1.0.2:
     resolution: {integrity: sha512-RWGduw5+d/QgNfJogkuJPWvGxmWfa1qFleoAaBlt6UIPOaqP1eXY5ch06s+5yWfG93WYY2Otm3XQBV0RAGWGlA==}
     dependencies:
-      adopted-style-sheets: 1.0.2
+      adopted-style-sheets: 1.0.3
     dev: false
 
   /@ampproject/remapping@2.2.1:
@@ -813,8 +813,8 @@ packages:
     hasBin: true
     dev: true
 
-  /adopted-style-sheets@1.0.2:
-    resolution: {integrity: sha512-3+0pE9cocYLYuYa47zHzmAfeEPOaT1IpilwdPiLaow+YKJ2C9usVAcuDRsZqEJWsWIqJVALPL+FXeE0TGOvRyw==}
+  /adopted-style-sheets@1.0.3:
+    resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
     dependencies:
       loglevel: 1.8.1
     dev: false
