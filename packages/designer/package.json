@@ -58,7 +58,7 @@
 		"@playwright/test": "1.34.3",
 		"@types/prettier": "2.7.3",
 		"@unocss/preset-mini": "0.53.0",
-		"@unocss/webpack": "0.53.0",
+		"@unocss/webpack": "0.53.1",
 		"chromedriver": "114.0.1",
 		"cpy-cli": "4.2.0",
 		"depcheck": "1.4.3",
