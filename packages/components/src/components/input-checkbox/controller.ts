@@ -46,6 +46,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 
 	public validateValue(value?: string): void {
 		setState(this.component, '_value', value);
+		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
 	public validateVariant(value?: InputCheckboxVariant): void {

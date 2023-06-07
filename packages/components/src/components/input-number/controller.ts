@@ -128,6 +128,7 @@ export class InputNumberController extends InputIconController implements Watche
 	 */
 	public validateValueEx(value?: number | Iso8601 | null, afterPatch?: (v: string) => void): void {
 		this.validateIso8601('_value', value, afterPatch);
+		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
 	public componentWillLoad(): void {

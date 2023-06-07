@@ -29,6 +29,7 @@ export class InputColorController extends InputIconController implements Watches
 
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
+		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
 	public componentWillLoad(): void {
