@@ -16,24 +16,24 @@ Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. �
  */
 
 @Tag("kol-tooltip")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-tooltip")
 public class KolTooltip extends Component {
 	/**
 	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAlign(final String value) {
+	public void setAlign(final Optional<String> value) {
 		getElement().setProperty("_align", value);
 	}
 
 	/**
 	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAlign() {
+	public Optional<String> getAlign() {
 		return getElement().getProperty("_align", null);
 	}
 
@@ -42,16 +42,16 @@ public class KolTooltip extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setId(final String value) {
+	public void setId(final Optional<String> value) {
 		getElement().setProperty("_id", value);
 	}
 
 	/**
 	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getId() {
+	public Optional<String> getId() {
 		return getElement().getProperty("_id", null);
 	}
 
@@ -60,16 +60,16 @@ public class KolTooltip extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final String value) {
+	public void setLabel(final Optional<String> value) {
 		getElement().setProperty("_label", value);
 	}
 
 	/**
 	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLabel() {
+	public Optional<String> getLabel() {
 		return getElement().getProperty("_label", null);
 	}
 }

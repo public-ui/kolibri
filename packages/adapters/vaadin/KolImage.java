@@ -12,7 +12,7 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.
  */
 
 @Tag("kol-image")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-image")
 public class KolImage extends Component {
 	/**
@@ -20,52 +20,52 @@ public class KolImage extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setAlt(final String value) {
+	public void setAlt(final Optional<String> value) {
 		getElement().setProperty("_alt", value);
 	}
 
 	/**
 	 * Setzt den alternativen Text.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAlt() {
+	public Optional<String> getAlt() {
 		return getElement().getProperty("_alt", null);
 	}
 
 	/**
 	 * Setzt den Lademodus.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLoading(final String value) {
+	public void setLoading(final Optional<String> value) {
 		getElement().setProperty("_loading", value);
 	}
 
 	/**
 	 * Setzt den Lademodus.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLoading() {
+	public Optional<String> getLoading() {
 		return getElement().getProperty("_loading", null);
 	}
 
 	/**
 	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setSizes(final String value) {
+	public void setSizes(final Optional<String> value) {
 		getElement().setProperty("_sizes", value);
 	}
 
 	/**
 	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSizes() {
+	public Optional<String> getSizes() {
 		return getElement().getProperty("_sizes", null);
 	}
 
@@ -74,34 +74,34 @@ public class KolImage extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setSrc(final String value) {
+	public void setSrc(final Optional<String> value) {
 		getElement().setProperty("_src", value);
 	}
 
 	/**
 	 * Setzt die Quell-URL des Bildes.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSrc() {
+	public Optional<String> getSrc() {
 		return getElement().getProperty("_src", null);
 	}
 
 	/**
 	 * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setSrcset(final String value) {
+	public void setSrcset(final Optional<String> value) {
 		getElement().setProperty("_srcset", value);
 	}
 
 	/**
 	 * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSrcset() {
+	public Optional<String> getSrcset() {
 		return getElement().getProperty("_srcset", null);
 	}
 }

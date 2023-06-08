@@ -10,114 +10,114 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-progress")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
 	/**
 	 * Setzt die Bezeichnung der Fortschrittsanzeige.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLabel(final String value) {
+	public void setLabel(final Optional<String> value) {
 		getElement().setProperty("_label", value);
 	}
 
 	/**
 	 * Setzt die Bezeichnung der Fortschrittsanzeige.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLabel() {
+	public Optional<String> getLabel() {
 		return getElement().getProperty("_label", null);
 	}
 
 	/**
 	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
 	 *
-	 * @param value double
+	 * @param value String
 	 */
-	public void setMax(final double value) {
+	public void setMax(final Optional<String> value) {
 		getElement().setProperty("_max", value);
 	}
 
 	/**
 	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
 	 *
-	 * @return double
+	 * @return Optional<String>
 	 */
-	public double getMax() {
+	public Optional<String> getMax() {
 		return getElement().getProperty("_max", null);
 	}
 
 	/**
 	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setType(final String value) {
+	public void setType(final Optional<String> value) {
 		getElement().setProperty("_type", value);
 	}
 
 	/**
 	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getType() {
+	public Optional<String> getType() {
 		return getElement().getProperty("_type", null);
 	}
 
 	/**
 	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setUnit(final String value) {
+	public void setUnit(final Optional<String> value) {
 		getElement().setProperty("_unit", value);
 	}
 
 	/**
 	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getUnit() {
+	public Optional<String> getUnit() {
 		return getElement().getProperty("_unit", null);
 	}
 
 	/**
 	 * Gibt an, wie weit die Anzeige fortgeschritten ist.
 	 *
-	 * @param value double
+	 * @param value String
 	 */
-	public void setValue(final double value) {
+	public void setValue(final Optional<String> value) {
 		getElement().setProperty("_value", value);
 	}
 
 	/**
 	 * Gibt an, wie weit die Anzeige fortgeschritten ist.
 	 *
-	 * @return double
+	 * @return Optional<String>
 	 */
-	public double getValue() {
+	public Optional<String> getValue() {
 		return getElement().getProperty("_value", null);
 	}
 
 	/**
 	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setVariant(final String value) {
+	public void setVariant(final Optional<String> value) {
 		getElement().setProperty("_variant", value);
 	}
 
 	/**
 	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getVariant() {
+	public Optional<String> getVariant() {
 		return getElement().getProperty("_variant", null);
 	}
 }

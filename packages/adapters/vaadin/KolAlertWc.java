@@ -10,114 +10,114 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-alert-wc")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-alert-wc")
 public class KolAlertWc extends Component {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAlert(final String value) {
+	public void setAlert(final Optional<String> value) {
 		getElement().setProperty("_alert", value);
 	}
 
 	/**
 	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAlert() {
+	public Optional<String> getAlert() {
 		return getElement().getProperty("_alert", null);
 	}
 
 	/**
 	 * Gibt an, ob der Alert ein Schließen-Icon hat.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHasCloser(final String value) {
+	public void setHasCloser(final Optional<String> value) {
 		getElement().setProperty("_has-closer", value);
 	}
 
 	/**
 	 * Gibt an, ob der Alert ein Schließen-Icon hat.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHasCloser() {
+	public Optional<String> getHasCloser() {
 		return getElement().getProperty("_has-closer", null);
 	}
 
 	/**
 	 * Gibt den Titel der Meldung an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHeading(final String value) {
+	public void setHeading(final Optional<String> value) {
 		getElement().setProperty("_heading", value);
 	}
 
 	/**
 	 * Gibt den Titel der Meldung an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeading() {
+	public Optional<String> getHeading() {
 		return getElement().getProperty("_heading", null);
 	}
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLevel(final String value) {
+	public void setLevel(final Optional<String> value) {
 		getElement().setProperty("_level", value);
 	}
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLevel() {
+	public Optional<String> getLevel() {
 		return getElement().getProperty("_level", null);
 	}
 
 	/**
 	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setType(final String value) {
+	public void setType(final Optional<String> value) {
 		getElement().setProperty("_type", value);
 	}
 
 	/**
 	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getType() {
+	public Optional<String> getType() {
 		return getElement().getProperty("_type", null);
 	}
 
 	/**
 	 * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setVariant(final String value) {
+	public void setVariant(final Optional<String> value) {
 		getElement().setProperty("_variant", value);
 	}
 
 	/**
 	 * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getVariant() {
+	public Optional<String> getVariant() {
 		return getElement().getProperty("_variant", null);
 	}
 }

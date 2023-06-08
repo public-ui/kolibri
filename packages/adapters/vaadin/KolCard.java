@@ -15,24 +15,24 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**
 	 * Macht den Footerbereich der Card sichtbar.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHasFooter(final String value) {
+	public void setHasFooter(final Optional<String> value) {
 		getElement().setProperty("_has-footer", value);
 	}
 
 	/**
 	 * Macht den Footerbereich der Card sichtbar.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHasFooter() {
+	public Optional<String> getHasFooter() {
 		return getElement().getProperty("_has-footer", null);
 	}
 
@@ -41,52 +41,52 @@ public class KolCard extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHeading(final String value) {
+	public void setHeading(final Optional<String> value) {
 		getElement().setProperty("_heading", value);
 	}
 
 	/**
 	 * Gibt die Überschrift der Card an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeading() {
+	public Optional<String> getHeading() {
 		return getElement().getProperty("_heading", null);
 	}
 
 	/**
 	 * Gibt die Überschrift der Card an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHeadline(final String value) {
+	public void setHeadline(final Optional<String> value) {
 		getElement().setProperty("_headline", value);
 	}
 
 	/**
 	 * Gibt die Überschrift der Card an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeadline() {
+	public Optional<String> getHeadline() {
 		return getElement().getProperty("_headline", null);
 	}
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLevel(final String value) {
+	public void setLevel(final Optional<String> value) {
 		getElement().setProperty("_level", value);
 	}
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLevel() {
+	public Optional<String> getLevel() {
 		return getElement().getProperty("_level", null);
 	}
 }

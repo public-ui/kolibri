@@ -12,132 +12,132 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
  */
 
 @Tag("kol-toast")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAlert(final String value) {
+	public void setAlert(final Optional<String> value) {
 		getElement().setProperty("_alert", value);
 	}
 
 	/**
 	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAlert() {
+	public Optional<String> getAlert() {
 		return getElement().getProperty("_alert", null);
 	}
 
 	/**
 	 * Aktiviert das Schließen-Icon.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHasCloser(final String value) {
+	public void setHasCloser(final Optional<String> value) {
 		getElement().setProperty("_has-closer", value);
 	}
 
 	/**
 	 * Aktiviert das Schließen-Icon.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHasCloser() {
+	public Optional<String> getHasCloser() {
 		return getElement().getProperty("_has-closer", null);
 	}
 
 	/**
 	 * Gibt den Titel der Meldung an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHeading(final String value) {
+	public void setHeading(final Optional<String> value) {
 		getElement().setProperty("_heading", value);
 	}
 
 	/**
 	 * Gibt den Titel der Meldung an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeading() {
+	public Optional<String> getHeading() {
 		return getElement().getProperty("_heading", null);
 	}
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLevel(final String value) {
+	public void setLevel(final Optional<String> value) {
 		getElement().setProperty("_level", value);
 	}
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLevel() {
+	public Optional<String> getLevel() {
 		return getElement().getProperty("_level", null);
 	}
 
 	/**
 	 * Gibt an, ob der Toast eingeblendet wird.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setShow(final String value) {
+	public void setShow(final Optional<String> value) {
 		getElement().setProperty("_show", value);
 	}
 
 	/**
 	 * Gibt an, ob der Toast eingeblendet wird.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getShow() {
+	public Optional<String> getShow() {
 		return getElement().getProperty("_show", null);
 	}
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setShowDuration(final String value) {
+	public void setShowDuration(final Optional<String> value) {
 		getElement().setProperty("_show-duration", value);
 	}
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getShowDuration() {
+	public Optional<String> getShowDuration() {
 		return getElement().getProperty("_show-duration", null);
 	}
 
 	/**
 	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setType(final String value) {
+	public void setType(final Optional<String> value) {
 		getElement().setProperty("_type", value);
 	}
 
 	/**
 	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getType() {
+	public Optional<String> getType() {
 		return getElement().getProperty("_type", null);
 	}
 }

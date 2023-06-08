@@ -10,168 +10,168 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-textarea")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-textarea")
 public class KolTextarea extends Component {
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAccessKey(final String value) {
+	public void setAccessKey(final Optional<String> value) {
 		getElement().setProperty("_access-key", value);
 	}
 
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAccessKey() {
+	public Optional<String> getAccessKey() {
 		return getElement().getProperty("_access-key", null);
 	}
 
 	/**
 	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAdjustHeight(final String value) {
+	public void setAdjustHeight(final Optional<String> value) {
 		getElement().setProperty("_adjust-height", value);
 	}
 
 	/**
 	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAdjustHeight() {
+	public Optional<String> getAdjustHeight() {
 		return getElement().getProperty("_adjust-height", null);
 	}
 
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAlert(final String value) {
+	public void setAlert(final Optional<String> value) {
 		getElement().setProperty("_alert", value);
 	}
 
 	/**
 	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAlert() {
+	public Optional<String> getAlert() {
 		return getElement().getProperty("_alert", null);
 	}
 
 	/**
 	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setDisabled(final String value) {
+	public void setDisabled(final Optional<String> value) {
 		getElement().setProperty("_disabled", value);
 	}
 
 	/**
 	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getDisabled() {
+	public Optional<String> getDisabled() {
 		return getElement().getProperty("_disabled", null);
 	}
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setError(final String value) {
+	public void setError(final Optional<String> value) {
 		getElement().setProperty("_error", value);
 	}
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getError() {
+	public Optional<String> getError() {
 		return getElement().getProperty("_error", null);
 	}
 
 	/**
 	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHasCounter(final String value) {
+	public void setHasCounter(final Optional<String> value) {
 		getElement().setProperty("_has-counter", value);
 	}
 
 	/**
 	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHasCounter() {
+	public Optional<String> getHasCounter() {
 		return getElement().getProperty("_has-counter", null);
 	}
 
 	/**
 	 * Versteckt das sichtbare Label des Elements.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHideLabel(final String value) {
+	public void setHideLabel(final Optional<String> value) {
 		getElement().setProperty("_hide-label", value);
 	}
 
 	/**
 	 * Versteckt das sichtbare Label des Elements.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHideLabel() {
+	public Optional<String> getHideLabel() {
 		return getElement().getProperty("_hide-label", null);
 	}
 
 	/**
 	 * Gibt den Hinweistext an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHint(final String value) {
+	public void setHint(final Optional<String> value) {
 		getElement().setProperty("_hint", value);
 	}
 
 	/**
 	 * Gibt den Hinweistext an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHint() {
+	public Optional<String> getHint() {
 		return getElement().getProperty("_hint", null);
 	}
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setId(final String value) {
+	public void setId(final Optional<String> value) {
 		getElement().setProperty("_id", value);
 	}
 
 	/**
 	 * Gibt die technische ID des Eingabefeldes an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getId() {
+	public Optional<String> getId() {
 		return getElement().getProperty("_id", null);
 	}
 
@@ -189,7 +189,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final String value) {
+	public void setLabel(final Optional<String> value) {
 		getElement().setProperty("_label", value);
 	}
 
@@ -205,189 +205,189 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.
 Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
 wenn man das Label mittels dem Expert-Slot überschreiben will.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLabel() {
+	public Optional<String> getLabel() {
 		return getElement().getProperty("_label", null);
 	}
 
 	/**
 	 * Setzt die maximale Zeichenanzahl.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setMaxLength(final String value) {
+	public void setMaxLength(final Optional<String> value) {
 		getElement().setProperty("_max-length", value);
 	}
 
 	/**
 	 * Setzt die maximale Zeichenanzahl.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getMaxLength() {
+	public Optional<String> getMaxLength() {
 		return getElement().getProperty("_max-length", null);
 	}
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setName(final String value) {
+	public void setName(final Optional<String> value) {
 		getElement().setProperty("_name", value);
 	}
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getName() {
+	public Optional<String> getName() {
 		return getElement().getProperty("_name", null);
 	}
 
 	/**
 	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setPlaceholder(final String value) {
+	public void setPlaceholder(final Optional<String> value) {
 		getElement().setProperty("_placeholder", value);
 	}
 
 	/**
 	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getPlaceholder() {
+	public Optional<String> getPlaceholder() {
 		return getElement().getProperty("_placeholder", null);
 	}
 
 	/**
 	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setReadOnly(final String value) {
+	public void setReadOnly(final Optional<String> value) {
 		getElement().setProperty("_read-only", value);
 	}
 
 	/**
 	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getReadOnly() {
+	public Optional<String> getReadOnly() {
 		return getElement().getProperty("_read-only", null);
 	}
 
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setRequired(final String value) {
+	public void setRequired(final Optional<String> value) {
 		getElement().setProperty("_required", value);
 	}
 
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getRequired() {
+	public Optional<String> getRequired() {
 		return getElement().getProperty("_required", null);
 	}
 
 	/**
 	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setResize(final String value) {
+	public void setResize(final Optional<String> value) {
 		getElement().setProperty("_resize", value);
 	}
 
 	/**
 	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getResize() {
+	public Optional<String> getResize() {
 		return getElement().getProperty("_resize", null);
 	}
 
 	/**
 	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setRows(final String value) {
+	public void setRows(final Optional<String> value) {
 		getElement().setProperty("_rows", value);
 	}
 
 	/**
 	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getRows() {
+	public Optional<String> getRows() {
 		return getElement().getProperty("_rows", null);
 	}
 
 	/**
 	 * Gibt an, welchen Tab-Index dieses Input hat.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setTabIndex(final String value) {
+	public void setTabIndex(final Optional<String> value) {
 		getElement().setProperty("_tab-index", value);
 	}
 
 	/**
 	 * Gibt an, welchen Tab-Index dieses Input hat.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTabIndex() {
+	public Optional<String> getTabIndex() {
 		return getElement().getProperty("_tab-index", null);
 	}
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setTouched(final String value) {
+	public void setTouched(final Optional<String> value) {
 		getElement().setProperty("_touched", value);
 	}
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTouched() {
+	public Optional<String> getTouched() {
 		return getElement().getProperty("_touched", null);
 	}
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setValue(final String value) {
+	public void setValue(final Optional<String> value) {
 		getElement().setProperty("_value", value);
 	}
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getValue() {
+	public Optional<String> getValue() {
 		return getElement().getProperty("_value", null);
 	}
 }

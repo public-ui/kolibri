@@ -13,42 +13,42 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
  */
 
 @Tag("kol-popover")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-popover")
 public class KolPopover extends Component {
 	/**
 	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAlignment(final String value) {
+	public void setAlignment(final Optional<String> value) {
 		getElement().setProperty("_alignment", value);
 	}
 
 	/**
 	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAlignment() {
+	public Optional<String> getAlignment() {
 		return getElement().getProperty("_alignment", null);
 	}
 
 	/**
 	 * Öffnet/schließt das Popover.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setShow(final String value) {
+	public void setShow(final Optional<String> value) {
 		getElement().setProperty("_show", value);
 	}
 
 	/**
 	 * Öffnet/schließt das Popover.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getShow() {
+	public Optional<String> getShow() {
 		return getElement().getProperty("_show", null);
 	}
 }
