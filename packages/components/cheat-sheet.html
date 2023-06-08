@@ -330,7 +330,7 @@ noch die Icons ausgegeben.`,
 
 Die **Popover**-Komponente stellt eine Möglichkeit dar zusätzliche Inhalte in ein temporäres Element zu setzen, das, ähnlich wie <kol-link _href="" _label="Tooltip"></kol-link>, um sein Triggerelement angeordnet ist.
 Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).`,
-	props: `_alignment, _show`
+	props: `_align, _show`
 },{
 	name: `progress`,
 	desc: `Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.`,
@@ -682,6 +682,11 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	types: `string`,
 	comps: `quote, table`
 },{
+	name: `_align`,
+	desc: `Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.`,
+	types: `"bottom" | "left" | "right" | "top"`,
+	comps: `popover, tooltip`
+},{
 	name: `_width`,
 	desc: `Setzt die Breite des Modals. (max-width: 100%).`,
 	types: `string`,
@@ -799,7 +804,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 },{
 	name: `_smart-button`,
 	desc: `Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).`,
-	types: `string | { _label: string; } & { _ariaControls?: string; _ariaLabel?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Alignment; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Alignment; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaSelected?: boolean; _disabled?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
+	types: `string | { _label: string; } & { _ariaControls?: string; _ariaLabel?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaSelected?: boolean; _disabled?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _variant?: KoliBriButtonVariant; _customClass?: string; }`,
 	comps: `badge`
 },{
 	name: `_color`,
@@ -859,7 +864,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 },{
 	name: `_pagination`,
 	desc: `Gibt an, ob die Daten geteilt in Seiten angezeigt wird.`,
-	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _customClass?: string; _variant?: KoliBriButtonVariant; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Alignment; }`,
+	types: `boolean | string | { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _customClass?: string; _variant?: KoliBriButtonVariant; _boundaryCount?: number; _hasButtons?: boolean | Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Align; }`,
 	comps: `table`
 },{
 	name: `_min-width`,
@@ -921,16 +926,6 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.`,
 	desc: `Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.`,
 	types: `"date" | "location" | "page" | "step" | "time" | boolean`,
 	comps: `nav`
-},{
-	name: `_alignment`,
-	desc: `Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `popover`
-},{
-	name: `_align`,
-	desc: `Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.`,
-	types: `"bottom" | "left" | "right" | "top"`,
-	comps: `tooltip`
 },{
 	name: `_accept`,
 	desc: `Gibt an, welche Dateiformate erlaubt sind.`,

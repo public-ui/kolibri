@@ -15,15 +15,15 @@ export const PopoverBasic: FC = () => {
 			<KolButton _label="Oben" _icon="codicon codicon-arrow-up" _variant="primary" _on={{ onClick: () => setTop(!top) }}></KolButton>
 			<KolPopover _show={top}>Ich bin oberhalb</KolPopover>
 			<KolButton _label="Rechts" _icon="codicon codicon-arrow-right" _variant="danger" _on={{ onClick: () => setRight(!right) }}></KolButton>
-			<KolPopover _alignment="right" _show={right}>
+			<KolPopover _align="right" _show={right}>
 				Ich bin rechts
 			</KolPopover>
 			<KolButton _label="Unten" _icon="codicon codicon-arrow-down" _variant="secondary" _on={{ onClick: () => setBottom(!bottom) }}></KolButton>
-			<KolPopover _alignment="bottom" _show={bottom}>
+			<KolPopover _align="bottom" _show={bottom}>
 				Ich bin unterhalb
 			</KolPopover>
 			<KolButton _label="Links" _icon="codicon codicon-arrow-left" _variant="normal" _on={{ onClick: () => setLeft(!left) }}></KolButton>
-			<KolPopover _alignment="left" _show={left}>
+			<KolPopover _align="left" _show={left}>
 				Ich bin links
 			</KolPopover>
 			<KolButton _label="PR starten" _icon="codicon codicon-git-pull-request" _variant="normal" _on={{ onClick: () => setLogin(!login) }}></KolButton>

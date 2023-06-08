@@ -127,6 +127,8 @@
 | _icon-align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Gibt an, ob das Icon links oder rechts dargestellt werden soll. |
 | _caption | string | Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an. |
 | _caption | string | Setzt die Überschrift. |
+| _align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Setzt die Ausrichtung des Popovers in Relation zum Triggerelement. |
+| _align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement. |
 | _width | string | Setzt die Breite des Modals. (max-width: 100%). |
 | _use-case | "image" &#124; "nav" &#124; "text" | Gibt den Verwendungsfall des Links an. |
 | _stealth | boolean | Gibt an, ob der Link nur beim Fokus sichtbar ist. |
@@ -150,7 +152,7 @@
 | _sizes | string | Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset. |
 | _loading | "eager" &#124; "lazy" | Setzt den Lademodus. |
 | _alt | string | Setzt den alternativen Text. |
-| _smart-button | string &#124; { _label: string; } & { _ariaControls?: string; _ariaLabel?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Alignment; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Alignment; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaSelected?: boolean; _disabled?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _variant?: KoliBriButtonVariant; _customClass?: string; } | Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only). |
+| _smart-button | string &#124; { _label: string; } & { _ariaControls?: string; _ariaLabel?: string; _icon?: Stringified<KoliBriIconProp>; _iconAlign?: Align; _iconOnly?: boolean; _role?: AlternativButtonLinkRole; _tabIndex?: number; _tooltipAlign?: Align; _ariaCurrent?: AriaCurrent; _ariaExpanded?: boolean; _ariaSelected?: boolean; _disabled?: boolean; _accessKey?: string; _id?: string; _on?: KoliBriButtonCallbacks<unknown>; _type?: KoliBriButtonType; _value?: unknown; _variant?: KoliBriButtonVariant; _customClass?: string; } | Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only). |
 | _color | string &#124; { backgroundColor: string; color: string; } &#124; { backgroundColor: string; foregroundColor: Stringified<CharacteristicColors>; } | Setzt die Hintergrundfarbe. |
 | _show-duration | number | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll. |
 | _show-dropdown | boolean | Gibt an, welche Rolle der Schalter hat. |
@@ -162,7 +164,7 @@
 | _required-text | boolean &#124; string | Gibt an, ob der Pflichtfeld-Hinweis eingeblendet werden soll. Ein String überschreibt den Standardtext. |
 | _quote | string | Setzt den Text, also das Zitat selbst. |
 | _part | string | Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/) |
-| _pagination | boolean &#124; string &#124; { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _customClass?: string; _variant?: KoliBriButtonVariant; _boundaryCount?: number; _hasButtons?: boolean &#124; Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Alignment; } | Gibt an, ob die Daten geteilt in Seiten angezeigt wird. |
+| _pagination | boolean &#124; string &#124; { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks; _page?: number; _total?: number; _customClass?: string; _variant?: KoliBriButtonVariant; _boundaryCount?: number; _hasButtons?: boolean &#124; Stringified<PaginationHasButton>; _pageSize?: number; _pageSizeOptions?: Stringified<number[]>; _siblingCount?: number; _tooltipAlign?: Align; } | Gibt an, ob die Daten geteilt in Seiten angezeigt wird. |
 | _min-width | string | Gibt an, die minimale Breite der Tabelle an. |
 | _headers | string &#124; { horizontal?: KoliBriTableHeaderCell[][]; vertical?: KoliBriTableHeaderCell[][]; } | Gibt die horizontalen und vertikalen Header für die Tabelle an. |
 | _data | KoliBriDataType[] &#124; string | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden. |
@@ -175,6 +177,4 @@
 | _compact | boolean | Gibt an, ob die Navigation kompakt angezeigt wird. |
 | _collapsible | boolean | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv. |
 | _aria-current-value | "date" &#124; "location" &#124; "page" &#124; "step" &#124; "time" &#124; boolean | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll. |
-| _alignment | "bottom" &#124; "left" &#124; "right" &#124; "top" | Setzt die Ausrichtung des Popovers in Relation zum Triggerelement. |
-| _align | "bottom" &#124; "left" &#124; "right" &#124; "top" | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement. |
 | _accept | string | Gibt an, welche Dateiformate erlaubt sind. |

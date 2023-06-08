@@ -11,14 +11,14 @@ import { watchString } from '../../utils/prop.validators';
  * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`.
  *  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
  */
-type HorizontalAlignment = 'left' | 'right';
-type VerticalAlignment = 'top' | 'bottom';
-export type Alignment = HorizontalAlignment | VerticalAlignment;
-export type PropAlignment = {
-	alignment: Alignment;
+type HorizontalAlign = 'left' | 'right';
+type VerticalAlign = 'top' | 'bottom';
+export type Align = HorizontalAlign | VerticalAlign;
+export type PropAlign = {
+	align: Align;
 };
 
 /* validator */
-export const validateAlignment = (component: Generic.Element.Component, value?: Alignment): void => {
-	watchString(component, '_alignment', value);
+export const validateAlign = (component: Generic.Element.Component, value?: Align): void => {
+	watchString(component, '_align', value);
 };
