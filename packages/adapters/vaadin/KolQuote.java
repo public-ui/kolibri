@@ -12,24 +12,24 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
  */
 
 @Tag("kol-quote")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-quote")
 public class KolQuote extends Component {
 	/**
 	 * Setzt die Überschrift.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setCaption(final String value) {
+	public void setCaption(final Optional<String> value) {
 		getElement().setProperty("_caption", value);
 	}
 
 	/**
 	 * Setzt die Überschrift.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getCaption() {
+	public Optional<String> getCaption() {
 		return getElement().getProperty("_caption", null);
 	}
 
@@ -38,16 +38,16 @@ public class KolQuote extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHref(final String value) {
+	public void setHref(final Optional<String> value) {
 		getElement().setProperty("_href", value);
 	}
 
 	/**
 	 * Link auf die Quelle des Zitates.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHref() {
+	public Optional<String> getHref() {
 		return getElement().getProperty("_href", null);
 	}
 
@@ -56,34 +56,34 @@ public class KolQuote extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setQuote(final String value) {
+	public void setQuote(final Optional<String> value) {
 		getElement().setProperty("_quote", value);
 	}
 
 	/**
 	 * Setzt den Text, also das Zitat selbst.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getQuote() {
+	public Optional<String> getQuote() {
 		return getElement().getProperty("_quote", null);
 	}
 
 	/**
 	 * Setzt die Variante des Zitats.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setVariant(final String value) {
+	public void setVariant(final Optional<String> value) {
 		getElement().setProperty("_variant", value);
 	}
 
 	/**
 	 * Setzt die Variante des Zitats.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getVariant() {
+	public Optional<String> getVariant() {
 		return getElement().getProperty("_variant", null);
 	}
 }

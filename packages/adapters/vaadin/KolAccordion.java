@@ -12,7 +12,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
  */
 
 @Tag("kol-accordion")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-accordion")
 public class KolAccordion extends Component {
 	/**
@@ -20,52 +20,52 @@ public class KolAccordion extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHeading(final String value) {
+	public void setHeading(final Optional<String> value) {
 		getElement().setProperty("_heading", value);
 	}
 
 	/**
 	 * Gibt die Überschrift des Accordions an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeading() {
+	public Optional<String> getHeading() {
 		return getElement().getProperty("_heading", null);
 	}
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLevel(final String value) {
+	public void setLevel(final Optional<String> value) {
 		getElement().setProperty("_level", value);
 	}
 
 	/**
 	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLevel() {
+	public Optional<String> getLevel() {
 		return getElement().getProperty("_level", null);
 	}
 
 	/**
 	 * Gibt an, ob das Accordion geöffnet ist.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setOpen(final String value) {
+	public void setOpen(final Optional<String> value) {
 		getElement().setProperty("_open", value);
 	}
 
 	/**
 	 * Gibt an, ob das Accordion geöffnet ist.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getOpen() {
+	public Optional<String> getOpen() {
 		return getElement().getProperty("_open", null);
 	}
 }

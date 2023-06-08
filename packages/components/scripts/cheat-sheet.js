@@ -201,9 +201,12 @@ ELEMENTS.tags.forEach((tag) => {
 				MAP.set('types', new Set());
 				PROPS.set(attribute.name, MAP);
 			}
-			PROPS.get(attribute.name).get('components').add(componentName);
-			PROPS.get(attribute.name).get('descriptions').add(attribute.description);
-			PROPS.get(attribute.name).get('types').add(attribute.type.replace(' | undefined', ''));
+			const prop = PROPS.get(attribute.name);
+			if (prop) {
+				prop.get('components').add(componentName);
+				prop.get('descriptions').add(attribute.description);
+				prop.get('types').add(attribute.type.replace(/ \| undefined/g, ''));
+			}
 		});
 		console.log(tag.name);
 	}

@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-breadcrumb")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-breadcrumb")
 public class KolBreadcrumb extends Component {
 	/**
@@ -18,16 +18,16 @@ public class KolBreadcrumb extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
 	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
@@ -36,16 +36,16 @@ public class KolBreadcrumb extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLinks(final String value) {
+	public void setLinks(final Optional<String> value) {
 		getElement().setProperty("_links", value);
 	}
 
 	/**
 	 * Setzt die Liste der darzustellenden Links.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLinks() {
+	public Optional<String> getLinks() {
 		return getElement().getProperty("_links", null);
 	}
 }

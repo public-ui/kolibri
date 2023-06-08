@@ -11,7 +11,7 @@ Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nac
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**
@@ -19,34 +19,34 @@ public class KolModal extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
 	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Setzt die Breite des Modals. (max-width: 100%).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setWidth(final String value) {
+	public void setWidth(final Optional<String> value) {
 		getElement().setProperty("_width", value);
 	}
 
 	/**
 	 * Setzt die Breite des Modals. (max-width: 100%).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getWidth() {
+	public Optional<String> getWidth() {
 		return getElement().getProperty("_width", null);
 	}
 }

@@ -10,186 +10,186 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.0")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.1")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**
 	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setBoundaryCount(final String value) {
+	public void setBoundaryCount(final Optional<String> value) {
 		getElement().setProperty("_boundary-count", value);
 	}
 
 	/**
 	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getBoundaryCount() {
+	public Optional<String> getBoundaryCount() {
 		return getElement().getProperty("_boundary-count", null);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setCustomClass(final String value) {
+	public void setCustomClass(final Optional<String> value) {
 		getElement().setProperty("_custom-class", value);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getCustomClass() {
+	public Optional<String> getCustomClass() {
 		return getElement().getProperty("_custom-class", null);
 	}
 
 	/**
 	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHasButtons(final String value) {
+	public void setHasButtons(final Optional<String> value) {
 		getElement().setProperty("_has-buttons", value);
 	}
 
 	/**
 	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHasButtons() {
+	public Optional<String> getHasButtons() {
 		return getElement().getProperty("_has-buttons", null);
 	}
 
 	/**
 	 * Gibt an, welche Seite aktuell ausgewählt ist.
 	 *
-	 * @param value double
+	 * @param value String
 	 */
-	public void setPage(final double value) {
+	public void setPage(final Optional<String> value) {
 		getElement().setProperty("_page", value);
 	}
 
 	/**
 	 * Gibt an, welche Seite aktuell ausgewählt ist.
 	 *
-	 * @return double
+	 * @return Optional<String>
 	 */
-	public double getPage() {
+	public Optional<String> getPage() {
 		return getElement().getProperty("_page", null);
 	}
 
 	/**
 	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
 	 *
-	 * @param value double
+	 * @param value Optional<String>
 	 */
-	public void setPageSize(final double value) {
+	public void setPageSize(final Optional<String> value) {
 		getElement().setProperty("_page-size", value);
 	}
 
 	/**
 	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
 	 *
-	 * @return double
+	 * @return Optional<String>
 	 */
-	public double getPageSize() {
+	public Optional<String> getPageSize() {
 		return getElement().getProperty("_page-size", null);
 	}
 
 	/**
 	 * Setzt die Optionen für das Seitenlängenselect.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setPageSizeOptions(final String value) {
+	public void setPageSizeOptions(final Optional<String> value) {
 		getElement().setProperty("_page-size-options", value);
 	}
 
 	/**
 	 * Setzt die Optionen für das Seitenlängenselect.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getPageSizeOptions() {
+	public Optional<String> getPageSizeOptions() {
 		return getElement().getProperty("_page-size-options", null);
 	}
 
 	/**
 	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setSiblingCount(final String value) {
+	public void setSiblingCount(final Optional<String> value) {
 		getElement().setProperty("_sibling-count", value);
 	}
 
 	/**
 	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSiblingCount() {
+	public Optional<String> getSiblingCount() {
 		return getElement().getProperty("_sibling-count", null);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setTooltipAlign(final String value) {
+	public void setTooltipAlign(final Optional<String> value) {
 		getElement().setProperty("_tooltip-align", value);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTooltipAlign() {
+	public Optional<String> getTooltipAlign() {
 		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
 	 *
-	 * @param value double
+	 * @param value String
 	 */
-	public void setTotal(final double value) {
+	public void setTotal(final Optional<String> value) {
 		getElement().setProperty("_total", value);
 	}
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
 	 *
-	 * @return double
+	 * @return Optional<String>
 	 */
-	public double getTotal() {
+	public Optional<String> getTotal() {
 		return getElement().getProperty("_total", null);
 	}
 
 	/**
 	 * Gibt an, welche Button-Variante verwendet werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setVariant(final String value) {
+	public void setVariant(final Optional<String> value) {
 		getElement().setProperty("_variant", value);
 	}
 
 	/**
 	 * Gibt an, welche Button-Variante verwendet werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getVariant() {
+	public Optional<String> getVariant() {
 		return getElement().getProperty("_variant", null);
 	}
 }
