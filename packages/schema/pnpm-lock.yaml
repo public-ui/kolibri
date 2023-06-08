@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@a11y-ui/core':
-    specifier: 1.0.2
-    version: 1.0.2
+    specifier: 1.0.3
+    version: 1.0.3
 
 devDependencies:
   '@types/node':
@@ -34,8 +34,8 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core@1.0.2:
-    resolution: {integrity: sha512-RWGduw5+d/QgNfJogkuJPWvGxmWfa1qFleoAaBlt6UIPOaqP1eXY5ch06s+5yWfG93WYY2Otm3XQBV0RAGWGlA==}
+  /@a11y-ui/core@1.0.3:
+    resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
     dependencies:
       adopted-style-sheets: 1.0.3
     dev: false
