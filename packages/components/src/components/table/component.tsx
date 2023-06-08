@@ -16,6 +16,7 @@ import {
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import { translate } from '../../i18n';
+import { devHint } from '../../utils/a11y.tipps';
 
 type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
 	data: KoliBriDataType;
@@ -63,6 +64,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	private showPagination = false;
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
+	private disableSort = false;
 
 	/**
 	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
@@ -191,6 +193,12 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 									}
 								});
 							});
+							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
+								this.disableSort = true;
+								devHint(
+									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`
+								);
+							}
 						},
 					},
 				});
@@ -580,7 +588,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															width: col.width,
 														}}
 														aria-sort={
-															typeof col.sort === 'function'
+															!this.disableSort && typeof col.sort === 'function'
 																? col.sort !== this.sortFunction ||
 																  this.sortDirections.get(col.sort) === 'NOS' ||
 																  this.sortDirections.get(col.sort) === undefined
@@ -604,7 +612,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	textAlign: col.textAlign,
 																}}
 															></div>
-															{typeof col.sort === 'function' && (
+															{!this.disableSort && typeof col.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
 																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
@@ -667,7 +675,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															width: col.width,
 														}}
 														aria-sort={
-															typeof col.sort === 'function'
+															!this.disableSort && typeof col.sort === 'function'
 																? col.sort !== this.sortFunction ||
 																  this.sortDirections.get(col.sort) === 'NOS' ||
 																  this.sortDirections.get(col.sort) === undefined
@@ -691,7 +699,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	textAlign: col.textAlign,
 																}}
 															></div>
-															{typeof col.sort === 'function' && (
+															{!this.disableSort && typeof col.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
 																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
