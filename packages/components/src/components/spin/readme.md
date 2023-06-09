@@ -67,8 +67,9 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 </style>
 <div>
 	<kol-spin _show></kol-spin>
+	<kol-spin _show _variant="cycle"></kol-spin>
 	<!-- for a11y experts - own animation -->
-	<kol-spin _show="true" _variant="none">
+	<kol-spin _show _variant="none">
 		<!-- slot for own animation : https://github.com/vineethtrv/css-loader -->
 		<span className="loader" slot="expert"></span>
 	</kol-spin>
@@ -81,8 +82,8 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 ### Beispiel
 
 <kol-spin _show></kol-spin>
-
-<kol-spin _show="true" _variant="none"><span className="loader" slot="expert"></span></kol-spin>
+<kol-spin _show _variant="cycle"></kol-spin>
+<kol-spin _show _variant="none"><span className="loader" slot="expert"></span></kol-spin>
 
 <kol-details _summary="CSS Loaders & Spinners" _open>
 Es gibt im Internet viele verschiedene CSS Loaders und Spinners. Beispielsweise bietet _Vineeth_ eine ganze Reihe interessanter CSS Loaders an. Diese können auch in der KoliBri Bibliothek genutzt werden. Dazu muss lediglich der Link zu der entsprechenden CSS Datei in den Head der HTML Datei eingebunden werden. Anschließend kann die gewünschte Animation über den Expert-Slot in die KoliBri-Komponente eingebunden werden. Hier sind einige Beispiele (ohne reduzierte Animationsgeschwindigkeit):
@@ -113,9 +114,9 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                  | Type                                      | Default |
-| ---------- | ---------- | ---------------------------------------------------------------------------- | ----------------------------------------- | ------- |
-| `_show`    | `_show`    | Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.                    | `boolean \| undefined`                    | `false` |
-| `_variant` | `_variant` | Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll. | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
+| Property   | Attribute  | Description                                                     | Type                                      | Default |
+| ---------- | ---------- | --------------------------------------------------------------- | ----------------------------------------- | ------- |
+| `_show`    | `_show`    | Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist. | `boolean \| undefined`                    | `false` |
+| `_variant` | `_variant` | Gibt an, welche Variante der Darstellung genutzt werden soll.   | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
 
 ---

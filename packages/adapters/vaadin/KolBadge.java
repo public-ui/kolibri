@@ -33,7 +33,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
 	 * @param value Optional<String>
 	 */
@@ -42,7 +42,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
 	 * @return Optional<String>
 	 */
@@ -51,7 +51,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -60,7 +60,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -69,7 +69,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -78,7 +78,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */

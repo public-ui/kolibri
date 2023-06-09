@@ -20,7 +20,7 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**
-	 * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -29,7 +29,7 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
 	 * @return Optional<String>
 	 */

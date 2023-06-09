@@ -75,12 +75,12 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 ## Properties
 
-| Property                | Attribute     | Description                                                                                                                             | Type                                           | Default     |
-| ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `_hasFooter`            | `_has-footer` | Macht den Footerbereich der Card sichtbar.                                                                                              | `boolean \| undefined`                         | `false`     |
-| `_heading` _(required)_ | `_heading`    | Gibt die Überschrift der Card an.                                                                                                       | `string`                                       | `undefined` |
-| `_headline`             | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Überschrift der Card an. | `string \| undefined`                          | `undefined` |
-| `_level`                | `_level`      | Setzt den H-Level, von 1 bis 6, der Überschrift.                                                                                        | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| Property                | Attribute     | Description                                                                                                                                           | Type                                           | Default     |
+| ----------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `_hasFooter`            | `_has-footer` | Macht den Footerbereich der Card sichtbar.                                                                                                            | `boolean \| undefined`                         | `false`     |
+| `_heading` _(required)_ | `_heading`    | Gibt die Beschriftung der Komponente an.                                                                                                              | `string`                                       | `undefined` |
+| `_headline`             | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Beschriftung der Komponente an.        | `string \| undefined`                          | `undefined` |
+| `_level`                | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
 
 ## Slots
 

@@ -14,7 +14,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 @JsModule("@public-ui/components/dist/components/kol-skip-nav")
 public class KolSkipNav extends Component {
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -23,7 +23,7 @@ public class KolSkipNav extends Component {
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -32,7 +32,7 @@ public class KolSkipNav extends Component {
 	}
 
 	/**
-	 * Setzt die Liste der darzustellenden Links.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 *
 	 * @param value String
 	 */
@@ -41,7 +41,7 @@ public class KolSkipNav extends Component {
 	}
 
 	/**
-	 * Setzt die Liste der darzustellenden Links.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 *
 	 * @return Optional<String>
 	 */

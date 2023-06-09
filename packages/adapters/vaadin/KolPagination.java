@@ -140,7 +140,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -149,7 +149,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
 	 * @return Optional<String>
 	 */
@@ -176,7 +176,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Button-Variante verwendet werden soll.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -185,7 +185,7 @@ public class KolPagination extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Button-Variante verwendet werden soll.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @return Optional<String>
 	 */

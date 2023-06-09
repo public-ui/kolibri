@@ -14,7 +14,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 @JsModule("@public-ui/components/dist/components/kol-alert")
 public class KolAlert extends Component {
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -23,7 +23,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
 	 * @return Optional<String>
 	 */
@@ -32,7 +32,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Alert ein Schließen-Icon hat.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -41,7 +41,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Alert ein Schließen-Icon hat.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 *
 	 * @return Optional<String>
 	 */
@@ -50,7 +50,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -59,7 +59,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -68,7 +68,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -77,7 +77,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @return Optional<String>
 	 */
@@ -86,7 +86,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -95,7 +95,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -104,7 +104,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -113,7 +113,7 @@ public class KolAlert extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @return Optional<String>
 	 */

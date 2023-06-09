@@ -16,7 +16,7 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -25,7 +25,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
 	 * @return Optional<String>
 	 */
@@ -34,7 +34,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Aktiviert das Schließen-Icon.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -43,7 +43,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Aktiviert das Schließen-Icon.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 *
 	 * @return Optional<String>
 	 */
@@ -52,7 +52,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -61,7 +61,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -70,7 +70,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -79,7 +79,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @return Optional<String>
 	 */
@@ -88,7 +88,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Toast eingeblendet wird.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -97,7 +97,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Toast eingeblendet wird.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 *
 	 * @return Optional<String>
 	 */
@@ -124,7 +124,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -133,7 +133,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */

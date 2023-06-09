@@ -35,7 +35,7 @@ public class KolPopover extends Component {
 	}
 
 	/**
-	 * Öffnet/schließt das Popover.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -44,7 +44,7 @@ public class KolPopover extends Component {
 	}
 
 	/**
-	 * Öffnet/schließt das Popover.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 *
 	 * @return Optional<String>
 	 */

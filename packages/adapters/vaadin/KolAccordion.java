@@ -16,7 +16,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 @JsModule("@public-ui/components/dist/components/kol-accordion")
 public class KolAccordion extends Component {
 	/**
-	 * Gibt die Überschrift des Accordions an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Gibt die Überschrift des Accordions an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -34,7 +34,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -43,7 +43,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @return Optional<String>
 	 */
@@ -52,7 +52,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Accordion geöffnet ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -61,7 +61,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Gibt an, ob das Accordion geöffnet ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
 	 * @return Optional<String>
 	 */

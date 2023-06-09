@@ -37,7 +37,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value String
 	 */
@@ -46,7 +46,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -55,7 +55,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -64,7 +64,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -73,7 +73,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -82,7 +82,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
 	 * @return Optional<String>
 	 */

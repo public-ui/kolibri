@@ -14,7 +14,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
 	/**
-	 * Setzt die Bezeichnung der Fortschrittsanzeige.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value Optional<String>
 	 */
@@ -23,7 +23,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Setzt die Bezeichnung der Fortschrittsanzeige.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -50,7 +50,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -59,7 +59,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
 	 *
 	 * @return Optional<String>
 	 */
@@ -104,7 +104,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -113,7 +113,7 @@ public class KolProgress extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @return Optional<String>
 	 */

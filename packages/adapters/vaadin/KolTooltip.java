@@ -38,7 +38,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 *
 	 * @param value String
 	 */
@@ -47,7 +47,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -56,7 +56,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -65,7 +65,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */

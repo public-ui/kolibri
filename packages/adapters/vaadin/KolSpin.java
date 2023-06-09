@@ -14,7 +14,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 @JsModule("@public-ui/components/dist/components/kol-spin")
 public class KolSpin extends Component {
 	/**
-	 * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -23,7 +23,7 @@ public class KolSpin extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 *
 	 * @return Optional<String>
 	 */
@@ -32,7 +32,7 @@ public class KolSpin extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -41,7 +41,7 @@ public class KolSpin extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @return Optional<String>
 	 */

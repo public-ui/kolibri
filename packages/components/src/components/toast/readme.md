@@ -60,16 +60,16 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ## Properties
 
-| Property        | Attribute        | Description                                                                       | Type                                                                    | Default     |
-| --------------- | ---------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
-| `_alert`        | `_alert`         | Gibt an, ob der Screenreader die Meldung vorlesen soll.                           | `boolean \| undefined`                                                  | `true`      |
-| `_hasCloser`    | `_has-closer`    | Aktiviert das Schließen-Icon.                                                     | `boolean \| undefined`                                                  | `false`     |
-| `_heading`      | `_heading`       | Gibt den Titel der Meldung an.                                                    | `string \| undefined`                                                   | `''`        |
-| `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.                         | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
-| `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                  | `undefined \| { onClose?: EventCallback<Event> \| undefined; }`         | `undefined` |
-| `_show`         | `_show`          | Gibt an, ob der Toast eingeblendet wird.                                          | `boolean \| undefined`                                                  | `true`      |
-| `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.              | `number \| undefined`                                                   | `10000`     |
-| `_type`         | `_type`          | Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt. | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
+| Property        | Attribute        | Description                                                                                                                                           | Type                                                                    | Default     |
+| --------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
+| `_alert`        | `_alert`         | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                         | `boolean \| undefined`                                                  | `true`      |
+| `_hasCloser`    | `_has-closer`    | Gibt an, ob die Komponente einen Schließen-Schalter hat.                                                                                              | `boolean \| undefined`                                                  | `false`     |
+| `_heading`      | `_heading`       | Gibt die Beschriftung der Komponente an.                                                                                                              | `string \| undefined`                                                   | `''`        |
+| `_level`        | `_level`         | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                          | `1`         |
+| `_on`           | --               | Gibt die EventCallback-Function für das Schließen des Toasts an.                                                                                      | `undefined \| { onClose?: EventCallback<Event> \| undefined; }`         | `undefined` |
+| `_show`         | `_show`          | Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.                                                                                       | `boolean \| undefined`                                                  | `true`      |
+| `_showDuration` | `_show-duration` | Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.                                                                                  | `number \| undefined`                                                   | `10000`     |
+| `_type`         | `_type`          | Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.                                                                     | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 
 ## Slots
 

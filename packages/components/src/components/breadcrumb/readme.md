@@ -87,10 +87,10 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                  | Type                    | Default     |
-| ------------------------- | ------------- | ---------------------------------------------------------------------------- | ----------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
-| `_links` _(required)_     | `_links`      | Setzt die Liste der darzustellenden Links.                                   | `LinkProps[] \| string` | `undefined` |
+| Property                  | Attribute     | Description                                                                                                                 | Type                    | Default     |
+| ------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                | `undefined` |
+| `_links` _(required)_     | `_links`      | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                             | `LinkProps[] \| string` | `undefined` |
 
 ## Dependencies
 

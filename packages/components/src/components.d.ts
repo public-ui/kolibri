@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Alignment, AriaCurrent } from "./types/props";
+import { Align, AriaCurrent } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
@@ -24,7 +24,7 @@ import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
-import { Alignment as Alignment1, AlternativButtonLinkRole as AlternativButtonLinkRole1, AriaCurrent as AriaCurrent1, KoliBriButtonType as KoliBriButtonType1, KoliBriButtonVariant as KoliBriButtonVariant1, Stringified as Stringified1 } from "./components";
+import { Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -40,7 +40,7 @@ import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } fro
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { Alignment, AriaCurrent } from "./types/props";
+export { Align, AriaCurrent } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
@@ -59,7 +59,7 @@ export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
-export { Alignment as Alignment1, AlternativButtonLinkRole as AlternativButtonLinkRole1, AriaCurrent as AriaCurrent1, KoliBriButtonType as KoliBriButtonType1, KoliBriButtonVariant as KoliBriButtonVariant1, Stringified as Stringified1 } from "./components";
+export { Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -82,17 +82,17 @@ export namespace Components {
          */
         "_title": string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
     }
     interface KolAccordion {
         /**
-          * Gibt die Überschrift des Accordions an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading": string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -100,25 +100,25 @@ export namespace Components {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * Gibt an, ob das Accordion geöffnet ist.
+          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
     }
     interface KolAlert {
         /**
-          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Alert ein Schließen-Icon hat.
+          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt den Titel der Meldung an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -126,29 +126,29 @@ export namespace Components {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
     }
     interface KolAlertWc {
         /**
-          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Alert ein Schließen-Icon hat.
+          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt den Titel der Meldung an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -156,11 +156,11 @@ export namespace Components {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
     }
@@ -170,15 +170,15 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -188,17 +188,17 @@ export namespace Components {
     }
     interface KolBreadcrumb {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
-          * Setzt die Liste der darzustellenden Links.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -206,19 +206,19 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -226,28 +226,28 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -255,19 +255,19 @@ export namespace Components {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -275,7 +275,7 @@ export namespace Components {
          */
         "_value"?: Stringified<unknown>;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -285,7 +285,7 @@ export namespace Components {
     }
     interface KolButtonLink {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -293,39 +293,39 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -333,19 +333,19 @@ export namespace Components {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -355,7 +355,7 @@ export namespace Components {
     }
     interface KolButtonWc {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -363,19 +363,19 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -383,28 +383,28 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -412,19 +412,19 @@ export namespace Components {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Setzt den Typ der Schaltfläche.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -432,7 +432,7 @@ export namespace Components {
          */
         "_value"?: Stringified<unknown>;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -442,22 +442,22 @@ export namespace Components {
          */
         "_hasFooter"?: boolean;
         /**
-          * Gibt die Überschrift der Card an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading": string;
         /**
-          * Gibt die Überschrift der Card an.
+          * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
     }
     interface KolDetails {
         /**
-          * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
@@ -477,11 +477,11 @@ export namespace Components {
     }
     interface KolHeading {
         /**
-          * Gibt den Text der Überschrift an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -491,11 +491,11 @@ export namespace Components {
     }
     interface KolHeadingWc {
         /**
-          * Gibt den Text der Überschrift an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -505,7 +505,7 @@ export namespace Components {
     }
     interface KolIcon {
         /**
-          * Gibt das Aria-Label am Icon an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -523,7 +523,7 @@ export namespace Components {
      */
     interface KolIconFontAwesome {
         /**
-          * Gibt das Aria-Label am Icon an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -545,7 +545,7 @@ export namespace Components {
      */
     interface KolIconIcofont {
         /**
-          * Gibt das Aria-Label am Icon an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -584,11 +584,11 @@ export namespace Components {
     }
     interface KolInput {
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -596,7 +596,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -604,11 +604,11 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: KoliBriHorizontalIcon;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id": string;
         /**
@@ -643,11 +643,11 @@ export namespace Components {
     }
     interface KolInputCheckbox {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -655,7 +655,7 @@ export namespace Components {
          */
         "_checked"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -663,7 +663,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -671,11 +671,11 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Überschreiben der Icons für die Checkbox.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<InputCheckboxIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
@@ -683,7 +683,7 @@ export namespace Components {
          */
         "_indeterminate"?: boolean;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -699,7 +699,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -707,7 +707,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, welchen Type das Input haben soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
           * @deprecated Verwende stattdessen das Attribute _variant.
          */
         "_type"?: InputCheckboxVariant;
@@ -716,17 +716,17 @@ export namespace Components {
          */
         "_value"?: string;
         /**
-          * Gibt an, welchen Type das Input haben soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: InputCheckboxVariant;
     }
     interface KolInputColor {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -734,7 +734,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -742,7 +742,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -750,15 +750,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -778,7 +778,7 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -792,11 +792,11 @@ export namespace Components {
     }
     interface KolInputDate {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -804,7 +804,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -812,7 +812,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -820,15 +820,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -836,11 +836,11 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Datumswert an.
+          * Gibt den größtmöglichen Eingabewert an.
          */
         "_max"?: Iso8601 | Date;
         /**
-          * Gibt den kleinstmöglichen Datumswert an.
+          * Gibt den kleinstmöglichen Eingabewert an.
          */
         "_min"?: Iso8601 | Date;
         /**
@@ -864,11 +864,11 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt die Schrittweite der Wertveränderung an
+          * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -876,7 +876,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Typ des Eingabefeldes an.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type": InputDateType;
         /**
@@ -886,11 +886,11 @@ export namespace Components {
     }
     interface KolInputEmail {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -898,7 +898,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -906,7 +906,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -914,15 +914,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -930,7 +930,7 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -946,7 +946,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -970,7 +970,7 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -988,15 +988,15 @@ export namespace Components {
          */
         "_accept"?: string;
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1004,7 +1004,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1012,15 +1012,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1044,7 +1044,7 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1058,11 +1058,11 @@ export namespace Components {
     }
     interface KolInputNumber {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -1070,7 +1070,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1078,7 +1078,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1086,15 +1086,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1102,11 +1102,11 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Zahlenwert an.
+          * Gibt den größtmöglichen Eingabewert an.
          */
         "_max"?: number | Iso8601;
         /**
-          * Gibt den kleinstmöglichen Zahlenwert an.
+          * Gibt den kleinstmöglichen Eingabewert an.
          */
         "_min"?: number | Iso8601;
         /**
@@ -1134,11 +1134,11 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt die Schrittweite der Wertveränderung an
+          * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1146,7 +1146,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
           * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
          */
         "_type"?: InputNumberType;
@@ -1157,11 +1157,11 @@ export namespace Components {
     }
     interface KolInputPassword {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -1169,7 +1169,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1177,7 +1177,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1185,19 +1185,19 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -1209,7 +1209,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -1233,7 +1233,7 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1247,15 +1247,15 @@ export namespace Components {
     }
     interface KolInputRadio {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1263,7 +1263,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1271,11 +1271,11 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1291,7 +1291,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die Ausrichtung der LinkList an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
         /**
@@ -1299,7 +1299,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1316,15 +1316,15 @@ export namespace Components {
      */
     interface KolInputRadioGroup {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1332,7 +1332,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1340,11 +1340,11 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1360,7 +1360,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die Ausrichtung der LinkList an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
         /**
@@ -1368,7 +1368,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1382,11 +1382,11 @@ export namespace Components {
     }
     interface KolInputRange {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -1394,7 +1394,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1402,7 +1402,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1410,15 +1410,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1426,11 +1426,11 @@ export namespace Components {
          */
         "_list"?: Stringified<Option<number>[]>;
         /**
-          * Gibt den Maximalwert des Eingabefeldes an.
+          * Gibt den größtmöglichen Eingabewert an.
          */
         "_max"?: number;
         /**
-          * Gibt den Minimalwert des Eingabefeldes an.
+          * Gibt den kleinstmöglichen Eingabewert an.
          */
         "_min"?: number;
         /**
@@ -1446,7 +1446,7 @@ export namespace Components {
          */
         "_step"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1460,11 +1460,11 @@ export namespace Components {
     }
     interface KolInputText {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -1472,7 +1472,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1480,7 +1480,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1488,15 +1488,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1504,7 +1504,7 @@ export namespace Components {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -1516,7 +1516,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster für das Eingabefeld an.
+          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -1540,7 +1540,7 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1548,7 +1548,7 @@ export namespace Components {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: InputTextType;
         /**
@@ -1576,23 +1576,23 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, ob der Link deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1604,20 +1604,20 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1626,7 +1626,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Rolle das Element hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1640,7 +1640,7 @@ export namespace Components {
          */
         "_stealth"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1652,9 +1652,9 @@ export namespace Components {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1667,19 +1667,19 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -1687,7 +1687,7 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Link deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -1699,15 +1699,15 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1716,11 +1716,11 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Setzt die Role der Schaltfläche.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1732,17 +1732,17 @@ export namespace Components {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Gibt an, welche Ausprägung der Link-Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
     interface KolLinkGroup {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -1750,11 +1750,11 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
-          * Setzt die Liste der darzustellenden Links.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -1767,7 +1767,7 @@ export namespace Components {
          */
         "_ordered"?: boolean;
         /**
-          * Gibt die Ausrichtung der LinkList an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
     }
@@ -1777,23 +1777,23 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, ob der Link deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -1806,20 +1806,20 @@ export namespace Components {
          */
         "_href": string;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -1828,7 +1828,7 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -1842,7 +1842,7 @@ export namespace Components {
          */
         "_stealth"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -1854,9 +1854,9 @@ export namespace Components {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1880,7 +1880,7 @@ export namespace Components {
          */
         "_activeElement"?: HTMLElement | null;
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -1898,7 +1898,7 @@ export namespace Components {
          */
         "_ariaCurrentValue": AriaCurrent;
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -1915,15 +1915,15 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie an.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
-          * Gibt die Ausrichtung der Navigation an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
         /**
-          * Stellt verschiedene Varianten der Navigation zur Verfügung.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -1962,15 +1962,15 @@ export namespace Components {
          */
         "_siblingCount"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
-          * Gibt an, welche Button-Variante verwendet werden soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -1978,15 +1978,15 @@ export namespace Components {
         /**
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
-        "_alignment"?: Alignment;
+        "_align"?: Align;
         /**
-          * Öffnet/schließt das Popover.
+          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
         "_show"?: boolean;
     }
     interface KolProgress {
         /**
-          * Setzt die Bezeichnung der Fortschrittsanzeige.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -1994,7 +1994,7 @@ export namespace Components {
          */
         "_max": number;
         /**
-          * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+          * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
           * @deprecated will be removed in v2, use _variant
          */
         "_type"?: KoliBriProgressType;
@@ -2007,17 +2007,17 @@ export namespace Components {
          */
         "_value": number;
         /**
-          * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriProgressType;
     }
     interface KolQuote {
         /**
-          * Setzt die Überschrift.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_caption"?: string;
         /**
-          * Link auf die Quelle des Zitates.
+          * Gibt den Link zur Quelle des Zitates an.
          */
         "_href": string;
         /**
@@ -2025,21 +2025,21 @@ export namespace Components {
          */
         "_quote": string;
         /**
-          * Setzt die Variante des Zitats.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriQuoteVariant;
     }
     interface KolSelect {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -2052,7 +2052,7 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2060,15 +2060,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -2096,7 +2096,7 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -2110,55 +2110,55 @@ export namespace Components {
     }
     interface KolSkipNav {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
-          * Setzt die Liste der darzustellenden Links.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
     }
     interface KolSpanWc {
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
     }
     interface KolSpin {
         /**
-          * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
+          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
         "_show"?: boolean;
         /**
-          * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: SpinVariant;
     }
     interface KolSplitButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -2166,19 +2166,19 @@ export namespace Components {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
-        "_ariaCurrent"?: AriaCurrent1;
+        "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -2186,24 +2186,24 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: string;
         /**
-          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -2211,37 +2211,37 @@ export namespace Components {
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
-        "_role"?: AlternativButtonLinkRole1;
+        "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_showDropdown"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment1;
+        "_tooltipAlign"?: Align;
         /**
-          * Setzt den Typ der Schaltfläche.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
-        "_type"?: KoliBriButtonType1;
+        "_type"?: KoliBriButtonType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified1<unknown>;
+        "_value"?: Stringified<unknown>;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: KoliBriButtonVariant1;
+        "_variant"?: KoliBriButtonVariant;
     }
     interface KolSymbol {
         /**
-          * Gibt an, was der Screenreader ausgeben soll
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -2251,7 +2251,7 @@ export namespace Components {
     }
     interface KolTable {
         /**
-          * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_caption": string;
         /**
@@ -2273,7 +2273,7 @@ export namespace Components {
     }
     interface KolTabs {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -2291,11 +2291,11 @@ export namespace Components {
         /**
           * Setzt die Position der Registrierkarten.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: Align;
     }
     interface KolTextarea {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -2303,11 +2303,11 @@ export namespace Components {
          */
         "_adjustHeight"?: boolean;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -2319,7 +2319,7 @@ export namespace Components {
          */
         "_hasCounter"?: boolean;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2327,15 +2327,15 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Setzt die maximale Zeichenanzahl.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -2367,7 +2367,7 @@ export namespace Components {
          */
         "_rows"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -2381,19 +2381,19 @@ export namespace Components {
     }
     interface KolToast {
         /**
-          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Aktiviert das Schließen-Icon.
+          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt den Titel der Meldung an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2401,7 +2401,7 @@ export namespace Components {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Gibt an, ob der Toast eingeblendet wird.
+          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
         "_show"?: boolean;
         /**
@@ -2409,7 +2409,7 @@ export namespace Components {
          */
         "_showDuration"?: number;
         /**
-          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: AlertType;
     }
@@ -2417,13 +2417,13 @@ export namespace Components {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: Alignment;
+        "_align"?: Align;
         /**
-          * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id": string;
         /**
-          * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
     }
@@ -2870,17 +2870,17 @@ declare namespace LocalJSX {
          */
         "_title": string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
     }
     interface KolAccordion {
         /**
-          * Gibt die Überschrift des Accordions an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading": string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2888,25 +2888,25 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * Gibt an, ob das Accordion geöffnet ist.
+          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
     }
     interface KolAlert {
         /**
-          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Alert ein Schließen-Icon hat.
+          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt den Titel der Meldung an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2914,29 +2914,29 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
     }
     interface KolAlertWc {
         /**
-          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob der Alert ein Schließen-Icon hat.
+          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt den Titel der Meldung an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2944,11 +2944,11 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAlertEventCallbacks;
         /**
-          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: AlertType;
         /**
-          * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
     }
@@ -2958,15 +2958,15 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -2976,17 +2976,17 @@ declare namespace LocalJSX {
     }
     interface KolBreadcrumb {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
-          * Setzt die Liste der darzustellenden Links.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -2994,19 +2994,19 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Buttons an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -3014,28 +3014,28 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3043,19 +3043,19 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -3063,7 +3063,7 @@ declare namespace LocalJSX {
          */
         "_value"?: Stringified<unknown>;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -3073,7 +3073,7 @@ declare namespace LocalJSX {
     }
     interface KolButtonLink {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -3081,39 +3081,39 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3121,19 +3121,19 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Role der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Gibt an, welche Typ der Button hat.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -3143,7 +3143,7 @@ declare namespace LocalJSX {
     }
     interface KolButtonWc {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -3151,19 +3151,19 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -3171,28 +3171,28 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die ID der Schaltfläche an. (Selection, Testing)
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3200,19 +3200,19 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriButtonCallbacks<unknown>;
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Setzt den Typ der Schaltfläche.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: KoliBriButtonType;
         /**
@@ -3220,7 +3220,7 @@ declare namespace LocalJSX {
          */
         "_value"?: Stringified<unknown>;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -3230,22 +3230,22 @@ declare namespace LocalJSX {
          */
         "_hasFooter"?: boolean;
         /**
-          * Gibt die Überschrift der Card an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading": string;
         /**
-          * Gibt die Überschrift der Card an.
+          * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
     }
     interface KolDetails {
         /**
-          * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
@@ -3265,11 +3265,11 @@ declare namespace LocalJSX {
     }
     interface KolHeading {
         /**
-          * Gibt den Text der Überschrift an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3279,11 +3279,11 @@ declare namespace LocalJSX {
     }
     interface KolHeadingWc {
         /**
-          * Gibt den Text der Überschrift an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3293,7 +3293,7 @@ declare namespace LocalJSX {
     }
     interface KolIcon {
         /**
-          * Gibt das Aria-Label am Icon an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -3311,7 +3311,7 @@ declare namespace LocalJSX {
      */
     interface KolIconFontAwesome {
         /**
-          * Gibt das Aria-Label am Icon an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -3333,7 +3333,7 @@ declare namespace LocalJSX {
      */
     interface KolIconIcofont {
         /**
-          * Gibt das Aria-Label am Icon an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -3372,11 +3372,11 @@ declare namespace LocalJSX {
     }
     interface KolInput {
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3384,7 +3384,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3392,11 +3392,11 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: KoliBriHorizontalIcon;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id": string;
         /**
@@ -3431,11 +3431,11 @@ declare namespace LocalJSX {
     }
     interface KolInputCheckbox {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -3443,7 +3443,7 @@ declare namespace LocalJSX {
          */
         "_checked"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3451,7 +3451,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3459,11 +3459,11 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Überschreiben der Icons für die Checkbox.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<InputCheckboxIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
@@ -3471,7 +3471,7 @@ declare namespace LocalJSX {
          */
         "_indeterminate"?: boolean;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3487,7 +3487,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -3495,7 +3495,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, welchen Type das Input haben soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
           * @deprecated Verwende stattdessen das Attribute _variant.
          */
         "_type"?: InputCheckboxVariant;
@@ -3504,17 +3504,17 @@ declare namespace LocalJSX {
          */
         "_value"?: string;
         /**
-          * Gibt an, welchen Type das Input haben soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: InputCheckboxVariant;
     }
     interface KolInputColor {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -3522,7 +3522,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3530,7 +3530,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3538,15 +3538,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3566,7 +3566,7 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -3580,11 +3580,11 @@ declare namespace LocalJSX {
     }
     interface KolInputDate {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -3592,7 +3592,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3600,7 +3600,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3608,15 +3608,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3624,11 +3624,11 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Datumswert an.
+          * Gibt den größtmöglichen Eingabewert an.
          */
         "_max"?: Iso8601 | Date;
         /**
-          * Gibt den kleinstmöglichen Datumswert an.
+          * Gibt den kleinstmöglichen Eingabewert an.
          */
         "_min"?: Iso8601 | Date;
         /**
@@ -3652,11 +3652,11 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt die Schrittweite der Wertveränderung an
+          * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -3664,7 +3664,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt den Typ des Eingabefeldes an.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: InputDateType;
         /**
@@ -3674,11 +3674,11 @@ declare namespace LocalJSX {
     }
     interface KolInputEmail {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -3686,7 +3686,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3694,7 +3694,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3702,15 +3702,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3718,7 +3718,7 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -3734,7 +3734,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -3758,7 +3758,7 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -3776,15 +3776,15 @@ declare namespace LocalJSX {
          */
         "_accept"?: string;
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3792,7 +3792,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3800,15 +3800,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3832,7 +3832,7 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -3846,11 +3846,11 @@ declare namespace LocalJSX {
     }
     interface KolInputNumber {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -3858,7 +3858,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3866,7 +3866,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3874,15 +3874,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3890,11 +3890,11 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt den größtmöglichen Zahlenwert an.
+          * Gibt den größtmöglichen Eingabewert an.
          */
         "_max"?: number | Iso8601;
         /**
-          * Gibt den kleinstmöglichen Zahlenwert an.
+          * Gibt den kleinstmöglichen Eingabewert an.
          */
         "_min"?: number | Iso8601;
         /**
@@ -3922,11 +3922,11 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt die Schrittweite der Wertveränderung an
+          * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -3934,7 +3934,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
           * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
          */
         "_type"?: InputNumberType;
@@ -3945,11 +3945,11 @@ declare namespace LocalJSX {
     }
     interface KolInputPassword {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -3957,7 +3957,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -3965,7 +3965,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3973,19 +3973,19 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -3997,7 +3997,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfpattern für das Eingabefeld an.
+          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -4021,7 +4021,7 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4035,15 +4035,15 @@ declare namespace LocalJSX {
     }
     interface KolInputRadio {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -4051,7 +4051,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4059,11 +4059,11 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4079,7 +4079,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die Ausrichtung der LinkList an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
         /**
@@ -4087,7 +4087,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4104,15 +4104,15 @@ declare namespace LocalJSX {
      */
     interface KolInputRadioGroup {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -4120,7 +4120,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4128,11 +4128,11 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4148,7 +4148,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt die Ausrichtung der LinkList an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
         /**
@@ -4156,7 +4156,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4170,11 +4170,11 @@ declare namespace LocalJSX {
     }
     interface KolInputRange {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -4182,7 +4182,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -4190,7 +4190,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4198,15 +4198,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4214,11 +4214,11 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<Option<number>[]>;
         /**
-          * Gibt den Maximalwert des Eingabefeldes an.
+          * Gibt den größtmöglichen Eingabewert an.
          */
         "_max"?: number;
         /**
-          * Gibt den Minimalwert des Eingabefeldes an.
+          * Gibt den kleinstmöglichen Eingabewert an.
          */
         "_min"?: number;
         /**
@@ -4234,7 +4234,7 @@ declare namespace LocalJSX {
          */
         "_step"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4248,11 +4248,11 @@ declare namespace LocalJSX {
     }
     interface KolInputText {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
@@ -4260,7 +4260,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -4268,7 +4268,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4276,15 +4276,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4292,7 +4292,7 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<string[]>;
         /**
-          * Gibt an, wie viele Zeichen man maximal eingeben kann.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -4304,7 +4304,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Gibt ein Prüfmuster für das Eingabefeld an.
+          * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
          */
         "_pattern"?: string;
         /**
@@ -4328,7 +4328,7 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4336,7 +4336,7 @@ declare namespace LocalJSX {
          */
         "_touched"?: boolean;
         /**
-          * Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: InputTextType;
         /**
@@ -4364,23 +4364,23 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, ob der Link deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -4392,20 +4392,20 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4414,7 +4414,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Rolle das Element hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4428,7 +4428,7 @@ declare namespace LocalJSX {
          */
         "_stealth"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4440,9 +4440,9 @@ declare namespace LocalJSX {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4455,19 +4455,19 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -4475,7 +4475,7 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Link deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -4487,15 +4487,15 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4504,11 +4504,11 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Setzt die Role der Schaltfläche.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4520,17 +4520,17 @@ declare namespace LocalJSX {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
-          * Gibt an, welche Ausprägung der Link-Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
     interface KolLinkGroup {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -4538,11 +4538,11 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Setzt den H-Level, von 1 bis 6, der Überschrift.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
-          * Setzt die Liste der darzustellenden Links.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<LinkProps[]>;
         /**
@@ -4555,7 +4555,7 @@ declare namespace LocalJSX {
          */
         "_ordered"?: boolean;
         /**
-          * Gibt die Ausrichtung der LinkList an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
     }
@@ -4565,23 +4565,23 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, ob der Link deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
@@ -4594,20 +4594,20 @@ declare namespace LocalJSX {
          */
         "_href": string;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4616,7 +4616,7 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
         /**
@@ -4630,7 +4630,7 @@ declare namespace LocalJSX {
          */
         "_stealth"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4642,9 +4642,9 @@ declare namespace LocalJSX {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4668,7 +4668,7 @@ declare namespace LocalJSX {
          */
         "_activeElement"?: HTMLElement | null;
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -4686,7 +4686,7 @@ declare namespace LocalJSX {
          */
         "_ariaCurrentValue"?: AriaCurrent;
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -4703,15 +4703,15 @@ declare namespace LocalJSX {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Gibt die geordnete Liste der Seitenhierarchie an.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
         /**
-          * Gibt die Ausrichtung der Navigation an.
+          * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
         "_orientation"?: Orientation;
         /**
-          * Stellt verschiedene Varianten der Navigation zur Verfügung.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
           * @deprecated This property is deprecated and will be removed in the next major version.
          */
         "_variant"?: KoliBriNavVariant;
@@ -4750,15 +4750,15 @@ declare namespace LocalJSX {
          */
         "_siblingCount"?: number;
         /**
-          * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
-          * Gibt an, welche Button-Variante verwendet werden soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriButtonVariant;
     }
@@ -4766,15 +4766,15 @@ declare namespace LocalJSX {
         /**
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
-        "_alignment"?: Alignment;
+        "_align"?: Align;
         /**
-          * Öffnet/schließt das Popover.
+          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
         "_show"?: boolean;
     }
     interface KolProgress {
         /**
-          * Setzt die Bezeichnung der Fortschrittsanzeige.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -4782,7 +4782,7 @@ declare namespace LocalJSX {
          */
         "_max": number;
         /**
-          * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+          * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
           * @deprecated will be removed in v2, use _variant
          */
         "_type"?: KoliBriProgressType;
@@ -4795,17 +4795,17 @@ declare namespace LocalJSX {
          */
         "_value": number;
         /**
-          * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriProgressType;
     }
     interface KolQuote {
         /**
-          * Setzt die Überschrift.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_caption"?: string;
         /**
-          * Link auf die Quelle des Zitates.
+          * Gibt den Link zur Quelle des Zitates an.
          */
         "_href": string;
         /**
@@ -4813,21 +4813,21 @@ declare namespace LocalJSX {
          */
         "_quote": string;
         /**
-          * Setzt die Variante des Zitats.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: KoliBriQuoteVariant;
     }
     interface KolSelect {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -4840,7 +4840,7 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4848,15 +4848,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4884,7 +4884,7 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -4898,55 +4898,55 @@ declare namespace LocalJSX {
     }
     interface KolSkipNav {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
-          * Setzt die Liste der darzustellenden Links.
+          * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
         "_links": Stringified<LinkProps[]>;
     }
     interface KolSpan {
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
     }
     interface KolSpanWc {
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Gibt an, ob nur das Icon angezeigt wird.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
     }
     interface KolSpin {
         /**
-          * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
+          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
         "_show"?: boolean;
         /**
-          * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: SpinVariant;
     }
     interface KolSplitButton {
         /**
-          * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -4954,19 +4954,19 @@ declare namespace LocalJSX {
          */
         "_ariaControls"?: string;
         /**
-          * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
-        "_ariaCurrent"?: AriaCurrent1;
+        "_ariaCurrent"?: AriaCurrent;
         /**
-          * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
         "_ariaExpanded"?: boolean;
         /**
-          * Gibt einen beschreibenden Text für den Screenreader an. Damit die Sprachsteuerung von interaktiven Elementen funktioniert, muss der Aria-Label-Text mit dem Label-Text des Buttons beginnen.  - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
         "_ariaSelected"?: boolean;
         /**
@@ -4974,24 +4974,24 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Gibt an, ob der Button deaktiviert ist.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
-          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
-          * Iconklasse (z.B.: "codicon codicon-home")
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: string;
         /**
-          * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt den sichtbaren Text des Elements.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -4999,37 +4999,37 @@ declare namespace LocalJSX {
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
-        "_role"?: AlternativButtonLinkRole1;
+        "_role"?: AlternativButtonLinkRole;
         /**
-          * Gibt an, welche Rolle der Schalter hat.
+          * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_showDropdown"?: boolean;
         /**
-          * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment1;
+        "_tooltipAlign"?: Align;
         /**
-          * Setzt den Typ der Schaltfläche.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
-        "_type"?: KoliBriButtonType1;
+        "_type"?: KoliBriButtonType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified1<unknown>;
+        "_value"?: Stringified<unknown>;
         /**
-          * Gibt an, welche Ausprägung der Button hat.
+          * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: KoliBriButtonVariant1;
+        "_variant"?: KoliBriButtonVariant;
     }
     interface KolSymbol {
         /**
-          * Gibt an, was der Screenreader ausgeben soll
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -5039,7 +5039,7 @@ declare namespace LocalJSX {
     }
     interface KolTable {
         /**
-          * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_caption": string;
         /**
@@ -5061,7 +5061,7 @@ declare namespace LocalJSX {
     }
     interface KolTabs {
         /**
-          * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_ariaLabel": string;
         /**
@@ -5079,11 +5079,11 @@ declare namespace LocalJSX {
         /**
           * Setzt die Position der Registrierkarten.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: Align;
     }
     interface KolTextarea {
         /**
-          * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+          * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
          */
         "_accessKey"?: string;
         /**
@@ -5091,11 +5091,11 @@ declare namespace LocalJSX {
          */
         "_adjustHeight"?: boolean;
         /**
-          * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
         "_disabled"?: boolean;
         /**
@@ -5107,7 +5107,7 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: boolean;
         /**
-          * Versteckt das sichtbare Label des Elements.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5115,15 +5115,15 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Gibt die technische ID des Eingabefeldes an.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id"?: string;
         /**
-          * Das Label dient der Beschriftung unterschiedlicher Elemente. - Button -> label text - Heading -> headline text - Input, Select und Textarea -> label text - Summary -> summary text - Table -> caption text - etc.  Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden, wenn man das Label mittels dem Expert-Slot überschreiben will.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
-          * Setzt die maximale Zeichenanzahl.
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
@@ -5155,7 +5155,7 @@ declare namespace LocalJSX {
          */
         "_rows"?: number;
         /**
-          * Gibt an, welchen Tab-Index dieses Input hat.
+          * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
@@ -5169,19 +5169,19 @@ declare namespace LocalJSX {
     }
     interface KolToast {
         /**
-          * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Aktiviert das Schließen-Icon.
+          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt den Titel der Meldung an.
+          * Gibt die Beschriftung der Komponente an.
          */
         "_heading"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
         /**
@@ -5189,7 +5189,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Gibt an, ob der Toast eingeblendet wird.
+          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
         "_show"?: boolean;
         /**
@@ -5197,7 +5197,7 @@ declare namespace LocalJSX {
          */
         "_showDuration"?: number;
         /**
-          * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
         "_type"?: AlertType;
     }
@@ -5205,13 +5205,13 @@ declare namespace LocalJSX {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: Alignment;
+        "_align"?: Align;
         /**
-          * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
+          * Gibt die interne ID des primären Elements in der Komponente an.
          */
         "_id": string;
         /**
-          * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
     }

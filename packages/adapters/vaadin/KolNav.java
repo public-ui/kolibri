@@ -40,7 +40,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -49,7 +49,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -112,7 +112,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 *
 	 * @param value String
 	 */
@@ -121,7 +121,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -130,7 +130,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt die Ausrichtung der Navigation an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -139,7 +139,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt die Ausrichtung der Navigation an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -148,7 +148,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Stellt verschiedene Varianten der Navigation zur Verfügung.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -157,7 +157,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Stellt verschiedene Varianten der Navigation zur Verfügung.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @return Optional<String>
 	 */

@@ -18,7 +18,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
 @JsModule("@public-ui/components/dist/components/kol-input-radio")
 public class KolInputRadio extends Component {
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -27,7 +27,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 *
 	 * @return Optional<String>
 	 */
@@ -36,7 +36,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -45,7 +45,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
 	 * @return Optional<String>
 	 */
@@ -54,7 +54,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -63,7 +63,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
 	 * @return Optional<String>
 	 */
@@ -90,7 +90,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -99,7 +99,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -126,7 +126,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -135,7 +135,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -144,16 +144,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
-- Button -> label text
-- Heading -> headline text
-- Input, Select und Textarea -> label text
-- Summary -> summary text
-- Table -> caption text
-- etc.
-
-Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
-wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -162,16 +153,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.
 	}
 
 	/**
-	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
-- Button -> label text
-- Heading -> headline text
-- Input, Select und Textarea -> label text
-- Summary -> summary text
-- Table -> caption text
-- etc.
-
-Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
-wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -216,7 +198,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.
 	}
 
 	/**
-	 * Gibt die Ausrichtung der LinkList an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -225,7 +207,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.
 	}
 
 	/**
-	 * Gibt die Ausrichtung der LinkList an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 *
 	 * @return Optional<String>
 	 */
@@ -252,7 +234,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value Optional<String>
 	 */
@@ -261,7 +243,7 @@ wenn man das Label mittels dem Expert-Slot überschreiben will.
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @return Optional<String>
 	 */

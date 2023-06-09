@@ -21,12 +21,12 @@ Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann
 
 ## Properties
 
-| Property              | Attribute  | Description                            | Type                               | Default     |
-| --------------------- | ---------- | -------------------------------------- | ---------------------------------- | ----------- |
-| `_caption`            | `_caption` | Setzt die Überschrift.                 | `string \| undefined`              | `undefined` |
-| `_href` _(required)_  | `_href`    | Link auf die Quelle des Zitates.       | `string`                           | `undefined` |
-| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst. | `string`                           | `undefined` |
-| `_variant`            | `_variant` | Setzt die Variante des Zitats.         | `"block" \| "inline" \| undefined` | `'inline'`  |
+| Property              | Attribute  | Description                                                                                                                 | Type                               | Default     |
+| --------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
+| `_caption`            | `_caption` | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`              | `undefined` |
+| `_href` _(required)_  | `_href`    | Gibt den Link zur Quelle des Zitates an.                                                                                    | `string`                           | `undefined` |
+| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst.                                                                                      | `string`                           | `undefined` |
+| `_variant`            | `_variant` | Gibt an, welche Variante der Darstellung genutzt werden soll.                                                               | `"block" \| "inline" \| undefined` | `'inline'`  |
 
 ## Dependencies
 

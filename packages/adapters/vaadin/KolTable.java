@@ -20,7 +20,7 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
-	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -29,7 +29,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
