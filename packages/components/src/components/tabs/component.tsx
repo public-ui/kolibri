@@ -189,7 +189,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 

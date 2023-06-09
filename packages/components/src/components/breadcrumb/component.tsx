@@ -67,12 +67,12 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
 	/**
-	 * Setzt die Liste der darzustellenden Links.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 

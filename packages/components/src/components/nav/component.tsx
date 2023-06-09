@@ -283,7 +283,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Prop() public _ariaCurrentValue: AriaCurrent = false;
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
@@ -304,17 +304,17 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Gibt die Ausrichtung der Navigation an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/**
-	 * Stellt verschiedene Varianten der Navigation zur Verfügung.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */

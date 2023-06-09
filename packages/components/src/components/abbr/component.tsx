@@ -34,7 +34,7 @@ export class KolAbbr implements API {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
 	@Prop() public _tooltipAlign?: Alignment = 'top';
 

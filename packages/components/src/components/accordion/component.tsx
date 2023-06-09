@@ -117,12 +117,12 @@ export class KolAccordion implements API {
 	}
 
 	/**
-	 * Gibt die Überschrift des Accordions an.
+	 * Gibt die Beschriftung der Komponente an.
 	 */
 	@Prop() public _heading!: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -132,7 +132,7 @@ export class KolAccordion implements API {
 	@Prop() public _on?: KoliBriAccordionCallbacks;
 
 	/**
-	 * Gibt an, ob das Accordion geöffnet ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 

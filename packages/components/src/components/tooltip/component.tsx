@@ -167,12 +167,12 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _align?: Alignment = 'top';
 
 	/**
-	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id!: string;
 
 	/**
-	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 

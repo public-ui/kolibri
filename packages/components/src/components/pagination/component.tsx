@@ -236,7 +236,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _siblingCount?: number = 1;
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
 	@Prop() public _tooltipAlign?: Alignment = 'top';
 
@@ -246,7 +246,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _total!: number;
 
 	/**
-	 * Gibt an, welche Button-Variante verwendet werden soll.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 

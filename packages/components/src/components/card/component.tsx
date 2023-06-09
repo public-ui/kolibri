@@ -64,19 +64,19 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop({ reflect: true }) public _hasFooter?: boolean = false;
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 */
 	@Prop() public _heading!: string;
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @deprecated Verwende stattdessen das Property _heading.
 	 */
 	@Prop() public _headline?: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 

@@ -67,7 +67,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	private disableSort = false;
 
 	/**
-	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _caption!: string;
 

@@ -86,12 +86,12 @@ export class KolInput implements Props {
 	}
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
@@ -101,7 +101,7 @@ export class KolInput implements Props {
 	@Prop() public _error?: string = '';
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
 
@@ -111,12 +111,12 @@ export class KolInput implements Props {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: KoliBriHorizontalIcon;
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id!: string;
 

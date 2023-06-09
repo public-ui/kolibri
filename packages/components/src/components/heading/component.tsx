@@ -32,12 +32,12 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	/**
-	 * Gibt den Text der Überschrift an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
