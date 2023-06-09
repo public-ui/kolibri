@@ -52,9 +52,12 @@ export class InputDateController extends InputIconController implements Watches 
 				case 'month':
 					return `${v.getFullYear()}-${v.getMonth() + 1}`;
 				case 'time':
-					const step = this.component._step;
 					// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#using_the_step_attribute
-					if (step === undefined || (typeof step === 'string' && step === '60') || (typeof step === 'number' && step === 60)) {
+					if (
+						this.component._step === undefined ||
+						(typeof this.component._step === 'string' && this.component._step === '60') ||
+						(typeof this.component._step === 'number' && this.component._step === 60)
+					) {
 						return `${v.getHours()}:${v.getMinutes()}`;
 					} else {
 						return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
