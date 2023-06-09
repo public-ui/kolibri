@@ -4,13 +4,13 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Generic } from '@a11y-ui/core';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
-import { Alignment, PropAlignment, PropShow, validateAlignment, validateShow } from '../../types/props';
+import { Align, PropAlign, PropShow, validateAlign, validateShow } from '../../types/props';
 
 type RequiredProps = unknown;
-type OptionalProps = PropAlignment & PropShow;
+type OptionalProps = PropAlign & PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = PropAlignment & PropShow & { visible: boolean };
+type RequiredStates = PropAlign & PropShow & { visible: boolean };
 type OptionalStates = unknown;
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
@@ -44,7 +44,7 @@ export class KolPopover implements API {
 				}
 
 				void computePosition(trigger, popoverEl, {
-					placement: this.state._alignment,
+					placement: this.state._align,
 					middleware: middleware,
 				}).then(({ x, y, middlewareData, placement }) => {
 					this.setPosition(x, y, middlewareData, placement, callBack);
@@ -147,7 +147,7 @@ export class KolPopover implements API {
 		return (
 			<Host ref={this.catchHostAndTriggerElement}>
 				<div class={{ popover: true, hidden: !this.state._show, show: this.state._visible }} ref={this.catchPopoverElement}>
-					<div class={`arrow ${this.state._alignment}`} ref={this.catchArrowElement} />
+					<div class={`arrow ${this.state._align}`} ref={this.catchArrowElement} />
 					<slot />
 				</div>
 			</Host>
@@ -157,7 +157,7 @@ export class KolPopover implements API {
 	/**
 	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
 	 */
-	@Prop() public _alignment?: Alignment = 'top';
+	@Prop() public _align?: Align = 'top';
 
 	/**
 	 * Öffnet/schließt das Popover.
@@ -165,14 +165,14 @@ export class KolPopover implements API {
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
 	@State() public state: States = {
-		_alignment: 'top',
+		_align: 'top',
 		_show: false,
 		_visible: false,
 	};
 
-	@Watch('_alignment')
-	public validateAlignment(value?: Alignment): void {
-		validateAlignment(this, value);
+	@Watch('_align')
+	public validateAlign(value?: Align): void {
+		validateAlign(this, value);
 	}
 
 	@Watch('_show')
@@ -182,7 +182,7 @@ export class KolPopover implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAlignment(this._alignment);
+		this.validateAlign(this._align);
 		this.validateShow(this._show);
 	}
 }

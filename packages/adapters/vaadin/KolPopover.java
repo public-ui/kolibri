@@ -21,8 +21,8 @@ public class KolPopover extends Component {
 	 *
 	 * @param value Optional<String>
 	 */
-	public void setAlignment(final Optional<String> value) {
-		getElement().setProperty("_alignment", value);
+	public void setAlign(final Optional<String> value) {
+		getElement().setProperty("_align", value);
 	}
 
 	/**
@@ -30,8 +30,8 @@ public class KolPopover extends Component {
 	 *
 	 * @return Optional<String>
 	 */
-	public Optional<String> getAlignment() {
-		return getElement().getProperty("_alignment", null);
+	public Optional<String> getAlign() {
+		return getElement().getProperty("_align", null);
 	}
 
 	/**

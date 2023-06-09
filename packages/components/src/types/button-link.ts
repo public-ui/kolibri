@@ -4,7 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { Alignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropLabel, PropStealth } from './props';
+import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropLabel, PropStealth } from './props';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -21,11 +21,11 @@ type OptionalButtonAndLinkProps = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: Align;
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
+	tooltipAlign: Align;
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
@@ -41,11 +41,11 @@ type OptionalButtonAndLinkStates = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: Align;
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
+	tooltipAlign: Align;
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
@@ -198,7 +198,7 @@ export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantPr
 // type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 // type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
-export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Alignment): void => {
+export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Align): void => {
 	watchValidator(
 		component,
 		propName,

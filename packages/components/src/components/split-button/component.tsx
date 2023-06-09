@@ -1,14 +1,14 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { API, KoliBriSplitButtonCallback, States } from './types';
-import { Alignment, AlternativButtonLinkRole, AriaCurrent, KoliBriButtonType, KoliBriButtonVariant, Stringified } from '../../components';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
-import { validateAriaCurrent, validateAriaExpanded, validateAriaSelected, validateDisabled, validateHideLabel } from '../../types/props';
+import { Align, AriaCurrent, validateAriaCurrent, validateAriaExpanded, validateAriaSelected, validateDisabled, validateHideLabel } from '../../types/props';
 import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { watchTooltipAlignment } from '../../types/button-link';
+import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
+import { Stringified } from '../../types/common';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -200,7 +200,7 @@ export class KolSplitButton implements API {
 	/**
 	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Setzt den Typ der Schaltfläche.
@@ -312,7 +312,7 @@ export class KolSplitButton implements API {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: Align): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

@@ -9,10 +9,10 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 
 ## Properties
 
-| Property     | Attribute    | Description                                                        | Type                                                  | Default |
-| ------------ | ------------ | ------------------------------------------------------------------ | ----------------------------------------------------- | ------- |
-| `_alignment` | `_alignment` | Setzt die Ausrichtung des Popovers in Relation zum Triggerelement. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'` |
-| `_show`      | `_show`      | Öffnet/schließt das Popover.                                       | `boolean \| undefined`                                | `false` |
+| Property | Attribute | Description                                                        | Type                                                  | Default |
+| -------- | --------- | ------------------------------------------------------------------ | ----------------------------------------------------- | ------- |
+| `_align` | `_align`  | Setzt die Ausrichtung des Popovers in Relation zum Triggerelement. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'` |
+| `_show`  | `_show`   | Öffnet/schließt das Popover.                                       | `boolean \| undefined`                                | `false` |
 
 ## Slots
 
