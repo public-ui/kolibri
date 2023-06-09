@@ -154,27 +154,27 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
-	 * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, ob der Link deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
@@ -191,24 +191,24 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _href!: string;
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
 	@Prop() public _iconAlign?: Alignment;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: false }) public _label!: string;
@@ -220,7 +220,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
@@ -239,7 +239,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop({ reflect: true }) public _stealth?: boolean = false;
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -254,7 +254,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
 	@Prop() public _tooltipAlign?: Alignment = 'right';
 

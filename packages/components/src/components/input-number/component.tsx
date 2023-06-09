@@ -104,12 +104,12 @@ export class KolInputNumber implements ComponentApi {
 	private readonly controller: InputNumberController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
@@ -119,7 +119,7 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -129,7 +129,7 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -139,26 +139,17 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
 
 	/**
-	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
-	 * - Button -> label text
-	 * - Heading -> headline text
-	 * - Input, Select und Textarea -> label text
-	 * - Summary -> summary text
-	 * - Table -> caption text
-	 * - etc.
-	 *
-	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
-	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
@@ -168,12 +159,12 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _list?: Stringified<string[]>;
 
 	/**
-	 * Gibt den größtmöglichen Zahlenwert an.
+	 * Gibt den größtmöglichen Eingabewert an.
 	 */
 	@Prop() public _max?: number | Iso8601;
 
 	/**
-	 * Gibt den kleinstmöglichen Zahlenwert an.
+	 * Gibt den kleinstmöglichen Eingabewert an.
 	 */
 	@Prop() public _min?: number | Iso8601;
 
@@ -208,12 +199,12 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _smartButton?: ButtonProps;
 
 	/**
-	 * Gibt die Schrittweite der Wertveränderung an
+	 * Gibt die Schrittweite der Wertveränderung an.
 	 */
 	@Prop() public _step?: number;
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -223,7 +214,7 @@ export class KolInputNumber implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
 	 * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
 	 */

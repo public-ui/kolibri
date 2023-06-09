@@ -113,7 +113,7 @@ export class KolSplitButton implements API {
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -123,26 +123,22 @@ export class KolSplitButton implements API {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
-	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
-	 * Sprachsteuerung von interaktiven Elementen funktioniert, muss der
-	 * Aria-Label-Text mit dem Label-Text des Buttons beginnen.
-	 *
-	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
@@ -152,28 +148,28 @@ export class KolSplitButton implements API {
 	@Prop() public _customClass?: string;
 
 	/**
-	 * Gibt an, ob der Button deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: string;
 
 	/**
-	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop({ mutable: true, reflect: false }) public _label!: string;
 
@@ -183,27 +179,27 @@ export class KolSplitButton implements API {
 	@Prop() public _on?: { onClick: KoliBriSplitButtonCallback };
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _showDropdown?: boolean = false;
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
 	@Prop() public _tooltipAlign?: Alignment = 'top';
 
 	/**
-	 * Setzt den Typ der Schaltfläche.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: KoliBriButtonType = 'button';
 
@@ -213,7 +209,7 @@ export class KolSplitButton implements API {
 	@Prop() public _value?: Stringified<unknown>;
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 

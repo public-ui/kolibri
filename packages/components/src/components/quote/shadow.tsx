@@ -11,12 +11,12 @@ import { ComponentApi, KoliBriQuoteVariant, States } from './types';
 })
 export class KolQuote implements ComponentApi {
 	/**
-	 * Setzt die Überschrift.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _caption?: string;
 
 	/**
-	 * Link auf die Quelle des Zitates.
+	 * Gibt den Link zur Quelle des Zitates an.
 	 */
 	@Prop() public _href!: string;
 
@@ -26,7 +26,7 @@ export class KolQuote implements ComponentApi {
 	@Prop() public _quote!: string;
 
 	/**
-	 * Setzt die Variante des Zitats.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 

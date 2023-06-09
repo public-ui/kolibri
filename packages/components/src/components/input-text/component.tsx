@@ -120,12 +120,12 @@ export class KolInputText implements ComponentApi {
 	private readonly controller: InputTextController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
@@ -135,7 +135,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -145,7 +145,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -155,26 +155,17 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
 
 	/**
-	 * Das Label dient der Beschriftung unterschiedlicher Elemente.
-	 * - Button -> label text
-	 * - Heading -> headline text
-	 * - Input, Select und Textarea -> label text
-	 * - Summary -> summary text
-	 * - Table -> caption text
-	 * - etc.
-	 *
-	 * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
-	 * wenn man das Label mittels dem Expert-Slot überschreiben will.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
@@ -184,7 +175,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _list?: Stringified<string[]>;
 
 	/**
-	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
+	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
 	 */
 	@Prop() public _maxLength?: number;
 
@@ -199,7 +190,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt ein Prüfmuster für das Eingabefeld an.
+	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
 	 */
 	@Prop() public _pattern?: string;
 
@@ -229,7 +220,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _smartButton?: ButtonProps;
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -239,7 +230,7 @@ export class KolInputText implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: InputTextType = 'text';
 

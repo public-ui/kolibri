@@ -53,7 +53,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
-	 * Gibt das Aria-Label am Icon an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 

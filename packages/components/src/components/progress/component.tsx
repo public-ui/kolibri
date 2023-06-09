@@ -108,7 +108,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	/**
-	 * Setzt die Bezeichnung der Fortschrittsanzeige.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: string;
 
@@ -118,7 +118,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _max!: number;
 
 	/**
-	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
 	 * @deprecated will be removed in v2, use _variant
 	 */
 	@Prop() public _type?: KoliBriProgressType;
@@ -134,7 +134,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _value!: number;
 
 	/**
-	 * Gibt an, ob die Fortschrittsanzeige als Balken oder Kreis dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: KoliBriProgressType;
 

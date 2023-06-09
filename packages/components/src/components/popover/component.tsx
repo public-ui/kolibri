@@ -160,7 +160,7 @@ export class KolPopover implements API {
 	@Prop() public _alignment?: Alignment = 'top';
 
 	/**
-	 * Öffnet/schließt das Popover.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 

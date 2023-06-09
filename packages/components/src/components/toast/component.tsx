@@ -37,22 +37,22 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolToast implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Aktiviert das Schließen-Icon.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 */
 	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 */
 	@Prop() public _heading?: string = '';
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -62,7 +62,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _on?: KoliBriToastEventCallbacks;
 
 	/**
-	 * Gibt an, ob der Toast eingeblendet wird.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 
@@ -72,7 +72,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _showDuration?: number = 10000;
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 

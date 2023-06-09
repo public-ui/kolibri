@@ -33,7 +33,7 @@ export class KolIconFontAwesome implements Generic.Element.Members<RequiredProps
 	}
 
 	/**
-	 * Gibt das Aria-Label am Icon an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 

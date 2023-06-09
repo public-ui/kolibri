@@ -67,12 +67,12 @@ export class KolSpin implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
-	 * Gibt an, ob die Ladeanzeige eingeblendet wird oder nicht.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 */
 	@Prop({ reflect: true }) public _show?: boolean = false;
 
 	/**
-	 * Gibt an, welche Ladeanimation oder ob keine Animation verwendet werden soll.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: SpinVariant = 'dot';
 

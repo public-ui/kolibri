@@ -31,7 +31,7 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 	}
 
 	/**
-	 * Gibt an, was der Screenreader ausgeben soll
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 

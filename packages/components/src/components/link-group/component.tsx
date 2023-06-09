@@ -111,7 +111,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	private isUl = true;
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
@@ -126,12 +126,12 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _heading?: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel;
 
 	/**
-	 * Setzt die Liste der darzustellenden Links.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
@@ -142,7 +142,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop({ reflect: true }) public _ordered?: boolean;
 
 	/**
-	 * Gibt die Ausrichtung der LinkList an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 

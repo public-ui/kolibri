@@ -83,17 +83,17 @@ export class KolBadge implements Props {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 

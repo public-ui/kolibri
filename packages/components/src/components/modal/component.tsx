@@ -104,7 +104,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
