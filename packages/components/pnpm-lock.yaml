@@ -12,8 +12,8 @@ dependencies:
     specifier: 1.2.9
     version: 1.2.9
   '@public-ui/schema':
-    specifier: 1.6.0-rc.1
-    version: 1.6.0-rc.1
+    specifier: 1.6.0-rc.2
+    version: 1.6.0-rc.2
   i18next:
     specifier: 22.5.0
     version: 22.5.0
@@ -156,12 +156,6 @@ devDependencies:
     version: 7.0.0
 
 packages:
-
-  /@a11y-ui/core@1.0.2:
-    resolution: {integrity: sha512-RWGduw5+d/QgNfJogkuJPWvGxmWfa1qFleoAaBlt6UIPOaqP1eXY5ch06s+5yWfG93WYY2Otm3XQBV0RAGWGlA==}
-    dependencies:
-      adopted-style-sheets: 1.0.2
-    dev: false
 
   /@a11y-ui/core@1.0.3:
     resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
@@ -1763,10 +1757,10 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.1:
-    resolution: {integrity: sha512-R75Gt03jaVtlTTCdJBhjmwBy4u6hMxHdnjQ2+DQaeubbfsq4h3v5jwLSRXVojyVLHc34Wi3Xvln5Eu6zUHF3ug==}
+  /@public-ui/schema@1.6.0-rc.2:
+    resolution: {integrity: sha512-2/8Z1KK98BPKG/x2Vbfc1aehOS3LNh7HfYWFcjMrOsH2E5DOTB/WJJamn5bzaiMrAlS3kEsU7DwQVmGBmA/Jhw==}
     dependencies:
-      '@a11y-ui/core': 1.0.2
+      '@a11y-ui/core': 1.0.3
     dev: false
 
   /@puppeteer/browsers@1.4.1(typescript@5.0.4):
@@ -2422,12 +2416,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
-
-  /adopted-style-sheets@1.0.2:
-    resolution: {integrity: sha512-3+0pE9cocYLYuYa47zHzmAfeEPOaT1IpilwdPiLaow+YKJ2C9usVAcuDRsZqEJWsWIqJVALPL+FXeE0TGOvRyw==}
-    dependencies:
-      loglevel: 1.8.1
-    dev: false
 
   /adopted-style-sheets@1.0.3:
     resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
