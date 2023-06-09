@@ -3,6 +3,7 @@
 	"private": true,
 	"scripts": {
 		"clean": "git clean -f -d -X",
+		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "lerna exec --stream -- rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
 		"depcheck": "lerna run depcheck",
 		"format": "lerna run format",
