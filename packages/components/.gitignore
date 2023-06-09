@@ -3,6 +3,7 @@
 /loader/
 /public/
 /screenshot/
+/src/components.d.ts
 /www/
 # cheat-sheet.html
 custom-elements.json

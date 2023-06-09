@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Alignment, AriaCurrent } from "./types/props";
+import { Align, AriaCurrent } from "./types/props";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
@@ -24,7 +24,7 @@ import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
-import { Alignment as Alignment1, AlternativButtonLinkRole as AlternativButtonLinkRole1, AriaCurrent as AriaCurrent1, KoliBriButtonType as KoliBriButtonType1, KoliBriButtonVariant as KoliBriButtonVariant1, Stringified as Stringified1 } from "./components";
+import { Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -40,7 +40,7 @@ import { KoliBriDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } fro
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/component";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { Alignment, AriaCurrent } from "./types/props";
+export { Align, AriaCurrent } from "./types/props";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
@@ -59,7 +59,7 @@ export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
-export { Alignment as Alignment1, AlternativButtonLinkRole as AlternativButtonLinkRole1, AriaCurrent as AriaCurrent1, KoliBriButtonType as KoliBriButtonType1, KoliBriButtonVariant as KoliBriButtonVariant1, Stringified as Stringified1 } from "./components";
+export { Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -84,7 +84,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
     }
     interface KolAccordion {
         /**
@@ -237,7 +237,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -265,7 +265,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -343,7 +343,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -394,7 +394,7 @@ export namespace Components {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
@@ -422,7 +422,7 @@ export namespace Components {
         /**
           * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt den Typ der Schaltfläche.
          */
@@ -1611,7 +1611,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1654,7 +1654,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1734,7 +1734,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, welche Ausprägung der Link-Button hat.
          */
@@ -1813,7 +1813,7 @@ export namespace Components {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -1856,7 +1856,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1964,7 +1964,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -1978,7 +1978,7 @@ export namespace Components {
         /**
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
-        "_alignment"?: Alignment;
+        "_align"?: Align;
         /**
           * Öffnet/schließt das Popover.
          */
@@ -2168,7 +2168,7 @@ export namespace Components {
         /**
           * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
-        "_ariaCurrent"?: AriaCurrent1;
+        "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -2213,7 +2213,7 @@ export namespace Components {
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
-        "_role"?: AlternativButtonLinkRole1;
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
@@ -2225,19 +2225,19 @@ export namespace Components {
         /**
           * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
-        "_tooltipAlign"?: Alignment1;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt den Typ der Schaltfläche.
          */
-        "_type"?: KoliBriButtonType1;
+        "_type"?: KoliBriButtonType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified1<unknown>;
+        "_value"?: Stringified<unknown>;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
-        "_variant"?: KoliBriButtonVariant1;
+        "_variant"?: KoliBriButtonVariant;
     }
     interface KolSymbol {
         /**
@@ -2291,7 +2291,7 @@ export namespace Components {
         /**
           * Setzt die Position der Registrierkarten.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: Align;
     }
     interface KolTextarea {
         /**
@@ -2417,7 +2417,7 @@ export namespace Components {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: Alignment;
+        "_align"?: Align;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
@@ -2872,7 +2872,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
     }
     interface KolAccordion {
         /**
@@ -3025,7 +3025,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -3053,7 +3053,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -3131,7 +3131,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, welche Typ der Button hat.
          */
@@ -3182,7 +3182,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
          */
@@ -3210,7 +3210,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt den Typ der Schaltfläche.
          */
@@ -4399,7 +4399,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4442,7 +4442,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4522,7 +4522,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, welche Ausprägung der Link-Button hat.
          */
@@ -4601,7 +4601,7 @@ declare namespace LocalJSX {
           * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Alignment;
+        "_iconAlign"?: Align;
         /**
           * Gibt an, ob nur das Icon angezeigt wird.
          */
@@ -4644,7 +4644,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -4752,7 +4752,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
          */
-        "_tooltipAlign"?: Alignment;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -4766,7 +4766,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
-        "_alignment"?: Alignment;
+        "_align"?: Align;
         /**
           * Öffnet/schließt das Popover.
          */
@@ -4956,7 +4956,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
          */
-        "_ariaCurrent"?: AriaCurrent1;
+        "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -5001,7 +5001,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
-        "_role"?: AlternativButtonLinkRole1;
+        "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt an, welche Rolle der Schalter hat.
          */
@@ -5013,19 +5013,19 @@ declare namespace LocalJSX {
         /**
           * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
          */
-        "_tooltipAlign"?: Alignment1;
+        "_tooltipAlign"?: Align;
         /**
           * Setzt den Typ der Schaltfläche.
          */
-        "_type"?: KoliBriButtonType1;
+        "_type"?: KoliBriButtonType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified1<unknown>;
+        "_value"?: Stringified<unknown>;
         /**
           * Gibt an, welche Ausprägung der Button hat.
          */
-        "_variant"?: KoliBriButtonVariant1;
+        "_variant"?: KoliBriButtonVariant;
     }
     interface KolSymbol {
         /**
@@ -5079,7 +5079,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Position der Registrierkarten.
          */
-        "_tabsAlign"?: Alignment;
+        "_tabsAlign"?: Align;
     }
     interface KolTextarea {
         /**
@@ -5205,7 +5205,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: Alignment;
+        "_align"?: Align;
         /**
           * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
          */
