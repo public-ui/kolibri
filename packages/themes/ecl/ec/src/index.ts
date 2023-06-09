@@ -1010,6 +1010,58 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.error .input {
 		border-color: var(--color-red);
 	}`,
+	'KOL-INPUT-DATE': `kol-input {
+		color: var(--color-grey);
+		gap: var(--spacing-xs);
+	}
+	input,
+	select,
+	textarea {
+		border: none;
+		margin: 1px 0.5em;
+		outline: none;
+	}
+	input,
+	select:not([multiple]) {
+		height: 40px !important;
+		min-height: 40px !important;
+	}
+	label {
+		font-weight: var(--font-weight-bold);
+		order: 1;
+	}
+	.hint {
+		font-size: 0.875rem;
+		order: 2;
+	}
+	kol-alert {
+		color: var(--color-red);
+		font-size: 0.875em;
+		margin-left: calc(-1 * var(--spacing-2xs));
+		order: 3;
+	}
+	.input {
+		min-height: 44px !important;
+		border: 1px solid var(--color-grey-75);
+		color: var(--color-grey);
+		order: 4;
+		align-items: center;
+	}
+	input::placeholder,
+	textarea::placeholder {
+		color: var(--color-grey-50);
+	}
+	.input:focus-within {
+		box-shadow: inset 1px 1px var(--color-blue), inset -1px -1px var(--color-blue);
+		outline: none;
+	}
+	.input:focus-within,
+	.input:hover {
+		border-color: var(--color-blue) !important;
+	}
+	.error .input {
+		border-color: var(--color-red);
+	}`,
 	'KOL-INPUT-EMAIL': `kol-input {
 		color: var(--color-grey);
 		gap: var(--spacing-xs);

@@ -16,7 +16,7 @@ export const TAG_NAMES: string[] = [
 	'kol-indented-text',
 	'kol-input-checkbox',
 	'kol-input-color',
-	// 'kol-input-date', // not customizable
+	'kol-input-date',
 	'kol-input-file',
 	'kol-input-email',
 	'kol-input-number',

@@ -497,6 +497,88 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		background-color: var(--kolibri-color-primary);
 		color: white;
 	}`,
+	'KOL-INPUT-DATE': `input,
+	select,
+	textarea {
+		border: none;
+	}
+	input[type="color"] {
+		border: none;
+		min-height: 40px !important;
+	}
+	input[type="color"],
+	input[type="file"] {
+		background-color: transparent;
+	}
+	kol-input {
+		gap: var(--spacing);
+	}
+	kol-input > label {
+		order: 1;
+		color: var(--default-letter);
+	}
+	kol-input > .input {
+		border-color: var(--kolibri-border-color);
+		border-radius: 0.25rem;
+		border-style: solid;
+		border-width: 2px;
+		order: 2;
+	}
+	kol-input:hover > .input {
+		border-color: var(--kolibri-color-secondary);
+	}
+	kol-input > .input > kol-icon:first-child {
+		margin-left: 0.75em;
+	}
+	kol-input > .input > kol-icon:last-child {
+		margin-right: 0.75em;
+	}
+	kol-input > .error {
+		order: 3;
+	}
+	kol-input > .hint {
+		order: 4;
+		font-size: 0.875em;
+	}
+	input,
+	select,
+	textarea {
+		color: var(--default-letter);
+		padding: 0.5em 0.75em;
+	}
+	input:not([type="range"]),
+	select:not([multiple]) {
+		height: 2.75em;
+	}
+	textarea {
+		display: inherit;
+	}
+	input::placeholder {
+		color: var(--default-border-hover);
+	}
+	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+		cursor: not-allowed;
+	}
+	select[multiple],
+	textarea {
+		overflow: auto;
+	}
+	select option {
+		margin: 1px 0;
+		padding: 0.5em;
+		border-radius: 0.25em;
+		cursor: pointer;
+	}
+	select option:disabled {
+		cursor: not-allowed;
+	}
+	option:active:not(:disabled),
+	option:checked:not(:disabled),
+	option:focus:not(:disabled),
+	option:hover:not(:disabled) {
+		background-color: var(--kolibri-color-primary);
+		color: white;
+	}`,
 	'KOL-INPUT-EMAIL': `input,
 	select,
 	textarea {

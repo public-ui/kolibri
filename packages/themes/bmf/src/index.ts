@@ -452,6 +452,83 @@ export const BMF = KoliBri.createTheme('bmf', {
 		border-color: var(--color-granite);
 		color: var(--color-black);
 	}`,
+	'KOL-INPUT-DATE': `kol-input {
+		gap: 0.25em;
+	}
+	kol-input .error {
+		order: 1;
+	}
+	kol-input label {
+		order: 2;
+	}
+	kol-input .input {
+		order: 3;
+	}
+	kol-input .hint {
+		order: 4;
+		font-size: 0.875em;
+		font-style: italic;
+	}
+	input {
+		border: none;
+	}
+	input::placeholder {
+		color: var(--color-grey);
+	}
+	.input {
+		background-color: var(--color-white);
+		border-color: var(--color-grey);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+		padding: 0 0.5em;
+	}
+	.input > kol-icon {
+		width: 1em;
+	}
+	.input:is(.icon-left, .icon-right) {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.input:is(.icon-left, .icon-right) input {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+	}
+	.input > input:first-child {
+		padding-left: 0.375em;
+	}
+	.input > input:last-child {
+		padding-right: 0.375em;
+	}
+	.input:hover {
+		border-color: var(--color-midnight);
+	}
+	input:disabled {
+		cursor: not-allowed;
+	}
+	.required label > span::after {
+		content: "*";
+		padding-left: 0.125em;
+	}
+	kol-input.error {
+		border-left: 3px solid var(--color-red);
+		padding-left: 1em;
+	}
+	kol-input.error .input:focus-within {
+		outline-color: var(--color-red) !important;
+	}
+	kol-input.error kol-alert.error {
+		color: var(--color-red);
+		font-weight: 700;
+	}
+	kol-input.disabled :is(input, label) {
+		opacity: 1;
+	}
+	kol-input.disabled :is(input, .input) {
+		background-color: var(--color-smoke);
+		border-color: var(--color-granite);
+		color: var(--color-black);
+	}`,
 	'KOL-INPUT-EMAIL': `kol-input {
 		gap: 0.25em;
 	}

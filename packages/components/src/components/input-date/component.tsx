@@ -4,73 +4,103 @@ import { Stringified } from '../../types/common';
 import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { setState, watchValidator } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { ComponentApi, States } from './types';
-import { validateLabel } from '../../types/props';
+import { getRenderStates } from '../input/controller';
+import { propagateSubmitEventToForm } from '../form/controller';
+import { InputDateController } from './controller';
+import { nonce } from '../../utils/dev.utils';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
  */
 @Component({
 	tag: 'kol-input-date',
-	shadow: false,
+	styleUrls: {
+		default: './style.css',
+	},
+	shadow: true,
 })
 export class KolInputDate implements ComponentApi {
 	@Element() private readonly host?: HTMLKolInputDateElement;
-	private ref?: HTMLKolInputNumberElement;
+	private ref?: HTMLInputElement;
 
-	private static readonly DEFAULT_MAX_DATE = new Date(9999, 11, 31, 23, 59, 59);
-
-	// test: https://regex101.com/r/NTVh4L/1
-	private static readonly isoDateRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
-	private static readonly isoLocalDateTimeRegex = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])[T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
-	private static readonly isoMonthRegex = /^\d{4}-([0]\d|1[0-2])/;
-	private static readonly isoTimeRegex = /^[0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
-	private static readonly isoWeekRegex = /^\d{4}-W(?:[0-4]\d|5[0-3])$/;
-
-	private readonly catchRef = (ref?: HTMLKolInputNumberElement) => {
+	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
 		propagateFocus(this.host, this.ref);
 	};
 
+	private readonly onKeyUp = (event: KeyboardEvent) => {
+		if (event.code === 'Enter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.ref,
+			});
+		} else {
+			this.controller.onFacade.onChange(event);
+		}
+	};
+
 	public render(): JSX.Element {
+		const { ariaDescribedBy } = getRenderStates(this.state);
+		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
 		const showExpertSlot = this.state._label === ''; // _label="" or _label
 		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
-			<Host>
-				<kol-input-number
-					ref={this.catchRef}
-					_accessKey={this._accessKey}
-					_alert={this._alert}
-					_autoComplete={this._autoComplete}
-					_disabled={this._disabled}
-					_error={this._error}
-					_hideLabel={this._hideLabel}
-					_hint={this._hint}
-					_icon={this._icon}
-					_id={this._id}
-					_label={this._label}
-					_list={this._list}
-					_max={this.state._max}
-					_min={this.state._min}
-					_name={this._name}
-					_on={this.state._on}
-					_readOnly={this._readOnly}
-					_required={this._required}
-					_smartButton={this._smartButton}
-					_step={this._step}
-					_tabIndex={this._tabIndex}
-					_touched={this._touched}
-					_type={this._type}
-					_value={this.state._value}
+			<Host
+				class={{
+					'has-value': this.state._hasValue,
+				}}
+			>
+				<kol-input
+					class={{
+						[this.state._type]: true,
+					}}
+					_disabled={this.state._disabled}
+					_error={this.state._error}
+					_hideLabel={this.state._hideLabel}
+					_hint={this.state._hint}
+					_icon={this.state._icon}
+					_id={this.state._id}
+					_list={this.state._list}
+					_readOnly={this.state._readOnly}
+					_required={this.state._required}
+					_smartButton={this.state._smartButton}
+					_touched={this.state._touched}
 				>
 					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
-				</kol-input-number>
+					<input
+						ref={this.catchRef}
+						title=""
+						accessKey={this.state._accessKey}
+						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+						aria-labelledby={`${this.state._id}-label`}
+						autoCapitalize="off"
+						autoComplete={this.state._autoComplete}
+						autoCorrect="off"
+						disabled={this.state._disabled}
+						id={this.state._id}
+						list={hasList ? `${this.state._id}-list` : undefined}
+						max={this.state._max}
+						min={this.state._min}
+						name={this.state._name}
+						readOnly={this.state._readOnly}
+						required={this.state._required}
+						slot="input"
+						step={this.state._step}
+						spellcheck="false"
+						type={this.state._type}
+						value={this.state._value as string}
+						{...this.controller.onFacade}
+						onKeyUp={this.onKeyUp}
+					/>
+				</kol-input>
 			</Host>
 		);
 	}
+
+	private readonly controller: InputDateController;
 
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
@@ -188,114 +218,143 @@ export class KolInputDate implements ComponentApi {
 	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: States = {
+		_autoComplete: 'off',
+		_hasValue: false,
+		_id: nonce(), // ⚠ required
 		_label: '…', // ⚠ required
+		_list: [],
+		_type: 'datetime-local',
 	};
 
-	private valueAsIsoDate(value?: Iso8601 | Date | null, defaultValue?: Date): Iso8601 | null | undefined {
-		const v: Iso8601 | Date | undefined = value ?? defaultValue;
-		if (typeof v === 'string') {
-			return v;
-		}
-		if (typeof v === 'object' && v instanceof Date) {
-			switch (this._type) {
-				case 'date':
-					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}`;
-				case 'datetime-local':
-					return `${v.getFullYear()}-${v.getMonth() + 1}-${v.getDate()}T${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
-				case 'month':
-					return `${v.getFullYear()}-${v.getMonth() + 1}`;
-				case 'time':
-					// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#using_the_step_attribute
-					if (this._step === undefined || (typeof this._step === 'string' && this._step === '60') || (typeof this._step === 'number' && this._step === 60)) {
-						return `${v.getHours()}:${v.getMinutes()}`;
-					} else {
-						return `${v.getHours()}:${v.getMinutes()}:${v.getSeconds()}`;
-					}
-				case 'week':
-					throw new Error('Auto convert to week is not supported!');
-			}
-		}
-		if (value === null) {
-			return null;
-		}
-		return undefined;
+	public constructor() {
+		this.controller = new InputDateController(this, 'date', this.host);
 	}
 
-	private validateDateString(value: Iso8601): boolean {
-		switch (this._type) {
-			case 'date':
-				return KolInputDate.isoDateRegex.test(value);
-			case 'datetime-local':
-				return KolInputDate.isoLocalDateTimeRegex.test(value);
-			case 'month':
-				return KolInputDate.isoMonthRegex.test(value);
-			case 'time':
-				return KolInputDate.isoTimeRegex.test(value);
-			case 'week':
-				return KolInputDate.isoWeekRegex.test(value);
-		}
+	@Watch('_accessKey')
+	public validateAccessKey(value?: string): void {
+		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_alert')
+	public validateAlert(value?: boolean): void {
+		this.controller.validateAlert(value);
+	}
+
+	@Watch('_autoComplete')
+	public validateAutoComplete(value?: InputTypeOnOff): void {
+		this.controller.validateAutoComplete(value);
+	}
+
+	@Watch('_disabled')
+	public validateDisabled(value?: boolean): void {
+		this.controller.validateDisabled(value);
+	}
+
+	@Watch('_error')
+	public validateError(value?: string): void {
+		this.controller.validateError(value);
+	}
+
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: boolean): void {
+		this.controller.validateHideLabel(value);
+	}
+
+	@Watch('_hint')
+	public validateHint(value?: string): void {
+		this.controller.validateHint(value);
+	}
+
+	@Watch('_icon')
+	public validateIcon(value?: Stringified<KoliBriHorizontalIcon>): void {
+		this.controller.validateIcon(value);
+	}
+
+	@Watch('_id')
+	public validateId(value?: string): void {
+		this.controller.validateId(value);
 	}
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		this.controller.validateLabel(value);
+	}
+
+	@Watch('_list')
+	public validateList(value?: Stringified<string[]>): void {
+		this.controller.validateList(value);
 	}
 
 	@Watch('_max')
 	public validateMax(value?: Iso8601 | Date): void {
-		watchValidator(
-			this,
-			'_max',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			this.valueAsIsoDate(value, this._type === 'date' || this._type === 'month' || this._type === 'datetime-local' ? KolInputDate.DEFAULT_MAX_DATE : undefined)
-		);
+		this.controller.validateMax(value);
 	}
 
 	@Watch('_min')
 	public validateMin(value?: Iso8601 | Date): void {
-		watchValidator(
-			this,
-			'_min',
-			(value): boolean => value === undefined || (value !== null && this.validateDateString(value)),
-			new Set(['Iso8601', 'Date']),
-			this.valueAsIsoDate(value)
-		);
+		this.controller.validateMin(value);
+	}
+
+	@Watch('_name')
+	public validateName(value?: string): void {
+		this.controller.validateName(value);
 	}
 
 	@Watch('_on')
-	public validateOn(value?: InputTypeOnDefault) {
-		setState(this, '_on', {
-			...value,
-			onChange: (e: Event, v: unknown) => {
-				// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.
-				if (!!v !== !!this._value) {
-					this._value = v as Iso8601;
-				}
+	public validateOn(value?: InputTypeOnDefault): void {
+		this.controller.validateOn(value);
+	}
 
-				if (value?.onChange) {
-					value.onChange(e, v);
-				}
-			},
-		});
+	@Watch('_readOnly')
+	public validateReadOnly(value?: boolean): void {
+		this.controller.validateReadOnly(value);
+	}
+
+	@Watch('_required')
+	public validateRequired(value?: boolean): void {
+		this.controller.validateRequired(value);
+	}
+
+	@Watch('_smartButton')
+	public validateSmartButton(value?: ButtonProps | string): void {
+		this.controller.validateSmartButton(value);
+	}
+
+	@Watch('_step')
+	public validateStep(value?: number): void {
+		this.controller.validateStep(value);
+	}
+
+	@Watch('_tabIndex')
+	public validateTabIndex(value?: number): void {
+		this.controller.validateTabIndex(value);
+	}
+
+	@Watch('_touched')
+	public validateTouched(value?: boolean): void {
+		this.controller.validateTouched(value);
+	}
+
+	@Watch('_type')
+	public validateType(value?: InputDateType): void {
+		this.controller.validateType(value);
 	}
 
 	@Watch('_value')
 	public validateValue(value?: Iso8601 | Date | null): void {
-		watchValidator(
-			this,
-			'_value',
-			(value): boolean => value === undefined || value === null || this.validateDateString(value),
-			new Set(['Iso8601', 'Date']),
-			this.valueAsIsoDate(value)
-		);
+		this.controller.validateValueEx(value, (v) => {
+			if (v === '' && this.ref) {
+				this.ref.value = '';
+			}
+		});
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label);
-		this.validateMax(this._max);
-		this.validateMin(this._min);
-		this.validateOn(this._on);
-		this.validateValue(this._value);
+		this._alert = this._alert === true;
+		this._touched = this._touched === true;
+		this.controller.componentWillLoad();
+
+		this.state._hasValue = !!this.state._value;
+		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 }
