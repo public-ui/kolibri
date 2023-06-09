@@ -52,7 +52,7 @@
 	],
 	"scripts": {
 		"build": "npm run test && npm run build:light",
-		"build:light": "npm run clear && mkdir doc && node scripts/transform.css.js && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/hashing.js && node scripts/autogen.doc.js && node scripts/cheat-sheet.js && node scripts/vaadin.js && npm run format -- -w",
+		"build:light": "npm run clear && mkdir doc && node scripts/transform.css.js && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/hashing.js && node scripts/autogen.doc.js && node scripts/vaadin.js && npm run format -- -w",
 		"clear": "rimraf dist doc loader www ../adapters/angular/v11/src ../adapters/angular/v12/src ../adapters/angular/v13/src ../adapters/angular/v14/src ../adapters/angular/v15/src ../adapters/angular/v16/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/solid/src ../adapters/svelte/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"depcheck": "depcheck --ignore-bin-package --skip-missing --ignores=@types/*,@public-ui/*,@stencil/*,eslint-*,postcss-windicss,tslib,workbox-build",
 		"format": "prettier --check src",
@@ -122,7 +122,6 @@
 		"assets",
 		"dist",
 		"doc",
-		"cheat-sheet.html",
 		"custom-elements.json",
 		"jest-test-results.json",
 		"vscode-custom-data.json"
