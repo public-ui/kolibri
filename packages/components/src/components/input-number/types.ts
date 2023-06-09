@@ -8,7 +8,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps;
-type OptionalProps = OptionalInputProps<number | Iso8601> & { type: InputNumberType };
+type OptionalProps = OptionalInputProps<number | Iso8601> & { placeholder: string; type: InputNumberType };
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;

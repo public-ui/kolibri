@@ -3,7 +3,7 @@ import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { setState, watchBoolean, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { setState, watchBoolean, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 
@@ -153,10 +153,6 @@ export class InputDateController extends InputIconController implements Watches 
 				}
 			},
 		});
-	}
-
-	public validatePlaceholder(value?: string): void {
-		watchString(this.component, '_placeholder', value);
 	}
 
 	public validateReadOnly(value?: boolean): void {

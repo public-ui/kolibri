@@ -87,7 +87,6 @@ export class KolInputDate implements ComponentApi {
 						name={this.state._name}
 						readOnly={this.state._readOnly}
 						required={this.state._required}
-						placeholder={this.state._placeholder}
 						slot="input"
 						step={this.state._step}
 						spellcheck="false"
@@ -186,11 +185,6 @@ export class KolInputDate implements ComponentApi {
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
 	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Gibt den Platzhalter des Eingabefeldes an, wenn es leer ist.
-	 */
-	@Prop() public _placeholder?: string;
 
 	/**
 	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
@@ -318,11 +312,6 @@ export class KolInputDate implements ComponentApi {
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
-	}
-
-	@Watch('_placeholder')
-	public validatePlaceholder(value?: string): void {
-		this.controller.validatePlaceholder(value);
 	}
 
 	@Watch('_readOnly')
