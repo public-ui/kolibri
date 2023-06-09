@@ -16,7 +16,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_alignment: ['top', 'right', 'bottom', 'left'],
+		_align: ['top', 'right', 'bottom', 'left'],
 	},
 	getPopoverHtml,
 	{

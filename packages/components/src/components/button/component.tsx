@@ -15,7 +15,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Alignment, validateAriaExpanded, validateDisabled } from '../../types/props';
+import { AriaCurrent, Align, validateAriaExpanded, validateDisabled } from '../../types/props';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -159,7 +159,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: Align;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -195,7 +195,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
@@ -281,7 +281,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: Alignment): void {
+	public validateIconAlign(value?: Align): void {
 		watchIconAlign(this, value);
 	}
 
@@ -335,7 +335,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: Align): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

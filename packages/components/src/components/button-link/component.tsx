@@ -5,7 +5,7 @@ import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, Op
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { propagateFocus } from '../../utils/reuse';
-import { AriaCurrent, Alignment } from '../../types/props';
+import { AriaCurrent, Align } from '../../types/props';
 
 @Component({
 	tag: 'kol-button-link',
@@ -125,7 +125,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.

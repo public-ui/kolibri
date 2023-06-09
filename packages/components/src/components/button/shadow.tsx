@@ -11,7 +11,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Alignment } from '../../types/props';
+import { AriaCurrent, Align } from '../../types/props';
 import { propagateFocus } from '../../utils/reuse';
 
 @Component({
@@ -117,7 +117,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: Align;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -152,7 +152,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.

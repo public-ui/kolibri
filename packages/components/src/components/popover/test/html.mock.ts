@@ -9,7 +9,7 @@ export const getPopoverHtml = (
 ): string => {
 	const state: States = mixMembers<Props, States>(
 		{
-			_alignment: 'top',
+			_align: 'top',
 			_show: false,
 			_visible: false,
 		},
@@ -18,7 +18,7 @@ export const getPopoverHtml = (
 	return `
   <kol-popover>
 		<div class="popover hidden">
-			<div class="arrow ${state._alignment}"></div>
+			<div class="arrow ${state._align}"></div>
 			${slots.default !== undefined ? slots.default : ''}
 		</div>
   </kol-popover>`;
