@@ -170,6 +170,10 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
@@ -318,11 +322,16 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -1610,6 +1619,10 @@ export namespace Components {
          */
         "_download"?: boolean | string;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -1624,6 +1637,7 @@ export namespace Components {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -1704,6 +1718,10 @@ export namespace Components {
           * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
          */
         "_download"?: boolean | string;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
         /**
           * Gibt die Ziel-Url des Links an.
          */
@@ -1812,6 +1830,10 @@ export namespace Components {
          */
         "_download"?: boolean | string;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -1826,6 +1848,7 @@ export namespace Components {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -2130,11 +2153,16 @@ export namespace Components {
     }
     interface KolSpan {
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -2144,11 +2172,16 @@ export namespace Components {
     }
     interface KolSpanWc {
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -2968,6 +3001,10 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
@@ -3116,11 +3153,16 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -4408,6 +4450,10 @@ declare namespace LocalJSX {
          */
         "_download"?: boolean | string;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -4422,6 +4468,7 @@ declare namespace LocalJSX {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -4502,6 +4549,10 @@ declare namespace LocalJSX {
           * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
          */
         "_download"?: boolean | string;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
         /**
           * Gibt die Ziel-Url des Links an.
          */
@@ -4610,6 +4661,10 @@ declare namespace LocalJSX {
          */
         "_download"?: boolean | string;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Gibt die Ziel-Url des Links an.
          */
         "_href": string;
@@ -4624,6 +4679,7 @@ declare namespace LocalJSX {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -4928,11 +4984,16 @@ declare namespace LocalJSX {
     }
     interface KolSpan {
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -4942,11 +5003,16 @@ declare namespace LocalJSX {
     }
     interface KolSpanWc {
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**

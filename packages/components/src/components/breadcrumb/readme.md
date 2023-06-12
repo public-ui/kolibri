@@ -37,14 +37,14 @@ Das gesamte JSON-Objekt muss in eckigen Klammern an das Attribut **`_links`** ü
 
 - **`_href`** übergibt den Link, der für dieses Element verwendet werden soll.
 - **`_icon`** (optional) übergibt den Namen des Icon, wenn zusätzlich zum Text des Elements noch ein Icon angezeigt werden soll. Es stehen die <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> zur Verfügung
-- **`_iconOnly`** (optional). Wenn der Wert auf **true** gesetzt wird, erscheint im Link ausschließlich das Icon, ohne weiteren Text. Die Eigenschaft `_icon` muss gesetzt werden.
+- **`_hide-label`** (optional). Wenn der Wert auf **true** gesetzt wird, erscheint im Link ausschließlich das Icon, ohne weiteren Text. Die Eigenschaft `_icon` muss gesetzt werden.
 - **`_label`** übergibt den Text, der für dieses Element angezeigt werden soll.
 
 Beispiel für ein JSON-Objekt, das an das Attribut **`_links`** übergeben wird:
 
 ```JSON
 [
-  { '_label': 'Startseite', '_href': '#/', '_icon': 'codicon codicon-home', '_iconOnly': true },
+  { '_label': 'Startseite', '_href': '#/', '_icon': 'codicon codicon-home', '_hide-label _': true },
   { '_label': '1. Unterseite', '_href': '/unterseite_eins' },
   { '_label': '2. Unterseite', '_href': '/unterseite_zwei' }
 ]

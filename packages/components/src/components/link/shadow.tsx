@@ -34,10 +34,10 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
 					_download={this._download}
+					_hideLabel={this._hideLabel}
 					_href={this._href}
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
-					_iconOnly={this._iconOnly}
 					_label={this._label}
 					_on={this._on}
 					_role={this._role}
@@ -97,6 +97,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _download?: boolean | string = false;
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
@@ -114,6 +119,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _iconAlign?: Align;
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 

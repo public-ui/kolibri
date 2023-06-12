@@ -90,7 +90,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this.state._hideLabel} _label={this.state._label}>
+					<kol-span-wc _icon={this._icon} _hideLabel={this.state._hideLabel} _label={this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>

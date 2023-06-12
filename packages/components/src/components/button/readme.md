@@ -53,7 +53,7 @@ Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlü
 
 ### Schaltfläche ohne Text
 
-Mittels **`_iconOnly`** wird die Schaltfläche nur das icon anzeigen (<kol-link _href="#icon" _label="siehe icon"></kol-link>)
+Mittels **`_hide-label`** wird die Schaltfläche nur das icon anzeigen (<kol-link _href="#icon" _label="siehe icon"></kol-link>)
 
 <kol-alert _type="info">Beachten Sie, dass das Attribut **`_label`** auch dann gesetzt werden muss, wenn nur ein Icon angezeigt werden soll, dieses wird von Screenreadern vorgelesen und in den Tooltip gesetzt.</kol-alert>
 

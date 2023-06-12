@@ -32,7 +32,8 @@ type OptionalButtonAndLinkProps = {
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
-	PropDisabled;
+	PropDisabled &
+	PropHideLabel;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
@@ -55,7 +56,8 @@ type OptionalButtonAndLinkStates = {
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
-	PropDisabled;
+	PropDisabled &
+	PropHideLabel;
 
 /**
  * Button
@@ -113,11 +115,11 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
  * API Button
  */
 export type RequiredButtonProps = RequiredButtonLinkProps;
-export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState & PropHideLabel;
+export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState;
-export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonCustomClassPropState & PropHideLabel;
+export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonCustomClassPropState;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /* LINK */

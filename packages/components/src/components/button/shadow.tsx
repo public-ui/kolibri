@@ -48,10 +48,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
-					_hideLabel={this._hideLabel}
+					_hideLabel={this._hideLabel || this._iconOnly}
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
-					_iconOnly={this._iconOnly}
 					_id={this._id}
 					_label={this._label}
 					_on={this._on}
