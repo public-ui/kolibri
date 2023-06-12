@@ -80,6 +80,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 						'icon-only': this.state._hideLabel === true,
+						'hide-label': this.state._hideLabel === true,
 					}}
 					disabled={this.state._disabled}
 					id={this.state._id}
@@ -300,7 +301,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
-		validateHideLabel(this, value);
+		if (!this._hideLabel) {
+			validateHideLabel(this, value);
+		}
 	}
 
 	@Watch('_id')
