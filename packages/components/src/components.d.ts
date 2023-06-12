@@ -230,6 +230,10 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
@@ -240,6 +244,7 @@ export namespace Components {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -387,6 +392,10 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
@@ -397,6 +406,7 @@ export namespace Components {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -3018,6 +3028,10 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
@@ -3028,6 +3042,7 @@ declare namespace LocalJSX {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -3175,6 +3190,10 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon"?: Stringified<KoliBriIconProp>;
@@ -3185,6 +3204,7 @@ declare namespace LocalJSX {
         "_iconAlign"?: Align;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**

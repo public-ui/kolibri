@@ -15,7 +15,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Align, validateAriaExpanded, validateDisabled } from '../../types/props';
+import { AriaCurrent, Align, validateAriaExpanded, validateDisabled, validateHideLabel } from '../../types/props';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -72,14 +72,14 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-label={this.state._iconOnly === false ? this.state._ariaLabel : undefined}
-					aria-labelledby={this.state._iconOnly === true ? this.nonce : undefined}
+					aria-label={this.state._hideLabel === false ? this.state._ariaLabel : undefined}
+					aria-labelledby={this.state._hideLabel === true ? this.nonce : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-						'icon-only': this.state._iconOnly === true,
+						'icon-only': this.state._hideLabel === true,
 					}}
 					disabled={this.state._disabled}
 					id={this.state._id}
@@ -89,11 +89,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}>
+					<kol-span-wc _icon={this._icon} _iconOnly={this.state._hideLabel} _label={this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				{this.state._iconOnly === true && (
+				{this.state._hideLabel === true && (
 					<kol-tooltip
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
@@ -150,6 +150,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
@@ -163,6 +168,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
@@ -271,6 +277,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		}
 	}
 
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: boolean): void {
+		validateHideLabel(this, value);
+	}
+
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
 		validateIcon(this, value);
@@ -279,29 +290,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * @deprecated
 	 */
-
 	@Watch('_iconAlign')
 	public validateIconAlign(value?: Align): void {
 		watchIconAlign(this, value);
 	}
 
+	/**
+	 * @deprecated use _hide-label
+	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
-		watchBoolean(this, '_iconOnly', value, {
-			defaultValue: false,
-			// hooks: {
-			//   beforePatch: (_value, nextState) => {
-			//     let ariaLabel = this.state._ariaLabel;
-			//     if (nextState.has('_ariaLabel')) {
-			//       ariaLabel = nextState.get('_ariaLabel') as string;
-			//     }
-			//     if (typeof ariaLabel !== 'string' || ariaLabel.length <= 0) {
-			//       devHint(`[KolButton]: Bevor Icon-Only aktiviert wird, muss ein Aria-Label bzw. Label gesetzt werden.`);
-			//       nextState.set('_iconOnly', false);
-			//     }
-			//   },
-			// },
-		});
+		validateHideLabel(this, value);
 	}
 
 	@Watch('_id')
@@ -363,6 +362,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
+		this.validateHideLabel(this._hideLabel);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateIconOnly(this._iconOnly);
