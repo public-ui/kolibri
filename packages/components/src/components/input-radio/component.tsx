@@ -36,7 +36,7 @@ export class KolInputRadio implements ComponentApi {
 
 		this.state._value == value;
 		htmlElement.querySelector('input')?.focus();
-		var input = htmlElement.querySelector('input') as HTMLInputElement;
+		const input = htmlElement.querySelector('input') as HTMLInputElement;
 		if (input) {
 			input.checked = true;
 		}
