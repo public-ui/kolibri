@@ -30,14 +30,10 @@ export class KolInputRadio implements ComponentApi {
 	};
 
 	private readonly selectInput = (value: W3CInputValue, htmlElement: HTMLElement) => {
-		if (!htmlElement) {
-			return;
-		}
-
-		this.state._value == value;
-		htmlElement.querySelector('input')?.focus();
-		const input = htmlElement.querySelector('input') as HTMLInputElement;
+		const input = htmlElement?.querySelector('input') as HTMLInputElement;
 		if (input) {
+			this.state._value == value;
+			input.focus();
 			input.checked = true;
 		}
 	};
