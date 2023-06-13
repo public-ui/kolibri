@@ -279,8 +279,6 @@ export const AppComponent = () => {
 
 ### IV ohne Framework
 
-Hinweis: ohne einen Bundler ist KoliBri aktuell nicht verwendbar.
-
 `pnpm i @public-ui/components @public-ui/themes`
 `npm i @public-ui/components @public-ui/themes`
 `yarn add @public-ui/components @public-ui/themes`
@@ -303,5 +301,21 @@ Hinweis: ohne einen Bundler ist KoliBri aktuell nicht verwendbar.
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
+```
+Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)
+
+### V statische Webseite
+
+Um KoliBri in eine statische Webseite einzubauen muss lediglich das folgende Script-Tag eingebunden werden.
+Sofern Schriftarten und/oder Icons verwendet werden, müssen diese, wie oben beschrieben, eingebunden werden.
+
+```html
+<script type="module">
+  import { register } from 'https://esm.sh/@public-ui/components';
+  import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader';
+  import { ITZBund } from 'https://esm.sh/@public-ui/themes';
+    register(ITZBund, defineCustomElements)
+        .catch(console.warn);
+</script>
 ```
 Hierbei ist die Web-Component Schreibweise (kebab-case) zu verwenden. (z.B.: `<kol-heading>`)
