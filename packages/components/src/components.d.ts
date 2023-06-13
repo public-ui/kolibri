@@ -179,6 +179,7 @@ export namespace Components {
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -1732,6 +1733,7 @@ export namespace Components {
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -3010,6 +3012,7 @@ declare namespace LocalJSX {
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**
@@ -4563,6 +4566,7 @@ declare namespace LocalJSX {
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @deprecated use _hide-label
          */
         "_iconOnly"?: boolean;
         /**

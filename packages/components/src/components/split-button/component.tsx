@@ -272,7 +272,7 @@ export class KolSplitButton implements API {
 	}
 
 	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
+	public validateIconOnly(): void {
 		return;
 	}
 

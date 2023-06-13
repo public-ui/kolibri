@@ -350,7 +350,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @deprecated use _hide-label
 	 */
 	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
+	public validateIconOnly(): void {
 		return;
 	}
 

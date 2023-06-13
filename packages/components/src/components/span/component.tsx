@@ -109,7 +109,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 * @deprecated use _hide-label
 	 */
 	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
+	public validateIconOnly(): void {
 		return;
 	}
 

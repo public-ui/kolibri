@@ -300,8 +300,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * @deprecated use _hide-label
 	 */
 	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		return undefined;
+	public validateIconOnly(): void {
+		return;
 	}
 
 	@Watch('_id')
