@@ -311,9 +311,9 @@ Sofern Schriftarten und/oder Icons verwendet werden, müssen diese, wie oben bes
 
 ```html
 <script type="module">
-  import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1';
-  import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.1/dist/loader';
-  import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.1';
+  import { register } from 'https://esm.sh/@public-ui/components';
+  import { defineCustomElements } from 'https://esm.sh/@public-ui/components/dist/loader';
+  import { ITZBund } from 'https://esm.sh/@public-ui/themes';
     register(ITZBund, defineCustomElements)
         .catch(console.warn);
 </script>
