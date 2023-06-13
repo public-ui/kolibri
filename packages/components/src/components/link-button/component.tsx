@@ -122,6 +122,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
