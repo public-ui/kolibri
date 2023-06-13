@@ -29,6 +29,19 @@ export class KolInputRadio implements ComponentApi {
 		propagateFocus(this.host, this.ref);
 	};
 
+	private readonly selectInput = (value: W3CInputValue, htmlElement: HTMLElement) => {
+		if (!htmlElement) {
+			return;
+		}
+
+		this.state._value == value;
+		htmlElement.querySelector('input')?.focus();
+		var input = htmlElement.querySelector('input') as HTMLInputElement;
+		if (input) {
+			input.checked = true;
+		}
+	};
+
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
 		const showExpertSlot = this.state._label === ''; // _label="" or _label
@@ -70,6 +83,7 @@ export class KolInputRadio implements ComponentApi {
 								_renderNoLabel={true}
 								_required={this.state._required}
 								_touched={this.state._touched}
+								onClick={(e) => this.selectInput(option.value, e.currentTarget as HTMLElement)}
 							>
 								<div slot="input">
 									<input
