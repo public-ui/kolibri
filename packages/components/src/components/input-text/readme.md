@@ -20,7 +20,7 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 	_type="text"
 	_id="loeschbar"
 	_name="loeschbar"
-	_smartButton="{ _icon: 'codicon codicon-chrome-close', _iconOnly: true, _label: 'Löschen', _on: { onClick: clearInput } }"
+	_smartButton="{ _icon: 'codicon codicon-chrome-close', _hideLabel: true, _label: 'Löschen', _on: { onClick: clearInput } }"
 	>Löschbar</kol-input-text
 >
 ```

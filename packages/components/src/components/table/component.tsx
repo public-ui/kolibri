@@ -625,7 +625,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																			? 'codicon codicon-chevron-up'
 																			: 'codicon codicon-chevron-down'
 																	}
-																	_iconOnly
+																	_hideLabel
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{
 																		onClick: () => {
@@ -712,7 +712,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																			? 'codicon codicon-chevron-up'
 																			: 'codicon codicon-chevron-down'
 																	}
-																	_iconOnly
+																	_hideLabel
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{
 																		onClick: () => {

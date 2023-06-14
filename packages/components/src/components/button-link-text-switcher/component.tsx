@@ -42,7 +42,7 @@ export class KolButtonLinkSwitch implements Props {
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_disabled={disabled}
 				_icon={icon || '-'}
-				_iconOnly={compact}
+				_hideLabel={compact}
 				_label={label}
 				_on={on}
 			></kol-button-wc>
@@ -56,14 +56,14 @@ export class KolButtonLinkSwitch implements Props {
 				_ariaExpanded={selected}
 				_href={href}
 				_icon={icon || '-'}
-				_iconOnly={compact}
+				_hideLabel={compact}
 				_label={label}
 			></kol-link-wc>
 		);
 	}
 
 	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return <kol-span-wc _icon={icon || '-'} _iconOnly={compact} _label={label}></kol-span-wc>;
+		return <kol-span-wc _icon={icon || '-'} _hideLabel={compact} _label={label}></kol-span-wc>;
 	}
 
 	/**

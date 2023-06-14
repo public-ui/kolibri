@@ -136,7 +136,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				_ariaExpanded={selected}
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
-				_iconOnly
+				_hideLabel
 				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
 			></kol-button-wc>
@@ -206,9 +206,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 						<div class="mt-2 w-full compact">
 							<kol-button
 								_ariaControls="nav"
-								_ariaExpanded={compact}
+								_ariaExpanded={!compact}
 								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
-								_iconOnly
+								_hideLabel
 								_label={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
 									onClick: (): void => {

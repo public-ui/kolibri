@@ -20,7 +20,7 @@ executeTests<LinkProps>(
 		_ariaLabel: ['Aria-Label'],
 		_href: ['https://google.de'],
 		_icon: ['codicon codicon-home'],
-		_iconOnly: [false, true],
+		_hideLabel: [false, true],
 		_label: ['Label'],
 		_target: ['_self', '_blank', 'egal'],
 		_targetDescription: ['Der Link wird in einem neuen Tab geöffnet.'],

@@ -48,9 +48,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
+					_hideLabel={this._hideLabel || this._iconOnly}
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
-					_iconOnly={this._iconOnly}
 					_id={this._id}
 					_label={this._label}
 					_on={this._on}
@@ -108,6 +108,11 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
@@ -121,6 +126,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
