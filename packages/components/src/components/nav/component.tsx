@@ -255,7 +255,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 						<div class="mt-2 w-full compact">
 							<kol-button
 								_ariaControls="nav"
-								_ariaExpanded={compact}
+								_ariaExpanded={!compact}
 								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_iconOnly
 								_label={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
