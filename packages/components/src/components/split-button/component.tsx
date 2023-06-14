@@ -336,9 +336,8 @@ export class KolSplitButton implements API {
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
-		this.validateHideLabel(this._hideLabel);
+		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateIcon(this._icon);
-		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
