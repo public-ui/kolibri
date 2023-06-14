@@ -183,17 +183,6 @@ const TABLE_DATA = [
 		sonntag: 'Alex',
 	},
 ];
-const TABLE_FOOT_DATA = [
-	{
-		montag: '1',
-		dienstag: '2',
-		mittwoch: '3',
-		donnerstag: '4',
-		freitag: '5',
-		samstag: '6',
-		sonntag: '7',
-	},
-];
 const TABLE_DATA_SHORT = TABLE_DATA.slice(0, -1);
 const TABLE_PAGED_DATA = [
 	{
@@ -737,6 +726,24 @@ const TABLE_PAGED_DATA = [
 		sonntag: 'Anna',
 	},
 ];
+const TABLE_2_DATA = [
+	{ montag: 'Alex', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
+	{ montag: 'Helena', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Marcus' },
+	{ montag: 'Fabian', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
+	{ montag: 'Hong', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
+];
+
+const TABLE_FOOT_DATA = [
+	{
+		montag: '1',
+		dienstag: '2',
+		mittwoch: '3',
+		donnerstag: '4',
+		freitag: '5',
+		samstag: '6',
+		sonntag: '7',
+	},
+];
 
 const PAGINATION_1 = {
 	_boundaryCount: 0,
@@ -789,7 +796,7 @@ setTableData('#table-1b', 'header: h, data: short, foot', TABLE_DATA_SHORT, TABL
 setTableData('#table-1c', 'header: h, data: short', TABLE_DATA_SHORT, TABLE_HEADERS_H);
 setTableData('#table-1d', 'header: h/v, data: default', TABLE_DATA, TABLE_HEADERS_H_V);
 
-setTableData('#table-2', 'table-2', TABLE_DATA, TABLE_2_HEADERS);
+setTableData('#table-2', '2 Header, Daten Vertikal, Sort and Render', TABLE_2_DATA, TABLE_2_HEADERS);
 
 setTableData('#table-3a', 'header: h, data: paged', TABLE_PAGED_DATA, TABLE_HEADERS_H);
 setTableData('#table-3b', 'header: h, data: paged, pagination-1', TABLE_PAGED_DATA, TABLE_HEADERS_H, undefined, PAGINATION_1);
