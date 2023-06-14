@@ -74,10 +74,10 @@ export class KolButtonLinkTextSwitch implements Props {
 	/**
 	 * Kompakte Darstellung aktivieren.
 	 */
-	@Prop() public _compact: boolean = false;
+	@Prop() public _compact!: boolean;
 
 	/**
 	 * Ist der Link selectiert? (Nur wenn es ein Link ist.)
 	 */
-	@Prop() public _selected: boolean = false;
+	@Prop() public _selected?: boolean = false;
 }
