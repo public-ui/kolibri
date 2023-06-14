@@ -7,7 +7,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { ColorPair, handleColorChange, PropColor, validateColor } from '../../types/props/color';
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
-import { validateLabel } from '../../types/props';
+import { PropHideLabel, validateLabel } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
@@ -18,9 +18,12 @@ type RequiredProps = {
 type OptionalProps = {
 	color: Stringified<PropColor>;
 	icon: Stringified<KoliBriIconProp>;
+	/**
+	 * @deprecated
+	 */
 	iconOnly: boolean;
 	smartButton: Stringified<ButtonProps>;
-};
+} & PropHideLabel;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -56,15 +59,15 @@ export class KolBadge implements Props {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc id={this.id} _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}></kol-span-wc>
+					<kol-span-wc id={this.id} _icon={this._icon} _hideLabel={this._hideLabel || this._iconOnly} _label={this.state._label}></kol-span-wc>
 					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 						<kol-button-wc
 							_ariaControls={this.id}
 							_ariaLabel={this.state._smartButton._ariaLabel}
 							_customClass={this.state._smartButton._customClass}
 							_disabled={this.state._smartButton._disabled}
+							_hideLabel={true}
 							_icon={this.state._smartButton._icon}
-							_iconOnly={true}
 							_id={this.state._smartButton._id}
 							_label={this.state._smartButton._label}
 							_on={this.state._smartButton._on}
@@ -83,12 +86,18 @@ export class KolBadge implements Props {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 

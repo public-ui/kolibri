@@ -59,7 +59,7 @@ export class KolInput implements Props {
 							_customClass={this._smartButton._customClass}
 							_disabled={this._smartButton._disabled}
 							_icon={this._smartButton._icon}
-							_iconOnly={true}
+							_hideLabel={true}
 							_id={this._smartButton._id}
 							_label={this._smartButton._label}
 							_on={this._smartButton._on}

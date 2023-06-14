@@ -128,7 +128,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
 							_icon={leftDoubleArrowIcon}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-first')}
 							_on={this.onGoToFirst}
 							_variant={this.state._variant}
@@ -142,7 +142,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
 							_icon={leftSingleArrow}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-back')}
 							_on={this.onGoBackward}
 							_variant={this.state._variant}
@@ -157,7 +157,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}
 							_icon={rightSingleArrowIcon}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-next')}
 							_on={this.onGoForward}
 							_variant={this.state._variant}
@@ -171,7 +171,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}
 							_icon={rightDoubleArrowIcon}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-last')}
 							_on={this.onGoToEnd}
 							_variant={this.state._variant}

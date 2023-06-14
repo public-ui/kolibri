@@ -19,7 +19,7 @@ export const getSpanWcHtml = (
 	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
-			_iconOnly: false,
+			_hideLabel: false,
 			_label: '…', // ⚠ required
 		},
 		props
@@ -27,7 +27,7 @@ export const getSpanWcHtml = (
 	const hideExpertSlot = state._label.length > 0;
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${props._iconOnly ? ' _icon-only' : ''}${state._iconOnly === true ? ` class="icon-only"` : ``}${additionalAttrs}>
+<kol-span-wc${props._hideLabel ? ' _hide-label' : ''}${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${additionalAttrs}>
 	${
 		icon.top
 			? getIconHtml({
@@ -48,7 +48,7 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		${state._iconOnly !== true && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
+		${state._hideLabel !== true && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
 		<span${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>
@@ -77,7 +77,7 @@ export const getSpanWcHtml = (
 
 export const getSpanHtml = (props: Props): string => {
 	return `
-<kol-span${props._iconOnly ? ' _icon-only' : ''}>
+<kol-span${props._hideLabel ? ' _hide-label' : ''}>
 	<mock:shadow-root>
 		${getSpanWcHtml(props, {
 			expert: `<slot name="expert" slot="expert"></slot>`,

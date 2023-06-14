@@ -84,12 +84,12 @@ export class KolAlertWc implements API {
 					{this.state._hasCloser && (
 						<kol-button-wc
 							class="close"
+							_hideLabel
 							_icon={{
 								left: {
 									icon: 'codicon codicon-close',
 								},
 							}}
-							_iconOnly
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"

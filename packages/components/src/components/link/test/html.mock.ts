@@ -9,7 +9,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	props = mixMembers(
 		{
 			_href: 'javascript:void(0)',
-			_iconOnly: false,
+			_hideLabel: false,
 			_label: '',
 			// _label: '…', // ⚠ required
 			_tooltipAlign: 'right',
@@ -25,16 +25,16 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		}
 	}
 	return `
-<kol-link${props._ariaExpanded ? ' _aria-expanded' : ''}${props._iconOnly ? ' _icon-only' : ''}>
+<kol-link${props._ariaExpanded ? ' _aria-expanded' : ''}${props._hideLabel ? ' _hide-label' : ''}>
   <mock:shadow-root>
-  <kol-link-wc${props._ariaExpanded ? ' _aria-expanded' : ''}${props._iconOnly ? ' _icon-only' : ''}>
+  <kol-link-wc${props._ariaExpanded ? ' _aria-expanded' : ''}${props._hideLabel ? ' _hide-label' : ''}>
     <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
-		props._iconOnly === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
-	} class="${props._iconOnly === true ? ' icon-only' : ''}${typeof props._target === 'string' && props._target !== '_self' ? ' external-link' : ''}" href="${
-		typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'
-	}"${typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
-		typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''
-	}>
+		props._hideLabel === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
+	} class="${props._hideLabel === true ? ' icon-only hide-label' : ''}${
+		typeof props._target === 'string' && props._target !== '_self' ? ' external-link' : ''
+	}" href="${typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'}"${
+		typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''
+	}${typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''}>
 			${getSpanWcHtml(
 				{
 					...props,
@@ -58,7 +58,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			}
     </a>
 		${
-			props._iconOnly === true || props._useCase === 'image'
+			props._hideLabel === true || props._useCase === 'image'
 				? getTooltipHtml(
 						{
 							_align: props._tooltipAlign,
