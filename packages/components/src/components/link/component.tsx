@@ -350,8 +350,8 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @deprecated use _hide-label
 	 */
 	@Watch('_iconOnly')
-	public validateIconOnly(): void {
-		return;
+	public validateIconOnly(value?: boolean): void {
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_label')
@@ -432,10 +432,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
+		this.validateHideLabel(this._hideLabel);
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
+		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateRole(this._role);

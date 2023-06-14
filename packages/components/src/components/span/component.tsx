@@ -109,8 +109,8 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 * @deprecated use _hide-label
 	 */
 	@Watch('_iconOnly')
-	public validateIconOnly(): void {
-		return;
+	public validateIconOnly(value?: boolean): void {
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_label')
@@ -119,8 +119,9 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	}
 
 	public componentWillLoad(): void {
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
+		this.validateHideLabel(this._hideLabel);
 		this.validateIcon(this._icon);
+		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 	}
 }

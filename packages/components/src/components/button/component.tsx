@@ -300,8 +300,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * @deprecated use _hide-label
 	 */
 	@Watch('_iconOnly')
-	public validateIconOnly(): void {
-		return;
+	public validateIconOnly(value?: boolean): void {
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_id')
@@ -363,9 +363,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
+		this.validateHideLabel(this._hideLabel);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
+		this.validateIconOnly(this._iconOnly);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
