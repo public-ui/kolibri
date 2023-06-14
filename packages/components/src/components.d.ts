@@ -2259,6 +2259,10 @@ export namespace Components {
          */
         "_data": Stringified<KoliBriDataType[]>;
         /**
+          * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+         */
+        "_dataFoot"?: Stringified<KoliBriDataType[]>;
+        /**
           * Gibt die horizontalen und vertikalen Header für die Tabelle an.
          */
         "_headers": Stringified<KoliBriTableHeaders>;
@@ -5046,6 +5050,10 @@ declare namespace LocalJSX {
           * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
          */
         "_data": Stringified<KoliBriDataType[]>;
+        /**
+          * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+         */
+        "_dataFoot"?: Stringified<KoliBriDataType[]>;
         /**
           * Gibt die horizontalen und vertikalen Header für die Tabelle an.
          */
