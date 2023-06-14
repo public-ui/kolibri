@@ -9,6 +9,7 @@ import { KolButtonGroup } from './button-group/shadow';
 import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
 import { KolButtonLink } from './button-link/component';
+import { KolButtonLinkTextSwitch } from './button-link-text-switch/component';
 import { KolCard } from './card/component';
 import { KolDetails } from './details/component';
 import { KolForm } from './form/component';
@@ -70,6 +71,7 @@ export const COMPONENTS = [
 	KolButtonGroupWc,
 	KolButtonGroup,
 	KolButtonLink,
+	KolButtonLinkTextSwitch,
 	KolCard,
 	KolInputAdapterLeanup,
 	KolDetails,

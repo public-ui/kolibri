@@ -12,7 +12,7 @@ import { KoliBriButtonCallbacks, KoliBriIconProp } from '../../components';
 	tag: 'kol-button-link-text-switch',
 	shadow: false,
 })
-export class KolButtonLinkSwitch implements Props {
+export class KolButtonLinkTextSwitch implements Props {
 	public render(): JSX.Element {
 		return <Host>{this.renderContent()}</Host>;
 	}
