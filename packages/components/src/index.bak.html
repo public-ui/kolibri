@@ -47,7 +47,7 @@
 		<link rel="stylesheet" href="assets/style.css" />
 		<link rel="stylesheet" href="assets/loader.css" />
 	</head>
-	<body class="demo" data-theme="demo" v-scope="{ on: console.log, showDropdown: true }">
+	<body class="demo" data-theme="demo" v-scope="{ on: ()=>console.log('dialog onCloseCallback') }">
 		<main class="container">
 			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
@@ -678,6 +678,13 @@
 						</div>
 					</div>
 				</div>
+			</kol-accordion>
+			<kol-accordion _heading="dialog" id="dialog">
+				<kol-heading _label="Dialog" _level="2"></kol-heading>
+				<kol-button ref="open_dialog" _label="Dialog auf machen" :_on="{ onClick: ()=> $refs.dialog._activeElement = $refs.open_dialog}"></kol-button>
+				<kol-dialog ref="dialog" :_on="{ onClose: on}">
+					<div class="w-40 h-40 bg-neutral-100 text-neutral-800 text-3xl font-bold">Test</div>
+				</kol-dialog>
 			</kol-accordion>
 			<kol-accordion _heading="form" id="form">
 				<div>
