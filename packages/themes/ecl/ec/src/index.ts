@@ -1423,4 +1423,17 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	.expanded > div > .expand-button kol-icon::part(icon)::before {
 		content: "\\eab4";
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 0;
+		border-style: solid;
+		border-width: 2px;
+		font-weight: var(--font-weight-bold);
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.25em 0.75em;
+		background-color: var(--color-blue);
+		border-color: var(--color-blue);
+		color: var(--color-white);
+		cursor: pointer;
+	}`,
 });

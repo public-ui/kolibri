@@ -9565,4 +9565,16 @@ export const BMF = KoliBri.createTheme('bmf', {
 			u+f160-f161, u+f163, u+f175-f178, u+f195, u+f1f8, u+f219, u+f250, u+f252,
 			u+f27a;
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: var(--a11y-min-size);
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 8px 14px;
+		background-color: var(--color-ocean);
+		border-color: var(--color-ocean);
+		color: var(--color-white);
+		cursor: pointer;
+	}`,
 });
