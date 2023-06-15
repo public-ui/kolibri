@@ -29,10 +29,10 @@ describe('test Progress', () => {
          <mock:shadow-root>
 				 	 <div class="bar">
 					   <div style="display: flex; gap: 0.3em;">
-               <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
-                 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-                 <line class="progress" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="1" y1="1" y2="1"></line>
-               </svg> <text aria-hidden="true" dominant-baseline="central" fill="currentColor" font-size="0.1em" text-anchor="middle">
+               <svg viewBox="0 0 102 8" width="100" xmlns="http://www.w3.org/2000/svg">
+							 	 <rect x="1" y="1" height="8" rx="4" fill="#efefef" stroke="#000000" width="100"></rect>
+								 <rect x="1" y="2" height="6" rx="4" fill="#0075ff" stroke="#0075ff" width="0" class="progress"></rect>
+               </svg> <text aria-hidden="true" dominant-baseline="central" fill="currentColor" text-anchor="middle">
 							         0%
 							          </text>
 						 </div>
@@ -57,11 +57,11 @@ describe('test Progress', () => {
          <mock:shadow-root>
 				 	 <div class="bar">
 					   <div style="display: flex; gap: 0.3em;">
-							 <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
-							 	 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-								 <line class="progress" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="10" y1="1" y2="1"></line>
+							 <svg viewBox="0 0 102 8" width="100" xmlns="http://www.w3.org/2000/svg">
+							 	 <rect x="1" y="1" height="8" rx="4" fill="#efefef" stroke="#000000" width="100"></rect>
+								 <rect x="1" y="2" height="6" rx="4" fill="#0075ff" stroke="#0075ff" width="40.476190476190474" class="progress"></rect>
 							 </svg>
-							          <text aria-hidden="true" dominant-baseline="central" fill="currentColor" font-size="0.1em" text-anchor="middle">
+							          <text aria-hidden="true" dominant-baseline="central" fill="currentColor" text-anchor="middle">
 							            17%
 							          </text>
 						 </div>
@@ -85,10 +85,10 @@ describe('test Progress', () => {
          <mock:shadow-root>
 				 	 <div class="bar">
 					   <div style="display: flex; gap: 0.3em;">
-							 <svg viewBox="0 0 24 2" width="100" xmlns="http://www.w3.org/2000/svg">
-								 <line fill="#efefef" stroke="#efefef" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-								 <line class="progress" fill="#0075ff" stroke="#0075ff" stroke-linecap="round" stroke-width="2" x1="1" x2="23" y1="1" y2="1"></line>
-							 </svg> <text aria-hidden="true" dominant-baseline="central" fill="currentColor" font-size="0.1em" text-anchor="middle">
+							 <svg viewBox="0 0 102 8" width="100" xmlns="http://www.w3.org/2000/svg">
+								<rect x="1" y="1" height="8" rx="4" fill="#efefef" stroke="#000000" width="100"></rect>
+								 <rect x="1" y="2" height="6" rx="4" fill="#0075ff" stroke="#0075ff" width="100" class="progress"></rect>
+							 </svg> <text aria-hidden="true" dominant-baseline="central" fill="currentColor" text-anchor="middle">
 							            42%
 							          </text>
 						 </div>
@@ -110,14 +110,15 @@ describe('test Progress', () => {
 		expect(page.root).toEqualHtml(
 			` <kol-progress>
          <mock:shadow-root>
-           <svg class="cycle" viewBox="0 0 12 12" width="100" xmlns="http://www.w3.org/2000/svg">
-             <circle cx="6px" cy="6px" fill="none" r="5px" stroke="#efefef"></circle>
-						 <text aria-hidden="true" fill="currentColor" font-size="0.1em" text-anchor="middle" x="50%" y="50%">
+           <svg class="cycle" viewBox="0 0 120 120" width="100" xmlns="http://www.w3.org/2000/svg">
+					 	 <circle fill="none" stroke="#000" cx="60px" cy="60px" r="50px" stroke-width="10"></circle>
+						 <circle fill="none" stroke="#ddd" cx="60px" cy="60px" r="50px" stroke-width="8"></circle>
+						 <text aria-hidden="true" fill="currentColor" text-anchor="middle" x="50%" y="50%">
 						         <tspan dy="0em" text-anchor="middle" x="50%">
 						            17%
 						          </tspan>
 						        </text>
-           <circle class="progress" cx="6px" cy="6px" fill="none" r="5px" stroke="#0075ff" stroke-dasharray="13px 32px" stroke-linecap="round"></circle>
+           <circle class="progress" cx="60px" cy="60px" fill="none" r="50px" stroke="#0075ff" stroke-dasharray="130px 320px" stroke-linecap="round" stroke-width="8"></circle>
            </svg>
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>
            <span ${DEFAULT_HTML_SPAN_PROPS} hidden>
