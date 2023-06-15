@@ -13,6 +13,7 @@ import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { KoliBriDialogEventCallbacks } from "./types/dialog";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -48,6 +49,7 @@ export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { KoliBriDialogEventCallbacks } from "./types/dialog";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -484,6 +486,24 @@ export namespace Components {
           * Gibt die Zusammenfassung der Detailbeschreibung an.
          */
         "_summary": string;
+    }
+    interface KolDialog {
+        /**
+          * Übergibt eine Referenz auf das öffnende HTML-Element, wodurch der Dialog geöffnet wird. "null" um zu schließen.
+         */
+        "_activeElement"?: HTMLElement | null;
+        /**
+          * Mit diesem Attribut kann die Schließenschaltfläche ausgeblendet werden. Wenn man z.B. einen eigenen Einbaut.
+         */
+        "_hideCloseButton"?: boolean;
+        /**
+          * Übergibt eine Funktion, die nach dem Schließen des Dialogs aufgerufen wird.
+         */
+        "_on"?: KoliBriDialogEventCallbacks;
+        /**
+          * Setzt die Breite des Dialogs. (max-width: 100%). Die Ausmaße des Dialogs sollten durch den Inhalt definiert werden, nutzen Sie diese Eigenschaft nur, wenn dies nicht funktioniert.
+         */
+        "_width"?: string;
     }
     interface KolForm {
         /**
@@ -2558,6 +2578,12 @@ declare global {
         prototype: HTMLKolDetailsElement;
         new (): HTMLKolDetailsElement;
     };
+    interface HTMLKolDialogElement extends Components.KolDialog, HTMLStencilElement {
+    }
+    var HTMLKolDialogElement: {
+        prototype: HTMLKolDialogElement;
+        new (): HTMLKolDialogElement;
+    };
     interface HTMLKolFormElement extends Components.KolForm, HTMLStencilElement {
     }
     var HTMLKolFormElement: {
@@ -2860,6 +2886,7 @@ declare global {
         "kol-button-wc": HTMLKolButtonWcElement;
         "kol-card": HTMLKolCardElement;
         "kol-details": HTMLKolDetailsElement;
+        "kol-dialog": HTMLKolDialogElement;
         "kol-form": HTMLKolFormElement;
         "kol-heading": HTMLKolHeadingElement;
         "kol-heading-wc": HTMLKolHeadingWcElement;
@@ -3317,6 +3344,24 @@ declare namespace LocalJSX {
           * Gibt die Zusammenfassung der Detailbeschreibung an.
          */
         "_summary": string;
+    }
+    interface KolDialog {
+        /**
+          * Übergibt eine Referenz auf das öffnende HTML-Element, wodurch der Dialog geöffnet wird. "null" um zu schließen.
+         */
+        "_activeElement"?: HTMLElement | null;
+        /**
+          * Mit diesem Attribut kann die Schließenschaltfläche ausgeblendet werden. Wenn man z.B. einen eigenen Einbaut.
+         */
+        "_hideCloseButton"?: boolean;
+        /**
+          * Übergibt eine Funktion, die nach dem Schließen des Dialogs aufgerufen wird.
+         */
+        "_on"?: KoliBriDialogEventCallbacks;
+        /**
+          * Setzt die Breite des Dialogs. (max-width: 100%). Die Ausmaße des Dialogs sollten durch den Inhalt definiert werden, nutzen Sie diese Eigenschaft nur, wenn dies nicht funktioniert.
+         */
+        "_width"?: string;
     }
     interface KolForm {
         /**
@@ -5325,6 +5370,7 @@ declare namespace LocalJSX {
         "kol-button-wc": KolButtonWc;
         "kol-card": KolCard;
         "kol-details": KolDetails;
+        "kol-dialog": KolDialog;
         "kol-form": KolForm;
         "kol-heading": KolHeading;
         "kol-heading-wc": KolHeadingWc;
@@ -5390,6 +5436,7 @@ declare module "@stencil/core" {
             "kol-button-wc": LocalJSX.KolButtonWc & JSXBase.HTMLAttributes<HTMLKolButtonWcElement>;
             "kol-card": LocalJSX.KolCard & JSXBase.HTMLAttributes<HTMLKolCardElement>;
             "kol-details": LocalJSX.KolDetails & JSXBase.HTMLAttributes<HTMLKolDetailsElement>;
+            "kol-dialog": LocalJSX.KolDialog & JSXBase.HTMLAttributes<HTMLKolDialogElement>;
             "kol-form": LocalJSX.KolForm & JSXBase.HTMLAttributes<HTMLKolFormElement>;
             "kol-heading": LocalJSX.KolHeading & JSXBase.HTMLAttributes<HTMLKolHeadingElement>;
             "kol-heading-wc": LocalJSX.KolHeadingWc & JSXBase.HTMLAttributes<HTMLKolHeadingWcElement>;

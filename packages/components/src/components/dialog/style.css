@@ -1,0 +1,14 @@
+@import url(../style.css);
+
+::backdrop {
+	background-color: hsla(0, 0%, 0%, 0.8);
+}
+
+.close_button {
+	display: grid;
+	inset: 0 0 auto auto;
+	min-height: 44px;
+	min-width: 44px;
+	place-content: center;
+	position: absolute;
+}
