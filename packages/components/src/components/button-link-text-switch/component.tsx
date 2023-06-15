@@ -6,6 +6,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriButtonCallbacks, KoliBriIconProp } from '../../components';
 
 /**
+ * Internal component that renders an action or text component like a button or a link.
  * @internal
  */
 @Component({
