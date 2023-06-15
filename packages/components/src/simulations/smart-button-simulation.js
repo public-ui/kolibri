@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable no-undef */
-const smartButtonTimeout = setTimeout(() => {
-	clearTimeout(smartButtonTimeout);
+setTimeout(() => {
 	const smartButtons = document.querySelectorAll('.smart-button');
 	smartButtons.forEach((smartButton) => {
 		smartButton._smartButton = {
@@ -26,7 +23,7 @@ const smartButtonTimeout = setTimeout(() => {
 	});
 }, 2500);
 
-document.querySelector('[_id="input-text"]')._smartButton = {
+document.querySelector('#input-text')._smartButton = {
 	_ariaLabel: 'aria-label',
 	_customClass: 'bg-purple',
 	_disabled: false,
