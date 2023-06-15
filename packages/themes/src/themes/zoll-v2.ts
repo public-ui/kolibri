@@ -297,9 +297,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	}`,
 	'KOL-TABLE': `caption {
-		background-color: var(--color-neutral);
 		caption-side: TOP;
-		font-size: 1.5rem; /* 1.75rem */ /* line-height: 3rem; */
+		font-size: 1.1rem; /* 1.75rem */ /* line-height: 3rem; */
+		font-weight: var(--font-weight-bold);
 		margin-bottom: 0.25rem;
 		padding: 0.75rem;
 		text-align: left;
@@ -311,6 +311,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-width: 0;
 		border-top-width: 1px;
 	}
+	th {
+		background-color: var(--color-neutral);
+	}
 	td,
 	th {
 		color: var(--color-neutral-dark);
@@ -320,9 +323,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-bottom-width: 1px;
 		padding: 0.5rem;
 	}
-	tbody tr:nth-child(odd) {
-		background-color: var(--color-grau-10);
-	}`,
+	`,
 	'KOL-ACCORDION': `:host > div {
 		border-color: var(--border-color);
 		border-radius: var(--border-radius);
