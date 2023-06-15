@@ -13,6 +13,12 @@
 .transition {
 	transition: height 0.3s ease-in-out;
 }
+@media (prefers-reduced-motion) {
+	.transition {
+		transition-duration: 0s;
+	}
+}
+
 .content {
 	inset: 0 0 auto 0;
 	position: absolute;
