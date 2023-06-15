@@ -1,16 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable no-undef */
-const TABLE_NEW_HEADERS = {
+const TABLE_HEADERS_H = {
 	horizontal: [
 		[
-			{
-				label: '',
-				rowSpan: 2,
-				asTd: true,
-			},
 			{
 				label: 'Werktage',
 				colSpan: 5,
@@ -92,6 +82,8 @@ const TABLE_NEW_HEADERS = {
 			},
 		],
 	],
+};
+const TABLE_HEADERS_V = {
 	vertical: [
 		[
 			{
@@ -109,6 +101,45 @@ const TABLE_NEW_HEADERS = {
 		],
 	],
 };
+const TABLE_HEADERS_H_V = {
+	horizontal: [
+		[
+			{
+				label: '',
+				rowSpan: 2,
+				asTd: true,
+			},
+			...TABLE_HEADERS_H.horizontal[0],
+		],
+		[...TABLE_HEADERS_H.horizontal[1]],
+	],
+	...TABLE_HEADERS_V,
+};
+const TABLE_2_HEADERS = {
+	horizontal: [
+		[
+			{
+				asTd: true,
+				colSpan: 2,
+			},
+		].concat(TABLE_HEADERS_V),
+	],
+	vertical: [
+		[
+			{
+				...TABLE_HEADERS_H.horizontal[0][0],
+				rowSpan: TABLE_HEADERS_H.horizontal[0][0].colSpan,
+				colSpan: undefined,
+			},
+			{
+				...TABLE_HEADERS_H.horizontal[0][1],
+				rowSpan: TABLE_HEADERS_H.horizontal[0][1].colSpan,
+				colSpan: undefined,
+			},
+		],
+	].concat([TABLE_HEADERS_H.horizontal[1]]),
+};
+
 const TABLE_DATA = [
 	{
 		montag: 'Alex',
@@ -147,6 +178,7 @@ const TABLE_DATA = [
 		sonntag: 'Alex',
 	},
 ];
+const TABLE_DATA_SHORT = TABLE_DATA.slice(0, -1);
 const TABLE_PAGED_DATA = [
 	{
 		montag: 'Alex',
@@ -689,81 +721,84 @@ const TABLE_PAGED_DATA = [
 		sonntag: 'Anna',
 	},
 ];
+const TABLE_2_DATA = [
+	{ montag: 'Alex', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
+	{ montag: 'Helena', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Marcus' },
+	{ montag: 'Fabian', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
+	{ montag: 'Hong', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
+];
 
-setTimeout(() => {
-	document.querySelector('#table-1a')._headers = TABLE_NEW_HEADERS;
-	document.querySelector('#table-1a')._data = TABLE_DATA;
-}, 5000);
+const TABLE_FOOT_DATA = [
+	{
+		montag: '1',
+		dienstag: '2',
+		mittwoch: '3',
+		donnerstag: '4',
+		freitag: '5',
+		samstag: '6',
+		sonntag: '7',
+	},
+];
 
-setTimeout(() => {
-	document.querySelector('#table-1b')._headers = TABLE_NEW_HEADERS;
-	document.querySelector('#table-1b')._data = TABLE_DATA;
-	setTimeout(() => (document.querySelector('#table-1a')._data = []), 1000);
-}, 5000);
+const PAGINATION_1 = {
+	_boundaryCount: 0,
+	_page: 3,
+	_pageSize: 20,
+	_pageSizeOptions: [5, 10, 20, 50, 100],
+	_on: {
+		onClick: console.log,
+		onChangePage: console.log,
+		onChangePageSize: console.log,
+	},
+};
+const PAGINATION_2 = {
+	_boundaryCount: 0,
+	_page: 3,
+	_pageSize: 10,
+	_pageSizeOptions: [5, 10, 20, 50, 100],
+	_on: {
+		onClick: console.log,
+		onChangePage: console.log,
+		onChangePageSize: console.log,
+	},
+};
 
-setTimeout(() => {
-	document.querySelector('#table-1c')._headers = TABLE_NEW_HEADERS;
-	document.querySelector('#table-1c')._data = [];
-}, 5000);
+function setTableData(tableID, caption, data, header, footer) {
+	setTimeout(() => {
+		const table = document.querySelector(tableID);
+		if (table) {
+			table._caption = caption;
+			table._data = data;
+			if (header) table._headers = header;
+			if (footer) table._dataFoot = footer;
+		}
+	}, 500);
+}
+function setMultipleTableData(tableClass, caption, data, header, footer) {
+	setTimeout(() => {
+		const tables = document.querySelectorAll(tableClass);
+		tables.forEach((table) => {
+			table._caption = caption;
+			table._data = data;
+			if (header) table._headers = header;
+			if (footer) table._dataFoot = footer;
+		});
+	}, 500);
+}
 
-setTimeout(() => {
-	document.querySelector('#table-2')._headers = {
-		horizontal: [
-			[
-				{
-					asTd: true,
-					colSpan: 2,
-				},
-			].concat(TABLE_NEW_HEADERS.vertical[0]),
-			// cols: [TABLE_NEW_HEADERS.horizontal[0].cols[0]].concat(TABLE_NEW_HEADERS.vertical[0].rows),
-		],
-		vertical: [
-			[
-				{
-					...TABLE_NEW_HEADERS.horizontal[0][1],
-					rowSpan: TABLE_NEW_HEADERS.horizontal[0][1].colSpan,
-					colSpan: undefined,
-				},
-				{
-					...TABLE_NEW_HEADERS.horizontal[0][2],
-					rowSpan: TABLE_NEW_HEADERS.horizontal[0][2].colSpan,
-					colSpan: undefined,
-				},
-			],
-		].concat([TABLE_NEW_HEADERS.horizontal[1]]),
-	};
-	document.querySelector('#table-2')._data = TABLE_DATA;
-	document.querySelector('#table-3a')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-3b')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-3b')._pagination = {
-		_boundaryCount: 0,
-		_page: 3,
-		_pageSize: 20,
-		_pageSizeOptions: [5, 10, 20, 50, 100],
-		_on: {
-			onClick: console.log,
-			onChangePage: console.log,
-			onChangePageSize: console.log,
-		},
-	};
-	document.querySelector('#table-4')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-4')._pagination = {
-		_boundaryCount: 0,
-		_page: 3,
-		_pageSize: 10,
-		_pageSizeOptions: [5, 10, 20, 50, 100],
-		_on: {
-			onClick: console.log,
-			onChangePage: console.log,
-			onChangePageSize: console.log,
-		},
-	};
-	document.querySelector('#table-5')._data = TABLE_PAGED_DATA;
-	document.querySelector('#table-6')._data = TABLE_PAGED_DATA;
-}, 5000);
+setTableData('#table-1a', 'header: h/v, data: short, foot', TABLE_DATA_SHORT, TABLE_HEADERS_H_V, TABLE_FOOT_DATA);
+setTableData('#table-1b', 'header: h, data: short, foot', TABLE_DATA_SHORT, TABLE_HEADERS_H, TABLE_FOOT_DATA);
+setTableData('#table-1c', 'header: h, data: short', TABLE_DATA_SHORT, TABLE_HEADERS_H);
+setTableData('#table-1d', 'header: h/v, data: default', TABLE_DATA, TABLE_HEADERS_H_V);
 
-const dayTable = document.querySelector('[_id="day_table"]');
-dayTable._headers = {
+setTableData('#table-2', '2 Header, Daten Vertikal, Sort and Render', TABLE_2_DATA, TABLE_2_HEADERS);
+
+setTableData('#table-3a', 'header: h, data: paged', TABLE_PAGED_DATA, TABLE_HEADERS_H);
+setTableData('#table-3b', 'header: h, data: paged, pagination-1', TABLE_PAGED_DATA, TABLE_HEADERS_H, undefined, PAGINATION_1);
+
+setTableData('#table-4', 'header: h, data: paged, pagination-2', TABLE_PAGED_DATA, TABLE_HEADERS_H, undefined, PAGINATION_2);
+
+const dayTableHeaders = {
 	horizontal: [
 		[
 			{ label: '', colSpan: 1, rowSpan: 1, asTd: true },
@@ -781,10 +816,11 @@ dayTable._headers = {
 		],
 	],
 };
-dayTable._data = [
+const dayTableData = [
 	{ day: 'Montag', info: 'Herr Mohn' },
 	{ day: 'Dienstag', info: 'Dienst' },
 	{ day: 'Mittwoch', info: 'Mitte der Woche' },
 	{ day: 'Donnerstag', info: 'Donner' },
 	{ day: 'Freitag', info: 'frei' },
 ];
+setTableData('day_table', 'DayTable', dayTableData, dayTableHeaders);

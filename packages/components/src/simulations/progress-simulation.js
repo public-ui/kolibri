@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable no-undef */
 const simButtons = document.querySelectorAll('kol-button[class*="progress"]');
 const progressBars = document.querySelectorAll('kol-progress[class*="progress"]');
 
@@ -26,9 +24,10 @@ simButtons.forEach((button, index) => {
 	};
 });
 
-const schnitzelwert = document.querySelector('[_id="schnitzelwert"]');
-if (schnitzelwert) schnitzelwert._on = { onChange: onSchnitzelchange };
+const schnitzelWert = document.querySelector('[_id="schnitzelwert"]');
 const progressOut = document.querySelector('[_id="schnitzelfortschritt"]');
-function onSchnitzelchange(e, value) {
+if (schnitzelWert && progressOut) schnitzelWert._on = { onChange: onSchnitzelChange };
+
+function onSchnitzelChange(e, value) {
 	progressOut.setAttribute('_value', value);
 }

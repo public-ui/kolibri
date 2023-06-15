@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable no-undef */
 const navTest = document.querySelector('#nav-test');
 if (navTest) {
 	navTest._links = [
@@ -135,7 +130,9 @@ setTimeout(() => {
 	const mainNav = document.querySelector('#main-nav');
 	const mainNavElements = document.querySelectorAll('main > kol-accordion');
 	const numberOfChildren = 6;
-	populateNavFromElements(mainNav, mainNavElements, numberOfChildren);
+	if (mainNav && mainNavElements?.length > 0) {
+		populateNavFromElements(mainNav, mainNavElements, numberOfChildren);
+	}
 }, 1000);
 
 function createEntry(c) {
