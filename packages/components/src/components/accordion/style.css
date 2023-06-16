@@ -14,6 +14,7 @@
 	transition: height 0.3s ease-in-out;
 }
 @media (prefers-reduced-motion) {
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
 	.transition {
 		transition-duration: 0s;
 	}
