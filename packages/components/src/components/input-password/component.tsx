@@ -311,6 +311,9 @@ export class KolInputPassword implements ComponentApi {
 		this.controller.validateRequired(value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
