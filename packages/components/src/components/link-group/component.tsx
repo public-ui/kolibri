@@ -9,6 +9,7 @@ import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
+import { validateLabel } from '../../types/props';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -49,11 +50,15 @@ export type ListStyleType =
 	| 'upper-roman';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
+	/**
+	 * @deprecated use _label instead
+	 */
+	ariaLabel: string;
 	heading: string;
+	label: string;
 	level: HeadingLevel;
 	listStyleType: ListStyleType;
 	ordered: boolean;
@@ -62,12 +67,13 @@ type OptionalProps = {
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	ariaLabel: string;
+	label: string;
 	links: LinkProps[];
 	listStyleType: ListStyleType;
 	orientation: Orientation;
 };
 type OptionalStates = {
+	ariaLabel: string;
 	heading: string;
 	level: HeadingLevel;
 	ordered: boolean;
@@ -85,7 +91,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	public render(): JSX.Element {
 		return (
 			<nav
-				aria-label={this.state._ariaLabel}
+				aria-label={this.state._label}
 				class={{
 					vertical: this.state._orientation === 'vertical',
 					horizontal: this.state._orientation === 'horizontal',
@@ -112,8 +118,9 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet
@@ -124,6 +131,12 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	 * Gibt die optionale Überschrift zur Link-Gruppe an.
 	 */
 	@Prop() public _heading?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -147,18 +160,35 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: States = {
-		_ariaLabel: '…', // '⚠'
+		_label: '…', // '⚠'
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
 	};
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
-		a11yHintLabelingLandmarks(value);
+		if (!this.state._label) {
+			validateLabel(this, value);
+		}
+	}
+
+	@Watch('_heading')
+	public validateHeading(value?: string): void {
+		watchString(this, '_heading', value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
+	}
+
+	@Watch('_level')
+	public validateLevel(value?: HeadingLevel): void {
+		watchHeadingLevel(this, value);
 	}
 
 	@Watch('_listStyleType')
@@ -194,16 +224,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 		);
 	}
 
-	@Watch('_heading')
-	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value);
-	}
-
-	@Watch('_level')
-	public validateLevel(value?: HeadingLevel): void {
-		watchHeadingLevel(this, value);
-	}
-
 	@Watch('_links')
 	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolLinkGroup', this, value);
@@ -230,18 +250,11 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
-		this.validateListStyleType(this._listStyleType);
 		this.validateHeading(this._heading);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
+		this.validateListStyleType(this._listStyleType);
 		this.validateLinks(this._links);
-		//this.validateOrdered(this._ordered);
 		this.validateOrientation(this._orientation);
 	}
 }
-
-// console.log(
-//   stringifyJson([
-//     { _label: 'Fehler 1', _id: '#anschrift_anschrift_adresse_strasse', _icon: 'error' },
-//     { _label: 'Fehler 2', _id: '#anschrift_anschrift_adresse_hausnummer', _icon: 'error' },
-//   ])
-// );

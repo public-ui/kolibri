@@ -11,7 +11,7 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	/**
-	 * @deprecated Use _headline instead
+	 * @deprecated Use _heading instead
 	 */
 	headline: string;
 	level: HeadingLevel;

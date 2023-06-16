@@ -21,7 +21,7 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
+import { validateAriaLabelWithLabel, validateLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
@@ -72,7 +72,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-label={this.state._hideLabel === false ? this.state._ariaLabel : undefined}
+					aria-label={this.state._hideLabel ? undefined : this.state._label || this.state._ariaLabel}
 					aria-labelledby={this.state._hideLabel === true ? this.nonce : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
@@ -103,7 +103,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 						aria-hidden="true"
 						_align={this.state._tooltipAlign}
 						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
+						_label={this.state._label}
 					></kol-tooltip>
 				)}
 			</Host>
@@ -132,6 +132,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
@@ -253,9 +254,14 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		validateAriaExpanded(this, value);
 	}
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		if (value) {
+			validateAriaLabelWithLabel(this, value);
+		}
 	}
 
 	@Watch('_ariaSelected')
@@ -311,7 +317,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	@Watch('_on')

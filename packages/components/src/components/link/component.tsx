@@ -22,7 +22,7 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
+import { validateAriaLabelWithLabel, validateLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 
 /**
@@ -92,10 +92,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 			rel: isExternal ? 'noopener' : undefined,
 		};
 
-		if (
-			(this.state._useCase === 'image' || this.state._hideLabel === true) &&
-			(typeof this.state._ariaLabel !== 'string' || this.state._ariaLabel.length === 0)
-		) {
+		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !(this.state._label || this.state._ariaLabel)) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
 		}
 		return { isExternal, tagAttrs, goToProps };
@@ -142,7 +139,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 						aria-hidden="true"
 						_align={this.state._tooltipAlign}
 						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
+						_label={this.state._label}
 					></kol-tooltip>
 				)}
 			</Host>
@@ -166,6 +163,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -294,6 +292,9 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		watchBoolean(this, '_ariaExpanded', value);
 	}
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		validateAriaLabelWithLabel(this, value);
@@ -356,7 +357,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	/**

@@ -6,16 +6,21 @@ import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
 import { watchNavLinks } from '../nav/validation';
+import { validateLabel } from '../../types/props';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
 };
-type OptionalProps = unknown;
+type OptionalProps = {
+	/**
+	 * @deprecated
+	 */
+	ariaLabel: string;
+	label: string;
+};
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	ariaLabel: string;
 	links: LinkProps[];
 };
 type OptionalStates = OptionalProps;
@@ -55,7 +60,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<nav aria-label={this.state._ariaLabel}>
+				<nav aria-label={this.state._label || this.state._ariaLabel}>
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
@@ -71,8 +76,14 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -86,9 +97,13 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
+		watchString(this, '_ariaLabel', value, { required: true });
+		a11yHintLabelingLandmarks(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
 	}
 

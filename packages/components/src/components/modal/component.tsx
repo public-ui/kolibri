@@ -8,26 +8,29 @@ import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { ModalService } from './service';
+import { validateLabel } from '../../types/props';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
  */
 
-type RequiredProps = AriaLabel;
+type RequiredProps = unknown;
 type OptionalProps = {
 	activeElement: HTMLElement | null;
+	label: string;
 	on: KoliBriModalEventCallbacks;
 	width: string;
-};
+} & AriaLabel;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = AriaLabel & {
+type RequiredStates = {
 	activeElement: HTMLElement | null;
+	label: string;
 	width: string;
 };
 type OptionalStates = {
 	on: KoliBriModalEventCallbacks;
-};
+} & AriaLabel;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
@@ -79,7 +82,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 							style={{
 								width: this.state._width,
 							}}
-							aria-label={this.state._ariaLabel}
+							aria-label={this.state._label}
 							aria-modal="true"
 							role="dialog"
 							onKeyDown={this.onKeyDown}
@@ -105,8 +108,14 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel!: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
@@ -120,7 +129,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 
 	@State() public state: States = {
 		_activeElement: null,
-		_ariaLabel: '…',
+		_label: '…',
 		_width: '100%',
 	};
 
@@ -131,11 +140,19 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 	}
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
+		if (!this.state._label) {
+			validateLabel(this, value);
+		}
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_on')
@@ -160,6 +177,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	public componentWillLoad(): void {
 		this.validateActiveElement(this._activeElement);
 		this.validateAriaLabel(this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
 	}
