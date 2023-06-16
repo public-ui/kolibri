@@ -323,7 +323,20 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-bottom-width: 1px;
 		padding: 0.5rem;
 	}
-	`,
+	th[data-sort] kol-button::part(icon)::before {
+		font-family: "FontAwesome";
+		color: var(--color-neutral-dark);
+	}
+	th[data-sort="sort-NOS"] kol-button::part(icon)::before,
+	th[data-sort="sort-undefined"] kol-button::part(icon)::before {
+		content: "\f0dc";
+	}
+	th[data-sort="sort-ASC"] kol-button::part(icon)::before {
+		content: "\f0de";
+	}
+	th[data-sort="sort-DESC"] kol-button::part(icon)::before {
+		content: "\f0dd";
+	}`,
 	'KOL-ACCORDION': `:host > div {
 		border-color: var(--border-color);
 		border-radius: var(--border-radius);
