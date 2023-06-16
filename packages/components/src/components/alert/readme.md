@@ -7,14 +7,14 @@ Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie be
 ### Code
 
 ```html
-<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="msg">Textbereich im Alert</kol-alert>
-<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="card">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 ```
 
 ### Beispiel
 
-<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="msg">Textbereich im Alert</kol-alert>
-<kol-alert _alert _heading="Überschrift im Alert" _level="1" _type="info" _variant="card">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="1" _type="success" _variant="msg">Textbereich im Alert</kol-alert>
+<kol-alert _label="Überschrift im Alert" _level="2" _type="info" _variant="card">Textbereich im Alert</kol-alert>
 
 ## Verwendung
 
