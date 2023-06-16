@@ -8,7 +8,6 @@ import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
-import { Stringified } from '../../types/common';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -206,7 +205,7 @@ export class KolSplitButton implements API {
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: string;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -318,7 +317,7 @@ export class KolSplitButton implements API {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: string): void {
 		setState(this, '_value', value);
 	}
 

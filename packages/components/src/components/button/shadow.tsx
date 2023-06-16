@@ -168,7 +168,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: string;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.

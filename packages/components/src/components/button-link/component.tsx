@@ -141,5 +141,5 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: string;
 }

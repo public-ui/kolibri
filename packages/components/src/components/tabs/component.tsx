@@ -151,7 +151,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 						_ariaSelected={this.state._selected === index}
 						_id={`tab-${index}`}
 						_role="tab"
-						_value={index}
+						_value={index.toString()}
 					></kol-button-wc>
 				))}
 				{this.showCreateTab && (

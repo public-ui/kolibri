@@ -89,6 +89,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
+					value={this.state._value}
 				>
 					<kol-span-wc _icon={this._icon} _hideLabel={this.state._hideLabel} _label={this.state._label}>
 						<slot name="expert" slot="expert"></slot>
@@ -212,7 +213,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: string;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -345,7 +346,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: string): void {
 		setState(this, '_value', value);
 	}
 

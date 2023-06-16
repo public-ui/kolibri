@@ -90,7 +90,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	id: string;
 	on: KoliBriButtonCallbacks<unknown>;
 	type: KoliBriButtonType;
-	value: Stringified<unknown>;
+	value: string;
 };
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
@@ -107,7 +107,7 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 		disabled: boolean;
 		id: string;
 		on: KoliBriButtonCallbacks<unknown>;
-		value: unknown;
+		value: string;
 	};
 // type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 

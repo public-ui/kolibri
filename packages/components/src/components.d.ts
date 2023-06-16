@@ -283,7 +283,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -366,7 +366,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
     }
     interface KolButtonWc {
         /**
@@ -450,7 +450,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -2278,7 +2278,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3116,7 +3116,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3199,7 +3199,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
     }
     interface KolButtonWc {
         /**
@@ -3283,7 +3283,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -5111,7 +5111,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: string;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
