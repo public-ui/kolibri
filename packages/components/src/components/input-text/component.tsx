@@ -342,6 +342,9 @@ export class KolInputText implements ComponentApi {
 		validateRequired(this, value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
