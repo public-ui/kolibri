@@ -1,86 +1,75 @@
-# Modal
+# Dialog
 
-Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
-Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt des Modal-Fensters ist aktiv.
+Mit Hilfe der **Dialog**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offener **Dialog** kann via **ESC** geschlossen werden.
+Die **Dialog**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt des Dialog-Fensters ist aktiv.
 
 ## Funktionsweise
 
-Das **Modal** realisiert die Basis für barrierefreie Overlays und ermöglicht es beliebige HTML-Inhalte anzuzeigen. Beispielsweise wäre eine Dialog-Komponente eine Komposition aus einer Card-Komponente die in einer **Modal**-Komponente eingefügt wird.
+Das **Dialog** realisiert die Basis für barrierefreie Overlays und ermöglicht es beliebige HTML-Inhalte anzuzeigen. Beispielsweise wäre eine Dialog-Komponente eine Komposition aus einer Card-Komponente die in einer **Dialog**-Komponente eingefügt wird.
 
-Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der Webseite deaktiviert, außer die innerhalb des aktiven Modals.
+Sobald ein **Dialog** geöffnet wird, werden alle selektierbaren Elemente in der Webseite deaktiviert, außer die innerhalb des aktiven Modals.
 
 ## Konstruktion
 
 ### Code
 
 ```html
-<kol-modal id="test-modal" _aria-label="Beschreibung zur Modalbox">
+<kol-dialog id="test-dialog">
 	<kol-card _heading="Vorgang löschen" _has-footer style="background-color: bisque">
 		<p slot="content">Wollen Sie den Vorgang wirklich löschen?</p>
 		<div slot="footer">
-			<kol-button class="close-modal" _label="Ok" _variant="primary"></kol-button>
-			<kol-button class="close-modal" _label="Abbrechen"></kol-button>
+			<kol-button class="close-dialog" _label="Ok" _variant="primary"></kol-button>
+			<kol-button class="close-dialog" _label="Abbrechen"></kol-button>
 		</div>
 	</kol-card>
-</kol-modal>
-<kol-button id="modal-open-button" _label="Modal öffnen"></kol-button>
+</kol-dialog>
+<kol-button id="dialog-open-button" _label="Dialog öffnen"></kol-button>
 <script>
-	const modal = document.querySelector('#test-modal');
-	const modalOpenButton = document.querySelector('#modal-open-button');
-	function openModal() {
-		modal._activeElement = modalOpenButton;
-		modal._open = true;
+	const dialog = document.querySelector('#test-dialog');
+	const dialogOpenButton = document.querySelector('#dialog-open-button');
+	function openDialog() {
+		dialog._activeElement = dialogOpenButton;
 	}
 	function closeModal() {
-		modal._activeElement = null;
+		dialog._activeElement = null;
 	}
-	document.querySelectorAll('.close-modal').forEach((b) => (b._on = { onClick: closeModal }));
-	modalOpenButton._on = { onClick: openModal };
+	document.querySelectorAll('.close-dialog').forEach((b) => (b._on = { onClick: closeModal }));
+	dialogOpenButton._on = { onClick: openDialog };
 </script>
 ```
 
 ## Verwendung
 
-Über das Attribut **`_width`** geben Sie die gewünschte Breite der Modalbox an. Sie wird in der gewählten Größe immer mittig auf dem Bildschirm angezeigt.
+Da der Dialog vom restlichen Seiteninhalt entkoppelt ist, aber für eine teilweisen Sperrung der Inhalte sorgt. Muss es auch eine Möglichkeit geben, das Schließen (Sperrung aufheben) aus dem Dialog-Kontext zu ermöglichen.
 
-Da das Modal vom eigentlichen Modal entkoppelt ist, aber für eine teilweisen Sperrung der Inhalte sorgt. Muss es auch eine Möglichkeit bieten, das Schließen (Sperrung aufheben) aus dem Modal-Kontext zu ermöglichen.
-
-<kol-alert _type="info">Es wird empfohlen einen Close-Button oben rechts einzubauen.</kol-alert>
-
-Das **Modal** hat einen `z-index` von `100`.
+<kol-alert _type="info">Es wird empfohlen einen Schließen-Button oben rechts einzubauen.</kol-alert>
 
 ### Best practices
 
-- Verwenden Sie die Modalbox, um weiterführende Informationen zu einem Thema anzuzeigen.
-- Verwenden Sie die Modalbox, um umfangreiche Inhalte optisch kompakter zu gestalten.
-- Vermeiden Sie es, wichtige Informationen wie z.B. rechtliche Themen, auf die Nutzer:innen reagieren müssen, in Modalboxen zu platzieren.
+- Verwenden Sie den Dialog, um weiterführende Informationen zu einem Thema anzuzeigen.
+- Verwenden Sie den Dialog, um umfangreiche Inhalte optisch kompakter zu gestalten.
+- Vermeiden Sie es, wichtige Informationen wie z.B. rechtliche Themen, auf die Nutzer:innen reagieren müssen, in Dialogen zu platzieren.
 
 ### Anwendungsfälle
 
-- Nutzen Sie die Modalbox, als Erklärungshilfe zu einzelnen Eingabefeldern in Formularen.
-- Nutzen Sie die Modalbox, um ergänzende Informationen erst nach Anforderung durch die Nutzer:innen anzuzeigen.
-- Nutzen Sie die Modalbox, um ein Feedback zu Speichervorgängen oder ähnliches anzuzeigen, z.B. **_Vielen Dank für Ihre Rückmeldung_** nach Absenden eines Formulars.
+- Nutzen Sie den Dialog, als Erklärungshilfe zu einzelnen Eingabefeldern in Formularen.
+- Nutzen Sie den Dialog, um ergänzende Informationen erst nach Anforderung durch die Nutzer:innen anzuzeigen.
+- Nutzen Sie den Dialog, um ein Feedback zu Speichervorgängen oder ähnliches anzuzeigen, z.B. **_Vielen Dank für Ihre Rückmeldung_** nach Absenden eines Formulars.
 
 ## Barrierefreiheit
 
 > Die optische Standardausgabe der Komponente ist auf die Umsetzung der Barrierefreiheit hin optimiert. Wenn Sie eigene Custom Styles verwenden, kann das zu einer Einschränkung der Barrierefreiheit führen.
 
-Das **Modal** ist so realisiert, dass der Fokus darauf liegt, wenn es geöffnet wird. Elemente außerhalb des Modals sind dann nicht mehr fokussierbar.
+Der **Dialog** ist so realisiert, dass der Fokus darauf liegt, wenn es geöffnet wird. Elemente außerhalb des Modals sind dann nicht mehr fokussierbar.
 
-Wird das **Modal** geschlossen, liegt der Fokus wieder auf dem Element, welches unter **`_activeElement`** angegeben wurde.
-
-Bei der Realisierung dieser Funktionalität haben wir auf die Verwendung der CSS-Properties **`user-select`** und **`pointer-events`** verzichtet, um das Navigieren aus der Webseite in die Browser-Menü's weiterhin zu ermöglichen. Ebenfalls haben wir darauf verzichtet die _Event-Propagation_ zu manipulieren.
-
-Achten Sie für eine optimale Ausgabe der **Modal**-Komponente in Screenreadern darauf, das Attribut **`aria-label`** korrekt zu setzen.
-
-Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektierbaren Elemente deaktiviert außer die innerhalb des eigenen Modals. Hierbei ist zu beachten, dass KoliBri nur Elemente deaktiviert die sich im Browser-Seitenbereich befinden. Das Fokussieren den Browser-Menü's ist weiterhin möglich.
+Wird der **Dialog** geschlossen, liegt der Fokus wieder auf dem Element, welches unter **`_activeElement`** angegeben wurde.
 
 ### Tastatursteuerung
 
-| Taste | Funktion                                                                                    |
-| ----- | ------------------------------------------------------------------------------------------- |
-| `Tab` | Bei geöffnetem Modal werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
-| `ESC` | Schließt das Modal.                                                                         |
+| Taste | Funktion                                                                                     |
+| ----- | -------------------------------------------------------------------------------------------- |
+| `Tab` | Bei geöffnetem Dialog werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
+| `ESC` | Schließt das Dialog.                                                                         |
 
 ## Links und Referenzen
 
