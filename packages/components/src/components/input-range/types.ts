@@ -31,6 +31,10 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
 	list: Option<number>[];
+	max: number;
+	min: number;
+	step: number;
+	value: number;
 } & PropLabel;
 type OptionalStates = {
 	accessKey: string;
@@ -40,14 +44,10 @@ type OptionalStates = {
 	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
-	max: number;
-	min: number;
 	name: string;
 	on: InputTypeOnDefault;
-	step: number;
 	tabIndex: number;
 	touched: boolean;
-	value: number;
 };
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;

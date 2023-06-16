@@ -49,40 +49,49 @@ export class KolInputRange implements ComponentApi {
 					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
-					<input
-						ref={this.catchRef}
-						title=""
-						accessKey={this.state._accessKey}
-						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-						aria-labelledby={`${this.state._id}-label`}
-						autoCapitalize="off"
-						autoComplete={this.state._autoComplete}
-						autoCorrect="off"
-						disabled={this.state._disabled}
-						id={this.state._id}
-						list={hasList ? `${this.state._id}-list` : undefined}
-						max={this.state._max}
-						min={this.state._min}
-						name={this.state._name}
-						slot="input"
-						spellcheck="false"
-						step={this.state._step}
-						type="range"
-						value={this.state._value as number}
-						{...this.controller.onFacade}
-					/>
-					{hasList && [
-						<datalist id={`${this.state._id}-list`}>
-							{this.state._list.map((option: Option<number>) => (
-								<option value={option.value}></option>
-							))}
-						</datalist>,
-						// <ul class="grid gap-1 text-sm grid-flow-col">
-						//   {this.state._list.map((option: InputOption<number>) => (
-						//     <li class="border-1">{option.label}</li>
-						//   ))}
-						// </ul>,
-					]}
+					<div slot="input">
+						<input
+							ref={this.catchRef}
+							title=""
+							accessKey={this.state._accessKey}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+							aria-labelledby={`${this.state._id}-label`}
+							autoCapitalize="off"
+							autoComplete={this.state._autoComplete}
+							autoCorrect="off"
+							disabled={this.state._disabled}
+							id={this.state._id}
+							list={hasList ? `${this.state._id}-list` : undefined}
+							max={this.state._max}
+							min={this.state._min}
+							name={this.state._name}
+							spellcheck="false"
+							step={this.state._step}
+							type="range"
+							value={this.state._value}
+							{...this.controller.onFacade}
+						/>
+						{hasList && [
+							<datalist
+								id={`${this.state._id}-list`}
+								style={{
+									'--max': `${this.state._max}`,
+									'--min': `${this.state._min}`,
+									'--step': `${this.state._step}`,
+									'--value': `${this.state._value}`,
+								}}
+							>
+								{this.state._list.map((option: Option<number>) => (
+									<option value={option.value}>{option.label}</option>
+								))}
+							</datalist>,
+							// <ul>
+							// 	{this.state._list.map((option: Option<number>) => (
+							// 		<li class="border-1">{option.label}</li>
+							// 	))}
+							// </ul>,
+						]}
+					</div>
 				</kol-input>
 			</Host>
 		);
@@ -190,6 +199,10 @@ export class KolInputRange implements ComponentApi {
 		_id: nonce(), // ⚠ required
 		_label: '…', // ⚠ required
 		_list: [],
+		_max: 100,
+		_min: 0,
+		_step: 1,
+		_value: 0,
 	};
 
 	public constructor() {

@@ -5,13 +5,16 @@
 input[type='range'] {
 	appearance: none;
 	background-color: #d3d3d3;
-	border: 1px solid black;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
 	display: inline-block;
 	height: 0.5rem;
 	line-height: 1.5em;
 	padding: 0;
 	margin: 0;
 }
+input[type='range']::-moz-range-thumb,
 input[type='range']::-webkit-slider-thumb {
 	box-sizing: border-box;
 	background-color: #000;
@@ -19,14 +22,35 @@ input[type='range']::-webkit-slider-thumb {
 	width: 20px;
 	border-radius: 20px;
 	cursor: pointer;
+	-moz-appearance: none;
 	-webkit-appearance: none;
 }
-input[type='range']::-moz-range-thumb {
-	box-sizing: border-box;
-	background-color: #000;
-	height: 20px;
-	width: 20px;
-	border-radius: 20px;
-	cursor: pointer;
-	-moz-appearance: none;
+
+/* https://stackoverflow.com/questions/26612700/ticks-for-type-range-html-input */
+/* datalist {
+	--ticksThickness: 2px;
+	--ticksHeight: 30%;
+	--ticksColor: silver;
+	background: silver;
+	background: linear-gradient(to right, var(--ticksColor) var(--ticksThickness), transparent 1px) repeat-x;
+	background-size: calc(100% / ((var(--max) - var(--min)) / var(--step)) - 0.1%) var(--ticksHeight);
+	background-position: 0 bottom;
+	height: 0.5em;
+	display: block;
+	position: relative;
 }
+datalist option::before,
+datalist option::after {
+	content: counter(x);
+	position: absolute;
+	bottom: -1.5em;
+}
+datalist::before {
+	counter-reset: x var(--min);
+	transform: translateX(-50%);
+}
+datalist::after {
+	counter-reset: x var(--max);
+	right: 0;
+	transform: translateX(50%);
+} */
