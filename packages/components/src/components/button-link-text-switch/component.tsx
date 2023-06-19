@@ -19,15 +19,15 @@ export class KolButtonLinkTextSwitch implements Props {
 	}
 
 	private renderContent() {
-		const link = this._link;
+		const links = this._links;
 		const compact = this._compact;
 
-		if ((link as ButtonWithChildrenProps)._on) {
-			return this.button(compact, (link as ButtonWithChildrenProps)._disabled === true, link._icon, link._label, (link as ButtonWithChildrenProps)._on);
-		} else if ((link as LinkWithChildrenProps)._href) {
-			return this.link(this._selected ?? false, compact, (link as LinkWithChildrenProps)._href, link._icon, link._label);
+		if ((links as ButtonWithChildrenProps)._on) {
+			return this.button(compact, (links as ButtonWithChildrenProps)._disabled === true, links._icon, links._label, (links as ButtonWithChildrenProps)._on);
+		} else if ((links as LinkWithChildrenProps)._href) {
+			return this.link(this._selected ?? false, compact, (links as LinkWithChildrenProps)._href, links._icon, links._label);
 		} else {
-			return this.text(compact, link._icon, link._label);
+			return this.text(compact, links._icon, links._label);
 		}
 	}
 
@@ -70,7 +70,7 @@ export class KolButtonLinkTextSwitch implements Props {
 	/**
 	 * Die Property-Daten welche das Switch verwendet, um die entsprechende Komponente zu rendern.
 	 */
-	@Prop() public _link!: ButtonOrLinkOrTextWithChildrenProps;
+	@Prop() public _links!: ButtonOrLinkOrTextWithChildrenProps;
 
 	/**
 	 * Kompakte Darstellung aktivieren.
