@@ -1,17 +1,17 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriDialogApi, KoliBriDialogStates } from '../../types/dialog';
-import { validateActiveElement } from '../../types/props/active-element';
+import { KoliBriDialogApi, KoliBriDialogCallbacks, KoliBriDialogStates } from '../../types/dialog';
+import { setState, watchBoolean } from '../../utils/prop.validators';
 
 /**
- * @slot - Der Inhalt des Modals.
+ * @slot - Der Inhalt des Dialogs (Modals).
  */
 @Component({
 	tag: 'kol-dialog',
 	styleUrls: {
 		default: './style.css',
 	},
-	shadow: true,
+	shadow: false,
 })
 export class KolDialog implements KoliBriDialogApi {
 	private dialogElement?: HTMLDialogElement;
@@ -20,27 +20,19 @@ export class KolDialog implements KoliBriDialogApi {
 		this.dialogElement = el;
 	};
 
-	public readonly closeDialog = (): void => {
-		this.state._activeElement?.focus();
-		this._activeElement = null;
-	};
-
-	public disconnectedCallback(): void {
-		if (this.dialogElement) {
-			this.closeDialog();
-		}
-	}
-
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		if (event && event.code === 'Escape') {
-			this.closeDialog();
+			this._show = false;
+			if (this._on?.onClosedByEsc) {
+				this._on?.onClosedByEsc(event);
+			}
 		}
 	};
 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<dialog ref={this.catchDialogElement} class="dialog" onKeyDown={this.onKeyDown}>
+				<dialog ref={this.catchDialogElement} onKeyDown={this.onKeyDown}>
 					<slot />
 				</dialog>
 			</Host>
@@ -48,25 +40,50 @@ export class KolDialog implements KoliBriDialogApi {
 	}
 
 	/**
-	 * Übergibt eine Referenz auf das öffnende HTML-Element, wodurch der Dialog geöffnet wird. "null" um zu schließen.
+	 * Event handling for the dialog (modal).
 	 */
-	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
+	@Prop() public _on?: KoliBriDialogCallbacks = {};
+
+	/**
+	 * Shows or hides the dialog.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
 	@State() public state: KoliBriDialogStates = {
-		_activeElement: null,
+		_on: {},
+		_show: false,
 	};
 
-	@Watch('_activeElement')
-	public validateActiveElement(value?: HTMLElement | null): void {
-		validateActiveElement(this, value);
-		if (this.state._activeElement) {
-			this.dialogElement?.showModal();
-		} else {
-			this.dialogElement?.close();
+	@Watch('_on')
+	public validateOn(value?: KoliBriDialogCallbacks): void {
+		if (typeof value === 'object' && value !== null && typeof value.onClosedByEsc === 'function') {
+			setState(this, '_on', value);
 		}
 	}
 
+	@Watch('_show')
+	public validateShow(value?: boolean): void {
+		watchBoolean(this, '_show', value, {
+			hooks: {
+				afterPatch: () => {
+					/**
+					 * Der Timeout wird benötigt, weil die Referenz auf das Dialog-Element erst nach dem Rendern
+					 * verfügbar ist. Und erst danach kann die Methode `showModal` oder `close` aufgerufen werden.
+					 */
+					setTimeout(() => {
+						if (this.state._show) {
+							this.dialogElement?.showModal();
+						} else {
+							this.dialogElement?.close();
+						}
+					});
+				},
+			},
+		});
+	}
+
 	public componentWillLoad(): void {
-		this.validateActiveElement(this._activeElement);
+		this.validateOn(this._on);
+		this.validateShow(this._show);
 	}
 }

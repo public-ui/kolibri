@@ -1,12 +1,19 @@
 import { Generic } from '@a11y-ui/core';
+import { EventCallback } from './callbacks';
+
+export type KoliBriDialogCallbacks = {
+	onClosedByEsc?: EventCallback<KeyboardEvent>;
+};
 
 type RequiredProps = unknown;
 type OptionalProps = {
-	activeElement: HTMLElement | null;
+	on: KoliBriDialogCallbacks;
+	show: boolean;
 };
 
 type RequiredStates = {
-	activeElement: HTMLElement | null;
+	on: KoliBriDialogCallbacks;
+	show: boolean;
 };
 type OptionalStates = unknown;
 

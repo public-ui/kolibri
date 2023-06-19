@@ -13,6 +13,7 @@ import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { KoliBriDialogCallbacks } from "./types/dialog";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -48,6 +49,7 @@ export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { KoliBriDialogCallbacks } from "./types/dialog";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -487,9 +489,13 @@ export namespace Components {
     }
     interface KolDialog {
         /**
-          * Übergibt eine Referenz auf das öffnende HTML-Element, wodurch der Dialog geöffnet wird. "null" um zu schließen.
+          * Event handling for the dialog (modal).
          */
-        "_activeElement"?: HTMLElement | null;
+        "_on"?: KoliBriDialogCallbacks;
+        /**
+          * Shows or hides the dialog.
+         */
+        "_show"?: boolean;
     }
     interface KolForm {
         /**
@@ -3333,9 +3339,13 @@ declare namespace LocalJSX {
     }
     interface KolDialog {
         /**
-          * Übergibt eine Referenz auf das öffnende HTML-Element, wodurch der Dialog geöffnet wird. "null" um zu schließen.
+          * Event handling for the dialog (modal).
          */
-        "_activeElement"?: HTMLElement | null;
+        "_on"?: KoliBriDialogCallbacks;
+        /**
+          * Shows or hides the dialog.
+         */
+        "_show"?: boolean;
     }
     interface KolForm {
         /**

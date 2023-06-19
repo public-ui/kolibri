@@ -681,9 +681,25 @@
 			</kol-accordion>
 			<kol-accordion _heading="dialog" id="dialog">
 				<kol-heading _label="Dialog" _level="2"></kol-heading>
-				<kol-button ref="open_dialog" _label="Dialog auf machen" :_on="{ onClick: ()=> $refs.dialog._activeElement = $refs.open_dialog}"></kol-button>
-				<kol-dialog ref="dialog" :_on="{ onClose: on}">
-					<div class="w-40 h-40 bg-neutral-100 text-neutral-800 text-3xl font-bold">Test</div>
+				<kol-button ref="open_dialog" _label="Dialog auf machen" :_on="{ onClick: ()=> $refs.dialog._show = true}"></kol-button>
+				<kol-dialog ref="dialog" _show :_on="{ onClose: on}">
+					<form>
+						<p>
+							<label>
+								Favorite animal:
+								<select>
+									<option value="default">Choose…</option>
+									<option>Brine shrimp</option>
+									<option>Red panda</option>
+									<option>Spider monkey</option>
+								</select>
+							</label>
+						</p>
+						<div>
+							<button value="cancel" formmethod="dialog">Cancel</button>
+							<button id="confirmBtn" value="default">Confirm</button>
+						</div>
+					</form>
 				</kol-dialog>
 			</kol-accordion>
 			<kol-accordion _heading="form" id="form">

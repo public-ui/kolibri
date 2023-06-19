@@ -28,10 +28,10 @@ Sobald ein **Dialog** geöffnet wird, werden alle selektierbaren Elemente in der
 	const dialog = document.querySelector('#test-dialog');
 	const dialogOpenButton = document.querySelector('#dialog-open-button');
 	function openDialog() {
-		dialog._activeElement = dialogOpenButton;
+		dialog._show = true;
 	}
 	function closeModal() {
-		dialog._activeElement = null;
+		dialog._show = false;
 	}
 	document.querySelectorAll('.close-dialog').forEach((b) => (b._on = { onClick: closeModal }));
 	dialogOpenButton._on = { onClick: openDialog };
@@ -62,7 +62,7 @@ Da der Dialog vom restlichen Seiteninhalt entkoppelt ist, aber für eine teilwei
 
 Der **Dialog** ist so realisiert, dass der Fokus darauf liegt, wenn es geöffnet wird. Elemente außerhalb des Modals sind dann nicht mehr fokussierbar.
 
-Wird der **Dialog** geschlossen, liegt der Fokus wieder auf dem Element, welches unter **`_activeElement`** angegeben wurde.
+Wird der **Dialog** geschlossen, liegt der Fokus wieder auf dem interaktiven Element, welches unter den Dialog geöffnet hatte.
 
 ### Tastatursteuerung
 
@@ -80,17 +80,15 @@ Wird der **Dialog** geschlossen, liegt der Fokus wieder auf dem Element, welches
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                                                                 | Type                                                            | Default     |
-| ------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
-| `_activeElement`          | --            | Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.                                     | `HTMLElement \| null \| undefined`                              | `undefined` |
-| `_ariaLabel` _(required)_ | `_aria-label` | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                                                        | `undefined` |
-| `_on`                     | --            | Gibt die EventCallback-Function für das Schließen des Modals an.                                                            | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
-| `_width`                  | `_width`      | Setzt die Breite des Modals. (max-width: 100%).                                                                             | `string \| undefined`                                           | `'100%'`    |
+| Property | Attribute | Description                            | Type                                                                          | Default |
+| -------- | --------- | -------------------------------------- | ----------------------------------------------------------------------------- | ------- |
+| `_on`    | --        | Event handling for the dialog (modal). | `undefined \| { onClosedByEsc?: EventCallback<KeyboardEvent> \| undefined; }` | `{}`    |
+| `_show`  | `_show`   | Shows or hides the dialog.             | `boolean \| undefined`                                                        | `false` |
 
 ## Slots
 
-| Slot | Description            |
-| ---- | ---------------------- |
-|      | Der Inhalt des Modals. |
+| Slot | Description                      |
+| ---- | -------------------------------- |
+|      | Der Inhalt des Dialogs (Modals). |
 
 ---
