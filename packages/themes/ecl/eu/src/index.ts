@@ -1464,4 +1464,13 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 		font-size: 0.875rem;
 		order: 4;
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 4px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem;
+		background-color: #0e47cb;
+		color: #fff;
+		cursor: pointer;
+	}`,
 });

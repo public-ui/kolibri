@@ -8605,4 +8605,16 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			u+f160-f161, u+f163, u+f175-f178, u+f195, u+f1f8, u+f219, u+f250, u+f252,
 			u+f27a;
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--color-blau);
+		border-color: var(--color-blau-dark);
+		color: white;
+		cursor: pointer;
+	}`,
 });
