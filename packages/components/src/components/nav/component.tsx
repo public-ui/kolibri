@@ -123,7 +123,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 					compact,
 				}}
 			>
-				<kol-button-link-text-switch _prop={link} _compact={compact} _selected={selected} />
+				<kol-button-link-text-switch _links={link} _compact={compact} _selected={selected} />
 				{hasChildren ? this.expandButton(collapsible, link, selected) : ''}
 			</div>
 		);
