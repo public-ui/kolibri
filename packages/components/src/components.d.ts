@@ -368,19 +368,22 @@ export namespace Components {
          */
         "_value"?: Stringified<unknown>;
     }
+    /**
+     * Internal component that renders an action or text component like a button or a link.
+     */
     interface KolButtonLinkTextSwitch {
         /**
           * Kompakte Darstellung aktivieren.
          */
         "_compact": boolean;
         /**
-          * Die Property-Daten welche das Switch verwendet, um die entsprechende Komponente zu rendern.
+          * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
-        "_prop": ButtonOrLinkOrTextWithChildrenProps;
+        "_links": ButtonOrLinkOrTextWithChildrenProps;
         /**
           * Ist der Link selectiert? (Nur wenn es ein Link ist.)
          */
-        "_selected": boolean;
+        "_selected"?: boolean;
     }
     interface KolButtonWc {
         /**
@@ -2554,6 +2557,9 @@ declare global {
         prototype: HTMLKolButtonLinkElement;
         new (): HTMLKolButtonLinkElement;
     };
+    /**
+     * Internal component that renders an action or text component like a button or a link.
+     */
     interface HTMLKolButtonLinkTextSwitchElement extends Components.KolButtonLinkTextSwitch, HTMLStencilElement {
     }
     var HTMLKolButtonLinkTextSwitchElement: {
@@ -3222,15 +3228,18 @@ declare namespace LocalJSX {
          */
         "_value"?: Stringified<unknown>;
     }
+    /**
+     * Internal component that renders an action or text component like a button or a link.
+     */
     interface KolButtonLinkTextSwitch {
         /**
           * Kompakte Darstellung aktivieren.
          */
-        "_compact"?: boolean;
+        "_compact": boolean;
         /**
-          * Die Property-Daten welche das Switch verwendet, um die entsprechende Komponente zu rendern.
+          * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
-        "_prop": ButtonOrLinkOrTextWithChildrenProps;
+        "_links": ButtonOrLinkOrTextWithChildrenProps;
         /**
           * Ist der Link selectiert? (Nur wenn es ein Link ist.)
          */
@@ -5423,6 +5432,9 @@ declare module "@stencil/core" {
             "kol-button-group": LocalJSX.KolButtonGroup & JSXBase.HTMLAttributes<HTMLKolButtonGroupElement>;
             "kol-button-group-wc": LocalJSX.KolButtonGroupWc & JSXBase.HTMLAttributes<HTMLKolButtonGroupWcElement>;
             "kol-button-link": LocalJSX.KolButtonLink & JSXBase.HTMLAttributes<HTMLKolButtonLinkElement>;
+            /**
+             * Internal component that renders an action or text component like a button or a link.
+             */
             "kol-button-link-text-switch": LocalJSX.KolButtonLinkTextSwitch & JSXBase.HTMLAttributes<HTMLKolButtonLinkTextSwitchElement>;
             "kol-button-wc": LocalJSX.KolButtonWc & JSXBase.HTMLAttributes<HTMLKolButtonWcElement>;
             "kol-card": LocalJSX.KolCard & JSXBase.HTMLAttributes<HTMLKolCardElement>;
