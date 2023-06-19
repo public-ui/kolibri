@@ -68,7 +68,7 @@ export class KolButtonLinkTextSwitch implements Props {
 	}
 
 	/**
-	 * Die Property-Daten welche das Switch verwendet, um die entsprechende Komponente zu rendern.
+	 * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
 	 */
 	@Prop() public _links!: ButtonOrLinkOrTextWithChildrenProps;
 
