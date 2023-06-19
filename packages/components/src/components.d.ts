@@ -13,6 +13,7 @@ import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriFormCallbacks } from "./components/form/component";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -28,7 +29,6 @@ import { Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/component";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
-import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { PaginationHasButton } from "./components/pagination/component";
 import { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
@@ -48,6 +48,7 @@ export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriFormCallbacks } from "./components/form/component";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -63,7 +64,6 @@ export { Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/component";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
-export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { PaginationHasButton } from "./components/pagination/component";
 export { KoliBriPaginationButtonCallbacks } from "./components/pagination/types";
@@ -367,6 +367,20 @@ export namespace Components {
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<unknown>;
+    }
+    interface KolButtonLinkTextSwitch {
+        /**
+          * Kompakte Darstellung aktivieren.
+         */
+        "_compact": boolean;
+        /**
+          * Die Property-Daten welche das Switch verwendet, um die entsprechende Komponente zu rendern.
+         */
+        "_prop": ButtonOrLinkOrTextWithChildrenProps;
+        /**
+          * Ist der Link selectiert? (Nur wenn es ein Link ist.)
+         */
+        "_selected": boolean;
     }
     interface KolButtonWc {
         /**
@@ -2540,6 +2554,12 @@ declare global {
         prototype: HTMLKolButtonLinkElement;
         new (): HTMLKolButtonLinkElement;
     };
+    interface HTMLKolButtonLinkTextSwitchElement extends Components.KolButtonLinkTextSwitch, HTMLStencilElement {
+    }
+    var HTMLKolButtonLinkTextSwitchElement: {
+        prototype: HTMLKolButtonLinkTextSwitchElement;
+        new (): HTMLKolButtonLinkTextSwitchElement;
+    };
     interface HTMLKolButtonWcElement extends Components.KolButtonWc, HTMLStencilElement {
     }
     var HTMLKolButtonWcElement: {
@@ -2857,6 +2877,7 @@ declare global {
         "kol-button-group": HTMLKolButtonGroupElement;
         "kol-button-group-wc": HTMLKolButtonGroupWcElement;
         "kol-button-link": HTMLKolButtonLinkElement;
+        "kol-button-link-text-switch": HTMLKolButtonLinkTextSwitchElement;
         "kol-button-wc": HTMLKolButtonWcElement;
         "kol-card": HTMLKolCardElement;
         "kol-details": HTMLKolDetailsElement;
@@ -3200,6 +3221,20 @@ declare namespace LocalJSX {
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<unknown>;
+    }
+    interface KolButtonLinkTextSwitch {
+        /**
+          * Kompakte Darstellung aktivieren.
+         */
+        "_compact"?: boolean;
+        /**
+          * Die Property-Daten welche das Switch verwendet, um die entsprechende Komponente zu rendern.
+         */
+        "_prop": ButtonOrLinkOrTextWithChildrenProps;
+        /**
+          * Ist der Link selectiert? (Nur wenn es ein Link ist.)
+         */
+        "_selected"?: boolean;
     }
     interface KolButtonWc {
         /**
@@ -5322,6 +5357,7 @@ declare namespace LocalJSX {
         "kol-button-group": KolButtonGroup;
         "kol-button-group-wc": KolButtonGroupWc;
         "kol-button-link": KolButtonLink;
+        "kol-button-link-text-switch": KolButtonLinkTextSwitch;
         "kol-button-wc": KolButtonWc;
         "kol-card": KolCard;
         "kol-details": KolDetails;
@@ -5387,6 +5423,7 @@ declare module "@stencil/core" {
             "kol-button-group": LocalJSX.KolButtonGroup & JSXBase.HTMLAttributes<HTMLKolButtonGroupElement>;
             "kol-button-group-wc": LocalJSX.KolButtonGroupWc & JSXBase.HTMLAttributes<HTMLKolButtonGroupWcElement>;
             "kol-button-link": LocalJSX.KolButtonLink & JSXBase.HTMLAttributes<HTMLKolButtonLinkElement>;
+            "kol-button-link-text-switch": LocalJSX.KolButtonLinkTextSwitch & JSXBase.HTMLAttributes<HTMLKolButtonLinkTextSwitchElement>;
             "kol-button-wc": LocalJSX.KolButtonWc & JSXBase.HTMLAttributes<HTMLKolButtonWcElement>;
             "kol-card": LocalJSX.KolCard & JSXBase.HTMLAttributes<HTMLKolCardElement>;
             "kol-details": LocalJSX.KolDetails & JSXBase.HTMLAttributes<HTMLKolDetailsElement>;
