@@ -150,7 +150,6 @@ export class KolProcess implements KoliBriProgressAPI {
 			value = 0;
 		}
 		watchNumber(this, '_value', value, {
-			// max: this._max, TODO as Function
 			required: true,
 		});
 	}

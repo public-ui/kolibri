@@ -71,11 +71,6 @@ export class KolTabs implements KoliBriTabsAPI {
 		this.onSelect(event, index, true);
 	};
 
-	// private readonly onClickClose = (event: Event, button: TabButtonProps, index: number) => {
-	// 	event.stopPropagation();
-	// 	this.onClose(button, event, index);
-	// };
-
 	private readonly onMouseDown = (event: Event): void => {
 		event.stopPropagation();
 	};
@@ -339,7 +334,6 @@ export class KolTabs implements KoliBriTabsAPI {
 				div.appendChild(slot);
 				this.tabPanelHost.appendChild(div);
 				if (this.host?.children instanceof HTMLCollection && this.host?.children[i] /* SSR instanceof HTMLElement */) {
-					// div.appendChild(this.host?.children[0]);
 					this.host?.children[i].setAttribute('slot', `tabpanel-slot-${i}`);
 				}
 			}
@@ -365,8 +359,6 @@ export class KolTabs implements KoliBriTabsAPI {
 			this._on?.onSelect(event, index);
 		}
 		if (focus === true) {
-			// TODO: prüfen, ob hier noch was offen ist
-			// devHint('[KolTabs] Tab-Fokus-verschieben geht im Moment nicht.');
 			this.selectedTimeout = setTimeout(() => {
 				clearTimeout(this.selectedTimeout);
 				if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {

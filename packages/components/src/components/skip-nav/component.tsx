@@ -23,10 +23,6 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
 							<li key={index}>
-								{/*
-									This stealth link should be replaced with the kol-link-wc and
-									styled only inside skip-nav css.
-								*/}
 								<kol-link {...link} _stealth={true}></kol-link>
 							</li>
 						);

@@ -87,13 +87,8 @@ export class KolToast implements KoliBriToastAPI {
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriToastEventCallbacks): void {
-		if (typeof value === 'object' && value !== null) {
-			featureHint('[KolToast] Prüfen, wie man auch einen EventCallback einzeln ändern kann.');
-			const callbacks: KoliBriToastEventCallbacks = {};
-			if (typeof value.onClose === 'function' || value.onClose === true) {
-				callbacks.onClose = value.onClose;
-			}
-			setState<KoliBriToastEventCallbacks>(this, '_on', callbacks);
+		if (typeof value === 'object' && (typeof value?.onClose === 'function' || value.onClose === true)) {
+			setState<KoliBriToastEventCallbacks>(this, '_on', { onClose: value.onClose });
 		}
 	}
 
@@ -172,7 +167,6 @@ export class KolToast implements KoliBriToastAPI {
 							_hasCloser={this.state._hasCloser}
 							_type={this.state._type}
 							_variant="card"
-							// tabindex="0"
 							_on={this.on}
 						>
 							<slot />

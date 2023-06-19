@@ -41,11 +41,7 @@ export class KolSpin implements KoliBriSpinAPI {
 						aria-busy="true"
 						aria-label={translate('kol-action-running')}
 						aria-live="polite"
-						class={{
-							spin: true,
-							[this.state._variant]: true,
-							/* [`spin--${this.state._variant}`]: true, witch benefit have this notation? */
-						}}
+						class={{ spin: true, [this.state._variant]: true }}
 						role="alert"
 					>
 						{renderSpin(this.state._variant)}

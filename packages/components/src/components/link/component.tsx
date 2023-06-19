@@ -39,25 +39,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	};
 
 	private readonly getRenderValues = () => {
-		/**
-		 * DX
-		 * Das möchte ich ungern für HTML machen, sondern nur für Barrierefreiheitsthemen.
-		 */
-		// if (typeof this.state._href === 'string' && this.state._href.length > 0) {
-		//   console.error('Setz den URL.');
-		//   throw new Error('Setz den URL.');
-		// }
-
-		// switch (this.state._target) {
-		//   case '_blank':
-		//   case '_self':
-		//     break;
-		//   default:
-		//     console.error('Fehlerhaftes Target.');
-		//     throw new Error('Fehlerhaftes Target.');
-		// }
-
-		// ROBUSTHEIT durch Validierung
 		let goToProps = {};
 		if (typeof this.state._selector === 'string') {
 			goToProps = {
@@ -355,13 +336,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 */
 	@Watch('_on')
 	public validateOn(value?: LinkOnCallbacks): void {
-		if (
-			typeof value === 'object' &&
-			value !== null &&
-			// https://eslint.org/docs/rules/no-prototype-builtins
-			Object.prototype.hasOwnProperty.call(value, 'onClick') &&
-			typeof value.onClick === 'function'
-		) {
+		if (typeof value === 'object' && typeof value?.onClick === 'function') {
 			this.state = {
 				...this.state,
 				_on: value,
