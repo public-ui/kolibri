@@ -202,6 +202,7 @@ export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	PropDownload &
 	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
+export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates>;
 
 /**
  * API LinkButton

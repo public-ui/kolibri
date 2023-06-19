@@ -1,40 +1,11 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
-import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
+import { KoliBriIconProp } from '../../types/icon';
 import { validateIcon } from '../../types/props/icon';
-import { validateLabelWithAriaLabel } from '../../types/props/label';
-import { PropHideLabel, validateHideLabel } from '../../types/props';
-
-type RequiredProps = {
-	label: string;
-};
-type OptionalProps = {
-	icon: Stringified<KoliBriIconProp>;
-	/**
-	 * @deprecated use _hide-label
-	 */
-	iconOnly: boolean;
-} & PropHideLabel;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	icon: {
-		top?: KoliBriCustomIcon;
-		right?: KoliBriCustomIcon;
-		bottom?: KoliBriCustomIcon;
-		left?: KoliBriCustomIcon;
-	};
-	label: string;
-};
-type OptionalStates = {
-	/**
-	 * @deprecated use _hide-label
-	 */
-	iconOnly: boolean;
-} & PropHideLabel;
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { validateLabel } from '../../types/props/label';
+import { validateHideLabel } from '../../types/props';
+import { KolibriSpanAPI, KolibriSpanStates } from './types';
 
 /**
  * @internal
@@ -43,7 +14,7 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	tag: 'kol-span-wc',
 	shadow: false,
 })
-export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolSpanWc implements KolibriSpanAPI {
 	public render(): JSX.Element {
 		const hideExpertSlot = this.state._label.length > 0;
 		return (
@@ -88,7 +59,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Prop() public _label!: string;
 
-	@State() public state: States = {
+	@State() public state: KolibriSpanStates = {
 		_hideLabel: false,
 		_icon: {},
 		_iconOnly: false,

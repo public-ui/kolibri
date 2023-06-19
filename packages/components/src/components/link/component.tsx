@@ -1,19 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { translate } from '../../i18n';
-import {
-	AlternativButtonLinkRole,
-	LinkOnCallbacks,
-	LinkStates,
-	LinkTarget,
-	LinkUseCase,
-	OptionalLinkProps,
-	OptionalLinkStates,
-	RequiredLinkProps,
-	RequiredLinkStates,
-	watchTooltipAlignment,
-} from '../../types/button-link';
+import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AriaCurrent, Align, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload, validateHideLabel } from '../../types/props';
@@ -22,7 +10,7 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateAriaLabelWithLabel, validateLabel, validateLabelWithAriaLabel } from '../../types/props/label';
+import { validateLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 
 /**
@@ -32,7 +20,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates> {
+export class KolLinkWc implements KoliBriLinkAPI {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private readonly nonce = nonce();
 	private ref?: HTMLAnchorElement;

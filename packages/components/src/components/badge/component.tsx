@@ -1,39 +1,16 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { ColorPair, handleColorChange, PropColor, validateColor } from '../../types/props/color';
+import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
-import { PropHideLabel, validateLabel } from '../../types/props';
+import { validateLabel } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
+import { KoliBriBadgeProps, KoliBriBadgeStates } from './types';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
-
-type RequiredProps = {
-	label: string;
-};
-type OptionalProps = {
-	color: Stringified<PropColor>;
-	icon: Stringified<KoliBriIconProp>;
-	/**
-	 * @deprecated
-	 */
-	iconOnly: boolean;
-	smartButton: Stringified<ButtonProps>;
-} & PropHideLabel;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	color: ColorPair;
-	label: string;
-};
-type OptionalStates = {
-	smartButton: ButtonProps;
-};
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-badge',
@@ -42,7 +19,7 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolBadge implements Props {
+export class KolBadge implements KoliBriBadgeProps {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
@@ -111,7 +88,7 @@ export class KolBadge implements Props {
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
-	@State() public state: States = {
+	@State() public state: KoliBriBadgeStates = {
 		_color: {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',

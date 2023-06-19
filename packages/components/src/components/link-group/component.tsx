@@ -1,15 +1,14 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
 import { Orientation } from '../../types/orientation';
-import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
 import { validateLabel } from '../../types/props';
+import { KoliBriLinkGroupAPI, KoliBriLinkGroupStates, ListStyleType } from './types';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -34,52 +33,6 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	return list;
 };
 
-export type ListStyleType =
-	| 'disc'
-	| 'circle'
-	| 'square'
-	| 'none'
-	| 'decimal'
-	| 'decimal-leading-zero'
-	| 'lower-alpha'
-	| 'lower-greek'
-	| 'lower-latin'
-	| 'lower-roman'
-	| 'upper-alpha'
-	| 'upper-latin'
-	| 'upper-roman';
-
-type RequiredProps = {
-	links: Stringified<LinkProps[]>;
-};
-type OptionalProps = {
-	/**
-	 * @deprecated use _label instead
-	 */
-	ariaLabel: string;
-	heading: string;
-	label: string;
-	level: HeadingLevel;
-	listStyleType: ListStyleType;
-	ordered: boolean;
-	orientation: Orientation;
-};
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	label: string;
-	links: LinkProps[];
-	listStyleType: ListStyleType;
-	orientation: Orientation;
-};
-type OptionalStates = {
-	ariaLabel: string;
-	heading: string;
-	level: HeadingLevel;
-	ordered: boolean;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
 @Component({
 	tag: 'kol-link-group',
 	styleUrls: {
@@ -87,7 +40,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	public render(): JSX.Element {
 		return (
 			<nav
@@ -134,7 +87,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated use _label instead
 	 */
 	@Prop() public _label?: string;
 
@@ -159,7 +111,6 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: States = {
 	@State() public state: KoliBriLinkGroupStates = {
 		_label: '…', // '⚠'
 		_listStyleType: 'disc',

@@ -1,32 +1,12 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { KoliBriProgressType } from '../../types/progress';
-import { PropLabel } from '../../types/props';
 import { watchNumber, watchString } from '../../utils/prop.validators';
-
-type RequiredProps = {
-	max: number;
-	value: number;
-};
-type OptionalProps = PropLabel & {
-	type: KoliBriProgressType; // @deprecated
-	unit: string;
-	variant: KoliBriProgressType;
-};
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps & {
-	liveValue: number;
-};
-type OptionalStates = PropLabel & {
-	unit: string;
-	variant: KoliBriProgressType;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
+import { KoliBriProgressType } from '../../components';
+import { validateLabel } from '../../types/props';
 
 // https://css-tricks.com/html5-progress-element/
-const createProgressSVG = (state: States): JSX.Element => {
+const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
 	switch (state._variant) {
 		case 'cycle':
 			return (
@@ -83,7 +63,7 @@ const createProgressSVG = (state: States): JSX.Element => {
 	},
 	shadow: true,
 })
-export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolProcess implements KoliBriProgressAPI {
 	private interval?: NodeJS.Timer;
 
 	// https://dequeuniversity.com/library/aria/progress-bar-bounded
@@ -130,7 +110,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _variant?: KoliBriProgressType;
 
-	@State() public state: States = {
+	@State() public state: KoliBriProgressStates = {
 		_max: 100,
 		_unit: '%',
 		_value: 0,

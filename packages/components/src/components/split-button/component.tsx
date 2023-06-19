@@ -1,9 +1,17 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { API, KoliBriSplitButtonCallback, States } from './types';
+import { KoliBriSplitButtonAPI, KoliBriSplitButtonCallback, KoliBriSplitButtonAStates } from './types';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
-import { Align, AriaCurrent, validateAriaCurrent, validateAriaExpanded, validateAriaSelected, validateDisabled, validateHideLabel } from '../../types/props';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
+import {
+	Align,
+	AriaCurrent,
+	validateAriaCurrent,
+	validateAriaExpanded,
+	validateAriaSelected,
+	validateDisabled,
+	validateHideLabel,
+	validateLabel,
+} from '../../types/props';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
@@ -20,7 +28,7 @@ import { Stringified } from '../../types/common';
 	},
 	shadow: true,
 })
-export class KolSplitButton implements API {
+export class KolSplitButton implements KoliBriSplitButtonAPI {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
@@ -213,7 +221,7 @@ export class KolSplitButton implements API {
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 
-	@State() public state: States = {
+	@State() public state: KoliBriSplitButtonAStates = {
 		_icon: '',
 		_label: '',
 		_on: {},

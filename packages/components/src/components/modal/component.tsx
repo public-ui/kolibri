@@ -1,37 +1,18 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
 import { KoliBriModalEventCallbacks } from '../../types/modal';
 import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { ModalService } from './service';
 import { validateLabel } from '../../types/props';
+import { KoliBriModalAPI, KoliBriModalStates } from './types';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
+ * @deprecated use the native <dialog> instead
  */
-
-type RequiredProps = unknown;
-type OptionalProps = {
-	activeElement: HTMLElement | null;
-	label: string;
-	on: KoliBriModalEventCallbacks;
-	width: string;
-} & AriaLabel;
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	activeElement: HTMLElement | null;
-	label: string;
-	width: string;
-};
-type OptionalStates = {
-	on: KoliBriModalEventCallbacks;
-} & AriaLabel;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
  * @slot - Der Inhalt des Modals.
@@ -43,7 +24,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolModal implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolModal implements KoliBriModalAPI {
 	private hostElement?: HTMLElement;
 
 	public componentDidRender(): void {
@@ -127,7 +108,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _width?: string = '100%';
 
-	@State() public state: States = {
+	@State() public state: KoliBriModalStates = {
 		_activeElement: null,
 		_label: '…',
 		_width: '100%',

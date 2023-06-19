@@ -1,33 +1,20 @@
 import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { watchTooltipAlignment } from '../../types/button-link';
 import { Align } from '../../types/props';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
-
-type RequiredProps = {
-	id: string;
-	label: string;
-};
-type OptionalProps = {
-	align: Align;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps & OptionalProps;
-type OptionalStates = unknown;
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
 
 @Component({
 	tag: 'kol-tooltip',
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolTooltip implements KoliBriTooltipAPI {
 	private previousSibling?: HTMLElement | null;
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
@@ -176,7 +163,7 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _label!: string;
 
-	@State() public state: States = {
+	@State() public state: KoliBriTooltipStates = {
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required
