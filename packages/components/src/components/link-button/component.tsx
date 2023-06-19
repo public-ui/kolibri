@@ -124,7 +124,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).

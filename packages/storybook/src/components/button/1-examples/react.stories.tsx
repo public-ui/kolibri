@@ -70,7 +70,7 @@ export const OnlyIcon = (args: any) => (
 OnlyIcon.args = {
 	...DefaultArgs,
 	_icon: 'icofont-home',
-	_iconOnly: true,
+	_hideLabel: true,
 };
 OnlyIcon.storyName = 'Button nur mit Icon';
 
@@ -82,7 +82,7 @@ export const Tooltip = (args: any) => (
 Tooltip.args = {
 	...DefaultArgs,
 	_icon: 'icofont-home',
-	_iconOnly: true,
+	_hideLabel: true,
 	_label: 'Benamung des Button',
 	_tooltipAlign: 'right',
 };
@@ -151,7 +151,7 @@ export const Output = (args: any) => (
 		<KolButton class="not-used" _variant="primary" _label="Hinzufügen"></KolButton>
 		<KolButton className="font-80" style={{ fontSize: '80%' }} _variant="primary" _label="Hinzufügen" _icon="icofont-ui-add"></KolButton>
 		<KolButton className="font-60" style={{ fontSize: '60%' }} _variant="primary" _label="Hinzufügen" _icon="icofont-ui-add" _icon-align="right"></KolButton>
-		<KolButton class="not-used" _variant="primary" _label="Hinzufügen (nur Icon)" _icon="icofont-ui-add" _icon-only="true"></KolButton>
+		<KolButton class="not-used" _variant="primary" _label="Hinzufügen (nur Icon)" _icon="icofont-ui-add" _hideLabel></KolButton>
 		<KolButton _variant="primary" _label="ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen"></KolButton>
 
 		<div className="d-flex" style={{ maxWidth: '420px', justifyContent: 'space-between' }}>

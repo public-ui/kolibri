@@ -79,7 +79,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-						'icon-only': this.state._hideLabel === true,
+						'icon-only': this.state._hideLabel === true, // @deprecated in v2
 						'hide-label': this.state._hideLabel === true,
 					}}
 					disabled={this.state._disabled}
@@ -171,7 +171,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
 	 * Gibt die interne ID des primären Elements in der Komponente an.

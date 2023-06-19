@@ -25,7 +25,7 @@ export const argTypes = {
 		options: ['left', 'right'],
 		defaultValue: 'left',
 	},
-	_iconOnly: {
+	_hideLabel: {
 		name: 'Nur Icon',
 		control: {
 			type: 'boolean',

@@ -65,21 +65,21 @@ const Nav2 = () => (
 				_label: '1 Navigationspunkt mit sehr langem Link-Test',
 				_href: '#abc',
 				_icon: 'icofont-woodpecker',
-				_iconOnly: true,
+				_hideLabel: true,
 				_target: 'asdasd',
 			},
 			{
 				_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 				_href: '#abc',
 				_icon: 'icofont-woodpecker',
-				_iconOnly: true,
+				_hideLabel: true,
 			},
 			{
 				_active: true,
 				_label: '3 Navigationspunkt',
 				_href: '#abc',
 				_icon: 'icofont-woodpecker',
-				_iconOnly: true,
+				_hideLabel: true,
 				_children: [
 					{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker' },
 					{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'icofont-woodpecker', _target: 'asdasd' },
@@ -103,7 +103,7 @@ const Nav2 = () => (
 					{ _label: '3.5 Navigationspunkt', _href: '#abc' },
 				],
 			},
-			{ _label: '4 Navigationspunkt', _href: '#abc', _iconOnly: true },
+			{ _label: '4 Navigationspunkt', _href: '#abc', _hideLabel: true },
 		]}
 		_orientation="horizontal"
 		style={{ display: 'inline-flex' }}

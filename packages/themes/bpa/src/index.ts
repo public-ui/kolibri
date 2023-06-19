@@ -431,7 +431,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		border-radius: 0.125rem;
 		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
 	}
-	.icon-only > kol-span-wc {
+	.hide-label > kol-span-wc {
 		padding: 0.625rem;
 	}
 	.button.ghost a kol-span-wc {

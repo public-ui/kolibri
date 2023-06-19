@@ -22,7 +22,7 @@ export const BreadcrumbBasic: FC = () => (
 				{
 					_label: 'Startseite',
 					_icon: 'codicon codicon-home',
-					_iconOnly: true,
+					_hideLabel: true,
 					_href: '#/',
 				},
 				{

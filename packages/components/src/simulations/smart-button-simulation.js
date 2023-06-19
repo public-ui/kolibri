@@ -4,7 +4,7 @@ setTimeout(() => {
 		smartButton._smartButton = {
 			_label: 'Password einblenden',
 			_icon: { left: { icon: 'icofont-eye' } },
-			_iconOnly: true,
+			_hideLabel: true,
 			_tooltipAlign: 'left',
 			_on: {
 				onClick: () => {

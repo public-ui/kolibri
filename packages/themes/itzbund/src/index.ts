@@ -108,8 +108,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: inherit; /*line-height: 1.25em;*/ /*padding: calc(4 * var(--spacing));*/
 		padding: 0 1rem;
 	}
-	.button a.icon-only > kol-span-wc,
-	.button button.icon-only > kol-span-wc {
+	.button a.hide-label > kol-span-wc,
+	.button button.hide-label > kol-span-wc {
 		padding: 0 0.5rem;
 	}
 	a > kol-span-wc,
@@ -220,8 +220,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: inherit; /*line-height: 1.25em;*/ /*padding: calc(4 * var(--spacing));*/
 		padding: 0 1rem;
 	}
-	.button a.icon-only > kol-span-wc,
-	.button button.icon-only > kol-span-wc {
+	.button a.hide-label > kol-span-wc,
+	.button button.hide-label > kol-span-wc {
 		padding: 0 0.5rem;
 	}
 	a > kol-span-wc,

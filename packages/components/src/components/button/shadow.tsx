@@ -128,7 +128,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
 	 * Gibt die interne ID des primären Elements in der Komponente an.

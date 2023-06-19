@@ -176,7 +176,7 @@ export const Darstellungsvariante = () => {
 				E-Mail:
 				<KolLink _href="mailto: info@wikipedia.org" _target="mail-client" _target-description="Link wird im E-Mail-Programm geöffnet."></KolLink>
 			</p>
-			<KolLink _use-case="image" _aria-label="Icon als Link" _icon="icofont-paper-plane" _icon-only _href="https://de.wikipedia.org" _target="wikipedia">
+			<KolLink _use-case="image" _aria-label="Icon als Link" _icon="icofont-paper-plane" _hideLabel _href="https://de.wikipedia.org" _target="wikipedia">
 				Wikipedia
 			</KolLink>
 		</div>
