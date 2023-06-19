@@ -158,14 +158,14 @@ export class KolProcess implements KoliBriProgressAPI {
 	public validateVariant(value?: KoliBriProgressType): void {
 		if (!value && this._type) {
 			// remove with v2
-			value = this._type;
+			value = this._type as KoliBriProgressType;
 		}
 		if (value !== 'cycle') {
 			value = 'bar';
 		}
 		this.state = {
 			...this.state,
-			_variant: value,
+			_variant: value as KoliBriProgressType,
 		};
 	}
 

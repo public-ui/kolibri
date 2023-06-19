@@ -11,6 +11,7 @@ type OptionalProps = {
 	ariaLabel: string;
 	label: string;
 };
+export type KoliBriBreadcrumbProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	links: LinkProps[];

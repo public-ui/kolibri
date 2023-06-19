@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { mapIconProp2State } from '../../../types/props/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { Props, States } from '../component';
+import { KolibriSpanProps, KolibriSpanStates } from '../types';
 
 type Slots = {
 	''?: string;
@@ -10,13 +10,13 @@ type Slots = {
 } & Record<string, undefined | string>;
 
 export const getSpanWcHtml = (
-	props: Props,
+	props: KolibriSpanProps,
 	slots: Slots = {
 		expert: undefined,
 	},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<Props, States>(
+	const state = mixMembers<KolibriSpanProps, KolibriSpanStates>(
 		{
 			_icon: {},
 			_hideLabel: false,
@@ -75,7 +75,7 @@ export const getSpanWcHtml = (
 </kol-span-wc>`;
 };
 
-export const getSpanHtml = (props: Props): string => {
+export const getSpanHtml = (props: KolibriSpanProps): string => {
 	return `
 <kol-span${props._hideLabel ? ' _hide-label' : ''}>
 	<mock:shadow-root>

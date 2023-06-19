@@ -2,8 +2,6 @@ import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
-import { watchString } from '../../utils/prop.validators';
 import { watchNavLinks } from '../nav/validation';
 import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
 import { validateLabel } from '../../types/props';

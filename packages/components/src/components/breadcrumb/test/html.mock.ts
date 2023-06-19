@@ -3,12 +3,12 @@ import { LinkProps } from '../../../types/button-link';
 import { Icofont } from '../../../types/icofont';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { Props } from '../component';
+import { KoliBriBreadcrumbProps } from '../types';
 
-export const getBreadcrumbHtml = (props: Props): string => {
+export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	props = mixMembers(
 		{
-			_ariaLabel: '…', // '⚠'
+			_label: '…', // '⚠'
 			_links: [],
 		},
 		props
@@ -22,7 +22,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 				${
 					index !== 0
 						? getIconHtml({
-								_ariaLabel: '',
+								_label: '',
 								_icon: 'codicon codicon-chevron-right',
 						  })
 						: ''
@@ -32,7 +32,7 @@ export const getBreadcrumbHtml = (props: Props): string => {
 							? `<span>${
 									link._iconOnly
 										? getIconHtml({
-												_ariaLabel: link._ariaLabel as string,
+												_label: link._label as string,
 												_icon: link._icon as Icofont,
 										  })
 										: link._label
@@ -46,12 +46,12 @@ export const getBreadcrumbHtml = (props: Props): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${props._ariaLabel}">
+		<nav aria-label="${props._label}">
 			<ul>
 				${
 					props._links.length === 0
 						? `<li>${getIconHtml({
-								_ariaLabel: '',
+								_label: '',
 								_icon: 'codicon codicon-home',
 						  })}…</li>`
 						: ''

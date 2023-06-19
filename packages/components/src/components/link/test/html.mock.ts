@@ -11,17 +11,16 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: 'javascript:void(0)',
 			_hideLabel: false,
 			_label: '',
-			// _label: '…', // ⚠ required
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
 		props
 	);
-	if (typeof props._ariaLabel === 'string' && isEmptyOrPrefixOf(props._label, props._ariaLabel) === false) {
+	if (typeof props._label === 'string' && isEmptyOrPrefixOf(props._label, props._label) === false) {
 		if (props._label.length > 0) {
-			props._ariaLabel = props._label;
+			props._label = props._label;
 		} else {
-			props._label = props._ariaLabel;
+			props._label = props._label;
 		}
 	}
 	return `
@@ -49,7 +48,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				typeof props._target === 'string' && props._target !== '_self'
 					? getIconHtml(
 							{
-								_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
+								_label: 'Der Link wird in einem neuen Tab geöffnet.',
 								_icon: 'codicon codicon-link-external',
 							},
 							' class="external-link-icon"'
@@ -63,7 +62,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 						{
 							_align: props._tooltipAlign,
 							_id: 'nonce',
-							_label: props._ariaLabel || props._label,
+							_label: props._label || props._label,
 						},
 						' aria-hidden="true"'
 				  )

@@ -1,8 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
-import { Props } from '../component';
+import { koliBriCardProps } from '../types';
 
-export const getCardHtml = (props: Props): string => {
+export const getCardHtml = (props: koliBriCardProps): string => {
 	props = mixMembers(
 		{
 			_heading: '…',

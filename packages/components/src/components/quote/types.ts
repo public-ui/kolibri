@@ -10,6 +10,7 @@ type OptionalProps = {
 	caption: string;
 	variant: KoliBriQuoteVariant;
 };
+export type KoliBriQuoteProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	href: string; // URL to the source of the quote (cite)

@@ -97,7 +97,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
+					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
 				{(this.state._hideLabel === true || this.state._useCase === 'image') && (
 					<kol-tooltip

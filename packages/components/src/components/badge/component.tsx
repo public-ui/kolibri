@@ -40,7 +40,6 @@ export class KolBadge implements KoliBriBadgeProps {
 					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 						<kol-button-wc
 							_ariaControls={this.id}
-							_ariaLabel={this.state._smartButton._label || this.state._smartButton._ariaLabel}
 							_customClass={this.state._smartButton._customClass}
 							_disabled={this.state._smartButton._disabled}
 							_hideLabel={true}

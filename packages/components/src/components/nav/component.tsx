@@ -7,7 +7,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton, validateLabel } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchString, watchValidator } from '../../utils/prop.validators';
+import { watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
 import { KoliBriNavAPI, KoliBriNavStates } from './types';
 

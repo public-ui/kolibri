@@ -6,6 +6,7 @@ type RequiredProps = {
 type OptionalProps = {
 	open: boolean;
 };
+export type KoliBriDetailsProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;

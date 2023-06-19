@@ -1,13 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Events } from '../../enums/events';
-import { KoliBriIconProp } from '../../types/icon';
 
 import { Generic } from '@a11y-ui/core';
-import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { Align, PropHideLabel, validateLabel } from '../../types/props';
-import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
+import { Align, validateLabel } from '../../types/props';
+import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
+import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';

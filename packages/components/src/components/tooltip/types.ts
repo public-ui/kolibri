@@ -8,7 +8,7 @@ type RequiredProps = {
 type OptionalProps = {
 	align: Align;
 };
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type KoliBriTooltipProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps & OptionalProps;
 type OptionalStates = unknown;

@@ -12,7 +12,7 @@ type OptionalProps = {
 	type: AlertType;
 } & PropHasCloser &
 	PropShow;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type KoliBriToastProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;

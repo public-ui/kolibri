@@ -76,6 +76,9 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 		_links: [],
 	};
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		if (!this._label) {
@@ -96,6 +99,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateLinks(this._links);
 	}
 }

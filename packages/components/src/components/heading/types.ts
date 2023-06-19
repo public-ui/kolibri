@@ -8,6 +8,7 @@ type OptionalProps = {
 	secondaryHeadline: string;
 	level: HeadingLevel;
 };
+export type KoliBriHeadingProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	label: string;

@@ -12,7 +12,7 @@ type OptionalProps = {
 	headline: string;
 	level: HeadingLevel;
 } & PropHasFooter;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type koliBriCardProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;

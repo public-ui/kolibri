@@ -8,6 +8,7 @@ type OptionalProps = {
 	label: string;
 	part: string;
 } & AriaLabel;
+export type KoliBriIconProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
