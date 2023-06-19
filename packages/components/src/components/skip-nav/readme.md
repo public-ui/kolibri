@@ -62,14 +62,13 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 ### Depends on
 
-- [kol-link](../link)
+- kol-link-wc
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-skip-nav --> kol-link
-  kol-link --> kol-link-wc
+  kol-skip-nav --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip

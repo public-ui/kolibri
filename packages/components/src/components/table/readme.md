@@ -125,6 +125,7 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `_caption` _(required)_ | `_caption`    | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `undefined` |
 | `_data` _(required)_    | `_data`       | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.                                                     | `KoliBriDataType[] \| string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
+| `_dataFoot`             | `_data-foot`  | Hier können die Daten für die Fußzeile der Tabelle übergeben werden.                                                        | `KoliBriDataType[] \| string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `undefined` |
 | `_headers` _(required)_ | `_headers`    | Gibt die horizontalen und vertikalen Header für die Tabelle an.                                                             | `string \| { horizontal?: KoliBriTableHeaderCell[][] \| undefined; vertical?: KoliBriTableHeaderCell[][] \| undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                                     | `undefined` |
 | `_minWidth`             | `_min-width`  | Gibt an, die minimale Breite der Tabelle an.                                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
 | `_pagination`           | `_pagination` | Gibt an, ob die Daten geteilt in Seiten angezeigt wird.                                                                     | `boolean \| string \| undefined \| { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks \| undefined; _page?: number \| undefined; _total?: number \| undefined; _customClass?: string \| undefined; _variant?: KoliBriButtonVariant \| undefined; _boundaryCount?: number \| undefined; _hasButtons?: boolean \| Stringified<PaginationHasButton> \| undefined; _pageSize?: number \| undefined; _pageSizeOptions?: Stringified<number[]> \| undefined; _siblingCount?: number \| undefined; _tooltipAlign?: Align \| undefined; }` | `undefined` |
@@ -133,23 +134,23 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 ### Depends on
 
-- [kol-pagination](../pagination)
 - [kol-button](../button)
+- [kol-pagination](../pagination)
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-table --> kol-pagination
   kol-table --> kol-button
-  kol-pagination --> kol-button
-  kol-pagination --> kol-select
-  kol-pagination --> kol-button-wc
+  kol-table --> kol-pagination
   kol-button --> kol-button-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
+  kol-pagination --> kol-button
+  kol-pagination --> kol-select
+  kol-pagination --> kol-button-wc
   kol-select --> kol-input
   kol-input --> kol-icon
   kol-input --> kol-button-wc

@@ -148,6 +148,24 @@ public class KolButtonLink extends Component {
 	}
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setHideLabel(final Optional<String> value) {
+		getElement().setProperty("_hide-label", value);
+	}
+
+	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getHideLabel() {
+		return getElement().getProperty("_hide-label", null);
+	}
+
+	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
 	 * @param value Optional<String>

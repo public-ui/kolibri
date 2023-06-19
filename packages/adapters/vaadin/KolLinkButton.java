@@ -159,6 +159,24 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setHideLabel(final Optional<String> value) {
+		getElement().setProperty("_hide-label", value);
+	}
+
+	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getHideLabel() {
+		return getElement().getProperty("_hide-label", null);
+	}
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 *
 	 * @param value String
