@@ -178,7 +178,7 @@ export const App: FC = () => {
 						<KolButton
 							_ariaLabel="Weiter zum nächsten Komponenten-Beispiel"
 							_icon="codicon codicon-arrow-right"
-							_iconOnly
+							_hideLabel
 							_label="Weiter"
 							_on={next}
 							_tooltipAlign="left"
@@ -186,7 +186,7 @@ export const App: FC = () => {
 						<KolButton
 							_ariaLabel="Weiter zum nächsten Komponenten-Beispiel"
 							_icon="codicon codicon-arrow-left"
-							_iconOnly
+							_hideLabel
 							_label="Zurück"
 							_on={prev}
 							_tooltipAlign="right"

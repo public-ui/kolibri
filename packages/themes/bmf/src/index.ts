@@ -182,11 +182,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		box-shadow: none;
 		outline: none;
 	}
-	:is(a, button).icon-only > kol-span-wc {
+	:is(a, button).hide-label > kol-span-wc {
 		padding: 8px;
 		width: unset;
 	}
-	:is(a, button).icon-only > kol-span-wc > span > span {
+	:is(a, button).hide-label > kol-span-wc > span > span {
 		display: none;
 	}
 	:is(a, button).loading > kol-span-wc kol-icon {
@@ -1008,20 +1008,20 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: rgba(0, 0, 0, 0);
 		border-color: rgba(0, 0, 0, 0);
 	}
-	.close > button.icon-only {
+	.close > button.hide-label {
 		padding: 8px;
 	}
-	.close > button.icon-only kol-icon {
+	.close > button.hide-label kol-icon {
 		display: flex;
 		width: 1em;
 		height: 1em;
 		font-size: 1rem;
 	}
-	.close > button.icon-only kol-icon::part(icon) {
+	.close > button.hide-label kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 	}
-	.close > button.icon-only kol-icon::part(icon)::before {
+	.close > button.hide-label kol-icon::part(icon)::before {
 		content: "\\f00d";
 	}
 	.close > button:active {
@@ -2373,11 +2373,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		box-shadow: none;
 		outline: none;
 	}
-	:is(a, button).icon-only > kol-span-wc {
+	:is(a, button).hide-label > kol-span-wc {
 		padding: 8px;
 		width: unset;
 	}
-	:is(a, button).icon-only > kol-span-wc > span > span {
+	:is(a, button).hide-label > kol-span-wc > span > span {
 		display: none;
 	}
 	:is(a, button).loading > kol-span-wc kol-icon {

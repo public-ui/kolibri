@@ -79,7 +79,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-						'icon-only': this.state._hideLabel === true,
+						'icon-only': this.state._hideLabel === true, // @deprecated in v2
 						'hide-label': this.state._hideLabel === true,
 					}}
 					disabled={this.state._disabled}

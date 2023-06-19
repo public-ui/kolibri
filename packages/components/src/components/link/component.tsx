@@ -116,7 +116,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					class={{
 						disabled: this.state._disabled === true,
 						'skip ': this.state._stealth !== false,
-						'icon-only': this.state._hideLabel === true,
+						'icon-only': this.state._hideLabel === true, // @deprecated in v2
 						'hide-label': this.state._hideLabel === true,
 						'external-link': isExternal,
 					}}

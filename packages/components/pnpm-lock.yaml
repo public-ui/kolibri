@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -12,8 +12,8 @@ dependencies:
     specifier: 1.4.1
     version: 1.4.1
   '@public-ui/schema':
-    specifier: 1.6.0-rc.2
-    version: 1.6.0-rc.2
+    specifier: 1.6.0-rc.3
+    version: 1.6.0-rc.3
   i18next:
     specifier: 22.5.1
     version: 22.5.1
@@ -1751,8 +1751,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.2:
-    resolution: {integrity: sha512-2/8Z1KK98BPKG/x2Vbfc1aehOS3LNh7HfYWFcjMrOsH2E5DOTB/WJJamn5bzaiMrAlS3kEsU7DwQVmGBmA/Jhw==}
+  /@public-ui/schema@1.6.0-rc.3:
+    resolution: {integrity: sha512-xbhbKuQrUyjHMrKoYyCwvhZt45Dhcu8cr3oAaIKLJvMN/MndMRhR0YobSPyKaWYJb5g59VYkr4XhqUZ6PrI0xw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false

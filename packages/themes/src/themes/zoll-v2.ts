@@ -537,12 +537,12 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: 0.5rem;
 		line-height: 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc:not(.icon-only),
-	:host > kol-link-wc > a > kol-span-wc:not(.icon-only) {
+	:host > kol-button-wc > button > kol-span-wc:not(.hide-label),
+	:host > kol-link-wc > a > kol-span-wc:not(.hide-label) {
 		padding: 0.75rem 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc.icon-only,
-	:host > kol-link-wc > a > kol-span-wc.icon-only {
+	:host > kol-button-wc > button > kol-span-wc.hide-label,
+	:host > kol-link-wc > a > kol-span-wc.hide-label {
 		padding: 0.75rem;
 	}
 	:host > kol-button-wc > button > kol-span-wc span,
@@ -635,12 +635,12 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: 0.5rem;
 		line-height: 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc:not(.icon-only),
-	:host > kol-link-wc > a > kol-span-wc:not(.icon-only) {
+	:host > kol-button-wc > button > kol-span-wc:not(.hide-label),
+	:host > kol-link-wc > a > kol-span-wc:not(.hide-label) {
 		padding: 0.75rem 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc.icon-only,
-	:host > kol-link-wc > a > kol-span-wc.icon-only {
+	:host > kol-button-wc > button > kol-span-wc.hide-label,
+	:host > kol-link-wc > a > kol-span-wc.hide-label {
 		padding: 0.75rem;
 	}
 	:host > kol-button-wc > button > kol-span-wc span,

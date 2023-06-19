@@ -787,54 +787,54 @@ export const HandoutBasic: FC = () => (
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolButton _icon={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolButton>
 								<KolButton _disabled _icon={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolButton>
-								<KolButton _iconOnly _icon="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolButton>
+								<KolButton _hideLabel _icon="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolButton _icon={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolButton>
 								<KolButton _disabled _icon={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolButton>
-								<KolButton _iconOnly _icon="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolButton>
+								<KolButton _hideLabel _icon="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolButton _icon={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolButton>
 								<KolButton _disabled _icon={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolButton>
-								<KolButton _iconOnly _icon="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolButton>
+								<KolButton _hideLabel _icon="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolButton _icon={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolButton>
 								<KolButton _disabled _icon={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolButton>
-								<KolButton _iconOnly _icon="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolButton>
+								<KolButton _hideLabel _icon="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolButton _label="ghost" _variant="ghost"></KolButton>
 								<KolButton _disabled _label="ghost" _variant="ghost"></KolButton>
-								<KolButton _icon="codicon codicon-home" _iconOnly _label="ghost" _variant="ghost"></KolButton>
+								<KolButton _icon="codicon codicon-home" _hideLabel _label="ghost" _variant="ghost"></KolButton>
 							</div>
 						</div>
 						<div className="grid gap-2 py-2">
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icon={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
 								<KolLinkButton _href="#" _disabled _icon={{ left: 'codicon codicon-arrow-left' }} _label="primary" _variant="primary"></KolLinkButton>
-								<KolLinkButton _href="#" _iconOnly _icon="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolLinkButton>
+								<KolLinkButton _href="#" _hideLabel _icon="codicon codicon-arrow-left" _label="primary" _variant="primary"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icon={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
 								<KolLinkButton _href="#" _disabled _icon={{ right: 'codicon codicon-arrow-right' }} _label="secondary" _variant="secondary"></KolLinkButton>
-								<KolLinkButton _href="#" _iconOnly _icon="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolLinkButton>
+								<KolLinkButton _href="#" _hideLabel _icon="codicon codicon-arrow-right" _label="secondary" _variant="secondary"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icon={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
 								<KolLinkButton _href="#" _disabled _icon={{ top: 'codicon codicon-arrow-up' }} _label="danger" _variant="danger"></KolLinkButton>
-								<KolLinkButton _href="#" _iconOnly _icon="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolLinkButton>
+								<KolLinkButton _href="#" _hideLabel _icon="codicon codicon-arrow-up" _label="danger" _variant="danger"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _icon={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
 								<KolLinkButton _href="#" _disabled _icon={{ bottom: 'codicon codicon-arrow-down' }} _label="normal" _variant="normal"></KolLinkButton>
-								<KolLinkButton _href="#" _iconOnly _icon="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolLinkButton>
+								<KolLinkButton _href="#" _hideLabel _icon="codicon codicon-arrow-down" _label="normal" _variant="normal"></KolLinkButton>
 							</div>
 							<div className="grid gap-2 grid-cols-[4fr_4fr_1fr] justify-items-center">
 								<KolLinkButton _href="#" _label="ghost" _variant="ghost"></KolLinkButton>
 								<KolLinkButton _href="#" _disabled _label="ghost" _variant="ghost"></KolLinkButton>
-								<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="ghost" _variant="ghost"></KolLinkButton>
+								<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="ghost" _variant="ghost"></KolLinkButton>
 							</div>
 						</div>
 					</KolTabs>
@@ -846,7 +846,7 @@ export const HandoutBasic: FC = () => (
 						<div className="grid gap-2" slot="content">
 							<KolLink _href="#" _label="Linktext"></KolLink>
 							<KolLink _href="#" _icon="codicon codicon-home" _label="Linktext mit Icon"></KolLink>
-							<KolLink _href="#" _icon="codicon codicon-home" _iconOnly _label="Linktext nur mit Icon"></KolLink>
+							<KolLink _href="#" _icon="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolLink>
 							<KolLink _href="/" _label="Besuchter Link"></KolLink>
 							<p>
 								Ich bin ein <KolLink _href="#" _label="externer Link" _target="w3c"></KolLink> im Fließtext.
@@ -860,7 +860,7 @@ export const HandoutBasic: FC = () => (
 						<div className="grid gap-2" slot="content">
 							<KolButtonLink _label="Linktext"></KolButtonLink>
 							<KolButtonLink _icon="codicon codicon-home" _label="Linktext mit Icon"></KolButtonLink>
-							<KolButtonLink _icon="codicon codicon-home" _iconOnly _label="Linktext nur mit Icon"></KolButtonLink>
+							<KolButtonLink _icon="codicon codicon-home" _hideLabel _label="Linktext nur mit Icon"></KolButtonLink>
 							<p>
 								Ich bin ein <KolButtonLink _label="Link"></KolButtonLink> im Fließtext.
 							</p>

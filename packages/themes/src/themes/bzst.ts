@@ -264,10 +264,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		align-items: center;
 		justify-content: center;
 	}
-	button.icon-only {
+	button.hide-label {
 		padding: 0.5rem;
 	}
-	button.icon-only kol-icon {
+	button.hide-label kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;
@@ -1293,10 +1293,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		background-color: rgba(0, 0, 0, 0);
 		border-color: rgba(0, 0, 0, 0);
 	}
-	.close > button.icon-only {
+	.close > button.hide-label {
 		padding: 8px;
 	}
-	.close > button.icon-only kol-icon {
+	.close > button.hide-label kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;
@@ -2692,10 +2692,10 @@ export const BZSt = KoliBri.createTheme('bzst', {
 		align-items: center;
 		justify-content: center;
 	}
-	a.icon-only {
+	a.hide-label {
 		padding: 8px;
 	}
-	a.icon-only kol-icon {
+	a.hide-label kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;

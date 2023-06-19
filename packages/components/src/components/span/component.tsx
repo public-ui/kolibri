@@ -49,7 +49,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 		return (
 			<Host
 				class={{
-					'icon-only': !!this.state._hideLabel,
+					'icon-only': !!this.state._hideLabel, // @deprecated in v2
 					'hide-label': !!this.state._hideLabel,
 				}}
 			>

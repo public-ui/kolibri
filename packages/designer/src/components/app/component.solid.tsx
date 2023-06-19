@@ -165,7 +165,7 @@ export const AppComponent: Component = () => {
 						<KolButton
 							_label="Zurück"
 							_icon="codicon codicon-arrow-left"
-							_iconOnly
+							_hideLabel
 							_on={{
 								onClick: (event: MouseEvent) => {
 									event.preventDefault();
@@ -196,7 +196,7 @@ export const AppComponent: Component = () => {
 						<KolButton
 							_label="Weiter"
 							_icon="codicon codicon-arrow-right"
-							_iconOnly
+							_hideLabel
 							_on={{
 								onClick: (event: MouseEvent) => {
 									event.preventDefault();
