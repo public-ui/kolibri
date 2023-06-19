@@ -2311,6 +2311,28 @@ export namespace Components {
          */
         "_symbol": string;
     }
+    interface KolTab {
+        /**
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+         */
+        "_icon"?: Stringified<KoliBriIconProp>;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label": string;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+    }
     interface KolTable {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -2840,6 +2862,12 @@ declare global {
         prototype: HTMLKolSymbolElement;
         new (): HTMLKolSymbolElement;
     };
+    interface HTMLKolTabElement extends Components.KolTab, HTMLStencilElement {
+    }
+    var HTMLKolTabElement: {
+        prototype: HTMLKolTabElement;
+        new (): HTMLKolTabElement;
+    };
     interface HTMLKolTableElement extends Components.KolTable, HTMLStencilElement {
     }
     var HTMLKolTableElement: {
@@ -2931,6 +2959,7 @@ declare global {
         "kol-spin": HTMLKolSpinElement;
         "kol-split-button": HTMLKolSplitButtonElement;
         "kol-symbol": HTMLKolSymbolElement;
+        "kol-tab": HTMLKolTabElement;
         "kol-table": HTMLKolTableElement;
         "kol-tabs": HTMLKolTabsElement;
         "kol-textarea": HTMLKolTextareaElement;
@@ -5175,6 +5204,28 @@ declare namespace LocalJSX {
          */
         "_symbol": string;
     }
+    interface KolTab {
+        /**
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+         */
+        "_disabled"?: boolean;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
+        /**
+          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+         */
+        "_icon"?: Stringified<KoliBriIconProp>;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label": string;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+    }
     interface KolTable {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -5418,6 +5469,7 @@ declare namespace LocalJSX {
         "kol-spin": KolSpin;
         "kol-split-button": KolSplitButton;
         "kol-symbol": KolSymbol;
+        "kol-tab": KolTab;
         "kol-table": KolTable;
         "kol-tabs": KolTabs;
         "kol-textarea": KolTextarea;
@@ -5499,6 +5551,7 @@ declare module "@stencil/core" {
             "kol-spin": LocalJSX.KolSpin & JSXBase.HTMLAttributes<HTMLKolSpinElement>;
             "kol-split-button": LocalJSX.KolSplitButton & JSXBase.HTMLAttributes<HTMLKolSplitButtonElement>;
             "kol-symbol": LocalJSX.KolSymbol & JSXBase.HTMLAttributes<HTMLKolSymbolElement>;
+            "kol-tab": LocalJSX.KolTab & JSXBase.HTMLAttributes<HTMLKolTabElement>;
             "kol-table": LocalJSX.KolTable & JSXBase.HTMLAttributes<HTMLKolTableElement>;
             "kol-tabs": LocalJSX.KolTabs & JSXBase.HTMLAttributes<HTMLKolTabsElement>;
             "kol-textarea": LocalJSX.KolTextarea & JSXBase.HTMLAttributes<HTMLKolTextareaElement>;
