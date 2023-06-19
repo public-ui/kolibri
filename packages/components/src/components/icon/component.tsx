@@ -35,7 +35,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 })
 export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
-		const label = this.state._label || this.state._ariaLabel;
+		const label = this.state._label;
 		return (
 			<Host exportparts="icon">
 				<i
@@ -79,7 +79,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop() public _part?: string;
 
 	@State() public state: States = {
-		_ariaLabel: '…', // ⚠ required
+		_label: '…', // ⚠ required
 		_icon: 'codicon codicon-home',
 	};
 
@@ -88,7 +88,9 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, { required: true });
+		if (!this._label) {
+			this.validateLabel(value);
+		}
 	}
 
 	@Watch('_icon')

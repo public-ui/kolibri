@@ -110,7 +110,7 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 * @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -145,8 +145,8 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this.state._label) {
-			validateLabel(this, value);
+		if (!this._label) {
+			this.validateLabel(value);
 		}
 	}
 

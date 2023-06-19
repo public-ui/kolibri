@@ -79,7 +79,6 @@ export class KolSplitButton implements API {
 					_ariaControls={this._ariaControls}
 					_ariaCurrent={this._ariaCurrent}
 					_ariaExpanded={this._ariaExpanded}
-					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
@@ -134,6 +133,7 @@ export class KolSplitButton implements API {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
@@ -240,9 +240,14 @@ export class KolSplitButton implements API {
 		validateAriaExpanded(this, value);
 	}
 
+	/**
+	 * @deprecated use _label
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		if (!this._label) {
+			this.validateLabel(value);
+		}
 	}
 
 	@Watch('_ariaSelected')
@@ -278,7 +283,7 @@ export class KolSplitButton implements API {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	@Watch('_on')
@@ -332,7 +337,6 @@ export class KolSplitButton implements API {
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);

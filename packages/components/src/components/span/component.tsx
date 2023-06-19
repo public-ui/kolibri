@@ -115,7 +115,7 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	public componentWillLoad(): void {

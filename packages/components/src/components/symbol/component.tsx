@@ -23,7 +23,7 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<span aria-label={this.state._ariaLabel} role="term">
+				<span aria-label={this.state._label} role="term">
 					{this.state._symbol}
 				</span>
 			</Host>
@@ -32,8 +32,14 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Dieses Property gibt den String an der angezeigt werden soll.
@@ -41,15 +47,23 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 	@Prop() public _symbol!: string;
 
 	@State() public state: States = {
-		_ariaLabel: translate('kol-warning'),
+		_label: translate('kol-warning'),
 		_symbol: '…', // ⚠ required
 	};
 
+	/**
+	 * @deprecated use _label
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
+		if (!this._label) {
+			this.validateLabel(value);
+		}
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_symbol')
@@ -61,6 +75,7 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateSymbol(this._symbol);
 	}
 }

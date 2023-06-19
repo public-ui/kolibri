@@ -273,8 +273,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@State() public state: LinkStates = {
 		_href: 'javascript:void(0)',
 		_icon: {},
-		_label: '', // TODO: must removed to v2
-		// _label: '…', // ⚠ required
+		_label: '',
 	};
 
 	@Watch('_ariaControls')
@@ -297,7 +296,9 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		if (!this._label) {
+			this.validateLabel(value);
+		}
 	}
 
 	@Watch('_ariaSelected')

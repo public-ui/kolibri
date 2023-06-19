@@ -140,7 +140,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value);
+		validateLabel(this, value);
 	}
 
 	@Watch('_max')

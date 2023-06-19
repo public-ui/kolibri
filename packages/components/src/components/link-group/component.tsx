@@ -160,6 +160,7 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: States = {
+	@State() public state: KoliBriLinkGroupStates = {
 		_label: '…', // '⚠'
 		_listStyleType: 'disc',
 		_links: [],
@@ -171,8 +172,8 @@ export class KolLinkGroup implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this.state._label) {
-			validateLabel(this, value);
+		if (!this._label) {
+			this.validateLabel(value);
 		}
 	}
 

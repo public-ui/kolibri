@@ -60,7 +60,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<nav aria-label={this.state._label || this.state._ariaLabel}>
+				<nav aria-label={this.state._label}>
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
@@ -91,14 +91,15 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	@State() public state: States = {
-		_ariaLabel: '…', // '⚠'
+		_label: '…', // '⚠'
 		_links: [],
 	};
 
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, { required: true });
-		a11yHintLabelingLandmarks(value);
+		if (!this._label) {
+			this.validateLabel(value);
+		}
 	}
 
 	@Watch('_label')

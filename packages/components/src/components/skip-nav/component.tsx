@@ -31,7 +31,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
 	public render(): JSX.Element {
 		return (
-			<nav aria-label={this.state._ariaLabel}>
+			<nav aria-label={this.state._label}>
 				<ul>
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
@@ -51,8 +51,14 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -60,16 +66,23 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	@State() public state: States = {
-		_ariaLabel: '…', // '⚠'
+		_label: '…', // '⚠'
 		_links: [],
 	};
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
-		a11yHintLabelingLandmarks(value);
+		if (!this._label) {
+			this.validateLabel(value);
+		}
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_links')
@@ -79,6 +92,7 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateLinks(this._links);
 	}
 }
