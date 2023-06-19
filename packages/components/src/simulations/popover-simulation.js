@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const buttonTop = document.querySelector('#popover-button-top');
 const buttonRight = document.querySelector('#popover-button-right');
 const buttonBottom = document.querySelector('#popover-button-bottom');

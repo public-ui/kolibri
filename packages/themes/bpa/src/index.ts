@@ -1523,4 +1523,14 @@ export const BPA = KoliBri.createTheme('bpa', {
 		background-color: var(--color-darkblue);
 		border-color: var(--color-darkblue);
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border: 1px solid var(--color-darkgray);
+  	border-radius: 0.125rem;
+		gap: 0.5rem;
+		line-height: 1.125rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--color-blue);
+  	color: var(--color-white);
+		cursor: pointer;
+	}`,
 });

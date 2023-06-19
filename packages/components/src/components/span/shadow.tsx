@@ -14,11 +14,16 @@ import { Props } from './component';
 export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
-			<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this._label}>
+			<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this._label}>
 				<slot name="expert" slot="expert"></slot>
 			</kol-span-wc>
 		);
 	}
+
+	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
@@ -27,6 +32,7 @@ export class KolSpan implements Props {
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 

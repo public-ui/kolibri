@@ -2826,4 +2826,16 @@ export const DESYv2 = KoliBri.createTheme('desy-v2', {
 		left: unset;
 		position: unset;
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 2px;
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--color-primary);
+		border-color: var(--color-primary-10);
+		color: white;
+		cursor: pointer;
+	}`,
 });

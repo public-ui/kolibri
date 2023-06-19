@@ -14,7 +14,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		--color-akzent-dark: #da793c;
 		--color-akzent-light: #f5ba6c;
 		--color-neutral: #e3e3e3;
-		--color-neutral-dark: #333;
+		--color-neutral-dark: #646464;
 		--color-neutral-light: #f7f7f7;
 		--color-rot: #ce3033;
 		--color-gelb: #f6cd35;
@@ -44,7 +44,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	summary:focus,
 	kol-input:not(.checkbox, .radio) .input:focus-within,
 	kol-input:is(.checkbox, .radio) input:focus {
-		border-radius: var(--border-radius);
 		outline-color: var(--color-blau-dark);
 		outline-offset: 0.125rem;
 		outline-style: solid;
@@ -298,9 +297,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	}`,
 	'KOL-TABLE': `caption {
-		background-color: var(--color-neutral);
 		caption-side: TOP;
-		font-size: 1.5rem; /* 1.75rem */ /* line-height: 3rem; */
+		font-size: 1.1rem; /* 1.75rem */ /* line-height: 3rem; */
+		font-weight: var(--font-weight-bold);
 		margin-bottom: 0.25rem;
 		padding: 0.75rem;
 		text-align: left;
@@ -312,6 +311,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-width: 0;
 		border-top-width: 1px;
 	}
+	th {
+		background-color: var(--color-neutral);
+	}
 	td,
 	th {
 		color: var(--color-neutral-dark);
@@ -321,8 +323,19 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-bottom-width: 1px;
 		padding: 0.5rem;
 	}
-	tbody tr:nth-child(odd) {
-		background-color: var(--color-grau-10);
+	th[data-sort] kol-button::part(icon)::before {
+		font-family: "FontAwesome";
+		color: var(--color-neutral-dark);
+	}
+	th[data-sort="sort-NOS"] kol-button::part(icon)::before,
+	th[data-sort="sort-undefined"] kol-button::part(icon)::before {
+		content: "\f0dc";
+	}
+	th[data-sort="sort-ASC"] kol-button::part(icon)::before {
+		content: "\f0de";
+	}
+	th[data-sort="sort-DESC"] kol-button::part(icon)::before {
+		content: "\f0dd";
 	}`,
 	'KOL-ACCORDION': `:host > div {
 		border-color: var(--border-color);
@@ -779,9 +792,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	label {
 		cursor: pointer;
+		padding-left: 0.75rem;
 	}
 	kol-input:hover label,
-	kol-input:has(input:focus, select:focus, textarea:focus, ) label {
+	kol-input:focus-within label {
 		text-decoration: underline;
 	}
 	.required label > span::after {
@@ -809,7 +823,6 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	kol-input > label {
 		order: 2;
-		padding-left: calc(2 * var(--spacing));
 	}
 	kol-input > kol-alert.error {
 		order: 3;
@@ -917,31 +930,27 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	:host {
 		--spacing: 0.25rem;
 	}
+	legend {
+		font-weight: var(--font-weight-bold);
+		margin-bottom: 0.5rem;
+	}
 	input {
 		border-color: var(--color-neutral-dark);
 		border-width: 2px;
 		border-style: solid;
-	}
-	label {
-		cursor: pointer;
 	}
 	kol-input:has(input:disabled) input,
 	kol-input:has(input:disabled) label {
 		cursor: not-allowed !important;
 		opacity: 0.5;
 	}
-	kol-input:hover label,
-	kol-input:has(input:focus, select:focus, textarea:focus, ) label {
+	kol-input:hover:has(input:not(:disabled)) label,
+	kol-input:focus-within {
 		text-decoration: underline;
 	}
 	.required legend > span::after {
 		content: "*";
 		padding-left: 0.125em;
-	}
-	label {
-		display: grid;
-		gap: 8px;
-		width: 100%;
 	}
 	input {
 		width: 100%;
@@ -958,27 +967,21 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		margin-bottom: 0.4em;
 	} /* RADIO */
 	fieldset {
-		border: 0px;
-		margin: 0px;
-		padding: 0px;
-		display: grid;
-		gap: 0.25em;
+		border: 0;
+		margin: 0;
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
 	}
-	fieldset div {
+	fieldset div.input {
+		display: flex;
+	}
+	fieldset div.input > div {
+		margin: auto 0;
 		display: flex;
 		flex-direction: row;
-		margin-top: 0.125em;
-		margin-bottom: 0.125em;
 		align-items: center;
-		position: relative;
-	}
-	fieldset div label {
-		display: flex;
-		padding-left: 0.25em;
-		width: 100%;
-	}
-	fieldset div label span {
-		margin-top: 0.125em;
+		gap: 0.75rem;
 	}
 	fieldset div input[type="radio"] {
 		appearance: none;
@@ -987,6 +990,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		height: calc(6 * var(--spacing));
 		min-width: calc(6 * var(--spacing));
 		width: calc(6 * var(--spacing));
+		border-color: var(--color-neutral-dark);
 	}
 	fieldset div input[type="radio"]:checked:before {
 		box-shadow: 0 0 0.1rem black;
@@ -1007,7 +1011,7 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		opacity: 0.33;
 	}
 	fieldset.horizontal {
-		display: flex;
+		flex-direction: row;
 		flex-wrap: wrap;
 		gap: 0.5rem 1rem;
 	}
@@ -8600,5 +8604,17 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			u+f0ec, u+f10a-f10b, u+f123, u+f13e, u+f148-f149, u+f14c, u+f156, u+f15e,
 			u+f160-f161, u+f163, u+f175-f178, u+f195, u+f1f8, u+f219, u+f250, u+f252,
 			u+f27a;
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--color-blau);
+		border-color: var(--color-blau-dark);
+		color: white;
+		cursor: pointer;
 	}`,
 });

@@ -15,12 +15,10 @@ Diese Komponente implementiert das Logo von KoliBri.
 
 ## Beispiele
 
-<div style="display: flex; justify-content: flex-start">
-  <kol-kolibri />
-  <kol-kolibri _animate />
-  <kol-kolibri _animate _labeled="false" /> 
-  <kol-kolibri _labeled="false" />
-</div>
+<kol-kolibri />
+<kol-kolibri _animate />
+<kol-kolibri _animate _labeled="false" /> 
+<kol-kolibri _labeled="false" />
 
 ## Barrierefreiheit
 

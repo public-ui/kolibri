@@ -5,7 +5,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Generic } from '@a11y-ui/core';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { Align } from '../../types/props';
+import { Align, PropHideLabel } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
@@ -34,9 +34,12 @@ type RequiredTabButtonProps = {
 type OptionalTabButtonProps = {
 	disabled: boolean;
 	icon: Stringified<KoliBriIconProp>;
+	/**
+	 * @deprecated use _hide-label
+	 */
 	iconOnly: boolean;
 	tooltipAlign: Align;
-};
+} & PropHideLabel;
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
 type RequiredProps = {
@@ -137,7 +140,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 					<kol-button-wc
 						_disabled={button._disabled}
 						_icon={button._icon}
-						_iconOnly={button._iconOnly}
+						_hideLabel={button._hideLabel || button._iconOnly}
 						_label={button._label && button._label} // TODO: ariaLabel-Konzept prüfen
 						_on={this.callbacks as KoliBriButtonCallbacks<unknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}

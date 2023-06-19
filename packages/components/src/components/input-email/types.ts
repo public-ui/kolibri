@@ -24,6 +24,9 @@ type OptionalProps = {
 	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
+	/**
+	 * @deprecated
+	 */
 	size: number;
 	smartButton: ButtonProps;
 	touched: boolean;
@@ -54,6 +57,9 @@ type OptionalStates = {
 	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
+	/**
+	 * @deprecated
+	 */
 	size: number;
 	smartButton: ButtonProps;
 	touched: boolean;

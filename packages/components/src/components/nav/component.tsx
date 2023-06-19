@@ -120,7 +120,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				// _ariaCurrent will not be set here, since it will be set on a child of this item.
 				_disabled={disabled}
 				_icon={icon || '-'}
-				_iconOnly={compact}
+				_hideLabel={compact}
 				_label={label}
 				_on={on}
 			></kol-button-wc>
@@ -128,7 +128,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	}
 
 	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return <kol-span-wc _icon={icon || '-'} _iconOnly={compact} _label={label}></kol-span-wc>;
+		return <kol-span-wc _icon={icon || '-'} _hideLabel={compact} _label={label}></kol-span-wc>;
 	}
 
 	private entry(
@@ -162,7 +162,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				_ariaExpanded={selected}
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
-				_iconOnly
+				_hideLabel
 				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
 			></kol-button-wc>
@@ -199,7 +199,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 				_ariaExpanded={selected}
 				_href={href}
 				_icon={icon || '-'}
-				_iconOnly={compact}
+				_hideLabel={compact}
 				_label={label}
 			></kol-link-wc>
 		);
@@ -255,9 +255,9 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 						<div class="mt-2 w-full compact">
 							<kol-button
 								_ariaControls="nav"
-								_ariaExpanded={compact}
+								_ariaExpanded={!compact}
 								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
-								_iconOnly
+								_hideLabel
 								_label={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
 									onClick: (): void => {

@@ -84,7 +84,7 @@ export class KolSplitButton implements API {
 					_customClass={this._customClass}
 					_disabled={this._disabled}
 					_icon={this._icon}
-					_iconOnly={this._hideLabel}
+					_hideLabel={this._hideLabel}
 					_label={this._label}
 					_on={{ onClick: this.clickHandler }}
 					_role={this._role}
@@ -98,7 +98,7 @@ export class KolSplitButton implements API {
 				<kol-button-wc
 					class="secondary-button"
 					_disabled={this._disabled}
-					_icon-only
+					_hideLabel
 					_icon="codicon codicon-triangle-down"
 					_label={`dropdown ${this.state._showDropdown ? 'schließen' : 'öffnen'}`}
 					_on={{ onClick: () => this.toggleDropdown() }}
@@ -273,7 +273,7 @@ export class KolSplitButton implements API {
 
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
-		validateHideLabel(this, value);
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_label')
@@ -336,9 +336,8 @@ export class KolSplitButton implements API {
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
-		this.validateHideLabel(this._hideLabel);
+		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateIcon(this._icon);
-		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
