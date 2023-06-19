@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-itzbund",
-	"version": "1.6.0-rc.3",
+	"version": "1.6.0-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -48,14 +48,14 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@public-ui/schema": "1.6.0-rc.3",
+		"@public-ui/schema": "1.6.0-rc.4",
 		"@types/node": "ts4.9",
 		"eslint": "8.43.0",
 		"typescript": "5.0.4",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.6.0-rc.3"
+		"@public-ui/components": "1.6.0-rc.4"
 	},
 	"sideEffects": false,
 	"type": "module",

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.6.0-rc.3",
+	"version": "1.6.0-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -69,7 +69,7 @@
 		"@a11y-ui/core": "1.0.3",
 		"@floating-ui/dom": "1.4.1",
 		"i18next": "22.5.1",
-		"@public-ui/schema": "1.6.0-rc.3"
+		"@public-ui/schema": "1.6.0-rc.4"
 	},
 	"devDependencies": {
 		"@stencil/angular-output-target": "0.7.1",

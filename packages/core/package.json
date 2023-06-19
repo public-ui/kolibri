@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/core",
-	"version": "1.6.0-rc.3",
+	"version": "1.6.0-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/core",
@@ -52,7 +52,7 @@
 		"prepack": "unbuild"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.6.0-rc.3"
+		"@public-ui/components": "1.6.0-rc.4"
 	},
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.3",
