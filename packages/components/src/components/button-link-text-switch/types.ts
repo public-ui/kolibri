@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../components';
 
 type RequiredProps = {
-	prop: ButtonOrLinkOrTextWithChildrenProps;
+	link: ButtonOrLinkOrTextWithChildrenProps;
 	compact: boolean;
 };
 type OptionalProps = { selected: boolean };
