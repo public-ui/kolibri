@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 var toastButtons = document.querySelectorAll('kol-button[_label="Toast starten"]');
 
 toastButtons.forEach((button) => {

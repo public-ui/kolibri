@@ -4,7 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropLabel, PropStealth } from './props';
+import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropHideLabel, PropLabel, PropStealth } from './props';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -22,6 +22,9 @@ type OptionalButtonAndLinkProps = {
 	 * @deprecated
 	 */
 	iconAlign: Align;
+	/**
+	 * @deprecated
+	 */
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
@@ -29,7 +32,8 @@ type OptionalButtonAndLinkProps = {
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
-	PropDisabled;
+	PropDisabled &
+	PropHideLabel;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
@@ -42,6 +46,9 @@ type OptionalButtonAndLinkStates = {
 	 * @deprecated
 	 */
 	iconAlign: Align;
+	/**
+	 * @deprecated
+	 */
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
@@ -49,7 +56,8 @@ type OptionalButtonAndLinkStates = {
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
-	PropDisabled;
+	PropDisabled &
+	PropHideLabel;
 
 /**
  * Button

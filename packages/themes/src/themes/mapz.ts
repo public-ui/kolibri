@@ -17580,4 +17580,16 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		background-color: var(--kolibri-color-primary);
 		color: white;
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: var(--kolibri-border-radius);
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--kolibri-color-primary);
+		border-color: var(--kolibri-border-color);
+		color: white;
+		cursor: pointer;
+	}`,
 });

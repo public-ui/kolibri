@@ -16,7 +16,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Align, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload } from '../../types/props';
+import { AriaCurrent, Align, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload, validateHideLabel } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
@@ -93,7 +93,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		};
 
 		if (
-			(this.state._useCase === 'image' || this.state._iconOnly === true) &&
+			(this.state._useCase === 'image' || this.state._hideLabel === true) &&
 			(typeof this.state._ariaLabel !== 'string' || this.state._ariaLabel.length === 0)
 		) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
@@ -111,12 +111,13 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._useCase === 'image' || this.state._iconOnly === true ? this.nonce : undefined}
+					aria-labelledby={this.state._useCase === 'image' || this.state._hideLabel === true ? this.nonce : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
 						disabled: this.state._disabled === true,
 						'skip ': this.state._stealth !== false,
-						'icon-only': this.state._iconOnly === true,
+						'icon-only': this.state._hideLabel === true,
+						'hide-label': this.state._hideLabel === true,
 						'external-link': isExternal,
 					}}
 					{...this.state._on}
@@ -127,12 +128,12 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}>
+					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				{(this.state._iconOnly === true || this.state._useCase === 'image') && (
+				{(this.state._hideLabel === true || this.state._useCase === 'image') && (
 					<kol-tooltip
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
@@ -186,6 +187,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _download?: boolean | string = false;
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
@@ -204,6 +210,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
 	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
 
@@ -315,6 +322,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		validateDownload(this, value);
 	}
 
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: boolean): void {
+		validateHideLabel(this, value);
+	}
+
 	@Watch('_href')
 	public validateHref(value?: string): void {
 		watchString(this, '_href', value);
@@ -334,9 +346,12 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		watchIconAlign(this, value);
 	}
 
+	/**
+	 * @deprecated use _hide-label
+	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
-		watchBoolean(this, '_iconOnly', value);
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_label')
@@ -417,10 +432,10 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
+		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
-		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateRole(this._role);

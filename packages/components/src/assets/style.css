@@ -137,8 +137,3 @@ kol-nav.max-width {
 	display: block;
 	max-width: 20em;
 }
-
-kol-skip-nav {
-	position: relative;
-	top: -4rem;
-}

@@ -10,32 +10,34 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 <style>
 	/* https://github.com/vineethtrv/css-loader */
 	.loader {
-		width: 48px;
-		height: 48px;
-		border: 3px dotted #444;
-		border-style: solid solid dotted dotted;
-		border-radius: 50%;
-		display: inline-block;
-		position: relative;
-		box-sizing: border-box;
 		animation: rotation 2s linear infinite;
+		border-color: #444;
+		border-radius: 50%;
+		border-style: solid solid dotted dotted;
+		border-width: 3px;
+		box-sizing: border-box;
+		display: inline-block;
+		height: 48px;
+		position: relative;
+		width: 48px;
 	}
 	.loader::after {
-		content: '';
+		animation: rotationBack 1s linear infinite;
+		border-color: #ff3d00;
+		border-radius: 50%;
+		border-style: solid solid dotted;
+		border-width: 3px;
 		box-sizing: border-box;
-		position: absolute;
+		bottom: 0;
+		content: '';
+		height: 24px;
 		left: 0;
+		margin: auto;
+		position: absolute;
 		right: 0;
 		top: 0;
-		bottom: 0;
-		margin: auto;
-		border: 3px dotted #ff3d00;
-		border-style: solid solid dotted;
-		width: 24px;
-		height: 24px;
-		border-radius: 50%;
-		animation: rotationBack 1s linear infinite;
 		transform-origin: center center;
+		width: 24px;
 	}
 
 	@keyframes rotation {

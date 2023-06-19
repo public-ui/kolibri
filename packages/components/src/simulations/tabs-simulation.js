@@ -35,7 +35,9 @@ setTimeout(() => {
 		];
 	}
 	tabs = document.querySelector('#tabs-with-create');
-	tabs._on = {
-		onCreate: callback('onCreate'),
-	};
+	if (tabs) {
+		tabs._on = {
+			onCreate: callback('onCreate'),
+		};
+	}
 }, 2500);

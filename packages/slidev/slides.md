@@ -302,7 +302,7 @@ Du kannst folgendes tun, um **KoliBri** kennenzulernen …
 <v-clicks>
 
 - <kol-link _href="https://public-ui.github.io" _target="website">Lese mehr über KoliBri</kol-link> (Dokumentation)
-- <kol-link _href="https://public-ui.github.io/docs/get-started/erste-schritte" _target="website">Probiere KoliBri aus</kol-link> (Create-App)
+- <kol-link _href="https://public-ui.github.io/docs/get-started/first-steps" _target="website">Probiere KoliBri aus</kol-link> (Create-App)
 - <kol-link _href="https://public-ui.github.io/docs/konzepte/architektur#erweitert" _target="github">Nutze KoliBri in Deinem Design System</kol-link> (Nutzen)
 - <kol-link _href="https://public-ui.github.io/docs/concepts/styling/theming" _target="website">Gestalte Dein eigenen KoliBri</kol-link> (Designer)
 - <kol-link _href="https://github.com/public-ui/kolibri/issues" _target="github">Gib uns Feedback</kol-link> (Feature, Issue)

@@ -1708,4 +1708,15 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		display: flex;
 		flex-wrap: wrap;
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 2rem;
+  	border-style: solid;
+		gap: 0.5rem;
+		line-height: 1rem;
+	  padding: 0 1rem;
+		background-color: var(--color-petrol);
+		border-color: var(--color-petrol);
+		color: var(--color-weiss);
+		cursor: pointer;
+	}`,
 });

@@ -20,33 +20,26 @@
 
 		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
 
-		<script defer src="assets/modal-simulation.js"></script>
-		<script defer src="assets/popover-simulation.js"></script>
-		<script defer src="assets/progress-simulation.js"></script>
-		<script defer src="assets/smart-button-simulation.js"></script>
-		<script defer src="assets/table-simulation.js"></script>
-		<script defer src="assets/toast-simulation.js"></script>
-		<script defer src="assets/tooltip-simulation.js"></script>
+		<script defer src="simulations/alert-simulation.js"></script>
+		<script defer src="simulations/modal-simulation.js"></script>
+		<script defer src="simulations/nav-simulation.js"></script>
+		<script defer src="simulations/pagination-simulation.js"></script>
+		<script defer src="simulations/popover-simulation.js"></script>
+		<script defer src="simulations/progress-simulation.js"></script>
+		<script defer src="simulations/smart-button-simulation.js"></script>
+		<script defer src="simulations/spin-simulation.js"></script>
+		<script defer src="simulations/table-simulation.js"></script>
+		<script defer src="simulations/tabs-simulation.js"></script>
+		<script defer src="simulations/toast-simulation.js"></script>
 
 		<script src="https://unpkg.com/petite-vue" defer init></script>
-		<!-- Tailwind reset a lot of CSS! -->
 		<script src="https://cdn.tailwindcss.com"></script>
 
-		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
-		<link rel="stylesheet" href="assets/bundes/style.css" />
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
-		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
-		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/material-icons/iconfont/material-icons.css" />
-		<link rel="stylesheet" href="assets/material-symbols/index.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
-		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
 		<link rel="stylesheet" href="assets/style.css" />
 		<link rel="stylesheet" href="assets/loader.css" />
 	</head>
-	<body class="demo" data-theme="demo" v-scope="{ on: console.log, showDropdown: true }">
+	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
 			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
@@ -300,7 +293,6 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/alert-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="badge" id="badge">
 				<div>
@@ -1210,7 +1202,6 @@
 							<kol-link _href="https://wikipedia.de" _label="Wikipedia" _icon="codicon codicon-heard"></kol-link>
 							<br />
 							<strong>Expert-Slot Variante</strong>
-							<kol-link id="click-link" _href="" _label="" _target="wikipedia"><span slot="expert">Wikipedia</span></kol-link>
 							<kol-link _href="https://wikipedia.de" _icon="codicon codicon-heard" _label=""><span slot="expert">Wikipedia</span></kol-link>
 							<p>
 								E-Mail:
@@ -1238,7 +1229,6 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/link-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="button-link" id="button-link">
 				<div>
@@ -1412,7 +1402,6 @@
 							<kol-button id="modal-open-1" _label="Modal (mit Schließen) öffnen"></kol-button>
 							<kol-button id="modal-open-2" _label="Modal (ohne Schließen) öffnen"></kol-button>
 							<kol-button id="modal-open-3" _label="Modal (einfaches Schließen) öffnen"></kol-button>
-							<script src="assets/modal-simulation.js"></script>
 						</div>
 					</div>
 				</div>
@@ -1471,7 +1460,6 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/nav-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="pagination" id="pagination">
 				<div>
@@ -1516,7 +1504,6 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/pagination-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="popover" id="popover">
 				<div>
@@ -1658,7 +1645,6 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-button _label="Aktion ausführen"></kol-button>
 							<kol-spin></kol-spin>
-							<script src="assets/spin-simulation.js"></script>
 						</div>
 					</div>
 				</div>
@@ -2121,7 +2107,6 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/tabs-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="toast" id="toast">
 				<div>
@@ -2141,9 +2126,6 @@
 								</p>
 							</kol-indent-text>
 							<kol-button _label="Toast starten"></kol-button>
-						</div>
-						<div class="col-12">
-							<script src="assets/toast-simulation.js"></script>
 						</div>
 					</div>
 				</div>

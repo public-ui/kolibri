@@ -23,6 +23,9 @@ type OptionalProps = {
 	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
+	/**
+	 * @deprecated
+	 */
 	size: number;
 	smartButton: ButtonProps;
 	tabIndex: number;
@@ -51,6 +54,9 @@ type OptionalStates = {
 	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
+	/**
+	 * @deprecated
+	 */
 	size: number;
 	smartButton: ButtonProps;
 	tabIndex: number;
