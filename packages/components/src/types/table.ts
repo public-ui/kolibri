@@ -1,7 +1,7 @@
 import { RequiredProps as PaginationRequiredProps, OptionalProps as PaginationOptionalProps } from '../components/pagination/component';
 import { Generic } from '@a11y-ui/core';
 
-type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
+export type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
 
 type KoliBriTableSort = <T>(data: T[]) => T[];
 
@@ -28,13 +28,13 @@ export type KoliBriTablePaginationStates = Generic.Element.Members<
 >;
 
 export type KoliBriTableCell = {
-	asTd?: boolean; // sollte hier weg
+	asTd?: boolean;
 	colSpan?: number;
 	label: string;
 	render?: KoliBriTableRender;
 	rowSpan?: number;
-	sort?: KoliBriTableSort; // sollte hier weg
-	textAlign?: KoliBriTableCellTextAlign; // sollte hier weg
+	sort?: KoliBriTableSort;
+	textAlign?: KoliBriTableCellTextAlign;
 	width?: string;
 };
 

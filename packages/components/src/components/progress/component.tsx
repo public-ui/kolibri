@@ -30,15 +30,16 @@ const createProgressSVG = (state: States): JSX.Element => {
 	switch (state._variant) {
 		case 'cycle':
 			return (
-				<svg class="cycle" width="100" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-					<circle fill="none" stroke="#efefef" cx="6px" cy="6px" r="5px"></circle>
-					<text aria-hidden="true" font-size="0.1em" x="50%" y="50%" text-anchor="middle" fill="currentColor">
+				<svg class="cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+					<circle fill="none" stroke="#000" cx="60px" cy="60px" r="50px" stroke-width="10"></circle>
+					<circle fill="none" stroke="#ddd" cx="60px" cy="60px" r="50px" stroke-width="8"></circle>
+					<text aria-hidden="true" x="50%" y="50%" text-anchor="middle" fill="currentColor">
 						{state._label && (
-							<tspan text-anchor="middle" x="50%" dy="-0.5em">
+							<tspan text-anchor="middle" x="50%" dy="-5em">
 								{state._label}
 							</tspan>
 						)}
-						<tspan text-anchor="middle" x="50%" dy={state._label ? '1em' : '0em'}>
+						<tspan text-anchor="middle" x="50%" dy={state._label ? '10em' : '0em'}>
 							{state._value}
 							{state._unit}
 						</tspan>
@@ -46,12 +47,13 @@ const createProgressSVG = (state: States): JSX.Element => {
 					<circle
 						class="progress"
 						stroke-linecap="round"
-						stroke-dasharray={`${Math.round((state._value / state._max) * 32)}px 32px`}
+						stroke-dasharray={`${Math.round((state._value / state._max) * 320)}px 320px`}
+						stroke-width="8"
 						fill="none"
 						stroke="#0075ff"
-						cx="6px"
-						cy="6px"
-						r="5px"
+						cx="60px"
+						cy="60px"
+						r="50px"
 					></circle>
 				</svg>
 			);
@@ -60,21 +62,11 @@ const createProgressSVG = (state: States): JSX.Element => {
 				<div class="bar">
 					{state._label && <div>{state._label}</div>}
 					<div style={{ display: 'flex', gap: '0.3em' }}>
-						<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
-							<line stroke-width="2" x1="1" stroke-linecap="round" y1="1" x2="23" y2="1" fill="#efefef" stroke="#efefef"></line>
-							<line
-								class="progress"
-								stroke-width="2"
-								x1="1"
-								stroke-linecap="round"
-								y1="1"
-								x2={`${1 + Math.round((state._value / state._max) * 22)}`}
-								y2="1"
-								fill="#0075ff"
-								stroke="#0075ff"
-							></line>
+						<svg width="100" viewBox="0 0 102 8" xmlns="http://www.w3.org/2000/svg">
+							<rect x="1" y="1" height="8" rx="4" fill="#efefef" stroke="#000000" width="100"></rect>
+							<rect x="1" y="2" height="6" rx="4" fill="#0075ff" stroke="#0075ff" width={100 * (state._value / state._max)} class="progress"></rect>
 						</svg>
-						<text aria-hidden="true" font-size="0.1em" text-anchor="middle" dominant-baseline="central" fill="currentColor">
+						<text aria-hidden="true" text-anchor="middle" dominant-baseline="central" fill="currentColor">
 							{state._value}
 							{state._unit}
 						</text>

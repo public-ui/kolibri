@@ -5,7 +5,6 @@ kol-button-group-wc {
 	flex-wrap: wrap;
 }
 kol-button-group-wc button {
-	border: 0;
 	border-bottom-color: transparent;
 	border-bottom-style: solid;
 	display: block;

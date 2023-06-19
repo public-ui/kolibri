@@ -2792,4 +2792,16 @@ export const BZSt = KoliBri.createTheme('bzst', {
 	'KOL-TOOLTIP': `:host {
 		--kolibri-font-size: var(--textFontSize);
 	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 2px;
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--colorPrimary);
+		border-color: var(--colorPrimary);
+		color: var(--colorPrimaryFront);
+		cursor: pointer;
+	}`,
 });
