@@ -431,7 +431,7 @@ export const BPA = KoliBri.createTheme('bpa', {
 		border-radius: 0.125rem;
 		transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
 	}
-	.icon-only > kol-span-wc {
+	.hide-label > kol-span-wc {
 		padding: 0.625rem;
 	}
 	.button.ghost a kol-span-wc {
@@ -1522,5 +1522,15 @@ export const BPA = KoliBri.createTheme('bpa', {
 		color: var(--color-white);
 		background-color: var(--color-darkblue);
 		border-color: var(--color-darkblue);
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border: 1px solid var(--color-darkgray);
+  	border-radius: 0.125rem;
+		gap: 0.5rem;
+		line-height: 1.125rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--color-blue);
+  	color: var(--color-white);
+		cursor: pointer;
 	}`,
 });

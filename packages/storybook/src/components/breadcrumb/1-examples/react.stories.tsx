@@ -54,7 +54,7 @@ export const OnlyIcon = (args: any) => (
 OnlyIcon.args = {
 	...DefaultArgs,
 	_links:
-		"[{'_label':'Startseite','_href':'#/','_icon':'icofont-home','_iconOnly':'true'},{'_label':'1. Unterseite','_href':'#/unterseite','_icon':'icofont-arrow-right','_iconOnly':'true'},{'_label':'1. Unterseite der Unterseite','_href':'#/unterseite/unterseite','_icon':'icofont-phone','_iconOnly':'true'}]",
+		"[{'_label':'Startseite','_href':'#/','_icon':'icofont-home','_hideLabel':'true'},{'_label':'1. Unterseite','_href':'#/unterseite','_icon':'icofont-arrow-right','_hideLabel':'true'},{'_label':'1. Unterseite der Unterseite','_href':'#/unterseite/unterseite','_icon':'icofont-phone','_hideLabel':'true'}]",
 };
 OnlyIcon.storyName = 'Breadcrumb nur Icons';
 
@@ -89,7 +89,7 @@ export const Output = (args: any) => (
 		<KolBreadcrumb
 			_ariaLabel="Breadcrumb aus Icons- oder Text-Links"
 			_links={[
-				{ _label: 'Startseite', _icon: 'icofont-home', _iconOnly: true, _href: '#/' },
+				{ _label: 'Startseite', _icon: 'icofont-home', _hideLabel: true, _href: '#/' },
 				{ _label: 'Unterseite der Startseite mit sehr langem Link-Test', _href: '#/unterseite' },
 				{ _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
 			]}

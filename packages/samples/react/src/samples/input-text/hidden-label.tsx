@@ -29,7 +29,7 @@ export const InputTextHiddenLabel: FC = () => (
 						icon: 'codicon codicon-eye',
 					},
 				},
-				_iconOnly: true,
+				_hideLabel: true,
 				_label: 'Passwort anzeigen',
 				_on: {
 					onClick: () => {},

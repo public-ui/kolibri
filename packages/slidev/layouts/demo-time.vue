@@ -23,16 +23,16 @@
 						</div>
 						<div class="grid gap-2">
 							<div class="text-center">
-								<kol-button _label="Primary" _icon="codicon codicon-home" _icon-only _variant="primary"></kol-button>
+								<kol-button _label="Primary" _icon="codicon codicon-home" _hide-label _variant="primary"></kol-button>
 							</div>
 							<div class="text-center">
-								<kol-button _label="Secondary" _icon="codicon codicon-edit" _icon-only _tooltip-align="right" _variant="secondary"></kol-button>
+								<kol-button _label="Secondary" _icon="codicon codicon-edit" _hide-label _tooltip-align="right" _variant="secondary"></kol-button>
 							</div>
 							<div class="text-center">
-								<kol-button _label="Danger" _icon="codicon codicon-trash" _icon-only _tooltip-align="bottom" _variant="danger"></kol-button>
+								<kol-button _label="Danger" _icon="codicon codicon-trash" _hide-label _tooltip-align="bottom" _variant="danger"></kol-button>
 							</div>
 							<div class="text-center">
-								<kol-button _label="Ghost" _icon="codicon codicon-lightbulb" _icon-only _tooltip-align="left" _variant="ghost"></kol-button>
+								<kol-button _label="Ghost" _icon="codicon codicon-lightbulb" _hide-label _tooltip-align="left" _variant="ghost"></kol-button>
 							</div>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 						<kol-button
 							_label="Übernehmen"
 							_icon="codicon codicon-reply"
-							_icon-only
+							_hide-label
 							@click="buttonOn.onClick"
 							v-bind:_on="buttonOn"
 							_variant="secondary"

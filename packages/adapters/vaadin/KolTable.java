@@ -56,6 +56,24 @@ public class KolTable extends Component {
 	}
 
 	/**
+	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setDataFoot(final Optional<String> value) {
+		getElement().setProperty("_data-foot", value);
+	}
+
+	/**
+	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getDataFoot() {
+		return getElement().getProperty("_data-foot", null);
+	}
+
+	/**
 	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
 	 *
 	 * @param value String

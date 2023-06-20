@@ -297,9 +297,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		}
 	}`,
 	'KOL-TABLE': `caption {
-		background-color: var(--color-neutral);
 		caption-side: TOP;
-		font-size: 1.5rem; /* 1.75rem */ /* line-height: 3rem; */
+		font-size: 1.1rem; /* 1.75rem */ /* line-height: 3rem; */
+		font-weight: var(--font-weight-bold);
 		margin-bottom: 0.25rem;
 		padding: 0.75rem;
 		text-align: left;
@@ -311,6 +311,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-width: 0;
 		border-top-width: 1px;
 	}
+	th {
+		background-color: var(--color-neutral);
+	}
 	td,
 	th {
 		color: var(--color-neutral-dark);
@@ -320,8 +323,19 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-bottom-width: 1px;
 		padding: 0.5rem;
 	}
-	tbody tr:nth-child(odd) {
-		background-color: var(--color-grau-10);
+	th[data-sort] kol-button::part(icon)::before {
+		font-family: "FontAwesome";
+		color: var(--color-neutral-dark);
+	}
+	th[data-sort="sort-NOS"] kol-button::part(icon)::before,
+	th[data-sort="sort-undefined"] kol-button::part(icon)::before {
+		content: "\f0dc";
+	}
+	th[data-sort="sort-ASC"] kol-button::part(icon)::before {
+		content: "\f0de";
+	}
+	th[data-sort="sort-DESC"] kol-button::part(icon)::before {
+		content: "\f0dd";
 	}`,
 	'KOL-ACCORDION': `:host > div {
 		border-color: var(--border-color);
@@ -523,12 +537,12 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: 0.5rem;
 		line-height: 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc:not(.icon-only),
-	:host > kol-link-wc > a > kol-span-wc:not(.icon-only) {
+	:host > kol-button-wc > button > kol-span-wc:not(.hide-label),
+	:host > kol-link-wc > a > kol-span-wc:not(.hide-label) {
 		padding: 0.75rem 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc.icon-only,
-	:host > kol-link-wc > a > kol-span-wc.icon-only {
+	:host > kol-button-wc > button > kol-span-wc.hide-label,
+	:host > kol-link-wc > a > kol-span-wc.hide-label {
 		padding: 0.75rem;
 	}
 	:host > kol-button-wc > button > kol-span-wc span,
@@ -621,12 +635,12 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: 0.5rem;
 		line-height: 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc:not(.icon-only),
-	:host > kol-link-wc > a > kol-span-wc:not(.icon-only) {
+	:host > kol-button-wc > button > kol-span-wc:not(.hide-label),
+	:host > kol-link-wc > a > kol-span-wc:not(.hide-label) {
 		padding: 0.75rem 1rem;
 	}
-	:host > kol-button-wc > button > kol-span-wc.icon-only,
-	:host > kol-link-wc > a > kol-span-wc.icon-only {
+	:host > kol-button-wc > button > kol-span-wc.hide-label,
+	:host > kol-link-wc > a > kol-span-wc.hide-label {
 		padding: 0.75rem;
 	}
 	:host > kol-button-wc > button > kol-span-wc span,
@@ -8590,5 +8604,17 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 			u+f0ec, u+f10a-f10b, u+f123, u+f13e, u+f148-f149, u+f14c, u+f156, u+f15e,
 			u+f160-f161, u+f163, u+f175-f178, u+f195, u+f1f8, u+f219, u+f250, u+f252,
 			u+f27a;
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--color-blau);
+		border-color: var(--color-blau-dark);
+		color: white;
+		cursor: pointer;
 	}`,
 });

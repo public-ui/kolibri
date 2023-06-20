@@ -182,11 +182,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		box-shadow: none;
 		outline: none;
 	}
-	:is(a, button).icon-only > kol-span-wc {
+	:is(a, button).hide-label > kol-span-wc {
 		padding: 8px;
 		width: unset;
 	}
-	:is(a, button).icon-only > kol-span-wc > span > span {
+	:is(a, button).hide-label > kol-span-wc > span > span {
 		display: none;
 	}
 	:is(a, button).loading > kol-span-wc kol-icon {
@@ -1008,20 +1008,20 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: rgba(0, 0, 0, 0);
 		border-color: rgba(0, 0, 0, 0);
 	}
-	.close > button.icon-only {
+	.close > button.hide-label {
 		padding: 8px;
 	}
-	.close > button.icon-only kol-icon {
+	.close > button.hide-label kol-icon {
 		display: flex;
 		width: 1em;
 		height: 1em;
 		font-size: 1rem;
 	}
-	.close > button.icon-only kol-icon::part(icon) {
+	.close > button.hide-label kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 	}
-	.close > button.icon-only kol-icon::part(icon)::before {
+	.close > button.hide-label kol-icon::part(icon)::before {
 		content: "\\f00d";
 	}
 	.close > button:active {
@@ -2373,11 +2373,11 @@ export const BMF = KoliBri.createTheme('bmf', {
 		box-shadow: none;
 		outline: none;
 	}
-	:is(a, button).icon-only > kol-span-wc {
+	:is(a, button).hide-label > kol-span-wc {
 		padding: 8px;
 		width: unset;
 	}
-	:is(a, button).icon-only > kol-span-wc > span > span {
+	:is(a, button).hide-label > kol-span-wc > span > span {
 		display: none;
 	}
 	:is(a, button).loading > kol-span-wc kol-icon {
@@ -9564,5 +9564,17 @@ export const BMF = KoliBri.createTheme('bmf', {
 			u+f0ec, u+f10a-f10b, u+f123, u+f13e, u+f148-f149, u+f14c, u+f156, u+f15e,
 			u+f160-f161, u+f163, u+f175-f178, u+f195, u+f1f8, u+f219, u+f250, u+f252,
 			u+f27a;
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: var(--a11y-min-size);
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 8px 14px;
+		background-color: var(--color-ocean);
+		border-color: var(--color-ocean);
+		color: var(--color-white);
+		cursor: pointer;
 	}`,
 });

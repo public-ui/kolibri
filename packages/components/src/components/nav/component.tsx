@@ -1,9 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
-import { KoliBriButtonCallbacks } from '../../types/button-link';
-import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
+import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton, validateLabel } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
@@ -64,30 +62,6 @@ export class KolNav implements KoliBriNavAPI {
 		return false;
 	};
 
-	/** Element creation functions */
-	private button(
-		compact: boolean,
-		disabled: boolean,
-		icon: Stringified<KoliBriIconProp> | undefined,
-		label: string,
-		on: KoliBriButtonCallbacks<unknown>
-	): JSX.Element {
-		return (
-			<kol-button-wc
-				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_disabled={disabled}
-				_icon={icon || '-'}
-				_hideLabel={compact}
-				_label={label}
-				_on={on}
-			></kol-button-wc>
-		);
-	}
-
-	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return <kol-span-wc _icon={icon || '-'} _hideLabel={compact} _label={label}></kol-span-wc>;
-	}
-
 	private entry(
 		collapsible: boolean,
 		compact: boolean,
@@ -106,7 +80,7 @@ export class KolNav implements KoliBriNavAPI {
 					compact,
 				}}
 			>
-				{this.buttonOrLinkOrText(compact, link, selected)}
+				<kol-button-link-text-switch _links={link} _compact={compact} _selected={selected} />
 				{hasChildren ? this.expandButton(collapsible, link, selected) : ''}
 			</div>
 		);
@@ -149,19 +123,6 @@ export class KolNav implements KoliBriNavAPI {
 		);
 	}
 
-	private link(selected: boolean, compact: boolean, href: string, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return (
-			<kol-link-wc
-				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaExpanded={selected}
-				_href={href}
-				_icon={icon || '-'}
-				_hideLabel={compact}
-				_label={label}
-			></kol-link-wc>
-		);
-	}
-
 	private linkList = (props: {
 		collapsible: boolean;
 		compact: boolean;
@@ -177,16 +138,6 @@ export class KolNav implements KoliBriNavAPI {
 			</ul>
 		);
 	};
-
-	private buttonOrLinkOrText(compact: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
-		if ((link as ButtonWithChildrenProps)._on) {
-			return this.button(compact, (link as ButtonWithChildrenProps)._disabled === true, link._icon, link._label, (link as ButtonWithChildrenProps)._on);
-		} else if ((link as LinkWithChildrenProps)._href) {
-			return this.link(selected, compact, (link as LinkWithChildrenProps)._href, link._icon, link._label);
-		} else {
-			return this.text(compact, link._icon, link._label);
-		}
-	}
 
 	public render(): JSX.Element {
 		let hasCompactButton = this.state._hasCompactButton;

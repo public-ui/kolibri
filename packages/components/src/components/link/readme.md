@@ -78,10 +78,11 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 | `_ariaSelected`       | `_aria-selected`      | Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)                                | `boolean \| undefined`                                                              | `undefined`                                    |
 | `_disabled`           | `_disabled`           | Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.                                                                                                             | `boolean \| undefined`                                                              | `false`                                        |
 | `_download`           | `_download`           | Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.                                                                                                        | `boolean \| string \| undefined`                                                    | `false`                                        |
+| `_hideLabel`          | `_hide-label`         | Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                                                                                                   | `boolean \| undefined`                                                              | `false`                                        |
 | `_href` _(required)_  | `_href`               | Gibt die Ziel-Url des Links an.                                                                                                                                                                             | `string`                                                                            | `undefined`                                    |
 | `_icon`               | `_icon`               | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                                                                                 | `KoliBriHorizontalIcon & KoliBriVerticalIcon \| string \| undefined`                | `undefined`                                    |
 | `_iconAlign`          | `_icon-align`         | <span style="color:red">**[DEPRECATED]**</span> Wird durch das neue flexibleren Icon-Typ abgedeckt.<br/><br/>Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                               | `undefined`                                    |
-| `_iconOnly`           | `_icon-only`          | Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                                                                                                   | `boolean \| undefined`                                                              | `false`                                        |
+| `_iconOnly`           | `_icon-only`          | <span style="color:red">**[DEPRECATED]**</span> use \_hide-label<br/><br/>Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                         | `boolean \| undefined`                                                              | `false`                                        |
 | `_label` _(required)_ | `_label`              | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                                 | `string`                                                                            | `undefined`                                    |
 | `_on`                 | --                    | <span style="color:red">**[DEPRECATED]**</span> <br/><br/>Gibt die EventCallback-Funktionen für den Link an.                                                                                                | `undefined \| { onClick?: EventValueOrEventCallback<Event, string> \| undefined; }` | `undefined`                                    |
 | `_role`               | `_role`               | Gibt die Rolle des primären Elements in der Komponente an.                                                                                                                                                  | `"button" \| "link" \| "tab" \| undefined`                                          | `undefined`                                    |
@@ -101,7 +102,6 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 - [kol-input-adapter-leanup](../input-adapter-leanup)
 - [kol-link-group](../link-group)
 - [kol-quote](../quote)
-- [kol-skip-nav](../skip-nav)
 
 ### Depends on
 
@@ -121,7 +121,6 @@ graph TD;
   kol-input-adapter-leanup --> kol-link
   kol-link-group --> kol-link
   kol-quote --> kol-link
-  kol-skip-nav --> kol-link
   style kol-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

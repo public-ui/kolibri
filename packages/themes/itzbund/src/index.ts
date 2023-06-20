@@ -108,8 +108,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: inherit; /*line-height: 1.25em;*/ /*padding: calc(4 * var(--spacing));*/
 		padding: 0 1rem;
 	}
-	.button a.icon-only > kol-span-wc,
-	.button button.icon-only > kol-span-wc {
+	.button a.hide-label > kol-span-wc,
+	.button button.hide-label > kol-span-wc {
 		padding: 0 0.5rem;
 	}
 	a > kol-span-wc,
@@ -220,8 +220,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: inherit; /*line-height: 1.25em;*/ /*padding: calc(4 * var(--spacing));*/
 		padding: 0 1rem;
 	}
-	.button a.icon-only > kol-span-wc,
-	.button button.icon-only > kol-span-wc {
+	.button a.hide-label > kol-span-wc,
+	.button button.hide-label > kol-span-wc {
 		padding: 0 0.5rem;
 	}
 	a > kol-span-wc,
@@ -1707,5 +1707,16 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	:host > div.tabs-align-top kol-button-group-wc div {
 		display: flex;
 		flex-wrap: wrap;
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 2rem;
+  	border-style: solid;
+		gap: 0.5rem;
+		line-height: 1rem;
+	  padding: 0 1rem;
+		background-color: var(--color-petrol);
+		border-color: var(--color-petrol);
+		color: var(--color-weiss);
+		cursor: pointer;
 	}`,
 });

@@ -121,19 +121,20 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 
 ### Depends on
 
+- kol-button-link-text-switch
 - kol-button-wc
-- kol-span-wc
-- kol-link-wc
 - [kol-button](../button)
 
 ### Graph
 
 ```mermaid
 graph TD;
+  kol-nav --> kol-button-link-text-switch
   kol-nav --> kol-button-wc
-  kol-nav --> kol-span-wc
-  kol-nav --> kol-link-wc
   kol-nav --> kol-button
+  kol-button-link-text-switch --> kol-button-wc
+  kol-button-link-text-switch --> kol-link-wc
+  kol-button-link-text-switch --> kol-span-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
   kol-span-wc --> kol-icon
