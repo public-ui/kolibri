@@ -14,7 +14,7 @@ Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der 
 ### Code
 
 ```html
-<kol-modal id="test-modal" _aria-label="Beschreibung zur Modalbox">
+<kol-modal id="test-modal" _label="Beschreibung zur Modalbox">
 	<kol-card _heading="Vorgang löschen" _has-footer style="background-color: bisque">
 		<p slot="content">Wollen Sie den Vorgang wirklich löschen?</p>
 		<div slot="footer">

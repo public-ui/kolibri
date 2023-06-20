@@ -1,6 +1,6 @@
 # Icon
 
-Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_aria-label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
+Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
 
 Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
 
@@ -13,12 +13,12 @@ Die Komponente **Icon** wird über das HTML-Tag `kol-icon` erzeugt.
 ### Code
 
 ```html
-<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
+<kol-icon _label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 ```
 
 ### Beispiel
 
-<kol-icon _aria-label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
+<kol-icon _label="Zu Hause" _icon="codicon codicon-home"></kol-icon>
 
 ### Icon
 
