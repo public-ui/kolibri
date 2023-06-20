@@ -42,10 +42,10 @@ export class KolInputRadio implements ComponentApi {
 				_id={customId}
 				_renderNoLabel={true}
 				_required={this.state._required}
-				_slotName={customId}
+				_slotName={index.toString()}
 				_touched={this.state._touched}
 			>
-				<div slot={customId}>
+				<div slot={index.toString()}>
 					<input
 						ref={this.state._value === option.value ? this.catchRef : undefined}
 						accessKey={this.state._accessKey}
