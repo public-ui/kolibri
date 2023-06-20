@@ -54,7 +54,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 						{
 							_align: props._tooltipAlign,
 							_id: 'nonce',
-							_label: props._label || props._label,
+							_label: props._label,
 						},
 						' aria-hidden="true"'
 				  )

@@ -22,6 +22,7 @@ export const getButtonWcHtml = (
 		},
 		props
 	);
+	const ariaLabel = state._hideLabel ? '' : ` aria-label="${state._label}"`;
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
 	const type = typeof state._type === 'string' ? state._type : 'button';
@@ -29,7 +30,7 @@ export const getButtonWcHtml = (
 	return `<kol-button-wc${additionalAttrs}>
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
-	} class="${variant}" type="${type}">
+	}${ariaLabel} class="${variant}" type="${type}">
 		${getSpanWcHtml(props, slots)}
 	</button>
 </kol-button-wc>`;

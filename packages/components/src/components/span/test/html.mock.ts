@@ -48,7 +48,7 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		${state._hideLabel !== true && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
+		${!state._hideLabel && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
 		<span${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>
