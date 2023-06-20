@@ -51,7 +51,7 @@
 		"@public-ui/schema": "1.6.0-rc.4",
 		"@types/node": "ts4.9",
 		"@typescript-eslint/eslint-plugin": "5.59.11",
-		"@typescript-eslint/parser": "5.59.11",
+		"@typescript-eslint/parser": "5.60.0",
 		"eslint": "8.43.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "5.0.4",
