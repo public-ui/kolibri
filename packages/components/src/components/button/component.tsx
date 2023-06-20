@@ -21,7 +21,7 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateAriaLabelWithLabel, validateLabel } from '../../types/props/label';
+import { validateLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';

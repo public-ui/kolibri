@@ -17,18 +17,18 @@ import { KoliBriIconAPI, KoliBriIconStates } from './types';
 })
 export class KolIcon implements KoliBriIconAPI {
 	public render(): JSX.Element {
-		const label = this.state._label;
+		const hasLabel = typeof this.state._label === 'string' && this.state._label.length > 0;
 		return (
 			<Host exportparts="icon">
 				<i
-					aria-hidden={label ? undefined : 'true'}
+					aria-hidden={hasLabel ? undefined : 'true'}
 					/**
 					 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
 					 * Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
 					 *
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
-					aria-label={label}
+					aria-label={hasLabel ? this.state._label : undefined}
 					class={this.state._icon}
 					part="icon"
 					role="img"
@@ -61,7 +61,6 @@ export class KolIcon implements KoliBriIconAPI {
 	@Prop() public _part?: string;
 
 	@State() public state: KoliBriIconStates = {
-		_label: '…', // ⚠ required
 		_icon: 'codicon codicon-home',
 	};
 

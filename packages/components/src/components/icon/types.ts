@@ -13,7 +13,7 @@ type OptionalProps = {
 };
 export type KoliBriIconProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = { label: string } & RequiredProps;
+type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 
 export type KoliBriIconStates = Generic.Element.Members<RequiredStates, OptionalStates>;
