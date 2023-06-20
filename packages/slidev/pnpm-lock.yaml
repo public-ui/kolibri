@@ -1,19 +1,15 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.6.0-rc.3)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.4)
   '@public-ui/components':
-    specifier: 1.6.0-rc.3
-    version: 1.6.0-rc.3
+    specifier: 1.6.0-rc.4
+    version: 1.6.0-rc.4
   '@public-ui/themes':
-    specifier: 1.6.0-rc.3
-    version: 1.6.0-rc.3(@public-ui/components@1.6.0-rc.3)
+    specifier: 1.6.0-rc.4
+    version: 1.6.0-rc.4(@public-ui/components@1.6.0-rc.4)
   '@slidev/theme-default':
     specifier: 0.21.2
     version: 0.21.2
@@ -530,21 +526,21 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.3):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.4):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.3
+      '@public-ui/components': 1.6.0-rc.4
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.6.0-rc.3:
-    resolution: {integrity: sha512-kH/SMzPWIv5XlX+IDbat7bduMBlxypme8Ba6ns+lInbL5p0+h1Y5gTv+IaWTsp6//vh+XdQGZZZWlItFBU3uAg==}
+  /@public-ui/components@1.6.0-rc.4:
+    resolution: {integrity: sha512-WnTcBomFKexUX1OCDdZEFcuN/pvYhhkGOgXm/k/pUMvT6PlAmkZ3suoReNA/ljhnsUp63F4LG48bVZGKmLGJgw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.1
-      '@public-ui/schema': 1.6.0-rc.3
+      '@public-ui/schema': 1.6.0-rc.4
       i18next: 22.5.1
     dev: false
 
@@ -561,18 +557,18 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.3:
-    resolution: {integrity: sha512-xbhbKuQrUyjHMrKoYyCwvhZt45Dhcu8cr3oAaIKLJvMN/MndMRhR0YobSPyKaWYJb5g59VYkr4XhqUZ6PrI0xw==}
+  /@public-ui/schema@1.6.0-rc.4:
+    resolution: {integrity: sha512-lm4mFKoWf+Cb+iC5CXPz/XqD3MZNrk1XUOrErUEHu5EYnfgVPOoQX4wyYBziUpufssN+FlmFhE7XmBGeyaLOIw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
 
-  /@public-ui/themes@1.6.0-rc.3(@public-ui/components@1.6.0-rc.3):
-    resolution: {integrity: sha512-DqhkHmNZkK0mqPNngY9e9dWhxKvppQzVtf0+rsqrSuh84QFsVuus3kpHeiekxuNkLSshoJglDn14UjefNru+Zw==}
+  /@public-ui/themes@1.6.0-rc.4(@public-ui/components@1.6.0-rc.4):
+    resolution: {integrity: sha512-M3EXkhJ6XsECQ5jvtR3MlmHq4DPvbREBqLl6Rg/vN9gZK/fdGuYtJhHplpAgobQUNwD8RSo9EbmiXwjYg8HSJw==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.3
+      '@public-ui/components': 1.6.0-rc.4
     dependencies:
-      '@public-ui/components': 1.6.0-rc.3
+      '@public-ui/components': 1.6.0-rc.4
     dev: false
 
   /@rollup/pluginutils@5.0.2:
@@ -5053,3 +5049,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
