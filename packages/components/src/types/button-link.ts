@@ -65,8 +65,8 @@ type OptionalButtonAndLinkStates = {
 export type KoliBriButtonType = 'button' | 'reset' | 'submit';
 export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost' | 'custom';
 
-export type KoliBriButtonCallbacks<T> = {
-	[Events.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
+export type KoliBriButtonCallbacks = {
+	[Events.onClick]?: EventValueOrEventCallback<MouseEvent, string>;
 	[Events.onMouseDown]?: EventCallback<MouseEvent>;
 };
 
@@ -88,7 +88,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	accessKey: string;
 	disabled: boolean;
 	id: string;
-	on: KoliBriButtonCallbacks<unknown>;
+	on: KoliBriButtonCallbacks;
 	type: KoliBriButtonType;
 	value: string;
 };
@@ -106,7 +106,7 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 		accessKey: string;
 		disabled: boolean;
 		id: string;
-		on: KoliBriButtonCallbacks<unknown>;
+		on: KoliBriButtonCallbacks;
 		value: string;
 	};
 // type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
