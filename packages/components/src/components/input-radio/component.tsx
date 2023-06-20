@@ -32,7 +32,6 @@ export class KolInputRadio implements ComponentApi {
 	private readonly renderInput = (option: Option<W3CInputValue>, index: number) => {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const customId = `${this.state._id}-${index}`;
-		const slotName = this.state._id + index;
 		return (
 			<kol-input
 				class="radio"
@@ -43,10 +42,10 @@ export class KolInputRadio implements ComponentApi {
 				_id={customId}
 				_renderNoLabel={true}
 				_required={this.state._required}
-				_slotName={slotName}
+				_slotName={customId}
 				_touched={this.state._touched}
 			>
-				<div slot={slotName}>
+				<div slot={customId}>
 					<input
 						ref={this.state._value === option.value ? this.catchRef : undefined}
 						accessKey={this.state._accessKey}
