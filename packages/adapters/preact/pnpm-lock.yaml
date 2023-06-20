@@ -1,21 +1,17 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@public-ui/react':
-    specifier: 1.6.0-rc.3
-    version: 1.6.0-rc.3(@public-ui/components@1.6.0-rc.3)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.6.0-rc.4
+    version: 1.6.0-rc.4(@public-ui/components@1.6.0-rc.4)(react-dom@18.2.0)(react@18.2.0)
   preact:
     specifier: '>=10.11.3'
     version: 10.11.3
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.3
-    version: 1.6.0-rc.3
+    specifier: 1.6.0-rc.4
+    version: 1.6.0-rc.4
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -511,28 +507,28 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.3:
-    resolution: {integrity: sha512-kH/SMzPWIv5XlX+IDbat7bduMBlxypme8Ba6ns+lInbL5p0+h1Y5gTv+IaWTsp6//vh+XdQGZZZWlItFBU3uAg==}
+  /@public-ui/components@1.6.0-rc.4:
+    resolution: {integrity: sha512-WnTcBomFKexUX1OCDdZEFcuN/pvYhhkGOgXm/k/pUMvT6PlAmkZ3suoReNA/ljhnsUp63F4LG48bVZGKmLGJgw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.1
-      '@public-ui/schema': 1.6.0-rc.3
+      '@public-ui/schema': 1.6.0-rc.4
       i18next: 22.5.1
 
-  /@public-ui/react@1.6.0-rc.3(@public-ui/components@1.6.0-rc.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-r9v7HIoddY1YbSkTbijKiT2goR1R73rw53CVx8ZTYcoGpUCpEkUpcEkGLIFy3j6gNgidb6mCfshQFHu3DtfLVw==}
+  /@public-ui/react@1.6.0-rc.4(@public-ui/components@1.6.0-rc.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DpaskKCReHbZ5bQ5H+kqn9cSnUue0iJFnR9h0WhqCfqte7wkY6ZBJvzZYnt2+KgAALBB30pBryGjZermk3RiMw==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.3
+      '@public-ui/components': 1.6.0-rc.4
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.3
+      '@public-ui/components': 1.6.0-rc.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.3:
-    resolution: {integrity: sha512-xbhbKuQrUyjHMrKoYyCwvhZt45Dhcu8cr3oAaIKLJvMN/MndMRhR0YobSPyKaWYJb5g59VYkr4XhqUZ6PrI0xw==}
+  /@public-ui/schema@1.6.0-rc.4:
+    resolution: {integrity: sha512-lm4mFKoWf+Cb+iC5CXPz/XqD3MZNrk1XUOrErUEHu5EYnfgVPOoQX4wyYBziUpufssN+FlmFhE7XmBGeyaLOIw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
 
@@ -1332,3 +1328,7 @@ packages:
   /yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
