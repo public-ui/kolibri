@@ -1,16 +1,12 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 devDependencies:
   '@babel/types':
     specifier: 7.22.5
     version: 7.22.5
   '@public-ui/components':
-    specifier: 1.6.0-rc.3
-    version: 1.6.0-rc.3
+    specifier: 1.6.0-rc.4
+    version: 1.6.0-rc.4
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -519,17 +515,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.3:
-    resolution: {integrity: sha512-kH/SMzPWIv5XlX+IDbat7bduMBlxypme8Ba6ns+lInbL5p0+h1Y5gTv+IaWTsp6//vh+XdQGZZZWlItFBU3uAg==}
+  /@public-ui/components@1.6.0-rc.4:
+    resolution: {integrity: sha512-WnTcBomFKexUX1OCDdZEFcuN/pvYhhkGOgXm/k/pUMvT6PlAmkZ3suoReNA/ljhnsUp63F4LG48bVZGKmLGJgw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.1
-      '@public-ui/schema': 1.6.0-rc.3
+      '@public-ui/schema': 1.6.0-rc.4
       i18next: 22.5.1
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.3:
-    resolution: {integrity: sha512-xbhbKuQrUyjHMrKoYyCwvhZt45Dhcu8cr3oAaIKLJvMN/MndMRhR0YobSPyKaWYJb5g59VYkr4XhqUZ6PrI0xw==}
+  /@public-ui/schema@1.6.0-rc.4:
+    resolution: {integrity: sha512-lm4mFKoWf+Cb+iC5CXPz/XqD3MZNrk1XUOrErUEHu5EYnfgVPOoQX4wyYBziUpufssN+FlmFhE7XmBGeyaLOIw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: true
@@ -1454,3 +1450,7 @@ packages:
   /yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
