@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../components';
 import { KoliBriPaginationProps } from '../pagination/types';
 
-type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
+export type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
 
 type KoliBriTableSort = <T>(data: T[]) => T[];
 export type KoliBriSortDirection = 'ASC' | 'DESC' | 'NOS';
@@ -57,6 +57,7 @@ type RequiredProps = {
 	headers: Stringified<KoliBriTableHeaders>;
 };
 type OptionalProps = {
+	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
 };
@@ -64,6 +65,7 @@ type OptionalProps = {
 type RequiredStates = {
 	caption: string;
 	data: KoliBriTableDataType[];
+	dataFoot: KoliBriTableDataType[];
 	headers: KoliBriTableHeaders;
 	pagination: KoliBriTablePaginationStates;
 	sortedData: KoliBriTableDataType[];

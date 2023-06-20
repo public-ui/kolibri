@@ -5,7 +5,7 @@ import { KoliBriVersionProps } from '../types';
 export const getVersionHtml = (props: KoliBriVersionProps, additionalAttrs = ''): string => {
 	props = mixMembers(
 		{
-			_version: '0.0.0-alpha.0',
+			_label: '0.0.0-alpha.0',
 		},
 		props
 	);
@@ -13,12 +13,12 @@ export const getVersionHtml = (props: KoliBriVersionProps, additionalAttrs = '')
 <kol-version${additionalAttrs}>
   <mock:shadow-root>
     ${
-			props._version === ''
+			props._label === ''
 				? ''
 				: getBadgeHtml({
 						_color: '#BEC5C9',
 						_icon: 'codicon codicon-versions',
-						_label: `v${props._version || ''}`,
+						_label: `v${props._label || ''}`,
 				  })
 		}
   </mock:shadow-root>

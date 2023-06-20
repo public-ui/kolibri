@@ -17,42 +17,9 @@ import {
 	KoliBriTableHeaderCellAndData,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
-	KoliBriTablePaginationStates,
 	KoliBriTableRender,
-} from '../../types/table';
-import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
-import { translate } from '../../i18n';
-import { devHint } from '../../utils/a11y.tipps';
-
-type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
-	data: KoliBriDataType;
-};
-
-type RequiredProps = {
-	caption: string;
-	data: Stringified<KoliBriDataType[]>;
-	headers: Stringified<KoliBriTableHeaders>;
-};
-type OptionalProps = {
-	dataFoot: Stringified<KoliBriDataType[]>;
-	minWidth: string;
-	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-};
-
-type RequiredStates = {
-	caption: string;
-	data: KoliBriDataType[];
-	dataFoot: KoliBriDataType[];
-	headers: KoliBriTableHeaders;
-	pagination: KoliBriTablePaginationStates;
-	sortedData: KoliBriDataType[];
-};
-type OptionalStates = {
-	minWidth: string;
-	sortDirection: KoliBriSortDirection;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+	KoliBriTableStates,
+} from './types';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -153,19 +120,19 @@ export class KolTable implements KoliBriTableAPI {
 	}
 
 	@Watch('_dataFoot')
-	public validateDataFoot(value?: Stringified<KoliBriDataType[]>): void {
+	public validateDataFoot(value?: Stringified<KoliBriTableDataType[]>): void {
 		emptyStringByArrayHandler(value, () => {
 			objectObjectHandler(value, () => {
 				if (typeof value === 'undefined') {
 					value = [];
 				}
 				try {
-					value = parseJson<KoliBriDataType[]>(value);
+					value = parseJson<KoliBriTableDataType[]>(value);
 					// eslint-disable-next-line no-empty
 				} catch (e) {
 					// value behält den ursprünglichen Wert
 				}
-				if (Array.isArray(value) && value.find((dataTupel: KoliBriDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
+				if (Array.isArray(value) && value.find((dataTupel: KoliBriTableDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
 					setState(this, '_dataFoot', value, {
 						afterPatch: () => {
 							setTimeout(this.updateSortedData);
@@ -646,7 +613,7 @@ export class KolTable implements KoliBriTableAPI {
 	};
 
 	public render(): JSX.Element {
-		const displayedData: KoliBriDataType[] = this.selectDisplayedData(
+		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
 			this.showPagination ? this.state._pagination?._pageSize ?? 10 : this.state._sortedData.length,
 			this.state._pagination._page || 1
