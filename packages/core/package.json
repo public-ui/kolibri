@@ -57,7 +57,7 @@
 	"devDependencies": {
 		"@a11y-ui/core": "1.0.3",
 		"@types/node": "ts4.9",
-		"@typescript-eslint/eslint-plugin": "5.59.11",
+		"@typescript-eslint/eslint-plugin": "5.60.0",
 		"@typescript-eslint/parser": "5.59.11",
 		"eslint": "8.43.0",
 		"eslint-plugin-no-loops": "0.3.0",
