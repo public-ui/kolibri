@@ -2,8 +2,8 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchNumber, watchString } from '../../utils/prop.validators';
 import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
-import { KoliBriProgressType } from '../../components';
 import { validateLabel } from '../../types/props';
+import { KoliBriProgressType } from '../../types/progress';
 
 // https://css-tricks.com/html5-progress-element/
 const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
@@ -158,7 +158,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	public validateVariant(value?: KoliBriProgressType): void {
 		if (!value && this._type) {
 			// remove with v2
-			value = this._type as KoliBriProgressType;
+			value = this._type;
 		}
 		if (value !== 'cycle') {
 			value = 'bar';

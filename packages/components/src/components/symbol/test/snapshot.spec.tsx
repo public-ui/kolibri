@@ -3,10 +3,10 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
-import { Props } from '../component';
 import { getSymbolHtml } from './html.mock';
+import { KoliBriSymbolProps } from '../types';
 
-executeTests<Props>(
+executeTests<KoliBriSymbolProps>(
 	'Symbol',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -16,7 +16,7 @@ executeTests<Props>(
 		return page;
 	},
 	{
-		_ariaLabel: ['Slash', 'Backslash'],
+		_label: ['Slash', 'Backslash'],
 		_symbol: ['/', '\\'],
 	},
 	getSymbolHtml,

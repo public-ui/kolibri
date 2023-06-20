@@ -12,6 +12,7 @@ type OptionalProps = {
 	on: KoliBriFormCallbacks;
 	requiredText: string | boolean;
 };
+export type KoliBriFormProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;

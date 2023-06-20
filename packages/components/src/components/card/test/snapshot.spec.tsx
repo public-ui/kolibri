@@ -3,10 +3,10 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { executeTests } from 'stencil-awesome-test';
 
 import { COMPONENTS } from '../../component-list';
-import { Props } from '../component';
 import { getCardHtml } from './html.mock';
+import { koliBriCardProps } from '../types';
 
-executeTests<Props>(
+executeTests<koliBriCardProps>(
 	'Card',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({

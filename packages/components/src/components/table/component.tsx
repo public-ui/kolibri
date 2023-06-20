@@ -589,7 +589,6 @@ export class KolTable implements KoliBriTableAPI {
 															{!this.disableSort && typeof col.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
-																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||
 																		this.sortDirections.get(col.sort) === 'NOS' ||
@@ -676,7 +675,6 @@ export class KolTable implements KoliBriTableAPI {
 															{!this.disableSort && typeof col.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
-																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_icon={
 																		col.sort !== this.sortFunction ||
 																		this.sortDirections.get(col.sort) === 'NOS' ||

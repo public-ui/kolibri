@@ -31,7 +31,7 @@ export const getSpanWcHtml = (
 	${
 		icon.top
 			? getIconHtml({
-					_ariaLabel: '',
+					_label: '',
 					_icon: (icon.top as KoliBriCustomIcon).icon,
 			  })
 			: ''
@@ -41,7 +41,7 @@ export const getSpanWcHtml = (
 			icon.left
 				? getIconHtml(
 						{
-							_ariaLabel: '',
+							_label: '',
 							_icon: (icon.left as KoliBriCustomIcon).icon,
 						},
 						` class="icon left"`
@@ -56,7 +56,7 @@ export const getSpanWcHtml = (
 			icon.right
 				? getIconHtml(
 						{
-							_ariaLabel: '',
+							_label: '',
 							_icon: (icon.right as KoliBriCustomIcon).icon,
 						},
 						` class="icon right"`
@@ -67,7 +67,7 @@ export const getSpanWcHtml = (
 	${
 		icon.bottom
 			? getIconHtml({
-					_ariaLabel: '',
+					_label: '',
 					_icon: (icon.bottom as KoliBriCustomIcon).icon,
 			  })
 			: ''

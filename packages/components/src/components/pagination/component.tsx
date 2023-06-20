@@ -270,7 +270,6 @@ export class KolPagination implements KoliBriPaginationAPI {
 				exportparts="icon"
 				key={`${this.nonce}-${page}`}
 				_customClass={this.state._customClass}
-				_ariaLabel={translate('kol-page-current', { placeholders: { page: page.toFixed(0) } })}
 				_label={`${page}`}
 				_on={{
 					onClick: (event: Event) => {
@@ -290,7 +289,6 @@ export class KolPagination implements KoliBriPaginationAPI {
 				_customClass={this.state._customClass}
 				_disabled={true}
 				_ariaCurrent={true}
-				_ariaLabel={translate('kol-page-selected', { placeholders: { page: page.toFixed(0) } })}
 				_label={`${page}`}
 				_variant={this.state._variant}
 			/>

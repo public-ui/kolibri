@@ -32,7 +32,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 							? `<span>${
 									link._iconOnly
 										? getIconHtml({
-												_label: link._label as string,
+												_label: link._label,
 												_icon: link._icon as Icofont,
 										  })
 										: link._label
@@ -46,7 +46,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${props._label}">
+		<nav aria-label="${props._label || ''}">
 			<ul>
 				${
 					props._links.length === 0

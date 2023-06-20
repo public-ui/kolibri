@@ -11,7 +11,7 @@ export const getIconHtml = (props: KoliBriIconProps, additionalAttrs = ''): stri
 	);
 	return `<kol-icon exportparts="icon"${additionalAttrs}>
   <mock:shadow-root>
-    <i ${props._label === '' ? 'aria-hidden="true"' : `aria-label="${props._label}"`} class="${props._icon}" part="icon" role="img"></i>
+    <i ${props._label ? 'aria-hidden="true"' : `aria-label="${props._label || ''}"`} class="${props._icon}" part="icon" role="img"></i>
   </mock:shadow-root>
 </kol-icon>`;
 };

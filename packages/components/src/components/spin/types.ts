@@ -4,6 +4,7 @@ import { PropSpinVariant } from '../../types/props/variant/spin';
 
 type RequiredProps = unknown;
 type OptionalProps = PropSpinVariant & PropShow;
+export type KoliBriSpinProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = PropSpinVariant;
 type OptionalStates = PropShow;

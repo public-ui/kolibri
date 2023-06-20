@@ -1,6 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { LinkProps } from '../../../types/button-link';
-import { isEmptyOrPrefixOf } from '../../../utils/validator';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
@@ -16,13 +15,6 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		},
 		props
 	);
-	if (typeof props._label === 'string' && isEmptyOrPrefixOf(props._label, props._label) === false) {
-		if (props._label.length > 0) {
-			props._label = props._label;
-		} else {
-			props._label = props._label;
-		}
-	}
 	return `
 <kol-link${props._ariaExpanded ? ' _aria-expanded' : ''}${props._hideLabel ? ' _hide-label' : ''}>
   <mock:shadow-root>

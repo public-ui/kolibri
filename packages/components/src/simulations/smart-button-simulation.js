@@ -24,11 +24,11 @@ setTimeout(() => {
 }, 2500);
 
 document.querySelector('#input-text')._smartButton = {
-	_ariaLabel: 'aria-label',
 	_customClass: 'bg-purple',
 	_disabled: false,
 	_icon: { left: { icon: 'codicon codicon-home' } },
 	_id: 'text_smartbutton',
+	_label: 'aria-label',
 	_on: { onclick: console.log },
 	_tooltipAlign: 'top',
 	_variant: 'danger',
