@@ -176,10 +176,10 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
-export type RequiredLinkStates = RequiredButtonAndLinkStates & {
+type RequiredLinkStates = RequiredButtonAndLinkStates & {
 	href: string;
 };
-export type OptionalLinkStates = OptionalButtonAndLinkStates & {
+type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
 	/**
 	 * @deprecated We use the on-click event only on buttons styled as link.

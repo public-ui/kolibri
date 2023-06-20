@@ -142,11 +142,3 @@ export const validateLabel = (component: Generic.Element.Component, value?: stri
 		required: true,
 	});
 };
-
-export const validateLabelWithAriaLabel = (component: Generic.Element.Component, value?: string): void => {
-	validateLabel(component, value, {
-		hooks: {
-			beforePatch: syncAriaLabelBeforePatch,
-		},
-	});
-};
