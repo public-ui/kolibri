@@ -223,6 +223,12 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _size?: number;
 
 	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
@@ -329,6 +335,11 @@ export class KolSelect implements ComponentApi {
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')

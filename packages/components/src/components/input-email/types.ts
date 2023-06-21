@@ -29,6 +29,7 @@ type OptionalProps = {
 	 */
 	size: number;
 	smartButton: ButtonProps;
+	syncValueBySelector: string;
 	touched: boolean;
 	tabIndex: number;
 	value: string;

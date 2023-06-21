@@ -45,9 +45,8 @@ export const propagateResetEventToForm = (
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as KoliBriFormProps;
-			const onReset: EventCallback<Event> | undefined = kolForm._on?.onReset;
-			if (typeof onReset === 'function') {
-				onReset(event);
+			if (typeof kolForm._on?.onReset === 'function') {
+				typeof kolForm._on?.onReset(event);
 			}
 		}
 	}
@@ -82,9 +81,8 @@ export const propagateSubmitEventToForm = (
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
 			const kolForm = form as KoliBriFormProps;
-			const onSubmit: EventCallback<SubmitEvent> | undefined = kolForm._on?.onSubmit;
-			if (typeof onSubmit === 'function') {
-				onSubmit(event);
+			if (typeof kolForm._on?.onSubmit === 'function') {
+				kolForm._on?.onSubmit(event);
 			}
 		}
 	}

@@ -19,6 +19,7 @@ export class KolInput implements Props {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		const hideLabel = this._hideLabel === true && this._required !== true;
+		const slotName = this._slotName ? this._slotName : 'input';
 
 		return (
 			<Host
@@ -52,7 +53,7 @@ export class KolInput implements Props {
 					}}
 				>
 					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}
-					<slot name="input"></slot>
+					<slot name={slotName}></slot>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
 							_ariaLabel={this._smartButton._label || this._smartButton._ariaLabel}
@@ -139,6 +140,12 @@ export class KolInput implements Props {
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean = false;
+
+	/**
+	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+	 * @internal
+	 */
+	@Prop() public _slotName?: string;
 
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
