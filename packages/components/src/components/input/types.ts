@@ -12,6 +12,7 @@ type OptionalProps = {
 	error: string;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
+	slotName: string;
 	smartButton: ButtonProps;
 	syncValueBySelector: string;
 } & PropAlert &

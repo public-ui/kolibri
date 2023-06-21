@@ -57,11 +57,10 @@ export class KolInputRadio implements ComponentApi {
 						 * mappen. Das tun wir mittels der Map.
 						 */
 						const customId = `${this.state._id}-${index}`;
+						const slotName = `radio-${index}`;
 						return (
 							<kol-input
-								class={{
-									radio: true,
-								}}
+								class="radio"
 								key={customId}
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
@@ -69,9 +68,10 @@ export class KolInputRadio implements ComponentApi {
 								_id={customId}
 								_renderNoLabel={true}
 								_required={this.state._required}
+								_slotName={slotName}
 								_touched={this.state._touched}
 							>
-								<div slot="input">
+								<div slot={slotName}>
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										accessKey={this.state._accessKey} // by radio?!

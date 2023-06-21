@@ -665,6 +665,10 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
+          * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+         */
+        "_slotName"?: string;
+        /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
@@ -3576,6 +3580,10 @@ declare namespace LocalJSX {
           * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+         * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+         */
+        "_slotName"?: string;
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
