@@ -31,30 +31,29 @@ const createProgressSVG = (state: States): JSX.Element => {
 		case 'cycle':
 			return (
 				<svg class="cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-					<circle fill="none" stroke="#000" cx="60px" cy="60px" r="50px" stroke-width="10"></circle>
-					<circle fill="none" stroke="#ddd" cx="60px" cy="60px" r="50px" stroke-width="8"></circle>
+					<circle class="background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
+					<circle class="whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
+					<circle class="border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+					<circle class="whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+					<circle class="border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+					<circle
+						class="progress"
+						fill="currentColor"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-dasharray={`${Math.round((state._value / state._max) * 320)}px 320px`}
+						stroke-width="6"
+						cx="60"
+						cy="60"
+						r="54.5"
+					></circle>
 					<text aria-hidden="true" x="50%" y="50%" text-anchor="middle" fill="currentColor">
-						{state._label && (
-							<tspan text-anchor="middle" x="50%" dy="-5em">
-								{state._label}
-							</tspan>
-						)}
-						<tspan text-anchor="middle" x="50%" dy={state._label ? '10em' : '0em'}>
+						{state._label && <tspan>{state._label}</tspan>}
+						<tspan>
 							{state._value}
 							{state._unit}
 						</tspan>
 					</text>
-					<circle
-						class="progress"
-						stroke-linecap="round"
-						stroke-dasharray={`${Math.round((state._value / state._max) * 320)}px 320px`}
-						stroke-width="8"
-						fill="none"
-						stroke="#0075ff"
-						cx="60px"
-						cy="60px"
-						r="50px"
-					></circle>
 				</svg>
 			);
 		default:
@@ -63,8 +62,19 @@ const createProgressSVG = (state: States): JSX.Element => {
 					{state._label && <div>{state._label}</div>}
 					<div style={{ display: 'flex', gap: '0.3em' }}>
 						<svg width="100" viewBox="0 0 102 8" xmlns="http://www.w3.org/2000/svg">
-							<rect x="1" y="1" height="8" rx="4" fill="#efefef" stroke="#000000" width="100"></rect>
-							<rect x="1" y="2" height="6" rx="4" fill="#0075ff" stroke="#0075ff" width={100 * (state._value / state._max)} class="progress"></rect>
+							<rect class="background" x="1" y="1" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100"></rect>
+							<rect
+								class="progress"
+								x="2.5"
+								y="2.5"
+								height="7"
+								rx="3.5"
+								fill="currentColor"
+								stroke="currentColor"
+								stroke-width="3"
+								width={95 * (state._value / state._max)}
+							></rect>
+							<rect class="border" x="1" y="1" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="1" width="100"></rect>
 						</svg>
 						<text aria-hidden="true" text-anchor="middle" dominant-baseline="central" fill="currentColor">
 							{state._value}
