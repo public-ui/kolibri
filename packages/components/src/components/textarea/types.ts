@@ -21,6 +21,7 @@ type OptionalProps = {
 	resize: CSSResize;
 	required: boolean;
 	rows: number;
+	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: string;

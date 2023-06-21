@@ -193,6 +193,12 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _smartButton?: ButtonProps;
 
 	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
 	 * Gibt die Schrittweite der Wertveränderung an.
 	 */
 	@Prop() public _step?: number;
@@ -323,6 +329,11 @@ export class KolInputDate implements ComponentApi {
 	@Watch('_step')
 	public validateStep(value?: number): void {
 		this.controller.validateStep(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')
