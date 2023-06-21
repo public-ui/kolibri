@@ -3,10 +3,10 @@ import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
 import { executeTests } from 'stencil-awesome-test';
-import { Props } from '../component';
 import { getSpanHtml, getSpanWcHtml } from './html.mock';
+import { KolibriSpanProps } from '../types';
 
-executeTests<Props>(
+executeTests<KolibriSpanProps>(
 	'SpanWc',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -26,7 +26,7 @@ executeTests<Props>(
 	}
 );
 
-executeTests<Props>(
+executeTests<KolibriSpanProps>(
 	'Span',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({

@@ -1,26 +1,10 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { PropHasFooter, validateHasFooter } from '../../types/props';
-
-type RequiredProps = {
-	heading: string;
-};
-type OptionalProps = {
-	/**
-	 * @deprecated Use _headline instead
-	 */
-	headline: string;
-	level: HeadingLevel;
-} & PropHasFooter;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { validateHasFooter } from '../../types/props';
+import { KoliBriCardAPI, KoliBriCardStates } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -35,7 +19,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolCard implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolCard implements KoliBriCardAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -80,7 +64,7 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
-	@State() public state: States = {
+	@State() public state: KoliBriCardStates = {
 		_heading: '…', // '⚠'
 	};
 

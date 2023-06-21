@@ -1,13 +1,13 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { Props, States } from '../component';
+import { KoliBriPopoverProps, KoliBriPopoverStates } from '../types';
 
 export const getPopoverHtml = (
-	props: Props,
+	props: KoliBriPopoverProps,
 	slots: {
 		default?: string;
 	} = {}
 ): string => {
-	const state: States = mixMembers<Props, States>(
+	const state: KoliBriPopoverStates = mixMembers<KoliBriPopoverProps, KoliBriPopoverStates>(
 		{
 			_align: 'top',
 			_show: false,

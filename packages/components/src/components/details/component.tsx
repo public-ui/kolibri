@@ -1,19 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
-
-type RequiredProps = {
-	summary: string;
-};
-type OptionalProps = {
-	open: boolean;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -25,7 +13,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolDetails implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolDetails implements KoliBriDetailsAPI {
 	private htmlDetailsElement?: HTMLDetailsElement;
 
 	public render(): JSX.Element {
@@ -67,7 +55,7 @@ export class KolDetails implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _summary!: string;
 
-	@State() public state: States = {
+	@State() public state: KoliBriDetailsStates = {
 		_summary: '…', // '⚠'
 	};
 

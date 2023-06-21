@@ -1,25 +1,14 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { watchString } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
-
-type RequiredProps = {
-	ariaLabel: string;
-	symbol: string;
-};
-type OptionalProps = unknown;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriSymbolAPI, KoliBriSymbolStates } from './types';
 
 @Component({
 	tag: 'kol-symbol',
 	shadow: false,
 })
-export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolSymbol implements KoliBriSymbolAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -40,7 +29,7 @@ export class KolSymbol implements Generic.Element.ComponentApi<RequiredProps, Op
 	 */
 	@Prop() public _symbol!: string;
 
-	@State() public state: States = {
+	@State() public state: KoliBriSymbolStates = {
 		_ariaLabel: translate('kol-warning'),
 		_symbol: '…', // ⚠ required
 	};

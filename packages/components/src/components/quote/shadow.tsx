@@ -1,6 +1,6 @@
 import { h, Component, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { watchString, watchValidator } from '../../utils/prop.validators';
-import { ComponentApi, KoliBriQuoteVariant, States } from './types';
+import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
 
 @Component({
 	tag: 'kol-quote',
@@ -9,7 +9,7 @@ import { ComponentApi, KoliBriQuoteVariant, States } from './types';
 	},
 	shadow: true,
 })
-export class KolQuote implements ComponentApi {
+export class KolQuote implements KoliBriQuoteApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
@@ -30,7 +30,7 @@ export class KolQuote implements ComponentApi {
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
-	@State() public state: States = {
+	@State() public state: KoliBriQuoteStates = {
 		_href: '…', // ⚠ required
 		_quote: '…', // ⚠ required
 		_variant: 'inline',

@@ -1,27 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from './validation';
-
-type RequiredProps = {
-	label: string;
-};
-type OptionalProps = {
-	secondaryHeadline: string;
-	level: HeadingLevel;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	label: string;
-	level: HeadingLevel;
-};
-type OptionalStates = {
-	secondaryHeadline: string;
-};
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriHeadingAPI, KoliBriHeadingStates } from './types';
 
 /**
  * @slot - Inhalt der Überschrift.
@@ -30,7 +12,7 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	tag: 'kol-heading-wc',
 	shadow: false,
 })
-export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolHeadingWc implements KoliBriHeadingAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
@@ -46,7 +28,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Prop() public _secondaryHeadline?: string;
 
-	@State() public state: States = {
+	@State() public state: KoliBriHeadingStates = {
 		_label: '…', // ⚠ required
 		_level: 1,
 	};

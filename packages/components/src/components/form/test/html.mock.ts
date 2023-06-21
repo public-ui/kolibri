@@ -1,8 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
-import { Props } from '../component';
+import { KoliBriFormProps } from '../types';
 
-export const getFormHtml = (props: Props): string => {
+export const getFormHtml = (props: KoliBriFormProps): string => {
 	props = mixMembers({ ...props }, props);
 	return `<kol-form>
 	<mock:shadow-root>

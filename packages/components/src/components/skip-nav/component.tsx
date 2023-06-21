@@ -1,25 +1,11 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
-import { watchString } from '../../utils/prop.validators';
 import { watchNavLinks } from '../nav/validation';
-
-type RequiredProps = {
-	ariaLabel: string;
-	links: Stringified<LinkProps[]>;
-};
-type OptionalProps = unknown;
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	ariaLabel: string;
-	links: LinkProps[];
-};
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
+import { watchString } from '../../utils/prop.validators';
+import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 
 @Component({
 	tag: 'kol-skip-nav',
@@ -28,7 +14,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolSkipNav implements KoliBriSkipNavAPI {
 	public render(): JSX.Element {
 		return (
 			<nav aria-label={this.state._ariaLabel}>
@@ -55,7 +41,7 @@ export class KolSkipNav implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
-	@State() public state: States = {
+	@State() public state: KoliBriSkipNavStates = {
 		_ariaLabel: '…', // '⚠'
 		_links: [],
 	};

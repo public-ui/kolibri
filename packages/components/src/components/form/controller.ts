@@ -1,6 +1,8 @@
+import { EventCallback } from '../../types/callbacks';
 import { devHint } from '../../utils/a11y.tipps';
 import { getExperimalMode } from '../../utils/dev.utils';
 import { KoliBriDevHelper, setEventTarget } from '../../utils/prop.validators';
+import { KoliBriFormProps } from './types';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimalMode()) {
@@ -42,9 +44,10 @@ export const propagateResetEventToForm = (
 			form.dispatchEvent(event);
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as HTMLKolFormElement;
-			if (typeof kolForm._on === 'object' && typeof kolForm._on !== null && typeof kolForm._on.onReset === 'function') {
-				kolForm._on.onReset(event);
+			const kolForm = form as KoliBriFormProps;
+			const onReset: EventCallback<Event> | undefined = kolForm._on?.onReset;
+			if (typeof onReset === 'function') {
+				onReset(event);
 			}
 		}
 	}
@@ -78,9 +81,10 @@ export const propagateSubmitEventToForm = (
 			form.dispatchEvent(event);
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as HTMLKolFormElement;
-			if (typeof kolForm._on === 'object' && typeof kolForm._on !== null && typeof kolForm._on.onSubmit === 'function') {
-				kolForm._on.onSubmit(event);
+			const kolForm = form as KoliBriFormProps;
+			const onSubmit: EventCallback<SubmitEvent> | undefined = kolForm._on?.onSubmit;
+			if (typeof onSubmit === 'function') {
+				onSubmit(event);
 			}
 		}
 	}
