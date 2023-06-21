@@ -30,7 +30,7 @@ export class KolInputRadio implements ComponentApi {
 	};
 
 	public render(): JSX.Element {
-		const { hasError } = getRenderStates(this.state);
+		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
 		const showExpertSlot = this.state._label === ''; // _label="" or _label
 		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
@@ -51,7 +51,11 @@ export class KolInputRadio implements ComponentApi {
 						</span>
 					</legend>
 					{this.state._list.map((option, index) => {
-						const { ariaDescribedBy } = getRenderStates(this.state);
+						/**
+						 * Damit der Value einer Option ein beliebigen Typ haben kann
+						 * muss man auf HTML-Ebene den Value auf einen String-Wert
+						 * mappen. Das tun wir mittels der Map.
+						 */
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
 						return (
