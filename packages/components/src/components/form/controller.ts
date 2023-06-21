@@ -1,4 +1,3 @@
-import { EventCallback } from '../../types/callbacks';
 import { devHint } from '../../utils/a11y.tipps';
 import { getExperimalMode } from '../../utils/dev.utils';
 import { KoliBriDevHelper, setEventTarget } from '../../utils/prop.validators';
