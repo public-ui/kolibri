@@ -15,6 +15,7 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
+	syncValueBySelector: string;
 	tabIndex: number;
 };
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

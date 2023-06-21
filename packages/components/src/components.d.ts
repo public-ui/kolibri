@@ -676,6 +676,10 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
+          * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+         */
+        "_slotName"?: string;
+        /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
@@ -746,6 +750,10 @@ export namespace Components {
           * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -825,6 +833,10 @@ export namespace Components {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -915,6 +927,10 @@ export namespace Components {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1018,6 +1034,10 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -1091,6 +1111,10 @@ export namespace Components {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1185,6 +1209,10 @@ export namespace Components {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1281,6 +1309,10 @@ export namespace Components {
          */
         "_smartButton"?: ButtonProps;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -1346,6 +1378,10 @@ export namespace Components {
           * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1494,6 +1530,10 @@ export namespace Components {
          */
         "_step"?: number;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -1587,6 +1627,10 @@ export namespace Components {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2176,6 +2220,10 @@ export namespace Components {
          */
         "_size"?: number;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -2476,6 +2524,10 @@ export namespace Components {
           * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
          */
         "_rows"?: number;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3591,6 +3643,10 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
+         * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+         */
+        "_slotName"?: string;
+        /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
@@ -3661,6 +3717,10 @@ declare namespace LocalJSX {
           * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3740,6 +3800,10 @@ declare namespace LocalJSX {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3830,6 +3894,10 @@ declare namespace LocalJSX {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3933,6 +4001,10 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -4006,6 +4078,10 @@ declare namespace LocalJSX {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4100,6 +4176,10 @@ declare namespace LocalJSX {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4196,6 +4276,10 @@ declare namespace LocalJSX {
          */
         "_smartButton"?: ButtonProps;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -4261,6 +4345,10 @@ declare namespace LocalJSX {
           * Macht das Eingabeelement zu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4409,6 +4497,10 @@ declare namespace LocalJSX {
          */
         "_step"?: number;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -4502,6 +4594,10 @@ declare namespace LocalJSX {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: ButtonProps;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5091,6 +5187,10 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
+        /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
@@ -5391,6 +5491,10 @@ declare namespace LocalJSX {
           * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
          */
         "_rows"?: number;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */

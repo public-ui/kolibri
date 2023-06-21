@@ -26,6 +26,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	required: boolean;
 	size: number;
+	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: Stringified<W3CInputValue[]>;
