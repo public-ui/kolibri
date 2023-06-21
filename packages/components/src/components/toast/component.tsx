@@ -1,29 +1,12 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { AlertType } from '../alert/types';
 import { HeadingLevel } from '../../types/heading-level';
 import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
-import { featureHint } from '../../utils/a11y.tipps';
-import { PropHasCloser, PropShow, validateHasCloser, validateShow } from '../../types/props';
-
-type RequiredProps = unknown;
-type OptionalProps = {
-	alert: boolean;
-	heading: string;
-	level: HeadingLevel;
-	on: KoliBriToastEventCallbacks;
-	showDuration: number;
-	type: AlertType;
-} & PropHasCloser &
-	PropShow;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { validateHasCloser, validateShow } from '../../types/props';
+import { KoliBriToastAPI, KoliBriToastStates } from './types';
 
 /**
  * @slot - Der Inhalt der Meldung.
@@ -35,7 +18,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolToast implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolToast implements KoliBriToastAPI {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
@@ -76,7 +59,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
-	@State() public state: States = {
+	@State() public state: KoliBriToastStates = {
 		_alert: true,
 		_level: 1,
 		_show: true,
@@ -104,13 +87,8 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriToastEventCallbacks): void {
-		if (typeof value === 'object' && value !== null) {
-			featureHint('[KolToast] Prüfen, wie man auch einen EventCallback einzeln ändern kann.');
-			const callbacks: KoliBriToastEventCallbacks = {};
-			if (typeof value.onClose === 'function' || value.onClose === true) {
-				callbacks.onClose = value.onClose;
-			}
-			setState<KoliBriToastEventCallbacks>(this, '_on', callbacks);
+		if (typeof value === 'object' && (typeof value?.onClose === 'function' || value.onClose === true)) {
+			setState<KoliBriToastEventCallbacks>(this, '_on', { onClose: value.onClose });
 		}
 	}
 

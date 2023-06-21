@@ -1,25 +1,11 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
-import { watchString } from '../../utils/prop.validators';
 import { watchNavLinks } from '../nav/validation';
-
-type RequiredProps = {
-	ariaLabel: string;
-	links: Stringified<LinkProps[]>;
-};
-type OptionalProps = unknown;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	ariaLabel: string;
-	links: LinkProps[];
-};
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
+import { watchString } from '../../utils/prop.validators';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -28,7 +14,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	private readonly renderLink = (link: LinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
 		const hideLabel = link._iconOnly || link._hideLabel;
@@ -79,7 +65,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
-	@State() public state: States = {
+	@State() public state: KoliBriBreadcrumbStates = {
 		_ariaLabel: '…', // '⚠'
 		_links: [],
 	};

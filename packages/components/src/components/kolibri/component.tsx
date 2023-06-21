@@ -8,26 +8,7 @@ import { PropColor, validateColor } from '../../types/props/color';
 import { watchBoolean } from '../../utils/prop.validators';
 import { devHint } from '../../utils/a11y.tipps';
 import { Stringified } from '../../components';
-
-type RequiredProps = unknown;
-type OptionalProps = {
-	animate: boolean;
-	color: Stringified<PropColor>;
-	labeled: boolean;
-};
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	animate: boolean;
-	color: {
-		red: number;
-		green: number;
-		blue: number;
-	};
-	labeled: boolean;
-};
-type OptionalStates = unknown;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriKolibriAPI, KoliBriKolibriStates } from './types';
 
 const max = 360;
 function degreeToRadians(degree: number): number {
@@ -44,7 +25,7 @@ function getColorNumber(degree: number): number {
 	},
 	shadow: true,
 })
-export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolKolibri implements KoliBriKolibriAPI {
 	public render(): JSX.Element {
 		const fillColor: string =
 			this.state._animate === true
@@ -86,7 +67,7 @@ export class KolKolibri implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop({ reflect: true }) public _labeled?: boolean;
 
-	@State() public state: States = {
+	@State() public state: KoliBriKolibriStates = {
 		_animate: false,
 		_color: {
 			red: 0,

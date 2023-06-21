@@ -3,9 +3,9 @@ import { LinkProps } from '../../../types/button-link';
 import { Icofont } from '../../../types/icofont';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { Props } from '../component';
+import { KoliBriBreadcrumbProps } from '../types';
 
-export const getBreadcrumbHtml = (props: Props): string => {
+export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	props = mixMembers(
 		{
 			_ariaLabel: '…', // '⚠'

@@ -1,70 +1,15 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { KoliBriButtonVariant, KoliBriButtonVariantPropState, KoliBriButtonCustomClassPropState, watchTooltipAlignment } from '../../types/button-link';
+import { KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchButtonVariant } from '../button/controller';
 import { Align } from '../../types/props';
-import { KoliBriPaginationButtonCallbacks } from './types';
+import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { translate } from '../../i18n';
-
-/**
- * Der HasButton-Typ definiert die Einstellungsmöglichkeiten der speziellen
- * Sprung-Schalter der Pagination.
- */
-export type PaginationHasButton = {
-	/**
-	 * Der First-Button ist der Schalter, um direkt auf die erste Seite zu gelangen.
-	 */
-	first: boolean;
-	/**
-	 * Der Last-Button ist der Schalter, um direkt auf die letzte Seite zu gelangen.
-	 */
-	last: boolean;
-	/**
-	 * Der Next-Button ist der Schalter, um direkt auf die nächste Seite zu gelangen.
-	 */
-	next: boolean;
-	/**
-	 * Der Previous-Button ist der Schalter, um direkt auf die vorherige Seite zu gelangen.
-	 */
-	previous: boolean;
-};
-
-export type RequiredProps = {
-	on: KoliBriPaginationButtonCallbacks;
-	page: number;
-	total: number;
-};
-export type OptionalProps = KoliBriButtonCustomClassPropState &
-	KoliBriButtonVariantPropState & {
-		boundaryCount: number;
-		hasButtons: boolean | Stringified<PaginationHasButton>;
-		pageSize: number;
-		pageSizeOptions: Stringified<number[]>;
-		siblingCount: number;
-		tooltipAlign: Align;
-	};
-// export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = KoliBriButtonVariantPropState & {
-	boundaryCount: number;
-	hasButtons: PaginationHasButton;
-	page: number;
-	pageSize: number;
-	pageSizeOptions: Option<number>[];
-	on: KoliBriPaginationButtonCallbacks;
-	siblingCount: number;
-	total: number;
-};
-type OptionalStates = KoliBriButtonCustomClassPropState & {
-	tooltipAlign: Align;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -86,7 +31,7 @@ const rightDoubleArrowIcon = {
 	},
 	shadow: true,
 })
-export class KolPagination implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolPagination implements KoliBriPaginationAPI {
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
@@ -250,7 +195,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 
-	@State() public state: States = {
+	@State() public state: KoliBriPaginationStates = {
 		_boundaryCount: 1,
 		_hasButtons: {
 			first: true,

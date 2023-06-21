@@ -9,5 +9,5 @@ type OptionalProps = { icon: string; on?: { onClick: KoliBriSplitButtonCallback 
 type RequiredStates = PropLabel & { showDropdown: boolean; on: { onClick?: KoliBriSplitButtonCallback } };
 type OptionalStates = { icon: string };
 
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type KoliBriSplitButtonAStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type KoliBriSplitButtonAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

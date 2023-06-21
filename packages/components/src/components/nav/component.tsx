@@ -1,21 +1,13 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import {
-	AriaCurrent,
-	PropCollapsible,
-	PropCompact,
-	PropHasCompactButton,
-	validateCollapsible,
-	validateCompact,
-	validateHasCompactButton,
-} from '../../types/props';
+import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
+import { KoliBriNavAPI, KoliBriNavStates } from './types';
 
 /**
  * @deprecated
@@ -47,41 +39,6 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	return true;
 };
 
-type RequiredProps = {
-	ariaLabel: string;
-	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
-};
-type OptionalProps = {
-	ariaCurrentValue: AriaCurrent;
-	orientation: Orientation;
-	/**
-	 * @deprecated
-	 */
-	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropCompact &
-	PropHasCompactButton;
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	ariaCurrentValue: AriaCurrent;
-	ariaLabel: string;
-	collapsible: boolean;
-	/**
-	 * @deprecated Version 2
-	 */
-	hasCompactButton: boolean;
-	links: ButtonOrLinkOrTextWithChildrenProps[];
-	orientation: Orientation;
-	/**
-	 * @deprecated
-	 */
-	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropHasCompactButton;
-type OptionalStates = PropCompact;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {
@@ -89,7 +46,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolNav implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolNav implements KoliBriNavAPI {
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
@@ -271,7 +228,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
-	@State() public state: States = {
+	@State() public state: KoliBriNavStates = {
 		_ariaCurrentValue: false,
 		_ariaLabel: '…', // '⚠'
 		_collapsible: true,

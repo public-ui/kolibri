@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
-import { Props } from './component';
+import { KoliBriHeadingProps } from './types';
 
 /**
  * @slot - Inhalt der Überschrift.
@@ -13,7 +13,7 @@ import { Props } from './component';
 	},
 	shadow: true,
 })
-export class KolHeading implements Props {
+export class KolHeading implements KoliBriHeadingProps {
 	public render(): JSX.Element {
 		return (
 			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline}>
