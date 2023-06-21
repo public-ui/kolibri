@@ -21,6 +21,7 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	step: number;
+	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: number;

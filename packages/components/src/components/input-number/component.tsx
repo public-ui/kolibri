@@ -204,6 +204,12 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _step?: number;
 
 	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
@@ -336,6 +342,11 @@ export class KolInputNumber implements ComponentApi {
 	@Watch('_step')
 	public validateStep(value?: number): void {
 		this.controller.validateStep(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')
