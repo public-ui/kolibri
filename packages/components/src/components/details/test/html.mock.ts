@@ -20,7 +20,7 @@ export const getDetailsHtml = (
 		<details${props._open ? ' open' : ''}>
 			<summary>
 				${getIconHtml({
-					_ariaLabel: '',
+					_label: '',
 					_icon: props._open ? 'codicon codicon-chevron-down' : 'codicon codicon-chevron-right',
 				})}
 				<span>

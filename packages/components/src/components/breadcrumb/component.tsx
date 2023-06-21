@@ -4,8 +4,8 @@ import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchNavLinks } from '../nav/validation';
+import { validateLabel } from '../../types/props';
 import { KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
-import { watchString } from '../../utils/prop.validators';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -41,7 +41,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<nav aria-label={this.state._ariaLabel}>
+				<nav aria-label={this.state._label}>
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
@@ -57,8 +57,14 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -66,15 +72,23 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	@State() public state: KoliBriBreadcrumbStates = {
-		_ariaLabel: '…', // '⚠'
+		_label: '…', // '⚠'
 		_links: [],
 	};
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
+		if (!this._label) {
+			this.validateLabel(value);
+		}
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
 	}
 
@@ -85,6 +99,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
+		this.validateLabel(this._label);
 		this.validateLinks(this._links);
 	}
 }

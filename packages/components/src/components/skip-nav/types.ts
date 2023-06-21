@@ -2,13 +2,18 @@ import { Generic } from '@a11y-ui/core';
 import { LinkProps, Stringified } from '../../components';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
 };
-type OptionalProps = unknown;
+type OptionalProps = {
+	/**
+	 * @deprecated
+	 */
+	ariaLabel: string;
+	label: string;
+};
 
 type RequiredStates = {
-	ariaLabel: string;
+	label: string;
 	links: LinkProps[];
 };
 type OptionalStates = OptionalProps;

@@ -3,9 +3,9 @@ import { Stringified } from '../../types/common';
 
 import { KoliBriIconProp } from '../../types/icon';
 import { validateIcon } from '../../types/props/icon';
+import { validateLabel } from '../../types/props/label';
 import { validateHideLabel } from '../../types/props';
 import { KolibriSpanAPI, KolibriSpanStates } from './types';
-import { validateLabelWithAriaLabel } from '../../types/props/label';
 
 /**
  * @internal
@@ -24,16 +24,16 @@ export class KolSpanWc implements KolibriSpanAPI {
 					'hide-label': !!this.state._hideLabel,
 				}}
 			>
-				{this.state._icon.top && <kol-icon class="icon top" style={this.state._icon.top.style} _ariaLabel="" _icon={this.state._icon.top.icon} />}
+				{this.state._icon.top && <kol-icon class="icon top" style={this.state._icon.top.style} _label="" _icon={this.state._icon.top.icon} />}
 				<span>
-					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _ariaLabel="" _icon={this.state._icon.left.icon} />}
+					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _label="" _icon={this.state._icon.left.icon} />}
 					{this.state._hideLabel !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
-					{this.state._icon.right && <kol-icon class="icon right" style={this.state._icon.right.style} _ariaLabel="" _icon={this.state._icon.right.icon} />}
+					{this.state._icon.right && <kol-icon class="icon right" style={this.state._icon.right.style} _label="" _icon={this.state._icon.right.icon} />}
 				</span>
-				{this.state._icon.bottom && <kol-icon class="icon bottom" style={this.state._icon.bottom.style} _ariaLabel="" _icon={this.state._icon.bottom.icon} />}
+				{this.state._icon.bottom && <kol-icon class="icon bottom" style={this.state._icon.bottom.style} _label="" _icon={this.state._icon.bottom.icon} />}
 			</Host>
 		);
 	}
@@ -86,7 +86,7 @@ export class KolSpanWc implements KolibriSpanAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	public componentWillLoad(): void {

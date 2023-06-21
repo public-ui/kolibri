@@ -1,9 +1,13 @@
 import { Generic } from '@a11y-ui/core';
 
-type RequiredProps = {
+type RequiredProps = unknown;
+type OptionalProps = {
+	label: string;
+	/**
+	 * @deprecated
+	 */
 	version: string;
 };
-type OptionalProps = unknown;
 export type KoliBriVersionProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;

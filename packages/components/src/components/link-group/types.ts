@@ -17,11 +17,15 @@ export type ListStyleType =
 	| 'upper-roman';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
+	/**
+	 * @deprecated use _label instead
+	 */
+	ariaLabel: string;
 	heading: string;
+	label: string;
 	level: HeadingLevel;
 	listStyleType: ListStyleType;
 	ordered: boolean;
@@ -29,12 +33,13 @@ type OptionalProps = {
 };
 
 type RequiredStates = {
-	ariaLabel: string;
+	label: string;
 	links: LinkProps[];
 	listStyleType: ListStyleType;
 	orientation: Orientation;
 };
 type OptionalStates = {
+	ariaLabel: string;
 	heading: string;
 	level: HeadingLevel;
 	ordered: boolean;

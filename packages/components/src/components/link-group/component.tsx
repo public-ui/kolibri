@@ -7,8 +7,8 @@ import { Orientation } from '../../types/orientation';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
+import { validateLabel } from '../../types/props';
 import { KoliBriLinkGroupAPI, KoliBriLinkGroupStates, ListStyleType } from './types';
-import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -44,7 +44,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	public render(): JSX.Element {
 		return (
 			<nav
-				aria-label={this.state._ariaLabel}
+				aria-label={this.state._label}
 				class={{
 					vertical: this.state._orientation === 'vertical',
 					horizontal: this.state._orientation === 'horizontal',
@@ -71,8 +71,9 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet
@@ -83,6 +84,11 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	 * Gibt die optionale Überschrift zur Link-Gruppe an.
 	 */
 	@Prop() public _heading?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -106,18 +112,35 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: KoliBriLinkGroupStates = {
-		_ariaLabel: '…', // '⚠'
+		_label: '…', // '⚠'
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
 	};
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
-		a11yHintLabelingLandmarks(value);
+		if (!this._label) {
+			this.validateLabel(value);
+		}
+	}
+
+	@Watch('_heading')
+	public validateHeading(value?: string): void {
+		watchString(this, '_heading', value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
+	}
+
+	@Watch('_level')
+	public validateLevel(value?: HeadingLevel): void {
+		watchHeadingLevel(this, value);
 	}
 
 	@Watch('_listStyleType')
@@ -153,16 +176,6 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 		);
 	}
 
-	@Watch('_heading')
-	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value);
-	}
-
-	@Watch('_level')
-	public validateLevel(value?: HeadingLevel): void {
-		watchHeadingLevel(this, value);
-	}
-
 	@Watch('_links')
 	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolLinkGroup', this, value);
@@ -189,11 +202,11 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 
 	public componentWillLoad(): void {
 		this.validateAriaLabel(this._ariaLabel);
-		this.validateListStyleType(this._listStyleType);
 		this.validateHeading(this._heading);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
+		this.validateListStyleType(this._listStyleType);
 		this.validateLinks(this._links);
-		//this.validateOrdered(this._ordered);
 		this.validateOrientation(this._orientation);
 	}
 }

@@ -2,13 +2,21 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { KoliBriSplitButtonAPI, KoliBriSplitButtonCallback, KoliBriSplitButtonAStates } from './types';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
-import { Align, AriaCurrent, validateAriaCurrent, validateAriaExpanded, validateAriaSelected, validateDisabled, validateHideLabel } from '../../types/props';
+import {
+	Align,
+	AriaCurrent,
+	validateAriaCurrent,
+	validateAriaExpanded,
+	validateAriaSelected,
+	validateDisabled,
+	validateHideLabel,
+	validateLabel,
+} from '../../types/props';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
 import { Stringified } from '../../types/common';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -79,7 +87,6 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 					_ariaControls={this._ariaControls}
 					_ariaCurrent={this._ariaCurrent}
 					_ariaExpanded={this._ariaExpanded}
-					_ariaLabel={this._ariaLabel}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
 					_disabled={this._disabled}
@@ -134,6 +141,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
@@ -240,9 +248,14 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 		validateAriaExpanded(this, value);
 	}
 
+	/**
+	 * @deprecated use _label
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		if (!this._label) {
+			this.validateLabel(value);
+		}
 	}
 
 	@Watch('_ariaSelected')
@@ -278,7 +291,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	@Watch('_on')

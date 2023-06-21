@@ -16,6 +16,9 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 type RequiredButtonAndLinkProps = PropLabel;
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
+	/**
+	 * @deprecated
+	 */
 	ariaLabel: string;
 	icon: Stringified<KoliBriIconProp>;
 	/**
@@ -33,13 +36,17 @@ type OptionalButtonAndLinkProps = {
 	PropAriaExpanded &
 	PropAriaSelected &
 	PropDisabled &
-	PropHideLabel;
+	PropHideLabel &
+	PropLabel;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
 	label: string;
 };
 type OptionalButtonAndLinkStates = {
+	/**
+	 * @deprecated
+	 */
 	ariaLabel: string;
 	ariaControls: string;
 	/**
@@ -57,7 +64,8 @@ type OptionalButtonAndLinkStates = {
 	PropAriaExpanded &
 	PropAriaSelected &
 	PropDisabled &
-	PropHideLabel;
+	PropHideLabel &
+	PropLabel;
 
 /**
  * Button

@@ -2,6 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchNumber, watchString } from '../../utils/prop.validators';
 import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
+import { validateLabel } from '../../types/props';
 import { KoliBriProgressType } from '../../types/progress';
 
 // https://css-tricks.com/html5-progress-element/
@@ -129,7 +130,7 @@ export class KolProcess implements KoliBriProgressAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value);
+		validateLabel(this, value);
 	}
 
 	@Watch('_max')

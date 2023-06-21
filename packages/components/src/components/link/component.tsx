@@ -10,8 +10,8 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { validateLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 
 /**
  * @internal
@@ -80,10 +80,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 			rel: isExternal ? 'noopener' : undefined,
 		};
 
-		if (
-			(this.state._useCase === 'image' || this.state._hideLabel === true) &&
-			(typeof this.state._ariaLabel !== 'string' || this.state._ariaLabel.length === 0)
-		) {
+		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !(this.state._label || this.state._ariaLabel)) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
 		}
 		return { isExternal, tagAttrs, goToProps };
@@ -119,7 +116,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
+					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
 				{(this.state._hideLabel === true || this.state._useCase === 'image') && (
 					<kol-tooltip
@@ -130,7 +127,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 						aria-hidden="true"
 						_align={this.state._tooltipAlign}
 						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
+						_label={this.state._label}
 					></kol-tooltip>
 				)}
 			</Host>
@@ -154,6 +151,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -263,8 +261,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@State() public state: LinkStates = {
 		_href: 'javascript:void(0)',
 		_icon: {},
-		_label: '', // TODO: must removed to v2
-		// _label: '…', // ⚠ required
+		_label: '…', // ⚠ required
 	};
 
 	@Watch('_ariaControls')
@@ -282,9 +279,14 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		watchBoolean(this, '_ariaExpanded', value);
 	}
 
+	/**
+	 * @deprecated use _label instead
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		if (!this._label) {
+			this.validateLabel(value);
+		}
 	}
 
 	@Watch('_ariaSelected')
@@ -344,7 +346,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	/**

@@ -68,7 +68,7 @@ Eine Breadcrumb-Navigation ist auf einer großen Mehrzahl der aktuellen Webseite
 
 ## Barrierefreiheit
 
-Achten Sie im Sinne der optimalen Barrierefreiheit darauf, das Attribut `_aria-label` korrekt auszuzeichnen. Beachten Sie diesen Hinweis insbesondere dann, wenn Sie die Option `_icon-only` verwenden und so auf einen beschreibenden Text im Link verzichten würden.
+Achten Sie im Sinne der optimalen Barrierefreiheit darauf, das Attribut `_label` korrekt auszuzeichnen. Beachten Sie diesen Hinweis insbesondere dann, wenn Sie die Option `_icon-only` verwenden und so auf einen beschreibenden Text im Link verzichten würden.
 
 Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-Taste angesprungen werden kann, obwohl dort kein Link hinterlegt ist. Hierdurch kann auch dieses Element von Screenreader erreicht und vorgelesen werden.
 

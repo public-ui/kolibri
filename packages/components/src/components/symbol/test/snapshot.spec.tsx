@@ -16,7 +16,7 @@ executeTests<KoliBriSymbolProps>(
 		return page;
 	},
 	{
-		_ariaLabel: ['Slash', 'Backslash'],
+		_label: ['Slash', 'Backslash'],
 		_symbol: ['/', '\\'],
 	},
 	getSymbolHtml,

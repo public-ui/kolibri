@@ -16,16 +16,6 @@ export const isStyle = (style?: Record<string, string>): boolean => {
 };
 
 /**
- * Validate, if a text contains a prefix.
- */
-const isPrefixOf = (prefix: string, text: string) => text.startsWith(prefix);
-
-/**
- * Validate, if a text is empty or contains a prefix.
- */
-export const isEmptyOrPrefixOf = (prefix: string, text: string) => text.length === 0 || isPrefixOf(prefix, text);
-
-/**
  * Fix event instance for state changes.
  */
 export const STATE_CHANGE_EVENT = new Event('StateChange');

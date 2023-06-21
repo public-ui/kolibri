@@ -19,7 +19,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 			<div class="heading">
 				${getIconHtml(
 					{
-						_ariaLabel:
+						_label:
 							props._heading !== undefined
 								? ''
 								: props._type === 'success'

@@ -3,11 +3,15 @@ import { AriaCurrent, ButtonOrLinkOrTextWithChildrenProps, KoliBriNavVariant, Or
 import { PropCollapsible, PropCompact, PropHasCompactButton } from '../../types/props';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 };
 type OptionalProps = {
+	/**
+	 * @deprecated
+	 */
+	ariaLabel: string;
 	ariaCurrentValue: AriaCurrent;
+	label: string;
 	orientation: Orientation;
 	/**
 	 * @deprecated
@@ -20,12 +24,12 @@ type OptionalProps = {
 
 type RequiredStates = {
 	ariaCurrentValue: AriaCurrent;
-	ariaLabel: string;
 	collapsible: boolean;
 	/**
 	 * @deprecated Version 2
 	 */
 	hasCompactButton: boolean;
+	label: string;
 	links: ButtonOrLinkOrTextWithChildrenProps[];
 	orientation: Orientation;
 	/**
@@ -34,7 +38,12 @@ type RequiredStates = {
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
 	PropHasCompactButton;
-type OptionalStates = PropCompact;
+type OptionalStates = {
+	/**
+	 * @deprecated
+	 */
+	ariaLabel: string;
+} & PropCompact;
 export type KoliBriNavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 export type KoliBriNavAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

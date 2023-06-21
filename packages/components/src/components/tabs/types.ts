@@ -30,17 +30,21 @@ type OptionalTabButtonProps = {
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
 type RequiredProps = {
-	ariaLabel: string;
 	tabs: Stringified<TabButtonProps[]>;
 };
 type OptionalProps = {
+	/**
+	 * @deprecated use _label instead
+	 */
+	ariaLabel: string;
+	label: string;
 	on: KoliBriTabsCallbacks;
 	tabsAlign: Align;
 	selected: number;
 };
 
 type RequiredStates = {
-	ariaLabel: string;
+	label: string;
 	tabsAlign: Align;
 	selected: number;
 	tabs: TabButtonProps[];

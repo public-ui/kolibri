@@ -16,7 +16,7 @@ executeTests<KoliBriBreadcrumbProps>(
 		return page;
 	},
 	{
-		_ariaLabel: ['Aria-Label'],
+		_label: ['Aria-Label'],
 		_links: [[], [{ _label: 'Label' }]],
 	},
 	getBreadcrumbHtml,
