@@ -20,6 +20,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	orientation: Orientation;
 	required: boolean;
+	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: W3CInputValue;

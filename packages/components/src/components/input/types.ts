@@ -13,6 +13,7 @@ type OptionalProps = {
 	hint: string;
 	icon: KoliBriHorizontalIcon;
 	smartButton: ButtonProps;
+	syncValueBySelector: string;
 } & PropAlert &
 	PropDisabled &
 	PropHideLabel &
