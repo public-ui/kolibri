@@ -50,7 +50,7 @@ export class KolInputRadio implements ComponentApi {
 							{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
 						</span>
 					</legend>
-					{this.state._list.map((option: Option<W3CInputValue>, index: number) => {
+					{this.state._list.map((option, index) => {
 						const { ariaDescribedBy } = getRenderStates(this.state);
 						const customId = `${this.state._id}-${index}`;
 						const slotName = `radio-${index}`;
@@ -70,7 +70,7 @@ export class KolInputRadio implements ComponentApi {
 								<div slot={slotName}>
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
-										accessKey={this.state._accessKey}
+										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
 										title=""

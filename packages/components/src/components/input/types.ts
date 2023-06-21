@@ -12,9 +12,6 @@ type OptionalProps = {
 	error: string;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
-	/**
-	 * @internal
-	 */
 	slotName: string;
 	smartButton: ButtonProps;
 } & PropAlert &
