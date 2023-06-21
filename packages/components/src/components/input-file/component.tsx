@@ -155,6 +155,12 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _smartButton?: ButtonProps;
 
 	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
@@ -251,6 +257,11 @@ export class KolInputFile implements ComponentApi {
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		this.controller.validateSmartButton(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')

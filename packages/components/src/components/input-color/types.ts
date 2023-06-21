@@ -20,6 +20,7 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
+	syncValueBySelector: string;
 	touched: boolean;
 	tabIndex: number;
 	value: string;

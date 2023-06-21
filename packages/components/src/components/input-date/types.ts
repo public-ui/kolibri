@@ -34,6 +34,7 @@ type OptionalStates = {
 	readOnly: boolean;
 	required: boolean;
 	smartButton: ButtonProps;
+	syncValueBySelector: string;
 	step: number;
 	tabIndex: number;
 	touched: boolean;
