@@ -29,59 +29,6 @@ export class KolInputRadio implements ComponentApi {
 		propagateFocus(this.host, this.ref);
 	};
 
-	private readonly renderInput = (option: Option<W3CInputValue>, index: number) => {
-		const { ariaDescribedBy } = getRenderStates(this.state);
-		const customId = `${this.state._id}-${index}`;
-		return (
-			<kol-input
-				class="radio"
-				key={customId}
-				_disabled={this.state._disabled || option.disabled}
-				_hideLabel={this.state._hideLabel}
-				_hint={this.state._hint}
-				_id={customId}
-				_renderNoLabel={true}
-				_required={this.state._required}
-				_slotName={index.toString()}
-				_touched={this.state._touched}
-			>
-				<div slot={index.toString()}>
-					<input
-						ref={this.state._value === option.value ? this.catchRef : undefined}
-						accessKey={this.state._accessKey}
-						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-						aria-labelledby={`${customId}-label`}
-						title=""
-						type="radio"
-						id={customId}
-						checked={this.state._value === option.value}
-						name={this.state._name || this.state._id}
-						disabled={this.state._disabled || option.disabled}
-						required={this.state._required}
-						tabIndex={this.state._tabIndex}
-						value={`-${index}`}
-						{...this.controller.onFacade}
-						onChange={this.onChange}
-					/>
-					<label
-						htmlFor={`${customId}`}
-						id={`${customId}-label`}
-						style={{
-							height: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-							margin: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-							padding: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
-							visibility: this.state._hideLabel && this.state._required !== true ? 'hidden' : undefined,
-						}}
-					>
-						<span>
-							<span>{option.label}</span>
-						</span>
-					</label>
-				</div>
-			</kol-input>
-		);
-	};
-
 	public render(): JSX.Element {
 		const { hasError } = getRenderStates(this.state);
 		const showExpertSlot = this.state._label === ''; // _label="" or _label
@@ -103,7 +50,59 @@ export class KolInputRadio implements ComponentApi {
 							{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
 						</span>
 					</legend>
-					{this.state._list.map(this.renderInput)}
+					{this.state._list.map((option: Option<W3CInputValue>, index: number) => {
+						const { ariaDescribedBy } = getRenderStates(this.state);
+						const customId = `${this.state._id}-${index}`;
+						const slotName = `radio-${index}`;
+						return (
+							<kol-input
+								class="radio"
+								key={customId}
+								_disabled={this.state._disabled || option.disabled}
+								_hideLabel={this.state._hideLabel}
+								_hint={this.state._hint}
+								_id={customId}
+								_renderNoLabel={true}
+								_required={this.state._required}
+								_slotName={slotName}
+								_touched={this.state._touched}
+							>
+								<div slot={slotName}>
+									<input
+										ref={this.state._value === option.value ? this.catchRef : undefined}
+										accessKey={this.state._accessKey}
+										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+										aria-labelledby={`${customId}-label`}
+										title=""
+										type="radio"
+										id={customId}
+										checked={this.state._value === option.value}
+										name={this.state._name || this.state._id}
+										disabled={this.state._disabled || option.disabled}
+										required={this.state._required}
+										tabIndex={this.state._tabIndex}
+										value={`-${index}`}
+										{...this.controller.onFacade}
+										onChange={this.onChange}
+									/>
+									<label
+										htmlFor={`${customId}`}
+										id={`${customId}-label`}
+										style={{
+											height: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
+											margin: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
+											padding: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
+											visibility: this.state._hideLabel && this.state._required !== true ? 'hidden' : undefined,
+										}}
+									>
+										<span>
+											<span>{option.label}</span>
+										</span>
+									</label>
+								</div>
+							</kol-input>
+						);
+					})}
 					{hasError && (
 						<kol-alert id="error" _alert={true} _type="error" _variant="msg">
 							{this.state._error}
