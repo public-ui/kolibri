@@ -3533,7 +3533,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+         * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
          */
         "_slotName"?: string;
         /**
