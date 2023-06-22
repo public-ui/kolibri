@@ -59,10 +59,6 @@ import Default from '../theme/layouts/default.vue';
 
 const options = [
 	{
-		label: 'Bundes-Styleguide',
-		value: 'bpa',
-	},
-	{
 		label: 'BMF-Styleguide',
 		value: 'bmf',
 	},

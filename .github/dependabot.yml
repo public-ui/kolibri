@@ -144,12 +144,6 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: npm
-    directory: /packages/themes/bpa/
-    labels:
-      - dependabot
-    schedule:
-      interval: daily
-  - package-ecosystem: npm
     directory: /packages/themes/ecl/ec/
     labels:
       - dependabot

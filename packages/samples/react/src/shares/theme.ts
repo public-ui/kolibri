@@ -1,6 +1,6 @@
 import { SelectOption } from '@public-ui/components';
 
-export type Theme = 'unstyled' | 'bamf' | 'bmf' | 'bpa' | 'by' | 'bzst' | 'desy-v1' | 'desy-v2' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'zoll-v2';
+export type Theme = 'unstyled' | 'bamf' | 'bmf' | 'by' | 'bzst' | 'desy-v1' | 'desy-v2' | 'ecl-ec' | 'ecl-eu' | 'itzbund' | 'mapz' | 'th' | 'zoll-v2';
 
 export const isTheme = (value: unknown) => {
 	console.log('typeof value', typeof value);
@@ -9,7 +9,6 @@ export const isTheme = (value: unknown) => {
 		(value === 'unstyled' ||
 			value === 'bamf' ||
 			value === 'bmf' ||
-			value === 'bpa' ||
 			value === 'by' ||
 			value === 'bzst' ||
 			value === 'desy-v1' ||
@@ -41,10 +40,6 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 	{
 		label: 'Bundesministerium der Finanzen',
 		value: 'bmf',
-	},
-	{
-		label: 'Bundesregierung',
-		value: 'bpa',
 	},
 	{
 		label: 'Freistaat Bayern (StMWi)',

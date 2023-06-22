@@ -159,7 +159,6 @@ export const parameters = {
 			document.body.dataset.theme = theme.class;
 		},
 		list: [
-			// { name: 'BPA-Styleguide', class: 'bpa', color: '', disabled: true },
 			{ name: 'ITZBund-Styleguide', class: 'default', color: '#004b76' },
 			{ name: 'ITZBund-Styleguide (Demo)', class: 'itzbund', color: '#007a89' },
 		],
