@@ -118,6 +118,11 @@ export class KolTooltip implements KoliBriTooltipAPI {
 
 	private catchHostElement = (el: HTMLElement | null): void => {
 		if (el /* SSR instanceof HTMLElement */) {
+			setTimeout(() => {
+				if (el.hidden) {
+					el.hidden = false;
+				}
+			}, 10);
 			this.previousSibling = el.previousElementSibling as HTMLElement | null;
 			if (this.previousSibling /* SSR instanceof HTMLElement */) {
 				this.resyncListeners(this.previousSibling);
