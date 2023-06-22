@@ -56,7 +56,6 @@ export class KolInput implements Props {
 					<slot name={slotName}></slot>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
-							_ariaLabel={this._smartButton._label || this._smartButton._ariaLabel}
 							_customClass={this._smartButton._customClass}
 							_disabled={this._smartButton._disabled}
 							_icon={this._smartButton._icon}
