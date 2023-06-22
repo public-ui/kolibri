@@ -185,7 +185,7 @@ export namespace Components {
          */
         "_label": string;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
@@ -3101,7 +3101,7 @@ declare namespace LocalJSX {
          */
         "_label": string;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }

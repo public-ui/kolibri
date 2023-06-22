@@ -84,7 +84,7 @@ export class KolBadge implements KoliBriBadgeProps {
 	@Prop() public _label!: string;
 
 	/**
-	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
