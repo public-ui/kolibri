@@ -1,11 +1,11 @@
 import React from 'react';
-import { KoliBriTableHeaders } from '@public-ui/components/dist/types/types/table';
 
 import { KolButton, KolInputText, KolTable } from '@public-ui/react';
 
 import React, { FC } from 'react';
 
 import { getRoot } from '../../shares/react-roots';
+import { KoliBriTableHeaders } from '@public-ui/components';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
 	day: '2-digit',
