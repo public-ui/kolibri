@@ -2,6 +2,10 @@ name: CI-Pipeline
 
 on:
   pull_request:
+  push:
+    branches:
+      - 'develop'
+      - 'main'
   workflow_dispatch:
 
 jobs:
