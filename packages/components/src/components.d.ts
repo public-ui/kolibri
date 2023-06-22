@@ -192,13 +192,8 @@ export namespace Components {
     interface KolBreadcrumb {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -223,7 +218,6 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -316,7 +310,6 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -409,7 +402,6 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -549,17 +541,12 @@ export namespace Components {
     interface KolIcon {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
+        "_ariaLabel": string;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -1677,7 +1664,6 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -1774,7 +1760,6 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -1847,17 +1832,12 @@ export namespace Components {
     interface KolLinkGroup {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die optionale Überschrift zur Link-Gruppe an.
          */
         "_heading"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -1895,7 +1875,6 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -1996,13 +1975,8 @@ export namespace Components {
         "_activeElement"?: HTMLElement | null;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -2020,7 +1994,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_ariaLabel"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
          */
@@ -2034,10 +2008,6 @@ export namespace Components {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -2239,13 +2209,8 @@ export namespace Components {
     interface KolSkipNav {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -2318,7 +2283,6 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
          */
         "_ariaLabel"?: string;
         /**
@@ -2386,13 +2350,8 @@ export namespace Components {
     interface KolSymbol {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
@@ -2427,13 +2386,8 @@ export namespace Components {
     interface KolTabs {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -2593,12 +2547,7 @@ export namespace Components {
         /**
           * Gibt die Versionsnummer als Text an.
          */
-        "_label"?: string;
-        /**
-          * Gibt die Versionsnummer als Text an.
-          * @deprecated
-         */
-        "_version"?: string;
+        "_version": string;
     }
 }
 declare global {
@@ -3159,13 +3108,8 @@ declare namespace LocalJSX {
     interface KolBreadcrumb {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -3190,7 +3134,6 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3283,7 +3226,6 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3376,7 +3318,6 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3516,17 +3457,12 @@ declare namespace LocalJSX {
     interface KolIcon {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
+        "_ariaLabel": string;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -3643,7 +3579,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-         * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+          * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
          */
         "_slotName"?: string;
         /**
@@ -4644,7 +4580,6 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -4741,7 +4676,6 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -4814,17 +4748,12 @@ declare namespace LocalJSX {
     interface KolLinkGroup {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die optionale Überschrift zur Link-Gruppe an.
          */
         "_heading"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -4862,7 +4791,6 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -4963,13 +4891,8 @@ declare namespace LocalJSX {
         "_activeElement"?: HTMLElement | null;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -4987,7 +4910,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_ariaLabel"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
          */
@@ -5001,10 +4924,6 @@ declare namespace LocalJSX {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -5206,13 +5125,8 @@ declare namespace LocalJSX {
     interface KolSkipNav {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -5285,7 +5199,6 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
          */
         "_ariaLabel"?: string;
         /**
@@ -5353,13 +5266,8 @@ declare namespace LocalJSX {
     interface KolSymbol {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
@@ -5394,13 +5302,8 @@ declare namespace LocalJSX {
     interface KolTabs {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label instead
          */
-        "_ariaLabel"?: string;
-        /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-         */
-        "_label"?: string;
+        "_ariaLabel": string;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -5560,12 +5463,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die Versionsnummer als Text an.
          */
-        "_label"?: string;
-        /**
-          * Gibt die Versionsnummer als Text an.
-          * @deprecated
-         */
-        "_version"?: string;
+        "_version": string;
     }
     interface IntrinsicElements {
         "kol-abbr": KolAbbr;
