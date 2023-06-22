@@ -161,6 +161,12 @@ updates:
       - dependabot
     schedule:
       interval: daily
+  - package-ecosystem: npm
+    directory: /packages/themes/unnamed/
+    labels:
+      - dependabot
+    schedule:
+      interval: daily
 
   # deprecated
   - package-ecosystem: npm

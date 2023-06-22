@@ -23,7 +23,8 @@
 		"packages/themes/bmf",
 		"packages/themes/ecl/ec",
 		"packages/themes/ecl/eu",
-		"packages/themes/itzbund"
+		"packages/themes/itzbund",
+		"packages/themes/unnamed"
 	],
 	"useNx": false,
 	"version": "1.6.0-rc.5"
