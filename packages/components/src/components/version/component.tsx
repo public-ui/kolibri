@@ -13,7 +13,7 @@ import { KoliBriVersionAPI, KoliBriVersionStates } from './types';
 })
 export class KolVersion implements KoliBriVersionAPI {
 	public render(): JSX.Element {
-		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="codicon codicon-versions" _label={`v${this.state._label || ''}`} />;
+		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="codicon codicon-versions" _label={`v${this.state._label}`} />;
 	}
 
 	/**
@@ -38,13 +38,10 @@ export class KolVersion implements KoliBriVersionAPI {
 
 	@Watch('_version')
 	public validateVersion(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label);
-		this.validateVersion(this._version);
+		this.validateLabel(this._label || this._version);
 	}
 }

@@ -16,18 +16,18 @@ import { KoliBriIconAPI, KoliBriIconStates } from './types';
 })
 export class KolIcon implements KoliBriIconAPI {
 	public render(): JSX.Element {
-		const hasLabel = this.state._label.length > 0;
+		const ariaShow = typeof this.state._label === 'string' && this.state._label.length > 0;
 		return (
 			<Host exportparts="icon">
 				<i
-					aria-hidden={hasLabel ? undefined : 'true'}
+					aria-hidden={ariaShow ? undefined : 'true'}
 					/**
 					 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
 					 * Screenreader, wie NVDA und JAWS, es auch ohne `aria-hidden` nicht vorlesen.
 					 *
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
-					aria-label={hasLabel ? this.state._label : undefined}
+					aria-label={ariaShow ? this.state._label : undefined}
 					class={this.state._icon}
 					part="icon"
 					role="img"
@@ -50,7 +50,7 @@ export class KolIcon implements KoliBriIconAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
@@ -61,7 +61,6 @@ export class KolIcon implements KoliBriIconAPI {
 
 	@State() public state: KoliBriIconStates = {
 		_icon: 'codicon codicon-home',
-		_label: '…', // ⚠ required
 	};
 
 	/**
@@ -69,9 +68,7 @@ export class KolIcon implements KoliBriIconAPI {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_icon')
@@ -93,9 +90,8 @@ export class KolIcon implements KoliBriIconAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateIcon(this._icon);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validatePart();
 	}
 }

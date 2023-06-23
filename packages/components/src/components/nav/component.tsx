@@ -244,9 +244,7 @@ export class KolNav implements KoliBriNavAPI {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_collapsible')
@@ -302,11 +300,10 @@ export class KolNav implements KoliBriNavAPI {
 
 	public componentWillLoad(): void {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateCollapsible(this._collapsible);
 		this.validateCompact(this._compact);
 		this.validateHasCompactButton(this._hasCompactButton);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
 		this.validateVariant(this._variant);

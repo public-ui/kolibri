@@ -46,9 +46,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_label')
@@ -64,8 +62,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAriaLabel(this._ariaLabel);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateSymbol(this._symbol);
 	}
 }

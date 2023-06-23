@@ -253,9 +253,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_ariaSelected')
@@ -345,13 +343,12 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateIcon(this._icon);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateShowDropdown(this._showDropdown);

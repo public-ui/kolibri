@@ -283,9 +283,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_ariaSelected')
@@ -411,7 +409,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
@@ -419,7 +416,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateSelector(this._selector);

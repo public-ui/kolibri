@@ -123,9 +123,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_heading')
@@ -201,9 +199,8 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateHeading(this._heading);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateLevel(this._level);
 		this.validateListStyleType(this._listStyleType);
 		this.validateLinks(this._links);

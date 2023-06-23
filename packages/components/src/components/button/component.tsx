@@ -258,9 +258,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_ariaSelected')
@@ -364,7 +362,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
@@ -372,7 +369,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateId(this._id);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateTabIndex(this._tabIndex);

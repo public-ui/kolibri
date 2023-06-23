@@ -126,9 +126,7 @@ export class KolModal implements KoliBriModalAPI {
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
+		this.validateLabel(value);
 	}
 
 	@Watch('_label')
@@ -157,8 +155,7 @@ export class KolModal implements KoliBriModalAPI {
 
 	public componentWillLoad(): void {
 		this.validateActiveElement(this._activeElement);
-		this.validateAriaLabel(this._ariaLabel);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
 	}
