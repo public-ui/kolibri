@@ -121,7 +121,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
 	 */
-	@Prop({ reflect: true }) public _adjustHeight?: boolean = false;
+	@Prop() public _adjustHeight?: boolean = false;
 
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
@@ -131,7 +131,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -141,12 +141,12 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
 	 */
-	@Prop({ reflect: true }) public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -186,7 +186,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 */
-	@Prop({ reflect: true }) public _readOnly?: boolean;
+	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
@@ -196,7 +196,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.

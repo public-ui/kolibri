@@ -8,7 +8,7 @@ export const getSpinHtml = (props: KoliBriSpinProps): string => {
 		},
 		props
 	);
-	return `<kol-spin${props._show ? ' _show' : ''}>
+	return `<kol-spin>
 	 <mock:shadow-root>
 		 ${
 				props._show === true

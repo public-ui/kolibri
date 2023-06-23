@@ -45,7 +45,7 @@ export class KolCard implements KoliBriCardAPI {
 	/**
 	 * Macht den Footerbereich der Card sichtbar.
 	 */
-	@Prop({ reflect: true }) public _hasFooter?: boolean = false;
+	@Prop() public _hasFooter?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
