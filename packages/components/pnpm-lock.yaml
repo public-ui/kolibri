@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@a11y-ui/core':
     specifier: 1.0.3
@@ -12,8 +8,8 @@ dependencies:
     specifier: 1.4.2
     version: 1.4.2
   '@public-ui/schema':
-    specifier: 1.6.0-rc.4
-    version: 1.6.0-rc.4
+    specifier: 1.6.0-rc.5
+    version: 1.6.0-rc.5
   i18next:
     specifier: 22.5.1
     version: 22.5.1
@@ -1751,8 +1747,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.4:
-    resolution: {integrity: sha512-lm4mFKoWf+Cb+iC5CXPz/XqD3MZNrk1XUOrErUEHu5EYnfgVPOoQX4wyYBziUpufssN+FlmFhE7XmBGeyaLOIw==}
+  /@public-ui/schema@1.6.0-rc.5:
+    resolution: {integrity: sha512-1pbPoAL2TI2m7zD03LWeY1BkCWFj2/Zf7NF2DRhkgWOp2axTEQEM+pocv9aQXuTBCH2ZK/safQCvHpkWeuhviA==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
@@ -8489,3 +8485,7 @@ packages:
     dependencies:
       '@stencil/core': 3.4.0
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
