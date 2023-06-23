@@ -4,12 +4,12 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/core';
-import { BAMF, BPA, BZSt, BMF, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2 } from '@public-ui/themes';
+import { BAMF, BZSt, BMF, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2 } from '@public-ui/themes';
 import { TH } from '@public-oss/kolibri-themes';
 import { KoliBriDevHelper } from '@public-ui/components';
 import { App } from './App';
 
-register([BAMF, BPA, BMF, BZSt, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, TH], defineCustomElements, {
+register([BAMF, BMF, BZSt, DESYv1, DESYv2, ECL_EC, ECL_EU, ITZBund, MAPZ, ZOLLv2, TH], defineCustomElements, {
 	theme: {
 		detect: 'auto',
 	},
