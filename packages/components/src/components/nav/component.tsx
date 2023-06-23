@@ -62,25 +62,10 @@ export class KolNav implements KoliBriNavAPI {
 		return false;
 	};
 
-	private entry(
-		collapsible: boolean,
-		compact: boolean,
-		hasChildren: boolean,
-		link: ButtonOrLinkOrTextWithChildrenProps,
-		expanded: boolean,
-		selected: boolean
-	): JSX.Element {
+	private entry(collapsible: boolean, compact: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		return (
-			<div
-				class={{
-					entry: true,
-					'has-children': hasChildren,
-					selected,
-					expanded,
-					compact,
-				}}
-			>
-				<kol-button-link-text-switch _links={link} _compact={compact} _selected={selected} />
+			<div class="entry">
+				<kol-button-link-text-switch _has-children={hasChildren} _hide-label={compact} _link={link} _selected={selected} />
 				{hasChildren ? this.expandButton(collapsible, link, selected) : ''}
 			</div>
 		);
@@ -113,7 +98,7 @@ export class KolNav implements KoliBriNavAPI {
 		const expanded = hasChildren && !!link._active;
 		return (
 			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
-				{this.entry(collapsible, compact, hasChildren, link, expanded, selected)}
+				{this.entry(collapsible, compact, hasChildren, link, selected)}
 				{hasChildren && selected ? (
 					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
 				) : (
@@ -198,18 +183,18 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
 	 */
-	@Prop({ reflect: true }) public _collapsible?: boolean = true;
+	@Prop() public _collapsible?: boolean = true;
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
 	 */
-	@Prop({ reflect: true }) public _compact?: boolean = false;
+	@Prop() public _compact?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
 	 * @deprecated Version 2
 	 */
-	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
+	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
 	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
@@ -328,3 +313,39 @@ export class KolNav implements KoliBriNavAPI {
 		removeAriaLabel(this.state._ariaLabel);
 	}
 }
+
+// console.log(
+//   stringifyJson([
+//     { _label: '1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
+//     { _label: '2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
+//     {
+//       _active: true,
+//       _label: '3 Navigationspunkt',
+//       _href: '#abc',
+//       _icon: 'codicon codicon-folder-closed',
+//       _children: [
+//         { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed' },
+//         { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'codicon codicon-folder-closed', _target: 'asdasd' },
+//         {
+//           _active: true,
+//           _label: '3.3 Navigationspunkt',
+//           _href: '#abc',
+//           _children: [
+//             { _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
+//             { _label: '3.3.2 Navigationspunkt', _href: '#abc' },
+//           ],
+//         },
+//         {
+//           _label: '3.4 Navigationspunkt',
+//           _href: '#abc',
+//           _children: [
+//             { _label: '3.4.1 Navigationspunkt', _href: '#abc' },
+//             { _label: '3.4.2 Navigationspunkt', _href: '#abc' },
+//           ],
+//         },
+//         { _label: '3.5 Navigationspunkt', _href: '#abc' },
+//       ],
+//     },
+//     { _label: '4 Navigationspunkt', _href: '#abc' },
+//   ])
+// );
