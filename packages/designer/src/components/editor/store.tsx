@@ -1,5 +1,4 @@
-import { Bundesanstalt, Bundesministerium, ButtonOrLinkOrTextWithChildrenProps, SelectOption } from '@public-ui/components';
-import { TabButtonProps } from '@public-ui/components/dist/types/components/tabs/component';
+import { Bundesanstalt, Bundesministerium, ButtonOrLinkOrTextWithChildrenProps, SelectOption, TabButtonProps } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
