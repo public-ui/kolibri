@@ -28,7 +28,6 @@ describe('test Progress', () => {
 			`<kol-progress>
          <mock:shadow-root>
             <div class="bar">
-            <div>…</div>
              <div style="display: flex; gap: 0.3em;">
                <svg width="100" viewBox="0 0 102 8" xmlns="http://www.w3.org/2000/svg">
                 <rect class="background" x="1" y="1" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100"></rect>
@@ -59,7 +58,6 @@ describe('test Progress', () => {
 			`<kol-progress>
          <mock:shadow-root>
             <div class="bar">
-            <div>…</div>
              <div style="display: flex; gap: 0.3em;">
                <svg width="100" viewBox="0 0 102 8" xmlns="http://www.w3.org/2000/svg">
                 <rect class="background" x="1" y="1" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100"></rect>
@@ -89,7 +87,6 @@ describe('test Progress', () => {
 			` <kol-progress>
          <mock:shadow-root>
             <div class="bar">
-            <div>…</div>
              <div style="display: flex; gap: 0.3em;">
                <svg width="100" viewBox="0 0 102 8" xmlns="http://www.w3.org/2000/svg">
                 <rect class="background" x="1" y="1" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100"></rect>
@@ -136,10 +133,7 @@ describe('test Progress', () => {
              <circle class="border" cx="60" cy="60" fill="currentColor" r="50" stroke="currentColor" stroke-width="1"></circle>
              <circle class="progress" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-dasharray="138px 342px" stroke-linecap="round" stroke-width="6"></circle>
              <text aria-hidden="true" fill="currentColor" text-anchor="middle" x="50%" y="50%">
-             	<tspan>…</tspan>
-              <tspan>
-                17%
-              </tspan>
+               <tspan>17%</tspan>
              </text>
            </svg>
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>
