@@ -23,7 +23,7 @@ export class KolSpan implements KolibriSpanProps {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
@@ -34,7 +34,7 @@ export class KolSpan implements KolibriSpanProps {
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean;
+	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).

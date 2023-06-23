@@ -49,12 +49,12 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
-	@Prop({ reflect: true }) public _alert?: boolean = true;
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -64,7 +64,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -104,7 +104,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -114,7 +114,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ reflect: true }) public _touched?: boolean = false;
+	@Prop() public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert der Radio an.

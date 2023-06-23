@@ -25,9 +25,9 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		}
 	}
 	return `
-<kol-link${props._ariaExpanded ? ' _aria-expanded' : ''}${props._hideLabel ? ' _hide-label' : ''}>
+<kol-link>
   <mock:shadow-root>
-  <kol-link-wc${props._ariaExpanded ? ' _aria-expanded' : ''}${props._hideLabel ? ' _hide-label' : ''}>
+  <kol-link-wc>
     <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
 		props._hideLabel === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
 	} class="${props._hideLabel === true ? ' icon-only hide-label' : ''}${

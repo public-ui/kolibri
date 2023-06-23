@@ -108,12 +108,12 @@ export class KolAlertWc implements API {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
-	@Prop({ reflect: true }) public _alert?: boolean = false;
+	@Prop() public _alert?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 */
-	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
