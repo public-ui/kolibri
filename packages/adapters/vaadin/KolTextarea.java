@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-textarea")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.5")
 @JsModule("@public-ui/components/dist/components/kol-textarea")
 public class KolTextarea extends Component {
 	/**
