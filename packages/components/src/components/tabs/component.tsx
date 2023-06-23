@@ -149,7 +149,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
@@ -172,7 +172,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	@Prop() public _tabsAlign?: Align = 'top';
 
 	@State() public state: KoliBriTabsStates = {
-		_label: '…',
+		_label: '…', // ⚠ required
 		_selected: 0,
 		_tabs: [],
 		_tabsAlign: 'top',

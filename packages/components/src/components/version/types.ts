@@ -1,8 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 
-type RequiredProps = unknown;
-type OptionalProps = {
+type RequiredProps = {
 	label: string;
+};
+type OptionalProps = {
 	/**
 	 * @deprecated
 	 */

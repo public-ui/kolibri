@@ -2,13 +2,13 @@ import { Generic } from '@a11y-ui/core';
 
 type RequiredProps = {
 	icon: string;
+	label: string;
 };
 type OptionalProps = {
 	/**
 	 * @deprecated
 	 */
 	ariaLabel: string;
-	label: string;
 	part: string;
 };
 export type KoliBriIconProps = Generic.Element.Members<RequiredProps, OptionalProps>;

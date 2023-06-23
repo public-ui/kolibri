@@ -17,6 +17,7 @@ export type ListStyleType =
 	| 'upper-roman';
 
 type RequiredProps = {
+	label: string;
 	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
@@ -25,7 +26,6 @@ type OptionalProps = {
 	 */
 	ariaLabel: string;
 	heading: string;
-	label: string;
 	level: HeadingLevel;
 	listStyleType: ListStyleType;
 	ordered: boolean;

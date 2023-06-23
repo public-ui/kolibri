@@ -3,6 +3,7 @@ import { AriaCurrent, ButtonOrLinkOrTextWithChildrenProps, KoliBriNavVariant, Or
 import { PropCollapsible, PropCompact, PropHasCompactButton } from '../../types/props';
 
 type RequiredProps = {
+	label: string;
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 };
 type OptionalProps = {
@@ -11,7 +12,6 @@ type OptionalProps = {
 	 */
 	ariaLabel: string;
 	ariaCurrentValue: AriaCurrent;
-	label: string;
 	orientation: Orientation;
 	/**
 	 * @deprecated

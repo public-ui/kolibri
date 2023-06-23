@@ -19,7 +19,7 @@ export class KolVersion implements KoliBriVersionAPI {
 	/**
 	 * Gibt die Versionsnummer als Text an.
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Versionsnummer als Text an.

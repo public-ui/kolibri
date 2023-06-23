@@ -2,10 +2,11 @@ import { Generic } from '@a11y-ui/core';
 import { AriaLabel } from '../../types/aria-label';
 import { KoliBriModalEventCallbacks } from '../../components';
 
-type RequiredProps = unknown;
+type RequiredProps = {
+	label: string;
+};
 type OptionalProps = {
 	activeElement: HTMLElement | null;
-	label: string;
 	on: KoliBriModalEventCallbacks;
 	width: string;
 } & AriaLabel;

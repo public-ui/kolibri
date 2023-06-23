@@ -51,7 +51,7 @@ export class KolIcon implements KoliBriIconAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
@@ -62,6 +62,7 @@ export class KolIcon implements KoliBriIconAPI {
 
 	@State() public state: KoliBriIconStates = {
 		_icon: 'codicon codicon-home',
+		_label: '…', // ⚠ required
 	};
 
 	/**

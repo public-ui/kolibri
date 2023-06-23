@@ -214,7 +214,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -235,7 +235,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	@State() public state: KoliBriNavStates = {
 		_ariaCurrentValue: false,
-		_label: '…', // '⚠'
+		_label: '…', // ⚠ required
 		_collapsible: true,
 		_hasCompactButton: false,
 		_links: [],

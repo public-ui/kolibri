@@ -92,7 +92,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
@@ -121,6 +121,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	@Prop() public _variant?: KoliBriProgressType;
 
 	@State() public state: KoliBriProgressStates = {
+		_label: '…', // ⚠ required
 		_max: 100,
 		_unit: '%',
 		_value: 0,
