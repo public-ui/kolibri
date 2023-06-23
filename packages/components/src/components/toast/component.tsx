@@ -22,12 +22,12 @@ export class KolToast implements KoliBriToastAPI {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
-	@Prop({ reflect: true }) public _alert?: boolean = true;
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 */
-	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.

@@ -16,10 +16,10 @@ executeTests<KoliBriToastProps>(
 		return page;
 	},
 	{
-		_show: [false, true],
 		_alert: [false, true],
 		_heading: ['Überschrift'],
 		_level: [1, 2, 3, 4, 5, 6],
+		_show: [false, true],
 		_type: ['default', 'error', 'info', 'success', 'warning'],
 	},
 	getToastHtml,

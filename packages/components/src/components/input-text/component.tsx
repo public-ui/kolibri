@@ -137,7 +137,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -147,7 +147,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -202,12 +202,12 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 */
-	@Prop({ reflect: true }) public _readOnly?: boolean;
+	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.

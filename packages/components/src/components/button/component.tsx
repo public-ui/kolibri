@@ -94,18 +94,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				{this.state._hideLabel === true && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
-					></kol-tooltip>
-				)}
+				<kol-tooltip
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					aria-hidden="true"
+					hidden={this.state._hideLabel !== true}
+					_align={this.state._tooltipAlign}
+					_id={this.nonce}
+					_label={this.state._ariaLabel || this.state._label}
+				></kol-tooltip>
 			</Host>
 		);
 	}
@@ -128,7 +127,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -138,7 +137,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop({ reflect: true }) public _ariaSelected?: boolean;
+	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
@@ -148,12 +147,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
@@ -171,7 +170,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean;
+	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Gibt die interne ID des primären Elements in der Komponente an.

@@ -27,7 +27,7 @@ export const getSpanWcHtml = (
 	const hideExpertSlot = state._label.length > 0;
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${props._hideLabel ? ' _hide-label' : ''}${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${additionalAttrs}>
+<kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${additionalAttrs}>
 	${
 		icon.top
 			? getIconHtml({
@@ -77,7 +77,7 @@ export const getSpanWcHtml = (
 
 export const getSpanHtml = (props: KolibriSpanProps): string => {
 	return `
-<kol-span${props._hideLabel ? ' _hide-label' : ''}>
+<kol-span>
 	<mock:shadow-root>
 		${getSpanWcHtml(props, {
 			expert: `<slot name="expert" slot="expert"></slot>`,

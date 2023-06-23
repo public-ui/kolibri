@@ -2,9 +2,12 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../components';
 
 type RequiredProps = {
-	links: ButtonOrLinkOrTextWithChildrenProps;
-	compact: boolean;
+	link: ButtonOrLinkOrTextWithChildrenProps;
 };
-type OptionalProps = { selected: boolean };
+type OptionalProps = {
+	hasChildren: boolean;
+	hideLabel: boolean;
+	selected: boolean;
+};
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

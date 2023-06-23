@@ -45,7 +45,7 @@ Im einfachsten Fall besteht die **ButtonGroup**-Komponente aus einer Liste besch
 
 Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie [hier](https://icofont.com/icons).
 
-Über das Attribut **`_icon-only`** legen Sie fest, ob nur das Icon angezeigt werden soll. Der Inhalt des Attributs **`_label`** wird nicht mehr angezeigt.
+Über das Attribut **`_hide-label`** legen Sie fest, ob nur das Icon angezeigt werden soll. Der Inhalt des Attributs **`_label`** wird nicht mehr angezeigt.
 
 ### Ausgabe verschiedener Styles für Buttons in der ButtonGroup
 

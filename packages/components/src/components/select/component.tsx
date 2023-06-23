@@ -153,7 +153,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -170,7 +170,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -200,7 +200,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
 	 */
-	@Prop({ reflect: true }) public _multiple?: boolean = false;
+	@Prop() public _multiple?: boolean = false;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -213,9 +213,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.

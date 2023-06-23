@@ -42,7 +42,7 @@ Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlü
 
 ### Nur Icon anzeigen
 
-Mit dem Attribut **`_icon-only`** kann festgelegt werden, dass nur das mit dem Attribut **`_icon`** gewählte Icon angezeigt wird. Der Wert im Attribut **`_label`** wird in diesem Fall ignoriert.
+Mit dem Attribut **`_hide-label`** kann festgelegt werden, dass nur das mit dem Attribut **`_icon`** gewählte Icon angezeigt wird. Der Wert im Attribut **`_label`** wird in diesem Fall ignoriert.
 
 ### Schriftschnitt
 
