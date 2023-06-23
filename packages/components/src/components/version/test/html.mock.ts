@@ -18,7 +18,7 @@ export const getVersionHtml = (props: KoliBriVersionProps, additionalAttrs = '')
 				: getBadgeHtml({
 						_color: '#BEC5C9',
 						_icon: 'codicon codicon-versions',
-						_label: `v${props._label || ''}`,
+						_label: `v${props._label}`,
 				  })
 		}
   </mock:shadow-root>

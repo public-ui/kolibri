@@ -46,7 +46,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${props._label || ''}">
+		<nav aria-label="${props._label}">
 			<ul>
 				${
 					props._links.length === 0
