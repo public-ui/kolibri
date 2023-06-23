@@ -2,7 +2,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchString } from '../../utils/prop.validators';
 import { devHint } from '../../utils/a11y.tipps';
-import { validateLabel } from '../../types/props';
 import { KoliBriIconAPI, KoliBriIconStates } from './types';
 
 /**
@@ -17,7 +16,7 @@ import { KoliBriIconAPI, KoliBriIconStates } from './types';
 })
 export class KolIcon implements KoliBriIconAPI {
 	public render(): JSX.Element {
-		const hasLabel = typeof this.state._label === 'string' && this.state._label.length > 0;
+		const hasLabel = this.state._label.length > 0;
 		return (
 			<Host exportparts="icon">
 				<i
@@ -82,7 +81,7 @@ export class KolIcon implements KoliBriIconAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		watchString(this, '_label', value, { required: true });
 	}
 
 	/**
