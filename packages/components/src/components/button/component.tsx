@@ -94,18 +94,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				{this.state._hideLabel === true && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
-					></kol-tooltip>
-				)}
+				<kol-tooltip
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					aria-hidden="true"
+					hidden={this.state._hideLabel !== true}
+					_align={this.state._tooltipAlign}
+					_id={this.nonce}
+					_label={this.state._ariaLabel || this.state._label}
+				></kol-tooltip>
 			</Host>
 		);
 	}
