@@ -20,10 +20,9 @@ import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { register } from '@public-ui/components';
 import { TH } from '@public-oss/kolibri-themes';
-import { BPA, ITZBund } from '@public-ui/themes';
+import { ITZBund } from '@public-ui/themes';
 
 const AVAILABLE_THEMES = [
-	{ name: 'Bundes-Styleguide (untested)', class: 'bpa', color: '#326cae' },
 	{ name: 'ECL-EC-Styleguide (untested)', class: 'ecl-ec', color: '#326cae' },
 	{ name: 'ECL-EU-Styleguide (untested)', class: 'ecl-eu', color: '#326cae' },
 	{ name: 'ITZBund-Styleguide (untested)', class: 'itzbund', color: '#007a89' },
@@ -47,7 +46,7 @@ const switchTheme = (className) => {
 	}
 };
 
-register([ITZBund, BPA, TH], [kolibri, leanup], {
+register([ITZBund, TH], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
 	},

@@ -33,6 +33,19 @@ export const getButtonWcHtml = (
 	}${ariaLabel} class="${variant}" type="${type}">
 		${getSpanWcHtml(props, slots)}
 	</button>
+	<kol-tooltip aria-hidden="true" hidden>
+	  <div id="floating">
+	    <div class="area" id="arrow"></div>
+	    <kol-span-wc class="area" id="nonce">
+	      <span>
+	        <span>
+	          ${props._label ? props._label : '…'}
+	        </span>
+	        <span aria-hidden="true" hidden=""></span>
+	      </span>
+	    </kol-span-wc>
+	  </div>
+	</kol-tooltip>
 </kol-button-wc>`;
 };
 

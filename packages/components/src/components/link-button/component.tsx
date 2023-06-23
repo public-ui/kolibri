@@ -78,7 +78,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -89,7 +89,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop({ reflect: true }) public _ariaSelected?: boolean;
+	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
@@ -99,7 +99,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
@@ -109,7 +109,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Gibt die Ziel-Url des Links an.
@@ -125,7 +125,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean;
+	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).

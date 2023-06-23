@@ -16,9 +16,9 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		props
 	);
 	return `
-<kol-link${props._ariaExpanded ? ' _aria-expanded' : ''}${props._hideLabel ? ' _hide-label' : ''}>
+<kol-link>
   <mock:shadow-root>
-  <kol-link-wc${props._ariaExpanded ? ' _aria-expanded' : ''}${props._hideLabel ? ' _hide-label' : ''}>
+  <kol-link-wc>
     <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
 		props._hideLabel === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
 	} class="${props._hideLabel === true ? ' icon-only hide-label' : ''}${
@@ -48,18 +48,14 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					: ''
 			}
     </a>
-		${
-			props._hideLabel === true || props._useCase === 'image'
-				? getTooltipHtml(
-						{
-							_align: props._tooltipAlign,
-							_id: 'nonce',
-							_label: props._label,
-						},
-						' aria-hidden="true"'
-				  )
-				: ''
-		}
+		${getTooltipHtml(
+			{
+				_align: props._tooltipAlign,
+				_id: 'nonce',
+				_label: props._label,
+			},
+			` aria-hidden="true"${props._hideLabel !== true ? ' hidden' : ''}`
+		)}
     </kol-link-wc>
   </mock:shadow-root>
   ${innerHTML}

@@ -13,6 +13,7 @@ import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { AriaCurrent as AriaCurrent1, Stringified as Stringified1 } from "./components";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -25,7 +26,6 @@ import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
-import { Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -47,6 +47,7 @@ export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { AriaCurrent as AriaCurrent1, Stringified as Stringified1 } from "./components";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -59,7 +60,6 @@ export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
-export { Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -185,7 +185,7 @@ export namespace Components {
          */
         "_label": string;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
@@ -378,15 +378,23 @@ export namespace Components {
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Kompakte Darstellung aktivieren.
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_compact": boolean;
+        "_ariaCurrentValue": AriaCurrent1;
+        /**
+          * Gibt an, ob diese Komponente Kinder hat.
+         */
+        "_hasChildren"?: boolean;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
         /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
-        "_links": ButtonOrLinkOrTextWithChildrenProps;
+        "_link": ButtonOrLinkOrTextWithChildrenProps;
         /**
-          * Ist der Link selectiert? (Nur wenn es ein Link ist.)
+          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
          */
         "_selected"?: boolean;
     }
@@ -2212,7 +2220,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -3152,7 +3160,7 @@ declare namespace LocalJSX {
          */
         "_label": string;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
@@ -3345,15 +3353,23 @@ declare namespace LocalJSX {
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Kompakte Darstellung aktivieren.
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_compact": boolean;
+        "_ariaCurrentValue"?: AriaCurrent1;
+        /**
+          * Gibt an, ob diese Komponente Kinder hat.
+         */
+        "_hasChildren"?: boolean;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
         /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
-        "_links": ButtonOrLinkOrTextWithChildrenProps;
+        "_link": ButtonOrLinkOrTextWithChildrenProps;
         /**
-          * Ist der Link selectiert? (Nur wenn es ein Link ist.)
+          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
          */
         "_selected"?: boolean;
     }
@@ -5179,7 +5195,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**

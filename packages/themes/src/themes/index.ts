@@ -1,5 +1,4 @@
 export * from './bamf';
-export * from '../../bpa/src';
 export * from './bzst';
 export * from '../../bmf/src';
 export * from './desy-v1';

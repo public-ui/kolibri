@@ -88,12 +88,12 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
-	@Prop({ reflect: true }) public _alert?: boolean = true;
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -103,7 +103,7 @@ export class KolInput implements Props {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -128,17 +128,17 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob die Eingabefeld nur lesend ist.
 	 */
-	@Prop({ reflect: true }) public _readOnly?: boolean = false;
+	@Prop() public _readOnly?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Komponente kein Label rendern soll.
 	 */
-	@Prop({ reflect: true }) public _renderNoLabel?: boolean = false;
+	@Prop() public _renderNoLabel?: boolean = false;
 
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean = false;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
@@ -154,5 +154,5 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
-	@Prop({ reflect: true }) public _touched?: boolean = false;
+	@Prop() public _touched?: boolean = false;
 }

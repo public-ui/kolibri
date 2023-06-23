@@ -7,6 +7,7 @@ import { KoliBriProgressType } from '../../types/progress';
 
 // https://css-tricks.com/html5-progress-element/
 const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
+	const fullCircle = 342;
 	switch (state._variant) {
 		case 'cycle':
 			return (
@@ -21,7 +22,7 @@ const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
 						fill="currentColor"
 						stroke="currentColor"
 						stroke-linecap="round"
-						stroke-dasharray={`${Math.round((state._value / state._max) * 320)}px 320px`}
+						stroke-dasharray={`${Math.round((state._value / state._max) * fullCircle)}px ${fullCircle}px`}
 						stroke-width="6"
 						cx="60"
 						cy="60"

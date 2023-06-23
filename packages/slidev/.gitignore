@@ -6,7 +6,6 @@ dist
 components.d.ts
 *.pdf
 
-/assets/bpa-icons/
 /assets/bundes/
 /assets/codicons/
 /assets/fontawesome-free/

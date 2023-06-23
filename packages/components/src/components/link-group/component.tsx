@@ -104,7 +104,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	 * Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.
 	 * @deprecated Wird mittels der Property _list-style-type automatisch gesteuert.
 	 */
-	@Prop({ reflect: true }) public _ordered?: boolean;
+	@Prop() public _ordered?: boolean;
 
 	/**
 	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.

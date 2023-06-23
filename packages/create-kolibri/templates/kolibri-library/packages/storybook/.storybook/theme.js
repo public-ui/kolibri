@@ -5,9 +5,9 @@ import { create } from '@storybook/theming';
 import { register } from '@public-ui/components';
 import { defineCustomElements as kolibri } from '@public-ui/components/dist/loader';
 import { defineCustomElements as leanup } from '@leanup/kolibri-components/dist/loader';
-import { ITZBund, ITZBund, ITZBund, BPA, ITZBund } from '@public-ui/themes';
+import { ITZBund } from '@public-ui/themes';
 
-register([ITZBund, ITZBund, ITZBund, BPA, ITZBund], [kolibri, leanup], {
+register([ITZBund], [kolibri, leanup], {
 	theme: {
 		detect: 'auto',
 		name: 'default',
@@ -21,9 +21,7 @@ register([ITZBund, ITZBund, ITZBund, BPA, ITZBund], [kolibri, leanup], {
 					const classAttributes = mutations.filter((mutation) => mutation.type === 'attributes' && mutation.attributeName === 'class');
 					if (classAttributes.length > 0) {
 						const className = classAttributes[classAttributes.length - 1].target.className;
-						if (className.includes('bpa')) {
-							document.body.dataset.theme = 'bpa';
-						} else if (className.includes('default')) {
+						if (className.includes('default')) {
 							document.body.dataset.theme = 'default';
 						} else if (className.includes('itzbund')) {
 							document.body.dataset.theme = 'itzbund';

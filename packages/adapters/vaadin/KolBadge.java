@@ -11,7 +11,7 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.5")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
@@ -105,7 +105,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
 	 *
 	 * @param value Optional<String>
 	 */
@@ -114,7 +114,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
 	 *
 	 * @return Optional<String>
 	 */

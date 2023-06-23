@@ -17,7 +17,7 @@ export const getBadgeHtml = (props: KoliBriBadgeProps, additionalAttrs = ''): st
 
 	state._color = handleColorChange(props._color || '#000');
 
-	return `<kol-badge${props._hideLabel ? ' _hide-label' : ''}${additionalAttrs}>
+	return `<kol-badge${additionalAttrs}>
 	<mock:shadow-root>
 		<span style="background-color: ${state._color.backgroundColor}; color: ${state._color.foregroundColor as string};">
 			${getSpanWcHtml(props, undefined, ' id="nonce"')}
