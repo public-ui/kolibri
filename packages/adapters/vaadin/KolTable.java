@@ -16,24 +16,24 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
-	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setCaption(final String value) {
+	public void setCaption(final Optional<String> value) {
 		getElement().setProperty("_caption", value);
 	}
 
 	/**
-	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getCaption() {
+	public Optional<String> getCaption() {
 		return getElement().getProperty("_caption", null);
 	}
 
@@ -42,17 +42,35 @@ public class KolTable extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setData(final String value) {
+	public void setData(final Optional<String> value) {
 		getElement().setProperty("_data", value);
 	}
 
 	/**
 	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getData() {
+	public Optional<String> getData() {
 		return getElement().getProperty("_data", null);
+	}
+
+	/**
+	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setDataFoot(final Optional<String> value) {
+		getElement().setProperty("_data-foot", value);
+	}
+
+	/**
+	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getDataFoot() {
+		return getElement().getProperty("_data-foot", null);
 	}
 
 	/**
@@ -60,52 +78,52 @@ public class KolTable extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHeaders(final String value) {
+	public void setHeaders(final Optional<String> value) {
 		getElement().setProperty("_headers", value);
 	}
 
 	/**
 	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeaders() {
+	public Optional<String> getHeaders() {
 		return getElement().getProperty("_headers", null);
 	}
 
 	/**
 	 * Gibt an, die minimale Breite der Tabelle an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setMinWidth(final String value) {
+	public void setMinWidth(final Optional<String> value) {
 		getElement().setProperty("_min-width", value);
 	}
 
 	/**
 	 * Gibt an, die minimale Breite der Tabelle an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getMinWidth() {
+	public Optional<String> getMinWidth() {
 		return getElement().getProperty("_min-width", null);
 	}
 
 	/**
 	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setPagination(final String value) {
+	public void setPagination(final Optional<String> value) {
 		getElement().setProperty("_pagination", value);
 	}
 
 	/**
 	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getPagination() {
+	public Optional<String> getPagination() {
 		return getElement().getProperty("_pagination", null);
 	}
 }

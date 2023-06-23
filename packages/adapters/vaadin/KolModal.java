@@ -11,42 +11,42 @@ Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nac
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Setzt die Breite des Modals. (max-width: 100%).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setWidth(final String value) {
+	public void setWidth(final Optional<String> value) {
 		getElement().setProperty("_width", value);
 	}
 
 	/**
 	 * Setzt die Breite des Modals. (max-width: 100%).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getWidth() {
+	public Optional<String> getWidth() {
 		return getElement().getProperty("_width", null);
 	}
 }

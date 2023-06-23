@@ -1,76 +1,61 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { KoliBriProgressType } from '../../types/progress';
-import { PropLabel } from '../../types/props';
 import { watchNumber, watchString } from '../../utils/prop.validators';
-
-type RequiredProps = {
-	max: number;
-	value: number;
-};
-type OptionalProps = PropLabel & {
-	type: KoliBriProgressType;
-	unit: string;
-};
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps & {
-	liveValue: number;
-};
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
+import { KoliBriProgressType } from '../../types/progress';
 
 // https://css-tricks.com/html5-progress-element/
-const createProgressSVG = (state: States): JSX.Element => {
-	switch (state._type) {
+const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
+	switch (state._variant) {
 		case 'cycle':
 			return (
-				<svg width="100" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-					<circle fill="none" stroke="#efefef" cx="6px" cy="6px" r="5px"></circle>
-					<text aria-hidden="true" font-size="0.1em" x="50%" y="50%" text-anchor="middle" fill="currentColor">
-						{state._label && (
-							<tspan text-anchor="middle" x="50%" dy="-0.5em">
-								{state._label}
-							</tspan>
-						)}
-						<tspan text-anchor="middle" x="50%" dy={state._label ? '1em' : '0em'}>
+				<svg class="cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+					<circle class="background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
+					<circle class="whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
+					<circle class="border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+					<circle class="whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+					<circle class="border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+					<circle
+						class="progress"
+						fill="currentColor"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-dasharray={`${Math.round((state._value / state._max) * 320)}px 320px`}
+						stroke-width="6"
+						cx="60"
+						cy="60"
+						r="54.5"
+					></circle>
+					<text aria-hidden="true" x="50%" y="50%" text-anchor="middle" fill="currentColor">
+						{state._label && <tspan>{state._label}</tspan>}
+						<tspan>
 							{state._value}
 							{state._unit}
 						</tspan>
 					</text>
-					<circle
-						class="cycle"
-						stroke-linecap="round"
-						stroke-dasharray={`${Math.round((state._value / state._max) * 32)}px 32px`}
-						fill="none"
-						stroke="#0075ff"
-						cx="6px"
-						cy="6px"
-						r="5px"
-					></circle>
 				</svg>
 			);
 		default:
 			return (
-				<div>
+				<div class="bar">
 					{state._label && <div>{state._label}</div>}
 					<div style={{ display: 'flex', gap: '0.3em' }}>
-						<svg width="100" viewBox="0 0 24 2" xmlns="http://www.w3.org/2000/svg">
-							<line stroke-width="2" x1="1" stroke-linecap="round" y1="1" x2="23" y2="1" fill="#efefef" stroke="#efefef"></line>
-							<line
-								class="bar"
-								stroke-width="2"
-								x1="1"
-								stroke-linecap="round"
-								y1="1"
-								x2={`${1 + Math.round((state._value / state._max) * 22)}`}
-								y2="1"
-								fill="#0075ff"
-								stroke="#0075ff"
-							></line>
+						<svg width="100" viewBox="0 0 102 8" xmlns="http://www.w3.org/2000/svg">
+							<rect class="background" x="1" y="1" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="3" width="100"></rect>
+							<rect
+								class="progress"
+								x="2.5"
+								y="2.5"
+								height="7"
+								rx="3.5"
+								fill="currentColor"
+								stroke="currentColor"
+								stroke-width="3"
+								width={95 * (state._value / state._max)}
+							></rect>
+							<rect class="border" x="1" y="1" height="10" rx="5" fill="currentColor" stroke="currentColor" stroke-width="1" width="100"></rect>
 						</svg>
-						<text aria-hidden="true" font-size="0.1em" text-anchor="middle" dominant-baseline="central" fill="currentColor">
+						<text aria-hidden="true" text-anchor="middle" dominant-baseline="central" fill="currentColor">
 							{state._value}
 							{state._unit}
 						</text>
@@ -87,7 +72,7 @@ const createProgressSVG = (state: States): JSX.Element => {
 	},
 	shadow: true,
 })
-export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolProcess implements KoliBriProgressAPI {
 	private interval?: NodeJS.Timer;
 
 	// https://dequeuniversity.com/library/aria/progress-bar-bounded
@@ -104,7 +89,7 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	}
 
 	/**
-	 * Setzt die Bezeichnung der Fortschrittsanzeige.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: string;
 
@@ -114,7 +99,8 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	@Prop() public _max!: number;
 
 	/**
-	 * Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
+	 * @deprecated will be removed in v2, use _variant
 	 */
 	@Prop() public _type?: KoliBriProgressType;
 
@@ -128,11 +114,16 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 	 */
 	@Prop() public _value!: number;
 
-	@State() public state: States = {
+	/**
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 */
+	@Prop() public _variant?: KoliBriProgressType;
+
+	@State() public state: KoliBriProgressStates = {
 		_max: 100,
-		_type: 'bar',
 		_unit: '%',
 		_value: 0,
+		_variant: 'bar',
 		_liveValue: 0,
 	};
 
@@ -151,18 +142,10 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
+	// @deprecated remove with v2
 	@Watch('_type')
 	public validateType(value?: KoliBriProgressType): void {
-		switch (value) {
-			case 'cycle':
-				break;
-			default:
-				value = 'bar';
-		}
-		this.state = {
-			...this.state,
-			_type: value,
-		};
+		this.validateVariant(value);
 	}
 
 	@Watch('_unit')
@@ -181,12 +164,27 @@ export class KolProcess implements Generic.Element.ComponentApi<RequiredProps, O
 		});
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: KoliBriProgressType): void {
+		if (!value && this._type) {
+			// remove with v2
+			value = this._type;
+		}
+		if (value !== 'cycle') {
+			value = 'bar';
+		}
+		this.state = {
+			...this.state,
+			_variant: value as KoliBriProgressType,
+		};
+	}
+
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateMax(this._max);
-		this.validateType(this._type);
 		this.validateUnit(this._unit);
 		this.validateValue(this._value);
+		this.validateVariant(this._variant || this._type);
 
 		this.interval = setInterval(() => {
 			if (this.state._liveValue !== this.state._value) {

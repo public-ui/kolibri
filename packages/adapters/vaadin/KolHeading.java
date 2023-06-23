@@ -10,60 +10,60 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-heading")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-heading")
 public class KolHeading extends Component {
 	/**
-	 * Gibt den Text der Überschrift an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final String value) {
+	public void setLabel(final Optional<String> value) {
 		getElement().setProperty("_label", value);
 	}
 
 	/**
-	 * Gibt den Text der Überschrift an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLabel() {
+	public Optional<String> getLabel() {
 		return getElement().getProperty("_label", null);
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLevel(final String value) {
+	public void setLevel(final Optional<String> value) {
 		getElement().setProperty("_level", value);
 	}
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLevel() {
+	public Optional<String> getLevel() {
 		return getElement().getProperty("_level", null);
 	}
 
 	/**
 	 * Gibt den Text der zusätzlichen Überschrift an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setSecondaryHeadline(final String value) {
+	public void setSecondaryHeadline(final Optional<String> value) {
 		getElement().setProperty("_secondary-headline", value);
 	}
 
 	/**
 	 * Gibt den Text der zusätzlichen Überschrift an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSecondaryHeadline() {
+	public Optional<String> getSecondaryHeadline() {
 		return getElement().getProperty("_secondary-headline", null);
 	}
 }

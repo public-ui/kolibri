@@ -1,10 +1,10 @@
 import { Component, JSX, h, Prop, State, Watch } from '@stencil/core';
 
 import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
-import { Generic } from '@a11y-ui/core';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
+import { KoliBriLogoAPI, KoliBriLogoStates } from './types';
 
 function enumToArray(enumeration: Record<string, string>, enumAsMap: Map<string, string> = new Map()): Map<string, string> {
 	Object.entries(enumeration).map(([key, value]) => {
@@ -22,18 +22,6 @@ function getAriaLabel(organ: string): string {
 		return '';
 	}
 }
-
-type RequiredProps = {
-	org: Bundesministerium | Bundesamt | Bundesanstalt;
-};
-type OptionalProps = {
-	abbr: Bundesministerium | Bundesamt | Bundesanstalt;
-};
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const Adler = (): JSX.Element => (
 	<path
@@ -102,7 +90,7 @@ c1.57,2.48,2.8,2.44,4.65,2.44c-1.2-0.97-2.21-2.14-3-3.46l-2.99-4.7c0.16-0.29,0.2
 	},
 	shadow: true,
 })
-export class KolLogo implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolLogo implements KoliBriLogoAPI {
 	/**
 	 * Gibt die Abkürzung eines Ministeriums, eines Amts oder einer Bundesanstalt an.
 	 *
@@ -115,7 +103,7 @@ export class KolLogo implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop() public _org!: Bundesministerium | Bundesamt | Bundesanstalt;
 
-	@State() public state: States = {
+	@State() public state: KoliBriLogoStates = {
 		_org: Bundesanstalt['Informationstechnikzentrum Bund'],
 	};
 

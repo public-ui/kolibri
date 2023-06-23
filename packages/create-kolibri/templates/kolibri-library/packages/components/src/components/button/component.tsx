@@ -118,7 +118,7 @@ export class {{capital name}}Button implements Generic.Element.ComponentApi<Requ
 		const { _disabled, _hideLabel, _icon, _label, _variant } = this.state;
 		return (
 			<Host>
-				<kol-button _disabled={_disabled} _icon={_icon} _iconOnly={_hideLabel} _label={_label} _variant={_variant}></kol-button>
+				<kol-button _disabled={_disabled} _icon={_icon} _hideLabel={_hideLabel} _label={_label} _variant={_variant}></kol-button>
 			</Host>
 		);
 	}

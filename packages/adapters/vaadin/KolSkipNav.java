@@ -10,42 +10,42 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-skip-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-skip-nav")
 public class KolSkipNav extends Component {
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
-	 * Setzt die Liste der darzustellenden Links.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 *
 	 * @param value String
 	 */
-	public void setLinks(final String value) {
+	public void setLinks(final Optional<String> value) {
 		getElement().setProperty("_links", value);
 	}
 
 	/**
-	 * Setzt die Liste der darzustellenden Links.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLinks() {
+	public Optional<String> getLinks() {
 		return getElement().getProperty("_links", null);
 	}
 }

@@ -100,7 +100,7 @@ export const Bright = (args: any) => (
 			<KolBadge _label="Ich bin ein Tag!" _icon="icofont-ui-love" _color="#c1ca31"></KolBadge>
 			<KolBadge _label="Ich auch!" _icon="icofont-ui-rating" _icon-align="right" _color="#f7bb3d"></KolBadge>
 			<KolBadge _label="Und ich!" _color="#80cdec"></KolBadge>
-			<KolBadge _label="" _icon="icofont-ui-rate-blank" _icon-only _color="#f9e03a"></KolBadge>
+			<KolBadge _label="" _icon="icofont-ui-rate-blank" _hideLabel _color="#f9e03a"></KolBadge>
 		</div>
 	</div>
 );
@@ -115,7 +115,7 @@ export const Dark = (args: any) => (
 			<KolBadge _label="Ich bin ein Tag!" _icon="icofont-ui-love" _color="#000"></KolBadge>
 			<KolBadge _label="Ich auch!" _icon="icofont-ui-rating" _icon-align="right" _color="#94083c"></KolBadge>
 			<KolBadge _label="Und ich!" _color="#0c247d"></KolBadge>
-			<KolBadge _label="" _icon="icofont-ui-rate-blank" _icon-only _color="#030"></KolBadge>
+			<KolBadge _label="" _icon="icofont-ui-rate-blank" _hideLabel _color="#030"></KolBadge>
 		</div>
 	</div>
 );

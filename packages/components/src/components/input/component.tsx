@@ -19,6 +19,7 @@ export class KolInput implements Props {
 		const hasError = typeof this._error === 'string' && this._error.length > 0 && this._touched === true;
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
 		const hideLabel = this._hideLabel === true && this._required !== true;
+		const slotName = this._slotName ? this._slotName : 'input';
 
 		return (
 			<Host
@@ -32,7 +33,9 @@ export class KolInput implements Props {
 			>
 				{this._renderNoLabel === false && (
 					<label id={`${this._id}-label`} hidden={hideLabel} htmlFor={this._id}>
+						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
+							{/* INFO: label comes with any html tag or as plain text! */}
 							<slot name="label"></slot>
 						</span>
 					</label>
@@ -50,14 +53,14 @@ export class KolInput implements Props {
 					}}
 				>
 					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}
-					<slot name="input"></slot>
+					<slot name={slotName}></slot>
 					{typeof this._smartButton === 'object' && this._smartButton !== null && (
 						<kol-button-wc
 							_ariaLabel={this._smartButton._ariaLabel}
 							_customClass={this._smartButton._customClass}
 							_disabled={this._smartButton._disabled}
 							_icon={this._smartButton._icon}
-							_iconOnly={true}
+							_hideLabel={true}
 							_id={this._smartButton._id}
 							_label={this._smartButton._label}
 							_on={this._smartButton._on}
@@ -84,12 +87,12 @@ export class KolInput implements Props {
 	}
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
@@ -99,7 +102,7 @@ export class KolInput implements Props {
 	@Prop() public _error?: string = '';
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
 
@@ -109,12 +112,12 @@ export class KolInput implements Props {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: KoliBriHorizontalIcon;
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id!: string;
 
@@ -137,6 +140,12 @@ export class KolInput implements Props {
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
 	@Prop({ reflect: true }) public _required?: boolean = false;
+
+	/**
+	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+	 * @internal
+	 */
+	@Prop() public _slotName?: string;
 
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).

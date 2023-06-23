@@ -1,29 +1,17 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { translate } from '../../i18n';
-import {
-	AlternativButtonLinkRole,
-	LinkOnCallbacks,
-	LinkStates,
-	LinkTarget,
-	LinkUseCase,
-	OptionalLinkProps,
-	OptionalLinkStates,
-	RequiredLinkProps,
-	RequiredLinkStates,
-	watchTooltipAlignment,
-} from '../../types/button-link';
+import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Alignment, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload } from '../../types/props';
+import { AriaCurrent, Align, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload, validateHideLabel } from '../../types/props';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
+import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 
 /**
  * @internal
@@ -32,7 +20,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates> {
+export class KolLinkWc implements KoliBriLinkAPI {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private readonly nonce = nonce();
 	private ref?: HTMLAnchorElement;
@@ -93,7 +81,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		};
 
 		if (
-			(this.state._useCase === 'image' || this.state._iconOnly === true) &&
+			(this.state._useCase === 'image' || this.state._hideLabel === true) &&
 			(typeof this.state._ariaLabel !== 'string' || this.state._ariaLabel.length === 0)
 		) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
@@ -111,12 +99,13 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._useCase === 'image' || this.state._iconOnly === true ? this.nonce : undefined}
+					aria-labelledby={this.state._useCase === 'image' || this.state._hideLabel === true ? this.nonce : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
 						disabled: this.state._disabled === true,
 						'skip ': this.state._stealth !== false,
-						'icon-only': this.state._iconOnly === true,
+						'icon-only': this.state._hideLabel === true, // @deprecated in v2
+						'hide-label': this.state._hideLabel === true,
 						'external-link': isExternal,
 					}}
 					{...this.state._on}
@@ -127,16 +116,12 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}>
-						{/*
-							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-						*/}
-						<slot name="expert" slot="expert" />
+					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
+						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				{(this.state._iconOnly === true || this.state._useCase === 'image') && (
+				{(this.state._hideLabel === true || this.state._useCase === 'image') && (
 					<kol-tooltip
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
@@ -158,27 +143,27 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
-	 * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, ob der Link deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
@@ -190,29 +175,35 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _download?: boolean | string = false;
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: Align;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: false }) public _label!: string;
@@ -224,7 +215,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
@@ -243,7 +234,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop({ reflect: true }) public _stealth?: boolean = false;
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -258,9 +249,9 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'right';
+	@Prop() public _tooltipAlign?: Align = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -319,6 +310,11 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		validateDownload(this, value);
 	}
 
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: boolean): void {
+		validateHideLabel(this, value);
+	}
+
 	@Watch('_href')
 	public validateHref(value?: string): void {
 		watchString(this, '_href', value);
@@ -334,13 +330,16 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 * @deprecated
 	 */
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: Alignment): void {
+	public validateIconAlign(value?: Align): void {
 		watchIconAlign(this, value);
 	}
 
+	/**
+	 * @deprecated use _hide-label
+	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
-		watchBoolean(this, '_iconOnly', value);
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_label')
@@ -354,13 +353,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	 */
 	@Watch('_on')
 	public validateOn(value?: LinkOnCallbacks): void {
-		if (
-			typeof value === 'object' &&
-			value !== null &&
-			// https://eslint.org/docs/rules/no-prototype-builtins
-			Object.prototype.hasOwnProperty.call(value, 'onClick') &&
-			typeof value.onClick === 'function'
-		) {
+		if (typeof value === 'object' && typeof value?.onClick === 'function') {
 			this.state = {
 				...this.state,
 				_on: value,
@@ -399,7 +392,7 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: Align): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
@@ -421,10 +414,10 @@ export class KolLinkWc implements Generic.Element.ComponentApi<RequiredLinkProps
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
+		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
-		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateRole(this._role);

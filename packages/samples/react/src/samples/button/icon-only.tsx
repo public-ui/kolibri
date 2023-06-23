@@ -5,7 +5,7 @@ import { FC } from 'react';
 
 const ARGS = {
 	_icon: 'codicon codicon-home',
-	_iconOnly: true,
+	_hideLabel: true,
 	_on: {
 		onClick: (_event, _value) => alert('Klick!'),
 	},

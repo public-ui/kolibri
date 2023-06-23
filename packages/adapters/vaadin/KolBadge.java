@@ -11,96 +11,114 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
 	 * Setzt die Hintergrundfarbe.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setColor(final String value) {
+	public void setColor(final Optional<String> value) {
 		getElement().setProperty("_color", value);
 	}
 
 	/**
 	 * Setzt die Hintergrundfarbe.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getColor() {
+	public Optional<String> getColor() {
 		return getElement().getProperty("_color", null);
 	}
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setIcon(final String value) {
+	public void setHideLabel(final Optional<String> value) {
+		getElement().setProperty("_hide-label", value);
+	}
+
+	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getHideLabel() {
+		return getElement().getProperty("_hide-label", null);
+	}
+
+	/**
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setIcon(final Optional<String> value) {
 		getElement().setProperty("_icon", value);
 	}
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getIcon() {
+	public Optional<String> getIcon() {
 		return getElement().getProperty("_icon", null);
 	}
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setIconOnly(final String value) {
+	public void setIconOnly(final Optional<String> value) {
 		getElement().setProperty("_icon-only", value);
 	}
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getIconOnly() {
+	public Optional<String> getIconOnly() {
 		return getElement().getProperty("_icon-only", null);
 	}
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final String value) {
+	public void setLabel(final Optional<String> value) {
 		getElement().setProperty("_label", value);
 	}
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLabel() {
+	public Optional<String> getLabel() {
 		return getElement().getProperty("_label", null);
 	}
 
 	/**
 	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setSmartButton(final String value) {
+	public void setSmartButton(final Optional<String> value) {
 		getElement().setProperty("_smart-button", value);
 	}
 
 	/**
 	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSmartButton() {
+	public Optional<String> getSmartButton() {
 		return getElement().getProperty("_smart-button", null);
 	}
 }

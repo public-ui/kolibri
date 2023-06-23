@@ -52,11 +52,11 @@ chrome-minimize,,EABA
 chrome-restore,,EABB
 circle-filled,,EA71
 circle-large-filled,,EBB4
-circle-large-outline,,EBB5
-circle-outline,,EABC
+circle-large,,EBB5
 circle-slash,,EABD
 circle-small-filled,,EB8A
 circle-small,,EC07
+circle,,EABC
 circuit-board,,EABE
 clear-all,,EABF
 clippy,,EAC0
@@ -70,6 +70,7 @@ collapse-all,,EAC5
 color-mode,,EAC6
 combine,,EBB6
 comment-discussion,,EAC7
+comment-draft,,EC0E
 comment-unresolved,,EC0A
 comment,,EA6B
 compass-active,,EBD7
@@ -190,6 +191,7 @@ hubot,,EB08
 inbox,,EB09
 indent,,EBF9
 info,,EA74
+insert,,EC11
 inspect,,EBD1
 issue-draft,,EBD9
 issue-reopened,,EB0B
@@ -319,8 +321,10 @@ save-as,,EB4A
 save,,EB4B
 screen-full,,EB4C
 screen-normal,,EB4D
+search-fuzzy,,EC0D
 search-stop,,EB4E
 search,,EA6D
+send,,EC0F
 server-environment,,EBA3
 server-process,,EBA2
 server,,EB50
@@ -332,6 +336,7 @@ sign-out,,EA6E
 smiley,,EB54
 sort-precedence,,EB55
 source-control,,EA68
+sparkle,,EC10
 split-horizontal,,EB56
 split-vertical,,EB57
 squirrel,,EB58

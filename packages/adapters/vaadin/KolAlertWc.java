@@ -10,114 +10,114 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-alert-wc")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-alert-wc")
 public class KolAlertWc extends Component {
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAlert(final String value) {
+	public void setAlert(final Optional<String> value) {
 		getElement().setProperty("_alert", value);
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAlert() {
+	public Optional<String> getAlert() {
 		return getElement().getProperty("_alert", null);
 	}
 
 	/**
-	 * Gibt an, ob der Alert ein Schließen-Icon hat.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHasCloser(final String value) {
+	public void setHasCloser(final Optional<String> value) {
 		getElement().setProperty("_has-closer", value);
 	}
 
 	/**
-	 * Gibt an, ob der Alert ein Schließen-Icon hat.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHasCloser() {
+	public Optional<String> getHasCloser() {
 		return getElement().getProperty("_has-closer", null);
 	}
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHeading(final String value) {
+	public void setHeading(final Optional<String> value) {
 		getElement().setProperty("_heading", value);
 	}
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeading() {
+	public Optional<String> getHeading() {
 		return getElement().getProperty("_heading", null);
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLevel(final String value) {
+	public void setLevel(final Optional<String> value) {
 		getElement().setProperty("_level", value);
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLevel() {
+	public Optional<String> getLevel() {
 		return getElement().getProperty("_level", null);
 	}
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setType(final String value) {
+	public void setType(final Optional<String> value) {
 		getElement().setProperty("_type", value);
 	}
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getType() {
+	public Optional<String> getType() {
 		return getElement().getProperty("_type", null);
 	}
 
 	/**
-	 * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setVariant(final String value) {
+	public void setVariant(final Optional<String> value) {
 		getElement().setProperty("_variant", value);
 	}
 
 	/**
-	 * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getVariant() {
+	public Optional<String> getVariant() {
 		return getElement().getProperty("_variant", null);
 	}
 }

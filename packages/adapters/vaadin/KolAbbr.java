@@ -11,7 +11,7 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
  */
 
 @Tag("kol-abbr")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-abbr")
 public class KolAbbr extends Component {
 	/**
@@ -19,34 +19,34 @@ public class KolAbbr extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setTitle(final String value) {
+	public void setTitle(final Optional<String> value) {
 		getElement().setProperty("_title", value);
 	}
 
 	/**
 	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTitle() {
+	public Optional<String> getTitle() {
 		return getElement().getProperty("_title", null);
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setTooltipAlign(final String value) {
+	public void setTooltipAlign(final Optional<String> value) {
 		getElement().setProperty("_tooltip-align", value);
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTooltipAlign() {
+	public Optional<String> getTooltipAlign() {
 		return getElement().getProperty("_tooltip-align", null);
 	}
 }

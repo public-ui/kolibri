@@ -24,7 +24,7 @@ export const argTypes = {
 		},
 		defaultValue: "{'top': {'icon':'icofont-arrow-up'}}",
 	},
-	_iconOnly: {
+	_hideLabel: {
 		name: 'Nur Icon',
 		control: {
 			type: 'boolean',

@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { Props } from '../component';
+import { KoliBriSpinProps } from '../types';
 
-export const getSpinHtml = (props: Props): string => {
+export const getSpinHtml = (props: KoliBriSpinProps): string => {
 	props = mixMembers(
 		{
 			_show: false,
@@ -12,7 +12,7 @@ export const getSpinHtml = (props: Props): string => {
 	 <mock:shadow-root>
 		 ${
 				props._show === true
-					? `<span aria-busy="true" aria-label="kol-action-running" aria-live="polite" class="spin" role="alert">
+					? `<span aria-busy="true" aria-label="kol-action-running" aria-live="polite" class="spin dot" role="alert">
 						<span class="bg-spin-1"></span>
 						<span class="bg-spin-2"></span>
 						<span class="bg-spin-3"></span>

@@ -10,24 +10,24 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-symbol")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-symbol")
 public class KolSymbol extends Component {
 	/**
-	 * Gibt an, was der Screenreader ausgeben soll
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
-	 * Gibt an, was der Screenreader ausgeben soll
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
@@ -36,16 +36,16 @@ public class KolSymbol extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setSymbol(final String value) {
+	public void setSymbol(final Optional<String> value) {
 		getElement().setProperty("_symbol", value);
 	}
 
 	/**
 	 * Dieses Property gibt den String an der angezeigt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSymbol() {
+	public Optional<String> getSymbol() {
 		return getElement().getProperty("_symbol", null);
 	}
 }

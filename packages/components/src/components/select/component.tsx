@@ -1,19 +1,22 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
-import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
 };
 
+/**
+ * @slot - Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-select',
 	styleUrls: {
@@ -57,6 +60,8 @@ export class KolSelect implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -77,9 +82,7 @@ export class KolSelect implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<select
 						ref={this.catchRef}
 						title=""
@@ -138,17 +141,17 @@ export class KolSelect implements ComponentApi {
 	private readonly controller: SelectController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -165,7 +168,7 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _height?: string;
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -175,14 +178,19 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -215,7 +223,13 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _size?: number;
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -233,6 +247,7 @@ export class KolSelect implements ComponentApi {
 		_hasValue: false,
 		_height: '',
 		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
 		_multiple: false,
 		_value: [],
@@ -287,6 +302,11 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateId(value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
+	}
+
 	@Watch('_list')
 	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
 		this.controller.validateList(value);
@@ -315,6 +335,11 @@ export class KolSelect implements ComponentApi {
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')

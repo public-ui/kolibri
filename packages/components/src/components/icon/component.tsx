@@ -1,25 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
 import { watchString } from '../../utils/prop.validators';
 import { devHint } from '../../utils/a11y.tipps';
-
-type RequiredProps = AriaLabel & {
-	icon: string;
-};
-type OptionalProps = {
-	part: string;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
-/**
- * TODO: Wy we provide not a icon-wc component instead?!
- */
+import { KoliBriIconAPI, KoliBriIconStates } from './types';
 
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
@@ -31,7 +14,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolIcon implements KoliBriIconAPI {
 	public render(): JSX.Element {
 		return (
 			<Host exportparts="icon">
@@ -53,7 +36,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
-	 * Gibt das Aria-Label am Icon an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
@@ -69,7 +52,7 @@ export class KolIcon implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop() public _part?: string;
 
-	@State() public state: States = {
+	@State() public state: KoliBriIconStates = {
 		_ariaLabel: '…', // ⚠ required
 		_icon: 'codicon codicon-home',
 	};

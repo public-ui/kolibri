@@ -34,7 +34,7 @@ export const WithIcon = (args: any) => (
 	<div>
 		<KolButtonGroup>
 			<KolButton _label="Nur Text"></KolButton>
-			<KolButton _label="Nur Icon" _icon="icofont-home" _iconOnly></KolButton>
+			<KolButton _label="Nur Icon" _icon="icofont-home" _hideLabel></KolButton>
 			<KolButton _label="Text und Icon" _icon="icofont-home" _iconAlign="right"></KolButton>
 		</KolButtonGroup>
 	</div>
@@ -57,7 +57,7 @@ export const WithCta = (args: any) => (
 WithCta.args = {
 	...DefaultArgs,
 	_icon: 'icofont-home',
-	_iconOnly: true,
+	_hideLabel: true,
 };
 WithCta.storyName = 'Button-Group mit Styles';
 

@@ -3,12 +3,12 @@ import { translate } from '../../i18n';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { validateAdjustHeight, validateHasCounter } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -23,6 +23,9 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	return nextRows;
 };
 
+/**
+ * @slot - Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-textarea',
 	styleUrls: {
@@ -41,6 +44,8 @@ export class KolTextarea implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -48,9 +53,7 @@ export class KolTextarea implements ComponentApi {
 				}}
 			>
 				<kol-input
-					class={{
-						textarea: true,
-					}}
+					class="textarea"
 					_alert={this.state._alert}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -62,9 +65,7 @@ export class KolTextarea implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input">
 						<textarea
 							ref={this.catchRef}
@@ -73,7 +74,6 @@ export class KolTextarea implements ComponentApi {
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
 							autoCapitalize="off"
-							// aria-hidden="true" // Wieso ist das hier?
 							autoCorrect="off"
 							disabled={this.state._disabled}
 							id={this.state._id}
@@ -91,10 +91,6 @@ export class KolTextarea implements ComponentApi {
 							}}
 							value={this.state._value}
 						></textarea>
-						{/**
-						 * https://webstandardssherpa.com/reviews/improving-the-tweet-box/
-						 * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live
-						 */}
 						{this.state._hasCounter && (
 							<span aria-atomic="true" aria-live="polite">
 								{this.state._currentLength}
@@ -118,7 +114,7 @@ export class KolTextarea implements ComponentApi {
 	private readonly controller: TextareaController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -128,17 +124,12 @@ export class KolTextarea implements ComponentApi {
 	@Prop({ reflect: true }) public _adjustHeight?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
-	 */
-	@Prop({ reflect: true }) public _hasCounter?: boolean;
-
-	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -148,7 +139,12 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 */
+	@Prop({ reflect: true }) public _hasCounter?: boolean;
+
+	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -158,12 +154,17 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
 
 	/**
-	 * Setzt die maximale Zeichenanzahl.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label!: string;
+
+	/**
+	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
 	 */
 	@Prop() public _maxLength?: number;
 
@@ -203,7 +204,13 @@ export class KolTextarea implements ComponentApi {
 	@Prop({ mutable: true, reflect: false }) public _rows?: number;
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -222,6 +229,7 @@ export class KolTextarea implements ComponentApi {
 		_currentLength: 0,
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_resize: 'vertical',
 	};
 
@@ -274,6 +282,11 @@ export class KolTextarea implements ComponentApi {
 		this.controller.validateId(value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
+	}
+
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
@@ -312,6 +325,11 @@ export class KolTextarea implements ComponentApi {
 	@Watch('_rows')
 	public validateRows(value?: number): void {
 		this.controller.validateRows(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')

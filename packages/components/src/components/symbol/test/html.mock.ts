@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { Props } from '../component';
+import { KoliBriSymbolProps } from '../types';
 
-export const getSymbolHtml = (props: Props): string => {
+export const getSymbolHtml = (props: KoliBriSymbolProps): string => {
 	props = mixMembers(
 		{
 			_ariaLabel: 'kol-warning',

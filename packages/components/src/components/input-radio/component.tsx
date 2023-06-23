@@ -4,12 +4,15 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { W3CInputValue } from '../../types/w3c';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @slot - Die Legende/Überschrift der Radiobuttons.
+ */
 @Component({
 	tag: 'kol-input-radio',
 	styleUrls: {
@@ -28,6 +31,8 @@ export class KolInputRadio implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host>
 				<fieldset
@@ -39,11 +44,12 @@ export class KolInputRadio implements ComponentApi {
 					}}
 				>
 					<legend class="block w-full mb-1 leading-normal">
+						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
-							<slot />
+							{/* INFO: label comes with any html tag or as plain text! */}
+							{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
 						</span>
 					</legend>
-
 					{this.state._list.map((option, index) => {
 						/**
 						 * Damit der Value einer Option ein beliebigen Typ haben kann
@@ -51,11 +57,10 @@ export class KolInputRadio implements ComponentApi {
 						 * mappen. Das tun wir mittels der Map.
 						 */
 						const customId = `${this.state._id}-${index}`;
+						const slotName = `radio-${index}`;
 						return (
 							<kol-input
-								class={{
-									radio: true,
-								}}
+								class="radio"
 								key={customId}
 								_disabled={this.state._disabled || option.disabled}
 								_hideLabel={this.state._hideLabel}
@@ -63,9 +68,10 @@ export class KolInputRadio implements ComponentApi {
 								_id={customId}
 								_renderNoLabel={true}
 								_required={this.state._required}
+								_slotName={slotName}
 								_touched={this.state._touched}
 							>
-								<div slot="input">
+								<div slot={slotName}>
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
 										accessKey={this.state._accessKey} // by radio?!
@@ -114,17 +120,17 @@ export class KolInputRadio implements ComponentApi {
 	private readonly controller: InputRadioController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -134,7 +140,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -144,9 +150,14 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
@@ -164,7 +175,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt die Ausrichtung der LinkList an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
@@ -174,7 +185,13 @@ export class KolInputRadio implements ComponentApi {
 	@Prop({ reflect: true }) public _required?: boolean;
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -190,8 +207,8 @@ export class KolInputRadio implements ComponentApi {
 
 	@State() public state: States = {
 		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
-
 		_orientation: 'vertical',
 	};
 
@@ -234,6 +251,11 @@ export class KolInputRadio implements ComponentApi {
 		this.controller.validateId(value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
+	}
+
 	@Watch('_list')
 	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
 		this.controller.validateList(value);
@@ -257,6 +279,11 @@ export class KolInputRadio implements ComponentApi {
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')

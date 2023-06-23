@@ -1,10 +1,10 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
-import { Props } from '../component';
+import { KoliBriDetailsProps } from '../types';
 
 export const getDetailsHtml = (
-	props: Props,
+	props: KoliBriDetailsProps,
 	slots: {
 		default?: string;
 	} = {}

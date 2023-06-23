@@ -1,31 +1,16 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { PropHasFooter, validateHasFooter } from '../../types/props';
-
-type RequiredProps = {
-	heading: string;
-};
-type OptionalProps = {
-	/**
-	 * @deprecated Use _headline instead
-	 */
-	headline: string;
-	level: HeadingLevel;
-} & PropHasFooter;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { validateHasFooter } from '../../types/props';
+import { KoliBriCardAPI, KoliBriCardStates } from './types';
 
 /**
- * @slot header - Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
- * @slot footer - Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.
+ * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
+ * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich unterhalb der Überschrift der Card.
+ * @slot footer - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Fußbereich der Card.
  */
 @Component({
 	tag: 'kol-card',
@@ -34,21 +19,22 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolCard implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolCard implements KoliBriCardAPI {
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<div class="card">
 					<div class="header">
 						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
-						<slot name="header" />
+						<slot name="header"></slot>
 					</div>
 					<div class="content">
-						<slot name="content" />
+						<slot name="content"></slot> {/* Deprecated for version 2 */}
+						<slot />
 					</div>
 					{this.state._hasFooter && (
 						<div class="footer">
-							<slot name="footer" />
+							<slot name="footer"></slot>
 						</div>
 					)}
 				</div>
@@ -62,23 +48,23 @@ export class KolCard implements Generic.Element.ComponentApi<RequiredProps, Opti
 	@Prop({ reflect: true }) public _hasFooter?: boolean = false;
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 */
 	@Prop() public _heading!: string;
 
 	/**
-	 * Gibt die Überschrift der Card an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @deprecated Verwende stattdessen das Property _heading.
 	 */
 	@Prop() public _headline?: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
-	@State() public state: States = {
+	@State() public state: KoliBriCardStates = {
 		_heading: '…', // '⚠'
 	};
 

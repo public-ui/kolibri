@@ -1,33 +1,11 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { Stringified } from '../../types/common';
 
-import { KoliBriCustomIcon, KoliBriIconProp } from '../../types/icon';
-import { watchBoolean } from '../../utils/prop.validators';
+import { KoliBriIconProp } from '../../types/icon';
 import { validateIcon } from '../../types/props/icon';
+import { validateHideLabel } from '../../types/props';
+import { KolibriSpanAPI, KolibriSpanStates } from './types';
 import { validateLabelWithAriaLabel } from '../../types/props/label';
-
-type RequiredProps = {
-	label: string;
-};
-type OptionalProps = {
-	icon: Stringified<KoliBriIconProp>;
-	iconOnly: boolean;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	icon: {
-		top?: KoliBriCustomIcon;
-		right?: KoliBriCustomIcon;
-		bottom?: KoliBriCustomIcon;
-		left?: KoliBriCustomIcon;
-	};
-	iconOnly: boolean;
-	label: string;
-};
-type OptionalStates = unknown;
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 /**
  * @internal
@@ -36,19 +14,20 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	tag: 'kol-span-wc',
 	shadow: false,
 })
-export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolSpanWc implements KolibriSpanAPI {
 	public render(): JSX.Element {
 		const hideExpertSlot = this.state._label.length > 0;
 		return (
 			<Host
 				class={{
-					'icon-only': this.state._iconOnly,
+					'icon-only': !!this.state._hideLabel, // @deprecated in v2
+					'hide-label': !!this.state._hideLabel,
 				}}
 			>
 				{this.state._icon.top && <kol-icon class="icon top" style={this.state._icon.top.style} _ariaLabel="" _icon={this.state._icon.top.icon} />}
 				<span>
 					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _ariaLabel="" _icon={this.state._icon.left.icon} />}
-					{this.state._iconOnly !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
+					{this.state._hideLabel !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
@@ -60,34 +39,49 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	}
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
-	@State() public state: States = {
+	@State() public state: KolibriSpanStates = {
+		_hideLabel: false,
 		_icon: {},
 		_iconOnly: false,
 		_label: '…', // ⚠ required
 	};
+
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: boolean): void {
+		validateHideLabel(this, value);
+	}
 
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
 		validateIcon(this, value);
 	}
 
+	/**
+	 * @deprecated use _hide-label
+	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
-		watchBoolean(this, '_iconOnly', value);
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_label')
@@ -96,8 +90,8 @@ export class KolSpanWc implements Generic.Element.ComponentApi<RequiredProps, Op
 	}
 
 	public componentWillLoad(): void {
+		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateIcon(this._icon);
-		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 	}
 }

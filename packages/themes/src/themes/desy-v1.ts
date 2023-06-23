@@ -230,13 +230,13 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		justify-content: center;
 		letter-spacing: 0.75px;
 	}
-	button.icon-only > kol-span-wc {
+	button.hide-label > kol-span-wc {
 		padding: 8px;
 	}
-	button.icon-only > kol-span-wc > span > span {
+	button.hide-label > kol-span-wc > span > span {
 		display: none;
 	}
-	button.icon-only > kol-span-wc kol-icon {
+	button.hide-label > kol-span-wc kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;
@@ -374,7 +374,7 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 	:host > div[part*="open"] {
 		padding-bottom: 1em;
 	}`,
-	'KOL-ALERT': `:host > div {background-color: white;// border-width: 2px;// border-style: solid;display: flex;overflow: unset;}:host > div.default {border-color: var(--color-gray-30);}:host > div.default > .icon {background-color: var(--color-gray-30);}:host > div.error {border-color: var(--color-warning);}:host > div.error > .icon {background-color: var(--color-warning);}:host > div.info {border-color: var(--color-primary);}:host > div.info > .icon {background-color: var(--color-primary);}:host > div.success {border-color: var(--color-success);}:host > div.success > .icon {background-color: var(--color-success);}:host > div.warning {border-color: var(--color-yellow-neutral);}:host > div.warning > .icon {background-color: var(--color-yellow-neutral);}:host > div.msg > .icon {color: white;padding: 0.5em;align-items: center;display: inline-flex;}:host > div.card {border-width: 2px;border-style: solid;}:host > div.card.default .heading .icon {background-color: var(--color-gray-30);}:host > div.card.error .heading .icon {background-color: var(--color-warning);}:host > div.card.info .heading .icon {background-color: var(--color-primary);}:host > div.card.success .heading .icon {background-color: var(--color-success);}:host > div.card.warning .heading .icon {background-color: var(--color-yellow-neutral);}:host > div.card .heading .icon {color: white;padding: 0.5em;align-items: center;display: inline-flex;}:host > div kol-heading-wc .icon {margin-right: 0.5em;}:host > div.card .heading .icon {border-radius: 0 0 0.25rem 0;}:host > div.msg > div {padding: 0.25em;}:host > div.msg > div > .heading {padding: 0.25em;display: inline-block;}:host > div .content {padding: 0.25em;}:host > div > div {display: grid;grid-template-columns: 1fr auto;}:host > div > div > .content {grid-row: 2;grid-column: 1;}:host > div > div > .close {grid-row: 1 / span 2;}:host > div.card > div > .heading {width: 100%;}.close > button {min-width: 44px;min-height: 44px;display: grid;gap: 0.25em;line-height: 1.5rem;font-family: var(--font-family);font-weight: 700;cursor: pointer;border-radius: 1.5em;border-style: solid;border-width: 2px;font-size: 1rem;align-items: center;padding: 8px 14px;justify-content: center;font-style: normal;text-align: center;text-transform: uppercase;width: inherit;transition-duration: 0.5s;transition-property: background-color, color, border-color;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);}.close > button.icon-only {padding: 8px;}.close > button.icon-only kol-icon {display: inline-block;width: 1.5em;height: 1.5em;}.close > button:active {box-shadow: none;outline: none;}.close kol-icon::part(icon)::before {content: "x";color: var(--color-primary);font-family: "Font Awesome 6 Free";}`,
+	'KOL-ALERT': `:host > div {background-color: white;// border-width: 2px;// border-style: solid;display: flex;overflow: unset;}:host > div.default {border-color: var(--color-gray-30);}:host > div.default > .icon {background-color: var(--color-gray-30);}:host > div.error {border-color: var(--color-warning);}:host > div.error > .icon {background-color: var(--color-warning);}:host > div.info {border-color: var(--color-primary);}:host > div.info > .icon {background-color: var(--color-primary);}:host > div.success {border-color: var(--color-success);}:host > div.success > .icon {background-color: var(--color-success);}:host > div.warning {border-color: var(--color-yellow-neutral);}:host > div.warning > .icon {background-color: var(--color-yellow-neutral);}:host > div.msg > .icon {color: white;padding: 0.5em;align-items: center;display: inline-flex;}:host > div.card {border-width: 2px;border-style: solid;}:host > div.card.default .heading .icon {background-color: var(--color-gray-30);}:host > div.card.error .heading .icon {background-color: var(--color-warning);}:host > div.card.info .heading .icon {background-color: var(--color-primary);}:host > div.card.success .heading .icon {background-color: var(--color-success);}:host > div.card.warning .heading .icon {background-color: var(--color-yellow-neutral);}:host > div.card .heading .icon {color: white;padding: 0.5em;align-items: center;display: inline-flex;}:host > div kol-heading-wc .icon {margin-right: 0.5em;}:host > div.card .heading .icon {border-radius: 0 0 0.25rem 0;}:host > div.msg > div {padding: 0.25em;}:host > div.msg > div > .heading {padding: 0.25em;display: inline-block;}:host > div .content {padding: 0.25em;}:host > div > div {display: grid;grid-template-columns: 1fr auto;}:host > div > div > .content {grid-row: 2;grid-column: 1;}:host > div > div > .close {grid-row: 1 / span 2;}:host > div.card > div > .heading {width: 100%;}.close > button {min-width: 44px;min-height: 44px;display: grid;gap: 0.25em;line-height: 1.5rem;font-family: var(--font-family);font-weight: 700;cursor: pointer;border-radius: 1.5em;border-style: solid;border-width: 2px;font-size: 1rem;align-items: center;padding: 8px 14px;justify-content: center;font-style: normal;text-align: center;text-transform: uppercase;width: inherit;transition-duration: 0.5s;transition-property: background-color, color, border-color;background-color: rgba(0, 0, 0, 0);border-color: rgba(0, 0, 0, 0);}.close > button.hide-label {padding: 8px;}.close > button.hide-label kol-icon {display: inline-block;width: 1.5em;height: 1.5em;}.close > button:active {box-shadow: none;outline: none;}.close kol-icon::part(icon)::before {content: "x";color: var(--color-primary);font-family: "Font Awesome 6 Free";}`,
 	'KOL-CARD': `/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	:host > div {
 		display: grid;
@@ -1795,6 +1795,145 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		background: var(--color-primary);
 		color: white;
 	}`,
+	'KOL-INPUT-DATE': `kol-input {
+		display: grid;
+	}
+	kol-input label {
+		order: 1;
+		padding: 0.125rem 0 0.4rem;
+		vertical-align: text-top;
+		line-height: 1.2;
+	}
+	kol-input div.input {
+		box-sizing: border-box;
+		order: 2;
+		background-color: white;
+		border-radius: 0.3125rem;
+	}
+	kol-input kol-alert.error {
+		margin-bottom: 0.4em;
+		margin-top: 0.2em;
+		order: 3;
+	}
+	input,
+	select,
+	textarea {
+		font-family: var(--font-family);
+		background-color: transparent;
+		box-sizing: border-box;
+		font-size: 1rem;
+		display: inline-flex;
+		border-color: var(--color-grey);
+		border-width: 1px;
+		border-style: solid;
+		overflow: hidden;
+		width: 100%;
+		line-height: normal;
+		padding: 0.4rem 8px;
+	}
+	input:hover,
+	select:hover,
+	textarea:hover {
+		border-color: #2d6f9e;
+		box-shadow: 0 0 0 1px #2d6f9e inset;
+	}
+	input:focus,
+	select:focus,
+	textarea:focus {
+		border-color: var(--color-primary-20);
+		box-shadow: inset 0 0 0 1px var(--color-primary-20);
+		outline: none;
+	}
+	input,
+	select:not([multiple]) {
+		height: 2.75em;
+	}
+	input::placeholder {
+		color: var(--color-grey);
+	}
+	input:hover {
+		border-color: var(--color-midnight);
+	}
+	input:not([type="color"]):read-only,input:disabled,/* select:read-only, */select:disabled,textarea:read-only,textarea:disabled {
+		cursor: not-allowed;
+		border-color: var(--border-default);
+	}
+	.required label > span::after {
+		content: "*";
+		padding-left: 0.125em;
+	}
+	.icons {
+		display: flex;
+		justify-content: space-between;
+		height: 0;
+	}
+	.icons > * {
+		margin: 0.75em;
+	}
+	.icon-left input,
+	.icon-left select {
+		padding-left: 2em;
+	}
+	.icon-right input,
+	.icon-right select {
+		padding-right: 2em;
+	}
+	kol-input.error input:focus,
+	kol-input.error select:focus,
+	kol-input.error textarea:focus {
+		border-color: var(--color-warning);
+		box-shadow: inset 0 0 0 1px var(--color-warning);
+	}
+	kol-input.error kol-alert.error {
+		color: var(--color-warning);
+	}
+	kol-button-wc {
+		position: relative;
+		float: right;
+		z-index: 1000;
+		margin-top: -2.7em;
+	}
+	kol-button-wc button {
+		border: 0;
+		height: 2.7em;
+		box-sizing: border-box;
+		background-color: transparent;
+		cursor: pointer;
+	}
+	kol-button-wc button:focus,
+	kol-button-wc button:hover {
+		background-color: var(--color-primary);
+		color: var(--color-white);
+	}
+	.icon-right kol-button-wc {
+		margin-right: 2.5em;
+	}
+	.disabled {
+		opacity: 0.33;
+	}
+	select[multiple],
+	textarea {
+		overflow: auto;
+	}
+	textarea {
+		display: block;
+	}
+	select option {
+		margin: 1px 0;
+		padding: 0.5em;
+		border-radius: 0.25em;
+		cursor: pointer;
+	}
+	select option:disabled {
+		cursor: not-allowed;
+	}
+	option:active:not(:disabled),
+	option:checked:not(:disabled),
+	option:focus:not(:disabled),
+	option:hover:not(:disabled) {
+		background: var(--color-primary);
+		color: white;
+	}`,
 	'KOL-INPUT-EMAIL': `kol-input {
 		display: grid;
 	}
@@ -2608,13 +2747,13 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		justify-content: center;
 		letter-spacing: 0.75px;
 	}
-	a.icon-only > kol-span-wc {
+	a.hide-label > kol-span-wc {
 		padding: 8px;
 	}
-	a.icon-only > kol-span-wc > span > span {
+	a.hide-label > kol-span-wc > span > span {
 		display: none;
 	}
-	a.icon-only > kol-span-wc kol-icon {
+	a.hide-label > kol-span-wc kol-icon {
 		display: inline-block;
 		width: 1.5em;
 		height: 1.5em;
@@ -2672,5 +2811,17 @@ export const DESYv1 = KoliBri.createTheme('desy-v1', {
 		background: white;
 		left: unset;
 		position: unset;
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 2px;
+		border-style: solid;
+		border-width: 2px;
+		gap: 0.5rem;
+		line-height: 1rem;
+		padding: 0.75rem 1rem;
+		background-color: var(--color-primary);
+		border-color: var(--color-primary-10);
+		color: white;
+		cursor: pointer;
 	}`,
 });

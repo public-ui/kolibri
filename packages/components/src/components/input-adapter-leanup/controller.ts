@@ -5,12 +5,23 @@ import { Props, Watches } from './types';
 
 const EXPERIMENTAL_MODE = getExperimalMode();
 
+function syncElementAttribute(qualifiedName: string, element?: HTMLElement, value?: string | number | boolean) {
+	if (EXPERIMENTAL_MODE) {
+		if (typeof value === 'boolean' || typeof value === 'number' || typeof value === 'string') {
+			element?.setAttribute(qualifiedName, `${value as string}`);
+		} else {
+			element?.removeAttribute(qualifiedName);
+		}
+	}
+}
+
 export class ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 	protected readonly name: string;
 	protected readonly host?: HTMLElement;
 
 	public readonly formAssociated?: HTMLInputElement;
+	public syncToOwnInput?: HTMLInputElement;
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		this.component = component;
@@ -29,20 +40,33 @@ export class ControlledInputController implements Watches {
 		}
 	}
 
+	/**
+	 * We try to support native form-associated custom elements.
+	 *
+	 * @see https://github.com/public-ui/kolibri/discussions/2821
+	 */
 	protected readonly syncFormAssociatedName = () => {
-		if (EXPERIMENTAL_MODE) {
-			this.formAssociated?.setAttribute('name', (this.component.state._name as string) || (this.component.state._id as string));
-		}
+		syncElementAttribute('id', this.formAssociated, this.component.state._id as string);
+		syncElementAttribute('name', this.formAssociated, this.component.state._name as string);
+		syncElementAttribute('value', this.formAssociated, this.component.state._value as string);
 	};
 
 	public readonly setFormAssociatedValue = (value: string | null = null) => {
-		if (EXPERIMENTAL_MODE) {
-			this.formAssociated?.setAttribute('value', value as string);
-		}
+		syncElementAttribute('value', this.formAssociated, value as string);
+		syncElementAttribute('value', this.syncToOwnInput, value as string);
 	};
 
 	public validateAlert(value?: boolean): void {
 		watchBoolean(this.component, '_alert', value);
+	}
+
+	public validateSyncValueBySelector(value?: string): void {
+		if (EXPERIMENTAL_MODE && typeof value === 'string') {
+			const input = document.querySelector(value);
+			if (input instanceof HTMLInputElement) {
+				this.syncToOwnInput = input;
+			}
+		}
 	}
 
 	public validateTouched(value?: boolean): void {
@@ -51,6 +75,7 @@ export class ControlledInputController implements Watches {
 
 	public componentWillLoad(): void {
 		this.validateAlert(this.component._alert);
+		this.validateSyncValueBySelector(this.component._syncValueBySelector);
 		this.validateTouched(this.component._touched);
 	}
 }

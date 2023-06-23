@@ -3,7 +3,8 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { W3CInputValue } from '../../types/w3c';
-import { InputRequiredProps } from '../input-text/types';
+import { InputRequiredProps } from '../input/types';
+import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps & {
 	list: Stringified<Option<W3CInputValue>[]>;
@@ -19,6 +20,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	orientation: Orientation;
 	required: boolean;
+	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: W3CInputValue;
@@ -29,7 +31,7 @@ type RequiredStates = {
 	id: string;
 	list: Option<W3CInputValue>[];
 	orientation: Orientation;
-};
+} & PropLabel;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;

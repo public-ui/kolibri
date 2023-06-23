@@ -2,7 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { mapIconProp2State } from '../../../types/props/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { Props, States } from '../component';
+import { KolibriSpanProps, KolibriSpanStates } from '../types';
 
 type Slots = {
 	''?: string;
@@ -10,16 +10,16 @@ type Slots = {
 } & Record<string, undefined | string>;
 
 export const getSpanWcHtml = (
-	props: Props,
+	props: KolibriSpanProps,
 	slots: Slots = {
 		expert: undefined,
 	},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<Props, States>(
+	const state = mixMembers<KolibriSpanProps, KolibriSpanStates>(
 		{
 			_icon: {},
-			_iconOnly: false,
+			_hideLabel: false,
 			_label: '…', // ⚠ required
 		},
 		props
@@ -27,7 +27,7 @@ export const getSpanWcHtml = (
 	const hideExpertSlot = state._label.length > 0;
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
-<kol-span-wc${props._iconOnly ? ' _icon-only' : ''}${state._iconOnly === true ? ` class="icon-only"` : ``}${additionalAttrs}>
+<kol-span-wc${props._hideLabel ? ' _hide-label' : ''}${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${additionalAttrs}>
 	${
 		icon.top
 			? getIconHtml({
@@ -48,7 +48,7 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		${state._iconOnly !== true && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
+		${!state._hideLabel && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
 		<span${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>
@@ -75,9 +75,9 @@ export const getSpanWcHtml = (
 </kol-span-wc>`;
 };
 
-export const getSpanHtml = (props: Props): string => {
+export const getSpanHtml = (props: KolibriSpanProps): string => {
 	return `
-<kol-span${props._iconOnly ? ' _icon-only' : ''}>
+<kol-span${props._hideLabel ? ' _hide-label' : ''}>
 	<mock:shadow-root>
 		${getSpanWcHtml(props, {
 			expert: `<slot name="expert" slot="expert"></slot>`,

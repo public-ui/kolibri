@@ -1,40 +1,25 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from './validation';
+import { KoliBriHeadingAPI, KoliBriHeadingStates } from './types';
 
-type RequiredProps = {
-	label: string;
-};
-type OptionalProps = {
-	secondaryHeadline: string;
-	level: HeadingLevel;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	label: string;
-	level: HeadingLevel;
-};
-type OptionalStates = {
-	secondaryHeadline: string;
-};
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
+/**
+ * @slot - Inhalt der Überschrift.
+ */
 @Component({
 	tag: 'kol-heading-wc',
 	shadow: false,
 })
-export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolHeadingWc implements KoliBriHeadingAPI {
 	/**
-	 * Gibt den Text der Überschrift an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -43,7 +28,7 @@ export class KolHeadingWc implements Generic.Element.ComponentApi<RequiredProps,
 	 */
 	@Prop() public _secondaryHeadline?: string;
 
-	@State() public state: States = {
+	@State() public state: KoliBriHeadingStates = {
 		_label: '…', // ⚠ required
 		_level: 1,
 	};

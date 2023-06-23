@@ -3,46 +3,23 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
-import {
-	KoliBriDataType,
-	KoliBriSortDirection,
-	KoliBriSortFunction,
-	KoliBriTableCell,
-	KoliBriTableHeaderCell,
-	KoliBriTableHeaders,
-	KoliBriTablePaginationProps,
-	KoliBriTablePaginationStates,
-} from '../../types/table';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import { translate } from '../../i18n';
-
-type KoliBriTableHeaderCellAndData = KoliBriTableHeaderCell & {
-	data: KoliBriDataType;
-};
-
-type RequiredProps = {
-	caption: string;
-	data: Stringified<KoliBriDataType[]>;
-	headers: Stringified<KoliBriTableHeaders>;
-};
-type OptionalProps = {
-	minWidth: string;
-	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-};
-
-type RequiredStates = {
-	caption: string;
-	data: KoliBriDataType[];
-	headers: KoliBriTableHeaders;
-	pagination: KoliBriTablePaginationStates;
-	sortedData: KoliBriDataType[];
-};
-type OptionalStates = {
-	minWidth: string;
-	sortDirection: KoliBriSortDirection;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { devHint } from '../../utils/a11y.tipps';
+import {
+	KoliBriSortDirection,
+	KoliBriSortFunction,
+	KoliBriTableAPI,
+	KoliBriTableCell,
+	KoliBriTableDataType,
+	KoliBriTableHeaderCell,
+	KoliBriTableHeaderCellAndData,
+	KoliBriTableHeaders,
+	KoliBriTablePaginationProps,
+	KoliBriTableRender,
+	KoliBriTableStates,
+} from './types';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -55,24 +32,29 @@ const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	},
 	shadow: true,
 })
-export class KolTable implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	// https://github.com/ionic-team/stencil/issues/2895 // was ist damit?
+export class KolTable implements KoliBriTableAPI {
 	private horizontal = true;
 	private sortFunction?: KoliBriSortFunction;
 	private sortDirections: Map<KoliBriSortFunction, KoliBriSortDirection> = new Map();
 	private showPagination = false;
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
+	private disableSort = false;
 
 	/**
-	 * Gibt den  Titel oder eine Legende mit Erklärungen zur Tabelle an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _caption!: string;
 
 	/**
 	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
 	 */
-	@Prop() public _data!: Stringified<KoliBriDataType[]>;
+	@Prop() public _data!: Stringified<KoliBriTableDataType[]>;
+
+	/**
+	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
+	 */
+	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
 
 	/**
 	 * Gibt die horizontalen und vertikalen Header für die Tabelle an.
@@ -89,9 +71,10 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
-	@State() public state: States = {
+	@State() public state: KoliBriTableStates = {
 		_caption: '…', // ⚠ required
 		_data: [],
+		_dataFoot: [],
 		_headers: {
 			horizontal: [],
 			vertical: [],
@@ -112,26 +95,47 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	}
 
 	@Watch('_data')
-	public validateData(value?: Stringified<KoliBriDataType[]>): void {
+	public validateData(value?: Stringified<KoliBriTableDataType[]>): void {
 		emptyStringByArrayHandler(value, () => {
 			objectObjectHandler(value, () => {
 				if (typeof value === 'undefined') {
 					value = [];
 				}
 				try {
-					value = parseJson<KoliBriDataType[]>(value);
+					value = parseJson<KoliBriTableDataType[]>(value);
 					// eslint-disable-next-line no-empty
 				} catch (e) {
 					// value behält den ursprünglichen Wert
 				}
-				if (Array.isArray(value) && value.find((dataTupel: KoliBriDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
+				if (Array.isArray(value) && value.find((dataTupel: KoliBriTableDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
 					setState(this, '_data', value, {
 						afterPatch: () => {
 							// TODO: kein guter Hack (endless loop)
-							const timeout = setTimeout(() => {
-								clearTimeout(timeout);
-								this.updateSortedData();
-							});
+							setTimeout(this.updateSortedData);
+						},
+					});
+				}
+			});
+		});
+	}
+
+	@Watch('_dataFoot')
+	public validateDataFoot(value?: Stringified<KoliBriTableDataType[]>): void {
+		emptyStringByArrayHandler(value, () => {
+			objectObjectHandler(value, () => {
+				if (typeof value === 'undefined') {
+					value = [];
+				}
+				try {
+					value = parseJson<KoliBriTableDataType[]>(value);
+					// eslint-disable-next-line no-empty
+				} catch (e) {
+					// value behält den ursprünglichen Wert
+				}
+				if (Array.isArray(value) && value.find((dataTupel: KoliBriTableDataType) => !(typeof dataTupel === 'object' && dataTupel !== null)) === undefined) {
+					setState(this, '_dataFoot', value, {
+						afterPatch: () => {
+							setTimeout(this.updateSortedData);
 						},
 					});
 				}
@@ -191,6 +195,12 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 									}
 								});
 							});
+							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
+								this.disableSort = true;
+								devHint(
+									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`
+								);
+							}
 						},
 					},
 				});
@@ -260,12 +270,13 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	public componentWillLoad(): void {
 		this.validateCaption(this._caption);
 		this.validateData(this._data);
+		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
 	}
 
-	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriDataType[]): number {
+	private getNumberOfCols(horizontalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
 		let max = 0;
 		horizontalHeaders.forEach((row) => {
 			let count = 0;
@@ -280,7 +291,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		return max;
 	}
 
-	private getNumberOfRows(verticalHeaders: KoliBriTableHeaderCell[][], data: KoliBriDataType[]): number {
+	private getNumberOfRows(verticalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[]): number {
 		let max = 0;
 		verticalHeaders.forEach((col) => {
 			let count = 0;
@@ -291,11 +302,12 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		});
 		if (max === 0) {
 			max = data.length;
+		} else {
+			max -= this.state._dataFoot.length;
 		}
 		return max;
 	}
 
-	// TODO: hier muss noch die order beachtet werden bei colspan und rowspan
 	private filterHeaderKeys(headers: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] {
 		const primaryHeader: KoliBriTableHeaderCell[] = [];
 		headers.forEach((cells) => {
@@ -320,12 +332,17 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		return primaryHeader;
 	}
 
-	private createDataField(data: KoliBriDataType[], headers: KoliBriTableHeaders): KoliBriTableCell[][] {
+	private createDataField(data: KoliBriTableDataType[], headers: KoliBriTableHeaders, isFoot?: boolean): KoliBriTableCell[][] {
 		headers.horizontal = Array.isArray(headers?.horizontal) ? headers.horizontal : [];
 		headers.vertical = Array.isArray(headers?.vertical) ? headers.vertical : [];
 		const primaryHeader = this.getPrimaryHeader(headers);
 		const maxCols = this.getNumberOfCols(headers.horizontal, data);
-		const maxRows = this.getNumberOfRows(headers.vertical, data);
+		let maxRows = this.getNumberOfRows(headers.vertical, data);
+		let startRow = 0;
+		if (isFoot) {
+			startRow = maxRows;
+			maxRows += this.state._dataFoot.length;
+		}
 		const dataField: KoliBriTableCell[][] = [];
 
 		const rowCount: number[] = [];
@@ -335,19 +352,19 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			rowSpans[index] = [];
 		});
 
-		for (let i = 0; i < maxRows; i++) {
+		for (let i = startRow; i < maxRows; i++) {
 			const dataRow: KoliBriTableHeaderCellAndData[] = [];
-			headers.vertical.forEach((cells, index) => {
-				let sum = 0;
-				rowSpans[index].forEach((value) => (sum += value));
-				if (sum <= i) {
-					const rows = cells[i - sum + rowCount[index]];
+			headers.vertical.forEach((headerCells, index) => {
+				let rowsTotal = 0;
+				rowSpans[index].forEach((value) => (rowsTotal += value));
+				if (rowsTotal <= i) {
+					const rows = headerCells[i - rowsTotal + rowCount[index]];
 					if (typeof rows === 'object') {
 						dataRow.push({
 							...rows,
 							asTd: false,
 							// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-							data: {} as KoliBriDataType,
+							data: {} as KoliBriTableDataType,
 						});
 						let rowSpan = 1;
 						if (typeof rows.rowSpan === 'number' && rows.rowSpan > 1) {
@@ -365,20 +382,21 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 			});
 			for (let j = 0; j < maxCols; j++) {
 				if (this.horizontal === true) {
+					const row = isFoot ? this.state._dataFoot[i - startRow] : data[i];
 					if (
 						typeof primaryHeader[j] === 'object' &&
 						primaryHeader[j] !== null &&
 						typeof primaryHeader[j].key === 'string' &&
-						typeof data[i] === 'object' &&
-						data[i] !== null
+						typeof row === 'object' &&
+						row !== null
 					) {
 						dataRow.push({
 							...primaryHeader[j],
 							colSpan: undefined,
 							// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-							data: data[i],
+							data: row,
 							// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-							label: data[i][primaryHeader[j].key as unknown as string] as string,
+							label: row[primaryHeader[j].key as unknown as string] as string,
 							rowSpan: undefined,
 						});
 					}
@@ -433,7 +451,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		return dataField;
 	}
 
-	private selectDisplayedData(data: KoliBriDataType[], pageSize: number, page: number): KoliBriDataType[] {
+	private selectDisplayedData(data: KoliBriTableDataType[], pageSize: number, page: number): KoliBriTableDataType[] {
 		if (typeof pageSize === 'number' && pageSize > 0 && typeof page === 'number' && page > 0) {
 			this.pageStartSlice = pageSize * (page - 1);
 			this.pageEndSlice = pageSize * page > data.length ? data.length : pageSize * page;
@@ -445,28 +463,26 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		}
 	}
 
-	private cellRender(col: KoliBriTableHeaderCellAndData, el?: HTMLElement): void {
+	private cellRender(col: KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el?: HTMLElement): void {
 		if (el /* SSR instanceof HTMLElement */) {
 			clearTimeout(CELL_REFS.get(el));
 			CELL_REFS.set(
 				el,
 				setTimeout(() => {
 					clearTimeout(CELL_REFS.get(el));
-					if (typeof col.render === 'function') {
-						const html = col.render(
-							el,
-							{
-								asTd: col.asTd,
-								label: col.label,
-								textAlign: col.textAlign,
-								width: col.width,
-							} as KoliBriTableHeaderCell,
-							col.data,
-							this.state._data
-						);
-						if (typeof html === 'string') {
-							el.innerHTML = html;
-						}
+					const html = col.render(
+						el,
+						{
+							asTd: col.asTd,
+							label: col.label,
+							textAlign: col.textAlign,
+							width: col.width,
+						} as KoliBriTableHeaderCell,
+						col.data,
+						this.state._data
+					);
+					if (typeof html === 'string') {
+						el.innerHTML = html;
 					}
 				})
 			);
@@ -474,7 +490,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 	}
 
 	private updateSortedData = () => {
-		let sortedData: KoliBriDataType[] = this.state._data;
+		let sortedData: KoliBriTableDataType[] = this.state._data;
 		if (typeof this.sortFunction === 'function') {
 			switch (this.sortDirections.get(this.sortFunction)) {
 				case 'NOS':
@@ -490,8 +506,114 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 		setState(this, '_sortedData', sortedData);
 	};
 
+	private readonly renderTableRow = (row: KoliBriTableCell[], rowIndex: number): JSX.Element => {
+		return <tr key={`tbody-${rowIndex}`}>{row.map((col, colIndex) => this.renderTableCell(col, rowIndex, colIndex))}</tr>;
+	};
+	private readonly renderTableCell = (col: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
+		if (col.asTd === false) {
+			return (
+				<th // role="rowheader"
+					key={`tbody-${rowIndex}-${colIndex}-${col.label}`}
+					scope={typeof col.rowSpan === 'number' && col.rowSpan > 1 ? 'rowgroup' : 'row'}
+					colSpan={col.colSpan}
+					rowSpan={col.rowSpan}
+					style={{
+						textAlign: col.textAlign,
+						width: col.width,
+					}}
+					aria-sort={
+						!this.disableSort && typeof col.sort === 'function'
+							? col.sort !== this.sortFunction || this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+								? 'none'
+								: this.sortDirections.get(col.sort) === 'ASC'
+								? 'ascending'
+								: 'descending'
+							: undefined
+					}
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
+				>
+					<div class="w-full flex gap-1 items-center">
+						<div
+							class={{
+								'w-full': true,
+								[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+							}}
+							innerHTML={col.label}
+							style={{
+								textAlign: col.textAlign,
+							}}
+						></div>
+						{!this.disableSort && typeof col.sort === 'function' && (
+							<kol-button
+								exportparts="icon"
+								_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
+								_icon={
+									col.sort !== this.sortFunction || this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
+										? 'codicon codicon-fold'
+										: this.sortDirections.get(col.sort) === 'ASC'
+										? 'codicon codicon-chevron-up'
+										: 'codicon codicon-chevron-down'
+								}
+								_hideLabel
+								_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
+								_on={{
+									onClick: () => {
+										if (typeof col.sort === 'function') {
+											this.sortFunction = col.sort;
+											switch (this.sortDirections.get(this.sortFunction)) {
+												case 'ASC':
+													this.setSortDirection(this.sortFunction, 'DESC');
+													break;
+												case 'DESC':
+													this.setSortDirection(this.sortFunction, 'NOS');
+													break;
+												default:
+													this.setSortDirection(this.sortFunction, 'ASC');
+											}
+											this.updateSortedData();
+										}
+									},
+								}}
+								_variant="ghost"
+							></kol-button>
+						)}
+					</div>
+				</th>
+			);
+		} else {
+			return (
+				<td // role="gridcell"
+					key={`tbody-${rowIndex}-${colIndex}-${col.label}`}
+					class={{
+						[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+					}}
+					colSpan={col.colSpan}
+					rowSpan={col.rowSpan}
+					style={{
+						textAlign: col.textAlign,
+						width: col.width,
+					}}
+					ref={
+						typeof col.render === 'function'
+							? (el) => {
+									this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+							  }
+							: undefined
+					}
+					innerHTML={typeof col.render !== 'function' ? col.label : ''}
+				></td>
+			);
+		}
+	};
+
+	private readonly renderFoot = (): JSX.Element => {
+		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headers, true);
+		return <tfoot>{rows.map(this.renderTableRow)}</tfoot>;
+	};
+
 	public render(): JSX.Element {
-		const displayedData: KoliBriDataType[] = this.selectDisplayedData(
+		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
 			this.showPagination ? this.state._pagination?._pageSize ?? 10 : this.state._sortedData.length,
 			this.state._pagination._page || 1
@@ -521,20 +643,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 						</div>
 					</div>
 				)}
-				{/*
-				  - https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
-					- https://www.a11yproject.com/posts/how-to-use-the-tabindex-attribute/
-					- https://ux.stackexchange.com/questions/119952/when-is-it-wrong-to-put-tabindex-0-on-non-interactive-content
-
-					Nicht <div tabindex="0">
-
-					DOCH!!!
-					https://dequeuniversity.com/rules/axe/4.4/scrollable-region-focusable?application=AxeChrome
-				*/}
 				<div class="table" tabindex="0">
 					<table
-						// role="grid"
-						// aria-readonly="true"
 						style={{
 							minWidth: this.state._minWidth,
 						}}
@@ -542,13 +652,13 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 						<caption>{this.state._caption}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
-								{this.state._headers.horizontal.map((cols, rowIdx) => (
-									<tr key={`thead-${rowIdx}`}>
-										{cols.map((col, colIdx) => {
+								{this.state._headers.horizontal.map((cols, rowIndex) => (
+									<tr key={`thead-${rowIndex}`}>
+										{cols.map((col, colIndex) => {
 											if (col.asTd === true) {
 												return (
 													<td // role="gridcell"
-														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
+														key={`thead-${rowIndex}-${colIndex}-${col.label}`}
 														class={{
 															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
 														}}
@@ -561,7 +671,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 														ref={
 															typeof col.render === 'function'
 																? (el) => {
-																		this.cellRender(col as KoliBriTableHeaderCellAndData, el);
+																		this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
 																  }
 																: undefined
 														}
@@ -571,7 +681,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 											} else {
 												return (
 													<th // role="columnheader"
-														key={`thead-${rowIdx}-${colIdx}-${col.label}`}
+														key={`thead-${rowIndex}-${colIndex}-${col.label}`}
 														scope={typeof col.colSpan === 'number' && col.colSpan > 1 ? 'colgroup' : 'col'}
 														colSpan={col.colSpan}
 														rowSpan={col.rowSpan}
@@ -580,7 +690,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 															width: col.width,
 														}}
 														aria-sort={
-															typeof col.sort === 'function'
+															!this.disableSort && typeof col.sort === 'function'
 																? col.sort !== this.sortFunction ||
 																  this.sortDirections.get(col.sort) === 'NOS' ||
 																  this.sortDirections.get(col.sort) === undefined
@@ -604,7 +714,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																	textAlign: col.textAlign,
 																}}
 															></div>
-															{typeof col.sort === 'function' && (
+															{!this.disableSort && typeof col.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
 																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
@@ -617,7 +727,7 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 																			? 'codicon codicon-chevron-up'
 																			: 'codicon codicon-chevron-down'
 																	}
-																	_iconOnly
+																	_hideLabel
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{
 																		onClick: () => {
@@ -649,116 +759,8 @@ export class KolTable implements Generic.Element.ComponentApi<RequiredProps, Opt
 								))}
 							</thead>
 						)}
-						{/* <tbody aria-atomic="true" aria-live="polite" aria-relevant="additions removals"> */}
-						<tbody>
-							{dataField.map((row, rowIdx) => {
-								return (
-									<tr key={`tbody-${rowIdx}`}>
-										{row.map((col, colIdx) => {
-											if (col.asTd === false) {
-												return (
-													<th // role="rowheader"
-														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
-														scope={typeof col.rowSpan === 'number' && col.rowSpan > 1 ? 'rowgroup' : 'row'}
-														colSpan={col.colSpan}
-														rowSpan={col.rowSpan}
-														style={{
-															textAlign: col.textAlign,
-															width: col.width,
-														}}
-														aria-sort={
-															typeof col.sort === 'function'
-																? col.sort !== this.sortFunction ||
-																  this.sortDirections.get(col.sort) === 'NOS' ||
-																  this.sortDirections.get(col.sort) === undefined
-																	? 'none'
-																	: this.sortDirections.get(col.sort) === 'ASC'
-																	? 'ascending'
-																	: 'descending'
-																: undefined
-														}
-														// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
-													>
-														<div class="w-full flex gap-1 items-center">
-															<div
-																class={{
-																	'w-full': true,
-																	[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
-																}}
-																innerHTML={col.label}
-																style={{
-																	textAlign: col.textAlign,
-																}}
-															></div>
-															{typeof col.sort === 'function' && (
-																<kol-button
-																	exportparts="icon"
-																	_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																	_icon={
-																		col.sort !== this.sortFunction ||
-																		this.sortDirections.get(col.sort) === 'NOS' ||
-																		this.sortDirections.get(col.sort) === undefined
-																			? 'codicon codicon-fold'
-																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'codicon codicon-chevron-up'
-																			: 'codicon codicon-chevron-down'
-																	}
-																	_iconOnly
-																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-																	_on={{
-																		onClick: () => {
-																			if (typeof col.sort === 'function') {
-																				this.sortFunction = col.sort;
-																				switch (this.sortDirections.get(this.sortFunction)) {
-																					case 'ASC':
-																						this.setSortDirection(this.sortFunction, 'DESC');
-																						break;
-																					case 'DESC':
-																						this.setSortDirection(this.sortFunction, 'NOS');
-																						break;
-																					default:
-																						this.setSortDirection(this.sortFunction, 'ASC');
-																				}
-																				this.updateSortedData();
-																			}
-																		},
-																	}}
-																	_variant="ghost"
-																></kol-button>
-															)}
-														</div>
-													</th>
-												);
-											} else {
-												return (
-													<td // role="gridcell"
-														key={`tbody-${rowIdx}-${colIdx}-${col.label}`}
-														class={{
-															[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
-														}}
-														colSpan={col.colSpan}
-														rowSpan={col.rowSpan}
-														style={{
-															textAlign: col.textAlign,
-															width: col.width,
-														}}
-														ref={
-															typeof col.render === 'function'
-																? (el) => {
-																		this.cellRender(col as KoliBriTableHeaderCellAndData, el);
-																  }
-																: undefined
-														}
-														innerHTML={typeof col.render !== 'function' ? col.label : ''}
-													></td>
-												);
-											}
-										})}
-									</tr>
-								);
-							})}
-						</tbody>
+						<tbody>{dataField.map(this.renderTableRow)}</tbody>
+						{this.state._dataFoot.length > 0 ? this.renderFoot() : ''}
 					</table>
 				</div>
 			</Host>

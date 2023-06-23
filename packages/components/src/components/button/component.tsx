@@ -15,7 +15,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Alignment, validateAriaExpanded, validateDisabled } from '../../types/props';
+import { AriaCurrent, Align, validateAriaExpanded, validateDisabled, validateHideLabel } from '../../types/props';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -72,14 +72,15 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-label={this.state._iconOnly === false ? this.state._ariaLabel : undefined}
-					aria-labelledby={this.state._iconOnly === true ? this.nonce : undefined}
+					aria-label={this.state._hideLabel === false ? this.state._ariaLabel : undefined}
+					aria-labelledby={this.state._hideLabel === true ? this.nonce : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
 						[this.state._variant as string]: this.state._variant !== 'custom',
 						[this.state._customClass as string]:
 							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-						'icon-only': this.state._iconOnly === true,
+						'icon-only': this.state._hideLabel === true, // @deprecated in v2
+						'hide-label': this.state._hideLabel === true,
 					}}
 					disabled={this.state._disabled}
 					id={this.state._id}
@@ -89,15 +90,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}>
-						{/*
-							Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-							die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-						*/}
-						<slot name="expert" slot="expert" />
+					<kol-span-wc _icon={this._icon} _hideLabel={this.state._hideLabel} _label={this.state._label}>
+						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				{this.state._iconOnly === true && (
+				{this.state._hideLabel === true && (
 					<kol-tooltip
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
@@ -114,7 +111,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -124,26 +121,22 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
-	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
-	 * Sprachsteuerung von interaktiven Elementen funktioniert, muss der
-	 * Aria-Label-Text mit dem Label-Text des Buttons beginnen.
-	 *
-	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
@@ -153,34 +146,40 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _customClass?: string;
 
 	/**
-	 * Gibt an, ob der Button deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob das Icon links oder rechts dargestellt werden soll.
+	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: Align;
 
 	/**
-	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
-	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
 	@Prop({ mutable: true, reflect: false }) public _label!: string;
@@ -191,22 +190,22 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
-	 * Setzt den Typ der Schaltfläche.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: KoliBriButtonType = 'button';
 
@@ -216,7 +215,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _value?: Stringified<unknown>;
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 
@@ -279,6 +278,11 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		}
 	}
 
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: boolean): void {
+		validateHideLabel(this, value);
+	}
+
 	@Watch('_icon')
 	public validateIcon(value?: KoliBriIconProp): void {
 		validateIcon(this, value);
@@ -287,29 +291,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * @deprecated
 	 */
-
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: Alignment): void {
+	public validateIconAlign(value?: Align): void {
 		watchIconAlign(this, value);
 	}
 
+	/**
+	 * @deprecated use _hide-label
+	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
-		watchBoolean(this, '_iconOnly', value, {
-			defaultValue: false,
-			// hooks: {
-			//   beforePatch: (_value, nextState) => {
-			//     let ariaLabel = this.state._ariaLabel;
-			//     if (nextState.has('_ariaLabel')) {
-			//       ariaLabel = nextState.get('_ariaLabel') as string;
-			//     }
-			//     if (typeof ariaLabel !== 'string' || ariaLabel.length <= 0) {
-			//       devHint(`[KolButton]: Bevor Icon-Only aktiviert wird, muss ein Aria-Label bzw. Label gesetzt werden.`);
-			//       nextState.set('_iconOnly', false);
-			//     }
-			//   },
-			// },
-		});
+		this.validateHideLabel(value);
 	}
 
 	@Watch('_id')
@@ -343,7 +335,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: Align): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
@@ -371,9 +363,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
+		this.validateHideLabel(this._hideLabel || this._iconOnly);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
-		this.validateIconOnly(this._iconOnly);
 		this.validateId(this._id);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);

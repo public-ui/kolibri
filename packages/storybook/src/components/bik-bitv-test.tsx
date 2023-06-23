@@ -158,7 +158,7 @@ export class BikBitvTest extends Component<Props, State> {
 						}}
 						_label="Hilfe"
 						_icon="icofont-info"
-						_iconOnly
+						_hideLabel
 						_on={{
 							onClick: (event) => {
 								this.setState(() => ({

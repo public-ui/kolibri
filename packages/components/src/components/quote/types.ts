@@ -13,7 +13,7 @@ type OptionalProps = {
 	caption: string;
 	variant: KoliBriQuoteVariant;
 };
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type KoliBriQuoteProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	href: string; // URL to the source of the quote (cite)
@@ -23,6 +23,6 @@ type RequiredStates = {
 type OptionalStates = {
 	caption: string;
 };
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type KoliBriQuoteStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-export type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type KoliBriQuoteApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

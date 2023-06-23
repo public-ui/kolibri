@@ -1,8 +1,11 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
-import { Props } from './component';
+import { KoliBriHeadingProps } from './types';
 
+/**
+ * @slot - Inhalt der Überschrift.
+ */
 @Component({
 	tag: 'kol-heading',
 	styleUrls: {
@@ -10,7 +13,7 @@ import { Props } from './component';
 	},
 	shadow: true,
 })
-export class KolHeading implements Props {
+export class KolHeading implements KoliBriHeadingProps {
 	public render(): JSX.Element {
 		return (
 			<kol-heading-wc _label={this._label} _level={this._level} _secondaryHeadline={this._secondaryHeadline}>
@@ -19,12 +22,12 @@ export class KolHeading implements Props {
 		);
 	}
 	/**
-	 * Gibt den Text der Überschrift an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder ob es keine Überschrift ist, sondern nur fett gedruckt.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel;
 

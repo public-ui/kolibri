@@ -6,342 +6,334 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * 
+ * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
  */
 
 @Tag("kol-split-button")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-split-button")
 public class KolSplitButton extends Component {
 	/**
-	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAccessKey(final String value) {
+	public void setAccessKey(final Optional<String> value) {
 		getElement().setProperty("_access-key", value);
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAccessKey() {
+	public Optional<String> getAccessKey() {
 		return getElement().getProperty("_access-key", null);
 	}
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAriaControls(final String value) {
+	public void setAriaControls(final Optional<String> value) {
 		getElement().setProperty("_aria-controls", value);
 	}
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaControls() {
+	public Optional<String> getAriaControls() {
 		return getElement().getProperty("_aria-controls", null);
 	}
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAriaCurrent(final String value) {
+	public void setAriaCurrent(final Optional<String> value) {
 		getElement().setProperty("_aria-current", value);
 	}
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaCurrent() {
+	public Optional<String> getAriaCurrent() {
 		return getElement().getProperty("_aria-current", null);
 	}
 
 	/**
-	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAriaExpanded(final String value) {
+	public void setAriaExpanded(final Optional<String> value) {
 		getElement().setProperty("_aria-expanded", value);
 	}
 
 	/**
-	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaExpanded() {
+	public Optional<String> getAriaExpanded() {
 		return getElement().getProperty("_aria-expanded", null);
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
-Sprachsteuerung von interaktiven Elementen funktioniert, muss der
-Aria-Label-Text mit dem Label-Text des Buttons beginnen.
-
-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
-	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
-Sprachsteuerung von interaktiven Elementen funktioniert, muss der
-Aria-Label-Text mit dem Label-Text des Buttons beginnen.
-
-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setAriaSelected(final String value) {
+	public void setAriaSelected(final Optional<String> value) {
 		getElement().setProperty("_aria-selected", value);
 	}
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaSelected() {
+	public Optional<String> getAriaSelected() {
 		return getElement().getProperty("_aria-selected", null);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setCustomClass(final String value) {
+	public void setCustomClass(final Optional<String> value) {
 		getElement().setProperty("_custom-class", value);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getCustomClass() {
+	public Optional<String> getCustomClass() {
 		return getElement().getProperty("_custom-class", null);
 	}
 
 	/**
-	 * Gibt an, ob der Button deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setDisabled(final String value) {
+	public void setDisabled(final Optional<String> value) {
 		getElement().setProperty("_disabled", value);
 	}
 
 	/**
-	 * Gibt an, ob der Button deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getDisabled() {
+	public Optional<String> getDisabled() {
 		return getElement().getProperty("_disabled", null);
 	}
 
 	/**
-	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setHideLabel(final String value) {
+	public void setHideLabel(final Optional<String> value) {
 		getElement().setProperty("_hide-label", value);
 	}
 
 	/**
-	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHideLabel() {
+	public Optional<String> getHideLabel() {
 		return getElement().getProperty("_hide-label", null);
 	}
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setIcon(final String value) {
+	public void setIcon(final Optional<String> value) {
 		getElement().setProperty("_icon", value);
 	}
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getIcon() {
+	public Optional<String> getIcon() {
 		return getElement().getProperty("_icon", null);
 	}
 
 	/**
-	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setIconOnly(final String value) {
+	public void setIconOnly(final Optional<String> value) {
 		getElement().setProperty("_icon-only", value);
 	}
 
 	/**
-	 * Blendet den Text aus und zeigt nur das gewählte Icon an, der Text wird in den Tooltip verschoben.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getIconOnly() {
+	public Optional<String> getIconOnly() {
 		return getElement().getProperty("_icon-only", null);
 	}
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final String value) {
+	public void setLabel(final Optional<String> value) {
 		getElement().setProperty("_label", value);
 	}
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLabel() {
+	public Optional<String> getLabel() {
 		return getElement().getProperty("_label", null);
 	}
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setRole(final String value) {
+	public void setRole(final Optional<String> value) {
 		getElement().setProperty("_role", value);
 	}
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getRole() {
+	public Optional<String> getRole() {
 		return getElement().getProperty("_role", null);
 	}
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setShowDropdown(final String value) {
+	public void setShowDropdown(final Optional<String> value) {
 		getElement().setProperty("_show-dropdown", value);
 	}
 
 	/**
-	 * Gibt an, welche Rolle der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getShowDropdown() {
+	public Optional<String> getShowDropdown() {
 		return getElement().getProperty("_show-dropdown", null);
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setTabIndex(final String value) {
+	public void setTabIndex(final Optional<String> value) {
 		getElement().setProperty("_tab-index", value);
 	}
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTabIndex() {
+	public Optional<String> getTabIndex() {
 		return getElement().getProperty("_tab-index", null);
 	}
 
 	/**
-	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setTooltipAlign(final String value) {
+	public void setTooltipAlign(final Optional<String> value) {
 		getElement().setProperty("_tooltip-align", value);
 	}
 
 	/**
-	 * Setzt die gewünschte Ausrichtung des Tooltips (`_icon-only`).
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTooltipAlign() {
+	public Optional<String> getTooltipAlign() {
 		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**
-	 * Setzt den Typ der Schaltfläche.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setType(final String value) {
+	public void setType(final Optional<String> value) {
 		getElement().setProperty("_type", value);
 	}
 
 	/**
-	 * Setzt den Typ der Schaltfläche.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getType() {
+	public Optional<String> getType() {
 		return getElement().getProperty("_type", null);
 	}
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setVariant(final String value) {
+	public void setVariant(final Optional<String> value) {
 		getElement().setProperty("_variant", value);
 	}
 
 	/**
-	 * Gibt an, welche Ausprägung der Button hat.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getVariant() {
+	public Optional<String> getVariant() {
 		return getElement().getProperty("_variant", null);
 	}
 }

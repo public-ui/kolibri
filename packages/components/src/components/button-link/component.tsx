@@ -5,7 +5,7 @@ import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, Op
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { propagateFocus } from '../../utils/reuse';
-import { AriaCurrent, Alignment } from '../../types/props';
+import { AriaCurrent, Align } from '../../types/props';
 
 @Component({
 	tag: 'kol-button-link',
@@ -36,7 +36,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
 					_icon={this._icon}
-					_iconOnly={this._iconOnly}
+					_hideLabel={this._hideLabel || this._iconOnly}
 					_id={this._id}
 					_label={this._label}
 					_on={this._on}
@@ -46,18 +46,14 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_type={this._type}
 					_value={this._value}
 				>
-					{/*
-						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-					*/}
-					<slot name="expert" slot="expert" />
+					<slot name="expert" slot="expert"></slot>
 				</kol-button-wc>
 			</Host>
 		);
 	}
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man den Button auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -67,51 +63,53 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Button hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
-	 * Gibt an, ob durch den Button etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
-	 * Sprachsteuerung von interaktiven Elementen funktioniert, muss der
-	 * Aria-Label-Text mit dem Label-Text des Buttons beginnen.
-	 *
-	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, ob der Button deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
-	 * Gibt die ID der Schaltfläche an. (Selection, Testing)
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
@@ -121,22 +119,22 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
 
 	/**
-	 * Gibt an, welche Role der Schalter hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
-	 * Gibt an, welche Typ der Button hat.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: KoliBriButtonType = 'button';
 

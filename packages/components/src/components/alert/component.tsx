@@ -26,6 +26,9 @@ const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
 	}
 };
 
+/**
+ * @slot - Der Inhalt der Meldung.
+ */
 @Component({
 	tag: 'kol-alert-wc',
 	shadow: false,
@@ -81,12 +84,12 @@ export class KolAlertWc implements API {
 					{this.state._hasCloser && (
 						<kol-button-wc
 							class="close"
+							_hideLabel
 							_icon={{
 								left: {
 									icon: 'codicon codicon-close',
 								},
 							}}
-							_iconOnly
 							_label={translate('kol-close')}
 							_on={this.on}
 							_tooltipAlign="left"
@@ -103,22 +106,22 @@ export class KolAlertWc implements API {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ reflect: true }) public _alert?: boolean = false;
 
 	/**
-	 * Gibt an, ob der Alert ein Schließen-Icon hat.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 */
 	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 */
 	@Prop() public _heading?: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -128,12 +131,12 @@ export class KolAlertWc implements API {
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
 	/**
-	 * Gibt an, welche Benachrichtigungsvariante dargestellt wird.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: AlertVariant = 'msg';
 

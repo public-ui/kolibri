@@ -1,30 +1,16 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { AlertType } from '../alert/types';
 import { HeadingLevel } from '../../types/heading-level';
 import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
-import { featureHint } from '../../utils/a11y.tipps';
-import { PropHasCloser, PropShow, validateHasCloser, validateShow } from '../../types/props';
+import { validateHasCloser, validateShow } from '../../types/props';
+import { KoliBriToastAPI, KoliBriToastStates } from './types';
 
-type RequiredProps = unknown;
-type OptionalProps = {
-	alert: boolean;
-	heading: string;
-	level: HeadingLevel;
-	on: KoliBriToastEventCallbacks;
-	showDuration: number;
-	type: AlertType;
-} & PropHasCloser &
-	PropShow;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
+/**
+ * @slot - Der Inhalt der Meldung.
+ */
 @Component({
 	tag: 'kol-toast',
 	styleUrls: {
@@ -32,24 +18,24 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolToast implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolToast implements KoliBriToastAPI {
 	/**
-	 * Gibt an, ob der Screenreader die Meldung vorlesen soll.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Aktiviert das Schließen-Icon.
+	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 */
 	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt den Titel der Meldung an.
+	 * Gibt die Beschriftung der Komponente an.
 	 */
 	@Prop() public _heading?: string = '';
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -59,7 +45,7 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _on?: KoliBriToastEventCallbacks;
 
 	/**
-	 * Gibt an, ob der Toast eingeblendet wird.
+	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 
@@ -69,11 +55,11 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop() public _showDuration?: number = 10000;
 
 	/**
-	 * Gibt an, ob es sich um eine Erfolgs-, Info-, Warnung- oder Fehlermeldung handelt.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
-	@State() public state: States = {
+	@State() public state: KoliBriToastStates = {
 		_alert: true,
 		_level: 1,
 		_show: true,
@@ -101,13 +87,8 @@ export class KolToast implements Generic.Element.ComponentApi<RequiredProps, Opt
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriToastEventCallbacks): void {
-		if (typeof value === 'object' && value !== null) {
-			featureHint('[KolToast] Prüfen, wie man auch einen EventCallback einzeln ändern kann.');
-			const callbacks: KoliBriToastEventCallbacks = {};
-			if (typeof value.onClose === 'function' || value.onClose === true) {
-				callbacks.onClose = value.onClose;
-			}
-			setState<KoliBriToastEventCallbacks>(this, '_on', callbacks);
+		if (typeof value === 'object' && (typeof value?.onClose === 'function' || value.onClose === true)) {
+			setState<KoliBriToastEventCallbacks>(this, '_on', { onClose: value.onClose });
 		}
 	}
 

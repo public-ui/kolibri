@@ -9,8 +9,8 @@ export const ButtonLinkTarget: FC = () => (
 		<KolButtonLink _href="#" _label="Ich bin ein Link ohne Target" />
 		<KolButtonLink _href="#" _label="Ich bin ein Link mit Target (_self)" _target="_self" />
 		<KolButtonLink _href="#" _label="Ich bin ein Link mit Target (_blank)" _target="_blank" />
-		<KolButtonLink _href="#" _icon="codicon codicon-home" _iconOnly _label="Ich bin ein Link ohne Target" />
-		<KolButtonLink _href="#" _icon="codicon codicon-home" _iconOnly _label="Ich bin ein Link mit Target (_self)" _target="_self" />
-		<KolButtonLink _href="#" _icon="codicon codicon-home" _iconOnly _label="Ich bin ein Link mit Target (_blank)" _target="_blank" />
+		<KolButtonLink _href="#" _icon="codicon codicon-home" _hideLabel _label="Ich bin ein Link ohne Target" />
+		<KolButtonLink _href="#" _icon="codicon codicon-home" _hideLabel _label="Ich bin ein Link mit Target (_self)" _target="_self" />
+		<KolButtonLink _href="#" _icon="codicon codicon-home" _hideLabel _label="Ich bin ein Link mit Target (_blank)" _target="_blank" />
 	</div>
 );

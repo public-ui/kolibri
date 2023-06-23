@@ -1,65 +1,17 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Events } from '../../enums/events';
-import { KoliBriIconProp } from '../../types/icon';
 
 import { Generic } from '@a11y-ui/core';
-import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
-import { Alignment } from '../../types/props';
+import { Align } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { Log } from '../../utils/dev.utils';
+import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
-
-export type KoliBriTabsCallbacks = /* {
-	onClose?: true | EventOrEventValueCallback<Event, number>;
-} & */ {
-	onCreate?:
-		| EventCallback<Event>
-		| {
-				label: string;
-				callback: EventCallback<Event>;
-		  };
-} & {
-	[Events.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
-};
-
-type RequiredTabButtonProps = {
-	label: string;
-};
-type OptionalTabButtonProps = {
-	disabled: boolean;
-	icon: Stringified<KoliBriIconProp>;
-	iconOnly: boolean;
-	tooltipAlign: Alignment;
-};
-export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
-
-type RequiredProps = {
-	ariaLabel: string;
-	tabs: Stringified<TabButtonProps[]>;
-};
-type OptionalProps = {
-	on: KoliBriTabsCallbacks;
-	tabsAlign: Alignment;
-	selected: number;
-};
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	ariaLabel: string;
-	tabsAlign: Alignment;
-	selected: number;
-	tabs: TabButtonProps[];
-};
-type OptionalStates = {
-	on: KoliBriTabsCallbacks;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-tabs',
@@ -68,7 +20,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolTabs implements KoliBriTabsAPI {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
@@ -137,7 +89,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 					<kol-button-wc
 						_disabled={button._disabled}
 						_icon={button._icon}
-						_iconOnly={button._iconOnly}
+						_hideLabel={button._hideLabel || button._iconOnly}
 						_label={button._label && button._label} // TODO: ariaLabel-Konzept prüfen
 						_on={this.callbacks as KoliBriButtonCallbacks<unknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
@@ -189,7 +141,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
@@ -211,9 +163,9 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	/**
 	 * Setzt die Position der Registrierkarten.
 	 */
-	@Prop() public _tabsAlign?: Alignment = 'top';
+	@Prop() public _tabsAlign?: Align = 'top';
 
-	@State() public state: States = {
+	@State() public state: KoliBriTabsStates = {
 		_ariaLabel: '…',
 		_selected: 0,
 		_tabs: [],
@@ -345,7 +297,7 @@ export class KolTabs implements Generic.Element.ComponentApi<RequiredProps, Opti
 	}
 
 	@Watch('_tabsAlign')
-	public validateTabsAlign(value?: Alignment): void {
+	public validateTabsAlign(value?: Align): void {
 		validateAlignment(this, '_tabsAlign', value);
 	}
 

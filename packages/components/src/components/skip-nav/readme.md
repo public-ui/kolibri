@@ -53,23 +53,22 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                  | Type                    | Default     |
-| ------------------------- | ------------- | ---------------------------------------------------------------------------- | ----------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Gibt den Text an, der die Navigation von anderen Navigationen differenziert. | `string`                | `undefined` |
-| `_links` _(required)_     | `_links`      | Setzt die Liste der darzustellenden Links.                                   | `LinkProps[] \| string` | `undefined` |
+| Property                  | Attribute     | Description                                                                                                                 | Type                    | Default     |
+| ------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
+| `_ariaLabel` _(required)_ | `_aria-label` | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                | `undefined` |
+| `_links` _(required)_     | `_links`      | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                             | `LinkProps[] \| string` | `undefined` |
 
 ## Dependencies
 
 ### Depends on
 
-- [kol-link](../link)
+- kol-link-wc
 
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-skip-nav --> kol-link
-  kol-link --> kol-link-wc
+  kol-skip-nav --> kol-link-wc
   kol-link-wc --> kol-span-wc
   kol-link-wc --> kol-icon
   kol-link-wc --> kol-tooltip

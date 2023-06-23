@@ -1,35 +1,21 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
 import { KoliBriModalEventCallbacks } from '../../types/modal';
 import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { ModalService } from './service';
+import { KoliBriModalAPI, KoliBriModalStates } from './types';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
+ * @deprecated use the native <dialog> instead
  */
 
-type RequiredProps = AriaLabel;
-type OptionalProps = {
-	activeElement: HTMLElement | null;
-	on: KoliBriModalEventCallbacks;
-	width: string;
-};
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = AriaLabel & {
-	activeElement: HTMLElement | null;
-	width: string;
-};
-type OptionalStates = {
-	on: KoliBriModalEventCallbacks;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
+/**
+ * @slot - Der Inhalt des Modals.
+ */
 @Component({
 	tag: 'kol-modal',
 	styleUrls: {
@@ -37,7 +23,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolModal implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolModal implements KoliBriModalAPI {
 	private hostElement?: HTMLElement;
 
 	public componentDidRender(): void {
@@ -101,21 +87,21 @@ export class KolModal implements Generic.Element.ComponentApi<RequiredProps, Opt
 	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
-
-	/**
-	 * Setzt die Breite des Modals. (max-width: 100%).
-	 */
-	@Prop() public _width?: string = '100%';
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
 
-	@State() public state: States = {
+	/**
+	 * Setzt die Breite des Modals. (max-width: 100%).
+	 */
+	@Prop() public _width?: string = '100%';
+
+	@State() public state: KoliBriModalStates = {
 		_activeElement: null,
 		_ariaLabel: '…',
 		_width: '100%',

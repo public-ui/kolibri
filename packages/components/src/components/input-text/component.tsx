@@ -15,6 +15,9 @@ import { ComponentApi, States } from './types';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
+/**
+ * @slot - Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-input-text',
 	styleUrls: {
@@ -55,13 +58,14 @@ export class KolInputText implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
 					'has-value': this.state._hasValue,
 				}}
 			>
-				{this.state._accessKey}
 				<kol-input
 					class={{
 						[this.state._type]: true,
@@ -79,9 +83,7 @@ export class KolInputText implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<input
 						ref={this.catchRef}
 						accessKey={this.state._accessKey}
@@ -118,12 +120,12 @@ export class KolInputText implements ComponentApi {
 	private readonly controller: InputTextController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
@@ -133,7 +135,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -143,7 +145,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -153,14 +155,19 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -168,7 +175,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _list?: Stringified<string[]>;
 
 	/**
-	 * Gibt an, wie viele Zeichen man maximal eingeben kann.
+	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
 	 */
 	@Prop() public _maxLength?: number;
 
@@ -183,7 +190,7 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Gibt ein Prüfmuster für das Eingabefeld an.
+	 * Gibt ein Prüfmuster (Pattern) für das Eingabefeld an.
 	 */
 	@Prop() public _pattern?: string;
 
@@ -213,7 +220,13 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _smartButton?: ButtonProps;
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -223,7 +236,7 @@ export class KolInputText implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt an, ob es ein Text-, Suche-, URL- oder Telefon-Eingabefeld ist.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 */
 	@Prop() public _type?: InputTextType = 'text';
 
@@ -236,6 +249,7 @@ export class KolInputText implements ComponentApi {
 		_autoComplete: 'off',
 		_id: 'id',
 		_hasValue: false,
+		_label: '…', // ⚠ required
 		_list: [],
 		_type: 'text',
 	};
@@ -289,6 +303,11 @@ export class KolInputText implements ComponentApi {
 		this.controller.validateId(value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
+	}
+
 	@Watch('_list')
 	public validateList(value?: Stringified<string[]>): void {
 		this.controller.validateList(value);
@@ -329,6 +348,9 @@ export class KolInputText implements ComponentApi {
 		validateRequired(this, value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
@@ -337,6 +359,11 @@ export class KolInputText implements ComponentApi {
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		this.controller.validateSmartButton(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')

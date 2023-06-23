@@ -10,42 +10,42 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-tabs")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-tabs")
 public class KolTabs extends Component {
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
 	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setSelected(final String value) {
+	public void setSelected(final Optional<String> value) {
 		getElement().setProperty("_selected", value);
 	}
 
 	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSelected() {
+	public Optional<String> getSelected() {
 		return getElement().getProperty("_selected", null);
 	}
 
@@ -54,34 +54,34 @@ public class KolTabs extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setTabs(final String value) {
+	public void setTabs(final Optional<String> value) {
 		getElement().setProperty("_tabs", value);
 	}
 
 	/**
 	 * Setzt die Daten für die Registrierkarten.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTabs() {
+	public Optional<String> getTabs() {
 		return getElement().getProperty("_tabs", null);
 	}
 
 	/**
 	 * Setzt die Position der Registrierkarten.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setTabsAlign(final String value) {
+	public void setTabsAlign(final Optional<String> value) {
 		getElement().setProperty("_tabs-align", value);
 	}
 
 	/**
 	 * Setzt die Position der Registrierkarten.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getTabsAlign() {
+	public Optional<String> getTabsAlign() {
 		return getElement().getProperty("_tabs-align", null);
 	}
 }

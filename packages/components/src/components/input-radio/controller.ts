@@ -2,6 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { PropLabel } from '../../types/props';
 import { W3CInputValue } from '../../types/w3c';
 import { mapString2Unknown, setState, watchBoolean, watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
@@ -21,7 +22,7 @@ export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, option
 	});
 };
 
-type RequiredProps = unknown;
+type RequiredProps = PropLabel;
 type OptionalProps = {
 	required: boolean;
 };

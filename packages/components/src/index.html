@@ -16,39 +16,38 @@
 		<script nomodule src="build/kolibri.js"></script>
 
 		<meta name="robots" content="noindex" />
-		<meta name="kolibri" content="dev-mode=true,color-contrast-analysis=false" />
+		<meta name="kolibri" content="dev-mode=true,experimental-mode=true,color-contrast-analysis=false" />
 
 		<link rel="shortcut icon" type="image/x-icon" href="assets/kolibri.ico" />
-		<link rel="stylesheet" href="assets/bpa-icons/style.css" />
-		<link rel="stylesheet" href="assets/bundes/style.css" />
-		<link rel="stylesheet" href="assets/codicons/codicon.css" />
-		<link rel="stylesheet" href="assets/fontawesome-free/css/all.min.css" />
-		<link rel="stylesheet" href="assets/icofont/icofont.min.css" />
-		<link rel="stylesheet" href="assets/kreon/style.css" />
-		<link rel="stylesheet" href="assets/noto-sans/noto-sans.css" />
-		<link rel="stylesheet" href="assets/material-icons/iconfont/material-icons.css" />
-		<link rel="stylesheet" href="assets/material-symbols/index.css" />
-		<link rel="stylesheet" href="assets/roboto/roboto.css" />
-		<link rel="stylesheet" href="assets/tabler-icons/tabler-icons.css" />
-		<link rel="stylesheet" href="assets/style.css" />
 
-		<script defer src="assets/modal-simulation.js"></script>
-		<script defer src="assets/popover-simulation.js"></script>
-		<script defer src="assets/progress-simulation.js"></script>
-		<script defer src="assets/smart-button-simulation.js"></script>
-		<script defer src="assets/table-simulation.js"></script>
-		<script defer src="assets/toast-simulation.js"></script>
-		<script defer src="assets/tooltip-simulation.js"></script>
+		<script defer src="simulations/alert-simulation.js"></script>
+		<script defer src="simulations/modal-simulation.js"></script>
+		<script defer src="simulations/nav-simulation.js"></script>
+		<script defer src="simulations/pagination-simulation.js"></script>
+		<script defer src="simulations/popover-simulation.js"></script>
+		<script defer src="simulations/progress-simulation.js"></script>
+		<script defer src="simulations/smart-button-simulation.js"></script>
+		<script defer src="simulations/spin-simulation.js"></script>
+		<script defer src="simulations/table-simulation.js"></script>
+		<script defer src="simulations/tabs-simulation.js"></script>
+		<script defer src="simulations/toast-simulation.js"></script>
+
+		<script src="https://unpkg.com/petite-vue" defer init></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<link rel="stylesheet" href="assets/codicons/codicon.css" />
+		<link rel="stylesheet" href="assets/style.css" />
+		<link rel="stylesheet" href="assets/loader.css" />
 	</head>
-	<body class="demo" data-theme="demo">
+	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
 			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
 			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
-				<div slot="content" class="grid gap">
-					<div style="display: flex; justify-content: space-between">
+				<div class="grid gap">
+					<div class="flex flex-wrap gap-2 xl:gap-4 justify-between">
 						<kol-card _heading="buttons" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-button
 									_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
 									_label="primary"
@@ -71,24 +70,56 @@
 									_icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }"
 									_label="normal"
 									_variant="normal"
-									onclick="createAndShowToast()"
+									:_on="{ onClick: ()=> showLogin = !showLogin }"
 								></kol-button>
+								<kol-popover :_show="showLogin">
+									<kol-input-text>Benutzername</kol-input-text>
+									<kol-input-password>Passwort</kol-input-password>
+								</kol-popover>
 								<kol-button _label="ghost" _variant="ghost" onclick="createAndShowToast()"></kol-button>
 								<kol-button _label="custom" _variant="custom" onclick="createAndShowToast()"></kol-button>
+								<kol-split-button _label="kick me">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
+								<kol-split-button _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
 							</div>
 						</kol-card>
 						<kol-card _heading="disabled buttons" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-button _icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }" _disabled _label="primary" _variant="primary"></kol-button>
 								<kol-button _icon="{ 'right': { 'icon': 'codicon codicon-arrow-right' } }" _disabled _label="secondary" _variant="secondary"></kol-button>
 								<kol-button _icon="{ 'top': { 'icon': 'codicon codicon-arrow-up' } }" _disabled _label="danger" _variant="danger"></kol-button>
 								<kol-button _icon="{ 'bottom': { 'icon': 'codicon codicon-arrow-down' } }" _disabled _label="normal" _variant="normal"></kol-button>
 								<kol-button _disabled _label="ghost" _variant="ghost"></kol-button>
 								<kol-button _disabled _label="custom" _variant="custom"></kol-button>
+								<kol-split-button _label="kick me" _disabled>
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
+								<kol-split-button _disabled _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+									<div slot="popover">
+										Zeuch<br />
+										Kruscht<br />
+										Rest
+									</div>
+								</kol-split-button>
 							</div>
 						</kol-card>
 						<kol-card _heading="headings" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-heading _label="Überschrift Stufe 1" _level="1"></kol-heading>
 								<kol-heading _label="Überschrift Stufe 2" _level="2"></kol-heading>
 								<kol-heading _label="Überschrift Stufe 3" _level="3"></kol-heading>
@@ -98,7 +129,7 @@
 							</div>
 						</kol-card>
 						<kol-card _heading="Links&Co" _level="3">
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<kol-link _href="#card">Zur Card</kol-link>
 								<kol-button-link _href="#pagination" _label="Zur Pagination"></kol-button-link>
 								<kol-nav
@@ -113,7 +144,7 @@
 									<kol-heading _label="hover this" _level="4"><kol-icon _icon="codicon codicon-arrow-down"></kol-icon></kol-heading>
 									<kol-button
 										_icon="codicon codicon-tools"
-										_icon-only
+										_hide-label
 										_id="tooltip_button"
 										_label="Klick me for Action."
 										_variant="normal"
@@ -127,18 +158,22 @@
 						</kol-card>
 						<kol-card _heading="Icons&Co" _level="3">
 							<kol-badge _label="wie badges"></kol-badge>
-							<div slot="content" class="grid gap">
+							<div class="grid gap">
 								<p>
 									In diesem Satz wird das <kol-symbol _aria-label="Lächelndes Gesicht" _symbol="☺"></kol-symbol><br />
 									vom Screenreader vorgelesen.
 								</p>
-								<kol-spin _show="true"></kol-spin>
+								<kol-spin _show></kol-spin>
+								<kol-spin _show _variant="cycle"></kol-spin>
+								<kol-spin _show _variant="none">
+									<span class="loader" slot="expert"></span>
+								</kol-spin>
 								<kol-icon _aria-label="kol-icon" _icon="codicon codicon-home" style="display: inline-grid"></kol-icon>
 								<kol-kolibri style="width: 100px"></kol-kolibri>
 							</div>
 						</kol-card>
 						<kol-card _heading="Mitte" _level="3">
-							<div slot="content" class="grid">
+							<div class="grid">
 								<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]'>
 									<div>Seite 1</div>
 									<div>Tab 2</div>
@@ -151,7 +186,7 @@
 					</div>
 
 					<kol-card _heading="Form" _level="3">
-						<kol-form slot="content">
+						<kol-form>
 							<div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem">
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
 								<kol-input-file _id="input-file">Datei hochladen</kol-input-file>
@@ -179,7 +214,10 @@
 									Anrede
 								</kol-input-radio>
 								<kol-input-range _id="schnitzelwert" _min="0" _max="50" _unit="Schnitzel" _value="25">Schieberegler</kol-input-range>
-								<kol-progress _id="schnitzelfortschritt" _type="cycle" _value="25"></kol-progress>
+								<div>
+									<kol-progress _value="25"></kol-progress>
+									<kol-progress _variant="cycle" _value="25"></kol-progress>
+								</div>
 
 								<kol-input-checkbox _id="input-checkbox" _type="checkbox"
 									>Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
@@ -193,13 +231,13 @@
 					<div style="display: flex; gap: 2rem; justify-content: space-between">
 						<kol-pagination _total="9" _page="3" class="bordered p-i"></kol-pagination>
 
-						<kol-version _version="1.5.0"></kol-version>
+						<kol-version _version="1.6.0-rc.5"></kol-version>
 					</div>
 					<kol-image _src="/assets/images/abgrenzung.jpg" _alt="KoliBri Darstellung"></kol-image>
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="Abbr" id="abbr">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -224,7 +262,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="alert" id="alert">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -258,10 +296,9 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/alert-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="badge" id="badge">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -279,14 +316,14 @@
 								<kol-badge _label="Ich bin ein Tag!" _icon="codicon codicon-heard" _color="#c1ca31"></kol-badge>
 								<kol-badge _label="Ich auch!" _icon="codicon codicon-rating" _icon-align="right" _color="#f7bb3d"></kol-badge>
 								<kol-badge _label="Und ich!" _color="#80cdec"></kol-badge>
-								<kol-badge _icon="codicon codicon-rate-blank" _label="Ich bin ein Icon!" _icon-only _color="#f9e03a"></kol-badge>
+								<kol-badge _icon="codicon codicon-rate-blank" _label="Ich bin ein Icon!" _hide-label _color="#f9e03a"></kol-badge>
 							</div>
 							<kol-heading _label="" _level="3">Dunkler Hintergrund</kol-heading>
 							<div>
 								<kol-badge _label="Ich bin ein Tag!" _icon="codicon codicon-heard" _color="#000"></kol-badge>
 								<kol-badge _label="Ich auch!" _icon="codicon codicon-rating" _icon-align="right" _color="#94083c"></kol-badge>
 								<kol-badge _label="Und ich!" _color="#0c247d"></kol-badge>
-								<kol-badge _icon="codicon codicon-rate-blank" _label="Ich bin ein Icon!" _icon-only _color="#030"></kol-badge>
+								<kol-badge _icon="codicon codicon-rate-blank" _label="Ich bin ein Icon!" _hide-label _color="#030"></kol-badge>
 							</div>
 							<kol-heading _label="" _level="3">Zu langer Badge-Text</kol-heading>
 							<div>
@@ -306,7 +343,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="breadcrumb" id="breadcrumb">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -323,7 +360,7 @@
 							</kol-breadcrumb>
 							<kol-breadcrumb
 								_aria-label="Breadcrumb aus Icons- oder Text-Links"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_iconOnly': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
 							>
 							</kol-breadcrumb>
 							<kol-breadcrumb
@@ -333,7 +370,7 @@
 							</kol-breadcrumb>
 							<kol-breadcrumb
 								_aria-label="Breadcrumb aus Icons- und Text-Links 2"
-								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_iconOnly': true, '_href':'#/'}]"
+								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
 							>
 							</kol-breadcrumb>
 						</div>
@@ -341,7 +378,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="button" id="button">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -370,7 +407,7 @@
 							</kol-button>
 							<kol-button class="not-used" _icon="codicon codicon-play" _label="Martin"></kol-button>
 							<kol-button class="not-used" _icon="codicon codicon-home" _variant="primary" _label="Primary-Schaltfläche"></kol-button>
-							<kol-button class="not-used" _icon="codicon codicon-home" _icon-only _variant="primary" _label="Primary-Schaltfläche"></kol-button>
+							<kol-button class="not-used" _icon="codicon codicon-home" _hide-label _variant="primary" _label="Primary-Schaltfläche"></kol-button>
 							<kol-button class="not-used" style="width: 15em" _variant="secondary" _label="Secondary-Schaltfläche"></kol-button>
 							<kol-button class="not-used" style="width: 15em" _variant="normal" _label="Normal-Schaltfläche"></kol-button>
 							<kol-button class="not-used" style="width: 15em" _variant="danger" _label="Danger-Schaltfläche"></kol-button>
@@ -379,7 +416,7 @@
 							<kol-button class="not-used" _label="Hinzufügen"></kol-button>
 							<kol-button class="not-used font-80" _icon="codicon codicon-add" _label="Hinzufügen"></kol-button>
 							<kol-button class="not-used font-60" _icon="codicon codicon-add" _icon-align="right" _label="Hinzufügen"></kol-button>
-							<kol-button class="not-used" _icon="codicon codicon-add" _icon-align="right" _icon-only="true" _label="Hinzufügen (nur Icon)"></kol-button>
+							<kol-button class="not-used" _icon="codicon codicon-add" _icon-align="right" _hide-label _label="Hinzufügen (nur Icon)"></kol-button>
 							<kol-button class="not-used" _label="ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen"></kol-button>
 						</div>
 						<div class="gap-2 py-2 col-12 d-grid">
@@ -413,7 +450,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="link-button" id="link-button">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -457,7 +494,7 @@
 							</kol-link-button>
 							<kol-link-button class="not-used" _icon="codicon codicon-play" _label="Martin"></kol-link-button>
 							<kol-link-button class="not-used" _icon="codicon codicon-home" _variant="primary" _label="Primary-Schaltfläche"></kol-link-button>
-							<kol-link-button class="not-used" _icon="codicon codicon-home" _icon-only _variant="primary" _label="Primary-Schaltfläche"></kol-link-button>
+							<kol-link-button class="not-used" _icon="codicon codicon-home" _hide-label _variant="primary" _label="Primary-Schaltfläche"></kol-link-button>
 							<kol-link-button class="not-used" style="width: 15em" _variant="secondary" _label="Secondary-Schaltfläche"></kol-link-button>
 							<kol-link-button class="not-used" style="width: 15em" _variant="normal" _label="Normal-Schaltfläche"></kol-link-button>
 							<kol-link-button class="not-used" style="width: 15em" _variant="danger" _label="Danger-Schaltfläche"></kol-link-button>
@@ -466,13 +503,7 @@
 							<kol-link-button class="not-used" _label="Hinzufügen"></kol-link-button>
 							<kol-link-button class="not-used font-80" _icon="codicon codicon-add" _label="Hinzufügen"></kol-link-button>
 							<kol-link-button class="not-used font-60" _icon="codicon codicon-add" _icon-align="right" _label="Hinzufügen"></kol-link-button>
-							<kol-link-button
-								class="not-used"
-								_icon="codicon codicon-add"
-								_icon-align="right"
-								_icon-only="true"
-								_label="Hinzufügen (nur Icon)"
-							></kol-link-button>
+							<kol-link-button class="not-used" _icon="codicon codicon-add" _icon-align="right" _hide-label _label="Hinzufügen (nur Icon)"></kol-link-button>
 							<kol-link-button class="not-used" _label="ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen"></kol-link-button>
 						</div>
 						<div class="gap-2 py-2 col-12 d-grid">
@@ -499,7 +530,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="button-group" id="button-group">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -532,7 +563,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="card" id="card">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -544,7 +575,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-card _label="Mit h1-Überschrift und Footer" _has-footer>
 								<p slot="header">Test</p>
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum
 									earum aut doloribus autem libero exercitationem dolor ad, magni dignissimos ratione fuga. Lorem ipsum dolor sit amet consectetur adipisicing
 									elit. Officiis perferendis qui animi nesciunt illo facere, doloribus sint cupiditate nihil dolorem voluptate ab esse! Ducimus ad est commodi
@@ -556,19 +587,19 @@
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h2-Überschrift" _level="2" class="bordered">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h3-Überschrift" _level="3">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h4-Überschrift" _level="4">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
@@ -576,13 +607,13 @@
 						</div>
 						<div class="gap-2 mt-4 col-12 d-md-flex">
 							<kol-card _label="Mit h5-Überschrift" _level="5" class="bordered">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
 							<kol-card _label="Mit h6-Überschrift" _level="6" class="bordered">
-								<div slot="content">
+								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
@@ -592,7 +623,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="details" id="details">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -637,7 +668,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="form" id="form">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -813,7 +844,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="heading" id="heading">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -846,7 +877,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="icon" id="icon">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -905,7 +936,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="image" id="image">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-heading _label="" _level="2">Image</kol-heading>
@@ -925,7 +956,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="indented-text" id="indented-text">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -948,7 +979,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="input" id="input">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-badge _icon="codicon codicon-dashboard" _color="#600" _label="Retest"></kol-badge>
@@ -1051,7 +1082,7 @@
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _label="" _level="3">InputRadio</kol-heading>
-								<div slot="content">
+								<div>
 									<lean-input-adapter class="d-grid gap-2" id="anrede-adapter">
 										<kol-input-radio>Anrede</kol-input-radio>
 									</lean-input-adapter>
@@ -1150,7 +1181,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="link" id="link">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1168,7 +1199,6 @@
 							<kol-link _href="https://wikipedia.de" _label="Wikipedia" _icon="codicon codicon-heard"></kol-link>
 							<br />
 							<strong>Expert-Slot Variante</strong>
-							<kol-link id="click-link" _href="" _label="" _target="wikipedia"><span slot="expert">Wikipedia</span></kol-link>
 							<kol-link _href="https://wikipedia.de" _icon="codicon codicon-heard" _label=""><span slot="expert">Wikipedia</span></kol-link>
 							<p>
 								E-Mail:
@@ -1176,12 +1206,12 @@
 									>info@wikipedia.org
 								</kol-link>
 							</p>
-							<kol-link _href="https://de.wikipedia.org" _icon="codicon codicon-heard" _icon-only _label="Icon als Link" _target="wikipedia"></kol-link>
+							<kol-link _href="https://de.wikipedia.org" _icon="codicon codicon-heard" _hide-label _label="Icon als Link" _target="wikipedia"></kol-link>
 							<kol-link
 								_aria-label="Icon als Link"
 								_href="https://de.wikipedia.org"
 								_icon="codicon codicon-heard"
-								_icon-only
+								_hide-label
 								_label=""
 								_target="wikipedia"
 							></kol-link>
@@ -1196,10 +1226,9 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/link-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="button-link" id="button-link">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1219,8 +1248,8 @@
 								E-Mail:
 								<kol-button-link _label=""><span slot="expert">info@wikipedia.org</span></kol-button-link>
 							</p>
-							<kol-button-link _icon="codicon codicon-heard" _icon-only _label="Icon als Link"></kol-button-link>
-							<kol-button-link _aria-label="Icon als Link" _icon="codicon codicon-heard" _icon-only _label=""></kol-button-link>
+							<kol-button-link _icon="codicon codicon-heard" _hide-label _label="Icon als Link"></kol-button-link>
+							<kol-button-link _aria-label="Icon als Link" _icon="codicon codicon-heard" _hide-label _label=""></kol-button-link>
 						</div>
 						<div class="gap-2 col-12">
 							<kol-button-link _aria-label="Zurück zur Startseite" _label="">
@@ -1234,7 +1263,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="link-group" id="link-group">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1277,7 +1306,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="logo" id="logo">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1300,7 +1329,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="modal" id="modal">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1337,7 +1366,7 @@
 						<div class="col-12">
 							<kol-modal id="modal-1" _aria-label="Willkommen bei KoliBri" _has-footer>
 								<kol-card _label="Willkommen bei KoliBri" _has-footer>
-									<div slot="content">
+									<div>
 										Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 										diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
 										dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
@@ -1354,7 +1383,7 @@
 							</kol-modal>
 							<kol-modal id="modal-2" _aria-label="Vorgang löschen" _width="400px">
 								<kol-card _label="Vorgang löschen" _has-footer>
-									<div slot="content">Wollen Sie den Vorgang wirklich löschen?</div>
+									<div>Wollen Sie den Vorgang wirklich löschen?</div>
 									<div slot="footer">
 										<kol-button id="modal-2-cancel" _label="Schließen"></kol-button>
 									</div>
@@ -1362,7 +1391,7 @@
 							</kol-modal>
 							<kol-modal id="modal-3" _aria-label="Modal schließen" _width="400px">
 								<kol-card _label="Modal schließen">
-									<div slot="content">Klicken Sie einfach rechts oben auf das X.</div>
+									<div>Klicken Sie einfach rechts oben auf das X.</div>
 								</kol-card>
 							</kol-modal>
 						</div>
@@ -1370,13 +1399,12 @@
 							<kol-button id="modal-open-1" _label="Modal (mit Schließen) öffnen"></kol-button>
 							<kol-button id="modal-open-2" _label="Modal (ohne Schließen) öffnen"></kol-button>
 							<kol-button id="modal-open-3" _label="Modal (einfaches Schließen) öffnen"></kol-button>
-							<script src="assets/modal-simulation.js"></script>
 						</div>
 					</div>
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="nav" id="nav">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1401,7 +1429,7 @@
 								class="font-80"
 								style="display: inline-flex"
 								_aria-label="Navigation mit sinnvoller Breite 2"
-								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-woodpecker','_iconOnly': true,'_tooltipAlign':'bottom','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-woodpecker','_iconOnly': true},{'_active':true,'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-woodpecker','_iconOnly': true,'_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-woodpecker'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-woodpecker','_target':'asdasd'},{'_active':true,'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_active':true,'_label':'3.3.1 Navigationspunkt (aktiv)','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_label':'4 Navigationspunkt','_href':'#abc','_iconOnly': true}]"
+								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-woodpecker','_hideLabel': true,'_tooltipAlign':'bottom','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-woodpecker','_hideLabel': true},{'_active':true,'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-woodpecker','_hideLabel': true,'_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-woodpecker'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-woodpecker','_target':'asdasd'},{'_active':true,'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_active':true,'_label':'3.3.1 Navigationspunkt (aktiv)','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_label':'4 Navigationspunkt','_href':'#abc','_hideLabel': true}]"
 								_orientation="horizontal"
 							></kol-nav>
 							<kol-nav class="max-width" id="click-nav" _aria-label="Navigation mit sinnvoller Breite 3"></kol-nav>
@@ -1429,10 +1457,9 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/nav-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="pagination" id="pagination">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1474,28 +1501,27 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/pagination-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="popover" id="popover">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-heading _label="" _level="2">Popover</kol-heading>
 							<p>Die Popover-Komponente implementiert einen Container für Inhalte, die mehr sind wie ein Tooltip, aber kein Modal rechtfertigen.</p>
 							<p>
 								Das Anzeigen der Popover-Komponente wird über das Attribut _activeElement gesteuert. Sofern ein Wert ungleich null angegeben wird, wird das
-								Popover am übergebenen Element angezeigt. Die Ausrichtung kann mit _alignment gesteuert werden und ist standardmäßig oberhalb.
+								Popover am übergebenen Element angezeigt. Die Ausrichtung kann mit _align gesteuert werden und ist standardmäßig oberhalb.
 							</p>
 						</div>
 						<div class="gap-2 col-12 d-grid justify-content-center">
 							<kol-button id="popover-button-top" _label="Oben" _icon="codicon codicon-arrow-up" _variant="primary"></kol-button>
 							<kol-popover id="popover-top">Ich bin oberhalb</kol-popover>
 							<kol-button id="popover-button-right" _label="Rechts" _icon="codicon codicon-arrow-right" _variant="danger"></kol-button>
-							<kol-popover id="popover-right" _alignment="right">Ich bin rechts</kol-popover>
+							<kol-popover id="popover-right" _align="right">Ich bin rechts</kol-popover>
 							<kol-button id="popover-button-bottom" _label="Unten" _icon="codicon codicon-arrow-down" _variant="secondary"></kol-button>
-							<kol-popover id="popover-bottom" _alignment="bottom">Ich bin unterhalb</kol-popover>
+							<kol-popover id="popover-bottom" _align="bottom">Ich bin unterhalb</kol-popover>
 							<kol-button id="popover-button-left" _label="Links" _icon="codicon codicon-arrow-left" _variant="normal"></kol-button>
-							<kol-popover id="popover-left" _alignment="left">Ich bin links</kol-popover>
+							<kol-popover id="popover-left" _align="left">Ich bin links</kol-popover>
 							<kol-button id="popover-button-login" _label="PR starten" _icon="codicon codicon-git-pull-request" _variant="normal"></kol-button>
 							<kol-popover id="popover-login">
 								<kol-input-text>Benutzername</kol-input-text>
@@ -1505,8 +1531,8 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="progress" id="progress" _open>
-				<div slot="content">
+			<kol-accordion _heading="progress" id="progress">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1526,10 +1552,10 @@
 						</div>
 						<div class="col-12">
 							<div style="display: flex; gap: 1rem; align-items: center">
-								<kol-progress _type="cycle" _value="75" _unit="/100"></kol-progress>
-								<kol-progress _type="cycle" _value="75" _show-unit></kol-progress>
-								<kol-progress _type="cycle" _value="75" _show-unit _unit="/100"></kol-progress>
-								<kol-progress _type="cycle" _value="75" _show-unit _unit="/100" _description="Fortschritt"></kol-progress>
+								<kol-progress _variant="cycle" _value="75" _unit="/100"></kol-progress>
+								<kol-progress _variant="cycle" _value="75" _show-unit></kol-progress>
+								<kol-progress _variant="cycle" _value="75" _show-unit _unit="/100"></kol-progress>
+								<kol-progress _variant="cycle" _value="75" _show-unit _unit="/100" _description="Fortschritt"></kol-progress>
 							</div>
 							<kol-button _label="Simulation starten"></kol-button>
 						</div>
@@ -1538,7 +1564,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="Quote" id="quote">
-				<div slot="content" class="row">
+				<div class="row">
 					<div class="gap-2 col-12">
 						<section>
 							<kol-heading _label="" _level="3">Long bockquote</kol-heading>
@@ -1585,7 +1611,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="skip-nav" id="skip-nav">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1605,7 +1631,7 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="spin" id="spin">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1616,13 +1642,61 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-button _label="Aktion ausführen"></kol-button>
 							<kol-spin></kol-spin>
-							<script src="assets/spin-simulation.js"></script>
 						</div>
 					</div>
 				</div>
 			</kol-accordion>
+			<kol-accordion _heading="SplitButton" id="splitbutton">
+				<div>
+					<div>
+						<kol-heading _label="SplitButton" _level="2"></kol-heading>
+						<p>Die SplitButton-Komponente implementiert eine zweigeteilte Schaltfläche, die ein Popover einblenden kann.</p>
+						<p>
+							Über _open kann das Popover angezeigt werden. Dieses Attribut wird auch durch den rechten Teil der Schaltfläche umgeschaltet, sofern kein
+							ClickHandler übergeben wird, tut der Linke dasselbe. Das Popover kann über den Slot "popover" befüllt werden.
+						</p>
+					</div>
+					<div class="gap-2 flex flex-wrap">
+						<kol-split-button _label="kick me" id="blubb">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button _label="Nur der Pfeil öffnet" :_on="{ onClick: on }">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button _label="ohne label" _hide-label _icon="codicon codicon-git-pull-request">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button _label="schon offen" :_show-dropdown="showDropdown">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+						<kol-split-button :_label="`vorherigen ${ showDropdown ? 'schließen' : 'öffnen' }`" :_on="{onClick: ()=>showDropdown = !showDropdown}">
+							<div slot="popover">
+								Zeuch<br />
+								Kruscht<br />
+								Rest
+							</div>
+						</kol-split-button>
+					</div>
+				</div>
+			</kol-accordion>
 			<kol-accordion _heading="symbol" id="symbol">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -1638,12 +1712,16 @@
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="table" id="table">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
 							<kol-heading _label="" _level="2">Table</kol-heading>
 						</div>
+						<kol-table id="table-1a"></kol-table>
+						<kol-table id="table-1b"></kol-table>
+						<kol-table id="table-1c"></kol-table>
+						<kol-table id="table-1d"></kol-table>
 						<kol-heading _level="3">2 Header, Daten Horizontal</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
@@ -1784,35 +1862,8 @@
 							>
 							</kol-table>
 						</div>
-						<kol-heading _label="" _level="3">2 Header, Daten Horizontal, Sort and Render</kol-heading>
 						<div class="gap-2 col-12 d-grid">
-							<kol-table
-								id="table-1a"
-								_caption="2 Header, Daten Horizontal, Sort and Render"
-								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
-							>
-							</kol-table>
-							<kol-table
-								id="table-1b"
-								_caption="2 Header, Daten Horizontal, Sort and Render"
-								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
-							>
-							</kol-table>
-							<kol-table
-								id="table-1c"
-								_caption="2 Header, Daten Horizontal, Sort and Render"
-								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
-							>
-							</kol-table>
-						</div>
-						<kol-heading _label="" _level="3">2 Header, Daten Vertikal, Sort and Render</kol-heading>
-						<div class="gap-2 col-12 d-grid">
-							<kol-table
-								id="table-2"
-								_caption="2 Header, Daten Vertikal, Sort and Render"
-								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
-							>
-							</kol-table>
+							<kol-table id="table-2" _caption="2 Header, Daten Vertikal, Sort and Render"> </kol-table>
 						</div>
 						<kol-heading _label="" _level="3">Tabelle + Filter</kol-heading>
 						<kol-input-text id="filter-input" _type="search">Filtern</kol-input-text>
@@ -1918,10 +1969,9 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/table-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="tabs" id="tabs">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -2012,7 +2062,7 @@
 							</kol-tabs>
 							<kol-tabs
 								_aria-label="Tab-Navigation (right)"
-								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_iconOnly': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_iconOnly': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_iconOnly': true,'_disabled': true}]"
+								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_hideLabel': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_hideLabel': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_hideLabel': true,'_disabled': true}]"
 								_tabs-align="right"
 							>
 								<div>
@@ -2041,7 +2091,7 @@
 							</kol-tabs>
 							<kol-tabs
 								_aria-label="Tab-Navigation (left)"
-								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_iconOnly': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_iconOnly': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_iconOnly': true,'_disabled': true}]"
+								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_hideLabel': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_hideLabel': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_hideLabel': true,'_disabled': true}]"
 								_tabs-align="left"
 							>
 								<div>
@@ -2054,10 +2104,9 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/tabs-simulation.js"></script>
 			</kol-accordion>
 			<kol-accordion _heading="toast" id="toast">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -2075,14 +2124,11 @@
 							</kol-indent-text>
 							<kol-button _label="Toast starten"></kol-button>
 						</div>
-						<div class="col-12">
-							<script src="assets/toast-simulation.js"></script>
-						</div>
 					</div>
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="tooltip" id="tooltip">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -2106,23 +2152,23 @@
 							</kol-details>
 						</div>
 						<div class="gap-2 col-12 d-grid justify-content-center">
-							<kol-button _label="Oben" _icon="codicon codicon-arrow-up" _icon-only _tooltip-align="top" _variant="primary"></kol-button>
-							<kol-button _label="Unten" _icon="codicon codicon-arrow-down" _icon-only _tooltip-align="bottom" _variant="secondary"></kol-button>
-							<kol-button _label="Links" _icon="codicon codicon-arrow-left" _icon-only _tooltip-align="left" _variant="normal"></kol-button>
-							<kol-button _label="Rechts" _icon="codicon codicon-arrow-right" _icon-only _tooltip-align="right" _variant="danger"></kol-button>
+							<kol-button _label="Oben" _icon="codicon codicon-arrow-up" _hide-label _tooltip-align="top" _variant="primary"></kol-button>
+							<kol-button _label="Unten" _icon="codicon codicon-arrow-down" _hide-label _tooltip-align="bottom" _variant="secondary"></kol-button>
+							<kol-button _label="Links" _icon="codicon codicon-arrow-left" _hide-label _tooltip-align="left" _variant="normal"></kol-button>
+							<kol-button _label="Rechts" _icon="codicon codicon-arrow-right" _hide-label _tooltip-align="right" _variant="danger"></kol-button>
 							<kol-button
 								_label="Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip. Ich bin der Text im Tooltip."
 								_icon="codicon codicon-home"
-								_icon-only
+								_hide-label
 								_variant="ghost"
 							></kol-button>
-							<kol-button _label="Disabled" _icon="codicon codicon-trash" _icon-only _disabled></kol-button>
+							<kol-button _label="Disabled" _icon="codicon codicon-trash" _hide-label _disabled></kol-button>
 						</div>
 					</div>
 				</div>
 			</kol-accordion>
 			<kol-accordion _heading="version" id="version">
-				<div slot="content">
+				<div>
 					<div class="row">
 						<div class="col-12">
 							<div class="gap-2 d-flex">
@@ -2133,8 +2179,8 @@
 						</div>
 						<div class="col-12">
 							<div class="gap-2 d-flex">
-								<kol-version _version="1.5.0"></kol-version>
-								<kol-version _label="1.5.0"></kol-version>
+								<kol-version _version="1.6.0-rc.5"></kol-version>
+								<kol-version _label="1.6.0-rc.5"></kol-version>
 							</div>
 						</div>
 					</div>
@@ -2146,7 +2192,7 @@
 				style="position: fixed; right: 1rem; bottom: 4rem"
 				id="table-of-content-button"
 				_icon="codicon codicon-arrow-up"
-				_icon-only
+				_hide-label
 				_tooltip-align="left"
 				_label="Zum Seitenanfang hochscrollen"
 			></kol-button>

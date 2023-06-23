@@ -1,25 +1,11 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
-import { watchString } from '../../utils/prop.validators';
 import { watchNavLinks } from '../nav/validation';
-
-type RequiredProps = {
-	ariaLabel: string;
-	links: Stringified<LinkProps[]>;
-};
-type OptionalProps = unknown;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	ariaLabel: string;
-	links: LinkProps[];
-};
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
+import { watchString } from '../../utils/prop.validators';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -28,9 +14,31 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
-	public render(): JSX.Element {
+export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
+	private readonly renderLink = (link: LinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
+		const hideLabel = link._iconOnly || link._hideLabel;
+		return (
+			<li key={index}>
+				{index !== 0 && <kol-icon _ariaLabel="" _icon="codicon codicon-chevron-right" />}
+				{index === lastIndex ? (
+					<span>
+						{hideLabel ? (
+							<kol-icon _ariaLabel={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+						) : (
+							<Fragment>{link._label}</Fragment>
+						)}
+					</span>
+				) : (
+					<kol-link _useCase="nav" {...link} _ariaLabel={link._label}>
+						{link._label}
+					</kol-link>
+				)}
+			</li>
+		);
+	};
+
+	public render(): JSX.Element {
 		return (
 			<Host>
 				<nav aria-label={this.state._ariaLabel}>
@@ -40,26 +48,7 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 								<kol-icon _ariaLabel="" _icon="codicon codicon-home" />…
 							</li>
 						)}
-						{this.state._links.map((link, index: number) => {
-							return (
-								<li key={index}>
-									{index !== 0 && <kol-icon _ariaLabel="" _icon="codicon codicon-chevron-right" />}
-									{index === lastIndex ? (
-										<span>
-											{link._iconOnly ? (
-												<kol-icon _ariaLabel={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
-											) : (
-												<Fragment>{link._label}</Fragment>
-											)}
-										</span>
-									) : (
-										<kol-link _useCase="nav" {...link} _ariaLabel={link._label}>
-											{link._label}
-										</kol-link>
-									)}
-								</li>
-							);
-						})}
+						{this.state._links.map(this.renderLink)}
 					</ul>
 				</nav>
 			</Host>
@@ -67,16 +56,16 @@ export class KolBreadcrumb implements Generic.Element.ComponentApi<RequiredProps
 	}
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
 	/**
-	 * Setzt die Liste der darzustellenden Links.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
-	@State() public state: States = {
+	@State() public state: KoliBriBreadcrumbStates = {
 		_ariaLabel: '…', // '⚠'
 		_links: [],
 	};

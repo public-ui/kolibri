@@ -1,55 +1,59 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 devDependencies:
   '@public-ui/components':
-    specifier: 1.5.0-rc.23
-    version: 1.5.0-rc.23
+    specifier: 1.6.0-rc.4
+    version: 1.6.0-rc.4
   rimraf:
     specifier: 3.0.2
     version: 3.0.2
 
 packages:
 
-  /@a11y-ui/core@1.0.2:
-    resolution: {integrity: sha512-RWGduw5+d/QgNfJogkuJPWvGxmWfa1qFleoAaBlt6UIPOaqP1eXY5ch06s+5yWfG93WYY2Otm3XQBV0RAGWGlA==}
+  /@a11y-ui/core@1.0.3:
+    resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
     dependencies:
-      adopted-style-sheets: 1.0.2
+      adopted-style-sheets: 1.0.3
     dev: true
 
-  /@babel/runtime@7.21.5:
-    resolution: {integrity: sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==}
+  /@babel/runtime@7.22.5:
+    resolution: {integrity: sha512-ecjvYlnAaZ/KVneE/OdKYBYfgXV3Ptu6zQWmgEF7vwKhQnvVS6bjMD2XYgj+SNvQ1GfK/pjgokfPkC/2CO8CuA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
     dev: true
 
-  /@floating-ui/core@1.2.6:
-    resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
+  /@floating-ui/core@1.3.1:
+    resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
     dev: true
 
-  /@floating-ui/dom@1.2.7:
-    resolution: {integrity: sha512-DyqylONj1ZaBnzj+uBnVfzdjjCkFCL2aA9ESHLyUOGSqb03RpbLMImP1ekIQXYs4KLk9jAjJfZAU8hXfWSahEg==}
+  /@floating-ui/dom@1.4.1:
+    resolution: {integrity: sha512-loCXUOLzIC3jp50RFOKXZ/kQjjz26ryr/23M+FWG9jrmAv8lRf3DUfC2AiVZ3+K316GOhB08CR+Povwz8e9mDw==}
     dependencies:
-      '@floating-ui/core': 1.2.6
+      '@floating-ui/core': 1.3.1
     dev: true
 
-  /@public-ui/components@1.5.0-rc.23:
-    resolution: {integrity: sha512-nYXyH3fLLlFqcqYv9CJp7vT2I5kKhxcIR+ZBqNhRaDgFNDZ1tiP9Og9ntaOSGy/x2VpO8VgoJ6ohzQlzuQCGYw==}
+  /@public-ui/components@1.6.0-rc.4:
+    resolution: {integrity: sha512-WnTcBomFKexUX1OCDdZEFcuN/pvYhhkGOgXm/k/pUMvT6PlAmkZ3suoReNA/ljhnsUp63F4LG48bVZGKmLGJgw==}
     dependencies:
-      '@a11y-ui/core': 1.0.2
-      '@floating-ui/dom': 1.2.7
-      '@public-ui/schema': 1.5.0-rc.23
-      i18next: 22.4.15
+      '@a11y-ui/core': 1.0.3
+      '@floating-ui/dom': 1.4.1
+      '@public-ui/schema': 1.6.0-rc.4
+      i18next: 22.5.1
     dev: true
 
-  /@public-ui/schema@1.5.0-rc.23:
-    resolution: {integrity: sha512-Bk9Rmf19FGXa4Xb0pbbasNHKzr0SCKMOqDZARdQUHddHKvBTHMuX5y3tm8aNXfG1TqCWUf+Q90xTUgy1qkZdFw==}
+  /@public-ui/schema@1.6.0-rc.4:
+    resolution: {integrity: sha512-lm4mFKoWf+Cb+iC5CXPz/XqD3MZNrk1XUOrErUEHu5EYnfgVPOoQX4wyYBziUpufssN+FlmFhE7XmBGeyaLOIw==}
     dependencies:
-      '@a11y-ui/core': 1.0.2
+      '@a11y-ui/core': 1.0.3
     dev: true
 
-  /adopted-style-sheets@1.0.2:
-    resolution: {integrity: sha512-3+0pE9cocYLYuYa47zHzmAfeEPOaT1IpilwdPiLaow+YKJ2C9usVAcuDRsZqEJWsWIqJVALPL+FXeE0TGOvRyw==}
+  /adopted-style-sheets@1.0.3:
+    resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
     dependencies:
       loglevel: 1.8.1
     dev: true
@@ -84,10 +88,10 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
-  /i18next@22.4.15:
-    resolution: {integrity: sha512-yYudtbFrrmWKLEhl6jvKUYyYunj4bTBCe2qIUYAxbXoPusY7YmdwPvOE6fx6UIfWvmlbCWDItr7wIs8KEBZ5Zg==}
+  /i18next@22.5.1:
+    resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
     dependencies:
-      '@babel/runtime': 7.21.5
+      '@babel/runtime': 7.22.5
     dev: true
 
   /inflight@1.0.6:

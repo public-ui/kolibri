@@ -1,17 +1,20 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
-import { KoliBriHorizontalIcon } from '../../types/icon';
 import { getRenderStates } from '../input/controller';
 import { InputNumberController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
+/**
+ * @slot - Die Beschriftung des Eingabefeldes.
+ */
 @Component({
 	tag: 'kol-input-number',
 	styleUrls: {
@@ -42,6 +45,8 @@ export class KolInputNumber implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
+		const showExpertSlot = this.state._label === ''; // _label="" or _label
+		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
 			<Host
 				class={{
@@ -64,10 +69,7 @@ export class KolInputNumber implements ComponentApi {
 					_smartButton={this.state._smartButton}
 					_touched={this.state._touched}
 				>
-					{' '}
-					<span slot="label">
-						<slot />
-					</span>
+					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<input
 						ref={this.catchRef}
 						title=""
@@ -102,12 +104,12 @@ export class KolInputNumber implements ComponentApi {
 	private readonly controller: InputNumberController;
 
 	/**
-	 * Gibt an, mit welcher Tastenkombination man das Input auslösen oder fokussieren kann.
+	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob die Fehlermeldung vorgelesen werden soll, wenn es eine gibt.
+	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
@@ -117,7 +119,7 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Setzt das Feld in einen inaktiven Zustand, in dem es keine Interaktion erlaubt.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean;
 
@@ -127,7 +129,7 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Versteckt das sichtbare Label des Elements.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
 	@Prop({ reflect: true }) public _hideLabel?: boolean;
 
@@ -137,14 +139,19 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Ermöglicht das Anzeigen von Icons links und/oder rechts am Rand des Eingabefeldes.
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die technische ID des Eingabefeldes an.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
@@ -152,12 +159,12 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _list?: Stringified<string[]>;
 
 	/**
-	 * Gibt den größtmöglichen Zahlenwert an.
+	 * Gibt den größtmöglichen Eingabewert an.
 	 */
 	@Prop() public _max?: number | Iso8601;
 
 	/**
-	 * Gibt den kleinstmöglichen Zahlenwert an.
+	 * Gibt den kleinstmöglichen Eingabewert an.
 	 */
 	@Prop() public _min?: number | Iso8601;
 
@@ -192,12 +199,18 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _smartButton?: ButtonProps;
 
 	/**
-	 * Gibt die Schrittweite der Wertveränderung an
+	 * Gibt die Schrittweite der Wertveränderung an.
 	 */
 	@Prop() public _step?: number;
 
 	/**
-	 * Gibt an, welchen Tab-Index dieses Input hat.
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
+
+	/**
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -207,7 +220,7 @@ export class KolInputNumber implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Gibt an, ob es ein DateTime-, Date-, Month-, Week-, Time-, DateTime-Local-, Number-Eingabefeld ist.
+	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
 	 * @deprecated Das W3C hat die Date-Typen in eine eigene Gruppe zusammengefasst. Verwende hierfür die InputDate-Komponente.
 	 */
@@ -220,8 +233,9 @@ export class KolInputNumber implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
 		_hasValue: false,
+		_id: nonce(), // ⚠ required
+		_label: '…', // ⚠ required
 		_list: [],
 		_type: 'number',
 	};
@@ -275,6 +289,11 @@ export class KolInputNumber implements ComponentApi {
 		this.controller.validateId(value);
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		this.controller.validateLabel(value);
+	}
+
 	@Watch('_list')
 	public validateList(value?: Stringified<string[]>): void {
 		this.controller.validateList(value);
@@ -323,6 +342,11 @@ export class KolInputNumber implements ComponentApi {
 	@Watch('_step')
 	public validateStep(value?: number): void {
 		this.controller.validateStep(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: string): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')

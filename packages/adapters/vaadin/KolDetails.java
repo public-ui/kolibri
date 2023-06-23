@@ -16,24 +16,24 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
  */
 
 @Tag("kol-details")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**
-	 * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setOpen(final String value) {
+	public void setOpen(final Optional<String> value) {
 		getElement().setProperty("_open", value);
 	}
 
 	/**
-	 * Gibt an, ob die Detailbeschreibung geöffnet oder geschlossen ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getOpen() {
+	public Optional<String> getOpen() {
 		return getElement().getProperty("_open", null);
 	}
 
@@ -42,16 +42,16 @@ public class KolDetails extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setSummary(final String value) {
+	public void setSummary(final Optional<String> value) {
 		getElement().setProperty("_summary", value);
 	}
 
 	/**
 	 * Gibt die Zusammenfassung der Detailbeschreibung an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getSummary() {
+	public Optional<String> getSummary() {
 		return getElement().getProperty("_summary", null);
 	}
 }

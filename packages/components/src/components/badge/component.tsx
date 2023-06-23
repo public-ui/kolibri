@@ -1,35 +1,16 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { ColorPair, handleColorChange, PropColor, validateColor } from '../../types/props/color';
+import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
 import { validateLabel } from '../../types/props';
+import { nonce } from '../../utils/dev.utils';
+import { KoliBriBadgeProps, KoliBriBadgeStates } from './types';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
-
-type RequiredProps = {
-	label: string;
-};
-type OptionalProps = {
-	color: Stringified<PropColor>;
-	icon: Stringified<KoliBriIconProp>;
-	iconOnly: boolean;
-	smartButton: Stringified<ButtonProps>;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	color: ColorPair;
-	label: string;
-};
-type OptionalStates = {
-	smartButton: ButtonProps;
-};
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 @Component({
 	tag: 'kol-badge',
@@ -38,9 +19,10 @@ export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolBadge implements Props {
+export class KolBadge implements KoliBriBadgeProps {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
+	private readonly id = nonce();
 
 	public render(): JSX.Element {
 		return (
@@ -54,14 +36,15 @@ export class KolBadge implements Props {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc _icon={this._icon} _iconOnly={this._iconOnly} _label={this.state._label}></kol-span-wc>
+					<kol-span-wc id={this.id} _icon={this._icon} _hideLabel={this._hideLabel || this._iconOnly} _label={this.state._label}></kol-span-wc>
 					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 						<kol-button-wc
+							_ariaControls={this.id}
 							_ariaLabel={this.state._smartButton._ariaLabel}
 							_customClass={this.state._smartButton._customClass}
 							_disabled={this.state._smartButton._disabled}
+							_hideLabel={true}
 							_icon={this.state._smartButton._icon}
-							_iconOnly={true}
 							_id={this.state._smartButton._id}
 							_label={this.state._smartButton._label}
 							_on={this.state._smartButton._on}
@@ -80,17 +63,23 @@ export class KolBadge implements Props {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
@@ -99,7 +88,7 @@ export class KolBadge implements Props {
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
-	@State() public state: States = {
+	@State() public state: KoliBriBadgeStates = {
 		_color: {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',

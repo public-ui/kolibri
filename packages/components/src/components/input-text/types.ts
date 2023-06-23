@@ -4,8 +4,8 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-
-export type InputRequiredProps = unknown;
+import { PropLabel } from '../../types/props';
+import { InputRequiredProps } from '../input/types';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -26,8 +26,12 @@ type OptionalProps = {
 	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
+	/**
+	 * @deprecated
+	 */
 	size: number;
 	smartButton: ButtonProps;
+	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	type: InputTextType;
@@ -41,7 +45,7 @@ type RequiredStates = {
 	id: string;
 	list: string[];
 	type: InputTextType;
-};
+} & PropLabel;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
@@ -57,6 +61,9 @@ type OptionalStates = {
 	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
+	/**
+	 * @deprecated
+	 */
 	size: number;
 	smartButton: ButtonProps;
 	tabIndex: number;

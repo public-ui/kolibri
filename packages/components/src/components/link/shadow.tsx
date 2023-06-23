@@ -3,7 +3,7 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AlternativButtonLinkRole, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Alignment } from '../../types/props';
+import { AriaCurrent, Align } from '../../types/props';
 import { propagateFocus } from '../../utils/reuse';
 
 @Component({
@@ -34,10 +34,10 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
 					_download={this._download}
+					_hideLabel={this._hideLabel}
 					_href={this._href}
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
-					_iconOnly={this._iconOnly}
 					_label={this._label}
 					_on={this._on}
 					_role={this._role}
@@ -53,7 +53,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
 					*/}
-					<slot name="expert" slot="expert" />
+					<slot name="expert" slot="expert"></slot>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<slot slot="expert" />
 				</kol-link-wc>
@@ -67,27 +67,27 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
-	 * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text des Links an.  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob der Link gerade ausgewählt ist. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, ob der Link deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
@@ -97,28 +97,34 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _download?: boolean | string = false;
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob das Icon entweder links oder rechts dargestellt werden soll.
+	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Alignment;
+	@Prop() public _iconAlign?: Align;
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
@@ -129,7 +135,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt an, welche Rolle das Element hat.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
@@ -148,7 +154,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop({ reflect: true }) public _stealth?: boolean = false;
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -163,9 +169,9 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'right';
+	@Prop() public _tooltipAlign?: Align = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

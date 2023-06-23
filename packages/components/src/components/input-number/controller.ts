@@ -128,6 +128,7 @@ export class InputNumberController extends InputIconController implements Watche
 	 */
 	public validateValueEx(value?: number | Iso8601 | null, afterPatch?: (v: string) => void): void {
 		this.validateIso8601('_value', value, afterPatch);
+		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
 	public componentWillLoad(): void {
@@ -136,6 +137,7 @@ export class InputNumberController extends InputIconController implements Watche
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
 		this.validateList(this.component._list);
+		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);
 		this.validateStep(this.component._step);

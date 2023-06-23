@@ -1,33 +1,18 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
-import { Events } from '../../enums/events';
 
-import { Generic } from '@a11y-ui/core';
-import { EventCallback } from '../../types/callbacks';
 import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { Stringified } from '../../types/common';
 import { translate } from '../../i18n';
+import { KoliBriFormAPI, KoliBriFormCallbacks, KoliBriFormStates } from './types';
 
-export type KoliBriFormCallbacks = {
-	[Events.onSubmit]?: EventCallback<Event>;
-	[Events.onReset]?: EventCallback<Event>;
-};
-
-type RequiredProps = unknown;
-type OptionalProps = {
-	on: KoliBriFormCallbacks;
-	requiredText: string | boolean;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
+/**
+ * @slot - Inhalt der Form.
+ */
 @Component({
 	tag: 'kol-form',
 	shadow: true,
 })
-export class KolForm implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolForm implements KoliBriFormAPI {
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
 		if (typeof this.state._on?.onSubmit === 'function') {
@@ -68,7 +53,7 @@ export class KolForm implements Generic.Element.ComponentApi<RequiredProps, Opti
 	 */
 	@Prop() public _requiredText?: Stringified<boolean> = true;
 
-	@State() public state: States = {};
+	@State() public state: KoliBriFormStates = {};
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriFormCallbacks): void {

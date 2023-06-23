@@ -1,23 +1,13 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
-import { KoliBriButtonCallbacks } from '../../types/button-link';
-import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
+import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
 import { Orientation } from '../../types/orientation';
-import {
-	AriaCurrent,
-	PropCollapsible,
-	PropCompact,
-	PropHasCompactButton,
-	validateCollapsible,
-	validateCompact,
-	validateHasCompactButton,
-} from '../../types/props';
+import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
+import { KoliBriNavAPI, KoliBriNavStates } from './types';
 
 /**
  * @deprecated
@@ -49,41 +39,6 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	return true;
 };
 
-type RequiredProps = {
-	ariaLabel: string;
-	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
-};
-type OptionalProps = {
-	ariaCurrentValue: AriaCurrent;
-	orientation: Orientation;
-	/**
-	 * @deprecated
-	 */
-	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropCompact &
-	PropHasCompactButton;
-// type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = {
-	ariaCurrentValue: AriaCurrent;
-	ariaLabel: string;
-	collapsible: boolean;
-	/**
-	 * @deprecated Version 2
-	 */
-	hasCompactButton: boolean;
-	links: ButtonOrLinkOrTextWithChildrenProps[];
-	orientation: Orientation;
-	/**
-	 * @deprecated
-	 */
-	variant: KoliBriNavVariant;
-} & PropCollapsible &
-	PropHasCompactButton;
-type OptionalStates = PropCompact;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-
 @Component({
 	tag: 'kol-nav',
 	styleUrls: {
@@ -91,7 +46,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolNav implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolNav implements KoliBriNavAPI {
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
@@ -107,40 +62,13 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return false;
 	};
 
-	/** Element creation functions */
-	private button(
-		selected: boolean,
-		compact: boolean,
-		disabled: boolean,
-		icon: Stringified<KoliBriIconProp> | undefined,
-		label: string,
-		on: KoliBriButtonCallbacks<unknown>
-	): JSX.Element {
-		return (
-			<kol-button-wc
-				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaExpanded={selected}
-				_disabled={disabled}
-				_icon={icon || '-'}
-				_iconOnly={compact}
-				_label={label}
-				_on={on}
-			></kol-button-wc>
-		);
-	}
-
-	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return <kol-span-wc _icon={icon || '-'} _iconOnly={compact} _label={label}></kol-span-wc>;
-	}
-
 	private entry(
 		collapsible: boolean,
 		compact: boolean,
 		hasChildren: boolean,
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		expanded: boolean,
-		selected: boolean,
-		textCenter: boolean
+		selected: boolean
 	): JSX.Element {
 		return (
 			<div
@@ -149,10 +77,10 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 					'has-children': hasChildren,
 					selected,
 					expanded,
-					'text-center': textCenter,
+					compact,
 				}}
 			>
-				{this.buttonOrLinkOrText(compact, link, selected)}
+				<kol-button-link-text-switch _links={link} _compact={compact} _selected={selected} />
 				{hasChildren ? this.expandButton(collapsible, link, selected) : ''}
 			</div>
 		);
@@ -162,9 +90,10 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		return (
 			<kol-button-wc
 				class="expand-button"
+				_ariaExpanded={selected}
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
-				_iconOnly
+				_hideLabel
 				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
 			></kol-button-wc>
@@ -182,29 +111,15 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
 		const selected = !!link._active;
 		const expanded = hasChildren && !!link._active;
-		const textCenter = compact;
 		return (
 			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
-				{this.entry(collapsible, compact, hasChildren, link, expanded, selected, textCenter)}
+				{this.entry(collapsible, compact, hasChildren, link, expanded, selected)}
 				{hasChildren && selected ? (
 					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
 				) : (
 					''
 				)}
 			</li>
-		);
-	}
-
-	private link(selected: boolean, compact: boolean, href: string, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return (
-			<kol-link-wc
-				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaExpanded={selected}
-				_href={href}
-				_icon={icon || '-'}
-				_iconOnly={compact}
-				_label={label}
-			></kol-link-wc>
 		);
 	}
 
@@ -223,23 +138,6 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 			</ul>
 		);
 	};
-
-	private buttonOrLinkOrText(compact: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
-		if ((link as ButtonWithChildrenProps)._on) {
-			return this.button(
-				selected,
-				compact,
-				(link as ButtonWithChildrenProps)._disabled === true,
-				link._icon,
-				link._label,
-				(link as ButtonWithChildrenProps)._on
-			);
-		} else if ((link as LinkWithChildrenProps)._href) {
-			return this.link(selected, compact, (link as LinkWithChildrenProps)._href, link._icon, link._label);
-		} else {
-			return this.text(compact, link._icon, link._label);
-		}
-	}
 
 	public render(): JSX.Element {
 		let hasCompactButton = this.state._hasCompactButton;
@@ -262,12 +160,12 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
-						<div class="mt-2 w-full text-center">
+						<div class="mt-2 w-full compact">
 							<kol-button
 								_ariaControls="nav"
-								_ariaExpanded={compact}
+								_ariaExpanded={!compact}
 								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
-								_iconOnly
+								_hideLabel
 								_label={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
 									onClick: (): void => {
@@ -293,7 +191,7 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Prop() public _ariaCurrentValue: AriaCurrent = false;
 
 	/**
-	 * Gibt den Text an, der die Navigation von anderen Navigationen differenziert.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel!: string;
 
@@ -314,23 +212,23 @@ export class KolNav implements Generic.Element.ComponentApi<RequiredProps, Optio
 	@Prop({ reflect: true }) public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Gibt die Ausrichtung der Navigation an.
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Gibt die geordnete Liste der Seitenhierarchie an.
+	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/**
-	 * Stellt verschiedene Varianten der Navigation zur Verfügung.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
 	 * @deprecated This property is deprecated and will be removed in the next major version.
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
-	@State() public state: States = {
+	@State() public state: KoliBriNavStates = {
 		_ariaCurrentValue: false,
 		_ariaLabel: '…', // '⚠'
 		_collapsible: true,

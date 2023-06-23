@@ -75,6 +75,7 @@ export class InputPasswordController extends InputIconController implements Watc
 
 	public validateValue(value?: string): void {
 		watchString(this.component, '_value', value);
+		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
 	public componentWillLoad(): void {

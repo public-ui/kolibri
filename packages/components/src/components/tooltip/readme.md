@@ -24,11 +24,11 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ## Properties
 
-| Property              | Attribute | Description                                                                           | Type                                                  | Default     |
-| --------------------- | --------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.                     | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-| `_id` _(required)_    | `_id`     | Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.                      | `string`                                              | `undefined` |
-| `_label` _(required)_ | `_label`  | Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird. | `string`                                              | `undefined` |
+| Property              | Attribute | Description                                                                                                                 | Type                                                  | Default     |
+| --------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| `_align`              | `_align`  | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.                                                           | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| `_id` _(required)_    | `_id`     | Gibt die interne ID des primären Elements in der Komponente an.                                                             | `string`                                              | `undefined` |
+| `_label` _(required)_ | `_label`  | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                                              | `undefined` |
 
 ## Dependencies
 

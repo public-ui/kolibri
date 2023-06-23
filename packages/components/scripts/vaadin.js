@@ -32,19 +32,20 @@ const pascalCase = (str) => {
 		.replace(/^[a-z]/, (g) => g.toUpperCase());
 };
 
-const javaType = (type) => {
+const makeOptionalIfNotRequired = (str, required) => {
+	if (required) {
+		return str;
+	} else {
+		return `Optional<${str}>`;
+	}
+};
+
+const javaType = (type, required) => {
 	switch (type) {
 		case 'boolean':
-			return 'boolean';
-		case 'number':
-			return 'double';
-		case 'array':
-			return 'Array';
-		case 'object':
-			return 'Object';
-		case 'string':
+			return makeOptionalIfNotRequired('boolean', required);
 		default:
-			return 'String';
+			return makeOptionalIfNotRequired('String', required);
 	}
 };
 
@@ -86,7 +87,7 @@ ELEMENTS.tags.forEach((tag) => {
 		file += `	/**
 	 * ${attribute.description}
 	 *
-	 * @param value ${javaType(attribute.type)}
+	 * @param value ${javaType(attribute.type, attribute.required)}
 	 */
 	public void set${pascalCase(attribute.name)}(final ${javaType(attribute.type)} value) {
 		getElement().setProperty("${attribute.name}", value);

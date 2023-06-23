@@ -1,17 +1,15 @@
 @import url(../style.css);
 .overlay {
 	background-color: rgba(0, 0, 0, 0.33);
-	display: grid;
+	display: flex;
 	height: 100%;
 	inset: 0;
-	place-content: center;
 	position: fixed;
 	width: 100%;
 	z-index: 100;
 }
 .modal {
+	margin: auto;
 	max-height: 100%;
 	max-width: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
 }

@@ -41,11 +41,17 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 ## Properties
 
-| Property              | Attribute             | Description                                                                       | Type                                           | Default     |
-| --------------------- | --------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `_label` _(required)_ | `_label`              | Gibt den Text der Überschrift an.                                                 | `string`                                       | `undefined` |
-| `_level`              | `_level`              | Setzt den H-Level, von 1 bis 6, der Überschrift.                                  | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
-| `_secondaryHeadline`  | `_secondary-headline` | Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten. | `string \| undefined`                          | `undefined` |
+| Property              | Attribute             | Description                                                                                                                                           | Type                                           | Default     |
+| --------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
+| `_label` _(required)_ | `_label`              | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                           | `string`                                       | `undefined` |
+| `_level`              | `_level`              | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| `_secondaryHeadline`  | `_secondary-headline` | Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.                                                                     | `string \| undefined`                          | `undefined` |
+
+## Slots
+
+| Slot | Description             |
+| ---- | ----------------------- |
+|      | Inhalt der Überschrift. |
 
 ## Dependencies
 

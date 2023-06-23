@@ -1,5 +1,4 @@
-import { Bundesanstalt, Bundesministerium, ButtonOrLinkOrTextWithChildrenProps, SelectOption } from '@public-ui/components';
-import { TabButtonProps } from '@public-ui/components/dist/types/components/tabs/component';
+import { Bundesanstalt, Bundesministerium, ButtonOrLinkOrTextWithChildrenProps, SelectOption, TabButtonProps } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -8,6 +7,7 @@ import {
 	KolBreadcrumb,
 	KolButton,
 	KolButtonGroup,
+	KolButtonLink,
 	KolCard,
 	KolDetails,
 	KolHeading,
@@ -24,7 +24,7 @@ import {
 	KolInputRange,
 	KolInputText,
 	KolLink,
-	KolButtonLink,
+	KolLinkButton,
 	KolLinkGroup,
 	KolLogo,
 	KolModal,
@@ -39,11 +39,10 @@ import {
 	KolTextarea,
 	KolToast,
 	KolVersion,
-	KolLinkButton,
 } from '@public-ui/solid';
 import { Component } from 'solid-js';
-import { DATA, Zeiten } from './data';
 import { COUNTRIES } from './countries';
+import { DATA, Zeiten } from './data';
 
 // https://css-tricks.com/snippets/javascript/random-hex-color/
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
@@ -91,7 +90,7 @@ const DEFAULT_TABS: TabButtonProps[] = [
 const TABS_ICON_ONLY = DEFAULT_TABS.map((tab) => {
 	return {
 		...tab,
-		_iconOnly: true,
+		_hideLabel: true,
 	};
 });
 
@@ -139,6 +138,14 @@ const NAV_LINKS: ButtonOrLinkOrTextWithChildrenProps[] = [
 	{
 		_icon: 'codicon codicon-pie-chart',
 		_label: 'Navigationspunkt nur Text',
+	},
+	{
+		_icon: 'codicon codicon-pie-chart',
+		_label: 'Navigationspunkt Aktiv',
+		_active: true,
+		_on: {
+			onClick: console.log,
+		},
 	},
 	{
 		_children: NAV_CHILDREN,
@@ -329,7 +336,7 @@ export const components: Record<string, Component> = {
 					color: `#888`,
 				}}
 				_icon="codicon codicon-dashboard"
-				_iconOnly
+				_hideLabel
 			/>
 			{new Array(10).fill(null).map(() => (
 				<>
@@ -342,7 +349,7 @@ export const components: Record<string, Component> = {
 							right: 'codicon codicon-dashboard',
 						}}
 					/>
-					<KolBadge _label="Text" _color={`#${randomColor()}`} _icon="codicon codicon-dashboard" _iconOnly />
+					<KolBadge _label="Text" _color={`#${randomColor()}`} _icon="codicon codicon-dashboard" _hideLabel />
 				</>
 			))}
 			<KolBadge
@@ -394,14 +401,14 @@ export const components: Record<string, Component> = {
 			<KolBreadcrumb
 				_ariaLabel="Breadcrumb aus Text-Links"
 				_links={[
-					{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'codicon codicon-home', _iconOnly: true, _href: '#/' },
+					{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'codicon codicon-home', _hideLabel: true, _href: '#/' },
 					{ _label: 'Unterseite der Startseite mit sehr langem Link-Test', _href: '#/unterseite' },
 					{ _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
 				]}
 			/>
 			<KolBreadcrumb
 				_ariaLabel="Breadcrumb aus Text-Links"
-				_links={[{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'codicon codicon-home', _iconOnly: true, _href: '#/' }]}
+				_links={[{ _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'codicon codicon-home', _hideLabel: true, _href: '#/' }]}
 			/>
 		</div>
 	),
@@ -432,12 +439,12 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Loading" _icon="codicon codicon-home" _customClass="loading" _variant="custom" style="width: 12em" />
 			</div>
 			<div class="grid gap-6 items-center justify-items-center">
-				<KolButton _label="Primary" _icon="codicon codicon-home" _iconOnly _variant="primary" />
-				<KolButton _label="Secondary" _icon="codicon codicon-home" _iconOnly _variant="secondary" _tooltipAlign="right" />
-				<KolButton _label="Normal" _icon="codicon codicon-home" _iconOnly _variant="normal" _tooltipAlign="bottom" />
-				<KolButton _label="Danger" _icon="codicon codicon-home" _iconOnly _variant="danger" _tooltipAlign="left" />
-				<KolButton _label="Ghost" _icon="codicon codicon-home" _iconOnly _variant="ghost" _tooltipAlign="top" />
-				<KolButton _label="Loading" _icon="codicon codicon-home" _iconOnly _customClass="loading" _variant="custom" _tooltipAlign="top" />
+				<KolButton _label="Primary" _icon="codicon codicon-home" _hideLabel _variant="primary" />
+				<KolButton _label="Secondary" _icon="codicon codicon-home" _hideLabel _variant="secondary" _tooltipAlign="right" />
+				<KolButton _label="Normal" _icon="codicon codicon-home" _hideLabel _variant="normal" _tooltipAlign="bottom" />
+				<KolButton _label="Danger" _icon="codicon codicon-home" _hideLabel _variant="danger" _tooltipAlign="left" />
+				<KolButton _label="Ghost" _icon="codicon codicon-home" _hideLabel _variant="ghost" _tooltipAlign="top" />
+				<KolButton _label="Loading" _icon="codicon codicon-home" _hideLabel _customClass="loading" _variant="custom" _tooltipAlign="top" />
 			</div>
 			<div class="grid gap-6 items-center justify-items-center">
 				<KolButton _label="Primary" _icon="codicon codicon-home" _disabled _variant="primary" />
@@ -539,12 +546,12 @@ export const components: Record<string, Component> = {
 				<KolLinkButton _href="#" _icon="codicon codicon-home" _label="Loading" _customClass="loading" _variant="custom" style="width: 12em" />
 			</div>
 			<div class="grid gap-6 items-center justify-items-center">
-				<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="Primary" _variant="primary" />
-				<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="Secondary" _variant="secondary" _tooltipAlign="right" />
-				<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="Normal" _variant="normal" _tooltipAlign="bottom" />
-				<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="Danger" _variant="danger" _tooltipAlign="left" />
-				<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="Ghost" _variant="ghost" _tooltipAlign="top" />
-				<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="Loading" _customClass="loading" _variant="custom" _tooltipAlign="top" />
+				<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="Primary" _variant="primary" />
+				<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="Secondary" _variant="secondary" _tooltipAlign="right" />
+				<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="Normal" _variant="normal" _tooltipAlign="bottom" />
+				<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="Danger" _variant="danger" _tooltipAlign="left" />
+				<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="Ghost" _variant="ghost" _tooltipAlign="top" />
+				<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="Loading" _customClass="loading" _variant="custom" _tooltipAlign="top" />
 			</div>
 			<div class="grid gap-6 items-center justify-items-center border border-red p-2">
 				<div class="w-full text-left">
@@ -632,7 +639,7 @@ export const components: Record<string, Component> = {
 				<KolLinkButton _href="#" _label="Primary" _target="_blank" _variant="primary" />
 				<KolLinkButton _href="#" _icon="codicon codicon-home" _label="Secondary" _target="_blank" _variant="secondary" />
 				<KolLinkButton _href="#" _icon="codicon codicon-home" _label="Normal" _target="_blank" _variant="normal" style="width: 12em" />
-				<KolLinkButton _href="#" _icon="codicon codicon-home" _iconOnly _label="Danger" _target="_blank" _variant="danger" _tooltipAlign="left" />
+				<KolLinkButton _href="#" _icon="codicon codicon-home" _hideLabel _label="Danger" _target="_blank" _variant="danger" _tooltipAlign="left" />
 				<KolLinkButton _href="#" class="opacity-25" _icon="codicon codicon-home" _disabled _label="Ghost" _target="_blank" _variant="ghost" />
 				<KolLinkButton
 					_href="#"
@@ -664,9 +671,9 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Primary" _variant="primary" />
 				<KolButton _label="Secondary" _variant="secondary" />
 				<KolButton _label="Normal" _variant="normal" />
-				<KolButton _label="Danger" _icon="codicon codicon-trash" _iconOnly _variant="danger" />
-				<KolButton _label="Ghost" _icon="codicon codicon-info" _iconOnly _variant="ghost" />
-				<KolButton _label="Disabled" _icon="codicon codicon-lock" _iconOnly _disabled />
+				<KolButton _label="Danger" _icon="codicon codicon-trash" _hideLabel _variant="danger" />
+				<KolButton _label="Ghost" _icon="codicon codicon-info" _hideLabel _variant="ghost" />
+				<KolButton _label="Disabled" _icon="codicon codicon-lock" _hideLabel _disabled />
 			</KolButtonGroup>
 		</div>
 	),
@@ -689,7 +696,7 @@ export const components: Record<string, Component> = {
 				<div slot="footer">
 					<KolButtonGroup>
 						<KolButton _label="Kaufen" _variant="primary" />
-						<KolButton _label="Löschen" _icon="codicon codicon-trash" _iconOnly _variant="danger" />
+						<KolButton _label="Löschen" _icon="codicon codicon-trash" _hideLabel _variant="danger" />
 					</KolButtonGroup>
 				</div>
 			</KolCard>
@@ -1030,7 +1037,7 @@ export const components: Record<string, Component> = {
 							icon: 'codicon codicon-eye',
 						},
 					},
-					_iconOnly: true,
+					_hideLabel: true,
 					_label: 'Passwort anzeigen',
 					_on: {
 						onClick: () => {},
@@ -1144,7 +1151,7 @@ export const components: Record<string, Component> = {
 							icon: 'codicon codicon-eye',
 						},
 					},
-					_iconOnly: true,
+					_hideLabel: true,
 					_label: 'Passwort anzeigen',
 					_on: {
 						onClick: () => {},
@@ -1228,7 +1235,7 @@ export const components: Record<string, Component> = {
 	'KOL-LINK': () => (
 		<div class="grid gap-6">
 			<div>
-				<KolLink _ariaLabel="Home" _href="https://www.w3.org" _icon="codicon codicon-home" _iconOnly _label="" />
+				<KolLink _ariaLabel="Home" _href="https://www.w3.org" _icon="codicon codicon-home" _hideLabel _label="" />
 			</div>
 			<div>
 				<KolLink _href="https://www.w3.org" _label="">
@@ -1246,7 +1253,7 @@ export const components: Record<string, Component> = {
 				</KolLink>
 			</div>
 			<div>
-				<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _iconOnly _label="">
+				<KolLink _href="https://www.w3.org" _icon="codicon codicon-home" _hideLabel _label="">
 					Nur Icon-Link
 				</KolLink>
 			</div>
@@ -1301,10 +1308,10 @@ export const components: Record<string, Component> = {
 	'KOL-BUTTON-LINK': () => (
 		<div class="grid gap-6">
 			<div>
-				<KolButtonLink _icon="codicon codicon-home" _iconOnly _label="Label-Text" />
+				<KolButtonLink _icon="codicon codicon-home" _hideLabel _label="Label-Text" />
 			</div>
 			<div>
-				<KolButtonLink _ariaLabel="Label-Text (aria-label)" _icon="codicon codicon-home" _iconOnly _label="Label-Text" />
+				<KolButtonLink _ariaLabel="Label-Text (aria-label)" _icon="codicon codicon-home" _hideLabel _label="Label-Text" />
 			</div>
 			<div>
 				<KolButtonLink _label="Normaler Link" />
@@ -1316,7 +1323,7 @@ export const components: Record<string, Component> = {
 				<KolButtonLink _icon="codicon codicon-home" _label="Normaler Link mit Icon rechts" />
 			</div>
 			<div>
-				<KolButtonLink _icon="codicon codicon-home" _iconOnly _label="Nur Icon-Link" />
+				<KolButtonLink _icon="codicon codicon-home" _hideLabel _label="Nur Icon-Link" />
 			</div>
 			<div>
 				<p>
@@ -1440,6 +1447,12 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-SELECT': () => (
 		<div class="grid gap-6">
+			<KolSelect _id="" _list={STATUS_OPTIONS} _error={ERROR_MSG}>
+				Anrede
+			</KolSelect>
+			<KolSelect _id="" _disabled _list={STATUS_OPTIONS} _error={ERROR_MSG}>
+				Anrede
+			</KolSelect>
 			<KolSelect
 				_id=""
 				_list={STATUS_OPTIONS}
@@ -1686,28 +1699,28 @@ export const components: Record<string, Component> = {
 	'KOL-TOOLTIP': () => (
 		<div class="grid justify-items-center gap-8">
 			<div class="grid gap-4 grid-cols-4 justify-items-center">
-				<KolButton _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary" />
-				<KolButton _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary" />
-				<KolButton _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal" />
-				<KolButton _icon="codicon codicon-arrow-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger" />
+				<KolButton _icon="codicon codicon-arrow-down" _hideLabel _label="unten" _tooltip-align="bottom" _variant="primary" />
+				<KolButton _icon="codicon codicon-arrow-up" _hideLabel _label="oben" _tooltip-align="top" _variant="secondary" />
+				<KolButton _icon="codicon codicon-arrow-left" _hideLabel _label="links" _tooltip-align="left" _variant="normal" />
+				<KolButton _icon="codicon codicon-arrow-right" _hideLabel _label="rechts" _tooltip-align="right" _variant="danger" />
 			</div>
 			<div class="grid gap-4 grid-cols-4 justify-items-center">
-				<KolLinkButton _href="#" _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary" />
-				<KolLinkButton _href="#" _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary" />
-				<KolLinkButton _href="#" _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal" />
-				<KolLinkButton _href="#" _icon="codicon codicon-arrow-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger" />
+				<KolLinkButton _href="#" _icon="codicon codicon-arrow-down" _hideLabel _label="unten" _tooltip-align="bottom" _variant="primary" />
+				<KolLinkButton _href="#" _icon="codicon codicon-arrow-up" _hideLabel _label="oben" _tooltip-align="top" _variant="secondary" />
+				<KolLinkButton _href="#" _icon="codicon codicon-arrow-left" _hideLabel _label="links" _tooltip-align="left" _variant="normal" />
+				<KolLinkButton _href="#" _icon="codicon codicon-arrow-right" _hideLabel _label="rechts" _tooltip-align="right" _variant="danger" />
 			</div>
 			<div class="grid gap-4 grid-cols-4 justify-items-center">
-				<KolLink class="text-center" _ariaLabel="unten" _href="#" _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" />
-				<KolLink class="text-center" _ariaLabel="oben" _href="#" _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" />
-				<KolLink class="text-center" _ariaLabel="links" _href="#" _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" />
-				<KolLink class="text-center" _ariaLabel="rechts" _href="#" _icon="codicon codicon-arrow-right" _iconOnly _label="rechts" _tooltip-align="right" />
+				<KolLink class="text-center" _ariaLabel="unten" _href="#" _icon="codicon codicon-arrow-down" _hideLabel _label="unten" _tooltip-align="bottom" />
+				<KolLink class="text-center" _ariaLabel="oben" _href="#" _icon="codicon codicon-arrow-up" _hideLabel _label="oben" _tooltip-align="top" />
+				<KolLink class="text-center" _ariaLabel="links" _href="#" _icon="codicon codicon-arrow-left" _hideLabel _label="links" _tooltip-align="left" />
+				<KolLink class="text-center" _ariaLabel="rechts" _href="#" _icon="codicon codicon-arrow-right" _hideLabel _label="rechts" _tooltip-align="right" />
 			</div>
 			<div class="grid gap-4 grid-cols-4 justify-items-center">
-				<KolButtonLink class="text-center" _ariaLabel="unten" _icon="codicon codicon-arrow-down" _iconOnly _label="unten" _tooltip-align="bottom" />
-				<KolButtonLink class="text-center" _ariaLabel="oben" _icon="codicon codicon-arrow-up" _iconOnly _label="oben" _tooltip-align="top" />
-				<KolButtonLink class="text-center" _ariaLabel="links" _icon="codicon codicon-arrow-left" _iconOnly _label="links" _tooltip-align="left" />
-				<KolButtonLink class="text-center" _ariaLabel="rechts" _icon="codicon codicon-arrow-right" _iconOnly _label="rechts" _tooltip-align="right" />
+				<KolButtonLink class="text-center" _ariaLabel="unten" _icon="codicon codicon-arrow-down" _hideLabel _label="unten" _tooltip-align="bottom" />
+				<KolButtonLink class="text-center" _ariaLabel="oben" _icon="codicon codicon-arrow-up" _hideLabel _label="oben" _tooltip-align="top" />
+				<KolButtonLink class="text-center" _ariaLabel="links" _icon="codicon codicon-arrow-left" _hideLabel _label="links" _tooltip-align="left" />
+				<KolButtonLink class="text-center" _ariaLabel="rechts" _icon="codicon codicon-arrow-right" _hideLabel _label="rechts" _tooltip-align="right" />
 			</div>
 		</div>
 	),

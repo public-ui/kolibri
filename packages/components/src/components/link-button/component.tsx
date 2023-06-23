@@ -12,7 +12,7 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Alignment } from '../../types/props';
+import { AriaCurrent, Align } from '../../types/props';
 import { propagateFocus } from '../../utils/reuse';
 
 @Component({
@@ -48,9 +48,9 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 					_ariaSelected={this._ariaSelected}
 					_disabled={this._disabled}
 					_download={this._download}
+					_hideLabel={this._hideLabel}
 					_href={this._href}
 					_icon={this._icon}
-					_iconOnly={this._iconOnly}
 					_label={this._label}
 					_on={this._on}
 					_role="button"
@@ -59,11 +59,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 					_targetDescription={this._targetDescription}
 					_tooltipAlign={this._tooltipAlign}
 				>
-					{/*
-						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
-						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
-					*/}
-					<slot name="expert" slot="expert" />
+					<slot name="expert" slot="expert"></slot>
 				</kol-link-wc>
 			</Host>
 		);
@@ -75,26 +71,22 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus der Link hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
-	 * Gibt an, ob durch den Link etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
 
 	/**
-	 * Gibt einen beschreibenden Text für den Screenreader an. Damit die
-	 * Sprachsteuerung von interaktiven Elementen funktioniert, muss der
-	 * Aria-Label-Text mit dem Label-Text des Buttons beginnen.
-	 *
-	 * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Element ausgewählt ist (role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop({ reflect: true }) public _ariaSelected?: boolean;
 
@@ -104,7 +96,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _customClass?: string;
 
 	/**
-	 * Gibt an, ob der Link deaktiviert ist.
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop({ reflect: true }) public _disabled?: boolean = false;
 
@@ -114,22 +106,28 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _download?: boolean | string = false;
 
 	/**
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 */
+	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+
+	/**
 	 * Gibt die Ziel-Url des Links an.
 	 */
 	@Prop() public _href!: string;
 
 	/**
-	 * Iconklasse (z.B.: "codicon codicon-home")
+	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Gibt an, ob nur das Icon angezeigt wird.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean = false;
+	@Prop({ reflect: true }) public _iconOnly?: boolean;
 
 	/**
-	 * Setzt den sichtbaren Text des Elements.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
@@ -140,12 +138,12 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Setzt die Role der Schaltfläche.
+	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
 
 	/**
-	 * Gibt an, welchen Tab-Index der Button hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
+	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
 
@@ -160,12 +158,12 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'right';
+	@Prop() public _tooltipAlign?: Align = 'right';
 
 	/**
-	 * Gibt an, welche Ausprägung der Link-Button hat.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 }

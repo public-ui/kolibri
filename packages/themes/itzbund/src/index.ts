@@ -96,7 +96,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	button {
 		border-radius: 2rem !important;
 		font-family: var(--font-family-sans);
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}
 	a > kol-span-wc,
 	button > kol-span-wc {
@@ -108,8 +108,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: inherit; /*line-height: 1.25em;*/ /*padding: calc(4 * var(--spacing));*/
 		padding: 0 1rem;
 	}
-	.button a.icon-only > kol-span-wc,
-	.button button.icon-only > kol-span-wc {
+	.button a.hide-label > kol-span-wc,
+	.button button.hide-label > kol-span-wc {
 		padding: 0 0.5rem;
 	}
 	a > kol-span-wc,
@@ -208,7 +208,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	button {
 		border-radius: 2rem !important;
 		font-family: var(--font-family-sans);
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}
 	a > kol-span-wc,
 	button > kol-span-wc {
@@ -220,8 +220,8 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-size: inherit; /*line-height: 1.25em;*/ /*padding: calc(4 * var(--spacing));*/
 		padding: 0 1rem;
 	}
-	.button a.icon-only > kol-span-wc,
-	.button button.icon-only > kol-span-wc {
+	.button a.hide-label > kol-span-wc,
+	.button button.hide-label > kol-span-wc {
 		padding: 0 0.5rem;
 	}
 	a > kol-span-wc,
@@ -351,7 +351,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		color: var(--color-petrol);
 		font-family: var(--font-family-sans);
 		font-size: inherit;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 		transition-delay: 0;
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.5s;
@@ -483,6 +483,55 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		font-style: italic;
 	}`,
 	'KOL-INPUT-NUMBER': `input:hover,
+	input:focus {
+		border-color: var(--border-color) !important;
+		border-radius: none !important;
+		outline-color: var(--color-achat) !important;
+		outline-offset: 0;
+		outline-style: solid;
+		outline-width: 1px;
+	}
+	label {
+		color: var(--color-anthrazit);
+		font-size: 14px;
+		line-height: 20px;
+		gap: 8px;
+		width: 100%;
+		font-weight: bold;
+	}
+	input {
+		cursor: pointer;
+		width: 100%;
+		color: var(--color-anthrazit);
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--color-petrol);
+		border-radius: 0;
+		background-color: #e8edf2 !important;
+		overflow: hidden;
+		line-height: 24px;
+		font-size: 16px;
+	}
+	.error input {
+		background-color: var(--color-rotton-20) !important;
+		border-color: var(--color-rotton) !important;
+	}
+	input:disabled {
+		background-color: var(--color-input-bg-default);
+		border-color: var(--border-color);
+		cursor: not-allowed;
+	}
+	kol-alert {
+		margin-top: calc(2 * var(--spacing));
+		display: block;
+	}
+	.kol-required span::after {
+		content: "*";
+	}
+	input::placeholder {
+		font-style: italic;
+	}`,
+	'KOL-INPUT-DATE': `input:hover,
 	input:focus {
 		border-color: var(--border-color) !important;
 		border-radius: none !important;
@@ -796,7 +845,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		color: var(--color-petrol);
 		font-family: var(--font-family-sans);
 		font-size: inherit;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 		transition-delay: 0;
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.5s;
@@ -831,7 +880,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	}`,
 	'KOL-BREADCRUMB': `li > span {
 		font-weight: bold;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}`,
 	'KOL-SPIN': `.spin {
 		display: inline-block;
@@ -1080,7 +1129,7 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 		overflow-x: auto;
 		overflow-y: hidden;
 	}
-	:host > div:first-child {
+	:host > div:last-child {
 		border-style: solid;
 		border-width: 1px;
 		border-color: var(--border-color);
@@ -1658,5 +1707,16 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	:host > div.tabs-align-top kol-button-group-wc div {
 		display: flex;
 		flex-wrap: wrap;
+	}`,
+	'KOL-SKIP-NAV': `kol-link-wc > a > kol-span-wc {
+		border-radius: 2rem;
+  	border-style: solid;
+		gap: 0.5rem;
+		line-height: 1rem;
+	  padding: 0 1rem;
+		background-color: var(--color-petrol);
+		border-color: var(--color-petrol);
+		color: var(--color-weiss);
+		cursor: pointer;
 	}`,
 });

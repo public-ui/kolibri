@@ -1,33 +1,20 @@
 import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { watchTooltipAlignment } from '../../types/button-link';
-import { Alignment } from '../../types/props';
+import { Align } from '../../types/props';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
-
-type RequiredProps = {
-	id: string;
-	label: string;
-};
-type OptionalProps = {
-	align: Alignment;
-};
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps & OptionalProps;
-type OptionalStates = unknown;
-export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
 
 @Component({
 	tag: 'kol-tooltip',
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolTooltip implements KoliBriTooltipAPI {
 	private previousSibling?: HTMLElement | null;
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
@@ -164,26 +151,26 @@ export class KolTooltip implements Generic.Element.ComponentApi<RequiredProps, O
 	/**
 	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 */
-	@Prop() public _align?: Alignment = 'top';
+	@Prop() public _align?: Align = 'top';
 
 	/**
-	 * Gibt die ID an, wenn z.B. Aria-Labelledby (Link) verwendet wird.
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
 	@Prop() public _id!: string;
 
 	/**
-	 * Setzt den Text in dem Tooltip beim Fokussieren oder Maus-drüberfahren angezeigt wird.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 
-	@State() public state: States = {
+	@State() public state: KoliBriTooltipStates = {
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
 
 	@Watch('_align')
-	public validateAlign(value?: Alignment): void {
+	public validateAlign(value?: Align): void {
 		watchTooltipAlignment(this, '_align', value);
 	}
 

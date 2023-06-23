@@ -20,8 +20,9 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 
 /**
  *
- * @slot header - Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
+ * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
  * @slot content - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich des Accordions.
+ * @slot header - Deprecated für Version 2: Ermöglicht das Einfügen beliebigen HTML's in den Kopfbereich des Accordions.
  */
 @Component({
 	tag: 'kol-accordion',
@@ -55,16 +56,28 @@ export class KolAccordion implements API {
 					wrapper.style.height = `${content?.clientHeight ?? 0}px`;
 				});
 				if (!list) observer.observe(content);
-			} else {
-				observer.unobserve(content);
-				wrapper.style.height = '0';
 				wrapper.addEventListener(
 					'transitionend',
 					() => {
-						wrapper.style.display = 'none';
+						wrapper.style.overflow = '';
 					},
 					{ once: true }
 				);
+			} else {
+				wrapper.style.overflow = 'hidden';
+				observer.unobserve(content);
+				wrapper.style.height = '0';
+				if (this.transition) {
+					wrapper.addEventListener(
+						'transitionend',
+						() => {
+							wrapper.style.display = 'none';
+						},
+						{ once: true }
+					);
+				} else {
+					wrapper.style.display = 'none';
+				}
 			}
 		}
 	}
@@ -90,11 +103,12 @@ export class KolAccordion implements API {
 						></kol-button-wc>
 					</kol-heading-wc>
 					<div class="header">
-						<slot name="header" />
+						<slot name="header"></slot>
 					</div>
 					<div ref={this.catchContentWrapperElement} class={{ wrapper: true, transition: this.transition }}>
 						<div ref={this.catchContentElement} aria-hidden={this.state._open === false ? 'true' : undefined} class="content" id={this.nonce}>
-							<slot name="content" />
+							<slot name="content"></slot> {/* Deprecated for version 2 */}
+							<slot />
 						</div>
 					</div>
 				</div>
@@ -103,12 +117,12 @@ export class KolAccordion implements API {
 	}
 
 	/**
-	 * Gibt die Überschrift des Accordions an.
+	 * Gibt die Beschriftung der Komponente an.
 	 */
 	@Prop() public _heading!: string;
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -118,7 +132,7 @@ export class KolAccordion implements API {
 	@Prop() public _on?: KoliBriAccordionCallbacks;
 
 	/**
-	 * Gibt an, ob das Accordion geöffnet ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 

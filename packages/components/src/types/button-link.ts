@@ -4,7 +4,7 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { Alignment, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropLabel, PropStealth } from './props';
+import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropHideLabel, PropLabel, PropStealth } from './props';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -21,15 +21,19 @@ type OptionalButtonAndLinkProps = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: Align;
+	/**
+	 * @deprecated
+	 */
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
+	tooltipAlign: Align;
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
-	PropDisabled;
+	PropDisabled &
+	PropHideLabel;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
@@ -41,15 +45,19 @@ type OptionalButtonAndLinkStates = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Alignment;
+	iconAlign: Align;
+	/**
+	 * @deprecated
+	 */
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Alignment;
+	tooltipAlign: Align;
 } & PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
-	PropDisabled;
+	PropDisabled &
+	PropHideLabel;
 
 /**
  * Button
@@ -160,10 +168,10 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
-export type RequiredLinkStates = RequiredButtonAndLinkStates & {
+type RequiredLinkStates = RequiredButtonAndLinkStates & {
 	href: string;
 };
-export type OptionalLinkStates = OptionalButtonAndLinkStates & {
+type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
 	/**
 	 * @deprecated We use the on-click event only on buttons styled as link.
@@ -186,6 +194,7 @@ export type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	PropDownload &
 	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
+export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates>;
 
 /**
  * API LinkButton
@@ -198,7 +207,7 @@ export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantPr
 // type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 // type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
-export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Alignment): void => {
+export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Align): void => {
 	watchValidator(
 		component,
 		propName,

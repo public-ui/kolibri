@@ -14,24 +14,24 @@ Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode
  */
 
 @Tag("kol-icon")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-icon")
 public class KolIcon extends Component {
 	/**
-	 * Gibt das Aria-Label am Icon an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
-	public void setAriaLabel(final String value) {
+	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
 	}
 
 	/**
-	 * Gibt das Aria-Label am Icon an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getAriaLabel() {
+	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
 	}
 
@@ -40,34 +40,34 @@ public class KolIcon extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setIcon(final String value) {
+	public void setIcon(final Optional<String> value) {
 		getElement().setProperty("_icon", value);
 	}
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getIcon() {
+	public Optional<String> getIcon() {
 		return getElement().getProperty("_icon", null);
 	}
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setPart(final String value) {
+	public void setPart(final Optional<String> value) {
 		getElement().setProperty("_part", value);
 	}
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getPart() {
+	public Optional<String> getPart() {
 		return getElement().getProperty("_part", null);
 	}
 }

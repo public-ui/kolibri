@@ -1,70 +1,15 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { KoliBriButtonVariant, KoliBriButtonVariantPropState, KoliBriButtonCustomClassPropState, watchTooltipAlignment } from '../../types/button-link';
+import { KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchButtonVariant } from '../button/controller';
-import { Alignment } from '../../types/props';
-import { KoliBriPaginationButtonCallbacks } from './types';
+import { Align } from '../../types/props';
+import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { translate } from '../../i18n';
-
-/**
- * Der HasButton-Typ definiert die Einstellungsmöglichkeiten der speziellen
- * Sprung-Schalter der Pagination.
- */
-export type PaginationHasButton = {
-	/**
-	 * Der First-Button ist der Schalter, um direkt auf die erste Seite zu gelangen.
-	 */
-	first: boolean;
-	/**
-	 * Der Last-Button ist der Schalter, um direkt auf die letzte Seite zu gelangen.
-	 */
-	last: boolean;
-	/**
-	 * Der Next-Button ist der Schalter, um direkt auf die nächste Seite zu gelangen.
-	 */
-	next: boolean;
-	/**
-	 * Der Previous-Button ist der Schalter, um direkt auf die vorherige Seite zu gelangen.
-	 */
-	previous: boolean;
-};
-
-export type RequiredProps = {
-	on: KoliBriPaginationButtonCallbacks;
-	page: number;
-	total: number;
-};
-export type OptionalProps = KoliBriButtonCustomClassPropState &
-	KoliBriButtonVariantPropState & {
-		boundaryCount: number;
-		hasButtons: boolean | Stringified<PaginationHasButton>;
-		pageSize: number;
-		pageSizeOptions: Stringified<number[]>;
-		siblingCount: number;
-		tooltipAlign: Alignment;
-	};
-// export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = KoliBriButtonVariantPropState & {
-	boundaryCount: number;
-	hasButtons: PaginationHasButton;
-	page: number;
-	pageSize: number;
-	pageSizeOptions: Option<number>[];
-	on: KoliBriPaginationButtonCallbacks;
-	siblingCount: number;
-	total: number;
-};
-type OptionalStates = KoliBriButtonCustomClassPropState & {
-	tooltipAlign: Alignment;
-};
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -86,7 +31,7 @@ const rightDoubleArrowIcon = {
 	},
 	shadow: true,
 })
-export class KolPagination implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolPagination implements KoliBriPaginationAPI {
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
@@ -128,7 +73,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
 							_icon={leftDoubleArrowIcon}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-first')}
 							_on={this.onGoToFirst}
 							_variant={this.state._variant}
@@ -142,7 +87,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={this.state._page <= 1}
 							_icon={leftSingleArrow}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-back')}
 							_on={this.onGoBackward}
 							_variant={this.state._variant}
@@ -157,7 +102,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}
 							_icon={rightSingleArrowIcon}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-next')}
 							_on={this.onGoForward}
 							_variant={this.state._variant}
@@ -171,7 +116,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 							_customClass={this.state._customClass}
 							_disabled={count <= this.state._page}
 							_icon={rightDoubleArrowIcon}
-							_iconOnly
+							_hideLabel
 							_label={translate('kol-page-last')}
 							_on={this.onGoToEnd}
 							_variant={this.state._variant}
@@ -183,14 +128,13 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 					<kol-select
 						_hideLabel
 						_id="pagination-size"
+						_label={translate('kol-entries-per-site')}
 						_list={this.state._pageSizeOptions}
 						_on={{
 							onChange: this.onChangePageSize,
 						}}
 						_value={[this.state._pageSize]}
-					>
-						{translate('kol-entries-per-site')}
-					</kol-select>
+					></kol-select>
 				)}
 			</Host>
 		);
@@ -237,9 +181,9 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _siblingCount?: number = 1;
 
 	/**
-	 * Gibt an, ob der Tooltip oben, rechts, unten oder links angezeigt werden.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
@@ -247,11 +191,11 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	@Prop() public _total!: number;
 
 	/**
-	 * Gibt an, welche Button-Variante verwendet werden soll.
+	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
 	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
 
-	@State() public state: States = {
+	@State() public state: KoliBriPaginationStates = {
 		_boundaryCount: 1,
 		_hasButtons: {
 			first: true,
@@ -529,7 +473,7 @@ export class KolPagination implements Generic.Element.ComponentApi<RequiredProps
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: Align): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

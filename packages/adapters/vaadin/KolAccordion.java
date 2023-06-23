@@ -12,60 +12,60 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
  */
 
 @Tag("kol-accordion")
-@NpmPackage(value = "@public-ui/components", version = "1.5.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
 @JsModule("@public-ui/components/dist/components/kol-accordion")
 public class KolAccordion extends Component {
 	/**
-	 * Gibt die Überschrift des Accordions an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
 	 * @param value String
 	 */
-	public void setHeading(final String value) {
+	public void setHeading(final Optional<String> value) {
 		getElement().setProperty("_heading", value);
 	}
 
 	/**
-	 * Gibt die Überschrift des Accordions an.
+	 * Gibt die Beschriftung der Komponente an.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getHeading() {
+	public Optional<String> getHeading() {
 		return getElement().getProperty("_heading", null);
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setLevel(final String value) {
+	public void setLevel(final Optional<String> value) {
 		getElement().setProperty("_level", value);
 	}
 
 	/**
-	 * Setzt den H-Level, von 1 bis 6, der Überschrift.
+	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getLevel() {
+	public Optional<String> getLevel() {
 		return getElement().getProperty("_level", null);
 	}
 
 	/**
-	 * Gibt an, ob das Accordion geöffnet ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
-	public void setOpen(final String value) {
+	public void setOpen(final Optional<String> value) {
 		getElement().setProperty("_open", value);
 	}
 
 	/**
-	 * Gibt an, ob das Accordion geöffnet ist.
+	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
-	 * @return String
+	 * @return Optional<String>
 	 */
-	public String getOpen() {
+	public Optional<String> getOpen() {
 		return getElement().getProperty("_open", null);
 	}
 }

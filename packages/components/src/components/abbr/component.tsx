@@ -1,11 +1,14 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { Alignment } from '../../types/props';
+import { Align } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
 
+/**
+ * @slot - Der Begriff, der erläutert werden soll.
+ */
 @Component({
 	tag: 'kol-abbr',
 	styleUrls: {
@@ -19,7 +22,8 @@ export class KolAbbr implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<abbr aria-labelledby={this.nonce} role="definition" title={this.state._title}>
+				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._title}>
 					<span title="">
 						<slot />
 					</span>
@@ -30,9 +34,9 @@ export class KolAbbr implements API {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Alignment = 'top';
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
@@ -66,7 +70,7 @@ export class KolAbbr implements API {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Alignment): void {
+	public validateTooltipAlign(value?: Align): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

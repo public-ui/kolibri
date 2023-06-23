@@ -48,10 +48,16 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 ## Properties
 
-| Property              | Attribute        | Description                                                                            | Type                                                  | Default     |
-| --------------------- | ---------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| `_title` _(required)_ | `_title`         | Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.               | `string`                                              | `undefined` |
-| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip entweder oben, rechts, unten oder links angezeigt werden soll. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| Property              | Attribute        | Description                                                                                      | Type                                                  | Default     |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
+| `_title` _(required)_ | `_title`         | Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.                         | `string`                                              | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll. | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+
+## Slots
+
+| Slot | Description                             |
+| ---- | --------------------------------------- |
+|      | Der Begriff, der erläutert werden soll. |
 
 ## Dependencies
 
