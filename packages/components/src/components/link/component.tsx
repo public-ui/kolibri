@@ -84,7 +84,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 			(this.state._useCase === 'image' || this.state._hideLabel === true) &&
 			(typeof this.state._ariaLabel !== 'string' || this.state._ariaLabel.length === 0)
 		) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs, goToProps };
 	};
