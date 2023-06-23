@@ -121,18 +121,17 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				{(this.state._hideLabel === true || this.state._useCase === 'image') && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
-					></kol-tooltip>
-				)}
+				<kol-tooltip
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					aria-hidden="true"
+					hidden={this.state._hideLabel !== true}
+					_align={this.state._tooltipAlign}
+					_id={this.nonce}
+					_label={this.state._ariaLabel || this.state._label}
+				></kol-tooltip>
 			</Host>
 		);
 	}
