@@ -50,6 +50,7 @@ export class KolTextarea implements ComponentApi {
 			<Host
 				class={{
 					'has-value': this.state._hasValue,
+					'has-counter': !!this.state._hasCounter,
 				}}
 			>
 				<kol-input
