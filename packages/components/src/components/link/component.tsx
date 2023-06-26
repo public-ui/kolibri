@@ -91,6 +91,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
+		const label = typeof this._label === 'string' && this._label.length > 0 ? this._label : this.state._href;
 		return (
 			<Host>
 				<a
@@ -116,7 +117,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
+					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
@@ -130,7 +131,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					hidden={this.state._hideLabel !== true}
 					_align={this.state._tooltipAlign}
 					_id={this.nonce}
-					_label={this.state._ariaLabel || this.state._label}
+					_label={this.state._ariaLabel || label}
 				></kol-tooltip>
 			</Host>
 		);
