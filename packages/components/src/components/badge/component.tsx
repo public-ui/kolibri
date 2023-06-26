@@ -93,6 +93,7 @@ export class KolBadge implements KoliBriBadgeProps {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',
 		},
+		_hideLabel: false,
 		_label: '…', // ⚠ required
 	};
 

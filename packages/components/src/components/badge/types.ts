@@ -8,6 +8,7 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	color: Stringified<PropColor>;
+	hideLabel: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
@@ -19,6 +20,7 @@ export type KoliBriBadgeProps = Generic.Element.Members<RequiredProps, OptionalP
 
 type RequiredStates = {
 	color: ColorPair;
+	hideLabel: boolean;
 	label: string;
 };
 type OptionalStates = {
