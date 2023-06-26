@@ -51,6 +51,7 @@ export class KolTextarea implements ComponentApi {
 				class={{
 					'has-value': this.state._hasValue,
 					'has-counter': !!this.state._hasCounter,
+					'hide-label': !!this.state._hideLabel,
 				}}
 			>
 				<kol-input

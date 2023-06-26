@@ -26,7 +26,7 @@ export class KolBadge implements KoliBriBadgeProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class={{ 'hide-label': this.state._hideLabel }}>
 				<span
 					class={{
 						'smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,

@@ -65,7 +65,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class={{ 'hide-label': !!this.state._hideLabel }}>
 				<button
 					ref={this.catchRef}
 					accessKey={this.state._accessKey}

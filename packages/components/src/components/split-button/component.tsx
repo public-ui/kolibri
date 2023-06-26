@@ -67,7 +67,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class={{ 'hide-label': !!this._hideLabel }}>
 				<kol-button-wc
 					class={{
 						'main-button': true,

@@ -26,6 +26,7 @@ export class KolInput implements Props {
 				class={{
 					disabled: this._disabled === true,
 					error: hasError === true,
+					'hide-label': !!this._hideLabel,
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,

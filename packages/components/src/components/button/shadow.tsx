@@ -32,7 +32,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host class={{ 'hide-label': !!this._hideLabel }}>
 				<kol-button-wc
 					ref={this.catchRef}
 					class={{
