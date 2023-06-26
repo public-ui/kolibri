@@ -91,7 +91,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
-		const label = typeof this._label === 'string' && this._label.length >= 3 ? this._label : this.state._href;
+		const label = typeof this._label === 'string' && this._label.length >= 3 ? this.state._label : this.state._href;
 		return (
 			<Host>
 				<a
