@@ -26,7 +26,6 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 		return (
 			<Host>
 				<kol-link-wc
-					class={{ 'hide-label': !!this._hideLabel }}
 					ref={this.catchRef}
 					_ariaControls={this._ariaControls}
 					_ariaCurrent={this._ariaCurrent}
