@@ -10,6 +10,7 @@ export const getBadgeHtml = (props: KoliBriBadgeProps, additionalAttrs = ''): st
 				backgroundColor: '#000',
 				foregroundColor: '#fff',
 			},
+			_hideLabel: false,
 			_label: '…', // ⚠ required
 		},
 		props
