@@ -54,7 +54,7 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						path={`${path}/all`}
 						element={
 							<div className="d-grid gap-4">
-								{THEME_OPTIONS.filter((theme) => ['bmf', 'itzbund', 'zoll-v2'].indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
+								{THEME_OPTIONS.filter((theme) => ['bmf', 'zoll-v2'].indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
 									<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
 										<strong>{theme.label}</strong>
 										<ThisRoute />
