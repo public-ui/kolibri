@@ -1711,7 +1711,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -1923,7 +1923,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -4635,7 +4635,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -4847,7 +4847,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated

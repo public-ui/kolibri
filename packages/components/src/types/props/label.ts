@@ -73,8 +73,6 @@ export type PropLabel = {
 	label: string;
 };
 
-export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
-
 /* validator */
 /**
  * Ein abweichendes Aria-Label muss aus Gründern der Barrierefreiheit für
