@@ -27,7 +27,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	return `
 <kol-link>
   <mock:shadow-root>
-  <kol-link-wc>
+  <kol-link-wc${props._hideLabel ? ' class="hide-label"' : ''}>
     <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
 		props._hideLabel === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
 	} class="${props._hideLabel === true ? ' icon-only hide-label' : ''}${
