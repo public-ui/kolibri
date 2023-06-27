@@ -131,7 +131,7 @@ export const App: FC = () => {
 
 	const componentSelectOn = {
 		onChange: (_e: Event, v: unknown) => {
-			const path = (v as string[])[0] as string;
+			const path = (v as string[])[0];
 			setSample(path);
 			window.location.href = `#${path}?theme=${theme}`;
 		},
