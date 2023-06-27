@@ -38,12 +38,7 @@ type RequiredStates = {
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
 	PropHasCompactButton;
-type OptionalStates = {
-	/**
-	 * @deprecated
-	 */
-	ariaLabel: string;
-} & PropCompact;
+type OptionalStates = PropCompact;
 export type KoliBriNavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 export type KoliBriNavAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

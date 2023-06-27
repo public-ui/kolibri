@@ -80,7 +80,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 			rel: isExternal ? 'noopener' : undefined,
 		};
 
-		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !(this.state._label || this.state._ariaLabel)) {
+		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !this.state._label) {
 			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs, goToProps };

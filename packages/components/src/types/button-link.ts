@@ -44,10 +44,6 @@ type RequiredButtonAndLinkStates = {
 	label: string;
 };
 type OptionalButtonAndLinkStates = {
-	/**
-	 * @deprecated
-	 */
-	ariaLabel: string;
 	ariaControls: string;
 	/**
 	 * @deprecated

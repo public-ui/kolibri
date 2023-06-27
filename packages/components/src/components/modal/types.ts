@@ -18,7 +18,7 @@ type RequiredStates = {
 };
 type OptionalStates = {
 	on: KoliBriModalEventCallbacks;
-} & AriaLabel;
+};
 
 export type KoliBriModalStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type KoliBriModalAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

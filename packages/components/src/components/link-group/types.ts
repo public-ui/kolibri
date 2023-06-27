@@ -39,7 +39,6 @@ type RequiredStates = {
 	orientation: Orientation;
 };
 type OptionalStates = {
-	ariaLabel: string;
 	heading: string;
 	level: HeadingLevel;
 	ordered: boolean;
