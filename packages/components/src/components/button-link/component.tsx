@@ -25,8 +25,9 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 
 	public render(): JSX.Element {
 		return (
-			<Host class={{ 'hide-label': !!this._hideLabel }}>
+			<Host>
 				<kol-button-wc
+					class={{ 'hide-label': !!this._hideLabel }}
 					ref={this.catchRef}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}

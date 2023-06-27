@@ -50,11 +50,11 @@ export class KolInputPassword implements ComponentApi {
 			<Host
 				class={{
 					'has-value': this.state._hasValue,
-					'hide-label': !!this.state._hideLabel,
 				}}
 			>
 				<kol-input
 					class={{
+						'hide-label': !!this.state._hideLabel,
 						password: true,
 					}}
 					_disabled={this.state._disabled}

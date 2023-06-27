@@ -14,7 +14,7 @@ import { Props } from './types';
 })
 export class KolButtonLinkTextSwitch implements Props {
 	public render(): JSX.Element {
-		return <Host class={{ 'hide-label': !!this._hideLabel }}>{this.renderContent()}</Host>;
+		return <Host>{this.renderContent()}</Host>;
 	}
 
 	private renderContent() {
@@ -32,6 +32,7 @@ export class KolButtonLinkTextSwitch implements Props {
 
 	private button = (button: ButtonWithChildrenProps): JSX.Element => (
 		<kol-button-wc
+			class={{ 'hide-label': !!this._hideLabel }}
 			_ariaCurrent={this._hasChildren === true ? this._ariaCurrentValue : undefined}
 			_ariaSelected={this._selected === true}
 			_disabled={button._disabled}
@@ -44,6 +45,7 @@ export class KolButtonLinkTextSwitch implements Props {
 
 	private link = (link: LinkWithChildrenProps): JSX.Element => (
 		<kol-link-wc
+			class={{ 'hide-label': !!this._hideLabel }}
 			_ariaCurrent={this._hasChildren === true ? this._ariaCurrentValue : undefined}
 			_ariaSelected={this._selected === true}
 			_hideLabel={this._hideLabel === true}
@@ -54,7 +56,7 @@ export class KolButtonLinkTextSwitch implements Props {
 	);
 
 	private text = (text: TextWithChildrenProps): JSX.Element => (
-		<kol-span-wc _hideLabel={this._hideLabel === true} _icon={text._icon} _label={text._label}></kol-span-wc>
+		<kol-span-wc class={{ 'hide-label': !!this._hideLabel }} _hideLabel={this._hideLabel === true} _icon={text._icon} _label={text._label}></kol-span-wc>
 	);
 
 	/**

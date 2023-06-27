@@ -33,11 +33,12 @@ export class KolInputCheckbox implements ComponentApi {
 		const showExpertSlot = this.state._label === ''; // _label="" or _label
 		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
-			<Host class={{ 'hide-label': !!this.state._hideLabel }}>
+			<Host>
 				<kol-input
 					class={{
 						checkbox: true,
 						[this.state._variant]: true,
+						'hide-label': !!this.state._hideLabel,
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}

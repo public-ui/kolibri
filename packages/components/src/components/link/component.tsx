@@ -92,7 +92,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
 		return (
-			<Host class={{ 'hide-label': !!this.state._hideLabel }}>
+			<Host>
 				<a
 					ref={this.catchRef}
 					{...tagAttrs}

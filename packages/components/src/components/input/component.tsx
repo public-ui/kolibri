@@ -26,7 +26,6 @@ export class KolInput implements Props {
 				class={{
 					disabled: this._disabled === true,
 					error: hasError === true,
-					'hide-label': !!this._hideLabel,
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
@@ -51,6 +50,7 @@ export class KolInput implements Props {
 						input: true,
 						'icon-left': typeof this._icon?.left === 'object',
 						'icon-right': typeof this._icon?.right === 'object',
+						'hide-label': !!this._hideLabel,
 					}}
 				>
 					{this._icon?.left && <kol-icon _ariaLabel="" _icon={(this._icon.left as KoliBriCustomIcon).icon}></kol-icon>}

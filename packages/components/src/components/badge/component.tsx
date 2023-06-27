@@ -26,10 +26,11 @@ export class KolBadge implements KoliBriBadgeProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host class={{ 'hide-label': this.state._hideLabel }}>
+			<Host>
 				<span
 					class={{
 						'smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
+						'hide-label': !!this.state._hideLabel,
 					}}
 					style={{
 						backgroundColor: this.bgColorStr,
