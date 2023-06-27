@@ -35,7 +35,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 												_ariaLabel: link._ariaLabel as string,
 												_icon: link._icon as Icofont,
 										  })
-										: link._label
+										: link._label || link._href
 							  }</span>`
 							: getLinkHtml(link)
 					}

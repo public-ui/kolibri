@@ -24,14 +24,14 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 				{index === lastIndex ? (
 					<span>
 						{hideLabel ? (
-							<kol-icon _ariaLabel={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+							<kol-icon _ariaLabel={link._label || link._href} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}
 					</span>
 				) : (
-					<kol-link _useCase="nav" {...link} _ariaLabel={link._label}>
-						{link._label}
+					<kol-link _useCase="nav" {...link} _ariaLabel={link._label || link._href}>
+						{link._label || link._href}
 					</kol-link>
 				)}
 			</li>

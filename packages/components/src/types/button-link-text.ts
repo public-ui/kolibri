@@ -13,7 +13,7 @@ import { PropLabel } from './props/label';
 type RequiredButtonProps = PropLabel & {
 	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
 };
-type RequiredLinkProps = PropLabel & {
+type RequiredLinkProps = {
 	href: string;
 };
 type RequiredTextProps = PropLabel;
@@ -35,7 +35,7 @@ type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
 
 type OptionalButtonOrLinkOrTextWithChildrenProps = OptionalButtonOrLinkOrTextProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
-};
+} & PropLabel;
 type OptionalButtonWithChildrenProps = OptionalButtonProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
 };

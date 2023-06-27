@@ -11,7 +11,7 @@ import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watc
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
+import { validateLabel } from '../../types/props/label';
 
 /**
  * @internal
@@ -91,7 +91,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
-		const label = typeof this._label === 'string' && this._label.length >= 3 ? this.state._label : this.state._href;
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		const label = (typeof this._label === 'string' && this._label.length >= 3 ? this.state._label : this.state._href)!;
 		return (
 			<Host>
 				<a
@@ -206,7 +207,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
-	@Prop({ mutable: true, reflect: false }) public _label!: string;
+	@Prop({ mutable: true, reflect: false }) public _label?: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -263,8 +264,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@State() public state: LinkStates = {
 		_href: 'javascript:void(0)',
 		_icon: {},
-		_label: '', // TODO: must removed to v2
-		// _label: '…', // ⚠ required
 	};
 
 	@Watch('_ariaControls')
@@ -284,7 +283,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		watchString(this, '_ariaLabel', value);
 	}
 
 	@Watch('_ariaSelected')
@@ -317,6 +316,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
+		if (!this._label) {
+			this.validateLabel(value);
+		}
 		watchString(this, '_href', value);
 	}
 
@@ -344,7 +346,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+		validateLabel(this, value);
 	}
 
 	/**

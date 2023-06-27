@@ -79,7 +79,8 @@ export class KolNav implements KoliBriNavAPI {
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_hideLabel
-				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				_label={`Untermenü zu ${link._label!} ${selected ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
 			></kol-button-wc>
 		);

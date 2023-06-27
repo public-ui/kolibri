@@ -1,6 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { LinkProps } from '../../../types/button-link';
-import { isEmptyOrPrefixOf } from '../../../utils/validator';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
@@ -10,20 +9,12 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		{
 			_href: 'javascript:void(0)',
 			_hideLabel: false,
-			_label: '',
-			// _label: '…', // ⚠ required
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
 		props
 	);
-	if (typeof props._ariaLabel === 'string' && isEmptyOrPrefixOf(props._label, props._ariaLabel) === false) {
-		if (props._label.length > 0) {
-			props._ariaLabel = props._label;
-		} else {
-			props._label = props._ariaLabel;
-		}
-	}
+	const label = typeof props._label === 'string' && props._label.length >= 3 ? props._label : props._href;
 	return `
 <kol-link>
   <mock:shadow-root>
@@ -38,7 +29,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			${getSpanWcHtml(
 				{
 					...props,
-					_label: props._label || props._href,
+					_label: label,
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
@@ -61,7 +52,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			{
 				_align: props._tooltipAlign,
 				_id: 'nonce',
-				_label: props._ariaLabel || props._label || props._href,
+				_label: props._ariaLabel || label,
 			},
 			` aria-hidden="true"${props._hideLabel !== true ? ' hidden' : ''}`
 		)}

@@ -13,7 +13,7 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-type RequiredButtonAndLinkProps = PropLabel;
+
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
 	ariaLabel: string;
@@ -37,7 +37,6 @@ type OptionalButtonAndLinkProps = {
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
-	label: string;
 };
 type OptionalButtonAndLinkStates = {
 	ariaLabel: string;
@@ -80,7 +79,7 @@ export type KoliBriButtonCustomClassPropState = {
 /**
  * API ButtonLink
  */
-export type RequiredButtonLinkProps = RequiredButtonAndLinkProps;
+export type RequiredButtonLinkProps = unknown;
 export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated Zweck?!
@@ -91,13 +90,13 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	on: KoliBriButtonCallbacks<unknown>;
 	type: KoliBriButtonType;
 	value: Stringified<unknown>;
-};
+} & PropLabel;
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
 	KoliBriButtonVariantPropState & {
 		type: KoliBriButtonType;
-	};
+	} & PropLabel;
 type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 	KoliBriButtonCustomClassPropState & {
 		/**
@@ -114,7 +113,7 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 /**
  * API Button
  */
-export type RequiredButtonProps = RequiredButtonLinkProps;
+export type RequiredButtonProps = RequiredButtonLinkProps & PropLabel;
 export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
@@ -139,7 +138,7 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 /**
  * API Link
  */
-export type RequiredLinkProps = RequiredButtonAndLinkProps & {
+export type RequiredLinkProps = {
 	href: string;
 };
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
@@ -165,6 +164,7 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	 */
 	useCase: LinkUseCase;
 } & PropDownload &
+	PropLabel &
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
@@ -192,6 +192,7 @@ type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	useCase: LinkUseCase;
 } & PropAriaSelected &
 	PropDownload &
+	PropLabel &
 	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates>;
