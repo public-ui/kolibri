@@ -45,10 +45,13 @@ export class KolInputRange implements ComponentApi {
 	};
 
 	private readonly onChange = (event: Event) => {
-		this.state = {
-			...this.state,
-			_value: parseFloat((event.target as HTMLInputElement).value),
-		};
+		let value = parseFloat((event.target as HTMLInputElement).value);
+		if (this.state._max && value > this.state._max) value = this.state._max;
+		if (this.state._min && value < this.state._min) value = this.state._min;
+		this.validateValue(value);
+		if (typeof this.state._on?.onChange === 'function') {
+			this.state._on?.onChange(event, value);
+		}
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
@@ -58,7 +61,7 @@ export class KolInputRange implements ComponentApi {
 				ref: this.numberInputRef,
 			});
 		} else {
-			this.controller.onFacade.onChange(event);
+			this.onChange(event);
 		}
 	};
 
