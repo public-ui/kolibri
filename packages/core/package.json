@@ -63,7 +63,7 @@
 		"eslint-plugin-no-loops": "0.3.0",
 		"prettier": "2.8.8",
 		"ts-prune": "0.10.3",
-		"typescript": "5.0.4",
+		"typescript": "5.1.5",
 		"unbuild": "1.2.1"
 	},
 	"sideEffects": false,
