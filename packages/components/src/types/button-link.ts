@@ -96,7 +96,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
 	KoliBriButtonVariantPropState & {
 		type: KoliBriButtonType;
-	} & PropLabel;
+	};
 type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 	KoliBriButtonCustomClassPropState & {
 		/**
@@ -117,7 +117,7 @@ export type RequiredButtonProps = RequiredButtonLinkProps & PropLabel;
 export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState;
+export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState & PropLabel;
 export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonCustomClassPropState;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
