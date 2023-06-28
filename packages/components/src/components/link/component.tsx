@@ -11,7 +11,7 @@ import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watc
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { validateLabel } from '../../types/props/label';
+import { validateAriaLabelWithLabel, validateLabel } from '../../types/props/label';
 
 /**
  * @internal
@@ -283,7 +283,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value);
+		validateAriaLabelWithLabel(this, value);
 	}
 
 	@Watch('_ariaSelected')
