@@ -37,6 +37,11 @@ export class KolInputRange implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
+		setTimeout(() => {
+			if (ref?.matches(':focus')) {
+				this.numberInputRef?.focus();
+			}
+		}, 1);
 	};
 
 	private readonly onChange = (event: Event) => {
@@ -101,6 +106,7 @@ export class KolInputRange implements ComponentApi {
 							value={this.state._value as number}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
+							onFocusin={() => this.numberInputRef?.focus()}
 						/>
 						<input
 							ref={this.catchNumberInputRef}
@@ -112,7 +118,7 @@ export class KolInputRange implements ComponentApi {
 							autoComplete={this.state._autoComplete}
 							autoCorrect="off"
 							disabled={this.state._disabled}
-							id={`${this.state._id}-number`}
+							id={this.state._id} // kol-inputs <label> links to _id
 							list={hasList ? `${this.state._id}-list` : undefined}
 							max={this.state._max}
 							min={this.state._min}
