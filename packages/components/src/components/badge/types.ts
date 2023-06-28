@@ -20,7 +20,6 @@ export type KoliBriBadgeProps = Generic.Element.Members<RequiredProps, OptionalP
 
 type RequiredStates = {
 	color: ColorPair;
-	hideLabel: boolean;
 	label: string;
 };
 type OptionalStates = {

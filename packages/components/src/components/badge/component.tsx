@@ -30,7 +30,6 @@ export class KolBadge implements KoliBriBadgeProps {
 				<span
 					class={{
 						'smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
-						'hide-label': !!this.state._hideLabel,
 					}}
 					style={{
 						backgroundColor: this.bgColorStr,
@@ -94,7 +93,6 @@ export class KolBadge implements KoliBriBadgeProps {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',
 		},
-		_hideLabel: false,
 		_label: '…', // ⚠ required
 	};
 
