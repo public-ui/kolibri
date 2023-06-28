@@ -56,7 +56,7 @@
 		"@typescript-eslint/parser": "5.60.0",
 		"eslint": "8.43.0",
 		"eslint-plugin-no-loops": "0.3.0",
-		"typescript": "5.0.4",
+		"typescript": "5.1.5",
 		"unbuild": "1.2.1"
 	},
 	"sideEffects": false,
