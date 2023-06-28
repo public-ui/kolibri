@@ -8,6 +8,7 @@ import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { ComponentApi, States } from './types';
 import { propagateSubmitEventToForm } from '../form/controller';
+import { propagateFocus } from '../../utils/reuse';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -27,7 +28,7 @@ export class KolInputRange implements ComponentApi {
 	private readonly catchNumberInputRef = (element?: HTMLInputElement) => {
 		if (element) {
 			this.numberInputRef = element;
-			// propagateFocus(this.host, element);
+			propagateFocus(this.host, element);
 			if (!this._value && this.ref?.value) {
 				this.validateValue(parseFloat(this.ref.value));
 			}
@@ -36,7 +37,6 @@ export class KolInputRange implements ComponentApi {
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		// propagateFocus(this.numberInputRef, ref);
 	};
 
 	private readonly onChange = (event: Event) => {
@@ -75,7 +75,7 @@ export class KolInputRange implements ComponentApi {
 					_icon={this.state._icon}
 					_id={this.state._id}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
+					onClick={() => this.numberInputRef?.focus()}
 				>
 					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input" class="inputs-wrapper">
@@ -93,13 +93,13 @@ export class KolInputRange implements ComponentApi {
 							list={hasList ? `${this.state._id}-list` : undefined}
 							max={this.state._max}
 							min={this.state._min}
-							name={`${this.state._name}-range`}
+							name={this.state._name ? `${this.state._name}-range` : undefined}
 							spellcheck="false"
 							step={this.state._step}
 							tabIndex={-1}
 							type="range"
 							value={this.state._value as number}
-							// {...this.controller.onFacade}
+							{...this.controller.onFacade}
 							onChange={this.onChange}
 						/>
 						<input
@@ -116,11 +116,11 @@ export class KolInputRange implements ComponentApi {
 							list={hasList ? `${this.state._id}-list` : undefined}
 							max={this.state._max}
 							min={this.state._min}
-							name={`${this.state._name}-number`}
+							name={this.state._name ? `${this.state._name}-number` : undefined}
 							step={this.state._step}
 							type="number"
 							value={this.state._value}
-							// {...this.controller.onFacade}
+							{...this.controller.onFacade}
 							onKeyUp={this.onKeyUp}
 							onChange={this.onChange}
 						/>
