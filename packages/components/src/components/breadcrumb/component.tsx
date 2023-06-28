@@ -4,7 +4,7 @@ import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
+import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
 import { watchString } from '../../utils/prop.validators';
 
 @Component({
@@ -15,7 +15,7 @@ import { watchString } from '../../utils/prop.validators';
 	shadow: true,
 })
 export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
-	private readonly renderLink = (link: LinkProps, index: number): JSX.Element => {
+	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
 		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
@@ -24,14 +24,14 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 				{index === lastIndex ? (
 					<span>
 						{hideLabel ? (
-							<kol-icon _ariaLabel={link._label || link._href} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+							<kol-icon _ariaLabel={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}
 					</span>
 				) : (
-					<kol-link _useCase="nav" {...link} _ariaLabel={link._label || link._href}>
-						{link._label || link._href}
+					<kol-link _useCase="nav" {...link} _ariaLabel={link._label}>
+						{link._label}
 					</kol-link>
 				)}
 			</li>
@@ -63,7 +63,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
-	@Prop() public _links!: Stringified<LinkProps[]>;
+	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
 
 	@State() public state: KoliBriBreadcrumbStates = {
 		_ariaLabel: '…', // '⚠'
