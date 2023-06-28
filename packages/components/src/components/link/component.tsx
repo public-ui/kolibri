@@ -316,9 +316,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		if (!this._label) {
-			this.validateLabel(value);
-		}
 		watchString(this, '_href', value);
 	}
 
