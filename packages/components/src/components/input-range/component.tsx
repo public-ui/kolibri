@@ -4,10 +4,10 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
 import { nonce } from '../../utils/dev.utils';
-import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { ComponentApi, States } from './types';
+import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -22,10 +22,39 @@ import { ComponentApi, States } from './types';
 export class KolInputRange implements ComponentApi {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
 	private ref?: HTMLInputElement;
+	private numberInputRef?: HTMLInputElement;
+
+	private readonly catchNumberInputRef = (element?: HTMLInputElement) => {
+		if (element) {
+			this.numberInputRef = element;
+			// propagateFocus(this.host, element);
+			if (!this._value && this.ref?.value) {
+				this.validateValue(parseFloat(this.ref.value));
+			}
+		}
+	};
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
 		this.ref = ref;
-		propagateFocus(this.host, this.ref);
+		// propagateFocus(this.numberInputRef, ref);
+	};
+
+	private readonly onChange = (event: Event) => {
+		this.state = {
+			...this.state,
+			_value: parseFloat((event.target as HTMLInputElement).value),
+		};
+	};
+
+	private readonly onKeyUp = (event: KeyboardEvent) => {
+		if (event.code === 'Enter') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.numberInputRef,
+			});
+		} else {
+			this.controller.onFacade.onChange(event);
+		}
 	};
 
 	public render(): JSX.Element {
@@ -49,40 +78,65 @@ export class KolInputRange implements ComponentApi {
 					onClick={() => this.ref?.focus()}
 				>
 					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
-					<input
-						ref={this.catchRef}
-						title=""
-						accessKey={this.state._accessKey}
-						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-						aria-labelledby={`${this.state._id}-label`}
-						autoCapitalize="off"
-						autoComplete={this.state._autoComplete}
-						autoCorrect="off"
-						disabled={this.state._disabled}
-						id={this.state._id}
-						list={hasList ? `${this.state._id}-list` : undefined}
-						max={this.state._max}
-						min={this.state._min}
-						name={this.state._name}
-						slot="input"
-						spellcheck="false"
-						step={this.state._step}
-						type="range"
-						value={this.state._value as number}
-						{...this.controller.onFacade}
-					/>
-					{hasList && [
-						<datalist id={`${this.state._id}-list`}>
-							{this.state._list.map((option: Option<number>) => (
-								<option value={option.value}></option>
-							))}
-						</datalist>,
-						// <ul class="grid gap-1 text-sm grid-flow-col">
-						//   {this.state._list.map((option: InputOption<number>) => (
-						//     <li class="border-1">{option.label}</li>
-						//   ))}
-						// </ul>,
-					]}
+					<div slot="input" class="inputs-wrapper">
+						<input
+							ref={this.catchRef}
+							title=""
+							accessKey={this.state._accessKey}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+							aria-labelledby={`${this.state._id}-label`}
+							autoCapitalize="off"
+							autoComplete={this.state._autoComplete}
+							autoCorrect="off"
+							disabled={this.state._disabled}
+							id={`${this.state._id}-range`}
+							list={hasList ? `${this.state._id}-list` : undefined}
+							max={this.state._max}
+							min={this.state._min}
+							name={`${this.state._name}-range`}
+							spellcheck="false"
+							step={this.state._step}
+							tabIndex={-1}
+							type="range"
+							value={this.state._value as number}
+							// {...this.controller.onFacade}
+							onChange={this.onChange}
+						/>
+						<input
+							ref={this.catchNumberInputRef}
+							title=""
+							accessKey={this.state._accessKey}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+							aria-labelledby={`${this.state._id}-label`}
+							autoCapitalize="off"
+							autoComplete={this.state._autoComplete}
+							autoCorrect="off"
+							disabled={this.state._disabled}
+							id={`${this.state._id}-number`}
+							list={hasList ? `${this.state._id}-list` : undefined}
+							max={this.state._max}
+							min={this.state._min}
+							name={`${this.state._name}-number`}
+							step={this.state._step}
+							type="number"
+							value={this.state._value}
+							// {...this.controller.onFacade}
+							onKeyUp={this.onKeyUp}
+							onChange={this.onChange}
+						/>
+						{hasList && [
+							<datalist id={`${this.state._id}-list`}>
+								{this.state._list.map((option: Option<number>) => (
+									<option value={option.value}></option>
+								))}
+							</datalist>,
+							// <ul class="grid gap-1 text-sm grid-flow-col">
+							//   {this.state._list.map((option: InputOption<number>) => (
+							//     <li class="border-1">{option.label}</li>
+							//   ))}
+							// </ul>,
+						]}
+					</div>
 				</kol-input>
 			</Host>
 		);
