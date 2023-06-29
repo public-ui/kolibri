@@ -8,6 +8,7 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	color: Stringified<PropColor>;
+	hideLabel: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated

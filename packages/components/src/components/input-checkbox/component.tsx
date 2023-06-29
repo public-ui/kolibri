@@ -38,6 +38,7 @@ export class KolInputCheckbox implements ComponentApi {
 					class={{
 						checkbox: true,
 						[this.state._variant]: true,
+						'hide-label': !!this.state._hideLabel,
 					}}
 					data-role={this.state._variant === 'button' ? 'button' : undefined}
 					onKeyPress={this.state._variant === 'button' ? this.onChange : undefined}
