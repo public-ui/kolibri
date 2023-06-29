@@ -5,7 +5,7 @@ import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropHideLabel, PropLabel, PropStealth } from './props';
-import { PropAriaLabel } from './aria-label';
+import { PropAriaLabel } from './props';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 

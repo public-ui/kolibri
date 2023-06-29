@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { HeadingLevel, LinkProps, Orientation, Stringified } from '../../components';
 import { PropLabel } from '../../types/props';
-import { PropAriaLabel } from '../../types/aria-label';
+import { PropAriaLabel } from '../../types/props';
 
 export type ListStyleType =
 	| 'disc'

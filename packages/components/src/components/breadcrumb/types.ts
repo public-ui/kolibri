@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { LinkProps, Stringified } from '../../components';
 import { PropLabel } from '../../types/props';
-import { PropAriaLabel } from '../../types/aria-label';
+import { PropAriaLabel } from '../../types/props';
 
 type RequiredProps = {
 	links: Stringified<LinkProps[]>;

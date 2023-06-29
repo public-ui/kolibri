@@ -3,7 +3,7 @@ import { Align, KoliBriIconProp, Stringified } from '../../components';
 import { PropHideLabel, PropLabel } from '../../types/props';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Events } from '../../enums/events';
-import { PropAriaLabel } from '../../types/aria-label';
+import { PropAriaLabel } from '../../types/props';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?:

@@ -3,6 +3,7 @@ export { PropAlert, validateAlert } from './alert';
 export { Align, PropAlign, validateAlign } from './align';
 export { AriaCurrent, PropAriaCurrent, validateAriaCurrent } from './aria-current';
 export { PropAriaExpanded, validateAriaExpanded } from './aria-expanded';
+export { PropAriaLabel } from './aria-label';
 export { PropAriaSelected, validateAriaSelected } from './aria-selected';
 export { PropChecked, validateChecked } from './checked';
 export { PropCollapsible, validateCollapsible } from './collapsible';

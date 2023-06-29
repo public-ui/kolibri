@@ -1,5 +1,5 @@
 import { Generic } from '@a11y-ui/core';
-import { PropAriaLabel } from '../../types/aria-label';
+import { PropAriaLabel } from '../../types/props';
 import { KoliBriModalEventCallbacks } from '../../components';
 import { PropLabel } from '../../types/props';
 
