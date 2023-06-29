@@ -96,7 +96,7 @@ export class KolModal implements KoliBriModalAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.

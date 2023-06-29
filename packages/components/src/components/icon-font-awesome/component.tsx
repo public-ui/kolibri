@@ -2,9 +2,9 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { FontAwesome, FontAwesomeOssPrefix } from '../../enums/font-awesome';
 
 import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
+import { PropAriaLabel } from '../../types/props';
 
-type RequiredProps = AriaLabel & {
+type RequiredProps = PropAriaLabel & {
 	icon: FontAwesome;
 	prefix: FontAwesomeOssPrefix;
 };

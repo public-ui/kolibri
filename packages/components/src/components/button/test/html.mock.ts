@@ -1,6 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 import { ButtonProps, ButtonStates } from '../../../types/button-link';
 import { getSpanWcHtml } from '../../span/test/html.mock';
+import { KolibriSpanProps } from '../../span/types';
 
 type Slots = {
 	expert?: string;
@@ -22,6 +23,7 @@ export const getButtonWcHtml = (
 		},
 		props
 	);
+	if (!props._label) props._label = '…'; // ⚠ required
 	const ariaLabel = state._hideLabel ? '' : ` aria-label="${state._label}"`;
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
@@ -31,7 +33,7 @@ export const getButtonWcHtml = (
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
 	}${ariaLabel} class="${variant}" type="${type}">
-		${getSpanWcHtml(props, slots)}
+		${getSpanWcHtml(props as KolibriSpanProps, slots)}
 	</button>
 	<kol-tooltip aria-hidden="true" hidden>
 	  <div id="floating">

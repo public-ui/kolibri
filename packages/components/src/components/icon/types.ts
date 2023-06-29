@@ -11,7 +11,7 @@ type OptionalProps = {
 	PropLabel;
 export type KoliBriIconProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps & PropLabel;
+type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 
 export type KoliBriIconStates = Generic.Element.Members<RequiredStates, OptionalStates>;

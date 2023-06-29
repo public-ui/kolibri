@@ -46,7 +46,8 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${props._label}">
+	${/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */ ''}
+		<nav aria-label="${props._label!}">
 			<ul>
 				${
 					props._links.length === 0

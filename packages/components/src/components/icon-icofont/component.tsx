@@ -1,10 +1,10 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 
 import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
 import { Icofont } from '../../types/icofont';
+import { PropAriaLabel } from '../../types/props';
 
-type RequiredProps = AriaLabel & {
+type RequiredProps = PropAriaLabel & {
 	icon: Icofont;
 };
 type OptionalProps = {

@@ -29,7 +29,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label?: string;
 
 	/**
 	 * Dieses Property gibt den String an der angezeigt werden soll.

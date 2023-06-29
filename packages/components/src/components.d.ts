@@ -263,7 +263,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -347,7 +347,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -457,7 +457,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -1865,7 +1865,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -2027,6 +2027,7 @@ export namespace Components {
         "_ariaCurrentValue": AriaCurrent;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3238,7 +3239,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3322,7 +3323,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3432,7 +3433,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -4840,7 +4841,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -5002,6 +5003,7 @@ declare namespace LocalJSX {
         "_ariaCurrentValue"?: AriaCurrent;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**

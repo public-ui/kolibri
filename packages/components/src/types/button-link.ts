@@ -14,7 +14,6 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-type RequiredButtonAndLinkProps = PropLabel;
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
 	icon: Stringified<KoliBriIconProp>;
@@ -82,7 +81,7 @@ export type KoliBriButtonCustomClassPropState = {
 /**
  * API ButtonLink
  */
-export type RequiredButtonLinkProps = RequiredButtonAndLinkProps;
+export type RequiredButtonLinkProps = unknown;
 export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated Zweck?!
@@ -141,9 +140,9 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 /**
  * API Link
  */
-export type RequiredLinkProps = RequiredButtonAndLinkProps & {
+export type RequiredLinkProps = {
 	href: string;
-};
+} & PropLabel;
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated A link could never be disabled. Use a button instead.

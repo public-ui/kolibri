@@ -182,7 +182,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	// - eslint-disable-next-line @stencil/strict-mutable
-	@Prop({ mutable: true, reflect: false }) public _label!: string;
+	@Prop({ mutable: true, reflect: false }) public _label?: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.

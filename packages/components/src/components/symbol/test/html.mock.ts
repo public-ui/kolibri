@@ -10,6 +10,7 @@ export const getSymbolHtml = (props: KoliBriSymbolProps): string => {
 		props
 	);
 	return `<kol-symbol>
-		<span aria-label="${props._label}" role="term">${props._symbol}</span>
+	${/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */ ''}
+		<span aria-label="${props._label!}" role="term">${props._symbol}</span>
 	</kol-symbol>`;
 };
