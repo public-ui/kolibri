@@ -23,25 +23,15 @@ import { propagateFocus } from '../../utils/reuse';
 export class KolInputRange implements ComponentApi {
 	@Element() private readonly host?: HTMLKolInputRangeElement;
 	private ref?: HTMLInputElement;
-	private numberInputRef?: HTMLInputElement;
 
-	private readonly catchNumberInputRef = (element?: HTMLInputElement) => {
+	private readonly catchInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
-			this.numberInputRef = element;
+			this.ref = element;
 			propagateFocus(this.host, element);
 			if (!this._value && this.ref?.value) {
 				this.validateValue(parseFloat(this.ref.value));
 			}
 		}
-	};
-
-	private readonly catchRef = (ref?: HTMLInputElement) => {
-		this.ref = ref;
-		setTimeout(() => {
-			if (ref?.matches(':focus')) {
-				this.numberInputRef?.focus();
-			}
-		}, 1);
 	};
 
 	private readonly onChange = (event: Event) => {
@@ -58,7 +48,7 @@ export class KolInputRange implements ComponentApi {
 		if (event.code === 'Enter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.numberInputRef,
+				ref: this.ref,
 			});
 		} else {
 			this.onChange(event);
@@ -83,12 +73,10 @@ export class KolInputRange implements ComponentApi {
 					_icon={this.state._icon}
 					_id={this.state._id}
 					_touched={this.state._touched}
-					onClick={() => this.numberInputRef?.focus()}
 				>
 					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input" class="inputs-wrapper">
 						<input
-							ref={this.catchRef}
 							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
@@ -97,7 +85,6 @@ export class KolInputRange implements ComponentApi {
 							autoComplete={this.state._autoComplete}
 							autoCorrect="off"
 							disabled={this.state._disabled}
-							id={`${this.state._id}-range`}
 							list={hasList ? `${this.state._id}-list` : undefined}
 							max={this.state._max}
 							min={this.state._min}
@@ -109,10 +96,9 @@ export class KolInputRange implements ComponentApi {
 							value={this.state._value as number}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
-							onFocusin={() => this.numberInputRef?.focus()}
 						/>
 						<input
-							ref={this.catchNumberInputRef}
+							ref={this.catchInputNumberRef}
 							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
@@ -121,7 +107,7 @@ export class KolInputRange implements ComponentApi {
 							autoComplete={this.state._autoComplete}
 							autoCorrect="off"
 							disabled={this.state._disabled}
-							id={this.state._id} // kol-inputs <label> links to _id
+							id={this.state._id}
 							list={hasList ? `${this.state._id}-list` : undefined}
 							max={this.state._max}
 							min={this.state._min}
