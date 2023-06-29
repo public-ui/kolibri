@@ -64,6 +64,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
+	// TODO v2: make required
 	@Prop() public _label?: string;
 
 	/**
