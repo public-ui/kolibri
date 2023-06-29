@@ -1,5 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { HeadingLevel, LinkProps, Orientation, Stringified } from '../../components';
+import { PropLabel } from '../../types/props';
+import { PropAriaLabel } from '../../types/aria-label';
 
 export type ListStyleType =
 	| 'disc'
@@ -17,27 +19,22 @@ export type ListStyleType =
 	| 'upper-roman';
 
 type RequiredProps = {
-	label: string;
 	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
-	/**
-	 * @deprecated use _label instead
-	 */
-	ariaLabel: string;
 	heading: string;
 	level: HeadingLevel;
 	listStyleType: ListStyleType;
 	ordered: boolean;
 	orientation: Orientation;
-};
+} & PropAriaLabel &
+	PropLabel;
 
 type RequiredStates = {
-	label: string;
 	links: LinkProps[];
 	listStyleType: ListStyleType;
 	orientation: Orientation;
-};
+} & PropLabel;
 type OptionalStates = {
 	heading: string;
 	level: HeadingLevel;

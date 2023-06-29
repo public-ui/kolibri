@@ -1,19 +1,17 @@
 import { Generic } from '@a11y-ui/core';
+import { PropLabel } from '../../types/props';
+import { PropAriaLabel } from '../../types/aria-label';
 
 type RequiredProps = {
 	icon: string;
 };
 type OptionalProps = {
-	/**
-	 * @deprecated
-	 */
-	ariaLabel: string;
-	label: string;
 	part: string;
-};
+} & PropAriaLabel &
+	PropLabel;
 export type KoliBriIconProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps;
+type RequiredStates = RequiredProps & PropLabel;
 type OptionalStates = OptionalProps;
 
 export type KoliBriIconStates = Generic.Element.Members<RequiredStates, OptionalStates>;

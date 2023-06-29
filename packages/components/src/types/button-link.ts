@@ -5,6 +5,7 @@ import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropHideLabel, PropLabel, PropStealth } from './props';
+import { PropAriaLabel } from './aria-label';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -16,10 +17,6 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 type RequiredButtonAndLinkProps = PropLabel;
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
-	/**
-	 * @deprecated
-	 */
-	ariaLabel: string;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
@@ -34,6 +31,7 @@ type OptionalButtonAndLinkProps = {
 	tooltipAlign: Align;
 } & PropAriaCurrent &
 	PropAriaExpanded &
+	PropAriaLabel &
 	PropAriaSelected &
 	PropDisabled &
 	PropHideLabel &

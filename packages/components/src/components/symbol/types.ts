@@ -1,15 +1,14 @@
 import { Generic } from '@a11y-ui/core';
+import { PropLabel } from '../../types/props';
+import { PropAriaLabel } from '../../types/aria-label';
 
 type RequiredProps = {
-	label: string;
 	symbol: string;
 };
-type OptionalProps = {
-	ariaLabel: string;
-};
+type OptionalProps = PropAriaLabel & PropLabel;
 export type KoliBriSymbolProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps;
+type RequiredStates = RequiredProps & PropLabel;
 type OptionalStates = OptionalProps;
 
 export type KoliBriSymbolStates = Generic.Element.Members<RequiredStates, OptionalStates>;
