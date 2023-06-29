@@ -16,14 +16,14 @@ executeTests<LinkProps>(
 		return page;
 	},
 	{
-		_ariaExpanded: [false /* , true */],
+		_ariaExpanded: [false, true],
 		_href: ['https://google.de'],
 		_icon: ['codicon codicon-home'],
-		_hideLabel: [false /* , true */],
+		_hideLabel: [false, true],
 		_label: ['Label'],
-		_target: ['_self' /* , '_blank', 'egal' */],
+		_target: ['_self', '_blank', 'egal'],
 		_targetDescription: ['Der Link wird in einem neuen Tab geöffnet.'],
-		_tooltipAlign: ['top' /* , 'right', 'bottom', 'left' */],
+		_tooltipAlign: ['top', 'right', 'bottom', 'left'],
 	},
 	getLinkHtml,
 	{
