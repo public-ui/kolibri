@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@public-ui/schema": "1.6.0-rc.6",
 		"@types/node": "ts4.9",
-		"eslint": "8.43.0",
+		"eslint": "8.44.0",
 		"typescript": "5.0.4",
 		"unbuild": "1.2.1"
 	},
