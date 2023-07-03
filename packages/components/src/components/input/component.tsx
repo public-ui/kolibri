@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Component, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Fragment, h, Host, JSX, Prop } from '@stencil/core';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon } from '../../types/icon';
 
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { Props } from './types';
+import { translate } from '../../i18n';
 
 /**
  * @internal
@@ -82,6 +83,20 @@ export class KolInput implements Props {
 						))}
 					</datalist>
 				)}
+				{this._hasCounter && (
+					<span aria-atomic="true" aria-live="polite">
+						{this._currentLength}
+						{this._maxLength && (
+							<Fragment>
+								<span aria-label={translate('kol-of')} role="img">
+									/
+								</span>
+								{this._maxLength}
+							</Fragment>
+						)}{' '}
+						<span>{translate('kol-characters')}</span>
+					</span>
+				)}
 			</Host>
 		);
 	}
@@ -92,6 +107,11 @@ export class KolInput implements Props {
 	@Prop() public _alert?: boolean = true;
 
 	/**
+	 * @internal
+	 */
+	@Prop() public _currentLength?: number;
+
+	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop() public _disabled?: boolean = false;
@@ -100,6 +120,11 @@ export class KolInput implements Props {
 	 * Gibt den Text für eine Fehlermeldung an.
 	 */
 	@Prop() public _error?: string = '';
+
+	/**
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 */
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -125,6 +150,11 @@ export class KolInput implements Props {
 	 * Gibt die Liste der Vorschlagswörter an.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
+
+	/**
+	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+	 */
+	@Prop() public _maxLength?: number;
 
 	/**
 	 * Gibt an, ob die Eingabefeld nur lesend ist.

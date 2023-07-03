@@ -1,5 +1,4 @@
-import { Component, Element, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { translate } from '../../i18n';
+import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
 import { validateAdjustHeight, validateHasCounter } from '../../types/props';
@@ -51,11 +50,14 @@ export class KolTextarea implements ComponentApi {
 				<kol-input
 					class={{ textarea: true, 'hide-label': !!this.state._hideLabel, 'has-counter': !!this.state._hasCounter }}
 					_alert={this.state._alert}
+					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_id={this.state._id}
+					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_touched={this.state._touched}
@@ -87,20 +89,6 @@ export class KolTextarea implements ComponentApi {
 							}}
 							value={this.state._value}
 						></textarea>
-						{this.state._hasCounter && (
-							<span aria-atomic="true" aria-live="polite">
-								{this.state._currentLength}
-								{this.state._maxLength && (
-									<Fragment>
-										<span aria-label={translate('kol-of')} role="img">
-											/
-										</span>
-										{this.state._maxLength}
-									</Fragment>
-								)}{' '}
-								<span>{translate('kol-characters')}</span>
-							</span>
-						)}
 					</div>
 				</kol-input>
 			</Host>
