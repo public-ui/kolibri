@@ -3,6 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { watchString } from '../../utils/prop.validators';
 import { devHint } from '../../utils/a11y.tipps';
 import { KoliBriIconAPI, KoliBriIconStates } from './types';
+import { validateLabel } from '../../types/props';
 
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
@@ -79,7 +80,7 @@ export class KolIcon implements KoliBriIconAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value, { required: true });
+		validateLabel(this, value);
 	}
 
 	/**
