@@ -5,13 +5,14 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateAlert, validateHideLabel, validateReadOnly, validateRequired, validateTouched } from '../../types/props';
+import { validateAlert, validateHasCounter, validateHideLabel, validateReadOnly, validateRequired, validateTouched } from '../../types/props';
 import { featureHint } from '../../utils/a11y.tipps';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
 import { ComponentApi, States } from './types';
+import { setState } from '../../utils/prop.validators';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -38,6 +39,7 @@ export class KolInputText implements ComponentApi {
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
+		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -71,13 +73,16 @@ export class KolInputText implements ComponentApi {
 						[this.state._type]: true,
 						'hide-label': !!this.state._hideLabel,
 					}}
+					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
 					_list={this.state._list}
+					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
@@ -144,6 +149,11 @@ export class KolInputText implements ComponentApi {
 	 * Gibt den Text für eine Fehlermeldung an.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 */
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -248,6 +258,7 @@ export class KolInputText implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
+		_currentLength: 0,
 		_id: 'id',
 		_hasValue: false,
 		_label: '…', // ⚠ required
@@ -282,6 +293,11 @@ export class KolInputText implements ComponentApi {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: boolean): void {
+		validateHasCounter(this, value);
 	}
 
 	@Watch('_hideLabel')
@@ -395,6 +411,8 @@ export class KolInputText implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+
+		this.validateHasCounter(this._hasCounter);
 	}
 
 	public disconnectedCallback(): void {

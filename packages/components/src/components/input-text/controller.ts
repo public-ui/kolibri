@@ -5,7 +5,7 @@ import { Props as InputTextProps, Watches as InputTextWatches } from './types';
 import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
-import { PropLabel } from '../../types/props';
+import { PropLabel, validateHasCounter } from '../../types/props';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
@@ -54,8 +54,13 @@ export class InputTextController extends InputTextEmailController implements Inp
 		);
 	}
 
+	public validateHasCounter(value?: boolean): void {
+		validateHasCounter(this.component, value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateType(this.component._type);
+		this.validateHasCounter(this.component._hasCounter);
 	}
 }
