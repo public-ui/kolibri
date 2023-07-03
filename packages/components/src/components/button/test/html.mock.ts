@@ -24,7 +24,6 @@ export const getButtonWcHtml = (
 		props
 	);
 	if (!props._label) props._label = '…'; // ⚠ required
-	const ariaLabel = state._hideLabel ? '' : ` aria-label="${state._label}"`;
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
 	const type = typeof state._type === 'string' ? state._type : 'button';
@@ -32,7 +31,7 @@ export const getButtonWcHtml = (
 	return `<kol-button-wc${additionalAttrs}>
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
-	}${ariaLabel} class="${variant}" type="${type}">
+	} class="${variant}" type="${type}">
 		${getSpanWcHtml(props as KolibriSpanProps, slots)}
 	</button>
 	<kol-tooltip aria-hidden="true" hidden>
