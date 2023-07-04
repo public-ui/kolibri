@@ -13,6 +13,7 @@ type OptionalProps = {
 	autoComplete: InputTypeOnOff;
 	disabled: boolean;
 	error: string;
+	hasCounter: boolean;
 	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
@@ -43,8 +44,10 @@ type RequiredStates = {
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
+	currentLength: number;
 	disabled: boolean;
 	error: string;
+	hasCounter: boolean;
 	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
