@@ -9,11 +9,7 @@
 }
 .content {
 	inset: 0 0 auto 0;
-	position: absolute;
 	width: 100%;
-}
-.wrapper {
-	position: relative;
 }
 .transition {
 	transition: height 0.3s ease-in-out;
