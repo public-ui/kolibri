@@ -89,6 +89,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
@@ -139,8 +140,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// TODO v2: make required
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.

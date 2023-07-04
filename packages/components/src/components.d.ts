@@ -263,7 +263,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -347,7 +347,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -457,7 +457,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -1694,6 +1694,7 @@ export namespace Components {
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated will be removed in v2
          */
         "_disabled"?: boolean;
         /**
@@ -1725,10 +1726,10 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1737,12 +1738,12 @@ export namespace Components {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -1763,7 +1764,7 @@ export namespace Components {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }
@@ -1865,7 +1866,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -1944,10 +1945,10 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1956,12 +1957,12 @@ export namespace Components {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -1982,7 +1983,7 @@ export namespace Components {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }
@@ -3239,7 +3240,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3323,7 +3324,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3433,7 +3434,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label": string;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -4670,6 +4671,7 @@ declare namespace LocalJSX {
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated will be removed in v2
          */
         "_disabled"?: boolean;
         /**
@@ -4701,10 +4703,10 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4713,12 +4715,12 @@ declare namespace LocalJSX {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -4739,7 +4741,7 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }
@@ -4841,7 +4843,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -4920,10 +4922,10 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: string;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4932,12 +4934,12 @@ declare namespace LocalJSX {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -4958,7 +4960,7 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }

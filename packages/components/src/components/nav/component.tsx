@@ -14,6 +14,11 @@ import { KoliBriNavAPI, KoliBriNavStates } from './types';
  */
 export type KoliBriNavVariant = 'primary' | 'secondary';
 
+/**
+ * There can be several navigations on one page (e.g. main navigation, subnavigation, breadcrumb).
+ * The navigations must be clearly named for accessibility. To ensure this, all Aria labels are
+ * stored in an array and checked for uniqueness.
+ */
 const UNIQUE_ARIA_LABEL: string[] = [];
 const removeAriaLabel = (ariaLabel: string) => {
 	const index = UNIQUE_ARIA_LABEL.indexOf(ariaLabel);
@@ -177,7 +182,8 @@ export class KolNav implements KoliBriNavAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated use _label instead
+	 *
+	 *  @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -200,8 +206,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// TODO v2: make required
-	@Prop() public _label?: string;
+	@Prop() public _label?: string; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.

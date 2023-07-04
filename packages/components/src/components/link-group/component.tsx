@@ -71,6 +71,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
 	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
@@ -88,7 +89,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label?: string; // TODO: required in v2
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -119,7 +120,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	};
 
 	/**
-	 * @deprecated use _label instead
+	 * @deprecated
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {

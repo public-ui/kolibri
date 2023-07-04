@@ -130,9 +130,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
 	 * @deprecated use _label instead
 	 */
-	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -168,6 +169,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;
@@ -180,7 +182,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label!: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
@@ -252,7 +254,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	/**
-	 * @deprecated use _label instead
+	 * @deprecated
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
