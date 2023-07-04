@@ -12,6 +12,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { validateLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
+import { validateHref } from '../../types/props/href';
 
 /**
  * @internal
@@ -315,7 +316,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		watchString(this, '_href', value);
+		validateHref(this, value);
 	}
 
 	@Watch('_icon')
