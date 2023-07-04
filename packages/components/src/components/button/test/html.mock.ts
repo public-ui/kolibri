@@ -22,7 +22,6 @@ export const getButtonWcHtml = (
 		},
 		props
 	);
-	if (!props._label) props._label = '…'; // ⚠ required
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
 	const type = typeof state._type === 'string' ? state._type : 'button';

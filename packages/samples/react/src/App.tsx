@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
@@ -54,7 +54,7 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 						path={`${path}/all`}
 						element={
 							<div className="d-grid gap-4">
-								{THEME_OPTIONS.filter((theme) => ['bmf', 'itzbund', 'zoll-v2'].indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
+								{THEME_OPTIONS.filter((theme) => ['bmf', 'zoll-v2'].indexOf((theme as Option<Theme>).value) >= 0).map((theme) => (
 									<div className="d-grid gap-2" key={(theme as Option<Theme>).value} data-theme={(theme as Option<Theme>).value}>
 										<strong>{theme.label}</strong>
 										<ThisRoute />
@@ -90,20 +90,33 @@ const getRouteTree = (routes: MyRoutes): ReturnType<typeof Route>[] => {
 const ROUTE_LIST = getRouteList(ROUTES);
 const ROUTE_TREE = getRouteTree(ROUTES);
 
-console.clear();
-console.log('ROUTE_LIST', ROUTE_LIST);
-console.log('ROUTE_TREE', ROUTE_TREE);
-
 const clearHash = (str: string) => str.replace(/\?.*/g, '').replace(/^#/g, '');
 
 const getIndexOfRoute = (str: string) => {
 	return ROUTE_LIST.indexOf(clearHash(str));
 };
 
+type CustomRoute = { label: string; value: string };
+const componentList: CustomRoute[] = [];
+ROUTE_LIST.forEach((route) => {
+	const routeSplit = route.split('/');
+	if (routeSplit.pop() === 'basic') componentList.push({ label: routeSplit[1], value: route });
+});
+
+function getComponentFromSample(url: string): string {
+	const routeSplit = url.split('/');
+	routeSplit[2] = 'basic';
+	return routeSplit.join('/');
+}
+
 export const App: FC = () => {
 	const [theme] = useState(getThemeFromLocation());
 	const [sample, setSample] = useState(clearHash(window.location.hash));
 	const [active, setActive] = useState(false);
+
+	const currentComponent = useMemo(() => {
+		return getComponentFromSample(sample);
+	}, [sample]);
 
 	const title = document.querySelector('title');
 	if (title) {
@@ -114,6 +127,14 @@ export const App: FC = () => {
 		setTimeout(() => {
 			setActive(true);
 		}, 500);
+	};
+
+	const componentSelectOn = {
+		onChange: (_e: Event, v: unknown) => {
+			const path = (v as string[])[0];
+			setSample(path);
+			window.location.href = `#${path}?theme=${theme}`;
+		},
 	};
 
 	const on = {
@@ -194,6 +215,17 @@ export const App: FC = () => {
 						/>
 					</>
 				)}
+				<KolSelect
+					className="col-span-2 sm:col-auto"
+					_disabled={!active}
+					_hideLabel
+					_id="theme-toggle"
+					_list={componentList}
+					_on={componentSelectOn}
+					_value={[currentComponent]}
+				>
+					Komponente wechseln
+				</KolSelect>
 				<KolSelect className="col-span-2 sm:col-auto" _hideLabel _disabled={!active} _id="theme-toggle" _list={THEME_OPTIONS} _on={on} _value={[theme]}>
 					Theme wechseln
 				</KolSelect>
