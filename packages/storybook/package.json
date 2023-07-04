@@ -66,7 +66,7 @@
 		"@storybook/addon-toolbars": "6.5.16",
 		"@storybook/addon-viewport": "6.5.16",
 		"@storybook/addons": "6.5.16",
-		"@storybook/api": "6.5.16",
+		"@storybook/api": "7.0.25",
 		"@storybook/builder-webpack5": "6.5.16",
 		"@storybook/components": "6.5.16",
 		"@storybook/core-common": "6.5.16",
