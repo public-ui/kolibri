@@ -4,8 +4,19 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropHideLabel, PropLabel, PropStealth } from './props';
-import { PropAriaLabel } from './props';
+import {
+	Align,
+	PropAriaCurrent,
+	PropAriaExpanded,
+	PropAriaLabel,
+	PropAriaSelected,
+	PropDisabled,
+	PropDownload,
+	PropHideLabel,
+	PropLabel,
+	PropStealth,
+} from './props';
+import { PropHref } from './props/href';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -33,13 +44,11 @@ type OptionalButtonAndLinkProps = {
 	PropAriaLabel &
 	PropAriaSelected &
 	PropDisabled &
-	PropHideLabel &
-	PropLabel;
+	PropHideLabel;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
-	label: string;
-};
+} & PropLabel;
 type OptionalButtonAndLinkStates = {
 	ariaControls: string;
 	/**
@@ -57,14 +66,14 @@ type OptionalButtonAndLinkStates = {
 	PropAriaExpanded &
 	PropAriaSelected &
 	PropDisabled &
-	PropHideLabel &
-	PropLabel;
+	PropHideLabel;
 
 /**
  * Button
+ * TODO: 'tertiary' instead of 'normal'
  */
 export type KoliBriButtonType = 'button' | 'reset' | 'submit';
-export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost' | 'custom';
+export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'tertiary' | 'danger' | 'ghost' | 'custom';
 
 export type KoliBriButtonCallbacks<T> = {
 	[Events.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
@@ -115,7 +124,7 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 /**
  * API Button
  */
-export type RequiredButtonProps = RequiredButtonLinkProps;
+export type RequiredButtonProps = RequiredButtonLinkProps & PropLabel;
 export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
@@ -140,9 +149,7 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 /**
  * API Link
  */
-export type RequiredLinkProps = {
-	href: string;
-} & PropLabel;
+export type RequiredLinkProps = PropHref;
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated A link could never be disabled. Use a button instead.
@@ -166,6 +173,7 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	 */
 	useCase: LinkUseCase;
 } & PropDownload &
+	PropLabel &
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 

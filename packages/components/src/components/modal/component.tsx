@@ -89,15 +89,15 @@ export class KolModal implements KoliBriModalAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated use _label instead
+	 *
+	 *  @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// TODO v2: make required
-	@Prop() public _label?: string;
+	@Prop() public _label?: string; // TODO: required in v2
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
@@ -123,7 +123,7 @@ export class KolModal implements KoliBriModalAPI {
 	}
 
 	/**
-	 * @deprecated use _label instead
+	 * @deprecated
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {

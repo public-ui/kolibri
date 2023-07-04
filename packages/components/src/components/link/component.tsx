@@ -12,6 +12,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { validateLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
+import { validateHref } from '../../types/props/href';
 
 /**
  * @internal
@@ -75,7 +76,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		const isExternal = typeof this.state._target === 'string' && this.state._target !== '_self';
 
 		const tagAttrs = {
-			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
+			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: isExternal ? 'noopener' : undefined,
 		};
@@ -150,7 +151,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated use _label instead
+	 *
+	 *  @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -202,12 +204,12 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// - eslint-disable-next-line @stencil/strict-mutable
-	@Prop({ mutable: true, reflect: false }) public _label!: string;
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
-	 * @deprecated
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
@@ -219,14 +221,14 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _selector?: string;
 
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _stealth?: boolean = false;
 
@@ -253,14 +255,14 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Gibt den Verwendungsfall des Links an.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _useCase?: LinkUseCase = 'text';
 
 	@State() public state: LinkStates = {
-		_href: 'javascript:void(0)',
+		_href: 'javascript:void(0);', // ⚠ required
 		_icon: {},
-		_label: '…', // ⚠ required
+		_label: '…',
 	};
 
 	@Watch('_ariaControls')
@@ -279,7 +281,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	/**
-	 * @deprecated use _label instead
+	 * @deprecated
 	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
@@ -292,8 +294,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 *
 	 * @deprecated
 	 */
 	@Watch('_disabled')
@@ -316,7 +316,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		watchString(this, '_href', value);
+		validateHref(this, value);
 	}
 
 	@Watch('_icon')
@@ -325,7 +325,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
 	 * @deprecated
 	 */
 	@Watch('_iconAlign')
@@ -347,7 +346,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
 	 * @deprecated
 	 */
 	@Watch('_on')
@@ -365,11 +363,17 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		watchString(this, '_role', value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_selector')
 	public validateSelector(value?: string): void {
 		watchString(this, '_selector', value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_stealth')
 	public validateStealth(value?: boolean): void {
 		validateStealth(this, value);
@@ -395,6 +399,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_useCase')
 	public validateUseCase(value?: LinkUseCase): void {
 		if (typeof value === 'string') {
