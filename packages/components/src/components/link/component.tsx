@@ -75,7 +75,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		const isExternal = typeof this.state._target === 'string' && this.state._target !== '_self';
 
 		const tagAttrs = {
-			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
+			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: isExternal ? 'noopener' : undefined,
 		};
@@ -259,7 +259,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _useCase?: LinkUseCase = 'text';
 
 	@State() public state: LinkStates = {
-		_href: 'javascript:void();', // ⚠ required
+		_href: 'javascript:void(0);', // ⚠ required
 		_icon: {},
 		_label: '…',
 	};

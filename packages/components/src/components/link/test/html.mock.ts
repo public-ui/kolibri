@@ -7,7 +7,7 @@ import { getTooltipHtml } from '../../tooltip/test/html.mock';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, LinkStates>(
 		{
-			_href: 'javascript:void();', // ⚠ required
+			_href: 'javascript:void(0);', // ⚠ required
 			_hideLabel: false,
 			_icon: {},
 			_label: '…',

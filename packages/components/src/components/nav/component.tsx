@@ -14,11 +14,6 @@ import { KoliBriNavAPI, KoliBriNavStates } from './types';
  */
 export type KoliBriNavVariant = 'primary' | 'secondary';
 
-/**
- * There can be several navigations on one page (e.g. main navigation, subnavigation, breadcrumb).
- * The navigations must be clearly named for accessibility. To ensure this, all Aria labels are
- * stored in an array and checked for uniqueness.
- */
 const UNIQUE_ARIA_LABEL: string[] = [];
 const removeAriaLabel = (ariaLabel: string) => {
 	const index = UNIQUE_ARIA_LABEL.indexOf(ariaLabel);
