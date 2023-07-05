@@ -10,9 +10,9 @@ import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateLabel } from '../../types/props/label';
+import { validateLabel } from '../../types/props';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { validateHref } from '../../types/props/href';
+import { validateHref } from '../../types/props';
 
 /**
  * @internal
