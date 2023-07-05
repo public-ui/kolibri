@@ -1,5 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { LinkProps } from '../../../types/button-link';
+import { LinkProps, LinkStates } from '../../../types/button-link';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
@@ -10,13 +10,13 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: 'javascript:void(0);', // ⚠ required
 			_hideLabel: false,
 			_icon: {},
-			_label: '…',
+			_label: props._href || 'javascript:void(0);',
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
 		props
 	);
-	const label = typeof props._label === 'string' && props._label.length >= 3 ? props._label : props._href;
+	if (!state._label) state._label = state._href;
 	return `
 <kol-link>
   <mock:shadow-root>

@@ -43,7 +43,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
-								<kol-icon _ariaLabel="" _icon="codicon codicon-home" />…
+								<kol-icon _label="" _icon="codicon codicon-home" />…
 							</li>
 						)}
 						{this.state._links.map(this.renderLink)}

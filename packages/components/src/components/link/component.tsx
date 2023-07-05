@@ -89,8 +89,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		const label = (typeof this._label === 'string' && this._label.length >= 3 ? this.state._label : this.state._href)!;
 		return (
 			<Host>
 				<a
@@ -116,7 +114,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={label}>
+					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
@@ -264,7 +262,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@State() public state: LinkStates = {
 		_href: 'javascript:void(0);', // ⚠ required
 		_icon: {},
-		_label: '…',
+		_label: '…', // ⚠ required
 	};
 
 	@Watch('_ariaControls')
@@ -319,6 +317,12 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Watch('_href')
 	public validateHref(value?: string): void {
 		validateHref(this, value);
+		if (!this._label) {
+			this.state = {
+				...this.state,
+				_label: this.state._href,
+			};
+		}
 	}
 
 	@Watch('_icon')
@@ -344,7 +348,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		validateLabel(this, value);
+		if (this._label) {
+			validateLabel(this, value);
+		}
 	}
 
 	/**
