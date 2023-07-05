@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-text")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.6")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.7")
 @JsModule("@public-ui/components/dist/components/kol-input-text")
 public class KolInputText extends Component {
 	/**
