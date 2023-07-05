@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.6.0-rc.7)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.8)
   '@public-ui/components':
-    specifier: 1.6.0-rc.7
-    version: 1.6.0-rc.7
+    specifier: 1.6.0-rc.8
+    version: 1.6.0-rc.8
   '@public-ui/solid':
-    specifier: 1.6.0-rc.7
-    version: 1.6.0-rc.7(@public-ui/components@1.6.0-rc.7)(solid-js@1.7.7)
+    specifier: 1.6.0-rc.8
+    version: 1.6.0-rc.8(@public-ui/components@1.6.0-rc.8)(solid-js@1.7.7)
   '@public-ui/themes':
-    specifier: 1.6.0-rc.7
-    version: 1.6.0-rc.7(@public-ui/components@1.6.0-rc.7)
+    specifier: 1.6.0-rc.8
+    version: 1.6.0-rc.8(@public-ui/components@1.6.0-rc.8)
   monaco-editor:
     specifier: 0.39.0
     version: 0.39.0
@@ -2360,21 +2360,21 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.7):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.8):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.7
+      '@public-ui/components': 1.6.0-rc.8
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.6.0-rc.7:
-    resolution: {integrity: sha512-6Ptm7PUvNdsJbNDpPyYIxYfecqy+tcEzNilsyYhFqZjAeUcYxmGeX7F/65HNyhTWpDe+4QeTstGHM2EZUo/STw==}
+  /@public-ui/components@1.6.0-rc.8:
+    resolution: {integrity: sha512-1NELQ1u8o1t82ZSsar7KTjmBYhLYLispdMjfqD13vxQETsvQc5ue1lnAbqGU9rqKuuDqkdY7frUGxcrqMck6mw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.3
-      '@public-ui/schema': 1.6.0-rc.7
+      '@public-ui/schema': 1.6.0-rc.8
       i18next: 22.5.1
     dev: false
 
@@ -2391,28 +2391,28 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.7:
-    resolution: {integrity: sha512-/ebgsHA9zfUOucnlY2E3Wa1fAnH8mKbJ0qzGoDz+rjqLyd316xdgvM6UPpdRnzZoQ7HBd2X1j4rQBkk4WevZEg==}
+  /@public-ui/schema@1.6.0-rc.8:
+    resolution: {integrity: sha512-RevgGIjVxoJXnLnOIeSrufvo0hpvPOZnh/hMW+iM4re3JfVIrJ6Msgqbb4ucwQrcH9rdU1Ocu4tliInR8RebJA==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
 
-  /@public-ui/solid@1.6.0-rc.7(@public-ui/components@1.6.0-rc.7)(solid-js@1.7.7):
-    resolution: {integrity: sha512-RIVklZYa910GG8AHCsbibWiZl1AXevPszL/PLWPSKS8qnJWIWn2PVG2A8tyL7XyoE1O2VsP/CYg5d74+6e+DMQ==}
+  /@public-ui/solid@1.6.0-rc.8(@public-ui/components@1.6.0-rc.8)(solid-js@1.7.7):
+    resolution: {integrity: sha512-EB3vehjtFIx+c0/cXjOpEFHl7PAxwkCXMLpf+7jFXaqteDZyoG/VCvMpOWh/VuNUXM1WHal9Z6FvwFvxTbR2fA==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.7
+      '@public-ui/components': 1.6.0-rc.8
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.7
+      '@public-ui/components': 1.6.0-rc.8
       solid-js: 1.7.7
     dev: false
 
-  /@public-ui/themes@1.6.0-rc.7(@public-ui/components@1.6.0-rc.7):
-    resolution: {integrity: sha512-pcLO1rEznHRM97DNPIvYvdDFYlLyQzn0u8i4fVM+nFLp81zA32r9nI+IQ4EH1uGffkWOjog2tnZvVho78xdeZg==}
+  /@public-ui/themes@1.6.0-rc.8(@public-ui/components@1.6.0-rc.8):
+    resolution: {integrity: sha512-51TSekLkWptXKZ+UQ61TFOUElRz9UREz2oX+Nr1ySC4V7VuOJsoz6sDDVKs5ldSYCKKx/MydsfPLP8bKomQIug==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.7
+      '@public-ui/components': 1.6.0-rc.8
     dependencies:
-      '@public-ui/components': 1.6.0-rc.7
+      '@public-ui/components': 1.6.0-rc.8
     dev: false
 
   /@rollup/pluginutils@5.0.2:
