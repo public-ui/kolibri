@@ -56,6 +56,7 @@ export class KolInputNumber implements ComponentApi {
 				<kol-input
 					class={{
 						[this.state._type]: true,
+						'hide-label': !!this.state._hideLabel,
 					}}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
