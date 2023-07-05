@@ -120,12 +120,6 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: npm
-    directory: /packages/slidev/
-    labels:
-      - dependabot
-    schedule:
-      interval: daily
-  - package-ecosystem: npm
     directory: /packages/storybook/
     labels:
       - dependabot
