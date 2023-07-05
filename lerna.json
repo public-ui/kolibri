@@ -17,8 +17,6 @@
 		"packages/designer",
 		"packages/samples/react",
 		"packages/schema",
-		"packages/slidev",
-		"packages/storybook",
 		"packages/themes",
 		"packages/themes/bmf",
 		"packages/themes/ecl/ec",
@@ -26,5 +24,5 @@
 		"packages/themes/itzbund"
 	],
 	"useNx": false,
-	"version": "1.6.0-rc.7"
+	"version": "1.6.0-rc.8"
 }
