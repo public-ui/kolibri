@@ -10,7 +10,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: 'javascript:void(0);', // ⚠ required
 			_hideLabel: false,
 			_icon: {},
-			_label: props._href || 'javascript:void(0);',
+			_label: props._href || '…',
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
