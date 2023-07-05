@@ -13,7 +13,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
  */
 
 @Tag("kol-link")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.5")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.6")
 @JsModule("@public-ui/components/dist/components/kol-link")
 public class KolLink extends Component {
 	/**
@@ -235,7 +235,7 @@ public class KolLink extends Component {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
 	public void setLabel(final Optional<String> value) {
 		getElement().setProperty("_label", value);

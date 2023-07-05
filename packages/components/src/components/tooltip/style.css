@@ -8,7 +8,6 @@ kol-tooltip #floating {
 	display: none;
 	position: absolute;
 	visibility: hidden;
-
 	/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
 	width: max-content;
 	top: 0;
