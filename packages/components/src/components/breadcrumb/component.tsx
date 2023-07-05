@@ -30,7 +30,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 						)}
 					</span>
 				) : (
-					<kol-link {...link} _useCase="nav"></kol-link>
+					<kol-link {...link}></kol-link>
 				)}
 			</li>
 		);

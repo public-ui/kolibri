@@ -1,6 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
-import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
+import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton, validateLabel } from '../../types/props';
@@ -66,12 +66,12 @@ export class KolNav implements KoliBriNavAPI {
 		return (
 			<div class="entry">
 				<kol-button-link-text-switch _has-children={hasChildren} _hide-label={compact} _link={link} _selected={selected} />
-				{hasChildren ? this.expandButton(collapsible, link, selected) : ''}
+				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, selected) : ''}
 			</div>
 		);
 	}
 
-	private expandButton(collapsible: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
+	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, selected: boolean): JSX.Element {
 		return (
 			<kol-button-wc
 				class="expand-button"
@@ -79,8 +79,7 @@ export class KolNav implements KoliBriNavAPI {
 				_disabled={!collapsible}
 				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
 				_hideLabel
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				_label={`Untermenü zu ${link._label!} ${selected ? 'schließen' : 'öffnen'}`}
+				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
 			></kol-button-wc>
 		);
