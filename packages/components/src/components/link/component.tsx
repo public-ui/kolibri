@@ -318,10 +318,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	public validateHref(value?: string): void {
 		validateHref(this, value);
 		if (!this._label) {
-			this.state = {
-				...this.state,
-				_label: this.state._href,
-			};
+			this.validateLabel(this.state._href);
 		}
 	}
 
@@ -348,9 +345,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		if (this._label) {
-			validateLabel(this, value);
-		}
+		validateLabel(this, value);
 	}
 
 	/**
