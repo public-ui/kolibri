@@ -13,7 +13,7 @@ import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
-import { AriaCurrent as AriaCurrent1, KoliBriProgressType, Stringified as Stringified1 } from "./components";
+import { AriaCurrent as AriaCurrent1, Stringified as Stringified1 } from "./components";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -31,6 +31,7 @@ import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+import { KoliBriProgressVariantType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { SpinVariant } from "./types/props/variant/spin";
 import { KoliBriSplitButtonCallback } from "./components/split-button/types";
@@ -46,7 +47,7 @@ export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
-export { AriaCurrent as AriaCurrent1, KoliBriProgressType, Stringified as Stringified1 } from "./components";
+export { AriaCurrent as AriaCurrent1, Stringified as Stringified1 } from "./components";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -64,6 +65,7 @@ export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+export { KoliBriProgressVariantType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { SpinVariant } from "./types/props/variant/spin";
 export { KoliBriSplitButtonCallback } from "./components/split-button/types";
@@ -2150,7 +2152,7 @@ export namespace Components {
           * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
           * @deprecated will be removed in v2, use _variant
          */
-        "_type"?: KoliBriProgressType;
+        "_type"?: KoliBriProgressVariantType;
         /**
           * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
@@ -2162,7 +2164,7 @@ export namespace Components {
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: KoliBriProgressType;
+        "_variant"?: KoliBriProgressVariantType;
     }
     interface KolQuote {
         /**
@@ -5148,7 +5150,7 @@ declare namespace LocalJSX {
           * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
           * @deprecated will be removed in v2, use _variant
          */
-        "_type"?: KoliBriProgressType;
+        "_type"?: KoliBriProgressVariantType;
         /**
           * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
@@ -5160,7 +5162,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: KoliBriProgressType;
+        "_variant"?: KoliBriProgressVariantType;
     }
     interface KolQuote {
         /**

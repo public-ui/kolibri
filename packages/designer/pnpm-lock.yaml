@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.6.0-rc.6)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.7)
   '@public-ui/components':
-    specifier: 1.6.0-rc.6
-    version: 1.6.0-rc.6
+    specifier: 1.6.0-rc.7
+    version: 1.6.0-rc.7
   '@public-ui/solid':
-    specifier: 1.6.0-rc.6
-    version: 1.6.0-rc.6(@public-ui/components@1.6.0-rc.6)(solid-js@1.7.7)
+    specifier: 1.6.0-rc.7
+    version: 1.6.0-rc.7(@public-ui/components@1.6.0-rc.7)(solid-js@1.7.7)
   '@public-ui/themes':
-    specifier: 1.6.0-rc.6
-    version: 1.6.0-rc.6(@public-ui/components@1.6.0-rc.6)
+    specifier: 1.6.0-rc.7
+    version: 1.6.0-rc.7(@public-ui/components@1.6.0-rc.7)
   monaco-editor:
     specifier: 0.39.0
     version: 0.39.0
@@ -2116,8 +2116,8 @@ packages:
     resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
     dev: false
 
-  /@floating-ui/dom@1.4.2:
-    resolution: {integrity: sha512-VKmvHVatWnewmGGy+7Mdy4cTJX71Pli6v/Wjb5RQBuq5wjUYx+Ef+kRThi8qggZqDgD8CogCpqhRoVp3+yQk+g==}
+  /@floating-ui/dom@1.4.3:
+    resolution: {integrity: sha512-nB/68NyaQlcdY22L+Fgd1HERQ7UGv7XFN+tPxwrEfQL4nKtAP/jIZnZtpUlXbtV+VEGHh6W/63Gy2C5biWI3sA==}
     dependencies:
       '@floating-ui/core': 1.3.1
     dev: false
@@ -2360,21 +2360,21 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.6):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.7):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.6
+      '@public-ui/components': 1.6.0-rc.7
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.6.0-rc.6:
-    resolution: {integrity: sha512-Rta7UHytITvBK78aWF7qoeREoJ6PfayKcwFSQeufp7qDi9kEIpO2EG1yZz9znn0m1WfS6X8X3QTQUvFVpsqNjw==}
+  /@public-ui/components@1.6.0-rc.7:
+    resolution: {integrity: sha512-6Ptm7PUvNdsJbNDpPyYIxYfecqy+tcEzNilsyYhFqZjAeUcYxmGeX7F/65HNyhTWpDe+4QeTstGHM2EZUo/STw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
-      '@floating-ui/dom': 1.4.2
-      '@public-ui/schema': 1.6.0-rc.6
+      '@floating-ui/dom': 1.4.3
+      '@public-ui/schema': 1.6.0-rc.7
       i18next: 22.5.1
     dev: false
 
@@ -2391,28 +2391,28 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.6:
-    resolution: {integrity: sha512-t+XqqANTsVXm6bN32oJWqpUsKhtLKQuJ8jMVBVCiDxfEktkOCJ5NvjknsGNpKuaIFZtvhrZqSOUskM0CQO+c6g==}
+  /@public-ui/schema@1.6.0-rc.7:
+    resolution: {integrity: sha512-/ebgsHA9zfUOucnlY2E3Wa1fAnH8mKbJ0qzGoDz+rjqLyd316xdgvM6UPpdRnzZoQ7HBd2X1j4rQBkk4WevZEg==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
 
-  /@public-ui/solid@1.6.0-rc.6(@public-ui/components@1.6.0-rc.6)(solid-js@1.7.7):
-    resolution: {integrity: sha512-EhvSJKXYGp3UUAZHWshwNPmCABcqdLKRO2YwGzMELWS3fAk8/5NJcdUbLqH59DVOnV1HCLX1363R3tjhGFBZGA==}
+  /@public-ui/solid@1.6.0-rc.7(@public-ui/components@1.6.0-rc.7)(solid-js@1.7.7):
+    resolution: {integrity: sha512-RIVklZYa910GG8AHCsbibWiZl1AXevPszL/PLWPSKS8qnJWIWn2PVG2A8tyL7XyoE1O2VsP/CYg5d74+6e+DMQ==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.6
+      '@public-ui/components': 1.6.0-rc.7
       solid-js: '>=1.2.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.6
+      '@public-ui/components': 1.6.0-rc.7
       solid-js: 1.7.7
     dev: false
 
-  /@public-ui/themes@1.6.0-rc.6(@public-ui/components@1.6.0-rc.6):
-    resolution: {integrity: sha512-GEbUv5qeKdDd/+YEbScp01zyLoZMNwAlyxTH3vzqQiLC3GQWL4YTDxdczfRLVEuQqr7M8K7jt2lOK/9ajpdBaA==}
+  /@public-ui/themes@1.6.0-rc.7(@public-ui/components@1.6.0-rc.7):
+    resolution: {integrity: sha512-pcLO1rEznHRM97DNPIvYvdDFYlLyQzn0u8i4fVM+nFLp81zA32r9nI+IQ4EH1uGffkWOjog2tnZvVho78xdeZg==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.6
+      '@public-ui/components': 1.6.0-rc.7
     dependencies:
-      '@public-ui/components': 1.6.0-rc.6
+      '@public-ui/components': 1.6.0-rc.7
     dev: false
 
   /@rollup/pluginutils@5.0.2:
