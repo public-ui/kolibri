@@ -42,18 +42,18 @@
 	"devDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
 		"@babel/types": "^7.20.7",
-		"@public-ui/components": "1.6.0-rc.6",
+		"@public-ui/components": "1.6.0-rc.7",
 		"@types/minimatch": "^5.1.2",
 		"@types/minimist": "^1.2.2",
 		"@types/node": "^ts4.9",
 		"@types/normalize-package-data": "^2.4.1",
-		"vue": "^3.2.45",
-		"typescript": "^5.0.4",
+		"vue": "^3.3.4",
+		"typescript": "^5.1.6",
 		"unbuild": "^1.2.1"
 	},
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
-		"@public-ui/components": "1.6.0-rc.6",
+		"@public-ui/components": "1.6.0-rc.7",
 		"vue": ">=3"
 	},
 	"sideEffects": false,

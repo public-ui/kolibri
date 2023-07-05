@@ -19,14 +19,14 @@
 		"update": "ncu -t patch -u && ncu -t minor -u -x @stencil/core && ncu"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.6.0-rc.6",
-		"@public-ui/themes": "1.6.0-rc.6"
+		"@public-ui/components": "1.6.0-rc.7",
+		"@public-ui/themes": "1.6.0-rc.7"
 	},
 	"devDependencies": {
 		"@stencil-community/router": "^1.0.2",
 		"@stencil/core": "~2.13.0",
 		"@types/jest": "^27.5.2",
-		"cpy-cli": "^4.2.0",
+		"cpy-cli": "^5.0.0",
 		"jest": "^27.5.1",
 		"jest-cli": "^27.5.1",
 		"npm-check-updates": "^16.7.5",

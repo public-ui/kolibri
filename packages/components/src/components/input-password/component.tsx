@@ -11,6 +11,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
+import { validateHasCounter } from '../../types/props';
+import { setState } from '../../utils/prop.validators';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -32,6 +34,7 @@ export class KolInputPassword implements ComponentApi {
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
+		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		if (event.code === 'Enter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -57,12 +60,15 @@ export class KolInputPassword implements ComponentApi {
 						'hide-label': !!this.state._hideLabel,
 						password: true,
 					}}
+					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
+					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
@@ -127,6 +133,11 @@ export class KolInputPassword implements ComponentApi {
 	 * Gibt den Text für eine Fehlermeldung an.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 */
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -221,6 +232,7 @@ export class KolInputPassword implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
+		_currentLength: 0,
 		_id: nonce(), // ⚠ required
 		_label: '…', // ⚠ required
 		_hasValue: false,
@@ -256,6 +268,11 @@ export class KolInputPassword implements ComponentApi {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: boolean): void {
+		validateHasCounter(this, value);
 	}
 
 	@Watch('_hideLabel')

@@ -4,13 +4,14 @@ import { Stringified } from '../../types/common';
 
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateMultiple } from '../../types/props';
+import { validateHasCounter, validateMultiple } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
+import { setState } from '../../utils/prop.validators';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -32,6 +33,7 @@ export class KolInputEmail implements ComponentApi {
 	};
 
 	private readonly onKeyUp = (event: KeyboardEvent) => {
+		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
 		if (event.code === 'Enter') {
 			propagateSubmitEventToForm({
 				form: this.host,
@@ -56,13 +58,16 @@ export class KolInputEmail implements ComponentApi {
 				<kol-input
 					class={{ email: true, 'hide-label': !!this.state._hideLabel }}
 					_alert={this.state._alert}
+					_currentLength={this.state._currentLength}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
+					_hasCounter={this.state._hasCounter}
 					_hideLabel={this.state._hideLabel}
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
 					_list={this.state._list}
+					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
@@ -128,6 +133,11 @@ export class KolInputEmail implements ComponentApi {
 	 * Gibt den Text für eine Fehlermeldung an.
 	 */
 	@Prop() public _error?: string;
+
+	/**
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 */
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -232,6 +242,7 @@ export class KolInputEmail implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
+		_currentLength: 0,
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
 		_label: '…', // ⚠ required
@@ -265,6 +276,11 @@ export class KolInputEmail implements ComponentApi {
 	@Watch('_error')
 	public validateError(value?: string): void {
 		this.controller.validateError(value);
+	}
+
+	@Watch('_hasCounter')
+	public validateHasCounter(value?: boolean): void {
+		validateHasCounter(this, value);
 	}
 
 	@Watch('_hideLabel')
@@ -377,5 +393,6 @@ export class KolInputEmail implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.validateHasCounter(this._hasCounter);
 	}
 }

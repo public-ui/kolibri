@@ -8,6 +8,10 @@ kol-tooltip #floating {
 	display: none;
 	position: absolute;
 	visibility: hidden;
+	/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+	width: max-content;
+	top: 0;
+	left: 0;
 }
 kol-tooltip #arrow {
 	height: 10px;
