@@ -1,3 +1,18 @@
+# Hinweis
+
+Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt ([caniuse](https://caniuse.com/?search=dialog)), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
+
+## Verwendung von <dialog>
+
+Die Dokumentation des `<dialog>` finden Sie [hier(MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog).
+Das **Dialog**-Element kann wie jedes andere HTML-Tag verwendet werden, alle Elemente innerhalb werden wie gewohnt dargestellt.
+Der Dialog ist standardmäßig nicht sichtbar, über das Setzen des Attributs `open`, oder über die Funktionen `show()` und `showModal()` wird er sichtbar.
+`open` und `show()` öffnen das Element mit `position: absolute`, während `showModal()` `position: fixed` setzt.
+
+- Beide Varianten haben eine `max-width`, die unter `box-sizing: content-box` der gesamten Bildschirmbreite entspricht (bzw des `position` Elters)
+- Die Modalvariante hat einen Hintergrund, der eine sanfte Abdunklung verursacht (unser Tipp: die Opacity der Hintergrundfarbe erhöhen), der über `::backdrop` gestylt werden kann und Klickevents auf den Dialog weiterleitet.
+- Die Modalvariante ist in der Bildschirmmitte zentriert (via `margin: auto`, kann von CSS Resets überschrieben werden)
+
 # Modal
 
 Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
@@ -14,7 +29,7 @@ Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der 
 ### Code
 
 ```html
-<kol-modal id="test-modal" _aria-label="Beschreibung zur Modalbox">
+<kol-modal id="test-modal" _label="Beschreibung zur Modalbox">
 	<kol-card _heading="Vorgang löschen" _has-footer style="background-color: bisque">
 		<p slot="content">Wollen Sie den Vorgang wirklich löschen?</p>
 		<div slot="footer">

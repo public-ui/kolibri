@@ -63,13 +63,10 @@ export class KolSelect implements ComponentApi {
 		const showExpertSlot = this.state._label === ''; // _label="" or _label
 		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
 		return (
-			<Host
-				class={{
-					'has-value': this.state._hasValue,
-				}}
-			>
+			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{
+						'hide-label': !!this.state._hideLabel,
 						select: true,
 					}}
 					_disabled={this.state._disabled}

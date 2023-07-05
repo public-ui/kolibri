@@ -1,7 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 import { a11yHint, uiUxHint } from '../../utils/a11y.tipps';
 import { watchString, WatchStringOptions } from '../../utils/prop.validators';
-import { isEmptyOrPrefixOf } from '../../utils/validator';
 
 /* types */
 
@@ -74,52 +73,6 @@ export type PropLabel = {
 };
 
 /* validator */
-/**
- * Ein abweichendes Aria-Label muss aus Gründern der Barrierefreiheit für
- * die Sprachsteuerung mit dem Label-Text beginnen.
- */
-const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextValue, nextState, component: Generic.Element.Component, key): void => {
-	const ariaLabel: string | undefined = nextState.has('_ariaLabel') ? (nextState.get('_ariaLabel') as string) : (component.state._ariaLabel as string);
-	if (typeof ariaLabel === 'string') {
-		const label: string = nextState.has('_label') ? (nextState.get('_label') as string) : (component.state._label as string);
-		if (isEmptyOrPrefixOf(label, ariaLabel) === false) {
-			if (key === '_ariaLabel') {
-				nextState.set('_label', ariaLabel);
-				// smartSetTimeout(() => ((component as Generic.Element.Component & { _label: string })._label = ariaLabel), 50);
-			} else {
-				nextState.set('_ariaLabel', undefined);
-				// smartSetTimeout(() => ((component as Generic.Element.Component & { _ariaLabel: string })._ariaLabel = label), 50);
-			}
-			a11yHint(
-				`The different Aria label is not barrier-free. A different Aria label must start with the label text for reasons of accessibility for voice control.`
-			);
-		}
-	}
-};
-
-const validateAriaLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
-	watchString(component, '_ariaLabel', value, {
-		hooks: {
-			afterPatch: (value, state, component, key) => {
-				if (typeof options.hooks?.afterPatch === 'function') {
-					options.hooks?.afterPatch(value, state, component, key);
-				}
-				if (typeof value === 'string' && value.length > 0 && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
-					a11yHint(`The different aria label ("${value}") is not accessible. A different aria label should consist of at least three readable characters.`);
-				}
-			},
-			beforePatch: options.hooks?.beforePatch,
-		},
-	});
-};
-
-export const validateAriaLabelWithLabel = (component: Generic.Element.Component, value?: string): void => {
-	validateAriaLabel(component, value, {
-		hooks: {
-			beforePatch: syncAriaLabelBeforePatch,
-		},
-	});
-};
 
 export const validateLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
 	watchString(component, '_label', value, {
@@ -138,13 +91,5 @@ export const validateLabel = (component: Generic.Element.Component, value?: stri
 			beforePatch: options.hooks?.beforePatch,
 		},
 		required: true,
-	});
-};
-
-export const validateLabelWithAriaLabel = (component: Generic.Element.Component, value?: string): void => {
-	validateLabel(component, value, {
-		hooks: {
-			beforePatch: syncAriaLabelBeforePatch,
-		},
 	});
 };

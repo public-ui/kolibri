@@ -8,7 +8,7 @@ Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt wer
 
 ```html
 <kol-skip-nav
-	_aria-label="Ein versteckter Link"
+	_label="Ein versteckter Link"
 	_links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"
 ></kol-skip-nav>
 ```
@@ -17,7 +17,7 @@ Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt wer
 
 Um die **SkipNav** sehen zu können, klicken Sie auf diesen Text und gehen dann mit der Tab-Taste einen Schritt weiter.
 
-<kol-skip-nav _aria-label="Ein versteckter Link" _links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"></kol-skip-nav>
+<kol-skip-nav _label="Ein versteckter Link" _links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"></kol-skip-nav>
 
 ## Verwendung
 

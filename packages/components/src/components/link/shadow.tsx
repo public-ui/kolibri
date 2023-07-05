@@ -78,6 +78,8 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -88,6 +90,8 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _disabled?: boolean = false;
 
@@ -130,7 +134,8 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
-	 * @deprecated
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
@@ -142,14 +147,14 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _selector?: string;
 
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _stealth?: boolean = false;
 
@@ -176,7 +181,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	/**
 	 * Gibt den Verwendungsfall des Links an.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _useCase?: LinkUseCase = 'text';
 }

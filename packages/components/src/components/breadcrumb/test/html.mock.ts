@@ -8,7 +8,7 @@ import { KoliBriBreadcrumbProps } from '../types';
 export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	props = mixMembers(
 		{
-			_ariaLabel: '…', // '⚠'
+			_label: '…', // '⚠'
 			_links: [],
 		},
 		props
@@ -22,7 +22,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 				${
 					index !== 0
 						? getIconHtml({
-								_ariaLabel: '',
+								_label: '',
 								_icon: 'codicon codicon-chevron-right',
 						  })
 						: ''
@@ -30,9 +30,9 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 					${
 						lastIndex === index
 							? `<span>${
-									link._iconOnly
+									link._hideLabel
 										? getIconHtml({
-												_ariaLabel: link._ariaLabel as string,
+												_label: link._label || link._href,
 												_icon: link._icon as Icofont,
 										  })
 										: link._label || link._href
@@ -46,12 +46,13 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${props._ariaLabel}">
+	${/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */ ''}
+		<nav aria-label="${props._label!}">
 			<ul>
 				${
 					props._links.length === 0
 						? `<li>${getIconHtml({
-								_ariaLabel: '',
+								_label: '',
 								_icon: 'codicon codicon-home',
 						  })}…</li>`
 						: ''

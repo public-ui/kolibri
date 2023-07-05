@@ -17,7 +17,6 @@ executeTests<LinkProps>(
 	},
 	{
 		_ariaExpanded: [false, true],
-		_ariaLabel: ['Aria-Label'],
 		_href: ['https://google.de'],
 		_icon: ['codicon codicon-home'],
 		_hideLabel: [false, true],

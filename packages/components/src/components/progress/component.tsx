@@ -1,14 +1,30 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchNumber, watchString } from '../../utils/prop.validators';
+import { watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
-import { KoliBriProgressType } from '../../types/progress';
+import { KoliBriProgressType } from '../../components';
+import { validateLabel } from '../../types/props';
+import { KoliBriProgressVariantEnum } from '../../types/progress';
+
+const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
 
 // https://css-tricks.com/html5-progress-element/
 const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
 	const fullCircle = 342;
+	const textPositionTop = '43%';
+	const textPositionBottom = '57%';
+
+	let labelY = textPositionTop;
+	let valueY = state._label ? textPositionBottom : '50%';
 	switch (state._variant) {
+		case 'cycle-value-label':
+			if (state._label) {
+				labelY = textPositionBottom;
+				valueY = textPositionTop;
+			}
+		// eslint-disable-next-line no-fallthrough
 		case 'cycle':
+		case 'cycle-label-value':
 			return (
 				<svg class="cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
 					<circle class="background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
@@ -27,12 +43,14 @@ const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
 						cy="60"
 						r="54.5"
 					></circle>
-					<text aria-hidden="true" x="50%" y="50%" text-anchor="middle" fill="currentColor">
-						{state._label && <tspan>{state._label}</tspan>}
-						<tspan>
-							{state._value}
-							{state._unit}
-						</tspan>
+					{state._label && (
+						<text aria-hidden="true" x="50%" y={labelY} text-anchor="middle" fill="currentColor">
+							{state._label}
+						</text>
+					)}
+					<text aria-hidden="true" x="50%" y={valueY} text-anchor="middle" fill="currentColor">
+						{state._value}
+						{state._unit}
 					</text>
 				</svg>
 			);
@@ -130,7 +148,7 @@ export class KolProcess implements KoliBriProgressAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: string): void {
-		watchString(this, '_label', value);
+		validateLabel(this, value);
 	}
 
 	@Watch('_max')
@@ -167,17 +185,7 @@ export class KolProcess implements KoliBriProgressAPI {
 
 	@Watch('_variant')
 	public validateVariant(value?: KoliBriProgressType): void {
-		if (!value && this._type) {
-			// remove with v2
-			value = this._type;
-		}
-		if (value !== 'cycle') {
-			value = 'bar';
-		}
-		this.state = {
-			...this.state,
-			_variant: value as KoliBriProgressType,
-		};
+		watchValidator(this, '_variant', (value) => typeof value === 'string' && VALID_VARIANTS.includes(value), new Set(VALID_VARIANTS), value);
 	}
 
 	public componentWillLoad(): void {

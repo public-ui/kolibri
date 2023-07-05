@@ -4,8 +4,7 @@ import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { watchNavLinks } from '../nav/validation';
 import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
-import { watchString } from '../../utils/prop.validators';
-import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
+import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-skip-nav',
@@ -17,7 +16,7 @@ import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 export class KolSkipNav implements KoliBriSkipNavAPI {
 	public render(): JSX.Element {
 		return (
-			<nav aria-label={this.state._ariaLabel}>
+			<nav aria-label={this.state._label}>
 				<ul>
 					{this.state._links.map((link: LinkProps, index: number) => {
 						return (
@@ -33,8 +32,15 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 *  @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -42,16 +48,21 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
 	@State() public state: KoliBriSkipNavStates = {
-		_ariaLabel: '…', // '⚠'
+		_label: '…', // ⚠ required
 		_links: [],
 	};
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
-		a11yHintLabelingLandmarks(value);
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_links')
@@ -60,7 +71,7 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateAriaLabel(this._ariaLabel);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateLinks(this._links);
 	}
 }

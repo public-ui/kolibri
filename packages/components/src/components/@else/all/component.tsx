@@ -52,7 +52,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-input-range _label="" _id="id"></kol-input-range>
 				<kol-input-text _label="" _id="id"></kol-input-text>
 				<kol-link _href="" _label="Label"></kol-link>
-				<kol-link-group _ariaLabel="" _links={[]}></kol-link-group>
+				<kol-link-group _label="" _links={[]}></kol-link-group>
 				<kol-logo _org={Bundesministerium['Auswärtiges Amt']}></kol-logo>
 				<kol-modal _ariaLabel=""></kol-modal>
 				<kol-nav _ariaLabel="" _links={[]}></kol-nav>

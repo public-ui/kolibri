@@ -38,6 +38,7 @@ export class KolInputRange implements ComponentApi {
 				<kol-input
 					class={{
 						range: true,
+						'hide-label': !!this.state._hideLabel,
 					}}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
