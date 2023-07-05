@@ -13,10 +13,10 @@ import {
 	PropDisabled,
 	PropDownload,
 	PropHideLabel,
+	PropHref,
 	PropLabel,
 	PropStealth,
 } from './props';
-import { PropHref } from './props/href';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -177,9 +177,7 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
-type RequiredLinkStates = RequiredButtonAndLinkStates & {
-	href: string;
-};
+type RequiredLinkStates = RequiredButtonAndLinkStates & PropHref;
 type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
 	/**

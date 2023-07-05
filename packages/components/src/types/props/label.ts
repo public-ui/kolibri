@@ -72,6 +72,8 @@ export type PropLabel = {
 	label: string;
 };
 
+export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
+
 /* validator */
 
 export const validateLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {

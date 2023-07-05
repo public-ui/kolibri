@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { watchJsonArrayString } from '../../utils/prop.validators';
-import { LabelProp } from '../../types/props/label';
+import { HrefProp, LabelProp } from '../../types/props';
 
 type HrefOrLabelProp = HrefProp | LabelProp;
 

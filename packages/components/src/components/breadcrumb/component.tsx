@@ -4,8 +4,8 @@ import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
-import { watchString } from '../../utils/prop.validators';
+import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
+import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-breadcrumb',

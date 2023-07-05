@@ -3,8 +3,7 @@ import { Stringified } from '../../types/common';
 
 import { KoliBriIconProp } from '../../types/icon';
 import { validateIcon } from '../../types/props/icon';
-import { validateLabel } from '../../types/props/label';
-import { validateHideLabel } from '../../types/props';
+import { validateLabel, validateHideLabel } from '../../types/props';
 import { KolibriSpanAPI, KolibriSpanStates } from './types';
 
 /**

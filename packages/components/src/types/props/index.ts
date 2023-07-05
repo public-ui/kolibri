@@ -15,6 +15,7 @@ export { PropHasCompactButton, validateHasCompactButton } from './has-compact-bu
 export { PropHasCounter, validateHasCounter } from './has-counter';
 export { PropHasFooter, validateHasFooter } from './has-footer';
 export { PropHideLabel, validateHideLabel } from './hide-label';
+export { PropHref, validateHref } from './href';
 export { PropIndeterminate, validateIndeterminate } from './indeterminate';
 export { PropLabel, validateLabel } from './label';
 export { PropMultiple, validateMultiple } from './multiple';
@@ -24,3 +25,6 @@ export { PropRequired, validateRequired } from './required';
 export { PropShow, validateShow } from './show';
 export { PropStealth, validateStealth } from './stealth';
 export { PropTouched, validateTouched } from './touched';
+
+export { HrefProp } from './href';
+export { LabelProp } from './label';

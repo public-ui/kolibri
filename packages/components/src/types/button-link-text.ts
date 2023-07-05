@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { KoliBriButtonCallbacks, LinkTarget } from './button-link';
 import { PropIcon } from './props/icon';
-import { PropLabel } from './props/label';
+import { PropHref, PropLabel } from './props';
 
 /**
  * This types specifies the props of a link or button in navigations.
@@ -13,9 +13,7 @@ import { PropLabel } from './props/label';
 type RequiredButtonProps = PropLabel & {
 	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
 };
-type RequiredLinkProps = {
-	href: string;
-};
+type RequiredLinkProps = PropHref;
 type RequiredTextProps = PropLabel;
 
 // do not inherit OptionalLinkProps; why?
