@@ -2,7 +2,7 @@
 
 Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt ([caniuse](https://caniuse.com/?search=dialog)), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
 
-## Verwendung von <dialog>
+## Verwendung von `<dialog>`
 
 Die Dokumentation des `<dialog>` finden Sie [hier(MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog).
 Das **Dialog**-Element kann wie jedes andere HTML-Tag verwendet werden, alle Elemente innerhalb werden wie gewohnt dargestellt.
@@ -13,20 +13,20 @@ Der Dialog ist standardmäßig nicht sichtbar, über das Setzen des Attributs `o
 - Die Modalvariante hat einen Hintergrund, der eine sanfte Abdunklung verursacht (unser Tipp: die Opacity der Hintergrundfarbe erhöhen), der über `::backdrop` gestylt werden kann und Klickevents auf den Dialog weiterleitet.
 - Die Modalvariante ist in der Bildschirmmitte zentriert (via `margin: auto`, kann von CSS Resets überschrieben werden)
 
-# Modal
+## Modal
 
 Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
 Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt des Modal-Fensters ist aktiv.
 
-## Funktionsweise
+### Funktionsweise
 
 Das **Modal** realisiert die Basis für barrierefreie Overlays und ermöglicht es beliebige HTML-Inhalte anzuzeigen. Beispielsweise wäre eine Dialog-Komponente eine Komposition aus einer Card-Komponente die in einer **Modal**-Komponente eingefügt wird.
 
 Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der Webseite deaktiviert, außer die innerhalb des aktiven Modals.
 
-## Konstruktion
+### Konstruktion
 
-### Code
+#### Code
 
 ```html
 <kol-modal id="test-modal" _label="Beschreibung zur Modalbox">
@@ -54,7 +54,7 @@ Sobald ein **Modal** geöffnet wird, werden alle selektierbaren Elemente in der 
 </script>
 ```
 
-## Verwendung
+### Verwendung
 
 Über das Attribut **`_width`** geben Sie die gewünschte Breite der Modalbox an. Sie wird in der gewählten Größe immer mittig auf dem Bildschirm angezeigt.
 
@@ -64,19 +64,19 @@ Da das Modal vom eigentlichen Modal entkoppelt ist, aber für eine teilweisen Sp
 
 Das **Modal** hat einen `z-index` von `100`.
 
-### Best practices
+#### Best practices
 
 - Verwenden Sie die Modalbox, um weiterführende Informationen zu einem Thema anzuzeigen.
 - Verwenden Sie die Modalbox, um umfangreiche Inhalte optisch kompakter zu gestalten.
 - Vermeiden Sie es, wichtige Informationen wie z.B. rechtliche Themen, auf die Nutzer:innen reagieren müssen, in Modalboxen zu platzieren.
 
-### Anwendungsfälle
+#### Anwendungsfälle
 
 - Nutzen Sie die Modalbox, als Erklärungshilfe zu einzelnen Eingabefeldern in Formularen.
 - Nutzen Sie die Modalbox, um ergänzende Informationen erst nach Anforderung durch die Nutzer:innen anzuzeigen.
 - Nutzen Sie die Modalbox, um ein Feedback zu Speichervorgängen oder ähnliches anzuzeigen, z.B. **_Vielen Dank für Ihre Rückmeldung_** nach Absenden eines Formulars.
 
-## Barrierefreiheit
+### Barrierefreiheit
 
 > Die optische Standardausgabe der Komponente ist auf die Umsetzung der Barrierefreiheit hin optimiert. Wenn Sie eigene Custom Styles verwenden, kann das zu einer Einschränkung der Barrierefreiheit führen.
 
@@ -90,14 +90,14 @@ Achten Sie für eine optimale Ausgabe der **Modal**-Komponente in Screenreadern 
 
 Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektierbaren Elemente deaktiviert außer die innerhalb des eigenen Modals. Hierbei ist zu beachten, dass KoliBri nur Elemente deaktiviert die sich im Browser-Seitenbereich befinden. Das Fokussieren den Browser-Menü's ist weiterhin möglich.
 
-### Tastatursteuerung
+#### Tastatursteuerung
 
 | Taste | Funktion                                                                                    |
 | ----- | ------------------------------------------------------------------------------------------- |
 | `Tab` | Bei geöffnetem Modal werden alle fokussierbaren Elemente der Reihenfolge nach angesprungen. |
 | `ESC` | Schließt das Modal.                                                                         |
 
-## Links und Referenzen
+### Links und Referenzen
 
 - https://www.w3.org/TR/wai-aria-practices/#dialog_modal
 - https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html
