@@ -641,6 +641,7 @@ export namespace Components {
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
+        "_currentLength"?: number;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -649,6 +650,10 @@ export namespace Components {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -669,6 +674,10 @@ export namespace Components {
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<string[]>;
+        /**
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+         */
+        "_maxLength"?: number;
         /**
           * Gibt an, ob die Eingabefeld nur lesend ist.
          */
@@ -976,6 +985,10 @@ export namespace Components {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -1258,6 +1271,10 @@ export namespace Components {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -1573,6 +1590,10 @@ export namespace Components {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -3618,6 +3639,7 @@ declare namespace LocalJSX {
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
+        "_currentLength"?: number;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -3626,6 +3648,10 @@ declare namespace LocalJSX {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -3646,6 +3672,10 @@ declare namespace LocalJSX {
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<string[]>;
+        /**
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+         */
+        "_maxLength"?: number;
         /**
           * Gibt an, ob die Eingabefeld nur lesend ist.
          */
@@ -3953,6 +3983,10 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -4235,6 +4269,10 @@ declare namespace LocalJSX {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -4550,6 +4588,10 @@ declare namespace LocalJSX {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
