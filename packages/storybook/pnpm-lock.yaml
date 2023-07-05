@@ -87,8 +87,8 @@ devDependencies:
     specifier: 6.5.16
     version: 6.5.16(eslint@8.44.0)(react-dom@17.0.2)(react@17.0.2)(typescript@4.9.5)
   '@storybook/node-logger':
-    specifier: 6.5.16
-    version: 6.5.16
+    specifier: 7.0.26
+    version: 7.0.26
   '@storybook/react':
     specifier: 6.5.16
     version: 6.5.16(@babel/core@7.22.6)(@storybook/builder-webpack5@6.5.16)(@storybook/manager-webpack5@6.5.16)(eslint@8.44.0)(react-dom@17.0.2)(react@17.0.2)(require-from-string@2.0.2)(typescript@4.9.5)
@@ -4471,6 +4471,15 @@ packages:
       '@types/npmlog': 4.1.4
       chalk: 4.1.2
       core-js: 3.31.0
+      npmlog: 5.0.1
+      pretty-hrtime: 1.0.3
+    dev: true
+
+  /@storybook/node-logger@7.0.26:
+    resolution: {integrity: sha512-3Jqv3fRb8+Mn/aNl4IztgUAS/pvouVzpfHDc8+6KYAoFMeDXwHVlfF/+gRCpd/fbYaTHGrycIs5G48bC190Dgg==}
+    dependencies:
+      '@types/npmlog': 4.1.4
+      chalk: 4.1.2
       npmlog: 5.0.1
       pretty-hrtime: 1.0.3
     dev: true
