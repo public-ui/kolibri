@@ -114,7 +114,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
+					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label || this.state._href}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
@@ -128,7 +128,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					hidden={this.state._hideLabel !== true}
 					_align={this.state._tooltipAlign}
 					_id={this.nonce}
-					_label={this.state._label}
+					_label={this.state._label || this.state._href}
 				></kol-tooltip>
 			</Host>
 		);
@@ -260,9 +260,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _useCase?: LinkUseCase = 'text';
 
 	@State() public state: LinkStates = {
-		_href: 'javascript:void(0);', // ⚠ required
+		_href: '…', // ⚠ required
 		_icon: {},
-		_label: '…',
 	};
 
 	@Watch('_ariaControls')

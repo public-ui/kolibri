@@ -48,7 +48,7 @@ type OptionalButtonAndLinkProps = {
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
-} & PropLabel;
+};
 type OptionalButtonAndLinkStates = {
 	ariaControls: string;
 	/**
@@ -105,6 +105,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
+	PropLabel &
 	KoliBriButtonVariantPropState & {
 		type: KoliBriButtonType;
 	};
@@ -201,6 +202,7 @@ type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	useCase: LinkUseCase;
 } & PropAriaSelected &
 	PropDownload &
+	PropLabel &
 	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates>;

@@ -7,10 +7,9 @@ import { getTooltipHtml } from '../../tooltip/test/html.mock';
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 	const state = mixMembers<LinkProps, LinkStates>(
 		{
-			_href: 'javascript:void(0);', // ⚠ required
+			_href: '…', // ⚠ required
 			_hideLabel: false,
 			_icon: {},
-			_label: '…',
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
@@ -30,6 +29,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			${getSpanWcHtml(
 				{
 					...state,
+					_label: state._label || state._href,
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
@@ -52,7 +52,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			{
 				_align: state._tooltipAlign,
 				_id: 'nonce',
-				_label: state._label,
+				_label: state._label || state._href,
 			},
 			` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`
 		)}
