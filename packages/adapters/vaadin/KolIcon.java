@@ -6,7 +6,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_aria-label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
+ * Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
 
 Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
 
@@ -14,13 +14,13 @@ Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode
  */
 
 @Tag("kol-icon")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.5")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.6")
 @JsModule("@public-ui/components/dist/components/kol-icon")
 public class KolIcon extends Component {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
 	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
@@ -51,6 +51,24 @@ public class KolIcon extends Component {
 	 */
 	public Optional<String> getIcon() {
 		return getElement().getProperty("_icon", null);
+	}
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setLabel(final Optional<String> value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**

@@ -73,7 +73,7 @@
 		"prettier": "2.8.8",
 		"rimraf": "3.0.2",
 		"rxjs": "7.6.0",
-		"tslib": "2.5.3",
+		"tslib": "2.6.0",
 		"typescript": "4.6",
 		"zone.js": "0.11.8"
 	},

@@ -34,9 +34,10 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 
 ## Properties
 
-| Property                | Attribute  | Description                          | Type     | Default     |
-| ----------------------- | ---------- | ------------------------------------ | -------- | ----------- |
-| `_version` _(required)_ | `_version` | Gibt die Versionsnummer als Text an. | `string` | `undefined` |
+| Property   | Attribute  | Description                                                                                    | Type                  | Default     |
+| ---------- | ---------- | ---------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_label`   | `_label`   | Gibt die Versionsnummer als Text an.                                                           | `string \| undefined` | `undefined` |
+| `_version` | `_version` | <span style="color:red">**[DEPRECATED]**</span> <br/><br/>Gibt die Versionsnummer als Text an. | `string \| undefined` | `undefined` |
 
 ## Dependencies
 

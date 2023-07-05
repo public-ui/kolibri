@@ -6,18 +6,17 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Mit Hilfe der **Modal**-Komponente können zusätzliche Informationen oder auch Eingabeformulare in einem Dialogfenster angezeigt werden. Ein offenes **Modal** kann via **ESC** geschlossen werden.
-Die **Modal**-Komponente ist standardmäßig versteckt. Sie wird i.d.R. erst nach Klick auf einen Button oder sonstigem Trigger angezeigt. Dabei wird der Hintergrund des Fensters deaktiviert und allein der Inhalt des Modal-Fensters ist aktiv.
+ * Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt ([caniuse](https://caniuse.com/?search=dialog)), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.5")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.6")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
 	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
@@ -30,6 +29,24 @@ public class KolModal extends Component {
 	 */
 	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
+	}
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setLabel(final Optional<String> value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**

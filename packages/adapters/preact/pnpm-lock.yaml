@@ -6,16 +6,16 @@ settings:
 
 dependencies:
   '@public-ui/react':
-    specifier: 1.6.0-rc.5
-    version: 1.6.0-rc.5(@public-ui/components@1.6.0-rc.5)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.6.0-rc.6
+    version: 1.6.0-rc.6(@public-ui/components@1.6.0-rc.6)(react-dom@18.2.0)(react@18.2.0)
   preact:
     specifier: '>=10.11.3'
     version: 10.11.3
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.5
-    version: 1.6.0-rc.5
+    specifier: 1.6.0-rc.6
+    version: 1.6.0-rc.6
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -23,8 +23,8 @@ devDependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   typescript:
-    specifier: 5.0.4
-    version: 5.0.4
+    specifier: 5.1.6
+    version: 5.1.6
   unbuild:
     specifier: 1.2.1
     version: 1.2.1
@@ -511,28 +511,28 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.5:
-    resolution: {integrity: sha512-GLz40/0J/ZEA8aTrjko02C2hhe1S3Pn0sLvFsXCaGqgtPDkT8Ert6kZN6oz08QTwfWgT15jRsy+gw5fbOd18yQ==}
+  /@public-ui/components@1.6.0-rc.6:
+    resolution: {integrity: sha512-Rta7UHytITvBK78aWF7qoeREoJ6PfayKcwFSQeufp7qDi9kEIpO2EG1yZz9znn0m1WfS6X8X3QTQUvFVpsqNjw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.2
-      '@public-ui/schema': 1.6.0-rc.5
+      '@public-ui/schema': 1.6.0-rc.6
       i18next: 22.5.1
 
-  /@public-ui/react@1.6.0-rc.5(@public-ui/components@1.6.0-rc.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-HZMclEWWXf8KYnBzvNfCRTgHT4WbdTZXM/pAOd6dIehQRgaEEiYMzN5bv4P8HZ1ssprXUzXfQGTtT5jzXL3HrA==}
+  /@public-ui/react@1.6.0-rc.6(@public-ui/components@1.6.0-rc.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-4SZz7zzK+kIgoqiwitC/D1C3KsrTp3djclhF/+zfDkT6Ik+ma4941fYlS7J0k6JujbhhsP9jf85Iy9cF4EU6fA==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.5
+      '@public-ui/components': 1.6.0-rc.6
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.5
+      '@public-ui/components': 1.6.0-rc.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.5:
-    resolution: {integrity: sha512-1pbPoAL2TI2m7zD03LWeY1BkCWFj2/Zf7NF2DRhkgWOp2axTEQEM+pocv9aQXuTBCH2ZK/safQCvHpkWeuhviA==}
+  /@public-ui/schema@1.6.0-rc.6:
+    resolution: {integrity: sha512-t+XqqANTsVXm6bN32oJWqpUsKhtLKQuJ8jMVBVCiDxfEktkOCJ5NvjknsGNpKuaIFZtvhrZqSOUskM0CQO+c6g==}
     dependencies:
       '@a11y-ui/core': 1.0.3
 
@@ -1053,7 +1053,7 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /mkdist@1.2.0(typescript@5.0.4):
+  /mkdist@1.2.0(typescript@5.1.6):
     resolution: {integrity: sha512-UTqu/bXmIk/+VKNVgufAeMyjUcNy1dn9Bl7wL1zZlCKVrpDgj/VllmZBeh3ZCC/2HWqUrt6frNFTKt9TRZbNvQ==}
     hasBin: true
     peerDependencies:
@@ -1073,7 +1073,7 @@ packages:
       mlly: 1.3.0
       mri: 1.2.0
       pathe: 1.1.1
-      typescript: 5.0.4
+      typescript: 5.1.6
     dev: true
 
   /mlly@1.3.0:
@@ -1179,7 +1179,7 @@ packages:
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
 
-  /rollup-plugin-dts@5.3.0(rollup@3.25.1)(typescript@5.0.4):
+  /rollup-plugin-dts@5.3.0(rollup@3.25.1)(typescript@5.1.6):
     resolution: {integrity: sha512-8FXp0ZkyZj1iU5klkIJYLjIq/YZSwBoERu33QBDxm/1yw5UU4txrEtcmMkrq+ZiKu3Q4qvPCNqc3ovX6rjqzbQ==}
     engines: {node: '>=v14'}
     peerDependencies:
@@ -1188,7 +1188,7 @@ packages:
     dependencies:
       magic-string: 0.30.0
       rollup: 3.25.1
-      typescript: 5.0.4
+      typescript: 5.1.6
     optionalDependencies:
       '@babel/code-frame': 7.22.5
     dev: true
@@ -1250,9 +1250,9 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /typescript@5.0.4:
-    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
-    engines: {node: '>=12.20'}
+  /typescript@5.1.6:
+    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: true
 
@@ -1278,16 +1278,16 @@ packages:
       hookable: 5.5.3
       jiti: 1.18.2
       magic-string: 0.30.0
-      mkdist: 1.2.0(typescript@5.0.4)
+      mkdist: 1.2.0(typescript@5.1.6)
       mlly: 1.3.0
       mri: 1.2.0
       pathe: 1.1.1
       pkg-types: 1.0.3
       pretty-bytes: 6.1.0
       rollup: 3.25.1
-      rollup-plugin-dts: 5.3.0(rollup@3.25.1)(typescript@5.0.4)
+      rollup-plugin-dts: 5.3.0(rollup@3.25.1)(typescript@5.1.6)
       scule: 1.0.0
-      typescript: 5.0.4
+      typescript: 5.1.6
       untyped: 1.3.2
     transitivePeerDependencies:
       - sass
