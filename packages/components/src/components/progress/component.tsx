@@ -2,9 +2,8 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
-import { KoliBriProgressType } from '../../components';
 import { validateLabel } from '../../types/props';
-import { KoliBriProgressVariantEnum } from '../../types/progress';
+import { KoliBriProgressVariantEnum, KoliBriProgressVariantType } from '../../types/progress';
 
 const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
 
@@ -121,7 +120,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
 	 * @deprecated will be removed in v2, use _variant
 	 */
-	@Prop() public _type?: KoliBriProgressType;
+	@Prop() public _type?: KoliBriProgressVariantType;
 
 	/**
 	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
@@ -136,7 +135,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
-	@Prop() public _variant?: KoliBriProgressType;
+	@Prop() public _variant?: KoliBriProgressVariantType;
 
 	@State() public state: KoliBriProgressStates = {
 		_max: 100,
@@ -163,7 +162,7 @@ export class KolProcess implements KoliBriProgressAPI {
 
 	// @deprecated remove with v2
 	@Watch('_type')
-	public validateType(value?: KoliBriProgressType): void {
+	public validateType(value?: KoliBriProgressVariantType): void {
 		this.validateVariant(value);
 	}
 
@@ -184,7 +183,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriProgressType): void {
+	public validateVariant(value?: KoliBriProgressVariantType): void {
 		watchValidator(this, '_variant', (value) => typeof value === 'string' && VALID_VARIANTS.includes(value), new Set(VALID_VARIANTS), value);
 	}
 
