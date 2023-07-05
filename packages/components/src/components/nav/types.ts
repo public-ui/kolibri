@@ -1,9 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 import { AriaCurrent, ButtonOrLinkOrTextWithChildrenProps, KoliBriNavVariant, Orientation, Stringified } from '../../components';
-import { PropCollapsible, PropCompact, PropHasCompactButton } from '../../types/props';
+import { PropCollapsible, PropCompact, PropHasCompactButton, PropLabel } from '../../types/props';
+import { PropAriaLabel } from '../../types/props';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 };
 type OptionalProps = {
@@ -13,14 +13,15 @@ type OptionalProps = {
 	 * @deprecated
 	 */
 	variant: KoliBriNavVariant;
-} & PropCollapsible &
+} & PropAriaLabel &
+	PropCollapsible &
 	PropCompact &
-	PropHasCompactButton;
+	PropHasCompactButton &
+	PropLabel;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	ariaCurrentValue: AriaCurrent;
-	ariaLabel: string;
 	collapsible: boolean;
 	/**
 	 * @deprecated Version 2
@@ -33,7 +34,8 @@ type RequiredStates = {
 	 */
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
-	PropHasCompactButton;
+	PropHasCompactButton &
+	PropLabel;
 type OptionalStates = PropCompact;
 export type KoliBriNavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 

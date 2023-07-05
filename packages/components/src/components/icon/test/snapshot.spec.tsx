@@ -16,7 +16,7 @@ executeTests<KoliBriIconProps>(
 		return page;
 	},
 	{
-		_ariaLabel: ['Aria-Label'],
+		_label: ['Aria-Label'],
 		_icon: ['codicon codicon-home'],
 	},
 	getIconHtml,

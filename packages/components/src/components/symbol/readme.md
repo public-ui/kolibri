@@ -7,16 +7,16 @@ Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerb
 ### Code
 
 ```html
-<kol-symbol _aria-label_="Slash" _symbol="/"></kol-symbol>
+<kol-symbol _label_="Slash" _symbol="/"></kol-symbol>
 ```
 
 ### Beispiel
 
-<kol-symbol _aria-label_="Slash" _symbol="/"></kol-symbol>
+<kol-symbol _label_="Slash" _symbol="/"></kol-symbol>
 
 ## Verwendung
 
-Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Property **`_symbol`** übergeben. Der zugehörige Text, den der Screenreader vorliest, wird über die Property **`_aria-label`** übergeben.
+Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Property **`_symbol`** übergeben. Der zugehörige Text, den der Screenreader vorliest, wird über das Attribut **`_label`** übergeben.
 
 <!--### Best practices
 

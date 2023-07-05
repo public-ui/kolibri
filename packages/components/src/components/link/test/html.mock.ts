@@ -1,44 +1,35 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { LinkProps } from '../../../types/button-link';
-import { isEmptyOrPrefixOf } from '../../../utils/validator';
+import { LinkProps, LinkStates } from '../../../types/button-link';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
 export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
-	props = mixMembers(
+	const state = mixMembers<LinkProps, LinkStates>(
 		{
-			_href: 'javascript:void(0)',
+			_href: 'javascript:void(0);', // ⚠ required
 			_hideLabel: false,
-			_label: '',
-			// _label: '…', // ⚠ required
+			_icon: {},
+			_label: '…',
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
 		props
 	);
-	if (typeof props._ariaLabel === 'string' && isEmptyOrPrefixOf(props._label, props._ariaLabel) === false) {
-		if (props._label.length > 0) {
-			props._ariaLabel = props._label;
-		} else {
-			props._label = props._ariaLabel;
-		}
-	}
 	return `
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-    <a${typeof props._ariaExpanded === 'boolean' ? ` aria-expanded="${props._ariaExpanded ? 'true' : 'false'}"` : ''}${
-		props._hideLabel === true || props._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
-	} class="${props._hideLabel === true ? ' icon-only hide-label' : ''}${
-		typeof props._target === 'string' && props._target !== '_self' ? ' external-link' : ''
-	}" href="${typeof props._href === 'string' && props._href.length > 0 ? props._href : 'javascript:void(0)'}"${
-		typeof props._selector === 'string' ? ' role="link" tabindex="0"' : ''
-	}${typeof props._target === 'string' ? `${props._target === '_self' ? '' : 'rel="noopener"'} target="${props._target}"` : ''}>
+    <a${typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${state._ariaExpanded ? 'true' : 'false'}"` : ''}${
+		state._hideLabel === true || state._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
+	} class="${state._hideLabel === true ? ' icon-only hide-label' : ''}${
+		typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''
+	}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'}"${
+		typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''
+	}${typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''}>
 			${getSpanWcHtml(
 				{
-					...props,
-					_label: props._label,
+					...state,
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
@@ -46,10 +37,10 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 				''
 			)}
 			${
-				typeof props._target === 'string' && props._target !== '_self'
+				typeof state._target === 'string' && state._target !== '_self'
 					? getIconHtml(
 							{
-								_ariaLabel: 'Der Link wird in einem neuen Tab geöffnet.',
+								_label: 'Der Link wird in einem neuen Tab geöffnet.',
 								_icon: 'codicon codicon-link-external',
 							},
 							' class="external-link-icon"'
@@ -59,11 +50,11 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
     </a>
 		${getTooltipHtml(
 			{
-				_align: props._tooltipAlign,
+				_align: state._tooltipAlign,
 				_id: 'nonce',
-				_label: props._ariaLabel || props._label,
+				_label: state._label,
 			},
-			` aria-hidden="true"${props._hideLabel !== true ? ' hidden' : ''}`
+			` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`
 		)}
     </kol-link-wc>
   </mock:shadow-root>

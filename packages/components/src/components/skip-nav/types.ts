@@ -1,16 +1,16 @@
 import { Generic } from '@a11y-ui/core';
 import { LinkProps, Stringified } from '../../components';
+import { PropLabel } from '../../types/props';
+import { PropAriaLabel } from '../../types/props';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
 };
-type OptionalProps = unknown;
+type OptionalProps = PropAriaLabel & PropLabel;
 
 type RequiredStates = {
-	ariaLabel: string;
 	links: LinkProps[];
-};
+} & PropLabel;
 type OptionalStates = OptionalProps;
 
 export type KoliBriSkipNavStates = Generic.Element.Members<RequiredStates, OptionalStates>;

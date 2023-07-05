@@ -3,9 +3,9 @@ import { translate } from '../../i18n';
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton } from '../../types/props';
+import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton, validateLabel } from '../../types/props';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
-import { watchString, watchValidator } from '../../utils/prop.validators';
+import { watchValidator } from '../../utils/prop.validators';
 import { watchNavLinks } from './validation';
 import { KoliBriNavAPI, KoliBriNavStates } from './types';
 
@@ -141,7 +141,7 @@ export class KolNav implements KoliBriNavAPI {
 						[this.state._variant]: true,
 					}}
 				>
-					<nav aria-label={this.state._ariaLabel} id="nav">
+					<nav aria-label={this.state._label} id="nav">
 						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
@@ -177,8 +177,10 @@ export class KolNav implements KoliBriNavAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 *  @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
@@ -197,14 +199,19 @@ export class KolNav implements KoliBriNavAPI {
 	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _orientation?: Orientation = 'vertical';
+	@Prop() public _label?: string; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
 	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
+
+	/**
+	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
+	 */
+	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -215,7 +222,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	@State() public state: KoliBriNavStates = {
 		_ariaCurrentValue: false,
-		_ariaLabel: '…', // '⚠'
+		_label: '…', // ⚠ required
 		_collapsible: true,
 		_hasCompactButton: false,
 		_links: [],
@@ -234,23 +241,12 @@ export class KolNav implements KoliBriNavAPI {
 		);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			hooks: {
-				afterPatch: () => {
-					if (UNIQUE_ARIA_LABEL.includes(this.state._ariaLabel)) {
-						devHint(`[KolNav] Das Aria-Label "${this.state._ariaLabel}" wurde für die Rolle Navigation mehrfach verwendet!`);
-					}
-					UNIQUE_ARIA_LABEL.push(this.state._ariaLabel);
-				},
-				beforePatch: () => {
-					removeAriaLabel(this.state._ariaLabel);
-				},
-			},
-			required: true,
-		});
-		a11yHintLabelingLandmarks(value);
+		this.validateLabel(value);
 	}
 
 	@Watch('_collapsible')
@@ -269,6 +265,12 @@ export class KolNav implements KoliBriNavAPI {
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
 		validateHasCompactButton(this, value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: string): void {
+		validateLabel(this, value);
+		a11yHintLabelingLandmarks(value);
 	}
 
 	@Watch('_links')
@@ -300,17 +302,17 @@ export class KolNav implements KoliBriNavAPI {
 
 	public componentWillLoad(): void {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateCollapsible(this._collapsible);
 		this.validateCompact(this._compact);
 		this.validateHasCompactButton(this._hasCompactButton);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateLinks(this._links);
 		this.validateOrientation(this._orientation);
 		this.validateVariant(this._variant);
 	}
 
 	public disconnectedCallback(): void {
-		removeAriaLabel(this.state._ariaLabel);
+		removeAriaLabel(this.state._label);
 	}
 }
 

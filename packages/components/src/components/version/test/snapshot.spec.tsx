@@ -16,7 +16,7 @@ executeTests<KoliBriVersionProps>(
 		return page;
 	},
 	{
-		_version: ['1.0.0'],
+		_label: ['1.0.0'],
 	},
 	getVersionHtml,
 	{

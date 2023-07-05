@@ -1,18 +1,20 @@
 import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
+import { PropAriaLabel } from '../../types/props';
 import { KoliBriModalEventCallbacks } from '../../components';
+import { PropLabel } from '../../types/props';
 
-type RequiredProps = AriaLabel;
+type RequiredProps = unknown;
 type OptionalProps = {
 	activeElement: HTMLElement | null;
 	on: KoliBriModalEventCallbacks;
 	width: string;
-};
+} & PropAriaLabel &
+	PropLabel;
 
 type RequiredStates = {
 	activeElement: HTMLElement | null;
 	width: string;
-} & AriaLabel;
+} & PropLabel;
 type OptionalStates = {
 	on: KoliBriModalEventCallbacks;
 };

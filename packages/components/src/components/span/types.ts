@@ -1,11 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 import { KoliBriIconProp, Stringified } from '../../components';
-import { PropHideLabel } from '../../types/props';
+import { PropHideLabel, PropLabel } from '../../types/props';
 import { KoliBriCustomIcon } from '../../types/icon';
 
-type RequiredProps = {
-	label: string;
-};
+type RequiredProps = PropLabel;
 type OptionalProps = {
 	icon: Stringified<KoliBriIconProp>;
 	/**
@@ -22,8 +20,7 @@ type RequiredStates = {
 		bottom?: KoliBriCustomIcon;
 		left?: KoliBriCustomIcon;
 	};
-	label: string;
-};
+} & PropLabel;
 type OptionalStates = {
 	/**
 	 * @deprecated use _hide-label

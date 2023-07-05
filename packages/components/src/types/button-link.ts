@@ -4,7 +4,19 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { Align, PropAriaCurrent, PropAriaExpanded, PropAriaSelected, PropDisabled, PropDownload, PropHideLabel, PropLabel, PropStealth } from './props';
+import {
+	Align,
+	PropAriaCurrent,
+	PropAriaExpanded,
+	PropAriaLabel,
+	PropAriaSelected,
+	PropDisabled,
+	PropDownload,
+	PropHideLabel,
+	PropLabel,
+	PropStealth,
+} from './props';
+import { PropHref } from './props/href';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -13,10 +25,8 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-type RequiredButtonAndLinkProps = PropLabel;
 type OptionalButtonAndLinkProps = {
 	ariaControls: string;
-	ariaLabel: string;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
@@ -31,16 +41,15 @@ type OptionalButtonAndLinkProps = {
 	tooltipAlign: Align;
 } & PropAriaCurrent &
 	PropAriaExpanded &
+	PropAriaLabel &
 	PropAriaSelected &
 	PropDisabled &
 	PropHideLabel;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
-	label: string;
-};
+} & PropLabel;
 type OptionalButtonAndLinkStates = {
-	ariaLabel: string;
 	ariaControls: string;
 	/**
 	 * @deprecated
@@ -61,9 +70,10 @@ type OptionalButtonAndLinkStates = {
 
 /**
  * Button
+ * TODO: 'tertiary' instead of 'normal'
  */
 export type KoliBriButtonType = 'button' | 'reset' | 'submit';
-export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'danger' | 'ghost' | 'custom';
+export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'tertiary' | 'danger' | 'ghost' | 'custom';
 
 export type KoliBriButtonCallbacks<T> = {
 	[Events.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
@@ -80,7 +90,7 @@ export type KoliBriButtonCustomClassPropState = {
 /**
  * API ButtonLink
  */
-export type RequiredButtonLinkProps = RequiredButtonAndLinkProps;
+export type RequiredButtonLinkProps = unknown;
 export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated Zweck?!
@@ -114,7 +124,7 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 /**
  * API Button
  */
-export type RequiredButtonProps = RequiredButtonLinkProps;
+export type RequiredButtonProps = RequiredButtonLinkProps & PropLabel;
 export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
@@ -139,9 +149,7 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 /**
  * API Link
  */
-export type RequiredLinkProps = RequiredButtonAndLinkProps & {
-	href: string;
-};
+export type RequiredLinkProps = PropHref;
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated A link could never be disabled. Use a button instead.
@@ -165,6 +173,7 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	 */
 	useCase: LinkUseCase;
 } & PropDownload &
+	PropLabel &
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 

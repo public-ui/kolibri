@@ -9,7 +9,7 @@ import { PropLabel } from './props/label';
  * Not all possible props of a link or button are relevant and supported.
  */
 
-// do not inherit RequiredLinkProps
+// do not inherit RequiredLinkProps; why?
 type RequiredButtonProps = PropLabel & {
 	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
 };
@@ -17,11 +17,12 @@ type RequiredLinkProps = PropLabel & {
 	href: string;
 };
 type RequiredTextProps = PropLabel;
-// do not inherit OptionalLinkProps
+
+// do not inherit OptionalLinkProps; why?
 type OptionalButtonOrLinkOrTextProps = PropIcon & {
 	active: boolean;
-	// tabIndex: number; // possible, but sensible ?!
-	// tooltipAlign: Alignment; // possible, but sensible ?!
+	// tabIndex: number; // possible, but sensible ?! -> Ticket?
+	// tooltipAlign: Alignment; // possible, but sensible ?! -> Ticket?
 	target: LinkTarget;
 	targetDescription: string;
 };

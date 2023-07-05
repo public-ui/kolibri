@@ -1,17 +1,17 @@
 import { Generic } from '@a11y-ui/core';
 import { LinkProps, Stringified } from '../../components';
+import { PropLabel } from '../../types/props';
+import { PropAriaLabel } from '../../types/props';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
 };
-type OptionalProps = unknown;
+type OptionalProps = PropAriaLabel & PropLabel;
 export type KoliBriBreadcrumbProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	ariaLabel: string;
 	links: LinkProps[];
-};
+} & PropLabel;
 type OptionalStates = OptionalProps;
 
 export type KoliBriBreadcrumbStates = Generic.Element.Members<RequiredStates, OptionalStates>;
