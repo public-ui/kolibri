@@ -6,15 +6,10 @@ import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { nonce } from '../../utils/dev.utils';
-import {
-    parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator
-} from '../../utils/prop.validators';
+import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { watchButtonVariant } from '../button/controller';
-import {
-    KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates,
-    PaginationHasButton
-} from './types';
+import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',

@@ -1,10 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import {
-    AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, OptionalButtonLinkProps,
-    RequiredButtonLinkProps
-} from '../../types/button-link';
+import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';

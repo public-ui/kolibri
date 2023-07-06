@@ -3,9 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { InputTypeOnOff } from '../../types/input/types';
 import { validateHasCounter } from '../../types/props/has-counter';
 import { devHint } from '../../utils/a11y.tipps';
-import {
-    watchBoolean, watchNumber, watchString, watchValidator
-} from '../../utils/prop.validators';
+import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 

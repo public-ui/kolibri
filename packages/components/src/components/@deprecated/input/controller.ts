@@ -4,9 +4,7 @@ import { ButtonProps } from '../../../types/button-link';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { LabelWithExpertSlotPropType, validateLabel } from '../../../types/props/label';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
-import {
-    objectObjectHandler, parseJson, setState, watchBoolean, watchString
-} from '../../../utils/prop.validators';
+import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 import { Props as AdapterProps } from '../../input-adapter-leanup/types';

@@ -2,9 +2,16 @@ import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import {
-    AlternativButtonLinkRole, ButtonStates, KoliBriButtonCallbacks, KoliBriButtonType,
-    KoliBriButtonVariant, OptionalButtonProps, OptionalButtonStates, RequiredButtonProps,
-    RequiredButtonStates, watchTooltipAlignment
+	AlternativButtonLinkRole,
+	ButtonStates,
+	KoliBriButtonCallbacks,
+	KoliBriButtonType,
+	KoliBriButtonVariant,
+	OptionalButtonProps,
+	OptionalButtonStates,
+	RequiredButtonProps,
+	RequiredButtonStates,
+	watchTooltipAlignment,
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
@@ -17,10 +24,7 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import {
-    mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean,
-    watchString, watchValidator
-} from '../../utils/prop.validators';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';

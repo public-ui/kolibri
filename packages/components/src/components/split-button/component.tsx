@@ -1,8 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import {
-    AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment
-} from '../../types/button-link';
+import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { Align } from '../../types/props/align';
 import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
@@ -15,9 +13,7 @@ import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
-import {
-    KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback
-} from './types';
+import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.

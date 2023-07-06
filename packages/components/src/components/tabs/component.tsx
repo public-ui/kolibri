@@ -8,9 +8,7 @@ import { Align } from '../../types/props/align';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
-import {
-    koliBriQuerySelector, setState, watchJsonArrayString, watchNumber
-} from '../../utils/prop.validators';
+import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
 import { validateAlignment } from '../../utils/validators/alignment';
 import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
 

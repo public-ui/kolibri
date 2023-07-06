@@ -3,9 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
-import {
-    watchBoolean, watchJsonArrayString, watchNumber, watchString
-} from '../../utils/prop.validators';
+import { watchBoolean, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { validateInputSelectList } from '../../utils/validators/list';
 import { InputIconController } from '../@deprecated/input/controller-icon';

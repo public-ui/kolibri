@@ -5,14 +5,20 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { devHint } from '../../utils/a11y.tipps';
-import {
-    emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator
-} from '../../utils/prop.validators';
+import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import {
-    KoliBriSortDirection, KoliBriSortFunction, KoliBriTableAPI, KoliBriTableCell,
-    KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableHeaderCellAndData,
-    KoliBriTableHeaders, KoliBriTablePaginationProps, KoliBriTableRender, KoliBriTableStates
+	KoliBriSortDirection,
+	KoliBriSortFunction,
+	KoliBriTableAPI,
+	KoliBriTableCell,
+	KoliBriTableDataType,
+	KoliBriTableHeaderCell,
+	KoliBriTableHeaderCellAndData,
+	KoliBriTableHeaders,
+	KoliBriTablePaginationProps,
+	KoliBriTableRender,
+	KoliBriTableStates,
 } from './types';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];

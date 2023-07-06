@@ -1,10 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
-import {
-    ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps,
-    TextWithChildrenProps
-} from '../../types/button-link-text';
+import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps, TextWithChildrenProps } from '../../types/button-link-text';
 import { AriaCurrent } from '../../types/props/aria-current';
 import { Props } from './types';
 

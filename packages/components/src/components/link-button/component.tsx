@@ -3,8 +3,12 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import {
-    AlternativButtonLinkRole, KoliBriButtonVariant, LinkOnCallbacks, LinkTarget,
-    OptionalLinkButtonProps, RequiredLinkButtonProps
+	AlternativButtonLinkRole,
+	KoliBriButtonVariant,
+	LinkOnCallbacks,
+	LinkTarget,
+	OptionalLinkButtonProps,
+	RequiredLinkButtonProps,
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';

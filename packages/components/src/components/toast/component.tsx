@@ -4,9 +4,7 @@ import { HeadingLevel } from '../../types/heading-level';
 import { validateHasCloser } from '../../types/props/has-closer';
 import { validateShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
-import {
-    setState, watchBoolean, watchNumber, watchString, watchValidator
-} from '../../utils/prop.validators';
+import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastAPI, KoliBriToastStates } from './types';
