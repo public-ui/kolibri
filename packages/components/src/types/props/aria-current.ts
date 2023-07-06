@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { watchValidator } from '../../utils/prop.validators';
 
 /* types */

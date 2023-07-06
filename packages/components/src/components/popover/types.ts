@@ -1,5 +1,7 @@
 import { Generic } from '@a11y-ui/core';
-import { PropAlign, PropShow } from '../../types/props';
+
+import { PropAlign } from '../../types/props/align';
+import { PropShow } from '../../types/props/show';
 
 type RequiredProps = unknown;
 type OptionalProps = PropAlign & PropShow;

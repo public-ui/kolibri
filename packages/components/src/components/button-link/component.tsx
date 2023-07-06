@@ -1,11 +1,13 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
+import { Align } from '../../types/props/align';
+import { AriaCurrent } from '../../types/props/aria-current';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
-import { AriaCurrent, Align } from '../../types/props';
 
 @Component({
 	tag: 'kol-button-link',
@@ -113,7 +115,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.

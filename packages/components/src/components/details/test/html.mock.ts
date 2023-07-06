@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
 import { KoliBriDetailsProps } from '../types';

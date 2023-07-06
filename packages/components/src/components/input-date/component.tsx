@@ -1,16 +1,18 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { propagateFocus } from '../../utils/reuse';
-import { KoliBriHorizontalIcon } from '../../types/icon';
-import { ComponentApi, States } from './types';
-import { getRenderStates } from '../input/controller';
-import { propagateSubmitEventToForm } from '../form/controller';
-import { InputDateController } from './controller';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
+import { propagateFocus } from '../../utils/reuse';
+import { propagateSubmitEventToForm } from '../form/controller';
+import { getRenderStates } from '../input/controller';
+import { InputDateController } from './controller';
+import { ComponentApi, States } from './types';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -147,7 +149,7 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
@@ -224,7 +226,7 @@ export class KolInputDate implements ComponentApi {
 		_autoComplete: 'off',
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 		_type: 'datetime-local',
 	};
@@ -279,7 +281,7 @@ export class KolInputDate implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 

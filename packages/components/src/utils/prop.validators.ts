@@ -1,13 +1,13 @@
-import { patchTheme, patchThemeTag } from '@a11y-ui/core';
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
-import { Generic } from '@a11y-ui/core';
 
+import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
+
+import { Stringified } from '../types/common';
 import { devHint } from './a11y.tipps';
 import { getDocument, getExperimalMode, getWindow, Log } from './dev.utils';
-import { Stringified } from '../types/common';
 
 // https://regex101.com/r/lSYLO9/1
 /**

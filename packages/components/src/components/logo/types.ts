@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
 
 type RequiredProps = {

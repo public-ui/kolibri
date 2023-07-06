@@ -1,12 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Component, Fragment, h, Host, JSX, Prop } from '@stencil/core';
+
+import { translate } from '../../i18n';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriCustomIcon } from '../../types/icon';
-
-import { KoliBriHorizontalIcon } from '../../types/icon';
+import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
 import { Props } from './types';
-import { translate } from '../../i18n';
 
 /**
  * @internal

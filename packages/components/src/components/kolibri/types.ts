@@ -1,5 +1,7 @@
 import { Generic } from '@a11y-ui/core';
-import { PropColor, Stringified } from '../../components';
+
+import { Stringified } from '../../types/common';
+import { PropColor } from '../../types/props/color';
 
 type RequiredProps = unknown;
 type OptionalProps = {

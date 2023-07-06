@@ -1,5 +1,6 @@
 import { getThemeDetails, setThemeStyle } from '@a11y-ui/core';
 import { setMode } from '@stencil/core';
+
 import { register } from '../core';
 import { Log } from '../utils/dev.utils';
 

@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { KoliBriIconProps } from '../types';
 
 export const getIconHtml = (props: KoliBriIconProps, additionalAttrs = ''): string => {

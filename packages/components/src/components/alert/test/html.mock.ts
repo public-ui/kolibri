@@ -1,6 +1,7 @@
+import { mixMembers } from 'stencil-awesome-test';
+
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { mixMembers } from 'stencil-awesome-test';
 import { Props } from '../types';
 
 export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''): string => {
