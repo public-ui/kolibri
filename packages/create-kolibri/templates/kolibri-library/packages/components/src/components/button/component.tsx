@@ -37,7 +37,7 @@ export class {{capital name}}Button implements Generic.Element.ComponentApi<Requ
 	/**
 	 * The label represents the text that is displayed on the button.
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * The variant prop represents the variant of the button.
@@ -77,7 +77,7 @@ export class {{capital name}}Button implements Generic.Element.ComponentApi<Requ
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		if (typeof value === 'string') {
 			this.state._label = value;
 		}
