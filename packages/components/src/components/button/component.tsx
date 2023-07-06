@@ -1,6 +1,6 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import {
 	AlternativButtonLinkRole,
 	ButtonStates,
@@ -15,13 +15,17 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Align, validateAriaExpanded, validateDisabled, validateHideLabel } from '../../types/props';
+import { Align } from '../../types/props/align';
+import { AriaCurrent } from '../../types/props/aria-current';
+import { validateAriaExpanded } from '../../types/props/aria-expanded';
+import { validateDisabled } from '../../types/props/disabled';
+import { validateHideLabel } from '../../types/props/hide-label';
+import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
@@ -102,7 +106,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					hidden={this.state._hideLabel !== true}
 					_align={this.state._tooltipAlign}
 					_id={this.nonce}
-					_label={this.state._label}
+					_label={this.state._label as string} // TODO: what's happening here by expert-slot?!?
 				></kol-tooltip>
 			</Host>
 		);
@@ -182,7 +186,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
@@ -221,7 +225,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@State() public state: ButtonStates = {
 		_icon: {},
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_on: {},
 		_type: 'button',
 		_variant: 'normal',
@@ -313,7 +317,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabel(this, value);
 	}
 

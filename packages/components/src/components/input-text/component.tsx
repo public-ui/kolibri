@@ -1,18 +1,20 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
-
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateAlert, validateHasCounter, validateHideLabel, validateReadOnly, validateRequired, validateTouched } from '../../types/props';
+import { validateAlert } from '../../types/props/alert';
+import { validateHideLabel } from '../../types/props/hide-label';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
+import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
 import { ComponentApi, States } from './types';
-import { setState } from '../../utils/prop.validators';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -178,7 +180,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -261,7 +263,7 @@ export class KolInputText implements ComponentApi {
 		_currentLength: 0,
 		_id: 'id',
 		_hasValue: false,
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 		_type: 'text',
 	};
@@ -297,7 +299,7 @@ export class KolInputText implements ComponentApi {
 
 	@Watch('_hasCounter')
 	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this, value);
+		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideLabel')
@@ -321,7 +323,7 @@ export class KolInputText implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 
@@ -357,12 +359,12 @@ export class KolInputText implements ComponentApi {
 
 	@Watch('_readOnly')
 	public validateReadOnly(value?: boolean): void {
-		validateReadOnly(this, value);
+		this.controller.validateReadOnly(value);
 	}
 
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
-		validateRequired(this, value);
+		this.controller.validateRequired(value);
 	}
 
 	/**
@@ -390,7 +392,7 @@ export class KolInputText implements ComponentApi {
 
 	@Watch('_touched')
 	public validateTouched(value?: boolean): void {
-		validateTouched(this, value);
+		this.controller.validateTouched(value);
 	}
 
 	@Watch('_type')
@@ -411,8 +413,6 @@ export class KolInputText implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-
-		this.validateHasCounter(this._hasCounter);
 	}
 
 	public disconnectedCallback(): void {

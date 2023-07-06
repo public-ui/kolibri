@@ -1,4 +1,5 @@
-import { h, Component, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
 

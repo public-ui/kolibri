@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';

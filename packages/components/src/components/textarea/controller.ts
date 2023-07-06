@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
 import { CSSResize, Props, Watches } from './types';

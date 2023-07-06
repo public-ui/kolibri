@@ -1,9 +1,10 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../types/common';
 import { HrefProp } from '../../types/props/href';
+import { LabelProp } from '../../types/props/label';
 import { uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { watchJsonArrayString } from '../../utils/prop.validators';
-import { LabelProp } from '../../types/props/label';
 
 type HrefOrLabelProp = HrefProp | LabelProp;
 

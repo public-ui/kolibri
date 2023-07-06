@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
-import { WatchStringOptions, watchString } from '../../utils/prop.validators';
+
+import { watchString, WatchStringOptions } from '../../utils/prop.validators';
 
 /**
  * This property is used for a link from a reference to the target URL.

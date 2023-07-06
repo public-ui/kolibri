@@ -1,10 +1,12 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
-import { PropLabel } from '../../types/props';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { validateRequired } from '../../types/props/required';
 import { W3CInputValue } from '../../types/w3c';
-import { mapString2Unknown, setState, watchBoolean, watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
+import { mapString2Unknown, setState, watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
@@ -22,7 +24,7 @@ export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, option
 	});
 };
 
-type RequiredProps = PropLabel;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	required: boolean;
 };
@@ -38,7 +40,7 @@ export class InputCheckboxRadioController extends InputController implements Inp
 	}
 
 	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value);
+		validateRequired(this.component, value);
 	}
 
 	public componentWillLoad(): void {

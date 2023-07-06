@@ -1,9 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
+import { validateHasFooter } from '../../types/props/has-footer';
 import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { validateHasFooter } from '../../types/props';
 import { KoliBriCardAPI, KoliBriCardStates } from './types';
 
 /**

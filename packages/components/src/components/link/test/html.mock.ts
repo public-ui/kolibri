@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { LinkProps, LinkStates } from '../../../types/button-link';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getSpanWcHtml } from '../../span/test/html.mock';
@@ -10,11 +11,13 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: '…', // ⚠ required
 			_hideLabel: false,
 			_icon: {},
+			_label: false,
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
 		props
 	);
+	const label: string = state._label === false ? state._href : state._label;
 	return `
 <kol-link>
   <mock:shadow-root>
@@ -29,7 +32,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			${getSpanWcHtml(
 				{
 					...state,
-					_label: state._label || state._href,
+					_label: label,
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
@@ -52,7 +55,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			{
 				_align: state._tooltipAlign,
 				_id: 'nonce',
-				_label: state._label || state._href,
+				_label: label,
 			},
 			` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`
 		)}

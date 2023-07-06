@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { validateAdjustHeight, validateHasCounter } from '../../types/props';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
@@ -145,7 +145,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
@@ -213,7 +213,7 @@ export class KolTextarea implements ComponentApi {
 		_currentLength: 0,
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_resize: 'vertical',
 	};
 
@@ -228,7 +228,7 @@ export class KolTextarea implements ComponentApi {
 
 	@Watch('_adjustHeight')
 	public validateAdjustHeight(value?: boolean): void {
-		validateAdjustHeight(this, value);
+		this.controller.validateAdjustHeight(value);
 	}
 
 	@Watch('_alert')
@@ -248,7 +248,7 @@ export class KolTextarea implements ComponentApi {
 
 	@Watch('_hasCounter')
 	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this, value);
+		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideLabel')
@@ -267,7 +267,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 
@@ -335,7 +335,6 @@ export class KolTextarea implements ComponentApi {
 		this._alert = this._alert === true;
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
-		this.validateAdjustHeight(this._adjustHeight);
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));

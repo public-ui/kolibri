@@ -1,10 +1,10 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Stringified } from '../../types/common';
 
+import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
+import { validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon } from '../../types/props/icon';
-import { validateLabel } from '../../types/props/label';
-import { validateHideLabel } from '../../types/props';
+import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
 import { KolibriSpanAPI, KolibriSpanStates } from './types';
 
 /**
@@ -16,7 +16,7 @@ import { KolibriSpanAPI, KolibriSpanStates } from './types';
 })
 export class KolSpanWc implements KolibriSpanAPI {
 	public render(): JSX.Element {
-		const hideExpertSlot = this.state._label.length > 0;
+		const hideExpertSlot: boolean = typeof this.state._label === 'string';
 		return (
 			<Host
 				class={{
@@ -27,7 +27,7 @@ export class KolSpanWc implements KolibriSpanAPI {
 				{this.state._icon.top && <kol-icon class="icon top" style={this.state._icon.top.style} _label="" _icon={this.state._icon.top.icon} />}
 				<span>
 					{this.state._icon.left && <kol-icon class="icon left" style={this.state._icon.left.style} _label="" _icon={this.state._icon.left.icon} />}
-					{this.state._hideLabel !== true && this.state._label.length > 0 ? <span>{this.state._label}</span> : ''}
+					{!this.state._hideLabel && hideExpertSlot ? <span>{this.state._label}</span> : ''}
 					<span aria-hidden={hideExpertSlot ? 'true' : undefined} hidden={hideExpertSlot}>
 						<slot name="expert" />
 					</span>
@@ -57,13 +57,12 @@ export class KolSpanWc implements KolibriSpanAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	@State() public state: KolibriSpanStates = {
 		_hideLabel: false,
 		_icon: {},
-		_iconOnly: false,
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 	};
 
 	@Watch('_hideLabel')
@@ -85,7 +84,7 @@ export class KolSpanWc implements KolibriSpanAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabel(this, value);
 	}
 

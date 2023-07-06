@@ -1,11 +1,15 @@
 import { Generic } from '@a11y-ui/core';
-import { AlertType, HeadingLevel, KoliBriToastEventCallbacks } from '../../components';
-import { PropHasCloser, PropShow } from '../../types/props';
+
+import { HeadingLevel } from '../../types/heading-level';
+import { PropHasCloser } from '../../types/props/has-closer';
+import { PropShow } from '../../types/props/show';
+import { KoliBriToastEventCallbacks } from '../../types/toast';
+import { AlertType } from '../alert/types';
 
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;
-	heading: string;
+	heading: string; // TODO: should be a label?!?
 	level: HeadingLevel;
 	on: KoliBriToastEventCallbacks;
 	showDuration: number;

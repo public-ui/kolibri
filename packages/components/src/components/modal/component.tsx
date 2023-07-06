@@ -2,11 +2,11 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { KoliBriModalEventCallbacks } from '../../types/modal';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { ModalService } from './service';
-import { validateLabel } from '../../types/props';
 import { KoliBriModalAPI, KoliBriModalStates } from './types';
 
 /**
@@ -97,7 +97,7 @@ export class KolModal implements KoliBriModalAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string; // TODO: required in v2
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
@@ -131,7 +131,7 @@ export class KolModal implements KoliBriModalAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

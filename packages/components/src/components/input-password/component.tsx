@@ -1,18 +1,18 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-
 import { KoliBriHorizontalIcon } from '../../types/icon';
+import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
+import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
-import { validateHasCounter } from '../../types/props';
-import { setState } from '../../utils/prop.validators';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -162,7 +162,7 @@ export class KolInputPassword implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
@@ -234,7 +234,7 @@ export class KolInputPassword implements ComponentApi {
 		_autoComplete: 'off',
 		_currentLength: 0,
 		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_hasValue: false,
 	};
 
@@ -272,7 +272,7 @@ export class KolInputPassword implements ComponentApi {
 
 	@Watch('_hasCounter')
 	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this, value);
+		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideLabel')
@@ -296,7 +296,7 @@ export class KolInputPassword implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 

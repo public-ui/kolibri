@@ -1,7 +1,8 @@
 import { Generic } from '@a11y-ui/core';
-import { watchBoolean } from '../../utils/prop.validators';
+
 import { InputTextEmailController } from '../input-text/controller';
 import { Props, Watches } from './types';
+import { validateMultiple } from '../../types/props/multiple';
 
 export class InputEmailController extends InputTextEmailController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -12,7 +13,7 @@ export class InputEmailController extends InputTextEmailController implements Wa
 	}
 
 	public validateMultiple(value?: boolean): void {
-		watchBoolean(this.component, '_multiple', value);
+		validateMultiple(this.component, value);
 	}
 
 	public componentWillLoad(): void {

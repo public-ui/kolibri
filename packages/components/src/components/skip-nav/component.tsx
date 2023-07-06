@@ -2,9 +2,9 @@ import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchNavLinks } from '../nav/validation';
 import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
-import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-skip-nav',
@@ -40,7 +40,7 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string; // TODO: required in v2
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -61,7 +61,7 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

@@ -25,7 +25,7 @@ Die **Span**-Komponente dient dazu innerhalb zahlreicher KoliBri-Komponenten die
 | `_hideLabel`          | `_hide-label` | Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                                                           | `boolean \| undefined`                                               | `false`     |
 | `_icon`               | `_icon`       | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                                         | `KoliBriHorizontalIcon & KoliBriVerticalIcon \| string \| undefined` | `undefined` |
 | `_iconOnly`           | `_icon-only`  | <span style="color:red">**[DEPRECATED]**</span> use \_hide-label<br/><br/>Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an. | `boolean \| undefined`                                               | `undefined` |
-| `_label` _(required)_ | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                         | `string`                                                             | `undefined` |
+| `_label` _(required)_ | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                         | `boolean \| string`                                                  | `undefined` |
 
 ## Dependencies
 

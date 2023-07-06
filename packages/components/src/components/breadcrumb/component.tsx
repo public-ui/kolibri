@@ -2,10 +2,10 @@ import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/
 
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchNavLinks } from '../nav/validation';
-import { validateLabel } from '../../types/props';
-import { KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
+import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -15,7 +15,7 @@ import { KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
 	shadow: true,
 })
 export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
-	private readonly renderLink = (link: LinkProps, index: number): JSX.Element => {
+	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
 		const hideLabel = link._iconOnly || link._hideLabel;
 		return (
@@ -24,13 +24,13 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 				{index === lastIndex ? (
 					<span>
 						{hideLabel ? (
-							<kol-icon _label={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+							<kol-icon _label={link._label as string} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}
 					</span>
 				) : (
-					<kol-link {...link} _useCase="nav"></kol-link>
+					<kol-link {...link}></kol-link>
 				)}
 			</li>
 		);
@@ -43,7 +43,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 					<ul>
 						{this.state._links.length === 0 && (
 							<li>
-								<kol-icon _ariaLabel="" _icon="codicon codicon-home" />…
+								<kol-icon _label="" _icon="codicon codicon-home" />…
 							</li>
 						)}
 						{this.state._links.map(this.renderLink)}
@@ -63,15 +63,15 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string; // TODO: required in v2
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
 	 */
-	@Prop() public _links!: Stringified<LinkProps[]>;
+	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
 
 	@State() public state: KoliBriBreadcrumbStates = {
-		_label: '…', // '⚠'
+		_label: '…', // ⚠ required
 		_links: [],
 	};
 
@@ -84,7 +84,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
 	}

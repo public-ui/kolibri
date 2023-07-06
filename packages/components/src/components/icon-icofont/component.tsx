@@ -1,8 +1,8 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, h, JSX, Prop } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import { Icofont } from '../../types/icofont';
-import { PropAriaLabel } from '../../types/props';
+import { PropAriaLabel } from '../../types/props/aria-label';
 
 type RequiredProps = PropAriaLabel & {
 	icon: Icofont;

@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../../types/common';
 import { KoliBriHorizontalIcon } from '../../../types/icon';
 import { isIcon } from '../../../types/props/icon';

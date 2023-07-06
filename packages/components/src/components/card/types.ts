@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
-import { HeadingLevel } from '../../components';
-import { PropHasFooter } from '../../types/props';
+
+import { HeadingLevel } from '../../types/heading-level';
+import { PropHasFooter } from '../../types/props/has-footer';
 
 type RequiredProps = {
 	heading: string;

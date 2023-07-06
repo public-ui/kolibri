@@ -1,13 +1,18 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { translate } from '../../i18n';
-import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
+import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import { AriaCurrent, validateCollapsible, validateCompact, validateHasCompactButton, validateLabel } from '../../types/props';
+import { AriaCurrent } from '../../types/props/aria-current';
+import { validateCollapsible } from '../../types/props/collapsible';
+import { validateCompact } from '../../types/props/compact';
+import { validateHasCompactButton } from '../../types/props/has-compact-button';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
-import { watchNavLinks } from './validation';
 import { KoliBriNavAPI, KoliBriNavStates } from './types';
+import { watchNavLinks } from './validation';
 
 /**
  * @deprecated
@@ -66,12 +71,12 @@ export class KolNav implements KoliBriNavAPI {
 		return (
 			<div class="entry">
 				<kol-button-link-text-switch _has-children={hasChildren} _hide-label={compact} _link={link} _selected={selected} />
-				{hasChildren ? this.expandButton(collapsible, link, selected) : ''}
+				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, selected) : ''}
 			</div>
 		);
 	}
 
-	private expandButton(collapsible: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
+	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, selected: boolean): JSX.Element {
 		return (
 			<kol-button-wc
 				class="expand-button"
@@ -201,7 +206,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string; // TODO: required in v2
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -268,7 +273,7 @@ export class KolNav implements KoliBriNavAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
 	}

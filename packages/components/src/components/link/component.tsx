@@ -4,15 +4,20 @@ import { translate } from '../../i18n';
 import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Align, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload, validateHideLabel } from '../../types/props';
+import { Align } from '../../types/props/align';
+import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
+import { validateAriaSelected } from '../../types/props/aria-selected';
+import { validateDownload } from '../../types/props/download';
+import { validateHideLabel } from '../../types/props/hide-label';
+import { validateHref } from '../../types/props/href';
+import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
+import { validateStealth } from '../../types/props/stealth';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { validateHref } from '../../types/props/href';
 
 /**
  * @internal
@@ -89,6 +94,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
+		const label: string = this.state._label === false ? this.state._href : this.state._label;
 		return (
 			<Host>
 				<a
@@ -114,7 +120,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label || this.state._href}>
+					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
@@ -128,7 +134,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					hidden={this.state._hideLabel !== true}
 					_align={this.state._tooltipAlign}
 					_id={this.nonce}
-					_label={this.state._label || this.state._href}
+					_label={label}
 				></kol-tooltip>
 			</Host>
 		);
@@ -204,7 +210,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -262,6 +268,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
 		_icon: {},
+		_label: false,
 	};
 
 	@Watch('_ariaControls')
@@ -340,7 +347,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabel(this, value);
 	}
 

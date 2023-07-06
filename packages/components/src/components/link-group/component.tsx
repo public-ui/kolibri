@@ -4,10 +4,10 @@ import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
 import { Orientation } from '../../types/orientation';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
-import { validateLabel } from '../../types/props';
 import { KoliBriLinkGroupAPI, KoliBriLinkGroupStates, ListStyleType } from './types';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
@@ -89,7 +89,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string; // TODO: required in v2
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -113,7 +113,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	@State() public state: KoliBriLinkGroupStates = {
-		_label: '…', // '⚠'
+		_label: '…', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],
 		_orientation: 'vertical',
@@ -133,7 +133,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

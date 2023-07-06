@@ -1,13 +1,15 @@
 import { Generic } from '@a11y-ui/core';
+
 import { ButtonProps } from '../../../types/button-link';
 import { InputTypeOnDefault } from '../../../types/input/types';
+import { validateAdjustHeight } from '../../../types/props/adjust-height';
+import { LabelWithExpertSlotPropType, validateLabel } from '../../../types/props/label';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 import { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import { Props, Watches } from './types';
-import { validateLabel } from '../../../types/props';
 
 type ValueChangeListener = (value: string) => void;
 
@@ -28,7 +30,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateAdjustHeight(value?: boolean): void {
-		watchBoolean(this.component, '_adjustHeight', value);
+		validateAdjustHeight(this.component, value);
 	}
 
 	public validateDisabled(value?: boolean): void {
@@ -62,7 +64,7 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabel(this.component, value);
 	}
 

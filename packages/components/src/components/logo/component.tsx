@@ -1,9 +1,9 @@
-import { Component, JSX, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { BUND_LOGO_TEXT_MAP, Bundesamt, Bundesanstalt, Bundesministerium } from '../../enums/bund';
+import { translate } from '../../i18n';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState } from '../../utils/prop.validators';
-import { translate } from '../../i18n';
 import { KoliBriLogoAPI, KoliBriLogoStates } from './types';
 
 function enumToArray(enumeration: Record<string, string>, enumAsMap: Map<string, string> = new Map()): Map<string, string> {

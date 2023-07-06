@@ -1,9 +1,10 @@
 import { Generic } from '@a11y-ui/core';
+
 import { ButtonProps } from '../../../types/button-link';
 import { InputTypeOnDefault } from '../../../types/input/types';
-import { PropLabel } from '../../../types/props';
+import { PropLabelWithExpertSlot } from '../../../types/props/label';
 
-type RequiredProps = PropLabel;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	adjustHeight: boolean;

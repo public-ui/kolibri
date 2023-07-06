@@ -1,7 +1,15 @@
 import { Generic } from '@a11y-ui/core';
-import { AriaCurrent, ButtonOrLinkOrTextWithChildrenProps, KoliBriNavVariant, Orientation, Stringified } from '../../components';
-import { PropCollapsible, PropCompact, PropHasCompactButton, PropLabel } from '../../types/props';
-import { PropAriaLabel } from '../../types/props';
+
+import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
+import { Stringified } from '../../types/common';
+import { Orientation } from '../../types/orientation';
+import { AriaCurrent } from '../../types/props/aria-current';
+import { PropAriaLabel } from '../../types/props/aria-label';
+import { PropCollapsible } from '../../types/props/collapsible';
+import { PropCompact } from '../../types/props/compact';
+import { PropHasCompactButton } from '../../types/props/has-compact-button';
+import { PropLabel } from '../../types/props/label';
+import { KoliBriNavVariant } from './component';
 
 type RequiredProps = {
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;

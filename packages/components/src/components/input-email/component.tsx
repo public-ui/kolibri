@@ -1,17 +1,17 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateHasCounter, validateMultiple } from '../../types/props';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
+import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
-import { setState } from '../../utils/prop.validators';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -162,7 +162,7 @@ export class KolInputEmail implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -245,7 +245,7 @@ export class KolInputEmail implements ComponentApi {
 		_currentLength: 0,
 		_hasValue: false,
 		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 	};
 
@@ -280,7 +280,7 @@ export class KolInputEmail implements ComponentApi {
 
 	@Watch('_hasCounter')
 	public validateHasCounter(value?: boolean): void {
-		validateHasCounter(this, value);
+		this.controller.validateHasCounter(value);
 	}
 
 	@Watch('_hideLabel')
@@ -304,7 +304,7 @@ export class KolInputEmail implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 
@@ -320,7 +320,7 @@ export class KolInputEmail implements ComponentApi {
 
 	@Watch('_multiple')
 	public validateMultiple(value?: boolean): void {
-		validateMultiple(this, value);
+		this.controller.validateMultiple(value);
 	}
 
 	@Watch('_name')
@@ -393,6 +393,5 @@ export class KolInputEmail implements ComponentApi {
 
 		this.state._hasValue = !!this.state._value;
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
-		this.validateHasCounter(this._hasCounter);
 	}
 }

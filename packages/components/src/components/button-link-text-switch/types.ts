@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
-import { ButtonOrLinkOrTextWithChildrenProps } from '../../components';
+
+import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 
 type RequiredProps = {
 	link: ButtonOrLinkOrTextWithChildrenProps;

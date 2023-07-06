@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { getI18nService } from './core';
 /**
  * Issue #2456: Don't use json files

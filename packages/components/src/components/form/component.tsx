@@ -1,8 +1,8 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchBoolean, watchString } from '../../utils/prop.validators';
-import { Stringified } from '../../types/common';
 import { translate } from '../../i18n';
+import { Stringified } from '../../types/common';
+import { watchBoolean, watchString } from '../../utils/prop.validators';
 import { KoliBriFormAPI, KoliBriFormCallbacks, KoliBriFormStates } from './types';
 
 /**
