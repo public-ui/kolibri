@@ -6,6 +6,8 @@ import { setState, watchBoolean, watchValidator } from '../../utils/prop.validat
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
 import { InputCheckboxIcon, InputCheckboxVariant, Props, Watches } from './types';
+import { validateChecked } from '../../types/props/checked';
+import { validateIndeterminate } from '../../types/props/indeterminate';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -16,7 +18,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	}
 
 	public validateChecked(value?: boolean): void {
-		watchBoolean(this.component, '_checked', value);
+		validateChecked(this.component, value);
 		this.setFormAssociatedValue(this.component.state._checked as string);
 	}
 
@@ -33,7 +35,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	}
 
 	public validateIndeterminate(value?: boolean): void {
-		watchBoolean(this.component, '_indeterminate', value);
+		validateIndeterminate(this.component, value);
 	}
 
 	/**

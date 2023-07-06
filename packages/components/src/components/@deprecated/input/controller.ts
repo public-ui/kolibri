@@ -2,6 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { ButtonProps } from '../../../types/button-link';
 import { InputTypeOnDefault } from '../../../types/input/types';
+import { validateAdjustHeight } from '../../../types/props/adjust-height';
 import { LabelWithExpertSlotPropType, validateLabel } from '../../../types/props/label';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
@@ -29,7 +30,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateAdjustHeight(value?: boolean): void {
-		watchBoolean(this.component, '_adjustHeight', value);
+		validateAdjustHeight(this.component, value);
 	}
 
 	public validateDisabled(value?: boolean): void {

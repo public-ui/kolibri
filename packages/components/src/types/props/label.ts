@@ -78,7 +78,7 @@ export type PropLabelWithExpertSlot = {
 };
 
 export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
-export type LabelWithExpertSlotProp = Generic.Element.Members<PropLabelWithExpertSlot, unknown>;
+// type LabelWithExpertSlotProp = Generic.Element.Members<PropLabelWithExpertSlot, unknown>;
 
 const LABEL_VALUES = new Set(['string', 'false']);
 export const validateLabel = (component: Generic.Element.Component, value?: LabelWithExpertSlotPropType, options: WatchStringOptions = {}): void => {
