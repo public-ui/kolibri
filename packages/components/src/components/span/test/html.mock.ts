@@ -26,7 +26,7 @@ export const getSpanWcHtml = (
 		props
 	);
 	if (state._label === '') {
-		state._label = false;
+		state._label = false; // TODO: remove this workaround in v2
 	}
 	const hideExpertSlot: boolean = typeof state._label === 'string';
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
