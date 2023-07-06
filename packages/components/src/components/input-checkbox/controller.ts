@@ -1,13 +1,13 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
+import { validateChecked } from '../../types/props/checked';
+import { validateIndeterminate } from '../../types/props/indeterminate';
 import { devHint } from '../../utils/a11y.tipps';
-import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
+import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
 import { InputCheckboxIcon, InputCheckboxVariant, Props, Watches } from './types';
-import { validateChecked } from '../../types/props/checked';
-import { validateIndeterminate } from '../../types/props/indeterminate';
 
 export class InputCheckboxController extends InputCheckboxRadioController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
