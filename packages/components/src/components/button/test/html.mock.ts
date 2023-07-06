@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { ButtonProps, ButtonStates } from '../../../types/button-link';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 
@@ -16,7 +17,7 @@ export const getButtonWcHtml = (
 	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
 			_icon: {},
-			_label: '…', // ⚠ required
+			_label: false, // ⚠ required
 			_type: 'button',
 			_variant: 'normal',
 		},
@@ -37,10 +38,15 @@ export const getButtonWcHtml = (
 	    <div class="area" id="arrow"></div>
 	    <kol-span-wc class="area" id="nonce">
 	      <span>
+				${
+					props._label
+						? `
 	        <span>
-	          ${props._label ? props._label : '…'}
+						${props._label}
 	        </span>
-	        <span aria-hidden="true" hidden=""></span>
+	        <span aria-hidden="true" hidden=""></span>`
+						: `<span></span>`
+				}
 	      </span>
 	    </kol-span-wc>
 	  </div>
@@ -52,7 +58,7 @@ export const getButtonHtml = (props: ButtonProps): string => {
 	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
 			_icon: {},
-			_label: '…', // ⚠ required
+			_label: false, // ⚠ required
 			_type: 'button',
 			_variant: 'normal',
 		},

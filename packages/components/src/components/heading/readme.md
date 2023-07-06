@@ -43,7 +43,7 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 
 | Property              | Attribute             | Description                                                                                                                                           | Type                                           | Default     |
 | --------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `_label` _(required)_ | `_label`              | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                           | `string`                                       | `undefined` |
+| `_label` _(required)_ | `_label`              | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                           | `boolean \| string`                            | `undefined` |
 | `_level`              | `_level`              | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
 | `_secondaryHeadline`  | `_secondary-headline` | Setzt den Text einer weiteren Überschrift, einen Level kleiner, unter der Ersten.                                                                     | `string \| undefined`                          | `undefined` |
 

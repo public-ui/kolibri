@@ -1,9 +1,10 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
+
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
-
 import { deprecatedHint } from '../../utils/a11y.tipps';
 import { Props } from '../input-radio/types';
 
@@ -79,7 +80,7 @@ Mit der Version 1.1 wird die Komponente KolInputRadioGroup aus der Bibliothek en
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.

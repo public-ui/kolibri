@@ -1,8 +1,9 @@
 import { Generic } from '@a11y-ui/core';
-import { HeadingLevel } from '../../components';
-import { PropLabel } from '../../types/props';
 
-type RequiredProps = PropLabel;
+import { HeadingLevel } from '../../types/heading-level';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
+
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	secondaryHeadline: string;
 	level: HeadingLevel;
@@ -11,7 +12,7 @@ export type KoliBriHeadingProps = Generic.Element.Members<RequiredProps, Optiona
 
 type RequiredStates = {
 	level: HeadingLevel;
-} & PropLabel;
+} & PropLabelWithExpertSlot;
 type OptionalStates = {
 	secondaryHeadline: string;
 };

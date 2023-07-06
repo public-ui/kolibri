@@ -1,14 +1,15 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Stringified } from '../../types/common';
 
+import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
+import { propagateFocus } from '../../utils/reuse';
+import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { ComponentApi, States } from './types';
-import { propagateSubmitEventToForm } from '../form/controller';
-import { propagateFocus } from '../../utils/reuse';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -188,7 +189,7 @@ export class KolInputRange implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -244,7 +245,7 @@ export class KolInputRange implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 	};
 
@@ -298,7 +299,7 @@ export class KolInputRange implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 

@@ -1,11 +1,14 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { AlertType } from '../alert/types';
 import { HeadingLevel } from '../../types/heading-level';
-import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
-import { watchHeadingLevel } from '../heading/validation';
+import { validateHasCloser } from '../../types/props/has-closer';
+import { validateShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
-import { validateHasCloser, validateShow } from '../../types/props';
+import {
+    setState, watchBoolean, watchNumber, watchString, watchValidator
+} from '../../utils/prop.validators';
+import { AlertType } from '../alert/types';
+import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastAPI, KoliBriToastStates } from './types';
 
 /**

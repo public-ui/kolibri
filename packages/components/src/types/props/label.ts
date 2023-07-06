@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
+
 import { a11yHint, uiUxHint } from '../../utils/a11y.tipps';
-import { watchString, WatchStringOptions } from '../../utils/prop.validators';
+import { WatchStringOptions, watchValidator } from '../../utils/prop.validators';
 
 /* types */
 
@@ -44,40 +45,47 @@ export function containsOnlyNumbers(str: string): boolean {
 	return ONLY_NUMBERS.test(str);
 }
 
-/** de
- * Das Label dient der Beschriftung unterschiedlicher Elemente.
- * - Button -> label text
- * - Heading -> headline text
- * - Input, Select und Textarea -> label text
- * - Summary -> summary text
- * - Table -> caption text
+/**
+ * Defines the type of the label property.
+ */
+export type LabelPropType = string;
+
+/**
+ * Defines the type of the label with expert-slot toggle property.
+ */
+export type LabelWithExpertSlotPropType = LabelPropType | false;
+
+/**
+ * The label property is used to label different elements:
+ * - abbr -> title text
+ * - button -> label text
+ * - heading -> headline text
+ * - input, select and textarea -> label text
+ * - summary -> summary text
+ * - quote, table -> caption text
+ * - version -> version text
  * - etc.
  *
- * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
- * wenn man das Label mittels dem Expert-Slot überschreiben will.
- */
-/** en
- * The label is used to label different elements.
- * -Button -> label text
- * -Heading -> headline text
- * -Input, Select and Textarea -> label text
- * -Summary -> summary text
- * -Table -> caption text
- * -Etc.
- *
- * The label is often a mandatory attribute and can be set empty,
- * if you want to overwrite the label using the expert slot.
+ * The label is often a mandatory attribute. If the value of the label is false,
+ * the expert-slot will be used. Otherwise, the value of the label must be a string
+ * and the expert-slot will be ignored.
  */
 export type PropLabel = {
-	label: string;
+	label: LabelPropType;
+};
+export type PropLabelWithExpertSlot = {
+	label: LabelWithExpertSlotPropType;
 };
 
 export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
+export type LabelWithExpertSlotProp = Generic.Element.Members<PropLabelWithExpertSlot, unknown>;
 
-/* validator */
-
-export const validateLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
-	watchString(component, '_label', value, {
+const LABEL_VALUES = new Set(['string', 'false']);
+export const validateLabel = (component: Generic.Element.Component, value?: LabelWithExpertSlotPropType, options: WatchStringOptions = {}): void => {
+	if (value === '') {
+		value = false; // TODO: remove this workaround in v2
+	}
+	watchValidator(component, '_label', (value) => value === false || typeof value === 'string', LABEL_VALUES, value, {
 		hooks: {
 			afterPatch: (value, state, component, key) => {
 				if (typeof options.hooks?.afterPatch === 'function') {

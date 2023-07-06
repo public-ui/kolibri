@@ -1,9 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { KoliBriProgressVariantEnum, KoliBriProgressVariantType } from '../../types/progress';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
-import { validateLabel } from '../../types/props';
-import { KoliBriProgressVariantEnum, KoliBriProgressVariantType } from '../../types/progress';
 
 const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
 
@@ -109,7 +109,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
@@ -146,7 +146,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	};
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

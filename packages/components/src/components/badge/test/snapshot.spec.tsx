@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getBadgeHtml } from './html.mock';
 import { KoliBriBadgeProps } from '../types';
+import { getBadgeHtml } from './html.mock';
 
 executeTests<KoliBriBadgeProps>(
 	'Badge',

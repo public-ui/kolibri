@@ -2,7 +2,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchString } from '../../utils/prop.validators';
 import { Loading, validateLoading } from '../../utils/validators/loading';
-
 import { ComponentApi, States } from './types';
 
 @Component({

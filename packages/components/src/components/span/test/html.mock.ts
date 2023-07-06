@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { KoliBriCustomIcon, KoliBriIconProp } from '../../../types/icon';
 import { mapIconProp2State } from '../../../types/props/icon';
 import { getIconHtml } from '../../icon/test/html.mock';
@@ -20,11 +21,14 @@ export const getSpanWcHtml = (
 		{
 			_icon: {},
 			_hideLabel: false,
-			_label: '…', // ⚠ required
+			_label: false, // ⚠ required
 		},
 		props
 	);
-	const hideExpertSlot = state._label.length > 0;
+	if (state._label === '') {
+		state._label = false;
+	}
+	const hideExpertSlot: boolean = typeof state._label === 'string';
 	const icon = mapIconProp2State(state._icon as KoliBriIconProp);
 	return `
 <kol-span-wc${state._hideLabel === true ? ` class="icon-only hide-label"` : ``}${additionalAttrs}>
@@ -48,7 +52,7 @@ export const getSpanWcHtml = (
 				  )
 				: ''
 		}
-		${!state._hideLabel && state._label.length > 0 ? `<span>${state._label}</span>` : ``}
+		${!state._hideLabel && hideExpertSlot ? `<span>${state._label as string}</span>` : ``}
 		<span${hideExpertSlot ? ' aria-hidden="true" hidden' : ''}>
 			${slots.expert ? slots.expert : ``}
 		</span>

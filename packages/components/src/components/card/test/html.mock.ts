@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { koliBriCardProps } from '../types';
 

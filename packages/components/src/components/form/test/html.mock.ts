@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
 import { KoliBriFormProps } from '../types';
 

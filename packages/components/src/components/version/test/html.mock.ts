@@ -1,5 +1,6 @@
-import { getBadgeHtml } from '../../badge/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
+
+import { getBadgeHtml } from '../../badge/test/html.mock';
 import { KoliBriVersionProps } from '../types';
 
 export const getVersionHtml = (props: KoliBriVersionProps, additionalAttrs = ''): string => {

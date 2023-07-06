@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { Props, States } from '../types';
 
 export const getImageHtml = (props: Props): string => {

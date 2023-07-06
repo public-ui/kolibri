@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
-import { PropHref } from '../../types/props';
+
+import { PropHref } from '../../types/props/href';
 
 export type KoliBriQuoteVariant = 'block' | 'inline';
 

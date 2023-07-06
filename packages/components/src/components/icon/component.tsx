@@ -1,9 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchString } from '../../utils/prop.validators';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
+import { watchString } from '../../utils/prop.validators';
 import { KoliBriIconAPI, KoliBriIconStates } from './types';
-import { validateLabel } from '../../types/props';
 
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
@@ -51,7 +51,7 @@ export class KolIcon implements KoliBriIconAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string; // TODO: required in v2
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
@@ -62,7 +62,7 @@ export class KolIcon implements KoliBriIconAPI {
 
 	@State() public state: KoliBriIconStates = {
 		_icon: 'codicon codicon-home',
-		// _label: '…', // TODO: ⚠ required
+		// _label: false, // ⚠ required TODO: required in v2
 	};
 
 	/**
@@ -79,7 +79,7 @@ export class KolIcon implements KoliBriIconAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

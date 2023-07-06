@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { watchBoolean } from '../../utils/prop.validators';
 import { InputTextEmailController } from '../input-text/controller';
 import { Props, Watches } from './types';

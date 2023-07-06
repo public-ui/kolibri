@@ -1,8 +1,13 @@
 import { Generic } from '@a11y-ui/core';
-import { Align, Option, Stringified } from '../../components';
+
 import { Events } from '../../enums/events';
-import { KoliBriButtonCustomClassPropState, KoliBriButtonVariantPropState } from '../../types/button-link';
+import {
+    KoliBriButtonCustomClassPropState, KoliBriButtonVariantPropState
+} from '../../types/button-link';
 import { EventValueOrEventCallback } from '../../types/callbacks';
+import { Stringified } from '../../types/common';
+import { Option } from '../../types/input/types';
+import { Align } from '../../types/props/align';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;

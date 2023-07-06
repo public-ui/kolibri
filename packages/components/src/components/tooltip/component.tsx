@@ -1,8 +1,9 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { Align } from '../../types/props';
+import { Align } from '../../types/props/align';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { watchString } from '../../utils/prop.validators';
@@ -155,7 +156,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	@State() public state: KoliBriTooltipStates = {
 		_align: 'top',
@@ -174,8 +175,8 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
-		watchString(this, '_label', value);
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	private overFocusCount = 0;

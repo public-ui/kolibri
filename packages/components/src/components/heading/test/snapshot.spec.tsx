@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getHeadingHtml } from './html.mock';
 import { KoliBriHeadingProps } from '../types';
+import { getHeadingHtml } from './html.mock';
 
 executeTests<KoliBriHeadingProps>(
 	'Heading',

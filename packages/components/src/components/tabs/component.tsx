@@ -1,14 +1,17 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { Stringified } from '../../types/common';
-import { Align, validateLabel } from '../../types/props';
-import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
-import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
-import { validateAlignment } from '../../utils/validators/alignment';
 import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';
+import { Stringified } from '../../types/common';
+import { Align } from '../../types/props/align';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
+import {
+    koliBriQuerySelector, setState, watchJsonArrayString, watchNumber
+} from '../../utils/prop.validators';
+import { validateAlignment } from '../../utils/validators/alignment';
 import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
@@ -150,8 +153,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// TODO v2: make required
-	@Prop() public _label?: string;
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
@@ -236,7 +238,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

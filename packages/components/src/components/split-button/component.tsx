@@ -1,22 +1,23 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriSplitButtonAPI, KoliBriSplitButtonCallback, KoliBriSplitButtonAStates } from './types';
-import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import {
-	Align,
-	AriaCurrent,
-	validateAriaCurrent,
-	validateAriaExpanded,
-	validateAriaSelected,
-	validateDisabled,
-	validateHideLabel,
-	validateLabel,
-} from '../../types/props';
-import { a11yHintDisabled } from '../../utils/a11y.tipps';
-import { validateTabIndex } from '../../utils/validators/tab-index';
-import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
-import { watchButtonType, watchButtonVariant } from '../button/controller';
+    AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment
+} from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { Align } from '../../types/props/align';
+import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
+import { validateAriaExpanded } from '../../types/props/aria-expanded';
+import { validateAriaSelected } from '../../types/props/aria-selected';
+import { validateDisabled } from '../../types/props/disabled';
+import { validateHideLabel } from '../../types/props/hide-label';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { a11yHintDisabled } from '../../utils/a11y.tipps';
+import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
+import { validateTabIndex } from '../../utils/validators/tab-index';
+import { watchButtonType, watchButtonVariant } from '../button/controller';
+import {
+    KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback
+} from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -179,7 +180,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop({ mutable: true, reflect: false }) public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
@@ -288,7 +289,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

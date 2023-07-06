@@ -1,9 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
-
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
@@ -127,7 +128,7 @@ export class KolInputColor implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
@@ -173,7 +174,7 @@ export class KolInputColor implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 	};
 
@@ -227,7 +228,7 @@ export class KolInputColor implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 

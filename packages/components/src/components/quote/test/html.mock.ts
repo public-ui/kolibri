@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { getLinkHtml } from '../../link/test/html.mock';
 import { KoliBriQuoteProps, KoliBriQuoteStates } from '../types';
 

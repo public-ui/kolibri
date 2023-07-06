@@ -1,7 +1,9 @@
 import { Generic } from '@a11y-ui/core';
+
 import { KoliBriButtonCallbacks, LinkTarget } from './button-link';
+import { PropHref } from './props/href';
 import { PropIcon } from './props/icon';
-import { PropHref, PropLabel } from './props';
+import { PropLabel } from './props/label';
 
 /**
  * This types specifies the props of a link or button in navigations.

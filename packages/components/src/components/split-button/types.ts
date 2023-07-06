@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
-import { PropLabel } from '../../types/props';
+
+import { PropLabel } from '../../types/props/label';
 
 export type KoliBriSplitButtonCallback = (e: Event) => void;
 

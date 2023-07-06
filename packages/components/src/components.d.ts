@@ -5,15 +5,17 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Align, AriaCurrent } from "./types/props";
+import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
-import { AriaCurrent as AriaCurrent1, Stringified as Stringified1 } from "./components";
+import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+import { AriaCurrent } from "./types/props/aria-current";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -39,15 +41,17 @@ import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps 
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { Align, AriaCurrent } from "./types/props";
+export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
-export { AriaCurrent as AriaCurrent1, Stringified as Stringified1 } from "./components";
+export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+export { AriaCurrent } from "./types/props/aria-current";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -183,7 +187,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
           * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
@@ -198,11 +202,11 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
-        "_links": Stringified<LinkProps[]>;
+        "_links": Stringified<BreadcrumbLinkProps[]>;
     }
     interface KolButton {
         /**
@@ -263,7 +267,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -347,7 +351,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -380,7 +384,7 @@ export namespace Components {
         /**
           * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_ariaCurrentValue": AriaCurrent1;
+        "_ariaCurrentValue": AriaCurrent;
         /**
           * Gibt an, ob diese Komponente Kinder hat.
          */
@@ -457,7 +461,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -530,7 +534,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -544,7 +548,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -567,7 +571,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -754,7 +758,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -833,7 +837,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -907,7 +911,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -1009,7 +1013,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1111,7 +1115,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -1189,7 +1193,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -1296,7 +1300,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -1382,7 +1386,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1455,7 +1459,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1529,7 +1533,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1615,7 +1619,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1685,7 +1689,7 @@ export namespace Components {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: Stringified1<PropColor>;
+        "_color"?: Stringified<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -1747,7 +1751,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -1843,7 +1847,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -1887,7 +1891,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -1966,7 +1970,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -2032,7 +2036,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -2068,7 +2072,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -2143,7 +2147,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
@@ -2225,7 +2229,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -2276,7 +2280,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -2299,7 +2303,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
         /**
@@ -2318,7 +2322,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpin {
         /**
@@ -2380,7 +2384,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -2423,7 +2427,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
@@ -2464,7 +2468,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -2522,7 +2526,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -2618,16 +2622,16 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Gibt die Versionsnummer als Text an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Versionsnummer als Text an.
-          * @deprecated
+          * @deprecated use _label instead
          */
         "_version"?: string;
     }
@@ -3181,7 +3185,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
           * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
@@ -3196,11 +3200,11 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
-        "_links": Stringified<LinkProps[]>;
+        "_links": Stringified<BreadcrumbLinkProps[]>;
     }
     interface KolButton {
         /**
@@ -3261,7 +3265,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3345,7 +3349,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3378,7 +3382,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_ariaCurrentValue"?: AriaCurrent1;
+        "_ariaCurrentValue"?: AriaCurrent;
         /**
           * Gibt an, ob diese Komponente Kinder hat.
          */
@@ -3455,7 +3459,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3528,7 +3532,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3542,7 +3546,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3565,7 +3569,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -3752,7 +3756,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3831,7 +3835,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3905,7 +3909,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -4007,7 +4011,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -4109,7 +4113,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -4187,7 +4191,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -4294,7 +4298,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -4380,7 +4384,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -4453,7 +4457,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -4527,7 +4531,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -4613,7 +4617,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -4683,7 +4687,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: Stringified1<PropColor>;
+        "_color"?: Stringified<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -4745,7 +4749,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -4841,7 +4845,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -4885,7 +4889,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -4964,7 +4968,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -5030,7 +5034,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -5066,7 +5070,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -5141,7 +5145,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
@@ -5223,7 +5227,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -5274,7 +5278,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -5297,7 +5301,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
         /**
@@ -5316,7 +5320,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpin {
         /**
@@ -5378,7 +5382,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -5421,7 +5425,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
@@ -5462,7 +5466,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -5520,7 +5524,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -5616,16 +5620,16 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Gibt die Versionsnummer als Text an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt die Versionsnummer als Text an.
-          * @deprecated
+          * @deprecated use _label instead
          */
         "_version"?: string;
     }

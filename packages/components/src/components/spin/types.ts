@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
-import { PropShow } from '../../types/props';
+
+import { PropShow } from '../../types/props/show';
 import { PropSpinVariant } from '../../types/props/variant/spin';
 
 type RequiredProps = unknown;
