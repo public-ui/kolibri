@@ -1,7 +1,7 @@
-import { h, Host, JSX, State } from '@stencil/core';
-import { Bundesministerium } from '../../../enums/bund';
-
 import { Generic } from '@a11y-ui/core';
+import { h, Host, JSX, State } from '@stencil/core';
+
+import { Bundesministerium } from '../../../enums/bund';
 
 type RequiredProps = unknown;
 type OptionalProps = unknown;

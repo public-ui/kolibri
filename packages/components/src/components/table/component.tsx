@@ -1,12 +1,12 @@
+import { Generic } from '@a11y-ui/core';
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
+import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
+import { devHint } from '../../utils/a11y.tipps';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
-import { translate } from '../../i18n';
-import { devHint } from '../../utils/a11y.tipps';
 import {
 	KoliBriSortDirection,
 	KoliBriSortFunction,

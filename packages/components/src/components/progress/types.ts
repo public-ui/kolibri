@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
-import { PropLabel } from '../../types/props';
+
 import { KoliBriProgressVariantType } from '../../types/progress';
+import { PropLabel } from '../../types/props/label';
 
 type RequiredProps = {
 	max: number;

@@ -1,22 +1,21 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Events } from '../enums/events';
 import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import {
-	Align,
-	PropAriaCurrent,
-	PropAriaExpanded,
-	PropAriaLabel,
-	PropAriaSelected,
-	PropDisabled,
-	PropDownload,
-	PropHideLabel,
-	PropHref,
-	PropLabel,
-	PropStealth,
-} from './props';
+import { Align } from './props/align';
+import { PropAriaCurrent } from './props/aria-current';
+import { PropAriaExpanded } from './props/aria-expanded';
+import { PropAriaLabel } from './props/aria-label';
+import { PropAriaSelected } from './props/aria-selected';
+import { PropDisabled } from './props/disabled';
+import { PropDownload } from './props/download';
+import { PropHideLabel } from './props/hide-label';
+import { PropHref } from './props/href';
+import { PropLabelWithExpertSlot } from './props/label';
+import { PropStealth } from './props/stealth';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -48,7 +47,7 @@ type OptionalButtonAndLinkProps = {
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
-} & PropLabel;
+};
 type OptionalButtonAndLinkStates = {
 	ariaControls: string;
 	/**
@@ -101,10 +100,11 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	on: KoliBriButtonCallbacks<unknown>;
 	type: KoliBriButtonType;
 	value: Stringified<unknown>;
-} & PropLabel;
+} & PropLabelWithExpertSlot;
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
+	PropLabelWithExpertSlot &
 	KoliBriButtonVariantPropState & {
 		type: KoliBriButtonType;
 	};
@@ -124,11 +124,11 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 /**
  * API Button
  */
-export type RequiredButtonProps = RequiredButtonLinkProps & PropLabel;
+export type RequiredButtonProps = RequiredButtonLinkProps & PropLabelWithExpertSlot;
 export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState & PropLabel;
+export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState & PropLabelWithExpertSlot;
 export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonCustomClassPropState;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
@@ -173,11 +173,11 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	 */
 	useCase: LinkUseCase;
 } & PropDownload &
-	PropLabel &
+	PropLabelWithExpertSlot &
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
-type RequiredLinkStates = RequiredButtonAndLinkStates & PropHref;
+type RequiredLinkStates = RequiredButtonAndLinkStates & PropHref & PropLabelWithExpertSlot;
 type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	ariaSelected: boolean;
 	/**
@@ -199,7 +199,6 @@ type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	useCase: LinkUseCase;
 } & PropAriaSelected &
 	PropDownload &
-	PropLabel &
 	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates>;

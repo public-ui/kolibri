@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
-import { Farbspektrum } from '../../enums/color';
 
-import { validateLabel } from '../../types/props';
+import { Farbspektrum } from '../../enums/color';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { KoliBriVersionAPI, KoliBriVersionStates } from './types';
 
 @Component({
@@ -17,14 +17,13 @@ export class KolVersion implements KoliBriVersionAPI {
 	}
 
 	/**
-	 * Gibt die Versionsnummer als Text an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// TODO v2: make required
-	@Prop() public _label?: string;
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die Versionsnummer als Text an.
-	 * @deprecated
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _version?: string;
 
@@ -33,7 +32,7 @@ export class KolVersion implements KoliBriVersionAPI {
 	};
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

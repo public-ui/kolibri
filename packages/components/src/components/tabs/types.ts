@@ -1,9 +1,13 @@
 import { Generic } from '@a11y-ui/core';
-import { Align, KoliBriIconProp, Stringified } from '../../components';
-import { PropHideLabel, PropLabel } from '../../types/props';
-import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
+
 import { Events } from '../../enums/events';
-import { PropAriaLabel } from '../../types/props';
+import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
+import { Stringified } from '../../types/common';
+import { KoliBriIconProp } from '../../types/icon';
+import { Align } from '../../types/props/align';
+import { PropAriaLabel } from '../../types/props/aria-label';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropLabel } from '../../types/props/label';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?:

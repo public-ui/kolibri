@@ -1,4 +1,6 @@
 import { Generic } from '@a11y-ui/core';
+
+import { validateTouched } from '../../types/props/touched';
 import { getExperimalMode } from '../../utils/dev.utils';
 import { watchBoolean } from '../../utils/prop.validators';
 import { Props, Watches } from './types';
@@ -70,7 +72,7 @@ export class ControlledInputController implements Watches {
 	}
 
 	public validateTouched(value?: boolean): void {
-		watchBoolean(this.component, '_touched', value);
+		validateTouched(this.component, value);
 	}
 
 	public componentWillLoad(): void {

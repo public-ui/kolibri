@@ -1,7 +1,8 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
-import { Stringified } from '../../types/common';
 
+import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { KolibriSpanProps } from './types';
 
 @Component({
@@ -39,5 +40,5 @@ export class KolSpan implements KolibriSpanProps {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 }

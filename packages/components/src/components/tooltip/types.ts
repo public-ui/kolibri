@@ -1,10 +1,11 @@
 import { Generic } from '@a11y-ui/core';
-import { Align } from '../../components';
-import { PropLabel } from '../../types/props';
 
-type RequiredProps = {
+import { Align } from '../../types/props/align';
+import { PropLabel } from '../../types/props/label';
+
+type RequiredProps = PropLabel & {
 	id: string;
-} & PropLabel;
+};
 type OptionalProps = {
 	align: Align;
 };

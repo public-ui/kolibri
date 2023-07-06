@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getPopoverHtml } from './html.mock';
 import { KoliBriPopoverProps } from '../types';
+import { getPopoverHtml } from './html.mock';
 
 executeTests<KoliBriPopoverProps>(
 	'Popover',

@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
-import { Align } from '../../types/props';
+
+import { Align } from '../../types/props/align';
 
 type RequiredProps = {
 	title: string;

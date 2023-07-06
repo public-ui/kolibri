@@ -1,7 +1,10 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../types/common';
+import { validateChecked } from '../../types/props/checked';
+import { validateIndeterminate } from '../../types/props/indeterminate';
 import { devHint } from '../../utils/a11y.tipps';
-import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
+import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
 import { InputCheckboxRadioController } from '../input-radio/controller';
 import { InputCheckboxIcon, InputCheckboxVariant, Props, Watches } from './types';
@@ -15,7 +18,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	}
 
 	public validateChecked(value?: boolean): void {
-		watchBoolean(this.component, '_checked', value);
+		validateChecked(this.component, value);
 		this.setFormAssociatedValue(this.component.state._checked as string);
 	}
 
@@ -32,7 +35,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 	}
 
 	public validateIndeterminate(value?: boolean): void {
-		watchBoolean(this.component, '_indeterminate', value);
+		validateIndeterminate(this.component, value);
 	}
 
 	/**

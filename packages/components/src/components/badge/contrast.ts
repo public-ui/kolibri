@@ -1,7 +1,8 @@
-import { rgbaConvert } from './rgba-convert';
-import { hex } from 'wcag-contrast';
-import { colorRgba } from './color-rgba';
 import { RGB } from 'color-convert/conversions';
+import { hex } from 'wcag-contrast';
+
+import { colorRgba } from './color-rgba';
+import { rgbaConvert } from './rgba-convert';
 
 type RGBA = [number, number, number, number];
 

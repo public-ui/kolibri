@@ -1,9 +1,10 @@
-import { MiddlewareData, Placement, arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
+import { arrow, computePosition, flip, MiddlewareData, offset, Placement, shift } from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { Align, validateAlign } from '../../types/props/align';
+import { validateShow } from '../../types/props/show';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
-import { Align, validateAlign, validateShow } from '../../types/props';
 import { KoliBriPopoverAPI, KoliBriPopoverStates } from './types';
 
 /**

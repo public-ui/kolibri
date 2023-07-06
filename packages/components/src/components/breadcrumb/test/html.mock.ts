@@ -1,4 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
+
+import { LabelPropType } from '../../../components';
 import { Icofont } from '../../../types/icofont';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
@@ -7,7 +9,7 @@ import { BreadcrumbLinkProps, KoliBriBreadcrumbProps } from '../types';
 export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	const state = mixMembers(
 		{
-			_label: '…', // '⚠'
+			_label: '…', // ⚠ required
 			_links: [],
 		},
 		props
@@ -31,10 +33,10 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 							? `<span>${
 									link._hideLabel
 										? getIconHtml({
-												_label: link._label,
+												_label: link._label as LabelPropType,
 												_icon: link._icon as Icofont,
 										  })
-										: link._label
+										: (link._label as LabelPropType)
 							  }</span>`
 							: getLinkHtml(link)
 					}
@@ -45,7 +47,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${state._label}">
+		<nav aria-label="${state._label as unknown as LabelPropType}">
 			<ul>
 				${
 					state._links.length === 0

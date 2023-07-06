@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getQuoteHtml } from './html.mock';
 import { KoliBriQuoteProps } from '../types';
+import { getQuoteHtml } from './html.mock';
 
 executeTests<KoliBriQuoteProps>(
 	'Quote',

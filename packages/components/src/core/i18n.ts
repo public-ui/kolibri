@@ -1,5 +1,6 @@
-import { Generic } from '@a11y-ui/core';
 import i18next, { i18n } from 'i18next';
+
+import { Generic } from '@a11y-ui/core';
 
 interface ITranslationOptions {
 	/**

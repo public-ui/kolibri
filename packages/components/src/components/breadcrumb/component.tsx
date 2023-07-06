@@ -2,10 +2,10 @@ import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/
 
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks } from '../../utils/a11y.tipps';
 import { watchNavLinks } from '../nav/validation';
 import { BreadcrumbLinkProps, KoliBriBreadcrumbAPI, KoliBriBreadcrumbStates } from './types';
-import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-breadcrumb',
@@ -24,7 +24,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 				{index === lastIndex ? (
 					<span>
 						{hideLabel ? (
-							<kol-icon _label={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+							<kol-icon _label={link._label as string} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}
@@ -63,7 +63,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label?: string; // TODO: required in v2
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die Liste der darzustellenden Button, Links oder Texte an.
@@ -71,7 +71,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
 
 	@State() public state: KoliBriBreadcrumbStates = {
-		_label: '…', // '⚠'
+		_label: '…', // ⚠ required
 		_links: [],
 	};
 
@@ -84,7 +84,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 		a11yHintLabelingLandmarks(value);
 	}

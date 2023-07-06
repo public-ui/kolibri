@@ -1,9 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchString } from '../../utils/prop.validators';
 import { translate } from '../../i18n';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { watchString } from '../../utils/prop.validators';
 import { KoliBriSymbolAPI, KoliBriSymbolStates } from './types';
-import { validateLabel } from '../../types/props';
 
 @Component({
 	tag: 'kol-symbol',
@@ -30,7 +30,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	// TODO v2: make required
-	@Prop() public _label?: string;
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Dieses Property gibt den String an der angezeigt werden soll.
@@ -51,7 +51,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
 	}
 

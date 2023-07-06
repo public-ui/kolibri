@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getSpanHtml, getSpanWcHtml } from './html.mock';
 import { KolibriSpanProps } from '../types';
+import { getSpanHtml, getSpanWcHtml } from './html.mock';
 
 executeTests<KolibriSpanProps>(
 	'SpanWc',
@@ -18,7 +19,7 @@ executeTests<KolibriSpanProps>(
 	{
 		_icon: ['codicon codicon-home'],
 		_hideLabel: [true, false],
-		_label: ['Text'],
+		_label: ['Text', false, ''],
 	},
 	getSpanWcHtml,
 	{
@@ -38,7 +39,7 @@ executeTests<KolibriSpanProps>(
 	{
 		_icon: ['codicon codicon-home'],
 		_hideLabel: [true, false],
-		_label: ['Text'],
+		_label: ['Text', false, ''],
 	},
 	getSpanHtml,
 	{

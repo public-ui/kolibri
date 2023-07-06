@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
-import { Stringified } from '../../components';
+
+import { Stringified } from '../../types/common';
 import { KoliBriPaginationProps } from '../pagination/types';
 
 export type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;

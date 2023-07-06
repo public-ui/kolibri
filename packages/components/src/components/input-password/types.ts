@@ -1,10 +1,11 @@
 import { Generic } from '@a11y-ui/core';
+
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { InputRequiredProps } from '../input/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
-import { PropLabel } from '../../types/props';
+import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { InputRequiredProps } from '../input/types';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -40,7 +41,7 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	id: string;
-} & PropLabel;
+} & PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;

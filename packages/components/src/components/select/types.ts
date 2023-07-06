@@ -1,10 +1,11 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../types/common';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
-import { KoliBriHorizontalIcon } from '../../types/icon';
-import { PropLabel } from '../../types/props';
 
 type RequiredProps = InputRequiredProps & {
 	list: Stringified<SelectOption<W3CInputValue>[]>;
@@ -39,7 +40,7 @@ type RequiredStates = {
 	list: SelectOption<W3CInputValue>[];
 	multiple: boolean;
 	value: W3CInputValue[];
-} & PropLabel;
+} & PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
