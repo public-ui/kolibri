@@ -11,7 +11,7 @@ import { validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateHref } from '../../types/props/href';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
+import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { validateStealth } from '../../types/props/stealth';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
@@ -125,17 +125,19 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				<kol-tooltip
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					aria-hidden="true"
-					hidden={this.state._hideLabel !== true}
-					_align={this.state._tooltipAlign}
-					_id={this.nonce}
-					_label={label}
-				></kol-tooltip>
+				{typeof this.state._label === 'string' && (
+					<kol-tooltip
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						hidden={this.state._hideLabel !== true}
+						_align={this.state._tooltipAlign}
+						_id={this.nonce}
+						_label={this.state._label}
+					></kol-tooltip>
+				)}
 			</Host>
 		);
 	}
@@ -348,7 +350,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabel(this, value);
+		validateLabelWithExpertSlot(this, value);
 	}
 
 	/**

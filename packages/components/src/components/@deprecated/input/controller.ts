@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonProps } from '../../../types/button-link';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { validateAdjustHeight } from '../../../types/props/adjust-height';
-import { LabelWithExpertSlotPropType, validateLabel } from '../../../types/props/label';
+import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
 import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
@@ -65,7 +65,7 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabel(this.component, value);
+		validateLabelWithExpertSlot(this.component, value);
 	}
 
 	public validateName(value?: string): void {

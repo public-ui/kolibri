@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
-import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
+import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { watchString } from '../../utils/prop.validators';
 import { KoliBriHeadingAPI, KoliBriHeadingStates } from './types';
 import { watchHeadingLevel } from './validation';
@@ -36,7 +36,7 @@ export class KolHeadingWc implements KoliBriHeadingAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabel(this, value);
+		validateLabelWithExpertSlot(this, value);
 	}
 
 	@Watch('_level')

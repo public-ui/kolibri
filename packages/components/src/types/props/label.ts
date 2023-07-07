@@ -80,12 +80,8 @@ export type PropLabelWithExpertSlot = {
 export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
 // type LabelWithExpertSlotProp = Generic.Element.Members<PropLabelWithExpertSlot, unknown>;
 
-const LABEL_VALUES = new Set(['string', 'false']);
-export const validateLabel = (component: Generic.Element.Component, value?: LabelWithExpertSlotPropType, options: WatchStringOptions = {}): void => {
-	if (value === '') {
-		value = false; // TODO: remove this workaround in v2
-	}
-	watchValidator(component, '_label', (value) => value === false || typeof value === 'string', LABEL_VALUES, value, {
+function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
+	return {
 		hooks: {
 			afterPatch: (value, state, component, key) => {
 				if (typeof options.hooks?.afterPatch === 'function') {
@@ -100,8 +96,31 @@ export const validateLabel = (component: Generic.Element.Component, value?: Labe
 			},
 			beforePatch: options.hooks?.beforePatch,
 		},
-		required: true,
-	});
+	};
+}
+
+const LABEL_VALUES = new Set(['string']);
+export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
+	watchValidator(component, '_label', (value) => typeof value === 'string', LABEL_VALUES, value, getValidationOptions(options));
+};
+
+const LABEL_WITH_EXPERT_SLOT_VALUES = new Set(['string', 'false']);
+export const validateLabelWithExpertSlot = (
+	component: Generic.Element.Component,
+	value?: LabelWithExpertSlotPropType,
+	options: WatchStringOptions = {}
+): void => {
+	if (value === '') {
+		value = false; // TODO: remove this workaround in v2
+	}
+	watchValidator(
+		component,
+		'_label',
+		(value) => value === false || typeof value === 'string',
+		LABEL_WITH_EXPERT_SLOT_VALUES,
+		value,
+		getValidationOptions(options)
+	);
 };
 
 // TODO: Validation for labelWithExpertSlot
