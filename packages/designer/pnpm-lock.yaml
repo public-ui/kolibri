@@ -24,8 +24,8 @@ dependencies:
     specifier: 7.0.1
     version: 7.0.1(monaco-editor@0.39.0)(webpack@5.87.0)
   prettier:
-    specifier: 2.8.8
-    version: 2.8.8
+    specifier: 3.0.0
+    version: 3.0.0
   register-service-worker:
     specifier: 1.7.2
     version: 1.7.2
@@ -74,8 +74,8 @@ devDependencies:
     specifier: 0.3.0
     version: 0.3.0(eslint@8.43.0)
   nightwatch-axe-verbose:
-    specifier: 2.2.1
-    version: 2.2.1
+    specifier: 2.2.2
+    version: 2.2.2
   npm-run-all:
     specifier: 4.1.5
     version: 4.1.5
@@ -6951,8 +6951,8 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: true
 
-  /nightwatch-axe-verbose@2.2.1:
-    resolution: {integrity: sha512-Mp+L6dgmIbzkIBeWYJQ3dQ8TlA9FgjzCUanGe/hBJ9xqNgMDXIosQvZ+uWIfpZPGajR/z3uh8q5LtLX6I3a81g==}
+  /nightwatch-axe-verbose@2.2.2:
+    resolution: {integrity: sha512-MvCrQb9D/ixtGtyN5fh7YCkelXuPup3X9D2Zhhk1PWyALtkdYCFadnIGif1irpQ1BLNSlqC+FDNnsNald7KHYA==}
     dependencies:
       axe-core: 4.7.2
     dev: true
@@ -6998,7 +6998,7 @@ packages:
       minimist: 1.2.6
       mkpath: 1.0.0
       mocha: 9.2.2
-      nightwatch-axe-verbose: 2.2.1
+      nightwatch-axe-verbose: 2.2.2
       open: 8.4.0
       ora: 5.4.1
       selenium-webdriver: 4.6.1
@@ -7619,9 +7619,9 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: false
 

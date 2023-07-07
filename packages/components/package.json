@@ -67,8 +67,8 @@
 	},
 	"dependencies": {
 		"@a11y-ui/core": "1.0.3",
-		"@floating-ui/dom": "1.4.3",
-		"i18next": "22.5.1",
+		"@floating-ui/dom": "1.4.4",
+		"i18next": "23.2.8",
 		"@public-ui/schema": "1.6.0-rc.9"
 	},
 	"devDependencies": {
@@ -103,7 +103,7 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "10.3.0",
 		"mathjs": "11.8.2",
-		"postcss": "8.4.24",
+		"postcss": "8.4.25",
 		"postcss-sorting": "8.0.2",
 		"prettier": "2.8.8",
 		"query-selector-all-shadow-root": "0.0.3",
