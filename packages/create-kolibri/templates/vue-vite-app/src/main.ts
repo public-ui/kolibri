@@ -1,4 +1,4 @@
-import './assets/main.css'
+import './style.scss'
 import './assets/codicons/codicon.css'
 
 import { createApp } from 'vue'
