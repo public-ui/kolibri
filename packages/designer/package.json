@@ -46,7 +46,7 @@
 		"@public-ui/themes": "1.6.0-rc.9",
 		"monaco-editor": "0.39.0",
 		"monaco-editor-webpack-plugin": "7.0.1",
-		"prettier": "2.8.8",
+		"prettier": "3.0.0",
 		"register-service-worker": "1.7.2",
 		"solid-js": "1.7.7",
 		"world_countries_lists": "2.8.1"
