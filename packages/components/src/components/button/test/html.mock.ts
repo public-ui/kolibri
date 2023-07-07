@@ -2,6 +2,7 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { ButtonProps, ButtonStates } from '../../../types/button-link';
 import { getSpanWcHtml } from '../../span/test/html.mock';
+import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
 type Slots = {
 	expert?: string;
@@ -33,24 +34,18 @@ export const getButtonWcHtml = (
 	} class="${variant}" type="${type}">
 		${getSpanWcHtml(props, slots)}
 	</button>
-	<kol-tooltip aria-hidden="true" hidden>
-	  <div id="floating">
-	    <div class="area" id="arrow"></div>
-	    <kol-span-wc class="area" id="nonce">
-	      <span>
-				${
-					props._label
-						? `
-	        <span>
-						${props._label}
-	        </span>
-	        <span aria-hidden="true" hidden=""></span>`
-						: `<span></span>`
-				}
-	      </span>
-	    </kol-span-wc>
-	  </div>
-	</kol-tooltip>
+	${
+		typeof state._label === 'string'
+			? getTooltipHtml(
+					{
+						_align: state._tooltipAlign,
+						_id: 'nonce',
+						_label: state._label,
+					},
+					` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`
+			  )
+			: ``
+	}
 </kol-button-wc>`;
 };
 
