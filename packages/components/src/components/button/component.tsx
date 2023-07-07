@@ -21,7 +21,7 @@ import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
+import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
@@ -97,17 +97,19 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				<kol-tooltip
-					/**
-					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-					 */
-					aria-hidden="true"
-					hidden={this.state._hideLabel !== true}
-					_align={this.state._tooltipAlign}
-					_id={this.nonce}
-					_label={this.state._label as string} // TODO: what's happening here by expert-slot?!?
-				></kol-tooltip>
+				{typeof this.state._label === 'string' && (
+					<kol-tooltip
+						/**
+						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+						 */
+						aria-hidden="true"
+						hidden={this.state._hideLabel !== true}
+						_align={this.state._tooltipAlign}
+						_id={this.nonce}
+						_label={this.state._label}
+					></kol-tooltip>
+				)}
 			</Host>
 		);
 	}
@@ -318,7 +320,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabel(this, value);
+		validateLabelWithExpertSlot(this, value);
 	}
 
 	@Watch('_on')

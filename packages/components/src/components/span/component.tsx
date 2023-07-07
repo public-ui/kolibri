@@ -4,7 +4,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon } from '../../types/props/icon';
-import { LabelWithExpertSlotPropType, validateLabel } from '../../types/props/label';
+import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { KolibriSpanAPI, KolibriSpanStates } from './types';
 
 /**
@@ -85,7 +85,7 @@ export class KolSpanWc implements KolibriSpanAPI {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabel(this, value);
+		validateLabelWithExpertSlot(this, value);
 	}
 
 	public componentWillLoad(): void {
