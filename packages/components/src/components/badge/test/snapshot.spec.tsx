@@ -25,5 +25,5 @@ executeTests<KoliBriBadgeProps>(
 	getBadgeHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );

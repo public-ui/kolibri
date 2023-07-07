@@ -358,7 +358,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 						}
 					},
 				},
-			},
+			}
 		);
 	}
 

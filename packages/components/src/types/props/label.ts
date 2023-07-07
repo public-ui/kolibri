@@ -108,7 +108,7 @@ const LABEL_WITH_EXPERT_SLOT_VALUES = new Set(['string', 'false']);
 export const validateLabelWithExpertSlot = (
 	component: Generic.Element.Component,
 	value?: LabelWithExpertSlotPropType,
-	options: WatchStringOptions = {},
+	options: WatchStringOptions = {}
 ): void => {
 	if (value === '') {
 		value = false; // TODO: remove this workaround in v2
@@ -119,7 +119,7 @@ export const validateLabelWithExpertSlot = (
 		(value) => value === false || typeof value === 'string',
 		LABEL_WITH_EXPERT_SLOT_VALUES,
 		value,
-		getValidationOptions(options),
+		getValidationOptions(options)
 	);
 };
 

@@ -24,7 +24,7 @@ executeTests<KolibriSpanProps>(
 	getSpanWcHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );
 
 executeTests<KolibriSpanProps>(
@@ -44,5 +44,5 @@ executeTests<KolibriSpanProps>(
 	getSpanHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );

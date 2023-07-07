@@ -24,5 +24,5 @@ executeTests<KoliBriTooltipProps>(
 	getTooltipHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );

@@ -96,7 +96,7 @@ export class KolNav implements KoliBriNavAPI {
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
-		orientation: Orientation,
+		orientation: Orientation
 	): JSX.Element {
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
 		const selected = !!link._active;
@@ -242,7 +242,7 @@ export class KolNav implements KoliBriNavAPI {
 			'_ariaCurrentValue',
 			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
 			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value,
+			value
 		);
 	}
 
@@ -294,7 +294,7 @@ export class KolNav implements KoliBriNavAPI {
 			value,
 			{
 				defaultValue: 'vertical',
-			},
+			}
 		);
 	}
 

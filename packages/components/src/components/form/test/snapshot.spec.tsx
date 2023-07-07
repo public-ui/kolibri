@@ -22,5 +22,5 @@ executeTests<KoliBriFormProps>(
 	getFormHtml,
 	{
 		execMode: 'skip',
-	},
+	}
 );

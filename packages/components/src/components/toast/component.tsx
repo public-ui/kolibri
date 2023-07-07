@@ -114,7 +114,7 @@ export class KolToast implements KoliBriToastAPI {
 			'_type',
 			(value) => typeof value === 'string' && (value === 'default' || value === 'error' || value === 'info' || value === 'success' || value === 'warning'),
 			new Set('String {success, info, warning, error}'),
-			value,
+			value
 		);
 	}
 

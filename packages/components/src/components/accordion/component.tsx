@@ -61,7 +61,7 @@ export class KolAccordion implements API {
 					() => {
 						wrapper.style.overflow = '';
 					},
-					{ once: true },
+					{ once: true }
 				);
 			} else {
 				wrapper.style.overflow = 'hidden';
@@ -73,7 +73,7 @@ export class KolAccordion implements API {
 						() => {
 							wrapper.style.display = 'none';
 						},
-						{ once: true },
+						{ once: true }
 					);
 				} else {
 					wrapper.style.display = 'none';

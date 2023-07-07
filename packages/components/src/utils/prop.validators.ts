@@ -126,8 +126,8 @@ export const setState = <T>(component: Generic.Element.Component, propName: stri
 const logWarn = (component: Generic.Element.Component, propName: string, value: unknown, requiredGeneric: Set<string | null | undefined>): void => {
 	devHint(
 		`[${component.constructor.name}] Der Property-Wert (${value as string}) für '${propName}' ist nicht valide. Folgende Werte sind erlaubt: ${Array.from(
-			requiredGeneric,
-		).join(', ')}`,
+			requiredGeneric
+		).join(', ')}`
 	);
 };
 
@@ -159,7 +159,7 @@ export function watchValidator<T>(
 	validationFunction: (value?: T) => boolean,
 	requiredGeneric: Set<string | null | undefined>,
 	value?: T,
-	options: WatchOptions = {},
+	options: WatchOptions = {}
 ): void {
 	if (validationFunction(value)) {
 		/**
@@ -198,7 +198,7 @@ export const watchString = (component: Generic.Element.Component, propName: stri
 			typeof value === 'string' && value.length >= minLength && (typeof options?.maxLength === 'undefined' || value.length <= options.maxLength),
 		new Set([`String`]),
 		value,
-		options,
+		options
 	);
 };
 
@@ -212,7 +212,7 @@ export const watchNumber = (component: Generic.Element.Component, propName: stri
 			(typeof options?.max === 'undefined' || (typeof options?.max === 'number' && value <= options.max)),
 		new Set(['Number']),
 		value,
-		options,
+		options
 	);
 };
 
@@ -222,7 +222,7 @@ export const watchJsonArrayString = <T>(
 	itemValidation: (item: T) => boolean,
 	value?: Stringified<T[]>,
 	arrayValidation: (items: T[]) => boolean = (items: T[]) => items === items, // nochmal hirnen
-	options: WatchOptions = {},
+	options: WatchOptions = {}
 ): void => {
 	emptyStringByArrayHandler(value, () => {
 		objectObjectHandler(value, () => {
@@ -426,7 +426,7 @@ export const scrollBySelector = (selector: string, document?: Document | HTMLEle
 		typeof document === 'string'
 	) {
 		devHint(
-			`Bei der Methode querySelectorAll wurden die Parameter document, selector in selector, document getauscht, da der Parameter selector nicht, allerdings der Parameter document optional sein kann.`,
+			`Bei der Methode querySelectorAll wurden die Parameter document, selector in selector, document getauscht, da der Parameter selector nicht, allerdings der Parameter document optional sein kann.`
 		);
 		const temp = `${document as unknown as string}`;
 		document = selector as unknown as Document;

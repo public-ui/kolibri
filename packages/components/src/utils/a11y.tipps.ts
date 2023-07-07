@@ -55,7 +55,7 @@ export const featureHint = (msg: string, done = false): void => {
 	}
 };
 devHint(
-	`Wir freuen uns über jedes Feedback, Kommentare, Screenshots oder Demo-Links von einer auf KoliBri-basierenden Anwendung (kolibri@itzbund.de). Vielen Dank!`,
+	`Wir freuen uns über jedes Feedback, Kommentare, Screenshots oder Demo-Links von einer auf KoliBri-basierenden Anwendung (kolibri@itzbund.de). Vielen Dank!`
 );
 
 const uiUxCache: Set<string> = new Set<string>();
@@ -71,14 +71,14 @@ export const uiUxHint = (msg: string): void => {
 
 export const a11yHintDisabled = (): void => {
 	a11yHint(
-		`"Disabled" schränkt die Zugänglichkeit und Sichtbarkeit ein. Wir empfehlen aus Sicht der Barrierefreiheit readonly- statt disabled-Attribut zu verwenden.\n- https://uxdesign.cc/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae`,
+		`"Disabled" schränkt die Zugänglichkeit und Sichtbarkeit ein. Wir empfehlen aus Sicht der Barrierefreiheit readonly- statt disabled-Attribut zu verwenden.\n- https://uxdesign.cc/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae`
 	);
 };
 
 export const a11yHintLabelingLandmarks = (value: unknown): void => {
 	if (typeof value !== 'string' || value === '') {
 		a11yHint(
-			`Manche Strukturelemente, wie bspw. der nav-Tag, können mehrfach in einer Webseite verwendet werden. Damit die gleichnamigen Strukturelemente voneinander unterschieden werden können, ist es erforderlich ein Aria-Label zu setzen.\n- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Navigation_Role#accessibility_concerns`,
+			`Manche Strukturelemente, wie bspw. der nav-Tag, können mehrfach in einer Webseite verwendet werden. Damit die gleichnamigen Strukturelemente voneinander unterschieden werden können, ist es erforderlich ein Aria-Label zu setzen.\n- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Navigation_Role#accessibility_concerns`
 		);
 	}
 };
@@ -90,7 +90,7 @@ export const uiUxHintMillerscheZahl = (className: string, length = 8): void => {
 
 Links:
 - https://de.ryte.com/wiki/Millersche_Zahl
-- https://de.wikipedia.org/wiki/Millersche_Zahl`,
+- https://de.wikipedia.org/wiki/Millersche_Zahl`
 		);
 	}
 };

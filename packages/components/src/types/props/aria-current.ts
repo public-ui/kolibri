@@ -23,6 +23,6 @@ export const validateAriaCurrent = (component: Generic.Element.Component, value?
 		'_ariaCurrent',
 		(value) => value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time' || value === true,
 		new Set(['String {data, location, page, step, time}', 'boolean']),
-		value,
+		value
 	);
 };

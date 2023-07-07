@@ -23,5 +23,5 @@ executeTests<KoliBriIconProps>(
 	getIconHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );
