@@ -29,7 +29,7 @@ export class SelectController extends InputIconController implements Watches {
 					? (option as Option<W3CInputValue>).value === value
 					: Array.isArray((option as Optgroup<string>).options)
 					? this.isValueInOptions(value, (option as Optgroup<string>).options)
-					: false
+					: false,
 			) !== undefined
 		);
 	};

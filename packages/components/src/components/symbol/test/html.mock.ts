@@ -8,7 +8,7 @@ export const getSymbolHtml = (props: KoliBriSymbolProps): string => {
 			_label: 'kol-warning',
 			_symbol: '…', // ⚠ required
 		},
-		props
+		props,
 	);
 	return `<kol-symbol>
 	${/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */ ''}

@@ -115,7 +115,7 @@ export const validateIcon = (component: Generic.Element.Component, value?: KoliB
 					},
 				},
 				required: true,
-			}
+			},
 		);
 	});
 };

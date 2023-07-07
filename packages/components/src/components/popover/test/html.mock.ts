@@ -6,7 +6,7 @@ export const getPopoverHtml = (
 	props: KoliBriPopoverProps,
 	slots: {
 		default?: string;
-	} = {}
+	} = {},
 ): string => {
 	const state: KoliBriPopoverStates = mixMembers<KoliBriPopoverProps, KoliBriPopoverStates>(
 		{
@@ -14,7 +14,7 @@ export const getPopoverHtml = (
 			_show: false,
 			_visible: false,
 		},
-		props
+		props,
 	);
 	return `
   <kol-popover>

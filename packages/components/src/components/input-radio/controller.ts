@@ -92,7 +92,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 			value,
 			{
 				defaultValue: 'vertical',
-			}
+			},
 		);
 	}
 
@@ -107,7 +107,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 				hooks: {
 					beforePatch: this.beforePatchListValue,
 				},
-			}
+			},
 		);
 	}
 

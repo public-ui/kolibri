@@ -14,7 +14,7 @@ export const getQuoteHtml = (props: KoliBriQuoteProps, slots: Slot = {}): string
 			_quote: '…', // ⚠ required
 			_variant: 'inline',
 		},
-		props
+		props,
 	);
 	const showExpertSlot = state._quote === '';
 	return `<kol-quote>

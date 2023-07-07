@@ -76,7 +76,7 @@ export class InputController extends ControlledInputController implements Watche
 		});
 		if (typeof value === 'undefined') {
 			devHint(
-				`Ein Name an den Eingabefeldern ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`
+				`Ein Name an den Eingabefeldern ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`,
 			);
 		}
 	}

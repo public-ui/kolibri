@@ -250,7 +250,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 			'_ariaControls',
 			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
 			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
+			value,
 		);
 	}
 

@@ -13,7 +13,7 @@ export const getButtonWcHtml = (
 	slots: Slots = {
 		expert: undefined,
 	},
-	additionalAttrs = ''
+	additionalAttrs = '',
 ): string => {
 	const state = mixMembers<ButtonProps, ButtonStates>(
 		{
@@ -22,7 +22,7 @@ export const getButtonWcHtml = (
 			_type: 'button',
 			_variant: 'normal',
 		},
-		props
+		props,
 	);
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
@@ -42,7 +42,7 @@ export const getButtonWcHtml = (
 						_id: 'nonce',
 						_label: state._label,
 					},
-					` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`
+					` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`,
 			  )
 			: ``
 	}
@@ -57,7 +57,7 @@ export const getButtonHtml = (props: ButtonProps): string => {
 			_type: 'button',
 			_variant: 'normal',
 		},
-		props
+		props,
 	);
 	return `<kol-button>
   <mock:shadow-root>
@@ -66,7 +66,7 @@ export const getButtonHtml = (props: ButtonProps): string => {
 			{
 				expert: `<slot name="expert" slot="expert"></slot>`,
 			},
-			` class="button ${state._variant}"`
+			` class="button ${state._variant}"`,
 		)}
   </mock:shadow-root>
 </kol-button>`;

@@ -97,7 +97,7 @@ export const createContrastColorPair = (color: string | ColorPair<string>, contr
 		[baseColor[0], baseColor[1], baseColor[2]],
 		[contrastColor[0], contrastColor[1], contrastColor[2]],
 		contrastRatio,
-		yiq
+		yiq,
 	);
 	contrastColor = [...colorContrast.foreground, 1];
 

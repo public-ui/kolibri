@@ -20,7 +20,7 @@ export class InputRangeController extends InputIconController implements Watches
 			'_autoComplete',
 			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
 			new Set(['on | off']),
-			value
+			value,
 		);
 	}
 
@@ -29,7 +29,7 @@ export class InputRangeController extends InputIconController implements Watches
 			this.component,
 			'_list',
 			(item: Option<number>) => typeof item === 'object' && typeof item.label === 'string' && item.label.length > 0,
-			value
+			value,
 		);
 	}
 

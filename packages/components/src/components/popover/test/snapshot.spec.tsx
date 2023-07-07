@@ -22,5 +22,5 @@ executeTests<KoliBriPopoverProps>(
 	getPopoverHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

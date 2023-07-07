@@ -22,5 +22,5 @@ executeTests<KoliBriQuoteProps>(
 		_quote: ['Text of the Quote'],
 		_variant: ['block', 'inline'],
 	},
-	getQuoteHtml
+	getQuoteHtml,
 );

@@ -9,7 +9,7 @@ export const getAbbrHtml = (props: Props): string => {
 			_title: '…', // ⚠ required
 			_tooltipAlign: 'top',
 		},
-		props
+		props,
 	);
 	return `
 <kol-abbr>

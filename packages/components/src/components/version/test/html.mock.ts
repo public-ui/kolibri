@@ -8,7 +8,7 @@ export const getVersionHtml = (props: KoliBriVersionProps, additionalAttrs = '')
 		{
 			_label: '0.0.0-alpha.0',
 		},
-		props
+		props,
 	);
 	return `
 <kol-version${additionalAttrs}>

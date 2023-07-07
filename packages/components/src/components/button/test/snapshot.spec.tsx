@@ -19,5 +19,5 @@ executeTests<ButtonProps>(
 	{
 		_label: ['Label'],
 	},
-	getButtonHtml
+	getButtonHtml,
 );

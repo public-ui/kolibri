@@ -22,5 +22,5 @@ executeTests<KoliBriSpinProps>(
 	getSpinHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );
