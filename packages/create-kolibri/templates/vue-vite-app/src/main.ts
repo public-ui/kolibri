@@ -1,6 +1,3 @@
-import './assets/main.css'
-import './assets/codicons/codicon.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
