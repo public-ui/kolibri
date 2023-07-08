@@ -17,7 +17,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		},
 		props
 	);
-	const label: string = state._label === false ? state._href : state._label;
+	const hasExpertSlot: boolean = state._label === false;
 	return `
 <kol-link>
   <mock:shadow-root>
@@ -32,7 +32,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			${getSpanWcHtml(
 				{
 					...state,
-					_label: label,
+					_label: hasExpertSlot ? false : state._label || state._href,
 				},
 				{
 					expert: `<slot name="expert" slot="expert"></slot><slot slot="expert"></slot>`,
@@ -51,18 +51,14 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 					: ''
 			}
     </a>
-		${
-			typeof state._label === 'string'
-				? getTooltipHtml(
-						{
-							_align: state._tooltipAlign,
-							_id: 'nonce',
-							_label: state._label,
-						},
-						` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`
-				  )
-				: ``
-		}
+		${getTooltipHtml(
+			{
+				_align: state._tooltipAlign,
+				_id: 'nonce',
+				_label: state._label || state._href,
+			},
+			` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
+		)}
     </kol-link-wc>
   </mock:shadow-root>
   ${innerHTML}

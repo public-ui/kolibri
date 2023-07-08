@@ -110,7 +110,7 @@ export const validateLabelWithExpertSlot = (
 	value?: LabelWithExpertSlotPropType,
 	options: WatchStringOptions = {}
 ): void => {
-	if (value === '') {
+	if (value === '' || value === 'false') {
 		value = false; // TODO: remove this workaround in v2
 	}
 	watchValidator(

@@ -94,7 +94,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
-		const label: string = this.state._label === false ? this.state._href : this.state._label;
+		const hasExpertSlot: boolean = this.state._label === false;
 		return (
 			<Host>
 				<a
@@ -103,7 +103,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._useCase === 'image' || this.state._hideLabel === true ? this.nonce : undefined}
+					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
 						disabled: this.state._disabled === true,
@@ -120,24 +120,22 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={label}>
+					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label || this.state._href}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				{typeof this.state._label === 'string' && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						hidden={this.state._hideLabel !== true}
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._label}
-					></kol-tooltip>
-				)}
+				<kol-tooltip
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					aria-hidden="true"
+					hidden={hasExpertSlot || !this.state._hideLabel}
+					_align={this.state._tooltipAlign}
+					_id={this.nonce}
+					_label={this.state._label || this.state._href}
+				></kol-tooltip>
 			</Host>
 		);
 	}
