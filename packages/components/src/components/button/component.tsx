@@ -68,6 +68,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	};
 
 	public render(): JSX.Element {
+		const hasExpertSlot: boolean = this.state._label === false;
 		return (
 			<Host>
 				<button
@@ -76,7 +77,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._hideLabel === true ? this.nonce : undefined}
+					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
 						[this.state._variant as string]: this.state._variant !== 'custom',
@@ -93,23 +94,21 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this.state._hideLabel} _label={this.state._label}>
+					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				{typeof this.state._label === 'string' && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						hidden={this.state._hideLabel !== true}
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._label}
-					></kol-tooltip>
-				)}
+				<kol-tooltip
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					aria-hidden="true"
+					hidden={hasExpertSlot || !this.state._hideLabel}
+					_align={this.state._tooltipAlign}
+					_id={this.nonce}
+					_label={typeof this.state._label === 'string' ? this.state._label : ''}
+				></kol-tooltip>
 			</Host>
 		);
 	}

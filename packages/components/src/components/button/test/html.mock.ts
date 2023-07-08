@@ -28,24 +28,27 @@ export const getButtonWcHtml = (
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
 	const type = typeof state._type === 'string' ? state._type : 'button';
 	const variant = typeof state._variant === 'string' ? state._variant : 'normal';
+	const hasExpertSlot: boolean = state._label === false;
 	return `<kol-button-wc${additionalAttrs}>
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
 	} class="${variant}" type="${type}">
-		${getSpanWcHtml(props, slots)}
+		${getSpanWcHtml(
+			{
+				...props,
+				_label: hasExpertSlot ? false : state._label,
+			},
+			slots
+		)}
 	</button>
-	${
-		typeof state._label === 'string'
-			? getTooltipHtml(
-					{
-						_align: state._tooltipAlign,
-						_id: 'nonce',
-						_label: state._label,
-					},
-					` aria-hidden="true"${state._hideLabel !== true ? ' hidden' : ''}`
-			  )
-			: ``
-	}
+	${getTooltipHtml(
+		{
+			_align: state._tooltipAlign,
+			_id: 'nonce',
+			_label: typeof state._label === 'string' ? state._label : '',
+		},
+		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
+	)}
 </kol-button-wc>`;
 };
 
