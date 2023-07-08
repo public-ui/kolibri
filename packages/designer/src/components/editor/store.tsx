@@ -59,7 +59,7 @@ COUNTRIES.forEach((country) =>
 	STATUS_OPTIONS.push({
 		label: country.name,
 		value: country.alpha2,
-	}),
+	})
 );
 let modalElement: HTMLElement | null = null;
 

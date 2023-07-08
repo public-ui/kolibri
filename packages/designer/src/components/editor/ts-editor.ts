@@ -38,7 +38,7 @@ register(YOUR_THEME, defineCustomElements)
 	})
 	.catch(console.warn);
 `,
-				{ parser: 'typescript', plugins: [parserTypeScript] },
+				{ parser: 'typescript', plugins: [parserTypeScript] }
 			);
 		} catch (e) {}
 		editor.create(ref, {
