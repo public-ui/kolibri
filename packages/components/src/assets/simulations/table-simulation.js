@@ -142,12 +142,12 @@ const TABLE_2_HEADERS = {
 const TABLE_NVDA_HEADERS = {
 	horizontal: [
 		[
-			{ label: 'Juni', key: 'juni' },
-			{ label: 'April', key: 'april' },
-			{ label: 'Mai', key: 'mai' },
-			{ label: 'Juli', key: 'juli' },
-			{ label: 'August', key: 'august' },
-			{ label: 'September', key: 'september' },
+			{ label: 'Juni', key: 'juni', sort: (data) => data.sort((a, b) => sortTable(a, b, 'juni', 'number')) },
+			{ label: 'April', key: 'april', sort: (data) => data.sort((a, b) => sortTable(a, b, 'april', 'number')) },
+			{ label: 'Mai', key: 'mai', sort: (data) => data.sort((a, b) => sortTable(a, b, 'mai', 'number')) },
+			{ label: 'Juli', key: 'juli', sort: (data) => data.sort((a, b) => sortTable(a, b, 'juli', 'number')) },
+			{ label: 'August', key: 'august', sort: (data) => data.sort((a, b) => sortTable(a, b, 'august', 'number')) },
+			{ label: 'September', key: 'september', sort: (data) => data.sort((a, b) => sortTable(a, b, 'september', 'number')) },
 		],
 	],
 };
@@ -804,6 +804,16 @@ function setMultipleTableData(tableClass, caption, data, header, footer) {
 			if (footer) table._dataFoot = footer;
 		});
 	}, 500);
+}
+
+function sortTable(a, b, key, type) {
+	if (!type) type = 'string';
+	switch (type) {
+		case 'number':
+			return parseFloat(a[key]) - parseFloat(b[key]);
+		case 'string':
+			return a[key].localeCompare(b[key]);
+	}
 }
 
 setTableData('#table-1a', 'header: h/v, data: short, foot', TABLE_DATA_SHORT, TABLE_HEADERS_H_V, TABLE_FOOT_DATA);
