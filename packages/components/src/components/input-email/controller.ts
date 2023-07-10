@@ -1,8 +1,8 @@
 import { Generic } from '@a11y-ui/core';
 
+import { validateMultiple } from '../../types/props/multiple';
 import { InputTextEmailController } from '../input-text/controller';
 import { Props, Watches } from './types';
-import { validateMultiple } from '../../types/props/multiple';
 
 export class InputEmailController extends InputTextEmailController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

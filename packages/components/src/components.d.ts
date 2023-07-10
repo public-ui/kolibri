@@ -780,6 +780,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -862,6 +866,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -956,6 +964,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1067,6 +1079,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1144,6 +1160,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1242,6 +1262,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1346,6 +1370,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1415,6 +1443,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1567,6 +1599,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1668,6 +1704,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -2263,6 +2303,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -2567,6 +2611,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3778,6 +3826,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -3860,6 +3912,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3954,6 +4010,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4065,6 +4125,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4142,6 +4206,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4240,6 +4308,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4344,6 +4416,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4413,6 +4489,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4565,6 +4645,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4666,6 +4750,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -5261,6 +5349,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -5565,6 +5657,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
