@@ -30,8 +30,8 @@ export class KolInputCheckbox implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const showExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
 			<Host>
 				<kol-input
@@ -53,7 +53,8 @@ export class KolInputCheckbox implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
+					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					<span slot="label">{showExpertSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input">
 						<kol-icon
 							onClick={this.onChange}

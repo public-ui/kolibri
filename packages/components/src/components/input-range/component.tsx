@@ -59,8 +59,8 @@ export class KolInputRange implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const showExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
 			<Host>
 				<kol-input
@@ -76,7 +76,8 @@ export class KolInputRange implements ComponentApi {
 					_id={this.state._id}
 					_touched={this.state._touched}
 				>
-					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
+					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					<span slot="label">{showExpertSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input" class="inputs-wrapper">
 						<input
 							title=""

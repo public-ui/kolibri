@@ -32,8 +32,8 @@ export class KolInputRadio implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const showExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
 			<Host>
 				<fieldset
@@ -48,7 +48,8 @@ export class KolInputRadio implements ComponentApi {
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
-							{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
+							{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+							<span slot="label">{showExpertSlot ? <slot></slot> : this.state._label}</span>
 						</span>
 					</legend>
 					{this.state._list.map((option, index) => {
