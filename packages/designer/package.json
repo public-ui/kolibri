@@ -44,7 +44,7 @@
 		"@public-ui/components": "1.6.0-rc.12",
 		"@public-ui/solid": "1.6.0-rc.12",
 		"@public-ui/themes": "1.6.0-rc.12",
-		"monaco-editor": "0.39.0",
+		"monaco-editor": "0.40.0",
 		"monaco-editor-webpack-plugin": "7.0.1",
 		"prettier": "2.8.8",
 		"register-service-worker": "1.7.2",
