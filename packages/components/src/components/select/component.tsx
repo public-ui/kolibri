@@ -3,6 +3,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
+import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
@@ -61,8 +62,8 @@ export class KolSelect implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const hasExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
@@ -80,57 +81,70 @@ export class KolSelect implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
-					<select
-						ref={this.catchRef}
-						title=""
-						accessKey={this.state._accessKey}
-						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-						aria-labelledby={`${this.state._id}-label`}
-						autoCapitalize="off"
-						autoCorrect="off"
-						disabled={this.state._disabled}
-						id={this.state._id}
-						multiple={this.state._multiple}
-						name={this.state._name}
-						required={this.state._required}
-						size={this.state._size}
-						slot="input"
-						spellcheck="false"
-						style={{
-							height: this.state._height,
-						}}
-						{...{
-							onClick: this.controller.onFacade.onClick,
-							onBlur: this.controller.onFacade.onBlur,
-							onFocus: this.controller.onFacade.onFocus,
-						}}
-						onChange={this.onChange}
-					>
-						{this.state._list.map((option, index) => {
+					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<div slot="input">
+						<select
+							ref={this.catchRef}
+							title=""
+							accessKey={this.state._accessKey}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+							aria-labelledby={`${this.state._id}-label`}
+							autoCapitalize="off"
+							autoCorrect="off"
+							disabled={this.state._disabled}
+							id={this.state._id}
+							multiple={this.state._multiple}
+							name={this.state._name}
+							required={this.state._required}
+							size={this.state._size}
+							spellcheck="false"
+							style={{
+								height: this.state._height,
+							}}
+							{...{
+								onClick: this.controller.onFacade.onClick,
+								onBlur: this.controller.onFacade.onBlur,
+								onFocus: this.controller.onFacade.onFocus,
+							}}
+							onChange={this.onChange}
+						>
+							{this.state._list.map((option, index) => {
+								/**
+								 * Damit der Value einer Option ein beliebigen Typ haben kann
+								 * muss man auf HTML-Ebene den Value auf einen String-Wert
+								 * mappen. Das tun wir mittels der Map.
+								 */
+								const key = `-${index}`;
+								if (Array.isArray((option as unknown as Optgroup<string>).options)) {
+									return this.renderOptgroup(option as unknown as Optgroup<string>, key);
+								} else {
+									return (
+										<option
+											disabled={option.disabled === true}
+											key={key}
+											// label={option.label}
+											selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
+											value={key}
+										>
+											{option.label}
+										</option>
+									);
+								}
+							})}
+						</select>
+						<kol-tooltip
 							/**
-							 * Damit der Value einer Option ein beliebigen Typ haben kann
-							 * muss man auf HTML-Ebene den Value auf einen String-Wert
-							 * mappen. Das tun wir mittels der Map.
+							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 							 */
-							const key = `-${index}`;
-							if (Array.isArray((option as unknown as Optgroup<string>).options)) {
-								return this.renderOptgroup(option as unknown as Optgroup<string>, key);
-							} else {
-								return (
-									<option
-										disabled={option.disabled === true}
-										key={key}
-										// label={option.label}
-										selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
-										value={key}
-									>
-										{option.label}
-									</option>
-								);
-							}
-						})}
-					</select>
+							aria-hidden="true"
+							hidden={hasExpertSlot || !this.state._hideLabel}
+							_align={this._tooltipAlign}
+							_id={`${this.state._id}-tooltip`}
+							_label={typeof this.state._label === 'string' ? this.state._label : ''}
+						></kol-tooltip>
+					</div>
 				</kol-input>
 			</Host>
 		);
@@ -230,6 +244,11 @@ export class KolSelect implements ComponentApi {
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 */
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
