@@ -139,6 +139,18 @@ const TABLE_2_HEADERS = {
 		],
 	].concat([TABLE_HEADERS_H.horizontal[1]]),
 };
+const TABLE_NVDA_HEADERS = {
+	horizontal: [
+		[
+			{ label: 'Juni', key: 'juni' },
+			{ label: 'April', key: 'april' },
+			{ label: 'Mai', key: 'mai' },
+			{ label: 'Juli', key: 'juli' },
+			{ label: 'August', key: 'august' },
+			{ label: 'September', key: 'september' },
+		],
+	],
+};
 
 const TABLE_DATA = [
 	{
@@ -727,6 +739,14 @@ const TABLE_2_DATA = [
 	{ montag: 'Fabian', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
 	{ montag: 'Hong', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
 ];
+const TABLE_NVDA_DATA = [
+	{ april: '97', mai: '99', juni: '100', juli: '101', august: '102', september: '105' },
+	{ april: '11', mai: '13', juni: '13', juli: '13', august: '12', september: '12' },
+	{ april: '86', mai: '85', juni: '87', juli: '88', august: '87', september: '90' },
+	{ april: '11', mai: '12', juni: '12', juli: '11', august: '12', september: '12' },
+	{ april: '42', mai: '41', juni: '42', juli: '43', august: '39', september: '42' },
+	{ april: '100', mai: '99', juni: '98', juli: '99', august: '102', september: '109' },
+];
 
 const TABLE_FOOT_DATA = [
 	{
@@ -797,6 +817,8 @@ setTableData('#table-3a', 'header: h, data: paged', TABLE_PAGED_DATA, TABLE_HEAD
 setTableData('#table-3b', 'header: h, data: paged, pagination-1', TABLE_PAGED_DATA, TABLE_HEADERS_H, undefined, PAGINATION_1);
 
 setTableData('#table-4', 'header: h, data: paged, pagination-2', TABLE_PAGED_DATA, TABLE_HEADERS_H, undefined, PAGINATION_2);
+
+setTableData('#nvda', 'Sortiertest NVDA', TABLE_NVDA_DATA, TABLE_NVDA_HEADERS);
 
 const dayTableHeaders = {
 	horizontal: [
