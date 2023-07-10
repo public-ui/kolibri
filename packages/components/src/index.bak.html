@@ -196,7 +196,8 @@
 								<kol-input-email _icon="{'left': 'codicon codicon-home'}" _id="input-email" _error="Test einer Fehlermeldung" _touched
 									>E-Mail-Adresse</kol-input-email
 								>
-								<kol-input-text _id="input-text" _hint="Ich bin ein Hinweis." _type="text">Vorname</kol-input-text>
+								<kol-input-text _id="input-text" _hint="Ich bin ein Hinweis.">Vorname</kol-input-text>
+								<kol-input-text _id="input-text" _hide-label _label="Vorname" _type="search"></kol-input-text>
 								<kol-input-password _id="input-password" _name="input-password">Passwort</kol-input-password>
 								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung</kol-select>
 
@@ -711,7 +712,7 @@
 									>Anrede</kol-input-radio
 								>
 								<kol-input-range class="herr-frau" _id="input-range" _min="0" _max="50">Schieberegler</kol-input-range>
-								<kol-input-text _id="input-text" _hint="Ich bin ein Hinweis." _type="text">Vorname (Auto-Vervollständigung) </kol-input-text>
+								<kol-input-text _id="input-text" _hint="Ich bin ein Hinweis.">Vorname (Auto-Vervollständigung) </kol-input-text>
 								<kol-input-text _id="input-text-search" _type="search">Suchbegriff</kol-input-text>
 								<kol-input-text _id="input-text-url" _type="url">Url</kol-input-text>
 								<kol-input-text _id="input-text-tel" _type="tel">Telefonnummer</kol-input-text>
@@ -1128,11 +1129,9 @@
 							</div>
 							<div class="d-grid gap-2">
 								<kol-heading _label="" _level="3">InputText</kol-heading>
-								<kol-input-text class="vorname" _hint="Ich bin ein Hinweis." _id="input-text-vorname" _type="text"
-									>Vorname (Auto-Vervollständigung)
-								</kol-input-text>
+								<kol-input-text class="vorname" _hint="Ich bin ein Hinweis." _id="input-text-vorname">Vorname (Auto-Vervollständigung) </kol-input-text>
 								<lean-input-adapter class="d-grid gap-2" id="kol-input-text">
-									<kol-input-text class="vorname" _id="input-text-vorname" _type="text">Vorname</kol-input-text>
+									<kol-input-text class="vorname" _id="input-text-vorname">Vorname</kol-input-text>
 								</lean-input-adapter>
 								<kol-input-text _type="search">Suchbegriff</kol-input-text>
 								<br />

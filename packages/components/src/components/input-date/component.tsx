@@ -6,6 +6,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
@@ -47,7 +48,7 @@ export class KolInputDate implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
-		const showExpertSlot = this.state._label === false; // _label="" or _label
+		const hasExpertSlot = this.state._label === false; // _label="" or _label
 
 		return (
 			<Host class={{ 'has-value': this.state._hasValue }}>
@@ -69,32 +70,44 @@ export class KolInputDate implements ComponentApi {
 					_touched={this.state._touched}
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
-					<span slot="label">{showExpertSlot ? <slot></slot> : this.state._label}</span>
-					<input
-						ref={this.catchRef}
-						title=""
-						accessKey={this.state._accessKey}
-						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-						aria-labelledby={`${this.state._id}-label`}
-						autoCapitalize="off"
-						autoComplete={this.state._autoComplete}
-						autoCorrect="off"
-						disabled={this.state._disabled}
-						id={this.state._id}
-						list={hasList ? `${this.state._id}-list` : undefined}
-						max={this.state._max}
-						min={this.state._min}
-						name={this.state._name}
-						readOnly={this.state._readOnly}
-						required={this.state._required}
-						slot="input"
-						step={this.state._step}
-						spellcheck="false"
-						type={this.state._type}
-						value={this.state._value as string}
-						{...this.controller.onFacade}
-						onKeyUp={this.onKeyUp}
-					/>
+					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<div slot="input">
+						<input
+							ref={this.catchRef}
+							title=""
+							accessKey={this.state._accessKey}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+							aria-labelledby={`${this.state._id}-label`}
+							autoCapitalize="off"
+							autoComplete={this.state._autoComplete}
+							autoCorrect="off"
+							disabled={this.state._disabled}
+							id={this.state._id}
+							list={hasList ? `${this.state._id}-list` : undefined}
+							max={this.state._max}
+							min={this.state._min}
+							name={this.state._name}
+							readOnly={this.state._readOnly}
+							required={this.state._required}
+							step={this.state._step}
+							spellcheck="false"
+							type={this.state._type}
+							value={this.state._value as string}
+							{...this.controller.onFacade}
+							onKeyUp={this.onKeyUp}
+						/>
+						<kol-tooltip
+							/**
+							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+							 */
+							aria-hidden="true"
+							hidden={hasExpertSlot || !this.state._hideLabel}
+							_align={this._tooltipAlign}
+							_id={`${this.state._id}-tooltip`}
+							_label={typeof this.state._label === 'string' ? this.state._label : ''}
+						></kol-tooltip>
+					</div>
 				</kol-input>
 			</Host>
 		);
@@ -207,6 +220,11 @@ export class KolInputDate implements ComponentApi {
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 */
+	@Prop() public _tooltipAlign?: Align = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
