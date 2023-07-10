@@ -60,7 +60,7 @@ Hierzu können die in der Bibliothek mitgelieferten Schriftarten in die eigenen 
 Anschließend können die relevanten CSS-Dateien mit den Schriftart-Definitionen im `<head>` der HTML-Datei eingebunden werden.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de" dir="ltr">
 	<head>
 		<title>Webapplication | KoliBri</title>
@@ -99,9 +99,9 @@ Er sorgt dafür, dass die Web Components asychron (lazy) nachgeladen werden, sob
 ```html
 <head>
 	<script type="module">
-		import { register } from 'https://esm.sh/@public-ui/core@1.6.0-rc.11';
-		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.11/dist/loader';
-		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.11';
+		import { register } from 'https://esm.sh/@public-ui/core@1.6.0-rc.12';
+		import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.12/dist/loader';
+		import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.12';
 		register([ITZBund], defineCustomElements)
 			.then(() => {})
 			.catch(console.warn);
