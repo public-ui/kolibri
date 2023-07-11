@@ -26,4 +26,7 @@ export default {
 	'logo-description': 'Logo {{orgShort}}. Bundesadler mit Flaggenstab und Schriftzug {{orgLong}}',
 	'open-link-in-tab': 'Der Link wird in einem neuen Tab geöffnet.',
 	'kolibri-logo': 'Logo von KoliBri',
+	'sort-descending': 'Spalte {{column}} absteigend sortiert',
+	'sort-ascending': 'Spalte {{column}} aufsteigend sortiert',
+	'sort-none': 'Spalte {{column}} nicht sortiert',
 };
