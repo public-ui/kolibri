@@ -81,7 +81,7 @@ Beachten Sie, dass auch das letzte Element in der Breadcrumb-Komponente per Tab-
 
 ## Links und Referenzen
 
-- https://www.w3.org/TR/wai-aria-practices/#breadcrumb
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#breadcrumb" _label="https://www.w3.org/TR/wai-aria-practices/#breadcrumb"></kol-link>
 
 <!-- Auto Generated Below -->
 
