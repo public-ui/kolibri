@@ -18,7 +18,7 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ## Links und Referenzen
 
-- https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _label="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips"></kol-link>
 
 <!-- Auto Generated Below -->
 
