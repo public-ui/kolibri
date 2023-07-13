@@ -15,8 +15,8 @@ devDependencies:
     specifier: 14.3.0
     version: 14.3.0(rxjs@7.6.0)(zone.js@0.12.0)
   '@public-ui/components':
-    specifier: 1.6.0-rc.9
-    version: 1.6.0-rc.9
+    specifier: 1.6.0-rc.12
+    version: 1.6.0-rc.12
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -25,7 +25,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.8
-    version: 20.4.0
+    version: 20.4.2
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -319,8 +319,8 @@ packages:
     resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
     dev: true
 
-  /@floating-ui/dom@1.4.3:
-    resolution: {integrity: sha512-nB/68NyaQlcdY22L+Fgd1HERQ7UGv7XFN+tPxwrEfQL4nKtAP/jIZnZtpUlXbtV+VEGHh6W/63Gy2C5biWI3sA==}
+  /@floating-ui/dom@1.4.4:
+    resolution: {integrity: sha512-21hhDEPOiWkGp0Ys4Wi6Neriah7HweToKra626CIK712B5m9qkdz54OP9gVldUg+URnBTpv/j/bi/skmGdstXQ==}
     dependencies:
       '@floating-ui/core': 1.3.1
     dev: true
@@ -359,17 +359,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.6.0-rc.9:
-    resolution: {integrity: sha512-Yo2e2gPLKm+QxUmpmsUiTg22bKzuWAIYOZXil3LeggTR2tcOGDie4S2xxS6c6HGmMkBAoAbYHDKZVDqXkSKQ4w==}
+  /@public-ui/components@1.6.0-rc.12:
+    resolution: {integrity: sha512-9K2hTa/bzDGpkH82kADniQXbrcyRaEEpoceVNlBLJiy/M0lvvsxZSGKqt8FGqUYD7/gJ9HEeSiEfyjpWFldTWg==}
     dependencies:
       '@a11y-ui/core': 1.0.3
-      '@floating-ui/dom': 1.4.3
-      '@public-ui/schema': 1.6.0-rc.9
-      i18next: 22.5.1
+      '@floating-ui/dom': 1.4.4
+      '@public-ui/schema': 1.6.0-rc.12
+      i18next: 23.2.8
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.9:
-    resolution: {integrity: sha512-GpaFMogV6bIKMCc3ZoR/XewrlZXPxerfSaLaEqgFWDOE6Mk38cz3o3YyCnwB5uK9MFZxvCN6J2iYNcat7Fpj8A==}
+  /@public-ui/schema@1.6.0-rc.12:
+    resolution: {integrity: sha512-zLHAI8ZibeWUZyA5noZgNmEYQ64PcMDwYvn/j6wGEHNq8rxSeD/pW34N9rKv8k4cYuhzzigdusajgXHqrIaTAQ==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: true
@@ -382,8 +382,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.4.0:
-    resolution: {integrity: sha512-jfT7iTf/4kOQ9S7CHV9BIyRaQqHu67mOjsIQBC3BKZvzvUB6zLxEwJ6sBE3ozcvP8kF6Uk5PXN0Q+c0dfhGX0g==}
+  /@types/node@20.4.2:
+    resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -615,8 +615,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /i18next@22.5.1:
-    resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
+  /i18next@23.2.8:
+    resolution: {integrity: sha512-wU0pMlJ91ZbB89i77G3YQ11/pBQrzgWpxJYl7HFyA9aU9v3aHMI/oBKQmAJNURr0A8cLG4EHjgSMK8IqQTp4PQ==}
     dependencies:
       '@babel/runtime': 7.22.5
     dev: true
