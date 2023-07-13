@@ -40,7 +40,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 ## Links und Referenzen
 
-- https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109"></kol-link>
 
 <!-- Auto Generated Below -->
 
