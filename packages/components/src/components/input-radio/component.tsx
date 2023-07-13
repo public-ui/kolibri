@@ -221,7 +221,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)
 	 */
-	@Prop() public _value?: Stringified<W3CInputValue>;
+	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<W3CInputValue>;
 
 	@State() public state: States = {
 		_id: nonce(), // ⚠ required
@@ -331,6 +331,7 @@ export class KolInputRadio implements ComponentApi {
 			if (option !== undefined) {
 				this.controller.setValue(event, option.value as string); // TODO: fix type
 			}
+			this._value = option?.value;
 		}
 	};
 }

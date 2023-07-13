@@ -200,7 +200,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 */
-	@Prop() public _value?: string;
+	@Prop({ reflect: true }) public _value?: string;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.

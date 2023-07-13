@@ -42,6 +42,8 @@ export class KolInputDate implements ComponentApi {
 			});
 		} else {
 			this.controller.onFacade.onChange(event);
+			/* this._value does not work because of type */
+			this.host?.setAttribute('_value', (event.target as HTMLInputElement).value);
 		}
 	};
 
@@ -239,7 +241,7 @@ export class KolInputDate implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: States = {
 		_autoComplete: 'off',

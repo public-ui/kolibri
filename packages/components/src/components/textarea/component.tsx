@@ -224,7 +224,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: States = {
 		_adjustHeight: false,
@@ -365,6 +365,7 @@ export class KolTextarea implements ComponentApi {
 				this._rows = increaseTextareaHeight(this.ref);
 			}
 		}
+		this._value = (event.target as HTMLTextAreaElement).value;
 		if (typeof this.controller.onFacade.onChange === 'function') {
 			this.controller.onFacade.onChange(event);
 		}

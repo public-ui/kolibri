@@ -42,6 +42,7 @@ export class KolInputEmail implements ComponentApi {
 			});
 		} else {
 			this.controller.onFacade.onChange(event);
+			this._value = (event.target as HTMLInputElement).value;
 		}
 	};
 
@@ -257,7 +258,7 @@ export class KolInputEmail implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: States = {
 		_autoComplete: 'off',

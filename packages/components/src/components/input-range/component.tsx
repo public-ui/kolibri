@@ -41,6 +41,7 @@ export class KolInputRange implements ComponentApi {
 		if (this.state._max && value > this.state._max) value = this.state._max;
 		if (this.state._min && value < this.state._min) value = this.state._min;
 		this.validateValue(value);
+		this._value = value;
 		if (typeof this.state._on?.onChange === 'function') {
 			this.state._on?.onChange(event, value);
 		}
@@ -258,7 +259,7 @@ export class KolInputRange implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: number;
+	@Prop({ mutable: true, reflect: true }) public _value?: number;
 
 	@State() public state: States = {
 		_autoComplete: 'off',

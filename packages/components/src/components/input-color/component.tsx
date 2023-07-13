@@ -31,6 +31,11 @@ export class KolInputColor implements ComponentApi {
 		propagateFocus(this.host, this.ref);
 	};
 
+	private readonly onChange = (event: Event) => {
+		this.controller.onFacade.onChange(event);
+		this._value = (event.target as HTMLInputElement).value;
+	};
+
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
@@ -55,6 +60,7 @@ export class KolInputColor implements ComponentApi {
 					onClick={() => this.ref?.focus()}
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					{/* wann ist "später"? */}
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input">
 						<input
@@ -75,6 +81,7 @@ export class KolInputColor implements ComponentApi {
 							type="color"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
+							onChange={this.onChange}
 						/>
 						<kol-tooltip
 							/**
@@ -189,7 +196,7 @@ export class KolInputColor implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: States = {
 		_autoComplete: 'off',

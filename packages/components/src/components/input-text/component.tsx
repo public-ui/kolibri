@@ -58,6 +58,7 @@ export class KolInputText implements ComponentApi {
 			this.oldValue = this.ref?.value;
 			this.controller.onFacade.onChange(event);
 		}
+		this._value = (event.target as HTMLTextAreaElement).value;
 	};
 
 	public render(): JSX.Element {
@@ -275,7 +276,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: States = {
 		_autoComplete: 'off',
