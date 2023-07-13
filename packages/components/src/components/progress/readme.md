@@ -37,8 +37,8 @@ Verwenden Sie das Attribut **`_value`**, um den aktuellen Wert der Komponente zu
 
 ## Links und Referenzen
 
-- https://developer.mozilla.org/de/docs/Web/HTML/Element/progress
-- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/progress" _label="https://developer.mozilla.org/de/docs/Web/HTML/Element/progress"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role" _label="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role"></kol-link>
 
 <!-- Auto Generated Below -->
 
