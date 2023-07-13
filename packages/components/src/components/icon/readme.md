@@ -32,7 +32,7 @@ Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlü
 
 Wichtig ist bei Kontext-relevanten Grafiken, dass sie beschriftet werden.
 
-- https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/
+- <kol-link _href="" _label=""></kol-link>https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/
 
 ### Aria-Label
 
@@ -40,9 +40,9 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ## Links und Referenzen
 
-[Codicons]: https://github.com/microsoft/vscode-codicons
-[Font-Awesome]: https://fontawesome.com
-[Icofont]: https://icofont.com
+<kol-link _href="https://github.com/microsoft/vscode-codicons" _label="Codicons"></kol-link>
+<kol-link _href="https://fontawesome.com" _label="Font-Awesome"></kol-link>
+<kol-link _href="https://icofont.com" _label="Icofont"></kol-link>
 
 <!-- Auto Generated Below -->
 
