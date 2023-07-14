@@ -1,11 +1,11 @@
 import { Generic } from '@a11y-ui/core';
 
 import { validateTouched } from '../../types/props/touched';
-import { getExperimalMode } from '../../utils/dev.utils';
+import { getExperimentalMode } from '../../utils/dev.utils';
 import { watchBoolean } from '../../utils/prop.validators';
 import { Props, Watches } from './types';
 
-const EXPERIMENTAL_MODE = getExperimalMode();
+const EXPERIMENTAL_MODE = getExperimentalMode();
 
 function syncElementAttribute(qualifiedName: string, element?: HTMLElement, value?: string | number | boolean) {
 	if (EXPERIMENTAL_MODE) {
