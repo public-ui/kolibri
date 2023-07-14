@@ -32,16 +32,23 @@
 		<script defer src="assets/simulations/tabs-simulation.js"></script>
 		<script defer src="assets/simulations/toast-simulation.js"></script>
 
-		<script src="https://unpkg.com/petite-vue" defer init></script>
 		<script src="https://cdn.tailwindcss.com"></script>
 
 		<link rel="stylesheet" href="assets/codicons/codicon.css" />
 		<link rel="stylesheet" href="assets/style.css" />
 		<link rel="stylesheet" href="assets/loader.css" />
 	</head>
-	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
+	<script type="module">
+		import { createApp } from 'https://unpkg.com/petite-vue?module';
+
+		createApp({
+			showDropdown: false,
+			showLogin: false,
+		}).mount();
+	</script>
+	<body class="demo" data-theme="demo" v-scope>
 		<main class="container">
-			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
+			<kol-nav _orientation="horizontal" id="main-nav" _label="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
 			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
 				<div class="grid gap">
@@ -133,6 +140,7 @@
 								<kol-link _href="#card">Zur Card</kol-link>
 								<kol-button-link _href="#pagination" _label="Zur Pagination"></kol-button-link>
 								<kol-nav
+									_label="uebersicht-nav"
 									_links="[
 													{'_label':'Navigation', '_href':'#nav'},
 													{'_label':'Modal', '_href':'#modal'},
@@ -150,7 +158,7 @@
 										_variant="normal"
 										onclick="openModal()"
 									></kol-button>
-									<kol-modal _id="overviewModal" _aria-label="Beschreibung zur Modalbox" _width="400px" onclick="closeModal()">
+									<kol-modal _id="overviewModal" _label="Beschreibung zur Modalbox" _width="400px" onclick="closeModal()">
 										<div style="height: 300px; background-color: beige; display: grid; place-content: center; font-size: xx-large">Action!</div>
 									</kol-modal>
 								</div>
@@ -160,7 +168,7 @@
 							<kol-badge _label="wie badges"></kol-badge>
 							<div class="grid gap">
 								<p>
-									In diesem Satz wird das <kol-symbol _aria-label="Lächelndes Gesicht" _symbol="☺"></kol-symbol><br />
+									In diesem Satz wird das <kol-symbol _label="Lächelndes Gesicht" _symbol="☺"></kol-symbol><br />
 									vom Screenreader vorgelesen.
 								</p>
 								<kol-spin _show></kol-spin>
@@ -168,7 +176,7 @@
 								<kol-spin _show _variant="none">
 									<span class="loader" slot="expert"></span>
 								</kol-spin>
-								<kol-icon _aria-label="kol-icon" _icon="codicon codicon-home" style="display: inline-grid"></kol-icon>
+								<kol-icon _label="kol-icon" _icon="codicon codicon-home" style="display: inline-grid"></kol-icon>
 								<kol-kolibri style="width: 100px"></kol-kolibri>
 							</div>
 						</kol-card>
@@ -220,8 +228,7 @@
 									<kol-progress _variant="cycle" _value="25"></kol-progress>
 								</div>
 
-								<kol-input-checkbox _id="input-checkbox" _type="checkbox"
-									>Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
+								<kol-input-checkbox _id="input-checkbox">Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
 								>
 								<kol-button _label="Absenden" _type="submit" _variant="primary"></kol-button>
 								<kol-button _label="Zurücksetzen" _type="reset"></kol-button>
@@ -355,22 +362,22 @@
 						</div>
 						<div class="gap-2 py-2 col-12 d-grid">
 							<kol-breadcrumb
-								_aria-label="Breadcrumb aus Text-Links"
+								_label="Breadcrumb aus Text-Links"
 								_links="[{'_label':'Startseite','_href':'#/'},{'_label':'Unterseite der Startseite','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
 							>
 							</kol-breadcrumb>
 							<kol-breadcrumb
-								_aria-label="Breadcrumb aus Icons- oder Text-Links"
+								_label="Breadcrumb aus Icons- oder Text-Links"
 								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true,'_href':'#/'},{'_label':'Unterseite der Startseite mit sehr langem Link-Test','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
 							>
 							</kol-breadcrumb>
 							<kol-breadcrumb
-								_aria-label="Breadcrumb aus Icons- und Text-Links"
+								_label="Breadcrumb aus Icons- und Text-Links"
 								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_href':'#/'},{'_label':'Unterseite der Startseite und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#/unterseite'},{'_label':'Unterseite der Unterseite','_href':'#/unterseite/unterseite'}]"
 							>
 							</kol-breadcrumb>
 							<kol-breadcrumb
-								_aria-label="Breadcrumb aus Icons- und Text-Links 2"
+								_label="Breadcrumb aus Icons- und Text-Links 2"
 								_links="[{'_label':'Startseite', '_icon': 'codicon codicon-home', '_hideLabel': true, '_href':'#/'}]"
 							>
 							</kol-breadcrumb>
@@ -389,8 +396,6 @@
 							<kol-heading _label="" _level="2">Button</kol-heading>
 						</div>
 						<div class="gap-2 py-2 col-12 d-grid">
-							<kol-indented-text>Der folgende Schalter hat ein abweichendes Aria-Label:</kol-indented-text>
-							<kol-button class="not-used" _aria-label="Ich bin ein abweichendes Label" style="width: 15em" _variant="primary" _label="Primary-Schaltfläche">
 							</kol-button>
 							<kol-button
 								class="not-used"
@@ -462,17 +467,11 @@
 						</div>
 						<div class="gap-2 py-2 col-12 d-grid">
 							<kol-indented-text>Der folgende Schalter hat ein abweichendes Aria-Label:</kol-indented-text>
-							<kol-link-button
-								class="not-used"
-								_aria-label="Ich bin ein abweichendes Label"
-								style="width: 15em"
-								_variant="primary"
-								_label="Primary-Schaltfläche"
-							>
+							<kol-link-button class="not-used" _label="Ich bin ein abweichendes Label" style="width: 15em" _variant="primary" _label="Primary-Schaltfläche">
 							</kol-link-button>
 							<kol-link-button
 								class="not-used"
-								_aria-label="Ich bin ein abweichendes Label"
+								_label="Ich bin ein abweichendes Label"
 								style="width: 15em"
 								_variant="primary"
 								_label="Primary-Schaltfläche mit Target"
@@ -574,7 +573,7 @@
 							<kol-heading _label="" _level="2">Card</kol-heading>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-card _label="Mit h1-Überschrift und Footer" _has-footer>
+							<kol-card _heading="Mit h1-Überschrift und Footer" _has-footer>
 								<p slot="header">Test</p>
 								<div>
 									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum
@@ -587,19 +586,19 @@
 									<kol-button class="not-used min-width" _label="Abbrechen"></kol-button>
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h2-Überschrift" _level="2" class="bordered">
+							<kol-card _heading="Mit h2-Überschrift" _level="2" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h3-Überschrift" _level="3">
+							<kol-card _heading="Mit h3-Überschrift" _level="3">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h4-Überschrift" _level="4">
+							<kol-card _heading="Mit h4-Überschrift" _level="4">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -607,13 +606,13 @@
 							</kol-card>
 						</div>
 						<div class="gap-2 mt-4 col-12 d-md-flex">
-							<kol-card _label="Mit h5-Überschrift" _level="5" class="bordered">
+							<kol-card _heading="Mit h5-Überschrift" _level="5" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h6-Überschrift" _level="6" class="bordered">
+							<kol-card _heading="Mit h6-Überschrift" _level="6" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -680,7 +679,7 @@
 						</div>
 						<div class="col-12">
 							<form style="display: grid; gap: 1em; margin: 1rem" method="GET" accept="/">
-								<kol-input-checkbox _id="input-checkbox" _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+								<kol-input-checkbox _id="input-checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-checkbox _id="input-checkbox-switch" _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
 								<kol-input-color _id="input-color-list" _list="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
@@ -918,19 +917,19 @@
 						</div>
 						<div class="gap-2 col-12 d-grid">
 							<kol-heading _label="" _level="3">Font-Awesome</kol-heading>
-							<kol-icon _aria-label="Haus" _icon="codicon codicon-home"></kol-icon>
+							<kol-icon _label="Haus" _icon="codicon codicon-home"></kol-icon>
 							<kol-indented-text>Mit Aria-Label</kol-indented-text>
-							<kol-icon _aria-label="" _icon="codicon codicon-home"></kol-icon>
+							<kol-icon _label="" _icon="codicon codicon-home"></kol-icon>
 							<kol-indented-text>Ohne Aria-Label</kol-indented-text>
 							<kol-heading _label="" _level="3">Codicons</kol-heading>
-							<kol-icon _aria-label="Haus" _icon="codicon codicon-home"></kol-icon>
+							<kol-icon _label="Haus" _icon="codicon codicon-home"></kol-icon>
 							<kol-indented-text>Mit Aria-Label</kol-indented-text>
-							<kol-icon _aria-label="" _icon="codicon codicon-home"></kol-icon>
+							<kol-icon _label="" _icon="codicon codicon-home"></kol-icon>
 							<kol-indented-text>Ohne Aria-Label</kol-indented-text>
 							<kol-heading _label="" _level="3">Icofont</kol-heading>
-							<kol-icon _aria-label="Haus" _icon="codicon codicon-home"></kol-icon>
+							<kol-icon _label="Haus" _icon="codicon codicon-home"></kol-icon>
 							<kol-indented-text>Mit Aria-Label</kol-indented-text>
-							<kol-icon _aria-label="" _icon="codicon codicon-home"></kol-icon>
+							<kol-icon _label="" _icon="codicon codicon-home"></kol-icon>
 							<kol-indented-text>Ohne Aria-Label</kol-indented-text>
 						</div>
 					</div>
@@ -989,10 +988,10 @@
 						</div>
 						<div class="gap-2 col-12 d-grid">
 							<div class="d-grid gap-2">
-								<kol-input-checkbox _required _checked _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _required _checked _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _required _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _required _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required _checked>Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required _checked _indeterminate>Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required>Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required _indeterminate>Geburtsdatum anzeigen?</kol-input-checkbox>
 								<kol-input-checkbox _checked _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
 								<kol-input-checkbox _checked _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
 								<kol-input-checkbox _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
@@ -1003,10 +1002,10 @@
 								<kol-input-checkbox _indeterminate _variant="button">Schalter deaktiviert</kol-input-checkbox>
 							</div>
 							<div class="d-grid gap-2">
-								<kol-input-checkbox _required _checked _hide-label _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _required _checked _hide-label _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _required _hide-label _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
-								<kol-input-checkbox _required _hide-label _indeterminate _variant="checkbox">Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required _checked _hide-label>Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required _checked _hide-label _indeterminate>Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required _hide-label>Geburtsdatum anzeigen?</kol-input-checkbox>
+								<kol-input-checkbox _required _hide-label _indeterminate>Geburtsdatum anzeigen?</kol-input-checkbox>
 								<kol-input-checkbox _checked _hide-label _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
 								<kol-input-checkbox _checked _hide-label _indeterminate _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
 								<kol-input-checkbox _hide-label _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
@@ -1019,15 +1018,15 @@
 							<div class="d-grid gap-2">
 								<kol-heading _label="" _level="3">InputCheckbox</kol-heading>
 								<kol-controlled-input-next class="d-grid gap-2" id="new-input-checkbox">
-									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+									<kol-input-checkbox>Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 									<kol-input-checkbox _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								</kol-controlled-input-next>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-checkbox-leanup">
-									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+									<kol-input-checkbox>Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 									<kol-input-checkbox _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								</lean-input-adapter>
 								<lean-input-adapter class="d-grid gap-2" id="change-checkbox">
-									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+									<kol-input-checkbox>Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
@@ -1061,7 +1060,7 @@
 								<kol-heading _label="" _level="3">InputNumber</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-number">
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
-									<kol-input-number _type="number" _min="2.2" _max="5,8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
+									<kol-input-number _type="number" _min="2.2" _max="5.8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
 								</lean-input-adapter>
 								<kol-heading _label="" _level="3">InputDate</kol-heading>
@@ -1207,7 +1206,7 @@
 							</p>
 							<kol-link _href="https://de.wikipedia.org" _icon="codicon codicon-heard" _hide-label _label="Icon als Link" _target="wikipedia"></kol-link>
 							<kol-link
-								_aria-label="Icon als Link"
+								_label="Icon als Link"
 								_href="https://de.wikipedia.org"
 								_icon="codicon codicon-heard"
 								_hide-label
@@ -1216,10 +1215,10 @@
 							></kol-link>
 						</div>
 						<div class="gap-2 col-12">
-							<kol-link _aria-label="Zurück zur Startseite" _href="#/" _label="">
+							<kol-link _label="Zurück zur Startseite" _href="#/" _label="">
 								<kol-logo _org="ITZBund"></kol-logo>
 							</kol-link>
-							<kol-link _aria-label="Zurück zur Startseite" _href="#/" _label="">
+							<kol-link _label="Zurück zur Startseite" _href="#/" _label="">
 								<kol-logo slot="expert" _org="ITZBund"></kol-logo>
 							</kol-link>
 						</div>
@@ -1248,13 +1247,13 @@
 								<kol-button-link _label=""><span slot="expert">info@wikipedia.org</span></kol-button-link>
 							</p>
 							<kol-button-link _icon="codicon codicon-heard" _hide-label _label="Icon als Link"></kol-button-link>
-							<kol-button-link _aria-label="Icon als Link" _icon="codicon codicon-heard" _hide-label _label=""></kol-button-link>
+							<kol-button-link _label="Icon als Link" _icon="codicon codicon-heard" _hide-label _label=""></kol-button-link>
 						</div>
 						<div class="gap-2 col-12">
-							<kol-button-link _aria-label="Zurück zur Startseite" _label="">
+							<kol-button-link _label="Zurück zur Startseite" _label="">
 								<kol-logo _org="ITZBund"></kol-logo>
 							</kol-button-link>
-							<kol-button-link _aria-label="Zurück zur Startseite" _label="">
+							<kol-button-link _label="Zurück zur Startseite" _label="">
 								<kol-logo slot="expert" _org="ITZBund"></kol-logo>
 							</kol-button-link>
 						</div>
@@ -1272,14 +1271,14 @@
 						</div>
 						<div class="gap-2 col-12 d-grid">
 							<kol-link-group
-								_aria-label="Fehlerliste"
+								_label="Fehlerliste"
 								_links="[{'_label':'Fehler 1 (#input-text-vorname)','_selector':'#input-text-vorname'},{'_label':'Fehler 2 (#password) und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_selector':'#password'},{'_label':'Fehler 3 - Sprungmarke (#gibt-es-nicht) und ich_bin_ein_echt_langes_Wort','_selector':'#gibt-es-nicht'}]"
 							>
 							</kol-link-group>
 							<kol-link-group
 								class="bordered"
 								style="padding: 0.25rem 0.5rem"
-								_aria-label="Liste der Formularfehler (nummeriert)"
+								_label="Liste der Formularfehler (nummeriert)"
 								_heading="Liste der Formularfehler (nummeriert)"
 								_level="3"
 								_ordered
@@ -1287,14 +1286,16 @@
 							>
 							</kol-link-group>
 							<kol-link-group
-								_aria-label="Liste der Formularfehler (horizontal)"
+								_label="Liste der Formularfehler (horizontal)"
+								_level="3"
 								_heading="Liste der Formularfehler (horizontal)"
 								_links="[{'_label':'Fehler 1 ','_selector':'#input-text-vorname'},{'_label':'Fehler 2','_selector':'#password'},{'_label':'Fehler 3','_selector':'#gibt-es-nicht'}]"
 								_list-style-type="square"
 								_orientation="horizontal"
 							></kol-link-group>
 							<kol-link-group
-								_aria-label="Liste der Formularfehler (vertical)"
+								_label="Liste der Formularfehler (vertical)"
+								_level="3"
 								_heading="Liste der Formularfehler (vertical)"
 								_orientation="vertical"
 								_links="[{'_label':'Fehler 1 ','_selector':'#input-text-vorname'},{'_label':'Fehler 2','_selector':'#password'},{'_label':'Fehler 3','_selector':'#gibt-es-nicht'}]"
@@ -1319,7 +1320,7 @@
 							<kol-logo _abbr="BMG"></kol-logo>
 							<p>
 								<kol-indented-text>Im Folgenden wird ein "Zurück zur Startseite"-Link dargestellt:</kol-indented-text>
-								<kol-link _href="https://itzbund.de" _use-case="image" _aria-label="Zurück zur Startseite des ITZBund">
+								<kol-link _href="https://itzbund.de" _use-case="image" _label="Zurück zur Startseite des ITZBund">
 									<kol-logo _abbr="ITZBund"></kol-logo>
 								</kol-link>
 							</p>
@@ -1363,8 +1364,8 @@
 							</kol-details>
 						</div>
 						<div class="col-12">
-							<kol-modal id="modal-1" _aria-label="Willkommen bei KoliBri" _has-footer>
-								<kol-card _label="Willkommen bei KoliBri" _has-footer>
+							<kol-modal id="modal-1" _label="Willkommen bei KoliBri" _has-footer>
+								<kol-card _heading="Willkommen bei KoliBri" _has-footer>
 									<div>
 										Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 										diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
@@ -1380,16 +1381,16 @@
 									</div>
 								</kol-card>
 							</kol-modal>
-							<kol-modal id="modal-2" _aria-label="Vorgang löschen" _width="400px">
-								<kol-card _label="Vorgang löschen" _has-footer>
+							<kol-modal id="modal-2" _label="Vorgang löschen" _width="400px">
+								<kol-card _heading="Vorgang löschen" _has-footer>
 									<div>Wollen Sie den Vorgang wirklich löschen?</div>
 									<div slot="footer">
 										<kol-button id="modal-2-cancel" _label="Schließen"></kol-button>
 									</div>
 								</kol-card>
 							</kol-modal>
-							<kol-modal id="modal-3" _aria-label="Modal schließen" _width="400px">
-								<kol-card _label="Modal schließen">
+							<kol-modal id="modal-3" _label="Modal schließen" _width="400px">
+								<kol-card _heading="Modal schließen">
 									<div>Klicken Sie einfach rechts oben auf das X.</div>
 								</kol-card>
 							</kol-modal>
@@ -1412,43 +1413,37 @@
 							<kol-heading _label="" _level="2">Nav</kol-heading>
 						</div>
 						<div class="gap-2 col-12 d-grid">
+							<kol-nav _label="Navigation in der Breite beschränkt" id="nav-test" _orientation="horizontal" style="margin-left: auto"></kol-nav>
 							<kol-nav
-								_aria-label="Navigation in der Breite beschränkt"
-								_has-compact-button
-								id="nav-test"
-								_orientation="horizontal"
-								style="margin-left: auto"
-							></kol-nav>
-							<kol-nav
-								_aria-label="Navigation mit sinnvoller Breite"
+								_label="Navigation mit sinnvoller Breite"
 								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-flame'},{'_active':true,'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_active':true,'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_active':true,'_label':'3.3.1 Navigationspunkt (aktiv)','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_label':'4 Navigationspunkt','_href':'#abc'}]"
 								_orientation="horizontal"
 							></kol-nav>
 							<kol-nav
 								class="font-80"
 								style="display: inline-flex"
-								_aria-label="Navigation mit sinnvoller Breite 2"
+								_label="Navigation mit sinnvoller Breite 2"
 								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-flame','_hideLabel': true,'_tooltipAlign':'bottom','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-flame','_hideLabel': true},{'_active':true,'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_hideLabel': true,'_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_active':true,'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_active':true,'_label':'3.3.1 Navigationspunkt (aktiv)','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_label':'4 Navigationspunkt','_href':'#abc','_hideLabel': true}]"
 								_orientation="horizontal"
 							></kol-nav>
-							<kol-nav class="max-width" id="click-nav" _aria-label="Navigation mit sinnvoller Breite 3"></kol-nav>
+							<kol-nav class="max-width" id="click-nav" _label="Navigation mit sinnvoller Breite 3"></kol-nav>
 							<kol-nav
 								class="font-80 max-width"
-								_aria-label="Navigation in der Breite beschränkt"
+								_label="Navigation in der Breite beschränkt"
 								_has-compact-button
 								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-flame'},{'_active':true,'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_active':true,'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_active':true,'_label':'3.3.1 Navigationspunkt (aktiv)','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_label':'4 Navigationspunkt','_href':'#abc'}]"
 							>
 							</kol-nav>
 							<kol-nav
 								class="font-60 max-width"
-								_aria-label="Navigation initial eingeklappt"
+								_label="Navigation initial eingeklappt"
 								_compact
 								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-flame'},{'_active':true,'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_active':true,'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_active':true,'_label':'3.3.1 Navigationspunkt (aktiv)','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_label':'4 Navigationspunkt','_href':'#abc'}]"
 							>
 							</kol-nav>
 							<kol-nav
 								class="font-60 max-width"
-								_aria-label="Navigation initial eingeklappt 2"
+								_label="Navigation initial eingeklappt 2"
 								_compact
 								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.3.1 Navigationspunkt','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_active':true,'_label':'4 Navigationspunkt (aktiv)','_href':'#abc'}]"
 							>
@@ -1621,7 +1616,7 @@
 								<p><b>Links sind unsichtbar geschalten</b><br />Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.</p>
 							</kol-indent-text>
 							<kol-skip-nav
-								_aria-label="Versteckte Navigation"
+								_label="Versteckte Navigation"
 								_links="[{'_label':'Ganz hoch und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_selector':'header'},{'_label':'Zum Formular','_selector':'kol-form'},{'_label':'Zum Ende','_selector':'footer'}]"
 							>
 							</kol-skip-nav>
@@ -1705,7 +1700,7 @@
 						</div>
 						<div class="gap-2 col-12 d-grid">
 							<p>In diesem Satz wird das ☺ vom Screenreader nicht vorgelesen.</p>
-							<p>In diesem Satz wird das <kol-symbol _aria-label="Lächelndes Gesicht" _symbol="☺"></kol-symbol> vom Screenreader vorgelesen.</p>
+							<p>In diesem Satz wird das <kol-symbol _label="Lächelndes Gesicht" _symbol="☺"></kol-symbol> vom Screenreader vorgelesen.</p>
 						</div>
 					</div>
 				</div>
@@ -1717,10 +1712,10 @@
 							<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
 							<kol-heading _label="" _level="2">Table</kol-heading>
 						</div>
-						<kol-table id="table-1a"></kol-table>
-						<kol-table id="table-1b"></kol-table>
-						<kol-table id="table-1c"></kol-table>
-						<kol-table id="table-1d"></kol-table>
+						<kol-table _caption="default" id="table-1a"></kol-table>
+						<kol-table _caption="default" id="table-1b"></kol-table>
+						<kol-table _caption="default" id="table-1c"></kol-table>
+						<kol-table _caption="default" id="table-1d"></kol-table>
 						<kol-heading _level="3">2 Header, Daten Horizontal</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
@@ -1997,7 +1992,7 @@
 							</kol-alert>
 							<kol-tabs
 								id="tabs-with-events"
-								_aria-label="Tab-Navigation"
+								_label="Tab-Navigation mit Events"
 								_tabs="[{'_label':'Tab 1', '_icon': 'codicon codicon-home'},{'_label':'Tab 2', '_variant': 'primary'},{'_label':'Tab 3','_disabled': true},{'_label':'Tab 4'},{'_label':'Tab 5'},{'_label':'Tab 6'},{'_label':'Tab 7'},{'_label':'Tab 8'}]"
 							>
 								<div>
@@ -2015,7 +2010,7 @@
 							<kol-tabs
 								class="font-80"
 								id="tabs-with-create"
-								_aria-label="Tab-Navigation"
+								_label="Tab-Navigation mit create"
 								_tabs="[{'_label':'Tab 1', '_icon': 'codicon codicon-home','_disabled': true},{'_label':'Tab 2', '_variant': 'primary'},{'_label':'Tab 3','_disabled': true},{'_label':'Tab 4'},{'_label':'Tab 5'},{'_label':'Tab 6'},{'_label':'Tab 7'},{'_label':'Tab 8'}]"
 							>
 								<div>Tab 1</div>
@@ -2029,7 +2024,7 @@
 							</kol-tabs>
 							<kol-tabs
 								class="font-60"
-								_aria-label="Tab-Navigation"
+								_label="Tab-Navigation-3"
 								_selected="7"
 								_tabs="[{'_label':'Tab 1', '_icon': 'codicon codicon-home'},{'_label':'Tab 2', '_variant': 'primary'},{'_label':'Tab 3','_disabled': true},{'_label':'Tab 4'},{'_label':'Tab 5'},{'_label':'Tab 6'},{'_label':'Tab 7'},{'_label':'Tab 8','_disabled': true}]"
 							>
@@ -2043,7 +2038,7 @@
 								<div>Tab 8</div>
 							</kol-tabs>
 							<kol-tabs
-								_aria-label="Tab-Navigation"
+								_label="Tab-Navigation-4"
 								_tabs="[{'_label':'Tab 1','_disabled': true},{'_label':'Tab 2','_disabled': true},{'_label':'Tab 3','_disabled': true}]"
 							>
 								<div>Tab 1</div>
@@ -2051,7 +2046,7 @@
 								<div>Tab 3</div>
 							</kol-tabs>
 							<kol-tabs
-								_aria-label="Tolle Tabs"
+								_label="Tolle Tabs"
 								_selected="2"
 								_tabs="[{'_label':'Tab 1','_icon': 'codicon codicon-book-mark'},{'_label':'Tab 2','_icon': 'codicon codicon-history'},{'_label':'Tab 3','_icon': 'codicon codicon-settings-alt'}]"
 							>
@@ -2060,7 +2055,7 @@
 								<div>Tab 3</div>
 							</kol-tabs>
 							<kol-tabs
-								_aria-label="Tab-Navigation (right)"
+								_label="Tab-Navigation (right)"
 								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_hideLabel': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_hideLabel': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_hideLabel': true,'_disabled': true}]"
 								_tabs-align="right"
 							>
@@ -2072,7 +2067,7 @@
 								<div>Tab 3</div>
 							</kol-tabs>
 							<kol-tabs
-								_aria-label="Tab-Navigation (bottom)"
+								_label="Tab-Navigation (bottom)"
 								_tabs="[{'_label':'Tab 1', '_icon': 'codicon codicon-home'},{'_label':'Tab 2', '_variant': 'primary'},{'_label':'Tab 3','_disabled': true},{'_label':'Tab 4'},{'_label':'Tab 5'},{'_label':'Tab 6'},{'_label':'Tab 7'},{'_label':'Tab 8'}]"
 								_tabs-align="bottom"
 							>
@@ -2089,7 +2084,7 @@
 								<div>Tab 8</div>
 							</kol-tabs>
 							<kol-tabs
-								_aria-label="Tab-Navigation (left)"
+								_label="Tab-Navigation (left)"
 								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_hideLabel': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_hideLabel': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_hideLabel': true,'_disabled': true}]"
 								_tabs-align="left"
 							>
