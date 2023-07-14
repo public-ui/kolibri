@@ -48,7 +48,7 @@
 	</script>
 	<body class="demo" data-theme="demo" v-scope>
 		<main class="container">
-			<kol-nav _orientation="horizontal" id="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
+			<kol-nav _orientation="horizontal" id="main-nav" _label="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
 			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
 				<div class="grid gap">
@@ -140,6 +140,7 @@
 								<kol-link _href="#card">Zur Card</kol-link>
 								<kol-button-link _href="#pagination" _label="Zur Pagination"></kol-button-link>
 								<kol-nav
+									_label="uebersicht-nav"
 									_links="[
 													{'_label':'Navigation', '_href':'#nav'},
 													{'_label':'Modal', '_href':'#modal'},
@@ -1060,7 +1061,7 @@
 								<kol-heading _label="" _level="3">InputNumber</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-number">
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
-									<kol-input-number _type="number" _min="2.2" _max="5,8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
+									<kol-input-number _type="number" _min="2.2" _max="5.8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
 								</lean-input-adapter>
 								<kol-heading _label="" _level="3">InputDate</kol-heading>
@@ -1287,6 +1288,7 @@
 							</kol-link-group>
 							<kol-link-group
 								_label="Liste der Formularfehler (horizontal)"
+								_level="3"
 								_heading="Liste der Formularfehler (horizontal)"
 								_links="[{'_label':'Fehler 1 ','_selector':'#input-text-vorname'},{'_label':'Fehler 2','_selector':'#password'},{'_label':'Fehler 3','_selector':'#gibt-es-nicht'}]"
 								_list-style-type="square"
@@ -1294,6 +1296,7 @@
 							></kol-link-group>
 							<kol-link-group
 								_label="Liste der Formularfehler (vertical)"
+								_level="3"
 								_heading="Liste der Formularfehler (vertical)"
 								_orientation="vertical"
 								_links="[{'_label':'Fehler 1 ','_selector':'#input-text-vorname'},{'_label':'Fehler 2','_selector':'#password'},{'_label':'Fehler 3','_selector':'#gibt-es-nicht'}]"
@@ -1710,10 +1713,10 @@
 							<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
 							<kol-heading _label="" _level="2">Table</kol-heading>
 						</div>
-						<kol-table id="table-1a"></kol-table>
-						<kol-table id="table-1b"></kol-table>
-						<kol-table id="table-1c"></kol-table>
-						<kol-table id="table-1d"></kol-table>
+						<kol-table _caption="default" id="table-1a"></kol-table>
+						<kol-table _caption="default" id="table-1b"></kol-table>
+						<kol-table _caption="default" id="table-1c"></kol-table>
+						<kol-table _caption="default" id="table-1d"></kol-table>
 						<kol-heading _level="3">2 Header, Daten Horizontal</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
