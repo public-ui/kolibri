@@ -228,8 +228,7 @@
 									<kol-progress _variant="cycle" _value="25"></kol-progress>
 								</div>
 
-								<kol-input-checkbox _id="input-checkbox" _type="checkbox"
-									>Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
+								<kol-input-checkbox _id="input-checkbox">Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
 								>
 								<kol-button _label="Absenden" _type="submit" _variant="primary"></kol-button>
 								<kol-button _label="Zurücksetzen" _type="reset"></kol-button>
@@ -574,7 +573,7 @@
 							<kol-heading _label="" _level="2">Card</kol-heading>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-card _label="Mit h1-Überschrift und Footer" _has-footer>
+							<kol-card _heading="Mit h1-Überschrift und Footer" _has-footer>
 								<p slot="header">Test</p>
 								<div>
 									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum
@@ -587,19 +586,19 @@
 									<kol-button class="not-used min-width" _label="Abbrechen"></kol-button>
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h2-Überschrift" _level="2" class="bordered">
+							<kol-card _heading="Mit h2-Überschrift" _level="2" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h3-Überschrift" _level="3">
+							<kol-card _heading="Mit h3-Überschrift" _level="3">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h4-Überschrift" _level="4">
+							<kol-card _heading="Mit h4-Überschrift" _level="4">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -607,13 +606,13 @@
 							</kol-card>
 						</div>
 						<div class="gap-2 mt-4 col-12 d-md-flex">
-							<kol-card _label="Mit h5-Überschrift" _level="5" class="bordered">
+							<kol-card _heading="Mit h5-Überschrift" _level="5" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _label="Mit h6-Überschrift" _level="6" class="bordered">
+							<kol-card _heading="Mit h6-Überschrift" _level="6" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -680,7 +679,7 @@
 						</div>
 						<div class="col-12">
 							<form style="display: grid; gap: 1em; margin: 1rem" method="GET" accept="/">
-								<kol-input-checkbox _id="input-checkbox" _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+								<kol-input-checkbox _id="input-checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-checkbox _id="input-checkbox-switch" _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
 								<kol-input-color _id="input-color-list" _list="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
@@ -1019,15 +1018,15 @@
 							<div class="d-grid gap-2">
 								<kol-heading _label="" _level="3">InputCheckbox</kol-heading>
 								<kol-controlled-input-next class="d-grid gap-2" id="new-input-checkbox">
-									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+									<kol-input-checkbox>Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 									<kol-input-checkbox _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								</kol-controlled-input-next>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-checkbox-leanup">
-									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+									<kol-input-checkbox>Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 									<kol-input-checkbox _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								</lean-input-adapter>
 								<lean-input-adapter class="d-grid gap-2" id="change-checkbox">
-									<kol-input-checkbox _type="checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
+									<kol-input-checkbox>Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
@@ -1366,7 +1365,7 @@
 						</div>
 						<div class="col-12">
 							<kol-modal id="modal-1" _label="Willkommen bei KoliBri" _has-footer>
-								<kol-card _label="Willkommen bei KoliBri" _has-footer>
+								<kol-card _heading="Willkommen bei KoliBri" _has-footer>
 									<div>
 										Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 										diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
@@ -1383,7 +1382,7 @@
 								</kol-card>
 							</kol-modal>
 							<kol-modal id="modal-2" _label="Vorgang löschen" _width="400px">
-								<kol-card _label="Vorgang löschen" _has-footer>
+								<kol-card _heading="Vorgang löschen" _has-footer>
 									<div>Wollen Sie den Vorgang wirklich löschen?</div>
 									<div slot="footer">
 										<kol-button id="modal-2-cancel" _label="Schließen"></kol-button>
@@ -1391,7 +1390,7 @@
 								</kol-card>
 							</kol-modal>
 							<kol-modal id="modal-3" _label="Modal schließen" _width="400px">
-								<kol-card _label="Modal schließen">
+								<kol-card _heading="Modal schließen">
 									<div>Klicken Sie einfach rechts oben auf das X.</div>
 								</kol-card>
 							</kol-modal>
