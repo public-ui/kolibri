@@ -193,7 +193,7 @@ export class KolInputColor implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 	};
