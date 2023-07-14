@@ -127,7 +127,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 				{this.state._pageSizeOptions?.length > 0 && (
 					<kol-select
 						_hideLabel
-						_id="pagination-size"
+						_id={`${this.nonce}-pagination-size`}
 						_label={translate('kol-entries-per-site')}
 						_list={this.state._pageSizeOptions}
 						_on={{
