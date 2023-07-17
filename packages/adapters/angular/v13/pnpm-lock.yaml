@@ -12,8 +12,8 @@ devDependencies:
     specifier: 13.4.0
     version: 13.4.0(@angular/compiler@13.4.0)(typescript@4.6.2)
   '@angular/core':
-    specifier: 13.4.0
-    version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
+    specifier: 15.2.9
+    version: 15.2.9(rxjs@7.6.0)(zone.js@0.11.8)
   '@public-ui/components':
     specifier: 1.6.0-rc.12
     version: 1.6.0-rc.12
@@ -95,12 +95,12 @@ packages:
       tslib: 2.6.0
     dev: true
 
-  /@angular/core@13.4.0(rxjs@7.6.0)(zone.js@0.11.8):
-    resolution: {integrity: sha512-RE9KL7pRj+3lkJjdSR2uKmqiG0gqjnoVCMbSLG93pWrmzNIhElmlkiDaK39aMHGl836dc68Usv9CEisyVnRqHQ==}
-    engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
+  /@angular/core@15.2.9(rxjs@7.6.0)(zone.js@0.11.8):
+    resolution: {integrity: sha512-w46Z1yUXCQfKV7XfnamOoLA2VD0MVUUYVrUjO73mHSskDXSXxfZAEHO9kfUS71Cj35PvhP3mbkqWscpea2WeYg==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
-      zone.js: ~0.11.4
+      zone.js: ~0.11.4 || ~0.12.0 || ~0.13.0
     dependencies:
       rxjs: 7.6.0
       tslib: 2.6.0
