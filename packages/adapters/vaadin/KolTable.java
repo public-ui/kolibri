@@ -16,7 +16,7 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.12")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
