@@ -10,7 +10,7 @@ devDependencies:
     version: 13.4.0
   '@angular/compiler-cli':
     specifier: 13.4.0
-    version: 13.4.0(@angular/compiler@13.4.0)(typescript@4.6.2)
+    version: 13.4.0(@angular/compiler@13.4.0)(typescript@4.6.4)
   '@angular/core':
     specifier: 13.4.0
     version: 13.4.0(rxjs@7.6.0)(zone.js@0.11.8)
@@ -43,7 +43,7 @@ devDependencies:
     version: 2.6.0
   typescript:
     specifier: '4.6'
-    version: 4.6.2
+    version: 4.6.4
   zone.js:
     specifier: 0.11.8
     version: 0.11.8
@@ -64,7 +64,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
 
-  /@angular/compiler-cli@13.4.0(@angular/compiler@13.4.0)(typescript@4.6.2):
+  /@angular/compiler-cli@13.4.0(@angular/compiler@13.4.0)(typescript@4.6.4):
     resolution: {integrity: sha512-OQD0w9aZXbpcyWDEaozoHH/n3eYDLhBsmJcIBVqUN8Awx8m17v2u2R6m7DIEpVRbBzYtTscAMTKONNVwsTolHA==}
     engines: {node: ^12.20.0 || ^14.15.0 || >=16.10.0}
     hasBin: true
@@ -82,7 +82,7 @@ packages:
       semver: 7.5.2
       sourcemap-codec: 1.4.8
       tslib: 2.6.0
-      typescript: 4.6.2
+      typescript: 4.6.4
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
@@ -831,8 +831,8 @@ packages:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
     dev: true
 
-  /typescript@4.6.2:
-    resolution: {integrity: sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==}
+  /typescript@4.6.4:
+    resolution: {integrity: sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
