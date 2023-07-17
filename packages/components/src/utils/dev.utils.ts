@@ -27,7 +27,7 @@ let EXPERIMENTAL_MODE: boolean | null = null;
 let COLOR_CONTRAST_ANALYSIS: boolean | null = null;
 
 export const getDevMode = (): boolean => DEV_MODE === true;
-export const getExperimalMode = (): boolean => EXPERIMENTAL_MODE === true;
+export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const getColorContrastAnalysis = (): boolean => COLOR_CONTRAST_ANALYSIS === true;
 
 type LogShield = {
