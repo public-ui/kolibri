@@ -4,41 +4,58 @@ import { validateTouched } from '../../types/props/touched';
 import { getExperimalMode } from '../../utils/dev.utils';
 import { watchBoolean } from '../../utils/prop.validators';
 import { Props, Watches } from './types';
+import { devHint } from '../../utils/a11y.tipps';
 
 const EXPERIMENTAL_MODE = getExperimalMode();
-
-function syncElementAttribute(qualifiedName: string, element?: HTMLElement, value?: string | number | boolean) {
-	if (EXPERIMENTAL_MODE) {
-		if (typeof value === 'boolean' || typeof value === 'number' || typeof value === 'string') {
-			element?.setAttribute(qualifiedName, `${value as string}`);
-		} else {
-			element?.removeAttribute(qualifiedName);
-		}
-	}
-}
 
 export class ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 	protected readonly name: string;
 	protected readonly host?: HTMLElement;
 
-	public readonly formAssociated?: HTMLInputElement;
-	public syncToOwnInput?: HTMLInputElement;
+	public readonly formAssociated?: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+	public syncToOwnInput?: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		this.component = component;
 		this.name = name;
 		this.host = host;
 		if (EXPERIMENTAL_MODE) {
-			this.formAssociated = document.createElement('input');
-			this.formAssociated.setAttribute('type', 'hidden');
-			const children = this.host?.children || [];
-			for (let i = 0; i < children.length; i++) {
-				if (this.host?.children[i].tagName === 'INPUT') {
-					this.host?.removeChild(this.host?.children[i]);
-				}
+			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
+				this.host?.removeChild(el);
+			});
+			switch (this.name) {
+				case 'select':
+					this.formAssociated = document.createElement('select');
+					this.formAssociated.setAttribute('multiple', '');
+					break;
+				case 'textarea':
+					this.formAssociated = document.createElement('textarea');
+					break;
+				default:
+					this.formAssociated = document.createElement('input');
+					this.formAssociated.setAttribute('type', 'hidden');
+					break;
 			}
+			this.formAssociated.setAttribute('aria-hidden', 'true');
+			this.formAssociated.setAttribute('data-form-associated', '');
+			this.formAssociated.setAttribute('hidden', '');
 			this.host?.appendChild(this.formAssociated);
+		}
+	}
+
+	protected setAttribute(qualifiedName: string, element?: HTMLElement, value?: string | number | boolean) {
+		if (EXPERIMENTAL_MODE) {
+			try {
+				value = typeof value === 'object' && value !== null ? JSON.stringify(value) : value;
+				if (typeof value === 'boolean' || typeof value === 'number' || typeof value === 'string') {
+					element?.setAttribute(qualifiedName, `${value as string}`);
+				} else {
+					throw new Error(`Invalid value type: ${typeof value}`);
+				}
+			} catch (e) {
+				element?.removeAttribute(qualifiedName);
+			}
 		}
 	}
 
@@ -47,15 +64,71 @@ export class ControlledInputController implements Watches {
 	 *
 	 * @see https://github.com/public-ui/kolibri/discussions/2821
 	 */
-	protected readonly syncFormAssociatedName = () => {
-		syncElementAttribute('id', this.formAssociated, this.component.state._id as string);
-		syncElementAttribute('name', this.formAssociated, this.component.state._name as string);
-		syncElementAttribute('value', this.formAssociated, this.component.state._value as string);
-	};
-
 	public readonly setFormAssociatedValue = (value: string | null = null) => {
-		syncElementAttribute('value', this.formAssociated, value as string);
-		syncElementAttribute('value', this.syncToOwnInput, value as string);
+		const name = this.formAssociated?.getAttribute('name');
+		if (name === null || name === '') {
+			devHint(` The form field (${this.name}) must have a name attribute to be form-associated. Please define the _name attribute.`);
+		}
+
+		try {
+			/**
+			 * We need to stringify the value, for the setAttribute method.
+			 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+			 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes
+			 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes#value
+			 *
+			 * TODO: It is possible that the value are a cyclic object value. So we need a custom
+			 *       JSON.stringify method from outside to convert it to string.
+			 */
+			const val = typeof value === 'object' && value !== null ? JSON.stringify(value) : value;
+			if (typeof val === 'boolean' || typeof val === 'number' || typeof val === 'string') {
+				this.formAssociated?.setAttribute('value', val);
+				this.syncToOwnInput?.setAttribute('value', val);
+			} else {
+				throw new Error(`Invalid value type: ${typeof val}`);
+			}
+			switch (this.name) {
+				case 'select':
+					if (this.formAssociated) {
+						(this.formAssociated as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
+							(this.formAssociated as HTMLSelectElement).removeChild(el);
+						});
+						if (Array.isArray(value) && value.length > 0) {
+							value.forEach((val) => {
+								const option = document.createElement('option');
+								option.setAttribute('value', val as string);
+								option.setAttribute('selected', '');
+								(this.formAssociated as HTMLSelectElement).appendChild(option);
+							});
+						}
+					}
+					if (this.syncToOwnInput) {
+						(this.syncToOwnInput as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
+							(this.syncToOwnInput as HTMLSelectElement).removeChild(el);
+						});
+					}
+					break;
+				case 'textarea':
+					if (this.formAssociated) {
+						(this.formAssociated as HTMLTextAreaElement).innerHTML = value as string;
+					}
+					if (this.syncToOwnInput) {
+						(this.syncToOwnInput as HTMLTextAreaElement).innerHTML = value as string;
+					}
+					break;
+				default:
+					if (this.formAssociated) {
+						(this.formAssociated as HTMLInputElement).value = value as string;
+					}
+					if (this.syncToOwnInput) {
+						(this.syncToOwnInput as HTMLInputElement).value = value as string;
+					}
+					break;
+			}
+		} catch (e) {
+			this.formAssociated?.removeAttribute('value');
+			this.syncToOwnInput?.removeAttribute('value');
+		}
 	};
 
 	public validateAlert(value?: boolean): void {

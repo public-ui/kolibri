@@ -795,7 +795,7 @@ export namespace Components {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<any>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3841,7 +3841,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<any>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */

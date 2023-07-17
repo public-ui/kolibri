@@ -28,7 +28,9 @@ export type InputCheckboxIcon = {
 	unchecked: AnyIconFontClass;
 };
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = InputRequiredProps & {
+	value: Stringified<any>;
+};
 type OptionalProps = {
 	alert: boolean;
 	accessKey: string;
@@ -47,7 +49,6 @@ type OptionalProps = {
 	 * @deprecated
 	 */
 	type: InputCheckboxVariant;
-	value: string;
 	variant: InputCheckboxVariant;
 } & PropChecked &
 	PropIndeterminate;
@@ -56,6 +57,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	icon: InputCheckboxIcon;
 	id: string;
+	value: any;
 	variant: InputCheckboxVariant;
 } & PropChecked &
 	PropIndeterminate &
@@ -72,7 +74,6 @@ type OptionalStates = {
 	required: boolean;
 	touched: boolean;
 	tabIndex: number;
-	value: string;
 };
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;

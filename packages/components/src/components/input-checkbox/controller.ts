@@ -17,9 +17,18 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.component = component;
 	}
 
+	public readonly setFormAssociatedCheckboxValue = (value: any | null = null) => {
+		console.log(this.component._checked, value);
+		if (this.component._checked) {
+			this.setFormAssociatedValue(value as string); // why we need as string ?!?
+		} else {
+			this.setFormAssociatedValue(null);
+		}
+	};
+
 	public validateChecked(value?: boolean): void {
 		validateChecked(this.component, value);
-		this.setFormAssociatedValue(this.component.state._checked as string);
+		this.setFormAssociatedCheckboxValue(this.component.state._value as string); // why we need as string ?!?
 	}
 
 	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
@@ -47,9 +56,9 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.validateVariant(value);
 	}
 
-	public validateValue(value?: string): void {
+	public validateValue(value?: Stringified<any>): void {
 		setState(this.component, '_value', value);
-		this.setFormAssociatedValue(this.component.state._value as string);
+		this.setFormAssociatedCheckboxValue(this.component.state._value as string); // why we need as string ?!?
 	}
 
 	public validateVariant(value?: InputCheckboxVariant): void {

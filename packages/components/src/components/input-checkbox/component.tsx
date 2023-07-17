@@ -200,7 +200,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 */
-	@Prop() public _value?: string;
+	@Prop() public _value!: Stringified<any>;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -217,11 +217,12 @@ export class KolInputCheckbox implements ComponentApi {
 		_id: nonce(), // ⚠ required
 		_indeterminate: false,
 		_label: false, // ⚠ required
+		_value: null, // ⚠ required
 		_variant: 'default',
 	};
 
 	public constructor() {
-		this.controller = new InputCheckboxController(this, 'checkbox', this.host);
+		this.controller = new InputCheckboxController(this, 'input-checkbox', this.host);
 	}
 
 	@Watch('_accessKey')
@@ -315,7 +316,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: string): void {
+	public validateValue(value?: Stringified<any>): void {
 		this.controller.validateValue(value);
 	}
 
@@ -333,6 +334,9 @@ export class KolInputCheckbox implements ComponentApi {
 	private onChange = (event: Event): void => {
 		this._checked = !this._checked;
 		this._indeterminate = false;
-		this.controller.setValue(event, this._checked);
+		this.controller.setFormAssociatedCheckboxValue(this.state._value as string);
+		if (typeof this._on?.onChange === 'function') {
+			this._on.onChange(event, this.state._value);
+		}
 	};
 }

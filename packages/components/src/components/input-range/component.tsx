@@ -268,7 +268,7 @@ export class KolInputRange implements ComponentApi {
 	};
 
 	public constructor() {
-		this.controller = new InputRangeController(this, 'range', this.host);
+		this.controller = new InputRangeController(this, 'input-range', this.host);
 	}
 
 	@Watch('_accessKey')

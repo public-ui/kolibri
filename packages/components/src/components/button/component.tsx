@@ -354,6 +354,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@Watch('_value')
 	public validateValue(value?: Stringified<unknown>): void {
+		// TODO: make static form ready, like inputs
 		setState(this, '_value', value);
 	}
 
