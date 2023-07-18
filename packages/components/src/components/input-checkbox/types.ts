@@ -6,6 +6,7 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { PropChecked } from '../../types/props/checked';
 import { PropIndeterminate } from '../../types/props/indeterminate';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { InputRequiredProps } from '../input/types';
 
 export type InputCheckboxVariant =
@@ -29,7 +30,7 @@ export type InputCheckboxIcon = {
 };
 
 type RequiredProps = InputRequiredProps & {
-	value: Stringified<any>;
+	value: Stringified<StencilUnknown>;
 };
 type OptionalProps = {
 	alert: boolean;
@@ -57,7 +58,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	icon: InputCheckboxIcon;
 	id: string;
-	value: any;
+	value: StencilUnknown;
 	variant: InputCheckboxVariant;
 } & PropChecked &
 	PropIndeterminate &

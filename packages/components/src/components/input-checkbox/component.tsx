@@ -4,6 +4,7 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
@@ -200,7 +201,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 */
-	@Prop() public _value!: Stringified<any>;
+	@Prop() public _value!: Stringified<StencilUnknown>;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -316,7 +317,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<any>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		this.controller.validateValue(value);
 	}
 
@@ -334,7 +335,7 @@ export class KolInputCheckbox implements ComponentApi {
 	private onChange = (event: Event): void => {
 		this._checked = !this._checked;
 		this._indeterminate = false;
-		this.controller.setFormAssociatedCheckboxValue(this.state._value as string);
+		this.controller.setFormAssociatedCheckboxValue(this.state._value);
 		if (typeof this._on?.onChange === 'function') {
 			this._on.onChange(event, this.state._value);
 		}

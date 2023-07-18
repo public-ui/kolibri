@@ -1,10 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
 import { validateTouched } from '../../types/props/touched';
+import { devHint } from '../../utils/a11y.tipps';
 import { getExperimalMode } from '../../utils/dev.utils';
 import { watchBoolean } from '../../utils/prop.validators';
 import { Props, Watches } from './types';
-import { devHint } from '../../utils/a11y.tipps';
 
 const EXPERIMENTAL_MODE = getExperimalMode();
 
@@ -79,12 +79,15 @@ export class ControlledInputController implements Watches {
 			 *
 			 * TODO: It is possible that the value are a cyclic object value. So we need a custom
 			 *       JSON.stringify method from outside to convert it to string.
+			 *
+			 *       The following code is to complex!
 			 */
 			const val = typeof value === 'object' && value !== null ? JSON.stringify(value) : value;
 			if (typeof val === 'boolean' || typeof val === 'number' || typeof val === 'string') {
 				this.formAssociated?.setAttribute('value', val);
 				this.syncToOwnInput?.setAttribute('value', val);
 			} else {
+				// This exception jump over many lines of code.
 				throw new Error(`Invalid value type: ${typeof val}`);
 			}
 			switch (this.name) {
