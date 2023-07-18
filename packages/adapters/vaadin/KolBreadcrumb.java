@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-breadcrumb")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.12")
 @JsModule("@public-ui/components/dist/components/kol-breadcrumb")
 public class KolBreadcrumb extends Component {
 	/**

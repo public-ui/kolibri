@@ -224,7 +224,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _value?: Stringified<W3CInputValue>;
 
 	@State() public state: States = {
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 		_orientation: 'vertical',

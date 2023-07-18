@@ -16,6 +16,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
 import { ComponentApi, States } from './types';
+import { nonce } from '../../utils/dev.utils';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -280,7 +281,7 @@ export class KolInputText implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_currentLength: 0,
-		_id: 'id',
+		_id: `id-${nonce()}`, // ⚠ required
 		_hasValue: false,
 		_label: false, // ⚠ required
 		_list: [],

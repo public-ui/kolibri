@@ -2,11 +2,11 @@ import { Generic } from '@a11y-ui/core';
 
 import { validateTouched } from '../../types/props/touched';
 import { devHint } from '../../utils/a11y.tipps';
-import { getExperimalMode } from '../../utils/dev.utils';
+import { getExperimentalMode } from '../../utils/dev.utils';
 import { watchBoolean } from '../../utils/prop.validators';
 import { Props, Watches } from './types';
 
-const EXPERIMENTAL_MODE = getExperimalMode();
+const EXPERIMENTAL_MODE = getExperimentalMode();
 
 export class ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

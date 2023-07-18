@@ -263,7 +263,7 @@ export class KolInputEmail implements ComponentApi {
 		_autoComplete: 'off',
 		_currentLength: 0,
 		_hasValue: false,
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 	};

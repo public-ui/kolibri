@@ -252,7 +252,7 @@ export class KolInputPassword implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_currentLength: 0,
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_hasValue: false,
 	};

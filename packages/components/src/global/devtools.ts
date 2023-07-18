@@ -1,4 +1,4 @@
-import { getColorContrastAnalysis, getDevMode, getDocument, getExperimalMode, initKoliBri, KoliBri, Log, renderDevAdvice } from '../utils/dev.utils';
+import { getColorContrastAnalysis, getDevMode, getDocument, getExperimentalMode, initKoliBri, KoliBri, Log, renderDevAdvice } from '../utils/dev.utils';
 import {
 	koliBriA11yColorContrast,
 	koliBriQuerySelector,
@@ -62,7 +62,7 @@ export const initialize = (): void => {
 		getDocument().body.appendChild(div);
 
 		metaModeLog('Development mode', getDevMode());
-		metaModeLog('Experimental mode', getExperimalMode());
+		metaModeLog('Experimental mode', getExperimentalMode());
 		metaModeLog('Color contrast analysis', getColorContrastAnalysis());
 
 		if (getColorContrastAnalysis()) {

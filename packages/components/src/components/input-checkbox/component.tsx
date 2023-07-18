@@ -215,7 +215,7 @@ export class KolInputCheckbox implements ComponentApi {
 			indeterminate: 'codicon codicon-remove',
 			unchecked: 'codicon codicon-add',
 		},
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_indeterminate: false,
 		_label: false, // ⚠ required
 		_value: null, // ⚠ required

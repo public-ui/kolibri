@@ -75,6 +75,7 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                                                                                                                                                                                                                      | `undefined` |
 | `_required`           | `_required`      | Macht das Eingabeelement zu einem Pflichtfeld.                                                                                                                       | `boolean \| undefined`                                                                                                                                                                                                                                                                                        | `undefined` |
 | `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)                 | `number \| undefined`                                                                                                                                                                                                                                                                                         | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                                                                                                         | `'top'`     |
 | `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                                        | `boolean \| undefined`                                                                                                                                                                                                                                                                                        | `false`     |
 | `_type`               | `_type`          | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Attribute \_variant.<br/><br/>Gibt an, welche Variante der Darstellung genutzt werden soll. | `"button" \| "checkbox" \| "default" \| "switch" \| undefined`                                                                                                                                                                                                                                                | `undefined` |
 | `_value`              | `_value`         | Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })                                                                                                   | `string \| undefined`                                                                                                                                                                                                                                                                                         | `undefined` |
@@ -92,6 +93,7 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 - kol-input
 - [kol-icon](../icon)
+- [kol-tooltip](../tooltip)
 
 ### Graph
 
@@ -99,6 +101,7 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 graph TD;
   kol-input-checkbox --> kol-input
   kol-input-checkbox --> kol-icon
+  kol-input-checkbox --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert

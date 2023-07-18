@@ -65,6 +65,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                | `undefined` |
 | `_step`               | `_step`          | Gibt die Schrittweite der Wertveränderung an.                                                                                                        | `number \| undefined`                                                                                   | `undefined` |
 | `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                                   | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                   | `'top'`     |
 | `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                                  | `false`     |
 | `_value`              | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                  | `number \| undefined`                                                                                   | `undefined` |
 
@@ -79,12 +80,14 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 ### Depends on
 
 - kol-input
+- [kol-tooltip](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-input-range --> kol-input
+  kol-input-range --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert
