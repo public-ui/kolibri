@@ -23,6 +23,7 @@ import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+import { StencilUnknown } from "./types/unknown";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
@@ -59,6 +60,7 @@ export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+export { StencilUnknown } from "./types/unknown";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
@@ -795,7 +797,7 @@ export namespace Components {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3841,7 +3843,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */

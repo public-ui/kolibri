@@ -263,7 +263,7 @@ export class KolInputNumber implements ComponentApi {
 	};
 
 	public constructor() {
-		this.controller = new InputNumberController(this, 'number', this.host);
+		this.controller = new InputNumberController(this, 'input-number', this.host);
 	}
 
 	@Watch('_accessKey')

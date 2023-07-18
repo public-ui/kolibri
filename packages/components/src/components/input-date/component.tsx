@@ -251,7 +251,7 @@ export class KolInputDate implements ComponentApi {
 	};
 
 	public constructor() {
-		this.controller = new InputDateController(this, 'date', this.host);
+		this.controller = new InputDateController(this, 'input-date', this.host);
 	}
 
 	@Watch('_accessKey')

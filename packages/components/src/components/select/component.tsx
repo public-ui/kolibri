@@ -271,7 +271,7 @@ export class KolSelect implements ComponentApi {
 	};
 
 	public constructor() {
-		this.controller = new SelectController(this, 'textarea', this.host);
+		this.controller = new SelectController(this, 'select', this.host);
 	}
 
 	@Watch('_accessKey')
