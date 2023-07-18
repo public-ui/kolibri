@@ -1,7 +1,8 @@
 import { Generic } from '@a11y-ui/core';
 
+import { StencilUnknown } from '../../components';
 import { validateTouched } from '../../types/props/touched';
-import { devHint } from '../../utils/a11y.tipps';
+import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';
 import { watchBoolean } from '../../utils/prop.validators';
 import { Props, Watches } from './types';
@@ -60,79 +61,65 @@ export class ControlledInputController implements Watches {
 	}
 
 	/**
+	 * We need to stringify the value, for the setAttribute method.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes#value
+	 *
+	 * TODO: It is possible that the value are a cyclic object value. So we need a custom
+	 *       JSON.stringify method from outside to convert it to string.
+	 */
+	private tryToStringifyValue(value: StencilUnknown): string {
+		try {
+			return value !== null ? JSON.stringify(value) : '';
+		} catch (e) {
+			devWarning(`The form field raw value is not able to stringify! ${e}`);
+			return '';
+		}
+	}
+
+	/**
 	 * We try to support native form-associated custom elements.
 	 *
 	 * @see https://github.com/public-ui/kolibri/discussions/2821
 	 */
-	public readonly setFormAssociatedValue = (value: string | null = null) => {
+	public readonly setFormAssociatedValue = (rawValue: StencilUnknown) => {
 		const name = this.formAssociated?.getAttribute('name');
 		if (name === null || name === '') {
 			devHint(` The form field (${this.name}) must have a name attribute to be form-associated. Please define the _name attribute.`);
 		}
+		const strValue = this.tryToStringifyValue(rawValue);
+		this.syncValue(rawValue, strValue, this.formAssociated);
+		this.syncValue(rawValue, strValue, this.syncToOwnInput);
+	};
 
-		try {
-			/**
-			 * We need to stringify the value, for the setAttribute method.
-			 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
-			 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes
-			 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes#value
-			 *
-			 * TODO: It is possible that the value are a cyclic object value. So we need a custom
-			 *       JSON.stringify method from outside to convert it to string.
-			 *
-			 *       The following code is to complex!
-			 */
-			const val = typeof value === 'object' && value !== null ? JSON.stringify(value) : value;
-			if (typeof val === 'boolean' || typeof val === 'number' || typeof val === 'string') {
-				this.formAssociated?.setAttribute('value', val);
-				this.syncToOwnInput?.setAttribute('value', val);
-			} else {
-				// This exception jump over many lines of code.
-				throw new Error(`Invalid value type: ${typeof val}`);
-			}
+	private syncValue(rawValue: StencilUnknown, strValue: string, associatedElement?: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
+		if (associatedElement) {
+			associatedElement.setAttribute('value', strValue);
 			switch (this.name) {
 				case 'select':
-					if (this.formAssociated) {
-						(this.formAssociated as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
-							(this.formAssociated as HTMLSelectElement).removeChild(el);
-						});
-						if (Array.isArray(value) && value.length > 0) {
-							value.forEach((val) => {
-								const option = document.createElement('option');
-								option.setAttribute('value', val as string);
-								option.setAttribute('selected', '');
-								(this.formAssociated as HTMLSelectElement).appendChild(option);
-							});
-						}
-					}
-					if (this.syncToOwnInput) {
-						(this.syncToOwnInput as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
-							(this.syncToOwnInput as HTMLSelectElement).removeChild(el);
+					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
+						(associatedElement as HTMLSelectElement).removeChild(el);
+					});
+					if (Array.isArray(rawValue) && rawValue.length > 0) {
+						rawValue.forEach((rawValueItem) => {
+							const strValueItem = this.tryToStringifyValue(rawValueItem);
+							const option = document.createElement('option');
+							option.setAttribute('value', strValueItem);
+							option.setAttribute('selected', '');
+							(associatedElement as HTMLSelectElement).appendChild(option);
 						});
 					}
 					break;
 				case 'textarea':
-					if (this.formAssociated) {
-						(this.formAssociated as HTMLTextAreaElement).innerHTML = value as string;
-					}
-					if (this.syncToOwnInput) {
-						(this.syncToOwnInput as HTMLTextAreaElement).innerHTML = value as string;
-					}
+					(associatedElement as HTMLTextAreaElement).innerHTML = strValue;
 					break;
 				default:
-					if (this.formAssociated) {
-						(this.formAssociated as HTMLInputElement).value = value as string;
-					}
-					if (this.syncToOwnInput) {
-						(this.syncToOwnInput as HTMLInputElement).value = value as string;
-					}
+					(associatedElement as HTMLInputElement).value = strValue;
 					break;
 			}
-		} catch (e) {
-			this.formAssociated?.removeAttribute('value');
-			this.syncToOwnInput?.removeAttribute('value');
 		}
-	};
+	}
 
 	public validateAlert(value?: boolean): void {
 		watchBoolean(this.component, '_alert', value);

@@ -10,13 +10,13 @@ import { Align } from '../../types/props/align';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
 import { ComponentApi, States } from './types';
-import { nonce } from '../../utils/dev.utils';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 

@@ -18,9 +18,9 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.component = component;
 	}
 
-	public readonly setFormAssociatedCheckboxValue = (value: StencilUnknown = null) => {
+	public readonly setFormAssociatedCheckboxValue = (value: StencilUnknown) => {
 		if (this.component._checked) {
-			this.setFormAssociatedValue(value as string); // why we need as string ?!?
+			this.setFormAssociatedValue(value);
 		} else {
 			this.setFormAssociatedValue(null);
 		}
