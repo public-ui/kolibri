@@ -25,7 +25,7 @@
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _label="https://www.w3.org/TR/wai-aria-practices/#accordion"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion"></kol-link>
 
 <!-- Auto Generated Below -->
 

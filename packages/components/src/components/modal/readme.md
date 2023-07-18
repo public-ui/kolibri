@@ -99,8 +99,8 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _label="https://www.w3.org/TR/wai-aria-practices/#dialog_modal"></kol-link>
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _label="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html"></kol-link>
 
 <!-- Auto Generated Below -->
 

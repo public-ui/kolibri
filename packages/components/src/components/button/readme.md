@@ -91,7 +91,7 @@ Probleme mit Disabled-Status
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#button" _label="https://www.w3.org/TR/wai-aria-practices/#button"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#button"></kol-link>
 
 <!-- Auto Generated Below -->
 

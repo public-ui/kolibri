@@ -49,8 +49,8 @@ Der Input-Typ **Text** erzeugt ein Eingabefeld für normalen Text, Suchbegriffe,
 
 ## Links und Referenzen
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109"></kol-link>
-- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/" _label="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109"></kol-link>
+- <kol-link _href="https://www.jotform.com/blog/html5-datalists-what-you-need-to-know-78024/"></kol-link>
 
 <!-- Auto Generated Below -->
 

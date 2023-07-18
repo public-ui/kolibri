@@ -48,7 +48,7 @@ Diese Beschreibung wird von Screenreadern vorgelesen und von Browsern angezeigt,
 
 ## Links und Referenzen
 
-Ausführliche Erklärung zu `_srcset` und `_sizes`: <kol-link _href="https://www.mediaevent.de/html/srcset.html" _label="https://www.mediaevent.de/html/srcset.html"></kol-link>
+Ausführliche Erklärung zu `_srcset` und `_sizes`: <kol-link _href="https://www.mediaevent.de/html/srcset.html"></kol-link>
 
 <!-- Auto Generated Below -->
 
