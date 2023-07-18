@@ -43,7 +43,7 @@ Im einfachsten Fall besteht die **ButtonGroup**-Komponente aus einer Liste besch
 
 Über das Attribut **`_icon="xxx"`** wird festgelegt, ob und welches Icon verwendet werden soll.
 
-Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie <kol-link _href="https://icofont.com/icons" _label="hier"></kol-link>.
+Eine Übersicht über die zur Verfügung stehenden Icons in KoliBri finden Sie <kol-link _href="https://icofont.com/icons" _target="_blank" _label="hier"></kol-link>.
 
 Über das Attribut **`_hide-label`** legen Sie fest, ob nur das Icon angezeigt werden soll. Der Inhalt des Attributs **`_label`** wird nicht mehr angezeigt.
 
@@ -82,7 +82,7 @@ Bei Verwendung der **ButtonGroup**-Komponente sind keine besonderen Maßnahmen i
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#button"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#button" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

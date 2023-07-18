@@ -104,18 +104,18 @@ Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschr
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/"></kol-link>
-- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions"></kol-link>
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen"></kol-link>
-- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html"></kol-link>
-- <kol-link _href="https://www.digitala11y.com/aria-sort-properties/"></kol-link>
-- <kol-link _href="https://dequeuniversity.com/library/aria/table-sortable"></kol-link>
-- <kol-link _href="https://www.maxability.co.in/2016/06/07/aria-sort-property/"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort"></kol-link>
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen"></kol-link>
-- <kol-link _href="https://stackoverflow.com/questions/1312236/"></kol-link>
-- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _target="_blank"></kol-link>
+- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
+- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.digitala11y.com/aria-sort-properties/" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/library/aria/table-sortable" _target="_blank"></kol-link>
+- <kol-link _href="https://www.maxability.co.in/2016/06/07/aria-sort-property/" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
+- <kol-link _href="https://stackoverflow.com/questions/1312236/" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

@@ -19,7 +19,7 @@ Der Input-Typ **File** erzeugt ein Eingabefeld für zum Beispiel Uploads. Es kö
 ## Verwendung
 
 Geben Sie über das Attribut **`_accept`** an, welche Dateitypen zur Auswahl erlaubt sind. Wird das Attribut nicht oder leer übergeben, sind alle Dateitypen erlaubt.
-Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" _label="MDN Artikel zum Attribut accept"></kol-link>.
+Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept" _target="_blank" _label="MDN Artikel zum Attribut accept"></kol-link>.
 
 ### Best practices
 
@@ -37,7 +37,7 @@ Mögliche Werte und weitere Informationen erhalten Sie im <kol-link _href="https
 
 ## Links und Referenzen
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

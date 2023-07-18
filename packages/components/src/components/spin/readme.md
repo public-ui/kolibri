@@ -89,7 +89,7 @@ Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über La
 
 <kol-details _summary="CSS Loaders & Spinners" _open>
 Es gibt im Internet viele verschiedene CSS Loaders und Spinners. Beispielsweise bietet _Vineeth_ eine ganze Reihe interessanter CSS Loaders an. Diese können auch in der KoliBri Bibliothek genutzt werden. Dazu muss lediglich der Link zu der entsprechenden CSS Datei in den Head der HTML Datei eingebunden werden. Anschließend kann die gewünschte Animation über den Expert-Slot in die KoliBri-Komponente eingebunden werden. Hier sind einige Beispiele (ohne reduzierte Animationsgeschwindigkeit):
-<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank"></kol-link>
+<kol-link _href="https://github.com/vineethtrv/css-loader" _target="_blank" _target="_blank"></kol-link>
 </kol-details>
 
 ## Verwendung

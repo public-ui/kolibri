@@ -47,7 +47,7 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 ## Links und Referenzen
 
-- <kol-link _href="https://webaim.org/techniques/skipnav/"></kol-link>
+- <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

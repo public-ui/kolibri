@@ -2,7 +2,7 @@
 
 Mit Hilfe der **Icon**-Komponente können Icons aus eingebundenen Icon-Fonts an beliebigen Positionen dargestellt werden. Die Ausgabe des Icon kann über das Attribut **`_icon`** gesteuert werden und erfolgt durch das Attribut **`_label`** barrierefrei. Die Ausgabe erfolgt standardmäßig als _`inline`_-Element.
 
-Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Codicons"></kol-link> unterstützt.
+Aktuell werden die Icons von <kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Codicons"></kol-link> unterstützt.
 
 <kol-alert _heading="Hinweis" _type="info">Es ist wichtig, dass in der Rahmenseite (`index.html`) die CSS-Dateie(n) der Icon-Font(s) eingebunden ist/sind.</kol-alert>
 
@@ -26,7 +26,7 @@ Das Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objek
 Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
-<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
+<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Übersicht Codicons"></kol-link>
 
 ## Barrierefreiheit
 
@@ -40,9 +40,9 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ## Links und Referenzen
 
-<kol-link _href="https://github.com/microsoft/vscode-codicons" _label="Codicons"></kol-link>
-<kol-link _href="https://fontawesome.com" _label="Font-Awesome"></kol-link>
-<kol-link _href="https://icofont.com" _label="Icofont"></kol-link>
+<kol-link _href="https://github.com/microsoft/vscode-codicons" _target="_blank" _label="Codicons"></kol-link>
+<kol-link _href="https://fontawesome.com" _target="_blank" _label="Font-Awesome"></kol-link>
+<kol-link _href="https://icofont.com" _target="_blank" _label="Icofont"></kol-link>
 
 <!-- Auto Generated Below -->
 
