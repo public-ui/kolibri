@@ -73,7 +73,7 @@ export class ControlledInputController implements Watches {
 		try {
 			return value !== null ? JSON.stringify(value) : '';
 		} catch (e) {
-			devWarning(`The form field raw value is not able to stringify! ${e}`);
+			devWarning(`The form field raw value is not able to stringify! ${e as string}`);
 			return '';
 		}
 	}
@@ -103,7 +103,7 @@ export class ControlledInputController implements Watches {
 					});
 					if (Array.isArray(rawValue) && rawValue.length > 0) {
 						rawValue.forEach((rawValueItem) => {
-							const strValueItem = this.tryToStringifyValue(rawValueItem);
+							const strValueItem = this.tryToStringifyValue(rawValueItem as string);
 							const option = document.createElement('option');
 							option.setAttribute('value', strValueItem);
 							option.setAttribute('selected', '');
