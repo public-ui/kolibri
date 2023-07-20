@@ -1,10 +1,11 @@
-import { h } from '@stencil/core';
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { executeTests } from 'stencil-awesome-test';
 
+import { h } from '@stencil/core';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
+
 import { COMPONENTS } from '../../component-list';
-import { getBreadcrumbHtml } from './html.mock';
 import { KoliBriBreadcrumbProps } from '../types';
+import { getBreadcrumbHtml } from './html.mock';
 
 executeTests<KoliBriBreadcrumbProps>(
 	'Breadcrumb',
@@ -16,7 +17,7 @@ executeTests<KoliBriBreadcrumbProps>(
 		return page;
 	},
 	{
-		_ariaLabel: ['Aria-Label'],
+		_label: ['Aria-Label'],
 		_links: [[], [{ _label: 'Label' }]],
 	},
 	getBreadcrumbHtml,

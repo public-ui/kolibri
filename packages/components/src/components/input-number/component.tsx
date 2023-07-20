@@ -1,10 +1,13 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { Align } from '../../types/props/align';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -45,8 +48,8 @@ export class KolInputNumber implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const hasExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
 			<Host
 				class={{
@@ -56,6 +59,7 @@ export class KolInputNumber implements ComponentApi {
 				<kol-input
 					class={{
 						[this.state._type]: true,
+						'hide-label': !!this.state._hideLabel,
 					}}
 					_disabled={this.state._disabled}
 					_error={this.state._error}
@@ -69,33 +73,46 @@ export class KolInputNumber implements ComponentApi {
 					_smartButton={this.state._smartButton}
 					_touched={this.state._touched}
 				>
-					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
-					<input
-						ref={this.catchRef}
-						title=""
-						accessKey={this.state._accessKey}
-						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-						aria-labelledby={`${this.state._id}-label`}
-						autoCapitalize="off"
-						autoComplete={this.state._autoComplete}
-						autoCorrect="off"
-						disabled={this.state._disabled}
-						id={this.state._id}
-						list={hasList ? `${this.state._id}-list` : undefined}
-						max={this.state._max}
-						min={this.state._min}
-						name={this.state._name}
-						readOnly={this.state._readOnly}
-						required={this.state._required}
-						placeholder={this.state._placeholder}
-						slot="input"
-						step={this.state._step}
-						spellcheck="false"
-						type={this.state._type}
-						value={this.state._value as string}
-						{...this.controller.onFacade}
-						onKeyUp={this.onKeyUp}
-					/>
+					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<div slot="input">
+						<input
+							ref={this.catchRef}
+							title=""
+							accessKey={this.state._accessKey}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+							aria-labelledby={`${this.state._id}-label`}
+							autoCapitalize="off"
+							autoComplete={this.state._autoComplete}
+							autoCorrect="off"
+							disabled={this.state._disabled}
+							id={this.state._id}
+							list={hasList ? `${this.state._id}-list` : undefined}
+							max={this.state._max}
+							min={this.state._min}
+							name={this.state._name}
+							readOnly={this.state._readOnly}
+							required={this.state._required}
+							placeholder={this.state._placeholder}
+							step={this.state._step}
+							spellcheck="false"
+							type={this.state._type}
+							value={this.state._value as string}
+							{...this.controller.onFacade}
+							onKeyUp={this.onKeyUp}
+						/>
+						<kol-tooltip
+							/**
+							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+							 */
+							aria-hidden="true"
+							hidden={hasExpertSlot || !this.state._hideLabel}
+							_align={this._tooltipAlign}
+							_id={`${this.state._id}-tooltip`}
+							_label={typeof this.state._label === 'string' ? this.state._label : ''}
+						></kol-tooltip>
+					</div>
 				</kol-input>
 			</Host>
 		);
@@ -121,7 +138,7 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -131,7 +148,7 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -151,7 +168,7 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
@@ -186,12 +203,12 @@ export class KolInputNumber implements ComponentApi {
 	/**
 	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
 	 */
-	@Prop({ reflect: true }) public _readOnly?: boolean;
+	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
@@ -215,6 +232,11 @@ export class KolInputNumber implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 */
+	@Prop() public _tooltipAlign?: Align = 'top';
+
+	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
@@ -234,14 +256,14 @@ export class KolInputNumber implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_hasValue: false,
-		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 		_type: 'number',
 	};
 
 	public constructor() {
-		this.controller = new InputNumberController(this, 'number', this.host);
+		this.controller = new InputNumberController(this, 'input-number', this.host);
 	}
 
 	@Watch('_accessKey')
@@ -290,7 +312,7 @@ export class KolInputNumber implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 

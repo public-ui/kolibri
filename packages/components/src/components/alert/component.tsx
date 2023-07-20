@@ -1,11 +1,12 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { API, States, AlertType, AlertVariant, KoliBriAlertEventCallbacks } from './types';
+import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
+import { validateHasCloser } from '../../types/props/has-closer';
+import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
-import { translate } from '../../i18n';
-import { Log } from '../../utils/dev.utils';
+import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
 
 const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
 	return <kol-icon class="heading-icon" _ariaLabel={typeof props.heading === 'string' && props.heading.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
@@ -108,12 +109,12 @@ export class KolAlertWc implements API {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
-	@Prop({ reflect: true }) public _alert?: boolean = false;
+	@Prop() public _alert?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
 	 */
-	@Prop({ reflect: true }) public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
@@ -151,7 +152,7 @@ export class KolAlertWc implements API {
 
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: boolean): void {
-		watchBoolean(this, '_hasCloser', value);
+		validateHasCloser(this, value);
 	}
 
 	@Watch('_heading')

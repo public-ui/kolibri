@@ -1,10 +1,10 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, h, JSX, Prop } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
 import { Icofont } from '../../types/icofont';
+import { PropAriaLabel } from '../../types/props/aria-label';
 
-type RequiredProps = AriaLabel & {
+type RequiredProps = PropAriaLabel & {
 	icon: Icofont;
 };
 type OptionalProps = {
@@ -26,7 +26,6 @@ export class KolIconIcofont implements Generic.Element.Members<RequiredProps, Op
 				exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
 				_ariaLabel={this._ariaLabel}
 				_icon={typeof this._icon === 'string' ? `icofont-${this._icon}` : (undefined as unknown as string)}
-				_part={this._part}
 			/>
 		);
 	}

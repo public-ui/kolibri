@@ -1,5 +1,6 @@
-import { getAlertHtml } from '../../alert/test/html.mock';
 import { mixMembers } from 'stencil-awesome-test';
+
+import { getAlertHtml } from '../../alert/test/html.mock';
 import { KoliBriToastProps } from '../types';
 
 export const getToastHtml = (props: KoliBriToastProps): string => {
@@ -12,7 +13,7 @@ export const getToastHtml = (props: KoliBriToastProps): string => {
 		props
 	);
 	return `
-<kol-toast${props._alert ? ' _alert' : ''}${props._show ? ' _show' : ''}>
+<kol-toast${props._show ? ' _show' : ''}>
   <mock:shadow-root>
     ${
 			props._show === true

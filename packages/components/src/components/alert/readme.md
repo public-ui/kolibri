@@ -73,7 +73,7 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 ## Links und Referenzen
 
-- https://www.w3.org/TR/wai-aria-practices/#alert
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#alert" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

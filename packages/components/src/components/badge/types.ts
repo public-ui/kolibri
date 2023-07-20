@@ -1,13 +1,16 @@
 import { Generic } from '@a11y-ui/core';
-import { ButtonProps, KoliBriIconProp, PropColor, Stringified } from '../../components';
-import { PropHideLabel } from '../../types/props';
-import { ColorPair } from '../../types/props/color';
 
-type RequiredProps = {
-	label: string;
-};
+import { ButtonProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
+import { KoliBriIconProp } from '../../types/icon';
+import { ColorPair, PropColor } from '../../types/props/color';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropLabel } from '../../types/props/label';
+
+type RequiredProps = PropLabel;
 type OptionalProps = {
 	color: Stringified<PropColor>;
+	hideLabel: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
@@ -19,8 +22,7 @@ export type KoliBriBadgeProps = Generic.Element.Members<RequiredProps, OptionalP
 
 type RequiredStates = {
 	color: ColorPair;
-	label: string;
-};
+} & PropLabel;
 type OptionalStates = {
 	smartButton: ButtonProps;
 };

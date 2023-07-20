@@ -10,13 +10,13 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-symbol")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
 @JsModule("@public-ui/components/dist/components/kol-symbol")
 public class KolSymbol extends Component {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
 	public void setAriaLabel(final Optional<String> value) {
 		getElement().setProperty("_aria-label", value);
@@ -29,6 +29,24 @@ public class KolSymbol extends Component {
 	 */
 	public Optional<String> getAriaLabel() {
 		return getElement().getProperty("_aria-label", null);
+	}
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setLabel(final Optional<String> value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**

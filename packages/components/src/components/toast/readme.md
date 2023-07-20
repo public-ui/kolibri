@@ -54,8 +54,6 @@ Verwenden Sie das Attribut **`_type`**, um den Typ des Toasts festzulegen. Mögl
 
 ## Barrierefreiheit
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties

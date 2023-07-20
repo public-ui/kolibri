@@ -1,15 +1,15 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { translate } from '../../i18n';
 import { KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
-import { nonce } from '../../utils/dev.utils';
-import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
-import { watchButtonVariant } from '../button/controller';
-import { Align } from '../../types/props';
-import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
+import { Align } from '../../types/props/align';
+import { nonce } from '../../utils/dev.utils';
+import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { translate } from '../../i18n';
+import { watchButtonVariant } from '../button/controller';
+import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -127,7 +127,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 				{this.state._pageSizeOptions?.length > 0 && (
 					<kol-select
 						_hideLabel
-						_id="pagination-size"
+						_id={`pagination-size-${this.nonce}`}
 						_label={translate('kol-entries-per-site')}
 						_list={this.state._pageSizeOptions}
 						_on={{
@@ -270,7 +270,6 @@ export class KolPagination implements KoliBriPaginationAPI {
 				exportparts="icon"
 				key={`${this.nonce}-${page}`}
 				_customClass={this.state._customClass}
-				_ariaLabel={translate('kol-page-current', { placeholders: { page: page.toFixed(0) } })}
 				_label={`${page}`}
 				_on={{
 					onClick: (event: Event) => {
@@ -290,7 +289,6 @@ export class KolPagination implements KoliBriPaginationAPI {
 				_customClass={this.state._customClass}
 				_disabled={true}
 				_ariaCurrent={true}
-				_ariaLabel={translate('kol-page-selected', { placeholders: { page: page.toFixed(0) } })}
 				_label={`${page}`}
 				_variant={this.state._variant}
 			/>

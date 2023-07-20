@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getVersionHtml } from './html.mock';
 import { KoliBriVersionProps } from '../types';
+import { getVersionHtml } from './html.mock';
 
 executeTests<KoliBriVersionProps>(
 	'Version',
@@ -16,7 +17,7 @@ executeTests<KoliBriVersionProps>(
 		return page;
 	},
 	{
-		_version: ['1.0.0'],
+		_label: ['1.0.0'],
 	},
 	getVersionHtml,
 	{

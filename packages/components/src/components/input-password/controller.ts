@@ -1,5 +1,7 @@
 import { Generic } from '@a11y-ui/core';
+
 import { InputTypeOnOff } from '../../types/input/types';
+import { validateHasCounter } from '../../types/props/has-counter';
 import { devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -31,6 +33,10 @@ export class InputPasswordController extends InputIconController implements Watc
 			new Set(['on | off']),
 			value
 		);
+	}
+
+	public validateHasCounter(value?: boolean): void {
+		validateHasCounter(this.component, value);
 	}
 
 	public validateHideLabel(value?: boolean): void {
@@ -81,6 +87,7 @@ export class InputPasswordController extends InputIconController implements Watc
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
+		this.validateHasCounter(this.component._hasCounter);
 		this.validateMaxLength(this.component._maxLength);
 		this.validatePattern(this.component._pattern);
 		this.validatePlaceholder(this.component._placeholder);

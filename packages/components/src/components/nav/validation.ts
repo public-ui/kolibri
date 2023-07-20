@@ -1,18 +1,27 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Stringified } from '../../types/common';
+import { HrefProp } from '../../types/props/href';
 import { LabelProp } from '../../types/props/label';
 import { uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { watchJsonArrayString } from '../../utils/prop.validators';
+
+type HrefOrLabelProp = HrefProp | LabelProp;
 
 export const watchNavLinks = (
 	className: string,
 	component: Generic.Element.Component & {
 		state: {
-			_links: LabelProp[];
+			_links: HrefOrLabelProp[];
 		};
 	},
-	value?: Stringified<LabelProp[]>
+	value?: Stringified<HrefOrLabelProp[]>
 ): void => {
-	watchJsonArrayString(component, '_links', (link) => typeof link === 'object' && typeof link._label === 'string', value);
+	watchJsonArrayString(
+		component,
+		'_links',
+		(link) => typeof link === 'object' && (typeof (link as HrefProp)._href === 'string' || typeof (link as LabelProp)._label === 'string'),
+		value
+	);
 	uiUxHintMillerscheZahl(className, component.state._links.length);
 };

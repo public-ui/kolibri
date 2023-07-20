@@ -1,8 +1,8 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
-import { Farbspektrum } from '../../enums/color';
 
+import { Farbspektrum } from '../../enums/color';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { KoliBriVersionAPI, KoliBriVersionStates } from './types';
-import { watchString } from '../../utils/prop.validators';
 
 @Component({
 	tag: 'kol-version',
@@ -13,26 +13,35 @@ import { watchString } from '../../utils/prop.validators';
 })
 export class KolVersion implements KoliBriVersionAPI {
 	public render(): JSX.Element {
-		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="codicon codicon-versions" _label={`v${this.state._version}`} />;
+		return <kol-badge _color={Farbspektrum.Hellgrau} _icon="codicon codicon-versions" _label={`v${this.state._label}`} />;
 	}
 
 	/**
-	 * Gibt die Versionsnummer als Text an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _version!: string;
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
+
+	/**
+	 * Gibt die Versionsnummer als Text an.
+	 * @deprecated use _label instead
+	 */
+	@Prop() public _version?: string;
 
 	@State() public state: KoliBriVersionStates = {
-		_version: '0.0.0-alpha.0',
+		_label: '0.0.0-alpha.0',
 	};
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
+	}
 
 	@Watch('_version')
 	public validateVersion(value?: string): void {
-		watchString(this, '_version', value, {
-			required: true,
-		});
+		this.validateLabel(value);
 	}
 
 	public componentWillLoad(): void {
-		this.validateVersion(this._version);
+		this.validateLabel(this._label || this._version);
 	}
 }

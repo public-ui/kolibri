@@ -1,8 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Stringified } from '../../types/common';
 
+import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
+import { Align } from '../../types/props/align';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
@@ -60,16 +62,13 @@ export class KolSelect implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const hasExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
-			<Host
-				class={{
-					'has-value': this.state._hasValue,
-				}}
-			>
+			<Host class={{ 'has-value': this.state._hasValue }}>
 				<kol-input
 					class={{
+						'hide-label': !!this.state._hideLabel,
 						select: true,
 					}}
 					_disabled={this.state._disabled}
@@ -82,57 +81,70 @@ export class KolSelect implements ComponentApi {
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
 				>
-					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
-					<select
-						ref={this.catchRef}
-						title=""
-						accessKey={this.state._accessKey}
-						aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-						aria-labelledby={`${this.state._id}-label`}
-						autoCapitalize="off"
-						autoCorrect="off"
-						disabled={this.state._disabled}
-						id={this.state._id}
-						multiple={this.state._multiple}
-						name={this.state._name}
-						required={this.state._required}
-						size={this.state._size}
-						slot="input"
-						spellcheck="false"
-						style={{
-							height: this.state._height,
-						}}
-						{...{
-							onClick: this.controller.onFacade.onClick,
-							onBlur: this.controller.onFacade.onBlur,
-							onFocus: this.controller.onFacade.onFocus,
-						}}
-						onChange={this.onChange}
-					>
-						{this.state._list.map((option, index) => {
+					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
+					<div slot="input">
+						<select
+							ref={this.catchRef}
+							title=""
+							accessKey={this.state._accessKey}
+							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+							aria-labelledby={`${this.state._id}-label`}
+							autoCapitalize="off"
+							autoCorrect="off"
+							disabled={this.state._disabled}
+							id={this.state._id}
+							multiple={this.state._multiple}
+							name={this.state._name}
+							required={this.state._required}
+							size={this.state._size}
+							spellcheck="false"
+							style={{
+								height: this.state._height,
+							}}
+							{...{
+								onClick: this.controller.onFacade.onClick,
+								onBlur: this.controller.onFacade.onBlur,
+								onFocus: this.controller.onFacade.onFocus,
+							}}
+							onChange={this.onChange}
+						>
+							{this.state._list.map((option, index) => {
+								/**
+								 * Damit der Value einer Option ein beliebigen Typ haben kann
+								 * muss man auf HTML-Ebene den Value auf einen String-Wert
+								 * mappen. Das tun wir mittels der Map.
+								 */
+								const key = `-${index}`;
+								if (Array.isArray((option as unknown as Optgroup<string>).options)) {
+									return this.renderOptgroup(option as unknown as Optgroup<string>, key);
+								} else {
+									return (
+										<option
+											disabled={option.disabled === true}
+											key={key}
+											// label={option.label}
+											selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
+											value={key}
+										>
+											{option.label}
+										</option>
+									);
+								}
+							})}
+						</select>
+						<kol-tooltip
 							/**
-							 * Damit der Value einer Option ein beliebigen Typ haben kann
-							 * muss man auf HTML-Ebene den Value auf einen String-Wert
-							 * mappen. Das tun wir mittels der Map.
+							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 							 */
-							const key = `-${index}`;
-							if (Array.isArray((option as unknown as Optgroup<string>).options)) {
-								return this.renderOptgroup(option as unknown as Optgroup<string>, key);
-							} else {
-								return (
-									<option
-										disabled={option.disabled === true}
-										key={key}
-										// label={option.label}
-										selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
-										value={key}
-									>
-										{option.label}
-									</option>
-								);
-							}
-						})}
-					</select>
+							aria-hidden="true"
+							hidden={hasExpertSlot || !this.state._hideLabel}
+							_align={this._tooltipAlign}
+							_id={`${this.state._id}-tooltip`}
+							_label={typeof this.state._label === 'string' ? this.state._label : ''}
+						></kol-tooltip>
+					</div>
 				</kol-input>
 			</Host>
 		);
@@ -153,7 +165,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -170,7 +182,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -190,7 +202,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -200,7 +212,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
 	 */
-	@Prop({ reflect: true }) public _multiple?: boolean = false;
+	@Prop() public _multiple?: boolean = false;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -213,9 +225,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
@@ -234,6 +246,11 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 */
+	@Prop() public _tooltipAlign?: Align = 'top';
+
+	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
@@ -246,15 +263,15 @@ export class KolSelect implements ComponentApi {
 	@State() public state: States = {
 		_hasValue: false,
 		_height: '',
-		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 		_multiple: false,
 		_value: [],
 	};
 
 	public constructor() {
-		this.controller = new SelectController(this, 'textarea', this.host);
+		this.controller = new SelectController(this, 'select', this.host);
 	}
 
 	@Watch('_accessKey')
@@ -303,7 +320,7 @@ export class KolSelect implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 

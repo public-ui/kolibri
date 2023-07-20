@@ -1,17 +1,25 @@
 import { Generic } from '@a11y-ui/core';
-import { LinkProps, Stringified } from '../../components';
+
+import { LinkProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
+import { PropAriaLabel } from '../../types/props/aria-label';
+import { LabelProp, PropLabel } from '../../types/props/label';
+
+/**
+ * TODO: All LinkProps as Link-List (_links) does not have a _label
+ *       with expert-slot!
+ */
+export type BreadcrumbLinkProps = LinkProps & LabelProp;
 
 type RequiredProps = {
-	ariaLabel: string;
-	links: Stringified<LinkProps[]>;
+	links: Stringified<BreadcrumbLinkProps[]>;
 };
-type OptionalProps = unknown;
+type OptionalProps = PropAriaLabel & PropLabel;
 export type KoliBriBreadcrumbProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	ariaLabel: string;
-	links: LinkProps[];
-};
+	links: BreadcrumbLinkProps[];
+} & PropLabel;
 type OptionalStates = OptionalProps;
 
 export type KoliBriBreadcrumbStates = Generic.Element.Members<RequiredStates, OptionalStates>;

@@ -1,4 +1,4 @@
-import { Component, Fragment, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { SpinVariant, validateSpinVariant } from '../../types/props/variant/spin';
@@ -60,7 +60,7 @@ export class KolSpin implements KoliBriSpinAPI {
 	/**
 	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
 	 */
-	@Prop({ reflect: true }) public _show?: boolean = false;
+	@Prop() public _show?: boolean = false;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.

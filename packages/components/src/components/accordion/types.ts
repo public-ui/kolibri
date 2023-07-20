@@ -1,8 +1,9 @@
 import { Generic } from '@a11y-ui/core';
-import { HeadingLevel } from '../../components';
+
 import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
-import { PropOpen } from '../../types/props';
+import { HeadingLevel } from '../../types/heading-level';
+import { PropOpen } from '../../types/props/open';
 
 export type KoliBriAccordionCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;

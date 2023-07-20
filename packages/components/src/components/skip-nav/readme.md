@@ -8,7 +8,7 @@ Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt wer
 
 ```html
 <kol-skip-nav
-	_aria-label="Ein versteckter Link"
+	_label="Ein versteckter Link"
 	_links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"
 ></kol-skip-nav>
 ```
@@ -17,7 +17,7 @@ Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt wer
 
 Um die **SkipNav** sehen zu können, klicken Sie auf diesen Text und gehen dann mit der Tab-Taste einen Schritt weiter.
 
-<kol-skip-nav _aria-label="Ein versteckter Link" _links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"></kol-skip-nav>
+<kol-skip-nav _label="Ein versteckter Link" _links="[{'_label':'Navigation','_href':'#nav'},{'_label':'Inhalt','_href':'#main'},{'_label':'Kontakt','_href':'#kontakt'},{'_label':'Links','_href':'#links'}]"></kol-skip-nav>
 
 ## Verwendung
 
@@ -47,16 +47,17 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 ## Links und Referenzen
 
-- https://webaim.org/techniques/skipnav/
+- <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                  | Attribute     | Description                                                                                                                 | Type                    | Default     |
-| ------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
-| `_ariaLabel` _(required)_ | `_aria-label` | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                | `undefined` |
-| `_links` _(required)_     | `_links`      | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                             | `LinkProps[] \| string` | `undefined` |
+| Property              | Attribute     | Description                                                                                                                                                                                              | Type                    | Default     |
+| --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
+| `_ariaLabel`          | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`   | `undefined` |
+| `_label`              | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                              | `string \| undefined`   | `undefined` |
+| `_links` _(required)_ | `_links`      | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                          | `LinkProps[] \| string` | `undefined` |
 
 ## Dependencies
 

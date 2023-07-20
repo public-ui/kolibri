@@ -1,28 +1,29 @@
 import { mixMembers } from 'stencil-awesome-test';
-import { LinkProps } from '../../../types/button-link';
+
+import { LabelPropType } from '../../../components';
 import { Icofont } from '../../../types/icofont';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { KoliBriBreadcrumbProps } from '../types';
+import { BreadcrumbLinkProps, KoliBriBreadcrumbProps } from '../types';
 
 export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
-	props = mixMembers(
+	const state = mixMembers(
 		{
-			_ariaLabel: '…', // '⚠'
+			_label: '…', // ⚠ required
 			_links: [],
 		},
 		props
 	);
 
-	const lastIndex = props._links.length - 1;
+	const lastIndex = state._links.length - 1;
 	let list = '';
-	(props._links as LinkProps[]).forEach((link, index) => {
+	(state._links as BreadcrumbLinkProps[]).forEach((link, index) => {
 		list += `
 				<li>
 				${
 					index !== 0
 						? getIconHtml({
-								_ariaLabel: '',
+								_label: '',
 								_icon: 'codicon codicon-chevron-right',
 						  })
 						: ''
@@ -30,9 +31,9 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 					${
 						lastIndex === index
 							? `<span>${
-									link._iconOnly
+									link._hideLabel
 										? getIconHtml({
-												_ariaLabel: link._ariaLabel as string,
+												_label: link._label,
 												_icon: link._icon as Icofont,
 										  })
 										: link._label
@@ -46,12 +47,12 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	return `
 <kol-breadcrumb>
   <mock:shadow-root>
-		<nav aria-label="${props._ariaLabel}">
+		<nav aria-label="${state._label as unknown as LabelPropType}">
 			<ul>
 				${
-					props._links.length === 0
+					state._links.length === 0
 						? `<li>${getIconHtml({
-								_ariaLabel: '',
+								_label: '',
 								_icon: 'codicon codicon-home',
 						  })}…</li>`
 						: ''

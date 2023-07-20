@@ -1,8 +1,9 @@
 import { Generic } from '@a11y-ui/core';
-import { WatchOptions, watchValidator } from '../../utils/prop.validators';
-import { Stringified } from '../common';
+
 import { ColorContrast, createContrastColorPair } from '../../components/badge/contrast';
 import { a11yHint } from '../../utils/a11y.tipps';
+import { WatchOptions, watchValidator } from '../../utils/prop.validators';
+import { Stringified } from '../common';
 
 /* types */
 type CharacteristicColors = {

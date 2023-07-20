@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { handleColorChange } from '../../../types/props/color';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { KoliBriBadgeProps, KoliBriBadgeStates } from '../types';
@@ -17,10 +18,10 @@ export const getBadgeHtml = (props: KoliBriBadgeProps, additionalAttrs = ''): st
 
 	state._color = handleColorChange(props._color || '#000');
 
-	return `<kol-badge${props._hideLabel ? ' _hide-label' : ''}${additionalAttrs}>
+	return `<kol-badge${additionalAttrs}>
 	<mock:shadow-root>
 		<span style="background-color: ${state._color.backgroundColor}; color: ${state._color.foregroundColor as string};">
-			${getSpanWcHtml(props, undefined, ' id="nonce"')}
+			${getSpanWcHtml(state, undefined, ' id="nonce"')}
 		</span>
 	</mock:shadow-root>
 </kol-badge>`;

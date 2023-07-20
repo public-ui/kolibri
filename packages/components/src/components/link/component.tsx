@@ -4,14 +4,20 @@ import { translate } from '../../i18n';
 import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Align, validateAriaCurrent, validateAriaSelected, validateStealth, validateDownload, validateHideLabel } from '../../types/props';
+import { Align } from '../../types/props/align';
+import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
+import { validateAriaSelected } from '../../types/props/aria-selected';
+import { validateDownload } from '../../types/props/download';
+import { validateHideLabel } from '../../types/props/hide-label';
+import { validateHref } from '../../types/props/href';
+import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
+import { validateStealth } from '../../types/props/stealth';
 import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 
 /**
  * @internal
@@ -75,22 +81,20 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		const isExternal = typeof this.state._target === 'string' && this.state._target !== '_self';
 
 		const tagAttrs = {
-			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0)',
+			href: typeof this.state._href === 'string' && this.state._href.length > 0 ? this.state._href : 'javascript:void(0);',
 			target: typeof this.state._target === 'string' && this.state._target.length > 0 ? this.state._target : undefined,
 			rel: isExternal ? 'noopener' : undefined,
 		};
 
-		if (
-			(this.state._useCase === 'image' || this.state._hideLabel === true) &&
-			(typeof this.state._ariaLabel !== 'string' || this.state._ariaLabel.length === 0)
-		) {
-			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der Icon-Only-Modus verwendet wird.`);
+		if ((this.state._useCase === 'image' || this.state._hideLabel === true) && !this.state._label) {
+			devHint(`[KolLink] Es muss ein Aria-Label gesetzt werden, wenn eine Grafik verlinkt oder der _hide-label gesetzt ist.`);
 		}
 		return { isExternal, tagAttrs, goToProps };
 	};
 
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs, goToProps } = this.getRenderValues();
+		const hasExpertSlot: boolean = this.state._label === false;
 		return (
 			<Host>
 				<a
@@ -99,7 +103,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._useCase === 'image' || this.state._hideLabel === true ? this.nonce : undefined}
+					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
 						disabled: this.state._disabled === true,
@@ -116,23 +120,22 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this.state._label}>
+					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label || this.state._href}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
-					{isExternal && <kol-icon class="external-link-icon" _ariaLabel={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
+					{isExternal && <kol-icon class="external-link-icon" _label={this.state._targetDescription as string} _icon={'codicon codicon-link-external'} />}
 				</a>
-				{(this.state._hideLabel === true || this.state._useCase === 'image') && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
-					></kol-tooltip>
-				)}
+				<kol-tooltip
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					aria-hidden="true"
+					hidden={hasExpertSlot || !this.state._hideLabel}
+					_align={this.state._tooltipAlign}
+					_id={this.nonce}
+					_label={this.state._label || this.state._href}
+				></kol-tooltip>
 			</Host>
 		);
 	}
@@ -150,24 +153,26 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 *  @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop({ reflect: true }) public _ariaSelected?: boolean;
+	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
 	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
@@ -177,7 +182,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Gibt die Ziel-Url des Links an.
@@ -200,17 +205,17 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean;
+	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// - eslint-disable-next-line @stencil/strict-mutable
-	@Prop({ mutable: true, reflect: false }) public _label!: string;
+	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
-	 * @deprecated
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
@@ -222,16 +227,16 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _selector?: string;
 
 	/**
 	 * Gibt an, ob der Link nur beim Fokus sichtbar ist.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
-	@Prop({ reflect: true }) public _stealth?: boolean = false;
+	@Prop() public _stealth?: boolean = false;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -256,15 +261,14 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Gibt den Verwendungsfall des Links an.
 	 *
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _useCase?: LinkUseCase = 'text';
 
 	@State() public state: LinkStates = {
-		_href: 'javascript:void(0)',
+		_href: '…', // ⚠ required
 		_icon: {},
-		_label: '', // TODO: must removed to v2
-		// _label: '…', // ⚠ required
+		_label: false,
 	};
 
 	@Watch('_ariaControls')
@@ -282,9 +286,12 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		watchBoolean(this, '_ariaExpanded', value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		this.validateLabel(value);
 	}
 
 	@Watch('_ariaSelected')
@@ -293,8 +300,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
-	 *
 	 * @deprecated
 	 */
 	@Watch('_disabled')
@@ -317,7 +322,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		watchString(this, '_href', value);
+		validateHref(this, value);
 	}
 
 	@Watch('_icon')
@@ -326,7 +331,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
 	 * @deprecated
 	 */
 	@Watch('_iconAlign')
@@ -343,12 +347,11 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
+		validateLabelWithExpertSlot(this, value);
 	}
 
 	/**
-	 * @see: components/abbr/component.tsx (@Watch)
 	 * @deprecated
 	 */
 	@Watch('_on')
@@ -366,11 +369,17 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		watchString(this, '_role', value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_selector')
 	public validateSelector(value?: string): void {
 		watchString(this, '_selector', value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_stealth')
 	public validateStealth(value?: boolean): void {
 		validateStealth(this, value);
@@ -396,6 +405,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_useCase')
 	public validateUseCase(value?: LinkUseCase): void {
 		if (typeof value === 'string') {
@@ -410,7 +422,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
@@ -418,7 +429,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		this.validateHref(this._href);
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateSelector(this._selector);

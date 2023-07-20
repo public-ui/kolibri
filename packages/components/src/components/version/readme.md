@@ -22,21 +22,14 @@ Für die Konfiguration steht das Attribut **`_version`** zur Verfügung und nimm
 
 Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 
-<!--### Best practices
-
-### Anwendungsfälle-->
-
-<!-- ## Barrierefreiheit -->
-
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                | Attribute  | Description                          | Type     | Default     |
-| ----------------------- | ---------- | ------------------------------------ | -------- | ----------- |
-| `_version` _(required)_ | `_version` | Gibt die Versionsnummer als Text an. | `string` | `undefined` |
+| Property   | Attribute  | Description                                                                                                                 | Type                  | Default     |
+| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_label`   | `_label`   | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined` | `undefined` |
+| `_version` | `_version` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Gibt die Versionsnummer als Text an.           | `string \| undefined` | `undefined` |
 
 ## Dependencies
 

@@ -3,7 +3,7 @@
 		<header>
 			<div class="logo_grid">
 				<KolKolibri class="logo" :_labeled="false"></KolKolibri>
-				<img class="logo" src="./assets/logo.svg" alt="VueJS Logo" />
+				<!-- <img class="logo" src="./assets/logo.svg" alt="VueJS Logo" /> -->
 			</div>
 			<strong>Willkommen zu KoliBri</strong>
 		</header>

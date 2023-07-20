@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Component, h, Host, JSX, Prop } from '@stencil/core';
+
+import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps, TextWithChildrenProps } from '../../types/button-link-text';
+import { AriaCurrent } from '../../types/props/aria-current';
 import { Props } from './types';
-import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps } from '../../types/button-link-text';
-import { Stringified } from '../../types/common';
-import { KoliBriButtonCallbacks, KoliBriIconProp } from '../../components';
 
 /**
  * Internal component that renders an action or text component like a button or a link.
@@ -19,66 +19,67 @@ export class KolButtonLinkTextSwitch implements Props {
 	}
 
 	private renderContent() {
-		const links = this._links;
-		const compact = this._compact;
-
-		if ((links as ButtonWithChildrenProps)._on) {
-			return this.button(compact, (links as ButtonWithChildrenProps)._disabled === true, links._icon, links._label, (links as ButtonWithChildrenProps)._on);
-		} else if ((links as LinkWithChildrenProps)._href) {
-			return this.link(this._selected ?? false, compact, (links as LinkWithChildrenProps)._href, links._icon, links._label);
+		if ((this._link as ButtonWithChildrenProps)._on) {
+			const button = this._link as ButtonWithChildrenProps;
+			return this.button(button);
+		} else if ((this._link as LinkWithChildrenProps)._href) {
+			const link = this._link as LinkWithChildrenProps;
+			return this.link(link);
 		} else {
-			return this.text(compact, links._icon, links._label);
+			const text = this._link as TextWithChildrenProps;
+			return this.text(text);
 		}
 	}
 
-	private button(
-		compact: boolean,
-		disabled: boolean,
-		icon: Stringified<KoliBriIconProp> | undefined,
-		label: string,
-		on: KoliBriButtonCallbacks<unknown>
-	): JSX.Element {
-		return (
-			<kol-button-wc
-				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_disabled={disabled}
-				_icon={icon || '-'}
-				_hideLabel={compact}
-				_label={label}
-				_on={on}
-			></kol-button-wc>
-		);
-	}
+	private button = (button: ButtonWithChildrenProps): JSX.Element => (
+		<kol-button-wc
+			_ariaCurrent={this._hasChildren === true ? this._ariaCurrentValue : undefined}
+			_ariaSelected={this._selected === true}
+			_disabled={button._disabled}
+			_hideLabel={this._hideLabel === true}
+			_icon={button._icon}
+			_label={button._label}
+			_on={button._on}
+		></kol-button-wc>
+	);
 
-	private link(selected: boolean, compact: boolean, href: string, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return (
-			<kol-link-wc
-				// _ariaCurrent will not be set here, since it will be set on a child of this item.
-				_ariaExpanded={selected}
-				_href={href}
-				_icon={icon || '-'}
-				_hideLabel={compact}
-				_label={label}
-			></kol-link-wc>
-		);
-	}
+	private link = (link: LinkWithChildrenProps): JSX.Element => (
+		<kol-link-wc
+			_ariaCurrent={this._hasChildren === true ? this._ariaCurrentValue : undefined}
+			_ariaSelected={this._selected === true}
+			_hideLabel={this._hideLabel === true}
+			_href={link._href}
+			_icon={link._icon}
+			_label={link._label}
+		></kol-link-wc>
+	);
 
-	private text(compact: boolean, icon: Stringified<KoliBriIconProp> | undefined, label: string): JSX.Element {
-		return <kol-span-wc _icon={icon || '-'} _hideLabel={compact} _label={label}></kol-span-wc>;
-	}
+	private text = (text: TextWithChildrenProps): JSX.Element => (
+		<kol-span-wc _hideLabel={this._hideLabel === true} _icon={text._icon} _label={text._label}></kol-span-wc>
+	);
+
+	/**
+	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
+	 */
+	@Prop() public _ariaCurrentValue: AriaCurrent = false;
+
+	/**
+	 * Gibt an, ob diese Komponente Kinder hat.
+	 */
+	@Prop() public _hasChildren?: boolean = false;
 
 	/**
 	 * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
 	 */
-	@Prop() public _links!: ButtonOrLinkOrTextWithChildrenProps;
+	@Prop() public _link!: ButtonOrLinkOrTextWithChildrenProps;
 
 	/**
-	 * Kompakte Darstellung aktivieren.
+	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop() public _compact!: boolean;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Ist der Link selectiert? (Nur wenn es ein Link ist.)
+	 * Ist der Link selektiert? (Nur wenn es ein Link ist.)
 	 */
 	@Prop() public _selected?: boolean = false;
 }

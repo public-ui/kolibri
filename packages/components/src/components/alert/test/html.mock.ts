@@ -1,6 +1,7 @@
+import { mixMembers } from 'stencil-awesome-test';
+
 import { getHeadingWcHtml } from '../../heading/test/html.mock';
 import { getIconHtml } from '../../icon/test/html.mock';
-import { mixMembers } from 'stencil-awesome-test';
 import { Props } from '../types';
 
 export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''): string => {
@@ -13,13 +14,13 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
 	props._variant = props._variant || 'msg';
-	return `<kol-alert${props._alert ? ' _alert' : ''}${additionalHTML}>
+	return `<kol-alert${additionalHTML}>
   <mock:shadow-root>
-    <kol-alert-wc class="${type} ${props._variant}"${props._alert === true ? ' _alert role="alert"' : ''}>
+    <kol-alert-wc class="${type} ${props._variant}"${props._alert === true ? ' role="alert"' : ''}>
 			<div class="heading">
 				${getIconHtml(
 					{
-						_ariaLabel:
+						_label:
 							props._heading !== undefined
 								? ''
 								: props._type === 'success'

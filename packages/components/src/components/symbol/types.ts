@@ -1,10 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
+import { PropAriaLabel } from '../../types/props/aria-label';
+import { PropLabel } from '../../types/props/label';
+
 type RequiredProps = {
-	ariaLabel: string;
 	symbol: string;
 };
-type OptionalProps = unknown;
+type OptionalProps = PropAriaLabel & PropLabel;
 export type KoliBriSymbolProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;

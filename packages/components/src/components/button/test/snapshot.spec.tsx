@@ -1,7 +1,8 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
-import { executeTests } from 'stencil-awesome-test';
 import { ButtonProps } from '../../../types/button-link';
 import { COMPONENTS } from '../../component-list';
 import { getButtonHtml } from './html.mock';

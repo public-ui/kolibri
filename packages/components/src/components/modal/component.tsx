@@ -2,6 +2,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { KoliBriModalEventCallbacks } from '../../types/modal';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
@@ -62,7 +63,7 @@ export class KolModal implements KoliBriModalAPI {
 							style={{
 								width: this.state._width,
 							}}
-							aria-label={this.state._ariaLabel}
+							aria-label={this.state._label}
 							aria-modal="true"
 							role="dialog"
 							onKeyDown={this.onKeyDown}
@@ -88,8 +89,15 @@ export class KolModal implements KoliBriModalAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 *  @deprecated use _label instead
 	 */
-	@Prop() public _ariaLabel!: string;
+	@Prop() public _ariaLabel?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
 	/**
 	 * Gibt die EventCallback-Function für das Schließen des Modals an.
@@ -103,7 +111,7 @@ export class KolModal implements KoliBriModalAPI {
 
 	@State() public state: KoliBriModalStates = {
 		_activeElement: null,
-		_ariaLabel: '…',
+		_label: '…', // ⚠ required
 		_width: '100%',
 	};
 
@@ -114,11 +122,17 @@ export class KolModal implements KoliBriModalAPI {
 		});
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		watchString(this, '_ariaLabel', value, {
-			required: true,
-		});
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_on')
@@ -142,7 +156,7 @@ export class KolModal implements KoliBriModalAPI {
 
 	public componentWillLoad(): void {
 		this.validateActiveElement(this._activeElement);
-		this.validateAriaLabel(this._ariaLabel);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
 	}

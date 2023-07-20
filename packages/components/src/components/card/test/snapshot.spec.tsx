@@ -1,10 +1,11 @@
-import { h } from '@stencil/core';
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { executeTests } from 'stencil-awesome-test';
 
+import { h } from '@stencil/core';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
+
 import { COMPONENTS } from '../../component-list';
-import { getCardHtml } from './html.mock';
 import { koliBriCardProps } from '../types';
+import { getCardHtml } from './html.mock';
 
 executeTests<koliBriCardProps>(
 	'Card',

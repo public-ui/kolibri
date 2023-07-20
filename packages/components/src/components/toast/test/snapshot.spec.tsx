@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getToastHtml } from './html.mock';
 import { KoliBriToastProps } from '../types';
+import { getToastHtml } from './html.mock';
 
 executeTests<KoliBriToastProps>(
 	'Toast',
@@ -16,10 +17,10 @@ executeTests<KoliBriToastProps>(
 		return page;
 	},
 	{
-		_show: [false, true],
 		_alert: [false, true],
 		_heading: ['Überschrift'],
 		_level: [1, 2, 3, 4, 5, 6],
+		_show: [false, true],
 		_type: ['default', 'error', 'info', 'success', 'warning'],
 	},
 	getToastHtml,

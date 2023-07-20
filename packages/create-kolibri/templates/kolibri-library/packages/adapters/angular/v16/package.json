@@ -60,22 +60,22 @@
 		"@angular/compiler-cli": "16.0.0",
 		"@angular/compiler": "16.0.0",
 		"@angular/core": "16.0.0",
-		"@public-ui/components": "1.6.0-rc.5",
+		"@public-ui/components": "1.6.0-rc.15",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
 		"@types/normalize-package-data": "2.4.1",
-		"prettier": "2.8.8",
+		"prettier": "3.0.0",
 		"rimraf": "3.0.2",
 		"rxjs": "7.8.1",
 		"tslib": "2.5.0",
-		"typescript": "5.0.4",
+		"typescript": "5.1.6",
 		"zone.js": "0.13.0"
 	},
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
 		"@angular/core": "^16",
-		"@public-ui/components": "1.6.0-rc.5"
+		"@public-ui/components": "1.6.0-rc.15"
 	},
 	"files": [
 		"dist"

@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { KoliBriPopoverProps, KoliBriPopoverStates } from '../types';
 
 export const getPopoverHtml = (

@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { Events } from '../../enums/events';
 import { EventCallback } from '../../types/callbacks';
 

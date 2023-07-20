@@ -4,10 +4,10 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
-import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
-import { validateLabel } from '../../types/props';
 import { nonce } from '../../utils/dev.utils';
+import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
 import { KoliBriBadgeProps, KoliBriBadgeStates } from './types';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
@@ -40,7 +40,6 @@ export class KolBadge implements KoliBriBadgeProps {
 					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 						<kol-button-wc
 							_ariaControls={this.id}
-							_ariaLabel={this.state._smartButton._ariaLabel}
 							_customClass={this.state._smartButton._customClass}
 							_disabled={this.state._smartButton._disabled}
 							_hideLabel={true}
@@ -65,7 +64,7 @@ export class KolBadge implements KoliBriBadgeProps {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
@@ -76,15 +75,15 @@ export class KolBadge implements KoliBriBadgeProps {
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean;
+	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
@@ -113,7 +112,7 @@ export class KolBadge implements KoliBriBadgeProps {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value, {
 			hooks: {
 				afterPatch: (value) => {

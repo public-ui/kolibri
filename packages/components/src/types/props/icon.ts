@@ -1,10 +1,11 @@
 import { Generic } from '@a11y-ui/core';
-import { ButtonStates } from '../button-link';
-import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../icon';
-import { Align } from '.';
+
 import { objectObjectHandler, parseJson, watchValidator } from '../../utils/prop.validators';
 import { isObject, isString, isStyle } from '../../utils/validator';
+import { ButtonStates } from '../button-link';
 import { Stringified } from '../common';
+import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../icon';
+import { Align } from './align';
 
 /* types */
 /** de

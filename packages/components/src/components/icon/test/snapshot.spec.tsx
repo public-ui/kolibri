@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getIconHtml } from './html.mock';
 import { KoliBriIconProps } from '../types';
+import { getIconHtml } from './html.mock';
 
 executeTests<KoliBriIconProps>(
 	'Icon',
@@ -16,7 +17,7 @@ executeTests<KoliBriIconProps>(
 		return page;
 	},
 	{
-		_ariaLabel: ['Aria-Label'],
+		_label: ['Aria-Label'],
 		_icon: ['codicon codicon-home'],
 	},
 	getIconHtml,

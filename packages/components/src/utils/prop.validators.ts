@@ -1,13 +1,13 @@
-import { patchTheme, patchThemeTag } from '@a11y-ui/core';
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
-import { Generic } from '@a11y-ui/core';
 
-import { devHint } from './a11y.tipps';
-import { getDocument, getExperimalMode, getWindow, Log } from './dev.utils';
+import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
+
 import { Stringified } from '../types/common';
+import { devHint } from './a11y.tipps';
+import { getDocument, getExperimentalMode, getWindow, Log } from './dev.utils';
 
 // https://regex101.com/r/lSYLO9/1
 /**
@@ -44,7 +44,7 @@ export const emptyStringByArrayHandler = (value: unknown, cb: () => void): void 
  * wir das Target explizit und stoppen die Propagation.
  */
 export const setEventTarget = (event: Event, target?: HTMLElement): void => {
-	if (getExperimalMode()) {
+	if (getExperimentalMode()) {
 		Log.debug([event, target]);
 		Log.debug(`↑ We propagate the (submit) event to this target.`);
 	}

@@ -1,13 +1,12 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { colorRgba } from '../badge/color-rgba';
-
-import { Generic } from '@a11y-ui/core';
 import { translate } from '../../i18n';
+import { Stringified } from '../../types/common';
 import { PropColor, validateColor } from '../../types/props/color';
-import { watchBoolean } from '../../utils/prop.validators';
 import { devHint } from '../../utils/a11y.tipps';
-import { Stringified } from '../../components';
+import { watchBoolean } from '../../utils/prop.validators';
+import { colorRgba } from '../badge/color-rgba';
 import { KoliBriKolibriAPI, KoliBriKolibriStates } from './types';
 
 const max = 360;
@@ -55,7 +54,7 @@ export class KolKolibri implements KoliBriKolibriAPI {
 	/**
 	 * Gibt an, ob das Bild-Logo farblich animiert werden soll.
 	 */
-	@Prop({ reflect: true }) public _animate?: boolean;
+	@Prop() public _animate?: boolean;
 
 	/**
 	 * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
@@ -65,7 +64,7 @@ export class KolKolibri implements KoliBriKolibriAPI {
 	/**
 	 * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
 	 */
-	@Prop({ reflect: true }) public _labeled?: boolean;
+	@Prop() public _labeled?: boolean;
 
 	@State() public state: KoliBriKolibriStates = {
 		_animate: false,

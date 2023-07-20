@@ -41,10 +41,6 @@ Die **Paginierung**-Komponente kann über Ihre Properties konfiguriert werden.
 Die **Paginierung**-Komponente kann auf vielfältige Art eingesetzt werden. Insbesondere dort, wo auf einer Inhaltsseite umfangreiche Inhalte dargestellt werden sollen, trägt sie zur Verbesserung der Struktur und Übersichtlichkeit bei.
 Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte, Listen und Tabellen. Auch für bestimmte Navigationsaufgaben innerhalb einer Seite kann die Paginierung gut verwendet werden.
 
-<!-- ## Barrierefreiheit -->
-
-<!-- ## Links und Referenzen -->
-
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -61,7 +57,7 @@ Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte
 | `_siblingCount`       | `_sibling-count`     | Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.                       | `number \| undefined`                                                                                                                                                                                                  | `1`         |
 | `_tooltipAlign`       | `_tooltip-align`     | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll. | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                                                                                                                                  | `'top'`     |
 | `_total` _(required)_ | `_total`             | Setzt die Gesamtanzahl der Seiten.                                                               | `number`                                                                                                                                                                                                               | `undefined` |
-| `_variant`            | `_variant`           | Gibt an, welche Variante der Darstellung genutzt werden soll.                                    | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| undefined`                                                                                                                                 | `'normal'`  |
+| `_variant`            | `_variant`           | Gibt an, welche Variante der Darstellung genutzt werden soll.                                    | `"custom" \| "danger" \| "ghost" \| "normal" \| "primary" \| "secondary" \| "tertiary" \| undefined`                                                                                                                   | `'normal'`  |
 
 ## Dependencies
 
@@ -88,6 +84,7 @@ graph TD;
   kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
   kol-select --> kol-input
+  kol-select --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert

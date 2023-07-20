@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
+
 import { a11yHint, uiUxHint } from '../../utils/a11y.tipps';
-import { watchString, WatchStringOptions } from '../../utils/prop.validators';
-import { isEmptyOrPrefixOf } from '../../utils/validator';
+import { WatchStringOptions, watchValidator } from '../../utils/prop.validators';
 
 /* types */
 
@@ -45,86 +45,43 @@ export function containsOnlyNumbers(str: string): boolean {
 	return ONLY_NUMBERS.test(str);
 }
 
-/** de
- * Das Label dient der Beschriftung unterschiedlicher Elemente.
- * - Button -> label text
- * - Heading -> headline text
- * - Input, Select und Textarea -> label text
- * - Summary -> summary text
- * - Table -> caption text
+/**
+ * Defines the type of the label property.
+ */
+export type LabelPropType = string;
+
+/**
+ * Defines the type of the label with expert-slot toggle property.
+ */
+export type LabelWithExpertSlotPropType = LabelPropType | false;
+
+/**
+ * The label property is used to label different elements:
+ * - abbr -> title text
+ * - button -> label text
+ * - heading -> headline text
+ * - input, select and textarea -> label text
+ * - summary -> summary text
+ * - quote, table -> caption text
+ * - version -> version text
  * - etc.
  *
- * Das Label ist häufig ein Pflichtattribut und kann leer gesetzt werden,
- * wenn man das Label mittels dem Expert-Slot überschreiben will.
- */
-/** en
- * The label is used to label different elements.
- * -Button -> label text
- * -Heading -> headline text
- * -Input, Select and Textarea -> label text
- * -Summary -> summary text
- * -Table -> caption text
- * -Etc.
- *
- * The label is often a mandatory attribute and can be set empty,
- * if you want to overwrite the label using the expert slot.
+ * The label is often a mandatory attribute. If the value of the label is false,
+ * the expert-slot will be used. Otherwise, the value of the label must be a string
+ * and the expert-slot will be ignored.
  */
 export type PropLabel = {
-	label: string;
+	label: LabelPropType;
+};
+export type PropLabelWithExpertSlot = {
+	label: LabelWithExpertSlotPropType;
 };
 
 export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
+// type LabelWithExpertSlotProp = Generic.Element.Members<PropLabelWithExpertSlot, unknown>;
 
-/* validator */
-/**
- * Ein abweichendes Aria-Label muss aus Gründern der Barrierefreiheit für
- * die Sprachsteuerung mit dem Label-Text beginnen.
- */
-const syncAriaLabelBeforePatch: Generic.Element.NextStateHooksCallback = (_nextValue, nextState, component: Generic.Element.Component, key): void => {
-	const ariaLabel: string | undefined = nextState.has('_ariaLabel') ? (nextState.get('_ariaLabel') as string) : (component.state._ariaLabel as string);
-	if (typeof ariaLabel === 'string') {
-		const label: string = nextState.has('_label') ? (nextState.get('_label') as string) : (component.state._label as string);
-		if (isEmptyOrPrefixOf(label, ariaLabel) === false) {
-			if (key === '_ariaLabel') {
-				nextState.set('_label', ariaLabel);
-				// smartSetTimeout(() => ((component as Generic.Element.Component & { _label: string })._label = ariaLabel), 50);
-			} else {
-				nextState.set('_ariaLabel', undefined);
-				// smartSetTimeout(() => ((component as Generic.Element.Component & { _ariaLabel: string })._ariaLabel = label), 50);
-			}
-			a11yHint(
-				`The different Aria label is not barrier-free. A different Aria label must start with the label text for reasons of accessibility for voice control.`
-			);
-		}
-	}
-};
-
-const validateAriaLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
-	watchString(component, '_ariaLabel', value, {
-		hooks: {
-			afterPatch: (value, state, component, key) => {
-				if (typeof options.hooks?.afterPatch === 'function') {
-					options.hooks?.afterPatch(value, state, component, key);
-				}
-				if (typeof value === 'string' && value.length > 0 && hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
-					a11yHint(`The different aria label ("${value}") is not accessible. A different aria label should consist of at least three readable characters.`);
-				}
-			},
-			beforePatch: options.hooks?.beforePatch,
-		},
-	});
-};
-
-export const validateAriaLabelWithLabel = (component: Generic.Element.Component, value?: string): void => {
-	validateAriaLabel(component, value, {
-		hooks: {
-			beforePatch: syncAriaLabelBeforePatch,
-		},
-	});
-};
-
-export const validateLabel = (component: Generic.Element.Component, value?: string, options: WatchStringOptions = {}): void => {
-	watchString(component, '_label', value, {
+function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
+	return {
 		hooks: {
 			afterPatch: (value, state, component, key) => {
 				if (typeof options.hooks?.afterPatch === 'function') {
@@ -139,14 +96,31 @@ export const validateLabel = (component: Generic.Element.Component, value?: stri
 			},
 			beforePatch: options.hooks?.beforePatch,
 		},
-		required: true,
-	});
+	};
+}
+
+const LABEL_VALUES = new Set(['string']);
+export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
+	watchValidator(component, '_label', (value) => typeof value === 'string', LABEL_VALUES, value, getValidationOptions(options));
 };
 
-export const validateLabelWithAriaLabel = (component: Generic.Element.Component, value?: string): void => {
-	validateLabel(component, value, {
-		hooks: {
-			beforePatch: syncAriaLabelBeforePatch,
-		},
-	});
+const LABEL_WITH_EXPERT_SLOT_VALUES = new Set(['string', 'false']);
+export const validateLabelWithExpertSlot = (
+	component: Generic.Element.Component,
+	value?: LabelWithExpertSlotPropType,
+	options: WatchStringOptions = {}
+): void => {
+	if (value === '' || value === 'false') {
+		value = false; // TODO: remove this workaround in v2
+	}
+	watchValidator(
+		component,
+		'_label',
+		(value) => value === false || typeof value === 'string',
+		LABEL_WITH_EXPERT_SLOT_VALUES,
+		value,
+		getValidationOptions(options)
+	);
 };
+
+// TODO: Validation for labelWithExpertSlot

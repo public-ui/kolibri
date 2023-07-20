@@ -1,8 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
-import { Stringified } from '../../types/common';
 
+import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
+import { Align } from '../../types/props/align';
+import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
@@ -31,8 +33,8 @@ export class KolInputRadio implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const hasExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
 			<Host>
 				<fieldset
@@ -47,7 +49,8 @@ export class KolInputRadio implements ComponentApi {
 						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 						<span>
 							{/* INFO: label comes with any html tag or as plain text! */}
-							{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}
+							{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+							<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 						</span>
 					</legend>
 					{this.state._list.map((option, index) => {
@@ -89,6 +92,16 @@ export class KolInputRadio implements ComponentApi {
 										{...this.controller.onFacade}
 										onChange={this.onChange}
 									/>
+									<kol-tooltip
+										/**
+										 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+										 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+										 */
+										aria-hidden="true"
+										hidden={hasExpertSlot || !this.state._hideLabel}
+										_id={`${this.state._id}-tooltip`}
+										_label={typeof this.state._label === 'string' ? this.state._label : ''}
+									></kol-tooltip>
 									<label
 										htmlFor={`${customId}`}
 										id={`${customId}-label`}
@@ -132,7 +145,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -142,7 +155,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -157,7 +170,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
@@ -182,7 +195,7 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
 	 */
-	@Prop({ reflect: true }) public _required?: boolean;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -196,6 +209,11 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 */
+	@Prop() public _tooltipAlign?: Align = 'top';
+
+	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
@@ -206,14 +224,14 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _value?: Stringified<W3CInputValue>;
 
 	@State() public state: States = {
-		_id: nonce(), // ⚠ required
-		_label: '…', // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
+		_label: false, // ⚠ required
 		_list: [],
 		_orientation: 'vertical',
 	};
 
 	public constructor() {
-		this.controller = new InputRadioController(this, 'radio', this.host);
+		this.controller = new InputRadioController(this, 'input-radio', this.host);
 	}
 
 	@Watch('_accessKey')
@@ -252,7 +270,7 @@ export class KolInputRadio implements ComponentApi {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		this.controller.validateLabel(value);
 	}
 

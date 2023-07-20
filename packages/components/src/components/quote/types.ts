@@ -1,14 +1,15 @@
 import { Generic } from '@a11y-ui/core';
 
+import { PropHref } from '../../types/props/href';
+
 export type KoliBriQuoteVariant = 'block' | 'inline';
 
 /**
  * API for the Quote component.
  */
 type RequiredProps = {
-	href: string; // URL to the source of the quote (cite)
 	quote: string;
-};
+} & PropHref; // URL to the source of the quote (cite)
 type OptionalProps = {
 	caption: string;
 	variant: KoliBriQuoteVariant;
@@ -16,10 +17,9 @@ type OptionalProps = {
 export type KoliBriQuoteProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	href: string; // URL to the source of the quote (cite)
 	quote: string;
 	variant: KoliBriQuoteVariant;
-};
+} & PropHref; // URL to the source of the quote (cite)
 type OptionalStates = {
 	caption: string;
 };

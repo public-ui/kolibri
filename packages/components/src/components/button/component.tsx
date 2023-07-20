@@ -1,6 +1,6 @@
+import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Generic } from '@a11y-ui/core';
 import {
 	AlternativButtonLinkRole,
 	ButtonStates,
@@ -15,13 +15,17 @@ import {
 } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { AriaCurrent, Align, validateAriaExpanded, validateDisabled, validateHideLabel } from '../../types/props';
+import { Align } from '../../types/props/align';
+import { AriaCurrent } from '../../types/props/aria-current';
+import { validateAriaExpanded } from '../../types/props/aria-expanded';
+import { validateDisabled } from '../../types/props/disabled';
+import { validateHideLabel } from '../../types/props/hide-label';
+import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
-import { validateAriaLabelWithLabel, validateLabelWithAriaLabel } from '../../types/props/label';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
@@ -64,6 +68,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	};
 
 	public render(): JSX.Element {
+		const hasExpertSlot: boolean = this.state._label === false;
 		return (
 			<Host>
 				<button
@@ -72,8 +77,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-label={this.state._hideLabel === false ? this.state._ariaLabel : undefined}
-					aria-labelledby={this.state._hideLabel === true ? this.nonce : undefined}
+					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
 						[this.state._variant as string]: this.state._variant !== 'custom',
@@ -90,22 +94,21 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}
 				>
-					<kol-span-wc _icon={this._icon} _hideLabel={this.state._hideLabel} _label={this.state._label}>
+					<kol-span-wc _icon={this.state._icon} _hideLabel={this.state._hideLabel} _label={hasExpertSlot ? false : this.state._label}>
 						<slot name="expert" slot="expert"></slot>
 					</kol-span-wc>
 				</button>
-				{this.state._hideLabel === true && (
-					<kol-tooltip
-						/**
-						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-						 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-						 */
-						aria-hidden="true"
-						_align={this.state._tooltipAlign}
-						_id={this.nonce}
-						_label={this.state._ariaLabel || this.state._label}
-					></kol-tooltip>
-				)}
+				<kol-tooltip
+					/**
+					 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+					 */
+					aria-hidden="true"
+					hidden={hasExpertSlot || !this.state._hideLabel}
+					_align={this.state._tooltipAlign}
+					_id={this.nonce}
+					_label={typeof this.state._label === 'string' ? this.state._label : ''}
+				></kol-tooltip>
 			</Host>
 		);
 	}
@@ -128,17 +131,19 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop({ reflect: true }) public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 *
+	 * @deprecated use _label instead
 	 */
-	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop({ reflect: true }) public _ariaSelected?: boolean;
+	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
@@ -148,12 +153,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
-	@Prop({ reflect: true }) public _disabled?: boolean = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 */
-	@Prop({ reflect: true }) public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
@@ -169,9 +174,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
 	 * @deprecated use _hide-label
 	 */
-	@Prop({ reflect: true }) public _iconOnly?: boolean;
+	@Prop() public _iconOnly?: boolean;
 
 	/**
 	 * Gibt die interne ID des primären Elements in der Komponente an.
@@ -181,8 +187,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	// - eslint-disable-next-line @stencil/strict-mutable
-	@Prop({ mutable: true, reflect: false }) public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
@@ -221,7 +226,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@State() public state: ButtonStates = {
 		_icon: {},
-		_label: '…', // ⚠ required
+		_label: false, // ⚠ required
 		_on: {},
 		_type: 'button',
 		_variant: 'normal',
@@ -253,9 +258,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		validateAriaExpanded(this, value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
-		validateAriaLabelWithLabel(this, value);
+		this.validateLabel(value);
 	}
 
 	@Watch('_ariaSelected')
@@ -310,8 +318,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
-		validateLabelWithAriaLabel(this, value);
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
+		validateLabelWithExpertSlot(this, value);
 	}
 
 	@Watch('_on')
@@ -346,6 +354,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@Watch('_value')
 	public validateValue(value?: Stringified<unknown>): void {
+		// TODO: make static form ready, like inputs
 		setState(this, '_value', value);
 	}
 
@@ -359,7 +368,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateAriaControls(this._ariaControls);
 		this.validateAriaCurrent(this._ariaCurrent);
 		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaLabel(this._ariaLabel);
 		this.validateAriaSelected(this._ariaSelected);
 		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
@@ -367,7 +375,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateId(this._id);
-		this.validateLabel(this._label);
+		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateTabIndex(this._tabIndex);

@@ -131,9 +131,9 @@ describe('test Progress', () => {
              <circle class="border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
              <circle class="whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
              <circle class="border" cx="60" cy="60" fill="currentColor" r="50" stroke="currentColor" stroke-width="1"></circle>
-             <circle class="progress" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-dasharray="130px 320px" stroke-linecap="round" stroke-width="6"></circle>
+             <circle class="progress" cx="60" cy="60" fill="currentColor" r="54.5" stroke="currentColor" stroke-dasharray="138px 342px" stroke-linecap="round" stroke-width="6"></circle>
              <text aria-hidden="true" fill="currentColor" text-anchor="middle" x="50%" y="50%">
-               <tspan>17%</tspan>
+               17%
              </text>
            </svg>
            <progress ${DEFAULT_HTML_PROGRESS_PROPS}></progress>

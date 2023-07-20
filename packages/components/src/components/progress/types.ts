@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
-import { PropLabel } from '../../types/props';
-import { KoliBriProgressType } from '../../types/progress';
+
+import { KoliBriProgressVariantType } from '../../types/progress';
+import { PropLabel } from '../../types/props/label';
 
 type RequiredProps = {
 	max: number;
@@ -10,9 +11,9 @@ type OptionalProps = {
 	/**
 	 * @deprecated
 	 */
-	type: KoliBriProgressType;
+	type: KoliBriProgressVariantType;
 	unit: string;
-	variant: KoliBriProgressType;
+	variant: KoliBriProgressVariantType;
 } & PropLabel;
 
 type RequiredStates = RequiredProps & {
@@ -20,7 +21,7 @@ type RequiredStates = RequiredProps & {
 };
 type OptionalStates = {
 	unit: string;
-	variant: KoliBriProgressType;
+	variant: KoliBriProgressVariantType;
 } & PropLabel;
 
 export type KoliBriProgressStates = Generic.Element.Members<RequiredStates, OptionalStates>;

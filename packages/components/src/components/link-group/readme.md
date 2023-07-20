@@ -8,7 +8,7 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine vertik
 
 ```html
 <kol-link-group
-	_aria-label="Einfache LinkGroup"
+	_label="Einfache LinkGroup"
 	_caption="Überschrift der LinkGroup"
 	_links="[{'_label':'Link 1','_href':'https://www.w3.org'},{'_label':'Link 2','_href':'https://www.w3.org'},{'_label':'Link 3','_href':'https://www.w3.org'}]"
 	_list-style-type="disc"
@@ -18,7 +18,7 @@ Die **LinkGroup**-Komponente bildet einen umfassenden Container für eine vertik
 
 ### Beispiel
 
-<kol-link-group _aria-label="Einfache LinkGroup" _caption="Überschrift der LinkGroup" _links="[{'_label':'Link 1','_href':'https://www.w3.org'},{'_label':'Link 2','_href':'https://www.w3.org'},{'_label':'Link 3','_href':'https://www.w3.org'}]" _list-style-type="disc" _orientation="'vertical"></kol-link-group>
+<kol-link-group _label="Einfache LinkGroup" _caption="Überschrift der LinkGroup" _links="[{'_label':'Link 1','_href':'https://www.w3.org'},{'_label':'Link 2','_href':'https://www.w3.org'},{'_label':'Link 3','_href':'https://www.w3.org'}]" _list-style-type="disc" _orientation="'vertical"></kol-link-group>
 
 ## Verwendung
 
@@ -61,7 +61,7 @@ Die Überschrift der LinkGroup wird über das Attribut **`_heading`** übergeben
   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
   nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
 
-<kol-link-group _aria-label="LinkGroup innerhalb eines Fließtextes" _links="[{'_label':'Link 1'},{'_label':'Link 2'},{'_label':'Link 3'}]"></kol-link-group>
+<kol-link-group _label="LinkGroup innerhalb eines Fließtextes" _links="[{'_label':'Link 1'},{'_label':'Link 2'},{'_label':'Link 3'}]"></kol-link-group>
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea optio deleniti fuga quos molestias, voluptate nobis
 nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum distinctio. Fugit, repellendus.
@@ -77,21 +77,20 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 | `Tab`   | Fokussiert das erste Element der LinkGroup. |
 | `Enter` | Ruft den hinterlegten Link auf.             |
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                  | Attribute          | Description                                                                                                                                                                                           | Type                                                                                                                                                                                                                  | Default      |
-| ------------------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| `_ariaLabel` _(required)_ | `_aria-label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                           | `string`                                                                                                                                                                                                              | `undefined`  |
-| `_heading`                | `_heading`         | Gibt die optionale Überschrift zur Link-Gruppe an.                                                                                                                                                    | `string \| undefined`                                                                                                                                                                                                 | `undefined`  |
-| `_level`                  | `_level`           | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.                                                 | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                                                                                                                                                        | `undefined`  |
-| `_links` _(required)_     | `_links`           | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                       | `LinkProps[] \| string`                                                                                                                                                                                               | `undefined`  |
-| `_listStyleType`          | `_list-style-type` | Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet                                                                                          | `"circle" \| "decimal" \| "decimal-leading-zero" \| "disc" \| "lower-alpha" \| "lower-greek" \| "lower-latin" \| "lower-roman" \| "none" \| "square" \| "upper-alpha" \| "upper-latin" \| "upper-roman" \| undefined` | `undefined`  |
-| `_ordered`                | `_ordered`         | <span style="color:red">**[DEPRECATED]**</span> Wird mittels der Property \_list-style-type automatisch gesteuert.<br/><br/>Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll. | `boolean \| undefined`                                                                                                                                                                                                | `undefined`  |
-| `_orientation`            | `_orientation`     | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                                                                    | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
+| Property              | Attribute          | Description                                                                                                                                                                                              | Type                                                                                                                                                                                                                  | Default      |
+| --------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `_ariaLabel`          | `_aria-label`      | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`                                                                                                                                                                                                 | `undefined`  |
+| `_heading`            | `_heading`         | Gibt die optionale Überschrift zur Link-Gruppe an.                                                                                                                                                       | `string \| undefined`                                                                                                                                                                                                 | `undefined`  |
+| `_label`              | `_label`           | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                              | `string \| undefined`                                                                                                                                                                                                 | `undefined`  |
+| `_level`              | `_level`           | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.                                                    | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                                                                                                                                                        | `undefined`  |
+| `_links` _(required)_ | `_links`           | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                          | `LinkProps[] \| string`                                                                                                                                                                                               | `undefined`  |
+| `_listStyleType`      | `_list-style-type` | Gibt den List-Style-Typen für ungeordnete Listen aus. Wird bei horizontalen LinkGroups als Trenner verwendet                                                                                             | `"circle" \| "decimal" \| "decimal-leading-zero" \| "disc" \| "lower-alpha" \| "lower-greek" \| "lower-latin" \| "lower-roman" \| "none" \| "square" \| "upper-alpha" \| "upper-latin" \| "upper-roman" \| undefined` | `undefined`  |
+| `_ordered`            | `_ordered`         | <span style="color:red">**[DEPRECATED]**</span> Wird mittels der Property \_list-style-type automatisch gesteuert.<br/><br/>Gibt an, ob eine Ordered- oder eine Unordered-List verwendet werden soll.    | `boolean \| undefined`                                                                                                                                                                                                | `undefined`  |
+| `_orientation`        | `_orientation`     | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                                                                       | `"horizontal" \| "vertical" \| undefined`                                                                                                                                                                             | `'vertical'` |
 
 ## Dependencies
 

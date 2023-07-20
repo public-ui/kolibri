@@ -1,10 +1,10 @@
-import { Component, h, JSX, Prop } from '@stencil/core';
-import { FontAwesome, FontAwesomeOssPrefix } from '../../enums/font-awesome';
-
 import { Generic } from '@a11y-ui/core';
-import { AriaLabel } from '../../types/aria-label';
+import { Component, h, JSX, Prop } from '@stencil/core';
 
-type RequiredProps = AriaLabel & {
+import { FontAwesome, FontAwesomeOssPrefix } from '../../enums/font-awesome';
+import { PropAriaLabel } from '../../types/props/aria-label';
+
+type RequiredProps = PropAriaLabel & {
 	icon: FontAwesome;
 	prefix: FontAwesomeOssPrefix;
 };
@@ -27,7 +27,6 @@ export class KolIconFontAwesome implements Generic.Element.Members<RequiredProps
 				exportparts={`icon${typeof this._part === 'string' ? `,${this._part}` : ''}`}
 				_ariaLabel={this._ariaLabel}
 				_icon={typeof this._prefix === 'string' && typeof this._icon === 'string' ? `${this._prefix} fa-${this._icon}` : (undefined as unknown as string)}
-				_part={this._part}
 			/>
 		);
 	}

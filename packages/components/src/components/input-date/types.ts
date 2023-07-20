@@ -1,11 +1,12 @@
 import { Generic } from '@a11y-ui/core';
+
+import { ButtonProps } from '../../types/button-link';
+import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputDateType, OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
-import { PropLabel } from '../../types/props';
-import { KoliBriHorizontalIcon } from '../../types/icon';
-import { ButtonProps } from '../../types/button-link';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = OptionalInputProps<Iso8601 | Date> & { type: InputDateType };
@@ -16,7 +17,7 @@ type RequiredStates = {
 	id: string;
 	list: string[];
 	type: InputDateType;
-} & PropLabel;
+} & PropLabelWithExpertSlot;
 
 type OptionalStates = {
 	accessKey: string;

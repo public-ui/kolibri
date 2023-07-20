@@ -17,15 +17,12 @@
 		"packages/designer",
 		"packages/samples/react",
 		"packages/schema",
-		"packages/slidev",
-		"packages/storybook",
 		"packages/themes",
 		"packages/themes/bmf",
-		"packages/themes/bpa",
 		"packages/themes/ecl/ec",
 		"packages/themes/ecl/eu",
 		"packages/themes/itzbund"
 	],
 	"useNx": false,
-	"version": "1.6.0-rc.5"
+	"version": "1.6.0-rc.15"
 }

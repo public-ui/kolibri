@@ -1,10 +1,11 @@
+import { executeTests } from 'stencil-awesome-test';
+
 import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { executeTests } from 'stencil-awesome-test';
-import { getSymbolHtml } from './html.mock';
 import { KoliBriSymbolProps } from '../types';
+import { getSymbolHtml } from './html.mock';
 
 executeTests<KoliBriSymbolProps>(
 	'Symbol',
@@ -16,7 +17,7 @@ executeTests<KoliBriSymbolProps>(
 		return page;
 	},
 	{
-		_ariaLabel: ['Slash', 'Backslash'],
+		_label: ['Slash', 'Backslash'],
 		_symbol: ['/', '\\'],
 	},
 	getSymbolHtml,

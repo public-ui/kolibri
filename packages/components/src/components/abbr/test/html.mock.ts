@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 import { Props } from '../types';
 

@@ -1,13 +1,14 @@
+import { Generic } from '@a11y-ui/core';
+
+import { Stringified } from '../../types/common';
+import { InputTextType } from '../../types/input/control/text';
+import { validateHasCounter } from '../../types/props/has-counter';
+import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
 import { InputPasswordController } from '../input-password/controller';
 import { Props as InputTextProps, Watches as InputTextWatches } from './types';
 
-import { Generic } from '@a11y-ui/core';
-import { Stringified } from '../../types/common';
-import { InputTextType } from '../../types/input/control/text';
-import { PropLabel } from '../../types/props';
-
-type RequiredProps = PropLabel;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	id: string;
 	list: Stringified<string[]>;
@@ -54,8 +55,13 @@ export class InputTextController extends InputTextEmailController implements Inp
 		);
 	}
 
+	public validateHasCounter(value?: boolean): void {
+		validateHasCounter(this.component, value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateType(this.component._type);
+		this.validateHasCounter(this.component._hasCounter);
 	}
 }

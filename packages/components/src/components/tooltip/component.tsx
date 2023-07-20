@@ -1,8 +1,9 @@
-import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
+import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { Align } from '../../types/props';
+import { Align } from '../../types/props/align';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { watchString } from '../../utils/prop.validators';
@@ -18,8 +19,9 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	private previousSibling?: HTMLElement | null;
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
+	private cleanupAutoPositioning?: () => void;
 
-	private alignTooltip = (cb?: () => void): void => {
+	private alignTooltip = (): void => {
 		if (processEnv !== 'test' && this.previousSibling /* SSR instanceof HTMLElement */ && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
@@ -34,13 +36,10 @@ export class KolTooltip implements KoliBriTooltipAPI {
 				placement: this.state._align,
 				middleware: middleware,
 			}).then(({ x, y, middlewareData, placement }) => {
-				const oldPos = {
-					left: tooltipEl.style.left,
-					top: tooltipEl.style.top,
-				};
 				Object.assign(tooltipEl.style, {
 					left: `${x}px`,
 					top: `${y}px`,
+					visibility: 'visible',
 				});
 
 				if (arrowEl) {
@@ -58,26 +57,19 @@ export class KolTooltip implements KoliBriTooltipAPI {
 						});
 					}
 				}
-				if (oldPos.left !== tooltipEl.style.left || oldPos.top !== tooltipEl.style.top) {
-					this.alignTooltip(cb);
-				} else if (typeof cb === 'function') {
-					cb();
-				}
 			});
 		}
 	};
 
 	private showTooltip = (): void => {
-		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
+		if (this.previousSibling && this.tooltipElement /* SSR instanceof HTMLElement */) {
 			showOverlay(this.tooltipElement);
 			this.tooltipElement.style.setProperty('display', 'block');
 			getDocument().body.addEventListener('keyup', this.hideTooltipByEscape);
-			this.alignTooltip(() => {
-				if (this.tooltipElement /* SSR instanceof HTMLElement */) {
-					this.tooltipElement.style.setProperty('visibility', 'visible');
-					document.addEventListener('scroll', this.showTooltip);
-				}
-			});
+
+			const target = this.previousSibling;
+			const tooltipEl = this.tooltipElement;
+			this.cleanupAutoPositioning = autoUpdate(target, tooltipEl, this.alignTooltip);
 		}
 	};
 
@@ -86,7 +78,10 @@ export class KolTooltip implements KoliBriTooltipAPI {
 			hideOverlay(this.tooltipElement);
 			this.tooltipElement.style.setProperty('display', 'none');
 			this.tooltipElement.style.setProperty('visibility', 'hidden');
-			document.removeEventListener('scroll', this.showTooltip);
+			if (this.cleanupAutoPositioning) {
+				this.cleanupAutoPositioning();
+				this.cleanupAutoPositioning = undefined;
+			}
 		}
 	};
 
@@ -161,7 +156,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	@State() public state: KoliBriTooltipStates = {
 		_align: 'top',
@@ -180,8 +175,8 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	}
 
 	@Watch('_label')
-	public validateLabel(value?: string): void {
-		watchString(this, '_label', value);
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	private overFocusCount = 0;
@@ -224,6 +219,9 @@ export class KolTooltip implements KoliBriTooltipAPI {
 		}
 		if (this.tooltipElement /* SSR instanceof HTMLElement */) {
 			this.removeListeners(this.tooltipElement);
+		}
+		if (this.cleanupAutoPositioning) {
+			this.cleanupAutoPositioning();
 		}
 	}
 }

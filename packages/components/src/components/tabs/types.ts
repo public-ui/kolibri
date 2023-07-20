@@ -1,8 +1,13 @@
 import { Generic } from '@a11y-ui/core';
-import { Align, KoliBriIconProp, Stringified } from '../../components';
-import { PropHideLabel } from '../../types/props';
-import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
+
 import { Events } from '../../enums/events';
+import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
+import { Stringified } from '../../types/common';
+import { KoliBriIconProp } from '../../types/icon';
+import { Align } from '../../types/props/align';
+import { PropAriaLabel } from '../../types/props/aria-label';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropLabel } from '../../types/props/label';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?:
@@ -15,9 +20,7 @@ export type KoliBriTabsCallbacks = {
 	[Events.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 
-type RequiredTabButtonProps = {
-	label: string;
-};
+type RequiredTabButtonProps = PropLabel;
 type OptionalTabButtonProps = {
 	disabled: boolean;
 	icon: Stringified<KoliBriIconProp>;
@@ -30,21 +33,20 @@ type OptionalTabButtonProps = {
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
 type RequiredProps = {
-	ariaLabel: string;
 	tabs: Stringified<TabButtonProps[]>;
 };
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
 	tabsAlign: Align;
 	selected: number;
-};
+} & PropAriaLabel &
+	PropLabel;
 
 type RequiredStates = {
-	ariaLabel: string;
 	tabsAlign: Align;
 	selected: number;
 	tabs: TabButtonProps[];
-};
+} & PropLabel;
 type OptionalStates = {
 	on: KoliBriTabsCallbacks;
 };

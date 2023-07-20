@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-password")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
 @JsModule("@public-ui/components/dist/components/kol-input-password")
 public class KolInputPassword extends Component {
 	/**
@@ -101,6 +101,24 @@ public class KolInputPassword extends Component {
 	 */
 	public Optional<String> getError() {
 		return getElement().getProperty("_error", null);
+	}
+
+	/**
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setHasCounter(final Optional<String> value) {
+		getElement().setProperty("_has-counter", value);
+	}
+
+	/**
+	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getHasCounter() {
+		return getElement().getProperty("_has-counter", null);
 	}
 
 	/**
@@ -335,6 +353,24 @@ public class KolInputPassword extends Component {
 	 */
 	public Optional<String> getTabIndex() {
 		return getElement().getProperty("_tab-index", null);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setTooltipAlign(final Optional<String> value) {
+		getElement().setProperty("_tooltip-align", value);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getTooltipAlign() {
+		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**

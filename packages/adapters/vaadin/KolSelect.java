@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-select")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.4")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
 @JsModule("@public-ui/components/dist/components/kol-select")
 public class KolSelect extends Component {
 	/**
@@ -248,7 +248,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -257,7 +257,7 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 *
 	 * @return Optional<String>
 	 */
@@ -299,6 +299,24 @@ public class KolSelect extends Component {
 	 */
 	public Optional<String> getTabIndex() {
 		return getElement().getProperty("_tab-index", null);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setTooltipAlign(final Optional<String> value) {
+		getElement().setProperty("_tooltip-align", value);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getTooltipAlign() {
+		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**

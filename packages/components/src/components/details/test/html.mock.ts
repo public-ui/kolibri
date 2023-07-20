@@ -1,4 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
+
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
 import { KoliBriDetailsProps } from '../types';
@@ -20,7 +21,7 @@ export const getDetailsHtml = (
 		<details${props._open ? ' open' : ''}>
 			<summary>
 				${getIconHtml({
-					_ariaLabel: '',
+					_label: '',
 					_icon: props._open ? 'codicon codicon-chevron-down' : 'codicon codicon-chevron-right',
 				})}
 				<span>

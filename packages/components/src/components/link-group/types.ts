@@ -1,5 +1,11 @@
 import { Generic } from '@a11y-ui/core';
-import { HeadingLevel, LinkProps, Orientation, Stringified } from '../../components';
+
+import { LinkProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
+import { HeadingLevel } from '../../types/heading-level';
+import { Orientation } from '../../types/orientation';
+import { PropAriaLabel } from '../../types/props/aria-label';
+import { PropLabel } from '../../types/props/label';
 
 export type ListStyleType =
 	| 'disc'
@@ -17,7 +23,6 @@ export type ListStyleType =
 	| 'upper-roman';
 
 type RequiredProps = {
-	ariaLabel: string;
 	links: Stringified<LinkProps[]>;
 };
 type OptionalProps = {
@@ -26,14 +31,14 @@ type OptionalProps = {
 	listStyleType: ListStyleType;
 	ordered: boolean;
 	orientation: Orientation;
-};
+} & PropAriaLabel &
+	PropLabel;
 
 type RequiredStates = {
-	ariaLabel: string;
 	links: LinkProps[];
 	listStyleType: ListStyleType;
 	orientation: Orientation;
-};
+} & PropLabel;
 type OptionalStates = {
 	heading: string;
 	level: HeadingLevel;

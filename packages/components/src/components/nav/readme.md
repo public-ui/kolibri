@@ -16,7 +16,7 @@ noch die Icons ausgegeben.
 
 ```html
 <kol-nav
-	_ariaLabel="Navigation"
+	_label="Navigation"
 	_links="[
 	{
 		_href: 'startseite',
@@ -35,7 +35,7 @@ noch die Icons ausgegeben.
 
 ### Beispiel
 
-<kol-nav _ariaLabel="Navigation" _links="[{'_href':'startseite','_icon':'codicon codicon-home','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icon':'codicon codicon-home','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icon':'codicon codicon-home','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icon':'codicon codicon-home','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
+<kol-nav _label="Navigation" _links="[{'_href':'startseite','_icon':'codicon codicon-home','_label':'Startseite','_children':[{'_href':'startseite/1-untermenuepunkt','_icon':'codicon codicon-home','_label':'1. Untermenüpunkt'},{'_href':'startseite/2-untermenuepunkt','_icon':'codicon codicon-home','_label':'2. Untermenüpunkt'}]},{'_href':'unterseite','_icon':'codicon codicon-home','_label':'2. Menüpunkt'}]" _has-compact-button></kol-nav>
 
 ## Verwendung
 
@@ -100,22 +100,21 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 | `Tab`   | Fokussiert den ersten Menüpunkt in der Navigation. Nachfolgend kann mit der Tab-Taste jeder Menüpunkt angesprungen werden. Wenn der Has-compact-Button aktiviert wurde, ist dieser ebenfalls mit der Tab-Taste erreichbar. |
 | `Enter` | Klappt Unterpunkte auf/zu, sofern eine Ausklappschaltfläche fokussiert ist, aktiviert die Schaltfläche oder öffnet den Link anderenfalls.                                                                                  |
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                  | Attribute             | Description                                                                                                                                                                                       | Type                                                            | Default      |
-| ------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
-| `_ariaCurrentValue`       | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.                                                                                  | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
-| `_ariaLabel` _(required)_ | `_aria-label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                       | `string`                                                        | `undefined`  |
-| `_collapsible`            | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                                                                                                     | `boolean \| undefined`                                          | `true`       |
-| `_compact`                | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                                                                                                                | `boolean \| undefined`                                          | `false`      |
-| `_hasCompactButton`       | `_has-compact-button` | <span style="color:red">**[DEPRECATED]**</span> Version 2<br/><br/>Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                 | `boolean \| undefined`                                          | `false`      |
-| `_links` _(required)_     | `_links`              | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                   | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
-| `_orientation`            | `_orientation`        | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                                                                | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
-| `_variant`                | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Gibt an, welche Variante der Darstellung genutzt werden soll. | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
+| Property              | Attribute             | Description                                                                                                                                                                                              | Type                                                            | Default      |
+| --------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------ |
+| `_ariaCurrentValue`   | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.                                                                                         | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
+| `_ariaLabel`          | `_aria-label`         | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`                                           | `undefined`  |
+| `_collapsible`        | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                                                                                                            | `boolean \| undefined`                                          | `true`       |
+| `_compact`            | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                                                                                                                       | `boolean \| undefined`                                          | `false`      |
+| `_hasCompactButton`   | `_has-compact-button` | <span style="color:red">**[DEPRECATED]**</span> Version 2<br/><br/>Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                        | `boolean \| undefined`                                          | `false`      |
+| `_label`              | `_label`              | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                              | `string \| undefined`                                           | `undefined`  |
+| `_links` _(required)_ | `_links`              | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                          | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
+| `_orientation`        | `_orientation`        | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                                                                       | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
+| `_variant`            | `_variant`            | <span style="color:red">**[DEPRECATED]**</span> This property is deprecated and will be removed in the next major version.<br/><br/>Gibt an, welche Variante der Darstellung genutzt werden soll.        | `"primary" \| "secondary" \| undefined`                         | `'primary'`  |
 
 ## Dependencies
 

@@ -1,7 +1,7 @@
-import { h, Host, JSX, State } from '@stencil/core';
-import { Bundesministerium } from '../../../enums/bund';
-
 import { Generic } from '@a11y-ui/core';
+import { h, Host, JSX, State } from '@stencil/core';
+
+import { Bundesministerium } from '../../../enums/bund';
 
 type RequiredProps = unknown;
 type OptionalProps = unknown;
@@ -42,7 +42,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-icon-font-awesome _ariaLabel="" _icon="500px" _prefix="fab"></kol-icon-font-awesome>
 				<kol-icon-icofont _ariaLabel="" _icon="home"></kol-icon-icofont>
 				<kol-indented-text></kol-indented-text>
-				<kol-input-checkbox _label="" _id="id"></kol-input-checkbox>
+				<kol-input-checkbox _label="" _id="id" _value="test"></kol-input-checkbox>
 				<kol-input-color _label="" _id="id"></kol-input-color>
 				<kol-input-email _label="" _id="id"></kol-input-email>
 				<kol-input-file _label="" _id="id"></kol-input-file>
@@ -52,7 +52,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-input-range _label="" _id="id"></kol-input-range>
 				<kol-input-text _label="" _id="id"></kol-input-text>
 				<kol-link _href="" _label="Label"></kol-link>
-				<kol-link-group _ariaLabel="" _links={[]}></kol-link-group>
+				<kol-link-group _label="" _links={[]}></kol-link-group>
 				<kol-logo _org={Bundesministerium['Auswärtiges Amt']}></kol-logo>
 				<kol-modal _ariaLabel=""></kol-modal>
 				<kol-nav _ariaLabel="" _links={[]}></kol-nav>

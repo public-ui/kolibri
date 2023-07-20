@@ -5,14 +5,17 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Align, AriaCurrent } from "./types/props";
+import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+import { AriaCurrent } from "./types/props/aria-current";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -20,18 +23,18 @@ import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+import { StencilUnknown } from "./types/unknown";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
-import { Stringified as Stringified1 } from "./components";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
-import { KoliBriProgressType } from "./types/progress";
+import { KoliBriProgressVariantType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { SpinVariant } from "./types/props/variant/spin";
 import { KoliBriSplitButtonCallback } from "./components/split-button/types";
@@ -39,14 +42,17 @@ import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps 
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-export { Align, AriaCurrent } from "./types/props";
+export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
+export { AriaCurrent } from "./types/props/aria-current";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -54,18 +60,18 @@ export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+export { StencilUnknown } from "./types/unknown";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
-export { Stringified as Stringified1 } from "./components";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
-export { KoliBriProgressType } from "./types/progress";
+export { KoliBriProgressVariantType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { SpinVariant } from "./types/props/variant/spin";
 export { KoliBriSplitButtonCallback } from "./components/split-button/types";
@@ -183,21 +189,26 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
     interface KolBreadcrumb {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
-        "_links": Stringified<LinkProps[]>;
+        "_links": Stringified<BreadcrumbLinkProps[]>;
     }
     interface KolButton {
         /**
@@ -218,6 +229,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -257,7 +269,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -310,6 +322,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -340,7 +353,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -371,15 +384,23 @@ export namespace Components {
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Kompakte Darstellung aktivieren.
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_compact": boolean;
+        "_ariaCurrentValue": AriaCurrent;
+        /**
+          * Gibt an, ob diese Komponente Kinder hat.
+         */
+        "_hasChildren"?: boolean;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
         /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
-        "_links": ButtonOrLinkOrTextWithChildrenProps;
+        "_link": ButtonOrLinkOrTextWithChildrenProps;
         /**
-          * Ist der Link selectiert? (Nur wenn es ein Link ist.)
+          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
          */
         "_selected"?: boolean;
     }
@@ -402,6 +423,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -441,7 +463,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -514,7 +536,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -528,7 +550,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -541,12 +563,17 @@ export namespace Components {
     interface KolIcon {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -622,6 +649,7 @@ export namespace Components {
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
+        "_currentLength"?: number;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -630,6 +658,10 @@ export namespace Components {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -650,6 +682,10 @@ export namespace Components {
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<string[]>;
+        /**
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+         */
+        "_maxLength"?: number;
         /**
           * Gibt an, ob die Eingabefeld nur lesend ist.
          */
@@ -724,7 +760,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -746,6 +782,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -757,7 +797,7 @@ export namespace Components {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -803,7 +843,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -828,6 +868,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -877,7 +921,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -923,6 +967,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -957,6 +1005,10 @@ export namespace Components {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -975,7 +1027,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1029,6 +1081,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1077,7 +1133,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -1106,6 +1162,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1155,7 +1215,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -1205,6 +1265,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1240,6 +1304,10 @@ export namespace Components {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -1258,7 +1326,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -1304,6 +1372,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1344,7 +1416,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1373,6 +1445,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1417,7 +1493,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -1491,7 +1567,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1525,6 +1601,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1555,6 +1635,10 @@ export namespace Components {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -1573,7 +1657,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -1623,6 +1707,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1643,7 +1731,7 @@ export namespace Components {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: Stringified1<PropColor>;
+        "_color"?: Stringified<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -1664,6 +1752,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -1672,6 +1761,7 @@ export namespace Components {
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated will be removed in v2
          */
         "_disabled"?: boolean;
         /**
@@ -1703,10 +1793,10 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1715,12 +1805,12 @@ export namespace Components {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -1741,7 +1831,7 @@ export namespace Components {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }
@@ -1760,6 +1850,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -1798,7 +1889,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -1832,12 +1923,17 @@ export namespace Components {
     interface KolLinkGroup {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
         /**
           * Gibt die optionale Überschrift zur Link-Gruppe an.
          */
         "_heading"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -1875,6 +1971,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -1915,10 +2012,10 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -1927,12 +2024,12 @@ export namespace Components {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -1953,7 +2050,7 @@ export namespace Components {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }
@@ -1975,8 +2072,13 @@ export namespace Components {
         "_activeElement"?: HTMLElement | null;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -1993,8 +2095,9 @@ export namespace Components {
         "_ariaCurrentValue": AriaCurrent;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
         /**
           * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
          */
@@ -2008,6 +2111,10 @@ export namespace Components {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -2082,7 +2189,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
@@ -2091,7 +2198,7 @@ export namespace Components {
           * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
           * @deprecated will be removed in v2, use _variant
          */
-        "_type"?: KoliBriProgressType;
+        "_type"?: KoliBriProgressVariantType;
         /**
           * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
@@ -2103,7 +2210,7 @@ export namespace Components {
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: KoliBriProgressType;
+        "_variant"?: KoliBriProgressVariantType;
     }
     interface KolQuote {
         /**
@@ -2164,7 +2271,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -2182,7 +2289,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -2198,6 +2305,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -2209,8 +2320,13 @@ export namespace Components {
     interface KolSkipNav {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -2233,7 +2349,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
         /**
@@ -2252,7 +2368,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpin {
         /**
@@ -2283,6 +2399,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label
          */
         "_ariaLabel"?: string;
         /**
@@ -2313,7 +2430,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -2350,8 +2467,13 @@ export namespace Components {
     interface KolSymbol {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
@@ -2386,8 +2508,13 @@ export namespace Components {
     interface KolTabs {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -2445,7 +2572,7 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -2486,6 +2613,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -2541,13 +2672,18 @@ export namespace Components {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Gibt die Versionsnummer als Text an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_version": string;
+        "_label"?: LabelPropType;
+        /**
+          * Gibt die Versionsnummer als Text an.
+          * @deprecated use _label instead
+         */
+        "_version"?: string;
     }
 }
 declare global {
@@ -3099,21 +3235,26 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur Icon-Only).
+          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
     interface KolBreadcrumb {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
-        "_links": Stringified<LinkProps[]>;
+        "_links": Stringified<BreadcrumbLinkProps[]>;
     }
     interface KolButton {
         /**
@@ -3134,6 +3275,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3173,7 +3315,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3226,6 +3368,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3256,7 +3399,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3287,15 +3430,23 @@ declare namespace LocalJSX {
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Kompakte Darstellung aktivieren.
+          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_compact": boolean;
+        "_ariaCurrentValue"?: AriaCurrent;
+        /**
+          * Gibt an, ob diese Komponente Kinder hat.
+         */
+        "_hasChildren"?: boolean;
+        /**
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+         */
+        "_hideLabel"?: boolean;
         /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
-        "_links": ButtonOrLinkOrTextWithChildrenProps;
+        "_link": ButtonOrLinkOrTextWithChildrenProps;
         /**
-          * Ist der Link selectiert? (Nur wenn es ein Link ist.)
+          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
          */
         "_selected"?: boolean;
     }
@@ -3318,6 +3469,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3357,7 +3509,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3430,7 +3582,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3444,7 +3596,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3457,12 +3609,17 @@ declare namespace LocalJSX {
     interface KolIcon {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
         "_icon": string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt den Identifier für den CSS-Part an, um das Icon von Außen ändern zu können. (https://meowni.ca/posts/part-theme-explainer/)
           * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -3538,6 +3695,7 @@ declare namespace LocalJSX {
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
+        "_currentLength"?: number;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -3546,6 +3704,10 @@ declare namespace LocalJSX {
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
+        /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -3566,6 +3728,10 @@ declare namespace LocalJSX {
           * Gibt die Liste der Vorschlagswörter an.
          */
         "_list"?: Stringified<string[]>;
+        /**
+          * Gibt an, wie viele Zeichen maximal eingegeben werden können.
+         */
+        "_maxLength"?: number;
         /**
           * Gibt an, ob die Eingabefeld nur lesend ist.
          */
@@ -3640,7 +3806,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3662,6 +3828,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -3673,7 +3843,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3719,7 +3889,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3744,6 +3914,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3793,7 +3967,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -3839,6 +4013,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -3873,6 +4051,10 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -3891,7 +4073,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -3945,6 +4127,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -3993,7 +4179,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -4022,6 +4208,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4071,7 +4261,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
          */
@@ -4121,6 +4311,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4156,6 +4350,10 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -4174,7 +4372,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -4220,6 +4418,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4260,7 +4462,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -4289,6 +4491,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4333,7 +4539,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
          */
@@ -4407,7 +4613,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -4441,6 +4647,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4471,6 +4681,10 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
+          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+         */
+        "_hasCounter"?: boolean;
+        /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
         "_hideLabel"?: boolean;
@@ -4489,7 +4703,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
          */
@@ -4539,6 +4753,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4559,7 +4777,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, in welcher Farbe das Bild-Logo initial dargestellt werden soll.
          */
-        "_color"?: Stringified1<PropColor>;
+        "_color"?: Stringified<PropColor>;
         /**
           * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
          */
@@ -4580,6 +4798,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -4588,6 +4807,7 @@ declare namespace LocalJSX {
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated will be removed in v2
          */
         "_disabled"?: boolean;
         /**
@@ -4619,10 +4839,10 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4631,12 +4851,12 @@ declare namespace LocalJSX {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -4657,7 +4877,7 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }
@@ -4676,6 +4896,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -4714,7 +4935,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -4748,12 +4969,17 @@ declare namespace LocalJSX {
     interface KolLinkGroup {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
         /**
           * Gibt die optionale Überschrift zur Link-Gruppe an.
          */
         "_heading"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -4791,6 +5017,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -4831,10 +5058,10 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label"?: LabelWithExpertSlotPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
-          * @deprecated
+          * @deprecated will be removed in v2
          */
         "_on"?: LinkOnCallbacks;
         /**
@@ -4843,12 +5070,12 @@ declare namespace LocalJSX {
         "_role"?: AlternativButtonLinkRole;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_selector"?: string;
         /**
           * Gibt an, ob der Link nur beim Fokus sichtbar ist.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_stealth"?: boolean;
         /**
@@ -4869,7 +5096,7 @@ declare namespace LocalJSX {
         "_tooltipAlign"?: Align;
         /**
           * Gibt den Verwendungsfall des Links an.
-          * @deprecated Das Styling sollte stets über CSS erfolgen.
+          * @deprecated will be removed in v2
          */
         "_useCase"?: LinkUseCase;
     }
@@ -4891,8 +5118,13 @@ declare namespace LocalJSX {
         "_activeElement"?: HTMLElement | null;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die EventCallback-Function für das Schließen des Modals an.
          */
@@ -4909,8 +5141,9 @@ declare namespace LocalJSX {
         "_ariaCurrentValue"?: AriaCurrent;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
         /**
           * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
          */
@@ -4924,6 +5157,10 @@ declare namespace LocalJSX {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -4998,7 +5235,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, bei welchem Wert die Fortschrittsanzeige abgeschlossen ist.
          */
@@ -5007,7 +5244,7 @@ declare namespace LocalJSX {
           * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
           * @deprecated will be removed in v2, use _variant
          */
-        "_type"?: KoliBriProgressType;
+        "_type"?: KoliBriProgressVariantType;
         /**
           * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
          */
@@ -5019,7 +5256,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: KoliBriProgressType;
+        "_variant"?: KoliBriProgressVariantType;
     }
     interface KolQuote {
         /**
@@ -5080,7 +5317,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -5098,7 +5335,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
         /**
@@ -5114,6 +5351,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -5125,8 +5366,13 @@ declare namespace LocalJSX {
     interface KolSkipNav {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der darzustellenden Button, Links oder Texte an.
          */
@@ -5149,7 +5395,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpanWc {
         /**
@@ -5168,7 +5414,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
     }
     interface KolSpin {
         /**
@@ -5199,6 +5445,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label
          */
         "_ariaLabel"?: string;
         /**
@@ -5229,7 +5476,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -5266,8 +5513,13 @@ declare namespace LocalJSX {
     interface KolSymbol {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Dieses Property gibt den String an der angezeigt werden soll.
          */
@@ -5302,8 +5554,13 @@ declare namespace LocalJSX {
     interface KolTabs {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated use _label instead
          */
-        "_ariaLabel": string;
+        "_ariaLabel"?: string;
+        /**
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
          */
@@ -5361,7 +5618,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
@@ -5402,6 +5659,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -5457,13 +5718,18 @@ declare namespace LocalJSX {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_label": string;
+        "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Gibt die Versionsnummer als Text an.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
-        "_version": string;
+        "_label"?: LabelPropType;
+        /**
+          * Gibt die Versionsnummer als Text an.
+          * @deprecated use _label instead
+         */
+        "_version"?: string;
     }
     interface IntrinsicElements {
         "kol-abbr": KolAbbr;

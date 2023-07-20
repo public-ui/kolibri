@@ -1,4 +1,5 @@
 import { Generic } from '@a11y-ui/core';
+
 import { watchValidator } from '../prop.validators';
 
 export type Loading = 'eager' | 'lazy';
