@@ -12,7 +12,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 ```html
 <p>
 	In diesem Absatz wird ein Link gesetzt, der keine weiteren Attribute enthält.
-	<kol-link _href="https://www.w3.org">Hier steht ein Link</kol-link>Er wird standardmäßig als
+	<kol-link _href="https://www.w3.org" _target="_blank">Hier steht ein Link</kol-link>Er wird standardmäßig als
 	<i>
 		<b>inline-Element</b>
 	</i>
@@ -24,7 +24,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 
 <p>
    In diesem Absatz wird ein Link gesetzt, der keine weiteren Attribute enthält.
-  <kol-link _href="https://www.w3.org">Hier steht ein Link</kol-link>Er wird standardmäßig als <i>
+  <kol-link _href="https://www.w3.org" _target="_blank">Hier steht ein Link</kol-link>Er wird standardmäßig als <i>
     <b>inline-Element</b>
     </i> ausgegeben.
 </p>
@@ -62,8 +62,6 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 | ------- | ------------------------------- |
 | `Tab`   | Fokussiert das Link-Element.    |
 | `Enter` | Ruft den hinterlegten Link auf. |
-
-<!--## Links und Referenzen
 
 <!-- Auto Generated Below -->
 

@@ -244,14 +244,14 @@ export class KolInputDate implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_hasValue: false,
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 		_type: 'datetime-local',
 	};
 
 	public constructor() {
-		this.controller = new InputDateController(this, 'date', this.host);
+		this.controller = new InputDateController(this, 'input-date', this.host);
 	}
 
 	@Watch('_accessKey')

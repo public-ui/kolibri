@@ -262,13 +262,13 @@ export class KolInputRange implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 	};
 
 	public constructor() {
-		this.controller = new InputRangeController(this, 'range', this.host);
+		this.controller = new InputRangeController(this, 'input-range', this.host);
 	}
 
 	@Watch('_accessKey')

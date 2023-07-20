@@ -18,7 +18,7 @@ noch die Icons ausgegeben.
  */
 
 @Tag("kol-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
 @JsModule("@public-ui/components/dist/components/kol-nav")
 public class KolNav extends Component {
 	/**

@@ -263,13 +263,13 @@ export class KolInputEmail implements ComponentApi {
 		_autoComplete: 'off',
 		_currentLength: 0,
 		_hasValue: false,
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 	};
 
 	public constructor() {
-		this.controller = new InputEmailController(this, 'email', this.host);
+		this.controller = new InputEmailController(this, 'input-email', this.host);
 	}
 
 	@Watch('_accessKey')

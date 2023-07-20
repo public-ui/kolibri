@@ -100,22 +100,22 @@ Aktuell werden folgende Attribute von der Komponente verwaltet: `role`, `scope` 
 
 Das heißt beispielsweise, dass bei den Spaltenüberschriften automatisch entweder die Rolle `colheader` oder `rowheader` gesetzt wird. Darüber hinaus wird der Scope entweder auf `col`/`colgroup` oder `row`/`rowgroup` gesetzt. Ähnlich dieser Automatismen werden auch die `aria-\*`-Attribute je nach Relevanz gesetzt.
 
-Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschrieben: https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
+Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschrieben: <kol-link _href="" _label=""></kol-link>https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
 
 ## Links und Referenzen
 
-- https://www.w3.org/WAI/tutorials/tables/
-- https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html
-- https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
-- https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen
-- https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html
-- https://www.digitala11y.com/aria-sort-properties/
-- https://dequeuniversity.com/library/aria/table-sortable
-- https://www.maxability.co.in/2016/06/07/aria-sort-property/
-- https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort
-- https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen
-- https://stackoverflow.com/questions/1312236/
-- https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
+- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _target="_blank"></kol-link>
+- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
+- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.digitala11y.com/aria-sort-properties/" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/library/aria/table-sortable" _target="_blank"></kol-link>
+- <kol-link _href="https://www.maxability.co.in/2016/06/07/aria-sort-property/" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
+- <kol-link _href="https://stackoverflow.com/questions/1312236/" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
@@ -152,6 +152,7 @@ graph TD;
   kol-pagination --> kol-select
   kol-pagination --> kol-button-wc
   kol-select --> kol-input
+  kol-select --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert

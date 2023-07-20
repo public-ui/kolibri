@@ -230,7 +230,7 @@ export class KolTextarea implements ComponentApi {
 		_adjustHeight: false,
 		_currentLength: 0,
 		_hasValue: false,
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_resize: 'vertical',
 	};

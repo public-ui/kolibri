@@ -38,7 +38,7 @@ Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objek
 Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
-<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
+<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Übersicht Codicons"></kol-link>
 
 ### Nur Icon anzeigen
 
@@ -81,8 +81,6 @@ Für die Einhaltung der Regeln zur Barrierefreiheit, ist ein optimaler Kontrast 
 Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hierüber die Art der Information erfassen kann.
 
 <kol-alert _type="info">Eine explizite Angabe der Textfarbe ist nicht möglich.</kol-alert>
-
-<!--## Links und Referenzen
 
 <!-- Auto Generated Below -->
 

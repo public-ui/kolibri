@@ -37,6 +37,7 @@
 graph TD;
   kol-input-radio-group --> kol-input-radio
   kol-input-radio --> kol-input
+  kol-input-radio --> kol-tooltip
   kol-input-radio --> kol-alert
   kol-input --> kol-icon
   kol-input --> kol-button-wc

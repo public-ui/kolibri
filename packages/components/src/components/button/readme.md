@@ -49,7 +49,7 @@ Ein Icon (**`_icon`**) kann entweder als String angegeben werden, oder als Objek
 Als String übergeben Sie die Iconklasse (z.B.: `_icon="codicon codicon-home`), das Icon wird links vom Text angezeigt.
 Das Objekt ist vom Typ `KoliBriAllIcon`, kann also einen oder mehrere der Schlüssel `top`, `right`, `bottom` und `left` besitzen. Diese sind dann entweder String (siehe oben) oder ein Objekt vom Typ `KoliBriCustomIcon`, welches aus `icon` (String, siehe oben) und `style` (optional, Styleobjekt) besteht.
 
-<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _label="Übersicht Codicons"></kol-link>
+<kol-link _href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" _target="_blank" _label="Übersicht Codicons"></kol-link>
 
 ### Schaltfläche ohne Text
 
@@ -91,7 +91,7 @@ Probleme mit Disabled-Status
 
 ## Links und Referenzen
 
-- https://www.w3.org/TR/wai-aria-practices/#button
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#button" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
