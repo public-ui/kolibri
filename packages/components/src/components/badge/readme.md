@@ -82,8 +82,6 @@ Die zusätzliche Ausgabe eines **Icon** gewährleistet, dass der Nutzer auch hie
 
 <kol-alert _type="info">Eine explizite Angabe der Textfarbe ist nicht möglich.</kol-alert>
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties

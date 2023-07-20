@@ -63,8 +63,6 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
 | `Tab`   | Fokussiert das Link-Element.    |
 | `Enter` | Ruft den hinterlegten Link auf. |
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties

@@ -41,10 +41,6 @@ Die **Paginierung**-Komponente kann über Ihre Properties konfiguriert werden.
 Die **Paginierung**-Komponente kann auf vielfältige Art eingesetzt werden. Insbesondere dort, wo auf einer Inhaltsseite umfangreiche Inhalte dargestellt werden sollen, trägt sie zur Verbesserung der Struktur und Übersichtlichkeit bei.
 Klassische Anwendungsbereiche einer Paginierung sind z.B. Blog-ähnliche Inhalte, Listen und Tabellen. Auch für bestimmte Navigationsaufgaben innerhalb einer Seite kann die Paginierung gut verwendet werden.
 
-<!-- ## Barrierefreiheit -->
-
-<!-- ## Links und Referenzen -->
-
 <!-- Auto Generated Below -->
 
 ## Properties

@@ -40,9 +40,9 @@ Mittels der Auszeichnung `aria-label` muss ein Kontext-relevantes Icon beschrift
 
 ## Links und Referenzen
 
-<kol-link _href="https://github.com/microsoft/vscode-codicons" _target="_blank" _label="Codicons"></kol-link>
-<kol-link _href="https://fontawesome.com" _target="_blank" _label="Font-Awesome"></kol-link>
-<kol-link _href="https://icofont.com" _target="_blank" _label="Icofont"></kol-link>
+- <kol-link _href="https://github.com/microsoft/vscode-codicons" _target="_blank" _label="Codicons"></kol-link>
+- <kol-link _href="https://fontawesome.com" _target="_blank" _label="Font-Awesome"></kol-link>
+- <kol-link _href="https://icofont.com" _target="_blank" _label="Icofont"></kol-link>
 
 <!-- Auto Generated Below -->
 

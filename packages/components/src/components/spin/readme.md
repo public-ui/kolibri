@@ -108,10 +108,6 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 - Download von Inhalten.
 - Laden von umfangreichen Inhalten, z.B. Videos.
 
-<!-- ## Barrierefreiheit -->
-
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties
