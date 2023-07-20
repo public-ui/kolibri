@@ -1,12 +1,13 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Loading } from '../../utils/validators/loading';
+import {ImageSourcePropType} from "../../types/props/image-source";
 
 /**
  * API for the Image component.
  */
 type RequiredProps = {
-	src: string;
+	src: ImageSourcePropType;
 	alt: string;
 };
 type OptionalProps = {
