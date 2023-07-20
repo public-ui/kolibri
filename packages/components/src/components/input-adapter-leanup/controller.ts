@@ -95,34 +95,29 @@ export class ControlledInputController implements Watches {
 
 	private syncValue(rawValue: StencilUnknown, strValue: string | null, associatedElement?: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
 		if (associatedElement) {
-			if (typeof strValue === 'string' && strValue.length > 0) {
-				associatedElement.setAttribute('value', strValue);
-				switch (this.name) {
-					case 'select':
-						(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
-							(associatedElement as HTMLSelectElement).removeChild(el);
+			switch (this.name) {
+				case 'select':
+					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
+						(associatedElement as HTMLSelectElement).removeChild(el);
+					});
+					if (Array.isArray(rawValue) && rawValue.length > 0) {
+						rawValue.forEach((rawValueItem) => {
+							const strValueItem = this.tryToStringifyValue(rawValueItem as string);
+							if (typeof strValueItem === 'string') {
+								const option = document.createElement('option');
+								option.setAttribute('value', strValueItem);
+								option.setAttribute('selected', '');
+								(associatedElement as HTMLSelectElement).appendChild(option);
+							}
 						});
-						if (Array.isArray(rawValue) && rawValue.length > 0) {
-							rawValue.forEach((rawValueItem) => {
-								const strValueItem = this.tryToStringifyValue(rawValueItem as string);
-								if (typeof strValueItem === 'string') {
-									const option = document.createElement('option');
-									option.setAttribute('value', strValueItem);
-									option.setAttribute('selected', '');
-									(associatedElement as HTMLSelectElement).appendChild(option);
-								}
-							});
-						}
-						break;
-					case 'textarea':
-						(associatedElement as HTMLTextAreaElement).innerHTML = strValue;
-						break;
-					default:
-						(associatedElement as HTMLInputElement).value = strValue;
-						break;
-				}
-			} else {
-				associatedElement.removeAttribute('value');
+					}
+					break;
+				default:
+					if (typeof strValue === 'string' && strValue.length > 0) {
+						associatedElement.setAttribute('value', strValue);
+					} else {
+						associatedElement.removeAttribute('value');
+					}
 			}
 		}
 	}
