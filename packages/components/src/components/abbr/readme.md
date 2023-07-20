@@ -31,10 +31,6 @@ Der Begriff bzw. die Erklärung wird über das Attribut **`_title`** übergeben,
 
 Über das Attribut **`_tooltip-align`** wird die Positionierung des ToolTip, relativ zur Abkürzung, festgelegt.
 
-<!--### Best practices
-
-### Anwendungsfälle-->
-
 ## Barrierefreiheit
 
 Die Abbr-Komponente wurde von KoliBri umgesetzt, weil der Standard-Tooltip nicht barrierefrei bzgl. der Skalierung ist.
@@ -42,7 +38,7 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 ## Links und Referenzen
 
-- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"><kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
