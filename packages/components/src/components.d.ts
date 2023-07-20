@@ -21,6 +21,7 @@ import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
+import { ImageSourcePropType } from "./types/props/image-source";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
@@ -57,6 +58,7 @@ export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
+export { ImageSourcePropType } from "./types/props/image-source";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
@@ -165,6 +167,16 @@ export namespace Components {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
     }
     interface KolBadge {
         /**
@@ -634,7 +646,7 @@ export namespace Components {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -2709,6 +2721,12 @@ declare global {
         prototype: HTMLKolAlertWcElement;
         new (): HTMLKolAlertWcElement;
     };
+    interface HTMLKolAvatarElement extends Components.KolAvatar, HTMLStencilElement {
+    }
+    var HTMLKolAvatarElement: {
+        prototype: HTMLKolAvatarElement;
+        new (): HTMLKolAvatarElement;
+    };
     interface HTMLKolBadgeElement extends Components.KolBadge, HTMLStencilElement {
     }
     var HTMLKolBadgeElement: {
@@ -3065,6 +3083,7 @@ declare global {
         "kol-accordion": HTMLKolAccordionElement;
         "kol-alert": HTMLKolAlertElement;
         "kol-alert-wc": HTMLKolAlertWcElement;
+        "kol-avatar": HTMLKolAvatarElement;
         "kol-badge": HTMLKolBadgeElement;
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
@@ -3211,6 +3230,16 @@ declare namespace LocalJSX {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
     }
     interface KolBadge {
         /**
@@ -3680,7 +3709,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -5734,6 +5763,7 @@ declare namespace LocalJSX {
         "kol-accordion": KolAccordion;
         "kol-alert": KolAlert;
         "kol-alert-wc": KolAlertWc;
+        "kol-avatar": KolAvatar;
         "kol-badge": KolBadge;
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
@@ -5800,6 +5830,7 @@ declare module "@stencil/core" {
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
             "kol-alert-wc": LocalJSX.KolAlertWc & JSXBase.HTMLAttributes<HTMLKolAlertWcElement>;
+            "kol-avatar": LocalJSX.KolAvatar & JSXBase.HTMLAttributes<HTMLKolAvatarElement>;
             "kol-badge": LocalJSX.KolBadge & JSXBase.HTMLAttributes<HTMLKolBadgeElement>;
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;
