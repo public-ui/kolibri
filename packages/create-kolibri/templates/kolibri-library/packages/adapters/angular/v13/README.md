@@ -6,6 +6,6 @@ Mehr zur **Modularisierung** kann im [Architekturkonzept](https://github.com/pub
 
 Mehr zum **Projekt** kann in der [README](https://github.com/public-ui/kolibri/#readme) nachgelesen werden.
 
-## Referenezen
+## Referenzen
 
 - <https://entwickler.de/angular/der-teufel-steckt-im-detail-001/>

@@ -10,6 +10,7 @@ import { Align } from '../../types/props/align';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { featureHint } from '../../utils/a11y.tipps';
+import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -280,7 +281,7 @@ export class KolInputText implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_currentLength: 0,
-		_id: 'id',
+		_id: `id-${nonce()}`, // ⚠ required
 		_hasValue: false,
 		_label: false, // ⚠ required
 		_list: [],
@@ -288,7 +289,7 @@ export class KolInputText implements ComponentApi {
 	};
 
 	public constructor() {
-		this.controller = new InputTextController(this, 'text', this.host);
+		this.controller = new InputTextController(this, 'input-text', this.host);
 	}
 
 	@Watch('_accessKey')

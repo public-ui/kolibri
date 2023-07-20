@@ -256,14 +256,14 @@ export class KolInputNumber implements ComponentApi {
 	@State() public state: States = {
 		_autoComplete: 'off',
 		_hasValue: false,
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 		_type: 'number',
 	};
 
 	public constructor() {
-		this.controller = new InputNumberController(this, 'number', this.host);
+		this.controller = new InputNumberController(this, 'input-number', this.host);
 	}
 
 	@Watch('_accessKey')

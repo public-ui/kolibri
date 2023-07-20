@@ -22,14 +22,6 @@ Für die Konfiguration steht das Attribut **`_version`** zur Verfügung und nimm
 
 Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 
-<!--### Best practices
-
-### Anwendungsfälle-->
-
-<!-- ## Barrierefreiheit -->
-
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties

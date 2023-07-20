@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-checkbox")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**
@@ -266,6 +266,24 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setTooltipAlign(final Optional<String> value) {
+		getElement().setProperty("_tooltip-align", value);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getTooltipAlign() {
+		return getElement().getProperty("_tooltip-align", null);
+	}
+
+	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 *
 	 * @param value Optional<String>
@@ -304,7 +322,7 @@ public class KolInputCheckbox extends Component {
 	/**
 	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
 	public void setValue(final Optional<String> value) {
 		getElement().setProperty("_value", value);

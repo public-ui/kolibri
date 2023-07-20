@@ -26,7 +26,7 @@ Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Pr
 
 ## Links und Referenzen
 
-- https://www.deque.com/blog/dont-screen-readers-read-whats-screen-part-1-punctuation-typographic-symbols/
+- <kol-link _href="https://www.deque.com/blog/dont-screen-readers-read-whats-screen-part-1-punctuation-typographic-symbols/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

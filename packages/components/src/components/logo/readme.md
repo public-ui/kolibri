@@ -48,14 +48,6 @@ Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwende
 
 **BMZ** = **_Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung_**
 
-<!--### Best practices
-
-### Anwendungsfälle-->
-
-## Barrierefreiheit
-
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties
