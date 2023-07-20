@@ -74,6 +74,7 @@
 	},
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
+		"@angular/core": "^13",
 		"@public-ui/components": "1.6.0-rc.14"
 	},
 	"files": [
