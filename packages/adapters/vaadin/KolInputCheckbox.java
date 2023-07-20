@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-checkbox")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.12")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
 @JsModule("@public-ui/components/dist/components/kol-input-checkbox")
 public class KolInputCheckbox extends Component {
 	/**
@@ -322,7 +322,7 @@ public class KolInputCheckbox extends Component {
 	/**
 	 * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
 	public void setValue(final Optional<String> value) {
 		getElement().setProperty("_value", value);
