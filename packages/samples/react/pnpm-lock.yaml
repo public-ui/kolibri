@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.6.0-rc.12)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.13)
   '@public-ui/components':
-    specifier: 1.6.0-rc.12
-    version: 1.6.0-rc.12
+    specifier: 1.6.0-rc.13
+    version: 1.6.0-rc.13
   '@public-ui/react':
-    specifier: 1.6.0-rc.12
-    version: 1.6.0-rc.12(@public-ui/components@1.6.0-rc.12)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.6.0-rc.13
+    version: 1.6.0-rc.13(@public-ui/components@1.6.0-rc.13)(react-dom@18.2.0)(react@18.2.0)
   '@public-ui/themes':
-    specifier: 1.6.0-rc.12
-    version: 1.6.0-rc.12(@public-ui/components@1.6.0-rc.12)
+    specifier: 1.6.0-rc.13
+    version: 1.6.0-rc.13(@public-ui/components@1.6.0-rc.13)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -24,11 +24,11 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-router:
-    specifier: 6.14.1
-    version: 6.14.1(react@18.2.0)
+    specifier: 6.14.2
+    version: 6.14.2(react@18.2.0)
   react-router-dom:
-    specifier: 6.14.1
-    version: 6.14.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: 6.14.2
+    version: 6.14.2(react-dom@18.2.0)(react@18.2.0)
   world_countries_lists:
     specifier: 2.8.1
     version: 2.8.1
@@ -36,7 +36,7 @@ dependencies:
 devDependencies:
   '@leanup/stack':
     specifier: 1.3.44
-    version: 1.3.44(chromedriver@114.0.2)(esbuild@0.18.4)(typescript@5.1.6)
+    version: 1.3.44(chromedriver@114.0.3)(esbuild@0.18.4)(typescript@5.1.6)
   '@leanup/stack-react':
     specifier: 1.3.44
     version: 1.3.44(react-dom@18.2.0)(react@18.2.0)
@@ -59,8 +59,8 @@ devDependencies:
     specifier: 8.12.0
     version: 8.12.0
   chromedriver:
-    specifier: 114.0.2
-    version: 114.0.2
+    specifier: 114.0.3
+    version: 114.0.3
   cpy-cli:
     specifier: 5.0.0
     version: 5.0.0
@@ -780,8 +780,8 @@ packages:
     resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
     dev: false
 
-  /@floating-ui/dom@1.4.4:
-    resolution: {integrity: sha512-21hhDEPOiWkGp0Ys4Wi6Neriah7HweToKra626CIK712B5m9qkdz54OP9gVldUg+URnBTpv/j/bi/skmGdstXQ==}
+  /@floating-ui/dom@1.4.5:
+    resolution: {integrity: sha512-96KnRWkRnuBSSFbj0sFGwwOUd8EkiecINVl0O9wiZlZ64EkpyAOG3Xc2vKKNJmru0Z7RqWNymA+6b8OZqjgyyw==}
     dependencies:
       '@floating-ui/core': 1.3.1
     dev: false
@@ -880,7 +880,7 @@ packages:
     peerDependencies:
       '@leanup/stack': ~1.3.0
     dependencies:
-      '@leanup/stack': 1.3.44(chromedriver@114.0.2)(esbuild@0.18.4)(typescript@5.1.6)
+      '@leanup/stack': 1.3.44(chromedriver@114.0.3)(esbuild@0.18.4)(typescript@5.1.6)
       '@swc/core': 1.3.28
       copy-modules-webpack-plugin: 2.2.1
       copy-webpack-plugin: 10.2.4(webpack@5.75.0)
@@ -914,7 +914,7 @@ packages:
       - webpack-bundle-analyzer
     dev: true
 
-  /@leanup/stack@1.3.44(chromedriver@114.0.2)(esbuild@0.18.4)(typescript@5.1.6):
+  /@leanup/stack@1.3.44(chromedriver@114.0.3)(esbuild@0.18.4)(typescript@5.1.6):
     resolution: {integrity: sha512-dlxwm5LijuhkBAsIkWi1s5q/N1Ok3QdK6A8JXokdlSJV9IfsiNzR9lN3A6bcgUsFegmn/AgTe4dgrNqAahRzKw==}
     engines: {node: '>=14 <=18', npm: '>=6 <=8'}
     peerDependencies:
@@ -929,7 +929,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.49.0(@typescript-eslint/parser@5.49.0)(eslint@8.32.0)(typescript@5.1.6)
       '@typescript-eslint/parser': 5.49.0(eslint@8.43.0)(typescript@5.1.6)
       chai: 4.3.7
-      chromedriver: 114.0.2
+      chromedriver: 114.0.3
       cross-env: 7.0.3
       esbuild: 0.18.4
       esbuild-register: 3.4.2(esbuild@0.18.4)
@@ -941,7 +941,7 @@ packages:
       less: 4.1.3
       mocha: 9.2.2
       mock-local-storage: 1.1.23
-      nightwatch: 2.6.10(chromedriver@114.0.2)
+      nightwatch: 2.6.10(chromedriver@114.0.3)
       nyc: 15.1.0
       postcss: 8.4.21
       prettier: 2.8.3
@@ -999,22 +999,22 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.12):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.13):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.12
+      '@public-ui/components': 1.6.0-rc.13
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.6.0-rc.12:
-    resolution: {integrity: sha512-9K2hTa/bzDGpkH82kADniQXbrcyRaEEpoceVNlBLJiy/M0lvvsxZSGKqt8FGqUYD7/gJ9HEeSiEfyjpWFldTWg==}
+  /@public-ui/components@1.6.0-rc.13:
+    resolution: {integrity: sha512-ECBZ4KMO3f/8/diCcz9nipL7urZxhViX0sTnJMhgEqub9PFG0wQ+yKqS3AKfNK8EykPHL5/lqasVYifTDvci+A==}
     dependencies:
       '@a11y-ui/core': 1.0.3
-      '@floating-ui/dom': 1.4.4
-      '@public-ui/schema': 1.6.0-rc.12
-      i18next: 23.2.8
+      '@floating-ui/dom': 1.4.5
+      '@public-ui/schema': 1.6.0-rc.13
+      i18next: 23.2.11
     dev: false
 
   /@public-ui/core@1.1.15:
@@ -1024,14 +1024,14 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/react@1.6.0-rc.12(@public-ui/components@1.6.0-rc.12)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-sUUGX+q7gxPbmH/GKjr0BVuRWRfb6cv/zvIzXArhAfSs5CE3udtVjTtE8kl0snrzr88YRyVBqGHDt5q9DQ7Y/Q==}
+  /@public-ui/react@1.6.0-rc.13(@public-ui/components@1.6.0-rc.13)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fMefIE8Zcv+SnckmWKO0BFxb3xf2e5NKOCM02zRRjJ6KcQNxFUJvAUoicYZgEagGcy0Fnmg5EHn1JOCQ0ERrXg==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.12
+      '@public-ui/components': 1.6.0-rc.13
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.12
+      '@public-ui/components': 1.6.0-rc.13
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -1042,22 +1042,22 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.12:
-    resolution: {integrity: sha512-zLHAI8ZibeWUZyA5noZgNmEYQ64PcMDwYvn/j6wGEHNq8rxSeD/pW34N9rKv8k4cYuhzzigdusajgXHqrIaTAQ==}
+  /@public-ui/schema@1.6.0-rc.13:
+    resolution: {integrity: sha512-2bt+zCDFM7XRxIqdesUSwewYIYD0bgFDOc7nz2b22M2FVypDlZ6stGEc1JfUujAIn3WazUuttXcGxa0c2mnjHg==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
 
-  /@public-ui/themes@1.6.0-rc.12(@public-ui/components@1.6.0-rc.12):
-    resolution: {integrity: sha512-SkM/C9ZdqLyroVKaaeRSBFAFVkhZAQGByFY1bSXEERpEz5Ziv+I3ubqLMyQtNudb8si4/+pxylxIPAWOQnxI6g==}
+  /@public-ui/themes@1.6.0-rc.13(@public-ui/components@1.6.0-rc.13):
+    resolution: {integrity: sha512-kT3uMSQe0SQiDix7e6ZHs4HvmIfA9SDx7kuRRXm0KWDIP3+dwCgw2pXlezJ316QHrOVY3XdpGjfFrl7fVia9ew==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.12
+      '@public-ui/components': 1.6.0-rc.13
     dependencies:
-      '@public-ui/components': 1.6.0-rc.12
+      '@public-ui/components': 1.6.0-rc.13
     dev: false
 
-  /@remix-run/router@1.7.1:
-    resolution: {integrity: sha512-bgVQM4ZJ2u2CM8k1ey70o1ePFXsEzYVZoWghh6WjM8p59jQ7HxzbHW4SbnWFG7V9ig9chLawQxDTZ3xzOF8MkQ==}
+  /@remix-run/router@1.7.2:
+    resolution: {integrity: sha512-7Lcn7IqGMV+vizMPoEl5F0XDshcdDYtMI6uJLQdQz5CfZAwy3vvGKYSUk789qndt5dEC4HfSjviSYlSoHGL2+A==}
     engines: {node: '>=14'}
     dev: false
 
@@ -2435,15 +2435,15 @@ packages:
     engines: {node: '>=6.0'}
     dev: true
 
-  /chromedriver@114.0.2:
-    resolution: {integrity: sha512-v0qrXRBknbxqmtklG7RWOe3TJ/dLaHhtB0jVxE7BAdYERxUjEaNRyqBwoGgVfQDibHCB0swzvzsj158nnfPgZw==}
+  /chromedriver@114.0.3:
+    resolution: {integrity: sha512-Qy5kqsAUrCDwpovM5pIWFkb3X3IgJLoorigwFEDgC1boL094svny3N7yw06marJHAuyX4CE/hhd25RarIcKvKg==}
     engines: {node: '>=16'}
     hasBin: true
     requiresBuild: true
     dependencies:
       '@testim/chrome-version': 1.1.3
       axios: 1.4.0
-      compare-versions: 5.0.3
+      compare-versions: 6.0.0
       extract-zip: 2.0.1
       https-proxy-agent: 5.0.1
       proxy-from-env: 1.1.0
@@ -2579,8 +2579,8 @@ packages:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
     dev: true
 
-  /compare-versions@5.0.3:
-    resolution: {integrity: sha512-4UZlZP8Z99MGEY+Ovg/uJxJuvoXuN4M6B3hKaiackiHrgzQFEe3diJi1mf1PNHbFujM7FvLrK2bpgIaImbtZ1A==}
+  /compare-versions@6.0.0:
+    resolution: {integrity: sha512-s2MzYxfRsE9f/ow8hjn7ysa7pod1xhHdQMsgiJtKx6XSNf4x2N1KG4fjrkUmXcP/e9Y2ZX4zB6sHIso0Lm6evQ==}
     dev: true
 
   /compressible@2.0.18:
@@ -4291,8 +4291,8 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /i18next@23.2.8:
-    resolution: {integrity: sha512-wU0pMlJ91ZbB89i77G3YQ11/pBQrzgWpxJYl7HFyA9aU9v3aHMI/oBKQmAJNURr0A8cLG4EHjgSMK8IqQTp4PQ==}
+  /i18next@23.2.11:
+    resolution: {integrity: sha512-MA4FsxOjyCaOZtRDB4yuwjCvqYEioD4G4LlXOn7SO3rnQUlxTufyLsOqfL9MKakeLRBkefe8bqcs0D6Z/xFk1w==}
     dependencies:
       '@babel/runtime': 7.22.5
     dev: false
@@ -5461,7 +5461,7 @@ packages:
       axe-core: 4.7.2
     dev: true
 
-  /nightwatch@2.6.10(chromedriver@114.0.2):
+  /nightwatch@2.6.10(chromedriver@114.0.3):
     resolution: {integrity: sha512-nn5HVEtETLQ8qgu7APAZKg/yXTBkMflwdmzhfywP8mZUfKk0/dRQbeDqY2RawHr/sYsFmZV6eMirlJaaQoQ7Yw==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
@@ -5483,7 +5483,7 @@ packages:
       assertion-error: 1.1.0
       boxen: 5.1.2
       chai-nightwatch: 0.5.3
-      chromedriver: 114.0.2
+      chromedriver: 114.0.3
       ci-info: 3.3.0
       cli-table3: 0.6.3
       didyoumean: 1.2.2
@@ -6239,26 +6239,26 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
 
-  /react-router-dom@6.14.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ssF6M5UkQjHK70fgukCJyjlda0Dgono2QGwqGvuk7D+EDGHdacEN3Yke2LTMjkrpHuFwBfDFsEjGVXBDmL+bWw==}
+  /react-router-dom@6.14.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-5pWX0jdKR48XFZBuJqHosX3AAHjRAzygouMTyimnBPOLdY3WjzUSKhus2FVMihUFWzeLebDgr4r8UeQFAct7Bg==}
     engines: {node: '>=14'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@remix-run/router': 1.7.1
+      '@remix-run/router': 1.7.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-router: 6.14.1(react@18.2.0)
+      react-router: 6.14.2(react@18.2.0)
     dev: false
 
-  /react-router@6.14.1(react@18.2.0):
-    resolution: {integrity: sha512-U4PfgvG55LdvbQjg5Y9QRWyVxIdO1LlpYT7x+tMAxd9/vmiPuJhIwdxZuIQLN/9e3O4KFDHYfR9gzGeYMasW8g==}
+  /react-router@6.14.2(react@18.2.0):
+    resolution: {integrity: sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==}
     engines: {node: '>=14'}
     peerDependencies:
       react: '>=16.8'
     dependencies:
-      '@remix-run/router': 1.7.1
+      '@remix-run/router': 1.7.2
       react: 18.2.0
     dev: false
 
