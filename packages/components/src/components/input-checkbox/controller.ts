@@ -3,6 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { validateChecked } from '../../types/props/checked';
 import { validateIndeterminate } from '../../types/props/indeterminate';
+import { StencilUnknown } from '../../types/unknown';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
 import { isString } from '../../utils/validator';
@@ -17,9 +18,17 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.component = component;
 	}
 
+	public readonly setFormAssociatedCheckboxValue = (value: StencilUnknown) => {
+		if (this.component._checked) {
+			this.setFormAssociatedValue(value);
+		} else {
+			this.setFormAssociatedValue(null);
+		}
+	};
+
 	public validateChecked(value?: boolean): void {
 		validateChecked(this.component, value);
-		this.setFormAssociatedValue(this.component.state._checked as string);
+		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
 	}
 
 	public validateIcon(value?: Stringified<InputCheckboxIcon>): void {
@@ -47,9 +56,9 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		this.validateVariant(value);
 	}
 
-	public validateValue(value?: string): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		setState(this.component, '_value', value);
-		this.setFormAssociatedValue(this.component.state._value as string);
+		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
 	}
 
 	public validateVariant(value?: InputCheckboxVariant): void {

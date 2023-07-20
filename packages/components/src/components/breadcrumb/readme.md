@@ -44,7 +44,7 @@ Beispiel für ein JSON-Objekt, das an das Attribut **`_links`** übergeben wird:
 
 ```JSON
 [
-  { '_label': 'Startseite', '_href': '#/', '_icon': 'codicon codicon-home', '_hide-label _': true },
+  { '_label': 'Startseite', '_href': '#/', '_icon': 'codicon codicon-home', '_hide-label': true },
   { '_label': '1. Unterseite', '_href': '/unterseite_eins' },
   { '_label': '2. Unterseite', '_href': '/unterseite_zwei' }
 ]

@@ -13,7 +13,7 @@ Eingabe von Leerzeichen eingefügt werden. Zusätzliche Leerzeichen vergrößern
  */
 
 @Tag("kol-link")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.12")
 @JsModule("@public-ui/components/dist/components/kol-link")
 public class KolLink extends Component {
 	/**

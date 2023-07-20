@@ -73,6 +73,7 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 | `_resize`             | `_resize`        | Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)                | `"both" \| "horizontal" \| "none" \| "vertical" \| undefined`                            | `'vertical'` |
 | `_rows`               | `_rows`          | Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.                                                                                       | `number \| undefined`                                                                    | `undefined`  |
 | `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                    | `undefined`  |
+| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
 | `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                   | `false`      |
 | `_value`              | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                  | `string \| undefined`                                                                    | `undefined`  |
 
@@ -87,12 +88,14 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 ### Depends on
 
 - kol-input
+- [kol-tooltip](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-textarea --> kol-input
+  kol-textarea --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert

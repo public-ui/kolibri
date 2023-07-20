@@ -193,13 +193,13 @@ export class KolInputColor implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 	};
 
 	public constructor() {
-		this.controller = new InputColorController(this, 'color', this.host);
+		this.controller = new InputColorController(this, 'input-color', this.host);
 	}
 
 	@Watch('_accessKey')

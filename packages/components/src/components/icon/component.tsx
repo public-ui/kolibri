@@ -87,13 +87,15 @@ export class KolIcon implements KoliBriIconAPI {
 	 * @deprecated
 	 */
 	@Watch('_part')
-	public validatePart(): void {
-		devHint(`ICON: The usage of the part attribute is deprecated and has no effect.`);
+	public validatePart(value?: string): void {
+		if (value) {
+			devHint(`ICON: The usage of the part attribute is deprecated and has no effect.`);
+		}
 	}
 
 	public componentWillLoad(): void {
 		this.validateIcon(this._icon);
 		this.validateLabel(this._label || this._ariaLabel);
-		this.validatePart();
+		this.validatePart(this._part);
 	}
 }

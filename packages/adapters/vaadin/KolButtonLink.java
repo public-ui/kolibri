@@ -18,7 +18,7 @@ Da der Link, nicht wie der Button, in mehrere Varianten (`primary` oder `seconda
  */
 
 @Tag("kol-button-link")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.12")
 @JsModule("@public-ui/components/dist/components/kol-button-link")
 public class KolButtonLink extends Component {
 	/**
