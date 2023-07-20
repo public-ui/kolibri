@@ -69,9 +69,9 @@ export class ControlledInputController implements Watches {
 	 * TODO: It is possible that the value are a cyclic object value. So we need a custom
 	 *       JSON.stringify method from outside to convert it to string.
 	 */
-	private tryToStringifyValue(value: StencilUnknown): string {
+	private tryToStringifyValue(value: StencilUnknown): string | null {
 		try {
-			return value !== null ? JSON.stringify(value) : '';
+			return typeof value === 'object' && value !== null ? JSON.stringify(value).toString() : value === null || value === undefined ? null : value.toString();
 		} catch (e) {
 			devWarning(`The form field raw value is not able to stringify! ${e as string}`);
 			return '';
@@ -93,30 +93,36 @@ export class ControlledInputController implements Watches {
 		this.syncValue(rawValue, strValue, this.syncToOwnInput);
 	};
 
-	private syncValue(rawValue: StencilUnknown, strValue: string, associatedElement?: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
+	private syncValue(rawValue: StencilUnknown, strValue: string | null, associatedElement?: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
 		if (associatedElement) {
-			associatedElement.setAttribute('value', strValue);
-			switch (this.name) {
-				case 'select':
-					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
-						(associatedElement as HTMLSelectElement).removeChild(el);
-					});
-					if (Array.isArray(rawValue) && rawValue.length > 0) {
-						rawValue.forEach((rawValueItem) => {
-							const strValueItem = this.tryToStringifyValue(rawValueItem as string);
-							const option = document.createElement('option');
-							option.setAttribute('value', strValueItem);
-							option.setAttribute('selected', '');
-							(associatedElement as HTMLSelectElement).appendChild(option);
+			if (typeof strValue === 'string' && strValue.length > 0) {
+				associatedElement.setAttribute('value', strValue);
+				switch (this.name) {
+					case 'select':
+						(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
+							(associatedElement as HTMLSelectElement).removeChild(el);
 						});
-					}
-					break;
-				case 'textarea':
-					(associatedElement as HTMLTextAreaElement).innerHTML = strValue;
-					break;
-				default:
-					(associatedElement as HTMLInputElement).value = strValue;
-					break;
+						if (Array.isArray(rawValue) && rawValue.length > 0) {
+							rawValue.forEach((rawValueItem) => {
+								const strValueItem = this.tryToStringifyValue(rawValueItem as string);
+								if (typeof strValueItem === 'string') {
+									const option = document.createElement('option');
+									option.setAttribute('value', strValueItem);
+									option.setAttribute('selected', '');
+									(associatedElement as HTMLSelectElement).appendChild(option);
+								}
+							});
+						}
+						break;
+					case 'textarea':
+						(associatedElement as HTMLTextAreaElement).innerHTML = strValue;
+						break;
+					default:
+						(associatedElement as HTMLInputElement).value = strValue;
+						break;
+				}
+			} else {
+				associatedElement.removeAttribute('value');
 			}
 		}
 	}
@@ -127,8 +133,8 @@ export class ControlledInputController implements Watches {
 
 	public validateSyncValueBySelector(value?: string): void {
 		if (EXPERIMENTAL_MODE && typeof value === 'string') {
-			const input = document.querySelector(value);
-			if (input instanceof HTMLInputElement) {
+			const input = document.querySelector(value) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+			if (input /* SSR instanceof HTMLInputElement */) {
 				this.syncToOwnInput = input;
 			}
 		}
