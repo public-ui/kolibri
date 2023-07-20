@@ -42,7 +42,7 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 ## Links und Referenzen
 
-- https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/HTML/Element/abbr" _target="_blank"><kol-link>
 
 <!-- Auto Generated Below -->
 

@@ -77,8 +77,6 @@ nemo, incidunt excepturi facilis, amet ducimus minus quae corporis eligendi cum 
 | `Tab`   | Fokussiert das erste Element der LinkGroup. |
 | `Enter` | Ruft den hinterlegten Link auf.             |
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties

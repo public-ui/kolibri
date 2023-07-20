@@ -1,10 +1,10 @@
 # Hinweis
 
-Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt ([caniuse](https://caniuse.com/?search=dialog)), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
+Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
 
 ## Verwendung von `dialog`-Tag
 
-Die Dokumentation des `<dialog>` finden Sie [hier(MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog).
+Die Dokumentation des `<dialog>` finden Sie <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank" _label="hier(MDN)"></kol-link>.
 Das **Dialog**-Element kann wie jedes andere HTML-Tag verwendet werden, alle Elemente innerhalb werden wie gewohnt dargestellt.
 Der Dialog ist standardmäßig nicht sichtbar, über das Setzen des Attributs `open`, oder über die Funktionen `show()` und `showModal()` wird er sichtbar.
 `open` und `show()` öffnen das Element mit `position: absolute`, während `showModal()` `position: fixed` setzt.
@@ -99,8 +99,8 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 ### Links und Referenzen
 
-- https://www.w3.org/TR/wai-aria-practices/#dialog_modal
-- https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

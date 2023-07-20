@@ -46,10 +46,10 @@ Das Eingabefeld für Zeitangaben gibt es in unterschiedlichen Ausprägungen (Dat
 
 ## Links und Referenzen
 
-- https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html
-- https://www.hassellinclusion.com/blog/input-type-date-ready-for-use/
-- https://a11ysupport.io/tech/html/input(type-date)_element
-- https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
+- <kol-link _href="https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.hassellinclusion.com/blog/input-type-date-ready-for-use/" _target="_blank"></kol-link>
+- <kol-link _href="https://a11ysupport.io/tech/html/input(type-date)_element" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
