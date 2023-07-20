@@ -9,8 +9,8 @@ devDependencies:
     specifier: 7.22.5
     version: 7.22.5
   '@public-ui/components':
-    specifier: 1.6.0-rc.13
-    version: 1.6.0-rc.13
+    specifier: 1.6.0-rc.14
+    version: 1.6.0-rc.14
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -519,17 +519,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.13:
-    resolution: {integrity: sha512-ECBZ4KMO3f/8/diCcz9nipL7urZxhViX0sTnJMhgEqub9PFG0wQ+yKqS3AKfNK8EykPHL5/lqasVYifTDvci+A==}
+  /@public-ui/components@1.6.0-rc.14:
+    resolution: {integrity: sha512-qrsuO5NbKkaGAA50Wc+fVTFj7l8gwaz1C4vAWD+iiAiXN67U+eL1CtjrtYLUijc045IbNspmpl0SFMGPUZ1Ufg==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.5
-      '@public-ui/schema': 1.6.0-rc.13
+      '@public-ui/schema': 1.6.0-rc.14
       i18next: 23.2.11
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.13:
-    resolution: {integrity: sha512-2bt+zCDFM7XRxIqdesUSwewYIYD0bgFDOc7nz2b22M2FVypDlZ6stGEc1JfUujAIn3WazUuttXcGxa0c2mnjHg==}
+  /@public-ui/schema@1.6.0-rc.14:
+    resolution: {integrity: sha512-EP8jUNmpvKheChd2ptCMqDSUO93gLiZePBvj2R5xPNTjXvdGrkP2jgXilEhEDhscWlN8y3Az78/pzvbQZL2uJQ==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: true
