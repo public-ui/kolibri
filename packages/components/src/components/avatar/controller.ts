@@ -7,9 +7,9 @@ export const formatLabelAsInitials = (label: string): string => {
 	const first = names.at(0);
 	const last = names.at(-1);
 
+	// names might consist of only one word
 	if (names.length >= 2 && first && last) {
-		// names might consist of only one word
-		return `${formatNameAsInitial(first)} ${formatNameAsInitial(last)}`;
+		return `${formatNameAsInitial(first)}${formatNameAsInitial(last)}`;
 	}
 
 	return formatNameAsInitial(label);
