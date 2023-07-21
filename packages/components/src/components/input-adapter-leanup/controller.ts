@@ -113,7 +113,7 @@ export class ControlledInputController implements Watches {
 					}
 					break;
 				default:
-					if (typeof strValue === 'string' && strValue.length > 0) {
+					if (typeof strValue === 'string') {
 						associatedElement.setAttribute('value', strValue);
 					} else {
 						associatedElement.removeAttribute('value');
