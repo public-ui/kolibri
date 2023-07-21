@@ -3,7 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { API, States } from './types';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
-import { nonce } from '../../utils/dev.utils';
 import { formatLabelAsInitials } from './controller';
 
 @Component({
@@ -11,12 +10,10 @@ import { formatLabelAsInitials } from './controller';
 	shadow: false,
 })
 export class KolAvatarWc implements API {
-	private readonly nonce = nonce();
-
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<div aria-labelledby={this.nonce} class="container">
+				<div aria-description={this.state._label} class="container">
 					{this.state._src ? (
 						<kol-image _alt={`Avatar-Bild von ${this.state._label}`} _src={this.state._src} class="image"></kol-image>
 					) : (
@@ -25,7 +22,6 @@ export class KolAvatarWc implements API {
 						</span>
 					)}
 				</div>
-				<kol-tooltip _label={this.state._label} _id={this.nonce}></kol-tooltip>
 			</Host>
 		);
 	}
