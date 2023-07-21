@@ -21,7 +21,7 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
-	smartButton: ButtonProps;
+	smartButton: Stringified<ButtonProps>;
 	syncValueBySelector: string;
 	touched: boolean;
 	tabIndex: number;
