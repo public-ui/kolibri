@@ -100,7 +100,7 @@ export class ControlledInputController implements Watches {
 					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
 						(associatedElement as HTMLSelectElement).removeChild(el);
 					});
-					if (Array.isArray(rawValue) && rawValue.length > 0) {
+					if (Array.isArray(rawValue)) {
 						rawValue.forEach((rawValueItem) => {
 							const strValueItem = this.tryToStringifyValue(rawValueItem as string);
 							if (typeof strValueItem === 'string') {
