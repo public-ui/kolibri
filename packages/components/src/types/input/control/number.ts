@@ -22,7 +22,7 @@ export type OptionalInputProps<T> = {
 	on: InputTypeOnDefault;
 	readOnly: boolean;
 	required: boolean;
-	smartButton: ButtonProps;
+	smartButton: Stringified<ButtonProps>;
 	step: number;
 	tabIndex: number;
 	touched: boolean;
