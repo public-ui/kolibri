@@ -4,6 +4,7 @@ import { API, States } from './types';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
 import { formatLabelAsInitials } from './controller';
+import { translate } from '../../i18n';
 
 @Component({
 	tag: 'kol-avatar-wc',
@@ -15,7 +16,7 @@ export class KolAvatarWc implements API {
 			<Host>
 				<div aria-description={this.state._label} class="container">
 					{this.state._src ? (
-						<kol-image _alt={`Avatar-Bild von ${this.state._label}`} _src={this.state._src} class="image"></kol-image>
+						<kol-image _alt={translate('kol-avatar-alt', { placeholders: { name: this.state._label } })} _src={this.state._src} class="image"></kol-image>
 					) : (
 						<span aria-hidden="true" class="initials">
 							{formatLabelAsInitials(this.state._label)}
