@@ -9,10 +9,11 @@ import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+import { ImageSourcePropType } from "./types/props/image-source";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrent } from "./types/props/aria-current";
@@ -46,10 +47,11 @@ export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+export { ImageSourcePropType } from "./types/props/image-source";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrent } from "./types/props/aria-current";
@@ -167,6 +169,26 @@ export namespace Components {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -636,7 +658,7 @@ export namespace Components {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -2711,6 +2733,18 @@ declare global {
         prototype: HTMLKolAlertWcElement;
         new (): HTMLKolAlertWcElement;
     };
+    interface HTMLKolAvatarElement extends Components.KolAvatar, HTMLStencilElement {
+    }
+    var HTMLKolAvatarElement: {
+        prototype: HTMLKolAvatarElement;
+        new (): HTMLKolAvatarElement;
+    };
+    interface HTMLKolAvatarWcElement extends Components.KolAvatarWc, HTMLStencilElement {
+    }
+    var HTMLKolAvatarWcElement: {
+        prototype: HTMLKolAvatarWcElement;
+        new (): HTMLKolAvatarWcElement;
+    };
     interface HTMLKolBadgeElement extends Components.KolBadge, HTMLStencilElement {
     }
     var HTMLKolBadgeElement: {
@@ -3067,6 +3101,8 @@ declare global {
         "kol-accordion": HTMLKolAccordionElement;
         "kol-alert": HTMLKolAlertElement;
         "kol-alert-wc": HTMLKolAlertWcElement;
+        "kol-avatar": HTMLKolAvatarElement;
+        "kol-avatar-wc": HTMLKolAvatarWcElement;
         "kol-badge": HTMLKolBadgeElement;
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
@@ -3213,6 +3249,26 @@ declare namespace LocalJSX {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -3682,7 +3738,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -5736,6 +5792,8 @@ declare namespace LocalJSX {
         "kol-accordion": KolAccordion;
         "kol-alert": KolAlert;
         "kol-alert-wc": KolAlertWc;
+        "kol-avatar": KolAvatar;
+        "kol-avatar-wc": KolAvatarWc;
         "kol-badge": KolBadge;
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
@@ -5802,6 +5860,8 @@ declare module "@stencil/core" {
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
             "kol-alert-wc": LocalJSX.KolAlertWc & JSXBase.HTMLAttributes<HTMLKolAlertWcElement>;
+            "kol-avatar": LocalJSX.KolAvatar & JSXBase.HTMLAttributes<HTMLKolAvatarElement>;
+            "kol-avatar-wc": LocalJSX.KolAvatarWc & JSXBase.HTMLAttributes<HTMLKolAvatarWcElement>;
             "kol-badge": LocalJSX.KolBadge & JSXBase.HTMLAttributes<HTMLKolBadgeElement>;
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;
