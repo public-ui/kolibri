@@ -11,7 +11,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 			_href: '…', // ⚠ required
 			_hideLabel: false,
 			_icon: {},
-			_label: false,
+			_label: '',
 			_tooltipAlign: 'right',
 			_targetDescription: 'Der Link wird in einem neuen Tab geöffnet.',
 		},
