@@ -6,11 +6,11 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt ([caniuse](https://caniuse.com/?search=dialog)), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
+ * Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
  */
 
 @Tag("kol-modal")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.15")
 @JsModule("@public-ui/components/dist/components/kol-modal")
 public class KolModal extends Component {
 	/**

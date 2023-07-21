@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-date")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.15")
 @JsModule("@public-ui/components/dist/components/kol-input-date")
 public class KolInputDate extends Component {
 	/**
@@ -299,6 +299,24 @@ public class KolInputDate extends Component {
 	 */
 	public Optional<String> getRequired() {
 		return getElement().getProperty("_required", null);
+	}
+
+	/**
+	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setSmartButton(final Optional<String> value) {
+		getElement().setProperty("_smart-button", value);
+	}
+
+	/**
+	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getSmartButton() {
+		return getElement().getProperty("_smart-button", null);
 	}
 
 	/**

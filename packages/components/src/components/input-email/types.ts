@@ -31,7 +31,7 @@ type OptionalProps = {
 	 * @deprecated
 	 */
 	size: number;
-	smartButton: ButtonProps;
+	smartButton: Stringified<ButtonProps>;
 	syncValueBySelector: string;
 	touched: boolean;
 	tabIndex: number;

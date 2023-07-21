@@ -727,7 +727,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -881,7 +881,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -975,7 +975,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -1093,7 +1093,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1175,7 +1175,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1273,7 +1273,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -1384,7 +1384,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1719,7 +1719,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -3807,7 +3807,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3961,7 +3961,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4055,7 +4055,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -4173,7 +4173,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4255,7 +4255,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4353,7 +4353,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -4464,7 +4464,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4799,7 +4799,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */

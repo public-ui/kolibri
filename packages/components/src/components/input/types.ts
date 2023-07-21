@@ -1,5 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
+import { Stringified } from '../../components';
 import { ButtonProps } from '../../types/button-link';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropAlert } from '../../types/props/alert';
@@ -23,7 +24,7 @@ type OptionalProps = {
 	icon: KoliBriHorizontalIcon;
 	maxLength: number;
 	slotName: string;
-	smartButton: ButtonProps;
+	smartButton: Stringified<ButtonProps>;
 	syncValueBySelector: string;
 } & PropAlert &
 	PropDisabled &
