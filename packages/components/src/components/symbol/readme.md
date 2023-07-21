@@ -7,12 +7,12 @@ Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerb
 ### Code
 
 ```html
-<kol-symbol _label_="Slash" _symbol="/"></kol-symbol>
+<kol-symbol _label="Slash" _symbol="/"></kol-symbol>
 ```
 
 ### Beispiel
 
-<kol-symbol _label_="Slash" _symbol="/"></kol-symbol>
+<kol-symbol _label="Slash" _symbol="/"></kol-symbol>
 
 ## Verwendung
 

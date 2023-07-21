@@ -27,9 +27,9 @@
 		"unused": "ts-prune -e src"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.6.0-rc.15",
-		"@public-ui/themes": "1.6.0-rc.15",
-		"@public-ui/vue": "1.6.0-rc.15",
+		"@public-ui/components": "1.6.0-rc.16",
+		"@public-ui/themes": "1.6.0-rc.16",
+		"@public-ui/vue": "1.6.0-rc.16",
 		"vue": "3.3.4"
 	},
 	"devDependencies": {

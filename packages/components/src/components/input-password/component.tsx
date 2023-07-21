@@ -98,7 +98,6 @@ export class KolInputPassword implements ComponentApi {
 							required={this.state._required}
 							size={this.state._size}
 							spellcheck="false"
-							// title={this.state._title}
 							type="password"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
