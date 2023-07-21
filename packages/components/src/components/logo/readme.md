@@ -7,12 +7,12 @@ Mit Hilfe der **Logo**-Komponente können an beliebigen Positionen die Logos ver
 ### Code
 
 ```html
-<kol-logo _org_="BReg"></kol-logo>
+<kol-logo _org="BReg"></kol-logo>
 ```
 
 ### Beispiel
 
-<kol-logo _org_="BReg"></kol-logo>
+<kol-logo _org="BReg"></kol-logo>
 
 ## Verwendung
 
