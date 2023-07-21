@@ -14,7 +14,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-radio")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.15")
 @JsModule("@public-ui/components/dist/components/kol-input-radio")
 public class KolInputRadio extends Component {
 	/**
