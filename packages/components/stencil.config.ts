@@ -162,6 +162,9 @@ let outputTargets: OutputTarget[] = [
 			{
 				src: 'assets',
 			},
+			{
+				src: 'index.development.html',
+			},
 		],
 	},
 	// {
