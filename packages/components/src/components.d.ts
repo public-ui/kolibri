@@ -9,10 +9,11 @@ import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+import { ImageSourcePropType } from "./types/props/image-source";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrent } from "./types/props/aria-current";
@@ -21,7 +22,6 @@ import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
-import { ImageSourcePropType } from "./types/props/image-source";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { StencilUnknown } from "./types/unknown";
@@ -47,10 +47,11 @@ export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+export { ImageSourcePropType } from "./types/props/image-source";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrent } from "./types/props/aria-current";
@@ -59,7 +60,6 @@ export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
-export { ImageSourcePropType } from "./types/props/image-source";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { StencilUnknown } from "./types/unknown";
@@ -179,6 +179,16 @@ export namespace Components {
           * Defines the image source to render
          */
         "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -2729,6 +2739,12 @@ declare global {
         prototype: HTMLKolAvatarElement;
         new (): HTMLKolAvatarElement;
     };
+    interface HTMLKolAvatarWcElement extends Components.KolAvatarWc, HTMLStencilElement {
+    }
+    var HTMLKolAvatarWcElement: {
+        prototype: HTMLKolAvatarWcElement;
+        new (): HTMLKolAvatarWcElement;
+    };
     interface HTMLKolBadgeElement extends Components.KolBadge, HTMLStencilElement {
     }
     var HTMLKolBadgeElement: {
@@ -3086,6 +3102,7 @@ declare global {
         "kol-alert": HTMLKolAlertElement;
         "kol-alert-wc": HTMLKolAlertWcElement;
         "kol-avatar": HTMLKolAvatarElement;
+        "kol-avatar-wc": HTMLKolAvatarWcElement;
         "kol-badge": HTMLKolBadgeElement;
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
@@ -3242,6 +3259,16 @@ declare namespace LocalJSX {
           * Defines the image source to render
          */
         "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -5766,6 +5793,7 @@ declare namespace LocalJSX {
         "kol-alert": KolAlert;
         "kol-alert-wc": KolAlertWc;
         "kol-avatar": KolAvatar;
+        "kol-avatar-wc": KolAvatarWc;
         "kol-badge": KolBadge;
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
@@ -5833,6 +5861,7 @@ declare module "@stencil/core" {
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
             "kol-alert-wc": LocalJSX.KolAlertWc & JSXBase.HTMLAttributes<HTMLKolAlertWcElement>;
             "kol-avatar": LocalJSX.KolAvatar & JSXBase.HTMLAttributes<HTMLKolAvatarElement>;
+            "kol-avatar-wc": LocalJSX.KolAvatarWc & JSXBase.HTMLAttributes<HTMLKolAvatarWcElement>;
             "kol-badge": LocalJSX.KolBadge & JSXBase.HTMLAttributes<HTMLKolBadgeElement>;
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;

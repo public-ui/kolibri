@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { Props, States } from '../types';
-import { formatLabelAsInitials } from '../component';
+import { formatLabelAsInitials } from '../controller';
 
 export const getAvatarHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
