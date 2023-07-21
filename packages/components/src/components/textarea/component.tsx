@@ -9,6 +9,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
+import { RowsPropType } from '../../types/props/rows';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -196,9 +197,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _required?: boolean;
 
 	/**
-	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+	 * Defines how many rows of text should be visible at the same time
 	 */
-	@Prop({ mutable: true, reflect: false }) public _rows?: number;
+	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -325,7 +326,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_rows')
-	public validateRows(value?: number): void {
+	public validateRows(value?: RowsPropType): void {
 		this.controller.validateRows(value);
 	}
 

@@ -6,6 +6,7 @@ import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
+import { RowsPropType } from '../../types/props/rows';
 
 type RequiredProps = InputRequiredProps & {
 	list: Stringified<SelectOption<W3CInputValue>[]>;
@@ -16,7 +17,7 @@ type OptionalProps = {
 	disabled: boolean;
 	error: string;
 	/**
-	 * @deprecated Use _size instead.
+	 * @deprecated Use _rows instead.
 	 */
 	height: string;
 	hideLabel: boolean;
@@ -26,6 +27,10 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
+	rows: RowsPropType;
+	/**
+	 * @deprecated Use _rows instead.
+	 */
 	size: number;
 	syncValueBySelector: string;
 	tabIndex: number;
@@ -47,7 +52,7 @@ type OptionalStates = {
 	disabled: boolean;
 	error: string;
 	/**
-	 * @deprecated Use _size instead.
+	 * @deprecated Use _rows instead.
 	 */
 	height: string;
 	hideLabel: boolean;
@@ -57,6 +62,10 @@ type OptionalStates = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
+	rows: RowsPropType;
+	/**
+	 * @deprecated Use _rows instead.
+	 */
 	size: number;
 	tabIndex: number;
 	touched: boolean;

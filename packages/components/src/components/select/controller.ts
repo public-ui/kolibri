@@ -3,12 +3,13 @@ import { Generic } from '@a11y-ui/core';
 import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { W3CInputValue } from '../../types/w3c';
-import { watchBoolean, watchJsonArrayString, watchNumber, watchString } from '../../utils/prop.validators';
+import { watchBoolean, watchJsonArrayString, watchString } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { validateInputSelectList } from '../../utils/validators/list';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { fillKeyOptionMap } from '../input-radio/controller';
 import { Props, Watches } from './types';
+import { RowsPropType, validateRows } from '../../types/props/rows';
 
 export class SelectController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -95,11 +96,15 @@ export class SelectController extends InputIconController implements Watches {
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateSize(value?: number): void {
-		watchNumber(this.component, '_size', value, {
-			min: 1,
-		});
+	public validateRows(value?: RowsPropType) {
+		validateRows(this.component, value);
 	}
+
+	/**
+	 * @deprecated remains to satisfy `Watches` interface
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	public validateSize(): void {}
 
 	public validateValue(value?: Stringified<W3CInputValue[]>): void {
 		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {
@@ -126,7 +131,7 @@ export class SelectController extends InputIconController implements Watches {
 		this.validateList(this.component._list);
 		this.validateMultiple(this.component._multiple);
 		this.validateRequired(this.component._required);
-		this.validateSize(this.component._size);
+		this.validateRows(this.component._rows || this.component._size);
 		this.validateValue(this.component._value);
 	}
 }

@@ -42,6 +42,7 @@ import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
+import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
@@ -80,6 +81,7 @@ export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
+export { RowsPropType } from "./types/props/rows";
 export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
     interface KolAbbr {
@@ -2271,7 +2273,7 @@ export namespace Components {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
-          * @deprecated Use _size instead.
+          * @deprecated Use _rows instead.
          */
         "_height"?: string;
         /**
@@ -2314,6 +2316,10 @@ export namespace Components {
           * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Defines how many rows of options should be visible at the same time
+         */
+        "_rows"?: number;
         /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
@@ -2624,9 +2630,9 @@ export namespace Components {
          */
         "_resize"?: CSSResize;
         /**
-          * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+          * Defines how many rows of text should be visible at the same time
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -5351,7 +5357,7 @@ declare namespace LocalJSX {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
-          * @deprecated Use _size instead.
+          * @deprecated Use _rows instead.
          */
         "_height"?: string;
         /**
@@ -5394,6 +5400,10 @@ declare namespace LocalJSX {
           * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Defines how many rows of options should be visible at the same time
+         */
+        "_rows"?: number;
         /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
@@ -5704,9 +5714,9 @@ declare namespace LocalJSX {
          */
         "_resize"?: CSSResize;
         /**
-          * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+          * Defines how many rows of text should be visible at the same time
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
