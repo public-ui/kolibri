@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import {watchString, WatchStringOptions} from '../../utils/prop.validators';
+import { watchString, WatchStringOptions } from '../../utils/prop.validators';
 
 /* types */
 /**

@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { watchString } from '../../utils/prop.validators';
 import { Loading, validateLoading } from '../../utils/validators/loading';
 import { ComponentApi, States } from './types';
-import {ImageSourcePropType, validateImageSource} from "../../types/props/image-source";
+import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
 
 @Component({
 	tag: 'kol-image',
@@ -65,7 +65,7 @@ export class KolImage implements ComponentApi {
 	public validateSrc(value?: ImageSourcePropType): void {
 		validateImageSource(this, value, {
 			required: true,
-		})
+		});
 	}
 
 	@Watch('_srcset')

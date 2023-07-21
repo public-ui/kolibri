@@ -1,24 +1,25 @@
-import {Component, h, Host, JSX, Prop, State, Watch} from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import {API, States} from './types';
-import {LabelPropType, validateLabel} from '../../types/props/label';
-import {ImageSourcePropType, validateImageSource} from '../../types/props/image-source';
-import {nonce} from '../../utils/dev.utils';
+import { API, States } from './types';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
+import { nonce } from '../../utils/dev.utils';
 
 function formatNameAsInitial(name: string): string {
 	return name[0].toUpperCase();
 }
 
 export function formatLabelAsInitials(label: string): string {
-	const names = label.split(/\s+/) // split by any whitespace characters
-	const first = names.at(0)
-	const last = names.at(-1)
+	const names = label.split(/\s+/); // split by any whitespace characters
+	const first = names.at(0);
+	const last = names.at(-1);
 
-	if (names.length >= 2 && first && last) { // names might consist of only one word
-		return `${formatNameAsInitial(first)} ${formatNameAsInitial(last)}`
+	if (names.length >= 2 && first && last) {
+		// names might consist of only one word
+		return `${formatNameAsInitial(first)} ${formatNameAsInitial(last)}`;
 	}
 
-	return formatNameAsInitial(label)
+	return formatNameAsInitial(label);
 }
 
 @Component({
@@ -33,16 +34,9 @@ export class KolAvatarWc implements API {
 			<Host>
 				<div aria-labelledby={this.nonce} class="container">
 					{this.state._src ? (
-						<kol-image
-							_alt={`Avatar-Bild von ${this.state._label}`}
-							_src={this.state._src}
-							class="image"
-						></kol-image>
+						<kol-image _alt={`Avatar-Bild von ${this.state._label}`} _src={this.state._src} class="image"></kol-image>
 					) : (
-						<span
-							aria-hidden="true"
-							class="initials"
-						>
+						<span aria-hidden="true" class="initials">
 							{formatLabelAsInitials(this.state._label)}
 						</span>
 					)}
@@ -69,12 +63,12 @@ export class KolAvatarWc implements API {
 
 	@Watch('_src')
 	public validateSrc(value?: ImageSourcePropType): void {
-		validateImageSource(this, value)
+		validateImageSource(this, value);
 	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value)
+		validateLabel(this, value);
 	}
 
 	public componentWillLoad(): void {

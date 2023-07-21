@@ -1,7 +1,7 @@
-import {mixMembers} from 'stencil-awesome-test';
+import { mixMembers } from 'stencil-awesome-test';
 
-import {Props, States} from '../types';
-import {formatLabelAsInitials} from "../component";
+import { Props, States } from '../types';
+import { formatLabelAsInitials } from '../component';
 
 export const getAvatarHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(
@@ -14,15 +14,17 @@ export const getAvatarHtml = (props: Props): string => {
 	return `<kol-avatar>
   <mock:shadow-root>
     <kol-avatar-wc>
-			${state._src
-		? `<img
+			${
+				state._src
+					? `<img
 						src={state._src}
 						alt={state._label}
 						class="image"
 					/>`
-		: `<div class="initials">
+					: `<div class="initials">
 						${formatLabelAsInitials(state._label)}
-					 </div>`}
+					 </div>`
+			}
     </kol-avatar-wc>
   </mock:shadow-root>
 </kol-avatar>`;

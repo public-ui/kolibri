@@ -77,7 +77,6 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 
 <!-- Auto Generated Below -->
 
-
 ## Properties
 
 | Property     | Attribute     | Description                                                                                                                                           | Type                                                                    | Default     |
@@ -90,19 +89,17 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 | `_type`      | `_type`       | Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.                                                                     | `"default" \| "error" \| "info" \| "success" \| "warning" \| undefined` | `'default'` |
 | `_variant`   | `_variant`    | Gibt an, welche Variante der Darstellung genutzt werden soll.                                                                                         | `"card" \| "msg" \| undefined`                                          | `'msg'`     |
 
-
 ## Slots
 
 | Slot | Description             |
 | ---- | ----------------------- |
 |      | Der Inhalt der Meldung. |
 
-
 ## Dependencies
 
 ### Used by
 
- - [kol-alert](.)
+- [kol-alert](.)
 
 ### Depends on
 
@@ -111,6 +108,7 @@ Bei der **Alert**-Komponente wurden insbesondere folgende Punkte der Barrierefre
 - [kol-icon](../icon)
 
 ### Graph
+
 ```mermaid
 graph TD;
   kol-alert-wc --> kol-heading-wc
@@ -124,6 +122,4 @@ graph TD;
   style kol-alert-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
-
-
+---

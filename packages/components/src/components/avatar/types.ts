@@ -6,7 +6,7 @@ type RequiredAvatarProps = {
 	label: LabelPropType;
 };
 type OptionalAvatarProps = {
-	src: ImageSourcePropType,
+	src: ImageSourcePropType;
 };
 
 type RequiredAvatarStates = RequiredAvatarProps;
