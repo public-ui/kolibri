@@ -6,6 +6,7 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
 import { Props } from './types';
+import { SuggestionsPropType } from '../../types/props/suggestions';
 
 /**
  * @internal
@@ -74,9 +75,9 @@ export class KolInput implements Props {
 						{this._error}
 					</kol-alert>
 				)}
-				{Array.isArray(this._list) && this._list.length > 0 && (
+				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
-						{this._list.map((option: string) => (
+						{this._suggestions.map((option: string) => (
 							<option value={option} />
 						))}
 					</datalist>
@@ -145,17 +146,12 @@ export class KolInput implements Props {
 	@Prop() public _id!: string;
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
-	 */
-	@Prop() public _list?: Stringified<string[]>;
-
-	/**
 	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
 	 */
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt an, ob die Eingabefeld nur lesend ist.
+	 * Gibt an, ob das Eingabefeld nur lesend ist.
 	 */
 	@Prop() public _readOnly?: boolean = false;
 
@@ -176,7 +172,12 @@ export class KolInput implements Props {
 	@Prop() public _slotName?: string;
 
 	/**
-	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions?: SuggestionsPropType;
+
+	/**
+	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 

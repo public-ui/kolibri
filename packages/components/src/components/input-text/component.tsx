@@ -85,7 +85,7 @@ export class KolInputText implements ComponentApi {
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
-					_list={this.state._list}
+					_suggestions={this.state._list}
 					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}

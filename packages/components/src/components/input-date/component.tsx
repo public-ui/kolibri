@@ -63,7 +63,7 @@ export class KolInputDate implements ComponentApi {
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
-					_list={this.state._list}
+					_suggestions={this.state._list}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}

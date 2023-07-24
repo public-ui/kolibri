@@ -50,7 +50,7 @@ export class KolInputColor implements ComponentApi {
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
-					_list={this.state._suggestions}
+					_suggestions={this.state._suggestions}
 					_smartButton={this.state._smartButton}
 					_touched={this.state._touched}
 					onClick={() => this.ref?.focus()}
