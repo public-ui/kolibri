@@ -1051,7 +1051,9 @@
 								<kol-heading _label="" _level="3">InputColor</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-color">
 									<kol-input-color _id="color-select">Farbe</kol-input-color>
-									<kol-input-color _id="color-select-from-list" _suggestions="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
+									<kol-input-color _id="color-select-from-list" _suggestions="['#000000','#ff0000','#0000ff','#00ff00']"
+										>Farbe (mit Vorschlägen)</kol-input-color
+									>
 								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
@@ -1080,6 +1082,7 @@
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
 									<kol-input-number _type="number" _min="2.2" _max="5.8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
+									<kol-input-number _suggestions="['1', '2', '42']">Zahleneingabe (mit Vorschlägen)</kol-input-number>
 								</lean-input-adapter>
 								<kol-heading _label="" _level="3">InputDate</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-date">
@@ -1087,6 +1090,9 @@
 								</lean-input-adapter>
 								<kol-input-date _type="date" _min="2022-10-28">Datum (min)</kol-input-date>
 								<kol-input-date _type="date" _max="2022-10-28">Datum (max)</kol-input-date>
+								<kol-input-date _id="input-date-with-suggestions" _type="date" _suggestions="['2023-01-01', '2023-01-02']">
+									Datum (mit Vorschlägen)
+								</kol-input-date>
 								<kol-input-date _type="datetime-local">Local-Datetime (Standard)</kol-input-date>
 								<kol-input-date _type="datetime-local" _step="1">Local-Datetime (mit Sekunden)</kol-input-date>
 								<kol-input-date _type="month">Monat</kol-input-date>
