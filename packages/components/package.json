@@ -111,7 +111,7 @@
 		"rgba-convert": "0.3.0",
 		"rimraf": "3.0.2",
 		"stencil-awesome-test": "1.0.6",
-		"terser": "5.19.1",
+		"terser": "5.19.2",
 		"tslib": "2.6.0",
 		"typescript": "5.1.6",
 		"wcag-contrast": "3.0.0",
