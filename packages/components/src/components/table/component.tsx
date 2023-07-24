@@ -522,7 +522,7 @@ export class KolTable implements KoliBriTableAPI {
 	};
 	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
 		if (cell.asTd === false) {
-			const headerCell = cell as KoliBriTableHeaderCell;
+			const headerCell: KoliBriTableHeaderCell = cell;
 			let sortDirection = undefined;
 			let sortButtonIcon = 'codicon codicon-fold';
 			if (!this.disableSort && headerCell.key === this.sortedColumnHead.key) {
@@ -691,7 +691,7 @@ export class KolTable implements KoliBriTableAPI {
 													></td>
 												);
 											} else {
-												const headerCell = col as KoliBriTableHeaderCell;
+												const headerCell: KoliBriTableHeaderCell = col;
 												let sortDirection = undefined;
 												let sortButtonIcon = 'codicon codicon-fold';
 												if (headerCell.key === this.sortedColumnHead.key) {
