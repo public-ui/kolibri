@@ -115,8 +115,10 @@ export class ControlledInputController implements Watches {
 				default:
 					if (typeof strValue === 'string') {
 						associatedElement.setAttribute('value', strValue);
+						associatedElement.value = strValue;
 					} else {
 						associatedElement.removeAttribute('value');
+						associatedElement.value = null;
 					}
 			}
 		}
