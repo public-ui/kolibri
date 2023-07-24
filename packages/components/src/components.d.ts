@@ -1066,6 +1066,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1105,9 +1106,13 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1696,6 +1701,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1731,9 +1737,13 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4160,6 +4170,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4199,9 +4210,13 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4790,6 +4805,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4825,9 +4841,13 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
