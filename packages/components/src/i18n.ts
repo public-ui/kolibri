@@ -41,7 +41,7 @@ export const translate = (key: `${Lowercase<ResourcePrefix>}-${Lowercase<Compone
 			t((l, t) => {
 				i18n.addResourceBundle(l, t);
 				return l;
-			})
+			}),
 		);
 
 		text = i18n.translate(key, options);

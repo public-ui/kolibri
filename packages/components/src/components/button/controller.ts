@@ -9,7 +9,7 @@ export const watchButtonType = (component: Generic.Element.Component, propName: 
 		propName,
 		(value) => value === 'button' || value === 'reset' || value === 'submit',
 		new Set(['KoliBriButtonType {button, reset, submit}']),
-		value
+		value,
 	);
 };
 
@@ -22,6 +22,6 @@ export const watchButtonVariant = (component: Generic.Element.Component, propNam
 		value,
 		{
 			defaultValue: 'normal',
-		}
+		},
 	);
 };

@@ -22,5 +22,5 @@ executeTests<KoliBriVersionProps>(
 	getVersionHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

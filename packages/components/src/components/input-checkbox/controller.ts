@@ -39,7 +39,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 				return typeof value === 'object' && value !== null && (isString(value.checked, 1) || isString(value.indeterminate, 1) || isString(value.unchecked, 1));
 			},
 			new Set(['InputCheckboxIcons']),
-			value
+			value,
 		);
 	}
 
@@ -71,7 +71,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 			'_variant',
 			(value): boolean => typeof value === 'string' && (value === 'button' || value === 'default' || value === 'switch'),
 			new Set(['String {button, default, switch}']),
-			value
+			value,
 		);
 	}
 

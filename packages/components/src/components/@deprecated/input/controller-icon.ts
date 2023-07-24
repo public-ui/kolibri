@@ -52,7 +52,7 @@ export class InputIconController extends InputController implements Watches {
 						beforePatch: beforePatchIcon,
 					},
 					required: true,
-				}
+				},
 			);
 		});
 	}

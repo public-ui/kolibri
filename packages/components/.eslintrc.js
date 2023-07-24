@@ -12,8 +12,24 @@ const config = {
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 	],
 	rules: {
+		/**
+		 * This setting is necessary because required and optional properties
+		 * and states build on each other in API design. If duplicate or redundant
+		 * types were not used, changes to base types would not be propagated
+		 * and would lead to errors.
+		 */
+		'@typescript-eslint/no-duplicate-type-constituents': 'warn',
+		'@typescript-eslint/no-redundant-type-constituents': 'warn',
+
+		/**
+		 * The HTML templates in TSX are recognized as any.
+		 */
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
+
+		/**
+		 * The markdown formatter used spaces and tabs.
+		 */
 		'no-mixed-spaces-and-tabs': 'off',
 	},
 	settings: {

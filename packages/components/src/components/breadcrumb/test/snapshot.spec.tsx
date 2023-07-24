@@ -23,5 +23,5 @@ executeTests<KoliBriBreadcrumbProps>(
 	getBreadcrumbHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

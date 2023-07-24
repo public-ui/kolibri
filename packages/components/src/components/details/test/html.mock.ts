@@ -8,13 +8,13 @@ export const getDetailsHtml = (
 	props: KoliBriDetailsProps,
 	slots: {
 		default?: string;
-	} = {}
+	} = {},
 ): string => {
 	props = mixMembers(
 		{
 			_summary: '…',
 		},
-		props
+		props,
 	);
 	return `<kol-details${props._open ? ' _open' : ''}>
 	<mock:shadow-root>

@@ -15,7 +15,7 @@ export const getSpanWcHtml = (
 	slots: Slots = {
 		expert: undefined,
 	},
-	additionalAttrs = ''
+	additionalAttrs = '',
 ): string => {
 	const state = mixMembers<KolibriSpanProps, KolibriSpanStates>(
 		{
@@ -23,7 +23,7 @@ export const getSpanWcHtml = (
 			_hideLabel: false,
 			_label: false, // ⚠ required
 		},
-		props
+		props,
 	);
 	if (state._label === '') {
 		state._label = false; // TODO: remove this workaround in v2
@@ -48,7 +48,7 @@ export const getSpanWcHtml = (
 							_label: '',
 							_icon: (icon.left as KoliBriCustomIcon).icon,
 						},
-						` class="icon left"`
+						` class="icon left"`,
 				  )
 				: ''
 		}
@@ -63,7 +63,7 @@ export const getSpanWcHtml = (
 							_label: '',
 							_icon: (icon.right as KoliBriCustomIcon).icon,
 						},
-						` class="icon right"`
+						` class="icon right"`,
 				  )
 				: ''
 		}

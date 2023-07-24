@@ -24,5 +24,5 @@ executeTests<KoliBriHeadingProps>(
 	getHeadingHtml,
 	{
 		execMode: 'default', // ready
-	}
+	},
 );

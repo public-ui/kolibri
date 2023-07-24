@@ -15,13 +15,13 @@ export const watchNavLinks = (
 			_links: HrefOrLabelProp[];
 		};
 	},
-	value?: Stringified<HrefOrLabelProp[]>
+	value?: Stringified<HrefOrLabelProp[]>,
 ): void => {
 	watchJsonArrayString(
 		component,
 		'_links',
 		(link) => typeof link === 'object' && (typeof (link as HrefProp)._href === 'string' || typeof (link as LabelProp)._label === 'string'),
-		value
+		value,
 	);
 	uiUxHintMillerscheZahl(className, component.state._links.length);
 };

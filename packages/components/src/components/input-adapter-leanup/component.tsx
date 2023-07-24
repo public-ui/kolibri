@@ -12,7 +12,7 @@ import { deprecatedHint } from '../../utils/a11y.tipps';
 export class KolInputAdapterLeanup {
 	public componentWillLoad() {
 		deprecatedHint(
-			`Die Komponente 'kol-input-adapter-leanup' mit dem Release v1.1.7 umgezogen. Lesen Sie hier, wie Sie sie migrieren: https://public-ui.github.io/docs/changelog/#117---30092022`
+			`Die Komponente 'kol-input-adapter-leanup' mit dem Release v1.1.7 umgezogen. Lesen Sie hier, wie Sie sie migrieren: https://public-ui.github.io/docs/changelog/#117---30092022`,
 		);
 	}
 	public render(): JSX.Element {

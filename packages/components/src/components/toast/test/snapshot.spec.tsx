@@ -26,5 +26,5 @@ executeTests<KoliBriToastProps>(
 	getToastHtml,
 	{
 		needTimers: true,
-	}
+	},
 );

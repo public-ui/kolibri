@@ -15,6 +15,6 @@ export const watchHeadingLevel = (component: Generic.Element.Component, value?: 
 			// TODO: options not in the validator
 			defaultValue: 1,
 			required: true,
-		}
+		},
 	);
 };

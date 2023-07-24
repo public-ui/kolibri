@@ -11,7 +11,7 @@ export const getImageHtml = (props: Props, additionalAttrs = ''): string => {
 			_sizes: '',
 			_srcset: '',
 		},
-		props
+		props,
 	);
 	const sizes = state._sizes ? ` sizes="${state._sizes}"` : '';
 	const srcset = state._srcset ? ` srcset="${state._srcset}"` : '';
