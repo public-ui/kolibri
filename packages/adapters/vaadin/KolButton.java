@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.15")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
 @JsModule("@public-ui/components/dist/components/kol-button")
 public class KolButton extends Component {
 	/**
