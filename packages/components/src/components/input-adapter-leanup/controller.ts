@@ -118,7 +118,7 @@ export class ControlledInputController implements Watches {
 						associatedElement.value = strValue;
 					} else {
 						associatedElement.removeAttribute('value');
-						associatedElement.value = null;
+						associatedElement.value = '';
 					}
 			}
 		}
