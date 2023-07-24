@@ -25,6 +25,7 @@ import { Loading } from "./utils/validators/loading";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { StencilUnknown } from "./types/unknown";
+import { SuggestionsPropType } from "./types/props/suggestions";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
@@ -64,6 +65,7 @@ export { Loading } from "./utils/validators/loading";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { StencilUnknown } from "./types/unknown";
+export { SuggestionsPropType } from "./types/props/suggestions";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
@@ -870,8 +872,9 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions instead.
          */
-        "_list"?: Stringified<string[]>;
+        "_list"?: SuggestionsPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -884,6 +887,10 @@ export namespace Components {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -3954,8 +3961,9 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions instead.
          */
-        "_list"?: Stringified<string[]>;
+        "_list"?: SuggestionsPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3968,6 +3976,10 @@ declare namespace LocalJSX {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
