@@ -100,8 +100,6 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 | `Tab`   | Fokussiert den ersten Menüpunkt in der Navigation. Nachfolgend kann mit der Tab-Taste jeder Menüpunkt angesprungen werden. Wenn der Has-compact-Button aktiviert wurde, ist dieser ebenfalls mit der Tab-Taste erreichbar. |
 | `Enter` | Klappt Unterpunkte auf/zu, sofern eine Ausklappschaltfläche fokussiert ist, aktiviert die Schaltfläche oder öffnet den Link anderenfalls.                                                                                  |
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties

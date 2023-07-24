@@ -29,4 +29,5 @@ export default {
 	'sort-descending': 'sorted column {{column}} descending',
 	'sort-ascending': 'sorted column {{column}} ascending',
 	'sort-none': 'column {{column}} not sorted',
+	'avatar-alt': 'Avatar picture of {{name}}',
 };

@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-color")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
 @JsModule("@public-ui/components/dist/components/kol-input-color")
 public class KolInputColor extends Component {
 	/**
@@ -230,6 +230,24 @@ public class KolInputColor extends Component {
 	}
 
 	/**
+	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setSmartButton(final Optional<String> value) {
+		getElement().setProperty("_smart-button", value);
+	}
+
+	/**
+	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getSmartButton() {
+		return getElement().getProperty("_smart-button", null);
+	}
+
+	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
 	 * @param value Optional<String>
@@ -245,6 +263,24 @@ public class KolInputColor extends Component {
 	 */
 	public Optional<String> getTabIndex() {
 		return getElement().getProperty("_tab-index", null);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setTooltipAlign(final Optional<String> value) {
+		getElement().setProperty("_tooltip-align", value);
+	}
+
+	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getTooltipAlign() {
+		return getElement().getProperty("_tooltip-align", null);
 	}
 
 	/**

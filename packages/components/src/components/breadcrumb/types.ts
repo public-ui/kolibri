@@ -3,13 +3,13 @@ import { Generic } from '@a11y-ui/core';
 import { LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { PropAriaLabel } from '../../types/props/aria-label';
-import { PropLabel } from '../../types/props/label';
+import { LabelProp, PropLabel } from '../../types/props/label';
 
 /**
  * TODO: All LinkProps as Link-List (_links) does not have a _label
  *       with expert-slot!
  */
-export type BreadcrumbLinkProps = LinkProps & PropLabel;
+export type BreadcrumbLinkProps = LinkProps & LabelProp;
 
 type RequiredProps = {
 	links: Stringified<BreadcrumbLinkProps[]>;

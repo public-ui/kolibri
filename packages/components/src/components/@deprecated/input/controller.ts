@@ -55,7 +55,9 @@ export class InputController extends ControlledInputController implements Watche
 	public validateId(value?: string): void {
 		watchString(this.component, '_id', value, {
 			hooks: {
-				afterPatch: this.syncFormAssociatedName,
+				afterPatch: () => {
+					this.setAttribute('id', this.formAssociated, this.component.state._id as string);
+				},
 			},
 			minLength: 1,
 		});
@@ -71,7 +73,9 @@ export class InputController extends ControlledInputController implements Watche
 	public validateName(value?: string): void {
 		watchString(this.component, '_name', value, {
 			hooks: {
-				afterPatch: this.syncFormAssociatedName,
+				afterPatch: () => {
+					this.setAttribute('name', this.formAssociated, this.component.state._name as string);
+				},
 			},
 		});
 		if (typeof value === 'undefined') {
@@ -117,7 +121,6 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
-		this.syncFormAssociatedName();
 	}
 
 	protected onBlur(event: Event): void {

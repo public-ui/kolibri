@@ -24,7 +24,7 @@ export class KolBreadcrumb implements KoliBriBreadcrumbAPI {
 				{index === lastIndex ? (
 					<span>
 						{hideLabel ? (
-							<kol-icon _label={link._label as string} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
+							<kol-icon _label={link._label} _icon={typeof link._icon === 'string' ? link._icon : 'codicon codicon-symbol-event'} />
 						) : (
 							<Fragment>{link._label}</Fragment>
 						)}

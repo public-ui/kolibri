@@ -33,10 +33,6 @@ Die Überschriftenebene wird durch das Attribut **`_level`** übergeben. Möglic
 - Achten Sie bei der Verwendung von Headings auf die empfohlene Semantik für die Suchmaschinenoptimierung.
 - Setzen Sie Headings in verschiedenen Größen ein, um eine sinnvolle Struktur Ihrer Inhalte zu erzeugen.
 
-## Barrierefreiheit
-
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties

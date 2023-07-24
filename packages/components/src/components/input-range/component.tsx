@@ -3,6 +3,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
+import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
@@ -59,8 +60,8 @@ export class KolInputRange implements ComponentApi {
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
 		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
-		const showExpertSlot = this.state._label === ''; // _label="" or _label
-		const showDefaultSlot = this.state._label === '…'; // deprecated: default slot will be removed in v2.0.0
+		const hasExpertSlot = this.state._label === false; // _label="" or _label
+
 		return (
 			<Host>
 				<kol-input
@@ -76,7 +77,8 @@ export class KolInputRange implements ComponentApi {
 					_id={this.state._id}
 					_touched={this.state._touched}
 				>
-					<span slot="label">{showExpertSlot ? <slot name="expert"></slot> : showDefaultSlot ? <slot></slot> : this.state._label}</span>
+					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
+					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 					<div slot="input" class="inputs-wrapper">
 						<input
 							title=""
@@ -121,6 +123,17 @@ export class KolInputRange implements ComponentApi {
 							onKeyUp={this.onKeyUp}
 							onChange={this.onChange}
 						/>
+						<kol-tooltip
+							/**
+							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+							 */
+							aria-hidden="true"
+							hidden={hasExpertSlot || !this.state._hideLabel}
+							_align={this._tooltipAlign}
+							_id={`${this.state._id}-tooltip`}
+							_label={typeof this.state._label === 'string' ? this.state._label : ''}
+						></kol-tooltip>
 						{hasList && [
 							<datalist id={`${this.state._id}-list`}>
 								{this.state._list.map((option: Option<number>) => (
@@ -233,6 +246,11 @@ export class KolInputRange implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
+	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 */
+	@Prop() public _tooltipAlign?: Align = 'top';
+
+	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
@@ -244,13 +262,13 @@ export class KolInputRange implements ComponentApi {
 
 	@State() public state: States = {
 		_autoComplete: 'off',
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_list: [],
 	};
 
 	public constructor() {
-		this.controller = new InputRangeController(this, 'range', this.host);
+		this.controller = new InputRangeController(this, 'input-range', this.host);
 	}
 
 	@Watch('_accessKey')

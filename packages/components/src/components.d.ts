@@ -9,10 +9,11 @@ import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+import { ImageSourcePropType } from "./types/props/image-source";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrent } from "./types/props/aria-current";
@@ -23,6 +24,7 @@ import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+import { StencilUnknown } from "./types/unknown";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
@@ -40,15 +42,17 @@ import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
+import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+export { ImageSourcePropType } from "./types/props/image-source";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrent } from "./types/props/aria-current";
@@ -59,6 +63,7 @@ export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
+export { StencilUnknown } from "./types/unknown";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
@@ -76,6 +81,7 @@ export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
+export { RowsPropType } from "./types/props/rows";
 export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
     interface KolAbbr {
@@ -165,6 +171,26 @@ export namespace Components {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -634,7 +660,7 @@ export namespace Components {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -703,7 +729,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -780,6 +806,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -791,7 +821,7 @@ export namespace Components {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -853,7 +883,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -862,6 +892,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -943,7 +977,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -956,6 +990,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1057,7 +1095,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1066,6 +1104,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1135,7 +1177,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1144,6 +1186,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1229,7 +1275,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -1242,6 +1288,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1336,7 +1386,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1345,6 +1395,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1415,6 +1469,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1567,6 +1625,10 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -1659,7 +1721,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1668,6 +1730,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -2207,7 +2273,7 @@ export namespace Components {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
-          * @deprecated Use _size instead.
+          * @deprecated Use _rows instead.
          */
         "_height"?: string;
         /**
@@ -2251,6 +2317,10 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
+          * Defines how many rows of options should be visible at the same time.
+         */
+        "_rows"?: number;
+        /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
         "_size"?: number;
@@ -2262,6 +2332,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -2556,9 +2630,9 @@ export namespace Components {
          */
         "_resize"?: CSSResize;
         /**
-          * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+          * Defines how many rows of text should be visible at the same time.
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -2567,6 +2641,10 @@ export namespace Components {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -2660,6 +2738,18 @@ declare global {
     var HTMLKolAlertWcElement: {
         prototype: HTMLKolAlertWcElement;
         new (): HTMLKolAlertWcElement;
+    };
+    interface HTMLKolAvatarElement extends Components.KolAvatar, HTMLStencilElement {
+    }
+    var HTMLKolAvatarElement: {
+        prototype: HTMLKolAvatarElement;
+        new (): HTMLKolAvatarElement;
+    };
+    interface HTMLKolAvatarWcElement extends Components.KolAvatarWc, HTMLStencilElement {
+    }
+    var HTMLKolAvatarWcElement: {
+        prototype: HTMLKolAvatarWcElement;
+        new (): HTMLKolAvatarWcElement;
     };
     interface HTMLKolBadgeElement extends Components.KolBadge, HTMLStencilElement {
     }
@@ -3017,6 +3107,8 @@ declare global {
         "kol-accordion": HTMLKolAccordionElement;
         "kol-alert": HTMLKolAlertElement;
         "kol-alert-wc": HTMLKolAlertWcElement;
+        "kol-avatar": HTMLKolAvatarElement;
+        "kol-avatar-wc": HTMLKolAvatarWcElement;
         "kol-badge": HTMLKolBadgeElement;
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
@@ -3163,6 +3255,26 @@ declare namespace LocalJSX {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -3632,7 +3744,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -3701,7 +3813,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3778,6 +3890,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -3789,7 +3905,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3851,7 +3967,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -3860,6 +3976,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3941,7 +4061,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -3954,6 +4074,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4055,7 +4179,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4064,6 +4188,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4133,7 +4261,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4142,6 +4270,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4227,7 +4359,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
@@ -4240,6 +4372,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4334,7 +4470,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4343,6 +4479,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4413,6 +4553,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4565,6 +4709,10 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
+        /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
         "_touched"?: boolean;
@@ -4657,7 +4805,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4666,6 +4814,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -5205,7 +5357,7 @@ declare namespace LocalJSX {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
-          * @deprecated Use _size instead.
+          * @deprecated Use _rows instead.
          */
         "_height"?: string;
         /**
@@ -5249,6 +5401,10 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
+          * Defines how many rows of options should be visible at the same time.
+         */
+        "_rows"?: number;
+        /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
         "_size"?: number;
@@ -5260,6 +5416,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -5554,9 +5714,9 @@ declare namespace LocalJSX {
          */
         "_resize"?: CSSResize;
         /**
-          * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+          * Defines how many rows of text should be visible at the same time.
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -5565,6 +5725,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
+        /**
+          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+         */
+        "_tooltipAlign"?: Align;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -5638,6 +5802,8 @@ declare namespace LocalJSX {
         "kol-accordion": KolAccordion;
         "kol-alert": KolAlert;
         "kol-alert-wc": KolAlertWc;
+        "kol-avatar": KolAvatar;
+        "kol-avatar-wc": KolAvatarWc;
         "kol-badge": KolBadge;
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
@@ -5704,6 +5870,8 @@ declare module "@stencil/core" {
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
             "kol-alert-wc": LocalJSX.KolAlertWc & JSXBase.HTMLAttributes<HTMLKolAlertWcElement>;
+            "kol-avatar": LocalJSX.KolAvatar & JSXBase.HTMLAttributes<HTMLKolAvatarElement>;
+            "kol-avatar-wc": LocalJSX.KolAvatarWc & JSXBase.HTMLAttributes<HTMLKolAvatarWcElement>;
             "kol-badge": LocalJSX.KolBadge & JSXBase.HTMLAttributes<HTMLKolBadgeElement>;
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;

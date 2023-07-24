@@ -1,5 +1,5 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { Component, Host, JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
 import { Align } from '../../types/props/align';

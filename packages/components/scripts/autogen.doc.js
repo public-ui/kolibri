@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
-const exclude = /(@else|symbol)/;
+const exclude = /(@else)/;
 // const exclude = /(@else|font-awesome|icofont|leanup|symbol)/;
 function filterMdFiles(dir) {
 	let files = [];

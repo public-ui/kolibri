@@ -33,10 +33,10 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 							? `<span>${
 									link._hideLabel
 										? getIconHtml({
-												_label: link._label as LabelPropType,
+												_label: link._label,
 												_icon: link._icon as Icofont,
 										  })
-										: (link._label as LabelPropType)
+										: link._label
 							  }</span>`
 							: getLinkHtml(link)
 					}

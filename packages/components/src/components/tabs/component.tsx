@@ -99,7 +99,7 @@ export class KolTabs implements KoliBriTabsAPI {
 						_customClass={this.state._selected === index ? 'selected' : undefined}
 						_ariaControls={`tabpanel-${index}`}
 						_ariaSelected={this.state._selected === index}
-						_id={`tab-${index}`}
+						_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
 						_role="tab"
 						_value={index}
 					></kol-button-wc>
@@ -326,7 +326,7 @@ export class KolTabs implements KoliBriTabsAPI {
 		if (this.tabPanelHost instanceof HTMLDivElement) {
 			for (let i = this.tabPanelHost.children.length; i < this.state._tabs.length; i++) {
 				const div = document.createElement('div');
-				div.setAttribute('aria-labelledby', `tab-${i}`);
+				div.setAttribute('aria-labelledby', `${this.state._label.replace(/\s/g, '-')}-tab-${i}`);
 				div.setAttribute('id', `tabpanel-${i}`);
 				div.setAttribute('role', 'tabpanel');
 				div.setAttribute('hidden', '');
@@ -366,7 +366,7 @@ export class KolTabs implements KoliBriTabsAPI {
 			this.selectedTimeout = setTimeout(() => {
 				clearTimeout(this.selectedTimeout);
 				if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
-					const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabPanelsElement);
+					const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${index}`, this.tabPanelsElement);
 					button?.focus();
 				}
 			}, 250);
