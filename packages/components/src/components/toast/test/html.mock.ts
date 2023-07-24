@@ -10,7 +10,7 @@ export const getToastHtml = (props: KoliBriToastProps): string => {
 			_level: 1,
 			_show: true,
 		},
-		props,
+		props
 	);
 	return `
 <kol-toast${props._show ? ' _show' : ''}>
@@ -26,7 +26,7 @@ export const getToastHtml = (props: KoliBriToastProps): string => {
 						_type: props._type,
 						_variant: 'card',
 					},
-					'<slot />',
+					'<slot />'
 					// ' tabindex="0"'
 				)}
     </div>`

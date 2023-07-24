@@ -12,7 +12,7 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 			_label: '…', // ⚠ required
 			_links: [],
 		},
-		props,
+		props
 	);
 
 	const lastIndex = state._links.length - 1;

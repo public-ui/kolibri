@@ -38,7 +38,7 @@ export class I18nextService implements II18nService {
 		translations?:
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 			| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
-			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
+			| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>
 	) {
 		this.i18next = i18next;
 
@@ -59,7 +59,7 @@ export class I18nextService implements II18nService {
 				t((l, t) => {
 					this.addResourceBundle(l, t);
 					return l;
-				}),
+				})
 			);
 		}
 	}

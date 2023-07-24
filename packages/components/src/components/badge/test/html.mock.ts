@@ -13,7 +13,7 @@ export const getBadgeHtml = (props: KoliBriBadgeProps, additionalAttrs = ''): st
 			},
 			_label: '…', // ⚠ required
 		},
-		props,
+		props
 	);
 
 	state._color = handleColorChange(props._color || '#000');

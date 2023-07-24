@@ -10,14 +10,14 @@ export const getAccordionHtml = (
 		header?: string;
 		content?: string;
 		footer?: string;
-	} = {},
+	} = {}
 ): string => {
 	props = mixMembers(
 		{
 			_heading: '…', // ⚠ required
 			_level: 1,
 		},
-		props,
+		props
 	);
 	return `<kol-accordion${props._open ? ' _open' : ''}>
   <mock:shadow-root>
@@ -34,7 +34,7 @@ export const getAccordionHtml = (
 						_icon: `codicon codicon-${props._open ? 'chrome-minimize' : 'add'}`,
 						_label: props._heading,
 					})}`,
-				},
+				}
 			)}
       <div class="header">
         <slot name="header"></slot>

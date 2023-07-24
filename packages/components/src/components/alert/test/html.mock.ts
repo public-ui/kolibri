@@ -9,7 +9,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 		{
 			_level: 1,
 		},
-		props,
+		props
 	);
 	const type: string = props._type !== undefined ? props._type : 'default';
 	props._type = props._type || 'default';
@@ -43,7 +43,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 								? 'codicon codicon-info'
 								: 'codicon codicon-comment',
 					},
-					` class="heading-icon"`,
+					` class="heading-icon"`
 				)}
 				<div>
 					${
@@ -55,7 +55,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 									},
 									{
 										default: props._heading,
-									},
+									}
 							  )
 							: ''
 					}

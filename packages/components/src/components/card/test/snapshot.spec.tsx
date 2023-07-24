@@ -24,5 +24,5 @@ executeTests<koliBriCardProps>(
 	getCardHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );

@@ -223,6 +223,6 @@ export const watchTooltipAlignment = (component: Generic.Element.Component, prop
 		value,
 		{
 			defaultValue: 'top',
-		},
+		}
 	);
 };

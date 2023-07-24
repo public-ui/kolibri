@@ -23,5 +23,5 @@ executeTests<KoliBriSymbolProps>(
 	getSymbolHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );

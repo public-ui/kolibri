@@ -7,14 +7,14 @@ export const getHeadingWcHtml = (
 	slots: {
 		default?: string;
 	} = {},
-	additionalAttrs = '',
+	additionalAttrs = ''
 ): string => {
 	const state = mixMembers<KoliBriHeadingProps, KoliBriHeadingStates>(
 		{
 			_label: false, // ⚠ required
 			_level: 1,
 		},
-		props,
+		props
 	);
 	return `
 		<kol-heading-wc${additionalAttrs}>
@@ -29,7 +29,7 @@ export const getHeadingHtml = (
 	props: KoliBriHeadingProps,
 	slots: {
 		default?: string;
-	} = {},
+	} = {}
 ): string => {
 	return `
 <kol-heading>

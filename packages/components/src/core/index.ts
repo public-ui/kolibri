@@ -9,7 +9,7 @@ export const register = (
 		| Generic.Theming.RegisterPatch<string, string, string>[]
 		| Set<Generic.Theming.RegisterPatch<string, string, string>>,
 	loaders: LoaderCallback | LoaderCallback[] | Set<LoaderCallback>,
-	options?: RegisterOptions,
+	options?: RegisterOptions
 ): Promise<void[]> => {
 	try {
 		if (STORE.I18n === undefined) {

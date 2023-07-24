@@ -8,7 +8,7 @@ export const getCardHtml = (props: koliBriCardProps): string => {
 		{
 			_heading: '…',
 		},
-		props,
+		props
 	);
 	return `<kol-card>
 	<mock:shadow-root>
@@ -21,7 +21,7 @@ export const getCardHtml = (props: koliBriCardProps): string => {
 					},
 					{
 						default: '',
-					},
+					}
 				)}
 				<slot name="header"></slot>
 			</div>

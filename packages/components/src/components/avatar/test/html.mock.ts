@@ -10,7 +10,7 @@ export const getAvatarHtml = (props: Props): string => {
 			_src: ``,
 			_label: ``, // ⚠ required
 		},
-		props,
+		props
 	);
 
 	return `

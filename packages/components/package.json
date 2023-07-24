@@ -105,7 +105,7 @@
 		"mathjs": "11.9.0",
 		"postcss": "8.4.27",
 		"postcss-sorting": "8.0.2",
-		"prettier": "3.0.0",
+		"prettier": "2.8.8",
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
 		"rgba-convert": "0.3.0",

@@ -23,5 +23,5 @@ executeTests<KoliBriDetailsProps>(
 	getDetailsHtml,
 	{
 		execMode: 'default', // ready
-	},
+	}
 );

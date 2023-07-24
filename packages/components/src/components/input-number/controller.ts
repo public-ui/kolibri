@@ -29,7 +29,7 @@ export class InputNumberController extends InputIconController implements Watche
 			'_autoComplete',
 			(value): boolean => typeof value === 'string' && (value === 'on' || value === 'off'),
 			new Set(['on | off']),
-			value,
+			value
 		);
 	}
 
@@ -67,7 +67,7 @@ export class InputNumberController extends InputIconController implements Watche
 						}
 					},
 				},
-			},
+			}
 		);
 	};
 
@@ -116,7 +116,7 @@ export class InputNumberController extends InputIconController implements Watche
 				typeof value === 'string' &&
 				(value === 'date' || value === 'datetime-local' || value === 'month' || value === 'number' || value === 'time' || value === 'week'),
 			new Set(['String {date, datetime-local, month, number, time, week}']),
-			value,
+			value
 		);
 	}
 

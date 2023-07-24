@@ -11,7 +11,7 @@ export const getTooltipHtml = (props: KoliBriTooltipProps, additionalAttrs = '')
 			_id: nonce(),
 			_label: '…', // ⚠ required
 		},
-		props,
+		props
 	);
 	return `
 <kol-tooltip${additionalAttrs}>
@@ -27,7 +27,7 @@ export const getTooltipHtml = (props: KoliBriTooltipProps, additionalAttrs = '')
 				{
 					expert: undefined,
 				},
-				` class="area" id="${state._id}"`,
+				` class="area" id="${state._id}"`
 			)}
 		</div>`
 	}
