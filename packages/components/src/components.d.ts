@@ -2317,7 +2317,7 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Defines how many rows of options should be visible at the same time
+          * Defines how many rows of options should be visible at the same time.
          */
         "_rows"?: number;
         /**
@@ -5401,7 +5401,7 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Defines how many rows of options should be visible at the same time
+          * Defines how many rows of options should be visible at the same time.
          */
         "_rows"?: number;
         /**

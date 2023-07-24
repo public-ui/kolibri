@@ -231,7 +231,7 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _required?: boolean;
 
 	/**
-	 * Defines how many rows of options should be visible at the same time
+	 * Defines how many rows of options should be visible at the same time.
 	 */
 	@Prop() public _rows?: number;
 
