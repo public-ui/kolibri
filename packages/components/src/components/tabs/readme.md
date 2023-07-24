@@ -81,10 +81,10 @@ Hier steht immer der beeinträchtige Nutzende im Vordergrund. Um möglichst effi
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" _target="_blank"></kol-link>
-- <kol-link _href="https://dequeuniversity.com/library/aria/tabpanel" _target="_blank"></kol-link>
-- <kol-link _href="https://design-system.service.gov.uk/components/tabs/" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" _label="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" _label="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/library/aria/tabpanel" _label="https://dequeuniversity.com/library/aria/tabpanel" _target="_blank"></kol-link>
+- <kol-link _href="https://design-system.service.gov.uk/components/tabs/" _label="https://design-system.service.gov.uk/components/tabs/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
