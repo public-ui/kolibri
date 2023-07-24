@@ -1,12 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
-import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnOff } from '../../types/input/types';
-import { watchBoolean, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
+import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 
 export class InputNumberController extends InputIconController implements Watches {
 	/**
@@ -33,8 +33,14 @@ export class InputNumberController extends InputIconController implements Watche
 		);
 	}
 
-	public validateList(value?: Stringified<string[]>): void {
-		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
+	/**
+	 * @deprecated remains to satisfy `Watches` interface
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	public validateList(): void {}
+
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		validateSuggestions(this.component, value);
 	}
 
 	private readonly parseToString = (value?: number | Date | string | null) => {
@@ -137,7 +143,7 @@ export class InputNumberController extends InputIconController implements Watche
 		this.validateAutoComplete(this.component._autoComplete);
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
-		this.validateList(this.component._list);
+		this.validateSuggestions(this.component._suggestions || this.component._list);
 		this.validatePlaceholder(this.component._placeholder);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);

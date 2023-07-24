@@ -1259,6 +1259,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions intead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1290,13 +1291,17 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4363,6 +4368,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions intead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4394,13 +4400,17 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
