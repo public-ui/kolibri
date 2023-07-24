@@ -500,13 +500,7 @@
 	color: inherit;
 }
 .context-view.monaco-menu-container {
-	font-family:
-		Segoe WPC,
-		Segoe UI,
-		\.SFNSDisplay-Light,
-		SFUIText-Light,
-		HelveticaNeue-Light,
-		sans-serif;
+	font-family: Segoe WPC, Segoe UI, \.SFNSDisplay-Light, SFUIText-Light, HelveticaNeue-Light, sans-serif;
 	outline: 0;
 	box-shadow: 0 2px 8px #a8a8a8;
 	border: none;
@@ -1076,8 +1070,7 @@
 	width: 100%;
 }
 .monaco-editor .margin-view-overlays .line-numbers {
-	cursor:
-		-webkit-image-set(
+	cursor: -webkit-image-set(
 				url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNSIgaGVpZ2h0PSIyMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAxNSAyMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTUgMjE7Ij48cG9seWdvbiBzdHlsZT0iZmlsbDojRkZGRkZGO3N0cm9rZTojMDAwMDAwIiBwb2ludHM9IjE0LjUsMS4yIDEuOSwxMy44IDcuMSwxMy44IDQuNSwxOS4xIDcuNywyMC4xIDEwLjMsMTQuOSAxNC41LDE4Ii8+PC9zdmc+')
 					1x,
 				url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMzAiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCAzMCA0MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzAgNDI7Ij48cG9seWdvbiBzdHlsZT0iZmlsbDojRkZGRkZGO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoyOyIgcG9pbnRzPSIyOSwyLjQgMy44LDI3LjYgMTQuMywyNy42IDksMzguMSAxNS40LDQwLjIgMjAuNiwyOS43IDI5LDM2Ii8+PC9zdmc+Cg==')
@@ -1087,8 +1080,7 @@
 		default;
 }
 .monaco-editor.mac .margin-view-overlays .line-numbers {
-	cursor:
-		-webkit-image-set(
+	cursor: -webkit-image-set(
 				url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEyIDE4Ij48c3R5bGU+LnN0MHtmaWxsOiNmZmZ9PC9zdHlsZT48dGl0bGU+ZmxpcHBlZC1jdXJzb3ItbWFjPC90aXRsZT48cGF0aCBkPSJNNC4zIDE2LjVsMS42LTQuNkgxLjFMMTEuNSAxLjJ2MTQuNEw4LjcgMTNsLTEuNiA0LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTExIDE0LjVsLTIuNS0yLjNMNyAxNi43IDUgMTZsMS42LTQuNWgtNGw4LjUtOU0wIDEyLjVoNS4ybC0xLjUgNC4xTDcuNSAxOCA5IDE0LjJsMi45IDIuM1YwTDAgMTIuNXoiLz48L3N2Zz4=')
 					1x,
 				url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIzNiIgdmlld0JveD0iMCAwIDI0IDM2LjEiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5mbGlwcGVkLWN1cnNvci1tYWMtMng8L3RpdGxlPjxwb2x5Z29uIHBvaW50cz0iOC42IDMzLjEgMTEuOCAyMy45IDIuMiAyMy45IDIzIDIuNSAyMyAzMS4zIDE3LjQgMjYuMSAxNC4yIDM1LjEgOC42IDMzLjEiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIyLDI5LjFsLTUtNC42LTMuMDYyLDguOTM4LTQuMDYyLTEuNUwxMywyM0g1TDIyLDVNMCwyNUgxMC40bC0zLDguM0wxNSwzNi4xbDMuMTI1LTcuNjYyTDI0LDMzVjBaIi8+PC9zdmc+')
@@ -1121,8 +1113,7 @@
 }
 .monaco-editor.hc-black.mac .view-lines,
 .monaco-editor.vs-dark.mac .view-lines {
-	cursor:
-		-webkit-image-set(
+	cursor: -webkit-image-set(
 				url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAL0lEQVQoz2NgCD3x//9/BhBYBWdhgFVAiVW4JBFKGIa4AqD0//9D3pt4I4tAdAMAHTQ/j5Zom30AAAAASUVORK5CYII=)
 					1x,
 				url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAAz0lEQVRIx2NgYGBY/R8I/vx5eelX3n82IJ9FxGf6tksvf/8FiTMQAcAGQMDvSwu09abffY8QYSAScNk45G198eX//yev73/4///701eh//kZSARckrNBRvz//+8+6zohwczjgnjdgqxkag7b9wadebjibqtjcbhra0ynoikbsnmapemonma0fkynofkhapj6fgyah3nauasmpfwi0v/3oukvi0ciz+F25KrtYcx/CTIy0e+rC7R1Z4KMICVTQQ14feVXIbR695u14+Ir4gwAAD49E54wc1kWAAAAAElFTkSuQmCC)
@@ -1425,20 +1416,12 @@
 	position: relative;
 	overflow: visible;
 	-webkit-text-size-adjust: 100%;
-	-webkit-font-feature-settings:
-		'liga' off,
-		'calt' off;
-	font-feature-settings:
-		'liga' off,
-		'calt' off;
+	-webkit-font-feature-settings: 'liga' off, 'calt' off;
+	font-feature-settings: 'liga' off, 'calt' off;
 }
 .monaco-editor.enable-ligatures {
-	-webkit-font-feature-settings:
-		'liga' on,
-		'calt' on;
-	font-feature-settings:
-		'liga' on,
-		'calt' on;
+	-webkit-font-feature-settings: 'liga' on, 'calt' on;
+	font-feature-settings: 'liga' on, 'calt' on;
 }
 .monaco-editor .overflow-guard {
 	position: relative;
@@ -2807,15 +2790,7 @@
 	content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0iI0M1QzVDNSIgZD0iTTkuNjc2IDJoLTYuNjc2djEyaDEwdi05bC0zLjMyNC0zem0yLjMyNCAxMWgtOHYtMTBoNXYzaDN2N3oiLz48L3N2Zz4=);
 }
 .monaco-editor {
-	font-family:
-		-apple-system,
-		BlinkMacSystemFont,
-		Segoe WPC,
-		Segoe UI,
-		HelveticaNeue-Light,
-		Ubuntu,
-		Droid Sans,
-		sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe WPC, Segoe UI, HelveticaNeue-Light, Ubuntu, Droid Sans, sans-serif;
 }
 .monaco-menu .monaco-action-bar.vertical .action-item .action-label:focus {
 	color: #0059ac;
