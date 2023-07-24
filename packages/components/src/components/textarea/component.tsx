@@ -197,7 +197,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _required?: boolean;
 
 	/**
-	 * Defines how many rows of text should be visible at the same time
+	 * Defines how many rows of text should be visible at the same time.
 	 */
 	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
 

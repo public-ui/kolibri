@@ -2630,7 +2630,7 @@ export namespace Components {
          */
         "_resize"?: CSSResize;
         /**
-          * Defines how many rows of text should be visible at the same time
+          * Defines how many rows of text should be visible at the same time.
          */
         "_rows"?: RowsPropType;
         /**
@@ -5714,7 +5714,7 @@ declare namespace LocalJSX {
          */
         "_resize"?: CSSResize;
         /**
-          * Defines how many rows of text should be visible at the same time
+          * Defines how many rows of text should be visible at the same time.
          */
         "_rows"?: RowsPropType;
         /**
