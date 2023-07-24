@@ -1616,6 +1616,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<Option<number>[]>;
         /**
@@ -1638,6 +1639,10 @@ export namespace Components {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4725,6 +4730,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<Option<number>[]>;
         /**
@@ -4747,6 +4753,10 @@ declare namespace LocalJSX {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */

@@ -2,9 +2,10 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnOff, Option } from '../../types/input/types';
-import { watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
+import { watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
+import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 
 export class InputRangeController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -24,13 +25,13 @@ export class InputRangeController extends InputIconController implements Watches
 		);
 	}
 
+	/**
+	 * @deprecated use _suggestions
+	 */
 	public validateList(value?: Stringified<Option<number>[]>): void {
-		watchJsonArrayString(
-			this.component,
-			'_list',
-			(item: Option<number>) => typeof item === 'object' && typeof item.label === 'string' && item.label.length > 0,
-			value
-		);
+		if (Array.isArray(value)) {
+			this.validateSuggestions(value.map((option) => String(option.value)));
+		}
 	}
 
 	public validateMax(value?: number): void {
@@ -45,6 +46,10 @@ export class InputRangeController extends InputIconController implements Watches
 		watchNumber(this.component, '_step', value);
 	}
 
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		validateSuggestions(this.component, value);
+	}
+
 	public validateValue(value?: number): void {
 		watchNumber(this.component, '_value', value);
 		this.setFormAssociatedValue(this.component.state._value as string);
@@ -57,6 +62,7 @@ export class InputRangeController extends InputIconController implements Watches
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
 		this.validateStep(this.component._step);
+		this.validateSuggestions(this.component._suggestions);
 		this.validateValue(this.component._value);
 	}
 }

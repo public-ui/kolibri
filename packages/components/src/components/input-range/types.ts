@@ -5,6 +5,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
+import { PropSuggestions } from '../../types/props/suggestions';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -16,6 +17,10 @@ type OptionalProps = {
 	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
+
+	/**
+	 * @deprecated Use suggestions instead.
+	 */
 	list: Stringified<Option<number>[]>;
 	max: number;
 	min: number;
@@ -26,13 +31,13 @@ type OptionalProps = {
 	tabIndex: number;
 	touched: boolean;
 	value: number;
-};
+} & PropSuggestions;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
-	list: Option<number>[];
+	suggestions: string[];
 } & PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
