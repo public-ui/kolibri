@@ -7,16 +7,16 @@ Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere v
 ### Code
 
 ```html
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}" _value="['1']"> Auswahlfeld </kol-select>
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _value="['1']"> Auswahlfeld </kol-select>
 <kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
 	Auswahlfeld (Mehrfachauswahl)
 </kol-select>
 <kol-select
 	_list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]"
-	_size="4"
+	_rows="4"
 	_value="['1']"
 >
-	Auswahlfeld mit _size
+	Auswahlfeld mit _rows
 </kol-select>
 ```
 
@@ -26,7 +26,7 @@ Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere v
 <kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
 Auswahlfeld (Mehrfachauswahl)
 </kol-select>
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]" _size="4" _value="['1']">Auswahlfeld mit size</kol-select>
+<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]" _rows="4" _value="['1']">Auswahlfeld mit rows</kol-select>
 
 ## Verwendung
 
@@ -44,7 +44,7 @@ Beispiel für die Konstruktion des JSON-Objektes:
 
 ### Individuelle Höhe angeben
 
-Über das Attribut **`_size`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
+Über das Attribut **`_rows`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
 
 <!--### Best practices-->
 

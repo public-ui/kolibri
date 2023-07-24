@@ -6,7 +6,7 @@ kol-input [slot='input'] {
 	flex-grow: 1;
 }
 input:not([type='checkbox'], [type='radio']),
-select:not([multiple]) {
+select:not([multiple], [size]) {
 	height: 2.75em;
 }
 input:focus,

@@ -3,6 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
 import { CSSResize, Props, Watches } from './types';
+import { RowsPropType, validateRows } from '../../types/props/rows';
 
 export class TextareaController extends InputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -57,8 +58,8 @@ export class TextareaController extends InputController implements Watches {
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateRows(value?: number): void {
-		watchNumber(this.component, '_rows', value);
+	public validateRows(value?: RowsPropType): void {
+		validateRows(this.component, value);
 	}
 
 	public validateValue(value?: string): void {

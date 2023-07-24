@@ -5,6 +5,7 @@ import { PropAdjustHeight } from '../../types/props/adjust-height';
 import { PropHasCounter } from '../../types/props/has-counter';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
+import { PropRows } from '../../types/props/rows';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 
@@ -23,13 +24,13 @@ type OptionalProps = {
 	readOnly: boolean;
 	resize: CSSResize;
 	required: boolean;
-	rows: number;
 	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: string;
 } & PropAdjustHeight &
-	PropHasCounter;
+	PropHasCounter &
+	PropRows;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -53,11 +54,11 @@ type OptionalStates = {
 	placeholder: string;
 	readOnly: boolean;
 	required: boolean;
-	rows: number;
 	tabIndex: number;
 	touched: boolean;
 	value: string;
-} & PropHasCounter;
+} & PropHasCounter &
+	PropRows;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
