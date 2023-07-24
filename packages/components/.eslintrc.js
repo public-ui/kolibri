@@ -26,11 +26,6 @@ const config = {
 		 */
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
-
-		/**
-		 * The markdown formatter used spaces and tabs.
-		 */
-		'no-mixed-spaces-and-tabs': 'off',
 	},
 	settings: {
 		react: {
@@ -54,6 +49,15 @@ config.overrides.push({
 	rules: {
 		'jsx-a11y/no-access-key': 'off',
 		// 'react/no-unused-state': 'error',
+	},
+});
+config.overrides.push({
+	files: ['**/*.ts', '**/*.tsx'],
+	rules: {
+		/**
+		 * The typescript formatter used spaces and tabs in some cases.
+		 */
+		'no-mixed-spaces-and-tabs': 'off',
 	},
 });
 
