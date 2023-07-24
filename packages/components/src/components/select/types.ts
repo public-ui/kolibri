@@ -6,7 +6,7 @@ import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
-import { RowsPropType } from '../../types/props/rows';
+import { PropRows } from '../../types/props/rows';
 
 type RequiredProps = InputRequiredProps & {
 	list: Stringified<SelectOption<W3CInputValue>[]>;
@@ -27,7 +27,6 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
-	rows: RowsPropType;
 	/**
 	 * @deprecated Use _rows instead.
 	 */
@@ -36,7 +35,7 @@ type OptionalProps = {
 	tabIndex: number;
 	touched: boolean;
 	value: Stringified<W3CInputValue[]>;
-};
+} & PropRows;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -62,14 +61,13 @@ type OptionalStates = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
-	rows: RowsPropType;
 	/**
 	 * @deprecated Use _rows instead.
 	 */
 	size: number;
 	tabIndex: number;
 	touched: boolean;
-};
+} & PropRows;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
