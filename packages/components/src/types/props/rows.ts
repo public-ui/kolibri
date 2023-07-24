@@ -13,5 +13,5 @@ export type PropRows = {
 
 /* validator */
 export const validateRows = (component: Generic.Element.Component, value?: RowsPropType): void => {
-	watchNumber(component, `_rows`, value, { min: 0 });
+	watchNumber(component, `_rows`, value, { min: 1 });
 };

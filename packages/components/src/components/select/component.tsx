@@ -273,7 +273,6 @@ export class KolSelect implements ComponentApi {
 		_label: false, // ⚠ required
 		_list: [],
 		_multiple: false,
-		_rows: 0,
 		_value: [],
 	};
 
