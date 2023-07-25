@@ -2731,8 +2731,13 @@ export namespace Components {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the text to show in the Toast.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -5877,8 +5882,13 @@ declare namespace LocalJSX {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the text to show in the Toast.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
