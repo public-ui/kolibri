@@ -207,18 +207,18 @@
 								<kol-input-text _id="input-text" _value="Max" _hint="Ich bin ein Hinweis.">Vorname</kol-input-text>
 								<kol-input-text _id="input-text" _hide-label _label="Vorname" _type="search"></kol-input-text>
 								<kol-input-password _id="input-password" _name="input-password">Passwort</kol-input-password>
-								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _sync-value-by-selector="#select-native"
-									>Stimmung</kol-select
-								>
+								<kol-select _id="select" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _sync-value-by-selector="#select-native">
+									Stimmung
+								</kol-select>
 								<select id="select-native" multiple></select>
 								<kol-textarea _id="textarea">Textarea</kol-textarea>
-								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">
+								<kol-input-radio class="herr-frau" _id="input-radio" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">
 									Anrede
 								</kol-input-radio>
 								<kol-input-radio
 									class="herr-frau"
 									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
+									_options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
 									_orientation="horizontal"
 									_value="1"
 								>
@@ -716,14 +716,14 @@
 								<kol-input-date _id="input-date-week" _type="week">Woche</kol-input-date>
 								<kol-input-date _id="input-date-time" _type="time">Zeit (Standard)</kol-input-date>
 								<kol-input-password _id="input-password">Passwort</kol-input-password>
-								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
+								<kol-input-radio class="herr-frau" _id="input-radio" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
 									>Anrede</kol-input-radio
 								>
 								<kol-input-radio
 									_orientation="horizontal"
 									class="herr-frau"
 									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
+									_options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
 									_value="1"
 									>Anrede</kol-input-radio
 								>
@@ -732,8 +732,8 @@
 								<kol-input-text _id="input-text-search" _type="search">Suchbegriff</kol-input-text>
 								<kol-input-text _id="input-text-url" _type="url">Url</kol-input-text>
 								<kol-input-text _id="input-text-tel" _type="tel">Telefonnummer</kol-input-text>
-								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung (nicht vorbelegt)</kol-select>
-								<kol-select _id="select-multiple" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _multiple
+								<kol-select _id="select" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung (nicht vorbelegt)</kol-select>
+								<kol-select _id="select-multiple" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _multiple
 									>Stimmung (Mehrfachauswahl, vorbelegt)</kol-select
 								>
 								<kol-textarea _id="textarea">Textarea</kol-textarea>
@@ -1104,29 +1104,29 @@
 										<kol-input-radio>Anrede</kol-input-radio>
 									</lean-input-adapter>
 									<kol-input-radio _required id="anrede-input">Anrede es wird automatisch die 1. Option ausgewählt</kol-input-radio>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '01'}, {'label': 'b', 'value': '02'}]" _value="02">Input-Radio</kol-input-radio>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '2.00'}, {'label': 'b', 'value': '2.10'}]" _value="2.10"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '01'}, {'label': 'b', 'value': '02'}]" _value="02">Input-Radio</kol-input-radio>
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '2.00'}, {'label': 'b', 'value': '2.10'}]" _value="2.10"
 										>Input-Radio</kol-input-radio
 									>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '02.0'}, {'label': 'b', 'value': '02.1'}]" _value="02.1"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '02.0'}, {'label': 'b', 'value': '02.1'}]" _value="02.1"
 										>Input-Radio</kol-input-radio
 									>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="2"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="2"
 										>Input-Radio (string vs number)</kol-input-radio
 									>
-									<kol-input-radio _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Input-Radio</kol-input-radio>
-									<kol-select _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _multiple _value="['2']">Select</kol-select>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="2">Input-Radio (2)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': true}]" _value="true">Input-Radio (true)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2.5}]" _value="2.5">Input-Radio (2.5)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="3">Input-Radio</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Input-Radio</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Input-Radio</kol-input-radio>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[2]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[3]">Select</kol-select>
+									<kol-input-radio _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Input-Radio</kol-input-radio>
+									<kol-select _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _multiple _value="['2']">Select</kol-select>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="2">Input-Radio (2)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': true}]" _value="true">Input-Radio (true)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2.5}]" _value="2.5">Input-Radio (2.5)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="3">Input-Radio</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Input-Radio</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Input-Radio</kol-input-radio>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[2]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[3]">Select</kol-select>
 								</div>
 							</div>
 							<div class="d-grid gap-2">

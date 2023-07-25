@@ -11,6 +11,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
+import { OptionsPropType } from '../../types/props/options';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -53,7 +54,7 @@ export class KolInputRadio implements ComponentApi {
 							<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 						</span>
 					</legend>
-					{this.state._list.map((option, index) => {
+					{this.state._options.map((option, index) => {
 						/**
 						 * Damit der Value einer Option ein beliebigen Typ haben kann
 						 * muss man auf HTML-Ebene den Value auf einen String-Wert
@@ -174,8 +175,9 @@ export class KolInputRadio implements ComponentApi {
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
+	 * @deprecated Use _options.
 	 */
-	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
+	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -186,6 +188,11 @@ export class KolInputRadio implements ComponentApi {
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
 	@Prop() public _on?: InputTypeOnDefault;
+
+	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 */
+	@Prop() public _options?: OptionsPropType;
 
 	/**
 	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
@@ -226,7 +233,7 @@ export class KolInputRadio implements ComponentApi {
 	@State() public state: States = {
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_options: [],
 		_orientation: 'vertical',
 	};
 
@@ -276,7 +283,7 @@ export class KolInputRadio implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
-		this.controller.validateList(value);
+		this.validateOptions(value);
 	}
 
 	@Watch('_name')
@@ -287,6 +294,11 @@ export class KolInputRadio implements ComponentApi {
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
+	}
+
+	@Watch('_options')
+	public validateOptions(value?: OptionsPropType): void {
+		this.controller.validateOptions(value);
 	}
 
 	@Watch('_orientation')

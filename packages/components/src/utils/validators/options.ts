@@ -2,7 +2,7 @@ import { Optgroup, SelectOption } from '../../types/input/types';
 import { containsOnlyNumbers, hasEnoughReadableChars } from '../../types/props/label';
 import { a11yHint } from '../a11y.tipps';
 
-export const validateInputSelectList = <T>(option: SelectOption<T>): boolean => {
+export const validateInputSelectOptions = <T>(option: SelectOption<T>): boolean => {
 	if (typeof option === 'object' && option !== null) {
 		if (typeof option.label === 'string' && option.label.length > 0) {
 			option.disabled = option.disabled === true;
@@ -15,7 +15,7 @@ export const validateInputSelectList = <T>(option: SelectOption<T>): boolean => 
 			if (Array.isArray((option as Optgroup<T>).options)) {
 				return (
 					(option as Optgroup<T>).options.find((item) => {
-						return validateInputSelectList(item) === false;
+						return validateInputSelectOptions(item) === false;
 					}) === undefined
 				);
 			}

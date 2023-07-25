@@ -28,6 +28,7 @@ import { StencilUnknown } from "./types/unknown";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
+import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/types";
@@ -67,6 +68,7 @@ export { StencilUnknown } from "./types/unknown";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
+export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { ListStyleType } from "./components/link-group/types";
@@ -1443,8 +1445,9 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
+          * @deprecated Use _options.
          */
-        "_list": Stringified<Option<W3CInputValue>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -1453,6 +1456,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
+        /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsPropType;
         /**
           * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
@@ -2302,9 +2309,10 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Options the user can choose from, also supporting Optgroup.
+          * @deprecated use _options
          */
-        "_list": Stringified<SelectOption<W3CInputValue>[]>;
+        "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -2317,6 +2325,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
+        /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsWithOptgroupPropType;
         /**
           * Macht das Eingabeelementzu einem Pflichtfeld.
          */
@@ -4537,8 +4549,9 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
+          * @deprecated Use _options.
          */
-        "_list": Stringified<Option<W3CInputValue>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -4547,6 +4560,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
+        /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsPropType;
         /**
           * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
@@ -5396,9 +5413,10 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Options the user can choose from, also supporting Optgroup.
+          * @deprecated use _options
          */
-        "_list": Stringified<SelectOption<W3CInputValue>[]>;
+        "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -5411,6 +5429,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
+        /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsWithOptgroupPropType;
         /**
           * Macht das Eingabeelementzu einem Pflichtfeld.
          */
