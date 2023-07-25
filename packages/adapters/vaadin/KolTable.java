@@ -6,9 +6,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * k# Table
-
-Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+ * Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
 	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
@@ -16,13 +14,13 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
 	public void setCaption(final Optional<String> value) {
 		getElement().setProperty("_caption", value);
@@ -89,6 +87,24 @@ public class KolTable extends Component {
 	 */
 	public Optional<String> getHeaders() {
 		return getElement().getProperty("_headers", null);
+	}
+
+	/**
+	 * Defines the table caption.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setLabel(final Optional<String> value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Defines the table caption.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**

@@ -6,11 +6,11 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 /**
- * Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
+ * Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
  */
 
 @Tag("kol-textarea")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-textarea")
 public class KolTextarea extends Component {
 	/**
@@ -302,7 +302,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+	 * Defines how many rows of text should be visible at the same time.
 	 *
 	 * @param value Optional<String>
 	 */
@@ -311,7 +311,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+	 * Defines how many rows of text should be visible at the same time.
 	 *
 	 * @return Optional<String>
 	 */

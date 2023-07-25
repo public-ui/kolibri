@@ -14,7 +14,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-radio")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-input-radio")
 public class KolInputRadio extends Component {
 	/**
@@ -164,7 +164,7 @@ public class KolInputRadio extends Component {
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
 	public void setList(final Optional<String> value) {
 		getElement().setProperty("_list", value);
@@ -195,6 +195,24 @@ public class KolInputRadio extends Component {
 	 */
 	public Optional<String> getName() {
 		return getElement().getProperty("_name", null);
+	}
+
+	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setOptions(final Optional<String> value) {
+		getElement().setProperty("_options", value);
+	}
+
+	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getOptions() {
+		return getElement().getProperty("_options", null);
 	}
 
 	/**
