@@ -538,13 +538,15 @@ export namespace Components {
         "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3682,13 +3684,15 @@ declare namespace LocalJSX {
         "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */

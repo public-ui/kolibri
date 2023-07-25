@@ -53,7 +53,7 @@
 			<kol-accordion _open id="anythingandeverythingallofthetime" _label="Überblick" _level="2">
 				<div class="grid gap">
 					<div class="flex flex-wrap gap-2 xl:gap-4 justify-between">
-						<kol-card _heading="buttons" _level="3">
+						<kol-card _label="buttons" _level="3">
 							<div class="grid gap">
 								<kol-button
 									_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
@@ -101,7 +101,7 @@
 								</kol-split-button>
 							</div>
 						</kol-card>
-						<kol-card _heading="disabled buttons" _level="3">
+						<kol-card _label="disabled buttons" _level="3">
 							<div class="grid gap">
 								<kol-button _icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }" _disabled _label="primary" _variant="primary"></kol-button>
 								<kol-button _icon="{ 'right': { 'icon': 'codicon codicon-arrow-right' } }" _disabled _label="secondary" _variant="secondary"></kol-button>
@@ -125,7 +125,7 @@
 								</kol-split-button>
 							</div>
 						</kol-card>
-						<kol-card _heading="headings" _level="3">
+						<kol-card _label="headings" _level="3">
 							<div class="grid gap">
 								<kol-heading _label="Überschrift Stufe 1" _level="1"></kol-heading>
 								<kol-heading _label="Überschrift Stufe 2" _level="2"></kol-heading>
@@ -135,7 +135,7 @@
 								<kol-heading _label="Überschrift Stufe 6" _level="6"></kol-heading>
 							</div>
 						</kol-card>
-						<kol-card _heading="Links&Co" _level="3">
+						<kol-card _label="Links&Co" _level="3">
 							<div class="grid gap">
 								<kol-link _href="#card">Zur Card</kol-link>
 								<kol-button-link _href="#pagination" _label="Zur Pagination"></kol-button-link>
@@ -164,7 +164,7 @@
 								</div>
 							</div>
 						</kol-card>
-						<kol-card _heading="Icons&Co" _level="3">
+						<kol-card _label="Icons&Co" _level="3">
 							<kol-badge _label="wie badges"></kol-badge>
 							<div class="grid gap">
 								<p>
@@ -180,7 +180,7 @@
 								<kol-kolibri style="width: 100px"></kol-kolibri>
 							</div>
 						</kol-card>
-						<kol-card _heading="Mitte" _level="3">
+						<kol-card _label="Mitte" _level="3">
 							<div class="grid">
 								<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]'>
 									<div>Seite 1</div>
@@ -193,7 +193,7 @@
 						</kol-card>
 					</div>
 
-					<kol-card _heading="Form" _level="3">
+					<kol-card _label="Form" _level="3">
 						<kol-form>
 							<div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem">
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
@@ -590,7 +590,7 @@
 							<kol-heading _label="" _level="2">Card</kol-heading>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-card _heading="Mit h1-Überschrift und Footer" _has-footer>
+							<kol-card _label="Mit h1-Überschrift und Footer" _has-footer>
 								<p slot="header">Test</p>
 								<div>
 									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum
@@ -603,19 +603,19 @@
 									<kol-button class="not-used min-width" _label="Abbrechen"></kol-button>
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h2-Überschrift" _level="2" class="bordered">
+							<kol-card _label="Mit h2-Überschrift" _level="2" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h3-Überschrift" _level="3">
+							<kol-card _label="Mit h3-Überschrift" _level="3">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h4-Überschrift" _level="4">
+							<kol-card _label="Mit h4-Überschrift" _level="4">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -623,13 +623,13 @@
 							</kol-card>
 						</div>
 						<div class="gap-2 mt-4 col-12 d-md-flex">
-							<kol-card _heading="Mit h5-Überschrift" _level="5" class="bordered">
+							<kol-card _label="Mit h5-Überschrift" _level="5" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h6-Überschrift" _level="6" class="bordered">
+							<kol-card _label="Mit h6-Überschrift" _level="6" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -1389,7 +1389,7 @@
 						</div>
 						<div class="col-12">
 							<kol-modal id="modal-1" _label="Willkommen bei KoliBri" _has-footer>
-								<kol-card _heading="Willkommen bei KoliBri" _has-footer>
+								<kol-card _label="Willkommen bei KoliBri" _has-footer>
 									<div>
 										Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 										diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
@@ -1406,7 +1406,7 @@
 								</kol-card>
 							</kol-modal>
 							<kol-modal id="modal-2" _label="Vorgang löschen" _width="400px">
-								<kol-card _heading="Vorgang löschen" _has-footer>
+								<kol-card _label="Vorgang löschen" _has-footer>
 									<div>Wollen Sie den Vorgang wirklich löschen?</div>
 									<div slot="footer">
 										<kol-button id="modal-2-cancel" _label="Schließen"></kol-button>
@@ -1414,7 +1414,7 @@
 								</kol-card>
 							</kol-modal>
 							<kol-modal id="modal-3" _label="Modal schließen" _width="400px">
-								<kol-card _heading="Modal schließen">
+								<kol-card _label="Modal schließen">
 									<div>Klicken Sie einfach rechts oben auf das X.</div>
 								</kol-card>
 							</kol-modal>
