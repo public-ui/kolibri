@@ -12,7 +12,8 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"description": "The generic types and core logic for the KoliBri (@public-ui) accessible web component library.",
+	"sideEffects": false,
+	"description": "Angular (v15) framework adapter for KoliBri - The accessible HTML-Standard.",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -38,21 +39,27 @@
 		"a11y",
 		"w3c",
 		"webstandard",
-		"wcag"
+		"wcag",
+		"angular"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"eslint": "eslint src",
-		"tsc": "tsc --noemit",
-		"format": "prettier -c src",
-		"lint": "npm run eslint && npm run tsc",
-		"ncu:major": "ncu",
-		"ncu:minor": "ncu -t minor -u",
-		"ncu:patch": "ncu -t patch -u",
-		"prepack": "unbuild"
+		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
+		"build:cjs": "tsc -m commonjs --outDir cjs",
+		"build:clean": "rimraf cjs esm types umd",
+		"build:esm": "tsc -m esnext --outDir esm",
+		"build:ngc": "node ng-module.js && ngc -p .",
+		"build:tsc": "tsc -p .",
+		"build:types": "tsc -d --outDir types && rimraf types/*.js types/*.map types/**/*.js types/**/*.map",
+		"build:umd": "tsc -m umd --outDir umd",
+		"build": "npm run build:clean && npm run build:ngc",
+		"prepack": "npm run build"
 	},
-	"dependencies": {
-		"@public-ui/components": "1.6.0-rc.18"
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		"require": "./dist/index.js",
+		"import": "./dist/index.js"
 	},
 	"devDependencies": {
 		"@angular/compiler-cli": "15.2.9",
@@ -62,26 +69,18 @@
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts4.9",
-		"@typescript-eslint/eslint-plugin": "6.1.0",
-		"@typescript-eslint/parser": "6.1.0",
-		"eslint": "8.45.0",
-		"eslint-plugin-no-loops": "0.3.0",
+		"@types/normalize-package-data": "2.4.1",
 		"prettier": "3.0.0",
-		"ts-prune": "0.10.3",
-		"typescript": "5.1.6",
-		"unbuild": "1.2.1"
+		"rimraf": "3.0.2",
+		"rxjs": "7.8.1",
+		"tslib": "2.6.0",
+		"typescript": "4.9.5",
+		"zone.js": "0.12.0"
 	},
-	"sideEffects": false,
-	"type": "module",
-	"exports": {
-		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs"
-		}
+	"peerDependencies": {
+		"@angular/core": "^15",
+		"@public-ui/components": "1.6.0-rc.12"
 	},
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	]
