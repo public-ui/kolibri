@@ -21,7 +21,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 				${getIconHtml(
 					{
 						_label:
-							props._heading !== undefined
+							props._label !== undefined
 								? ''
 								: props._type === 'success'
 								? 'kol-success'
@@ -47,14 +47,14 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 				)}
 				<div>
 					${
-						typeof props._heading === 'string' && props._heading.length > 0
+						typeof props._label === 'string' && props._label.length > 0
 							? getHeadingWcHtml(
 									{
 										_label: '',
 										_level: props._level,
 									},
 									{
-										default: props._heading,
+										default: props._label,
 									}
 							  )
 							: ''
