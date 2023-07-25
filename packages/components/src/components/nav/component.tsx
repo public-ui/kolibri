@@ -15,7 +15,7 @@ import { KoliBriNavAPI, KoliBriNavStates } from './types';
 import { watchNavLinks } from './validation';
 
 /**
- * @deprecated
+ * @deprecated Removed in v2
  */
 export type KoliBriNavVariant = 'primary' | 'secondary';
 

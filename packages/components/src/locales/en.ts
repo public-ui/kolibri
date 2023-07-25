@@ -26,5 +26,8 @@ export default {
 	'logo-description': 'Logo {{orgShort}}. Federal eagle with flag staff and lettering {{orgLong}}',
 	'open-link-in-tab': 'The link will open in a new tab.',
 	'kolibri-logo': 'KoliBri logo',
+	'sort-descending': 'sorted column {{column}} descending',
+	'sort-ascending': 'sorted column {{column}} ascending',
+	'sort-none': 'column {{column}} not sorted',
 	'avatar-alt': 'Avatar picture of {{name}}',
 };

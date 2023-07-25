@@ -1,28 +1,28 @@
 # LinkButton
 
 Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.
+Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="/docs/components/button" _label="Seite des Buttons"></kol-link>.
 
 ## Konstruktion
 
 ### Code
 
 ```html
-<kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-<kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-<kol-link-button _href="#" _label="Secondary" _variant="danger"></kol-link-button>
-<kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
+<kol-link-button _href="#" _label="#" _label="Primary" _variant="primary"></kol-link-button>
+<kol-link-button _href="#" _label="#" _label="Secondary" _variant="secondary"></kol-link-button>
+<kol-link-button _href="#" _label="#" _label="Normal" _variant="normal"></kol-link-button>
+<kol-link-button _href="#" _label="#" _label="Secondary" _variant="danger"></kol-link-button>
+<kol-link-button _href="#" _label="#" _label="Ghost" _variant="ghost"></kol-link-button>
 ```
 
 ### Beispiel
 
 <div class="flex gap-2">
-  <kol-link-button _href="#" _label="Primary" _variant="primary"></kol-link-button>
-  <kol-link-button _href="#" _label="Secondary" _variant="secondary"></kol-link-button>
-  <kol-link-button _href="#" _label="Normal" _variant="normal"></kol-link-button>
-  <kol-link-button _href="#" _label="Danger" _variant="danger"></kol-link-button>
-  <kol-link-button _href="#" _label="Ghost" _variant="ghost"></kol-link-button>
+  <kol-link-button _href="#" _label="#" _label="Primary" _variant="primary"></kol-link-button>
+  <kol-link-button _href="#" _label="#" _label="Secondary" _variant="secondary"></kol-link-button>
+  <kol-link-button _href="#" _label="#" _label="Normal" _variant="normal"></kol-link-button>
+  <kol-link-button _href="#" _label="#" _label="Danger" _variant="danger"></kol-link-button>
+  <kol-link-button _href="#" _label="#" _label="Ghost" _variant="ghost"></kol-link-button>
 </div>
 
 <!-- Auto Generated Below -->
