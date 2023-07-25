@@ -1,6 +1,6 @@
 {
-	"name": "@public-ui/angular-v16",
-	"version": "1.6.0-rc.17",
+	"name": "@public-ui/core",
+	"version": "1.6.0-rc.18",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -12,8 +12,7 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"sideEffects": false,
-	"description": "Angular (v16) framework adapter for KoliBri - The accessible HTML-Standard.",
+	"description": "The generic types and core logic for the KoliBri (@public-ui) accessible web component library.",
 	"keywords": [
 		"accessibility",
 		"accessible",
@@ -39,48 +38,45 @@
 		"a11y",
 		"w3c",
 		"webstandard",
-		"wcag",
-		"angular"
+		"wcag"
 	],
 	"scripts": {
-		"clean": "lerna exec --stream -- git clean -f -d -X && git clean -f -d -X",
-		"build:cjs": "tsc -m commonjs --outDir cjs",
-		"build:clean": "rimraf cjs esm types umd",
-		"build:esm": "tsc -m esnext --outDir esm",
-		"build:ngc": "node ng-module.js && ngc -p .",
-		"build:tsc": "tsc -p .",
-		"build:types": "tsc -d --outDir types && rimraf types/*.js types/*.map types/**/*.js types/**/*.map",
-		"build:umd": "tsc -m umd --outDir umd",
-		"build": "npm run build:clean && npm run build:ngc",
-		"prepack": "npm run build"
+		"build": "unbuild",
+		"eslint": "eslint src",
+		"tsc": "tsc --noemit",
+		"format": "prettier -c src",
+		"lint": "npm run eslint && npm run tsc",
+		"ncu:major": "ncu",
+		"ncu:minor": "ncu -t minor -u",
+		"ncu:patch": "ncu -t patch -u",
+		"prepack": "unbuild"
 	},
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"types": "dist/index.d.ts",
-	"exports": {
-		"require": "./dist/index.js",
-		"import": "./dist/index.js"
+	"dependencies": {
+		"@public-ui/components": "1.6.0-rc.18"
 	},
 	"devDependencies": {
-		"@angular/compiler-cli": "16.1.6",
-		"@angular/compiler": "16.1.6",
-		"@angular/core": "16.1.6",
-		"@public-ui/components": "1.6.0-rc.17",
-		"@types/minimatch": "5.1.2",
-		"@types/minimist": "1.2.2",
+		"@a11y-ui/core": "1.0.3",
 		"@types/node": "ts4.9",
-		"@types/normalize-package-data": "2.4.1",
+		"@typescript-eslint/eslint-plugin": "6.1.0",
+		"@typescript-eslint/parser": "6.1.0",
+		"eslint": "8.45.0",
+		"eslint-plugin-no-loops": "0.3.0",
 		"prettier": "3.0.0",
-		"rimraf": "3.0.2",
-		"rxjs": "7.8.1",
-		"tslib": "2.6.0",
+		"ts-prune": "0.10.3",
 		"typescript": "5.1.6",
-		"zone.js": "0.13.1"
+		"unbuild": "1.2.1"
 	},
-	"peerDependencies": {
-		"@angular/core": "^16",
-		"@public-ui/components": "1.6.0-rc.12"
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
 	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	]
