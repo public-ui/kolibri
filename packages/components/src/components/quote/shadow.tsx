@@ -74,8 +74,8 @@ export class KolQuote implements KoliBriQuoteApi {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._caption);
 		this.validateHref(this._href);
+		this.validateLabel(this._label || this._caption);
 		this.validateQuote(this._quote);
 		this.validateVariant(this._variant);
 	}

@@ -282,10 +282,10 @@ export class KolTable implements KoliBriTableAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label || this._caption);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
+		this.validateLabel(this._label || this._caption);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
 	}
