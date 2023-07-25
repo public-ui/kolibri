@@ -6,7 +6,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
 
 ## Verwendung
 
-Mittels **`_caption`** kann eine Überschrift gesetzt werden, während **`_quote`** das eigentliche Zitat enthält. Der Ursprung wird über **`_href`** gesetzt.
+Mittels **`_label`** kann eine Überschrift gesetzt werden, während **`_quote`** das eigentliche Zitat enthält. Der Ursprung wird über **`_href`** gesetzt.
 Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann **`_variant`** auf `block` gesetzt werden.
 
 ## References

@@ -787,7 +787,7 @@ function setTableData(tableID, caption, data, header, footer) {
 	setTimeout(() => {
 		const table = document.querySelector(tableID);
 		if (table) {
-			table._caption = caption;
+			table._label = caption;
 			table._data = data;
 			if (header) table._headers = header;
 			if (footer) table._dataFoot = footer;
@@ -798,7 +798,7 @@ function setMultipleTableData(tableClass, caption, data, header, footer) {
 	setTimeout(() => {
 		const tables = document.querySelectorAll(tableClass);
 		tables.forEach((table) => {
-			table._caption = caption;
+			table._label = caption;
 			table._data = data;
 			if (header) table._headers = header;
 			if (footer) table._dataFoot = footer;
