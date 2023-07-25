@@ -73,13 +73,6 @@ export class SelectController extends InputIconController implements Watches {
 		watchString(this.component, '_height', value);
 	}
 
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	public validateList(value?: OptionsWithOptgroupPropType): void {
-		this.validateOptions(value);
-	}
-
 	public validateOptions(value?: OptionsWithOptgroupPropType): void {
 		validateOptionsWithOptgroup(this.component, value, {
 			hooks: {
@@ -109,12 +102,6 @@ export class SelectController extends InputIconController implements Watches {
 	public validateRows(value?: RowsPropType) {
 		validateRows(this.component, value);
 	}
-
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateSize(): void {}
 
 	public validateValue(value?: Stringified<W3CInputValue[]>): void {
 		watchJsonArrayString(this.component, '_value', () => true, value, undefined, {

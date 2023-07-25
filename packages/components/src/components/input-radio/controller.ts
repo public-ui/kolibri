@@ -97,13 +97,6 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		);
 	}
 
-	/**
-	 * @deprecated remains to satisfy `Watches` interface
-	 */
-	public validateList(value?: OptionsPropType): void {
-		this.validateOptions(value);
-	}
-
 	public validateOptions(value?: OptionsPropType): void {
 		validateOptions(this.component, value, {
 			hooks: {

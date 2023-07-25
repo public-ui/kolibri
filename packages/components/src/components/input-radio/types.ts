@@ -53,6 +53,6 @@ type OptionalStates = {
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type Watches = Generic.Element.Watchers<RequiredProps, Omit<OptionalProps, 'list'>>; // deprecated prop omitted
 
 export type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
