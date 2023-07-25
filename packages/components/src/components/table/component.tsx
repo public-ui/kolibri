@@ -21,6 +21,7 @@ import {
 	KoliBriTableSelectedHead,
 	KoliBriTableStates,
 } from './types';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -47,8 +48,9 @@ export class KolTable implements KoliBriTableAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated Use _label.
 	 */
-	@Prop() public _caption!: string;
+	@Prop() public _caption?: string;
 
 	/**
 	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
@@ -66,6 +68,11 @@ export class KolTable implements KoliBriTableAPI {
 	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
 
 	/**
+	 * Defines the table caption.
+	 */
+	@Prop() public _label?: string;
+
+	/**
 	 * Gibt an, die minimale Breite der Tabelle an.
 	 */
 	@Prop() public _minWidth?: string;
@@ -76,7 +83,7 @@ export class KolTable implements KoliBriTableAPI {
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
 	@State() public state: KoliBriTableStates = {
-		_caption: '…', // ⚠ required
+		_label: '…', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
@@ -93,9 +100,7 @@ export class KolTable implements KoliBriTableAPI {
 
 	@Watch('_caption')
 	public validateCaption(value?: string): void {
-		watchString(this, '_caption', value, {
-			required: true,
-		});
+		this.validateLabel(value);
 	}
 
 	@Watch('_data')
@@ -212,6 +217,11 @@ export class KolTable implements KoliBriTableAPI {
 		});
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
+	}
+
 	@Watch('_minWidth')
 	public validateMinWidth(value?: string): void {
 		watchString(this, '_minWidth', value, {
@@ -272,7 +282,7 @@ export class KolTable implements KoliBriTableAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateCaption(this._caption);
+		this.validateLabel(this._label || this._caption);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
@@ -661,7 +671,7 @@ export class KolTable implements KoliBriTableAPI {
 							minWidth: this.state._minWidth,
 						}}
 					>
-						<caption>{this.state._caption}</caption>
+						<caption>{this.state._label}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
 								{this.state._headers.horizontal.map((cols, rowIndex) => (

@@ -188,7 +188,7 @@
 									<div>Ich bin hier nur zu Spass.</div>
 								</kol-tabs>
 								<hr />
-								<kol-table _id="day_table" _caption="Tabelle" _data=""></kol-table>
+								<kol-table _id="day_table" _label="Tabelle" _data=""></kol-table>
 							</div>
 						</kol-card>
 					</div>
@@ -1729,16 +1729,16 @@
 							<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
 							<kol-heading _label="" _level="2">Table</kol-heading>
 						</div>
-						<kol-table _caption="default" id="table-1a"></kol-table>
-						<kol-table _caption="default" id="table-1b"></kol-table>
-						<kol-table _caption="default" id="table-1c"></kol-table>
-						<kol-table _caption="default" id="table-1d"></kol-table>
+						<kol-table _label="default" id="table-1a"></kol-table>
+						<kol-table _label="default" id="table-1b"></kol-table>
+						<kol-table _label="default" id="table-1c"></kol-table>
+						<kol-table _label="default" id="table-1d"></kol-table>
 						<kol-heading _level="3">2 Header, Daten Horizontal</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								_dual
 								_orientation="horizontal"
-								_caption="2 Header, Daten Horizontal"
+								_label="2 Header, Daten Horizontal"
 								_header-lines="[{'_headers': [{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}], '_orientation': 'horizontal', '_position': 0}, {'_headers': [{'label': '0800 - 0900'}, {'label': '0900 - 1000'}, {'label': '1000 - 1100'}, {'label': '1100 - 1200'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag']"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
@@ -1751,7 +1751,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Header, Daten Vertikal"
+								_label="2 Header, Daten Vertikal"
 								_header-lines="[{'_headers': [{'label': 'Montag'}, {'label': 'Dienstag'}, {'label': 'Mittwoch'}, {'label': 'Donnerstag'}, {'label': 'Freitag'}], '_orientation': 'horizontal', '_position': 0}, {'_headers': [{'label': '0800 - 0900', 'key': '8bis9'}, {'label': '0900 - 1000', 'key': '9bis10'}, {'label': '1000 - 1100', 'key': '10bis11'}, {'label': '1100 - 1200', 'key': '11bis12'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['8bis9', '9bis10', '10bis11', '11bis12']"
 								_data="[{'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Christian', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Angela', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Jenny'}]"
@@ -1764,7 +1764,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Horizontal Header mit Span, Daten Horizontal"
+								_label="2 Horizontal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers': [{'label': 'Q2', 'span': 3}, {'label': 'Q3', 'span': 3}], '_orientation': 'horizontal'}, {'_headers': [{'label': 'April', 'key': 'april'}, {'label': 'Mai', 'key': 'mai'}, {'label': 'Juni', 'key': 'juni'}, {'label': 'Juli', 'key': 'juli'}, {'label': 'August', 'key': 'august'}, {'label': 'September', 'key': 'september'}], '_orientation': 'horizontal', '_position': 1}, {'_headers': [{'label': 'Berlin'},{'label': 'Hamburg'},{'label': 'München'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['april', 'mai', 'juni', 'juli', 'august', 'september']"
 								_data="[{'april': '10', 'mai': '11', 'juni': '12', 'juli': '12', 'august': '16', 'september': '15'},{'april': '3', 'mai': '3', 'juni': '3', 'juli': '4', 'august': '4', 'september': '6'},{'april': '42', 'mai': '43', 'juni': '44', 'juli': '32', 'august': '45', 'september': '42'}]"
@@ -1777,7 +1777,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Vertikal Header mit Span, Daten Horizontal"
+								_label="2 Vertikal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers':[{'label':'Juni','key':'juni'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}],'_orientation':'horizontal'},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München'},{'label':'Nürnberg'},{'label':'Berlin'},{'label':'Bonn'},{'label':'Düsseldorf'},{'label':'Köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['juni','juli','august','september']"
 								_data="[{'juni':'100','juli':'101','august':'102','september':'105'},{'juni':'13','juli':'13','august':'12','september':'12'},{'juni':'87','juli':'88','august':'87','september':'90'},{'juni':'12','juli':'11','august':'12','september':'12'},{'juni':'42','juli':'43','august':'39','september':'42'},{'juni':'98','juli':'99','august':'102','september':'109'}]"
@@ -1790,7 +1790,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal"
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers':[{'label':'Q2','span':3},{'label':'Q3','span':3}],'_orientation':'horizontal'},{'_headers':[{'label':'April','key':'april'},{'label':'Mai','key':'mai'},{'label':'Juni','key':'juni'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}],'_orientation':'horizontal','_position':1},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0,'_label':'Bundesland'},{'_headers':[{'label':'München'},{'label':'Nürnberg'},{'label':'Berlin'},{'label':'Bonn'},{'label':'Düsseldorf'},{'label':'Köln'}],'_orientation':'vertical','_position':1,'_label':'Stadt'}]"
 								_order="['april','mai','juni','juli','august','september']"
 								_data="[{'april':'97','mai':'99','juni':'100','juli':'101','august':'102','september':'105'},{'april':'11','mai':'13','juni':'13','juli':'13','august':'12','september':'12'},{'april':'86','mai':'85','juni':'87','juli':'88','august':'87','september':'90'},{'april':'11','mai':'12','juni':'12','juli':'11','august':'12','september':'12'},{'april':'42','mai':'41','juni':'42','juli':'43','august':'39','september':'42'},{'april':'100','mai':'99','juni':'98','juli':'99','august':'102','september':'109'}]"
@@ -1803,7 +1803,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Horizontal Header mit Span, Daten Vertikal"
+								_label="2 Horizontal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers': [{'label': 'Q2', 'span': 3}, {'label': 'Q3', 'span': 3}], '_orientation': 'horizontal'}, {'_headers': [{'label': 'April'}, {'label': 'Mai'}, {'label': 'Juni'}, {'label': 'Juli'}, {'label': 'August'}, {'label': 'September'}], '_orientation': 'horizontal', '_position': 1}, {'_headers': [{'label': 'Berlin', 'key': 'berlin'},{'label': 'Hamburg', 'key': 'hamburg'},{'label': 'München', 'key': 'münchen'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['berlin', 'hamburg', 'münchen']"
 								_data="[{'berlin':'52','hamburg':'42','münchen':'93'},{'berlin':'53','hamburg':'41','münchen':'96'},{'berlin':'54','hamburg':'40','münchen':'98'},{'berlin':'66','hamburg':'42','münchen':'102'},{'berlin':'68','hamburg':'41','münchen':'100'},{'berlin':'69','hamburg':'42','münchen':'107'}]"
@@ -1816,7 +1816,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Vertikal Header mit Span, Daten Vertikal"
+								_label="2 Vertikal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers':[{'label':'Juni'},{'label':'Juli'},{'label':'August'},{'label':'September'}],'_orientation':'horizontal'},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Berlin','key':'berlin'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['münchen', 'nürnberg', 'berlin', 'bonn', 'düsseldorf', 'köln']"
 								_data="[{'münchen':'97','nürnberg':'21','berlin':'58','bonn':'14','düsseldorf':'42','köln':'99'},{'münchen':'99','nürnberg':'20','berlin':'57','bonn':'15','düsseldorf':'43','köln':'96'},{'münchen':'100','nürnberg':'22','berlin':'59','bonn':'15','düsseldorf':'42','köln':'98'},{'münchen':'102','nürnberg':'21','berlin':'62','bonn':'15','düsseldorf':'44','köln':'101'}]"
@@ -1829,7 +1829,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Vertikal"
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers':[{'label':'Q2','span':3},{'label':'Q3','span':3}],'_orientation':'horizontal'},{'_headers':[{'label':'April'},{'label':'Mai'},{'label':'Juni'},{'label':'Juli'},{'label':'August'},{'label':'September'}],'_orientation':'horizontal','_position':1},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Berlin','key':'berlin'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['münchen', 'nürnberg', 'berlin', 'bonn', 'düsseldorf', 'köln']"
 								_data="[{'münchen':'97','nürnberg':'21','berlin':'58','bonn':'14','düsseldorf':'42','köln':'99'},{'münchen':'99','nürnberg':'20','berlin':'57','bonn':'15','düsseldorf':'43','köln':'96'},{'münchen':'100','nürnberg':'22','berlin':'59','bonn':'15','düsseldorf':'42','köln':'98'},{'münchen':'102','nürnberg':'21','berlin':'62','bonn':'15','düsseldorf':'44','köln':'101'},{'münchen':'101','nürnberg':'22','berlin':'66','bonn':'16','düsseldorf':'45','köln':'102'},{'münchen':'106','nürnberg':'21','berlin':'65','bonn':'16','düsseldorf':'46','köln':'103'}]"
@@ -1842,7 +1842,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="1 Horizontal Header"
+								_label="1 Horizontal Header"
 								_header-lines="[{'_headers': [{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}], '_orientation': 'horizontal', '_position': 0}]"
 								_order="['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag']"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
@@ -1855,7 +1855,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="1 Vertikal Header"
+								_label="1 Vertikal Header"
 								_header-lines="[{'_headers': [{'label': '0800 - 0900', 'key': '8bis9'}, {'label': '0900 - 1000', 'key': '9bis10'}, {'label': '1000 - 1100', 'key': '10bis11'}, {'label': '1100 - 1200', 'key': '11bis12'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['8bis9', '9bis10', '10bis11', '11bis12']"
 								_data="[{'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Christian', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Angela', '10bis11': 'Naomi', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Jenny'}]"
@@ -1865,7 +1865,7 @@
 						<kol-heading _level="3">2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und Col-Span)</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und
                 Col-Span)"
 								_pagination="false"
 								_headers="{'horizontal':[[{'label':'','colSpan':2,'rowSpan':2,'asTd':true},{'label':'Q2','colSpan':2},{'label':'Juni','key':'juni','rowSpan':2},{'label':'Q3','colSpan':3}],[{'label':'April','key':'april'},{'label':'Mai','key':'mai'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}]],'vertical':[[{'label':'Bayern','rowSpan':2},{'label':'Berlin','key':'berlin','colSpan':2},{'label':'Nordrhein-Westfalen','rowSpan':3}],[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}]]}"
@@ -1874,14 +1874,14 @@
 							</kol-table>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-table id="table-2" _caption="2 Header, Daten Vertikal, Sort and Render"> </kol-table>
+							<kol-table id="table-2" _label="2 Header, Daten Vertikal, Sort and Render"> </kol-table>
 						</div>
 						<kol-heading _label="" _level="3">Tabelle + Filter</kol-heading>
 						<kol-input-text id="filter-input" _type="search">Filtern</kol-input-text>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="filter-table"
-								_caption="Tabelle + Filter"
+								_label="Tabelle + Filter"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1890,7 +1890,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-3a"
-								_caption="Nur Horizontal Header, Daten Horizontal, Pagination (A)"
+								_label="Nur Horizontal Header, Daten Horizontal, Pagination (A)"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_pagination="{'_boundaryCount': 0, '_page': 3, '_pageSize': 20, '_pageSizeOptions': [ 5, 10, 20, 50, 100 ]}"
 							>
@@ -1899,7 +1899,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-3b"
-								_caption="Nur Horizontal Header, Daten Horizontal, Pagination (B)"
+								_label="Nur Horizontal Header, Daten Horizontal, Pagination (B)"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1907,7 +1907,7 @@
 						<kol-heading _label="" _level="3">Nur Horizontal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Nur Horizontal Header, Pagination, leer"
+								_label="Nur Horizontal Header, Pagination, leer"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1918,7 +1918,7 @@
 						<kol-heading _label="" _level="3">Nur Vertikal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Nur Vertikal Header, Pagination, leer"
+								_label="Nur Vertikal Header, Pagination, leer"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1929,7 +1929,7 @@
 						<kol-heading _label="" _level="3">Horizontal und Vertikal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Horizontal und Vertikal Header, Pagination, leer"
+								_label="Horizontal und Vertikal Header, Pagination, leer"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]],'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1941,7 +1941,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-4"
-								_caption="Nur Vertikal Header, Daten Vertikal, Pagination"
+								_label="Nur Vertikal Header, Daten Vertikal, Pagination"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_pagination
@@ -1952,7 +1952,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-5"
-								_caption="Nur Horizontal Header, Daten Horizontal, ohne Pagination"
+								_label="Nur Horizontal Header, Daten Horizontal, ohne Pagination"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1961,7 +1961,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-6"
-								_caption="Nur Vertikal Header, Daten Vertikal, ohne Pagination"
+								_label="Nur Vertikal Header, Daten Vertikal, ohne Pagination"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 							>
@@ -1971,7 +1971,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								class="p-4"
-								_caption="Manuelle Datenbefüllung"
+								_label="Manuelle Datenbefüllung"
 								_headers="{'horizontal': [[{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}]]}"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
 								_pagination="{'_total': 100, '_pageSize': 5, '_pageSizeOptions': [3,5,8]}"

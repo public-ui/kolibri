@@ -16,7 +16,7 @@ Dadurch, dass die Table-Komponente das valide und barrierefreie Markup dynamisch
 
 Die Table-Komponente unterstützt folgende Funktionalitäten:
 
-- Tabellenbeschreibung durch ein **`caption`**-Attribut.
+- Tabellenbeschreibung durch ein **`label`**-Attribut.
 - Mehrzeilige Spaltenüberschriften in horizontaler oder vertikaler Richtung.
 - Sortierfunktion für entweder horizontale und vertikale Ausrichtung.
 - Unterschiedliche Render-Funktion für die Zellen.
@@ -73,12 +73,12 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 ### Code
 
 ```html
-<kol-table _caption="Tabellenbeschreibung" _headers="{'horizontal': [[{'label':'Montag','key':'montag'}]]}" _pagination="[{'page':2}]"></kol-table>
+<kol-table _label="Tabellenbeschreibung" _headers="{'horizontal': [[{'label':'Montag','key':'montag'}]]}" _pagination="[{'page':2}]"></kol-table>
 ```
 
 ### Beispiel
 
-<kol-table _caption="Nur Vertikal Header, Daten Vertikal, Pagination" _headers="{'horizontal':[[{'label':'Montag','key':'montag'}]]}" _data="[{'montag':'Zelle1'},{'montag':'Zelle2'}]" _pagination="{'page':2}"></kol-table>
+<kol-table _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers="{'horizontal':[[{'label':'Montag','key':'montag'}]]}" _data="[{'montag':'Zelle1'},{'montag':'Zelle2'}]" _pagination="{'page':2}"></kol-table>
 
 ## Verwendung
 

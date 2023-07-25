@@ -2515,8 +2515,9 @@ export namespace Components {
     interface KolTable {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
-        "_caption": string;
+        "_caption"?: string;
         /**
           * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
          */
@@ -2529,6 +2530,10 @@ export namespace Components {
           * Gibt die horizontalen und vertikalen Header für die Tabelle an.
          */
         "_headers": Stringified<KoliBriTableHeaders>;
+        /**
+          * Defines the table caption.
+         */
+        "_label"?: string;
         /**
           * Gibt an, die minimale Breite der Tabelle an.
          */
@@ -5604,8 +5609,9 @@ declare namespace LocalJSX {
     interface KolTable {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
-        "_caption": string;
+        "_caption"?: string;
         /**
           * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
          */
@@ -5618,6 +5624,10 @@ declare namespace LocalJSX {
           * Gibt die horizontalen und vertikalen Header für die Tabelle an.
          */
         "_headers": Stringified<KoliBriTableHeaders>;
+        /**
+          * Defines the table caption.
+         */
+        "_label"?: string;
         /**
           * Gibt an, die minimale Breite der Tabelle an.
          */
