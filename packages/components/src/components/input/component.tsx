@@ -7,6 +7,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
 import { Props } from './types';
 import { SuggestionsPropType } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 /**
  * @internal
@@ -77,7 +78,7 @@ export class KolInput implements Props {
 				)}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
-						{this._suggestions.map((option: string) => (
+						{this._suggestions.map((option: W3CInputValue) => (
 							<option value={option} />
 						))}
 					</datalist>

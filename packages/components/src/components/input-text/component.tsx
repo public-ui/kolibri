@@ -355,7 +355,7 @@ export class KolInputText implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: SuggestionsPropType): void {
-		this.controller.validateSuggestions(value);
+		this.validateSuggestions(value);
 	}
 
 	@Watch('_maxLength')

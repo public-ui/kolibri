@@ -313,7 +313,7 @@ export class KolInputDate implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<string[]>): void {
-		this.controller.validateSuggestions(value);
+		this.validateSuggestions(value);
 	}
 
 	@Watch('_max')

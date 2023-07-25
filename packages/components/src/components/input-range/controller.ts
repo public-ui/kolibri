@@ -6,6 +6,7 @@ import { watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 export class InputRangeController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -28,9 +29,9 @@ export class InputRangeController extends InputIconController implements Watches
 	/**
 	 * @deprecated use _suggestions
 	 */
-	public validateList(value?: Stringified<Option<number>[]>): void {
+	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
 		if (Array.isArray(value)) {
-			this.validateSuggestions(value.map((option) => String(option.value)));
+			this.validateSuggestions(value.map((option) => option.value));
 		}
 	}
 

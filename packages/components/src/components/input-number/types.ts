@@ -8,6 +8,7 @@ import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
 import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -24,7 +25,7 @@ type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	id: string;
-	suggestions: string[];
+	suggestions: W3CInputValue[];
 	type: InputNumberType;
 } & PropLabelWithExpertSlot;
 

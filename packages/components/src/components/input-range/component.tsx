@@ -12,6 +12,7 @@ import { getRenderStates } from '../input/controller';
 import { InputRangeController } from './controller';
 import { ComponentApi, States } from './types';
 import { SuggestionsPropType } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -137,7 +138,7 @@ export class KolInputRange implements ComponentApi {
 						></kol-tooltip>
 						{hasSuggestions && [
 							<datalist id={`${this.state._id}-list`}>
-								{this.state._suggestions.map((option: string) => (
+								{this.state._suggestions.map((option: W3CInputValue) => (
 									<option value={option} />
 								))}
 							</datalist>,
@@ -210,7 +211,7 @@ export class KolInputRange implements ComponentApi {
 	 * Gibt die Liste der Vorschlagswörter an.
 	 * @deprecated Use _suggestions.
 	 */
-	@Prop() public _list?: Stringified<Option<number>[]>;
+	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
 
 	/**
 	 * Gibt den größtmöglichen Eingabewert an.
@@ -330,7 +331,7 @@ export class KolInputRange implements ComponentApi {
 	}
 
 	@Watch('_list')
-	public validateList(value?: Stringified<Option<number>[]>): void {
+	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
 		this.controller.validateList(value);
 	}
 

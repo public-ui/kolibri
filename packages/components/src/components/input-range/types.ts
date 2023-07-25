@@ -6,6 +6,7 @@ import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/ty
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
 import { PropSuggestions } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -21,7 +22,7 @@ type OptionalProps = {
 	/**
 	 * @deprecated Use suggestions instead.
 	 */
-	list: Stringified<Option<number>[]>;
+	list: Stringified<Option<W3CInputValue>[]>;
 	max: number;
 	min: number;
 	name: string;
@@ -37,7 +38,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
-	suggestions: string[];
+	suggestions: W3CInputValue[];
 } & PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;

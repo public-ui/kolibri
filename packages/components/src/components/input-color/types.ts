@@ -6,7 +6,8 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
-import { PropSuggestions } from '../../types/props/suggestions';
+import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -21,7 +22,7 @@ type OptionalProps = {
 	/**
 	 * @deprecated Use _suggestions instead.
 	 */
-	list: Stringified<string[]>;
+	list: SuggestionsPropType;
 	name: string;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
@@ -35,7 +36,7 @@ export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
-	suggestions: string[];
+	suggestions: W3CInputValue[];
 } & PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;

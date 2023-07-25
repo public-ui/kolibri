@@ -1618,7 +1618,7 @@ export namespace Components {
           * Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
          */
-        "_list"?: Stringified<Option<number>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den größtmöglichen Eingabewert an.
          */
@@ -4732,7 +4732,7 @@ declare namespace LocalJSX {
           * Gibt die Liste der Vorschlagswörter an.
           * @deprecated Use _suggestions.
          */
-        "_list"?: Stringified<Option<number>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den größtmöglichen Eingabewert an.
          */
