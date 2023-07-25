@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-avatar")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-avatar")
 public class KolAvatar extends Component {
 	/**

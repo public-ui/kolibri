@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-text")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-input-text")
 public class KolInputText extends Component {
 	/**
@@ -356,7 +356,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 *
 	 * @param value Optional<String>
 	 */
@@ -365,12 +365,30 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSmartButton() {
 		return getElement().getProperty("_smart-button", null);
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setSuggestions(final Optional<String> value) {
+		getElement().setProperty("_suggestions", value);
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getSuggestions() {
+		return getElement().getProperty("_suggestions", null);
 	}
 
 	/**

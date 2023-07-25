@@ -15,8 +15,8 @@ devDependencies:
     specifier: 15.2.9
     version: 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
   '@public-ui/components':
-    specifier: 1.6.0-rc.17
-    version: 1.6.0-rc.17
+    specifier: 1.6.0-rc.18
+    version: 1.6.0-rc.18
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -39,8 +39,8 @@ devDependencies:
     specifier: 7.8.1
     version: 7.8.1
   tslib:
-    specifier: 2.6.0
-    version: 2.6.0
+    specifier: 2.6.1
+    version: 2.6.1
   typescript:
     specifier: 4.9.5
     version: 4.9.5
@@ -81,7 +81,7 @@ packages:
       magic-string: 0.27.0
       reflect-metadata: 0.1.13
       semver: 7.5.2
-      tslib: 2.6.0
+      tslib: 2.6.1
       typescript: 4.9.5
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -98,7 +98,7 @@ packages:
         optional: true
     dependencies:
       '@angular/core': 15.2.9(rxjs@7.8.1)(zone.js@0.12.0)
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: true
 
   /@angular/core@15.2.9(rxjs@7.8.1)(zone.js@0.12.0):
@@ -109,7 +109,7 @@ packages:
       zone.js: ~0.11.4 || ~0.12.0 || ~0.13.0
     dependencies:
       rxjs: 7.8.1
-      tslib: 2.6.0
+      tslib: 2.6.1
       zone.js: 0.12.0
     dev: true
 
@@ -359,17 +359,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@public-ui/components@1.6.0-rc.17:
-    resolution: {integrity: sha512-VqzitwhwJqgbX4R78HCroLnEjatyHT1XycmFULAWiZg/erRsn5AudUiO8wsXOYh6Gxguk89P+/FYPpOF8hmyIw==}
+  /@public-ui/components@1.6.0-rc.18:
+    resolution: {integrity: sha512-iAyZeIpqWUnwXj/HMlJPl+EdIvr3b1NB45DiLtckvd9tzzfKktVyDd9MCOYVT8gR4fDweg92Jt1PWp/nbJ4sPQ==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.5
-      '@public-ui/schema': 1.6.0-rc.17
+      '@public-ui/schema': 1.6.0-rc.18
       i18next: 23.2.11
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.17:
-    resolution: {integrity: sha512-b2ECJkvwxqhuWpyF3UnQwbRDvA0lhQTMncAuZF2MkwX4JTtUkXnkblNp0QffQlOgw7DaPIj+3wy7FQGfQBRo9g==}
+  /@public-ui/schema@1.6.0-rc.18:
+    resolution: {integrity: sha512-5JqdDhIMekNfXT7BKbFyU6tpf26Bpt1JoAtXg7HXfj4/VQXhUpttNFbmRCteQkurKDN60Y2OdFvNxTm8OnvnDw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: true
@@ -777,7 +777,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: true
 
   /semver@6.3.0:
@@ -828,8 +828,8 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /tslib@2.6.0:
-    resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
+  /tslib@2.6.1:
+    resolution: {integrity: sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==}
     dev: true
 
   /typescript@4.9.5:
@@ -896,5 +896,5 @@ packages:
   /zone.js@0.12.0:
     resolution: {integrity: sha512-XtC+I5dXU14HrzidAKBNMqneIVUykLEAA1x+v4KVrd6AUPWlwYORF8KgsVqvgdHiKZ4BkxxjvYi/ksEixTPR0Q==}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: true

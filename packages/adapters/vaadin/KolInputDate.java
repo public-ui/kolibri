@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-input-date")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-input-date")
 public class KolInputDate extends Component {
 	/**
@@ -335,6 +335,24 @@ public class KolInputDate extends Component {
 	 */
 	public Optional<String> getStep() {
 		return getElement().getProperty("_step", null);
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setSuggestions(final Optional<String> value) {
+		getElement().setProperty("_suggestions", value);
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getSuggestions() {
+		return getElement().getProperty("_suggestions", null);
 	}
 
 	/**

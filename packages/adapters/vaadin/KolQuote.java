@@ -12,7 +12,7 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
  */
 
 @Tag("kol-quote")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-quote")
 public class KolQuote extends Component {
 	/**
@@ -49,6 +49,24 @@ public class KolQuote extends Component {
 	 */
 	public Optional<String> getHref() {
 		return getElement().getProperty("_href", null);
+	}
+
+	/**
+	 * Defines the label of the citation link.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setLabel(final Optional<String> value) {
+		getElement().setProperty("_label", value);
+	}
+
+	/**
+	 * Defines the label of the citation link.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		return getElement().getProperty("_label", null);
 	}
 
 	/**

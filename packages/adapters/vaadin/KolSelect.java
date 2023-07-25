@@ -10,7 +10,7 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  */
 
 @Tag("kol-select")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.17")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
 @JsModule("@public-ui/components/dist/components/kol-select")
 public class KolSelect extends Component {
 	/**
@@ -194,16 +194,16 @@ public class KolSelect extends Component {
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Options the user can choose from, also supporting Optgroup.
 	 *
-	 * @param value String
+	 * @param value Optional<String>
 	 */
 	public void setList(final Optional<String> value) {
 		getElement().setProperty("_list", value);
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Options the user can choose from, also supporting Optgroup.
 	 *
 	 * @return Optional<String>
 	 */
@@ -248,6 +248,24 @@ public class KolSelect extends Component {
 	}
 
 	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setOptions(final Optional<String> value) {
+		getElement().setProperty("_options", value);
+	}
+
+	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getOptions() {
+		return getElement().getProperty("_options", null);
+	}
+
+	/**
 	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 *
 	 * @param value Optional<String>
@@ -263,6 +281,24 @@ public class KolSelect extends Component {
 	 */
 	public Optional<String> getRequired() {
 		return getElement().getProperty("_required", null);
+	}
+
+	/**
+	 * Defines how many rows of options should be visible at the same time.
+	 *
+	 * @param value Optional<String>
+	 */
+	public void setRows(final Optional<String> value) {
+		getElement().setProperty("_rows", value);
+	}
+
+	/**
+	 * Defines how many rows of options should be visible at the same time.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getRows() {
+		return getElement().getProperty("_rows", null);
 	}
 
 	/**
