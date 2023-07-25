@@ -39,8 +39,8 @@ devDependencies:
     specifier: 7.8.1
     version: 7.8.1
   tslib:
-    specifier: 2.6.0
-    version: 2.6.0
+    specifier: 2.6.1
+    version: 2.6.1
   typescript:
     specifier: 5.1.6
     version: 5.1.6
@@ -79,7 +79,7 @@ packages:
       convert-source-map: 1.9.0
       reflect-metadata: 0.1.13
       semver: 7.5.2
-      tslib: 2.6.0
+      tslib: 2.6.1
       typescript: 5.1.6
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -96,7 +96,7 @@ packages:
         optional: true
     dependencies:
       '@angular/core': 16.1.6(rxjs@7.8.1)(zone.js@0.13.1)
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: true
 
   /@angular/core@16.1.6(rxjs@7.8.1)(zone.js@0.13.1):
@@ -107,7 +107,7 @@ packages:
       zone.js: ~0.13.0
     dependencies:
       rxjs: 7.8.1
-      tslib: 2.6.0
+      tslib: 2.6.1
       zone.js: 0.13.1
     dev: true
 
@@ -763,7 +763,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: true
 
   /semver@6.3.0:
@@ -814,8 +814,8 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /tslib@2.6.0:
-    resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
+  /tslib@2.6.1:
+    resolution: {integrity: sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==}
     dev: true
 
   /typescript@5.1.6:
@@ -882,5 +882,5 @@ packages:
   /zone.js@0.13.1:
     resolution: {integrity: sha512-+bIeDAFEBYuXRuU3qGQvzdPap+N1zjM4KkBAiiQuVVCrHrhjDuY6VkUhNa5+U27+9w0q3fbKiMCbpJ0XzMmSWA==}
     dependencies:
-      tslib: 2.6.0
+      tslib: 2.6.1
     dev: true
