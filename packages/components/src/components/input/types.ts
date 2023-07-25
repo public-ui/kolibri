@@ -11,6 +11,7 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
 import { PropTouched } from '../../types/props/touched';
+import { PropSuggestions } from '../../types/props/suggestions';
 
 export type InputRequiredProps = PropLabelWithExpertSlot;
 
@@ -32,6 +33,7 @@ type OptionalProps = {
 	PropHideLabel &
 	PropReadOnly &
 	PropRequired &
+	PropSuggestions &
 	PropTouched;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

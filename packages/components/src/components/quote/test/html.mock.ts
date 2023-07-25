@@ -29,12 +29,12 @@ export const getQuoteHtml = (props: KoliBriQuoteProps, slots: Slot = {}): string
 				</span>
 			</${state._variant === 'block' ? 'blockquote' : 'q'}>
 			${
-				typeof state._caption === 'string' && state._caption.length > 0
+				typeof state._label === 'string' && state._label.length > 0
 					? `<figcaption>
 							<cite>
 								${getLinkHtml({
 									_href: state._href,
-									_label: state._caption,
+									_label: state._label,
 									_target: '_blank',
 								})}
 							</cite>

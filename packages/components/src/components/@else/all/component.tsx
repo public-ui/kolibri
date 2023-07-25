@@ -48,7 +48,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-input-file _label="" _id="id"></kol-input-file>
 				<kol-input-number _label="" _id="id"></kol-input-number>
 				<kol-input-password _label="" _id="id"></kol-input-password>
-				<kol-input-radio _label="" _id="id" _list={[]}></kol-input-radio>
+				<kol-input-radio _label="" _id="id" _options={[]}></kol-input-radio>
 				<kol-input-range _label="" _id="id"></kol-input-range>
 				<kol-input-text _label="" _id="id"></kol-input-text>
 				<kol-link _href="" _label="Label"></kol-link>
@@ -58,7 +58,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-nav _ariaLabel="" _links={[]}></kol-nav>
 				<kol-pagination _on={{}} _page={1} _total={11}></kol-pagination>
 				<kol-progress _max={10} _value={5}></kol-progress>
-				<kol-select _label="" _id="id" _list={[]}></kol-select>
+				<kol-select _label="" _id="id" _options={[]}></kol-select>
 				<kol-skip-nav _ariaLabel="" _links={[]}></kol-skip-nav>
 				<kol-spin></kol-spin>
 				<kol-table _caption="" _data={[]} _headers={{}}></kol-table>

@@ -7,15 +7,25 @@ import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
+import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 type RequiredProps = InputRequiredProps;
-type OptionalProps = OptionalInputProps<number | Iso8601> & { placeholder: string; type: InputNumberType };
+type OptionalProps = {
+	placeholder: string;
+	type: InputNumberType;
+	/**
+	 * @deprecated Use _suggestions instead.
+	 */
+	list: SuggestionsPropType;
+} & OptionalInputProps<number | Iso8601> &
+	PropSuggestions;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	id: string;
-	list: string[];
+	suggestions: W3CInputValue[];
 	type: InputNumberType;
 } & PropLabelWithExpertSlot;
 

@@ -188,7 +188,7 @@
 									<div>Ich bin hier nur zu Spass.</div>
 								</kol-tabs>
 								<hr />
-								<kol-table _id="day_table" _caption="Tabelle" _data=""></kol-table>
+								<kol-table _id="day_table" _label="Tabelle" _data=""></kol-table>
 							</div>
 						</kol-card>
 					</div>
@@ -207,18 +207,18 @@
 								<kol-input-text _id="input-text" _value="Max" _hint="Ich bin ein Hinweis.">Vorname</kol-input-text>
 								<kol-input-text _id="input-text" _hide-label _label="Vorname" _type="search"></kol-input-text>
 								<kol-input-password _id="input-password" _name="input-password">Passwort</kol-input-password>
-								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _sync-value-by-selector="#select-native"
-									>Stimmung</kol-select
-								>
+								<kol-select _id="select" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _sync-value-by-selector="#select-native">
+									Stimmung
+								</kol-select>
 								<select id="select-native" multiple></select>
 								<kol-textarea _id="textarea">Textarea</kol-textarea>
-								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">
+								<kol-input-radio class="herr-frau" _id="input-radio" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">
 									Anrede
 								</kol-input-radio>
 								<kol-input-radio
 									class="herr-frau"
 									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
+									_options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
 									_orientation="horizontal"
 									_value="1"
 								>
@@ -699,31 +699,32 @@
 								<kol-input-checkbox _id="input-checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-checkbox _id="input-checkbox-switch" _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
-								<kol-input-color _id="input-color-list" _list="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
+								<kol-input-color _id="input-color-list" _suggestions="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
 								<kol-input-email _id="input-email" _error="Test einer Fehlermeldung">E-Mail-Adresse</kol-input-email>
-								<kol-input-email _id="input-email-list" _list="['test1@test.de','test2@test.de','test3@test.de']"
+								<kol-input-email _id="input-email-list" _suggestions="['test1@test.de','test2@test.de','test3@test.de']"
 									>E-Mail-Adresse (Auto-Vervollständigung)</kol-input-email
 								>
-								<kol-input-email _id="input-email-list-multiple" _list="['test1@test.de','test2@test.de','test3@test.de']" _multiple
+								<kol-input-email _id="input-email-list-multiple" _suggestions="['test1@test.de','test2@test.de','test3@test.de']" _multiple
 									>E-Mail-Adresse(n) (Auto-Vervollständigung, Mehrfachauswahl)</kol-input-email
 								>
 								<kol-input-file _id="input-file">Datei hochladen</kol-input-file>
 								<kol-input-file _id="input-file-multiple" _multiple>Datei(en) hochladen (Mehrfachauswahl)</kol-input-file>
 								<kol-input-number _id="input-number" _type="number">Zahleneingabe</kol-input-number>
 								<kol-input-date _id="input-date" _type="date">Datum</kol-input-date>
+								<kol-input-date _id="input-date" _type="date" _suggestions="['2023-01-01', '2023-01-02']">Datum mit Liste</kol-input-date>
 								<kol-input-date _id="input-date-datetime-local" _type="datetime-local">Local-Datetime (Standard)</kol-input-date>
 								<kol-input-date _id="input-date-month" _type="month">Monat</kol-input-date>
 								<kol-input-date _id="input-date-week" _type="week">Woche</kol-input-date>
 								<kol-input-date _id="input-date-time" _type="time">Zeit (Standard)</kol-input-date>
 								<kol-input-password _id="input-password">Passwort</kol-input-password>
-								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
+								<kol-input-radio class="herr-frau" _id="input-radio" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
 									>Anrede</kol-input-radio
 								>
 								<kol-input-radio
 									_orientation="horizontal"
 									class="herr-frau"
 									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
+									_options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
 									_value="1"
 									>Anrede</kol-input-radio
 								>
@@ -732,8 +733,8 @@
 								<kol-input-text _id="input-text-search" _type="search">Suchbegriff</kol-input-text>
 								<kol-input-text _id="input-text-url" _type="url">Url</kol-input-text>
 								<kol-input-text _id="input-text-tel" _type="tel">Telefonnummer</kol-input-text>
-								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung (nicht vorbelegt)</kol-select>
-								<kol-select _id="select-multiple" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _multiple
+								<kol-select _id="select" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung (nicht vorbelegt)</kol-select>
+								<kol-select _id="select-multiple" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _multiple
 									>Stimmung (Mehrfachauswahl, vorbelegt)</kol-select
 								>
 								<kol-textarea _id="textarea">Textarea</kol-textarea>
@@ -1050,7 +1051,9 @@
 								<kol-heading _label="" _level="3">InputColor</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-color">
 									<kol-input-color _id="color-select">Farbe</kol-input-color>
-									<kol-input-color _id="color-select-from-list" _list="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
+									<kol-input-color _id="color-select-from-list" _suggestions="['#000000','#ff0000','#0000ff','#00ff00']"
+										>Farbe (mit Vorschlägen)</kol-input-color
+									>
 								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
@@ -1058,10 +1061,10 @@
 								<kol-input-email _id="email-input" _error="Test einer Fehlermeldung">E-Mail-Adresse</kol-input-email>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-email">
 									<kol-input-email _id="email-input2">E-Mail-Adresse</kol-input-email>
-									<kol-input-email _id="email-input-from-list" _list="['test1@test.de','test2@test.de','test3@test.de']"
+									<kol-input-email _id="email-input-from-list" _suggestions="['test1@test.de','test2@test.de','test3@test.de']"
 										>E-Mail-Adresse (Auto-Vervollständigung)</kol-input-email
 									>
-									<kol-input-email _id="multiple-email-input-from-list" _list="['test1@test.de','test2@test.de','test3@test.de']" _multiple
+									<kol-input-email _id="multiple-email-input-from-list" _suggestions="['test1@test.de','test2@test.de','test3@test.de']" _multiple
 										>E-Mail-Adresse(n) (Auto-Vervollständigung, Mehrfachauswahl)</kol-input-email
 									>
 								</lean-input-adapter>
@@ -1079,6 +1082,7 @@
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
 									<kol-input-number _type="number" _min="2.2" _max="5.8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
+									<kol-input-number _suggestions="['1', '2', '42']">Zahleneingabe (mit Vorschlägen)</kol-input-number>
 								</lean-input-adapter>
 								<kol-heading _label="" _level="3">InputDate</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-date">
@@ -1086,6 +1090,9 @@
 								</lean-input-adapter>
 								<kol-input-date _type="date" _min="2022-10-28">Datum (min)</kol-input-date>
 								<kol-input-date _type="date" _max="2022-10-28">Datum (max)</kol-input-date>
+								<kol-input-date _id="input-date-with-suggestions" _type="date" _suggestions="['2023-01-01', '2023-01-02']">
+									Datum (mit Vorschlägen)
+								</kol-input-date>
 								<kol-input-date _type="datetime-local">Local-Datetime (Standard)</kol-input-date>
 								<kol-input-date _type="datetime-local" _step="1">Local-Datetime (mit Sekunden)</kol-input-date>
 								<kol-input-date _type="month">Monat</kol-input-date>
@@ -1104,29 +1111,29 @@
 										<kol-input-radio>Anrede</kol-input-radio>
 									</lean-input-adapter>
 									<kol-input-radio _required id="anrede-input">Anrede es wird automatisch die 1. Option ausgewählt</kol-input-radio>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '01'}, {'label': 'b', 'value': '02'}]" _value="02">Input-Radio</kol-input-radio>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '2.00'}, {'label': 'b', 'value': '2.10'}]" _value="2.10"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '01'}, {'label': 'b', 'value': '02'}]" _value="02">Input-Radio</kol-input-radio>
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '2.00'}, {'label': 'b', 'value': '2.10'}]" _value="2.10"
 										>Input-Radio</kol-input-radio
 									>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '02.0'}, {'label': 'b', 'value': '02.1'}]" _value="02.1"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '02.0'}, {'label': 'b', 'value': '02.1'}]" _value="02.1"
 										>Input-Radio</kol-input-radio
 									>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="2"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="2"
 										>Input-Radio (string vs number)</kol-input-radio
 									>
-									<kol-input-radio _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Input-Radio</kol-input-radio>
-									<kol-select _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _multiple _value="['2']">Select</kol-select>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="2">Input-Radio (2)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': true}]" _value="true">Input-Radio (true)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2.5}]" _value="2.5">Input-Radio (2.5)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="3">Input-Radio</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Input-Radio</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Input-Radio</kol-input-radio>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[2]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[3]">Select</kol-select>
+									<kol-input-radio _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Input-Radio</kol-input-radio>
+									<kol-select _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _multiple _value="['2']">Select</kol-select>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="2">Input-Radio (2)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': true}]" _value="true">Input-Radio (true)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2.5}]" _value="2.5">Input-Radio (2.5)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="3">Input-Radio</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Input-Radio</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Input-Radio</kol-input-radio>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[2]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[3]">Select</kol-select>
 								</div>
 							</div>
 							<div class="d-grid gap-2">
@@ -1135,7 +1142,7 @@
 									<kol-input-range _required _min="0" _max="50">Schieberegler</kol-input-range>
 									<kol-input-range _min="0" _max="50" _step="10">Schieberegler (mit Raster)</kol-input-range>
 									<kol-input-range
-										_list="[{'value':0,'label':'sehr schlecht'},{'value':10,'label':'schlecht'},{'value':20,'label':'mangelhaft'},{'value':30,'label':'gut'},{'value':40,'label':'naja'},{'value':50,'label':'sehr gut'}]"
+										_suggestions="[{'value':0,'label':'sehr schlecht'},{'value':10,'label':'schlecht'},{'value':20,'label':'mangelhaft'},{'value':30,'label':'gut'},{'value':40,'label':'naja'},{'value':50,'label':'sehr gut'}]"
 										_min="0"
 										_max="50"
 										_step="10"
@@ -1580,7 +1587,7 @@
 						<section>
 							<kol-heading _label="" _level="3">Long bockquote</kol-heading>
 							<kol-quote
-								_caption="RFC 1149"
+								_label="RFC 1149"
 								_href="https://datatracker.ietf.org/doc/html/rfc1149"
 								_quote="Avian carriers can provide high delay, low throughput, and low altitude
 								service. The connection topology is limited to a single point-to-point path
@@ -1592,7 +1599,7 @@
 								_variant="block"
 							>
 							</kol-quote>
-							<kol-quote _caption="RFC 1149" _href="https://datatracker.ietf.org/doc/html/rfc1149" _quote="" _variant="block">
+							<kol-quote _label="RFC 1149" _href="https://datatracker.ietf.org/doc/html/rfc1149" _quote="" _variant="block">
 								<span slot="expert"
 									>Avian carriers can provide high delay, low throughput, and low altitude service. The connection topology is limited to a single
 									point-to-point path for each carrier, used with standard carriers, but many carriers can be used without significant interference with each
@@ -1606,14 +1613,14 @@
 							<p>
 								According to Mozilla's website,
 								<kol-quote
-									_caption="RFC 1149"
+									_label="RFC 1149"
 									_href="https://www.mozilla.org/en-US/about/history/details/"
 									_quote="Firefox 1.0 was released in 2004 and became a big success."
 								/>
 							</p>
 							<p>
 								According to Mozilla's website,
-								<kol-quote _caption="RFC 1149" _href="https://www.mozilla.org/en-US/about/history/details/" _quote="">
+								<kol-quote _label="RFC 1149" _href="https://www.mozilla.org/en-US/about/history/details/" _quote="">
 									<span slot="expert">Firefox 1.0 was released in 2004 and became a big success.</span>
 								</kol-quote>
 							</p>
@@ -1729,16 +1736,16 @@
 							<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
 							<kol-heading _label="" _level="2">Table</kol-heading>
 						</div>
-						<kol-table _caption="default" id="table-1a"></kol-table>
-						<kol-table _caption="default" id="table-1b"></kol-table>
-						<kol-table _caption="default" id="table-1c"></kol-table>
-						<kol-table _caption="default" id="table-1d"></kol-table>
+						<kol-table _label="default" id="table-1a"></kol-table>
+						<kol-table _label="default" id="table-1b"></kol-table>
+						<kol-table _label="default" id="table-1c"></kol-table>
+						<kol-table _label="default" id="table-1d"></kol-table>
 						<kol-heading _level="3">2 Header, Daten Horizontal</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								_dual
 								_orientation="horizontal"
-								_caption="2 Header, Daten Horizontal"
+								_label="2 Header, Daten Horizontal"
 								_header-lines="[{'_headers': [{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}], '_orientation': 'horizontal', '_position': 0}, {'_headers': [{'label': '0800 - 0900'}, {'label': '0900 - 1000'}, {'label': '1000 - 1100'}, {'label': '1100 - 1200'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag']"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
@@ -1751,7 +1758,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Header, Daten Vertikal"
+								_label="2 Header, Daten Vertikal"
 								_header-lines="[{'_headers': [{'label': 'Montag'}, {'label': 'Dienstag'}, {'label': 'Mittwoch'}, {'label': 'Donnerstag'}, {'label': 'Freitag'}], '_orientation': 'horizontal', '_position': 0}, {'_headers': [{'label': '0800 - 0900', 'key': '8bis9'}, {'label': '0900 - 1000', 'key': '9bis10'}, {'label': '1000 - 1100', 'key': '10bis11'}, {'label': '1100 - 1200', 'key': '11bis12'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['8bis9', '9bis10', '10bis11', '11bis12']"
 								_data="[{'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Christian', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Angela', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Jenny'}]"
@@ -1764,7 +1771,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Horizontal Header mit Span, Daten Horizontal"
+								_label="2 Horizontal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers': [{'label': 'Q2', 'span': 3}, {'label': 'Q3', 'span': 3}], '_orientation': 'horizontal'}, {'_headers': [{'label': 'April', 'key': 'april'}, {'label': 'Mai', 'key': 'mai'}, {'label': 'Juni', 'key': 'juni'}, {'label': 'Juli', 'key': 'juli'}, {'label': 'August', 'key': 'august'}, {'label': 'September', 'key': 'september'}], '_orientation': 'horizontal', '_position': 1}, {'_headers': [{'label': 'Berlin'},{'label': 'Hamburg'},{'label': 'München'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['april', 'mai', 'juni', 'juli', 'august', 'september']"
 								_data="[{'april': '10', 'mai': '11', 'juni': '12', 'juli': '12', 'august': '16', 'september': '15'},{'april': '3', 'mai': '3', 'juni': '3', 'juli': '4', 'august': '4', 'september': '6'},{'april': '42', 'mai': '43', 'juni': '44', 'juli': '32', 'august': '45', 'september': '42'}]"
@@ -1777,7 +1784,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Vertikal Header mit Span, Daten Horizontal"
+								_label="2 Vertikal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers':[{'label':'Juni','key':'juni'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}],'_orientation':'horizontal'},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München'},{'label':'Nürnberg'},{'label':'Berlin'},{'label':'Bonn'},{'label':'Düsseldorf'},{'label':'Köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['juni','juli','august','september']"
 								_data="[{'juni':'100','juli':'101','august':'102','september':'105'},{'juni':'13','juli':'13','august':'12','september':'12'},{'juni':'87','juli':'88','august':'87','september':'90'},{'juni':'12','juli':'11','august':'12','september':'12'},{'juni':'42','juli':'43','august':'39','september':'42'},{'juni':'98','juli':'99','august':'102','september':'109'}]"
@@ -1790,7 +1797,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal"
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers':[{'label':'Q2','span':3},{'label':'Q3','span':3}],'_orientation':'horizontal'},{'_headers':[{'label':'April','key':'april'},{'label':'Mai','key':'mai'},{'label':'Juni','key':'juni'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}],'_orientation':'horizontal','_position':1},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0,'_label':'Bundesland'},{'_headers':[{'label':'München'},{'label':'Nürnberg'},{'label':'Berlin'},{'label':'Bonn'},{'label':'Düsseldorf'},{'label':'Köln'}],'_orientation':'vertical','_position':1,'_label':'Stadt'}]"
 								_order="['april','mai','juni','juli','august','september']"
 								_data="[{'april':'97','mai':'99','juni':'100','juli':'101','august':'102','september':'105'},{'april':'11','mai':'13','juni':'13','juli':'13','august':'12','september':'12'},{'april':'86','mai':'85','juni':'87','juli':'88','august':'87','september':'90'},{'april':'11','mai':'12','juni':'12','juli':'11','august':'12','september':'12'},{'april':'42','mai':'41','juni':'42','juli':'43','august':'39','september':'42'},{'april':'100','mai':'99','juni':'98','juli':'99','august':'102','september':'109'}]"
@@ -1803,7 +1810,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Horizontal Header mit Span, Daten Vertikal"
+								_label="2 Horizontal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers': [{'label': 'Q2', 'span': 3}, {'label': 'Q3', 'span': 3}], '_orientation': 'horizontal'}, {'_headers': [{'label': 'April'}, {'label': 'Mai'}, {'label': 'Juni'}, {'label': 'Juli'}, {'label': 'August'}, {'label': 'September'}], '_orientation': 'horizontal', '_position': 1}, {'_headers': [{'label': 'Berlin', 'key': 'berlin'},{'label': 'Hamburg', 'key': 'hamburg'},{'label': 'München', 'key': 'münchen'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['berlin', 'hamburg', 'münchen']"
 								_data="[{'berlin':'52','hamburg':'42','münchen':'93'},{'berlin':'53','hamburg':'41','münchen':'96'},{'berlin':'54','hamburg':'40','münchen':'98'},{'berlin':'66','hamburg':'42','münchen':'102'},{'berlin':'68','hamburg':'41','münchen':'100'},{'berlin':'69','hamburg':'42','münchen':'107'}]"
@@ -1816,7 +1823,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Vertikal Header mit Span, Daten Vertikal"
+								_label="2 Vertikal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers':[{'label':'Juni'},{'label':'Juli'},{'label':'August'},{'label':'September'}],'_orientation':'horizontal'},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Berlin','key':'berlin'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['münchen', 'nürnberg', 'berlin', 'bonn', 'düsseldorf', 'köln']"
 								_data="[{'münchen':'97','nürnberg':'21','berlin':'58','bonn':'14','düsseldorf':'42','köln':'99'},{'münchen':'99','nürnberg':'20','berlin':'57','bonn':'15','düsseldorf':'43','köln':'96'},{'münchen':'100','nürnberg':'22','berlin':'59','bonn':'15','düsseldorf':'42','köln':'98'},{'münchen':'102','nürnberg':'21','berlin':'62','bonn':'15','düsseldorf':'44','köln':'101'}]"
@@ -1829,7 +1836,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Vertikal"
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers':[{'label':'Q2','span':3},{'label':'Q3','span':3}],'_orientation':'horizontal'},{'_headers':[{'label':'April'},{'label':'Mai'},{'label':'Juni'},{'label':'Juli'},{'label':'August'},{'label':'September'}],'_orientation':'horizontal','_position':1},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Berlin','key':'berlin'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['münchen', 'nürnberg', 'berlin', 'bonn', 'düsseldorf', 'köln']"
 								_data="[{'münchen':'97','nürnberg':'21','berlin':'58','bonn':'14','düsseldorf':'42','köln':'99'},{'münchen':'99','nürnberg':'20','berlin':'57','bonn':'15','düsseldorf':'43','köln':'96'},{'münchen':'100','nürnberg':'22','berlin':'59','bonn':'15','düsseldorf':'42','köln':'98'},{'münchen':'102','nürnberg':'21','berlin':'62','bonn':'15','düsseldorf':'44','köln':'101'},{'münchen':'101','nürnberg':'22','berlin':'66','bonn':'16','düsseldorf':'45','köln':'102'},{'münchen':'106','nürnberg':'21','berlin':'65','bonn':'16','düsseldorf':'46','köln':'103'}]"
@@ -1842,7 +1849,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="1 Horizontal Header"
+								_label="1 Horizontal Header"
 								_header-lines="[{'_headers': [{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}], '_orientation': 'horizontal', '_position': 0}]"
 								_order="['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag']"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
@@ -1855,7 +1862,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="1 Vertikal Header"
+								_label="1 Vertikal Header"
 								_header-lines="[{'_headers': [{'label': '0800 - 0900', 'key': '8bis9'}, {'label': '0900 - 1000', 'key': '9bis10'}, {'label': '1000 - 1100', 'key': '10bis11'}, {'label': '1100 - 1200', 'key': '11bis12'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['8bis9', '9bis10', '10bis11', '11bis12']"
 								_data="[{'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Christian', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Angela', '10bis11': 'Naomi', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Jenny'}]"
@@ -1865,7 +1872,7 @@
 						<kol-heading _level="3">2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und Col-Span)</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und
                 Col-Span)"
 								_pagination="false"
 								_headers="{'horizontal':[[{'label':'','colSpan':2,'rowSpan':2,'asTd':true},{'label':'Q2','colSpan':2},{'label':'Juni','key':'juni','rowSpan':2},{'label':'Q3','colSpan':3}],[{'label':'April','key':'april'},{'label':'Mai','key':'mai'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}]],'vertical':[[{'label':'Bayern','rowSpan':2},{'label':'Berlin','key':'berlin','colSpan':2},{'label':'Nordrhein-Westfalen','rowSpan':3}],[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}]]}"
@@ -1874,14 +1881,14 @@
 							</kol-table>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-table id="table-2" _caption="2 Header, Daten Vertikal, Sort and Render"> </kol-table>
+							<kol-table id="table-2" _label="2 Header, Daten Vertikal, Sort and Render"> </kol-table>
 						</div>
 						<kol-heading _label="" _level="3">Tabelle + Filter</kol-heading>
 						<kol-input-text id="filter-input" _type="search">Filtern</kol-input-text>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="filter-table"
-								_caption="Tabelle + Filter"
+								_label="Tabelle + Filter"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1890,7 +1897,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-3a"
-								_caption="Nur Horizontal Header, Daten Horizontal, Pagination (A)"
+								_label="Nur Horizontal Header, Daten Horizontal, Pagination (A)"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_pagination="{'_boundaryCount': 0, '_page': 3, '_pageSize': 20, '_pageSizeOptions': [ 5, 10, 20, 50, 100 ]}"
 							>
@@ -1899,7 +1906,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-3b"
-								_caption="Nur Horizontal Header, Daten Horizontal, Pagination (B)"
+								_label="Nur Horizontal Header, Daten Horizontal, Pagination (B)"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1907,7 +1914,7 @@
 						<kol-heading _label="" _level="3">Nur Horizontal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Nur Horizontal Header, Pagination, leer"
+								_label="Nur Horizontal Header, Pagination, leer"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1918,7 +1925,7 @@
 						<kol-heading _label="" _level="3">Nur Vertikal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Nur Vertikal Header, Pagination, leer"
+								_label="Nur Vertikal Header, Pagination, leer"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1929,7 +1936,7 @@
 						<kol-heading _label="" _level="3">Horizontal und Vertikal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Horizontal und Vertikal Header, Pagination, leer"
+								_label="Horizontal und Vertikal Header, Pagination, leer"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]],'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1941,7 +1948,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-4"
-								_caption="Nur Vertikal Header, Daten Vertikal, Pagination"
+								_label="Nur Vertikal Header, Daten Vertikal, Pagination"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_pagination
@@ -1952,7 +1959,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-5"
-								_caption="Nur Horizontal Header, Daten Horizontal, ohne Pagination"
+								_label="Nur Horizontal Header, Daten Horizontal, ohne Pagination"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1961,7 +1968,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-6"
-								_caption="Nur Vertikal Header, Daten Vertikal, ohne Pagination"
+								_label="Nur Vertikal Header, Daten Vertikal, ohne Pagination"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 							>
@@ -1971,7 +1978,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								class="p-4"
-								_caption="Manuelle Datenbefüllung"
+								_label="Manuelle Datenbefüllung"
 								_headers="{'horizontal': [[{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}]]}"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
 								_pagination="{'_total': 100, '_pageSize': 5, '_pageSizeOptions': [3,5,8]}"

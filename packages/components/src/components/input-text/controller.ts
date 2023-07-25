@@ -4,15 +4,16 @@ import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
 import { validateHasCounter } from '../../types/props/has-counter';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
+import { watchValidator } from '../../utils/prop.validators';
 import { InputPasswordController } from '../input-password/controller';
 import { Props as InputTextProps, Watches as InputTextWatches } from './types';
+import { PropSuggestions, SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	id: string;
 	list: Stringified<string[]>;
-};
+} & PropSuggestions;
 type InputTextEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 type InputTextEmailWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
@@ -24,13 +25,19 @@ export class InputTextEmailController extends InputPasswordController implements
 		this.component = component;
 	}
 
-	public validateList(value?: Stringified<string[]>): void {
-		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
+	/**
+	 * @deprecated remains to satisfy `Watches` interface
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	public validateList(): void {}
+
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		validateSuggestions(this.component, value);
 	}
 
 	public componentWillLoad(): void {
 		super.componentWillLoad();
-		this.validateList(this.component._list);
+		this.validateSuggestions(this.component._suggestions || this.component._list);
 	}
 }
 
@@ -38,7 +45,6 @@ export class InputTextController extends InputTextEmailController implements Inp
 	protected readonly component: Generic.Element.Component & InputTextProps;
 
 	public hasError = false;
-	public hasList = false;
 
 	public constructor(component: Generic.Element.Component & InputTextProps, name: string, host?: HTMLElement) {
 		super(component, name, host);

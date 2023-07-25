@@ -14,6 +14,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputDateController } from './controller';
 import { ComponentApi, States } from './types';
+import { SuggestionsPropType } from '../../types/props/suggestions';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -47,7 +48,7 @@ export class KolInputDate implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
+		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 		const hasExpertSlot = this.state._label === false; // _label="" or _label
 
 		return (
@@ -63,7 +64,7 @@ export class KolInputDate implements ComponentApi {
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
-					_list={this.state._list}
+					_suggestions={this.state._suggestions}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
@@ -83,7 +84,7 @@ export class KolInputDate implements ComponentApi {
 							autoCorrect="off"
 							disabled={this.state._disabled}
 							id={this.state._id}
-							list={hasList ? `${this.state._id}-list` : undefined}
+							list={hasSuggestions ? `${this.state._id}-list` : undefined}
 							max={this.state._max}
 							min={this.state._min}
 							name={this.state._name}
@@ -167,6 +168,7 @@ export class KolInputDate implements ComponentApi {
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
+	 * @deprecated Use _suggestions instead.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
 
@@ -204,6 +206,11 @@ export class KolInputDate implements ComponentApi {
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
+
+	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -246,7 +253,7 @@ export class KolInputDate implements ComponentApi {
 		_hasValue: false,
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_suggestions: [],
 		_type: 'datetime-local',
 	};
 
@@ -306,7 +313,7 @@ export class KolInputDate implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<string[]>): void {
-		this.controller.validateList(value);
+		this.validateSuggestions(value);
 	}
 
 	@Watch('_max')
@@ -342,6 +349,11 @@ export class KolInputDate implements ComponentApi {
 	@Watch('_smartButton')
 	public validateSmartButton(value?: ButtonProps | string): void {
 		this.controller.validateSmartButton(value);
+	}
+
+	@Watch('_suggestions')
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		this.controller.validateSuggestions(value);
 	}
 
 	@Watch('_step')
