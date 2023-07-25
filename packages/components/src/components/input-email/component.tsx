@@ -13,6 +13,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
+import { SuggestionsPropType } from '../../types/props/suggestions';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -47,7 +48,7 @@ export class KolInputEmail implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
+		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 		const hasExpertSlot = this.state._label === false; // _label="" or _label
 
 		return (
@@ -67,7 +68,7 @@ export class KolInputEmail implements ComponentApi {
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
-					_list={this.state._list}
+					_suggestions={this.state._suggestions}
 					_maxLength={this.state._maxLength}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
@@ -90,7 +91,7 @@ export class KolInputEmail implements ComponentApi {
 							disabled={this.state._disabled}
 							multiple={this.state._multiple}
 							id={this.state._id}
-							list={hasList ? `${this.state._id}-list` : undefined}
+							list={hasSuggestions ? `${this.state._id}-list` : undefined}
 							maxlength={this.state._maxLength}
 							name={this.state._name}
 							pattern={this.state._pattern}
@@ -180,6 +181,7 @@ export class KolInputEmail implements ComponentApi {
 
 	/**
 	 * Gibt die Liste der Vorschlagswörter an.
+	 * @deprecated Use _suggestions.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
 
@@ -229,9 +231,14 @@ export class KolInputEmail implements ComponentApi {
 	@Prop() public _size?: number;
 
 	/**
-	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
+
+	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -265,7 +272,7 @@ export class KolInputEmail implements ComponentApi {
 		_hasValue: false,
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_suggestions: [],
 	};
 
 	public constructor() {
@@ -327,9 +334,12 @@ export class KolInputEmail implements ComponentApi {
 		this.controller.validateLabel(value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_list')
 	public validateList(value?: Stringified<string[]>): void {
-		this.controller.validateList(value);
+		this.validateSuggestions(value);
 	}
 
 	@Watch('_maxLength')
@@ -378,6 +388,11 @@ export class KolInputEmail implements ComponentApi {
 	@Watch('_size')
 	public validateSize(value?: number): void {
 		this.controller.validateSize(value);
+	}
+
+	@Watch('_suggestions')
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		this.controller.validateSuggestions(value);
 	}
 
 	@Watch('_smartButton')

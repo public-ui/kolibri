@@ -22,6 +22,7 @@ import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
+import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { StencilUnknown } from "./types/unknown";
@@ -62,6 +63,7 @@ export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
+export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { StencilUnknown } from "./types/unknown";
@@ -705,15 +707,11 @@ export namespace Components {
          */
         "_id": string;
         /**
-          * Gibt die Liste der Vorschlagswörter an.
-         */
-        "_list"?: Stringified<string[]>;
-        /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Gibt an, ob das Eingabefeld nur lesend ist.
          */
         "_readOnly"?: boolean;
         /**
@@ -729,9 +727,13 @@ export namespace Components {
          */
         "_slotName"?: string;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -872,8 +874,9 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions instead.
          */
-        "_list"?: Stringified<string[]>;
+        "_list"?: SuggestionsPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -886,6 +889,10 @@ export namespace Components {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -950,6 +957,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions instead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -984,6 +992,10 @@ export namespace Components {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1056,6 +1068,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1095,9 +1108,13 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1244,6 +1261,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions intead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1275,13 +1293,17 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1601,8 +1623,9 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
-        "_list"?: Stringified<Option<number>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den größtmöglichen Eingabewert an.
          */
@@ -1623,6 +1646,10 @@ export namespace Components {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1691,6 +1718,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1726,9 +1754,13 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -3809,15 +3841,11 @@ declare namespace LocalJSX {
          */
         "_id": string;
         /**
-          * Gibt die Liste der Vorschlagswörter an.
-         */
-        "_list"?: Stringified<string[]>;
-        /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Gibt an, ob das Eingabefeld nur lesend ist.
          */
         "_readOnly"?: boolean;
         /**
@@ -3833,9 +3861,13 @@ declare namespace LocalJSX {
          */
         "_slotName"?: string;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3976,8 +4008,9 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions instead.
          */
-        "_list"?: Stringified<string[]>;
+        "_list"?: SuggestionsPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3990,6 +4023,10 @@ declare namespace LocalJSX {
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4054,6 +4091,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions instead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4088,6 +4126,10 @@ declare namespace LocalJSX {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4160,6 +4202,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4199,9 +4242,13 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4348,6 +4395,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions intead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4379,13 +4427,17 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4705,8 +4757,9 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
-        "_list"?: Stringified<Option<number>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den größtmöglichen Eingabewert an.
          */
@@ -4727,6 +4780,10 @@ declare namespace LocalJSX {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4795,6 +4852,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4830,9 +4888,13 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */

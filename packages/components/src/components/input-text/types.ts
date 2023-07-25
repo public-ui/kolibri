@@ -7,6 +7,8 @@ import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
+import { PropSuggestions } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -20,6 +22,9 @@ type OptionalProps = {
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
 	id: string;
+	/**
+	 * @deprecated Use suggestions.
+	 */
 	list: Stringified<string[]>;
 	maxLength: number;
 	name: string;
@@ -38,14 +43,14 @@ type OptionalProps = {
 	touched: boolean;
 	type: InputTextType;
 	value: string;
-};
+} & PropSuggestions;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
 	id: string;
-	list: string[];
+	suggestions: W3CInputValue[];
 	type: InputTextType;
 } & PropLabelWithExpertSlot;
 type OptionalStates = {
