@@ -97,8 +97,13 @@ export namespace Components {
     interface KolAccordion {
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
+        /**
+          * Defines the button label
+         */
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3181,8 +3186,13 @@ declare namespace LocalJSX {
     interface KolAccordion {
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
+        /**
+          * Defines the button label
+         */
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */

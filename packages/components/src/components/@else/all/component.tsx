@@ -28,7 +28,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 					<kol-input-text _label="" _id="id"></kol-input-text>
 				</kol-input-adapter-leanup>
 				<kol-abbr _title=""></kol-abbr>
-				<kol-accordion _heading=""></kol-accordion>
+				<kol-accordion _label=""></kol-accordion>
 				<kol-alert></kol-alert>
 				<kol-badge _label="Label"></kol-badge>
 				<kol-breadcrumb _ariaLabel="" _links={[]}></kol-breadcrumb>
