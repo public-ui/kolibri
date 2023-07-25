@@ -65,6 +65,7 @@ export class KolInputCheckbox implements ComponentApi {
 						/>
 						<input
 							ref={this.catchRef}
+							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
@@ -75,7 +76,6 @@ export class KolInputCheckbox implements ComponentApi {
 							name={this.state._name}
 							required={this.state._required === true}
 							tabIndex={this.state._tabIndex}
-							title=""
 							type="checkbox"
 							value={typeof this.state._value === 'string' ? this.state._value : ''}
 							{...this.controller.onFacade}

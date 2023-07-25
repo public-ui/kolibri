@@ -11,6 +11,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
+import { RowsPropType } from '../../types/props/rows';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -97,7 +98,7 @@ export class KolSelect implements ComponentApi {
 							multiple={this.state._multiple}
 							name={this.state._name}
 							required={this.state._required}
-							size={this.state._size}
+							size={this.state._rows}
 							spellcheck="false"
 							style={{
 								height: this.state._height,
@@ -175,7 +176,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
 	 *
-	 * @deprecated Use _size instead.
+	 * @deprecated Use _rows instead.
 	 */
 	@Prop() public _height?: string;
 
@@ -228,6 +229,11 @@ export class KolSelect implements ComponentApi {
 	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 */
 	@Prop() public _required?: boolean;
+
+	/**
+	 * Defines how many rows of options should be visible at the same time.
+	 */
+	@Prop() public _rows?: number;
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
@@ -349,9 +355,14 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateRequired(value);
 	}
 
+	@Watch('_rows')
+	public validateRows(value?: RowsPropType): void {
+		this.controller.validateRows(value);
+	}
+
 	@Watch('_size')
 	public validateSize(value?: number): void {
-		this.controller.validateSize(value);
+		this.controller.validateRows(value);
 	}
 
 	@Watch('_syncValueBySelector')

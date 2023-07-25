@@ -268,7 +268,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
 		_icon: {},
-		_label: false,
+		_label: false, // TODO: version 1
+		// _label: '', // TODO: version 2
 	};
 
 	@Watch('_ariaControls')

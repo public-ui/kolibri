@@ -84,7 +84,7 @@ Verwenden Sie das Attribut **`_summary`**, um den Text zu definieren, der als Ü
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _label="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

@@ -7,7 +7,9 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 ### Code
 
 ```html
-<kol-input-checkbox _id="checkbox">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _id="checkbox"
+	>Ich stimme der <kol-link _href="#" _label="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox
+>
 <kol-input-checkbox _id="switch" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
 <kol-input-checkbox _checked _id="button" _variant="button">Schalter aktiviert</kol-input-checkbox>
 <kol-input-checkbox _id="button" _variant="button">Schalter deaktiviert</kol-input-checkbox>
@@ -15,7 +17,7 @@ Der Input-Typ **_Checkbox_** generiert eine rechteckige Box, die durch Anklicken
 
 ### Beispiel
 
-<kol-input-checkbox _id="checkbox">Ich stimme der <kol-link _href="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox>
+<kol-input-checkbox _id="checkbox">Ich stimme der <kol-link _href="#" _label="#" _label="Datenschutzerklärung" _target="document"></kol-link> zu.</kol-input-checkbox>
 <kol-input-checkbox _id="switch" _variant="switch">Geburtsdatum anzeigen?</kol-input-checkbox>
 <kol-input-checkbox _checked _id="button" _variant="button">Schalter aktiviert</kol-input-checkbox>
 <kol-input-checkbox _id="button" _variant="button">Schalter deaktiviert</kol-input-checkbox>
@@ -38,7 +40,7 @@ Mittels des Attributs **`_variant`** können folgende Varianten ausgewählt werd
 
 ## Barrierefreiheit
 
-Vermeiden Sie die Verwendung von vielen Checkboxen auf einer Seite, da Ihre Inhalte hierdurch schnell unübersichtlich und lang werden. Prüfen Sie in solchen Anwendungsfällen die Verwendung einer <kol-link _href="/docs/components/select">Select-Box mit **`_multiple`**</kol-link>.
+Vermeiden Sie die Verwendung von vielen Checkboxen auf einer Seite, da Ihre Inhalte hierdurch schnell unübersichtlich und lang werden. Prüfen Sie in solchen Anwendungsfällen die Verwendung einer <kol-link _href="/docs/components/select" _label="/docs/components/select">Select-Box mit **`_multiple`**</kol-link>.
 
 Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenreadern vorgelesen wird und so eine eindeutige Identifikation des Eingabefeldes ermöglicht.
 
@@ -51,8 +53,8 @@ Achten Sie darauf, jeder Checkbox ein Label zuzuweisen, da dieses von Screenread
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#checkbox" _label="https://www.w3.org/TR/wai-aria-practices/#checkbox" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

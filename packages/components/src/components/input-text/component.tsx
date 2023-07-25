@@ -98,6 +98,7 @@ export class KolInputText implements ComponentApi {
 					<div slot="input">
 						<input
 							ref={this.catchRef}
+							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
@@ -115,8 +116,6 @@ export class KolInputText implements ComponentApi {
 							required={this.state._required}
 							size={this.state._size}
 							spellcheck="false"
-							title=""
-							// title={this.state._title}
 							type={this.state._type}
 							value={this.state._value as string}
 							{...this.controller.onFacade}
@@ -245,7 +244,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
 	 * Selector for synchronizing the value with another input element.

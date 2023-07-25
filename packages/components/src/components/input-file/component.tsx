@@ -168,7 +168,7 @@ export class KolInputFile implements ComponentApi {
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
 	 * Selector for synchronizing the value with another input element.

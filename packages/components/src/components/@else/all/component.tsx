@@ -7,7 +7,7 @@ type RequiredProps = unknown;
 type OptionalProps = unknown;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps & OptionalProps;
+type RequiredStates = RequiredProps & OptionalProps; // Linter: "Type 'RequiredProps' does not satisfy the constraint 'object'."
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 

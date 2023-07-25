@@ -98,7 +98,6 @@ export class KolInputPassword implements ComponentApi {
 							required={this.state._required}
 							size={this.state._size}
 							spellcheck="false"
-							// title={this.state._title}
 							type="password"
 							value={this.state._value as string}
 							{...this.controller.onFacade}
@@ -221,7 +220,7 @@ export class KolInputPassword implements ComponentApi {
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
 	 * Selector for synchronizing the value with another input element.

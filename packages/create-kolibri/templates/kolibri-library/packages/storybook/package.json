@@ -45,9 +45,9 @@
 		"@leanup/kolibri-components":"1.0.5",
 		"@leanup/kolibri-react":"1.0.5",
 		"@public-oss/kolibri-themes":"0.0.3",
-		"@public-ui/components":"1.6.0-rc.15",
-		"@public-ui/react":"1.6.0-rc.15",
-		"@public-ui/themes":"1.6.0-rc.15",
+		"@public-ui/components":"1.6.0-rc.17",
+		"@public-ui/react":"1.6.0-rc.17",
+		"@public-ui/themes":"1.6.0-rc.17",
 		"@storybook/addon-a11y":"6.5.16",
 		"@storybook/addon-actions":"6.5.16",
 		"@storybook/addon-backgrounds":"6.5.16",
@@ -93,7 +93,7 @@
 		"storybook":"6.5.16",
 		"storybook-addon-themes":"6.1.0",
 		"typescript":"4.9.5",
-		"webpack":"5.75.0",
+		"webpack": "5.88.2",
 		"workbox-build":"6.5.4"
 	},
 	"files": [

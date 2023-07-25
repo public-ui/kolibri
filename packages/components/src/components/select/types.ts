@@ -6,6 +6,7 @@ import { InputTypeOnDefault, SelectOption } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
+import { PropRows } from '../../types/props/rows';
 
 type RequiredProps = InputRequiredProps & {
 	list: Stringified<SelectOption<W3CInputValue>[]>;
@@ -16,7 +17,7 @@ type OptionalProps = {
 	disabled: boolean;
 	error: string;
 	/**
-	 * @deprecated Use _size instead.
+	 * @deprecated Use _rows instead.
 	 */
 	height: string;
 	hideLabel: boolean;
@@ -26,12 +27,15 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
+	/**
+	 * @deprecated Use _rows instead.
+	 */
 	size: number;
 	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: Stringified<W3CInputValue[]>;
-};
+} & PropRows;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -47,7 +51,7 @@ type OptionalStates = {
 	disabled: boolean;
 	error: string;
 	/**
-	 * @deprecated Use _size instead.
+	 * @deprecated Use _rows instead.
 	 */
 	height: string;
 	hideLabel: boolean;
@@ -57,10 +61,13 @@ type OptionalStates = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
+	/**
+	 * @deprecated Use _rows instead.
+	 */
 	size: number;
 	tabIndex: number;
 	touched: boolean;
-};
+} & PropRows;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
