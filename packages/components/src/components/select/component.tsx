@@ -12,6 +12,7 @@ import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
 import { RowsPropType } from '../../types/props/rows';
+import { OptionsWithOptgroupPropType } from '../../types/props/options';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -110,7 +111,7 @@ export class KolSelect implements ComponentApi {
 							}}
 							onChange={this.onChange}
 						>
-							{this.state._list.map((option, index) => {
+							{this.state._options.map((option, index) => {
 								/**
 								 * Damit der Value einer Option ein beliebigen Typ haben kann
 								 * muss man auf HTML-Ebene den Value auf einen String-Wert
@@ -206,9 +207,10 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Options the user can choose from, also supporting Optgroup.
+	 * @deprecated use _options
 	 */
-	@Prop() public _list!: Stringified<SelectOption<W3CInputValue>[]>;
+	@Prop() public _list?: Stringified<SelectOption<W3CInputValue>[]>;
 
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
@@ -224,6 +226,11 @@ export class KolSelect implements ComponentApi {
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
 	@Prop() public _on?: InputTypeOnDefault;
+
+	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 */
+	@Prop() public _options?: OptionsWithOptgroupPropType;
 
 	/**
 	 * Macht das Eingabeelementzu einem Pflichtfeld.
@@ -271,7 +278,7 @@ export class KolSelect implements ComponentApi {
 		_height: '',
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_options: [],
 		_multiple: false,
 		_value: [],
 	};
@@ -332,7 +339,7 @@ export class KolSelect implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
-		this.controller.validateList(value);
+		this.controller.validateOptions(value);
 	}
 
 	@Watch('_multiple')
@@ -348,6 +355,11 @@ export class KolSelect implements ComponentApi {
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
+	}
+
+	@Watch('_options')
+	public validateOptions(value?: OptionsWithOptgroupPropType): void {
+		this.controller.validateOptions(value);
 	}
 
 	@Watch('_required')

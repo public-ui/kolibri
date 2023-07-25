@@ -7,10 +7,9 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
 import { PropRows } from '../../types/props/rows';
+import { PropOptionsWithOptgroup } from '../../types/props/options';
 
-type RequiredProps = InputRequiredProps & {
-	list: Stringified<SelectOption<W3CInputValue>[]>;
-};
+type RequiredProps = InputRequiredProps;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
@@ -23,6 +22,10 @@ type OptionalProps = {
 	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
+	/**
+	 * @deprecated Use options.
+	 */
+	list: Stringified<SelectOption<W3CInputValue>[]>;
 	multiple: boolean;
 	name: string;
 	on: InputTypeOnDefault;
@@ -35,13 +38,14 @@ type OptionalProps = {
 	tabIndex: number;
 	touched: boolean;
 	value: Stringified<W3CInputValue[]>;
-} & PropRows;
+} & PropRows &
+	PropOptionsWithOptgroup; // PropOptionsWithOptgroup becomes required with 2.0
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	hasValue: boolean;
 	id: string;
-	list: SelectOption<W3CInputValue>[];
+	options: SelectOption<W3CInputValue>[];
 	multiple: boolean;
 	value: W3CInputValue[];
 } & PropLabelWithExpertSlot;
