@@ -2239,12 +2239,17 @@ export namespace Components {
     interface KolQuote {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
         "_caption"?: string;
         /**
           * Gibt den Link zur Quelle des Zitates an.
          */
         "_href": string;
+        /**
+          * Defines the label of the citation link.
+         */
+        "_label"?: string;
         /**
           * Setzt den Text, also das Zitat selbst.
          */
@@ -5323,12 +5328,17 @@ declare namespace LocalJSX {
     interface KolQuote {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
         "_caption"?: string;
         /**
           * Gibt den Link zur Quelle des Zitates an.
          */
         "_href": string;
+        /**
+          * Defines the label of the citation link.
+         */
+        "_label"?: string;
         /**
           * Setzt den Text, also das Zitat selbst.
          */

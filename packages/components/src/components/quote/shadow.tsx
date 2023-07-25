@@ -2,6 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 
 @Component({
 	tag: 'kol-quote',
@@ -13,8 +14,14 @@ import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './type
 export class KolQuote implements KoliBriQuoteApi {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;
+
+	/**
+	 * Defines the label of the citation link.
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt den Link zur Quelle des Zitates an.
@@ -39,7 +46,12 @@ export class KolQuote implements KoliBriQuoteApi {
 
 	@Watch('_caption')
 	public validateCaption(value?: string): void {
-		watchString(this, '_caption', value);
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_href')
@@ -62,7 +74,7 @@ export class KolQuote implements KoliBriQuoteApi {
 	}
 
 	public componentWillLoad(): void {
-		this.validateCaption(this._caption);
+		this.validateLabel(this._label || this._caption);
 		this.validateHref(this._href);
 		this.validateQuote(this._quote);
 		this.validateVariant(this._variant);
@@ -92,10 +104,10 @@ export class KolQuote implements KoliBriQuoteApi {
 							</span>
 						</q>
 					)}
-					{typeof this.state._caption === 'string' && this.state._caption.length > 0 && (
+					{typeof this.state._label === 'string' && this.state._label.length > 0 && (
 						<figcaption>
 							<cite>
-								<kol-link _href={this.state._href} _label={this.state._caption} _target="_blank" />
+								<kol-link _href={this.state._href} _label={this.state._label} _target="_blank" />
 							</cite>
 						</figcaption>
 					)}
