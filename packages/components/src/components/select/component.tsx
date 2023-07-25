@@ -339,7 +339,7 @@ export class KolSelect implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
-		this.controller.validateOptions(value);
+		this.validateOptions(value);
 	}
 
 	@Watch('_multiple')

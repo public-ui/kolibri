@@ -283,7 +283,7 @@ export class KolInputRadio implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
-		this.controller.validateOptions(value);
+		this.validateOptions(value);
 	}
 
 	@Watch('_name')

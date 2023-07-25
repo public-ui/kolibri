@@ -76,8 +76,9 @@ export class SelectController extends InputIconController implements Watches {
 	/**
 	 * @deprecated remains to satisfy `Watches` interface
 	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateList(): void {}
+	public validateList(value?: OptionsWithOptgroupPropType): void {
+		this.validateOptions(value);
+	}
 
 	public validateOptions(value?: OptionsWithOptgroupPropType): void {
 		validateOptionsWithOptgroup(this.component, value, {

@@ -100,8 +100,9 @@ export class InputRadioController extends InputCheckboxRadioController implement
 	/**
 	 * @deprecated remains to satisfy `Watches` interface
 	 */
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	public validateList(): void {}
+	public validateList(value?: OptionsPropType): void {
+		this.validateOptions(value);
+	}
 
 	public validateOptions(value?: OptionsPropType): void {
 		validateOptions(this.component, value, {
