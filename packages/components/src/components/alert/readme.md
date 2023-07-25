@@ -20,7 +20,7 @@ Die **Alert**-Komponente gibt ein optisches Feedback an die Nutzer:innen. Sie be
 
 ### Überschrift
 
-Die **Überschrift** der Alert-Komponente wird über das Attribut `_heading` bestimmt.
+Die **Überschrift** der Alert-Komponente wird über das Attribut `_label` bestimmt.
 
 ### Überschriftenebene
 
