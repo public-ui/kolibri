@@ -2,6 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriPaginationProps } from '../pagination/types';
+import { PropLabel } from '../../types/props/label';
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
@@ -55,24 +56,26 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 >;
 
 type RequiredProps = {
-	caption: string;
 	data: Stringified<KoliBriTableDataType[]>;
 	headers: Stringified<KoliBriTableHeaders>;
 };
 type OptionalProps = {
+	/**
+	 * @deprecated use label
+	 */
+	caption: string;
 	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-};
+} & PropLabel;
 
 type RequiredStates = {
-	caption: string;
 	data: KoliBriTableDataType[];
 	dataFoot: KoliBriTableDataType[];
 	headers: KoliBriTableHeaders;
 	pagination: KoliBriTablePaginationStates;
 	sortedData: KoliBriTableDataType[];
-};
+} & PropLabel;
 type OptionalStates = {
 	minWidth: string;
 	sortDirection: KoliBriSortDirection;
