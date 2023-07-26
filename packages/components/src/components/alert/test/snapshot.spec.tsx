@@ -18,7 +18,7 @@ executeTests<Props>(
 	},
 	{
 		_alert: [false, true],
-		_heading: ['Überschrift'],
+		_label: ['Überschrift'],
 		_level: [1, 2, 3, 4, 5, 6],
 		_type: ['default', 'error', 'info', 'success', 'warning'],
 	},

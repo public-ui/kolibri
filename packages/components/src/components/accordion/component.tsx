@@ -6,10 +6,11 @@ import { HeadingLevel } from '../../types/heading-level';
 import { validateOpen } from '../../types/props/open';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { setState, watchString } from '../../utils/prop.validators';
+import { setState } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriAccordionCallbacks, States } from './types';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -98,7 +99,7 @@ export class KolAccordion implements API {
 							_ariaControls={this.nonce}
 							_ariaExpanded={this.state._open}
 							_icon={this.state._open ? 'codicon codicon-remove' : 'codicon codicon-add'}
-							_label={this.state._heading}
+							_label={this.state._label}
 							_on={{ onClick: this.onClick }}
 						></kol-button-wc>
 					</kol-heading-wc>
@@ -118,8 +119,14 @@ export class KolAccordion implements API {
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
+	 * @deprecated Use _label.
 	 */
-	@Prop() public _heading!: string;
+	@Prop() public _heading?: string;
+
+	/**
+	 * Defines the button label
+	 */
+	@Prop() public _label?: string;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -137,15 +144,18 @@ export class KolAccordion implements API {
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	@State() public state: States = {
-		_heading: '…', // ⚠ required
+		_label: '…', // ⚠ required
 		_level: 1,
 	};
 
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value, {
-			required: true,
-		});
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_level')
@@ -166,7 +176,7 @@ export class KolAccordion implements API {
 	}
 
 	public componentWillLoad(): void {
-		this.validateHeading(this._heading);
+		this.validateLabel(this._label || this._heading);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateOpen(this._open);

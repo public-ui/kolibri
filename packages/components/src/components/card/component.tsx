@@ -2,9 +2,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { validateHasFooter } from '../../types/props/has-footer';
-import { watchString } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriCardAPI, KoliBriCardStates } from './types';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -25,7 +25,7 @@ export class KolCard implements KoliBriCardAPI {
 			<Host>
 				<div class="card">
 					<div class="header">
-						<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+						<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 						<slot name="header"></slot>
 					</div>
 					<div class="content">
@@ -49,8 +49,9 @@ export class KolCard implements KoliBriCardAPI {
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
+	 * @deprecated Use _label.
 	 */
-	@Prop() public _heading!: string;
+	@Prop() public _heading?: string;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
@@ -59,13 +60,15 @@ export class KolCard implements KoliBriCardAPI {
 	 */
 	@Prop() public _headline?: string;
 
+	@Prop() public _label?: LabelPropType;
+
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
 	@State() public state: KoliBriCardStates = {
-		_heading: '…', // '⚠'
+		_label: '…', // '⚠'
 	};
 
 	@Watch('_hasFooter')
@@ -75,9 +78,7 @@ export class KolCard implements KoliBriCardAPI {
 
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value, {
-			required: true,
-		});
+		this.validateLabel(value);
 	}
 
 	/**
@@ -86,7 +87,12 @@ export class KolCard implements KoliBriCardAPI {
 	 */
 	@Watch('_headline')
 	public validateHeadline(value?: string): void {
-		this.validateHeading(value);
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_level')
@@ -96,7 +102,7 @@ export class KolCard implements KoliBriCardAPI {
 
 	public componentWillLoad(): void {
 		this.validateHasFooter(this._hasFooter);
-		this.validateHeading(this._heading || this._headline);
+		this.validateLabel(this._label || this._heading || this._headline);
 		this.validateLevel(this._level);
 	}
 }

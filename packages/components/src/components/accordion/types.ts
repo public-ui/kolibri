@@ -4,20 +4,24 @@ import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
 import { PropOpen } from '../../types/props/open';
+import { PropLabel } from '../../types/props/label';
 
 export type KoliBriAccordionCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;
 };
 
-type RequiredProps = {
-	heading: string;
-};
+type RequiredProps = unknown;
 type OptionalProps = {
+	/**
+	 * @deprecated Use label.
+	 */
+	heading: string;
 	level: HeadingLevel;
 	on: KoliBriAccordionCallbacks;
-} & PropOpen;
+} & PropOpen &
+	PropLabel; // PropLabel will become required in v2.
 
-type RequiredStates = RequiredProps;
+type RequiredStates = RequiredProps & PropLabel;
 type OptionalStates = OptionalProps;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
