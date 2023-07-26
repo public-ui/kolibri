@@ -116,7 +116,15 @@ export class KolNav implements KoliBriNavAPI {
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
 		const expanded = hasChildren && active;
 		return (
-			<li class={{ active, expanded, 'has-children': hasChildren }} key={index}>
+			<li
+				class={{
+					active,
+					expanded,
+					'has-children': hasChildren,
+					selected: expanded, // TODO: remove in v2
+				}}
+				key={index}
+			>
 				{this.entry(collapsible, compact, hasChildren, link, active)}
 				{expanded ? <this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} /> : ''}
 			</li>
