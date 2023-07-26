@@ -543,7 +543,7 @@ export namespace Components {
         /**
           * Defines the summary label.
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
@@ -3712,7 +3712,7 @@ declare namespace LocalJSX {
         /**
           * Defines the summary label.
          */
-        "_label"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
