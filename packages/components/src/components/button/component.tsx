@@ -125,6 +125,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 

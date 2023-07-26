@@ -78,8 +78,13 @@ export class KolNav implements KoliBriNavAPI {
 
 	private entry(collapsible: boolean, compact: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
 		return (
-			<div class="entry">
-				<kol-button-link-text-switch _has-children={hasChildren} _hide-label={compact} _link={link} _selected={selected} />
+			<div class={{ entry: true, selected: selected }}>
+				<kol-button-link-text-switch
+					_link={{
+						...link,
+						_hideLabel: compact,
+					}}
+				/>
 				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, selected) : ''}
 			</div>
 		);

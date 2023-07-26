@@ -1,13 +1,16 @@
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
+import { Subject } from 'rxjs';
 import { hex, score } from 'wcag-contrast';
 
 import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
 
 import { Stringified } from '../types/common';
+import { AriaCurrent } from '../types/props/aria-current';
+import { PropHref } from '../types/props/href';
 import { devHint } from './a11y.tipps';
-import { getDocument, getExperimentalMode, getWindow, Log } from './dev.utils';
+import { Log, getDocument, getExperimentalMode, getWindow } from './dev.utils';
 
 // https://regex101.com/r/lSYLO9/1
 /**
@@ -510,7 +513,13 @@ export class KoliBriUtils {
 	}
 }
 
+export type AriaCurrentEventType = {
+	ariaCurrent: AriaCurrent;
+} & PropHref;
+export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
+
 export class KoliBriDevHelper {
+	public static readonly ariaCurrentSubject = ariaCurrentSubject;
 	public static readonly patchTheme = patchTheme;
 	public static readonly patchThemeTag = patchThemeTag;
 	public static readonly querySelector = koliBriQuerySelector;

@@ -6,7 +6,8 @@ import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { Align } from './props/align';
-import { PropAriaCurrent } from './props/aria-current';
+import { PropAriaControls } from './props/aria-controls';
+import { PropAriaCurrent, PropListenAriaCurrent } from './props/aria-current';
 import { PropAriaExpanded } from './props/aria-expanded';
 import { PropAriaLabel } from './props/aria-label';
 import { PropAriaSelected } from './props/aria-selected';
@@ -25,7 +26,22 @@ export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
  * https://mui.com/material-ui/react-button/#text-button
  */
 type OptionalButtonAndLinkProps = {
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
 	ariaControls: string;
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
+	ariaExpanded: boolean;
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
+	ariaSelected: boolean;
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
+	disabled: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
@@ -39,17 +55,29 @@ type OptionalButtonAndLinkProps = {
 	tabIndex: number;
 	tooltipAlign: Align;
 } & PropAriaCurrent &
-	PropAriaExpanded &
 	PropAriaLabel &
-	PropAriaSelected &
-	PropDisabled &
 	PropHideLabel;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
 };
 type OptionalButtonAndLinkStates = {
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
 	ariaControls: string;
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
+	ariaExpanded: boolean;
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
+	ariaSelected: boolean;
+	/**
+	 * @deprecated Will be removed for all link components.
+	 */
+	disabled: boolean;
 	/**
 	 * @deprecated
 	 */
@@ -62,9 +90,6 @@ type OptionalButtonAndLinkStates = {
 	tabIndex: number;
 	tooltipAlign: Align;
 } & PropAriaCurrent &
-	PropAriaExpanded &
-	PropAriaSelected &
-	PropDisabled &
 	PropHideLabel;
 
 /**
@@ -125,11 +150,22 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
  * API Button
  */
 export type RequiredButtonProps = RequiredButtonLinkProps & PropLabelWithExpertSlot;
-export type OptionalButtonProps = OptionalButtonLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
+export type OptionalButtonProps = OptionalButtonLinkProps &
+	PropAriaControls &
+	PropAriaExpanded &
+	PropAriaSelected &
+	PropDisabled &
+	KoliBriButtonVariantPropState &
+	KoliBriButtonCustomClassPropState;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState & PropLabelWithExpertSlot;
-export type OptionalButtonStates = OptionalButtonLinkStates & KoliBriButtonCustomClassPropState;
+export type OptionalButtonStates = OptionalButtonLinkStates &
+	PropAriaControls &
+	PropAriaExpanded &
+	PropAriaSelected &
+	PropDisabled &
+	KoliBriButtonCustomClassPropState;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /* LINK */
@@ -152,10 +188,6 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 export type RequiredLinkProps = PropHref;
 export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
-	 * @deprecated A link could never be disabled. Use a button instead.
-	 */
-	disabled: boolean;
-	/**
 	 * @deprecated We use the on-click event only on buttons styled as link.
 	 */
 	on: LinkOnCallbacks;
@@ -163,9 +195,6 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	selector: string;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
 	target: LinkTarget;
 	targetDescription: string;
 	/**
@@ -174,12 +203,12 @@ export type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	useCase: LinkUseCase;
 } & PropDownload &
 	PropLabelWithExpertSlot &
+	PropListenAriaCurrent &
 	PropStealth;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
 type RequiredLinkStates = RequiredButtonAndLinkStates & PropHref & PropLabelWithExpertSlot;
 type OptionalLinkStates = OptionalButtonAndLinkStates & {
-	ariaSelected: boolean;
 	/**
 	 * @deprecated We use the on-click event only on buttons styled as link.
 	 */
@@ -188,17 +217,14 @@ type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	selector: string;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
 	target: LinkTarget;
 	targetDescription: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	useCase: LinkUseCase;
-} & PropAriaSelected &
-	PropDownload &
+} & PropDownload &
+	PropListenAriaCurrent &
 	PropStealth;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates>;

@@ -128,6 +128,8 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
@@ -138,7 +140,8 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated use _label
+	 *
+	 * @deprecated use _label instead
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
