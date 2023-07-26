@@ -35,6 +35,7 @@ import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
+import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { KoliBriProgressVariantType } from "./types/progress";
@@ -76,6 +77,7 @@ export { InputTextType } from "./types/input/control/text";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
+export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { KoliBriProgressVariantType } from "./types/progress";
@@ -2196,6 +2198,7 @@ export namespace Components {
         "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
+          * @deprecated Use _hide-label
          */
         "_compact"?: boolean;
         /**
@@ -2203,6 +2206,10 @@ export namespace Components {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Defines if navigation labels should be hidden
+         */
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5365,6 +5372,7 @@ declare namespace LocalJSX {
         "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
+          * @deprecated Use _hide-label
          */
         "_compact"?: boolean;
         /**
@@ -5372,6 +5380,10 @@ declare namespace LocalJSX {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Defines if navigation labels should be hidden
+         */
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */

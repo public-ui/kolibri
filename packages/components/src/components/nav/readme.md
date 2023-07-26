@@ -61,7 +61,7 @@ Um Untermenüpunkte zu erzeugen, erweitern Sie die JSON-Struktur um das zusätzl
 
 ### Kompakte Navigationsleiste anzeigen
 
-Um die Navigationsleiste in der kompakten Darstellung auszugeben, setzen Sie das Attribut **`_compact`**.
+Um die Navigationsleiste in der kompakten Darstellung auszugeben, setzen Sie das Attribut **`_hide-label`**.
 
 ### Umschalter normale/kompakte Darstellung
 
