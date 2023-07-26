@@ -6,7 +6,7 @@ import { koliBriCardProps } from '../types';
 export const getCardHtml = (props: koliBriCardProps): string => {
 	props = mixMembers(
 		{
-			_heading: '…',
+			_label: '…',
 		},
 		props
 	);
@@ -16,7 +16,7 @@ export const getCardHtml = (props: koliBriCardProps): string => {
 			<div class="header">
 				${getHeadingWcHtml(
 					{
-						_label: props._heading,
+						_label: props._label!, // TODO v2: Remove non-null assertion after label was converted to required prop.
 						_level: props._level,
 					},
 					{

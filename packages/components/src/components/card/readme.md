@@ -12,7 +12,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 ### Code
 
 ```html
-<kol-card _heading="Testtitel" _has-footer _max-height="vh2">
+<kol-card _label="Testtitel" _has-footer _max-height="vh2">
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
@@ -26,7 +26,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
 
 ### Beispiel
 
-<kol-card _heading="Testtitel" _has-footer _max-height="vh2">
+<kol-card _label="Testtitel" _has-footer _max-height="vh2">
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">
 		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
@@ -46,7 +46,7 @@ Die horizontale Trennlinie zwischen beiden Bereichen setzt KoliBri automatisch.
 
 ### Titel der Card-Komponente
 
-Den Titel der Card bestimmen Sie durch Setzen des Attributs **`_heading`**. Hier können Sie beliebigen Text, auch Sonderzeichen und Umlaute, eingeben.
+Den Titel der Card bestimmen Sie durch Setzen des Attributs **`_label`**. Hier können Sie beliebigen Text, auch Sonderzeichen und Umlaute, eingeben.
 Beachten Sie, dass **HTML-Code** nicht erlaubt ist. Sofern nicht gesetzt werden drei Punkte dargestellt.
 Die Überschriftenebene des Titels wird durch das Attribut **`_level`** übergeben. Möglich sind die Level **1** bis **6**
 
@@ -57,7 +57,7 @@ Die Inhalte im Header/Content/Footer-Bereich der Card bestimmen Sie durch Einfü
 Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container verwenden können, es aber empfohlen wird ein `<div></div>`-Tag zu verwenden.
 
 ```html
-<kol-card _heading="Beispiel" _level="1">
+<kol-card _label="Beispiel" _level="1">
 	<div slot="header">Text im Header-Bereich</div>
 	<div slot="content">Text im Inhalts-Bereich</div>
 	<div slot="footer">Text im Fuß-Bereich</div>

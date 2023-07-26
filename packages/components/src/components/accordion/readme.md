@@ -10,7 +10,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 ```html
 <div class="grid gap-2">
-	<kol-accordion _heading="Element 1">
+	<kol-accordion _label="Element 1">
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -19,7 +19,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 		<div slot="header">Inhalt eines Header</div>
 	</kol-accordion>
-	<kol-accordion _heading="Element 2">
+	<kol-accordion _label="Element 2">
 		<div slot="header">Inhalt im Header</div>
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -35,7 +35,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 ### Beispiel
 
 <div class="grid gap-2">
-	<kol-accordion _heading="Element 1">
+	<kol-accordion _label="Element 1">
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -44,7 +44,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 		<div slot="header">Inhalt eines Header</div>
 	</kol-accordion>
-	<kol-accordion _heading="Element 2">
+	<kol-accordion _label="Element 2">
 		<div slot="header">Inhalt im Header</div>
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -60,7 +60,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 ### Überschrift im Accordion-Tab
 
-Der Text, der als Überschrift im Accordion-Tab angezeigt werden soll, wird durch das Attribut **`_heading`** übergeben. Der Text kann neben Sonderzeichen auch Umlaute oder Leerzeichen enthalten.
+Der Text, der als Überschrift im Accordion-Tab angezeigt werden soll, wird durch das Attribut **`_label`** übergeben. Der Text kann neben Sonderzeichen auch Umlaute oder Leerzeichen enthalten.
 
 ### Überschriftenebene
 
