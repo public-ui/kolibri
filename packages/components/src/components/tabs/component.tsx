@@ -325,11 +325,11 @@ export class KolTabs implements KoliBriTabsAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAlign(this._align || this._tabsAlign);
 		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
-		this.validateAlign(this._align || this._tabsAlign);
 	}
 
 	private readonly handleTabPanels = () => {
