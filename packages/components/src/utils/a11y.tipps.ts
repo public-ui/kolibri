@@ -1,54 +1,58 @@
 import { Log } from './dev.utils';
 
-const a11yCache: Set<string> = new Set<string>();
-export const a11yHint = (msg: string): void => {
-	if (a11yCache.has(msg) === false) {
+type HintOptions = {
+	details?: unknown[];
+	force?: boolean;
+};
+
+const a11yCache: Set<string> = new Set();
+export const a11yHint = (msg: string, options?: HintOptions): void => {
+	if (a11yCache.has(msg) === false || !!options?.force) {
 		a11yCache.add(msg);
-		Log.debug(msg, {
+		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `✋ a11y`,
 			overwriteStyle: '; background-color: #09f',
 		});
 	}
 };
 
-const deprecatedCache: Set<string> = new Set<string>();
-export const deprecatedHint = (msg: string): void => {
-	if (deprecatedCache.has(msg) === false) {
+const deprecatedCache: Set<string> = new Set();
+export const deprecatedHint = (msg: string, options?: HintOptions): void => {
+	if (deprecatedCache.has(msg) === false || !!options?.force) {
 		deprecatedCache.add(msg);
-		Log.warn(msg, {
+		Log.warn(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `🔥 deprecated`,
-			forceLog: true,
 			overwriteStyle: '; background-color: #f00',
 		});
 	}
 };
 
-const devCache: Set<string> = new Set<string>();
-export const devHint = (msg: string): void => {
-	if (devCache.has(msg) === false) {
+const devCache: Set<string> = new Set();
+export const devHint = (msg: string, options?: HintOptions): void => {
+	if (devCache.has(msg) === false || !!options?.force) {
 		devCache.add(msg);
-		Log.debug(msg, {
+		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `💻 dev`,
 			overwriteStyle: '; background-color: #f09',
 		});
 	}
 };
-export const devWarning = (msg: string): void => {
-	if (devCache.has(msg) === false) {
+export const devWarning = (msg: string, options?: HintOptions): void => {
+	if (devCache.has(msg) === false || !!options?.force) {
 		devCache.add(msg);
-		Log.warn(msg, {
+		Log.warn(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `💻 dev`,
 			overwriteStyle: '; background-color: #f09',
 		});
 	}
 };
 
-const featureCache: Set<string> = new Set<string>();
-export const featureHint = (msg: string, done = false): void => {
-	if (featureCache.has(msg) === false) {
+const featureCache: Set<string> = new Set();
+export const featureHint = (msg: string, done = false, options?: HintOptions): void => {
+	if (featureCache.has(msg) === false || !!options?.force) {
 		featureCache.add(msg);
 		msg += done === true ? ' ✅' : '';
-		Log.debug(msg, {
+		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `🌟 feature`,
 			overwriteStyle: '; background-color: #309',
 		});
@@ -58,11 +62,11 @@ devHint(
 	`Wir freuen uns über jedes Feedback, Kommentare, Screenshots oder Demo-Links von einer auf KoliBri-basierenden Anwendung (kolibri@itzbund.de). Vielen Dank!`
 );
 
-const uiUxCache: Set<string> = new Set<string>();
-export const uiUxHint = (msg: string): void => {
-	if (uiUxCache.has(msg) === false) {
+const uiUxCache: Set<string> = new Set();
+export const uiUxHint = (msg: string, options?: HintOptions): void => {
+	if (uiUxCache.has(msg) === false || !!options?.force) {
 		uiUxCache.add(msg);
-		Log.debug(msg, {
+		Log.debug(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `📑 ui/ux`,
 			overwriteStyle: '; background-color: #060;',
 		});
