@@ -9,6 +9,9 @@ import { watchBoolean } from '../../utils/prop.validators';
 /** en
  * Makes the navigation compact.
  */
+/**
+ * @deprecated Use PropHideLabel
+ */
 export type PropCompact = {
 	compact: boolean;
 };
