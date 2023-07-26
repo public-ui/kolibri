@@ -180,6 +180,9 @@ export type LinkOnCallbacks = {
 // https://www.w3schools.com/tags/att_a_target.asp
 export type LinkTarget = '_blank' | '_parent' | '_self' | '_top' | string;
 
+/**
+ * @deprecated Will be removed in next major release.
+ */
 export type LinkUseCase = 'text' | 'image' | 'nav';
 
 /**
