@@ -16,28 +16,9 @@ import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../
 import { validateStealth } from '../../types/props/stealth';
 import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import {
-	AriaCurrentEventType,
-	ariaCurrentSubject,
-	mapBoolean2String,
-	scrollBySelector,
-	setEventTarget,
-	watchBoolean,
-	watchString,
-} from '../../utils/prop.validators';
+import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-
-const ARIA_CURRENTS: AriaCurrent[] = ['page', 'step', 'location', 'date', 'time'];
-const HREFS = ['card', 'modal', 'nav'];
-let index = 0;
-setInterval(() => {
-	const event: AriaCurrentEventType = {
-		href: `#${HREFS[index++ % HREFS.length]}`,
-		ariaCurrent: ARIA_CURRENTS[index++ % ARIA_CURRENTS.length],
-	};
-	ariaCurrentSubject.next(event);
-}, 250);
 
 /**
  * @internal
