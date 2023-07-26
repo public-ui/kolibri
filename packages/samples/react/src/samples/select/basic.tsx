@@ -1,7 +1,7 @@
 import React from 'react';
 import { SelectOption } from '@public-ui/components';
 
-import { KolLink, KolSelect } from '@public-ui/react';
+import { KolSelect } from '@public-ui/react';
 
 import { FC } from 'react';
 
@@ -27,7 +27,7 @@ type Country = {
 	STATUS_OPTIONS.push({
 		label: country.name,
 		value: country.alpha2,
-	}),
+	})
 );
 
 export const SelectBasic: FC = () => (
