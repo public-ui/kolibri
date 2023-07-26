@@ -513,7 +513,7 @@ export class KoliBriUtils {
 	}
 }
 
-export type AriaCurrentEventType = {
+type AriaCurrentEventType = {
 	ariaCurrent: AriaCurrent;
 } & PropHref;
 export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
