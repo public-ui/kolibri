@@ -144,7 +144,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 *  @deprecated use _label instead
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 

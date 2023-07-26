@@ -259,6 +259,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -352,6 +353,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -422,25 +424,9 @@ export namespace Components {
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
-         */
-        "_ariaCurrentValue": AriaCurrent;
-        /**
-          * Gibt an, ob diese Komponente Kinder hat.
-         */
-        "_hasChildren"?: boolean;
-        /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-         */
-        "_hideLabel"?: boolean;
-        /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
         "_link": ButtonOrLinkOrTextWithChildrenProps;
-        /**
-          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
-         */
-        "_selected"?: boolean;
     }
     interface KolButtonWc {
         /**
@@ -453,6 +439,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -1815,14 +1802,17 @@ export namespace Components {
     interface KolLink {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -1832,11 +1822,12 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-          * @deprecated will be removed in v2
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -1869,6 +1860,10 @@ export namespace Components {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -1913,14 +1908,17 @@ export namespace Components {
     interface KolLinkButton {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -1930,6 +1928,7 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -1938,6 +1937,7 @@ export namespace Components {
         "_customClass"?: string;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -1965,6 +1965,10 @@ export namespace Components {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -2034,14 +2038,17 @@ export namespace Components {
     interface KolLinkWc {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -2051,6 +2058,7 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -2088,6 +2096,10 @@ export namespace Components {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -2480,6 +2492,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -2488,7 +2501,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -3410,6 +3423,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -3503,6 +3517,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -3573,25 +3588,9 @@ declare namespace LocalJSX {
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
-         */
-        "_ariaCurrentValue"?: AriaCurrent;
-        /**
-          * Gibt an, ob diese Komponente Kinder hat.
-         */
-        "_hasChildren"?: boolean;
-        /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-         */
-        "_hideLabel"?: boolean;
-        /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
         "_link": ButtonOrLinkOrTextWithChildrenProps;
-        /**
-          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
-         */
-        "_selected"?: boolean;
     }
     interface KolButtonWc {
         /**
@@ -3604,6 +3603,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -4966,14 +4966,17 @@ declare namespace LocalJSX {
     interface KolLink {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -4983,11 +4986,12 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-          * @deprecated will be removed in v2
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -5020,6 +5024,10 @@ declare namespace LocalJSX {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -5064,14 +5072,17 @@ declare namespace LocalJSX {
     interface KolLinkButton {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -5081,6 +5092,7 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -5089,6 +5101,7 @@ declare namespace LocalJSX {
         "_customClass"?: string;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -5116,6 +5129,10 @@ declare namespace LocalJSX {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -5185,14 +5202,17 @@ declare namespace LocalJSX {
     interface KolLinkWc {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -5202,6 +5222,7 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -5239,6 +5260,10 @@ declare namespace LocalJSX {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -5631,6 +5656,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -5639,7 +5665,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
