@@ -185,8 +185,8 @@ export type LinkUseCase = 'text' | 'image' | 'nav';
 /**
  * API Link
  */
-export type RequiredLinkProps = PropHref;
-export type OptionalLinkProps = OptionalButtonAndLinkProps & {
+type RequiredLinkProps = PropHref;
+type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	/**
 	 * @deprecated We use the on-click event only on buttons styled as link.
 	 */
