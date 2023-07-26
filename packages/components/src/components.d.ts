@@ -5,10 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { ImageSourcePropType } from "./types/props/image-source";
 import { Stringified } from "./types/common";
@@ -47,10 +47,10 @@ import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { ImageSourcePropType } from "./types/props/image-source";
 export { Stringified } from "./types/common";
@@ -92,9 +92,14 @@ export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Defines the abbreviation title and tooltip content
          */
-        "_title": string;
+        "_label"?: LabelPropType;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated Use _label.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -3266,9 +3271,14 @@ declare global {
 declare namespace LocalJSX {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Defines the abbreviation title and tooltip content
          */
-        "_title": string;
+        "_label"?: LabelPropType;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated Use _label.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
