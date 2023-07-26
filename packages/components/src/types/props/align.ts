@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { watchString } from '../../utils/prop.validators';
+import { validateAlignment } from '../../utils/validators/alignment';
 
 /* types */
 /** de
@@ -21,5 +21,5 @@ export type PropAlign = {
 
 /* validator */
 export const validateAlign = (component: Generic.Element.Component, value?: Align): void => {
-	watchString(component, '_align', value);
+	validateAlignment(component, `_align`, value);
 };
