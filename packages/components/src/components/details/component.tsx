@@ -49,7 +49,7 @@ export class KolDetails implements KoliBriDetailsAPI {
 	/**
 	 * Defines the summary label.
 	 */
-	@Prop() public _label?: string;
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
