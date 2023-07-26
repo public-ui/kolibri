@@ -2631,6 +2631,10 @@ export namespace Components {
     }
     interface KolTabs {
         /**
+          * Defines the position of the tab captions.
+         */
+        "_align"?: Align;
+        /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
          */
@@ -2653,6 +2657,7 @@ export namespace Components {
         "_tabs": Stringified<TabButtonProps[]>;
         /**
           * Setzt die Position der Registrierkarten.
+          * @deprecated Use _align.
          */
         "_tabsAlign"?: Align;
     }
@@ -5810,6 +5815,10 @@ declare namespace LocalJSX {
     }
     interface KolTabs {
         /**
+          * Defines the position of the tab captions.
+         */
+        "_align"?: Align;
+        /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
          */
@@ -5832,6 +5841,7 @@ declare namespace LocalJSX {
         "_tabs": Stringified<TabButtonProps[]>;
         /**
           * Setzt die Position der Registrierkarten.
+          * @deprecated Use _align.
          */
         "_tabsAlign"?: Align;
     }

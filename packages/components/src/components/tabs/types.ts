@@ -4,7 +4,7 @@ import { Events } from '../../enums/events';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
+import { Align, PropAlign } from '../../types/props/align';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
@@ -37,16 +37,20 @@ type RequiredProps = {
 };
 type OptionalProps = {
 	on: KoliBriTabsCallbacks;
+	/**
+	 * @deprecated Use align.
+	 */
 	tabsAlign: Align;
 	selected: number;
 } & PropAriaLabel &
-	PropLabel;
+	PropLabel &
+	PropAlign;
 
 type RequiredStates = {
-	tabsAlign: Align;
 	selected: number;
 	tabs: TabButtonProps[];
-} & PropLabel;
+} & PropLabel &
+	PropAlign;
 type OptionalStates = {
 	on: KoliBriTabsCallbacks;
 };
