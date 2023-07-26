@@ -9,14 +9,14 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
 ### Code
 
 ```html
-<kol-alert _heading="Erfolg" _type="success">Hier wird der Erfolg näher beschrieben.</kol-alert>
+<kol-alert _label="Erfolg" _type="success">Hier wird der Erfolg näher beschrieben.</kol-alert>
 <kol-alert _type="success" _show="false">Hier wird der Erfolg näher beschrieben.</kol-alert>
 ```
 
 ### Beispiel
 
 <div class="d-grid gap-2">
-  <kol-alert _heading="Erfolg" _type="success">Hier wird der Erfolg näher beschrieben.</kol-alert>
+  <kol-alert _label="Erfolg" _type="success">Hier wird der Erfolg näher beschrieben.</kol-alert>
   <kol-alert _type="success" _show="false">Hier wird der Erfolg näher beschrieben.</kol-alert>
 </div>
 
@@ -24,7 +24,7 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
 
 ### Überschrift
 
-Verwenden Sie das Attribut **`_heading`**, um die Überschrift des Toasts zu bestimmen.
+Verwenden Sie das Attribut **`_label`**, um die Überschrift des Toasts zu bestimmen.
 
 ### Größe der Überschrift
 

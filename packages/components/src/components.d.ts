@@ -8,9 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { ImageSourcePropType } from "./types/props/image-source";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
@@ -49,9 +49,9 @@ import { KoliBriToastEventCallbacks } from "./types/toast";
 export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { ImageSourcePropType } from "./types/props/image-source";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
@@ -101,8 +101,13 @@ export namespace Components {
     interface KolAccordion {
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
+        /**
+          * Defines the button label
+         */
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -127,8 +132,13 @@ export namespace Components {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the description of the component.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -156,9 +166,9 @@ export namespace Components {
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt die Beschriftung der Komponente an.
+          * Defines the description of the component.
          */
-        "_heading"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -528,13 +538,15 @@ export namespace Components {
         "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -2719,8 +2731,13 @@ export namespace Components {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the text to show in the Toast.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3235,8 +3252,13 @@ declare namespace LocalJSX {
     interface KolAccordion {
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
+        /**
+          * Defines the button label
+         */
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3261,8 +3283,13 @@ declare namespace LocalJSX {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the description of the component.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3290,9 +3317,9 @@ declare namespace LocalJSX {
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt die Beschriftung der Komponente an.
+          * Defines the description of the component.
          */
-        "_heading"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3662,13 +3689,15 @@ declare namespace LocalJSX {
         "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -5853,8 +5882,13 @@ declare namespace LocalJSX {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the text to show in the Toast.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */

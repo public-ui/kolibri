@@ -21,7 +21,7 @@ export const getToastHtml = (props: KoliBriToastProps): string => {
         ${getAlertHtml(
 					{
 						_alert: props._alert,
-						_heading: props._heading,
+						_label: props._label,
 						_level: props._level,
 						_type: props._type,
 						_variant: 'card',
