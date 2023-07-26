@@ -3,6 +3,9 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
+
+export type HideLabelPropType = boolean;
+
 /** de
  * Lässt das Element das Label ausblenden.
  */
@@ -10,7 +13,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Tells the element to hide the label.
  */
 export type PropHideLabel = {
-	hideLabel: boolean;
+	hideLabel: HideLabelPropType;
 };
 
 /* validator */

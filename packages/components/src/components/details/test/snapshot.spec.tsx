@@ -17,7 +17,7 @@ executeTests<KoliBriDetailsProps>(
 		return page;
 	},
 	{
-		_summary: ['Zusammenfassung'],
+		_label: ['Zusammenfassung'],
 		_open: [false, true],
 	},
 	getDetailsHtml,

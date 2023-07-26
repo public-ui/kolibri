@@ -1,15 +1,18 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Align } from '../../types/props/align';
+import { PropLabel } from '../../types/props/label';
 
-type RequiredProps = {
-	title: string;
-};
+type RequiredProps = unknown;
 type OptionalProps = {
+	/**
+	 * @deprecated Use label.
+	 */
+	title: string;
 	tooltipAlign: Align;
-};
+} & PropLabel;
 
-type RequiredStates = RequiredProps & OptionalProps;
+type RequiredStates = RequiredProps & Omit<OptionalProps, 'title'>;
 type OptionalStates = unknown;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
