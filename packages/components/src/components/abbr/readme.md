@@ -8,24 +8,24 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
 ### Code
 
 ```html
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
 ```
 
 ### Beispiel
 
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
-<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
+<p>Ich bin eine <kol-abbr label="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
 
 ## Verwendung
 
 ### Angabe der Beschreibung zur Abkürzung
 
-Der Begriff bzw. die Erklärung wird über das Attribut **`_title`** übergeben, die Abkürzung bzw. der erklärungswürdige Begriff kommt zwischen die Tags im HTML.
+Der Begriff bzw. die Erklärung wird über das Attribut **`_label`** übergeben, die Abkürzung bzw. der erklärungswürdige Begriff kommt zwischen die Tags im HTML.
 
 ### Ausrichtung des Tooltip
 
