@@ -21,5 +21,5 @@ export type PropAlign = {
 
 /* validator */
 export const validateAlign = (component: Generic.Element.Component, value?: Align): void => {
-	validateAlignment(component, `_align`, value);
+	validateAlignment(component, '_align', value);
 };
