@@ -22,7 +22,6 @@ export const deprecatedHint = (msg: string, options?: HintOptions): void => {
 		deprecatedCache.add(msg);
 		Log.warn(([msg] as unknown[]).concat(options?.details || []), {
 			classifier: `🔥 deprecated`,
-			forceLog: true,
 			overwriteStyle: '; background-color: #f00',
 		});
 	}
