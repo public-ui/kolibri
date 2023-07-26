@@ -2,6 +2,7 @@ export const TAG_NAMES: string[] = [
 	'kol-icon',
 	// 'kol-icon-font-awesome', no shadow dom
 	// 'kol-icon-icofont', no shadow dom
+	'kol-avatar',
 	'kol-badge',
 	'kol-heading',
 	'kol-accordion',
