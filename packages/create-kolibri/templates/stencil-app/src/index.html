@@ -4,16 +4,16 @@
 		<meta charset="utf-8" />
 		<title>Stencil App | KoliBri</title>
 
-		<meta name="description" content="{{description}}" />
+		<meta name="description" content="{{ description }}" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 		<meta name="theme-color" content="#16161d" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta http-equiv="x-ua-compatible" content="IE=Edge" />
 
 		<script type="module">
-			import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.18';
-			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.18/dist/loader';
-			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.18';
+			import { register } from 'https://esm.sh/@public-ui/components@1.6.0-rc.19';
+			import { defineCustomElements } from 'https://esm.sh/@public-ui/components@1.6.0-rc.19/dist/loader';
+			import { ITZBund } from 'https://esm.sh/@public-ui/themes@1.6.0-rc.19';
 			register(ITZBund, defineCustomElements)
 				.then(() => {})
 				.catch(console.warn);

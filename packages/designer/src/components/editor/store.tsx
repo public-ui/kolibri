@@ -3,6 +3,7 @@ import {
 	KolAbbr,
 	KolAccordion,
 	KolAlert,
+	KolAvatar,
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
@@ -302,6 +303,13 @@ export const components: Record<string, Component> = {
 				Irure eu adipisicing aute fugiat reprehenderit amet pariatur reprehenderit. Velit enim commodo qui in. Sint aliqua duis labore consequat eiusmod laboris
 				anim. Aliquip sunt ea nulla nostrud non aute. Nulla irure nisi nulla sunt elit tempor nostrud.
 			</KolAlert>
+		</div>
+	),
+	'KOL-AVATAR': () => (
+		<div class="flex flex-wrap gap-6">
+			<KolAvatar _label="Max Mustermann"></KolAvatar>
+			<KolAvatar _label="Max"></KolAvatar>
+			<KolAvatar _label="Max Mustermann" _src="https://placehold.co/400"></KolAvatar>
 		</div>
 	),
 	'KOL-BADGE': () => (

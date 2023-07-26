@@ -5,10 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { ImageSourcePropType } from "./types/props/image-source";
 import { Stringified } from "./types/common";
@@ -35,6 +35,7 @@ import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
+import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { KoliBriProgressVariantType } from "./types/progress";
@@ -46,10 +47,10 @@ import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { ImageSourcePropType } from "./types/props/image-source";
 export { Stringified } from "./types/common";
@@ -76,6 +77,7 @@ export { InputTextType } from "./types/input/control/text";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
+export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { KoliBriProgressVariantType } from "./types/progress";
@@ -90,9 +92,14 @@ export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Defines the abbreviation title and tooltip content
          */
-        "_title": string;
+        "_label"?: LabelPropType;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated Use _label.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -541,13 +548,18 @@ export namespace Components {
     }
     interface KolDetails {
         /**
+          * Defines the summary label.
+         */
+        "_label"?: LabelPropType;
+        /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
+          * @deprecated Use _label.
          */
-        "_summary": string;
+        "_summary"?: string;
     }
     interface KolForm {
         /**
@@ -2191,6 +2203,7 @@ export namespace Components {
         "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
+          * @deprecated Use _hide-label
          */
         "_compact"?: boolean;
         /**
@@ -2198,6 +2211,10 @@ export namespace Components {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Defines if navigation labels should be hidden
+         */
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -2614,6 +2631,10 @@ export namespace Components {
     }
     interface KolTabs {
         /**
+          * Defines the position of the tab captions.
+         */
+        "_align"?: Align;
+        /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
          */
@@ -2636,6 +2657,7 @@ export namespace Components {
         "_tabs": Stringified<TabButtonProps[]>;
         /**
           * Setzt die Position der Registrierkarten.
+          * @deprecated Use _align.
          */
         "_tabsAlign"?: Align;
     }
@@ -3254,9 +3276,14 @@ declare global {
 declare namespace LocalJSX {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Defines the abbreviation title and tooltip content
          */
-        "_title": string;
+        "_label"?: LabelPropType;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated Use _label.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -3705,13 +3732,18 @@ declare namespace LocalJSX {
     }
     interface KolDetails {
         /**
+          * Defines the summary label.
+         */
+        "_label"?: LabelPropType;
+        /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
+          * @deprecated Use _label.
          */
-        "_summary": string;
+        "_summary"?: string;
     }
     interface KolForm {
         /**
@@ -5355,6 +5387,7 @@ declare namespace LocalJSX {
         "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
+          * @deprecated Use _hide-label
          */
         "_compact"?: boolean;
         /**
@@ -5362,6 +5395,10 @@ declare namespace LocalJSX {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Defines if navigation labels should be hidden
+         */
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5778,6 +5815,10 @@ declare namespace LocalJSX {
     }
     interface KolTabs {
         /**
+          * Defines the position of the tab captions.
+         */
+        "_align"?: Align;
+        /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
          */
@@ -5800,6 +5841,7 @@ declare namespace LocalJSX {
         "_tabs": Stringified<TabButtonProps[]>;
         /**
           * Setzt die Position der Registrierkarten.
+          * @deprecated Use _align.
          */
         "_tabsAlign"?: Align;
     }
