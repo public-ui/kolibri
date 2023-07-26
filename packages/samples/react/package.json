@@ -37,7 +37,7 @@
 		"@unocss/preset-mini": "0.53.6",
 		"@unocss/webpack": "0.53.6",
 		"ajv": "8.12.0",
-		"chromedriver": "114.0.3",
+		"chromedriver": "115.0.0",
 		"cpy-cli": "5.0.0",
 		"eslint-plugin-jsx-a11y": "6.7.1",
 		"eslint-plugin-react": "7.33.0",
