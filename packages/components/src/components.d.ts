@@ -541,13 +541,18 @@ export namespace Components {
     }
     interface KolDetails {
         /**
+          * Defines the summary label.
+         */
+        "_label"?: LabelPropType;
+        /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
+          * @deprecated Use _label.
          */
-        "_summary": string;
+        "_summary"?: string;
     }
     interface KolForm {
         /**
@@ -3705,13 +3710,18 @@ declare namespace LocalJSX {
     }
     interface KolDetails {
         /**
+          * Defines the summary label.
+         */
+        "_label"?: LabelPropType;
+        /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
+          * @deprecated Use _label.
          */
-        "_summary": string;
+        "_summary"?: string;
     }
     interface KolForm {
         /**
