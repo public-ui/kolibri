@@ -76,24 +76,29 @@ export class KolNav implements KoliBriNavAPI {
 		return false;
 	};
 
-	private entry(collapsible: boolean, compact: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
+	private entry(collapsible: boolean, hideLabel: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
 			<div class="entry">
-				<kol-button-link-text-switch _has-children={hasChildren} _hide-label={compact} _link={link} _selected={selected} />
-				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, selected) : ''}
+				<kol-button-link-text-switch
+					_link={{
+						...link,
+						_hideLabel: hideLabel,
+					}}
+				/>
+				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, expanded) : ''}
 			</div>
 		);
 	}
 
-	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, selected: boolean): JSX.Element {
+	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
 			<kol-button-wc
 				class="expand-button"
-				_ariaExpanded={selected}
+				_ariaExpanded={expanded}
 				_disabled={!collapsible}
-				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
+				_icon={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
-				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
+				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
 			></kol-button-wc>
 		);
@@ -107,17 +112,21 @@ export class KolNav implements KoliBriNavAPI {
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		orientation: Orientation
 	): JSX.Element {
+		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
-		const selected = !!link._active;
-		const expanded = hasChildren && !!link._active;
+		const expanded = hasChildren && active;
 		return (
-			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
-				{this.entry(collapsible, compact, hasChildren, link, selected)}
-				{hasChildren && selected ? (
-					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
-				) : (
-					''
-				)}
+			<li
+				class={{
+					active,
+					expanded,
+					'has-children': hasChildren,
+					selected: expanded, // TODO: remove in v2
+				}}
+				key={index}
+			>
+				{this.entry(collapsible, compact, hasChildren, link, active)}
+				{expanded ? <this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} /> : ''}
 			</li>
 		);
 	}
@@ -192,7 +201,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 *  @deprecated use _label instead
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 

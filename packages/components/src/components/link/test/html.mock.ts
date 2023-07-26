@@ -23,13 +23,13 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-    <a${typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${state._ariaExpanded ? 'true' : 'false'}"` : ''}${
-		state._hideLabel === true || state._useCase === 'image' ? ` aria-labelledby="nonce"` : ''
-	} class="${state._hideLabel === true ? ' icon-only hide-label' : ''}${
-		typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''
-	}" href="${typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'}"${
-		typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''
-	}${typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''}>
+    <a${state._hideLabel === true || state._useCase === 'image' ? ` aria-labelledby="nonce"` : ''} class="${
+		state._hideLabel === true ? ' icon-only hide-label' : ''
+	}${typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''}" href="${
+		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
+	}"${typeof state._selector === 'string' ? ' role="link" tabindex="0"' : ''}${
+		typeof state._target === 'string' ? `${state._target === '_self' ? '' : 'rel="noopener"'} target="${state._target}"` : ''
+	}>
 			${getSpanWcHtml(
 				{
 					...state,

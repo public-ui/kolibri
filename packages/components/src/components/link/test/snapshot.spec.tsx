@@ -17,7 +17,6 @@ executeTests<LinkProps>(
 		return page;
 	},
 	{
-		_ariaExpanded: [false, true],
 		_href: ['https://google.de'],
 		_icon: ['codicon codicon-home'],
 		_hideLabel: [false, true],

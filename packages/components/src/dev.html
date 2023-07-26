@@ -1759,16 +1759,9 @@
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
-			<kol-table id="nvda" _pagination="false"></kol-table>
-			<kol-table
-				class="p-4"
-				_caption="Manuelle Datenbefüllung"
-				_headers="{'horizontal': [[{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}]]}"
-				_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
-				_pagination="{'_total': 100, '_pageSize': 5, '_pageSizeOptions': [3,5,8]}"
-			>
-			</kol-table>
-			<kol-link _href="https://public-ui.github.io"></kol-link>
+			<kol-link _href="#card" _listen-aria-current="page">Card</kol-link>
+			<kol-link _href="#modal" _listen-aria-current="location">Modal</kol-link>
+			<kol-link _href="#nav" _listen-aria-current="step">Nav</kol-link>
 		</main>
 
 		<footer>

@@ -1,7 +1,6 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { AlternativButtonLinkRole, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
+import { AlternativButtonLinkRole, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';
@@ -16,7 +15,7 @@ import { propagateFocus } from '../../utils/reuse';
 	},
 	shadow: true,
 })
-export class KolLink implements Generic.Element.Members<RequiredLinkProps, OptionalLinkProps> {
+export class KolLink implements LinkProps {
 	@Element() private readonly host?: HTMLKolLinkElement;
 	private ref?: HTMLKolLinkWcElement;
 
@@ -42,6 +41,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
 					_label={this._label}
+					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role={this._role}
 					_selector={this._selector}
@@ -66,16 +66,22 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated use _listen-aria-current instead
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
@@ -88,13 +94,15 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
-	 * @deprecated will be removed in v2
+	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
@@ -134,6 +142,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
+
+	/**
+	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 */
+	@Prop() public _listenAriaCurrent?: AriaCurrent;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
