@@ -1,6 +1,6 @@
 # Avatar
 
-Die **Avatar**-Komponente zeigt das Avatar-Bild eines Benutzers, bzw. dessen Initialen, falls kein Bild vorhanden ist.
+Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.
 
 ## Konstruktion
 
@@ -9,14 +9,14 @@ Die **Avatar**-Komponente zeigt das Avatar-Bild eines Benutzers, bzw. dessen Ini
 ```html
 <kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
 <kol-avatar _label="Erika"></kol-avatar>
-<kol-avatar _src="https://example.com/image.webp" _label="Erika Maria Mustermann"></kol-avatar>
+<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
 ```
 
 ### Beispiele
 
 <kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
 <kol-avatar _label="Erika"></kol-avatar>
-<kol-avatar _src="https://placehold.co/400" _label="Erika Maria Mustermann"></kol-avatar>
+<kol-avatar _src="https://www.w3schools.com/howto/img_avatar.png" _label="Erika Maria Mustermann"></kol-avatar>
 
 ## Verwendung
 
@@ -32,13 +32,13 @@ Die **Avatar**-Komponente kann auch ohne `_src`-Attribut verwendet werden und ze
 
 ### Anwendungsfälle
 
-Verwenden Sie die **Avatar**-Komponente, um das Bild eines Benutzers anzuzeigen.
+Verwenden Sie die **Avatar**-Komponente, um das Bild eines Users anzuzeigen.
 
 ## Barrierefreiheit
 
 Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefreiheit betrachtet:
 
-- Die Komponente ist mit dem Namen des Benutzers als aria-label ausgezeichnet.
+- Die Komponente ist mit dem Namen des Users als aria-label ausgezeichnet.
 - Falls vorhanden, wird das Avatar-Bild mit einem Alternativtext beschrieben.
 - Die Initialen, die alternativ zum Avatar-Bild gezeigt werden, werden als rein visuelles, semantisch nicht relevantes Element betrachtet und für Screenreader
   entsprechend versteckt.
