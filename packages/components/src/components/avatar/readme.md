@@ -23,7 +23,7 @@ Die **Avatar**-Komponente zeigt das Avatar-Bild eines Benutzers, bzw. dessen Ini
 ### Mit Bild
 
 In der Standard-Ansicht zeigt die **Avatar**-Komponente ein Avatar-Bild. Hierzu muss das Attribut `_src` mit einer URL zum Bild angegeben werden.  
-Zusätzlich ist es notwendig, das `_label`-Attribut mit dem Namen des Benutzers anzugeben, damit ein Alternativtext ausgezeichnet werden kann. 
+Zusätzlich ist es notwendig, das `_label`-Attribut mit dem Namen des Benutzers anzugeben, damit ein Alternativtext ausgezeichnet werden kann.
 
 ### Ohne Bild
 
@@ -41,7 +41,7 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 - Die Komponente ist mit dem Namen des Benutzers als aria-label ausgezeichnet.
 - Falls vorhanden, wird das Avatar-Bild mit einem Alternativtext beschrieben.
 - Die Initialen, die alternativ zum Avatar-Bild gezeigt werden, werden als rein visuelles, semantisch nicht relevantes Element betrachtet und für Screenreader
-entsprechend versteckt. 
+  entsprechend versteckt.
 
 <!-- Auto Generated Below -->
 
