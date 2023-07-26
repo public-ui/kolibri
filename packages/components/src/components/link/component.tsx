@@ -5,6 +5,7 @@ import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, 
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';
+import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrent, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
 import { validateDownload } from '../../types/props/download';
@@ -309,7 +310,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 */
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
-		watchString(this, '_ariaControls', value);
+		validateAriaControls(this, value);
 	}
 
 	/**

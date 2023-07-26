@@ -3,6 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { Align } from '../../types/props/align';
+import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { validateAriaSelected } from '../../types/props/aria-selected';
@@ -235,7 +236,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
-		watchString(this, '_ariaControls', value);
+		validateAriaControls(this, value);
 	}
 
 	@Watch('_ariaCurrent')

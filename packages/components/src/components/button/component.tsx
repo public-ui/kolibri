@@ -16,7 +16,8 @@ import {
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { validateAriaControls } from '../../types/props/aria-controls';
+import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
@@ -24,7 +25,7 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
@@ -241,18 +242,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
-		watchString(this, '_ariaControls', value);
+		validateAriaControls(this, value);
 	}
 
 	@Watch('_ariaCurrent')
 	public validateAriaCurrent(value?: AriaCurrent): void {
-		watchValidator(
-			this,
-			'_ariaControls',
-			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
-			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
-		);
+		validateAriaCurrent(this, value);
 	}
 
 	@Watch('_ariaExpanded')

@@ -232,8 +232,8 @@ export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, Opt
 /**
  * API LinkButton
  */
-export type RequiredLinkButtonProps = RequiredLinkProps;
-export type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
+// type RequiredLinkButtonProps = RequiredLinkProps;
+// type OptionalLinkButtonProps = OptionalLinkProps & KoliBriButtonVariantPropState & KoliBriButtonCustomClassPropState;
 // type LinkButtonProps = Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps>;
 
 // type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
