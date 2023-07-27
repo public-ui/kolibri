@@ -38,8 +38,7 @@ Verwenden Sie die **Avatar**-Komponente, um das Bild eines Users anzuzeigen.
 
 Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefreiheit betrachtet:
 
-- Die Komponente ist mit dem Namen des Users als aria-label ausgezeichnet.
-- Falls vorhanden, wird das Avatar-Bild mit einem Alternativtext beschrieben.
+- Die Komponente ist mit einem Beschreibungstext, der den Namen des Users beinhaltet, als aria-label ausgezeichnet.
 - Die Initialen, die alternativ zum Avatar-Bild gezeigt werden, werden als rein visuelles, semantisch nicht relevantes Element betrachtet und für Screenreader
   entsprechend versteckt.
 
