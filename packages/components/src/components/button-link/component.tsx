@@ -8,6 +8,7 @@ import { Align } from '../../types/props/align';
 import { AriaCurrent } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
+import { StencilUnknown } from '../../types/unknown';
 
 @Component({
 	tag: 'kol-button-link',
@@ -122,7 +123,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
+	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
@@ -147,5 +148,5 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 }

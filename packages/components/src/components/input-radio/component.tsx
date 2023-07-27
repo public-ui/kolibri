@@ -12,6 +12,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
 import { ComponentApi, States } from './types';
+import { StencilUnknown } from '../../types/unknown';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -327,7 +328,7 @@ export class KolInputRadio implements ComponentApi {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		this.controller.validateValue(value);
 	}
 

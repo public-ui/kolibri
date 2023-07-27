@@ -11,6 +11,7 @@ import { mapString2Unknown, setState, watchValidator } from '../../utils/prop.va
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
+import { StencilUnknown } from '../../types/unknown';
 
 export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, Option<T>>, options: SelectOption<T>[], preKey = ''): void => {
 	options.forEach((option, index) => {
@@ -105,7 +106,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		});
 	}
 
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		value = mapString2Unknown(value);
 		value = Array.isArray(value) ? value[0] : value;
 		setState(this.component, '_value', value, {

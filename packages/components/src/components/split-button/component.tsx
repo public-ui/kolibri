@@ -15,6 +15,7 @@ import { setState, watchBoolean, watchString } from '../../utils/prop.validators
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
 import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
+import { StencilUnknown } from '../../types/unknown';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -215,7 +216,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -330,7 +331,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		setState(this, '_value', value);
 	}
 

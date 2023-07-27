@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-split-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.19")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
 @JsModule("@public-ui/components/dist/components/kol-split-button")
 public class KolSplitButton extends Component {
 	/**
@@ -335,6 +335,25 @@ public class KolSplitButton extends Component {
 	 */
 	public Optional<String> getType() {
 		var value = getElement().getProperty("_type", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 *
+	 * @param value String
+	 */
+	public void setValue(final String value) {
+		getElement().setProperty("_value", value.toString());
+	}
+
+	/**
+	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getValue() {
+		var value = getElement().getProperty("_value", null);
 		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 

@@ -10,6 +10,7 @@ import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.t
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
 import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
+import { StencilUnknown } from '../../types/unknown';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -93,7 +94,7 @@ export class KolTabs implements KoliBriTabsAPI {
 						_icon={button._icon}
 						_hideLabel={button._hideLabel || button._iconOnly}
 						_label={button._label} // TODO: ariaLabel-Konzept prüfen
-						_on={this.callbacks as KoliBriButtonCallbacks<unknown>}
+						_on={this.callbacks as KoliBriButtonCallbacks<StencilUnknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
 						_tooltipAlign={button._tooltipAlign}
 						_variant={this.state._selected === index ? 'custom' : undefined}

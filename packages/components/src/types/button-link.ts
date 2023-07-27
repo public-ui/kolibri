@@ -17,6 +17,7 @@ import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';
 import { PropLabelWithExpertSlot } from './props/label';
 import { PropStealth } from './props/stealth';
+import { StencilUnknown } from './unknown';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -122,9 +123,9 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	accessKey: string;
 	disabled: boolean;
 	id: string;
-	on: KoliBriButtonCallbacks<unknown>;
+	on: KoliBriButtonCallbacks<StencilUnknown>;
 	type: KoliBriButtonType;
-	value: Stringified<unknown>;
+	value: Stringified<StencilUnknown>;
 } & PropLabelWithExpertSlot;
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
@@ -141,8 +142,8 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 		accessKey: string;
 		disabled: boolean;
 		id: string;
-		on: KoliBriButtonCallbacks<unknown>;
-		value: unknown;
+		on: KoliBriButtonCallbacks<StencilUnknown>;
+		value: StencilUnknown;
 	};
 // type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 

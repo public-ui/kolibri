@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { StencilUnknown } from '../../components';
+import { StencilUnknown } from '../../types/unknown';
 import { validateTouched } from '../../types/props/touched';
 import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';

@@ -31,6 +31,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { watchButtonType, watchButtonVariant } from './controller';
+import { StencilUnknown } from '../../types/unknown';
 
 /**
  * @internal
@@ -201,7 +202,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
+	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
@@ -226,7 +227,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -326,7 +327,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_on')
-	public validateOn(value?: KoliBriButtonCallbacks<unknown>): void {
+	public validateOn(value?: KoliBriButtonCallbacks<StencilUnknown>): void {
 		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,
@@ -356,7 +357,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		// TODO: make static form ready, like inputs
 		setState(this, '_value', value);
 	}

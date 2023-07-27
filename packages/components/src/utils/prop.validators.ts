@@ -11,6 +11,7 @@ import { AriaCurrent } from '../types/props/aria-current';
 import { PropHref } from '../types/props/href';
 import { devHint } from './a11y.tipps';
 import { getDocument, getExperimentalMode, getWindow, Log } from './dev.utils';
+import { StencilUnknown } from '../types/unknown';
 
 // https://regex101.com/r/lSYLO9/1
 /**
@@ -269,7 +270,7 @@ export const watchJsonArrayString = <T>(
 const BOOLEAN = /^(true|false)$/;
 const INTEGER = /^-?(0|[1-9]\d*)$/;
 const FLOAT = /^-?(0.|[1-9]\d*.)\d*[1-9]$/;
-export const mapString2Unknown = (value: unknown) => {
+export const mapString2Unknown = (value: StencilUnknown) => {
 	const typeStr = typeof value;
 	const oldValue = `${value as string}`;
 	if (typeof value === 'string') {
@@ -281,7 +282,7 @@ export const mapString2Unknown = (value: unknown) => {
 			value = parseFloat(value);
 		} else if (JSON_CHARS.test(value)) {
 			try {
-				value = parseJson<unknown>(value);
+				value = parseJson<StencilUnknown>(value);
 				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value behält den ursprünglichen Wert
