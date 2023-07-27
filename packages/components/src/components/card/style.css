@@ -1,4 +1,6 @@
 @import url(../style.css);
 :host > div.card {
+	align-items: flex-start;
+	display: flex;
 	height: 100%;
 }
