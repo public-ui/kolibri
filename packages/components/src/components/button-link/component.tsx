@@ -7,8 +7,8 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';
 import { AriaCurrent } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { propagateFocus } from '../../utils/reuse';
 import { StencilUnknown } from '../../types/unknown';
+import { propagateFocus } from '../../utils/reuse';
 
 @Component({
 	tag: 'kol-button-link',

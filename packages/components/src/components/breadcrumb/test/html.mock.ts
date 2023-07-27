@@ -1,10 +1,10 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { Icofont } from '../../../types/icofont';
+import { LabelPropType } from '../../../types/props/label';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
 import { BreadcrumbLinkProps, KoliBriBreadcrumbProps } from '../types';
-import { LabelPropType } from '../../../types/props/label';
 
 export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 	const state = mixMembers(

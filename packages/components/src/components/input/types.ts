@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { ButtonProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropAlert } from '../../types/props/alert';
 import { PropDisabled } from '../../types/props/disabled';
@@ -11,7 +12,6 @@ import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
 import { PropSuggestions } from '../../types/props/suggestions';
 import { PropTouched } from '../../types/props/touched';
-import { Stringified } from '../../types/common';
 
 export type InputRequiredProps = PropLabelWithExpertSlot;
 

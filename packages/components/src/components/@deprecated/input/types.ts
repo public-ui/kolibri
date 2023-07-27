@@ -1,9 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 
 import { ButtonProps } from '../../../types/button-link';
+import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../../types/props/label';
-import { Stringified } from '../../../types/common';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {

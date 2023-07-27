@@ -10,12 +10,12 @@ import { validateAriaSelected } from '../../types/props/aria-selected';
 import { validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
 import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
-import { StencilUnknown } from '../../types/unknown';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.

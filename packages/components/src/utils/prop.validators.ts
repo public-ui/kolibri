@@ -9,9 +9,9 @@ import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
 import { Stringified } from '../types/common';
 import { AriaCurrent } from '../types/props/aria-current';
 import { PropHref } from '../types/props/href';
+import { StencilUnknown } from '../types/unknown';
 import { devHint } from './a11y.tipps';
 import { getDocument, getExperimentalMode, getWindow, Log } from './dev.utils';
-import { StencilUnknown } from '../types/unknown';
 
 // https://regex101.com/r/lSYLO9/1
 /**
