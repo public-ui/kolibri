@@ -14,6 +14,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';
 import { AriaCurrent } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
 
 @Component({
@@ -149,7 +150,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
+	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
@@ -174,7 +175,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.

@@ -6,6 +6,7 @@ import { Orientation } from '../../types/orientation';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { OptionsPropType } from '../../types/props/options';
+import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
@@ -327,7 +328,7 @@ export class KolInputRadio implements ComponentApi {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		this.controller.validateValue(value);
 	}
 

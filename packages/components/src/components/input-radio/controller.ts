@@ -6,6 +6,7 @@ import { Orientation } from '../../types/orientation';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { OptionsPropType, validateOptions } from '../../types/props/options';
 import { validateRequired } from '../../types/props/required';
+import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { mapString2Unknown, setState, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
@@ -105,9 +106,9 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		});
 	}
 
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		value = mapString2Unknown(value);
-		value = Array.isArray(value) ? value[0] : value;
+		value = Array.isArray(value) ? (value[0] as StencilUnknown) : value;
 		setState(this.component, '_value', value, {
 			beforePatch: this.beforePatchOptions,
 		});

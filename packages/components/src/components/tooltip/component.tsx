@@ -3,12 +3,12 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
 import { Align } from '../../types/props/align';
+import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
 import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
-import { IdPropType, validateId } from '../../types/props/id';
 
 @Component({
 	tag: 'kol-tooltip',

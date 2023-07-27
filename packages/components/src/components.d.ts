@@ -17,6 +17,7 @@ import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrent } from "./types/props/aria-current";
+import { StencilUnknown } from "./types/unknown";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -25,7 +26,6 @@ import { Loading } from "./utils/validators/loading";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
-import { StencilUnknown } from "./types/unknown";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
@@ -60,6 +60,7 @@ export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrent } from "./types/props/aria-current";
+export { StencilUnknown } from "./types/unknown";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
@@ -68,7 +69,6 @@ export { Loading } from "./utils/validators/loading";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
-export { StencilUnknown } from "./types/unknown";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
@@ -321,7 +321,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -341,7 +341,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -406,7 +406,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -426,7 +426,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
     }
     /**
      * Internal component that renders an action or text component like a button or a link.
@@ -501,7 +501,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -521,7 +521,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -2579,7 +2579,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3505,7 +3505,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3525,7 +3525,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3590,7 +3590,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3610,7 +3610,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
     }
     /**
      * Internal component that renders an action or text component like a button or a link.
@@ -3685,7 +3685,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3705,7 +3705,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -5763,7 +5763,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */

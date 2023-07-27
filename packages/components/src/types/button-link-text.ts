@@ -5,6 +5,7 @@ import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';
 import { PropIcon } from './props/icon';
 import { PropLabel } from './props/label';
+import { StencilUnknown } from './unknown';
 
 /**
  * This types specifies the props of a link or button in navigations.
@@ -13,7 +14,7 @@ import { PropLabel } from './props/label';
  */
 
 type RequiredButtonProps = PropLabel & {
-	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
+	on: KoliBriButtonCallbacks<StencilUnknown>; // actually no value is relevant
 };
 type RequiredLinkProps = PropHref;
 type RequiredTextProps = PropLabel;

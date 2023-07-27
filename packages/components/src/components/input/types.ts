@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
-import { Stringified } from '../../components';
 import { ButtonProps } from '../../types/button-link';
+import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { PropAlert } from '../../types/props/alert';
 import { PropDisabled } from '../../types/props/disabled';

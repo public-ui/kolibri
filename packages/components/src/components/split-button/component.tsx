@@ -10,6 +10,7 @@ import { validateAriaSelected } from '../../types/props/aria-selected';
 import { validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -215,7 +216,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -330,7 +331,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		setState(this, '_value', value);
 	}
 
