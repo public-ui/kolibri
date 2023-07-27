@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.18
-    version: 1.6.0-rc.18
+    specifier: 1.6.0-rc.19
+    version: 1.6.0-rc.19
 
 devDependencies:
   '@a11y-ui/core':
@@ -15,7 +15,7 @@ devDependencies:
     version: 1.0.3
   '@types/node':
     specifier: ts4.9
-    version: 20.4.4
+    version: 20.4.5
   '@typescript-eslint/eslint-plugin':
     specifier: 6.2.0
     version: 6.2.0(@typescript-eslint/parser@6.2.0)(eslint@8.45.0)(typescript@5.1.6)
@@ -785,17 +785,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.18:
-    resolution: {integrity: sha512-iAyZeIpqWUnwXj/HMlJPl+EdIvr3b1NB45DiLtckvd9tzzfKktVyDd9MCOYVT8gR4fDweg92Jt1PWp/nbJ4sPQ==}
+  /@public-ui/components@1.6.0-rc.19:
+    resolution: {integrity: sha512-YaQIk5IzI3jq24np6Ht6USo5Up8R2tPaKrylHRKrmoT6T5MKOqRnFJH6uDqGu/YQKE2Y8VqnxpHi+15cW13Clg==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.5
-      '@public-ui/schema': 1.6.0-rc.18
+      '@public-ui/schema': 1.6.0-rc.19
       i18next: 23.2.11
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.18:
-    resolution: {integrity: sha512-5JqdDhIMekNfXT7BKbFyU6tpf26Bpt1JoAtXg7HXfj4/VQXhUpttNFbmRCteQkurKDN60Y2OdFvNxTm8OnvnDw==}
+  /@public-ui/schema@1.6.0-rc.19:
+    resolution: {integrity: sha512-5S8hOiD/InCqklB1RgsJfqXs2uT1d3SO2bfKY7QKXKs2iBzb5KI4goGIRJluJgQ3d+SMz3NGBoDP8UK0tbZPmw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
@@ -908,8 +908,8 @@ packages:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
     dev: true
 
-  /@types/node@20.4.4:
-    resolution: {integrity: sha512-CukZhumInROvLq3+b5gLev+vgpsIqC2D0deQr/yS1WnxvmYLlJXZpaQrQiseMY+6xusl79E04UjWoqyr+t1/Ew==}
+  /@types/node@20.4.5:
+    resolution: {integrity: sha512-rt40Nk13II9JwQBdeYqmbn2Q6IVTA5uPhvSO+JVqdXw/6/4glI6oR9ezty/A9Hg5u7JH4OmYmuQ+XvjKm0Datg==}
     dev: true
 
   /@types/parse-json@4.0.0:

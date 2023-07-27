@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@a11y-ui/core':
     specifier: 1.0.3
@@ -8,8 +12,8 @@ dependencies:
     specifier: 1.4.5
     version: 1.4.5
   '@public-ui/schema':
-    specifier: 1.6.0-rc.18
-    version: 1.6.0-rc.18
+    specifier: 1.6.0-rc.19
+    version: 1.6.0-rc.19
   i18next:
     specifier: 23.2.11
     version: 23.2.11
@@ -44,7 +48,7 @@ devDependencies:
     version: 26.0.24
   '@types/node':
     specifier: ts4.9
-    version: 20.4.4
+    version: 20.4.5
   '@types/wcag-contrast':
     specifier: 3.0.0
     version: 3.0.0
@@ -1762,8 +1766,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.18:
-    resolution: {integrity: sha512-5JqdDhIMekNfXT7BKbFyU6tpf26Bpt1JoAtXg7HXfj4/VQXhUpttNFbmRCteQkurKDN60Y2OdFvNxTm8OnvnDw==}
+  /@public-ui/schema@1.6.0-rc.19:
+    resolution: {integrity: sha512-5S8hOiD/InCqklB1RgsJfqXs2uT1d3SO2bfKY7QKXKs2iBzb5KI4goGIRJluJgQ3d+SMz3NGBoDP8UK0tbZPmw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
@@ -2078,10 +2082,6 @@ packages:
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
-    dev: true
-
-  /@types/node@20.4.4:
-    resolution: {integrity: sha512-CukZhumInROvLq3+b5gLev+vgpsIqC2D0deQr/yS1WnxvmYLlJXZpaQrQiseMY+6xusl79E04UjWoqyr+t1/Ew==}
     dev: true
 
   /@types/node@20.4.5:
@@ -8368,7 +8368,3 @@ packages:
     dependencies:
       '@stencil/core': 4.0.2
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
