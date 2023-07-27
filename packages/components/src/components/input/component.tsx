@@ -5,9 +5,9 @@ import { translate } from '../../i18n';
 import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
-import { Props } from './types';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
+import { Props } from './types';
 
 /**
  * @internal

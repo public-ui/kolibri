@@ -1,8 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean } from '../../utils/prop.validators';
 import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.

@@ -1,8 +1,8 @@
 import { Component, h, Host, JSX, Prop, State } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
-import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } from './types';
 import { LabelPropType } from '../../types/props/label';
+import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } from './types';
 
 /**
  * @slot - Der Inhalt der Meldung.

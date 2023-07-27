@@ -751,6 +751,7 @@
 											console.clear();
 											console.log('form', event.target);
 											event.preventDefault();
+											event.stopPropagation();
 											const form = event.target;
 											if (form instanceof HTMLFormElement) {
 												console.log('form elements', form.elements);

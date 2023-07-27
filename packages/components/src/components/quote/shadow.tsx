@@ -1,8 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 @Component({
 	tag: 'kol-quote',

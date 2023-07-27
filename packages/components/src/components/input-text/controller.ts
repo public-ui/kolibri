@@ -4,10 +4,10 @@ import { Stringified } from '../../types/common';
 import { InputTextType } from '../../types/input/control/text';
 import { validateHasCounter } from '../../types/props/has-counter';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { PropSuggestions, SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { watchValidator } from '../../utils/prop.validators';
 import { InputPasswordController } from '../input-password/controller';
 import { Props as InputTextProps, Watches as InputTextWatches } from './types';
-import { PropSuggestions, SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {

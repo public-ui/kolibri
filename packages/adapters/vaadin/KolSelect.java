@@ -1,25 +1,27 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere vorgegebene Möglichkeiten ausgewählt werden können.
  */
 
 @Tag("kol-select")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-select")
 public class KolSelect extends Component {
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAccessKey(final Optional<String> value) {
-		getElement().setProperty("_access-key", value);
+	public void setAccessKey(final String value) {
+		getElement().setProperty("_access-key", value.toString());
 	}
 
 	/**
@@ -28,16 +30,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAccessKey() {
-		return getElement().getProperty("_access-key", null);
+		var value = getElement().getProperty("_access-key", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAlert(final Optional<String> value) {
-		getElement().setProperty("_alert", value);
+	public void setAlert(final String value) {
+		getElement().setProperty("_alert", value.toString());
 	}
 
 	/**
@@ -46,16 +49,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAlert() {
-		return getElement().getProperty("_alert", null);
+		var value = getElement().getProperty("_alert", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setDisabled(final Optional<String> value) {
-		getElement().setProperty("_disabled", value);
+	public void setDisabled(final String value) {
+		getElement().setProperty("_disabled", value.toString());
 	}
 
 	/**
@@ -64,16 +68,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getDisabled() {
-		return getElement().getProperty("_disabled", null);
+		var value = getElement().getProperty("_disabled", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setError(final Optional<String> value) {
-		getElement().setProperty("_error", value);
+	public void setError(final String value) {
+		getElement().setProperty("_error", value.toString());
 	}
 
 	/**
@@ -82,16 +87,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getError() {
-		return getElement().getProperty("_error", null);
+		var value = getElement().getProperty("_error", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHeight(final Optional<String> value) {
-		getElement().setProperty("_height", value);
+	public void setHeight(final String value) {
+		getElement().setProperty("_height", value.toString());
 	}
 
 	/**
@@ -100,16 +106,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHeight() {
-		return getElement().getProperty("_height", null);
+		var value = getElement().getProperty("_height", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHideLabel(final Optional<String> value) {
-		getElement().setProperty("_hide-label", value);
+	public void setHideLabel(final String value) {
+		getElement().setProperty("_hide-label", value.toString());
 	}
 
 	/**
@@ -118,16 +125,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHideLabel() {
-		return getElement().getProperty("_hide-label", null);
+		var value = getElement().getProperty("_hide-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt den Hinweistext an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHint(final Optional<String> value) {
-		getElement().setProperty("_hint", value);
+	public void setHint(final String value) {
+		getElement().setProperty("_hint", value.toString());
 	}
 
 	/**
@@ -136,16 +144,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHint() {
-		return getElement().getProperty("_hint", null);
+		var value = getElement().getProperty("_hint", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setIcon(final Optional<String> value) {
-		getElement().setProperty("_icon", value);
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value.toString());
 	}
 
 	/**
@@ -154,16 +163,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getIcon() {
-		return getElement().getProperty("_icon", null);
+		var value = getElement().getProperty("_icon", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setId(final Optional<String> value) {
-		getElement().setProperty("_id", value);
+	public void setId(final String value) {
+		getElement().setProperty("_id", value.toString());
 	}
 
 	/**
@@ -172,7 +182,8 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getId() {
-		return getElement().getProperty("_id", null);
+		var value = getElement().getProperty("_id", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -180,8 +191,8 @@ public class KolSelect extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -190,16 +201,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Options the user can choose from, also supporting Optgroup.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setList(final Optional<String> value) {
-		getElement().setProperty("_list", value);
+	public void setList(final String value) {
+		getElement().setProperty("_list", value.toString());
 	}
 
 	/**
@@ -208,16 +220,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getList() {
-		return getElement().getProperty("_list", null);
+		var value = getElement().getProperty("_list", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setMultiple(final Optional<String> value) {
-		getElement().setProperty("_multiple", value);
+	public void setMultiple(final String value) {
+		getElement().setProperty("_multiple", value.toString());
 	}
 
 	/**
@@ -226,16 +239,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getMultiple() {
-		return getElement().getProperty("_multiple", null);
+		var value = getElement().getProperty("_multiple", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setName(final Optional<String> value) {
-		getElement().setProperty("_name", value);
+	public void setName(final String value) {
+		getElement().setProperty("_name", value.toString());
 	}
 
 	/**
@@ -244,16 +258,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getName() {
-		return getElement().getProperty("_name", null);
+		var value = getElement().getProperty("_name", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Options the user can choose from, also supporting Optgroup.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setOptions(final Optional<String> value) {
-		getElement().setProperty("_options", value);
+	public void setOptions(final String value) {
+		getElement().setProperty("_options", value.toString());
 	}
 
 	/**
@@ -262,16 +277,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getOptions() {
-		return getElement().getProperty("_options", null);
+		var value = getElement().getProperty("_options", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setRequired(final Optional<String> value) {
-		getElement().setProperty("_required", value);
+	public void setRequired(final String value) {
+		getElement().setProperty("_required", value.toString());
 	}
 
 	/**
@@ -280,16 +296,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getRequired() {
-		return getElement().getProperty("_required", null);
+		var value = getElement().getProperty("_required", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Defines how many rows of options should be visible at the same time.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setRows(final Optional<String> value) {
-		getElement().setProperty("_rows", value);
+	public void setRows(final String value) {
+		getElement().setProperty("_rows", value.toString());
 	}
 
 	/**
@@ -298,16 +315,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getRows() {
-		return getElement().getProperty("_rows", null);
+		var value = getElement().getProperty("_rows", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSize(final Optional<String> value) {
-		getElement().setProperty("_size", value);
+	public void setSize(final String value) {
+		getElement().setProperty("_size", value.toString());
 	}
 
 	/**
@@ -316,16 +334,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSize() {
-		return getElement().getProperty("_size", null);
+		var value = getElement().getProperty("_size", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTabIndex(final Optional<String> value) {
-		getElement().setProperty("_tab-index", value);
+	public void setTabIndex(final String value) {
+		getElement().setProperty("_tab-index", value.toString());
 	}
 
 	/**
@@ -334,16 +353,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTabIndex() {
-		return getElement().getProperty("_tab-index", null);
+		var value = getElement().getProperty("_tab-index", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTooltipAlign(final Optional<String> value) {
-		getElement().setProperty("_tooltip-align", value);
+	public void setTooltipAlign(final String value) {
+		getElement().setProperty("_tooltip-align", value.toString());
 	}
 
 	/**
@@ -352,16 +372,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTooltipAlign() {
-		return getElement().getProperty("_tooltip-align", null);
+		var value = getElement().getProperty("_tooltip-align", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTouched(final Optional<String> value) {
-		getElement().setProperty("_touched", value);
+	public void setTouched(final String value) {
+		getElement().setProperty("_touched", value.toString());
 	}
 
 	/**
@@ -370,16 +391,17 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTouched() {
-		return getElement().getProperty("_touched", null);
+		var value = getElement().getProperty("_touched", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setValue(final Optional<String> value) {
-		getElement().setProperty("_value", value);
+	public void setValue(final String value) {
+		getElement().setProperty("_value", value.toString());
 	}
 
 	/**
@@ -388,6 +410,7 @@ public class KolSelect extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getValue() {
-		return getElement().getProperty("_value", null);
+		var value = getElement().getProperty("_value", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

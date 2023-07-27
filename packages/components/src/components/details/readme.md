@@ -90,10 +90,11 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 ## Properties
 
-| Property                | Attribute  | Description                                                        | Type                   | Default     |
-| ----------------------- | ---------- | ------------------------------------------------------------------ | ---------------------- | ----------- |
-| `_open`                 | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist. | `boolean \| undefined` | `false`     |
-| `_summary` _(required)_ | `_summary` | Gibt die Zusammenfassung der Detailbeschreibung an.                | `string`               | `undefined` |
+| Property   | Attribute  | Description                                                                                                               | Type                   | Default     |
+| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
+| `_label`   | `_label`   | Defines the summary label.                                                                                                | `string \| undefined`  | `undefined` |
+| `_open`    | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.                                                        | `boolean \| undefined` | `false`     |
+| `_summary` | `_summary` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Zusammenfassung der Detailbeschreibung an. | `string \| undefined`  | `undefined` |
 
 ## Slots
 

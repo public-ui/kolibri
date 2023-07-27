@@ -7,12 +7,12 @@ import { Orientation } from '../../types/orientation';
 import { AriaCurrent } from '../../types/props/aria-current';
 import { validateCollapsible } from '../../types/props/collapsible';
 import { validateHasCompactButton } from '../../types/props/has-compact-button';
+import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
 import { KoliBriNavAPI, KoliBriNavStates } from './types';
 import { watchNavLinks } from './validation';
-import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 
 /**
  * @deprecated Removed in v2

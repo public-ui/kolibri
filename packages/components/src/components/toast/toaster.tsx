@@ -1,5 +1,5 @@
-import { AlertType } from '../alert/types';
 import { LabelPropType } from '../../types/props/label';
+import { AlertType } from '../alert/types';
 
 type Toast = {
 	description: string;

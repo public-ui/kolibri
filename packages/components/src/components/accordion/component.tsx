@@ -3,6 +3,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateOpen } from '../../types/props/open';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
@@ -10,7 +11,6 @@ import { setState } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
 import { watchHeadingLevel } from '../heading/validation';
 import { API, KoliBriAccordionCallbacks, States } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 

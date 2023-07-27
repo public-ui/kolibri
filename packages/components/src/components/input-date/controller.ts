@@ -4,10 +4,10 @@ import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { validateReadOnly } from '../../types/props/read-only';
+import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
-import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 
 export class InputDateController extends InputIconController implements Watches {
 	// test: https://regex101.com/r/NTVh4L/1

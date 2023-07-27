@@ -4,9 +4,9 @@ import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { PropOptions } from '../../types/props/options';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
-import { PropOptions } from '../../types/props/options';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {

@@ -2,10 +2,10 @@ import { Generic } from '@a11y-ui/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { PropHasCloser } from '../../types/props/has-closer';
+import { PropLabel } from '../../types/props/label';
 import { PropShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { AlertType } from '../alert/types';
-import { PropLabel } from '../../types/props/label';
 
 type RequiredProps = unknown;
 type OptionalProps = {

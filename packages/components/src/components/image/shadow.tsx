@@ -1,9 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
 import { watchString } from '../../utils/prop.validators';
 import { Loading, validateLoading } from '../../utils/validators/loading';
 import { ComponentApi, States } from './types';
-import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
 
 @Component({
 	tag: 'kol-image',

@@ -40,6 +40,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	private readonly onClick = (event: Event) => {
 		if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
+			event.stopPropagation();
 			setEventTarget(event, this.ref);
 			this.state._on?.onClick(event, this.state._href);
 		}

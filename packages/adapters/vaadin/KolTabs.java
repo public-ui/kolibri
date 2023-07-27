@@ -1,25 +1,46 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Die **Tabs**-Komponente wird verwendet, um verwandte Inhalte auf derselben Seite zu organisieren und zwischen ihnen zu navigieren. Tabs sorgen dafür, dass große Inhaltsmengen für Nutzer:innen leichter organisiert werden können. Tabs sind in Registerkartenleisten angeordnet, die als Registerkartengruppen bezeichnet werden, wobei die Registerkartenbeschriftung den Nutzer:innen einen Hinweis darauf gibt, welcher Inhalt angezeigt wird, wenn die Registerkarte ausgewählt wird.
  */
 
 @Tag("kol-tabs")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-tabs")
 public class KolTabs extends Component {
 	/**
+	 * Defines the position of the tab captions.
+	 *
+	 * @param value String
+	 */
+	public void setAlign(final String value) {
+		getElement().setProperty("_align", value.toString());
+	}
+
+	/**
+	 * Defines the position of the tab captions.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getAlign() {
+		var value = getElement().getProperty("_align", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaLabel(final Optional<String> value) {
-		getElement().setProperty("_aria-label", value);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value.toString());
 	}
 
 	/**
@@ -28,16 +49,17 @@ public class KolTabs extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaLabel() {
-		return getElement().getProperty("_aria-label", null);
+		var value = getElement().getProperty("_aria-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -46,16 +68,17 @@ public class KolTabs extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welches Tab selektiert sein soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSelected(final Optional<String> value) {
-		getElement().setProperty("_selected", value);
+	public void setSelected(final String value) {
+		getElement().setProperty("_selected", value.toString());
 	}
 
 	/**
@@ -64,7 +87,8 @@ public class KolTabs extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSelected() {
-		return getElement().getProperty("_selected", null);
+		var value = getElement().getProperty("_selected", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -72,8 +96,8 @@ public class KolTabs extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setTabs(final Optional<String> value) {
-		getElement().setProperty("_tabs", value);
+	public void setTabs(final String value) {
+		getElement().setProperty("_tabs", value.toString());
 	}
 
 	/**
@@ -82,16 +106,17 @@ public class KolTabs extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTabs() {
-		return getElement().getProperty("_tabs", null);
+		var value = getElement().getProperty("_tabs", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die Position der Registrierkarten.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTabsAlign(final Optional<String> value) {
-		getElement().setProperty("_tabs-align", value);
+	public void setTabsAlign(final String value) {
+		getElement().setProperty("_tabs-align", value.toString());
 	}
 
 	/**
@@ -100,6 +125,7 @@ public class KolTabs extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTabsAlign() {
-		return getElement().getProperty("_tabs-align", null);
+		var value = getElement().getProperty("_tabs-align", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

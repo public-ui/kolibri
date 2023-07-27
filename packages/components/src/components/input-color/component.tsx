@@ -6,12 +6,12 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { SuggestionsPropType } from '../../types/props/suggestions';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputColorController } from './controller';
 import { ComponentApi, States } from './types';
-import { SuggestionsPropType } from '../../types/props/suggestions';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.

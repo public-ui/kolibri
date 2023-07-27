@@ -121,12 +121,13 @@ Standardansicht gelegt.
 
 ## Properties
 
-| Property                | Attribute  | Description                                                                                                                                           | Type                                                                                 | Default     |
-| ----------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
-| `_heading` _(required)_ | `_heading` | Gibt die Beschriftung der Komponente an.                                                                                                              | `string`                                                                             | `undefined` |
-| `_level`                | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
-| `_on`                   | --         | Gibt die EventCallback-Funktionen an.                                                                                                                 | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
-| `_open`                 | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.                                                                                    | `boolean \| undefined`                                                               | `false`     |
+| Property   | Attribute  | Description                                                                                                                                           | Type                                                                                 | Default     |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
+| `_heading` | `_heading` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Beschriftung der Komponente an.                                        | `string \| undefined`                                                                | `undefined` |
+| `_label`   | `_label`   | Defines the button label                                                                                                                              | `string \| undefined`                                                                | `undefined` |
+| `_level`   | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
+| `_on`      | --         | Gibt die EventCallback-Funktionen an.                                                                                                                 | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
+| `_open`    | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.                                                                                    | `boolean \| undefined`                                                               | `false`     |
 
 ## Slots
 

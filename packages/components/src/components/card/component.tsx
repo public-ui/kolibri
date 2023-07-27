@@ -2,9 +2,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { validateHasFooter } from '../../types/props/has-footer';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriCardAPI, KoliBriCardStates } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.

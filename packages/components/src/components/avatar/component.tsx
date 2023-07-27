@@ -1,10 +1,10 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { API, States } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
-import { formatLabelAsInitials } from './controller';
 import { translate } from '../../i18n';
+import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { formatLabelAsInitials } from './controller';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-avatar-wc',
