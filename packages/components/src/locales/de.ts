@@ -29,5 +29,5 @@ export default {
 	'sort-descending': 'Spalte {{column}} absteigend sortiert',
 	'sort-ascending': 'Spalte {{column}} aufsteigend sortiert',
 	'sort-none': 'Spalte {{column}} nicht sortiert',
-	'avatar-alt': 'Avatar-Bild von {{name}}',
+	'avatar-alt': 'Avatar von {{name}}',
 };

@@ -1,6 +1,5 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { getImageHtml } from '../../image/test/html.mock';
 import { formatLabelAsInitials } from '../controller';
 import { Props, States } from '../types';
 
@@ -17,10 +16,10 @@ export const getAvatarHtml = (props: Props): string => {
 <kol-avatar>
   <mock:shadow-root>
 		<kol-avatar-wc>
-			<div aria-description="${state._label}" class="container">
+			<div aria-label="kol-avatar-alt" class="container" role="img">
 				${
 					state._src
-						? getImageHtml({ _alt: 'kol-avatar-alt', _src: state._src }, ' class="image"')
+						? `<img alt="" aria-hidden="true" class="image" src="${state._src}" />`
 						: `<span aria-hidden="true" class="initials">
 							${formatLabelAsInitials(state._label)}
 						 </span>`
