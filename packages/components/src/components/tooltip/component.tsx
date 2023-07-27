@@ -6,9 +6,9 @@ import { Align } from '../../types/props/align';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
 import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
+import { IdPropType, validateId } from '../../types/props/id';
 
 @Component({
 	tag: 'kol-tooltip',
@@ -149,9 +149,9 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	@Prop() public _align?: Align = 'top';
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -170,8 +170,8 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	}
 
 	@Watch('_id')
-	public validateId(value?: string): void {
-		watchString(this, '_id', value);
+	public validateId(value?: IdPropType): void {
+		validateId(this, value);
 	}
 
 	@Watch('_label')

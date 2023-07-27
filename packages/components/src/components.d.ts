@@ -47,6 +47,7 @@ import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
 import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
+import { IdPropType } from "./types/props/id";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
@@ -89,6 +90,7 @@ export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
 export { RowsPropType } from "./types/props/rows";
 export { KoliBriToastEventCallbacks } from "./types/toast";
+export { IdPropType } from "./types/props/id";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -2800,9 +2802,9 @@ export namespace Components {
          */
         "_align"?: Align;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id": string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5984,9 +5986,9 @@ declare namespace LocalJSX {
          */
         "_align"?: Align;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id": string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
