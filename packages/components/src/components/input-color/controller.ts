@@ -1,10 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
 import { InputTypeOnOff } from '../../types/input/types';
+import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
-import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 
 export class InputColorController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

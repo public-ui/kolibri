@@ -25,6 +25,7 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
+import { dispatchKoliBriEvent } from '../../utils/events';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -59,12 +60,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 				form: this.host,
 				ref: this.ref,
 			});
-		} else if (typeof this.state._on?.onClick === 'function') {
-			event.stopPropagation();
-			setEventTarget(event, this.ref);
-			this.state._on?.onClick(event, this.state._value);
 		} else {
-			devWarning(`There was no button click callback configured! (_on.onClick)`);
+			event.preventDefault();
+			event.stopPropagation();
+			if (typeof this.state._on?.onClick === 'function') {
+				setEventTarget(event, this.ref);
+				this.state._on?.onClick(event, this.state._value);
+			} else {
+				console.log('dispatchKoliBriEvent', this.host, 'click', this.state._value);
+				this.host && dispatchKoliBriEvent(this.host, 'click', this.state._value);
+				devWarning(`There was no button click callback configured! (_on.onClick)`);
+			}
 		}
 	};
 

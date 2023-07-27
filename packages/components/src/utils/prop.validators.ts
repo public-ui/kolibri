@@ -10,7 +10,7 @@ import { Stringified } from '../types/common';
 import { AriaCurrent } from '../types/props/aria-current';
 import { PropHref } from '../types/props/href';
 import { devHint } from './a11y.tipps';
-import { Log, getDocument, getExperimentalMode, getWindow } from './dev.utils';
+import { getDocument, getExperimentalMode, getWindow, Log } from './dev.utils';
 
 // https://regex101.com/r/lSYLO9/1
 /**

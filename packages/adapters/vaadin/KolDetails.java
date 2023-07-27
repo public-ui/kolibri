@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * Mit Hilfe der **Detail**-Komponente können weiterführende Informationen zunächst mit einem kurzen Einleitungstext angezeigt werden, die erst nach Klick
@@ -16,16 +18,35 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
  */
 
 @Tag("kol-details")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**
+	 * Defines the summary label.
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
+	}
+
+	/**
+	 * Defines the summary label.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
 	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setOpen(final Optional<String> value) {
-		getElement().setProperty("_open", value);
+	public void setOpen(final String value) {
+		getElement().setProperty("_open", value.toString());
 	}
 
 	/**
@@ -34,7 +55,8 @@ public class KolDetails extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getOpen() {
-		return getElement().getProperty("_open", null);
+		var value = getElement().getProperty("_open", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -42,8 +64,8 @@ public class KolDetails extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setSummary(final Optional<String> value) {
-		getElement().setProperty("_summary", value);
+	public void setSummary(final String value) {
+		getElement().setProperty("_summary", value.toString());
 	}
 
 	/**
@@ -52,6 +74,7 @@ public class KolDetails extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSummary() {
-		return getElement().getProperty("_summary", null);
+		var value = getElement().getProperty("_summary", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

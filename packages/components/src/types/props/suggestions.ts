@@ -1,6 +1,7 @@
-import { Stringified } from '../common';
-import { watchJsonArrayString } from '../../utils/prop.validators';
 import { Generic } from '@a11y-ui/core';
+
+import { watchJsonArrayString } from '../../utils/prop.validators';
+import { Stringified } from '../common';
 import { W3CInputValue } from '../w3c';
 
 export type SuggestionsPropType = Stringified<W3CInputValue[]>;

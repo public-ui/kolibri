@@ -4,8 +4,8 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { PropAdjustHeight } from '../../types/props/adjust-height';
 import { PropHasCounter } from '../../types/props/has-counter';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { InputRequiredProps } from '../input/types';
 import { PropRows } from '../../types/props/rows';
+import { InputRequiredProps } from '../input/types';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 

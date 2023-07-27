@@ -1,9 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 
+import { RowsPropType, validateRows } from '../../types/props/rows';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
 import { CSSResize, Props, Watches } from './types';
-import { RowsPropType, validateRows } from '../../types/props/rows';
 
 export class TextareaController extends InputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;

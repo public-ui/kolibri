@@ -3,13 +3,13 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { InputTypeOnDefault } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { RowsPropType } from '../../types/props/rows';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
-import { RowsPropType } from '../../types/props/rows';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height

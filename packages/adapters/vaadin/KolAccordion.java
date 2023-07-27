@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * Die **Accordion**-Komponente ist ein Aufklapp-Menü. Klickt man auf den Kopfbereich, bestehend aus Icon und Überschrift, klappt der Inhalt mit zusätzlichen Informationen auf. Somit ist es ein interaktives Navigationselement, welches dazu dient, umfangreiche Inhalte platzsparend darzustellen.
@@ -12,7 +14,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
  */
 
 @Tag("kol-accordion")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-accordion")
 public class KolAccordion extends Component {
 	/**
@@ -20,8 +22,8 @@ public class KolAccordion extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHeading(final Optional<String> value) {
-		getElement().setProperty("_heading", value);
+	public void setHeading(final String value) {
+		getElement().setProperty("_heading", value.toString());
 	}
 
 	/**
@@ -30,16 +32,36 @@ public class KolAccordion extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHeading() {
-		return getElement().getProperty("_heading", null);
+		var value = getElement().getProperty("_heading", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Defines the button label
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
+	}
+
+	/**
+	 * Defines the button label
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLevel(final Optional<String> value) {
-		getElement().setProperty("_level", value);
+	public void setLevel(final String value) {
+		getElement().setProperty("_level", value.toString());
 	}
 
 	/**
@@ -48,16 +70,17 @@ public class KolAccordion extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLevel() {
-		return getElement().getProperty("_level", null);
+		var value = getElement().getProperty("_level", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setOpen(final Optional<String> value) {
-		getElement().setProperty("_open", value);
+	public void setOpen(final String value) {
+		getElement().setProperty("_open", value.toString());
 	}
 
 	/**
@@ -66,6 +89,7 @@ public class KolAccordion extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getOpen() {
-		return getElement().getProperty("_open", null);
+		var value = getElement().getProperty("_open", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

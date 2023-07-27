@@ -1,8 +1,8 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { KoliBriPaginationProps } from '../pagination/types';
 import { PropLabel } from '../../types/props/label';
+import { KoliBriPaginationProps } from '../pagination/types';
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 

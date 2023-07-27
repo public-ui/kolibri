@@ -1,16 +1,18 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
- * 
+ * Die **Avatar**-Komponente zeigt entweder ein kleines Bild des Users oder dessen Initialen an, falls kein Bild vorhanden ist.
  */
 
 @Tag("kol-avatar")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-avatar")
 public class KolAvatar extends Component {
 	/**
@@ -18,8 +20,8 @@ public class KolAvatar extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -28,16 +30,17 @@ public class KolAvatar extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Defines the image source to render
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSrc(final Optional<String> value) {
-		getElement().setProperty("_src", value);
+	public void setSrc(final String value) {
+		getElement().setProperty("_src", value.toString());
 	}
 
 	/**
@@ -46,6 +49,7 @@ public class KolAvatar extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSrc() {
-		return getElement().getProperty("_src", null);
+		var value = getElement().getProperty("_src", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

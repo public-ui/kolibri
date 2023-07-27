@@ -2,9 +2,9 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
 import { Align } from '../../types/props/align';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
 import { API, States } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 /**
  * @slot - Der Begriff, der erläutert werden soll.

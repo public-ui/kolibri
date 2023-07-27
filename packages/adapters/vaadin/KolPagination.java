@@ -1,25 +1,27 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Mit Hilfe der **Paginierung**-Komponente lassen sich umfangreiche, aufgeteilte Inhalte, wie zum Beispiel Suchergebnisse, der Reihe nach durchlaufen.
  */
 
 @Tag("kol-pagination")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.18")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.19")
 @JsModule("@public-ui/components/dist/components/kol-pagination")
 public class KolPagination extends Component {
 	/**
 	 * Gibt an, wie viele Seiten neben den am Rand liegenden Pfeil-Schaltern angezeigt werden sollen.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setBoundaryCount(final Optional<String> value) {
-		getElement().setProperty("_boundary-count", value);
+	public void setBoundaryCount(final String value) {
+		getElement().setProperty("_boundary-count", value.toString());
 	}
 
 	/**
@@ -28,16 +30,17 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getBoundaryCount() {
-		return getElement().getProperty("_boundary-count", null);
+		var value = getElement().getProperty("_boundary-count", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setCustomClass(final Optional<String> value) {
-		getElement().setProperty("_custom-class", value);
+	public void setCustomClass(final String value) {
+		getElement().setProperty("_custom-class", value.toString());
 	}
 
 	/**
@@ -46,16 +49,17 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getCustomClass() {
-		return getElement().getProperty("_custom-class", null);
+		var value = getElement().getProperty("_custom-class", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHasButtons(final Optional<String> value) {
-		getElement().setProperty("_has-buttons", value);
+	public void setHasButtons(final String value) {
+		getElement().setProperty("_has-buttons", value.toString());
 	}
 
 	/**
@@ -64,7 +68,8 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHasButtons() {
-		return getElement().getProperty("_has-buttons", null);
+		var value = getElement().getProperty("_has-buttons", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -72,8 +77,8 @@ public class KolPagination extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setPage(final Optional<String> value) {
-		getElement().setProperty("_page", value);
+	public void setPage(final String value) {
+		getElement().setProperty("_page", value.toString());
 	}
 
 	/**
@@ -82,16 +87,17 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getPage() {
-		return getElement().getProperty("_page", null);
+		var value = getElement().getProperty("_page", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, wie viele Einträge pro Seite angezeigt werden.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setPageSize(final Optional<String> value) {
-		getElement().setProperty("_page-size", value);
+	public void setPageSize(final String value) {
+		getElement().setProperty("_page-size", value.toString());
 	}
 
 	/**
@@ -100,16 +106,17 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getPageSize() {
-		return getElement().getProperty("_page-size", null);
+		var value = getElement().getProperty("_page-size", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die Optionen für das Seitenlängenselect.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setPageSizeOptions(final Optional<String> value) {
-		getElement().setProperty("_page-size-options", value);
+	public void setPageSizeOptions(final String value) {
+		getElement().setProperty("_page-size-options", value.toString());
 	}
 
 	/**
@@ -118,16 +125,17 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getPageSizeOptions() {
-		return getElement().getProperty("_page-size-options", null);
+		var value = getElement().getProperty("_page-size-options", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, wie viele Seiten neben der aktuell Ausgewählten angezeigt werden.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSiblingCount(final Optional<String> value) {
-		getElement().setProperty("_sibling-count", value);
+	public void setSiblingCount(final String value) {
+		getElement().setProperty("_sibling-count", value.toString());
 	}
 
 	/**
@@ -136,16 +144,17 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSiblingCount() {
-		return getElement().getProperty("_sibling-count", null);
+		var value = getElement().getProperty("_sibling-count", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTooltipAlign(final Optional<String> value) {
-		getElement().setProperty("_tooltip-align", value);
+	public void setTooltipAlign(final String value) {
+		getElement().setProperty("_tooltip-align", value.toString());
 	}
 
 	/**
@@ -154,7 +163,8 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTooltipAlign() {
-		return getElement().getProperty("_tooltip-align", null);
+		var value = getElement().getProperty("_tooltip-align", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -162,8 +172,8 @@ public class KolPagination extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setTotal(final Optional<String> value) {
-		getElement().setProperty("_total", value);
+	public void setTotal(final String value) {
+		getElement().setProperty("_total", value.toString());
 	}
 
 	/**
@@ -172,16 +182,17 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTotal() {
-		return getElement().getProperty("_total", null);
+		var value = getElement().getProperty("_total", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setVariant(final Optional<String> value) {
-		getElement().setProperty("_variant", value);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value.toString());
 	}
 
 	/**
@@ -190,6 +201,7 @@ public class KolPagination extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getVariant() {
-		return getElement().getProperty("_variant", null);
+		var value = getElement().getProperty("_variant", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

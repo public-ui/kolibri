@@ -1,8 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { Props, States } from '../types';
-import { formatLabelAsInitials } from '../controller';
 import { getImageHtml } from '../../image/test/html.mock';
+import { formatLabelAsInitials } from '../controller';
+import { Props, States } from '../types';
 
 export const getAvatarHtml = (props: Props): string => {
 	const state = mixMembers<Props, States>(

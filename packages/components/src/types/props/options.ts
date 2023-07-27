@@ -1,9 +1,10 @@
 import { Generic } from '@a11y-ui/core';
+
 import { watchJsonArrayString, WatchOptions } from '../../utils/prop.validators';
+import { validateInputSelectOptions } from '../../utils/validators/options';
 import { Stringified } from '../common';
 import { Optgroup, Option } from '../input/types';
 import { W3CInputValue } from '../w3c';
-import { validateInputSelectOptions } from '../../utils/validators/options';
 
 /* types */
 

@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
-import { LabelPropType } from '../../types/props/label';
+
 import { ImageSourcePropType } from '../../types/props/image-source';
+import { LabelPropType } from '../../types/props/label';
 
 type RequiredAvatarProps = {
 	label: LabelPropType;

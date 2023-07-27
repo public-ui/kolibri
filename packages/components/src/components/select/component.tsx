@@ -5,14 +5,14 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { OptionsWithOptgroupPropType } from '../../types/props/options';
+import { RowsPropType } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
 import { ComponentApi, States } from './types';
-import { RowsPropType } from '../../types/props/rows';
-import { OptionsWithOptgroupPropType } from '../../types/props/options';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);

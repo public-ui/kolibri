@@ -3,8 +3,8 @@ import { Generic } from '@a11y-ui/core';
 import { Events } from '../../enums/events';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
-import { PropOpen } from '../../types/props/open';
 import { PropLabel } from '../../types/props/label';
+import { PropOpen } from '../../types/props/open';
 
 export type KoliBriAccordionCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, boolean>;

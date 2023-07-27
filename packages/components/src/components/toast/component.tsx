@@ -2,13 +2,13 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { validateHasCloser } from '../../types/props/has-closer';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastAPI, KoliBriToastStates } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 /**
  * @slot - Der Inhalt der Meldung.

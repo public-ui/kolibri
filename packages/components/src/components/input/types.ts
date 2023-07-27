@@ -10,8 +10,8 @@ import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
-import { PropTouched } from '../../types/props/touched';
 import { PropSuggestions } from '../../types/props/suggestions';
+import { PropTouched } from '../../types/props/touched';
 
 export type InputRequiredProps = PropLabelWithExpertSlot;
 

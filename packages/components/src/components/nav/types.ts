@@ -8,9 +8,9 @@ import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropCollapsible } from '../../types/props/collapsible';
 import { PropCompact } from '../../types/props/compact';
 import { PropHasCompactButton } from '../../types/props/has-compact-button';
+import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
 import { KoliBriNavVariant } from './component';
-import { PropHideLabel } from '../../types/props/hide-label';
 
 type RequiredProps = {
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;

@@ -4,6 +4,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
@@ -21,7 +22,6 @@ import {
 	KoliBriTableSelectedHead,
 	KoliBriTableStates,
 } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 

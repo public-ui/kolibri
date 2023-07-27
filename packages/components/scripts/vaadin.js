@@ -3,12 +3,14 @@ const path = require('path');
 const ELEMENTS = require(path.relative(__dirname, 'custom-elements.json'));
 const PACKAGE_JSON = require(path.relative(__dirname, 'package.json'));
 
-const FILE_HEAD = `package de.itzbund.oss.kolibri.components;
+const FILE_HEAD = `package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 `;
 
@@ -50,7 +52,10 @@ const javaType = (type, required) => {
 };
 
 const BLACKLIST = [
+	'kol-alert-wc',
+	'kol-avatar-wc',
 	'kol-button-group',
+	'kol-button-group-wc',
 	'kol-color',
 	'kol-counter',
 	'kol-heading-wc',
@@ -58,12 +63,9 @@ const BLACKLIST = [
 	'kol-icon-icofont',
 	'kol-input-adapter-leanup',
 	'kol-input-radio-group',
-	'kol-kolibri',
-	'kol-logo',
 	'kol-link-group',
 	'kol-span',
 	'kol-span-wc',
-	'kol-version',
 ];
 
 ELEMENTS.tags.forEach((tag) => {
@@ -87,19 +89,20 @@ ELEMENTS.tags.forEach((tag) => {
 		file += `	/**
 	 * ${attribute.description}
 	 *
-	 * @param value ${javaType(attribute.type, attribute.required)}
+	 * @param value ${javaType(attribute.type, true)}
 	 */
-	public void set${pascalCase(attribute.name)}(final ${javaType(attribute.type)} value) {
-		getElement().setProperty("${attribute.name}", value);
+	public void set${pascalCase(attribute.name)}(final ${javaType(attribute.type, true)} value) {
+		getElement().setProperty("${attribute.name}", value.toString());
 	}
 
 	/**
 	 * ${attribute.description}
 	 *
-	 * @return ${javaType(attribute.type)}
+	 * @return ${javaType(attribute.type, attribute.require)}
 	 */
-	public ${javaType(attribute.type)} get${pascalCase(attribute.name)}() {
-		return getElement().getProperty("${attribute.name}", null);
+	public ${javaType(attribute.type, attribute.require)} get${pascalCase(attribute.name)}() {
+		var value = getElement().getProperty("${attribute.name}", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 `;

@@ -3,11 +3,11 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
 import { validateHasCloser } from '../../types/props/has-closer';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
-import { LabelPropType, validateLabel } from '../../types/props/label';
 
 const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
 	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
