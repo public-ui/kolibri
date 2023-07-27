@@ -83,18 +83,18 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-heading-wc {
 		font-weight: 700;
 	}
-	kol-tooltip #floating {
+	kol-tooltip .tooltip-floating {
 		border: 1px solid var(--color-metal);
 		border-radius: var(--border-radius);
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		border: 1px solid var(--color-metal);
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: var(--color-white);
 		color: var(--color-metal);
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5em;
 		padding: 0.5rem 0.75rem;
