@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { watchString, WatchStringOptions } from '../../utils/prop.validators';
 
-export type NamePropType = string;
+type NamePropType = string;
 
 export type PropName = {
 	name: NamePropType;

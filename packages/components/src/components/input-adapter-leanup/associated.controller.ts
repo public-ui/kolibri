@@ -4,6 +4,7 @@ import { StencilUnknown } from '../../types/unknown';
 import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';
 import { watchString } from '../../utils/prop.validators';
+import { validateName } from '../../types/props/name';
 
 const EXPERIMENTAL_MODE = getExperimentalMode();
 
@@ -153,7 +154,7 @@ export class AssociatedInputController implements Watches {
 	}
 
 	public validateName(value?: string): void {
-		watchString(this.component, '_name', value, {
+		validateName(this.component, value, {
 			hooks: {
 				afterPatch: () => {
 					this.setAttribute('name', this.formAssociated, this.component.state._name as string);
