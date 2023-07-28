@@ -1,10 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
+import { EventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
+import { PropHasCloser } from '../../types/props/has-closer';
 import { PropHasFooter } from '../../types/props/has-footer';
 import { PropLabel } from '../../types/props/label';
-import { PropHasCloser } from '../../types/props/has-closer';
-import { EventCallback } from '../../types/callbacks';
 
 export type KoliBriCardEventCallbacks = {
 	onClose?: EventCallback<Event>;

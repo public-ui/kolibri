@@ -1,14 +1,14 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
+import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
 import { validateHasFooter } from '../../types/props/has-footer';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { setState } from '../../utils/prop.validators';
+import { KoliBriAlertEventCallbacks } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriCardAPI, KoliBriCardEventCallbacks, KoliBriCardStates } from './types';
-import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
-import { translate } from '../../i18n';
-import { KoliBriAlertEventCallbacks } from '../alert/types';
-import { setState } from '../../utils/prop.validators';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
