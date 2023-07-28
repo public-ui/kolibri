@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.20
-    version: 1.6.0-rc.20
+    specifier: 1.6.0-rc.22
+    version: 1.6.0-rc.22
 
 devDependencies:
   '@a11y-ui/core':
@@ -785,17 +785,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.20:
-    resolution: {integrity: sha512-YsBY9GAeiaAgT62tp9ZDc3R/UGnQbbybIgMlJIFGDsNPpxz72BfmLNHOIvhXWyu+7zHoIJmXLBwxp+eYPYqfDA==}
+  /@public-ui/components@1.6.0-rc.22:
+    resolution: {integrity: sha512-+Hrjsj6QjLq7jQyAzbMZM6poipS1m22Y51V5/pKj+4ZGOcwRG41lm687WhCa43DhpskMkYb+gfWN+Jf0ItPPFw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.5
-      '@public-ui/schema': 1.6.0-rc.20
+      '@public-ui/schema': 1.6.0-rc.22
       i18next: 23.2.11
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.20:
-    resolution: {integrity: sha512-mWF6kP8QoFZDrUTyAA+mOnUWpkn72XLEYSNmObzF2RlAZulfywJIaHo/6HYJmc+YpC/oWbadAJ+Wnu72xZTlgw==}
+  /@public-ui/schema@1.6.0-rc.22:
+    resolution: {integrity: sha512-K511Us2oxQnMyAcS4rZgn9Dc7AEnHdc0PWyY3RdT7OO/155ZqM0Elpzldwf6eHkVSZyISHR5T/hlTevhN6yhZQ==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false

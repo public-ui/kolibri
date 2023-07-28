@@ -83,13 +83,16 @@
 	kol-span-wc > span {
 		gap: 0.25em;
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
-		background-color: #626262;
+	kol-tooltip .tooltip-floating {
+		border: 1px solid #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-arrow {
+		border: 1px solid #626262;
+	}
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -1759,20 +1762,23 @@
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
-			<kol-link _href="#card" _listen-aria-current="page">Card</kol-link>
-			<kol-link _href="#modal" _listen-aria-current="location">Modal</kol-link>
-			<kol-link _href="#nav" _listen-aria-current="step">Nav</kol-link>
-		</main>
-
-		<footer>
+			<button></button>
 			<kol-button
-				style="position: fixed; right: 1rem; bottom: 4rem"
-				id="table-of-content-button"
-				_icon="codicon codicon-arrow-up"
-				_hide-label
-				_tooltip-align="left"
-				_label="Zum Seitenanfang hochscrollen"
+				_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
+				_label="primary"
+				_name="button-name"
+				_sync-value-by-selector="button"
+				_variant="primary"
+				_value="button-value"
 			></kol-button>
-		</footer>
+			<kol-split-button
+				_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
+				_label="primary"
+				_name="button-name"
+				_sync-value-by-selector="button"
+				_variant="primary"
+				_value="button-value"
+			></kol-split-button>
+		</main>
 	</body>
 </html>

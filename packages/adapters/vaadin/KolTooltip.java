@@ -18,7 +18,7 @@ Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. �
  */
 
 @Tag("kol-tooltip")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.22")
 @JsModule("@public-ui/components/dist/components/kol-tooltip")
 public class KolTooltip extends Component {
 	/**
@@ -41,7 +41,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @param value String
 	 */
@@ -50,7 +50,7 @@ public class KolTooltip extends Component {
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @return Optional<String>
 	 */

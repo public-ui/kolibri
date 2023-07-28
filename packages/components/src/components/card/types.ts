@@ -1,8 +1,14 @@
 import { Generic } from '@a11y-ui/core';
 
+import { EventCallback } from '../../types/callbacks';
 import { HeadingLevel } from '../../types/heading-level';
+import { PropHasCloser } from '../../types/props/has-closer';
 import { PropHasFooter } from '../../types/props/has-footer';
 import { PropLabel } from '../../types/props/label';
+
+export type KoliBriCardEventCallbacks = {
+	onClose?: EventCallback<Event>;
+};
 
 type RequiredProps = unknown;
 type OptionalProps = {
@@ -15,8 +21,11 @@ type OptionalProps = {
 	 */
 	headline: string;
 	level: HeadingLevel;
+	on: KoliBriCardEventCallbacks;
 } & PropHasFooter &
-	PropLabel; // TODO v2: PropLabel will become required
+	PropLabel & // TODO v2: PropLabel will become required
+	PropHasCloser;
+
 export type koliBriCardProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps & PropLabel;

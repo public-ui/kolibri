@@ -3,13 +3,13 @@ import { KoliBri } from '@public-ui/schema';
 // GZD Design System (Desy v2)
 export const DESYv2 = KoliBri.createTheme('desy-v2', {
 	GLOBAL: `
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color:#f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;

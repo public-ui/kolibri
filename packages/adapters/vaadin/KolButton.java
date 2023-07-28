@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.22")
 @JsModule("@public-ui/components/dist/components/kol-button")
 public class KolButton extends Component {
 	/**
@@ -278,6 +278,25 @@ public class KolButton extends Component {
 	 */
 	public Optional<String> getLabel() {
 		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Gibt den technischen Namen des Eingabefeldes an.
+	 *
+	 * @param value String
+	 */
+	public void setName(final String value) {
+		getElement().setProperty("_name", value.toString());
+	}
+
+	/**
+	 * Gibt den technischen Namen des Eingabefeldes an.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getName() {
+		var value = getElement().getProperty("_name", null);
 		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 

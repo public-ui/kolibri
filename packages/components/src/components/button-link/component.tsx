@@ -42,8 +42,10 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 					_hideLabel={this._hideLabel || this._iconOnly}
 					_id={this._id}
 					_label={this._label}
+					_name={this._name}
 					_on={this._on}
 					_role="link"
+					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
@@ -121,6 +123,11 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
+	 * Gibt den technischen Namen des Eingabefeldes an.
+	 */
+	@Prop() public _name?: string;
+
+	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
@@ -129,6 +136,12 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)

@@ -86,7 +86,7 @@ export class KolTextarea implements ComponentApi {
 							placeholder={this.state._placeholder}
 							spellcheck="false"
 							{...this.controller.onFacade}
-							onKeyUp={this.onChange}
+							onKeyUp={this.onKeyUp}
 							style={{
 								resize: this.state._resize,
 							}}
@@ -359,15 +359,12 @@ export class KolTextarea implements ComponentApi {
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
-	private readonly onChange = (event: Event) => {
+	private readonly onKeyUp = () => {
 		if (this.ref instanceof HTMLTextAreaElement) {
 			setState(this, '_currentLength', this.ref.value.length);
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.ref);
 			}
-		}
-		if (typeof this.controller.onFacade.onChange === 'function') {
-			this.controller.onFacade.onChange(event);
 		}
 	};
 }
