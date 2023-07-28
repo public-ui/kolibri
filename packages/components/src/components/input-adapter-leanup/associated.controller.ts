@@ -1,10 +1,9 @@
 import { Generic } from '@a11y-ui/core';
 
+import { validateName } from '../../types/props/name';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';
-import { watchString } from '../../utils/prop.validators';
-import { validateName } from '../../types/props/name';
 
 const EXPERIMENTAL_MODE = getExperimentalMode();
 
