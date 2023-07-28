@@ -5,6 +5,8 @@ import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { OptionsPropType } from '../../types/props/options';
+import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
@@ -53,7 +55,7 @@ export class KolInputRadio implements ComponentApi {
 							<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
 						</span>
 					</legend>
-					{this.state._list.map((option, index) => {
+					{this.state._options.map((option, index) => {
 						/**
 						 * Damit der Value einer Option ein beliebigen Typ haben kann
 						 * muss man auf HTML-Ebene den Value auf einen String-Wert
@@ -77,10 +79,10 @@ export class KolInputRadio implements ComponentApi {
 								<div slot={slotName}>
 									<input
 										ref={this.state._value === option.value ? this.catchRef : undefined}
+										title=""
 										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 										aria-labelledby={`${customId}-label`}
-										title=""
 										type="radio"
 										id={customId}
 										checked={this.state._value === option.value}
@@ -174,8 +176,9 @@ export class KolInputRadio implements ComponentApi {
 
 	/**
 	 * Gibt die Liste der Optionen für das Eingabefeld an.
+	 * @deprecated Use _options.
 	 */
-	@Prop() public _list!: Stringified<Option<W3CInputValue>[]>;
+	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -186,6 +189,11 @@ export class KolInputRadio implements ComponentApi {
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
 	@Prop() public _on?: InputTypeOnDefault;
+
+	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 */
+	@Prop() public _options?: OptionsPropType;
 
 	/**
 	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
@@ -224,14 +232,14 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _value?: Stringified<W3CInputValue>;
 
 	@State() public state: States = {
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_options: [],
 		_orientation: 'vertical',
 	};
 
 	public constructor() {
-		this.controller = new InputRadioController(this, 'radio', this.host);
+		this.controller = new InputRadioController(this, 'input-radio', this.host);
 	}
 
 	@Watch('_accessKey')
@@ -276,7 +284,7 @@ export class KolInputRadio implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
-		this.controller.validateList(value);
+		this.validateOptions(value);
 	}
 
 	@Watch('_name')
@@ -287,6 +295,11 @@ export class KolInputRadio implements ComponentApi {
 	@Watch('_on')
 	public validateOn(value?: InputTypeOnDefault): void {
 		this.controller.validateOn(value);
+	}
+
+	@Watch('_options')
+	public validateOptions(value?: OptionsPropType): void {
+		this.controller.validateOptions(value);
 	}
 
 	@Watch('_orientation')
@@ -315,7 +328,7 @@ export class KolInputRadio implements ComponentApi {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		this.controller.validateValue(value);
 	}
 

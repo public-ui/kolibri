@@ -1,6 +1,7 @@
 import { ABBR_ROUTES } from '../samples/abbr/routes';
 import { ACCORDION_ROUTES } from '../samples/accordion/routes';
 import { ALERT_ROUTES } from '../samples/alert/routes';
+import { AVATAR_ROUTES } from '../samples/avatar/routes';
 import { BADGE_ROUTES } from '../samples/badge/routes';
 import { BREADCRUMB_ROUTES } from '../samples/breadcrumb/routes';
 import { BUTTON_GROUP_ROUTES } from '../samples/button-group/routes';
@@ -46,6 +47,7 @@ export const ROUTES: Routes = {
 	...ABBR_ROUTES,
 	...ACCORDION_ROUTES,
 	...ALERT_ROUTES,
+	...AVATAR_ROUTES,
 	...BADGE_ROUTES,
 	...BREADCRUMB_ROUTES,
 	...BUTTON_ROUTES,

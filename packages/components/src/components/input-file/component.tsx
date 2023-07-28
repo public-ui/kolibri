@@ -168,7 +168,7 @@ export class KolInputFile implements ComponentApi {
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -197,12 +197,12 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _value?: string;
 
 	@State() public state: States = {
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 	};
 
 	public constructor() {
-		this.controller = new InputFileController(this, 'file', this.host);
+		this.controller = new InputFileController(this, 'input-file', this.host);
 	}
 
 	@Watch('_accept')

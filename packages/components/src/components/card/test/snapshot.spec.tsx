@@ -17,9 +17,10 @@ executeTests<koliBriCardProps>(
 		return page;
 	},
 	{
-		_heading: ['Überschrift'],
-		_level: [1, 2, 3, 4, 5, 6],
+		_hasCloser: [false, true],
 		_hasFooter: [false, true],
+		_label: ['Überschrift'],
+		_level: [1, 2, 3, 4, 5, 6],
 	},
 	getCardHtml,
 	{

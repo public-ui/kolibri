@@ -2,6 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { PropHasCloser } from '../../types/props/has-closer';
+import { PropLabel } from '../../types/props/label';
 import { PropShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { AlertType } from '../alert/types';
@@ -9,13 +10,17 @@ import { AlertType } from '../alert/types';
 type RequiredProps = unknown;
 type OptionalProps = {
 	alert: boolean;
-	heading: string; // TODO: should be a label?!?
+	/**
+	 * @deprecated Use label.
+	 */
+	heading: string;
 	level: HeadingLevel;
 	on: KoliBriToastEventCallbacks;
 	showDuration: number;
 	type: AlertType;
 } & PropHasCloser &
-	PropShow;
+	PropShow &
+	PropLabel;
 export type KoliBriToastProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;

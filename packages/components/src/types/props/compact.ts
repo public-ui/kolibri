@@ -1,7 +1,3 @@
-import { Generic } from '@a11y-ui/core';
-
-import { watchBoolean } from '../../utils/prop.validators';
-
 /* types */
 /** de
  * Macht die Navigation kompakt.
@@ -9,11 +5,9 @@ import { watchBoolean } from '../../utils/prop.validators';
 /** en
  * Makes the navigation compact.
  */
+/**
+ * @deprecated Use PropHideLabel
+ */
 export type PropCompact = {
 	compact: boolean;
-};
-
-/* validator */
-export const validateCompact = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_compact', value);
 };

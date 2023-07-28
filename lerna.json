@@ -21,8 +21,9 @@
 		"packages/themes/bmf",
 		"packages/themes/ecl/ec",
 		"packages/themes/ecl/eu",
-		"packages/themes/itzbund"
+		"packages/themes/itzbund",
+		"packages/themes/mfm"
 	],
 	"useNx": false,
-	"version": "1.6.0-rc.12"
+	"version": "1.6.0-rc.21"
 }

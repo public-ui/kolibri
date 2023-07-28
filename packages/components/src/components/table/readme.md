@@ -1,4 +1,4 @@
-k# Table
+# Table
 
 Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
@@ -16,7 +16,7 @@ Dadurch, dass die Table-Komponente das valide und barrierefreie Markup dynamisch
 
 Die Table-Komponente unterstützt folgende Funktionalitäten:
 
-- Tabellenbeschreibung durch ein **`caption`**-Attribut.
+- Tabellenbeschreibung durch ein **`label`**-Attribut.
 - Mehrzeilige Spaltenüberschriften in horizontaler oder vertikaler Richtung.
 - Sortierfunktion für entweder horizontale und vertikale Ausrichtung.
 - Unterschiedliche Render-Funktion für die Zellen.
@@ -31,7 +31,7 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 
 ### Pagination
 
-Über das Attribut **`_pagination`** kann optional eine Vielzahl zusätzlicher Properties zur Steuerung der Pagination übergeben werden. Die genaue Beschreibung der Optionen ist auf der Seite <kol-link _href="/docs/components/pagination" _label="Pagination"></kol-link> zu finden.
+Über das Attribut **`_pagination`** kann optional eine Vielzahl zusätzlicher Properties zur Steuerung der Pagination übergeben werden. Die genaue Beschreibung der Optionen ist auf der Seite <kol-link _href="/docs/components/pagination" _label="/docs/components/pagination" _label="Pagination"></kol-link> zu finden.
 
 #### KoliBriTableHeaders
 
@@ -73,12 +73,12 @@ Die Table-Komponente unterstützt folgende Funktionalitäten **nicht**:
 ### Code
 
 ```html
-<kol-table _caption="Tabellenbeschreibung" _headers="{'horizontal': [[{'label':'Montag','key':'montag'}]]}" _pagination="[{'page':2}]"></kol-table>
+<kol-table _label="Tabellenbeschreibung" _headers="{'horizontal': [[{'label':'Montag','key':'montag'}]]}" _pagination="[{'page':2}]"></kol-table>
 ```
 
 ### Beispiel
 
-<kol-table _caption="Nur Vertikal Header, Daten Vertikal, Pagination" _headers="{'horizontal':[[{'label':'Montag','key':'montag'}]]}" _data="[{'montag':'Zelle1'},{'montag':'Zelle2'}]" _pagination="{'page':2}"></kol-table>
+<kol-table _label="Nur Vertikal Header, Daten Vertikal, Pagination" _headers="{'horizontal':[[{'label':'Montag','key':'montag'}]]}" _data="[{'montag':'Zelle1'},{'montag':'Zelle2'}]" _pagination="{'page':2}"></kol-table>
 
 ## Verwendung
 
@@ -100,35 +100,36 @@ Aktuell werden folgende Attribute von der Komponente verwaltet: `role`, `scope` 
 
 Das heißt beispielsweise, dass bei den Spaltenüberschriften automatisch entweder die Rolle `colheader` oder `rowheader` gesetzt wird. Darüber hinaus wird der Scope entweder auf `col`/`colgroup` oder `row`/`rowgroup` gesetzt. Ähnlich dieser Automatismen werden auch die `aria-\*`-Attribute je nach Relevanz gesetzt.
 
-Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschrieben: https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
+Warum die Tabelle einen **Tabindex** hat, wird auf der folgenden Webseite beschrieben: <kol-link _href="" _label=""></kol-link>https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
 
 ## Links und Referenzen
 
-- https://www.w3.org/WAI/tutorials/tables/
-- https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html
-- https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
-- https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen
-- https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html
-- https://www.digitala11y.com/aria-sort-properties/
-- https://dequeuniversity.com/library/aria/table-sortable
-- https://www.maxability.co.in/2016/06/07/aria-sort-property/
-- https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort
-- https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen
-- https://stackoverflow.com/questions/1312236/
-- https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable
+- <kol-link _href="https://www.w3.org/WAI/tutorials/tables/" _label="https://www.w3.org/WAI/tutorials/tables/" _target="_blank"></kol-link>
+- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html" _label="https://www.barrierefreies-webdesign.de/knowhow/datentabellen/scope.html" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" _label="https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _label="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
+- <kol-link _href="https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html" _label="https://www.barrierefreies-webdesign.de/knowhow/live-regions/attribute.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.digitala11y.com/aria-sort-properties/" _label="https://www.digitala11y.com/aria-sort-properties/" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/library/aria/table-sortable" _label="https://dequeuniversity.com/library/aria/table-sortable" _target="_blank"></kol-link>
+- <kol-link _href="https://www.maxability.co.in/2016/06/07/aria-sort-property/" _label="https://www.maxability.co.in/2016/06/07/aria-sort-property/" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _label="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _label="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/aria-live-regionen" _target="_blank"></kol-link>
+- <kol-link _href="https://stackoverflow.com/questions/1312236/" _label="https://stackoverflow.com/questions/1312236/" _target="_blank"></kol-link>
+- <kol-link _href="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _label="https://dequeuniversity.com/rules/axe/3.5/scrollable-region-focusable" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                | Attribute     | Description                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Default     |
-| ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `_caption` _(required)_ | `_caption`    | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `undefined` |
-| `_data` _(required)_    | `_data`       | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.                                                     | `KoliBriTableDataType[] \| string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
-| `_dataFoot`             | `_data-foot`  | Hier können die Daten für die Fußzeile der Tabelle übergeben werden.                                                        | `KoliBriTableDataType[] \| string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
-| `_headers` _(required)_ | `_headers`    | Gibt die horizontalen und vertikalen Header für die Tabelle an.                                                             | `string \| { horizontal?: KoliBriTableHeaderCell[][] \| undefined; vertical?: KoliBriTableHeaderCell[][] \| undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                                     | `undefined` |
-| `_minWidth`             | `_min-width`  | Gibt an, die minimale Breite der Tabelle an.                                                                                | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
-| `_pagination`           | `_pagination` | Gibt an, ob die Daten geteilt in Seiten angezeigt wird.                                                                     | `boolean \| string \| undefined \| { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks \| undefined; _page?: number \| undefined; _total?: number \| undefined; _boundaryCount?: number \| undefined; _hasButtons?: boolean \| Stringified<PaginationHasButton> \| undefined; _pageSize?: number \| undefined; _pageSizeOptions?: Stringified<number[]> \| undefined; _siblingCount?: number \| undefined; _tooltipAlign?: Align \| undefined; _customClass?: string \| undefined; _variant?: KoliBriButtonVariant \| undefined; }` | `undefined` |
+| Property                | Attribute     | Description                                                                                                                                                                                       | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Default     |
+| ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `_caption`              | `_caption`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
+| `_data` _(required)_    | `_data`       | Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.                                                                                                                           | `KoliBriTableDataType[] \| string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
+| `_dataFoot`             | `_data-foot`  | Hier können die Daten für die Fußzeile der Tabelle übergeben werden.                                                                                                                              | `KoliBriTableDataType[] \| string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `undefined` |
+| `_headers` _(required)_ | `_headers`    | Gibt die horizontalen und vertikalen Header für die Tabelle an.                                                                                                                                   | `string \| { horizontal?: KoliBriTableHeaderCell[][] \| undefined; vertical?: KoliBriTableHeaderCell[][] \| undefined; }`                                                                                                                                                                                                                                                                                                                                                                                                                     | `undefined` |
+| `_label`                | `_label`      | Defines the table caption.                                                                                                                                                                        | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
+| `_minWidth`             | `_min-width`  | Gibt an, die minimale Breite der Tabelle an.                                                                                                                                                      | `string \| undefined`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `undefined` |
+| `_pagination`           | `_pagination` | Gibt an, ob die Daten geteilt in Seiten angezeigt wird.                                                                                                                                           | `boolean \| string \| undefined \| { _page: number; } & { _on?: KoliBriPaginationButtonCallbacks \| undefined; _page?: number \| undefined; _total?: number \| undefined; _boundaryCount?: number \| undefined; _hasButtons?: boolean \| Stringified<PaginationHasButton> \| undefined; _pageSize?: number \| undefined; _pageSizeOptions?: Stringified<number[]> \| undefined; _siblingCount?: number \| undefined; _tooltipAlign?: Align \| undefined; _customClass?: string \| undefined; _variant?: KoliBriButtonVariant \| undefined; }` | `undefined` |
 
 ## Dependencies
 
@@ -152,6 +153,7 @@ graph TD;
   kol-pagination --> kol-select
   kol-pagination --> kol-button-wc
   kol-select --> kol-input
+  kol-select --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert

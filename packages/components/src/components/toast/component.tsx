@@ -2,9 +2,10 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { validateHasCloser } from '../../types/props/has-closer';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
-import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
 import { KoliBriToastAPI, KoliBriToastStates } from './types';
@@ -32,8 +33,14 @@ export class KolToast implements KoliBriToastAPI {
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
+	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string = '';
+
+	/**
+	 * Defines the text to show in the Toast.
+	 */
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -78,7 +85,12 @@ export class KolToast implements KoliBriToastAPI {
 
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value);
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_level')
@@ -121,7 +133,7 @@ export class KolToast implements KoliBriToastAPI {
 	public componentWillLoad(): void {
 		this.validateAlert(this._alert);
 		this.validateHasCloser(this._hasCloser);
-		this.validateHeading(this._heading);
+		this.validateLabel(this._label || this._heading);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateShow(this._show);
@@ -163,7 +175,7 @@ export class KolToast implements KoliBriToastAPI {
 					<div>
 						<kol-alert
 							_alert={this.state._alert}
-							_heading={this.state._heading}
+							_label={this.state._label}
 							_level={this.state._level}
 							_hasCloser={this.state._hasCloser}
 							_type={this.state._type}

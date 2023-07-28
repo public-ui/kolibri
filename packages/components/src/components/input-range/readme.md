@@ -40,7 +40,7 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 
 ## Links und Referenzen
 
-- https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
@@ -58,13 +58,15 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 | `_icon`               | `_icon`          | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                          | `string \| undefined \| { right?: IconOrIconClass \| undefined; left?: IconOrIconClass \| undefined; }` | `undefined` |
 | `_id`                 | `_id`            | Gibt die interne ID des primären Elements in der Komponente an.                                                                                      | `string \| undefined`                                                                                   | `undefined` |
 | `_label` _(required)_ | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                          | `boolean \| string`                                                                                     | `undefined` |
-| `_list`               | `_list`          | Gibt die Liste der Vorschlagswörter an.                                                                                                              | `Option<number>[] \| string \| undefined`                                                               | `undefined` |
+| `_list`               | `_list`          | <span style="color:red">**[DEPRECATED]**</span> Use \_suggestions.<br/><br/>Gibt die Liste der Vorschlagswörter an.                                  | `Option<W3CInputValue>[] \| string \| undefined`                                                        | `undefined` |
 | `_max`                | `_max`           | Gibt den größtmöglichen Eingabewert an.                                                                                                              | `number \| undefined`                                                                                   | `undefined` |
 | `_min`                | `_min`           | Gibt den kleinstmöglichen Eingabewert an.                                                                                                            | `number \| undefined`                                                                                   | `undefined` |
 | `_name`               | `_name`          | Gibt den technischen Namen des Eingabefeldes an.                                                                                                     | `string \| undefined`                                                                                   | `undefined` |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                | `undefined` |
 | `_step`               | `_step`          | Gibt die Schrittweite der Wertveränderung an.                                                                                                        | `number \| undefined`                                                                                   | `undefined` |
+| `_suggestions`        | `_suggestions`   | Suggestions to provide for the input.                                                                                                                | `W3CInputValue[] \| string \| undefined`                                                                | `undefined` |
 | `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                                   | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                   | `'top'`     |
 | `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                                  | `false`     |
 | `_value`              | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                  | `number \| undefined`                                                                                   | `undefined` |
 
@@ -79,12 +81,14 @@ Der Input-Typ **Range** erzeugt ein interaktives Element, mit dem Werte durch Ve
 ### Depends on
 
 - kol-input
+- [kol-tooltip](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-input-range --> kol-input
+  kol-input-range --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert

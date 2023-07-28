@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { ButtonProps } from '../../../types/button-link';
+import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../../types/props/label';
 
@@ -15,7 +16,7 @@ type OptionalProps = {
 	id: string;
 	name: string;
 	on: InputTypeOnDefault;
-	smartButton: ButtonProps;
+	smartButton: Stringified<ButtonProps>;
 	syncValueBySelector: string;
 	tabIndex: number;
 };

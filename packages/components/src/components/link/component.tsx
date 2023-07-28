@@ -5,7 +5,8 @@ import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, 
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';
-import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
+import { validateAriaControls } from '../../types/props/aria-controls';
+import { AriaCurrent, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
 import { validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
@@ -13,9 +14,9 @@ import { validateHref } from '../../types/props/href';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { validateStealth } from '../../types/props/stealth';
-import { a11yHintDisabled, devHint } from '../../utils/a11y.tipps';
+import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
+import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 
@@ -39,6 +40,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	private readonly onClick = (event: Event) => {
 		if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
+			event.stopPropagation();
 			setEventTarget(event, this.ref);
 			this.state._on?.onClick(event, this.state._href);
 		}
@@ -142,28 +144,36 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated use _listen-aria-current instead
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 *  @deprecated use _label instead
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
@@ -211,6 +221,11 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
+
+	/**
+	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 */
+	@Prop() public _listenAriaCurrent?: AriaCurrent;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -268,19 +283,29 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
 		_icon: {},
-		_label: false,
+		_label: false, // TODO: version 1
+		// _label: '', // TODO: version 2
 	};
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
-		watchString(this, '_ariaControls', value);
+		validateAriaControls(this, value);
 	}
 
+	/**
+	 * @deprecated use aria-current only in state
+	 */
 	@Watch('_ariaCurrent')
 	public validateAriaCurrent(value?: AriaCurrent): void {
 		validateAriaCurrent(this, value);
 	}
 
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaExpanded')
 	public validateAriaExpanded(value?: boolean): void {
 		watchBoolean(this, '_ariaExpanded', value);
@@ -293,7 +318,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	public validateAriaLabel(value?: string): void {
 		this.validateLabel(value);
 	}
-
+	/**
+	 * @deprecated
+	 */
 	@Watch('_ariaSelected')
 	public validateAriaSelected(value?: boolean): void {
 		validateAriaSelected(this, value);
@@ -349,6 +376,11 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelWithExpertSlotPropType): void {
 		validateLabelWithExpertSlot(this, value);
+	}
+
+	@Watch('_listenAriaCurrent')
+	public validateListenAriaCurrent(value?: AriaCurrent): void {
+		validateListenAriaCurrent(this, value);
 	}
 
 	/**
@@ -430,6 +462,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		this.validateIcon(this._icon);
 		this.validateIconAlign(this._iconAlign);
 		this.validateLabel(this._label || this._ariaLabel);
+		this.validateListenAriaCurrent(this._listenAriaCurrent);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
 		this.validateSelector(this._selector);
@@ -439,5 +472,23 @@ export class KolLinkWc implements KoliBriLinkAPI {
 		this.validateTargetDescription(this._targetDescription);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateUseCase(this._useCase);
+	}
+
+	private unsubscribeAriaCurrentSubject = ariaCurrentSubject.subscribe((event) => {
+		try {
+			if (this.state._listenAriaCurrent && this.state._listenAriaCurrent === event.ariaCurrent) {
+				if (this.state._href === event.href) {
+					this.validateAriaCurrent(event.ariaCurrent);
+				} else {
+					this.validateAriaCurrent(false);
+				}
+			}
+		} catch (e) {
+			devWarning(`The aria-current event is not valid.`);
+		}
+	});
+
+	public disconnectedCallback(): void {
+		this.unsubscribeAriaCurrentSubject.unsubscribe();
 	}
 }

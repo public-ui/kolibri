@@ -7,30 +7,30 @@ Die **Select**-Komponente erzeugt eine Auswahlliste, aus der eine oder mehrere v
 ### Code
 
 ```html
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}" _value="['1']"> Auswahlfeld </kol-select>
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
+<kol-select _options="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _value="['1']"> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
 	Auswahlfeld (Mehrfachauswahl)
 </kol-select>
 <kol-select
-	_list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]"
-	_size="4"
+	_options="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]"
+	_rows="4"
 	_value="['1']"
 >
-	Auswahlfeld mit _size
+	Auswahlfeld mit _rows
 </kol-select>
 ```
 
 ### Beispiel
 
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}" _value="['1']"> Auswahlfeld </kol-select>
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
+<kol-select _options="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}" _value="['1']"> Auswahlfeld </kol-select>
+<kol-select _options="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'}]" _multiple _value="['0','2']">
 Auswahlfeld (Mehrfachauswahl)
 </kol-select>
-<kol-select _list="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]" _size="4" _value="['1']">Auswahlfeld mit size</kol-select>
+<kol-select _options="[{'label':'Herr','value':'0'},{'label':'Frau','value':'1'},{'label':'Firma','value':'2'},{'label':'Herr','value':'3'},{'label':'Frau','value':'4'},{'label':'Firma','value':'5'}]" _rows="4" _value="['1']">Auswahlfeld mit rows</kol-select>
 
 ## Verwendung
 
-Die Auswahlmöglichkeiten werden über das Attribut **`_list`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
+Die Auswahlmöglichkeiten werden über das Attribut **`_options`** als Objekt oder JSON-String an die Komponente übergeben. Je Option müssen die Werte **`label`** und **`value`** angegeben werden.
 
 Beispiel für die Konstruktion des JSON-Objektes:
 
@@ -44,7 +44,7 @@ Beispiel für die Konstruktion des JSON-Objektes:
 
 ### Individuelle Höhe angeben
 
-Über das Attribut **`_size`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
+Über das Attribut **`_rows`** kann von einem Auswahlmenü auf ein Auswahlfeld (wie bei **`_multiple`**) gewechselt werden und dessen Höhe gesetzt werden.
 
 <!--### Best practices-->
 
@@ -89,27 +89,30 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 
 ## Properties
 
-| Property              | Attribute     | Description                                                                                                                                          | Type                                                                                                    | Default     |
-| --------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- |
-| `_accessKey`          | `_access-key` | Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.                                    | `string \| undefined`                                                                                   | `undefined` |
-| `_alert`              | `_alert`      | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                        | `boolean \| undefined`                                                                                  | `true`      |
-| `_disabled`           | `_disabled`   | Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.                                                      | `boolean \| undefined`                                                                                  | `undefined` |
-| `_error`              | `_error`      | Gibt den Text für eine Fehlermeldung an.                                                                                                             | `string \| undefined`                                                                                   | `undefined` |
-| `_height`             | `_height`     | <span style="color:red">**[DEPRECATED]**</span> Use \_size instead.<br/><br/>Gibt an, ob eine individuelle Höhe übergeben werden soll.               | `string \| undefined`                                                                                   | `undefined` |
-| `_hideLabel`          | `_hide-label` | Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                                            | `boolean \| undefined`                                                                                  | `undefined` |
-| `_hint`               | `_hint`       | Gibt den Hinweistext an.                                                                                                                             | `string \| undefined`                                                                                   | `''`        |
-| `_icon`               | `_icon`       | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                          | `string \| undefined \| { right?: IconOrIconClass \| undefined; left?: IconOrIconClass \| undefined; }` | `undefined` |
-| `_id`                 | `_id`         | Gibt die interne ID des primären Elements in der Komponente an.                                                                                      | `string \| undefined`                                                                                   | `undefined` |
-| `_label` _(required)_ | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                          | `boolean \| string`                                                                                     | `undefined` |
-| `_list` _(required)_  | `_list`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                                     | `SelectOption<W3CInputValue>[] \| string`                                                               | `undefined` |
-| `_multiple`           | `_multiple`   | Gibt an, ob mehrere Werte eingegeben werden können.                                                                                                  | `boolean \| undefined`                                                                                  | `false`     |
-| `_name`               | `_name`       | Gibt den technischen Namen des Eingabefeldes an.                                                                                                     | `string \| undefined`                                                                                   | `undefined` |
-| `_on`                 | --            | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                | `undefined` |
-| `_required`           | `_required`   | Macht das Eingabeelementzu einem Pflichtfeld.                                                                                                        | `boolean \| undefined`                                                                                  | `undefined` |
-| `_size`               | `_size`       | Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.                                                                  | `number \| undefined`                                                                                   | `undefined` |
-| `_tabIndex`           | `_tab-index`  | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                                   | `undefined` |
-| `_touched`            | `_touched`    | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                                  | `false`     |
-| `_value`              | `_value`      | Gibt den Wert des Eingabefeldes an.                                                                                                                  | `W3CInputValue[] \| string \| undefined`                                                                | `undefined` |
+| Property              | Attribute        | Description                                                                                                                                          | Type                                                                                                    | Default     |
+| --------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------- |
+| `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.                                    | `string \| undefined`                                                                                   | `undefined` |
+| `_alert`              | `_alert`         | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                        | `boolean \| undefined`                                                                                  | `true`      |
+| `_disabled`           | `_disabled`      | Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.                                                      | `boolean \| undefined`                                                                                  | `undefined` |
+| `_error`              | `_error`         | Gibt den Text für eine Fehlermeldung an.                                                                                                             | `string \| undefined`                                                                                   | `undefined` |
+| `_height`             | `_height`        | <span style="color:red">**[DEPRECATED]**</span> Use \_rows instead.<br/><br/>Gibt an, ob eine individuelle Höhe übergeben werden soll.               | `string \| undefined`                                                                                   | `undefined` |
+| `_hideLabel`          | `_hide-label`    | Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                                            | `boolean \| undefined`                                                                                  | `undefined` |
+| `_hint`               | `_hint`          | Gibt den Hinweistext an.                                                                                                                             | `string \| undefined`                                                                                   | `''`        |
+| `_icon`               | `_icon`          | Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).                                                                                          | `string \| undefined \| { right?: IconOrIconClass \| undefined; left?: IconOrIconClass \| undefined; }` | `undefined` |
+| `_id`                 | `_id`            | Gibt die interne ID des primären Elements in der Komponente an.                                                                                      | `string \| undefined`                                                                                   | `undefined` |
+| `_label` _(required)_ | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                          | `boolean \| string`                                                                                     | `undefined` |
+| `_list`               | `_list`          | <span style="color:red">**[DEPRECATED]**</span> use \_options<br/><br/>Options the user can choose from, also supporting Optgroup.                   | `SelectOption<W3CInputValue>[] \| string \| undefined`                                                  | `undefined` |
+| `_multiple`           | `_multiple`      | Gibt an, ob mehrere Werte eingegeben werden können.                                                                                                  | `boolean \| undefined`                                                                                  | `false`     |
+| `_name`               | `_name`          | Gibt den technischen Namen des Eingabefeldes an.                                                                                                     | `string \| undefined`                                                                                   | `undefined` |
+| `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined`                | `undefined` |
+| `_options`            | `_options`       | Options the user can choose from, also supporting Optgroup.                                                                                          | `(Option<W3CInputValue> \| Optgroup<W3CInputValue>)[] \| string \| undefined`                           | `undefined` |
+| `_required`           | `_required`      | Macht das Eingabeelementzu einem Pflichtfeld.                                                                                                        | `boolean \| undefined`                                                                                  | `undefined` |
+| `_rows`               | `_rows`          | Defines how many rows of options should be visible at the same time.                                                                                 | `number \| undefined`                                                                                   | `undefined` |
+| `_size`               | `_size`          | Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.                                                                  | `number \| undefined`                                                                                   | `undefined` |
+| `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                                   | `undefined` |
+| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                                   | `'top'`     |
+| `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                                  | `false`     |
+| `_value`              | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                  | `W3CInputValue[] \| string \| undefined`                                                                | `undefined` |
 
 ## Slots
 
@@ -126,12 +129,14 @@ import { xxx..., xxx..., FormatHandler, } from '@leanup/form';
 ### Depends on
 
 - kol-input
+- [kol-tooltip](../tooltip)
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-select --> kol-input
+  kol-select --> kol-tooltip
   kol-input --> kol-icon
   kol-input --> kol-button-wc
   kol-input --> kol-alert

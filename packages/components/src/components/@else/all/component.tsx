@@ -7,7 +7,7 @@ type RequiredProps = unknown;
 type OptionalProps = unknown;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = RequiredProps & OptionalProps;
+type RequiredStates = RequiredProps & OptionalProps; // Linter: "Type 'RequiredProps' does not satisfy the constraint 'object'."
 type OptionalStates = OptionalProps;
 type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
@@ -28,7 +28,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 					<kol-input-text _label="" _id="id"></kol-input-text>
 				</kol-input-adapter-leanup>
 				<kol-abbr _title=""></kol-abbr>
-				<kol-accordion _heading=""></kol-accordion>
+				<kol-accordion _label=""></kol-accordion>
 				<kol-alert></kol-alert>
 				<kol-badge _label="Label"></kol-badge>
 				<kol-breadcrumb _ariaLabel="" _links={[]}></kol-breadcrumb>
@@ -42,13 +42,13 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-icon-font-awesome _ariaLabel="" _icon="500px" _prefix="fab"></kol-icon-font-awesome>
 				<kol-icon-icofont _ariaLabel="" _icon="home"></kol-icon-icofont>
 				<kol-indented-text></kol-indented-text>
-				<kol-input-checkbox _label="" _id="id"></kol-input-checkbox>
+				<kol-input-checkbox _label="" _id="id" _value="test"></kol-input-checkbox>
 				<kol-input-color _label="" _id="id"></kol-input-color>
 				<kol-input-email _label="" _id="id"></kol-input-email>
 				<kol-input-file _label="" _id="id"></kol-input-file>
 				<kol-input-number _label="" _id="id"></kol-input-number>
 				<kol-input-password _label="" _id="id"></kol-input-password>
-				<kol-input-radio _label="" _id="id" _list={[]}></kol-input-radio>
+				<kol-input-radio _label="" _id="id" _options={[]}></kol-input-radio>
 				<kol-input-range _label="" _id="id"></kol-input-range>
 				<kol-input-text _label="" _id="id"></kol-input-text>
 				<kol-link _href="" _label="Label"></kol-link>
@@ -58,7 +58,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-nav _ariaLabel="" _links={[]}></kol-nav>
 				<kol-pagination _on={{}} _page={1} _total={11}></kol-pagination>
 				<kol-progress _max={10} _value={5}></kol-progress>
-				<kol-select _label="" _id="id" _list={[]}></kol-select>
+				<kol-select _label="" _id="id" _options={[]}></kol-select>
 				<kol-skip-nav _ariaLabel="" _links={[]}></kol-skip-nav>
 				<kol-spin></kol-spin>
 				<kol-table _caption="" _data={[]} _headers={{}}></kol-table>

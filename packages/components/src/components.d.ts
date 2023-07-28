@@ -5,32 +5,39 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { Align } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+import { ImageSourcePropType } from "./types/props/image-source";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrent } from "./types/props/aria-current";
+import { StencilUnknown } from "./types/unknown";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+import { KoliBriCardEventCallbacks } from "./components/card/types";
+import { HasCloserPropType } from "./types/props/has-closer";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
+import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
 import { W3CInputValue } from "./types/w3c";
+import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
+import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { KoliBriProgressVariantType } from "./types/progress";
@@ -40,33 +47,42 @@ import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { CSSResize } from "./components/textarea/types";
+import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
+import { IdPropType } from "./types/props/id";
+export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { Align } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+export { ImageSourcePropType } from "./types/props/image-source";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrent } from "./types/props/aria-current";
+export { StencilUnknown } from "./types/unknown";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+export { KoliBriCardEventCallbacks } from "./components/card/types";
+export { HasCloserPropType } from "./types/props/has-closer";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
+export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
 export { W3CInputValue } from "./types/w3c";
+export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
+export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { KoliBriProgressVariantType } from "./types/progress";
@@ -76,13 +92,20 @@ export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { CSSResize } from "./components/textarea/types";
+export { RowsPropType } from "./types/props/rows";
 export { KoliBriToastEventCallbacks } from "./types/toast";
+export { IdPropType } from "./types/props/id";
 export namespace Components {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Defines the abbreviation title and tooltip content
          */
-        "_title": string;
+        "_label"?: LabelPropType;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated Use _label.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -91,8 +114,13 @@ export namespace Components {
     interface KolAccordion {
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
+        /**
+          * Defines the button label
+         */
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -117,8 +145,13 @@ export namespace Components {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the description of the component.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -146,9 +179,9 @@ export namespace Components {
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt die Beschriftung der Komponente an.
+          * Defines the description of the component.
          */
-        "_heading"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -165,6 +198,26 @@ export namespace Components {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -219,6 +272,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -271,7 +325,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -291,7 +345,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -312,6 +366,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -355,7 +410,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -375,32 +430,16 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
     }
     /**
      * Internal component that renders an action or text component like a button or a link.
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
-         */
-        "_ariaCurrentValue": AriaCurrent;
-        /**
-          * Gibt an, ob diese Komponente Kinder hat.
-         */
-        "_hasChildren"?: boolean;
-        /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-         */
-        "_hideLabel"?: boolean;
-        /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
         "_link": ButtonOrLinkOrTextWithChildrenProps;
-        /**
-          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
-         */
-        "_selected"?: boolean;
     }
     interface KolButtonWc {
         /**
@@ -413,6 +452,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -465,7 +505,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -485,7 +525,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -493,32 +533,47 @@ export namespace Components {
     }
     interface KolCard {
         /**
+          * Defines whether the card has a close button.
+         */
+        "_hasCloser"?: HasCloserPropType;
+        /**
           * Macht den Footerbereich der Card sichtbar.
          */
         "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Defines the event callback functions for the component.
+         */
+        "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
+        /**
+          * Defines the summary label.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
+          * @deprecated Use _label.
          */
-        "_summary": string;
+        "_summary"?: string;
     }
     interface KolForm {
         /**
@@ -634,7 +689,7 @@ export namespace Components {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -677,15 +732,11 @@ export namespace Components {
          */
         "_id": string;
         /**
-          * Gibt die Liste der Vorschlagswörter an.
-         */
-        "_list"?: Stringified<string[]>;
-        /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Gibt an, ob das Eingabefeld nur lesend ist.
          */
         "_readOnly"?: boolean;
         /**
@@ -701,9 +752,13 @@ export namespace Components {
          */
         "_slotName"?: string;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -795,7 +850,7 @@ export namespace Components {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -844,8 +899,9 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions instead.
          */
-        "_list"?: Stringified<string[]>;
+        "_list"?: SuggestionsPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -857,7 +913,11 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -922,6 +982,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions instead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -951,11 +1012,15 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1028,6 +1093,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1067,9 +1133,13 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1151,7 +1221,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1216,6 +1286,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions intead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1247,13 +1318,17 @@ export namespace Components {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1360,7 +1435,7 @@ export namespace Components {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1417,8 +1492,9 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
+          * @deprecated Use _options.
          */
-        "_list": Stringified<Option<W3CInputValue>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -1427,6 +1503,10 @@ export namespace Components {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
+        /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsPropType;
         /**
           * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
@@ -1568,8 +1648,9 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
-        "_list"?: Stringified<Option<number>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den größtmöglichen Eingabewert an.
          */
@@ -1590,6 +1671,10 @@ export namespace Components {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1658,6 +1743,7 @@ export namespace Components {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -1693,9 +1779,13 @@ export namespace Components {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1738,14 +1828,17 @@ export namespace Components {
     interface KolLink {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -1755,11 +1848,12 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-          * @deprecated will be removed in v2
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -1792,6 +1886,10 @@ export namespace Components {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -1836,14 +1934,17 @@ export namespace Components {
     interface KolLinkButton {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -1853,6 +1954,7 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -1861,6 +1963,7 @@ export namespace Components {
         "_customClass"?: string;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -1888,6 +1991,10 @@ export namespace Components {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -1957,14 +2064,17 @@ export namespace Components {
     interface KolLinkWc {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -1974,6 +2084,7 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -2011,6 +2122,10 @@ export namespace Components {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -2102,6 +2217,7 @@ export namespace Components {
         "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
+          * @deprecated Use _hide-label
          */
         "_compact"?: boolean;
         /**
@@ -2109,6 +2225,10 @@ export namespace Components {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Defines if navigation labels should be hidden
+         */
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -2213,12 +2333,17 @@ export namespace Components {
     interface KolQuote {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
         "_caption"?: string;
         /**
           * Gibt den Link zur Quelle des Zitates an.
          */
         "_href": string;
+        /**
+          * Defines the label of the citation link.
+         */
+        "_label"?: string;
         /**
           * Setzt den Text, also das Zitat selbst.
          */
@@ -2247,7 +2372,7 @@ export namespace Components {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
-          * @deprecated Use _size instead.
+          * @deprecated Use _rows instead.
          */
         "_height"?: string;
         /**
@@ -2271,9 +2396,10 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Options the user can choose from, also supporting Optgroup.
+          * @deprecated use _options
          */
-        "_list": Stringified<SelectOption<W3CInputValue>[]>;
+        "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -2287,9 +2413,17 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsWithOptgroupPropType;
+        /**
           * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Defines how many rows of options should be visible at the same time.
+         */
+        "_rows"?: number;
         /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
@@ -2389,6 +2523,7 @@ export namespace Components {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -2397,7 +2532,7 @@ export namespace Components {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -2456,7 +2591,7 @@ export namespace Components {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -2480,8 +2615,9 @@ export namespace Components {
     interface KolTable {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
-        "_caption": string;
+        "_caption"?: string;
         /**
           * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
          */
@@ -2495,6 +2631,10 @@ export namespace Components {
          */
         "_headers": Stringified<KoliBriTableHeaders>;
         /**
+          * Defines the table caption.
+         */
+        "_label"?: string;
+        /**
           * Gibt an, die minimale Breite der Tabelle an.
          */
         "_minWidth"?: string;
@@ -2504,6 +2644,10 @@ export namespace Components {
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
     }
     interface KolTabs {
+        /**
+          * Defines the position of the tab captions.
+         */
+        "_align"?: Align;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -2527,6 +2671,7 @@ export namespace Components {
         "_tabs": Stringified<TabButtonProps[]>;
         /**
           * Setzt die Position der Registrierkarten.
+          * @deprecated Use _align.
          */
         "_tabsAlign"?: Align;
     }
@@ -2600,9 +2745,9 @@ export namespace Components {
          */
         "_resize"?: CSSResize;
         /**
-          * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+          * Defines how many rows of text should be visible at the same time.
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -2635,8 +2780,13 @@ export namespace Components {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the text to show in the Toast.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -2664,9 +2814,9 @@ export namespace Components {
          */
         "_align"?: Align;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id": string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -2708,6 +2858,18 @@ declare global {
     var HTMLKolAlertWcElement: {
         prototype: HTMLKolAlertWcElement;
         new (): HTMLKolAlertWcElement;
+    };
+    interface HTMLKolAvatarElement extends Components.KolAvatar, HTMLStencilElement {
+    }
+    var HTMLKolAvatarElement: {
+        prototype: HTMLKolAvatarElement;
+        new (): HTMLKolAvatarElement;
+    };
+    interface HTMLKolAvatarWcElement extends Components.KolAvatarWc, HTMLStencilElement {
+    }
+    var HTMLKolAvatarWcElement: {
+        prototype: HTMLKolAvatarWcElement;
+        new (): HTMLKolAvatarWcElement;
     };
     interface HTMLKolBadgeElement extends Components.KolBadge, HTMLStencilElement {
     }
@@ -3065,6 +3227,8 @@ declare global {
         "kol-accordion": HTMLKolAccordionElement;
         "kol-alert": HTMLKolAlertElement;
         "kol-alert-wc": HTMLKolAlertWcElement;
+        "kol-avatar": HTMLKolAvatarElement;
+        "kol-avatar-wc": HTMLKolAvatarWcElement;
         "kol-badge": HTMLKolBadgeElement;
         "kol-breadcrumb": HTMLKolBreadcrumbElement;
         "kol-button": HTMLKolButtonElement;
@@ -3126,9 +3290,14 @@ declare global {
 declare namespace LocalJSX {
     interface KolAbbr {
         /**
-          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * Defines the abbreviation title and tooltip content
          */
-        "_title": string;
+        "_label"?: LabelPropType;
+        /**
+          * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+          * @deprecated Use _label.
+         */
+        "_title"?: string;
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
@@ -3137,8 +3306,13 @@ declare namespace LocalJSX {
     interface KolAccordion {
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
+        /**
+          * Defines the button label
+         */
+        "_label"?: string;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3163,8 +3337,13 @@ declare namespace LocalJSX {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the description of the component.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3192,9 +3371,9 @@ declare namespace LocalJSX {
          */
         "_hasCloser"?: boolean;
         /**
-          * Gibt die Beschriftung der Komponente an.
+          * Defines the description of the component.
          */
-        "_heading"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -3211,6 +3390,26 @@ declare namespace LocalJSX {
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
         "_variant"?: AlertVariant;
+    }
+    interface KolAvatar {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": string;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: string;
+    }
+    interface KolAvatarWc {
+        /**
+          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+         */
+        "_label": LabelPropType;
+        /**
+          * Defines the image source to render
+         */
+        "_src"?: ImageSourcePropType;
     }
     interface KolBadge {
         /**
@@ -3265,6 +3464,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -3317,7 +3517,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3337,7 +3537,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3358,6 +3558,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -3401,7 +3602,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3421,32 +3622,16 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
     }
     /**
      * Internal component that renders an action or text component like a button or a link.
      */
     interface KolButtonLinkTextSwitch {
         /**
-          * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
-         */
-        "_ariaCurrentValue"?: AriaCurrent;
-        /**
-          * Gibt an, ob diese Komponente Kinder hat.
-         */
-        "_hasChildren"?: boolean;
-        /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-         */
-        "_hideLabel"?: boolean;
-        /**
           * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
          */
         "_link": ButtonOrLinkOrTextWithChildrenProps;
-        /**
-          * Ist der Link selektiert? (Nur wenn es ein Link ist.)
-         */
-        "_selected"?: boolean;
     }
     interface KolButtonWc {
         /**
@@ -3459,6 +3644,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -3511,7 +3697,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<unknown>;
+        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3531,7 +3717,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3539,32 +3725,47 @@ declare namespace LocalJSX {
     }
     interface KolCard {
         /**
+          * Defines whether the card has a close button.
+         */
+        "_hasCloser"?: HasCloserPropType;
+        /**
           * Macht den Footerbereich der Card sichtbar.
          */
         "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
-        "_heading": string;
+        "_heading"?: string;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Verwende stattdessen das Property _heading.
          */
         "_headline"?: string;
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Defines the event callback functions for the component.
+         */
+        "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
+        /**
+          * Defines the summary label.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
         "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
+          * @deprecated Use _label.
          */
-        "_summary": string;
+        "_summary"?: string;
     }
     interface KolForm {
         /**
@@ -3680,7 +3881,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Quell-URL des Bildes.
          */
-        "_src": string;
+        "_src": ImageSourcePropType;
         /**
           * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
          */
@@ -3723,15 +3924,11 @@ declare namespace LocalJSX {
          */
         "_id": string;
         /**
-          * Gibt die Liste der Vorschlagswörter an.
-         */
-        "_list"?: Stringified<string[]>;
-        /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob die Eingabefeld nur lesend ist.
+          * Gibt an, ob das Eingabefeld nur lesend ist.
          */
         "_readOnly"?: boolean;
         /**
@@ -3747,9 +3944,13 @@ declare namespace LocalJSX {
          */
         "_slotName"?: string;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -3841,7 +4042,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Schlüssel/Namen der Checkbox an. ({ [value]: [checked] })
          */
-        "_value"?: string;
+        "_value": Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -3890,8 +4091,9 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions instead.
          */
-        "_list"?: Stringified<string[]>;
+        "_list"?: SuggestionsPropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -3903,7 +4105,11 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -3968,6 +4174,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions instead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -3997,11 +4204,15 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4074,6 +4285,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4113,9 +4325,13 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4197,7 +4413,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4262,6 +4478,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagszahlen an.
+          * @deprecated Use _suggestions intead.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4293,13 +4510,17 @@ declare namespace LocalJSX {
          */
         "_required"?: boolean;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4406,7 +4627,7 @@ declare namespace LocalJSX {
         /**
           * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4463,8 +4684,9 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Optionen für das Eingabefeld an.
+          * @deprecated Use _options.
          */
-        "_list": Stringified<Option<W3CInputValue>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -4473,6 +4695,10 @@ declare namespace LocalJSX {
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
+        /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsPropType;
         /**
           * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
          */
@@ -4614,8 +4840,9 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
-        "_list"?: Stringified<Option<number>[]>;
+        "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
           * Gibt den größtmöglichen Eingabewert an.
          */
@@ -4636,6 +4863,10 @@ declare namespace LocalJSX {
           * Gibt die Schrittweite der Wertveränderung an.
          */
         "_step"?: number;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4704,6 +4935,7 @@ declare namespace LocalJSX {
         "_label": LabelWithExpertSlotPropType;
         /**
           * Gibt die Liste der Vorschlagswörter an.
+          * @deprecated Use _suggestions.
          */
         "_list"?: Stringified<string[]>;
         /**
@@ -4739,9 +4971,13 @@ declare namespace LocalJSX {
          */
         "_size"?: number;
         /**
-          * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+          * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
          */
-        "_smartButton"?: ButtonProps;
+        "_smartButton"?: Stringified<ButtonProps>;
+        /**
+          * Suggestions to provide for the input.
+         */
+        "_suggestions"?: SuggestionsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -4784,14 +5020,17 @@ declare namespace LocalJSX {
     interface KolLink {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -4801,11 +5040,12 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-          * @deprecated will be removed in v2
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -4838,6 +5078,10 @@ declare namespace LocalJSX {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -4882,14 +5126,17 @@ declare namespace LocalJSX {
     interface KolLinkButton {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -4899,6 +5146,7 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -4907,6 +5155,7 @@ declare namespace LocalJSX {
         "_customClass"?: string;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
          */
         "_disabled"?: boolean;
         /**
@@ -4934,6 +5183,10 @@ declare namespace LocalJSX {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -5003,14 +5256,17 @@ declare namespace LocalJSX {
     interface KolLinkWc {
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated will be removed in v2
          */
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated use _listen-aria-current instead
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated will be removed in v2
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -5020,6 +5276,7 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated will be removed in v2
          */
         "_ariaSelected"?: boolean;
         /**
@@ -5057,6 +5314,10 @@ declare namespace LocalJSX {
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelWithExpertSlotPropType;
+        /**
+          * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+         */
+        "_listenAriaCurrent"?: AriaCurrent;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -5148,6 +5409,7 @@ declare namespace LocalJSX {
         "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
+          * @deprecated Use _hide-label
          */
         "_compact"?: boolean;
         /**
@@ -5155,6 +5417,10 @@ declare namespace LocalJSX {
           * @deprecated Version 2
          */
         "_hasCompactButton"?: boolean;
+        /**
+          * Defines if navigation labels should be hidden
+         */
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5259,12 +5525,17 @@ declare namespace LocalJSX {
     interface KolQuote {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
         "_caption"?: string;
         /**
           * Gibt den Link zur Quelle des Zitates an.
          */
         "_href": string;
+        /**
+          * Defines the label of the citation link.
+         */
+        "_label"?: string;
         /**
           * Setzt den Text, also das Zitat selbst.
          */
@@ -5293,7 +5564,7 @@ declare namespace LocalJSX {
         "_error"?: string;
         /**
           * Gibt an, ob eine individuelle Höhe übergeben werden soll.
-          * @deprecated Use _size instead.
+          * @deprecated Use _rows instead.
          */
         "_height"?: string;
         /**
@@ -5317,9 +5588,10 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Options the user can choose from, also supporting Optgroup.
+          * @deprecated use _options
          */
-        "_list": Stringified<SelectOption<W3CInputValue>[]>;
+        "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
           * Gibt an, ob mehrere Werte eingegeben werden können.
          */
@@ -5333,9 +5605,17 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
+          * Options the user can choose from, also supporting Optgroup.
+         */
+        "_options"?: OptionsWithOptgroupPropType;
+        /**
           * Macht das Eingabeelementzu einem Pflichtfeld.
          */
         "_required"?: boolean;
+        /**
+          * Defines how many rows of options should be visible at the same time.
+         */
+        "_rows"?: number;
         /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
@@ -5435,6 +5715,7 @@ declare namespace LocalJSX {
         "_ariaControls"?: string;
         /**
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+          * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
         "_ariaCurrent"?: AriaCurrent;
         /**
@@ -5443,7 +5724,7 @@ declare namespace LocalJSX {
         "_ariaExpanded"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-          * @deprecated use _label
+          * @deprecated use _label instead
          */
         "_ariaLabel"?: string;
         /**
@@ -5502,7 +5783,7 @@ declare namespace LocalJSX {
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
-        "_value"?: Stringified<unknown>;
+        "_value"?: Stringified<StencilUnknown>;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -5526,8 +5807,9 @@ declare namespace LocalJSX {
     interface KolTable {
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * @deprecated Use _label.
          */
-        "_caption": string;
+        "_caption"?: string;
         /**
           * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
          */
@@ -5541,6 +5823,10 @@ declare namespace LocalJSX {
          */
         "_headers": Stringified<KoliBriTableHeaders>;
         /**
+          * Defines the table caption.
+         */
+        "_label"?: string;
+        /**
           * Gibt an, die minimale Breite der Tabelle an.
          */
         "_minWidth"?: string;
@@ -5550,6 +5836,10 @@ declare namespace LocalJSX {
         "_pagination"?: boolean | Stringified<KoliBriTablePaginationProps>;
     }
     interface KolTabs {
+        /**
+          * Defines the position of the tab captions.
+         */
+        "_align"?: Align;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -5573,6 +5863,7 @@ declare namespace LocalJSX {
         "_tabs": Stringified<TabButtonProps[]>;
         /**
           * Setzt die Position der Registrierkarten.
+          * @deprecated Use _align.
          */
         "_tabsAlign"?: Align;
     }
@@ -5646,9 +5937,9 @@ declare namespace LocalJSX {
          */
         "_resize"?: CSSResize;
         /**
-          * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+          * Defines how many rows of text should be visible at the same time.
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -5681,8 +5972,13 @@ declare namespace LocalJSX {
         "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
+          * @deprecated Use _label.
          */
         "_heading"?: string;
+        /**
+          * Defines the text to show in the Toast.
+         */
+        "_label"?: LabelPropType;
         /**
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
@@ -5710,9 +6006,9 @@ declare namespace LocalJSX {
          */
         "_align"?: Align;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id": string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5734,6 +6030,8 @@ declare namespace LocalJSX {
         "kol-accordion": KolAccordion;
         "kol-alert": KolAlert;
         "kol-alert-wc": KolAlertWc;
+        "kol-avatar": KolAvatar;
+        "kol-avatar-wc": KolAvatarWc;
         "kol-badge": KolBadge;
         "kol-breadcrumb": KolBreadcrumb;
         "kol-button": KolButton;
@@ -5800,6 +6098,8 @@ declare module "@stencil/core" {
             "kol-accordion": LocalJSX.KolAccordion & JSXBase.HTMLAttributes<HTMLKolAccordionElement>;
             "kol-alert": LocalJSX.KolAlert & JSXBase.HTMLAttributes<HTMLKolAlertElement>;
             "kol-alert-wc": LocalJSX.KolAlertWc & JSXBase.HTMLAttributes<HTMLKolAlertWcElement>;
+            "kol-avatar": LocalJSX.KolAvatar & JSXBase.HTMLAttributes<HTMLKolAvatarElement>;
+            "kol-avatar-wc": LocalJSX.KolAvatarWc & JSXBase.HTMLAttributes<HTMLKolAvatarWcElement>;
             "kol-badge": LocalJSX.KolBadge & JSXBase.HTMLAttributes<HTMLKolBadgeElement>;
             "kol-breadcrumb": LocalJSX.KolBreadcrumb & JSXBase.HTMLAttributes<HTMLKolBreadcrumbElement>;
             "kol-button": LocalJSX.KolButton & JSXBase.HTMLAttributes<HTMLKolButtonElement>;

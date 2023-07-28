@@ -6,5 +6,6 @@ export * from './desy-v2';
 export * from '../../ecl/ec/src';
 export * from '../../ecl/eu/src';
 export * from '../../itzbund/src';
+export * from '../../mfm/src';
 export * from './mapz';
 export * from './zoll-v2';

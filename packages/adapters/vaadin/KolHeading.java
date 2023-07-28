@@ -1,16 +1,18 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Die **Heading**-Komponente kann überall dort verwendet werden, wo eine Überschrift angezeigt werden soll. Durch die Verwendung der unterschiedlichen Größen, lassen sich Inhalte klar strukturieren und Seiten wirkungsvoll und abwechslungsreich präsentieren. Sie trennt Styling von Semantik und ermöglicht Flexibilität.
  */
 
 @Tag("kol-heading")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-heading")
 public class KolHeading extends Component {
 	/**
@@ -18,8 +20,8 @@ public class KolHeading extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -28,16 +30,17 @@ public class KolHeading extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLevel(final Optional<String> value) {
-		getElement().setProperty("_level", value);
+	public void setLevel(final String value) {
+		getElement().setProperty("_level", value.toString());
 	}
 
 	/**
@@ -46,16 +49,17 @@ public class KolHeading extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLevel() {
-		return getElement().getProperty("_level", null);
+		var value = getElement().getProperty("_level", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt den Text der zusätzlichen Überschrift an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSecondaryHeadline(final Optional<String> value) {
-		getElement().setProperty("_secondary-headline", value);
+	public void setSecondaryHeadline(final String value) {
+		getElement().setProperty("_secondary-headline", value.toString());
 	}
 
 	/**
@@ -64,6 +68,7 @@ public class KolHeading extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSecondaryHeadline() {
-		return getElement().getProperty("_secondary-headline", null);
+		var value = getElement().getProperty("_secondary-headline", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

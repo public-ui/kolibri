@@ -3,6 +3,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { InputTypeOnDefault } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { RowsPropType } from '../../types/props/rows';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
@@ -196,9 +197,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _required?: boolean;
 
 	/**
-	 * Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.
+	 * Defines how many rows of text should be visible at the same time.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _rows?: number;
+	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -230,7 +231,7 @@ export class KolTextarea implements ComponentApi {
 		_adjustHeight: false,
 		_currentLength: 0,
 		_hasValue: false,
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
 		_resize: 'vertical',
 	};
@@ -325,7 +326,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_rows')
-	public validateRows(value?: number): void {
+	public validateRows(value?: RowsPropType): void {
 		this.controller.validateRows(value);
 	}
 

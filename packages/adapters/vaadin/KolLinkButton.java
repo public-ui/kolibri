@@ -1,26 +1,28 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Der LinkButton ist semantisch ein Link und hat das Design eines Buttons. Hierzu werden alle relevanten Properties der Link-Komponente übernommen und um die Design-bestimmenden Properties des Buttons erweitert.
-Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="Seite des Buttons"></kol-link>.
+Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/components/button" _label="/docs/components/button" _label="Seite des Buttons"></kol-link>.
  */
 
 @Tag("kol-link-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-link-button")
 public class KolLinkButton extends Component {
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaControls(final Optional<String> value) {
-		getElement().setProperty("_aria-controls", value);
+	public void setAriaControls(final String value) {
+		getElement().setProperty("_aria-controls", value.toString());
 	}
 
 	/**
@@ -29,16 +31,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaControls() {
-		return getElement().getProperty("_aria-controls", null);
+		var value = getElement().getProperty("_aria-controls", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaCurrent(final Optional<String> value) {
-		getElement().setProperty("_aria-current", value);
+	public void setAriaCurrent(final String value) {
+		getElement().setProperty("_aria-current", value.toString());
 	}
 
 	/**
@@ -47,16 +50,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaCurrent() {
-		return getElement().getProperty("_aria-current", null);
+		var value = getElement().getProperty("_aria-current", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaExpanded(final Optional<String> value) {
-		getElement().setProperty("_aria-expanded", value);
+	public void setAriaExpanded(final String value) {
+		getElement().setProperty("_aria-expanded", value.toString());
 	}
 
 	/**
@@ -65,16 +69,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaExpanded() {
-		return getElement().getProperty("_aria-expanded", null);
+		var value = getElement().getProperty("_aria-expanded", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaLabel(final Optional<String> value) {
-		getElement().setProperty("_aria-label", value);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value.toString());
 	}
 
 	/**
@@ -83,16 +88,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaLabel() {
-		return getElement().getProperty("_aria-label", null);
+		var value = getElement().getProperty("_aria-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaSelected(final Optional<String> value) {
-		getElement().setProperty("_aria-selected", value);
+	public void setAriaSelected(final String value) {
+		getElement().setProperty("_aria-selected", value.toString());
 	}
 
 	/**
@@ -101,16 +107,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaSelected() {
-		return getElement().getProperty("_aria-selected", null);
+		var value = getElement().getProperty("_aria-selected", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setCustomClass(final Optional<String> value) {
-		getElement().setProperty("_custom-class", value);
+	public void setCustomClass(final String value) {
+		getElement().setProperty("_custom-class", value.toString());
 	}
 
 	/**
@@ -119,16 +126,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getCustomClass() {
-		return getElement().getProperty("_custom-class", null);
+		var value = getElement().getProperty("_custom-class", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setDisabled(final Optional<String> value) {
-		getElement().setProperty("_disabled", value);
+	public void setDisabled(final String value) {
+		getElement().setProperty("_disabled", value.toString());
 	}
 
 	/**
@@ -137,16 +145,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getDisabled() {
-		return getElement().getProperty("_disabled", null);
+		var value = getElement().getProperty("_disabled", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setDownload(final Optional<String> value) {
-		getElement().setProperty("_download", value);
+	public void setDownload(final String value) {
+		getElement().setProperty("_download", value.toString());
 	}
 
 	/**
@@ -155,16 +164,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getDownload() {
-		return getElement().getProperty("_download", null);
+		var value = getElement().getProperty("_download", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHideLabel(final Optional<String> value) {
-		getElement().setProperty("_hide-label", value);
+	public void setHideLabel(final String value) {
+		getElement().setProperty("_hide-label", value.toString());
 	}
 
 	/**
@@ -173,7 +183,8 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHideLabel() {
-		return getElement().getProperty("_hide-label", null);
+		var value = getElement().getProperty("_hide-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -181,8 +192,8 @@ public class KolLinkButton extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHref(final Optional<String> value) {
-		getElement().setProperty("_href", value);
+	public void setHref(final String value) {
+		getElement().setProperty("_href", value.toString());
 	}
 
 	/**
@@ -191,16 +202,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHref() {
-		return getElement().getProperty("_href", null);
+		var value = getElement().getProperty("_href", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setIcon(final Optional<String> value) {
-		getElement().setProperty("_icon", value);
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value.toString());
 	}
 
 	/**
@@ -209,16 +221,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getIcon() {
-		return getElement().getProperty("_icon", null);
+		var value = getElement().getProperty("_icon", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setIconOnly(final Optional<String> value) {
-		getElement().setProperty("_icon-only", value);
+	public void setIconOnly(final String value) {
+		getElement().setProperty("_icon-only", value.toString());
 	}
 
 	/**
@@ -227,7 +240,8 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getIconOnly() {
-		return getElement().getProperty("_icon-only", null);
+		var value = getElement().getProperty("_icon-only", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -235,8 +249,8 @@ public class KolLinkButton extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -245,16 +259,36 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 *
+	 * @param value String
+	 */
+	public void setListenAriaCurrent(final String value) {
+		getElement().setProperty("_listen-aria-current", value.toString());
+	}
+
+	/**
+	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getListenAriaCurrent() {
+		var value = getElement().getProperty("_listen-aria-current", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setRole(final Optional<String> value) {
-		getElement().setProperty("_role", value);
+	public void setRole(final String value) {
+		getElement().setProperty("_role", value.toString());
 	}
 
 	/**
@@ -263,16 +297,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getRole() {
-		return getElement().getProperty("_role", null);
+		var value = getElement().getProperty("_role", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTabIndex(final Optional<String> value) {
-		getElement().setProperty("_tab-index", value);
+	public void setTabIndex(final String value) {
+		getElement().setProperty("_tab-index", value.toString());
 	}
 
 	/**
@@ -281,16 +316,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTabIndex() {
-		return getElement().getProperty("_tab-index", null);
+		var value = getElement().getProperty("_tab-index", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an wo der Link geöffnet werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTarget(final Optional<String> value) {
-		getElement().setProperty("_target", value);
+	public void setTarget(final String value) {
+		getElement().setProperty("_target", value.toString());
 	}
 
 	/**
@@ -299,16 +335,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTarget() {
-		return getElement().getProperty("_target", null);
+		var value = getElement().getProperty("_target", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTargetDescription(final Optional<String> value) {
-		getElement().setProperty("_target-description", value);
+	public void setTargetDescription(final String value) {
+		getElement().setProperty("_target-description", value.toString());
 	}
 
 	/**
@@ -317,16 +354,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTargetDescription() {
-		return getElement().getProperty("_target-description", null);
+		var value = getElement().getProperty("_target-description", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setTooltipAlign(final Optional<String> value) {
-		getElement().setProperty("_tooltip-align", value);
+	public void setTooltipAlign(final String value) {
+		getElement().setProperty("_tooltip-align", value.toString());
 	}
 
 	/**
@@ -335,16 +373,17 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getTooltipAlign() {
-		return getElement().getProperty("_tooltip-align", null);
+		var value = getElement().getProperty("_tooltip-align", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setVariant(final Optional<String> value) {
-		getElement().setProperty("_variant", value);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value.toString());
 	}
 
 	/**
@@ -353,6 +392,7 @@ public class KolLinkButton extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getVariant() {
-		return getElement().getProperty("_variant", null);
+		var value = getElement().getProperty("_variant", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

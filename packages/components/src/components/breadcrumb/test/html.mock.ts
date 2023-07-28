@@ -1,7 +1,7 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { LabelPropType } from '../../../components';
 import { Icofont } from '../../../types/icofont';
+import { LabelPropType } from '../../../types/props/label';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
 import { BreadcrumbLinkProps, KoliBriBreadcrumbProps } from '../types';
@@ -33,10 +33,10 @@ export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
 							? `<span>${
 									link._hideLabel
 										? getIconHtml({
-												_label: link._label as LabelPropType,
+												_label: link._label,
 												_icon: link._icon as Icofont,
 										  })
-										: (link._label as LabelPropType)
+										: link._label
 							  }</span>`
 							: getLinkHtml(link)
 					}

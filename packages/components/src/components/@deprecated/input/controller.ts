@@ -5,6 +5,7 @@ import { InputTypeOnDefault } from '../../../types/input/types';
 import { validateAdjustHeight } from '../../../types/props/adjust-height';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
+import { dispatchKoliBriEvent } from '../../../utils/events';
 import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
@@ -55,7 +56,9 @@ export class InputController extends ControlledInputController implements Watche
 	public validateId(value?: string): void {
 		watchString(this.component, '_id', value, {
 			hooks: {
-				afterPatch: this.syncFormAssociatedName,
+				afterPatch: () => {
+					this.setAttribute('id', this.formAssociated, this.component.state._id as string);
+				},
 			},
 			minLength: 1,
 		});
@@ -71,7 +74,9 @@ export class InputController extends ControlledInputController implements Watche
 	public validateName(value?: string): void {
 		watchString(this.component, '_name', value, {
 			hooks: {
-				afterPatch: this.syncFormAssociatedName,
+				afterPatch: () => {
+					this.setAttribute('name', this.formAssociated, this.component.state._name as string);
+				},
 			},
 		});
 		if (typeof value === 'undefined') {
@@ -117,18 +122,24 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
-		this.syncFormAssociatedName();
 	}
 
 	protected onBlur(event: Event): void {
+		event.preventDefault();
+		event.stopPropagation();
 		this.component._alert = true;
 		this.component._touched = true;
 		if (typeof this.component._on?.onBlur === 'function') {
 			this.component._on.onBlur(event);
+		} else {
+			console.log('dispatchKoliBriEvent', this.host, 'blur');
+			this.host && dispatchKoliBriEvent(this.host, 'blur');
 		}
 	}
 
 	protected onChange(event: Event): void {
+		event.preventDefault();
+		event.stopPropagation();
 		const value = (event.target as HTMLInputElement).value;
 		this.setFormAssociatedValue(value);
 		this.valueChangeListeners.forEach((listener) => listener(value));
@@ -141,19 +152,32 @@ export class InputController extends ControlledInputController implements Watche
 			 * - valueAsDate
 			 */
 			this.component._on.onChange(event, value);
+		} else {
+			console.log('dispatchKoliBriEvent', this.host, 'change', value);
+			this.host && dispatchKoliBriEvent(this.host, 'change', value);
 		}
 	}
 
 	protected onClick(event: Event): void {
+		event.preventDefault();
+		event.stopPropagation();
 		if (typeof this.component._on?.onClick === 'function') {
 			this.component._on.onClick(event);
+		} else {
+			console.log('dispatchKoliBriEvent', this.host, 'click');
+			this.host && dispatchKoliBriEvent(this.host, 'click');
 		}
 	}
 
 	protected onFocus(event: Event): void {
+		event.preventDefault();
+		event.stopPropagation();
 		this.component._alert = true;
 		if (typeof this.component._on?.onFocus === 'function') {
 			this.component._on.onFocus(event);
+		} else {
+			console.log('dispatchKoliBriEvent', this.host, 'focus');
+			this.host && dispatchKoliBriEvent(this.host, 'focus');
 		}
 	}
 

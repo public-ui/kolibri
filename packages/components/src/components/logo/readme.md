@@ -7,12 +7,12 @@ Mit Hilfe der **Logo**-Komponente können an beliebigen Positionen die Logos ver
 ### Code
 
 ```html
-<kol-logo _org_="BReg"></kol-logo>
+<kol-logo _org="BReg"></kol-logo>
 ```
 
 ### Beispiel
 
-<kol-logo _org_="BReg"></kol-logo>
+<kol-logo _org="BReg"></kol-logo>
 
 ## Verwendung
 
@@ -47,14 +47,6 @@ Das Attribut **`_org`** wird für die Definition des gewünschten Logos verwende
 **BMBF** = **_Bundesministerium für Bildung und Forschung_**
 
 **BMZ** = **_Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung_**
-
-<!--### Best practices
-
-### Anwendungsfälle-->
-
-## Barrierefreiheit
-
-<!--## Links und Referenzen
 
 <!-- Auto Generated Below -->
 

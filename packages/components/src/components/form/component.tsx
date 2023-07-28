@@ -15,12 +15,14 @@ import { KoliBriFormAPI, KoliBriFormCallbacks, KoliBriFormStates } from './types
 export class KolForm implements KoliBriFormAPI {
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
+		event.stopPropagation();
 		if (typeof this.state._on?.onSubmit === 'function') {
 			this.state._on?.onSubmit(event as SubmitEvent);
 		}
 	};
 	private readonly onReset = (event: Event) => {
 		event.preventDefault();
+		event.stopPropagation();
 		if (typeof this.state._on?.onReset === 'function') {
 			this.state._on?.onReset(event);
 		}

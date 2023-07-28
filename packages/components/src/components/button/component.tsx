@@ -16,15 +16,18 @@ import {
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { Align } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { validateAriaControls } from '../../types/props/aria-controls';
+import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { dispatchKoliBriEvent } from '../../utils/events';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
@@ -58,12 +61,17 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 				form: this.host,
 				ref: this.ref,
 			});
-		} else if (typeof this.state._on?.onClick === 'function') {
-			event.stopPropagation();
-			setEventTarget(event, this.ref);
-			this.state._on?.onClick(event, this.state._value);
 		} else {
-			devWarning(`There was no button click callback configured! (_on.onClick)`);
+			event.preventDefault();
+			event.stopPropagation();
+			if (typeof this.state._on?.onClick === 'function') {
+				setEventTarget(event, this.ref);
+				this.state._on?.onClick(event, this.state._value);
+			} else {
+				console.log('dispatchKoliBriEvent', this.host, 'click', this.state._value);
+				this.host && dispatchKoliBriEvent(this.host, 'click', this.state._value);
+				devWarning(`There was no button click callback configured! (_on.onClick)`);
+			}
 		}
 	};
 
@@ -125,6 +133,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
 	@Prop() public _ariaCurrent?: AriaCurrent;
 
@@ -192,7 +202,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
+	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
@@ -217,7 +227,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
@@ -239,18 +249,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
-		watchString(this, '_ariaControls', value);
+		validateAriaControls(this, value);
 	}
 
 	@Watch('_ariaCurrent')
 	public validateAriaCurrent(value?: AriaCurrent): void {
-		watchValidator(
-			this,
-			'_ariaControls',
-			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
-			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
-		);
+		validateAriaCurrent(this, value);
 	}
 
 	@Watch('_ariaExpanded')
@@ -323,7 +327,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_on')
-	public validateOn(value?: KoliBriButtonCallbacks<unknown>): void {
+	public validateOn(value?: KoliBriButtonCallbacks<StencilUnknown>): void {
 		if (typeof value === 'object' && value !== null) {
 			this.state = {
 				...this.state,
@@ -353,7 +357,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
+		// TODO: make static form ready, like inputs
 		setState(this, '_value', value);
 	}
 

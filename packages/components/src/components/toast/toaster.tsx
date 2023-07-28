@@ -1,8 +1,13 @@
+import { LabelPropType } from '../../types/props/label';
 import { AlertType } from '../alert/types';
 
 type Toast = {
-	heading: string;
 	description: string;
+	/**
+	 * @deprecated Use label.
+	 */
+	heading?: string;
+	label?: LabelPropType;
 	type: AlertType;
 };
 
@@ -47,7 +52,14 @@ export class ToasterService {
 	}
 
 	private showToast(data: Toast): void {
-		this.toastElement.setAttribute('_heading', data.heading);
+		const label = data.label || data.heading;
+
+		if (typeof label === 'undefined') {
+			// TODO v2: Make label required, remove this check.
+			throw new Error('Toast requires a label.');
+		}
+
+		this.toastElement.setAttribute('_label', label);
 		this.toastElement.setAttribute('_show', 'true');
 		this.toastElement.setAttribute('_type', data.type);
 		this.toastElement.innerText = data.description;

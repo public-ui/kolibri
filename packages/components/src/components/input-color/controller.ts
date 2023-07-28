@@ -1,8 +1,8 @@
 import { Generic } from '@a11y-ui/core';
 
-import { Stringified } from '../../types/common';
 import { InputTypeOnOff } from '../../types/input/types';
-import { watchJsonArrayString, watchString, watchValidator } from '../../utils/prop.validators';
+import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
+import { watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 
@@ -24,8 +24,14 @@ export class InputColorController extends InputIconController implements Watches
 		);
 	}
 
-	public validateList(value?: Stringified<string[]>): void {
-		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
+	/**
+	 * @deprecated remains to satisfy `Watches` interface
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	public validateList(): void {}
+
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		validateSuggestions(this.component, value);
 	}
 
 	public validateValue(value?: string): void {
@@ -36,7 +42,7 @@ export class InputColorController extends InputIconController implements Watches
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
-		this.validateList(this.component._list);
+		this.validateSuggestions(this.component._suggestions || this.component._list);
 		this.validateValue(this.component._value);
 	}
 }

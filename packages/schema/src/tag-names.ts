@@ -3,7 +3,7 @@ export enum TagEnum {
 	'accordion',
 	'accordion-group', // TODO: github pr link
 	'alert',
-	'avatar', // TODO: github pr link
+	'avatar',
 	'badge',
 	'breadcrumb',
 	'button',
@@ -11,12 +11,10 @@ export enum TagEnum {
 	'button-link',
 	'card',
 	'details',
-	'dialog', // TODO: github pr link
-	'dropdown', // TODO: github pr link
 	'form',
 	'heading',
 	'icon',
-	'image', // TODO: github pr link
+	'image',
 	'indented-text',
 	'input-checkbox',
 	'input-color',
@@ -34,7 +32,7 @@ export enum TagEnum {
 	'modal',
 	'nav',
 	'pagination',
-	'popover', // TODO: github pr link
+	'popover',
 	'progress',
 	'select',
 	'separator', // TODO: github pr link

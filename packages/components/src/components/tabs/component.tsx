@@ -4,12 +4,12 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { Align } from '../../types/props/align';
+import { Align, validateAlign } from '../../types/props/align';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
-import { validateAlignment } from '../../utils/validators/alignment';
 import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
@@ -70,11 +70,13 @@ export class KolTabs implements KoliBriTabsAPI {
 	};
 
 	// private readonly onClickClose = (event: Event, button: TabButtonProps, index: number) => {
+	// 	event.preventDefault();
 	// 	event.stopPropagation();
 	// 	this.onClose(button, event, index);
 	// };
 
 	private readonly onMouseDown = (event: Event): void => {
+		event.preventDefault();
 		event.stopPropagation();
 	};
 
@@ -92,14 +94,14 @@ export class KolTabs implements KoliBriTabsAPI {
 						_icon={button._icon}
 						_hideLabel={button._hideLabel || button._iconOnly}
 						_label={button._label} // TODO: ariaLabel-Konzept prüfen
-						_on={this.callbacks as KoliBriButtonCallbacks<unknown>}
+						_on={this.callbacks as KoliBriButtonCallbacks<StencilUnknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
 						_tooltipAlign={button._tooltipAlign}
 						_variant={this.state._selected === index ? 'custom' : undefined}
 						_customClass={this.state._selected === index ? 'selected' : undefined}
 						_ariaControls={`tabpanel-${index}`}
 						_ariaSelected={this.state._selected === index}
-						_id={`tab-${index}`}
+						_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
 						_role="tab"
 						_value={index}
 					></kol-button-wc>
@@ -131,7 +133,7 @@ export class KolTabs implements KoliBriTabsAPI {
 						this.tabPanelsElement = el as HTMLElement;
 					}}
 					class={{
-						[`tabs-align-${this.state._tabsAlign}`]: true,
+						[`tabs-align-${this.state._align}`]: true,
 					}}
 				>
 					{this.renderButtonGroup()}
@@ -142,9 +144,14 @@ export class KolTabs implements KoliBriTabsAPI {
 	}
 
 	/**
+	 * Defines the position of the tab captions.
+	 */
+	@Prop() public _align?: Align = 'top';
+
+	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 *  @deprecated use _label instead
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -170,14 +177,15 @@ export class KolTabs implements KoliBriTabsAPI {
 
 	/**
 	 * Setzt die Position der Registrierkarten.
+	 * @deprecated Use _align.
 	 */
 	@Prop() public _tabsAlign?: Align = 'top';
 
 	@State() public state: KoliBriTabsStates = {
+		_align: 'top',
 		_label: '…', // ⚠ required
 		_selected: 0,
 		_tabs: [],
-		_tabsAlign: 'top',
 	};
 
 	private selectNextNotDisabledTab = (selected: number, tabs: TabButtonProps[], upOrDown = true, initialSelected?: number): number => {
@@ -226,6 +234,11 @@ export class KolTabs implements KoliBriTabsAPI {
 			nextState.set('_selected', this.selectNextNotDisabledTab(selected, tabs));
 		}
 	};
+
+	@Watch('_align')
+	public validateAlign(value?: Align) {
+		validateAlign(this, value);
+	}
 
 	/**
 	 * @deprecated
@@ -311,22 +324,22 @@ export class KolTabs implements KoliBriTabsAPI {
 
 	@Watch('_tabsAlign')
 	public validateTabsAlign(value?: Align): void {
-		validateAlignment(this, '_tabsAlign', value);
+		this.validateAlign(value);
 	}
 
 	public componentWillLoad(): void {
+		this.validateAlign(this._align || this._tabsAlign);
 		this.validateLabel(this._label || this._ariaLabel);
 		this.validateOn(this._on);
 		this.validateSelected(this._selected);
 		this.validateTabs(this._tabs);
-		this.validateTabsAlign(this._tabsAlign);
 	}
 
 	private readonly handleTabPanels = () => {
 		if (this.tabPanelHost instanceof HTMLDivElement) {
 			for (let i = this.tabPanelHost.children.length; i < this.state._tabs.length; i++) {
 				const div = document.createElement('div');
-				div.setAttribute('aria-labelledby', `tab-${i}`);
+				div.setAttribute('aria-labelledby', `${this.state._label.replace(/\s/g, '-')}-tab-${i}`);
 				div.setAttribute('id', `tabpanel-${i}`);
 				div.setAttribute('role', 'tabpanel');
 				div.setAttribute('hidden', '');
@@ -366,7 +379,7 @@ export class KolTabs implements KoliBriTabsAPI {
 			this.selectedTimeout = setTimeout(() => {
 				clearTimeout(this.selectedTimeout);
 				if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
-					const button: HTMLElement | null = koliBriQuerySelector(`button#tab-${index}`, this.tabPanelsElement);
+					const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${index}`, this.tabPanelsElement);
 					button?.focus();
 				}
 			}, 250);
@@ -374,6 +387,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	}
 
 	private onCreate = (event: Event) => {
+		event.preventDefault();
 		event.stopPropagation();
 		if (typeof this.state._on?.onCreate === 'function') {
 			this.state._on?.onCreate(event);

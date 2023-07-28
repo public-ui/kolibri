@@ -4,6 +4,8 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff, Option } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { PropSuggestions } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
 
 type RequiredProps = InputRequiredProps;
@@ -16,7 +18,11 @@ type OptionalProps = {
 	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
-	list: Stringified<Option<number>[]>;
+
+	/**
+	 * @deprecated Use suggestions instead.
+	 */
+	list: Stringified<Option<W3CInputValue>[]>;
 	max: number;
 	min: number;
 	name: string;
@@ -26,13 +32,13 @@ type OptionalProps = {
 	tabIndex: number;
 	touched: boolean;
 	value: number;
-};
+} & PropSuggestions;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	id: string;
-	list: Option<number>[];
+	suggestions: W3CInputValue[];
 } & PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;

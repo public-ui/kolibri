@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * Eine **Navigationsleiste** ist eine Gruppe von verwandten Links oder Navigationselementen, die durch Anklicken eine Aktion ausführen oder Inhalte anzeigen. Sie navigiert Nutzer:innen direkt zu bestimmten Inhalten der aktuellen Seite oder zu externen Seiten. Außerdem dient sie Nutzer:innen (ähnlich wie Registerkarten) als Steuerelement, um Inhalte anzuzeigen, auszublenden und zwischen ihnen zu wechseln.
@@ -18,16 +20,16 @@ noch die Icons ausgegeben.
  */
 
 @Tag("kol-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-nav")
 public class KolNav extends Component {
 	/**
 	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaCurrentValue(final Optional<String> value) {
-		getElement().setProperty("_aria-current-value", value);
+	public void setAriaCurrentValue(final String value) {
+		getElement().setProperty("_aria-current-value", value.toString());
 	}
 
 	/**
@@ -36,16 +38,17 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaCurrentValue() {
-		return getElement().getProperty("_aria-current-value", null);
+		var value = getElement().getProperty("_aria-current-value", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaLabel(final Optional<String> value) {
-		getElement().setProperty("_aria-label", value);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value.toString());
 	}
 
 	/**
@@ -54,16 +57,17 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaLabel() {
-		return getElement().getProperty("_aria-label", null);
+		var value = getElement().getProperty("_aria-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setCollapsible(final Optional<String> value) {
-		getElement().setProperty("_collapsible", value);
+	public void setCollapsible(final String value) {
+		getElement().setProperty("_collapsible", value.toString());
 	}
 
 	/**
@@ -72,16 +76,17 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getCollapsible() {
-		return getElement().getProperty("_collapsible", null);
+		var value = getElement().getProperty("_collapsible", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setCompact(final Optional<String> value) {
-		getElement().setProperty("_compact", value);
+	public void setCompact(final String value) {
+		getElement().setProperty("_compact", value.toString());
 	}
 
 	/**
@@ -90,16 +95,17 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getCompact() {
-		return getElement().getProperty("_compact", null);
+		var value = getElement().getProperty("_compact", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHasCompactButton(final Optional<String> value) {
-		getElement().setProperty("_has-compact-button", value);
+	public void setHasCompactButton(final String value) {
+		getElement().setProperty("_has-compact-button", value.toString());
 	}
 
 	/**
@@ -108,16 +114,36 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHasCompactButton() {
-		return getElement().getProperty("_has-compact-button", null);
+		var value = getElement().getProperty("_has-compact-button", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Defines if navigation labels should be hidden
+	 *
+	 * @param value String
+	 */
+	public void setHideLabel(final String value) {
+		getElement().setProperty("_hide-label", value.toString());
+	}
+
+	/**
+	 * Defines if navigation labels should be hidden
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getHideLabel() {
+		var value = getElement().getProperty("_hide-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -126,7 +152,8 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -134,8 +161,8 @@ public class KolNav extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLinks(final Optional<String> value) {
-		getElement().setProperty("_links", value);
+	public void setLinks(final String value) {
+		getElement().setProperty("_links", value.toString());
 	}
 
 	/**
@@ -144,16 +171,17 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLinks() {
-		return getElement().getProperty("_links", null);
+		var value = getElement().getProperty("_links", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt die horizontale oder vertikale Ausrichtung der Komponente an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setOrientation(final Optional<String> value) {
-		getElement().setProperty("_orientation", value);
+	public void setOrientation(final String value) {
+		getElement().setProperty("_orientation", value.toString());
 	}
 
 	/**
@@ -162,16 +190,17 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getOrientation() {
-		return getElement().getProperty("_orientation", null);
+		var value = getElement().getProperty("_orientation", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setVariant(final Optional<String> value) {
-		getElement().setProperty("_variant", value);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value.toString());
 	}
 
 	/**
@@ -180,6 +209,7 @@ public class KolNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getVariant() {
-		return getElement().getProperty("_variant", null);
+		var value = getElement().getProperty("_variant", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

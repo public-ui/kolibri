@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * > <kol-badge _label="untested"></kol-badge> Diese neue Komponente wird als ungetestet markiert, da der vollständige Barrierefreiheitstest noch aussteht. Der vollständige Test kann bei neuen Komponenten und Funktionalitäten auch erst nach einem abgeschlossenen Release erfolgen.
@@ -12,7 +14,7 @@ Die **Image**-Komponente dient dazu, Bilder darzustellen.
  */
 
 @Tag("kol-image")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-image")
 public class KolImage extends Component {
 	/**
@@ -20,8 +22,8 @@ public class KolImage extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setAlt(final Optional<String> value) {
-		getElement().setProperty("_alt", value);
+	public void setAlt(final String value) {
+		getElement().setProperty("_alt", value.toString());
 	}
 
 	/**
@@ -30,16 +32,17 @@ public class KolImage extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAlt() {
-		return getElement().getProperty("_alt", null);
+		var value = getElement().getProperty("_alt", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt den Lademodus.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLoading(final Optional<String> value) {
-		getElement().setProperty("_loading", value);
+	public void setLoading(final String value) {
+		getElement().setProperty("_loading", value.toString());
 	}
 
 	/**
@@ -48,16 +51,17 @@ public class KolImage extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLoading() {
-		return getElement().getProperty("_loading", null);
+		var value = getElement().getProperty("_loading", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt Größen für unterschiedliche Auflösungen, unterstützend für _srcset.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSizes(final Optional<String> value) {
-		getElement().setProperty("_sizes", value);
+	public void setSizes(final String value) {
+		getElement().setProperty("_sizes", value.toString());
 	}
 
 	/**
@@ -66,7 +70,8 @@ public class KolImage extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSizes() {
-		return getElement().getProperty("_sizes", null);
+		var value = getElement().getProperty("_sizes", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -74,8 +79,8 @@ public class KolImage extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setSrc(final Optional<String> value) {
-		getElement().setProperty("_src", value);
+	public void setSrc(final String value) {
+		getElement().setProperty("_src", value.toString());
 	}
 
 	/**
@@ -84,16 +89,17 @@ public class KolImage extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSrc() {
-		return getElement().getProperty("_src", null);
+		var value = getElement().getProperty("_src", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSrcset(final Optional<String> value) {
-		getElement().setProperty("_srcset", value);
+	public void setSrcset(final String value) {
+		getElement().setProperty("_srcset", value.toString());
 	}
 
 	/**
@@ -102,6 +108,7 @@ public class KolImage extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSrcset() {
-		return getElement().getProperty("_srcset", null);
+		var value = getElement().getProperty("_srcset", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

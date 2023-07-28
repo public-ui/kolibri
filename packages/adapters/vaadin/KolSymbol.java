@@ -1,25 +1,27 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerbarer Ausgabe durch den Screenreader.
  */
 
 @Tag("kol-symbol")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-symbol")
 public class KolSymbol extends Component {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaLabel(final Optional<String> value) {
-		getElement().setProperty("_aria-label", value);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value.toString());
 	}
 
 	/**
@@ -28,16 +30,17 @@ public class KolSymbol extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaLabel() {
-		return getElement().getProperty("_aria-label", null);
+		var value = getElement().getProperty("_aria-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -46,7 +49,8 @@ public class KolSymbol extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -54,8 +58,8 @@ public class KolSymbol extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setSymbol(final Optional<String> value) {
-		getElement().setProperty("_symbol", value);
+	public void setSymbol(final String value) {
+		getElement().setProperty("_symbol", value.toString());
 	}
 
 	/**
@@ -64,6 +68,7 @@ public class KolSymbol extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSymbol() {
-		return getElement().getProperty("_symbol", null);
+		var value = getElement().getProperty("_symbol", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

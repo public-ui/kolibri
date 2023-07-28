@@ -2,7 +2,9 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnOff, Option } from '../../types/input/types';
-import { watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
+import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
+import { watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 
@@ -24,13 +26,13 @@ export class InputRangeController extends InputIconController implements Watches
 		);
 	}
 
-	public validateList(value?: Stringified<Option<number>[]>): void {
-		watchJsonArrayString(
-			this.component,
-			'_list',
-			(item: Option<number>) => typeof item === 'object' && typeof item.label === 'string' && item.label.length > 0,
-			value
-		);
+	/**
+	 * @deprecated use _suggestions
+	 */
+	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
+		if (Array.isArray(value)) {
+			this.validateSuggestions(value.map((option) => option.value));
+		}
 	}
 
 	public validateMax(value?: number): void {
@@ -45,6 +47,10 @@ export class InputRangeController extends InputIconController implements Watches
 		watchNumber(this.component, '_step', value);
 	}
 
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		validateSuggestions(this.component, value);
+	}
+
 	public validateValue(value?: number): void {
 		watchNumber(this.component, '_value', value);
 		this.setFormAssociatedValue(this.component.state._value as string);
@@ -57,6 +63,7 @@ export class InputRangeController extends InputIconController implements Watches
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
 		this.validateStep(this.component._step);
+		this.validateSuggestions(this.component._suggestions);
 		this.validateValue(this.component._value);
 	}
 }

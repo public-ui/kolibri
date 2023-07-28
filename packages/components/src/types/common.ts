@@ -1,4 +1,4 @@
 /**
- * Wird bei Web Component-Properties für stringifizierte komplexe Typen verwendet.
+ * Used in web component properties for stringified complex types.
  */
 export type Stringified<T> = string | T;

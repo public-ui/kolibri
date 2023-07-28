@@ -6,8 +6,8 @@ import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrent } from '../../types/props/aria-current';
 import { validateCollapsible } from '../../types/props/collapsible';
-import { validateCompact } from '../../types/props/compact';
 import { validateHasCompactButton } from '../../types/props/has-compact-button';
+import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
@@ -15,14 +15,14 @@ import { KoliBriNavAPI, KoliBriNavStates } from './types';
 import { watchNavLinks } from './validation';
 
 /**
- * @deprecated
+ * @deprecated Removed in v2
  */
 export type KoliBriNavVariant = 'primary' | 'secondary';
 
 /**
  * There can be several navigations on one page (e.g. main navigation, subnavigation, breadcrumbs).
  * The navigations must be clearly named for accessibility reasons. To ensure this, all Aria labels are
- * stored in an set and checked for uniqueness.
+ * stored in a set and checked for uniqueness.
  */
 const UNIQUE_ARIA_LABEL: Set<string> = new Set();
 function addAriaLabel(ariaLabel: string): void {
@@ -76,24 +76,29 @@ export class KolNav implements KoliBriNavAPI {
 		return false;
 	};
 
-	private entry(collapsible: boolean, compact: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, selected: boolean): JSX.Element {
+	private entry(collapsible: boolean, hideLabel: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
 			<div class="entry">
-				<kol-button-link-text-switch _has-children={hasChildren} _hide-label={compact} _link={link} _selected={selected} />
-				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, selected) : ''}
+				<kol-button-link-text-switch
+					_link={{
+						...link,
+						_hideLabel: hideLabel,
+					}}
+				/>
+				{hasChildren ? this.expandButton(collapsible, link as ButtonWithChildrenProps, expanded) : ''}
 			</div>
 		);
 	}
 
-	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, selected: boolean): JSX.Element {
+	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
 			<kol-button-wc
 				class="expand-button"
-				_ariaExpanded={selected}
+				_ariaExpanded={expanded}
 				_disabled={!collapsible}
-				_icon={'codicon codicon-' + (selected ? 'remove' : 'add')}
+				_icon={'codicon codicon-' + (expanded ? 'remove' : 'add')}
 				_hideLabel
-				_label={`Untermenü zu ${link._label} ${selected ? 'schließen' : 'öffnen'}`}
+				_label={`Untermenü zu ${link._label} ${expanded ? 'schließen' : 'öffnen'}`}
 				_on={{ onClick: () => this.onClick(link) }}
 			></kol-button-wc>
 		);
@@ -101,20 +106,28 @@ export class KolNav implements KoliBriNavAPI {
 
 	private li(
 		collapsible: boolean,
-		compact: boolean,
+		hideLabel: boolean,
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
 		orientation: Orientation
 	): JSX.Element {
+		const active = !!link._active;
 		const hasChildren = Array.isArray(link._children) && link._children.length > 0;
-		const selected = !!link._active;
-		const expanded = hasChildren && !!link._active;
+		const expanded = hasChildren && active;
 		return (
-			<li class={{ expanded, selected, 'has-children': hasChildren }} key={index}>
-				{this.entry(collapsible, compact, hasChildren, link, selected)}
-				{hasChildren && selected ? (
-					<this.linkList collapsible={collapsible} compact={compact} deep={deep + 1} links={link._children || []} orientation={orientation} />
+			<li
+				class={{
+					active,
+					expanded,
+					'has-children': hasChildren,
+					selected: expanded, // TODO: remove in v2
+				}}
+				key={index}
+			>
+				{this.entry(collapsible, hideLabel, hasChildren, link, active)}
+				{expanded ? (
+					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={deep + 1} links={link._children || []} orientation={orientation} />
 				) : (
 					''
 				)}
@@ -124,7 +137,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	private linkList = (props: {
 		collapsible: boolean;
-		compact: boolean;
+		hideLabel: boolean;
 		deep: number;
 		links: ButtonOrLinkOrTextWithChildrenProps[];
 		orientation: Orientation;
@@ -132,7 +145,7 @@ export class KolNav implements KoliBriNavAPI {
 		return (
 			<ul class={`list ${props.deep === 0 && props.orientation === 'horizontal' ? ' horizontal' : ' vertical'}`} data-deep={props.deep}>
 				{props.links.map((link, index: number) => {
-					return this.li(props.collapsible, props.compact, props.deep, index, link, props.orientation);
+					return this.li(props.collapsible, props.hideLabel, props.deep, index, link, props.orientation);
 				})}
 			</ul>
 		);
@@ -145,7 +158,7 @@ export class KolNav implements KoliBriNavAPI {
 			devWarning(`[KolNav] Wenn eine horizontale Navigation verwendet wird, kann die Option _hasCompactButton nicht aktiviert werden.`);
 		}
 		const collapsible = this.state._collapsible === true;
-		const compact = this.state._compact === true;
+		const hideLabel = this.state._hideLabel === true;
 		const orientation = this.state._orientation;
 		return (
 			<Host>
@@ -156,21 +169,21 @@ export class KolNav implements KoliBriNavAPI {
 					}}
 				>
 					<nav aria-label={this.state._label} id="nav">
-						<this.linkList collapsible={collapsible} compact={compact} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
+						<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
 					</nav>
 					{hasCompactButton && (
 						<div class="mt-2 w-full compact">
 							<kol-button
 								_ariaControls="nav"
-								_ariaExpanded={!compact}
-								_icon={compact ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+								_ariaExpanded={!hideLabel}
+								_icon={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
 								_hideLabel
-								_label={translate(compact ? 'kol-nav-maximize' : 'kol-nav-minimize')}
+								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
 								_on={{
 									onClick: (): void => {
 										this.state = {
 											...this.state,
-											_compact: this.state._compact === false,
+											_hideLabel: this.state._hideLabel === false,
 										};
 									},
 								}}
@@ -192,7 +205,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 *  @deprecated use _label instead
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -203,6 +216,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
+	 * @deprecated Use _hide-label
 	 */
 	@Prop() public _compact?: boolean = false;
 
@@ -211,6 +225,11 @@ export class KolNav implements KoliBriNavAPI {
 	 * @deprecated Version 2
 	 */
 	@Prop() public _hasCompactButton?: boolean = false;
+
+	/**
+	 * Defines if navigation labels should be hidden
+	 */
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -236,9 +255,10 @@ export class KolNav implements KoliBriNavAPI {
 
 	@State() public state: KoliBriNavStates = {
 		_ariaCurrentValue: false,
-		_label: '…', // ⚠ required
 		_collapsible: true,
 		_hasCompactButton: false,
+		_hideLabel: false,
+		_label: '…', // ⚠ required
 		_links: [],
 		_orientation: 'vertical',
 		_variant: 'primary',
@@ -270,7 +290,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	@Watch('_compact')
 	public validateCompact(value?: boolean): void {
-		validateCompact(this, value);
+		this.validateHideLabel(value);
 	}
 
 	/**
@@ -279,6 +299,11 @@ export class KolNav implements KoliBriNavAPI {
 	@Watch('_hasCompactButton')
 	public validateHasCompactButton(value?: boolean): void {
 		validateHasCompactButton(this, value);
+	}
+
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: HideLabelPropType) {
+		validateHideLabel(this, value);
 	}
 
 	@Watch('_label')
@@ -319,7 +344,7 @@ export class KolNav implements KoliBriNavAPI {
 	public componentWillLoad(): void {
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateCollapsible(this._collapsible);
-		this.validateCompact(this._compact);
+		this.validateHideLabel(this._hideLabel || this._compact);
 		this.validateHasCompactButton(this._hasCompactButton);
 		this.validateLabel(this._label || this._ariaLabel);
 		this.validateLinks(this._links);

@@ -5,6 +5,8 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { OptionsWithOptgroupPropType } from '../../types/props/options';
+import { RowsPropType } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
@@ -97,7 +99,7 @@ export class KolSelect implements ComponentApi {
 							multiple={this.state._multiple}
 							name={this.state._name}
 							required={this.state._required}
-							size={this.state._size}
+							size={this.state._rows}
 							spellcheck="false"
 							style={{
 								height: this.state._height,
@@ -109,7 +111,7 @@ export class KolSelect implements ComponentApi {
 							}}
 							onChange={this.onChange}
 						>
-							{this.state._list.map((option, index) => {
+							{this.state._options.map((option, index) => {
 								/**
 								 * Damit der Value einer Option ein beliebigen Typ haben kann
 								 * muss man auf HTML-Ebene den Value auf einen String-Wert
@@ -175,7 +177,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
 	 *
-	 * @deprecated Use _size instead.
+	 * @deprecated Use _rows instead.
 	 */
 	@Prop() public _height?: string;
 
@@ -205,9 +207,10 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Options the user can choose from, also supporting Optgroup.
+	 * @deprecated use _options
 	 */
-	@Prop() public _list!: Stringified<SelectOption<W3CInputValue>[]>;
+	@Prop() public _list?: Stringified<SelectOption<W3CInputValue>[]>;
 
 	/**
 	 * Gibt an, ob mehrere Werte eingegeben werden können.
@@ -225,9 +228,19 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
+	 * Options the user can choose from, also supporting Optgroup.
+	 */
+	@Prop() public _options?: OptionsWithOptgroupPropType;
+
+	/**
 	 * Macht das Eingabeelementzu einem Pflichtfeld.
 	 */
 	@Prop() public _required?: boolean;
+
+	/**
+	 * Defines how many rows of options should be visible at the same time.
+	 */
+	@Prop() public _rows?: number;
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
@@ -263,15 +276,15 @@ export class KolSelect implements ComponentApi {
 	@State() public state: States = {
 		_hasValue: false,
 		_height: '',
-		_id: nonce(), // ⚠ required
+		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_options: [],
 		_multiple: false,
 		_value: [],
 	};
 
 	public constructor() {
-		this.controller = new SelectController(this, 'textarea', this.host);
+		this.controller = new SelectController(this, 'select', this.host);
 	}
 
 	@Watch('_accessKey')
@@ -326,7 +339,7 @@ export class KolSelect implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
-		this.controller.validateList(value);
+		this.validateOptions(value);
 	}
 
 	@Watch('_multiple')
@@ -344,14 +357,24 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateOn(value);
 	}
 
+	@Watch('_options')
+	public validateOptions(value?: OptionsWithOptgroupPropType): void {
+		this.controller.validateOptions(value);
+	}
+
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
 	}
 
+	@Watch('_rows')
+	public validateRows(value?: RowsPropType): void {
+		this.controller.validateRows(value);
+	}
+
 	@Watch('_size')
 	public validateSize(value?: number): void {
-		this.controller.validateSize(value);
+		this.controller.validateRows(value);
 	}
 
 	@Watch('_syncValueBySelector')

@@ -8,7 +8,7 @@ toastButtons.forEach((button) => {
 
 function createAndShowToast() {
 	const toast = document.createElement('kol-toast');
-	toast.setAttribute('_heading', 'Ich bin ein Toast!');
+	toast.setAttribute('_label', 'Ich bin ein Toast!');
 	toast.setAttribute('_level', '3');
 	toast.setAttribute('_show-duration', '10000');
 	toast.setAttribute('_type', 'info');

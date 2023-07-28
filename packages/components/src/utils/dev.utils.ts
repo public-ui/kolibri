@@ -27,7 +27,7 @@ let EXPERIMENTAL_MODE: boolean | null = null;
 let COLOR_CONTRAST_ANALYSIS: boolean | null = null;
 
 export const getDevMode = (): boolean => DEV_MODE === true;
-export const getExperimalMode = (): boolean => EXPERIMENTAL_MODE === true;
+export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const getColorContrastAnalysis = (): boolean => COLOR_CONTRAST_ANALYSIS === true;
 
 type LogShield = {
@@ -141,7 +141,7 @@ export const initKoliBri = (): void => {
 	|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 	|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
 	\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
-	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io
+	🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | 1.6.0-rc.21
 		`,
 			{
 				forceLog: true,

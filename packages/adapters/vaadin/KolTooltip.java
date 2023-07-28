@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * <kol-alert _type="warning">Die **Tooltip**-Komponente wird innerhalb von KoliBri verwendet und ist nicht dafür vorgesehen in der Anwendungsentwicklung verwendet zu werden. Denn der Tooltip ist nur dann wirklich barrierefrei, wenn von einem Referenzelement auf das Tooltip verwiesen wird.</kol-alert>
@@ -16,16 +18,16 @@ Ein geöffneter Tooltip lässt sich mit der `Escape`-Taste schließen, um ggf. �
  */
 
 @Tag("kol-tooltip")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.9")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-tooltip")
 public class KolTooltip extends Component {
 	/**
 	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAlign(final Optional<String> value) {
-		getElement().setProperty("_align", value);
+	public void setAlign(final String value) {
+		getElement().setProperty("_align", value.toString());
 	}
 
 	/**
@@ -34,25 +36,27 @@ public class KolTooltip extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAlign() {
-		return getElement().getProperty("_align", null);
+		var value = getElement().getProperty("_align", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @param value String
 	 */
-	public void setId(final Optional<String> value) {
-		getElement().setProperty("_id", value);
+	public void setId(final String value) {
+		getElement().setProperty("_id", value.toString());
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getId() {
-		return getElement().getProperty("_id", null);
+		var value = getElement().getProperty("_id", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -60,8 +64,8 @@ public class KolTooltip extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -70,6 +74,7 @@ public class KolTooltip extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

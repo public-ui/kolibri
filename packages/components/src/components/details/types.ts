@@ -1,11 +1,15 @@
 import { Generic } from '@a11y-ui/core';
 
-type RequiredProps = {
-	summary: string;
-};
+import { PropLabel } from '../../types/props/label';
+
+type RequiredProps = unknown;
 type OptionalProps = {
 	open: boolean;
-};
+	/**
+	 * @deprecated Use label.
+	 */
+	summary: string;
+} & PropLabel; // TODO v2: PropLabel will become required
 export type KoliBriDetailsProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;

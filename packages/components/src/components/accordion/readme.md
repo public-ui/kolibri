@@ -10,7 +10,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 ```html
 <div class="grid gap-2">
-	<kol-accordion _heading="Element 1">
+	<kol-accordion _label="Element 1">
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -19,7 +19,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 		<div slot="header">Inhalt eines Header</div>
 	</kol-accordion>
-	<kol-accordion _heading="Element 2">
+	<kol-accordion _label="Element 2">
 		<div slot="header">Inhalt im Header</div>
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -35,7 +35,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 ### Beispiel
 
 <div class="grid gap-2">
-	<kol-accordion _heading="Element 1">
+	<kol-accordion _label="Element 1">
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 			voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -44,7 +44,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 		</div>
 		<div slot="header">Inhalt eines Header</div>
 	</kol-accordion>
-	<kol-accordion _heading="Element 2">
+	<kol-accordion _label="Element 2">
 		<div slot="header">Inhalt im Header</div>
 		<div slot="content">
 			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -60,7 +60,7 @@ Accordions kommen immer dann zum Einsatz, wenn einem thematischen Oberbegriff zu
 
 ### Überschrift im Accordion-Tab
 
-Der Text, der als Überschrift im Accordion-Tab angezeigt werden soll, wird durch das Attribut **`_heading`** übergeben. Der Text kann neben Sonderzeichen auch Umlaute oder Leerzeichen enthalten.
+Der Text, der als Überschrift im Accordion-Tab angezeigt werden soll, wird durch das Attribut **`_label`** übergeben. Der Text kann neben Sonderzeichen auch Umlaute oder Leerzeichen enthalten.
 
 ### Überschriftenebene
 
@@ -115,18 +115,19 @@ Standardansicht gelegt.
 
 ## Links und Referenzen
 
-- https://www.w3.org/TR/wai-aria-practices/#accordion
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#accordion" _label="https://www.w3.org/TR/wai-aria-practices/#accordion" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property                | Attribute  | Description                                                                                                                                           | Type                                                                                 | Default     |
-| ----------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
-| `_heading` _(required)_ | `_heading` | Gibt die Beschriftung der Komponente an.                                                                                                              | `string`                                                                             | `undefined` |
-| `_level`                | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
-| `_on`                   | --         | Gibt die EventCallback-Funktionen an.                                                                                                                 | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
-| `_open`                 | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.                                                                                    | `boolean \| undefined`                                                               | `false`     |
+| Property   | Attribute  | Description                                                                                                                                           | Type                                                                                 | Default     |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- |
+| `_heading` | `_heading` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Beschriftung der Komponente an.                                        | `string \| undefined`                                                                | `undefined` |
+| `_label`   | `_label`   | Defines the button label                                                                                                                              | `string \| undefined`                                                                | `undefined` |
+| `_level`   | `_level`   | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                                       | `1`         |
+| `_on`      | --         | Gibt die EventCallback-Funktionen an.                                                                                                                 | `undefined \| { onClick?: EventValueOrEventCallback<Event, boolean> \| undefined; }` | `undefined` |
+| `_open`    | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.                                                                                    | `boolean \| undefined`                                                               | `false`     |
 
 ## Slots
 

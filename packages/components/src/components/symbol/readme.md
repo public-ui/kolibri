@@ -7,12 +7,12 @@ Die **Symbol**-Komponente ermöglicht das Rendern beliebiger Symbole mit steuerb
 ### Code
 
 ```html
-<kol-symbol _label_="Slash" _symbol="/"></kol-symbol>
+<kol-symbol _label="Slash" _symbol="/"></kol-symbol>
 ```
 
 ### Beispiel
 
-<kol-symbol _label_="Slash" _symbol="/"></kol-symbol>
+<kol-symbol _label="Slash" _symbol="/"></kol-symbol>
 
 ## Verwendung
 
@@ -26,7 +26,7 @@ Das eigentliche Symbol, welches am Bildschirm ausgegeben wird, wird über die Pr
 
 ## Links und Referenzen
 
-- https://www.deque.com/blog/dont-screen-readers-read-whats-screen-part-1-punctuation-typographic-symbols/
+- <kol-link _href="https://www.deque.com/blog/dont-screen-readers-read-whats-screen-part-1-punctuation-typographic-symbols/" _label="https://www.deque.com/blog/dont-screen-readers-read-whats-screen-part-1-punctuation-typographic-symbols/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 

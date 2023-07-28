@@ -8,6 +8,7 @@ import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropCollapsible } from '../../types/props/collapsible';
 import { PropCompact } from '../../types/props/compact';
 import { PropHasCompactButton } from '../../types/props/has-compact-button';
+import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
 import { KoliBriNavVariant } from './component';
 
@@ -23,9 +24,13 @@ type OptionalProps = {
 	variant: KoliBriNavVariant;
 } & PropAriaLabel &
 	PropCollapsible &
+	/**
+	 * @deprecated Use hideLabel.
+	 */
 	PropCompact &
 	PropHasCompactButton &
-	PropLabel;
+	PropLabel &
+	PropHideLabel;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -43,7 +48,8 @@ type RequiredStates = {
 	variant: KoliBriNavVariant;
 } & PropCollapsible &
 	PropHasCompactButton &
-	PropLabel;
+	PropLabel &
+	PropHideLabel;
 type OptionalStates = PropCompact;
 export type KoliBriNavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 

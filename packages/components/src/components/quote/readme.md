@@ -6,27 +6,28 @@ Die **Quote**-Komponente verfügt über zwei Varianten, eine kurze Fließtext-(`
 
 ## Verwendung
 
-Mittels **`_caption`** kann eine Überschrift gesetzt werden, während **`_quote`** das eigentliche Zitat enthält. Der Ursprung wird über **`_href`** gesetzt.
+Mittels **`_label`** kann eine Überschrift gesetzt werden, während **`_quote`** das eigentliche Zitat enthält. Der Ursprung wird über **`_href`** gesetzt.
 Die `inline`-Variante ist Standard, sofern die Eingerückte gewünscht ist, kann **`_variant`** auf `block` gesetzt werden.
 
 ## References
 
-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote
-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
-- https://www.mediaevent.de/html/quote.html
-- https://www.mediaevent.de/html/cite.html
-- https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/quote" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/quote.html" _label="https://www.mediaevent.de/html/quote.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.mediaevent.de/html/cite.html" _label="https://www.mediaevent.de/html/cite.html" _target="_blank"></kol-link>
+- <kol-link _href="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _label="https://accessibleweb.com/question-answer/what-is-a-block-quote-and-when-should-i-use-it/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute  | Description                                                                                                                 | Type                               | Default     |
-| --------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
-| `_caption`            | `_caption` | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`              | `undefined` |
-| `_href` _(required)_  | `_href`    | Gibt den Link zur Quelle des Zitates an.                                                                                    | `string`                           | `undefined` |
-| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst.                                                                                      | `string`                           | `undefined` |
-| `_variant`            | `_variant` | Gibt an, welche Variante der Darstellung genutzt werden soll.                                                               | `"block" \| "inline" \| undefined` | `'inline'`  |
+| Property              | Attribute  | Description                                                                                                                                                                                       | Type                               | Default     |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
+| `_caption`            | `_caption` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`              | `undefined` |
+| `_href` _(required)_  | `_href`    | Gibt den Link zur Quelle des Zitates an.                                                                                                                                                          | `string`                           | `undefined` |
+| `_label`              | `_label`   | Defines the label of the citation link.                                                                                                                                                           | `string \| undefined`              | `undefined` |
+| `_quote` _(required)_ | `_quote`   | Setzt den Text, also das Zitat selbst.                                                                                                                                                            | `string`                           | `undefined` |
+| `_variant`            | `_variant` | Gibt an, welche Variante der Darstellung genutzt werden soll.                                                                                                                                     | `"block" \| "inline" \| undefined` | `'inline'`  |
 
 ## Dependencies
 

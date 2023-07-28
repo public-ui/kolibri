@@ -61,7 +61,7 @@ Um Untermenüpunkte zu erzeugen, erweitern Sie die JSON-Struktur um das zusätzl
 
 ### Kompakte Navigationsleiste anzeigen
 
-Um die Navigationsleiste in der kompakten Darstellung auszugeben, setzen Sie das Attribut **`_compact`**.
+Um die Navigationsleiste in der kompakten Darstellung auszugeben, setzen Sie das Attribut **`_hide-label`**.
 
 ### Umschalter normale/kompakte Darstellung
 
@@ -100,8 +100,6 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 | `Tab`   | Fokussiert den ersten Menüpunkt in der Navigation. Nachfolgend kann mit der Tab-Taste jeder Menüpunkt angesprungen werden. Wenn der Has-compact-Button aktiviert wurde, ist dieser ebenfalls mit der Tab-Taste erreichbar. |
 | `Enter` | Klappt Unterpunkte auf/zu, sofern eine Ausklappschaltfläche fokussiert ist, aktiviert die Schaltfläche oder öffnet den Link anderenfalls.                                                                                  |
 
-<!--## Links und Referenzen
-
 <!-- Auto Generated Below -->
 
 ## Properties
@@ -111,8 +109,9 @@ Die Ausrichtung der Navigationsleiste kann mit dem Attribut **`_orientation`** u
 | `_ariaCurrentValue`   | `_aria-current-value` | Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.                                                                                         | `"date" \| "location" \| "page" \| "step" \| "time" \| boolean` | `false`      |
 | `_ariaLabel`          | `_aria-label`         | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`                                           | `undefined`  |
 | `_collapsible`        | `_collapsible`        | Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.                                                                                                            | `boolean \| undefined`                                          | `true`       |
-| `_compact`            | `_compact`            | Gibt an, ob die Navigation kompakt angezeigt wird.                                                                                                                                                       | `boolean \| undefined`                                          | `false`      |
+| `_compact`            | `_compact`            | <span style="color:red">**[DEPRECATED]**</span> Use \_hide-label<br/><br/>Gibt an, ob die Navigation kompakt angezeigt wird.                                                                             | `boolean \| undefined`                                          | `false`      |
 | `_hasCompactButton`   | `_has-compact-button` | <span style="color:red">**[DEPRECATED]**</span> Version 2<br/><br/>Gibt an, ob die Navigation eine zusätzliche Schaltfläche zum Aus- und Einklappen der Navigation anzeigen soll.                        | `boolean \| undefined`                                          | `false`      |
+| `_hideLabel`          | `_hide-label`         | Defines if navigation labels should be hidden                                                                                                                                                            | `boolean \| undefined`                                          | `false`      |
 | `_label`              | `_label`              | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                              | `string \| undefined`                                           | `undefined`  |
 | `_links` _(required)_ | `_links`              | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                          | `ButtonOrLinkOrTextWithChildrenProps[] \| string`               | `undefined`  |
 | `_orientation`        | `_orientation`        | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                                                                       | `"horizontal" \| "vertical" \| undefined`                       | `'vertical'` |
