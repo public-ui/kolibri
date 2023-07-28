@@ -9,6 +9,7 @@ import { OptionsWithOptgroupPropType } from '../../types/props/options';
 import { RowsPropType } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
+import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
@@ -407,13 +408,18 @@ export class KolSelect implements ComponentApi {
 	}
 
 	private onChange = (event: Event): void => {
-		/**
-		 * TODO: Find values via value keys.
-		 */
 		this._value = Array.from(this.ref?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+
+		// Event handling
+		preventEvent(event);
+		tryToDispatchKoliBriEvent('change', this.host, this._value);
+
+		// Static form handling
 		this.controller.setFormAssociatedValue(this._value as unknown as string);
+
+		// Callback
 		if (typeof this.state._on?.onChange === 'function') {
 			this.state._on.onChange(event, this._value);
 		}

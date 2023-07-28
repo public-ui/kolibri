@@ -5,7 +5,7 @@ import { InputTypeOnDefault } from '../../../types/input/types';
 import { validateAdjustHeight } from '../../../types/props/adjust-height';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
-import { dispatchKoliBriEvent } from '../../../utils/events';
+import { preventEvent, tryToDispatchKoliBriEvent } from '../../../utils/events';
 import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
@@ -71,21 +71,6 @@ export class InputController extends ControlledInputController implements Watche
 		validateLabelWithExpertSlot(this.component, value);
 	}
 
-	public validateName(value?: string): void {
-		watchString(this.component, '_name', value, {
-			hooks: {
-				afterPatch: () => {
-					this.setAttribute('name', this.formAssociated, this.component.state._name as string);
-				},
-			},
-		});
-		if (typeof value === 'undefined') {
-			devHint(
-				`Ein Name an den Eingabefeldern ist nicht zwingend erforderlich, kann aber für die Autocomplete-Funktion und für das statische Versenden des Eingabefeldes relevant sein.`
-			);
-		}
-	}
-
 	public validateOn(value?: InputTypeOnDefault): void {
 		if (typeof value === 'object') {
 			setState(this.component, '_on', value);
@@ -118,31 +103,36 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateHint(this.component._hint);
 		this.validateId(this.component._id);
 		this.validateLabel(this.component._label);
-		this.validateName(this.component._name);
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
 	}
 
 	protected onBlur(event: Event): void {
-		event.preventDefault();
-		event.stopPropagation();
 		this.component._alert = true;
 		this.component._touched = true;
+
+		// Event handling
+		preventEvent(event);
+		tryToDispatchKoliBriEvent('blur', this.host);
+
+		// Callback
 		if (typeof this.component._on?.onBlur === 'function') {
 			this.component._on.onBlur(event);
-		} else {
-			console.log('dispatchKoliBriEvent', this.host, 'blur');
-			this.host && dispatchKoliBriEvent(this.host, 'blur');
 		}
 	}
 
 	protected onChange(event: Event): void {
-		event.preventDefault();
-		event.stopPropagation();
 		const value = (event.target as HTMLInputElement).value;
+
+		// Event handling
+		preventEvent(event);
+		tryToDispatchKoliBriEvent('change', this.host, value);
+
+		// Static form handling
 		this.setFormAssociatedValue(value);
-		this.valueChangeListeners.forEach((listener) => listener(value));
+
+		// Callback
 		if (typeof this.component._on?.onChange === 'function') {
 			/**
 			 * TODO
@@ -152,32 +142,35 @@ export class InputController extends ControlledInputController implements Watche
 			 * - valueAsDate
 			 */
 			this.component._on.onChange(event, value);
-		} else {
-			console.log('dispatchKoliBriEvent', this.host, 'change', value);
-			this.host && dispatchKoliBriEvent(this.host, 'change', value);
 		}
+
+		/**
+		 * TODO: Was ist das?
+		 */
+		this.valueChangeListeners.forEach((listener) => listener(value));
 	}
 
 	protected onClick(event: Event): void {
-		event.preventDefault();
-		event.stopPropagation();
+		// Event handling
+		preventEvent(event);
+		tryToDispatchKoliBriEvent('click', this.host);
+
+		// Callback
 		if (typeof this.component._on?.onClick === 'function') {
 			this.component._on.onClick(event);
-		} else {
-			console.log('dispatchKoliBriEvent', this.host, 'click');
-			this.host && dispatchKoliBriEvent(this.host, 'click');
 		}
 	}
 
 	protected onFocus(event: Event): void {
-		event.preventDefault();
-		event.stopPropagation();
 		this.component._alert = true;
+
+		// Event handling
+		preventEvent(event);
+		tryToDispatchKoliBriEvent('focus', this.host);
+
+		// Callback
 		if (typeof this.component._on?.onFocus === 'function') {
 			this.component._on.onFocus(event);
-		} else {
-			console.log('dispatchKoliBriEvent', this.host, 'focus');
-			this.host && dispatchKoliBriEvent(this.host, 'focus');
 		}
 	}
 

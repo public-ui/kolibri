@@ -323,6 +323,10 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
@@ -330,6 +334,10 @@ export namespace Components {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -408,6 +416,10 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
@@ -415,6 +427,10 @@ export namespace Components {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -503,6 +519,10 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
@@ -510,6 +530,10 @@ export namespace Components {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2565,6 +2589,10 @@ export namespace Components {
          */
         "_label": LabelPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
@@ -2576,6 +2604,10 @@ export namespace Components {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_showDropdown"?: boolean;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3515,6 +3547,10 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
@@ -3522,6 +3558,10 @@ declare namespace LocalJSX {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3600,6 +3640,10 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
@@ -3607,6 +3651,10 @@ declare namespace LocalJSX {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3695,6 +3743,10 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
@@ -3702,6 +3754,10 @@ declare namespace LocalJSX {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_role"?: AlternativButtonLinkRole;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5757,6 +5813,10 @@ declare namespace LocalJSX {
          */
         "_label": LabelPropType;
         /**
+          * Gibt den technischen Namen des Eingabefeldes an.
+         */
+        "_name"?: string;
+        /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
@@ -5768,6 +5828,10 @@ declare namespace LocalJSX {
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
         "_showDropdown"?: boolean;
+        /**
+          * Selector for synchronizing the value with another input element.
+         */
+        "_syncValueBySelector"?: string;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */

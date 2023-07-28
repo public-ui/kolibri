@@ -14,7 +14,6 @@ type OptionalProps = {
 	hideLabel: boolean;
 	hint: string;
 	id: string;
-	name: string;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
 	syncValueBySelector: string;
