@@ -83,7 +83,7 @@ export class KolInputRadio implements ComponentApi {
 										title=""
 										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-										aria-labelledby={`${customId}-label`}
+										aria-label={this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined}
 										type="radio"
 										id={customId}
 										checked={this.state._value === option.value}
@@ -103,12 +103,10 @@ export class KolInputRadio implements ComponentApi {
 										 */
 										aria-hidden="true"
 										hidden={hasExpertSlot || !this.state._hideLabel}
-										_id={`${this.state._id}-tooltip`}
 										_label={typeof this.state._label === 'string' ? this.state._label : ''}
 									></kol-tooltip>
 									<label
 										htmlFor={`${customId}`}
-										id={`${customId}-label`}
 										style={{
 											height: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
 											margin: this.state._hideLabel && this.state._required !== true ? '0' : undefined,

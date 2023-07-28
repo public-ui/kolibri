@@ -15,7 +15,6 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { validateStealth } from '../../types/props/stealth';
 import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
-import { nonce } from '../../utils/dev.utils';
 import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -29,7 +28,6 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 })
 export class KolLinkWc implements KoliBriLinkAPI {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
-	private readonly nonce = nonce();
 	private ref?: HTMLAnchorElement;
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
@@ -105,7 +103,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
+					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
 						disabled: this.state._disabled === true,
@@ -135,7 +133,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
-					_id={this.nonce}
 					_label={this.state._label || this.state._href}
 				></kol-tooltip>
 			</Host>

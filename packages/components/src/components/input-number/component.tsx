@@ -82,7 +82,7 @@ export class KolInputNumber implements ComponentApi {
 							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-labelledby={`${this.state._id}-label`}
+							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"
 							autoComplete={this.state._autoComplete}
 							autoCorrect="off"
@@ -110,7 +110,6 @@ export class KolInputNumber implements ComponentApi {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_id={`${this.state._id}-tooltip`}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
 						></kol-tooltip>
 					</div>

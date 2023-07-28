@@ -23,7 +23,7 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 <kol-link>
   <mock:shadow-root>
   <kol-link-wc>
-    <a${state._hideLabel === true || state._useCase === 'image' ? ` aria-labelledby="nonce"` : ''} class="${
+    <a${state._hideLabel === true && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''} class="${
 		state._hideLabel === true ? ' icon-only hide-label' : ''
 	}${typeof state._target === 'string' && state._target !== '_self' ? ' external-link' : ''}" href="${
 		typeof state._href === 'string' && state._href.length > 0 ? state._href : 'javascript:void(0)'
@@ -55,7 +55,6 @@ export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
 		${getTooltipHtml(
 			{
 				_align: state._tooltipAlign,
-				_id: 'nonce',
 				_label: state._label || state._href,
 			},
 			` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
