@@ -1,5 +1,6 @@
 export function preventEvent(event: Event): void {
-	event.preventDefault();
+	// event.preventDefault(); // TODO: InputFile öffnet Dateiauswahl nicht! - Wie fangen wir die Events ab?
+	event.stopImmediatePropagation();
 	event.stopPropagation();
 }
 
@@ -10,13 +11,11 @@ function createKoliBriEvent<T>(type: string, detail: T): CustomEvent {
 		composed: true,
 		detail: detail,
 	});
-	console.log('createKoliBriEvent', type, detail, '=>', event);
 	return event;
 }
 
 function dispatchKoliBriEvent<T>(target: EventTarget, type: string, detail?: T): boolean {
 	const dispatch = target.dispatchEvent(createKoliBriEvent(type, detail));
-	console.log('dispatchKoliBriEvent', target, type, detail, '=>', dispatch);
 	return dispatch;
 }
 

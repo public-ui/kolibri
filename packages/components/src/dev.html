@@ -1762,23 +1762,11 @@
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
-			<button></button>
-			<kol-button
-				_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
-				_label="primary"
-				_name="button-name"
-				_sync-value-by-selector="button"
-				_variant="primary"
-				_value="button-value"
-			></kol-button>
-			<kol-split-button
-				_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
-				_label="primary"
-				_name="button-name"
-				_sync-value-by-selector="button"
-				_variant="primary"
-				_value="button-value"
-			></kol-split-button>
+			<kol-input-checkbox _id="input-checkbox" _type="checkbox" _value="agb">
+				Ich akzeptiere die <kol-abbr _label="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.
+			</kol-input-checkbox>
+			<kol-input-file _label="File"></kol-input-file>
+			<kol-input-radio _label="Radio" _list="[{'label': 'a', 'value': 'a'},{'label': 'b'}]"></kol-input-radio>
 		</main>
 	</body>
 </html>

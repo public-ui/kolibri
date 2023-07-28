@@ -272,7 +272,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
 
 	@State() public state: States = {
 		_hasValue: false,
