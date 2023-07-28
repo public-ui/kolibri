@@ -69,12 +69,12 @@ export class KolInputCheckbox implements ComponentApi {
 							accessKey={this.state._accessKey} // by checkbox?!
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
-							checked={this.state._checked === true}
-							disabled={this.state._disabled === true}
+							checked={this.state._checked}
+							disabled={this.state._disabled}
 							id={this.state._id}
 							indeterminate={this.state._indeterminate}
 							name={this.state._name}
-							required={this.state._required === true}
+							required={this.state._required}
 							tabIndex={this.state._tabIndex}
 							type="checkbox"
 							{...this.controller.onFacade}

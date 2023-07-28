@@ -67,7 +67,7 @@ export class KolInputColor implements ComponentApi {
 							autoCapitalize="off"
 							autoComplete={this.state._autoComplete}
 							autoCorrect="off"
-							disabled={this.state._disabled === true}
+							disabled={this.state._disabled}
 							id={this.state._id}
 							list={hasSuggestions ? `${this.state._id}-list` : undefined}
 							name={this.state._name}
