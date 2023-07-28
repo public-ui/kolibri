@@ -57,15 +57,10 @@ Bei der **Avatar**-Komponente wurden insbesondere folgende Punkte der Barrierefr
 
 - [kol-avatar](.)
 
-### Depends on
-
-- [kol-image](../image)
-
 ### Graph
 
 ```mermaid
 graph TD;
-  kol-avatar-wc --> kol-image
   kol-avatar --> kol-avatar-wc
   style kol-avatar-wc fill:#f9f,stroke:#333,stroke-width:4px
 ```

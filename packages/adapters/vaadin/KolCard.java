@@ -17,9 +17,28 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
+	/**
+	 * Defines whether the card has a close button.
+	 *
+	 * @param value String
+	 */
+	public void setHasCloser(final String value) {
+		getElement().setProperty("_has-closer", value.toString());
+	}
+
+	/**
+	 * Defines whether the card has a close button.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getHasCloser() {
+		var value = getElement().getProperty("_has-closer", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
 	/**
 	 * Macht den Footerbereich der Card sichtbar.
 	 *

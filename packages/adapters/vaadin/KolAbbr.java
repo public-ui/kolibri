@@ -13,7 +13,7 @@ Der Tooltip für die Beschreibung wird bei Focus oder Hover der **Abbr**-Kompone
  */
 
 @Tag("kol-abbr")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-abbr")
 public class KolAbbr extends Component {
 	/**
