@@ -105,7 +105,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					aria-controls={this.state._ariaControls}
 					aria-current={this.state._ariaCurrent}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
+					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapBoolean2String(this.state._ariaSelected)}
 					class={{
 						disabled: this.state._disabled === true,
@@ -135,7 +135,6 @@ export class KolLinkWc implements KoliBriLinkAPI {
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
-					_id={this.nonce}
 					_label={this.state._label || this.state._href}
 				></kol-tooltip>
 			</Host>
