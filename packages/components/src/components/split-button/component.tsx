@@ -32,8 +32,11 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	private dropdownContent: HTMLDivElement | undefined;
 
 	private readonly clickHandler = (e: Event) => {
-		if (typeof this.state._on.onClick === 'function') this.state._on.onClick(e);
-		else this.toggleDropdown();
+		if (typeof this.state._on.onClick === 'function') {
+			this.state._on.onClick(e);
+		} else {
+			this.toggleDropdown();
+		}
 	};
 
 	private readonly openDropdown = () => {
@@ -92,8 +95,10 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 					_icon={this._icon}
 					_hideLabel={this._hideLabel}
 					_label={this._label}
+					_name={this._name}
 					_on={{ onClick: this.clickHandler }}
 					_role={this._role}
+					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
@@ -184,6 +189,11 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	@Prop() public _label!: LabelPropType;
 
 	/**
+	 * Gibt den technischen Namen des Eingabefeldes an.
+	 */
+	@Prop() public _name?: string;
+
+	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: { onClick: KoliBriSplitButtonCallback };
@@ -192,6 +202,12 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	 * Gibt die Rolle des primären Elements in der Komponente an.
 	 */
 	@Prop() public _role?: AlternativButtonLinkRole;
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: string;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
