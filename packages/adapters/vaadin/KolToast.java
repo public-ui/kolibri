@@ -14,7 +14,7 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
  */
 
 @Tag("kol-toast")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**

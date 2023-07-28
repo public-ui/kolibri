@@ -27,7 +27,7 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 | Property              | Attribute | Description                                                                                                                 | Type                                                  | Default     |
 | --------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
 | `_align`              | `_align`  | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.                                                           | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-| `_id` _(required)_    | `_id`     | Gibt die interne ID des primären Elements in der Komponente an.                                                             | `string`                                              | `undefined` |
+| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                                   | `string \| undefined`                                 | `undefined` |
 | `_label` _(required)_ | `_label`  | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                                              | `undefined` |
 
 ## Dependencies

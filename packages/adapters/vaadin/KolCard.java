@@ -17,7 +17,7 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**

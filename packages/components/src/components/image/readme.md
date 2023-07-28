@@ -62,18 +62,4 @@ Ausführliche Erklärung zu `_srcset` und `_sizes`: <kol-link _href="https://www
 | `_src` _(required)_ | `_src`     | Setzt die Quell-URL des Bildes.                                            | `string`                         | `undefined` |
 | `_srcset`           | `_srcset`  | Setzt eine Liste von Quell-URLs mit Breiten der Bilder.                    | `string \| undefined`            | `undefined` |
 
-## Dependencies
-
-### Used by
-
-- [kol-avatar-wc](../avatar)
-
-### Graph
-
-```mermaid
-graph TD;
-  kol-avatar-wc --> kol-image
-  style kol-image fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ---

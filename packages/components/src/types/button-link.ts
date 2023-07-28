@@ -15,7 +15,9 @@ import { PropDisabled } from './props/disabled';
 import { PropDownload } from './props/download';
 import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';
+import { PropId } from './props/id';
 import { PropLabelWithExpertSlot } from './props/label';
+import { PropName } from './props/name';
 import { PropStealth } from './props/stealth';
 import { StencilUnknown } from './unknown';
 
@@ -121,12 +123,14 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	 * @deprecated Zweck?!
 	 */
 	accessKey: string;
-	disabled: boolean;
-	id: string;
 	on: KoliBriButtonCallbacks<StencilUnknown>;
+	syncValueBySelector: string;
 	type: KoliBriButtonType;
 	value: Stringified<StencilUnknown>;
-} & PropLabelWithExpertSlot;
+} & PropDisabled &
+	PropId &
+	PropLabelWithExpertSlot &
+	PropName;
 // type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
@@ -140,11 +144,12 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 		 * @deprecated Zweck?!
 		 */
 		accessKey: string;
-		disabled: boolean;
-		id: string;
 		on: KoliBriButtonCallbacks<StencilUnknown>;
+		syncValueBySelector: string;
 		value: StencilUnknown;
-	};
+	} & PropDisabled &
+	PropId &
+	PropName;
 // type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /**

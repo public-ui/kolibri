@@ -13,7 +13,7 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
  */
 
 @Tag("kol-link-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.20")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.21")
 @JsModule("@public-ui/components/dist/components/kol-link-button")
 public class KolLinkButton extends Component {
 	/**
