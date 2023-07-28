@@ -7,6 +7,7 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
+import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
@@ -306,9 +307,21 @@ export class KolInputFile implements ComponentApi {
 		this.controller.componentWillLoad();
 	}
 
-	private onChange = (event: Event) => {
-		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file' && typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, this.ref.files);
+	private onChange = (event: Event): void => {
+		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
+			const value = this.ref.files;
+
+			// Event handling
+			preventEvent(event);
+			tryToDispatchKoliBriEvent('change', this.host, value);
+
+			// Static form handling
+			this.controller.setFormAssociatedValue(value);
+
+			// Callback
+			if (typeof this.state._on?.onChange === 'function') {
+				this.state._on.onChange(event, value);
+			}
 		}
 	};
 }

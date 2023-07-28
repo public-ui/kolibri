@@ -40,7 +40,7 @@ export class KolSelect implements ComponentApi {
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
 		return (
-			<optgroup disabled={optgroup.disabled === true} label={optgroup.label}>
+			<optgroup disabled={optgroup.disabled} label={optgroup.label}>
 				{optgroup.options?.map((option: SelectOption<W3CInputValue>, index: number) => {
 					const key = `${preKey}-${index}`;
 					if (Array.isArray((option as Optgroup<string>).options)) {
@@ -48,7 +48,7 @@ export class KolSelect implements ComponentApi {
 					} else {
 						return (
 							<option
-								disabled={option.disabled === true}
+								disabled={option.disabled}
 								key={key}
 								// label={option.label}
 								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
@@ -124,7 +124,7 @@ export class KolSelect implements ComponentApi {
 								} else {
 									return (
 										<option
-											disabled={option.disabled === true}
+											disabled={option.disabled}
 											key={key}
 											// label={option.label}
 											selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
@@ -272,7 +272,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
 
 	@State() public state: States = {
 		_hasValue: false,

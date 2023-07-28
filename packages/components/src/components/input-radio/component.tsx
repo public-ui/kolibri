@@ -9,6 +9,7 @@ import { OptionsPropType } from '../../types/props/options';
 import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
+import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
@@ -93,6 +94,7 @@ export class KolInputRadio implements ComponentApi {
 										value={`-${index}`}
 										{...this.controller.onFacade}
 										onChange={this.onChange}
+										onClick={undefined} // onClick wird nicht benötigt, da onChange bereits das richtige Event auslöst
 									/>
 									<kol-tooltip
 										/**
@@ -342,6 +344,19 @@ export class KolInputRadio implements ComponentApi {
 		if (event.target instanceof HTMLInputElement) {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
+				// Event handling
+				preventEvent(event);
+				tryToDispatchKoliBriEvent('change', this.host, option.value);
+
+				// Static form handling
+				this.controller.setFormAssociatedValue(option.value);
+
+				// Callback
+				if (typeof this.state._on?.onChange === 'function') {
+					this.state._on.onChange(event, option.value);
+				}
+
+				// TODO: Prüfen, was setValue noch genau macht, wir syncValue ja jetzt.
 				this.controller.setValue(event, option.value as string); // TODO: fix type
 			}
 		}

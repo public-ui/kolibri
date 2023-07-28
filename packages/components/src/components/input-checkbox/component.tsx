@@ -6,6 +6,7 @@ import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
+import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
@@ -53,7 +54,6 @@ export class KolInputCheckbox implements ComponentApi {
 					_id={this.state._id}
 					_required={this.state._required}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
@@ -70,16 +70,16 @@ export class KolInputCheckbox implements ComponentApi {
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
 							aria-labelledby={`${this.state._id}-label`}
 							checked={this.state._checked}
-							disabled={this.state._disabled === true}
+							disabled={this.state._disabled}
 							id={this.state._id}
 							indeterminate={this.state._indeterminate}
 							name={this.state._name}
-							required={this.state._required === true}
+							required={this.state._required}
 							tabIndex={this.state._tabIndex}
 							type="checkbox"
-							value={typeof this.state._value === 'string' ? this.state._value : ''}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
+							onClick={undefined} // onClick wird nicht benötigt, da onChange bereits das richtige Event auslöst
 						/>
 						<kol-tooltip
 							/**
@@ -335,9 +335,20 @@ export class KolInputCheckbox implements ComponentApi {
 	private onChange = (event: Event): void => {
 		this._checked = !this._checked;
 		this._indeterminate = false;
-		this.controller.setFormAssociatedCheckboxValue(this.state._value);
-		if (typeof this._on?.onChange === 'function') {
-			this._on.onChange(event, this.state._value);
+
+		const value = this._checked ? this.state._value : null;
+
+		// Event handling
+		preventEvent(event);
+		tryToDispatchKoliBriEvent('change', this.host, value);
+
+		// Static form handling
+		this.controller.setFormAssociatedValue(value);
+		this.controller.setFormAssociatedCheckboxValue;
+
+		// Callback
+		if (typeof this.state._on?.onChange === 'function') {
+			this.state._on.onChange(event, value);
 		}
 	};
 }
