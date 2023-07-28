@@ -25,7 +25,6 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
-import { nonce } from '../../utils/dev.utils';
 import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
@@ -43,7 +42,6 @@ import { watchButtonType, watchButtonVariant } from './controller';
 })
 export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates> {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
-	private readonly nonce = nonce();
 	private ref?: HTMLButtonElement;
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {

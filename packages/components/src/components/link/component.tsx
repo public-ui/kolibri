@@ -15,7 +15,6 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { validateStealth } from '../../types/props/stealth';
 import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
-import { nonce } from '../../utils/dev.utils';
 import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -29,7 +28,6 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 })
 export class KolLinkWc implements KoliBriLinkAPI {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
-	private readonly nonce = nonce();
 	private ref?: HTMLAnchorElement;
 
 	private readonly catchRef = (ref?: HTMLAnchorElement) => {
