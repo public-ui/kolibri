@@ -1,0 +1,17 @@
+<kol-icon exportparts="icon"{{ additionalAttrs|raw }}>
+  {% if mode == 'csr' %}
+    <mock:shadow-root>
+  {% elseif mode == 'ssr' %}
+    <template shadowrootmode="open">
+  {% endif %}
+  {% if _label|length > 0 %}
+    <i aria-label="{{ _label }}" class="{{ _icon }}" part="icon" role="img"></i>
+  {% else %}
+    <i aria-hidden="true" class="{{ _icon }}" part="icon" role="img"></i>
+  {% endif %}
+  {% if mode == 'csr' %}
+    </mock:shadow-root>
+  {% elseif mode == 'ssr' %}
+    </template>
+  {% endif %}
+</kol-icon>
