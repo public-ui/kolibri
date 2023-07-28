@@ -1,19 +1,24 @@
 import { mixMembers } from 'stencil-awesome-test';
+import path from 'path';
+import { readFileSync } from 'fs';
+import { render } from 'mustache';
 
 import { KoliBriIconProps } from '../types';
 
 export const getIconHtml = (props: KoliBriIconProps, additionalAttrs = ''): string => {
-	props = mixMembers(
+	const state = mixMembers(
 		{
 			_icon: 'codicon codicon-home',
 		},
 		props
 	);
-	return `<kol-icon exportparts="icon"${additionalAttrs}>
-  <mock:shadow-root>
-    <i ${typeof props._label === 'string' && props._label.length > 0 ? `aria-label="${props._label}"` : 'aria-hidden="true"'} class="${
-		props._icon
-	}" part="icon" role="img"></i>
-  </mock:shadow-root> 
-</kol-icon>`;
+
+	const template = readFileSync(path.join(__dirname, 'icon.mustache'), { encoding: 'utf-8' });
+
+	return render(template, {
+		additionalAttrs,
+		...state,
+		csrMode: true,
+		ssrMode: false,
+	});
 };
