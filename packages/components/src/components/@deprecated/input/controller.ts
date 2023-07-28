@@ -5,7 +5,7 @@ import { InputTypeOnDefault } from '../../../types/input/types';
 import { validateAdjustHeight } from '../../../types/props/adjust-height';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../../types/props/label';
 import { a11yHintDisabled, devHint } from '../../../utils/a11y.tipps';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
 import { objectObjectHandler, parseJson, setState, watchBoolean, watchString } from '../../../utils/prop.validators';
 import { validateTabIndex } from '../../../utils/validators/tab-index';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
@@ -113,7 +113,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.component._touched = true;
 
 		// Event handling
-		preventEvent(event);
+		stopPropagation(event);
 		tryToDispatchKoliBriEvent('blur', this.host);
 
 		// Callback
@@ -126,7 +126,7 @@ export class InputController extends ControlledInputController implements Watche
 		const value = (event.target as HTMLInputElement).value;
 
 		// Event handling
-		preventEvent(event);
+		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling
@@ -152,7 +152,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	protected onClick(event: Event): void {
 		// Event handling
-		preventEvent(event);
+		stopPropagation(event);
 		tryToDispatchKoliBriEvent('click', this.host);
 
 		// Callback
@@ -165,7 +165,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.component._alert = true;
 
 		// Event handling
-		preventEvent(event);
+		stopPropagation(event);
 		tryToDispatchKoliBriEvent('focus', this.host);
 
 		// Callback

@@ -9,7 +9,7 @@ import { OptionsPropType } from '../../types/props/options';
 import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
@@ -343,7 +343,7 @@ export class KolInputRadio implements ComponentApi {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
 				// Event handling
-				preventEvent(event);
+				stopPropagation(event);
 				tryToDispatchKoliBriEvent('change', this.host, option.value);
 
 				// Static form handling

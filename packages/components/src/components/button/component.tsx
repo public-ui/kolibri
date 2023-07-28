@@ -25,7 +25,7 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -62,7 +62,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 			});
 		} else {
 			// Event handling
-			preventEvent(event);
+			stopPropagation(event);
 			tryToDispatchKoliBriEvent('change', this.host, this.state._value);
 
 			// TODO: Static form handling

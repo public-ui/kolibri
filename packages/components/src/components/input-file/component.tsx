@@ -7,7 +7,7 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
@@ -311,7 +311,7 @@ export class KolInputFile implements ComponentApi {
 			const value = this.ref.files;
 
 			// Event handling
-			preventEvent(event);
+			stopPropagation(event);
 			tryToDispatchKoliBriEvent('change', this.host, value);
 
 			// Static form handling

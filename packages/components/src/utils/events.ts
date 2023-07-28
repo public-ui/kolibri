@@ -1,5 +1,4 @@
-export function preventEvent(event: Event): void {
-	// event.preventDefault(); // TODO: InputFile öffnet Dateiauswahl nicht! - Wie fangen wir die Events ab?
+export function stopPropagation(event: Event): void {
 	event.stopImmediatePropagation();
 	event.stopPropagation();
 }

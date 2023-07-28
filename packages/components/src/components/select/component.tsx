@@ -9,7 +9,7 @@ import { OptionsWithOptgroupPropType } from '../../types/props/options';
 import { RowsPropType } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
@@ -412,7 +412,7 @@ export class KolSelect implements ComponentApi {
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 
 		// Event handling
-		preventEvent(event);
+		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, this._value);
 
 		// Static form handling
