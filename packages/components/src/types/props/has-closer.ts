@@ -3,6 +3,9 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
+
+export type HasCloserPropType = boolean;
+
 /** de
  * Markiert dieses Element als geöffnet, oder dass das verknüpfte Element (aria-controls/aria-owns) geöffnet ist.
  */
@@ -10,7 +13,7 @@ import { watchBoolean } from '../../utils/prop.validators';
  * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
  */
 export type PropHasCloser = {
-	hasCloser: boolean;
+	hasCloser: HasCloserPropType;
 };
 
 /* validator */

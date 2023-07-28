@@ -134,9 +134,9 @@ export class KolTooltip implements KoliBriTooltipAPI {
 		return (
 			<Host ref={this.catchHostElement}>
 				{this.state._label !== '' && (
-					<div id="floating" ref={this.catchTooltipElement}>
-						<div class="area" id="arrow" ref={this.catchArrowElement} />
-						<kol-span-wc class="area" id={this.state._id} _label={this.state._label}></kol-span-wc>
+					<div class="tooltip-floating" ref={this.catchTooltipElement}>
+						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
+						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label}></kol-span-wc>
 					</div>
 				)}
 			</Host>

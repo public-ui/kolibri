@@ -19,6 +19,8 @@ import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrent } from "./types/props/aria-current";
 import { StencilUnknown } from "./types/unknown";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+import { KoliBriCardEventCallbacks } from "./components/card/types";
+import { HasCloserPropType } from "./types/props/has-closer";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -62,6 +64,8 @@ export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrent } from "./types/props/aria-current";
 export { StencilUnknown } from "./types/unknown";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
+export { KoliBriCardEventCallbacks } from "./components/card/types";
+export { HasCloserPropType } from "./types/props/has-closer";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -553,6 +557,10 @@ export namespace Components {
     }
     interface KolCard {
         /**
+          * Defines whether the card has a close button.
+         */
+        "_hasCloser"?: HasCloserPropType;
+        /**
           * Macht den Footerbereich der Card sichtbar.
          */
         "_hasFooter"?: boolean;
@@ -571,6 +579,10 @@ export namespace Components {
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Defines the event callback functions for the component.
+         */
+        "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
         /**
@@ -3769,6 +3781,10 @@ declare namespace LocalJSX {
     }
     interface KolCard {
         /**
+          * Defines whether the card has a close button.
+         */
+        "_hasCloser"?: HasCloserPropType;
+        /**
           * Macht den Footerbereich der Card sichtbar.
          */
         "_hasFooter"?: boolean;
@@ -3787,6 +3803,10 @@ declare namespace LocalJSX {
           * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
          */
         "_level"?: HeadingLevel;
+        /**
+          * Defines the event callback functions for the component.
+         */
+        "_on"?: KoliBriCardEventCallbacks;
     }
     interface KolDetails {
         /**

@@ -26,13 +26,21 @@ export const getButtonWcHtml = (
 	);
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
+	const hasExpertSlot: boolean = state._label === false;
 	const type = typeof state._type === 'string' ? state._type : 'button';
 	const variant = typeof state._variant === 'string' ? state._variant : 'normal';
-	const hasExpertSlot: boolean = state._label === false;
+	const classNames: string[] = [variant];
+
+	if (state._hideLabel) {
+		classNames.push('icon-only', 'hide-label');
+	}
+
 	return `<kol-button-wc${additionalAttrs}>
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
-	} class="${variant}" type="${type}">
+	}
+	${state._hideLabel ? 'aria-labelledby="nonce"' : ''}
+	class="${classNames.join(' ')}" type="${type}">
 		${getSpanWcHtml(
 			{
 				...props,

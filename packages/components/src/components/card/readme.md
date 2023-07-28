@@ -75,13 +75,15 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 
 ## Properties
 
-| Property     | Attribute     | Description                                                                                                                                           | Type                                           | Default     |
-| ------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ----------- |
-| `_hasFooter` | `_has-footer` | Macht den Footerbereich der Card sichtbar.                                                                                                            | `boolean \| undefined`                         | `false`     |
-| `_heading`   | `_heading`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Beschriftung der Komponente an.                                        | `string \| undefined`                          | `undefined` |
-| `_headline`  | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Beschriftung der Komponente an.        | `string \| undefined`                          | `undefined` |
-| `_label`     | `_label`      |                                                                                                                                                       | `string \| undefined`                          | `undefined` |
-| `_level`     | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined` | `1`         |
+| Property     | Attribute     | Description                                                                                                                                           | Type                                                            | Default     |
+| ------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
+| `_hasCloser` | `_has-closer` | Defines whether the card has a close button.                                                                                                          | `boolean \| undefined`                                          | `undefined` |
+| `_hasFooter` | `_has-footer` | Macht den Footerbereich der Card sichtbar.                                                                                                            | `boolean \| undefined`                                          | `false`     |
+| `_heading`   | `_heading`    | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Beschriftung der Komponente an.                                        | `string \| undefined`                                           | `undefined` |
+| `_headline`  | `_headline`   | <span style="color:red">**[DEPRECATED]**</span> Verwende stattdessen das Property \_heading.<br/><br/>Gibt die Beschriftung der Komponente an.        | `string \| undefined`                                           | `undefined` |
+| `_label`     | `_label`      |                                                                                                                                                       | `string \| undefined`                                           | `undefined` |
+| `_level`     | `_level`      | Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll. | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| undefined`                  | `1`         |
+| `_on`        | --            | Defines the event callback functions for the component.                                                                                               | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
 
 ## Slots
 
@@ -97,12 +99,18 @@ Bitte beachten Sie, dass Sie zwar ein beliebiges HTML-Tag als Inhalts-Container 
 ### Depends on
 
 - [kol-heading-wc](../heading)
+- kol-button-wc
 
 ### Graph
 
 ```mermaid
 graph TD;
   kol-card --> kol-heading-wc
+  kol-card --> kol-button-wc
+  kol-button-wc --> kol-span-wc
+  kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
+  kol-tooltip --> kol-span-wc
   style kol-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
