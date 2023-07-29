@@ -94,7 +94,7 @@ export class KolInputRadio implements ComponentApi {
 										value={`-${index}`}
 										{...this.controller.onFacade}
 										onChange={this.onChange}
-										onClick={undefined} // onClick wird nicht benötigt, da onChange bereits das richtige Event auslöst
+										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 									/>
 									<kol-tooltip
 										/**

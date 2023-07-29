@@ -63,7 +63,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		} else {
 			// Event handling
 			stopPropagation(event);
-			tryToDispatchKoliBriEvent('change', this.host, this.state._value);
+			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
 
 			// TODO: Static form handling
 			this.controller.setFormAssociatedValue(this.state._value);
