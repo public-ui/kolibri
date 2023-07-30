@@ -8,7 +8,7 @@ import { Props } from '../component';
 import { getButtonGroupHtml } from './html.mock';
 
 executeTests<Props>(
-	'Card',
+	'ButtonGroup',
 	async (props): Promise<SpecPage> => {
 		return await newSpecPage({
 			components: COMPONENTS,
