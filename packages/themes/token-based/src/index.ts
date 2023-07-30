@@ -1,48 +1,33 @@
 import { KoliBri } from '@public-ui/schema';
 
 export const TOKEN_BASED = KoliBri.createTheme('token-based', {
-	GLOBAL: `
+	GLOBAL: `:host {
+  --border-radius: var(--kolibri-border-radius, 5px);
+  --font-family: var(
+    --kolibri-font-family,
+    "BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif"
+  );
+  --font-size: var(--kolibri-font-size, 16px);
+  --spacing: var(--kolibri-spacing, 0.25em);
+	}
 	:host {
-		--border-radius: 5px;
 		--color-midnight: #004b76;
 		--color-ocean: #0077b6;
-		--color-sky: #99c9e2;
 		--color-ice: #cce4f0;
-		--color-crystal: #f0f7fb;
 		--color-crimson: #780f2d;
 		--color-red: #c0003c;
-		--color-pink: #f2ccd8;
-		--color-blossom: #fbf0f3;
-		--color-olive: #004d38;
 		--color-green: #005c45;
-		--color-jungle: #00854a;
-		--color-lime: #c1ca31;
-		--color-mint: #ccdeda;
-		--color-haze: #f0f5f4;
-		--color-fire: #7a2e1f;
 		--color-orange: #c44931;
-		--color-coral: #f5dcd7;
-		--color-peach: #fdf6f5;
-		--color-bronze: #6a4a06;
-		--color-yellow: #f9e03a;
-		--color-ivory: #fdf3b0;
-		--color-wine: #3f1d4a;
-		--color-purple: #6b4479;
-		--color-lavender: #dfd6de;
 		--color-black: #202020;
 		--color-metal: #454d4f;
 		--color-grey: #576164;
 		--color-granite: #bec5c9;
-		--color-silver: #e5e8e9;
 		--color-smoke: #f2f3f4;
-		--color-cloud: #f6f7f7;
 		--color-white: #ffffff;
-		--font-family: BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif;
-		--font-size: 16px;
-		--spacing: 0.25em;
 	}
 	:host {
-		font-family: var(--font-family); /* font-size: var(--font-size); */
+		font-family: var(--font-family);
+		font-size: var(--font-size);
 	}
 	* {
 		box-sizing: border-box;
@@ -198,8 +183,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	}
 	:is(a, button).loading > kol-span-wc kol-icon {
 		animation: spin 5s infinite linear;
-	}
-  /** small ghost button */
+	} /** small ghost button */
 	.ghost :is(a, button).small > kol-span-wc {
 		border: none;
 		background-color: transparent;
@@ -808,7 +792,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	}
 	kol-alert-wc > .heading > div {
 		display: grid;
-		gap: var(--kolibri-spacing);
+		gap: var(--spacing);
 	}
 	.msg > .heading > kol-icon {
 		place-self: baseline;
@@ -1482,9 +1466,9 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		transition: outline-offset 0.2s linear;
 	}`,
 	'KOL-TABLE': `:host * {
-		hyphens: var(--kolibri-hyphens);
-		font-family: var(--kolibri-font-family);
-		line-height: var(--kolibri-line-height);
+		hyphens: var(--hyphens);
+		font-family: var(--font-family);
+		line-height: var(--line-height);
 		word-break: break-word;
 	}
 	:host > div {
