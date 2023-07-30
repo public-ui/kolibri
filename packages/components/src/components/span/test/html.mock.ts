@@ -79,13 +79,16 @@ export const getSpanWcHtml = (
 </kol-span-wc>`;
 };
 
-export const getSpanHtml = (props: KolibriSpanProps): string => {
+export const getSpanHtml = (
+	props: KolibriSpanProps,
+	slots: Slots = {
+		expert: `<slot name="expert" slot="expert"></slot>`,
+	}
+): string => {
 	return `
 <kol-span>
 	<mock:shadow-root>
-		${getSpanWcHtml(props, {
-			expert: `<slot name="expert" slot="expert"></slot>`,
-		})}
+		${getSpanWcHtml(props, slots)}
 	</mock:shadow-root>
 </kol-span>`;
 };

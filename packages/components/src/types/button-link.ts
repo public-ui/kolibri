@@ -131,7 +131,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	PropId &
 	PropLabelWithExpertSlot &
 	PropName;
-// type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
+export type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
 	PropLabelWithExpertSlot &
@@ -150,7 +150,7 @@ type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 	} & PropDisabled &
 	PropId &
 	PropName;
-// type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
+export type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /**
  * API Button

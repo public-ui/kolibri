@@ -40,6 +40,7 @@ export const getButtonWcHtml = (
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
 	}
 	${state._hideLabel ? 'aria-labelledby="nonce"' : ''}
+	${state._role ? `role="${state._role}"` : ''}
 	class="${classNames.join(' ')}" type="${type}">
 		${getSpanWcHtml(
 			{
