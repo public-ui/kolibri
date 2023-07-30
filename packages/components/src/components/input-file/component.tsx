@@ -7,7 +7,7 @@ import { InputTypeOnDefault } from '../../types/input/types';
 import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
@@ -63,7 +63,7 @@ export class KolInputFile implements ComponentApi {
 							accept={this.state._accept}
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-labelledby={`${this.state._id}-label`}
+							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"
 							autoCorrect="off"
 							disabled={this.state._disabled}
@@ -85,7 +85,6 @@ export class KolInputFile implements ComponentApi {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_id={`${this.state._id}-tooltip`}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
 						></kol-tooltip>
 					</div>
@@ -312,7 +311,7 @@ export class KolInputFile implements ComponentApi {
 			const value = this.ref.files;
 
 			// Event handling
-			preventEvent(event);
+			stopPropagation(event);
 			tryToDispatchKoliBriEvent('change', this.host, value);
 
 			// Static form handling

@@ -1,10 +1,12 @@
-export function preventEvent(event: Event): void {
-	// event.preventDefault(); // TODO: InputFile öffnet Dateiauswahl nicht! - Wie fangen wir die Events ab?
+// TODO: Should be synchronized with enums/events.ts
+type KoliBriEventType = 'blur' | 'change' | 'click' | 'focus';
+
+export function stopPropagation(event: Event): void {
 	event.stopImmediatePropagation();
 	event.stopPropagation();
 }
 
-function createKoliBriEvent<T>(type: string, detail: T): CustomEvent {
+function createKoliBriEvent<T>(type: KoliBriEventType, detail: T): CustomEvent {
 	const event = new CustomEvent(`kol-${type}`, {
 		bubbles: true,
 		cancelable: true,
@@ -14,11 +16,11 @@ function createKoliBriEvent<T>(type: string, detail: T): CustomEvent {
 	return event;
 }
 
-function dispatchKoliBriEvent<T>(target: EventTarget, type: string, detail?: T): boolean {
+function dispatchKoliBriEvent<T>(target: EventTarget, type: KoliBriEventType, detail?: T): boolean {
 	const dispatch = target.dispatchEvent(createKoliBriEvent(type, detail));
 	return dispatch;
 }
 
-export function tryToDispatchKoliBriEvent<T>(type: string, target?: EventTarget, detail?: T): void {
+export function tryToDispatchKoliBriEvent<T>(type: KoliBriEventType, target?: EventTarget, detail?: T): void {
 	target && dispatchKoliBriEvent(target, type, detail);
 }

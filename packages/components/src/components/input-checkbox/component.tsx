@@ -6,7 +6,7 @@ import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
@@ -68,7 +68,7 @@ export class KolInputCheckbox implements ComponentApi {
 							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-labelledby={`${this.state._id}-label`}
+							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							checked={this.state._checked}
 							disabled={this.state._disabled}
 							id={this.state._id}
@@ -79,7 +79,7 @@ export class KolInputCheckbox implements ComponentApi {
 							type="checkbox"
 							{...this.controller.onFacade}
 							onChange={this.onChange}
-							onClick={undefined} // onClick wird nicht benötigt, da onChange bereits das richtige Event auslöst
+							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
 						<kol-tooltip
 							/**
@@ -89,7 +89,6 @@ export class KolInputCheckbox implements ComponentApi {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_id={`${this.state._id}-tooltip`}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
 						></kol-tooltip>
 					</div>
@@ -339,7 +338,7 @@ export class KolInputCheckbox implements ComponentApi {
 		const value = this._checked ? this.state._value : null;
 
 		// Event handling
-		preventEvent(event);
+		stopPropagation(event);
 		tryToDispatchKoliBriEvent('change', this.host, value);
 
 		// Static form handling

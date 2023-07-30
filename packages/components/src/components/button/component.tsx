@@ -25,8 +25,7 @@ import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
-import { nonce } from '../../utils/dev.utils';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
@@ -43,7 +42,6 @@ import { watchButtonType, watchButtonVariant } from './controller';
 })
 export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates> {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
-	private readonly nonce = nonce();
 	private ref?: HTMLButtonElement;
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
@@ -64,8 +62,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 			});
 		} else {
 			// Event handling
-			preventEvent(event);
-			tryToDispatchKoliBriEvent('change', this.host, this.state._value);
+			stopPropagation(event);
+			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
 
 			// TODO: Static form handling
 			this.controller.setFormAssociatedValue(this.state._value);
@@ -88,7 +86,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
+					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
 						[this.state._variant as string]: this.state._variant !== 'custom',
@@ -118,7 +116,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
-					_id={this.nonce}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></kol-tooltip>
 			</Host>

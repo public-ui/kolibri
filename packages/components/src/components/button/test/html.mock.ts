@@ -39,7 +39,7 @@ export const getButtonWcHtml = (
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
 	}
-	${state._hideLabel ? 'aria-labelledby="nonce"' : ''}
+	${state._hideLabel && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''}
 	${state._role ? `role="${state._role}"` : ''}
 	class="${classNames.join(' ')}" type="${type}">
 		${getSpanWcHtml(
@@ -53,7 +53,6 @@ export const getButtonWcHtml = (
 	${getTooltipHtml(
 		{
 			_align: state._tooltipAlign,
-			_id: 'nonce',
 			_label: typeof state._label === 'string' ? state._label : '',
 		},
 		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`

@@ -9,7 +9,7 @@ import { OptionsPropType } from '../../types/props/options';
 import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
-import { preventEvent, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
@@ -83,7 +83,7 @@ export class KolInputRadio implements ComponentApi {
 										title=""
 										accessKey={this.state._accessKey} // by radio?!
 										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-										aria-labelledby={`${customId}-label`}
+										aria-label={this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined}
 										type="radio"
 										id={customId}
 										checked={this.state._value === option.value}
@@ -94,7 +94,7 @@ export class KolInputRadio implements ComponentApi {
 										value={`-${index}`}
 										{...this.controller.onFacade}
 										onChange={this.onChange}
-										onClick={undefined} // onClick wird nicht benötigt, da onChange bereits das richtige Event auslöst
+										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 									/>
 									<kol-tooltip
 										/**
@@ -103,12 +103,10 @@ export class KolInputRadio implements ComponentApi {
 										 */
 										aria-hidden="true"
 										hidden={hasExpertSlot || !this.state._hideLabel}
-										_id={`${this.state._id}-tooltip`}
 										_label={typeof this.state._label === 'string' ? this.state._label : ''}
 									></kol-tooltip>
 									<label
 										htmlFor={`${customId}`}
-										id={`${customId}-label`}
 										style={{
 											height: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
 											margin: this.state._hideLabel && this.state._required !== true ? '0' : undefined,
@@ -345,7 +343,7 @@ export class KolInputRadio implements ComponentApi {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
 				// Event handling
-				preventEvent(event);
+				stopPropagation(event);
 				tryToDispatchKoliBriEvent('change', this.host, option.value);
 
 				// Static form handling
