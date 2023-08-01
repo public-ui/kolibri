@@ -6,27 +6,23 @@ import { readFileSync } from 'fs';
 import { render } from 'mustache';
 import { twig } from 'twig';
 
-export const getIconHtmlTwig = (props: KoliBriIconProps, additionalAttrs = ''): string => {
-	const state = mixMembers<KoliBriIconProps, KoliBriIconStates>(
+const getState = (props: KoliBriIconProps): KoliBriIconStates =>
+	mixMembers<KoliBriIconProps, KoliBriIconStates>(
 		{
 			_icon: 'codicon codicon-home',
 		},
 		props
 	);
 
+const getIconHtmlTwig = (props: KoliBriIconProps, additionalAttrs = ''): string => {
+	const state = getState(props);
 	const context = { additionalAttrs, ...state, mode: 'csr' };
 
 	return twig({ path: path.join(__dirname, 'icon.twig'), async: false }).render(context);
 };
 
-export const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = ''): string => {
-	const state = mixMembers<KoliBriIconProps, KoliBriIconStates>(
-		{
-			_icon: 'codicon codicon-home',
-		},
-		props
-	);
-
+const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = ''): string => {
+	const state = getState(props);
 	const template = readFileSync(path.join(__dirname, 'icon.mustache'), { encoding: 'utf-8' });
 
 	return render(template, {
@@ -37,14 +33,10 @@ export const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = '
 	});
 };
 
-export const getIconHtmlPug = (props: KoliBriIconProps, additionalAttrs = ''): string => {
+const getIconHtmlPug = (props: KoliBriIconProps, additionalAttrs = ''): string => {
 	const compiledFunction = pug.compileFile(path.join(__dirname, 'icon.pug'));
-	const state = mixMembers<KoliBriIconProps, KoliBriIconStates>(
-		{
-			_icon: 'codicon codicon-home',
-		},
-		props
-	);
+	const state = getState(props);
+
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 	return compiledFunction({
 		additionalAttrs,
