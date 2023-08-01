@@ -8,7 +8,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			--border-radius: var(--kolibri-border-radius, 5px);
 			--font-family: var(--kolibri-font-family, 'BundesSans Web, Calibri, Verdana, Arial, Helvetica, sans-serif');
 			--font-size: var(--kolibri-font-size, 16px);
-			--spacing: var(--kolibri-spacing, 0.25em);
+			--spacing: var(--kolibri-spacing, 0.4rem);
 			--border-width: var(--kolibri-border-width, 1px);
 			--color-primary: var(--kolibri-color-primary, #004b76);
 			--color-primary-variant: var(--kolibri-color-primary-variant, #0077b6);
@@ -37,8 +37,6 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		h4,
 		h5,
 		h6 {
-			font-family: var(--font-family);
-			font-size: var(--font-size);
 			margin: 0;
 			padding: 0;
 		}
@@ -68,12 +66,12 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-tooltip .tooltip-content {
 			border-radius: var(--border-radius);
-			line-height: 1.5em;
-			padding: 0.5rem 0.75rem;
+			line-height: 1.5;
+			padding: var(--spacing) calc(var(--spacing) * 1.5);
 		}
 		kol-span-wc,
 		kol-span-wc > span {
-			gap: 0.5em;
+			gap: var(--spacing);
 		}
 
 		@keyframes spin {
@@ -93,14 +91,14 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			outline-color: var(--color-primary-variant);
 			outline-offset: 2px;
 			outline-style: solid;
-			outline-width: 3px;
+			outline-width: calc(var(--border-width) * 2);
 			transition: outline-offset 0.2s linear;
 		}
 		:is(a, button) > kol-span-wc {
 			font-weight: 700;
 			border-radius: var(--a11y-min-size);
 			border-style: solid;
-			border-width: 2px;
+			border-width: var(--border-width);
 			min-height: var(--a11y-min-size);
 			min-width: var(--a11y-min-size);
 			padding: 8px 14px;
@@ -151,7 +149,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		.ghost :is(a, button):hover > kol-span-wc {
 			background-color: var(--color-primary-variant);
 			border-color: var(--color-primary-variant);
-			box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
+			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 			color: var(--color-light);
 		}
 		.danger :is(a, button):active > kol-span-wc,
@@ -173,7 +171,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			outline: none;
 		}
 		:is(a, button).hide-label > kol-span-wc {
-			padding: 8px;
+			padding: calc(var(--spacing) * 2);
 			width: unset;
 		}
 		:is(a, button).hide-label > kol-span-wc > span > span {
@@ -191,7 +189,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		.ghost :is(a, button).small > kol-span-wc > span {
 			border-radius: 1.5em;
 			border-style: solid;
-			border-width: 2px;
+			border-width: var(--border-width);
 			border-color: var(--color-light);
 			background-color: var(--color-light);
 		}
@@ -201,7 +199,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		.ghost :is(a, button).small.transparent:hover > kol-span-wc > span {
 			background-color: var(--color-primary-variant);
 			border-color: var(--color-primary-variant);
-			box-shadow: 0px 2px 8px 2px rgba(8, 35, 48, 0.24);
+			box-shadow: 0 2px 8px 2px rgba(8, 35, 48, 0.24);
 			color: var(--color-light);
 		} /** :is(a,button) with transparent background */
 		:is(a, button).transparent > kol-span-wc > span,
@@ -213,7 +211,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	`,
 	'KOL-INPUT-TEXT': css`
 		kol-input {
-			gap: 0.25em;
+			gap: var(--kolibri-spacing);
 		}
 		kol-input .error {
 			order: 1;
@@ -226,7 +224,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input .hint {
 			order: 4;
-			font-size: 0.875em;
+			font-size: 0.9rem;
 			font-style: italic;
 		}
 		input {
@@ -241,24 +239,24 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 0.5em;
+			padding: 0 calc(var(--kolibri-spacing) * 2);
 		}
 		.input > kol-icon {
-			width: 1em;
+			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: 1em;
-			padding-right: 1em;
+			padding-left: calc(var(--spacing) * 4);
+			padding-right: calc(var(--spacing) * 4);
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-left: calc(var(--spacing) * 2);
+			padding-right: calc(var(--spacing) * 2);
 		}
 		.input > input:first-child {
-			padding-left: 0.375em;
+			padding-left: var(--spacing);
 		}
 		.input > input:last-child {
-			padding-right: 0.375em;
+			padding-right: var(--spacing);
 		}
 		.input:hover {
 			border-color: var(--color-primary);
@@ -273,7 +271,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: 1em;
+			padding-left: calc(var(--spacing) * 2);
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -292,7 +290,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	`,
 	'KOL-INPUT-PASSWORD': css`
 		kol-input {
-			gap: 0.25em;
+			gap: var(--kolibri-spacing);
 		}
 		kol-input .error {
 			order: 1;
@@ -305,7 +303,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input .hint {
 			order: 4;
-			font-size: 0.875em;
+			font-size: 0.9rem;
 			font-style: italic;
 		}
 		input {
@@ -320,24 +318,24 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 0.5em;
+			padding: 0 calc(var(--kolibri-spacing) * 2);
 		}
 		.input > kol-icon {
-			width: 1em;
+			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: 1em;
-			padding-right: 1em;
+			padding-left: calc(var(--spacing) * 4);
+			padding-right: calc(var(--spacing) * 4);
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-left: calc(var(--spacing) * 2);
+			padding-right: calc(var(--spacing) * 2);
 		}
 		.input > input:first-child {
-			padding-left: 0.375em;
+			padding-left: var(--spacing);
 		}
 		.input > input:last-child {
-			padding-right: 0.375em;
+			padding-right: var(--spacing);
 		}
 		.input:hover {
 			border-color: var(--color-primary);
@@ -352,7 +350,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: 1em;
+			padding-left: calc(var(--spacing) * 2);
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -372,7 +370,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	`,
 	'KOL-INPUT-NUMBER': css`
 		kol-input {
-			gap: 0.25em;
+			gap: var(--kolibri-spacing);
 		}
 		kol-input .error {
 			order: 1;
@@ -385,7 +383,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input .hint {
 			order: 4;
-			font-size: 0.875em;
+			font-size: 0.9rem;
 			font-style: italic;
 		}
 		input {
@@ -400,28 +398,29 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 0.5em;
+			padding: 0 calc(var(--kolibri-spacing) * 2);
 		}
 		.input > kol-icon {
-			width: 1em;
+			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: 1em;
-			padding-right: 1em;
+			padding-left: calc(var(--spacing) * 4);
+			padding-right: calc(var(--spacing) * 4);
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-left: calc(var(--spacing) * 2);
+			padding-right: calc(var(--spacing) * 2);
 		}
 		.input > input:first-child {
-			padding-left: 0.375em;
+			padding-left: var(--spacing);
 		}
 		.input > input:last-child {
-			padding-right: 0.375em;
+			padding-right: var(--spacing);
 		}
 		.input:hover {
 			border-color: var(--color-primary);
 		}
+		input:read-only,
 		input:disabled {
 			cursor: not-allowed;
 		}
@@ -431,7 +430,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: 1em;
+			padding-left: calc(var(--spacing) * 2);
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -451,7 +450,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	`,
 	'KOL-INPUT-DATE': css`
 		kol-input {
-			gap: 0.25em;
+			gap: var(--kolibri-spacing);
 		}
 		kol-input .error {
 			order: 1;
@@ -464,7 +463,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input .hint {
 			order: 4;
-			font-size: 0.875em;
+			font-size: 0.9rem;
 			font-style: italic;
 		}
 		input {
@@ -479,24 +478,24 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 0.5em;
+			padding: 0 calc(var(--kolibri-spacing) * 2);
 		}
 		.input > kol-icon {
-			width: 1em;
+			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: 1em;
-			padding-right: 1em;
+			padding-left: calc(var(--spacing) * 4);
+			padding-right: calc(var(--spacing) * 4);
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-left: calc(var(--spacing) * 2);
+			padding-right: calc(var(--spacing) * 2);
 		}
 		.input > input:first-child {
-			padding-left: 0.375em;
+			padding-left: var(--spacing);
 		}
 		.input > input:last-child {
-			padding-right: 0.375em;
+			padding-right: var(--spacing);
 		}
 		.input:hover {
 			border-color: var(--color-primary);
@@ -510,7 +509,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: 1em;
+			padding-left: calc(var(--spacing) * 2);
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -530,7 +529,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	`,
 	'KOL-INPUT-EMAIL': css`
 		kol-input {
-			gap: 0.25em;
+			gap: var(--kolibri-spacing);
 		}
 		kol-input .error {
 			order: 1;
@@ -543,7 +542,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input .hint {
 			order: 4;
-			font-size: 0.875em;
+			font-size: 0.9rem;
 			font-style: italic;
 		}
 		input {
@@ -558,24 +557,24 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 0.5em;
+			padding: 0 calc(var(--kolibri-spacing) * 2);
 		}
 		.input > kol-icon {
-			width: 1em;
+			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: 1em;
-			padding-right: 1em;
+			padding-left: calc(var(--spacing) * 4);
+			padding-right: calc(var(--spacing) * 4);
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-left: calc(var(--spacing) * 2);
+			padding-right: calc(var(--spacing) * 2);
 		}
 		.input > input:first-child {
-			padding-left: 0.375em;
+			padding-left: var(--spacing);
 		}
 		.input > input:last-child {
-			padding-right: 0.375em;
+			padding-right: var(--spacing);
 		}
 		.input:hover {
 			border-color: var(--color-primary);
@@ -590,7 +589,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: 1em;
+			padding-left: calc(var(--spacing) * 2);
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -610,7 +609,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	`,
 	'KOL-INPUT-FILE': css`
 		kol-input {
-			gap: 0.25em;
+			gap: var(--kolibri-spacing);
 		}
 		kol-input .error {
 			order: 1;
@@ -623,7 +622,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input .hint {
 			order: 4;
-			font-size: 0.875em;
+			font-size: 0.9rem;
 			font-style: italic;
 		}
 		kol-input .input input[type='file'] {
@@ -644,24 +643,24 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 0.5em;
+			padding: 0 calc(var(--kolibri-spacing) * 2);
 		}
 		.input > kol-icon {
-			width: 1em;
+			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: 1em;
-			padding-right: 1em;
+			padding-left: calc(var(--spacing) * 4);
+			padding-right: calc(var(--spacing) * 4);
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-left: calc(var(--spacing) * 2);
+			padding-right: calc(var(--spacing) * 2);
 		}
 		.input > input:first-child {
-			padding-left: 0.375em;
+			padding-left: var(--spacing);
 		}
 		.input > input:last-child {
-			padding-right: 0.375em;
+			padding-right: var(--spacing);
 		}
 		.input:hover {
 			border-color: var(--color-primary);
@@ -676,7 +675,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: 1em;
+			padding-left: calc(var(--spacing) * 2);
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -696,7 +695,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 	`,
 	'KOL-TEXTAREA': css`
 		kol-input {
-			gap: 0.25em;
+			gap: var(--kolibri-spacing);
 		}
 		kol-input .error {
 			order: 1;
@@ -709,7 +708,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input .hint {
 			order: 4;
-			font-size: 0.875em;
+			font-size: 0.9rem;
 			font-style: italic;
 		}
 		textarea {
@@ -724,24 +723,24 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			border-radius: var(--border-radius);
 			border-style: solid;
 			border-width: 2px;
-			padding: 0 0.5em;
+			padding: 0 calc(var(--kolibri-spacing) * 2);
 		}
 		.input > kol-icon {
-			width: 1em;
+			width: 1rem;
 		}
 		.input:is(.icon-left, .icon-right) {
-			padding-left: 1em;
-			padding-right: 1em;
+			padding-left: calc(var(--spacing) * 4);
+			padding-right: calc(var(--spacing) * 4);
 		}
 		.input:is(.icon-left, .icon-right) input {
-			padding-left: 0.5em;
-			padding-right: 0.5em;
+			padding-left: calc(var(--spacing) * 2);
+			padding-right: calc(var(--spacing) * 2);
 		}
 		.input > input:first-child {
-			padding-left: 0.375em;
+			padding-left: var(--spacing);
 		}
 		.input > input:last-child {
-			padding-right: 0.375em;
+			padding-right: var(--spacing);
 		}
 		.input:hover {
 			border-color: var(--color-primary);
@@ -756,7 +755,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		kol-input.error {
 			border-left: 3px solid var(--color-danger);
-			padding-left: 1em;
+			padding-left: calc(var(--spacing) * 2);
 		}
 		kol-input.error .input:focus-within {
 			outline-color: var(--color-danger) !important;
@@ -778,31 +777,24 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		.input {
 			position: relative;
 		}
-		.input textarea ~ span {
-			position: absolute;
-			top: -1.5rem;
-			right: 0;
-			color: var(--color-subtle);
-		}
 	`,
 	'KOL-ALERT': css`
-		.msg,
 		.msg {
 			border-width: 0;
 		}
 		kol-alert-wc {
-			border-width: 2px;
+			border-width: var(--border-width);
 			border-style: solid;
-			border-radius: 5px;
+			border-radius: var(--border-radius);
 			display: flex;
 			width: 100%;
 			overflow: unset;
 			border-color: transparent;
-			background-color: white;
+			background-color: var(--color-light);
 		}
 		kol-alert-wc > .heading {
 			display: flex;
-			gap: 0.5em;
+			gap: calc(var(--spacing) * 2);
 			place-items: center;
 		}
 		kol-alert-wc > .heading > div {
@@ -853,7 +845,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			color: var(--color-warning);
 		}
 		.heading-icon {
-			color: white;
+			color: var(--color-light);
 		}
 		kol-alert-wc .heading .heading-icon {
 			padding: 0;
@@ -862,12 +854,8 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			padding-top: 0;
 			place-items: baseline;
 		}
-		.msg > .heading > .heading-icon::part(icon) {
-			line-height: 1.375rem;
-		}
 		.msg > .heading > div > kol-heading-wc {
-			line-height: 20px;
-			padding-top: 0.125rem;
+			padding-top: calc(--var-spacing / 2);
 		}
 		.msg.default .heading > div > kol-heading-wc {
 			color: var(--color-subtle);
@@ -883,7 +871,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		.msg.warning .heading > div > kol-heading-wc {
 			color: var(--color-warning);
-		} /*.msg > .heading > div {display: grid;grid-template-columns: 1fr auto;}.msg > .heading > div > .content {grid-row: 2;grid-column: 1;}.msg > div > .close {display: flex;}*/
+		}
 		.msg.default .close .icon {
 			color: var(--color-subtle);
 		}
@@ -900,13 +888,13 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			color: var(--color-warning);
 		}
 		.card {
-			border-width: 3px;
+			border-width: var(--border-width);
 			border-style: solid;
 			filter: drop-shadow(0px 2px 4px rgba(8, 35, 48, 0.24));
 			flex-direction: column;
 		}
 		.card > .heading {
-			padding: 0.5rem 1rem;
+			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
 		}
 		.card[_has-closer] > .heading {
 			padding-top: 0;
@@ -923,7 +911,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		}
 		.card > .heading kol-heading-wc {
 			width: 100%;
-			color: white;
+			color: var(--color-light);
 			display: flex;
 			font-size: 1.25rem;
 			line-height: 1.25rem;
@@ -932,7 +920,7 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			margin: auto 0;
 		}
 		.card > .content {
-			padding: 0.5rem 1rem;
+			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
 		}
 		.card.default > .heading {
 			background-color: var(--color-subtle);
@@ -949,26 +937,8 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 		.card.warning > .heading {
 			background-color: var(--color-warning);
 		}
-		:is(.error, .info, .success, .warning) .heading-icon::part(icon) {
-			font-family: 'Font Awesome 6 Free' !important;
-			font-weight: 900;
-			height: 1.25rem;
-			width: 1.25rem;
-		}
 		:is(.error, .info, .success, .warning) .heading-icon {
-			font-size: 1.25rem !important;
-		}
-		.error .heading-icon::part(icon)::before {
-			content: '\\f06a';
-		}
-		.info .heading-icon::part(icon)::before {
-			content: '\\f05a';
-		}
-		.success .heading-icon::part(icon)::before {
-			content: '\\f058';
-		}
-		.warning .heading-icon::part(icon)::before {
-			content: '\\f071';
+			font-size: 1.25rem;
 		}
 		.card > div > .content {
 			grid-row: 2;
@@ -990,45 +960,17 @@ export const TOKEN_BASED = KoliBri.createTheme('token-based', {
 			background-color: var(--color-warning);
 		}
 		.close > button {
-			min-width: 44px;
+			border-radius: 50%; /* visible on focus */
 			color: var(--color-light);
-			min-height: 44px;
-			display: grid;
-			gap: 0.25em;
-			line-height: 1.5rem;
-			font-family: var(--font-family);
-			font-weight: 700;
 			cursor: pointer;
-			border-radius: 1.5em;
-			border-style: solid;
-			border-width: 2px;
-			font-size: 1rem;
-			align-items: center;
-			padding: 8px 14px;
-			justify-content: center;
-			font-style: normal;
-			text-align: center;
-			width: inherit;
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
-			background-color: rgba(0, 0, 0, 0);
-			border-color: rgba(0, 0, 0, 0);
-		}
-		.close > button.hide-label {
-			padding: 8px;
+			height: var(--a11y-min-size);
+			width: var(--a11y-min-size);
 		}
 		.close > button.hide-label kol-icon {
 			display: flex;
 			width: 1em;
 			height: 1em;
-			font-size: 1rem;
-		}
-		.close > button.hide-label kol-icon::part(icon) {
-			font-family: 'Font Awesome 6 Free';
-			font-weight: 900;
-		}
-		.close > button.hide-label kol-icon::part(icon)::before {
-			content: '\\f00d';
+			font-size: 1.2rem;
 		}
 		.close > button:active {
 			box-shadow: none;
