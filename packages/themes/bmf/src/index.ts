@@ -1712,8 +1712,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host kol-input:not(.disabled) :is(.input, label) {
 		cursor: pointer;
 	}
-	:host kol-input.disabled :is(.input, label),
-	:host kol-input.disabled input[type="checkbox"]::before {
+	:host kol-input.disabled :is(.input, label) {
 		cursor: not-allowed;
 	}
 	:host kol-input > label {
