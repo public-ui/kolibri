@@ -1,5 +1,8 @@
 import { KoliBri } from '@public-ui/schema';
 
+/**
+ * No-op tag function to help with CSS syntax highlighting and provide Prettier support
+ */
 const css = (input: TemplateStringsArray): string => input.join(``);
 
 export const TOKEN_BASED = KoliBri.createTheme('token-based', {
