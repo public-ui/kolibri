@@ -46,6 +46,9 @@ devDependencies:
   '@types/jest':
     specifier: 26.0.24
     version: 26.0.24
+  '@types/mustache':
+    specifier: ^4.2.2
+    version: 4.2.2
   '@types/node':
     specifier: ts4.9
     version: 20.4.5
@@ -115,6 +118,9 @@ devDependencies:
   mathjs:
     specifier: 11.9.1
     version: 11.9.1
+  mustache:
+    specifier: ^4.2.0
+    version: 4.2.0
   postcss:
     specifier: 8.4.27
     version: 8.4.27
@@ -2088,6 +2094,10 @@ packages:
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
+    dev: true
+
+  /@types/mustache@4.2.2:
+    resolution: {integrity: sha512-MUSpfpW0yZbTgjekDbH0shMYBUD+X/uJJJMm9LXN1d5yjl5lCY1vN/eWKD6D1tOtjA6206K0zcIPnUaFMurdNA==}
     dev: true
 
   /@types/node@20.4.5:
@@ -5906,6 +5916,11 @@ packages:
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
+    dev: true
+
+  /mustache@4.2.0:
+    resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
+    hasBin: true
     dev: true
 
   /nanoid@3.3.6:
