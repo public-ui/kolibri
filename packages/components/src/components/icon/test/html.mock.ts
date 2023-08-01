@@ -1,12 +1,13 @@
 import path from 'path';
-import { KoliBriIconProps } from '../types';
+import pug from 'pug';
+import { KoliBriIconProps, KoliBriIconStates } from '../types';
 import { mixMembers } from 'stencil-awesome-test';
 import { readFileSync } from 'fs';
 import { render } from 'mustache';
 import { twig } from 'twig';
 
 export const getIconHtmlTwig = (props: KoliBriIconProps, additionalAttrs = ''): string => {
-	const state = mixMembers(
+	const state = mixMembers<KoliBriIconProps, KoliBriIconStates>(
 		{
 			_icon: 'codicon codicon-home',
 		},
@@ -19,7 +20,7 @@ export const getIconHtmlTwig = (props: KoliBriIconProps, additionalAttrs = ''): 
 };
 
 export const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = ''): string => {
-	const state = mixMembers(
+	const state = mixMembers<KoliBriIconProps, KoliBriIconStates>(
 		{
 			_icon: 'codicon codicon-home',
 		},
@@ -36,7 +37,24 @@ export const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = '
 	});
 };
 
+export const getIconHtmlPug = (props: KoliBriIconProps, additionalAttrs = ''): string => {
+	const compiledFunction = pug.compileFile(path.join(__dirname, 'icon.pug'));
+	const state = mixMembers<KoliBriIconProps, KoliBriIconStates>(
+		{
+			_icon: 'codicon codicon-home',
+		},
+		props
+	);
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+	return compiledFunction({
+		additionalAttrs,
+		mode: 'csr',
+		...state,
+	});
+};
+
 export const getIconHtml = (props: KoliBriIconProps, additionalAttrs = ''): string => {
 	return getIconHtmlTwig(props, additionalAttrs);
 	// return getIconHtmlMustache(props, additionalAttrs);
+	// return getIconHtmlPug(props, additionalAttrs);
 };
