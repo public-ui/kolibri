@@ -12,13 +12,12 @@ import { restoreThemes, saveData, storeThemes } from '../../shares/theme';
 
 type Page = 'editor' | 'result' | 'overview';
 
-const TAG_NAME_LIST: SelectOption<string>[] = [];
-TAG_NAMES.forEach((tagName) => {
-	TAG_NAME_LIST.push({
+const SORTED_TAG_NAME_LIST: SelectOption<string>[] = [...TAG_NAMES]
+	.map((tagName) => ({
 		label: tagName,
 		value: tagName.toLocaleUpperCase(),
-	});
-});
+	}))
+	.sort((optionA, optionB) => optionA.label.localeCompare(optionB.label));
 
 export const AppComponent: Component = () => {
 	const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'default');
@@ -180,7 +179,7 @@ export const AppComponent: Component = () => {
 						></KolButton>
 						<KolSelect
 							_id="component-select"
-							_list={TAG_NAME_LIST}
+							_list={SORTED_TAG_NAME_LIST}
 							_on={{
 								onChange: (_event, value) => {
 									setComponent((value as string[])[0]);
