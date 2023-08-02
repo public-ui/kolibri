@@ -2,7 +2,7 @@ import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floati
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { watchTooltipAlignment } from '../../types/button-link';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
@@ -146,7 +146,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	/**
 	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
 	 */
-	@Prop() public _align?: Align = 'top';
+	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -165,7 +165,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	};
 
 	@Watch('_align')
-	public validateAlign(value?: Align): void {
+	public validateAlign(value?: AlignPropType): void {
 		watchTooltipAlignment(this, '_align', value);
 	}
 

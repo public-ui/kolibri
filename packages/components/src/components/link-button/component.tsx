@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { AlternativButtonLinkRole, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { AriaCurrent } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
@@ -172,7 +172,7 @@ export class KolLinkButton implements LinkProps {
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'right';
+	@Prop() public _tooltipAlign?: AlignPropType = 'right';
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.

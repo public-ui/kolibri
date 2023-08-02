@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
@@ -183,7 +183,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
@@ -471,7 +471,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Align): void {
+	public validateTooltipAlign(value?: AlignPropType): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

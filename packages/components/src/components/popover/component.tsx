@@ -1,7 +1,7 @@
 import { arrow, computePosition, flip, MiddlewareData, offset, Placement, shift } from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Align, validateAlign } from '../../types/props/align';
+import { AlignPropType, validateAlign } from '../../types/props/align';
 import { validateShow } from '../../types/props/show';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
@@ -148,7 +148,7 @@ export class KolPopover implements KoliBriPopoverAPI {
 	/**
 	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
 	 */
-	@Prop() public _align?: Align = 'top';
+	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
@@ -162,7 +162,7 @@ export class KolPopover implements KoliBriPopoverAPI {
 	};
 
 	@Watch('_align')
-	public validateAlign(value?: Align): void {
+	public validateAlign(value?: AlignPropType): void {
 		validateAlign(this, value);
 	}
 

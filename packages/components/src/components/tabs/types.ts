@@ -4,7 +4,7 @@ import { Events } from '../../enums/events';
 import { EventCallback, EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Align, PropAlign } from '../../types/props/align';
+import { AlignPropType, PropAlign } from '../../types/props/align';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
@@ -28,7 +28,7 @@ type OptionalTabButtonProps = {
 	 * @deprecated use _hide-label
 	 */
 	iconOnly: boolean;
-	tooltipAlign: Align;
+	tooltipAlign: AlignPropType;
 } & PropHideLabel;
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
@@ -40,7 +40,7 @@ type OptionalProps = {
 	/**
 	 * @deprecated Use align.
 	 */
-	tabsAlign: Align;
+	tabsAlign: AlignPropType;
 	selected: number;
 } & PropAriaLabel &
 	PropLabel &

@@ -5,8 +5,8 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateAlert } from '../../types/props/alert';
-import { Align } from '../../types/props/align';
+import { AlertPropType, validateAlert } from '../../types/props/alert';
+import { AlignPropType } from '../../types/props/align';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
@@ -266,7 +266,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.

@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrent, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
@@ -206,7 +206,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Align;
+	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -268,7 +268,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'right';
+	@Prop() public _tooltipAlign?: AlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -358,7 +358,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 * @deprecated
 	 */
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: Align): void {
+	public validateIconAlign(value?: AlignPropType): void {
 		watchIconAlign(this, value);
 	}
 
@@ -430,7 +430,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Align): void {
+	public validateTooltipAlign(value?: AlignPropType): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

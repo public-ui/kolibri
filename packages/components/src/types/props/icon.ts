@@ -5,7 +5,7 @@ import { isObject, isString, isStyle } from '../../utils/validator';
 import { ButtonStates } from '../button-link';
 import { Stringified } from '../common';
 import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState } from '../icon';
-import { Align } from './align';
+import { AlignPropType } from './align';
 
 /* types */
 /** de
@@ -20,7 +20,7 @@ export type PropIcon = {
 
 /* validator */
 
-const mapCustomIcon = (state: KoliBriIconState, alignment: Align, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
+const mapCustomIcon = (state: KoliBriIconState, alignment: AlignPropType, icon?: AnyIconFontClass | KoliBriCustomIcon) => {
 	if (isObject(icon)) {
 		state[alignment] = icon as KoliBriCustomIcon;
 	} else if (isString(icon, 1)) {
@@ -30,7 +30,7 @@ const mapCustomIcon = (state: KoliBriIconState, alignment: Align, icon?: AnyIcon
 	}
 };
 
-export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: Align): KoliBriIconState => {
+export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: AlignPropType): KoliBriIconState => {
 	let state: KoliBriIconState = {};
 	if (isString(icon, 1)) {
 		switch (iconAlign) {
@@ -60,13 +60,13 @@ export const mapIconProp2State = (icon: KoliBriIconProp, iconAlign?: Align): Kol
 const beforePatchIcon = (component: Generic.Element.Component): void => {
 	if (component.nextState?.has('_icon')) {
 		const icon = component.nextState?.get('_icon') as KoliBriIconProp;
-		const iconAlign = (component.nextState?.get('_iconAlign') as Align) || (component.state as ButtonStates)._iconAlign;
+		const iconAlign = (component.nextState?.get('_iconAlign') as AlignPropType) || (component.state as ButtonStates)._iconAlign;
 		component.nextState?.set('_icon', mapIconProp2State(icon, iconAlign));
 	} else if (component.nextState?.has('_iconAlign')) {
-		const lastIconAlign = (component.state as ButtonStates)._iconAlign as Align;
+		const lastIconAlign = (component.state as ButtonStates)._iconAlign as AlignPropType;
 		component.nextState?.set('_icon', {
 			[lastIconAlign]: undefined,
-			[component.nextState?.get('_iconAlign') as Align]: (component.state as ButtonStates)._icon[lastIconAlign],
+			[component.nextState?.get('_iconAlign') as AlignPropType]: (component.state as ButtonStates)._icon[lastIconAlign],
 		});
 	}
 };
@@ -120,7 +120,7 @@ export const validateIcon = (component: Generic.Element.Component, value?: KoliB
 	});
 };
 
-export const watchIconAlign = (component: Generic.Element.Component, value?: Align): void => {
+export const watchIconAlign = (component: Generic.Element.Component, value?: AlignPropType): void => {
 	watchValidator(component, '_iconAlign', (value) => value === 'left' || value === 'right', new Set(['Alignment {left, right, top, bottom}']), value, {
 		hooks: {
 			beforePatch: () => {

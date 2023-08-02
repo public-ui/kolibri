@@ -1,12 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { PropId } from '../../types/props/id';
 import { PropLabel } from '../../types/props/label';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
-	align: Align;
+	align: AlignPropType;
 } & PropId;
 export type KoliBriTooltipProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
