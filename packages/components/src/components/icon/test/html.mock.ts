@@ -21,6 +21,7 @@ const getIconHtmlTwig = (props: KoliBriIconProps, additionalAttrs = ''): string 
 	return twig({ path: path.join(__dirname, 'icon.twig'), async: false }).render(context);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = ''): string => {
 	const state = getState(props);
 	const template = readFileSync(path.join(__dirname, 'icon.mustache'), { encoding: 'utf-8' });
@@ -33,6 +34,7 @@ const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = ''): str
 	});
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getIconHtmlPug = (props: KoliBriIconProps, additionalAttrs = ''): string => {
 	const compiledFunction = pug.compileFile(path.join(__dirname, 'icon.pug'));
 	const state = getState(props);
