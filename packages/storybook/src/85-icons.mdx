@@ -5,26 +5,26 @@ import { Meta } from '@storybook/addon-docs';
 # Rahmenbedingungen
 
 - Einige Komponenten ermöglichen die Verwendung von Icons (Button)
-- Icons werden auch in den Komponenten implizit verwendet und können theorisch nicht von außen geändert werden. (Accordion, Nav u.a.)
+- Icons werden auch in den Komponenten implizit verwendet und können theoretisch nicht von außen geändert werden. (Accordion, Nav u.a.)
 
-# Lösungansätz
+# Lösungansatz
 
 ## Für jede Icon-Font eine Komponente
 
 - Aufwendig
-- Die Komponnenten müssten mit allen weitern Icon-Komponentnen kompatibel sein
+- Die Komponenten müssten mit allen weitern Icon-Komponenten kompatibel sein
 
 ## Es gibt eine generische KolIcon
 
 - Icon font wird über Assets eingebunden
-- Icon Identifier keine Auto-Vervollsätndigung, da jede Icon-Font anderes Naming hat
+- Icon Identifier keine Auto-Vervollständigung, da jede Icon-Font anderes Naming hat
 - ggf. Problem bei Icon-Wiederverwendung innerhalb von Sub-Shadow DOMs (Accordion, Nav) (Icon nicht sichtbar)
 
 ## Icon-Identifier standardisieren
 
 - alle relevanten Icons ermitteln und eine Liste von Icon-Identifier erstellen (arrow-right, home usw. 50)
 - nur über neues Release erweiterbar (gibt es eine Lösung ?!)
-- je Theme wird ein CSS-Mapping auf eine beliebige Icon-Font gemacht (.kol-icon {font-family: FontAwesomPro Plus;} .home {content: '&#1233;'})
+- je Theme wird ein CSS-Mapping auf eine beliebige Icon-Font gemacht (.kol-icon {font-family: FontAwesomePro Plus;} .home {content: '&#1233;'})
 
 # Ausprobieren
 
