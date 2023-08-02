@@ -10,6 +10,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
+import { AdjustHeightPropType } from '../../types/props/adjust-height';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -118,7 +119,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
 	 */
-	@Prop() public _adjustHeight?: boolean = false;
+	@Prop() public _adjustHeight?: AdjustHeightPropType = false;
 
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
@@ -245,7 +246,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_adjustHeight')
-	public validateAdjustHeight(value?: boolean): void {
+	public validateAdjustHeight(value?: AdjustHeightPropType): void {
 		this.controller.validateAdjustHeight(value);
 	}
 
