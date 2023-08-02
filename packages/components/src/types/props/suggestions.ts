@@ -3,6 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { watchJsonArrayString } from '../../utils/prop.validators';
 import { Stringified } from '../common';
 import { W3CInputValue } from '../w3c';
+import { a11yHint } from '../../utils/a11y.tipps';
 
 export type SuggestionsPropType = Stringified<W3CInputValue[]>;
 
@@ -15,5 +16,11 @@ export type PropSuggestions = {
 
 /* validator */
 export const validateSuggestions = (component: Generic.Element.Component, value?: SuggestionsPropType): void => {
-	watchJsonArrayString(component, '_suggestions', (item: W3CInputValue) => typeof item === 'string' || typeof item === 'number', value);
+	watchJsonArrayString(component, '_suggestions', (item: W3CInputValue) => typeof item === 'string' || typeof item === 'number', value, undefined, {
+		hooks: {
+			afterPatch: () => {
+				a11yHint('Property suggestions: It has accessibility issues in how browsers implemented it and should not be used for now.');
+			},
+		},
+	});
 };
