@@ -1,7 +1,7 @@
 import { LabelPropType } from '../../types/props/label';
 import { AlertType } from '../alert/types';
 
-type Toast = {
+export type Toast = {
 	description: string;
 	/**
 	 * @deprecated Use label.
