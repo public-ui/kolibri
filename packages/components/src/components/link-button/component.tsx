@@ -5,7 +5,7 @@ import { AlternativButtonLinkRole, KoliBriButtonVariant, LinkOnCallbacks, LinkPr
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
 
@@ -72,7 +72,7 @@ export class KolLinkButton implements LinkProps {
 	 *
 	 * @deprecated use _listen-aria-current instead
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -141,7 +141,7 @@ export class KolLinkButton implements LinkProps {
 	/**
 	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
 	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrent;
+	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.

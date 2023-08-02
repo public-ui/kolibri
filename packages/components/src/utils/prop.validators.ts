@@ -7,7 +7,7 @@ import { hex, score } from 'wcag-contrast';
 import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
 
 import { Stringified } from '../types/common';
-import { AriaCurrent } from '../types/props/aria-current';
+import { AriaCurrentPropType } from '../types/props/aria-current';
 import { PropHref } from '../types/props/href';
 import { StencilUnknown } from '../types/unknown';
 import { devHint } from './a11y.tipps';
@@ -515,7 +515,7 @@ export class KoliBriUtils {
 }
 
 type AriaCurrentEventType = {
-	ariaCurrent: AriaCurrent;
+	ariaCurrent: AriaCurrentPropType;
 } & PropHref;
 export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
 

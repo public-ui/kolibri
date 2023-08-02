@@ -4,7 +4,7 @@ import { translate } from '../../i18n';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { validateCollapsible } from '../../types/props/collapsible';
 import { validateHasCompactButton } from '../../types/props/has-compact-button';
 import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
@@ -200,7 +200,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
 	 */
-	@Prop() public _ariaCurrentValue: AriaCurrent = false;
+	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -265,7 +265,7 @@ export class KolNav implements KoliBriNavAPI {
 	};
 
 	@Watch('_ariaCurrentValue')
-	public validateAriaCurrentValue(value?: AriaCurrent): void {
+	public validateAriaCurrentValue(value?: AriaCurrentPropType): void {
 		watchValidator(
 			this,
 			'_ariaCurrentValue',

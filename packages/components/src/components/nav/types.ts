@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { ButtonOrLinkOrTextWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropCollapsible } from '../../types/props/collapsible';
 import { PropCompact } from '../../types/props/compact';
@@ -16,7 +16,7 @@ type RequiredProps = {
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 };
 type OptionalProps = {
-	ariaCurrentValue: AriaCurrent;
+	ariaCurrentValue: AriaCurrentPropType;
 	orientation: Orientation;
 	/**
 	 * @deprecated
@@ -34,7 +34,7 @@ type OptionalProps = {
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
-	ariaCurrentValue: AriaCurrent;
+	ariaCurrentValue: AriaCurrentPropType;
 	collapsible: boolean;
 	/**
 	 * @deprecated Version 2

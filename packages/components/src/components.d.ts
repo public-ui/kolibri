@@ -16,7 +16,7 @@ import { PropColor } from "./types/props/color";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
-import { AriaCurrent } from "./types/props/aria-current";
+import { AriaCurrentPropType } from "./types/props/aria-current";
 import { StencilUnknown } from "./types/unknown";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -63,7 +63,7 @@ export { PropColor } from "./types/props/color";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
-export { AriaCurrent } from "./types/props/aria-current";
+export { AriaCurrentPropType } from "./types/props/aria-current";
 export { StencilUnknown } from "./types/unknown";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -278,7 +278,7 @@ export namespace Components {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -380,7 +380,7 @@ export namespace Components {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -474,7 +474,7 @@ export namespace Components {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -1863,7 +1863,7 @@ export namespace Components {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
@@ -1917,7 +1917,7 @@ export namespace Components {
         /**
           * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
-        "_listenAriaCurrent"?: AriaCurrent;
+        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -1969,7 +1969,7 @@ export namespace Components {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
@@ -2022,7 +2022,7 @@ export namespace Components {
         /**
           * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
-        "_listenAriaCurrent"?: AriaCurrent;
+        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -2099,7 +2099,7 @@ export namespace Components {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
@@ -2153,7 +2153,7 @@ export namespace Components {
         /**
           * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
-        "_listenAriaCurrent"?: AriaCurrent;
+        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -2233,7 +2233,7 @@ export namespace Components {
         /**
           * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_ariaCurrentValue": AriaCurrent;
+        "_ariaCurrentValue": AriaCurrentPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -2553,7 +2553,7 @@ export namespace Components {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -3502,7 +3502,7 @@ declare namespace LocalJSX {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -3604,7 +3604,7 @@ declare namespace LocalJSX {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -3698,7 +3698,7 @@ declare namespace LocalJSX {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
@@ -5087,7 +5087,7 @@ declare namespace LocalJSX {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
@@ -5141,7 +5141,7 @@ declare namespace LocalJSX {
         /**
           * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
-        "_listenAriaCurrent"?: AriaCurrent;
+        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -5193,7 +5193,7 @@ declare namespace LocalJSX {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
@@ -5246,7 +5246,7 @@ declare namespace LocalJSX {
         /**
           * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
-        "_listenAriaCurrent"?: AriaCurrent;
+        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated
@@ -5323,7 +5323,7 @@ declare namespace LocalJSX {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated use _listen-aria-current instead
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
           * @deprecated will be removed in v2
@@ -5377,7 +5377,7 @@ declare namespace LocalJSX {
         /**
           * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
          */
-        "_listenAriaCurrent"?: AriaCurrent;
+        "_listenAriaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt die EventCallback-Funktionen für den Link an.
           * @deprecated will be removed in v2
@@ -5457,7 +5457,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
          */
-        "_ariaCurrentValue"?: AriaCurrent;
+        "_ariaCurrentValue"?: AriaCurrentPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -5777,7 +5777,7 @@ declare namespace LocalJSX {
           * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
           * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
          */
-        "_ariaCurrent"?: AriaCurrent;
+        "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */

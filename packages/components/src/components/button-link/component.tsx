@@ -5,7 +5,7 @@ import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, Op
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
@@ -72,7 +72,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	 *
 	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)

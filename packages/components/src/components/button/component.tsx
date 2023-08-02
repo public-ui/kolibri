@@ -17,7 +17,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
-import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
+import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
@@ -139,7 +139,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	 *
 	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -271,7 +271,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrent): void {
+	public validateAriaCurrent(value?: AriaCurrentPropType): void {
 		validateAriaCurrent(this, value);
 	}
 

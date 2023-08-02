@@ -6,7 +6,7 @@ import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
-import { AriaCurrent, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
+import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
 import { validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
@@ -151,7 +151,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 *
 	 * @deprecated use _listen-aria-current instead
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -222,7 +222,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
 	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrent;
+	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -296,7 +296,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 * @deprecated use aria-current only in state
 	 */
 	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrent): void {
+	public validateAriaCurrent(value?: AriaCurrentPropType): void {
 		validateAriaCurrent(this, value);
 	}
 
@@ -376,7 +376,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_listenAriaCurrent')
-	public validateListenAriaCurrent(value?: AriaCurrent): void {
+	public validateListenAriaCurrent(value?: AriaCurrentPropType): void {
 		validateListenAriaCurrent(this, value);
 	}
 
