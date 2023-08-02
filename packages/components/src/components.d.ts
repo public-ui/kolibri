@@ -39,6 +39,7 @@ import { InputTextType } from "./types/input/control/text";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
+import { CollapsiblePropType } from "./types/props/collapsible";
 import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
@@ -87,6 +88,7 @@ export { InputTextType } from "./types/input/control/text";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
+export { CollapsiblePropType } from "./types/props/collapsible";
 export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
@@ -2244,7 +2246,7 @@ export namespace Components {
         /**
           * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
          */
-        "_collapsible"?: boolean;
+        "_collapsible"?: CollapsiblePropType;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
           * @deprecated Use _hide-label
@@ -5468,7 +5470,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
          */
-        "_collapsible"?: boolean;
+        "_collapsible"?: CollapsiblePropType;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
           * @deprecated Use _hide-label
