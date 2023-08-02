@@ -149,7 +149,7 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: AlertPropType = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
@@ -303,7 +303,7 @@ export class KolInputText implements ComponentApi {
 	}
 
 	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
+	public validateAlert(value?: AlertPropType): void {
 		validateAlert(this, value);
 	}
 

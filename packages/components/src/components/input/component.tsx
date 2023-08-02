@@ -8,6 +8,7 @@ import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { Props } from './types';
+import { AlertPropType } from '../../types/props/alert';
 
 /**
  * @internal
@@ -104,7 +105,7 @@ export class KolInput implements Props {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
-	@Prop() public _alert?: boolean = true;
+	@Prop() public _alert?: AlertPropType = true;
 
 	/**
 	 * @internal
