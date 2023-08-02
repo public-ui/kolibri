@@ -18,8 +18,10 @@ export type PropSuggestions = {
 export const validateSuggestions = (component: Generic.Element.Component, value?: SuggestionsPropType): void => {
 	watchJsonArrayString(component, '_suggestions', (item: W3CInputValue) => typeof item === 'string' || typeof item === 'number', value, undefined, {
 		hooks: {
-			afterPatch: () => {
-				a11yHint('Property suggestions: It has accessibility issues in how browsers implemented it and should not be used for now.');
+			afterPatch: (value: unknown) => {
+				if (Array.isArray(value) && value.length) {
+					a11yHint('Property suggestions: Options have accessibility issues in how browsers implemented them and should not be used for now.');
+				}
 			},
 		},
 	});
