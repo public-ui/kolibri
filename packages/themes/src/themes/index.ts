@@ -8,4 +8,5 @@ export * from '../../ecl/eu/src';
 export * from '../../itzbund/src';
 export * from '../../mfm/src';
 export * from './mapz';
+export * from '../../token-based/src';
 export * from './zoll-v2';
