@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-import { Align } from "./types/props/align";
+import { AlignPropType } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
@@ -25,6 +25,7 @@ import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
+import { AlertPropType } from "./types/props/alert";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
@@ -42,16 +43,17 @@ import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { KoliBriProgressVariantType } from "./types/progress";
 import { KoliBriQuoteVariant } from "./components/quote/types";
-import { SpinVariant } from "./types/props/variant/spin";
+import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
+import { AdjustHeightPropType } from "./types/props/adjust-height";
 import { CSSResize } from "./components/textarea/types";
 import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 import { IdPropType } from "./types/props/id";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-export { Align } from "./types/props/align";
+export { AlignPropType } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
@@ -70,6 +72,7 @@ export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
+export { AlertPropType } from "./types/props/alert";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
@@ -87,10 +90,11 @@ export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { KoliBriProgressVariantType } from "./types/progress";
 export { KoliBriQuoteVariant } from "./components/quote/types";
-export { SpinVariant } from "./types/props/variant/spin";
+export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
+export { AdjustHeightPropType } from "./types/props/adjust-height";
 export { CSSResize } from "./components/textarea/types";
 export { RowsPropType } from "./types/props/rows";
 export { KoliBriToastEventCallbacks } from "./types/toast";
@@ -109,7 +113,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
     }
     interface KolAccordion {
         /**
@@ -308,7 +312,7 @@ export namespace Components {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -345,7 +349,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -438,7 +442,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -504,7 +508,7 @@ export namespace Components {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -541,7 +545,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -725,7 +729,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
-        "_alert"?: boolean;
+        "_alert"?: AlertPropType;
         "_currentLength"?: number;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -861,7 +865,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -953,7 +957,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1056,7 +1060,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1175,7 +1179,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1257,7 +1261,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1364,7 +1368,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1471,7 +1475,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1550,7 +1554,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1710,7 +1714,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1728,7 +1732,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
-        "_alert"?: boolean;
+        "_alert"?: AlertPropType;
         /**
           * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
          */
@@ -1821,7 +1825,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -1900,7 +1904,7 @@ export namespace Components {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -1948,7 +1952,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -2043,7 +2047,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -2136,7 +2140,7 @@ export namespace Components {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -2184,7 +2188,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -2307,7 +2311,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -2321,7 +2325,7 @@ export namespace Components {
         /**
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
-        "_align"?: Align;
+        "_align"?: AlignPropType;
         /**
           * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
@@ -2463,7 +2467,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -2534,7 +2538,7 @@ export namespace Components {
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: SpinVariant;
+        "_variant"?: SpinVariantPropType;
     }
     interface KolSplitButton {
         /**
@@ -2615,7 +2619,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -2679,7 +2683,7 @@ export namespace Components {
         /**
           * Defines the position of the tab captions.
          */
-        "_align"?: Align;
+        "_align"?: AlignPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -2705,7 +2709,7 @@ export namespace Components {
           * Setzt die Position der Registrierkarten.
           * @deprecated Use _align.
          */
-        "_tabsAlign"?: Align;
+        "_tabsAlign"?: AlignPropType;
     }
     interface KolTextarea {
         /**
@@ -2715,7 +2719,7 @@ export namespace Components {
         /**
           * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
          */
-        "_adjustHeight"?: boolean;
+        "_adjustHeight"?: AdjustHeightPropType;
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
@@ -2791,7 +2795,7 @@ export namespace Components {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -2844,7 +2848,7 @@ export namespace Components {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: Align;
+        "_align"?: AlignPropType;
         /**
           * Defines the internal ID of the primary component element.
          */
@@ -3333,7 +3337,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
     }
     interface KolAccordion {
         /**
@@ -3532,7 +3536,7 @@ declare namespace LocalJSX {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -3569,7 +3573,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -3662,7 +3666,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -3728,7 +3732,7 @@ declare namespace LocalJSX {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -3765,7 +3769,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -3949,7 +3953,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
-        "_alert"?: boolean;
+        "_alert"?: AlertPropType;
         "_currentLength"?: number;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -4085,7 +4089,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4177,7 +4181,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4280,7 +4284,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4399,7 +4403,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4481,7 +4485,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4588,7 +4592,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4695,7 +4699,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4774,7 +4778,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4934,7 +4938,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -4952,7 +4956,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
-        "_alert"?: boolean;
+        "_alert"?: AlertPropType;
         /**
           * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
          */
@@ -5045,7 +5049,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -5124,7 +5128,7 @@ declare namespace LocalJSX {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -5172,7 +5176,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -5267,7 +5271,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
@@ -5360,7 +5364,7 @@ declare namespace LocalJSX {
           * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
-        "_iconAlign"?: Align;
+        "_iconAlign"?: AlignPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -5408,7 +5412,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -5531,7 +5535,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -5545,7 +5549,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
          */
-        "_align"?: Align;
+        "_align"?: AlignPropType;
         /**
           * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
          */
@@ -5687,7 +5691,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -5758,7 +5762,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, welche Variante der Darstellung genutzt werden soll.
          */
-        "_variant"?: SpinVariant;
+        "_variant"?: SpinVariantPropType;
     }
     interface KolSplitButton {
         /**
@@ -5839,7 +5843,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -5903,7 +5907,7 @@ declare namespace LocalJSX {
         /**
           * Defines the position of the tab captions.
          */
-        "_align"?: Align;
+        "_align"?: AlignPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -5929,7 +5933,7 @@ declare namespace LocalJSX {
           * Setzt die Position der Registrierkarten.
           * @deprecated Use _align.
          */
-        "_tabsAlign"?: Align;
+        "_tabsAlign"?: AlignPropType;
     }
     interface KolTextarea {
         /**
@@ -5939,7 +5943,7 @@ declare namespace LocalJSX {
         /**
           * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
          */
-        "_adjustHeight"?: boolean;
+        "_adjustHeight"?: AdjustHeightPropType;
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
@@ -6015,7 +6019,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
          */
-        "_tooltipAlign"?: Align;
+        "_tooltipAlign"?: AlignPropType;
         /**
           * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
          */
@@ -6068,7 +6072,7 @@ declare namespace LocalJSX {
         /**
           * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
          */
-        "_align"?: Align;
+        "_align"?: AlignPropType;
         /**
           * Defines the internal ID of the primary component element.
          */

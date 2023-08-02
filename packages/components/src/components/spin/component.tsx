@@ -1,11 +1,11 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { SpinVariant, validateSpinVariant } from '../../types/props/variant/spin';
+import { SpinVariantPropType, validateSpinVariant } from '../../types/props/variant/spin';
 import { watchBoolean } from '../../utils/prop.validators';
 import { KoliBriSpinAPI, KoliBriSpinStates } from './types';
 
-function renderSpin(variant: SpinVariant): JSX.Element {
+function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
 		case 'cycle':
 			return <span class="loader"></span>;
@@ -65,7 +65,7 @@ export class KolSpin implements KoliBriSpinAPI {
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 */
-	@Prop() public _variant?: SpinVariant = 'dot';
+	@Prop() public _variant?: SpinVariantPropType = 'dot';
 
 	@State() public state: KoliBriSpinStates = {
 		_variant: 'dot',
@@ -78,7 +78,7 @@ export class KolSpin implements KoliBriSpinAPI {
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: SpinVariant): void {
+	public validateVariant(value?: SpinVariantPropType): void {
 		validateSpinVariant(this, value);
 	}
 

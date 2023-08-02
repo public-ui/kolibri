@@ -4,22 +4,19 @@ import { watchValidator } from '../../../utils/prop.validators';
 
 /* types */
 /**
- * Loadingspinner
+ * Loading-spinner
  * - https://github.com/vineethtrv/css-loader
  */
-export type SpinVariant = 'cycle' | 'dot' | 'none';
+export type SpinVariantPropType = 'cycle' | 'dot' | 'none';
 
-/** de
- * Macht die Fehlermeldung dieses Elements von Screenreadern lesbar.
- */
-/** en
- * Makes hints readable for screenreaders.
+/**
+ * Defines the variant of spin navigation
  */
 export type PropSpinVariant = {
-	variant: SpinVariant;
+	variant: SpinVariantPropType;
 };
 
 /* validator */
-export const validateSpinVariant = (component: Generic.Element.Component, value?: SpinVariant): void => {
+export const validateSpinVariant = (component: Generic.Element.Component, value?: SpinVariantPropType): void => {
 	watchValidator(component, '_variant', (value) => value === 'cycle' || value === 'dot' || value === 'none', new Set(['cycle', 'dot', 'none']), value);
 };
