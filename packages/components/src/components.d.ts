@@ -27,6 +27,7 @@ import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { AlertPropType } from "./types/props/alert";
 import { SuggestionsPropType } from "./types/props/suggestions";
+import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
@@ -74,6 +75,7 @@ export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { AlertPropType } from "./types/props/alert";
 export { SuggestionsPropType } from "./types/props/suggestions";
+export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
@@ -809,7 +811,7 @@ export namespace Components {
         /**
           * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
          */
-        "_checked"?: boolean;
+        "_checked"?: CheckedPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -4033,7 +4035,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
          */
-        "_checked"?: boolean;
+        "_checked"?: CheckedPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */

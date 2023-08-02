@@ -3,17 +3,16 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Hakt die Checkbox an.
- */
-/** en
+export type CheckedPropType = boolean;
+
+/**
  * Checks the checkbox.
  */
 export type PropChecked = {
-	checked: boolean;
+	checked: CheckedPropType;
 };
 
 /* validator */
-export const validateChecked = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateChecked = (component: Generic.Element.Component, value?: CheckedPropType): void => {
 	watchBoolean(component, '_checked', value);
 };

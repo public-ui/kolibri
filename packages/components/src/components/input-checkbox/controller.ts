@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
-import { validateChecked } from '../../types/props/checked';
+import { CheckedPropType, validateChecked } from '../../types/props/checked';
 import { validateIndeterminate } from '../../types/props/indeterminate';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint } from '../../utils/a11y.tipps';
@@ -26,7 +26,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		}
 	};
 
-	public validateChecked(value?: boolean): void {
+	public validateChecked(value?: CheckedPropType): void {
 		validateChecked(this.component, value);
 		this.setFormAssociatedCheckboxValue(this.component.state._value as StencilUnknown);
 	}

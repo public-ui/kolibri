@@ -11,6 +11,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
+import { CheckedPropType } from '../../types/props/checked';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -112,7 +113,7 @@ export class KolInputCheckbox implements ComponentApi {
 	/**
 	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
 	 */
-	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _checked?: CheckedPropType = false;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -236,7 +237,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_checked')
-	public validateChecked(value?: boolean): void {
+	public validateChecked(value?: CheckedPropType): void {
 		this.controller.validateChecked(value);
 	}
 
