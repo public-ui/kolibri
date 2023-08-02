@@ -30,7 +30,7 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 
 Als erstes wird der **Name** der neuen Komponenten in der **Schema**-Datei (`src/schema/tag-names.ts`) hinterlegt.
 
-## Schritt 1 - Verzeichnins anlegen
+## Schritt 1 - Verzeichnis anlegen
 
 Eine Vorlage ist unter `/docs/tutorials/component` zu finden. Ziel: `/packages/components/src/components/[component-name]`.
 Sofern eine Variante ohne ShadowDOM für andere Komponenten benötigt wird, ist die Komponente selbst, mit `shadow: false` anzulegen und diese Komponente in `shadow.tsx` einzubinden.
