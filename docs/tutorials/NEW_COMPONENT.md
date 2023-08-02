@@ -1,6 +1,6 @@
 # Neue Komponente erstellen
 
-> Schritt-für-Schritt-Anleitung, wie man einen neue Komponente im Teilmodul `components` erstellt.
+> Schritt-für-Schritt-Anleitung, wie man eine neue Komponente im Teilmodul `components` erstellt.
 
 ## Grundprinzipien
 
@@ -15,7 +15,7 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 | Schritt | Kurzbeschreibung                                                                                                                        |
 | :-----: | --------------------------------------------------------------------------------------------------------------------------------------- |
 |    0    | Name im Schema hinterlegen                                                                                                              |
-|    1    | Verzeichnis anlegen<br>- component.tsx(optional)<br>- readme.md<br>- shadow.tsx: Komponente mit shadowDOM<br>- styles.css<br>- types.ts |
+|    1    | Verzeichnis anlegen<br>- component.tsx(optional)<br>- readme.md<br>- shadow.tsx: Komponente mit Shadow DOM<br>- styles.css<br>- types.ts |
 |    2    | API spezifizieren                                                                                                                       |
 |    3    | Klasse zur API implementieren<br>- Props<br>- State<br>- Watcher<br>- Initialer Hook<br>- Render-Methode                                |
 |    4    | Styling anlegen                                                                                                                         |
@@ -33,9 +33,9 @@ Als erstes wird der **Name** der neuen Komponenten in der **Schema**-Datei (`src
 ## Schritt 1 - Verzeichnis anlegen
 
 Eine Vorlage ist unter `/docs/tutorials/component` zu finden. Ziel: `/packages/components/src/components/[component-name]`.
-Sofern eine Variante ohne ShadowDOM für andere Komponenten benötigt wird, ist die Komponente selbst, mit `shadow: false` anzulegen und diese Komponente in `shadow.tsx` einzubinden.
+Sofern eine Variante ohne Shadow DOM für andere Komponenten benötigt wird, ist die Komponente selbst, mit `shadow: false` anzulegen und diese Komponente in `shadow.tsx` einzubinden.
 Andernfalls ist die Komponente direkt mit `shadow: true` in `shadow.tsx` zu implementieren.
-Ziel: shadow.tsx existiert immer und liefert die Komponente mit ShadowDOM.
+Ziel: shadow.tsx existiert immer und liefert die Komponente mit Shadow DOM.
 Die `readme.md` wird automatisch bei `pnpm build` erzeugt, sollte sie bereits existieren wird der automatisch generierte Inhalt angehängt.
 
 ## Schritt 2 - API spezifizieren
