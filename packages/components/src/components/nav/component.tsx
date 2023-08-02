@@ -5,7 +5,7 @@ import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '..
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
-import { validateCollapsible } from '../../types/props/collapsible';
+import { CollapsiblePropType, validateCollapsible } from '../../types/props/collapsible';
 import { validateHasCompactButton } from '../../types/props/has-compact-button';
 import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
@@ -212,7 +212,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
 	 */
-	@Prop() public _collapsible?: boolean = true;
+	@Prop() public _collapsible?: CollapsiblePropType = true;
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
@@ -284,7 +284,7 @@ export class KolNav implements KoliBriNavAPI {
 	}
 
 	@Watch('_collapsible')
-	public validateCollapsible(value?: boolean): void {
+	public validateCollapsible(value?: CollapsiblePropType): void {
 		validateCollapsible(this, value);
 	}
 

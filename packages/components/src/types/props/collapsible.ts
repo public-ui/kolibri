@@ -3,17 +3,16 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Wenn auf false gesetzt können Knoten in der Navigation nicht zugeklappt werden.
- */
-/** en
+export type CollapsiblePropType = boolean;
+
+/**
  * If set to false navigation nodes cannot be collapsed.
  */
 export type PropCollapsible = {
-	collapsible: boolean;
+	collapsible: CollapsiblePropType;
 };
 
 /* validator */
-export const validateCollapsible = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateCollapsible = (component: Generic.Element.Component, value?: CollapsiblePropType): void => {
 	watchBoolean(component, '_collapsible', value);
 };

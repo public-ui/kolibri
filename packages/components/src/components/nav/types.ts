@@ -35,7 +35,6 @@ type OptionalProps = {
 
 type RequiredStates = {
 	ariaCurrentValue: AriaCurrentPropType;
-	collapsible: boolean;
 	/**
 	 * @deprecated Version 2
 	 */
