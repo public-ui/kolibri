@@ -8,7 +8,7 @@ import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { AlignPropType } from './props/align';
 import { PropAriaControls } from './props/aria-controls';
 import { PropAriaCurrent, PropListenAriaCurrent } from './props/aria-current';
-import { PropAriaExpanded } from './props/aria-expanded';
+import { AriaExpandedPropType, PropAriaExpanded } from './props/aria-expanded';
 import { PropAriaLabel } from './props/aria-label';
 import { PropAriaSelected } from './props/aria-selected';
 import { PropDisabled } from './props/disabled';
@@ -36,7 +36,7 @@ type OptionalButtonAndLinkProps = {
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
-	ariaExpanded: boolean;
+	ariaExpanded: AriaExpandedPropType;
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
@@ -72,7 +72,7 @@ type OptionalButtonAndLinkStates = {
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
-	ariaExpanded: boolean;
+	ariaExpanded: AriaExpandedPropType;
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
