@@ -167,7 +167,7 @@ export class KolInput implements Props {
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
 	 * @internal
 	 */
 	@Prop() public _slotName?: string;
