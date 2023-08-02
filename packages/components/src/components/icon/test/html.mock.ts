@@ -21,7 +21,8 @@ const getIconHtmlTwig = (props: KoliBriIconProps, additionalAttrs = ''): string 
 	return twig({ path: path.join(__dirname, 'icon.twig'), async: false }).render(context);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/* eslint-disable @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment */
+// @ts-ignore
 const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = ''): string => {
 	const state = getState(props);
 	const template = readFileSync(path.join(__dirname, 'icon.mustache'), { encoding: 'utf-8' });
@@ -34,7 +35,7 @@ const getIconHtmlMustache = (props: KoliBriIconProps, additionalAttrs = ''): str
 	});
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// @ts-ignore
 const getIconHtmlPug = (props: KoliBriIconProps, additionalAttrs = ''): string => {
 	const compiledFunction = pug.compileFile(path.join(__dirname, 'icon.pug'));
 	const state = getState(props);
@@ -46,6 +47,8 @@ const getIconHtmlPug = (props: KoliBriIconProps, additionalAttrs = ''): string =
 		...state,
 	});
 };
+
+/* eslint-enable @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment */
 
 export const getIconHtml = (props: KoliBriIconProps, additionalAttrs = ''): string => {
 	return getIconHtmlTwig(props, additionalAttrs);
