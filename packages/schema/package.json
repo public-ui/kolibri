@@ -54,7 +54,7 @@
 		"@types/node": "ts4.9",
 		"@typescript-eslint/eslint-plugin": "6.2.0",
 		"@typescript-eslint/parser": "6.2.0",
-		"eslint": "8.45.0",
+		"eslint": "8.46.0",
 		"eslint-plugin-no-loops": "0.3.0",
 		"typescript": "5.1.6",
 		"unbuild": "1.2.1"
