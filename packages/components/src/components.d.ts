@@ -14,6 +14,7 @@ import { HasCloserPropType } from "./types/props/has-closer";
 import { ImageSourcePropType } from "./types/props/image-source";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
+import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
@@ -21,6 +22,7 @@ import { AriaCurrentPropType } from "./types/props/aria-current";
 import { StencilUnknown } from "./types/unknown";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
+import { HasFooterPropType } from "./types/props/has-footer";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -43,7 +45,6 @@ import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
 import { CollapsiblePropType } from "./types/props/collapsible";
-import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { KoliBriProgressVariantType } from "./types/progress";
@@ -66,6 +67,7 @@ export { HasCloserPropType } from "./types/props/has-closer";
 export { ImageSourcePropType } from "./types/props/image-source";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
+export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
@@ -73,6 +75,7 @@ export { AriaCurrentPropType } from "./types/props/aria-current";
 export { StencilUnknown } from "./types/unknown";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
+export { HasFooterPropType } from "./types/props/has-footer";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -95,7 +98,6 @@ export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
 export { CollapsiblePropType } from "./types/props/collapsible";
-export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { KoliBriProgressVariantType } from "./types/progress";
@@ -239,9 +241,9 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -575,9 +577,9 @@ export namespace Components {
          */
         "_hasCloser"?: HasCloserPropType;
         /**
-          * Macht den Footerbereich der Card sichtbar.
+          * Shows the slot="footer".
          */
-        "_hasFooter"?: boolean;
+        "_hasFooter"?: HasFooterPropType;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
@@ -754,9 +756,9 @@ export namespace Components {
          */
         "_hasCounter"?: HasCounterPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Gibt den Hinweistext an.
          */
@@ -2264,7 +2266,7 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden
+          * Defines if navigation labels should be hidden.
          */
         "_hideLabel"?: HideLabelPropType;
         /**
@@ -2504,9 +2506,9 @@ export namespace Components {
     }
     interface KolSpan {
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.s
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -2523,9 +2525,9 @@ export namespace Components {
     }
     interface KolSpanWc {
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -3463,9 +3465,9 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -3799,9 +3801,9 @@ declare namespace LocalJSX {
          */
         "_hasCloser"?: HasCloserPropType;
         /**
-          * Macht den Footerbereich der Card sichtbar.
+          * Shows the slot="footer".
          */
-        "_hasFooter"?: boolean;
+        "_hasFooter"?: HasFooterPropType;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
@@ -3978,9 +3980,9 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: HasCounterPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Gibt den Hinweistext an.
          */
@@ -5488,7 +5490,7 @@ declare namespace LocalJSX {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden
+          * Defines if navigation labels should be hidden.
          */
         "_hideLabel"?: HideLabelPropType;
         /**
@@ -5728,9 +5730,9 @@ declare namespace LocalJSX {
     }
     interface KolSpan {
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.s
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -5747,9 +5749,9 @@ declare namespace LocalJSX {
     }
     interface KolSpanWc {
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */

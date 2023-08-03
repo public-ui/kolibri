@@ -76,7 +76,13 @@ export class KolNav implements KoliBriNavAPI {
 		return false;
 	};
 
-	private entry(collapsible: boolean, hideLabel: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, expanded: boolean): JSX.Element {
+	private entry(
+		collapsible: boolean,
+		hideLabel: HideLabelPropType,
+		hasChildren: boolean,
+		link: ButtonOrLinkOrTextWithChildrenProps,
+		expanded: boolean
+	): JSX.Element {
 		return (
 			<div class="entry">
 				<kol-button-link-text-switch
@@ -106,7 +112,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	private li(
 		collapsible: boolean,
-		hideLabel: boolean,
+		hideLabel: HideLabelPropType,
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
@@ -137,7 +143,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	private linkList = (props: {
 		collapsible: boolean;
-		hideLabel: boolean;
+		hideLabel: HideLabelPropType;
 		deep: number;
 		links: ButtonOrLinkOrTextWithChildrenProps[];
 		orientation: Orientation;
@@ -227,7 +233,7 @@ export class KolNav implements KoliBriNavAPI {
 	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Defines if navigation labels should be hidden
+	 * Defines if navigation labels should be hidden.
 	 */
 	@Prop() public _hideLabel?: HideLabelPropType = false;
 

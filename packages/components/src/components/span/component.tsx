@@ -2,7 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { validateHideLabel } from '../../types/props/hide-label';
+import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { KolibriSpanAPI, KolibriSpanStates } from './types';
@@ -39,9 +39,9 @@ export class KolSpanWc implements KolibriSpanAPI {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
@@ -66,7 +66,7 @@ export class KolSpanWc implements KolibriSpanAPI {
 	};
 
 	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
+	public validateHideLabel(value?: HideLabelPropType): void {
 		validateHideLabel(this, value);
 	}
 

@@ -11,6 +11,7 @@ import { Props } from './types';
 import { AlertPropType } from '../../types/props/alert';
 import { DisabledPropType } from '../../types/props/disabled';
 import { HasCounterPropType } from '../../types/props/has-counter';
+import { HideLabelPropType } from '../../types/props/hide-label';
 
 /**
  * @internal
@@ -130,9 +131,9 @@ export class KolInput implements Props {
 	@Prop() public _hasCounter?: HasCounterPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	/**
 	 * Gibt den Hinweistext an.
