@@ -1,0 +1,14 @@
+<kol-icon exportparts="icon"!{additionalAttrs}>
+	if mode == 'csr'
+		<mock:shadow-root>
+	else if mode == 'ssr'
+		<template shadowrootmode="open">
+	if _label && _label.length > 0
+		<i aria-label="#{_label}" class="#{_icon}" part="icon" role="img"></i>
+	else
+		<i aria-hidden="true" class="#{_icon}" part="icon" role="img"></i>
+	if mode == 'csr'
+		</mock:shadow-root>
+	else if mode == 'ssr'
+		</template>
+</kol-icon>
