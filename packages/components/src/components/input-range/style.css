@@ -1,4 +1,12 @@
 @import url(../input-line.css);
+.inputs-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+input[type='number'] {
+	width: 4em;
+}
 /*
  * For Chrome and Firefox is it needed to use redundant style definitions with separate selectors. The reason is unknown.
  */
@@ -7,6 +15,7 @@ input[type='range'] {
 	background-color: #d3d3d3;
 	border: 1px solid #000;
 	display: inline-block;
+	flex-grow: 1;
 	height: 0.5rem;
 	line-height: 1.5em;
 	padding: 0;
