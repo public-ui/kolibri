@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
 import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
-import { validateHasFooter } from '../../types/props/has-footer';
+import { HasFooterPropType, validateHasFooter } from '../../types/props/has-footer';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { setState } from '../../utils/prop.validators';
 import { KoliBriAlertEventCallbacks } from '../alert/types';
@@ -85,9 +85,9 @@ export class KolCard implements KoliBriCardAPI {
 	@Prop() public _hasCloser?: HasCloserPropType;
 
 	/**
-	 * Macht den Footerbereich der Card sichtbar.
+	 * Shows the slot="footer".
 	 */
-	@Prop() public _hasFooter?: boolean = false;
+	@Prop() public _hasFooter?: HasFooterPropType = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
@@ -131,7 +131,7 @@ export class KolCard implements KoliBriCardAPI {
 	}
 
 	@Watch('_hasFooter')
-	public validateHasFooter(value?: boolean): void {
+	public validateHasFooter(value?: HasFooterPropType): void {
 		validateHasFooter(this, value);
 	}
 

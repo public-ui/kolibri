@@ -3,17 +3,17 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Zeigt den slot="footer" an.
- */
-/** en
+
+export type HasFooterPropType = boolean;
+
+/**
  * Shows the slot="footer".
  */
 export type PropHasFooter = {
-	hasFooter: boolean;
+	hasFooter: HasFooterPropType;
 };
 
 /* validator */
-export const validateHasFooter = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateHasFooter = (component: Generic.Element.Component, value?: HasFooterPropType): void => {
 	watchBoolean(component, '_hasFooter', value);
 };
