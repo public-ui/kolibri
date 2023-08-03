@@ -12,6 +12,7 @@ import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
 import { CheckedPropType } from '../../types/props/checked';
+import { IndeterminatePropType } from '../../types/props/indeterminate';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -146,9 +147,9 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
-	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
+	@Prop({ mutable: true, reflect: true }) public _indeterminate?: IndeterminatePropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -272,7 +273,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_indeterminate')
-	public validateIndeterminate(value?: boolean): void {
+	public validateIndeterminate(value?: IndeterminatePropType): void {
 		this.controller.validateIndeterminate(value);
 	}
 

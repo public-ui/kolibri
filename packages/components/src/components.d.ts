@@ -34,6 +34,7 @@ import { HasCounterPropType } from "./types/props/has-counter";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
+import { IndeterminatePropType } from "./types/props/indeterminate";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
@@ -88,6 +89,7 @@ export { HasCounterPropType } from "./types/props/has-counter";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
+export { IndeterminatePropType } from "./types/props/indeterminate";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
@@ -849,9 +851,9 @@ export namespace Components {
          */
         "_id"?: string;
         /**
-          * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
+          * Puts the checkbox in the indeterminate state, does not change the value of _checked.
          */
-        "_indeterminate"?: boolean;
+        "_indeterminate"?: IndeterminatePropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4073,9 +4075,9 @@ declare namespace LocalJSX {
          */
         "_id"?: string;
         /**
-          * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
+          * Puts the checkbox in the indeterminate state, does not change the value of _checked.
          */
-        "_indeterminate"?: boolean;
+        "_indeterminate"?: IndeterminatePropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */

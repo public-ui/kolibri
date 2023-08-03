@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
 import { CheckedPropType, validateChecked } from '../../types/props/checked';
-import { validateIndeterminate } from '../../types/props/indeterminate';
+import { IndeterminatePropType, validateIndeterminate } from '../../types/props/indeterminate';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint } from '../../utils/a11y.tipps';
 import { setState, watchValidator } from '../../utils/prop.validators';
@@ -43,7 +43,7 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		);
 	}
 
-	public validateIndeterminate(value?: boolean): void {
+	public validateIndeterminate(value?: IndeterminatePropType): void {
 		validateIndeterminate(this.component, value);
 	}
 
