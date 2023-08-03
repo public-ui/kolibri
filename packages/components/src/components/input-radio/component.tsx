@@ -191,7 +191,7 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
+	 * Options the user can choose from.
 	 */
 	@Prop() public _options?: OptionsPropType;
 

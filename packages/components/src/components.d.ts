@@ -1552,7 +1552,7 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Options the user can choose from, also supporting Optgroup.
+          * Options the user can choose from.
          */
         "_options"?: OptionsPropType;
         /**
@@ -4776,7 +4776,7 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Options the user can choose from, also supporting Optgroup.
+          * Options the user can choose from.
          */
         "_options"?: OptionsPropType;
         /**
