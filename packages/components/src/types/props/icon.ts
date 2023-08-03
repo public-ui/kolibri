@@ -8,7 +8,7 @@ import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState 
 import { AlignPropType } from './align';
 
 /* types */
-export type IconPropType = Stringified<KoliBriIconProp>;
+type IconPropType = Stringified<KoliBriIconProp>;
 
 /**
  * Puts the checkbox in the indeterminate state, does not change the value of _checked.
