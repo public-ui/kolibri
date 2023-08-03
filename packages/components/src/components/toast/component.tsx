@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { validateShow } from '../../types/props/show';
+import { ShowPropType, validateShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
@@ -53,9 +53,9 @@ export class KolToast implements KoliBriToastAPI {
 	@Prop() public _on?: KoliBriToastEventCallbacks;
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _show?: ShowPropType = true;
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
@@ -106,7 +106,7 @@ export class KolToast implements KoliBriToastAPI {
 	}
 
 	@Watch('_show')
-	public validateShow(value?: boolean): void {
+	public validateShow(value?: ShowPropType): void {
 		validateShow(this, value, { hooks: { afterPatch: this.handleShowAndDuration } });
 	}
 

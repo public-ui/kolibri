@@ -2,7 +2,7 @@ import { arrow, computePosition, flip, MiddlewareData, offset, Placement, shift 
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { AlignPropType, validateAlign } from '../../types/props/align';
-import { validateShow } from '../../types/props/show';
+import { ShowPropType, validateShow } from '../../types/props/show';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
 import { KoliBriPopoverAPI, KoliBriPopoverStates } from './types';
@@ -151,9 +151,9 @@ export class KolPopover implements KoliBriPopoverAPI {
 	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _show?: ShowPropType = false;
 
 	@State() public state: KoliBriPopoverStates = {
 		_align: 'top',
@@ -167,7 +167,7 @@ export class KolPopover implements KoliBriPopoverAPI {
 	}
 
 	@Watch('_show')
-	public validateShow(value?: boolean): void {
+	public validateShow(value?: ShowPropType): void {
 		validateShow(this, value);
 		if (value) this.showPopover();
 	}

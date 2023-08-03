@@ -33,6 +33,7 @@ import { AlertPropType } from "./types/props/alert";
 import { DisabledPropType } from "./types/props/disabled";
 import { HasCounterPropType } from "./types/props/has-counter";
 import { ReadOnlyPropType } from "./types/props/read-only";
+import { RequiredPropType } from "./types/props/required";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -52,16 +53,17 @@ import { KoliBriModalEventCallbacks } from "./types/modal";
 import { CollapsiblePropType } from "./types/props/collapsible";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+import { ShowPropType } from "./types/props/show";
 import { KoliBriProgressVariantType } from "./types/progress";
 import { HrefPropType } from "./types/props/href";
 import { KoliBriQuoteVariant } from "./components/quote/types";
+import { RowsPropType } from "./types/props/rows";
 import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { AdjustHeightPropType } from "./types/props/adjust-height";
 import { CSSResize } from "./components/textarea/types";
-import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlignPropType } from "./types/props/align";
@@ -91,6 +93,7 @@ export { AlertPropType } from "./types/props/alert";
 export { DisabledPropType } from "./types/props/disabled";
 export { HasCounterPropType } from "./types/props/has-counter";
 export { ReadOnlyPropType } from "./types/props/read-only";
+export { RequiredPropType } from "./types/props/required";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -110,16 +113,17 @@ export { KoliBriModalEventCallbacks } from "./types/modal";
 export { CollapsiblePropType } from "./types/props/collapsible";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
+export { ShowPropType } from "./types/props/show";
 export { KoliBriProgressVariantType } from "./types/progress";
 export { HrefPropType } from "./types/props/href";
 export { KoliBriQuoteVariant } from "./components/quote/types";
+export { RowsPropType } from "./types/props/rows";
 export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { AdjustHeightPropType } from "./types/props/adjust-height";
 export { CSSResize } from "./components/textarea/types";
-export { RowsPropType } from "./types/props/rows";
 export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
     interface KolAbbr {
@@ -794,9 +798,9 @@ export namespace Components {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required.
          */
-        "_required"?: boolean;
+        "_required"?: RequiredPropType;
         /**
           * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
          */
@@ -2349,9 +2353,9 @@ export namespace Components {
          */
         "_align"?: AlignPropType;
         /**
-          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+          * Makes the element show up.
          */
-        "_show"?: boolean;
+        "_show"?: ShowPropType;
     }
     interface KolProgress {
         /**
@@ -2473,7 +2477,7 @@ export namespace Components {
         /**
           * Defines how many rows of options should be visible at the same time.
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
@@ -2554,9 +2558,9 @@ export namespace Components {
     }
     interface KolSpin {
         /**
-          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+          * Makes the element show up.
          */
-        "_show"?: boolean;
+        "_show"?: ShowPropType;
         /**
           * Defines the variant of spin navigation.
          */
@@ -2854,9 +2858,9 @@ export namespace Components {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+          * Makes the element show up.
          */
-        "_show"?: boolean;
+        "_show"?: ShowPropType;
         /**
           * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
          */
@@ -4018,9 +4022,9 @@ declare namespace LocalJSX {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required.
          */
-        "_required"?: boolean;
+        "_required"?: RequiredPropType;
         /**
           * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
          */
@@ -5573,9 +5577,9 @@ declare namespace LocalJSX {
          */
         "_align"?: AlignPropType;
         /**
-          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+          * Makes the element show up.
          */
-        "_show"?: boolean;
+        "_show"?: ShowPropType;
     }
     interface KolProgress {
         /**
@@ -5697,7 +5701,7 @@ declare namespace LocalJSX {
         /**
           * Defines how many rows of options should be visible at the same time.
          */
-        "_rows"?: number;
+        "_rows"?: RowsPropType;
         /**
           * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
          */
@@ -5778,9 +5782,9 @@ declare namespace LocalJSX {
     }
     interface KolSpin {
         /**
-          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+          * Makes the element show up.
          */
-        "_show"?: boolean;
+        "_show"?: ShowPropType;
         /**
           * Defines the variant of spin navigation.
          */
@@ -6078,9 +6082,9 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+          * Makes the element show up.
          */
-        "_show"?: boolean;
+        "_show"?: ShowPropType;
         /**
           * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
          */
