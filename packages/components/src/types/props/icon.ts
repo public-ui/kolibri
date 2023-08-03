@@ -8,14 +8,13 @@ import { AnyIconFontClass, KoliBriCustomIcon, KoliBriIconProp, KoliBriIconState 
 import { AlignPropType } from './align';
 
 /* types */
-/** de
- * Setzt den unbestimmten Zustand auf der Checkbox, hat keine Auswirkung auf _checked.
- */
-/** en
+export type IconPropType = Stringified<KoliBriIconProp>;
+
+/**
  * Puts the checkbox in the indeterminate state, does not change the value of _checked.
  */
 export type PropIcon = {
-	icon: Stringified<KoliBriIconProp>;
+	icon: IconPropType;
 };
 
 /* validator */
@@ -77,7 +76,7 @@ export const isIcon = (value?: unknown): boolean =>
 	(typeof (value as KoliBriCustomIcon).style === 'undefined' || isStyle((value as KoliBriCustomIcon).style)) &&
 	isString((value as KoliBriCustomIcon).icon, 1);
 
-export const validateIcon = (component: Generic.Element.Component, value?: KoliBriIconProp): void => {
+export const validateIcon = (component: Generic.Element.Component, value?: IconPropType): void => {
 	objectObjectHandler(value, () => {
 		try {
 			value = parseJson<KoliBriIconProp>(value as string);

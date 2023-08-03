@@ -48,6 +48,7 @@ import { CollapsiblePropType } from "./types/props/collapsible";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { KoliBriProgressVariantType } from "./types/progress";
+import { HrefPropType } from "./types/props/href";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriSplitButtonCallback } from "./components/split-button/types";
@@ -101,6 +102,7 @@ export { CollapsiblePropType } from "./types/props/collapsible";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { KoliBriProgressVariantType } from "./types/progress";
+export { HrefPropType } from "./types/props/href";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriSplitButtonCallback } from "./components/split-button/types";
@@ -2377,9 +2379,9 @@ export namespace Components {
          */
         "_caption"?: string;
         /**
-          * Gibt den Link zur Quelle des Zitates an.
+          * Defines the link the source of the quote.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
           * Defines the label of the citation link.
          */
@@ -5601,9 +5603,9 @@ declare namespace LocalJSX {
          */
         "_caption"?: string;
         /**
-          * Gibt den Link zur Quelle des Zitates an.
+          * Defines the link the source of the quote.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
           * Defines the label of the citation link.
          */
