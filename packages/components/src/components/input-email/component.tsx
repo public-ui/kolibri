@@ -14,6 +14,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
+import { MultiplePropType } from '../../types/props/multiple';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -190,9 +191,9 @@ export class KolInputEmail implements ComponentApi {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
 	 */
-	@Prop() public _multiple?: boolean;
+	@Prop() public _multiple?: MultiplePropType;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -347,7 +348,7 @@ export class KolInputEmail implements ComponentApi {
 	}
 
 	@Watch('_multiple')
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		this.controller.validateMultiple(value);
 	}
 

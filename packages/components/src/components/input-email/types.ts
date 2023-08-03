@@ -63,7 +63,6 @@ type OptionalStates = {
 	hint: string;
 	icon: KoliBriHorizontalIcon;
 	maxLength: number;
-	multiple: boolean;
 	name: string;
 	on: InputTypeOnDefault;
 	pattern: string;
@@ -78,7 +77,7 @@ type OptionalStates = {
 	touched: boolean;
 	tabIndex: number;
 	value: string;
-};
+} & PropMultiple;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 

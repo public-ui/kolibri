@@ -38,6 +38,7 @@ import { IndeterminatePropType } from "./types/props/indeterminate";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
+import { MultiplePropType } from "./types/props/multiple";
 import { W3CInputValue } from "./types/w3c";
 import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 import { Orientation } from "./types/orientation";
@@ -93,6 +94,7 @@ export { IndeterminatePropType } from "./types/props/indeterminate";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
+export { MultiplePropType } from "./types/props/multiple";
 export { W3CInputValue } from "./types/w3c";
 export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 export { Orientation } from "./types/orientation";
@@ -1145,9 +1147,9 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs.
          */
-        "_multiple"?: boolean;
+        "_multiple"?: MultiplePropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -2080,7 +2082,7 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2233,7 +2235,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2274,7 +2276,7 @@ export namespace Components {
          */
         "_hideLabel"?: HideLabelPropType;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2349,7 +2351,7 @@ export namespace Components {
     }
     interface KolProgress {
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2500,7 +2502,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2605,7 +2607,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label": LabelPropType;
         /**
@@ -2656,7 +2658,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2706,7 +2708,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2870,13 +2872,13 @@ export namespace Components {
          */
         "_id"?: IdPropType;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -4369,9 +4371,9 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs.
          */
-        "_multiple"?: boolean;
+        "_multiple"?: MultiplePropType;
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
@@ -5304,7 +5306,7 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5457,7 +5459,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5498,7 +5500,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: HideLabelPropType;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5573,7 +5575,7 @@ declare namespace LocalJSX {
     }
     interface KolProgress {
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5724,7 +5726,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5829,7 +5831,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label": LabelPropType;
         /**
@@ -5880,7 +5882,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5930,7 +5932,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
@@ -6094,13 +6096,13 @@ declare namespace LocalJSX {
          */
         "_id"?: IdPropType;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
         "_label"?: LabelPropType;
         /**
