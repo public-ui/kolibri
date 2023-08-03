@@ -7,7 +7,7 @@ import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { validateAriaSelected } from '../../types/props/aria-selected';
-import { validateDisabled } from '../../types/props/disabled';
+import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
@@ -163,9 +163,9 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	@Prop() public _customClass?: string;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -285,7 +285,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this, value);
 		if (value) a11yHintDisabled();
 	}

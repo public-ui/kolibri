@@ -9,6 +9,7 @@ import { SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { Props } from './types';
 import { AlertPropType } from '../../types/props/alert';
+import { DisabledPropType } from '../../types/props/disabled';
 
 /**
  * @internal
@@ -113,9 +114,9 @@ export class KolInput implements Props {
 	@Prop() public _currentLength?: number;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.

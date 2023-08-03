@@ -26,6 +26,7 @@ import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { AlertPropType } from "./types/props/alert";
+import { DisabledPropType } from "./types/props/disabled";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -76,6 +77,7 @@ export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { AlertPropType } from "./types/props/alert";
+export { DisabledPropType } from "./types/props/disabled";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -738,9 +740,9 @@ export namespace Components {
         "_alert"?: AlertPropType;
         "_currentLength"?: number;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
@@ -2578,9 +2580,9 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -3962,9 +3964,9 @@ declare namespace LocalJSX {
         "_alert"?: AlertPropType;
         "_currentLength"?: number;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
@@ -5802,9 +5804,9 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */

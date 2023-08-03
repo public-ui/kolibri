@@ -19,7 +19,7 @@ import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
-import { validateDisabled } from '../../types/props/disabled';
+import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
@@ -301,7 +301,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this, value);
 		if (value === true) {
 			a11yHintDisabled();
