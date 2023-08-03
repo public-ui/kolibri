@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@public-ui/schema": "1.6.0-rc.23",
 		"@types/node": "ts4.9",
-		"@typescript-eslint/eslint-plugin": "6.2.0",
+		"@typescript-eslint/eslint-plugin": "6.2.1",
 		"@typescript-eslint/parser": "6.2.0",
 		"eslint": "8.45.0",
 		"eslint-plugin-no-loops": "0.3.0",
