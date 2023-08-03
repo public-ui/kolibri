@@ -10,6 +10,7 @@ import { W3CInputValue } from '../../types/w3c';
 import { Props } from './types';
 import { AlertPropType } from '../../types/props/alert';
 import { DisabledPropType } from '../../types/props/disabled';
+import { HasCounterPropType } from '../../types/props/has-counter';
 
 /**
  * @internal
@@ -124,9 +125,9 @@ export class KolInput implements Props {
 	@Prop() public _error?: string = '';
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: HasCounterPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.

@@ -11,6 +11,7 @@ import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
 import { AdjustHeightPropType } from '../../types/props/adjust-height';
+import { HasCounterPropType } from '../../types/props/has-counter';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -137,9 +138,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: HasCounterPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -266,7 +267,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		this.controller.validateHasCounter(value);
 	}
 

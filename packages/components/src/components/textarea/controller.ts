@@ -4,6 +4,7 @@ import { RowsPropType, validateRows } from '../../types/props/rows';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputController } from '../@deprecated/input/controller';
 import { CSSResize, Props, Watches } from './types';
+import { HasCounterPropType } from '../../types/props/has-counter';
 
 export class TextareaController extends InputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -19,7 +20,7 @@ export class TextareaController extends InputController implements Watches {
 		}
 	};
 
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		watchBoolean(this.component, '_hasCounter', value, {
 			hooks: {
 				afterPatch: this.afterSyncCharCounter,

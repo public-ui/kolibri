@@ -27,6 +27,7 @@ import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { AlertPropType } from "./types/props/alert";
 import { DisabledPropType } from "./types/props/disabled";
+import { HasCounterPropType } from "./types/props/has-counter";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -78,6 +79,7 @@ export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { AlertPropType } from "./types/props/alert";
 export { DisabledPropType } from "./types/props/disabled";
+export { HasCounterPropType } from "./types/props/has-counter";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -748,9 +750,9 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input.
          */
-        "_hasCounter"?: boolean;
+        "_hasCounter"?: HasCounterPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -2741,9 +2743,9 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input.
          */
-        "_hasCounter"?: boolean;
+        "_hasCounter"?: HasCounterPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -3972,9 +3974,9 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input.
          */
-        "_hasCounter"?: boolean;
+        "_hasCounter"?: HasCounterPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -5965,9 +5967,9 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input.
          */
-        "_hasCounter"?: boolean;
+        "_hasCounter"?: HasCounterPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
