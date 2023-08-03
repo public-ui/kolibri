@@ -20,6 +20,7 @@ import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriB
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrentPropType } from "./types/props/aria-current";
 import { StencilUnknown } from "./types/unknown";
+import { IdPropType } from "./types/props/id";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { HasFooterPropType } from "./types/props/has-footer";
@@ -58,7 +59,6 @@ import { AdjustHeightPropType } from "./types/props/adjust-height";
 import { CSSResize } from "./components/textarea/types";
 import { RowsPropType } from "./types/props/rows";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-import { IdPropType } from "./types/props/id";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlignPropType } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
@@ -74,6 +74,7 @@ export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriB
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrentPropType } from "./types/props/aria-current";
 export { StencilUnknown } from "./types/unknown";
+export { IdPropType } from "./types/props/id";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { HasFooterPropType } from "./types/props/has-footer";
@@ -112,7 +113,6 @@ export { AdjustHeightPropType } from "./types/props/adjust-height";
 export { CSSResize } from "./components/textarea/types";
 export { RowsPropType } from "./types/props/rows";
 export { KoliBriToastEventCallbacks } from "./types/toast";
-export { IdPropType } from "./types/props/id";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -426,9 +426,9 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -729,7 +729,7 @@ export namespace Components {
          */
         "_sizes"?: string;
         /**
-          * Setzt die Quell-URL des Bildes.
+          * Sets the image `src` attribute to the given string.
          */
         "_src": ImageSourcePropType;
         /**
@@ -3650,9 +3650,9 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -3953,7 +3953,7 @@ declare namespace LocalJSX {
          */
         "_sizes"?: string;
         /**
-          * Setzt die Quell-URL des Bildes.
+          * Sets the image `src` attribute to the given string.
          */
         "_src": ImageSourcePropType;
         /**

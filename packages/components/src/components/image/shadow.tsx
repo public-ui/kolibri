@@ -29,7 +29,7 @@ export class KolImage implements ComponentApi {
 	@Prop() public _sizes?: string;
 
 	/**
-	 * Setzt die Quell-URL des Bildes.
+	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop() public _src!: ImageSourcePropType;
 
