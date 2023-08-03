@@ -13,6 +13,7 @@ import { DisabledPropType } from '../../types/props/disabled';
 import { HasCounterPropType } from '../../types/props/has-counter';
 import { HideLabelPropType } from '../../types/props/hide-label';
 import { ReadOnlyPropType } from '../../types/props/read-only';
+import { RequiredPropType } from '../../types/props/required';
 
 /**
  * @internal
@@ -167,9 +168,9 @@ export class KolInput implements Props {
 	@Prop() public _renderNoLabel?: boolean = false;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
