@@ -1,34 +1,25 @@
 import React from 'react';
-import { KolInputFile } from '@public-ui/react';
+import { KolInputFile, KolForm } from '@public-ui/react';
 
 import { FC } from 'react';
 
 import { ERROR_MSG } from '../../shares/constants';
 
 export const InputFileBasic: FC = () => (
-	<div className="grid gap-4">
+	<KolForm className="grid gap-4">
 		<KolInputFile
 			_id="file"
 			_name="file"
 			_required
 			_error={ERROR_MSG}
+			_label="Datei hochladen"
 			_icon={{
 				left: {
-					icon: 'codicon codicon-arrow-left',
-				},
-				right: {
-					icon: 'codicon codicon-arrow-right',
+					icon: 'codicon codicon-save',
 				},
 			}}
-			_touched
-		>
-			Datei hochladen
-		</KolInputFile>
-		<KolInputFile _id="file" _multiple _error={ERROR_MSG}>
-			Datei hochladen (Multiple)
-		</KolInputFile>
-		<KolInputFile _disabled _id="file">
-			Datei hochladen (Disabled)
-		</KolInputFile>
-	</div>
+		/>
+		<KolInputFile _id="file" _multiple _error={ERROR_MSG} _label="Datei hochladen (Multiple)" />
+		<KolInputFile _disabled _id="file" _label="Datei hochladen (Disabled)" />
+	</KolForm>
 );
