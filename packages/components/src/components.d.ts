@@ -35,6 +35,7 @@ import { HasCounterPropType } from "./types/props/has-counter";
 import { ReadOnlyPropType } from "./types/props/read-only";
 import { RequiredPropType } from "./types/props/required";
 import { SuggestionsPropType } from "./types/props/suggestions";
+import { TouchedPropType } from "./types/props/touched";
 import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 import { IndeterminatePropType } from "./types/props/indeterminate";
@@ -95,6 +96,7 @@ export { HasCounterPropType } from "./types/props/has-counter";
 export { ReadOnlyPropType } from "./types/props/read-only";
 export { RequiredPropType } from "./types/props/required";
 export { SuggestionsPropType } from "./types/props/suggestions";
+export { TouchedPropType } from "./types/props/touched";
 export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
 export { IndeterminatePropType } from "./types/props/indeterminate";
@@ -814,9 +816,9 @@ export namespace Components {
          */
         "_suggestions"?: SuggestionsPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user.
          */
-        "_touched"?: boolean;
+        "_touched"?: TouchedPropType;
     }
     /**
      * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
@@ -4038,9 +4040,9 @@ declare namespace LocalJSX {
          */
         "_suggestions"?: SuggestionsPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user.
          */
-        "_touched"?: boolean;
+        "_touched"?: TouchedPropType;
     }
     /**
      * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
