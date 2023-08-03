@@ -240,7 +240,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Defines how many rows of options should be visible at the same time.
 	 */
-	@Prop() public _rows?: number;
+	@Prop() public _rows?: RowsPropType;
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
