@@ -14,6 +14,7 @@ import { HasCounterPropType } from '../../types/props/has-counter';
 import { HideLabelPropType } from '../../types/props/hide-label';
 import { ReadOnlyPropType } from '../../types/props/read-only';
 import { RequiredPropType } from '../../types/props/required';
+import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @internal
@@ -189,7 +190,7 @@ export class KolInput implements Props {
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
 	 */
-	@Prop() public _touched?: boolean = false;
+	@Prop() public _touched?: TouchedPropType = false;
 }
