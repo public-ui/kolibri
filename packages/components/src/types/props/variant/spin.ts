@@ -10,7 +10,7 @@ import { watchValidator } from '../../../utils/prop.validators';
 export type SpinVariantPropType = 'cycle' | 'dot' | 'none';
 
 /**
- * Defines the variant of spin navigation
+ * Defines the variant of spin navigation.
  */
 export type PropSpinVariant = {
 	variant: SpinVariantPropType;

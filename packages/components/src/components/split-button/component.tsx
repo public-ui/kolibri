@@ -220,7 +220,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 

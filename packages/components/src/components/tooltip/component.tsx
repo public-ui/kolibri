@@ -144,7 +144,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	}
 
 	/**
-	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
+	 * Defines the alignment of the tooltip in relation to the parent element.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 

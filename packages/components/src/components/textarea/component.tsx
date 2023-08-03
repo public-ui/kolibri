@@ -117,7 +117,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+	 * Adjusts the height of the element to its content.
 	 */
 	@Prop() public _adjustHeight?: AdjustHeightPropType = false;
 
@@ -213,7 +213,7 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 

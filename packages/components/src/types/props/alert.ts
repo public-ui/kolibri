@@ -6,7 +6,7 @@ import { watchBoolean } from '../../utils/prop.validators';
 export type AlertPropType = boolean;
 
 /**
- * Makes hints readable for screen-readers.
+ * Defines whether the screen-readers should read out the notification.
  */
 export type PropAlert = {
 	alert: AlertPropType;

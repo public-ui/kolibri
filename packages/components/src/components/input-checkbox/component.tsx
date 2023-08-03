@@ -111,7 +111,7 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
+	 * Defines whether the checkbox is checked or not. Can be read and written.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _checked?: CheckedPropType = false;
 
@@ -182,7 +182,7 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 

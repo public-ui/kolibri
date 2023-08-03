@@ -6,7 +6,7 @@ import { watchBoolean } from '../../utils/prop.validators';
 export type CheckedPropType = boolean;
 
 /**
- * Checks the checkbox.
+ * Defines whether the checkbox is checked or not. Can be read and written.
  */
 export type PropChecked = {
 	checked: CheckedPropType;

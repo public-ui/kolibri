@@ -210,7 +210,7 @@ export class KolNav implements KoliBriNavAPI {
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 */
 	@Prop() public _collapsible?: CollapsiblePropType = true;
 

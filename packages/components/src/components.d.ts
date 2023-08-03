@@ -117,7 +117,7 @@ export namespace Components {
          */
         "_title"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
     }
@@ -315,7 +315,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
          */
         "_iconAlign"?: AlignPropType;
@@ -353,7 +353,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -446,7 +446,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -511,7 +511,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
          */
         "_iconAlign"?: AlignPropType;
@@ -549,7 +549,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -733,7 +733,7 @@ export namespace Components {
     }
     interface KolInput {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: AlertPropType;
         "_currentLength"?: number;
@@ -813,7 +813,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
+          * Defines whether the checkbox is checked or not. Can be read and written.
          */
         "_checked"?: CheckedPropType;
         /**
@@ -869,7 +869,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -961,7 +961,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1064,7 +1064,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1183,7 +1183,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1265,7 +1265,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1372,7 +1372,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1479,7 +1479,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1558,7 +1558,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1718,7 +1718,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1736,7 +1736,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: AlertPropType;
         /**
@@ -1829,7 +1829,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -1907,7 +1907,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: AlignPropType;
@@ -1956,7 +1956,7 @@ export namespace Components {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -2051,7 +2051,7 @@ export namespace Components {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -2143,7 +2143,7 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: AlignPropType;
@@ -2192,7 +2192,7 @@ export namespace Components {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -2246,7 +2246,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+          * Defines if navigation nodes can be collapsed or not. Enabled by default.
          */
         "_collapsible"?: CollapsiblePropType;
         /**
@@ -2315,7 +2315,7 @@ export namespace Components {
          */
         "_siblingCount"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -2329,7 +2329,7 @@ export namespace Components {
     }
     interface KolPopover {
         /**
-          * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
          */
         "_align"?: AlignPropType;
         /**
@@ -2471,7 +2471,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -2542,7 +2542,7 @@ export namespace Components {
          */
         "_show"?: boolean;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines the variant of spin navigation.
          */
         "_variant"?: SpinVariantPropType;
     }
@@ -2623,7 +2623,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -2723,7 +2723,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+          * Adjusts the height of the element to its content.
          */
         "_adjustHeight"?: AdjustHeightPropType;
         /**
@@ -2799,7 +2799,7 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -2852,7 +2852,7 @@ export namespace Components {
     }
     interface KolTooltip {
         /**
-          * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
+          * Defines the alignment of the tooltip in relation to the parent element.
          */
         "_align"?: AlignPropType;
         /**
@@ -3341,7 +3341,7 @@ declare namespace LocalJSX {
          */
         "_title"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
     }
@@ -3539,7 +3539,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
          */
         "_iconAlign"?: AlignPropType;
@@ -3577,7 +3577,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -3670,7 +3670,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -3735,7 +3735,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
          */
         "_iconAlign"?: AlignPropType;
@@ -3773,7 +3773,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -3957,7 +3957,7 @@ declare namespace LocalJSX {
     }
     interface KolInput {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: AlertPropType;
         "_currentLength"?: number;
@@ -4037,7 +4037,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
+          * Defines whether the checkbox is checked or not. Can be read and written.
          */
         "_checked"?: CheckedPropType;
         /**
@@ -4093,7 +4093,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4185,7 +4185,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4288,7 +4288,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4407,7 +4407,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4489,7 +4489,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4596,7 +4596,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4703,7 +4703,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4782,7 +4782,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4942,7 +4942,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -4960,7 +4960,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: AlertPropType;
         /**
@@ -5053,7 +5053,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -5131,7 +5131,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: AlignPropType;
@@ -5180,7 +5180,7 @@ declare namespace LocalJSX {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -5275,7 +5275,7 @@ declare namespace LocalJSX {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -5367,7 +5367,7 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriIconProp>;
         /**
-          * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+          * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
          */
         "_iconAlign"?: AlignPropType;
@@ -5416,7 +5416,7 @@ declare namespace LocalJSX {
          */
         "_targetDescription"?: string;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -5470,7 +5470,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+          * Defines if navigation nodes can be collapsed or not. Enabled by default.
          */
         "_collapsible"?: CollapsiblePropType;
         /**
@@ -5539,7 +5539,7 @@ declare namespace LocalJSX {
          */
         "_siblingCount"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -5553,7 +5553,7 @@ declare namespace LocalJSX {
     }
     interface KolPopover {
         /**
-          * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
          */
         "_align"?: AlignPropType;
         /**
@@ -5695,7 +5695,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -5766,7 +5766,7 @@ declare namespace LocalJSX {
          */
         "_show"?: boolean;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines the variant of spin navigation.
          */
         "_variant"?: SpinVariantPropType;
     }
@@ -5847,7 +5847,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -5947,7 +5947,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+          * Adjusts the height of the element to its content.
          */
         "_adjustHeight"?: AdjustHeightPropType;
         /**
@@ -6023,7 +6023,7 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+          * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
         "_tooltipAlign"?: AlignPropType;
         /**
@@ -6076,7 +6076,7 @@ declare namespace LocalJSX {
     }
     interface KolTooltip {
         /**
-          * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
+          * Defines the alignment of the tooltip in relation to the parent element.
          */
         "_align"?: AlignPropType;
         /**

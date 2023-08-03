@@ -146,7 +146,7 @@ export class KolPopover implements KoliBriPopoverAPI {
 	}
 
 	/**
-	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 

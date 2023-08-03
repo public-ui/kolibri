@@ -103,7 +103,7 @@ export class KolInput implements Props {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop() public _alert?: AlertPropType = true;
 

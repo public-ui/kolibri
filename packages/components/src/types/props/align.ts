@@ -4,8 +4,7 @@ import { validateAlignment } from '../../utils/validators/alignment';
 
 /* types */
 /**
- * Marks the element as the selected in a group of related elements. Can be one of the following: `date` | `location` | `page` | `step` | `time` | `true`.
- *  (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+ * Defines where to show the Tooltip preferably: top, right, bottom or left.
  */
 type HorizontalAlign = 'left' | 'right';
 type VerticalAlign = 'top' | 'bottom';

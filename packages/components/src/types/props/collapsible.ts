@@ -6,7 +6,7 @@ import { watchBoolean } from '../../utils/prop.validators';
 export type CollapsiblePropType = boolean;
 
 /**
- * If set to false navigation nodes cannot be collapsed.
+ * Defines if navigation nodes can be collapsed or not.
  */
 export type PropCollapsible = {
 	collapsible: CollapsiblePropType;

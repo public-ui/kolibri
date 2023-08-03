@@ -128,7 +128,7 @@ export class KolLink implements LinkProps {
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
@@ -191,7 +191,7 @@ export class KolLink implements LinkProps {
 	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: AlignPropType = 'right';
 
