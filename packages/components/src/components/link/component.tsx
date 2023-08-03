@@ -8,7 +8,7 @@ import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
-import { validateDownload } from '../../types/props/download';
+import { DownloadPropType, validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateHref } from '../../types/props/href';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
@@ -182,9 +182,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: boolean | string = false;
+	@Prop() public _download?: DownloadPropType = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -335,7 +335,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_download')
-	public validateDownload(value?: boolean | string): void {
+	public validateDownload(value?: DownloadPropType): void {
 		validateDownload(this, value);
 	}
 

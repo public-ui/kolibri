@@ -36,6 +36,7 @@ import { W3CInputValue } from "./types/w3c";
 import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
+import { DownloadPropType } from "./types/props/download";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -85,6 +86,7 @@ export { W3CInputValue } from "./types/w3c";
 export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
+export { DownloadPropType } from "./types/props/download";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -1889,9 +1891,9 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+          * Tells the browser that the link contains a file. Optionally sets the filename.
          */
-        "_download"?: boolean | string;
+        "_download"?: DownloadPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -1999,9 +2001,9 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+          * Tells the browser that the link contains a file. Optionally sets the filename.
          */
-        "_download"?: boolean | string;
+        "_download"?: DownloadPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -2125,9 +2127,9 @@ export namespace Components {
          */
         "_disabled"?: boolean;
         /**
-          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+          * Tells the browser that the link contains a file. Optionally sets the filename.
          */
-        "_download"?: boolean | string;
+        "_download"?: DownloadPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -5113,9 +5115,9 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+          * Tells the browser that the link contains a file. Optionally sets the filename.
          */
-        "_download"?: boolean | string;
+        "_download"?: DownloadPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -5223,9 +5225,9 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+          * Tells the browser that the link contains a file. Optionally sets the filename.
          */
-        "_download"?: boolean | string;
+        "_download"?: DownloadPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -5349,9 +5351,9 @@ declare namespace LocalJSX {
          */
         "_disabled"?: boolean;
         /**
-          * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+          * Tells the browser that the link contains a file. Optionally sets the filename.
          */
-        "_download"?: boolean | string;
+        "_download"?: DownloadPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
