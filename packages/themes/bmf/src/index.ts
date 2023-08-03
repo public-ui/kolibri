@@ -2236,8 +2236,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input {
-		border: none;
+	.inputs-wrapper {
+		gap: 1em;
 	}
 	input::placeholder {
 		color: var(--color-grey);
