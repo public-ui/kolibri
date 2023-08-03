@@ -1,7 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
-import { validateHasCloser } from '../../types/props/has-closer';
+import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { validateShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
@@ -27,9 +27,9 @@ export class KolToast implements KoliBriToastAPI {
 	@Prop() public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
@@ -79,7 +79,7 @@ export class KolToast implements KoliBriToastAPI {
 	}
 
 	@Watch('_hasCloser')
-	public validateHasCloser(value?: boolean): void {
+	public validateHasCloser(value?: HasCloserPropType): void {
 		validateHasCloser(this, value);
 	}
 
