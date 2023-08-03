@@ -9,6 +9,7 @@ import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label"
 import { AlignPropType } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
+import { OpenPropType } from "./types/props/open";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 import { HasCloserPropType } from "./types/props/has-closer";
 import { ImageSourcePropType } from "./types/props/image-source";
@@ -65,6 +66,7 @@ export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label"
 export { AlignPropType } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
+export { OpenPropType } from "./types/props/open";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
 export { HasCloserPropType } from "./types/props/has-closer";
 export { ImageSourcePropType } from "./types/props/image-source";
@@ -152,9 +154,9 @@ export namespace Components {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
          */
-        "_open"?: boolean;
+        "_open"?: OpenPropType;
     }
     interface KolAlert {
         /**
@@ -3376,9 +3378,9 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
          */
-        "_open"?: boolean;
+        "_open"?: OpenPropType;
     }
     interface KolAlert {
         /**
