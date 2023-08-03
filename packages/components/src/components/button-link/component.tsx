@@ -9,6 +9,7 @@ import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
+import { IdPropType } from '../../types/props/id';
 
 @Component({
 	tag: 'kol-button-link',
@@ -113,9 +114,9 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	@Prop() public _iconOnly?: boolean;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
