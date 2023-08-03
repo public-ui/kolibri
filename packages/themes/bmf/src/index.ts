@@ -1709,8 +1709,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host kol-input > div.input input {
 		margin: 0px;
 	}
-	:host kol-input > label {
+	:host kol-input:not(.disabled) :is(.input, label) {
 		cursor: pointer;
+	}
+	:host kol-input.disabled :is(.input, label) {
+		cursor: not-allowed;
+	}
+	:host kol-input > label {
 		order: 3;
 	}
 	:host kol-input > kol-alert.error {
@@ -1732,7 +1737,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-weight: 700;
 	}
 	:host input {
-		cursor: pointer;
 		order: 1;
 		width: 100%;
 		border-color: var(--color-grey);
@@ -1766,15 +1770,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host kol-input input[type="checkbox"] {
 		appearance: none;
 		background-color: white;
-		cursor: pointer;
 		transition: 0.5s;
-	}
-	:host kol-input input[type="checkbox"].kol-disabled:before {
-		cursor: not-allowed;
 	}
 	:host kol-input input[type="checkbox"]:before {
 		content: "";
-		cursor: pointer;
 	}
 	:host kol-input input[type="checkbox"]:checked {
 		background-color: var(--color-midnight);
