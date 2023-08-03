@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateReadOnly } from '../../types/props/read-only';
+import { ReadOnlyPropType, validateReadOnly } from '../../types/props/read-only';
 import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
@@ -166,7 +166,7 @@ export class InputDateController extends InputIconController implements Watches 
 		});
 	}
 
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		validateReadOnly(this.component, value);
 	}
 

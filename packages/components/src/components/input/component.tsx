@@ -12,6 +12,7 @@ import { AlertPropType } from '../../types/props/alert';
 import { DisabledPropType } from '../../types/props/disabled';
 import { HasCounterPropType } from '../../types/props/has-counter';
 import { HideLabelPropType } from '../../types/props/hide-label';
+import { ReadOnlyPropType } from '../../types/props/read-only';
 
 /**
  * @internal
@@ -156,9 +157,9 @@ export class KolInput implements Props {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: boolean = false;
+	@Prop() public _readOnly?: ReadOnlyPropType = false;
 
 	/**
 	 * Gibt an, ob die Komponente kein Label rendern soll.

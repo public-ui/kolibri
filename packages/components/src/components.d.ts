@@ -32,6 +32,7 @@ import { Loading } from "./utils/validators/loading";
 import { AlertPropType } from "./types/props/alert";
 import { DisabledPropType } from "./types/props/disabled";
 import { HasCounterPropType } from "./types/props/has-counter";
+import { ReadOnlyPropType } from "./types/props/read-only";
 import { SuggestionsPropType } from "./types/props/suggestions";
 import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -89,6 +90,7 @@ export { Loading } from "./utils/validators/loading";
 export { AlertPropType } from "./types/props/alert";
 export { DisabledPropType } from "./types/props/disabled";
 export { HasCounterPropType } from "./types/props/has-counter";
+export { ReadOnlyPropType } from "./types/props/read-only";
 export { SuggestionsPropType } from "./types/props/suggestions";
 export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
@@ -784,9 +786,9 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Makes the input element read only.
          */
-        "_readOnly"?: boolean;
+        "_readOnly"?: ReadOnlyPropType;
         /**
           * Gibt an, ob die Komponente kein Label rendern soll.
          */
@@ -1050,9 +1052,9 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only.
          */
-        "_readOnly"?: boolean;
+        "_readOnly"?: ReadOnlyPropType;
         /**
           * Macht das Eingabeelement zu einem Pflichtfeld.
          */
@@ -4008,9 +4010,9 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Gibt an, ob das Eingabefeld nur lesend ist.
+          * Makes the input element read only.
          */
-        "_readOnly"?: boolean;
+        "_readOnly"?: ReadOnlyPropType;
         /**
           * Gibt an, ob die Komponente kein Label rendern soll.
          */
@@ -4274,9 +4276,9 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only.
          */
-        "_readOnly"?: boolean;
+        "_readOnly"?: ReadOnlyPropType;
         /**
           * Macht das Eingabeelement zu einem Pflichtfeld.
          */

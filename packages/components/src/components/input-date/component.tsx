@@ -15,6 +15,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputDateController } from './controller';
 import { ComponentApi, States } from './types';
+import { ReadOnlyPropType } from '../../types/props/read-only';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -192,9 +193,9 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: boolean;
+	@Prop() public _readOnly?: ReadOnlyPropType;
 
 	/**
 	 * Macht das Eingabeelement zu einem Pflichtfeld.
@@ -336,7 +337,7 @@ export class KolInputDate implements ComponentApi {
 	}
 
 	@Watch('_readOnly')
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		this.controller.validateReadOnly(value);
 	}
 
