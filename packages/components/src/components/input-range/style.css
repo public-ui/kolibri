@@ -4,8 +4,14 @@
 	flex-direction: row;
 	align-items: center;
 }
+.number-wrapper {
+	display: flex;
+	min-height: var(--a11y-min-size);
+}
 input[type='number'] {
 	width: 4em;
+	height: unset;
+	margin: auto;
 }
 /*
  * For Chrome and Firefox is it needed to use redundant style definitions with separate selectors. The reason is unknown.

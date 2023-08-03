@@ -103,28 +103,30 @@ export class KolInputRange implements ComponentApi {
 							{...this.controller.onFacade}
 							onChange={this.onChange}
 						/>
-						<input
-							ref={this.catchInputNumberRef}
-							title=""
-							accessKey={this.state._accessKey}
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							autoCapitalize="off"
-							autoComplete={this.state._autoComplete}
-							autoCorrect="off"
-							disabled={this.state._disabled}
-							id={this.state._id}
-							list={hasSuggestions ? `${this.state._id}-list` : undefined}
-							max={this.state._max}
-							min={this.state._min}
-							name={this.state._name ? `${this.state._name}-number` : undefined}
-							step={this.state._step}
-							type="number"
-							value={this.state._value}
-							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
-							onChange={this.onChange}
-						/>
+						<div class="number-wrapper" onClick={() => this.ref?.focus()}>
+							<input
+								ref={this.catchInputNumberRef}
+								title=""
+								accessKey={this.state._accessKey}
+								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								autoCapitalize="off"
+								autoComplete={this.state._autoComplete}
+								autoCorrect="off"
+								disabled={this.state._disabled}
+								id={this.state._id}
+								list={hasSuggestions ? `${this.state._id}-list` : undefined}
+								max={this.state._max}
+								min={this.state._min}
+								name={this.state._name ? `${this.state._name}-number` : undefined}
+								step={this.state._step}
+								type="number"
+								value={this.state._value}
+								{...this.controller.onFacade}
+								onKeyUp={this.onKeyUp}
+								onChange={this.onChange}
+							/>
+						</div>
 						<kol-tooltip
 							/**
 							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
