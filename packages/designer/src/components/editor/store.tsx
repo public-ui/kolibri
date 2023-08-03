@@ -850,6 +850,7 @@ export const components: Record<string, Component> = {
 			<KolInputCheckbox _checked _hint="Here is a hint for you!" _id="checkbox-button-4" _indeterminate _variant="button" _touched _error={ERROR_MSG}>
 				Checked (indeterminate)
 			</KolInputCheckbox>
+			<KolInputCheckbox _disabled _label="Disabled" _value={true} />
 		</div>
 	),
 	'KOL-INPUT-COLOR': () => (
