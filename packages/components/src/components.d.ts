@@ -10,6 +10,7 @@ import { AlignPropType } from "./types/props/align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+import { HasCloserPropType } from "./types/props/has-closer";
 import { ImageSourcePropType } from "./types/props/image-source";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
@@ -20,7 +21,6 @@ import { AriaCurrentPropType } from "./types/props/aria-current";
 import { StencilUnknown } from "./types/unknown";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
-import { HasCloserPropType } from "./types/props/has-closer";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
@@ -61,6 +61,7 @@ export { AlignPropType } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
+export { HasCloserPropType } from "./types/props/has-closer";
 export { ImageSourcePropType } from "./types/props/image-source";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
@@ -71,7 +72,6 @@ export { AriaCurrentPropType } from "./types/props/aria-current";
 export { StencilUnknown } from "./types/unknown";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
-export { HasCloserPropType } from "./types/props/has-closer";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
@@ -187,9 +187,9 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+          * Defines whether the element can be closed.
          */
-        "_hasCloser"?: boolean;
+        "_hasCloser"?: HasCloserPropType;
         /**
           * Defines the description of the component.
          */
@@ -2819,9 +2819,9 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+          * Defines whether the element can be closed.
          */
-        "_hasCloser"?: boolean;
+        "_hasCloser"?: HasCloserPropType;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
@@ -3411,9 +3411,9 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+          * Defines whether the element can be closed.
          */
-        "_hasCloser"?: boolean;
+        "_hasCloser"?: HasCloserPropType;
         /**
           * Defines the description of the component.
          */
@@ -6043,9 +6043,9 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+          * Defines whether the element can be closed.
          */
-        "_hasCloser"?: boolean;
+        "_hasCloser"?: HasCloserPropType;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
