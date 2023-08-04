@@ -60,6 +60,7 @@
 		"lint": "eslint src && tsc --noemit",
 		"ts-prune": "npx ts-prune src -e",
 		"start": "cross-env NODE_ENV=development stencil build --dev --serve --watch --no-open",
+		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"test": "cross-env NODE_ENV=test stencil test --spec --json --outputFile jest-test-results.json",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"postpack": "mv package.bak.json package.json",
