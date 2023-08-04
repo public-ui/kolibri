@@ -10,14 +10,13 @@ import {
 } from '../../types/button-link';
 import { API } from './types';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { IconPropType, validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
@@ -29,6 +28,7 @@ import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/c
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { watchButtonType, watchButtonVariant } from './controller';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
+import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
 
 /**
  * @internal
@@ -171,9 +171,9 @@ export class KolButtonWc implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: IconPropType;
 
 	/**
 	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
@@ -205,9 +205,9 @@ export class KolButtonWc implements API {
 	@Prop() public _name?: string;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Button-Events an.
+	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
@@ -309,7 +309,7 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: KoliBriIconProp): void {
+	public validateIcon(value?: IconPropType): void {
 		validateIcon(this, value);
 	}
 
@@ -346,12 +346,7 @@ export class KolButtonWc implements API {
 
 	@Watch('_on')
 	public validateOn(value?: KoliBriButtonCallbacks<StencilUnknown>): void {
-		if (typeof value === 'object' && value !== null) {
-			this.state = {
-				...this.state,
-				_on: value,
-			};
-		}
+		validateButtonCallbacks(this, value);
 	}
 
 	@Watch('_role')

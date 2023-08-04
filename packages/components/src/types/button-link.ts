@@ -2,7 +2,7 @@ import { Generic } from '@a11y-ui/core';
 
 import { Events } from '../enums/events';
 import { watchValidator } from '../utils/prop.validators';
-import { EventCallback, EventValueOrEventCallback } from './callbacks';
+import { EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { AlignPropType } from './props/align';
@@ -20,6 +20,7 @@ import { PropLabelWithExpertSlot } from './props/label';
 import { PropName } from './props/name';
 import { PropStealth } from './props/stealth';
 import { StencilUnknown } from './unknown';
+import { ButtonCallbacksPropType } from './props/button-callbacks';
 
 export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
 
@@ -102,10 +103,7 @@ type OptionalButtonAndLinkStates = {
 export type KoliBriButtonType = 'button' | 'reset' | 'submit';
 export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'tertiary' | 'danger' | 'ghost' | 'custom';
 
-export type KoliBriButtonCallbacks<T> = {
-	[Events.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
-	[Events.onMouseDown]?: EventCallback<MouseEvent>;
-};
+export type KoliBriButtonCallbacks<T> = ButtonCallbacksPropType<T>;
 
 export type KoliBriButtonVariantPropState = {
 	variant: KoliBriButtonVariant;

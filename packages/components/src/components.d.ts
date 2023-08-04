@@ -21,6 +21,8 @@ import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriB
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrentPropType } from "./types/props/aria-current";
 import { CustomClassPropType } from "./types/props/custom-class";
+import { IconPropType } from "./types/props/icon";
+import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
 import { IdPropType } from "./types/props/id";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
@@ -83,6 +85,8 @@ export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriB
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrentPropType } from "./types/props/aria-current";
 export { CustomClassPropType } from "./types/props/custom-class";
+export { IconPropType } from "./types/props/icon";
+export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
 export { IdPropType } from "./types/props/id";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
@@ -335,9 +339,9 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -361,9 +365,9 @@ export namespace Components {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -531,9 +535,9 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -557,9 +561,9 @@ export namespace Components {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3559,9 +3563,9 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -3585,9 +3589,9 @@ declare namespace LocalJSX {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3755,9 +3759,9 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -3781,9 +3785,9 @@ declare namespace LocalJSX {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */

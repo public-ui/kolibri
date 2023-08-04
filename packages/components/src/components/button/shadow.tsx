@@ -1,22 +1,16 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import {
-	AlternativButtonLinkRole,
-	KoliBriButtonCallbacks,
-	KoliBriButtonType,
-	KoliBriButtonVariant,
-	OptionalButtonProps,
-	RequiredButtonProps,
-} from '../../types/button-link';
+import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, OptionalButtonProps, RequiredButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
 import { CustomClassPropType } from '../../types/props/custom-class';
+import { IconPropType } from '../../types/props/icon';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 
 @Component({
 	tag: 'kol-button',
@@ -123,9 +117,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: IconPropType;
 
 	/**
 	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
@@ -156,9 +150,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _name?: string;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Button-Events an.
+	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
