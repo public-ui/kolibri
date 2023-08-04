@@ -35,7 +35,7 @@
 		"@types/react": "18.2.16",
 		"@types/react-dom": "18.2.7",
 		"@unocss/preset-mini": "0.53.6",
-		"@unocss/webpack": "0.53.6",
+		"@unocss/webpack": "0.54.1",
 		"ajv": "8.12.0",
 		"chromedriver": "114.0.3",
 		"cpy-cli": "5.0.0",
