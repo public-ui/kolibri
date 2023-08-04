@@ -20,6 +20,7 @@ import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrentPropType } from "./types/props/aria-current";
+import { CustomClassPropType } from "./types/props/custom-class";
 import { StencilUnknown } from "./types/unknown";
 import { IdPropType } from "./types/props/id";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
@@ -81,6 +82,7 @@ export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
 export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrentPropType } from "./types/props/aria-current";
+export { CustomClassPropType } from "./types/props/custom-class";
 export { StencilUnknown } from "./types/unknown";
 export { IdPropType } from "./types/props/id";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
@@ -321,9 +323,9 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -517,9 +519,9 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -3545,9 +3547,9 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -3741,9 +3743,9 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */

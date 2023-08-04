@@ -1,4 +1,3 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import {
@@ -7,12 +6,9 @@ import {
 	KoliBriButtonCallbacks,
 	KoliBriButtonType,
 	KoliBriButtonVariant,
-	OptionalButtonProps,
-	OptionalButtonStates,
-	RequiredButtonProps,
-	RequiredButtonStates,
 	watchTooltipAlignment,
 } from '../../types/button-link';
+import { API } from './types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -32,6 +28,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 import { watchButtonType, watchButtonVariant } from './controller';
+import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 
 /**
  * @internal
@@ -40,7 +37,7 @@ import { watchButtonType, watchButtonVariant } from './controller';
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates> {
+export class KolButtonWc implements API {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
 	private ref?: HTMLButtonElement;
 
@@ -159,9 +156,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -294,10 +291,8 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
 	}
 
 	@Watch('_disabled')

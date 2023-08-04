@@ -16,6 +16,7 @@ import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
+import { CustomClassPropType } from '../../types/props/custom-class';
 
 @Component({
 	tag: 'kol-button',
@@ -107,9 +108,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
