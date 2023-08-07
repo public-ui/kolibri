@@ -8,6 +8,7 @@ import { PropOptionsWithOptgroup } from '../../types/props/options';
 import { PropRows } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -34,12 +35,12 @@ type OptionalProps = {
 	 * @deprecated Use _rows instead.
 	 */
 	size: number;
-	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: Stringified<W3CInputValue[]>;
 } & PropRows &
-	PropOptionsWithOptgroup; // PropOptionsWithOptgroup becomes required with 2.0
+	PropOptionsWithOptgroup & // PropOptionsWithOptgroup becomes required with 2.0
+	PropSyncValueBySelector;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

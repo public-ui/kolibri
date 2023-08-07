@@ -11,6 +11,7 @@ import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
 import { IdPropType } from '../../types/props/id';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 
 @Component({
 	tag: 'kol-button-link',
@@ -143,7 +144,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)

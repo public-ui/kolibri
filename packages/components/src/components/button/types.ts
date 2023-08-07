@@ -18,10 +18,11 @@ import { PropCustomClass } from '../../types/props/custom-class';
 import { PropIcon } from '../../types/props/icon';
 import { PropButtonCallbacks } from '../../types/props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
-	syncValueBySelector: string;
+	syncValueBySelector: SyncValueBySelectorPropType;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
 	type: KoliBriButtonType;
@@ -60,7 +61,7 @@ export type RequiredButtonStates = PropLabelWithExpertSlot & {
 	icon: KoliBriAllIcon;
 };
 export type OptionalButtonStates = {
-	syncValueBySelector: string;
+	syncValueBySelector: SyncValueBySelectorPropType;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
 	value: StencilUnknown;

@@ -25,6 +25,7 @@ import { IconPropType } from "./types/props/icon";
 import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
 import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
+import { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
 import { IdPropType } from "./types/props/id";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -90,6 +91,7 @@ export { IconPropType } from "./types/props/icon";
 export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
 export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
+export { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
 export { IdPropType } from "./types/props/id";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -377,7 +379,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -470,7 +472,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -573,7 +575,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -893,7 +895,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -985,7 +987,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1088,7 +1090,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1207,7 +1209,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1289,7 +1291,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1396,7 +1398,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1503,7 +1505,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1582,7 +1584,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1742,7 +1744,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1853,7 +1855,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2495,7 +2497,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2647,7 +2649,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2823,7 +2825,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2868,7 +2870,7 @@ export namespace Components {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Using ShowPropType as type causes warnings in test runs ("The state/prop "_show" changed during rendering."). Needs more investigation.
          */
         "_show"?: boolean;
         /**
@@ -3601,7 +3603,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3694,7 +3696,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3797,7 +3799,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4117,7 +4119,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4209,7 +4211,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4312,7 +4314,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4431,7 +4433,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4513,7 +4515,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4620,7 +4622,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4727,7 +4729,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4806,7 +4808,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4966,7 +4968,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5077,7 +5079,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5719,7 +5721,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5871,7 +5873,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -6047,7 +6049,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -6092,7 +6094,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Using ShowPropType as type causes warnings in test runs ("The state/prop "_show" changed during rendering."). Needs more investigation.
          */
         "_show"?: boolean;
         /**

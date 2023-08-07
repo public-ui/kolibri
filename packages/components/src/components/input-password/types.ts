@@ -6,6 +6,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -30,11 +31,10 @@ type OptionalProps = {
 	 */
 	size: number;
 	smartButton: Stringified<ButtonProps>;
-	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: string;
-};
+} & PropSyncValueBySelector;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

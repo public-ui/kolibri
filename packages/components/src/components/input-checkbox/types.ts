@@ -8,6 +8,7 @@ import { PropIndeterminate } from '../../types/props/indeterminate';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 export type InputCheckboxVariant =
 	| 'button'
@@ -43,7 +44,6 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	required: boolean;
-	syncValueBySelector: string;
 	touched: boolean;
 	tabIndex: number;
 	/**
@@ -52,7 +52,8 @@ type OptionalProps = {
 	type: InputCheckboxVariant;
 	variant: InputCheckboxVariant;
 } & PropChecked &
-	PropIndeterminate;
+	PropIndeterminate &
+	PropSyncValueBySelector;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

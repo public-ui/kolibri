@@ -16,6 +16,7 @@ import { getRenderStates } from '../input/controller';
 import { InputDateController } from './controller';
 import { ComponentApi, States } from './types';
 import { ReadOnlyPropType } from '../../types/props/read-only';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -216,7 +217,7 @@ export class KolInputDate implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt die Schrittweite der Wertveränderung an.
@@ -362,7 +363,7 @@ export class KolInputDate implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

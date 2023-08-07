@@ -12,6 +12,7 @@ import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
 import { AdjustHeightPropType } from '../../types/props/adjust-height';
 import { HasCounterPropType } from '../../types/props/has-counter';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -206,7 +207,7 @@ export class KolTextarea implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -332,7 +333,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

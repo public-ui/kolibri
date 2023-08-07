@@ -6,6 +6,7 @@ import { PropHasCounter } from '../../types/props/has-counter';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropRows } from '../../types/props/rows';
 import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 
@@ -24,13 +25,13 @@ type OptionalProps = {
 	readOnly: boolean;
 	resize: CSSResize;
 	required: boolean;
-	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: string;
 } & PropAdjustHeight &
 	PropHasCounter &
-	PropRows;
+	PropRows &
+	PropSyncValueBySelector;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

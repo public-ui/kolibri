@@ -8,6 +8,7 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -26,11 +27,11 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
-	syncValueBySelector: string;
 	touched: boolean;
 	tabIndex: number;
 	value: string;
-} & PropSuggestions;
+} & PropSuggestions &
+	PropSyncValueBySelector;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

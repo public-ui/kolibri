@@ -14,6 +14,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputPasswordController } from './controller';
 import { ComponentApi, States } from './types';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -225,7 +226,7 @@ export class KolInputPassword implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -366,7 +367,7 @@ export class KolInputPassword implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

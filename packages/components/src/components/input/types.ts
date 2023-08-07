@@ -12,6 +12,7 @@ import { PropReadOnly } from '../../types/props/read-only';
 import { PropRequired } from '../../types/props/required';
 import { PropSuggestions } from '../../types/props/suggestions';
 import { PropTouched } from '../../types/props/touched';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 export type InputRequiredProps = PropLabelWithExpertSlot;
 
@@ -26,7 +27,6 @@ type OptionalProps = {
 	maxLength: number;
 	slotName: string;
 	smartButton: Stringified<ButtonProps>;
-	syncValueBySelector: string;
 } & PropAlert &
 	PropDisabled &
 	PropHasCounter &
@@ -34,6 +34,7 @@ type OptionalProps = {
 	PropReadOnly &
 	PropRequired &
 	PropSuggestions &
+	PropSyncValueBySelector &
 	PropTouched;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;

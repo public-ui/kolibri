@@ -17,6 +17,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { watchButtonType, watchButtonVariant } from '../button/controller';
 import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -208,7 +209,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.

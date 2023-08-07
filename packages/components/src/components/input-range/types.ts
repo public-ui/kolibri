@@ -7,6 +7,7 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropSuggestions } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -28,11 +29,11 @@ type OptionalProps = {
 	name: string;
 	on: InputTypeOnDefault;
 	step: number;
-	syncValueBySelector: string;
 	tabIndex: number;
 	touched: boolean;
 	value: number;
-} & PropSuggestions;
+} & PropSuggestions &
+	PropSyncValueBySelector;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

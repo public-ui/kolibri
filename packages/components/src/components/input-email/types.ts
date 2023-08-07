@@ -9,6 +9,7 @@ import { PropMultiple } from '../../types/props/multiple';
 import { PropSuggestions } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 type RequiredProps = InputRequiredProps;
 type OptionalProps = {
@@ -38,12 +39,12 @@ type OptionalProps = {
 	 */
 	size: number;
 	smartButton: Stringified<ButtonProps>;
-	syncValueBySelector: string;
 	touched: boolean;
 	tabIndex: number;
 	value: string;
 } & PropMultiple &
-	PropSuggestions;
+	PropSuggestions &
+	PropSyncValueBySelector;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {

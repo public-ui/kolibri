@@ -12,6 +12,7 @@ import { CustomClassPropType } from '../../types/props/custom-class';
 import { IconPropType } from '../../types/props/icon';
 import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 
 @Component({
 	tag: 'kol-button',
@@ -164,7 +165,7 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
