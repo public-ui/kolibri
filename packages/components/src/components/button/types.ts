@@ -12,15 +12,15 @@ import { AlignPropType } from '../../types/props/align';
 import { PropAriaCurrent } from '../../types/props/aria-current';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { Stringified } from '../../types/common';
-import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
+import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropCustomClass } from '../../types/props/custom-class';
 import { PropIcon } from '../../types/props/icon';
 import { PropButtonCallbacks } from '../../types/props/button-callbacks';
+import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
-	role: AlternativButtonLinkRole;
 	syncValueBySelector: string;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
@@ -39,7 +39,8 @@ export type OptionalButtonProps = {
 	 * @deprecated
 	 */
 	iconOnly: boolean;
-} & PropAriaControls &
+} & PropAlternativeButtonLinkRole &
+	PropAriaControls &
 	PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaLabel &
@@ -59,7 +60,6 @@ export type RequiredButtonStates = PropLabelWithExpertSlot & {
 	icon: KoliBriAllIcon;
 };
 export type OptionalButtonStates = {
-	role: AlternativButtonLinkRole;
 	syncValueBySelector: string;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
@@ -80,7 +80,8 @@ export type OptionalButtonStates = {
 	 * @deprecated
 	 */
 	iconOnly: boolean;
-} & PropAriaCurrent &
+} & PropAlternativeButtonLinkRole &
+	PropAriaCurrent &
 	PropAriaExpanded &
 	PropAriaSelected &
 	PropButtonCallbacks<StencilUnknown> &

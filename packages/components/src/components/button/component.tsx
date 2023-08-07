@@ -1,13 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import {
-	AlternativButtonLinkRole,
-	ButtonStates,
-	KoliBriButtonCallbacks,
-	KoliBriButtonType,
-	KoliBriButtonVariant,
-	watchTooltipAlignment,
-} from '../../types/button-link';
+import { ButtonStates, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { API } from './types';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
@@ -29,6 +22,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 import { watchButtonType, watchButtonVariant } from './controller';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 
 /**
  * @internal
@@ -210,9 +204,9 @@ export class KolButtonWc implements API {
 	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -350,8 +344,8 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_role')
-	public validateRole(value?: AlternativButtonLinkRole): void {
-		watchString(this, '_role', value);
+	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
+		validateAlternativeButtonLinkRole(this, value);
 	}
 
 	@Watch('_syncValueBySelector')

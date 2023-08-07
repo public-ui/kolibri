@@ -21,8 +21,7 @@ import { PropName } from './props/name';
 import { PropStealth } from './props/stealth';
 import { StencilUnknown } from './unknown';
 import { ButtonCallbacksPropType } from './props/button-callbacks';
-
-export type AlternativButtonLinkRole = 'button' | 'link' | 'tab';
+import { PropAlternativeButtonLinkRole } from './props/alternative-button-link-role';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -55,12 +54,12 @@ type OptionalButtonAndLinkProps = {
 	 * @deprecated
 	 */
 	iconOnly: boolean;
-	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
 } & PropAriaCurrent &
 	PropAriaLabel &
-	PropHideLabel;
+	PropHideLabel &
+	PropAlternativeButtonLinkRole;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
@@ -90,10 +89,10 @@ type OptionalButtonAndLinkStates = {
 	 * @deprecated
 	 */
 	iconOnly: boolean;
-	role: AlternativButtonLinkRole;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
-} & PropAriaCurrent &
+} & PropAlternativeButtonLinkRole &
+	PropAriaCurrent &
 	PropHideLabel;
 
 /**

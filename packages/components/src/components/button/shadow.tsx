@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, OptionalButtonProps, RequiredButtonProps } from '../../types/button-link';
+import { KoliBriButtonType, KoliBriButtonVariant, OptionalButtonProps, RequiredButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
@@ -11,6 +11,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { CustomClassPropType } from '../../types/props/custom-class';
 import { IconPropType } from '../../types/props/icon';
 import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 
 @Component({
 	tag: 'kol-button',
@@ -155,9 +156,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.

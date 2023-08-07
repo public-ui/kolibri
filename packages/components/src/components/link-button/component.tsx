@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { AlternativButtonLinkRole, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget } from '../../types/button-link';
+import { KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -9,6 +9,7 @@ import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
 import { DownloadPropType } from '../../types/props/download';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 
 @Component({
 	tag: 'kol-link-button',
@@ -151,9 +152,9 @@ export class KolLinkButton implements LinkProps {
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)

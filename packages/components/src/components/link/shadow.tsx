@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { AlternativButtonLinkRole, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from '../../types/button-link';
+import { LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -8,6 +8,7 @@ import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
 import { DownloadPropType } from '../../types/props/download';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 
 @Component({
 	tag: 'kol-link',
@@ -157,9 +158,9 @@ export class KolLink implements LinkProps {
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.

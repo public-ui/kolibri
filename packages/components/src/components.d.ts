@@ -17,13 +17,14 @@ import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
 import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrentPropType } from "./types/props/aria-current";
 import { CustomClassPropType } from "./types/props/custom-class";
 import { IconPropType } from "./types/props/icon";
 import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
+import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
 import { IdPropType } from "./types/props/id";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -81,13 +82,14 @@ export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
 export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrentPropType } from "./types/props/aria-current";
 export { CustomClassPropType } from "./types/props/custom-class";
 export { IconPropType } from "./types/props/icon";
 export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
+export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
 export { IdPropType } from "./types/props/id";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -369,9 +371,9 @@ export namespace Components {
          */
         "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -462,9 +464,9 @@ export namespace Components {
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -565,9 +567,9 @@ export namespace Components {
          */
         "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -1958,9 +1960,9 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -2063,9 +2065,9 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2194,9 +2196,9 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -2635,9 +2637,9 @@ export namespace Components {
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -3593,9 +3595,9 @@ declare namespace LocalJSX {
          */
         "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -3686,9 +3688,9 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -3789,9 +3791,9 @@ declare namespace LocalJSX {
          */
         "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
@@ -5182,9 +5184,9 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -5287,9 +5289,9 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5418,9 +5420,9 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -5859,9 +5861,9 @@ declare namespace LocalJSX {
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */

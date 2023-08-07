@@ -1,11 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
 import { PropLabel } from '../../types/props/label';
+import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 
 export type KoliBriSplitButtonCallback = (e: Event) => void;
 
 type RequiredProps = PropLabel;
-type OptionalProps = { icon: string; on?: { onClick: KoliBriSplitButtonCallback }; showDropdown: boolean };
+type OptionalProps = { icon: string; on?: { onClick: KoliBriSplitButtonCallback }; showDropdown: boolean } & PropAlternativeButtonLinkRole;
 
 type RequiredStates = PropLabel & { showDropdown: boolean; on: { onClick?: KoliBriSplitButtonCallback } };
 type OptionalStates = { icon: string };
