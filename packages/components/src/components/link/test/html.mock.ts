@@ -1,12 +1,12 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { LinkProps, LinkStates } from '../../../types/button-link';
+import { Props, States } from '../../link/types';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
-export const getLinkHtml = (props: LinkProps, innerHTML = ''): string => {
-	const state = mixMembers<LinkProps, LinkStates>(
+export const getLinkHtml = (props: Props, innerHTML = ''): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_href: '…', // ⚠ required
 			_hideLabel: false,

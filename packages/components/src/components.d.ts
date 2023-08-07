@@ -56,9 +56,10 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
-import { LinkOnCallbacks, LinkProps, LinkUseCase } from "./types/button-link";
+import { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
 import { LinkTargetPropType } from "./types/props/link-target";
 import { ListStyleType } from "./components/link-group/types";
+import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
 import { CollapsiblePropType } from "./types/props/collapsible";
@@ -127,9 +128,10 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
-export { LinkOnCallbacks, LinkProps, LinkUseCase } from "./types/button-link";
+export { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
 export { LinkTargetPropType } from "./types/props/link-target";
 export { ListStyleType } from "./components/link-group/types";
+export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
 export { CollapsiblePropType } from "./types/props/collapsible";

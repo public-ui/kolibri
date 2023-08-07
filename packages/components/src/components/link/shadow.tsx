@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { LinkOnCallbacks, LinkProps, LinkUseCase } from '../../types/button-link';
+import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
+import { Props as LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';

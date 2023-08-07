@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkUseCase } from '../../types/button-link';
+import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
+import { States as LinkStates } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -21,6 +22,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
+import { API } from './types';
 
 /**
  * @internal
@@ -29,7 +31,7 @@ import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-t
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements KoliBriLinkAPI {
+export class KolLinkWc implements API {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
 

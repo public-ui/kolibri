@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { LinkProps } from '../../types/button-link';
+import { Props as LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { LabelProp, PropLabel } from '../../types/props/label';
