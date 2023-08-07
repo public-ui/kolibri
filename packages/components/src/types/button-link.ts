@@ -1,7 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Events } from '../enums/events';
-import { watchValidator } from '../utils/prop.validators';
 import { EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
@@ -23,6 +22,7 @@ import { StencilUnknown } from './unknown';
 import { ButtonCallbacksPropType } from './props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from './props/alternative-button-link-role';
 import { PropTooltipAlign } from './props/tooltip-align';
+import { PropButtonType } from './props/button-type';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -100,7 +100,6 @@ type OptionalButtonAndLinkStates = {
  * Button
  * TODO: 'tertiary' instead of 'normal'
  */
-export type KoliBriButtonType = 'button' | 'reset' | 'submit';
 export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'tertiary' | 'danger' | 'ghost' | 'custom';
 
 export type KoliBriButtonCallbacks<T> = ButtonCallbacksPropType<T>;
@@ -123,19 +122,15 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	accessKey: string;
 	on: KoliBriButtonCallbacks<StencilUnknown>;
 	syncValueBySelector: string;
-	type: KoliBriButtonType;
 	value: Stringified<StencilUnknown>;
 } & PropDisabled &
 	PropId &
 	PropLabelWithExpertSlot &
-	PropName;
+	PropName &
+	PropButtonType;
 export type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-type RequiredButtonLinkStates = RequiredButtonAndLinkStates &
-	PropLabelWithExpertSlot &
-	KoliBriButtonVariantPropState & {
-		type: KoliBriButtonType;
-	};
+type RequiredButtonLinkStates = RequiredButtonAndLinkStates & PropLabelWithExpertSlot & KoliBriButtonVariantPropState & PropButtonType;
 type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 	KoliBriButtonCustomClassPropState & {
 		/**

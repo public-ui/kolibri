@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
+import { KoliBriButtonVariant } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
@@ -14,6 +14,7 @@ import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { Props } from './types';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { ButtonTypePropType } from '../../types/props/button-type';
 
 @Component({
 	tag: 'kol-button',
@@ -179,9 +180,9 @@ export class KolButton implements Props {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.

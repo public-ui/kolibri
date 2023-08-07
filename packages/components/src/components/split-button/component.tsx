@@ -1,6 +1,6 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
+import { KoliBriButtonVariant } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
@@ -13,11 +13,12 @@ import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { watchButtonType, watchButtonVariant } from '../button/controller';
+import { watchButtonVariant } from '../button/controller';
 import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -227,9 +228,9 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
@@ -344,8 +345,8 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_type')
-	public validateType(value?: KoliBriButtonType): void {
-		watchButtonType(this, '_type', value);
+	public validateType(value?: ButtonTypePropType): void {
+		validateButtonType(this, value);
 	}
 
 	@Watch('_value')

@@ -1,17 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
-import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
+import { KoliBriButtonVariant } from '../../types/button-link';
 import { watchValidator } from '../../utils/prop.validators';
-
-export const watchButtonType = (component: Generic.Element.Component, propName: string, value?: KoliBriButtonType): void => {
-	watchValidator(
-		component,
-		propName,
-		(value) => value === 'button' || value === 'reset' || value === 'submit',
-		new Set(['KoliBriButtonType {button, reset, submit}']),
-		value
-	);
-};
 
 export const watchButtonVariant = (component: Generic.Element.Component, propName: string, value?: KoliBriButtonVariant): void => {
 	watchValidator(

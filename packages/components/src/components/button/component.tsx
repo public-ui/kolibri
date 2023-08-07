@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
+import { KoliBriButtonCallbacks, KoliBriButtonVariant } from '../../types/button-link';
 import { States as ButtonStates } from '../../components/button/types';
 import { API } from './types';
 import { Stringified } from '../../types/common';
@@ -20,12 +20,13 @@ import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { watchButtonType, watchButtonVariant } from './controller';
+import { watchButtonVariant } from './controller';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
 
 /**
  * @internal
@@ -228,9 +229,9 @@ export class KolButtonWc implements API {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
@@ -367,8 +368,8 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_type')
-	public validateType(value?: KoliBriButtonType): void {
-		watchButtonType(this, '_type', value);
+	public validateType(value?: ButtonTypePropType): void {
+		validateButtonType(this, value);
 	}
 
 	@Watch('_value')

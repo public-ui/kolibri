@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { KoliBriButtonCallbacks, KoliBriButtonType, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
+import { KoliBriButtonCallbacks, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -12,6 +12,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { IdPropType } from '../../types/props/id';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { ButtonTypePropType } from '../../types/props/button-type';
 
 @Component({
 	tag: 'kol-button-link',
@@ -157,9 +158,9 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.

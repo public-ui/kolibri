@@ -12,7 +12,7 @@ import { AlignPropType } from '../../types/props/align';
 import { PropAriaCurrent } from '../../types/props/aria-current';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { Stringified } from '../../types/common';
-import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
+import { KoliBriButtonVariant } from '../../types/button-link';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropCustomClass } from '../../types/props/custom-class';
 import { PropIcon } from '../../types/props/icon';
@@ -20,11 +20,11 @@ import { PropButtonCallbacks } from '../../types/props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
+import { PropButtonType } from '../../types/props/button-type';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
 	tabIndex: number;
-	type: KoliBriButtonType;
 	value: Stringified<StencilUnknown>;
 	variant: KoliBriButtonVariant;
 	/**
@@ -46,6 +46,7 @@ export type OptionalButtonProps = {
 	PropAriaLabel &
 	PropAriaSelected &
 	PropButtonCallbacks<StencilUnknown> &
+	PropButtonType &
 	PropCustomClass &
 	PropDisabled &
 	PropHideLabel &
@@ -56,11 +57,11 @@ export type OptionalButtonProps = {
 	PropTooltipAlign;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-export type RequiredButtonStates = PropLabelWithExpertSlot & {
-	variant: KoliBriButtonVariant;
-	type: KoliBriButtonType;
-	icon: KoliBriAllIcon;
-};
+export type RequiredButtonStates = PropLabelWithExpertSlot &
+	PropButtonType & {
+		variant: KoliBriButtonVariant;
+		icon: KoliBriAllIcon;
+	};
 export type OptionalButtonStates = {
 	tabIndex: number;
 	value: StencilUnknown;

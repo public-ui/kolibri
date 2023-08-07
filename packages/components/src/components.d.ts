@@ -27,7 +27,8 @@ import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
 import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
 import { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
-import { KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { ButtonTypePropType } from "./types/props/button-type";
+import { KoliBriButtonCallbacks, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { IdPropType } from "./types/props/id";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -95,7 +96,8 @@ export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
 export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
 export { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
-export { KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { ButtonTypePropType } from "./types/props/button-type";
+export { KoliBriButtonCallbacks, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { IdPropType } from "./types/props/id";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
@@ -393,9 +395,9 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -486,9 +488,9 @@ export namespace Components {
          */
         "_tooltipAlign"?: AlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -589,9 +591,9 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -2663,9 +2665,9 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -3617,9 +3619,9 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -3710,9 +3712,9 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: AlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -3813,9 +3815,9 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -5887,9 +5889,9 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
