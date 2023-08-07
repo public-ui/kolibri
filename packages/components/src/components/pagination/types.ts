@@ -1,12 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Events } from '../../enums/events';
-import { KoliBriButtonCustomClassPropState } from '../../types/button-link';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { PropButtonVariant } from '../../types/props/button-variant';
+import { PropCustomClass } from '../../types/props/custom-class';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -48,7 +48,7 @@ type OptionalProps = {
 	pageSize: number;
 	pageSizeOptions: Stringified<number[]>;
 	siblingCount: number;
-} & KoliBriButtonCustomClassPropState &
+} & PropCustomClass &
 	PropButtonVariant &
 	PropTooltipAlign;
 
@@ -65,7 +65,7 @@ type RequiredStates = {
 	total: number;
 } & PropButtonVariant;
 
-type OptionalStates = KoliBriButtonCustomClassPropState & PropTooltipAlign;
+type OptionalStates = PropCustomClass & PropTooltipAlign;
 
 export type KoliBriPaginationStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type KoliBriPaginationAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

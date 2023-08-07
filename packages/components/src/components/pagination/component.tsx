@@ -4,11 +4,12 @@ import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
 import { nonce } from '../../utils/dev.utils';
-import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
+import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -145,9 +146,9 @@ export class KolPagination implements KoliBriPaginationAPI {
 	@Prop() public _boundaryCount?: number = 1;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
@@ -300,10 +301,8 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
 	}
 
 	@Watch('_hasButtons')

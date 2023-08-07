@@ -19,11 +19,12 @@ import { PropLabelWithExpertSlot } from './props/label';
 import { PropName } from './props/name';
 import { PropStealth } from './props/stealth';
 import { StencilUnknown } from './unknown';
-import { ButtonCallbacksPropType, PropButtonCallbacks } from './props/button-callbacks';
+import { PropButtonCallbacks } from './props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from './props/alternative-button-link-role';
 import { PropTooltipAlign } from './props/tooltip-align';
 import { PropButtonType } from './props/button-type';
 import { PropButtonVariant } from './props/button-variant';
+import { PropCustomClass } from './props/custom-class';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -98,16 +99,6 @@ type OptionalButtonAndLinkStates = {
 	PropHideLabel;
 
 /**
- * Button
- * TODO: 'tertiary' instead of 'normal'
- */
-export type KoliBriButtonCallbacks<T> = ButtonCallbacksPropType<T>;
-
-export type KoliBriButtonCustomClassPropState = {
-	customClass: string;
-};
-
-/**
  * API ButtonLink
  */
 export type RequiredButtonLinkProps = unknown;
@@ -134,7 +125,7 @@ type OptionalButtonLinkStates = {
 	accessKey: string;
 	syncValueBySelector: string;
 	value: StencilUnknown;
-} & KoliBriButtonCustomClassPropState &
+} & PropCustomClass &
 	OptionalButtonAndLinkStates &
 	PropButtonCallbacks<StencilUnknown> &
 	PropDisabled &
@@ -152,15 +143,10 @@ export type OptionalButtonProps = OptionalButtonLinkProps &
 	PropAriaSelected &
 	PropDisabled &
 	PropButtonVariant &
-	KoliBriButtonCustomClassPropState;
+	PropCustomClass;
 
 export type RequiredButtonStates = RequiredButtonLinkStates & PropButtonVariant & PropLabelWithExpertSlot;
-export type OptionalButtonStates = OptionalButtonLinkStates &
-	PropAriaControls &
-	PropAriaExpanded &
-	PropAriaSelected &
-	PropDisabled &
-	KoliBriButtonCustomClassPropState;
+export type OptionalButtonStates = OptionalButtonLinkStates & PropAriaControls & PropAriaExpanded & PropAriaSelected & PropDisabled & PropCustomClass;
 
 /* LINK */
 
