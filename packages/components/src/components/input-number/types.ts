@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputNumberType, OptionalInputProps } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';

@@ -1,7 +1,6 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { KoliBriButtonType, KoliBriButtonVariant, OptionalButtonProps, RequiredButtonProps } from '../../types/button-link';
+import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
@@ -13,6 +12,7 @@ import { IconPropType } from '../../types/props/icon';
 import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { Props } from './types';
 
 @Component({
 	tag: 'kol-button',
@@ -21,7 +21,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 	},
 	shadow: true,
 })
-export class KolButton implements Generic.Element.Members<RequiredButtonProps, OptionalButtonProps> {
+export class KolButton implements Props {
 	@Element() private readonly host?: HTMLKolButtonElement;
 	private ref?: HTMLKolButtonWcElement;
 

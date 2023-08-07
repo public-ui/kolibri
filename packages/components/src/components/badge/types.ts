@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { ColorPair, PropColor } from '../../types/props/color';

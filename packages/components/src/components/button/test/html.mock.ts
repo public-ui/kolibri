@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { ButtonProps, ButtonStates } from '../../../types/button-link';
+import { Props, States } from '../types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
@@ -9,13 +9,13 @@ type Slots = {
 };
 
 export const getButtonWcHtml = (
-	props: ButtonProps,
+	props: Props,
 	slots: Slots = {
 		expert: undefined,
 	},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<ButtonProps, ButtonStates>(
+	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
 			_label: false, // ⚠ required
@@ -60,8 +60,8 @@ export const getButtonWcHtml = (
 </kol-button-wc>`;
 };
 
-export const getButtonHtml = (props: ButtonProps): string => {
-	const state = mixMembers<ButtonProps, ButtonStates>(
+export const getButtonHtml = (props: Props): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
 			_label: false, // ⚠ required

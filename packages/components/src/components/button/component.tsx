@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { ButtonStates, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
+import { KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
+import { States as ButtonStates } from '../../components/button/types';
 import { API } from './types';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';

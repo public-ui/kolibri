@@ -160,7 +160,6 @@ export type OptionalButtonProps = OptionalButtonLinkProps &
 	PropDisabled &
 	KoliBriButtonVariantPropState &
 	KoliBriButtonCustomClassPropState;
-export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState & PropLabelWithExpertSlot;
 export type OptionalButtonStates = OptionalButtonLinkStates &
@@ -169,7 +168,6 @@ export type OptionalButtonStates = OptionalButtonLinkStates &
 	PropAriaSelected &
 	PropDisabled &
 	KoliBriButtonCustomClassPropState;
-export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 
 /* LINK */
 
