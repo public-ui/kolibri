@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { States as ButtonStates } from '../../components/button/types';
 import { API } from './types';
 import { Stringified } from '../../types/common';
@@ -343,7 +342,7 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_on')
-	public validateOn(value?: KoliBriButtonCallbacks<StencilUnknown>): void {
+	public validateOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
 		validateButtonCallbacks(this, value);
 	}
 

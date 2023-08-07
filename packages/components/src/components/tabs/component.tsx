@@ -2,7 +2,6 @@ import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { AlignPropType, validateAlign } from '../../types/props/align';
 import { LabelPropType, validateLabel } from '../../types/props/label';
@@ -11,6 +10,7 @@ import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.t
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
 import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -80,7 +80,7 @@ export class KolTabs implements KoliBriTabsAPI {
 		event.stopPropagation();
 	};
 
-	private readonly callbacks: KoliBriButtonCallbacks<number> = {
+	private readonly callbacks: ButtonCallbacksPropType<number> = {
 		onClick: this.onClickSelect,
 		onMouseDown: this.onMouseDown,
 	};
@@ -94,7 +94,7 @@ export class KolTabs implements KoliBriTabsAPI {
 						_icon={button._icon}
 						_hideLabel={button._hideLabel || button._iconOnly}
 						_label={button._label} // TODO: ariaLabel-Konzept prüfen
-						_on={this.callbacks as KoliBriButtonCallbacks<StencilUnknown>}
+						_on={this.callbacks as ButtonCallbacksPropType<StencilUnknown>}
 						_tabIndex={this.state._selected === index ? 0 : -1}
 						_tooltipAlign={button._tooltipAlign}
 						_variant={this.state._selected === index ? 'custom' : undefined}

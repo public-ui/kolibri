@@ -1,11 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
-import { KoliBriButtonCallbacks, LinkTarget } from './button-link';
+import { LinkTarget } from './button-link';
 import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';
 import { PropIcon } from './props/icon';
 import { PropLabel } from './props/label';
 import { StencilUnknown } from './unknown';
+import { PropButtonCallbacks } from './props/button-callbacks';
 
 /**
  * This types specifies the props of a link or button in navigations.
@@ -13,9 +14,7 @@ import { StencilUnknown } from './unknown';
  * Not all possible props of a link or button are relevant and supported.
  */
 
-type RequiredButtonProps = PropLabel & {
-	on: KoliBriButtonCallbacks<StencilUnknown>; // actually no value is relevant
-};
+type RequiredButtonProps = PropLabel & PropButtonCallbacks<StencilUnknown>;
 type RequiredLinkProps = PropHref;
 type RequiredTextProps = PropLabel;
 

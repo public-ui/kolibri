@@ -1,7 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { KoliBriButtonCallbacks, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
+import { OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -13,6 +13,7 @@ import { IdPropType } from '../../types/props/id';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { ButtonTypePropType } from '../../types/props/button-type';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 
 @Component({
 	tag: 'kol-button-link',
@@ -134,7 +135,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
 	 * Defines the role of the components primary element.

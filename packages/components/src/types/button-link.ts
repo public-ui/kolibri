@@ -19,7 +19,7 @@ import { PropLabelWithExpertSlot } from './props/label';
 import { PropName } from './props/name';
 import { PropStealth } from './props/stealth';
 import { StencilUnknown } from './unknown';
-import { ButtonCallbacksPropType } from './props/button-callbacks';
+import { ButtonCallbacksPropType, PropButtonCallbacks } from './props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from './props/alternative-button-link-role';
 import { PropTooltipAlign } from './props/tooltip-align';
 import { PropButtonType } from './props/button-type';
@@ -116,27 +116,28 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	 * @deprecated Zweck?!
 	 */
 	accessKey: string;
-	on: KoliBriButtonCallbacks<StencilUnknown>;
 	syncValueBySelector: string;
 	value: Stringified<StencilUnknown>;
 } & PropDisabled &
 	PropId &
 	PropLabelWithExpertSlot &
 	PropName &
-	PropButtonType;
+	PropButtonType &
+	PropButtonCallbacks<StencilUnknown>;
 export type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 type RequiredButtonLinkStates = RequiredButtonAndLinkStates & PropLabelWithExpertSlot & PropButtonVariant & PropButtonType;
-type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
-	KoliBriButtonCustomClassPropState & {
-		/**
-		 * @deprecated Zweck?!
-		 */
-		accessKey: string;
-		on: KoliBriButtonCallbacks<StencilUnknown>;
-		syncValueBySelector: string;
-		value: StencilUnknown;
-	} & PropDisabled &
+type OptionalButtonLinkStates = {
+	/**
+	 * @deprecated Zweck?!
+	 */
+	accessKey: string;
+	syncValueBySelector: string;
+	value: StencilUnknown;
+} & KoliBriButtonCustomClassPropState &
+	OptionalButtonAndLinkStates &
+	PropButtonCallbacks<StencilUnknown> &
+	PropDisabled &
 	PropId &
 	PropName;
 export type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;

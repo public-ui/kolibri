@@ -30,7 +30,6 @@ import { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selecto
 import { ButtonTypePropType } from "./types/props/button-type";
 import { ButtonVariantPropType } from "./types/props/button-variant";
 import { IdPropType } from "./types/props/id";
-import { KoliBriButtonCallbacks, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { HasFooterPropType } from "./types/props/has-footer";
@@ -57,6 +56,7 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
+import { LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -100,7 +100,6 @@ export { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selecto
 export { ButtonTypePropType } from "./types/props/button-type";
 export { ButtonVariantPropType } from "./types/props/button-variant";
 export { IdPropType } from "./types/props/id";
-export { KoliBriButtonCallbacks, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { HasFooterPropType } from "./types/props/has-footer";
@@ -127,6 +126,7 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
+export { LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -472,7 +472,7 @@ export namespace Components {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
           * Defines the role of the components primary element.
          */
@@ -3696,7 +3696,7 @@ declare namespace LocalJSX {
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
           * Defines the role of the components primary element.
          */
