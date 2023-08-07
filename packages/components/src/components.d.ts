@@ -28,8 +28,9 @@ import { StencilUnknown } from "./types/unknown";
 import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
 import { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
 import { ButtonTypePropType } from "./types/props/button-type";
-import { KoliBriButtonCallbacks, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { ButtonVariantPropType } from "./types/props/button-variant";
 import { IdPropType } from "./types/props/id";
+import { KoliBriButtonCallbacks, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { HasFooterPropType } from "./types/props/has-footer";
@@ -97,8 +98,9 @@ export { StencilUnknown } from "./types/unknown";
 export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
 export { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
 export { ButtonTypePropType } from "./types/props/button-type";
-export { KoliBriButtonCallbacks, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { ButtonVariantPropType } from "./types/props/button-variant";
 export { IdPropType } from "./types/props/id";
+export { KoliBriButtonCallbacks, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { HasFooterPropType } from "./types/props/has-footer";
@@ -403,9 +405,9 @@ export namespace Components {
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolButtonGroup {
     }
@@ -599,9 +601,9 @@ export namespace Components {
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolCard {
         /**
@@ -2093,9 +2095,9 @@ export namespace Components {
          */
         "_tooltipAlign"?: AlignPropType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolLinkGroup {
         /**
@@ -2361,9 +2363,9 @@ export namespace Components {
          */
         "_total": number;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolPopover {
         /**
@@ -2673,9 +2675,9 @@ export namespace Components {
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolSymbol {
         /**
@@ -3627,9 +3629,9 @@ declare namespace LocalJSX {
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolButtonGroup {
     }
@@ -3823,9 +3825,9 @@ declare namespace LocalJSX {
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolCard {
         /**
@@ -5317,9 +5319,9 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: AlignPropType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolLinkGroup {
         /**
@@ -5585,9 +5587,9 @@ declare namespace LocalJSX {
          */
         "_total": number;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolPopover {
         /**
@@ -5897,9 +5899,9 @@ declare namespace LocalJSX {
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolSymbol {
         /**

@@ -1,11 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Events } from '../../enums/events';
-import { KoliBriButtonCustomClassPropState, KoliBriButtonVariantPropState } from '../../types/button-link';
+import { KoliBriButtonCustomClassPropState } from '../../types/button-link';
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
+import { PropButtonVariant } from '../../types/props/button-variant';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -48,7 +49,7 @@ type OptionalProps = {
 	pageSizeOptions: Stringified<number[]>;
 	siblingCount: number;
 } & KoliBriButtonCustomClassPropState &
-	KoliBriButtonVariantPropState &
+	PropButtonVariant &
 	PropTooltipAlign;
 
 export type KoliBriPaginationProps = RequiredProps & OptionalProps;
@@ -62,7 +63,7 @@ type RequiredStates = {
 	on: KoliBriPaginationButtonCallbacks;
 	siblingCount: number;
 	total: number;
-} & KoliBriButtonVariantPropState;
+} & PropButtonVariant;
 
 type OptionalStates = KoliBriButtonCustomClassPropState & PropTooltipAlign;
 

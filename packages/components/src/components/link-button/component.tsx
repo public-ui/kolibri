@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget } from '../../types/button-link';
+import { LinkOnCallbacks, LinkProps, LinkTarget } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -10,6 +10,7 @@ import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
 import { DownloadPropType } from '../../types/props/download';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { ButtonVariantPropType } from '../../types/props/button-variant';
 
 @Component({
 	tag: 'kol-link-button',
@@ -177,7 +178,7 @@ export class KolLinkButton implements LinkProps {
 	@Prop() public _tooltipAlign?: AlignPropType = 'right';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 }

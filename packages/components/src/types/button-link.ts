@@ -23,6 +23,7 @@ import { ButtonCallbacksPropType } from './props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from './props/alternative-button-link-role';
 import { PropTooltipAlign } from './props/tooltip-align';
 import { PropButtonType } from './props/button-type';
+import { PropButtonVariant } from './props/button-variant';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -100,13 +101,8 @@ type OptionalButtonAndLinkStates = {
  * Button
  * TODO: 'tertiary' instead of 'normal'
  */
-export type KoliBriButtonVariant = 'primary' | 'secondary' | 'normal' | 'tertiary' | 'danger' | 'ghost' | 'custom';
-
 export type KoliBriButtonCallbacks<T> = ButtonCallbacksPropType<T>;
 
-export type KoliBriButtonVariantPropState = {
-	variant: KoliBriButtonVariant;
-};
 export type KoliBriButtonCustomClassPropState = {
 	customClass: string;
 };
@@ -130,7 +126,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	PropButtonType;
 export type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-type RequiredButtonLinkStates = RequiredButtonAndLinkStates & PropLabelWithExpertSlot & KoliBriButtonVariantPropState & PropButtonType;
+type RequiredButtonLinkStates = RequiredButtonAndLinkStates & PropLabelWithExpertSlot & PropButtonVariant & PropButtonType;
 type OptionalButtonLinkStates = OptionalButtonAndLinkStates &
 	KoliBriButtonCustomClassPropState & {
 		/**
@@ -154,10 +150,10 @@ export type OptionalButtonProps = OptionalButtonLinkProps &
 	PropAriaExpanded &
 	PropAriaSelected &
 	PropDisabled &
-	KoliBriButtonVariantPropState &
+	PropButtonVariant &
 	KoliBriButtonCustomClassPropState;
 
-export type RequiredButtonStates = RequiredButtonLinkStates & KoliBriButtonVariantPropState & PropLabelWithExpertSlot;
+export type RequiredButtonStates = RequiredButtonLinkStates & PropButtonVariant & PropLabelWithExpertSlot;
 export type OptionalButtonStates = OptionalButtonLinkStates &
 	PropAriaControls &
 	PropAriaExpanded &

@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriButtonCallbacks, KoliBriButtonVariant } from '../../types/button-link';
+import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { States as ButtonStates } from '../../components/button/types';
 import { API } from './types';
 import { Stringified } from '../../types/common';
@@ -20,13 +20,13 @@ import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
-import { watchButtonVariant } from './controller';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
+import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 
 /**
  * @internal
@@ -239,9 +239,9 @@ export class KolButtonWc implements API {
 	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
 		_icon: {},
@@ -379,8 +379,8 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
+	public validateVariant(value?: ButtonVariantPropType): void {
+		validateButtonVariant(this, value);
 	}
 
 	public componentWillLoad(): void {

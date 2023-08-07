@@ -12,7 +12,6 @@ import { AlignPropType } from '../../types/props/align';
 import { PropAriaCurrent } from '../../types/props/aria-current';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { Stringified } from '../../types/common';
-import { KoliBriButtonVariant } from '../../types/button-link';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropCustomClass } from '../../types/props/custom-class';
 import { PropIcon } from '../../types/props/icon';
@@ -21,12 +20,12 @@ import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-but
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { PropButtonType } from '../../types/props/button-type';
+import { PropButtonVariant } from '../../types/props/button-variant';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
 	tabIndex: number;
 	value: Stringified<StencilUnknown>;
-	variant: KoliBriButtonVariant;
 	/**
 	 * @deprecated Zweck?!
 	 */
@@ -47,6 +46,7 @@ export type OptionalButtonProps = {
 	PropAriaSelected &
 	PropButtonCallbacks<StencilUnknown> &
 	PropButtonType &
+	PropButtonVariant &
 	PropCustomClass &
 	PropDisabled &
 	PropHideLabel &
@@ -58,8 +58,8 @@ export type OptionalButtonProps = {
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonStates = PropLabelWithExpertSlot &
-	PropButtonType & {
-		variant: KoliBriButtonVariant;
+	PropButtonType &
+	PropButtonVariant & {
 		icon: KoliBriAllIcon;
 	};
 export type OptionalButtonStates = {

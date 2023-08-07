@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { KoliBriButtonVariant } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
@@ -15,6 +14,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { Props } from './types';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 import { ButtonTypePropType } from '../../types/props/button-type';
+import { ButtonVariantPropType } from '../../types/props/button-variant';
 
 @Component({
 	tag: 'kol-button',
@@ -190,7 +190,7 @@ export class KolButton implements Props {
 	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 }
