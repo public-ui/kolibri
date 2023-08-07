@@ -54,8 +54,9 @@ export class KolToast implements KoliBriToastAPI {
 
 	/**
 	 * Makes the element show up.
+	 * TODO: Using ShowPropType as type causes warnings in test runs ("The state/prop "_show" changed during rendering."). Needs more investigation.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _show?: ShowPropType = true;
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.

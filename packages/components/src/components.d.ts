@@ -2870,7 +2870,7 @@ export namespace Components {
         /**
           * Makes the element show up.
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
         /**
           * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
          */
@@ -6094,7 +6094,7 @@ declare namespace LocalJSX {
         /**
           * Makes the element show up.
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
         /**
           * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
          */
