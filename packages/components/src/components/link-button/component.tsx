@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { LinkOnCallbacks, LinkProps, LinkTarget } from '../../types/button-link';
+import { LinkOnCallbacks, LinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -11,6 +11,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { DownloadPropType } from '../../types/props/download';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
+import { LinkTargetPropType } from '../../types/props/link-target';
 
 @Component({
 	tag: 'kol-link-button',
@@ -163,9 +164,9 @@ export class KolLinkButton implements LinkProps {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.

@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase } from '../../types/button-link';
+import { KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -20,6 +20,7 @@ import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
 
 /**
  * @internal
@@ -258,9 +259,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
@@ -422,8 +423,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_target')
-	public validateTarget(value?: LinkTarget): void {
-		watchString(this, '_target', value);
+	public validateTarget(value?: LinkTargetPropType): void {
+		validateLinkTarget(this, value);
 	}
 
 	@Watch('_targetDescription')

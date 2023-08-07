@@ -25,6 +25,7 @@ import { PropTooltipAlign } from './props/tooltip-align';
 import { PropButtonType } from './props/button-type';
 import { PropButtonVariant } from './props/button-variant';
 import { PropCustomClass } from './props/custom-class';
+import { PropLinkTarget } from './props/link-target';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -157,9 +158,6 @@ export type LinkOnCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, string>;
 };
 
-// https://www.w3schools.com/tags/att_a_target.asp
-export type LinkTarget = '_blank' | '_parent' | '_self' | '_top' | string;
-
 /**
  * @deprecated Will be removed in next major release.
  */
@@ -178,7 +176,6 @@ type OptionalLinkProps = OptionalButtonAndLinkProps & {
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	selector: string;
-	target: LinkTarget;
 	targetDescription: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -187,7 +184,8 @@ type OptionalLinkProps = OptionalButtonAndLinkProps & {
 } & PropDownload &
 	PropLabelWithExpertSlot &
 	PropListenAriaCurrent &
-	PropStealth;
+	PropStealth &
+	PropLinkTarget;
 export type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalLinkProps>;
 
 type RequiredLinkStates = RequiredButtonAndLinkStates & PropHref & PropLabelWithExpertSlot;
@@ -200,7 +198,6 @@ type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
 	 */
 	selector: string;
-	target: LinkTarget;
 	targetDescription: string;
 	/**
 	 * @deprecated Das Styling sollte stets über CSS erfolgen.
@@ -208,7 +205,8 @@ type OptionalLinkStates = OptionalButtonAndLinkStates & {
 	useCase: LinkUseCase;
 } & PropDownload &
 	PropListenAriaCurrent &
-	PropStealth;
+	PropStealth &
+	PropLinkTarget;
 export type LinkStates = Generic.Element.Members<RequiredLinkStates, OptionalLinkStates>;
 export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, OptionalLinkProps, RequiredLinkStates, OptionalLinkStates>;
 

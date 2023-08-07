@@ -56,7 +56,8 @@ import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
-import { LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { LinkOnCallbacks, LinkProps, LinkUseCase } from "./types/button-link";
+import { LinkTargetPropType } from "./types/props/link-target";
 import { ListStyleType } from "./components/link-group/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
@@ -126,7 +127,8 @@ export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/opti
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
-export { LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { LinkOnCallbacks, LinkProps, LinkUseCase } from "./types/button-link";
+export { LinkTargetPropType } from "./types/props/link-target";
 export { ListStyleType } from "./components/link-group/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
@@ -1988,9 +1990,9 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -2083,9 +2085,9 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -2224,9 +2226,9 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -2327,9 +2329,9 @@ export namespace Components {
          */
         "_boundaryCount"?: number;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
@@ -5212,9 +5214,9 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -5307,9 +5309,9 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -5448,9 +5450,9 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -5551,9 +5553,9 @@ declare namespace LocalJSX {
          */
         "_boundaryCount"?: number;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
