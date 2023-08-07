@@ -5,11 +5,9 @@ import { EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
 import { AlignPropType } from './props/align';
-import { PropAriaControls } from './props/aria-controls';
 import { PropAriaCurrent, PropListenAriaCurrent } from './props/aria-current';
-import { AriaExpandedPropType, PropAriaExpanded } from './props/aria-expanded';
+import { AriaExpandedPropType } from './props/aria-expanded';
 import { PropAriaLabel } from './props/aria-label';
-import { PropAriaSelected } from './props/aria-selected';
 import { PropDisabled } from './props/disabled';
 import { PropDownload } from './props/download';
 import { PropHideLabel } from './props/hide-label';
@@ -23,9 +21,8 @@ import { PropButtonCallbacks } from './props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from './props/alternative-button-link-role';
 import { PropTooltipAlign } from './props/tooltip-align';
 import { PropButtonType } from './props/button-type';
-import { PropButtonVariant } from './props/button-variant';
-import { PropCustomClass } from './props/custom-class';
 import { PropLinkTarget } from './props/link-target';
+import { OptionalButtonProps, OptionalButtonStates, RequiredButtonProps, RequiredButtonStates } from '../components/button/types';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -118,50 +115,7 @@ export type OptionalButtonLinkProps = OptionalButtonAndLinkProps & {
 	PropButtonCallbacks<StencilUnknown>;
 export type ButtonLinkProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-type RequiredButtonLinkStates = RequiredButtonAndLinkStates & PropLabelWithExpertSlot & PropButtonVariant & PropButtonType;
-type OptionalButtonLinkStates = {
-	/**
-	 * @deprecated Zweck?!
-	 */
-	accessKey: string;
-	syncValueBySelector: string;
-	value: StencilUnknown;
-} & PropCustomClass &
-	OptionalButtonAndLinkStates &
-	PropButtonCallbacks<StencilUnknown> &
-	PropDisabled &
-	PropId &
-	PropName;
 export type ButtonLinkStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
-
-/**
- * API Button
- */
-export type RequiredButtonProps = RequiredButtonLinkProps & PropLabelWithExpertSlot;
-export type OptionalButtonProps = OptionalButtonLinkProps &
-	PropAriaControls &
-	PropAriaExpanded &
-	PropAriaSelected &
-	PropDisabled &
-	PropButtonVariant &
-	PropCustomClass;
-
-export type RequiredButtonStates = RequiredButtonLinkStates & PropButtonVariant & PropLabelWithExpertSlot;
-export type OptionalButtonStates = OptionalButtonLinkStates & PropAriaControls & PropAriaExpanded & PropAriaSelected & PropDisabled & PropCustomClass;
-
-/* LINK */
-
-/**
- * @deprecated Link should not use the on-click event. Use a button instead.
- */
-export type LinkOnCallbacks = {
-	[Events.onClick]?: EventValueOrEventCallback<Event, string>;
-};
-
-/**
- * @deprecated Will be removed in next major release.
- */
-export type LinkUseCase = 'text' | 'image' | 'nav';
 
 /**
  * API Link
@@ -220,3 +174,17 @@ export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, Opt
 // type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
 // type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 // type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
+
+/* LINK */
+
+/**
+ * @deprecated Link should not use the on-click event. Use a button instead.
+ */
+export type LinkOnCallbacks = {
+	[Events.onClick]?: EventValueOrEventCallback<Event, string>;
+};
+
+/**
+ * @deprecated Will be removed in next major release.
+ */
+export type LinkUseCase = 'text' | 'image' | 'nav';
