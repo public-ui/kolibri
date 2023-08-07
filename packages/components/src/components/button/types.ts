@@ -18,11 +18,10 @@ import { PropCustomClass } from '../../types/props/custom-class';
 import { PropIcon } from '../../types/props/icon';
 import { PropButtonCallbacks } from '../../types/props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
-	syncValueBySelector: SyncValueBySelectorPropType;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
 	type: KoliBriButtonType;
@@ -52,7 +51,8 @@ export type OptionalButtonProps = {
 	PropHideLabel &
 	PropIcon &
 	PropId &
-	PropName;
+	PropName &
+	PropSyncValueBySelector;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonStates = PropLabelWithExpertSlot & {
@@ -61,7 +61,6 @@ export type RequiredButtonStates = PropLabelWithExpertSlot & {
 	icon: KoliBriAllIcon;
 };
 export type OptionalButtonStates = {
-	syncValueBySelector: SyncValueBySelectorPropType;
 	tabIndex: number;
 	tooltipAlign: AlignPropType;
 	value: StencilUnknown;
@@ -90,7 +89,8 @@ export type OptionalButtonStates = {
 	PropDisabled &
 	PropHideLabel &
 	PropId &
-	PropName;
+	PropName &
+	PropSyncValueBySelector;
 
 export type Props = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 export type States = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
