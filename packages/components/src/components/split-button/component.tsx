@@ -1,8 +1,7 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
+import { KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
 import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
@@ -18,6 +17,7 @@ import { watchButtonType, watchButtonVariant } from '../button/controller';
 import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -224,7 +224,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
@@ -339,8 +339,8 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	@Watch('_type')

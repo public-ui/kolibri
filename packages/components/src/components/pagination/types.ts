@@ -5,7 +5,7 @@ import { KoliBriButtonCustomClassPropState, KoliBriButtonVariantPropState } from
 import { EventValueOrEventCallback } from '../../types/callbacks';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -47,9 +47,9 @@ type OptionalProps = {
 	pageSize: number;
 	pageSizeOptions: Stringified<number[]>;
 	siblingCount: number;
-	tooltipAlign: AlignPropType;
 } & KoliBriButtonCustomClassPropState &
-	KoliBriButtonVariantPropState;
+	KoliBriButtonVariantPropState &
+	PropTooltipAlign;
 
 export type KoliBriPaginationProps = RequiredProps & OptionalProps;
 
@@ -64,9 +64,7 @@ type RequiredStates = {
 	total: number;
 } & KoliBriButtonVariantPropState;
 
-type OptionalStates = {
-	tooltipAlign: AlignPropType;
-} & KoliBriButtonCustomClassPropState;
+type OptionalStates = KoliBriButtonCustomClassPropState & PropTooltipAlign;
 
 export type KoliBriPaginationStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type KoliBriPaginationAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

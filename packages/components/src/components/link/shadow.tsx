@@ -9,6 +9,7 @@ import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
 import { DownloadPropType } from '../../types/props/download';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 @Component({
 	tag: 'kol-link',
@@ -194,7 +195,7 @@ export class KolLink implements LinkProps {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

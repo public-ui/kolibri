@@ -1,8 +1,7 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchTooltipAlignment } from '../../types/button-link';
-import { AlignPropType } from '../../types/props/align';
+import { AlignPropType, validateAlign } from '../../types/props/align';
 import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
@@ -166,7 +165,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_align', value);
+		validateAlign(this, value);
 	}
 
 	@Watch('_id')

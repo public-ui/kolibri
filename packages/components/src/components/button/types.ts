@@ -19,11 +19,11 @@ import { PropIcon } from '../../types/props/icon';
 import { PropButtonCallbacks } from '../../types/props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
 	tabIndex: number;
-	tooltipAlign: AlignPropType;
 	type: KoliBriButtonType;
 	value: Stringified<StencilUnknown>;
 	variant: KoliBriButtonVariant;
@@ -52,7 +52,8 @@ export type OptionalButtonProps = {
 	PropIcon &
 	PropId &
 	PropName &
-	PropSyncValueBySelector;
+	PropSyncValueBySelector &
+	PropTooltipAlign;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
 export type RequiredButtonStates = PropLabelWithExpertSlot & {
@@ -62,7 +63,6 @@ export type RequiredButtonStates = PropLabelWithExpertSlot & {
 };
 export type OptionalButtonStates = {
 	tabIndex: number;
-	tooltipAlign: AlignPropType;
 	value: StencilUnknown;
 	/**
 	 * @deprecated Zweck?!
@@ -90,7 +90,8 @@ export type OptionalButtonStates = {
 	PropHideLabel &
 	PropId &
 	PropName &
-	PropSyncValueBySelector;
+	PropSyncValueBySelector &
+	PropTooltipAlign;
 
 export type Props = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 export type States = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;

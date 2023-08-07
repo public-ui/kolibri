@@ -13,6 +13,7 @@ import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { Props } from './types';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 @Component({
 	tag: 'kol-button',
@@ -175,7 +176,7 @@ export class KolButton implements Props {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.

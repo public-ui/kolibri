@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
+import { KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant } from '../../types/button-link';
 import { States as ButtonStates } from '../../components/button/types';
 import { API } from './types';
 import { Stringified } from '../../types/common';
@@ -25,6 +25,7 @@ import { CustomClassPropType, validateCustomClass } from '../../types/props/cust
 import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 
 /**
  * @internal
@@ -224,7 +225,7 @@ export class KolButtonWc implements API {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
@@ -361,8 +362,8 @@ export class KolButtonWc implements API {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	@Watch('_type')

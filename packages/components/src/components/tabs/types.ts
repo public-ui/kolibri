@@ -8,6 +8,7 @@ import { AlignPropType, PropAlign } from '../../types/props/align';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?:
@@ -28,8 +29,8 @@ type OptionalTabButtonProps = {
 	 * @deprecated use _hide-label
 	 */
 	iconOnly: boolean;
-	tooltipAlign: AlignPropType;
-} & PropHideLabel;
+} & PropHideLabel &
+	PropTooltipAlign;
 export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
 type RequiredProps = {

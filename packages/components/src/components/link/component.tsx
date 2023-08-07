@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
+import { KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -19,6 +19,7 @@ import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 
 /**
  * @internal
@@ -269,7 +270,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -431,8 +432,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	/**

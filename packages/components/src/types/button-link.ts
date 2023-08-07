@@ -22,6 +22,7 @@ import { PropStealth } from './props/stealth';
 import { StencilUnknown } from './unknown';
 import { ButtonCallbacksPropType } from './props/button-callbacks';
 import { PropAlternativeButtonLinkRole } from './props/alternative-button-link-role';
+import { PropTooltipAlign } from './props/tooltip-align';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -55,11 +56,11 @@ type OptionalButtonAndLinkProps = {
 	 */
 	iconOnly: boolean;
 	tabIndex: number;
-	tooltipAlign: AlignPropType;
 } & PropAriaCurrent &
 	PropAriaLabel &
 	PropHideLabel &
-	PropAlternativeButtonLinkRole;
+	PropAlternativeButtonLinkRole &
+	PropTooltipAlign;
 
 type RequiredButtonAndLinkStates = {
 	icon: KoliBriAllIcon;
@@ -243,16 +244,3 @@ export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, Opt
 // type RequiredLinkButtonStates = KoliBriButtonVariantPropState;
 // type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 // type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
-
-export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: AlignPropType): void => {
-	watchValidator(
-		component,
-		propName,
-		(value) => value === 'top' || value === 'right' || value === 'bottom' || value === 'left',
-		new Set(['Alignment {top, right, buttom, left}']),
-		value,
-		{
-			defaultValue: 'top',
-		}
-	);
-};
