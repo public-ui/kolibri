@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-import { AlignPropType } from "./types/props/align";
+import { TooltipAlignPropType } from "./types/props/tooltip-align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
 import { OpenPropType } from "./types/props/open";
@@ -22,6 +22,7 @@ import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrentPropType } from "./types/props/aria-current";
 import { CustomClassPropType } from "./types/props/custom-class";
 import { IconPropType } from "./types/props/icon";
+import { AlignPropType } from "./types/props/align";
 import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
 import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
@@ -73,7 +74,7 @@ import { AdjustHeightPropType } from "./types/props/adjust-height";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-export { AlignPropType } from "./types/props/align";
+export { TooltipAlignPropType } from "./types/props/tooltip-align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
 export { OpenPropType } from "./types/props/open";
@@ -89,6 +90,7 @@ export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrentPropType } from "./types/props/aria-current";
 export { CustomClassPropType } from "./types/props/custom-class";
 export { IconPropType } from "./types/props/icon";
+export { AlignPropType } from "./types/props/align";
 export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
 export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
@@ -153,7 +155,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolAccordion {
         /**
@@ -389,7 +391,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -585,7 +587,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -1992,7 +1994,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -2228,7 +2230,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -2351,7 +2353,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -2659,7 +2661,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -3377,7 +3379,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolAccordion {
         /**
@@ -3613,7 +3615,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -3809,7 +3811,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
@@ -5216,7 +5218,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -5452,7 +5454,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -5575,7 +5577,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
@@ -5883,7 +5885,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
          */
