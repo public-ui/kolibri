@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { PropLabel } from '../../types/props/label';
 
 type RequiredProps = unknown;
@@ -9,7 +9,7 @@ type OptionalProps = {
 	 * @deprecated Use label.
 	 */
 	title: string;
-	tooltipAlign: Align;
+	tooltipAlign: AlignPropType;
 } & PropLabel;
 
 type RequiredStates = RequiredProps & Omit<OptionalProps, 'title'>;

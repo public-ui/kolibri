@@ -3,7 +3,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { OptionsWithOptgroupPropType } from '../../types/props/options';
 import { RowsPropType } from '../../types/props/rows';
@@ -240,7 +240,7 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Defines how many rows of options should be visible at the same time.
 	 */
-	@Prop() public _rows?: number;
+	@Prop() public _rows?: RowsPropType;
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
@@ -259,9 +259,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.

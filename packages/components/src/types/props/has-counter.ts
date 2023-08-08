@@ -3,17 +3,16 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Zeigt die Zeichenanzahlanzeige am unteren Rand des EIngabefeldes.
- */
-/** en
- * Shows the the character count on the lower border of the input.
+export type HasCounterPropType = boolean;
+
+/**
+ * Shows the character count on the lower border of the input.
  */
 export type PropHasCounter = {
-	hasCounter: boolean;
+	hasCounter: HasCounterPropType;
 };
 
 /* validator */
-export const validateHasCounter = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateHasCounter = (component: Generic.Element.Component, value?: HasCounterPropType): void => {
 	watchBoolean(component, '_hasCounter', value);
 };

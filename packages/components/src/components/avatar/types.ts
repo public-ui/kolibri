@@ -1,14 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ImageSourcePropType } from '../../types/props/image-source';
-import { LabelPropType } from '../../types/props/label';
+import { PropImageSource } from '../../types/props/image-source';
+import { PropLabel } from '../../types/props/label';
 
-type RequiredAvatarProps = {
-	label: LabelPropType;
-};
-type OptionalAvatarProps = {
-	src: ImageSourcePropType;
-};
+type RequiredAvatarProps = PropLabel;
+type OptionalAvatarProps = PropImageSource;
 
 type RequiredAvatarStates = RequiredAvatarProps;
 type OptionalAvatarStates = OptionalAvatarProps;

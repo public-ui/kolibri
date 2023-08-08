@@ -8,6 +8,13 @@ import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { Props } from './types';
+import { AlertPropType } from '../../types/props/alert';
+import { DisabledPropType } from '../../types/props/disabled';
+import { HasCounterPropType } from '../../types/props/has-counter';
+import { HideLabelPropType } from '../../types/props/hide-label';
+import { ReadOnlyPropType } from '../../types/props/read-only';
+import { RequiredPropType } from '../../types/props/required';
+import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @internal
@@ -102,9 +109,9 @@ export class KolInput implements Props {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop() public _alert?: boolean = true;
+	@Prop() public _alert?: AlertPropType = true;
 
 	/**
 	 * @internal
@@ -112,9 +119,9 @@ export class KolInput implements Props {
 	@Prop() public _currentLength?: number;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -122,14 +129,14 @@ export class KolInput implements Props {
 	@Prop() public _error?: string = '';
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: HasCounterPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -152,9 +159,9 @@ export class KolInput implements Props {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt an, ob das Eingabefeld nur lesend ist.
+	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: boolean = false;
+	@Prop() public _readOnly?: ReadOnlyPropType = false;
 
 	/**
 	 * Gibt an, ob die Komponente kein Label rendern soll.
@@ -162,9 +169,9 @@ export class KolInput implements Props {
 	@Prop() public _renderNoLabel?: boolean = false;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
@@ -183,7 +190,7 @@ export class KolInput implements Props {
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
 	 */
-	@Prop() public _touched?: boolean = false;
+	@Prop() public _touched?: TouchedPropType = false;
 }

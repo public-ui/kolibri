@@ -4,7 +4,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
 import { LabelPropType, validateLabel } from '../../types/props/label';
-import { validateOpen } from '../../types/props/open';
+import { OpenPropType, validateOpen } from '../../types/props/open';
 import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { setState } from '../../utils/prop.validators';
@@ -139,9 +139,9 @@ export class KolAccordion implements API {
 	@Prop() public _on?: KoliBriAccordionCallbacks;
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
 
 	@State() public state: States = {
 		_label: '…', // ⚠ required
@@ -171,7 +171,7 @@ export class KolAccordion implements API {
 	}
 
 	@Watch('_open')
-	public validateOpen(value?: boolean): void {
+	public validateOpen(value?: OpenPropType): void {
 		validateOpen(this, value);
 	}
 

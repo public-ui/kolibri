@@ -4,6 +4,7 @@ import { watchJsonArrayString } from '../../utils/prop.validators';
 import { Stringified } from '../common';
 import { W3CInputValue } from '../w3c';
 
+/* types */
 export type SuggestionsPropType = Stringified<W3CInputValue[]>;
 
 /**

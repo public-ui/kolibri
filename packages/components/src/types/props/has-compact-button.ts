@@ -3,17 +3,20 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Erzeugt eine Schaltfläche, die _collapsible umschaltet. Nur verfügbar bei _orientation="vertical".
+/**
+ * @deprecated
  */
-/** en
+export type HasCompactButtonPropType = boolean;
+
+/**
  * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
+ * @deprecated
  */
 export type PropHasCompactButton = {
-	hasCompactButton: boolean;
+	hasCompactButton: HasCompactButtonPropType;
 };
 
 /* validator */
-export const validateHasCompactButton = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateHasCompactButton = (component: Generic.Element.Component, value?: HasCompactButtonPropType): void => {
 	watchBoolean(component, '_hasCompactButton', value);
 };

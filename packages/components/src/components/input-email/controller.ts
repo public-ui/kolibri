@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { validateMultiple } from '../../types/props/multiple';
+import { MultiplePropType, validateMultiple } from '../../types/props/multiple';
 import { InputTextEmailController } from '../input-text/controller';
 import { Props, Watches } from './types';
 
@@ -12,7 +12,7 @@ export class InputEmailController extends InputTextEmailController implements Wa
 		this.component = component;
 	}
 
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		validateMultiple(this.component, value);
 	}
 

@@ -4,11 +4,11 @@ import { translate } from '../../i18n';
 import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { validateAriaControls } from '../../types/props/aria-controls';
-import { AriaCurrent, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
+import { AriaCurrentPropType, validateAriaCurrent, validateListenAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaSelected } from '../../types/props/aria-selected';
-import { validateDownload } from '../../types/props/download';
+import { DownloadPropType, validateDownload } from '../../types/props/download';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { validateHref } from '../../types/props/href';
 import { validateIcon, watchIconAlign } from '../../types/props/icon';
@@ -151,7 +151,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 *
 	 * @deprecated use _listen-aria-current instead
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -182,9 +182,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: boolean | string = false;
+	@Prop() public _download?: DownloadPropType = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -202,11 +202,11 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Align;
+	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -222,7 +222,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
 	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrent;
+	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -266,9 +266,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'right';
+	@Prop() public _tooltipAlign?: AlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -296,7 +296,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 * @deprecated use aria-current only in state
 	 */
 	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrent): void {
+	public validateAriaCurrent(value?: AriaCurrentPropType): void {
 		validateAriaCurrent(this, value);
 	}
 
@@ -335,7 +335,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_download')
-	public validateDownload(value?: boolean | string): void {
+	public validateDownload(value?: DownloadPropType): void {
 		validateDownload(this, value);
 	}
 
@@ -358,7 +358,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	 * @deprecated
 	 */
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: Align): void {
+	public validateIconAlign(value?: AlignPropType): void {
 		watchIconAlign(this, value);
 	}
 
@@ -376,7 +376,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_listenAriaCurrent')
-	public validateListenAriaCurrent(value?: AriaCurrent): void {
+	public validateListenAriaCurrent(value?: AriaCurrentPropType): void {
 		validateListenAriaCurrent(this, value);
 	}
 
@@ -430,7 +430,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Align): void {
+	public validateTooltipAlign(value?: AlignPropType): void {
 		watchTooltipAlignment(this, '_tooltipAlign', value);
 	}
 

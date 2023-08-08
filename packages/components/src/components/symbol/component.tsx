@@ -27,7 +27,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 */
 	// TODO v2: make required
 	@Prop() public _label?: LabelPropType;
