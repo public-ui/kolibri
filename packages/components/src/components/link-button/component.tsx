@@ -2,9 +2,6 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { LinkOnCallbacks } from '../../types/button-link';
-import { Props as LinkProps } from '../link/types';
-import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
@@ -13,6 +10,11 @@ import { DownloadPropType } from '../../types/props/download';
 import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
 import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { LinkTargetPropType } from '../../types/props/link-target';
+import { Props } from './types';
+import { CustomClassPropType } from '../../types/props/custom-class';
+import { HideLabelPropType } from '../../types/props/hide-label';
+import { HrefPropType } from '../../types/props/href';
+import { IconPropType } from '../../types/props/icon';
 
 @Component({
 	tag: 'kol-link-button',
@@ -21,7 +23,7 @@ import { LinkTargetPropType } from '../../types/props/link-target';
 	},
 	shadow: true,
 })
-export class KolLinkButton implements LinkProps {
+export class KolLinkButton implements Props {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 	private ref?: HTMLKolLinkWcElement;
 
@@ -101,9 +103,9 @@ export class KolLinkButton implements LinkProps {
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -118,19 +120,19 @@ export class KolLinkButton implements LinkProps {
 	@Prop() public _download?: DownloadPropType = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the label and shows it in a Tooltip instead.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * This property is used for a link from a reference to the target URL.
 	 */
-	@Prop() public _href!: string;
+	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: IconPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.

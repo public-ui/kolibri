@@ -61,6 +61,7 @@ import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
 import { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
 import { LinkTargetPropType } from "./types/props/link-target";
+import { HrefPropType } from "./types/props/href";
 import { ListStyleType } from "./components/link-group/types";
 import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -70,7 +71,6 @@ import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 import { ShowPropType } from "./types/props/show";
 import { KoliBriProgressVariantType } from "./types/progress";
-import { HrefPropType } from "./types/props/href";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { RowsPropType } from "./types/props/rows";
 import { SpinVariantPropType } from "./types/props/variant/spin";
@@ -136,6 +136,7 @@ export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
 export { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
 export { LinkTargetPropType } from "./types/props/link-target";
+export { HrefPropType } from "./types/props/href";
 export { ListStyleType } from "./components/link-group/types";
 export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
@@ -145,7 +146,6 @@ export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
 export { ShowPropType } from "./types/props/show";
 export { KoliBriProgressVariantType } from "./types/progress";
-export { HrefPropType } from "./types/props/href";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { RowsPropType } from "./types/props/rows";
 export { SpinVariantPropType } from "./types/props/variant/spin";
@@ -2044,9 +2044,9 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
@@ -2057,17 +2057,17 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the label and shows it in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * This property is used for a link from a reference to the target URL.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -5270,9 +5270,9 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
@@ -5283,17 +5283,17 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the label and shows it in a Tooltip instead.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * This property is used for a link from a reference to the target URL.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
