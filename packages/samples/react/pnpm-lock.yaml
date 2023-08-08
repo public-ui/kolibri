@@ -50,8 +50,8 @@ devDependencies:
     specifier: 18.2.7
     version: 18.2.7
   '@unocss/preset-mini':
-    specifier: 0.53.6
-    version: 0.53.6
+    specifier: 0.54.2
+    version: 0.54.2
   '@unocss/webpack':
     specifier: 0.53.6
     version: 0.53.6(webpack@5.87.0)
@@ -1587,17 +1587,21 @@ packages:
     resolution: {integrity: sha512-wuaLjWCzKUisHUxo4pjIdzcimdSmVa2hMHA3V7wVFBiSFX96/s7l0bvhHGFF/gMjbOnvJ+y+lBl3VKqcj9kwbA==}
     dev: true
 
-  /@unocss/extractor-arbitrary-variants@0.53.6:
-    resolution: {integrity: sha512-5MQD/9pIflZT5LXFx6qFUgPuVszFj+Pyq97UPI1YH4Lf4prDpfUtR4vKrXeMQv0XFvXqKluIWovgG9c6nrpg9w==}
-    dependencies:
-      '@unocss/core': 0.53.6
+  /@unocss/core@0.54.2:
+    resolution: {integrity: sha512-PyyJOJtZ2K0BVSawAA/5X46w3Vgj/39jy+2EGKrT0KD4pbYid8oQo84OkXEEms5gAnIAAZHayGqs43zi/FRp0A==}
     dev: true
 
-  /@unocss/preset-mini@0.53.6:
-    resolution: {integrity: sha512-hUuA3Y6CSlja63EeLvRha3ftk1Xc/3YfZm8iqVk0eU0Wm/JUxejSSJs6EYB2wtOSyVJkf/kJRQtjB29bIQmYhQ==}
+  /@unocss/extractor-arbitrary-variants@0.54.2:
+    resolution: {integrity: sha512-VZ1NCwjwO5UM1HPUDZk/uDjKdb1kN4rRIPhzKJXd2N4TwIVXC/gGVwy92jE26KcoWMlWSbBzjVNLfj1yGfnTRw==}
     dependencies:
-      '@unocss/core': 0.53.6
-      '@unocss/extractor-arbitrary-variants': 0.53.6
+      '@unocss/core': 0.54.2
+    dev: true
+
+  /@unocss/preset-mini@0.54.2:
+    resolution: {integrity: sha512-56eaoO0BLtoQFt6GbenH7WFahiCImn3nvTOCSGszKWDD6TWg8pHy6fUWdk3CRludqp2snqLmmibQZxXdoxi9+g==}
+    dependencies:
+      '@unocss/core': 0.54.2
+      '@unocss/extractor-arbitrary-variants': 0.54.2
     dev: true
 
   /@unocss/webpack@0.53.6(webpack@5.87.0):
