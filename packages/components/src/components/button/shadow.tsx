@@ -73,11 +73,15 @@ export class KolButton implements Props {
 
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 *
+	 * @deprecated
 	 */
 	@Prop() public _accessKey?: string;
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @deprecated
 	 */
 	@Prop() public _ariaControls?: string;
 
@@ -90,6 +94,8 @@ export class KolButton implements Props {
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @deprecated
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
@@ -102,6 +108,8 @@ export class KolButton implements Props {
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @deprecated
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
