@@ -22,7 +22,7 @@ import { PropIcon } from '../../types/props/icon';
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-type RequiredProps = PropHref;
+export type RequiredProps = PropHref;
 export type OptionalProps = {
 	targetDescription: string;
 	tabIndex: number;

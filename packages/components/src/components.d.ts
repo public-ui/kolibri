@@ -29,7 +29,11 @@ import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-but
 import { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
 import { ButtonTypePropType } from "./types/props/button-type";
 import { ButtonVariantPropType } from "./types/props/button-variant";
+import { AriaExpandedPropType } from "./types/props/aria-expanded";
+import { AriaSelectedPropType } from "./types/props/aria-selected";
+import { DisabledPropType } from "./types/props/disabled";
 import { IdPropType } from "./types/props/id";
+import { NamePropType } from "./types/props/name";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
 import { HasFooterPropType } from "./types/props/has-footer";
@@ -38,7 +42,6 @@ import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
 import { AlertPropType } from "./types/props/alert";
-import { DisabledPropType } from "./types/props/disabled";
 import { HasCounterPropType } from "./types/props/has-counter";
 import { ReadOnlyPropType } from "./types/props/read-only";
 import { RequiredPropType } from "./types/props/required";
@@ -101,7 +104,11 @@ export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-but
 export { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
 export { ButtonTypePropType } from "./types/props/button-type";
 export { ButtonVariantPropType } from "./types/props/button-variant";
+export { AriaExpandedPropType } from "./types/props/aria-expanded";
+export { AriaSelectedPropType } from "./types/props/aria-selected";
+export { DisabledPropType } from "./types/props/disabled";
 export { IdPropType } from "./types/props/id";
+export { NamePropType } from "./types/props/name";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
 export { HasFooterPropType } from "./types/props/has-footer";
@@ -110,7 +117,6 @@ export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
 export { AlertPropType } from "./types/props/alert";
-export { DisabledPropType } from "./types/props/disabled";
 export { HasCounterPropType } from "./types/props/has-counter";
 export { ReadOnlyPropType } from "./types/props/read-only";
 export { RequiredPropType } from "./types/props/required";
@@ -323,7 +329,6 @@ export namespace Components {
         "_accessKey"?: string;
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated
          */
         "_ariaControls"?: string;
         /**
@@ -333,7 +338,6 @@ export namespace Components {
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -343,7 +347,6 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated
          */
         "_ariaSelected"?: boolean;
         /**
@@ -438,7 +441,7 @@ export namespace Components {
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
-        "_ariaExpanded"?: boolean;
+        "_ariaExpanded"?: AriaExpandedPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -447,19 +450,19 @@ export namespace Components {
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
-        "_ariaSelected"?: boolean;
+        "_ariaSelected"?: AriaSelectedPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -476,7 +479,7 @@ export namespace Components {
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -496,7 +499,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Defines either the type of the component or of the components interactive element.
          */
@@ -523,7 +526,6 @@ export namespace Components {
         "_accessKey"?: string;
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated
          */
         "_ariaControls"?: string;
         /**
@@ -533,7 +535,6 @@ export namespace Components {
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -543,7 +544,6 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated
          */
         "_ariaSelected"?: boolean;
         /**
@@ -552,7 +552,6 @@ export namespace Components {
         "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-          * @deprecated
          */
         "_disabled"?: boolean;
         /**
@@ -3556,7 +3555,6 @@ declare namespace LocalJSX {
         "_accessKey"?: string;
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated
          */
         "_ariaControls"?: string;
         /**
@@ -3566,7 +3564,6 @@ declare namespace LocalJSX {
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -3576,7 +3573,6 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated
          */
         "_ariaSelected"?: boolean;
         /**
@@ -3671,7 +3667,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
          */
-        "_ariaExpanded"?: boolean;
+        "_ariaExpanded"?: AriaExpandedPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
           * @deprecated use _label instead
@@ -3680,19 +3676,19 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
          */
-        "_ariaSelected"?: boolean;
+        "_ariaSelected"?: AriaSelectedPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -3709,7 +3705,7 @@ declare namespace LocalJSX {
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
@@ -3729,7 +3725,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Defines either the type of the component or of the components interactive element.
          */
@@ -3756,7 +3752,6 @@ declare namespace LocalJSX {
         "_accessKey"?: string;
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-          * @deprecated
          */
         "_ariaControls"?: string;
         /**
@@ -3766,7 +3761,6 @@ declare namespace LocalJSX {
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-          * @deprecated
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -3776,7 +3770,6 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-          * @deprecated
          */
         "_ariaSelected"?: boolean;
         /**
@@ -3785,7 +3778,6 @@ declare namespace LocalJSX {
         "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-          * @deprecated
          */
         "_disabled"?: boolean;
         /**

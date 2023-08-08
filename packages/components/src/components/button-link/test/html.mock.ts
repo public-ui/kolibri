@@ -1,10 +1,10 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { ButtonLinkProps, ButtonLinkStates } from '../../../types/button-link';
 import { getButtonWcHtml } from '../../button/test/html.mock';
+import { Props, States } from '../types';
 
-export const getButtonLinkHtml = (props: ButtonLinkProps): string => {
-	const state = mixMembers<ButtonLinkProps, ButtonLinkStates>(
+export const getButtonLinkHtml = (props: Props): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
 			_label: false, // ⚠ required
