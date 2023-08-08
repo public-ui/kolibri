@@ -1,5 +1,5 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
-import { KolButton, KolInputText } from '@public-ui/react';
+import React, { useLayoutEffect, useRef } from 'react';
+import { KolButton, KolForm, KolInputText } from '@public-ui/react';
 
 import { FC } from 'react';
 
@@ -13,14 +13,12 @@ export const InputTextFocus: FC = () => {
 	}, [ref]);
 
 	return (
-		<div className="grid gap-4">
-			<KolInputText ref={ref} _id="vorname">
-				Vorname
-			</KolInputText>
-			<KolInputText>Nachname</KolInputText>
+		<KolForm className="grid gap-4">
+			<KolInputText ref={ref} _id="vorname" _label="Vorname" />
+			<KolInputText _label="Nachname" />
 			<div>
 				<KolButton _label="Submit"></KolButton>
 			</div>
-		</div>
+		</KolForm>
 	);
 };
