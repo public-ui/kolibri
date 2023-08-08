@@ -514,10 +514,12 @@ export namespace Components {
     interface KolButtonWc {
         /**
           * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated
          */
         "_ariaControls"?: string;
         /**
@@ -527,6 +529,7 @@ export namespace Components {
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -536,6 +539,7 @@ export namespace Components {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated
          */
         "_ariaSelected"?: boolean;
         /**
@@ -544,6 +548,7 @@ export namespace Components {
         "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated
          */
         "_disabled"?: boolean;
         /**
@@ -3738,10 +3743,12 @@ declare namespace LocalJSX {
     interface KolButtonWc {
         /**
           * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**
           * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+          * @deprecated
          */
         "_ariaControls"?: string;
         /**
@@ -3751,6 +3758,7 @@ declare namespace LocalJSX {
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
           * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @deprecated
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -3760,6 +3768,7 @@ declare namespace LocalJSX {
         "_ariaLabel"?: string;
         /**
           * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @deprecated
          */
         "_ariaSelected"?: boolean;
         /**
@@ -3768,6 +3777,7 @@ declare namespace LocalJSX {
         "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @deprecated
          */
         "_disabled"?: boolean;
         /**
