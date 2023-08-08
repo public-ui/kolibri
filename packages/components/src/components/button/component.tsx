@@ -253,11 +253,11 @@ export class KolButtonWc implements API {
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
-		_icon: {},
+		_icon: {}, // ⚠ required
 		_label: false, // ⚠ required
 		_on: {},
-		_type: 'button',
-		_variant: 'normal',
+		_type: 'button', // ⚠ required
+		_variant: 'normal', // ⚠ required
 	};
 
 	public constructor() {

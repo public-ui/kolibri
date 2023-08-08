@@ -4,7 +4,6 @@ import { PropAriaControls } from '../../types/props/aria-controls';
 import { PropAriaExpanded } from '../../types/props/aria-expanded';
 import { PropAriaSelected } from '../../types/props/aria-selected';
 import { PropDisabled } from '../../types/props/disabled';
-import { KoliBriAllIcon } from '../../types/icon';
 import { StencilUnknown } from '../../types/unknown';
 import { PropId } from '../../types/props/id';
 import { PropName } from '../../types/props/name';
@@ -21,6 +20,7 @@ import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selecto
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
 import { PropButtonType } from '../../types/props/button-type';
 import { PropButtonVariant } from '../../types/props/button-variant';
+import { KoliBriAllIcon } from '../../types/icon';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
@@ -57,42 +57,12 @@ export type OptionalButtonProps = {
 	PropTooltipAlign;
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 
-export type RequiredButtonStates = PropLabelWithExpertSlot &
+export type RequiredButtonStates = RequiredButtonProps &
 	PropButtonType &
 	PropButtonVariant & {
 		icon: KoliBriAllIcon;
 	};
-export type OptionalButtonStates = {
-	tabIndex: number;
-	value: StencilUnknown;
-	/**
-	 * @deprecated Zweck?!
-	 */
-	accessKey: string;
-	/**
-	 * @deprecated Will be removed for all link components.
-	 */
-	ariaControls: string;
-	/**
-	 * @deprecated
-	 */
-	iconAlign: AlignPropType;
-	/**
-	 * @deprecated
-	 */
-	iconOnly: boolean;
-} & PropAlternativeButtonLinkRole &
-	PropAriaCurrent &
-	PropAriaExpanded &
-	PropAriaSelected &
-	PropButtonCallbacks<StencilUnknown> &
-	PropCustomClass &
-	PropDisabled &
-	PropHideLabel &
-	PropId &
-	PropName &
-	PropSyncValueBySelector &
-	PropTooltipAlign;
+export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProps, keyof RequiredButtonStates>;
 
 export type Props = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 export type States = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;

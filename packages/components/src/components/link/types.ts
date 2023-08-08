@@ -7,7 +7,7 @@ import { PropLinkTarget } from '../../types/props/link-target';
 import { Generic } from '@a11y-ui/core';
 import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
 import { PropTooltipAlign } from '../../types/props/tooltip-align';
-import { AriaExpandedPropType, PropAriaExpanded } from '../../types/props/aria-expanded';
+import { PropAriaExpanded } from '../../types/props/aria-expanded';
 import { AlignPropType } from '../../types/props/align';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropHideLabel } from '../../types/props/hide-label';
@@ -64,53 +64,7 @@ export type OptionalProps = {
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = PropIcon & PropHref & PropLabelWithExpertSlot;
-type OptionalStates = {
-	tabIndex: number;
-	targetDescription: string;
+type OptionalStates = Omit<RequiredProps & OptionalProps, keyof RequiredStates>;
 
-	/**
-	 * @deprecated Will be removed for all link components.
-	 */
-	ariaControls: string;
-	/**
-	 * @deprecated Will be removed for all link components.
-	 */
-	ariaExpanded: AriaExpandedPropType;
-	/**
-	 * @deprecated Will be removed for all link components.
-	 */
-	ariaSelected: boolean;
-	/**
-	 * @deprecated Will be removed for all link components.
-	 */
-	disabled: boolean;
-	/**
-	 * @deprecated
-	 */
-	iconAlign: AlignPropType;
-	/**
-	 * @deprecated
-	 */
-	iconOnly: boolean;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	selector: string;
-	/**
-	 * @deprecated Das Styling sollte stets über CSS erfolgen.
-	 */
-	useCase: LinkUseCase;
-	/**
-	 * @deprecated
-	 */
-	on: LinkOnCallbacks;
-} & PropAlternativeButtonLinkRole &
-	PropAriaCurrent &
-	PropDownload &
-	PropHideLabel &
-	PropLinkTarget &
-	PropListenAriaCurrent &
-	PropStealth &
-	PropTooltipAlign;
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -284,7 +284,7 @@ export class KolLinkWc implements API {
 
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
-		_icon: {},
+		_icon: {}, // ⚠ required
 		_label: false, // TODO: version 1
 		// _label: '', // TODO: version 2
 	};
