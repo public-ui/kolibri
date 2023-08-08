@@ -2,10 +2,10 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { handleColorChange } from '../../../types/props/color';
 import { getSpanWcHtml } from '../../span/test/html.mock';
-import { KoliBriBadgeProps, KoliBriBadgeStates } from '../types';
+import { Props, States } from '../types';
 
-export const getBadgeHtml = (props: KoliBriBadgeProps, additionalAttrs = ''): string => {
-	const state = mixMembers<KoliBriBadgeProps, KoliBriBadgeStates>(
+export const getBadgeHtml = (props: Props, additionalAttrs = ''): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_color: {
 				backgroundColor: '#000',

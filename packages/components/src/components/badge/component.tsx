@@ -7,9 +7,10 @@ import { handleColorChange, PropColor, validateColor } from '../../types/props/c
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
-import { KoliBriBadgeProps, KoliBriBadgeStates } from './types';
-import { HideLabelPropType } from '../../types/props/hide-label';
+import { objectObjectHandler, parseJson, setState, watchBoolean } from '../../utils/prop.validators';
+import { API, States } from './types';
+import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
+import { IconPropType, validateIcon } from '../../types/props/icon';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -20,7 +21,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge implements KoliBriBadgeProps {
+export class KolBadge implements API {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
@@ -88,7 +89,7 @@ export class KolBadge implements KoliBriBadgeProps {
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
-	@State() public state: KoliBriBadgeStates = {
+	@State() public state: States = {
 		_color: {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',
@@ -110,6 +111,21 @@ export class KolBadge implements KoliBriBadgeProps {
 				beforePatch: this.handleColorChange,
 			},
 		});
+	}
+
+	@Watch('_hideLabel')
+	public validateHideLabel(value?: HideLabelPropType): void {
+		validateHideLabel(this, value);
+	}
+
+	@Watch('_icon')
+	public validateIcon(value?: IconPropType): void {
+		validateIcon(this, value);
+	}
+
+	@Watch('_iconOnly')
+	public validateIconOnly(value?: boolean): void {
+		watchBoolean(this, '_iconOnly', value);
 	}
 
 	@Watch('_label')
@@ -140,6 +156,9 @@ export class KolBadge implements KoliBriBadgeProps {
 
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
+		this.validateHideLabel(this._hideLabel);
+		this.validateIcon(this._icon);
+		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateSmartButton(this._smartButton);
 	}
