@@ -1,12 +1,12 @@
 import React from 'react';
-import { KolInputText } from '@public-ui/react';
+import { KolForm, KolInputText } from '@public-ui/react';
 
 import { FC } from 'react';
 
 import { ERROR_MSG, HINT_MSG } from '../../shares/constants';
 
 export const InputTextHiddenLabel: FC = () => (
-	<div className="grid gap-4">
+	<KolForm className="grid gap-4">
 		<KolInputText
 			_id=""
 			_hint={HINT_MSG}
@@ -35,11 +35,9 @@ export const InputTextHiddenLabel: FC = () => (
 					onClick: () => {},
 				},
 			}}
-			_touched
 			_type="search"
-		>
-			Suche
-		</KolInputText>
+			_label="Suche"
+		/>
 		<KolInputText
 			_id=""
 			_error={ERROR_MSG}
@@ -53,34 +51,16 @@ export const InputTextHiddenLabel: FC = () => (
 					icon: 'codicon codicon-arrow-right',
 				},
 			}}
-			_touched
 			_type="search"
-		>
-			Suche
-		</KolInputText>
-		<KolInputText _id="" _hideLabel _placeholder="Placeholder" _required>
-			Vorname (text)
-		</KolInputText>
-		<KolInputText _id="" _placeholder="Placeholder" _type="search">
-			Suche (search)
-		</KolInputText>
-		<KolInputText _id="vorname" _placeholder="Placeholder" _error={ERROR_MSG} _touched _type="url">
-			URL (url)
-		</KolInputText>
-		<KolInputText _id="" _placeholder="Placeholder" _type="tel">
-			Telefon (tel)
-		</KolInputText>
-		<KolInputText _id="" _placeholder="Placeholder" _read-only>
-			Vorname (text, readonly)
-		</KolInputText>
-		<KolInputText _id="" _value="Value" _read-only>
-			Vorname (text, readonly)
-		</KolInputText>
-		<KolInputText _id="" _placeholder="Placeholder" _disabled>
-			Vorname (text, disabled)
-		</KolInputText>
-		<KolInputText _id="" _value="Value" _disabled>
-			Vorname (text, disabled)
-		</KolInputText>
-	</div>
+			_label="Suche"
+		/>
+		<KolInputText _id="" _hideLabel _placeholder="Placeholder" _label="Vorname (text)" _required />
+		<KolInputText _id="" _placeholder="Placeholder" _type="search" _label="Suche (search)" />
+		<KolInputText _id="vorname" _placeholder="Placeholder" _error={ERROR_MSG} _type="url" _label="URL (url)" />
+		<KolInputText _id="" _placeholder="Placeholder" _type="tel" _label="Telefon (tel)" />
+		<KolInputText _id="" _placeholder="Placeholder" _read-only _label="Vorname (text, readonly)" />
+		<KolInputText _id="" _value="Value" _read-only _label="Vorname (text, readonly)" />
+		<KolInputText _id="" _placeholder="Placeholder" _disabled _label="Vorname (text, disabled)" />
+		<KolInputText _id="" _value="Value" _disabled _label="Vorname (text, disabled)" />
+	</KolForm>
 );

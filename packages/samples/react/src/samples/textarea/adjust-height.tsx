@@ -1,5 +1,5 @@
 import React from 'react';
-import { KolTextarea } from '@public-ui/react';
+import { KolForm, KolTextarea } from '@public-ui/react';
 
 import { FC } from 'react';
 
@@ -11,16 +11,12 @@ et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea t
 sit amet.`;
 
 export const TextareaAdjustHeight: FC = () => (
-	<div className="row">
+	<KolForm className="row">
 		<div className="col-sm-6">
-			<KolTextarea _adjustHeight={true} _id="text-vertical" _resize="vertical" _value={VALUE}>
-				Texteingabe (horizontal)
-			</KolTextarea>
+			<KolTextarea _adjustHeight={true} _id="text-vertical" _resize="vertical" _value={VALUE} _label="Texteingabe (horizontal)" />
 		</div>
 		<div className="col-sm-6">
-			<KolTextarea _adjustHeight={true} _id="text-none" _resize="none" _value={VALUE}>
-				Texteingabe (none)
-			</KolTextarea>
+			<KolTextarea _adjustHeight={true} _id="text-none" _resize="none" _value={VALUE} _label="Texteingabe (none)" />
 		</div>
-	</div>
+	</KolForm>
 );
