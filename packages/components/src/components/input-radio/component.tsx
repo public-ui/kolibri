@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault, Option } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
-import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { OptionsPropType } from '../../types/props/options';
 import { StencilUnknown } from '../../types/unknown';
@@ -13,8 +12,15 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputRadioController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { DisabledPropType } from '../../types/props/disabled';
+import { HideLabelPropType } from '../../types/props/hide-label';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
+import { RequiredPropType } from '../../types/props/required';
+import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -26,7 +32,7 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 	},
 	shadow: true,
 })
-export class KolInputRadio implements ComponentApi {
+export class KolInputRadio implements API {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private ref?: HTMLInputElement;
 
@@ -146,9 +152,9 @@ export class KolInputRadio implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: DisabledPropType;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -156,9 +162,9 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: HideLabelPropType;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -166,9 +172,9 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -182,9 +188,9 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -202,9 +208,9 @@ export class KolInputRadio implements ComponentApi {
 	@Prop() public _orientation?: Orientation = 'vertical';
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: RequiredPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -220,12 +226,12 @@ export class KolInputRadio implements ComponentApi {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	/**
 	 * Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)

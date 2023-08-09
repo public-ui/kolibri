@@ -12,10 +12,9 @@ import { PropRequired } from '../../types/props/required';
 import { PropSuggestions } from '../../types/props/suggestions';
 import { PropTouched } from '../../types/props/touched';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropId } from '../../types/props/id';
 
-type RequiredProps = {
-	id: string;
-};
+type RequiredProps = PropId;
 type OptionalProps = {
 	currentLength: number;
 	error: string;

@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { RowsPropType } from '../../types/props/rows';
 import { nonce } from '../../utils/dev.utils';
@@ -13,6 +12,7 @@ import { ComponentApi, CSSResize, States } from './types';
 import { AdjustHeightPropType } from '../../types/props/adjust-height';
 import { HasCounterPropType } from '../../types/props/has-counter';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -217,7 +217,7 @@ export class KolTextarea implements ComponentApi {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.

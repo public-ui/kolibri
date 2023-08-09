@@ -6,8 +6,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { AlertPropType, validateAlert } from '../../types/props/alert';
-import { AlignPropType } from '../../types/props/align';
-import { validateHideLabel } from '../../types/props/hide-label';
+import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { featureHint } from '../../utils/a11y.tipps';
@@ -17,8 +16,16 @@ import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputTextController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { DisabledPropType } from '../../types/props/disabled';
+import { HasCounterPropType } from '../../types/props/has-counter';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
+import { ReadOnlyPropType } from '../../types/props/read-only';
+import { RequiredPropType } from '../../types/props/required';
+import { TouchedPropType } from '../../types/props/touched';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -32,7 +39,7 @@ featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 	},
 	shadow: true,
 })
-export class KolInputText implements ComponentApi {
+export class KolInputText implements API {
 	@Element() private readonly host?: HTMLKolInputTextElement;
 	private ref?: HTMLInputElement;
 	private oldValue?: string;
@@ -158,9 +165,9 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: DisabledPropType;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -168,14 +175,14 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: HasCounterPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: HideLabelPropType;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -188,9 +195,9 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -209,9 +216,9 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -229,14 +236,14 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: boolean;
+	@Prop() public _readOnly?: ReadOnlyPropType;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: RequiredPropType;
 
 	/**
 	 * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
@@ -267,12 +274,12 @@ export class KolInputText implements ComponentApi {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.

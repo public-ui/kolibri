@@ -9,6 +9,13 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropId } from '../../types/props/id';
+import { PropDisabled } from '../../types/props/disabled';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropName } from '../../types/props/name';
+import { PropReadOnly } from '../../types/props/read-only';
+import { PropRequired } from '../../types/props/required';
+import { PropTouched } from '../../types/props/touched';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -24,32 +31,32 @@ type OptionalProps = {
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
-	id: string;
 	suggestions: W3CInputValue[];
 	type: InputDateType;
-} & PropLabelWithExpertSlot;
+} & PropLabelWithExpertSlot &
+	PropId;
 
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
 	max: Iso8601;
-	name: string;
 	min: Iso8601;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	readOnly: boolean;
-	required: boolean;
 	smartButton: ButtonProps;
 	step: number;
 	tabIndex: number;
-	touched: boolean;
 	value: Iso8601 | null;
-} & PropSyncValueBySelector;
+} & PropSyncValueBySelector &
+	PropDisabled &
+	PropHideLabel &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropTouched;
 
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 

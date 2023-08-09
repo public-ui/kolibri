@@ -15,6 +15,7 @@ import { HideLabelPropType } from '../../types/props/hide-label';
 import { ReadOnlyPropType } from '../../types/props/read-only';
 import { RequiredPropType } from '../../types/props/required';
 import { TouchedPropType } from '../../types/props/touched';
+import { IdPropType } from '../../types/props/id';
 
 /**
  * @internal
@@ -149,9 +150,9 @@ export class KolInput implements Props {
 	@Prop() public _icon?: KoliBriHorizontalIcon;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id!: IdPropType;
 
 	/**
 	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.

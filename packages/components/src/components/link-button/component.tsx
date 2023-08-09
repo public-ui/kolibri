@@ -2,7 +2,6 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { LinkOnCallbacks } from '../../types/button-link';
-import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
@@ -15,6 +14,7 @@ import { CustomClassPropType } from '../../types/props/custom-class';
 import { HideLabelPropType } from '../../types/props/hide-label';
 import { HrefPropType } from '../../types/props/href';
 import { IconPropType } from '../../types/props/icon';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 @Component({
 	tag: 'kol-link-button',
@@ -179,7 +179,7 @@ export class KolLinkButton implements Props {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
 	 * Defines which variant should be used for presentation.
