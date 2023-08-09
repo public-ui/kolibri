@@ -810,6 +810,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: grid;
 		gap: var(--kolibri-spacing);
 	}
+	.msg {
+		background-color: transparent;
+	}
+	.msg > .heading {
+		place-items: flex-start;
+	}
 	.msg > .heading > kol-icon {
 		place-self: baseline;
 	}
