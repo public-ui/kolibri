@@ -4,9 +4,9 @@ import { Icofont } from '../../../types/icofont';
 import { LabelPropType } from '../../../types/props/label';
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getLinkHtml } from '../../link/test/html.mock';
-import { BreadcrumbLinkProps, KoliBriBreadcrumbProps } from '../types';
+import { BreadcrumbLinkProps, Props } from '../types';
 
-export const getBreadcrumbHtml = (props: KoliBriBreadcrumbProps): string => {
+export const getBreadcrumbHtml = (props: Props): string => {
 	const state = mixMembers(
 		{
 			_label: '…', // ⚠ required

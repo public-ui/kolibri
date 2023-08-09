@@ -654,7 +654,7 @@ export namespace Components {
         /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
-        "_open"?: boolean;
+        "_open"?: OpenPropType;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
           * @deprecated Use _label.
@@ -3880,7 +3880,7 @@ declare namespace LocalJSX {
         /**
           * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
          */
-        "_open"?: boolean;
+        "_open"?: OpenPropType;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
           * @deprecated Use _label.

@@ -15,12 +15,12 @@ type RequiredProps = {
 	links: Stringified<BreadcrumbLinkProps[]>;
 };
 type OptionalProps = PropAriaLabel & PropLabel;
-export type KoliBriBreadcrumbProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	links: BreadcrumbLinkProps[];
 } & PropLabel;
 type OptionalStates = OptionalProps;
 
-export type KoliBriBreadcrumbStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriBreadcrumbAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

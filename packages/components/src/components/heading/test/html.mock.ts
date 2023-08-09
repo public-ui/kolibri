@@ -1,15 +1,15 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { KoliBriHeadingProps, KoliBriHeadingStates } from '../types';
+import { Props, States } from '../types';
 
 export const getHeadingWcHtml = (
-	props: KoliBriHeadingProps,
+	props: Props,
 	slots: {
 		default?: string;
 	} = {},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<KoliBriHeadingProps, KoliBriHeadingStates>(
+	const state = mixMembers<Props, States>(
 		{
 			_label: false, // ⚠ required
 			_level: 1,
@@ -26,7 +26,7 @@ export const getHeadingWcHtml = (
 };
 
 export const getHeadingHtml = (
-	props: KoliBriHeadingProps,
+	props: Props,
 	slots: {
 		default?: string;
 	} = {}

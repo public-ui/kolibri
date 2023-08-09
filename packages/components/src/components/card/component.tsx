@@ -8,7 +8,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { setState } from '../../utils/prop.validators';
 import { KoliBriAlertEventCallbacks } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
-import { KoliBriCardAPI, KoliBriCardEventCallbacks, KoliBriCardStates } from './types';
+import { API, KoliBriCardEventCallbacks, States } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -23,7 +23,7 @@ import { KoliBriCardAPI, KoliBriCardEventCallbacks, KoliBriCardStates } from './
 	},
 	shadow: true,
 })
-export class KolCard implements KoliBriCardAPI {
+export class KolCard implements API {
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
@@ -109,7 +109,7 @@ export class KolCard implements KoliBriCardAPI {
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
-	@State() public state: KoliBriCardStates = {
+	@State() public state: States = {
 		_label: '…', // '⚠'
 	};
 

@@ -2,7 +2,8 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean } from '../../utils/prop.validators';
-import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
+import { API, States } from './types';
+import { OpenPropType } from '../../types/props/open';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -14,7 +15,7 @@ import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
 	},
 	shadow: true,
 })
-export class KolDetails implements KoliBriDetailsAPI {
+export class KolDetails implements API {
 	private htmlDetailsElement?: HTMLDetailsElement;
 
 	public render(): JSX.Element {
@@ -54,7 +55,7 @@ export class KolDetails implements KoliBriDetailsAPI {
 	/**
 	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
 
 	/**
 	 * Gibt die Zusammenfassung der Detailbeschreibung an.
@@ -62,7 +63,7 @@ export class KolDetails implements KoliBriDetailsAPI {
 	 */
 	@Prop() public _summary?: string;
 
-	@State() public state: KoliBriDetailsStates = {
+	@State() public state: States = {
 		_label: '…', // '⚠'
 	};
 
