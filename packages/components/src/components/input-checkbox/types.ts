@@ -7,7 +7,6 @@ import { PropChecked } from '../../types/props/checked';
 import { PropIndeterminate } from '../../types/props/indeterminate';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
-import { InputRequiredProps } from '../input/types';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 export type InputCheckboxVariant =
@@ -30,7 +29,7 @@ export type InputCheckboxIcon = {
 	unchecked: AnyIconFontClass;
 };
 
-type RequiredProps = InputRequiredProps & {
+type RequiredProps = PropLabelWithExpertSlot & {
 	value: Stringified<StencilUnknown>;
 };
 type OptionalProps = {

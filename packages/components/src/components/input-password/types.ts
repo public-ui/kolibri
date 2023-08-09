@@ -5,10 +5,9 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { InputRequiredProps } from '../input/types';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;

@@ -5,12 +5,11 @@ import { PropAdjustHeight } from '../../types/props/adjust-height';
 import { PropHasCounter } from '../../types/props/has-counter';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropRows } from '../../types/props/rows';
-import { InputRequiredProps } from '../input/types';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;

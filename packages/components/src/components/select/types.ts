@@ -7,10 +7,9 @@ import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropOptionsWithOptgroup } from '../../types/props/options';
 import { PropRows } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
-import { InputRequiredProps } from '../input/types';
 import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
