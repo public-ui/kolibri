@@ -5,7 +5,7 @@ import { KoliBriIconProp } from '../../types/icon';
 import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { validateIcon } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { KolibriSpanAPI, KolibriSpanStates } from './types';
+import { API, States } from './types';
 
 /**
  * @internal
@@ -14,7 +14,7 @@ import { KolibriSpanAPI, KolibriSpanStates } from './types';
 	tag: 'kol-span-wc',
 	shadow: false,
 })
-export class KolSpanWc implements KolibriSpanAPI {
+export class KolSpanWc implements API {
 	public render(): JSX.Element {
 		const hideExpertSlot: boolean = typeof this.state._label === 'string';
 		return (
@@ -59,7 +59,7 @@ export class KolSpanWc implements KolibriSpanAPI {
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
-	@State() public state: KolibriSpanStates = {
+	@State() public state: States = {
 		_hideLabel: false,
 		_icon: {},
 		_label: false, // ⚠ required

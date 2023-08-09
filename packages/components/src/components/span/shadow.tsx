@@ -3,7 +3,7 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { KolibriSpanProps } from './types';
+import { Props } from './types';
 import { HideLabelPropType } from '../../types/props/hide-label';
 
 @Component({
@@ -13,7 +13,7 @@ import { HideLabelPropType } from '../../types/props/hide-label';
 	},
 	shadow: true,
 })
-export class KolSpan implements KolibriSpanProps {
+export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
 			<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this._label}>

@@ -6,7 +6,7 @@ import { Option } from '../../types/input/types';
 import { nonce } from '../../utils/dev.utils';
 import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
+import { API, KoliBriPaginationButtonCallbacks, States, PaginationHasButton } from './types';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
@@ -31,7 +31,7 @@ const rightDoubleArrowIcon = {
 	},
 	shadow: true,
 })
-export class KolPagination implements KoliBriPaginationAPI {
+export class KolPagination implements API {
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
@@ -195,7 +195,7 @@ export class KolPagination implements KoliBriPaginationAPI {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@State() public state: KoliBriPaginationStates = {
+	@State() public state: States = {
 		_boundaryCount: 1,
 		_hasButtons: {
 			first: true,

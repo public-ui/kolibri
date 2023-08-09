@@ -9,7 +9,7 @@ type OptionalProps = PropLabel & {
 	 */
 	version: string;
 };
-export type KoliBriVersionProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = PropLabel;
 type OptionalStates = {
@@ -19,5 +19,5 @@ type OptionalStates = {
 	version: string;
 };
 
-export type KoliBriVersionStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriVersionAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

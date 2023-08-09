@@ -8,7 +8,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriLinkGroupAPI, KoliBriLinkGroupStates, ListStyleType } from './types';
+import { API, States, ListStyleType } from './types';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -40,7 +40,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	},
 	shadow: true,
 })
-export class KolLinkGroup implements KoliBriLinkGroupAPI {
+export class KolLinkGroup implements API {
 	public render(): JSX.Element {
 		return (
 			<nav
@@ -112,7 +112,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: KoliBriLinkGroupStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],

@@ -1,14 +1,14 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { getLinkHtml } from '../../link/test/html.mock';
-import { KoliBriQuoteProps, KoliBriQuoteStates } from '../types';
+import { Props, States } from '../types';
 
 type Slot = {
 	expert?: string;
 };
 
-export const getQuoteHtml = (props: KoliBriQuoteProps, slots: Slot = {}): string => {
-	const state = mixMembers<KoliBriQuoteProps, KoliBriQuoteStates>(
+export const getQuoteHtml = (props: Props, slots: Slot = {}): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_href: '…', // ⚠ required
 			_quote: '…', // ⚠ required

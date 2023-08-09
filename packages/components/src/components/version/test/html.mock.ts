@@ -1,9 +1,9 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { getBadgeHtml } from '../../badge/test/html.mock';
-import { KoliBriVersionProps } from '../types';
+import { Props } from '../types';
 
-export const getVersionHtml = (props: KoliBriVersionProps, additionalAttrs = ''): string => {
+export const getVersionHtml = (props: Props, additionalAttrs = ''): string => {
 	props = mixMembers(
 		{
 			_label: '0.0.0-alpha.0',

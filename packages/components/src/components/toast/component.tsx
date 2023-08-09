@@ -8,7 +8,7 @@ import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
-import { KoliBriToastAPI, KoliBriToastStates } from './types';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt der Meldung.
@@ -20,7 +20,7 @@ import { KoliBriToastAPI, KoliBriToastStates } from './types';
 	},
 	shadow: true,
 })
-export class KolToast implements KoliBriToastAPI {
+export class KolToast implements API {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
@@ -68,7 +68,7 @@ export class KolToast implements KoliBriToastAPI {
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
-	@State() public state: KoliBriToastStates = {
+	@State() public state: States = {
 		_alert: true,
 		_level: 1,
 		_show: true,

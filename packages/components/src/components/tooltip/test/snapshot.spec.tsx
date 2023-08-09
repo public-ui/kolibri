@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KoliBriTooltipProps } from '../types';
+import { Props } from '../types';
 import { getTooltipHtml } from './html.mock';
 
-executeTests<KoliBriTooltipProps>(
+executeTests<Props>(
 	'Tooltip',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({

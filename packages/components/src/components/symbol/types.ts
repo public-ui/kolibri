@@ -7,10 +7,10 @@ type RequiredProps = {
 	symbol: string;
 };
 type OptionalProps = PropAriaLabel & PropLabel;
-export type KoliBriSymbolProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = PropLabel;
 
-export type KoliBriSymbolStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriSymbolAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type Statest = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

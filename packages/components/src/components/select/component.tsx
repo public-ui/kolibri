@@ -12,9 +12,16 @@ import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { DisabledPropType } from '../../types/props/disabled';
+import { HideLabelPropType } from '../../types/props/hide-label';
+import { IdPropType } from '../../types/props/id';
+import { MultiplePropType } from '../../types/props/multiple';
+import { NamePropType } from '../../types/props/name';
+import { RequiredPropType } from '../../types/props/required';
+import { TouchedPropType } from '../../types/props/touched';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -30,7 +37,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	},
 	shadow: true,
 })
-export class KolSelect implements ComponentApi {
+export class KolSelect implements API {
 	@Element() private readonly host?: HTMLKolSelectElement;
 	private ref?: HTMLSelectElement;
 
@@ -166,9 +173,9 @@ export class KolSelect implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: DisabledPropType;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -183,9 +190,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _height?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: HideLabelPropType;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -198,9 +205,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -214,14 +221,14 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _list?: Stringified<SelectOption<W3CInputValue>[]>;
 
 	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
 	 */
-	@Prop() public _multiple?: boolean = false;
+	@Prop() public _multiple?: MultiplePropType = false;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -234,9 +241,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _options?: OptionsWithOptgroupPropType;
 
 	/**
-	 * Macht das Eingabeelementzu einem Pflichtfeld.
+	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: RequiredPropType;
 
 	/**
 	 * Defines how many rows of options should be visible at the same time.
@@ -265,9 +272,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.

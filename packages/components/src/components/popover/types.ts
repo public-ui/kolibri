@@ -5,10 +5,10 @@ import { PropShow } from '../../types/props/show';
 
 type RequiredProps = unknown;
 type OptionalProps = PropAlign & PropShow;
-export type KoliBriPopoverProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = PropAlign & PropShow & { visible: boolean };
 type OptionalStates = unknown;
-export type KoliBriPopoverStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
-export type KoliBriPopoverAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

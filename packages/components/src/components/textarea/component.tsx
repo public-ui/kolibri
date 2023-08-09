@@ -8,11 +8,18 @@ import { setState } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
-import { ComponentApi, CSSResize, States } from './types';
+import { API, CSSResize, States } from './types';
 import { AdjustHeightPropType } from '../../types/props/adjust-height';
 import { HasCounterPropType } from '../../types/props/has-counter';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { DisabledPropType } from '../../types/props/disabled';
+import { HideLabelPropType } from '../../types/props/hide-label';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
+import { ReadOnlyPropType } from '../../types/props/read-only';
+import { RequiredPropType } from '../../types/props/required';
+import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -37,7 +44,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	},
 	shadow: true,
 })
-export class KolTextarea implements ComponentApi {
+export class KolTextarea implements API {
 	@Element() private readonly host?: HTMLKolTextareaElement;
 	private ref?: HTMLTextAreaElement;
 
@@ -129,9 +136,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean;
+	@Prop() public _disabled?: DisabledPropType;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -144,9 +151,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _hasCounter?: HasCounterPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
 	 */
-	@Prop() public _hideLabel?: boolean;
+	@Prop() public _hideLabel?: HideLabelPropType;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -154,9 +161,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -169,9 +176,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -184,9 +191,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: boolean;
+	@Prop() public _readOnly?: ReadOnlyPropType;
 
 	/**
 	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
@@ -194,9 +201,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _resize?: CSSResize = 'vertical';
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean;
+	@Prop() public _required?: RequiredPropType;
 
 	/**
 	 * Defines how many rows of text should be visible at the same time.
@@ -220,9 +227,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.

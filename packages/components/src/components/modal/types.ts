@@ -20,5 +20,5 @@ type OptionalStates = {
 	on: KoliBriModalEventCallbacks;
 };
 
-export type KoliBriModalStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriModalAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

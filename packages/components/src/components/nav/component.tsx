@@ -11,7 +11,7 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
-import { KoliBriNavAPI, KoliBriNavStates } from './types';
+import { API, States } from './types';
 import { watchNavLinks } from './validation';
 
 /**
@@ -60,7 +60,7 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	},
 	shadow: true,
 })
-export class KolNav implements KoliBriNavAPI {
+export class KolNav implements API {
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
@@ -259,7 +259,7 @@ export class KolNav implements KoliBriNavAPI {
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
-	@State() public state: KoliBriNavStates = {
+	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_collapsible: true,
 		_hasCompactButton: false,

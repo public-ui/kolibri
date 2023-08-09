@@ -15,5 +15,5 @@ type RequiredStates = {
 } & PropLabel;
 type OptionalStates = OptionalProps;
 
-export type KoliBriSkipNavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriSkipNavAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -2449,9 +2449,9 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
@@ -2462,9 +2462,9 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Gibt den Hinweistext an.
          */
@@ -2474,9 +2474,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -2487,13 +2487,13 @@ export namespace Components {
          */
         "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs.
          */
-        "_multiple"?: boolean;
+        "_multiple"?: MultiplePropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -2503,9 +2503,9 @@ export namespace Components {
          */
         "_options"?: OptionsWithOptgroupPropType;
         /**
-          * Macht das Eingabeelementzu einem Pflichtfeld.
+          * Makes the input element required.
          */
-        "_required"?: boolean;
+        "_required"?: RequiredPropType;
         /**
           * Defines how many rows of options should be visible at the same time.
          */
@@ -2527,9 +2527,9 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user.
          */
-        "_touched"?: boolean;
+        "_touched"?: TouchedPropType;
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
@@ -2783,9 +2783,9 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
@@ -2795,17 +2795,17 @@ export namespace Components {
          */
         "_hasCounter"?: HasCounterPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -2815,9 +2815,9 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -2827,13 +2827,13 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only.
          */
-        "_readOnly"?: boolean;
+        "_readOnly"?: ReadOnlyPropType;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required.
          */
-        "_required"?: boolean;
+        "_required"?: RequiredPropType;
         /**
           * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
          */
@@ -2855,9 +2855,9 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user.
          */
-        "_touched"?: boolean;
+        "_touched"?: TouchedPropType;
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
@@ -5675,9 +5675,9 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
@@ -5688,9 +5688,9 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Gibt den Hinweistext an.
          */
@@ -5700,9 +5700,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5713,13 +5713,13 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs.
          */
-        "_multiple"?: boolean;
+        "_multiple"?: MultiplePropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -5729,9 +5729,9 @@ declare namespace LocalJSX {
          */
         "_options"?: OptionsWithOptgroupPropType;
         /**
-          * Macht das Eingabeelementzu einem Pflichtfeld.
+          * Makes the input element required.
          */
-        "_required"?: boolean;
+        "_required"?: RequiredPropType;
         /**
           * Defines how many rows of options should be visible at the same time.
          */
@@ -5753,9 +5753,9 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user.
          */
-        "_touched"?: boolean;
+        "_touched"?: TouchedPropType;
         /**
           * Gibt den Wert des Eingabefeldes an.
          */
@@ -6009,9 +6009,9 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events.
          */
-        "_disabled"?: boolean;
+        "_disabled"?: DisabledPropType;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
@@ -6021,17 +6021,17 @@ declare namespace LocalJSX {
          */
         "_hasCounter"?: HasCounterPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label.
          */
-        "_hideLabel"?: boolean;
+        "_hideLabel"?: HideLabelPropType;
         /**
           * Gibt den Hinweistext an.
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -6041,9 +6041,9 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -6053,13 +6053,13 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only.
          */
-        "_readOnly"?: boolean;
+        "_readOnly"?: ReadOnlyPropType;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required.
          */
-        "_required"?: boolean;
+        "_required"?: RequiredPropType;
         /**
           * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
          */
@@ -6081,9 +6081,9 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user.
          */
-        "_touched"?: boolean;
+        "_touched"?: TouchedPropType;
         /**
           * Gibt den Wert des Eingabefeldes an.
          */

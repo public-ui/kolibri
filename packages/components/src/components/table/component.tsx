@@ -11,7 +11,7 @@ import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import {
 	KoliBriSortDirection,
 	KoliBriSortFunction,
-	KoliBriTableAPI,
+	API,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -20,7 +20,7 @@ import {
 	KoliBriTablePaginationProps,
 	KoliBriTableRender,
 	KoliBriTableSelectedHead,
-	KoliBriTableStates,
+	States,
 } from './types';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -34,7 +34,7 @@ const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	},
 	shadow: true,
 })
-export class KolTable implements KoliBriTableAPI {
+export class KolTable implements API {
 	private horizontal = true;
 	private sortFunction?: KoliBriSortFunction;
 	private sortDirections: Map<KoliBriSortFunction, KoliBriSortDirection> = new Map();
@@ -82,7 +82,7 @@ export class KolTable implements KoliBriTableAPI {
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
-	@State() public state: KoliBriTableStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_data: [],
 		_dataFoot: [],

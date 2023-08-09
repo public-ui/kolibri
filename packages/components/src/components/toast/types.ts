@@ -21,10 +21,10 @@ type OptionalProps = {
 } & PropHasCloser &
 	PropShow &
 	PropLabel;
-export type KoliBriToastProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 
-export type KoliBriToastStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriToastAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

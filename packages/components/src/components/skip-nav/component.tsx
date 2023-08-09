@@ -4,7 +4,7 @@ import { Props as LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-skip-nav',
@@ -13,7 +13,7 @@ import { KoliBriSkipNavAPI, KoliBriSkipNavStates } from './types';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements KoliBriSkipNavAPI {
+export class KolSkipNav implements API {
 	public render(): JSX.Element {
 		return (
 			<nav aria-label={this.state._label}>
@@ -47,7 +47,7 @@ export class KolSkipNav implements KoliBriSkipNavAPI {
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 
-	@State() public state: KoliBriSkipNavStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_links: [],
 	};

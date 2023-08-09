@@ -2,7 +2,7 @@ import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/
 
 import { translate } from '../../i18n';
 import { SpinVariantPropType, validateSpinVariant } from '../../types/props/variant/spin';
-import { KoliBriSpinAPI, KoliBriSpinStates } from './types';
+import { API, States } from './types';
 import { ShowPropType, validateShow } from '../../types/props/show';
 
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
@@ -30,7 +30,7 @@ function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	},
 	shadow: true,
 })
-export class KolSpin implements KoliBriSpinAPI {
+export class KolSpin implements API {
 	private showToggled = false;
 
 	public render(): JSX.Element {
@@ -67,7 +67,7 @@ export class KolSpin implements KoliBriSpinAPI {
 	 */
 	@Prop() public _variant?: SpinVariantPropType = 'dot';
 
-	@State() public state: KoliBriSpinStates = {
+	@State() public state: States = {
 		_variant: 'dot',
 	};
 

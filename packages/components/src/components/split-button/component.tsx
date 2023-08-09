@@ -12,7 +12,7 @@ import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
+import { API, States, KoliBriSplitButtonCallback } from './types';
 import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
@@ -29,7 +29,7 @@ import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/
 	},
 	shadow: true,
 })
-export class KolSplitButton implements KoliBriSplitButtonAPI {
+export class KolSplitButton implements API {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
@@ -241,7 +241,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	 */
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@State() public state: KoliBriSplitButtonAStates = {
+	@State() public state: States = {
 		_icon: '',
 		_label: '',
 		_on: {},

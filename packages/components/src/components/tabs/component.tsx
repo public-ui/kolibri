@@ -9,7 +9,7 @@ import { StencilUnknown } from '../../types/unknown';
 import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
 import { Log } from '../../utils/dev.utils';
 import { koliBriQuerySelector, setState, watchJsonArrayString, watchNumber } from '../../utils/prop.validators';
-import { KoliBriTabsAPI, KoliBriTabsCallbacks, KoliBriTabsStates, TabButtonProps } from './types';
+import { API, KoliBriTabsCallbacks, States, TabButtonProps } from './types';
 import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
@@ -21,7 +21,7 @@ import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 	},
 	shadow: true,
 })
-export class KolTabs implements KoliBriTabsAPI {
+export class KolTabs implements API {
 	@Element() private readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
@@ -181,7 +181,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	 */
 	@Prop() public _tabsAlign?: AlignPropType = 'top';
 
-	@State() public state: KoliBriTabsStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_label: '…', // ⚠ required
 		_selected: 0,

@@ -7,14 +7,14 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
 import { processEnv } from '../../utils/reuse';
-import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-tooltip',
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolTooltip implements KoliBriTooltipAPI {
+export class KolTooltip implements API {
 	private previousSibling?: HTMLElement | null;
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
@@ -157,7 +157,7 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: KoliBriTooltipStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required
