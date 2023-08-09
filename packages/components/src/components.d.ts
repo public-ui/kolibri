@@ -652,9 +652,9 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Type should be `OpenPropType, currently blocked by <https://github.com/ionic-team/stencil/issues/4663>
          */
-        "_open"?: OpenPropType;
+        "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
           * @deprecated Use _label.
@@ -2890,7 +2890,7 @@ export namespace Components {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up. TODO: Using ShowPropType as type causes warnings in test runs ("The state/prop "_show" changed during rendering."). Needs more investigation.
+          * Makes the element show up. TODO: Type should be `ShowPropType, currently blocked by <https://github.com/ionic-team/stencil/issues/4663>
          */
         "_show"?: boolean;
         /**
@@ -3878,9 +3878,9 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Type should be `OpenPropType, currently blocked by <https://github.com/ionic-team/stencil/issues/4663>
          */
-        "_open"?: OpenPropType;
+        "_open"?: boolean;
         /**
           * Gibt die Zusammenfassung der Detailbeschreibung an.
           * @deprecated Use _label.
@@ -6116,7 +6116,7 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up. TODO: Using ShowPropType as type causes warnings in test runs ("The state/prop "_show" changed during rendering."). Needs more investigation.
+          * Makes the element show up. TODO: Type should be `ShowPropType, currently blocked by <https://github.com/ionic-team/stencil/issues/4663>
          */
         "_show"?: boolean;
         /**

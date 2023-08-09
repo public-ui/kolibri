@@ -54,7 +54,7 @@ export class KolToast implements API {
 
 	/**
 	 * Makes the element show up.
-	 * TODO: Using ShowPropType as type causes warnings in test runs ("The state/prop "_show" changed during rendering."). Needs more investigation.
+	 * TODO: Type should be `ShowPropType, currently blocked by <https://github.com/ionic-team/stencil/issues/4663>
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 

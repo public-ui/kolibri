@@ -3,7 +3,6 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean } from '../../utils/prop.validators';
 import { API, States } from './types';
-import { OpenPropType } from '../../types/props/open';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -53,9 +52,10 @@ export class KolDetails implements API {
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * TODO: Type should be `OpenPropType, currently blocked by <https://github.com/ionic-team/stencil/issues/4663>
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	/**
 	 * Gibt die Zusammenfassung der Detailbeschreibung an.
