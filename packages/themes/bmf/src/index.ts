@@ -938,23 +938,35 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.card > .heading kol-heading-wc > * {
 		margin: auto 0;
 	}
+	.card > .heading kol-button-wc button:focus {
+		outline-color: var(--color-white);
+		outline-offset: -3px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline 0.1s linear;
+	}
 	.card > .content {
-		padding: 0.5rem 1rem;
+		padding: 1rem;
 	}
 	.card.default > .heading {
 		background-color: var(--color-grey);
+		border-bottom: 2px solid var(--color-grey);
 	}
 	.card.error > .heading {
 		background-color: var(--color-red);
+		border-bottom: 2px solid var(--color-red);
 	}
 	.card.info > .heading {
 		background-color: var(--color-midnight);
+		border-bottom: 2px solid var(--color-midnight);
 	}
 	.card.success > .heading {
 		background-color: var(--color-green);
+		border-bottom: 2px solid var(--color-green);
 	}
 	.card.warning > .heading {
 		background-color: var(--color-orange);
+		border-bottom: 2px solid var(--color-orange);
 	}
 	:is(.error, .info, .success, .warning) .heading-icon::part(icon) {
 		font-family: "Font Awesome 6 Free" !important;
@@ -2019,7 +2031,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		margin-left: auto;
 		margin-right: unset;
 		padding: 2rem;
-		max-width: 750px;
+		max-width: 440px;
 	}
 	:host > div > kol-button-wc {
 		top: 0;
