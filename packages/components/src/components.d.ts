@@ -66,6 +66,7 @@ import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { AdjustHeightPropType } from "./types/props/adjust-height";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
+import { HasChildrenPropType } from "./types/props/has-children";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlignPropType } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
@@ -127,6 +128,7 @@ export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { AdjustHeightPropType } from "./types/props/adjust-height";
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
+export { HasChildrenPropType } from "./types/props/has-children";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -2886,6 +2888,46 @@ export namespace Components {
          */
         "_label": LabelPropType;
     }
+    interface KolTree {
+    }
+    interface KolTreeItem {
+        /**
+          * Defines whether the component has slotted children.
+         */
+        "_hasChildren"?: HasChildrenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+    }
+    interface KolTreeItemWc {
+        /**
+          * Defines whether the component has slotted children.
+         */
+        "_hasChildren"?: HasChildrenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+    }
+    interface KolTreeWc {
+    }
     interface KolVersion {
         /**
           * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
@@ -3280,6 +3322,30 @@ declare global {
         prototype: HTMLKolTooltipElement;
         new (): HTMLKolTooltipElement;
     };
+    interface HTMLKolTreeElement extends Components.KolTree, HTMLStencilElement {
+    }
+    var HTMLKolTreeElement: {
+        prototype: HTMLKolTreeElement;
+        new (): HTMLKolTreeElement;
+    };
+    interface HTMLKolTreeItemElement extends Components.KolTreeItem, HTMLStencilElement {
+    }
+    var HTMLKolTreeItemElement: {
+        prototype: HTMLKolTreeItemElement;
+        new (): HTMLKolTreeItemElement;
+    };
+    interface HTMLKolTreeItemWcElement extends Components.KolTreeItemWc, HTMLStencilElement {
+    }
+    var HTMLKolTreeItemWcElement: {
+        prototype: HTMLKolTreeItemWcElement;
+        new (): HTMLKolTreeItemWcElement;
+    };
+    interface HTMLKolTreeWcElement extends Components.KolTreeWc, HTMLStencilElement {
+    }
+    var HTMLKolTreeWcElement: {
+        prototype: HTMLKolTreeWcElement;
+        new (): HTMLKolTreeWcElement;
+    };
     interface HTMLKolVersionElement extends Components.KolVersion, HTMLStencilElement {
     }
     var HTMLKolVersionElement: {
@@ -3348,6 +3414,10 @@ declare global {
         "kol-textarea": HTMLKolTextareaElement;
         "kol-toast": HTMLKolToastElement;
         "kol-tooltip": HTMLKolTooltipElement;
+        "kol-tree": HTMLKolTreeElement;
+        "kol-tree-item": HTMLKolTreeItemElement;
+        "kol-tree-item-wc": HTMLKolTreeItemWcElement;
+        "kol-tree-wc": HTMLKolTreeWcElement;
         "kol-version": HTMLKolVersionElement;
     }
 }
@@ -6110,6 +6180,46 @@ declare namespace LocalJSX {
          */
         "_label": LabelPropType;
     }
+    interface KolTree {
+    }
+    interface KolTreeItem {
+        /**
+          * Defines whether the component has slotted children.
+         */
+        "_hasChildren"?: HasChildrenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+    }
+    interface KolTreeItemWc {
+        /**
+          * Defines whether the component has slotted children.
+         */
+        "_hasChildren"?: HasChildrenPropType;
+        /**
+          * This property is used for a link from a reference to the target URL.
+         */
+        "_href": HrefPropType;
+        /**
+          * Defines the label of the link.
+         */
+        "_label": LabelPropType;
+        /**
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+         */
+        "_open"?: OpenPropType;
+    }
+    interface KolTreeWc {
+    }
     interface KolVersion {
         /**
           * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
@@ -6183,6 +6293,10 @@ declare namespace LocalJSX {
         "kol-textarea": KolTextarea;
         "kol-toast": KolToast;
         "kol-tooltip": KolTooltip;
+        "kol-tree": KolTree;
+        "kol-tree-item": KolTreeItem;
+        "kol-tree-item-wc": KolTreeItemWc;
+        "kol-tree-wc": KolTreeWc;
         "kol-version": KolVersion;
     }
 }
@@ -6266,6 +6380,10 @@ declare module "@stencil/core" {
             "kol-textarea": LocalJSX.KolTextarea & JSXBase.HTMLAttributes<HTMLKolTextareaElement>;
             "kol-toast": LocalJSX.KolToast & JSXBase.HTMLAttributes<HTMLKolToastElement>;
             "kol-tooltip": LocalJSX.KolTooltip & JSXBase.HTMLAttributes<HTMLKolTooltipElement>;
+            "kol-tree": LocalJSX.KolTree & JSXBase.HTMLAttributes<HTMLKolTreeElement>;
+            "kol-tree-item": LocalJSX.KolTreeItem & JSXBase.HTMLAttributes<HTMLKolTreeItemElement>;
+            "kol-tree-item-wc": LocalJSX.KolTreeItemWc & JSXBase.HTMLAttributes<HTMLKolTreeItemWcElement>;
+            "kol-tree-wc": LocalJSX.KolTreeWc & JSXBase.HTMLAttributes<HTMLKolTreeWcElement>;
             "kol-version": LocalJSX.KolVersion & JSXBase.HTMLAttributes<HTMLKolVersionElement>;
         }
     }

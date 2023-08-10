@@ -59,6 +59,8 @@ const TAGS = [
 	'kol-textarea',
 	'kol-toast',
 	'kol-tooltip',
+	'kol-tree',
+	'kol-tree-item',
 	'kol-version',
 ];
 const EXCLUDE_TAGS = [
