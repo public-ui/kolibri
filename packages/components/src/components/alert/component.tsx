@@ -68,6 +68,7 @@ export class KolAlertWc implements API {
 				class={{
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,
+					hasCloser: !!this.state._hasCloser,
 				}}
 				role={this.state._alert ? 'alert' : undefined}
 			>
