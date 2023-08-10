@@ -1763,20 +1763,49 @@
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
 			<kol-tree _label="Überschrift">
-				<kol-tree-item-wc _label="Home" _href="#home"></kol-tree-item-wc>
-				<kol-tree-item-wc _label="About" _href="#about" _has-children _open>
+				<kol-tree-item-wc _label="Home" _href="#home" id="treeitemHome"></kol-tree-item-wc>
+				<kol-tree-item-wc _label="About (open initially)" _href="#about" _open>
 					<kol-tree-item-wc _label="Overview" _href="#overview"></kol-tree-item-wc>
-					<kol-tree-item-wc _label="Administration" _href="#administration"></kol-tree-item-wc>
+					<kol-tree-item-wc _label="Administration" _href="#administration" id="treeitemAdmin"></kol-tree-item-wc>
 
-					<kol-tree-item-wc _label="Facts" _href="#facts" _has-children>
-						<kol-tree-item-wc _label="History" _href="#history"></kol-tree-item-wc>
+					<kol-tree-item-wc _label="Facts" _href="#facts">
+						<div id="treeitemFacts">
+							<kol-tree-item-wc _label="History" _href="#history"></kol-tree-item-wc>
+						</div>
 					</kol-tree-item-wc>
 
-					<kol-tree-item-wc _label="Campus Tour" _href="#campus-tour" _has-children>
+					<kol-tree-item-wc _label="Campus Tour" _href="#campus-tour">
 						<kol-tree-item-wc _label="For Alumni" _href="#alumni"></kol-tree-item-wc>
 					</kol-tree-item-wc>
 				</kol-tree-item-wc>
 			</kol-tree>
+
+			<kol-button _label="Manipulate Home" id="buttonManipulate"></kol-button>
+			<kol-button _label="Add to Facts" id="buttonAddFact"></kol-button>
+			<kol-button _label="Add to Administration" id="buttonAddAdmin"></kol-button>
+
+			<script>
+				const id = () => crypto.randomUUID().substring(0, 6);
+
+				buttonManipulate.addEventListener('kol-click', () => {
+					treeitemHome.setAttribute('_label', `${treeitemHome._label} ${id()}`);
+					treeitemHome.setAttribute('_href', `${treeitemHome._href}-${id()}`);
+				});
+
+				buttonAddFact.addEventListener('kol-click', () => {
+					const treeItem = document.createElement('kol-tree-item-wc');
+					treeItem.setAttribute('_label', `Future ${id()}`);
+					treeItem.setAttribute('_href', `#future-facts-${id()}`);
+					treeitemFacts.appendChild(treeItem);
+				});
+
+				buttonAddAdmin.addEventListener('kol-click', () => {
+					const treeItem = document.createElement('kol-tree-item-wc');
+					treeItem.setAttribute('_label', `Admin Sub ${id()}`);
+					treeItem.setAttribute('_href', `#admin-${id()}`);
+					treeitemAdmin.appendChild(treeItem);
+				});
+			</script>
 		</main>
 	</body>
 </html>

@@ -16,6 +16,8 @@ const TAG_NAME = 'kol-tree-item-wc';
 	},
 })
 export class KolTreeItemWc implements API {
+	private observer?: MutationObserver;
+
 	@Element() host!: HTMLElement;
 
 	public render(): JSX.Element {
@@ -23,10 +25,8 @@ export class KolTreeItemWc implements API {
 			<Host>
 				<li>
 					<a href={this.state._href}>{this.state._label}</a>
-
 					{this.state._hasChildren &&
 						(this.state._open ? <button onClick={this.handleCollapse.bind(this)}>-</button> : <button onClick={this.handleExpand.bind(this)}>+</button>)}
-
 					<ul hidden={!this.state._hasChildren || !this.state._open}>
 						<slot />
 					</ul>
@@ -84,6 +84,21 @@ export class KolTreeItemWc implements API {
 		// this.validateHasChildren(this._hasChildren);
 		this.validateHref(this._href);
 
+		this.observeChildListMutations();
+		this.checkForChildren();
+	}
+
+	disconnectedCallback(): void {
+		this.observer?.disconnect();
+	}
+
+	observeChildListMutations() {
+		this.observer = new MutationObserver(this.checkForChildren.bind(this));
+
+		this.observer.observe(this.host, { childList: true });
+	}
+
+	checkForChildren() {
 		this.state = {
 			...this.state,
 			_hasChildren: this.host.querySelector(TAG_NAME) !== null,
@@ -103,8 +118,4 @@ export class KolTreeItemWc implements API {
 			_open: false,
 		};
 	}
-
-	// public componentDidLoad(): void {}
-
-	// handleSlotChange() {}
 }
