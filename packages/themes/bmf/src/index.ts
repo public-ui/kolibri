@@ -915,7 +915,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.card > .heading {
 		padding: 0.5rem 1rem;
 	}
-	.card[_has-closer] > .heading {
+	.card.hasCloser > .heading {
 		padding-top: 0;
 		padding-bottom: 0;
 		padding-right: 0;
