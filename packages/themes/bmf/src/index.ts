@@ -1033,20 +1033,20 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: rgba(0, 0, 0, 0);
 		border-color: rgba(0, 0, 0, 0);
 	}
-	.close > button.hide-label {
+	.close > button {
 		padding: 8px;
 	}
-	.close > button.hide-label kol-icon {
+	.close > button kol-icon {
 		display: flex;
 		width: 1em;
 		height: 1em;
 		font-size: 1rem;
 	}
-	.close > button.hide-label kol-icon::part(icon) {
+	.close > button kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 	}
-	.close > button.hide-label kol-icon::part(icon)::before {
+	.close > button kol-icon::part(icon)::before {
 		content: "\\f00d";
 	}
 	.close > button:active {
