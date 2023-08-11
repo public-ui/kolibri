@@ -907,7 +907,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-orange);
 	}
 	.card {
-		border-width: 3px;
+		border-width: 2px;
 		border-style: solid;
 		filter: drop-shadow(0px 2px 4px rgba(8, 35, 48, 0.24));
 		flex-direction: column;
