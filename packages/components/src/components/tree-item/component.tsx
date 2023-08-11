@@ -5,10 +5,10 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { OpenPropType, validateOpen } from '../../types/props/open';
 import { HrefPropType, validateHref } from '../../types/props/href';
 
-const TAG_NAME = 'kol-tree-item-wc';
+const TAG_NAME = 'kol-tree-item';
 
 @Component({
-	tag: `kol-tree-item-wc`, // keep in sync with const TAG_NAME
+	tag: `kol-tree-item`, // keep in sync with const TAG_NAME
 	shadow: false,
 	styleUrls: {
 		default: './style.css',
