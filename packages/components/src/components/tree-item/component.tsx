@@ -23,9 +23,11 @@ export class KolTreeItemWc implements API {
 		return (
 			<Host>
 				<li>
-					<a href={this.state._href}>{this.state._label}</a>
-					{this.state._hasChildren &&
-						(this.state._open ? <button onClick={this.handleCollapse.bind(this)}>-</button> : <button onClick={this.handleExpand.bind(this)}>+</button>)}
+					<kol-link _label="false" _href={this.state._href}>
+						{this.state._hasChildren &&
+							(this.state._open ? <span onClick={this.handleCollapse.bind(this)}>-</span> : <span onClick={this.handleExpand.bind(this)}>+</span>)}{' '}
+						{this.state._label}
+					</kol-link>
 					<ul hidden={!this.state._hasChildren || !this.state._open}>
 						<slot />
 					</ul>

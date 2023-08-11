@@ -1,4 +1,4 @@
-import { Component, h, Host, JSX, State } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Listen, State } from '@stencil/core';
 
 import { API, States } from './types';
 
@@ -7,6 +7,11 @@ import { API, States } from './types';
 	shadow: false,
 })
 export class KolTreeWc implements API {
+	@Element() host!: HTMLElement;
+
+	private observer?: MutationObserver;
+	private treeItemElements?: Element[];
+
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -40,5 +45,31 @@ export class KolTreeWc implements API {
 
 	@State() public state: States = {};
 
-	public componentWillLoad(): void {}
+	private getTreeItemElements(): Element[] {
+		const topLevel = (this.host.querySelector('slot')?.assignedNodes() as Element[]).filter((node) => node.tagName === 'KOL-TREE-ITEM');
+		return topLevel.reduce((accumulator, currentValue) => {
+			const children = currentValue.querySelectorAll('kol-tree-item'); //FIXME export as const somewhere
+
+			return [...accumulator, currentValue, ...children];
+		}, [] as Element[]);
+	}
+
+	public componentWillLoad(): void {
+		this.treeItemElements = this.getTreeItemElements();
+	}
+
+	@Listen('keydown')
+	handleKeyDown(event: KeyboardEvent) {
+		if (event.key === 'ArrowDown') {
+			// console.log(event.composedPath(), document.activeElement && [...(event.composedPath() as Element[])].includes(document.activeElement));
+			// console.log(this.host, document.activeElement, this.host.contains(document.activeElement));
+			// if (this.host.contains(document.activeElement)) {
+			// 	console.log(document.activeElement);
+			// }
+
+			// console.log(this.host, this.host.querySelector(':focus'));
+
+			console.log(document.activeElement);
+		}
+	}
 }

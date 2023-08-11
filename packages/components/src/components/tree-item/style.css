@@ -1,5 +1,12 @@
+:host {
+  font: 14px Arial !important;
+}
+
 ul {
-  list-style: disc !important;
-  outline: 1px solid red;
+  /*list-style: disc inside !important;*/
+  /*outline: 1px solid red;*/
+  border-left: 2px solid;
+  padding-left: .4rem !important;
   margin-left: 2rem !important;
+  margin-top: .4rem !important;
 }
