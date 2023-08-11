@@ -1780,9 +1780,11 @@
 				</kol-tree-item-wc>
 			</kol-tree>
 
-			<kol-button _label="Manipulate Home" id="buttonManipulate"></kol-button>
-			<kol-button _label="Add to Facts" id="buttonAddFact"></kol-button>
-			<kol-button _label="Add to Administration" id="buttonAddAdmin"></kol-button>
+			<div class="flex flex-row gap-2">
+				<kol-button _label="Manipulate Home" id="buttonManipulate"></kol-button>
+				<kol-button _label="Add to Facts" id="buttonAddFact"></kol-button>
+				<kol-button _label="Add to Administration" id="buttonAddAdmin"></kol-button>
+			</div>
 
 			<script>
 				const id = () => crypto.randomUUID().substring(0, 6);

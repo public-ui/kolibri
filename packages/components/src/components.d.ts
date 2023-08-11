@@ -66,7 +66,6 @@ import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 import { AdjustHeightPropType } from "./types/props/adjust-height";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
-import { HasChildrenPropType } from "./types/props/has-children";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
 export { AlignPropType } from "./types/props/align";
 export { HeadingLevel } from "./types/heading-level";
@@ -128,7 +127,6 @@ export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
 export { AdjustHeightPropType } from "./types/props/adjust-height";
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
-export { HasChildrenPropType } from "./types/props/has-children";
 export namespace Components {
     interface KolAbbr {
         /**
@@ -2892,10 +2890,6 @@ export namespace Components {
     }
     interface KolTreeItem {
         /**
-          * Defines whether the component has slotted children.
-         */
-        "_hasChildren"?: HasChildrenPropType;
-        /**
           * This property is used for a link from a reference to the target URL.
          */
         "_href": HrefPropType;
@@ -2909,10 +2903,6 @@ export namespace Components {
         "_open"?: OpenPropType;
     }
     interface KolTreeItemWc {
-        /**
-          * Defines whether the component has slotted children.
-         */
-        "_hasChildren"?: HasChildrenPropType;
         /**
           * This property is used for a link from a reference to the target URL.
          */
@@ -6184,10 +6174,6 @@ declare namespace LocalJSX {
     }
     interface KolTreeItem {
         /**
-          * Defines whether the component has slotted children.
-         */
-        "_hasChildren"?: HasChildrenPropType;
-        /**
           * This property is used for a link from a reference to the target URL.
          */
         "_href": HrefPropType;
@@ -6201,10 +6187,6 @@ declare namespace LocalJSX {
         "_open"?: OpenPropType;
     }
     interface KolTreeItemWc {
-        /**
-          * Defines whether the component has slotted children.
-         */
-        "_hasChildren"?: HasChildrenPropType;
         /**
           * This property is used for a link from a reference to the target URL.
          */

@@ -3,7 +3,6 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { API, States } from './types';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { OpenPropType, validateOpen } from '../../types/props/open';
-import { HasChildrenPropType } from '../../types/props/has-children';
 import { HrefPropType, validateHref } from '../../types/props/href';
 
 const TAG_NAME = 'kol-tree-item-wc';
@@ -53,11 +52,6 @@ export class KolTreeItemWc implements API {
 	@Prop() _open?: OpenPropType;
 
 	/**
-	 * Defines whether the component has slotted children.
-	 **/
-	@Prop() _hasChildren?: HasChildrenPropType;
-
-	/**
 	 * This property is used for a link from a reference to the target URL.
 	 */
 	@Prop() _href!: HrefPropType;
@@ -70,10 +64,6 @@ export class KolTreeItemWc implements API {
 		validateOpen(this, value);
 	}
 
-	@Watch('_hasChildren') validateHasChildren(value?: HasChildrenPropType): void {
-		// validateHasChildren(this, value);
-	}
-
 	@Watch('_href') validateHref(value?: HrefPropType): void {
 		validateHref(this, value);
 	}
@@ -81,7 +71,6 @@ export class KolTreeItemWc implements API {
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateOpen(this._open);
-		// this.validateHasChildren(this._hasChildren);
 		this.validateHref(this._href);
 
 		this.observeChildListMutations();
