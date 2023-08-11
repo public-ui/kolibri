@@ -945,6 +945,15 @@ export const BMF = KoliBri.createTheme('bmf', {
 		outline-width: 3px;
 		transition: outline 0.1s linear;
 	}
+	.card > .heading kol-button-wc button:hover {
+		background-color: rgba(32, 32, 32, 0.2);
+	}
+	.card > .heading kol-button-wc button:active {
+		background-color: rgba(32, 32, 32, 0.4);
+	}
+	.card > .heading kol-button-wc button:hover:focus {
+		background-color: rgba(32, 32, 32, 0.1);
+	}
 	.card > .content {
 		padding: 1rem;
 	}
