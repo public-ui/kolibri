@@ -6,14 +6,14 @@ settings:
 
 devDependencies:
   '@angular/compiler':
-    specifier: 16.1.6
-    version: 16.1.6(@angular/core@16.1.6)
+    specifier: 16.2.0
+    version: 16.2.0(@angular/core@16.2.0)
   '@angular/compiler-cli':
     specifier: 16.1.6
-    version: 16.1.6(@angular/compiler@16.1.6)(typescript@5.1.6)
+    version: 16.1.6(@angular/compiler@16.2.0)(typescript@5.1.6)
   '@angular/core':
-    specifier: 16.1.6
-    version: 16.1.6(rxjs@7.8.1)(zone.js@0.13.1)
+    specifier: 16.2.0
+    version: 16.2.0(rxjs@7.8.1)(zone.js@0.13.1)
   '@public-ui/components':
     specifier: 1.6.0-rc.23
     version: 1.6.0-rc.23
@@ -25,7 +25,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.9
-    version: 20.4.10
+    version: 20.5.0
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -64,7 +64,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
 
-  /@angular/compiler-cli@16.1.6(@angular/compiler@16.1.6)(typescript@5.1.6):
+  /@angular/compiler-cli@16.1.6(@angular/compiler@16.2.0)(typescript@5.1.6):
     resolution: {integrity: sha512-unWmH2CcuCkVuEr1fQuzlJtSGzRirsyg8cGQmRh16orx6N8oa/fCvxYRSOed/5aE9YiRpIFZ2TQWT2myY10/6Q==}
     engines: {node: ^16.14.0 || >=18.10.0}
     hasBin: true
@@ -72,7 +72,7 @@ packages:
       '@angular/compiler': 16.1.6
       typescript: '>=4.9.3 <5.2'
     dependencies:
-      '@angular/compiler': 16.1.6(@angular/core@16.1.6)
+      '@angular/compiler': 16.2.0(@angular/core@16.2.0)
       '@babel/core': 7.22.5
       '@jridgewell/sourcemap-codec': 1.4.15
       chokidar: 3.5.3
@@ -86,21 +86,21 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/compiler@16.1.6(@angular/core@16.1.6):
-    resolution: {integrity: sha512-BVDfKZLMb7mmLwdek+ZyzI43Zv0WNNNqnYpMeOI6egmkhtjNCxpQAy2YFKgNPse3bBGP8tKutwAtBB+Lqu/Kcw==}
+  /@angular/compiler@16.2.0(@angular/core@16.2.0):
+    resolution: {integrity: sha512-Ai0CKRUDlMY6iFCeoRsC+soVFTU7eyMDmNzeakdmNvGYMdLdjH8WvgaNukesi6WX7YBIQIKTPJVral8fXBQroQ==}
     engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
-      '@angular/core': 16.1.6
+      '@angular/core': 16.2.0
     peerDependenciesMeta:
       '@angular/core':
         optional: true
     dependencies:
-      '@angular/core': 16.1.6(rxjs@7.8.1)(zone.js@0.13.1)
+      '@angular/core': 16.2.0(rxjs@7.8.1)(zone.js@0.13.1)
       tslib: 2.6.1
     dev: true
 
-  /@angular/core@16.1.6(rxjs@7.8.1)(zone.js@0.13.1):
-    resolution: {integrity: sha512-tUXvVLc+Vbl8Se7hajwyUTNmKD9uPq+SZH6x8sRM2n5azzjBZltOoJfzxK5JKAkiFf/KkQhteHkMBfoDLZ2tmw==}
+  /@angular/core@16.2.0(rxjs@7.8.1)(zone.js@0.13.1):
+    resolution: {integrity: sha512-iwUWFw+JmRxw0chcNoqhXVR8XUTE+Rszhy22iSCkK0Jo8IJqEad1d2dQoFu1QfqOVdPMZtpJDmC/ppQ/f5c5aA==}
     engines: {node: ^16.14.0 || >=18.10.0}
     peerDependencies:
       rxjs: ^6.5.3 || ^7.4.0
@@ -380,8 +380,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.4.10:
-    resolution: {integrity: sha512-vwzFiiy8Rn6E0MtA13/Cxxgpan/N6UeNYR9oUu6kuJWxu6zCk98trcDp8CBhbtaeuq9SykCmXkFr2lWLoPcvLg==}
+  /@types/node@20.5.0:
+    resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
