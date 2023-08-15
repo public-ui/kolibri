@@ -3,6 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
+import { HrefPropType } from '../../types/props/href';
 
 @Component({
 	tag: 'kol-quote',
@@ -24,9 +25,9 @@ export class KolQuote implements KoliBriQuoteApi {
 	@Prop() public _label?: string;
 
 	/**
-	 * Gibt den Link zur Quelle des Zitates an.
+	 * Defines the link the source of the quote.
 	 */
-	@Prop() public _href!: string;
+	@Prop() public _href!: HrefPropType;
 
 	/**
 	 * Setzt den Text, also das Zitat selbst.
@@ -55,7 +56,7 @@ export class KolQuote implements KoliBriQuoteApi {
 	}
 
 	@Watch('_href')
-	public validateHref(value?: string): void {
+	public validateHref(value?: HrefPropType): void {
 		watchString(this, '_href', value, {
 			required: true,
 		});

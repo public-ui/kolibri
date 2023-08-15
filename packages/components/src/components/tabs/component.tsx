@@ -4,7 +4,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { translate } from '../../i18n';
 import { KoliBriButtonCallbacks } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { Align, validateAlign } from '../../types/props/align';
+import { AlignPropType, validateAlign } from '../../types/props/align';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint, featureHint, uiUxHintMillerscheZahl } from '../../utils/a11y.tipps';
@@ -146,7 +146,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	/**
 	 * Defines the position of the tab captions.
 	 */
-	@Prop() public _align?: Align = 'top';
+	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -156,7 +156,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -179,7 +179,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	 * Setzt die Position der Registrierkarten.
 	 * @deprecated Use _align.
 	 */
-	@Prop() public _tabsAlign?: Align = 'top';
+	@Prop() public _tabsAlign?: AlignPropType = 'top';
 
 	@State() public state: KoliBriTabsStates = {
 		_align: 'top',
@@ -236,7 +236,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	};
 
 	@Watch('_align')
-	public validateAlign(value?: Align) {
+	public validateAlign(value?: AlignPropType) {
 		validateAlign(this, value);
 	}
 
@@ -323,7 +323,7 @@ export class KolTabs implements KoliBriTabsAPI {
 	}
 
 	@Watch('_tabsAlign')
-	public validateTabsAlign(value?: Align): void {
+	public validateTabsAlign(value?: AlignPropType): void {
 		this.validateAlign(value);
 	}
 

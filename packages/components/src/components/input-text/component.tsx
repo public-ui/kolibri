@@ -5,8 +5,8 @@ import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateAlert } from '../../types/props/alert';
-import { Align } from '../../types/props/align';
+import { AlertPropType, validateAlert } from '../../types/props/alert';
+import { AlignPropType } from '../../types/props/align';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
@@ -147,9 +147,9 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: AlertPropType = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
@@ -264,9 +264,9 @@ export class KolInputText implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
@@ -303,7 +303,7 @@ export class KolInputText implements ComponentApi {
 	}
 
 	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
+	public validateAlert(value?: AlertPropType): void {
 		validateAlert(this, value);
 	}
 

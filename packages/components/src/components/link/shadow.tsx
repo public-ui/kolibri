@@ -3,10 +3,11 @@ import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AlternativButtonLinkRole, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AlignPropType } from '../../types/props/align';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
+import { DownloadPropType } from '../../types/props/download';
 
 @Component({
 	tag: 'kol-link',
@@ -76,7 +77,7 @@ export class KolLink implements LinkProps {
 	 *
 	 * @deprecated use _listen-aria-current instead
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -107,9 +108,9 @@ export class KolLink implements LinkProps {
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: boolean | string = false;
+	@Prop() public _download?: DownloadPropType = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -127,11 +128,11 @@ export class KolLink implements LinkProps {
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Align;
+	@Prop() public _iconAlign?: AlignPropType;
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
@@ -146,7 +147,7 @@ export class KolLink implements LinkProps {
 	/**
 	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
 	 */
-	@Prop() public _listenAriaCurrent?: AriaCurrent;
+	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
@@ -190,9 +191,9 @@ export class KolLink implements LinkProps {
 	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'right';
+	@Prop() public _tooltipAlign?: AlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

@@ -4,8 +4,8 @@ import { translate } from '../../i18n';
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps } from '../../types/button-link-text';
 import { Stringified } from '../../types/common';
 import { Orientation } from '../../types/orientation';
-import { AriaCurrent } from '../../types/props/aria-current';
-import { validateCollapsible } from '../../types/props/collapsible';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
+import { CollapsiblePropType, validateCollapsible } from '../../types/props/collapsible';
 import { validateHasCompactButton } from '../../types/props/has-compact-button';
 import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
@@ -76,7 +76,13 @@ export class KolNav implements KoliBriNavAPI {
 		return false;
 	};
 
-	private entry(collapsible: boolean, hideLabel: boolean, hasChildren: boolean, link: ButtonOrLinkOrTextWithChildrenProps, expanded: boolean): JSX.Element {
+	private entry(
+		collapsible: boolean,
+		hideLabel: HideLabelPropType,
+		hasChildren: boolean,
+		link: ButtonOrLinkOrTextWithChildrenProps,
+		expanded: boolean
+	): JSX.Element {
 		return (
 			<div class="entry">
 				<kol-button-link-text-switch
@@ -106,7 +112,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	private li(
 		collapsible: boolean,
-		hideLabel: boolean,
+		hideLabel: HideLabelPropType,
 		deep: number,
 		index: number,
 		link: ButtonOrLinkOrTextWithChildrenProps,
@@ -137,7 +143,7 @@ export class KolNav implements KoliBriNavAPI {
 
 	private linkList = (props: {
 		collapsible: boolean;
-		hideLabel: boolean;
+		hideLabel: HideLabelPropType;
 		deep: number;
 		links: ButtonOrLinkOrTextWithChildrenProps[];
 		orientation: Orientation;
@@ -200,7 +206,7 @@ export class KolNav implements KoliBriNavAPI {
 	/**
 	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
 	 */
-	@Prop() public _ariaCurrentValue: AriaCurrent = false;
+	@Prop() public _ariaCurrentValue: AriaCurrentPropType = false;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -210,9 +216,9 @@ export class KolNav implements KoliBriNavAPI {
 	@Prop() public _ariaLabel?: string;
 
 	/**
-	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 */
-	@Prop() public _collapsible?: boolean = true;
+	@Prop() public _collapsible?: CollapsiblePropType = true;
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
@@ -227,12 +233,12 @@ export class KolNav implements KoliBriNavAPI {
 	@Prop() public _hasCompactButton?: boolean = false;
 
 	/**
-	 * Defines if navigation labels should be hidden
+	 * Defines if navigation labels should be hidden.
 	 */
 	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -265,7 +271,7 @@ export class KolNav implements KoliBriNavAPI {
 	};
 
 	@Watch('_ariaCurrentValue')
-	public validateAriaCurrentValue(value?: AriaCurrent): void {
+	public validateAriaCurrentValue(value?: AriaCurrentPropType): void {
 		watchValidator(
 			this,
 			'_ariaCurrentValue',
@@ -284,7 +290,7 @@ export class KolNav implements KoliBriNavAPI {
 	}
 
 	@Watch('_collapsible')
-	public validateCollapsible(value?: boolean): void {
+	public validateCollapsible(value?: CollapsiblePropType): void {
 		validateCollapsible(this, value);
 	}
 

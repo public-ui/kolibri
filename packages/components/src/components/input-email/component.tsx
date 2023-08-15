@@ -4,7 +4,7 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { nonce } from '../../utils/dev.utils';
@@ -14,6 +14,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputEmailController } from './controller';
 import { ComponentApi, States } from './types';
+import { MultiplePropType } from '../../types/props/multiple';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -190,9 +191,9 @@ export class KolInputEmail implements ComponentApi {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
 	 */
-	@Prop() public _multiple?: boolean;
+	@Prop() public _multiple?: MultiplePropType;
 
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
@@ -251,9 +252,9 @@ export class KolInputEmail implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
@@ -347,7 +348,7 @@ export class KolInputEmail implements ComponentApi {
 	}
 
 	@Watch('_multiple')
-	public validateMultiple(value?: boolean): void {
+	public validateMultiple(value?: MultiplePropType): void {
 		this.controller.validateMultiple(value);
 	}
 

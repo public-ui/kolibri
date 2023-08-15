@@ -5,10 +5,10 @@ import { watchValidator } from '../utils/prop.validators';
 import { EventCallback, EventValueOrEventCallback } from './callbacks';
 import { Stringified } from './common';
 import { KoliBriAllIcon, KoliBriIconProp } from './icon';
-import { Align } from './props/align';
+import { AlignPropType } from './props/align';
 import { PropAriaControls } from './props/aria-controls';
 import { PropAriaCurrent, PropListenAriaCurrent } from './props/aria-current';
-import { PropAriaExpanded } from './props/aria-expanded';
+import { AriaExpandedPropType, PropAriaExpanded } from './props/aria-expanded';
 import { PropAriaLabel } from './props/aria-label';
 import { PropAriaSelected } from './props/aria-selected';
 import { PropDisabled } from './props/disabled';
@@ -36,7 +36,7 @@ type OptionalButtonAndLinkProps = {
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
-	ariaExpanded: boolean;
+	ariaExpanded: AriaExpandedPropType;
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
@@ -49,14 +49,14 @@ type OptionalButtonAndLinkProps = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Align;
+	iconAlign: AlignPropType;
 	/**
 	 * @deprecated
 	 */
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Align;
+	tooltipAlign: AlignPropType;
 } & PropAriaCurrent &
 	PropAriaLabel &
 	PropHideLabel;
@@ -72,7 +72,7 @@ type OptionalButtonAndLinkStates = {
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
-	ariaExpanded: boolean;
+	ariaExpanded: AriaExpandedPropType;
 	/**
 	 * @deprecated Will be removed for all link components.
 	 */
@@ -84,14 +84,14 @@ type OptionalButtonAndLinkStates = {
 	/**
 	 * @deprecated
 	 */
-	iconAlign: Align;
+	iconAlign: AlignPropType;
 	/**
 	 * @deprecated
 	 */
 	iconOnly: boolean;
 	role: AlternativButtonLinkRole;
 	tabIndex: number;
-	tooltipAlign: Align;
+	tooltipAlign: AlignPropType;
 } & PropAriaCurrent &
 	PropHideLabel;
 
@@ -249,7 +249,7 @@ export type KoliBriLinkAPI = Generic.Element.ComponentApi<RequiredLinkProps, Opt
 // type OptionalLinkButtonStates = KoliBriButtonCustomClassPropState;
 // type LinkButtonStates = Generic.Element.Members<RequiredLinkButtonStates, OptionalLinkButtonStates>;
 
-export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: Align): void => {
+export const watchTooltipAlignment = (component: Generic.Element.Component, propName: string, value?: AlignPropType): void => {
 	watchValidator(
 		component,
 		propName,

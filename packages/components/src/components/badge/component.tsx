@@ -9,6 +9,7 @@ import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
 import { KoliBriBadgeProps, KoliBriBadgeStates } from './types';
+import { HideLabelPropType } from '../../types/props/hide-label';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -62,9 +63,9 @@ export class KolBadge implements KoliBriBadgeProps {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).

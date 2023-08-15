@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@public-ui/components':
-    specifier: 1.6.0-rc.22
-    version: 1.6.0-rc.22
+    specifier: 1.6.0-rc.23
+    version: 1.6.0-rc.23
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -16,7 +16,7 @@ devDependencies:
     version: 1.2.2
   '@types/node':
     specifier: ts4.9
-    version: 20.4.5
+    version: 20.4.10
   '@types/normalize-package-data':
     specifier: 2.4.1
     version: 2.4.1
@@ -526,17 +526,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.22:
-    resolution: {integrity: sha512-+Hrjsj6QjLq7jQyAzbMZM6poipS1m22Y51V5/pKj+4ZGOcwRG41lm687WhCa43DhpskMkYb+gfWN+Jf0ItPPFw==}
+  /@public-ui/components@1.6.0-rc.23:
+    resolution: {integrity: sha512-hfB2g38ocAgOjK0emT+uLhQd+1GfWUWHuCYWdnMuW44mo7QA15q6RPtjfLPMtHaNZy91neuB9G0lxFqf7ErwQw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.4.5
-      '@public-ui/schema': 1.6.0-rc.22
+      '@public-ui/schema': 1.6.0-rc.23
       i18next: 23.2.11
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.22:
-    resolution: {integrity: sha512-K511Us2oxQnMyAcS4rZgn9Dc7AEnHdc0PWyY3RdT7OO/155ZqM0Elpzldwf6eHkVSZyISHR5T/hlTevhN6yhZQ==}
+  /@public-ui/schema@1.6.0-rc.23:
+    resolution: {integrity: sha512-WL6TmshLq7iHytJhqJM8LGwGL3jXrnwYPUNIcFKeMMFhq0B671BcMwhPmJXwqBIODjyyNxvCsqm5hz9/7VgtMw==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: true
@@ -644,8 +644,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.4.5:
-    resolution: {integrity: sha512-rt40Nk13II9JwQBdeYqmbn2Q6IVTA5uPhvSO+JVqdXw/6/4glI6oR9ezty/A9Hg5u7JH4OmYmuQ+XvjKm0Datg==}
+  /@types/node@20.4.10:
+    resolution: {integrity: sha512-vwzFiiy8Rn6E0MtA13/Cxxgpan/N6UeNYR9oUu6kuJWxu6zCk98trcDp8CBhbtaeuq9SykCmXkFr2lWLoPcvLg==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
