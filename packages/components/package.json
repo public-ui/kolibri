@@ -82,7 +82,7 @@
 		"@types/color-convert": "2.0.0",
 		"@types/jest": "26.0.24",
 		"@types/mustache": "^4.2.2",
-		"@types/node": "ts4.9",
+		"@types/node": "ts5.1",
 		"@types/twig": "^1.12.9",
 		"@types/pug": "2.0.6",
 		"@types/wcag-contrast": "3.0.0",
