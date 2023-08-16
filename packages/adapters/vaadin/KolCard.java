@@ -40,7 +40,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Macht den Footerbereich der Card sichtbar.
+	 * Shows the slot="footer".
 	 *
 	 * @param value String
 	 */
@@ -49,7 +49,7 @@ public class KolCard extends Component {
 	}
 
 	/**
-	 * Macht den Footerbereich der Card sichtbar.
+	 * Shows the slot="footer".
 	 *
 	 * @return Optional<String>
 	 */
