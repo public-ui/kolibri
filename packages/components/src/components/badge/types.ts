@@ -4,19 +4,23 @@ import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { ColorPair, PropColor } from '../../types/props/color';
-import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
+import { HideLabelPropType } from '../../types/props/hide-label';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	color: Stringified<PropColor>;
+	/**
+	 * @deprecated
+	 */
+	hideLabel: HideLabelPropType;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated
 	 */
 	iconOnly: boolean;
 	smartButton: Stringified<ButtonProps>;
-} & PropHideLabel;
+};
 export type KoliBriBadgeProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
