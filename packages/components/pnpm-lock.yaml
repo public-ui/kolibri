@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@a11y-ui/core':
     specifier: 1.0.3
@@ -8639,7 +8643,3 @@ packages:
     dependencies:
       '@stencil/core': 4.0.5
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
