@@ -3,13 +3,13 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString } from '../../utils/prop.validators';
-import { KoliBriSymbolAPI, KoliBriSymbolStates } from './types';
+import { API, Statest } from './types';
 
 @Component({
 	tag: 'kol-symbol',
 	shadow: false,
 })
-export class KolSymbol implements KoliBriSymbolAPI {
+export class KolSymbol implements API {
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -37,7 +37,7 @@ export class KolSymbol implements KoliBriSymbolAPI {
 	 */
 	@Prop() public _symbol!: string;
 
-	@State() public state: KoliBriSymbolStates = {
+	@State() public state: Statest = {
 		_label: translate('kol-warning'),
 		_symbol: '…', // ⚠ required
 	};

@@ -2,7 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean } from '../../utils/prop.validators';
-import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -14,7 +14,7 @@ import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
 	},
 	shadow: true,
 })
-export class KolDetails implements KoliBriDetailsAPI {
+export class KolDetails implements API {
 	private htmlDetailsElement?: HTMLDetailsElement;
 
 	public render(): JSX.Element {
@@ -47,12 +47,13 @@ export class KolDetails implements KoliBriDetailsAPI {
 	}
 
 	/**
-	 * Defines the summary label.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
@@ -62,7 +63,7 @@ export class KolDetails implements KoliBriDetailsAPI {
 	 */
 	@Prop() public _summary?: string;
 
-	@State() public state: KoliBriDetailsStates = {
+	@State() public state: States = {
 		_label: '…', // '⚠'
 	};
 

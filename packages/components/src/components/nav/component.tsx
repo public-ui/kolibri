@@ -11,7 +11,7 @@ import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-lab
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHintLabelingLandmarks, devHint, devWarning } from '../../utils/a11y.tipps';
 import { watchValidator } from '../../utils/prop.validators';
-import { KoliBriNavAPI, KoliBriNavStates } from './types';
+import { API, States } from './types';
 import { watchNavLinks } from './validation';
 
 /**
@@ -60,7 +60,7 @@ const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean =
 	},
 	shadow: true,
 })
-export class KolNav implements KoliBriNavAPI {
+export class KolNav implements API {
 	private readonly onClick = (link: ButtonOrLinkOrTextWithChildrenProps): void => {
 		link._active = !link._active;
 		this.state = {
@@ -217,8 +217,9 @@ export class KolNav implements KoliBriNavAPI {
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
+	 * TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _collapsible?: CollapsiblePropType = true;
+	@Prop() public _collapsible?: boolean = true;
 
 	/**
 	 * Gibt an, ob die Navigation kompakt angezeigt wird.
@@ -234,11 +235,12 @@ export class KolNav implements KoliBriNavAPI {
 
 	/**
 	 * Defines if navigation labels should be hidden.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -259,7 +261,7 @@ export class KolNav implements KoliBriNavAPI {
 	 */
 	@Prop() public _variant?: KoliBriNavVariant = 'primary';
 
-	@State() public state: KoliBriNavStates = {
+	@State() public state: States = {
 		_ariaCurrentValue: false,
 		_collapsible: true,
 		_hasCompactButton: false,

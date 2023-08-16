@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { LinkProps } from '../../types/button-link';
+import { Props as LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
 import { Orientation } from '../../types/orientation';
@@ -8,7 +8,7 @@ import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { watchNavLinks } from '../nav/validation';
-import { KoliBriLinkGroupAPI, KoliBriLinkGroupStates, ListStyleType } from './types';
+import { API, States, ListStyleType } from './types';
 
 const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listStyleType: ListStyleType }): JSX.Element => {
 	const list: JSX.Element[] = [];
@@ -40,7 +40,7 @@ const ListItem = (props: { links: LinkProps[]; orientation: Orientation; listSty
 	},
 	shadow: true,
 })
-export class KolLinkGroup implements KoliBriLinkGroupAPI {
+export class KolLinkGroup implements API {
 	public render(): JSX.Element {
 		return (
 			<nav
@@ -87,7 +87,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	@Prop() public _heading?: string;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 
@@ -112,7 +112,7 @@ export class KolLinkGroup implements KoliBriLinkGroupAPI {
 	 */
 	@Prop() public _orientation?: Orientation = 'vertical';
 
-	@State() public state: KoliBriLinkGroupStates = {
+	@State() public state: States = {
 		_label: '…', // ⚠ required
 		_listStyleType: 'disc',
 		_links: [],

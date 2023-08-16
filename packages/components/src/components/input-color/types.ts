@@ -1,36 +1,40 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropSuggestions, SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
-import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropDisabled } from '../../types/props/disabled';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropName } from '../../types/props/name';
+import { PropTouched } from '../../types/props/touched';
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
 	autoComplete: InputTypeOnOff;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
 	/**
 	 * @deprecated Use _suggestions instead.
 	 */
 	list: SuggestionsPropType;
-	name: string;
 	on: InputTypeOnDefault;
 	smartButton: Stringified<ButtonProps>;
-	syncValueBySelector: string;
-	touched: boolean;
 	tabIndex: number;
 	value: string;
-} & PropSuggestions;
+} & PropSuggestions &
+	PropSyncValueBySelector &
+	PropDisabled &
+	PropHideLabel &
+	PropName &
+	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
@@ -41,21 +45,20 @@ type RequiredStates = {
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
-	name: string;
 	on: InputTypeOnDefault;
 	smartButton: ButtonProps;
-	touched: boolean;
 	tabIndex: number;
 	value: string;
-};
+} & PropDisabled &
+	PropHideLabel &
+	PropName &
+	PropTouched;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
-export type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

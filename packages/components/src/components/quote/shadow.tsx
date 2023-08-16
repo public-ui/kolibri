@@ -2,7 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
+import { API, States, KoliBriQuoteVariant } from './types';
 import { HrefPropType } from '../../types/props/href';
 
 @Component({
@@ -12,7 +12,7 @@ import { HrefPropType } from '../../types/props/href';
 	},
 	shadow: true,
 })
-export class KolQuote implements KoliBriQuoteApi {
+export class KolQuote implements API {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 * @deprecated Use _label.
@@ -20,7 +20,7 @@ export class KolQuote implements KoliBriQuoteApi {
 	@Prop() public _caption?: string;
 
 	/**
-	 * Defines the label of the citation link.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: string;
 
@@ -39,7 +39,7 @@ export class KolQuote implements KoliBriQuoteApi {
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
-	@State() public state: KoliBriQuoteStates = {
+	@State() public state: States = {
 		_href: '…', // ⚠ required
 		_quote: '…', // ⚠ required
 		_variant: 'inline',

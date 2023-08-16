@@ -1,13 +1,5 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, h, Host, JSX, State } from '@stencil/core';
-
-type RequiredProps = unknown;
-type OptionalProps = unknown;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
-
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+import { API, States } from './types';
 
 /**
  * @slot - Der Text.
@@ -19,7 +11,7 @@ type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 	},
 	shadow: true,
 })
-export class KolIndentedText implements Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates> {
+export class KolIndentedText implements API {
 	@State() public state: States = {};
 
 	public render(): JSX.Element {

@@ -124,7 +124,7 @@ export class KolAccordion implements API {
 	@Prop() public _heading?: string;
 
 	/**
-	 * Defines the button label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: string;
 
@@ -140,8 +140,9 @@ export class KolAccordion implements API {
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	@State() public state: States = {
 		_label: '…', // ⚠ required

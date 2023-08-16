@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { AlternativButtonLinkRole, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from '../../types/button-link';
+import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
+import { Props } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -8,6 +9,9 @@ import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
 import { DownloadPropType } from '../../types/props/download';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { LinkTargetPropType } from '../../types/props/link-target';
 
 @Component({
 	tag: 'kol-link',
@@ -16,7 +20,7 @@ import { DownloadPropType } from '../../types/props/download';
 	},
 	shadow: true,
 })
-export class KolLink implements LinkProps {
+export class KolLink implements Props {
 	@Element() private readonly host?: HTMLKolLinkElement;
 	private ref?: HTMLKolLinkWcElement;
 
@@ -157,9 +161,9 @@ export class KolLink implements LinkProps {
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
@@ -181,9 +185,9 @@ export class KolLink implements LinkProps {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
@@ -193,7 +197,7 @@ export class KolLink implements LinkProps {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

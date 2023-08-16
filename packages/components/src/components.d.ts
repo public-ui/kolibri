@@ -6,125 +6,117 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-import { AlignPropType } from "./types/props/align";
+import { TooltipAlignPropType } from "./types/props/tooltip-align";
 import { HeadingLevel } from "./types/heading-level";
 import { KoliBriAccordionCallbacks } from "./components/accordion/types";
-import { OpenPropType } from "./types/props/open";
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-import { HasCloserPropType } from "./types/props/has-closer";
 import { ImageSourcePropType } from "./types/props/image-source";
 import { Stringified } from "./types/common";
 import { PropColor } from "./types/props/color";
-import { HideLabelPropType } from "./types/props/hide-label";
 import { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-import { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+import { ButtonProps } from "./components/button/types";
 import { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 import { AriaCurrentPropType } from "./types/props/aria-current";
+import { CustomClassPropType } from "./types/props/custom-class";
+import { IconPropType } from "./types/props/icon";
+import { AlignPropType } from "./types/props/align";
+import { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 import { StencilUnknown } from "./types/unknown";
+import { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
+import { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
+import { ButtonTypePropType } from "./types/props/button-type";
+import { ButtonVariantPropType } from "./types/props/button-variant";
 import { IdPropType } from "./types/props/id";
+import { NamePropType } from "./types/props/name";
 import { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 import { KoliBriCardEventCallbacks } from "./components/card/types";
-import { HasFooterPropType } from "./types/props/has-footer";
 import { KoliBriFormCallbacks } from "./components/form/types";
 import { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 import { Icofont } from "./types/icofont";
 import { Loading } from "./utils/validators/loading";
-import { AlertPropType } from "./types/props/alert";
-import { DisabledPropType } from "./types/props/disabled";
-import { HasCounterPropType } from "./types/props/has-counter";
-import { ReadOnlyPropType } from "./types/props/read-only";
-import { RequiredPropType } from "./types/props/required";
 import { SuggestionsPropType } from "./types/props/suggestions";
-import { TouchedPropType } from "./types/props/touched";
-import { CheckedPropType } from "./types/props/checked";
 import { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
-import { IndeterminatePropType } from "./types/props/indeterminate";
 import { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 import { Iso8601 } from "./types/input/iso8601";
 import { InputDateType, InputNumberType } from "./types/input/control/number";
-import { MultiplePropType } from "./types/props/multiple";
 import { W3CInputValue } from "./types/w3c";
 import { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 import { Orientation } from "./types/orientation";
 import { InputTextType } from "./types/input/control/text";
 import { DownloadPropType } from "./types/props/download";
+import { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
+import { LinkTargetPropType } from "./types/props/link-target";
+import { HrefPropType } from "./types/props/href";
 import { ListStyleType } from "./components/link-group/types";
+import { LinkProps } from "./components/link/types";
 import { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 import { KoliBriModalEventCallbacks } from "./types/modal";
-import { CollapsiblePropType } from "./types/props/collapsible";
 import { KoliBriNavVariant } from "./components/nav/component";
 import { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
-import { ShowPropType } from "./types/props/show";
 import { KoliBriProgressVariantType } from "./types/progress";
-import { HrefPropType } from "./types/props/href";
 import { KoliBriQuoteVariant } from "./components/quote/types";
 import { RowsPropType } from "./types/props/rows";
 import { SpinVariantPropType } from "./types/props/variant/spin";
 import { KoliBriSplitButtonCallback } from "./components/split-button/types";
 import { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 import { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
-import { AdjustHeightPropType } from "./types/props/adjust-height";
 import { CSSResize } from "./components/textarea/types";
 import { KoliBriToastEventCallbacks } from "./types/toast";
 export { LabelPropType, LabelWithExpertSlotPropType } from "./types/props/label";
-export { AlignPropType } from "./types/props/align";
+export { TooltipAlignPropType } from "./types/props/tooltip-align";
 export { HeadingLevel } from "./types/heading-level";
 export { KoliBriAccordionCallbacks } from "./components/accordion/types";
-export { OpenPropType } from "./types/props/open";
 export { AlertType, AlertVariant, KoliBriAlertEventCallbacks } from "./components/alert/types";
-export { HasCloserPropType } from "./types/props/has-closer";
 export { ImageSourcePropType } from "./types/props/image-source";
 export { Stringified } from "./types/common";
 export { PropColor } from "./types/props/color";
-export { HideLabelPropType } from "./types/props/hide-label";
 export { KoliBriHorizontalIcon, KoliBriIconProp } from "./types/icon";
-export { AlternativButtonLinkRole, ButtonProps, KoliBriButtonCallbacks, KoliBriButtonType, KoliBriButtonVariant, LinkOnCallbacks, LinkProps, LinkTarget, LinkUseCase } from "./types/button-link";
+export { ButtonProps } from "./components/button/types";
 export { BreadcrumbLinkProps } from "./components/breadcrumb/types";
 export { AriaCurrentPropType } from "./types/props/aria-current";
+export { CustomClassPropType } from "./types/props/custom-class";
+export { IconPropType } from "./types/props/icon";
+export { AlignPropType } from "./types/props/align";
+export { ButtonCallbacksPropType } from "./types/props/button-callbacks";
 export { StencilUnknown } from "./types/unknown";
+export { AlternativeButtonLinkRolePropType } from "./types/props/alternative-button-link-role";
+export { SyncValueBySelectorPropType } from "./types/props/sync-value-by-selector";
+export { ButtonTypePropType } from "./types/props/button-type";
+export { ButtonVariantPropType } from "./types/props/button-variant";
 export { IdPropType } from "./types/props/id";
+export { NamePropType } from "./types/props/name";
 export { ButtonOrLinkOrTextWithChildrenProps } from "./types/button-link-text";
 export { KoliBriCardEventCallbacks } from "./components/card/types";
-export { HasFooterPropType } from "./types/props/has-footer";
 export { KoliBriFormCallbacks } from "./components/form/types";
 export { FontAwesome, FontAwesomeOssPrefix } from "./enums/font-awesome";
 export { Icofont } from "./types/icofont";
 export { Loading } from "./utils/validators/loading";
-export { AlertPropType } from "./types/props/alert";
-export { DisabledPropType } from "./types/props/disabled";
-export { HasCounterPropType } from "./types/props/has-counter";
-export { ReadOnlyPropType } from "./types/props/read-only";
-export { RequiredPropType } from "./types/props/required";
 export { SuggestionsPropType } from "./types/props/suggestions";
-export { TouchedPropType } from "./types/props/touched";
-export { CheckedPropType } from "./types/props/checked";
 export { InputCheckboxIcon, InputCheckboxVariant } from "./components/input-checkbox/types";
-export { IndeterminatePropType } from "./types/props/indeterminate";
 export { InputTypeOnDefault, InputTypeOnOff, Option, SelectOption } from "./types/input/types";
 export { Iso8601 } from "./types/input/iso8601";
 export { InputDateType, InputNumberType } from "./types/input/control/number";
-export { MultiplePropType } from "./types/props/multiple";
 export { W3CInputValue } from "./types/w3c";
 export { OptionsPropType, OptionsWithOptgroupPropType } from "./types/props/options";
 export { Orientation } from "./types/orientation";
 export { InputTextType } from "./types/input/control/text";
 export { DownloadPropType } from "./types/props/download";
+export { LinkOnCallbacks, LinkUseCase } from "./types/button-link";
+export { LinkTargetPropType } from "./types/props/link-target";
+export { HrefPropType } from "./types/props/href";
 export { ListStyleType } from "./components/link-group/types";
+export { LinkProps } from "./components/link/types";
 export { Bundesamt, Bundesanstalt, Bundesministerium } from "./enums/bund";
 export { KoliBriModalEventCallbacks } from "./types/modal";
-export { CollapsiblePropType } from "./types/props/collapsible";
 export { KoliBriNavVariant } from "./components/nav/component";
 export { KoliBriPaginationButtonCallbacks, PaginationHasButton } from "./components/pagination/types";
-export { ShowPropType } from "./types/props/show";
 export { KoliBriProgressVariantType } from "./types/progress";
-export { HrefPropType } from "./types/props/href";
 export { KoliBriQuoteVariant } from "./components/quote/types";
 export { RowsPropType } from "./types/props/rows";
 export { SpinVariantPropType } from "./types/props/variant/spin";
 export { KoliBriSplitButtonCallback } from "./components/split-button/types";
 export { KoliBriTableDataType, KoliBriTableHeaders, KoliBriTablePaginationProps } from "./components/table/types";
 export { KoliBriTabsCallbacks, TabButtonProps } from "./components/tabs/types";
-export { AdjustHeightPropType } from "./types/props/adjust-height";
 export { CSSResize } from "./components/textarea/types";
 export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
@@ -141,7 +133,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolAccordion {
         /**
@@ -162,9 +154,9 @@ export namespace Components {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * If set (to true) opens/expands the element, closes if not set (or set to false).
+          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
          */
-        "_open"?: OpenPropType;
+        "_open"?: boolean;
     }
     interface KolAlert {
         /**
@@ -207,9 +199,9 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
          */
-        "_hasCloser"?: HasCloserPropType;
+        "_hasCloser"?: boolean;
         /**
           * Defines the description of the component.
          */
@@ -257,10 +249,10 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
           * @deprecated Will be removed in the next major version.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -271,11 +263,11 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Defines the type of the label property.
          */
         "_label": LabelPropType;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+          * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
@@ -297,6 +289,7 @@ export namespace Components {
     interface KolButton {
         /**
           * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**
@@ -322,9 +315,9 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -334,9 +327,9 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -360,17 +353,17 @@ export namespace Components {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -378,19 +371,19 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolButtonGroup {
     }
@@ -411,7 +404,7 @@ export namespace Components {
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded) TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -420,21 +413,21 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected) TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -451,19 +444,19 @@ export namespace Components {
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -471,11 +464,11 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -493,6 +486,7 @@ export namespace Components {
     interface KolButtonWc {
         /**
           * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**
@@ -518,9 +512,9 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -530,9 +524,9 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -556,17 +550,17 @@ export namespace Components {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -574,29 +568,29 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolCard {
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the card has a close button. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
          */
-        "_hasCloser"?: HasCloserPropType;
+        "_hasCloser"?: boolean;
         /**
-          * Shows the slot="footer".
+          * Shows the slot="footer". TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
          */
-        "_hasFooter"?: HasFooterPropType;
+        "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
@@ -623,7 +617,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
          */
         "_open"?: boolean;
         /**
@@ -756,26 +750,26 @@ export namespace Components {
     }
     interface KolInput {
         /**
-          * Defines whether the screen-readers should read out the notification.
+          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
          */
-        "_alert"?: AlertPropType;
+        "_alert"?: boolean;
         "_currentLength"?: number;
         /**
-          * Makes the element not focusable and ignore all events.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
-        "_disabled"?: DisabledPropType;
+        "_disabled"?: boolean;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
-        "_hasCounter"?: HasCounterPropType;
+        "_hasCounter"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Gibt den Hinweistext an.
          */
@@ -785,25 +779,25 @@ export namespace Components {
          */
         "_icon"?: KoliBriHorizontalIcon;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id": string;
+        "_id": IdPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
-          * Makes the input element read only.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
-        "_readOnly"?: ReadOnlyPropType;
+        "_readOnly"?: boolean;
         /**
           * Gibt an, ob die Komponente kein Label rendern soll.
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Makes the input element required.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
-        "_required"?: RequiredPropType;
+        "_required"?: boolean;
         /**
           * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
          */
@@ -817,9 +811,9 @@ export namespace Components {
          */
         "_suggestions"?: SuggestionsPropType;
         /**
-          * Shows if the input was touched by a user.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
-        "_touched"?: TouchedPropType;
+        "_touched"?: boolean;
     }
     /**
      * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
@@ -836,11 +830,11 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the checkbox is checked or not. Can be read and written.
+          * Defines whether the checkbox is checked or not. Can be read and written. TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
          */
-        "_checked"?: CheckedPropType;
+        "_checked"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -848,7 +842,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -856,37 +850,37 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
         "_icon"?: Stringified<InputCheckboxIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
-          * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+          * Puts the checkbox in the indeterminate state, does not change the value of _checked. TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
          */
-        "_indeterminate"?: IndeterminatePropType;
+        "_indeterminate"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -894,9 +888,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -927,7 +921,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -935,7 +929,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -947,9 +941,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -960,9 +954,9 @@ export namespace Components {
          */
         "_list"?: SuggestionsPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -978,7 +972,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -986,9 +980,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1010,7 +1004,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1018,7 +1012,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1030,9 +1024,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -1051,19 +1045,19 @@ export namespace Components {
          */
         "_min"?: Iso8601 | Date;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element read only.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
-        "_readOnly"?: ReadOnlyPropType;
+        "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -1081,7 +1075,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1089,9 +1083,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1117,7 +1111,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1125,11 +1119,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input.s TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
         "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1141,9 +1135,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -1158,13 +1152,13 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Makes the input accept multiple inputs.
+          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
          */
-        "_multiple"?: MultiplePropType;
+        "_multiple"?: boolean;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -1178,11 +1172,11 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -1200,7 +1194,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1208,9 +1202,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1232,7 +1226,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1240,7 +1234,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1252,27 +1246,27 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
          */
         "_multiple"?: boolean;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -1282,7 +1276,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1290,9 +1284,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1314,7 +1308,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1322,7 +1316,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1334,9 +1328,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -1355,9 +1349,9 @@ export namespace Components {
          */
         "_min"?: number | Iso8601;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -1367,11 +1361,11 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -1389,7 +1383,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1397,9 +1391,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1426,7 +1420,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1434,11 +1428,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
         "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1450,9 +1444,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -1462,9 +1456,9 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -1478,11 +1472,11 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -1496,7 +1490,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1504,9 +1498,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1524,7 +1518,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1532,7 +1526,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1540,9 +1534,9 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -1553,9 +1547,9 @@ export namespace Components {
          */
         "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -1569,13 +1563,13 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1583,9 +1577,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1676,7 +1670,7 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1684,7 +1678,7 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1696,9 +1690,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -1717,9 +1711,9 @@ export namespace Components {
          */
         "_min"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -1735,7 +1729,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1743,9 +1737,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1759,15 +1753,15 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Defines whether the screen-readers should read out the notification.
+          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
          */
-        "_alert"?: AlertPropType;
+        "_alert"?: boolean;
         /**
           * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -1775,11 +1769,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
         "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1791,9 +1785,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -1808,9 +1802,9 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -1824,11 +1818,11 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -1846,7 +1840,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -1854,9 +1848,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -1953,9 +1947,9 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -1971,9 +1965,9 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -1981,7 +1975,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -2015,9 +2009,9 @@ export namespace Components {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
@@ -2028,17 +2022,17 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the label and shows it in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * This property is used for a link from a reference to the target URL.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -2058,17 +2052,17 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -2076,11 +2070,11 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolLinkGroup {
         /**
@@ -2189,9 +2183,9 @@ export namespace Components {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -2207,9 +2201,9 @@ export namespace Components {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -2217,7 +2211,7 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -2269,9 +2263,9 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Defines if navigation nodes can be collapsed or not. Enabled by default.
+          * Defines if navigation nodes can be collapsed or not. Enabled by default. TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
          */
-        "_collapsible"?: CollapsiblePropType;
+        "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
           * @deprecated Use _hide-label
@@ -2283,9 +2277,9 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden.
+          * Defines if navigation labels should be hidden. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
@@ -2310,9 +2304,9 @@ export namespace Components {
          */
         "_boundaryCount"?: number;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
@@ -2340,15 +2334,15 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolPopover {
         /**
@@ -2356,9 +2350,9 @@ export namespace Components {
          */
         "_align"?: AlignPropType;
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
     }
     interface KolProgress {
         /**
@@ -2420,7 +2414,7 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -2433,7 +2427,7 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2445,9 +2439,9 @@ export namespace Components {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -2458,13 +2452,13 @@ export namespace Components {
          */
         "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
          */
         "_multiple"?: boolean;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -2474,7 +2468,7 @@ export namespace Components {
          */
         "_options"?: OptionsWithOptgroupPropType;
         /**
-          * Macht das Eingabeelementzu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -2488,7 +2482,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2496,9 +2490,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -2523,9 +2517,9 @@ export namespace Components {
     }
     interface KolSpan {
         /**
-          * Hides the label and shows the description in a Tooltip instead.s
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -2542,9 +2536,9 @@ export namespace Components {
     }
     interface KolSpanWc {
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -2561,9 +2555,9 @@ export namespace Components {
     }
     interface KolSpin {
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
         /**
           * Defines the variant of spin navigation.
          */
@@ -2601,9 +2595,9 @@ export namespace Components {
          */
         "_customClass"?: string;
         /**
-          * Makes the element not focusable and ignore all events.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
-        "_disabled"?: DisabledPropType;
+        "_disabled"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -2630,9 +2624,9 @@ export namespace Components {
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -2640,7 +2634,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2648,19 +2642,19 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolSymbol {
         /**
@@ -2746,15 +2740,15 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Adjusts the height of the element to its content.
+          * Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
          */
-        "_adjustHeight"?: AdjustHeightPropType;
+        "_adjustHeight"?: boolean;
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -2762,11 +2756,11 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
-        "_hasCounter"?: HasCounterPropType;
+        "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2774,9 +2768,9 @@ export namespace Components {
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -2786,9 +2780,9 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -2798,11 +2792,11 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -2816,7 +2810,7 @@ export namespace Components {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -2824,9 +2818,9 @@ export namespace Components {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -2840,9 +2834,9 @@ export namespace Components {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
          */
-        "_hasCloser"?: HasCloserPropType;
+        "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
@@ -2861,9 +2855,9 @@ export namespace Components {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
         /**
           * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
          */
@@ -3366,7 +3360,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
     }
     interface KolAccordion {
         /**
@@ -3387,9 +3381,9 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * If set (to true) opens/expands the element, closes if not set (or set to false).
+          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
          */
-        "_open"?: OpenPropType;
+        "_open"?: boolean;
     }
     interface KolAlert {
         /**
@@ -3432,9 +3426,9 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
          */
-        "_hasCloser"?: HasCloserPropType;
+        "_hasCloser"?: boolean;
         /**
           * Defines the description of the component.
          */
@@ -3482,10 +3476,10 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
           * @deprecated Will be removed in the next major version.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -3496,11 +3490,11 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Defines the type of the label property.
          */
         "_label": LabelPropType;
         /**
-          * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+          * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
          */
         "_smartButton"?: Stringified<ButtonProps>;
     }
@@ -3522,6 +3516,7 @@ declare namespace LocalJSX {
     interface KolButton {
         /**
           * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**
@@ -3547,9 +3542,9 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -3559,9 +3554,9 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -3585,17 +3580,17 @@ declare namespace LocalJSX {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3603,19 +3598,19 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolButtonGroup {
     }
@@ -3636,7 +3631,7 @@ declare namespace LocalJSX {
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded) TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -3645,21 +3640,21 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected) TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -3676,19 +3671,19 @@ declare namespace LocalJSX {
         /**
           * Gibt den technischen Namen des Eingabefeldes an.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für die Button-Events an.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3696,11 +3691,11 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
@@ -3718,6 +3713,7 @@ declare namespace LocalJSX {
     interface KolButtonWc {
         /**
           * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+          * @deprecated
          */
         "_accessKey"?: string;
         /**
@@ -3743,9 +3739,9 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute if _variant="custom" is set.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
          */
@@ -3755,9 +3751,9 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
           * @deprecated
@@ -3781,17 +3777,17 @@ declare namespace LocalJSX {
          */
         "_name"?: string;
         /**
-          * Gibt die EventCallback-Funktionen für die Button-Events an.
+          * Defines the callback functions for button events.
          */
-        "_on"?: KoliBriButtonCallbacks<StencilUnknown>;
+        "_on"?: ButtonCallbacksPropType<StencilUnknown>;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -3799,29 +3795,29 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolCard {
         /**
-          * Defines whether the card has a close button.
+          * Defines whether the card has a close button. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
          */
-        "_hasCloser"?: HasCloserPropType;
+        "_hasCloser"?: boolean;
         /**
-          * Shows the slot="footer".
+          * Shows the slot="footer". TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
          */
-        "_hasFooter"?: HasFooterPropType;
+        "_hasFooter"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
@@ -3848,7 +3844,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
          */
         "_open"?: boolean;
         /**
@@ -3981,26 +3977,26 @@ declare namespace LocalJSX {
     }
     interface KolInput {
         /**
-          * Defines whether the screen-readers should read out the notification.
+          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
          */
-        "_alert"?: AlertPropType;
+        "_alert"?: boolean;
         "_currentLength"?: number;
         /**
-          * Makes the element not focusable and ignore all events.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
-        "_disabled"?: DisabledPropType;
+        "_disabled"?: boolean;
         /**
           * Gibt den Text für eine Fehlermeldung an.
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
-        "_hasCounter"?: HasCounterPropType;
+        "_hasCounter"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Gibt den Hinweistext an.
          */
@@ -4010,25 +4006,25 @@ declare namespace LocalJSX {
          */
         "_icon"?: KoliBriHorizontalIcon;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id": string;
+        "_id": IdPropType;
         /**
           * Gibt an, wie viele Zeichen maximal eingegeben werden können.
          */
         "_maxLength"?: number;
         /**
-          * Makes the input element read only.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
-        "_readOnly"?: ReadOnlyPropType;
+        "_readOnly"?: boolean;
         /**
           * Gibt an, ob die Komponente kein Label rendern soll.
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Makes the input element required.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
-        "_required"?: RequiredPropType;
+        "_required"?: boolean;
         /**
           * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
          */
@@ -4042,9 +4038,9 @@ declare namespace LocalJSX {
          */
         "_suggestions"?: SuggestionsPropType;
         /**
-          * Shows if the input was touched by a user.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
-        "_touched"?: TouchedPropType;
+        "_touched"?: boolean;
     }
     /**
      * @deprecated Use the separated lean-input-adapter from the `@leanup/kolibri-components` package.
@@ -4061,11 +4057,11 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the checkbox is checked or not. Can be read and written.
+          * Defines whether the checkbox is checked or not. Can be read and written. TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
          */
-        "_checked"?: CheckedPropType;
+        "_checked"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4073,7 +4069,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4081,37 +4077,37 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
         "_icon"?: Stringified<InputCheckboxIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
-          * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+          * Puts the checkbox in the indeterminate state, does not change the value of _checked. TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
          */
-        "_indeterminate"?: IndeterminatePropType;
+        "_indeterminate"?: boolean;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4119,9 +4115,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4152,7 +4148,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4160,7 +4156,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4172,9 +4168,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4185,9 +4181,9 @@ declare namespace LocalJSX {
          */
         "_list"?: SuggestionsPropType;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -4203,7 +4199,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4211,9 +4207,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4235,7 +4231,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4243,7 +4239,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4255,9 +4251,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4276,19 +4272,19 @@ declare namespace LocalJSX {
          */
         "_min"?: Iso8601 | Date;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element read only.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
-        "_readOnly"?: ReadOnlyPropType;
+        "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -4306,7 +4302,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4314,9 +4310,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4342,7 +4338,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4350,11 +4346,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input.s TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
         "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4366,9 +4362,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4383,13 +4379,13 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Makes the input accept multiple inputs.
+          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
          */
-        "_multiple"?: MultiplePropType;
+        "_multiple"?: boolean;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -4403,11 +4399,11 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -4425,7 +4421,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4433,9 +4429,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4457,7 +4453,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4465,7 +4461,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4477,27 +4473,27 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
          */
         "_multiple"?: boolean;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -4507,7 +4503,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4515,9 +4511,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4539,7 +4535,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4547,7 +4543,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4559,9 +4555,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4580,9 +4576,9 @@ declare namespace LocalJSX {
          */
         "_min"?: number | Iso8601;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -4592,11 +4588,11 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -4614,7 +4610,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4622,9 +4618,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4651,7 +4647,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4659,11 +4655,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
         "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4675,9 +4671,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4687,9 +4683,9 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -4703,11 +4699,11 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -4721,7 +4717,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4729,9 +4725,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4749,7 +4745,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4757,7 +4753,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4765,9 +4761,9 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4778,9 +4774,9 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<Option<W3CInputValue>[]>;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -4794,13 +4790,13 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4808,9 +4804,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4901,7 +4897,7 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -4909,7 +4905,7 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4921,9 +4917,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -4942,9 +4938,9 @@ declare namespace LocalJSX {
          */
         "_min"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -4960,7 +4956,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -4968,9 +4964,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -4984,15 +4980,15 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Defines whether the screen-readers should read out the notification.
+          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
          */
-        "_alert"?: AlertPropType;
+        "_alert"?: boolean;
         /**
           * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -5000,11 +4996,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
         "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5016,9 +5012,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5033,9 +5029,9 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -5049,11 +5045,11 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -5071,7 +5067,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5079,9 +5075,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -5178,9 +5174,9 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -5196,9 +5192,9 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -5206,7 +5202,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -5240,9 +5236,9 @@ declare namespace LocalJSX {
          */
         "_ariaSelected"?: boolean;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
           * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
@@ -5253,17 +5249,17 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the label and shows it in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
-          * Gibt die Ziel-Url des Links an.
+          * This property is used for a link from a reference to the target URL.
          */
-        "_href": string;
+        "_href": HrefPropType;
         /**
-          * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+          * Defines the icon classnames.
          */
-        "_icon"?: Stringified<KoliBriIconProp>;
+        "_icon"?: IconPropType;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
           * @deprecated use _hide-label
@@ -5283,17 +5279,17 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -5301,11 +5297,11 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolLinkGroup {
         /**
@@ -5414,9 +5410,9 @@ declare namespace LocalJSX {
          */
         "_on"?: LinkOnCallbacks;
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
           * @deprecated will be removed in v2
@@ -5432,9 +5428,9 @@ declare namespace LocalJSX {
          */
         "_tabIndex"?: number;
         /**
-          * Gibt an wo der Link geöffnet werden soll.
+          * Defines where to open the link.
          */
-        "_target"?: LinkTarget;
+        "_target"?: LinkTargetPropType;
         /**
           * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
          */
@@ -5442,7 +5438,7 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Gibt den Verwendungsfall des Links an.
           * @deprecated will be removed in v2
@@ -5494,9 +5490,9 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Defines if navigation nodes can be collapsed or not. Enabled by default.
+          * Defines if navigation nodes can be collapsed or not. Enabled by default. TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
          */
-        "_collapsible"?: CollapsiblePropType;
+        "_collapsible"?: boolean;
         /**
           * Gibt an, ob die Navigation kompakt angezeigt wird.
           * @deprecated Use _hide-label
@@ -5508,9 +5504,9 @@ declare namespace LocalJSX {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden.
+          * Defines if navigation labels should be hidden. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
          */
@@ -5535,9 +5531,9 @@ declare namespace LocalJSX {
          */
         "_boundaryCount"?: number;
         /**
-          * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+          * Defines the custom class attribute.
          */
-        "_customClass"?: string;
+        "_customClass"?: CustomClassPropType;
         /**
           * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
          */
@@ -5565,15 +5561,15 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
           * Setzt die Gesamtanzahl der Seiten.
          */
         "_total": number;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolPopover {
         /**
@@ -5581,9 +5577,9 @@ declare namespace LocalJSX {
          */
         "_align"?: AlignPropType;
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
     }
     interface KolProgress {
         /**
@@ -5645,7 +5641,7 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -5658,7 +5654,7 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5670,9 +5666,9 @@ declare namespace LocalJSX {
          */
         "_icon"?: Stringified<KoliBriHorizontalIcon>;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -5683,13 +5679,13 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
-          * Gibt an, ob mehrere Werte eingegeben werden können.
+          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
          */
         "_multiple"?: boolean;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -5699,7 +5695,7 @@ declare namespace LocalJSX {
          */
         "_options"?: OptionsWithOptgroupPropType;
         /**
-          * Macht das Eingabeelementzu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -5713,7 +5709,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5721,9 +5717,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -5748,9 +5744,9 @@ declare namespace LocalJSX {
     }
     interface KolSpan {
         /**
-          * Hides the label and shows the description in a Tooltip instead.s
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -5767,9 +5763,9 @@ declare namespace LocalJSX {
     }
     interface KolSpanWc {
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
-        "_hideLabel"?: HideLabelPropType;
+        "_hideLabel"?: boolean;
         /**
           * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
          */
@@ -5786,9 +5782,9 @@ declare namespace LocalJSX {
     }
     interface KolSpin {
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
         /**
           * Defines the variant of spin navigation.
          */
@@ -5826,9 +5822,9 @@ declare namespace LocalJSX {
          */
         "_customClass"?: string;
         /**
-          * Makes the element not focusable and ignore all events.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
-        "_disabled"?: DisabledPropType;
+        "_disabled"?: boolean;
         /**
           * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
          */
@@ -5855,9 +5851,9 @@ declare namespace LocalJSX {
          */
         "_on"?: { onClick: KoliBriSplitButtonCallback };
         /**
-          * Gibt die Rolle des primären Elements in der Komponente an.
+          * Defines the role of the components primary element.
          */
-        "_role"?: AlternativButtonLinkRole;
+        "_role"?: AlternativeButtonLinkRolePropType;
         /**
           * Gibt die Rolle des primären Elements in der Komponente an.
          */
@@ -5865,7 +5861,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -5873,19 +5869,19 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+          * Defines either the type of the component or of the components interactive element.
          */
-        "_type"?: KoliBriButtonType;
+        "_type"?: ButtonTypePropType;
         /**
           * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
          */
         "_value"?: Stringified<StencilUnknown>;
         /**
-          * Gibt an, welche Variante der Darstellung genutzt werden soll.
+          * Defines which variant should be used for presentation.
          */
-        "_variant"?: KoliBriButtonVariant;
+        "_variant"?: ButtonVariantPropType;
     }
     interface KolSymbol {
         /**
@@ -5971,15 +5967,15 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Adjusts the height of the element to its content.
+          * Adjusts the height of the element to its content. TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
          */
-        "_adjustHeight"?: AdjustHeightPropType;
+        "_adjustHeight"?: boolean;
         /**
           * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
          */
         "_alert"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
          */
         "_disabled"?: boolean;
         /**
@@ -5987,11 +5983,11 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.
+          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
          */
-        "_hasCounter"?: HasCounterPropType;
+        "_hasCounter"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5999,9 +5995,9 @@ declare namespace LocalJSX {
          */
         "_hint"?: string;
         /**
-          * Gibt die interne ID des primären Elements in der Komponente an.
+          * Defines the internal ID of the primary component element.
          */
-        "_id"?: string;
+        "_id"?: IdPropType;
         /**
           * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
@@ -6011,9 +6007,9 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Gibt den technischen Namen des Eingabefeldes an.
+          * Defines the technical name of an input field.
          */
-        "_name"?: string;
+        "_name"?: NamePropType;
         /**
           * Gibt die EventCallback-Funktionen für das Input-Event an.
          */
@@ -6023,11 +6019,11 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Setzt das Eingabefeld in den schreibgeschützten Modus.
+          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
          */
         "_readOnly"?: boolean;
         /**
-          * Macht das Eingabeelement zu einem Pflichtfeld.
+          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
          */
         "_required"?: boolean;
         /**
@@ -6041,7 +6037,7 @@ declare namespace LocalJSX {
         /**
           * Selector for synchronizing the value with another input element.
          */
-        "_syncValueBySelector"?: string;
+        "_syncValueBySelector"?: SyncValueBySelectorPropType;
         /**
           * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
          */
@@ -6049,9 +6045,9 @@ declare namespace LocalJSX {
         /**
           * Defines where to show the Tooltip preferably: top, right, bottom or left.
          */
-        "_tooltipAlign"?: AlignPropType;
+        "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
          */
         "_touched"?: boolean;
         /**
@@ -6065,9 +6061,9 @@ declare namespace LocalJSX {
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed.
+          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
          */
-        "_hasCloser"?: HasCloserPropType;
+        "_hasCloser"?: boolean;
         /**
           * Gibt die Beschriftung der Komponente an.
           * @deprecated Use _label.
@@ -6086,9 +6082,9 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up.
+          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
          */
-        "_show"?: ShowPropType;
+        "_show"?: boolean;
         /**
           * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
          */

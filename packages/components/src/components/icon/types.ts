@@ -10,10 +10,10 @@ type OptionalProps = {
 	part: string;
 } & PropAriaLabel &
 	PropLabel;
-export type KoliBriIconProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 
-export type KoliBriIconStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriIconAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

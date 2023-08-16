@@ -18,8 +18,8 @@ const config = {
 		 * types were not used, changes to base types would not be propagated
 		 * and would lead to errors.
 		 */
-		'@typescript-eslint/no-duplicate-type-constituents': 'warn',
-		'@typescript-eslint/no-redundant-type-constituents': 'warn',
+		'@typescript-eslint/no-duplicate-type-constituents': 'off',
+		'@typescript-eslint/no-redundant-type-constituents': 'off',
 
 		/**
 		 * The HTML templates in TSX are recognized as any.

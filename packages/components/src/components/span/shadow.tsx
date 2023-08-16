@@ -3,8 +3,7 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { KolibriSpanProps } from './types';
-import { HideLabelPropType } from '../../types/props/hide-label';
+import { Props } from './types';
 
 @Component({
 	tag: 'kol-span',
@@ -13,7 +12,7 @@ import { HideLabelPropType } from '../../types/props/hide-label';
 	},
 	shadow: true,
 })
-export class KolSpan implements KolibriSpanProps {
+export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
 			<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this._label}>
@@ -23,9 +22,10 @@ export class KolSpan implements KolibriSpanProps {
 	}
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.s
+	 * Hides the label and shows the description in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).

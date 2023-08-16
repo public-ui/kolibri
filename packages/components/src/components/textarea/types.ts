@@ -5,63 +5,70 @@ import { PropAdjustHeight } from '../../types/props/adjust-height';
 import { PropHasCounter } from '../../types/props/has-counter';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
 import { PropRows } from '../../types/props/rows';
-import { InputRequiredProps } from '../input/types';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropDisabled } from '../../types/props/disabled';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropName } from '../../types/props/name';
+import { PropReadOnly } from '../../types/props/read-only';
+import { PropRequired } from '../../types/props/required';
+import { PropTouched } from '../../types/props/touched';
+import { PropId } from '../../types/props/id';
 
 export type CSSResize = 'both' | 'horizontal' | 'vertical' | 'none';
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	maxLength: number;
-	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	readOnly: boolean;
 	resize: CSSResize;
-	required: boolean;
-	syncValueBySelector: string;
 	tabIndex: number;
-	touched: boolean;
 	value: string;
 } & PropAdjustHeight &
+	PropDisabled &
 	PropHasCounter &
-	PropRows;
+	PropHideLabel &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropRows &
+	PropSyncValueBySelector &
+	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	adjustHeight: boolean;
 	currentLength: number;
-	id: string;
 	hasValue: boolean;
 	resize: CSSResize;
-} & PropAdjustHeight &
+} & PropId &
+	PropAdjustHeight &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
-	disabled: boolean;
 	error: string;
-	hideLabel: boolean;
 	hint: string;
 	maxLength: number;
-	name: string;
 	on: InputTypeOnDefault;
 	placeholder: string;
-	readOnly: boolean;
-	required: boolean;
 	tabIndex: number;
-	touched: boolean;
 	value: string;
-} & PropHasCounter &
-	PropRows;
+} & PropDisabled &
+	PropHasCounter &
+	PropHideLabel &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropRows &
+	PropTouched;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
-export type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

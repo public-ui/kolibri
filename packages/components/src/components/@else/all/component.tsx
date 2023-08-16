@@ -3,8 +3,8 @@ import { h, Host, JSX, State } from '@stencil/core';
 
 import { Bundesministerium } from '../../../enums/bund';
 
-type RequiredProps = unknown;
-type OptionalProps = unknown;
+type RequiredProps = NonNullable<unknown>;
+type OptionalProps = NonNullable<unknown>;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = RequiredProps & OptionalProps; // Linter: "Type 'RequiredProps' does not satisfy the constraint 'object'."

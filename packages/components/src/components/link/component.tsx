@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { AlternativButtonLinkRole, KoliBriLinkAPI, LinkOnCallbacks, LinkStates, LinkTarget, LinkUseCase, watchTooltipAlignment } from '../../types/button-link';
+import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
+import { States as LinkStates } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -18,6 +19,10 @@ import { a11yHintDisabled, devHint, devWarning } from '../../utils/a11y.tipps';
 import { ariaCurrentSubject, mapBoolean2String, scrollBySelector, setEventTarget, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { LinkTargetPropType, validateLinkTarget } from '../../types/props/link-target';
+import { API } from './types';
 
 /**
  * @internal
@@ -26,7 +31,7 @@ import { validateTabIndex } from '../../utils/validators/tab-index';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements KoliBriLinkAPI {
+export class KolLinkWc implements API {
 	@Element() private readonly host?: HTMLKolLinkWcElement;
 	private ref?: HTMLAnchorElement;
 
@@ -232,9 +237,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
@@ -256,9 +261,9 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
@@ -268,7 +273,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.
@@ -279,7 +284,7 @@ export class KolLinkWc implements KoliBriLinkAPI {
 
 	@State() public state: LinkStates = {
 		_href: '…', // ⚠ required
-		_icon: {},
+		_icon: {}, // ⚠ required
 		_label: false, // TODO: version 1
 		// _label: '', // TODO: version 2
 	};
@@ -394,8 +399,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_role')
-	public validateRole(value?: AlternativButtonLinkRole): void {
-		watchString(this, '_role', value);
+	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
+		validateAlternativeButtonLinkRole(this, value);
 	}
 
 	/**
@@ -420,8 +425,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_target')
-	public validateTarget(value?: LinkTarget): void {
-		watchString(this, '_target', value);
+	public validateTarget(value?: LinkTargetPropType): void {
+		validateLinkTarget(this, value);
 	}
 
 	@Watch('_targetDescription')
@@ -430,8 +435,8 @@ export class KolLinkWc implements KoliBriLinkAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: AlignPropType): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	/**

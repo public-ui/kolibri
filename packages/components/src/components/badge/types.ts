@@ -1,32 +1,36 @@
-import { Generic } from '@a11y-ui/core';
-
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
 import { ColorPair, PropColor } from '../../types/props/color';
+import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
-import { HideLabelPropType } from '../../types/props/hide-label';
+import { PropIcon } from '../../types/props/icon';
+import { Generic } from '@a11y-ui/core';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	color: Stringified<PropColor>;
-	/**
-	 * @deprecated
-	 */
-	hideLabel: HideLabelPropType;
-	icon: Stringified<KoliBriIconProp>;
+	smartButton: Stringified<ButtonProps>;
 	/**
 	 * @deprecated
 	 */
 	iconOnly: boolean;
-	smartButton: Stringified<ButtonProps>;
-};
-export type KoliBriBadgeProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+} & PropHideLabel &
+	PropIcon;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	color: ColorPair;
-} & PropLabel;
+};
 type OptionalStates = {
 	smartButton: ButtonProps;
 };
-export type KoliBriBadgeStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+
+type RequiredWatchers = RequiredStates;
+type OptionalWatchers = OptionalStates;
+
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.Component &
+	Generic.Element.Members<RequiredProps, OptionalProps> &
+	Generic.Element.Watchers<RequiredWatchers, OptionalWatchers> & {
+		readonly state: Generic.Element.Members<RequiredStates, OptionalStates>;
+	};

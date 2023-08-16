@@ -1,7 +1,7 @@
 import { devHint } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';
 import { KoliBriDevHelper, setEventTarget } from '../../utils/prop.validators';
-import { KoliBriFormProps } from './types';
+import { Props } from './types';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {
@@ -43,7 +43,7 @@ export const propagateResetEventToForm = (
 			form.dispatchEvent(event);
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as KoliBriFormProps;
+			const kolForm = form as Props;
 			if (typeof kolForm._on?.onReset === 'function') {
 				typeof kolForm._on?.onReset(event);
 			}
@@ -79,7 +79,7 @@ export const propagateSubmitEventToForm = (
 			form.dispatchEvent(event);
 		} else if (form.tagName === 'KOL-FORM') {
 			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as KoliBriFormProps;
+			const kolForm = form as Props;
 			if (typeof kolForm._on?.onSubmit === 'function') {
 				kolForm._on?.onSubmit(event);
 			}

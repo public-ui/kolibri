@@ -1,15 +1,19 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { AlternativButtonLinkRole, KoliBriButtonCallbacks, KoliBriButtonType, OptionalButtonLinkProps, RequiredButtonLinkProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
-import { AlignPropType } from '../../types/props/align';
 import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
 import { IdPropType } from '../../types/props/id';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { ButtonTypePropType } from '../../types/props/button-type';
+import { Props } from './types';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
+import { IconPropType } from '../../types/props/icon';
+import { NamePropType } from '../../types/props/name';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 @Component({
 	tag: 'kol-button-link',
@@ -18,7 +22,7 @@ import { IdPropType } from '../../types/props/id';
 	},
 	shadow: true,
 })
-export class KolButtonLink implements Generic.Element.Members<RequiredButtonLinkProps, OptionalButtonLinkProps> {
+export class KolButtonLink implements Props {
 	@Element() private readonly host?: HTMLKolButtonLinkElement;
 	private ref?: HTMLKolButtonWcElement;
 
@@ -77,6 +81,7 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
@@ -89,23 +94,26 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: IconPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -126,23 +134,23 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<StencilUnknown>;
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -152,12 +160,12 @@ export class KolButtonLink implements Generic.Element.Members<RequiredButtonLink
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: AlignPropType = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.

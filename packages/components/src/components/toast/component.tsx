@@ -8,7 +8,7 @@ import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
-import { KoliBriToastAPI, KoliBriToastStates } from './types';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt der Meldung.
@@ -20,7 +20,7 @@ import { KoliBriToastAPI, KoliBriToastStates } from './types';
 	},
 	shadow: true,
 })
-export class KolToast implements KoliBriToastAPI {
+export class KolToast implements API {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
@@ -28,8 +28,9 @@ export class KolToast implements KoliBriToastAPI {
 
 	/**
 	 * Defines whether the element can be closed.
+	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType = false;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
@@ -38,7 +39,7 @@ export class KolToast implements KoliBriToastAPI {
 	@Prop() public _heading?: string = '';
 
 	/**
-	 * Defines the text to show in the Toast.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
@@ -54,8 +55,9 @@ export class KolToast implements KoliBriToastAPI {
 
 	/**
 	 * Makes the element show up.
+	 * TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _show?: ShowPropType = true;
+	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
@@ -67,7 +69,7 @@ export class KolToast implements KoliBriToastAPI {
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
-	@State() public state: KoliBriToastStates = {
+	@State() public state: States = {
 		_alert: true,
 		_level: 1,
 		_show: true,
