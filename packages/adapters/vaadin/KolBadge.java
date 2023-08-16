@@ -13,7 +13,7 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.23")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
@@ -36,7 +36,9 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+  since it would not be accessible without visible labeling. A separate tooltip
+  is not planed, because a badge is not an interactive element.
 	 *
 	 * @param value String
 	 */
@@ -45,7 +47,9 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+  since it would not be accessible without visible labeling. A separate tooltip
+  is not planed, because a badge is not an interactive element.
 	 *
 	 * @return Optional<String>
 	 */

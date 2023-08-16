@@ -42,11 +42,11 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 ```mermaid
 graph TD;
   kol-version --> kol-badge
-  kol-badge --> kol-span-wc
   kol-badge --> kol-button-wc
-  kol-span-wc --> kol-icon
+  kol-badge --> kol-span-wc
   kol-button-wc --> kol-span-wc
   kol-button-wc --> kol-tooltip
+  kol-span-wc --> kol-icon
   kol-tooltip --> kol-span-wc
   style kol-version fill:#f9f,stroke:#333,stroke-width:4px
 ```
