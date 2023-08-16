@@ -80,7 +80,7 @@
 		"@stencil/svelte-output-target": "0.0.3",
 		"@stencil/vue-output-target": "0.8.6",
 		"@types/color-convert": "2.0.0",
-		"@types/jest": "26.0.24",
+		"@types/jest": "29.5.3",
 		"@types/mustache": "4.2.2",
 		"@types/node": "ts5.1",
 		"@types/pug": "2.0.6",
