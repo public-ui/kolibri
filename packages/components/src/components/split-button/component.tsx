@@ -187,7 +187,7 @@ export class KolSplitButton implements API {
 	@Prop() public _iconOnly?: boolean;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: LabelPropType;
 

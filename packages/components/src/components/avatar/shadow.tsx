@@ -24,7 +24,7 @@ export class KolAvatar implements Props {
 	@Prop() public _src?: string;
 
 	/**
-	 * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: string;
 }

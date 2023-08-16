@@ -4,7 +4,7 @@ import { ColorPair, PropColor } from '../../types/props/color';
 import { PropHideLabel } from '../../types/props/hide-label';
 import { PropLabel } from '../../types/props/label';
 import { PropIcon } from '../../types/props/icon';
-import { Generic } from 'adopted-style-sheets';
+import { Generic } from '@a11y-ui/core';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {

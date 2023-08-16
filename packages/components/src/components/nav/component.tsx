@@ -240,7 +240,7 @@ export class KolNav implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType; // TODO: required in v2
 

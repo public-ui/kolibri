@@ -120,7 +120,7 @@ export class KolAlertWc implements API {
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Defines the description of the component.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType;
 

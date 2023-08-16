@@ -33,7 +33,7 @@ export class KolAbbr implements API {
 	}
 
 	/**
-	 * Defines the abbreviation title and tooltip content
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType;
 

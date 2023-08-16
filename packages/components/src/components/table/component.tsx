@@ -68,7 +68,7 @@ export class KolTable implements API {
 	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
 
 	/**
-	 * Defines the table caption.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: string;
 

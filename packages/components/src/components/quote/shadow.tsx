@@ -20,7 +20,7 @@ export class KolQuote implements API {
 	@Prop() public _caption?: string;
 
 	/**
-	 * Defines the label of the citation link.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: string;
 

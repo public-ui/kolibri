@@ -39,7 +39,7 @@ export class KolToast implements API {
 	@Prop() public _heading?: string = '';
 
 	/**
-	 * Defines the text to show in the Toast.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType;
 

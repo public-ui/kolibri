@@ -47,7 +47,7 @@ export class KolDetails implements API {
 	}
 
 	/**
-	 * Defines the summary label.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType;
 

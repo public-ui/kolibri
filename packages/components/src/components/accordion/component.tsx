@@ -124,7 +124,7 @@ export class KolAccordion implements API {
 	@Prop() public _heading?: string;
 
 	/**
-	 * Defines the button label
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: string;
 

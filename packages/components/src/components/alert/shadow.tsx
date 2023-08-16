@@ -50,7 +50,7 @@ export class KolAlert implements Props {
 	@Prop() public _heading?: string;
 
 	/**
-	 * Defines the description of the component.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label?: LabelPropType;
 
