@@ -7,10 +7,9 @@ import { handleColorChange, PropColor, validateColor } from '../../types/props/c
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
-import { objectObjectHandler, parseJson, setState, watchBoolean } from '../../utils/prop.validators';
-import { API, States } from './types';
-import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
-import { IconPropType, validateIcon } from '../../types/props/icon';
+import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
+import { Props, States } from './types';
+import { HideLabelPropType } from '../../types/props/hide-label';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -21,7 +20,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge implements API {
+export class KolBadge implements Props {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
@@ -64,7 +63,11 @@ export class KolBadge implements API {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * Hides the label and shows the description in a Tooltip instead.
+	 * ⚠️ We do not support the `_hide-label` property for the `kol-badge` element,
+	 *   since it would not be accessible without visible labeling. A separate tooltip
+	 *   is not planed, because a badge is not an interactive element.
+	 *
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _hideLabel?: HideLabelPropType = false;
 
@@ -113,21 +116,6 @@ export class KolBadge implements API {
 		});
 	}
 
-	@Watch('_hideLabel')
-	public validateHideLabel(value?: HideLabelPropType): void {
-		validateHideLabel(this, value);
-	}
-
-	@Watch('_icon')
-	public validateIcon(value?: IconPropType): void {
-		validateIcon(this, value);
-	}
-
-	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		watchBoolean(this, '_iconOnly', value);
-	}
-
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value, {
@@ -156,9 +144,6 @@ export class KolBadge implements API {
 
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
-		this.validateHideLabel(this._hideLabel);
-		this.validateIcon(this._icon);
-		this.validateIconOnly(this._iconOnly);
 		this.validateLabel(this._label);
 		this.validateSmartButton(this._smartButton);
 	}
