@@ -51,7 +51,7 @@ devDependencies:
     version: 4.2.2
   '@types/node':
     specifier: ts5.1
-    version: 20.4.10
+    version: 20.5.0
   '@types/pug':
     specifier: 2.0.6
     version: 2.0.6
@@ -2116,10 +2116,6 @@ packages:
 
   /@types/mustache@4.2.2:
     resolution: {integrity: sha512-MUSpfpW0yZbTgjekDbH0shMYBUD+X/uJJJMm9LXN1d5yjl5lCY1vN/eWKD6D1tOtjA6206K0zcIPnUaFMurdNA==}
-    dev: true
-
-  /@types/node@20.4.10:
-    resolution: {integrity: sha512-vwzFiiy8Rn6E0MtA13/Cxxgpan/N6UeNYR9oUu6kuJWxu6zCk98trcDp8CBhbtaeuq9SykCmXkFr2lWLoPcvLg==}
     dev: true
 
   /@types/node@20.5.0:
