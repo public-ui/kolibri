@@ -20,7 +20,7 @@ Stattdessen empfehlen wir als erstes bei [Stack Overflow](https://stackoverflow.
 
 Um Ihre und unsere Zeit zu sparen, werden wir alle allgemeinen Fragen im Ticketsystem schließen und die Fragenden an Stack Overflow weiterleiten.
 
-Wenn Sie gerne mit uns Kontakt aufnehmen wollen, dann schreiben Sie uns entweder eine E-Mail an [kolibri@itzbund.de](kolibri@itzbund.de) oder nutzen Sie unseren [Discord]()-Chat.
+Wenn Sie gerne mit uns Kontakt aufnehmen wollen, dann schreiben Sie uns entweder eine E-Mail an [kolibri@itzbund.de](kolibri@itzbund.de).
 
 ## Fehler melden
 
@@ -32,7 +32,7 @@ Noch besser wäre es, wenn Sie uns eine Lösung als Pull Request vorschlagen.
 
 Sie können neue Funktionen anfordern, indem Sie ein Problem an unser Ticketsystem senden. Wenn Sie gerne eine neue Funktion implementieren möchten, dann beachten Sie bitte die folgenden Schritte für das weitere Vorgehen:
 
-- Es ist hilfreich vor dem Implementieren das [Architekturkonzept](./docs/ARCHITECTURE.md) zu KoliBri zu lesen.
+- Es ist hilfreich vor dem Implementieren das [Architekturkonzept](https://public-ui.github.io/docs/concepts/architecture) zu KoliBri zu lesen.
 - Bei größeren Neuerungen legen Sie bitte ein Ticket mit der Beschreibung der neuen Funktion an.
 - Bei kleinen Neuerungen können Sie die Implementierung direkt als Pull Request anbieten und begründen.
 

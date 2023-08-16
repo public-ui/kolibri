@@ -84,67 +84,73 @@ export class KolInputRange implements API {
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
-					<div slot="input" class="inputs-wrapper">
-						<input
-							title=""
-							accessKey={this.state._accessKey}
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							autoCapitalize="off"
-							autoComplete={this.state._autoComplete}
-							autoCorrect="off"
-							disabled={this.state._disabled}
-							list={hasSuggestions ? `${this.state._id}-list` : undefined}
-							max={this.state._max}
-							min={this.state._min}
-							name={this.state._name ? `${this.state._name}-range` : undefined}
-							spellcheck="false"
-							step={this.state._step}
-							tabIndex={-1}
-							type="range"
-							value={this.state._value as number}
-							{...this.controller.onFacade}
-							onChange={this.onChange}
-						/>
-						<input
-							ref={this.catchInputNumberRef}
-							title=""
-							accessKey={this.state._accessKey}
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							autoCapitalize="off"
-							autoComplete={this.state._autoComplete}
-							autoCorrect="off"
-							disabled={this.state._disabled}
-							id={this.state._id}
-							list={hasSuggestions ? `${this.state._id}-list` : undefined}
-							max={this.state._max}
-							min={this.state._min}
-							name={this.state._name ? `${this.state._name}-number` : undefined}
-							step={this.state._step}
-							type="number"
-							value={this.state._value}
-							{...this.controller.onFacade}
-							onKeyUp={this.onKeyUp}
-							onChange={this.onChange}
-						/>
-						<kol-tooltip
-							/**
-							 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
-							 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
-							 */
-							aria-hidden="true"
-							hidden={hasExpertSlot || !this.state._hideLabel}
-							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
-						></kol-tooltip>
+					<div slot="input">
+						<div
+							class="inputs-wrapper"
+							style={{
+								'--kolibri-input-range--input-number--width': `${this.state._max}`.length + 0.5 + 'em',
+							}}
+						>
+							<input
+								title=""
+								accessKey={this.state._accessKey}
+								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								autoCapitalize="off"
+								autoComplete={this.state._autoComplete}
+								autoCorrect="off"
+								disabled={this.state._disabled}
+								list={hasSuggestions ? `${this.state._id}-list` : undefined}
+								max={this.state._max}
+								min={this.state._min}
+								name={this.state._name ? `${this.state._name}-range` : undefined}
+								spellcheck="false"
+								step={this.state._step}
+								tabIndex={-1}
+								type="range"
+								value={this.state._value as number}
+								{...this.controller.onFacade}
+								onChange={this.onChange}
+							/>
+							<input
+								ref={this.catchInputNumberRef}
+								title=""
+								accessKey={this.state._accessKey}
+								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
+								autoCapitalize="off"
+								autoComplete={this.state._autoComplete}
+								autoCorrect="off"
+								disabled={this.state._disabled}
+								id={this.state._id}
+								list={hasSuggestions ? `${this.state._id}-list` : undefined}
+								max={this.state._max}
+								min={this.state._min}
+								name={this.state._name ? `${this.state._name}-number` : undefined}
+								step={this.state._step}
+								type="number"
+								value={this.state._value}
+								{...this.controller.onFacade}
+								onKeyUp={this.onKeyUp}
+								onChange={this.onChange}
+							/>
+							<kol-tooltip
+								/**
+								 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
+								 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
+								 */
+								aria-hidden="true"
+								hidden={hasExpertSlot || !this.state._hideLabel}
+								_align={this._tooltipAlign}
+								_label={typeof this.state._label === 'string' ? this.state._label : ''}
+							></kol-tooltip>
+						</div>
 						{hasSuggestions && [
 							<datalist id={`${this.state._id}-list`}>
 								{this.state._suggestions.map((option: W3CInputValue) => (
 									<option value={option} />
 								))}
 							</datalist>,
-
 							// <ul class="grid gap-1 text-sm grid-flow-col">
 							//   {this.state._suggestions.map((option: InputOption<number>) => (
 							//     <li class="border-1">{option.label}</li>
