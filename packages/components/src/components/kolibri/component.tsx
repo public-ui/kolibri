@@ -49,7 +49,7 @@ export class KolKolibri implements API {
 		);
 	}
 
-	private interval?: NodeJS.Timer;
+	private interval?: number;
 
 	/**
 	 * Gibt an, ob das Bild-Logo farblich animiert werden soll.
@@ -116,7 +116,7 @@ export class KolKolibri implements API {
 	}
 
 	public componentDidRender(): void {
-		clearInterval(this.interval as NodeJS.Timer);
+		clearInterval(this.interval);
 		if (this.state._animate) {
 			this.interval = setInterval(() => {
 				this.state = {
@@ -127,11 +127,11 @@ export class KolKolibri implements API {
 						blue: (this.state._color.blue + 3) % max,
 					},
 				};
-			}, 50);
+			}, 50) as unknown as number;
 		}
 	}
 
 	public disconnectedCallback(): void {
-		clearInterval(this.interval as NodeJS.Timer);
+		clearInterval(this.interval);
 	}
 }

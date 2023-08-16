@@ -35,7 +35,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+	 * Adjusts the height of the element to its content.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+	 * Adjusts the height of the element to its content.
 	 *
 	 * @return Optional<String>
 	 */
@@ -111,7 +111,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
 	 *
 	 * @param value String
 	 */
@@ -120,7 +120,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
 	 *
 	 * @return Optional<String>
 	 */
@@ -358,7 +358,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -367,7 +367,7 @@ public class KolTextarea extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */

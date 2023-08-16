@@ -38,7 +38,6 @@ import { SPLIT_BUTTON_ROUTES } from '../samples/split-button/routes';
 import { TABLE_ROUTES } from '../samples/table/routes';
 import { TEXTAREA_ROUTES } from '../samples/textarea/routes';
 import { TOAST_ROUTES } from '../samples/toast/routes';
-import { TOOLTIP_ROUTES } from '../samples/tooltip/routes';
 import { VERSION_ROUTES } from '../samples/version/routes';
 import { Routes } from './types';
 
@@ -84,6 +83,5 @@ export const ROUTES: Routes = {
 	...TABLE_ROUTES,
 	...TEXTAREA_ROUTES,
 	...TOAST_ROUTES,
-	...TOOLTIP_ROUTES,
 	...VERSION_ROUTES,
 };

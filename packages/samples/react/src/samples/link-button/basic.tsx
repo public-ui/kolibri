@@ -10,8 +10,8 @@ const ARGS = {
 };
 
 export const LinkButtonBasic: FC = () => (
-	<div className="grid gap-4">
-		<div className="d-flex flex-warp gap-2">
+	<div className="grid gap-14">
+		<div className="flex flex-warp gap-14">
 			<KolLinkButton _label="Primary" _variant="primary" {...ARGS}></KolLinkButton>
 			<KolLinkButton _label="Secondary" _variant="secondary" {...ARGS}></KolLinkButton>
 			<KolLinkButton _label="Normal" _variant="normal" {...ARGS}></KolLinkButton>
