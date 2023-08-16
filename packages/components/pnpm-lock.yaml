@@ -20,8 +20,8 @@ dependencies:
 
 devDependencies:
   '@stencil/angular-output-target':
-    specifier: 0.8.0
-    version: 0.8.0(@stencil/core@4.0.5)
+    specifier: 0.7.1
+    version: 0.7.1(@stencil/core@4.0.5)
   '@stencil/core':
     specifier: 4.0.5
     version: 4.0.5
@@ -47,16 +47,16 @@ devDependencies:
     specifier: 26.0.24
     version: 26.0.24
   '@types/mustache':
-    specifier: ^4.2.2
+    specifier: 4.2.2
     version: 4.2.2
   '@types/node':
     specifier: ts5.1
-    version: 20.4.10
+    version: 20.5.0
   '@types/pug':
     specifier: 2.0.6
     version: 2.0.6
   '@types/twig':
-    specifier: ^1.12.9
+    specifier: 1.12.9
     version: 1.12.9
   '@types/wcag-contrast':
     specifier: 3.0.0
@@ -122,7 +122,7 @@ devDependencies:
     specifier: 11.9.1
     version: 11.9.1
   mustache:
-    specifier: ^4.2.0
+    specifier: 4.2.0
     version: 4.2.0
   postcss:
     specifier: 8.4.27
@@ -161,7 +161,7 @@ devDependencies:
     specifier: 2.6.1
     version: 2.6.1
   twig:
-    specifier: ^1.16.0
+    specifier: 1.16.0
     version: 1.16.0
   typescript:
     specifier: 5.1.6
@@ -1951,8 +1951,8 @@ packages:
       '@sinonjs/commons': 1.8.6
     dev: true
 
-  /@stencil/angular-output-target@0.8.0(@stencil/core@4.0.5):
-    resolution: {integrity: sha512-d8LXkJR8OybEZrwlZY0vxCqlvZxCLkt2VZnvc3nueTV7Gc1oMN2kk2NxW1X72Vd+gck7cKPeZeXfzdr5YaUpcw==}
+  /@stencil/angular-output-target@0.7.1(@stencil/core@4.0.5):
+    resolution: {integrity: sha512-lxJbCAbyAQVAKGgEpNTjSF7GZZszbrJnNdNVgzuD1hLRFJyElA6kUSL0GQrZMbiPG5lC/cYdbQwpyWHX4xN8mw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
@@ -2116,10 +2116,6 @@ packages:
 
   /@types/mustache@4.2.2:
     resolution: {integrity: sha512-MUSpfpW0yZbTgjekDbH0shMYBUD+X/uJJJMm9LXN1d5yjl5lCY1vN/eWKD6D1tOtjA6206K0zcIPnUaFMurdNA==}
-    dev: true
-
-  /@types/node@20.4.10:
-    resolution: {integrity: sha512-vwzFiiy8Rn6E0MtA13/Cxxgpan/N6UeNYR9oUu6kuJWxu6zCk98trcDp8CBhbtaeuq9SykCmXkFr2lWLoPcvLg==}
     dev: true
 
   /@types/node@20.5.0:
