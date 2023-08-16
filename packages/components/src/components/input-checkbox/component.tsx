@@ -2,7 +2,7 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
@@ -11,6 +11,8 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
 import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
+import { CheckedPropType } from '../../types/props/checked';
+import { IndeterminatePropType } from '../../types/props/indeterminate';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -110,9 +112,9 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
+	 * Defines whether the checkbox is checked or not. Can be read and written.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _checked?: CheckedPropType = false;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -145,9 +147,9 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _id?: string;
 
 	/**
-	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
+	@Prop({ mutable: true, reflect: true }) public _indeterminate?: IndeterminatePropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -181,9 +183,9 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
@@ -236,7 +238,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_checked')
-	public validateChecked(value?: boolean): void {
+	public validateChecked(value?: CheckedPropType): void {
 		this.controller.validateChecked(value);
 	}
 
@@ -271,7 +273,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_indeterminate')
-	public validateIndeterminate(value?: boolean): void {
+	public validateIndeterminate(value?: IndeterminatePropType): void {
 		this.controller.validateIndeterminate(value);
 	}
 

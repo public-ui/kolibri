@@ -10,7 +10,6 @@ import { PropLabel } from '../../types/props/label';
 type RequiredProps = PropLabel;
 type OptionalProps = {
 	color: Stringified<PropColor>;
-	hideLabel: boolean;
 	icon: Stringified<KoliBriIconProp>;
 	/**
 	 * @deprecated

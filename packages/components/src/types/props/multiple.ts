@@ -3,17 +3,16 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Schlatet das Eingabefeld um, sodass es mehrere Eingaben akzeptiert.
- */
-/** en
+export type MultiplePropType = boolean;
+
+/**
  * Makes the input accept multiple inputs.
  */
 export type PropMultiple = {
-	multiple: boolean;
+	multiple: MultiplePropType;
 };
 
 /* validator */
-export const validateMultiple = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateMultiple = (component: Generic.Element.Component, value?: MultiplePropType): void => {
 	watchBoolean(component, '_multiple', value);
 };

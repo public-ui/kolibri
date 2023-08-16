@@ -2,7 +2,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
-import { validateHasCloser } from '../../types/props/has-closer';
+import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { Log } from '../../utils/dev.utils';
 import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
@@ -68,6 +68,7 @@ export class KolAlertWc implements API {
 				class={{
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,
+					hasCloser: !!this.state._hasCloser,
 				}}
 				role={this.state._alert ? 'alert' : undefined}
 			>
@@ -113,9 +114,9 @@ export class KolAlertWc implements API {
 	@Prop() public _alert?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	/**
 	 * Defines the description of the component.
@@ -152,7 +153,7 @@ export class KolAlertWc implements API {
 	}
 
 	@Watch('_hasCloser')
-	public validateHasCloser(value?: boolean): void {
+	public validateHasCloser(value?: HasCloserPropType): void {
 		validateHasCloser(this, value);
 	}
 

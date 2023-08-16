@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { validateName } from '../../types/props/name';
+import { NamePropType, validateName } from '../../types/props/name';
 import { StencilUnknown } from '../../types/unknown';
 import { devHint, devWarning } from '../../utils/a11y.tipps';
 import { getExperimentalMode } from '../../utils/dev.utils';
@@ -152,7 +152,7 @@ export class AssociatedInputController implements Watches {
 		}
 	}
 
-	public validateName(value?: string): void {
+	public validateName(value?: NamePropType): void {
 		validateName(this.component, value, {
 			hooks: {
 				afterPatch: () => {

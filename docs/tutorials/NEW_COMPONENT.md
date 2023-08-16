@@ -1,6 +1,6 @@
 # Neue Komponente erstellen
 
-> Schritt-für-Schritt-Anleitung, wie man einen neue Komponente im Teilmodul `components` erstellt.
+> Schritt-für-Schritt-Anleitung, wie man eine neue Komponente im Teilmodul `components` erstellt.
 
 ## Grundprinzipien
 
@@ -15,7 +15,7 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 | Schritt | Kurzbeschreibung                                                                                                                        |
 | :-----: | --------------------------------------------------------------------------------------------------------------------------------------- |
 |    0    | Name im Schema hinterlegen                                                                                                              |
-|    1    | Verzeichnis anlegen<br>- component.tsx(optional)<br>- readme.md<br>- shadow.tsx: Komponente mit shadowDOM<br>- styles.css<br>- types.ts |
+|    1    | Verzeichnis anlegen<br>- component.tsx(optional)<br>- readme.md<br>- shadow.tsx: Komponente mit Shadow DOM<br>- styles.css<br>- types.ts |
 |    2    | API spezifizieren                                                                                                                       |
 |    3    | Klasse zur API implementieren<br>- Props<br>- State<br>- Watcher<br>- Initialer Hook<br>- Render-Methode                                |
 |    4    | Styling anlegen                                                                                                                         |
@@ -24,18 +24,18 @@ Folgende Grundprinzipien gelten für das Schreiben von Quellcode:
 |.   7.   | Component-Identifier in die `stencil.config.js` eintragen                                                                               |
 |   ...   | ...                                                                                                                                     |
 |   ...   | Klasse in Komponenten-Liste für Tests aufnehmen (packages/components/src/components/component-list.ts)                                  |
-|   ...   | Alle autogeneierten Daten zur Komponenten mit einchecken                                                                                |
+|   ...   | Alle autogeneierten Daten zur Komponente mit einchecken                                                                                |
 
 ## Schritt 0
 
 Als erstes wird der **Name** der neuen Komponenten in der **Schema**-Datei (`src/schema/tag-names.ts`) hinterlegt.
 
-## Schritt 1 - Verzeichnins anlegen
+## Schritt 1 - Verzeichnis anlegen
 
 Eine Vorlage ist unter `/docs/tutorials/component` zu finden. Ziel: `/packages/components/src/components/[component-name]`.
-Sofern eine Variante ohne ShadowDOM für andere Komponenten benötigt wird, ist die Komponente selbst, mit `shadow: false` anzulegen und diese Komponente in `shadow.tsx` einzubinden.
+Sofern eine Variante ohne Shadow DOM für andere Komponenten benötigt wird, ist die Komponente selbst, mit `shadow: false` anzulegen und diese Komponente in `shadow.tsx` einzubinden.
 Andernfalls ist die Komponente direkt mit `shadow: true` in `shadow.tsx` zu implementieren.
-Ziel: shadow.tsx existiert immer und liefert die Komponente mit ShadowDOM.
+Ziel: shadow.tsx existiert immer und liefert die Komponente mit Shadow DOM.
 Die `readme.md` wird automatisch bei `pnpm build` erzeugt, sollte sie bereits existieren wird der automatisch generierte Inhalt angehängt.
 
 ## Schritt 2 - API spezifizieren
@@ -51,7 +51,7 @@ Inhalt:
 - `@Component` (außerhalb der Klasse),
 - `@Prop`: alphabetisch sortiert,
 - `@State`: Standardwerte werden hier gesetzt,
-- `@Watch`: werden bei Änderungen des Wertes aufgerufen, Validierung und übernahme des Wertes in den State,
+- `@Watch`: werden bei Änderungen des Wertes aufgerufen, Validierung und Übernahme des Wertes in den State,
 - `public componentWillLoad()`: Initialer Hook, alle Validierungsmethoden hier aufrufen
 - `public render()`: Render-Methode, erstellt das HTML, das gerendert werden soll
 
@@ -59,7 +59,7 @@ Inhalt:
 
 Datei: `styles.css`;
 Wichtig: `packages/components/src/components/README.md` beachten.
-Sofern Styling für mehrere komponenten verwendet werden soll, Datei passend benennen und direkt unter `/packages/components/src/components/` erstellen und in styles.css importieren.
+Sofern Styling für mehrere Komponenten verwendet werden soll, Datei passend benennen und direkt unter `/packages/components/src/components/` erstellen und in styles.css importieren.
 
 ## Schritt 5 - Beispiel in index.html erstellen
 

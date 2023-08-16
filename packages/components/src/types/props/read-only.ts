@@ -3,17 +3,16 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Setzt den Zugriff auf dieses Eingabeelement auf nur lesen.
- */
-/** en
+export type ReadOnlyPropType = boolean;
+
+/**
  * Makes the input element read only.
  */
 export type PropReadOnly = {
-	readOnly: boolean;
+	readOnly: ReadOnlyPropType;
 };
 
 /* validator */
-export const validateReadOnly = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateReadOnly = (component: Generic.Element.Component, value?: ReadOnlyPropType): void => {
 	watchBoolean(component, '_readOnly', value);
 };

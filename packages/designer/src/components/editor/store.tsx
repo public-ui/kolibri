@@ -303,6 +303,15 @@ export const components: Record<string, Component> = {
 				Irure eu adipisicing aute fugiat reprehenderit amet pariatur reprehenderit. Velit enim commodo qui in. Sint aliqua duis labore consequat eiusmod laboris
 				anim. Aliquip sunt ea nulla nostrud non aute. Nulla irure nisi nulla sunt elit tempor nostrud.
 			</KolAlert>
+			<KolAlert _type="warning" _variant="card" _heading="Warnung mit langem Inhalt" _hasCloser>
+				Irure eu adipisicing aute fugiat reprehenderit amet pariatur reprehenderit. Velit enim commodo qui in. Sint aliqua duis labore consequat eiusmod laboris
+				anim. Aliquip sunt ea nulla nostrud non aute. Nulla irure nisi nulla sunt elit tempor nostrud. Irure eu adipisicing aute fugiat reprehenderit amet
+				pariatur reprehenderit. Velit enim commodo qui in. Sint aliqua duis labore consequat eiusmod laboris anim. Aliquip sunt ea nulla nostrud non aute. Nulla
+				irure nisi nulla sunt elit tempor nostrud. Irure eu adipisicing aute fugiat reprehenderit amet pariatur reprehenderit. Velit enim commodo qui in. Sint
+				aliqua duis labore consequat eiusmod laboris anim. Aliquip sunt ea nulla nostrud non aute. Nulla irure nisi nulla sunt elit tempor nostrud. Irure eu
+				adipisicing aute fugiat reprehenderit amet pariatur reprehenderit. Velit enim commodo qui in. Sint aliqua duis labore consequat eiusmod laboris anim.
+				Aliquip sunt ea nulla nostrud non aute. Nulla irure nisi nulla sunt elit tempor nostrud.
+			</KolAlert>
 		</div>
 	),
 	'KOL-AVATAR': () => (
@@ -1486,6 +1495,8 @@ export const components: Record<string, Component> = {
 	'KOL-SPIN': () => (
 		<div class="grid gap-6">
 			<KolSpin _show />
+			<KolSpin _show _variant="cycle" />
+			<KolSpin _show _variant="none" />
 		</div>
 	),
 	'KOL-TABLE': () => (

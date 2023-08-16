@@ -1,8 +1,8 @@
-/* types */
 import { Generic } from '@a11y-ui/core';
 
 import { watchNumber } from '../../utils/prop.validators';
 
+/* types */
 export type RowsPropType = number;
 
 /**

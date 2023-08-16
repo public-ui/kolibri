@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { InputTypeOnDefault } from '../../types/input/types';
-import { Align } from '../../types/props/align';
+import { AlignPropType } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { RowsPropType } from '../../types/props/rows';
 import { nonce } from '../../utils/dev.utils';
@@ -10,6 +10,8 @@ import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { TextareaController } from './controller';
 import { ComponentApi, CSSResize, States } from './types';
+import { AdjustHeightPropType } from '../../types/props/adjust-height';
+import { HasCounterPropType } from '../../types/props/has-counter';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -116,9 +118,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.
+	 * Adjusts the height of the element to its content.
 	 */
-	@Prop() public _adjustHeight?: boolean = false;
+	@Prop() public _adjustHeight?: AdjustHeightPropType = false;
 
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
@@ -136,9 +138,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
 	 */
-	@Prop() public _hasCounter?: boolean;
+	@Prop() public _hasCounter?: HasCounterPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -212,9 +214,9 @@ export class KolTextarea implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: AlignPropType = 'top';
 
 	/**
 	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
@@ -245,7 +247,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_adjustHeight')
-	public validateAdjustHeight(value?: boolean): void {
+	public validateAdjustHeight(value?: AdjustHeightPropType): void {
 		this.controller.validateAdjustHeight(value);
 	}
 
@@ -265,7 +267,7 @@ export class KolTextarea implements ComponentApi {
 	}
 
 	@Watch('_hasCounter')
-	public validateHasCounter(value?: boolean): void {
+	public validateHasCounter(value?: HasCounterPropType): void {
 		this.controller.validateHasCounter(value);
 	}
 

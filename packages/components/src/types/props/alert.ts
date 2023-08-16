@@ -3,17 +3,16 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-/** de
- * Macht die Fehlermeldung dieses Elements von Screenreadern lesbar.
- */
-/** en
- * Makes hints readable for screenreaders.
+export type AlertPropType = boolean;
+
+/**
+ * Defines whether the screen-readers should read out the notification.
  */
 export type PropAlert = {
-	alert: boolean;
+	alert: AlertPropType;
 };
 
 /* validator */
-export const validateAlert = (component: Generic.Element.Component, value?: boolean): void => {
+export const validateAlert = (component: Generic.Element.Component, value?: AlertPropType): void => {
 	watchBoolean(component, '_alert', value);
 };

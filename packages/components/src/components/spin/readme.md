@@ -112,9 +112,9 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                     | Type                                      | Default |
-| ---------- | ---------- | --------------------------------------------------------------- | ----------------------------------------- | ------- |
-| `_show`    | `_show`    | Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist. | `boolean \| undefined`                    | `false` |
-| `_variant` | `_variant` | Gibt an, welche Variante der Darstellung genutzt werden soll.   | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
+| Property   | Attribute  | Description                             | Type                                      | Default |
+| ---------- | ---------- | --------------------------------------- | ----------------------------------------- | ------- |
+| `_show`    | `_show`    | Makes the element show up.              | `boolean \| undefined`                    | `false` |
+| `_variant` | `_variant` | Defines the variant of spin navigation. | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
 
 ---
