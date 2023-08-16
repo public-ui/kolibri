@@ -54,7 +54,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
+	 * Defines whether the checkbox is checked or not. Can be read and written.
 	 *
 	 * @param value String
 	 */
@@ -63,7 +63,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
+	 * Defines whether the checkbox is checked or not. Can be read and written.
 	 *
 	 * @return Optional<String>
 	 */
@@ -187,7 +187,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 *
 	 * @param value String
 	 */
@@ -196,7 +196,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 *
 	 * @return Optional<String>
 	 */
@@ -282,7 +282,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -291,7 +291,7 @@ public class KolInputCheckbox extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */

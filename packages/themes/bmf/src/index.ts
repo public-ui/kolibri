@@ -956,6 +956,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 	}
 	.card > .content {
 		padding: 1rem;
+		max-height: 9.5rem;
+  	overflow-y: auto;
 	}
 	.card.default > .heading {
 		background-color: var(--color-grey);

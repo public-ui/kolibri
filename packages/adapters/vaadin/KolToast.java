@@ -37,7 +37,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
 	 *
 	 * @param value String
 	 */
@@ -46,7 +46,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
 	 *
 	 * @return Optional<String>
 	 */
@@ -113,7 +113,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @param value String
 	 */
@@ -122,7 +122,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @return Optional<String>
 	 */

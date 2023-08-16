@@ -282,7 +282,7 @@ public class KolInputDate extends Component {
 	}
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
 	 *
 	 * @param value String
 	 */
@@ -291,7 +291,7 @@ public class KolInputDate extends Component {
 	}
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
 	 *
 	 * @return Optional<String>
 	 */
@@ -396,7 +396,7 @@ public class KolInputDate extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -405,7 +405,7 @@ public class KolInputDate extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */

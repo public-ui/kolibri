@@ -141,14 +141,14 @@ export class KolToast implements KoliBriToastAPI {
 		this.validateType(this._type);
 	}
 
-	private durationTimeout?: NodeJS.Timer;
+	private durationTimeout?: number;
 
 	private readonly handleShowAndDuration = () => {
 		if (this.state._show === true && typeof this.state._showDuration === 'number' && this.state._showDuration >= 0) {
-			clearTimeout(this.durationTimeout as NodeJS.Timer);
+			clearTimeout(this.durationTimeout);
 			this.durationTimeout = setTimeout(() => {
 				this.close();
-			}, this.state._showDuration);
+			}, this.state._showDuration) as unknown as number;
 		}
 	};
 

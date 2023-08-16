@@ -9,9 +9,10 @@ kol-tooltip .tooltip-floating {
 	position: absolute;
 	visibility: hidden;
 	/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
-	width: max-content;
 	top: 0;
 	left: 0;
+	max-width: 90vw;
+	max-height: 90vh;
 }
 /* Shared between content and arrow */
 kol-tooltip .tooltip-area {

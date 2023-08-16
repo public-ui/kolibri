@@ -75,7 +75,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Setzt die Quell-URL des Bildes.
+	 * Sets the image `src` attribute to the given string.
 	 *
 	 * @param value String
 	 */
@@ -84,7 +84,7 @@ public class KolImage extends Component {
 	}
 
 	/**
-	 * Setzt die Quell-URL des Bildes.
+	 * Sets the image `src` attribute to the given string.
 	 *
 	 * @return Optional<String>
 	 */
