@@ -115,8 +115,9 @@ export class KolAlertWc implements API {
 
 	/**
 	 * Defines whether the element can be closed.
+	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType = false;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Defines the description of the component.

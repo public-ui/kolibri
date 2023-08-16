@@ -28,8 +28,9 @@ export class KolToast implements API {
 
 	/**
 	 * Defines whether the element can be closed.
+	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType = false;
+	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
@@ -54,7 +55,7 @@ export class KolToast implements API {
 
 	/**
 	 * Makes the element show up.
-	 * TODO: Type should be `ShowPropType, currently blocked by <https://github.com/ionic-team/stencil/issues/4663>
+	 * TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 

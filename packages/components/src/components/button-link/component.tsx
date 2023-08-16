@@ -11,10 +11,6 @@ import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-sel
 import { ButtonTypePropType } from '../../types/props/button-type';
 import { Props } from './types';
 import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
-import { AriaExpandedPropType } from '../../types/props/aria-expanded';
-import { AriaSelectedPropType } from '../../types/props/aria-selected';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { IconPropType } from '../../types/props/icon';
 import { NamePropType } from '../../types/props/name';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
@@ -85,8 +81,9 @@ export class KolButtonLink implements Props {
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _ariaExpanded?: AriaExpandedPropType;
+	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -97,18 +94,21 @@ export class KolButtonLink implements Props {
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 * TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _ariaSelected?: AriaSelectedPropType;
+	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).

@@ -15,13 +15,8 @@ import { SelectController } from './controller';
 import { API, States } from './types';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { IdPropType } from '../../types/props/id';
-import { MultiplePropType } from '../../types/props/multiple';
 import { NamePropType } from '../../types/props/name';
-import { RequiredPropType } from '../../types/props/required';
-import { TouchedPropType } from '../../types/props/touched';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -174,8 +169,9 @@ export class KolSelect implements API {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -191,8 +187,9 @@ export class KolSelect implements API {
 
 	/**
 	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -222,8 +219,9 @@ export class KolSelect implements API {
 
 	/**
 	 * Makes the input accept multiple inputs.
+	 * TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _multiple?: MultiplePropType = false;
+	@Prop() public _multiple?: boolean = false;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -242,8 +240,9 @@ export class KolSelect implements API {
 
 	/**
 	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _required?: RequiredPropType;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Defines how many rows of options should be visible at the same time.
@@ -273,8 +272,9 @@ export class KolSelect implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.

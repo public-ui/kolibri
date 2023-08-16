@@ -9,7 +9,6 @@ import { a11yHint, featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
 import { Props, States } from './types';
-import { HideLabelPropType } from '../../types/props/hide-label';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -67,9 +66,10 @@ export class KolBadge implements Props {
 	 *   since it would not be accessible without visible labeling. A separate tooltip
 	 *   is not planed, because a badge is not an interactive element.
 	 *
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 * @deprecated Will be removed in the next major version.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).

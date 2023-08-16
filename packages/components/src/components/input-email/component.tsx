@@ -15,15 +15,9 @@ import { InputEmailController } from './controller';
 import { API, States } from './types';
 import { MultiplePropType } from '../../types/props/multiple';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HasCounterPropType } from '../../types/props/has-counter';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
-import { ReadOnlyPropType } from '../../types/props/read-only';
-import { RequiredPropType } from '../../types/props/required';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -150,8 +144,9 @@ export class KolInputEmail implements API {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -160,13 +155,15 @@ export class KolInputEmail implements API {
 
 	/**
 	 * Shows the character count on the lower border of the input.s
+	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType;
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -201,8 +198,9 @@ export class KolInputEmail implements API {
 
 	/**
 	 * Makes the input accept multiple inputs.
+	 * TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _multiple?: MultiplePropType;
+	@Prop() public _multiple?: boolean;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -226,13 +224,15 @@ export class KolInputEmail implements API {
 
 	/**
 	 * Makes the input element read only.
+	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType;
+	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _required?: RequiredPropType;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
@@ -267,8 +267,9 @@ export class KolInputEmail implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.

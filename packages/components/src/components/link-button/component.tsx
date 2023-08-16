@@ -11,7 +11,6 @@ import { ButtonVariantPropType } from '../../types/props/button-variant';
 import { LinkTargetPropType } from '../../types/props/link-target';
 import { Props } from './types';
 import { CustomClassPropType } from '../../types/props/custom-class';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { HrefPropType } from '../../types/props/href';
 import { IconPropType } from '../../types/props/icon';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
@@ -121,8 +120,9 @@ export class KolLinkButton implements Props {
 
 	/**
 	 * Tells the label and shows it in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * This property is used for a link from a reference to the target URL.

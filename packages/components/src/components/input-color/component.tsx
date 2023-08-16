@@ -12,12 +12,9 @@ import { getRenderStates } from '../input/controller';
 import { InputColorController } from './controller';
 import { API, States } from './types';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -118,8 +115,9 @@ export class KolInputColor implements API {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -128,8 +126,9 @@ export class KolInputColor implements API {
 
 	/**
 	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -195,8 +194,9 @@ export class KolInputColor implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.

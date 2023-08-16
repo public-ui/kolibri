@@ -8,13 +8,6 @@ import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { W3CInputValue } from '../../types/w3c';
 import { Props } from './types';
-import { AlertPropType } from '../../types/props/alert';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HasCounterPropType } from '../../types/props/has-counter';
-import { HideLabelPropType } from '../../types/props/hide-label';
-import { ReadOnlyPropType } from '../../types/props/read-only';
-import { RequiredPropType } from '../../types/props/required';
-import { TouchedPropType } from '../../types/props/touched';
 import { IdPropType } from '../../types/props/id';
 
 /**
@@ -111,8 +104,9 @@ export class KolInput implements Props {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
+	 * TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _alert?: AlertPropType = true;
+	@Prop() public _alert?: boolean = true;
 
 	/**
 	 * @internal
@@ -121,8 +115,9 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -131,13 +126,15 @@ export class KolInput implements Props {
 
 	/**
 	 * Shows the character count on the lower border of the input.
+	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType;
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -161,8 +158,9 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the input element read only.
+	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType = false;
+	@Prop() public _readOnly?: boolean = false;
 
 	/**
 	 * Gibt an, ob die Komponente kein Label rendern soll.
@@ -171,8 +169,9 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop() public _required?: boolean = false;
 
 	/**
 	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
@@ -192,6 +191,7 @@ export class KolInput implements Props {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _touched?: TouchedPropType = false;
+	@Prop() public _touched?: boolean = false;
 }

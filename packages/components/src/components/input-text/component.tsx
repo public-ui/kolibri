@@ -6,7 +6,7 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { AlertPropType, validateAlert } from '../../types/props/alert';
-import { HideLabelPropType, validateHideLabel } from '../../types/props/hide-label';
+import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { featureHint } from '../../utils/a11y.tipps';
@@ -19,13 +19,8 @@ import { InputTextController } from './controller';
 import { API, States } from './types';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HasCounterPropType } from '../../types/props/has-counter';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
-import { ReadOnlyPropType } from '../../types/props/read-only';
-import { RequiredPropType } from '../../types/props/required';
-import { TouchedPropType } from '../../types/props/touched';
 
 featureHint(`[KolInputText] Pre- und post-Label für Währung usw.`);
 
@@ -156,8 +151,9 @@ export class KolInputText implements API {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
+	 * TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: AlertPropType = true;
+	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Gibt an, ob das Eingabefeld autovervollständigt werden kann.
@@ -166,8 +162,9 @@ export class KolInputText implements API {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -176,13 +173,15 @@ export class KolInputText implements API {
 
 	/**
 	 * Shows the character count on the lower border of the input.
+	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType;
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -237,13 +236,15 @@ export class KolInputText implements API {
 
 	/**
 	 * Makes the input element read only.
+	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType;
+	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _required?: RequiredPropType;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Setzt die Breite des Eingabefeldes in Buchstabenbreiten.
@@ -278,8 +279,9 @@ export class KolInputText implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.

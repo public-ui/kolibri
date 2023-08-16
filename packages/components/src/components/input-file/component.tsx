@@ -13,13 +13,8 @@ import { InputFileController } from './controller';
 import { API, States } from './types';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { IdPropType } from '../../types/props/id';
-import { MultiplePropType } from '../../types/props/multiple';
 import { NamePropType } from '../../types/props/name';
-import { RequiredPropType } from '../../types/props/required';
-import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -120,8 +115,9 @@ export class KolInputFile implements API {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -130,8 +126,9 @@ export class KolInputFile implements API {
 
 	/**
 	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -155,8 +152,9 @@ export class KolInputFile implements API {
 
 	/**
 	 * Makes the input accept multiple inputs.
+	 * TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _multiple?: MultiplePropType;
+	@Prop() public _multiple?: boolean;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -170,8 +168,9 @@ export class KolInputFile implements API {
 
 	/**
 	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _required?: RequiredPropType;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
@@ -196,8 +195,9 @@ export class KolInputFile implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.

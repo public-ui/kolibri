@@ -13,13 +13,9 @@ import { API, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
 import { CheckedPropType } from '../../types/props/checked';
 import { IndeterminatePropType } from '../../types/props/indeterminate';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
-import { RequiredPropType } from '../../types/props/required';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -120,13 +116,15 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
+	 * TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _checked?: CheckedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -135,8 +133,9 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -155,8 +154,9 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+	 * TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _indeterminate?: IndeterminatePropType;
+	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -175,8 +175,9 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _required?: RequiredPropType;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -196,8 +197,9 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.

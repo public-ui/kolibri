@@ -81,13 +81,15 @@ export class KolCard implements API {
 
 	/**
 	 * Defines whether the card has a close button.
+	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType;
+	@Prop() public _hasCloser?: boolean;
 
 	/**
 	 * Shows the slot="footer".
+	 * TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasFooter?: HasFooterPropType = false;
+	@Prop() public _hasFooter?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.

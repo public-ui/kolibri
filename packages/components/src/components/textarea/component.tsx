@@ -13,13 +13,8 @@ import { AdjustHeightPropType } from '../../types/props/adjust-height';
 import { HasCounterPropType } from '../../types/props/has-counter';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
 import { TooltipAlignPropType } from '../../types/props/tooltip-align';
-import { DisabledPropType } from '../../types/props/disabled';
-import { HideLabelPropType } from '../../types/props/hide-label';
 import { IdPropType } from '../../types/props/id';
 import { NamePropType } from '../../types/props/name';
-import { ReadOnlyPropType } from '../../types/props/read-only';
-import { RequiredPropType } from '../../types/props/required';
-import { TouchedPropType } from '../../types/props/touched';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
@@ -127,8 +122,9 @@ export class KolTextarea implements API {
 
 	/**
 	 * Adjusts the height of the element to its content.
+	 * TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
-	@Prop() public _adjustHeight?: AdjustHeightPropType = false;
+	@Prop() public _adjustHeight?: boolean = false;
 
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
@@ -137,8 +133,9 @@ export class KolTextarea implements API {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _disabled?: DisabledPropType;
+	@Prop() public _disabled?: boolean;
 
 	/**
 	 * Gibt den Text für eine Fehlermeldung an.
@@ -147,13 +144,15 @@ export class KolTextarea implements API {
 
 	/**
 	 * Shows the character count on the lower border of the input.
+	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType;
+	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType;
+	@Prop() public _hideLabel?: boolean;
 
 	/**
 	 * Gibt den Hinweistext an.
@@ -192,8 +191,9 @@ export class KolTextarea implements API {
 
 	/**
 	 * Makes the input element read only.
+	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType;
+	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
@@ -202,8 +202,9 @@ export class KolTextarea implements API {
 
 	/**
 	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop() public _required?: RequiredPropType;
+	@Prop() public _required?: boolean;
 
 	/**
 	 * Defines how many rows of text should be visible at the same time.
@@ -228,8 +229,9 @@ export class KolTextarea implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
