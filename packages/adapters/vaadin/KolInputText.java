@@ -35,7 +35,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 *
 	 * @return Optional<String>
 	 */
@@ -434,7 +434,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -443,7 +443,7 @@ public class KolInputText extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */

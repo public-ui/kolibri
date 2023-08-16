@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/schema": "1.6.0-rc.23",
-		"@types/node": "ts4.9",
+		"@types/node": "ts5.1",
 		"eslint": "8.45.0",
 		"typescript": "5.1.6",
 		"unbuild": "1.2.1"

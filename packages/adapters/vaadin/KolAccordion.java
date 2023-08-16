@@ -75,7 +75,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
 	 *
 	 * @param value String
 	 */
@@ -84,7 +84,7 @@ public class KolAccordion extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
 	 *
 	 * @return Optional<String>
 	 */

@@ -36,7 +36,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @param value String
 	 */
@@ -45,7 +45,7 @@ public class KolBadge extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
 	 *
 	 * @return Optional<String>
 	 */

@@ -16,7 +16,7 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-spin")
 public class KolSpin extends Component {
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolSpin extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @return Optional<String>
 	 */
@@ -35,7 +35,7 @@ public class KolSpin extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines the variant of spin navigation.
 	 *
 	 * @param value String
 	 */
@@ -44,7 +44,7 @@ public class KolSpin extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines the variant of spin navigation.
 	 *
 	 * @return Optional<String>
 	 */

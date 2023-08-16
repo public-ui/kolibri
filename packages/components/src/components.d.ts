@@ -257,7 +257,8 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * @deprecated Will be removed in the next major version.
          */
         "_hideLabel"?: HideLabelPropType;
         /**
@@ -3520,7 +3521,8 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Hides the label and shows the description in a Tooltip instead.
+          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * @deprecated Will be removed in the next major version.
          */
         "_hideLabel"?: HideLabelPropType;
         /**

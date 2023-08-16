@@ -48,7 +48,7 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 | --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
 | `_label`        | `_label`         | Defines the abbreviation title and tooltip content                                                                                             | `string \| undefined`                                 | `undefined` |
 | `_title`        | `_title`         | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an. | `string \| undefined`                                 | `undefined` |
-| `_tooltipAlign` | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                               | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| `_tooltipAlign` | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                      | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
 
 ## Slots
 
