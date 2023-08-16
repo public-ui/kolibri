@@ -1,9 +1,12 @@
 import { Generic } from '@a11y-ui/core';
 
-import { KoliBriButtonCallbacks, LinkTarget } from './button-link';
+import { PropHideLabel } from './props/hide-label';
 import { PropHref } from './props/href';
 import { PropIcon } from './props/icon';
 import { PropLabel } from './props/label';
+import { StencilUnknown } from './unknown';
+import { PropButtonCallbacks } from './props/button-callbacks';
+import { PropLinkTarget } from './props/link-target';
 
 /**
  * This types specifies the props of a link or button in navigations.
@@ -11,21 +14,17 @@ import { PropLabel } from './props/label';
  * Not all possible props of a link or button are relevant and supported.
  */
 
-// do not inherit RequiredLinkProps; why?
-type RequiredButtonProps = PropLabel & {
-	on: KoliBriButtonCallbacks<unknown>; // actually no value is relevant
-};
+type RequiredButtonProps = PropLabel & PropButtonCallbacks<StencilUnknown>;
 type RequiredLinkProps = PropHref;
 type RequiredTextProps = PropLabel;
 
-// do not inherit OptionalLinkProps; why?
-type OptionalButtonOrLinkOrTextProps = PropIcon & {
-	active: boolean;
+type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
+	active: boolean; // TODO: realy needed?
 	// tabIndex: number; // possible, but sensible ?! -> Ticket?
 	// tooltipAlign: Alignment; // possible, but sensible ?! -> Ticket?
-	target: LinkTarget;
 	targetDescription: string;
-};
+} & PropIcon &
+	PropLinkTarget;
 type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
 	disabled: boolean;
 };

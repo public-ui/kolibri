@@ -1,13 +1,17 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import { AlternativButtonLinkRole, LinkOnCallbacks, LinkTarget, LinkUseCase, OptionalLinkProps, RequiredLinkProps } from '../../types/button-link';
+import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
+import { Props } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AlignPropType } from '../../types/props/align';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
+import { DownloadPropType } from '../../types/props/download';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { LinkTargetPropType } from '../../types/props/link-target';
 
 @Component({
 	tag: 'kol-link',
@@ -16,7 +20,7 @@ import { propagateFocus } from '../../utils/reuse';
 	},
 	shadow: true,
 })
-export class KolLink implements Generic.Element.Members<RequiredLinkProps, OptionalLinkProps> {
+export class KolLink implements Props {
 	@Element() private readonly host?: HTMLKolLinkElement;
 	private ref?: HTMLKolLinkWcElement;
 
@@ -42,6 +46,7 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 					_icon={this._icon}
 					_iconAlign={this._iconAlign}
 					_label={this._label}
+					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role={this._role}
 					_selector={this._selector}
@@ -66,16 +71,22 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated use _listen-aria-current instead
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
@@ -88,20 +99,22 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 *
-	 * @deprecated will be removed in v2
+	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: boolean | string = false;
+	@Prop() public _download?: DownloadPropType = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -119,11 +132,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @deprecated Wird durch das neue flexibleren Icon-Typ abgedeckt.
 	 */
-	@Prop() public _iconAlign?: Align;
+	@Prop() public _iconAlign?: AlignPropType;
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
@@ -136,6 +149,11 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _label?: LabelWithExpertSlotPropType;
 
 	/**
+	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 */
+	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
+
+	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
 	 *
 	 * @deprecated will be removed in v2
@@ -143,9 +161,9 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Gibt die ID eines DOM-Elements, zu dem gesprungen werden soll, aus.
@@ -167,9 +185,9 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
@@ -177,9 +195,9 @@ export class KolLink implements Generic.Element.Members<RequiredLinkProps, Optio
 	@Prop() public _targetDescription?: string = 'Der Link wird in einem neuen Tab geöffnet.';
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
 	 * Gibt den Verwendungsfall des Links an.

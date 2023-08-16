@@ -50,8 +50,9 @@
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
-	"types": "dist/index.d.ts",
+	"types": "./dist/index.d.ts",
 	"exports": {
+		"types": "./dist/index.d.ts",
 		"require": "./dist/index.js",
 		"import": "./dist/index.js"
 	},
@@ -60,10 +61,10 @@
 		"@angular/compiler-cli": "16.0.0",
 		"@angular/compiler": "16.0.0",
 		"@angular/core": "16.0.0",
-		"@public-ui/components": "1.6.0-rc.15",
+		"@public-ui/components": "1.6.0-rc.25",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "ts4.9",
+		"@types/node": "ts5.1",
 		"@types/normalize-package-data": "2.4.1",
 		"prettier": "3.0.0",
 		"rimraf": "3.0.2",
@@ -75,7 +76,7 @@
 	"peerDependencies": {
 		"@{{kebab name}}/components": "0.0.0",
 		"@angular/core": "^16",
-		"@public-ui/components": "1.6.0-rc.15"
+		"@public-ui/components": "1.6.0-rc.25"
 	},
 	"files": [
 		"dist"

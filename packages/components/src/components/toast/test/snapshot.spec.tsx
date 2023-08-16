@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KoliBriToastProps } from '../types';
+import { Props } from '../types';
 import { getToastHtml } from './html.mock';
 
-executeTests<KoliBriToastProps>(
+executeTests<Props>(
 	'Toast',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({
@@ -18,7 +18,7 @@ executeTests<KoliBriToastProps>(
 	},
 	{
 		_alert: [false, true],
-		_heading: ['Überschrift'],
+		_label: ['Überschrift'],
 		_level: [1, 2, 3, 4, 5, 6],
 		_show: [false, true],
 		_type: ['default', 'error', 'info', 'success', 'warning'],

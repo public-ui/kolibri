@@ -1,34 +1,31 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import {
-	AlternativButtonLinkRole,
-	ButtonStates,
-	KoliBriButtonCallbacks,
-	KoliBriButtonType,
-	KoliBriButtonVariant,
-	OptionalButtonProps,
-	OptionalButtonStates,
-	RequiredButtonProps,
-	RequiredButtonStates,
-	watchTooltipAlignment,
-} from '../../types/button-link';
+import { States as ButtonStates } from '../../components/button/types';
+import { API } from './types';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AlignPropType } from '../../types/props/align';
+import { validateAriaControls } from '../../types/props/aria-controls';
+import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
-import { validateDisabled } from '../../types/props/disabled';
+import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
-import { validateIcon, watchIconAlign } from '../../types/props/icon';
+import { IconPropType, validateIcon, watchIconAlign } from '../../types/props/icon';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
-import { a11yHintDisabled, devWarning } from '../../utils/a11y.tipps';
-import { nonce } from '../../utils/dev.utils';
-import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { StencilUnknown } from '../../types/unknown';
+import { a11yHintDisabled } from '../../utils/a11y.tipps';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { mapBoolean2String, mapStringOrBoolean2String, setEventTarget, setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { propagateFocus } from '../../utils/reuse';
 import { validateTabIndex } from '../../utils/validators/tab-index';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
-import { watchButtonType, watchButtonVariant } from './controller';
+import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
+import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
+import { ButtonCallbacksPropType, validateButtonCallbacks } from '../../types/props/button-callbacks';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
+import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 
 /**
  * @internal
@@ -37,9 +34,8 @@ import { watchButtonType, watchButtonVariant } from './controller';
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates> {
+export class KolButtonWc implements API {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
-	private readonly nonce = nonce();
 	private ref?: HTMLButtonElement;
 
 	private readonly catchRef = (ref?: HTMLButtonElement) => {
@@ -58,12 +54,19 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 				form: this.host,
 				ref: this.ref,
 			});
-		} else if (typeof this.state._on?.onClick === 'function') {
-			event.stopPropagation();
-			setEventTarget(event, this.ref);
-			this.state._on?.onClick(event, this.state._value);
 		} else {
-			devWarning(`There was no button click callback configured! (_on.onClick)`);
+			// Event handling
+			stopPropagation(event);
+			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
+
+			// TODO: Static form handling
+			this.controller.setFormAssociatedValue(this.state._value);
+
+			// Callback
+			if (typeof this.state._on?.onClick === 'function') {
+				setEventTarget(event, this.ref);
+				this.state._on?.onClick(event, this.state._value);
+			}
 		}
 	};
 
@@ -77,7 +80,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-controls={this.state._ariaControls}
 					aria-current={mapStringOrBoolean2String(this.state._ariaCurrent)}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-labelledby={this.state._hideLabel ? this.nonce : undefined}
+					aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={{
 						[this.state._variant as string]: this.state._variant !== 'custom',
@@ -88,6 +91,7 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					}}
 					disabled={this.state._disabled}
 					id={this.state._id}
+					name={this.state._name}
 					{...this.state._on}
 					onClick={this.onClick}
 					role={this.state._role}
@@ -106,15 +110,18 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 					aria-hidden="true"
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_align={this.state._tooltipAlign}
-					_id={this.nonce}
 					_label={typeof this.state._label === 'string' ? this.state._label : ''}
 				></kol-tooltip>
 			</Host>
 		);
 	}
 
+	private readonly controller: AssociatedInputController;
+
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 *
+	 * @deprecated
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -125,8 +132,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -146,9 +155,9 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -161,16 +170,16 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: IconPropType;
 
 	/**
-	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Align;
+	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -190,14 +199,25 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Button-Events an.
+	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
+	@Prop() public _name?: string;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
+
+	/**
+	 * Defines the role of the components primary element.
+	 */
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -205,32 +225,36 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: ButtonStates = {
-		_icon: {},
+		_icon: {}, // ⚠ required
 		_label: false, // ⚠ required
 		_on: {},
-		_type: 'button',
-		_variant: 'normal',
+		_type: 'button', // ⚠ required
+		_variant: 'normal', // ⚠ required
 	};
+
+	public constructor() {
+		this.controller = new AssociatedInputController(this, 'button', this.host);
+	}
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
@@ -239,18 +263,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
-		watchString(this, '_ariaControls', value);
+		validateAriaControls(this, value);
 	}
 
 	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrent): void {
-		watchValidator(
-			this,
-			'_ariaControls',
-			(value) => value === true || value === 'date' || value === 'location' || value === 'page' || value === 'step' || value === 'time',
-			new Set(['boolean', 'String {data, location, page, step, time}']),
-			value
-		);
+	public validateAriaCurrent(value?: AriaCurrentPropType): void {
+		validateAriaCurrent(this, value);
 	}
 
 	@Watch('_ariaExpanded')
@@ -258,9 +276,6 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		validateAriaExpanded(this, value);
 	}
 
-	/**
-	 * @deprecated
-	 */
 	@Watch('_ariaLabel')
 	public validateAriaLabel(value?: string): void {
 		this.validateLabel(value);
@@ -272,14 +287,12 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this, value);
 		if (value === true) {
 			a11yHintDisabled();
@@ -292,21 +305,15 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_icon')
-	public validateIcon(value?: KoliBriIconProp): void {
+	public validateIcon(value?: IconPropType): void {
 		validateIcon(this, value);
 	}
 
-	/**
-	 * @deprecated
-	 */
 	@Watch('_iconAlign')
-	public validateIconAlign(value?: Align): void {
+	public validateIconAlign(value?: AlignPropType): void {
 		watchIconAlign(this, value);
 	}
 
-	/**
-	 * @deprecated use _hide-label
-	 */
 	@Watch('_iconOnly')
 	public validateIconOnly(value?: boolean): void {
 		this.validateHideLabel(value);
@@ -322,19 +329,24 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		validateLabelWithExpertSlot(this, value);
 	}
 
+	@Watch('_name')
+	public validateName(value?: string): void {
+		this.controller.validateName(value);
+	}
+
 	@Watch('_on')
-	public validateOn(value?: KoliBriButtonCallbacks<unknown>): void {
-		if (typeof value === 'object' && value !== null) {
-			this.state = {
-				...this.state,
-				_on: value,
-			};
-		}
+	public validateOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		validateButtonCallbacks(this, value);
 	}
 
 	@Watch('_role')
-	public validateRole(value?: AlternativButtonLinkRole): void {
-		watchString(this, '_role', value);
+	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
+		validateAlternativeButtonLinkRole(this, value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')
@@ -343,24 +355,24 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Align): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	@Watch('_type')
-	public validateType(value?: KoliBriButtonType): void {
-		watchButtonType(this, '_type', value);
+	public validateType(value?: ButtonTypePropType): void {
+		validateButtonType(this, value);
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
-		// TODO: make static form ready, like inputs
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		setState(this, '_value', value);
+		this.controller.setFormAssociatedValue(this.state._value);
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
+	public validateVariant(value?: ButtonVariantPropType): void {
+		validateButtonVariant(this, value);
 	}
 
 	public componentWillLoad(): void {
@@ -376,8 +388,10 @@ export class KolButtonWc implements Generic.Element.ComponentApi<RequiredButtonP
 		this.validateIconAlign(this._iconAlign);
 		this.validateId(this._id);
 		this.validateLabel(this._label || this._ariaLabel);
+		this.validateName(this._name);
 		this.validateOn(this._on);
 		this.validateRole(this._role);
+		this.validateSyncValueBySelector(this._syncValueBySelector);
 		this.validateTabIndex(this._tabIndex);
 		this.validateTooltipAlign(this._tooltipAlign);
 		this.validateType(this._type);

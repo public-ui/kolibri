@@ -1,11 +1,11 @@
 import { arrow, computePosition, flip, MiddlewareData, offset, Placement, shift } from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Align, validateAlign } from '../../types/props/align';
-import { validateShow } from '../../types/props/show';
+import { AlignPropType, validateAlign } from '../../types/props/align';
+import { ShowPropType, validateShow } from '../../types/props/show';
 import { getDocument } from '../../utils/dev.utils';
 import { processEnv } from '../../utils/reuse';
-import { KoliBriPopoverAPI, KoliBriPopoverStates } from './types';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt des Popover.
@@ -15,7 +15,7 @@ import { KoliBriPopoverAPI, KoliBriPopoverStates } from './types';
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolPopover implements KoliBriPopoverAPI {
+export class KolPopover implements API {
 	private arrowElement?: HTMLDivElement;
 	private popoverElement?: HTMLDivElement;
 	private triggerElement?: HTMLElement | null;
@@ -146,28 +146,29 @@ export class KolPopover implements KoliBriPopoverAPI {
 	}
 
 	/**
-	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
 	 */
-	@Prop() public _align?: Align = 'top';
+	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
+	 * TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = false;
 
-	@State() public state: KoliBriPopoverStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_show: false,
 		_visible: false,
 	};
 
 	@Watch('_align')
-	public validateAlign(value?: Align): void {
+	public validateAlign(value?: AlignPropType): void {
 		validateAlign(this, value);
 	}
 
 	@Watch('_show')
-	public validateShow(value?: boolean): void {
+	public validateShow(value?: ShowPropType): void {
 		validateShow(this, value);
 		if (value) this.showPopover();
 	}

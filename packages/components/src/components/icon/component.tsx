@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
 import { watchString } from '../../utils/prop.validators';
-import { KoliBriIconAPI, KoliBriIconStates } from './types';
+import { API, States } from './types';
 
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
@@ -15,7 +15,7 @@ import { KoliBriIconAPI, KoliBriIconStates } from './types';
 	},
 	shadow: true,
 })
-export class KolIcon implements KoliBriIconAPI {
+export class KolIcon implements API {
 	public render(): JSX.Element {
 		const ariaShow = typeof this.state._label === 'string' && this.state._label.length > 0;
 		return (
@@ -60,7 +60,7 @@ export class KolIcon implements KoliBriIconAPI {
 	 */
 	@Prop() public _part?: string;
 
-	@State() public state: KoliBriIconStates = {
+	@State() public state: States = {
 		_icon: 'codicon codicon-home',
 		// _label: false, // ⚠ required TODO: required in v2
 	};

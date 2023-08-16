@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * Um einzelne Bereiche Ihrer Webseite optisch hervorzuheben, bietet sich die **Card**-Komponente an. Mit ihrer Hilfe können Sie Ihre Inhalte sehr einfach strukturieren.
@@ -15,25 +17,45 @@ Der **Fuß-Bereich** wird optional durch das Attribut **`_has-footer`** aktivier
  */
 
 @Tag("kol-card")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-card")
 public class KolCard extends Component {
 	/**
-	 * Macht den Footerbereich der Card sichtbar.
+	 * Defines whether the card has a close button.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHasFooter(final Optional<String> value) {
-		getElement().setProperty("_has-footer", value);
+	public void setHasCloser(final String value) {
+		getElement().setProperty("_has-closer", value.toString());
 	}
 
 	/**
-	 * Macht den Footerbereich der Card sichtbar.
+	 * Defines whether the card has a close button.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getHasCloser() {
+		var value = getElement().getProperty("_has-closer", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Shows the slot="footer".
+	 *
+	 * @param value String
+	 */
+	public void setHasFooter(final String value) {
+		getElement().setProperty("_has-footer", value.toString());
+	}
+
+	/**
+	 * Shows the slot="footer".
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHasFooter() {
-		return getElement().getProperty("_has-footer", null);
+		var value = getElement().getProperty("_has-footer", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -41,8 +63,8 @@ public class KolCard extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHeading(final Optional<String> value) {
-		getElement().setProperty("_heading", value);
+	public void setHeading(final String value) {
+		getElement().setProperty("_heading", value.toString());
 	}
 
 	/**
@@ -51,16 +73,17 @@ public class KolCard extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHeading() {
-		return getElement().getProperty("_heading", null);
+		var value = getElement().getProperty("_heading", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHeadline(final Optional<String> value) {
-		getElement().setProperty("_headline", value);
+	public void setHeadline(final String value) {
+		getElement().setProperty("_headline", value.toString());
 	}
 
 	/**
@@ -69,16 +92,36 @@ public class KolCard extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHeadline() {
-		return getElement().getProperty("_headline", null);
+		var value = getElement().getProperty("_headline", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * 
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
+	}
+
+	/**
+	 * 
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLevel(final Optional<String> value) {
-		getElement().setProperty("_level", value);
+	public void setLevel(final String value) {
+		getElement().setProperty("_level", value.toString());
 	}
 
 	/**
@@ -87,6 +130,7 @@ public class KolCard extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLevel() {
-		return getElement().getProperty("_level", null);
+		var value = getElement().getProperty("_level", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

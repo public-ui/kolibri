@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/vue",
-	"version": "1.6.0-rc.15",
+	"version": "1.6.0-rc.25",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -46,24 +46,25 @@
 		"prepack": "unbuild"
 	},
 	"devDependencies": {
-		"@babel/types": "7.22.5",
-		"@public-ui/components": "1.6.0-rc.15",
+		"@babel/types": "7.22.10",
+		"@public-ui/components": "1.6.0-rc.25",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
-		"@types/node": "ts4.9",
+		"@types/node": "ts5.1",
 		"@types/normalize-package-data": "2.4.1",
 		"vue": "3.3.4",
 		"typescript": "5.1.6",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.6.0-rc.15",
+		"@public-ui/components": "1.6.0-rc.25",
 		"vue": ">=3"
 	},
 	"sideEffects": false,
 	"type": "module",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
 		}

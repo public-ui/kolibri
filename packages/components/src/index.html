@@ -50,15 +50,17 @@
 		<main class="container">
 			<kol-nav _orientation="horizontal" id="main-nav" _label="main-nav" style="position: sticky; top: 0; margin-bottom: -2rem; z-index: 100"></kol-nav>
 			<kol-heading _level="1" _label="KoliBri Komponenten" style="margin-bottom: -1.5rem"></kol-heading>
-			<kol-accordion _open id="anythingandeverythingallofthetime" _heading="Überblick" _level="2">
+			<kol-accordion _open id="anythingandeverythingallofthetime" _label="Überblick" _level="2">
 				<div class="grid gap">
 					<div class="flex flex-wrap gap-2 xl:gap-4 justify-between">
-						<kol-card _heading="buttons" _level="3">
+						<kol-card _label="buttons" _level="3">
 							<div class="grid gap">
 								<kol-button
 									_icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }"
 									_label="primary"
+									_name="button-name"
 									_variant="primary"
+									_value="button-value"
 									onclick="createAndShowToast()"
 								></kol-button>
 								<kol-button
@@ -101,7 +103,7 @@
 								</kol-split-button>
 							</div>
 						</kol-card>
-						<kol-card _heading="disabled buttons" _level="3">
+						<kol-card _label="disabled buttons" _level="3">
 							<div class="grid gap">
 								<kol-button _icon="{ 'left': { 'icon': 'codicon codicon-arrow-left' } }" _disabled _label="primary" _variant="primary"></kol-button>
 								<kol-button _icon="{ 'right': { 'icon': 'codicon codicon-arrow-right' } }" _disabled _label="secondary" _variant="secondary"></kol-button>
@@ -125,7 +127,7 @@
 								</kol-split-button>
 							</div>
 						</kol-card>
-						<kol-card _heading="headings" _level="3">
+						<kol-card _label="headings" _level="3">
 							<div class="grid gap">
 								<kol-heading _label="Überschrift Stufe 1" _level="1"></kol-heading>
 								<kol-heading _label="Überschrift Stufe 2" _level="2"></kol-heading>
@@ -135,9 +137,11 @@
 								<kol-heading _label="Überschrift Stufe 6" _level="6"></kol-heading>
 							</div>
 						</kol-card>
-						<kol-card _heading="Links&Co" _level="3">
+						<kol-card _label="Links&Co" _level="3">
 							<div class="grid gap">
-								<kol-link _href="#card">Zur Card</kol-link>
+								<kol-link _href="#card" _listen-aria-current="page">Card</kol-link>
+								<kol-link _href="#modal" _listen-aria-current="location">Modal</kol-link>
+								<kol-link _href="#nav" _listen-aria-current="step">Nav</kol-link>
 								<kol-button-link _href="#pagination" _label="Zur Pagination"></kol-button-link>
 								<kol-nav
 									_label="uebersicht-nav"
@@ -164,7 +168,7 @@
 								</div>
 							</div>
 						</kol-card>
-						<kol-card _heading="Icons&Co" _level="3">
+						<kol-card _label="Icons&Co" _level="3">
 							<kol-badge _label="wie badges"></kol-badge>
 							<div class="grid gap">
 								<p>
@@ -180,7 +184,7 @@
 								<kol-kolibri style="width: 100px"></kol-kolibri>
 							</div>
 						</kol-card>
-						<kol-card _heading="Mitte" _level="3">
+						<kol-card _label="Mitte" _level="3">
 							<div class="grid">
 								<kol-tabs _selected="0" _tabs='[{"_label":"Tab 1"},{"_label":"Tab 2", "_on": {"onClose": true} },{"_label":"Tab 3"}]'>
 									<div>Seite 1</div>
@@ -188,12 +192,12 @@
 									<div>Ich bin hier nur zu Spass.</div>
 								</kol-tabs>
 								<hr />
-								<kol-table _id="day_table" _caption="Tabelle" _data=""></kol-table>
+								<kol-table _id="day_table" _label="Tabelle" _data=""></kol-table>
 							</div>
 						</kol-card>
 					</div>
 
-					<kol-card _heading="Form" _level="3">
+					<kol-card _label="Form" _level="3">
 						<kol-form>
 							<div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem">
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
@@ -207,30 +211,31 @@
 								<kol-input-text _id="input-text" _value="Max" _hint="Ich bin ein Hinweis.">Vorname</kol-input-text>
 								<kol-input-text _id="input-text" _hide-label _label="Vorname" _type="search"></kol-input-text>
 								<kol-input-password _id="input-password" _name="input-password">Passwort</kol-input-password>
-								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _sync-value-by-selector="#select-native"
-									>Stimmung</kol-select
-								>
+								<kol-select _id="select" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _sync-value-by-selector="#select-native">
+									Stimmung
+								</kol-select>
 								<select id="select-native" multiple></select>
 								<kol-textarea _id="textarea">Textarea</kol-textarea>
-								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">
+								<kol-input-radio class="herr-frau" _id="input-radio" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1">
 									Anrede
 								</kol-input-radio>
 								<kol-input-radio
 									class="herr-frau"
 									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
+									_options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
 									_orientation="horizontal"
 									_value="1"
 								>
 									Anrede
 								</kol-input-radio>
 								<kol-input-range _id="schnitzelwert" _min="0" _max="50" _unit="Schnitzel" _value="25">Schieberegler</kol-input-range>
+								<kol-input-range _hide-label _id="wurstwert" _min="0" _max="5000" _unit="Bratwürste" _value="25">Schieberegler</kol-input-range>
 								<div>
 									<kol-progress _value="25"></kol-progress>
 									<kol-progress _variant="cycle" _value="25"></kol-progress>
 								</div>
 								<kol-input-checkbox _id="input-checkbox" _type="checkbox" _value="agb"
-									>Ich akzeptiere die <kol-abbr _title="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
+									>Ich akzeptiere die <kol-abbr _label="Allgemeine Geschäftsbedingungen">AGB</kol-abbr>.</kol-input-checkbox
 								>
 								<kol-button _label="Absenden" _type="submit" _variant="primary"></kol-button>
 								<kol-button _label="Zurücksetzen" _type="reset"></kol-button>
@@ -241,12 +246,12 @@
 					<div style="display: flex; gap: 2rem; justify-content: space-between">
 						<kol-pagination _total="9" _page="3" class="bordered p-i"></kol-pagination>
 
-						<kol-version _version="1.6.0-rc.15"></kol-version>
+						<kol-version _version="1.6.0-rc.25"></kol-version>
 					</div>
 					<kol-image _src="/assets/images/abgrenzung.jpg" _alt="KoliBri Darstellung"></kol-image>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="Abbr" id="abbr">
+			<kol-accordion _label="Abbr" id="abbr">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -263,15 +268,15 @@
 						</div>
 						<div class="gap-2 col-12">
 							<b>KoliBri</b>
-							<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
-							<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
-							<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
-							<p>Ich bin eine <kol-abbr _title="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
+							<p>Ich bin eine <kol-abbr _label="Abkürzung" _tooltip-align="top">Abbr</kol-abbr> mit Tooltip oben.</p>
+							<p>Ich bin eine <kol-abbr _label="Abkürzung" _tooltip-align="right">Abbr</kol-abbr> mit Tooltip rechts.</p>
+							<p>Ich bin eine <kol-abbr _label="Abkürzung" _tooltip-align="bottom">Abbr</kol-abbr> mit Tooltip unten.</p>
+							<p>Ich bin eine <kol-abbr _label="Abkürzung" _tooltip-align="left">Abbr</kol-abbr> mit Tooltip links.</p>
 						</div>
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="alert" id="alert">
+			<kol-accordion _label="alert" id="alert">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -283,22 +288,22 @@
 							<kol-heading _label="" _level="2">Alert</kol-heading>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-alert _heading="Nachricht" _level="2">Hier wird Nachricht näher beschrieben.</kol-alert>
-							<kol-alert _type="error" _heading="Fehler" _level="3">Hier wird der Fehler näher beschrieben.</kol-alert>
-							<kol-alert _type="info" _heading="Hinweis" _level="4">Hier wird der Hinweis näher beschrieben.</kol-alert>
-							<kol-alert _type="success" _heading="Erfolg" _level="5"> Hier wird der Erfolg näher beschrieben.</kol-alert>
-							<kol-alert _type="warning" _heading="Warnung" _level="6"> Hier wird die Warnung näher beschrieben.</kol-alert>
+							<kol-alert _label="Nachricht" _level="2">Hier wird Nachricht näher beschrieben.</kol-alert>
+							<kol-alert _type="error" _label="Fehler" _level="3">Hier wird der Fehler näher beschrieben.</kol-alert>
+							<kol-alert _type="info" _label="Hinweis" _level="4">Hier wird der Hinweis näher beschrieben.</kol-alert>
+							<kol-alert _type="success" _label="Erfolg" _level="5"> Hier wird der Erfolg näher beschrieben.</kol-alert>
+							<kol-alert _type="warning" _label="Warnung" _level="6"> Hier wird die Warnung näher beschrieben.</kol-alert>
 							<kol-alert>Hier wird Nachricht näher beschrieben.</kol-alert>
 							<kol-alert _type="error">Hier wird der Fehler kurz beschrieben.</kol-alert>
 							<kol-alert _type="info">Hier wird der Hinweis kurz beschrieben.</kol-alert>
 							<kol-alert _type="success">Hier wird der Erfolg kurz beschrieben.</kol-alert>
 							<kol-alert _type="warning">Hier wird die Warnung kurz beschrieben.</kol-alert>
-							<kol-alert _heading="Nachricht" _level="2" _variant="card">Hier wird Nachricht näher beschrieben.</kol-alert>
-							<kol-alert _type="error" _heading="Fehler" _level="3" _variant="card">Hier wird der Fehler näher beschrieben.</kol-alert>
-							<kol-alert _type="info" _heading="Hinweis" _level="4" _variant="card">Hier wird der Hinweis näher beschrieben.</kol-alert>
-							<kol-alert _type="success" _heading="Erfolg" _level="5" _variant="card"> Hier wird der Erfolg näher beschrieben.</kol-alert>
-							<kol-alert _type="warning" _heading="Warnung" _level="6" _variant="card"> Hier wird die Warnung näher beschrieben.</kol-alert>
-							<kol-alert _heading="Nachricht" _variant="card">Hier wird Nachricht näher beschrieben.</kol-alert>
+							<kol-alert _label="Nachricht" _level="2" _variant="card">Hier wird Nachricht näher beschrieben.</kol-alert>
+							<kol-alert _type="error" _label="Fehler" _level="3" _variant="card">Hier wird der Fehler näher beschrieben.</kol-alert>
+							<kol-alert _type="info" _label="Hinweis" _level="4" _variant="card">Hier wird der Hinweis näher beschrieben.</kol-alert>
+							<kol-alert _type="success" _label="Erfolg" _level="5" _variant="card"> Hier wird der Erfolg näher beschrieben.</kol-alert>
+							<kol-alert _type="warning" _label="Warnung" _level="6" _variant="card"> Hier wird die Warnung näher beschrieben.</kol-alert>
+							<kol-alert _label="Nachricht" _variant="card">Hier wird Nachricht näher beschrieben.</kol-alert>
 							<kol-alert _type="error" _variant="card">Hier wird der Fehler kurz beschrieben.</kol-alert>
 							<kol-alert _type="info" _variant="card">Hier wird der Hinweis kurz beschrieben.</kol-alert>
 							<kol-alert _type="success" _variant="card">Hier wird der Erfolg kurz beschrieben.</kol-alert>
@@ -307,7 +312,23 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="badge" id="badge">
+			<kol-accordion _label="avatar" id="avatar">
+				<div>
+					<div class="row">
+						<div class="col-12">
+							<kol-heading _level="2" _label="ohne Bild"></kol-heading>
+							<kol-avatar _label="Erika Maria Mustermann"></kol-avatar>
+
+							<kol-heading _level="2" _label="ohne Bild, Name besteht aus nur einem Wort"></kol-heading>
+							<kol-avatar _label="Erika"></kol-avatar>
+
+							<kol-heading _level="2" _label="mit Bild"></kol-heading>
+							<kol-avatar _src="https://placehold.co/400" _label="Erika Maria Mustermann"></kol-avatar>
+						</div>
+					</div>
+				</div>
+			</kol-accordion>
+			<kol-accordion _label="badge" id="badge">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -316,7 +337,7 @@
 								<kol-badge _icon="codicon codicon-checklist" _color="#033" _label="Snapshot-Tests"></kol-badge>
 							</div>
 							<kol-heading _label="" _level="2">Badge</kol-heading>
-							<kol-details _summary="Erklärung zum Color-Contrast-Feature"
+							<kol-details _label="Erklärung zum Color-Contrast-Feature"
 								>Die folgende Komponente managed die Schriftfarbe in Abhängigkeit zur Hintergrundfarbe automatisch.</kol-details
 							>
 						</div>
@@ -352,7 +373,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="breadcrumb" id="breadcrumb">
+			<kol-accordion _label="breadcrumb" id="breadcrumb">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -387,7 +408,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="button" id="button">
+			<kol-accordion _label="button" id="button">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -456,7 +477,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="link-button" id="link-button">
+			<kol-accordion _label="link-button" id="link-button">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -530,7 +551,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="button-group" id="button-group">
+			<kol-accordion _label="button-group" id="button-group">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -563,7 +584,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="card" id="card">
+			<kol-accordion _label="card" id="card">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -574,7 +595,7 @@
 							<kol-heading _label="" _level="2">Card</kol-heading>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-card _heading="Mit h1-Überschrift und Footer" _has-footer>
+							<kol-card _label="Mit h1-Überschrift und Footer" _has-footer>
 								<p slot="header">Test</p>
 								<div>
 									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum
@@ -587,19 +608,19 @@
 									<kol-button class="not-used min-width" _label="Abbrechen"></kol-button>
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h2-Überschrift" _level="2" class="bordered">
+							<kol-card _label="Mit h2-Überschrift" _level="2" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h3-Überschrift" _level="3">
+							<kol-card _label="Mit h3-Überschrift" _level="3">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h4-Überschrift" _level="4">
+							<kol-card _label="Mit h4-Überschrift" _level="4">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -607,23 +628,26 @@
 							</kol-card>
 						</div>
 						<div class="gap-2 mt-4 col-12 d-md-flex">
-							<kol-card _heading="Mit h5-Überschrift" _level="5" class="bordered">
+							<kol-card _label="Mit h5-Überschrift" _level="5" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
 							</kol-card>
-							<kol-card _heading="Mit h6-Überschrift" _level="6" class="bordered">
+							<kol-card _label="Mit h6-Überschrift" _level="6" class="bordered">
 								<div>
 									Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 									diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 								</div>
+							</kol-card>
+							<kol-card _label="Mit Schließ-Funktion" _level="6" class="bordered" _has-closer>
+								<div>Ich kann geschlossen werden!</div>
 							</kol-card>
 						</div>
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="details" id="details">
+			<kol-accordion _label="details" id="details">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -639,7 +663,7 @@
 								diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 							</p>
 							<p>
-								<kol-details _open _summary="I'll be placed as summary header">
+								<kol-details _open _label="I'll be placed as summary header">
 									I'll be placed as detailed summary. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vel? Saepe, pariatur. Aspernatur
 									voluptatibus reiciendis officia soluta? Tempore odio est voluptatum iste dolorum, dolorem, rem fuga, veritatis consequuntur quod quaerat!
 								</kol-details>
@@ -653,7 +677,7 @@
 								aliquyam erat, sed diam voluptua.
 							</p>
 							<p>
-								<kol-details _summary="I'll be placed as summary header">
+								<kol-details _label="I'll be placed as summary header">
 									I'll be placed as detailed summary. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vel? Saepe, pariatur. Aspernatur
 									voluptatibus reiciendis officia soluta? Tempore odio est voluptatum iste dolorum, dolorem, rem fuga, veritatis consequuntur quod quaerat!
 								</kol-details>
@@ -668,7 +692,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="form" id="form">
+			<kol-accordion _label="form" id="form">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -683,31 +707,32 @@
 								<kol-input-checkbox _id="input-checkbox">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-checkbox _id="input-checkbox-switch" _type="switch">Ich akzeptiere die Allgemeinen Geschäftsbedingungen.</kol-input-checkbox>
 								<kol-input-color _id="input-color">Farbe</kol-input-color>
-								<kol-input-color _id="input-color-list" _list="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
+								<kol-input-color _id="input-color-list" _suggestions="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
 								<kol-input-email _id="input-email" _error="Test einer Fehlermeldung">E-Mail-Adresse</kol-input-email>
-								<kol-input-email _id="input-email-list" _list="['test1@test.de','test2@test.de','test3@test.de']"
+								<kol-input-email _id="input-email-list" _suggestions="['test1@test.de','test2@test.de','test3@test.de']"
 									>E-Mail-Adresse (Auto-Vervollständigung)</kol-input-email
 								>
-								<kol-input-email _id="input-email-list-multiple" _list="['test1@test.de','test2@test.de','test3@test.de']" _multiple
+								<kol-input-email _id="input-email-list-multiple" _suggestions="['test1@test.de','test2@test.de','test3@test.de']" _multiple
 									>E-Mail-Adresse(n) (Auto-Vervollständigung, Mehrfachauswahl)</kol-input-email
 								>
 								<kol-input-file _id="input-file">Datei hochladen</kol-input-file>
 								<kol-input-file _id="input-file-multiple" _multiple>Datei(en) hochladen (Mehrfachauswahl)</kol-input-file>
 								<kol-input-number _id="input-number" _type="number">Zahleneingabe</kol-input-number>
 								<kol-input-date _id="input-date" _type="date">Datum</kol-input-date>
+								<kol-input-date _id="input-date" _type="date" _suggestions="['2023-01-01', '2023-01-02']">Datum mit Liste</kol-input-date>
 								<kol-input-date _id="input-date-datetime-local" _type="datetime-local">Local-Datetime (Standard)</kol-input-date>
 								<kol-input-date _id="input-date-month" _type="month">Monat</kol-input-date>
 								<kol-input-date _id="input-date-week" _type="week">Woche</kol-input-date>
 								<kol-input-date _id="input-date-time" _type="time">Zeit (Standard)</kol-input-date>
 								<kol-input-password _id="input-password">Passwort</kol-input-password>
-								<kol-input-radio class="herr-frau" _id="input-radio" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
+								<kol-input-radio class="herr-frau" _id="input-radio" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _value="1"
 									>Anrede</kol-input-radio
 								>
 								<kol-input-radio
 									_orientation="horizontal"
 									class="herr-frau"
 									_id="input-radio"
-									_list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
+									_options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]"
 									_value="1"
 									>Anrede</kol-input-radio
 								>
@@ -716,8 +741,8 @@
 								<kol-input-text _id="input-text-search" _type="search">Suchbegriff</kol-input-text>
 								<kol-input-text _id="input-text-url" _type="url">Url</kol-input-text>
 								<kol-input-text _id="input-text-tel" _type="tel">Telefonnummer</kol-input-text>
-								<kol-select _id="select" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung (nicht vorbelegt)</kol-select>
-								<kol-select _id="select-multiple" _list="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _multiple
+								<kol-select _id="select" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]">Stimmung (nicht vorbelegt)</kol-select>
+								<kol-select _id="select-multiple" _options="[{'label':'Herr','value':0},{'label':'Frau','value':1}]" _multiple
 									>Stimmung (Mehrfachauswahl, vorbelegt)</kol-select
 								>
 								<kol-textarea _id="textarea">Textarea</kol-textarea>
@@ -732,6 +757,7 @@
 											console.clear();
 											console.log('form', event.target);
 											event.preventDefault();
+											event.stopPropagation();
 											const form = event.target;
 											if (form instanceof HTMLFormElement) {
 												console.log('form elements', form.elements);
@@ -748,7 +774,7 @@
 						</div>
 						<div class="col-12">
 							<kol-heading _label="" _level="3">Leeres Formular ohne Hinweis zu Pflichtangaben</kol-heading>
-							<kol-details _summary="Technical: BIK BITV-Test weglassen" _open="false">
+							<kol-details _label="Technical: BIK BITV-Test weglassen" _open="false">
 								<div class="p-2">
 									<kol-form _required-text="">
 										<form>
@@ -844,7 +870,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="heading" id="heading">
+			<kol-accordion _label="heading" id="heading">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -857,7 +883,7 @@
 								Die Heading-Komponente ist eine elementare Komponente die sehr oft wiederverwendet werden muss, um die verschiedenen Bereiche für die
 								Barrierefreiheit zu beschriften.
 							</p>
-							<kol-details _summary="Hinweise zur Barrierefreiheit">
+							<kol-details _label="Hinweise zur Barrierefreiheit">
 								<p>
 									Die Heading-Komponente stellt sicher, dass wir innerhalb KoliBri's die Heading's
 									<code>h1</code>, <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>h5</code> und
@@ -877,7 +903,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="icon" id="icon">
+			<kol-accordion _label="icon" id="icon">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -897,7 +923,7 @@
 								generischen Icon-Komponente wieder. Sie kapseln lediglich die jeweilige Icon-Font.
 							</p>
 							<p>Hinweis: Die <code>kol-icofont</code>-Komponente ist <kol-badge _label="deprecated"></kol-badge>.</p>
-							<kol-details _summary="Hinweise zur Barrierefreiheit">
+							<kol-details _label="Hinweise zur Barrierefreiheit">
 								<p>
 									Die Icon-Komponente stellt sicher, dass die Grafik (Icon) immer mit einem Beschriftung (<code>aria-label</code>) beschrieben werden muss.
 									Dabei wird automatisch die Rolle (<code>img</code>) gesetzt.
@@ -936,7 +962,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="image" id="image">
+			<kol-accordion _label="image" id="image">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -956,7 +982,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="indented-text" id="indented-text">
+			<kol-accordion _label="indented-text" id="indented-text">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -979,7 +1005,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="input" id="input">
+			<kol-accordion _label="input" id="input">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1034,7 +1060,9 @@
 								<kol-heading _label="" _level="3">InputColor</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-color">
 									<kol-input-color _id="color-select">Farbe</kol-input-color>
-									<kol-input-color _id="color-select-from-list" _list="['#000000','#ff0000','#0000ff','#00ff00']">Farbe</kol-input-color>
+									<kol-input-color _id="color-select-from-list" _suggestions="['#000000','#ff0000','#0000ff','#00ff00']"
+										>Farbe (mit Vorschlägen)</kol-input-color
+									>
 								</lean-input-adapter>
 							</div>
 							<div class="d-grid gap-2">
@@ -1042,10 +1070,10 @@
 								<kol-input-email _id="email-input" _error="Test einer Fehlermeldung">E-Mail-Adresse</kol-input-email>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-email">
 									<kol-input-email _id="email-input2">E-Mail-Adresse</kol-input-email>
-									<kol-input-email _id="email-input-from-list" _list="['test1@test.de','test2@test.de','test3@test.de']"
+									<kol-input-email _id="email-input-from-list" _suggestions="['test1@test.de','test2@test.de','test3@test.de']"
 										>E-Mail-Adresse (Auto-Vervollständigung)</kol-input-email
 									>
-									<kol-input-email _id="multiple-email-input-from-list" _list="['test1@test.de','test2@test.de','test3@test.de']" _multiple
+									<kol-input-email _id="multiple-email-input-from-list" _suggestions="['test1@test.de','test2@test.de','test3@test.de']" _multiple
 										>E-Mail-Adresse(n) (Auto-Vervollständigung, Mehrfachauswahl)</kol-input-email
 									>
 								</lean-input-adapter>
@@ -1063,6 +1091,7 @@
 									<kol-input-number _type="number">Zahleneingabe</kol-input-number>
 									<kol-input-number _type="number" _min="2.2" _max="5.8" _value="3.2">Zahleneingabe (Float)</kol-input-number>
 									<kol-input-number _max="10" _min="-10" _step="2" _type="number">Zahleneingabe (-10 bis 10 in 2er Schritten)</kol-input-number>
+									<kol-input-number _suggestions="['1', '2', '42']">Zahleneingabe (mit Vorschlägen)</kol-input-number>
 								</lean-input-adapter>
 								<kol-heading _label="" _level="3">InputDate</kol-heading>
 								<lean-input-adapter class="d-grid gap-2" id="new-input-date">
@@ -1070,6 +1099,9 @@
 								</lean-input-adapter>
 								<kol-input-date _type="date" _min="2022-10-28">Datum (min)</kol-input-date>
 								<kol-input-date _type="date" _max="2022-10-28">Datum (max)</kol-input-date>
+								<kol-input-date _id="input-date-with-suggestions" _type="date" _suggestions="['2023-01-01', '2023-01-02']">
+									Datum (mit Vorschlägen)
+								</kol-input-date>
 								<kol-input-date _type="datetime-local">Local-Datetime (Standard)</kol-input-date>
 								<kol-input-date _type="datetime-local" _step="1">Local-Datetime (mit Sekunden)</kol-input-date>
 								<kol-input-date _type="month">Monat</kol-input-date>
@@ -1088,29 +1120,29 @@
 										<kol-input-radio>Anrede</kol-input-radio>
 									</lean-input-adapter>
 									<kol-input-radio _required id="anrede-input">Anrede es wird automatisch die 1. Option ausgewählt</kol-input-radio>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '01'}, {'label': 'b', 'value': '02'}]" _value="02">Input-Radio</kol-input-radio>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '2.00'}, {'label': 'b', 'value': '2.10'}]" _value="2.10"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '01'}, {'label': 'b', 'value': '02'}]" _value="02">Input-Radio</kol-input-radio>
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '2.00'}, {'label': 'b', 'value': '2.10'}]" _value="2.10"
 										>Input-Radio</kol-input-radio
 									>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '02.0'}, {'label': 'b', 'value': '02.1'}]" _value="02.1"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '02.0'}, {'label': 'b', 'value': '02.1'}]" _value="02.1"
 										>Input-Radio</kol-input-radio
 									>
-									<kol-input-radio _required _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="2"
+									<kol-input-radio _required _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="2"
 										>Input-Radio (string vs number)</kol-input-radio
 									>
-									<kol-input-radio _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Input-Radio</kol-input-radio>
-									<kol-select _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _multiple _value="['2']">Select</kol-select>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="2">Input-Radio (2)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': true}]" _value="true">Input-Radio (true)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2.5}]" _value="2.5">Input-Radio (2.5)</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="3">Input-Radio</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Input-Radio</kol-input-radio>
-									<kol-input-radio _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Input-Radio</kol-input-radio>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[2]">Select</kol-select>
-									<kol-select _list="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[3]">Select</kol-select>
+									<kol-input-radio _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Input-Radio</kol-input-radio>
+									<kol-select _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _value="['2']">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': '1'}, {'label': 'b', 'value': '2'}]" _multiple _value="['2']">Select</kol-select>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="2">Input-Radio (2)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': true}]" _value="true">Input-Radio (true)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2.5}]" _value="2.5">Input-Radio (2.5)</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="3">Input-Radio</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Input-Radio</kol-input-radio>
+									<kol-input-radio _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Input-Radio</kol-input-radio>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[2]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _value="[3]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[2]">Select</kol-select>
+									<kol-select _options="[{'label': 'a', 'value': 1}, {'label': 'b', 'value': 2}]" _multiple _value="[3]">Select</kol-select>
 								</div>
 							</div>
 							<div class="d-grid gap-2">
@@ -1119,7 +1151,7 @@
 									<kol-input-range _required _min="0" _max="50">Schieberegler</kol-input-range>
 									<kol-input-range _min="0" _max="50" _step="10">Schieberegler (mit Raster)</kol-input-range>
 									<kol-input-range
-										_list="[{'value':0,'label':'sehr schlecht'},{'value':10,'label':'schlecht'},{'value':20,'label':'mangelhaft'},{'value':30,'label':'gut'},{'value':40,'label':'naja'},{'value':50,'label':'sehr gut'}]"
+										_suggestions="[{'value':0,'label':'sehr schlecht'},{'value':10,'label':'schlecht'},{'value':20,'label':'mangelhaft'},{'value':30,'label':'gut'},{'value':40,'label':'naja'},{'value':50,'label':'sehr gut'}]"
 										_min="0"
 										_max="50"
 										_step="10"
@@ -1179,7 +1211,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="link" id="link">
+			<kol-accordion _label="link" id="link">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1226,7 +1258,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="button-link" id="button-link">
+			<kol-accordion _label="button-link" id="button-link">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1261,7 +1293,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="link-group" id="link-group">
+			<kol-accordion _label="link-group" id="link-group">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1306,7 +1338,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="logo" id="logo">
+			<kol-accordion _label="logo" id="logo">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1329,7 +1361,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="modal" id="modal">
+			<kol-accordion _label="modal" id="modal">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1341,14 +1373,14 @@
 							<p>
 								Die Modal-Komponete implementiert die Überlagerungsfunktion (Overlay's). Sie ist so realisiert, dass das Modal unabhängig von dem
 								Überlagerungsinhalt ist. Es kann also nicht nur ein Dialog sondern auch jedes beliebige andere
-								<kol-abbr _title="Hypertext-Markup-Language">HTML</kol-abbr> als Überlagerungsinhalt verwendet werden.
+								<kol-abbr _label="Hypertext-Markup-Language">HTML</kol-abbr> als Überlagerungsinhalt verwendet werden.
 							</p>
 							<p>
 								Da das Modal vom eigentlichen Modal entkoppelt ist, aber für eine teilweisen Sperrung der Inhalte sorgt. Muss es auch eine Möglichkeit bieten,
 								das Schließen (Sperrung aufheben) aus dem Modal-Kontext zu ermöglichen. Das wird durch einen optionalen Schließen-Button rechts oben in der Ecke
 								sichergestellt.
 							</p>
-							<kol-details _summary="Hinweise zur Barrierefreiheit">
+							<kol-details _label="Hinweise zur Barrierefreiheit">
 								<p>
 									Beim Öffnen eines Modals, muss der Entwickler:in das aktive Element übergeben, zu dem nach dem Schließen des Modals automatisch der Fokus
 									gesetzt werden soll.
@@ -1366,7 +1398,7 @@
 						</div>
 						<div class="col-12">
 							<kol-modal id="modal-1" _label="Willkommen bei KoliBri" _has-footer>
-								<kol-card _heading="Willkommen bei KoliBri" _has-footer>
+								<kol-card _label="Willkommen bei KoliBri" _has-footer>
 									<div>
 										Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
 										diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
@@ -1383,7 +1415,7 @@
 								</kol-card>
 							</kol-modal>
 							<kol-modal id="modal-2" _label="Vorgang löschen" _width="400px">
-								<kol-card _heading="Vorgang löschen" _has-footer>
+								<kol-card _label="Vorgang löschen" _has-footer>
 									<div>Wollen Sie den Vorgang wirklich löschen?</div>
 									<div slot="footer">
 										<kol-button id="modal-2-cancel" _label="Schließen"></kol-button>
@@ -1391,7 +1423,7 @@
 								</kol-card>
 							</kol-modal>
 							<kol-modal id="modal-3" _label="Modal schließen" _width="400px">
-								<kol-card _heading="Modal schließen">
+								<kol-card _label="Modal schließen">
 									<div>Klicken Sie einfach rechts oben auf das X.</div>
 								</kol-card>
 							</kol-modal>
@@ -1404,7 +1436,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="nav" id="nav">
+			<kol-accordion _label="nav" id="nav">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1438,14 +1470,14 @@
 							<kol-nav
 								class="font-60 max-width"
 								_label="Navigation initial eingeklappt"
-								_compact
+								_hide-label
 								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-flame'},{'_active':true,'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_active':true,'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_active':true,'_label':'3.3.1 Navigationspunkt (aktiv)','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_label':'4 Navigationspunkt','_href':'#abc'}]"
 							>
 							</kol-nav>
 							<kol-nav
 								class="font-60 max-width"
 								_label="Navigation initial eingeklappt 2"
-								_compact
+								_hide-label
 								_links="[{'_label':'1 Navigationspunkt mit sehr langem Link-Test','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_children':[{'_label':'3.1 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame'},{'_label':'3.2 Navigationspunkt','_href':'#abc','_icon':'codicon codicon-flame','_target':'asdasd'},{'_label':'3.3 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.3.1 Navigationspunkt','_href':'#abc'},{'_label':'3.3.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.4 Navigationspunkt','_href':'#abc','_children':[{'_label':'3.4.1 Navigationspunkt','_href':'#abc'},{'_label':'3.4.2 Navigationspunkt','_href':'#abc'}]},{'_label':'3.5 Navigationspunkt','_href':'#abc'}]},{'_active':true,'_label':'4 Navigationspunkt (aktiv)','_href':'#abc'}]"
 							>
 							</kol-nav>
@@ -1453,7 +1485,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="pagination" id="pagination">
+			<kol-accordion _label="pagination" id="pagination">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1497,7 +1529,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="popover" id="popover">
+			<kol-accordion _label="popover" id="popover">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1526,7 +1558,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="progress" id="progress">
+			<kol-accordion _label="progress" id="progress">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1558,13 +1590,13 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="Quote" id="quote">
+			<kol-accordion _label="Quote" id="quote">
 				<div class="row">
 					<div class="gap-2 col-12">
 						<section>
 							<kol-heading _label="" _level="3">Long bockquote</kol-heading>
 							<kol-quote
-								_caption="RFC 1149"
+								_label="RFC 1149"
 								_href="https://datatracker.ietf.org/doc/html/rfc1149"
 								_quote="Avian carriers can provide high delay, low throughput, and low altitude
 								service. The connection topology is limited to a single point-to-point path
@@ -1576,7 +1608,7 @@
 								_variant="block"
 							>
 							</kol-quote>
-							<kol-quote _caption="RFC 1149" _href="https://datatracker.ietf.org/doc/html/rfc1149" _quote="" _variant="block">
+							<kol-quote _label="RFC 1149" _href="https://datatracker.ietf.org/doc/html/rfc1149" _quote="" _variant="block">
 								<span slot="expert"
 									>Avian carriers can provide high delay, low throughput, and low altitude service. The connection topology is limited to a single
 									point-to-point path for each carrier, used with standard carriers, but many carriers can be used without significant interference with each
@@ -1590,14 +1622,14 @@
 							<p>
 								According to Mozilla's website,
 								<kol-quote
-									_caption="RFC 1149"
+									_label="RFC 1149"
 									_href="https://www.mozilla.org/en-US/about/history/details/"
 									_quote="Firefox 1.0 was released in 2004 and became a big success."
 								/>
 							</p>
 							<p>
 								According to Mozilla's website,
-								<kol-quote _caption="RFC 1149" _href="https://www.mozilla.org/en-US/about/history/details/" _quote="">
+								<kol-quote _label="RFC 1149" _href="https://www.mozilla.org/en-US/about/history/details/" _quote="">
 									<span slot="expert">Firefox 1.0 was released in 2004 and became a big success.</span>
 								</kol-quote>
 							</p>
@@ -1605,7 +1637,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="skip-nav" id="skip-nav">
+			<kol-accordion _label="skip-nav" id="skip-nav">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1625,7 +1657,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="spin" id="spin">
+			<kol-accordion _label="spin" id="spin">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1641,7 +1673,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="SplitButton" id="splitbutton">
+			<kol-accordion _label="SplitButton" id="splitbutton">
 				<div>
 					<div>
 						<kol-heading _label="SplitButton" _level="2"></kol-heading>
@@ -1690,7 +1722,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="symbol" id="symbol">
+			<kol-accordion _label="symbol" id="symbol">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -1706,23 +1738,23 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="table" id="table">
+			<kol-accordion _label="table" id="table">
 				<div>
 					<div class="row">
 						<div class="col-12">
 							<kol-badge _icon="codicon codicon-check" _color="#030" _label="BIK BITV-Test v12*"></kol-badge>
 							<kol-heading _label="" _level="2">Table</kol-heading>
 						</div>
-						<kol-table _caption="default" id="table-1a"></kol-table>
-						<kol-table _caption="default" id="table-1b"></kol-table>
-						<kol-table _caption="default" id="table-1c"></kol-table>
-						<kol-table _caption="default" id="table-1d"></kol-table>
+						<kol-table _label="default" id="table-1a"></kol-table>
+						<kol-table _label="default" id="table-1b"></kol-table>
+						<kol-table _label="default" id="table-1c"></kol-table>
+						<kol-table _label="default" id="table-1d"></kol-table>
 						<kol-heading _level="3">2 Header, Daten Horizontal</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								_dual
 								_orientation="horizontal"
-								_caption="2 Header, Daten Horizontal"
+								_label="2 Header, Daten Horizontal"
 								_header-lines="[{'_headers': [{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}], '_orientation': 'horizontal', '_position': 0}, {'_headers': [{'label': '0800 - 0900'}, {'label': '0900 - 1000'}, {'label': '1000 - 1100'}, {'label': '1100 - 1200'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag']"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
@@ -1735,7 +1767,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Header, Daten Vertikal"
+								_label="2 Header, Daten Vertikal"
 								_header-lines="[{'_headers': [{'label': 'Montag'}, {'label': 'Dienstag'}, {'label': 'Mittwoch'}, {'label': 'Donnerstag'}, {'label': 'Freitag'}], '_orientation': 'horizontal', '_position': 0}, {'_headers': [{'label': '0800 - 0900', 'key': '8bis9'}, {'label': '0900 - 1000', 'key': '9bis10'}, {'label': '1000 - 1100', 'key': '10bis11'}, {'label': '1100 - 1200', 'key': '11bis12'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['8bis9', '9bis10', '10bis11', '11bis12']"
 								_data="[{'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Christian', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Angela', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Jenny'}]"
@@ -1748,7 +1780,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Horizontal Header mit Span, Daten Horizontal"
+								_label="2 Horizontal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers': [{'label': 'Q2', 'span': 3}, {'label': 'Q3', 'span': 3}], '_orientation': 'horizontal'}, {'_headers': [{'label': 'April', 'key': 'april'}, {'label': 'Mai', 'key': 'mai'}, {'label': 'Juni', 'key': 'juni'}, {'label': 'Juli', 'key': 'juli'}, {'label': 'August', 'key': 'august'}, {'label': 'September', 'key': 'september'}], '_orientation': 'horizontal', '_position': 1}, {'_headers': [{'label': 'Berlin'},{'label': 'Hamburg'},{'label': 'München'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['april', 'mai', 'juni', 'juli', 'august', 'september']"
 								_data="[{'april': '10', 'mai': '11', 'juni': '12', 'juli': '12', 'august': '16', 'september': '15'},{'april': '3', 'mai': '3', 'juni': '3', 'juli': '4', 'august': '4', 'september': '6'},{'april': '42', 'mai': '43', 'juni': '44', 'juli': '32', 'august': '45', 'september': '42'}]"
@@ -1761,7 +1793,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Vertikal Header mit Span, Daten Horizontal"
+								_label="2 Vertikal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers':[{'label':'Juni','key':'juni'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}],'_orientation':'horizontal'},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München'},{'label':'Nürnberg'},{'label':'Berlin'},{'label':'Bonn'},{'label':'Düsseldorf'},{'label':'Köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['juni','juli','august','september']"
 								_data="[{'juni':'100','juli':'101','august':'102','september':'105'},{'juni':'13','juli':'13','august':'12','september':'12'},{'juni':'87','juli':'88','august':'87','september':'90'},{'juni':'12','juli':'11','august':'12','september':'12'},{'juni':'42','juli':'43','august':'39','september':'42'},{'juni':'98','juli':'99','august':'102','september':'109'}]"
@@ -1774,7 +1806,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal"
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal"
 								_header-lines="[{'_headers':[{'label':'Q2','span':3},{'label':'Q3','span':3}],'_orientation':'horizontal'},{'_headers':[{'label':'April','key':'april'},{'label':'Mai','key':'mai'},{'label':'Juni','key':'juni'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}],'_orientation':'horizontal','_position':1},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0,'_label':'Bundesland'},{'_headers':[{'label':'München'},{'label':'Nürnberg'},{'label':'Berlin'},{'label':'Bonn'},{'label':'Düsseldorf'},{'label':'Köln'}],'_orientation':'vertical','_position':1,'_label':'Stadt'}]"
 								_order="['april','mai','juni','juli','august','september']"
 								_data="[{'april':'97','mai':'99','juni':'100','juli':'101','august':'102','september':'105'},{'april':'11','mai':'13','juni':'13','juli':'13','august':'12','september':'12'},{'april':'86','mai':'85','juni':'87','juli':'88','august':'87','september':'90'},{'april':'11','mai':'12','juni':'12','juli':'11','august':'12','september':'12'},{'april':'42','mai':'41','juni':'42','juli':'43','august':'39','september':'42'},{'april':'100','mai':'99','juni':'98','juli':'99','august':'102','september':'109'}]"
@@ -1787,7 +1819,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Horizontal Header mit Span, Daten Vertikal"
+								_label="2 Horizontal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers': [{'label': 'Q2', 'span': 3}, {'label': 'Q3', 'span': 3}], '_orientation': 'horizontal'}, {'_headers': [{'label': 'April'}, {'label': 'Mai'}, {'label': 'Juni'}, {'label': 'Juli'}, {'label': 'August'}, {'label': 'September'}], '_orientation': 'horizontal', '_position': 1}, {'_headers': [{'label': 'Berlin', 'key': 'berlin'},{'label': 'Hamburg', 'key': 'hamburg'},{'label': 'München', 'key': 'münchen'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['berlin', 'hamburg', 'münchen']"
 								_data="[{'berlin':'52','hamburg':'42','münchen':'93'},{'berlin':'53','hamburg':'41','münchen':'96'},{'berlin':'54','hamburg':'40','münchen':'98'},{'berlin':'66','hamburg':'42','münchen':'102'},{'berlin':'68','hamburg':'41','münchen':'100'},{'berlin':'69','hamburg':'42','münchen':'107'}]"
@@ -1800,7 +1832,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Vertikal Header mit Span, Daten Vertikal"
+								_label="2 Vertikal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers':[{'label':'Juni'},{'label':'Juli'},{'label':'August'},{'label':'September'}],'_orientation':'horizontal'},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Berlin','key':'berlin'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['münchen', 'nürnberg', 'berlin', 'bonn', 'düsseldorf', 'köln']"
 								_data="[{'münchen':'97','nürnberg':'21','berlin':'58','bonn':'14','düsseldorf':'42','köln':'99'},{'münchen':'99','nürnberg':'20','berlin':'57','bonn':'15','düsseldorf':'43','köln':'96'},{'münchen':'100','nürnberg':'22','berlin':'59','bonn':'15','düsseldorf':'42','köln':'98'},{'münchen':'102','nürnberg':'21','berlin':'62','bonn':'15','düsseldorf':'44','köln':'101'}]"
@@ -1813,7 +1845,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Vertikal"
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Vertikal"
 								_header-lines="[{'_headers':[{'label':'Q2','span':3},{'label':'Q3','span':3}],'_orientation':'horizontal'},{'_headers':[{'label':'April'},{'label':'Mai'},{'label':'Juni'},{'label':'Juli'},{'label':'August'},{'label':'September'}],'_orientation':'horizontal','_position':1},{'_headers':[{'label':'Bayern','span':2},{'label':'Berlin'},{'label':'Nordrhein-Westfalen','span':3}],'_orientation':'vertical','_position':0},{'_headers':[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Berlin','key':'berlin'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}],'_orientation':'vertical','_position':1}]"
 								_order="['münchen', 'nürnberg', 'berlin', 'bonn', 'düsseldorf', 'köln']"
 								_data="[{'münchen':'97','nürnberg':'21','berlin':'58','bonn':'14','düsseldorf':'42','köln':'99'},{'münchen':'99','nürnberg':'20','berlin':'57','bonn':'15','düsseldorf':'43','köln':'96'},{'münchen':'100','nürnberg':'22','berlin':'59','bonn':'15','düsseldorf':'42','köln':'98'},{'münchen':'102','nürnberg':'21','berlin':'62','bonn':'15','düsseldorf':'44','köln':'101'},{'münchen':'101','nürnberg':'22','berlin':'66','bonn':'16','düsseldorf':'45','köln':'102'},{'münchen':'106','nürnberg':'21','berlin':'65','bonn':'16','düsseldorf':'46','köln':'103'}]"
@@ -1826,7 +1858,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="horizontal"
-								_caption="1 Horizontal Header"
+								_label="1 Horizontal Header"
 								_header-lines="[{'_headers': [{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}], '_orientation': 'horizontal', '_position': 0}]"
 								_order="['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag']"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
@@ -1839,7 +1871,7 @@
 								class="block overflow-hidden"
 								_dual
 								_orientation="vertical"
-								_caption="1 Vertikal Header"
+								_label="1 Vertikal Header"
 								_header-lines="[{'_headers': [{'label': '0800 - 0900', 'key': '8bis9'}, {'label': '0900 - 1000', 'key': '9bis10'}, {'label': '1000 - 1100', 'key': '10bis11'}, {'label': '1100 - 1200', 'key': '11bis12'}], '_orientation': 'vertical', '_position': 0}]"
 								_order="['8bis9', '9bis10', '10bis11', '11bis12']"
 								_data="[{'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Christian', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Angela', '10bis11': 'Naomi', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Susan'}, {'8bis9': 'Sophie', '9bis10': 'Marcel', '10bis11': 'Felix', '11bis12': 'Jenny'}]"
@@ -1849,7 +1881,7 @@
 						<kol-heading _level="3">2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und Col-Span)</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und
+								_label="2 Horizontal Header mit Span, 2 Vertikal Header mit Span, Daten Horizontal (Row- und
                 Col-Span)"
 								_pagination="false"
 								_headers="{'horizontal':[[{'label':'','colSpan':2,'rowSpan':2,'asTd':true},{'label':'Q2','colSpan':2},{'label':'Juni','key':'juni','rowSpan':2},{'label':'Q3','colSpan':3}],[{'label':'April','key':'april'},{'label':'Mai','key':'mai'},{'label':'Juli','key':'juli'},{'label':'August','key':'august'},{'label':'September','key':'september'}]],'vertical':[[{'label':'Bayern','rowSpan':2},{'label':'Berlin','key':'berlin','colSpan':2},{'label':'Nordrhein-Westfalen','rowSpan':3}],[{'label':'München','key':'münchen'},{'label':'Nürnberg','key':'nürnberg'},{'label':'Bonn','key':'bonn'},{'label':'Düsseldorf','key':'düsseldorf'},{'label':'Köln','key':'köln'}]]}"
@@ -1858,14 +1890,14 @@
 							</kol-table>
 						</div>
 						<div class="gap-2 col-12 d-grid">
-							<kol-table id="table-2" _caption="2 Header, Daten Vertikal, Sort and Render"> </kol-table>
+							<kol-table id="table-2" _label="2 Header, Daten Vertikal, Sort and Render"> </kol-table>
 						</div>
 						<kol-heading _label="" _level="3">Tabelle + Filter</kol-heading>
 						<kol-input-text id="filter-input" _type="search">Filtern</kol-input-text>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="filter-table"
-								_caption="Tabelle + Filter"
+								_label="Tabelle + Filter"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1874,7 +1906,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-3a"
-								_caption="Nur Horizontal Header, Daten Horizontal, Pagination (A)"
+								_label="Nur Horizontal Header, Daten Horizontal, Pagination (A)"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_pagination="{'_boundaryCount': 0, '_page': 3, '_pageSize': 20, '_pageSizeOptions': [ 5, 10, 20, 50, 100 ]}"
 							>
@@ -1883,7 +1915,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-3b"
-								_caption="Nur Horizontal Header, Daten Horizontal, Pagination (B)"
+								_label="Nur Horizontal Header, Daten Horizontal, Pagination (B)"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1891,7 +1923,7 @@
 						<kol-heading _label="" _level="3">Nur Horizontal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Nur Horizontal Header, Pagination, leer"
+								_label="Nur Horizontal Header, Pagination, leer"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1902,7 +1934,7 @@
 						<kol-heading _label="" _level="3">Nur Vertikal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Nur Vertikal Header, Pagination, leer"
+								_label="Nur Vertikal Header, Pagination, leer"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1913,7 +1945,7 @@
 						<kol-heading _label="" _level="3">Horizontal und Vertikal Header, Pagination, leer</kol-heading>
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
-								_caption="Horizontal und Vertikal Header, Pagination, leer"
+								_label="Horizontal und Vertikal Header, Pagination, leer"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]],'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_data="[]"
@@ -1925,7 +1957,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-4"
-								_caption="Nur Vertikal Header, Daten Vertikal, Pagination"
+								_label="Nur Vertikal Header, Daten Vertikal, Pagination"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 								_pagination
@@ -1936,7 +1968,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-5"
-								_caption="Nur Horizontal Header, Daten Horizontal, ohne Pagination"
+								_label="Nur Horizontal Header, Daten Horizontal, ohne Pagination"
 								_headers="{'horizontal':[[{'label':'Montag','key':'montag','width':'10em'},{'label':'Dienstag','key':'dienstag','width':'15em'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 							>
 							</kol-table>
@@ -1945,7 +1977,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								id="table-6"
-								_caption="Nur Vertikal Header, Daten Vertikal, ohne Pagination"
+								_label="Nur Vertikal Header, Daten Vertikal, ohne Pagination"
 								_headers="{'vertical':[[{'label':'Montag','key':'montag'},{'label':'Dienstag','key':'dienstag'},{'label':'Mittwoch','key':'mittwoch'},{'label':'Donnerstag','key':'donnerstag'},{'label':'Freitag','key':'freitag'}]]}"
 								_min-width="1000px"
 							>
@@ -1955,7 +1987,7 @@
 						<div class="gap-2 col-12 d-grid">
 							<kol-table
 								class="p-4"
-								_caption="Manuelle Datenbefüllung"
+								_label="Manuelle Datenbefüllung"
 								_headers="{'horizontal': [[{'label': 'Montag', 'key': 'montag'}, {'label': 'Dienstag', 'key': 'dienstag'}, {'label': 'Mittwoch', 'key': 'mittwoch'}, {'label': 'Donnerstag', 'key': 'donnerstag'}, {'label': 'Freitag', 'key': 'freitag'}]]}"
 								_data="[{'montag': 'Alex', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Helena', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Marcus'}, {'montag': 'Fabian', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}, {'montag': 'Hong', 'dienstag': 'Marie', 'mittwoch': 'Kevin', 'donnerstag': 'Maya', 'freitag': 'Ben'}]"
 								_pagination="{'_total': 100, '_pageSize': 5, '_pageSizeOptions': [3,5,8]}"
@@ -1965,7 +1997,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="tabs" id="tabs">
+			<kol-accordion _label="tabs" id="tabs">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -2058,7 +2090,7 @@
 							<kol-tabs
 								_label="Tab-Navigation (right)"
 								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_hideLabel': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_hideLabel': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_hideLabel': true,'_disabled': true}]"
-								_tabs-align="right"
+								_align="right"
 							>
 								<div>
 									Tab 1
@@ -2070,7 +2102,7 @@
 							<kol-tabs
 								_label="Tab-Navigation (bottom)"
 								_tabs="[{'_label':'Tab 1', '_icon': 'codicon codicon-home'},{'_label':'Tab 2', '_variant': 'primary'},{'_label':'Tab 3','_disabled': true},{'_label':'Tab 4'},{'_label':'Tab 5'},{'_label':'Tab 6'},{'_label':'Tab 7'},{'_label':'Tab 8'}]"
-								_tabs-align="bottom"
+								_align="bottom"
 							>
 								<div>
 									Tab 1
@@ -2087,7 +2119,7 @@
 							<kol-tabs
 								_label="Tab-Navigation (left)"
 								_tabs="[{'_label':'Tab 1', '_tooltipAlign': 'left', '_icon': 'codicon codicon-home', '_hideLabel': true},{'_label':'Tab 2', '_icon': 'codicon codicon-home','_variant': 'primary', '_hideLabel': true},{'_label':'Tab 3', '_icon': 'codicon codicon-home','_hideLabel': true,'_disabled': true}]"
-								_tabs-align="left"
+								_align="left"
 							>
 								<div>
 									Tab 1
@@ -2100,7 +2132,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="toast" id="toast">
+			<kol-accordion _label="toast" id="toast">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -2122,7 +2154,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="tooltip" id="tooltip">
+			<kol-accordion _label="tooltip" id="tooltip">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -2134,7 +2166,7 @@
 								Die Tooltip-Komponente implementiert das Gegenstück zum Aria-Label. Es ist also explizit nur dafür vorgesehen, dem/der Nutzer:in ohne
 								Screenreader die Beschriftung eines Elementes anzuzeigen.
 							</p>
-							<kol-details _summary="Hinweise zur Barrierefreiheit">
+							<kol-details _label="Hinweise zur Barrierefreiheit">
 								<p>
 									Die Tooltip-Komponente wird bei Focus oder Hover angezeigt und dient ausschließlich dem/der sehenden Nutzer:in ohne Screenreader die
 									Beschriftung (Aria-Label) lesen zu können. Der Text des Tooltips ist selbst nicht mit der Tastatur erreichbar und zudem mittels Aria-Hidden
@@ -2162,7 +2194,7 @@
 					</div>
 				</div>
 			</kol-accordion>
-			<kol-accordion _heading="version" id="version">
+			<kol-accordion _label="version" id="version">
 				<div>
 					<div class="row">
 						<div class="col-12">
@@ -2174,8 +2206,8 @@
 						</div>
 						<div class="col-12">
 							<div class="gap-2 d-flex">
-								<kol-version _version="1.6.0-rc.15"></kol-version>
-								<kol-version _label="1.6.0-rc.15"></kol-version>
+								<kol-version _version="1.6.0-rc.25"></kol-version>
+								<kol-version _label="1.6.0-rc.25"></kol-version>
 							</div>
 						</div>
 					</div>

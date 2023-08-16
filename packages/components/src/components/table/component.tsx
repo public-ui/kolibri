@@ -4,13 +4,14 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { Stringified } from '../../types/common';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { devHint } from '../../utils/a11y.tipps';
 import { emptyStringByArrayHandler, objectObjectHandler, parseJson, setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { KoliBriPaginationButtonCallbacks } from '../pagination/types';
 import {
 	KoliBriSortDirection,
 	KoliBriSortFunction,
-	KoliBriTableAPI,
+	API,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -18,7 +19,8 @@ import {
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
 	KoliBriTableRender,
-	KoliBriTableStates,
+	KoliBriTableSelectedHead,
+	States,
 } from './types';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -32,7 +34,7 @@ const CELL_REFS = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	},
 	shadow: true,
 })
-export class KolTable implements KoliBriTableAPI {
+export class KolTable implements API {
 	private horizontal = true;
 	private sortFunction?: KoliBriSortFunction;
 	private sortDirections: Map<KoliBriSortFunction, KoliBriSortDirection> = new Map();
@@ -41,10 +43,14 @@ export class KolTable implements KoliBriTableAPI {
 	private pageEndSlice = 10;
 	private disableSort = false;
 
+	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
+	private ariaLive = '';
+
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated Use _label.
 	 */
-	@Prop() public _caption!: string;
+	@Prop() public _caption?: string;
 
 	/**
 	 * Gibt die Daten an, die für die Erstellung der Tabelle verwendet werden.
@@ -62,6 +68,11 @@ export class KolTable implements KoliBriTableAPI {
 	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
 
 	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: string;
+
+	/**
 	 * Gibt an, die minimale Breite der Tabelle an.
 	 */
 	@Prop() public _minWidth?: string;
@@ -71,8 +82,8 @@ export class KolTable implements KoliBriTableAPI {
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
 
-	@State() public state: KoliBriTableStates = {
-		_caption: '…', // ⚠ required
+	@State() public state: States = {
+		_label: '…', // ⚠ required
 		_data: [],
 		_dataFoot: [],
 		_headers: {
@@ -89,9 +100,7 @@ export class KolTable implements KoliBriTableAPI {
 
 	@Watch('_caption')
 	public validateCaption(value?: string): void {
-		watchString(this, '_caption', value, {
-			required: true,
-		});
+		this.validateLabel(value);
 	}
 
 	@Watch('_data')
@@ -208,6 +217,11 @@ export class KolTable implements KoliBriTableAPI {
 		});
 	}
 
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
+	}
+
 	@Watch('_minWidth')
 	public validateMinWidth(value?: string): void {
 		watchString(this, '_minWidth', value, {
@@ -268,10 +282,10 @@ export class KolTable implements KoliBriTableAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateCaption(this._caption);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaders(this._headers);
+		this.validateLabel(this._label || this._caption);
 		this.validateMinWidth(this._minWidth);
 		this.validatePagination(this._pagination);
 	}
@@ -489,18 +503,25 @@ export class KolTable implements KoliBriTableAPI {
 		}
 	}
 
-	private updateSortedData = () => {
+	private updateSortedData = (cell: KoliBriTableSelectedHead = this.sortedColumnHead) => {
 		let sortedData: KoliBriTableDataType[] = this.state._data;
 		if (typeof this.sortFunction === 'function') {
 			switch (this.sortDirections.get(this.sortFunction)) {
-				case 'NOS':
-					sortedData = [...this.state._data];
-					break;
 				case 'ASC':
 					sortedData = this.sortFunction([...this.state._data]);
+					this.ariaLive = translate('kol-sort-ascending', { placeholders: { column: cell.label } });
+					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'ASC' };
 					break;
-				default:
+				case 'DESC':
 					sortedData = this.sortFunction([...this.state._data]).reverse();
+					this.ariaLive = translate('kol-sort-descending', { placeholders: { column: cell.label } });
+					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'DESC' };
+					break;
+				case 'NOS':
+				default:
+					sortedData = [...this.state._data];
+					this.sortedColumnHead = { label: '', key: '', sortDirection: 'NOS' };
+					this.ariaLive = translate('kol-sort-none', { placeholders: { column: cell.label } });
 			}
 		}
 		setState(this, '_sortedData', sortedData);
@@ -509,58 +530,56 @@ export class KolTable implements KoliBriTableAPI {
 	private readonly renderTableRow = (row: KoliBriTableCell[], rowIndex: number): JSX.Element => {
 		return <tr key={`tbody-${rowIndex}`}>{row.map((col, colIndex) => this.renderTableCell(col, rowIndex, colIndex))}</tr>;
 	};
-	private readonly renderTableCell = (col: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
-		if (col.asTd === false) {
+	private readonly renderTableCell = (cell: KoliBriTableCell, rowIndex: number, colIndex: number): JSX.Element => {
+		if (cell.asTd === false) {
+			const headerCell: KoliBriTableHeaderCell = cell;
+			let sortDirection = undefined;
+			let sortButtonIcon = 'codicon codicon-fold';
+			if (!this.disableSort && headerCell.key === this.sortedColumnHead.key) {
+				switch (this.sortedColumnHead.sortDirection) {
+					case 'ASC':
+						sortButtonIcon = 'codicon codicon-chevron-up';
+						sortDirection = 'ascending';
+						break;
+					case 'DESC':
+						sortButtonIcon = 'codicon codicon-chevron-down';
+						sortDirection = 'descending';
+						break;
+				}
+			}
 			return (
 				<th // role="rowheader"
-					key={`tbody-${rowIndex}-${colIndex}-${col.label}`}
-					scope={typeof col.rowSpan === 'number' && col.rowSpan > 1 ? 'rowgroup' : 'row'}
-					colSpan={col.colSpan}
-					rowSpan={col.rowSpan}
+					key={`tbody-${rowIndex}-${colIndex}-${headerCell.label}`}
+					scope={typeof headerCell.rowSpan === 'number' && headerCell.rowSpan > 1 ? 'rowgroup' : 'row'}
+					colSpan={headerCell.colSpan}
+					rowSpan={headerCell.rowSpan}
 					style={{
-						textAlign: col.textAlign,
-						width: col.width,
+						textAlign: headerCell.textAlign,
+						width: headerCell.width,
 					}}
-					aria-sort={
-						!this.disableSort && typeof col.sort === 'function'
-							? col.sort !== this.sortFunction || this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
-								? 'none'
-								: this.sortDirections.get(col.sort) === 'ASC'
-								? 'ascending'
-								: 'descending'
-							: undefined
-					}
+					aria-sort={sortDirection}
 					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-					data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
+					data-sort={`sort-${this.sortDirections.get(headerCell.sort!) as string}`}
 				>
 					<div class="w-full flex gap-1 items-center">
 						<div
 							class={{
 								'w-full': true,
-								[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+								[headerCell.textAlign as string]: typeof headerCell.textAlign === 'string' && headerCell.textAlign.length > 0,
 							}}
-							innerHTML={col.label}
-							style={{
-								textAlign: col.textAlign,
-							}}
+							innerHTML={headerCell.label}
+							style={{ textAlign: headerCell.textAlign }}
 						></div>
-						{!this.disableSort && typeof col.sort === 'function' && (
+						{!this.disableSort && typeof headerCell.sort === 'function' && (
 							<kol-button
 								exportparts="icon"
-								_ariaLabel={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
-								_icon={
-									col.sort !== this.sortFunction || this.sortDirections.get(col.sort) === 'NOS' || this.sortDirections.get(col.sort) === undefined
-										? 'codicon codicon-fold'
-										: this.sortDirections.get(col.sort) === 'ASC'
-										? 'codicon codicon-chevron-up'
-										: 'codicon codicon-chevron-down'
-								}
+								_icon={sortButtonIcon}
 								_hideLabel
-								_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
+								_label={translate('kol-change-order', { placeholders: { colLabel: headerCell.label } })}
 								_on={{
 									onClick: () => {
-										if (typeof col.sort === 'function') {
-											this.sortFunction = col.sort;
+										if (typeof headerCell.sort === 'function') {
+											this.sortFunction = headerCell.sort;
 											switch (this.sortDirections.get(this.sortFunction)) {
 												case 'ASC':
 													this.setSortDirection(this.sortFunction, 'DESC');
@@ -571,7 +590,7 @@ export class KolTable implements KoliBriTableAPI {
 												default:
 													this.setSortDirection(this.sortFunction, 'ASC');
 											}
-											this.updateSortedData();
+											this.updateSortedData(headerCell as KoliBriTableSelectedHead);
 										}
 									},
 								}}
@@ -584,24 +603,24 @@ export class KolTable implements KoliBriTableAPI {
 		} else {
 			return (
 				<td // role="gridcell"
-					key={`tbody-${rowIndex}-${colIndex}-${col.label}`}
+					key={`tbody-${rowIndex}-${colIndex}-${cell.label}`}
 					class={{
-						[col.textAlign as string]: typeof col.textAlign === 'string' && col.textAlign.length > 0,
+						[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
 					}}
-					colSpan={col.colSpan}
-					rowSpan={col.rowSpan}
+					colSpan={cell.colSpan}
+					rowSpan={cell.rowSpan}
 					style={{
-						textAlign: col.textAlign,
-						width: col.width,
+						textAlign: cell.textAlign,
+						width: cell.width,
 					}}
 					ref={
-						typeof col.render === 'function'
+						typeof cell.render === 'function'
 							? (el) => {
-									this.cellRender(col as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
+									this.cellRender(cell as KoliBriTableHeaderCellAndData & { render: KoliBriTableRender }, el);
 							  }
 							: undefined
 					}
-					innerHTML={typeof col.render !== 'function' ? col.label : ''}
+					innerHTML={typeof cell.render !== 'function' ? cell.label : ''}
 				></td>
 			);
 		}
@@ -622,6 +641,9 @@ export class KolTable implements KoliBriTableAPI {
 
 		return (
 			<Host>
+				<span style={{ height: '0', width: '0', overflow: 'hidden' }} aria-live="assertive">
+					{this.ariaLive}
+				</span>
 				{this.pageEndSlice > 0 && this.showPagination && (
 					<div class="pagination">
 						<span>
@@ -649,7 +671,7 @@ export class KolTable implements KoliBriTableAPI {
 							minWidth: this.state._minWidth,
 						}}
 					>
-						<caption>{this.state._caption}</caption>
+						<caption>{this.state._label}</caption>
 						{Array.isArray(this.state._headers.horizontal) && (
 							<thead>
 								{this.state._headers.horizontal.map((cols, rowIndex) => (
@@ -679,29 +701,33 @@ export class KolTable implements KoliBriTableAPI {
 													></td>
 												);
 											} else {
+												const headerCell: KoliBriTableHeaderCell = col;
+												let sortDirection = undefined;
+												let sortButtonIcon = 'codicon codicon-fold';
+												if (headerCell.key === this.sortedColumnHead.key) {
+													switch (this.sortedColumnHead.sortDirection) {
+														case 'ASC':
+															sortButtonIcon = 'codicon codicon-chevron-up';
+															sortDirection = 'ascending';
+															break;
+														case 'DESC':
+															sortButtonIcon = 'codicon codicon-chevron-down';
+															sortDirection = 'descending';
+															break;
+													}
+												}
 												return (
 													<th // role="columnheader"
-														key={`thead-${rowIndex}-${colIndex}-${col.label}`}
-														scope={typeof col.colSpan === 'number' && col.colSpan > 1 ? 'colgroup' : 'col'}
-														colSpan={col.colSpan}
-														rowSpan={col.rowSpan}
+														key={`thead-${rowIndex}-${colIndex}-${headerCell.label}`}
+														scope={typeof headerCell.colSpan === 'number' && headerCell.colSpan > 1 ? 'colgroup' : 'col'}
+														colSpan={headerCell.colSpan}
+														rowSpan={headerCell.rowSpan}
 														style={{
 															textAlign: col.textAlign,
 															width: col.width,
 														}}
-														aria-sort={
-															!this.disableSort && typeof col.sort === 'function'
-																? col.sort !== this.sortFunction ||
-																  this.sortDirections.get(col.sort) === 'NOS' ||
-																  this.sortDirections.get(col.sort) === undefined
-																	? 'none'
-																	: this.sortDirections.get(col.sort) === 'ASC'
-																	? 'ascending'
-																	: 'descending'
-																: undefined
-														}
-														// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-														data-sort={`sort-${this.sortDirections.get(col.sort!) as string}`}
+														aria-sort={sortDirection}
+														data-sort={sortDirection ? `sort-${this.sortedColumnHead.sortDirection}` : 'sort-NOS'}
 													>
 														<div class="w-full flex gap-1 items-center">
 															<div
@@ -714,24 +740,16 @@ export class KolTable implements KoliBriTableAPI {
 																	textAlign: col.textAlign,
 																}}
 															></div>
-															{!this.disableSort && typeof col.sort === 'function' && (
+															{!this.disableSort && typeof headerCell.sort === 'function' && (
 																<kol-button
 																	exportparts="icon"
-																	_icon={
-																		col.sort !== this.sortFunction ||
-																		this.sortDirections.get(col.sort) === 'NOS' ||
-																		this.sortDirections.get(col.sort) === undefined
-																			? 'codicon codicon-fold'
-																			: this.sortDirections.get(col.sort) === 'ASC'
-																			? 'codicon codicon-chevron-up'
-																			: 'codicon codicon-chevron-down'
-																	}
+																	_icon={sortButtonIcon}
 																	_hideLabel
 																	_label={translate('kol-change-order', { placeholders: { colLabel: col.label } })}
 																	_on={{
 																		onClick: () => {
-																			if (typeof col.sort === 'function') {
-																				this.sortFunction = col.sort;
+																			if (typeof headerCell.sort === 'function') {
+																				this.sortFunction = headerCell.sort;
 																				switch (this.sortDirections.get(this.sortFunction)) {
 																					case 'ASC':
 																						this.setSortDirection(this.sortFunction, 'DESC');
@@ -742,7 +760,7 @@ export class KolTable implements KoliBriTableAPI {
 																					default:
 																						this.setSortDirection(this.sortFunction, 'ASC');
 																				}
-																				this.updateSortedData();
+																				this.updateSortedData(headerCell as KoliBriTableSelectedHead);
 																			}
 																		},
 																	}}

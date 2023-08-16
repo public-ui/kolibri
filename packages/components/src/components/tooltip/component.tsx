@@ -1,21 +1,20 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchTooltipAlignment } from '../../types/button-link';
-import { Align } from '../../types/props/align';
+import { AlignPropType, validateAlign } from '../../types/props/align';
+import { IdPropType, validateId } from '../../types/props/id';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { getDocument, nonce } from '../../utils/dev.utils';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
-import { watchString } from '../../utils/prop.validators';
 import { processEnv } from '../../utils/reuse';
-import { KoliBriTooltipAPI, KoliBriTooltipStates } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-tooltip',
 	styleUrl: './style.css',
 	shadow: false,
 })
-export class KolTooltip implements KoliBriTooltipAPI {
+export class KolTooltip implements API {
 	private previousSibling?: HTMLElement | null;
 	private tooltipElement?: HTMLDivElement;
 	private arrowElement?: HTMLDivElement;
@@ -134,9 +133,9 @@ export class KolTooltip implements KoliBriTooltipAPI {
 		return (
 			<Host ref={this.catchHostElement}>
 				{this.state._label !== '' && (
-					<div id="floating" ref={this.catchTooltipElement}>
-						<div class="area" id="arrow" ref={this.catchArrowElement} />
-						<kol-span-wc class="area" id={this.state._id} _label={this.state._label}></kol-span-wc>
+					<div class="tooltip-floating" ref={this.catchTooltipElement}>
+						<div class="tooltip-area tooltip-arrow" ref={this.catchArrowElement} />
+						<kol-span-wc class="tooltip-area tooltip-content" id={this.state._id} _label={this.state._label}></kol-span-wc>
 					</div>
 				)}
 			</Host>
@@ -144,34 +143,34 @@ export class KolTooltip implements KoliBriTooltipAPI {
 	}
 
 	/**
-	 * Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.
+	 * Defines the alignment of the tooltip in relation to the parent element.
 	 */
-	@Prop() public _align?: Align = 'top';
+	@Prop() public _align?: AlignPropType = 'top';
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id!: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _label!: LabelPropType;
 
-	@State() public state: KoliBriTooltipStates = {
+	@State() public state: States = {
 		_align: 'top',
 		_id: nonce(),
 		_label: '…', // ⚠ required
 	};
 
 	@Watch('_align')
-	public validateAlign(value?: Align): void {
-		watchTooltipAlignment(this, '_align', value);
+	public validateAlign(value?: AlignPropType): void {
+		validateAlign(this, value);
 	}
 
 	@Watch('_id')
-	public validateId(value?: string): void {
-		watchString(this, '_id', value);
+	public validateId(value?: IdPropType): void {
+		validateId(this, value);
 	}
 
 	@Watch('_label')

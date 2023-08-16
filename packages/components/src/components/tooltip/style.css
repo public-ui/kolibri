@@ -1,5 +1,5 @@
 @import url(../style.css);
-kol-tooltip #floating {
+kol-tooltip .tooltip-floating {
 	animation-duration: 0.5s;
 	animation-iteration-count: 1;
 	animation-name: fadeInOpacity;
@@ -9,22 +9,24 @@ kol-tooltip #floating {
 	position: absolute;
 	visibility: hidden;
 	/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
-	width: max-content;
 	top: 0;
 	left: 0;
+	max-width: 90vw;
+	max-height: 90vh;
 }
-kol-tooltip #arrow {
+/* Shared between content and arrow */
+kol-tooltip .tooltip-area {
+	background-color: #fff;
+	color: #000;
+}
+kol-tooltip .tooltip-arrow {
 	height: 10px;
 	position: absolute;
 	transform: rotate(45deg);
 	width: 10px;
 	z-index: 999;
 }
-kol-tooltip .area {
-	background-color: #fff;
-	color: #000;
-}
-kol-tooltip kol-span-wc {
+kol-tooltip .tooltip-content {
 	position: relative;
 	z-index: 1000;
 }

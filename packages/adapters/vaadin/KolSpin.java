@@ -1,51 +1,55 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Ladeanzeigen, wie die **Spin**-Komponente, informieren die Nutzer:innen über Lade- oder Rechenvorgänge, die vom System ausgeführt werden. Der Fortschritt kann durch eine wiederholte Animation kommuniziert werden.
  */
 
 @Tag("kol-spin")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-spin")
 public class KolSpin extends Component {
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setShow(final Optional<String> value) {
-		getElement().setProperty("_show", value);
+	public void setShow(final String value) {
+		getElement().setProperty("_show", value.toString());
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getShow() {
-		return getElement().getProperty("_show", null);
+		var value = getElement().getProperty("_show", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines the variant of spin navigation.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setVariant(final Optional<String> value) {
-		getElement().setProperty("_variant", value);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value.toString());
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines the variant of spin navigation.
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getVariant() {
-		return getElement().getProperty("_variant", null);
+		var value = getElement().getProperty("_variant", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

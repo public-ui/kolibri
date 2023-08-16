@@ -1,6 +1,6 @@
 # Textarea
 
-Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
+Die Komponente **Textarea** stellt ein größeres Eingabefeld für Inhalte zur Verfügung. Im Gegensatz zum <kol-link _href="/docs/components/input-text" _label="/docs/components/input-text" _label="InputText"></kol-link> können hier auch umfangreiche Inhalte eingegeben werden, die auch mit Zeilenumbrüchen versehen sein können.
 
 ## Konstruktion
 
@@ -46,7 +46,7 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 
 ## Links und Referenzen
 
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
@@ -55,11 +55,11 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 | Property              | Attribute        | Description                                                                                                                                          | Type                                                                                     | Default      |
 | --------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------ |
 | `_accessKey`          | `_access-key`    | Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.                                    | `string \| undefined`                                                                    | `undefined`  |
-| `_adjustHeight`       | `_adjust-height` | Passt die Höhe des Eingabefeldes automatisch an den Füllstand an.                                                                                    | `boolean \| undefined`                                                                   | `false`      |
+| `_adjustHeight`       | `_adjust-height` | Adjusts the height of the element to its content.                                                                                                    | `boolean \| undefined`                                                                   | `false`      |
 | `_alert`              | `_alert`         | Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.                                                                                        | `boolean \| undefined`                                                                   | `true`       |
 | `_disabled`           | `_disabled`      | Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.                                                      | `boolean \| undefined`                                                                   | `undefined`  |
 | `_error`              | `_error`         | Gibt den Text für eine Fehlermeldung an.                                                                                                             | `string \| undefined`                                                                    | `undefined`  |
-| `_hasCounter`         | `_has-counter`   | Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.                                                                                 | `boolean \| undefined`                                                                   | `undefined`  |
+| `_hasCounter`         | `_has-counter`   | Shows the character count on the lower border of the input.                                                                                          | `boolean \| undefined`                                                                   | `undefined`  |
 | `_hideLabel`          | `_hide-label`    | Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.                                                            | `boolean \| undefined`                                                                   | `undefined`  |
 | `_hint`               | `_hint`          | Gibt den Hinweistext an.                                                                                                                             | `string \| undefined`                                                                    | `''`         |
 | `_id`                 | `_id`            | Gibt die interne ID des primären Elements in der Komponente an.                                                                                      | `string \| undefined`                                                                    | `undefined`  |
@@ -71,9 +71,9 @@ Mit Hilfe des Attributs **`_rows`** kann die Höhe der Textarea in Zeilen bestim
 | `_readOnly`           | `_read-only`     | Setzt das Eingabefeld in den schreibgeschützten Modus.                                                                                               | `boolean \| undefined`                                                                   | `undefined`  |
 | `_required`           | `_required`      | Macht das Eingabeelement zu einem Pflichtfeld.                                                                                                       | `boolean \| undefined`                                                                   | `undefined`  |
 | `_resize`             | `_resize`        | Gibt an, ob die Größe des Eingabefeldes von Nutzer:innen geändert werden kann. (https://developer.mozilla.org/de/docs/Web/CSS/resize)                | `"both" \| "horizontal" \| "none" \| "vertical" \| undefined`                            | `'vertical'` |
-| `_rows`               | `_rows`          | Gibt die Anzahl der anzuzeigenden Zeilen des Eingabefeldes an.                                                                                       | `number \| undefined`                                                                    | `undefined`  |
+| `_rows`               | `_rows`          | Defines how many rows of text should be visible at the same time.                                                                                    | `number \| undefined`                                                                    | `undefined`  |
 | `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                    | `undefined`  |
-| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
+| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
 | `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                   | `false`      |
 | `_value`              | `_value`         | Gibt den Wert des Eingabefeldes an.                                                                                                                  | `string \| undefined`                                                                    | `undefined`  |
 

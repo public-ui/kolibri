@@ -1,11 +1,11 @@
 import { Component, Fragment, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { SpinVariant, validateSpinVariant } from '../../types/props/variant/spin';
-import { watchBoolean } from '../../utils/prop.validators';
-import { KoliBriSpinAPI, KoliBriSpinStates } from './types';
+import { SpinVariantPropType, validateSpinVariant } from '../../types/props/variant/spin';
+import { API, States } from './types';
+import { ShowPropType, validateShow } from '../../types/props/show';
 
-function renderSpin(variant: SpinVariant): JSX.Element {
+function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
 		case 'cycle':
 			return <span class="loader"></span>;
@@ -30,7 +30,7 @@ function renderSpin(variant: SpinVariant): JSX.Element {
 	},
 	shadow: true,
 })
-export class KolSpin implements KoliBriSpinAPI {
+export class KolSpin implements API {
 	private showToggled = false;
 
 	public render(): JSX.Element {
@@ -58,27 +58,28 @@ export class KolSpin implements KoliBriSpinAPI {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
+	 * TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _show?: boolean = false;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines the variant of spin navigation.
 	 */
-	@Prop() public _variant?: SpinVariant = 'dot';
+	@Prop() public _variant?: SpinVariantPropType = 'dot';
 
-	@State() public state: KoliBriSpinStates = {
+	@State() public state: States = {
 		_variant: 'dot',
 	};
 
 	@Watch('_show')
-	public validateShow(value?: boolean): void {
+	public validateShow(value?: ShowPropType): void {
 		this.showToggled = this.state._show === true && this._show === false;
-		watchBoolean(this, '_show', value);
+		validateShow(this, value);
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: SpinVariant): void {
+	public validateVariant(value?: SpinVariantPropType): void {
 		validateSpinVariant(this, value);
 	}
 

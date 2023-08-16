@@ -1,8 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { ImageSourcePropType, validateImageSource } from '../../types/props/image-source';
 import { watchString } from '../../utils/prop.validators';
 import { Loading, validateLoading } from '../../utils/validators/loading';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
 
 @Component({
 	tag: 'kol-image',
@@ -11,7 +12,7 @@ import { ComponentApi, States } from './types';
 	},
 	shadow: true,
 })
-export class KolImage implements ComponentApi {
+export class KolImage implements API {
 	/**
 	 * Setzt den alternativen Text.
 	 */
@@ -28,9 +29,9 @@ export class KolImage implements ComponentApi {
 	@Prop() public _sizes?: string;
 
 	/**
-	 * Setzt die Quell-URL des Bildes.
+	 * Sets the image `src` attribute to the given string.
 	 */
-	@Prop() public _src!: string;
+	@Prop() public _src!: ImageSourcePropType;
 
 	/**
 	 * Setzt eine Liste von Quell-URLs mit Breiten der Bilder.
@@ -61,8 +62,8 @@ export class KolImage implements ComponentApi {
 	}
 
 	@Watch('_src')
-	public validateSrc(value?: string): void {
-		watchString(this, '_src', value, {
+	public validateSrc(value?: ImageSourcePropType): void {
+		validateImageSource(this, value, {
 			required: true,
 		});
 	}

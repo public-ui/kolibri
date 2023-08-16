@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../button-link';
+import { Props as ButtonProps } from '../../../components/button/types';
 import { Stringified } from '../../common';
 import { KoliBriHorizontalIcon } from '../../icon';
 import { InputTypeOnDefault, InputTypeOnOff } from '../types';
@@ -22,7 +22,7 @@ export type OptionalInputProps<T> = {
 	on: InputTypeOnDefault;
 	readOnly: boolean;
 	required: boolean;
-	smartButton: ButtonProps;
+	smartButton: Stringified<ButtonProps>;
 	step: number;
 	tabIndex: number;
 	touched: boolean;

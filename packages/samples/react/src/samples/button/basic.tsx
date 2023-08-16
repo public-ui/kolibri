@@ -10,15 +10,15 @@ const ARGS = {
 };
 
 export const ButtonBasic: FC = () => (
-	<div className="grid gap-4">
-		<div className="d-flex flex-wrap gap-2">
+	<div className="grid gap-14">
+		<div className="flex flex-wrap gap-14">
 			<KolButton _label="Primary" _variant="primary" {...ARGS}></KolButton>
 			<KolButton _label="Secondary" _variant="secondary" {...ARGS}></KolButton>
 			<KolButton _label="Normal" _variant="normal" {...ARGS}></KolButton>
 			<KolButton _label="Danger" _variant="danger" {...ARGS}></KolButton>
 			<KolButton _label="Ghost" _variant="ghost" {...ARGS}></KolButton>
 		</div>
-		<div className="d-flex flex-wrap gap-2">
+		<div className="flex flex-wrap gap-14">
 			<KolButton _disabled _label="Primary" _variant="primary"></KolButton>
 			<KolButton _disabled _label="Secondary" _variant="secondary"></KolButton>
 			<KolButton _disabled _label="Normal" _variant="normal"></KolButton>

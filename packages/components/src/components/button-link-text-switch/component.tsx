@@ -2,7 +2,6 @@
 import { Component, h, Host, JSX, Prop } from '@stencil/core';
 
 import { ButtonOrLinkOrTextWithChildrenProps, ButtonWithChildrenProps, LinkWithChildrenProps, TextWithChildrenProps } from '../../types/button-link-text';
-import { AriaCurrent } from '../../types/props/aria-current';
 import { Props } from './types';
 
 /**
@@ -31,55 +30,14 @@ export class KolButtonLinkTextSwitch implements Props {
 		}
 	}
 
-	private button = (button: ButtonWithChildrenProps): JSX.Element => (
-		<kol-button-wc
-			_ariaCurrent={this._hasChildren === true ? this._ariaCurrentValue : undefined}
-			_ariaSelected={this._selected === true}
-			_disabled={button._disabled}
-			_hideLabel={this._hideLabel === true}
-			_icon={button._icon}
-			_label={button._label}
-			_on={button._on}
-		></kol-button-wc>
-	);
+	private button = (button: ButtonWithChildrenProps): JSX.Element => <kol-button-wc {...button}></kol-button-wc>;
 
-	private link = (link: LinkWithChildrenProps): JSX.Element => (
-		<kol-link-wc
-			_ariaCurrent={this._hasChildren === true ? this._ariaCurrentValue : undefined}
-			_ariaSelected={this._selected === true}
-			_hideLabel={this._hideLabel === true}
-			_href={link._href}
-			_icon={link._icon}
-			_label={link._label}
-		></kol-link-wc>
-	);
+	private link = (link: LinkWithChildrenProps): JSX.Element => <kol-link-wc {...link}></kol-link-wc>;
 
-	private text = (text: TextWithChildrenProps): JSX.Element => (
-		<kol-span-wc _hideLabel={this._hideLabel === true} _icon={text._icon} _label={text._label}></kol-span-wc>
-	);
-
-	/**
-	 * Gibt den Wert von aria-current an, der bei dem aktuellen Kontext innerhalb der Navigation verwendet werden soll.
-	 */
-	@Prop() public _ariaCurrentValue: AriaCurrent = false;
-
-	/**
-	 * Gibt an, ob diese Komponente Kinder hat.
-	 */
-	@Prop() public _hasChildren?: boolean = false;
+	private text = (text: TextWithChildrenProps): JSX.Element => <kol-span-wc {...text}></kol-span-wc>;
 
 	/**
 	 * Die Link-Daten welche diese Komponente verwendet, um die entsprechende Komponente zu rendern.
 	 */
 	@Prop() public _link!: ButtonOrLinkOrTextWithChildrenProps;
-
-	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Ist der Link selektiert? (Nur wenn es ein Link ist.)
-	 */
-	@Prop() public _selected?: boolean = false;
 }

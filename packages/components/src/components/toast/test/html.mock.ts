@@ -1,9 +1,9 @@
 import { mixMembers } from 'stencil-awesome-test';
 
 import { getAlertHtml } from '../../alert/test/html.mock';
-import { KoliBriToastProps } from '../types';
+import { Props } from '../types';
 
-export const getToastHtml = (props: KoliBriToastProps): string => {
+export const getToastHtml = (props: Props): string => {
 	props = mixMembers(
 		{
 			_alert: true,
@@ -21,7 +21,7 @@ export const getToastHtml = (props: KoliBriToastProps): string => {
         ${getAlertHtml(
 					{
 						_alert: props._alert,
-						_heading: props._heading,
+						_label: props._label,
 						_level: props._level,
 						_type: props._type,
 						_variant: 'card',

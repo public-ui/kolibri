@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * Mit **Badges** können Sie bestimmte Informationen auf Ihrer Webseite optisch hervorheben.
@@ -11,16 +13,16 @@ KoliBri bietet neben der Angabe der Hintergrundfarbe und automatischer Berechnun
  */
 
 @Tag("kol-badge")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-badge")
 public class KolBadge extends Component {
 	/**
 	 * Setzt die Hintergrundfarbe.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setColor(final Optional<String> value) {
-		getElement().setProperty("_color", value);
+	public void setColor(final String value) {
+		getElement().setProperty("_color", value.toString());
 	}
 
 	/**
@@ -29,34 +31,40 @@ public class KolBadge extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getColor() {
-		return getElement().getProperty("_color", null);
+		var value = getElement().getProperty("_color", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+  since it would not be accessible without visible labeling. A separate tooltip
+  is not planed, because a badge is not an interactive element.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHideLabel(final Optional<String> value) {
-		getElement().setProperty("_hide-label", value);
+	public void setHideLabel(final String value) {
+		getElement().setProperty("_hide-label", value.toString());
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+  since it would not be accessible without visible labeling. A separate tooltip
+  is not planed, because a badge is not an interactive element.
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHideLabel() {
-		return getElement().getProperty("_hide-label", null);
+		var value = getElement().getProperty("_hide-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setIcon(final Optional<String> value) {
-		getElement().setProperty("_icon", value);
+	public void setIcon(final String value) {
+		getElement().setProperty("_icon", value.toString());
 	}
 
 	/**
@@ -65,16 +73,17 @@ public class KolBadge extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getIcon() {
-		return getElement().getProperty("_icon", null);
+		var value = getElement().getProperty("_icon", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setIconOnly(final Optional<String> value) {
-		getElement().setProperty("_icon-only", value);
+	public void setIconOnly(final String value) {
+		getElement().setProperty("_icon-only", value.toString());
 	}
 
 	/**
@@ -83,7 +92,8 @@ public class KolBadge extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getIconOnly() {
-		return getElement().getProperty("_icon-only", null);
+		var value = getElement().getProperty("_icon-only", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -91,8 +101,8 @@ public class KolBadge extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
@@ -101,16 +111,17 @@ public class KolBadge extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setSmartButton(final Optional<String> value) {
-		getElement().setProperty("_smart-button", value);
+	public void setSmartButton(final String value) {
+		getElement().setProperty("_smart-button", value.toString());
 	}
 
 	/**
@@ -119,6 +130,7 @@ public class KolBadge extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getSmartButton() {
-		return getElement().getProperty("_smart-button", null);
+		var value = getElement().getProperty("_smart-button", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

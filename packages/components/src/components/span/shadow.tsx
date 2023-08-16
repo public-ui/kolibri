@@ -3,7 +3,7 @@ import { Component, h, JSX, Prop } from '@stencil/core';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
-import { KolibriSpanProps } from './types';
+import { Props } from './types';
 
 @Component({
 	tag: 'kol-span',
@@ -12,7 +12,7 @@ import { KolibriSpanProps } from './types';
 	},
 	shadow: true,
 })
-export class KolSpan implements KolibriSpanProps {
+export class KolSpan implements Props {
 	public render(): JSX.Element {
 		return (
 			<kol-span-wc _icon={this._icon} _hideLabel={this._hideLabel} _label={this._label}>
@@ -22,7 +22,8 @@ export class KolSpan implements KolibriSpanProps {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 

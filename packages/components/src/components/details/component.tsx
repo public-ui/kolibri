@@ -1,7 +1,8 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchBoolean, watchString } from '../../utils/prop.validators';
-import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { watchBoolean } from '../../utils/prop.validators';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -13,7 +14,7 @@ import { KoliBriDetailsAPI, KoliBriDetailsStates } from './types';
 	},
 	shadow: true,
 })
-export class KolDetails implements KoliBriDetailsAPI {
+export class KolDetails implements API {
 	private htmlDetailsElement?: HTMLDetailsElement;
 
 	public render(): JSX.Element {
@@ -33,7 +34,7 @@ export class KolDetails implements KoliBriDetailsAPI {
 						) : (
 							<kol-icon _ariaLabel="" _icon="codicon codicon-chevron-right" />
 						)}
-						<span>{this.state._summary}</span>
+						<span>{this.state._label}</span>
 					</summary>
 					<div class="content">
 						<kol-indented-text>
@@ -46,18 +47,30 @@ export class KolDetails implements KoliBriDetailsAPI {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: LabelPropType;
+
+	/**
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+	 * TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	/**
 	 * Gibt die Zusammenfassung der Detailbeschreibung an.
+	 * @deprecated Use _label.
 	 */
-	@Prop() public _summary!: string;
+	@Prop() public _summary?: string;
 
-	@State() public state: KoliBriDetailsStates = {
-		_summary: '…', // '⚠'
+	@State() public state: States = {
+		_label: '…', // '⚠'
 	};
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
+	}
 
 	@Watch('_open')
 	public validateOpen(value?: boolean): void {
@@ -66,14 +79,12 @@ export class KolDetails implements KoliBriDetailsAPI {
 
 	@Watch('_summary')
 	public validateSummary(value?: string): void {
-		watchString(this, '_summary', value, {
-			required: true,
-		});
+		this.validateLabel(value);
 	}
 
 	public componentWillLoad(): void {
 		this.validateOpen(this._open);
-		this.validateSummary(this._summary);
+		this.validateLabel(this._label || this._summary);
 	}
 
 	private onClick = () => {

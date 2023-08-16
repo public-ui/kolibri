@@ -139,6 +139,18 @@ const TABLE_2_HEADERS = {
 		],
 	].concat([TABLE_HEADERS_H.horizontal[1]]),
 };
+const TABLE_NVDA_HEADERS = {
+	horizontal: [
+		[
+			{ label: 'Juni', key: 'juni', sort: (data) => data.sort((a, b) => sortTable(a, b, 'juni', 'number')) },
+			{ label: 'April', key: 'april', sort: (data) => data.sort((a, b) => sortTable(a, b, 'april', 'number')) },
+			{ label: 'Mai', key: 'mai', sort: (data) => data.sort((a, b) => sortTable(a, b, 'mai', 'number')) },
+			{ label: 'Juli', key: 'juli', sort: (data) => data.sort((a, b) => sortTable(a, b, 'juli', 'number')) },
+			{ label: 'August', key: 'august', sort: (data) => data.sort((a, b) => sortTable(a, b, 'august', 'number')) },
+			{ label: 'September', key: 'september', sort: (data) => data.sort((a, b) => sortTable(a, b, 'september', 'number')) },
+		],
+	],
+};
 
 const TABLE_DATA = [
 	{
@@ -727,6 +739,14 @@ const TABLE_2_DATA = [
 	{ montag: 'Fabian', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
 	{ montag: 'Hong', dienstag: 'Marie', mittwoch: 'Kevin', donnerstag: 'Maya', freitag: 'Ben' },
 ];
+const TABLE_NVDA_DATA = [
+	{ april: '97', mai: '99', juni: '100', juli: '101', august: '102', september: '105' },
+	{ april: '11', mai: '13', juni: '13', juli: '13', august: '12', september: '12' },
+	{ april: '86', mai: '85', juni: '87', juli: '88', august: '87', september: '90' },
+	{ april: '11', mai: '12', juni: '12', juli: '11', august: '12', september: '12' },
+	{ april: '42', mai: '41', juni: '42', juli: '43', august: '39', september: '42' },
+	{ april: '100', mai: '99', juni: '98', juli: '99', august: '102', september: '109' },
+];
 
 const TABLE_FOOT_DATA = [
 	{
@@ -767,7 +787,7 @@ function setTableData(tableID, caption, data, header, footer) {
 	setTimeout(() => {
 		const table = document.querySelector(tableID);
 		if (table) {
-			table._caption = caption;
+			table._label = caption;
 			table._data = data;
 			if (header) table._headers = header;
 			if (footer) table._dataFoot = footer;
@@ -778,12 +798,22 @@ function setMultipleTableData(tableClass, caption, data, header, footer) {
 	setTimeout(() => {
 		const tables = document.querySelectorAll(tableClass);
 		tables.forEach((table) => {
-			table._caption = caption;
+			table._label = caption;
 			table._data = data;
 			if (header) table._headers = header;
 			if (footer) table._dataFoot = footer;
 		});
 	}, 500);
+}
+
+function sortTable(a, b, key, type) {
+	if (!type) type = 'string';
+	switch (type) {
+		case 'number':
+			return parseFloat(a[key]) - parseFloat(b[key]);
+		case 'string':
+			return a[key].localeCompare(b[key]);
+	}
 }
 
 setTableData('#table-1a', 'header: h/v, data: short, foot', TABLE_DATA_SHORT, TABLE_HEADERS_H_V, TABLE_FOOT_DATA);
@@ -797,6 +827,8 @@ setTableData('#table-3a', 'header: h, data: paged', TABLE_PAGED_DATA, TABLE_HEAD
 setTableData('#table-3b', 'header: h, data: paged, pagination-1', TABLE_PAGED_DATA, TABLE_HEADERS_H, undefined, PAGINATION_1);
 
 setTableData('#table-4', 'header: h, data: paged, pagination-2', TABLE_PAGED_DATA, TABLE_HEADERS_H, undefined, PAGINATION_2);
+
+setTableData('#nvda', 'Sortiertest NVDA', TABLE_NVDA_DATA, TABLE_NVDA_HEADERS);
 
 const dayTableHeaders = {
 	horizontal: [

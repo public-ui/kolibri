@@ -3,7 +3,7 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { HeadingLevel } from '../../types/heading-level';
 import { LabelWithExpertSlotPropType, validateLabelWithExpertSlot } from '../../types/props/label';
 import { watchString } from '../../utils/prop.validators';
-import { KoliBriHeadingAPI, KoliBriHeadingStates } from './types';
+import { API, States } from './types';
 import { watchHeadingLevel } from './validation';
 
 /**
@@ -13,7 +13,7 @@ import { watchHeadingLevel } from './validation';
 	tag: 'kol-heading-wc',
 	shadow: false,
 })
-export class KolHeadingWc implements KoliBriHeadingAPI {
+export class KolHeadingWc implements API {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
@@ -29,7 +29,7 @@ export class KolHeadingWc implements KoliBriHeadingAPI {
 	 */
 	@Prop() public _secondaryHeadline?: string;
 
-	@State() public state: KoliBriHeadingStates = {
+	@State() public state: States = {
 		_label: false, // ⚠ required
 		_level: 1,
 	};

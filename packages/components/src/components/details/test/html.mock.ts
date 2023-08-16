@@ -2,17 +2,17 @@ import { mixMembers } from 'stencil-awesome-test';
 
 import { getIconHtml } from '../../icon/test/html.mock';
 import { getIndentedTextHtml } from '../../indented-text/test/html.mock';
-import { KoliBriDetailsProps } from '../types';
+import { Props } from '../types';
 
 export const getDetailsHtml = (
-	props: KoliBriDetailsProps,
+	props: Props,
 	slots: {
 		default?: string;
 	} = {}
 ): string => {
 	props = mixMembers(
 		{
-			_summary: '…',
+			_label: '…',
 		},
 		props
 	);
@@ -25,7 +25,7 @@ export const getDetailsHtml = (
 					_icon: props._open ? 'codicon codicon-chevron-down' : 'codicon codicon-chevron-right',
 				})}
 				<span>
-					${props._summary}
+					${props._label! /* TODO v2: Remove non-null assertion after label was converted to required prop */}
 				</span>
 			</summary>
 			<div class="content">

@@ -1,20 +1,20 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
-import {
-	AlternativButtonLinkRole,
-	KoliBriButtonCallbacks,
-	KoliBriButtonType,
-	KoliBriButtonVariant,
-	OptionalButtonProps,
-	RequiredButtonProps,
-} from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { AlignPropType } from '../../types/props/align';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { propagateFocus } from '../../utils/reuse';
+import { CustomClassPropType } from '../../types/props/custom-class';
+import { IconPropType } from '../../types/props/icon';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { Props } from './types';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { ButtonTypePropType } from '../../types/props/button-type';
+import { ButtonVariantPropType } from '../../types/props/button-variant';
 
 @Component({
 	tag: 'kol-button',
@@ -23,7 +23,7 @@ import { propagateFocus } from '../../utils/reuse';
 	},
 	shadow: true,
 })
-export class KolButton implements Generic.Element.Members<RequiredButtonProps, OptionalButtonProps> {
+export class KolButton implements Props {
 	@Element() private readonly host?: HTMLKolButtonElement;
 	private ref?: HTMLKolButtonWcElement;
 
@@ -55,8 +55,10 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 					_iconAlign={this._iconAlign}
 					_id={this._id}
 					_label={this._label}
+					_name={this._name}
 					_on={this._on}
 					_role={this._role}
+					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
@@ -71,6 +73,8 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
+	 *
+	 * @deprecated
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -81,8 +85,10 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -102,9 +108,9 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
@@ -117,16 +123,16 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: IconPropType;
 
 	/**
-	 * Deprecated: Gibt an, ob das Icon links oder rechts von der Beschriftung angezeigt werden soll.
+	 * Deprecated: Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @deprecated
 	 */
-	@Prop() public _iconAlign?: Align;
+	@Prop() public _iconAlign?: AlignPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -145,14 +151,25 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Button-Events an.
+	 * Gibt den technischen Namen des Eingabefeldes an.
 	 */
-	@Prop() public _on?: KoliBriButtonCallbacks<unknown>;
+	@Prop() public _name?: string;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
+
+	/**
+	 * Defines the role of the components primary element.
+	 */
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -160,22 +177,22 @@ export class KolButton implements Generic.Element.Members<RequiredButtonProps, O
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 }

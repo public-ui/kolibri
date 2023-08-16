@@ -1,8 +1,8 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { KoliBriSpinProps } from '../types';
+import { Props } from '../types';
 
-export const getSpinHtml = (props: KoliBriSpinProps): string => {
+export const getSpinHtml = (props: Props): string => {
 	props = mixMembers(
 		{
 			_show: false,

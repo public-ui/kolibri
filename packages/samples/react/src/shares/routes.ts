@@ -1,6 +1,7 @@
 import { ABBR_ROUTES } from '../samples/abbr/routes';
 import { ACCORDION_ROUTES } from '../samples/accordion/routes';
 import { ALERT_ROUTES } from '../samples/alert/routes';
+import { AVATAR_ROUTES } from '../samples/avatar/routes';
 import { BADGE_ROUTES } from '../samples/badge/routes';
 import { BREADCRUMB_ROUTES } from '../samples/breadcrumb/routes';
 import { BUTTON_GROUP_ROUTES } from '../samples/button-group/routes';
@@ -37,7 +38,6 @@ import { SPLIT_BUTTON_ROUTES } from '../samples/split-button/routes';
 import { TABLE_ROUTES } from '../samples/table/routes';
 import { TEXTAREA_ROUTES } from '../samples/textarea/routes';
 import { TOAST_ROUTES } from '../samples/toast/routes';
-import { TOOLTIP_ROUTES } from '../samples/tooltip/routes';
 import { VERSION_ROUTES } from '../samples/version/routes';
 import { Routes } from './types';
 
@@ -46,6 +46,7 @@ export const ROUTES: Routes = {
 	...ABBR_ROUTES,
 	...ACCORDION_ROUTES,
 	...ALERT_ROUTES,
+	...AVATAR_ROUTES,
 	...BADGE_ROUTES,
 	...BREADCRUMB_ROUTES,
 	...BUTTON_ROUTES,
@@ -82,6 +83,5 @@ export const ROUTES: Routes = {
 	...TABLE_ROUTES,
 	...TEXTAREA_ROUTES,
 	...TOAST_ROUTES,
-	...TOOLTIP_ROUTES,
 	...VERSION_ROUTES,
 };

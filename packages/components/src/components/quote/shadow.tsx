@@ -1,7 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './types';
+import { API, States, KoliBriQuoteVariant } from './types';
+import { HrefPropType } from '../../types/props/href';
 
 @Component({
 	tag: 'kol-quote',
@@ -10,16 +12,22 @@ import { KoliBriQuoteApi, KoliBriQuoteStates, KoliBriQuoteVariant } from './type
 	},
 	shadow: true,
 })
-export class KolQuote implements KoliBriQuoteApi {
+export class KolQuote implements API {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;
 
 	/**
-	 * Gibt den Link zur Quelle des Zitates an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _href!: string;
+	@Prop() public _label?: string;
+
+	/**
+	 * Defines the link the source of the quote.
+	 */
+	@Prop() public _href!: HrefPropType;
 
 	/**
 	 * Setzt den Text, also das Zitat selbst.
@@ -31,7 +39,7 @@ export class KolQuote implements KoliBriQuoteApi {
 	 */
 	@Prop() public _variant?: KoliBriQuoteVariant = 'inline';
 
-	@State() public state: KoliBriQuoteStates = {
+	@State() public state: States = {
 		_href: '…', // ⚠ required
 		_quote: '…', // ⚠ required
 		_variant: 'inline',
@@ -39,11 +47,16 @@ export class KolQuote implements KoliBriQuoteApi {
 
 	@Watch('_caption')
 	public validateCaption(value?: string): void {
-		watchString(this, '_caption', value);
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_href')
-	public validateHref(value?: string): void {
+	public validateHref(value?: HrefPropType): void {
 		watchString(this, '_href', value, {
 			required: true,
 		});
@@ -62,8 +75,8 @@ export class KolQuote implements KoliBriQuoteApi {
 	}
 
 	public componentWillLoad(): void {
-		this.validateCaption(this._caption);
 		this.validateHref(this._href);
+		this.validateLabel(this._label || this._caption);
 		this.validateQuote(this._quote);
 		this.validateVariant(this._variant);
 	}
@@ -92,10 +105,10 @@ export class KolQuote implements KoliBriQuoteApi {
 							</span>
 						</q>
 					)}
-					{typeof this.state._caption === 'string' && this.state._caption.length > 0 && (
+					{typeof this.state._label === 'string' && this.state._label.length > 0 && (
 						<figcaption>
 							<cite>
-								<kol-link _href={this.state._href} _label={this.state._caption} _target="_blank" />
+								<kol-link _href={this.state._href} _label={this.state._label} _target="_blank" />
 							</cite>
 						</figcaption>
 					)}

@@ -1,21 +1,13 @@
 import React from 'react';
-import { KolTextarea } from '@public-ui/react';
+import { KolForm, KolTextarea } from '@public-ui/react';
 
 import { FC } from 'react';
 
 export const TextareaResize: FC = () => (
-	<div className="grid gap-4">
-		<KolTextarea _id="text-both" _resize="both">
-			Texteingabe (both)
-		</KolTextarea>
-		<KolTextarea _id="text-verical" _resize="vertical">
-			Texteingabe (vertical)
-		</KolTextarea>
-		<KolTextarea _id="text-horizontal" _resize="horizontal">
-			Texteingabe (horizontal)
-		</KolTextarea>
-		<KolTextarea _id="text-none" _resize="none">
-			Texteingabe (none)
-		</KolTextarea>
-	</div>
+	<KolForm className="grid gap-4">
+		<KolTextarea _id="text-both" _resize="both" _label="Texteingabe (both)" />
+		<KolTextarea _id="text-verical" _resize="vertical" _label="Texteingabe (vertical)" />
+		<KolTextarea _id="text-horizontal" _resize="horizontal" _label="Texteingabe (horizontal)" />
+		<KolTextarea _id="text-none" _resize="none" _label="Texteingabe (none)" />
+	</KolForm>
 );

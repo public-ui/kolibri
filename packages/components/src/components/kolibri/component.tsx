@@ -7,7 +7,7 @@ import { PropColor, validateColor } from '../../types/props/color';
 import { devHint } from '../../utils/a11y.tipps';
 import { watchBoolean } from '../../utils/prop.validators';
 import { colorRgba } from '../badge/color-rgba';
-import { KoliBriKolibriAPI, KoliBriKolibriStates } from './types';
+import { API, States } from './types';
 
 const max = 360;
 function degreeToRadians(degree: number): number {
@@ -24,7 +24,7 @@ function getColorNumber(degree: number): number {
 	},
 	shadow: true,
 })
-export class KolKolibri implements KoliBriKolibriAPI {
+export class KolKolibri implements API {
 	public render(): JSX.Element {
 		const fillColor: string =
 			this.state._animate === true
@@ -49,7 +49,7 @@ export class KolKolibri implements KoliBriKolibriAPI {
 		);
 	}
 
-	private interval?: NodeJS.Timer;
+	private interval?: number;
 
 	/**
 	 * Gibt an, ob das Bild-Logo farblich animiert werden soll.
@@ -62,11 +62,11 @@ export class KolKolibri implements KoliBriKolibriAPI {
 	@Prop() public _color?: Stringified<PropColor> = '#003c78';
 
 	/**
-	 * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
 	@Prop() public _labeled?: boolean;
 
-	@State() public state: KoliBriKolibriStates = {
+	@State() public state: States = {
 		_animate: false,
 		_color: {
 			red: 0,
@@ -116,7 +116,7 @@ export class KolKolibri implements KoliBriKolibriAPI {
 	}
 
 	public componentDidRender(): void {
-		clearInterval(this.interval as NodeJS.Timer);
+		clearInterval(this.interval);
 		if (this.state._animate) {
 			this.interval = setInterval(() => {
 				this.state = {
@@ -127,11 +127,11 @@ export class KolKolibri implements KoliBriKolibriAPI {
 						blue: (this.state._color.blue + 3) % max,
 					},
 				};
-			}, 50);
+			}, 50) as unknown as number;
 		}
 	}
 
 	public disconnectedCallback(): void {
-		clearInterval(this.interval as NodeJS.Timer);
+		clearInterval(this.interval);
 	}
 }

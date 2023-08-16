@@ -1,3 +1,5 @@
+import { TouchedPropType } from '../../types/props/touched';
+
 /**
  * Berechnet in Abhängigkeit des Component-State, wie die
  * aria-describedby-Attributs gesetzt werden sollen.
@@ -9,7 +11,7 @@ export const getRenderStates = (state: {
 	_error?: string;
 	_hint?: string;
 	_id: string;
-	_touched?: boolean;
+	_touched?: TouchedPropType;
 }): {
 	hasError: boolean;
 	hasHint: boolean;

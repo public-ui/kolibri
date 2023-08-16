@@ -1,4 +1,4 @@
-import { Props } from '../component';
+import { Props } from '../types';
 
 export const getIndentedTextHtml = (
 	props: Props,

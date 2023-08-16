@@ -4,9 +4,11 @@ import { Stringified } from '../../types/common';
 import { Optgroup, Option, SelectOption } from '../../types/input/types';
 import { Orientation } from '../../types/orientation';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
+import { OptionsPropType, validateOptions } from '../../types/props/options';
 import { validateRequired } from '../../types/props/required';
+import { StencilUnknown } from '../../types/unknown';
 import { W3CInputValue } from '../../types/w3c';
-import { mapString2Unknown, setState, watchJsonArrayString, watchValidator } from '../../utils/prop.validators';
+import { mapString2Unknown, setState, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
 import { InputController } from '../@deprecated/input/controller';
 import { Props, Watches } from './types';
@@ -65,15 +67,15 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		return options.find((option) => option.value === value) !== undefined;
 	};
 
-	protected readonly beforePatchListValue = (_value: unknown, nextState: Map<string, unknown>): void => {
-		const list = nextState.has('_list') ? nextState.get('_list') : this.component.state._list;
-		if (Array.isArray(list) && list.length > 0) {
+	protected readonly beforePatchOptions = (_value: unknown, nextState: Map<string, unknown>): void => {
+		const options = nextState.has('_options') ? nextState.get('_options') : this.component.state._options;
+		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
-			fillKeyOptionMap(this.keyOptionMap, list as SelectOption<W3CInputValue>[]);
+			fillKeyOptionMap(this.keyOptionMap, options as SelectOption<W3CInputValue>[]);
 			const value = nextState.has('_value') ? nextState.get('_value') : this.component.state._value;
-			if (this.isValueInOptions(value, list as Option<W3CInputValue>[]) === false) {
+			if (this.isValueInOptions(value, options as Option<W3CInputValue>[]) === false) {
 				const newValue = (
-					list[0] as {
+					options[0] as {
 						value: string;
 					}
 				).value;
@@ -96,26 +98,19 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		);
 	}
 
-	public validateList(value?: Stringified<Option<W3CInputValue>[]>): void {
-		watchJsonArrayString(
-			this.component,
-			'_list',
-			(item: Option<W3CInputValue>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
-			value,
-			undefined,
-			{
-				hooks: {
-					beforePatch: this.beforePatchListValue,
-				},
-			}
-		);
+	public validateOptions(value?: OptionsPropType): void {
+		validateOptions(this.component, value, {
+			hooks: {
+				beforePatch: this.beforePatchOptions,
+			},
+		});
 	}
 
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		value = mapString2Unknown(value);
-		value = Array.isArray(value) ? value[0] : value;
+		value = Array.isArray(value) ? (value[0] as StencilUnknown) : value;
 		setState(this.component, '_value', value, {
-			beforePatch: this.beforePatchListValue,
+			beforePatch: this.beforePatchOptions,
 		});
 		this.setFormAssociatedValue(this.component._value as string);
 	}
@@ -133,7 +128,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		};
 
 		this.validateOrientation(this.component._orientation);
-		this.validateList(this.component._list);
+		this.validateOptions(this.component._options || this.component._list);
 		this.validateValue(this.component._value);
 	}
 }

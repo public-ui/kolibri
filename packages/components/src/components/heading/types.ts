@@ -8,13 +8,13 @@ type OptionalProps = {
 	secondaryHeadline: string;
 	level: HeadingLevel;
 };
-export type KoliBriHeadingProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
-type RequiredStates = {
+type RequiredStates = RequiredProps & {
 	level: HeadingLevel;
-} & PropLabelWithExpertSlot;
+};
 type OptionalStates = {
 	secondaryHeadline: string;
 };
-export type KoliBriHeadingStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriHeadingAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

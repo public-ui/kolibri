@@ -1,81 +1,93 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../types/props/label';
-import { InputRequiredProps } from '../input/types';
+import { PropSuggestions } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
+import { PropSyncValueBySelector } from '../../types/props/sync-value-by-selector';
+import { PropDisabled } from '../../types/props/disabled';
+import { PropHasCounter } from '../../types/props/has-counter';
+import { PropHideLabel } from '../../types/props/hide-label';
+import { PropId } from '../../types/props/id';
+import { PropName } from '../../types/props/name';
+import { PropReadOnly } from '../../types/props/read-only';
+import { PropRequired } from '../../types/props/required';
+import { PropTouched } from '../../types/props/touched';
 
-type RequiredProps = InputRequiredProps;
+type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accessKey: string;
 	alert: boolean;
 	autoComplete: InputTypeOnOff;
-	disabled: boolean;
 	error: string;
-	hasCounter: boolean;
-	hideLabel: boolean;
 	hint: string;
 	icon: Stringified<KoliBriHorizontalIcon>;
-	id: string;
+	/**
+	 * @deprecated Use suggestions.
+	 */
 	list: Stringified<string[]>;
 	maxLength: number;
-	name: string;
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;
-	readOnly: boolean;
-	required: boolean;
 	/**
 	 * @deprecated
 	 */
 	size: number;
-	smartButton: ButtonProps;
-	syncValueBySelector: string;
+	smartButton: Stringified<ButtonProps>;
 	tabIndex: number;
-	touched: boolean;
 	type: InputTextType;
 	value: string;
-};
+} & PropDisabled &
+	PropHasCounter &
+	PropHideLabel &
+	PropId &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropSuggestions &
+	PropSyncValueBySelector &
+	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	autoComplete: InputTypeOnOff;
 	hasValue: boolean;
-	id: string;
-	list: string[];
+	suggestions: W3CInputValue[];
 	type: InputTextType;
-} & PropLabelWithExpertSlot;
+} & PropId &
+	PropLabelWithExpertSlot;
 type OptionalStates = {
 	accessKey: string;
 	alert: boolean;
 	currentLength: number;
-	disabled: boolean;
 	error: string;
-	hasCounter: boolean;
-	hideLabel: boolean;
 	hint: string;
 	icon: KoliBriHorizontalIcon;
 	maxLength: number;
-	name: string;
 	on: InputTypeOnDefault;
 	pattern: string;
 	placeholder: string;
-	readOnly: boolean;
-	required: boolean;
 	/**
 	 * @deprecated
 	 */
 	size: number;
 	smartButton: ButtonProps;
 	tabIndex: number;
-	touched: boolean;
 	value: string;
-};
+} & PropDisabled &
+	PropHasCounter &
+	PropHideLabel &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropTouched;
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
 
 export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 
-export type ComponentApi = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -12,5 +12,5 @@ type OptionalProps = {
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 
-export type KoliBriLogoStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriLogoAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

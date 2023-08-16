@@ -1,10 +1,9 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { watchTooltipAlignment } from '../../types/button-link';
-import { Align } from '../../types/props/align';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
-import { watchString } from '../../utils/prop.validators';
 import { API, States } from './types';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
 
 /**
  * @slot - Der Begriff, der erläutert werden soll.
@@ -23,25 +22,31 @@ export class KolAbbr implements API {
 		return (
 			<Host>
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._title}>
+				<abbr aria-labelledby={this.nonce} role="definition" tabindex="0" title={this.state._label}>
 					<span title="">
 						<slot />
 					</span>
 				</abbr>
-				<kol-tooltip _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._title}></kol-tooltip>
+				<kol-tooltip _align={this.state._tooltipAlign} _id={this.nonce} _label={this.state._label}></kol-tooltip>
 			</Host>
 		);
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _label?: LabelPropType;
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an.
+	 * @deprecated Use _label.
 	 */
-	@Prop() public _title!: string;
+	@Prop() public _title?: string;
 
 	/**
 	 * Die State-Parameter repräsentieren den inneren State
@@ -50,7 +55,7 @@ export class KolAbbr implements API {
 	 * @see: https://stenciljs.com/docs/state
 	 */
 	@State() public state: States = {
-		_title: '…', // ⚠ required
+		_label: '…', // ⚠ required
 		_tooltipAlign: 'top',
 	};
 
@@ -62,20 +67,23 @@ export class KolAbbr implements API {
 	 *
 	 * @see: https://stenciljs.com/docs/properties#prop-validation
 	 */
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
+	}
+
 	@Watch('_title')
 	public validateTitle(value?: string): void {
-		watchString(this, '_title', value, {
-			required: true,
-		});
+		this.validateLabel(value);
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Align): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	public componentWillLoad(): void {
-		this.validateTitle(this._title);
+		this.validateLabel(this._label || this._title);
 		this.validateTooltipAlign(this._tooltipAlign);
 	}
 }

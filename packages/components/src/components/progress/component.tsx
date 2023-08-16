@@ -3,12 +3,12 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 import { KoliBriProgressVariantEnum, KoliBriProgressVariantType } from '../../types/progress';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
-import { KoliBriProgressAPI, KoliBriProgressStates } from './types';
+import { API, States } from './types';
 
 const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
 
 // https://css-tricks.com/html5-progress-element/
-const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
+const createProgressSVG = (state: States): JSX.Element => {
 	const fullCircle = 342;
 	const textPositionTop = '43%';
 	const textPositionBottom = '57%';
@@ -90,8 +90,8 @@ const createProgressSVG = (state: KoliBriProgressStates): JSX.Element => {
 	},
 	shadow: true,
 })
-export class KolProcess implements KoliBriProgressAPI {
-	private interval?: NodeJS.Timer;
+export class KolProcess implements API {
+	private interval?: number;
 
 	// https://dequeuniversity.com/library/aria/progress-bar-bounded
 	public render(): JSX.Element {
@@ -137,7 +137,7 @@ export class KolProcess implements KoliBriProgressAPI {
 	 */
 	@Prop() public _variant?: KoliBriProgressVariantType;
 
-	@State() public state: KoliBriProgressStates = {
+	@State() public state: States = {
 		_max: 100,
 		_unit: '%',
 		_value: 0,
@@ -201,7 +201,7 @@ export class KolProcess implements KoliBriProgressAPI {
 					_liveValue: this.state._value,
 				};
 			}
-		}, 5000);
+		}, 5000) as unknown as number;
 	}
 
 	public disconnectedCallback(): void {

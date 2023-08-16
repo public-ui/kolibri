@@ -1,7 +1,10 @@
 import { Generic } from '@a11y-ui/core';
 
 import { Stringified } from '../../types/common';
+import { PropLabel } from '../../types/props/label';
 import { KoliBriPaginationProps } from '../pagination/types';
+
+export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
 export type KoliBriTableRender = <T>(domNode: HTMLElement, cell: KoliBriTableCell, tupel: T, data: T[]) => string | void;
 
@@ -53,28 +56,30 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 >;
 
 type RequiredProps = {
-	caption: string;
 	data: Stringified<KoliBriTableDataType[]>;
 	headers: Stringified<KoliBriTableHeaders>;
 };
 type OptionalProps = {
+	/**
+	 * @deprecated use label
+	 */
+	caption: string;
 	dataFoot: Stringified<KoliBriTableDataType[]>;
 	minWidth: string;
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-};
+} & PropLabel;
 
 type RequiredStates = {
-	caption: string;
 	data: KoliBriTableDataType[];
 	dataFoot: KoliBriTableDataType[];
 	headers: KoliBriTableHeaders;
 	pagination: KoliBriTablePaginationStates;
 	sortedData: KoliBriTableDataType[];
-};
+} & PropLabel;
 type OptionalStates = {
 	minWidth: string;
 	sortDirection: KoliBriSortDirection;
 };
 
-export type KoliBriTableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriTableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

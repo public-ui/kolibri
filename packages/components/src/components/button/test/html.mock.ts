@@ -1,6 +1,6 @@
 import { mixMembers } from 'stencil-awesome-test';
 
-import { ButtonProps, ButtonStates } from '../../../types/button-link';
+import { Props, States } from '../types';
 import { getSpanWcHtml } from '../../span/test/html.mock';
 import { getTooltipHtml } from '../../tooltip/test/html.mock';
 
@@ -9,13 +9,13 @@ type Slots = {
 };
 
 export const getButtonWcHtml = (
-	props: ButtonProps,
+	props: Props,
 	slots: Slots = {
 		expert: undefined,
 	},
 	additionalAttrs = ''
 ): string => {
-	const state = mixMembers<ButtonProps, ButtonStates>(
+	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
 			_label: false, // ⚠ required
@@ -26,13 +26,22 @@ export const getButtonWcHtml = (
 	);
 	const ariaControls = typeof state._ariaControls === 'string' ? state._ariaControls : undefined;
 	const ariaExpanded = typeof state._ariaExpanded === 'boolean' ? state._ariaExpanded : undefined;
+	const hasExpertSlot: boolean = state._label === false;
 	const type = typeof state._type === 'string' ? state._type : 'button';
 	const variant = typeof state._variant === 'string' ? state._variant : 'normal';
-	const hasExpertSlot: boolean = state._label === false;
+	const classNames: string[] = [variant];
+
+	if (state._hideLabel) {
+		classNames.push('icon-only', 'hide-label');
+	}
+
 	return `<kol-button-wc${additionalAttrs}>
 	<button${ariaControls ? ' aria-controls="nonce"' : ''}${
 		typeof state._ariaExpanded === 'boolean' ? ` aria-expanded="${ariaExpanded === true ? 'true' : 'false'}"` : ''
-	} class="${variant}" type="${type}">
+	}
+	${state._hideLabel && typeof state._label === 'string' ? ` aria-label="${state._label}"` : ''}
+	${state._role ? `role="${state._role}"` : ''}
+	class="${classNames.join(' ')}" type="${type}">
 		${getSpanWcHtml(
 			{
 				...props,
@@ -44,7 +53,6 @@ export const getButtonWcHtml = (
 	${getTooltipHtml(
 		{
 			_align: state._tooltipAlign,
-			_id: 'nonce',
 			_label: typeof state._label === 'string' ? state._label : '',
 		},
 		` aria-hidden="true"${hasExpertSlot || !state._hideLabel ? ' hidden' : ''}`
@@ -52,8 +60,8 @@ export const getButtonWcHtml = (
 </kol-button-wc>`;
 };
 
-export const getButtonHtml = (props: ButtonProps): string => {
-	const state = mixMembers<ButtonProps, ButtonStates>(
+export const getButtonHtml = (props: Props): string => {
+	const state = mixMembers<Props, States>(
 		{
 			_icon: {},
 			_label: false, // ⚠ required

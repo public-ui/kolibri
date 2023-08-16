@@ -1,11 +1,15 @@
 import { querySelectorAll } from 'query-selector-all-shadow-root';
 import { querySelector } from 'query-selector-shadow-root';
 import rgba from 'rgba-convert';
+import { Subject } from 'rxjs';
 import { hex, score } from 'wcag-contrast';
 
 import { Generic, patchTheme, patchThemeTag } from '@a11y-ui/core';
 
 import { Stringified } from '../types/common';
+import { AriaCurrentPropType } from '../types/props/aria-current';
+import { PropHref } from '../types/props/href';
+import { StencilUnknown } from '../types/unknown';
 import { devHint } from './a11y.tipps';
 import { getDocument, getExperimentalMode, getWindow, Log } from './dev.utils';
 
@@ -266,7 +270,7 @@ export const watchJsonArrayString = <T>(
 const BOOLEAN = /^(true|false)$/;
 const INTEGER = /^-?(0|[1-9]\d*)$/;
 const FLOAT = /^-?(0.|[1-9]\d*.)\d*[1-9]$/;
-export const mapString2Unknown = (value: unknown) => {
+export const mapString2Unknown = (value: StencilUnknown) => {
 	const typeStr = typeof value;
 	const oldValue = `${value as string}`;
 	if (typeof value === 'string') {
@@ -278,7 +282,7 @@ export const mapString2Unknown = (value: unknown) => {
 			value = parseFloat(value);
 		} else if (JSON_CHARS.test(value)) {
 			try {
-				value = parseJson<unknown>(value);
+				value = parseJson<StencilUnknown>(value);
 				// eslint-disable-next-line no-empty
 			} catch (e) {
 				// value behält den ursprünglichen Wert
@@ -510,7 +514,13 @@ export class KoliBriUtils {
 	}
 }
 
+type AriaCurrentEventType = {
+	ariaCurrent: AriaCurrentPropType;
+} & PropHref;
+export const ariaCurrentSubject = new Subject<AriaCurrentEventType>();
+
 export class KoliBriDevHelper {
+	public static readonly ariaCurrentSubject = ariaCurrentSubject;
 	public static readonly patchTheme = patchTheme;
 	public static readonly patchThemeTag = patchThemeTag;
 	public static readonly querySelector = koliBriQuerySelector;

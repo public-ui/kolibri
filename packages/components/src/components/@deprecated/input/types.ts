@@ -1,6 +1,7 @@
 import { Generic } from '@a11y-ui/core';
 
-import { ButtonProps } from '../../../types/button-link';
+import { Props as ButtonProps } from '../../button/types';
+import { Stringified } from '../../../types/common';
 import { InputTypeOnDefault } from '../../../types/input/types';
 import { PropLabelWithExpertSlot } from '../../../types/props/label';
 
@@ -13,9 +14,8 @@ type OptionalProps = {
 	hideLabel: boolean;
 	hint: string;
 	id: string;
-	name: string;
 	on: InputTypeOnDefault;
-	smartButton: ButtonProps;
+	smartButton: Stringified<ButtonProps>;
 	syncValueBySelector: string;
 	tabIndex: number;
 };

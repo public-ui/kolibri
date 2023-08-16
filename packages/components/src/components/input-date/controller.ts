@@ -1,11 +1,11 @@
 import { Generic } from '@a11y-ui/core';
 
-import { Stringified } from '../../types/common';
 import { InputNumberType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { validateReadOnly } from '../../types/props/read-only';
-import { setState, watchBoolean, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
+import { ReadOnlyPropType, validateReadOnly } from '../../types/props/read-only';
+import { SuggestionsPropType, validateSuggestions } from '../../types/props/suggestions';
+import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
 
@@ -36,8 +36,14 @@ export class InputDateController extends InputIconController implements Watches 
 		);
 	}
 
-	public validateList(value?: Stringified<string[]>): void {
-		watchJsonArrayString(this.component, '_list', (item: string) => typeof item === 'string', value);
+	/**
+	 * @deprecated remains to satisfy `Watches` interface
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	public validateList(): void {}
+
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		validateSuggestions(this.component, value);
 	}
 
 	private tryParseToString(value?: Iso8601 | Date | null, defaultValue?: Date): string | null | undefined {
@@ -160,7 +166,7 @@ export class InputDateController extends InputIconController implements Watches 
 		});
 	}
 
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		validateReadOnly(this.component, value);
 	}
 
@@ -202,7 +208,7 @@ export class InputDateController extends InputIconController implements Watches 
 		this.validateMax(this.component._max);
 		this.validateMin(this.component._min);
 		this.validateLabel(this.component._label);
-		this.validateList(this.component._list);
+		this.validateSuggestions(this.component._suggestions || this.component._list);
 		this.validateOn(this.component._on);
 		this.validateReadOnly(this.component._readOnly);
 		this.validateRequired(this.component._required);

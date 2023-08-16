@@ -1,19 +1,23 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { AlternativButtonLinkRole, KoliBriButtonType, KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
-import { Align } from '../../types/props/align';
-import { AriaCurrent, validateAriaCurrent } from '../../types/props/aria-current';
+import { validateAriaControls } from '../../types/props/aria-controls';
+import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
 import { validateAriaExpanded } from '../../types/props/aria-expanded';
 import { validateAriaSelected } from '../../types/props/aria-selected';
-import { validateDisabled } from '../../types/props/disabled';
+import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
 import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelPropType, validateLabel } from '../../types/props/label';
+import { StencilUnknown } from '../../types/unknown';
 import { a11yHintDisabled } from '../../utils/a11y.tipps';
 import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
 import { validateTabIndex } from '../../utils/validators/tab-index';
-import { watchButtonType, watchButtonVariant } from '../button/controller';
-import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCallback } from './types';
+import { API, KoliBriSplitButtonCallback, States } from './types';
+import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
+import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -25,13 +29,16 @@ import { KoliBriSplitButtonAPI, KoliBriSplitButtonAStates, KoliBriSplitButtonCal
 	},
 	shadow: true,
 })
-export class KolSplitButton implements KoliBriSplitButtonAPI {
+export class KolSplitButton implements API {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
 	private readonly clickHandler = (e: Event) => {
-		if (typeof this.state._on.onClick === 'function') this.state._on.onClick(e);
-		else this.toggleDropdown();
+		if (typeof this.state._on.onClick === 'function') {
+			this.state._on.onClick(e);
+		} else {
+			this.toggleDropdown();
+		}
 	};
 
 	private readonly openDropdown = () => {
@@ -90,8 +97,10 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 					_icon={this._icon}
 					_hideLabel={this._hideLabel}
 					_label={this._label}
+					_name={this._name}
 					_on={{ onClick: this.clickHandler }}
 					_role={this._role}
+					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
 					_tooltipAlign={this._tooltipAlign}
 					_type={this._type}
@@ -128,8 +137,10 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
@@ -138,7 +149,8 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
-	 * @deprecated use _label
+	 *
+	 * @deprecated use _label instead
 	 */
 	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
 
@@ -153,7 +165,8 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	@Prop() public _customClass?: string;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _disabled?: boolean = false;
 
@@ -179,14 +192,25 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	@Prop() public _label!: LabelPropType;
 
 	/**
+	 * Gibt den technischen Namen des Eingabefeldes an.
+	 */
+	@Prop() public _name?: string;
+
+	/**
 	 * Gibt die EventCallback-Funktionen für die Button-Events an.
 	 */
 	@Prop() public _on?: { onClick: KoliBriSplitButtonCallback };
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt die Rolle des primären Elements in der Komponente an.
@@ -199,26 +223,26 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: KoliBriButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Gibt einen Wert an, den der Schalter bei einem Klick zurückgibt.
 	 */
-	@Prop() public _value?: Stringified<unknown>;
+	@Prop() public _value?: Stringified<StencilUnknown>;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@State() public state: KoliBriSplitButtonAStates = {
+	@State() public state: States = {
 		_icon: '',
 		_label: '',
 		_on: {},
@@ -232,11 +256,11 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 
 	@Watch('_ariaControls')
 	public validateAriaControls(value?: string): void {
-		watchString(this, '_ariaControls', value);
+		validateAriaControls(this, value);
 	}
 
 	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrent): void {
+	public validateAriaCurrent(value?: AriaCurrentPropType): void {
 		validateAriaCurrent(this, value);
 	}
 
@@ -264,7 +288,7 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_disabled')
-	public validateDisabled(value?: boolean): void {
+	public validateDisabled(value?: DisabledPropType): void {
 		validateDisabled(this, value);
 		if (value) a11yHintDisabled();
 	}
@@ -300,8 +324,8 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_role')
-	public validateRole(value?: AlternativButtonLinkRole): void {
-		watchString(this, '_role', value);
+	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
+		validateAlternativeButtonLinkRole(this, value);
 	}
 
 	@Watch('_showDropdown')
@@ -316,23 +340,23 @@ export class KolSplitButton implements KoliBriSplitButtonAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Align): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	@Watch('_type')
-	public validateType(value?: KoliBriButtonType): void {
-		watchButtonType(this, '_type', value);
+	public validateType(value?: ButtonTypePropType): void {
+		validateButtonType(this, value);
 	}
 
 	@Watch('_value')
-	public validateValue(value?: Stringified<unknown>): void {
+	public validateValue(value?: Stringified<StencilUnknown>): void {
 		setState(this, '_value', value);
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
+	public validateVariant(value?: ButtonVariantPropType): void {
+		validateButtonVariant(this, value);
 	}
 
 	public componentWillLoad(): void {

@@ -1,6 +1,7 @@
 import { Component, h, Host, JSX, Prop, State } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
+import { LabelPropType } from '../../types/props/label';
 import { AlertType, AlertVariant, KoliBriAlertEventCallbacks, Props, States } from './types';
 
 /**
@@ -20,7 +21,7 @@ export class KolAlert implements Props {
 				<kol-alert-wc
 					_alert={this._alert}
 					_hasCloser={this._hasCloser}
-					_heading={this._heading}
+					_label={this._label || this._heading}
 					_level={this._level}
 					_on={this._on}
 					_type={this._type}
@@ -44,8 +45,14 @@ export class KolAlert implements Props {
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
+	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string;
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.

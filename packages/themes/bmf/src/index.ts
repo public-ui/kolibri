@@ -83,11 +83,18 @@ export const BMF = KoliBri.createTheme('bmf', {
 	kol-heading-wc {
 		font-weight: 700;
 	}
-	kol-tooltip .area {
-		background-color: var(--color-metal);
-		color: var(--color-white);
+	kol-tooltip .tooltip-floating {
+		border: 1px solid var(--color-metal);
+		border-radius: var(--border-radius);
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-arrow {
+		border: 1px solid var(--color-metal);
+	}
+	kol-tooltip .tooltip-area {
+		background-color: var(--color-white);
+		color: var(--color-metal);
+	}
+	kol-tooltip .tooltip-content {
 		border-radius: var(--border-radius);
 		line-height: 1.5em;
 		padding: 0.5rem 0.75rem;
@@ -803,6 +810,12 @@ export const BMF = KoliBri.createTheme('bmf', {
 		display: grid;
 		gap: var(--kolibri-spacing);
 	}
+	.msg {
+		background-color: transparent;
+	}
+	.msg > .heading {
+		place-items: flex-start;
+	}
 	.msg > .heading > kol-icon {
 		place-self: baseline;
 	}
@@ -894,7 +907,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		color: var(--color-orange);
 	}
 	.card {
-		border-width: 3px;
+		border-width: 2px;
 		border-style: solid;
 		filter: drop-shadow(0px 2px 4px rgba(8, 35, 48, 0.24));
 		flex-direction: column;
@@ -902,7 +915,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.card > .heading {
 		padding: 0.5rem 1rem;
 	}
-	.card[_has-closer] > .heading {
+	.card.hasCloser > .heading {
 		padding-top: 0;
 		padding-bottom: 0;
 		padding-right: 0;
@@ -925,23 +938,46 @@ export const BMF = KoliBri.createTheme('bmf', {
 	.card > .heading kol-heading-wc > * {
 		margin: auto 0;
 	}
+	.card > .heading kol-button-wc button:focus {
+		outline-color: var(--color-white);
+		outline-offset: -3px;
+		outline-style: solid;
+		outline-width: 3px;
+		transition: outline 0.1s linear;
+	}
+	.card > .heading kol-button-wc button:hover {
+		background-color: rgba(32, 32, 32, 0.2);
+	}
+	.card > .heading kol-button-wc button:active {
+		background-color: rgba(32, 32, 32, 0.4);
+	}
+	.card > .heading kol-button-wc button:hover:focus {
+		background-color: rgba(32, 32, 32, 0.1);
+	}
 	.card > .content {
-		padding: 0.5rem 1rem;
+		padding: 1rem;
+		max-height: 9.5rem;
+  	overflow-y: auto;
 	}
 	.card.default > .heading {
 		background-color: var(--color-grey);
+		border-bottom: 2px solid var(--color-grey);
 	}
 	.card.error > .heading {
 		background-color: var(--color-red);
+		border-bottom: 2px solid var(--color-red);
 	}
 	.card.info > .heading {
 		background-color: var(--color-midnight);
+		border-bottom: 2px solid var(--color-midnight);
 	}
 	.card.success > .heading {
 		background-color: var(--color-green);
+		border-bottom: 2px solid var(--color-green);
 	}
 	.card.warning > .heading {
 		background-color: var(--color-orange);
+		border-bottom: 2px solid var(--color-orange);
 	}
 	:is(.error, .info, .success, .warning) .heading-icon::part(icon) {
 		font-family: "Font Awesome 6 Free" !important;
@@ -1008,20 +1044,20 @@ export const BMF = KoliBri.createTheme('bmf', {
 		background-color: rgba(0, 0, 0, 0);
 		border-color: rgba(0, 0, 0, 0);
 	}
-	.close > button.hide-label {
+	.close > button {
 		padding: 8px;
 	}
-	.close > button.hide-label kol-icon {
+	.close > button kol-icon {
 		display: flex;
 		width: 1em;
 		height: 1em;
 		font-size: 1rem;
 	}
-	.close > button.hide-label kol-icon::part(icon) {
+	.close > button kol-icon::part(icon) {
 		font-family: "Font Awesome 6 Free";
 		font-weight: 900;
 	}
-	.close > button.hide-label kol-icon::part(icon)::before {
+	.close > button kol-icon::part(icon)::before {
 		content: "\\f00d";
 	}
 	.close > button:active {
@@ -1702,8 +1738,13 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host kol-input > div.input input {
 		margin: 0px;
 	}
-	:host kol-input > label {
+	:host kol-input:not(.disabled) :is(.input, label) {
 		cursor: pointer;
+	}
+	:host kol-input.disabled :is(.input, label) {
+		cursor: not-allowed;
+	}
+	:host kol-input > label {
 		order: 3;
 	}
 	:host kol-input > kol-alert.error {
@@ -1725,7 +1766,6 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-weight: 700;
 	}
 	:host input {
-		cursor: pointer;
 		order: 1;
 		width: 100%;
 		border-color: var(--color-grey);
@@ -1759,15 +1799,10 @@ export const BMF = KoliBri.createTheme('bmf', {
 	:host kol-input input[type="checkbox"] {
 		appearance: none;
 		background-color: white;
-		cursor: pointer;
 		transition: 0.5s;
-	}
-	:host kol-input input[type="checkbox"].kol-disabled:before {
-		cursor: not-allowed;
 	}
 	:host kol-input input[type="checkbox"]:before {
 		content: "";
-		cursor: pointer;
 	}
 	:host kol-input input[type="checkbox"]:checked {
 		background-color: var(--color-midnight);
@@ -2007,7 +2042,7 @@ export const BMF = KoliBri.createTheme('bmf', {
 		margin-left: auto;
 		margin-right: unset;
 		padding: 2rem;
-		max-width: 750px;
+		max-width: 440px;
 	}
 	:host > div > kol-button-wc {
 		top: 0;
@@ -2230,8 +2265,8 @@ export const BMF = KoliBri.createTheme('bmf', {
 		font-size: 0.875em;
 		font-style: italic;
 	}
-	input {
-		border: none;
+	.inputs-wrapper {
+		gap: 1em;
 	}
 	input::placeholder {
 		color: var(--color-grey);

@@ -1,16 +1,20 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault } from '../../types/input/types';
-import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { nonce } from '../../utils/dev.utils';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputFileController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -22,7 +26,7 @@ import { ComponentApi, States } from './types';
 	},
 	shadow: true,
 })
-export class KolInputFile implements ComponentApi {
+export class KolInputFile implements API {
 	@Element() private readonly host?: HTMLKolInputFileElement;
 	private ref?: HTMLInputElement;
 
@@ -62,7 +66,7 @@ export class KolInputFile implements ComponentApi {
 							accept={this.state._accept}
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-labelledby={`${this.state._id}-label`}
+							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"
 							autoCorrect="off"
 							disabled={this.state._disabled}
@@ -84,7 +88,6 @@ export class KolInputFile implements ComponentApi {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_id={`${this.state._id}-tooltip`}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
 						></kol-tooltip>
 					</div>
@@ -111,7 +114,8 @@ export class KolInputFile implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _disabled?: boolean;
 
@@ -121,7 +125,8 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
@@ -136,9 +141,9 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -146,14 +151,15 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
+	 * TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _multiple?: boolean;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -161,20 +167,21 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _required?: boolean;
 
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -182,12 +189,13 @@ export class KolInputFile implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
@@ -281,7 +289,7 @@ export class KolInputFile implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 
@@ -306,9 +314,21 @@ export class KolInputFile implements ComponentApi {
 		this.controller.componentWillLoad();
 	}
 
-	private onChange = (event: Event) => {
-		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file' && typeof this.state._on?.onChange === 'function') {
-			this.state._on.onChange(event, this.ref.files);
+	private onChange = (event: Event): void => {
+		if (this.ref instanceof HTMLInputElement && this.ref.type === 'file') {
+			const value = this.ref.files;
+
+			// Event handling
+			stopPropagation(event);
+			tryToDispatchKoliBriEvent('change', this.host, value);
+
+			// Static form handling
+			this.controller.setFormAssociatedValue(value);
+
+			// Callback
+			if (typeof this.state._on?.onChange === 'function') {
+				this.state._on.onChange(event, value);
+			}
 		}
 	};
 }

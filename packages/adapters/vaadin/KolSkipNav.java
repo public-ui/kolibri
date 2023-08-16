@@ -1,25 +1,27 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Mit Hilfe der **SkipNav**-Komponente kann eine versteckte Navigation erzeugt werden. Sie dient dazu, Sehbehinderten das Überspringen von Seitenbereichen zu ermöglichen. Sie wird nur nach Anspringen durch die **Tab-Taste** sichtbar.
  */
 
 @Tag("kol-skip-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-skip-nav")
 public class KolSkipNav extends Component {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAriaLabel(final Optional<String> value) {
-		getElement().setProperty("_aria-label", value);
+	public void setAriaLabel(final String value) {
+		getElement().setProperty("_aria-label", value.toString());
 	}
 
 	/**
@@ -28,25 +30,27 @@ public class KolSkipNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAriaLabel() {
-		return getElement().getProperty("_aria-label", null);
+		var value = getElement().getProperty("_aria-label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -54,8 +58,8 @@ public class KolSkipNav extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setLinks(final Optional<String> value) {
-		getElement().setProperty("_links", value);
+	public void setLinks(final String value) {
+		getElement().setProperty("_links", value.toString());
 	}
 
 	/**
@@ -64,6 +68,7 @@ public class KolSkipNav extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLinks() {
-		return getElement().getProperty("_links", null);
+		var value = getElement().getProperty("_links", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

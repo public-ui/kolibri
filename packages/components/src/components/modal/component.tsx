@@ -7,7 +7,7 @@ import { featureHint } from '../../utils/a11y.tipps';
 import { getKoliBri } from '../../utils/dev.utils';
 import { setState, watchString, watchValidator } from '../../utils/prop.validators';
 import { ModalService } from './service';
-import { KoliBriModalAPI, KoliBriModalStates } from './types';
+import { API, States } from './types';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -24,7 +24,7 @@ import { KoliBriModalAPI, KoliBriModalStates } from './types';
 	},
 	shadow: true,
 })
-export class KolModal implements KoliBriModalAPI {
+export class KolModal implements API {
 	private hostElement?: HTMLElement;
 
 	public componentDidRender(): void {
@@ -90,7 +90,7 @@ export class KolModal implements KoliBriModalAPI {
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 *  @deprecated use _label instead
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
@@ -109,7 +109,7 @@ export class KolModal implements KoliBriModalAPI {
 	 */
 	@Prop() public _width?: string = '100%';
 
-	@State() public state: KoliBriModalStates = {
+	@State() public state: States = {
 		_activeElement: null,
 		_label: '…', // ⚠ required
 		_width: '100%',

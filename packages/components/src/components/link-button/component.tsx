@@ -1,21 +1,19 @@
-import { Generic } from '@a11y-ui/core';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import {
-	AlternativButtonLinkRole,
-	KoliBriButtonVariant,
-	LinkOnCallbacks,
-	LinkTarget,
-	OptionalLinkButtonProps,
-	RequiredLinkButtonProps,
-} from '../../types/button-link';
-import { Stringified } from '../../types/common';
-import { KoliBriIconProp } from '../../types/icon';
-import { Align } from '../../types/props/align';
-import { AriaCurrent } from '../../types/props/aria-current';
+import { LinkOnCallbacks } from '../../types/button-link';
+import { AriaCurrentPropType } from '../../types/props/aria-current';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { propagateFocus } from '../../utils/reuse';
+import { DownloadPropType } from '../../types/props/download';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { ButtonVariantPropType } from '../../types/props/button-variant';
+import { LinkTargetPropType } from '../../types/props/link-target';
+import { Props } from './types';
+import { CustomClassPropType } from '../../types/props/custom-class';
+import { HrefPropType } from '../../types/props/href';
+import { IconPropType } from '../../types/props/icon';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 @Component({
 	tag: 'kol-link-button',
@@ -24,7 +22,7 @@ import { propagateFocus } from '../../utils/reuse';
 	},
 	shadow: true,
 })
-export class KolLinkButton implements Generic.Element.Members<RequiredLinkButtonProps, OptionalLinkButtonProps> {
+export class KolLinkButton implements Props {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 	private ref?: HTMLKolLinkWcElement;
 
@@ -54,6 +52,7 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 					_href={this._href}
 					_icon={this._icon}
 					_label={this._label}
+					_listenAriaCurrent={this._listenAriaCurrent}
 					_on={this._on}
 					_role="button"
 					_tabIndex={this._tabIndex}
@@ -69,60 +68,71 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 
 	/**
 	 * Gibt an, welche Elemente kontrolliert werden. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaControls?: string;
 
 	/**
 	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
+	 *
+	 * @deprecated use _listen-aria-current instead
 	 */
-	@Prop() public _ariaCurrent?: AriaCurrent;
+	@Prop() public _ariaCurrent?: AriaCurrentPropType;
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
-	 *  @deprecated use _label instead
+	 * @deprecated use _label instead
 	 */
 	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 *
+	 * @deprecated will be removed in v2
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 *
+	 * @deprecated Ein Link kann nicht deaktiviert werden, nutzen Sie den Button-Link stattdessen.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
 	/**
-	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: boolean | string = false;
+	@Prop() public _download?: DownloadPropType = false;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the label and shows it in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * This property is used for a link from a reference to the target URL.
 	 */
-	@Prop() public _href!: string;
+	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
-	@Prop() public _icon?: Stringified<KoliBriIconProp>;
+	@Prop() public _icon?: IconPropType;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
@@ -136,15 +146,20 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
+	 * Listen on a aria-current event with this value. If the value matches the current value and the href is the same as the current url, the aria-current attribute will be set to current value.
+	 */
+	@Prop() public _listenAriaCurrent?: AriaCurrentPropType;
+
+	/**
 	 * Gibt die EventCallback-Funktionen für den Link an.
 	 * @deprecated
 	 */
 	@Prop() public _on?: LinkOnCallbacks;
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 */
-	@Prop() public _role?: AlternativButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -152,9 +167,9 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTarget;
+	@Prop() public _target?: LinkTargetPropType;
 
 	/**
 	 * Gibt die Beschreibung an, wenn der Link in einem anderen Programm geöffnet wird.
@@ -162,12 +177,12 @@ export class KolLinkButton implements Generic.Element.Members<RequiredLinkButton
 	@Prop() public _targetDescription?: string = translate('kol-open-link-in-tab');
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'right';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 }

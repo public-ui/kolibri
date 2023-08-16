@@ -2,28 +2,29 @@ import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { HeadingLevel } from '../../types/heading-level';
-import { validateHasCloser } from '../../types/props/has-closer';
+import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
+import { LabelPropType, validateLabel } from '../../types/props/label';
 import { Log } from '../../utils/dev.utils';
-import { setState, watchBoolean, watchString, watchValidator } from '../../utils/prop.validators';
+import { setState, watchBoolean, watchValidator } from '../../utils/prop.validators';
 import { watchHeadingLevel } from '../heading/validation';
 import { AlertType, AlertVariant, API, KoliBriAlertEventCallbacks, States } from './types';
 
-const Icon = (props: { ariaLabel: string; icon: string; heading?: string }) => {
-	return <kol-icon class="heading-icon" _ariaLabel={typeof props.heading === 'string' && props.heading.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
+const Icon = (props: { ariaLabel: string; icon: string; label?: string }) => {
+	return <kol-icon class="heading-icon" _ariaLabel={typeof props.label === 'string' && props.label.length > 0 ? '' : props.ariaLabel} _icon={props.icon} />;
 };
 
-const AlertIcon = (props: { heading?: string; type?: AlertType }) => {
+const AlertIcon = (props: { label?: string; type?: AlertType }) => {
 	switch (props.type) {
 		case 'error':
-			return <Icon ariaLabel={translate('kol-error')} icon="codicon codicon-error" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-error')} icon="codicon codicon-error" label={props.label} />;
 		case 'info':
-			return <Icon ariaLabel={translate('kol-info')} icon="codicon codicon-info" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-info')} icon="codicon codicon-info" label={props.label} />;
 		case 'warning':
-			return <Icon ariaLabel={translate('kol-warning')} icon="codicon codicon-warning" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-warning')} icon="codicon codicon-warning" label={props.label} />;
 		case 'success':
-			return <Icon ariaLabel={translate('kol-success')} icon="codicon codicon-pass" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-success')} icon="codicon codicon-pass" label={props.label} />;
 		default:
-			return <Icon ariaLabel={translate('kol-message')} icon="codicon codicon-comment" heading={props.heading} />;
+			return <Icon ariaLabel={translate('kol-message')} icon="codicon codicon-comment" label={props.label} />;
 	}
 };
 
@@ -67,14 +68,15 @@ export class KolAlertWc implements API {
 				class={{
 					[this.state._type as string]: true,
 					[this.state._variant as string]: true,
+					hasCloser: !!this.state._hasCloser,
 				}}
 				role={this.state._alert ? 'alert' : undefined}
 			>
 				<div class="heading">
-					<AlertIcon heading={this.state._heading} type={this.state._type} />
+					<AlertIcon label={this.state._label} type={this.state._type} />
 					<div>
-						{typeof this.state._heading === 'string' && this.state._heading?.length > 0 && (
-							<kol-heading-wc _label={this.state._heading} _level={this.state._level}></kol-heading-wc>
+						{typeof this.state._label === 'string' && this.state._label?.length > 0 && (
+							<kol-heading-wc _label={this.state._label} _level={this.state._level}></kol-heading-wc>
 						)}
 						{this._variant === 'msg' && (
 							<div class="content">
@@ -112,14 +114,15 @@ export class KolAlertWc implements API {
 	@Prop() public _alert?: boolean = false;
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
+	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */
-	@Prop() public _heading?: string;
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -151,13 +154,13 @@ export class KolAlertWc implements API {
 	}
 
 	@Watch('_hasCloser')
-	public validateHasCloser(value?: boolean): void {
+	public validateHasCloser(value?: HasCloserPropType): void {
 		validateHasCloser(this, value);
 	}
 
-	@Watch('_heading')
-	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value);
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_level')
@@ -211,7 +214,7 @@ export class KolAlertWc implements API {
 	public componentWillLoad(): void {
 		this.validateAlert(this._alert);
 		this.validateHasCloser(this._hasCloser);
-		this.validateHeading(this._heading);
+		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateType(this._type);

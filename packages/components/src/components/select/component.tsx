@@ -3,14 +3,20 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTypeOnDefault, Optgroup, Option, SelectOption } from '../../types/input/types';
-import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { OptionsWithOptgroupPropType } from '../../types/props/options';
+import { RowsPropType } from '../../types/props/rows';
 import { W3CInputValue } from '../../types/w3c';
 import { nonce } from '../../utils/dev.utils';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { SelectController } from './controller';
-import { ComponentApi, States } from './types';
+import { API, States } from './types';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
 
 const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
 	return Array.isArray(valueList) && valueList.includes(optionValue);
@@ -26,7 +32,7 @@ const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean 
 	},
 	shadow: true,
 })
-export class KolSelect implements ComponentApi {
+export class KolSelect implements API {
 	@Element() private readonly host?: HTMLKolSelectElement;
 	private ref?: HTMLSelectElement;
 
@@ -37,7 +43,7 @@ export class KolSelect implements ComponentApi {
 
 	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
 		return (
-			<optgroup disabled={optgroup.disabled === true} label={optgroup.label}>
+			<optgroup disabled={optgroup.disabled} label={optgroup.label}>
 				{optgroup.options?.map((option: SelectOption<W3CInputValue>, index: number) => {
 					const key = `${preKey}-${index}`;
 					if (Array.isArray((option as Optgroup<string>).options)) {
@@ -45,7 +51,7 @@ export class KolSelect implements ComponentApi {
 					} else {
 						return (
 							<option
-								disabled={option.disabled === true}
+								disabled={option.disabled}
 								key={key}
 								// label={option.label}
 								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
@@ -89,7 +95,7 @@ export class KolSelect implements ComponentApi {
 							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-labelledby={`${this.state._id}-label`}
+							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"
 							autoCorrect="off"
 							disabled={this.state._disabled}
@@ -97,7 +103,7 @@ export class KolSelect implements ComponentApi {
 							multiple={this.state._multiple}
 							name={this.state._name}
 							required={this.state._required}
-							size={this.state._size}
+							size={this.state._rows}
 							spellcheck="false"
 							style={{
 								height: this.state._height,
@@ -109,7 +115,7 @@ export class KolSelect implements ComponentApi {
 							}}
 							onChange={this.onChange}
 						>
-							{this.state._list.map((option, index) => {
+							{this.state._options.map((option, index) => {
 								/**
 								 * Damit der Value einer Option ein beliebigen Typ haben kann
 								 * muss man auf HTML-Ebene den Value auf einen String-Wert
@@ -121,7 +127,7 @@ export class KolSelect implements ComponentApi {
 								} else {
 									return (
 										<option
-											disabled={option.disabled === true}
+											disabled={option.disabled}
 											key={key}
 											// label={option.label}
 											selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
@@ -141,7 +147,6 @@ export class KolSelect implements ComponentApi {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_id={`${this.state._id}-tooltip`}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
 						></kol-tooltip>
 					</div>
@@ -163,7 +168,8 @@ export class KolSelect implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _disabled?: boolean;
 
@@ -175,12 +181,13 @@ export class KolSelect implements ComponentApi {
 	/**
 	 * Gibt an, ob eine individuelle Höhe übergeben werden soll.
 	 *
-	 * @deprecated Use _size instead.
+	 * @deprecated Use _rows instead.
 	 */
 	@Prop() public _height?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
@@ -195,9 +202,9 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -205,19 +212,21 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Options the user can choose from, also supporting Optgroup.
+	 * @deprecated use _options
 	 */
-	@Prop() public _list!: Stringified<SelectOption<W3CInputValue>[]>;
+	@Prop() public _list?: Stringified<SelectOption<W3CInputValue>[]>;
 
 	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
+	 * TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _multiple?: boolean = false;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -225,9 +234,20 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Macht das Eingabeelementzu einem Pflichtfeld.
+	 * Options the user can choose from, also supporting Optgroup.
+	 */
+	@Prop() public _options?: OptionsWithOptgroupPropType;
+
+	/**
+	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _required?: boolean;
+
+	/**
+	 * Defines how many rows of options should be visible at the same time.
+	 */
+	@Prop() public _rows?: RowsPropType;
 
 	/**
 	 * Wechselt das Eingabeelement in den Auswahlfeld modus und setzt die Höhe des Feldes.
@@ -238,7 +258,7 @@ export class KolSelect implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -246,26 +266,27 @@ export class KolSelect implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
 	 * Gibt den Wert des Eingabefeldes an.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
 
 	@State() public state: States = {
 		_hasValue: false,
 		_height: '',
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_options: [],
 		_multiple: false,
 		_value: [],
 	};
@@ -326,7 +347,7 @@ export class KolSelect implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<SelectOption<W3CInputValue>[]>): void {
-		this.controller.validateList(value);
+		this.validateOptions(value);
 	}
 
 	@Watch('_multiple')
@@ -344,18 +365,28 @@ export class KolSelect implements ComponentApi {
 		this.controller.validateOn(value);
 	}
 
+	@Watch('_options')
+	public validateOptions(value?: OptionsWithOptgroupPropType): void {
+		this.controller.validateOptions(value);
+	}
+
 	@Watch('_required')
 	public validateRequired(value?: boolean): void {
 		this.controller.validateRequired(value);
 	}
 
+	@Watch('_rows')
+	public validateRows(value?: RowsPropType): void {
+		this.controller.validateRows(value);
+	}
+
 	@Watch('_size')
 	public validateSize(value?: number): void {
-		this.controller.validateSize(value);
+		this.controller.validateRows(value);
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 
@@ -384,13 +415,18 @@ export class KolSelect implements ComponentApi {
 	}
 
 	private onChange = (event: Event): void => {
-		/**
-		 * TODO: Find values via value keys.
-		 */
 		this._value = Array.from(this.ref?.options || [])
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
+
+		// Event handling
+		stopPropagation(event);
+		tryToDispatchKoliBriEvent('change', this.host, this._value);
+
+		// Static form handling
 		this.controller.setFormAssociatedValue(this._value as unknown as string);
+
+		// Callback
 		if (typeof this.state._on?.onChange === 'function') {
 			this.state._on.onChange(event, this._value);
 		}

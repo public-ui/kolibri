@@ -47,7 +47,7 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 
 ## Links und Referenzen
 
-- <kol-link _href="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
+- <kol-link _href="https://webaim.org/techniques/skipnav/" _label="https://webaim.org/techniques/skipnav/" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
@@ -56,7 +56,7 @@ Die **SkipNav** wird durch Übergabe eines JSON-Objekts erzeugt, das für das Re
 | Property              | Attribute     | Description                                                                                                                                                                                              | Type                    | Default     |
 | --------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ----------- |
 | `_ariaLabel`          | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`   | `undefined` |
-| `_label`              | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                              | `string \| undefined`   | `undefined` |
+| `_label`              | `_label`      | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).                                                                                          | `string \| undefined`   | `undefined` |
 | `_links` _(required)_ | `_links`      | Gibt die Liste der darzustellenden Button, Links oder Texte an.                                                                                                                                          | `LinkProps[] \| string` | `undefined` |
 
 ## Dependencies

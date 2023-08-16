@@ -13,7 +13,7 @@ type OptionalProps = {
 	 */
 	iconOnly: boolean;
 } & PropHideLabel;
-export type KolibriSpanProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = {
 	icon: {
@@ -30,5 +30,5 @@ type OptionalStates = {
 	iconOnly: boolean;
 } & PropHideLabel;
 
-export type KolibriSpanStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KolibriSpanAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

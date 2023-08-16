@@ -14,17 +14,17 @@ Die Komponente **InputRadio** besteht aus einer Sammlung von Radio-Elementen und
 <kol-input-radio
 	_id="anrede"
 	_name="anrede"
-	_list='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'
+	_options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'
 ></kol-input-radio>
 ```
 
 ### Beispiel
 
-<kol-input-radio _id="anrede" _name="anrede" _list='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
+<kol-input-radio _id="anrede" _name="anrede" _options='[{"label":"Herr","value":"Herr"},{"label":"Frau","value":"Frau"}, {"label":"Firma","value":"Firma"}]'></kol-input-radio>
 
 ## Verwendung
 
-Die einzelnen Radio-Elemente innerhalb der Komponente ** InputRadio** werden über dass Attribut **_\_list_** als JSON-Objekt übergeben.
+Die einzelnen Radio-Elemente innerhalb der Komponente ** InputRadio** werden über dass Attribut **_\_options_** als JSON-Objekt übergeben.
 
 Das JSON-Objekt erwartet je Radio-Element folgende Werte:
 
@@ -47,7 +47,7 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 <kol-input-radio
 	_id="anrede"
 	_name="anrede"
-	_list={[
+	_options={[
 		{ label: 'Herr', value: 'Herr' },
 		{ label: 'Frau', value: 'Frau' },
 		{ label: 'Firma', value: 'Firma' },
@@ -59,7 +59,7 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 ### Best practices
 
 - Achten sie darauf `id` und `name` korrekt zu setzen, damit die Daten beim Formular Absenden mitgesendet werden.
-- Es wird immer mindestens ein Wert ausgewählt. Ähnlich dem Verhalten einer Select-Auswahl. (<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _target="_blank"></kol-link>)
+- Es wird immer mindestens ein Wert ausgewählt. Ähnlich dem Verhalten einer Select-Auswahl. (<kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#selecting_a_radio_button_by_default" _target="_blank"></kol-link>)
 
 ## Barrierefreiheit
 
@@ -73,10 +73,10 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 
 ## Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3schools.com/tags/att_input_type_radio.asp" _target="_blank"></kol-link>
-- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _target="_blank"></kol-link>
-- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _label="https://www.w3.org/TR/wai-aria-practices/#radiobutton" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3schools.com/tags/att_input_type_radio.asp" _label="https://www.w3schools.com/tags/att_input_type_radio.asp" _target="_blank"></kol-link>
+- <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio" _target="_blank"></kol-link>
+- <kol-link _href="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _label="https://medium.com/@gavyn/til-autofocus-inputs-are-an-accessibility-problem-32ced60c3109" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
@@ -92,13 +92,14 @@ Dem EventHandler werden zwei Parameter übergeben, das ursprüngliche Event und 
 | `_hint`               | `_hint`          | Gibt den Hinweistext an.                                                                                                                             | `string \| undefined`                                                                    | `''`         |
 | `_id`                 | `_id`            | Gibt die interne ID des primären Elements in der Komponente an.                                                                                      | `string \| undefined`                                                                    | `undefined`  |
 | `_label` _(required)_ | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                          | `boolean \| string`                                                                      | `undefined`  |
-| `_list` _(required)_  | `_list`          | Gibt die Liste der Optionen für das Eingabefeld an.                                                                                                  | `Option<W3CInputValue>[] \| string`                                                      | `undefined`  |
+| `_list`               | `_list`          | <span style="color:red">**[DEPRECATED]**</span> Use \_options.<br/><br/>Gibt die Liste der Optionen für das Eingabefeld an.                          | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
 | `_name`               | `_name`          | Gibt den technischen Namen des Eingabefeldes an.                                                                                                     | `string \| undefined`                                                                    | `undefined`  |
 | `_on`                 | --               | Gibt die EventCallback-Funktionen für das Input-Event an.                                                                                            | `InputTypeOnBlur & InputTypeOnClick & InputTypeOnChange & InputTypeOnFocus \| undefined` | `undefined`  |
+| `_options`            | `_options`       | Options the user can choose from.                                                                                                                    | `Option<W3CInputValue>[] \| string \| undefined`                                         | `undefined`  |
 | `_orientation`        | `_orientation`   | Gibt die horizontale oder vertikale Ausrichtung der Komponente an.                                                                                   | `"horizontal" \| "vertical" \| undefined`                                                | `'vertical'` |
 | `_required`           | `_required`      | Macht das Eingabeelement zu einem Pflichtfeld.                                                                                                       | `boolean \| undefined`                                                                   | `undefined`  |
 | `_tabIndex`           | `_tab-index`     | Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | `number \| undefined`                                                                    | `undefined`  |
-| `_tooltipAlign`       | `_tooltip-align` | Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.                                                     | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
+| `_tooltipAlign`       | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                            | `"bottom" \| "left" \| "right" \| "top" \| undefined`                                    | `'top'`      |
 | `_touched`            | `_touched`       | Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.                                                                        | `boolean \| undefined`                                                                   | `false`      |
 | `_value`              | `_value`         | Gibt den Wert der Radio an. (Known Bug: https://github.com/ionic-team/stencil/issues/3902)                                                           | `number \| string \| undefined`                                                          | `undefined`  |
 

@@ -1,9 +1,11 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+
+import java.util.Optional;
 
 /**
  * Mit der **Toast**-Komponente geben Sie ein optisches Feedback an die Nutzer:innen. Sie wird nur für einen kurzen Zeitraum am Kopf des Browserfenster angezeigt und verschwindet danach automatisch.
@@ -12,16 +14,16 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
  */
 
 @Tag("kol-toast")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setAlert(final Optional<String> value) {
-		getElement().setProperty("_alert", value);
+	public void setAlert(final String value) {
+		getElement().setProperty("_alert", value.toString());
 	}
 
 	/**
@@ -30,34 +32,36 @@ public class KolToast extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getAlert() {
-		return getElement().getProperty("_alert", null);
+		var value = getElement().getProperty("_alert", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHasCloser(final Optional<String> value) {
-		getElement().setProperty("_has-closer", value);
+	public void setHasCloser(final String value) {
+		getElement().setProperty("_has-closer", value.toString());
 	}
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHasCloser() {
-		return getElement().getProperty("_has-closer", null);
+		var value = getElement().getProperty("_has-closer", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setHeading(final Optional<String> value) {
-		getElement().setProperty("_heading", value);
+	public void setHeading(final String value) {
+		getElement().setProperty("_heading", value.toString());
 	}
 
 	/**
@@ -66,16 +70,36 @@ public class KolToast extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHeading() {
-		return getElement().getProperty("_heading", null);
+		var value = getElement().getProperty("_heading", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Defines the text to show in the Toast.
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
+	}
+
+	/**
+	 * Defines the text to show in the Toast.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLevel(final Optional<String> value) {
-		getElement().setProperty("_level", value);
+	public void setLevel(final String value) {
+		getElement().setProperty("_level", value.toString());
 	}
 
 	/**
@@ -84,34 +108,36 @@ public class KolToast extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLevel() {
-		return getElement().getProperty("_level", null);
+		var value = getElement().getProperty("_level", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setShow(final Optional<String> value) {
-		getElement().setProperty("_show", value);
+	public void setShow(final String value) {
+		getElement().setProperty("_show", value.toString());
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getShow() {
-		return getElement().getProperty("_show", null);
+		var value = getElement().getProperty("_show", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, wie viele Millisekunden der Toast eingeblendet werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setShowDuration(final Optional<String> value) {
-		getElement().setProperty("_show-duration", value);
+	public void setShowDuration(final String value) {
+		getElement().setProperty("_show-duration", value.toString());
 	}
 
 	/**
@@ -120,16 +146,17 @@ public class KolToast extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getShowDuration() {
-		return getElement().getProperty("_show-duration", null);
+		var value = getElement().getProperty("_show-duration", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setType(final Optional<String> value) {
-		getElement().setProperty("_type", value);
+	public void setType(final String value) {
+		getElement().setProperty("_type", value.toString());
 	}
 
 	/**
@@ -138,6 +165,7 @@ public class KolToast extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getType() {
-		return getElement().getProperty("_type", null);
+		var value = getElement().getProperty("_type", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SelectOption } from '@public-ui/components';
 
-import { KolSelect } from '@public-ui/react';
+import { KolForm, KolSelect } from '@public-ui/react';
 
 import { FC } from 'react';
 
@@ -31,12 +31,12 @@ type Country = {
 );
 
 export const SelectBasic: FC = () => (
-	<div className="grid gap-4">
+	<KolForm className="grid gap-4">
 		<KolSelect
 			_id=""
-			_list={STATUS_OPTIONS}
+			_options={STATUS_OPTIONS}
 			_error={ERROR_MSG}
-			_touched
+			_label="Anrede"
 			_icon={{
 				left: {
 					icon: 'codicon codicon-arrow-left',
@@ -45,11 +45,7 @@ export const SelectBasic: FC = () => (
 					icon: 'codicon codicon-arrow-right',
 				},
 			}}
-		>
-			Anrede
-		</KolSelect>
-		<KolSelect _id="" _list={STATUS_OPTIONS} _multiple _required _error={ERROR_MSG}>
-			Anrede
-		</KolSelect>
-	</div>
+		/>
+		<KolSelect _id="" _options={STATUS_OPTIONS} _label="Anrede" _multiple _required _error={ERROR_MSG} />
+	</KolForm>
 );

@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { COMPONENTS } from '../../component-list';
-import { KoliBriBreadcrumbProps } from '../types';
+import { Props } from '../types';
 import { getBreadcrumbHtml } from './html.mock';
 
-executeTests<KoliBriBreadcrumbProps>(
+executeTests<Props>(
 	'Breadcrumb',
 	async (props): Promise<SpecPage> => {
 		const page = await newSpecPage({

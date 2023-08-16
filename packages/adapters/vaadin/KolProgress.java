@@ -1,34 +1,37 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
+import java.util.Optional;
+
 /**
  * Die **Progress**-Komponente erzeugt einen Fortschrittsbalken, über den eine optische Rückmeldung gegeben werden kann.
  */
 
 @Tag("kol-progress")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-progress")
 public class KolProgress extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setLabel(final Optional<String> value) {
-		getElement().setProperty("_label", value);
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
 	public Optional<String> getLabel() {
-		return getElement().getProperty("_label", null);
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -36,8 +39,8 @@ public class KolProgress extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setMax(final Optional<String> value) {
-		getElement().setProperty("_max", value);
+	public void setMax(final String value) {
+		getElement().setProperty("_max", value.toString());
 	}
 
 	/**
@@ -46,16 +49,17 @@ public class KolProgress extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getMax() {
-		return getElement().getProperty("_max", null);
+		var value = getElement().getProperty("_max", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Deprecated: Gibt an, ob der Prozess als Balken oder Kreis dargestellt wird.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setType(final Optional<String> value) {
-		getElement().setProperty("_type", value);
+	public void setType(final String value) {
+		getElement().setProperty("_type", value.toString());
 	}
 
 	/**
@@ -64,16 +68,17 @@ public class KolProgress extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getType() {
-		return getElement().getProperty("_type", null);
+		var value = getElement().getProperty("_type", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Setzt die Einheit der Fortschrittswerte. (wird nicht angezeigt)
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setUnit(final Optional<String> value) {
-		getElement().setProperty("_unit", value);
+	public void setUnit(final String value) {
+		getElement().setProperty("_unit", value.toString());
 	}
 
 	/**
@@ -82,7 +87,8 @@ public class KolProgress extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getUnit() {
-		return getElement().getProperty("_unit", null);
+		var value = getElement().getProperty("_unit", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -90,8 +96,8 @@ public class KolProgress extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setValue(final Optional<String> value) {
-		getElement().setProperty("_value", value);
+	public void setValue(final String value) {
+		getElement().setProperty("_value", value.toString());
 	}
 
 	/**
@@ -100,16 +106,17 @@ public class KolProgress extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getValue() {
-		return getElement().getProperty("_value", null);
+		var value = getElement().getProperty("_value", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setVariant(final Optional<String> value) {
-		getElement().setProperty("_variant", value);
+	public void setVariant(final String value) {
+		getElement().setProperty("_variant", value.toString());
 	}
 
 	/**
@@ -118,6 +125,7 @@ public class KolProgress extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getVariant() {
-		return getElement().getProperty("_variant", null);
+		var value = getElement().getProperty("_variant", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }

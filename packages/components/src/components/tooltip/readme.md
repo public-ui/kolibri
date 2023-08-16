@@ -18,17 +18,17 @@ Aus Sicht des Barrierefreiheitstests können Tooltips ignoriert werden, solange 
 
 ## Links und Referenzen
 
-- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
+- <kol-link _href="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _label="https://tollwerk.de/projekte/tipps-techniken-inklusiv-barrierefrei/titel-tooltips-toggletips" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
 ## Properties
 
-| Property              | Attribute | Description                                                                                                                 | Type                                                  | Default     |
-| --------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| `_align`              | `_align`  | Setzt die Ausrichtung des Tooltips in Relation zum Elternelement.                                                           | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
-| `_id` _(required)_    | `_id`     | Gibt die interne ID des primären Elements in der Komponente an.                                                             | `string`                                              | `undefined` |
-| `_label` _(required)_ | `_label`  | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string`                                              | `undefined` |
+| Property              | Attribute | Description                                                                                                     | Type                                                  | Default     |
+| --------------------- | --------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| `_align`              | `_align`  | Defines the alignment of the tooltip in relation to the parent element.                                         | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
+| `_id`                 | `_id`     | Defines the internal ID of the primary component element.                                                       | `string \| undefined`                                 | `undefined` |
+| `_label` _(required)_ | `_label`  | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.). | `string`                                              | `undefined` |
 
 ## Dependencies
 

@@ -1,14 +1,14 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { ButtonProps } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { a11yHint, featureHint } from '../../utils/a11y.tipps';
+import { LabelPropType } from '../../types/props/label';
+import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
-import { KoliBriBadgeProps, KoliBriBadgeStates } from './types';
+import { ButtonProps } from '../button/types';
+import { API, States } from './types';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -19,12 +19,30 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge implements KoliBriBadgeProps {
+export class KolBadge implements API {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
 
+	private renderSmartButton(props: ButtonProps): JSX.Element {
+		return (
+			<kol-button-wc
+				_ariaControls={this.id}
+				_customClass={props._customClass}
+				_disabled={props._disabled}
+				_hideLabel={true}
+				_icon={props._icon}
+				_id={props._id}
+				_label={props._label}
+				_on={props._on}
+				_tooltipAlign={props._tooltipAlign}
+				_variant={props._variant}
+			></kol-button-wc>
+		);
+	}
+
 	public render(): JSX.Element {
+		const hasSmartButton = typeof this.state._smartButton === 'object' && this.state._smartButton !== null;
 		return (
 			<Host>
 				<span
@@ -36,21 +54,13 @@ export class KolBadge implements KoliBriBadgeProps {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc id={this.id} _icon={this._icon} _hideLabel={this._hideLabel || this._iconOnly} _label={this.state._label}></kol-span-wc>
-					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
-						<kol-button-wc
-							_ariaControls={this.id}
-							_customClass={this.state._smartButton._customClass}
-							_disabled={this.state._smartButton._disabled}
-							_hideLabel={true}
-							_icon={this.state._smartButton._icon}
-							_id={this.state._smartButton._id}
-							_label={this.state._smartButton._label}
-							_on={this.state._smartButton._on}
-							_tooltipAlign={this.state._smartButton._tooltipAlign}
-							_variant={this.state._smartButton._variant}
-						></kol-button-wc>
-					)}
+					<kol-span-wc
+						id={hasSmartButton ? this.id : undefined}
+						_hideLabel={this._hideLabel || this._iconOnly}
+						_icon={this._icon}
+						_label={this._label}
+					></kol-span-wc>
+					{hasSmartButton && this.renderSmartButton(this.state._smartButton as ButtonProps)}
 				</span>
 			</Host>
 		);
@@ -62,7 +72,11 @@ export class KolBadge implements KoliBriBadgeProps {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
+	 *   since it would not be accessible without visible labeling. A separate tooltip
+	 *   is not planed, because a badge is not an interactive element.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
@@ -73,6 +87,7 @@ export class KolBadge implements KoliBriBadgeProps {
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 *
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;
@@ -83,16 +98,15 @@ export class KolBadge implements KoliBriBadgeProps {
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Ermöglicht einen Schalter ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
+	 * Ermöglicht einen Schalter in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (nur _hide-label).
 	 */
 	@Prop() public _smartButton?: Stringified<ButtonProps>;
 
-	@State() public state: KoliBriBadgeStates = {
+	@State() public state: States = {
 		_color: {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',
 		},
-		_label: '…', // ⚠ required
 	};
 
 	private handleColorChange = (value: unknown) => {
@@ -107,19 +121,6 @@ export class KolBadge implements KoliBriBadgeProps {
 			defaultValue: '#000',
 			hooks: {
 				beforePatch: this.handleColorChange,
-			},
-		});
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value, {
-			hooks: {
-				afterPatch: (value) => {
-					if (typeof value === 'string' && value.length > 32) {
-						a11yHint(`[KolBadge] The label is too long for a badge (${value.length} > 32).`);
-					}
-				},
 			},
 		});
 	}
@@ -139,7 +140,6 @@ export class KolBadge implements KoliBriBadgeProps {
 
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
-		this.validateLabel(this._label);
 		this.validateSmartButton(this._smartButton);
 	}
 }

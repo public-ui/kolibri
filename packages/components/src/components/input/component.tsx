@@ -2,10 +2,13 @@
 import { Component, Fragment, h, Host, JSX, Prop } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriCustomIcon, KoliBriHorizontalIcon } from '../../types/icon';
+import { SuggestionsPropType } from '../../types/props/suggestions';
+import { W3CInputValue } from '../../types/w3c';
 import { Props } from './types';
+import { IdPropType } from '../../types/props/id';
 
 /**
  * @internal
@@ -74,9 +77,9 @@ export class KolInput implements Props {
 						{this._error}
 					</kol-alert>
 				)}
-				{Array.isArray(this._list) && this._list.length > 0 && (
+				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
-						{this._list.map((option: string) => (
+						{this._suggestions.map((option: W3CInputValue) => (
 							<option value={option} />
 						))}
 					</datalist>
@@ -100,7 +103,8 @@ export class KolInput implements Props {
 	}
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
+	 * TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _alert?: boolean = true;
 
@@ -110,7 +114,8 @@ export class KolInput implements Props {
 	@Prop() public _currentLength?: number;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _disabled?: boolean = false;
 
@@ -120,12 +125,14 @@ export class KolInput implements Props {
 	@Prop() public _error?: string = '';
 
 	/**
-	 * Aktiviert den Zeichenanzahlzähler am unteren Rand des Eingabefeldes.
+	 * Shows the character count on the lower border of the input.
+	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _hasCounter?: boolean;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
@@ -140,14 +147,9 @@ export class KolInput implements Props {
 	@Prop() public _icon?: KoliBriHorizontalIcon;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id!: string;
-
-	/**
-	 * Gibt die Liste der Vorschlagswörter an.
-	 */
-	@Prop() public _list?: Stringified<string[]>;
+	@Prop() public _id!: IdPropType;
 
 	/**
 	 * Gibt an, wie viele Zeichen maximal eingegeben werden können.
@@ -155,7 +157,8 @@ export class KolInput implements Props {
 	@Prop() public _maxLength?: number;
 
 	/**
-	 * Gibt an, ob die Eingabefeld nur lesend ist.
+	 * Makes the input element read only.
+	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _readOnly?: boolean = false;
 
@@ -165,23 +168,30 @@ export class KolInput implements Props {
 	@Prop() public _renderNoLabel?: boolean = false;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _required?: boolean = false;
 
 	/**
-	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines ShadowDOMs existieren würden.
+	 * Ermöglicht den Slotnamen zu bestimmen. Wird nur verwendet, wenn sonst mehrere Slots mit dem gleichen Namen innerhalb eines Shadow DOMs existieren würden.
 	 * @internal
 	 */
 	@Prop() public _slotName?: string;
 
 	/**
-	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Ermöglicht eine Schaltfläche in das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
+	 */
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _touched?: boolean = false;
 }

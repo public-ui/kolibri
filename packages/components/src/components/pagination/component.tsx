@@ -1,15 +1,15 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
-import { KoliBriButtonVariant, watchTooltipAlignment } from '../../types/button-link';
 import { Stringified } from '../../types/common';
 import { Option } from '../../types/input/types';
-import { Align } from '../../types/props/align';
 import { nonce } from '../../utils/dev.utils';
-import { parseJson, watchJsonArrayString, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { parseJson, watchJsonArrayString, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { STATE_CHANGE_EVENT } from '../../utils/validator';
-import { watchButtonVariant } from '../button/controller';
-import { KoliBriPaginationAPI, KoliBriPaginationButtonCallbacks, KoliBriPaginationStates, PaginationHasButton } from './types';
+import { API, KoliBriPaginationButtonCallbacks, States, PaginationHasButton } from './types';
+import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
+import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
+import { CustomClassPropType, validateCustomClass } from '../../types/props/custom-class';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -31,7 +31,7 @@ const rightDoubleArrowIcon = {
 	},
 	shadow: true,
 })
-export class KolPagination implements KoliBriPaginationAPI {
+export class KolPagination implements API {
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
@@ -146,9 +146,9 @@ export class KolPagination implements KoliBriPaginationAPI {
 	@Prop() public _boundaryCount?: number = 1;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Setzt die Sichtbarkeit der Anfang/zurück/weiter/Ende-Schaltflächen.
@@ -181,9 +181,9 @@ export class KolPagination implements KoliBriPaginationAPI {
 	@Prop() public _siblingCount?: number = 1;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Setzt die Gesamtanzahl der Seiten.
@@ -191,11 +191,11 @@ export class KolPagination implements KoliBriPaginationAPI {
 	@Prop() public _total!: number;
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: KoliBriButtonVariant = 'normal';
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
-	@State() public state: KoliBriPaginationStates = {
+	@State() public state: States = {
 		_boundaryCount: 1,
 		_hasButtons: {
 			first: true,
@@ -301,10 +301,8 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, {
-			defaultValue: undefined,
-		});
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
 	}
 
 	@Watch('_hasButtons')
@@ -471,13 +469,13 @@ export class KolPagination implements KoliBriPaginationAPI {
 	}
 
 	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: Align): void {
-		watchTooltipAlignment(this, '_tooltipAlign', value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
 	}
 
 	@Watch('_variant')
-	public validateVariant(value?: KoliBriButtonVariant): void {
-		watchButtonVariant(this, '_variant', value);
+	public validateVariant(value?: ButtonVariantPropType): void {
+		validateButtonVariant(this, value);
 	}
 
 	public componentWillLoad(): void {

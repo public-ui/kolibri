@@ -1,10 +1,10 @@
 # Hinweis
 
-Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
+Vielen Dank, dass Sie diese Komponente zur Umsetzung eines Modals verwenden wollen. Inzwischen ist das native `<dialog>` Element sehr gut unterstützt (<kol-link _href="https://caniuse.com/?search=dialog" _label="https://caniuse.com/?search=dialog" _target="_blank" _label="caniuse"></kol-link>), barrierefrei, einfach zu benutzen und performanter (da nativ), daher empfehlen wir dieses zu verwenden. Wenn Sie aufgrund von Abwärtskompatibilität, oder weil Sie die **Modal**-Komponente bereits eingebaut haben, die Dokumentation zu unserem KolModal suchen, finden Sie diese etwas weiter unten. Die **Modal**-Komponente wird in Version 2 noch zur Verfügung stehen.
 
 ## Verwendung von `dialog`-Tag
 
-Die Dokumentation des `<dialog>` finden Sie <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank" _label="hier(MDN)"></kol-link>.
+Die Dokumentation des `<dialog>` finden Sie <kol-link _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _label="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" _target="_blank" _label="hier(MDN)"></kol-link>.
 Das **Dialog**-Element kann wie jedes andere HTML-Tag verwendet werden, alle Elemente innerhalb werden wie gewohnt dargestellt.
 Der Dialog ist standardmäßig nicht sichtbar, über das Setzen des Attributs `open`, oder über die Funktionen `show()` und `showModal()` wird er sichtbar.
 `open` und `show()` öffnen das Element mit `position: absolute`, während `showModal()` `position: fixed` setzt.
@@ -99,8 +99,8 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 
 ### Links und Referenzen
 
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _target="_blank"></kol-link>
-- <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _label="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" _target="_blank"></kol-link>
+- <kol-link _href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _label="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html" _target="_blank"></kol-link>
 
 <!-- Auto Generated Below -->
 
@@ -110,7 +110,7 @@ Des Weiteren gibt es immer nur maximal ein aktives Modal, welches alle selektier
 | ---------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
 | `_activeElement` | --            | Gibt die Referenz auf das auslösende HTML-Element an, wodurch das Modal geöffnet wurde.                                                                                                                  | `HTMLElement \| null \| undefined`                              | `undefined` |
 | `_ariaLabel`     | `_aria-label` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined`                                           | `undefined` |
-| `_label`         | `_label`      | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                                                              | `string \| undefined`                                           | `undefined` |
+| `_label`         | `_label`      | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).                                                                                          | `string \| undefined`                                           | `undefined` |
 | `_on`            | --            | Gibt die EventCallback-Function für das Schließen des Modals an.                                                                                                                                         | `undefined \| { onClose?: EventCallback<Event> \| undefined; }` | `undefined` |
 | `_width`         | `_width`      | Setzt die Breite des Modals. (max-width: 100%).                                                                                                                                                          | `string \| undefined`                                           | `'100%'`    |
 

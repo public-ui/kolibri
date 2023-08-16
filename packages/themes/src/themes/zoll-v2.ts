@@ -81,13 +81,13 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		color: var(--color-red);
 		padding-left: 0.25em;
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
@@ -791,12 +791,18 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		border-style: solid;
 	}
 	label {
-		cursor: pointer;
 		padding-left: 0.75rem;
 	}
-	kol-input:hover label,
-	kol-input:focus-within label {
+	kol-input:not(.disabled):hover label,
+	kol-input:not(.disabled):focus-within label {
 		text-decoration: underline;
+	}
+	:host kol-input:not(.disabled) :is(.input, label) {
+		cursor: pointer;
+	}
+	:host kol-input.disabled :is(.input, label),
+	:host kol-input.disabled input[type="checkbox"]::before {
+		cursor: not-allowed;
 	}
 	.required label > span::after {
 		content: "*";
@@ -832,15 +838,10 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	input[type="checkbox"] {
 		appearance: none;
 		background-color: white;
-		cursor: pointer;
 		transition: 0.5s;
-	}
-	input[type="checkbox"].kol-disabled:before {
-		cursor: not-allowed;
 	}
 	input[type="checkbox"]:before {
 		content: "";
-		cursor: pointer;
 	}
 	input[type="checkbox"]:checked,
 	input[type="checkbox"]:indeterminate {
@@ -1030,8 +1031,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1076,8 +1077,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1122,8 +1123,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1168,8 +1169,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1214,8 +1215,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1260,8 +1261,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1306,8 +1307,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1352,8 +1353,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1649,8 +1650,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1695,8 +1696,8 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 		gap: var(--gap);
 		overflow: hidden;
 	}
-	kol-input .input:focus-within,
-	kol-input .input:hover {
+	kol-input:not(.disabled) .input:focus-within,
+	kol-input:not(.disabled) .input:hover {
 		border-color: var(--color-grau-60);
 	}
 	kol-input:not(.select, .textarea) .input {
@@ -1729,6 +1730,9 @@ export const ZOLLv2 = KoliBri.createTheme('zoll-v2', {
 	}
 	kol-input > kol-alert.error {
 		order: 3;
+	}
+	.inputs-wrapper {
+		gap: 1em;
 	}`,
 	'KOL-ICON': `/*! * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) * Copyright 2022 Fonticons, Inc. */
 	.fa {

@@ -2,14 +2,20 @@ import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/c
 
 import { Stringified } from '../../types/common';
 import { InputTypeOnDefault } from '../../types/input/types';
-import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { StencilUnknown } from '../../types/unknown';
 import { nonce } from '../../utils/dev.utils';
+import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { propagateFocus } from '../../utils/reuse';
 import { getRenderStates } from '../input/controller';
 import { InputCheckboxController } from './controller';
-import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
+import { API, InputCheckboxIcon, InputCheckboxVariant, States } from './types';
+import { CheckedPropType } from '../../types/props/checked';
+import { IndeterminatePropType } from '../../types/props/indeterminate';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 /**
  * @slot - Die Beschriftung der Checkbox.
@@ -21,7 +27,7 @@ import { ComponentApi, InputCheckboxIcon, InputCheckboxVariant, States } from '.
 	},
 	shadow: true,
 })
-export class KolInputCheckbox implements ComponentApi {
+export class KolInputCheckbox implements API {
 	@Element() private readonly host?: HTMLKolInputCheckboxElement;
 	private ref?: HTMLInputElement;
 
@@ -53,7 +59,6 @@ export class KolInputCheckbox implements ComponentApi {
 					_id={this.state._id}
 					_required={this.state._required}
 					_touched={this.state._touched}
-					onClick={() => this.ref?.focus()}
 				>
 					{/*  TODO: der folgende Slot ohne Name muss später entfernt werden */}
 					<span slot="label">{hasExpertSlot ? <slot></slot> : this.state._label}</span>
@@ -65,21 +70,21 @@ export class KolInputCheckbox implements ComponentApi {
 						/>
 						<input
 							ref={this.catchRef}
+							title=""
 							accessKey={this.state._accessKey} // by checkbox?!
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-labelledby={`${this.state._id}-label`}
+							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							checked={this.state._checked}
-							disabled={this.state._disabled === true}
+							disabled={this.state._disabled}
 							id={this.state._id}
 							indeterminate={this.state._indeterminate}
 							name={this.state._name}
-							required={this.state._required === true}
+							required={this.state._required}
 							tabIndex={this.state._tabIndex}
-							title=""
 							type="checkbox"
-							value={typeof this.state._value === 'string' ? this.state._value : ''}
 							{...this.controller.onFacade}
 							onChange={this.onChange}
+							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
 						/>
 						<kol-tooltip
 							/**
@@ -89,7 +94,6 @@ export class KolInputCheckbox implements ComponentApi {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_id={`${this.state._id}-tooltip`}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
 						></kol-tooltip>
 					</div>
@@ -111,12 +115,14 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Checkbox ausgewählt ist oder nicht. (kann gelesen und gesetzt werden)
+	 * Defines whether the checkbox is checked or not. Can be read and written.
+	 * TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _disabled?: boolean;
 
@@ -126,7 +132,8 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Hides the label and shows the description in a Tooltip instead.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
@@ -136,17 +143,18 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icon?: Stringified<InputCheckboxIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
-	 * Gibt an, ob die Checkbox weder ausgewählt noch nicht ausgewählt ist.
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+	 * TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
 
@@ -156,9 +164,9 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -166,7 +174,8 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _required?: boolean;
 
@@ -174,7 +183,7 @@ export class KolInputCheckbox implements ComponentApi {
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt an, welchen Tab-Index das primäre Element in der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -182,12 +191,13 @@ export class KolInputCheckbox implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
@@ -237,7 +247,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_checked')
-	public validateChecked(value?: boolean): void {
+	public validateChecked(value?: CheckedPropType): void {
 		this.controller.validateChecked(value);
 	}
 
@@ -272,7 +282,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_indeterminate')
-	public validateIndeterminate(value?: boolean): void {
+	public validateIndeterminate(value?: IndeterminatePropType): void {
 		this.controller.validateIndeterminate(value);
 	}
 
@@ -297,7 +307,7 @@ export class KolInputCheckbox implements ComponentApi {
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 
@@ -335,9 +345,20 @@ export class KolInputCheckbox implements ComponentApi {
 	private onChange = (event: Event): void => {
 		this._checked = !this._checked;
 		this._indeterminate = false;
-		this.controller.setFormAssociatedCheckboxValue(this.state._value);
-		if (typeof this._on?.onChange === 'function') {
-			this._on.onChange(event, this.state._value);
+
+		const value = this._checked ? this.state._value : null;
+
+		// Event handling
+		stopPropagation(event);
+		tryToDispatchKoliBriEvent('change', this.host, value);
+
+		// Static form handling
+		this.controller.setFormAssociatedValue(value);
+		this.controller.setFormAssociatedCheckboxValue;
+
+		// Callback
+		if (typeof this.state._on?.onChange === 'function') {
+			this.state._on.onChange(event, value);
 		}
 	};
 }

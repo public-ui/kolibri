@@ -70,13 +70,13 @@ export const MAPZ = KoliBri.createTheme('mapz', {
 		outline-width: 3px;
 		transition: outline-offset 0.2s linear;
 	}
-	kol-tooltip .area {
+	kol-tooltip .tooltip-area {
 		background-color: #f2f2f2;
 	}
-	kol-tooltip #arrow {
+	kol-tooltip .tooltip-arrow {
 		background-color: #626262;
 	}
-	kol-tooltip kol-span-wc {
+	kol-tooltip .tooltip-content {
 		border-radius: 2px;
 		border: 1px solid #626262;
 		color: #000000 !important;

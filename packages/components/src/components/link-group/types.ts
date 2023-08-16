@@ -1,6 +1,6 @@
 import { Generic } from '@a11y-ui/core';
 
-import { LinkProps } from '../../types/button-link';
+import { Props as LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { HeadingLevel } from '../../types/heading-level';
 import { Orientation } from '../../types/orientation';
@@ -45,5 +45,5 @@ type OptionalStates = {
 	ordered: boolean;
 };
 
-export type KoliBriLinkGroupStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type KoliBriLinkGroupAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

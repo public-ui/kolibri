@@ -1,0 +1,20 @@
+<kol-icon exportparts="icon"{{{additionalAttrs}}}>
+{{#csrMode}}
+  <mock:shadow-root>
+{{/csrMode}}
+{{#ssrMode}}
+  <template shadowrootmode="open">
+{{/ssrMode}}
+{{#_label.length}}
+  <i aria-label="{{_label}}" class="{{_icon}}" part="icon" role="img"></i>
+{{/_label.length}}
+{{^_label}}
+  <i aria-hidden="true" class="{{_icon}}" part="icon" role="img"></i>
+{{/_label}}
+{{#csrMode}}
+  </mock:shadow-root>
+{{/csrMode}}
+{{#ssrMode}}
+  </template>
+{{/ssrMode}}
+</kol-icon>

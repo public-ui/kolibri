@@ -1,19 +1,24 @@
 import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { ButtonProps } from '../../types/button-link';
+import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputDateType } from '../../types/input/control/number';
 import { Iso8601 } from '../../types/input/iso8601';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
-import { Align } from '../../types/props/align';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
+import { SuggestionsPropType } from '../../types/props/suggestions';
 import { nonce } from '../../utils/dev.utils';
 import { propagateFocus } from '../../utils/reuse';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { getRenderStates } from '../input/controller';
 import { InputDateController } from './controller';
 import { ComponentApi, States } from './types';
+import { ReadOnlyPropType } from '../../types/props/read-only';
+import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
+import { IdPropType } from '../../types/props/id';
+import { NamePropType } from '../../types/props/name';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -47,7 +52,7 @@ export class KolInputDate implements ComponentApi {
 
 	public render(): JSX.Element {
 		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasList = Array.isArray(this.state._list) && this.state._list.length > 0;
+		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
 		const hasExpertSlot = this.state._label === false; // _label="" or _label
 
 		return (
@@ -63,7 +68,7 @@ export class KolInputDate implements ComponentApi {
 					_hint={this.state._hint}
 					_icon={this.state._icon}
 					_id={this.state._id}
-					_list={this.state._list}
+					_suggestions={this.state._suggestions}
 					_readOnly={this.state._readOnly}
 					_required={this.state._required}
 					_smartButton={this.state._smartButton}
@@ -77,13 +82,13 @@ export class KolInputDate implements ComponentApi {
 							title=""
 							accessKey={this.state._accessKey}
 							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-labelledby={`${this.state._id}-label`}
+							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
 							autoCapitalize="off"
 							autoComplete={this.state._autoComplete}
 							autoCorrect="off"
 							disabled={this.state._disabled}
 							id={this.state._id}
-							list={hasList ? `${this.state._id}-list` : undefined}
+							list={hasSuggestions ? `${this.state._id}-list` : undefined}
 							max={this.state._max}
 							min={this.state._min}
 							name={this.state._name}
@@ -104,7 +109,6 @@ export class KolInputDate implements ComponentApi {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_id={`${this.state._id}-tooltip`}
 							_label={typeof this.state._label === 'string' ? this.state._label : ''}
 						></kol-tooltip>
 					</div>
@@ -131,7 +135,8 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _autoComplete?: InputTypeOnOff;
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _disabled?: boolean;
 
@@ -141,7 +146,8 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _error?: string;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
+	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
@@ -156,9 +162,9 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _icon?: Stringified<KoliBriHorizontalIcon>;
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -167,6 +173,7 @@ export class KolInputDate implements ComponentApi {
 
 	/**
 	 * Gibt die Liste der Vorschlagszahlen an.
+	 * @deprecated Use _suggestions instead.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
 
@@ -181,9 +188,9 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _min?: Iso8601 | Date;
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
@@ -191,25 +198,32 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Setzt das Eingabefeld in den schreibgeschützten Modus.
+	 * Makes the input element read only.
+	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _readOnly?: boolean;
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _required?: boolean;
 
 	/**
 	 * Ermöglicht eine Schaltfläche ins das Eingabefeld mit einer beliebigen Aktion zu einzufügen (ohne label).
 	 */
-	@Prop() public _smartButton?: ButtonProps;
+	@Prop() public _smartButton?: Stringified<ButtonProps>;
+
+	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Gibt die Schrittweite der Wertveränderung an.
@@ -222,12 +236,13 @@ export class KolInputDate implements ComponentApi {
 	@Prop() public _tabIndex?: number;
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: Align = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
@@ -246,7 +261,7 @@ export class KolInputDate implements ComponentApi {
 		_hasValue: false,
 		_id: `id-${nonce()}`, // ⚠ required
 		_label: false, // ⚠ required
-		_list: [],
+		_suggestions: [],
 		_type: 'datetime-local',
 	};
 
@@ -306,7 +321,7 @@ export class KolInputDate implements ComponentApi {
 
 	@Watch('_list')
 	public validateList(value?: Stringified<string[]>): void {
-		this.controller.validateList(value);
+		this.validateSuggestions(value);
 	}
 
 	@Watch('_max')
@@ -330,7 +345,7 @@ export class KolInputDate implements ComponentApi {
 	}
 
 	@Watch('_readOnly')
-	public validateReadOnly(value?: boolean): void {
+	public validateReadOnly(value?: ReadOnlyPropType): void {
 		this.controller.validateReadOnly(value);
 	}
 
@@ -344,13 +359,18 @@ export class KolInputDate implements ComponentApi {
 		this.controller.validateSmartButton(value);
 	}
 
+	@Watch('_suggestions')
+	public validateSuggestions(value?: SuggestionsPropType): void {
+		this.controller.validateSuggestions(value);
+	}
+
 	@Watch('_step')
 	public validateStep(value?: number): void {
 		this.controller.validateStep(value);
 	}
 
 	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: string): void {
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.controller.validateSyncValueBySelector(value);
 	}
 

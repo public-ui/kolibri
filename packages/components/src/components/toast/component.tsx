@@ -1,13 +1,14 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { HeadingLevel } from '../../types/heading-level';
-import { validateHasCloser } from '../../types/props/has-closer';
-import { validateShow } from '../../types/props/show';
+import { HasCloserPropType, validateHasCloser } from '../../types/props/has-closer';
+import { LabelPropType, validateLabel } from '../../types/props/label';
+import { ShowPropType, validateShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
-import { setState, watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
+import { setState, watchBoolean, watchNumber, watchValidator } from '../../utils/prop.validators';
 import { AlertType } from '../alert/types';
 import { watchHeadingLevel } from '../heading/validation';
-import { KoliBriToastAPI, KoliBriToastStates } from './types';
+import { API, States } from './types';
 
 /**
  * @slot - Der Inhalt der Meldung.
@@ -19,21 +20,28 @@ import { KoliBriToastAPI, KoliBriToastStates } from './types';
 	},
 	shadow: true,
 })
-export class KolToast implements KoliBriToastAPI {
+export class KolToast implements API {
 	/**
 	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
 	 */
 	@Prop() public _alert?: boolean = true;
 
 	/**
-	 * Gibt an, ob die Komponente einen Schließen-Schalter hat.
+	 * Defines whether the element can be closed.
+	 * TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
 	 * Gibt die Beschriftung der Komponente an.
+	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string = '';
+
+	/**
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 */
+	@Prop() public _label?: LabelPropType;
 
 	/**
 	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
@@ -46,7 +54,8 @@ export class KolToast implements KoliBriToastAPI {
 	@Prop() public _on?: KoliBriToastEventCallbacks;
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
+	 * TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 */
 	@Prop({ mutable: true, reflect: true }) public _show?: boolean = true;
 
@@ -60,7 +69,7 @@ export class KolToast implements KoliBriToastAPI {
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
-	@State() public state: KoliBriToastStates = {
+	@State() public state: States = {
 		_alert: true,
 		_level: 1,
 		_show: true,
@@ -72,13 +81,18 @@ export class KolToast implements KoliBriToastAPI {
 	}
 
 	@Watch('_hasCloser')
-	public validateHasCloser(value?: boolean): void {
+	public validateHasCloser(value?: HasCloserPropType): void {
 		validateHasCloser(this, value);
 	}
 
 	@Watch('_heading')
 	public validateHeading(value?: string): void {
-		watchString(this, '_heading', value);
+		this.validateLabel(value);
+	}
+
+	@Watch('_label')
+	public validateLabel(value?: LabelPropType): void {
+		validateLabel(this, value);
 	}
 
 	@Watch('_level')
@@ -94,7 +108,7 @@ export class KolToast implements KoliBriToastAPI {
 	}
 
 	@Watch('_show')
-	public validateShow(value?: boolean): void {
+	public validateShow(value?: ShowPropType): void {
 		validateShow(this, value, { hooks: { afterPatch: this.handleShowAndDuration } });
 	}
 
@@ -121,7 +135,7 @@ export class KolToast implements KoliBriToastAPI {
 	public componentWillLoad(): void {
 		this.validateAlert(this._alert);
 		this.validateHasCloser(this._hasCloser);
-		this.validateHeading(this._heading);
+		this.validateLabel(this._label || this._heading);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateShow(this._show);
@@ -129,14 +143,14 @@ export class KolToast implements KoliBriToastAPI {
 		this.validateType(this._type);
 	}
 
-	private durationTimeout?: NodeJS.Timer;
+	private durationTimeout?: number;
 
 	private readonly handleShowAndDuration = () => {
 		if (this.state._show === true && typeof this.state._showDuration === 'number' && this.state._showDuration >= 0) {
-			clearTimeout(this.durationTimeout as NodeJS.Timer);
+			clearTimeout(this.durationTimeout);
 			this.durationTimeout = setTimeout(() => {
 				this.close();
-			}, this.state._showDuration);
+			}, this.state._showDuration) as unknown as number;
 		}
 	};
 
@@ -163,7 +177,7 @@ export class KolToast implements KoliBriToastAPI {
 					<div>
 						<kol-alert
 							_alert={this.state._alert}
-							_heading={this.state._heading}
+							_label={this.state._label}
 							_level={this.state._level}
 							_hasCloser={this.state._hasCloser}
 							_type={this.state._type}

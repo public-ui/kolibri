@@ -1,14 +1,14 @@
-package de.itzbund.oss.kolibri.components;
+package com.example.adapters;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
-/**
- * k# Table
+import java.util.Optional;
 
-Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
+/**
+ * Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Datenmengen. Dabei ist sie so ausgelegt, dass sie alle von den Daten abhängige Werte automatisch ermittelt und die Tabelle entsprechend darstellt. Hierzu gehören beispielsweise die optionalen Funktionalitäten Spaltensortierung oder Pagination.
 
 <kol-indented-text _summary="Backend-seitige Pagination">
 	Bei sehr großen Datenmengen ist auch eine manuelle Nutzung der Table-Komponente möglich. Das bedeutet, dass die Tabelle seitenweise "manuell" befüllt wird. Hierzu kann einfach anstatt der Table-Pagination eine "eigene" Pagination unter der Tabelle mittels der Pagination-Komponente verwendet werden.
@@ -16,7 +16,7 @@ Die **Table**-Komponente dient primär der übersichtlichen Darstellung von Date
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.13")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
@@ -24,8 +24,8 @@ public class KolTable extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setCaption(final Optional<String> value) {
-		getElement().setProperty("_caption", value);
+	public void setCaption(final String value) {
+		getElement().setProperty("_caption", value.toString());
 	}
 
 	/**
@@ -34,7 +34,8 @@ public class KolTable extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getCaption() {
-		return getElement().getProperty("_caption", null);
+		var value = getElement().getProperty("_caption", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -42,8 +43,8 @@ public class KolTable extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setData(final Optional<String> value) {
-		getElement().setProperty("_data", value);
+	public void setData(final String value) {
+		getElement().setProperty("_data", value.toString());
 	}
 
 	/**
@@ -52,16 +53,17 @@ public class KolTable extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getData() {
-		return getElement().getProperty("_data", null);
+		var value = getElement().getProperty("_data", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Hier können die Daten für die Fußzeile der Tabelle übergeben werden.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setDataFoot(final Optional<String> value) {
-		getElement().setProperty("_data-foot", value);
+	public void setDataFoot(final String value) {
+		getElement().setProperty("_data-foot", value.toString());
 	}
 
 	/**
@@ -70,7 +72,8 @@ public class KolTable extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getDataFoot() {
-		return getElement().getProperty("_data-foot", null);
+		var value = getElement().getProperty("_data-foot", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
@@ -78,8 +81,8 @@ public class KolTable extends Component {
 	 *
 	 * @param value String
 	 */
-	public void setHeaders(final Optional<String> value) {
-		getElement().setProperty("_headers", value);
+	public void setHeaders(final String value) {
+		getElement().setProperty("_headers", value.toString());
 	}
 
 	/**
@@ -88,16 +91,36 @@ public class KolTable extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getHeaders() {
-		return getElement().getProperty("_headers", null);
+		var value = getElement().getProperty("_headers", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
+	}
+
+	/**
+	 * Defines the table caption.
+	 *
+	 * @param value String
+	 */
+	public void setLabel(final String value) {
+		getElement().setProperty("_label", value.toString());
+	}
+
+	/**
+	 * Defines the table caption.
+	 *
+	 * @return Optional<String>
+	 */
+	public Optional<String> getLabel() {
+		var value = getElement().getProperty("_label", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, die minimale Breite der Tabelle an.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setMinWidth(final Optional<String> value) {
-		getElement().setProperty("_min-width", value);
+	public void setMinWidth(final String value) {
+		getElement().setProperty("_min-width", value.toString());
 	}
 
 	/**
@@ -106,16 +129,17 @@ public class KolTable extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getMinWidth() {
-		return getElement().getProperty("_min-width", null);
+		var value = getElement().getProperty("_min-width", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 
 	/**
 	 * Gibt an, ob die Daten geteilt in Seiten angezeigt wird.
 	 *
-	 * @param value Optional<String>
+	 * @param value String
 	 */
-	public void setPagination(final Optional<String> value) {
-		getElement().setProperty("_pagination", value);
+	public void setPagination(final String value) {
+		getElement().setProperty("_pagination", value.toString());
 	}
 
 	/**
@@ -124,6 +148,7 @@ public class KolTable extends Component {
 	 * @return Optional<String>
 	 */
 	public Optional<String> getPagination() {
-		return getElement().getProperty("_pagination", null);
+		var value = getElement().getProperty("_pagination", null);
+		return value.isEmpty() ? Optional.empty() : Optional.of(value);
 	}
 }
