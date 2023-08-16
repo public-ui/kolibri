@@ -4,11 +4,11 @@ import { Props as ButtonProps } from '../button/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { handleColorChange, PropColor, validateColor } from '../../types/props/color';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { a11yHint, featureHint } from '../../utils/a11y.tipps';
+import { LabelPropType } from '../../types/props/label';
+import { featureHint } from '../../utils/a11y.tipps';
 import { nonce } from '../../utils/dev.utils';
 import { objectObjectHandler, parseJson, setState } from '../../utils/prop.validators';
-import { Props, States } from './types';
+import { API, States } from './types';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -19,7 +19,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge implements Props {
+export class KolBadge implements API {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = nonce();
@@ -36,7 +36,7 @@ export class KolBadge implements Props {
 						color: this.colorStr,
 					}}
 				>
-					<kol-span-wc id={this.id} _icon={this._icon} _hideLabel={this._hideLabel || this._iconOnly} _label={this.state._label}></kol-span-wc>
+					<kol-span-wc id={this.id} _icon={this._icon} _hideLabel={this._hideLabel || this._iconOnly} _label={this._label}></kol-span-wc>
 					{typeof this.state._smartButton === 'object' && this.state._smartButton !== null && (
 						<kol-button-wc
 							_ariaControls={this.id}
@@ -83,7 +83,7 @@ export class KolBadge implements Props {
 	@Prop() public _iconOnly?: boolean;
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines the type of the label property.
 	 */
 	@Prop() public _label!: LabelPropType;
 
@@ -97,7 +97,6 @@ export class KolBadge implements Props {
 			backgroundColor: '#000',
 			foregroundColor: '#fff',
 		},
-		_label: '…', // ⚠ required
 	};
 
 	private handleColorChange = (value: unknown) => {
@@ -112,19 +111,6 @@ export class KolBadge implements Props {
 			defaultValue: '#000',
 			hooks: {
 				beforePatch: this.handleColorChange,
-			},
-		});
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value, {
-			hooks: {
-				afterPatch: (value) => {
-					if (typeof value === 'string' && value.length > 32) {
-						a11yHint(`[KolBadge] The label is too long for a badge (${value.length} > 32).`);
-					}
-				},
 			},
 		});
 	}
@@ -144,7 +130,6 @@ export class KolBadge implements Props {
 
 	public componentWillLoad(): void {
 		this.validateColor(this._color);
-		this.validateLabel(this._label);
 		this.validateSmartButton(this._smartButton);
 	}
 }

@@ -263,7 +263,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Defines the type of the label property.
          */
         "_label": LabelPropType;
         /**
@@ -3490,7 +3490,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+          * Defines the type of the label property.
          */
         "_label": LabelPropType;
         /**
