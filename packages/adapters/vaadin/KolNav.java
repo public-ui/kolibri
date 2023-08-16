@@ -62,7 +62,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 *
 	 * @param value String
 	 */
@@ -71,7 +71,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Gibt an, ob Knoten in der Navigation zusammengeklappt werden können. Ist standardmäßig aktiv.
+	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 *
 	 * @return Optional<String>
 	 */
@@ -119,7 +119,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Defines if navigation labels should be hidden
+	 * Defines if navigation labels should be hidden.
 	 *
 	 * @param value String
 	 */
@@ -128,7 +128,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Defines if navigation labels should be hidden
+	 * Defines if navigation labels should be hidden.
 	 *
 	 * @return Optional<String>
 	 */
@@ -138,7 +138,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -147,7 +147,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */

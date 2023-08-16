@@ -210,7 +210,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
+	 * Options the user can choose from.
 	 *
 	 * @param value String
 	 */
@@ -219,7 +219,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
+	 * Options the user can choose from.
 	 *
 	 * @return Optional<String>
 	 */
@@ -286,7 +286,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -295,7 +295,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */

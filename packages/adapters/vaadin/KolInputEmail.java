@@ -263,7 +263,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
 	 *
 	 * @param value String
 	 */
@@ -272,7 +272,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob mehrere Werte eingegeben werden können.
+	 * Makes the input accept multiple inputs.
 	 *
 	 * @return Optional<String>
 	 */
@@ -453,7 +453,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -462,7 +462,7 @@ public class KolInputEmail extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */

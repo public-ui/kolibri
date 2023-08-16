@@ -16,7 +16,7 @@ import java.util.Optional;
 @JsModule("@public-ui/components/dist/components/kol-version")
 public class KolVersion extends Component {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolVersion extends Component {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
 	 *
 	 * @return Optional<String>
 	 */
