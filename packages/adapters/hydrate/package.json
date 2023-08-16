@@ -55,6 +55,7 @@
 	"type": "commonjs",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"require": "./dist/index.js"
 		}
 	},
