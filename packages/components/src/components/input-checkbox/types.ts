@@ -38,8 +38,8 @@ type RequiredProps = PropLabelWithExpertSlot & {
 	value: Stringified<StencilUnknown>;
 };
 type OptionalProps = {
-	alert: boolean;
 	accessKey: string;
+	alert: boolean;
 	error: string;
 	hint: string;
 	icon: Stringified<InputCheckboxIcon>;
@@ -51,12 +51,12 @@ type OptionalProps = {
 	type: InputCheckboxVariant;
 	variant: InputCheckboxVariant;
 } & PropChecked &
-	PropIndeterminate &
-	PropSyncValueBySelector &
 	PropDisabled &
 	PropHideLabel &
+	PropIndeterminate &
 	PropName &
 	PropRequired &
+	PropSyncValueBySelector &
 	PropTouched;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 
@@ -69,8 +69,8 @@ type RequiredStates = {
 	PropIndeterminate &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	alert: boolean;
 	accessKey: string;
+	alert: boolean;
 	error: string;
 	hint: string;
 	on: InputTypeOnDefault;
