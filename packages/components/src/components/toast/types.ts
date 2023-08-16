@@ -7,7 +7,7 @@ import { PropShow } from '../../types/props/show';
 import { KoliBriToastEventCallbacks } from '../../types/toast';
 import { AlertType } from '../alert/types';
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	alert: boolean;
 	/**

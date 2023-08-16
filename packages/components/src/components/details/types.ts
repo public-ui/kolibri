@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { PropLabel } from '../../types/props/label';
 import { PropOpen } from '../../types/props/open';
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	/**
 	 * @deprecated Use label.

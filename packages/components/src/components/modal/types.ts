@@ -4,7 +4,7 @@ import { KoliBriModalEventCallbacks } from '../../types/modal';
 import { PropAriaLabel } from '../../types/props/aria-label';
 import { PropLabel } from '../../types/props/label';
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	activeElement: HTMLElement | null;
 	on: KoliBriModalEventCallbacks;

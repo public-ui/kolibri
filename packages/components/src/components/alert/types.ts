@@ -13,7 +13,7 @@ export type KoliBriAlertEventCallbacks = {
 	onClose?: EventCallback<Event>;
 };
 
-type RequiredAlertProps = unknown;
+type RequiredAlertProps = NonNullable<unknown>;
 type OptionalAlertProps = {
 	/**
 	 * @deprecated Use label.

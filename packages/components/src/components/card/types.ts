@@ -10,7 +10,7 @@ export type KoliBriCardEventCallbacks = {
 	onClose?: EventCallback<Event>;
 };
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	/**
 	 * @deprecated Use _label instead.

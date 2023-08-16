@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { PropShow } from '../../types/props/show';
 import { PropSpinVariant } from '../../types/props/variant/spin';
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = PropSpinVariant & PropShow;
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 

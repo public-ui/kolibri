@@ -8,7 +8,7 @@ export type KoliBriFormCallbacks = {
 	[Events.onReset]?: EventCallback<Event>;
 };
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	on: KoliBriFormCallbacks;
 	requiredText: string | boolean;

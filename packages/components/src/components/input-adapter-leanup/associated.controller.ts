@@ -8,7 +8,7 @@ import { PropSyncValueBySelector, SyncValueBySelectorPropType } from '../../type
 
 const EXPERIMENTAL_MODE = getExperimentalMode();
 
-type RequiredProps = unknown;
+type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
 	name: string;
 } & PropSyncValueBySelector;
