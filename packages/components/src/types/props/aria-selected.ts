@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-export type AriaSelectedPropType = boolean;
+type AriaSelectedPropType = boolean;
 
 /**
  * Marks this element as selected.

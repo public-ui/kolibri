@@ -3,7 +3,7 @@ import { Generic } from '@a11y-ui/core';
 import { watchBoolean } from '../../utils/prop.validators';
 
 /* types */
-export type AriaExpandedPropType = boolean;
+type AriaExpandedPropType = boolean;
 
 /**
  * Marks this element as open/expanded, or that the connected element (aria-controls/aria-owns) is open/expanded.
