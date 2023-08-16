@@ -37,7 +37,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Gibt den Link zur Quelle des Zitates an.
+	 * Defines the link the source of the quote.
 	 *
 	 * @param value String
 	 */
@@ -46,7 +46,7 @@ public class KolQuote extends Component {
 	}
 
 	/**
-	 * Gibt den Link zur Quelle des Zitates an.
+	 * Defines the link the source of the quote.
 	 *
 	 * @return Optional<String>
 	 */

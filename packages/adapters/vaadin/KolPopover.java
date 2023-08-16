@@ -19,7 +19,7 @@ Das Triggerelement ist immer das im HTML vorangehende Element (previousSibling).
 @JsModule("@public-ui/components/dist/components/kol-popover")
 public class KolPopover extends Component {
 	/**
-	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
 	 *
 	 * @param value String
 	 */
@@ -28,7 +28,7 @@ public class KolPopover extends Component {
 	}
 
 	/**
-	 * Setzt die Ausrichtung des Popovers in Relation zum Triggerelement.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left. In relation to trigger element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -38,7 +38,7 @@ public class KolPopover extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @param value String
 	 */
@@ -47,7 +47,7 @@ public class KolPopover extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder ein- oder ausgeblendet ist.
+	 * Makes the element show up.
 	 *
 	 * @return Optional<String>
 	 */

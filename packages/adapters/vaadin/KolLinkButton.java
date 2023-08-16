@@ -150,7 +150,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 *
 	 * @param value String
 	 */
@@ -159,7 +159,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Teilt dem Browser mit, dass sich hinter dem Link eine Datei befindet. Setzt optional den Dateinamen.
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 *
 	 * @return Optional<String>
 	 */
@@ -359,7 +359,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @param value String
 	 */
@@ -368,7 +368,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, ob der Tooltip bevorzugt entweder oben, rechts, unten oder links angezeigt werden soll.
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 *
 	 * @return Optional<String>
 	 */

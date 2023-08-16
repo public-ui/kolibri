@@ -66,3 +66,5 @@ export class ToasterService {
 		this.isOpen = true;
 	}
 }
+
+export const Toaster = new ToasterService(document);
