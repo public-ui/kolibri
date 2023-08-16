@@ -1,6 +1,6 @@
 # Token-Based-Theme für KoliBri
 
-Das _Token-Based-Theme_ ist ein Theme, das mit minimalen Anpassungen sofort verwendet werden kann. Es bringt bereits alle notwendigen Stylings mit und kann
+Das _Token-Based-Theme_ ist ein Theme, das mit mininmalen Anpassungen sofort verwendet werden kann. Es bringt bereits alle notwendigen Stylings mit und kann
 über Design Tokens, in Form von _CSS Custom Properties_ an das eigene Design angepasst werden.
 
 ## Variablen
