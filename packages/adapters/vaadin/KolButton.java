@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-button")
 public class KolButton extends Component {
 	/**
@@ -130,7 +130,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 *
 	 * @param value String
 	 */
@@ -139,7 +139,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 *
 	 * @return Optional<String>
 	 */
@@ -187,7 +187,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 *
 	 * @param value String
 	 */
@@ -196,7 +196,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 *
 	 * @return Optional<String>
 	 */
@@ -301,7 +301,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @param value String
 	 */
@@ -310,7 +310,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -358,7 +358,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @param value String
 	 */
@@ -367,7 +367,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -396,7 +396,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -405,7 +405,7 @@ public class KolButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */

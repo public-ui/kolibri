@@ -20,7 +20,7 @@ noch die Icons ausgegeben.
  */
 
 @Tag("kol-nav")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-nav")
 public class KolNav extends Component {
 	/**
@@ -63,6 +63,7 @@ public class KolNav extends Component {
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
+TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -72,6 +73,7 @@ public class KolNav extends Component {
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
+TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -120,6 +122,7 @@ public class KolNav extends Component {
 
 	/**
 	 * Defines if navigation labels should be hidden.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @param value String
 	 */
@@ -129,6 +132,7 @@ public class KolNav extends Component {
 
 	/**
 	 * Defines if navigation labels should be hidden.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @return Optional<String>
 	 */
@@ -138,7 +142,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -147,7 +151,7 @@ public class KolNav extends Component {
 	}
 
 	/**
-	 * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */

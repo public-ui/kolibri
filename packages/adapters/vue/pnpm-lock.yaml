@@ -9,8 +9,8 @@ devDependencies:
     specifier: 7.22.10
     version: 7.22.10
   '@public-ui/components':
-    specifier: 1.6.0-rc.24
-    version: 1.6.0-rc.24
+    specifier: 1.6.0-rc.25
+    version: 1.6.0-rc.25
   '@types/minimatch':
     specifier: 5.1.2
     version: 5.1.2
@@ -194,6 +194,7 @@ packages:
   /@babel/highlight@7.22.5:
     resolution: {integrity: sha512-BSKlD1hgnedS5XRnGOljZawtag7H1yPfQp0tdNJCHoH6AZ+Pcm9VvkrK59/Yy593Ypg0zMxH2BxD1VPYUQ7UIw==}
     engines: {node: '>=6.9.0'}
+    requiresBuild: true
     dependencies:
       '@babel/helper-validator-identifier': 7.22.5
       chalk: 2.4.2
@@ -526,17 +527,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/components@1.6.0-rc.24:
-    resolution: {integrity: sha512-qb7T0zI0uBRPJBM30qZsVpO4vaX8EaynrAbBGH9cGtgZocay2ERi9QNDwZ4Toxj0bny3fjEF3nT4oLoRKDXawQ==}
+  /@public-ui/components@1.6.0-rc.25:
+    resolution: {integrity: sha512-d8pnAZbYbTzRbvwE6B5iUoREXJs+wpdhgoq+EVkI8i1Q/pgPvlIVw4+XGgHkMSmBSOfRqQgBt4wOW1j25DZPJQ==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.5.1
-      '@public-ui/schema': 1.6.0-rc.24
+      '@public-ui/schema': 1.6.0-rc.25
       i18next: 23.4.4
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.24:
-    resolution: {integrity: sha512-2RLXGbikcuiYpoxqL7SgOZR5qESJlqG/KPjcemRmYUT1lHEh8yaugmBqY/fw3jSUlDlT15QgMxKa2SGUGYLU/A==}
+  /@public-ui/schema@1.6.0-rc.25:
+    resolution: {integrity: sha512-XUyYTig+7k9Mmxciil/ZCmun9++bi3OQEhwH1lAxbAZ+lkzn3lfRfkCVoBh21qZTTMJFjmVpFj7JWEb70y0/qA==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: true
@@ -754,6 +755,7 @@ packages:
   /ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
       color-convert: 1.9.3
     dev: true
@@ -798,6 +800,7 @@ packages:
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
       ansi-styles: 3.2.1
       escape-string-regexp: 1.0.5
@@ -811,12 +814,14 @@ packages:
 
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
+    requiresBuild: true
     dependencies:
       color-name: 1.1.3
     dev: true
 
   /color-name@1.1.3:
     resolution: {integrity: sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==}
+    requiresBuild: true
     dev: true
 
   /commondir@1.0.1:
@@ -905,6 +910,7 @@ packages:
   /escape-string-regexp@1.0.5:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
+    requiresBuild: true
     dev: true
 
   /estree-walker@2.0.2:
@@ -1006,6 +1012,7 @@ packages:
   /has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dev: true
 
   /has@1.0.3:
@@ -1088,6 +1095,7 @@ packages:
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+    requiresBuild: true
     dev: true
 
   /jsesc@2.5.2:
@@ -1332,6 +1340,7 @@ packages:
   /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
       has-flag: 3.0.0
     dev: true

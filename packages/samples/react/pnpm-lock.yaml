@@ -7,16 +7,16 @@ settings:
 dependencies:
   '@public-oss/kolibri-themes':
     specifier: 0.0.3
-    version: 0.0.3(@public-ui/components@1.6.0-rc.24)
+    version: 0.0.3(@public-ui/components@1.6.0-rc.25)
   '@public-ui/components':
-    specifier: 1.6.0-rc.24
-    version: 1.6.0-rc.24
+    specifier: 1.6.0-rc.25
+    version: 1.6.0-rc.25
   '@public-ui/react':
-    specifier: 1.6.0-rc.24
-    version: 1.6.0-rc.24(@public-ui/components@1.6.0-rc.24)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.6.0-rc.25
+    version: 1.6.0-rc.25(@public-ui/components@1.6.0-rc.25)(react-dom@18.2.0)(react@18.2.0)
   '@public-ui/themes':
-    specifier: 1.6.0-rc.24
-    version: 1.6.0-rc.24(@public-ui/components@1.6.0-rc.24)
+    specifier: 1.6.0-rc.25
+    version: 1.6.0-rc.25(@public-ui/components@1.6.0-rc.25)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -1006,21 +1006,21 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.24):
+  /@public-oss/kolibri-themes@0.0.3(@public-ui/components@1.6.0-rc.25):
     resolution: {integrity: sha512-jljVwSLzXPKHDNsqGzfm9NLq9RYXm6NZFbD0Vfg3fB7y+MG5KI6m7vBK2zVmS+Nhw+L4PIOoYgsODJPK5qYPrA==}
     peerDependencies:
       '@public-ui/components': '>=1.1.13'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.24
+      '@public-ui/components': 1.6.0-rc.25
       '@public-ui/schema': 1.1.15
     dev: false
 
-  /@public-ui/components@1.6.0-rc.24:
-    resolution: {integrity: sha512-qb7T0zI0uBRPJBM30qZsVpO4vaX8EaynrAbBGH9cGtgZocay2ERi9QNDwZ4Toxj0bny3fjEF3nT4oLoRKDXawQ==}
+  /@public-ui/components@1.6.0-rc.25:
+    resolution: {integrity: sha512-d8pnAZbYbTzRbvwE6B5iUoREXJs+wpdhgoq+EVkI8i1Q/pgPvlIVw4+XGgHkMSmBSOfRqQgBt4wOW1j25DZPJQ==}
     dependencies:
       '@a11y-ui/core': 1.0.3
       '@floating-ui/dom': 1.5.1
-      '@public-ui/schema': 1.6.0-rc.24
+      '@public-ui/schema': 1.6.0-rc.25
       i18next: 23.4.4
     dev: false
 
@@ -1031,14 +1031,14 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@public-ui/react@1.6.0-rc.24(@public-ui/components@1.6.0-rc.24)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-u2KK5lgnK78RyhtAZVfhlrzjW8uMZd7tTRly1YYlYpwlA4iL8XzgvJZAJaiahQTSL6og5AAtRW0ZrSWEaxl77A==}
+  /@public-ui/react@1.6.0-rc.25(@public-ui/components@1.6.0-rc.25)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-jkmhDE1IdZUDC5YVPH/cgUhDPgArf/SSU/HZD9+7ZjCDsHsgwD4ccpsZmpJY2ql/Xq+ZEAAnu3q/sl92/MRYNw==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.24
+      '@public-ui/components': 1.6.0-rc.25
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
     dependencies:
-      '@public-ui/components': 1.6.0-rc.24
+      '@public-ui/components': 1.6.0-rc.25
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -1049,18 +1049,18 @@ packages:
       '@public-ui/core': 1.1.15
     dev: false
 
-  /@public-ui/schema@1.6.0-rc.24:
-    resolution: {integrity: sha512-2RLXGbikcuiYpoxqL7SgOZR5qESJlqG/KPjcemRmYUT1lHEh8yaugmBqY/fw3jSUlDlT15QgMxKa2SGUGYLU/A==}
+  /@public-ui/schema@1.6.0-rc.25:
+    resolution: {integrity: sha512-XUyYTig+7k9Mmxciil/ZCmun9++bi3OQEhwH1lAxbAZ+lkzn3lfRfkCVoBh21qZTTMJFjmVpFj7JWEb70y0/qA==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
 
-  /@public-ui/themes@1.6.0-rc.24(@public-ui/components@1.6.0-rc.24):
-    resolution: {integrity: sha512-lO+5bu2WtwdTp+lXe3wrQuvZl1xBrjV1p+SWF1+Vx7i4rHSXMsnKz1HLrmIGTLSb4pSfHQkJ1zGwsiQcfkwpig==}
+  /@public-ui/themes@1.6.0-rc.25(@public-ui/components@1.6.0-rc.25):
+    resolution: {integrity: sha512-aBNyLH4iN2c6AFXiDuBkcJoD1wR1OzO0yrOx5rdSLu0z2zuWeArrxjwAwmxiWz7F/++0AsBped+IhTq9FYuPSg==}
     peerDependencies:
-      '@public-ui/components': 1.6.0-rc.24
+      '@public-ui/components': 1.6.0-rc.25
     dependencies:
-      '@public-ui/components': 1.6.0-rc.24
+      '@public-ui/components': 1.6.0-rc.25
     dev: false
 
   /@remix-run/router@1.8.0:

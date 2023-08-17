@@ -16,7 +16,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-input-radio")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-input-radio")
 public class KolInputRadio extends Component {
 	/**
@@ -58,7 +58,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -67,7 +68,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+	 * Makes the element not focusable and ignore all events.
+TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -96,7 +98,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @param value String
 	 */
@@ -105,7 +108,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the element to hide the label.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @return Optional<String>
 	 */
@@ -134,7 +138,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @param value String
 	 */
@@ -143,7 +147,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt die interne ID des primären Elements in der Komponente an.
+	 * Defines the internal ID of the primary component element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -191,7 +195,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 *
 	 * @param value String
 	 */
@@ -200,7 +204,7 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt den technischen Namen des Eingabefeldes an.
+	 * Defines the technical name of an input field.
 	 *
 	 * @return Optional<String>
 	 */
@@ -248,7 +252,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -257,7 +262,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Macht das Eingabeelement zu einem Pflichtfeld.
+	 * Makes the input element required.
+TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -305,7 +311,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -314,7 +321,8 @@ public class KolInputRadio extends Component {
 	}
 
 	/**
-	 * Gibt an, ob dieses Eingabefeld von Nutzer:innen einmal besucht/berührt wurde.
+	 * Shows if the input was touched by a user.
+TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */

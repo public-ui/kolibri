@@ -18,11 +18,11 @@ Analog lässt sich die Komponente auch wieder schließen und der Inhalt damit ve
  */
 
 @Tag("kol-details")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-details")
 public class KolDetails extends Component {
 	/**
-	 * Defines the summary label.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -31,7 +31,7 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * Defines the summary label.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -41,7 +41,8 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -50,7 +51,8 @@ public class KolDetails extends Component {
 	}
 
 	/**
-	 * Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.
+	 * If set (to true) opens/expands the element, closes if not set (or set to false).
+TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
