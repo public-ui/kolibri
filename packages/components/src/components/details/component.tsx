@@ -29,11 +29,7 @@ export class KolDetails implements API {
 					{/* Link: https://github.com/public-ui/kolibri/issues/3558 */}
 					{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
 					<summary onClick={this.onClick}>
-						{this.state._open ? (
-							<kol-icon _ariaLabel="" _icon="codicon codicon-chevron-down" />
-						) : (
-							<kol-icon _ariaLabel="" _icon="codicon codicon-chevron-right" />
-						)}
+						{this.state._open ? <kol-icon _label="" _icon="codicon codicon-chevron-down" /> : <kol-icon _label="" _icon="codicon codicon-chevron-right" />}
 						<span>{this.state._label}</span>
 					</summary>
 					<div class="content">
