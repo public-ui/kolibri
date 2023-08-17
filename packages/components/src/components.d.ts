@@ -122,7 +122,7 @@ export { KoliBriToastEventCallbacks } from "./types/toast";
 export namespace Components {
     interface KolAbbr {
         /**
-          * Defines the abbreviation title and tooltip content
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -142,7 +142,7 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Defines the button label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -173,7 +173,7 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Defines the description of the component.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -203,7 +203,7 @@ export namespace Components {
          */
         "_hasCloser"?: boolean;
         /**
-          * Defines the description of the component.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -225,7 +225,7 @@ export namespace Components {
     }
     interface KolAvatar {
         /**
-          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -235,7 +235,7 @@ export namespace Components {
     }
     interface KolAvatarWc {
         /**
-          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
         /**
@@ -263,7 +263,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Defines the type of the label property.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
         /**
@@ -613,7 +613,7 @@ export namespace Components {
     }
     interface KolDetails {
         /**
-          * Defines the summary label.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -1872,7 +1872,7 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_labeled"?: boolean;
     }
@@ -2087,7 +2087,7 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2240,7 +2240,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2281,7 +2281,7 @@ export namespace Components {
          */
         "_hideLabel"?: boolean;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2356,7 +2356,7 @@ export namespace Components {
     }
     interface KolProgress {
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2392,7 +2392,7 @@ export namespace Components {
          */
         "_href": HrefPropType;
         /**
-          * Defines the label of the citation link.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -2507,7 +2507,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2612,7 +2612,7 @@ export namespace Components {
          */
         "_iconOnly"?: boolean;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
         /**
@@ -2690,7 +2690,7 @@ export namespace Components {
          */
         "_headers": Stringified<KoliBriTableHeaders>;
         /**
-          * Defines the table caption.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -2713,7 +2713,7 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2843,7 +2843,7 @@ export namespace Components {
          */
         "_heading"?: string;
         /**
-          * Defines the text to show in the Toast.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -2877,13 +2877,13 @@ export namespace Components {
          */
         "_id"?: IdPropType;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -3349,7 +3349,7 @@ declare global {
 declare namespace LocalJSX {
     interface KolAbbr {
         /**
-          * Defines the abbreviation title and tooltip content
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -3369,7 +3369,7 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Defines the button label
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -3400,7 +3400,7 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Defines the description of the component.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -3430,7 +3430,7 @@ declare namespace LocalJSX {
          */
         "_hasCloser"?: boolean;
         /**
-          * Defines the description of the component.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -3452,7 +3452,7 @@ declare namespace LocalJSX {
     }
     interface KolAvatar {
         /**
-          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": string;
         /**
@@ -3462,7 +3462,7 @@ declare namespace LocalJSX {
     }
     interface KolAvatarWc {
         /**
-          * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
         /**
@@ -3490,7 +3490,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Defines the type of the label property.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
         /**
@@ -3840,7 +3840,7 @@ declare namespace LocalJSX {
     }
     interface KolDetails {
         /**
-          * Defines the summary label.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5099,7 +5099,7 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * Gibt an, ob die Logo-Beschriftung angezeigt werden soll.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_labeled"?: boolean;
     }
@@ -5314,7 +5314,7 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5467,7 +5467,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5508,7 +5508,7 @@ declare namespace LocalJSX {
          */
         "_hideLabel"?: boolean;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5583,7 +5583,7 @@ declare namespace LocalJSX {
     }
     interface KolProgress {
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5619,7 +5619,7 @@ declare namespace LocalJSX {
          */
         "_href": HrefPropType;
         /**
-          * Defines the label of the citation link.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -5734,7 +5734,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -5839,7 +5839,7 @@ declare namespace LocalJSX {
          */
         "_iconOnly"?: boolean;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
         /**
@@ -5917,7 +5917,7 @@ declare namespace LocalJSX {
          */
         "_headers": Stringified<KoliBriTableHeaders>;
         /**
-          * Defines the table caption.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: string;
         /**
@@ -5940,7 +5940,7 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -6070,7 +6070,7 @@ declare namespace LocalJSX {
          */
         "_heading"?: string;
         /**
-          * Defines the text to show in the Toast.
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**
@@ -6104,13 +6104,13 @@ declare namespace LocalJSX {
          */
         "_id"?: IdPropType;
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label": LabelPropType;
     }
     interface KolVersion {
         /**
-          * Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).
+          * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
          */
         "_label"?: LabelPropType;
         /**

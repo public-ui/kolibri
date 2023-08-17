@@ -32,28 +32,28 @@ export const THEME_OPTIONS: SelectOption<Theme>[] = [
 		label: 'Unstyled',
 		value: 'unstyled',
 	},
-	{
-		disabled: true,
-		label: 'Bundesamt für Migration und Flüchtlinge',
-		value: 'bamf',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'Bundesamt für Migration und Flüchtlinge',
+	// 	value: 'bamf',
+	// },
 	{
 		label: 'Bundesministerium der Finanzen',
 		value: 'bmf',
 	},
-	{
-		label: 'Freistaat Bayern (StMWi)',
-		value: 'by',
-	},
+	// {
+	// 	label: 'Freistaat Bayern (StMWi)',
+	// 	value: 'by',
+	// },
 	{
 		label: 'Bundesamt für Zoll und Steuern',
 		value: 'bzst',
 	},
-	{
-		disabled: true,
-		label: 'DESY-Styleguide (v1)',
-		value: 'desy-v1',
-	},
+	// {
+	// 	disabled: true,
+	// 	label: 'DESY-Styleguide (v1)',
+	// 	value: 'desy-v1',
+	// },
 	{
 		label: 'DESY-Styleguide (v2)',
 		value: 'desy-v2',

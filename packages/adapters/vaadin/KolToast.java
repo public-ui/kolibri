@@ -14,7 +14,7 @@ Ein **Toast** wird nach dem Laden der Webseite am oberen Rand des Browserfenster
  */
 
 @Tag("kol-toast")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-toast")
 public class KolToast extends Component {
 	/**
@@ -38,6 +38,7 @@ public class KolToast extends Component {
 
 	/**
 	 * Defines whether the element can be closed.
+TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -47,6 +48,7 @@ public class KolToast extends Component {
 
 	/**
 	 * Defines whether the element can be closed.
+TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */
@@ -75,7 +77,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines the text to show in the Toast.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -84,7 +86,7 @@ public class KolToast extends Component {
 	}
 
 	/**
-	 * Defines the text to show in the Toast.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
@@ -114,6 +116,7 @@ public class KolToast extends Component {
 
 	/**
 	 * Makes the element show up.
+TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 *
 	 * @param value String
 	 */
@@ -123,6 +126,7 @@ public class KolToast extends Component {
 
 	/**
 	 * Makes the element show up.
+TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
 	 *
 	 * @return Optional<String>
 	 */

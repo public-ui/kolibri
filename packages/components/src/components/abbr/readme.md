@@ -46,7 +46,7 @@ Der KoliBri Tooltip kann von Screenreadern vorgelesen werden und verändert sein
 
 | Property        | Attribute        | Description                                                                                                                                    | Type                                                  | Default     |
 | --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| `_label`        | `_label`         | Defines the abbreviation title and tooltip content                                                                                             | `string \| undefined`                                 | `undefined` |
+| `_label`        | `_label`         | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                    | `string \| undefined`                                 | `undefined` |
 | `_title`        | `_title`         | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Dieses Property gibt die Beschreibung oder Erläuterung der Abkürzung an. | `string \| undefined`                                 | `undefined` |
 | `_tooltipAlign` | `_tooltip-align` | Defines where to show the Tooltip preferably: top, right, bottom or left.                                                                      | `"bottom" \| "left" \| "right" \| "top" \| undefined` | `'top'`     |
 

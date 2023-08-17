@@ -13,7 +13,7 @@ Weitere Informationen zum Aussehen finden Sie auf der <kol-link _href="/docs/com
  */
 
 @Tag("kol-link-button")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-link-button")
 public class KolLinkButton extends Component {
 	/**
@@ -112,7 +112,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 *
 	 * @param value String
 	 */
@@ -121,7 +121,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute.
 	 *
 	 * @return Optional<String>
 	 */
@@ -169,7 +169,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the label and shows it in a Tooltip instead.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @param value String
 	 */
@@ -178,7 +179,8 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Tells the label and shows it in a Tooltip instead.
+TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 *
 	 * @return Optional<String>
 	 */
@@ -188,7 +190,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * This property is used for a link from a reference to the target URL.
 	 *
 	 * @param value String
 	 */
@@ -197,7 +199,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt die Ziel-Url des Links an.
+	 * This property is used for a link from a reference to the target URL.
 	 *
 	 * @return Optional<String>
 	 */
@@ -207,7 +209,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 *
 	 * @param value String
 	 */
@@ -216,7 +218,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 *
 	 * @return Optional<String>
 	 */
@@ -283,7 +285,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @param value String
 	 */
@@ -292,7 +294,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt die Rolle des primären Elements in der Komponente an.
+	 * Defines the role of the components primary element.
 	 *
 	 * @return Optional<String>
 	 */
@@ -321,7 +323,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 *
 	 * @param value String
 	 */
@@ -330,7 +332,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an wo der Link geöffnet werden soll.
+	 * Defines where to open the link.
 	 *
 	 * @return Optional<String>
 	 */
@@ -378,7 +380,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @param value String
 	 */
@@ -387,7 +389,7 @@ public class KolLinkButton extends Component {
 	}
 
 	/**
-	 * Gibt an, welche Variante der Darstellung genutzt werden soll.
+	 * Defines which variant should be used for presentation.
 	 *
 	 * @return Optional<String>
 	 */

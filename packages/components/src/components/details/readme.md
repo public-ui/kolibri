@@ -90,11 +90,11 @@ Verwenden Sie das Attribut **`_label`**, um den Text zu definieren, der als Übe
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                               | Type                   | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `_label`   | `_label`   | Defines the summary label.                                                                                                | `string \| undefined`  | `undefined` |
-| `_open`    | `_open`    | Gibt an, ob die Komponente entweder geöffnet oder geschlossen ist.                                                        | `boolean \| undefined` | `false`     |
-| `_summary` | `_summary` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Zusammenfassung der Detailbeschreibung an. | `string \| undefined`  | `undefined` |
+| Property   | Attribute  | Description                                                                                                                                                    | Type                   | Default     |
+| ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
+| `_label`   | `_label`   | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).                                    | `string \| undefined`  | `undefined` |
+| `_open`    | `_open`    | If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved | `boolean \| undefined` | `false`     |
+| `_summary` | `_summary` | <span style="color:red">**[DEPRECATED]**</span> Use \_label.<br/><br/>Gibt die Zusammenfassung der Detailbeschreibung an.                                      | `string \| undefined`  | `undefined` |
 
 ## Slots
 
