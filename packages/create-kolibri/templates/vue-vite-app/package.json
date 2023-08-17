@@ -15,9 +15,9 @@
 		"update": "ncu -t minor -u && ncu"
 	},
 	"dependencies": {
-		"@public-ui/components": "1.6.0-rc.25",
-		"@public-ui/themes": "1.6.0-rc.25",
-		"@public-ui/vue": "1.6.0-rc.25",
+		"@public-ui/components": "1.6.0-rc.26",
+		"@public-ui/themes": "1.6.0-rc.26",
+		"@public-ui/vue": "1.6.0-rc.26",
 		"pinia": "2.0.36",
 		"vue": "3.3.4",
 		"vue-router": "4.2.0"
