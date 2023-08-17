@@ -58,7 +58,7 @@
 	"types": "./dist/index.d.ts",
 	"devDependencies": {
 		"@babel/types": "7.21.0",
-		"@public-ui/components": "1.6.0-rc.26",
+		"@public-ui/components": "1.6.0-rc.25",
 		"@types/minimatch": "5.1.2",
 		"@types/minimist": "1.2.2",
 		"@types/node": "ts5.1",
@@ -68,7 +68,7 @@
 		"typescript": "5.1.6"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "1.6.0-rc.26",
+		"@public-ui/components": "1.6.0-rc.25",
 		"svelte": ">=3"
 	},
 	"files": [
