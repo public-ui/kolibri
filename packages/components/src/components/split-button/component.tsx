@@ -1,23 +1,18 @@
 import { Component, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
 
 import { Stringified } from '../../types/common';
-import { validateAriaControls } from '../../types/props/aria-controls';
-import { AriaCurrentPropType, validateAriaCurrent } from '../../types/props/aria-current';
-import { validateAriaExpanded } from '../../types/props/aria-expanded';
-import { validateAriaSelected } from '../../types/props/aria-selected';
-import { DisabledPropType, validateDisabled } from '../../types/props/disabled';
-import { validateHideLabel } from '../../types/props/hide-label';
-import { LabelPropType, validateLabel } from '../../types/props/label';
-import { StencilUnknown } from '../../types/unknown';
-import { a11yHintDisabled } from '../../utils/a11y.tipps';
-import { setState, watchBoolean, watchString } from '../../utils/prop.validators';
-import { validateTabIndex } from '../../utils/validators/tab-index';
-import { API, KoliBriSplitButtonCallback, States } from './types';
-import { AlternativeButtonLinkRolePropType, validateAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
+import { AlternativeButtonLinkRolePropType } from '../../types/props/alternative-button-link-role';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
+import { ButtonTypePropType } from '../../types/props/button-type';
+import { ButtonVariantPropType } from '../../types/props/button-variant';
+import { CustomClassPropType } from '../../types/props/custom-class';
+import { IconPropType } from '../../types/props/icon';
+import { LabelPropType } from '../../types/props/label';
 import { SyncValueBySelectorPropType } from '../../types/props/sync-value-by-selector';
-import { TooltipAlignPropType, validateTooltipAlign } from '../../types/props/tooltip-align';
-import { ButtonTypePropType, validateButtonType } from '../../types/props/button-type';
-import { ButtonVariantPropType, validateButtonVariant } from '../../types/props/button-variant';
+import { TooltipAlignPropType } from '../../types/props/tooltip-align';
+import { StencilUnknown } from '../../types/unknown';
+import { watchBoolean } from '../../utils/prop.validators';
+import { API, States } from './types';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in das dropdown.
@@ -33,13 +28,17 @@ export class KolSplitButton implements API {
 	private dropdown: HTMLDivElement | undefined;
 	private dropdownContent: HTMLDivElement | undefined;
 
-	private readonly clickHandler = (e: Event) => {
-		if (typeof this.state._on.onClick === 'function') {
-			this.state._on.onClick(e);
-		} else {
-			this.toggleDropdown();
-		}
+	private readonly clickButtonHandler = {
+		onClick: (e: MouseEvent) => {
+			if (typeof this._on?.onClick === 'function') {
+				// TODO: this._on is not validated
+				this._on?.onClick(e, this._value);
+			} else {
+				this.toggleDropdown();
+			}
+		},
 	};
+	private readonly clickToggleHandler = { onClick: () => this.toggleDropdown() };
 
 	private readonly openDropdown = () => {
 		if (this.dropdown && this.dropdownContent) {
@@ -89,7 +88,6 @@ export class KolSplitButton implements API {
 					}}
 					_accessKey={this._accessKey}
 					_ariaControls={this._ariaControls}
-					_ariaCurrent={this._ariaCurrent}
 					_ariaExpanded={this._ariaExpanded}
 					_ariaSelected={this._ariaSelected}
 					_customClass={this._customClass}
@@ -98,7 +96,7 @@ export class KolSplitButton implements API {
 					_hideLabel={this._hideLabel}
 					_label={this._label}
 					_name={this._name}
-					_on={{ onClick: this.clickHandler }}
+					_on={this.clickButtonHandler}
 					_role={this._role}
 					_syncValueBySelector={this._syncValueBySelector}
 					_tabIndex={this._tabIndex}
@@ -114,7 +112,7 @@ export class KolSplitButton implements API {
 					_hideLabel
 					_icon="codicon codicon-triangle-down"
 					_label={`dropdown ${this.state._showDropdown ? 'schließen' : 'öffnen'}`}
-					_on={{ onClick: () => this.toggleDropdown() }}
+					_on={this.clickToggleHandler}
 				></kol-button-wc>
 				<div class="popover" ref={this.catchDropdownElements}>
 					<div class="popover-content">
@@ -136,13 +134,6 @@ export class KolSplitButton implements API {
 	@Prop() public _ariaControls?: string;
 
 	/**
-	 * Gibt an, welchen aktuellen Auswahlstatus das interaktive Element der Komponente hat. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current)
-	 *
-	 * @deprecated aria-current is not necessary for buttons. will be removed in version 2.
-	 */
-	@Prop() public _ariaCurrent?: AriaCurrentPropType;
-
-	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop() public _ariaExpanded?: boolean;
@@ -152,7 +143,7 @@ export class KolSplitButton implements API {
 	 *
 	 * @deprecated use _label instead
 	 */
-	@Prop({ mutable: true, reflect: false }) public _ariaLabel?: string;
+	@Prop() public _ariaLabel?: string;
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -160,13 +151,12 @@ export class KolSplitButton implements API {
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
-	 * Gibt an, welche Custom-Class übergeben werden soll, wenn _variant="custom" gesetzt ist.
+	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
-	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
@@ -176,15 +166,14 @@ export class KolSplitButton implements API {
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Setzt die Iconklasse (z.B.: `_icon="codicon codicon-home`).
+	 * Defines the icon classnames.
 	 */
-	@Prop() public _icon?: string;
+	@Prop() public _icon?: IconPropType;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-	 * @deprecated use _hide-label
+	 * Gibt die interne ID des primären Elements in der Komponente an.
 	 */
-	@Prop() public _iconOnly?: boolean;
+	@Prop() public _id?: string;
 
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
@@ -197,9 +186,9 @@ export class KolSplitButton implements API {
 	@Prop() public _name?: string;
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Button-Events an.
+	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _on?: { onClick: KoliBriSplitButtonCallback };
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
 	 * Defines the role of the components primary element.
@@ -243,90 +232,8 @@ export class KolSplitButton implements API {
 	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: States = {
-		_icon: '',
-		_label: '',
-		_on: {},
 		_showDropdown: false,
 	};
-
-	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		watchString(this, '_accessKey', value);
-	}
-
-	@Watch('_ariaControls')
-	public validateAriaControls(value?: string): void {
-		validateAriaControls(this, value);
-	}
-
-	@Watch('_ariaCurrent')
-	public validateAriaCurrent(value?: AriaCurrentPropType): void {
-		validateAriaCurrent(this, value);
-	}
-
-	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: boolean): void {
-		validateAriaExpanded(this, value);
-	}
-
-	/**
-	 * @deprecated use _label
-	 */
-	@Watch('_ariaLabel')
-	public validateAriaLabel(value?: string): void {
-		this.validateLabel(value);
-	}
-
-	@Watch('_ariaSelected')
-	public validateAriaSelected(value?: boolean): void {
-		validateAriaSelected(this, value);
-	}
-
-	@Watch('_customClass')
-	public validateCustomClass(value?: string): void {
-		watchString(this, '_customClass', value, { defaultValue: undefined });
-	}
-
-	@Watch('_disabled')
-	public validateDisabled(value?: DisabledPropType): void {
-		validateDisabled(this, value);
-		if (value) a11yHintDisabled();
-	}
-
-	@Watch('_hideLabel')
-	public validateHideLabel(value?: boolean): void {
-		validateHideLabel(this, value);
-	}
-
-	@Watch('_icon')
-	public validateIcon(value?: string): void {
-		watchString(this, '_icon', value);
-	}
-
-	@Watch('_iconOnly')
-	public validateIconOnly(value?: boolean): void {
-		this.validateHideLabel(value);
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
-	}
-
-	@Watch('_on')
-	public validateOn(value?: { onClick: KoliBriSplitButtonCallback }): void {
-		if (typeof value === 'object' && value !== null) {
-			this.state = {
-				...this.state,
-				_on: value,
-			};
-		}
-	}
-
-	@Watch('_role')
-	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
-		validateAlternativeButtonLinkRole(this, value);
-	}
 
 	@Watch('_showDropdown')
 	public validateShowDropdown(value?: boolean): void {
@@ -334,49 +241,7 @@ export class KolSplitButton implements API {
 		this.toggleDropdown(value);
 	}
 
-	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		validateTabIndex(this, value);
-	}
-
-	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignPropType): void {
-		validateTooltipAlign(this, value);
-	}
-
-	@Watch('_type')
-	public validateType(value?: ButtonTypePropType): void {
-		validateButtonType(this, value);
-	}
-
-	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown>): void {
-		setState(this, '_value', value);
-	}
-
-	@Watch('_variant')
-	public validateVariant(value?: ButtonVariantPropType): void {
-		validateButtonVariant(this, value);
-	}
-
 	public componentWillLoad(): void {
-		this.validateAccessKey(this._accessKey);
-		this.validateAriaControls(this._ariaControls);
-		this.validateAriaCurrent(this._ariaCurrent);
-		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaSelected(this._ariaSelected);
-		this.validateCustomClass(this._customClass);
-		this.validateDisabled(this._disabled);
-		this.validateHideLabel(this._hideLabel || this._iconOnly);
-		this.validateIcon(this._icon);
-		this.validateLabel(this._label || this._ariaLabel);
-		this.validateOn(this._on);
-		this.validateRole(this._role);
 		this.validateShowDropdown(this._showDropdown);
-		this.validateTabIndex(this._tabIndex);
-		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateType(this._type);
-		this.validateValue(this._value);
-		this.validateVariant(this._variant);
 	}
 }

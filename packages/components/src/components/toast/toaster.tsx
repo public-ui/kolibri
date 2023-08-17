@@ -20,9 +20,9 @@ export class ToasterService {
 
 	constructor(private readonly document: Document) {
 		this.toastElement = this.document.createElement('kol-toast');
-		this.toastElement.setAttribute('_level', '3');
+		this.toastElement.setAttribute('_level', '0');
 		this.toastElement.setAttribute('_show', 'false');
-		this.toastElement.setAttribute('_show-duration', '-1');
+		this.toastElement.setAttribute('_show-duration', '-1'); // @deprecated in v2
 		this.toastElement.setAttribute('_has-closer', 'true');
 		this.toastElement._on = {
 			onClose: () => {
@@ -66,5 +66,3 @@ export class ToasterService {
 		this.isOpen = true;
 	}
 }
-
-export const Toaster = new ToasterService(document);

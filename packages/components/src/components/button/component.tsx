@@ -120,8 +120,6 @@ export class KolButtonWc implements API {
 
 	/**
 	 * Gibt an, mit welcher Tastenkombination man das interaktive Element der Komponente auslösen oder fokussieren kann.
-	 *
-	 * @deprecated
 	 */
 	@Prop() public _accessKey?: string;
 

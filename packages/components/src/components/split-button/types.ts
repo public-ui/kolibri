@@ -1,19 +1,33 @@
 import { Generic } from '@a11y-ui/core';
 
-import { PropLabel } from '../../types/props/label';
+import { StencilUnknown } from '../../components';
 import { PropAlternativeButtonLinkRole } from '../../types/props/alternative-button-link-role';
-import { PropTooltipAlign } from '../../types/props/tooltip-align';
+import { ButtonCallbacksPropType } from '../../types/props/button-callbacks';
 import { PropButtonVariant } from '../../types/props/button-variant';
-
-export type KoliBriSplitButtonCallback = (e: Event) => void;
+import { PropIcon } from '../../types/props/icon';
+import { PropLabel } from '../../types/props/label';
+import { PropTooltipAlign } from '../../types/props/tooltip-align';
 
 type RequiredProps = PropLabel;
-type OptionalProps = { icon: string; on?: { onClick: KoliBriSplitButtonCallback }; showDropdown: boolean } & PropAlternativeButtonLinkRole &
+type OptionalProps = {
+	on?: ButtonCallbacksPropType<StencilUnknown>;
+	showDropdown: boolean;
+} & PropAlternativeButtonLinkRole &
+	PropIcon &
 	PropTooltipAlign &
 	PropButtonVariant;
 
-type RequiredStates = PropLabel & { showDropdown: boolean; on: { onClick?: KoliBriSplitButtonCallback } };
-type OptionalStates = { icon: string };
+type RequiredStates = {
+	showDropdown: boolean;
+};
+type OptionalStates = NonNullable<unknown>;
+
+type RequiredWatchers = RequiredStates;
+type OptionalWatchers = OptionalStates;
 
 export type States = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type API = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
+export type API = Generic.Element.Component &
+	Generic.Element.Members<RequiredProps, OptionalProps> &
+	Generic.Element.Watchers<RequiredWatchers, OptionalWatchers> & {
+		readonly state: Generic.Element.Members<RequiredStates, OptionalStates>;
+	};
