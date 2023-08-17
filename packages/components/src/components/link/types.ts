@@ -61,7 +61,7 @@ export type OptionalProps = {
 	PropListenAriaCurrent &
 	PropStealth &
 	PropTooltipAlign;
-export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 
 type RequiredStates = PropIcon & PropHref & PropLabelWithExpertSlot;
 type OptionalStates = Omit<RequiredProps & OptionalProps, keyof RequiredStates>;

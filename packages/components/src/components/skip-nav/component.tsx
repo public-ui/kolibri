@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop, State, Watch } from '@stencil/core';
 
-import { Props as LinkProps } from '../link/types';
+import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { watchNavLinks } from '../nav/validation';

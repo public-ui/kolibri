@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 
 import { LinkOnCallbacks, LinkUseCase } from '../../types/button-link';
-import { Props } from '../link/types';
+import { LinkProps } from '../link/types';
 import { Stringified } from '../../types/common';
 import { KoliBriIconProp } from '../../types/icon';
 import { AlignPropType } from '../../types/props/align';
@@ -20,7 +20,7 @@ import { LinkTargetPropType } from '../../types/props/link-target';
 	},
 	shadow: true,
 })
-export class KolLink implements Props {
+export class KolLink implements LinkProps {
 	@Element() private readonly host?: HTMLKolLinkElement;
 	private ref?: HTMLKolLinkWcElement;
 
