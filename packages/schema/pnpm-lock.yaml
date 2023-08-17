@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@a11y-ui/core':
-    specifier: 1.0.3
-    version: 1.0.3
+    specifier: 1.0.5
+    version: 1.0.5
 
 devDependencies:
   '@types/node':
@@ -34,10 +34,10 @@ devDependencies:
 
 packages:
 
-  /@a11y-ui/core@1.0.3:
-    resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
+  /@a11y-ui/core@1.0.5:
+    resolution: {integrity: sha512-eC+cyWuerJ8YueeTfiw/xfDo845s0fQHE55VjvrsOwZQNFRKqpbTyD/oT0H7yYacI6APc2Sw8TPljd/OLNVjtQ==}
     dependencies:
-      adopted-style-sheets: 1.0.3
+      adopted-style-sheets: 1.0.5
     dev: false
 
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -825,8 +825,8 @@ packages:
     hasBin: true
     dev: true
 
-  /adopted-style-sheets@1.0.3:
-    resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
+  /adopted-style-sheets@1.0.5:
+    resolution: {integrity: sha512-JyShbb4SMmCqyDcTMu+aaPws5tpgcvWLnfSelB4yMiZvy+npQZVGnKOZlxmBiC/bvVZ7G1Cm7eG8+m+nFfDB0Q==}
     dependencies:
       loglevel: 1.8.1
     dev: false

@@ -6,14 +6,14 @@ settings:
 
 dependencies:
   '@a11y-ui/core':
-    specifier: 1.0.3
-    version: 1.0.3
+    specifier: 1.0.5
+    version: 1.0.5
   '@floating-ui/dom':
     specifier: 1.5.1
     version: 1.5.1
   '@public-ui/schema':
-    specifier: 1.6.0-rc.25
-    version: 1.6.0-rc.25
+    specifier: 1.6.0-rc.26
+    version: 1.6.0-rc.26
   i18next:
     specifier: 23.4.4
     version: 23.4.4
@@ -182,6 +182,12 @@ packages:
     resolution: {integrity: sha512-yzL0NESiAXL4Z/aqf4iptvZZsuju5Px6TUkdSVG+0PnrBaHfL35ThhoxDk2PJafm2d/b93mMVkw8VET5+2f73g==}
     dependencies:
       adopted-style-sheets: 1.0.3
+    dev: false
+
+  /@a11y-ui/core@1.0.5:
+    resolution: {integrity: sha512-eC+cyWuerJ8YueeTfiw/xfDo845s0fQHE55VjvrsOwZQNFRKqpbTyD/oT0H7yYacI6APc2Sw8TPljd/OLNVjtQ==}
+    dependencies:
+      adopted-style-sheets: 1.0.5
     dev: false
 
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -1796,8 +1802,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@public-ui/schema@1.6.0-rc.25:
-    resolution: {integrity: sha512-XUyYTig+7k9Mmxciil/ZCmun9++bi3OQEhwH1lAxbAZ+lkzn3lfRfkCVoBh21qZTTMJFjmVpFj7JWEb70y0/qA==}
+  /@public-ui/schema@1.6.0-rc.26:
+    resolution: {integrity: sha512-G87X6QazI1XtdToywgnLJNmWa4Z0M0lY3SfTqH359uVtWed+mBFmYGm2s6cYxi1m2jVh+wCN7hG+RKVT4fKoHQ==}
     dependencies:
       '@a11y-ui/core': 1.0.3
     dev: false
@@ -2469,6 +2475,12 @@ packages:
 
   /adopted-style-sheets@1.0.3:
     resolution: {integrity: sha512-zMTpWbVY6CqhDTkoE6JFslgXkz4irt1wL9QoO5rkqmju8i3X6cc5yxncnUqVJCHfT98hPlZcxLKIbnZzZQ3D2g==}
+    dependencies:
+      loglevel: 1.8.1
+    dev: false
+
+  /adopted-style-sheets@1.0.5:
+    resolution: {integrity: sha512-JyShbb4SMmCqyDcTMu+aaPws5tpgcvWLnfSelB4yMiZvy+npQZVGnKOZlxmBiC/bvVZ7G1Cm7eG8+m+nFfDB0Q==}
     dependencies:
       loglevel: 1.8.1
     dev: false
