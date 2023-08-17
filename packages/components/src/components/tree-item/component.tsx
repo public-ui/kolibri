@@ -1,14 +1,13 @@
-import { Component, Element, h, Host, JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Method, Prop, State, Watch } from '@stencil/core';
 
 import { API, States } from './types';
 import { LabelPropType, validateLabel } from '../../types/props/label';
 import { OpenPropType, validateOpen } from '../../types/props/open';
 import { HrefPropType, validateHref } from '../../types/props/href';
-
-const TAG_NAME = 'kol-tree-item';
+import { TREE_ITEM_TAG_NAME } from '../tree/constants';
 
 @Component({
-	tag: `kol-tree-item`, // keep in sync with const TAG_NAME
+	tag: `kol-tree-item`, // keep in sync with const TREE_ITEM_TAG_NAME
 	shadow: false,
 	styleUrls: {
 		default: './style.css',
@@ -16,6 +15,7 @@ const TAG_NAME = 'kol-tree-item';
 })
 export class KolTreeItemWc implements API {
 	private observer?: MutationObserver;
+	private linkElement!: HTMLKolLinkWcElement;
 
 	@Element() host!: HTMLElement;
 
@@ -23,9 +23,9 @@ export class KolTreeItemWc implements API {
 		return (
 			<Host>
 				<li>
-					<kol-link _label="false" _href={this.state._href}>
+					<kol-link _label="false" _href={this.state._href} ref={(element) => (this.linkElement = element!)}>
 						{this.state._hasChildren &&
-							(this.state._open ? <span onClick={this.handleCollapse.bind(this)}>-</span> : <span onClick={this.handleExpand.bind(this)}>+</span>)}{' '}
+							(this.state._open ? <span onClick={this.collapse.bind(this)}>-</span> : <span onClick={this.expand.bind(this)}>+</span>)}{' '}
 						{this.state._label}
 					</kol-link>
 					<ul hidden={!this.state._hasChildren || !this.state._open}>
@@ -79,7 +79,7 @@ export class KolTreeItemWc implements API {
 		this.checkForChildren();
 	}
 
-	disconnectedCallback(): void {
+	public disconnectedCallback(): void {
 		this.observer?.disconnect();
 	}
 
@@ -92,21 +92,29 @@ export class KolTreeItemWc implements API {
 	checkForChildren() {
 		this.state = {
 			...this.state,
-			_hasChildren: this.host.querySelector(TAG_NAME) !== null,
+			_hasChildren: this.host.querySelector(TREE_ITEM_TAG_NAME) !== null,
 		};
 	}
 
-	handleExpand() {
-		this.state = {
-			...this.state,
-			_open: true,
-		};
+	@Method() focus() {
+		this.linkElement.focus();
 	}
 
-	handleCollapse() {
-		this.state = {
-			...this.state,
-			_open: false,
-		};
+	@Method() expand() {
+		if (this.state._hasChildren) {
+			this.state = {
+				...this.state,
+				_open: true,
+			};
+		}
+	}
+
+	@Method() collapse() {
+		if (this.state._hasChildren) {
+			this.state = {
+				...this.state,
+				_open: false,
+			};
+		}
 	}
 }

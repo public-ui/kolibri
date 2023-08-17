@@ -1762,7 +1762,7 @@
 	</head>
 	<body class="demo" data-theme="demo" v-scope="{ on: console.log }">
 		<main class="container">
-			<kol-tree _label="Überschrift">
+			<kol-tree _label="Überschrift" id="tree">
 				<kol-tree-item _label="Home" _href="#home" id="treeitemHome"></kol-tree-item>
 				<kol-tree-item _label="About (open initially)" _href="#about" _open>
 					<kol-tree-item _label="Overview" _href="#overview"></kol-tree-item>
@@ -1785,6 +1785,7 @@
 				<kol-button _label="Add to Facts" id="buttonAddFact"></kol-button>
 				<kol-button _label="Add to Administration" id="buttonAddAdmin"></kol-button>
 				<kol-button _label="Add two levels to Administration" id="buttonAddAdminDeep"></kol-button>
+				<kol-button _label="Add top level" id="buttonAddTopLevel"></kol-button>
 			</div>
 
 			<script>
@@ -1815,6 +1816,10 @@
 
 					treeItem1.appendChild(treeItem2);
 					treeitemAdmin.appendChild(treeItem1);
+				});
+
+				buttonAddTopLevel.addEventListener('kol-click', () => {
+					tree.appendChild(makeItem('Top Level'));
 				});
 			</script>
 		</main>

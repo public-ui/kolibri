@@ -2902,6 +2902,9 @@ export namespace Components {
           * If set (to true) opens/expands the element, closes if not set (or set to false).
          */
         "_open"?: OpenPropType;
+        "collapse": () => Promise<void>;
+        "expand": () => Promise<void>;
+        "focus": () => Promise<void>;
     }
     interface KolTreeWc {
     }

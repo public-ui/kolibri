@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, JSX, Listen, State } from '@stencil/core';
 
 import { API, States } from './types';
+import { TREE_ITEM_TAG_NAME } from './constants';
 
 @Component({
 	tag: 'kol-tree-wc',
@@ -10,33 +11,14 @@ export class KolTreeWc implements API {
 	@Element() host!: HTMLElement;
 
 	private observer?: MutationObserver;
-	private treeItemElements?: Element[];
+	private treeItemElements?: HTMLKolTreeItemElement[];
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host onSlotchange={this.handleSlotchange.bind(this)}>
 				<nav aria-label="YYY">
 					<ul class="treeview-navigation" role="tree" aria-label="YYY">
 						<slot />
-						{/*<li role="none">*/}
-						{/*	<a role="treeitem" href="#XXX" aria-current="page">*/}
-						{/*		XXX*/}
-						{/*	</a>*/}
-						{/*</li>*/}
-
-						{/*<li role="none">*/}
-						{/*	<a role="treeitem" aria-expanded="false" aria-owns="id-about-subtree" href="#about">*/}
-						{/*		/!* icon *!/*/}
-						{/*		About*/}
-						{/*	</a>*/}
-						{/*	<ul id="id-about-subtree" role="group" aria-label="About">*/}
-						{/*		<li role="none">*/}
-						{/*			<a role="treeitem" href="#overview">*/}
-						{/*				<span class="label">Overview</span>*/}
-						{/*			</a>*/}
-						{/*		</li>*/}
-						{/*	</ul>*/}
-						{/*</li>*/}
 					</ul>
 				</nav>
 			</Host>
@@ -45,31 +27,94 @@ export class KolTreeWc implements API {
 
 	@State() public state: States = {};
 
-	private getTreeItemElements(): Element[] {
-		const topLevel = (this.host.querySelector('slot')?.assignedNodes() as Element[]).filter((node) => node.tagName === 'KOL-TREE-ITEM');
-		return topLevel.reduce((accumulator, currentValue) => {
-			const children = currentValue.querySelectorAll('kol-tree-item'); //FIXME export as const somewhere
-
-			return [...accumulator, currentValue, ...children];
-		}, [] as Element[]);
+	public componentWillLoad(): void {
+		this.updateTreeItemElements();
+		this.observeChildListMutations();
 	}
 
-	public componentWillLoad(): void {
+	public disconnectedCallback(): void {
+		this.observer?.disconnect();
+	}
+
+	private observeChildListMutations() {
+		this.observer = new MutationObserver(this.updateTreeItemElements.bind(this));
+		this.observeTopLevelItems();
+	}
+
+	private handleSlotchange() {
+		this.observeTopLevelItems();
+	}
+
+	private observeTopLevelItems() {
+		this.getTopLevelTreeItems().forEach((treeItem) => {
+			this.observer!.observe(treeItem, { childList: true, subtree: true });
+		});
+	}
+
+	private getTopLevelTreeItems(): HTMLKolTreeItemElement[] {
+		return (this.host.querySelector('slot')?.assignedNodes() as Element[]).filter(
+			(node) => node.tagName === TREE_ITEM_TAG_NAME.toUpperCase()
+		) as HTMLKolTreeItemElement[];
+	}
+
+	private updateTreeItemElements(): void {
 		this.treeItemElements = this.getTreeItemElements();
 	}
 
+	/**
+	 * Returns array of all TreeItem elements in the order they appear
+	 */
+	private getTreeItemElements(): HTMLKolTreeItemElement[] {
+		const topLevelTreeItems: HTMLKolTreeItemElement[] = (this.host.querySelector('slot')?.assignedNodes() as Element[]).filter(
+			(node) => node.tagName === TREE_ITEM_TAG_NAME.toUpperCase()
+		) as HTMLKolTreeItemElement[];
+
+		return topLevelTreeItems.reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
+			const children = currentValue.querySelectorAll(TREE_ITEM_TAG_NAME);
+
+			return [...accumulator, currentValue, ...children];
+		}, []);
+	}
+
+	private getVisibleTreeItemElements(): HTMLKolTreeItemElement[] | undefined {
+		return this.treeItemElements?.filter((element) => !element.hasAttribute('hidden') && !element.closest('[hidden]'));
+	}
+
 	@Listen('keydown')
-	handleKeyDown(event: KeyboardEvent) {
-		if (event.key === 'ArrowDown') {
-			// console.log(event.composedPath(), document.activeElement && [...(event.composedPath() as Element[])].includes(document.activeElement));
-			// console.log(this.host, document.activeElement, this.host.contains(document.activeElement));
-			// if (this.host.contains(document.activeElement)) {
-			// 	console.log(document.activeElement);
-			// }
+	public async handleKeyDown(event: KeyboardEvent) {
+		const visibleItems = this.getVisibleTreeItemElements();
+		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(TREE_ITEM_TAG_NAME);
 
-			// console.log(this.host, this.host.querySelector(':focus'));
+		if (!visibleItems || !currentTreeItem) {
+			return;
+		}
 
-			console.log(document.activeElement);
+		const currentIndex = visibleItems?.findIndex((elem) => elem === currentTreeItem);
+
+		switch (event.key) {
+			case 'ArrowDown': {
+				await visibleItems[currentIndex + 1]?.focus();
+				break;
+			}
+			case 'ArrowUp': {
+				await visibleItems[currentIndex - 1]?.focus();
+				break;
+			}
+			case 'ArrowRight': {
+				await currentTreeItem.expand();
+				break;
+			}
+			case 'ArrowLeft': {
+				await currentTreeItem.collapse();
+				break;
+			}
+			case '*': {
+				const siblings = currentTreeItem.closest('kol-tree')?.querySelectorAll(TREE_ITEM_TAG_NAME);
+				if (siblings) {
+					siblings.forEach((element) => element.expand());
+				}
+				break;
+			}
 		}
 	}
 }
