@@ -2,10 +2,11 @@ import { Generic } from '@a11y-ui/core';
 
 import { InputTypeOnOff } from '../../types/input/types';
 import { validateHasCounter } from '../../types/props/has-counter';
-import { devHint } from '../../utils/a11y.tipps';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
+import { a11yHint } from '../../utils/a11y.tipps';
+import { validateHideLabel } from '../../types/props/hide-label';
 
 export class InputPasswordController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -18,7 +19,6 @@ export class InputPasswordController extends InputIconController implements Watc
 
 	private handleHiddenLabelAndRequired = (): void => {
 		if (this.component.state._hideLabel === true && this.component.state._required === true) {
-			devHint(`[KolInput*] Wenn man das Label ausblendet, dann kann der sehende Nutzer:in nicht mehr erkennen, ob die Eingabe erforderlich ist.`);
 			this.hideLabel = false;
 		} else {
 			this.hideLabel = this.component.state._hideLabel === true;
@@ -40,7 +40,8 @@ export class InputPasswordController extends InputIconController implements Watc
 	}
 
 	public validateHideLabel(value?: boolean): void {
-		watchBoolean(this.component, '_hideLabel', value, {
+		a11yHint('Property hide-label for inputs: Only use for exceptions like search inputs that are clearly identifiable by their context.');
+		validateHideLabel(this.component, value, {
 			hooks: {
 				afterPatch: this.handleHiddenLabelAndRequired,
 			},

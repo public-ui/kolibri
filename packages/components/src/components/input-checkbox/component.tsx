@@ -94,7 +94,7 @@ export class KolInputCheckbox implements API {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
+							_label={typeof this.state._label === 'string' ? `${this.state._label}${this._required ? '*' : ''}` : ''}
 						></kol-tooltip>
 					</div>
 				</kol-input>

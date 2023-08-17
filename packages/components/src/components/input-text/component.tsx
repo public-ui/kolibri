@@ -6,7 +6,6 @@ import { KoliBriHorizontalIcon } from '../../types/icon';
 import { InputTextType } from '../../types/input/control/text';
 import { InputTypeOnDefault, InputTypeOnOff } from '../../types/input/types';
 import { AlertPropType, validateAlert } from '../../types/props/alert';
-import { validateHideLabel } from '../../types/props/hide-label';
 import { LabelWithExpertSlotPropType } from '../../types/props/label';
 import { SuggestionsPropType } from '../../types/props/suggestions';
 import { featureHint } from '../../utils/a11y.tipps';
@@ -134,7 +133,7 @@ export class KolInputText implements API {
 							aria-hidden="true"
 							hidden={hasExpertSlot || !this.state._hideLabel}
 							_align={this._tooltipAlign}
-							_label={typeof this.state._label === 'string' ? this.state._label : ''}
+							_label={typeof this.state._label === 'string' ? `${this.state._label}${this._required ? '*' : ''}` : ''}
 						></kol-tooltip>
 					</div>
 				</kol-input>
@@ -339,7 +338,7 @@ export class KolInputText implements API {
 
 	@Watch('_hideLabel')
 	public validateHideLabel(value?: boolean): void {
-		validateHideLabel(this, value);
+		this.controller.validateHideLabel(value);
 	}
 
 	@Watch('_hint')
