@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 
 @Tag("kol-avatar")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-avatar")
 public class KolAvatar extends Component {
 	/**
-	 * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -25,7 +25,7 @@ public class KolAvatar extends Component {
 	}
 
 	/**
-	 * Defines the label, usually the name of the person, to render as alt text and to compute initials from
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */

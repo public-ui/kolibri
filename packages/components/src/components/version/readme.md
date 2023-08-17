@@ -26,10 +26,10 @@ Die **Version** wird standardmäßig als **_Inline-Element_** ausgegeben.
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                       | Type                  | Default     |
-| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `_label`   | `_label`   | Sets the visible or semantic label of the component (e.g. Aria label, Label, Headline, Caption, Summary, etc.).   | `string \| undefined` | `undefined` |
-| `_version` | `_version` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Gibt die Versionsnummer als Text an. | `string \| undefined` | `undefined` |
+| Property   | Attribute  | Description                                                                                                                 | Type                  | Default     |
+| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `_label`   | `_label`   | Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.). | `string \| undefined` | `undefined` |
+| `_version` | `_version` | <span style="color:red">**[DEPRECATED]**</span> use \_label instead<br/><br/>Gibt die Versionsnummer als Text an.           | `string \| undefined` | `undefined` |
 
 ## Dependencies
 

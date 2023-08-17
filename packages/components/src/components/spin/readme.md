@@ -112,9 +112,9 @@ Verwenden Sie das Attribut `_show` um festzulegen, ob der Spin angezeigt wird.
 
 ## Properties
 
-| Property   | Attribute  | Description                             | Type                                      | Default |
-| ---------- | ---------- | --------------------------------------- | ----------------------------------------- | ------- |
-| `_show`    | `_show`    | Makes the element show up.              | `boolean \| undefined`                    | `false` |
-| `_variant` | `_variant` | Defines the variant of spin navigation. | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
+| Property   | Attribute  | Description                                                                                              | Type                                      | Default |
+| ---------- | ---------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ------- |
+| `_show`    | `_show`    | Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved | `boolean \| undefined`                    | `false` |
+| `_variant` | `_variant` | Defines the variant of spin navigation.                                                                  | `"cycle" \| "dot" \| "none" \| undefined` | `'dot'` |
 
 ---

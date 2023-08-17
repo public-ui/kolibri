@@ -16,7 +16,7 @@ import java.util.Optional;
  */
 
 @Tag("kol-table")
-@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.24")
+@NpmPackage(value = "@public-ui/components", version = "1.6.0-rc.25")
 @JsModule("@public-ui/components/dist/components/kol-table")
 public class KolTable extends Component {
 	/**
@@ -96,7 +96,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Defines the table caption.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @param value String
 	 */
@@ -105,7 +105,7 @@ public class KolTable extends Component {
 	}
 
 	/**
-	 * Defines the table caption.
+	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 *
 	 * @return Optional<String>
 	 */
