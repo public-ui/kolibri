@@ -58,5 +58,5 @@ input[type='checkbox']:before {
 	display: none;
 }
 kol-input.required .tooltip-content .span-label::after {
-	content: "*";
+	content: '*';
 }
