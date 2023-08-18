@@ -1,6 +1,6 @@
-# Token-Based-Theme für KoliBri
+# Default-Theme für KoliBri
 
-Das _Token-Based-Theme_ ist ein Theme, das mit minimalen Anpassungen sofort verwendet werden kann. Es bringt bereits alle notwendigen Stylings mit und kann
+Das Default-Theme*ist ein \_Token-Based* Theme, das mit minimalen Anpassungen sofort verwendet werden kann. Es bringt bereits alle notwendigen Stylings mit und kann
 über Design Tokens, in Form von _CSS Custom Properties_ an das eigene Design angepasst werden.
 
 ## Variablen
@@ -30,9 +30,9 @@ Theme importieren und registrieren:
 ```js
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { TOKEN_BASED } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/themes';
 
-register(TOKEN_BASED, defineCustomElements);
+register(DEFAULT, defineCustomElements);
 ```
 
 Für mehr Details und weitere Optionen siehe [Erste Schritte](https://public-ui.github.io/docs/get-started/first-steps#einbinden-in-ein-bestehendes-projekt).

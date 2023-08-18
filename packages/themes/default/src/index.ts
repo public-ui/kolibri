@@ -5,7 +5,7 @@ import { KoliBri } from '@public-ui/schema';
  */
 const css = (input: TemplateStringsArray): string => input.join(``);
 
-export const TOKEN_BASED = KoliBri.createTheme('token-based', {
+export const DEFAULT = KoliBri.createTheme('default', {
 	GLOBAL: css`
 		:host {
 			--border-radius: var(--kolibri-border-radius, 5px);
