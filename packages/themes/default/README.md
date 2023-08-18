@@ -1,6 +1,6 @@
 # Default-Theme für KoliBri
 
-Das Default-Theme*ist ein \_Token-Based* Theme, das mit minimalen Anpassungen sofort verwendet werden kann. Es bringt bereits alle notwendigen Stylings mit und kann
+Das Default-Theme ist ein _Token-Based_ Theme, das mit minimalen Anpassungen sofort verwendet werden kann. Es bringt bereits alle notwendigen Stylings mit und kann
 über Design Tokens, in Form von _CSS Custom Properties_ an das eigene Design angepasst werden.
 
 ## Variablen
