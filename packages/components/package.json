@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "1.6.0-rc.26",
+	"version": "1.6.0-rc.27",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": "https://github.com/public-ui/kolibri",
@@ -68,7 +68,7 @@
 	"dependencies": {
 		"@a11y-ui/core": "1.0.5",
 		"@floating-ui/dom": "1.5.1",
-		"@public-ui/schema": "1.6.0-rc.26",
+		"@public-ui/schema": "1.6.0-rc.27",
 		"i18next": "23.4.4"
 	},
 	"devDependencies": {
