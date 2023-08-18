@@ -5,8 +5,6 @@ import { validateHasCounter } from '../../types/props/has-counter';
 import { watchBoolean, watchNumber, watchString, watchValidator } from '../../utils/prop.validators';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 import { Props, Watches } from './types';
-import { a11yHint } from '../../utils/a11y.tipps';
-import { validateHideLabel } from '../../types/props/hide-label';
 
 export class InputPasswordController extends InputIconController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
@@ -16,14 +14,6 @@ export class InputPasswordController extends InputIconController implements Watc
 		super(component, name, host);
 		this.component = component;
 	}
-
-	private handleHiddenLabelAndRequired = (): void => {
-		if (this.component.state._hideLabel === true && this.component.state._required === true) {
-			this.hideLabel = false;
-		} else {
-			this.hideLabel = this.component.state._hideLabel === true;
-		}
-	};
 
 	public validateAutoComplete(value?: InputTypeOnOff): void {
 		watchValidator(
@@ -37,15 +27,6 @@ export class InputPasswordController extends InputIconController implements Watc
 
 	public validateHasCounter(value?: boolean): void {
 		validateHasCounter(this.component, value);
-	}
-
-	public validateHideLabel(value?: boolean): void {
-		a11yHint('Property hide-label for inputs: Only use for exceptions like search inputs that are clearly identifiable by their context.');
-		validateHideLabel(this.component, value, {
-			hooks: {
-				afterPatch: this.handleHiddenLabelAndRequired,
-			},
-		});
 	}
 
 	public validateMaxLength(value?: number): void {
@@ -67,11 +48,7 @@ export class InputPasswordController extends InputIconController implements Watc
 	}
 
 	public validateRequired(value?: boolean): void {
-		watchBoolean(this.component, '_required', value, {
-			hooks: {
-				afterPatch: this.handleHiddenLabelAndRequired,
-			},
-		});
+		watchBoolean(this.component, '_required', value);
 	}
 
 	public validateSize(value?: number): void {

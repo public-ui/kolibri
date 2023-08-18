@@ -18,8 +18,6 @@ type ValueChangeListener = (value: string) => void;
 export class InputController extends ControlledInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props & AdapterProps;
 
-	public hideLabel = false;
-
 	private readonly valueChangeListeners: ValueChangeListener[] = [];
 
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
@@ -47,8 +45,15 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	public validateHideLabel(value?: boolean): void {
-		a11yHint('Property hide-label for inputs: Only use for exceptions like search inputs that are clearly identifiable by their context.');
-		validateHideLabel(this.component, value);
+		validateHideLabel(this.component, value, {
+			hooks: {
+				afterPatch: () => {
+					if (value) {
+						a11yHint('Property hide-label for inputs: Only use for exceptions like search inputs that are clearly identifiable by their context.');
+					}
+				},
+			},
+		});
 	}
 
 	public validateHint(value?: string): void {
