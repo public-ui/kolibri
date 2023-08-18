@@ -50,7 +50,7 @@ export class KolSpanWc implements API {
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 * @deprecated use _hide-label
 	 */
 	@Prop() public _iconOnly?: boolean;

@@ -22,6 +22,7 @@ export class KolHeading implements Props {
 			</kol-heading-wc>
 		);
 	}
+
 	/**
 	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 */

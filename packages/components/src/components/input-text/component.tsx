@@ -204,7 +204,7 @@ export class KolInputText implements API {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
+	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
 	 * @deprecated Use _suggestions.
 	 */
 	@Prop() public _list?: Stringified<string[]>;
@@ -284,7 +284,7 @@ export class KolInputText implements API {
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: InputTextType = 'text';
 

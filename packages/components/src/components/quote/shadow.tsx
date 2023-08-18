@@ -14,7 +14,7 @@ import { HrefPropType } from '../../types/props/href';
 })
 export class KolQuote implements API {
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Deprecated: Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _caption?: string;

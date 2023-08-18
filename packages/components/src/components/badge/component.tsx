@@ -72,6 +72,7 @@ export class KolBadge implements API {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
+	 * Deprecated:
 	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
 	 *   since it would not be accessible without visible labeling. A separate tooltip
 	 *   is not planed, because a badge is not an interactive element.
@@ -86,7 +87,7 @@ export class KolBadge implements API {
 	@Prop() public _icon?: Stringified<KoliBriIconProp>;
 
 	/**
-	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+	 * Deprecated: Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
 	 *
 	 * @deprecated use _hide-label
 	 */

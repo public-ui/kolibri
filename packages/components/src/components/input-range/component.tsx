@@ -218,7 +218,7 @@ export class KolInputRange implements API {
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
-	 * Gibt die Liste der Vorschlagswörter an.
+	 * Deprecated: Gibt die Liste der Vorschlagswörter an.
 	 * @deprecated Use _suggestions.
 	 */
 	@Prop() public _list?: Stringified<Option<W3CInputValue>[]>;

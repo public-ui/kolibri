@@ -33,7 +33,7 @@ export class KolToast implements API {
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
-	 * Gibt die Beschriftung der Komponente an.
+	 * Deprecated: Gibt die Beschriftung der Komponente an.
 	 * @deprecated Use _label.
 	 */
 	@Prop() public _heading?: string = '';
@@ -65,7 +65,7 @@ export class KolToast implements API {
 	@Prop() public _showDuration?: number = 10000;
 
 	/**
-	 * Setzt den Typ der Komponente oder des interaktiven Elements in der Komponente an.
+	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: AlertType = 'default';
 
