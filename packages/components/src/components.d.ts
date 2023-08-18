@@ -144,7 +144,7 @@ export namespace Components {
          */
         "_label"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -152,13 +152,14 @@ export namespace Components {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+          * @TODO : Change type back to `OpenPropType` after Stencil#4663 has been resolved.
          */
         "_open"?: boolean;
     }
     interface KolAlert {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -175,7 +176,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -193,11 +194,12 @@ export namespace Components {
     }
     interface KolAlertWc {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+          * Defines whether the element can be closed.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
         /**
@@ -205,7 +207,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -247,7 +249,8 @@ export namespace Components {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
           * @deprecated Will be removed in the next major version.
          */
         "_hideLabel"?: boolean;
@@ -402,7 +405,8 @@ export namespace Components {
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded) TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @TODO : Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -411,15 +415,18 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected) TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @TODO : Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -581,11 +588,13 @@ export namespace Components {
     }
     interface KolCard {
         /**
-          * Defines whether the card has a close button. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+          * Defines whether the card has a close button.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
         /**
-          * Shows the slot="footer". TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
+          * Shows the slot="footer".
+          * @TODO : Change type back to `HasFooterPropType` after Stencil#4663 has been resolved.
          */
         "_hasFooter"?: boolean;
         /**
@@ -600,7 +609,7 @@ export namespace Components {
         "_headline"?: string;
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -614,7 +623,8 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+          * @TODO : Change type back to `OpenPropType` after Stencil#4663 has been resolved.
          */
         "_open"?: boolean;
         /**
@@ -639,7 +649,7 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -653,7 +663,7 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -747,12 +757,14 @@ export namespace Components {
     }
     interface KolInput {
         /**
-          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
+          * Defines whether the screen-readers should read out the notification.
+          * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
          */
         "_alert"?: boolean;
         "_currentLength"?: number;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -760,11 +772,13 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -784,7 +798,8 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
@@ -792,7 +807,8 @@ export namespace Components {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -808,7 +824,8 @@ export namespace Components {
          */
         "_suggestions"?: SuggestionsPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
     }
@@ -823,15 +840,17 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the checkbox is checked or not. Can be read and written. TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
+          * Defines whether the checkbox is checked or not. Can be read and written.
+          * @TODO : Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
          */
         "_checked"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -839,7 +858,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -855,7 +875,8 @@ export namespace Components {
          */
         "_id"?: IdPropType;
         /**
-          * Puts the checkbox in the indeterminate state, does not change the value of _checked. TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
+          * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+          * @TODO : Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
          */
         "_indeterminate"?: boolean;
         /**
@@ -871,7 +892,8 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -887,7 +909,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -910,7 +933,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -918,7 +941,8 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -926,7 +950,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -979,7 +1004,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -993,7 +1019,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -1001,7 +1027,8 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1009,7 +1036,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1050,11 +1078,13 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -1082,7 +1112,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -1100,7 +1131,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -1108,7 +1139,8 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1116,11 +1148,13 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.s TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.s
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1149,7 +1183,8 @@ export namespace Components {
          */
         "_maxLength"?: number;
         /**
-          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
+          * Makes the input accept multiple inputs.
+          * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
          */
         "_multiple"?: boolean;
         /**
@@ -1169,11 +1204,13 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -1201,7 +1238,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -1219,11 +1257,12 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1231,7 +1270,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1251,7 +1291,8 @@ export namespace Components {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
+          * Makes the input accept multiple inputs.
+          * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
          */
         "_multiple"?: boolean;
         /**
@@ -1263,7 +1304,8 @@ export namespace Components {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -1283,7 +1325,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -1297,7 +1340,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -1305,7 +1348,8 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1313,7 +1357,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1358,11 +1403,13 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -1390,7 +1437,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -1409,7 +1457,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -1417,7 +1465,8 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1425,11 +1474,13 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1469,11 +1520,13 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -1497,7 +1550,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -1511,11 +1565,12 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1523,7 +1578,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1560,7 +1616,8 @@ export namespace Components {
          */
         "_orientation"?: Orientation;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -1576,7 +1633,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -1593,7 +1651,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -1659,7 +1717,7 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -1667,7 +1725,8 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1675,7 +1734,8 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1736,7 +1796,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -1750,7 +1811,8 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
+          * Defines whether the screen-readers should read out the notification.
+          * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
          */
         "_alert"?: boolean;
         /**
@@ -1758,7 +1820,8 @@ export namespace Components {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -1766,11 +1829,13 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -1815,11 +1880,13 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -1847,7 +1914,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -2019,7 +2087,8 @@ export namespace Components {
          */
         "_download"?: DownloadPropType;
         /**
-          * Tells the label and shows it in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the label and shows it in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2088,7 +2157,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2260,7 +2329,8 @@ export namespace Components {
          */
         "_ariaLabel"?: string;
         /**
-          * Defines if navigation nodes can be collapsed or not. Enabled by default. TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
+          * Defines if navigation nodes can be collapsed or not. Enabled by default.
+          * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
          */
         "_collapsible"?: boolean;
         /**
@@ -2274,7 +2344,8 @@ export namespace Components {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Defines if navigation labels should be hidden.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2347,7 +2418,8 @@ export namespace Components {
          */
         "_align"?: AlignPropType;
         /**
-          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
         "_show"?: boolean;
     }
@@ -2407,11 +2479,12 @@ export namespace Components {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -2424,7 +2497,8 @@ export namespace Components {
          */
         "_height"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2449,7 +2523,8 @@ export namespace Components {
          */
         "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
-          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
+          * Makes the input accept multiple inputs.
+          * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
          */
         "_multiple"?: boolean;
         /**
@@ -2465,7 +2540,8 @@ export namespace Components {
          */
         "_options"?: OptionsWithOptgroupPropType;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -2489,7 +2565,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -2514,7 +2591,8 @@ export namespace Components {
     }
     interface KolSpan {
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2533,7 +2611,8 @@ export namespace Components {
     }
     interface KolSpanWc {
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2552,7 +2631,8 @@ export namespace Components {
     }
     interface KolSpin {
         /**
-          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
         "_show"?: boolean;
         /**
@@ -2735,11 +2815,12 @@ export namespace Components {
          */
         "_adjustHeight"?: boolean;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -2747,11 +2828,13 @@ export namespace Components {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -2783,11 +2866,13 @@ export namespace Components {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -2811,7 +2896,8 @@ export namespace Components {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -2821,11 +2907,12 @@ export namespace Components {
     }
     interface KolToast {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+          * Defines whether the element can be closed.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
         /**
@@ -2838,7 +2925,7 @@ export namespace Components {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -2846,7 +2933,8 @@ export namespace Components {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
         "_show"?: boolean;
         /**
@@ -3364,7 +3452,7 @@ declare namespace LocalJSX {
          */
         "_label"?: string;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3372,13 +3460,14 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriAccordionCallbacks;
         /**
-          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+          * @TODO : Change type back to `OpenPropType` after Stencil#4663 has been resolved.
          */
         "_open"?: boolean;
     }
     interface KolAlert {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -3395,7 +3484,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3413,11 +3502,12 @@ declare namespace LocalJSX {
     }
     interface KolAlertWc {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+          * Defines whether the element can be closed.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
         /**
@@ -3425,7 +3515,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3467,7 +3557,8 @@ declare namespace LocalJSX {
          */
         "_color"?: Stringified<PropColor>;
         /**
-          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,   since it would not be accessible without visible labeling. A separate tooltip   is not planed, because a badge is not an interactive element.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
           * @deprecated Will be removed in the next major version.
          */
         "_hideLabel"?: boolean;
@@ -3622,7 +3713,8 @@ declare namespace LocalJSX {
          */
         "_ariaCurrent"?: AriaCurrentPropType;
         /**
-          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded) TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
+          * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+          * @TODO : Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaExpanded"?: boolean;
         /**
@@ -3631,15 +3723,18 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected) TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
+          * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+          * @TODO : Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved.
          */
         "_ariaSelected"?: boolean;
         /**
-          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
-          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -3801,11 +3896,13 @@ declare namespace LocalJSX {
     }
     interface KolCard {
         /**
-          * Defines whether the card has a close button. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+          * Defines whether the card has a close button.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
         /**
-          * Shows the slot="footer". TODO: Change type back to `HasFooterPropType` after Stencil#4663 has been resolved
+          * Shows the slot="footer".
+          * @TODO : Change type back to `HasFooterPropType` after Stencil#4663 has been resolved.
          */
         "_hasFooter"?: boolean;
         /**
@@ -3820,7 +3917,7 @@ declare namespace LocalJSX {
         "_headline"?: string;
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3834,7 +3931,8 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * If set (to true) opens/expands the element, closes if not set (or set to false). TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
+          * If set (to true) opens/expands the element, closes if not set (or set to false).
+          * @TODO : Change type back to `OpenPropType` after Stencil#4663 has been resolved.
          */
         "_open"?: boolean;
         /**
@@ -3859,7 +3957,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3873,7 +3971,7 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -3967,12 +4065,14 @@ declare namespace LocalJSX {
     }
     interface KolInput {
         /**
-          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
+          * Defines whether the screen-readers should read out the notification.
+          * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
          */
         "_alert"?: boolean;
         "_currentLength"?: number;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -3980,11 +4080,13 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4004,7 +4106,8 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
@@ -4012,7 +4115,8 @@ declare namespace LocalJSX {
          */
         "_renderNoLabel"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4028,7 +4132,8 @@ declare namespace LocalJSX {
          */
         "_suggestions"?: SuggestionsPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
     }
@@ -4043,15 +4148,17 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the checkbox is checked or not. Can be read and written. TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
+          * Defines whether the checkbox is checked or not. Can be read and written.
+          * @TODO : Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
          */
         "_checked"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4059,7 +4166,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4075,7 +4183,8 @@ declare namespace LocalJSX {
          */
         "_id"?: IdPropType;
         /**
-          * Puts the checkbox in the indeterminate state, does not change the value of _checked. TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
+          * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+          * @TODO : Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
          */
         "_indeterminate"?: boolean;
         /**
@@ -4091,7 +4200,8 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4107,7 +4217,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4130,7 +4241,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -4138,7 +4249,8 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4146,7 +4258,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4199,7 +4312,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4213,7 +4327,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -4221,7 +4335,8 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4229,7 +4344,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4270,11 +4386,13 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4302,7 +4420,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4320,7 +4439,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -4328,7 +4447,8 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4336,11 +4456,13 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input.s TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.s
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4369,7 +4491,8 @@ declare namespace LocalJSX {
          */
         "_maxLength"?: number;
         /**
-          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
+          * Makes the input accept multiple inputs.
+          * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
          */
         "_multiple"?: boolean;
         /**
@@ -4389,11 +4512,13 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4421,7 +4546,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4439,11 +4565,12 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4451,7 +4578,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4471,7 +4599,8 @@ declare namespace LocalJSX {
          */
         "_label": LabelWithExpertSlotPropType;
         /**
-          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
+          * Makes the input accept multiple inputs.
+          * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
          */
         "_multiple"?: boolean;
         /**
@@ -4483,7 +4612,8 @@ declare namespace LocalJSX {
          */
         "_on"?: InputTypeOnDefault;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4503,7 +4633,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4517,7 +4648,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -4525,7 +4656,8 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4533,7 +4665,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4578,11 +4711,13 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4610,7 +4745,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4629,7 +4765,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -4637,7 +4773,8 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4645,11 +4782,13 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4689,11 +4828,13 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4717,7 +4858,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4731,11 +4873,12 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4743,7 +4886,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4780,7 +4924,8 @@ declare namespace LocalJSX {
          */
         "_orientation"?: Orientation;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -4796,7 +4941,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4813,7 +4959,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -4879,7 +5025,7 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
@@ -4887,7 +5033,8 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4895,7 +5042,8 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -4956,7 +5104,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -4970,7 +5119,8 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Defines whether the screen-readers should read out the notification. TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
+          * Defines whether the screen-readers should read out the notification.
+          * @TODO : Change type back to `AlertPropType` after Stencil#4663 has been resolved.
          */
         "_alert"?: boolean;
         /**
@@ -4978,7 +5128,8 @@ declare namespace LocalJSX {
          */
         "_autoComplete"?: InputTypeOnOff;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -4986,11 +5137,13 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5035,11 +5188,13 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -5067,7 +5222,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -5239,7 +5395,8 @@ declare namespace LocalJSX {
          */
         "_download"?: DownloadPropType;
         /**
-          * Tells the label and shows it in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the label and shows it in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5308,7 +5465,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -5480,7 +5637,8 @@ declare namespace LocalJSX {
          */
         "_ariaLabel"?: string;
         /**
-          * Defines if navigation nodes can be collapsed or not. Enabled by default. TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
+          * Defines if navigation nodes can be collapsed or not. Enabled by default.
+          * @TODO : Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
          */
         "_collapsible"?: boolean;
         /**
@@ -5494,7 +5652,8 @@ declare namespace LocalJSX {
          */
         "_hasCompactButton"?: boolean;
         /**
-          * Defines if navigation labels should be hidden. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Defines if navigation labels should be hidden.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5567,7 +5726,8 @@ declare namespace LocalJSX {
          */
         "_align"?: AlignPropType;
         /**
-          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
         "_show"?: boolean;
     }
@@ -5627,11 +5787,12 @@ declare namespace LocalJSX {
          */
         "_accessKey"?: string;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -5644,7 +5805,8 @@ declare namespace LocalJSX {
          */
         "_height"?: string;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5669,7 +5831,8 @@ declare namespace LocalJSX {
          */
         "_list"?: Stringified<SelectOption<W3CInputValue>[]>;
         /**
-          * Makes the input accept multiple inputs. TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved
+          * Makes the input accept multiple inputs.
+          * @TODO : Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
          */
         "_multiple"?: boolean;
         /**
@@ -5685,7 +5848,8 @@ declare namespace LocalJSX {
          */
         "_options"?: OptionsWithOptgroupPropType;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -5709,7 +5873,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -5734,7 +5899,8 @@ declare namespace LocalJSX {
     }
     interface KolSpan {
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5753,7 +5919,8 @@ declare namespace LocalJSX {
     }
     interface KolSpanWc {
         /**
-          * Hides the label and shows the description in a Tooltip instead. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Hides the label and shows the description in a Tooltip instead.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -5772,7 +5939,8 @@ declare namespace LocalJSX {
     }
     interface KolSpin {
         /**
-          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
         "_show"?: boolean;
         /**
@@ -5955,11 +6123,12 @@ declare namespace LocalJSX {
          */
         "_adjustHeight"?: boolean;
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Makes the element not focusable and ignore all events. TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+          * Makes the element not focusable and ignore all events.
+          * @TODO : Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
          */
         "_disabled"?: boolean;
         /**
@@ -5967,11 +6136,13 @@ declare namespace LocalJSX {
          */
         "_error"?: string;
         /**
-          * Shows the character count on the lower border of the input. TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+          * Shows the character count on the lower border of the input.
+          * @TODO : Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
          */
         "_hasCounter"?: boolean;
         /**
-          * Tells the element to hide the label. TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+          * Tells the element to hide the label.
+          * @TODO : Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
          */
         "_hideLabel"?: boolean;
         /**
@@ -6003,11 +6174,13 @@ declare namespace LocalJSX {
          */
         "_placeholder"?: string;
         /**
-          * Makes the input element read only. TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+          * Makes the input element read only.
+          * @TODO : Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
          */
         "_readOnly"?: boolean;
         /**
-          * Makes the input element required. TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+          * Makes the input element required.
+          * @TODO : Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
          */
         "_required"?: boolean;
         /**
@@ -6031,7 +6204,8 @@ declare namespace LocalJSX {
          */
         "_tooltipAlign"?: TooltipAlignPropType;
         /**
-          * Shows if the input was touched by a user. TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+          * Shows if the input was touched by a user.
+          * @TODO : Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
          */
         "_touched"?: boolean;
         /**
@@ -6041,11 +6215,12 @@ declare namespace LocalJSX {
     }
     interface KolToast {
         /**
-          * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+          * Defines whether the screen-readers should read out the notification.
          */
         "_alert"?: boolean;
         /**
-          * Defines whether the element can be closed. TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved
+          * Defines whether the element can be closed.
+          * @TODO : Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
          */
         "_hasCloser"?: boolean;
         /**
@@ -6058,7 +6233,7 @@ declare namespace LocalJSX {
          */
         "_label"?: LabelPropType;
         /**
-          * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+          * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
          */
         "_level"?: HeadingLevel;
         /**
@@ -6066,7 +6241,8 @@ declare namespace LocalJSX {
          */
         "_on"?: KoliBriToastEventCallbacks;
         /**
-          * Makes the element show up. TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+          * Makes the element show up.
+          * @TODO : Change type back to `ShowPropType` after Stencil#4663 has been resolved.
          */
         "_show"?: boolean;
         /**

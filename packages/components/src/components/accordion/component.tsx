@@ -129,7 +129,7 @@ export class KolAccordion implements API {
 	@Prop() public _label?: string;
 
 	/**
-	 * Gibt an, welchen H-Level von 1 bis 6 die Überschrift hat. Oder bei 0, ob es keine Überschrift ist und als fett gedruckter Text angezeigt werden soll.
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 1;
 
@@ -140,7 +140,7 @@ export class KolAccordion implements API {
 
 	/**
 	 * If set (to true) opens/expands the element, closes if not set (or set to false).
-	 * TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 

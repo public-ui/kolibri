@@ -59,7 +59,7 @@ export class KolSpin implements API {
 
 	/**
 	 * Makes the element show up.
-	 * TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `ShowPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _show?: boolean = false;
 

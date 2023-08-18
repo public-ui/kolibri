@@ -130,7 +130,7 @@ export class KolInputPassword implements API {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
@@ -141,7 +141,7 @@ export class KolInputPassword implements API {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
@@ -152,13 +152,13 @@ export class KolInputPassword implements API {
 
 	/**
 	 * Shows the character count on the lower border of the input.
-	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Tells the element to hide the label.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
@@ -209,13 +209,13 @@ export class KolInputPassword implements API {
 
 	/**
 	 * Makes the input element read only.
-	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _readOnly?: boolean;
 
 	/**
 	 * Makes the input element required.
-	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean;
 
@@ -247,7 +247,7 @@ export class KolInputPassword implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 

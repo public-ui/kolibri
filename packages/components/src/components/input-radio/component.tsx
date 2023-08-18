@@ -143,13 +143,13 @@ export class KolInputRadio implements API {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
@@ -160,7 +160,7 @@ export class KolInputRadio implements API {
 
 	/**
 	 * Tells the element to hide the label.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
@@ -207,7 +207,7 @@ export class KolInputRadio implements API {
 
 	/**
 	 * Makes the input element required.
-	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean;
 
@@ -229,7 +229,7 @@ export class KolInputRadio implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 

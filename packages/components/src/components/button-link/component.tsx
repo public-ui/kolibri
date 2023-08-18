@@ -81,7 +81,7 @@ export class KolButtonLink implements Props {
 
 	/**
 	 * Gibt an, ob durch das interaktive Element in der Komponente etwas aufgeklappt wurde. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 * TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _ariaExpanded?: boolean;
 
@@ -94,19 +94,19 @@ export class KolButtonLink implements Props {
 
 	/**
 	 * Gibt an, ob interaktive Element in der Komponente ausgewählt ist (z.B. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 * TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _ariaSelected?: boolean;
 
 	/**
 	 * Deaktiviert das interaktive Element in der Komponente und erlaubt keine Interaktion mehr damit.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
 	/**
 	 * Blendet die Beschriftung (Label) aus und zeigt sie stattdessen mittels eines Tooltips an.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 

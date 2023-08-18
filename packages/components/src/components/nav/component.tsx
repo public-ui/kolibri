@@ -217,7 +217,7 @@ export class KolNav implements API {
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
-	 * TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _collapsible?: boolean = true;
 
@@ -235,7 +235,7 @@ export class KolNav implements API {
 
 	/**
 	 * Defines if navigation labels should be hidden.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 

@@ -110,19 +110,19 @@ export class KolInputCheckbox implements API {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Gibt an, ob der Screenreader die Meldung aktiv vorlesen soll.
+	 * Defines whether the screen-readers should read out the notification.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _alert?: boolean = true;
 
 	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
-	 * TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean;
 
@@ -133,7 +133,7 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean;
 
@@ -154,7 +154,7 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
-	 * TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
 
@@ -175,7 +175,7 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Makes the input element required.
-	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean;
 
@@ -197,7 +197,7 @@ export class KolInputCheckbox implements API {
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 

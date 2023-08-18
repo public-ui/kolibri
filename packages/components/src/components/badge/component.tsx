@@ -75,7 +75,7 @@ export class KolBadge implements API {
 	 * ⚠️ We does not support the `_hide-label` property for the `kol-badge` element,
 	 *   since it would not be accessible without visible labeling. A separate tooltip
 	 *   is not planed, because a badge is not an interactive element.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 * @deprecated Will be removed in the next major version.
 	 */
 	@Prop() public _hideLabel?: boolean = false;

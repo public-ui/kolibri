@@ -120,7 +120,7 @@ export class KolLinkButton implements Props {
 
 	/**
 	 * Tells the label and shows it in a Tooltip instead.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 

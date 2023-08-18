@@ -104,7 +104,7 @@ export class KolInput implements Props {
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
-	 * TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `AlertPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _alert?: boolean = true;
 
@@ -115,7 +115,7 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
@@ -126,13 +126,13 @@ export class KolInput implements Props {
 
 	/**
 	 * Shows the character count on the lower border of the input.
-	 * TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `HasCounterPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCounter?: boolean;
 
 	/**
 	 * Hides the label and shows the description in a Tooltip instead.
-	 * TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
@@ -158,7 +158,7 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the input element read only.
-	 * TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _readOnly?: boolean = false;
 
@@ -169,7 +169,7 @@ export class KolInput implements Props {
 
 	/**
 	 * Makes the input element required.
-	 * TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
 
@@ -191,7 +191,7 @@ export class KolInput implements Props {
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _touched?: boolean = false;
 }
