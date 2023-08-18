@@ -21,7 +21,7 @@ export class KolSymbol implements API {
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Setzt die semantische Beschriftung der Komponente.
 	 * @deprecated use _label
 	 */
 	@Prop() public _ariaLabel?: string;

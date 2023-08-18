@@ -62,7 +62,7 @@ export class KolKolibri implements API {
 	@Prop() public _color?: Stringified<PropColor> = '#003c78';
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Defines whether the component has a label
 	 */
 	@Prop() public _labeled?: boolean;
 

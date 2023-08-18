@@ -31,7 +31,7 @@ export class KolIconIcofont implements Generic.Element.Members<RequiredProps, Op
 	}
 
 	/**
-	 * Setzt die sichtbare oder semantische Beschriftung der Komponente (z.B. Aria-Label, Label, Headline, Caption, Summary usw.).
+	 * Setzt die semantische Beschriftung der Komponente.
 	 */
 	@Prop() public _ariaLabel!: string;
 
